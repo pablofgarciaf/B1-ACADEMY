@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { ArrowLeft, Award, CheckCircle2, FileCheck, Shield } from 'lucide-react';
 import { getStudentProfile } from '@/lib/student-service';
 import { StudentProfile } from '@/types/student';
+import { Navbar } from '@/components/site/Navbar';
+import { Footer } from '@/components/site/Footer';
 
 export default function CalificacionesPage() {
   const [student, setStudent] = useState<StudentProfile | null>(null);
@@ -16,7 +18,10 @@ export default function CalificacionesPage() {
   if (!student) return <div className="p-8">Cargando expediente...</div>;
 
   return (
-    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-8">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+      <Navbar />
+
+      <main className="flex-1 py-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full space-y-8">
       <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
         <Link href="/dashboard" className="inline-flex items-center gap-2 text-xs font-semibold text-sap-blue hover:underline">
           <ArrowLeft className="w-4 h-4" /> Volver a Mi Aula
@@ -132,6 +137,9 @@ export default function CalificacionesPage() {
           </div>
         )}
       </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }

@@ -20,6 +20,8 @@ import {
 import { getStudentProfile, recordLessonCompletion, recordExamResult, resetStudentProfile } from '@/lib/student-service';
 import { StudentProfile } from '@/types/student';
 import { useAuth } from '@/context/AuthContext';
+import { Navbar } from '@/components/site/Navbar';
+import { Footer } from '@/components/site/Footer';
 
 export default function StudentDashboardPage() {
   const router = useRouter();
@@ -103,9 +105,12 @@ export default function StudentDashboardPage() {
   const isSuperUser = userProfile?.role === 'super' || userProfile?.role === 'admin' || student.email === 'pablofgarciaf@gmail.com';
 
   return (
-    <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
-      {/* Header del Estudiante con Matrícula Oficial */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+      <Navbar />
+
+      <main className="flex-1 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
+        {/* Header del Estudiante con Matrícula Oficial */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm">
         <div className="flex items-center gap-4">
           <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sap-blue to-sky-500 text-white flex items-center justify-center font-bold text-xl shadow-md">
             {student.displayName.split(' ').map(n => n[0]).slice(0, 2).join('')}
@@ -317,6 +322,9 @@ export default function StudentDashboardPage() {
           ))}
         </div>
       </div>
-    </div>
-  );
+    </main>
+
+    <Footer />
+  </div>
+);
 }
