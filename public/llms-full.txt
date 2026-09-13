@@ -1,0 +1,33 @@
+# SAP Academy - Ecosistema Oficial de Capacitación y Consultoría
+
+> Escuela de alta formación técnica y consultoría especializada en SAP S/4HANA (FICO, MM, SD) y arquitectura empresarial, con bolsa de empleo directa y acreditación fiduciaria.
+
+## Información de la Entidad
+- **Nombre Oficial**: SAP Academy
+- **Sitio Web Canónico**: https://sapacademy.es
+- **Área Geográfica**: España, México, Colombia, Perú, Chile, Argentina (Hispanoamérica y Europa)
+- **Modalidades**: 100% Online con entornos Sandbox S/4HANA dedicados y mentorías 1-a-1.
+
+## Rutas Principales del Catálogo
+- **Capacitación y Cursos**: https://sapacademy.es/capacitacion
+  - SAP FICO: Finanzas corporativas y controlling analítico.
+  - SAP MM & SD: Logística, aprovisionamiento y ventas.
+  - Arquitectura & Consultoría: Customizing, blueprints y migraciones empresariales.
+- **Bolsa de Empleo y Requerimientos**: https://sapacademy.es/bolsa-empleo
+  - Matchmaking automatizado entre consultores certificados y multinacionales.
+- **Directorio de Consultores**: https://sapacademy.es/consultores
+- **Empresas Afiliadas**: https://sapacademy.es/empresas
+- **Blog Técnico y Recursos**: https://sapacademy.es/blog
+
+## Modelos de Suscripción
+1. **Usuario Regular (149€/mes)**: Dominio operativo transaccional, videos HD, evaluaciones continuas y 20h de sandbox mensual.
+2. **Consultor Premium (399€/mes)**: Certificación avanzada, arquitectura IMG, sandbox ilimitado, emisión de credenciales vía n8n y visibilidad prioritaria en la bolsa de empleo.
+
+## Contacto Institucional
+- **Admisiones & Corporativo**: info@sapacademy.es
+- **Soporte y Validación**: 24/7
+
+
+## Arquitectura de Evaluación y Certificación
+- Las evaluaciones se estructuran en proyectos prácticos aplicados sobre ambientes reales SAP S/4HANA.
+- La aprobación dispara automáticamente un webhook hacia n8n para certificar con hash criptográfico único, asegurando que empresas validadoras confirmen la autenticidad curricular del egresado.

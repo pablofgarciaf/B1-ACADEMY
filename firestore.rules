@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Función de validación de autenticación
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Función para validar si es el propio usuario
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Función para validar rol Consultor Premium
+    function isConsultorPremium() {
+      return isAuthenticated() && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'consultor_premium';
+    }
+
+    // Colección de Usuarios
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && request.auth.uid == userId;
+      allow update: if isOwner(userId) && 
+        // No puede auto-asignarse el rol de consultor sin validación de pago/n8n
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role']));
+    }
+
+    // Colección de Cursos y Módulos
+    match /courses/{courseId} {
+      // Cualquier usuario puede ver el catálogo público
+      allow read: if true;
+      // Solo administradores pueden publicar cursos
+      allow write: if false;
+    }
+
+    // Colección de Evaluaciones y Resultados
+    match /evaluations/{evalId} {
+      allow read, write: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+    }
+
+    // Colección de Bolsa de Empleo
+    match /job_listings/{jobId} {
+      allow read: if true;
+      // Solo empresas verificadas o administradores crean ofertas
+      allow write: if false;
+    }
+
+    // Postulaciones de Empleo
+    match /job_applications/{appId} {
+      // Consultores Premium tienen prioridad y acceso sin restricciones
+      allow create: if isConsultorPremium() || 
+        (isAuthenticated() && request.resource.data.applicantId == request.auth.uid);
+      allow read: if isAuthenticated() && 
+        (resource.data.applicantId == request.auth.uid || resource.data.employerId == request.auth.uid);
+    }
+  }
+}
