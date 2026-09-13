@@ -238,3 +238,12 @@ export function getEligibleJobCandidates(): StudentProfile[] {
 
   return candidateList.filter(c => c.jobReadiness.isEligibleForJobs);
 }
+
+// Registrar horas de practica en Sandbox
+export function recordSandboxPractice(hours: number): StudentProfile {
+  const student = getStudentProfile();
+  student.sandboxHoursUsed = Math.min(student.sandboxHoursLimit, (student.sandboxHoursUsed || 0) + hours);
+  student.jobReadiness = recalculateReadiness(student);
+  saveStudentProfile(student);
+  return student;
+}
