@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import { TRAINING_TRACKS } from '@/lib/courses-data';
 import { SUBMODULE_GUIDES } from '@/lib/submodules-content';
+import { MODULE_SIMULATIONS } from '@/lib/module-simulations-data';
+import { VisualScreenSimulator } from '@/components/lms/VisualScreenSimulator';
 import { VideoPlayer } from '@/components/lms/VideoPlayer';
 import { LessonNavigator } from '@/components/lms/LessonNavigator';
 import { EvaluationQuiz } from '@/components/lms/EvaluationQuiz';
@@ -30,7 +32,7 @@ import { Footer } from '@/components/site/Footer';
 
 export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId: string }> }) {
   const [activeLessonId, setActiveLessonId] = useState('l1');
-  const [activeViewTab, setActiveViewTab] = useState<'video' | 'guide' | 'sandbox' | 'quiz'>('guide');
+  const [activeViewTab, setActiveViewTab] = useState<'screen' | 'guide' | 'sandbox' | 'video' | 'quiz'>('screen');
 
   // Desempaquetado de params
   const [resolvedParams, setResolvedParams] = useState<{ moduloId: string } | null>(null);
@@ -135,6 +137,17 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
 
           {/* Selector de Pestañas Didácticas (Coursera / edX Style) */}
           <div className="flex flex-wrap items-center gap-2">
+            <button
+              onClick={() => setActiveViewTab('screen')}
+              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+                activeViewTab === 'screen'
+                  ? 'bg-gradient-to-r from-sap-blue to-sky-600 text-white shadow-md shadow-sap-blue/25'
+                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+              }`}
+            >
+              <Laptop className="w-4 h-4" /> Pantalla y Caso Práctico
+            </button>
+
             <button
               onClick={() => setActiveViewTab('guide')}
               className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${

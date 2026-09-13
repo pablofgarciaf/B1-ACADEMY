@@ -23,7 +23,8 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'Explorar Tracks', href: '/capacitacion', icon: Layers },
-    { name: 'Mi Aula Virtual', href: '/dashboard', icon: BookOpen },
+    { name: '83 Manuales', href: '/manuales', icon: BookOpen },
+    { name: 'Mi Aula Virtual', href: '/dashboard', icon: GraduationCap },
     { name: 'Bolsa de Empleo', href: '/bolsa-empleo', icon: Briefcase },
     { name: 'Directorio Talento', href: '/talento', icon: Award },
   ];
