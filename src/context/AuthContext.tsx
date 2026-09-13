@@ -7,9 +7,10 @@ import {
   signOut, 
   onAuthStateChanged, 
   createUserWithEmailAndPassword,
+  updatePassword as fbUpdatePassword,
   User as FirebaseUser 
 } from 'firebase/auth';
-import { doc, getDoc, setDoc, collection, getDocs, query, orderBy } from 'firebase/firestore';
+import { doc, getDoc, setDoc, updateDoc, collection, getDocs, query } from 'firebase/firestore';
 
 export interface UserProfile {
   uid: string;
@@ -22,11 +23,9 @@ export interface UserProfile {
   createdAt: string;
   updatedAt?: string;
   assignedTracks?: string[];
-  overallProgressPercent?: number;
+  passwordChanged?: boolean;
   sandboxHoursUsed?: number;
   sandboxHoursLimit?: number;
-  averageGrade?: number;
-  isEligibleForJobs?: boolean;
   phone?: string;
   bio?: string;
 }
@@ -36,9 +35,10 @@ interface AuthContextType {
   userProfile: UserProfile | null;
   user: UserProfile | null; // Alias de retrocompatibilidad
   loading: boolean;
-  login: (email: string, pass: string) => Promise<{ success: boolean; role: string; error?: string }>;
+  login: (email: string, pass: string) => Promise<{ success: boolean; role: string; passwordChanged?: boolean; error?: string }>;
   loginDemo: (role?: any) => void;
   logout: () => Promise<void>;
+  changePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
   createStudent: (data: {
     name: string;
     email: string;
@@ -96,10 +96,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               role: 'super',
               status: 'active',
               createdAt: new Date().toISOString(),
-              assignedTracks: ['sap-b1-core', 'sri-localizacion', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
-              overallProgressPercent: 100,
-              averageGrade: 100,
-              isEligibleForJobs: true
+              passwordChanged: true,
+              assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
             };
             setUserProfile(superProf);
             await setDoc(doc(db, 'usuarios', cleanEmail), superProf, { merge: true });
@@ -116,7 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Función de Login robusta (Firebase Auth + Firestore Fallback para Superadmin)
-  const login = async (emailInput: string, passInput: string): Promise<{ success: boolean; role: string; error?: string }> => {
+  const login = async (emailInput: string, passInput: string): Promise<{ success: boolean; role: string; passwordChanged?: boolean; error?: string }> => {
     const cleanEmail = emailInput.trim().toLowerCase();
     const cleanPass = passInput.trim();
 
@@ -148,10 +146,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             role: 'super',
             status: 'active',
             createdAt: new Date().toISOString(),
-            assignedTracks: ['sap-b1-core', 'sri-localizacion', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
-            overallProgressPercent: 100,
-            averageGrade: 100,
-            isEligibleForJobs: true
+            passwordChanged: true,
+            assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
           };
           await setDoc(doc(db, 'usuarios', cleanEmail), prof, { merge: true });
         }
@@ -165,16 +161,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           role: 'super',
           status: 'active',
           createdAt: new Date().toISOString(),
-          assignedTracks: ['sap-b1-core', 'sri-localizacion', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
-          overallProgressPercent: 100,
-          averageGrade: 100,
-          isEligibleForJobs: true
+          passwordChanged: true,
+          assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
         };
       }
 
       setUserProfile(prof);
       localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-      return { success: true, role: 'super' };
+      return { success: true, role: 'super', passwordChanged: prof.passwordChanged ?? true };
     }
 
     // 2. Intento de autenticación normal en Firebase Auth
@@ -190,7 +184,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
         setUserProfile(prof);
         localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-        return { success: true, role: prof.role };
+        return { success: true, role: prof.role, passwordChanged: prof.passwordChanged ?? true };
       } else {
         // Si no existe perfil en Firestore, crearlo como estudiante
         const defaultStudentProf: UserProfile = {
@@ -202,15 +196,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           role: 'estudiante',
           status: 'active',
           createdAt: new Date().toISOString(),
+          passwordChanged: false,
           assignedTracks: ['sap-b1-core'],
-          overallProgressPercent: 0,
-          averageGrade: 0,
-          isEligibleForJobs: false,
         };
         await setDoc(doc(db, 'usuarios', cleanEmail), defaultStudentProf);
         setUserProfile(defaultStudentProf);
         localStorage.setItem('sap_auth_session', JSON.stringify(defaultStudentProf));
-        return { success: true, role: 'estudiante' };
+        return { success: true, role: 'estudiante', passwordChanged: false };
       }
     } catch (err: any) {
       console.error('[Login Error]', err);
@@ -222,7 +214,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (prof.cedula && prof.cedula.trim() === cleanPass) {
             setUserProfile(prof);
             localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-            return { success: true, role: prof.role };
+            return { success: true, role: prof.role, passwordChanged: prof.passwordChanged ?? false };
           }
         }
       } catch (dbErr) {
@@ -295,12 +287,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         role: data.role || 'estudiante',
         status: 'active',
         createdAt: new Date().toISOString(),
+        passwordChanged: false,
         assignedTracks: data.assignedTracks && data.assignedTracks.length > 0 
           ? data.assignedTracks 
-          : ['sap-b1-core', 'sri-localizacion', 'heinsohn-nomina'],
-        overallProgressPercent: 0,
-        averageGrade: 0,
-        isEligibleForJobs: false,
+          : ['sap-b1-core'],
         phone: data.phone?.trim() || '',
       };
 
@@ -309,6 +299,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     } catch (err: any) {
       console.error('[Create Student Error]', err);
       return { success: false, error: err.message || 'Error al registrar estudiante' };
+    }
+  };
+
+  // Cambio de contraseña forzado (tras primer login con cédula)
+  const changePassword = async (newPassword: string): Promise<{ success: boolean; error?: string }> => {
+    if (!currentUser) {
+      return { success: false, error: 'No hay sesión activa.' };
+    }
+    if (newPassword.length < 8) {
+      return { success: false, error: 'La nueva contraseña debe tener al menos 8 caracteres.' };
+    }
+    try {
+      await fbUpdatePassword(currentUser, newPassword);
+      // Actualizar flag en Firestore
+      const emailKey = currentUser.email!.toLowerCase().trim();
+      await updateDoc(doc(db, 'usuarios', emailKey), { passwordChanged: true });
+      // Actualizar estado local
+      setUserProfile((prev) => prev ? { ...prev, passwordChanged: true } : prev);
+      if (typeof window !== 'undefined') {
+        const raw = localStorage.getItem('sap_auth_session');
+        if (raw) {
+          try {
+            const parsed = JSON.parse(raw);
+            localStorage.setItem('sap_auth_session', JSON.stringify({ ...parsed, passwordChanged: true }));
+          } catch {}
+        }
+      }
+      return { success: true };
+    } catch (err: any) {
+      console.error('[Change Password Error]', err);
+      if (err.code === 'auth/requires-recent-login') {
+        return { success: false, error: 'Por seguridad, cierra sesión, vuelve a ingresar y cambia tu contraseña.' };
+      }
+      return { success: false, error: err.message || 'Error al cambiar contraseña' };
     }
   };
 
@@ -340,6 +364,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           login('pablofgarciaf@gmail.com', '1721790721');
         },
         logout,
+        changePassword,
         createStudent,
         getAllStudents,
       }}

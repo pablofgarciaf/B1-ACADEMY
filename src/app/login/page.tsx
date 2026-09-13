@@ -50,6 +50,15 @@ export default function LoginPage() {
         return;
       }
 
+      // Si el usuario nunca ha cambiado su clave → forzar cambio
+      if (res.passwordChanged === false) {
+        setSuccessMsg('¡Bienvenido! Debes crear una contraseña personal antes de continuar...');
+        setTimeout(() => {
+          router.push('/change-password');
+        }, 800);
+        return;
+      }
+
       setSuccessMsg(`¡Bienvenido! Redirigiendo a tu espacio...`);
       setTimeout(() => {
         if (res.role === 'super' || res.role === 'admin') {

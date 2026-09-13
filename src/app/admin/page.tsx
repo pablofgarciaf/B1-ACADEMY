@@ -39,6 +39,20 @@ export default function AdminStudentsPanel() {
   const router = useRouter();
   const { userProfile, loading: authLoading, logout, createStudent, getAllStudents } = useAuth();
 
+  // ── ROUTE GUARD ──────────────────────────────────────────────────────────────
+  useEffect(() => {
+    if (!authLoading) {
+      if (!userProfile) {
+        router.replace('/login');
+        return;
+      }
+      if (userProfile.role !== 'super' && userProfile.role !== 'admin') {
+        router.replace('/dashboard');
+      }
+    }
+  }, [authLoading, userProfile, router]);
+  // ─────────────────────────────────────────────────────────────────────────────
+
   const [activeTab, setActiveTab] = useState<'estudiantes' | 'metricas' | 'certificados'>('estudiantes');
   const [students, setStudents] = useState<UserProfile[]>([]);
   const [loadingList, setLoadingList] = useState(true);
@@ -58,8 +72,6 @@ export default function AdminStudentsPanel() {
   const [formRole, setFormRole] = useState<'estudiante' | 'docente' | 'admin'>('estudiante');
   const [formTracks, setFormTracks] = useState<string[]>([
     'sap-b1-core',
-    'sri-localizacion',
-    'heinsohn-nomina',
   ]);
 
   // Cargar estudiantes desde Firestore
@@ -71,10 +83,22 @@ export default function AdminStudentsPanel() {
   };
 
   useEffect(() => {
-    if (!authLoading) {
+    if (!authLoading && userProfile && (userProfile.role === 'super' || userProfile.role === 'admin')) {
       loadStudents();
     }
-  }, [authLoading]);
+  }, [authLoading, userProfile]);
+
+  // Mostrar pantalla de carga mientras resuelve auth o redirect
+  if (authLoading || !userProfile || (userProfile.role !== 'super' && userProfile.role !== 'admin')) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#080d1a]">
+        <div className="flex flex-col items-center gap-4 text-slate-500">
+          <div className="w-10 h-10 rounded-full border-2 border-sap-blue border-t-transparent animate-spin" />
+          <p className="text-xs font-mono">Verificando permisos...</p>
+        </div>
+      </div>
+    );
+  }
 
   // Toggle asignación de track en el modal
   const handleToggleTrack = (trackId: string) => {
@@ -133,7 +157,7 @@ export default function AdminStudentsPanel() {
 
   // Métricas
   const totalStudents = students.filter(s => s.role === 'estudiante').length;
-  const totalJobReady = students.filter(s => s.isEligibleForJobs).length;
+  const totalActivated = students.filter(s => s.passwordChanged === true && s.role === 'estudiante').length;
   const totalSuperAdmins = students.filter(s => s.role === 'super' || s.role === 'admin').length;
 
   return (
@@ -197,14 +221,14 @@ export default function AdminStudentsPanel() {
 
           <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-2 shadow-sm">
             <div className="flex justify-between items-center text-slate-500">
-              <span className="text-xs uppercase tracking-wider font-bold">Graduados Job-Ready</span>
+              <span className="text-xs uppercase tracking-wider font-bold">Estudiantes Activos</span>
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
             </div>
             <p className="text-3xl font-black text-emerald-500 font-display">
-              {totalJobReady}
+              {totalActivated}
             </p>
             <p className="text-[11px] text-slate-500">
-              Habilitados en la Bolsa de Empleo
+              Con contraseña personal creada
             </p>
           </div>
 
@@ -277,8 +301,8 @@ export default function AdminStudentsPanel() {
                   <th className="pb-3 font-semibold">Correo Electrónico</th>
                   <th className="pb-3 font-semibold">Rol</th>
                   <th className="pb-3 font-semibold">Tracks Asignados</th>
-                  <th className="pb-3 font-semibold">Avance</th>
-                  <th className="pb-3 font-semibold">Estatus</th>
+                  <th className="pb-3 font-semibold">Contraseña</th>
+                  <th className="pb-3 font-semibold">Estado</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/5">
@@ -339,23 +363,27 @@ export default function AdminStudentsPanel() {
                         </div>
                       </td>
 
-                      <td className="py-4 font-mono font-bold text-slate-800 dark:text-slate-200">
-                        {stu.overallProgressPercent || 0}%
+                      <td className="py-4">
+                        <span className={`inline-flex items-center gap-1 text-[11px] font-semibold ${
+                          stu.passwordChanged ? 'text-emerald-500' : 'text-amber-500'
+                        }`}>
+                          {stu.passwordChanged ? (
+                            <>
+                              <CheckCircle2 className="w-3.5 h-3.5" /> Creada
+                            </>
+                          ) : (
+                            <>
+                              <Clock className="w-3.5 h-3.5" /> Pendiente
+                            </>
+                          )}
+                        </span>
                       </td>
 
                       <td className="py-4">
                         <span className={`inline-flex items-center gap-1 text-[11px] font-semibold ${
-                          stu.isEligibleForJobs
-                            ? 'text-emerald-500'
-                            : 'text-slate-500'
+                          stu.status === 'active' ? 'text-emerald-500' : 'text-slate-400'
                         }`}>
-                          {stu.isEligibleForJobs ? (
-                            <>
-                              <CheckCircle2 className="w-3.5 h-3.5" /> Job-Ready
-                            </>
-                          ) : (
-                            'En Formación'
-                          )}
+                          {stu.status === 'active' ? 'Activo' : 'Suspendido'}
                         </span>
                       </td>
                     </tr>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   GraduationCap,
   BookOpen,
@@ -21,10 +22,27 @@ import { StudentProfile } from '@/types/student';
 import { useAuth } from '@/context/AuthContext';
 
 export default function StudentDashboardPage() {
-  const { userProfile } = useAuth();
+  const router = useRouter();
+  const { userProfile, loading: authLoading } = useAuth();
   const [student, setStudent] = useState<StudentProfile | null>(null);
 
+  // ── ROUTE GUARD ──────────────────────────────────────────────────────────────
   useEffect(() => {
+    if (!authLoading) {
+      if (!userProfile) {
+        router.replace('/login');
+        return;
+      }
+      if (userProfile.passwordChanged === false) {
+        router.replace('/change-password');
+        return;
+      }
+    }
+  }, [authLoading, userProfile, router]);
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  useEffect(() => {
+    if (!userProfile) return;
     const prof = getStudentProfile();
     if (userProfile) {
       prof.displayName = userProfile.name || userProfile.displayName || 'Pablo F. García';
@@ -33,6 +51,17 @@ export default function StudentDashboardPage() {
     }
     setStudent({ ...prof });
   }, [userProfile]);
+
+  if (authLoading || !userProfile || userProfile.passwordChanged === false) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#080d1a]">
+        <div className="flex flex-col items-center gap-3 text-slate-500">
+          <div className="w-10 h-10 rounded-full border-2 border-sap-blue border-t-transparent animate-spin" />
+          <p className="text-xs font-mono">Cargando expediente...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!student) {
     return <div className="min-h-screen flex items-center justify-center text-slate-500">Cargando expediente académico...</div>;
