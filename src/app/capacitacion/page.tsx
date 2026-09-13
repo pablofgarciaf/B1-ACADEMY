@@ -1,98 +1,173 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { GraduationCap, Video, Clock, Award, ArrowRight, Laptop } from "lucide-react";
-import { JsonLd } from "@/components/site/JsonLd";
+"use client";
 
-// Title 50-60 chars (Actual: 53 chars)
-// Description 120-160 chars (Actual: 147 chars)
-export const metadata: Metadata = {
-  title: "Cursos y Certificación SAP S/4HANA Oficial | Academy",
-  description:
-    "Catálogo formativo en módulos SAP FICO, MM, SD y BTP. Aprende en entornos sandbox dedicados con mentores senior y certifícate con validez internacional.",
-  alternates: {
-    canonical: "https://sapacademy.es/capacitacion",
-  },
-};
-
-const courseSchema = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: "Catálogo Integral de Certificación SAP S/4HANA",
-  description:
-    "Rutas de formación operativa y consultoría empresarial en módulos FICO, MM y SD sobre SAP S/4HANA.",
-  provider: {
-    "@type": "EducationalOrganization",
-    name: "SAP Academy",
-    url: "https://sapacademy.es",
-  },
-};
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { 
+  Server, 
+  ShieldCheck, 
+  Briefcase, 
+  Users, 
+  Award, 
+  Clock, 
+  ArrowRight, 
+  CheckCircle2, 
+  FileCode2, 
+  Sparkles,
+  ChevronRight,
+  BookOpen
+} from 'lucide-react';
+import { TRAINING_TRACKS } from '@/lib/courses-data';
+import { TrackCode } from '@/types/courses';
 
 export default function CapacitacionPage() {
-  return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <JsonLd data={courseSchema} />
+  const [selectedFilter, setSelectedFilter] = useState<'ALL' | TrackCode>('ALL');
 
-      <aside aria-label="Resumen de Formación" className="mb-8 p-4 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-        <strong>Puntos Clave del Catálogo:</strong> Módulos intensivos en Finanzas (FICO), Cadena de Suministro (MM) y Ventas (SD). Incluye acceso sandbox S/4HANA 24/7 y evaluaciones con casos de estudio de multinacionales.
+  const filteredTracks = selectedFilter === 'ALL' 
+    ? TRAINING_TRACKS 
+    : TRAINING_TRACKS.filter(t => t.code === selectedFilter);
+
+  return (
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
+      {/* Cápsula GEO para Google AI Overviews, Perplexity y ChatGPT */}
+      <aside aria-label="Resumen del Ecosistema Formativo" className="p-5 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md">
+        <strong className="text-slate-900 dark:text-white font-semibold">Currículo Oficial de la Academia:</strong>{' '}
+        Formación de élite en el ecosistema empresarial de Ecuador: <strong>SAP Business One</strong> (Finanzas NIIF, Order-to-Cash, MRP), 
+        <strong>Localización SRI</strong> (Facturación electrónica XML, retenciones 312/343/332/344, ATS), <strong>Heinsohn Nómina HCM</strong> (biométricos, horas extras con base 240, IESS 9.45%/12.15%, SBU 2026 $482, finiquitos SUT y Service Layer) y 
+        <strong>Verticales de Exportación</strong> (bananera con trazabilidad GlobalGAP, camaronera con costeo por piscina, manufactura con Beas y WMS Produmex).
       </aside>
 
-      <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-          Cursos y Especialidades en Consultoría SAP S/4HANA
+      <div className="text-center max-w-3xl mx-auto space-y-3">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-sap-blue/30 bg-sap-blue/5 text-xs font-bold text-sap-blue">
+          <Sparkles className="w-3.5 h-3.5" /> Ecosistema Heinsohn Ecuador & SAP Business One
+        </div>
+        {/* H1 Quirúrgico (45-65 chars) -> 53 caracteres */}
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
+          Especialidades en SAP Business One y Heinsohn Ecuador
         </h1>
-        <p className="text-slate-600 dark:text-slate-400 text-base">
-          Desarrolla las competencias técnicas más demandadas en el mercado ERP corporativo.
+        <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+          Selecciona tu ruta formativa clasificada por nivel: 
+          <span className="inline-flex items-center gap-1 font-bold text-sap-blue mx-1.5">[OP] Operativo</span> para usuarios transaccionales y 
+          <span className="inline-flex items-center gap-1 font-bold text-amber-500 mx-1.5">[ARQ] Arquitectura</span> para consultores de parametrización senior.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <article className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-4 shadow-sm hover:border-sap-blue/40 transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-sap-blue flex items-center justify-center font-bold">
-            <Laptop className="w-6 h-6" />
-          </div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">SAP FICO: Finanzas & Controlling</h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Gestión de libro mayor, activos fijos, cuentas a cobrar/pagar y centros de coste en S/4HANA.
-          </p>
-          <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex justify-between items-center text-xs text-slate-500">
-            <span>60 Horas • 36 Lecciones</span>
-            <span className="font-bold text-sap-blue">Nivel Pro</span>
-          </div>
-        </article>
-
-        <article className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-4 shadow-sm hover:border-sap-blue/40 transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center font-bold">
-            <GraduationCap className="w-6 h-6" />
-          </div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">SAP MM: Gestión de Materiales</h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Aprovisionamiento, gestión de inventarios, valoración de existencias y verificación de facturas.
-          </p>
-          <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex justify-between items-center text-xs text-slate-500">
-            <span>55 Horas • 32 Lecciones</span>
-            <span className="font-bold text-amber-500">Nivel Pro</span>
-          </div>
-        </article>
-
-        <article className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-4 shadow-sm hover:border-sap-blue/40 transition-all">
-          <div className="w-12 h-12 rounded-2xl bg-sky-500/10 text-sky-500 flex items-center justify-center font-bold">
-            <Award className="w-6 h-6" />
-          </div>
-          <h2 className="text-xl font-bold text-slate-900 dark:text-white">SAP SD: Ventas y Distribución</h2>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            Ciclo comercial Order-to-Cash, esquemas de cálculo de precios, facturación electrónica y entregas.
-          </p>
-          <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex justify-between items-center text-xs text-slate-500">
-            <span>50 Horas • 30 Lecciones</span>
-            <span className="font-bold text-sky-500">Nivel Pro</span>
-          </div>
-        </article>
+      {/* Filtros de Rutas Formativas */}
+      <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+        <button
+          onClick={() => setSelectedFilter('ALL')}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 cursor-pointer ${
+            selectedFilter === 'ALL'
+              ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
+              : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-sap-blue/40'
+          }`}
+        >
+          Todas las Rutas (5)
+        </button>
+        {TRAINING_TRACKS.map((t) => (
+          <button
+            key={t.code}
+            onClick={() => setSelectedFilter(t.code)}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 cursor-pointer ${
+              selectedFilter === t.code
+                ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
+                : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300 hover:border-sap-blue/40'
+            }`}
+          >
+            {t.shortTitle}
+          </button>
+        ))}
       </div>
 
-      <div className="text-center pt-16">
-        <Link href="/#planes" className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-sap-blue to-sky-600 text-white font-bold shadow-lg shadow-sap-blue/25 hover:shadow-sap-blue/40 transition-all active:scale-95 cursor-pointer">
-          Inscribirme en una Especialidad <ArrowRight className="w-5 h-5" />
-        </Link>
+      {/* Listado Detallado de Rutas */}
+      <div className="space-y-12">
+        {filteredTracks.map((track) => (
+          <section
+            key={track.id}
+            className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-6 hover:border-sap-blue/30 transition-all"
+          >
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-slate-100 dark:border-white/5 pb-6">
+              <div className="space-y-2">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="text-xs font-mono font-bold text-sap-blue px-2.5 py-0.5 rounded-md bg-sap-blue/10">
+                    {track.code}
+                  </span>
+                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300">
+                    {track.badge}
+                  </span>
+                  <span className="text-xs text-slate-500 font-medium">
+                    {track.totalDurationHours} Horas Lectivas • {track.submodulesCount} Módulos
+                  </span>
+                </div>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white font-display">
+                  {track.title}
+                </h2>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+                  {track.description}
+                </p>
+                <p className="text-xs text-slate-500 italic">
+                  <strong>Público Objetivo:</strong> {track.targetAudience}
+                </p>
+              </div>
+
+              <Link
+                href={`/capacitacion/${track.id}`}
+                className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue text-white text-xs font-bold shadow-md shadow-sap-blue/20 transition-all active:scale-95 flex items-center gap-1.5 shrink-0 cursor-pointer"
+              >
+                Abrir Aula Virtual <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Submódulos individuales con clasificación [OP] vs [ARQ] */}
+            <div>
+              <h3 className="text-xs uppercase tracking-wider font-bold text-slate-500 mb-4">
+                Estructura de Submódulos y Documentos Técnicos
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {track.submodules.map((sub) => (
+                  <div
+                    key={sub.id}
+                    className="p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-slate-300 dark:hover:border-white/15 transition-all space-y-2.5 flex flex-col justify-between"
+                  >
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between items-center">
+                        <span className="text-[10px] font-mono text-slate-500 font-bold">
+                          {sub.code}
+                        </span>
+                        <span
+                          className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                            sub.level === 'ARQ'
+                              ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+                              : 'bg-sap-blue/10 text-sap-blue border border-sap-blue/20'
+                          }`}
+                        >
+                          {sub.level === 'ARQ' ? 'Nivel Arquitectura [ARQ]' : 'Nivel Operativo [OP]'}
+                        </span>
+                      </div>
+
+                      <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug">
+                        {sub.title}
+                      </h4>
+
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                        {sub.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-2 border-t border-slate-200/60 dark:border-white/5 flex flex-wrap gap-1">
+                      {sub.keyTopics.slice(0, 2).map((topic, i) => (
+                        <span key={i} className="text-[9px] px-1.5 py-0.5 rounded bg-white dark:bg-white/5 text-slate-500 border border-slate-200 dark:border-white/5">
+                          {topic}
+                        </span>
+                      ))}
+                      <span className="text-[10px] text-slate-400 ml-auto font-mono">{sub.durationHours}h</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );

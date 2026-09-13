@@ -1,33 +1,53 @@
-# SAP Academy - Ecosistema Oficial de Capacitación y Consultoría
+# SAP Academy Ecuador - Ecosistema Heinsohn & SAP Business One
 
-> Escuela de alta formación técnica y consultoría especializada en SAP S/4HANA (FICO, MM, SD) y arquitectura empresarial, con bolsa de empleo directa y acreditación fiduciaria.
+> Institución de formación técnica y consultoría B2B/B2C especializada en SAP Business One, Heinsohn Nómina HCM, Heinsohn Gestión Humana y Localización Tributaria SRI Ecuador.
 
-## Información de la Entidad
-- **Nombre Oficial**: SAP Academy
-- **Sitio Web Canónico**: https://sapacademy.es
-- **Área Geográfica**: España, México, Colombia, Perú, Chile, Argentina (Hispanoamérica y Europa)
-- **Modalidades**: 100% Online con entornos Sandbox S/4HANA dedicados y mentorías 1-a-1.
+## Rutas Formativas Principales (Catálogo Oficial 2026)
 
-## Rutas Principales del Catálogo
-- **Capacitación y Cursos**: https://sapacademy.es/capacitacion
-  - SAP FICO: Finanzas corporativas y controlling analítico.
-  - SAP MM & SD: Logística, aprovisionamiento y ventas.
-  - Arquitectura & Consultoría: Customizing, blueprints y migraciones empresariales.
-- **Bolsa de Empleo y Requerimientos**: https://sapacademy.es/bolsa-empleo
-  - Matchmaking automatizado entre consultores certificados y multinacionales.
-- **Directorio de Consultores**: https://sapacademy.es/consultores
-- **Empresas Afiliadas**: https://sapacademy.es/empresas
-- **Blog Técnico y Recursos**: https://sapacademy.es/blog
+### 1. SAP Business One: Núcleo Transversal & Finanzas NIIF [SAP-B1-CORE]
+- Administración y DTW (Data Transfer Workbench).
+- Finanzas NIIF, Determinación de Contabilización (G/L) y Asientos de Diario.
+- Ciclo Order-to-Cash (Ventas A/R, Oportunidades, Facturación).
+- Ciclo Procure-to-Pay (Compras A/P, Requisiciones, GRPO).
+- Inventario Avanzado (FIFO, Promedio Ponderado Móvil, Lotes y Bins).
+- Producción y MRP (Listas de materiales BOM, reporte de piso).
+- Query Generator, Crystal Reports y Cockpit analítico sobre SAP HANA.
 
-## Modelos de Suscripción
-1. **Usuario Regular (149€/mes)**: Dominio operativo transaccional, videos HD, evaluaciones continuas y 20h de sandbox mensual.
-2. **Consultor Premium (399€/mes)**: Certificación avanzada, arquitectura IMG, sandbox ilimitado, emisión de credenciales vía n8n y visibilidad prioritaria en la bolsa de empleo.
+### 2. Localización Ecuador & Cumplimiento SRI [SAP-LOC-EC]
+- Emisión de Comprobantes Electrónicos XML (online/offline) autorizados por el SRI.
+- Retenciones en la Fuente: Códigos 312 (bienes 1.75%), 343 (construcción 1.00%), 332 (honorarios 8.00%) y 344 (servicios 2.75%).
+- Ingeniería de Metadatos: Campos Definidos por el Usuario (UDFs) en tablas OCRD y OPCH (U_TipoIdentificacion, U_SustentoTributario, U_FormaPagoSRI).
+- Anexo Transaccional Simplificado (ATS): Extracción y validación contra Formularios 104 y 103.
+- Cruce contable de Formularios SRI 101, 103 y 104, ISD 5% y Régimen RIMPE.
 
-## Contacto Institucional
-- **Admisiones & Corporativo**: info@sapacademy.es
-- **Soporte y Validación**: 24/7
+### 3. Heinsohn Nómina HCM Ecuador [HEIN-NOM-EC]
+- Integración biométrica y cálculo de Horas Suplementarias (+50%), Extraordinarias (+100%) y Nocturnas (+25%) con divisor legal Sueldo/240.
+- Seguridad Social IESS: Aporte personal (9.45%), aporte patronal (11.15% + 1% SECAP/IECE) y fondos de reserva (8.33%).
+- Beneficios Sociales: Décimo Tercer sueldo (dic-nov / 12), Décimo Cuarto sueldo (1 SBU = $482 según régimen Costa/Galápagos vs Sierra/Amazonía) y Utilidades (15%).
+- Tributación laboral: Proyección de Impuesto a la Renta con rebaja por Canasta Familiar Básica (CFB) y Anexo RDEP.
+- Compliance MDT: Actas de finiquito en el SUT (desahucio, despido intempestivo Art. 188).
+- Parametrización maestra de Conceptos, Promedios y Cierre Anual con actualización del SBU.
+- Interfaz Contable Nómina ↔ SAP B1 vía Service Layer con idempotencia en asientos OJDT/JDT1.
 
+### 4. Heinsohn Gestión Humana & Desarrollo Organizacional [HEIN-HCM-TALENT]
+- Reclutamiento y Selección: ATS con screening de candidatos asistido por IA.
+- Evaluación de Desempeño 90°, 180°, 270° y 360°.
+- Analítica del Talento: Matriz Nine Box (Desempeño vs Potencial) y calibración para mitigar el Efecto Halo.
+- Planes de Desarrollo Individual (PDI) y alineación con OKRs.
+- Business Intelligence de Talento Humano (ausentismo, rotación, pasivo vacacional).
 
-## Arquitectura de Evaluación y Certificación
-- Las evaluaciones se estructuran en proyectos prácticos aplicados sobre ambientes reales SAP S/4HANA.
-- La aprobación dispara automáticamente un webhook hacia n8n para certificar con hash criptográfico único, asegurando que empresas validadoras confirmen la autenticidad curricular del egresado.
+### 5. Verticales de Exportación Ecuador & Add-ons Boyum IT [SAP-VERT-EXP]
+- Vertical Bananera: Trazabilidad de finca a empacadora, GlobalGAP y costeo de fletes/aranceles.
+- Vertical Camaronera: Piscinas como centros de costo independientes, control de biomasa y costeo por libra exportada.
+- Manufactura con Beas Manufacturing (MES de captura de piso y costeo por absorción ABC).
+- Gestión Avanzada de Bodegas con Produmex WMS y Produmex Scan.
+- Automatización y personalización sin código mediante B1 Usability Package (B1UP).
+- Arquitectura de Integración: SAP Service Layer RESTful OData y automatizaciones n8n.
+
+## Niveles de Certificación
+- **[OP] Nivel Operativo (Usuario Estándar)**: Ejecución transaccional diaria.
+- **[ARQ] Nivel Arquitectura (Consultor Premium)**: Parametrización profunda de base de datos, APIs y cumplimiento fiscal/laboral.
+
+## Contacto & Plataforma
+- URL Oficial: https://sapacademy.es
+- Admisiones: info@sapacademy.es
