@@ -42,7 +42,7 @@ export interface StudentProfile {
   role: UserRole;
   avatarUrl?: string;
   enrollmentDate: string;
-  specialties: ('FICO' | 'MM' | 'SD' | 'BTP')[];
+  specialties: ('SAP-B1-CORE' | 'SRI-LOC-EC' | 'HEIN-NOM-EC' | 'HEIN-RRHH-EC' | 'VERTICALES-EC' | string)[];
   progress: Record<string, {
     courseId: string;
     courseTitle: string;

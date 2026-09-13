@@ -1,9 +1,9 @@
 import { StudentProfile, QuizAttemptRecord, JobReadinessMetrics, AcademicStatus } from '@/types/student';
 
-const STORAGE_KEY = 'sap_student_records_v1';
+const STORAGE_KEY = 'sap_student_records_v2';
 const CURRENT_STUDENT_KEY = 'sap_current_student_id';
 
-// Perfil semilla con datos de muestra estilo edX / Aprende.org
+// Perfil semilla con datos de muestra alineados 100% al Ecosistema Heinsohn Ecuador y SAP Business One
 const defaultStudent: StudentProfile = {
   uid: 'stu-demo-001',
   studentId: 'STU-SAP-2026-8942',
@@ -11,85 +11,101 @@ const defaultStudent: StudentProfile = {
   displayName: 'Carlos M. Ramírez',
   role: 'consultor_premium',
   enrollmentDate: '2026-08-01',
-  specialties: ['FICO', 'MM'],
+  specialties: ['SAP-B1-CORE', 'HEIN-NOM-EC'],
   sandboxHoursUsed: 18,
   sandboxHoursLimit: 100,
   progress: {
-    FICO: {
-      courseId: 'FICO',
-      courseTitle: 'SAP FICO: Finanzas Corporativas & S/4HANA',
-      completedLessons: ['l1', 'l2', 'l3'],
-      totalLessons: 4,
+    'sap-b1-core': {
+      courseId: 'sap-b1-core',
+      courseTitle: 'SAP Business One: Núcleo Transversal & Finanzas NIIF',
+      completedLessons: ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'],
+      totalLessons: 8,
       percent: 75,
       lastAccessedAt: '2026-09-12T20:30:00Z',
     },
-    MM: {
-      courseId: 'MM',
-      courseTitle: 'SAP MM: Gestión de Materiales e Inventarios',
-      completedLessons: ['m1', 'm2', 'm3', 'm4'],
-      totalLessons: 4,
+    'sri-localizacion': {
+      courseId: 'sri-localizacion',
+      courseTitle: 'Localización Ecuador & Facturación Electrónica SRI',
+      completedLessons: ['l1', 'l2'],
+      totalLessons: 6,
+      percent: 33,
+      lastAccessedAt: '2026-09-11T16:00:00Z',
+    },
+    'heinsohn-nomina': {
+      courseId: 'heinsohn-nomina',
+      courseTitle: 'Heinsohn Nómina Ecuador: Roles de Pago & IESS',
+      completedLessons: ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'],
+      totalLessons: 6,
       percent: 100,
       lastAccessedAt: '2026-09-10T18:00:00Z',
     },
-    SD: {
-      courseId: 'SD',
-      courseTitle: 'SAP SD: Ventas y Distribución Order-to-Cash',
-      completedLessons: ['s1'],
-      totalLessons: 4,
-      percent: 25,
+    'heinsohn-rrhh': {
+      courseId: 'heinsohn-rrhh',
+      courseTitle: 'Heinsohn Gestión Humana & Talento',
+      completedLessons: [],
+      totalLessons: 6,
+      percent: 0,
       lastAccessedAt: '2026-09-05T14:00:00Z',
+    },
+    'verticales-ecuador': {
+      courseId: 'verticales-ecuador',
+      courseTitle: 'Verticales Agroindustriales (Bananera, Camaronera, Beas)',
+      completedLessons: [],
+      totalLessons: 6,
+      percent: 0,
+      lastAccessedAt: '2026-09-01T10:00:00Z',
     },
   },
   grades: [
     {
-      id: 'eval-fico-01',
-      quizId: 'quiz-fico-mid',
-      courseId: 'FICO',
-      courseTitle: 'Evaluación Técnica Parametrización SPRO',
-      score: 85,
+      id: 'eval-b1-01',
+      quizId: 'quiz-b1-core-mid',
+      courseId: 'sap-b1-core',
+      courseTitle: 'Evaluación Técnica: Asientos Contables OJDT y Plan NIIF',
+      score: 88,
       passed: true,
       attemptNumber: 1,
       date: '2026-09-11',
-      feedback: 'Dominio destacado de la tabla ACDOCA y parametrización de sociedades.',
+      feedback: 'Excelente parametrización de cuentas puente de nómina y determinación G/L.',
     },
     {
-      id: 'eval-mm-01',
-      quizId: 'quiz-mm-final',
-      courseId: 'MM',
-      courseTitle: 'Examen de Certificación de Aprovisionamiento',
-      score: 92,
+      id: 'eval-nom-01',
+      quizId: 'quiz-nomina-final',
+      courseId: 'heinsohn-nomina',
+      courseTitle: 'Examen de Certificación: Liquidación de Sueldos e IESS',
+      score: 94,
       passed: true,
       attemptNumber: 1,
       date: '2026-09-10',
-      feedback: 'Aprobado con distinción en valoración de stocks y pedidos corporativos.',
+      feedback: 'Aprobado con distinción en cálculo de décimos, IESS 9.45% / 12.15% y finiquitos.',
     },
   ],
   certifications: [
     {
-      id: 'CERT-SAP-MM-2026',
-      courseCode: 'MM',
-      title: 'Especialista en Aprovisionamiento y Logística SAP S/4HANA',
+      id: 'CERT-HEIN-NOM-2026',
+      courseCode: 'HEIN-NOM-EC',
+      title: 'Consultor Certificado en Heinsohn Nómina Ecuador & IESS',
       issuedDate: '2026-09-10',
-      credentialUrl: 'https://sapacademy.es/certificados/CERT-SAP-MM-2026',
+      credentialUrl: 'https://sapacademy.es/certificados/CERT-HEIN-NOM-2026',
       verificationHash: 'sha256-e789f1a2b3c4d5e6',
     }
   ],
   jobReadiness: {
     status: 'en_certificacion',
-    overallProgressPercent: 66,
-    averageGrade: 88.5,
+    overallProgressPercent: 42,
+    averageGrade: 91,
     sandboxHoursVerified: 18,
     certificationsCount: 1,
     isEligibleForJobs: false,
     missingRequirements: [
-      'Completar el 100% del módulo SAP FICO (Progreso actual: 75%)',
-      'Aprobar la evaluación final de Arquitectura S/4HANA',
+      'Completar el 100% del track SAP Business One Core (Progreso actual: 75%)',
+      'Aprobar la evaluación de Localización SRI Ecuador & Retenciones',
     ],
   },
 };
 
 /**
- * Recalcula la elegibilidad laboral del estudiante según estándares universitarios:
+ * Recalcula la elegibilidad laboral del estudiante según estándares de la academia:
  * 1. Progreso global >= 80%
  * 2. Promedio de calificaciones >= 80%
  * 3. Mínimo 15h de prácticas en Sandbox
@@ -108,7 +124,7 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
   const missing: string[] = [];
   if (overallPercent < 80) missing.push(`Alcanzar >= 80% de avance global (Actual: ${overallPercent}%)`);
   if (avgGrade < 80) missing.push(`Obtener promedio de notas >= 80% (Actual: ${avgGrade}%)`);
-  if (student.sandboxHoursUsed < 15) missing.push(`Completar mínimo 15h en Sandbox S/4HANA (Actual: ${student.sandboxHoursUsed}h)`);
+  if (student.sandboxHoursUsed < 15) missing.push(`Completar mínimo 15h en Sandbox SAP B1 (Actual: ${student.sandboxHoursUsed}h)`);
   if (student.certifications.length < 1) missing.push('Obtener al menos 1 certificación aprobada');
 
   const isEligible = missing.length === 0;
@@ -130,13 +146,26 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
 
 export function getStudentProfile(): StudentProfile {
   if (typeof window === 'undefined') return defaultStudent;
+  
+  // Limpieza automática si existía la versión antigua con FICO / S4HANA
+  const legacyData = localStorage.getItem('sap_student_records_v1');
+  if (legacyData) {
+    localStorage.removeItem('sap_student_records_v1');
+  }
+
   const raw = localStorage.getItem(STORAGE_KEY);
   if (!raw) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStudent));
     return defaultStudent;
   }
   try {
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    // Si contiene cursos viejos como FICO, migrar al nuevo perfil oficial
+    if (parsed?.progress?.FICO || !parsed?.progress?.['sap-b1-core']) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStudent));
+      return defaultStudent;
+    }
+    return parsed;
   } catch {
     return defaultStudent;
   }
@@ -180,66 +209,95 @@ export function recordExamResult(courseId: string, quizId: string, courseTitle: 
 
   student.grades.unshift(newGrade);
 
-  if (score >= 70) {
-    // Emite certificado oficial
-    const hasCert = student.certifications.some(c => c.courseCode === courseId);
-    if (!hasCert) {
-      student.certifications.push({
-        id: `CERT-SAP-${courseId}-${Date.now()}`,
-        courseCode: courseId,
-        title: `Certificación en ${courseTitle}`,
-        issuedDate: new Date().toISOString().split('T')[0],
-        credentialUrl: `https://sapacademy.es/certificados/CERT-SAP-${courseId}`,
-        verificationHash: `sha256-${Math.random().toString(36).substring(2, 12)}`,
-      });
-    }
+  // Si aprueba el examen final del curso con >= 80%, generar certificación
+  if (score >= 80 && !student.certifications.some(c => c.courseCode === courseId)) {
+    student.certifications.push({
+      id: `CERT-${courseId.toUpperCase()}-2026`,
+      courseCode: courseId,
+      title: `Especialista Certificado en ${courseTitle}`,
+      issuedDate: new Date().toISOString().split('T')[0],
+      credentialUrl: `https://sapacademy.es/certificados/CERT-${courseId.toUpperCase()}-2026`,
+      verificationHash: `sha256-${Math.random().toString(36).substring(2, 12)}`,
+    });
   }
 
   saveStudentProfile(student);
   return student;
 }
 
-// Candidatos elegibles visibles para empresas
+// Candidatos elegibles verificados para la bolsa de empleo corporativa
 export function getEligibleJobCandidates(): StudentProfile[] {
   const student = getStudentProfile();
   const candidateList = [student];
 
-  // Agrega candidatos ficticios certificados para enriquecer la bolsa de empleo
-  candidateList.push({
-    uid: 'stu-partner-002',
-    studentId: 'STU-SAP-2026-4412',
-    email: 'maria.lopez@sapacademy.es',
-    displayName: 'Ing. María López',
-    role: 'consultor_premium',
-    enrollmentDate: '2026-06-15',
-    specialties: ['MM', 'SD'],
-    sandboxHoursUsed: 42,
-    sandboxHoursLimit: 999,
-    progress: {},
-    grades: [],
-    certifications: [{
-      id: 'CERT-SAP-MM-SD-02',
-      courseCode: 'MM',
-      title: 'Consultora Senior en Logística y Ventas S/4HANA',
-      issuedDate: '2026-08-20',
-      credentialUrl: '#',
-      verificationHash: 'sha256-m987b654c321',
-    }],
-    jobReadiness: {
-      status: 'job_ready',
-      overallProgressPercent: 95,
-      averageGrade: 94,
-      sandboxHoursVerified: 42,
-      certificationsCount: 2,
-      isEligibleForJobs: true,
-      missingRequirements: [],
+  // Candidatos de muestra certificados en el Ecosistema Heinsohn Ecuador
+  candidateList.push(
+    {
+      uid: 'stu-partner-002',
+      studentId: 'STU-SAP-2026-4412',
+      email: 'maria.lopez@sapacademy.es',
+      displayName: 'Ing. María López',
+      role: 'consultor_premium',
+      enrollmentDate: '2026-06-15',
+      specialties: ['HEIN-NOM-EC', 'SRI-LOC-EC'],
+      sandboxHoursUsed: 42,
+      sandboxHoursLimit: 999,
+      progress: {},
+      grades: [],
+      certifications: [{
+        id: 'CERT-HEIN-NOM-02',
+        courseCode: 'heinsohn-nomina',
+        title: 'Consultora Senior en Heinsohn Nómina e IESS Ecuador',
+        issuedDate: '2026-08-20',
+        credentialUrl: '#',
+        verificationHash: 'sha256-m987b654c321',
+      }],
+      jobReadiness: {
+        status: 'job_ready',
+        overallProgressPercent: 95,
+        averageGrade: 94,
+        sandboxHoursVerified: 42,
+        certificationsCount: 2,
+        isEligibleForJobs: true,
+        missingRequirements: [],
+      },
     },
-  });
+    {
+      uid: 'stu-partner-003',
+      studentId: 'STU-SAP-2026-5189',
+      email: 'roberto.cajas@sapacademy.es',
+      displayName: 'Lcdo. Roberto Cajas',
+      role: 'consultor_premium',
+      enrollmentDate: '2026-05-10',
+      specialties: ['SAP-B1-CORE', 'VERTICALES-EC'],
+      sandboxHoursUsed: 35,
+      sandboxHoursLimit: 999,
+      progress: {},
+      grades: [],
+      certifications: [{
+        id: 'CERT-SAP-VERT-03',
+        courseCode: 'verticales-ecuador',
+        title: 'Especialista en Verticales Bananera y Camaronera SAP B1',
+        issuedDate: '2026-07-15',
+        credentialUrl: '#',
+        verificationHash: 'sha256-r456c789a123',
+      }],
+      jobReadiness: {
+        status: 'job_ready',
+        overallProgressPercent: 91,
+        averageGrade: 92,
+        sandboxHoursVerified: 35,
+        certificationsCount: 1,
+        isEligibleForJobs: true,
+        missingRequirements: [],
+      },
+    }
+  );
 
   return candidateList.filter(c => c.jobReadiness.isEligibleForJobs);
 }
 
-// Registrar horas de practica en Sandbox
+// Registrar horas de práctica en Sandbox SAP B1
 export function recordSandboxPractice(hours: number): StudentProfile {
   const student = getStudentProfile();
   student.sandboxHoursUsed = Math.min(student.sandboxHoursLimit, (student.sandboxHoursUsed || 0) + hours);
@@ -247,3 +305,4 @@ export function recordSandboxPractice(hours: number): StudentProfile {
   saveStudentProfile(student);
   return student;
 }
+

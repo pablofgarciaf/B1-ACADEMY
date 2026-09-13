@@ -27,14 +27,21 @@ export default function StudentDashboardPage() {
   }, []);
 
   if (!student) {
-    return <div className="min-h-screen flex items-center justify-center">Cargando expediente académico...</div>;
+    return <div className="min-h-screen flex items-center justify-center text-slate-500">Cargando expediente académico...</div>;
   }
 
   const { jobReadiness } = student;
 
-  const handleSimulatePassFico = () => {
-    recordLessonCompletion('FICO', 'l4');
-    recordExamResult('FICO', 'quiz-fico-final', 'SAP FICO Master Certification', 95, 'Excelente desempeño en configuración de libros auxiliares y balance.');
+  const handleSimulatePassCourse = () => {
+    recordLessonCompletion('sap-b1-core', 'l7');
+    recordLessonCompletion('sap-b1-core', 'l8');
+    recordExamResult(
+      'sap-b1-core', 
+      'quiz-b1-final', 
+      'SAP Business One Core & Finanzas NIIF', 
+      95, 
+      'Excelente desempeño en asientos OJDT, parametrización de cuentas puente y configuración DTW.'
+    );
     setStudent(getStudentProfile());
   };
 
@@ -93,7 +100,7 @@ export default function StudentDashboardPage() {
               )}
               <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                 {jobReadiness.isEligibleForJobs 
-                  ? '¡Perfil Habilitado para la Bolsa de Empleo!' 
+                  ? '¡Perfil Habilitado para la Bolsa de Empleo Corporativa!' 
                   : 'Estado Académico: En Proceso de Certificación'}
               </h2>
             </div>
@@ -143,10 +150,10 @@ export default function StudentDashboardPage() {
         {!jobReadiness.isEligibleForJobs && (
           <div className="mt-4 pt-4 border-t border-amber-500/20 flex justify-end">
             <button
-              onClick={handleSimulatePassFico}
-              className="text-xs font-bold text-amber-500 hover:text-amber-400 flex items-center gap-1 cursor-pointer"
+              onClick={handleSimulatePassCourse}
+              className="text-xs font-bold text-amber-500 hover:text-amber-400 flex items-center gap-1.5 cursor-pointer bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/30 active:scale-95 transition-all"
             >
-              <Sparkles className="w-3.5 h-3.5" /> [Simulador] Aprobar FICO y Desbloquear Bolsa de Empleo
+              <Sparkles className="w-3.5 h-3.5" /> [Simulador] Aprobar SAP B1 Core y Desbloquear Bolsa de Empleo
             </button>
           </div>
         )}
@@ -154,36 +161,55 @@ export default function StudentDashboardPage() {
 
       {/* CURSOS EN CURSO Y PROGRESO GRANULAR */}
       <div className="space-y-4">
-        <h2 className="text-xl font-bold text-slate-900 dark:text-white font-display">
-          Mis Cursos y Especializaciones Activas
-        </h2>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white font-display">
+              Mis Tracks de Formación Oficial
+            </h2>
+            <p className="text-xs text-slate-500">
+              Ecosistema Heinsohn Ecuador & SAP Business One • Formación Práctica con Simulación ERP
+            </p>
+          </div>
+          <Link
+            href="/capacitacion"
+            className="text-xs font-bold text-sap-blue hover:underline flex items-center gap-1 self-start sm:self-auto"
+          >
+            Explorar Catálogo Completo <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Object.values(student.progress).map((course) => (
             <div
               key={course.courseId}
-              className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] flex flex-col justify-between space-y-4 shadow-sm hover:border-sap-blue/40 transition-all"
+              className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] flex flex-col justify-between space-y-4 shadow-sm hover:border-sap-blue/40 transition-all group"
             >
-              <div>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-mono font-bold text-sap-blue px-2 py-0.5 rounded bg-sap-blue/10">
-                    {course.courseId}
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-xs font-mono font-bold text-sap-blue px-2.5 py-0.5 rounded bg-sap-blue/10">
+                    {course.courseId.toUpperCase()}
                   </span>
-                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <span className={`text-xs font-bold px-2 py-0.5 rounded ${
+                    course.percent === 100 
+                      ? 'bg-emerald-500/10 text-emerald-500' 
+                      : 'text-slate-700 dark:text-slate-300'
+                  }`}>
                     {course.percent}% Completado
                   </span>
                 </div>
-                <h3 className="font-bold text-base text-slate-900 dark:text-white line-clamp-2">
+                <h3 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors">
                   {course.courseTitle}
                 </h3>
-                <p className="text-xs text-slate-500 mt-2">
-                  {course.completedLessons.length} de {course.totalLessons} lecciones completadas
+                <p className="text-xs text-slate-500">
+                  {course.completedLessons.length} de {course.totalLessons} lecciones aprobadas
                 </p>
 
                 {/* Barra de progreso */}
-                <div className="w-full h-2 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden mt-3">
+                <div className="w-full h-2 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
                   <div
-                    className={`h-full rounded-full ${course.percent === 100 ? 'bg-emerald-500' : 'bg-sap-blue'}`}
+                    className={`h-full rounded-full transition-all duration-500 ${
+                      course.percent === 100 ? 'bg-emerald-500' : 'bg-sap-blue'
+                    }`}
                     style={{ width: `${course.percent}%` }}
                   />
                 </div>
@@ -191,10 +217,11 @@ export default function StudentDashboardPage() {
 
               <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
                 <Link
-                  href={`/capacitacion/${course.courseId.toLowerCase()}`}
-                  className="text-xs font-bold text-sap-blue hover:underline flex items-center gap-1"
+                  href={`/capacitacion/${course.courseId}`}
+                  className="w-full py-2.5 px-4 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-sm transition-all active:scale-95"
                 >
-                  Continuar estudiando <ArrowRight className="w-3.5 h-3.5" />
+                  <Play className="w-3.5 h-3.5 fill-current" />
+                  {course.percent === 0 ? 'Comenzar Track' : 'Entrar al Aula Virtual'}
                 </Link>
               </div>
             </div>

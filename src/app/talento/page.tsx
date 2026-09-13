@@ -24,7 +24,7 @@ export default function TalentoCertificadoPage() {
           Directorio de Graduados Certificados y Job-Ready
         </h1>
         <p className="text-slate-600 dark:text-slate-400 text-base">
-          Accede al perfil técnico auditado de consultores listos para incorporarse a proyectos SAP S/4HANA.
+          Accede al perfil técnico auditado de consultores listos para incorporarse a proyectos SAP Business One y Ecosistema Heinsohn Ecuador.
         </p>
       </div>
 

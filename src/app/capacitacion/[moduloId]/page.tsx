@@ -169,7 +169,7 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                   {activeSubmodule.level === 'ARQ' ? 'Nivel Arquitectura [ARQ]' : 'Nivel Operativo [OP]'}
                 </span>
                 <span className="text-xs font-mono text-slate-400">
-                  • {activeSubmodule.durationHours} Horas Lectivas
+                  • Lección {lessonIndex + 1} de {dynamicLessons.length} ({activeSubmodule.durationHours}h)
                 </span>
               </div>
 
@@ -199,6 +199,63 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
               >
                 <Printer className="w-4 h-4" />
               </button>
+            </div>
+          </div>
+
+          {/* ROADMAP METODOLÓGICO: CÓMO FUNCIONA CADA LECCIÓN (4 PASOS REALES) */}
+          <div className="p-5 rounded-2xl bg-gradient-to-r from-sap-blue/10 via-sky-500/5 to-transparent border border-sap-blue/20 space-y-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-sap-blue animate-pulse" />
+                <h3 className="text-xs font-bold uppercase tracking-wider text-sap-blue dark:text-sky-400">
+                  Metodología Oficial de Aprendizaje • Lección {lessonIndex + 1} de {dynamicLessons.length}
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                Aprende ➔ Simula ➔ Cuadra Asiento ➔ Certifica
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200/70 dark:border-white/5 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-sap-blue">
+                  <span className="w-5 h-5 rounded-lg bg-sap-blue/10 flex items-center justify-center text-[10px]">1</span>
+                  1. Marco y Objetivos
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Video, transcripción didáctica y leyes SRI / IESS aplicables.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200/70 dark:border-white/5 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-sky-500">
+                  <span className="w-5 h-5 rounded-lg bg-sky-500/10 flex items-center justify-center text-[10px]">2</span>
+                  2. Pantalla ERP en Vivo
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Ventana interactiva con campos, RUCs y valores ecuatorianos.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200/70 dark:border-white/5 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-emerald-600 dark:text-emerald-400">
+                  <span className="w-5 h-5 rounded-lg bg-emerald-500/10 flex items-center justify-center text-[10px]">3</span>
+                  3. Matemática & Asiento OJDT
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  Cálculo al centavo y balance contable obligatorio Debe = Haber.
+                </p>
+              </div>
+
+              <div className="p-3 rounded-xl bg-white/80 dark:bg-white/5 border border-slate-200/70 dark:border-white/5 space-y-1">
+                <div className="flex items-center gap-1.5 font-bold text-amber-500">
+                  <span className="w-5 h-5 rounded-lg bg-amber-500/10 flex items-center justify-center text-[10px]">4</span>
+                  4. Autoevaluación Práctica
+                </div>
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug">
+                  3 preguntas situacionales de consultor para aprobar el tema.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -564,6 +621,50 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                 </div>
               </div>
             )}
+
+            {/* BARRA DE NAVEGACIÓN Y AVANCE ENTRE LECCIONES */}
+            <div className="p-6 sm:p-7 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="space-y-1 text-center sm:text-left">
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-bold">
+                  ¿Finalizaste este tema?
+                </p>
+                <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                  Lección actual: #{lessonIndex + 1} de {dynamicLessons.length} • {activeSubmodule.title}
+                </h4>
+              </div>
+
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                {lessonIndex > 0 && (
+                  <button
+                    onClick={() => {
+                      const prevId = `l${lessonIndex}`;
+                      setActiveLessonId(prevId);
+                      window.scrollTo({ top: 120, behavior: 'smooth' });
+                    }}
+                    className="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95"
+                  >
+                    ← Anterior
+                  </button>
+                )}
+
+                <button
+                  onClick={() => {
+                    handleLessonComplete();
+                    if (lessonIndex < dynamicLessons.length - 1) {
+                      const nextId = `l${lessonIndex + 2}`;
+                      setActiveLessonId(nextId);
+                      window.scrollTo({ top: 120, behavior: 'smooth' });
+                    }
+                  }}
+                  className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sap-blue/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95"
+                >
+                  <CheckCircle2 className="w-4 h-4" />
+                  {lessonIndex < dynamicLessons.length - 1 
+                    ? `Aprobar y Pasar a la Lección #${lessonIndex + 2} ➔` 
+                    : '¡Completar Última Lección y Finalizar Track! 🏆'}
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* TEMARIO Y NAVEGACIÓN LATERAL (COLUMNA DERECHA) */}
