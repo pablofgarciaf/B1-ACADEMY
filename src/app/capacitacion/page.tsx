@@ -133,14 +133,15 @@ export default function CapacitacionPage() {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {track.submodules.map((sub) => (
-                    <div
+                  {track.submodules.map((sub, sIdx) => (
+                    <Link
                       key={sub.id}
-                      className="p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-slate-300 dark:hover:border-white/15 transition-all space-y-2.5 flex flex-col justify-between"
+                      href={`/capacitacion/${track.id}`}
+                      className="group p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-sap-blue/40 dark:hover:border-sap-blue/40 hover:shadow-md transition-all space-y-2.5 flex flex-col justify-between cursor-pointer"
                     >
                       <div className="space-y-1.5">
                         <div className="flex justify-between items-center">
-                          <span className="text-[10px] font-mono text-slate-500 font-bold">
+                          <span className="text-[10px] font-mono text-slate-500 font-bold group-hover:text-sap-blue transition-colors">
                             {sub.code}
                           </span>
                           <span
@@ -154,7 +155,7 @@ export default function CapacitacionPage() {
                           </span>
                         </div>
 
-                        <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug">
+                        <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug group-hover:text-sap-blue transition-colors">
                           {sub.title}
                         </h4>
 
@@ -163,15 +164,19 @@ export default function CapacitacionPage() {
                         </p>
                       </div>
 
-                      <div className="pt-2 border-t border-slate-200/60 dark:border-white/5 flex flex-wrap gap-1">
-                        {sub.keyTopics.slice(0, 2).map((topic, i) => (
-                          <span key={i} className="text-[9px] px-1.5 py-0.5 rounded bg-white dark:bg-white/5 text-slate-500 border border-slate-200 dark:border-white/5">
-                            {topic}
-                          </span>
-                        ))}
-                        <span className="text-[10px] text-slate-400 ml-auto font-mono">{sub.durationHours}h</span>
+                      <div className="pt-2 border-t border-slate-200/60 dark:border-white/5 flex items-center justify-between">
+                        <div className="flex flex-wrap gap-1">
+                          {sub.keyTopics.slice(0, 2).map((topic, i) => (
+                            <span key={i} className="text-[9px] px-1.5 py-0.5 rounded bg-white dark:bg-white/5 text-slate-500 border border-slate-200 dark:border-white/5">
+                              {topic}
+                            </span>
+                          ))}
+                        </div>
+                        <span className="text-[10px] text-sap-blue font-bold font-mono ml-auto">
+                          Entrar a Clase →
+                        </span>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

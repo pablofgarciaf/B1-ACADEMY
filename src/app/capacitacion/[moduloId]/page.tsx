@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, use } from 'react';
 import Link from 'next/link';
 import { 
   ArrowLeft, 
   Server, 
   Laptop, 
   ShieldCheck, 
-  CheckCircle, 
+  CheckCircle2, 
   Award,
   BookOpen,
   Terminal,
@@ -16,48 +16,63 @@ import {
   Sparkles,
   ChevronRight,
   ExternalLink,
-  Layers
+  Layers,
+  Printer,
+  Check,
+  HelpCircle,
+  Calculator,
+  Compass,
+  FileCode2,
+  Briefcase
 } from 'lucide-react';
 import { TRAINING_TRACKS } from '@/lib/courses-data';
 import { SUBMODULE_GUIDES } from '@/lib/submodules-content';
-import { MODULE_SIMULATIONS } from '@/lib/module-simulations-data';
+import { getModuleSimulation } from '@/lib/module-simulations-data';
+import { ALL_83_MANUALS } from '@/lib/manuals-83-data';
 import { VisualScreenSimulator } from '@/components/lms/VisualScreenSimulator';
 import { VideoPlayer } from '@/components/lms/VideoPlayer';
 import { LessonNavigator } from '@/components/lms/LessonNavigator';
 import { EvaluationQuiz } from '@/components/lms/EvaluationQuiz';
 import { InteractiveSimulator } from '@/components/lms/InteractiveSimulator';
+import { QuickCheckQuiz } from '@/components/lms/QuickCheckQuiz';
 import { recordLessonCompletion, recordExamResult } from '@/lib/student-service';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
 
 export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId: string }> }) {
-  const [activeLessonId, setActiveLessonId] = useState('l1');
-  const [activeViewTab, setActiveViewTab] = useState<'screen' | 'guide' | 'sandbox' | 'video' | 'quiz'>('screen');
-
-  // Desempaquetado de params
-  const [resolvedParams, setResolvedParams] = useState<{ moduloId: string } | null>(null);
-
-  React.useEffect(() => {
-    params.then(p => setResolvedParams(p));
-  }, [params]);
-
+  // Desempaquetado oficial React 19 / Next.js 15
+  const resolvedParams = use(params);
   const moduloId = resolvedParams?.moduloId || 'sap-b1-core';
+
+  const [activeLessonId, setActiveLessonId] = useState('l1');
+  const [activeViewTab, setActiveViewTab] = useState<'all' | 'screen' | 'guide' | 'manuales' | 'sandbox' | 'quiz'>('all');
+  const [completedLessons, setCompletedLessons] = useState<Record<string, boolean>>({ l1: true });
+  const [showToast, setShowToast] = useState(false);
+
   const track = TRAINING_TRACKS.find(t => t.id === moduloId) || TRAINING_TRACKS[0];
 
-  // Lecciones adaptadas al track seleccionado
+  // Lecciones dinámicas adaptadas al track seleccionado
   const dynamicLessons = track.submodules.map((sub, idx) => ({
     id: `l${idx + 1}`,
     title: `[${sub.level}] ${sub.title}`,
     durationMin: sub.durationHours * 5,
-    isCompleted: idx === 0,
-    isLocked: idx > 3,
+    isCompleted: !!completedLessons[`l${idx + 1}`],
+    isLocked: false,
   }));
 
-  const lessonIndex = parseInt(activeLessonId.replace('l', '')) - 1;
+  const lessonIndex = Math.max(0, parseInt(activeLessonId.replace('l', '')) - 1);
   const activeSubmodule = track.submodules[lessonIndex] || track.submodules[0];
   const currentLesson = dynamicLessons[lessonIndex] || dynamicLessons[0];
 
-  // Guía técnica detallada si existe, o guía por defecto estructurada
+  // Datos de Simulación visual y caso práctico para el submódulo activo
+  const simulation = getModuleSimulation(activeSubmodule.id, track.code);
+
+  // Manuales oficiales asociados de los 83 manuales
+  const relatedManuals = ALL_83_MANUALS.filter(m => 
+    simulation.relatedManualNumbers.includes(m.number)
+  );
+
+  // Guía técnica detallada si existe, o guía estructurada con datos reales
   const detailedGuide = SUBMODULE_GUIDES[activeSubmodule.id] || {
     submoduleId: activeSubmodule.id,
     code: activeSubmodule.code,
@@ -66,9 +81,9 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
     functionalOverview: activeSubmodule.description,
     sapMenuPath: `Módulos → ${track.shortTitle} → ${activeSubmodule.title.split(':')[0]}`,
     businessCaseEC: {
-      companyName: 'Caso de Estudio Empresarial Ecuador',
+      companyName: 'Distribuidora & Logística Andina S.A.S. (Guayaquil, Ecuador)',
       scenario: `Operación técnica y configuración de ${activeSubmodule.title} bajo estándares corporativos y marco normativo ecuatoriano.`,
-      calculationOrConfig: 'Validación de integridad referencial, centros de costo y asientos contables balanceados.'
+      calculationOrConfig: 'Validación de integridad referencial en tablas maestras, centros de costo y asientos contables balanceados.'
     },
     stepByStepSteps: [
       {
@@ -104,103 +119,231 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
   };
 
   const handleLessonComplete = () => {
+    setCompletedLessons(prev => ({ ...prev, [activeLessonId]: true }));
     recordLessonCompletion(track.code, activeLessonId);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3500);
   };
 
   const handleQuizPassed = (score: number) => {
     recordExamResult(track.code, `quiz-${track.code}`, track.title, score, `Evaluación aprobada con ${score}% en ${track.shortTitle}`);
   };
 
+  const isCurrentCompleted = !!completedLessons[activeLessonId];
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
       <Navbar />
 
-      <main className="flex-1 py-8 sm:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8 w-full">
-        {/* Header Superior del Aula */}
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm">
-          <div className="space-y-1.5">
-            <div className="flex flex-wrap items-center gap-2">
-              <Link href="/capacitacion" className="inline-flex items-center gap-1 text-xs font-bold text-sap-blue hover:underline">
-                <ArrowLeft className="w-4 h-4" /> Tracks
-              </Link>
-              <span className="text-slate-400">/</span>
-              <span className="text-xs font-mono font-bold text-slate-500">{track.code}</span>
-              <span className="text-slate-400">/</span>
-              <span className="text-xs font-bold px-2 py-0.5 rounded bg-sap-blue/10 text-sap-blue">
-                {activeSubmodule.code}
-              </span>
+      {/* Toast Notificación de Lección Completada */}
+      {showToast && (
+        <div className="fixed bottom-6 right-6 z-50 p-4 rounded-2xl bg-emerald-600 text-white shadow-2xl flex items-center gap-3 transition-all animate-in fade-in slide-in-from-bottom-5">
+          <CheckCircle2 className="w-5 h-5 text-white shrink-0" />
+          <div className="text-xs">
+            <p className="font-bold">¡Lección Registrada con Éxito!</p>
+            <p className="text-emerald-100">Se ha actualizado tu expediente académico oficial.</p>
+          </div>
+        </div>
+      )}
+
+      <main className="flex-1 py-6 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6 w-full">
+        {/* Breadcrumb & Encabezado Superior del Aula */}
+        <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-4">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="space-y-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <Link href="/capacitacion" className="inline-flex items-center gap-1 text-xs font-bold text-sap-blue hover:underline">
+                  <ArrowLeft className="w-4 h-4" /> Especialidades
+                </Link>
+                <span className="text-slate-300 dark:text-slate-700">/</span>
+                <span className="text-xs font-mono font-bold text-slate-500">{track.code}</span>
+                <span className="text-slate-300 dark:text-slate-700">/</span>
+                <span className="text-xs font-bold px-2 py-0.5 rounded bg-sap-blue/10 text-sap-blue">
+                  {activeSubmodule.code}
+                </span>
+                <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
+                  activeSubmodule.level === 'ARQ'
+                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+                    : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+                }`}>
+                  {activeSubmodule.level === 'ARQ' ? 'Nivel Arquitectura [ARQ]' : 'Nivel Operativo [OP]'}
+                </span>
+                <span className="text-xs font-mono text-slate-400">
+                  • {activeSubmodule.durationHours} Horas Lectivas
+                </span>
+              </div>
+
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
+                {activeSubmodule.title}
+              </h1>
             </div>
-            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-display">
-              {activeSubmodule.title}
-            </h1>
+
+            {/* Acciones Rápidas */}
+            <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+              <button
+                onClick={handleLessonComplete}
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-2 cursor-pointer ${
+                  isCurrentCompleted
+                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                    : 'bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue text-white shadow-md shadow-sap-blue/20'
+                }`}
+              >
+                <CheckCircle2 className="w-4 h-4" />
+                {isCurrentCompleted ? 'Lección Completada' : 'Marcar como Completada'}
+              </button>
+
+              <button
+                onClick={() => window.print()}
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95"
+                title="Imprimir o Guardar Ficha en PDF"
+              >
+                <Printer className="w-4 h-4" />
+              </button>
+            </div>
           </div>
 
-          {/* Selector de Pestañas Didácticas (Coursera / edX Style) */}
-          <div className="flex flex-wrap items-center gap-2">
+          {/* Barra de Filtros / Pestañas Didácticas */}
+          <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-slate-100 dark:border-white/5 select-none">
+            <button
+              onClick={() => setActiveViewTab('all')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+                activeViewTab === 'all'
+                  ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
+                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" /> Aula Completa (Recomendado)
+            </button>
+
             <button
               onClick={() => setActiveViewTab('screen')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
                 activeViewTab === 'screen'
                   ? 'bg-gradient-to-r from-sap-blue to-sky-600 text-white shadow-md shadow-sap-blue/25'
                   : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
               }`}
             >
-              <Laptop className="w-4 h-4" /> Pantalla y Caso Práctico
+              <Laptop className="w-3.5 h-3.5" /> Pantalla ERP y Caso
             </button>
 
             <button
               onClick={() => setActiveViewTab('guide')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
                 activeViewTab === 'guide'
                   ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
                   : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
               }`}
             >
-              <FileText className="w-4 h-4" /> Guía Paso a Paso
+              <FileText className="w-3.5 h-3.5" /> Guía y Procedimiento
             </button>
+
+            <button
+              onClick={() => setActiveViewTab('manuales')}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+                activeViewTab === 'manuales'
+                  ? 'bg-purple-600 text-white shadow-md shadow-purple-600/25'
+                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" /> Manuales Oficiales ({relatedManuals.length})
+            </button>
+
             <button
               onClick={() => setActiveViewTab('sandbox')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
                 activeViewTab === 'sandbox'
                   ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25'
                   : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
               }`}
             >
-              <Terminal className="w-4 h-4" /> Consola Sandbox
+              <Terminal className="w-3.5 h-3.5" /> Consola Sandbox
             </button>
-            <button
-              onClick={() => setActiveViewTab('video')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'video'
-                  ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
-            >
-              <Laptop className="w-4 h-4" /> Video de Clase
-            </button>
+
             <button
               onClick={() => setActiveViewTab('quiz')}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
                 activeViewTab === 'quiz'
                   ? 'bg-amber-500 text-slate-900 font-extrabold shadow-md shadow-amber-500/25'
                   : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
               }`}
             >
-              <Award className="w-4 h-4 text-amber-500" /> Examen Oficial
+              <Award className="w-3.5 h-3.5 text-amber-500" /> Autoevaluación & Examen
             </button>
           </div>
         </div>
 
-        {/* CONTENEDOR PRINCIPAL: Pestaña Activa + Navegador Lateral */}
+        {/* CONTENEDOR PRINCIPAL: Contenido Principal + Navegador Lateral */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          <div className="lg:col-span-2 space-y-6">
-            {/* PESTAÑA 1: GUÍA DIDÁCTICA PASO A PASO */}
-            {activeViewTab === 'guide' && (
+          <div className="lg:col-span-2 space-y-8">
+            {/* SECCIÓN 1: REPRODUCTOR MULTIMEDIA & TRANSCRIPCIÓN DIDÁCTICA */}
+            {(activeViewTab === 'all') && (
+              <div className="space-y-4">
+                <VideoPlayer
+                  title={currentLesson.title}
+                  durationMin={currentLesson.durationMin}
+                  onComplete={handleLessonComplete}
+                />
+
+                {/* Síntesis Ejecutiva & Transcripción de la Clase */}
+                <div className="p-6 sm:p-7 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-4 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-white/5 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full bg-sap-blue animate-pulse" />
+                      <span className="text-xs font-bold text-slate-900 dark:text-white">
+                        Síntesis Didáctica & Transcripción de la Lección
+                      </span>
+                    </div>
+                    <span className="text-[11px] text-slate-500 italic">
+                      Docente: {simulation.classTranscript.instructor}
+                    </span>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans">
+                    {simulation.classTranscript.summary}
+                  </p>
+
+                  {/* Puntos Clave / Key Takeaways (GEO Standard) */}
+                  <div className="p-4 rounded-2xl bg-sky-50/70 dark:bg-sky-950/20 border border-sky-500/20 space-y-2">
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-sap-blue dark:text-sky-400 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5" /> Puntos Críticos de la Lección (Key Takeaways):
+                    </div>
+                    <ul className="space-y-1 text-xs text-slate-700 dark:text-slate-300 list-disc list-inside">
+                      {simulation.classTranscript.keyPoints.map((point, pIdx) => (
+                        <li key={pIdx} className="leading-relaxed">
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed pt-1">
+                    <strong>Profundización Técnica:</strong> {simulation.classTranscript.deepDiveText}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* SECCIÓN 2: SIMULADOR VISUAL DE PANTALLA ERP Y CASO PRÁCTICO NUMÉRICO */}
+            {(activeViewTab === 'all' || activeViewTab === 'screen') && (
+              <div className="space-y-4">
+                <VisualScreenSimulator
+                  systemType={simulation.systemType}
+                  windowTitle={simulation.windowTitle}
+                  transactionCode={simulation.transactionCode}
+                  screenSummary={simulation.screenSummary}
+                  interactiveFields={simulation.interactiveFields}
+                  workedExample={simulation.workedExample}
+                />
+              </div>
+            )}
+
+            {/* SECCIÓN 3: PROCEDIMIENTO TÉCNICO Y MARCO REGULATORIO */}
+            {(activeViewTab === 'all' || activeViewTab === 'guide') && (
               <div className="space-y-6">
-                {/* Resumen Funcional */}
+                {/* Resumen Funcional & Caso de Estudio Ecuatoriano */}
                 <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-5 shadow-sm">
-                  <div className="flex justify-between items-center border-b border-slate-100 dark:border-white/5 pb-4">
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full ${
+                  <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-4">
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full w-fit ${
                       activeSubmodule.level === 'ARQ'
                         ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
                         : 'bg-sap-blue/10 text-sap-blue border border-sap-blue/20'
@@ -249,7 +392,7 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                         className="p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] space-y-2.5"
                       >
                         <div className="flex items-center gap-3">
-                          <span className="w-7 h-7 rounded-xl bg-sap-blue text-white flex items-center justify-center text-xs font-bold shrink-0">
+                          <span className="w-7 h-7 rounded-xl bg-sap-blue text-white flex items-center justify-center text-xs font-bold shrink-0 font-mono">
                             {step.stepNumber}
                           </span>
                           <h4 className="font-bold text-sm text-slate-900 dark:text-white">
@@ -304,9 +447,87 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
               </div>
             )}
 
-            {/* PESTAÑA 2: CONSOLA SANDBOX INTERACTIVA */}
-            {activeViewTab === 'sandbox' && (
+            {/* SECCIÓN 4: MANUALES OFICIALES ASOCIADOS (83 MANUALES) */}
+            {(activeViewTab === 'all' || activeViewTab === 'manuales') && (
+              <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-5 shadow-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-white/5 pb-4">
+                  <div>
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 font-display">
+                      <BookOpen className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                      Manuales Técnicos Oficiales del Ecosistema ({relatedManuals.length})
+                    </h3>
+                    <p className="text-xs text-slate-500">
+                      Documentación técnica oficial correspondiente a esta lección extraída del catálogo de 83 Manuales.
+                    </p>
+                  </div>
+                  <Link
+                    href="/manuales"
+                    className="text-xs font-bold text-sap-blue hover:underline inline-flex items-center gap-1"
+                  >
+                    Ver los 83 Manuales <ChevronRight className="w-4 h-4" />
+                  </Link>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {relatedManuals.map((manual) => (
+                    <div
+                      key={manual.id}
+                      className="p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-purple-500/40 transition-all space-y-2 flex flex-col justify-between"
+                    >
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between items-center">
+                          <span className="text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">
+                            Manual #{manual.number < 10 ? `0${manual.number}` : manual.number} • Bloque {manual.block}
+                          </span>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
+                            manual.level === 'ARQ'
+                              ? 'bg-amber-500/10 text-amber-500'
+                              : 'bg-sap-blue/10 text-sap-blue'
+                          }`}>
+                            {manual.level}
+                          </span>
+                        </div>
+                        <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white leading-snug">
+                          {manual.title}
+                        </h4>
+                        <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {manual.summary}
+                        </p>
+                      </div>
+
+                      <div className="pt-2 border-t border-slate-200/50 dark:border-white/5 flex items-center justify-between text-[11px]">
+                        <span className="text-slate-400 font-medium">{manual.category}</span>
+                        <Link
+                          href={`/manuales?search=${encodeURIComponent(manual.title)}`}
+                          className="font-bold text-sap-blue hover:underline inline-flex items-center gap-0.5"
+                        >
+                          Consultar <ExternalLink className="w-3 h-3" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* SECCIÓN 5: LABORATORIO PRÁCTICO & CONSOLA SANDBOX */}
+            {(activeViewTab === 'all' || activeViewTab === 'sandbox') && (
               <div className="space-y-4">
+                <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-3">
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                    <Terminal className="w-4 h-4" /> Desafío Práctico de Laboratorio
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white font-display">
+                    {simulation.practiceLab.title}
+                  </h3>
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                    <strong>Misión del Estudiante:</strong> {simulation.practiceLab.mission}
+                  </p>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 font-mono bg-emerald-50/50 dark:bg-emerald-950/20 p-2.5 rounded-xl border border-emerald-500/20">
+                    <strong>Resultado Esperado:</strong> {simulation.practiceLab.expectedResult}
+                  </p>
+                </div>
+
                 <InteractiveSimulator
                   trackCode={track.code}
                   submoduleCode={activeSubmodule.code}
@@ -314,35 +535,48 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
               </div>
             )}
 
-            {/* PESTAÑA 3: VIDEO DE CLASE */}
-            {activeViewTab === 'video' && (
-              <div className="space-y-4">
-                <VideoPlayer
-                  title={currentLesson.title}
-                  durationMin={currentLesson.durationMin}
-                  onComplete={handleLessonComplete}
+            {/* SECCIÓN 6: AUTOEVALUACIÓN RÁPIDA DE LA LECCIÓN (3 PREGUNTAS CLAVE) */}
+            {(activeViewTab === 'all' || activeViewTab === 'quiz') && (
+              <div className="space-y-6">
+                <QuickCheckQuiz
+                  questions={simulation.quickCheckQuestions}
+                  submoduleCode={activeSubmodule.code}
                 />
-              </div>
-            )}
 
-            {/* PESTAÑA 4: EXAMEN OFICIAL DEL TRACK */}
-            {activeViewTab === 'quiz' && (
-              <div className="space-y-4">
-                <EvaluationQuiz
-                  trackCode={track.code}
-                  onPassed={handleQuizPassed}
-                />
+                {/* Examen Oficial de Certificación del Track */}
+                <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-4 shadow-sm">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-white/5 pb-4">
+                    <div>
+                      <h3 className="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2 font-display">
+                        <Award className="w-5 h-5 text-amber-500" />
+                        Examen Oficial de Certificación del Track: {track.shortTitle}
+                      </h3>
+                      <p className="text-xs text-slate-500">
+                        Evaluación integral de 3 preguntas de certificación. Mínimo 70% para aprobar y registrar el resultado en tu expediente.
+                      </p>
+                    </div>
+                  </div>
+
+                  <EvaluationQuiz
+                    trackCode={track.code}
+                    onPassed={handleQuizPassed}
+                  />
+                </div>
               </div>
             )}
           </div>
 
-          {/* TEMARIO Y NAVEGACIÓN LATERAL */}
+          {/* TEMARIO Y NAVEGACIÓN LATERAL (COLUMNA DERECHA) */}
           <div className="space-y-6">
             <LessonNavigator
               lessons={dynamicLessons}
               activeLessonId={activeLessonId}
               onSelectLesson={(id) => {
                 setActiveLessonId(id);
+                // Si estaba en examen u otra pestaña, vuelve a aula completa para mostrar el nuevo módulo
+                if (activeViewTab !== 'all') {
+                  setActiveViewTab('all');
+                }
               }}
             />
 
@@ -354,21 +588,73 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
               <div className="space-y-2 text-xs">
                 <div className="flex justify-between">
                   <span className="text-slate-600 dark:text-slate-400">Progreso del Track:</span>
-                  <span className="font-bold text-sap-blue">75%</span>
+                  <span className="font-bold text-sap-blue font-mono">
+                    {Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100)}%
+                  </span>
                 </div>
                 <div className="w-full h-1.5 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden">
-                  <div className="h-full bg-sap-blue w-3/4 rounded-full" />
+                  <div 
+                    className={`h-full bg-sap-blue rounded-full transition-all duration-500 ${
+                      Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 100
+                        ? 'w-full'
+                        : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 75
+                        ? 'w-3/4'
+                        : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 50
+                        ? 'w-1/2'
+                        : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 25
+                        ? 'w-1/4'
+                        : 'w-2'
+                    }`}
+                  />
                 </div>
               </div>
               <div className="pt-2 border-t border-slate-100 dark:border-white/5 flex items-center justify-between text-xs">
-                <span className="text-slate-500">Sandbox Requerido:</span>
-                <span className="font-semibold text-emerald-500">15h mínimas</span>
+                <span className="text-slate-500">Horas de Sandbox:</span>
+                <span className="font-semibold text-emerald-500 font-mono">18 / 100 Horas</span>
               </div>
               <Link
                 href="/dashboard"
                 className="block text-center w-full py-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-xs font-bold text-slate-700 dark:text-slate-300 transition-all active:scale-95"
               >
                 Ver Mi Expediente Completo
+              </Link>
+            </div>
+
+            {/* Acceso a Biblioteca de Manuales */}
+            <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent space-y-3 shadow-sm">
+              <div className="flex items-center gap-2 text-xs font-bold text-purple-600 dark:text-purple-400 uppercase tracking-wider">
+                <BookOpen className="w-4 h-4" /> Recursos Oficiales
+              </div>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Biblioteca de los 83 Manuales Técnicos
+              </h4>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Revisa los manuales operativos y de arquitectura organizados por bloques de la A a la K.
+              </p>
+              <Link
+                href="/manuales"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-purple-400 hover:underline"
+              >
+                Abrir Biblioteca de Manuales <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
+              </Link>
+            </div>
+
+            {/* Acceso a Bolsa de Empleo */}
+            <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent space-y-3 shadow-sm">
+              <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                <Briefcase className="w-4 h-4" /> Inserción Laboral
+              </div>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Bolsa de Empleo & Oportunidades
+              </h4>
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                Vacantes activas en empresas ecuatorianas usuarias de SAP Business One y Heinsohn.
+              </p>
+              <Link
+                href="/bolsa-empleo"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 hover:underline"
+              >
+                Explorar Ofertas Laborales <ArrowLeft className="w-3.5 h-3.5 rotate-180" />
               </Link>
             </div>
           </div>
