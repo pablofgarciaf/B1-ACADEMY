@@ -93,6 +93,12 @@ export default function HomePage() {
             <a href="#recursos" className="hover:text-sap-blue dark:hover:text-sky-400 transition-colors">
               Recursos
             </a>
+            <Link href="/dashboard" className="text-sap-blue dark:text-sky-400 font-bold hover:underline">
+              Mi Aula
+            </Link>
+            <Link href="/talento" className="hover:text-emerald-400 transition-colors">
+              Empresas & Talento
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3">
