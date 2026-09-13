@@ -36,7 +36,7 @@ import { LessonNavigator } from '@/components/lms/LessonNavigator';
 import { EvaluationQuiz } from '@/components/lms/EvaluationQuiz';
 import { InteractiveSimulator } from '@/components/lms/InteractiveSimulator';
 import { QuickCheckQuiz } from '@/components/lms/QuickCheckQuiz';
-import { recordLessonCompletion, recordExamResult } from '@/lib/student-service';
+import { recordLessonCompletion, recordExamResult, getStudentProfile } from '@/lib/student-service';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
 
@@ -47,10 +47,23 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
 
   const [activeLessonId, setActiveLessonId] = useState('l1');
   const [activeViewTab, setActiveViewTab] = useState<'all' | 'screen' | 'guide' | 'manuales' | 'sandbox' | 'quiz'>('all');
-  const [completedLessons, setCompletedLessons] = useState<Record<string, boolean>>({ l1: true });
+  const [completedLessons, setCompletedLessons] = useState<Record<string, boolean>>({});
   const [showToast, setShowToast] = useState(false);
 
   const track = TRAINING_TRACKS.find(t => t.id === moduloId) || TRAINING_TRACKS[0];
+
+  // Sincronizar lecciones aprobadas reales desde el perfil del estudiante
+  useEffect(() => {
+    const student = getStudentProfile();
+    const course = student.progress[track.id] || student.progress[track.code];
+    if (course?.completedLessons) {
+      const map: Record<string, boolean> = {};
+      course.completedLessons.forEach(lid => {
+        map[lid] = true;
+      });
+      setCompletedLessons(map);
+    }
+  }, [track.id, track.code]);
 
   // Soporte para selección directa de submódulo por URL (ej. ?sub=loc-02)
   useEffect(() => {
@@ -137,13 +150,19 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
 
   const handleLessonComplete = () => {
     setCompletedLessons(prev => ({ ...prev, [activeLessonId]: true }));
-    recordLessonCompletion(track.code, activeLessonId);
+    recordLessonCompletion(track.id, activeLessonId);
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3500);
   };
 
   const handleQuizPassed = (score: number) => {
-    recordExamResult(track.code, `quiz-${track.code}`, track.title, score, `Evaluación aprobada con ${score}% en ${track.shortTitle}`);
+    recordExamResult(
+      track.id, 
+      `quiz-${track.id}-${activeSubmodule.id}`, 
+      activeSubmodule.title, 
+      score, 
+      `Evaluación aprobada con ${score}% en ${activeSubmodule.title}`
+    );
   };
 
   const isCurrentCompleted = !!completedLessons[activeLessonId];

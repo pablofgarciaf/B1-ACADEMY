@@ -16,7 +16,7 @@ import {
   RotateCcw,
   Sparkles,
 } from 'lucide-react';
-import { getStudentProfile, recordLessonCompletion, recordExamResult } from '@/lib/student-service';
+import { getStudentProfile, recordLessonCompletion, recordExamResult, resetStudentProfile } from '@/lib/student-service';
 import { StudentProfile } from '@/types/student';
 import { useAuth } from '@/context/AuthContext';
 
@@ -39,6 +39,18 @@ export default function StudentDashboardPage() {
   }
 
   const { jobReadiness } = student;
+
+  const handleResetProgress = () => {
+    if (confirm('¿Deseas reiniciar tu progreso a 0% para iniciar tu formación desde cero?')) {
+      const reset = resetStudentProfile();
+      if (userProfile) {
+        reset.displayName = userProfile.name || userProfile.displayName || 'Pablo F. García';
+        reset.email = userProfile.email || 'pablofgarciaf@gmail.com';
+        reset.studentId = userProfile.cedula || '1721790721';
+      }
+      setStudent({ ...reset });
+    }
+  };
 
   const handleSimulatePassCourse = () => {
     recordLessonCompletion('sap-b1-core', 'l7');
@@ -104,6 +116,14 @@ export default function StudentDashboardPage() {
           >
             Boletín de Calificaciones
           </Link>
+          <button
+            onClick={handleResetProgress}
+            className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-rose-50 dark:hover:bg-rose-950/20 text-xs font-semibold transition-all active:scale-95 text-slate-600 dark:text-slate-400 hover:text-rose-600 flex items-center gap-1.5 cursor-pointer"
+            title="Reiniciar progreso a 0% para empezar de cero"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Reiniciar a Cero</span>
+          </button>
           <Link
             href="/bolsa-empleo"
             className="px-4 py-2 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all active:scale-95 shadow-sm"
@@ -161,9 +181,11 @@ export default function StudentDashboardPage() {
             <div className="h-8 w-px bg-slate-200 dark:bg-white/10" />
             <div className="text-center px-3">
               <p className="text-2xl font-bold text-emerald-500 font-display">
-                {jobReadiness.averageGrade}%
+                {jobReadiness.averageGrade > 0 ? `${jobReadiness.averageGrade}%` : 'S/N'}
               </p>
-              <p className="text-[10px] uppercase tracking-wider text-slate-500">Nota Promedio</p>
+              <p className="text-[10px] uppercase tracking-wider text-slate-500">
+                {jobReadiness.averageGrade > 0 ? 'Nota Promedio' : 'Sin Evaluaciones'}
+              </p>
             </div>
             <div className="h-8 w-px bg-slate-200 dark:bg-white/10" />
             <div className="text-center px-3">
@@ -176,13 +198,13 @@ export default function StudentDashboardPage() {
         </div>
 
         {/* Botón interactivo para simular completar los requisitos si el usuario desea probarlo */}
-        {!jobReadiness.isEligibleForJobs && (
+        {!jobReadiness.isEligibleForJobs && isSuperUser && (
           <div className="mt-4 pt-4 border-t border-amber-500/20 flex justify-end">
             <button
               onClick={handleSimulatePassCourse}
               className="text-xs font-bold text-amber-500 hover:text-amber-400 flex items-center gap-1.5 cursor-pointer bg-amber-500/10 px-3.5 py-1.5 rounded-xl border border-amber-500/30 active:scale-95 transition-all"
             >
-              <Sparkles className="w-3.5 h-3.5" /> [Simulador] Aprobar SAP B1 Core y Desbloquear Bolsa de Empleo
+              <Sparkles className="w-3.5 h-3.5" /> [Herramienta Admin] Simular Avance y Desbloquear Bolsa
             </button>
           </div>
         )}
@@ -237,9 +259,18 @@ export default function StudentDashboardPage() {
                 <div className="w-full h-2 bg-slate-100 dark:bg-white/10 rounded-full overflow-hidden">
                   <div
                     className={`h-full rounded-full transition-all duration-500 ${
-                      course.percent === 100 ? 'bg-emerald-500' : 'bg-sap-blue'
+                      course.percent === 100 
+                        ? 'w-full bg-emerald-500' 
+                        : course.percent >= 75
+                        ? 'w-3/4 bg-sap-blue'
+                        : course.percent >= 50
+                        ? 'w-1/2 bg-sap-blue'
+                        : course.percent >= 25
+                        ? 'w-1/4 bg-sap-blue'
+                        : course.percent > 0
+                        ? 'w-1/6 bg-sap-blue'
+                        : 'w-0'
                     }`}
-                    style={{ width: `${course.percent}%` }}
                   />
                 </div>
               </div>

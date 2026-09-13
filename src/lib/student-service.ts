@@ -1,43 +1,44 @@
 import { StudentProfile, QuizAttemptRecord, JobReadinessMetrics, AcademicStatus } from '@/types/student';
 
-const STORAGE_KEY = 'sap_student_records_v4';
+const STORAGE_KEY = 'sap_student_records_v5';
 const CURRENT_STUDENT_KEY = 'sap_current_student_id';
 
 // Perfil oficial por defecto: Pablo F. García (Director & Superadmin)
+// Comienza con 0% real y limpio hasta que el estudiante interactúe con las lecciones y exámenes
 const defaultStudent: StudentProfile = {
   uid: 'usr-pablo-1721790721',
   studentId: '1721790721',
   email: 'pablofgarciaf@gmail.com',
   displayName: 'Pablo F. García',
   role: 'consultor_premium',
-  enrollmentDate: '2026-08-01',
-  specialties: ['SAP-B1-CORE', 'HEIN-NOM-EC', 'SRI-LOC-EC'],
-  sandboxHoursUsed: 24,
+  enrollmentDate: '2026-09-13',
+  specialties: ['SAP-B1-CORE', 'SAP-LOC-EC', 'HEIN-NOM-EC'],
+  sandboxHoursUsed: 0,
   sandboxHoursLimit: 999,
   progress: {
     'sap-b1-core': {
       courseId: 'sap-b1-core',
       courseTitle: 'SAP Business One: Núcleo Transversal & Finanzas NIIF',
-      completedLessons: ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'],
+      completedLessons: [],
       totalLessons: 8,
-      percent: 75,
-      lastAccessedAt: '2026-09-12T20:30:00Z',
+      percent: 0,
+      lastAccessedAt: new Date().toISOString(),
     },
-    'sri-localizacion': {
-      courseId: 'sri-localizacion',
-      courseTitle: 'Localización Ecuador & Facturación Electrónica SRI',
-      completedLessons: ['l1', 'l2'],
+    'sap-loc-ec': {
+      courseId: 'sap-loc-ec',
+      courseTitle: 'Localización Ecuador: Facturación Electrónica & SRI Compliance',
+      completedLessons: [],
       totalLessons: 6,
-      percent: 33,
-      lastAccessedAt: '2026-09-11T16:00:00Z',
+      percent: 0,
+      lastAccessedAt: new Date().toISOString(),
     },
     'heinsohn-nomina': {
       courseId: 'heinsohn-nomina',
       courseTitle: 'Heinsohn Nómina Ecuador: Roles de Pago & IESS',
-      completedLessons: ['l1', 'l2', 'l3', 'l4', 'l5', 'l6'],
+      completedLessons: [],
       totalLessons: 6,
-      percent: 100,
-      lastAccessedAt: '2026-09-10T18:00:00Z',
+      percent: 0,
+      lastAccessedAt: new Date().toISOString(),
     },
     'heinsohn-rrhh': {
       courseId: 'heinsohn-rrhh',
@@ -45,7 +46,7 @@ const defaultStudent: StudentProfile = {
       completedLessons: [],
       totalLessons: 6,
       percent: 0,
-      lastAccessedAt: '2026-09-05T14:00:00Z',
+      lastAccessedAt: new Date().toISOString(),
     },
     'verticales-ecuador': {
       courseId: 'verticales-ecuador',
@@ -53,53 +54,23 @@ const defaultStudent: StudentProfile = {
       completedLessons: [],
       totalLessons: 6,
       percent: 0,
-      lastAccessedAt: '2026-09-01T10:00:00Z',
+      lastAccessedAt: new Date().toISOString(),
     },
   },
-  grades: [
-    {
-      id: 'eval-b1-01',
-      quizId: 'quiz-b1-core-mid',
-      courseId: 'sap-b1-core',
-      courseTitle: 'Evaluación Técnica: Asientos Contables OJDT y Plan NIIF',
-      score: 88,
-      passed: true,
-      attemptNumber: 1,
-      date: '2026-09-11',
-      feedback: 'Excelente parametrización de cuentas puente de nómina y determinación G/L.',
-    },
-    {
-      id: 'eval-nom-01',
-      quizId: 'quiz-nomina-final',
-      courseId: 'heinsohn-nomina',
-      courseTitle: 'Examen de Certificación: Liquidación de Sueldos e IESS',
-      score: 94,
-      passed: true,
-      attemptNumber: 1,
-      date: '2026-09-10',
-      feedback: 'Aprobado con distinción en cálculo de décimos, IESS 9.45% / 12.15% y finiquitos.',
-    },
-  ],
-  certifications: [
-    {
-      id: 'CERT-HEIN-NOM-2026',
-      courseCode: 'HEIN-NOM-EC',
-      title: 'Consultor Certificado en Heinsohn Nómina Ecuador & IESS',
-      issuedDate: '2026-09-10',
-      credentialUrl: 'https://sapacademy.es/certificados/CERT-HEIN-NOM-2026',
-      verificationHash: 'sha256-e789f1a2b3c4d5e6',
-    }
-  ],
+  grades: [],
+  certifications: [],
   jobReadiness: {
-    status: 'en_certificacion',
-    overallProgressPercent: 42,
-    averageGrade: 91,
-    sandboxHoursVerified: 18,
-    certificationsCount: 1,
+    status: 'en_formacion',
+    overallProgressPercent: 0,
+    averageGrade: 0,
+    sandboxHoursVerified: 0,
+    certificationsCount: 0,
     isEligibleForJobs: false,
     missingRequirements: [
-      'Completar el 100% del track SAP Business One Core (Progreso actual: 75%)',
-      'Aprobar la evaluación de Localización SRI Ecuador & Retenciones',
+      'Alcanzar >= 80% de avance global en los tracks',
+      'Obtener promedio de notas >= 80% en evaluaciones',
+      'Completar mínimo 15h de práctica en Sandbox SAP B1',
+      'Obtener al menos 1 certificación oficial aprobada',
     ],
   },
 };
@@ -147,10 +118,11 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
 export function getStudentProfile(): StudentProfile {
   if (typeof window === 'undefined') return defaultStudent;
   
-  // Limpieza agresiva de versiones anteriores
+  // Limpieza agresiva de versiones demo anteriores
   localStorage.removeItem('sap_student_records_v1');
   localStorage.removeItem('sap_student_records_v2');
   localStorage.removeItem('sap_student_records_v3');
+  localStorage.removeItem('sap_student_records_v4');
 
   // Si existe sesión de AuthContext en localStorage, sincronizar datos de Pablo F. García
   const authSession = localStorage.getItem('sap_auth_session');
@@ -172,8 +144,12 @@ export function getStudentProfile(): StudentProfile {
   }
   try {
     const parsed = JSON.parse(raw);
-    // Si contiene cursos viejos o el nombre antiguo Carlos, reemplazar de inmediato por Pablo F. García
-    if (parsed?.progress?.FICO || !parsed?.progress?.['sap-b1-core'] || parsed?.displayName?.includes('Carlos') || parsed?.email?.includes('carlos')) {
+    // Si contiene cursos demo viejos o nombres no oficiales, regenerar con datos reales limpios
+    if (
+      parsed?.progress?.FICO || 
+      parsed?.progress?.['sri-localizacion'] ||
+      parsed?.grades?.some((g: { id?: string }) => g.id === 'eval-b1-01')
+    ) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStudent));
       return defaultStudent;
     }
@@ -189,9 +165,28 @@ export function saveStudentProfile(student: StudentProfile): void {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(student));
 }
 
-export function recordLessonCompletion(courseId: string, lessonId: string): StudentProfile {
+export function resetStudentProfile(): StudentProfile {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+  return getStudentProfile();
+}
+
+export function recordLessonCompletion(courseIdOrCode: string, lessonId: string): StudentProfile {
   const student = getStudentProfile();
-  const course = student.progress[courseId];
+  
+  let keyToUpdate = courseIdOrCode;
+  if (!student.progress[keyToUpdate]) {
+    const found = Object.keys(student.progress).find(
+      k => k.toLowerCase() === courseIdOrCode.toLowerCase() ||
+           (courseIdOrCode.toLowerCase().includes('loc') && k.includes('loc')) ||
+           (courseIdOrCode.toLowerCase().includes('b1') && k.includes('b1')) ||
+           (courseIdOrCode.toLowerCase().includes('nom') && k.includes('nom'))
+    );
+    if (found) keyToUpdate = found;
+  }
+
+  const course = student.progress[keyToUpdate];
   if (course) {
     if (!course.completedLessons.includes(lessonId)) {
       course.completedLessons.push(lessonId);
@@ -199,18 +194,18 @@ export function recordLessonCompletion(courseId: string, lessonId: string): Stud
       course.lastAccessedAt = new Date().toISOString();
     }
   }
-  student.sandboxHoursUsed += 1;
+  student.sandboxHoursUsed = (student.sandboxHoursUsed || 0) + 1;
   saveStudentProfile(student);
   return student;
 }
 
-export function recordExamResult(courseId: string, quizId: string, courseTitle: string, score: number, feedback: string): StudentProfile {
+export function recordExamResult(courseIdOrCode: string, quizId: string, courseTitle: string, score: number, feedback: string): StudentProfile {
   const student = getStudentProfile();
   const existingAttempts = student.grades.filter(g => g.quizId === quizId).length;
   const newGrade: QuizAttemptRecord = {
-    id: `eval-${courseId}-${Date.now()}`,
+    id: `eval-${courseIdOrCode}-${Date.now()}`,
     quizId,
-    courseId,
+    courseId: courseIdOrCode,
     courseTitle,
     score,
     passed: score >= 70,
@@ -222,13 +217,13 @@ export function recordExamResult(courseId: string, quizId: string, courseTitle: 
   student.grades.unshift(newGrade);
 
   // Si aprueba el examen final del curso con >= 80%, generar certificación
-  if (score >= 80 && !student.certifications.some(c => c.courseCode === courseId)) {
+  if (score >= 80 && !student.certifications.some(c => c.courseCode === courseIdOrCode)) {
     student.certifications.push({
-      id: `CERT-${courseId.toUpperCase()}-2026`,
-      courseCode: courseId,
+      id: `CERT-${courseIdOrCode.toUpperCase()}-2026`,
+      courseCode: courseIdOrCode,
       title: `Especialista Certificado en ${courseTitle}`,
       issuedDate: new Date().toISOString().split('T')[0],
-      credentialUrl: `https://sapacademy.es/certificados/CERT-${courseId.toUpperCase()}-2026`,
+      credentialUrl: `https://sapacademy.es/certificados/CERT-${courseIdOrCode.toUpperCase()}-2026`,
       verificationHash: `sha256-${Math.random().toString(36).substring(2, 12)}`,
     });
   }
