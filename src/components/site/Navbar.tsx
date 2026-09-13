@@ -13,21 +13,32 @@ import {
   Menu, 
   X, 
   ChevronDown,
-  Sparkles
+  Sparkles,
+  ShieldCheck,
+  LogIn,
+  LogOut,
+  User
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/site/ThemeToggle';
+import { useAuth } from '@/context/AuthContext';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { userProfile, logout } = useAuth();
+
+  const isSuperOrAdmin = userProfile?.role === 'super' || userProfile?.role === 'admin';
 
   const navLinks = [
     { name: 'Explorar Tracks', href: '/capacitacion', icon: Layers },
     { name: '83 Manuales', href: '/manuales', icon: BookOpen },
     { name: 'Mi Aula Virtual', href: '/dashboard', icon: GraduationCap },
     { name: 'Bolsa de Empleo', href: '/bolsa-empleo', icon: Briefcase },
-    { name: 'Directorio Talento', href: '/talento', icon: Award },
   ];
+
+  if (isSuperOrAdmin) {
+    navLinks.push({ name: 'Panel Admin', href: '/admin', icon: ShieldCheck });
+  }
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-[#080d1a]/85 border-b border-slate-200 dark:border-white/[0.08] transition-colors">
@@ -50,7 +61,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
             const Icon = link.icon;
@@ -71,15 +82,44 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Actions & Theme Toggle */}
+        {/* Actions, Auth & Theme Toggle */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Link
-            href="/capacitacion"
-            className="hidden sm:inline-flex px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue shadow-md shadow-sap-blue/25 transition-all active:scale-95 cursor-pointer"
-          >
-            Ver 5 Tracks de Formación
-          </Link>
+
+          {userProfile ? (
+            <div className="flex items-center gap-2">
+              <Link
+                href={isSuperOrAdmin ? "/admin" : "/dashboard"}
+                className="hidden sm:flex items-center gap-2 py-2 px-3 rounded-xl border border-slate-200 dark:border-white/10 hover:border-sap-blue text-xs font-semibold text-slate-800 dark:text-slate-200"
+              >
+                <div className="w-5 h-5 rounded-md bg-sap-blue text-white flex items-center justify-center text-[10px] font-bold">
+                  {(userProfile.name || 'U').charAt(0)}
+                </div>
+                <span className="line-clamp-1 max-w-[120px]">{userProfile.name?.split(' ')[0]}</span>
+                {isSuperOrAdmin && (
+                  <span className="px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-500 text-[10px] font-mono font-bold">
+                    Super
+                  </span>
+                )}
+              </Link>
+              <button
+                onClick={() => logout()}
+                className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-rose-500/10 hover:text-rose-500 text-slate-500 transition-colors"
+                title="Cerrar Sesión"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-sap-blue hover:bg-sky-600 shadow-md shadow-sap-blue/20 transition-all active:scale-95 cursor-pointer"
+            >
+              <LogIn className="w-3.5 h-3.5" />
+              <span>Iniciar Sesión</span>
+            </Link>
+          )}
+
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
@@ -100,20 +140,36 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/5"
+                className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 text-sm font-semibold text-slate-700 dark:text-slate-200"
               >
                 <Icon className="w-4 h-4 text-sap-blue" />
                 <span>{link.name}</span>
               </Link>
             );
           })}
-          <Link
-            href="/capacitacion"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-center w-full py-2.5 rounded-xl text-xs font-bold text-white bg-sap-blue"
-          >
-            Ver Catálogo de Especialidades
-          </Link>
+
+          <div className="pt-2 border-t border-slate-100 dark:border-white/5 flex flex-col gap-2">
+            {userProfile ? (
+              <button
+                onClick={() => {
+                  logout();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full text-left p-3 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/20 text-xs font-bold text-rose-500 flex items-center gap-2"
+              >
+                <LogOut className="w-4 h-4" />
+                <span>Cerrar Sesión ({userProfile.email})</span>
+              </button>
+            ) : (
+              <Link
+                href="/login"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full text-center py-2.5 rounded-xl bg-sap-blue text-white text-xs font-bold"
+              >
+                Iniciar Sesión
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </header>
