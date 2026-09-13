@@ -18,13 +18,21 @@ import {
 } from 'lucide-react';
 import { getStudentProfile, recordLessonCompletion, recordExamResult } from '@/lib/student-service';
 import { StudentProfile } from '@/types/student';
+import { useAuth } from '@/context/AuthContext';
 
 export default function StudentDashboardPage() {
+  const { userProfile } = useAuth();
   const [student, setStudent] = useState<StudentProfile | null>(null);
 
   useEffect(() => {
-    setStudent(getStudentProfile());
-  }, []);
+    const prof = getStudentProfile();
+    if (userProfile) {
+      prof.displayName = userProfile.name || userProfile.displayName || 'Pablo F. García';
+      prof.email = userProfile.email || 'pablofgarciaf@gmail.com';
+      prof.studentId = userProfile.cedula || '1721790721';
+    }
+    setStudent({ ...prof });
+  }, [userProfile]);
 
   if (!student) {
     return <div className="min-h-screen flex items-center justify-center text-slate-500">Cargando expediente académico...</div>;
@@ -42,8 +50,16 @@ export default function StudentDashboardPage() {
       95, 
       'Excelente desempeño en asientos OJDT, parametrización de cuentas puente y configuración DTW.'
     );
-    setStudent(getStudentProfile());
+    const updated = getStudentProfile();
+    if (userProfile) {
+      updated.displayName = userProfile.name || userProfile.displayName || 'Pablo F. García';
+      updated.email = userProfile.email || 'pablofgarciaf@gmail.com';
+      updated.studentId = userProfile.cedula || '1721790721';
+    }
+    setStudent({ ...updated });
   };
+
+  const isSuperUser = userProfile?.role === 'super' || userProfile?.role === 'admin' || student.email === 'pablofgarciaf@gmail.com';
 
   return (
     <div className="min-h-screen py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
@@ -58,22 +74,35 @@ export default function StudentDashboardPage() {
               <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-display">
                 {student.displayName}
               </h1>
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-sap-blue/10 text-sap-blue">
-                {student.role === 'consultor_premium' ? 'Consultor Premium' : 'Usuario Regular'}
+              <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                isSuperUser 
+                  ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20' 
+                  : 'bg-sap-blue/10 text-sap-blue'
+              }`}>
+                {isSuperUser ? 'Superadmin & Consultor' : 'Consultor Premium'}
               </span>
             </div>
             <p className="text-xs text-slate-500 font-mono mt-0.5">
-              Matrícula: <strong>{student.studentId}</strong> • Inscrito: {student.enrollmentDate}
+              Cédula / Matrícula: <strong>{student.studentId}</strong> • Correo: <strong>{student.email}</strong>
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
+          {isSuperUser && (
+            <Link
+              href="/admin"
+              className="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold transition-all active:scale-95 shadow-sm flex items-center gap-1.5"
+            >
+              <ShieldCheck className="w-4 h-4" />
+              <span>Consola Admin</span>
+            </Link>
+          )}
           <Link
             href="/dashboard/calificaciones"
             className="px-4 py-2 rounded-xl border border-slate-200 dark:border-white/10 hover:border-sap-blue text-xs font-semibold transition-all active:scale-95 text-slate-700 dark:text-slate-200"
           >
-            Ver Boletín de Calificaciones
+            Boletín de Calificaciones
           </Link>
           <Link
             href="/bolsa-empleo"

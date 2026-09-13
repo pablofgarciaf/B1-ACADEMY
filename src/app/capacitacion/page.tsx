@@ -136,7 +136,7 @@ export default function CapacitacionPage() {
                   {track.submodules.map((sub, sIdx) => (
                     <Link
                       key={sub.id}
-                      href={`/capacitacion/${track.id}`}
+                      href={`/capacitacion/${track.id}?sub=${sub.id}`}
                       className="group p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-sap-blue/40 dark:hover:border-sap-blue/40 hover:shadow-md transition-all space-y-2.5 flex flex-col justify-between cursor-pointer"
                     >
                       <div className="space-y-1.5">

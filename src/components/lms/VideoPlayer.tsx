@@ -1,15 +1,23 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Play, Pause, Volume2, Maximize, RotateCcw, CheckCircle } from 'lucide-react';
+import { Play, Pause, Volume2, Maximize, RotateCcw, CheckCircle, Laptop, ShieldCheck } from 'lucide-react';
 
 interface VideoPlayerProps {
   title: string;
   durationMin: number;
+  systemType?: string;
+  transactionCode?: string;
   onComplete?: () => void;
 }
 
-export function VideoPlayer({ title, durationMin, onComplete }: VideoPlayerProps) {
+export function VideoPlayer({ 
+  title, 
+  durationMin, 
+  systemType = "SAP Business One v10.0 / Heinsohn Ecuador",
+  transactionCode = "Live Masterclass ERP",
+  onComplete 
+}: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [completed, setCompleted] = useState(false);
 
@@ -22,23 +30,28 @@ export function VideoPlayer({ title, durationMin, onComplete }: VideoPlayerProps
 
   return (
     <div className="w-full rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 bg-black aspect-video relative flex flex-col justify-between p-6 group shadow-2xl">
-      {/* Background simulado de consola SAP S/4HANA */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-[#0a1428] to-slate-900 opacity-90" />
+      {/* Background simulado de consola SAP Business One & Heinsohn */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-[#0a1428] to-slate-900 opacity-95" />
       
-      {/* Overlay de interfaz SAP Fiori */}
+      {/* Overlay de interfaz ERP real */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="text-center space-y-2 opacity-30 group-hover:opacity-40 transition-opacity">
-          <div className="font-mono text-xs text-sky-400">SAP GUI S/4HANA • Transaction SPRO / FBL3N</div>
-          <div className="font-mono text-[10px] text-slate-500">Live Practice Recording • 1080p 60fps</div>
+        <div className="text-center space-y-2 opacity-35 group-hover:opacity-50 transition-opacity">
+          <div className="font-mono text-xs text-sky-400 font-bold tracking-wide">
+            {systemType} • {transactionCode}
+          </div>
+          <div className="font-mono text-[10px] text-slate-400">
+            Grabación Oficial de Práctica ERP • Base de Datos HANA • 1080p 60fps
+          </div>
         </div>
       </div>
 
       {/* Header superior del video */}
       <div className="relative z-10 flex justify-between items-center">
-        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/10 text-white backdrop-blur-md">
-          {title}
+        <span className="px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white/10 text-white backdrop-blur-md border border-white/10 flex items-center gap-2">
+          <Laptop className="w-3.5 h-3.5 text-sky-400" />
+          <span className="line-clamp-1">{title}</span>
         </span>
-        <span className="text-xs text-slate-400 font-mono">
+        <span className="text-xs text-slate-300 font-mono bg-black/40 px-2.5 py-1 rounded-lg border border-white/5">
           {durationMin}:00 min
         </span>
       </div>
@@ -62,23 +75,28 @@ export function VideoPlayer({ title, durationMin, onComplete }: VideoPlayerProps
 
         <div className="flex justify-between items-center text-xs text-white">
           <div className="flex items-center gap-3">
-            <button onClick={togglePlay} className="hover:text-sky-400 cursor-pointer">
-              {isPlaying ? "Pausar" : "Reproducir"}
+            <button onClick={togglePlay} className="hover:text-sky-400 cursor-pointer font-bold">
+              {isPlaying ? "Pausar Lección" : "Reproducir Lección"}
             </button>
             <Volume2 className="w-4 h-4 text-slate-400 cursor-pointer hover:text-white" />
           </div>
 
-          <button
-            onClick={handleMarkCompleted}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
-              completed 
-                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
-                : 'bg-white/10 text-white hover:bg-white/20'
-            }`}
-          >
-            <CheckCircle className="w-3.5 h-3.5" />
-            {completed ? "Lección Completada" : "Marcar como Completada"}
-          </button>
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] text-slate-400 hidden sm:inline">
+              Instructor Certificado Heinsohn Ecuador
+            </span>
+            <button
+              onClick={handleMarkCompleted}
+              className={`px-3 py-1 rounded-lg font-bold text-[11px] flex items-center gap-1.5 transition-all cursor-pointer ${
+                completed
+                  ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
+                  : 'bg-white/10 hover:bg-white/20 text-white'
+              }`}
+            >
+              <CheckCircle className="w-3.5 h-3.5" />
+              {completed ? "Video Visto" : "Marcar Visto"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

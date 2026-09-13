@@ -15,20 +15,36 @@ interface LessonNavigatorProps {
   lessons: Lesson[];
   activeLessonId: string;
   onSelectLesson: (id: string) => void;
+  trackTitle?: string;
+  trackCode?: string;
 }
 
 export function LessonNavigator({
   lessons,
   activeLessonId,
   onSelectLesson,
+  trackTitle,
+  trackCode,
 }: LessonNavigatorProps) {
   return (
     <div className="rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] p-6 space-y-4">
-      <div className="flex justify-between items-center border-b border-slate-100 dark:border-white/5 pb-4">
-        <h3 className="font-bold text-base text-slate-900 dark:text-white">
-          Temario del Módulo
-        </h3>
-        <span className="text-xs font-semibold text-sap-blue">
+      <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-4 gap-2">
+        <div>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-sap-blue/10 text-sap-blue">
+              {trackCode || 'SAP'}
+            </span>
+            <h3 className="font-bold text-sm text-slate-900 dark:text-white">
+              Submódulos del Track
+            </h3>
+          </div>
+          {trackTitle && (
+            <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5 font-medium">
+              {trackTitle}
+            </p>
+          )}
+        </div>
+        <span className="text-xs font-semibold text-sap-blue shrink-0">
           {lessons.filter(l => l.isCompleted).length} / {lessons.length} Vistas
         </span>
       </div>

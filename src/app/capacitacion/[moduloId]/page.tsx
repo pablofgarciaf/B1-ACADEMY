@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, use } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import { 
   ArrowLeft, 
@@ -8,22 +8,23 @@ import {
   Laptop, 
   ShieldCheck, 
   CheckCircle2, 
-  Award,
-  BookOpen,
-  Terminal,
-  FileText,
-  AlertTriangle,
-  Sparkles,
-  ChevronRight,
-  ExternalLink,
-  Layers,
-  Printer,
-  Check,
-  HelpCircle,
-  Calculator,
-  Compass,
-  FileCode2,
-  Briefcase
+  Award, 
+  BookOpen, 
+  Terminal, 
+  FileText, 
+  AlertTriangle, 
+  Sparkles, 
+  ChevronRight, 
+  ExternalLink, 
+  Layers, 
+  Printer, 
+  Check, 
+  HelpCircle, 
+  Calculator, 
+  Compass, 
+  FileCode2, 
+  Briefcase,
+  Clock
 } from 'lucide-react';
 import { TRAINING_TRACKS } from '@/lib/courses-data';
 import { SUBMODULE_GUIDES } from '@/lib/submodules-content';
@@ -50,6 +51,22 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
   const [showToast, setShowToast] = useState(false);
 
   const track = TRAINING_TRACKS.find(t => t.id === moduloId) || TRAINING_TRACKS[0];
+
+  // Soporte para selección directa de submódulo por URL (ej. ?sub=loc-02)
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const subParam = urlParams.get('sub');
+      if (subParam) {
+        const foundIdx = track.submodules.findIndex(
+          s => s.id === subParam || s.code.toLowerCase() === subParam.toLowerCase()
+        );
+        if (foundIdx !== -1) {
+          setActiveLessonId(`l${foundIdx + 1}`);
+        }
+      }
+    }
+  }, [track]);
 
   // Lecciones dinámicas adaptadas al track seleccionado
   const dynamicLessons = track.submodules.map((sub, idx) => ({
@@ -147,39 +164,63 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
       )}
 
       <main className="flex-1 py-6 sm:py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-6 w-full">
-        {/* Breadcrumb & Encabezado Superior del Aula */}
-        <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-4">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="space-y-2">
+        {/* BANNER MAESTRO DEL TRACK / PROGRAMA FORMATIVO OFICIAL */}
+        <div className="p-6 sm:p-8 rounded-3xl border border-sap-blue/30 bg-gradient-to-br from-sap-blue/10 via-sky-500/5 to-white dark:to-white/[0.02] shadow-sm space-y-5">
+          <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+            <div className="space-y-3">
+              {/* Breadcrumb de Navegación & Badges Oficiales */}
               <div className="flex flex-wrap items-center gap-2">
-                <Link href="/capacitacion" className="inline-flex items-center gap-1 text-xs font-bold text-sap-blue hover:underline">
-                  <ArrowLeft className="w-4 h-4" /> Especialidades
+                <Link 
+                  href="/capacitacion" 
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-sap-blue hover:text-sky-600 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4" /> Todas las Especialidades
                 </Link>
                 <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-xs font-mono font-bold text-slate-500">{track.code}</span>
-                <span className="text-slate-300 dark:text-slate-700">/</span>
-                <span className="text-xs font-bold px-2 py-0.5 rounded bg-sap-blue/10 text-sap-blue">
-                  {activeSubmodule.code}
+                <span className="text-xs font-mono font-extrabold px-2.5 py-0.5 rounded-lg bg-sap-blue text-white shadow-sm">
+                  {track.code}
                 </span>
-                <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
-                  activeSubmodule.level === 'ARQ'
-                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
-                    : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
-                }`}>
-                  {activeSubmodule.level === 'ARQ' ? 'Nivel Arquitectura [ARQ]' : 'Nivel Operativo [OP]'}
+                <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm">
+                  {track.badge}
                 </span>
-                <span className="text-xs font-mono text-slate-400">
-                  • Lección {lessonIndex + 1} de {dynamicLessons.length} ({activeSubmodule.durationHours}h)
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+                  {track.category}
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-                {activeSubmodule.title}
-              </h1>
+              {/* Título Principal del Track Completo */}
+              <div>
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Programa Especializado de Certificación
+                </span>
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight mt-1">
+                  {track.title}
+                </h1>
+              </div>
+
+              {/* Descripción Oficial del Track */}
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
+                {track.description}
+              </p>
+
+              {/* Métricas y Audiencia del Programa */}
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 dark:text-slate-400 pt-1">
+                <span className="flex items-center gap-1.5 font-bold text-sap-blue">
+                  <Clock className="w-4 h-4" /> {track.totalDurationHours} Horas Lectivas
+                </span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-slate-300">
+                  <Layers className="w-4 h-4 text-sky-500" /> {track.submodules.length} Submódulos Especializados
+                </span>
+                <span className="text-slate-300 dark:text-slate-700">•</span>
+                <span className="flex items-center gap-1.5 text-slate-500">
+                  <Briefcase className="w-4 h-4 text-emerald-500" /> Dirigido a: {track.targetAudience}
+                </span>
+              </div>
             </div>
 
-            {/* Acciones Rápidas */}
-            <div className="flex flex-wrap items-center gap-2.5 shrink-0">
+            {/* Acciones de Certificación y Ficha */}
+            <div className="flex flex-wrap lg:flex-col items-end gap-2.5 shrink-0">
               <button
                 onClick={handleLessonComplete}
                 className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-2 cursor-pointer ${
@@ -189,18 +230,104 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
-                {isCurrentCompleted ? 'Lección Completada' : 'Marcar como Completada'}
+                {isCurrentCompleted ? 'Submódulo Completado' : 'Aprobar Submódulo'}
               </button>
 
               <button
                 onClick={() => window.print()}
-                className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95"
-                title="Imprimir o Guardar Ficha en PDF"
+                className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 text-xs font-semibold flex items-center gap-1.5"
+                title="Imprimir o Guardar Ficha Oficial en PDF"
               >
-                <Printer className="w-4 h-4" />
+                <Printer className="w-4 h-4" /> Imprimir Ficha
               </button>
             </div>
           </div>
+
+          {/* SELECTOR HORIZONTAL DE LOS 6 SUBMÓDULOS DEL PROGRAMA */}
+          <div className="pt-4 border-t border-slate-200/80 dark:border-white/10 space-y-2.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                Submódulos del Programa ({track.submodules.length} Temas Específicos):
+              </span>
+              <span className="text-[11px] font-mono font-bold text-sap-blue">
+                Cursando actualmente: Submódulo #{lessonIndex + 1} de {track.submodules.length}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+              {track.submodules.map((sub, sIdx) => {
+                const isSelected = activeLessonId === `l${sIdx + 1}`;
+                const isDone = !!completedLessons[`l${sIdx + 1}`];
+                return (
+                  <button
+                    key={sub.id}
+                    onClick={() => {
+                      setActiveLessonId(`l${sIdx + 1}`);
+                      if (activeViewTab !== 'all') {
+                        setActiveViewTab('all');
+                      }
+                    }}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
+                      isSelected
+                        ? 'bg-sap-blue text-white border-sap-blue shadow-md shadow-sap-blue/30 scale-[1.02]'
+                        : 'bg-white/90 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:border-sap-blue/40 text-slate-700 dark:text-slate-300'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-1 mb-1">
+                      <span className={`text-[10px] font-mono font-extrabold ${isSelected ? 'text-sky-200' : 'text-slate-500'}`}>
+                        0{sIdx + 1} • {sub.code}
+                      </span>
+                      {isDone && (
+                        <CheckCircle2 className={`w-3.5 h-3.5 ${isSelected ? 'text-white' : 'text-emerald-500'}`} />
+                      )}
+                    </div>
+                    <p className={`text-[11px] font-bold leading-tight line-clamp-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
+                      {sub.title.split(':')[0]}
+                    </p>
+                    <span className={`text-[9px] font-bold mt-1.5 px-1.5 py-0.5 rounded w-fit ${
+                      isSelected
+                        ? 'bg-white/20 text-white'
+                        : sub.level === 'ARQ'
+                        ? 'bg-amber-500/10 text-amber-500'
+                        : 'bg-sap-blue/10 text-sap-blue'
+                    }`}>
+                      {sub.level} • {sub.durationHours}h
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* FICHA DE CONTEXTO DEL SUBMÓDULO ACTIVO */}
+        <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-sky-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/20">
+              Submódulo Activo #{lessonIndex + 1} de {track.submodules.length}
+            </span>
+            <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300">
+              Código: {activeSubmodule.code}
+            </span>
+            <span className={`text-xs font-bold px-2.5 py-1 rounded-lg ${
+              activeSubmodule.level === 'ARQ'
+                ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+                : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+            }`}>
+              {activeSubmodule.level === 'ARQ' ? 'Nivel Arquitectura [ARQ] (Parametrización)' : 'Nivel Operativo [OP] (Ejecución Transaccional)'}
+            </span>
+            <span className="text-xs text-slate-500 font-mono">
+              • Carga Lectiva: {activeSubmodule.durationHours} Horas
+            </span>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-display">
+            {activeSubmodule.title}
+          </h2>
+
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-4xl">
+            {activeSubmodule.description}
+          </p>
 
           {/* ROADMAP METODOLÓGICO: CÓMO FUNCIONA CADA LECCIÓN (4 PASOS REALES) */}
           <div className="p-5 rounded-2xl bg-gradient-to-r from-sap-blue/10 via-sky-500/5 to-transparent border border-sap-blue/20 space-y-3">
@@ -336,8 +463,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
             {(activeViewTab === 'all') && (
               <div className="space-y-4">
                 <VideoPlayer
-                  title={currentLesson.title}
+                  title={`${track.shortTitle}: Submódulo ${lessonIndex + 1} - ${activeSubmodule.title}`}
                   durationMin={currentLesson.durationMin}
+                  systemType={`SAP Business One v10.0 • ${track.shortTitle}`}
+                  transactionCode={simulation.transactionCode}
                   onComplete={handleLessonComplete}
                 />
 
@@ -672,6 +801,8 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
             <LessonNavigator
               lessons={dynamicLessons}
               activeLessonId={activeLessonId}
+              trackTitle={track.title}
+              trackCode={track.code}
               onSelectLesson={(id) => {
                 setActiveLessonId(id);
                 // Si estaba en examen u otra pestaña, vuelve a aula completa para mostrar el nuevo módulo

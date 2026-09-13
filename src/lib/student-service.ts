@@ -1,19 +1,19 @@
 import { StudentProfile, QuizAttemptRecord, JobReadinessMetrics, AcademicStatus } from '@/types/student';
 
-const STORAGE_KEY = 'sap_student_records_v2';
+const STORAGE_KEY = 'sap_student_records_v4';
 const CURRENT_STUDENT_KEY = 'sap_current_student_id';
 
-// Perfil semilla con datos de muestra alineados 100% al Ecosistema Heinsohn Ecuador y SAP Business One
+// Perfil oficial por defecto: Pablo F. García (Director & Superadmin)
 const defaultStudent: StudentProfile = {
-  uid: 'stu-demo-001',
-  studentId: 'STU-SAP-2026-8942',
-  email: 'carlos.estudiante@sapacademy.es',
-  displayName: 'Carlos M. Ramírez',
+  uid: 'usr-pablo-1721790721',
+  studentId: '1721790721',
+  email: 'pablofgarciaf@gmail.com',
+  displayName: 'Pablo F. García',
   role: 'consultor_premium',
   enrollmentDate: '2026-08-01',
-  specialties: ['SAP-B1-CORE', 'HEIN-NOM-EC'],
-  sandboxHoursUsed: 18,
-  sandboxHoursLimit: 100,
+  specialties: ['SAP-B1-CORE', 'HEIN-NOM-EC', 'SRI-LOC-EC'],
+  sandboxHoursUsed: 24,
+  sandboxHoursLimit: 999,
   progress: {
     'sap-b1-core': {
       courseId: 'sap-b1-core',
@@ -147,10 +147,22 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
 export function getStudentProfile(): StudentProfile {
   if (typeof window === 'undefined') return defaultStudent;
   
-  // Limpieza automática si existía la versión antigua con FICO / S4HANA
-  const legacyData = localStorage.getItem('sap_student_records_v1');
-  if (legacyData) {
-    localStorage.removeItem('sap_student_records_v1');
+  // Limpieza agresiva de versiones anteriores
+  localStorage.removeItem('sap_student_records_v1');
+  localStorage.removeItem('sap_student_records_v2');
+  localStorage.removeItem('sap_student_records_v3');
+
+  // Si existe sesión de AuthContext en localStorage, sincronizar datos de Pablo F. García
+  const authSession = localStorage.getItem('sap_auth_session');
+  if (authSession) {
+    try {
+      const parsedAuth = JSON.parse(authSession);
+      if (parsedAuth?.email) {
+        defaultStudent.email = parsedAuth.email;
+        defaultStudent.displayName = parsedAuth.name || parsedAuth.displayName || 'Pablo F. García';
+        defaultStudent.studentId = parsedAuth.cedula || '1721790721';
+      }
+    } catch {}
   }
 
   const raw = localStorage.getItem(STORAGE_KEY);
@@ -160,8 +172,8 @@ export function getStudentProfile(): StudentProfile {
   }
   try {
     const parsed = JSON.parse(raw);
-    // Si contiene cursos viejos como FICO, migrar al nuevo perfil oficial
-    if (parsed?.progress?.FICO || !parsed?.progress?.['sap-b1-core']) {
+    // Si contiene cursos viejos o el nombre antiguo Carlos, reemplazar de inmediato por Pablo F. García
+    if (parsed?.progress?.FICO || !parsed?.progress?.['sap-b1-core'] || parsed?.displayName?.includes('Carlos') || parsed?.email?.includes('carlos')) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStudent));
       return defaultStudent;
     }

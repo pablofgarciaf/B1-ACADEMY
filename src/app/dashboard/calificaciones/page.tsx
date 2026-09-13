@@ -22,7 +22,7 @@ export default function CalificacionesPage() {
           <ArrowLeft className="w-4 h-4" /> Volver a Mi Aula
         </Link>
         <div className="text-xs text-slate-500 font-mono">
-          Expediente: <strong>{student.studentId}</strong>
+          Expediente: <strong>{student.displayName}</strong> • CI: <strong>{student.studentId}</strong>
         </div>
       </div>
 
@@ -31,7 +31,7 @@ export default function CalificacionesPage() {
           Boletín Oficial de Calificaciones y Evaluaciones
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-          Registro inmutable de evaluaciones teóricas y proyectos de configuración en ambientes S/4HANA.
+          Registro inmutable de evaluaciones técnicas y proyectos de parametrización en SAP Business One y Ecosistema Heinsohn Ecuador.
         </p>
       </div>
 
