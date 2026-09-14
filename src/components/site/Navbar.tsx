@@ -55,8 +55,9 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="w-11 h-11 relative group-hover:scale-105 transition-transform">
-            <Image src="/logo.webp" alt="Heinsohn Logo" fill className="object-contain" priority sizes="(max-width: 44px) 100vw, 44px" />
+          <div className="w-11 h-11 relative group-hover:scale-105 transition-transform flex-shrink-0">
+            <Image src="/logo.webp" alt="Heinsohn Logo" width={44} height={44} className="object-contain dark:hidden" priority />
+            <Image src="/logo_dark.webp" alt="Heinsohn Logo" width={44} height={44} className="object-contain hidden dark:block" priority />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
@@ -78,8 +79,8 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`flex items-center gap-1.5 transition-colors ${isActive
-                    ? 'text-sap-blue dark:text-sky-400 font-bold'
-                    : 'hover:text-sap-blue dark:hover:text-sky-300'
+                  ? 'text-sap-blue dark:text-sky-400 font-bold'
+                  : 'hover:text-sap-blue dark:hover:text-sky-300'
                   }`}
               >
                 <Icon className="w-4 h-4 opacity-75" />
@@ -104,8 +105,8 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`flex items-center gap-2.5 px-4 py-2 text-sm transition-colors ${isActive 
-                        ? 'text-sap-blue dark:text-sky-400 bg-slate-50 dark:bg-white/5 font-bold' 
+                      className={`flex items-center gap-2.5 px-4 py-2 text-sm transition-colors ${isActive
+                        ? 'text-sap-blue dark:text-sky-400 bg-slate-50 dark:bg-white/5 font-bold'
                         : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-sap-blue dark:hover:text-sky-300'}`}
                     >
                       <Icon className="w-4 h-4" />
@@ -183,7 +184,7 @@ export function Navbar() {
               </Link>
             );
           })}
-          
+
           <div className="pt-2 border-t border-slate-100 dark:border-white/5">
             <div className="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Ecosistema</div>
             {ecosistemaLinks.map((link) => {
