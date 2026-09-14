@@ -17,10 +17,13 @@ import {
   ShieldCheck,
   LogIn,
   LogOut,
-  User
+  User,
+  Building2,
+  FileText
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/site/ThemeToggle';
 import { useAuth } from '@/context/AuthContext';
+import Image from 'next/image';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -36,6 +39,13 @@ export function Navbar() {
     { name: 'Bolsa de Empleo', href: '/bolsa-empleo', icon: Briefcase },
   ];
 
+  const ecosistemaLinks = [
+    { name: 'Blog', href: '/blog', icon: FileText },
+    { name: 'Empresas', href: '/empresas', icon: Building2 },
+    { name: 'Consultores', href: '/consultores', icon: Users },
+    { name: 'Talento', href: '/talento', icon: Award },
+  ];
+
   if (isSuperOrAdmin) {
     navLinks.push({ name: 'Panel Admin', href: '/admin', icon: ShieldCheck });
   }
@@ -45,17 +55,15 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-[#003c71] via-[#0a6ed1] to-sky-400 p-0.5 shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-[#0b1320] rounded-[14px] flex items-center justify-center">
-              <GraduationCap className="w-6 h-6 text-sky-400" />
-            </div>
+          <div className="w-11 h-11 relative group-hover:scale-105 transition-transform">
+            <Image src="/logo.webp" alt="Heinsohn Logo" fill className="object-contain" priority sizes="(max-width: 44px) 100vw, 44px" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
-              SAP ACADEMY
+              HEINSOHN
             </span>
             <span className="text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 font-semibold">
-              Ecosistema Heinsohn Ecuador
+              B1 ACADEMY
             </span>
           </div>
         </Link>
@@ -79,6 +87,35 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          {/* Ecosistema Dropdown */}
+          <div className="relative group">
+            <button className="flex items-center gap-1.5 transition-colors hover:text-sap-blue dark:hover:text-sky-300">
+              <Sparkles className="w-4 h-4 opacity-75" />
+              <span>Ecosistema</span>
+              <ChevronDown className="w-3 h-3 opacity-70 group-hover:rotate-180 transition-transform" />
+            </button>
+            <div className="absolute top-full right-0 mt-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
+              <div className="py-2 bg-white dark:bg-[#0b1320] rounded-xl shadow-xl border border-slate-100 dark:border-white/10 overflow-hidden relative before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
+                {ecosistemaLinks.map((link) => {
+                  const Icon = link.icon;
+                  const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+                  return (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className={`flex items-center gap-2.5 px-4 py-2 text-sm transition-colors ${isActive 
+                        ? 'text-sap-blue dark:text-sky-400 bg-slate-50 dark:bg-white/5 font-bold' 
+                        : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-sap-blue dark:hover:text-sky-300'}`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      <span>{link.name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
         </nav>
 
         {/* Actions, Auth & Theme Toggle */}
@@ -131,7 +168,7 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#080d1a]/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-3">
+        <div className="md:hidden border-b border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#080d1a]/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-3 h-[calc(100vh-5rem)] overflow-y-auto">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (
@@ -146,6 +183,24 @@ export function Navbar() {
               </Link>
             );
           })}
+          
+          <div className="pt-2 border-t border-slate-100 dark:border-white/5">
+            <div className="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider">Ecosistema</div>
+            {ecosistemaLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-white/5 text-sm font-semibold text-slate-700 dark:text-slate-200"
+                >
+                  <Icon className="w-4 h-4 text-sap-blue" />
+                  <span>{link.name}</span>
+                </Link>
+              );
+            })}
+          </div>
 
           <div className="pt-2 border-t border-slate-100 dark:border-white/5 flex flex-col gap-2">
             {userProfile ? (

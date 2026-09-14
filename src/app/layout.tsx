@@ -21,6 +21,11 @@ const jakarta = Plus_Jakarta_Sans({
 // Meta description estricta: 120-160 caracteres (Actual: 149 caracteres)
 export const metadata: Metadata = {
   metadataBase: new URL("https://sapacademy.es"),
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   title: {
     default: "SAP Academy | Certificación y Consultoría SAP Oficial",
     template: "%s | SAP Academy",
