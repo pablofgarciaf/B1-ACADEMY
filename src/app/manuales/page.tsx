@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { 
-  BookOpen, 
-  Search, 
-  Filter, 
-  ArrowRight, 
-  ShieldCheck, 
-  CheckCircle2, 
+import {
+  BookOpen,
+  Search,
+  Filter,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
   Sparkles,
   Layers,
   ChevronRight,
@@ -63,9 +63,9 @@ export default function ManualesLibraryPage() {
 
   const filteredManuals = ALL_83_MANUALS.filter((man) => {
     const matchesSearch = man.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          man.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          man.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          man.number.toString().includes(searchTerm);
+      man.summary.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      man.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      man.number.toString().includes(searchTerm);
     const matchesBlock = selectedBlock === 'ALL' || man.block === selectedBlock;
     const matchesLevel = selectedLevel === 'ALL' || man.level === selectedLevel;
 
@@ -83,11 +83,11 @@ export default function ManualesLibraryPage() {
             <Sparkles className="w-3.5 h-3.5" /> Repositorio Documental Oficial • Ecosistema Heinsohn & SAP B1
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Biblioteca de los 83 Manuales Técnicos
+            Biblioteca de Manuales Técnicos
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Arquitectura de conocimiento oficial: 
-            <strong> 47 Guías de Nivel Operativo [OP]</strong> y 
+            Arquitectura de conocimiento oficial:
+            <strong> 47 Guías de Nivel Operativo [OP]</strong> y
             <strong> 36 Guías de Nivel Arquitectura [ARQ]</strong>. Haz clic en cualquier manual para consultar su ficha técnica o abrir su clase práctica.
           </p>
         </div>
@@ -126,25 +126,22 @@ export default function ManualesLibraryPage() {
             <div className="flex gap-2 md:col-span-1">
               <button
                 onClick={() => setSelectedLevel('ALL')}
-                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  selectedLevel === 'ALL' ? 'bg-sap-blue text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'
-                }`}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedLevel === 'ALL' ? 'bg-sap-blue text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'
+                  }`}
               >
                 Todos
               </button>
               <button
                 onClick={() => setSelectedLevel('OP')}
-                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  selectedLevel === 'OP' ? 'bg-sap-blue text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'
-                }`}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedLevel === 'OP' ? 'bg-sap-blue text-white' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'
+                  }`}
               >
                 [OP] Operativo
               </button>
               <button
                 onClick={() => setSelectedLevel('ARQ')}
-                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                  selectedLevel === 'ARQ' ? 'bg-amber-500 text-slate-900' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'
-                }`}
+                className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${selectedLevel === 'ARQ' ? 'bg-amber-500 text-slate-900' : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300'
+                  }`}
               >
                 [ARQ] Arquitectura
               </button>
@@ -173,11 +170,10 @@ export default function ManualesLibraryPage() {
                       Doc #{man.number < 10 ? `0${man.number}` : man.number}
                     </span>
                     <span
-                      className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                        man.level === 'ARQ'
+                      className={`text-[10px] font-bold px-2 py-0.5 rounded ${man.level === 'ARQ'
                           ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
                           : 'bg-sap-blue/10 text-sap-blue border border-sap-blue/20'
-                      }`}
+                        }`}
                     >
                       {man.level === 'ARQ' ? 'Nivel Arquitectura [ARQ]' : 'Nivel Operativo [OP]'}
                     </span>
@@ -227,9 +223,8 @@ export default function ManualesLibraryPage() {
                 <span className="text-xs font-mono font-bold bg-sap-blue/10 text-sap-blue px-3 py-1 rounded-xl">
                   MANUAL #{activeModalManual.number < 10 ? `0${activeModalManual.number}` : activeModalManual.number}
                 </span>
-                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
-                  activeModalManual.level === 'ARQ' ? 'bg-amber-500/10 text-amber-500' : 'bg-emerald-500/10 text-emerald-400'
-                }`}>
+                <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full ${activeModalManual.level === 'ARQ' ? 'bg-amber-500/10 text-amber-500' : 'bg-emerald-500/10 text-emerald-400'
+                  }`}>
                   {activeModalManual.level === 'ARQ' ? 'Arquitectura / IMG' : 'Operativo / Transaccional'}
                 </span>
               </div>

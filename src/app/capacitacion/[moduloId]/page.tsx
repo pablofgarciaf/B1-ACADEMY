@@ -2,27 +2,27 @@
 
 import React, { useState, useEffect, use } from 'react';
 import Link from 'next/link';
-import { 
-  ArrowLeft, 
-  Server, 
-  Laptop, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Award, 
-  BookOpen, 
-  Terminal, 
-  FileText, 
-  AlertTriangle, 
-  Sparkles, 
-  ChevronRight, 
-  ExternalLink, 
-  Layers, 
-  Printer, 
-  Check, 
-  HelpCircle, 
-  Calculator, 
-  Compass, 
-  FileCode2, 
+import {
+  ArrowLeft,
+  Server,
+  Laptop,
+  ShieldCheck,
+  CheckCircle2,
+  Award,
+  BookOpen,
+  Terminal,
+  FileText,
+  AlertTriangle,
+  Sparkles,
+  ChevronRight,
+  ExternalLink,
+  Layers,
+  Printer,
+  Check,
+  HelpCircle,
+  Calculator,
+  Compass,
+  FileCode2,
   Briefcase,
   Clock
 } from 'lucide-react';
@@ -98,7 +98,7 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
   const simulation = getModuleSimulation(activeSubmodule.id, track.code);
 
   // Manuales oficiales asociados de los 83 manuales
-  const relatedManuals = ALL_83_MANUALS.filter(m => 
+  const relatedManuals = ALL_83_MANUALS.filter(m =>
     simulation.relatedManualNumbers.includes(m.number)
   );
 
@@ -157,10 +157,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
 
   const handleQuizPassed = (score: number) => {
     recordExamResult(
-      track.id, 
-      `quiz-${track.id}-${activeSubmodule.id}`, 
-      activeSubmodule.title, 
-      score, 
+      track.id,
+      `quiz-${track.id}-${activeSubmodule.id}`,
+      activeSubmodule.title,
+      score,
       `Evaluación aprobada con ${score}% en ${activeSubmodule.title}`
     );
   };
@@ -189,8 +189,8 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
             <div className="space-y-3">
               {/* Breadcrumb de Navegación & Badges Oficiales */}
               <div className="flex flex-wrap items-center gap-2">
-                <Link 
-                  href="/capacitacion" 
+                <Link
+                  href="/capacitacion"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-sap-blue hover:text-sky-600 transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4" /> Todas las Especialidades
@@ -242,11 +242,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
             <div className="flex flex-wrap lg:flex-col items-end gap-2.5 shrink-0">
               <button
                 onClick={handleLessonComplete}
-                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-2 cursor-pointer ${
-                  isCurrentCompleted
-                    ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
-                    : 'bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue text-white shadow-md shadow-sap-blue/20'
-                }`}
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-2 cursor-pointer ${isCurrentCompleted
+                  ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30'
+                  : 'bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue text-white shadow-md shadow-sap-blue/20'
+                  }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
                 {isCurrentCompleted ? 'Submódulo Completado' : 'Aprobar Submódulo'}
@@ -286,11 +285,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                         setActiveViewTab('all');
                       }
                     }}
-                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${
-                      isSelected
-                        ? 'bg-sap-blue text-white border-sap-blue shadow-md shadow-sap-blue/30 scale-[1.02]'
-                        : 'bg-white/90 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:border-sap-blue/40 text-slate-700 dark:text-slate-300'
-                    }`}
+                    className={`p-2.5 rounded-xl border text-left transition-all cursor-pointer flex flex-col justify-between ${isSelected
+                      ? 'bg-sap-blue text-white border-sap-blue shadow-md shadow-sap-blue/30 scale-[1.02]'
+                      : 'bg-white/90 dark:bg-white/5 border-slate-200 dark:border-white/10 hover:border-sap-blue/40 text-slate-700 dark:text-slate-300'
+                      }`}
                   >
                     <div className="flex items-center justify-between gap-1 mb-1">
                       <span className={`text-[10px] font-mono font-extrabold ${isSelected ? 'text-sky-200' : 'text-slate-500'}`}>
@@ -303,13 +301,12 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                     <p className={`text-[11px] font-bold leading-tight line-clamp-2 ${isSelected ? 'text-white' : 'text-slate-900 dark:text-white'}`}>
                       {sub.title.split(':')[0]}
                     </p>
-                    <span className={`text-[9px] font-bold mt-1.5 px-1.5 py-0.5 rounded w-fit ${
-                      isSelected
-                        ? 'bg-white/20 text-white'
-                        : sub.level === 'ARQ'
+                    <span className={`text-[9px] font-bold mt-1.5 px-1.5 py-0.5 rounded w-fit ${isSelected
+                      ? 'bg-white/20 text-white'
+                      : sub.level === 'ARQ'
                         ? 'bg-amber-500/10 text-amber-500'
                         : 'bg-sap-blue/10 text-sap-blue'
-                    }`}>
+                      }`}>
                       {sub.level} • {sub.durationHours}h
                     </span>
                   </button>
@@ -328,11 +325,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
             <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300">
               Código: {activeSubmodule.code}
             </span>
-            <span className={`text-xs font-bold px-2.5 py-1 rounded-lg ${
-              activeSubmodule.level === 'ARQ'
-                ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
-                : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
-            }`}>
+            <span className={`text-xs font-bold px-2.5 py-1 rounded-lg ${activeSubmodule.level === 'ARQ'
+              ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+              : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'
+              }`}>
               {activeSubmodule.level === 'ARQ' ? 'Nivel Arquitectura [ARQ] (Parametrización)' : 'Nivel Operativo [OP] (Ejecución Transaccional)'}
             </span>
             <span className="text-xs text-slate-500 font-mono">
@@ -409,66 +405,60 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
           <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-slate-100 dark:border-white/5 select-none">
             <button
               onClick={() => setActiveViewTab('all')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'all'
-                  ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'all'
+                ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
+                : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+                }`}
             >
               <BookOpen className="w-3.5 h-3.5" /> Aula Completa (Recomendado)
             </button>
 
             <button
               onClick={() => setActiveViewTab('screen')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'screen'
-                  ? 'bg-gradient-to-r from-sap-blue to-sky-600 text-white shadow-md shadow-sap-blue/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'screen'
+                ? 'bg-gradient-to-r from-sap-blue to-sky-600 text-white shadow-md shadow-sap-blue/25'
+                : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+                }`}
             >
               <Laptop className="w-3.5 h-3.5" /> Pantalla ERP y Caso
             </button>
 
             <button
               onClick={() => setActiveViewTab('guide')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'guide'
-                  ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'guide'
+                ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/25'
+                : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+                }`}
             >
               <FileText className="w-3.5 h-3.5" /> Guía y Procedimiento
             </button>
 
             <button
               onClick={() => setActiveViewTab('manuales')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'manuales'
-                  ? 'bg-purple-600 text-white shadow-md shadow-purple-600/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'manuales'
+                ? 'bg-purple-600 text-white shadow-md shadow-purple-600/25'
+                : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+                }`}
             >
               <BookOpen className="w-3.5 h-3.5" /> Manuales Oficiales ({relatedManuals.length})
             </button>
 
             <button
               onClick={() => setActiveViewTab('sandbox')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'sandbox'
-                  ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'sandbox'
+                ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25'
+                : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+                }`}
             >
               <Terminal className="w-3.5 h-3.5" /> Consola Sandbox
             </button>
 
             <button
               onClick={() => setActiveViewTab('quiz')}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${
-                activeViewTab === 'quiz'
-                  ? 'bg-amber-500 text-slate-900 font-extrabold shadow-md shadow-amber-500/25'
-                  : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
-              }`}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'quiz'
+                ? 'bg-amber-500 text-slate-900 font-extrabold shadow-md shadow-amber-500/25'
+                : 'bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
+                }`}
             >
               <Award className="w-3.5 h-3.5 text-amber-500" /> Autoevaluación & Examen
             </button>
@@ -548,11 +538,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                 {/* Resumen Funcional & Caso de Estudio Ecuatoriano */}
                 <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-5 shadow-sm">
                   <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 border-b border-slate-100 dark:border-white/5 pb-4">
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full w-fit ${
-                      activeSubmodule.level === 'ARQ'
-                        ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
-                        : 'bg-sap-blue/10 text-sap-blue border border-sap-blue/20'
-                    }`}>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full w-fit ${activeSubmodule.level === 'ARQ'
+                      ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
+                      : 'bg-sap-blue/10 text-sap-blue border border-sap-blue/20'
+                      }`}>
                       {activeSubmodule.level === 'ARQ' ? 'Nivel Arquitectura / Parametrización IMG' : 'Nivel Operativo / Transaccional'}
                     </span>
                     <span className="text-xs font-mono text-slate-500">
@@ -662,14 +651,14 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                       Manuales Técnicos Oficiales del Ecosistema ({relatedManuals.length})
                     </h3>
                     <p className="text-xs text-slate-500">
-                      Documentación técnica oficial correspondiente a esta lección extraída del catálogo de 83 Manuales.
+                      Documentación técnica oficial correspondiente a esta lección extraída del catálogo de Manuales.
                     </p>
                   </div>
                   <Link
                     href="/manuales"
                     className="text-xs font-bold text-sap-blue hover:underline inline-flex items-center gap-1"
                   >
-                    Ver los 83 Manuales <ChevronRight className="w-4 h-4" />
+                    Ver los Manuales <ChevronRight className="w-4 h-4" />
                   </Link>
                 </div>
 
@@ -684,11 +673,10 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                           <span className="text-[10px] font-mono font-bold text-purple-600 dark:text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">
                             Manual #{manual.number < 10 ? `0${manual.number}` : manual.number} • Bloque {manual.block}
                           </span>
-                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${
-                            manual.level === 'ARQ'
-                              ? 'bg-amber-500/10 text-amber-500'
-                              : 'bg-sap-blue/10 text-sap-blue'
-                          }`}>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded ${manual.level === 'ARQ'
+                            ? 'bg-amber-500/10 text-amber-500'
+                            : 'bg-sap-blue/10 text-sap-blue'
+                            }`}>
                             {manual.level}
                           </span>
                         </div>
@@ -807,8 +795,8 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                   className="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sap-blue/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                 >
                   <CheckCircle2 className="w-4 h-4" />
-                  {lessonIndex < dynamicLessons.length - 1 
-                    ? `Aprobar y Pasar a la Lección #${lessonIndex + 2} ➔` 
+                  {lessonIndex < dynamicLessons.length - 1
+                    ? `Aprobar y Pasar a la Lección #${lessonIndex + 2} ➔`
                     : '¡Completar Última Lección y Finalizar Track! 🏆'}
                 </button>
               </div>
@@ -844,18 +832,17 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                   </span>
                 </div>
                 <div className="w-full h-1.5 rounded-full bg-slate-100 dark:bg-white/10 overflow-hidden">
-                  <div 
-                    className={`h-full bg-sap-blue rounded-full transition-all duration-500 ${
-                      Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 100
-                        ? 'w-full'
-                        : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 75
+                  <div
+                    className={`h-full bg-sap-blue rounded-full transition-all duration-500 ${Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 100
+                      ? 'w-full'
+                      : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 75
                         ? 'w-3/4'
                         : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 50
-                        ? 'w-1/2'
-                        : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 25
-                        ? 'w-1/4'
-                        : 'w-2'
-                    }`}
+                          ? 'w-1/2'
+                          : Math.round((Object.keys(completedLessons).length / dynamicLessons.length) * 100) >= 25
+                            ? 'w-1/4'
+                            : 'w-2'
+                      }`}
                   />
                 </div>
               </div>
@@ -877,7 +864,7 @@ export default function ModuloLMSViewer({ params }: { params: Promise<{ moduloId
                 <BookOpen className="w-4 h-4" /> Recursos Oficiales
               </div>
               <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                Biblioteca de los 83 Manuales Técnicos
+                Biblioteca de Manuales Técnicos
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                 Revisa los manuales operativos y de arquitectura organizados por bloques de la A a la K.
