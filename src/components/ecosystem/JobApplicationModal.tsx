@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useAuth } from '@/lib/auth-context';
+import { useAuth } from '@/context/AuthContext';
 import { Briefcase, CheckCircle2, ShieldCheck, X, Send } from 'lucide-react';
 
 interface JobApplicationModalProps {

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useAuth } from '@/lib/auth-context';
+import { useAuth } from '@/context/AuthContext';
 import { ShieldCheck, UserCheck, X, Sparkles } from 'lucide-react';
 
 export function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
