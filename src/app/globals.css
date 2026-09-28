@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -37,4 +37,117 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LMS Markdown Renderer Styles (.prose-lms)
+   Applied inside the module viewer at /mi-aula/[moduloId]
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.prose-lms {
+  @apply text-slate-800 dark:text-slate-200 leading-relaxed text-[15px];
+}
+
+.prose-lms h1 {
+  @apply text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display mt-10 mb-4 pb-3 border-b border-slate-200 dark:border-white/10;
+}
+
+.prose-lms h2 {
+  @apply text-xl sm:text-2xl font-bold text-slate-900 dark:text-white font-display mt-10 mb-3 pb-2 border-b border-slate-100 dark:border-white/5;
+}
+
+.prose-lms h3 {
+  @apply text-lg font-bold text-slate-800 dark:text-slate-100 mt-8 mb-2;
+}
+
+.prose-lms h4 {
+  @apply text-base font-bold text-slate-700 dark:text-slate-200 mt-6 mb-2;
+}
+
+.prose-lms p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose-lms a {
+  @apply text-sap-blue hover:underline font-medium;
+}
+
+.prose-lms strong {
+  @apply font-bold text-slate-900 dark:text-white;
+}
+
+.prose-lms ul {
+  @apply list-disc pl-6 mb-4 space-y-1.5;
+}
+
+.prose-lms ol {
+  @apply list-decimal pl-6 mb-4 space-y-1.5;
+}
+
+.prose-lms li {
+  @apply leading-relaxed;
+}
+
+.prose-lms hr {
+  @apply my-8 border-slate-200 dark:border-white/10;
+}
+
+/* Tables */
+.prose-lms table {
+  @apply w-full mb-6 text-sm border-collapse rounded-xl overflow-hidden;
+}
+
+.prose-lms thead {
+  @apply bg-slate-100 dark:bg-white/5;
+}
+
+.prose-lms th {
+  @apply px-4 py-2.5 text-left text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-white/10;
+}
+
+.prose-lms td {
+  @apply px-4 py-2.5 border-b border-slate-100 dark:border-white/5 text-sm;
+}
+
+.prose-lms tbody tr:hover {
+  @apply bg-slate-50/50 dark:bg-white/[0.02];
+}
+
+/* Code */
+.prose-lms code {
+  @apply px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 text-sm font-mono text-sap-blue dark:text-sky-300;
+}
+
+.prose-lms pre {
+  @apply p-4 rounded-xl bg-slate-900 dark:bg-black/50 text-slate-100 overflow-x-auto mb-6 border border-slate-700/50;
+}
+
+.prose-lms pre code {
+  @apply bg-transparent p-0 text-slate-100 text-xs;
+}
+
+/* Blockquotes */
+.prose-lms blockquote {
+  @apply border-l-4 border-sap-blue/50 pl-4 py-2 mb-4 bg-sap-blue/5 rounded-r-xl text-sm italic text-slate-700 dark:text-slate-300;
+}
+
+/* GitHub-style Alerts */
+.prose-lms .alert-note {
+  @apply p-4 mb-4 rounded-xl border border-sky-200 dark:border-sky-800/50 bg-sky-50 dark:bg-sky-950/20 text-sky-800 dark:text-sky-200 text-sm;
+}
+
+.prose-lms .alert-tip {
+  @apply p-4 mb-4 rounded-xl border border-emerald-200 dark:border-emerald-800/50 bg-emerald-50 dark:bg-emerald-950/20 text-emerald-800 dark:text-emerald-200 text-sm;
+}
+
+.prose-lms .alert-important {
+  @apply p-4 mb-4 rounded-xl border border-violet-200 dark:border-violet-800/50 bg-violet-50 dark:bg-violet-950/20 text-violet-800 dark:text-violet-200 text-sm;
+}
+
+.prose-lms .alert-warning {
+  @apply p-4 mb-4 rounded-xl border border-amber-200 dark:border-amber-800/50 bg-amber-50 dark:bg-amber-950/20 text-amber-800 dark:text-amber-200 text-sm;
+}
+
+.prose-lms .alert-caution {
+  @apply p-4 mb-4 rounded-xl border border-rose-200 dark:border-rose-800/50 bg-rose-50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-200 text-sm;
 }

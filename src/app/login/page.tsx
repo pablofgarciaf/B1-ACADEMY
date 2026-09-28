@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -23,7 +23,7 @@ type Tab = "login" | "register";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, createStudent } = useAuth();
+  const { login, createStudent, resetPassword } = useAuth();
 
   const [tab, setTab] = useState<Tab>("login");
 
@@ -34,6 +34,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [forgotMsg, setForgotMsg] = useState("");
+  const [forgotError, setForgotError] = useState("");
 
   // Register state
   const [regName, setRegName] = useState("");
@@ -117,6 +119,25 @@ export default function LoginPage() {
       setRegPhone("");
       setRegSuccess("");
     }, 3000);
+  };
+
+    const handleForgotPassword = async () => {
+    if (!email) {
+      setForgotError('Por favor ingresa tu correo.');
+      return;
+    }
+    setForgotError('');
+    setForgotMsg('');
+    try {
+      const res = await resetPassword(email);
+      if (res.success) {
+        setForgotMsg('Correo de recuperación enviado.');
+      } else {
+        setForgotError(res.error || 'Error al enviar el correo.');
+      }
+    } catch (err: any) {
+      setForgotError(err.message || 'Error inesperado.');
+    }
   };
 
   const switchTab = (t: Tab) => {
@@ -236,7 +257,23 @@ export default function LoginPage() {
                     </button>
                   </div>
                 </div>
-
+<div className="text-right">
+  <button type="button" onClick={handleForgotPassword} className="text-sap-blue hover:underline text-xs mt-1">
+    ¿Olvidaste tu contraseña?
+  </button>
+</div>
+{forgotError && (
+  <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2.5 animate-in fade-in">
+    <AlertCircle className="w-4 h-4 shrink-0" />
+    <span>{forgotError}</span>
+  </div>
+)}
+{forgotMsg && (
+  <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs flex items-center gap-2.5 animate-in fade-in">
+    <CheckCircle2 className="w-4 h-4 shrink-0" />
+    <span>{forgotMsg}</span>
+  </div>
+)}
                 <button
                   type="submit"
                   disabled={loading}

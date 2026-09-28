@@ -2,12 +2,13 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '@/lib/firebase';
-import { 
-  signInWithEmailAndPassword, 
-  signOut, 
-  onAuthStateChanged, 
+import {
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
   createUserWithEmailAndPassword,
   updatePassword as fbUpdatePassword,
+  sendPasswordResetEmail,
   User as FirebaseUser 
 } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc, collection, getDocs, query } from 'firebase/firestore';
@@ -39,6 +40,7 @@ interface AuthContextType {
   loginDemo: (role?: any) => void;
   logout: () => Promise<void>;
   changePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
+  resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
   createStudent: (data: {
     name: string;
     email: string;
@@ -336,6 +338,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  // Envío de correo de restablecimiento de contraseña
+  const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
+    const cleanEmail = email.trim().toLowerCase();
+    if (!cleanEmail) {
+      return { success: false, error: 'Correo requerido.' };
+    }
+    try {
+      await sendPasswordResetEmail(auth, cleanEmail);
+      return { success: true };
+    } catch (err: any) {
+      console.error('[Reset Password Error]', err);
+      return { success: false, error: err.message || 'Error al enviar el correo de recuperación' };
+    }
+  };
+
   // Listar todos los estudiantes de la colección 'usuarios'
   const getAllStudents = async (): Promise<UserProfile[]> => {
     try {
@@ -365,6 +382,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
         logout,
         changePassword,
+        resetPassword,
         createStudent,
         getAllStudents,
       }}
