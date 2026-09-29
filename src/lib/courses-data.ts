@@ -2,8 +2,8 @@ import { TrainingTrack } from '@/types/courses';
 
 export const TRAINING_TRACKS: TrainingTrack[] = [
   {
-    id: 'sap-b1-core',
-    code: 'SAP-B1-CORE',
+    id: 'sap-b1-logistics',
+    code: 'SAP-B1-LOGISTICS',
     title: 'SAP Business One: Núcleo Transversal & Finanzas NIIF',
     shortTitle: 'SAP B1 Core & Finanzas',
     category: 'ERP Core',
@@ -159,9 +159,9 @@ export const TRAINING_TRACKS: TrainingTrack[] = [
   },
   {
     id: 'hein-nom-ec',
-    code: 'HEIN-NOM-EC',
-    title: 'Heinsohn Nómina HCM: Motor Laboral & Cumplimiento (IESS/MDT)',
-    shortTitle: 'Heinsohn Nómina & IESS',
+    code: 'B1-NOM-EC',
+    title: 'B1 Academy Nómina HCM: Motor Laboral & Cumplimiento (IESS/MDT)',
+    shortTitle: 'B1 Nómina & IESS',
     category: 'Nómina & Legislación',
     iconName: 'Briefcase',
     badge: 'Heinsohn + IESS + MDT',
@@ -237,9 +237,9 @@ export const TRAINING_TRACKS: TrainingTrack[] = [
   },
   {
     id: 'hein-hcm-talent',
-    code: 'HEIN-HCM-TALENT',
-    title: 'Heinsohn Gestión Humana: Desarrollo Organizacional & Matriz Nine Box',
-    shortTitle: 'Heinsohn Gestión Humana',
+    code: 'B1-HCM-TALENT',
+    title: 'B1 Academy Gestión Humana: Desarrollo Organizacional & Matriz Nine Box',
+    shortTitle: 'B1 Gestión Humana',
     category: 'Talento & Desempeño',
     iconName: 'Users',
     badge: 'Desarrollo Humano 360°',

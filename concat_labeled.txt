@@ -1,0 +1,11 @@
+file 'b1_home.png'
+duration 4
+file 'b1_capacitacion.png'
+duration 4
+file 'b1_miaula.png'
+duration 4
+file 'b1_miaula_modulo01.png'
+duration 4
+file 'b1_lesson_01_L1.png'
+duration 5
+file 'b1_lesson_01_L1.png'

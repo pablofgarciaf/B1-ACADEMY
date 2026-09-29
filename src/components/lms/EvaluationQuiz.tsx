@@ -9,11 +9,11 @@ interface EvaluationQuizProps {
   onPassed?: (score: number) => void;
 }
 
-export function EvaluationQuiz({ trackCode = 'SAP-B1-CORE', onPassed }: EvaluationQuizProps) {
+export function EvaluationQuiz({ trackCode = 'SAP-B1-LOGISTICS', onPassed }: EvaluationQuizProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const questions: QuizQuestion[] = TRACK_QUIZZES[trackCode] || TRACK_QUIZZES['SAP-B1-CORE'];
+  const questions: QuizQuestion[] = TRACK_QUIZZES[trackCode] || TRACK_QUIZZES['SAP-B1-LOGISTICS'];
 
   const handleSelect = (qId: number, optionIdx: number) => {
     if (submitted) return;
@@ -66,7 +66,7 @@ export function EvaluationQuiz({ trackCode = 'SAP-B1-CORE', onPassed }: Evaluati
               {q.options.map((opt, optIdx) => {
                 const isSelected = selectedAnswers[q.id] === optIdx;
                 const isCorrect = q.correctAnswer === optIdx;
-                let optStyle = "border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02]";
+                let optStyle = "border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/[0.02] text-slate-800 dark:text-slate-200";
 
                 if (submitted) {
                   if (isCorrect) {

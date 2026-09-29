@@ -35,7 +35,7 @@ export function LessonNavigator({
               {trackCode || 'SAP'}
             </span>
             <h3 className="font-bold text-sm text-slate-900 dark:text-white">
-              Submódulos del Track
+              Temas de la Lección
             </h3>
           </div>
           {trackTitle && (

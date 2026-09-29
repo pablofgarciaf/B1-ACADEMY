@@ -22,7 +22,7 @@ export function Footer() {
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Academia Certificada de Capacitación y Consultoría Empresarial. Programa oficial sobre el ecosistema 
-              <strong> Heinsohn Ecuador & SAP Business One</strong> con trazabilidad de calificaciones, simulador sandbox y conexión laboral.
+              <strong> B1 Academy & SAP Business One Ecuador</strong> con trazabilidad de calificaciones, simulador sandbox y conexión laboral.
             </p>
           </div>
 
@@ -34,8 +34,8 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs text-slate-500 dark:text-slate-400">
               <li><Link href="/capacitacion#sap-b1-core" className="hover:text-sap-blue">1. SAP B1 Core & Finanzas NIIF</Link></li>
               <li><Link href="/capacitacion#sap-loc-ec" className="hover:text-sap-blue">2. Localización Ecuador SRI</Link></li>
-              <li><Link href="/capacitacion#hein-nom-ec" className="hover:text-sap-blue">3. Heinsohn Nómina & IESS</Link></li>
-              <li><Link href="/capacitacion#hein-hcm-talent" className="hover:text-sap-blue">4. Gestión Humana Nine-Box</Link></li>
+              <li><Link href="/capacitacion#b1-nom-ec" className="hover:text-sap-blue">3. Nómina HCM & IESS</Link></li>
+              <li><Link href="/capacitacion#b1-hcm-talent" className="hover:text-sap-blue">4. Gestión Humana Nine-Box</Link></li>
               <li><Link href="/capacitacion#sap-vert-exp" className="hover:text-sap-blue">5. Verticales Banano, Camarón & WMS</Link></li>
             </ul>
           </div>

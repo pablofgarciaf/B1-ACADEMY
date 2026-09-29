@@ -275,14 +275,14 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     regulatoryContextEC: 'Resolución SRI NAC-DGERCGC: Tablas de Retención en la Fuente del Impuesto a la Renta y Circular de Porcentajes de Retención de IVA.',
   },
 
-  // TRACK 3: HEINSOHN NOMINA HCM ECUADOR
+  // TRACK 3: NOMINA HCM ECUADOR
   'nom-01': {
     submoduleId: 'nom-01',
     code: 'DOC-NOM-024',
     title: 'Novedades, Asistencia y Fórmulas de Horas Extras',
-    trackId: 'hein-nom-ec',
-    functionalOverview: 'El motor de novedades de Heinsohn Nómina HCM captura incidencias del período (asistencia biométrica, faltas, permisos, préstamos) y procesa el recargo de horas suplementarias (+50% hasta las 24h00), extraordinarias (+100% en fines de semana, feriados o de 24h00 a 06h00) y recargo nocturno (+25% de 19h00 a 06h00), aplicando estrictamente la fórmula legal: Sueldo / 240.',
-    sapMenuPath: 'Heinsohn Nómina → Novedades y Trámites → Registro Masivo de Novedades',
+    trackId: 'b1-nom-ec',
+    functionalOverview: 'El motor de novedades de Nómina HCM captura incidencias del período (asistencia biométrica, faltas, permisos, préstamos) y procesa el recargo de horas suplementarias (+50% hasta las 24h00), extraordinarias (+100% en fines de semana, feriados o de 24h00 a 06h00) y recargo nocturno (+25% de 19h00 a 06h00), aplicando estrictamente la fórmula legal: Sueldo / 240.',
+    sapMenuPath: 'Nómina HCM → Novedades y Trámites → Registro Masivo de Novedades',
     businessCaseEC: {
       companyName: 'Lácteos de la Sierra C.A. (Ambato, Ecuador)',
       scenario: 'Operador de planta con sueldo básico de $720. Registra en el mes: 12 horas suplementarias (50%) y 8 horas extraordinarias en domingo (100%).',
@@ -307,7 +307,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
         stepNumber: 3,
         title: 'Pre-liquidación y Auditoría de Variaciones',
         action: 'Ejecutar el proceso de pre-liquidación y comparar el total de horas extras contra el promedio del mes anterior.',
-        technicalDetails: 'Módulo Auditoría de Nómina en Heinsohn: Alerta visual si las horas extras superan el 20% del salario base.',
+        technicalDetails: 'Módulo Auditoría de Nómina: Alerta visual si las horas extras superan el 20% del salario base.',
         validationCheck: 'Certificar que las horas extras sumen a la materia gravada para el cálculo posterior del IESS.',
       },
     ],
@@ -315,7 +315,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
       {
         error: 'Dividir el sueldo entre 160 horas (40 horas semanales x 4) en lugar del divisor legal de 240',
         consequence: 'Sobrepago ilegal del 50% en el valor de la hora extra, causando pérdidas económicas a la empresa y distorsión contable.',
-        solution: 'Bloquear el divisor en 240 a nivel de motor en la fórmula del concepto en Heinsohn Nómina.',
+        solution: 'Bloquear el divisor en 240 a nivel de motor en la fórmula del concepto en Nómina HCM.',
       },
     ],
     regulatoryContextEC: 'Artículos 47, 49 y 55 del Código del Trabajo de la República del Ecuador.',
@@ -325,9 +325,9 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     submoduleId: 'nom-02',
     code: 'DOC-NOM-026',
     title: 'Seguridad Social IESS: Aportes, Fondos de Reserva y Planillas',
-    trackId: 'hein-nom-ec',
+    trackId: 'b1-nom-ec',
     functionalOverview: 'La liquidación del aporte al Instituto Ecuatoriano de Seguridad Social (IESS) es obligatoria sobre toda remuneración ordinaria o extraordinaria. El aporte personal es del 9.45% (descontado al trabajador) y el patronal es del 11.15% + 1.00% SECAP/IECE (12.15% total a costo de la empresa). A partir del mes 13 de labores continuas se liquida el Fondo de Reserva (8.33%).',
-    sapMenuPath: 'Heinsohn Nómina → Seguridad Social → Generación de Planilla IESS',
+    sapMenuPath: 'Nómina HCM → Seguridad Social → Generación de Planilla IESS',
     businessCaseEC: {
       companyName: 'Textiles del Norte S.A. (Otavalo, Ecuador)',
       scenario: 'Colaborador con sueldo de $1,000 + $100 comisiones. Antigüedad: 2 años. Solicitó acumular fondos de reserva en el IESS.',
@@ -364,9 +364,9 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     submoduleId: 'hcm-03',
     code: 'DOC-RRHH-040',
     title: 'Analítica del Talento: Calibración y Mapeo en la Matriz Nine Box',
-    trackId: 'hein-hcm-talent',
+    trackId: 'b1-hcm-talent',
     functionalOverview: 'La Matriz Nine-Box cruza dos dimensiones independientes: Desempeño Operativo (Eje X: Bajo, Medio, Alto) y Potencial de Crecimiento (Eje Y: Bajo, Medio, Alto). Permite identificar de manera objetiva a las "Futuras Estrellas" (Star Performers en cuadrante 9), empleados de alto rendimiento clave (Workhorses en cuadrante 3) y enigmas que requieren intervención, mitigando el sesgo del Efecto Halo.',
-    sapMenuPath: 'Heinsohn Gestión Humana → Evaluación del Desempeño → Matriz Nine Box y Calibración',
+    sapMenuPath: 'Gestión Humana → Evaluación del Desempeño → Matriz Nine Box y Calibración',
     businessCaseEC: {
       companyName: 'Banco Pichincha Tech & Innovation Hub (Quito, Ecuador)',
       scenario: 'Comité de calibración de 80 analistas y consultores SAP para definir quiénes pasan al Plan de Sucesión de Jefaturas.',
@@ -377,7 +377,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
         stepNumber: 1,
         title: 'Carga de Resultados de Evaluación de Desempeño y Potencial',
         action: 'Consolidar las evaluaciones de metas (OKRs) y la evaluación psicométrica / de competencias de potencial.',
-        technicalDetails: 'La plataforma Heinsohn normaliza las escalas a rangos de 1 a 5 o porcentajes de 0 a 100.',
+        technicalDetails: 'La plataforma de Gestión Humana normaliza las escalas a rangos de 1 a 5 o porcentajes de 0 a 100.',
         validationCheck: 'Verificar que todos los colaboradores del ciclo cuenten con ambas notas cerradas.',
       },
       {

@@ -1,0 +1,182 @@
+# Transcripción por Diapositiva: 10_Purch_32_LandedCost_Freight
+
+## Diapositiva 1
+
+PUBLIC Purchasing: Freight SAP Business One Version 10.0 Welcome to the topic on managing freight in SAP Business One. 1
+
+---
+
+## Diapositiva 2
+
+2 PUBLIC At the end of this topic, you will be able to: Describe how freight charges are managed in business processes Set up freight Add freight in sales and purchasing documents Objectives At the end of this topic, you will be able to: • Describe how freight charges are managed in business processes • Set up freight • Add freight in sales and purchasing documents
+
+---
+
+## Diapositiva 3
+
+• Your company buys and sells items throughout the country • When items are shipped to your warehouse, you get charged for the shipping and delivery. You want to record these charges, as well to have the inventory unit cost reflect the additional charge. • Some items that you sell are high value and require insurance during shipping. You charge your customers a fixed amount for insurance, however you do not want the insurance cost to affect unit cost. 3 3 PUBLIC Business Scenario  Your company buys and sells items throughout the country  When items are shipped to your warehouse, you get charged for the shipping and delivery. You want to record these charges, as well to have the inventory unit cost reflect the additional charge.  Some items that you sell are high value and require insurance during shipping. You charge your customers a fixed amount for insurance, however you do not want the insurance cost to affect unit cost.
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Freight definition Freight is a charge paid for carriage or transportation of goods by air, land, or sea. You can also use freight to apply any additional expenses that are not part of the basic item price such as insurance of the goods. Freight can be added on any purchasing or sales document. Freight is a charge paid for carriage or transportation of goods by air, land, or sea. You can also use freight to apply any additional expenses that are not part of the basic item price such as insurance of the goods. Freight can be added to any of the sales and purchasing documents. 4
+
+---
+
+## Diapositiva 5
+
+5 PUBLIC Freight Charges in Business Processes Special handling item 1   50 Special handling item 2   25 General shipping           125 Insurance 45 Total freight                  245 Freight can be added to the total document or on the row level. Freight can be added to the total document or on the row level for specific items. You can apply freight in both purchasing and sales documents. You may charge freight when shipping items from your warehouse or your vendor may add freight charges to items you receive. For example, we see an A/P invoice with freight added. Each item had a special handling charge in addition to the overall shipping charge that was added at the document level.  The special handling items were added on the rows.  The overall charges for freight and insurance were added by choosing the link arrow on total freight.  The amount on the total document and the rows combine to give the total for freight in the document. 5
+
+---
+
+## Diapositiva 6
+
+6 PUBLIC Accounting and Inventory Effects Different types of freight can be defined to post to different accounts. For example:  Insurance might post to an expense account.  Shipping costs might be set up to post to the stock account for the item. In this way, the freight cost becomes part of the unit cost of the item. Insurance cost posting to freight expense account Cost of item plus shipping cost posting to stock account You have the option to define different types of freight charges.  One type of freight might post to an expense account while another type could be set up to post to the stock account for the item. In the latter, the freight cost becomes part of the unit cost of the item. In our previous example, freight shipping charges were set up to be posted to the item’s stock account along with the cost of the item.  Insurance charges were set up to be charged to an expense account. Both the cost of the items (800) and the freight shipping charges (200) post to the item stock account.  Insurance is posted instead to an expense account that has been specified in the setup window. 6
+
+---
+
+## Diapositiva 7
+
+7 PUBLIC Incorporating freight into item cost Example: Document shipping cost: 100 Shipping costs applied to items based on row weight Row 1 is 80% of weight in total shipment Cost of 80 is posted to the stock account for the item. Row 2 is 20% of weight in total shipment Cost of 20 is posted to the stock account for the item You can distribute total freight to rows and incorporate the costs into the item’s unit cost. You may wish to incorporate the freight costs into the cost of the item.  It is easy to factor in the freight cost if it is on the row level.  However, when freight is charged at the document level, we need a method for how to distribute those costs to the individual items. The freight amount added to each line item in the document is calculated based on a distribution method that you define while setting up freight. For example, OEC Computers regularly buys electronic equipment to resell.  Freight costs are factored into each item’s cost.  This ensures that all freight costs related to the item are taken into account when viewing the cost of goods sold. When multiple items are purchased on the same document, the total freight costs needs to be distributed among the rows.  Most freight costs charged to OEC are based on weight. Therefore, OEC uses a distribution method for freight based on the weight of the items on the rows. 7
+
+---
+
+## Diapositiva 8
+
+8 PUBLIC Copying Freight Charges Item Quantity Unit Price Freight Type Freight Amount A1000 10 100 Insurance 10 Item Quantity Unit Price Freight Type Freight Amount A1000 5 100 Insurance 10 Based on the freight definition, row freight charges are copied fully on the first reference, partially or not at all to subsequent documents. Purchase Order Goods Receipt PO In our example, the freight type insurance definition is set to copy the full amount the first time that row is copied even when the row quantity is reduced. In our example, we saw freight added in an A/P invoice.  Freight might be added at an earlier point, for example in a Goods Receipt PO based on a shipping document. On the sales side, we might charge freight at the point of sale.  In that case, the sales order would contain the freight charges that would be then copied over to the delivery and A/R invoice. When you have freight charges entered on the row level and you use the Draw Document Wizard to copy from one document to another, the row level freight charges will be copied to the target document based on the freight type’s definition.  You have the option to define a freight type to either draw the amount fully the first time a row is partially copied, partially (in relation to the total or the quantity copied) or not at all. 8
+
+---
+
+## Diapositiva 9
+
+9 Freight Setup Now let’s see how to set up freight in SAP Business One
+
+---
+
+## Diapositiva 10
+
+10 PUBLIC Administration System Initialization Document Settings On the General Tab, choose Manage Freight in Documents Activation in Document Settings General Manage Freight in Documents Freight - Setup You cannot reverse this setting after a document has been posted. To start using freight, you first must activate it in Document Settings. This setting will add a Freight field in all purchasing and sales documents, and allow you to calculate additional costs connected to a document. Once you have selected this checkbox you cannot reverse it after a document has been posted. 10
+
+---
+
+## Diapositiva 11
+
+11 11 PUBLIC Freight Setup Use the button                                        on the General Tab of Document Settings Or use the menu path: Administration Setup General Freight Name Revenue and Expense accounts  / Tax Groups Fixed Amount Revenue / Expenses Gross Freight WTax Liable Distribution Method Drawing Methods Stock / Last Purchase Price checkboxes Shipping Revenue/ Expense account √ Volume Quantity √ Insurance Revenue/ Expense account 5 None Total Freight - Setup In the Freight Setup window, you need to create a row for each type of freight charge you plan to track. In our business example, we would need to set up two rows, one for shipping charges and the second for insurance that is used to insure high value items during transport. After you enter the name, select an expense account to be used in purchasing documents and a revenue account to be used in sales documents. You also select a default tax group for incoming and outgoing documents, to be used if one does not default in from the Business Partner Master Data. You can define a fixed expense amount that is added automatically to every sales or purchasing document. You can modify this amount in the document if needed. Next you can choose whether the fixed amount you entered includes tax, by checking the gross freight box. You can also mark whether the costs are subject to withholding tax. Then choose one of the six distribution methods. A distribution method is used when freight is entered in the document header and is set up to affect stock. We will see an example in the upcoming slide. In the Drawing Method, specify the required portion of the freight to apply when you partially copy a base document to a target document. We will see more details in upcoming slides. Select the Stock checkbox in order for freight charges to be added to the item’s unit cost, when the item is purchased. This is applicable for items with a valuation method of FIFO, moving average or serial and batch valuation. If freight charges are added to a standard cost item, the amount will be recorded as an expense. You can check the Last Purchase Price checkbox if you wish the freight charges to be added to the items’ last purchase price in a purchasing document. If the either the Stock/Fixed Asset or Last Purchase Price checkboxes are selected, a distribution method (other than None) must be selected. You can optionally assign a distribution rule, or a project code, to be assigned to the freight revenue or expenses account row in the journal entry. Note, freight charges that affect stock, such as shipping in our example, used in a document with inventory item, will not appear as a separate row in the journal entry, therefore no distribution rule or project code will be assigned. Based on our business scenario, we will define two (2) freight charges, the first one will be for shipping, without a fixed amount, and it will affect stock. The second for insurance cost that you charge your customers during the sales cycle. Here we enter a fixed amount, since most deliveries have insurance.
+
+---
+
+## Diapositiva 12
+
+12 12 PUBLIC Freight setup – Distribution Method 0 0 10 20 15 15 20 10 Examples of Distributed Amounts for each Distribution Method None Quantity Volume Weight Row Total 10 20 10 20 Contents Qty Total Item A1000 A2000 100 200 300 600 Freight on Header Level: 30 Volume 3 30 6 60 Weight Equally Let’s look at how freight is distributed between the rows in a purchasing document for each of the 6 distribution methods. In this example, the amount of 30 is entered as freight on the document header. • None - Freight expenses are not distributed to the line items. • Quantity - Expenses are distributed to the line items according to the relation of the quantities per line item. • Volume - Expenses are distributed to the line items according to the relation of the volumes per line item. • Weight - Expenses are distributed to the line items according to the relation of the weights per line item. • Equally - Expenses are distributed to the line items equally. • Row Total - Expenses are distributed to the line items according to the relation of the row totals of the line items.
+
+---
+
+## Diapositiva 13
+
+Let’s look at the four options for Drawing Methods. When you use the Draw Document Wizard to copy from one document to another, freight entered in the row level will be copied to the target document based on the proportionate quantity that was drawn. The drawing method determines how the system copies the freight expenses or revenues from the base document to the target document in case you only partially copy the row items.  In the graphic, we see the results based on each method.  All - The system copies the entire amount the first time you copy any partial amount of the line item.  None – When the drawing method is None, nothing is taken into the target document.  Total - If you copy a line item only partially, the system copies the proportionate amount based the total you copied. When you copy the outstanding line items, the system copies the remaining amount.  Quantity - If you only partially copy a line item, the system copies the proportionate amount based on the quantity you copied. When you copy the outstanding line items, the system copies the remaining amount. 13 13 PUBLIC Freight Setup – Drawing Method Quantity Total Add. Exp. Contents xxx xxx xxx xxx 10 20 General Information (Header) Sales or Purchasing Document Quantity Total Add. Exp. Contents xxx xxx xxx xxx 0 0 All Quantity Total Add. Exp. Contents xxx xxx 150 150 2,5 10 Quantity Total Add. Exp. Contents 50 50 xxx xxx 5 5 None Total Quantity Quantity Total Add. Exp. Contents 100 200 300 600 10 20
+
+---
+
+## Diapositiva 14
+
+14 Adding Freight in Marketing Documents Now that we’ve seen how the setup works, let’s review the process of adding freight in marketing documents.
+
+---
+
+## Diapositiva 15
+
+15 15 PUBLIC Adding Freight in Sales Documents - Rows Row level freight in Sales Contents Quantity Total Item A1000 A2000 10 5 50 100 Freight 1 Freight 1 LC Freight 2 Freight 2 LC Freight 3 Freight 3LC Freight Freight Insurance Insurance 10 5 5 2 Other Other 8 8 Total Freight (From Row) 10+5+8+5+2+8  = 38 Since there are a few differences between sales and purchasing documents, let’s review each type separately. Let’s look at what happens when we enter freight in the row level of sales documents. You have the ability to define up to 3 kinds of freight in the row level. The columns for the freight and freight amount can be added using Form Settings. First you choose the freight charges using a dropdown, and then you enter the freight amount for the particular row. You can add additional information regarding each freight charge such as a freight distribution rule, a project code, a tax code, and display a tax amount. The total freight entered in the rows is displayed in the Freight field, at the bottom of the document. The total includes row and additional header freight amounts.
+
+---
+
+## Diapositiva 16
+
+16 16 PUBLIC Adding Freight in Sales Documents - Header Header level freight in Sales Documents: Open the Freight Charges by clicking the drill down arrow next to the Freight field Freight Name Remarks Tax Code/ Amount Distribution Method Net Amount Status DL/Project Freight Expedited delivery Exempt Volume 5 O Insurance High Value Items Exempt None 5 O Set the Distribute Freight to Yes on the row to distribute the header freight to that row To view and maintain freight charges for the document header, use the drill down arrow next to the Freight field. In this window, all the freight types that you defined during the setup are displayed. If you entered a fixed amount for revenues during the setup, it will be added to all sales documents. You can delete the amount or add to that amount as needed in the Net Amount column. The distribution method is also automatically populated based on the freight setup, and can be modified here. Note in a sales document, the purpose of distributing freight amounts between the rows is informative only. In sales document’s rows, you can find a column called Distribute Freight. If set to Yes, the freight amount in the header is distributed to the row, based on the distribution method defined here. In fact the field’s default is set to No, however if it is important for you to see the impact of freight in the row level, change this field to Yes. You can view the status of the freight line here as well. Note that it’s possible to have a closed freight line in an open document. Lastly if a distribution rule or freight was defined during setup, it will appear here, and can also be modified in documents. In the journal entry, the Freight Revenue account shows as a separate row and it will be assigned with a distribution rule or a project code, if one was assigned here. The total freight amount displayed in the document includes the row and the header freight charges, however when you drill down to the freight charges window, only the header freight details display.
+
+---
+
+## Diapositiva 17
+
+17 17 PUBLIC Adding Freight in Purchasing Documents - Rows Row level freight in purchasing: Contents Total Item A1000 A2000 10 5 50 100 Qty Freight 1 Freight 1 LC Last Purchase Price Inventory Freight Freight Yes No 10 5 Yes No In purchasing documents, there are additional two columns related to freight that do not exist in sales documents: Last Purchase Price and Inventory. The values (yes or no) are copied from the freight setup. If you wish to override the default value, for example for one particular purchase, you can add these columns, using Form Settings, and change the default for each row. Other than these 2 columns, the rest of freight fields are the same as in sales documents.
+
+---
+
+## Diapositiva 18
+
+18 18 PUBLIC Adding Freight in Purchasing Documents - Header Header level freight in Purchasing: Open the Freight Charges by clicking the drill down arrow next to the Freight field Freight Name Remarks Tax Code/ Amount Distribution Method Net Amount Status DL/Project Freight Expedited delivery Exempt Volume 5 O Insurance High Value Items Exempt None 5 O Freight in the purchasing document header is also similar to freight in the sales document header. If the freight is not set up to affect stock or last purchase price, such as in our scenario for the insurance, the freight amounts will be recorded as expenses.
+
+---
+
+## Diapositiva 19
+
+19 19 PUBLIC Freight Charges Journal Entry A/R Invoice (based on a Delivery): A/P Invoice (based on a Goods Receipt PO): Account Debit Credit Project/Distribution Rule Customer 110 Revenue 100 Freight Revenue 1 5 Project Code/Distribution Rule Freight Revenue 2 5 Project Code/Distribution Rule Account Debit Credit Project/Distribution Rule Vendor 110 Inventory 105 Freight Expense 5 Project Code/Distribution Rule Let’s take a look at the journal entries that are created on sales and purchasing documents when adding freight. On the sales side, if we assume our freight amount is 5 for shipping and 5 for insurance, the freight amounts are posted on the credit side to the freight revenue account as defined in the freight setup. If a project code and a distribution rule were selected, this displays in the journal entry row for the freight revenues. On the purchasing side, in our example we have a freight amount of 5 that affects inventory, and 5 that doesn’t, therefore the first 5 will be added to the inventory account, and the second amount of 5 will be posted on the debit side to the freight expense account. If a project code and a distribution rule were selected, these will only apply to the freight expense that did not affect inventory.
+
+---
+
+## Diapositiva 20
+
+Here are some key points to take away:  Freight is used to record additional charges on sales and purchasing documents  Freight can be added to the document row or header  Header level freight can be allocated to the rows as needed using different allocation methods  Freight can affect inventory item’s unit cost and last purchase price 20 PUBLIC Here are some key points to take away: Freight is used to record additional charges on sales and purchasing documents Freight can be added to the document row or header Header level freight can be allocated to the rows as needed using different allocation methods Freight can affect inventory item’s unit cost and last purchase price Summary
+
+---
+
+## Diapositiva 21
+
+21 Test your knowledge
+
+---
+
+## Diapositiva 22
+
+22 22 PUBLIC Test your knowledge – Freight Freight can be in a sales document… 1. In the document header only 2. In the row level only 3. In document header and row level 4. In document header and inventory items row only
+
+---
+
+## Diapositiva 23
+
+23 23 PUBLIC Test your knowledge – Freight Freight can be in a sales document… 1. In the document header only 2. In the row level only 3. In document header and row level 4. In document header and inventory items row only
+
+---
+
+## Diapositiva 24
+
+24 24 PUBLIC Test your knowledge – Freight When you enter freight for the row, no tax code or group are displayed. Why? 1. You didn’t check the Gross Freight in the freight setup 2. You checked the Gross Freight in the freight setup 3. In a purchasing document, tax is not calculated on freight 4. The tax code or groups were not marked to affect freight
+
+---
+
+## Diapositiva 25
+
+25 25 PUBLIC Test your knowledge – Freight When you enter freight for the row, no tax code or group are displayed. Why? 1. You didn’t check the Gross Freight in the freight setup 2. You checked the Gross Freight in the freight setup 3. In a purchasing document, tax is not calculated on freight 4. The tax code or groups were not marked to affect freight
+
+---
+
+## Diapositiva 26
+
+26 26 PUBLIC Test your knowledge – Freight True/False – you can only assign freight charges with a project code in sales documents 1. True 2. False
+
+---
+
+## Diapositiva 27
+
+27 27 PUBLIC Test your knowledge – Freight True/False – you can only assign freight charges with a project code in sales documents 1. True 2. False
+
+---
+
+## Diapositiva 28
+
+28 28 PUBLIC Test your knowledge – Freight True/False – row level freight is copied in full when the document is converted to a higher level document 1. True 2. False
+
+---
+
+## Diapositiva 29
+
+29 29 PUBLIC Test your knowledge – Freight True/False – row level freight is copied in full when the document is converted to a higher level document 1. True 2. False
+
+---
+
+## Diapositiva 30
+
+31 No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+
+---
+

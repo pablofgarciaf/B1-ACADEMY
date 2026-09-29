@@ -14,7 +14,7 @@ interface VideoPlayerProps {
 export function VideoPlayer({ 
   title, 
   durationMin, 
-  systemType = "SAP Business One v10.0 / Heinsohn Ecuador",
+  systemType = "SAP Business One v10.0 / Nómina HCM Ecuador",
   transactionCode = "Live Masterclass ERP",
   onComplete 
 }: VideoPlayerProps) {
@@ -30,7 +30,7 @@ export function VideoPlayer({
 
   return (
     <div className="w-full rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 bg-black aspect-video relative flex flex-col justify-between p-6 group shadow-2xl">
-      {/* Background simulado de consola SAP Business One & Heinsohn */}
+      {/* Background simulado de consola SAP Business One & Nómina HCM */}
       <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-[#0a1428] to-slate-900 opacity-95" />
       
       {/* Overlay de interfaz ERP real */}
@@ -83,7 +83,7 @@ export function VideoPlayer({
 
           <div className="flex items-center gap-3">
             <span className="text-[11px] text-slate-400 hidden sm:inline">
-              Instructor Certificado Heinsohn Ecuador
+              Instructor Certificado B1 Academy
             </span>
             <button
               onClick={handleMarkCompleted}

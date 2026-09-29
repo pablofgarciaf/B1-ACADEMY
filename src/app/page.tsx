@@ -43,8 +43,8 @@ export default function HomePage() {
                   <strong className="text-slate-900 dark:text-white font-semibold">
                     Escuela Oficial de Capacitación Tecnológica y Consultoría:
                   </strong>{' '}
-                  Especialización integral en el ecosistema <strong>Heinsohn Ecuador y SAP Business One</strong>.
-                  Formación dividida en <strong>5 grandes tracks</strong> (SAP B1 Core NIIF, Localización SRI, Heinsohn Nómina IESS/MDT, Gestión Humana Nine-Box y Verticales de Exportación Banano/Camarón/Beas).
+                  Especialización integral en el ecosistema <strong>SAP Business One Ecuador</strong>.
+                  Formación dividida en <strong>5 grandes tracks</strong> (SAP B1 Core NIIF, Localización SRI, Nómina HCM IESS/MDT, Gestión Humana Nine-Box y Verticales de Exportación Banano/Camarón/Beas).
                   Con simulador de prácticas sandbox, evaluaciones automatizadas, expedientes de calificaciones y acceso directo a bolsa de empleo para perfiles Job-Ready.
                 </div>
               </div>
@@ -54,12 +54,12 @@ export default function HomePage() {
             <div className="text-center max-w-4xl mx-auto space-y-6">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-sap-blue/30 bg-sap-blue/5 text-xs font-bold text-sap-blue dark:text-sky-300">
                 <span className="w-2 h-2 rounded-full bg-sap-blue animate-pulse" />
-                Academia Tecnológica B2B / B2C • Ecosistema Heinsohn & SAP B1
+                Academia Tecnológica B2B / B2C • B1 Academy Ecuador
               </div>
 
               {/* H1 Exacto (45-65 chars) -> 53 caracteres */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
-                Escuela de Capacitación en SAP B1 y Heinsohn Ecuador
+                Escuela de Capacitación en SAP Business One Ecuador
               </h1>
 
               <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
@@ -117,7 +117,7 @@ export default function HomePage() {
                 Estructura Curricular
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-                Los 5 Pilares del Ecosistema Heinsohn Ecuador
+                Los 5 Pilares de B1 Academy Ecuador
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
                 Cada track contiene submódulos con enfoque <strong>[OP] Operativo</strong> para usuarios transaccionales y <strong>[ARQ] Arquitectura</strong> para consultores implementadores.
@@ -234,7 +234,7 @@ export default function HomePage() {
                   Prácticas en Sandbox con Horas Contabilizadas
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Ambiente de pruebas real para ejecutar transacciones en SAP B1, parametrizar tablas SRI y procesar planillas en Heinsohn Nómina.
+                  Ambiente de pruebas real para ejecutar transacciones en SAP B1, parametrizar tablas SRI y procesar planillas en Nómina HCM.
                 </p>
               </div>
 

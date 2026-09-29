@@ -1,0 +1,104 @@
+# Transcripción por Diapositiva: 10_Impl_33_Importing_Docs_using_DTW
+
+## Diapositiva 1
+
+PUBLIC Implementation Tools: Importing Documents with DTW SAP Business One Version 10.0 Welcome to the course on importing documents using the Data Transfer Workbench (DTW). This course should be useful to anyone using DTW for the first time. 1
+
+---
+
+## Diapositiva 2
+
+2 PUBLIC Objectives On completion of this course you will be able to:  Explain how to import documents and reference other documents as a base  Describe the relationship between a document’s header and row details and how this is represented in DTW using the Documents and Document_Lines templates  State the potential effect of importing a document on inventory and the general ledger On completion of this topic, you will be able to: • Explain how to import documents and reference other documents as a base • Describe the relationship between a document’s header and row details and how this is represented in DTW using the Documents and Document_Lines templates • State the potential effect of importing a document on inventory and the general ledger 2
+
+---
+
+## Diapositiva 3
+
+Importing Documents 3
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Template Structure for Documents Most marketing documents (and some inventory and production documents) are based on the same DI API business object:  Documents object for the document header  Document_Lines child object for the document rows In DTW, the predefined templates follow the same format:  Documents template for the header  Document_Lines template for the rows  Other child templates for importing text and subtotal rows, additional expenses (freight, insurance, etc.), taxes, and serial number/batch information for the document Most marketing documents (and some inventory and production documents) are based on the same DI API business object: • The Documents business object represents the header data of a document • The Document_Lines is a child object of the Documents object and represents the rows of a document In DTW, the predefined templates follow the same format. There is a Documents template for the header data and a Document_Lines template for the row data. In the Templates folder for each document type (A/R Invoice, Goods Return, etc.), you can find the Documents and Document_Lines templates plus any additional child templates depending on the document type, such as: Text and subtotal rows Additional Expenses (freight, insurance and other charges). Note that there are two templates for additional expenses. You can import additional expenses at the row level or at the document header level. Withholding tax, if applicable Batch Numbers Serial Numbers
+
+---
+
+## Diapositiva 5
+
+5 PUBLIC Document Numbering  You can import a document with its legacy document number, or use SAP Business One automatic document numbering  If the HandWritten field is blank or tNO, SAP Business One will assign document numbers from the current numbering series  To retain legacy document numbers, enter the actual document number and ‘tYES’ in the HandWritten field You can import a document with its legacy document number, or use SAP Business One automatic document numbering. To use SAP Business One numbering, enter any number in the DocNum column (column A). The system will assign the next document number in the current numbering series. To retain the actual document numbers when importing legacy documents, enter the real document number in the DocNum column then enter the value ‘tYES’ in the HandWritten field. Documents with manual numbers are considered printed when they are imported. 5
+
+---
+
+## Diapositiva 6
+
+6 PUBLIC  The numbering series is an integer assigned by the system whenever you create a new numbering series Document Series  You can optionally specify a numbering series in the template (in the Series column) If you want to use a different numbering series for the documents, you can specify the numbering series in the DTW template. Make sure you define the document numbering series before you import the records. In the Series column enter the generated number for the series. This is an integer assigned by the system whenever you create a new numbering series. To see this number, run a query on the NNM1 table and use the Series value that corresponds to the series name. You can also see this value in System Information when you hold your mouse over the series number in a document. 6
+
+---
+
+## Diapositiva 7
+
+7 PUBLIC Parent and Child Templates Document_Lines template Documents template  Each row in the parent template represents a document  Each document can have one or more rows in the child template  To relate the child and parent templates, the parent key field in the child template will link back to the primary key (column A) in the parent template  For documents, the parent key is the document number. Each row in the parent template represents a separate document. Each document in the parent template can have one or more rows in the child template. The rows in the Document_Lines template are linked to their respective row in the parent template by the value in column A (the primary key).  For example, if the DocNum value in the Documents template is 1, each row that belongs to the document will have the ParentKey value 1. 7
+
+---
+
+## Diapositiva 8
+
+8 PUBLIC Effects of Importing Marketing Documents  When you import marketing documents using DTW, postings are made depending on the document type, to inventory and to various accounts in the general ledger  Postings are identical to manually created documents Inventory BP Balance A/R or A/P Balance Inventory Accounts Sales or Purchase Quotations Sales or Purchase Order  Delivery/ Goods Receipt PO   A/R or A/P Invoice   A/R or A/P Invoice (with no preceding documents)     When you import marketing documents using DTW, be aware that postings are made to the general ledger accounts. These postings are identical to postings when the documents are manually created in the application, and will affect inventory values if a continuous stock system is running. As an example: • An imported sales order will commit (but not remove) stock from inventory. An imported purchase order will commit stock into inventory. • An imported delivery for the sales order will affect the in stock quantity and will make postings to inventory-related accounts in the general ledger, including the valuation of inventory if continuous stock is in use • An imported A/R invoice for the delivery will post to the business partner account, as well as revenue and tax-related accounts • An A/R invoice with no preceding documents will make all the postings and stock changes that would have been made by the preceding sales order/delivery documents. Open sales and purchase quotations do not affect accounting or inventory levels and can be safely loaded via the DTW. 8
+
+---
+
+## Diapositiva 9
+
+9 PUBLIC Opening Balances Considerations Inventory BP balance A/R or A/P Balance Inventory accounts Goods Receipt   Item type A/R or A/P Invoice (with no preceding documents)     Service Type A/R or A/P Invoice (with no preceding documents)   DTW can be an option for importing opening balances from a legacy system:  Item costs and quantities using Goods Receipts documents  Business partner balances using A/R and A/P invoices Care must be taken to ensure that inventory or business partner balances are not “double-counted” DTW can be an option for importing opening balances from the legacy system to a new SAP Business One system: • Item quantities and costs using the Goods Receipt document template • Business Partner account balances using the A/R and A/P invoice document templates, as well as partial payments Note: If you are loading the transactions as part of the opening balances for a new company, you must make sure that the documents you import are not “double counted” in inventory or business partner balances. If an “item type” invoice is imported, and there are no preceding documents such as deliveries or goods receipt POs, the invoice will assume the role of the delivery or goods receipt and will increase or decrease inventory quantity. If perpetual inventory is in use, there will also be an automatic posting to the inventory account. You can avoid the “double entry” of inventory balances by importing the A/R or A/P invoices as service type documents – this also avoids a change to inventory levels. See the Data Migration Guide in the AIP materials on PartnerEdge for more details on opening balances. 9
+
+---
+
+## Diapositiva 10
+
+The DTW templates for A/R and A/P invoices are in the Sales or Purchasing template folders. The templates use the naming convention of the database table. For an A/R invoice the header table is OINV and the row table is INV1. For an A/P invoice the header table is OPCH and the row table is PCH1. In the DTW template, indicate a service type document in the DocType column by entering dDocument_Service. If you want to use the legacy document numbers, enter the number in the DocNum column and set the HandWritten column value to ‘tYes’ to indicate manual numbering. In the example the DocNum is 506. In the row (child) template, you can enter information to describe the original item invoice in the ItemDescription column. Keep original dates from legacy invoice to maintain correct aging. Note: make sure that you have defined posting periods in SAP Business One so that postings can be made with the original due dates from the legacy system. And make sure these periods are open. The imported service invoice will update the business partner balance and the A/R or A/P control accounts. To avoid an update to revenue or expenses accounts, use a temporary clearing account (opening balances offset) as the account code. The balances for the revenue and expenses accounts can be transferred later when you enter the opening balances for G/L accounts. 10 10 PUBLIC Example: Service Type Invoices Templates > Sales > AR Invoice OINV – Documents INV1 – Document_Lines Templates > Purchasing > AP Invoice OPCH – Documents PCH1 – Document_Lines OINV INV1 Service Type Manual document numbering Keep original dates for aging
+
+---
+
+## Diapositiva 11
+
+Importing Related Documents To maintain the links between related documents for a transaction, you can enter base document information when you import a document. 11
+
+---
+
+## Diapositiva 12
+
+12 PUBLIC Purchase Order Goods Receipt PO A\P Invoice Outgoing Payment Sales Order Delivery A\R Invoice Incoming Payment Importing Related Transactions Copy to/from Copy to/from When documents are created manually in SAP Business One, they are linked using the Copy to/from feature. You can replicate the copy to/from in DTW by entering the base document information when you import the related document. Note:  As an alternative to importing each related document using DTW, for sales documents you can use the Document Generation Wizard. You import the starting document (e.g., sales order) using DTW and then run the wizard in SAP Business One to generate the related documents. However, if there are significant changes to the item rows or dates, you should import the related transactions using DTW since you cannot make these changes using the Document Generation Wizard.
+
+---
+
+## Diapositiva 13
+
+13 PUBLIC Base and Target Document Links When you import a document that is based on another document, you must provide the base document number, type and row in the DTW template The new document will close the base document Sales Order Delivery A/R Invoice Document Number 281 300 350 Base Document Number - 281 300 Base Document Type - Sales Order Delivery Base Row – 1st row Base Row – 2nd row - 0 1 0 1 Sales Order Delivery A\R Invoice Incoming Payment Copy to/from When you import a document that is based on another document, you must provide details about the base document so that the system can link them together. There are three columns in the template used for this: Base document number (the document number of the preceding document in the transaction) Base document type (the document type: each document type is identified with a unique integer value) Base document row (starts at 0 for row 1) When you import a related transaction using DTW, it closes the base document. Note: you do not have to enter all row details for a related transaction. Information will be automatically copied from the base document (like the copy/to). The exception to this is additional expenses, such as freight and insurance, which are not copied and must be imported for each document.
+
+---
+
+## Diapositiva 14
+
+14 PUBLIC Specifying Base Document References in the Template  The references to the base document are specified in the child template on each row  The child template rows reference a base document using the fields:  BaseType (document type)  BaseEntry (internal document number)  BaseLine (row in base document) The references to the base document are specified in the child template on each row using the BaseType, BaseEntry and BaseLine fields: • The BaseType is the document type, for example, 17 indicates a sales order. • The BaseEntry is the internal document number of the base document.  This is the auto-assigned internal number (DocEntry field) and not the document number (DocNum field). The internal number initially starts at 1 for each document type, and is incremented whenever a new document is imported or added to the system. For the most part, the two numbers will be identical unless you have used manual numbering. However, you should always verify the internal numbers of the base documents by running a query on the base document table. The base type, internal ID and row are held in the child table (for example, INV1) and not the header table. • The BaseLine is the row instance in the base document. This is an integer, with 0 for row 1, 1 for row 2, and so on. In the example shown, a Delivery document (ODLN) with 2 rows is being importing using DTW. The Delivery is related to a base sales order that has an internal document number 281. The references to the base sales order are entered in the child template for the Delivery: • The base type is 17 (sales order) • The base internal document number is 281 • The base line number 0 relates to the first row in the sales order, and base line number 1 relates to the second row. Note: You do not have to enter all row details for a related transaction. Information will be automatically copied from the base document. The exception to this is additional expenses, such as freight and insurance, which are not copied and must be imported for each document. 14
+
+---
+
+## Diapositiva 15
+
+15 PUBLIC BaseType Document Type 23 Sales Quotation 17 Sales Order 15 Delivery 13 A/R invoice 16 Return 22 Purchase order 20 Goods Receipt PO 18 A/P invoice 14 Sales Credit Memo 19 Purchase Credit Memo 21 Goods Return Base Document Types Base document types are documented in the DI API Objects Reference To see the base document types, open the DI API Objects Reference and expand the Document_Lines object, then select the BaseType property. Click the BoAPARDocumentTypes link to see the full list. Alternately you can run a query in SAP Business One on the document row table to view the object type.
+
+---
+
+## Diapositiva 16
+
+16 PUBLIC Summary Key points from this course:  You can import marketing documents using DTW. You can import a document with its legacy document number, or use SAP Business One automatic document numbering  Most marketing documents (and some inventory and production documents) are based on the same DI API business object. DTW uses this structure with the document templates:  Documents object for the document header  Document_Lines child object for the document rows  You can import documents that are linked to base documents by specifying the base document information in the child row template  When you import marketing documents, postings are made to the general ledger accounts. These postings are identical to postings made when the documents are manually created  DTW can be an option for importing opening balances: • Item quantities and costs using the Goods Receipt document template • Business Partner account balances using the A/R and A/P invoice document templates • Make sure that the documents you import are not “double counted” in G/L account balances. Here are some key points to take away from this course:  You can import marketing documents using DTW. You can import a document with its legacy document number, or use SAP Business One automatic document numbering.  Most marketing documents (and some inventory and production documents) are based on the same DI API business object. DTW uses this structure with the document templates:  Documents object for the document header  Document_Lines child object for the document rows • You can import documents that are linked to base documents by specifying the base document type, base document internal number, and base row in the child row template • When you import marketing documents, postings are made to the general ledger accounts. These postings are identical to postings made when the documents are manually created • DTW can be an option for importing opening balances: • Item quantities and costs using the Goods Receipt document template • Business Partner account balances using the A/R and A/P invoice document templates Note: If you are loading the transactions as part of the opening balances for a new company, you must make sure that the documents you import are not “double counted” in inventory or in G/L account balances. You can import invoices as service-type documents to avoid a posting to inventory quantity or inventory value accounts. 16
+
+---
+
+## Diapositiva 17
+
+18 No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and/or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+
+---
+

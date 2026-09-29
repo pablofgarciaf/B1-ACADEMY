@@ -36,7 +36,7 @@ export default function CalificacionesPage() {
           Boletín Oficial de Calificaciones y Evaluaciones
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-          Registro inmutable de evaluaciones técnicas y proyectos de parametrización en SAP Business One y Ecosistema Heinsohn Ecuador.
+          Registro inmutable de evaluaciones técnicas y proyectos de parametrización en SAP Business One • B1 Academy Ecuador.
         </p>
       </div>
 

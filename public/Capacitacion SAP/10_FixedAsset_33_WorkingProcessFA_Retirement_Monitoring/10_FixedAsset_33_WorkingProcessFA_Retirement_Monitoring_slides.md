@@ -1,0 +1,80 @@
+# Transcripción por Diapositiva: 10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring
+
+## Diapositiva 1
+
+PUBLIC Fixed Assets: Retirement and Monitoring SAP Business One Version 10.0 Welcome to the Retirement and Monitoring topic. 1
+
+---
+
+## Diapositiva 2
+
+2 PUBLIC At the end of this course, you will be able to: Retire a fixed asset Use reports and the Asset Master Data form to monitor a fixed asset’s value. Note! You need to make decisions about legal and industry requirements together with the client accountant. Objectives At the end of this course, you will be able to retire a fixed asset and use reports and the Asset Master Data form to monitor a fixed asset’s value. Note! You need to make decisions about legal and industry requirements together with the client accountant.
+
+---
+
+## Diapositiva 3
+
+3 PUBLIC Business Example In order to present the updated trucks’ value in the company financial reports, they need to document the transactions affecting the vehicles’ value during their useful life.  Retire a fixed asset by an A/R invoice or by the Retirement document if there is no customer involved. OEC Computers utilizes a small fleet of delivery trucks. After purchasing the trucks, they defined them as fixed assets in SAP Business One. OEC Computers Use reports and the Asset Master Data form to monitor a fixed asset’s value. OEC Computers • OEC Computers utilizes a small fleet of delivery trucks. • After purchasing the trucks, they defined them as fixed assets in SAP Business One. • In order to present the updated trucks’ value in the company financial reports, they need to document the transactions affecting the vehicles’ value during their useful life. • You are a consultant implementing fixed assets and you show them the Fixed Assets functionality and working process in SAP Business One. • Retire a fixed asset by an A/R invoice or by the Retirement document if there is no customer involved. • Use reports and the Asset Master Data form to monitor a fixed asset’s value.
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Fixed Assets Retirement A/R Invoice Retirement Debit Credit Customer 2000 Revenue Clearing Account 2000 Debit Credit Revenue Clearing Account 2000 Asset Balance Sheet Account 2000 • Retirement is the removal of an asset or part of an asset from the asset portfolio. • There are two ways to retire a fixed asset: by A/R invoice if you are selling the asset or by a Retirement document if there is no customer involved and you need to write off the fixed asset. • In case the company sells the asset at the end of its useful life (or before), the user can retire the item using an A/R invoice. • If you use the A/R Invoice option, make sure you define the Assets Master Data as a Sales Item. • The A/R Invoice automatically generates a Retirement document. • A Retirement document can be issued directly in case a customer is not involved and you need to write off the fixed asset. • After the asset is fully retired: ─Its value in the asset balance sheet account, in the fixed assets sub ledger, is registered as zero. ─The asset master data status changes to Inactive. ─The Net Book Value of the Asset Master Data is set to zero. • Note, that in the Retirement document there is an option for a partial retirement. In this case, the asset will hold the remaining value until the end of the item useful life. 4
+
+---
+
+## Diapositiva 5
+
+5 PUBLIC Fixed Assets Retirement A/R Invoice Retirement Debit Credit Customer 2000 Revenue Clearing Account 2000 Debit Credit Revenue Clearing Account 2000 Asset Balance Sheet Account 2000 Note! Depending on the business scenario and the system definitions, different accounts will be involved in the journal entry attached to the Retirement  document. • Note! Depending on the business scenario and the system definitions, different accounts will be involved in the journal entry attached to the Retirement  document. • Remember that in the Depreciation Area in the Posting of Retirement field you choose between Gross and Net. • This definition will apply in a Retirement document of scrapping type (as oppose to Sales type). The system will always treat scrapping as loss. In Gross the system uses the default expense gross account. And in Net the system uses the default expense net account. • In addition, it depends on the Posting of Depreciation option you choose (that is Direct or Indirect Posting). 5
+
+---
+
+## Diapositiva 6
+
+6 PUBLIC Asset Depreciation Forecast Report and the Asset Master Data During the process, we monitor the fixed asset value using reports and the Asset Master Data. To issue the fixed assets reports go to Financials Fixed Assets Fixed Assets Reports. • As we said before, depreciation is used to write off the cost of an asset over its useful lifetime. • It represents the reduction in the book value of an asset for both tax and accounting purposes and will be included within the company expenses. • The system predicts the yearly expected depreciation rate according to the Asset Master Data definitions. • You can view this information in the Asset Depreciation Forecast Report. You run the report for each depreciation area. • The depreciation information is presented for each asset and is grouped by a fiscal year. • If the selected fiscal year does not yet exist, fixed asset forecasts will be based on the last fiscal period defined in SAP Business One. In the display, forecast fiscal years are marked with an asterisk sign. • In addition, you can view the depreciation information of a specific fixed asset in the Asset Maser Data window under the Depreciation sub-tab. • The data is presented according to the selected Depreciation Area and the selected Fiscal year. • Once you choose a depreciation area and a fiscal year in the corresponding fields, the information area present the numbers according to this selection. 6
+
+---
+
+## Diapositiva 7
+
+7 PUBLIC Asset History Sheet Fixed Assets Sub Ledger • The Asset History Sheet is the most important supplement to the balance sheet from the fixed assets point of view. • The report can be issued for all fixed assets. • It displays all posted asset transactions in a fiscal year and presents the assets for each Balance Sheet account. • When issuing the report, you can choose one balance sheet account or you can leave this selection empty to display the data for all asset balance sheet accounts. Same for asset class. • You can issue the Asset History Sheet  and the Asset Depreciation Forecast Report for one depreciation area each time. • Remember that you can also issue the report for a non-posting to GL depreciation area to check the fixed assets value according to this area. • In our example, you could issue the report for the IFRS area which holds a different depreciation method and hence will display different values. • The balance sheet account selection will be ignored when issuing the report to a non- posting to G/L depreciation area. • The report can be displayed according to a financial report template. • Go to Financials Financial Report Templates to define the fixed asset template for the Asset History Sheet. • You can also export the report results to MS Excel. 7
+
+---
+
+## Diapositiva 8
+
+8 PUBLIC Asset Status Report • The Asset Status Report presents an overview on all fixed asset master records for a selected fiscal year. 8
+
+---
+
+## Diapositiva 9
+
+9 PUBLIC Asset Transaction Report • The asset transaction report provides you with a list of transactions relevant to an asset. • Use the Transaction Type button to specify the transactions you wish to see in the report. 9
+
+---
+
+## Diapositiva 10
+
+10 PUBLIC Asset Master Data - Values Tab • Another place for fixed asset monitoring is the Values sub-tab under the Fixed Assets tab in the Asset Master Data. • Here, you can monitor the change in value of an asset over the course of one year. • In the presented example, you can see the values expected for the truck asset in the current year according to the GAAP depreciation area. 10
+
+---
+
+## Diapositiva 11
+
+11 PUBLIC Summary Here are some key points to take away:  Retirement is the removal of an asset or part of an asset from the asset portfolio.  After the asset is fully retired, its value in the asset balance sheet account, in the fixed assets sub ledger, is registered as zero. The asset master data status changes to Inactive. The Net Book Value of the Asset Master Data is set to zero.  There are two ways to retire a fixed asset: by A/R invoice if you are selling the asset or by a Retirement document if there is no customer involved.  If you use the A/R Invoice option, make sure you define the Assets Master Data as a Sales Item.  The A/R Invoice automatically generates a Retirement document. • Here are some key points to take away: • Retirement is the removal of an asset or part of an asset from the asset portfolio. • After the asset is fully retired, its value in the asset balance sheet account, in the fixed assets sub ledger, is registered as zero. The asset master data status changes to Inactive. The Net Book Value of the Asset Master Data is set to zero. • There are two ways to retire a fixed asset: by A/R invoice if you are selling the asset or by a Retirement document if there is no customer involved and you need to write off the fixed asset. • If you use the A/R Invoice option, make sure you define the Assets Master Data as a Sales Item. • The A/R Invoice automatically generates a Retirement document.
+
+---
+
+## Diapositiva 12
+
+12 PUBLIC Summary – cont. • We monitor the fixed asset value using reports and the Asset Master Data. • You can view the yearly expected depreciation in the Asset Depreciation Forecast Report. • You can also view the depreciation information in the Asset Maser Data window under the Depreciation sub-tab. • The Asset History Sheet is the most important supplement to the balance sheet from the fixed assets point of view. The report displays all posted asset transactions in a fiscal year and presents the assets for each Balance Sheet account. • During the process, we monitor the fixed asset value using reports and the Asset Master Data. • The system predicts the yearly expected depreciation rate according to the Asset Master Data definitions. You can view this information in the Asset Depreciation Forecast Report. • You can also view the depreciation information of a specific fixed asset in the Asset Maser Data window under the Depreciation sub-tab. • The Asset History Sheet is the most important supplement to the balance sheet from the fixed assets point of view. • The report displays all posted asset transactions in a fiscal year and presents the assets for each Balance Sheet account.
+
+---
+
+## Diapositiva 13
+
+14 No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epxfor additional trademark information and notices.
+
+---
+

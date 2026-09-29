@@ -56,15 +56,15 @@ export function Navbar() {
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3.5 group">
           <div className="w-11 h-11 relative group-hover:scale-105 transition-transform flex-shrink-0">
-            <Image src="/logo.webp" alt="Heinsohn Logo" width={44} height={44} className="object-contain dark:hidden" priority />
-            <Image src="/logo_dark.webp" alt="Heinsohn Logo" width={44} height={44} className="object-contain hidden dark:block" priority />
+            <Image src="/b1-academy-logo.webp" alt="B1 Academy Logo" width={44} height={44} className="object-contain dark:hidden" priority />
+            <Image src="/b1-academy-logo-dark.webp" alt="B1 Academy Logo" width={44} height={44} className="object-contain hidden dark:block" priority />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col whitespace-nowrap">
             <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
-              HEINSOHN
+              B1 ACADEMY
             </span>
             <span className="text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 font-semibold">
-              B1 ACADEMY
+              SAP BUSINESS ONE
             </span>
           </div>
         </Link>

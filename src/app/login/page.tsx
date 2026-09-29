@@ -157,7 +157,7 @@ export default function LoginPage() {
           {/* Header */}
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-sap-blue/30 bg-sap-blue/5 text-xs font-bold text-sap-blue">
-              <ShieldCheck className="w-3.5 h-3.5" /> Portal Oficial Ecosistema Heinsohn Ecuador
+              <ShieldCheck className="w-3.5 h-3.5" /> Portal Oficial B1 Academy Ecuador
             </div>
             <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
               {tab === "login" ? "Iniciar Sesion" : "Registro Gratuito"}
@@ -165,7 +165,7 @@ export default function LoginPage() {
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               {tab === "login"
                 ? "Accede a tu Aula Virtual, expediente academico o panel de administracion."
-                : "Crea tu cuenta y comienza tu formacion SAP y Heinsohn hoy mismo."}
+                : "Crea tu cuenta y comienza tu formacion SAP en B1 Academy hoy mismo."}
             </p>
           </div>
 

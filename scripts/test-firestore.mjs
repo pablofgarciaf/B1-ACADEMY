@@ -40,7 +40,7 @@ async function testFirestore() {
     overallProgressPercent: 100,
     averageGrade: 100,
     isEligibleForJobs: true,
-    bio: 'Director General & Super Administrador de SAP Academy • Ecosistema Heinsohn Ecuador'
+    bio: 'Director General & Super Administrador de B1 Academy Ecuador'
   };
 
   await setDoc(userDocRef, superadminData, { merge: true });

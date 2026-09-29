@@ -1,0 +1,56 @@
+# Transcripción por Diapositiva: 10_ControlReports_22_CashReports_Aging_ES
+
+## Diapositiva 1
+
+PUBLIC Informes de control: Informes de antigüedad SAP Business One Versión 10.0 Bienvenido al tema Informes de antigüedad. 1
+
+---
+
+## Diapositiva 2
+
+Al finalizar este tema, podrá generar el informe de antigüedad para clientes y proveedores e interpretar los datos de informes típicos. 2 PUBLIC Al finalizar este tema, podrá:  Generar el informe de antigüedad para clientes y proveedores e interpretar los datos de informes típicos. Objetivos
+
+---
+
+## Diapositiva 3
+
+María, la responsable del área de contabilidad de OEC Computers, pide una herramienta que pueda ayudar a supervisar las deudas del cliente. También debe supervisar la deuda de la empresa con los proveedores. Le presenta los informes de antigüedad:  La antigüedad de créditos de cliente permite realizar un seguimiento de los saldos pendientes de clientes (deudas).  La antigüedad de deudas del proveedor permite realizar un seguimiento de los saldos pendientes de proveedores (la deuda de la empresa). 3 PUBLIC Escenario empresarial  María, la responsable del área de contabilidad de OEC Computers, pide una herramienta que pueda ayudar a supervisar las deudas del cliente.  También debe supervisar la deuda de la empresa con los proveedores.  Le presenta los informes de antigüedad:  La antigüedad de créditos de cliente permite realizar un seguimiento de los saldos pendientes de clientes (deudas).  La antigüedad de deudas del proveedor permite realizar un seguimiento de los saldos pendientes de proveedores (la deuda de la empresa).
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Preguntas de reflexión  ¿Qué tipo de definición relacionada con los interlocutores comerciales puede influir en el flujo de caja de la empresa?  ¿Cómo puede mejorar el flujo de caja de la empresa para que sea más estable?  ¿Qué informe le ayuda a lograr este objetivo? • El proceso de ventas afecta el estatus del flujo de caja de la empresa. • ¿Qué tipo de definición relacionada con los interlocutores comerciales puede influir en el flujo de caja de la empresa? • ¿Cómo puede mejorar el flujo de caja de la empresa para que sea más estable? • ¿Qué informe le ayuda a lograr este objetivo? • Una introducción a esta pregunta: aunque una empresa sea rentable, puede caer en quiebra debido a problemas en su flujo de caja. Por lo tanto, mantener un flujo de caja positivo resulta fundamental. 4
+
+---
+
+## Diapositiva 5
+
+La empresa puede mejorar los resultados de flujo de caja de la siguiente manera: • Definiendo las condiciones de pago apropiadas para cada cliente. Las condiciones de pago se fijan para cada interlocutor comercial en los datos maestros de interlocutor comercial en la ficha Condiciones de pago. • Las condiciones de pago influyen en las fechas de vencimiento de los documentos de ventas y los pagos previstos. Puede definir condiciones de pago por defecto para clientes y proveedores en Inicialización del sistema en Parametrizaciones generales en la ficha IC. Las condiciones de pago estándar se utilizan cuando se define un cliente nuevo, pero puede ajustar las condiciones de pago en un maestro de cliente para reflejar el riesgo de pago involucrado con ese cliente en particular. • Supervisar el poder de crédito de sus clientes en el informe de antigüedad de créditos de cliente.  El informe Antigüedad de créditos del cliente es el controlador monetario del módulo Ventas-Clientes. • Veamos detalladamente lo que nos muestra el informe de antigüedad de créditos de cliente. 5 PUBLIC Respuestas Las condiciones de pago definidas para los clientes establecen la fecha de vencimiento por defecto de las facturas de cliente. Detectando los clientes con pagos tardíos utilizando la antigüedad de créditos de cliente y ajustando las condiciones de pago en consecuencia.
+
+---
+
+## Diapositiva 6
+
+El informe de antigüedad de créditos de cliente muestra todas las transacciones pendientes (no reconciliadas) de los clientes, normalmente las facturas de cliente, y cuánto hace han vencido. Este es un informe clave para supervisar la deuda de los clientes y para evaluar la calidad crediticia de los clientes. Encontrará los informes de antigüedad en el módulo Finanzas. En el menú Informes financieros seleccione Contabilidad y, a continuación, Antigüedad. El informe se puede ampliar para mostrar cada operación (como se muestra en la imagen) o se puede comprimir para mostrar importes agregados por cliente. Hay un informe de antigüedad similar con la misma estructura para los proveedores. Cuando María desea ver facturas de proveedores pendientes para los proveedores, genera el informe de antigüedad de deudas del proveedor. Tras generar el informe de antigüedad, para clientes o para proveedores, puede enviar por correo electrónico los correspondientes datos de antigüedad a los interlocutores comerciales pertinentes. 6 PUBLIC Informes de antigüedad Antigüedad de créditos de cliente Cliente Documento Fecha  de vencimiento Saldo vencido Pago pendiente Intervalos de antigüedad 0-30 31-45 46-75 76-100 Funtech Fact. clientes 1.000 1.000 Fact. clientes 20.000 20.000 Fact. clientes 500 500 Abono de clientes (750) (750) Surf O’bello Fact. clientes 3.100 3.100 Fact. clientes 1.500 1.500 Microchips Fact. clientes 270 270 Fact. clientes 4.700 4.700 Fact. clientes 11.000 11.000 El dinero que se debe a una empresa y cuánto hace que existe la deuda  41.320 31.000 4.100 5.200 750 270 100% 75,02% 9,92% 12,58% 1,82% 0,65%
+
+---
+
+## Diapositiva 7
+
+Puede especificar una fecha de antigüedad, tras la que se calculan las fechas de vencimiento. También puede especificar intervalos en días, meses o períodos para agrupar créditos por su antigüedad. Como se puede ver en el gráfico, este informe le brinda una rápida mirada al estado de los vencimientos de sus facturas. Al final del informe, puede ver los porcentajes de las facturas vencidas en cada intervalo de antigüedad. Vea la imagen. La primera línea representa una factura con un saldo vencido de 1.000. Esta factura es 30 días posterior a la antigüedad de la fecha de antigüedad establecida en el informe. La fecha de vencimiento de la segunda factura, de 20.000 es anterior a la fecha de antigüedad y, por lo tanto, el importe aparece en la columna Pago pendiente. La fecha de vencimiento de la tercera factura para la cantidad de 500 es de 30 a 45 días posteriores a la fecha de antigüedad definida. Como el informe puede visualizar todas las transacciones abiertas del interlocutor comercial, el abono de clientes, los pagos recibidos y los asientos también se visualizan en el informe. En la imagen hay un abono de clientes para Funtech. El importe se muestra entre paréntesis dado que se trata de un importe de crédito del cliente. 7 PUBLIC Cliente Documento Fecha de vencimiento Saldo vencido Pago pendiente Intervalos de antigüedad 0-30 31-45 46-75 76-100 Funtech Fact. clientes 1.000 1.000 Fact. clientes 20.000 20.000 Fact. clientes 500 500 Abono de clientes (750) (750) Surf O’bello Fact. clientes 3.100 3.100 Fact. clientes 1.500 1.500 Microchips Fact. clientes 270 270 Fact. clientes 4.700 4.700 Fact. clientes 11.000 11.000 El dinero que se debe a una empresa y cuánto hace que existe la deuda  41.320 31.000 4.100 5.200 750 270 100% 75,02% 9,92% 12,58% 1,82% 0,65% Informes de antigüedad Antigüedad de créditos de cliente Fecha antig.
+
+---
+
+## Diapositiva 8
+
+Puede visualizar los datos de proveedores conectados en la antigüedad de créditos de cliente y los datos de clientes conectadosen la antigüedad de deudas del proveedor. Para ello, verifique la casilla de selección Considerar los clientes/proveedores conectados en la ventana inicial de criterios de selección. Un cliente o proveedor conectado se utiliza cuando un interlocutor comercial es tanto cliente como proveedor. Recuerde que existen unos datos maestros de interlocutor comercial para el cliente y otros para el proveedor. Consulte el tema del curso Clientes y grupos de clientes para aprender a conectar un cliente con un proveedor. Cuando los dos interlocutores comerciales están conectados, puede compensar las deudas pendientes del cliente con las deudas pendientes del proveedor. En la imagen puede ver las facturas de clientes del cliente Funtech y las facturas de proveedores del proveedor Funtech. El vencimiento del balance total ha tenido en cuenta el importe de las facturas de proveedores. 8 PUBLIC Cliente – Conexión de proveedor en el informe de antigüedad Antigüedad de créditos de cliente Cliente IC conectado Documento Fecha de vencimiento Saldo vencido Pago pendiente Intervalos de antigüedad 0-30 31-45 46-75 Funtech Fact. clientes 1.000 1.000 Fact. clientes 20.000 20.000 Fact. clientes 500 500 Abono de clientes (750) (750) Proveedores de Funtech Fact. proveedor (500) (500) Proveedores de Funtech Fact. proveedor (200) (200) 19.050 20.000 (700) 500 (750) 100% 104,99% -3,67% 2,62% -3,94%
+
+---
+
+## Diapositiva 9
+
+A continuación, se detallan algunos puntos clave para tener en cuenta: • El informe de Antigüedad de crédito de cliente muestra todas las transacciones pendientes (no reconciliadas) de los clientes, normalmente las facturas de cliente, y cuánto hace que han vencido. • Puede especificar: • Una fecha de antigüedad a partir de la cual se calcularán las fechas de vencimiento. • Los intervalos de períodos en los que se agruparán los artículos vencidos. • El informe de antigüedad de deudas del proveedor: • Muestra las transacciones abiertas de proveedores, normalmente facturas de proveedores, y su antigüedad. • Tiene las mismas estructuras de informe que la antigüedad de créditos del cliente. • Para los interlocutores comerciales conectados puede visualizar: • Las transacciones abiertas de un proveedor conectado en el informe de Antigüedad de créditos de cliente. • Las operaciones abiertas de un cliente conectado en el informe de antigüedad de deudas de proveedor. 9 PUBLIC Resumen El informe de antigüedad de créditos del cliente muestra: • Una transacción abierta (sin reconciliar) de los clientes, normalmente facturas de cliente, y cuánto hace que ha vencido. Puede especificar: • Una fecha de antigüedad a partir de la cual se calcularán las fechas de vencimiento. • Los intervalos de períodos en los que se agruparán los artículos vencidos. El informe de antigüedad de deudas del proveedor: • Muestra las transacciones abiertas de proveedores, normalmente facturas de proveedores, y su antigüedad. • Tiene las mismas estructuras de informe que la antigüedad de créditos del cliente. Para los interlocutores comerciales conectados puede visualizar: • Las transacciones abiertas de un proveedor conectado en el informe de Antigüedad de créditos de cliente. • Las transacciones abiertas de un cliente conectado en el informe de Antigüedad de deudas de proveedor. A continuación, se detallan algunos puntos clave:
+
+---
+

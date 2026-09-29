@@ -19,6 +19,13 @@ const config: Config = {
           dark: "#0b1320",
           card: "rgba(255, 255, 255, 0.04)",
           border: "rgba(255, 255, 255, 0.08)",
+          // Fiori & CCO specific colors
+          'fiori-bg': "#f2f4f7",
+          'fiori-header': "#354a5f",
+          'fiori-blue': "#008FD3",
+          'fiori-lightblue': "#e5f0fa",
+          'fiori-text': "#32363a",
+          'fiori-border': "#d9d9d9",
         },
       },
       fontFamily: {

@@ -1,0 +1,74 @@
+# Transcripción por Diapositiva: 10_Pricing_31_DiscSP_PerVolDisc_ES
+
+## Diapositiva 1
+
+PUBLIC Determinación de precios: Descuentos por período y cantidad SAP Business One Versión 10.0 Le damos la bienvenida al tema sobre los descuentos por período y cantidad. 1
+
+---
+
+## Diapositiva 2
+
+En este tema, definiremos los descuentos por período y cantidad de las listas de precios. 2 PUBLIC Al finalizar este tema, podrá:  Definir los descuentos por período y cantidad en las listas de precios. Objetivos
+
+---
+
+## Diapositiva 3
+
+Imagine que:  Su compañía periódicamente otorga descuentos de la lista de precios basado en las compras de cantidad o durante transacciones de ventas.  Los descuentos por período y cantidad en las listas de precios determinadas se definen con antelación a las ventas de temporada. 3 3 PUBLIC Escenario empresarial  Su compañía periódicamente otorga descuentos de la lista de precios basados en las compras de cantidad o durante transacciones de ventas.  Los descuentos por período y cantidad en las listas de precios determinadas se definen con antelación a las ventas de temporada.
+
+---
+
+## Diapositiva 4
+
+Un precio básico para un producto puede no ser suficiente. Probablemente desee definir precios de venta por un período de tiempo limitado. Es posible que desee otorgar un descuento cuando un cliente compra una gran cantidad. Los descuentos por período y cantidad le permiten definir los descuentos por fecha, basados en cantidad de una lista de precios existente. Los descuentos registrados aquí anularán el precio básico en la lista de precios asignada del interlocutor comercial siempre que la unidad de medida especificada en el descuento coincida la unidad de medida de la línea. Los descuentos no se aplicarán si un precio de acuerdo global, precio especial para el interlocutor comercial o un grupo de descuento es aplicable al cliente o artículo. Si se encuentra un grupo de descuento, se aplican los descuentos del grupo de descuentos; sin embargo, también es posible que se aplique un precio de una lista de precios de descuento por período y cantidad. 4 PUBLIC Descuentos por tiempo y cantidad  Utilizado para fijar precios de ventas por un período limitado.  Utilizado para otorgar un descuento cuando se compra una gran cantidad.  Defina los descuentos en base a las fechas y el volumen.  En base a una lista de precios existente.  Sustituye la lista de precios básica asignada al interlocutor comercial.  Los descuentos no se aplicarán si un precio de acuerdo global, precio especial para un IC o grupo de descuento es aplicable. Precios especiales para los IC Grupos de descuento Descuentos por período y cantidad Listas de precios Acuerdos globales
+
+---
+
+## Diapositiva 5
+
+Puede utilizar los descuentos por período y cantidad para definir precios especiales en listas de precios. Un precio especial se puede aplicar en un período determinado o en una escala de cantidad. Por ejemplo, decide realizar una oferta de otoño en el mobiliario de oficina.  Desea otorgar un 5% de descuento del precio de escritorios y sillas en la lista de precios de venta de las cuentas pequeñas para el mes de septiembre.  Durante este período también otorgará un descuento adicional del 3% a quien compre un grupo de 4 sillas o más. 5 PUBLIC Ejemplo de venta de temporada 5% de descuento en todo el mobiliario de oficina en el mes de septiembre 3% adicional para los juegos de 4 sillas
+
+---
+
+## Diapositiva 6
+
+En SAP Business One, primero se definen los descuentos basados en el tiempo y, después, se definen los descuentos por cantidad para dichos períodos de validez.  Seleccione la lista de precios, luego haga doble clic para abrir la ventana del período de validez.  Después de registrar la validez, haga doble clic de nuevo para abrir la ventana y definir la cantidad necesaria para el descuento. Cuando un documento de marketing usa esta lista de precios, el interlocutor comercial reunirá los requisitos para los descuentos por período y cantidad. 6 PUBLIC Registro de descuentos por período y cantidad Períodos de validez De             a Escala de cantidad UM Cantidad Eur    210,00 2 Estantería 2 Archivador Eur    800,00 2 Escritorio Eur    190,00 2 Silla Precio Lista precios Código N.º 4 3 2 1 Lista precios p.poca ctd Eur    550,00 hacer doble clic hacer doble clic
+
+---
+
+## Diapositiva 7
+
+En la ventana Descuentos por período y cantidad, seleccione primero la lista de precios para la cual desea definir los descuentos. Luego añada los artículos de forma individual o por rangos y grupos. Luego seleccione un precio de fuente para el descuento. Dado que un precio de la lista de precios puede definirse en una moneda principal y dos monedas adicionales, la casilla desplegable le permite nombrar qué precio de moneda se utiliza como base para el precio especial en las ventanas Descuento por período y Descuento por cantidad. En nuestro escenario, deseamos determinar un descuento para las sillas de oficina para el precio de moneda principal en la Lista de precios de venta de las cuentas pequeñas.  Por lo tanto, seleccionamos la lista de precios, seleccionamos el artículo sillas de oficina y seleccionamos el precio unitario en la moneda principal. 7 PUBLIC Determinación del descuento 1. Seleccionar lista de precios 2. Seleccionar artículos 3. Seleccionar fuente de precios
+
+---
+
+## Diapositiva 8
+
+A continuación, haga doble clic para abrir la ventana Descuentos por período. Registre el rango de fecha para el descuento. Puede indicar el descuento por porcentaje o modificando el precio luego del descuento. La casilla de verificación Automático controla si el descuento se recalculará de forma automática cuando la lista de precios se actualice. En nuestro ejemplo, registramos las fechas para nuestra oferta de otoño y luego agregamos el descuento del 5% para el período. Si queremos asegurarnos de que el precio no aumente durante el período de venta, aunque la lista de precios cambie, entonces desmarcamos la casilla de verificación Automático. 8 PUBLIC Registro de fechas de validez hacer doble clic
+
+---
+
+## Diapositiva 9
+
+Para añadir más descuentos en base a la cantidad, haga doble clic en una línea para abrir la ventana Descuentos por cantidad para la lista de precios. Indique la cantidad necesaria para recibir el descuento. Luego, indique el porcentaje de descuento total o el precio especial de cada unidad de cantidad. Aquí podemos indicar el descuento del 3% adicional para las 4 sillas. Introducimos 4 en la cantidad y luego, ya que nuestro descuento base es 5%, indicamos 8% para otorgar el 3% adicional de descuento del precio de la lista de precios. 9 PUBLIC Registro de descuentos por cantidad  Indique la cantidad necesaria para recibir el descuento.  Luego, indique el porcentaje de descuento total o el precio especial de cada unidad de cantidad. hacer doble clic
+
+---
+
+## Diapositiva 10
+
+Si ha establecido múltiples unidades de medida para un artículo, puede definir precios y descuentos por cantidad para cada unidad de medida que haya en el grupo de unidades de medida de ese artículo. En la misma ventana (Descuentos por cantidad para la lista de precios), solo añada una nueva línea para traer cada unidad de medida adicional. Puede añadir un descuento por cantidad para cualquier unidad de medida del artículo, aunque la unidad no esté definida en la lista de precios seleccionada de la ventana Descuentos por período para este artículo. Sin embargo, si la unidad se elimina más tarde del grupo de unidades de medida, el descuento también se eliminará de esta tabla. 10 PUBLIC Introducir descuentos por cantidad en las unidades  Defina los descuentos basados en la cantidad para cada unidad de medida de un artículo  Añadir una nueva línea para llevar unidades adicionales  Puede añadir descuentos para unidades aunque no estén definidos en la ventana Descuentos por período. Descuento por cantidad para cada UM
+
+---
+
+## Diapositiva 11
+
+Una vez que tenga el mismo período y cantidad establecido para algunos artículos, es posible que desee copiar estos descuentos en otros artículos. En la transacción Descuento por período y cantidad, comience por seleccionar una lista de precios de la casilla desplegable. Utilice le botón Añadir artículos para agregar todos los artículos que recibirán el descuento copiado. Lo predeterminado es seleccionar todos los artículos. Luego, seleccione el artículo cuya definición del descuento por período o cantidad desee copiar haciendo clic en la fila. Seleccione el botón Copiar descuentos. Tiene dos opciones adicionales para definir cómo se realiza la copia: La primera opción es: Seleccionar artículos sin Descuentos por período – Esto se utiliza para copiar los descuentos solo a los artículos que aún no tienen ningún descuento por período y cantidad. La segunda opción es: Seleccionar artículos del mismo grupo de unidades de medida: Esto le permite limitar la copia de descuentos a los artículos con el mismo grupo de unidades de medida y solo para las unidades definidas para los artículos destino. Por ejemplo, si tiene un descuento por período en paquetes de un tipo de papel, podemos decidir copiar el mismo descuento a otro papel con las mismas unidades de medida. 11 PUBLIC Copia de descuentos existente
+
+---
+
+## Diapositiva 12
+
+Los descuentos por período y cantidad le permiten definir descuentos por fecha de validez y basados en cantidad en una lista de precios existente. Los descuentos introducidos aquí sustituyen al precio básico en la lista de precios asignada al interlocutor comercial. Para establecer un descuento por período y cantidad se utilizan varias ventanas.  Primero seleccione un artículo y su precio de la lista de precios, luego determine un período de validez antes de abrir una tercera ventana para definir descuentos por cantidad para el período de validez. Puede añadir un descuento por cantidad para cualquier unidad de medida del artículo, aunque la unidad no esté definida en la lista de precios seleccionada de la ventana Descuentos por período para este artículo.  Sin embargo, la unidad de medida especificada en el descuento debe coincidir con la unidad de medida en la línea del documento para que se aplique el descuento. Puede copiar descuentos por período y cantidad a otros artículos, seleccionado todos los artículos, artículos específicos o usando las opciones para seleccionar artículos sin descuentos por período o artículos del mismo grupo de unidades de medida. 12 PUBLIC A continuación, se detallan algunos puntos clave: Los descuentos por período y cantidad le permiten definir descuentos con fechas de validez y por cantidad para una lista de precios existente. Los descuentos introducidos aquí sustituyen al precio básico en la lista de precios asignada al interlocutor comercial. Para establecer un descuento por período y cantidad se utilizan varias ventanas.  Primero seleccione un artículo y su precio de la lista de precios, luego determine un período de validez antes de abrir una tercera ventana para definir descuentos por cantidad para el período de validez. Puede añadir un descuento por cantidad para cualquier unidad de medida del artículo, aunque la unidad no esté definida en la lista de precios seleccionada de la ventana Descuentos por período para este artículo.  Sin embargo, la unidad de medida en el descuento debe coincidir con la unidad de medida en la línea del documento para que se aplique el descuento. Puede copiar descuentos por período y cantidad a otros artículos. Resumen
+
+---
+

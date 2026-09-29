@@ -99,7 +99,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               status: 'active',
               createdAt: new Date().toISOString(),
               passwordChanged: true,
-              assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
+              assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
             };
             setUserProfile(superProf);
             await setDoc(doc(db, 'usuarios', cleanEmail), superProf, { merge: true });
@@ -149,7 +149,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             status: 'active',
             createdAt: new Date().toISOString(),
             passwordChanged: true,
-            assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
+            assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
           };
           await setDoc(doc(db, 'usuarios', cleanEmail), prof, { merge: true });
         }
@@ -164,7 +164,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           status: 'active',
           createdAt: new Date().toISOString(),
           passwordChanged: true,
-          assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', 'heinsohn-rrhh', 'verticales-ecuador'],
+          assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
         };
       }
 

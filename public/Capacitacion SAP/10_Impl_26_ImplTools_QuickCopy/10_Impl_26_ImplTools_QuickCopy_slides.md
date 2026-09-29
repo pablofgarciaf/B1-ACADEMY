@@ -1,0 +1,146 @@
+# Transcripción por Diapositiva: 10_Impl_26_ImplTools_QuickCopy
+
+## Diapositiva 1
+
+PUBLIC Implementation Tools: Quick Copy SAP Business One Version 10.0 In this topic, we will look at how to select and copy database records between SAP Business One company databases. 1
+
+---
+
+## Diapositiva 2
+
+This topic covers the use of the Quick Copy tool during an implementation project. On completing this topic, you will be able to select and copy records between SAP Business One company databases. 2 PUBLIC  At the end of this topic, you will be able to select and copy records between SAP Business One company databases using the Quick Copy tool Objectives
+
+---
+
+## Diapositiva 3
+
+3 PUBLIC Business Scenario Copy Data Demo database Test database (for system testing) Production database Use for requirements gathering Training database (for hands-on exercises)  During an implementation project you will typically use and create multiple company databases  You will need separate database for testing and training purposes  Quick Copy allows you to quickly copy subsets of data to other databases (individual records or categories of data) Quick Copy is a very useful tool during an implementation project. During the implementation project you will typically create multiple company databases. For example: • A new production database that you will configure for the customer • A copy of the production database for testing • A copy of the production database for training The Quick Copy tool enables you to quickly copy subsets of data from the production database to other databases. You can select individual records or entire categories of data. For example, you might want to copy master data records and configuration settings from the production database to a test database. Or you can copy recent customizations you make on the production system to another database for testing and validation. Note that Quick Copy is not a full database copy. You still need to maintain full database backups for recovery purposes.
+
+---
+
+## Diapositiva 4
+
+Quick Copy is one of the tools provided in the Implementation Center in SAP Business One. To launch Quick Copy, choose Copy Data Between Companies. 4 4 PUBLIC Implementation Center Administration > System Initialization > Implementation Center > Implementation Tasks > Data Management tab
+
+---
+
+## Diapositiva 5
+
+Quick Copy allows you to: • Copy directly between company databases. The database version of the target company should match that of the source company. • Copy indirectly via an intermediate file. If you choose indirect copy, Quick Copy saves the selected records in a file with the extension .qdf.  You then login to the target company and run the import using Quick Copy. The company database that you are currently using is the source. For direct copy, you will be prompted to select the target company on the database server and provide the login credentials. For indirect copy, you will create the qdf file on the source, then login to the target company to import the qdf file. You can optionally save an xml project file containing your data category selections and copy options. You can use this project file the next time you use Quick Copy, saving you from having to make the selections again. 5 5 PUBLIC Quick Copy Overview Source company Target companies  Direct copy from source to target database (same version required)  Indirect copy (using an intermediate file) Copy to File Copy from File Direct copy to company *.qdf *.xml Project file with saved category selections
+
+---
+
+## Diapositiva 6
+
+Copy Options 6
+
+---
+
+## Diapositiva 7
+
+When you open the Quick Copy window you can see that the categories of data are shown on the left- hand side of the screen. The categories are initially blocked for selection until you select or set options on the right-hand side of the window. After you make selections on the right side of the window, the OK button becomes active. Choose the OK button, and the data categories will open up for selection. 7 7 PUBLIC Quick Copy Window Quick Copy window  has two sections:  Data categories are shown on the left  Options for the copy are shown on the right  Data categories are blocked from selection until you select all the required options and choose OK (the OK button is not active until the required options are set) Categories are initially blocked for selection
+
+---
+
+## Diapositiva 8
+
+There are four sections with options:  Select the copy function and browse to choose the qdf file or the target company database.  Select the copy method (this applies only for Copy from File or Copy to Company)  Set options for handling errors.  Select the copy options (for import to the target company). Once you have made these settings, and choose the OK button, the data categories on the left-hand side of the screen will open up for selection. 8 8 PUBLIC Options for Quick Copy Source or Target Select:  Copy to File to copy records to an intermediate file (*.qdf)  Copy from File to import records to a target company from a qdf file  Copy to Company to copy directly Copy Method Defines how the import will insert or update records in the target database. Not applicable for Copy to File. Error Handling Defines how the system will handle errors encountered during either the copy or import process Copy Options Defines various options for the import. Not applicable for Copy to File.
+
+---
+
+## Diapositiva 9
+
+The copy method works as follows:  Add new records and update existing records that have a matching key  Add new records but not update records with matching keys  Only update existing records with matching keys without adding new records  Erase all existing records for the categories in the target database before adding new records 9 9 PUBLIC Copy Methods Add new records and update existing records that have a matching key And new records only but do not update records with a matching key Only update existing records with a matching key Erase all records for the categories before adding new records
+
+---
+
+## Diapositiva 10
+
+10 PUBLIC Understanding Copy Methods The effect of each copy method on the target database is shown here: The source database T1 has four records (keys 1, 2, 3 and 4). The target database T2 has three records with matching keys 1,2 and 3. This slide shows the effect of each of the copy methods on the target company database: • Add New Records and Update Existing Records: In the example, a new record is added to the target database T2 with key 4. The records with matching keys 1, 2 and 3 will be updated with the values from the source database T1. Notice that the content for record keys 1, 2 and 3 has changed. • Add New Records Without Updating Existing Records: In the example, a new record is added to the target database T2 with key 4. However, unlike the first method shown above, in this case the records with keys 1, 2 and 3 are not updated. • Update Existing Records Without Adding New Records: This method does not add any new records so record key 4 is not inserted in the target database. The records with matching keys 1, 2 and 3 will be updated with the values from the source database T1. • Delete All Records Then Add New Records: This option deletes data for a matching key, then adds new records. 10
+
+---
+
+## Diapositiva 11
+
+The error handling choices govern the Quick Copy response to an error while importing the records. You can choose to:  Skip the affected record and continue copying valid records, or  Stop the copy process when the number of errors reaches a specified limit If the objects to be copied contain user-defined fields (UDFs), and the target system does not contain the UDFs, you can elect to skip the records, or to copy the records and ignore the missing UDFs: • If you select the Copy Records and Ignore Missing UDFs option, the application copies records even when user-defined fields in the source company are missing from the target company. • If you select Do Not Copy Records with Missing UDFs, and for example, the master data in the source company contains a UDF that is not present in the target company, the copy operation will fail. For example, the BP table in the source company contains a user-defined field, whose definition has not been copied to the target company. If this field is not selected, when you try to copy BP records to the target company, the copy operation fails. 11 11 PUBLIC Error handling choices govern Quick Copy response while importing records: Ignore errors and continue copying valid records Terminate the copy process after a specified number of errors If the records contain UDFs, but the target system does not, you can elect to skip the records, or, copy them and ignore the missing UDFs Error Handling
+
+---
+
+## Diapositiva 12
+
+Many database records contain assigned accounts. The copy option for accounts can be chosen to:  Use Accounts in Source – If the source accounts also exist in the target, then the application copies the account assignments from the object in the source to the object in the target. However, if the source accounts do not exist in the target, then the application encounters an error during the copy process.  Use Default Accounts in Target – The application assigns the default accounts in the target to the object, and does not copy the source assignments. Note: If default accounts are not configured in the target company, and you select this option, then the account fields of the object in the target are empty after the copy process. The copy option for empty fields only affects updates:  Do Not Overwrite Target Fields and Keep Original Values – If a field in the source is empty, then the application skips copying this field. The application keeps the original value of the corresponding field in the target, which remains the same before and after the copy process.  Overwrite Target Fields with Empty Values – If a field in the source is empty, then the application overwrites the target field with empty values. You also have the option to: • Enforce a backup before the import starts. If you select the Enforce Backup Before Starting Copy Process checkbox, the import will not proceed if the target database has not been backed up within two hours. • Allow the import of data to the target company database, even when there are user connections to it. 12 12 PUBLIC If objects to be copied contain accounts, you can choose to copy the accounts to the target, or assign default accounts from the target If the objects contain empty fields, you can choose to skip copying the field and leave the original value in the target, or overwrite the target field with empty values Option to force backup before the import starts Option to copy to target even when there are active connections Copy Options
+
+---
+
+## Diapositiva 13
+
+Categories and Dependencies 13
+
+---
+
+## Diapositiva 14
+
+You select data from a category tree structure that when expanded follows the SAP Business One menu structure. Note that the structure does not change from company to company. The categories cover customizations (including queries and reports), administration and configuration settings, financial settings, business partner master data,  inventory (including item master data and price lists), resource and production master data, and human resource master data. 14 14 PUBLIC Category Structure  Categories are shown in a tree structure that when expanded follows the SAP Business One menu structure
+
+---
+
+## Diapositiva 15
+
+15 PUBLIC Selecting Data for the Copy  Select the categories required for copy  The system shows data dependencies and you can choose to continue with the copy process, or adjust the selected categories You can select one or more categories at the top level of the category tree or at a lower level. Choose the copy button to initiate the copy process. The system first checks data dependencies and will show dependent objects that will be automatically copied together with the data you selected. You can choose to continue with the copy process or cancel and adjust your selected categories. Note: If the target database already contains records that reference G/L accounts , for example, business partner and item master data, journal entries posted by transactions, then you will not be able to import the chart of accounts from the source database 15
+
+---
+
+## Diapositiva 16
+
+ To see the eligible records that you can copy, select the row for the object at the lowest level in a category. The list of records is shown on the right.  You can individually deselect records that are not required for copy. 16 16 PUBLIC Viewing and Selecting Records to be Copied  Before you run the copy you can view all records for a category  You can deselect individual records from the copy process
+
+---
+
+## Diapositiva 17
+
+When you select a category, there might be data dependencies on other categories. For example, the item master data category has dependencies on business partner master data (vendors or resellers) as well as item groups and price lists. 17 17 PUBLIC Dependent Categories Inventory > Item Master Data Business Partner Master Data BP Groups Item Groups Price Lists Customs Groups Manufacturers etc.  
+
+---
+
+## Diapositiva 18
+
+The Quick Copy tool indicates possible dependencies on other categories. These dependencies are derived from the database table structure, and not from the actual data records to be copied, and are therefore provided as warning for you to check if records in the marked category should also be copied. In the example shown, the item master data category is selected:  A black exclamation mark ‘!’ indicates that the item master data category is possibly dependent on other data categories.  A red exclamation mark ‘!’ indicates for an unselected category that the selected item master data category is possibly dependent on this category. In the example, the categories Bar Codes, Bin Location Master Data,  and Price Lists are possibly dependent on the item master data category. Again this information is derived from the database table structure and may not represent the actual data.  When you see a category marked with red parentheses ‘(!)’, this indicates that the possible dependencies are deeper in the category structure. You can expand the category to see the dependent objects within its structure. In the example the Administration, Financials and Business Partners categories possibly have dependencies on the selected category, at a deeper level within the category. 18 18 PUBLIC Dependent Categories (Cont.) When you select an object or category, possible dependencies on other categories are marked Marked dependencies are derived from the database structure and are provided as a warning !   Selected category is dependent up on other categories !   Other categories are dependent on this category (!) Other categories are dependent on a category deeper in the structure
+
+---
+
+## Diapositiva 19
+
+During the copy process, the system displays the real dependent objects, dynamically derived from the data records to be copied. These dependent objects are automatically selected for copy with the other data. Links are provided to view the dependent records, enabling you to decide whether to include them in the copy. Be aware that if you deselect a dependent object, the copy may fail. 19 19 PUBLIC Viewing Dependent Records During the copy process, the system displays actual dependent objects dynamically derived from the data records to be copied Dependent objects are automatically selected for copy with the other data Links are provided to view dependent records If you deselect a dependent object, copy may fail
+
+---
+
+## Diapositiva 20
+
+The copy process may take a long time if you are doing a direct copy and there are many records. For this reason it may be better to copy to an intermediate file so that you can perform the import at any time. After the copy, the system provides a full log record of the number of records copied, the number of records that failed, and the number of records not copied, together with a link to the records. Note: if you chose the option to stop after 1 error, you will only see records copies up to the point of failure. In the example, shown, we can see the number of records copied for the selected Customization and Item Master Data categories, plus the dependent data categories. And we can drill-down to see the codes of the copied records. Since the report shows an error on Bin Location master data, we can drill down to see the reason why this failed. 20 20 PUBLIC Copy Log  Log shows number of records copied, number of records filed, number of records not copies, and a link to drill down to records
+
+---
+
+## Diapositiva 21
+
+21 PUBLIC Quick Copy Window (cont.)  Icon bar displays when Quick Copy window open  Contains icons to view and display project files and log files  Toggle dependencies on and off  Access the copy options in the right-side of the window  View online help When the Quick Copy window is open you see a new icon bar in the client application. The icons enable you to: • Open a previously saved project XML file • Save a new project file • Toggle on and off the display of dependent categories • Show the copy options in the right-side of the window. These options become hidden when the copy process has run, so you can use this icon to view them again. • View the online help for Quick Copy 21
+
+---
+
+## Diapositiva 22
+
+The XML project file contains the saved data categories and the selected copy options (copy methods, error handling, etc.). This file can be reused and can save time if you repeatedly need to export the same types of data. The system will prompt you to create a project file if you close the Quick Copy window, or you can choose the save icon from the icon toolbar. You can also create and save a project file when you import on the target company. 22 22 PUBLIC Saving a Project File Option to save settings and selected categories in a project file (XML) To reuse the project file, choose the toolbar icon
+
+---
+
+## Diapositiva 23
+
+Here are some key points to take away from this session.  Quick Copy allows you to selectively copy data records from one company database to another.  The tool is useful during an implementation project for copying customizations and configuration information, or master data, to a test or training system, or to a different entity for the same company.  You can copy directly, or copy to an intermediate file: • For direct copy, both companies must have the same product version • The intermediate file has the extension qdf  You can select one or more categories for copy. Note: Categories are not selectable until you complete all the required copy options on the right-side of the window.  To see eligible records for copy, select the object row in the category hierarchy. You can deselect individual records.  When you select a category for copy, the Quick Copy tool automatically marks dependent objects. During the copy process the dependent objects are also selected for copying.  You can optionally save an XML project file containing your selected data categories and copy options. This can save time if you repeatedly need to export the same types of data. 23 23 PUBLIC Summary Here are some key points:  Quick Copy allows you to selectively copy data records from one company database to another  Quick Copy is useful during an implementation project for copying customizations and configuration information, and master data, to a test or training system or to a different company entity  You can copy directly, or copy to an intermediate file:  For direct copy, both companies must have the same product version  The intermediate file has the extension qdf  You can select one or more categories for copy. Note: Categories are not selectable until you complete all the required copy options on the right-side of the window.  To see eligible records for copy, select the object row in the category hierarchy. You can deselect individual records.  When you select a category for export, Quick Copy automatically marks dependent objects. During the copy process the dependent objects are also selected for copying.  You can optionally save the selected categories and settings in an xml file, for repeat use.
+
+---
+
+## Diapositiva 24
+
+25 No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and/or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+
+---
+

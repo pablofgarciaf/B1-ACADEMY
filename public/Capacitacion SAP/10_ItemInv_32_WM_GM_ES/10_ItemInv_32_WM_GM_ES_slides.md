@@ -1,0 +1,92 @@
+# Transcripción por Diapositiva: 10_ItemInv_32_WM_GM_ES
+
+## Diapositiva 1
+
+PUBLIC Artículos e inventario: Movimientos de mercancías SAP Business One Versión 10.0 Bienvenido al tema de gestión de inventario sobre movimientos de mercancías. 1
+
+---
+
+## Diapositiva 2
+
+En este tema, observaremos cómo trasladas las mercancías hacia adentro, afuera y entre los almacenes.  Aprenderá a crear entradas de mercancías y salidas de mercancías.  Aprenderá a crear un documento de traslado de inventario para mover artículos entre dos almacenes, uno de los cuales está gestionado con depósitos. 2 PUBLIC Al finalizar este tema, podrá:  Crear una entrada de mercancías  Crear una salida de mercancías  Registrar un documento de traslado de inventario Objetivos
+
+---
+
+## Diapositiva 3
+
+Imagine que su empresa fabrica, compra y vende artículos almacenados en varios almacenes. Transfiere artículos entre los almacenes para mejorar la disponibilidad. A veces recibe artículos en stock que no cumplen con los procesos regulares de compra o producción. A veces, el stock sale del almacén, como muestra para ferias u otros fines de marketing. Periódicamente el stock dañado se quita del almacén. 3 3 PUBLIC Escenario empresarial  Su empresa fabrica, compra y vende artículos almacenados en varios almacenes.  Transfiere artículos entre los almacenes para mejorar la disponibilidad  A veces recibe artículos en stock que no cumplen con los procesos regulares de compra o producción  A veces, el stock sale del almacén, como muestra para ferias u otros fines de marketing  Periódicamente el stock dañado se quita del almacén
+
+---
+
+## Diapositiva 4
+
+Este gráfico muestra un resumen de las distintas posibilidades de movimientos de stock, incluidos algunos de los movimientos iniciados desde los documentos de compra, producción y venta. Nos centraremos en las flechas rojas del proceso comercial en este tema, estos son los movimientos de mercancías de inventario básicos. 4 PUBLIC Resumen de gestión de almacenes Pedido de EM/ Devoluciones de mercancías de funciones de compras Entrega/ Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén
+
+---
+
+## Diapositiva 5
+
+Los documentos de entrada de mercancías se usan para recibir el inventario que no se compra ni produce.  Un ejemplo puede ser recibir una muestra de un proveedor para la inspección. Usted selecciona recibirla en el almacén en una entrada de mercancías es lugar de una entrada de mercancías de pedido debido a que el artículo no es relevante para la determinación de precios o los informes de análisis de compra. 5 PUBLIC Documentos de entrada de mercancías Entrega/ Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén Pedido de EM/ Devoluciones de mercancías de funciones de compras
+
+---
+
+## Diapositiva 6
+
+Los traslados se usan para mover artículos entre almacenes. 6 PUBLIC Traslados de inventario Entrega/ Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén Pedido de EM/ Devoluciones de mercancías de funciones de compras
+
+---
+
+## Diapositiva 7
+
+La salida de mercancías puede ser útil en casos donde los artículos estén dañados, quizás por una inundación en el almacén. Si el daño que ocasionó el agua los vuelve inservibles y no pueden venderse, se retiran del almacén. 7 PUBLIC Documentos de salidas de mercancías Entrega/ Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén Pedido de EM/ Devoluciones de mercancías de funciones de compras
+
+---
+
+## Diapositiva 8
+
+Las ventanas de entrada de mercancías y salida de mercancías son muy similares. Ambos documentos requieren que introduzca el almacén asignado. Si no especifica un almacén, el sistema utilizará el almacén por defecto del registro maestro de artículo. Contrariamente a lo que sucede en los documentos de marketing, en los procesos de compra y venta no puede introducir un interlocutor comercial. Una diferencia entre ambos documentos:  La entrada de mercancías le permite introducir el precio del artículo que ingresa al almacén.  La salida de mercancías, por otro lado, utiliza el coste del artículo para calcular el valor de la transacción contable y el campo del precio es sólo con fines informativos. 8 PUBLIC Entrada y salida de mercancías Salida de mercancías Comentarios Comentario Entrada de mercancías Información general 1 Número Lista precios Salida de mercancías Nº artículo.                      Cantidad                            Precio                                   Total 22 Principal A1000                           10 10 EUR                              100 EUR Información general 2 Entrada de mercancías Entrada de mercancías Último precio de compra N.º 1 2 Ventana de tabla
+
+---
+
+## Diapositiva 9
+
+Si una empresa utiliza un inventario permanente, grabar una transacción de inventario crea un asiento de forma automática. Aquí vemos una representación gráfica de las contabilizaciones para una entrada de mercancías (en la parte superior) y una salida de mercancías (en la parte inferior). Las entradas de mercancías crean un asiento que contabiliza el valor de las mercancías recibidas en la columna del Debe de la cuenta de existencias y en la columna del Haber de la cuenta de incremento de compensación de stocks. La salida de mercancías crea un asiento que contabiliza el valor de las mercancías enviadas en la columna del Debe de la cuenta de reducción de compensación de stocks y en la columna del Haber de la cuenta de existencias. 9 PUBLIC Contabilización de stocks 100 100 Cuenta de existencias Compensación de stocks: Incremento 100 Cuenta de existencias Compensación de stocks: Reducción 100 Entrada de mercancías Salida de mercancías Artículo de inventario
+
+---
+
+## Diapositiva 10
+
+Cuando tiene varios almacenes, puede que necesite transferir el inventario desde un almacén a otro. Aquí hay un ejemplo.  Acaba de ingresar un pedido de cliente de 5 cajas de un artículo. El almacén 01 tiene 2 cajas.  Hay más cajas disponibles en el almacén 02. Podemos transferir las 3 cajas desde el almacén 02 al 01, para que puedan entregarse todos los artículos de un almacén a otro. 10 PUBLIC Traslado de stock Almacén 01 Almacén 02 Artículo de inventario  Acaba de ingresar un pedido de cliente de 5 cajas de un artículo.  El almacén 01 tiene 2 cajas.  Hay más cajas disponibles en el almacén 02.  Podemos transferir 3 cajas desde el almacén 02 al 01 para poder entregar las 5 cajas juntas. Traslado de inventario
+
+---
+
+## Diapositiva 11
+
+Cuando añade un traslado de inventario desde el almacén 02 al 01, el sistema contabiliza un asiento. El asiento contabiliza el valor de las mercancías trasladas en el lado del débito de la cuenta de stock del almacén 01 y en el lado del crédito de la cuenta de inventario del almacén 02. 11 PUBLIC Traslado de stock Almacén 01 Almacén 02 Traslado de inventario Artículo de inventario Cuenta de existencias (Almacén 01) 150 Cuenta de existencias (Almacén 02) 150
+
+---
+
+## Diapositiva 12
+
+Los documentos de traslado de inventario también pueden utilizarse para trasladar artículos a un almacén en consignación en las instalaciones de un cliente.  A diferencia de los documentos de entrada de mercancías o salida de mercancías, los traslados de inventario tienen campos para un interlocutor comercial, una persona de contacto y una dirección de envío. Cuando los artículos se extraigan del almacén en consignación de las instalaciones del cliente, cree una factura de cliente para los artículos y las cantidades utilizadas.  Cada línea hace referencia al almacén en consignación para que el inventario se muestre como eliminado del almacén cuando la factura se grabe. 12 PUBLIC Consignación del cliente Almacén 01 Almacén 07 Su almacén en el lugar del cliente Su almacén en su propio lugar Utilice un traslado de inventario para mover artículos a un almacén en consignación Cree una factura de clientes para los artículos y las cantidades utilizadas por el cliente
+
+---
+
+## Diapositiva 13
+
+Las solicitudes de traslado de inventario hacen que los artículos se trasladen de un almacén al otro sin que esto afecte a los movimientos de inventario o estados financieros. Una vez que la solicitud se cierra, el stock se traslada y se realizan las contabilizaciones financieras. Cuando la solicitud de traslado de inventario tiene el estado Abierto: Para el almacén emisor, la cantidad solicitada se considera como Comprometida. Para el almacén receptor, la cantidad solicitada se considera como Solicitada. Cuando la solicitud de traslado de inventario tiene el estado Cerrado: Para el almacén emisor, la cantidad solicitada se considera como cantidad Comprometida. Si copia esta solicitud por completo a un traslado de inventario, la cantidad se resta de la cantidad En stock. Para el almacén receptor, la cantidad solicitada se considera como cantidad solicitada. Si copia esta solicitud por completo a un traslado de inventario, la cantidad se agrega a la cantidad En stock. 13 PUBLIC Solicitud de traslado Estado de traslado de inventario En stock Comprometido Solicitado Disponible Alm.01 10 10 Alm.02 En stock Comprometido Solicitado Disp. Alm.01 10 1 9 Alm.01 -> Alm.02 Alm.02 1 1 Solicitud de traslado En stock Comprometido Solicitado Disp. Alm.01 9 9 Alm.01 -> Alm.02 Alm.02 1 1 Traslado de inventario Almacén 01 Almacén 02
+
+---
+
+## Diapositiva 14
+
+Si un almacén está gestionado por depósito, entonces la ubicación del depósito será necesaria en los documentos de inventario para todos los artículos almacenados en ese almacén. Las ubicaciones de depósitos representan una estantería física o depósito donde los artículos se ubican.  Los códigos de depósito consisten en el código de almacén más el código de cada subnivel. Puede definir los depósitos predeterminados para la entrada de mercancías y las reglas para automáticamente determinar los depósitos para las salidas de mercancías. Para especificar manualmente un depósito, haga clic derecho en el campo cantidad de una fila para abrir la ventana de Asignación de depósito. En esta ventana, puede especificar las cantidades y los códigos de depósito para el artículo de esa línea. 14 PUBLIC Las ubicaciones de depósito en los movimientos de mercancías S1 S2 S3 A1 A2 A3 L1 L2 L3 L1 L2 L3 L1 L2 L3 L1 L2 L3 S4 A4 05-A4-S3-L1 Almacén 05 Asignación de ubicación - Entrada
+
+---
+
+## Diapositiva 15
+
+Los movimientos de mercancías se registran con documentos de marketing y transacciones de inventario. Las tres transacciones de inventario principales son: salida de mercancías, traslado de inventario y entrada de mercancías. Una entrada de mercancías se utiliza para ingresar artículos en un almacén. Una salida de mercancías se utiliza para trasladas mercancías fuera de un almacén. Y el traslado de inventario se utiliza para trasladar artículos entre almacenes. Se requiere un almacén en todos los documentos de inventario.  Si uno no se registra manualmente en la transacción, se asignará el almacén predeterminado para el artículo. No puede registrar un interlocutor comercial en la entrada de mercancías o salida de mercancías, a diferencia de los documentos de marketing que siempre requieren interlocutores comerciales. Una solicitud de traslado de inventario puede utilizarse para comprometer el movimiento del stock de un almacén a otro. Es posible especificar un interlocutor comercial en un traslado de inventario. Si activa los depósitos para un almacén, entonces un almacén se requiere cada vez que utilice ese almacén en los documentos de inventario. Cuando utiliza un inventario permanente, cada movimiento de mercancías crea un asiento de forma automática. 15 15 PUBLIC Resumen A continuación, se detallan algunos puntos clave:  Los movimientos de mercancías se registran con documentos de marketing y transacciones de inventario.  Las tres transacciones de inventario principales son: entrada de mercancías, salida de mercancías y traslado de inventario.  Se requiere un almacén en todos los documentos de inventario.  No puede introducir un interlocutor comercial en la entrada de mercancías o salida de mercancías.  Una solicitud de traslado de inventario puede utilizarse para comprometer el movimiento del stock de un almacén a otro.  Si activa los depósitos para un almacén, entonces un almacén se requiere cada vez que utilice ese almacén en los documentos de inventario.  Cuando utiliza un inventario permanente, cada movimiento de mercancías crea un asiento.
+
+---
+

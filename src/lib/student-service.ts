@@ -12,7 +12,9 @@ const defaultStudent: StudentProfile = {
   displayName: 'Pablo F. García',
   role: 'consultor_premium',
   enrollmentDate: '2026-09-13',
-  specialties: ['SAP-B1-CORE', 'SAP-LOC-EC', 'HEIN-NOM-EC'],
+  profilePhoto: null,
+  selectedModules: ['modulo-01', 'modulo-02', 'modulo-03'],
+  specialties: ['SAP-B1-LOGISTICS', 'SAP-B1-FINANCIALS', 'SAP-B1-IMPLEMENTATION', 'SAP-LOC-EC', 'B1-NOM-EC'],
   sandboxHoursUsed: 0,
   sandboxHoursLimit: 999,
   progress: {
@@ -32,17 +34,17 @@ const defaultStudent: StudentProfile = {
       percent: 0,
       lastAccessedAt: new Date().toISOString(),
     },
-    'heinsohn-nomina': {
-      courseId: 'heinsohn-nomina',
-      courseTitle: 'Heinsohn Nómina Ecuador: Roles de Pago & IESS',
+    'b1-nomina': {
+      courseId: 'b1-nomina',
+      courseTitle: 'Nómina HCM Ecuador: Roles de Pago & IESS',
       completedLessons: [],
       totalLessons: 6,
       percent: 0,
       lastAccessedAt: new Date().toISOString(),
     },
-    'heinsohn-rrhh': {
-      courseId: 'heinsohn-rrhh',
-      courseTitle: 'Heinsohn Gestión Humana & Talento',
+    'b1-rrhh': {
+      courseId: 'b1-rrhh',
+      courseTitle: 'Gestión Humana & Talento',
       completedLessons: [],
       totalLessons: 6,
       percent: 0,
@@ -216,12 +218,17 @@ export function recordExamResult(courseIdOrCode: string, quizId: string, courseT
 
   student.grades.unshift(newGrade);
 
-  // Si aprueba el examen final del curso con >= 80%, generar certificación
+  // Si aprueba el examen final con >= 80%, generar certificación específica (Módulo o Master Track)
   if (score >= 80 && !student.certifications.some(c => c.courseCode === courseIdOrCode)) {
+    const isModuleCert = courseIdOrCode.startsWith('modulo-');
+    const certTitle = isModuleCert
+      ? `Certificado de Módulo: ${courseTitle}`
+      : `Certificación Superior Máster: ${courseTitle}`;
+
     student.certifications.push({
       id: `CERT-${courseIdOrCode.toUpperCase()}-2026`,
       courseCode: courseIdOrCode,
-      title: `Especialista Certificado en ${courseTitle}`,
+      title: certTitle,
       issuedDate: new Date().toISOString().split('T')[0],
       credentialUrl: `https://sapacademy.es/certificados/CERT-${courseIdOrCode.toUpperCase()}-2026`,
       verificationHash: `sha256-${Math.random().toString(36).substring(2, 12)}`,
@@ -237,7 +244,7 @@ export function getEligibleJobCandidates(): StudentProfile[] {
   const student = getStudentProfile();
   const candidateList = [student];
 
-  // Candidatos de muestra certificados en el Ecosistema Heinsohn Ecuador
+  // Candidatos de muestra certificados en B1 Academy Ecuador
   candidateList.push(
     {
       uid: 'stu-partner-002',
@@ -246,15 +253,15 @@ export function getEligibleJobCandidates(): StudentProfile[] {
       displayName: 'Ing. María López',
       role: 'consultor_premium',
       enrollmentDate: '2026-06-15',
-      specialties: ['HEIN-NOM-EC', 'SRI-LOC-EC'],
+      specialties: ['B1-NOM-EC', 'SRI-LOC-EC'],
       sandboxHoursUsed: 42,
       sandboxHoursLimit: 999,
       progress: {},
       grades: [],
       certifications: [{
-        id: 'CERT-HEIN-NOM-02',
-        courseCode: 'heinsohn-nomina',
-        title: 'Consultora Senior en Heinsohn Nómina e IESS Ecuador',
+        id: 'CERT-B1-NOM-02',
+        courseCode: 'b1-nomina',
+        title: 'Consultora Senior en Nómina HCM e IESS Ecuador',
         issuedDate: '2026-08-20',
         credentialUrl: '#',
         verificationHash: 'sha256-m987b654c321',
@@ -276,7 +283,7 @@ export function getEligibleJobCandidates(): StudentProfile[] {
       displayName: 'Lcdo. Roberto Cajas',
       role: 'consultor_premium',
       enrollmentDate: '2026-05-10',
-      specialties: ['SAP-B1-CORE', 'VERTICALES-EC'],
+      specialties: ['SAP-B1-LOGISTICS', 'VERTICALES-EC'],
       sandboxHoursUsed: 35,
       sandboxHoursLimit: 999,
       progress: {},
@@ -309,6 +316,46 @@ export function recordSandboxPractice(hours: number): StudentProfile {
   const student = getStudentProfile();
   student.sandboxHoursUsed = Math.min(student.sandboxHoursLimit, (student.sandboxHoursUsed || 0) + hours);
   student.jobReadiness = recalculateReadiness(student);
+  saveStudentProfile(student);
+  return student;
+}
+
+// Seleccionar un módulo para el plan de estudio del alumno
+export function selectModule(moduleSlug: string): StudentProfile {
+  const student = getStudentProfile();
+  if (!student.selectedModules) student.selectedModules = ['modulo-01', 'modulo-02', 'modulo-03'];
+  if (!student.selectedModules.includes(moduleSlug)) {
+    student.selectedModules.push(moduleSlug);
+    saveStudentProfile(student);
+  }
+  return student;
+}
+
+// Deseleccionar un módulo
+export function deselectModule(moduleSlug: string): StudentProfile {
+  const student = getStudentProfile();
+  if (!student.selectedModules) student.selectedModules = ['modulo-01', 'modulo-02', 'modulo-03'];
+  student.selectedModules = student.selectedModules.filter(s => s !== moduleSlug);
+  saveStudentProfile(student);
+  return student;
+}
+
+// Actualizar foto de perfil del alumno
+export function updateProfilePhoto(photoDataUrl: string | null): StudentProfile {
+  const student = getStudentProfile();
+  student.profilePhoto = photoDataUrl;
+  saveStudentProfile(student);
+  return student;
+}
+
+// Registrar última lección visitada
+export function recordLastVisited(moduleSlug: string, lessonId: string): StudentProfile {
+  const student = getStudentProfile();
+  student.lastVisited = {
+    moduleSlug,
+    lessonId,
+    timestamp: new Date().toISOString(),
+  };
   saveStudentProfile(student);
   return student;
 }

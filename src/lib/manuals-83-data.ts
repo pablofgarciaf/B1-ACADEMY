@@ -413,7 +413,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-41",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 41,
     "level": "OP",
     "title": "Hoja de Vida: Administración de colaboradores",
@@ -423,7 +423,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-42",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 42,
     "level": "OP",
     "title": "Novedades y trámites del mes",
@@ -433,7 +433,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-43",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 43,
     "level": "OP",
     "title": "Liquidación de nómina: Proceso estándar",
@@ -443,7 +443,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-44",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 44,
     "level": "OP",
     "title": "Procesos de liquidación especiales (Vacaciones, subsidios)",
@@ -453,7 +453,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-45",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 45,
     "level": "OP",
     "title": "Auditoría de nómina",
@@ -463,7 +463,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-46",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 46,
     "level": "OP",
     "title": "Pago de nómina y dispersión bancaria",
@@ -473,7 +473,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-47",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 47,
     "level": "OP",
     "title": "Notificaciones al colaborador (Rol de pagos)",
@@ -483,7 +483,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-48",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 48,
     "level": "OP",
     "title": "Seguridad social: Generación de planilla IESS",
@@ -493,7 +493,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-49",
     "block": "F",
-    "blockTitle": "Heinsohn Nómina: Operación Laboral",
+    "blockTitle": "Nómina HCM: Operación Laboral",
     "number": 49,
     "level": "OP",
     "title": "Nómina electrónica: Consolidación y archivo legal",
@@ -503,7 +503,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-50",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 50,
     "level": "ARQ",
     "title": "Usuarios, perfiles y permisos",
@@ -513,7 +513,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-51",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 51,
     "level": "ARQ",
     "title": "Creación y parametrización de conceptos",
@@ -523,7 +523,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-52",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 52,
     "level": "ARQ",
     "title": "Configuración de promedios",
@@ -533,7 +533,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-53",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 53,
     "level": "ARQ",
     "title": "Centro de costos: Áreas funcionales",
@@ -543,7 +543,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-54",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 54,
     "level": "ARQ",
     "title": "Asientos contables: Interfaz hacia SAP Business One",
@@ -553,7 +553,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-55",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 55,
     "level": "OP",
     "title": "Terceros: Fondos, cooperativas y beneficiarios",
@@ -563,7 +563,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-56",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 56,
     "level": "OP",
     "title": "Préstamos y embargos judiciales",
@@ -573,7 +573,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-57",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 57,
     "level": "ARQ",
     "title": "Parametrización general del sistema",
@@ -583,7 +583,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-58",
     "block": "G",
-    "blockTitle": "Heinsohn Nómina: Configuración / Caja Negra",
+    "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 58,
     "level": "ARQ",
     "title": "Proceso de cierre e inicio de año (Actualización SBU e IESS)",
@@ -593,7 +593,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-59",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 59,
     "level": "OP",
     "title": "Centralización de hoja de vida: Colaboradores y aspirantes",
@@ -603,7 +603,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-60",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 60,
     "level": "OP",
     "title": "Selección y contratación con screening de IA",
@@ -613,7 +613,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-61",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 61,
     "level": "OP",
     "title": "Capacitación y desarrollo",
@@ -623,7 +623,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-62",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 62,
     "level": "OP",
     "title": "Evaluación de desempeño por objetivos y competencias",
@@ -633,7 +633,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-63",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 63,
     "level": "ARQ",
     "title": "Estructura organizacional y gestión de vacantes",
@@ -643,7 +643,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-64",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 64,
     "level": "OP",
     "title": "Procesos disciplinarios",
@@ -653,7 +653,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-65",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 65,
     "level": "OP",
     "title": "Portales de autogestión (Empleado y líder)",
@@ -663,7 +663,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-66",
     "block": "H",
-    "blockTitle": "Heinsohn Gestión Humana: Talento 360°",
+    "blockTitle": "Gestión Humana: Talento 360°",
     "number": 66,
     "level": "OP",
     "title": "Business Intelligence de talento humano",
@@ -778,7 +778,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "level": "OP",
     "title": "Flujo de ingreso de colaborador (Onboarding)",
     "category": "Flujos End-to-End",
-    "summary": "Contrato SUT → Aviso de entrada IESS → Hoja de vida Heinsohn → Asignación centro de costos."
+    "summary": "Contrato SUT → Aviso de entrada IESS → Hoja de vida digital → Asignación centro de costos."
   },
   {
     "id": "man-78",
@@ -806,7 +806,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "blockTitle": "Ingeniería de Parametrización Transversal",
     "number": 80,
     "level": "ARQ",
-    "title": "Diseño de centros de costo multi-sistema (SAP B1 + Heinsohn Nómina)",
+    "title": "Diseño de centros de costo multi-sistema (SAP B1 + Nómina HCM)",
     "category": "Consultor Premium",
     "summary": "Homologación de la estructura analítica para evitar asientos con centros de costo huérfanos."
   },

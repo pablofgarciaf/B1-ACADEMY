@@ -1,0 +1,53 @@
+import os
+import fitz  # PyMuPDF
+
+base_dir = r"C:\Users\pablo\OneDrive\Desktop\proyectos web\sap academy\public\Capacitacion SAP"
+
+def process_pdfs_recursively():
+    count = 0
+    
+    # os.walk recorre el árbol de directorios recursivamente
+    for root, dirs, files in os.walk(base_dir):
+        # Buscar PDFs en el directorio actual (root)
+        pdf_files = [f for f in files if f.lower().endswith('.pdf')]
+        
+        for pdf_file in pdf_files:
+            pdf_path = os.path.join(root, pdf_file)
+            
+            # 1. Crear carpeta Imagenes_Diapositivas si no existe
+            img_dir = os.path.join(root, "Imagenes_Diapositivas")
+            if not os.path.exists(img_dir):
+                os.makedirs(img_dir)
+            
+            # 2. Extraer texto del PDF
+            md_file_name = pdf_file.replace('.pdf', '_slides.md').replace('.PDF', '_slides.md')
+            md_file_path = os.path.join(root, md_file_name)
+            
+            try:
+                doc = fitz.open(pdf_path)
+                folder_name = os.path.basename(root)
+                md_content = f"# Transcripción por Diapositiva: {folder_name}\n\n"
+                
+                for page_num in range(len(doc)):
+                    page = doc.load_page(page_num)
+                    text = page.get_text("text")
+                    
+                    # Limpiar saltos de línea innecesarios
+                    lines = text.split('\n')
+                    clean_lines = [line.strip() for line in lines if line.strip() and not line.startswith('© 2020 SAP SE')]
+                    clean_text = ' '.join(clean_lines)
+                    
+                    md_content += f"## Diapositiva {page_num + 1}\n\n{clean_text}\n\n---\n\n"
+                    
+                with open(md_file_path, 'w', encoding='utf-8') as f:
+                    f.write(md_content)
+                    
+                print(f"[OK] Procesado: {pdf_file} en {root}")
+                count += 1
+            except Exception as e:
+                print(f"[ERROR] Fallo en {pdf_path}: {str(e)}")
+
+    print(f"\n¡Proceso recursivo completado! {count} PDFs procesados con sus carpetas de imágenes creadas.")
+
+if __name__ == "__main__":
+    process_pdfs_recursively()

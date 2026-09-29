@@ -1,0 +1,254 @@
+# Transcripción por Diapositiva: 10_Impl_32_Using_Data_Trans_Workbench
+
+## Diapositiva 1
+
+PUBLIC Implementation Tools: Using Data Transfer Workbench (DTW) SAP Business One Version 10.0 Welcome to the course on using the Data Transfer Workbench (DTW). This course should be useful to anyone using DTW for the first time. 1
+
+---
+
+## Diapositiva 2
+
+2 PUBLIC Objectives On completion of this course you will be able to:  Describe the process for importing data using Data Transfer Workbench  List the type of objects that can be imported using DTW  Explain the relationship between SAP Business One objects and the provided DTW templates  Explain how to improve performance when importing into a SAP HANA database  Explain how to update child records for an object  Describe how to create a new template by customizing an existing template In this topic, you will see the process and steps for using Data Transfer Workbench to import objects. You will also be able to: • List the type of objects that can be imported using DTW • Explain the relationship between SAP Business One objects and the provided DTW templates • Explain how to improve performance when importing into a SAP HANA database • Describe how to create a new template by customizing an existing template 2
+
+---
+
+## Diapositiva 3
+
+Overview and References In this segment we introduce the Data Transfer Workbench tool and provide some references to help you with the objects and fields. 3
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Data Transfer Workbench (DTW) Microsoft Excel SAP Business One database External Database ODBC DI-API DTW Import and/or update  Data Transfer Workbench (DTW) is a tool provided with SAP Business One for bulk import of data into SAP Business One objects using predefined Microsoft Excel templates  DTW supports the import of master data, setup data, journal entries and open sales, purchasing production and service documents. Data Transfer Workbench (DTW) is a tool provided with SAP Business One for importing data into SAP Business One objects using predefined Microsoft Excel templates. The Data Transfer Workbench is designed primarily for bulk import or update of master data, setup data, chart of accounts, journal entries and open sales, purchasing, production and service documents. The financial data you can import includes opening balances, journal entries and journal vouchers. You can also import setup data, such as users, tax codes, and banks. DTW uses the DI API to access the SAP Business One database.  Some familiarity with SAP Business One table and field names is required. For this reason, end users might be more comfortable with using the Import from Excel utility as a periodic import tool. DTW can also import data from external databases, using SQL queries over an ODBC connection. Note: The Data Transfer Workbench does not support the import of documents that have already been closed.  It also does not support the deletion of records from the database. 4
+
+---
+
+## Diapositiva 5
+
+5 PUBLIC Starting DTW Start from SAP Business One implementation center: Administration > System Initialization > Implementation Center > Implementation Tasks + To start DTW from the implementation center you must provide the path to the DTW executable in the Settings window Start from desktop: Program Files > SAP > Data Transfer Workbench > DTW.exe Data Transfer Workbench (DTW) is supplied with the SAP Business One client installation files and is an optional package. The DTW package can be installed on the client desktop or on a remote desktop without the SAP Business One client. Since DTW uses the DI API for access to the database, then the DI API should also be selected for installation on the same desktop. To start DTW from the desktop, open the executable DTW.exe. You can also start DTW from the Implementation Center within SAP Business One.  To do this, select the link on the Data Management tab of the Implementation Tasks window. If you wish to start DTW from the Implementation Tasks window you must provide the path to the DTW executable in the Implementation Center Path Settings window. Note: Microsoft Excel should be installed on the system where DTW is installed. 5
+
+---
+
+## Diapositiva 6
+
+6 PUBLIC Connecting to the Database Server In the DTW logon window, you need to login to SAP Business One target company as a super user Servers are displayed from SLD In the DTW Login window: • The database server type and server names are taken from the System Landscape Directory (SLD). Only registered servers and company databases are displayed. You no longer need to login to the database server. Note for SAP HANA the port number (for example 30015) is required in addition to the server name or IP address. You should then see one or more company databases that exists on the chosen server. If you do not see a company displayed, choose the Refresh button to reload the list of companies on the selected server. Select the relevant SAP Business One company and login with a super user account. A super user is required since this user must have full authorization to objects. The Enable Faster Import checkbox in the Logon window allows for faster import of records into SAP HANA databases by running the import using multiple threads. This will be covered later in this course. 6
+
+---
+
+## Diapositiva 7
+
+7 PUBLIC Enable Faster Import for SAP HANA  With an SAP HANA database, you can run the import using multiple, parallel processes  Select the Enable Faster Import checkbox, and select the number of processes (default is 4) When you use a SAP HANA database you can increase the performance of the import by running multiple parallel DI API processes. You must make the selection when you logon to DTW, by checking the Enable Faster Import checkbox.  Then select the number of processes. The default is 4 but you can select up to 21 threads, depending on the hardware configuration size you have. When you select Enable Faster Import, DTW will run the DI API under a COM+ application. The rows from the spreadsheet will be shared out to the threads and imported in parallel. Thus the order in which the records are imported can differ from the order of the spreadsheet. There are some limitations on the use of this option: • The performance increase is only effective for imports of more than 1000 records. • You cannot run a simulation before the import (the button is deactivated). • Only certain objects are supported: Setup data is not supported at all. For master data, only business partner and item master data are supported. For documents, only quotations, orders, deliveries, goods receipts and invoices are supported. See SAP note 2229208 for more information. 7
+
+---
+
+## Diapositiva 8
+
+8 PUBLIC DTW Menu and Help After logging in, the DTW application window opens showing the menu options:  Tools: Import wizard, log manager  Templates: creation of new templates  Help: DTW online help, DI API Reference and Database Tables Reference The bottom of the application window shows the status of the connection to the target database, including the company After you successfully login to the company, the DTW application window opens: • To start the import wizard, use the Tools menu or choose the Import button. From the Tools menu you can also access log files from previous import runs. • Use the Templates menu to generate new templates. This functionality is covered later in this course. • Under the Help menu you can find the online help, the DI API Reference and the Database Tables Reference. You may need to reference these resources when entering data into the templates: • The DI API Reference describes objects and object properties • The Database Tables Reference shows the table fields including default values for fields, field types, and constraints on field values At the bottom of the DTW application window you can see the status of the connection to the target database, including the server and target company name. 8
+
+---
+
+## Diapositiva 9
+
+9 PUBLIC Overall Process for Import Log in to target company database Save template as delimited file* In DTW, choose Import button to run import wizard *tab delimited, comma delimited, or semi-colon delimited file. Note: the delimiter character should not appear in any field data. Enter data into predefined templates To import data, you will use the predefined templates and enter your data in the columns of each template. After you have entered the data, save the template as a tab, comma, or semi-colon delimited file type. Any of these file types is accepted by DTW. In DTW, log in to the target company as a super user, and start the import wizard. Note: The delimiter character (tab, comma or semi-colon) should not be present in any of the data in the template, since it will be interpreted as the end of the data. Thus, if the data is likely to contain commas or semi-colons, save as a tab delimited file. 9
+
+---
+
+## Diapositiva 10
+
+Predefined Templates Let’s look at the predefined templates provided in DTW. 10
+
+---
+
+## Diapositiva 11
+
+11 PUBLIC DTW Templates After DTW is installed, the DTW executable folder contains the predefined Microsoft Excel templates (in the Templates subfolder). Some sample templates are also provided in this folder. The templates are organized by folders similar to the main menu in the SAP Business One client. Predefined Microsoft Excel templates are provided for each object that can be imported. An object in SAP Business One can be represented by multiple tables in the database, and each predefined template aligns to a table for the object. The template names start with the four character database table name, so, for instance, the parent business partner master data template is OCRD – BusinessPartners. A template is provided for each of the child tables. For the business partner master data object the child templates include CRD1, CRD2, OCPR, OCRB, and so on. The Samples folder contains examples of completed templates. 11
+
+---
+
+## Diapositiva 12
+
+12 PUBLIC  Each predefined template includes a column for each field exposed to the DI API  The two header rows should not be removed. They contain the object properties and the DI API field names  These fields are described in the DI API Objects Reference and the Database Tables Reference  SAP recommends you do not remove columns from a template; instead leave a column blank, or generate a customized template Example: OCRD Template The predefined templates include a column for every field in the table that is exposed to the DI API. Each template contains two header rows which should not be removed: • The names in the first header row are the object properties. These are documented in the DI API – Objects Reference. • The names in the second header row are the DI API field names. These are documented in the Database Tables Reference Sometimes the names are identical. If you do not want to import data for a field, or you want to use the default value, leave the column blank. SAP recommends you do not remove columns from the original template.  If you want to remove columns, you can generate a customized template from an existing template. Customized templates will be covered later in this course. 12
+
+---
+
+## Diapositiva 13
+
+13 PUBLIC Field Comments and Enumerated Data  Each header field in the template includes a comment showing data type and field length  If the type is shown as enum, then you must use one of the valid values shown  If the comment shows a related table, then enter the code of the related table in the template field Each field in the template heading row includes a comment. The comment pops up when you hold the mouse over the field and shows the field description, type, and length. If the field is mandatory, such as a code, this is indicated in the comment. If the type shows as enum, then DTW expects you to enter one of the valid values shown. These are the values expected by the DI API. In the example, in the business partner master data template, the CardType (column C) and VatLiable (column R) fields have enumerated data. As an example, in the CardType field you must enter cCustomer, cSupplier or cLid and not the values as specified in the Database Tables Reference. If the comment shows the field with a related table, this column holds the key to the related table, and in this column you enter the key value. For example, in the GroupCode field (column D), you would enter the code allocated by the system when you create new customer or supplier groups. To see the codes run a query on the table. 13
+
+---
+
+## Diapositiva 14
+
+14 PUBLIC Valid Values and Database Tables Reference  If a field has valid values in the template comment, always use these values and do not enter the constraints shown in the Database Tables Reference If the valid values shown in the comment are different to the values documented in the Database Tables Reference, you must always enter one of the values in the comment, and not use the constraints from the Database Tables Reference. As an example, the Database Tables Reference shows the constraints for the CardType field (column C) as C, S and L (customer, vendor and lead). However, DTW expects one of the values cCustomer, cSupplier or cLid. You can however leave the field blank if the CardType is a customer, since this is the default as indicated in the Database tables Reference. 14
+
+---
+
+## Diapositiva 15
+
+15 PUBLIC Leaving Columns Blank  The data entry rules for DTW are identical to manual data entry. You do not need to enter default field values or non-required data  Make sure that prerequisite data is created before you import the data When you manually create master data or documents in the SAP Business One application, you take advantage of default field values, and only enter the required or mandatory fields. The same is true for DTW. You can leave columns blank in the template and enter just the required fields and non-default values. Shown is an example of a completed OCRD template for the business partner master data header, with columns left blank if there are default values. Make sure that any prerequisite data is created for the data you with to import. For the business partner master data object, prerequisite data includes: • Business partner groups (GroupCode column D in the template) • Currencies (Currency column AC) • Bank codes for business partner banks (BankCode column AQ) • House bank definitions (columns CB to CD) 15
+
+---
+
+## Diapositiva 16
+
+16 PUBLIC Parent and Child Templates If there are child tables for an object, you can import the child records together with the parent records To relate the child and parent templates, the parent key field in the child template will link back to the primary key (column A) in the parent template. Child template Parent template C001 C001 If there are child tables for an object, such as the contact employees table OCPR for the business partner object as shown here,  you can import the child records in the same import run as the parent records. To relate the child and parent templates, the parent key field in the child template will link back to the primary key (column A) in the parent template. 16
+
+---
+
+## Diapositiva 17
+
+Import Process Let’s now look at the overall process for importing the data. 17
+
+---
+
+## Diapositiva 18
+
+18 PUBLIC DTW Import Wizard Select the type of data to be imported:  Setup data  Master data  Transactional data In the first step of the import wizard, select the type of data to be imported (setup data, master data or transactional data): • Setup data includes banks, house banks, business partner and item groups, tax codes, opening balance data, and users. For the full list of templates, check the subfolders for the Templates folder • Master data includes business partner, item and employee master data • Transactional data includes journal entries, sales and purchasing documents, business partner activities, payments, and inventory transactions. 18
+
+---
+
+## Diapositiva 19
+
+19 PUBLIC DTW Import Wizard Select the operation to be performed:  Add  Update  Add and Update In the next step, select whether you want to import new data (insert) or update data (update): • To import new data objects, choose “Add New Data.” • To update information in a parent or child template, choose “Update Existing Data.” • To import new parent records for an object while at the same time updating existing child records, choose “Add New Data and Update Existing Data.” Note the selection “Add new data and update existing data” will create a new record in the database if the key does not exist, and update an existing record if the key matches. This selection is not available if transactional data was selected in step 1. 19
+
+---
+
+## Diapositiva 20
+
+20 PUBLIC DTW Import Wizard Navigate to the business object by expanding the list You can only import data for a single business object for each import run Navigate to the business object by expanding the list.  Only objects for the type of data selected in step 1 (e.g., master data) are selectable. The rest are greyed out. Using the wizard you can only import data for a single business object at a time. For example, you cannot mix business partner master data and item master data in the same import run. 20
+
+---
+
+## Diapositiva 21
+
+21 PUBLIC DTW Import Wizard Select the file type for the saved template:  Comma separated  Semicolon separated  Tab delimited  ODBC In this step select the format of the saved template files (comma separated, semicolon separated, or tab delimited). If you select ODBC, you will be prompted to supply a SQL query. The query will extract the data from a source database, and import the data into the target SAP Business One database. 21
+
+---
+
+## Diapositiva 22
+
+22 PUBLIC DTW Import Wizard  The wizard displays all the available templates for the selected business object  For each table to be imported, select the browse button and locate the saved template file (comma, semi-colon or tab delimited)  After selection, the path to the template is shown The wizard displays all the available templates for the selected business object. For each table you want to import, select the browse button and then locate the relevant saved template (saved as a comma, semi-colon or tab delimited file). A red x indicates a template has been selected and the path is shown. 22
+
+---
+
+## Diapositiva 23
+
+23 PUBLIC DTW Import Wizard Use the Mapping Rules tab to visually check the mapping between the template source data fields and the DI API fields In this step, using the Mapping Rules tab, you can visually check that the fields in the source data template map to the DI API database fields. If the target field is blank, you can manually map it to the source field. Note: if several target fields are blank, you may have selected the wrong template file. 23
+
+---
+
+## Diapositiva 24
+
+24 PUBLIC DTW Import Wizard Use the Source Data tab to visually scan the template data to make sure each field is interpreted correctly On the Source Data tab you can visually scan the input data from the template to make sure the fields are interpreted correctly by DTW. 24
+
+---
+
+## Diapositiva 25
+
+25 PUBLIC DTW Import Wizard Use the Target Data tab to visually scan the expected target data fields based on the mapping Expand the object structure to see the expected data for each field Use the Target Data tab to visually scan the target data fields based on the mapping. Expand the object (BOM/BO) structure then expand each row and each field to see the expected data. This can be useful for troubleshooting errors during an import. If the target fields are not as expected this might be the cause of the error. 25
+
+---
+
+## Diapositiva 26
+
+26 PUBLIC DTW Import Wizard You can define how the wizard will handle any errors during the import: Cancel the import after the first error is encountered Ignore all errors and import valid records Ignore a set number of errors and import valid records Option to run a simulation before actual import of records You can define how the wizard will handle any errors during the import: • Cancel the import after the first error is encountered • Ignore all errors and import valid records • Ignore a set number of errors and import valid records Also on this step you have the option to run a simulation before the actual import.  The simulation will point out any errors but will not import any data. SAP recommends that you run a simulation first, or import the data into a test database so you can validate the results. 26
+
+---
+
+## Diapositiva 27
+
+27 PUBLIC DTW Import Wizard Log entry produced for each record imported into the database The final step is the import of data.  A log is produced for each record imported successfully into the database. 27
+
+---
+
+## Diapositiva 28
+
+28 PUBLIC DTW Errors  If any errors are detected with the template data, the Key and Description of the failing record is shown  Drill-down to the row in the template by clicking the Error File button Depending on the error options you selected, the import run will stop when one or more errors occur. For failed records, the window will show information to help you debug the error. You can also drill-down to see the row in the template that failed by clicking the Error File button. 28
+
+---
+
+## Diapositiva 29
+
+Working With the Templates 29
+
+---
+
+## Diapositiva 30
+
+30 PUBLIC  To import data into a user-defined field, add the name of the user-defined field and the data in a column at the end of the template  If an object has many user-defined fields, you have the option to generate a new template for the object that includes user-defined fields Importing into User-Defined Fields The predefined templates obviously do not include user-defined fields. If the object has just a few user-defined fields, you can simply add the name of the user-defined field in a column header at the end of the template and enter the data in the column. Use the database field name for the user-defined field, which starts with “U_”. If the object has many user-defined fields, you have the option to generate a new template for the object that includes all the user-defined fields.  This is done from within the DTW application and is covered in the next section. 30
+
+---
+
+## Diapositiva 31
+
+31 PUBLIC Adding or Updating Contact Employees for a Business Partner - 1  You can update or add records to the child tables of an existing object without the parent template  For example, you can add new contact employees, or update contact information, for a business partner using the child template OCPR  Enter the key for the parent table in column A  To update an existing contact, enter the LineNum in column B as 0, 1, 2, etc.) to match the order in the object  To add a new contact for a business partner, leave the LineNum blank You can use the child templates without the respective parent template to update or add individual records for the child tables of an existing object. For example, you can update or add new contact employees in the child table OCPR for the business partner master data object. In the child template, enter the code for the parent object in column A, and identify the child row using the LineNum field in column B. The LineNum field is entered as an integer: 0 for the first row, 1 for the second row, and so on. For contact persons, the LineNum field is not saved in the database: • To update an existing contact, you must enter 0 for the first contact, 1 for the second contact, and so on. The order is determined by the order the contacts were initially added and this is how they display on the Contact Persons tab of the master data record • To add a new contact person to an existing object, leave the LineNum field blank In the slide example: • For business partner C00001, the spreadsheet will update the first contact (LineNum 0) and will add 2 new contacts (LineNum left blank) • For business partner C00300, the spreadsheet will update 3 existing contacts (LineNum 0, 1 and 2) • For business partner C00005, the spreadsheet will add 2 new contacts (LineNum left blank) 31
+
+---
+
+## Diapositiva 32
+
+32 PUBLIC Adding or Updating Contact Employees for a Business Partner - 2 When you run the import, choose “Update Existing Data” Only select the OCPR spreadsheet  as the data source When you run the DTW import, choose the option to “Update Existing Data” so that the parent template is not required. Then only select the child spreadsheet file as the data source. 32
+
+---
+
+## Diapositiva 33
+
+33 PUBLIC Adding or Updating Addresses for a Business Partner To add new addresses, or update existing addresses for a business partner, you do not use the LineNum field because you can identify addresses using the Address ID: Enter the code in column A In column C enter the Address ID that will be updated or added to the business partner record In column N enter the address type (bo_BillTo or bo_ShipTo)  When you run the import, choose “Update Existing Data” Only select the CRD1 spreadsheet  as the data source To add new addresses, or update existing billing and shipping addresses for a business partner, you do not use the LineNum field because you can identify each address using its Address ID. The Address ID can be viewed in the business partner master data. Each address for the business partner has a unique Address ID. To update or add new billing and shipping addresses:  Enter the code in column A  In column C enter the Address ID to match the address that will be updated, or a new Address ID for a new billing or shipping address  In column N enter the address type (bo_BillTo or bo_ShipTo)  When you run the import, choose “Update Existing Data”  Only select the CRD1 spreadsheet  as the data source In the slide example: • For the customer C00001, 2 new addresses are being added • For the customer C00005, the existing shipping and billing addresses are updated 33
+
+---
+
+## Diapositiva 34
+
+Customized Templates This segment covers the creation of customized templates. 34
+
+---
+
+## Diapositiva 35
+
+35 PUBLIC Business Example for Customized Templates  You want to import item master data into a new SAP Business One system.  The predefined template OITM contains many fields including sales and purchasing units and properties. The products to be imported do not use many of these template fields.  To simplify the data entry process, you can remove unused fields and generate a custom template. This will make the templates easier to work with. Some objects in SAP Business One contain many, many fields. Examples are the business partner master data (OCRD) and the item master data (OITM). In this example, the products being imported do not use many of the fields in the OITM template.  To simplify the process of entering data in the template, you can remove unused fields and generate a custom template. 35
+
+---
+
+## Diapositiva 36
+
+36 PUBLIC Customize Template - 1  To create a template tailored to your needs, choose Templates>Customize Template  Select the business object which will be the basis for the new template You may have noticed that the predefined templates are based on a preconfigured data transfer interface that maps to SAP Business One tables. You can create custom templates to better match to the data you are importing. For example, if you do not use most of the fields in the predefined template, you can create a custom template with just the columns you need. From the DTW user interface, select Templates Customize Template. The select the business object which will be the basis for the new template. In the example the item master data object is selected.
+
+---
+
+## Diapositiva 37
+
+37 PUBLIC Customize Template - 2  Expand the node for the table to see the complete list of DI API fields  When you select a field, the field’s attributes display in the lower right  You can:  Rearrange the field order by dragging and dropping  Delete a field from the template  Add a previously removed field When you expand the node for an object, such as the Items object, you see a list of the fields from the predefined template. When you select a field you can see the field’s attributes displayed in the lower right. You can rearrange the order of the fields by dragging and dropping. So you can move the fields you use the most to appear first in the template. You can also right-click on a field and either remove it from the template, or add back a previously deleted field. Do not remove mandatory fields or primary keys from the template. You can only move or delete one field at a time. .
+
+---
+
+## Diapositiva 38
+
+38 PUBLIC Customize Template - 3  After you have rearranged the fields, right- click the table node and select Create Template for the Structure  The new template is saved in the templates folder as a .xlt file After you have rearranged the fields, right-click the table node and choose the option to create a new template. The template is saved as an .xlt file. You can then enter your data into the template and save as a delimited file for the import.
+
+---
+
+## Diapositiva 39
+
+39 PUBLIC Generating UDF Templates User-defined fields (UDFs) added to an object do not appear in the predefined templates, but you can generate a new template to include the UDFs: Choose Generate UDF Templates The window shows a list of all objects with UDFs The system will generate templates for selected objects with the UDFs included in the template The templates are saved in the file location shown in the window • User-defined fields (UDFs) added to an object do not appear by default in the predefined templates. If there are only a few UDFs for the object, you can add them manually at the end of the predefined template. If there are many UDFs for an object you can generate a new template that includes the UDFs. • Choose the Generate UDF Templates option from the Templates menu. A window opens showing all objects that contain UDFs. Deselect objects for which you do not want templates generated. • When you choose Generate Templates the system generates a new template for each of the selected objects with the UDFs. Included in the template. Columns for the UDFs are automatically added to the end of the predefined template. • The new templates are saved in the location displayed in the window. You can browse to select a different location.
+
+---
+
+## Diapositiva 40
+
+40 PUBLIC Generating UDO Templates You can also generate new templates for user- defined objects (UDOs):  Choose Generate UDO Templates  The window shows all user-defined objects that have been registered (type Master Data or Document)  The system will generate templates for selected user-defined objects User-defined Objects (UDOs) are tables added to the database by the partner or by a user. Often it is easier to populate these objects using DTW. You can generate DTW templates for the UDO tables by choosing Generate UDO Templates from the Templates menu. The window will show all User-defined Objects that have been registered with the database (object type is Master Data or Document). A template will be generated for each selected UDO.
+
+---
+
+## Diapositiva 41
+
+41 PUBLIC Summary Key points from this course: • Data Transfer Workbench (DTW) makes it possible to import setup data, master data, and open transactions in bulk. • DTW provides predefined templates for the objects in SAP Business One, based on the DI API interface.  The Database Tables Reference provides documentation for the templates. • When you use a SAP HANA database you can increasing performance by checking the Enable Faster Import checkbox. DTW will import the data using multiple parallel threads. • After you have entered the data in the template, save the templates as a tab, comma, or semi- colon delimited file before you run the import wizard. SAP recommends that you run a simulation first, or import the data into a test database so you can validate the results. • You can create customized templates; for example, a template with only the columns you need for the data to be imported. • You can also generate new templates for an object that include user-defined fields (UDFs). And you can generate new templates for registered user-defined objects (UDOs). Here are some key points to take away from this course. Please take a minute to review these key points: • The Data Transfer Workbench (DTW) makes it possible to import setup data, master data, and open transactions in bulk. • DTW provides predefined templates for the objects in SAP Business One, based on the DI API interface.  The Database Tables Reference provides documentation for the fields in the templates, including default values for fields, as well as field lengths and constraints on the data. • When you use a SAP HANA database you can increasing the performance of the import by checking the Enable Faster Import checkbox . DTW will import the data using multiple parallel threads. • After you have entered the data in the template, save the templates as a tab, comma, or semi-colon delimited file before you run the import wizard. SAP recommends that you run a simulation first, or import the data into a test database so you can validate the results. • You can create customized templates for ease of use. For example, if you do not use most of the columns in the predefined template, you can create a customized template with only the columns you need to import. • You can also generate new templates for an object that include any user-defined fields (UDFs) added to the object. And you can generate new templates for registered user-defined objects (UDOs) so you can import data into them using DTW. 41
+
+---
+
+## Diapositiva 42
+
+43 No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and/or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+
+---
+

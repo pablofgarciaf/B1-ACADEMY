@@ -1,0 +1,86 @@
+# Transcripción por Diapositiva: 10_FinSetup_11_COA_COAConcepts_ES
+
+## Diapositiva 1
+
+PUBLIC Configuración financiera: Plan de cuentas: Conceptos SAP Business One Versión 10.0 Bienvenido al tema Plan de cuentas. 1
+
+---
+
+## Diapositiva 2
+
+En esta sesión, debatiremos la estructura del plan de cuentas y el efecto de los procesos estándar en el plan de cuentas. 2 PUBLIC Al finalizar este tema, podrá:  De acuerdo con las convenciones de contabilidad debata:  La estructura de plan de cuentas.  El efecto de los procesos estándares en el plan de cuentas Objetivos
+
+---
+
+## Diapositiva 3
+
+Imagine que está implementando SAP Business One a un nuevo cliente.  Analiza con María, la contable, el efecto de los procesos de ventas y compras en el plan de cuentas y, en consecuencia, en los informes financieros.  María cree que esta estructura le ayudará a presentar los informes financieros de manera precisa y estructurada. 3 3 PUBLIC Escenario empresarial Implementará SAP Business One en un nuevo cliente, OEC Computers.  Analiza con María, la contable, el efecto de los procesos de ventas y compras en el plan de cuentas y, en consecuencia, en los informes financieros.  María cree que esta estructura le ayudará a presentar los informes financieros de manera precisa y estructurada.
+
+---
+
+## Diapositiva 4
+
+¿Cómo se presentan los saldos de datos maestros de interlocutor comercial en el plan de cuentas? Los saldos de datos maestros de interlocutor comercial no aparecen en el plan de cuentas. Las cuentas asociadas de clientes y proveedores acumulan las transacciones de cliente y proveedor en sus saldos. Por ejemplo, cuando se contabiliza una factura de clientes, se utiliza la cuenta de clientes relacionada con el cliente además de la cuenta del deudor. Por consiguiente, el plan de cuentas presenta el estatus financiero completo de la empresa, y también los informes financieros (por ejemplo, Balance de sumas y saldos y Balance). 4 PUBLIC Pregunta de reflexión: Plan de cuentas  ¿Cómo se presentan los saldos de datos maestros de interlocutor comercial en el plan de cuentas? Cuenta asociada Debe Haber Clientes Cliente 105 Cuenta de impuestos Cuenta de impuestos 5 Cuenta de ingresos Cuenta de ingresos 100 Factura de clientes Cuenta asociada Clientes =
+
+---
+
+## Diapositiva 5
+
+El plan de cuentas es un índice de todas las cuentas de mayor utilizadas por la empresa. Cada cuenta de mayor tiene:  Un código de cuenta.  Una descripción de cuenta y  Información adicional que determina las funciones de la cuenta de mayor. Al implementar SAP Business One define (o importa):  Plan de cuentas y  Cuentas de mayor predeterminadas que se utilizarán al crear transacciones en los procesos empresariales habituales: Ventas, Compras, Inventario, etc. Los documentos en los procesos de compra y venta crean asientos automáticos que están registrados en la ficha Asiento y afectan a los saldos de cuentas. Los saldos de cuenta también se ven afectados por los asientos manuales y otras transacciones contables, como el proceso de Cierre del período, que transfiere los balances de las cuentas de pérdidas y ganancias a la cuenta de balance. 5 PUBLIC Plan de cuentas Plan de cuentas El plan de cuentas es un índice de todas las cuentas de mayor utilizadas por la empresa. Plan de cuentas Determinación de cuentas de mayor Asientos automáticos Asientos manuales Oferta de ventas Pedido de cliente Entrega Factura de clientes Cobro Depósito
+
+---
+
+## Diapositiva 6
+
+El plan de cuentas está organizado en cajones y niveles. Veamos este ejemplo de plan de cuentas. El plan de cuentas varía de acuerdo con la ubicación de la empresa. La organización del plan de cuentas sigue los principios contables generalmente aceptados (GAAP). La ventana de plan de cuentas organiza sus cuentas en cajones. 6 PUBLIC Estructura del plan de cuentas
+
+---
+
+## Diapositiva 7
+
+En el libro mayor, se distingue entre cajones de balance y cajones de cuentas de resultados, también denominados pérdidas y ganancias. Comencemos con cuentas de balance:  Los primeros 3 cajones: Activo, Pasivo y Capital propio (o Capital y Reservas), normalmente conforman las cuentas de balance, por ejemplo, los impuestos sobre ventas y la cuenta de proveedores.  El saldo contable de estas cuentas se mantiene de un ejercicio al siguiente.  Las cuentas de balance reflejan el valor monetario de la empresa: stock, activo, deuda, etc. 7 PUBLIC Estructura del plan de cuentas: Cajones de balance Balance Cuenta de proveedores Cuenta bancaria Libro mayor Activos Pasivo Cap. + Res. Vol.  negocios Costes de ventas Costes explotación No derivados de explotación Impuestos y otros gastos #9 #10
+
+---
+
+## Diapositiva 8
+
+Luego, están las cuentas de pérdidas y ganancias:  Los siguientes 5 cajones: Ingresos (o Volumen de negocios), Coste de ventas, Gastos (o Costes de explotación), Financiación (o Gastos e ingresos no derivados de explotación) y Otros ingresos y gastos (o Impuestos y partidas extraordinarias) normalmente conforman las cuentas de pérdidas y ganancias, por ejemplo, las cuentas de ingresos o gastos.  El saldo contable de estas cuentas se debe compensar al final de cada ejercicio; esto se denomina cierre del período.  Las cuentas de pérdidas y ganancias reflejan los cambios en el valor de la empresa, como: cuando vende stock: el coste de la cuenta de variación de existencias se ve afectada y aumenta los ingresos. Por último, tenemos dos cajones de pérdidas y ganancias con propósito opcional. - Estos cajones no tienen fijada una finalidad predefinida y, en la mayoría de los casos, están vacíos, en función de la localización y el modelo de plan de cuentas. - Si es necesario, cada empresa puede designar un cajón adicional para una determinada área de contabilidad. 8 PUBLIC Estructura del plan de cuentas – Cajones de pérdidas y ganancias Cuenta ingresos Pérdidas y ganancias Activos Pasivo Cap. + Res. Volumen de negocios Costes de ventas Costes de explotación No derivados de explotación Impuestos y otros gastos #9 #10
+
+---
+
+## Diapositiva 9
+
+Los requisitos de informes financieros impulsan la mayoría de las decisiones de configuración y parametrizaciones iniciales en el plan de cuentas. Los diferentes informes se basan en los saldos de cuenta relevantes de una fecha/rango de fechas seleccionado y se visualizan de acuerdo con el nivel de su cajón:  El balance resume el valor de las cuentas de capital propio, activo y pasivo de la empresa.  El balance de sumas y saldos detalla para cada cuenta: el saldo inicial de un determinado período, todas las partidas del Debe y el Haber, y el saldo final.  La cuenta de pérdidas y ganancias se determina después del final del ejercicio. Los saldos de las cuentas de gastos se restarán de los saldos de las cuentas de ingresos para obtener ganancias o pérdidas del ejercicio. 9 PUBLIC Balance Estructura del plan de cuentas en asociación con los informes financieros Cajones de balance Cuenta de proveedores Cuenta ingresos Cuenta de pérdidas y ganancias Informes financieros Balance de sumas y saldos Cajones de pérdidas y ganancias Cuenta bancaria Libro mayor Activos Pasivo Cap. + Res. Volumen de negocios Costes de ventas Costes de explotación No derivados de explotación Impuestos y otros gastos #9 #10
+
+---
+
+## Diapositiva 10
+
+El plan de cuentas organiza las cuentas del libro mayor de la empresa en una estructura jerárquica. El nivel superior de la estructura (nivel 1) consta de secciones o grupos de cuentas de diferentes clases (activo, pasivo, capital y reservas, volumen de negocios, etc.). El sistema muestra la sección como un cajón de armario. Cada cajón tiene un título de sección. Si es necesario, puede cambiar el título del cajón. En ese caso, el nombre actualizado aparecerá en los informes financieros. Puede definir hasta 10 niveles. Mientras que el nivel 1 es el nivel de cajón, los niveles siguientes se pueden utilizar como títulos para agrupar las cuentas y para las cuentas activas. Se recomienda organizar las cuentas por nivel de forma lógica y adecuada para los procesos de contabilidad financiera y gestión de informes de su localización. 10 PUBLIC Activos Pasivo Cap. + Res. Volumen de negocios Costes de ventas Costes de explotación No derivados de explotación Impuestos y otros gastos #9 #10 Niveles en el plan de cuentas Activos fijos Capital circulante ... Activos fijos materiales Activos fijos inmateriales Terreno y edificios Centros y maquinaria Gastos constitución Patentes, etc. Terreno en propiedad Edificios ... ... ... ... Nivel 2 Nivel 3 Nivel 4 Nivel 5 Libro mayor Cuentas activas... Cuentas activas... ...
+
+---
+
+## Diapositiva 11
+
+El sistema muestra títulos en azul y cuentas activas en negro. Las cuentas definidas en la Determinación de cuentas de mayor (cuentas por defecto) se muestran en verde. Una cuenta de título resume todos los saldos de las cuentas activas debajo de ella. Veamos este ejemplo específico del plan de cuentas que contiene 5 niveles: Los niveles de 2 a 4 pueden contener cuentas activas o títulos que combinan varias cuentas activas. Nivel 5, en este ejemplo, contiene solo cuentas activas. Tenga en cuenta que solo las cuentas activas se pueden contabilizar en SAP Business One. Los informes financieros muestran el título y los saldos de la cuenta activa. Para ver el estado financiero de la empresa en el informe de una manera precisa y estructurada, se recomienda definir todas las cuentas activas en el mismo nivel. En nuestro ejemplo, todas las cuentas activas se definen en el nivel 5. 11 PUBLIC Activos Pasivo Cap. + Res. Volumen de negocios Costes de ventas Costes explotación No derivados de explotación Impuestos y otros gastos #9 #10 Niveles en el plan de cuentas Activos fijos Capital circulante ... Activos fijos materiales Activos fijos inmateriales Terreno y edificios Centros y maquinaria Gastos constitución Patentes, etc. Terreno en propiedad Edificios ... ... ... Nivel 2 Nivel 3 Nivel 4 Nivel 5 Cuenta activa por defecto Cuenta activa Leyenda Cuenta ... Título Cuenta Cuentas activas... Cuenta Cuenta Cuentas activas... Libro mayor
+
+---
+
+## Diapositiva 12
+
+12 PUBLIC Detalles de la cuenta Cada cuenta se define en una moneda determinada o de la forma adecuada para todas las monedas Las cuentas pueden estar relacionadas con un proyecto financiero, lo que permite ejecutar informes financieros por proyecto. En el plan de cuentas, existen varias definiciones relacionadas con la cuenta. Trataremos algunas de ellas. María, la responsable de contabilidad, ha añadido varias cuentas para registrar gastos e ingresos relacionados con la gran cumbre a la que van a asistir. La imagen muestra una cuenta de gastos de viaje que María ha añadido. • Primero, María selecciona la moneda de la cuenta. Cada cuenta del plan de cuentas puede tener una moneda diferente o puede establecerse como relevante en todas las monedas. Consulte el tema del curso: Trabajar con monedas para conocer más sobre las monedas de la cuenta. María ha confirmado que la nueva moneda de la cuenta es local. • A continuación, la ha enlazado a un proyecto financiero. Esto le permite a María generar informes financieros filtrados en este proyecto. María ha introducido un nuevo código de proyecto financiero que se ha creado para esta cumbre. 12
+
+---
+
+## Diapositiva 13
+
+13 PUBLIC Detalles de la cuenta Si es necesario, es posible definir una cuenta como activa únicamente en un período determinado Se pueden definir saldos mínimos y máximos para cuentas con fines de control Puede definirse un aviso o una validación de bloqueo en la ventana Parametrizaciones de documento Por último, María selecciona Detalles de la cuenta para abrir la ventana Detalles de cuenta de mayor de la cuenta de gastos Cumbre 17 - Viaje. En el campo Activo, fija el período en el que la cuenta debe estar activa, que empieza en marzo y termina a finales de año. Según este planteamiento, comprueba que no se puedan registrar otras transacciones en la cuenta el próximo año. Tenga en cuenta que, por defecto, todas las cuentas están activas sin período restricción. Otra definición útil en la ventana Detalles de cuenta de mayor es Saldo de cuenta permitido. María ha abierto la ventana Detalles de cuenta de mayor para introducir los saldos mínimo y máximos permitidos para la cuenta de gastos menores. Desea asegurarse de que la cuenta no está por debajo de un saldo de 100 y, por lo tanto, introduce el valor 100 en el campo De. Además, cuando el saldo de gastos menores alcance 5000, desea transferir el efectivo a la de la cuenta bancaria de la empresa. Por lo tanto, fijará el saldo máximo en 5000. María ya ha definido una validación de bloqueo en la ventana Parametrizaciones de documento, como se muestra en la imagen. 13
+
+---
+
+## Diapositiva 14
+
+A continuación, se detallan algunos puntos clave para tener en cuenta:  El plan de cuentas está estructurado en dos tipos de cajones: • Cajones de balance que normalmente contienen cuentas de balance. • Y cajones de pérdidas y ganancias (cuenta de resultados) que generalmente incluye cuentas de pérdidas y ganancias.  Los distintos informes financieros se ejecutan en: • los saldos de cuenta relevantes al rango de fechas seleccionado • y se presentan según su cajón, nivel y clase.  El plan de cuentas organiza las cuentas de mayor de una empresa en una estructura jerárquica: • el nivel superior de la estructura (nivel 1) consta de secciones o grupos para distintas clases de cuenta. El sistema muestra la sección como un cajón de armario. • Los niveles siguientes se pueden utilizar como títulos para agrupar las cuentas y para las cuentas activas. • Solo las cuentas activas se pueden contabilizar en SAP Business One.  El plan de cuentas contiene muchas definiciones relacionadas con la cuenta, como por ejemplo: • Moneda de la cuenta • Proyecto relacionado • Período de actividad limitado • Saldo de cuenta mínimo y máximo 14 14 PUBLIC Resumen A continuación, se detallan algunos puntos clave: El plan de cuentas está estructurado en dos tipos de cajones: • Cajones de balance que normalmente contienen cuentas de balance. • Y cajones de pérdidas y ganancias (cuenta de resultados) que generalmente incluye cuentas de pérdidas y ganancias. Los distintos informes financieros se ejecutan en: • Las cuentas de saldos relevantes al rango de fechas seleccionados • Y se presentan según su cajón, nivel y clase El plan de cuentas organiza las cuentas de mayor de una empresa en una estructura jerárquica. • El nivel superior de la estructura (nivel 1) consta de secciones o grupos para distintas clases de cuenta. El sistema muestra la sección como un cajón de armario. • Los niveles siguientes se pueden utilizar como títulos para agrupar las cuentas y para las cuentas activas. • Solo las cuentas activas se pueden contabilizar en SAP Business One. El plan de cuentas contiene muchas definiciones relacionadas con la cuenta, como por ejemplo: • Moneda de la cuenta • Proyecto relacionado • Período de actividad limitado • Saldo de cuenta mínimo y máximo
+
+---
+

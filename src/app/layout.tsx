@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { AuthProvider } from "@/context/AuthContext";
+import HelpWidget from "@/components/site/HelpWidget";
 import "./globals.css";
 
 const inter = Inter({
@@ -164,7 +165,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <AuthProvider>
-          {children}
+            {children}
+            <HelpWidget />
           </AuthProvider>
         </ThemeProvider>
       </body>

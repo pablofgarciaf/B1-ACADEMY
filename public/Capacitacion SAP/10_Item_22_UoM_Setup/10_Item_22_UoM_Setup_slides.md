@@ -1,0 +1,104 @@
+# Transcripción por Diapositiva: 10_Item_22_UoM_Setup
+
+## Diapositiva 1
+
+PUBLIC Items and Inventory Units of Measure Setup SAP Business One Version 10.0 Welcome to the topic on setting up units of measure and units of measure groups. 1
+
+---
+
+## Diapositiva 2
+
+2 2 PUBLIC Objectives At the end of this topic, you will be able to:  Set up unit of measure groups In this topic, you will learn how to set up unit of measure groups.
+
+---
+
+## Diapositiva 3
+
+3 3 PUBLIC Business Scenario OEC Computers buys cables for resale.  The cables are bought, stored and sold in different units of measure. They would like to set up a unit of measure group that contains all the units of measure used for cables. They would like to have the unit of measure group with its list of units to be automatically available when each new cable item is created. They would also like to set defaults for most frequently used units in sales and purchasing. OEC Computers buys cables for resale.  The cables are bought, stored and sold in different units of measure. They would like to set up a unit of measure group that contains all the possible units of measure for cables. They would like to have the unit of measure group with its list of units to be automatically available when each new cable item is created. They would also like to set defaults for most frequently used units in sales and purchasing.
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Business Example – Cable Items OEC Computers sells 3 types of cables. The items are stored in inventory by meters. They are purchased in reels. Each item can be sold three ways: by the meter, in reels and in spools. We will set up the units of measure then group them together to assign them to the items. OEC computers resells 3 different types of cables. All three cable items are stored in inventory by meters. The cables are purchased in reels of 100 meters. Each cable item can be sold three ways: by any number of meters (cut to measure), in 100 meter reels or in 50 meter spools. In our business example we will set up the units of measure that are used by our cable items, then we will group them together into a Unit of Measure Group that we can assign to the items. Then each cable item will contain a full list of all units of measure that these items use in transactions. Additionally we will be able to set up relationships from each of these units to barcodes, prices and packaging needed for the items. 4
+
+---
+
+## Diapositiva 5
+
+5 PUBLIC Steps to Set up UoMs for Items Define Units of Measure Define Unit of Measure Groups Assign Unit of Measure Groups to Item Groups Assign Unit of Measure Groups directly to Items Set  default values in the item for units of measure or 1 2 3 4 There are four main steps for setting up units of measures (often abbreviated to UoM) for items. First, define the list of all possible units of measure.  This is a global list for your company. If you want to use a unit in a document, it must be included this list. Second, decide on how you wish to combine the units into unit of measure groups.  The unit of measure groups should be created with some thought as to how items are packaged when they are purchased, sold or managed in inventory.  You want to define a unit of measure group that can be used for all items of a similar type. Once you have created the groups you can assign them to an item group or assign them directly to items.  The advantage of assigning the unit of measure group to an item group is that the unit of measure group will be assigned to an item automatically whenever it is created within that item group. Finally, once a unit of measure group is assigned to an item, you can set default values for units measure for each item. You can set default values for units in purchasing, sales, and inventory as well as in packaging. 5
+
+---
+
+## Diapositiva 6
+
+6 The first step for using units of measure is to define a global list of units of measure.  All units of measure used within the company are defined here. To define the units of measure open the Inventory Setup menu in the Administration module and choose Units of Measure. In this window, we define a general list of all the units of measures in the system. In our business example, we would like to set up unit of measure codes and groups for the cables we buy and sell. Since we store and sell our cables by length in meter units, we enter a unit code and unit name for meter. This new unit will be available for us to choose in the Item Master Data once we have added it to the unit of measure group of the item that we assign to the item. We will also need to add any other units we plan to use in transactions for cables, such as reels and spools. 6 PUBLIC Step 1: Define Units of Measure Administration Setup Inventory Units of Measure All units of measure used within the company are defined here.
+
+---
+
+## Diapositiva 7
+
+7 7 PUBLIC Add Dimensions to Units Administration Setup Inventory Units of Measure Optional: Add dimensions for each unit of measure. In the same window, we can also enter optionally dimensions for each unit of measure. Dimensions are very useful for determining packaging for items. Dimensions can be entered using characteristics such as length, width, height, and weight. Volume is automatically calculated based on the length, width and height. Here we see that some of the codes have these dimensions specified while other do not. It is not mandatory to enter values for the dimensions, but it can be helpful  The dimensions entered here will be the default values for these units when they are chosen in the item master data.  The dimensions can be changed in the item master. However if you frequently use the same unit of measure for many different items with different dimensions, it is recommended to leave these fields blank.
+
+---
+
+## Diapositiva 8
+
+In some cases, you may want to view or update the characteristics for system dimensions before adding new global units of measure.  Under the Inventory Setup menu, you will find two windows where you can enter characteristics for the dimensions.   One window is to define characteristics used for length and width and the other is for characteristics for measuring weight. 8 8 PUBLIC Characteristics for Global Units Administration Setup Inventory Length and Width / Weight
+
+---
+
+## Diapositiva 9
+
+9 9 PUBLIC Unit of Measure Group Concept Pack Small Pack 6-pack Pallet Carton Each Case Meter Reel Spool … List of UoM Groups Paper Media … Global Units of Measure Pack = 21x30x4 cm Small Pack = 0.5 Pack 6-Pack  =  6 Pack Carton = 24 Pack Pallet  = 48 Pack Paper UoM Group Each = Base unit Case = 100 X Each Carton = 10,000 X Each Media UoM Group Before we move to step 2 where we set up unit of measure groups.  Let’s take a moment to better understand the relationship between units of measure and unit of measure groups. In this illustration, we can see an example of how global units of measure can be grouped. A Unit of measure group is a set of units that are used for specific item types. Single units of measure can be grouped together as a subset.   Then each Unit of Measure group has definitions of the relationships between the units inside the group based on conversion rules. The units of measure can be used in different groups and can be related to different items. • This means that each unit of measure may have a different meaning for different items. For example in this illustration, we see that a carton is used for multiple purposes. The Carton unit of measure is used in both the Paper group and the Media group. • Sometimes, when using the same unit for many items, it is better not to enter the volume and weight dimensions in the Units of Measure Setup window. We can enter the dimensions manually for each Item Master data.
+
+---
+
+## Diapositiva 10
+
+The unit of measure group for cables needs to contain all the units we use for purchasing, storing and selling the cables. In step 1, we entered three unit of measure codes into the global units of measure list: meter, reel and spool. Now we can group the three units together into a unit of measure group which we will ultimately assign to our cable items. Since this unit of measure group will be used for cables, we call the group Cable. The first unit entered will be the base unit.  It is a best practice to use the unit used in inventory management as the base unit. Then we define the relationship between the base unit and all other units in the group. 10 10 PUBLIC Step 2: Define a Unit of Measure Group Group Definition: Meter = Base unit Reel = 100 Meters Spool = 50 Meters Cable Unit of Measure Group  The units needed for cables have been entered in the global Unit of Measure list  We group the units together in a UoM group called Cable  We set the inventory unit ‘Meter’ as the base unit  Then we define the relationship between the base unit and all other units in the group Pack Small Pack 6-pack Pallet Carton Each Case Meter Reel Spool …
+
+---
+
+## Diapositiva 11
+
+11 11 PUBLIC Unit of Measure Group windows #           Group                             Group Description Unit of Measure Groups 1 Manual                          Manual 2          Paper                             Paper 3          Cable                             Cable Setup Inventory  Units of Measure Groups Group Definition – Cable - Setup 1            1                    Meter             =                  1                           Meter 2            1                    Reel               =              100                           Meter 3            1                    Spool = 50 Meter #         Alt Qty Alt UoM =          Base Qty Base UoM These are the global units of measure we defined in the Unit of Measure setup window Then you enter alternative units of measure and their relationship to the base unit In the first row you choose the base unit. Let’s take a look at the Unit of Measure Group windows and settings In the Units of Measure Groups window, we create an entry for our cable group with a group code and description. Then choose the Group Definition button to open a window to define the relationship between units of measure within the group. Each group has a base unit.  All the other units in the same group are related to the base unit by conversion rules. In our example, we enter the unit “Meter” as the base unit since this is the most commonly used unit for the cables.  We track cable inventory by meters and we buy and sell all our cables in units of measure that are all based on the meter. Note that since the Meter is the base unit, on the first row the Alternative UoM is also set to Meter and the Alternative quantity and the Base Quantity columns are automatically set to “1” and are read only. Now we can add other units to our group, but they must always be related back to the base unit. In our example, we purchase the cables in reels.  Therefore we enter Reel as an Alternative UoM. For each additional unit we add, we need to enter the fields alternative quantity and base quantity.   One reel is equal to 100 meters of cable, so we set the alternative quantity to 1 and the base quantity to 100.
+
+---
+
+## Diapositiva 12
+
+12 12 PUBLIC Step 3 Option 1: Assign UoM Group to Item Group Item Group Name            Cables General Default UoM Group                           Cable Default Inventory UoM Meter You can assign a unit of measure group as the default for an item group. Once you assign a default UOM group, you can set a default for the Inventory unit of measure. Be aware that this value cannot be changed in an item once there are existing transactions for that item. Item Group – Setup An optional step 3 is to define default values for the UoM group and Inventory UoM in your item groups. If you enter only the default UoM Group and not the inventory UoM, when adding a new item with this group the inventory UoM will be the base unit in the UoM group definition. In our business example, the purchasing coordinator can enter the Cable UoM group as the default for the Cables item group and specify a default inventory UoM. When a new item is added to the Cables item group, these default values are updated automatically in the item. When updating the default inventory unit of measure, a system message appears, asking if we want to update all existing items in this group as well.  This update will take place only for items with no inventory transactions. Remember the Inventory unit of measure is the unit used in all inventory postings and it cannot be changed for an item once there are existing transactions for an item. This means that in some cases you will not want to set a default Inventory unit of measure but instead will want to define it manually for each item.
+
+---
+
+## Diapositiva 13
+
+13 PUBLIC Step 3 Option 2: Assign UoM Group Directly to an Item Paper UoM Group Meter = Base unit Reel = 100 Meters Spool = 50 Meters If your item groups include many items that do not share common units of measure, then it may make more sense to assign unit of measure groups directly to each newly created item. You can assign a unit of measure group manually to an item by choosing from the dropdown box in the UoM Group field in the Item Master Data window. 13
+
+---
+
+## Diapositiva 14
+
+14 PUBLIC Step 4: Set Default Values in Item Master Data Assign Inventory Unit on the Inventory Data tab Assign a default Sales Unit on the Sales Data tab Assign a default Purchasing Unit on the Purchasing Data tab You can also optionally assign an inventory counting unit on the Inventory Data tab Once an item master has an assigned unit of measure group, you make the following settings in the item master record: Assign a inventory unit of measure – all inventory transactions will be made using this unit.  This is setting is made in the Inventory Data tab.  When you assign the unit of measure group to the item, the base unit of the group will default into this field automatically.  You can change the inventory unit of measure assignment as long as there are no existing transactions for the item. Also in the Inventory Data tab, you can optionally define a unit of measure for inventory counting. Assign a default sales unit of measure on the Sales Data tab. Assign a default purchasing unit of measure on the Purchasing Data tab. Additionally, after a unit of measure group is assigned to an item master data, you can then optionally define an inventory counting unit of measure, barcodes, pricing and packaging for the item relating to each unit of measure within the group. 14
+
+---
+
+## Diapositiva 15
+
+15 15 PUBLIC Recap: Menu paths for configuration of UoMs Administration Setup Inventory Units of measure Units of measure group Length and Width Weight Administration System Initialization General Settings Inventory Items • Automatically add all UoM Group Definitions to New and Existing Items There are several menu areas where you find unit of measure configuration settings. Most of the configuration settings for unit of measure codes and groups is in the Setup menu in the Administration module.  Here you can set up the unit of measure codes, the unit of measure groups and also characteristics that can be used to further define the codes such as length and width and weight. In the General Settings menu under the Inventory tab, you will find settings for items that include the option to automatically add all Unit of Measure Group definitions to new and existing items.
+
+---
+
+## Diapositiva 16
+
+16 There are four main steps for setting up units of measures for items.  First, define the units of measure that will be used globally.  Second, define units of measure groups. You do this by combining the units into unit of measure groups based on how items are managed when they are purchased, sold or managed in inventory.  Assign the unit of measure groups to item groups or assign them directly to items.  If you choose the latter, the unit of measure group will be assigned to an item automatically when it is created within an item group.  Set additional default values in the item for units of measure for use in purchasing, sales, and inventory. All the alternative units in the same unit of measure group are related to the base unit by conversion rules. Keep in mind that the inventory unit of measure for an item will be used for all inventory postings for that item.  This value is not changeable for an item once transactions exist for that item. 16 PUBLIC Summary Here are some key points:  There are four main steps for setting up units of measures for items. 1. Define the units of measure that will be used globally. 2. Define Unit of Measure groups. 3. Assign the unit of measure  groups to item groups or directly to items. 4. Set default values in the item for units of measure.  All alternative units in the group are related to the base unit by conversion rules.  Keep in mind that the inventory unit of measure for an item will be used for all inventory postings for that item.  This value is not changeable for an item once transactions exist for that item.
+
+---
+
+## Diapositiva 17
+
+18 No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.
+
+---
+

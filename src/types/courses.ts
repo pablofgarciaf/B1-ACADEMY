@@ -1,8 +1,11 @@
 export type TrackCode = 
-  | 'SAP-B1-CORE' 
+  | 'SAP-B1-LOGISTICS'
+  | 'SAP-B1-FINANCIALS'
+  | 'SAP-B1-IMPLEMENTATION'
+  | 'SAP-B1-PRODUCTION'
   | 'SAP-LOC-EC' 
-  | 'HEIN-NOM-EC' 
-  | 'HEIN-HCM-TALENT' 
+  | 'B1-NOM-EC' 
+  | 'B1-HCM-TALENT' 
   | 'SAP-VERT-EXP';
 
 export type SubmoduleLevel = 'OP' | 'ARQ';

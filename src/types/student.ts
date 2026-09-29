@@ -41,8 +41,15 @@ export interface StudentProfile {
   displayName: string;
   role: UserRole;
   avatarUrl?: string;
+  profilePhoto?: string | null; // base64 data URL or external URL
   enrollmentDate: string;
-  specialties: ('SAP-B1-CORE' | 'SRI-LOC-EC' | 'HEIN-NOM-EC' | 'HEIN-RRHH-EC' | 'VERTICALES-EC' | string)[];
+  specialties: ('SAP-B1-LOGISTICS' | 'SAP-B1-FINANCIALS' | 'SAP-B1-IMPLEMENTATION' | 'SAP-B1-PRODUCTION' | 'SRI-LOC-EC' | 'B1-NOM-EC' | 'B1-RRHH-EC' | 'VERTICALES-EC' | string)[];
+  selectedModules?: string[]; // slugs of modules the student chose to study
+  lastVisited?: {
+    moduleSlug: string;
+    lessonId: string;
+    timestamp: string;
+  };
   progress: Record<string, {
     courseId: string;
     courseTitle: string;

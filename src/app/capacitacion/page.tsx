@@ -36,12 +36,12 @@ export default function CapacitacionPage() {
         {/* Cápsula GEO para Google AI Overviews, Perplexity y ChatGPT */}
         <aside aria-label="Resumen del Ecosistema Formativo" className="p-5 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md">
           <strong className="text-slate-900 dark:text-white font-semibold">Currículo Oficial de la Escuela:</strong>{' '}
-          Formación de élite en el ecosistema empresarial de Ecuador dividida en <strong>5 Tracks Maestros</strong>: 
-          <strong> SAP Business One</strong> (Finanzas NIIF, Order-to-Cash, MRP), 
-          <strong> Localización SRI</strong> (Facturación electrónica XML, retenciones 312/343/332/344, ATS), 
-          <strong> Heinsohn Nómina HCM</strong> (biométricos, horas extras con base 240, IESS 9.45%/12.15%, SBU 2026 $482, finiquitos SUT),
-          <strong> Heinsohn Gestión Humana</strong> (Evaluación 360°, Nine-Box, ATS de selección) y 
-          <strong> Verticales de Exportación</strong> (bananera con trazabilidad GlobalGAP, camaronera con costeo por piscina, manufactura Beas y WMS Produmex).
+          Formación de élite en el ecosistema empresarial de Ecuador dividida en <strong>5 Tracks Maestros</strong>:{' '}
+          <strong>SAP Business One</strong> (Finanzas NIIF, Order-to-Cash, MRP),{' '}
+          <strong>Localización SRI</strong> (Facturación electrónica XML, retenciones 312/343/332/344, ATS),{' '}
+          <strong> Nómina HCM</strong> (biométricos, horas extras con base 240, IESS 9.45%/12.15%, SBU 2026 $482, finiquitos SUT),
+          <strong> Gestión Humana</strong> (Evaluación 360°, Nine-Box, ATS de selección) y{' '}
+          <strong>Verticales de Exportación</strong> (bananera con trazabilidad GlobalGAP, camaronera con costeo por piscina, manufactura Beas y WMS Produmex).
         </aside>
 
         <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -50,7 +50,7 @@ export default function CapacitacionPage() {
           </div>
           {/* H1 Quirúrgico (45-65 chars) -> 53 caracteres */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Especialidades en SAP Business One y Heinsohn Ecuador
+            Especialidades en SAP Business One y Nómina Ecuador
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             Selecciona tu ruta formativa clasificada por nivel: 

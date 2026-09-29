@@ -1,0 +1,98 @@
+# Transcripción por Diapositiva: 10_FixedAsset_11_FixedAsset_Intro_ES
+
+## Diapositiva 1
+
+PUBLIC Activos fijos: Introducción SAP Business One Versión 10.0 Bienvenido al tema Activos fijos: Introducción. 1
+
+---
+
+## Diapositiva 2
+
+ Al finalizar este tema, podrá:  Explicar el proceso para gestionar los artículos de activos fijos.  Reconocer términos clave en la solución Activos fijos. 2 PUBLIC Al finalizar este tema, podrá: Explicar el proceso para gestionar los artículos de activos fijos. Reconocer términos clave en la solución Activos fijos. Objetivos
+
+---
+
+## Diapositiva 3
+
+3 PUBLIC Escenario empresarial Bryce, el contador, quiere tener una opción para gestionar y controlar el valor de los camiones. Le habla de la solución Activos fijos de SAP Business One. OEC Computers utiliza una pequeña flota de camiones de reparto. Por lo tanto, tienen algunos camiones. OEC Computers  Veamos un ejemplo empresarial:  OEC Computers utiliza una pequeña flota de camiones de reparto.  Por lo tanto, tienen algunos camiones.  Bryce, el contador, quiere tener una opción para gestionar y controlar el valor de los camiones.  Le habla de la solución Activos fijos de SAP Business One.
+
+---
+
+## Diapositiva 4
+
+ Empezaremos revisando el submenú y las ventanas de SAP Business One.  Para habilitar la solución de activos fijos, vaya a la ficha Inicialización básica de la ventana Detalles de la empresa.  Marque la casilla de selección Habilitar activos fijos.  Una vez que el usuario marque la casilla, se activará la funcionalidad Activos fijos y habrá nuevas ventanas y campos disponibles en Gestión Configuración Finanzas Activos fijos.  Y en Finanzas Activos fijos.  En el submenú Activos fijos encontrará la ventana Datos maestros de activo fijo.  Esta ventana es muy parecida a la ventana Datos maestros de artículo, pero con la inclusión de las fichas Clase de artículo de activo fijo y Activos fijos.  Una vez que se activa la solución, no puede desactivarla.  Recuerde que debe tomar decisiones acerca de los requisitos legales e industriales junto con el contador del cliente. 4 PUBLIC Habilitar la solución activos fijos Gestión Inicialización del sistema Detalles de la empresa Inicialización básica Marque la casilla Habilitar activos fijos: El usuario tendrá a disposición nuevos campos y ventanas: – GestiónConfiguraciónFinanzasActivos fijos. – Finanzas Activos fijos.
+
+---
+
+## Diapositiva 5
+
+ Revisemos el ciclo de vida de un artículo de activo fijo en SAP Business One desde la compra hasta la capitalización, pasando por la amortización hasta el valor neto contable de cero.  Este es el proceso en un vistazo. En las siguientes diapositivas, hablaremos más sobre los diferentes pasos.  El primer paso es configurar un activo fijo en la ventana Datos maestros de activo fijo. Esta ventana le permite definir y gestionar todas las clases de artículos de activos fijos. En nuestro ejemplo, configuraremos un registro de activo fijo para un nuevo camión que OEC Computers compró al comienzo del ejercicio.  Un registro de datos maestros de activo se activa cuando el usuario compra un activo fijo mediante una factura de proveedor. La factura de proveedores genera automáticamente un documento de Capitalización.  El usuario puede seleccionar si generar el documento de Capitalización directamente o generarlo automáticamente desde la Factura de proveedores.  Cuando un usuario realiza una ejecución de amortización, el sistema lleva a cabo la amortización planificada hasta la fecha especificada.  Los documentos de activos fijos adicionales admiten la necesidad de realizar ajustes, si son necesarios, durante el ciclo de vida de una clase de artículo Activos fijos: Transferencias de activos fijos, Revalorización o Valorización de un activo.  Para poder decidir qué documentos de ajuste usar, debe verificar, junto con el contador del cliente, cuáles son los requisitos legales e industriales.  Y, por último, el usuario puede retirar un activo fijo mediante una factura de cliente. La Factura de clientes genera automáticamente un documento de Baja.  Para poder dar de baja el activo en una Factura de clientes, el usuario debe marcar el registro Datos 5 PUBLIC Defina los Datos maestros de un activo fijo Emita un documento Factura de proveedor/ Capitalización Ejecución de amortización/ Amortización manual Transferencia de activo fijo/ Revaloración/ Valorización Factura de clientes/ Documento de baja Clase de artículo: Activos fijos Factura de proveedor genera automáticamente un documento de Capitalización La ejecución de amortización contabiliza todas las amortizaciones planificadas Si Factura de cliente, marque Artículo de ventas El ciclo de vida de los Datos maestros de un activo fijo en SAP Business One Definición Activación Amortización Ajustes Baja OEC Computers OEC Computers Libro auxiliar de activos fijos
+
+---
+
+## Diapositiva 6
+
+maestros de activo fijo como Artículo de ventas.  Todas las transacciones se registran en el libro auxiliar de activos fijos y pueden seguirse en los diferentes informes específicos. 5
+
+---
+
+## Diapositiva 7
+
+ Veamos el ciclo de vida de los datos maestros de un activo fijo con referencia a la terminología de contabilidad estándar. La terminología se resalta en azul en la diapositiva.  En nuestro ejemplo, cuando definimos el nuevo camión que OEC Computers ha comprado, definimos la Vida útil del activo fijo. La vida útil de un activo es el período durante el cual se espera que un activo sea utilizable con los fines con los que fue adquirido. La vida útil puede o no puede coincidir con la vida física real o económica del activo fijo. Antes del fin de la vida útil del activo, el activo debe amortizarse por completo. Definimos la vida útil de este camión en 36 meses.  El registro Datos maestros de activo fijo se activa cuando el usuario compra un activo fijo mediante una factura de proveedores. La factura de proveedores genera automáticamente un documento de Capitalización.  Capitalización es el proceso de registrar la adquisición y el coste de producción como un activo fijo. El valor de adquisición del camión es 6000.  La Fecha valor de activo fija la Fecha de capitalización en los Datos maestros de activo fijo.  En la Factura de proveedores, la Fecha valor de activo (en la ficha Finanzas) es igual que la fecha de contabilización de la factura de proveedores. Esta fecha se puede cambiar antes de añadir la Factura de proveedores para actualizar la Fecha valor de activo en el documento de Capitalización. Para el camión indicamos el 1º de enero.  Cada período, la empresa calcula la amortización del activo fijo. La amortización es la reducción en el valor contable de un activo durante su vida útil con fines contables e impositivos. La amortización se incluirá en los gastos de la empresa. Se planifica que el camión reduzca su valor en 2000 cada año.  Durante la vida útil del activo, el sistema calcula el Valor neto contable del artículo. El valor neto contable es el valor calculado de un activo fijo utilizando el coste histórico del activo menos la amortización acumulada. Entonces, en nuestro caso, después del primer año el valor del camión será de 4000.  Una baja es la eliminación de un activo fijo o de parte de un activo fijo de la cartera de activos fijos.  Hay dos maneras de dar de baja un activo fijo: por factura de clientes si se vende el activo fijo o por baja si no hay ningún cliente involucrado y se debe amortizar el activo fijo. Una vez dado de baja total el activo, en la cuenta de balance, en el Libro auxiliar de activos fijos, su valor se registrará en cero.  Tenga en cuenta que en el documento de baja existe la opción de baja parcial. En ese caso, el activo fijo contendrá el valor restante hasta el final de la vida útil del artículo. 6 PUBLIC Libro auxiliar de activos fijos Defina los Datos maestros de un activo fijo Emita un documento Factura de proveedor/ Capitalización Ejecución de amortización/ Amortización manual Transferencia de activo fijo/ Revaloración/ Valorización Factura de clientes/ Documento de baja • Vida útil = 36 meses • Capitalización • Activo de costes de adquisición y producción = 6000 • Fe. valor = 1 enero • Amortización = 2000 por año • Val. neto contable = 4000 después de 1 año • Baja total = valor 0 El ciclo de vida de los datos maestros de un activo fijo: Contexto de terminología Definición Activación Amortización Ajustes Baja OEC Computers OEC Computers
+
+---
+
+## Diapositiva 8
+
+ Veamos un ejemplo. Tenemos el nuevo camión que OEC Computers compró a comienzos del ejercicio. ¿Qué definiciones son necesarias para gestionar la vida útil del activo fijo?  Primero, definimos este camión como Datos maestros de activo.  Después, anexamos un grupo de definiciones relevante a este tipo de activo a los datos maestros de activo. En nuestro ejemplo usamos el grupo de definiciones Vehículos pesados.  La definición principal en los Datos maestros de activo es la Clase de activo que incluye la asociación a otras definiciones: Área de amortización, Determinación de cuentas y Clase de amortización.  Cada activo fijo se asignará a una clase de activo. En nuestro ejemplo, el Camión pertenece a la clase de activo Vehículos pesados.  Cada clase de activo incluye la definición predeterminada de otras parametrizaciones.  El Área de amortización es una dimensión financiera que muestra la valoración de un activo con un fin determinado, por ejemplo: amortización contable, amortización fiscal o amortización para contabilidad de costes.  Debe definir un área de amortización como área principal.  En nuestro ejemplo, el área principal es GAAP, es decir, Principios Contables Generalmente Aceptados locales  El usuario puede definir un área adicional de ser necesario. En nuestro ejemplo, definimos los IFRS en el área adicional, es decir, los International Financial Reporting Standards.  El área de amortización principal (en nuestro ejemplo, GAAP) contabiliza transacciones en el sistema.  El área adicional (en nuestro ejemplo, IFRS) puede usarse en los informes.  La definición Determinación de cuentas permite al sistema seleccionar automáticamente las cuentas de mayor relevantes para la contabilidad de activos.  La Clase de amortización clasifica la amortización según el motivo de la amortización acumulada. Se incluye la opción para definir el método para el cálculo de valor. En nuestro ejemplo elegimos el método lineal. 7 PUBLIC Definición de activos fijos Clase de activo Camión Clase de amortización Determinación de cuentas Área de amortización Clase de artículo: Activos fijos Principales áreas de amortización: GAAP Método: Lineal Código: Vehículos pesados Código: Vehículos pesados OEC Computers
+
+---
+
+## Diapositiva 9
+
+ Una vez que anexe la clase de activo en la ventana Datos maestros de activo fijo, todas las definiciones relacionadas se aplicarán al activo fijo seleccionado.  En este ejemplo, puede ver que las Áreas de amortización y las Clases de amortización definidas para la Clase de activo Vehículos pesados se aplican al registro Datos maestros de activo fijo visualizado.  Puede seguir el proceso de gestión de activos mediante las diferentes subpestañas de los Datos maestros de activo fijo. Además de la ficha Resumen, existen fichas para valores, amortización, contabilidad de costes y atributos. 8 PUBLIC Datos maestros de activo fijo OEC Computers
+
+---
+
+## Diapositiva 10
+
+ El usuario puede comprar un activo fijo mediante una Factura de proveedores. La factura de proveedor automáticamente genera un documento de Capitalización.  El usuario puede seleccionar si generar el documento de Capitalización directamente o generarlo automáticamente desde la Factura de proveedores.  En ambas opciones, se activan los Datos maestros de activo fijo.  El gráfico muestra los asientos automáticos creados durante el proceso con las cuentas asociadas.  Si el proveedor no está involucrado, entonces el usuario puede generar directamente un documento de Capitalización. En este caso, solo se creará el asiento de Capitalización y, por lo tanto, la cuenta de compensación aparecerá como obligación en el Balance.  Recuerde que las cuentas se derivan de la definición de los Datos maestros de activo fijo.  Recuerde que la Fecha de valor de activo se fija en los valores predeterminados para que sea similar a la Fecha de contabilización de la factura de proveedor. Esta fecha puede modificarse antes de añadir la Factura de proveedor para que actualice la Fecha de valor de activo de capitalización. 9 PUBLIC Activación de activos fijos Factura de proveedor Capitalización Debe Haber Proveedor 2000 Cuenta de compensación de adquisiciones 2000 Debe Haber Cuenta de compensación de adquisiciones 2000 Cuenta de balance de activos fijos 2000
+
+---
+
+## Diapositiva 11
+
+ Se usa la amortización para eliminar el coste de un activo a lo largo de su vida útil.  Representa la reducción en el valor contable de un activo con fines impositivos y contables.  La amortización se incluirá en los gastos de la empresa.  El sistema predice la tasa de amortización anual prevista según las definiciones de los Datos maestros de activo fijo (es decir Clase de activo, Área de amortización, Determinación de cuentas y Clase de amortización).  Puede ver esta información en los Datos maestros de activo y en el Informe de pronóstico en la amortización de activos. 10 PUBLIC Amortización de activos fijos
+
+---
+
+## Diapositiva 12
+
+ El usuario puede ejecutar la opción Ejecución de amortización para actualizar el valor del activo con la amortización real.  Solo cuando realiza una ejecución de amortización el sistema lleva a cabo todas las amortizaciones planificadas hasta una fecha especificada.  Con el fin de impulsar la contabilización de una amortización planificada, generalmente es suficiente iniciar una ejecución de amortización para varios períodos contables. Sin embargo, es posible realizar varias ejecuciones de amortización para el mismo período de amortización.  Una ejecución de amortización puede repetirse las veces que sea necesaria, siempre que no se haya realizado ninguna ejecución de amortización para los períodos siguientes. La repetición de una ejecución de amortización puede ser necesaria si los valores de activo se han modificado de nuevo tras contabilizar la amortización planificada. En la repetición de una ejecución de amortización solo se tendrán en cuenta las diferencias en el valor en relación con las contabilizaciones de la última ejecución de amortización.  Nota:  En este ejemplo, utilizamos la amortización indirecta, el sistema utiliza la cuenta de amortización acumulada para contabilizar la amortización. La cuenta de balance de activo solo se ve afectada cuando el activo se compra o elimina.  En el método de contabilización directa para amortización, el sistema contabiliza la amortización directamente en la cuenta de balance de activo especificada para el activo. 11 PUBLIC Ejecución de amortización
+
+---
+
+## Diapositiva 13
+
+ Hay dos maneras de dar de baja un activo fijo: por factura de clientes si se vende el activo o mediante un documento de baja si no hay ningún cliente involucrado.  En caso de que la empresa venda el activo al finalizar su vida útil (o antes), el usuario puede dar de baja el artículo con una Factura de clientes.  La Factura de clientes genera automáticamente un documento de Baja.  Un documento de Baja puede emitirse directamente si no hay ningún cliente involucrado y se debe amortizar el activo fijo.  En este caso, las diferentes cuentas se involucrarán en el asiento anexado al documento Baja.  Si utiliza la opción Factura de clientes, asegúrese de definir los Datos maestros de activo fijo como Artículo de ventas.  Ahora, el valor neto contable de los Datos maestros de activo fijo se fija en cero.  Tenga en cuenta que en el documento de baja existe la opción de baja parcial. En ese caso, el activo fijo contendrá el valor restante hasta el final de la vida útil del artículo. 12 PUBLIC Baja de activos fijos Factura de clientes Baja Debe Haber Cliente 1000 Cuenta de compensación de ingresos 1000 Debe Haber Cuenta de compensación de ingresos 1000 Cuenta de balance de activos fijos 1000
+
+---
+
+## Diapositiva 14
+
+ El Cuadro de activos fijos es el suplemento más importante para el balance desde el punto de vista de los activos fijos.  El informe se puede emitir para todos los activos fijos.  Muestra todos los movimientos de activos fijos contabilizados en un ejercicio y presenta los activos fijos para cada cuenta de balance. 13 PUBLIC Cuadro de activos fijos El informe Cuadro de activos fijos: Se puede emitir para todos los activos fijos, Muestra todos los movimientos de activos fijos contabilizados en un ejercicio, Presenta los activos fijos para cada cuenta de balance.
+
+---
+
+## Diapositiva 15
+
+14 PUBLIC Resumen (1/2) La definición principal en los Datos maestros de activo fijo es: • La Clase de activo que incluye la asociación con las otras definiciones: Área de amortización, Determinación de cuentas y Clase de amortización. Los datos maestros de activo fijo se activan cuando: • El usuario compra un activo fijo mediante una Factura de proveedores. • La Factura de proveedores genera automáticamente el documento de Capitalización. • El usuario puede generar el documento de Capitalización directamente. La amortización: • Se usa para eliminar el coste de un activo a lo largo de su vida útil. • Se incluye dentro de los gastos de la empresa. A continuación, se detallan algunos puntos clave para tener en cuenta:  A continuación, se detallan algunos puntos clave para tener en cuenta:  La definición principal en los Datos maestros de activo fijo es la Clase de activo, que incluye la asociación con las otras definiciones para Área de amortización, Determinación de cuentas y Clase de amortización.  El registro de datos maestros de activo se activa cuando un usuario compra un activo fijo usando una factura de proveedor. La factura de proveedor automáticamente genera un documento de Capitalización. Un usuario también tiene la opción de generar un documento de Capitalización directamente.  La amortización se utiliza para liquidar el coste de un activo fijo a lo largo de su vida útil. La amortización se incluye como gasto de la empresa.
+
+---
+
+## Diapositiva 16
+
+15 PUBLIC Resumen (2/2) La opción de Ejecución de amortización: • Lleva a cabo todas las amortizaciones planificadas hasta una fecha especificada. • Actualiza el valor de los datos maestros de activo con la amortización real. Un activo fijo se da de baja mediante: • Una Factura de cliente si se vende el activo, o • Un documento de Baja si no hay ningún cliente involucrado. • La Factura de clientes genera automáticamente un documento de Baja que establece el valor neto contable del activo fijo a cero. El Cuadro de activos fijos muestra: • Todas las transacciones de activos contabilizadas en un ejercicio. • Los activos para cada Cuenta de balance.  La opción de Ejecución de amortización lleva a cabo todas las amortizaciones planificadas hasta una fecha especificada y actualiza el valor de los datos maestros de activo con la amortización real.  Un activo fijo se elimina con una factura de cliente si se vende el activo o con un Documento de baja si no hay un cliente involucrado. La Factura de clientes genera automáticamente un documento de Baja que establece el valor neto contable del activo fijo a cero.  El Cuadro de activos fijos muestra todas las transacciones de activos contabilizadas en un ejercicio y presenta los activos para cada cuenta de balance.
+
+---
+

@@ -1,0 +1,86 @@
+# Transcripción por Diapositiva: 10_Overview_13_MDDoc_ES
+
+## Diapositiva 1
+
+PUBLIC Introducción: Datos maestros y documentos SAP Business One Versión 10.0 Le damos la bienvenida al tema Datos maestros y documentos. 1
+
+---
+
+## Diapositiva 2
+
+En este tema, observaremos los datos maestros en SAP Business One. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modificar documentos con SAP Business One. 2 PUBLIC Al finalizar este tema, podrá:  Ver un registro de cliente  Explicar el concepto de datos maestros  Crear y modificar un documento Objetivos
+
+---
+
+## Diapositiva 3
+
+SAP Business One realiza un seguimiento de las actividades empresariales mediante documentos como pedidos, facturas, órdenes de producción, pedidos de cliente y más. Cada uno de esos documentos se construye a partir de fragmentos de datos reutilizables más pequeños llamados datos maestros. Los datos maestros hacen referencia a la información clave que describe a los clientes, proveedores y clientes potenciales, así como los artículos que su empresa compra y vende. La creación de documentos a partir de datos maestros incrementa la productividad, asegura la consistencia de los datos y disminuye los errores. 3 PUBLIC Concepto de datos maestros Interlocutores comerciales Artículos  Personas de contacto  Direcciones  Condiciones de pago  Listas de precios  Datos de contabilidad  Contabilidad de inventario  Almacenes  Unidades de medida  Grupos de artículos  Propiedades del artículo  Listas de precios
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC 3 tipos de interlocutores comerciales Acreedores: utilizado en el proceso de compras Clientes: utilizado en el proceso de ventas Clientes potenciales: se utilizan en el proceso de ventas para representar los interesados. Los tres representados por un registro de datos maestros de interlocutor comercial  Existen tres tipos de interlocutores comerciales utilizados en los documentos de compras y ventas: clientes, proveedores y clientes potenciales.  Los clientes potenciales se utilizan en el proceso de ventas para representan los interesados de ventas.  Una vez que se realiza la venta, puede convertir un cliente potencial en un cliente.  Los proveedores se utilizan en el proceso de compra.  Cada cliente potencial, cliente o proveedor se representa en SAP Business One con un registro de datos maestros del interlocutor comercial.  Una transacción se utiliza para acceder a los tres tipos de interlocutores comerciales.  Sin embargo, los formularios para cada tipo difieren un poco para que puedan incluir los datos correspondientes de cada uno.
+
+---
+
+## Diapositiva 5
+
+Es fácil buscar interlocutores comerciales e información de artículos cuando introduce documentos de compra y venta. Un icono de lista de selección está disponible en los campos de interlocutor comercial y número de artículo en los documentos de marketing. El icono de la lista de selección está visible hasta que hace clic en un campo.  Cuando hace clic en el campo, aparece lo más destacado del campo y el icono. Use el icono de lista de selección para abrir la lista de selección. Puede buscar en la lista o usar caracteres con comodines para buscar. 5 PUBLIC Búsqueda de datos maestros
+
+---
+
+## Diapositiva 6
+
+Una parte de la información que aparece en los datos maestros proviene de la configuración. Por ejemplo, las condiciones de pago se establecen antes de establecer los clientes. Al seleccionar la flecha de enlace en la ventana del interlocutor comercial para las condiciones de pago, puedo navegar a los datos de configuración. Algunos campos con un menú desplegable como las condiciones de pago, permitirán que los usuarios autorizados definan nuevas opciones si no existen las adecuadas. Este tipo de configuración directa es típica en SAP Business One. El objetivo de los datos de configuración y los datos maestros es crear documentos para que las transacciones comerciales sean más fáciles.  Ahora observemos cómo creamos documentos para capturar la información sobre la actividad comercial en ventas o compras. 6 PUBLIC Datos de configuración
+
+---
+
+## Diapositiva 7
+
+Todos los documentos de compras y de ventas comparten una estructura similar. Los documentos de compras y de ventas se denominan con frecuencia Documentos de marketing. En general, el documento se divide en: la parte superior (cabecera) con la información general, la parte intermedia con la información sobre distintas páginas de fichas y los datos específicos de artículo, y la parte inferior (pie de página) con más información general. La parte intermedia tiene 4 fichas: La ficha Contenidos, donde se introduce toda la información específica acerca de los artículos o servicios solicitados, como cantidad, precio, número de artículo y descripción. Puede acceder a datos de artículo más específicos en los detalles al hacer doble clic sobre una línea. La ficha Logística que contiene los detalles acerca de dónde se enviarán los artículos y los servicios como también los pagos. El método de envío también se especifica aquí. La mayoría de los datos se obtiene de datos de la empresa y datos del proveedor maestros y preconfigurados. La ficha Contabilidad contiene la información de la cuenta de mayor (G/L) relevante para la compra obtenida de los datos maestros de contabilidad financiera. La ficha Anexos le permite adjuntar ficheros suplementarios a sus documentos. La mayoría de los datos que se muestran en estas fichas proviene por defecto de los datos maestros.  Los valores se pueden modificar mientras se trabaja en los documentos.  Estos cambios afectarán el documento, pero no modifican los registros de los datos maestros. 7 PUBLIC Documentos de marketing Datos generales del documento Información general (Pie de página) Contenido del documento Contenido Interlocutor comercial Nombre Persona de contacto Nº Estado Fecha de contabilización Artículo/Servicio Artículo/Cat. Nº Cantidad 1 2 Destinatario Pagar a Clase de expedición … Logística Contabilidad Comentario Condiciones de pago Información fiscal Comprador/Vendedor Total antes del desc. % descuento … Total pago vencido Comentarios Anexos Clase de documento
+
+---
+
+## Diapositiva 8
+
+En los documentos de marketing, puede seleccionar el tipo de línea en la ficha Contenidos. La vista predeterminada del sistema es sin la columna de tipo, pero puede añadirla fácilmente en la ventana Parametrizaciones de formulario. Las parametrizaciones de formulario están disponibles para las ventanas de SAP Business One y controlan la visibilidad de los campos opcionales. Las opciones para los tipos de línea son: Espacio en blanco: en una línea normal de artículo, este campo está vacío T: para una línea de texto S: para una línea de subtotal A: Si el documento es una oferta, dispone de la opción A para una línea de artículo alternativo. Un artículo alternativo no se tiene en cuenta en los cálculos de suma. Cuando el documento se copia a un documento de destino, el usuario puede decidir si el artículo alternativo debe mantenerse o eliminarse. Puede cambiar el formato de cualquier línea de la ficha Contenidos de cualquier documento de compra de SAP Business One para insertar texto o un subtotal de la línea anterior. Simplemente haga clic en la lista desplegable en el campo Tipo y seleccione T (para texto) o (para subtotal). Cuando selecciona T, se muestra la ventana del Editor de texto. Desde aquí, inserte texto predefinido de la lista desplegable o inserte su propio texto. Esto es muy útil cuando desea transmitir instrucciones específicas a su proveedor acerca de cómo se deben fabricar, gestionar o enviar los artículos. 8 PUBLIC Tipo de línea en documentos de marketing Conf. formulario Formato tabla Seleccionar Tipo Nº artículo        Descripción de artículo Ctd Precio             Total (ML) Contenido A1005 Impresora de color 1            214,76               214,76 A1006 Impresora de inyección 1              99,99                99,95 T El artículo A1006 se agotará pronto. S Subtotal impresoras 314,71 A1001 Cartucho negro                 10            7,50                 75,00 A1006 Cartucho de color 10            9,10                   91,00 S Subtotal cartuchos 166,00 Total antes del descuento                480,71 En los documentos Ventas y Compras, puede seleccionar un tipo de línea.
+
+---
+
+## Diapositiva 9
+
+9 PUBLIC Documentos preliminares  Grabe los documentos como preliminares antes de añadirlos a la base de datos.  Puede realizar cambios o introducir la información faltante antes de añadirlo como un documento normal.  Los documentos preliminares pueden utilizarse como modelos.  Puede visualizar una lista de documentos preliminares para el procesamiento.  Puede grabar la mayoría de los documentos como preliminares en SAP Business One. Esto le permite realizar cambios o introducir la información faltante antes de añadirlos a la base de datos como documentos normales.  Por ejemplo, quizás puede verificar la información antes de ofrecer un determinado descuento a un cliente en una oferta de ventas. Puede crear el documento, introducir los artículos que el cliente desea comprar junto con el descuento, luego grabar un documento preliminar de la oferta de ventas haciendo clic con el botón derecho en la cabecera o en el pie de página del documento.  Los borradores de documentos también pueden utilizarse como modelos para documentos que frecuentemente crea.  Puede visualizar una lista de documentos preliminares. Al utilizar los criterios de selección, puede buscar y procesar documentos específicos. Cuando abre un documento preliminar, puede realizar los cambios necesarios y luego añadir el documento como un documento normal a la base de datos.
+
+---
+
+## Diapositiva 10
+
+10 PUBLIC Creación de documentos relacionados  Al hacer negocios, con frecuencia tienen la necesidad de copiar información de un documento a otro. Por ejemplo, ha creado una oferta de ventas para un cliente y ahora desea crear un pedido de cliente a partir de la oferta.  En estos casos, puede fácilmente copiar la oferta de ventas a un pedido de cliente.  Al añadir un documento de compras o de ventas, tiene las siguientes opciones: −Añadir y nuevo: añade un documento y abre una ventana nueva para que pueda crear otro documento. −Añadir y visualizar: añade un documento y lo visualiza. −Añadir y cerrar: añade un documento y cierra la ventana. La última opción se recordará la próxima vez que abra la ventana del documento en cuestión.
+
+---
+
+## Diapositiva 11
+
+11 PUBLIC Esquema de relaciones  Visualice las relaciones entre los documentos en el esquema de relaciones.  El punto de ingreso al esquema de relaciones tiene un fondo de título amarillo.  Haga doble clic en cualquier icono para abrir un documento.  Puede seleccionar diferentes vistas en la casilla de selección.  Una vez que creó un documento relacionado, puede ver la relación entre los documentos. Una forma es utilizar el esquema de relaciones. Haga clic con el botón derecho en la cabecera o en el pie de página del documento y seleccione la opción Mapa de relaciones.  En el gráfico, el usuario ha abierto el esquema de relaciones de una entrega. La entrega es amarilla porque es el punto de ingreso al esquema de relaciones.  Esta entrega está basada en un pedido de cliente que estaba basada en una oferta de ventas. El punto de cierre para esta cadena, en este caso, es un cobro.  Desde el esquema de relaciones, puede hacer doble clic en cualquier icono para abrir un documento dentro de la cadena y ver los detalles, direcciones, condiciones de pago, entre otras cosas del documento.  Puede seleccionar diferentes vistas en la casilla de selección.  Puede ver los documentos, contabilizaciones de asientos relacionados o artículos de las filas de los documentos.
+
+---
+
+## Diapositiva 12
+
+12 PUBLIC Hacer referencia a un documento que no está relacionado 1 3 2 4 También tiene la opción de crear una relación en el mapa de relaciones haciendo referencia a un documento que no está relacionado. Por ejemplo, crea un abono para reembolsar a un cliente por un artículo que se ha roto después de haber pagado por él.  Como el abono no se hizo como un documento subsiguiente a la factura, no aparecen relacionados en el mapa de relaciones. Más adelante, querrá vincular los dos documentos para que esté claro por qué se pagó dicho importe.  En este caso, puede utilizar el botón Documento de referencia de la ficha Contabilidad de cualquiera de los documentos. Al hacerlo, se abre la ventana Información de referencia en la que puede seleccionar un documento existente al que quiere hacer referencia. Tenga en cuenta que puede hacer referencia a varios documentos. Después de añadir el documento, el abono en nuestro ejemplo, aparece una indicación del número de documentos referenciados. En el Mapa de relaciones, seleccione Documentos referenciados en el desplegable para ver la relación que ha creado. 12
+
+---
+
+## Diapositiva 13
+
+Arrastrar y vincular es un método particularmente para vincular dos objetos empresariales y crear una consulta ad-hoc. La imagen de la derecha muestra los datos de un registro maestro de artículo. Si desea conocer las ofertas que se han realizado para este artículo, sólo tiene que arrastrar el campo Número de artículo a la entrada Ofertas del árbol Arrastrar y vincular. El sistema muestra una lista de todas las ofertas del artículo. Si la lista es demasiado larga, puede filtrarla para mostrar sólo los resultados en los que está interesado. Puede limitar las autorizaciones por usuario para la utilización de informes en la transacción de autorizaciones generales en el menú Gestión. 13 PUBLIC Arrastrar y vincular Número de artículo Descripción Clase de artículo Lista de precios      Lista de precios de compra 01 Grupo de artículos M00001 Almohadilla de ratón Artículos Accesorios Datos maestros de artículo Datos maestros de artículo Lista de todas las ofertas del artículo M00001 Ventas/clientes Entrega Arrastrar y vincular Oferta de ventas Solicitud de devolución Pedido de cliente Detalles de la entrega Detalles de la oferta … Detalles del pedido M00001
+
+---
+
+## Diapositiva 14
+
+A continuación, se muestran algunos puntos clave que recordar:  La creación de documentos a partir de datos maestros incrementa la productividad, asegura la consistencia de los datos y disminuye los errores.  Los tres tipos de datos maestros de interlocutores comerciales son proveedor, cliente potencial y cliente.  Los documentos de marketing comparten una estructura común.  Los documentos de marketing pueden grabarse como documentos preliminares.  Puede fácilmente copiar la información de un documento de marketing a otro. Los documentos copiados se vinculan y sus conexiones se pueden ver en un esquema de relaciones.  Arrastrar y vincular es una forma rápida de crear informes ad hoc. 14 14 PUBLIC Resumen A continuación, se detallan algunos puntos clave:  La creación de documentos a partir de datos maestros incrementa la productividad, asegura la consistencia de los datos y disminuye los errores.  Tres tipos de datos maestros de interlocutores comerciales: proveedor, cliente potencial y cliente.  Los documentos de marketing comparten una estructura común.  Los documentos de marketing pueden grabarse como documentos preliminares.  Puede fácilmente copiar la información de un documento de marketing a otro documento.  Los documentos copiados se vinculan y sus conexiones se pueden ver en un esquema de relaciones.  Arrastrar y vincular es una forma rápida de crear informes ad hoc.
+
+---
+

@@ -1,6 +1,6 @@
-# SAP Academy Ecuador - Ecosistema Heinsohn & SAP Business One
+# B1 Academy Ecuador - SAP Business One, Nómina HCM & Localización SRI
 
-> Institución de formación técnica y consultoría B2B/B2C especializada en SAP Business One, Heinsohn Nómina HCM, Heinsohn Gestión Humana y Localización Tributaria SRI Ecuador.
+> Institución de formación técnica y consultoría B2B/B2C especializada en SAP Business One, Nómina HCM, Gestión Humana y Localización Tributaria SRI Ecuador.
 
 ## Rutas Formativas Principales (Catálogo Oficial 2026)
 
@@ -20,7 +20,7 @@
 - Anexo Transaccional Simplificado (ATS): Extracción y validación contra Formularios 104 y 103.
 - Cruce contable de Formularios SRI 101, 103 y 104, ISD 5% y Régimen RIMPE.
 
-### 3. Heinsohn Nómina HCM Ecuador [HEIN-NOM-EC]
+### 3. Nómina HCM Ecuador [HEIN-NOM-EC]
 - Integración biométrica y cálculo de Horas Suplementarias (+50%), Extraordinarias (+100%) y Nocturnas (+25%) con divisor legal Sueldo/240.
 - Seguridad Social IESS: Aporte personal (9.45%), aporte patronal (11.15% + 1% SECAP/IECE) y fondos de reserva (8.33%).
 - Beneficios Sociales: Décimo Tercer sueldo (dic-nov / 12), Décimo Cuarto sueldo (1 SBU = $482 según régimen Costa/Galápagos vs Sierra/Amazonía) y Utilidades (15%).
@@ -29,7 +29,7 @@
 - Parametrización maestra de Conceptos, Promedios y Cierre Anual con actualización del SBU.
 - Interfaz Contable Nómina ↔ SAP B1 vía Service Layer con idempotencia en asientos OJDT/JDT1.
 
-### 4. Heinsohn Gestión Humana & Desarrollo Organizacional [HEIN-HCM-TALENT]
+### 4. Gestión Humana & Desarrollo Organizacional [HEIN-HCM-TALENT]
 - Reclutamiento y Selección: ATS con screening de candidatos asistido por IA.
 - Evaluación de Desempeño 90°, 180°, 270° y 360°.
 - Analítica del Talento: Matriz Nine Box (Desempeño vs Potencial) y calibración para mitigar el Efecto Halo.

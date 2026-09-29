@@ -1,0 +1,140 @@
+# Transcripción por Diapositiva: 10_Impl_12_CustomTools_Alerts_ES
+
+## Diapositiva 1
+
+PUBLIC Herramientas de personalización: Alertas SAP Business One Versión 10.0 Este tema introduce la función de alerta de SAP Business One. 1
+
+---
+
+## Diapositiva 2
+
+ En este tema, veremos el mecanismo de alerta de la aplicación SAP Business One.  Podrá describir las situaciones empresariales cubiertas por alertas predefinidas y configurar y ejecutar los dos tipos de alertas: alertas predefinidas y alertas definidas por el usuario. 2 2 PUBLIC Objetivo del tema Objetivos:  Describir las situaciones empresariales cubiertas por alertas predefinidas  Configurar y ejecutar los dos tipos de alertas en SAP Business One: Alertas predefinidas Alertas definidas por el usuario
+
+---
+
+## Diapositiva 3
+
+3 PUBLIC  El jefe de compras desea recibir una notificación de forma automática e inmediata cuando un artículo de inventario se encuentre por debajo de cantidad de stock mínima. Al recibir la notificación, el jefe decide si vuelve a pedir el artículo de inventario. Solución: Utilice la alerta predefinida Desviación de almacén mínima. Solución opcional: Cree una alerta de usuario para enviar al jefe un informe de artículos con stock bajo y programe el informe para que se ejecute diariamente o semanalmente. Alertas: Escenario empresarial  Veamos un ejemplo empresarial de alerta. En el ejemplo, el jefe de compras desea recibir una notificación de forma automática e inmediata cuando un artículo de inventario se encuentre por debajo de cantidad de stock mínima. Al recibir la notificación, el jefe decide si vuelve a pedir el artículo de inventario.  En este ejemplo se muestra un requisito muy simple que se puede configurar fácilmente con una alerta predefinida en el sistema.  SAP Business One también admite requisitos más complejos con la adición de consultas de usuario. Las alertas se pueden utilizar como listas de tareas o pedidos de trabajo para una persona. Por ejemplo, si el jefe de compras de este escenario no necesita conocer inmediatamente detalles sobre el bajo stock, puede crear una alerta de usuario basada en una consulta para proporcionar una lista de artículos de inventario bajo programada, como por ejemplo una vez al día o una vez por semana. 3
+
+---
+
+## Diapositiva 4
+
+4 PUBLIC Alertas  Las alertas notifican a los usuarios instantáneamente cuándo se produce un evento o una condición empresarial específica.  Las alertas no evitan que se produzca el evento. La alerta le avisa de que se ha producido un evento.  Se admiten mecanismos internos, de correo electrónico, texto y fax  Para recibir una alerta, el usuario debe tener una cuenta de usuario, aunque puede recibir notificaciones incluso aunque no haya iniciado sesión Gestión > Gestión de alertas  El mecanismo de alerta de SAP Business One informa instantáneamente a uno o varios usuarios cuando se produce un evento o una condición específica.  Es importante tener en cuenta que las alertas no evitan que se produzca el evento. La alerta le avisa una vez que se produzca el evento.  Se admiten cuatro tipos de mecanismos de notificación: Interna, de correo electrónico, texto y fax. Las notificaciones internas aparecen en el cliente de SAP Business One.  Para recibir una alerta, el usuario debe tener una cuenta de usuario en SAP Business One. No obstante, el usuario no tiene que iniciar sesión en SAP Business One para recibir notificaciones de correo electrónico, texto y fax. 4
+
+---
+
+## Diapositiva 5
+
+5 PUBLIC Configuración de alertas Alertas predefinidas Alertas definidas por el usuario Gestión > Gestión de alertas  Predefinida con SAP Business One  Únicamente es necesario activar y configurar la alerta  Notificación instantánea al destinatario  Escriba su propia alerta utilizando una consulta  La alerta se activará cuando se ejecute la consulta y si hay resultados de la misma  La consulta se puede programar Para establecer alertas, un usuario necesita la autorización general Gestión de alertas Para establecer alertas, necesita la autorización general Gestión de alertas. Existen dos maneras de configurar una alerta:  Puede utilizar una de las alertas predefinidas que se facilitan con SAP Business One. En este caso solo debe configurar y activar la alerta. La alerta enviará una notificación instantánea a los usuarios cuando se produzca un evento.  O bien, puede crear sus propias alertas basadas en una consulta. En ese caso la alerta se activará cuando se ejecute la consulta y proporcionará a los usuarios los resultados de una consulta.  La consulta se puede programar para ejecutarse en un momento y frecuencia concretos. 5
+
+---
+
+## Diapositiva 6
+
+ El mecanismo de alerta se ejecuta como un servicio y se gestiona en el área Servicio de tareas del System Landscape Directory (SLD). SLD se instala con los componentes de servidor durante la instalación de SAP Business One. Para acceder al System Landscape Directory, utilice la vía de acceso que se muestra en la diapositiva, inicie sesión en SLD con las credenciales de usuario del sitio web y seleccione el enlace del servicio de tareas.  A las parametrizaciones para las alertas se accede desde el enlace proporcionado en el servicio de tareas.  En las Parametrizaciones de alerta, se puede seleccionar el servicio de alertas según la base de datos de la empresa  El servicio de alertas debe estar ejecutándose en todo momento para que funcionen las alertas  El usuario AlertSvc es un usuario predefinido de SAP Business One y se define automáticamente en las opciones de alerta, y funciona como usuario técnico para conectarse a la base de datos de la empresa y ejecutar las alertas.  Nota: en un entorno SAP HANA, el servicio de alertas requiere, además, que se instale Service Layer en la infraestructura y que se asocie con el servidor de base de datos. Para obtener más detalles acerca del servidor de alertas y la necesidad de Service Layer, consulte la Guía del administrador de SAP Business One, versión para SAP HANA. 6 6 PUBLIC  El servicio de alerta se gestiona en el área Servicio de tareas del System Landscape Directory (SLD)  Se puede acceder a las Parametrizaciones de alerta desde el enlace en el Servicio de tareas. En las Parametrizaciones de alerta, se puede seleccionar el servicio de alertas según la base de datos  El Servicio de alertas debe estar ejecutándose en todo momento para que funcionen las alertas.  El usuario AlertSvc es un usuario técnico predefinido y se utiliza para conectarse a la base de datos de la empresa y ejecutar alertas Servicio de alerta https://<server>:<port>/ControlCenter/ Nota: En un entorno SAP HANA, el servicio de alertas depende de Service Layer. Service Layer debe estar instalado en la misma infraestructura y asociado con el servidor de base de datos
+
+---
+
+## Diapositiva 7
+
+Alertas predefinidas 7
+
+---
+
+## Diapositiva 8
+
+8 PUBLIC Alertas predefinidas  Un número fijo de alertas predefinidas cubre situaciones empresariales comunes  Para ver la lista de alertas predefinidas, seleccione Gestión > Gestión de alertas. Gestión > Gestión de alertas Alertas predefinidas  Se proporciona un número fijo de alertas predefinidas. Son habituales en situaciones empresariales comunes.  Para ver la lista de alertas predefinidas, abra la ventana Gestión de alertas. Verá la lista de alertas y si alguna de ellas se encuentra activa.  Puede visualizar o editar los detalles de una alerta seleccionando el enlace de flecha junto al nombre de la alerta. 8
+
+---
+
+## Diapositiva 9
+
+9 PUBLIC Alertas predefinidas  Alertas predefinidas para documentos de ventas:  Desviación de porcentaje de ganancia bruta  Desviación de límite de comprometido  Desviación del límite de crédito  Desviación de descuento (en %)  Desviación de presupuesto  Desviación de almacén mínima  Recomendación de MRP vencidas  La desviación de ganancia bruta, de comprometido y de límites de crédito, así como las alertas de descuento, se pueden aplicar a documentos de ventas.  La desviación de ganancia bruta se verifica en el nivel de documento. El compromiso y el límite de crédito se comprueban en relación con el total del documento. El límite de descuento también se comprueba en relación con el total del documento. 9
+
+---
+
+## Diapositiva 10
+
+10 PUBLIC Alertas predefinidas  Desviación de porcentaje de ganancia bruta  Desviación de límite de comprometido  Desviación del límite de crédito  Desviación de descuento (en %)  Desviación de presupuesto  Desviación de almacén mínima  Recomendación de MRP vencidas  Alertas predefinidas para documentos de compras, pagos y asientos:  La alerta predefinida para desviación de presupuesto se puede aplicar a documentos de compras, pagos y asientos. Esta alerta es independiente de la advertencia de presupuesto configurada en Parametrizaciones generales. 10
+
+---
+
+## Diapositiva 11
+
+11 PUBLIC Alertas predefinidas  Alertas predefinidas para inventario:  Desviación de porcentaje de ganancia bruta  Desviación de límite de comprometido  Desviación del límite de crédito  Desviación de descuento (en %)  Desviación de presupuesto  Desviación de almacén mínima  Recomendación de MRP vencidas  La alerta por desviación de almacén mínima se aplica cuando se añade un documento de orden de entrega y este reduce el nivel de stock por debajo de la cantidad mínima definida en los datos maestros de artículo. Esta alerta no se emite si el bloqueo de inventario se habilitó en Parametrizaciones de documento.  La alerta de MRP proporciona un recordatorio si no ha liberado recomendaciones de MRP en los documentos a tiempo para satisfacer las demandas de inventario. La alerta se envía si la fecha del sistema actual es la fecha de liberación de recomendación. 11
+
+---
+
+## Diapositiva 12
+
+12 PUBLIC  Abra la alerta desde el enlace de flecha.  Fije la prioridad (el valor por defecto es normal)  Seleccione cada destinatario y uno o varios métodos de notificación (interna, correo electrónico, fax y de texto)  Active la alerta Configuración de una alerta predefinida En lugar de seleccionar usuarios individuales, tiene la opción de seleccionar un grupo de usuarios predefinido  Para utilizar una alerta predefinida, seleccione el enlace de flecha junto al nombre de la alerta.  Opcionalmente, puede asignar prioridades a una alerta (el valor por defecto es la prioridad normal). Cuando el mensaje se recibe en la ventana de mensajes/alertas del destinatario o en la ventana de Microsoft Outlook, los mensajes de alta prioridad se marcan en rojo.  A continuación, seleccione cada destinatario y uno o más métodos de notificación preferidos. Puede seleccionar un mensaje interno, correo electrónico, texto y fax. En lugar de seleccionar cada usuario de forma individual, puede cambiar a la ficha Grupos y seleccionar un grupo de usuarios predefinido (el tipo de grupo debe ser Alertas o En todos los tipos). Para obtener más información acerca de los grupos de usuario, consulte el curso Usuarios y opciones de usuario.  Además, seleccione la casilla de selección de notificación para el usuario predefinido denominado AlertSvc. Esto asegurará que se envíe la alerta a un destinatario incluso si el destinatario no hubiera iniciado sesión en el cliente de SAP Business One.  Los mecanismos de correo electrónico y fax requieren la integración de estos servicios con SAP Business One. El mecanismo de SMS requiere el marco de integración de SAP Business One con el escenario móvil activado. Las direcciones de correo electrónico y los números de teléfono deben configurarse en la cuenta de usuario.  Por último, active la alerta, mediante la casilla de selección, para que tenga efecto.  Además, por medio de la casilla de selección, puede desactivar una alerta en cualquier momento. 12
+
+---
+
+## Diapositiva 13
+
+13 PUBLIC Condiciones de alerta predefinidas  Puede fijar condiciones para la alerta (la excepción es la alerta por desviación de almacén mínima)  La condición varía según la alerta  También puede seleccionar qué documentos están cubiertos por la alerta  Para las alertas predefinidas, con la excepción de una desviación de almacén mínima, puede seleccionar condiciones para la situación de alerta.  Las condiciones son diferentes para cada alerta predefinida. Por ejemplo, la condición para la desviación de ganancia bruta es el porcentaje de ganancia y la condición para la desviación de presupuesto es la cantidad.  Para las alertas predefinidas, con la excepción de una desviación de almacén mínima, también puede seleccionar los documentos para la situación de alerta.  Los documentos disponibles dependen de la alerta elegida. La alerta se activará inmediatamente después de añadir el documento al sistema. 13
+
+---
+
+## Diapositiva 14
+
+14 PUBLIC Notificaciones de alerta  Las alertas internas aparecen en la ventana emergente Resumen de mensajes/alertas  Esta ventana también puede abrirse desde el widget del cockpit  Seleccione la alerta para acceder a los detalles del documento  Opciones para Enviar, Responder o Borrar la alerta  Opción para establecer una alerta por ausencia y enviarla al correo electrónico, SMS o fax  Las alertas internas aparecen en la ventana emergente Mensajes/Alertas del cliente de SAP Business One y también puede acceder a esta ventana desde el widget cockpit.  Seleccione la línea de alerta para acceder a los detalles del documento.  El destinatario de la alerta puede:  Enviar la alerta a otro usuario  Enviar una respuesta al usuario que ha causado la alerta  Borrar la línea de alerta de la ventana emergente  Establezca una alerta por ausencia y, opcionalmente, envíe la alerta a su correo electrónico, SMS o fax 14
+
+---
+
+## Diapositiva 15
+
+15 PUBLIC Parametrizaciones de usuario para alertas En Parametrizaciones generales y Usuario – Configuración:  Enviar una alerta para las actividades programadas para hoy  Visualizar la bandeja de entrada cuando llegue un mensaje nuevo  Actualizar mensajes (intervalo) En la configuración para un usuario, hay parametrizaciones que afectan a las alertas. • Enviar una alerta para las actividades programadas para hoy. Si se fija, cuando el usuario inicie sesión recibirá una alerta que enumera todas las actividades programadas de hoy. Esta no es una alerta predefinida, pero si se marca las actividades aparecerán en la ventana Mensajes/Alertas y el usuario podrá procesar las actividades directamente desde el mensaje de la alerta. • Visualizar la bandeja de entrada cuando llegue un mensaje nuevo. Esta opción está activada por defecto para los nuevos usuarios y la ventana Mensajes/Alertas se abrirá automáticamente siempre que se genere una nueva alerta para el usuario. • Actualizar mensajes (minutos). Esta opción define en minutos la frecuencia con la que el sistema busca actualizaciones en la bandeja de entrada de alertas. El valor por defecto para un nuevo usuario es 5 minutos. Si fija este valor en 0, el usuario recibirá la notificación de alerta inmediatamente. Si no se define en la pantalla de configuración del usuario, las parametrizaciones se obtienen de la ficha Parametrizaciones generales: Servicio. 15
+
+---
+
+## Diapositiva 16
+
+Alertas definidas por el usuario Si las alertas predefinidas no cumplen con los requisitos empresariales, puede añadir alertas de usuario. 16
+
+---
+
+## Diapositiva 17
+
+17 PUBLIC Casos de uso para alertas definidas por el usuario Las alertas de usuario se basan en una consulta de usuario y la consulta puede buscar varias condiciones empresariales o condiciones empresariales únicas La alerta puede proporcionar pools de trabajo a un usuario con frecuencia diaria, semanal o mensual, por ejemplo:  Pedidos que superen un límite determinado enviados durante el día o la semana  Ofertas de ventas vencidas También se puede comprobar la consistencia y la calidad de los datos maestros o de los documentos, por ejemplo:  Los campos que faltan en los nuevos datos maestros de interlocutor comercial, como el número de identificación fiscal, el límite de crédito, la persona de contacto o el empleado del departamento de ventas  Pedidos de cliente con códigos de impuestos incorrectos o que faltan Las alertas de usuario se basan en una consulta de usuario y la consulta puede buscar varias condiciones empresariales o condiciones empresariales únicas. Por definición, pueden proporcionar pools de trabajo a un usuario con frecuencia diaria, semanal o mensual, por ejemplo:  Pedidos que superen un límite determinado enviados durante el día o la semana  Ofertas de ventas vencidas También se pueden utilizar las alertas basadas en consultas para comprobar la consistencia y la calidad de los nuevos datos maestros o documentos, por ejemplo:  Los campos que faltan en los nuevos datos maestros de interlocutor comercial, como el número de identificación fiscal, el límite de crédito, la persona de contacto o el empleado del departamento de ventas  Pedidos de cliente con códigos de impuestos incorrectos o que faltan Antes de crear una alerta de usuario, compruebe si hay un informe del sistema que produzca resultados similares, ya que puede copiar la consulta como base para su consulta de alertas. Seleccione Herramientas > Consultas > Consulta de sistema. 17
+
+---
+
+## Diapositiva 18
+
+18 PUBLIC Alertas definidas por el usuario Para añadir una alerta de usuario:  Utilice las herramientas de consulta proporcionadas para crear y grabar la consulta.  En la ventana Gestión de alertas, seleccione Acciones -> Crear alerta de usuario.  Proporcione un nombre para la alerta  Abra la consulta de usuario grabada  Seleccione destinatarios, mecanismos de notificación y prioridades del mismo modo que en la alerta predefinida.  Defina la frecuencia de la ejecución de la consulta: minutos, horas, días, semanas o meses  Puede utilizar las herramientas de consulta proporcionadas Asistente de consultas y Generador de consultas para crear y grabar la consulta. Con la consulta, puede comprobar varias condiciones o condiciones únicas específicas de una empresa. Por ejemplo, puede enviar al jefe de presupuestos una lista diaria de pedidos de cliente para hoy mismo.  Para crear una alerta nueva, seleccione el botón Acciones y, a continuación, Crear alerta de usuario en la ventana Gestión de alertas.  Proporcione un nombre para la nueva alerta. A continuación, seleccione la consulta de usuario grabada. Consulte el tema Consultas para obtener información sobre la creación y grabación de consultas.  En la ventana Gestión de alertas seleccione los destinatarios y los mecanismos de notificación, así como la prioridad de notificación, del mismo modo que en las alertas predefinidas.  Debe configurar la frecuencia de ejecución de la consulta (en minutos, horas, días, semanas o meses). A diferencia de la alerta predefinida, la alerta definida por el usuario no se activa cuando se añade un documento al sistema. Una alerta definida por el usuario se activa cuando se ejecuta la consulta y si hay resultados de la misma. Si no existen resultados de la consulta, no se envía ninguna notificación.  Si la frecuencia es de días, semanas o meses, puede establecer adicionalmente un momento del día. 18
+
+---
+
+## Diapositiva 19
+
+19 PUBLIC Acceso a los resultados de consulta  Las alertas de usuario se muestran en la ventana Resumen de mensajes/alertas  Para ver los resultados de la consulta, haga doble clic en la línea de alerta  También puede copiar los resultados en Microsoft Excel seleccionando Copiar tabla desde el menú contextual Las alertas de usuario se visualizan en la ventana Resumen de mensajes/alertas del usuario. Los resultados de la consulta se mostrarán directamente en esta ventana, o puede hacer doble clic en la línea de alerta para ver los resultados en una ventana nueva. Puede copiar los resultados en Microsoft Excel si lo desea, seleccionando Copiar tabla desde el menú contextual de la ventana. 19
+
+---
+
+## Diapositiva 20
+
+20 PUBLIC Alertas definidas por el usuario – Casilla de selección Grabar historial La casilla de selección Grabar historial controla la visualización de alertas en la ventana Resumen de mensajes/alertas Si se selecciona, se añadirá una nueva alerta en una línea separada cada vez que una consulta active una alerta Si no se selecciona, la nueva alerta sobrescribe la anterior en la misma línea y se visualiza en negrita  Para las alertas de usuario, existe una casilla de selección Grabar historial en la ventana de configuración. Esta casilla de verificación controla cómo se visualizan las alertas de usuario para el usuario en la ventana Mensajes/Alertas.  Si selecciona la casilla de selección Grabar historial, se añadirá un nuevo mensaje de alerta en una línea separada cada vez que se ejecute una consulta y se active una alerta. Esto puede llenar rápidamente la ventana de alertas si la frecuencia de la alerta se establece en minutos.  Esto se muestra en la captura de pantalla de ejemplo.  Si no selecciona la casilla de selección Grabar historial, cada nueva alerta sobrescribirá la alerta anterior en la misma línea de la ventana Resumen de mensajes/alertas, por lo que solo verá una línea para la alerta. La alerta cambiará a negrita para indicar al usuario que se produjo una nueva alerta. 20
+
+---
+
+## Diapositiva 21
+
+21 PUBLIC Escritura de consultas para alertas definidas por el usuario  Al desarrollar consultas para alertas, es posible que deba hacer coincidir la consulta con la frecuencia que seleccione  Ejemplo: Para un informe de nuevos pedidos que se ejecuta a diario, la consulta debe seleccionar únicamente los documentos añadidos ese día Consulta Frecuencia Resultados SELECT T0."DocNum", T0."CardCode", T0."CardName" FROM OPOR T0 WHERE T0."DocTotal" > 5000 and (T0."DocDate" = CURRENT_DATE) Una vez al día a las 23:30 horas Lista de pedidos > 5.000 contabilizados en el día actual La consulta muestra la sintaxis de HANA SQL  Al desarrollar consultas para alertas, es posible que deba considerar la posibilidad de hacer coincidir la consulta con la frecuencia que seleccione para ejecutar la consulta.  Por ejemplo, si desea añadir un informe de pedidos nuevos hoy, la consulta debe seleccionar únicamente los documentos añadidos durante el día actual. De lo contrario, el informe incluirá todos los documentos de la base de datos que cumplen los criterios de consulta.  En tal caso, la fecha de contabilización del documento se compara con la fecha actual. 21
+
+---
+
+## Diapositiva 22
+
+22 PUBLIC Resolución de problemas de alertas de usuario  Compruebe la consulta para asegurarse de que produzca resultados  Asegúrese de que el servicio de alerta se está ejecutando en el System Landscape Directory. O bien, active el servicio en la ventana Parametrizaciones generales de SAP Business One, en la ficha Servicio.  Asegúrese de que Service Layer está activo para SAP HANA  Ejecute una consulta en tabla OALT para ver toda la configuración de alertas activas Si la alerta no se activa: • Ejecute la consulta de forma independiente para asegurarse de que produzca resultados • Asegúrese de que el servicio de alerta de SAP Business One se ejecuta en el System Landscape Directory y de que se selecciona la base de datos correcta en las parametrizaciones de alerta. Como alternativa, asegúrese de que en SAP Business One, en la ventana Parametrizaciones generales, en la ficha Servicio, está marcada la casilla Activar servicio de alerta. • Para entornos de SAP HANA, asegúrese de que Service Layer está activa en el servidor SAP HANA. Para verificar Service Layer, utilice el URL https://<server>:50000. Si Service Layer está instalado verá un enlace a la documentación. • Ejecute una consulta en la tabla OALT para ver todas las alertas configuradas en su sistema, incluidas las alertas predefinidas. 22
+
+---
+
+## Diapositiva 23
+
+23 PUBLIC Puntos clave Puntos clave de este tema: Existen dos formas de utilizar alertas: configurar una de las alertas predefinidas o definir una alerta de usuario basada en una consulta Todas las alertas predefinidas (a excepción de la desviación de almacén mínima) se activan después de que se añada un documento aplicable, a fin de evitar que los documentos se añadan al sistema. En cambio, un proceso de autorización evitará que se añada un documento hasta que se autorice. Las alertas pueden enviarse internamente, por correo electrónico, texto y fax. La alerta de servicio de tareas debe ejecutarse en todo momento para que las alertas puedan activarse. En SAP HANA, se está instalando una dependencia en Service Layer y se asocia al servidor de base de datos. Las alertas definidas por el usuario se basan en consultas de usuario grabadas. Las alertas de usuario proporcionan una manera de crear listas de tareas rutinarias para los usuarios o de verificar la consistencia de datos. Las alertas definidas por el usuario se activan cuando se ejecuta la consulta base. Debe establecer la frecuencia para que se ejecute la consulta. Una alerta se activa solo si la consulta produce resultados. Los resultados de la consulta aparecen en la ventana de alertas.  Tómese un momento para revisar estos puntos clave:  Existen dos formas de utilizar alertas: configurar una de las alertas predefinidas o definir una alerta de usuario basada en una consulta.  Todas las alertas predefinidas (con la excepción de la alerta desviación de almacén mínima) tienen condiciones y se activan cuando se añade un documento aplicable al sistema. Por lo tanto, las alertas no evitan que se añadan documentos al sistema. En cambio, un proceso de autorización evitará que se añada un documento hasta que se autorice.  Las alertas se pueden enviar de manera interna a un usuario en SAP Business One o por correo electrónico, texto y/o fax.  La alerta de servicio de tareas debe ejecutarse en todo momento para que las alertas puedan activarse. En SAP HANA, se está instalando una dependencia en Service Layer y se asocia al servidor de base de datos.  Las alertas definidas por el usuario se basan en consultas de usuario grabadas. Las alertas de usuario proporcionan una manera de crear listas de tareas rutinarias para los usuarios o de verificar la consistencia de datos.  Las alertas definidas por el usuario se activan cuando se ejecuta la consulta base, por lo que debe definir la frecuencia. Las alertas de usuario solo se activan si las ejecuciones de consulta generan resultados. Los resultados de la consulta aparecen con la alerta en la ventana Mensajes/Alertas. 23
+
+---
+

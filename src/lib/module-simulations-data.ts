@@ -1747,14 +1747,14 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "En esta pantalla se registran las novedades que alteran el rol de pagos mensual. Los conceptos se cargan por colaborador con su cantidad de horas. El sistema aplica automáticamente la fórmula legal del Código del Trabajo de Ecuador: Sueldo / 240 horas.",
     "classTranscript": {
       "instructor": "Abg. & Consultor HCM Marcelo Peña, Especialista Laboral Ecuador",
-      "summary": "Aprende a liquidar horas suplementarias y extraordinarias en Heinsohn Nómina. Analizaremos por qué el divisor legal es estrictamente 240 horas y cómo integrar marcaciones de relojes biométricos.",
+      "summary": "Aprende a liquidar horas suplementarias y extraordinarias en Nómina HCM. Analizaremos por qué el divisor legal es estrictamente 240 horas y cómo integrar marcaciones de relojes biométricos.",
       "keyPoints": [
         "El divisor legal en Ecuador es 240 horas (30 días comerciales × 8 horas diarias).",
         "Horas Suplementarias (+50%): hasta las 24h00 en días hábiles (máximo 4 al día, 12 a la semana).",
         "Horas Extraordinarias (+100%): fines de semana, feriados o de 24h00 a 06h00.",
         "Todas las horas extras forman materia gravada para el cálculo del IESS."
       ],
-      "deepDiveText": "El artículo 55 del Código del Trabajo fija las reglas de recargo salarial. Un error común de consultores novatos es utilizar 160 horas (4 semanas de 40 horas) como divisor; esto incrementa el costo horario un 50% de forma ilegal y lesiona las finanzas de la empresa. Heinsohn Nómina parametriza el divisor 240 como constante legal fija en la tabla de fórmulas."
+      "deepDiveText": "El artículo 55 del Código del Trabajo fija las reglas de recargo salarial. Un error común de consultores novatos es utilizar 160 horas (4 semanas de 40 horas) como divisor; esto incrementa el costo horario un 50% de forma ilegal y lesiona las finanzas de la empresa. Nómina HCM parametriza el divisor 240 como constante legal fija en la tabla de fórmulas."
     },
     "interactiveFields": [
       {
@@ -1880,13 +1880,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Motor de cálculo del Instituto Ecuatoriano de Seguridad Social: Liquidación del aporte personal (9.45%), aporte patronal (12.15% en sector privado incluyendo SECAP/IECE 0.5%), fondos de reserva (8.33%) y generación de planillas mecanizadas para el portal del IESS.",
     "classTranscript": {
       "instructor": "Abg. & Consultor HCM Marcelo Peña, Especialista Laboral Ecuador",
-      "summary": "Aprende a liquidar los aportes a la seguridad social en Heinsohn Nómina. Veremos las tasas vigentes, el derecho a Fondos de Reserva tras el primer año y cómo exportar el archivo plano para el portal del IESS sin glosas.",
+      "summary": "Aprende a liquidar los aportes a la seguridad social en Nómina HCM. Veremos las tasas vigentes, el derecho a Fondos de Reserva tras el primer año y cómo exportar el archivo plano para el portal del IESS sin glosas.",
       "keyPoints": [
         "Aporte Personal IESS: 9.45% retenido al colaborador.",
         "Aporte Patronal IESS: 12.15% (11.15% IESS + 0.5% SECAP + 0.5% IECE/SETEC) asumido por la empresa.",
         "Fondos de Reserva: 8.33% mensual a partir del mes 13 de relación laboral continua."
       ],
-      "deepDiveText": "La tabla de cotizaciones en Heinsohn Nómina parametriza las reglas del IESS. Si un colaborador cumple un año de servicio, el sistema dispara automáticamente el devengo de Fondos de Reserva (8.33%). El colaborador puede solicitar en el IESS mensualizar este valor en su rol o acumularlo en su cuenta individual del IESS; si acumula, la empresa transfiere el valor al IESS en la planilla mensual."
+      "deepDiveText": "La tabla de cotizaciones en Nómina HCM parametriza las reglas del IESS. Si un colaborador cumple un año de servicio, el sistema dispara automáticamente el devengo de Fondos de Reserva (8.33%). El colaborador puede solicitar en el IESS mensualizar este valor en su rol o acumularlo en su cuenta individual del IESS; si acumula, la empresa transfiere el valor al IESS en la planilla mensual."
     },
     "interactiveFields": [
       {
@@ -2006,13 +2006,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Liquidación de beneficios de ley en Ecuador: Provisión y pago del Décimo Tercer Sueldo (Bono Navideño), Décimo Cuarto Sueldo (Bono Escolar con Salario Básico Unificado $482), y reparto del 15% de Utilidades (10% colaborador, 5% cargas familiares).",
     "classTranscript": {
       "instructor": "Abg. & Consultor HCM Marcelo Peña, Especialista Laboral Ecuador",
-      "summary": "Aprende a provisionar y liquidar los beneficios sociales en Heinsohn Nómina. Analizaremos los períodos de cálculo del 13ro y 14to sueldo por regiones (Costa e Insular vs Sierra y Amazonía) y la fórmula del 15% de utilidades.",
+      "summary": "Aprende a provisionar y liquidar los beneficios sociales en Nómina HCM. Analizaremos los períodos de cálculo del 13ro y 14to sueldo por regiones (Costa e Insular vs Sierra y Amazonía) y la fórmula del 15% de utilidades.",
       "keyPoints": [
         "Décimo Tercero: Suma de lo ganado entre 01/Dic y 30/Nov dividido para 12 (Pago hasta 24 de diciembre).",
         "Décimo Cuarto: 1 SBU completo ($482.00 en 2026). Fechas de pago: 15 de marzo (Costa) o 15 de agosto (Sierra).",
         "Utilidades 15%: 10% distribuido por días laborados, 5% distribuido por cargas familiares legalmente acreditadas."
       ],
-      "deepDiveText": "Los colaboradores pueden elegir mensualizar sus décimos o acumularlos para las fechas tradicionales de pago. Heinsohn Nómina mantiene una doble vía: genera la provisión contable mensual del 8.33% para el balance general y, si el empleado mensualiza, le liquida el doceavo en el rol. Si acumula, acumula la provisión en el pasivo hasta la fecha de corte legal."
+      "deepDiveText": "Los colaboradores pueden elegir mensualizar sus décimos o acumularlos para las fechas tradicionales de pago. Nómina HCM mantiene una doble vía: genera la provisión contable mensual del 8.33% para el balance general y, si el empleado mensualiza, le liquida el doceavo en el rol. Si acumula, acumula la provisión en el pasivo hasta la fecha de corte legal."
     },
     "interactiveFields": [
       {
@@ -2140,7 +2140,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "La rebaja de gastos personales depende del número de cargas familiares reportadas en el formulario del SRI.",
         "A fin de año se emite el Formulario 107 y se transmite el Anexo RDEP al SRI."
       ],
-      "deepDiveText": "La reforma tributaria ecuatoriana sustituyó la deducción directa de gastos personales por una rebaja líquida en el impuesto causado calculada en función de canastas básicas familiares (CBF). Heinsohn Nómina proyecta los ingresos anuales esperados del trabajador, aplica la tabla de escala progresiva del SRI y descuenta la cuota mensual de retención dividida para los meses restantes del año."
+      "deepDiveText": "La reforma tributaria ecuatoriana sustituyó la deducción directa de gastos personales por una rebaja líquida en el impuesto causado calculada en función de canastas básicas familiares (CBF). Nómina HCM proyecta los ingresos anuales esperados del trabajador, aplica la tabla de escala progresiva del SRI y descuenta la cuota mensual de retención dividida para los meses restantes del año."
     },
     "interactiveFields": [
       {
@@ -2208,7 +2208,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 18: Simulación de Formulario 107 y Reliquidación por Cargas",
-      "mission": "Añade una tercera carga familiar a un empleado a mitad de año y recalcula la retención mensual en Heinsohn Nómina para los meses restantes.",
+      "mission": "Añade una tercera carga familiar a un empleado a mitad de año y recalcula la retención mensual en Nómina HCM para los meses restantes.",
       "expectedResult": "La retención mensual debe disminuir automáticamente por el incremento de la rebaja."
     },
     "quickCheckQuestions": [
@@ -2267,7 +2267,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Despido Intempestivo (Art. 188 CT): De 1 a 3 años = 3 meses de remuneración; más de 3 años = 1 mes por cada año hasta un máximo de 25 meses.",
         "El plazo legal para legalizar el acta en el SUT y pagar al trabajador es de 15 días laborables."
       ],
-      "deepDiveText": "La terminación de un contrato laboral en Ecuador exige precisión absoluta en el cálculo de la última remuneración completa (sueldo básico + horas extras habituales + comisiones). Heinsohn Nómina calcula automáticamente los proporcionales de décimo tercero, décimo cuarto y vacaciones no gozadas y genera el archivo plano listo para importar en el portal SUT del Ministerio del Trabajo."
+      "deepDiveText": "La terminación de un contrato laboral en Ecuador exige precisión absoluta en el cálculo de la última remuneración completa (sueldo básico + horas extras habituales + comisiones). Nómina HCM calcula automáticamente los proporcionales de décimo tercero, décimo cuarto y vacaciones no gozadas y genera el archivo plano listo para importar en el portal SUT del Ministerio del Trabajo."
     },
     "interactiveFields": [
       {
@@ -2396,13 +2396,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Administración del motor salarial: Creación de conceptos salariales (devengos y deducciones), reglas de cálculo con variables acumuladas, promedios móviles de 12 meses para vacaciones y procedimiento de cierre contable anual.",
     "classTranscript": {
       "instructor": "Abg. & Consultor HCM Marcelo Peña, Especialista Laboral Ecuador",
-      "summary": "Aprende a parametrizar el núcleo de Heinsohn Nómina. Crearemos conceptos salariales personalizados, configuraremos las bases acumuladas para promedios de vacaciones y ejecutaremos el cierre de año fiscal.",
+      "summary": "Aprende a parametrizar el núcleo de Nómina HCM. Crearemos conceptos salariales personalizados, configuraremos las bases acumuladas para promedios de vacaciones y ejecutaremos el cierre de año fiscal.",
       "keyPoints": [
         "Cada concepto salarial define su comportamiento ante el IESS, SRI y Beneficios Sociales.",
         "Las vacaciones se liquidan sobre el promedio de lo ganado en las últimas 24 quincenas (12 meses).",
         "El cierre anual congela los acumulados y apertura los períodos del nuevo ejercicio."
       ],
-      "deepDiveText": "La arquitectura de Heinsohn Nómina descansa en una tabla de conceptos donde cada código tiene banderas booleanas: EsMateriaGravadaIESS, EsBaseRenta, EsBaseDecimoTercero, EsBaseUtilidades. Si creas una comisión por ventas y olvidas tildar EsMateriaGravadaIESS, la planilla del IESS saldrá con glosa de evasión."
+      "deepDiveText": "La arquitectura de Nómina HCM descansa en una tabla de conceptos donde cada código tiene banderas booleanas: EsMateriaGravadaIESS, EsBaseRenta, EsBaseDecimoTercero, EsBaseUtilidades. Si creas una comisión por ventas y olvidas tildar EsMateriaGravadaIESS, la planilla del IESS saldrá con glosa de evasión."
     },
     "interactiveFields": [
       {
@@ -2511,13 +2511,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Integración empresarial: Mapeo de conceptos salariales contra el plan de cuentas de SAP B1, distribución analítica por centros de costos multidimensionales y generación automática del asiento de diario vía REST Service Layer.",
     "classTranscript": {
       "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & SAP B1",
-      "summary": "Aprende a integrar Heinsohn Nómina con el corazón financiero de SAP Business One. Configuraremos la matriz de contabilización, distribuiremos los costos de personal por departamentos y dispararemos el asiento contable mediante la Service Layer.",
+      "summary": "Aprende a integrar Nómina HCM con el corazón financiero de SAP Business One. Configuraremos la matriz de contabilización, distribuiremos los costos de personal por departamentos y dispararemos el asiento contable mediante la Service Layer.",
       "keyPoints": [
         "La matriz de interfaz vincula cada concepto salarial con una cuenta contable de mayor (OACT).",
         "Los centros de costos permiten asignar el gasto a Administración, Ventas o Producción.",
         "La Service Layer de SAP B1 garantiza transacciones seguras con protocolo HTTPS y JSON."
       ],
-      "deepDiveText": "El cierre de quincena o mes culmina con la contabilización del rol en SAP B1. Heinsohn Nómina empaqueta los débitos de gastos y los créditos de pasivos en un payload JSON y lo envía al endpoint /JournalEntries de la Service Layer. Si el asiento no cuadra al centavo o una cuenta no existe en SAP, la Service Layer aborta la transacción manteniendo la consistencia de datos."
+      "deepDiveText": "El cierre de quincena o mes culmina con la contabilización del rol en SAP B1. Nómina HCM empaqueta los débitos de gastos y los créditos de pasivos en un payload JSON y lo envía al endpoint /JournalEntries de la Service Layer. Si el asiento no cuadra al centavo o una cuenta no existe en SAP, la Service Layer aborta la transacción manteniendo la consistencia de datos."
     },
     "interactiveFields": [
       {
@@ -2584,13 +2584,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 21: Mapeo de Matriz Contable y Validación de Payload JSON",
-      "mission": "Configura la matriz de cuentas de Heinsohn Nómina mapeando el concepto \"Bono de Producción\" a la cuenta 5.3.02.01 de Costo de Ventas y genera el payload JSON.",
+      "mission": "Configura la matriz de cuentas de Nómina HCM mapeando el concepto \"Bono de Producción\" a la cuenta 5.3.02.01 de Costo de Ventas y genera el payload JSON.",
       "expectedResult": "El validador de la Service Layer debe retornar código 201 Created con asiento asignado en SAP B1."
     },
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué tecnología de interfaz nativa utiliza SAP Business One versión HANA para recibir asientos contables desde sistemas externos como Heinsohn Nómina?",
+        "question": "¿Qué tecnología de interfaz nativa utiliza SAP Business One versión HANA para recibir asientos contables desde sistemas externos como Nómina HCM?",
         "options": [
           "Conexión directa por ODBC a las tablas",
           "SAP Service Layer (API RESTful basada en OData)",
@@ -2638,13 +2638,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Plataforma de reclutamiento corporativo: Publicación de vacantes, parsing inteligente de hojas de vida, screening algorítmico de competencias con IA y gestión del embudo de selección de candidatos.",
     "classTranscript": {
       "instructor": "MSc. Daniela Aguirre, Directora de Talento Humano & Consultora HCM",
-      "summary": "Aprende a configurar el ATS de Heinsohn Gestión Humana. Automatizaremos el filtro de postulantes, compararemos perfiles contra el descriptor del cargo y vincularemos al candidato contratado directamente a la nómina.",
+      "summary": "Aprende a configurar el ATS de Gestión Humana. Automatizaremos el filtro de postulantes, compararemos perfiles contra el descriptor del cargo y vincularemos al candidato contratado directamente a la nómina.",
       "keyPoints": [
         "El descriptor del puesto fija los requisitos mínimos excluyentes (título, experiencia, software).",
         "El screening algorítmico rankea a los postulantes con un puntaje de compatibilidad porcentual.",
         "La contratación traslada los datos personales a la ficha del empleado sin doble digitación."
       ],
-      "deepDiveText": "En medianas y grandes empresas, procesar cientos de hojas de vida por vacante consume semanas de tiempo improductivo. El módulo de Selección de Heinsohn permite definir matrices de competencias y ponderaciones por puesto. Al aprobar la contratación, el sistema dispara el flujo de alta y aprovisiona el perfil en nómina."
+      "deepDiveText": "En medianas y grandes empresas, procesar cientos de hojas de vida por vacante consume semanas de tiempo improductivo. El módulo de Selección permite definir matrices de competencias y ponderaciones por puesto. Al aprobar la contratación, el sistema dispara el flujo de alta y aprovisiona el perfil en nómina."
     },
     "interactiveFields": [
       {
@@ -2680,7 +2680,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Paso 2: Evaluación técnica de 13 candidatos: Prueba de conocimientos (40%), Entrevista por competencias (40%), Prueba psicométrica (20%).",
         "Paso 3: Candidato Finalista: Prueba técnica (95/100 = 38 pts), Entrevista (90/100 = 36 pts), Psicométrica (85/100 = 17 pts).",
         "Paso 4: Calificación Global Ponderada = 38 + 36 + 17 = 91.00 / 100 puntos.",
-        "Paso 5: Contratación formal: Traslado de datos a Heinsohn Nómina y alta en el sistema IESS con código de puesto oficial."
+        "Paso 5: Contratación formal: Traslado de datos a Nómina HCM y alta en el sistema IESS con código de puesto oficial."
       ],
       "accountingJournalEntry": [
         {
@@ -2713,7 +2713,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Qué define un descriptor de cargo en la arquitectura de Heinsohn Gestión Humana?",
+        "question": "¿Qué define un descriptor de cargo en la arquitectura de Gestión Humana?",
         "options": [
           "La lista de compras de la oficina.",
           "Las competencias, responsabilidades, nivel educativo y perfil salarial de la posición.",
@@ -2748,14 +2748,14 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Medición del rendimiento laboral: Parametrización de cuestionarios por competencias y metas operativas (KPIs), configuración de evaluadores múltiples (jefe, pares, subordinados y clientes) y curvas de calibración.",
     "classTranscript": {
       "instructor": "MSc. Daniela Aguirre, Directora de Talento Humano & Consultora HCM",
-      "summary": "Aprende a estructurar ciclos de evaluación del desempeño 360° en Heinsohn. Definiremos escalas de calificación, asignaremos ponderaciones entre metas cuantitativas y competencias y analizaremos los desvíos evaluativos.",
+      "summary": "Aprende a estructurar ciclos de evaluación del desempeño 360° en Gestión Humana. Definiremos escalas de calificación, asignaremos ponderaciones entre metas cuantitativas y competencias y analizaremos los desvíos evaluativos.",
       "keyPoints": [
         "Evaluación 90°: Solo el jefe inmediato evalúa.",
         "Evaluación 180°: Jefe inmediato + Autoevaluación del colaborador.",
         "Evaluación 360°: Jefe + Autoevaluación + Pares + Subordinados + Clientes internos.",
         "La ponderación típica es 60% Cumplimiento de Metas (KPIs) y 40% Competencias Conductuales."
       ],
-      "deepDiveText": "La evaluación del desempeño alimenta las decisiones de bonificaciones, ascensos y planes de sucesión. Heinsohn Gestión Humana permite parametrizar escalas Likert y cuestionarios específicos por nivel jerárquico. Una vez concluido el ciclo de encuestas, el sistema consolida los resultados en un reporte de brechas de competencias."
+      "deepDiveText": "La evaluación del desempeño alimenta las decisiones de bonificaciones, ascensos y planes de sucesión. Gestión Humana permite parametrizar escalas Likert y cuestionarios específicos por nivel jerárquico. Una vez concluido el ciclo de encuestas, el sistema consolida los resultados en un reporte de brechas de competencias."
     },
     "interactiveFields": [
       {
@@ -2871,7 +2871,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Cuadrante 1A (Top Right): Alto Desempeño / Alto Potencial (Las \"Estrellas\" de la compañía).",
         "La matriz guía la asignación de becas, bonos de retención y planes de sucesión para cargos críticos."
       ],
-      "deepDiveText": "La Matriz Nine-Box desarrollada originalmente por General Electric y McKinsey es el estándar global para la gestión del talento. Heinsohn Gestión Humana cruza automáticamente el resultado de la evaluación del desempeño con los comités de potencial, ubicando a cada colaborador en la cuadrícula visual para alimentar los planes de carrera."
+      "deepDiveText": "La Matriz Nine-Box desarrollada originalmente por General Electric y McKinsey es el estándar global para la gestión del talento. Gestión Humana cruza automáticamente el resultado de la evaluación del desempeño con los comités de potencial, ubicando a cada colaborador en la cuadrícula visual para alimentar los planes de carrera."
     },
     "interactiveFields": [
       {
@@ -2981,7 +2981,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Los OKRs (Objectives and Key Results) conectan la estrategia del negocio con metas medibles trimestrales.",
         "El PDI formaliza el compromiso mutuo entre colaborador y líder para el crecimiento profesional."
       ],
-      "deepDiveText": "La capacitación aislada sin aplicación práctica tiene una retención menor al 15%. Heinsohn Gestión Humana estructura el PDI alrededor de hitos de ejecución en proyectos reales de la empresa. Cada objetivo individual se vincula jerárquicamente a los Key Results corporativos, asegurando que el desarrollo del empleado impulse directamente el valor del negocio."
+      "deepDiveText": "La capacitación aislada sin aplicación práctica tiene una retención menor al 15%. Gestión Humana estructura el PDI alrededor de hitos de ejecución en proyectos reales de la empresa. Cada objetivo individual se vincula jerárquicamente a los Key Results corporativos, asegurando que el desarrollo del empleado impulse directamente el valor del negocio."
     },
     "interactiveFields": [
       {
@@ -3098,7 +3098,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "El ausentismo no programado tiene un costo oculto del 15% al 20% de la masa salarial.",
         "Los pasivos laborales por jubilación patronal y desahucio deben respaldarse con estudios actuariales según NIC 19."
       ],
-      "deepDiveText": "La dirección de recursos humanos moderna habla el idioma financiero del Directorio. Heinsohn Gestión Humana extrae los datos de asistencia, nómina y legajos para alimentar tableros analíticos en tiempo real. Esto permite identificar áreas con alta rotación antes de que se conviertan en crisis operativas y mantener las provisiones contables exactamente alineadas a la norma NIIF."
+      "deepDiveText": "La dirección de recursos humanos moderna habla el idioma financiero del Directorio. Gestión Humana extrae los datos de asistencia, nómina y legajos para alimentar tableros analíticos en tiempo real. Esto permite identificar áreas con alta rotación antes de que se conviertan en crisis operativas y mantener las provisiones contables exactamente alineadas a la norma NIIF."
     },
     "interactiveFields": [
       {
@@ -3917,14 +3917,14 @@ export function getModuleSimulation(submoduleId: string, trackCode?: string): Mo
   }
 
   // Fallback estructurado de alta calidad si no se encuentra
-  const isHeinsohn = (trackCode && trackCode.includes('HEIN')) || submoduleId.startsWith('nom') || submoduleId.startsWith('hcm');
+  const isNomina = (trackCode && trackCode.includes('HEIN')) || submoduleId.startsWith('nom') || submoduleId.startsWith('hcm');
   return {
-    systemType: isHeinsohn ? 'HEIN_NOMINA' : 'SAP_B1',
+    systemType: isNomina ? 'HEIN_NOMINA' : 'SAP_B1',
     windowTitle: `Operación y Parametrización: ${submoduleId.toUpperCase()}`,
     transactionCode: `TX-${submoduleId.toUpperCase()}`,
     screenSummary: 'Transacción oficial para la operación técnica y administrativa del módulo. Permite registrar transacciones de negocio, validar reglas fiscales del SRI y el IESS y balancear asientos contables en tiempo real.',
     classTranscript: {
-      instructor: 'Ing. Consultor Senior Especializado en SAP & Heinsohn Ecuador',
+      instructor: 'Ing. Consultor Senior Especializado en SAP B1 & Nómina Ecuador',
       summary: 'Clase magistral de operación y parametrización técnica. Se analizan los campos críticos de la transacción, el impacto contable y las validaciones de auditoría fiscal.',
       keyPoints: [
         'Validación de integridad referencial antes de contabilizar.',

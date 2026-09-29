@@ -1,0 +1,134 @@
+# Transcripción por Diapositiva: mal 10_BinLoc_11_Overview_Overview_ES
+
+## Diapositiva 1
+
+PUBLIC Ubicación: Resumen sobre ubicaciones SAP Business One Versión 10.0 Bienvenido a este resumen del curso sobre ubicaciones. El curso forma parte de un conjunto de cursos sobre la unidad de ubicaciones y ofrece un resumen preciso del mismo. En los otros cursos sobre este tema se proporciona información detallada. 1
+
+---
+
+## Diapositiva 2
+
+Al finalizar este módulo, podrá: Enumerar las ventajas de utilizar ubicaciones Describir con más detalle: El proceso de configuración de las ubicaciones Los procesos de asignación manual y automática 2 PUBLIC Al finalizar este tema, podrá:  Enumerar las ventajas de utilizar ubicaciones  Describir con más detalle:  El proceso de configuración de las ubicaciones  Los procesos de asignación manual y automática Objetivos
+
+---
+
+## Diapositiva 3
+
+Beneficios de la solución y ejemplo empresarial Comenzamos por los beneficios de utilizar depósitos y presentando un ejemplo empresarial. 3
+
+---
+
+## Diapositiva 4
+
+• Está trabajando con George, el jefe de almacén de OEC Computers para analizar cuáles son sus necesidades y procedimientos en cuanto a logística. • Le gustaría mejorar la velocidad del proceso de logística, como el almacenamiento y el picking de mercancías. • El almacén de OEC Computers es muy grande y a los empleados les cuesta encontrar rápidamente artículos específicos para el picking. • Además, cuando se reciben mercancías en el almacén, es posible que una partida del mismo artículo se guarde en una zona distinta del almacén.  No hay ningún registro que indique dónde deberían almacenarse los artículos, por lo que se suelen guardar en cualquier sitio que esté vacío. • Le recomienda al jefe de almacén que use la solución de ubicaciones en sus almacenes. 4 4 PUBLIC Escenario empresarial  Está trabajando con George, el jefe de almacén de OEC Computers para analizar cuáles son sus necesidades y procedimientos en cuanto a logística.  Le gustaría mejorar la velocidad de almacenamiento y el picking de mercancías.  El almacén de OEC Computers es muy grande. Normalmente, a los empleados les cuesta encontrar rápidamente artículos específicos cuando van a hacer el picking.  Dado que no hay un plan en el que los artículos deban almacenarse, los artículos se pueden almacenar en varias ubicaciones del almacén.  Recomienda utilizar la solución de ubicaciones en sus almacenes.
+
+---
+
+## Diapositiva 5
+
+Para configurar las ubicaciones de OEC Computers, en primer lugar, debemos examinar la estructura del almacén. En la imagen, observamos el almacén principal de OEC Computers. El almacén es un hangar grande dividido en pasillos. Cada pasillo tiene estanterías que se expanden a lo largo y cada una está dividida en niveles, como se muestra en la imagen. 5 5 PUBLIC Escenario empresarial Estructura del almacén de OEC Computers Estantería  Estantería  Estantería Estantería
+
+---
+
+## Diapositiva 6
+
+Subniveles de almacén y estructura de las ubicaciones Ahora analizaremos la estructura de un almacén gestionado por una ubicación. Veremos el código de depósito que se genera según esta estructura Finalmente, veremos el proceso de configuración de la ubicación. 6
+
+---
+
+## Diapositiva 7
+
+Ahora veremos la estructura de subnivel de un almacén gestionado por ubicaciones, de manera que podamos entender cómo definir las ubicaciones del almacén de OEC Computers. La estructura de un almacén suele consistir en una combinación de distintos niveles, como pasillos, estanterías o plantas. Una clase de área puede ser un área de subnivel de otra clase. Por ejemplo, en OEC Computers, una estantería es un subnivel de un pasillo. Esto significa que un pasillo contiene varias estanterías. SAP Business One permite utilizar hasta 4 subniveles de almacén. Cada código de depósito es único y se forma combinando el código de almacén y los códigos de los subniveles de almacén. Un ejemplo del gráfico podría ser el código de ubicación 05-A1-S2-L1. Es posible utilizar el mismo código de subnivel de almacén en muchos códigos de depósito. Podemos ver que el nivel N1 está conectado a las estanterías S1 y S2. 7 7 PUBLIC Estructura subniveles almacén Ejemplo de código de depósito generado Almacén 05 A1 S1 S2 L1 L2 L1 L2 Código de ubicación A2 Nivel de almacén Almacén Subnivel 1: Pasillo Subnivel de almacén 2: Estantería Almacén Subnivel 3: Nivel Una combinación única de códigos de almacén y códigos de subniveles de almacén
+
+---
+
+## Diapositiva 8
+
+Ahora, observemos un ejemplo de una estructura de código de depósito. Como se puede observar, el código de depósito se forma a partir del almacén y de los códigos de subnivel de almacén. 8 8 PUBLIC OEC Computers: Estructura del código de ubicación 01     – A4    – S2     – L9 Almacén - Subnivel1 - Subnivel2 - Subnivel3 Almacén 01 – Pasillo 4    - Estantería 2   - Nivel 9 Estructura de subnivel Código de ubicación de OEC Computers Detalles
+
+---
+
+## Diapositiva 9
+
+Cada ubicación tiene un registro de datos maestros de la ubicación. Como en cualquier ventana de datos maestros se pueden crear, actualizar, eliminar o duplicar códigos de ubicación. En la ventana Datos maestros de ubicación, puede crear cada ubicación manualmente. También hay otra ventana de gestión aparte en la que es posible crear automáticamente varios códigos de depósito a la vez. La ventana Datos maestros de ubicación se divide en 4 partes lógicas: estructura del código, propiedades de la ubicación, restricciones de las ubicaciones y atributos de las ubicaciones. Para obtener más información acerca de los diferentes datos almacenados en los datos maestros de ubicación, consulte el curso Configuración de la ubicación. 9 9 PUBLIC Datos maestros de ubicación Inventario Ubicaciones Datos maestros de ubicación Estructura del código Propiedades Restricciones Atributos
+
+---
+
+## Diapositiva 10
+
+La imagen muestra el flujo de trabajo del proceso de configuración de las ubicaciones. La configuración se realiza en tres fases: En la fase 1 activamos y configuramos un almacén gestionado mediante ubicaciones. La solución de ubicaciones se activa en base a un almacén específico en la ventana Configuración de almacén. Aquí, existe una opción para definir una estrategia de asignación automática, lo que elimina la necesidad de asignar ubicaciones manualmente en los documentos. En la fase 2 definimos los atributos y subniveles de almacén. Un atributo es una característica definida por el usuario que proporciona más información o significado a la ubicación. Después de activar campos de atributo, se añaden como campos de filtrado e información en informes y otras ventanas en el módulo de inventario. En la fase 3 fijamos los códigos y datos de ubicación. En ambas fases, la 2 y la 3, tiene la opción de crear objetos por separado o en grupos. Importante: Es posible activar y configurar la función de ubicación en cualquier empresa existente o de nueva creación sin que esto interfiera en el funcionamiento normal de su actividad. 10 10 PUBLIC Proceso de configuración Configurar una ubicación- almacén gestionado y detalles Configurar los subniveles de almacén Configurar los atributos Fase 1 Fase 2 Fase 3 Configurar los códigos de depósito y detalles Definir la estrategia de asignación automática
+
+---
+
+## Diapositiva 11
+
+Procesos empresariales integrados con ubicaciones Seguiremos con un escenario empresarial sencillo que empieza con la recepción de las mercancías en el almacén y acaba con la venta de dichas mercancías. 11
+
+---
+
+## Diapositiva 12
+
+En las siguientes diapositivas vamos a ver un ejemplo de proceso empresarial que incluye la compra, traslado, picking y venta de un artículo en un almacén gestionado mediante ubicaciones que puede implementarse en OEC Computers. Vamos a empezar añadiendo una entrada de mercancías de pedido en una zona de recepción especial en la que se realiza la supervisión. Luego echaremos un vistazo al informe Lista de contenido de ubicación. A partir de este informe, crearemos un traslado para desplazar las mercancías recibidas a la ubicación de almacenamiento. En el lado de ventas, revisaremos el proceso de entrega de un artículo y nos centraremos en el procedimiento de picking. En el último paso añadiremos un documento de entrega que crea una asignación de salida desde la ubicación del artículo. A medida que avanzamos por todo este proceso, iremos viendo las asignaciones manuales y automáticas. 12 12 PUBLIC Escenario de procesos empresariales integrados en las ubicaciones Entrada de mercancías de pedido Lista de contenido de ubicación Traslado de inventario Pedido de cliente Picking Entrega Asignación a ubicaciones Asignación desde ubicaciones Asignación a y desde ubicaciones
+
+---
+
+## Diapositiva 13
+
+OEC Computers le compra ratones USB directamente al fabricante. El director de compras envía un pedido y, cuando las mercancías llegan al almacén de Nueva York, un empleado del almacén envía una entrada de mercancías de pedido. En esta entrada de mercancías de pedido es la primera vez que se utilizan las ubicaciones en el proceso. En todos los documentos de entrada de inventario que implican un almacén gestionado por ubicaciones es necesario realizar una asignación a ubicaciones concretas. La asignación puede ser manual o automática. Además, la asignación se realiza por la línea del documento. Para asignar manualmente una cantidad a la línea, hay que seleccionar la flecha de enlace del campo Asignación de la ubicación. Al hacerlo se abre la ventana Asignación de ubicación: Entrada para esa línea. En la tabla de dicha ventana, asigne la cantidad de línea en las ubicaciones deseadas. Es posible repartir la cantidad asignada entre varios códigos de ubicación. Por ejemplo, cuando no hay suficiente espacio en una ubicación para todas las unidades recibidas, puede asignar una parte de dicha cantidad a otra ubicación. 13 13 PUBLIC Asignaciones en la entrada de mercancías de pedido Cantidad de fila original Transacción entrante
+
+---
+
+## Diapositiva 14
+
+Los artículos se han asignado manualmente en la entrada de mercancías de pedido, pero el sistema es capaz de asignar dichos artículos automáticamente de acuerdo con lo que se defina en la ventana Configuración de almacén. OEC Computers cuenta con una zona de recepción especial en el almacén de Nueva York. Esta zona está definida como una o varias ubicaciones definidas como ubicación receptora. La ubicación receptora es una ubicación de tránsito que se utiliza como zona de supervisión para hacer controles de calidad u otros procedimientos de recepción. Cuando se trabaja con ubicaciones receptoras, todas las transacciones entrantes se colocan en las ubicaciones receptoras a menos que se seleccionen manualmente otras ubicaciones. Una vez finalizada la entrada, los artículos recibidos se pueden transferir, mediante un documento de traslado, a las ubicaciones de almacén. 14 14 PUBLIC Asignaciones automáticas entrantes Opción de ubicaciones receptoras 1. Creación de documentos de compras 2. Procedimiento de entrada de mercancías en la ubicación receptora (inspección, clasificación, identificación, etc.) 3. Traslado a la ubicación de almacenamiento Los artículos se asignan automáticamente a las ubicaciones receptoras
+
+---
+
+## Diapositiva 15
+
+El segundo tipo de asignación automática que se utiliza con las transacciones de inventario entrantes se realiza mediante el uso de estrategias de asignación automática. Las ubicaciones que definen estas estrategias, a diferencia de las que utiliza la función de ubicación receptora, suelen ser las ubicaciones de almacenamiento y no las ubicaciones temporales. Una de las estrategias de asignación automática es la ubicación predeterminada. Es posible definir la ubicación predeterminada a tres niveles: almacén, el grupo de artículos y los niveles de artículo. Cuando se utiliza la estrategia de ubicación predeterminada el sistema asigna automáticamente la ubicación por defecto al nivel de la línea del documento. El sistema elige la primera ubicación predeterminada que encuentra, empezando por el artículo, siguiendo por el grupo de artículos y, finalmente, el almacén. Además de la ubicación predeterminada, hay otras tres estrategias de asignación automática. Dichas estrategias le permiten asignar mercancías automáticamente a una ubicación actual, la última ubicación o a ubicaciones en las que se haya guardado antes el artículo. 15 15 PUBLIC Asignaciones automáticas entrantes Opción de estrategias de asignación automática Al utilizar una asignación automática, los artículos se asignan automáticamente a una ubicación de almacenamiento La asignación automática de la entrada se puede definir como: • Ubicación predeterminada • Ubicación actual • La última ubicación utilizada • Cualquier ubicación histórica
+
+---
+
+## Diapositiva 16
+
+George quiere ver cuántos ratones USB se dejan en las ubicaciones receptoras y luego se trasladan a su ubicación de almacenamiento. Para ello, crea un informe con la lista del contenido de las ubicaciones. Este informe muestra la cantidad saldo para cada ubicación por artículo. Directamente, desde el informe puede hacer lo siguiente: • Ejecutar otros informes de inventario, filtrados por las ubicaciones seleccionadas. • Crear un Traslado en el que se impliquen las ubicaciones seleccionadas, seleccionando el botón Traslado. • Establecer las ubicaciones seleccionadas como ubicaciones predeterminadas, directamente en el informe. George selecciona la línea correspondiente al ratón USB en el informe y pulsa el botón Traslado. Finalmente pulsa, Borrar inventario para enviar un traslado de dicho artículo. 16 16 PUBLIC Lista de contenido de ubicación
+
+---
+
+## Diapositiva 17
+
+George quiere trasladar los ratones USB desde la ubicación receptora hasta la ubicación de almacenamiento. Cuando selecciona la opción Borrar inventario en la lista del contenido de las ubicaciones se abre el traslado. El almacén, las ubicaciones y las cantidades se copian de las líneas seleccionadas de la lista de contenido de las ubicaciones. Es posible hacer el traslado dentro de un almacén, de una ubicación a otra. Como se puede ver en la imagen, hay dos columnas de ubicación en la tabla Contenido: De una ubicación y A otra ubicación. La cabecera contiene campos con valores por defecto.  Puede sobrescribir estos valores en las filas. Gracias a esto, es posible crear el documento de traslado de inventario desde muchos almacenes simultáneamente. Esta función está disponible, aunque la función de ubicaciones no esté activada en ningún almacén. 17 17 PUBLIC Asignación en un traslado de inventario Estos campos contienen los valores predeterminados de los campos de la tabla Transacción entrante Transacción saliente
+
+---
+
+## Diapositiva 18
+
+El jefe de ventas, Michael, envía un pedido de cliente de 25 ratones USB. En ese momento, todavía no se ha realizado ninguna asignación. George, el jefe de almacén, comienza el proceso de picking mediante la generación de listas de picking para sus trabajadores. En el cajón Abrir, selecciona artículos y los libera en la lista de picking. Se abre el asistente de generación de listas de picking. Desde aquí podrá: • Filtrar por subniveles de almacén y atributos de las ubicaciones en las que desea realizar el picking • Dividir las listas de picking por atributos o subnivel de almacén • Seleccionar una asignación automática Y, por supuesto, enviar una lista de picking. George selecciona Crear para generar una entrega para el artículo ratón USB. 18 18 PUBLIC Ubicaciones en el proceso de picking
+
+---
+
+## Diapositiva 19
+
+En todos los documentos de emisión de inventario que se generan en un almacén gestionado mediante ubicaciones es necesario realizar la asignación de los artículos se desde ubicaciones concretas. En nuestro ejemplo, creamos un documento de entrega durante el proceso de picking en el que se indicaban los artículos y la cantidad recogida. Vamos a ver cómo se asignan los artículos cuando copiamos la entrega desde un pedido de cliente o lo añadimos directamente. La estructura de la ventana Asignación de ubicación – Salida es parecida a la ventana Asignación de ubicación – Entrada. En dicha ventana podemos ver una lista de códigos de depósito y las cantidades disponibles desde la que es posible realizar asignaciones. Es posible asignar desde cualquier línea que tenga cantidades disponibles para asignar. La cantidad se puede introducir manualmente desde cualquier ubicación disponible para combinar el total. En la imagen que se muestra, podemos ver el documento de entrega que George creó a partir de la lista de picking. George debe dar salida a una cantidad de 25 del almacén 05. Hay dos ubicaciones con una cantidad positiva del artículo en la fila. George quiere vaciar las primeras ubicaciones para reducir al mínimo el número de ubicaciones para este artículo. Coge 10 unidades de la primera ubicación para vaciarla y otras 15 de la segunda ubicación. Se puede realizar una asignación automática seleccionando asignación automática. 19 19 PUBLIC Asignaciones en la entrega Transacción saliente
+
+---
+
+## Diapositiva 20
+
+Tenga en cuenta que el sistema también puede realizar asignaciones automáticas para enviar mercancías. Hay disponibles varios métodos de asignación automática. Por ejemplo, el sistema puede realizar la asignación según la fecha de entrada más antigua del artículo o según una secuencia de código. En este caso, para realizar una asignación desde la ubicación con la menor cantidad, primero debe definirse un método de cantidad ascendente. Para obtener más información sobre el método de asignación en la salida, consulte el curso: Proceso de asignación en ubicación. 19
+
+---
+
+## Diapositiva 21
+
+Estos son algunos puntos clave de esta sesión:  Una estructura de almacén está representada como una jerarquía en SAP Business One.  Los elementos de la estructura se pueden dividir en clases de área, como un pasillo o un estante.  Cada clase de área se puede definir como un subnivel de almacén.  Los subniveles se definen en una jerarquía donde el subnivel_A puede contener varios subniveles_B.  La ubicación siempre es el nivel inferior de la jerarquía.  El código de ubicación es una combinación del código de almacén y de cada uno de los subniveles en la jerarquía de una ubicación específica.  En todos los documentos que genera una transacción de inventario y en los que se implica un de ubicación almacén es necesario realizar la asignación de los artículos para enviar o recibir desde ubicaciones concretas. 20 20 PUBLIC Resumen (1/2) A continuación, se detallan algunos puntos clave: En SAP Business One, una estructura de almacén está representada como una jerarquía. Los elementos de la estructura se pueden dividir en clases de área, como un pasillo o un estante. Cada clase de área se puede definir como un subnivel de almacén. Los subniveles se definen en una jerarquía donde el subnivel_A puede contener varios subniveles_B. La ubicación siempre es el nivel inferior de la jerarquía. El código de ubicación es una combinación del código de almacén y de cada uno de los subniveles en la jerarquía de una ubicación específica. Cada documento que genera una transacción de inventario e implica un almacén con ubicación requiere la asignación de artículos para enviar o recibir de ubicaciones específicas.
+
+---
+
+## Diapositiva 22
+
+ La asignación de salida y entrada se puede realizar de forma manual o automáticamente de acuerdo con un conjunto de reglas predefinidas.  La asignación manual se lleva a cabo en la ventana Asignación de ubicación (enviar o recibir)  La ubicación receptora es una ubicación de tránsito que se utiliza como zona de supervisión para hacer controles de calidad u otros procedimientos de recepción.  La lista del contenido de las ubicaciones muestra la cantidad que hay en cada ubicación por artículo. A partir de este informe, puede realizar distintas acciones, como:  Crear un traslado  Visualizar un informe de lista de contabilización de inventario de las ubicaciones seleccionadas  Un traslado mueve los artículos a una ubicación diferente dentro del mismo almacén o a otro almacén. 21 21 PUBLIC Resumen (2/2) A continuación, se detallan algunos puntos clave: La asignación de salida y entrada se puede realizar de forma manual o automáticamente de acuerdo con un conjunto de reglas predefinidas. La asignación manual se lleva a cabo en la ventana Asignación de ubicación (enviar o recibir) Una ubicación receptora es una ubicación de tránsito que se utiliza como zona de supervisión para hacer un control de calidad u otros procedimientos de recepción La lista de contenidos de ubicación muestra saldos de cantidades de cada ubicación y artículo. A partir de este informe, puede realizar distintas acciones, como:  Crear un traslado  Visualizar un informe de lista de contabilización de inventario de las ubicaciones seleccionadas Un traslado mueve artículos a una ubicación diferente dentro del mismo almacén o a otro almacén.
+
+---
+
