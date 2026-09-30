@@ -73,30 +73,30 @@ export interface ManualItem {
 | 22 | 🆘 | Herramientas de Soporte | 1 |
 | 23 | ✏️ | Casos Prácticos y Ejercicios | 6 |
 
-## Flujo de Navegación
+## Flujo de Navegación y E-Learning
 
 ```mermaid
-graph LR
-    A[/manuales] -->|Clic en tarjeta| B[Ficha Técnica Modal]
-    A -->|Abrir Clase| C[/manuales/id]
-    C --> D[ManualViewer]
-    D --> E[Carrusel de Diapositivas]
-    D --> F[Texto Markdown]
+graph TD
+    A[/manuales - Biblioteca] -->|Clic Ficha Técnica| B[Modal Ficha Técnica]
+    B -->|Abrir / Descargar| PDF[PDF Original Oficial]
+    A -->|Abrir Clase| C[/manuales/id - Aula Interactiva]
+    C --> D[ManualViewer UI - 1 solo pantallazo]
+    D --> E[Video Player MP4 Sincronizado]
+    D --> F[Teleprompter React Auto-Scroll]
+    D --> G[Quiz Evaluativo - 3 preguntas]
+    G -->|Aprobado 2/3| H[localStorage: sap_completed_manuals]
+    H -.->|Reflejo de Estado| A
 ```
 
 ## Archivos Relacionados
 
 - [[01_Auth]] - Sistema de autenticación para acceso a manuales
+- [[06_LMS_Architecture]] - Arquitectura del LMS y árbol de progresión
 - [[03_Inspection]] - Aplicación de campo (módulo independiente)
 
-## Proceso de Extracción de Imágenes
+## Sistema de Sincronización Teleprompter & Video
 
-Las imágenes se extrajeron con un script Python usando PyMuPDF (`fitz`):
-1. **Detección dinámica del área del slide** (bounding box del rectángulo más grande)
-2. **Renderizado a 3x resolución** para máxima nitidez
-3. **Recorte quirúrgico** eliminando bordes negros
-4. **Clasificación automática** en BUENAS vs MALAS (cuarentena)
-5. **Revisión manual humana** de las imágenes en cuarentena
+1. **`clase_sync.json`**: Mapea cada slide con `script_text`, `start_time` y `end_time` medidos en milisegundos reales con `mutagen`.
+2. **Auto-Scroll Activo**: En `ManualViewer.tsx`, el hook `useEffect` centrado en `activeSyncSlide` invoca `scrollIntoView({ behavior: 'smooth', block: 'center' })` garantizando que el texto activo suba automáticamente según el compás del narrador.
+3. **Registro de Aprobación**: Los manuales aprobados mediante el quiz quedan marcados de forma persistente con un badge distintivo `✓ Aprobado` en la biblioteca principal y el modal.
 
-> **Estado**: Las 114 carpetas principales tienen imágenes extraídas. 
-> Las 6 carpetas CSL/CSI están pendientes de extracción manual.

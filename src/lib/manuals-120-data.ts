@@ -59,8 +59,8 @@ export const ALL_MANUALS: ManualItem[] = [
     "number": 3,
     "slug": "10-overview-13-mddoc-es",
     "title": "Documentos y Datos Maestros: Conceptos Generales",
-    "category": "Visión General del Sistema",
-    "categoryIcon": "🗺️",
+    "category": "Introducción a SAP Business One",
+    "categoryIcon": "🎓",
     "categoryOrder": 1,
     "summary": ", observaremos los datos maestros en SAP Business One. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modi...",
     "totalSlides": 14,
@@ -1741,21 +1741,14 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "pdfPath": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/10_Intro_12_Overview_GettingStarted_ES.pdf",
         "mdPath": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/10_Intro_12_Overview_GettingStarted_ES_slides.md",
         "imagesPath": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/Imagenes_Diapositivas"
-      }
-    ]
-  },
-  {
-    "name": "Visión General del Sistema",
-    "icon": "🗺️",
-    "order": 1,
-    "manuals": [
+      },
       {
         "id": "10_Overview_13_MDDoc_ES",
         "number": 3,
         "slug": "10-overview-13-mddoc-es",
         "title": "Documentos y Datos Maestros: Conceptos Generales",
-        "category": "Visión General del Sistema",
-        "categoryIcon": "🗺️",
+        "category": "Introducción a SAP Business One",
+        "categoryIcon": "🎓",
         "categoryOrder": 1,
         "summary": ", observaremos los datos maestros en SAP Business One. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modi...",
         "totalSlides": 14,
@@ -3552,4 +3545,4 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
   }
 ];
 
-export const CATEGORY_NAMES: string[] = ["Introducción a SAP Business One", "Visión General del Sistema", "Implementación y Configuración", "Contabilidad Básica", "Gestión Bancaria y Pagos", "Informes Financieros y Control", "Costos y Presupuestos", "Procesos Financieros", "Configuración Financiera", "Activos Fijos", "Gestión de Inventario y Artículos", "Datos Maestros de Artículo", "Inventarios y Movimientos", "Ubicaciones en Almacén (Bin Locations)", "Planificación de Materiales (MRP)", "Determinación de Precios", "Producción", "Gestión de Proyectos", "Compras y Aprovisionamiento", "Ventas", "Gestión de Servicios", "Herramientas de Soporte", "Casos Prácticos y Ejercicios"];
+export const CATEGORY_NAMES: string[] = ["Introducción a SAP Business One", "Implementación y Configuración", "Contabilidad Básica", "Gestión Bancaria y Pagos", "Informes Financieros y Control", "Costos y Presupuestos", "Procesos Financieros", "Configuración Financiera", "Activos Fijos", "Gestión de Inventario y Artículos", "Datos Maestros de Artículo", "Inventarios y Movimientos", "Ubicaciones en Almacén (Bin Locations)", "Planificación de Materiales (MRP)", "Determinación de Precios", "Producción", "Gestión de Proyectos", "Compras y Aprovisionamiento", "Ventas", "Gestión de Servicios", "Herramientas de Soporte", "Casos Prácticos y Ejercicios"];

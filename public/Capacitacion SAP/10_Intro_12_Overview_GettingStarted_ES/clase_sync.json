@@ -1,0 +1,37 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "061_Slide_01_10_Intro_12_Overview_GettingStarted_ES.webp",
+    "script_text": "Bienvenidos a la segunda lección: Primeros pasos en SAP Business One. En este módulo dejaremos la teoría a un lado para sumergirnos directamente en el uso del sistema y su navegación general.",
+    "start_time": 0.0,
+    "end_time": 13.196
+  },
+  {
+    "slide_index": 2,
+    "image_file": "061_Slide_02_10_Intro_12_Overview_GettingStarted_ES.webp",
+    "script_text": "Los objetivos de esta lección son claros. Al finalizar, podrás iniciar sesión en el sistema de manera segura, navegar por el menú principal, comprender cómo están estructurados los módulos y utilizar la barra de herramientas para acceder a funciones comunes.",
+    "start_time": 13.196,
+    "end_time": 30.208
+  },
+  {
+    "slide_index": 3,
+    "image_file": "061_Slide_03_10_Intro_12_Overview_GettingStarted_ES.webp",
+    "script_text": "Veamos un escenario cotidiano. Acabas de ser contratado y es tu primer día de trabajo. El departamento de TI te ha entregado tus credenciales. Tu primera gran tarea es simplemente entrar al sistema, familiarizarte con las pantallas de inicio y encontrar los menús que utilizarás a diario.",
+    "start_time": 30.208,
+    "end_time": 50.388
+  },
+  {
+    "slide_index": 4,
+    "image_file": "061_Slide_04_10_Intro_12_Overview_GettingStarted_ES.webp",
+    "script_text": "Para iniciar sesión en SAP Business One, primero debes seleccionar el servidor y la base de datos de tu empresa. Luego, introduces tu usuario y contraseña. Recuerda que los permisos y módulos que verás dependerán del rol que tu administrador haya configurado para ti.",
+    "start_time": 50.388,
+    "end_time": 68.216
+  },
+  {
+    "slide_index": 5,
+    "image_file": "061_Slide_05_10_Intro_12_Overview_GettingStarted_ES.webp",
+    "script_text": "Una vez dentro, te encontrarás con la interfaz principal. En la parte superior está la barra de herramientas. A la izquierda, el menú principal con todos los módulos colapsados. Y en el centro, el área de trabajo donde se abrirán tus documentos. Familiarízate con este diseño, porque será tu centro de control diario.",
+    "start_time": 68.216,
+    "end_time": 91.51599999999999
+  }
+]
