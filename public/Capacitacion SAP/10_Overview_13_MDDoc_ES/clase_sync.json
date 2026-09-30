@@ -1,0 +1,51 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "080_Slide_03_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "En el corazón de SAP Business One se encuentra un principio fundamental: la reutilización de datos maestros. Imagina que cada vez que facturas a un cliente tuvieras que escribir su dirección, su identificación fiscal o sus condiciones de crédito desde cero. Sería lento y propenso a errores. En SAP, la información clave de clientes, proveedores y artículos se crea una sola vez en los Datos Maestros y luego se reutiliza automáticamente en pedidos, entregas y facturas con total consistencia.",
+    "start_time": 0.0,
+    "end_time": 32.684
+  },
+  {
+    "slide_index": 2,
+    "image_file": "080_Slide_04_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "Dentro del sistema, a todos los contactos comerciales se les conoce como Interlocutores Comerciales. Existen tres tipos: los Clientes para el ciclo de ventas, los Proveedores para compras, y los Clientes Potenciales o Leads. Lo fascinante es que cuando un prospecto decide comprarte por primera vez, no tienes que crear un registro nuevo; simplemente conviertes el Lead en Cliente manteniendo todo el historial intacto.",
+    "start_time": 32.684,
+    "end_time": 59.608
+  },
+  {
+    "slide_index": 3,
+    "image_file": "080_Slide_06_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "Muchos de los datos que ves en la ficha de un cliente provienen de la configuración base del sistema, como las condiciones de pago a 30 o 60 días. En SAP Business One, cada vez que veas una flecha naranja de enlace junto a un campo, puedes hacer clic sobre ella para saltar directamente a los datos de origen o configuración sin perder de vista tu documento actual.",
+    "start_time": 59.608,
+    "end_time": 82.30799999999999
+  },
+  {
+    "slide_index": 4,
+    "image_file": "080_Slide_07_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "Hablemos ahora de la anatomía de los Documentos de Marketing, ya sean de compras o ventas. Todos comparten la misma estructura en tres partes: una cabecera con el cliente y fechas, un pie de página con totales e impuestos, y una parte intermedia con cuatro pestañas críticas: Contenido para los artículos y precios, Logística para las direcciones de despacho, Contabilidad para las cuentas financieras y Anexos para adjuntar contratos o PDFs.",
+    "start_time": 82.30799999999999,
+    "end_time": 110.744
+  },
+  {
+    "slide_index": 5,
+    "image_file": "080_Slide_08_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "En la pestaña de contenido puedes personalizar los tipos de línea. Además de las líneas estándar para artículos de inventario, puedes insertar líneas de tipo T para añadir notas o especificaciones de entrega a tu proveedor, o líneas de tipo S para calcular subtotales automáticos, haciendo tus cotizaciones mucho más claras y profesionales.",
+    "start_time": 110.744,
+    "end_time": 132.556
+  },
+  {
+    "slide_index": 6,
+    "image_file": "080_Slide_09_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "¿Qué sucede si estás armando una cotización compleja y necesitas validarla antes de enviarla? En SAP Business One puedes guardarla como Documento Preliminar o borrador. Los borradores no afectan la contabilidad ni mueven inventario, pero te permiten pausar tu trabajo, revisarlo en equipo o usarlo como plantilla para operaciones frecuentes.",
+    "start_time": 132.556,
+    "end_time": 154.848
+  },
+  {
+    "slide_index": 7,
+    "image_file": "080_Slide_10_10_Overview_13_MDDoc_ES.webp",
+    "script_text": "Finalmente, la verdadera magia del flujo operativo es la relación entre documentos. Nunca vuelvas a digitar un pedido cuando se convierte en factura. Con las opciones de Copiar a y Copiar de, toda la información viaja de un paso a otro de la cadena de suministro en un solo clic, garantizando trazabilidad total desde la cotización hasta el cobro.",
+    "start_time": 154.848,
+    "end_time": 177.092
+  }
+]

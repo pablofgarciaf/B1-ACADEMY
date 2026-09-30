@@ -43,12 +43,13 @@ async def process_manual(manual_dir):
         print(f"  [{i+1}/{len(data)}] Audio dura {audio_length:.2f}s. Generando clip de video ({total_duration:.2f}s)...")
         # El padding de audio (0.5s) lo añadiremos con apad de ffmpeg para asegurar que no se corte
         cmd_ffmpeg = (
-            f'ffmpeg -y -loop 1 -framerate 1 -i "{img_file}" -i {audio_file} '
-            f'-c:v libx264 -tune stillimage '
-            f'-af "apad=pad_dur=0.5" -c:a aac -b:a 192k -pix_fmt yuv420p '
+            f'ffmpeg -y -loop 1 -framerate 25 -i "{img_file}" -i {audio_file} '
+            f'-vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2:color=black" '
+            f'-c:v libx264 -preset veryfast -crf 24 '
+            f'-af "apad=pad_dur=0.5" -c:a aac -b:a 192k -ar 44100 -pix_fmt yuv420p '
             f'-t {total_duration} {video_file}'
         )
-        subprocess.run(cmd_ffmpeg, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(cmd_ffmpeg, shell=True, check=True)
         
         slide["start_time"] = current_time
         slide["end_time"] = current_time + total_duration
@@ -63,7 +64,7 @@ async def process_manual(manual_dir):
             f.write(f"file '{vf}'\n")
             
     cmd_concat = f'ffmpeg -y -f concat -safe 0 -i concat_list.txt -c copy "{output_video}"'
-    subprocess.run(cmd_concat, shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(cmd_concat, shell=True, check=True)
     
     print("Limpiando archivos temporales...")
     for f in temp_files:
