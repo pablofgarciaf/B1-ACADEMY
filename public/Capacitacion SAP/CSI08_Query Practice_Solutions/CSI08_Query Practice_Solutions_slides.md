@@ -2,121 +2,249 @@
 
 ## Diapositiva 1
 
-Case Study Solution: Query Practice SAP Business One 10.0, version for SAP HANA PUBLIC
+Solución al Caso Práctico: Práctica de Consultas (Query Practice) SAP Business One 10.0, versión para SAP HANA - PÚBLICO
 
 ---
 
 ## Diapositiva 2
 
-PRACTICE: SOLUTIONS FOR QUERIES                                                                                                  PUBLIC 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business One. You will create the following queries: 1. A report showing a list of customers 2. A report that uses a parameter as selection criteria 3. A report based on multiple tables 4. A report with a running total that can be used with an alert to provide a worklist to a user 5. A query used in a dashboard widget PREREQUISITE: 1. Use the demo database for SAP Business One 10.0, version for SAP HANA 2. Credentials: User code: manager Use either of the SAP Business One query tools: Query Generator or Query Wizard. Note: the solutions are shown for the Query Generator only. All queries shown here use the HANA SQL syntax. Important note: The reports included in this case study show data from the UK localization database. The data you will see will obviously be different depending on your localization and the date you run the queries.
+PRÁCTICA: SOLUCIONES PARA LAS CONSULTAS - PÚBLICO 2 
+INTRODUCCIÓN 
+Estos ejercicios prácticos están diseñados para brindarle experiencia práctica en la creación de consultas SQL básicas para SAP HANA utilizando las herramientas de consulta integradas en SAP Business One. 
+Creará las siguientes consultas: 
+1. Un informe que muestra una lista de clientes. 
+2. Un informe que utiliza un parámetro como criterio de selección. 
+3. Un informe basado en múltiples tablas. 
+4. Un informe con un total acumulado que puede usarse con una alerta para proporcionar una lista de trabajo a un usuario. 
+5. Una consulta utilizada en un widget de panel de control (dashboard). 
+
+REQUISITO PREVIO: 
+1. Utilice la base de datos de demostración para SAP Business One 10.0, versión para SAP HANA. 
+2. Credenciales: Código de usuario: manager. 
+Utilice cualquiera de las herramientas de consulta de SAP Business One: Generador de Consultas o Asistente de Consultas. 
+Nota: las soluciones se muestran solo para el Generador de Consultas. Todas las consultas mostradas aquí utilizan la sintaxis SQL de HANA. 
+Nota importante: Los informes incluidos en este caso práctico muestran datos de la base de datos de localización del Reino Unido. Obviamente, los datos que verá serán diferentes dependiendo de su localización y de la fecha en que ejecute las consultas.
 
 ---
 
 ## Diapositiva 3
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 3 Task 1 Create a Customer List Report This report displays a list of customers and balances from the OCRD Business Partners table. Create the query Choose Tools → Queries → Query Generator. Type OCRD in the highlig hted field at the top left of the window, then press Tab. Select fields for the report by double-clicking in the list: • CardCode • CardName • Address • City (Bill-to city) • ZipCode • Balance • CntctPrsn Note: When using a HANA database, multi-case field names must be enclosed in double quote marks in the query. Tip: Sort the Fields To make it easier to select fields, you can sort the list of fields alphabetically by double-clicking in the Name column header. Add a condition to the query Since the OCRD table holds records for leads and vendors as well as customers, you need to add a filter for customer master records: • Click in the Where area on the right. • Double-click to select the CardType field. • Type = ‘C’ to complete the Where clause (use the single quote character). The Where clause should now read: T0."CardType" = ‘C’
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 3 
+Tarea 1: Crear un Informe de Lista de Clientes 
+Este informe muestra una lista de clientes y saldos de la tabla de Interlocutores Comerciales OCRD. 
+
+Crear la consulta: 
+Elija Herramientas → Consultas → Generador de Consultas. Escriba OCRD en el campo resaltado en la parte superior izquierda de la ventana, luego presione Tab. Seleccione campos para el informe haciendo doble clic en la lista: 
+• CardCode 
+• CardName 
+• Address 
+• City (Ciudad de facturación) 
+• ZipCode 
+• Balance 
+• CntctPrsn 
+Nota: Al usar una base de datos HANA, los nombres de los campos con mayúsculas y minúsculas deben estar entre comillas dobles en la consulta. 
+Consejo: Ordenar los Campos 
+Para que sea más fácil seleccionar campos, puede ordenar la lista de campos alfabéticamente haciendo doble clic en el encabezado de la columna Nombre. 
+
+Agregar una condición a la consulta:
+Dado que la tabla OCRD también contiene registros para clientes potenciales y proveedores, debe agregar un filtro para los registros maestros de clientes: 
+• Haga clic en el área Dónde (Where) a la derecha. 
+• Haga doble clic para seleccionar el campo CardType. 
+• Escriba = 'C' para completar la cláusula Dónde (use el carácter de comilla simple). 
+La cláusula Dónde debería leerse ahora: T0."CardType" = 'C'
 
 ---
 
 ## Diapositiva 4
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 4 Choose Execute. Fine Tune the Results • You can sort the results according to any column by double-clicking in the header field of the column.  You can alternately add a sort to the query by entering a field in the Sort By area of the Query Generator window. • To include a total of the account balances, press Ctrl and click in the header field of the Account Balance column. The total will appear at the bottom of the column, as shown below.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 4 
+Elija Ejecutar. 
+
+Ajuste Fino de los Resultados:
+• Puede ordenar los resultados según cualquier columna haciendo doble clic en el campo de encabezado de la columna. Opcionalmente, puede agregar una ordenación a la consulta ingresando un campo en el área Ordenar por de la ventana del Generador de Consultas. 
+• Para incluir un total de los saldos de las cuentas, presione Ctrl y haga clic en el campo de encabezado de la columna Saldo de Cuenta. El total aparecerá en la parte inferior de la columna, como se muestra a continuación.
 
 ---
 
 ## Diapositiva 5
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 5 Save the query for reuse In the Query Preview window, choose Save. In the Save Query window, choose Manage Categories. Enter a new category called Sales. Choose Add\Update.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 5 
+Guardar la consulta para reutilizar: 
+En la ventana de Vista Previa de Consulta, elija Guardar. En la ventana Guardar Consulta, elija Tratar Categorías. Ingrese una nueva categoría llamada Ventas (Sales). Elija Añadir/Actualizar.
 
 ---
 
 ## Diapositiva 6
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 6 Select the newly created Sales category and choose the Assign Group button to assign the category to the Saved Queries – Group No.1 authorization group. Choose Update then OK.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 6 
+Seleccione la categoría Ventas recién creada y elija el botón Asignar Grupo para asignar la categoría al grupo de autorización Consultas Guardadas – Grupo N° 1. Elija Actualizar y luego OK.
 
 ---
 
 ## Diapositiva 7
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 7 Back in the Save Query window, select the Sales category. Enter Customer Balance Report in the Query Name field. After that choose Save. Run the saved query Choose Tools → Queries → User Queries → Sales → Customer Balance Report.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 7 
+De vuelta en la ventana Guardar Consulta, seleccione la categoría Ventas. Ingrese Informe de Saldo de Clientes en el campo Nombre de Consulta. Después elija Guardar. 
+
+Ejecutar la consulta guardada:
+Elija Herramientas → Consultas → Consultas de Usuario → Ventas → Informe de Saldo de Clientes.
 
 ---
 
 ## Diapositiva 8
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 8 Task 2 Create a Report with a Parameter This report displays a list of customer invoices posted after a certain date. The date is entered as a parameter when the query is run. The report uses the OINV invoice table. Find Field Names To find out the field names for the report, use system information: ▪ Open up a blank A/R invoice document and toggle on View > System Information. ▪ Hold your mouse over the following fields and write down the database field name that shows in the system information area: Name in Document Database Field Name No. Customer Name Posting Date Total DocTotal Note: When you hold your mouse over the Total field, the field name does not display in system information. This is because this field holds the currency symbol as well as the amount. The database field name is DocTotal. Create the Query In the Query Generator window, choose the X button to clear out the previous table selection. If you closed the Query Generator window, re-open it using the path Tools → Queries → Query Generator. Type OINV in the Table field and press Tab. Select the fields from the OINV table that you identified using system information. In the Where clause, add a filter for open documents (DocStatus = ‘O’). The Where clause should read: T0."DocStatus" = ‘O’ In the Where clause, type the word ‘and’ then select the document date field (DocDate). Then press the Conditions button to open the side window: • Double-click the Greater than condition • Double-click the first variable [%0].
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 8 
+Tarea 2: Crear un Informe con un Parámetro 
+Este informe muestra una lista de facturas de clientes contabilizadas después de cierta fecha. La fecha se ingresa como un parámetro cuando se ejecuta la consulta. El informe utiliza la tabla de facturas OINV. 
+
+Buscar Nombres de Campos:
+Para averiguar los nombres de los campos para el informe, utilice la información del sistema: 
+▪ Abra un documento en blanco de factura de deudores y active Vista > Información del Sistema. 
+▪ Pase el cursor sobre los siguientes campos y escriba el nombre del campo de la base de datos que se muestra en el área de información del sistema: 
+Nombre en el Documento -> Nombre del Campo en la Base de Datos 
+N° -> DocNum
+Nombre de Cliente -> CardName
+Fecha de Contabilización -> DocDate
+Total -> DocTotal 
+Nota: Cuando pasa el cursor sobre el campo Total, el nombre del campo no se muestra en la información del sistema. Esto se debe a que este campo contiene el símbolo de la moneda además de la cantidad. El nombre del campo en la base de datos es DocTotal. 
+
+Crear la Consulta:
+En la ventana del Generador de Consultas, elija el botón X para limpiar la selección de la tabla anterior. Si cerró la ventana del Generador de Consultas, vuelva a abrirla usando la ruta Herramientas → Consultas → Generador de Consultas. Escriba OINV en el campo Tabla y presione Tab. Seleccione los campos de la tabla OINV que identificó utilizando la información del sistema. 
+En la cláusula Dónde (Where), agregue un filtro para documentos abiertos (DocStatus = 'O'). La cláusula Dónde debe leerse: 
+T0."DocStatus" = 'O' 
+En la cláusula Dónde, escriba la palabra 'and' y seleccione el campo fecha de documento (DocDate). Luego presione el botón Condiciones para abrir la ventana lateral: 
+• Haga doble clic en la condición 'Mayor que' (Greater than)
+• Haga doble clic en la primera variable [%0].
 
 ---
 
 ## Diapositiva 9
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 9 The Where clause should now read: T0."DocStatus" = ‘O’ and T0."Docdate" > [%0] Run the Query Choose Execute. A popup window will appear. Choose the selection list icon in the popup window then select a date from the list of results. Note: if you are using the demo database the invoices you see may be very old, unless you have recently added invoices. Choose OK to run the query. The system displays the result. Notice the orange drill-down arrows to the customer master data. To display the total for the invoices, choose Ctrl and double-click the Document Total column heading.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 9 
+La cláusula Dónde debería leerse ahora: T0."DocStatus" = 'O' and T0."Docdate" > [%0] 
+
+Ejecutar la Consulta:
+Elija Ejecutar. Aparecerá una ventana emergente. Elija el icono de la lista de selección en la ventana emergente, luego seleccione una fecha de la lista de resultados. Nota: si está utilizando la base de datos de demostración, las facturas que verá pueden ser muy antiguas, a menos que haya agregado facturas recientemente. 
+Elija OK para ejecutar la consulta. El sistema muestra el resultado. Note las flechas naranjas de desglose que dirigen a los datos maestros del cliente. Para mostrar el total de las facturas, presione Ctrl y haga doble clic en el encabezado de la columna Total del Documento.
 
 ---
 
 ## Diapositiva 10
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 10 Save this query with the name Invoice List in the Sales category.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 10 
+Guarde esta consulta con el nombre Lista de Facturas en la categoría Ventas.
 
 ---
 
 ## Diapositiva 11
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 11 Task 3 Create a Report from Multiple Tables This query will display a list of open sales quotations summarized by customer and grouped by sales employee. The query will use two tables: ▪ Sales Quotation (OQUT) ▪ Sales Employee table (OSLP) The inner join will be provided for you by the query tool. Create the query Clear the previous table from the query window. Enter each table name in upper left box and press Tab each time. Notice the inner join is made for you in the query generator window. Select the OSLP table and then select the SlpName field. Select the OQUT table and then select the CardCode and CardName fields. Calculate the total value of the sales quotations using the SUM function and provide a heading in the report: SUM(T0."DocTotal") as “Total Value” Count the number of sales quotations for each customer using the COUNT function and provide a heading: COUNT(T0.”DocNum”) as “No of Documents” Important: Make sure you do not forget the closing parenthesis for the SUM and COUNT functions.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 11 
+Tarea 3: Crear un Informe desde Múltiples Tablas 
+Esta consulta mostrará una lista de ofertas de ventas abiertas resumidas por cliente y agrupadas por empleado de ventas. La consulta utilizará dos tablas: 
+▪ Oferta de Ventas (OQUT) 
+▪ Tabla de Empleados de Ventas (OSLP) 
+La unión interna (inner join) será proporcionada automáticamente por la herramienta de consulta. 
+
+Crear la consulta:
+Limpie la tabla anterior de la ventana de consulta. Ingrese cada nombre de tabla en el cuadro superior izquierdo y presione Tab cada vez. Note que la unión interna se realiza automáticamente en la ventana del generador de consultas. 
+Seleccione la tabla OSLP y luego seleccione el campo SlpName. Seleccione la tabla OQUT y luego seleccione los campos CardCode y CardName. 
+Calcule el valor total de las ofertas de ventas utilizando la función SUM y proporcione un encabezado en el informe: 
+SUM(T0."DocTotal") as "Valor Total" 
+Cuente el número de ofertas de ventas para cada cliente utilizando la función COUNT y proporcione un encabezado: 
+COUNT(T0."DocNum") as "Nro de Documentos" 
+Importante: Asegúrese de no olvidar el paréntesis de cierre para las funciones SUM y COUNT.
 
 ---
 
 ## Diapositiva 12
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 12 Enter the following condition in the Where clause so that only open quotations are used: T0."DocStatus" = ‘O’ Click in the Sort by area and select the SlpName field. Click in the Group by area and select SlpName, CardCode and CardName fields so that the results are grouped by sales employee and customer. Run the Query Choose Execute. The results show for each sales employee a count of open sales quotations for each customer and the total value of the quotations. For example:
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 12 
+Ingrese la siguiente condición en la cláusula Dónde (Where) para que solo se utilicen ofertas abiertas: 
+T0."DocStatus" = 'O' 
+Haga clic en el área Ordenar por y seleccione el campo SlpName. 
+Haga clic en el área Agrupar por y seleccione los campos SlpName, CardCode y CardName para que los resultados se agrupen por empleado de ventas y cliente. 
+
+Ejecutar la Consulta:
+Elija Ejecutar. Los resultados muestran para cada empleado de ventas un conteo de ofertas de ventas abiertas por cada cliente y el valor total de las ofertas. Por ejemplo:
 
 ---
 
 ## Diapositiva 13
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 13 Save the Query.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 13 
+Guarde la Consulta.
 
 ---
 
 ## Diapositiva 14
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 14 Task 4 Create a Report as a Worklist for a User This report displays all the sales orders posted for today, organized by sales employee name.  The report uses the ORDR table and the OSLP table. The report is saved then can be later used with an alert to provide a daily worklist for a user. Preparation: Create 2-3 sales orders for customers, with today’s posting date. Select a discount % in each order. In the Query Generator, select the ORDR table, press Tab, then select the OSLP table and press tab. Enter the SQL as shown below in the Select area. Select each table before selecting the fields. Note the query uses the SUM expression to total the sales orders combined with the OVER clause to maintain a running total by sales employee. Enter the Where clause as shown below. Execute the query
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 14 
+Tarea 4: Crear un Informe como Lista de Trabajo para un Usuario 
+Este informe muestra todos los pedidos de clientes contabilizados el día de hoy, organizados por el nombre del empleado de ventas. El informe utiliza la tabla ORDR y la tabla OSLP. El informe se guarda y luego puede utilizarse más tarde con una alerta para proporcionar una lista de trabajo diaria a un usuario. 
+
+Preparación: 
+Cree 2-3 pedidos de clientes, con la fecha de contabilización de hoy. Seleccione un % de descuento en cada pedido. 
+En el Generador de Consultas, seleccione la tabla ORDR, presione Tab, luego seleccione la tabla OSLP y presione tab. Ingrese el SQL como se muestra a continuación en el área Seleccionar. Seleccione cada tabla antes de seleccionar los campos. Tenga en cuenta que la consulta usa la expresión SUM para totalizar los pedidos combinada con la cláusula OVER para mantener un total acumulado por empleado de ventas. Ingrese la cláusula Dónde como se muestra a continuación. 
+
+Ejecute la consulta.
 
 ---
 
 ## Diapositiva 15
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 15 Save the query in the Sales category with the name Today’s Sales Orders. INFORMATION: The report can be scheduled to run daily and sent to a user using the alert mechanism. This will be covered in the case study for alerts.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 15 
+Guarde la consulta en la categoría Ventas con el nombre 'Pedidos de Ventas de Hoy'. 
+INFORMACIÓN: El informe puede programarse para ejecutarse diariamente y enviarse a un usuario utilizando el mecanismo de alertas. Esto se cubrirá en el caso práctico de alertas.
 
 ---
 
 ## Diapositiva 16
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 16 Create a Query for a Dashboard Widget Set up a count widget that counts the number of deliveries created each day. Create the query The query should select document numbers from the ODLN table where the document date (posting date) is the current date. As shown below: Save and name the query Deliveries_Today. Test the Query Create a few deliveries (with the current date) so that you can test your query. Sales – A/R → Delivery Here is an example delivery:
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 16 
+Crear una Consulta para un Widget de Dashboard 
+Configure un widget de recuento que cuente el número de entregas creadas cada día. 
+
+Crear la consulta:
+La consulta debe seleccionar los números de documento de la tabla ODLN donde la fecha del documento (fecha de contabilización) sea la fecha actual. Como se muestra a continuación: 
+Guarde y nombre la consulta Entregas_Hoy. 
+
+Probar la Consulta:
+Cree algunas entregas (con la fecha actual) para que pueda probar su consulta. Ventas – Clientes → Entrega. 
+Aquí hay una entrega de ejemplo:
 
 ---
 
 ## Diapositiva 17
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 17 After creating a few deliveries, return to your query and choose Execute. The results show a list of delivery documents for today’s date. For example:
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 17 
+Después de crear algunas entregas, regrese a su consulta y elija Ejecutar. Los resultados muestran una lista de documentos de entrega para la fecha de hoy. Por ejemplo:
 
 ---
 
 ## Diapositiva 18
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 18 Set up the Count Widget Tools > Cockpit → Count Widget Setup Switch to add mode . Give the count widget a code, name and description. The name will appear on the widget so make it short and precise.  For example, name it Todays Deliveries. Link the count widget to the query you just created:  Select Choose Query. The Query Manager window opens.  Choose your query and select OK. When your query shows in the Count Widget – Setup window, Choose Add. Add the Count Widget to your cockpit Choose the Pencil icon to make changes to your cockpit. Use the + symbol to open the Widget Gallery.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 18 
+Configurar el Widget de Recuento:
+Herramientas > Cockpit → Configuración de Widget de Recuento. Cambie al modo añadir. Dé al widget de recuento un código, nombre y descripción. El nombre aparecerá en el widget, así que hágalo corto y preciso. Por ejemplo, nómbrelo Entregas de Hoy. 
+Vincule el widget de recuento a la consulta que acaba de crear: Seleccione Elegir Consulta. Se abre la ventana del Gestor de Consultas. Elija su consulta y seleccione OK. Cuando su consulta se muestre en la ventana de Configuración de Widget de Recuento, Elija Añadir. 
+
+Agregar el Widget de Recuento a su cockpit:
+Elija el icono del Lápiz para realizar cambios en su cockpit. Utilice el símbolo + para abrir la Galería de Widgets.
 
 ---
 
 ## Diapositiva 19
 
-PRACTICE SOLUTION: QUERIES                                                                          PUBLIC 19 Choose Business Object Count in the dropdown box. To choose the widget, click on the Plus sign below the widget.  It will change to a green checkmark. Choose the arrow in the top left to return to the cockpit. Use the icon shaped like a checkmark to save the changes to the cockpit. Test the Count Widget You can test the count widget by adding more deliveries.  You can wait until the cockpit picks up the new deliveries or chose Refresh to see the count updated. If you click on the number displayed, a window will open with the query results.
+SOLUCIÓN PRÁCTICA: CONSULTAS - PÚBLICO 19 
+Elija Recuento de Objetos de Negocio en el cuadro desplegable. Para elegir el widget, haga clic en el signo Más debajo del widget. Cambiará a una marca de verificación verde. 
+Elija la flecha en la parte superior izquierda para regresar al cockpit. Utilice el icono en forma de marca de verificación para guardar los cambios en el cockpit. 
+
+Probar el Widget de Recuento:
+Puede probar el widget de recuento agregando más entregas. Puede esperar hasta que el cockpit detecte las nuevas entregas o elegir Actualizar para ver el recuento actualizado. Si hace clic en el número mostrado, se abrirá una ventana con los resultados de la consulta.
 
 ---
 
 ## Diapositiva 20
 
-No part of this publication may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. Please see http://www.sap.com/corporate-en/legal/copyright/index.epx#trademark for additional trademark information and notices. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP SE or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP SE or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and/or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, which speak only as of their dates, and they should not be relied upon in making purchasing decisions. www.sap.com
-
+Ninguna parte de esta publicación puede ser reproducida o transmitida en forma alguna o para ningún propósito sin el permiso expreso de SAP SE o una empresa afiliada a SAP. SAP y otros productos y servicios de SAP mencionados en este documento, así como sus respectivos logotipos, son marcas comerciales o marcas comerciales registradas de SAP SE (o una empresa afiliada a SAP) en Alemania y en otros países. Por favor, consulte http://www.sap.com/corporate-en/legal/copyright/index.epx#trademark para obtener información y avisos adicionales sobre marcas comerciales.
 ---
-

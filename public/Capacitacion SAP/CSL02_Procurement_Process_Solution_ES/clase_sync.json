@@ -1,0 +1,434 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "Slide_01.webp",
+    "script_text": "El ciclo de aprovisionamiento en SAP Business One inicia con la solicitud formal de cotizaciones mediante la Oferta de Compra. Este documento permite registrar las cotizaciones de múltiples proveedores para comparar precios, tiempos de entrega y descuentos comerciales antes de comprometer fondos de la empresa.",
+    "step_guide": {
+      "title": "Lección 1: Oferta de Compra a Proveedores",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 1: Oferta de Compra a Proveedores.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 1 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 0.0,
+    "end_time": 19.544
+  },
+  {
+    "slide_index": 2,
+    "image_file": "Slide_02.webp",
+    "script_text": "Una vez seleccionada la mejor propuesta comercial, formalizamos el Pedido de Compra en la tabla OPOR. Este contrato mercantil fija las condiciones comerciales pactadas y establece la fecha límite de entrega para el proveedor, asegurando el abastecimiento oportuno.",
+    "step_guide": {
+      "title": "Lección 2: Creación del Pedido de Compra (OPOR)",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 2: Creación del Pedido de Compra (OPOR).",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 2 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 19.544,
+    "end_time": 36.64
+  },
+  {
+    "slide_index": 3,
+    "image_file": "Slide_03.webp",
+    "script_text": "Aunque el pedido no genera movimientos contables en el Libro Mayor, tiene un impacto vital en la gestión de la cadena de suministro: incrementa el valor en la columna de Stock Solicitado, permitiendo que el planificador de compras y el cálculo MRP de SAP reconozcan las recepciones futuras de inventario.",
+    "step_guide": {
+      "title": "Lección 3: El Impacto Logístico del Stock Solicitado",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 3: El Impacto Logístico del Stock Solicitado.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 3 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 36.64,
+    "end_time": 55.272
+  },
+  {
+    "slide_index": 4,
+    "image_file": "Slide_04.webp",
+    "script_text": "Cuando el transporte del proveedor entrega físicamente los materiales en el muelle de descarga, registramos la Entrada de Mercancías en la tabla OPDN. Esta transacción incrementa las existencias físicas en el almacén y actualiza el valor contable del inventario.",
+    "step_guide": {
+      "title": "Lección 4: Entrada de Mercancías por Pedido (OPDN)",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 4: Entrada de Mercancías por Pedido (OPDN).",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 4 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 55.272,
+    "end_time": 72.656
+  },
+  {
+    "slide_index": 5,
+    "image_file": "Slide_05.webp",
+    "script_text": "Al contabilizar la Entrada de Mercancías bajo inventario permanente, SAP Business One genera un asiento en el Libro Mayor: debita la cuenta de Existencias del activo y acredita la cuenta puente de Compensación EM/RF, reflejando el incremento del activo antes de recibir la factura legal.",
+    "step_guide": {
+      "title": "Lección 5: El Asiento Contable Provisional de Existencias",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 5: El Asiento Contable Provisional de Existencias.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 5 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 72.656,
+    "end_time": 91.672
+  },
+  {
+    "slide_index": 6,
+    "image_file": "Slide_06.webp",
+    "script_text": "Durante la entrada de almacén, el motor de inventario de SAP aplica el método de valoración configurado para el artículo, ya sea Precio Medio Ponderado, FIFO o Coste Estándar, recalculando el costo unitario de las existencias para asegurar márgenes de venta precisos.",
+    "step_guide": {
+      "title": "Lección 6: Valoración de Existencias (PMP vs FIFO)",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 6: Valoración de Existencias (PMP vs FIFO).",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 6 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 91.672,
+    "end_time": 108.888
+  },
+  {
+    "slide_index": 7,
+    "image_file": "Slide_07.webp",
+    "script_text": "Si al momento de la inspección física se detectan artículos defectuosos o sobrantes, el consultor puede utilizar el documento de Devolución de Mercancías para devolver el material al proveedor, revirtiendo el asiento contable provisional y ajustando el stock físico sin generar facturas erróneas.",
+    "step_guide": {
+      "title": "Lección 7: Gestión de Discrepancias y Devoluciones",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 7: Gestión de Discrepancias y Devoluciones.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 7 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 108.888,
+    "end_time": 127.064
+  },
+  {
+    "slide_index": 8,
+    "image_file": "Slide_08.webp",
+    "script_text": "El cierre financiero de la compra ocurre al recibir la Factura de Proveedores en la tabla OPCH. Mediante el principio de triple coincidencia, SAP valida que las cantidades y precios de la factura coincidan exactamente con lo estipulado en el pedido original y con lo recibido físicamente en el albarán.",
+    "step_guide": {
+      "title": "Lección 8: Factura de Proveedores (OPCH) y Triple Coincidencia",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 8: Factura de Proveedores (OPCH) y Triple Coincidencia.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 8 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 127.064,
+    "end_time": 146.248
+  },
+  {
+    "slide_index": 9,
+    "image_file": "Slide_09.webp",
+    "script_text": "El asiento contable de la Factura de Proveedores debita la cuenta transitoria de Compensación EM/RF dejándola exactamente en cero, reconoce el impuesto de IVA soportado deducible y acredita en el pasivo la cuenta por pagar a favor del proveedor, liquidando la provisión de compra.",
+    "step_guide": {
+      "title": "Lección 9: Compensación a Cero de la Cuenta EM/RF",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 9: Compensación a Cero de la Cuenta EM/RF.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 9 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 146.248,
+    "end_time": 164.184
+  },
+  {
+    "slide_index": 10,
+    "image_file": "Slide_10.webp",
+    "script_text": "En localizaciones fiscales complejas, la Factura de Proveedores calcula automáticamente las retenciones de impuestos en la fuente según la categoría fiscal del proveedor, registrando los pasivos fiscales ante la administración tributaria y deduciendo el neto a pagar.",
+    "step_guide": {
+      "title": "Lección 10: Retenciones Fiscales y Cumplimiento Normativo",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 10: Retenciones Fiscales y Cumplimiento Normativo.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 10 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 164.184,
+    "end_time": 180.632
+  },
+  {
+    "slide_index": 11,
+    "image_file": "Slide_11.webp",
+    "script_text": "Cuando un proveedor exige un pago previo a la fabricación o despacho, utilizamos la Factura de Anticipo. Este mecanismo permite emitir el desembolso contable sin alterar el costo medio de los inventarios hasta que se produzca la entrega real de los bienes.",
+    "step_guide": {
+      "title": "Lección 11: Solicitud y Factura de Anticipo a Proveedores",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 11: Solicitud y Factura de Anticipo a Proveedores.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 11 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 180.632,
+    "end_time": 197.152
+  },
+  {
+    "slide_index": 12,
+    "image_file": "Slide_12.webp",
+    "script_text": "Si con posterioridad al registro de la factura se acuerdan descuentos por volumen o devoluciones posteriores a la facturación, se emite una Nota de Crédito de Proveedores en la tabla ORPC para disminuir la deuda comercial y ajustar el crédito fiscal correspondiente.",
+    "step_guide": {
+      "title": "Lección 12: Notas de Crédito de Proveedores",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 12: Notas de Crédito de Proveedores.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 12 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 197.152,
+    "end_time": 213.672
+  },
+  {
+    "slide_index": 13,
+    "image_file": "Slide_13.webp",
+    "script_text": "Al llegar la fecha de vencimiento acordada, el departamento de tesorería ejecuta el Pago Efectuado en la tabla OVPM. El sistema permite seleccionar facturas vencidas para liquidarlas mediante transferencia bancaria, cheque corporativo o pagaré electrónico.",
+    "step_guide": {
+      "title": "Lección 13: Pago Efectuado en Gestión de Bancos (OVPM)",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 13: Pago Efectuado en Gestión de Bancos (OVPM).",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 13 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 213.672,
+    "end_time": 231.32
+  },
+  {
+    "slide_index": 14,
+    "image_file": "Slide_14.webp",
+    "script_text": "El Pago Efectuado debita la cuenta de control del proveedor en el pasivo, extinguiendo formalmente la deuda comercial, y acredita la cuenta bancaria en el activo financiero, completando el ciclo económico del dinero en la compañía.",
+    "step_guide": {
+      "title": "Lección 14: Asiento Contable del Pago a Proveedores",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 14: Asiento Contable del Pago a Proveedores.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 14 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 231.32,
+    "end_time": 245.848
+  },
+  {
+    "slide_index": 15,
+    "image_file": "Slide_15.webp",
+    "script_text": "El ciclo de tesorería se audita mediante la Conciliación Bancaria Externa. Cruzamos los movimientos registrados en el Libro Mayor contra el extracto oficial recibido de la entidad bancaria, garantizando que no existan cobros indebidos, comisiones no contabilizadas o cheques extraviados.",
+    "step_guide": {
+      "title": "Lección 15: Conciliación Bancaria y Extractos Electrónicos",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 15: Conciliación Bancaria y Extractos Electrónicos.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 15 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 245.848,
+    "end_time": 264.576
+  },
+  {
+    "slide_index": 16,
+    "image_file": "Slide_16.webp",
+    "script_text": "En adquisiciones internacionales, el costo del artículo no es solo el precio de compra; incluye fletes marítimos, seguros y aranceles aduaneros. El documento de Precios de Entrega en SAP B1 prorratea estos costos adicionales sobre el costo unitario del inventario, garantizando un costeo real.",
+    "step_guide": {
+      "title": "Lección 16: Costes de Importación y Precios de Entrega",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 16: Costes de Importación y Precios de Entrega.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 16 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 264.576,
+    "end_time": 284.696
+  },
+  {
+    "slide_index": 17,
+    "image_file": "Slide_17.webp",
+    "script_text": "Abrimos el Mapa de Relaciones del circuito de aprovisionamiento para verificar el encadenamiento de la Oferta, Pedido, Entrada de Mercancías, Factura y Pago. La visualización en árbol con indicadores en verde confirma que todos los documentos se encuentran cerrados y cuadrados.",
+    "step_guide": {
+      "title": "Lección 17: Auditoría con el Mapa de Relaciones de Compras",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 17: Auditoría con el Mapa de Relaciones de Compras.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 17 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 284.696,
+    "end_time": 302.92
+  },
+  {
+    "slide_index": 18,
+    "image_file": "Slide_18.webp",
+    "script_text": "El control de compras se complementa con reportes analíticos de gestión. El informe de Análisis de Compras permite evaluar el volumen negociado por proveedor y por familia de productos, mientras que la Lista de Partidas Abiertas alerta sobre pedidos pendientes de entrega en almacén.",
+    "step_guide": {
+      "title": "Lección 18: Análisis de Compras y Lista de Partidas Abiertas",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 18: Análisis de Compras y Lista de Partidas Abiertas.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 18 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 302.92,
+    "end_time": 320.52
+  },
+  {
+    "slide_index": 19,
+    "image_file": "Slide_19.webp",
+    "script_text": "El informe de Antigüedad de Cuentas por Pagar es la herramienta clave para la planificación financiera. Proyecta los vencimientos de deuda a 30, 60 y 90 días, permitiendo que la dirección negocie plazos de crédito y proteja la liquidez del negocio sin incurrir en mora.",
+    "step_guide": {
+      "title": "Lección 19: Informe de Antigüedad de Saldos a Proveedores",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 19: Informe de Antigüedad de Saldos a Proveedores.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 19 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 320.52,
+    "end_time": 338.072
+  },
+  {
+    "slide_index": 20,
+    "image_file": "Slide_20.webp",
+    "script_text": "El ciclo de compras impacta directamente en el informe de Flujo de Caja proyectado en SAP Business One. Al programar pagos considerando los plazos de crédito negociados, la empresa optimiza su capital de trabajo sin comprometer la continuidad operativa del suministro.",
+    "step_guide": {
+      "title": "Lección 20: Gestión Estratégica del Flujo de Caja",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 20: Gestión Estratégica del Flujo de Caja.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 20 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 338.072,
+    "end_time": 355.48
+  },
+  {
+    "slide_index": 21,
+    "image_file": "Slide_21.webp",
+    "script_text": "Configuramos el Cockpit Fiori para el departamento de compras con widgets analíticos que muestran el porcentaje de cumplimiento de entregas de proveedores, el gasto acumulado del mes y las solicitudes urgentes de cotización, facilitando la toma de decisiones basada en datos.",
+    "step_guide": {
+      "title": "Lección 21: El Cockpit Fiori del Gestor de Compras",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 21: El Cockpit Fiori del Gestor de Compras.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 21 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 355.48,
+    "end_time": 372.528
+  },
+  {
+    "slide_index": 22,
+    "image_file": "Slide_22.webp",
+    "script_text": "Un consultor senior de SAP debe vigilar tres parametrizaciones maestras: bloquear la creación de entradas sin pedido previo, exigir tolerancia cero en diferencias de precios en la factura y parametrizar alertas de límite de presupuesto de compras por centro de beneficio.",
+    "step_guide": {
+      "title": "Lección 22: Buenas Prácticas de Consultoría en Compras",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 22: Buenas Prácticas de Consultoría en Compras.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 22 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 372.528,
+    "end_time": 389.288
+  },
+  {
+    "slide_index": 23,
+    "image_file": "Slide_23.webp",
+    "script_text": "Repasamos los conceptos evaluados en la certificación oficial de SAP: el rol de la cuenta transitoria EM/RF, el impacto en stock comprometido versus solicitado, y la diferencia entre una factura de reserva y una factura de proveedores estándar.",
+    "step_guide": {
+      "title": "Lección 23: Preguntas Clave de Certificación Oficial SAP",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 23: Preguntas Clave de Certificación Oficial SAP.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 23 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 389.288,
+    "end_time": 406.36
+  },
+  {
+    "slide_index": 24,
+    "image_file": "Slide_24.webp",
+    "script_text": "¡Felicitaciones! Has completado el ciclo integral de compras y aprovisionamiento en SAP Business One. Cuentas ahora con el criterio técnico y contable necesario para liderar implementaciones de aprovisionamiento logístico bajo los más altos estándares internacionales.",
+    "step_guide": {
+      "title": "Lección 24: Conclusión Ejecutiva del Ciclo Procure-to-Pay",
+      "menu_path": "Circuito Procure-to-Pay en SAP Business One",
+      "action_type": "procurement_step",
+      "instructions": [
+        "Analiza en profundidad los fundamentos técnicos de la Lección 24: Conclusión Ejecutiva del Ciclo Procure-to-Pay.",
+        "Audita los movimientos de inventario y asientos en el Libro Mayor.",
+        "Valida la integridad de la cadena en el simulador interactivo."
+      ],
+      "expected_output": "Paso 24 validado conforme a los estándares de certificación oficial SAP B1."
+    },
+    "start_time": 406.36,
+    "end_time": 424.416
+  }
+]

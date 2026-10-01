@@ -12,14 +12,14 @@ type PageProps = {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { moduloId, lessonId } = await params;
-  const module = getModuleBySlug(moduloId);
-  if (!module) return {};
+  const currentModule = getModuleBySlug(moduloId);
+  if (!currentModule) return {};
   
-  const lesson = module.lessons.find(l => l.id === lessonId);
+  const lesson = currentModule.lessons.find(l => l.id === lessonId);
   if (!lesson) return {};
 
-  const title = `${lesson.title} | ${module.shortTitle} | B1 Academy`;
-  const description = module.description;
+  const title = `${lesson.title} | ${currentModule.shortTitle} | B1 Academy`;
+  const description = currentModule.description;
   return {
     title,
     description,
@@ -28,17 +28,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function LessonPage({ params }: PageProps) {
   const { moduloId, lessonId } = await params;
-  const module = getModuleBySlug(moduloId);
-  if (!module) notFound();
+  const currentModule = getModuleBySlug(moduloId);
+  if (!currentModule) notFound();
 
-  const lessonIndex = module.lessons.findIndex(l => l.id === lessonId);
+  const lessonIndex = currentModule.lessons.findIndex(l => l.id === lessonId);
   if (lessonIndex === -1) notFound();
 
-  const lesson = module.lessons[lessonIndex];
+  const lesson = currentModule.lessons[lessonIndex];
   const content = await getLessonMarkdown(moduloId, lessonId);
   
-  const previousLesson = lessonIndex > 0 ? module.lessons[lessonIndex - 1] : null;
-  const nextLesson = lessonIndex < module.lessons.length - 1 ? module.lessons[lessonIndex + 1] : null;
+  const previousLesson = lessonIndex > 0 ? currentModule.lessons[lessonIndex - 1] : null;
+  const nextLesson = lessonIndex < currentModule.lessons.length - 1 ? currentModule.lessons[lessonIndex + 1] : null;
 
   const previousLessonUrl = previousLesson ? `/mi-aula/${moduloId}/${previousLesson.id}` : null;
   const nextLessonUrl = nextLesson ? `/mi-aula/${moduloId}/${nextLesson.id}` : null;
@@ -49,7 +49,7 @@ export default async function LessonPage({ params }: PageProps) {
     '@type': 'Service',
     provider: { '@type': 'Organization', name: 'B1 Academy', url: 'https://b1academy.com' },
     areaServed: ['ES', 'PT'],
-    offers: { '@type': 'Offer', priceCurrency: 'EUR', price: '0', url: `https://b1academy.com/mi-aula/${module.slug}/${lesson.id}` },
+    offers: { '@type': 'Offer', priceCurrency: 'EUR', price: '0', url: `https://b1academy.com/mi-aula/${currentModule.slug}/${lesson.id}` },
   };
 
   return (
@@ -63,12 +63,12 @@ export default async function LessonPage({ params }: PageProps) {
       {/* Main Content Area */}
       <main className="flex-1 w-full min-w-0">
         <CoursePlayer
-          moduleTitle={module.title}
-          moduleSlug={module.slug}
+          moduleTitle={currentModule.title}
+          moduleSlug={currentModule.slug}
           lessonTitle={lesson.title}
           lessonId={lesson.id}
           markdownContent={content}
-          totalLessons={module.lessons.length}
+          totalLessons={currentModule.lessons.length}
           currentLessonIndex={lessonIndex}
           previousLessonUrl={previousLessonUrl}
           nextLessonUrl={nextLessonUrl}

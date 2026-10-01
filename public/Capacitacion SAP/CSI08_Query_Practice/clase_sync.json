@@ -1,0 +1,98 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "Slide_01.webp",
+    "script_text": "En el día a día de una empresa que opera con SAP Business One, la gerencia comercial necesita informes inmediatos de su cartera de clientes. Como consultores, nuestro primer instinto debe ser recurrir a la tabla maestra OCRD. Pero aquí hay una trampa clásica en la que caen los principiantes: la tabla OCRD no solo guarda clientes, también almacena a todos los proveedores y prospectos de la compañía. Si omites el filtro CardType igual a C, tu reporte mezclará cuentas por cobrar con cuentas por pagar, distorsionando por completo la liquidez del negocio. Por eso, dominar la estructura de campos como CardCode, CardName y Balance junto con la condición WHERE es el primer mandamiento de las consultas en SAP.",
+    "step_guide": {
+      "title": "Tarea 1: Arquitectura de Clientes en OCRD",
+      "menu_path": "Herramientas > Consultas > Generador de Consultas",
+      "action_type": "query_builder",
+      "instructions": [
+        "Carga la tabla maestra 'OCRD' en el casillero principal del Generador de Consultas.",
+        "Selecciona los campos de identificación y saldo: CardCode, CardName, Address, Balance y CntctPrsn.",
+        "En la sección WHERE, incorpora la condición estricta: CardType = 'C' para aislar clientes."
+      ],
+      "expected_output": "Sentencia SELECT con campos de cliente y filtro WHERE CardType = 'C'.",
+      "consultant_tip": "Al filtrar CardType = 'C', evitamos cruces indebidos con proveedores ('S') y prospectos ('L')."
+    },
+    "start_time": 0.0,
+    "end_time": 46.28
+  },
+  {
+    "slide_index": 2,
+    "image_file": "Slide_02.webp",
+    "script_text": "Un error muy común de los desarrolladores novatos es 'quemar' o dejar fijas las fechas en el código SQL. Si creas una consulta con una fecha estática, al día siguiente ya no le sirve a nadie en la empresa. En SAP Business One tenemos una de las herramientas más elegantes del ERP: los parámetros dinámicos con porcentaje cero entre corchetes. Al asociar esta variable a la fecha de contabilización DocDate en la tabla de facturas OINV, el motor de SAP genera automáticamente un calendario interactivo en pantalla para el usuario final. Esto significa que cualquier administrativo de ventas puede ejecutar el reporte con el rango de fechas que necesite, sin tener que saber una sola línea de código SQL.",
+    "step_guide": {
+      "title": "Tarea 2: Parámetro Dinámico de Fecha ([%0])",
+      "menu_path": "Herramientas > Consultas > Generador de Consultas",
+      "action_type": "dynamic_parameter",
+      "instructions": [
+        "Carga la tabla de facturas de deudores 'OINV' en el Generador.",
+        "Selecciona los campos DocNum, CardName, DocDate y DocTotal.",
+        "En WHERE añade la condición combinada: DocStatus = 'O' AND DocDate > [%0]."
+      ],
+      "expected_output": "Apertura de la ventana interactiva solicitando la fecha de corte [%0].",
+      "consultant_tip": "La variable [%0] convierte una consulta técnica en un formulario interactivo amigable para el usuario."
+    },
+    "start_time": 46.28,
+    "end_time": 91.84
+  },
+  {
+    "slide_index": 3,
+    "image_file": "Slide_03.webp",
+    "script_text": "Cuando la gerencia nos pide un reporte que incluya tanto el nombre de la empresa como los artículos específicos que compró, una sola tabla no es suficiente. Aquí es donde entra el modelo relacional de SAP Business One. Por convención oficial en SAP, todas las tablas de cabecera comienzan con la letra O, como OINV para facturas, mientras que las tablas de líneas de artículos sustituyen esa O por el número uno, como INV1. Ambas se comunican a través de un identificador numérico interno único llamado DocEntry. Al cargar ambas tablas en el Generador de Consultas, SAP formula el cruce interno de manera automática, permitiéndonos auditar cantidades, precios unitarios y el representante comercial SlpName con total consistencia contable.",
+    "step_guide": {
+      "title": "Tarea 3: Modelo Relacional Cabecera-Líneas (OINV + INV1)",
+      "menu_path": "Herramientas > Consultas > Generador de Consultas",
+      "action_type": "multitable_join",
+      "instructions": [
+        "Ingresa OINV en la casilla 1 e INV1 en la casilla 2 del Generador.",
+        "Comprueba la relación relacional automática mediante el campo clave DocEntry.",
+        "Selecciona campos de cabecera (DocNum, CardName) y de detalle (ItemCode, Dscription, Quantity, Price).",
+        "Ordena por SlpName y ejecuta para validar la consistencia de los datos."
+      ],
+      "expected_output": "Grilla detallada con artículos, cantidades y totales desglosados por factura.",
+      "consultant_tip": "Las tablas de cabecera inician con 'O' y las de líneas con '1' (OINV/INV1, ORDR/RDR1, OPOR/POR1)."
+    },
+    "start_time": 91.84,
+    "end_time": 140.184
+  },
+  {
+    "slide_index": 4,
+    "image_file": "Slide_04.webp",
+    "script_text": "Una consulta SQL no debe quedarse guardada como un simple archivo muerto en el sistema; su verdadero valor radica en convertirla en un centinela activo de control interno. En este ejercicio conectamos la consulta de clientes con el módulo de Gestión de Alarmas. Al evaluar en tiempo real si el saldo de cuenta supera el límite de crédito fijado en la empresa, configuramos una alerta automática que se dispara periódicamente. De esta forma, el departamento de créditos y cobranzas recibe una notificación instantánea en su pantalla antes de que ventas intente despachar un nuevo pedido a un cliente moroso, blindando el flujo de caja de la compañía.",
+    "step_guide": {
+      "title": "Tarea 4: Automatización de Alarmas del Sistema",
+      "menu_path": "Gestión > Alarmas > Gestión de Alarmas",
+      "action_type": "alert_setup",
+      "instructions": [
+        "Construye la consulta sobre OCRD comparando Balance > CreditLine.",
+        "Guarda la consulta en la categoría 'Ventas'.",
+        "En Gestión de Alarmas, vincula la consulta y define periodicidad de sondeo y usuarios destinatarios."
+      ],
+      "expected_output": "Alarma programada que notifica automáticamente excesos en el límite de crédito.",
+      "consultant_tip": "Las alarmas basadas en consultas permiten anticipar riesgos financieros sin requerir revisión manual."
+    },
+    "start_time": 140.184,
+    "end_time": 180.728
+  },
+  {
+    "slide_index": 5,
+    "image_file": "Slide_05.webp",
+    "script_text": "La consultoría moderna en SAP HANA no consiste en entregar tablas de datos aburridas, sino en proporcionar inteligencia visual accionable para la toma de decisiones. En este último paso, transformamos una consulta sobre la tabla de entregas abiertas ODLN en un widget interactivo de recuento para el Cockpit estilo Fiori. Al anclar este indicador visual en el panel principal del usuario de almacén, el equipo operativo puede monitorear de un solo vistazo los pedidos pendientes de despacho en tiempo real, agilizando la logística sin necesidad de ingresar a los menús tradicionales del ERP.",
+    "step_guide": {
+      "title": "Tarea 5: Widgets Analíticos en Cockpit Fiori",
+      "menu_path": "Herramientas > Cockpit > Widgets de Recuento",
+      "action_type": "dashboard_widget",
+      "instructions": [
+        "Crea una consulta sobre ODLN filtrando entregas abiertas con fecha de hoy.",
+        "Abre la configuración de Widgets de Recuento en el Cockpit Fiori.",
+        "Asigna la consulta al nuevo widget y anclalo en el panel principal de operaciones."
+      ],
+      "expected_output": "Widget de recuento activo en la pantalla principal reflejando entregas pendientes.",
+      "consultant_tip": "Los widgets de recuento en SAP HANA ofrecen visibilidad instantánea de cuellos de botella operativos."
+    },
+    "start_time": 180.728,
+    "end_time": 217.408
+  }
+]

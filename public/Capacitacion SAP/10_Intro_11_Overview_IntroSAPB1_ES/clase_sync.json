@@ -2,43 +2,134 @@
   {
     "slide_index": 1,
     "image_file": "060_Slide_01_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "script_text": "¡Hola y bienvenidos a la academia de SAP Business One! En este primer módulo, te daremos una introducción completa al sistema. Prepárate para descubrir cómo esta herramienta puede transformar por completo la gestión de una empresa.",
+    "script_text": "Bienvenidos a este curso integral sobre SAP Business One versión diez punto cero. En esta sesión abordaremos la visión estratégica de la plataforma líder en el mercado mundial para empresas en expansión. Comprenderemos su arquitectura, el funcionamiento de sus módulos centrales y cómo transforma la gestión operativa y financiera en un entorno unificado y en tiempo real.",
     "start_time": 0.0,
-    "end_time": 15.668
+    "end_time": 23.95
   },
   {
     "slide_index": 2,
     "image_file": "060_Slide_02_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "script_text": "A lo largo de este tema, responderemos a la pregunta fundamental: ¿Qué es realmente SAP Business One? Analizaremos las herramientas que ofrece y cómo se adapta perfectamente a las necesidades de las pequeñas y medianas empresas en la actualidad, integrando todos sus procesos en un solo lugar.",
-    "start_time": 15.668,
-    "end_time": 34.432
+    "script_text": "El objetivo central de este módulo es dominar los fundamentos que definen a SAP Business One como la columna vertebral de un negocio. Aprenderemos a identificar el valor de operar con procesos empresariales completamente integrados, examinaremos las capacidades analíticas de la herramienta y conoceremos su alcance como plataforma digital moderna para acelerar la toma de decisiones.",
+    "start_time": 23.95,
+    "end_time": 47.5
   },
   {
     "slide_index": 3,
     "image_file": "060_Slide_03_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "script_text": "Imagina este escenario: Eres el director general de una empresa en pleno crecimiento. Para mejorar tu eficiencia, necesitas implementar una solución de software que no solo organice tus operaciones diarias, sino que te brinde una plataforma sólida para competir en la economía digital. Precisamente para este gran reto se diseñó SAP Business One.",
-    "start_time": 34.432,
-    "end_time": 57.468
+    "script_text": "Pensemos en el desafío habitual de la dirección general en una compañía en crecimiento: la información está dispersa en hojas de cálculo aisladas, los pedidos de ventas tardan en llegar a compras y el control de inventario sufre retrasos constantes. Ante este escenario, la empresa necesita un sistema de gestión empresarial que estandarice las operaciones, reduzca la fricción administrativa y establezca una base sólida para competir en la economía digital.",
+    "start_time": 47.5,
+    "end_time": 75.58
   },
   {
     "slide_index": 4,
     "image_file": "060_Slide_04_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "script_text": "Hoy en día, la tecnología es el motor de la transformación digital. Vivimos en un mundo inteligente donde las personas y los negocios están hiperconectados. Para tener éxito, tu empresa necesita disponer de la información correcta en tiempo real para tomar decisiones al instante. ¡Ha llegado el momento de dar el salto digital!",
-    "start_time": 57.468,
-    "end_time": 79.85600000000001
+    "script_text": "Hoy en día, la transformación digital ya no es un proyecto futuro, sino una exigencia cotidiana. Vivimos en un ecosistema interconectado donde clientes y proveedores demandan inmediatez y trazabilidad absoluta. Para mantener la rentabilidad, las empresas deben disponer de datos confiables en el momento exacto, conectando no solo sus oficinas internas, sino toda su cadena de valor.",
+    "start_time": 75.58,
+    "end_time": 101.11
   },
   {
     "slide_index": 5,
     "image_file": "060_Slide_05_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "script_text": "SAP Business One es la plataforma más completa en la que confían más de setenta mil empresas en todo el mundo. Te permite gestionar finanzas, compras, inventario, ventas y servicios desde una única interfaz, garantizando que todos tus departamentos hablen el mismo idioma.",
-    "start_time": 79.85600000000001,
-    "end_time": 98.16400000000002
+    "script_text": "SAP Business One es la solución de gestión empresarial diseñada específicamente para pequeñas y medianas empresas, con el respaldo de más de setenta mil clientes y casi un millón de usuarios a nivel global. Su gran fortaleza radica en que centraliza finanzas, compras, almacenes, ventas y soporte en una única base de datos, eliminando la duplicidad de registros y permitiendo que toda la organización hable el mismo idioma.",
+    "start_time": 101.11,
+    "end_time": 128.09
   },
   {
     "slide_index": 6,
     "image_file": "060_Slide_06_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "script_text": "¡Felicidades por completar esta sección! Repasa los conceptos aprendidos y, cuando estés listo, continúa con la siguiente lección para seguir avanzando en tu camino a certificarte como consultor.",
-    "start_time": 98.16400000000002,
-    "end_time": 111.43200000000002
+    "script_text": "La plataforma está concebida para incorporar tecnologías disruptivas sin complejidad innecesaria. Permite procesar grandes volúmenes de datos con analítica avanzada, operar en la nube o en servidores propios, conectar a la fuerza laboral mediante aplicaciones móviles y enlazar dispositivos de internet de las cosas, como básculas industriales o sensores de almacén, directamente con las transacciones operativas.",
+    "start_time": 128.09,
+    "end_time": 153.89
+  },
+  {
+    "slide_index": 7,
+    "image_file": "060_Slide_07_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "El núcleo digital de SAP Business One abarca de forma nativa todo el ciclo operativo. Desde la gestión de relaciones con clientes y pedidos en ventas, pasando por el aprovisionamiento y facturación en compras, el control de inventarios multialmacén, la planificación de materiales y producción, hasta la contabilidad general con contabilizaciones automáticas en el libro mayor. Cada documento registrado alimenta de inmediato los estados financieros sin necesidad de interfaces intermedias.",
+    "start_time": 153.89,
+    "end_time": 184.68
+  },
+  {
+    "slide_index": 8,
+    "image_file": "060_Slide_08_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "Analicemos un ciclo operativo real: un cliente solicita equipos personalizados. El sistema evalúa la disponibilidad y corre el asistente de planificación de materiales para determinar los componentes faltantes. Se generan automáticamente las solicitudes de compra a proveedores y las órdenes de fabricación. Al recibirse los materiales y ensamblar el producto, la entrega registra los números de serie, crea la tarjeta de equipo del cliente con su garantía y habilita el módulo de servicio para gestionar cualquier eventualidad postventa bajo acuerdos de nivel de servicio garantizados.",
+    "start_time": 184.68,
+    "end_time": 221.4
+  },
+  {
+    "slide_index": 9,
+    "image_file": "060_Slide_09_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "En cuanto a su infraestructura técnica, SAP Business One ofrece flexibilidad total. Puede ejecutarse sobre el motor relacional tradicional Microsoft SQL Server o sobre la base de datos columnar en memoria SAP HANA, la cual procesa analítica masiva en cuestión de milisegundos. Además, el ecosistema cuenta con la potente interfaz Service Layer basada en servicios REST, el kit de desarrollo de software y el marco de integración para conectarse con cualquier aplicación externa.",
+    "start_time": 221.4,
+    "end_time": 251.64
+  },
+  {
+    "slide_index": 10,
+    "image_file": "060_Slide_10_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "Las empresas pueden elegir el modelo de despliegue que mejor se ajuste a su estrategia financiera. El modelo On-Premise utiliza infraestructura interna y licencias perpetuas, optimizando el gasto de capital a largo plazo y garantizando control total de los servidores locales. Por su parte, el modelo Cloud funciona bajo suscripción mensual, reduciendo la inversión inicial y ofreciendo acceso seguro vía navegador web desde cualquier lugar sin depender de un departamento de tecnologías interno.",
+    "start_time": 251.64,
+    "end_time": 282.34
+  },
+  {
+    "slide_index": 11,
+    "image_file": "060_Slide_11_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "Para corporaciones con filiales o tiendas en línea, SAP Business One incluye soluciones de integración empresarial preconfiguradas. Permite consolidar balances y armonizar catálogos entre casas matrices que utilizan SAP S/4HANA y subsidiarias con Business One. Asimismo, el centro de integración facilita la sincronización automática con plataformas de comercio electrónico como Shopify o Magento, y con operadores logísticos internacionales como DHL o FedEx.",
+    "start_time": 282.34,
+    "end_time": 313.87
+  },
+  {
+    "slide_index": 12,
+    "image_file": "060_Slide_12_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "Gracias a la red mundial de socios tecnológicos de SAP, existen cientos de soluciones complementarias certificadas. Estas soluciones agregan funcionalidades especializadas para industrias verticales como manufactura pesada, alimentos y bebidas con trazabilidad sanitaria, distribución mayorista, construcción y retail, asegurando que el sistema se adapte con precisión milimétrica a las normas particulares de cada sector.",
+    "start_time": 313.87,
+    "end_time": 340.75
+  },
+  {
+    "slide_index": 13,
+    "image_file": "060_Slide_13_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "La movilidad es un elemento fundamental para la productividad del personal comercial y de campo. Mediante las aplicaciones oficiales para dispositivos iOS y Android, los consultores de ventas pueden consultar listas de precios, verificar existencias de bodega y emitir cotizaciones directamente frente al cliente. Del mismo modo, los técnicos de mantenimiento tienen acceso inmediato al historial de incidentes y firmas digitales en sitio.",
+    "start_time": 340.75,
+    "end_time": 368.64
+  },
+  {
+    "slide_index": 14,
+    "image_file": "060_Slide_14_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "El entorno analítico de la versión SAP HANA transforma los datos transaccionales en inteligencia estratégica. El panel de trabajo estilo Fiori en HTML5 despliega indicadores clave de desempeño, gráficos interactivos y alertas tempranas configuradas según el rol del usuario. Además, la capa semántica permite que los gerentes consulten información financiera y operativa en Microsoft Excel utilizando nombres de negocio comprensibles, sin requerir conocimientos de programación.",
+    "start_time": 368.64,
+    "end_time": 400.2
+  },
+  {
+    "slide_index": 15,
+    "image_file": "060_Slide_15_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "Para la presentación formal de documentos legales y auditorías, el sistema integra de manera nativa SAP Crystal Reports. Esta herramienta permite diseñar tanto la diagramación visual de facturas, cheques y guías de remisión, como informes analíticos de alta complejidad con subinformes condicionales, exportables a formatos PDF, hojas de cálculo o enviados automáticamente por correo electrónico.",
+    "start_time": 400.2,
+    "end_time": 426.24
+  },
+  {
+    "slide_index": 16,
+    "image_file": "060_Slide_16_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "El Cliente Web de SAP Business One representa la evolución moderna de la experiencia de usuario. Diseñado bajo los estándares estéticos de SAP Fiori, permite gestionar el ciclo completo de ventas, crear ofertas, procesar pedidos de clientes, dar seguimiento a actividades comerciales y analizar gráficos dinámicos desde cualquier navegador web moderno, tanto en computadoras de escritorio como en tabletas.",
+    "start_time": 426.24,
+    "end_time": 452.62
+  },
+  {
+    "slide_index": 17,
+    "image_file": "060_Slide_17_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "La presencia internacional del software está respaldada por cincuenta localizaciones legales nativas y soporte para veintiocho idiomas, operando con éxito en más de ciento setenta países. Esto garantiza el cumplimiento estricto de las exigencias tributarias locales, retenciones de impuestos, facturación electrónica y formatos contables oficiales en cada país donde tu empresa decida expandirse.",
+    "start_time": 452.62,
+    "end_time": 477.62
+  },
+  {
+    "slide_index": 18,
+    "image_file": "060_Slide_18_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "Para acompañar el ciclo de vida de la implementación, SAP y su red de canales ofrecen centros de recursos especializados. Entre ellos destacan el portal PartnerEdge para documentación técnica avanzada, el SAP Help Portal con guías operativas detalladas, cursos oficiales en Learning Hub y canales audiovisuales continuos que mantienen actualizados a consultores y usuarios clave.",
+    "start_time": 477.62,
+    "end_time": 501.65
+  },
+  {
+    "slide_index": 19,
+    "image_file": "060_Slide_19_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+    "script_text": "En conclusión, SAP Business One consolida todas las áreas de una organización en un único sistema robusto, escalable y en tiempo real. Su capacidad de operar en nube o local, la potencia de cálculo en memoria con SAP HANA y su flexibilidad de integración lo convierten en la solución definitiva para impulsar el crecimiento rentable y el control total de cualquier empresa moderna.",
+    "start_time": 501.65,
+    "end_time": 525.74
   }
 ]

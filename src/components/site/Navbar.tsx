@@ -33,9 +33,10 @@ export function Navbar() {
   const isSuperOrAdmin = userProfile?.role === 'super' || userProfile?.role === 'admin';
 
   const navLinks = [
-    { name: 'Explorar Tracks', href: '/capacitacion', icon: Layers },
-    { name: 'Manuales', href: '/manuales', icon: BookOpen },
-    { name: 'Mi Aula Virtual', href: '/mi-aula', icon: GraduationCap },
+    { name: 'Campus', href: '/campus', icon: GraduationCap, highlight: true },
+    { name: 'Manuales & Atlas', href: '/manuales', icon: BookOpen },
+    { name: '🚀 Simulador', href: '/simulador', icon: Briefcase },
+    { name: 'Mi Aula', href: '/mi-aula', icon: Layers },
     { name: 'Bolsa de Empleo', href: '/bolsa-empleo', icon: Briefcase },
   ];
 

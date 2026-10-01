@@ -1,0 +1,184 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "076_Slide_01_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Bienvenidos a esta clase sobre Item 42 SNBatch Valuation en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Items and Inventory: Serial and Batch Valuation SAP Business One Version 10.0 Welcome to the topic on the serial and batch valuation method.",
+    "start_time": 0.0,
+    "end_time": 23.21
+  },
+  {
+    "slide_index": 2,
+    "image_file": "076_Slide_02_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "After completing this topic, you will be able to: Define the settings for serial batch valuation Track costs using the serial batch valuation method 2 At the end of this topic, you will be able to: Define the settings for serial batch valuation Track costs using the serial batch valuation method Objectives",
+    "start_time": 23.21,
+    "end_time": 40.56
+  },
+  {
+    "slide_index": 3,
+    "image_file": "076_Slide_03_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "In this course topic, we introduce the serial batch valuation method. In the previous course topic, you learned about the three valuation methods that are available for any item in SAP Business One: moving average, FIFO (first in, first out) and standard costs. In addition, there is a valuation method specifically for managing costs for serial numbered and batch managed items. This method allows us to manage the cost of an item at the serial or batch number level. There are two main benefits to this valuation method. The cost used for an item in outbound transactions is the actual inbound cost of that specific serial number or batch. This means that profitability can be calculated for a specific serial number or an individual item in a particular batch. We will look at two business examples that show the advantages of using this new valuation method. 3 3 Serial Batch Valuation Method Available only for serial numbered and batch managed items Tracks actual costs on inbound transactions and uses those amounts for outbound transaction costs Allows you to calculate profitability for a specific serial number or individual item in a batch In addition to 3 main valuation methods: Serial Batch Valuation Method",
+    "start_time": 40.56,
+    "end_time": 112.08
+  },
+  {
+    "slide_index": 4,
+    "image_file": "076_Slide_04_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "The first business example shows how the serial batch valuation method improves costing and reporting on profitability for manufactured branches. In this example, we look at the company OC Chocolates that produces several lines of chocolate treats. Managing costs for batches is important in their business because the cost of ingredients and labor in producing the chocolates can vary altering the profit for each chocolate batch. 4 Business Scenario 1 Manufactured Batches OC Chocolates produces several lines of chocolate treats. Managing costs for batches is important in their business because the cost of ingredients and labor in producing the chocolates can vary altering the profit for each chocolate batch.",
+    "start_time": 112.08,
+    "end_time": 151.34
+  },
+  {
+    "slide_index": 5,
+    "image_file": "076_Slide_05_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Costing in the Lifecycle of a Batch Receipt from Production Production Order Costs for ingredients and labor are tracked in the production order. When the chocolate truffles are received from production into inventory, they are received as a batch. Because of the valuation method, actual costs are tracked for that batch. In the delivery, the actual cost from the receipt from production is used as the cost of sale. This allows OC Chocolates to track the profitability of each batch based on the actual cost of producing the item. Delivery A R Invoice OC Chocolates manages the process of manufacturing chocolate truffles in house with production orders. Each item is listed with a quantity to produce. Ingredients for the chocolate are received from inventory into the production order and the costs are tracked in the production order. Additionally, they track labor costs in the production order as well. When the chocolate truffles are received from production into inventory, they are received as a batch. Because of the valuation method, the actual costs are tracked for that batch. The total cost of the batch is equal to the costs of production. The value of each individual chocolate truffle is the total cost of the batch divided by the number of items in the batch. The chocolate truffles are sold to the retail outlets. When the delivery occurs, the actual cost from the receipt from production is used as the cost of sale. This allows OC Chocolates to track the profitability of each batch based on the actual cost of producing the item.",
+    "start_time": 151.34,
+    "end_time": 238.56
+  },
+  {
+    "slide_index": 6,
+    "image_file": "076_Slide_06_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "The second business example shows how the serial batch valuation method helps manage costs and track profitability for a business that buys and resells serial numbered items. OEC Computers resells computers and other electronics. Many of their products are serialized. When they buy the products, they immediately begin tracking them by serial number. The cost of each piece of equipment is tracked from the moment it enters the warehouse, through the sale to the customer and any after sales support. Therefore, OEC can easily track the gross profit for each piece of equipment they sell. 6 Business Scenario 2 Reselling Serial Numbered Items OEC Computers makes and resells electronics. Many of their products are serialized. When they buy the products, they immediately begin tracking them by serial number. The cost of each piece of equipment is tracked from the moment it enters the warehouse, through the sale to the customer and any after sales support. Therefore, OEC can easily track the gross profit for each piece of equipment they sell.",
+    "start_time": 238.56,
+    "end_time": 299.35
+  },
+  {
+    "slide_index": 7,
+    "image_file": "076_Slide_07_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Costing in the Lifecycle of a Serial Numbered Item Landed Costs Goods Receipt PO Items are assigned serial numbers when they are received on a GRPO. Each serial number’s individual cost is tracked by using the serial batch valuation method. A landed costs document tracks additional freight and customs costs. These costs are automatically added to each serial number. When items are shipped, the cost used on the delivery document is the actual inbound cost of the specific serial numbers sold. Profitability can be calculated for a specific serial number. Delivery A R Invoice OEC Computers begins the process by purchasing electronics on purchase orders. The items are assigned serial numbers when they are received on a goods receipt PO and the each serial number’s individual cost is tracked by using the serial batch valuation method. Each serial number is automatically assigned the cost from the goods receipt PO. Since OEC Computers buys some of their serial numbered items from foreign suppliers, a landed costs document is used to track additional freight and customs costs. The landed costs document is based on the goods receipt PO which contains the serial numbered items. The landed costs are automatically added onto the cost of each individual serial number. When the items are shipped to customers, the cost used on the delivery document is the actual inbound cost of the specific serial numbers sold. Therefore profitability can be calculated for a specific serial number.",
+    "start_time": 299.35,
+    "end_time": 386.52
+  },
+  {
+    "slide_index": 8,
+    "image_file": "076_Slide_08_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Settings at the Company Level Required Setting Use Perpetual Inventory Optional Default Setting Manage Serial and Batch Cost by Serial Batch Valuation Method Menu Path Administration > System Initialization > Company Details > Basic Initialization tab. Basic Initialization Use Perpetual Inventory Manage Serial and Batch Cost By Item Group Valuation Method Serial Batch Valuation Group Method X Just as with all other valuation methods, you must be using perpetual inventory to use the serial batch valuation method. In addition, you also have the option of setting the Serial Batch Valuation Method as the default for all batch managed and serial numbered items. This is not required, but if you are planning on using this valuation method for all your serial and batch items, it will make the creation of these items simpler because you will not have to choose a valuation method at that point. These settings are found on the Basic Initialization tab of the Company Details window. The menu path is shown on the graphic.",
+    "start_time": 386.52,
+    "end_time": 443.35
+  },
+  {
+    "slide_index": 9,
+    "image_file": "076_Slide_09_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Settings in the Item Master To use the Serial Batch Valuation Method, the item master needs the following settings: On the General tab: Set the item to be managed by serial numbers or batches Choose the management method On Every Transaction On the Inventory Data tab: Choose the Serial Batch valuation method General Serial and Batch Numbers Manage Item by Batches Management Method On Every Transaction Inventory Data Valuation Method Serial Batch To use the Serial Batch Valuation Method, the item master needs the following settings: As always, you need set an item as serial number or batch managed at the item level. This is done on the General tab. If you have selected the Serial Batch Valuation Method as the default for managing serial and batch cost at the company level, then the management method will automatically be set to On Every Transaction. This cannot be changed to On Release Only when the valuation method is set to Serial Batch. If you have not selected the Serial Batch Valuation Method as the default at the company level, then you will need to choose the Serial Batch valuation method on each individual item. This is done on the Inventory tab of the item master. Remember that it is always possible to change the valuation method for an item as long as the item has no quantity in stock and is not linked to any open document.",
+    "start_time": 443.35,
+    "end_time": 517.94
+  },
+  {
+    "slide_index": 10,
+    "image_file": "076_Slide_10_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "You want to manage costs and profitability for individual serial numbers or batches All serial and batch items need to be managed by this method? You prefer to set the method as default and manage exceptions? Item Level Company Level Yes No Yes No Note: Serial Batch valuation method cannot be set in the Item Group. Company Level Company or Item Level Once you choose to manage costs and profitability for individual serial numbers or batches, you need to decide whether to set the Serial Batch valuation method as the default at the company level or make the setting on each individual item. Here are some considerations: In your system, do all serial and batch items need to managed by this method? If there are no exceptions, then the logical choice is the Company level. Perhaps most but not all your serial or batch items will use this method. If you prefer to set the SN Batch valuation method as the default and manage exceptions at the item level, then the Company Level is still the preferred choice. However, if you have fewer serial or batch items managed by this method than other valuation methods, then it is best to make the setting on each individual item. Unlike other valuation methods, you cannot set this method as the default at the item group level because item groups could contain items that are neither serial numbered or batch managed.",
+    "start_time": 517.94,
+    "end_time": 593.98
+  },
+  {
+    "slide_index": 11,
+    "image_file": "076_Slide_11_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Special Setting for Batches To ensure that each batch has only one price and not various prices from multiple receipts, you can select the checkbox: X Block Multiple Receipts for Same Batch This setting can be made in: General Settings in the Inventory tab, or the item master. If the same batch is received multiple times, the batch cost will be calculated out of the total value of all receipts into inventory, from all warehouses. To ensure that each batch has only one price, you can select the checkbox to block multiple receipts for the same batch. Then the system will require you use a different batch number for each receipt. This setting can be made both at the company level and the item level. At the company level, the checkbox is found in the General Settings under the Inventory tab. On the item master, this checkbox will appear on the General tab if you have chosen the item to be batch managed and valued using the Serial Batch valuation method. You can make this setting on the item regardless of whether multiple receipts are blocked at the company level. Additionally, you can change the setting at any time, even if a batch item had already had multiple receipts.",
+    "start_time": 593.98,
+    "end_time": 659.71
+  },
+  {
+    "slide_index": 12,
+    "image_file": "076_Slide_12_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Effect of Allowing Multiple Receipts GRPO 1 has a quantity of 10 with a total value of 100. GRPO 2 has a quantity of 10 with a total value of 300. Batch 1 after receiving GRPO 1 Batch Qty: 10 Total batch cost: 10 Cost per unit: 10 Batch 1 after receiving GRPO 2 Batch Qty: 20 (10+10) Total batch cost: 400 (100+300) Cost per unit: 20 (100+300) (10+10) = 20 The formula for calculating costs for multiple shipments to a batch: Total Receipt Value divided by Total Receipt Quantity Let us look at the effect of allowing multiple receipts of the same batch. If you decide to allow multiple receipts for a batch, then the cost basis for the batch will be revaluated automatically if more items are received for the same batch with a different price. Here we see an example of what happens when you receive two shipments with the same batch number. The first shipment is on GRPO 1 and has a quantity of 10. The total value of the GRPO is 100, so the cost per item is 10. Later a shipment is received on GRPO 2 with another 10, but this time the total value of the GRPO is 300, so the cost per item is 30. As expected when the batch is created with the first GRPO, we see a batch quantity of 10 with a cost per unit of 10 and the total cost for the batch is 100. When the second GRPO is received, the quantity of the batch is increased from 10 to 20. Since the second 10 are received as another shipment of the same batch with a different per unit cost, this triggers a cost recalculation. The total receipt value of the first shipment (100) is added together with the total receipt value of the second shipment (300) for a total receipt value of 400. This sum is divided by the total quantity of the two shipments. In this case the first quantity 10 is added to the second quantity 10 for a total of 20. 400 divided by 20 gives us a cost per unit basis of 20. This type of calculation is done only if you allow receipt of multiple receipts for the same batch. Serial numbers are never handled this way because a serial number is unique. Therefore if the same serial number is received into inventory a second time (after that serial number has been issued from inventory), the serial number takes the cost price of the second receipt.",
+    "start_time": 659.71,
+    "end_time": 798.43
+  },
+  {
+    "slide_index": 13,
+    "image_file": "076_Slide_13_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Costing Report for SN Batch Batches and Serials Inventory Audit Report Item No. Batch Current Cost Date Doc. Quantity Trans Cost Trans Value A111 B120 101 102 103 2.50 2.60 3.00 5.1.19 6.1.19 8.2.19 SI 1 DN 1 RE1 100 50 20 2.50 2.50 2.50 250 125 50 The Batches and Serials Inventory Audit Report shows the batches or serial numbers for an item along with the current cost for each. There is a costing report for serial numbers and batches: the Batches and Serials Inventory Audit Report. You can view the batches and serial numbers in a list view or in a hierarchical view (as shown in the graphic). The report shows the batches or serial numbers for an item along with the current cost for each. The report shows each transaction that contained the batch or item along with the date of the transaction, the cost of the item on the transaction and the total value for each item or batch on the transaction. Here we see a report with two batch managed items in the hierarchical view. The first item has been opened to show the three existing batches for that item and the current cost of items within each batch. The first batch (101) has been opened further to see the transactions that included that batch. The first transaction was a receipt from production for a batch of 100. The next date a delivery was made for a quantity of 50 from this batch. A few days later 20 were returned. Several other fields are also available in this report, including but not limited to: item description, warehouse, attributes for the batch serial number, expiration date, posting dates, document row, currency, G L account.",
+    "start_time": 798.43,
+    "end_time": 907.01
+  },
+  {
+    "slide_index": 14,
+    "image_file": "076_Slide_14_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Costs field in Serial Batch Windows Cost information included on all Serial Batch windows: Serial Numbers Detail window Batch Details window Serial Number Management – Update window Batch Management – Update window Serial Number Details Item Number S1000 Warehouse 01 Status Available Mfr. Serial Number 27565629M Serial Number S1000 5727 System No. 15632 Admission Date 08.04.18 Manufacturing Date 02.04.18 Expiration Date Mfr. Warranty Start 08.04.18 Mfr. Warranty End 07.04.20 Location Details Cost 150 A Costs field has been included on all Serial Batch windows, including the Details window for both serial numbers and batches and the Management – Update windows for both serial numbers and batches.",
+    "start_time": 907.01,
+    "end_time": 956.21
+  },
+  {
+    "slide_index": 15,
+    "image_file": "076_Slide_15_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Revaluation Process is similar to revaluating FIFO items. Two revaluation types: Price Change Inventory Debit Credit Options to filter based on admission date range, expiration date range, batch or SN. Additionally serial numbers can be filtered by lot number, system number, and manufacturer serial number. Choose to display issued SNs or batches. Inventory Revaluation Number 245 Posting Date 09.02.20 Revaluation Type Inventory Debit Credit Inventory > Inventory Transactions > Inventory Revaluation Item. Whse Increase Acct Decrease Acct 1 S111 01 911202 911201 2 … Filtered by Display Issued SN Batch Filter Value Admission Date Range Expiry Date Range S B No. Adm. Date Debit Credit Total Cost 1 20200 08.08.18 10 110 2 20200 08.08.18 11 111 3 … It is now possible to revaluate items using the serial batch valuation method in the inventory revaluation transaction. The process is similar to that used for FIFO items. You can revaluate the items by both revaluation types: Price Change and Inventory Debit Credit. You choose the item, then you can add filters to narrow the selection for that item. You can filter batches and serial numbers by admission date and expiration date. For serialized items, you can filter by serial number, lot number, system number and manufacturer serial number. You can choose whether to display serial numbers and batches that are issued. Once the serial numbers and batches are chosen you can enter the new cost or a debit or credit, depending on the revaluation type you have chosen. Since batch cost is managed on the company level, warehouse in inventory revaluation is used for determine the accounts to be used in the journal entry posting and not for revaluating the cost of a batch in a selected warehouse. The offset account to inventory account is the Inventory Increase Decrease account and not the stock variance account.",
+    "start_time": 956.21,
+    "end_time": 1082.98
+  },
+  {
+    "slide_index": 16,
+    "image_file": "076_Slide_16_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Costing Example Landed Costs Goods Receipt PO Delivery A R Invoice Return Revaluation We will take a look at an example of how costs are calculated with the Serial Batch Valuation Method.",
+    "start_time": 1082.98,
+    "end_time": 1094.11
+  },
+  {
+    "slide_index": 17,
+    "image_file": "076_Slide_17_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Goods Receipt PO Five tablets (Item T100) are received from the vendor on a Goods Receipt PO totaling 500. Each tablet gets a serial number and the cost for each is recorded. SN Cost 10001 100 10002 100 10003 100 10004 100 10005 100 Journal Entry Details JE Debit JE Credit Inventory 500 Allocation 500 Five tablets are received from our vendor. Each tablet receives a serial number and the cost for each is recorded. The total for the goods receipt PO is 500. The journal entry shows a debit of 500 to inventory and a credit of 500 to an allocation account. The cost of 100 is assigned to each serial number.",
+    "start_time": 1094.11,
+    "end_time": 1136.76
+  },
+  {
+    "slide_index": 18,
+    "image_file": "076_Slide_18_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Landed Costs The vendor is overseas, so we create a landed costs document to track customs, freight and insurance costs. Total landed costs are 50 and costs are divided equally. Therefore the cost of each SN increases by 10 to 110. Journal Entry Details JE Debit JE Credit Inventory 50 Allocation 50 SN Cost 10001 110 10002 110 10003 110 10004 110 10005 110 The vendor is located overseas so we create a landed costs document to track the customs, freight and insurance costs of the transport. The total on the landed costs document is 50 and it is divided equally in this case between the 5 serial numbers. The journal entry shows a debit of 50 to the inventory and a credit of 50 to an allocation account. A cost difference of 10 is added for a total cost of 110 for each serial number.",
+    "start_time": 1136.76,
+    "end_time": 1191.36
+  },
+  {
+    "slide_index": 19,
+    "image_file": "076_Slide_19_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Delivery A customer purchases 2 tablets. We ship SN 10001 and SN 10002. Both have a cost of 110. The price charged to the customer is irrelevant. Journal Entry Details JE Debit JE Credit COGS 220 Inventory 220 SN Cost 10001 110 10002 110 A customer purchases two of the tablets in stock. We ship the first two serial numbers. Both the serial numbers have a cost of 110. The journal entry for the delivery document shows a debit of 220 to the cost of goods sold and a credit to inventory of 220. Each tablet is priced at 250. However, the price of the item charged to the customer is not relevant to the cost.",
+    "start_time": 1191.36,
+    "end_time": 1239.31
+  },
+  {
+    "slide_index": 20,
+    "image_file": "076_Slide_20_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Items Remaining in Inventory We have sold and shipped 2 tablets. 3 tablets remain in stock. The total value of the inventory is 330. SN Cost 10003 110 10004 110 10005 110 We have sold and shipped 2 tablets. Three of the tablets remain in stock. Each has a cost of 110. The total value of the inventory in stock is now 330.",
+    "start_time": 1239.31,
+    "end_time": 1267.56
+  },
+  {
+    "slide_index": 21,
+    "image_file": "076_Slide_21_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "A R Return One tablet is damaged in transit. The customer returns it. SN 10001 is returned to stock. Journal Entry Details JE Debit JE Credit Inventory 110 COGS 110 One tablet is damaged in transit, so the customer returns it. SN 10001 is returned to stock when it is received. The journal entry for the A R return shows a debit to inventory of 110 for the item and credits the cost of goods sold account for 110.",
+    "start_time": 1267.56,
+    "end_time": 1297.54
+  },
+  {
+    "slide_index": 22,
+    "image_file": "076_Slide_22_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "A R Invoice – Calculating Profit on the Sale An A R Invoice is created for the one tablet the customer kept. Choose the Gross Profit icon to view the percentage of profit. The cost of the item is subtracted from the sales price to determine the gross profit. Then the percentage of the gross profit to the cost is calculated. Gross Profit of Outgoing Invoice Base Price By Item Cost Item Base Price Base Total Sales Price Qty Gross Profit Gross Profit % 1 T100 110 110 275 1 165 150 An A R Invoice is created for the one tablet the customer kept. Choose the Gross Profit icon to view the percentage of profit. The cost of the item is subtracted from the sales price to determine the gross profit. Then the percentage of the gross profit to the cost is calculated.",
+    "start_time": 1297.54,
+    "end_time": 1346.18
+  },
+  {
+    "slide_index": 23,
+    "image_file": "076_Slide_23_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Revaluation The damaged tablet is no longer worth 110. We perform revaluation to have the serial number’s cost reflect its actual value. We reduce the cost of SN 10001 from 110 to 75. Journal Entry Details JE Debit JE Credit Stock Variance 35 Inventory 35 The serial number that was returned with damage is not worth its original value. After inspecting the item, the value of the item is judged to be reduced by 35 from its previous value of 110. Therefore, we perform revaluation to have the serial number’s cost reflect this loss. We reduce the cost from 110 to 75 to reflect the damage to the tablet. The journal entry details from the revaluation record a debit to the Stock Variance account for 35 and a credit to the Inventory account value of 35.",
+    "start_time": 1346.18,
+    "end_time": 1397.64
+  },
+  {
+    "slide_index": 24,
+    "image_file": "076_Slide_24_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "The total value of the items in inventory for tablet item is based on the cost value from each of the 4 serial numbers in stock. Here we see that the total value is now 405. The Batches and Serial Inventory Audit report is excellent for viewing these cost details by serial number or batch. If you would like to see the total value of the inventory for the item (at the item level rather than the value at the batch or SN level) then run the Inventory Audit report. 24 24 Inventory Total Value Inventory for Item T100 SN Cost 10001 75 10003 110 10004 110 10005 110 Total",
+    "start_time": 1397.64,
+    "end_time": 1437.22
+  },
+  {
+    "slide_index": 25,
+    "image_file": "076_Slide_25_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "Here are some key points: The Serial Batch valuation method tracks the cost of an item at the serial or batch number level. Using this method, the cost recorded in outbound transactions is for that specific serial number or batch. Therefore, profitability can be calculated for a specific serial number or individual item in a batch. The serial batch valuation method can be set as a default at the company level. The method can be set at the item if none of this item is in stock or on open documents. Items using this valuation method are tracked on every transaction. Batch cost is managed at the company level, not the warehouse level. When receiving the same batch from a different warehouse, the batch cost is calculated based on all receipts from all warehouses. To ensure that each batch has only one price, you can select the checkbox to block multiple receipts for the same batch. The Batches and Serial Inventory Audit report is excellent for viewing cost details by serial number or batch. 25 25 Summary The Serial Batch valuation method tracks the cost of an item at the serial or batch number level. The cost recorded in outbound transactions is for a specific serial number or batch. Therefore, profitability can be calculated for a specific serial number or individual item in a batch. The valuation method can be set as a default at the company level. It can be set at the item if none of this item is in stock or on open documents. Items using this valuation method are tracked on every transaction. Batch cost is managed at the company level, not warehouse level. To ensure that each batch has only one price, you can select the checkbox to block multiple receipts for the same batch. The Batches and Serial Inventory Audit report is excellent for viewing cost details by serial number or batch.",
+    "start_time": 1437.22,
+    "end_time": 1544.88
+  },
+  {
+    "slide_index": 26,
+    "image_file": "076_Slide_26_10_Item_42_SNBatch_Valuation.webp",
+    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
+    "start_time": 1544.88,
+    "end_time": 1677.72
+  }
+]

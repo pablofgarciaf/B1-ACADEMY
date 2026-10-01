@@ -531,7 +531,7 @@ export default function StudentDashboardPage() {
                 </h2>
               </div>
               <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Haz clic en "+ Agregar a mi plan" para incluir cualquier módulo adicional a tu ruta de estudio activa.
+                Haz clic en &quot;+ Agregar a mi plan&quot; para incluir cualquier módulo adicional a tu ruta de estudio activa.
               </p>
             </div>
 

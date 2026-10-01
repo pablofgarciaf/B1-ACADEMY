@@ -1,0 +1,198 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "041_Slide_01_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre Impl 14 CustomTools UserDefinedFields en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Herramientas de personalización: Campos definidos por el usuario Bienvenido al tema sobre Campos definidos por el usuario.",
+    "start_time": 0.0,
+    "end_time": 21.98
+  },
+  {
+    "slide_index": 2,
+    "image_file": "041_Slide_02_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Al completar este tema, podrá añadir sus propios campos a objetos en la base de datos de SAP Business One. Podrá definir campos con diferentes tipos y estructura, incluyendo campos obligatorios, y establecer reglas de validación, valores por defecto y listas de valores para ayudar a los usuarios en la entrada de datos. 2 2 Objetivos Objetivos:  Añadir campos de usuario a objetos en la base de datos de SAP Business One  Definir campos con diferentes tipos y estructura, incluyendo campos obligatorios  Establecer reglas de validación, valores por defecto y listas de valores para la entrada de datos.",
+    "start_time": 21.98,
+    "end_time": 60.17
+  },
+  {
+    "slide_index": 3,
+    "image_file": "041_Slide_03_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Se necesita supervisar el nivel de estado de cada cliente: oro, plata y bronce.  Al procesar un pedido de cliente, el vendedor debe registrar instrucciones de entrega preferida del cliente. Solución: Estos requisitos se pueden implementar con campos definidos por el usuario. Escenario empresarial Pedido de cliente Entrega Factura de clientes Cobro  A menudo se añaden campos adicionales a datos maestros y documentos con el fin de implementar el proceso empresarial del cliente. Aquí se presentan dos requisitos empresariales que pueden implementarse con campos definidos por el usuario.  Se necesita supervisar el nivel de estado de cada cliente: oro, plata y bronce. Puede añadir un campo definido por el usuario a los datos maestros del cliente para supervisar el estado.  Además, al procesar un pedido de cliente, el vendedor debe registrar las instrucciones de entrega preferida del cliente. Puede añadir un campo definido por el usuario al documento de pedido de cliente y registrar las instrucciones de entrega en este campo.",
+    "start_time": 60.17,
+    "end_time": 125.5
+  },
+  {
+    "slide_index": 4,
+    "image_file": "041_Slide_04_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Cómo añadir campos definidos por el usuario  En la primera parte de este tema, trataremos cómo añadir campos definidos por el usuario.",
+    "start_time": 125.5,
+    "end_time": 134.33
+  },
+  {
+    "slide_index": 5,
+    "image_file": "041_Slide_05_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Campos definidos por el usuario  A la mayoría de los objetos empresariales, entre ellos los datos maestros y los documentos de marketing, pueden añadirse campos nuevos.  Se requiere autorización general: Herramientas de customizing → Campos definidos por el usuario – Gestión Herramientas →Herramientas de customizing → Campos definidos por el usuario – Gestión  Puede añadir campos nuevos a la mayoría de los objetos, incluyendo interlocutores comerciales y datos maestros de artículo, y documentos de marketing. Estos campos se guardan en la base de datos y tabla del objeto empresarial.  Solo los usuarios autorizados pueden añadir campos definidos por el usuario. La autorización general es Herramientas de customizing > Campos definidos por el usuario – Gestión.",
+    "start_time": 134.33,
+    "end_time": 181.63
+  },
+  {
+    "slide_index": 6,
+    "image_file": "041_Slide_06_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Se pueden añadir campos a la cabecera (título) y a las líneas de los documentos de marketing.  El nuevo campo se añade a todos los tipos de documentos de logística Campos de línea y cabecera de documentos de marketing Cabecera (título) Línea  Puede añadir campos en el área de la cabecera y en las líneas de los documentos de marketing.  Cuando añade un campo definido por el usuario a un objeto de los documentos de marketing, el campo nuevo se añade a todos los tipos de documentos de logística, incluidos entre ellos los tipos de documentos de compras y ventas y algunos documentos de inventario como por ejemplo Entrada de mercancías y Salida de mercancías.",
+    "start_time": 181.63,
+    "end_time": 221.38
+  },
+  {
+    "slide_index": 7,
+    "image_file": "041_Slide_07_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Objeto (ej., Pedido de cliente) Campos definidos por el usuario – Nivel de cabecera Campos def. p/ usuario  Ctrl+Mayús+U  Los UDF añadidos en el nivel de cabecera aparecen inicialmente en otra ventana  Para abrir dicha ventana, utilice el menú Ver y seleccione Campos definidos por el usuario o pulse Ctrl+Mayús+U  Los UDF añadidos a la cabecera se pueden editar después de añadir el documento Ver  Cuando en el nivel de cabecera añade campos definidos por el usuario (UDF), los campos nuevos aparecen en otra ventana separada situada por defecto a la derecha de la ventana del documento existente.  Esta ventana no se visualiza de inmediato. Para abrir esta ventana, seleccione Vista > Campos definidos por el usuario en la barra de menús superior o utilice la secuencia de teclas Ctrl+Shift+U. Puede colocar esta ventana a la izquierda o en la parte inferior de la ventana existente.  Los UDF añadidos a la cabecera se pueden editar después de añadir el documento.  Si los campos definidos por el usuario no se utilizaran en un documento de marketing, la nueva ventana puede permanecer cerrada.",
+    "start_time": 221.38,
+    "end_time": 292.8
+  },
+  {
+    "slide_index": 8,
+    "image_file": "041_Slide_08_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Objeto (ej., Pedido de cliente) Movimiento de los campos definidos por el usuario – Nivel de cabecera  Los usuarios autorizados pueden utilizar la función Herramientas > Editar IU de formulario para arrastrar los UDF hasta el área del formulario principal, renunciando a la ventana lateral  Autorización general requerida – General > Editar IU de formulario  Los usuarios autorizados pueden realizar este cambio para su propio uso o para otros usuarios a través de un Modelo de configuración de la IU Herramientas Editar desde la IU  Los usuarios autorizados pueden utilizar la función Herramientas > Editar IU de formulario para arrastrar campos relevantes definidos por el usuario desde la ventana lateral hasta el área principal del formulario y, por lo tanto, prescindiendo de la ventana lateral.  Los usuarios autorizados pueden realizar este cambio para su propio uso o para otros usuarios creando un Modelo de configuración de la IU En el modelo de configuración de la IU, seleccione el formulario que tiene los UDF añadidos y arrastre los campos hasta su posición. El modelo podrá entonces asignarse a usuarios. Para obtener más información sobre los modelos de configuración de la IU, consulte el curso Modelos de configuración de la IU en la unidad de Configuración y gestión del sistema.",
+    "start_time": 292.8,
+    "end_time": 370.22
+  },
+  {
+    "slide_index": 9,
+    "image_file": "041_Slide_09_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Parametrizaciones de campos definidos por el usuario  Si decide mantener UDF en la ventana lateral, puede gestionarlos utilizando la ventana de parametrizaciones  La ventana de parametrizaciones es diferente de la ventana de parametrizaciones de formulario estándar. Para abrir la ventana de parametrizaciones: Ctrl+Mayús+B Herramientas → Herramientas de customizing → Parametrizaciones  Si decide mantener campos definidos por el usuario en la ventana lateral, puede gestionarlos con la ventana de parametrizaciones. La ventana de parametrizaciones es diferente de la ventana de parametrizaciones de formulario estándar, aunque funciona de forma similar. Para abrir la ventana de parametrizaciones de campos definidos por el usuario, pulse Ctrl+Mayús+B o seleccione Herramientas > Herramientas de customizing > Parametrizaciones. El menú solo se muestra activo cuando selecciona un formulario con campos definidos por el usuario.  El usuario puede hacer que los campos definidos por el usuario sean visibles o invisibles, y activos o inactivos, en la ventana lateral de campos definidos por el usuario. Por ejemplo, puede hacer que todos los campos relevantes para un pedido de cliente sean invisibles en un pedido.  También existe la opción de definir nuevas categorías para agrupar campos relacionados y solo mostrar los campos para una categoría.",
+    "start_time": 370.22,
+    "end_time": 451.54
+  },
+  {
+    "slide_index": 10,
+    "image_file": "041_Slide_10_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Copia de valores de UDF en documentos de marketing Objeto (ej., Pedido de cliente)  Cuando genere un documento desde un documento base utilizando Copiar a/ Copiar de, el valor introducido en un campo definido por el usuario se transfiere al documento destino  Esto también se aplica al Asistente de creación de documentos  Si se copian varios documentos base con diferentes valores en un UDF, el valor no se copia Objeto (ej., Entrega) El valor introducido en un campo definido por el usuario se transfiere al documento destino mediante Copiar a /Copiar de.  Cuando utiliza la función Copiar a/ Copiar de para crear un documento nuevo a partir de un documento base, el valor de un campo definido por el usuario se transfiere al documento destino. Esto también se aplica a los documentos creados con el Asistente de creación de documentos.  Si varios documentos base se copian en un documento destino y el campo definido por el usuario tiene diferentes valores en dichos documentos base, el valor del campo no se copia.",
+    "start_time": 451.54,
+    "end_time": 515.83
+  },
+  {
+    "slide_index": 11,
+    "image_file": "041_Slide_11_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Campos definidos por el usuario – Nivel de línea  Los UDF añadidos a nivel de línea se ven y activan por defecto  Utilice las parametrizaciones de formulario estándar para posicionar en una línea  Cuando añade un campo a nivel de línea, el sistema lo añade como otra columna en la línea. Por defecto, el campo es visible y está activo.  Puede cambiar estas parametrizaciones o mover el campo a una nueva posición en la línea utilizando las parametrizaciones de formulario estándar.",
+    "start_time": 515.83,
+    "end_time": 545.33
+  },
+  {
+    "slide_index": 12,
+    "image_file": "041_Slide_12_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Edición de campos definidos por el usuario a nivel de fila  Para permitir la edición de UDF a nivel de fila, si las filas no se puedan editar, marque la casilla en las parametrizaciones de documento para cada documento.  Para cada usuario, defina si se pueden actualizar UDF a nivel de fila  Los UDF de nivel de fila se comportan igual que las columnas del sistema. Por ejemplo, si un pedido de cliente está abierto y las filas se pueden actualizar, también se podrán actualizar los UDF. Una vez cerrado el pedido, los UDF también se bloquean.  Puede permitir la edición de UDF a nivel de fila desde GestiónInicialización del sistema  Parametrizaciones de documento Por documento.  Además, puede utilizar la autorización general para determinar qué usuario puede editar UDF a nivel de fila en los módulos de ventas y compras.",
+    "start_time": 545.33,
+    "end_time": 597.29
+  },
+  {
+    "slide_index": 13,
+    "image_file": "041_Slide_13_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Propiedades y estructura de campos definidos por el usuario",
+    "start_time": 597.29,
+    "end_time": 601.99
+  },
+  {
+    "slide_index": 14,
+    "image_file": "041_Slide_14_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Propiedades de los campos definidos por el usuario  Los UDF se añaden a la tabla del objeto y tienen el prefijo “U_”  Los UDF se conservan durante la actualización y pueden copiarse en una empresa nueva  El nuevo campo se añade en todas las instancias del documento, incluidos los registros ya grabados en la base de datos  Los UDF funcionan como campos normales y se pueden utilizar en consultas e informes  Puede importar datos en campos definidos por el usuario por medio de Data Transfer Workbench.  Los campos definidos por el usuario se añaden a la tabla de base de datos respectiva del objeto. Se pueden identificar rápidamente en la tabla ya que tienen el prefijo “U_”. En el ejemplo de la diapositiva, puede ver dos nuevos campos añadidos a la tabla de líneas del pedido RDR1.  Los campos definidos por el usuario se conservan durante una actualización a una nueva versión. Cuando crea una nueva empresa, tiene la opción de copiar campos definidos por el usuario de la empresa actual a la nueva.  Algo importante acerca de los campos definidos por el usuario es que cuando añade un campo nuevo a un objeto, este se añade a todas las instancias del objeto, incluyendo los registros ya grabados en la base de datos.  Los UDF funcionan como campos normales y, por lo tanto, se pueden utilizar en consultas e informes.  También puede importar datos en campos definidos por el usuario por medio de Data Transfer Workbench. En el modelo de DTW, simplemente añada estos campos al final de la hoja de cálculo. Introduzca el nombre del campo en la línea de la cabecera e introduzca el valor como lo haría con un campo estándar.",
+    "start_time": 601.99,
+    "end_time": 703.44
+  },
+  {
+    "slide_index": 15,
+    "image_file": "041_Slide_15_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Propiedades de los campos definidos por el usuario (Cont.)  Cuando añade un campo nuevo, la estructura de la base de datos se actualiza  Si hay otros usuarios en el sistema, puede:  Esperar a que cierren sesión  Forzar el cierre de los documentos abiertos de los usuarios conectados  Es importante recordar que al añadir un campo definido por el usuario, la estructura de la base de datos se actualiza. Por lo tanto, solo debe añadir campos nuevos cuando no haya otros usuarios en el sistema.  Si intenta añadir un campo nuevo, el sistema le advertirá en caso de que haya usuarios en el sistema. Tiene la opción de:  Volver a intentarlo: puede notificar a los usuarios que cierren su trabajo y esperar a que salgan del sistema  Ignorarlo: el sistema forzará el cierre de todos los documentos abiertos de los usuarios conectados",
+    "start_time": 703.44,
+    "end_time": 753.29
+  },
+  {
+    "slide_index": 16,
+    "image_file": "041_Slide_16_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Tipo y estructura  Puede seleccionar un Tipo y opcionalmente una Estructura para cada campo definido por el usuario.  La Estructura depende del Tipo y afecta al formato del campo Nota: no puede cambiar el tipo y estructura después de haber añadido el campo a la base de datos. Si selecciona el tipo o la estructura incorrecta, elimine el campo y vuelva a crearlo.  Cuando crea un campo definido por el usuario, puede seleccionar un Tipo y opcionalmente una Estructura para cada campo definido por el usuario.  La Estructura depende del Tipo y afecta al formato del campo.  Tenga en cuenta que no puede cambiar el tipo y estructura después de haber añadido el campo a la base de datos. Si por error selecciona el tipo o la estructura incorrectos puede eliminar el campo y volver a crearlo.",
+    "start_time": 753.29,
+    "end_time": 801.7
+  },
+  {
+    "slide_index": 17,
+    "image_file": "041_Slide_17_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Tipo y estructura Tipo Estructura Longitud máxima Alfanumérico  Normal  Dirección  Nº de teléfono  Texto 254 2GB (cabecera) / 255KB línea Numérico - Fecha/Hora  Fecha  Hora Unidades y totales  Tipo impositivo  Importe  Precio  Cantidad  Porcentaje  Medida General  Vínculo  Imagen  Los campos Alfanuméricos pueden tener una de las siguientes estructuras. La estructura Normal puede contener un máximo de 254 caracteres. La estructura Texto puede albergar 2 GB de texto en los campos de cabecera y 255 KB de texto en campos de línea.",
+    "start_time": 801.7,
+    "end_time": 841.9
+  },
+  {
+    "slide_index": 18,
+    "image_file": "041_Slide_18_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Tipo y estructura Tipo Estructura Longitud máxima Alfanumérico  Normal  Dirección  Nº de teléfono  Texto 254 2GB (cabecera) / 255KB línea Numérico - Fecha/Hora  Fecha  Hora Unidades y totales  Tipo impositivo  Importe  Precio  Cantidad  Porcentaje  Medida General  Vínculo  Imagen  Los campos Numéricos solo albergan números enteros, por lo tanto, no hay estructura.",
+    "start_time": 841.9,
+    "end_time": 868.8
+  },
+  {
+    "slide_index": 19,
+    "image_file": "041_Slide_19_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Tipo Estructura Longitud máxima Alfanumérico  Normal  Dirección  Nº de teléfono  Texto 254 2GB (cabecera) / 255KB línea Numérico - Fecha/Hora  Fecha  Hora Unidades y totales  Tipo impositivo  Importe  Precio  Cantidad  Porcentaje  Medida General  Vínculo  Imagen Tipo y estructura  Los campos seleccionados con el tipo Fecha/Hora pueden tener Fecha u Hora como la estructura.  Estos campos se comportan exactamente del mismo modo que los demás campos de fecha y hora en el sistema; por ejemplo, el icono de calendario está disponible en un campo con estructura de fecha.",
+    "start_time": 868.8,
+    "end_time": 908.3
+  },
+  {
+    "slide_index": 20,
+    "image_file": "041_Slide_20_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Tipo Estructura Longitud máxima Alfanumérico  Normal  Dirección  Nº de teléfono  Texto 254 2GB (cabecera) / 255KB línea Numérico - Fecha/Hora  Fecha  Hora Unidades y totales  Tipo impositivo  Importe  Precio  Cantidad  Porcentaje  Medida General  Vínculo  Imagen Tipo y estructura  Para introducir fracciones o números enteros en el nuevo campo, utilice el tipo Unidades y Totales y seleccione una de estas estructuras.  Las posiciones decimales se visualizan en el nuevo campo de acuerdo con las parametrizaciones de inicio en la ficha Visualización en Parametrizaciones generales.",
+    "start_time": 908.3,
+    "end_time": 947.62
+  },
+  {
+    "slide_index": 21,
+    "image_file": "041_Slide_21_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Tipo Estructura Longitud máxima Alfanumérico  Normal  Dirección  Nº de teléfono  Texto 254 2GB (cabecera) / 255KB línea Numérico - Fecha/Hora  Fecha  Hora Unidades y totales  Tipo impositivo  Importe  Precio  Cantidad  Porcentaje  Medida General  Vínculo  Imagen Tipo y estructura Defina la vía de acceso a la carpeta Anexos o Imágenes en Parametrizaciones generales (ficha Vía de acceso).  Si selecciona el tipo General, el nuevo campo puede contener vínculos o gráficos.  Los campos con la estructura Vínculo pueden vincularse a un fichero o a una dirección web. Primero debe definir la vía de acceso por defecto a la carpeta Anexos. Esto se hace en las Parametrizaciones generales. Esta vía de acceso por defecto se abre cuando el usuario hace doble clic sobre el nuevo campo. El usuario puede seleccionar un fichero de la carpeta por defecto o bien introducir una dirección web en lugar del nombre de fichero.  Los campos con la estructura Imagen pueden contener imágenes. Primero debe definir la vía de acceso por defecto a la carpeta Imágenes, en Parametrizaciones generales. Si no define esta vía de acceso por defecto, se producirá un error al utilizar el campo de imagen. Cuando el usuario hace doble clic en el campo de imagen, se abre la carpeta por defecto, lo que permite seleccionar un fichero de imagen. A continuación, el usuario puede ir a otra carpeta para buscar la imagen deseada.  Puede modificar una imagen o una dirección web en cualquier momento si pulsa la tecla Ctrl y hace doble clic en la imagen o dirección web.",
+    "start_time": 947.62,
+    "end_time": 1049.28
+  },
+  {
+    "slide_index": 22,
+    "image_file": "041_Slide_22_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Opción para definir reglas de validación para introducir datos en el campo definido por el usuario: Vinculado a entidades Valores válidos Avanzado Opciones de validación  Además del tipo y estructura para un campo definido por el usuario, tiene la opción de especificar opciones de validación.",
+    "start_time": 1049.28,
+    "end_time": 1066.68
+  },
+  {
+    "slide_index": 23,
+    "image_file": "041_Slide_23_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Opciones de validación Opción Vinculado a entidades Vincule el campo definido por el usuario en un formulario a un objeto del sistema, a una tabla definida por el usuario o a un objeto definido por el usuario  La opción Vinculado a entidades permite configurar un vínculo directo entre un campo definido por el usuario en un formulario y un objeto del sistema, una tabla definida por el usuario o un objeto definido por el usuario. En el ejemplo, hemos vinculado un campo definido por el usuario en el formulario de contrato de servicio con el objeto de factura de clientes.  El vínculo es establecido realmente por el usuario que crea el formulario. En el campo definido por el usuario, se mostrarán al usuario todas las instancias del objeto elegido y podrá seleccionar una para crear el vínculo directo. Por ejemplo, al crear un contrato de servicio para el cliente C40000, el usuario puede seleccionar la factura pagada por dicho cliente por el artículo de servicio. Después de establecer el vínculo, el usuario puede abrir la factura de clientes directamente desde el campo definido por el usuario.  Tenga en cuenta que el usuario debe seleccionar la instancia correcta, ya que el sistema muestra todas las líneas guardadas en la base de datos para el objeto seleccionado.",
+    "start_time": 1066.68,
+    "end_time": 1143.65
+  },
+  {
+    "slide_index": 24,
+    "image_file": "041_Slide_24_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Opción Valores válidos Defina una lista de valores posibles para un campo definido por el usuario El usuario selecciona el valor de la lista predefinida El usuario no puede actualizar ni añadir valores a la lista Opciones de validación  Si se seleccionan valores válidos, puede definir una lista de posibles valores para el campo definido por el usuario. Esta definición se realiza cuando añade el campo definido por el usuario.  En el ejemplo puede ver que existen tres valores posibles para el campo: plata, oro y platino.  Esta lista está disponible en el documento como una lista desplegable, lo que permite al usuario seleccionar uno de los valores.  El usuario no puede actualizar los valores de la lista. Solo los puede actualizar el usuario autorizado desde la ventana Campos definidos por usuario: Gestión .",
+    "start_time": 1143.65,
+    "end_time": 1193.21
+  },
+  {
+    "slide_index": 25,
+    "image_file": "041_Slide_25_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Opción Avanzado Defina reglas de validación para valores introducidos en UDF El usuario solo puede introducir valores que cumplan la regla Opciones de validación  Si se selecciona la opción Avanzada, el sistema permite establecer algunas sencillas reglas de validación para cuando el usuario introduzca datos en el campo definido por el usuario.  Las reglas de validación se aplican a todos los tipos de UDF con la excepción del tipo General.  Los controles de validación varían en función del tipo y estructura de los campos definidos por el usuario. Por ejemplo, para el tipo alfanumérico, las reglas pueden comprobar los caracteres que puede introducir el usuario en el campo, así como el número de caracteres. Para unidades y totales, las reglas pueden comprobar que la cantidad introducida se encuentra en un cierto rango.  Otras reglas permiten validar que el valor introducido sea igual, menor o mayor que un valor introducido cuando añada el campo definido por el usuario.",
+    "start_time": 1193.21,
+    "end_time": 1251.98
+  },
+  {
+    "slide_index": 26,
+    "image_file": "041_Slide_26_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Campo definido por el usuario con valores añadidos definidos por el usuario Herramientas > Valores definidos por el usuario  Con los valores definidos por el usuario, puede vincular una consulta con un campo definido por el usuario  La consulta puede rellenar automáticamente el valor del campo en función del resultado de la misma  La consulta puede establecerse para que sea ejecutada manualmente por el usuario o para que se active automáticamente cuando se introduzca otro campo; por ejemplo, el código de cliente Ejemplo: Pedido de cliente SELECT T0.\"Balance\" FROM OCRD T0 WHERE T0.\"CardCode\" = $[$4.0.0]  Una forma flexible de utilizar un campo definido por el usuario consiste en vincular una consulta con el campo utilizando valores definidos por el usuario.  La consulta puede completar automáticamente el valor del campo en base al resultado de la consulta.  En el ejemplo mostrado, se añade una consulta a un campo definido por el usuario en la cabecera de un pedido de cliente. La consulta extrae el saldo de cuenta del cliente de la tabla de datos maestros del interlocutor comercial OCRD. La consulta se ejecuta automáticamente cuando el usuario selecciona el código de cliente cuando crea primero el pedido de cliente.  La funcionalidad de valores definidos por el usuario se trata en el curso complementario Valores definidos por el usuario.",
+    "start_time": 1251.98,
+    "end_time": 1335.6
+  },
+  {
+    "slide_index": 27,
+    "image_file": "041_Slide_27_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Campos por defecto y obligatorios  El valor por defecto se puede establecer para cualquier campo definido por el usuario  El valor por defecto aparecerá en todas las instancias nuevas del objeto  Opción para establecer el campo definido por el usuario como obligatorio. Si el campo es obligatorio, el usuario no podrá añadir un registro sin introducir el valor del campo  Para establecer el campo como obligatorio, inicialmente tiene que proporcionar un valor por defecto, aunque puede retirar el valor por defecto después de añadir el campo definido por el usuario a la base de datos.  Puede configurar, si desea, un valor por defecto para cualquier campo definido por el usuario.  En el ejemplo se seleccionó una hora por defecto de la lista de valores válidos.  El valor por defecto definido para un campo aparecerá en todas las instancias nuevas del objeto.  Puede establecer opcionalmente que el campo definido por el usuario sea obligatorio. El usuario no podrá añadir un nuevo registro sin introducir datos en el campo obligatorio.  Cuando establece un campo definido por el usuario como obligatorio, debe proporcionar un valor por defecto al inicio para conservar la integridad de la base de datos. Después de añadir el campo definido por el usuario, puede retirar el valor por defecto.  Si actualiza un campo definido por el usuario como obligatorio y el campo ya tiene un valor por defecto, el sistema le pedirá que decida si el valor por defecto debe introducirse en todas las instancias existentes del objeto o si solo debe introducirse en las instancias nuevas.",
+    "start_time": 1335.6,
+    "end_time": 1430.06
+  },
+  {
+    "slide_index": 28,
+    "image_file": "041_Slide_28_10_Impl_14_CustomTools_UserDefinedFields_ES.webp",
+    "script_text": "Campos definidos por el usuario: Puntos clave Puntos clave de este tema: Puede añadir campos definidos por el usuario (UDF) a la mayoría de los objetos Los campos definidos por el usuario se añaden a la tabla del objeto en la base de datos y tienen el prefijo “U_” Los campos pueden añadirse a documentos de marketing en la cabecera (título) y a nivel de línea Los campos definidos por el usuario a nivel de cabecera aparecen inicialmente en una ventana lateral separada. Utilice el menú Ver para abrir esta ventana lateral. Puede mover los campos de la ventana lateral al área principal del documento utilizando la función Editar IU de formulario y asignarlos a usuarios en un modelo de configuración de IU El valor introducido en un campo definido por el usuario se transfiere al documento destino mediante Copiar a /Copiar de Los UDF pueden tener varios tipos y estructuras. La estructura seleccionada define el tipo de datos que puede introducir en él. Puede añadir una lista de valores válidos a un UDF, vincularlo a un objeto del sistema, definir reglas para la entrada de datos, establecer un valor por defecto o hacer que sea obligatorio.  Estos son algunos puntos que hay que destacar sobre las tablas y los campos definidos por el usuario:  Puede añadir campos definidos por el usuario a la mayoría de los objetos.  Los campos definidos por el usuario se añaden a la tabla para el objeto seleccionado en la base de datos y tienen el prefijo “U_”.  Para documentos de marketing, puede añadir campos al área de la cabecera (título) o a las líneas.  Los campos definidos por el usuario añadidos al nivel de cabecera de un documento de marketing aparecen inicialmente en una ventana separada en el lateral. Utilice el menú Ver para abrirla.  Puede mover los campos definidos por el usuario de la ventana lateral al área principal del documento utilizando la función Editar IU de formulario. A continuación, puede hacer que el documento editado se encuentre disponible para los usuarios en un modelo de configuración de la IU.  El valor introducido en un campo definido por el usuario se transfiere al documento destino mediante la función Copiar a /Copiar de.  Los campos definidos por el usuario pueden tener varios tipos y estructuras, tales como alfanumérico y regular. La estructura seleccionada afecta a la longitud máxima del campo y al tipo de datos que puede introducir en él.  Puede añadir opcionalmente una lista de valores válidos a un UDF, vincularlo a un objeto del sistema, definir reglas para la validación de la entrada de datos en el campo, establecer un valor por defecto o hacer que sea obligatorio. También puede vincular el campo definido por el usuario a una tabla definida por el usuario o a un objeto definido por el usuario.",
+    "start_time": 1430.06,
+    "end_time": 1597.73
+  }
+]

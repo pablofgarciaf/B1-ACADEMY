@@ -1631,7 +1631,7 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryIcon": "✏️",
     "categoryOrder": 23,
     "summary": "PRACTICE: SOLUTIONS FOR QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business...",
-    "totalSlides": 0,
+    "totalSlides": 17,
     "pdfPath": "/Capacitacion SAP/CSI08_Query Practice_Solutions/CSI08_Query Practice_Solutions.pdf",
     "mdPath": "/Capacitacion SAP/CSI08_Query Practice_Solutions/CSI08_Query Practice_Solutions_slides.md",
     "imagesPath": "/Capacitacion SAP/CSI08_Query Practice_Solutions/Imagenes_Diapositivas"
@@ -1645,7 +1645,7 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryIcon": "✏️",
     "categoryOrder": 23,
     "summary": "PRACTICE: QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business One. You will...",
-    "totalSlides": 0,
+    "totalSlides": 5,
     "pdfPath": "/Capacitacion SAP/CSI08_Query_Practice/CSI08_Query_Practice.pdf",
     "mdPath": "/Capacitacion SAP/CSI08_Query_Practice/CSI08_Query_Practice_slides.md",
     "imagesPath": "/Capacitacion SAP/CSI08_Query_Practice/Imagenes_Diapositivas"
@@ -1659,7 +1659,7 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryIcon": "✏️",
     "categoryOrder": 23,
     "summary": ", desea empezar a trabajar en el sistema. Puesto que trabajará en ventas, necesita un cockpit orientado a las ventas. ¿Cómo puede asignarse una plantilla de cockpit de ventas a sí mismo? TAREA 2 Bill...",
-    "totalSlides": 0,
+    "totalSlides": 4,
     "pdfPath": "/Capacitacion SAP/CSL01_Introduction_ES/CSL01_Introduction_ES.pdf",
     "mdPath": "/Capacitacion SAP/CSL01_Introduction_ES/CSL01_Introduction_ES_slides.md",
     "imagesPath": "/Capacitacion SAP/CSL01_Introduction_ES/Imagenes_Diapositivas"
@@ -1673,7 +1673,7 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryIcon": "✏️",
     "categoryOrder": 23,
     "summary": "CASO PRÁCTICO: INTRODUCCIÓN PÚBLICO 2 Soluciones sugeridas para el caso práctico Introducción Nota importante: al comparar su trabajo con las capturas de pantalla que se proporcionan aquí, hágalo solo...",
-    "totalSlides": 0,
+    "totalSlides": 21,
     "pdfPath": "/Capacitacion SAP/CSL01_Introduction_Solution_ES/CSL01_Introduction_Solution_ES.pdf",
     "mdPath": "/Capacitacion SAP/CSL01_Introduction_Solution_ES/CSL01_Introduction_Solution_ES_slides.md",
     "imagesPath": "/Capacitacion SAP/CSL01_Introduction_Solution_ES/Imagenes_Diapositivas"
@@ -1687,7 +1687,7 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryIcon": "✏️",
     "categoryOrder": 23,
     "summary": "CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 INTRODUCCIÓN En este caso práctico, realizará las tareas siguientes: • Crear pedidos • Introducir una entrada de mercancías • Gestionar entregas p...",
-    "totalSlides": 0,
+    "totalSlides": 4,
     "pdfPath": "/Capacitacion SAP/CSL02_Procurement_Process_ES/CSL02_Procurement_Process_ES.pdf",
     "mdPath": "/Capacitacion SAP/CSL02_Procurement_Process_ES/CSL02_Procurement_Process_ES_slides.md",
     "imagesPath": "/Capacitacion SAP/CSL02_Procurement_Process_ES/Imagenes_Diapositivas"
@@ -1701,7 +1701,7 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryIcon": "✏️",
     "categoryOrder": 23,
     "summary": "SOLUCIÓN DEL CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 Soluciones sugeridas para el caso práctico de proceso de aprovisionamiento Nota importante: al comparar su trabajo con las capturas d...",
-    "totalSlides": 0,
+    "totalSlides": 24,
     "pdfPath": "/Capacitacion SAP/CSL02_Procurement_Process_Solution_ES/CSL02_Procurement_Process_Solution_ES.pdf",
     "mdPath": "/Capacitacion SAP/CSL02_Procurement_Process_Solution_ES/CSL02_Procurement_Process_Solution_ES_slides.md",
     "imagesPath": "/Capacitacion SAP/CSL02_Procurement_Process_Solution_ES/Imagenes_Diapositivas"
@@ -3466,7 +3466,7 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryIcon": "✏️",
         "categoryOrder": 23,
         "summary": "PRACTICE: SOLUTIONS FOR QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business...",
-        "totalSlides": 0,
+        "totalSlides": 17,
         "pdfPath": "/Capacitacion SAP/CSI08_Query Practice_Solutions/CSI08_Query Practice_Solutions.pdf",
         "mdPath": "/Capacitacion SAP/CSI08_Query Practice_Solutions/CSI08_Query Practice_Solutions_slides.md",
         "imagesPath": "/Capacitacion SAP/CSI08_Query Practice_Solutions/Imagenes_Diapositivas"
@@ -3480,7 +3480,7 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryIcon": "✏️",
         "categoryOrder": 23,
         "summary": "PRACTICE: QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business One. You will...",
-        "totalSlides": 0,
+        "totalSlides": 5,
         "pdfPath": "/Capacitacion SAP/CSI08_Query_Practice/CSI08_Query_Practice.pdf",
         "mdPath": "/Capacitacion SAP/CSI08_Query_Practice/CSI08_Query_Practice_slides.md",
         "imagesPath": "/Capacitacion SAP/CSI08_Query_Practice/Imagenes_Diapositivas"
@@ -3494,7 +3494,7 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryIcon": "✏️",
         "categoryOrder": 23,
         "summary": ", desea empezar a trabajar en el sistema. Puesto que trabajará en ventas, necesita un cockpit orientado a las ventas. ¿Cómo puede asignarse una plantilla de cockpit de ventas a sí mismo? TAREA 2 Bill...",
-        "totalSlides": 0,
+        "totalSlides": 4,
         "pdfPath": "/Capacitacion SAP/CSL01_Introduction_ES/CSL01_Introduction_ES.pdf",
         "mdPath": "/Capacitacion SAP/CSL01_Introduction_ES/CSL01_Introduction_ES_slides.md",
         "imagesPath": "/Capacitacion SAP/CSL01_Introduction_ES/Imagenes_Diapositivas"
@@ -3508,7 +3508,7 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryIcon": "✏️",
         "categoryOrder": 23,
         "summary": "CASO PRÁCTICO: INTRODUCCIÓN PÚBLICO 2 Soluciones sugeridas para el caso práctico Introducción Nota importante: al comparar su trabajo con las capturas de pantalla que se proporcionan aquí, hágalo solo...",
-        "totalSlides": 0,
+        "totalSlides": 21,
         "pdfPath": "/Capacitacion SAP/CSL01_Introduction_Solution_ES/CSL01_Introduction_Solution_ES.pdf",
         "mdPath": "/Capacitacion SAP/CSL01_Introduction_Solution_ES/CSL01_Introduction_Solution_ES_slides.md",
         "imagesPath": "/Capacitacion SAP/CSL01_Introduction_Solution_ES/Imagenes_Diapositivas"
@@ -3522,7 +3522,7 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryIcon": "✏️",
         "categoryOrder": 23,
         "summary": "CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 INTRODUCCIÓN En este caso práctico, realizará las tareas siguientes: • Crear pedidos • Introducir una entrada de mercancías • Gestionar entregas p...",
-        "totalSlides": 0,
+        "totalSlides": 4,
         "pdfPath": "/Capacitacion SAP/CSL02_Procurement_Process_ES/CSL02_Procurement_Process_ES.pdf",
         "mdPath": "/Capacitacion SAP/CSL02_Procurement_Process_ES/CSL02_Procurement_Process_ES_slides.md",
         "imagesPath": "/Capacitacion SAP/CSL02_Procurement_Process_ES/Imagenes_Diapositivas"
@@ -3536,7 +3536,7 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryIcon": "✏️",
         "categoryOrder": 23,
         "summary": "SOLUCIÓN DEL CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 Soluciones sugeridas para el caso práctico de proceso de aprovisionamiento Nota importante: al comparar su trabajo con las capturas d...",
-        "totalSlides": 0,
+        "totalSlides": 24,
         "pdfPath": "/Capacitacion SAP/CSL02_Procurement_Process_Solution_ES/CSL02_Procurement_Process_Solution_ES.pdf",
         "mdPath": "/Capacitacion SAP/CSL02_Procurement_Process_Solution_ES/CSL02_Procurement_Process_Solution_ES_slides.md",
         "imagesPath": "/Capacitacion SAP/CSL02_Procurement_Process_Solution_ES/Imagenes_Diapositivas"

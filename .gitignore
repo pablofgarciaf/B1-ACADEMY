@@ -9,6 +9,7 @@
 
 # next.js
 /.next/
+/.next-dev/
 /out/
 
 # production
@@ -35,3 +36,9 @@ yarn-error.log*
 next-env.d.ts
 
 scratch/node_modules/
+
+# large generated video binaries (exclude 3.6GB from git & Vercel deployment payload)
+public/Capacitacion SAP/*/clase_video.mp4
+!public/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/clase_video.mp4
+!public/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/clase_video.mp4
+!public/Capacitacion SAP/10_Overview_13_MDDoc_ES/clase_video.mp4

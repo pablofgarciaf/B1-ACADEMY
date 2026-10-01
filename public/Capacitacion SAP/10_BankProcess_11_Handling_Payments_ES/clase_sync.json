@@ -1,0 +1,121 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "003_Slide_01_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre Gestión de Bancos y Procesamiento de Pagos en SAP Business One. La tesorería y el flujo de caja representan el pulso financiero de cualquier organización. En esta lección aprenderemos a dominar el ciclo completo de cobros a clientes, pagos a proveedores, gestión de medios de pago y depósitos bancarios.",
+    "start_time": 0.0,
+    "end_time": 22.13
+  },
+  {
+    "slide_index": 2,
+    "image_file": "003_Slide_02_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Nuestro objetivo docente es profundizar en la operatoria diaria de la tesorería. Veremos cómo registrar pagos manuales, cómo configurar y utilizar los cuatro medios de pago disponibles, cómo gestionar las cuentas transitorias de compensación y cómo realizar depósitos y anulaciones manteniendo una trazabilidad contable impecable.",
+    "start_time": 22.13,
+    "end_time": 42.91
+  },
+  {
+    "slide_index": 3,
+    "image_file": "003_Slide_03_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Analicemos el circuito tradicional de cobro: la empresa emite facturas de venta que generan cuentas por cobrar. Cuando el cliente realiza su pago, ingresamos a Pagos Recibidos en el módulo de Gestión de Bancos. En ese instante, el sistema concilia la factura abierta, cancela la deuda del cliente en el módulo comercial y actualiza la tesorería de inmediato.",
+    "start_time": 42.91,
+    "end_time": 66.72
+  },
+  {
+    "slide_index": 4,
+    "image_file": "003_Slide_04_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "En SAP Business One disponemos de cuatro medios de pago. Tres de ellos utilizan cuentas puente de compensación: el efectivo se almacena contablemente en la cuenta de caja chica; los cheques recibidos van al cajón de cheques en cartera; y las tarjetas de crédito viajan a una cuenta transitoria por cobrar al banco emisor. Estas cuentas intermedias garantizan que el saldo bancario real no se altere hasta que los fondos ingresen efectivamente a la cuenta bancaria.",
+    "start_time": 66.72,
+    "end_time": 95.35
+  },
+  {
+    "slide_index": 5,
+    "image_file": "003_Slide_05_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "El cuarto medio de pago es la Transferencia Bancaria. A diferencia de los cheques o el efectivo, una transferencia representa dinero en firme. Por esta razón, cuando registramos un cobro por transferencia, SAP Business One carga directamente la cuenta de mayor del banco de la empresa, sin requerir una cuenta transitoria ni un depósito posterior.",
+    "start_time": 95.35,
+    "end_time": 118.2
+  },
+  {
+    "slide_index": 6,
+    "image_file": "003_Slide_06_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "La interfaz de Pagos en SAP Business One está diseñada con gran ergonomía. En la cabecera seleccionamos el Socio de Negocio y las fechas de contabilización. En el cuerpo central visualizamos todas las transacciones abiertas que el cliente o proveedor tiene pendientes. Y en el pie de la ventana encontramos los campos de redondeo, descuentos aplicados y el total a liquidar.",
+    "start_time": 118.2,
+    "end_time": 143.06
+  },
+  {
+    "slide_index": 7,
+    "image_file": "003_Slide_07_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "En la tabla central seleccionamos mediante casillas de verificación las facturas específicas que el cliente está cancelando. El sistema permite pagos totales o parciales simplemente editando la columna Importe del Pago. Al marcar varias facturas, SAP calcula la suma acumulada de forma instantánea.",
+    "start_time": 143.06,
+    "end_time": 163.01
+  },
+  {
+    "slide_index": 8,
+    "image_file": "003_Slide_08_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Un detalle visual de gran valor para la cobranza es el asterisco que aparece junto a la fecha de vencimiento. Cuando una factura presenta un asterisco, SAP Business One nos advierte que el documento ya superó su fecha límite de pago. Esto permite al gestor de cobros priorizar documentos morosos o aplicar condiciones de recargo según la política corporativa.",
+    "start_time": 163.01,
+    "end_time": 185.69
+  },
+  {
+    "slide_index": 9,
+    "image_file": "003_Slide_09_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "La columna Clase de Documento nos muestra el origen de cada registro. Veremos las siglas IN para facturas de clientes, CN para notas de crédito o abonos, y JE para asientos manuales directos. La gran ventaja es que podemos seleccionar facturas y abonos al mismo tiempo para cruzarlos y pagar únicamente la diferencia neta.",
+    "start_time": 185.69,
+    "end_time": 207.62
+  },
+  {
+    "slide_index": 10,
+    "image_file": "003_Slide_10_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Mediante la opción de Parametrizaciones de Formulario, el usuario puede personalizar las columnas visibles en la grilla. Es muy recomendable activar el Número de Referencia del Interlocutor Comercial para visualizar el número de factura fiscal o recibo que maneja el cliente en su propio sistema, facilitando la conciliación rápida de partidas.",
+    "start_time": 207.62,
+    "end_time": 228.62
+  },
+  {
+    "slide_index": 11,
+    "image_file": "003_Slide_11_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Una vez definido el importe total, abrimos la ventana de Medios de Pago haciendo clic en el icono de la bolsa de dinero o pulsando Control más Y. Aquí podemos desglosar el pago combinando diferentes medios: por ejemplo, cobrar una parte en cheque y otra parte en transferencia bancaria, cuadrando el recibo al centavo.",
+    "start_time": 228.62,
+    "end_time": 248.74
+  },
+  {
+    "slide_index": 12,
+    "image_file": "003_Slide_12_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Cuando acumulamos cheques o billetes en caja y los llevamos a la sucursal bancaria, ejecutamos la función de Depósitos. El depósito traslada el valor contable desde la cuenta puente de caja o cartera de cheques hacia la cuenta corriente del banco, cerrando el ciclo de disponibilidad financiera.",
+    "start_time": 248.74,
+    "end_time": 267.22
+  },
+  {
+    "slide_index": 13,
+    "image_file": "003_Slide_13_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Analicemos el asiento del depósito de cheques: el sistema abona la cuenta de cheques en cartera para dar de baja el título valor custodiado, y carga la cuenta de mayor del banco comercial. De esta forma, el balance general refleja fielmente que el dinero ya se encuentra depositado y listo para su conciliación bancaria extracto a extracto.",
+    "start_time": 267.22,
+    "end_time": 288.62
+  },
+  {
+    "slide_index": 14,
+    "image_file": "003_Slide_14_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "En el mundo real ocurren errores humanos o rechazos bancarios. SAP Business One cuenta con un potente mecanismo de anulación: si cancelamos un pago o un depósito, el sistema genera automáticamente el contraasiento de reversión y reabre de inmediato las facturas originales en estado pendiente, protegiendo la integridad de la auditoría.",
+    "start_time": 288.62,
+    "end_time": 310.25
+  },
+  {
+    "slide_index": 15,
+    "image_file": "003_Slide_15_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "El proceso de Pagos Efectuados a proveedores es el espejo contable de los cobros. Al emitir un pago a un acreedor, cargamos la cuenta del proveedor reduciendo la obligación por pagar y abonamos la cuenta bancaria de la empresa desde la cual emitimos la transferencia o el cheque corporativo.",
+    "start_time": 310.25,
+    "end_time": 328.3
+  },
+  {
+    "slide_index": 16,
+    "image_file": "003_Slide_16_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "Como puntos clave de control de tesorería: en los cobros por efectivo, cheques y tarjetas utilizamos siempre cuentas transitorias de compensación para reflejar la custodia física del valor hasta el momento del depósito formal en la entidad bancaria.",
+    "start_time": 328.3,
+    "end_time": 343.46
+  },
+  {
+    "slide_index": 17,
+    "image_file": "003_Slide_17_10_BankProcess_11_Handling_Payments_ES.webp",
+    "script_text": "En cambio, para pagos efectuados y transferencias bancarias directas, el impacto en la cuenta de mayor del banco es inmediato. Dominar esta arquitectura bancaria te permitirá asesorar a cualquier empresa en la gestión blindada de su tesorería y flujo de fondos.",
+    "start_time": 343.46,
+    "end_time": 360.17
+  }
+]

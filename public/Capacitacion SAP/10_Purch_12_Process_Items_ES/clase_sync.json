@@ -1,0 +1,177 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "099_Slide_01_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre Purch 12 Process Items en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Compras: Compra de artículos Le damos la bienvenida al tema Compra de artículos.",
+    "start_time": 0.0,
+    "end_time": 18.7
+  },
+  {
+    "slide_index": 2,
+    "image_file": "099_Slide_02_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "En este tema, llevaremos a cabo los pasos básicos para la compra de artículos. A medida que avancemos en el proceso, explicaremos las consecuencias de cada paso del proceso en el inventario y la contabilidad. 2 Al finalizar este tema, podrá: Llevar a cabo los pasos básicos del proceso para la compra de artículos Explicar las consecuencias que tiene cada paso en el inventario y en la contabilidad Objetivos",
+    "start_time": 18.7,
+    "end_time": 45.41
+  },
+  {
+    "slide_index": 3,
+    "image_file": "099_Slide_03_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "En nuestra situación de ejemplo, le solicitamos que imagine que su compañía compra artículos para la reventa. Conserve un nivel mínimo de inventario para algunos de estos artículos, por ejemplo impresoras. Cuando el stock es bajo en estos artículos, vuelva a solicitar los artículos utilizando un proceso de aprovisionamiento en 4 pasos: pedidos, entrada de mercancías de pedido, facturas de proveedores y pagos efectuados al proveedor. 3 3 Escenario empresarial Su compañía compra artículos para la reventa. Conserve un nivel mínimo de inventario para algunos de los artículos. Cuando el stock es bajo, vuelva a solicitar los artículos utilizando un proceso de aprovisionamiento en 4 pasos: Pedidos Entrada de mercancías de pedido Facturas de proveedores Pagos efectuados",
+    "start_time": 45.41,
+    "end_time": 94.75
+  },
+  {
+    "slide_index": 4,
+    "image_file": "099_Slide_04_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Observemos los pasos del proceso en nuestra situación de ejemplo con un ejemplo concreto. Un inventario mínimo de 15 impresoras es necesario para cumplir las órdenes de los clientes regulares de forma rápida. Cuando el stock es demasiado bajo, los pedidos se utilizan para comenzar el proceso de compra. Cuando el proveedor entrega las impresoras, se crea una entrada de mercancías de pedido. Luego de que los artículos se inspeccionen, se puede crear una factura de proveedor. La factura de proveedor activa un pago efectuado al proveedor. 4 Un inventario mínimo de 15 impresoras es necesario para cumplir las órdenes de los clientes regulares. Cuando el stock es demasiado bajo, los pedidos se utilizan para comenzar el proceso de compra. Cuando el proveedor entrega las impresoras, se crea una entrada de mercancías de pedido. Luego de que los artículos se inspeccionen, se puede crear una factura de proveedor. La factura de proveedor activa un pago efectuado al proveedor. Resumen del proceso Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 94.75,
+    "end_time": 163.7
+  },
+  {
+    "slide_index": 5,
+    "image_file": "099_Slide_05_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Ahora observemos detalladamente el primer paso en el proceso de compra: el pedido. Un pedido es un documento comercial que emite un comprador para un vendedor especificando los artículos o servicios que el vendedor proveerá al comprador. El pedido incluye las cantidades y precios acordados para los productos enumerados. ¿Cómo se usa la información almacenada en el pedido? Normalmente, cuando se reciben mercancías, los pedidos se comparan con los documentos de embalaje y las facturas de proveedor antes de que se efectúe el pago de las facturas. En SAP Business One, este proceso se realiza de forma automática: el pedido se puede vincular a la entrada de mercancías de pedido (que muestra información del documento de embalaje), que luego se puede vincular a la factura de proveedores (que contiene la información de la factura del proveedor). Esta automatización permite que la información sea consistente y pueda retenerse a lo largo del proceso. Nunca debe introducir datos dos veces. Cuando un pedido se añade a SAP Business One, no se produce ningún cambio de contabilidad basado en valores. Sin embargo, las cantidades de los pedidos se enumeran en la gestión de stocks. Puede visualizar los artículos y las cantidades pedidas en diversos informes y ventanas, como el informe de estado de inventario y la ventana de datos maestros de artículo. Obviamente, tener acceso en tiempo real a esta información puede desempeñar un papel clave en la optimización de los procesos empresariales de gestión de stocks y de compra de una empresa. 5 PO representa un documento comercial entre el comprador y el vendedor Contiene las cantidades y precios acordados Los datos del PO se copian más tarde a documentos de forma automática No ocurren cambios contables basados en el valor Las cantidades del pedido aparecen en los informes de inventario Pedido (PO) Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 163.7,
+    "end_time": 281.74
+  },
+  {
+    "slide_index": 6,
+    "image_file": "099_Slide_06_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Por lo tanto, en nuestra situación de ejemplo para nuestro proceso de compra: Actualmente, tenemos 10 impresoras en stock. Creamos un pedido para comprar 5 más a nuestro proveedor. Después de grabar el pedido, aparece la cantidad de cinco en los informes de inventario como se solicitaron. Debido a que tenemos 10 impresoras en stock y 5 solicitadas, 15 estarán disponibles para nuestros clientes, aunque solamente 10 estarán físicamente en stock. 6 Hay 10 impresoras en stock. Se realiza un pedido de 5 impresoras más al proveedor Aparecen cinco en los informes de inventario como se solicitaron 15 estarán disponibles. Solamente 10 estarán físicamente en stock. Efecto de un pedido Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 281.74,
+    "end_time": 333.58
+  },
+  {
+    "slide_index": 7,
+    "image_file": "099_Slide_07_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Se especifican dos direcciones importantes en el pedido, la dirección de envío y la de pago, por eso es importante comprender cómo se usan en el proceso de pago. La dirección de envío indica la dirección a la que desea que el proveedor le envíe los productos que compró. La dirección de envío se puede usar por defecto en dos lugares, dependiendo de sus parametrizaciones. Para los documentos de compra tipo artículo, puede definir el sistema para que por defecto aparezca la dirección de la empresa o la dirección del almacén en la primera línea del documento. Para definir por defecto la dirección del almacén, debe marcar la casilla “usar dirección de almacén” en Parametrizaciones de documento. Si la casilla no está marcada, la dirección por defecto será la dirección de la empresa. Para las líneas de servicio, no se selecciona almacén. Por lo tanto, la dirección de envío de la empresa siempre será por defecto algún documento de compra del tipo servicio. La otra dirección importante en el pedido es la dirección de pago. La dirección de pago se muestra debajo de la ficha Logística y aparece desde el registro de datos maestros de interlocutor comercial del proveedor. Asegúrese de que la dirección de pago es la correcta para una compra determinada, ya que la información se imprime en el cheque cuando se emite el pago. Desde luego, ambas direcciones pueden sobrescribirse dentro de un documento de compra si fuera necesario. 7 Proveedor Dirección de entrega Dirección de pago Pedido Ficha Logística Empresa Almacén Direcciones del pedido",
+    "start_time": 333.58,
+    "end_time": 428.21
+  },
+  {
+    "slide_index": 8,
+    "image_file": "099_Slide_08_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Cuando recibe mercancías de un proveedor crea una entrada de mercancías de pedido. En la mayoría de las empresas, la persona en el almacén o en la oficina responsable de recibir entregas o envíos realiza la entrada de mercancías de pedido. Si una entrada de mercancías de pedido se utiliza al comprar servicios, la persona para quién se prestan los servicios generalmente emite el documento. Se puede crear una entrada de mercancías de pedido al seleccionar directamente el nombre del documento en el menú del módulo, o se puede crear a partir de un pedido existente. Si basa la entrada de mercancías de pedido en un pedido existente, puede copiar todos los datos contenidos en el pedido o usar el asistente de creación de documentos para seleccionar los datos que desea copiar de uno o más pedidos existentes. Aún si copia todos los datos de un pedido existente, puede modificar las cantidades y los precios, como también las fechas, proveedor e información del artículo, antes de contabilizar (añadir) el documento. Independientemente de cómo cree la entrada de mercancías de pedido, no debería haber diferencias entre los datos de la entrada de mercancías de pedido y el documento de expedición del proveedor (documento de embalaje) enviado con los artículos, porque los detalles en el documento del proveedor están vinculados legalmente. Si hay diferencias entre los datos del pedido de base y el documento de expedición del proveedor, debe solucionarlo con el proveedor antes de contabilizar la entrada de mercancías de pedido. Es importante que las cantidades y los precios de la entrada de mercancías de pedido coincidan con el documento de expedición del proveedor. A diferencia de un pedido, una entrada de mercancías de pedido no se puede modificar una vez añadida a SAP Business One porque activa transacciones de inventario y (cuando se utiliza un inventario permanente) de contabilidad. Su única opción para arreglar una entrada de mercancías de pedido incorrecta es cancelar el documento y crear una entrada de mercancías de pedido nueva. 8 Crear una entrada de mercancías de pedido al recibir mercancías Crear directamente o a partir de un pedido existente Hacer coincidir los datos de la entrada de mercancías de pedido con los documentos de envío del proveedor La entrada de mercancías de pedido activa las transacciones de inventario y contabilidad Entrada de mercancías de pedido Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 428.21,
+    "end_time": 573.96
+  },
+  {
+    "slide_index": 9,
+    "image_file": "099_Slide_09_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Ahora observemos el efecto de la entrada de mercancías de pedido en el flujo del proceso: Actualmente hay 10 impresoras en stock. Se realizó un pedido de 5 impresoras más al proveedor Nuestro proveedor acaba de entregar 5 Después de introducir la entrada de mercancías de pedido, hay 15 en stock Cuando se creó nuestro pedido, aparecieron 5 como solicitadas. Ahora la cantidad solicitada volvió a 0. 9 Actualmente hay 10 impresoras en stock. Se realizó un pedido de 5 impresoras más al proveedor El proveedor entrega 5 Después de recibir las mercancías, hay 15 en stock Entrada de mercancías de pedido Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 573.96,
+    "end_time": 618.29
+  },
+  {
+    "slide_index": 10,
+    "image_file": "099_Slide_10_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Documentos de compra creados en cada uno. Por lo general, un pedido se convierte en un pedido de entrega de mercancías que registra la entrega del proveedor y finalmente en una factura de proveedores cuando se recibe la factura del proveedor. 10 Copiar a Copiar de Pedido de compra Entrada de mercancías de pedido Factura de proveedores",
+    "start_time": 618.29,
+    "end_time": 639.5
+  },
+  {
+    "slide_index": 11,
+    "image_file": "099_Slide_11_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Puede copiar rápidamente un documento al siguiente documento de la secuencia mediante el pulsador Copiar a. El documento original se llama documento base; el documento que crea desde él se llama documento de destino. Crear un documento tomando otro como base ahorra tiempo y esfuerzo. También reduce la posibilidad de errores. Cuando se usa la función Copiar, se copian todos los artículos al nuevo documento. No hay opciones disponibles acerca de cómo se copian los artículos. Sin embargo, puede eliminar artículos y ajustar cantidades después de copiar. 11 Copiar a Abra el documento grabado para copiar Todos los artículos copiados a un documento nuevo No hay opciones disponibles acerca de cómo se copian los artículos Sin embargo, puede eliminar artículos y ajustar cantidades después de copiar Copiar a Copiar de Pedido de compra Entrada de mercancías de pedido Factura de proveedores",
+    "start_time": 639.5,
+    "end_time": 695.45
+  },
+  {
+    "slide_index": 12,
+    "image_file": "099_Slide_12_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "El otro método para copiar un documento es Copiar de. El pulsador Copiar de le permite seleccionar un documento base o documentos a partir de los cuales crear un nuevo documento. Al hacer clic en Copiar de se inicia el asistente de creación de documentos. Para usar la función Copiar de, abra un nuevo documento e introduzca un interlocutor comercial. Después de elegir el pulsador Copiar de, puede elegir uno o varios documentos de una lista. El asistente de creación de documentos le permite personalizar las líneas y cantidades que se copian en el documento de destino, así también como seleccionar el tipo de cambio que se utilizará. Independientemente del método que utilice Copiar a o Copiar de, al grabar un documento de destino que contiene todo lo referente a artículos de documentos base y cantidades, el documento base se cerrará y no podrá copiarse nuevamente en otro documento. 12 Copiar de Introduzca un interlocutor comercial en un documento nuevo Elija uno o varios documentos de la lista El asistente de creación de documentos le permite: personalizar las líneas copiadas seleccionar el tipo de cambio Copiar a Copiar de Copiar a Abra el documento grabado para copiar Todos los artículos copiados a un documento nuevo No hay opciones disponibles acerca de cómo se copian los artículos Sin embargo, puede eliminar artículos y ajustar cantidades después de copiar Pedido de compra Entrada de mercancías de pedido Factura de proveedores",
+    "start_time": 695.45,
+    "end_time": 783.38
+  },
+  {
+    "slide_index": 13,
+    "image_file": "099_Slide_13_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "La Lista de artículos pendientes es un excelente informe para supervisar y gestionar los documentos de marketing pendientes, como pedidos pendientes, entrada de mercancías de pedidos pendientes, entre otros. Solo seleccione el tipo de documento que desea ver. No solo puede seleccionar documentos de compra y venta pendientes, sino también órdenes de producción pendientes, solicitudes de traslado de inventario y documentos de recuento de inventario. Esto. A menudo, el primer paso para crear un documento a partir de otro es localizar el informe, que puede ser muy útil para buscar documentos para procesar el documento base que desea utilizar. Por ejemplo, es posible que las mercancías se entreguen a un almacén y se necesite introducir una entrada de mercancías de pedido. ¿Cómo encuentra el pedido relevante? La lista de artículos pendientes puede utilizarse para localizar documentos rápidamente. Puede entonces seleccionar el pedido relevante, por ejemplo, y crear una entrada de mercancías de pedido con un solo clic en el pulsador Copiar a. Cuando se crea un documento a partir de otro de esta manera, toda la información relevante se copia del documento base al nuevo documento, lo que disminuye tiempo de introducción de datos y la posibilidad de errores. 13 Lista de partidas abiertas: Pedidos pendientes Entrada de mercancías de pedidos pendientes Facturas de acreedor pendientes … Lista de partidas abiertas",
+    "start_time": 783.38,
+    "end_time": 874.13
+  },
+  {
+    "slide_index": 14,
+    "image_file": "099_Slide_14_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Una vez creada la entrada de mercancías de pedido en el sistema, se presentan las siguientes consecuencias: Los artículos que se han entregado parcialmente o en su totalidad aparecen en gris claro en el documento de pedido. El pedido (documento de base) no puede modificarse una vez que el documento se haya copiado por completo. Cuando se reciben todos los artículos, el estado del pedido cambia a Cerrado. Si lleva un inventario permanente, la entrada de mercancías de pedido crea un asiento para incrementar el valor del inventario. El sistema actualiza las cantidades de stock en el inventario y el coste unitario se actualiza de acuerdo con los precios de compra que se usaron en el documento para los artículos controlados por los métodos de media variable o valoración FIFO. 14 Efectos de la entrada de mercancías de pedido Pedido Entrada de mercancías de pedido Factura de proveedores Los artículos se desactivan cuando se copian. El pedido no se puede modificar una vez copiado por completo Cuando se reciben todos los artículos recibidos, se cierra el pedido + + En una empresa de inventario permanente, la entrada de mercancías contabiliza un asiento. La cantidad de stock se actualiza. El precio de compra se actualiza para artículos FIFO y de medida variable.",
+    "start_time": 874.13,
+    "end_time": 952.25
+  },
+  {
+    "slide_index": 15,
+    "image_file": "099_Slide_15_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Puede utilizar el informe Estado de inventario para analizar la situación de inventario de uno o más artículos seleccionados. También puede visualizar el estado de inventario en la ficha Datos de inventario del registro maestro de artículo. La columna En stock muestra el nivel actual de stock del artículo. La columna Comprometido muestra el artículo en stock que está reservado para los clientes y para uso interno. El stock reservado para uso interno es la cantidad de artículos que se van a utilizar para generar un producto terminado, esta cantidad se basa en las listas de materiales de las órdenes de producción existentes. La columna Solicitado muestra la cantidad solicitada por proveedores externos más la cantidad que se está produciendo y que entrará en el almacén en una fecha determinada. La cantidad disponible de un artículo representa La cantidad en stock Comprometida + Solicitada. Como puede verse en el gráfico, un pedido aumenta la cantidad solicitada y, por lo tanto, la cantidad disponible para el cliente. Cuando se crea una entrada de mercancías de pedido con referencia al pedido, aumenta la cantidad en stock y reduce la cantidad solicitada. Siempre y cuando una factura de proveedores haga referencia a un pedido, no afectará a los niveles de stock. 15 Informe modelo: Estado de almacén En stock Compro metido + Solici tado = Disponible Transacción Pedido de compra EM de pedido Fact. de proveedores para EM de pedido + + + + Indica un aumento en la cantidad Indica una disminución en la cantidad Modificaciones de stock en compras",
+    "start_time": 952.25,
+    "end_time": 1048.87
+  },
+  {
+    "slide_index": 16,
+    "image_file": "099_Slide_16_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Cuando se recibe una factura del proveedor, se introduce una factura de proveedores en SAP Business One. El documento se utilizará para activar el pago al proveedor. Puede crear una nueva factura de proveedor seleccionando el nombre del documento en el menú del módulo o basándola en uno o más pedidos o entradas de mercancías de pedidos. Si basa la factura de proveedores en uno o varios documentos de compras existentes, puede copiar todos los datos contenidos en el documento base o usar el asistente de creación de documentos para seleccionar los datos que desea copiar de uno o varios pedidos o entradas de mercancías de pedidos existentes. Aunque copie todos los datos de un documento o documentos de compras existentes, puede modificar las cantidades y los precios, así como cualquier otro dato, antes de contabilizar el documento. La factura de proveedores contabilizada genera entradas en el libro mayor y actualiza la cuenta del proveedor con el importe que se le debe al proveedor. 16 Factura de proveedor Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado Una factura de proveedor activa un pago al proveedor. La factura de proveedores contabilizada genera entradas en el libro mayor y actualiza la cuenta del proveedor con el importe que se le debe al proveedor.",
+    "start_time": 1048.87,
+    "end_time": 1127.3
+  },
+  {
+    "slide_index": 17,
+    "image_file": "099_Slide_17_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Regresemos a nuestra situación de ejemplo: Anteriormente solicitamos y recibimos 5 impresoras de nuestro proveedor. Ahora recibimos una factura del proveedor por 5 impresoras. Introducimos una factura de proveedor para reflejar la factura del proveedor La factura del proveedor en SAP Business One se transforma en la base del pago al proveedor. 17 Factura de proveedor Ejemplo empresarial: Recibe una factura del proveedor por 5 impresoras Introduce una factura de proveedor para reflejar la factura del proveedor La factura de proveedores es la base del pago para el proveedor Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 1127.3,
+    "end_time": 1167.77
+  },
+  {
+    "slide_index": 18,
+    "image_file": "099_Slide_18_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Una vez creada la factura de proveedores en el sistema, se presentan las siguientes consecuencias: 1) La entrada de mercancías de pedido incrementó el valor de stock anteriormente. Solamente si no hay entradas de mercancías de pedido se actualizan los valores de stock cuando se introduce una factura de proveedores. 2) La factura de proveedores crea un asiento para actualizar el saldo del proveedor para visualizar el importe a pagar. 3) No puede modificar nada de la factura de proveedores que pueda afectar el asiento una vez que se añade la factura al sistema. 4) En la entrada de mercancías de pedido, los artículos que ya se han facturado parcial o totalmente aparecen en gris claro. Si la factura es por la cantidad total de la entrada de mercancías de pedido, entonces el estado de la entrada de mercancías de pedido cambia a Cerrado. 18 Efectos de la factura de proveedores Pedido de compra Entrada de mercancías de pedido Factura de proveedores La cantidad aumenta solamente si no se hace referencia a una entrada de mercancías anterior. + + 4",
+    "start_time": 1167.77,
+    "end_time": 1234.7
+  },
+  {
+    "slide_index": 19,
+    "image_file": "099_Slide_19_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Después de haber introducido una factura de proveedores, el paso final del proceso Compras es iniciar el pago al proveedor. El documento de pago efectuado se puede crear mediante los siguientes medios de pago: efectivo, cheques, tarjeta de crédito, transferencia bancaria y (en algunas localizaciones) letra de cambio. Una vez añadido el pago, se crea un asiento correspondiente. El asiento reduce el saldo del proveedor. Cuando crea un pago para compensar completa o parcialmente un documento específico o transacción, se produce una reconciliación interna automáticamente. Se pueden crear varios pagos juntos con el asistente de pago. Las ejecuciones del asistente de pago procesan transacciones y documentos de clientes y proveedores que no están pagados por completo, abonados ni reconciliados, así como los pagos a cuenta asignados sin reconciliar. Cuando se crean pagos efectuados, individualmente o con el asistente de pagos, también puede pagar parcialmente las facturas. La gestión de pagos se considera parte del módulo de gestión de bancos de SAP Business One. 19 Procesamiento de pagos Pedido Entrada de mercancías de pedido Factura de proveedores Pago efectuado El paso final del proceso de compras de proveedores es iniciar el pago al proveedor. Pueden crearse pagos en efectivo, cheques, tarjeta de crédito, transferencia bancaria o (en algunas localizaciones) letra de cambio. Una vez añadido el pago, se contabiliza un asiento contable para reducir el saldo del proveedor La reconciliación interna se realiza automáticamente",
+    "start_time": 1234.7,
+    "end_time": 1333.63
+  },
+  {
+    "slide_index": 20,
+    "image_file": "099_Slide_20_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Regresemos a nuestra situación de ejemplo. Debemos 5 impresoras que solicitamos y recibimos a nuestro proveedor. Al recibir la factura del proveedor, introducimos una factura de proveedor por la cantidad adeudada. Ahora es el momento de crear un pago efectuado basado en las condiciones de pago del proveedor. Cuando se introduce el pago, el sistema activa el pago para el proveedor y crea un asiento para registrar el pago. El asiento reduce el efectivo y disminuye la cantidad que debemos al proveedor. 20 Procesamiento de pagos Le debemos al proveedor el importe de 5 impresoras Se introdujo una factura de proveedores por el importe que se debe Crea un pago efectuado según los términos de pago El asiento: Reduce el efectivo (crédito) Disminuye el importe que se debe al proveedor Pedido Entrada de mercancías de pedido Factura de proveedores Pago efectuado",
+    "start_time": 1333.63,
+    "end_time": 1386.91
+  },
+  {
+    "slide_index": 21,
+    "image_file": "099_Slide_21_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "Ahora que hemos finalizado con los tres primeros pasos del proceso de aprovisionamiento de artículos, revisaremos lo que sucede cuando se añade cada documento. 21 Revisión de compras Pedido de compra Entrada de mercancías de pedido Factura de proveedores Ahora revisaremos el efecto de los tres primeros pasos del proceso de aprovisionamiento de artículos",
+    "start_time": 1386.91,
+    "end_time": 1408.44
+  },
+  {
+    "slide_index": 22,
+    "image_file": "099_Slide_22_10_Purch_12_Process_Items_ES.webp",
+    "script_text": ") Pedido: cuando introduce un pedido, no se contabilizan los cambios basados en valores en la contabilidad. Sin embargo, las cantidades de los pedidos se enumeran en la gestión de stocks. Puede visualizar las cantidades solicitadas en diversos informes y ventanas, como el informe de estado de inventario y la ventana de datos maestros de artículo. 22 Revisión de compras Almacenes Pedido de compra Entrada de mercancías de pedido Factura de proveedores No hay cambios basados en valores en la contabilidad. Las cantidades de los pedidos se enumeran en la gestión de stocks.",
+    "start_time": 1408.44,
+    "end_time": 1444.78
+  },
+  {
+    "slide_index": 23,
+    "image_file": "099_Slide_23_10_Purch_12_Process_Items_ES.webp",
+    "script_text": ") Entrada de mercancías de pedido: Al introducir una entrada de mercancías de pedido, el almacén acepta las mercancías y se actualizan las cantidades. Si su empresa utiliza un sistema de inventario permanente, SAP Business One también crea las contabilizaciones correspondientes para actualizar los valores del stock. 23 Revisión de compras Almacenes Libro mayor Pedido de compra Entrada de mercancías de pedido Factura de proveedores",
+    "start_time": 1444.78,
+    "end_time": 1472.88
+  },
+  {
+    "slide_index": 24,
+    "image_file": "099_Slide_24_10_Purch_12_Process_Items_ES.webp",
+    "script_text": ") Factura de proveedores: cuando se contabiliza una factura recibida, la cuenta del proveedor se actualiza en la contabilidad. Si una factura del proveedor no hace referencia a la entrada de mercancías de pedido, los stocks también aumentan cuando se contabiliza la factura. 24 Revisión de compras Almacenes Libro mayor Pedido de compra Entrada de mercancías de pedido Factura de proveedores",
+    "start_time": 1472.88,
+    "end_time": 1497.82
+  },
+  {
+    "slide_index": 25,
+    "image_file": "099_Slide_25_10_Purch_12_Process_Items_ES.webp",
+    "script_text": "El pedido (PO) especifica al proveedor cuáles artículos o servicios desea comprar, incluidas las cantidades y precios acordados. Representa su compromiso con el proveedor para comprar los artículos. No se contabilizan los cambios en base al valor en contabilidad para un pedido. Sin embargo, las cantidades de los pedidos se enumeran en la gestión de stocks. Puede ver las cantidades solicitadas en los informes y en los datos maestros de artículos. La entrada de mercancías de pedido denota la entrega de mercancías de un proveedor a una compañía. Se usa para actualizar las cantidades y los valores del inventario. Al introducir una entrada de mercancías de pedido, el almacén acepta las mercancías y se actualizan las cantidades. Si su empresa utiliza un sistema de inventario permanente, SAP Business One crea las contabilizaciones correspondientes para actualizar los valores del stock. La factura de proveedor contiene la información de facturación del proveedor y establece el pago. Cuando se contabiliza una factura recibida, la cuenta del proveedor se actualiza en la contabilidad. El paso final del proceso de compra es el pago efectuado. Esta función se finaliza en el módulo de contabilidad. 25 25 Resumen A continuación, se detallan algunos puntos clave: El pedido (PO) especifica al proveedor cuáles artículos o servicios desea comprar con las cantidades y precios acordados. No se contabilizan los cambios en base al valor en Contabilidad para un pedido. Sin embargo, las cantidades de los pedidos se enumeran en la gestión de stocks. La entrada de mercancías de pedido denota la entrega de mercancías de un proveedor. Al introducir una entrada de mercancías de pedido, el almacén acepta las mercancías y se actualizan las cantidades. Si su empresa utiliza un sistema de inventario permanente, SAP Business One crea las contabilizaciones correspondientes del stock. La factura de proveedor contiene la información de facturación del proveedor y establece el pago. Cuando se contabiliza una factura recibida, la cuenta del proveedor se actualiza en la contabilidad. El paso final del proceso de compra es el pago efectuado.",
+    "start_time": 1497.82,
+    "end_time": 1636.56
+  }
+]

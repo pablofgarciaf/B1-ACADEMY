@@ -1,0 +1,78 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "Slide_01.webp",
+    "script_text": "Cuando implementamos SAP Business One en una empresa, uno de los mayores retos es la adopción del usuario. Si un nuevo gerente de ventas entra al sistema y ve cientos de menús desconocidos, la fricción es enorme. La solución oficial de SAP para este desafío es el Cockpit estilo Fiori. Las plantillas de Cockpit no son solo pantallas decorativas; son entornos preconfigurados que agrupan los indicadores clave de rendimiento, como el KPI de facturación mensual, los accesos directos transaccionales y los embudos de ventas. Al asignar la plantilla de Ventas a nuestro nuevo responsable comercial, transformamos el ERP en una cabina de mando enfocada en el cierre de oportunidades desde el primer día.",
+    "step_guide": {
+      "title": "Lección 1: Filosofía y Asignación de Cockpit Fiori",
+      "menu_path": "Herramientas > Cockpit > Seleccionar Plantilla de Cockpit",
+      "action_type": "cockpit_setup",
+      "instructions": [
+        "Abre Herramientas > Cockpit > Seleccionar Plantilla de Cockpit.",
+        "Selecciona la plantilla oficial 'Ventas'.",
+        "Fíjala como predeterminada para el rol del usuario."
+      ],
+      "expected_output": "Lienzo Cockpit Fiori activo con KPIs y accesos comerciales.",
+      "consultant_tip": "Las plantillas de cockpit alinean la interfaz del ERP con los objetivos estratégicos del puesto."
+    },
+    "start_time": 0.0,
+    "end_time": 44.168
+  },
+  {
+    "slide_index": 2,
+    "image_file": "Slide_02.webp",
+    "script_text": "La asignación de cuentas en el maestro de interlocutores comerciales OCRD es una de las decisiones de diseño más trascendentales en SAP Business One. ¿Por qué es tan crítico el campo Empleado de Ventas? Porque en SAP, este vínculo desencadena tres procesos automáticos fundamentales: primero, los permisos de visibilidad para que el comercial solo vea a sus clientes asignados si la empresa activa restricciones de propiedad de datos; segundo, el cálculo automático de comisiones en el libro mayor y nómina; y tercero, la trazabilidad directa en todos los pedidos futuros, asegurando que cada dólar facturado se atribuya con exactitud en las métricas de rendimiento del vendedor.",
+    "step_guide": {
+      "title": "Lección 2: Asignación Estratégica en Maestro de Clientes (OCRD)",
+      "menu_path": "Socios de Negocios > Datos Maestros Socio de Negocios",
+      "action_type": "master_data",
+      "instructions": [
+        "Abre Datos Maestros de Socio de Negocios (Ctrl + F).",
+        "Busca el código C20000 y accede a la pestaña General.",
+        "Asigna a Bill en 'Empleado del departamento de ventas' y actualiza."
+      ],
+      "expected_output": "Cuentas comerciales asignadas formalmente al asesor responsable.",
+      "consultant_tip": "El empleado de ventas en OCRD alimenta automáticamente las comisiones y los filtros de informes."
+    },
+    "start_time": 44.168,
+    "end_time": 86.416
+  },
+  {
+    "slide_index": 3,
+    "image_file": "Slide_03.webp",
+    "script_text": "La eficiencia operativa de un equipo comercial depende de reducir los clics innecesarios en la interfaz. En lugar de obligar al usuario a navegar por ramas complejas del árbol de menús, SAP Business One cuenta con el widget de Funciones Comunes. Al personalizar este panel con el módulo de Actividades y la creación de citas, dotamos al vendedor de un centro neurálgico de gestión CRM. Desde aquí puede programar llamadas de seguimiento, registrar minutas de reuniones y auditar el historial de interacciones con el cliente, manteniendo a todo el equipo alineado sin salir de su pantalla de inicio.",
+    "step_guide": {
+      "title": "Lección 3: Productividad y CRM con Funciones Comunes",
+      "menu_path": "Cockpit > Widget de Funciones Comunes",
+      "action_type": "quick_access",
+      "instructions": [
+        "Utiliza el buscador superior para localizar 'Actividades'.",
+        "Arrastra el acceso directo al panel de Funciones Comunes.",
+        "Verifica que el icono abra directamente el gestor de tareas."
+      ],
+      "expected_output": "Centro de actividades comerciales disponible a un solo clic.",
+      "consultant_tip": "Centralizar actividades en el cockpit previene el olvido de compromisos y llamadas con prospectos."
+    },
+    "start_time": 86.416,
+    "end_time": 124.008
+  },
+  {
+    "slide_index": 4,
+    "image_file": "Slide_04.webp",
+    "script_text": "El ciclo comercial en SAP Business One alcanza su madurez con el análisis del documento de ventas y el comportamiento del cliente. Al explorar la ficha técnica del interlocutor comercial y examinar sus condiciones de pago, listas de precios vinculadas y el límite de crédito asignado, el asesor comercial comprende que cada oferta o factura es parte de un ecosistema interconectado. La navegación contextual con las flechas de enlace naranja permite auditar en segundos el historial de transacciones y estados de cuenta, consolidando una experiencia fluida que une la gestión comercial con el rigor contable.",
+    "step_guide": {
+      "title": "Lección 4: Integración Comercial y Auditoría Contable",
+      "menu_path": "Ventas - Clientes > Documentos de Ventas",
+      "action_type": "sales_cycle",
+      "instructions": [
+        "Inspecciona la lista de precios y condiciones de pago asociadas al cliente.",
+        "Utiliza la flecha naranja para navegar entre el documento y el maestro de clientes.",
+        "Valida la coherencia de datos financieros antes de emitir transacciones."
+      ],
+      "expected_output": "Ecosistema comercial comprendido y auditado visualmente.",
+      "consultant_tip": "Las flechas de enlace naranja son el sello distintivo de trazabilidad relacional en SAP Business One."
+    },
+    "start_time": 124.008,
+    "end_time": 160.76
+  }
+]

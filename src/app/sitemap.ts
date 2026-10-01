@@ -6,8 +6,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Rutas canónicas estáticas limpias con respuesta garantizada 200 OK
   const staticRoutes = [
     { path: '', changeFrequency: 'daily', priority: 1.0 },
-    { path: '/capacitacion', changeFrequency: 'weekly', priority: 0.9 },
-    { path: '/bolsa-empleo', changeFrequency: 'daily', priority: 0.9 },
+    { path: '/campus', changeFrequency: 'daily', priority: 1.0 },
+    { path: '/manuales', changeFrequency: 'weekly', priority: 0.9 },
+    { path: '/simulador', changeFrequency: 'weekly', priority: 0.9 },
+    { path: '/capacitacion', changeFrequency: 'weekly', priority: 0.8 },
+    { path: '/bolsa-empleo', changeFrequency: 'daily', priority: 0.8 },
     { path: '/consultores', changeFrequency: 'weekly', priority: 0.8 },
     { path: '/empresas', changeFrequency: 'monthly', priority: 0.8 },
     { path: '/blog', changeFrequency: 'weekly', priority: 0.7 },

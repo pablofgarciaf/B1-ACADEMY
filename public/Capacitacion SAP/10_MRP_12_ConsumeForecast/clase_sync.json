@@ -1,0 +1,184 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "078_Slide_01_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Bienvenidos a esta clase sobre MRP 12 ConsumeForecast en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Production and MRP: Forecast Consumption SAP Business One Version 10.0 Welcome to the topic on consuming forecasts in Material Requirements Planning (MRP). This topic builds on what you have learned in the Introduction to MRP topic.",
+    "start_time": 0.0,
+    "end_time": 28.87
+  },
+  {
+    "slide_index": 2,
+    "image_file": "078_Slide_02_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "At the end of this topic, you will be able to: Configure a consumption method for an MRP forecast Explain how MRP results are affected when forecasts are consumed Objectives At the end of this topic, you will be able to: Configure a consumption method for an MRP forecast Explain how MRP results are affected when forecasts are consumed",
+    "start_time": 28.87,
+    "end_time": 48.12
+  },
+  {
+    "slide_index": 3,
+    "image_file": "078_Slide_03_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Business Scenario OEC Computers uses MRP to plan their sales inventory Previously when we they ran MRP, they had problems with backorders for some items and overstocks on others Consuming forecasts will enable them to more accurately manage their inventory and save money by purchasing wisely OEC Computers uses MRP to plan their inventory for the office equipment and supplies that they sell Previously when we they ran MRP, they had problems with backorders for some items and overstocks on others Consuming forecasts will enable them to more accurately manage their inventory and save money by purchasing wisely",
+    "start_time": 48.12,
+    "end_time": 81.29
+  },
+  {
+    "slide_index": 4,
+    "image_file": "078_Slide_04_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Forecast Concept Weeks Item: Hard Disk Start Date: 01.03 End Date: 31.03 View: weekly 11 12 13 14 Total demand 1200 pcs 1100 pcs 1100 pcs 1000 pcs Before we dive into forecast consumption rules let us go over the main forecast principles as described in the MRP Process course topic. You can create forecasts to plan purchasing, production or transfers in advance, even before you receive other actual requirements like sales orders. By using a forecast, you can purchase or produce items according to the forecast demand. When the actual sales orders arrive, you are able to supply the goods even at short notice. In the image we see an illustration of a weekly forecast for the hard disk item. Each week has a different forecasted quantity.",
+    "start_time": 81.29,
+    "end_time": 129.34
+  },
+  {
+    "slide_index": 5,
+    "image_file": "078_Slide_05_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Forecast Consumption Concept Weeks Item: Hard Disk Start Date: 01.03 End Date: 31.03 View: weekly 11 12 13 14 Total demand Demand forecast quantity after consumption Sales Orders added for each week for 1000 pcs 200 100 100 1000 pcs. 1000 pcs . Original Forecast Quantities 1100 1000 1100 1200 1000 pcs . 1000 pcs . 0 Now let’s look at how a forecast is consumed. In the previous topic we discussed how that the forecast appears on the demand row of the MRP report, much like the sales order. However, when the purpose of the forecast is to anticipate sales orders before they arrive, we would like to subtract the actual sales order quantity from the forecast to avoid duplication of demand. SAP Business One gives you the option to set sales orders and blanket agreements either to increase demand in addition to your forecast or to consume forecasted quantities to avoid the duplication of the demand. When you set sales orders to consume forecast, the system subtracts the sales order quantity from the forecasted quantity if there is a demand from both a forecast and sales orders during a certain period. Then the system displays the remaining quantity from the forecast in addition to the sales order quantity. If a forecast is fully consumed, it no longer appears in the MRP report. Let’s look at an example where we have set the sales order to consume forecast. In the image we see an illustration of a forecast consumption. In this example, each week contains sales orders for 1000 pieces. We can see that the sales orders consume the forecast of each week. The quantity left (in blue) will be displayed as the forecast demand in the MRP report.",
+    "start_time": 129.34,
+    "end_time": 235.58
+  },
+  {
+    "slide_index": 6,
+    "image_file": "078_Slide_06_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "In the demand row of the MRP report, we will see a total demand of 1100 units in week 11, 1000 in week 12, 1100 in week 13 and 1200 in week 14. Note that the consumption does not change the actual forecast defined, only the demand displayed in the MRP report. If the sales orders were for larger quantities than the forecast, additional quantity would be added to the demand.",
+    "start_time": 235.58,
+    "end_time": 261.43
+  },
+  {
+    "slide_index": 7,
+    "image_file": "078_Slide_07_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Consume Forecast Settings General Settings Inventory Planning You can activate forecast consumption at the company level Company level settings default for new sales orders and blanket agreements Consume Forecast option can turned on off at row level You can activate forecast consumption at the company level, but you can also control consumption for each row in the sales order. The same is true for sales blanket agreements and we will cover this later in the course. In the Planning tab of the General Settings window you can define whether forecasts are to be consumed by sales orders. This will be the default for all new sales orders. If you wish to prevent the consumption of a certain sales order, choose No in the Consume Forecast column of the sales order. After you have decided to consume a forecast, how does the system know which forecast to consume? Is it the forecast you defined for the week before the due date of the sales order or maybe it is the forecast of the week after? This is controlled by the Consumption Method and the Days Backward and Days Forward parameters. We will now explain how these definitions affect forecast consumption by using two scenarios.",
+    "start_time": 261.43,
+    "end_time": 325.03
+  },
+  {
+    "slide_index": 8,
+    "image_file": "078_Slide_08_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Two Consumption Methods Backward – Forward System searches backward first If no forecast found, system searches forward Forward – Backward System searches forward first If no forecast found, system searches backward In both cases, you set the time limit for how far each search will go in each direction. When you’ve set up sales orders and or blanket agreements to consume forecasts, the system looks to see if any relevant documents are included in the MRP run. When for example, a sales order is included, the MRP wizard then takes the quantities for the item(s) into account and searches for existing forecasts that are closest to the sales order delivery date. This search is controlled by the consumption method assigned in the General Settings. There are two consumption methods: Backward Forward and Forward Backward. Using Backward Forward, the system searches backward from the delivery date of the sales for a forecast for the number of days you have indicated. If no forecast is found, the system then searches forward from the delivery date within the range set. In this way, the Backward Forward method consumes the forecast defined for earlier dates first and therefore tends to minimize demand in the near future which helps keep down the cost of inventory. Using Forward Backward, the system searches in the opposite manner. The system searches ahead starting from the sales order delivery date up to the limit of days you have set. If no forecast is found, the system then searches backwards starting from the sales order delivery date. In this way, Backward Forward increases near future recommendations and more likely increases inventory. This setting is useful if you are concerned about minimizing a possible",
+    "start_time": 325.03,
+    "end_time": 420.24
+  },
+  {
+    "slide_index": 9,
+    "image_file": "078_Slide_09_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "risk of unfulfilled demand. In both cases, you set the time limit for how far each search will go in each direction.",
+    "start_time": 420.24,
+    "end_time": 428.66
+  },
+  {
+    "slide_index": 10,
+    "image_file": "078_Slide_10_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example Scenarios We will look at 3 scenarios: 1. Without consuming forecasts 2. Using Backward Forward Consumption Method Limit on days searched backward: 6 Limit on days searched forward: 6 3. Using Forward Backward Consumption Method Limit on days searched forward: 6 Limit on days searched backward : 6 We will look at 3 scenarios: 1. Without consuming forecasts 2. Using Backward Forward Consumption Method Limit on days searched backward: 6 Limit on days searched forward: 6 3. Using Forward Backward Consumption Method Limit on days searched forward: 6 Limit on days searched backward : 6",
+    "start_time": 428.66,
+    "end_time": 466.85
+  },
+  {
+    "slide_index": 11,
+    "image_file": "078_Slide_11_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Scenario for all examples M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 1000 Total Demand Week 15 For comparing the effects of each method, we will assume the same quantities in each example. There are always 3 sales orders coming in. Each sales order has a different delivery date. The first two sales orders fall within week 15 on Monday the 8th and on Friday the 12th. The third sales order is on Monday the 15th so it falls in the week 16. We will assume a sales forecast has been defined with a weekly quantity of 1000. Since the forecast is defined weekly, the quantity is assigned to the first day of the week and in our scenario it is Monday. (Periodic forecasts are always assigned to the first day of the week.)",
+    "start_time": 466.85,
+    "end_time": 523.66
+  },
+  {
+    "slide_index": 12,
+    "image_file": "078_Slide_12_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 1: Without consuming forecasts M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 1000 Total Demand 2100 1300 Week 15 = 1000 + 200 + 900 = 1000 + 300 If we choose not to use a consumption method, then the total demand would be the sales orders quantity plus the forecasted quantity. In that case the total demand for week 15 would be 2100 and for week 16 would be 1300.",
+    "start_time": 523.66,
+    "end_time": 564.84
+  },
+  {
+    "slide_index": 13,
+    "image_file": "078_Slide_13_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 2: Backward Forward Consumption Method (1 of 4) 6 days backward, 6 days forward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 1000 Total Demand Week 15 First sales order consumes 200 of 1000 in forecast In example 2, we use the configuration settings: Backward Forward Consumption Method 6 days backward 6 days forward For each sales order, the system will look 6 days backward and if no unconsumed forecast quantity is found, it will look 6 days forward. We will examine the effect of each sales order in a series of 4 slides. The first sales order on Monday the 8th has a quantity of 200. Since this is the same day of the forecasted weekly quantity, the sales order consumes 200 of the 1000.",
+    "start_time": 564.84,
+    "end_time": 626.33
+  },
+  {
+    "slide_index": 14,
+    "image_file": "078_Slide_14_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 2: Backward Forward Consumption Method (2 of 4) 6 days backward, 6 days forward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 0 1000 900 Total Demand Week 15 The second sales order looks back to find a forecast, finds one 4 days back and consumes the remaining 800 of forecast No additional forecast quantity is available in the past, so system looks forward. Second sales order consumes 100 of Week 16 forecast The second sales order is for 900. The system looks backward to find a forecast with quantity to consume. The Week 15 forecast has a remaining quantity of 800. The second sales order consumes the entire quantity, but still needs to consume 100. The system looks back 6 days from Friday the 12th to Saturday the 6th, but there is no additional forecast quantity available. Since no additional forecast quantity is available in the past, the system looks forward and finds Week 16 forecast. The second sales order then consumes a quantity of 100 of the Week 16 forecast. Notice that consumption is not always taken from the same period. If the first period searched does not have forecasted quantity to consume, the system can consume quantity in a different period.",
+    "start_time": 626.33,
+    "end_time": 715.46
+  },
+  {
+    "slide_index": 15,
+    "image_file": "078_Slide_15_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 2: Backward Forward Consumption Method (3 of 4) 6 days backward, 6 days forward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 0 1000 900 600 Total Demand Week 15 The third sales order consumes 300 from Week 16. The third sales order is at the beginning of week 16. It consumes 300 of the 900 remaining in the weekly forecast on the same day. This leaves a total of 600 in the weekly forecast.",
+    "start_time": 715.46,
+    "end_time": 759.86
+  },
+  {
+    "slide_index": 16,
+    "image_file": "078_Slide_16_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 2: Backward Forward Consumption Method (4 of 4) 6 days backward, 6 days forward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 0 1000 900 600 Total Demand 1100 900 Week 15 = 200 + 900 = 300 + 600 The total demand for Week 15 is 1100. Since the forecast was fully consumed, it contains the quantity of the sales orders in that week. The total demand for Week 6 is 900. The total demand equals the sales order quantity of 300 plus the remaining forecasted quantity of 600.",
+    "start_time": 759.86,
+    "end_time": 811.7
+  },
+  {
+    "slide_index": 17,
+    "image_file": "078_Slide_17_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 3: Forward Backward Consumption Method (1 of 4) 6 days forward, 6 days backward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 1000 Total Demand Week 15 First sales order consumes 200 of Week 15 forecast Now we will look at the second Consumption Method option: Forward Backward. We have kept the parameters of days the same: 6 days forward and 6 days backward. The first sales order (for Monday the 8th), once again consumes 200 units of the weekly forecast in Week 15. This leaves the forecast with a total of 800.",
+    "start_time": 811.7,
+    "end_time": 862.49
+  },
+  {
+    "slide_index": 18,
+    "image_file": "078_Slide_18_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 3: Forward Backward Consumption Method (2 of 4) 6 days forward, 6 days backward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 1000 100 Total Demand Week 15 The second sales order looks forward and finds the Week 16 forecast 3 days ahead. The second sales order (from Friday the 12th) looks forward and finds the forecast of week 16, which is 3 days ahead. It consumes 900 units from the Week 16 forecast.",
+    "start_time": 862.49,
+    "end_time": 906.58
+  },
+  {
+    "slide_index": 19,
+    "image_file": "078_Slide_19_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 3: Forward Backward Consumption Method (3 of 4) 6 days forward, 6 days backward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 1000 100 Total Demand Week 15 The third sales order consumes the remaining quantity of the Week 16 forecast. The third sales order (from Monday the 15th) consumes the remaining 100 of the Week 16 forecast.",
+    "start_time": 906.58,
+    "end_time": 944.98
+  },
+  {
+    "slide_index": 20,
+    "image_file": "078_Slide_20_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Example 3: Forward Backward Consumption Method (4 of 4) 6 days forward, 6 days backward M 8 T 9 W 10 Th 11 F 12 S 13 Su 14 M 15 T 16 W 17 Th 18 F 19 S 20 Su 21 Week 16 200 Sales Order Quantities Weekly Forecast 900 300 1000 800 1000 100 Total Demand 1900 300 Week 15 = 200 + 900 + 800 All of forecast is consumed so demand is based on sales order qty With this method, we see that much of the demand has moved to Week 15 since demand is consumed from the future first. In week 15, the demand is 1900 units. This quantity is the total of the two sales orders for week 15 (200 + 900) plus what is left from the week 15 forecast (800) In week 16, the total demand is 300 units. All of the forecasted quantity has been consumed by the second and third sales orders.",
+    "start_time": 944.98,
+    "end_time": 1008.24
+  },
+  {
+    "slide_index": 21,
+    "image_file": "078_Slide_21_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Considerations for which method to choose Backward – Forward More suitable for companies that prefer to have less inventory on hand Forward – Backward More suitable for companies who prefer to have a lower risk of fulfilling demand on time When choosing Forecast Consumption Method, it is important to consider the implications of each method and choose carefully. In our example scenario, the demand of each week varied when we used different consumption methods. If we sum the total demand of both weeks, we receive a different quantity in each method. In the Forward Backward method the demand of both weeks is 2,200 (1,900+300) units and with the Backward Forward method it is only 2,000 (1,100+900) units. When you come to decide which method to use, you should consider the following: The Backward Forward method is more suitable for companies that prefer to have less inventory on hand. The Forward Backward method is more suitable for companies who prefer to have a lower risk of fulfilling demand on time. In the Backward Forward method you consume the forecast that is defined for the near future first and thus minimizing the demand of the near future. Lower demand leads to a lower recommendation quantity and lower purchase and production. The advantage of this method is the low inventory level remaining after the fulfilment of the demand. But it also means a higher risk of not fulfilling new demand on time. The Forward Backward on the other hand increases the near future recommendations and thus raising inventory level and minimizing the risk of unfulfilled demand.",
+    "start_time": 1008.24,
+    "end_time": 1097.16
+  },
+  {
+    "slide_index": 22,
+    "image_file": "078_Slide_22_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Since you can change the Forecast Consumption Method at any point, you always have the option to rerun MRP and compare the results.",
+    "start_time": 1097.16,
+    "end_time": 1105.37
+  },
+  {
+    "slide_index": 23,
+    "image_file": "078_Slide_23_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Blanket Agreements and Forecast Consumption Sales blanket agreements can consume forecasts similar to sales orders Company level settings control consumption in blanket agreements You can turn on off consumption at the row level MRP considers blanket agreements that: Have the status Approved Contain a warehouse on the row Sales blanket agreements can consume forecasts much like sales orders. Just like sales orders, the company wide setting in General Settings defaults into new documents. You can turn on or off forecast consumption at the row level of blanket agreements MRP only considers blanket agreements with the status Approved and with a warehouse indicated on the row.",
+    "start_time": 1105.37,
+    "end_time": 1141.46
+  },
+  {
+    "slide_index": 24,
+    "image_file": "078_Slide_24_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Blanket Agreement Consumption Example 200 pcs 200 pcs 200 pcs 200 pcs 200 pcs … 02 04 05 06 03 01 OEC Computers has a blanket agreement with Maxi Teq for 2100 units. Each month Maxi Teq will order a fixed quantity of 200 units based on blanket agreement. The blanket agreement row From Date is February 1 In order to calculate consumption, the system calculates the expected delivery date of future sales orders and thus sets the consumption date. Months Here is an example of blanket agreement consumption: OEC Computers has a blanket agreement with Maxi Teq for 2100 units. Each month they order a fixed quantity of 200 units. Metaphorically, you can think of a sales blanket agreement as similar to a customer specific forecast that can be used to consume your regular sales forecast. It allows you to anticipate demand from the future sales orders from this customer. In order to calculate consumption, the system calculates the expected sales orders delivery due date and thus sets the consumption date. Frequencies in blanket agreement rows can be set for Daily, Weekly, Monthly, Quarterly, Semi annually and One time. No matter which frequency we choose in the Frequency field, the first consumption day equals the From Date in the row. In our example the first consumption of 200 units occurs on the From Date of February 1. Then, every other consumption is set to the 1st of each of the following months. If choosing a One Time occurrence, the consumption is also due on the From Date in the row, in this case February 1st.",
+    "start_time": 1141.46,
+    "end_time": 1239.24
+  },
+  {
+    "slide_index": 25,
+    "image_file": "078_Slide_25_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "Summary Here are some key points to take away from this course: SAP Business One allows forecasted demand to be consumed by sales order and blanket agreement rows. You can activate forecast consumption at the company level or control it at the row level. There are two choices of consumption methods: Backward Forward and Forward Backward. The Backward Forward method is more suitable if you wish to reduce inventory on hand. The Forward Backward method is more suitable if you wish to lower the risk of fulfilling demand on time. The settings for consumption are set in the Planning window of the Inventory tab in General Settings. Here are some key points to take away from this course: SAP Business One allows forecasted demand to be consumed by sales order and blanket agreement rows. You can activate forecast consumption at the company level or control it at the row level. There are two choices of consumption methods: Backward Forward and Forward Backward. The Backward Forward method is more suitable if you wish to reduce inventory on hand. The Forward Backward method is more suitable if you wish to lower the risk of fulfilling demand on time. The settings for consumption are set at the company level in the Planning window of the InventoryTab in General Settings. In this window, you set the consumption method and the number of days backward and the number of days forward that the system will look for a forecast.",
+    "start_time": 1239.24,
+    "end_time": 1317.94
+  },
+  {
+    "slide_index": 26,
+    "image_file": "078_Slide_26_10_MRP_12_ConsumeForecast.webp",
+    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
+    "start_time": 1317.94,
+    "end_time": 1450.37
+  }
+]

@@ -1,0 +1,668 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "sap_version": "SAP Business One 10.0 (HANA)",
+    "total_screens": 66,
+    "total_modules": 12,
+    "generated": "2026-10-01T00:00:00Z",
+    "description": "Atlas Visual Indexado de 5,082+ capturas de SAP B1"
+  },
+  "modules": {
+    "01_Finanzas": {
+      "key": "01_Finanzas",
+      "name": "Finanzas & Contabilidad",
+      "icon": "DollarSign",
+      "screens": [
+        {
+          "id": "FIN001",
+          "name": "Asientos Contables",
+          "type": "Documento",
+          "module": "01_Finanzas",
+          "workflow": "Ventas > Finanzas > Diarios",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Número de Asiento", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Fecha", "required": true, "color": "#fffde0"},
+            {"id": "field_3", "name": "Descripción", "required": false, "color": "#ffffff"}
+          ],
+          "actions": [
+            {"id": "btn_save", "label": "Guardar", "shortcut": "Ctrl+S"},
+            {"id": "btn_cancel", "label": "Cancelar", "shortcut": "Esc"},
+            {"id": "btn_delete", "label": "Eliminar", "shortcut": "Ctrl+D"}
+          ]
+        },
+        {
+          "id": "FIN002",
+          "name": "Libro Mayor",
+          "type": "Consulta",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Consultas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "FIN003",
+          "name": "Balance General",
+          "type": "Informe",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Reportes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "FIN004",
+          "name": "Pérdidas y Ganancias",
+          "type": "Informe",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Reportes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "FIN005",
+          "name": "Flujo de Caja",
+          "type": "Consulta",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Flujos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "02_Ventas": {
+      "key": "02_Ventas",
+      "name": "Ventas & Clientes",
+      "icon": "ShoppingCart",
+      "screens": [
+        {
+          "id": "SAL001",
+          "name": "Oferta de Venta",
+          "type": "Documento",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Documentos de Venta",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Número de Oferta", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Cliente", "required": true, "color": "#fffde0"},
+            {"id": "field_3", "name": "Fecha", "required": true, "color": "#fffde0"}
+          ],
+          "actions": [
+            {"id": "btn_save", "label": "Guardar", "shortcut": "Ctrl+S"},
+            {"id": "btn_cancel", "label": "Cancelar", "shortcut": "Esc"}
+          ]
+        },
+        {
+          "id": "SAL002",
+          "name": "Pedido de Venta",
+          "type": "Documento",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Pedidos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Número de Pedido", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Cliente", "required": true, "color": "#fffde0"}
+          ],
+          "actions": []
+        },
+        {
+          "id": "SAL003",
+          "name": "Entrega",
+          "type": "Documento",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Entregas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "SAL004",
+          "name": "Factura",
+          "type": "Documento",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Facturas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Número de Factura", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Cliente", "required": true, "color": "#fffde0"},
+            {"id": "field_3", "name": "Fecha", "required": true, "color": "#fffde0"}
+          ],
+          "actions": []
+        },
+        {
+          "id": "SAL005",
+          "name": "Nota de Crédito",
+          "type": "Documento",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Notas de Crédito",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "SAL006",
+          "name": "Socios de Negocio (Clientes)",
+          "type": "Datos Maestros",
+          "module": "02_Ventas",
+          "workflow": "Socios > Clientes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Código de Cliente", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Nombre", "required": true, "color": "#fffde0"}
+          ],
+          "actions": []
+        },
+        {
+          "id": "SAL007",
+          "name": "Listas de Precios",
+          "type": "Datos Maestros",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Gestión de Precios",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "SAL008",
+          "name": "Descuentos por Volumen",
+          "type": "Parámetro",
+          "module": "02_Ventas",
+          "workflow": "Ventas > Descuentos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "03_Compras": {
+      "key": "03_Compras",
+      "name": "Compras & Proveedores",
+      "icon": "Package",
+      "screens": [
+        {
+          "id": "PUR001",
+          "name": "Solicitud de Compra",
+          "type": "Documento",
+          "module": "03_Compras",
+          "workflow": "Compras > Solicitudes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "PUR002",
+          "name": "Pedido de Compra",
+          "type": "Documento",
+          "module": "03_Compras",
+          "workflow": "Compras > Pedidos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Número de Pedido", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Proveedor", "required": true, "color": "#fffde0"}
+          ],
+          "actions": []
+        },
+        {
+          "id": "PUR003",
+          "name": "Recepción de Mercancía",
+          "type": "Documento",
+          "module": "03_Compras",
+          "workflow": "Compras > Recepciones",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "PUR004",
+          "name": "Factura de Proveedor",
+          "type": "Documento",
+          "module": "03_Compras",
+          "workflow": "Compras > Facturas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "PUR005",
+          "name": "Nota de Débito",
+          "type": "Documento",
+          "module": "03_Compras",
+          "workflow": "Compras > Notas de Débito",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "PUR006",
+          "name": "Socios de Negocio (Proveedores)",
+          "type": "Datos Maestros",
+          "module": "03_Compras",
+          "workflow": "Socios > Proveedores",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "04_Inventario": {
+      "key": "04_Inventario",
+      "name": "Inventario & Almacén",
+      "icon": "Box",
+      "screens": [
+        {
+          "id": "INV001",
+          "name": "Datos Maestros de Artículos",
+          "type": "Datos Maestros",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Artículos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [
+            {"id": "field_1", "name": "Código de Artículo", "required": true, "color": "#fffde0"},
+            {"id": "field_2", "name": "Descripción", "required": true, "color": "#fffde0"}
+          ],
+          "actions": []
+        },
+        {
+          "id": "INV002",
+          "name": "Movimiento de Inventario",
+          "type": "Documento",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Movimientos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "INV003",
+          "name": "Conteo de Inventario",
+          "type": "Documento",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Conteos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "INV004",
+          "name": "Ubicaciones (Bin)",
+          "type": "Datos Maestros",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Gestión de Almacén",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "INV005",
+          "name": "Consulta de Disponibilidad",
+          "type": "Consulta",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Consultas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "INV006",
+          "name": "Valoración de Inventario",
+          "type": "Informe",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Reportes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "05_Produccion": {
+      "key": "05_Produccion",
+      "name": "Producción & Manufactura",
+      "icon": "Zap",
+      "screens": [
+        {
+          "id": "MFG001",
+          "name": "Lista de Materiales (BOM)",
+          "type": "Datos Maestros",
+          "module": "05_Produccion",
+          "workflow": "Producción > BOM",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MFG002",
+          "name": "Rutas de Fabricación",
+          "type": "Datos Maestros",
+          "module": "05_Produccion",
+          "workflow": "Producción > Rutas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MFG003",
+          "name": "Orden de Fabricación",
+          "type": "Documento",
+          "module": "05_Produccion",
+          "workflow": "Producción > Órdenes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MFG004",
+          "name": "Entrada de Producción",
+          "type": "Documento",
+          "module": "05_Produccion",
+          "workflow": "Producción > Entrada de Producción",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MFG005",
+          "name": "Salida de Producción",
+          "type": "Documento",
+          "module": "05_Produccion",
+          "workflow": "Producción > Salida de Producción",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "06_MRP": {
+      "key": "06_MRP",
+      "name": "Planificación & MRP",
+      "icon": "TrendingUp",
+      "screens": [
+        {
+          "id": "MRP001",
+          "name": "Asistente de Planificación MRP",
+          "type": "Herramienta",
+          "module": "06_MRP",
+          "workflow": "MRP > Asistente",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MRP002",
+          "name": "Necesidades de Artículos",
+          "type": "Consulta",
+          "module": "06_MRP",
+          "workflow": "MRP > Consultas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MRP003",
+          "name": "Sugerencias de Compra",
+          "type": "Documento",
+          "module": "06_MRP",
+          "workflow": "MRP > Sugerencias",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "07_Bancos": {
+      "key": "07_Bancos",
+      "name": "Gestión de Bancos",
+      "icon": "Building2",
+      "screens": [
+        {
+          "id": "BNK001",
+          "name": "Conciliación Bancaria",
+          "type": "Documento",
+          "module": "07_Bancos",
+          "workflow": "Bancos > Conciliación",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "BNK002",
+          "name": "Depósitos Bancarios",
+          "type": "Documento",
+          "module": "07_Bancos",
+          "workflow": "Bancos > Depósitos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "BNK003",
+          "name": "Pagos Bancarios",
+          "type": "Documento",
+          "module": "07_Bancos",
+          "workflow": "Bancos > Pagos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "08_Servicios": {
+      "key": "08_Servicios",
+      "name": "Servicios & Proyectos",
+      "icon": "Briefcase",
+      "screens": [
+        {
+          "id": "SRV001",
+          "name": "Contrato de Servicio",
+          "type": "Documento",
+          "module": "08_Servicios",
+          "workflow": "Servicios > Contratos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "SRV002",
+          "name": "Órdenes de Servicio",
+          "type": "Documento",
+          "module": "08_Servicios",
+          "workflow": "Servicios > Órdenes",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "SRV003",
+          "name": "Proyectos",
+          "type": "Datos Maestros",
+          "module": "08_Servicios",
+          "workflow": "Servicios > Proyectos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "09_Reportes": {
+      "key": "09_Reportes",
+      "name": "Reportes & Análisis",
+      "icon": "BarChart3",
+      "screens": [
+        {
+          "id": "RPT001",
+          "name": "Generador de Reportes",
+          "type": "Herramienta",
+          "module": "09_Reportes",
+          "workflow": "Herramientas > Crystal Reports",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "RPT002",
+          "name": "Análisis de Ventas",
+          "type": "Informe",
+          "module": "09_Reportes",
+          "workflow": "Reportes > Ventas",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "RPT003",
+          "name": "Análisis de Compras",
+          "type": "Informe",
+          "module": "09_Reportes",
+          "workflow": "Reportes > Compras",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "10_Consultas": {
+      "key": "10_Consultas",
+      "name": "Consultas & SQL",
+      "icon": "Code2",
+      "screens": [
+        {
+          "id": "QRY001",
+          "name": "Query Manager",
+          "type": "Herramienta",
+          "module": "10_Consultas",
+          "workflow": "Herramientas > Query Manager",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "QRY002",
+          "name": "Consultas Personalizadas",
+          "type": "Consulta",
+          "module": "10_Consultas",
+          "workflow": "Herramientas > Consultas SQL",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "QRY003",
+          "name": "HANA Database",
+          "type": "Conexión",
+          "module": "10_Consultas",
+          "workflow": "Herramientas > Base de Datos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "11_Admin": {
+      "key": "11_Admin",
+      "name": "Administración del Sistema",
+      "icon": "Settings",
+      "screens": [
+        {
+          "id": "ADM001",
+          "name": "Inicialización",
+          "type": "Configuración",
+          "module": "11_Admin",
+          "workflow": "Administración > Inicialización",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "ADM002",
+          "name": "Usuarios y Permisos",
+          "type": "Datos Maestros",
+          "module": "11_Admin",
+          "workflow": "Administración > Usuarios",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "ADM003",
+          "name": "Workflows",
+          "type": "Configuración",
+          "module": "11_Admin",
+          "workflow": "Administración > Workflows",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "ADM004",
+          "name": "Campos Personalizados",
+          "type": "Configuración",
+          "module": "11_Admin",
+          "workflow": "Administración > Campos",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "ADM005",
+          "name": "Recuperación de Datos",
+          "type": "Herramienta",
+          "module": "11_Admin",
+          "workflow": "Administración > Mantenimiento",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "12_Herramientas": {
+      "key": "12_Herramientas",
+      "name": "Utilidades & Herramientas",
+      "icon": "Wrench",
+      "screens": [
+        {
+          "id": "UTL001",
+          "name": "Impresora de Formularios",
+          "type": "Herramienta",
+          "module": "12_Herramientas",
+          "workflow": "Herramientas > Impresión",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "UTL002",
+          "name": "Importador de Datos",
+          "type": "Herramienta",
+          "module": "12_Herramientas",
+          "workflow": "Herramientas > Importar",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "UTL003",
+          "name": "Exportador de Datos",
+          "type": "Herramienta",
+          "module": "12_Herramientas",
+          "workflow": "Herramientas > Exportar",
+          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    }
+  },
+  "screen_index": {},
+  "screen_types": {
+    "Documento": ["SAL001", "SAL002", "SAL003", "SAL004", "SAL005", "PUR001", "PUR002", "PUR003", "PUR004", "PUR005", "INV002", "INV003", "MFG003", "MFG004", "MFG005", "MRP003", "BNK001", "BNK002", "BNK003", "SRV001", "SRV002", "FIN001"],
+    "Datos Maestros": ["SAL006", "SAL007", "INV001", "PUR006", "INV004", "MFG001", "MFG002", "ADM002", "SRV003"],
+    "Consulta": ["FIN002", "FIN005", "INV005", "MRP002", "QRY002"],
+    "Informe": ["FIN003", "FIN004", "INV006", "RPT002", "RPT003"],
+    "Parámetro": ["SAL008"],
+    "Configuración": ["ADM001", "ADM003", "ADM004"],
+    "Herramienta": ["MRP001", "RPT001", "QRY001", "ADM005", "UTL001", "UTL002", "UTL003"],
+    "Conexión": ["QRY003"]
+  }
+}

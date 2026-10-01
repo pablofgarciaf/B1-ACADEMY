@@ -1,0 +1,317 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "044_Slide_01_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre Impl 17 CustomTools IntroAnalytics en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Herramientas de personalización: Introducción a Analytics Bienvenido a Introducción a Analytics.",
+    "start_time": 0.0,
+    "end_time": 21.0
+  },
+  {
+    "slide_index": 2,
+    "image_file": "044_Slide_02_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Al finalizar este tema, podrá:  Enumerar los mecanismos para visualizar análisis en un cockpit del usuario.  Describir la capa semántica y las vistas de cálculo en SAP HANA  Explicar cómo se utilizan las dimensiones y las medidas en las herramientas analíticas  Crear un panel detallado con acciones Tenga en cuenta que este curso solo está diseñado para proporcionar una introducción a SAP HANA Analytics a los consultores de implementación. Además, se ofrece formación sobre análisis más detallada en otros cursos de SAP. 2 2 Objetivos Objetivos:  Enumerar los mecanismos para visualizar análisis en un cockpit del usuario.  Describir la capa semántica y las vistas de cálculo en SAP HANA  Explicar cómo se utilizan las dimensiones y las medidas en las herramientas analíticas  Crear un panel detallado con acciones Este curso está diseñado para proporcionar una introducción a SAP HANA Analytics a los consultores de implementación. Además, se ofrece formación sobre análisis más detallada en otros cursos de SAP.",
+    "start_time": 21.0,
+    "end_time": 84.29
+  },
+  {
+    "slide_index": 3,
+    "image_file": "044_Slide_03_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Business Intelligence en SAP Business One Paneles de análisis más detallados (en el cockpit y barras laterales del documento) Informe de Excel y diseñador de análisis interactivo Paneles de Crystal KPI (en el cockpit) Paneles avanzados Informes y consultas:  Crystal Reports  Consultas del sistema y del usuario Vistas de capa semántica La capa semántica en la base de datos de SAP HANA contiene vistas (modelos) de datos operativos. Cada vista integra campos de diferentes tablas fuente para modelar un amplio escenario empresarial, por ejemplo, finanzas, logística, ventas, compras, etc. La vista aísla al usuario de los detalles técnicos de las tablas subyacentes y la necesidad de combinaciones. En SAP Business One, los detalles sobre métricas empresariales clave se extraen mediante consultas en las vistas y se proporcionan a los usuarios en tiempo real a través de varios mecanismos: • Paneles de análisis detallados en el cockpit del usuario en la barra lateral de los documentos de marketing • Indicadores de clave de rendimiento (KPI) en el cockpit del usuario. • Paneles avanzados en el cockpit del usuario. • Los paneles creados con Crystal Reports Designer SAP proporciona paneles detallados preincorporados, KPI y paneles avanzados, y los socios pueden crear más paneles detallados, KPI, paneles avanzados y paneles Crystal. Además, los usuarios finales pueden acceder a vistas semánticas mediante el complemento del informe de Excel e Interactive Analysis Designer para Microsoft Excel para crear informes y análisis. Los usuarios pueden utilizar el generador de consultas de SAP Business One además de los informes de Crystal para acceder a las vistas utilizando las consultas SQL.",
+    "start_time": 84.29,
+    "end_time": 190.54
+  },
+  {
+    "slide_index": 4,
+    "image_file": "044_Slide_04_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Ejemplo de vista: Dimensiones y medidas Cliente Producto Empleado Fecha Dimensión del producto Dimensión del cliente Dimensión del empleado del dep. de ventas Dimensión de fecha Total vol. negocios Beneficios brutos Cantidad Una vista extrae los datos de varias tablas y calcula los resultados que se utilizan para la gestión de informes y análisis. No se mantienen datos reales en la vista, simplemente se trata de un modelo que estructura los datos para consultas. Cuando se ejecute la consulta, los datos se extraen a partir de tablas físicas. Veamos una vista de cálculo hipotética de una transacción de pedido de cliente en SAP HANA. La vista une campos de varias tablas involucrada en el pedido de cliente, incluidas, como se espera, ORDR, RDR1, OSHP, OCRD, OCPR, OITM, ITM1, etc. La vista une dos tipos de datos: dimensiones y medidas: • Los datos dimensionales son los datos descriptivos, como el número de documento, código de interlocutor comercial, empleado de ventas, producto, fecha, etc. Esto le indica quién, cuándo y qué, pero no proporciona campos cuantificables. • Los datos mensurables son los campos cuantificables que se pueden calcular, como los importes totales, la ganancia bruta, los impuestos y las cantidades. Utilizando una consulta, puede SUMAR estos campos. La dimensión de cliente representa los atributos de cliente a los que se hace referencia en el pedido de cliente, como el número de documento y el código de interlocutor comercial. La dimensión de producto representa el artículo y las características del mismo. La dimensión de fecha representa varias fechas, como la fecha de documento, la fecha de contabilización y la fecha de entrega. La dimensión de empleado de ventas representa el código del empleado del departamento de ventas en el pedido de cliente. Mediante una consulta puede AGRUPAR y SUMAR los totales del documento según distintos atributos, como el interlocutor comercial o el empleado del departamento de ventas, o utilizar la dimensión de fecha para agregar datos por tiempo. Para ver una lista completa de las vistas, consulte la Guía práctica Cómo trabajar con capas semánticas.",
+    "start_time": 190.54,
+    "end_time": 329.45
+  },
+  {
+    "slide_index": 5,
+    "image_file": "044_Slide_05_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
+    "start_time": 329.45,
+    "end_time": 337.44
+  },
+  {
+    "slide_index": 6,
+    "image_file": "044_Slide_06_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Se muestra un panel detallado de muestra en la diapositiva. El panel detallado se crea a partir de una consulta o vista de cálculo predefinida y muestra una dimensión (código de interlocutor comercial) y una medida (total). Este panel en particular mide las oportunidades de cliente. Puede crear fácilmente un panel detallado para satisfacer una necesidad específica y mostrar los datos visualmente en gráficos y diagramas. Los datos del panel penetrante son de solo lectura y se actualizan para que los datos presentados al usuario estén siempre actualizados. Una vez creado, puede añadir el panel detallado en el cockpit de un usuario o en un panel avanzado. Aquí, los usuarios pueden pasar el ratón sobre las secciones del panel para ver los valores de dimensión (en este caso los números de cliente) y la correspondiente medida (en este caso el valor potencial en oportunidades). También puede añadir acciones para permitir al usuario realizar tareas relacionadas, como abrir un documento relacionado o registro de datos maestros. En el ejemplo, el usuario puede iniciar 3 acciones desde el menú contextual. Más adelante en este curso, verá cómo crear este panel detallado y acciones. 6 El panel detallado está diseñado mediante consultas en las vistas de cálculo Aquí hay un ejemplo de un panel detallado para medir las oportunidades Los usuarios pueden: Pase el ratón sobre una sección para ver una dimensión y una medida asociada Haga clic con el botón derecho para abrir un menú contextual con acciones Panel detallado C42000",
+    "start_time": 337.44,
+    "end_time": 434.35
+  },
+  {
+    "slide_index": 7,
+    "image_file": "044_Slide_07_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Indicador clave de rendimiento (KPI)  Los widgets del indicador clave de rendimiento le permiten evaluar visualmente el estado de su negocio.  SAP proporciona KPI predefinidos; también puede diseñar sus propios KPI.  Puede basar su KPI en: Vista de cálculo Consulta definida por el usuario  Varios widgets de KPI se pueden visualizar en un panel avanzado o en el cockpit de un usuario. Nombre El valor de KPI con color indica que se ha alcanzado el objetivo para este KPI. El KPI muestra una tendencia ascendente. El color de la flecha indica una tendencia positiva. El rango de fecha Los indicadores de rendimiento de clave muestran una métrica clave que permite a los usuarios evaluar el estado de su actividad empresarial en cualquier momento. Un KPI se genera en base a una vista de cálculo o una consulta definida por el usuario que existe en el sistema. Un KPI tiene un objetivo y una tendencia opcional y realiza un seguimiento del progreso hacia el objetivo. En el ejemplo, la métrica es activos totales, que es uno de los KPI predefinidos proporcionados por SAP. El valor de KPI aparece en el centro. Los colores se pueden utilizar para mostrar si el KPI alcanza su objetivo. En este KPI, el color verde indica que se ha alcanzado el objetivo para este KPI. En la parte inferior derecha, puede ver la tendencia del KPI. Este KPI muestra una tendencia ascendente. Nuevamente, puede seleccionar colores para indicar si la tendencia es buena o mala. En la parte inferior izquierda puede ver el rango de fecha del KPI. Puede visualizar los widgets del KPI en el cockpit del usuario o en el panel avanzado. SAP proporciona una gran cantidad de KPI predefinidos, pero usted también puede diseñar el suyo propio.",
+    "start_time": 434.35,
+    "end_time": 550.37
+  },
+  {
+    "slide_index": 8,
+    "image_file": "044_Slide_08_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Panel avanzado  El panel complementario con varias páginas complementa un panel detallado o un KPI  Construido seleccionando widgets prediseñados:  Paneles detallados  KPI  Widgets de recuento:  Información de interlocutor comercial  Se puede lanzar mediante el panel detallado o el KPI Puede crear cockpits complementarios (denominados paneles avanzados) que permiten al usuario mostrar datos relacionados a un panel detallado o a un KPI. El panel avanzado puede tener varias páginas y proporciona un acceso rápido a varios widgets de análisis empresariales relacionados. El usuario inicia un panel avanzado desde un panel penetrante o un widget de KPI en su cockpit. En el ejemplo, puede ver el panel avanzado del cliente 360, que es uno de los paneles avanzados predefinidos de SAP. Este panel tiene 4 páginas. Nota: El panel de cliente 360 contiene codificación fija que se inicia desde los datos maestros de un interlocutor comercial abierto y no desde un panel detallado o KPI. El panel de control avanzado está construido seleccionando widgets prediseñados: • Paneles detallados • KPI • Widgets de recuento, y • Dirección e información de contacto del interlocutor comercial Los paneles y los KPI de su panel avanzado pueden contener acciones. Además, puede agregar filtros a determinadas widgets para descartar datos innecesarios.",
+    "start_time": 550.37,
+    "end_time": 637.58
+  },
+  {
+    "slide_index": 9,
+    "image_file": "044_Slide_09_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Paneles Crystal Reports  Los paneles creados en Crystal Dashboard Designer ofrecen soporte a varios paneles y fuentes de datos  Se pueden basar en la vista de SAP HANA u otras fuentes de datos Los paneles de Crystal Reports se crean en el Crystal Dashboard Designer. Los paneles de Crystal ofrecen soporte al análisis de simulación visual y a varios paneles con distintas fuentes de datos. Se necesita una licencia de Crystal Designer distinta. Puede usar otras fuentes de datos además de las vistas de SAP HANA. Los paneles de control se crean de forma externa y deben importarse en SAP Business One.",
+    "start_time": 637.58,
+    "end_time": 674.9
+  },
+  {
+    "slide_index": 10,
+    "image_file": "044_Slide_10_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Autorizaciones para visualizar y crear paneles Para crear paneles o KPI, necesita autorización para:  La herramienta diseñador de análisis detallado, y  La capa semántica o la vista de capa semántica, y  La consulta base del panel o KPI Los usuarios finales también necesitan autorización:  Para ver el contenido de los paneles detallados y los KPI; los usuarios deben tener autorización para los objetos visualizados.  Si el usuario no tiene acceso a la categoría de consulta de la consulta o la vista en la capa semántica que se encuentra detrás del panel, no podrán ver los datos. Gestión > Inicialización del sistema > Autorizaciones > Autorizaciones generales Son necesarias varias autorizaciones para trabajar con análisis. Generalmente, las autorizaciones se encuentran en el área temática de Analytics en la ventana de autorizaciones. Para crear paneles o KPI, necesita autorización para: • La herramienta diseñador de análisis detallado, y • La capa semántica o la vista de capa semántica Además, necesita autorización para la consulta base del panel o KPI. La autorización para las consultas se proporciona a través de las categorías en el Gestor de consultas. Para obtener más información, consulte el curso Consultas de esta formación. Para ver el contenido de los paneles detallados y los KPI; los usuarios deben tener autorización para los objetos visualizados. Además, los usuarios necesitan autorización para la categoría de consulta o a la vista de capa semántica o, de lo contrario, no verán los datos en el panel o KPI.",
+    "start_time": 674.9,
+    "end_time": 773.28
+  },
+  {
+    "slide_index": 11,
+    "image_file": "044_Slide_11_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Inicializando SAP HANA Analytics Para usar las funciones analíticas de SAP Business One, necesita implementar las vistas de SAP HANA (modelos) en la base de datos de la empresa: • Abra la consola de gestión de SAP Business One Analytics mediante el URL • Inicie sesión con la contraseña B1SiteUser • Inicialice la base de datos de la empresa. La inicialización desplegará los modelos de SAP HANA predefinidos para capas semánticas, lo que le permite trabajar con KPI, paneles detallados, análisis interactivos, Crystal Report y SAP Lumira. URLhttps://<Server>:40000/Enablement Para usar las funciones analíticas en SAP Business One, debe inicializar la base de datos de la empresa en la consola de administración de SAP Business One Analytics. Esto se realiza normalmente durante la instalación del software, en las actividades posteriores a la instalación. Para obtener más detalles, consulte la Guía del administrador de SAP Business One, versión para SAP HANA. Puede acceder a la consola mediante el URL que se muestra. Se le solicitará que proporcione la contraseña B1SiteUser. En la consola puede verificar si la empresa está inicializada para el análisis. La inicialización desplegará los modelos de SAP HANA predefinidos para capas semánticas, lo que le permite trabajar con KPI, paneles detallados, análisis interactivos, Crystal Report y SAP Lumira. Tenga en cuenta que 40000 es el número de puerto predeterminado para todos los servicios de SAP Business One.",
+    "start_time": 773.28,
+    "end_time": 875.02
+  },
+  {
+    "slide_index": 12,
+    "image_file": "044_Slide_12_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
+    "start_time": 875.02,
+    "end_time": 883.01
+  },
+  {
+    "slide_index": 13,
+    "image_file": "044_Slide_13_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Complemento Informe de Excel e Interactive Analysis Designer  Informe de Excel y Diseñador de análisis interactivo es un complemento para Microsoft Excel  El complemento añade dos etiquetas a la barra de menús de Microsoft Excel:  Informe de Excel: los usuarios pueden crear informes basados en capas semánticas  Análisis interactivo: los usuarios pueden llevar a cabo análisis de tabla dinámica ad hoc sobre las capas semánticas  Los usuarios pueden iniciar Microsoft Excel desde el menú Herramientas del cliente, o pueden utilizar el menú Inicio de Microsoft Windows  Los usuarios necesitan una licencia de SAP Business One válida y autorizaciones para la capa semántica Herramientas > Informe de Excel e Interactive Analysis Designer El complemento Informe de Excel e Interactive Analysis Designer permite a los usuarios acceder a la capa semántica mediante una herramienta familiar, Microsoft Excel. El complemento se integra automáticamente en Microsoft Excel al instalar el componente de cliente (consulte la Guía del administrador para SAP HANA). El complemento añade dos etiquetas a la barra de menús de Microsoft Excel: • En la ficha Informe de Excel, los usuarios pueden crear informes de forma intuitiva y en tiempo real utilizando las vistas de capa semántica • En la ficha Análisis interactivo, los usuarios pueden utilizar tablas dinámicas para realizar análisis ad hoc en las capas semánticas. Los usuarios pueden iniciar Microsoft Excel desde el cliente SAP Business One usando el menú Herramientas, que les permitirá acceder a las dos fichas. O bien pueden utilizar el menú Inicio de Microsoft Windows. Si utilizan el menú Inicio, tendrán que iniciar sesión en la base de datos de la empresa e indicar la dirección del servidor de base de datos de SAP HANA. Importante: Todos los usuarios necesitan una licencia de SAP Business One válida para el tipo de datos al que accederán, y necesitan autorizaciones en SAP Business One para la capa semántica. Para ver las condiciones previas para Microsoft Excel, consulte la guía \"Cómo trabajar con Informe de Excel y análisis interactivo\".",
+    "start_time": 883.01,
+    "end_time": 1010.02
+  },
+  {
+    "slide_index": 14,
+    "image_file": "044_Slide_14_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Herramienta de informes de Excel  En esta pestaña el usuario puede abrir los informes ya creados y crear nuevos informes basados en las vistas de capa semántica  Normalmente, estos informes se graban y ejecutar regularmente  Función de gestión de depósito para grabar informes para su reutilización Los pasospara crear informes se documentan en la guía \"Cómo trabajar con Informe de Excel y análisis interactivo\". Fuente de datos Medidas y dimensiones  Seleccione la fuente de datos y, a continuación, arrastre indicadores y dimensiones en la hoja de trabajo  Agregar cálculos, parámetros y funciones de tiempo en el informe En la ficha Informe de Excel, los usuarios pueden crear nuevos informes y gráficos. También pueden abrir y editar los informes analíticos predefinidos existentes de SAP. Para abrir o crear un informe, seleccione primero la fuente de datos. Puede seleccionar entre las vistas de cálculo desplegadas en la capa semántica. Cuando selecciona una vista, las medidas y dimensiones se muestran y puede seleccionar y arrastrar medidas y dimensiones en la hoja de cálculo. Para la medida o dimensión, es importante designar la sección de informes como grupo de filas, grupo de columnas o campo. También puede agregar cálculos, parámetros y funciones de tiempo. Mediante la función de gestión de depósitos, puede grabar el nuevo informe en una de las categorías de análisis. Los informes se pueden volver a ejecutar desde el menú Herramientas > Informe de Excel y análisis interactivo en el cliente. Los pasospara crear informes se documentan en la guía \"Cómo trabajar con Informe de Excel y análisis interactivo\".",
+    "start_time": 1010.02,
+    "end_time": 1109.26
+  },
+  {
+    "slide_index": 15,
+    "image_file": "044_Slide_15_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Herramienta de análisis interactivo  La ficha Análisis interactivo se utiliza para la exploración y análisis ad hoc en las vistas semánticas  El análisis se realiza en tablas dinámicas con Microsoft Excel y herramientas de tablas dinámicas estándar  Grabar y gestionar tablas dinámicas mediante la gestión de depósito Los pasos para crear análisis interactivos se documentan en la guía \"Cómo trabajar con Informe de Excel y análisis interactivo\".  Seleccionar fuente de datos, medidas y dimensiones para la tabla dinámica  A continuación, utilice los campos de tabla dinámica para el informe En contraste con la ficha Excel, la ficha Análisis interactivo está diseñado para análisis ad hoc en las capas semánticas. Los usuarios pueden crear nuevas tablas dinámicas o abrir tablas dinámicas existentes. Para una nueva tabla dinámica el usuario selecciona una de las capas semánticas predefinidas como una fuente de datos. Las medidas y las dimensiones de la vista seleccionada aparecen en Campos de tabla dinámica para su selección. A continuación, puede utilizar los comandos de tabla dinámica estándar. Los indicadores que seleccione aparecerán en la casilla de valores y los atributos se visualizarán como etiquetas de fila. Puede mover un campo de atributo desde la casilla Etiqueta de fila a la casilla Etiqueta de columna, y los datos se ajustarán automáticamente al formato nuevo. Puede seleccionar campos para utilizar un filtro arrastrando un campo a la casilla Filtro de informe o utilizando la función de filtro de las tablas dinámicas de MS Excel. Los pasos para crear análisis interactivos se documentan en la guía \"Cómo trabajar con Informe de Excel y análisis interactivo\".",
+    "start_time": 1109.26,
+    "end_time": 1209.48
+  },
+  {
+    "slide_index": 16,
+    "image_file": "044_Slide_16_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Portal analítico  a informes a los usuarios en un navegador Web  Soporte en navegadores web modernos  El usuario necesita una cuenta en SAP Business One  Utiliza SAML para autentificar el usuario: el usuario inicia sesión con las credenciales de la cuenta  Para cada usuario, el portal solo muestra los informes sobre los que tiene autorización de ejecución  El usuario puede: Ejecutar y exportar informes, fijar informes como favoritos, programar y distribuir informes, descargar la salida de informes y ver el historial de ejecución informes URLhttps://<Server>:40000/Portal El portal analítico a informes para los usuarios en tiempo real a través de un navegador web. Hay disponibles informes desarrollados en Crystal Reports y en Informes de Excel e Diseñador de análisis interactivo, además de informes analíticos predefinidos de SAP. Es más útil para los usuarios en movimiento que no tienen acceso al cliente de SAP Business One o a Microsoft Excel en su dispositivo. Los usuarios aún necesitan una cuenta de usuario en SAP Business One. Los usuarios pueden acceder al portal con navegadores web modernos, como Microsoft Edge, Firefox, Google Chrome, Firefox y Safari. Microsoft Internet Explorer no se admite. Cuando un usuario accede al portal mediante la URL que se muestra en la diapositiva, se les redirige mediante SAML para iniciar sesión en la empresa utilizando sus credenciales de cuenta de usuario. Los usuarios pueden utilizar la entrada individual (SSO) si está establecida. Desde el portal un usuario puede: • Ejecutar un informe de Crystal o un informe de Excel • Exportar el informe a Microsoft Excel, PDF o HTML • Fijar informes como favoritos para que se visualicen en otra ficha Favoritos • Planificar informes para que se ejecuten automáticamente • Distribuir informes por correo electrónico • Descargar resultados del informe a un equipo local • Visualizar el historial de ejecución para los informes que hayan ejecutado",
+    "start_time": 1209.48,
+    "end_time": 1334.98
+  },
+  {
+    "slide_index": 17,
+    "image_file": "044_Slide_17_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Disponibilidad del informe en el portal analítico  Los informes de Informe de Excel y análisis interactivo estarán disponibles una vez grabados en SAP Business One  Los informes de Crystal estarán disponibles cuando se hayan importado como ficheros *.rpt utilizando el Gestor de informes y diseños  Los usuarios solo ven los informes sobre los que tengan autorización  Consulte el tema Autorización general para obtener detalles sobre autorizaciones de informe Hay nuevos informes disponibles en el portal como se indica: • Los informes creados en Informe de Excel e Interactive Analysis Designer estarán disponibles en el portal cuando se hayan grabado en SAP Business One. Cualquier persona con autorización sobre estos informes, podrá verlos en el portal analítico. • Los informes creados en Crystal Designer deben importarse en SAP Business One como ficheros *.rpt utilizando el Gestor de informes y diseños. A continuación, los usuarios autorizados podrán visualizar estos informes en el portal analítico. Los usuarios solo ven los informes sobre los que tengan autorización Además, el usuario debe tener autorización sobre las vistas semánticas y objetos contenidos en los informes. Consulte el tema Autorizaciones generales para obtener información sobre las autorizaciones de informe.",
+    "start_time": 1334.98,
+    "end_time": 1415.02
+  },
+  {
+    "slide_index": 18,
+    "image_file": "044_Slide_18_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Autorizaciones para informes importados El botón Fijar autorización le permite configurar la autorización cuando importe un informe nuevo Cuando se importa un informe mediante el Gestor de informes y diseño, puede fijar la autorización seleccionando el pulsador Fijar autorización . Esto abre la ventana Autorizaciones, donde puede seleccionar la autorización para el informe.",
+    "start_time": 1415.02,
+    "end_time": 1437.72
+  },
+  {
+    "slide_index": 19,
+    "image_file": "044_Slide_19_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Creación de un panel detallado",
+    "start_time": 1437.72,
+    "end_time": 1441.01
+  },
+  {
+    "slide_index": 20,
+    "image_file": "044_Slide_20_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Creación de un panel detallado En esta sección, verá los pasos para crear un panel detallado con tres acciones para: • Realizar una búsqueda empresarial de información de cliente • Abrir un maestro de interlocutor comercial • Abrir el panel avanzado de cliente 360",
+    "start_time": 1441.01,
+    "end_time": 1457.98
+  },
+  {
+    "slide_index": 21,
+    "image_file": "044_Slide_21_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "El Diseñador del análisis detallado es la herramienta común para crear paneles detallados, indicadores de rendimiento clave (KPI) y paneles avanzados. Diseñador de análisis detallado El Diseñador del análisis detallado es la herramienta común para crear paneles detallados, indicadores de rendimiento clave (KPI) y paneles avanzados. Para acceder a la herramienta, seleccione el icono en la barra de iconos del cliente SAP Business One. Nota: son necesarias autorizaciones tanto para el Diseñador de análisis detallado como para los datos de la vista. Para crear un nuevo panel detallado, seleccione Nuevo panel.",
+    "start_time": 1457.98,
+    "end_time": 1498.97
+  },
+  {
+    "slide_index": 22,
+    "image_file": "044_Slide_22_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "El primer paso es seleccionar la fuente de datos base. Puede abrir una lista de fuentes disponibles seleccionando el icono Seleccionar fuente de datos base . Seleccione la fuente de datos Cuando hace clic en una fuente de datos, aparecen la definición de la fuente de datos y sus resultados. Seleccione OK para seleccionarla. El primer paso es seleccionar la fuente de datos base. Puede abrir una lista de fuentes de datos disponibles seleccionando el icono Seleccionar fuente de datos base . Las fuentes de datos para paneles detallados creados por el usuario pueden ser consultas definidas por el usuario o vistas de cálculo de capa semántica. Cuando selecciona una fuente de datos, aparece la definición de la fuente de datos con sus resultados.",
+    "start_time": 1498.97,
+    "end_time": 1546.06
+  },
+  {
+    "slide_index": 23,
+    "image_file": "044_Slide_23_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Seleccionar medidas y dimensiones  Aparecen las medidas y dimensiones de la fuente de datos.  Arrastrar medidas y dimensiones en el área de destino del panel.  Para las medidas, seleccione un método de cálculo: Suma, media u original.  Clasificar los datos de las medidas: de forma ascendente o descendente.  Arrastrar las dimensiones hacia arriba o hacia abajo para modificar el orden de visualización. Las medidas y dimensiones de la fuente de datos aparecen en la ficha Parametrizaciones de valores. Seleccionamos las medidas y dimensiones que se pueden utilizar en el panel y las arrastramos hasta el área de destino. En el ejemplo, arrastramos el importe de ventas potencial al área de medidas de destino y arrastramos el código IC al área de dimensiones de destino. Para las medidas, tenemos la opción de seleccionar un método de cálculo: Suma, media u original. En nuestro ejemplo, utilizaremos la suma. Puede clasificar los datos de la medida por orden ascendente o descendente. Si tiene varias dimensiones, puede desplazar las dimensiones hacia arriba o hacia abajo para modificar el orden de visualización.",
+    "start_time": 1546.06,
+    "end_time": 1618.85
+  },
+  {
+    "slide_index": 24,
+    "image_file": "044_Slide_24_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Seleccionar el tipo de gráfico El siguiente paso es seleccionar un tipo de gráfico que represente bien los datos en este panel Al seleccionar las medidas y dimensiones, aparece un gráfico en la parte derecha de la ficha Parametrizaciones básicas. Use la lista desplegable para modificar el tipo de gráfico para obtener una mejor visualización de sus datos. El siguiente paso de la ficha Parametrizaciones básicas es seleccionar un tipo de gráfico que represente bien los datos de este panel. Al seleccionar las medidas y dimensiones, aparecerá un gráfico en la parte derecha de la ficha Parametrizaciones básicas . Puede utilizar la lista desplegable para cambiar el tipo de gráfico. En nuestro ejemplo utilizaremos un gráfico circular.",
+    "start_time": 1618.85,
+    "end_time": 1664.38
+  },
+  {
+    "slide_index": 25,
+    "image_file": "044_Slide_25_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Clase de estrategia Las clases de estrategia le permiten realizar un análisis adicional en su gráfico. Ejemplos de clases de estrategia: Previsiones (para dimensiones de fecha) Análisis ABC Clustering k-means Utilice el menú desplegable para añadir una clase de estrategia La opción Clase de estrategia opción le permite utilizar un algoritmo para realizar un análisis adicional en su plan. No utilizaremos esta opción en nuestro ejemplo. Ejemplos de clases de estrategia: • Previsión (solo para gráficos con dimensiones de fecha) • Análisis ABC • Clustering k-means Utilice el menú desplegable para seleccionar una clase de estrategia.",
+    "start_time": 1664.38,
+    "end_time": 1704.53
+  },
+  {
+    "slide_index": 26,
+    "image_file": "044_Slide_26_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Limitar resultados Utilizando la barra Límite a superior , puede fijar el número de resultados que mostrar entre los valores principales 5 y 300. Otra opción útilen la ficha Parametrizaciones básicas es la capacidad de limitar la cantidad de resultados que se muestran. Utilizando la barra Límite a superior , puede fijar el número de resultados que mostrar entre los valores principales 5 y 300. En el ejemplo, configuraremos el gráfico para visualizar los 5 mejores interlocutores comerciales en términos de la cantidad de oportunidades.",
+    "start_time": 1704.53,
+    "end_time": 1739.47
+  },
+  {
+    "slide_index": 27,
+    "image_file": "044_Slide_27_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Filtros y parámetros En el ejemplo empresarial, no utilizaremos ningún filtro o parámetro. Sin embargo, si deseara incluirlos, puede hacerlo en la ficha Filtro y parámetro. Para establecer un filtro, arrastre una dimensión al área de filtro Aparece una ventana donde puede seleccionar un valor o rango de filtro. Para configurar un parámetro, arrastre una dimensión sobre el área de parámetro y, a continuación, especifique el valor por defecto. En el ejemplo empresarial, no utilizaremos ningún filtro o parámetro. Sin embargo, si deseara incluirlos, puede hacerlo en la ficha Filtro y parámetro. Para configurar un filtro, arrastre una dimensión al área de filtro. Aparece una ventana para editar el filtro donde puede seleccionar un valor o rango de filtro. Para configurar un parámetro, arrastre una dimensión sobre el área de parámetro y, a continuación, especifique el valor por defecto. En el gráfico, puede ver qué sucede cuando la dimensión de empleado del departamento de ventas se desplaza al área de filtro. Se abre el Editor de filtros para permitirle especificar valores de filtro.",
+    "start_time": 1739.47,
+    "end_time": 1811.35
+  },
+  {
+    "slide_index": 28,
+    "image_file": "044_Slide_28_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Grabar el panel y asignarlo al cockpit Grabar el panel Grabar una copia del panel (Grabar como) Añadir el nuevo panel a un cockpit Grabe el panel utilizando la marca de verificación. La marca de verificación con una flecha indica Grabar como. Puede volver a abrir un panel existente para editarlo seleccionándolo de la lista de paneles. Una vez haya grabado el panel, es posible agregarlo a un cockpit del usuario.",
+    "start_time": 1811.35,
+    "end_time": 1838.26
+  },
+  {
+    "slide_index": 29,
+    "image_file": "044_Slide_29_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Adición de acciones a un panel detallado",
+    "start_time": 1838.26,
+    "end_time": 1842.1
+  },
+  {
+    "slide_index": 30,
+    "image_file": "044_Slide_30_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Acciones en paneles detallados Existen 3 posibles acciones que puede añadir a un panel:  Abrir una ventana específica en SAP Business One  Iniciar la búsqueda empresarial  Abrir un panel avanzado La lista de acciones aparece cuando el usuario hace clic con el botón derecho en los datos de un panel detallado Existen 3 posibles acciones que puede añadir a un panel:  Abrir una ventana específica en SAP Business One  Iniciar la búsqueda empresarial  Abrir un panel avanzado La lista de acciones aparece cuando el usuario hace clic con el botón derecho en los datos de un panel detallado.",
+    "start_time": 1842.1,
+    "end_time": 1876.32
+  },
+  {
+    "slide_index": 31,
+    "image_file": "044_Slide_31_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Acción 1: Búsqueda empresarial Para configurar la acción: 1. Seleccione el enlace Acciones. 2. Seleccione Acciones para activar. 3. Seleccione el botón de selección para activar una búsqueda empresarial 4. Proporcione un nombre para acción que aparecerá en el menú de contexto 5. Seleccione una dimensión de panel que le proporcionará el valor para la búsqueda 3 4 5 2 1 En el ejemplo empresarial, nos gustaría añadir una acción para iniciar una búsqueda empresarial y ver todos los datos asociados con un cliente que aparecen en el panel. En la parte derecha del gráfico, hay un enlace para añadir acciones. Haga clic en el enlace para abrir la ventana Acción . A continuación, seleccione Acciones para desencadenarpara abrir la ventanaEditar acción (panel) . Primero seleccionamos el botón de selección para activar una búsqueda empresarial A continuación, le proporcionamos un nombre a la acción. Este es el nombre de la acción que verá el usuario cuando esta aparezca en el menú contextual del panel. Por último, seleccione la dimensión de nuestros gráficos de paneles que le proporcionará el valor que se debe utilizar en la búsqueda. En el ejemplo, solo disponemos de una dimensión, la dimensión del cliente y, por lo tanto, en el gráfico solo vemos la casilla de selección de la dimensión de panel disponible.",
+    "start_time": 1876.32,
+    "end_time": 1960.75
+  },
+  {
+    "slide_index": 32,
+    "image_file": "044_Slide_32_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Inicio de la acción de búsqueda  Un usuario puede hacer clic con el botón derecho en el gráfico e iniciar la búsqueda empresarial desde la lista de acciones  El código de cliente asociado con esta sección del gráfico circular se trasladará a la búsqueda empresarial C42000 45050 Cuando un usuario visualiza el panel en el nuevo cockpit basado en roles, puede hacer clic en el gráfico del panel e iniciar la búsqueda empresarial desde una lista de acciones. El código de cliente asociado con esta sección del gráfico circular se trasladará a la búsqueda empresarial",
+    "start_time": 1960.75,
+    "end_time": 1995.55
+  },
+  {
+    "slide_index": 33,
+    "image_file": "044_Slide_33_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Acción 2: Abrir una ventana  Seleccione el enlace Acción  Seleccione la ventana Acciones para desencadenar para abrir la ventana Editar acción (panel)  Seleccione el botón de selección: Abra la ventana de SAP Business One  Proporcione un nombre a la acción  Seleccione la ventana que desea abrir En el ejemplo, también nos gustaría añadir una acción para abrir la ventana Registro maestro de interlocutores comerciales. Nuestro objetivo es poder hacer clic con el botón derecho en una sección del gráfico circular y abrir el maestro de interlocutor comercial para ese cliente. Una vez más, abrimos laventana Editar acción (panel) . Esta vez, seleccionamos el botón de selección para abrir una ventana de SAP Business One. Luego le proporcionamos a la acción un nombre que se utilizará en el menú contextual. A continuación, utilizaremos la lista desplegable para seleccionar la ventana con la que deseamos abrir la acción. En el ejemplo hemos seleccionado la ventana Datos maestros de interlocutor comercial.",
+    "start_time": 1995.55,
+    "end_time": 2057.78
+  },
+  {
+    "slide_index": 34,
+    "image_file": "044_Slide_34_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Vinculación de datos para una acción La vinculación de datos nos permite especificar el valor de dimensión que debemos trasladar a la ventana. Trasladamos el valor de la dimensión de cliente del gráfico a la ventana. Necesitamos configurar la vinculación de datos de la acción. La vinculación de datos nos permite especificar el valor de dimensión que debemos trasladar a la ventana. Ya que el panel muestra el porcentaje de oportunidades de cada cliente, la única dimensión con valores que podemos transferir es la dimensión de cliente. El campo principal del maestro de interlocutor comercial es el código de interlocutor comercial y, por lo tanto, transferimos ese valor del gráfico a la ventana.",
+    "start_time": 2057.78,
+    "end_time": 2100.46
+  },
+  {
+    "slide_index": 35,
+    "image_file": "044_Slide_35_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Uso de la acción en un cockpit Cuando un usuario visualiza el panel en el cockpit, la acción aparece en el menú contextual. Cuando se abre la ventana, se visualizan los datos maestros del cliente seleccionado en el gráfico. C42000 45050 Cuando un usuario visualice el panel en el nuevo cockpit basado en roles, la acción para abrir la ventana aparecerá en un menú contextual cuando el usuario haga clic con el botón derecho en la sección de gráficos del panel. Cuando se abre la ventana, se visualizan los datos maestros del cliente seleccionado en el gráfico.",
+    "start_time": 2100.46,
+    "end_time": 2137.15
+  },
+  {
+    "slide_index": 36,
+    "image_file": "044_Slide_36_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Inicialización de documentos La configuración de una acción para iniciar ventanas de documentos es la misma que la configuración de una acción para ventanas de datos maestros. La diferencia es que puede haber muchos documentos para un interlocutor comercial. Hemos visto cómo abrir una ventana de datos maestros, pero también es posible abrir una ventana para documentos. La configuración de una acción para iniciar ventanas de documentos es la misma que la configuración de una acción paara ventanas de datos maestros. La diferencia entre estos objetos es que puede haber muchos documentos asociados con un determinado interlocutor comercial. Como puede ver en el gráfico de la derecha, configuramos la vinculación de datos para el campo de interlocutor comercial de manera que cuando se inicie la acción, el valor de interlocutor comercial se transfiera a la ventana de documento de la oferta de ventas. A la derecha vemos el resultado de iniciar la acción desde un gráfico; la ventana de oferta de ventas está abierta junto con la lista de ofertas de ventas del valor de interlocutor comercial.",
+    "start_time": 2137.15,
+    "end_time": 2201.66
+  },
+  {
+    "slide_index": 37,
+    "image_file": "044_Slide_37_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Acción 3: Abrir un panel avanzado El jefe de ventas desea su equipo pueda ver una página con información sobre cada cliente cuyos datos aparecen en el gráfico. C42000 45050 Podemos hacerlo añadiendo una acción para abrir un panel avanzado. El jefe de ventas desea su equipo pueda ver y abrir una página con información sobre cada cliente cuyos datos aparecen en el gráfico. Podemos hacerlo añadiendo una acción para abrir un panel avanzado. Un panel avanzado es básicamente otro conjunto de páginas que puede abrir y que contienen paneles detallados adicionales e indicadores de rendimiento clave. Se utilizan para proporcionar información adicional sobre los resultados de un panel. Por ejemplo, si el vendedor descubre un cliente con el que tiene una gran cantidad de oportunidades de ventas, podría abrir un panel avanzado con análisis de ventas adicionales sobre dicho cliente que podrían proporcionarle una visión más detallada sobre los patrones de venta del cliente y, además, sobre la venta de artículos que podría promover. El panel avanzado de cliente 360 es un panel avanzado predefinido. Contiene 4 páginas de análisis centradas en un cliente específico. Las páginas incluyen información general, de ventas, de logística y de créditos. También es posible diseñar un panel avanzado personalizado.",
+    "start_time": 2201.66,
+    "end_time": 2287.37
+  },
+  {
+    "slide_index": 38,
+    "image_file": "044_Slide_38_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Configuración de una acción de panel avanzado 1 2 3 4 1. Seleccionar el botón de selección. 2. Proporcionar un nombre a la acción. 3. Especificar qué panel avanzado iniciar. 4. Configurar la vinculación de datos para transferir el valor a un filtro utilizado en el panel avanzado. La configuración de la acción para iniciar un panel avanzado es muy similar a la configuración de otras acciones. Nuevamente, seleccionamos el botón de selección correspondiente. A continuación, le proporcionamos a la acción un nombre adecuado. Especificamos qué panel avanzado deseamos iniciar. La creación y edición del panel avanzado se lleva a cabo en otra parte del diseñador de análisis detallado. En el ejemplo, ya hemos creado un panel avanzado denominado Ventas. A continuación, configuramos la vinculación de datos para transferir el valor dimensional a un filtro que se utiliza en el panel. De esta forma, podemos filtrar los KPI o paneles detallados en el panel avanzado para que muestre datos relacionados únicamente con el cliente en el que estamos interesados. En nuestro panel avanzado, ya hemos configurado un filtro utilizando el campo código de cliente para restringir los datos visualizados en los elementos del panel avanzado. En el área de vinculación de datos, seleccionamos la dimensión de código de interlocutor comercial de nuestro panel para transferir el valor cliente al filtro de cliente.",
+    "start_time": 2287.37,
+    "end_time": 2379.36
+  },
+  {
+    "slide_index": 39,
+    "image_file": "044_Slide_39_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Añadir un panel detallado a la barra lateral de un documento",
+    "start_time": 2379.36,
+    "end_time": 2384.26
+  },
+  {
+    "slide_index": 40,
+    "image_file": "044_Slide_40_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Visualización del panel en la barra lateral de un documento El enlace a la acción ventana B1 no aparecerá en un panel cuando se utiliza en un cockpit. El proceso para enlazar el panel a un objeto es similar al del resto de acciones. Imagine que el jefe de ventas desea ver un panel que muestre el estado de oportunidad de los interlocutores comerciales mediante la vista analítica del análisis de oportunidades de ventas. Esto puede hacerse utilizando una acción para enlazar el panel a la ventana Maestro de interlocutor comercial. El proceso para enlazar el panel a un objeto es similar al del resto de acciones. Nuevamente, seleccione el enlace para abrir el área donde se crean y se gestionan acciones. A continuación, seleccione la opción Visualizar panel en las barras laterales. Esto abrirá una ventana donde definirá la acción. A diferencia del resto de acciones, esta acción no aparecerá en un menú contextual cuando el panel se utilice en un cockpit.",
+    "start_time": 2384.26,
+    "end_time": 2444.69
+  },
+  {
+    "slide_index": 41,
+    "image_file": "044_Slide_41_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Cree el panel Para nuestro panel: Fuente de datos: Vista de cálculo de análisis de la oportunidad obtenida 1 medida: Número de oportunidades (como suma) 2 dimensiones: Código IC Estado de oportunidad Tipo de gráfico: Gráfico de columnas Debe haber una dimensión en común entre la fuente de datos y la ventana de destino. Creamos el panel utilizando los mismos pasos del proceso que hemos utilizando anteriormente. Elegimos el análisis de oportunidad obtenida de la fuente de datos. Como medida, elegimos la cantidad de oportunidades como suma y le añadimos 2 dimensiones: El código IC y el estado de oportunidad. Fijamos la clase de gráfico a un gráfico de columnas. Ya estamos listos para añadir la acción al análisis integrado en el maestro de interlocutor comercial. Tenga en cuenta que debe haber una dimensión en común entre la fuente de datos y la ventana vinculada.",
+    "start_time": 2444.69,
+    "end_time": 2500.75
+  },
+  {
+    "slide_index": 42,
+    "image_file": "044_Slide_42_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Crear el enlace Seleccionar opción: Visualizar el panel en las barras laterales El proceso es similar a otras acciones Botón de selección: Enlace a la ventana de SAP Business One Proporcionar un nombre a la acción Seleccionar la ventana donde debería aparecer de panel El siguiente paso es añadir la acción que crea el enlace. La única diferencia es que selecciona Visualizar panel en la barra lateral. De lo contrario, el proceso es muy similar al de crear las acciones creadas anteriormente.  Seleccione el botón de selección Enlace a la ventana SAP B1.  Proporcione un nombre a la acción.  Seleccione la ventana donde desea que aparezca el panel. En el ejemplo, la ventana de destino es el maestro de interlocutor comercial",
+    "start_time": 2500.75,
+    "end_time": 2547.38
+  },
+  {
+    "slide_index": 43,
+    "image_file": "044_Slide_43_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Vinculación de datos Seleccione la dimensión que corresponde a un campo en la ventana de destino. Puede seleccionar más de una dimensión / campo para la ventana. En el ejemplo, seleccionamos el código IC de la fuente de datos para asignar al código IC en la ventana Maestro de interlocutor comercial. A continuación, debemos introducir información para la vinculación de datos. Seleccionamos la dimensión que corresponde a un campo en la ventana de destino Business One. Puede añadir vinculaciones de datos adicionales para seleccionar más de una dimensión y campo de destino para la ventana. En el ejemplo, seleccionamos el código IC de una lista de dimensiones disponibles de la fuente de datos que aparecen en la lista desplegable de la sección de vinculación de datos. Asignamos el código IC a nuestro origen de datos para el campo Código IC en la ventana Maestro de interlocutor comercial.",
+    "start_time": 2547.38,
+    "end_time": 2603.28
+  },
+  {
+    "slide_index": 44,
+    "image_file": "044_Slide_44_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Visualización de análisis integrados Al abrir un registro de cliente, vemos una versión filtrada del análisis que muestra el número de oportunidades ganadas, perdidas y abiertas de dicho cliente. Después de grabar el panel, podremos ver el análisis integrado en la ventana Maestro de interlocutor comercial. Al abrir el Maestro de interlocutor comercial de uno de nuestros clientes, veremos una ficha en la parte derecha de la ventana que nos permitirá abrir el análisis. Para cada registro de cliente, vemos una versión filtrada del análisis que nos muestra el número de oportunidades ganadas, perdidas y abiertas de ese cliente en particular. Para visualizar análisis integrados, debe haber seleccionado la opción de Parametrizaciones generales en la fichaVisualización : Activar la barra lateral en ventanas para visualizar recomendaciones y paneles enlazados",
+    "start_time": 2603.28,
+    "end_time": 2656.27
+  },
+  {
+    "slide_index": 45,
+    "image_file": "044_Slide_45_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
+    "script_text": "Resumen Estos son algunos puntos clave de este tema:  La capa semántica es una capa de abstracción de la base de datos de SAP HANA que contiene vistas (modelos) de datos operativos.  Los usuarios pueden acceder y consumir las vistas mediante: • Paneles de análisis detallados • Indicadores clave de rendimiento (KPI) • Paneles avanzados • Paneles de Crystal • Informe de Excel e Interactive Analysis Designer  Las vistas incluyen dimensiones (datos descriptivos) y medidas (campos cuantificables que pueden calcularse).  El panel detallado se crea a partir de una consulta o vista de cálculo definida por el usuario y muestra una dimensión (como el código de interlocutor comercial) y una medida (como el total o la cantidad).  Puede añadir acciones a un panel detallado para abrir una ventana de SAP Business One, activar una búsqueda empresarial o abrir un panel avanzado que contenga análisis relacionados. La vinculación de datos se utiliza para filtrar los datos de la ventana abierta, la búsqueda empresarial o el panel avanzado.  Un dashboard puede contener paneles detallados, KPI, widgets de recuento y direcciones de interlocutor comercial e información de contacto  El portal analítico permite a los usuarios acceder a informes a través de un navegador web. Estos son algunos de los puntos clave sobre este tema:  La capa semántica es una capa de abstracción de la base de datos de SAP HANA que contiene vistas (modelos) de datos operativos.  Los usuarios pueden acceder y consumir las vistas mediante: • Paneles de análisis detallados • Indicadores clave de rendimiento (KPI) • Paneles avanzados • Paneles de Crystal • Informe de Excel e Interactive Analysis Designer  Las vistas incluyen dimensiones (datos descriptivos) y medidas (campos cuantificables que pueden calcularse).  El panel detallado se crea a partir de una consulta o vista de cálculo definida por el usuario y muestra una dimensión (como el código de interlocutor comercial) y una medida (como el total o la cantidad).  Puede añadir acciones a un panel detallado para abrir una ventana de SAP Business One, activar una búsqueda empresarial o abrir un panel avanzado que contenga análisis relacionados. La vinculación de datos se utiliza para filtrar los datos de la ventana abierta, la búsqueda empresarial o el panel avanzado.  Un dashboard puede contener paneles detallados, KPI, widgets de recuento y direcciones de interlocutor comercial e información de contacto  El portal analítico permite a los usuarios acceder a informes a través de un navegador web.",
+    "start_time": 2656.27,
+    "end_time": 2810.71
+  }
+]

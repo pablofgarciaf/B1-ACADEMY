@@ -1,0 +1,72 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "067_Slide_01_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre ItemInv 12 Item ItemGrp en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Artículos e inventario: Definición de grupos de artículos Bienvenido al tema sobre la definición de los grupos de artículos.",
+    "start_time": 0.0,
+    "end_time": 21.6
+  },
+  {
+    "slide_index": 2,
+    "image_file": "067_Slide_02_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "En este tema, exploraremos cómo los grupos de artículos ayudan a gestionar artículos en la configuración y la realización de informes. Ejecutaremos informes por grupos de artículos. Luego definiremos un grupo de artículos y veremos cómo los valores predeterminados del grupo de artículos se copian a los artículos creados recientemente. Al finalizar este tema, podrá: Ejecutar informes por grupos de artículos Definir un grupo de artículos Crear registros maestros de artículo Objetivos",
+    "start_time": 21.6,
+    "end_time": 52.92
+  },
+  {
+    "slide_index": 3,
+    "image_file": "067_Slide_03_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Su empresa tiene una gran cantidad de artículos. Para mejorar la gestión de los artículos, los artículos se gestionan por grupos de artículos. La realización de informes por grupos de artículos facilita la visualización de las líneas de producto rentables y la gestión más efectiva del inventario. Fijar los valores de campo predeterminados en grupos de artículos agiliza la creación de artículos e impone consistencia para los artículos dentro de un grupo de artículos. 3 3 Escenario empresarial Su empresa tiene una gran cantidad de artículos. Para mejorar la gestión de los artículos, los artículos se gestionan por grupos de artículos. La realización de informes por grupos de artículos facilita la visualización de las líneas de producto rentables y la gestión más efectiva del inventario. Fijar los valores de campo predeterminados en grupos de artículos agiliza la creación de artículos e impone consistencia para los artículos dentro de un grupo de artículos.",
+    "start_time": 52.92,
+    "end_time": 112.34
+  },
+  {
+    "slide_index": 4,
+    "image_file": "067_Slide_04_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Varios negocios tienen un gran número de artículos. Resulta útil tener una forma de agrupar artículos similares juntos y clasificar estos artículos lógicamente para el procesamiento y la realización de informes. Los grupos de artículos le permiten categorizar sus artículos por líneas de productos o por cómo los artículos se utilizan en su negocio. Puede fijar grupos como materias primas y productos terminados, o agruparlos por cómo aparecerían en un catálogo de ventas. En nuestra situación de ejemplo, OEC Computers ha agrupado los artículos en líneas de productos como impresoras, computadoras, accesorios, etc. 4 Grupos de artículos Agrupar artículos similares juntos Clasificar artículos para la realización de informes Categorizar las líneas de productos Agrupar los fines de ventas y aprovisionamiento",
+    "start_time": 112.34,
+    "end_time": 162.86
+  },
+  {
+    "slide_index": 5,
+    "image_file": "067_Slide_05_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Los grupos de artículos son una ventaja cuando usted: Crea artículos: es más rápido crear artículos porque algunos campos comunes a esta área de negocio automáticamente están predeterminados en el artículo. Realiza un informe de los datos relacionados con el artículo: los grupos de artículos se pueden utilizar en la realización de informes para los criterios de selección. Procesa artículos: puede utilizar el grupo como criterio para procesar artículos, como seleccionar artículos en un grupo de artículos para incluirlos en un recuento de inventario. 5 Ventajas del grupo de artículos Creación de artículos – Valores de campo predeterminados en nuevos artículos Realización de informes sobre datos relacionados con artículos – Ejecución de informes por grupos Procesamiento de artículos – Selección de artículos relacionados para un recuento de inventario",
+    "start_time": 162.86,
+    "end_time": 214.2
+  },
+  {
+    "slide_index": 6,
+    "image_file": "067_Slide_06_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Los grupos de artículo son muy fáciles de usar, porque el grupo se elige en el área de la cabecera del informe maestro de artículo. Puede hasta crear nuevos grupos de artículo en la lista desplegable mediante la opción Definir nuevo. 6 Grupos de artículos en el registro maestro de artículos Núm. artículo Descripción Cl. artículo Datos maestros de artículo A2001 Escáneres Lista de precios Lista de precios de compra Gr. artículos Artículos Puede seleccionar el grupo de artículos en la lista desplegable. Para crear nuevas entradas, seleccione la opción Definir Nuevo. Escáner digital plano",
+    "start_time": 214.2,
+    "end_time": 253.51
+  },
+  {
+    "slide_index": 7,
+    "image_file": "067_Slide_07_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Los valores predeterminados pertenecen a algunas áreas básicas: Conceptos básicos del artículo: Tipo de artículo (artículo material o servicio), Valores predeterminados para las unidades de medición – grupo predeterminado y unidad de medida de inventario predeterminada. Valores predeterminados para la planificación de necesidades de los materiales: método de planificación, método de aprovisionamiento, intervalo de pedido, pedido múltiple, cantidad mínima de pedido, plazo. Coste predeterminado: Una parametrización clave que puede llevar a cabo a nivel del grupo de artículo es el método de valoración de inventario. Si utiliza ubicaciones en un almacén, puede fijar valores predeterminados en una ubicación predeterminada y si la ubicación predeterminada debe utilizarse en base a la entrada del artículo. Cuando crea un artículo y asigna un grupo de artículos, los campos predeterminados del grupo de artículos aparecen en el artículo. Los campos se pueden modificar. 7 Valores predeterminados del grupo de artículos Clasificación general: Artículo o servicio Unidades de medida y grupos de medida Campos de Planificación de necesidades de materiales (MRP) Coste – Método de valoración Ubicación Valores comunes Artículo Unidad de medida Cada uno Comprado al proveedor Coste media variable",
+    "start_time": 253.51,
+    "end_time": 335.5
+  },
+  {
+    "slide_index": 8,
+    "image_file": "067_Slide_08_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Puede utilizar el grupo de artículos en los criterios de selección para varios informes. Algunos informes, como los análisis de ventas y compras, pueden mostrar totales por grupos de artículos. 8 Realización de informes por grupos de artículos Utilice el grupo de artículos en los criterios de selección para varios informes. Mostrar totales por grupos de artículos.",
+    "start_time": 335.5,
+    "end_time": 359.78
+  },
+  {
+    "slide_index": 9,
+    "image_file": "067_Slide_09_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Puede añadir campos adicionales a una búsqueda de artículos para facilitar la búsqueda en los documentos o informes de marketing. Abra un documento o informe que muestre la ventana Lista de artículos para buscar artículos. Utilice las parametrizaciones de formulario (en la barra de herramientas) para añadir los campos que necesita. Si la lista de artículos es demasiado extensa, puede acortar la lista usando su campo añadido al grupo de artículos. De esta forma, primero visualiza los grupos, luego puede abrir un grupo para buscar un artículo individual. La búsqueda reformateada está disponible siempre que se utilice la ventana Lista de artículos. 9 Buscar funciones para un artículo Agrupar por campos, como un grupo de artículos Ampliar los grupos para mostrar los artículos individuales Añadir campos para buscar a través de las Parametrizaciones de formularios",
+    "start_time": 359.78,
+    "end_time": 414.24
+  },
+  {
+    "slide_index": 10,
+    "image_file": "067_Slide_10_10_ItemInv_12_Item_ItemGrp_ES.webp",
+    "script_text": "Puede clasificar los artículos por áreas de negocios usando los grupos de artículos. Los grupos de artículos pueden almacenar valores comunes a los artículos que pertenecen a estos grupos. Luego, cuando cree nuevos artículos que pertenezcan al grupo, los valores se predeterminarán de forma automática en el nuevo artículo. Los grupos de artículos son útiles como criterios de selección en las funciones de realización de informes y de procesamiento, como la selección de artículos en un grupo de artículos para incluir un recuento de inventario. Puede realizar un subtotal de sus análisis de ventas y compras por grupo de artículos. Si tiene un gran número de artículos, puede reformatear los criterios de búsqueda de artículos para agrupar los resultados por grupos de artículos u otro campo en la ventana Parametrizaciones de formulario. 10 10 Resumen A continuación, se detallan algunos puntos clave: Puede clasificar los artículos por áreas de negocios usando los grupos de artículos. Los grupos de artículos pueden almacenar valores comunes a los artículos que pertenecen a estos grupos. Los grupos de artículos son útiles como criterios de selección en las funciones de realización de informes y procesamiento. Puede realizar un subtotal de sus análisis de ventas y compras por grupo de artículos. Si tiene un gran número de artículos, puede reformatear los criterios de búsqueda de artículos para agrupar los resultados por grupos de artículos u otro campo en la ventana Parametrizaciones de formulario.",
+    "start_time": 414.24,
+    "end_time": 505.34
+  }
+]

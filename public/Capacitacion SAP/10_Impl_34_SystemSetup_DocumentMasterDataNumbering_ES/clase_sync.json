@@ -1,0 +1,163 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "056_Slide_01_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre Impl 34 SystemSetup DocumentMasterDataNumbering en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Configuración y gestión del sistema: Numeración de datos maestros y documento Este tema mostrará cómo configurar series personalizadas de numeración de documentos y registros de datos maestros.",
+    "start_time": 0.0,
+    "end_time": 27.17
+  },
+  {
+    "slide_index": 2,
+    "image_file": "056_Slide_02_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Al finalizar este tema, podrá: Crear y asignar rangos de números de documento a usuarios Modificar nombre de menú para funciones en el menú principal Crear y asignar serie de numeración automática para interlocutor comercial, artículo y datos maestros de recursos 2 2 Objetivos Objetivos: Crear y asignar rangos de números de documento a usuarios Modificar los nombres de menú para documentos en el menú principal Crear y asignar serie de numeración automática para interlocutor comercial, artículo y datos maestros de recursos",
+    "start_time": 27.17,
+    "end_time": 60.17
+  },
+  {
+    "slide_index": 3,
+    "image_file": "056_Slide_03_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Escenario empresarial El personal de ventas de DG Industries trabaja en distintas áreas de mercado. Los documentos de venta deben numerarse de manera diferente de modo que puedan distinguirse. Además, los clientes de cada área de mercado deberían estar numerados en consecuencia. Pedido de cliente Entrega Factura de clientes Cobro El personal de ventas de DG Industries se divide en tres áreas de mercado diferentes, cada una con un conjunto diferente de clientes. Los documentos de venta que genera cada área deben numerarse de manera diferente de modo que puedan distinguirse. Además, los clientes de cada área se codifican de manera diferente. Solución: Puede definir varias series de numeración de documentos y series de numeración de datos maestros de cliente y asignarlas a usuarios específicos.",
+    "start_time": 60.17,
+    "end_time": 110.98
+  },
+  {
+    "slide_index": 4,
+    "image_file": "056_Slide_04_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Números de documento En la primera parte de este tema, trataremos la numeración de documentos.",
+    "start_time": 110.98,
+    "end_time": 117.79
+  },
+  {
+    "slide_index": 5,
+    "image_file": "056_Slide_05_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Numeración de documentos Gestión > Inicialización del sistema > Numeración de documento Cada empresa tiene su propio método y reglas de numeración La función de numeración de documentos proporciona la flexibilidad para definir esquemas de numeración únicos para registros de datos maestros de una empresa, así como para documentos individuales y transacciones La numeración de documentos está definida en una serie para cada clase de documento y la serie realiza un seguimiento del número siguiente que se debe asignar a la serie Nota: Algunas localizaciones tienen normativas legales para números de documento Series de numeración por clase de documento Cada empresa tiene su propio método y reglas de numeración La función de numeración de documentos proporciona la flexibilidad para definir esquemas de numeración únicos para registros de datos maestros (clientes, proveedores, artículos y recursos) y documentos individuales y transacciones. La numeración de documentos se define en una serie para cada clase de documento. La serie de numeración de documentos realiza un seguimiento del siguiente número de documento que se asignará para cada tipo de documento. El sistema asignará automáticamente números en orden creciente a partir del primer número y registrará el próximo número que debe asignar a cada tipo de documento. Tenga en cuenta que algunas localizaciones tienen normativas legales en relación con números de documento.",
+    "start_time": 117.79,
+    "end_time": 202.27
+  },
+  {
+    "slide_index": 6,
+    "image_file": "056_Slide_06_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Serie de numeración de documentos Una base de datos de empresa nueva tiene una serie de numeración predefinida para cada documento: la serie principal En la serie por defecto, los números de documento empiezan en 1 Varios usuarios pueden compartir la misma serie o puede definir series de numeración adicionales para distintos usuarios de manera que puedan trabajar con diferentes rangos de numeración Una nueva base de datos de empresa tiene una serie de números predefinidos para cada clase de documento, empezando por 1. A esto se le denomina la serie principal. La serie no tiene ningún número final y, por lo tanto, la numeración es ilimitada. Puede utilizar esta serie derecha lista para utilizar si la empresa desea iniciar números de documento en 1. Varios usuarios pueden compartir la misma serie. De forma alternativa, puede definir series de numeración adicionales para distintos usuarios de manera que puedan trabajar con diferentes rangos de numeración.",
+    "start_time": 202.27,
+    "end_time": 262.7
+  },
+  {
+    "slide_index": 7,
+    "image_file": "056_Slide_07_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Edición de la serie principal Puede modificar el número inicial en la serie principal (antes de que se haya contabilizado cualquier documento) Haga doble clic en la línea de tipo de documento para abrir la ventana de configuración de la serie Introduzca un nuevo número de inicio y opcionalmente un número final para la serie En un nuevo sistema de SAP Business One, puede modificar el número inicial en la serie principal predeterminada para cualquier clase de documento. Debe hacer esto antes de que se contabilice un documento. Una razón por la que se hace esto es para que los números de documento continúen en orden creciente desde los números del sistema existente. Para cambiar la serie de numeración por defecto, haga doble clic en la línea del tipo de documento seleccionado para abrir la ventana de configuración de la serie. En la línea de la serie Principal puede introducir un nuevo número de inicio para la serie y opcionalmente un número final para la serie. Si modifica la serie predeterminada, el cambio será instantáneo y cuando se creen documentos, se iniciarán con el nuevo número.",
+    "start_time": 262.7,
+    "end_time": 328.1
+  },
+  {
+    "slide_index": 8,
+    "image_file": "056_Slide_08_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Creación de una nueva serie de numeración de documentos Para crear una nueva serie, abra la ventana de configuración de serie y, a continuación, seleccione Añadir línea desde el menú contextual Introduzca el número de inicio de la serie También debe introducir el número final en la serie anterior Los números de documento no pueden solaparse entre serie en la misma clase de documento Si solo se requiere una serie dentro de la empresa, puede utilizar la serie Principal por defecto para todos los usuarios. No obstante, tiene la opción de crear series adicionales para una clase de documento y asignar diferentes series a distintos usuarios. Esto resulta útil si desea que cada usuario trabaje con un rango definido de números de documento. Para crear una nueva serie, abra la ventana de configuración de serie y, a continuación, haga clic con el botón derecho en la línea de serie principal y seleccione la opción de añadir una nueva línea desde el menú contextual. Introduzca un nombre para la serie, junto con el número de inicio y número final opcional. El sistema rellena automáticamente el campo Próximo No. Nota: Cuando cree una nueva serie, debe indicar el número final en la serie anterior (incluida la serie principal). Esto sirve para evitar que se solapen números entre series. Si fuera legalmente aceptable en la localización, el sistema permitirá huecos en la numeración entre series. El ejemplo muestra tres nuevas series para ofertas de ventas. Cada serie se utilizará en un área separada de la empresa. Cada nueva serie comienza con el próximo número consecutivo posterior a la serie anterior para asegurarse de que no se produzcan interrupciones en los números de documento. Si la localización permite una serie de numeración de documentos que contenga más de un tipo de documento, podrá configurarla en esta ventana siempre que se marque la casilla de selección Permitir más de un tipo de documento por serie en Detalles de la empresa. Esta parametrización es irreversible. Nota: cuando grabe la nueva serie de numeración, el sistema también requerirá que actualice la ventana de numeración de documentos principal. Para crear y mantener series de documentos necesita la autorización general Gestión > Numeración de documentos.",
+    "start_time": 328.1,
+    "end_time": 467.81
+  },
+  {
+    "slide_index": 9,
+    "image_file": "056_Slide_09_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Creación de una nueva serie de numeración de documentos (cont.) Puede introducir un prefijo y o sufijo para cualquier serie, incluida la serie principal El prefijo o sufijo no es parte del número de documento real y solo aparece al imprimir La serie puede bloquearse para retirarse de la asignación Puede introducir un prefijo o sufijo (o ambos) para cualquier serie, incluida la serie principal. El prefijo o sufijo no forma parte del número actual que se asigna al documento, pero aparecerá cuando se imprima el documento. También puede introducir observaciones en la línea que pertenece a la serie. La casilla de selección Bloquear permite retirar una serie de la asignación. No puede crearse ningún documento adicional con los números de esa serie. Para continuar, asegúrese de establecer otra serie como la predeterminada.",
+    "start_time": 467.81,
+    "end_time": 520.2
+  },
+  {
+    "slide_index": 10,
+    "image_file": "056_Slide_10_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Autorización de los usuarios a la serie de numeración de documentos Cuando se crea una nueva cuenta de usuario, ese usuario no tiene acceso a la serie de numeración de documentos, ni siquiera a la serie por defecto. El usuario necesita autorización al grupo de series Seleccione un Grupo en la ventana de configuración de serie y, a continuación, otorgue autorización al grupo de series (en la ventana Autorizaciones) Cuando el usuario disponga de autorización, podrá crear documentos Asignar la serie de numeración al grupo 2 Otorgue al usuario la autorización general \"Serie: Número de grupo 2\" Cuando se crea una nueva cuenta de usuario, ese usuario no tiene acceso a la serie de numeración de documentos, ni siquiera a la serie por defecto. Eso significa que el usuario no puede abrir la ventana inicial para ningún tipo de documento hasta que disponga de autorización general al grupo de series de numeración. Cada serie de numeración puede asignarse a un grupo en la ventana de configuración de la serie. Puede seleccionar un número de grupo entre 1 y 10. Puede existir más de una serie de numeración con el mismo grupo de series A continuación, puede autorizar a los usuarios a uno o más grupos de series de numeración de acuerdo con sus necesidades de numeración de documentos. Existen dos formas de autorizar a un usuario: Asigne el usuario a un grupo de usuarios de autorización que tenga la autorización al grupo asociado con la serie de numeración. Nota: Un grupo de usuarios de autorización no es el mismo que un grupo de series de numeración. Asigne manualmente al usuario la autorización total a un grupo de series de numeración en la ventana Autorizaciones. La autorización general se denomina Serie de numeración y existen 10 autorizaciones que se asignan a los grupos en la ventana de configuración de la serie. En la diapositiva de muestra, la serie de numeración principal se asigna al grupo 1 y la nueva serie de numeración LOC2 se asigna al grupo 2. En la ventana de autorizaciones generales, se proporciona al usuario George autorización total al grupo de series 2. Esto significa que George puede crear documentos en la serie LOC2. Para obtener más información sobre autorizaciones generales y grupos de autorizaciones, consulte el curso complementario Autorizaciones generales.",
+    "start_time": 520.2,
+    "end_time": 660.02
+  },
+  {
+    "slide_index": 11,
+    "image_file": "056_Slide_11_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Indicadores de período y serie de numeración La columna Indicador de período alinea series directamente con un período contable Como resultado, solo pueden contabilizarse números de documento para una serie con el mismo indicador de período que el período contable actual. El indicador de período puede utilizarse para alinear una serie de numeración con un ejercicio y permitir que la numeración del documento se reinicie en 1 para cada nuevo ejercicio Se asume el indicador de período Por defecto si no selecciona un indicador de período, y también será el predeterminado para una nueva serie de numeración La columna Indicador de período en la línea de serie alinea la serie directamente con un período contable, por ejemplo, ejercicio 2019, ejercicio 2020. Como resultado, los documentos pueden contabilizarse con números de la serie solo si el indicador de período coincidiese con el período contable actual. Un ejemplo podría ser el uso de una nueva serie de numeración al comienzo de un nuevo ejercicio. Si utiliza un indicador de período distinto para cada nuevo período contable, puede definir una serie de numeración nueva y fijar el primer número de documento en 1 para cada nuevo ejercicio. Los indicadores de período son opcionales. Cuando define un nuevo período contable se asume el indicador de período Por defecto si no selecciona un indicador de período específico. Este también es el indicador de período por defecto para una nueva serie de numeración. Nota: Si crea un nuevo Indicador de período y desea usarlo para los períodos contables existentes, hágalo antes de contabilizar un documento.",
+    "start_time": 660.02,
+    "end_time": 758.33
+  },
+  {
+    "slide_index": 12,
+    "image_file": "056_Slide_12_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Serie de cancelación Si un documento puede ser cancelado por un usuario, la casilla de selección de cancelación aparecerá en la línea de la serie. Para designar una serie como una serie de cancelación, seleccione la casilla de selección Cancelación Cuando el usuario cancela un documento, el documento original se cancela y se emite un nuevo documento de cancelación desde la serie de cancelación Factura original Factura de cancelación Si un documento tiene la capacidad de ser cancelado por el usuario, verá una casilla de selección de cancelación en la línea de la serie. Si selecciona dicha casilla de selección, puede dedicar la serie a documentos de cancelación. Cuando el usuario cancela un documento, el documento se cierra con su número original y se emite un nuevo documento con el número de cancelación de la serie. La serie de cancelación solo se utiliza cuando el sistema crea un documento de cancelación. Esto permite que la numeración de documentos en la serie actual continúe en orden creciente. Por defecto, los documentos de cancelación toman números de la serie de cancelación con el rango numérico más bajo, incluso si hubiera especificado una serie de no cancelación como la serie por defecto. Por lo tanto, para gestionar sus documentos con más facilidad, recomendamos que solo añada documentos de cancelación a la serie de cancelación.",
+    "start_time": 758.33,
+    "end_time": 840.77
+  },
+  {
+    "slide_index": 13,
+    "image_file": "056_Slide_13_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Series por defecto para un usuario Establecer como por defecto para: Usuario actual Todos los usuarios Ciertos usuarios Si tiene varias series, puede asignar una serie como valor predeterminado para el usuario En la ventana de configuración de la serie, seleccione una serie y elija Fijar como por defecto. La serie por defecto se selecciona automáticamente para el nuevo documento Si un usuario estuviera autorizado a varias series, puede establecer una serie como por defecto para el usuario. Para asignar una serie por defecto, en la ventana de configuración de la serie, seleccione la línea de la serie y seleccione el botón Establecer como por defecto. Puede asignar la serie como por defecto para el usuario actual, para todos los usuarios y para los usuarios seleccionados por nombre. Cuando un usuario crea un documento, la serie por defecto se selecciona automáticamente para el nuevo documento y el siguiente número de la serie por defecto se asigna al documento.",
+    "start_time": 840.77,
+    "end_time": 898.18
+  },
+  {
+    "slide_index": 14,
+    "image_file": "056_Slide_14_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Trabajo con varias series Si un usuario estuviera autorizado a varias series, la lista desplegable en el documento mostrará todas las series a las que está autorizado el usuario La serie por defecto establecida para el usuario se selecciona primero automáticamente Una serie de cancelación nunca se muestra en la lista desplegable Si se utilizaran indicadores de período, una serie de numeración solo se mostrará cuando el indicador de período coincida con el indicador de período en el período contable actual La serie por defecto se selecciona automáticamente para el usuario Todas las series a las que está autorizado el usuario son seleccionables en la lista desplegable Si un usuario estuviera autorizado a varias series de numeración para un documento, la lista desplegable en el documento mostrará todas las series a las que está autorizado el usuario. La serie por defecto para el usuario se selecciona primero automáticamente. En el ejemplo, el usuario tiene autorización a los grupos 1 y 2. La serie Ventas 1 se ha establecido como por defecto para el usuario, por lo que esta serie se muestra inicialmente cuando el usuario crea un documento. El usuario puede abrir la lista desplegable para ver todas las series a las que tiene autorización y seleccionar una serie diferente. Una serie de cancelación nunca aparecerá en la lista desplegable. Si se utilizaran indicadores de período en una serie, la serie no se mostrará en la lista desplegable hasta que la fecha del sistema se encuentre dentro de un período contable con el mismo indicador de período. En el ejemplo, el período actual no tiene el mismo indicador de período, por lo que las series S2016 y S2017 no aparecen en la lista desplegable.",
+    "start_time": 898.18,
+    "end_time": 1000.42
+  },
+  {
+    "slide_index": 15,
+    "image_file": "056_Slide_15_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Numeración de documento manual Los usuarios autorizados pueden introducir un número de documento manual seleccionando Manual de la lista desplegable El número de documento es introducido por el usuario El sistema omitirá ese número en el futuro cuando lo asigne desde una serie predefinida Los documentos manuales siempre tienen el estatus “Abierto – Impreso” Los usuarios autorizados y superusuarios pueden introducir un número de documento manual. Esto resulta útil si está introduciendo documentos existentes durante una implementación y el cliente necesita utilizar los números exactos del sistema existente. La autorización general es Numeración manual de documento. Seleccione la serie Manual de la lista desplegable e introduzca un número en el documento Si un documento existente ya tuviera el mismo número, el sistema omitirá este número en el futuro cuando lo asigne desde la serie. Nota: Cuando se añaden, los documentos manuales tienen automáticamente el estatus “Abierto – Impreso”.",
+    "start_time": 1000.42,
+    "end_time": 1059.5
+  },
+  {
+    "slide_index": 16,
+    "image_file": "056_Slide_16_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Nombres de menú de los documentos Opción para cambiar el título de documento y nombre del menú principal para cualquier documento de ventas, compras o inventario, por ejemplo: Facturas de clientes Facturas de ventas El nuevo nombre se introduce en la línea de documento en la ventana de configuración de la numeración Desplazándose hacia la derecha de la ventana de configuración de la numeración de documentos, verá una columna donde puede cambiar el nombre de un documento de ventas, compras o inventario en el menú principal. Esto podría requerirse si el cliente utilizara terminología exclusiva para describir estos documentos. Para especificar un nuevo nombre, introdúzcalo en la línea de documento de la ventana de configuración de numeración. Puede modificar el nombre de un documento aun cuando ya haya sido introducido en el sistema. El nuevo nombre aparece en el Menú principal de SAP Business One en la barra de título de documentos de este tipo. Nota: este cambio afecta a todos los usuarios.",
+    "start_time": 1059.5,
+    "end_time": 1120.13
+  },
+  {
+    "slide_index": 17,
+    "image_file": "056_Slide_17_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Numeración de datos maestros En esta parte del tema verá cómo configurar rangos de numeración para datos maestros.",
+    "start_time": 1120.13,
+    "end_time": 1127.93
+  },
+  {
+    "slide_index": 18,
+    "image_file": "056_Slide_18_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Numeración de datos maestros En un sistema nuevo, existe una serie manual por defecto para los datos maestros: datos maestros de clientes y proveedores, artículo y datos maestros de recurso La serie manual es el valor por defecto para todos los usuarios y permite al usuario introducir un código cuando cree nuevos datos maestros En una nueva empresa, el sistema proporciona una serie manual para los datos maestros: datos maestros de clientes y proveedores, datos maestros de artículo y datos maestros de recurso para la producción Haga doble clic en la línea de serie para abrir la ventana de configuración. Esta serie manual está desactivada y no se puede editar o eliminar, aunque se puede bloquear. La serie manual es por defecto para todos los usuarios, y el usuario introduce manualmente un código cuando crea nuevos datos maestros. Tenga en cuenta que, si se habilita la funcionalidad de activos fijos, utilizará la serie de numeración para los datos maestros de artículo.",
+    "start_time": 1127.93,
+    "end_time": 1188.02
+  },
+  {
+    "slide_index": 19,
+    "image_file": "056_Slide_19_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Creación de una serie de numeración automática de datos maestros La definición de una nueva serie de datos maestros es similar a la definición de una serie de numeración de documentos Introduzca el número de inicio del código. Este número se asignará como código de datos maestros, y el siguiente número en 1 De forma opcional, puede añadir un prefijo y o sufijo. El prefijo y sufijo se añadirán al código generado para crear números con varias partes. Los prefijos y sufijos no se incrementan Debe especificar el número de dígitos El prefijo y o sufijo forman parte del código generado Debe especificar el número de dígitos del código (se añadirán ceros a la izquierda) Puede definir rangos de numeración automáticos para los datos maestros. Estas series funciona de forma similar a la serie de numeración de documento y realizan el seguimiento de números y los asignan cuando se crean nuevos datos maestros. La definición de una nueva serie de datos maestros es muy similar a la definición de una serie de numeración de documentos. Para definir una nueva serie, indique el primer número de la serie. El sistema lo asignara como el código (clave) de los nuevos registros de datos maestros. A continuación, el sistema incrementa el siguiente número de la serie en 1. De forma opcional, puede introducir un sufijo y o un prefijo para cada serie. A diferencia del prefijo o sufijo para un número de documento, el prefijo o sufijo de datos maestros se añadirá al código de datos maestros generado cuando se crean los datos maestros. Esta operación le ofrece la posibilidad de crear números con varias partes como, por ejemplo, 01 0001 01. Tenga en cuenta que solo se incrementa la parte principal del número, no se incrementa el prefijo o el sufijo que en este ejemplo permanecería como 01. En una serie de datos maestros debe especificar el número de dígitos para el código. Si fija el número inicial en 1 y la cantidad de dígitos es 4, los ceros a la izquierda se añadirán al código para que se impute como 0001.",
+    "start_time": 1188.02,
+    "end_time": 1317.0
+  },
+  {
+    "slide_index": 20,
+    "image_file": "056_Slide_20_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Creación de una serie de numeración automática de datos maestros (cont.) Puede fijar autorizaciones para usuarios en función del grupo seleccionado para la serie También puede establecer una serie como valor por defecto para usuarios La casilla de selección para visualizar mensajes cuando los datos maestros se han creado mediante una serie no manual La serie de datos maestros no puede alinearse con un indicador de período Puede fijar autorizaciones para usuarios en función del grupo seleccionado en la ventana de configuración de la serie. Esto es idéntico a la serie de numeración de documentos. Y puede establecer una serie de datos maestros como valor por defecto para uno o más usuarios. Existe una casilla de selección opcional para visualizar un mensaje cuando se crean datos maestros mediante una serie que no es la serie manual. Nota: No puede alinear una serie de numeración de datos maestros con un indicador de período.",
+    "start_time": 1317.0,
+    "end_time": 1373.66
+  },
+  {
+    "slide_index": 21,
+    "image_file": "056_Slide_21_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Creación de una nueva serie de numeración de datos maestros (cont.) Ya que el prefijo y o sufijo forman parte del código, puede que existan diferentes series con números solapados Únicamente se incrementa la parte principal del número, no se incrementa el prefijo o sufijo Ya que en los datos maestros el prefijo y o sufijo forman parte del código, puede que diferentes series tengan números solapados. En la diapositiva de muestra, cada serie tiene el mismo rango de números, aunque debido a que también hemos definido un prefijo para cada serie, los códigos reales generados son únicos. El código generado siempre contendrá el número exacto de dígitos especificado, con ceros iniciales añadidos en la parte delantera. Por ejemplo, si una serie empieza en 1 y el número de dígitos es 3, el código que se asignará en los datos maestros será 001. Si el número de dígitos fuera 6, el código generado será 000001. Nota: El número de dígitos para una serie no puede cambiarse después de que se haya creado un registro de datos maestros. Debe tener precaución ya que el número de dígitos puede ser un factor limitante para el tamaño de la serie. En el ejemplo mostrado, en la serie Ordenador puede haber 9999 posibles artículos ya que el número de dígitos se define como 4.",
+    "start_time": 1373.66,
+    "end_time": 1458.65
+  },
+  {
+    "slide_index": 22,
+    "image_file": "056_Slide_22_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Compruebe la utilidad de numeración de documentos Gestión > Utilidades > Comprobar numeración de documentos El informe muestra la lista de números de documento o de datos maestros que faltan o que están duplicados Se proporciona una utilidad para comprobar números duplicados o que faltan en documentos o datos maestros. En los criterios de selección, puede seleccionar documentos por tipo e incluir también numeración de datos maestros. El informe muestra una lista de números que faltan o que están duplicados. Puede utilizar este informe para comprobar números después de una carga inicial de documentos durante la implementación.",
+    "start_time": 1458.65,
+    "end_time": 1496.66
+  },
+  {
+    "slide_index": 23,
+    "image_file": "056_Slide_23_10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.webp",
+    "script_text": "Resumen Puntos clave de este tema: La numeración de documentos permite que usuarios autorizados establezcan rangos de números que se asignarán automáticamente en documentos y datos maestros Puede crear una serie de numeración para cada tipo de documento y para interlocutor comercial, artículo y datos maestros de recursos Los usuarios deben estar autorizados a utilizar una serie de numeración. Para ello, asigne primero la serie de numeración a un grupo de series y a continuación autorice a los usuarios al grupo de series utilizando la autorización general Si los usuarios estuvieran autorizados a varias series de numeración, puede establecer una por defecto Los números de documento no incluyen el prefijo o sufijo, por lo que los números no pueden solaparse entre series. Los números de datos maestros incluyen el prefijo o sufijo, por lo que los números pueden solaparse entre series En la serie de datos maestros debe especificar el número de dígitos para el código. El código se rellenará con ceros iniciales hasta que se alcance el número dígitos En la ventana de configuración de la numeración de documentos puede cambiar el nombre de un documento de ventas, compras o inventario en el menú principal Estos son algunos puntos clave de este tema: La función de numeración de documentos permite que usuarios autorizados establezcan rangos de números que se asignarán automáticamente en documentos y datos maestros Puede crear una serie de numeración para cada tipo de documento y para interlocutor comercial, artículo y datos maestros de recursos Los usuarios deben estar autorizados a utilizar una serie de numeración. Para ello, asigne primero la serie de numeración a un grupo de series y a continuación autorice a los usuarios al grupo de series utilizando la autorización general Si los usuarios estuvieran autorizados a varias series de numeración, debe establecer una por defecto para evitar que un usuario seleccione la serie errónea en la lista desplegable de series en un documento. La serie de numeración de documentos puede tener un prefijo y o un sufijo. El número de documento asignado no incluye el prefijo o sufijo, por lo que los números no pueden solaparse entre series. La serie de numeración de datos maestros también incluye el prefijo o sufijo, y el número asignado no incluye el prefijo y o sufijo; por lo tanto, los números de datos maestros pueden solaparse entre series. Los números de documento pueden reiniciarse cada año si se utiliza un indicador de período en la definición de serie. En la serie de datos maestros debe especificar el número de dígitos para el código asignado. El código se rellenará con ceros iniciales hasta que se alcance el número dígitos. En la ventana de configuración de la numeración de documentos puede cambiar el nombre de un documento de ventas, compras o inventario en el menú principal. Esto podría requerirse si el cliente utilizara terminología exclusiva para describir estos documentos.",
+    "start_time": 1496.66,
+    "end_time": 1670.69
+  }
+]

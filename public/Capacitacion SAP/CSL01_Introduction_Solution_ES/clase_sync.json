@@ -1,0 +1,380 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "Slide_01.webp",
+    "script_text": "Iniciamos la solución del caso práctico de introducción explorando la arquitectura de menús en SAP Business One. El menú principal organiza las operaciones de la empresa en módulos interconectados: Gestión para parametrizaciones, Finanzas para el Libro Mayor, Socios de Negocios para clientes y proveedores, y las áreas operativas de Compras, Ventas e Inventario. La consistencia en la navegación permite que cualquier usuario domine el sistema con rapidez.",
+    "step_guide": {
+      "title": "Lección 1: Visión General del ERP y Navegación Modular",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 1: Visión General del ERP y Navegación Modular.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 1 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 0.0,
+    "end_time": 29.36
+  },
+  {
+    "slide_index": 2,
+    "image_file": "Slide_02.webp",
+    "script_text": "Para adaptar el sistema al rol del jefe de ventas Bill, seleccionamos la plantilla oficial de Cockpit de Ventas. A diferencia de las interfaces transaccionales clásicas, el Cockpit estilo Fiori en SAP HANA procesa métricas en memoria RAM en tiempo real, permitiendo que la gerencia visualice indicadores de desempeño y gráficos interactivos sin penalizar el rendimiento del servidor de producción.",
+    "step_guide": {
+      "title": "Lección 2: Filosofía del Cockpit Fiori en SAP HANA",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 2: Filosofía del Cockpit Fiori en SAP HANA.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 2 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 29.36,
+    "end_time": 54.04
+  },
+  {
+    "slide_index": 3,
+    "image_file": "Slide_03.webp",
+    "script_text": "Abrimos el Maestro de Socios de Negocios para los clientes C20000, C50000 y C60000. En la pestaña General vinculamos a Bill como empleado de ventas responsable. En SAP Business One, esta asignación no es un dato decorativo: define la jerarquía de aprobaciones, las alertas automáticas de cartera y la liquidación de comisiones periódicas para el equipo comercial.",
+    "step_guide": {
+      "title": "Lección 3: Gestión Estratégica del Maestro de Clientes (OCRD)",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 3: Gestión Estratégica del Maestro de Clientes (OCRD).",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 3 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 54.04,
+    "end_time": 81.768
+  },
+  {
+    "slide_index": 4,
+    "image_file": "Slide_04.webp",
+    "script_text": "Una de las funciones más potentes para el usuario diario es la barra de búsqueda de menús superior. Al escribir cualquier término, como Actividades, el sistema filtra y resalta la ruta exacta dentro del árbol de módulos en milisegundos, reduciendo el tiempo de capacitación y eliminando la necesidad de memorizar rutas complejas.",
+    "step_guide": {
+      "title": "Lección 4: Búsqueda Rápida y Localización de Funciones",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 4: Búsqueda Rápida y Localización de Funciones.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 4 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 81.768,
+    "end_time": 102.752
+  },
+  {
+    "slide_index": 5,
+    "image_file": "Slide_05.webp",
+    "script_text": "Arrastramos el acceso directo de Actividades hacia el widget de Funciones Comunes del Cockpit. Con esta configuración, el asesor comercial dispone de un centro de gestión para registrar llamadas telefónicas, reuniones presenciales y tareas de prospección con un solo clic, asegurando que ningún compromiso comercial quede desatendido.",
+    "step_guide": {
+      "title": "Lección 5: Widget de Funciones Comunes para CRM",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 5: Widget de Funciones Comunes para CRM.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 5 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 102.752,
+    "end_time": 124.216
+  },
+  {
+    "slide_index": 6,
+    "image_file": "Slide_06.webp",
+    "script_text": "En implementaciones reales, un formulario comercial cargado de campos irrelevantes aumenta la probabilidad de error humano. Mediante los Ajustes de Formulario, el consultor puede ocultar o bloquear campos secundarios para simplificar la vista del usuario, manteniendo intacta la estructura subyacente de la base de datos.",
+    "step_guide": {
+      "title": "Lección 6: Ajustes de Formulario y Personalización de Pantalla",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 6: Ajustes de Formulario y Personalización de Pantalla.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 6 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 124.216,
+    "end_time": 144.84
+  },
+  {
+    "slide_index": 7,
+    "image_file": "Slide_07.webp",
+    "script_text": "Iniciamos el ciclo de ventas registrando una Oferta de Ventas formal en la tabla OQUT. Este documento comercial establece los precios de lista pactados y el período de validez de la propuesta. Dado que no representa una transacción consumada, la oferta no afecta el inventario físico ni genera movimientos en el Libro Mayor contable.",
+    "step_guide": {
+      "title": "Lección 7: Anatomía de la Oferta de Ventas (OQUT)",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 7: Anatomía de la Oferta de Ventas (OQUT).",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 7 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 144.84,
+    "end_time": 166.544
+  },
+  {
+    "slide_index": 8,
+    "image_file": "Slide_08.webp",
+    "script_text": "Para convertir la oferta en pedido, utilizamos el mecanismo oficial de enlace Copiar a. En SAP Business One, arrastrar datos entre documentos mediante Copiar a preserva el árbol genealógico del proceso, asegurando que las cantidades, precios y descuentos se transfieran sin discrepancias ni necesidad de recaptura manual.",
+    "step_guide": {
+      "title": "Lección 8: La Cadena de Trazabilidad: Copiar a vs Copiar de",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 8: La Cadena de Trazabilidad: Copiar a vs Copiar de.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 8 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 166.544,
+    "end_time": 187.672
+  },
+  {
+    "slide_index": 9,
+    "image_file": "Slide_09.webp",
+    "script_text": "Al confirmar el pedido en la tabla ORDR, el sistema realiza una acción logística crucial: incrementa el valor en la columna de Stock Comprometido para los artículos seleccionados. Aunque el material sigue físicamente en el almacén, el motor de reservas de SAP impide que otros vendedores ofrezcan esas mismas unidades a otros clientes.",
+    "step_guide": {
+      "title": "Lección 9: El Pedido de Ventas (ORDR) y Stock Comprometido",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 9: El Pedido de Ventas (ORDR) y Stock Comprometido.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 9 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 187.672,
+    "end_time": 210.0
+  },
+  {
+    "slide_index": 10,
+    "image_file": "Slide_10.webp",
+    "script_text": "La tecnología SAP HANA incluye el cálculo dinámico de verificación de disponibilidad ATP (Available to Promise). El sistema analiza en milisegundos el stock físico disponible, las recepciones de compra programadas y los pedidos confirmados para entregar una fecha certera de despacho, evitando promesas de entrega imposibles de cumplir.",
+    "step_guide": {
+      "title": "Lección 10: Comprobación de Disponibilidad (ATP) en Tiempo Real",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 10: Comprobación de Disponibilidad (ATP) en Tiempo Real.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 10 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 210.0,
+    "end_time": 231.728
+  },
+  {
+    "slide_index": 11,
+    "image_file": "Slide_11.webp",
+    "script_text": "La salida física del inventario se oficializa con la Entrega de Mercancías en la tabla ODLN. Este albarán es el documento legal de transporte que acompaña la carga física y descuenta inmediatamente las unidades del almacén seleccionado, reduciendo las existencias reales en el módulo de inventario.",
+    "step_guide": {
+      "title": "Lección 11: Entrega de Mercancías (ODLN): Impacto Físico",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 11: Entrega de Mercancías (ODLN): Impacto Físico.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 11 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 231.728,
+    "end_time": 251.248
+  },
+  {
+    "slide_index": 12,
+    "image_file": "Slide_12.webp",
+    "script_text": "Si la empresa opera con sistema de inventario permanente, la Entrega de Mercancías genera automáticamente un asiento en el Libro Mayor: debita la cuenta de Costo de Mercancías Vendidas y acredita la cuenta de Existencias del activo. Este asiento reconoce el costo financiero de la venta en el mismo período en que se entrega el bien.",
+    "step_guide": {
+      "title": "Lección 12: Asiento Contable Automático de Existencias",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 12: Asiento Contable Automático de Existencias.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 12 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 251.248,
+    "end_time": 271.728
+  },
+  {
+    "slide_index": 13,
+    "image_file": "Slide_13.webp",
+    "script_text": "Copiamos la Entrega hacia la Factura de Deudores en la tabla OINV. Este documento tributario formaliza la obligación de pago del cliente, liquida los impuestos sobre el valor añadido correspondientes y reconoce formalmente el ingreso comercial en la contabilidad general de la empresa.",
+    "step_guide": {
+      "title": "Lección 13: Factura de Clientes (OINV): Reconocimiento del Ingreso",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 13: Factura de Clientes (OINV): Reconocimiento del Ingreso.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 13 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 271.728,
+    "end_time": 290.144
+  },
+  {
+    "slide_index": 14,
+    "image_file": "Slide_14.webp",
+    "script_text": "El asiento contable de la Factura de Clientes carga en el Debe la cuenta de control del deudor por el total bruto, y abona en el Haber la cuenta de Ingresos Comerciales por el importe neto y la cuenta de Impuestos Repercutidos por el IVA correspondiente, dejando la cuenta por cobrar registrada en el balance.",
+    "step_guide": {
+      "title": "Lección 14: Asiento de Factura: Cliente vs Ventas e Impuestos",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 14: Asiento de Factura: Cliente vs Ventas e Impuestos.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 14 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 290.144,
+    "end_time": 308.152
+  },
+  {
+    "slide_index": 15,
+    "image_file": "Slide_15.webp",
+    "script_text": "Al recibir el pago del cliente, registramos el Cobro en la tabla ORCT del módulo de Gestión de Bancos. Seleccionamos el medio de pago, ya sea transferencia electrónica, cheque o efectivo, cancelando el saldo pendiente de la factura y extinguiendo la cuenta por cobrar en el balance.",
+    "step_guide": {
+      "title": "Lección 15: Cobro Recibido en Gestión de Bancos (ORCT)",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 15: Cobro Recibido en Gestión de Bancos (ORCT).",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 15 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 308.152,
+    "end_time": 327.456
+  },
+  {
+    "slide_index": 16,
+    "image_file": "Slide_16.webp",
+    "script_text": "Cuando los cobros se reciben en cheques o efectivo, permanecen provisionalmente en una cuenta de fondos a depositar. Mediante el Depósito Bancario en la tabla ODPS, transferimos formalmente esos recursos hacia la cuenta corriente bancaria de la empresa, cuadrando el saldo contable con el extracto bancario.",
+    "step_guide": {
+      "title": "Lección 16: Depósito Bancario y Liquidación de Medios",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 16: Depósito Bancario y Liquidación de Medios.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 16 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 327.456,
+    "end_time": 347.432
+  },
+  {
+    "slide_index": 17,
+    "image_file": "Slide_17.webp",
+    "script_text": "Al aplicar el cobro a la factura, SAP Business One realiza la conciliación interna entre ambas transacciones. Este proceso matemático casa los importes en el Debe y el Haber del cliente, cerrando las partidas abiertas y garantizando que el estado de cuenta refleje únicamente las deudas vigentes.",
+    "step_guide": {
+      "title": "Lección 17: Conciliación Interna Automática",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 17: Conciliación Interna Automática.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 17 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 347.432,
+    "end_time": 367.0
+  },
+  {
+    "slide_index": 18,
+    "image_file": "Slide_18.webp",
+    "script_text": "Un consultor senior aprovecha la navegación drill-down en todo momento. Al hacer clic sobre cualquier flecha de enlace naranja en los reportes o formularios, SAP abre directamente el maestro del cliente, del artículo o del asiento contable sin necesidad de abrir menús secundarios.",
+    "step_guide": {
+      "title": "Lección 18: Navegación Drill-down con la Flecha Naranja",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 18: Navegación Drill-down con la Flecha Naranja.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 18 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 367.0,
+    "end_time": 385.056
+  },
+  {
+    "slide_index": 19,
+    "image_file": "Slide_19.webp",
+    "script_text": "Desde cualquier documento del ciclo, abrimos el Mapa de Relaciones para auditar la cadena de transacciones completa. El gráfico muestra la Oferta, el Pedido, la Entrega, la Factura y el Cobro conectados en color verde con estado Cerrado, certificando que el proceso concluyó con éxito operativo y contable.",
+    "step_guide": {
+      "title": "Lección 19: Auditoría Integral con el Mapa de Relaciones",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 19: Auditoría Integral con el Mapa de Relaciones.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 19 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 385.056,
+    "end_time": 405.656
+  },
+  {
+    "slide_index": 20,
+    "image_file": "Slide_20.webp",
+    "script_text": "Al regresar a la pantalla de inicio, comprobamos cómo el Cockpit Fiori de Bill actualizó en tiempo real los contadores de facturación y despacho. La tecnología en memoria de SAP HANA permite que los directivos auditen la salud comercial del negocio sin esperar a los cierres mensuales.",
+    "step_guide": {
+      "title": "Lección 20: Monitoreo en Tiempo Real del Cockpit",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 20: Monitoreo en Tiempo Real del Cockpit.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 20 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 405.656,
+    "end_time": 423.592
+  },
+  {
+    "slide_index": 21,
+    "image_file": "Slide_21.webp",
+    "script_text": "Hemos completado la solución del ciclo de ventas e introducción a SAP Business One. Ahora dominas la navegación modular, la personalización de entornos Fiori, la arquitectura de maestros y la repercusión contable del circuito comercial, consolidando las bases para tu certificación oficial.",
+    "step_guide": {
+      "title": "Lección 21: Conclusión y Competencias de Consultoría Comercial",
+      "menu_path": "Circuito Order-to-Cash en SAP Business One",
+      "action_type": "sales_step",
+      "instructions": [
+        "Sigue las directrices pedagógicas de la Lección 21: Conclusión y Competencias de Consultoría Comercial.",
+        "Audita las transacciones y asientos contables asociados en el sistema.",
+        "Valida la coherencia de datos entre módulos en el simulador."
+      ],
+      "expected_output": "Paso 21 validado según los estándares oficiales de consultoría SAP."
+    },
+    "start_time": 423.592,
+    "end_time": 442.704
+  }
+]

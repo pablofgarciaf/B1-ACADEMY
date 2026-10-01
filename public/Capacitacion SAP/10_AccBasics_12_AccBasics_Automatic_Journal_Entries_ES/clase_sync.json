@@ -1,0 +1,86 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "002_Slide_01_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Bienvenidos a esta clase sobre Asientos Automáticos en SAP Business One. Una de las mayores fortalezas del sistema es su capacidad para contabilizar en tiempo real cada evento operativo de la empresa. En esta lección descubriremos la inteligencia detrás de este mecanismo: cómo el sistema determina exactamente qué cuentas de mayor utilizar y cómo calcula los importes de cada asiento.",
+    "start_time": 0.0,
+    "end_time": 24.29
+  },
+  {
+    "slide_index": 2,
+    "image_file": "002_Slide_02_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Nuestro objetivo en esta sesión es desmitificar la automatización contable. Analizaremos paso a paso la configuración de la Determinación de Cuentas de Mayor, comprenderemos el rol vital de las Cuentas Asociadas para clientes y proveedores, y examinaremos cómo las listas de precios y los métodos de valoración de inventario alimentan con precisión matemática cada registro contable.",
+    "start_time": 24.29,
+    "end_time": 47.52
+  },
+  {
+    "slide_index": 3,
+    "image_file": "002_Slide_03_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Retomemos nuestro caso de implementación en OEC Computers. María, la jefa de contabilidad, nos plantea una duda muy común entre los responsables financieros: ¿Cómo puede estar segura de que los usuarios del almacén y los ejecutivos de ventas, que no son contadores, registrarán los asientos correctos al emitir entregas o facturas? Nuestra respuesta como consultores es clara: SAP Business One no delega la contabilidad en el usuario, sino en las reglas maestras preconfiguradas en el sistema.",
+    "start_time": 47.52,
+    "end_time": 78.94
+  },
+  {
+    "slide_index": 4,
+    "image_file": "002_Slide_04_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Para que los asientos automáticos funcionen a la perfección, intervienen dos pilares fundamentales: la parametrización de finanzas en la Determinación de Cuentas de Mayor, y los datos maestros tanto del Interlocutor Comercial como del Artículo. Juntos responden a las dos preguntas clave de cualquier contabilización: ¿Qué cuentas debemos afectar y por qué importe?",
+    "start_time": 78.94,
+    "end_time": 101.33
+  },
+  {
+    "slide_index": 5,
+    "image_file": "002_Slide_05_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "En SAP Business One podemos definir la estrategia contable de inventario a tres niveles jerárquicos: a nivel de Almacén, por Grupo de Artículos o a nivel de Artículo individual. La mejor práctica para empresas de gran volumen, como OEC Computers, es parametrizar las cuentas por almacén o grupo de artículos. De esta forma, cuando un operador selecciona un producto en una transacción, el sistema hereda en automático las cuentas de existencias, ingresos y costes sin margen de error.",
+    "start_time": 101.33,
+    "end_time": 132.36
+  },
+  {
+    "slide_index": 6,
+    "image_file": "002_Slide_06_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Un concepto indispensable en la arquitectura financiera de SAP son las Cuentas Asociadas o cuentas de control. En lugar de crear una cuenta contable separada en el Plan de Cuentas para cada uno de los miles de clientes y proveedores, el sistema utiliza una cuenta puente colectiva. Así, todas las facturas y cobros de clientes se canalizan a la cuenta asociada de Deudores Comerciales, manteniendo el Libro Mayor limpio y resumido.",
+    "start_time": 132.36,
+    "end_time": 159.22
+  },
+  {
+    "slide_index": 7,
+    "image_file": "002_Slide_07_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Es crucial entender esta distinción: los saldos individuales de cada cliente o proveedor residen en su propio registro maestro dentro de la contabilidad auxiliar, no como cuentas individuales del Plan de Cuentas. Sin embargo, en el Balance General, el saldo de la Cuenta Asociada refleja con exactitud la suma total de las deudas por cobrar o por pagar de toda la cartera comercial.",
+    "start_time": 159.22,
+    "end_time": 182.86
+  },
+  {
+    "slide_index": 8,
+    "image_file": "002_Slide_08_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Ahora que sabemos cómo el sistema elige las cuentas, analicemos cómo determina los valores monetarios. En el proceso de ventas, el importe facturado proviene de la Lista de Precios asignada al cliente en su dato maestro. En cambio, en los movimientos de almacén, el valor de salida no es el precio de venta, sino el coste unitario del artículo calculado según su método de valoración: Media Ponderada, FIFO o Coste Estándar.",
+    "start_time": 182.86,
+    "end_time": 210.91
+  },
+  {
+    "slide_index": 9,
+    "image_file": "002_Slide_09_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Veamos el cálculo en una venta real: creamos un pedido para un cliente distribuidor que tiene asignada por defecto la Lista de Precios de Revendedor. El producto tiene un precio unitario de ciento diez dólares. Al vender cuatro unidades, el valor total del documento asciende a cuatrocientos cuarenta dólares. Ese importe exacto es el que viajará automáticamente al asiento de la factura: cuatrocientos cuarenta al Debe del cliente y cuatrocientos cuarenta al Haber de ingresos.",
+    "start_time": 210.91,
+    "end_time": 241.15
+  },
+  {
+    "slide_index": 10,
+    "image_file": "002_Slide_10_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "En el circuito de compras ocurre algo similar: Joe, el jefe de compras, adquiere diez reproductores multimedia al proveedor Coconut Devices. El proveedor tiene ligada la Lista de Precios de Compra a cien dólares por unidad, dando un pedido de mil dólares. Al registrar la factura del proveedor, el sistema abona mil dólares a la cuenta asociada del proveedor y carga mil dólares a la cuenta puente de compensación de existencias.",
+    "start_time": 241.15,
+    "end_time": 268.44
+  },
+  {
+    "slide_index": 11,
+    "image_file": "002_Slide_11_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "Aquí vemos la magia del inventario permanente. Cuando Joe recibe las diez unidades en el almacén, el asiento carga mil dólares en la cuenta de existencias y abona a la compensación. Posteriormente, cuando entregamos cuatro unidades al cliente, el sistema calcula el coste medio de noventa dólares por unidad y genera un asiento de coste por trescientos sesenta dólares: cargando el Coste de Ventas y descargando el Inventario. Todo ocurre de forma transparente y simultánea a la factura de venta.",
+    "start_time": 268.44,
+    "end_time": 300.02
+  },
+  {
+    "slide_index": 12,
+    "image_file": "002_Slide_12_10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.webp",
+    "script_text": "En resumen: SAP Business One sabe qué cuentas utilizar gracias a la ventana de Determinación de Cuentas de Mayor y las cuentas asociadas de clientes y proveedores. Y sabe qué importes registrar combinando las listas de precios de los socios de negocio con el cálculo dinámico del coste de inventario. Con estas reglas claras, garantizamos una contabilidad automatizada, segura y en tiempo real.",
+    "start_time": 300.02,
+    "end_time": 325.46
+  }
+]

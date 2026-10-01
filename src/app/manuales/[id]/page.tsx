@@ -1,8 +1,10 @@
 import fs from 'fs';
 import path from 'path';
+import Link from 'next/link';
 import ManualViewer from '@/components/site/ManualViewer';
 import OfflineManager from '@/components/site/OfflineManager';
 import { ALL_MANUALS } from '@/lib/manuals-120-data';
+import { getQuizForManual } from '@/lib/manual-quizzes-data';
 
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), 'public', 'Capacitacion SAP');
@@ -62,6 +64,9 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
     }
   }
 
+  // 5. Cargar cuestionario técnico específico para este manual
+  const quizQuestions = getQuizForManual(manualId, displayTitle, manualData?.category || 'Módulo SAP');
+
   return (
     <div className="h-screen max-h-screen flex flex-col bg-[#0a0a0f] text-gray-200 selection:bg-amber-500/30 overflow-hidden">
       <OfflineManager currentManualId={manualId} />
@@ -73,12 +78,12 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
             {manualData?.category || 'Módulo SAP'} • {videoUrl ? 'Clase Interactiva Disponible' : `${images.length} diapositivas`}
           </p>
         </div>
-        <a 
+        <Link 
           href="/manuales" 
           className="text-xs font-semibold text-gray-300 hover:text-white bg-gray-800/80 hover:bg-gray-700 px-3 py-1.5 rounded-lg border border-gray-700 transition-all flex items-center gap-1.5 active:scale-95"
         >
           ← Volver a Biblioteca
-        </a>
+        </Link>
       </header>
 
       <main className="flex-1 min-h-0 overflow-hidden p-2.5 sm:p-4 max-w-[1700px] w-full mx-auto">
@@ -88,6 +93,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
           images={images} 
           videoUrl={videoUrl} 
           syncData={syncData} 
+          quizQuestions={quizQuestions}
         />
       </main>
     </div>
