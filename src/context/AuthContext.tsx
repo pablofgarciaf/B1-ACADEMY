@@ -29,6 +29,12 @@ export interface UserProfile {
   sandboxHoursLimit?: number;
   phone?: string;
   bio?: string;
+  // Simulador progress
+  simuladorLevel?: number;
+  simuladorXP?: number;
+  completedMissions?: number;
+  avatar?: string;
+  company?: string;
 }
 
 interface AuthContextType {
@@ -150,6 +156,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             createdAt: new Date().toISOString(),
             passwordChanged: true,
             assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
+            simuladorLevel: 1,
+            simuladorXP: 0,
+            completedMissions: 0,
           };
           await setDoc(doc(db, 'usuarios', cleanEmail), prof, { merge: true });
         }
@@ -165,6 +174,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           createdAt: new Date().toISOString(),
           passwordChanged: true,
           assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
+          simuladorLevel: 1,
+          simuladorXP: 0,
+          completedMissions: 0,
         };
       }
 
@@ -184,6 +196,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           await signOut(auth);
           return { success: false, role: '', error: 'Esta cuenta ha sido suspendida. Contacta a administración.' };
         }
+        // Asegurar que tiene campos de simulador
+        if (!prof.simuladorLevel) prof.simuladorLevel = 1;
+        if (!prof.simuladorXP) prof.simuladorXP = 0;
+        if (!prof.completedMissions) prof.completedMissions = 0;
         setUserProfile(prof);
         localStorage.setItem('sap_auth_session', JSON.stringify(prof));
         return { success: true, role: prof.role, passwordChanged: prof.passwordChanged ?? true };
@@ -200,6 +216,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           createdAt: new Date().toISOString(),
           passwordChanged: false,
           assignedTracks: ['sap-b1-core'],
+          simuladorLevel: 1,
+          simuladorXP: 0,
+          completedMissions: 0,
         };
         await setDoc(doc(db, 'usuarios', cleanEmail), defaultStudentProf);
         setUserProfile(defaultStudentProf);
