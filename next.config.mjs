@@ -12,6 +12,7 @@ const baseConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
+    unoptimized: true, // Deshabilitar optimización agresiva en Vercel
   },
   async headers() {
     return [
