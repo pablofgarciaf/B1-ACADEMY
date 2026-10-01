@@ -35,6 +35,13 @@ export interface UserProfile {
   completedMissions?: number;
   avatar?: string;
   company?: string;
+  moduleProgress?: {
+    [key: string]: {
+      completed: number;
+      total: number;
+      progress: number;
+    };
+  };
 }
 
 interface AuthContextType {

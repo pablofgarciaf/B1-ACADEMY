@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LogOut, Play, Trophy, Zap, Award, Clock, Target, TrendingUp } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
 
 interface DashboardProps {
   user: {
@@ -18,11 +19,34 @@ interface DashboardProps {
   onLogout: () => void;
 }
 
+interface ModuleProgress {
+  [key: string]: {
+    completed: number;
+    total: number;
+    progress: number;
+  };
+}
+
 export default function SimuladorDashboard({
   user,
   onStartSimulator,
   onLogout,
 }: DashboardProps) {
+  const { userProfile } = useAuth();
+  const [moduleProgress, setModuleProgress] = useState<ModuleProgress>({
+    Finanzas: { completed: 0, total: 8, progress: 0 },
+    Ventas: { completed: 0, total: 8, progress: 0 },
+    Inventario: { completed: 0, total: 6, progress: 0 },
+    Producción: { completed: 0, total: 6, progress: 0 },
+  });
+
+  useEffect(() => {
+    // Cargar progreso desde el perfil del usuario
+    if (userProfile?.moduleProgress) {
+      setModuleProgress(userProfile.moduleProgress);
+    }
+  }, [userProfile]);
+
   const xpToNextLevel = (user.level + 1) * 1000;
   const progressPercent = (user.xp % 1000) / 10;
   const completionPercent = (user.completedMissions / user.totalMissions) * 100;
@@ -164,21 +188,18 @@ export default function SimuladorDashboard({
               <h3 className="text-lg font-bold text-white">Progreso por Módulo</h3>
             </div>
             <div className="space-y-4">
-              {[
-                { name: 'Finanzas', progress: 85 },
-                { name: 'Ventas', progress: 92 },
-                { name: 'Inventario', progress: 68 },
-                { name: 'Producción', progress: 45 },
-              ].map((module) => (
-                <div key={module.name}>
+              {Object.entries(moduleProgress).map(([name, data]) => (
+                <div key={name}>
                   <div className="flex justify-between mb-2">
-                    <p className="text-sm font-medium text-slate-300">{module.name}</p>
-                    <p className="text-xs text-slate-400">{module.progress}%</p>
+                    <p className="text-sm font-medium text-slate-300">{name}</p>
+                    <p className="text-xs text-slate-400">
+                      {data.completed}/{data.total} ({data.progress}%)
+                    </p>
                   </div>
                   <div className="w-full bg-slate-700/50 rounded-full h-2">
                     <div
                       className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full transition-all"
-                      style={{ width: `${module.progress}%` }}
+                      style={{ width: `${data.progress}%` }}
                     />
                   </div>
                 </div>
