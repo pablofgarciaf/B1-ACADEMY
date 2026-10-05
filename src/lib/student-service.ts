@@ -1,22 +1,21 @@
 import { StudentProfile, QuizAttemptRecord, JobReadinessMetrics, AcademicStatus } from '@/types/student';
+import { auth } from '@/lib/firebase';
 
-const STORAGE_KEY = 'sap_student_records_v5';
-const CURRENT_STUDENT_KEY = 'sap_current_student_id';
+const STORAGE_PREFIX = 'sap_student_records_v6';
+const storageKey = () => `${STORAGE_PREFIX}:${auth.currentUser?.uid ?? 'signed-out'}`;
 
-// Perfil oficial por defecto: Pablo F. García (Director & Superadmin)
-// Comienza con 0% real y limpio hasta que el estudiante interactúe con las lecciones y exámenes
 const defaultStudent: StudentProfile = {
-  uid: 'usr-pablo-1721790721',
-  studentId: '1721790721',
-  email: 'pablofgarciaf@gmail.com',
-  displayName: 'Pablo F. García',
-  role: 'consultor_premium',
-  enrollmentDate: '2026-09-13',
+  uid: '',
+  studentId: '',
+  email: '',
+  displayName: 'Estudiante',
+  role: 'regular',
+  enrollmentDate: new Date().toISOString().slice(0, 10),
   profilePhoto: null,
   selectedModules: ['modulo-01', 'modulo-02', 'modulo-03'],
   specialties: ['SAP-B1-LOGISTICS', 'SAP-B1-FINANCIALS', 'SAP-B1-IMPLEMENTATION', 'SAP-LOC-EC', 'B1-NOM-EC'],
   sandboxHoursUsed: 0,
-  sandboxHoursLimit: 999,
+  sandboxHoursLimit: 20,
   progress: {
     'sap-b1-core': {
       courseId: 'sap-b1-core',
@@ -118,7 +117,8 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
 }
 
 export function getStudentProfile(): StudentProfile {
-  if (typeof window === 'undefined') return defaultStudent;
+  const freshDefault = (): StudentProfile => structuredClone(defaultStudent);
+  if (typeof window === 'undefined') return freshDefault();
   
   // Limpieza agresiva de versiones demo anteriores
   localStorage.removeItem('sap_student_records_v1');
@@ -126,23 +126,15 @@ export function getStudentProfile(): StudentProfile {
   localStorage.removeItem('sap_student_records_v3');
   localStorage.removeItem('sap_student_records_v4');
 
-  // Si existe sesión de AuthContext en localStorage, sincronizar datos de Pablo F. García
-  const authSession = localStorage.getItem('sap_auth_session');
-  if (authSession) {
-    try {
-      const parsedAuth = JSON.parse(authSession);
-      if (parsedAuth?.email) {
-        defaultStudent.email = parsedAuth.email;
-        defaultStudent.displayName = parsedAuth.name || parsedAuth.displayName || 'Pablo F. García';
-        defaultStudent.studentId = parsedAuth.cedula || '1721790721';
-      }
-    } catch {}
-  }
-
-  const raw = localStorage.getItem(STORAGE_KEY);
+  const key = storageKey();
+  const raw = localStorage.getItem(key);
   if (!raw) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStudent));
-    return defaultStudent;
+    const initial = freshDefault();
+    initial.uid = auth.currentUser?.uid ?? '';
+    initial.email = auth.currentUser?.email ?? '';
+    initial.displayName = auth.currentUser?.displayName ?? 'Estudiante';
+    localStorage.setItem(key, JSON.stringify(initial));
+    return initial;
   }
   try {
     const parsed = JSON.parse(raw);
@@ -152,24 +144,25 @@ export function getStudentProfile(): StudentProfile {
       parsed?.progress?.['sri-localizacion'] ||
       parsed?.grades?.some((g: { id?: string }) => g.id === 'eval-b1-01')
     ) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultStudent));
-      return defaultStudent;
+      const initial = freshDefault();
+      localStorage.setItem(key, JSON.stringify(initial));
+      return initial;
     }
     return parsed;
   } catch {
-    return defaultStudent;
+    return freshDefault();
   }
 }
 
 export function saveStudentProfile(student: StudentProfile): void {
   if (typeof window === 'undefined') return;
   student.jobReadiness = recalculateReadiness(student);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(student));
+  localStorage.setItem(storageKey(), JSON.stringify(student));
 }
 
 export function resetStudentProfile(): StudentProfile {
   if (typeof window !== 'undefined') {
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(storageKey());
   }
   return getStudentProfile();
 }

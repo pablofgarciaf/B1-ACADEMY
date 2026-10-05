@@ -1,0 +1,30 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "M01-L02_B01_D01.webp",
+    "script_text": "Bienvenido a tu sala de control. Hoy aprenderemos a navegar por el escritorio principal de SAP Business One. Es más sencillo de lo que parece.",
+    "start_time": 0.0,
+    "end_time": 10.78
+  },
+  {
+    "slide_index": 2,
+    "image_file": "M01-L02_B01_D02.webp",
+    "script_text": "El escritorio tiene cuatro zonas. El menú superior con los accesos rápidos. La barra lateral izquierda, que es tu índice de módulos. El área central, donde trabaja cada ventana. Y la barra inferior, que te muestra mensajes del sistema.",
+    "start_time": 10.78,
+    "end_time": 29.62
+  },
+  {
+    "slide_index": 3,
+    "image_file": "M01-L02_B01_D03.webp",
+    "script_text": "Cada ícono que ves tiene un propósito. Los grises están desactivados porque esa acción no aplica en el momento actual. Los que tienen color están listos para usarse. El sistema te guía.",
+    "start_time": 29.62,
+    "end_time": 43.78
+  },
+  {
+    "slide_index": 4,
+    "image_file": "M01-L02_B01_D04.webp",
+    "script_text": "La mejor manera de aprender es haciendo. Vamos a entrar al simulador para que ubiques los menús tú mismo. Presta atención a las instrucciones.",
+    "start_time": 43.78,
+    "end_time": 54.53
+  }
+]

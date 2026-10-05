@@ -154,7 +154,7 @@ Desarrollado para proveer una experiencia de laboratorio en vivo sin requerir un
 
 ## 🖥️ Unificación de Arquitectura UI & Experiencia de Usuario (Estándar Global)
 
-A partir de la iteración de control de calidad visual y retroalimentación de producto, se unificó la estructura de los 120 manuales de la academia bajo un mismo estándar arquitectónico:
+A partir de la iteración de control de calidad visual y retroalimentación de producto, se unificó la estructura de los manuales de la academia bajo un mismo estándar arquitectónico:
 
 ```mermaid
 graph LR
@@ -181,7 +181,7 @@ graph LR
 
 ## 🔗 Enlaces Relacionados (Obsidian Vault)
 
-- [[06_Manuales]] - Catálogo general de los 120 manuales SAP Business One.
+- [[06_Manuales]] - Catálogo general de los manuales SAP Business One.
 - [[06_LMS_Architecture]] - Sistema LMS y sincronización teleprompter/video.
 - [[08_B1_Secure_Exam_App]] - Arquitectura de evaluación segura y aplicación de examen oficial.
 - [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio SAP B1 y atlas visual.

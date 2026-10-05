@@ -1,0 +1,101 @@
+{
+  "id": "sim-m01-l02",
+  "titulo": "El escritorio de SAP B1: tu sala de control",
+  "mision": "Navega por el escritorio: identifica cada zona y abre el módulo de Socios de Negocios.",
+  "duracion_estimada_min": 5,
+  "pasos": [
+    {
+      "id": 1,
+      "screenshot": "/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/Imagenes_Diapositivas/060_Slide_01_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+      "instruccion": "Esta es la pantalla de inicio de SAP B1. Observa la pantalla. Cuando estés listo, haz clic en el botón SIGUIENTE para continuar.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 2,
+      "screenshot": "/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/Imagenes_Diapositivas/060_Slide_02_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+      "instruccion": "SAP B1 integra todos los módulos de la empresa. En esta pantalla puedes ver el menú principal con todos los módulos disponibles. Haz clic en el botón SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 3,
+      "screenshot": "/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/Imagenes_Diapositivas/060_Slide_03_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+      "instruccion": "Aquí ves el contexto de negocio: una empresa en crecimiento que necesita integrar sus operaciones. ¿Reconoces el problema? ¿Islas de datos o sistema integrado? Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 4,
+      "screenshot": "/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/Imagenes_Diapositivas/060_Slide_04_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+      "instruccion": "El mundo digital exige información en tiempo real. SAP B1 fue diseñado para esto. Haz clic en SIGUIENTE para ver qué módulos incluye.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 5,
+      "screenshot": "/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/Imagenes_Diapositivas/060_Slide_05_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+      "instruccion": "SAP B1 cubre: Finanzas, Compras, Ventas, Inventario, Producción y Servicio. Todo desde una sola interfaz. Más de 70.000 empresas en el mundo lo usan. Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 6,
+      "screenshot": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/Imagenes_Diapositivas/060_Slide_01_10_Intro_12_Overview_GettingStarted_ES.webp",
+      "instruccion": "Ahora vamos a los Primeros Pasos. Esta es la pantalla de inicio de sesión de SAP B1. Para entrar necesitas: Servidor, Empresa, Usuario y Contraseña. Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 7,
+      "screenshot": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/Imagenes_Diapositivas/060_Slide_02_10_Intro_12_Overview_GettingStarted_ES.webp",
+      "instruccion": "El escritorio tiene cuatro zonas principales. Identifica: la barra de menú superior, la barra de herramientas, el panel de módulos izquierdo y el área central de trabajo. Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 8,
+      "screenshot": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/Imagenes_Diapositivas/060_Slide_03_10_Intro_12_Overview_GettingStarted_ES.webp",
+      "instruccion": "Los iconos de la barra de herramientas cambian según la pantalla activa. Los iconos en COLOR están disponibles; los GRISES no aplican en ese momento. Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 9,
+      "screenshot": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/Imagenes_Diapositivas/060_Slide_04_10_Intro_12_Overview_GettingStarted_ES.webp",
+      "instruccion": "El menú lateral izquierdo muestra los módulos del sistema. Cada módulo agrupa funciones relacionadas. Cuando hagas clic en un módulo, se despliega su submenú. Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    },
+    {
+      "id": 10,
+      "screenshot": "/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/Imagenes_Diapositivas/060_Slide_05_10_Intro_12_Overview_GettingStarted_ES.webp",
+      "instruccion": "El Log de Mensajes está en la barra inferior. Es tu primer lugar de diagnóstico cuando algo no funciona: muestra qué pasó, por qué y cuándo. Haz clic en SIGUIENTE.",
+      "tipo": "observar",
+      "hotspot": null,
+      "accion": "next"
+    }
+  ],
+  "mini_quiz": [
+    {
+      "pregunta": "¿Qué significa que un icono de la barra de herramientas aparezca en gris?",
+      "opciones": ["Error del sistema", "No aplica para la pantalla actual", "No tienes permiso", "El sistema está ocupado"],
+      "correcta": 1
+    },
+    {
+      "pregunta": "¿Dónde debes ir primero cuando SAP B1 no hace lo que esperabas?",
+      "opciones": ["Llamar al administrador", "Reiniciar el sistema", "Revisar el Log de Mensajes en la barra inferior", "Cerrar y volver a abrir SAP"],
+      "correcta": 2
+    }
+  ],
+  "mensaje_final": "Completaste la práctica del escritorio. Ya conoces las cuatro zonas y sabes cómo orientarte en el sistema."
+}

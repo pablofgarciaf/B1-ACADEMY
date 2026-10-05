@@ -1,0 +1,13 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "sapCompanies",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "activityDate", "order": "ASCENDING" },
+        { "fieldPath": "documentsToday", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

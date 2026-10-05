@@ -2,426 +2,169 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { auth, db } from '@/lib/firebase';
-import {
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  updatePassword as fbUpdatePassword,
-  sendPasswordResetEmail,
-  User as FirebaseUser 
-} from 'firebase/auth';
-import { doc, getDoc, setDoc, updateDoc, collection, getDocs, query } from 'firebase/firestore';
+import { FirebaseError } from 'firebase/app';
+import { onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword as fbUpdatePassword, type User as FirebaseUser } from 'firebase/auth';
+import { doc, updateDoc } from 'firebase/firestore';
 
 export interface UserProfile {
-  uid: string;
-  email: string;
-  name: string;
-  displayName: string;
-  cedula: string;
+  uid: string; email: string; name: string; displayName: string; cedula: string;
   role: 'super' | 'admin' | 'docente' | 'estudiante' | 'consultor_premium' | 'regular';
-  status: 'active' | 'suspended';
-  createdAt: string;
-  updatedAt?: string;
-  assignedTracks?: string[];
-  passwordChanged?: boolean;
-  sandboxHoursUsed?: number;
-  sandboxHoursLimit?: number;
-  phone?: string;
-  bio?: string;
-  // Simulador progress
-  simuladorLevel?: number;
-  simuladorXP?: number;
-  completedMissions?: number;
-  avatar?: string;
-  company?: string;
-  moduleProgress?: {
-    [key: string]: {
-      completed: number;
-      total: number;
-      progress: number;
-    };
-  };
+  status: 'active' | 'suspended'; createdAt: string; updatedAt?: string;
+  assignedTracks?: string[]; passwordChanged?: boolean; sandboxHoursUsed?: number;
+  sandboxHoursLimit?: number; phone?: string; bio?: string; simuladorLevel?: number;
+  simuladorXP?: number; completedMissions?: number; avatar?: string; company?: string;
+  moduleProgress?: Record<string, { completed: number; total: number; progress: number }>;
+}
+
+interface CreateStudentInput {
+  name: string; email: string; temporaryPassword: string;
+  role?: 'estudiante' | 'docente' | 'admin'; assignedTracks?: string[]; phone?: string;
 }
 
 interface AuthContextType {
-  currentUser: FirebaseUser | null;
-  userProfile: UserProfile | null;
-  user: UserProfile | null; // Alias de retrocompatibilidad
-  loading: boolean;
+  currentUser: FirebaseUser | null; userProfile: UserProfile | null; user: UserProfile | null; loading: boolean;
   login: (email: string, pass: string) => Promise<{ success: boolean; role: string; passwordChanged?: boolean; error?: string }>;
-  loginDemo: (role?: any) => void;
   logout: () => Promise<void>;
   changePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
   resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
-  createStudent: (data: {
-    name: string;
-    email: string;
-    cedula: string;
-    role?: 'estudiante' | 'docente' | 'admin';
-    assignedTracks?: string[];
-    phone?: string;
-  }) => Promise<{ success: boolean; error?: string }>;
+  register: (data: { name: string; email: string; password: string; phone?: string }) => Promise<{ success: boolean; error?: string }>;
+  createStudent: (data: CreateStudentInput) => Promise<{ success: boolean; error?: string }>;
   getAllStudents: () => Promise<UserProfile[]>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-const MASTER_SUPERADMIN_EMAIL = 'pablofgarciaf@gmail.com';
-const MASTER_SUPERADMIN_PASS = '1721790721';
+/** El servidor respondió y rechazó al usuario (perfil inválido o inactivo): solo este caso cierra la sesión. */
+class SessionRejectedError extends Error {}
+
+async function establishServerSession(user: FirebaseUser, forceRefresh = false): Promise<UserProfile> {
+  // Sin forzar refresco: Firebase reutiliza el token vigente y solo sale a la red cuando expira.
+  const idToken = await user.getIdToken(forceRefresh);
+  const response = await fetch('/api/auth/session', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ idToken }),
+  });
+  if (!response.ok) {
+    const result = await response.json().catch(() => null) as { error?: string } | null;
+    const message = result?.error ?? 'No se pudo validar el perfil en el servidor.';
+    // 401/403 = rechazo real. 5xx = falla temporal del servidor: no expulsar al usuario.
+    throw response.status === 401 || response.status === 403 ? new SessionRejectedError(message) : new Error(message);
+  }
+  return ((await response.json()) as { profile: UserProfile }).profile;
+}
+
+function getLoginErrorMessage(error: unknown) {
+  if (error instanceof FirebaseError) {
+    if (['auth/invalid-credential', 'auth/wrong-password', 'auth/user-not-found', 'auth/invalid-login-credentials'].includes(error.code)) {
+      return 'Firebase rechazó ese correo o contraseña. Revisa que la cuenta exista en este proyecto y que el password sea el recién creado.';
+    }
+    if (error.code === 'auth/too-many-requests') return 'Firebase bloqueó temporalmente los intentos. Espera unos minutos o restablece la contraseña.';
+    if (error.code === 'auth/invalid-api-key') return 'La API key pública de Firebase no corresponde al proyecto.';
+  }
+  if (error instanceof Error && error.message) return error.message;
+  return 'No fue posible iniciar sesión.';
+}
+
+async function authenticatedFetch(path: string, init?: RequestInit) {
+  const user = auth.currentUser;
+  if (!user) throw new Error('No hay sesión autenticada.');
+  const idToken = await user.getIdToken();
+  return fetch(path, { ...init, headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${idToken}`, ...init?.headers } });
+}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [currentUser, setCurrentUser] = useState<FirebaseUser | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Escuchar sesión en Firebase Auth y recuperar perfil desde Firestore
-  useEffect(() => {
-    // 1. Revisar sesión local de respaldo (por si Firebase Auth estuviera en offline o master bypass)
-    const localSessionRaw = typeof window !== 'undefined' ? localStorage.getItem('sap_auth_session') : null;
-    if (localSessionRaw) {
-      try {
-        const parsed = JSON.parse(localSessionRaw);
-        if (parsed?.email) {
-          setUserProfile(parsed);
-        }
-      } catch (e) {
-        console.warn('Session parse error:', e);
-      }
-    }
-
-    const unsubscribe = onAuthStateChanged(auth, async (fbUser) => {
-      setCurrentUser(fbUser);
-      if (fbUser && fbUser.email) {
-        const cleanEmail = fbUser.email.toLowerCase().trim();
-        try {
-          const docSnap = await getDoc(doc(db, 'usuarios', cleanEmail));
-          if (docSnap.exists()) {
-            const prof = docSnap.data() as UserProfile;
-            setUserProfile(prof);
-            localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-          } else if (cleanEmail === MASTER_SUPERADMIN_EMAIL) {
-            // Perfil de superadmin por defecto si aún no se había guardado
-            const superProf: UserProfile = {
-              uid: fbUser.uid,
-              email: cleanEmail,
-              name: 'Pablo F. García',
-              displayName: 'Pablo F. García',
-              cedula: '1721790721',
-              role: 'super',
-              status: 'active',
-              createdAt: new Date().toISOString(),
-              passwordChanged: true,
-              assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
-            };
-            setUserProfile(superProf);
-            await setDoc(doc(db, 'usuarios', cleanEmail), superProf, { merge: true });
-            localStorage.setItem('sap_auth_session', JSON.stringify(superProf));
-          }
-        } catch (err) {
-          console.warn('Firestore profile fetch notice:', err);
-        }
-      }
+  useEffect(() => onAuthStateChanged(auth, async (fbUser) => {
+    setCurrentUser(fbUser);
+    if (!fbUser) {
+      setUserProfile(null);
+      await fetch('/api/auth/session', { method: 'DELETE' }).catch(() => undefined);
       setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  // Función de Login robusta (Firebase Auth + Firestore Fallback para Superadmin)
-  const login = async (emailInput: string, passInput: string): Promise<{ success: boolean; role: string; passwordChanged?: boolean; error?: string }> => {
-    const cleanEmail = emailInput.trim().toLowerCase();
-    const cleanPass = passInput.trim();
-
-    // 1. Verificación Maestra de Superadmin
-    const isMaster = cleanEmail === MASTER_SUPERADMIN_EMAIL && cleanPass === MASTER_SUPERADMIN_PASS;
-
-    if (isMaster) {
-      try {
-        if (auth) {
-          await signInWithEmailAndPassword(auth, cleanEmail, cleanPass).catch(() => {});
-        }
-      } catch (e) {
-        // Ignorar si auth/configuration-not-found está en curso de activación
-      }
-
-      // Obtener o crear perfil en Firestore
-      let prof: UserProfile;
-      try {
-        const docSnap = await getDoc(doc(db, 'usuarios', cleanEmail));
-        if (docSnap.exists()) {
-          prof = docSnap.data() as UserProfile;
-        } else {
-          prof = {
-            uid: 'super-pablo-1721790721',
-            email: cleanEmail,
-            name: 'Pablo F. García',
-            displayName: 'Pablo F. García',
-            cedula: '1721790721',
-            role: 'super',
-            status: 'active',
-            createdAt: new Date().toISOString(),
-            passwordChanged: true,
-            assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
-            simuladorLevel: 1,
-            simuladorXP: 0,
-            completedMissions: 0,
-          };
-          await setDoc(doc(db, 'usuarios', cleanEmail), prof, { merge: true });
-        }
-      } catch {
-        prof = {
-          uid: 'super-pablo-1721790721',
-          email: cleanEmail,
-          name: 'Pablo F. García',
-          displayName: 'Pablo F. García',
-          cedula: '1721790721',
-          role: 'super',
-          status: 'active',
-          createdAt: new Date().toISOString(),
-          passwordChanged: true,
-          assignedTracks: ['sap-b1-core', 'sap-loc-ec', 'b1-nomina', 'b1-rrhh', 'verticales-ecuador'],
-          simuladorLevel: 1,
-          simuladorXP: 0,
-          completedMissions: 0,
-        };
-      }
-
-      setUserProfile(prof);
-      localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-      return { success: true, role: 'super', passwordChanged: prof.passwordChanged ?? true };
+      return;
     }
+    try { setUserProfile(await establishServerSession(fbUser)); }
+    catch (error) {
+      // Un corte de red no debe expulsar al estudiante: la cookie de sesión del servidor sigue válida.
+      if (error instanceof SessionRejectedError) { setUserProfile(null); await signOut(auth).catch(() => undefined); }
+      else if (process.env.NODE_ENV === 'development') console.warn('Sesión no revalidada (red):', error);
+    }
+    finally { setLoading(false); }
+  }), []);
 
-    // 2. Intento de autenticación normal en Firebase Auth
+  const login = async (emailInput: string, passInput: string) => {
+    let credentialUser: FirebaseUser | null = null;
     try {
-      const cred = await signInWithEmailAndPassword(auth, cleanEmail, cleanPass);
-      const userDoc = await getDoc(doc(db, 'usuarios', cleanEmail));
-      
-      if (userDoc.exists()) {
-        const prof = userDoc.data() as UserProfile;
-        if (prof.status === 'suspended') {
-          await signOut(auth);
-          return { success: false, role: '', error: 'Esta cuenta ha sido suspendida. Contacta a administración.' };
-        }
-        // Asegurar que tiene campos de simulador
-        if (!prof.simuladorLevel) prof.simuladorLevel = 1;
-        if (!prof.simuladorXP) prof.simuladorXP = 0;
-        if (!prof.completedMissions) prof.completedMissions = 0;
-        setUserProfile(prof);
-        localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-        return { success: true, role: prof.role, passwordChanged: prof.passwordChanged ?? true };
-      } else {
-        // Si no existe perfil en Firestore, crearlo como estudiante
-        const defaultStudentProf: UserProfile = {
-          uid: cred.user.uid,
-          email: cleanEmail,
-          name: cleanEmail.split('@')[0],
-          displayName: cleanEmail.split('@')[0],
-          cedula: '',
-          role: 'estudiante',
-          status: 'active',
-          createdAt: new Date().toISOString(),
-          passwordChanged: false,
-          assignedTracks: ['sap-b1-core'],
-          simuladorLevel: 1,
-          simuladorXP: 0,
-          completedMissions: 0,
-        };
-        await setDoc(doc(db, 'usuarios', cleanEmail), defaultStudentProf);
-        setUserProfile(defaultStudentProf);
-        localStorage.setItem('sap_auth_session', JSON.stringify(defaultStudentProf));
-        return { success: true, role: 'estudiante', passwordChanged: false };
-      }
-    } catch (err: any) {
-      console.error('[Login Error]', err);
-      // Fallback: verificar si existe en Firestore con contraseña igual a cédula
-      try {
-        const userDoc = await getDoc(doc(db, 'usuarios', cleanEmail));
-        if (userDoc.exists()) {
-          const prof = userDoc.data() as UserProfile;
-          if (prof.cedula && prof.cedula.trim() === cleanPass) {
-            setUserProfile(prof);
-            localStorage.setItem('sap_auth_session', JSON.stringify(prof));
-            return { success: true, role: prof.role, passwordChanged: prof.passwordChanged ?? false };
-          }
-        }
-      } catch (dbErr) {
-        console.warn('Firestore fallback notice:', dbErr);
-      }
-
-      if (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
-        return { success: false, role: '', error: 'Contraseña incorrecta. Recuerda que para estudiantes tu clave inicial es tu número de cédula.' };
-      }
-      if (err.code === 'auth/user-not-found') {
-        return { success: false, role: '', error: 'No existe usuario registrado con este correo.' };
-      }
-      return { success: false, role: '', error: err.message || 'Error al iniciar sesión' };
-    }
-  };
-
-  // Función de Logout
-  const logout = async () => {
-    try {
-      if (auth) await signOut(auth);
-    } catch (e) {
-      console.warn('Signout warning:', e);
-    }
-    setUserProfile(null);
-    setCurrentUser(null);
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('sap_auth_session');
-    }
-  };
-
-  // Creación de nuevos estudiantes por parte del Admin
-  const createStudent = async (data: {
-    name: string;
-    email: string;
-    cedula: string;
-    role?: 'estudiante' | 'docente' | 'admin';
-    assignedTracks?: string[];
-    phone?: string;
-  }): Promise<{ success: boolean; error?: string }> => {
-    const cleanEmail = data.email.trim().toLowerCase();
-    const cleanCedula = data.cedula.trim();
-
-    if (!cleanEmail || !cleanCedula || !data.name) {
-      return { success: false, error: 'Nombre, correo y cédula son campos obligatorios.' };
-    }
-
-    try {
-      let authUid = `stu-${Date.now()}`;
-
-      // Intentar crear en Firebase Auth con clave = cédula
-      try {
-        if (auth) {
-          const cred = await createUserWithEmailAndPassword(auth, cleanEmail, cleanCedula);
-          authUid = cred.user.uid;
-        }
-      } catch (authErr: any) {
-        if (authErr.code === 'auth/email-already-in-use') {
-          console.log('El correo ya existe en Auth, actualizando perfil en Firestore...');
-        } else {
-          console.warn('Auth create notice (continuing in Firestore):', authErr.message);
-        }
-      }
-
-      const newStudent: UserProfile = {
-        uid: authUid,
-        email: cleanEmail,
-        name: data.name.trim(),
-        displayName: data.name.trim(),
-        cedula: cleanCedula,
-        role: data.role || 'estudiante',
-        status: 'active',
-        createdAt: new Date().toISOString(),
-        passwordChanged: false,
-        assignedTracks: data.assignedTracks && data.assignedTracks.length > 0 
-          ? data.assignedTracks 
-          : ['sap-b1-core'],
-        phone: data.phone?.trim() || '',
+      const credential = await signInWithEmailAndPassword(auth, emailInput.trim(), passInput);
+      credentialUser = credential.user;
+      const profile = await establishServerSession(credential.user, true);
+      if (profile.status !== 'active') throw new Error('Inactive');
+      setCurrentUser(credential.user); setUserProfile(profile);
+      return { success: true, role: profile.role, passwordChanged: profile.passwordChanged ?? true };
+    } catch (error) {
+      if (process.env.NODE_ENV === 'development') console.error('Login error:', error);
+      await signOut(auth).catch(() => undefined);
+      return {
+        success: false,
+        role: '',
+        error: credentialUser ? getLoginErrorMessage(error) : getLoginErrorMessage(error),
       };
-
-      await setDoc(doc(db, 'usuarios', cleanEmail), newStudent, { merge: true });
-      return { success: true };
-    } catch (err: any) {
-      console.error('[Create Student Error]', err);
-      return { success: false, error: err.message || 'Error al registrar estudiante' };
     }
   };
 
-  // Cambio de contraseña forzado (tras primer login con cédula)
-  const changePassword = async (newPassword: string): Promise<{ success: boolean; error?: string }> => {
-    if (!currentUser) {
-      return { success: false, error: 'No hay sesión activa.' };
-    }
-    if (newPassword.length < 8) {
-      return { success: false, error: 'La nueva contraseña debe tener al menos 8 caracteres.' };
-    }
+  const logout = async () => {
+    await Promise.all([signOut(auth).catch(() => undefined), fetch('/api/auth/session', { method: 'DELETE' }).catch(() => undefined)]);
+    setCurrentUser(null); setUserProfile(null);
+  };
+
+  const createStudent = async (data: CreateStudentInput) => {
+    try {
+      const response = await authenticatedFetch('/api/admin/users', { method: 'POST', body: JSON.stringify(data) });
+      const result = (await response.json()) as { error?: string };
+      return response.ok ? { success: true } : { success: false, error: result.error ?? 'No fue posible registrar al estudiante.' };
+    } catch { return { success: false, error: 'No fue posible registrar al estudiante.' }; }
+  };
+
+  const changePassword = async (newPassword: string) => {
+    if (!currentUser || newPassword.length < 12) return { success: false, error: 'La nueva contraseña debe tener al menos 12 caracteres.' };
     try {
       await fbUpdatePassword(currentUser, newPassword);
-      // Actualizar flag en Firestore
-      const emailKey = currentUser.email!.toLowerCase().trim();
-      await updateDoc(doc(db, 'usuarios', emailKey), { passwordChanged: true });
-      // Actualizar estado local
-      setUserProfile((prev) => prev ? { ...prev, passwordChanged: true } : prev);
-      if (typeof window !== 'undefined') {
-        const raw = localStorage.getItem('sap_auth_session');
-        if (raw) {
-          try {
-            const parsed = JSON.parse(raw);
-            localStorage.setItem('sap_auth_session', JSON.stringify({ ...parsed, passwordChanged: true }));
-          } catch {}
-        }
-      }
+      await updateDoc(doc(db, 'usuarios', currentUser.uid), { passwordChanged: true });
+      setUserProfile((previous) => previous ? { ...previous, passwordChanged: true } : previous);
+      await establishServerSession(currentUser);
       return { success: true };
-    } catch (err: any) {
-      console.error('[Change Password Error]', err);
-      if (err.code === 'auth/requires-recent-login') {
-        return { success: false, error: 'Por seguridad, cierra sesión, vuelve a ingresar y cambia tu contraseña.' };
-      }
-      return { success: false, error: err.message || 'Error al cambiar contraseña' };
-    }
+    } catch { return { success: false, error: 'No fue posible cambiar la contraseña. Vuelve a iniciar sesión.' }; }
   };
 
-  // Envío de correo de restablecimiento de contraseña
-  const resetPassword = async (email: string): Promise<{ success: boolean; error?: string }> => {
-    const cleanEmail = email.trim().toLowerCase();
-    if (!cleanEmail) {
-      return { success: false, error: 'Correo requerido.' };
-    }
-    try {
-      await sendPasswordResetEmail(auth, cleanEmail);
-      return { success: true };
-    } catch (err: any) {
-      console.error('[Reset Password Error]', err);
-      return { success: false, error: err.message || 'Error al enviar el correo de recuperación' };
-    }
+  const resetPassword = async (email: string) => {
+    try { await sendPasswordResetEmail(auth, email.trim().toLowerCase()); } catch { /* Respuesta uniforme: evita enumerar cuentas. */ }
+    return { success: true };
   };
 
-  // Listar todos los estudiantes de la colección 'usuarios'
-  const getAllStudents = async (): Promise<UserProfile[]> => {
+  const register = async (data: { name: string; email: string; password: string; phone?: string }) => {
     try {
-      const q = query(collection(db, 'usuarios'));
-      const snap = await getDocs(q);
-      const list: UserProfile[] = [];
-      snap.forEach((d) => {
-        list.push(d.data() as UserProfile);
+      const response = await fetch('/api/auth/register', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data),
       });
-      return list;
-    } catch (err) {
-      console.error('[Get All Students Error]', err);
-      return [];
-    }
+      const result = (await response.json()) as { error?: string };
+      return response.ok ? { success: true } : { success: false, error: result.error ?? 'No fue posible crear la cuenta.' };
+    } catch { return { success: false, error: 'No fue posible crear la cuenta.' }; }
   };
 
-  return (
-    <AuthContext.Provider
-      value={{
-        currentUser,
-        userProfile,
-        user: userProfile,
-        loading,
-        login,
-        loginDemo: (role) => {
-          login('pablofgarciaf@gmail.com', '1721790721');
-        },
-        logout,
-        changePassword,
-        resetPassword,
-        createStudent,
-        getAllStudents,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+  const getAllStudents = async () => {
+    try {
+      const response = await authenticatedFetch('/api/admin/users');
+      if (!response.ok) return [];
+      return ((await response.json()) as { users: UserProfile[] }).users;
+    } catch { return []; }
+  };
+
+  return <AuthContext.Provider value={{ currentUser, userProfile, user: userProfile, loading, login, logout, changePassword, resetPassword, register, createStudent, getAllStudents }}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within an AuthProvider');
   return context;
 }

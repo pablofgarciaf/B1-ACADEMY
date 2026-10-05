@@ -1,0 +1,16 @@
+{
+  "id": "M03-L01",
+  "titulo": "Leccion 1",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M03_Socios_de_negocios_y_articulos_los_d/M03-L01_Leccion_1/B01_video/M03-L01_B01.mp4",
+      "sync": "/Aula_SAP/M03_Socios_de_negocios_y_articulos_los_d/M03-L01_Leccion_1/B01_video/M03-L01_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

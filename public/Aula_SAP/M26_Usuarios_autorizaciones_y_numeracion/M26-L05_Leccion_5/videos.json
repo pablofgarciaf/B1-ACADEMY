@@ -1,0 +1,16 @@
+{
+  "id": "M26-L05",
+  "titulo": "Leccion 5",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M26_Usuarios_autorizaciones_y_numeracion/M26-L05_Leccion_5/B01_video/M26-L05_B01.mp4",
+      "sync": "/Aula_SAP/M26_Usuarios_autorizaciones_y_numeracion/M26-L05_Leccion_5/B01_video/M26-L05_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

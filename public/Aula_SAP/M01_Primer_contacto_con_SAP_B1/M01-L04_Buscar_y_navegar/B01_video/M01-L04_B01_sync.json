@@ -1,0 +1,37 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "M01-L04_B01_D01.webp",
+    "script_text": "El tiempo es oro en cualquier empresa. Hoy aprenderás los atajos que usan los expertos para volar dentro de SAP B1.",
+    "start_time": 0.0,
+    "end_time": 8.81
+  },
+  {
+    "slide_index": 2,
+    "image_file": "M01-L04_B01_D02.webp",
+    "script_text": "Hay cuatro formas de llegar a cualquier dato. Primero, la búsqueda global en el menú. Segundo, la flecha naranja. Tercero, el drag and relate. Y cuarto, el log de mensajes para entender qué pasó.",
+    "start_time": 8.81,
+    "end_time": 25.42
+  },
+  {
+    "slide_index": 3,
+    "image_file": "M01-L04_B01_D03.webp",
+    "script_text": "La flecha naranja, o link arrow, es tu mejor amiga. Aparece junto a cualquier código y, al darle clic, te lleva directo a su dato maestro. De la factura al cliente en un segundo.",
+    "start_time": 25.42,
+    "end_time": 39.19
+  },
+  {
+    "slide_index": 4,
+    "image_file": "M01-L04_B01_D04.webp",
+    "script_text": "Drag and relate es arrastrar y soltar. Tomas el código del artículo, lo arrastras sobre la palabra pedidos, y el sistema te lista todos los pedidos de ese artículo al instante.",
+    "start_time": 39.19,
+    "end_time": 51.5
+  },
+  {
+    "slide_index": 5,
+    "image_file": "M01-L04_B01_D05.webp",
+    "script_text": "Basta de teoría. Vamos al simulador a usar estas herramientas con datos reales.",
+    "start_time": 51.5,
+    "end_time": 58.42
+  }
+]

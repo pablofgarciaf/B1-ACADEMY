@@ -1,0 +1,16 @@
+{
+  "id": "M10-L05",
+  "titulo": "Leccion 5",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M10_Almacenes_movimientos_e_inventario_f/M10-L05_Leccion_5/B01_video/M10-L05_B01.mp4",
+      "sync": "/Aula_SAP/M10_Almacenes_movimientos_e_inventario_f/M10-L05_Leccion_5/B01_video/M10-L05_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

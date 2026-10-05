@@ -1,0 +1,28 @@
+{
+  "id": "M16-L07",
+  "modulo": "M16",
+  "titulo": "Leccion 7",
+  "pregunta_central": "¿Cómo resolver el reto 7?",
+  "objetivos": [
+    "Aprender",
+    "Practicar"
+  ],
+  "duracion_estimada_min": 10,
+  "fuentes": [],
+  "bloques": [
+    {
+      "id": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "diapositivas": [
+        {
+          "archivo": "B01_video/M16-L07_B01_D01.webp",
+          "tipo": "portada",
+          "titulo_en_pantalla": "M16 Intro",
+          "puntos_en_pantalla": [],
+          "narracion": "Bienvenidos a esta nueva leccion. Aqui aprenderemos los conceptos fundamentales para operar el sistema correctamente y entender su flujo de inicio a fin. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo."
+        }
+      ]
+    }
+  ]
+}

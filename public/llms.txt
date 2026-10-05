@@ -1,4 +1,4 @@
-# B1 Academy Ecuador - SAP Business One, Nómina HCM & Localización SRI
+# B1 Academy Ecuador (también conocida comercialmente como SAP Academy y corporativamente como Heinsohn B1) - SAP Business One, Nómina HCM & Localización SRI
 
 > Institución de formación técnica y consultoría B2B/B2C especializada en SAP Business One, Nómina HCM, Gestión Humana y Localización Tributaria SRI Ecuador.
 
@@ -15,7 +15,7 @@
 
 ### 2. Localización Ecuador & Cumplimiento SRI [SAP-LOC-EC]
 - Emisión de Comprobantes Electrónicos XML (online/offline) autorizados por el SRI.
-- Retenciones en la Fuente: Códigos 312 (bienes 1.75%), 343 (construcción 1.00%), 332 (honorarios 8.00%) y 344 (servicios 2.75%).
+- Retenciones en la Fuente: Códigos 312 (bienes 1.75%), 343 (construcción 1.00%), 303 (honorarios 10.00%) y 344 (servicios 2.75%).
 - Ingeniería de Metadatos: Campos Definidos por el Usuario (UDFs) en tablas OCRD y OPCH (U_TipoIdentificacion, U_SustentoTributario, U_FormaPagoSRI).
 - Anexo Transaccional Simplificado (ATS): Extracción y validación contra Formularios 104 y 103.
 - Cruce contable de Formularios SRI 101, 103 y 104, ISD 5% y Régimen RIMPE.

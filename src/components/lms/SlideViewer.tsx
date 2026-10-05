@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import Image from 'next/image';
 import { ChevronLeft, ChevronRight, PlayCircle, BookOpen } from 'lucide-react';
 import { MarkdownRenderer } from './MarkdownRenderer';
 
@@ -20,6 +21,15 @@ interface SlideViewerProps {
 export const SlideViewer = ({ slides, onComplete }: SlideViewerProps) => {
   const [currentIdx, setCurrentIdx] = useState(0);
 
+  const handleNext = useCallback(() => {
+    if (currentIdx < slides.length - 1) setCurrentIdx((value) => value + 1);
+    else onComplete?.();
+  }, [currentIdx, slides.length, onComplete]);
+
+  const handlePrev = useCallback(() => {
+    if (currentIdx > 0) setCurrentIdx((value) => value - 1);
+  }, [currentIdx]);
+
   // Handle keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -28,36 +38,17 @@ export const SlideViewer = ({ slides, onComplete }: SlideViewerProps) => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIdx, slides.length]);
+  }, [handleNext, handlePrev]);
 
   if (!slides || slides.length === 0) return <div>No hay diapositivas disponibles.</div>;
 
   const currentSlide = slides[currentIdx];
 
-  const handleNext = () => {
-    if (currentIdx < slides.length - 1) {
-      setCurrentIdx(currentIdx + 1);
-    } else if (onComplete) {
-      onComplete();
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIdx > 0) {
-      setCurrentIdx(currentIdx - 1);
-    }
-  };
-
   return (
     <div className="w-full flex flex-col bg-slate-50 dark:bg-[#0B0F17] rounded-2xl border border-slate-200 dark:border-white/10 overflow-hidden shadow-sm aspect-[16/9] min-h-[500px]">
       
       {/* Top Progress Bar */}
-      <div className="h-1.5 w-full bg-slate-200 dark:bg-white/5">
-        <div 
-          className="h-full bg-sap-blue transition-all duration-300 ease-out"
-          style={{ width: `${((currentIdx + 1) / slides.length) * 100}%` }}
-        />
-      </div>
+      <progress className="kai-progress kai-progress-blue rounded-none" value={currentIdx + 1} max={slides.length} aria-label="Progreso de diapositivas" />
 
       {/* Main Slide Content */}
       <div className="flex-1 flex flex-col relative p-8 md:p-12 overflow-y-auto">
@@ -91,9 +82,12 @@ export const SlideViewer = ({ slides, onComplete }: SlideViewerProps) => {
           
           {currentSlide.imageUrl && (
             <div className="flex-1 w-full md:w-1/2 h-full min-h-[300px] rounded-xl overflow-hidden bg-slate-200 dark:bg-white/5 border border-slate-200 dark:border-white/10 relative">
-              <img 
+              <Image
                 src={currentSlide.imageUrl} 
                 alt={currentSlide.title || "Slide Image"} 
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                unoptimized
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>

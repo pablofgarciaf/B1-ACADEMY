@@ -17,9 +17,10 @@ export default function robots(): MetadataRoute.Robots {
           'PerplexityBot',
           'Google-Extended',
           'OAI-SearchBot',
+          'CCBot',
         ],
         allow: '/',
-        disallow: ['/admin/', '/api/', '/privado/', '/evaluaciones/respuestas/'],
+        disallow: ['/admin/', '/api/', '/dashboard/', '/mi-aula/', '/simulador/', '/change-password/', '/privado/', '/evaluaciones/respuestas/'],
       },
       {
         userAgent: ['HTTrack', 'Wget', 'Scrapy', 'MegaIndex', 'AhrefsBot', 'SemrushBot'],

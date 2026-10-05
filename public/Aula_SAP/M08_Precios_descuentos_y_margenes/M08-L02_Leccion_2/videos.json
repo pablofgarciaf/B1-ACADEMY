@@ -1,0 +1,16 @@
+{
+  "id": "M08-L02",
+  "titulo": "Leccion 2",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M08_Precios_descuentos_y_margenes/M08-L02_Leccion_2/B01_video/M08-L02_B01.mp4",
+      "sync": "/Aula_SAP/M08_Precios_descuentos_y_margenes/M08-L02_Leccion_2/B01_video/M08-L02_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

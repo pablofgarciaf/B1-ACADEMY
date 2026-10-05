@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   title: {
-    default: "SAP Academy | Certificación y Consultoría SAP Oficial",
+    default: "SAP Academy | Formación y Consultoría SAP Business One",
     template: "%s | SAP Academy",
   },
   description:
-    "Capacitación oficial y consultoría en SAP para empresas y profesionales. Certifícate y accede a nuestra bolsa de empleo exclusiva en España y Latam.",
+    "Formación especializada y consultoría en SAP Business One para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
   keywords: [
     "Capacitación SAP",
     "Consultoría SAP B2B",
@@ -52,28 +52,28 @@ export const metadata: Metadata = {
     canonical: "https://sapacademy.es",
   },
   openGraph: {
-    title: "SAP Academy | Certificación y Consultoría SAP Oficial",
+    title: "SAP Academy | Formación y Consultoría SAP Business One",
     description:
-      "Capacitación oficial y consultoría en SAP para empresas y profesionales. Certifícate y accede a nuestra bolsa de empleo exclusiva en España y Latam.",
+      "Formación especializada y consultoría en SAP Business One para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
     url: "https://sapacademy.es",
     siteName: "SAP Academy",
     locale: "es_ES",
     type: "website",
     images: [
       {
-        url: "https://sapacademy.es/og-cover.png",
-        width: 1200,
-        height: 630,
+        url: "https://sapacademy.es/b1-academy-logo.webp",
+        width: 500,
+        height: 500,
         alt: "SAP Academy - Plataforma de Capacitación y Consultoría Empresarial SAP",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAP Academy | Certificación y Consultoría SAP Oficial",
+    title: "SAP Academy | Formación y Consultoría SAP Business One",
     description:
-      "Capacitación oficial y consultoría en SAP para empresas y profesionales. Certifícate y accede a nuestra bolsa de empleo.",
-    images: ["https://sapacademy.es/og-cover.png"],
+      "Formación especializada y consultoría en SAP Business One para profesionales y empresas.",
+    images: ["https://sapacademy.es/b1-academy-logo.webp"],
   },
   robots: {
     index: true,
@@ -153,7 +153,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
             width="0"
-            style={{ display: "none", visibility: "hidden" }}
+            className="hidden invisible"
           />
         </noscript>
 

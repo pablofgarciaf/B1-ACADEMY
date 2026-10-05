@@ -1,0 +1,44 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "M01-L01_B01_D01.webp",
+    "script_text": "Antes de tocar una sola pantalla, necesitas entender por qué existe este sistema y qué problema viene a resolver en las empresas. Bienvenido a tu primera lección de SAP Business One.",
+    "start_time": 0.0,
+    "end_time": 12.62
+  },
+  {
+    "slide_index": 2,
+    "image_file": "M01-L01_B01_D02.webp",
+    "script_text": "Imagina una empresa donde ventas usa Excel, contabilidad tiene su propio programa y almacén lleva un cuaderno. Son tres islas desconectadas. Cada uno defiende su propia versión de la verdad.",
+    "start_time": 12.62,
+    "end_time": 26.98
+  },
+  {
+    "slide_index": 3,
+    "image_file": "M01-L01_B01_D03.webp",
+    "script_text": "Cuando las áreas no se hablan, el cliente sufre. Ventas factura sin saber que el almacén ya agotó el producto. El pedido se retrasa, el cliente se queja y contabilidad no sabe qué cobrar.",
+    "start_time": 26.98,
+    "end_time": 41.33
+  },
+  {
+    "slide_index": 4,
+    "image_file": "M01-L01_B01_D04.webp",
+    "script_text": "Un ERP, o Planificación de Recursos Empresariales, elimina estas islas. Es una sola base de datos que todos los departamentos comparten en tiempo real. Lo que hace ventas, lo ve bodega al instante.",
+    "start_time": 41.33,
+    "end_time": 56.26
+  },
+  {
+    "slide_index": 5,
+    "image_file": "M01-L01_B01_D05.webp",
+    "script_text": "SAP Business One es precisamente eso: un ERP diseñado para pequeñas y medianas empresas. Controla absolutamente todo, desde las finanzas y las compras hasta el inventario, evitando que trabajemos doble.",
+    "start_time": 56.26,
+    "end_time": 70.63
+  },
+  {
+    "slide_index": 6,
+    "image_file": "M01-L01_B01_D06.webp",
+    "script_text": "En resumen: un ERP como SAP Business One elimina las islas de información, garantiza que todos miren los mismos datos reales y conecta todas las áreas para que la empresa funcione como un reloj.",
+    "start_time": 70.63,
+    "end_time": 83.5
+  }
+]

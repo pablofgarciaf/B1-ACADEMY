@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { Briefcase, CheckCircle2, ShieldCheck, X, Send } from 'lucide-react';
 
@@ -17,39 +17,46 @@ export function JobApplicationModal({
   isOpen,
   onClose,
 }: JobApplicationModalProps) {
-  const { user } = useAuth();
+  const { user, currentUser } = useAuth();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    closeButtonRef.current?.focus();
+    const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
   const handleApply = async () => {
     setLoading(true);
-    // Simula envío a endpoint conectado con n8n
     try {
-      await fetch('/api/webhooks/n8n', {
+      if (!currentUser) throw new Error('AUTH_REQUIRED');
+      const token = await currentUser.getIdToken();
+      const response = await fetch('/api/job-applications', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          event: 'JOB_APPLICATION_SUBMITTED',
-          userId: user?.uid || 'anonymous',
-          userEmail: user?.email || 'postulante@demo.com',
-          jobTitle,
-          companyName,
-        }),
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ jobTitle, companyName }),
       });
-    } catch (e) {
-      console.error(e);
+      if (!response.ok) throw new Error('SUBMIT_FAILED');
+      setSubmitted(true);
+    } catch {
+      setSubmitted(false);
     }
     setLoading(false);
-    setSubmitted(true);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0c1424] p-8 shadow-2xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose(); }}>
+      <div className="relative w-full max-w-lg rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0c1424] p-8 shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="job-application-title">
         <button
+          ref={closeButtonRef}
           onClick={onClose}
+          aria-label="Cerrar postulación"
           className="absolute top-5 right-5 p-2 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-xl transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
@@ -59,7 +66,7 @@ export function JobApplicationModal({
           <div className="w-12 h-12 rounded-2xl bg-sap-blue/10 text-sap-blue flex items-center justify-center mx-auto mb-3">
             <Briefcase className="w-6 h-6" />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+          <h3 id="job-application-title" className="text-xl font-bold text-slate-900 dark:text-white">
             Postulación a Vacante
           </h3>
           <p className="text-xs text-slate-500 mt-1">
@@ -76,7 +83,7 @@ export function JobApplicationModal({
               ¡Candidatura Enviada con Éxito!
             </p>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              El flujo automatizado con n8n ha validado tu certificado digital y entregado tu perfil curricular al equipo de selección de {companyName}.
+              Tu postulación quedó registrada de forma segura para revisión por el equipo de selección de {companyName}.
             </p>
             <button
               onClick={onClose}
@@ -88,10 +95,10 @@ export function JobApplicationModal({
         ) : (
           <div className="space-y-4">
             <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 text-xs space-y-2">
-              <p><strong>Candidato:</strong> {user?.displayName || "Usuario Demo"}</p>
+              <p><strong>Candidato:</strong> {user?.displayName || "Inicia sesión para postular"}</p>
               <p><strong>Nivel de Certificación:</strong> {user?.role === 'consultor_premium' ? 'Consultor Premium S/4HANA (Prioritario)' : 'Usuario Regular'}</p>
               <p className="text-emerald-500 font-semibold flex items-center gap-1.5 pt-1">
-                <ShieldCheck className="w-4 h-4" /> Hash de Verificación Criptográfica listo para envío
+                <ShieldCheck className="w-4 h-4" /> La identidad se verificará con tu sesión autenticada
               </p>
             </div>
 

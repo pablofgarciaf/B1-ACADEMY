@@ -41,7 +41,7 @@ export default function ManualesLibraryPage() {
   const [examQuestionIdx, setExamQuestionIdx] = useState(0);
   const [examScore, setExamScore] = useState(0);
   const [examFinished, setExamFinished] = useState(false);
-  const [studentName, setStudentName] = useState('Pablo García');
+  const [studentName, setStudentName] = useState('Estudiante SAP');
   const [examUserAnswers, setExamUserAnswers] = useState<Record<number, number>>({});
 
   // Cargar manuales y categorías certificadas desde localStorage
@@ -196,11 +196,11 @@ export default function ManualesLibraryPage() {
             <Sparkles className="w-3.5 h-3.5" /> Repositorio Documental Oficial • B1 Academy Ecuador
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Biblioteca de Manuales Técnicos
+            Atlas técnico de manuales SAP Business One
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            <strong>{ALL_MANUALS.length} manuales oficiales</strong> organizados en
-            <strong> {MANUAL_CATEGORIES.length} módulos temáticos</strong>. Completa las clases prácticas y aprueba el examen final para obtener tu <strong>Certificado Oficial en PDF</strong>.
+            <strong>{ALL_MANUALS.length} manuales técnicos</strong> organizados en
+            <strong> {MANUAL_CATEGORIES.length} módulos temáticos</strong>. Completa las clases prácticas y aprueba el examen final para obtener tu <strong>certificado propio de B1 Academy</strong>.
           </p>
         </div>
 
@@ -211,6 +211,7 @@ export default function ManualesLibraryPage() {
             <div className="relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
+                aria-label="Buscar manuales"
                 type="text"
                 placeholder="Buscar por título, palabra clave o número..."
                 value={searchTerm}
@@ -222,6 +223,7 @@ export default function ManualesLibraryPage() {
             {/* Selector de Categoría */}
             <div>
               <select
+                aria-label="Filtrar manuales por categoría"
                 value={selectedCategory}
                 onChange={(e) => handleCategorySelectChange(e.target.value)}
                 className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue cursor-pointer"
@@ -364,7 +366,7 @@ export default function ManualesLibraryPage() {
             {otherGroups.map(([categoryName, manuals], index) => {
               const icon = manuals[0]?.categoryIcon || '📁';
               const isCertified = certifiedCategories.includes(categoryName);
-              
+
               // Si no hay categoría activa, hay 22 ítems:
               // Los primeros 21 van 7 filas x 3 columnas.
               // El ítem 22 (índice 21) se posiciona al medio con lg:col-start-2
@@ -374,9 +376,8 @@ export default function ManualesLibraryPage() {
                 <button
                   key={categoryName}
                   onClick={() => toggleCategory(categoryName)}
-                  className={`w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-sap-blue hover:shadow-lg hover:scale-[1.01] transition-all cursor-pointer group text-left ${
-                    isCenteredSingle ? 'lg:col-start-2' : ''
-                  }`}
+                  className={`w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-sap-blue hover:shadow-lg hover:scale-[1.01] transition-all cursor-pointer group text-left ${isCenteredSingle ? 'lg:col-start-2' : ''
+                    }`}
                 >
                   <div className="flex items-center gap-3.5">
                     <span className="text-3xl transition-transform group-hover:scale-110 duration-200">
@@ -510,7 +511,7 @@ export default function ManualesLibraryPage() {
                         type="text"
                         value={studentName}
                         onChange={(e) => setStudentName(e.target.value)}
-                        placeholder="Ej: Pablo García Fernández"
+                        placeholder="Ej: Nombre Apellido"
                         className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 bg-white dark:bg-slate-900 text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
                       />
                     </div>

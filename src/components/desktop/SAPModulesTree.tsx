@@ -49,7 +49,7 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 };
 
 export default function SAPModulesTree({ modules, onScreenSelect }: SAPModulesTreeProps) {
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set(['02_Ventas']));
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
   const [searchTerm, setSearchTerm] = useState('');
 
   const toggleModule = (moduleKey: string) => {

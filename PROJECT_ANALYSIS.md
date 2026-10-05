@@ -67,7 +67,7 @@ Archivos Markdown en `public/modulos/Modulo_01.md` a `Modulo_12.md`:
 
 | Rol | Descripción | Accesos Clave |
 |-----|-------------|---------------|
-| `super` | Superadministrador único (pablofgarciaf@gmail.com) | Acceso total, master bypass |
+| `super` | Superadministrador asignado | Acceso total validado por sesión servidor |
 | `admin` | Administrador institución | CRUD usuarios, cursos, reportes, `/admin` |
 | `docente` | Instructor/Profesor | Crear contenido, calificar, dashboard estudiantes |
 | `estudiante` | Alumno (mayoría) | Cursos asignados, evaluaciones, sandbox, `/dashboard`, `/mi-aula` |
@@ -265,7 +265,7 @@ npm run lint     # ESLint + Next.js rules
 
 ## 🎯 Próximos Pasos Recomendados
 
-1. **Mover master bypass** a `.env.local` o Firebase Custom Claims
+1. **Mantener privilegios admin** en Firebase Auth / Firestore sin credenciales en código
 2. **Configurar índices Firestore** compuestos para queries frecuentes
 3. **Setup CI/CD** (GitHub Actions → Vercel)
 4. **Monitoreo**: Sentry + Lighthouse CI + Analytics

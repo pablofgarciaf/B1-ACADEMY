@@ -35,7 +35,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'Mi Aula', href: '/mi-aula', icon: GraduationCap, highlight: true },
     { name: 'Manuales & Atlas', href: '/manuales', icon: BookOpen },
-    { name: '🚀 Simulador', href: '/simulador', icon: Briefcase },
+    { name: 'Simulador', href: '/simulador', icon: Briefcase },
     { name: 'Bolsa de Empleo', href: '/bolsa-empleo', icon: Briefcase },
   ];
 
@@ -78,7 +78,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`flex items-center gap-1.5 transition-colors ${isActive
+                className={`flex min-h-[44px] items-center gap-1.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sap-blue ${isActive
                   ? 'text-sap-blue dark:text-sky-400 font-bold'
                   : 'hover:text-sap-blue dark:hover:text-sky-300'
                   }`}
@@ -91,12 +91,12 @@ export function Navbar() {
 
           {/* Ecosistema Dropdown */}
           <div className="relative group">
-            <button className="flex items-center gap-1.5 transition-colors hover:text-sap-blue dark:hover:text-sky-300">
+            <button aria-haspopup="menu" className="flex min-h-[44px] items-center gap-1.5 rounded-lg transition-colors hover:text-sap-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sap-blue dark:hover:text-sky-300">
               <Sparkles className="w-4 h-4 opacity-75" />
               <span>Ecosistema</span>
               <ChevronDown className="w-3 h-3 opacity-70 group-hover:rotate-180 transition-transform" />
             </button>
-            <div className="absolute top-full right-0 mt-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-right">
+            <div className="absolute top-full right-0 mt-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform origin-top-right" role="menu">
               <div className="py-2 bg-white dark:bg-[#0b1320] rounded-xl shadow-xl border border-slate-100 dark:border-white/10 overflow-hidden relative before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
                 {ecosistemaLinks.map((link) => {
                   const Icon = link.icon;
@@ -105,7 +105,8 @@ export function Navbar() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      className={`flex items-center gap-2.5 px-4 py-2 text-sm transition-colors ${isActive
+                      role="menuitem"
+                      className={`flex min-h-[44px] items-center gap-2.5 px-4 py-2 text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sap-blue ${isActive
                         ? 'text-sap-blue dark:text-sky-400 bg-slate-50 dark:bg-white/5 font-bold'
                         : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-white/5 hover:text-sap-blue dark:hover:text-sky-300'}`}
                     >

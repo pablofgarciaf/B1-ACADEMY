@@ -810,3 +810,4 @@ export function getQuizForManual(manualId: string, manualTitle: string, manualCa
     }
   ];
 }
+

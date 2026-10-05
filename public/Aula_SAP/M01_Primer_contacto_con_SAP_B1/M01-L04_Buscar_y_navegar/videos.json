@@ -1,0 +1,65 @@
+{
+  "id": "M01-L04",
+  "titulo": "Buscar y navegar como un experto",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Atajos de navegación",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L04_Buscar_y_navegar/B01_video/M01-L04_B01.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L04_Buscar_y_navegar/B01_video/M01-L04_B01_sync.json",
+      "duracion_s": 58.42
+    },
+    {
+      "bloque": "B02",
+      "tipo": "simulador",
+      "titulo": "Usa la flecha naranja y Drag & Relate",
+      "screenId": "SAL004",
+      "mision": "Usa la flecha naranja en una factura para saltar al maestro del cliente C20000.",
+      "pasos_esperados": [
+        "Abrir Factura de deudores",
+        "Clic en flecha naranja de cliente"
+      ],
+      "criterios_validacion": [],
+      "pistas_ia": [
+        "Pista 1: Abre cualquier factura del módulo de ventas.",
+        "Pista 2: Busca el ícono naranja junto al código del cliente y hazle clic."
+      ],
+      "video_mision": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L04_Buscar_y_navegar/B02_simulador/M01-L04_B02_mision.mp4",
+      "video_logrado": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L04_Buscar_y_navegar/B02_simulador/M01-L04_B02_logrado.mp4"
+    },
+    {
+      "bloque": "B03",
+      "tipo": "video",
+      "titulo": "Fin del módulo 1",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L04_Buscar_y_navegar/B03_video/M01-L04_B03.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L04_Buscar_y_navegar/B03_video/M01-L04_B03_sync.json",
+      "duracion_s": 13.03
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Para qué sirve la flecha naranja (→) junto a un campo en SAP B1?",
+      "opciones": [
+        "Para avanzar al siguiente registro en la base de datos",
+        "Para saltar directamente al maestro del dato que está en ese campo",
+        "Para ordenar la lista de resultados alfabéticamente",
+        "Para abrir el manual de ayuda de ese módulo"
+      ],
+      "correcta": 1,
+      "explicacion": "La flecha naranja es un hipervínculo interno que te lleva al registro maestro detallado."
+    },
+    {
+      "pregunta": "¿Qué es Drag and Relate en SAP B1?",
+      "opciones": [
+        "Una función de Excel integrada en el sistema",
+        "Arrastrar un código sobre una ventana para filtrar todos sus registros al instante",
+        "Una forma de mover documentos entre módulos",
+        "El nombre oficial del módulo de reportes y gráficas"
+      ],
+      "correcta": 1,
+      "explicacion": "Permite relacionar información arrastrando un elemento sobre un objeto del menú."
+    }
+  ]
+}

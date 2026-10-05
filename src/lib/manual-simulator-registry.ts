@@ -1,13 +1,14 @@
 // ═══════════════════════════════════════════════════════════════════
-// REGISTRO DE ARQUETIPOS DE SIMULADOR PARA LOS 120 MANUALES SAP B1
+// REGISTRO DE ARQUETIPOS DE SIMULADOR PARA LOS MANUALES SAP B1
 // Clasificación exacta: Teóricos (sin formulario) vs Prácticos (9 arquetipos)
 // ═══════════════════════════════════════════════════════════════════
 
-export type SimulatorArchetype = 
+export type SimulatorArchetype =
   | "query"           // Generador de Consultas SQL (Query Generator)
   | "sales"           // Documentos de Ventas (OQUT / ORDR / OINV)
   | "procurement"     // Documentos de Compras (OPOR / OPDN / OPCH)
   | "item_master"     // Datos Maestros de Artículo (OITM)
+  | "uom_setup"       // Definición de Grupos de Unidades de Medida (OUGP / UGP1)
   | "inventory_move"  // Movimientos y Traslados de Stock (OIGN / OIGE / OWTR)
   | "bin_locations"   // Ubicaciones de Almacén (OBIN)
   | "journal_entry"   // Asiento Contable Manual (OJDT)
@@ -484,11 +485,11 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
   },
   "10_ItemInv_21_UoM_Overview_ES": {
     requiresSimulator: true,
-    archetype: "item_master",
-    title: "Datos Maestros de Artículo - Unidades de Medida: Visión General",
-    moduleName: "Inventario > Datos Maestros de Artículo",
-    defaultTable: "OITM - Maestro de Artículos",
-    scenarioGoal: "Gestionar propiedades del artículo, método de valoración de stock y grupos de unidad de medida.",
+    archetype: "uom_setup",
+    title: "Grupos de Unidades de Medida (OUGP) - Visión General",
+    moduleName: "Gestión > Definición > Inventario > Grupos de unidades de medida",
+    defaultTable: "OUGP / UGP1 - Grupos y Conversión",
+    scenarioGoal: "Estructurar unidades de medida alternativas respecto a la unidad base de inventario.",
   },
   "10_ItemInv_31_WM_WH_ES": {
     requiresSimulator: true,
@@ -524,27 +525,27 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
   },
   "10_Item_22_UoM_Setup": {
     requiresSimulator: true,
-    archetype: "item_master",
-    title: "Datos Maestros de Artículo - Unidades de Medida: Configuración",
-    moduleName: "Inventario > Datos Maestros de Artículo",
-    defaultTable: "OITM - Maestro de Artículos",
-    scenarioGoal: "Gestionar propiedades del artículo, método de valoración de stock y grupos de unidad de medida.",
+    archetype: "uom_setup",
+    title: "Grupos de Unidades de Medida (OUGP) - Configuración y Conversión",
+    moduleName: "Gestión > Definición > Inventario > Grupos de unidades de medida",
+    defaultTable: "OUGP / UGP1 - Grupos y Reglas de Conversión",
+    scenarioGoal: "Definir la unidad base y configurar la matriz de conversión de rollos y bobinas a metros.",
   },
   "10_Item_23_UoM_Weight": {
     requiresSimulator: true,
-    archetype: "item_master",
-    title: "Datos Maestros de Artículo - Unidades de Medida: Gestión por Peso",
-    moduleName: "Inventario > Datos Maestros de Artículo",
-    defaultTable: "OITM - Maestro de Artículos",
-    scenarioGoal: "Gestionar propiedades del artículo, método de valoración de stock y grupos de unidad de medida.",
+    archetype: "uom_setup",
+    title: "Grupos de Unidades de Medida - Conversión por Peso y Volumen",
+    moduleName: "Gestión > Definición > Inventario > Grupos de unidades de medida",
+    defaultTable: "OUGP / UGP1 - Pesos y Volúmenes",
+    scenarioGoal: "Gestionar factores de conversión por peso bruto y neto en unidades alternativas.",
   },
   "10_Item_24_UoM_Packaging": {
     requiresSimulator: true,
-    archetype: "item_master",
-    title: "Datos Maestros de Artículo - Unidades de Medida: Empaquetado",
-    moduleName: "Inventario > Datos Maestros de Artículo",
-    defaultTable: "OITM - Maestro de Artículos",
-    scenarioGoal: "Gestionar propiedades del artículo, método de valoración de stock y grupos de unidad de medida.",
+    archetype: "uom_setup",
+    title: "Grupos de Unidades de Medida - Definición de Tipos de Paquete",
+    moduleName: "Gestión > Definición > Inventario > Grupos de unidades de medida",
+    defaultTable: "OUGP / UGP1 - Empaquetado",
+    scenarioGoal: "Asignar tipos de paquete predeterminados a cada unidad de medida del grupo.",
   },
   "10_Item_42_SNBatch_Valuation": {
     requiresSimulator: true,

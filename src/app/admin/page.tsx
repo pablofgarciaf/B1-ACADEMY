@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth, UserProfile } from '@/context/AuthContext';
@@ -75,18 +75,18 @@ export default function AdminStudentsPanel() {
   ]);
 
   // Cargar estudiantes desde Firestore
-  const loadStudents = async () => {
+  const loadStudents = useCallback(async () => {
     setLoadingList(true);
     const list = await getAllStudents();
     setStudents(list);
     setLoadingList(false);
-  };
+  }, [getAllStudents]);
 
   useEffect(() => {
     if (!authLoading && userProfile && (userProfile.role === 'super' || userProfile.role === 'admin')) {
       loadStudents();
     }
-  }, [authLoading, userProfile]);
+  }, [authLoading, userProfile, loadStudents]);
 
   // Mostrar pantalla de carga mientras resuelve auth o redirect
   if (authLoading || !userProfile || (userProfile.role !== 'super' && userProfile.role !== 'admin')) {
@@ -117,7 +117,7 @@ export default function AdminStudentsPanel() {
     const res = await createStudent({
       name: formName,
       email: formEmail,
-      cedula: formCedula,
+      temporaryPassword: formCedula,
       phone: formPhone,
       role: formRole,
       assignedTracks: formTracks,
@@ -130,7 +130,7 @@ export default function AdminStudentsPanel() {
       return;
     }
 
-    setCreateSuccess(`¡Usuario ${formEmail} creado con éxito! Clave inicial: ${formCedula}`);
+    setCreateSuccess(`Usuario ${formEmail} creado. Comparte la clave temporal por un canal seguro.`);
     await loadStudents();
     
     // Resetear formulario
@@ -447,12 +447,13 @@ export default function AdminStudentsPanel() {
 
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Cédula / Pasaporte * (Clave Inicial)
+                    Contraseña temporal segura *
                   </label>
                   <input
-                    type="text"
+                    type="password"
                     required
-                    placeholder="Ej: 1718293849"
+                    placeholder="Mínimo 12 caracteres"
+                    minLength={12}
                     value={formCedula}
                     onChange={(e) => setFormCedula(e.target.value)}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue font-mono"

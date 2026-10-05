@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { StepGuide } from '@/components/site/ManualViewer';
 import { ManualSimulatorConfig } from '@/lib/manual-simulator-registry';
+import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 
 interface MasterB1CheckpointOverlayProps {
   isOpen: boolean;
@@ -36,56 +37,36 @@ export default function MasterB1CheckpointOverlay({
   onOpenSimulator,
   onValidateAndResume
 }: MasterB1CheckpointOverlayProps) {
-  const [isSpeaking, setIsSpeaking] = useState(false);
   const [audioEnabled, setAudioEnabled] = useState(true);
   const [isValidating, setIsValidating] = useState(false);
   const [validationSuccess, setValidationSuccess] = useState(false);
+  // Voz oficial de la academia (Jorge), la misma de los videos de los manuales.
+  const { isSpeaking, speakText, stopSpeaking } = useAcademyVoice();
 
   const guideTitle = stepGuide?.title || simConfig?.scenarioGoal || 'Práctica interactiva en el Simulador SAP B1';
   const menuPath = stepGuide?.menu_path || simConfig?.moduleName || 'Módulo de Operación';
 
-  // Síntesis de voz del Profesor Master B1
   const speakInstruction = React.useCallback(() => {
-    if (!audioEnabled || typeof window === 'undefined' || !window.speechSynthesis) return;
-
-    window.speechSynthesis.cancel();
-    const textToSpeak = `¡Atención! Soy Master B1, tu profesor virtual. Hemos pausado la clase en la diapositiva ${slideIndex}. Para continuar, abre el simulador de SAP y realiza la siguiente actividad: ${guideTitle}. Revisa la ruta en el menú: ${menuPath}.`;
-    
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
-    utterance.lang = 'es-ES';
-    utterance.rate = 1.05;
-    utterance.pitch = 1.0;
-
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    window.speechSynthesis.speak(utterance);
-  }, [audioEnabled, slideIndex, guideTitle, menuPath]);
+    if (!audioEnabled) return;
+    speakText(`¡Atención! Soy Master B1, tu profesor virtual. Hemos pausado la clase en la diapositiva ${slideIndex}. Para continuar, abre el simulador de SAP y realiza la siguiente actividad: ${guideTitle}. Revisa la ruta en el menú: ${menuPath}.`);
+  }, [audioEnabled, slideIndex, guideTitle, menuPath, speakText]);
 
   useEffect(() => {
     if (isOpen) {
       setValidationSuccess(false);
-      // Auto-hablar solo si el audio está activo
       const timer = setTimeout(() => {
-        if (audioEnabled) {
-          speakInstruction();
-        }
+        if (audioEnabled) speakInstruction();
       }, 500);
       return () => {
         clearTimeout(timer);
-        if (typeof window !== 'undefined' && window.speechSynthesis) {
-          window.speechSynthesis.cancel();
-        }
+        stopSpeaking();
       };
     }
-  }, [isOpen, slideIndex, audioEnabled, speakInstruction]);
+  }, [isOpen, slideIndex, audioEnabled, speakInstruction, stopSpeaking]);
 
   const handleValidate = () => {
     setIsValidating(true);
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-    }
+    stopSpeaking();
 
     setTimeout(() => {
       setIsValidating(false);
@@ -126,10 +107,7 @@ export default function MasterB1CheckpointOverlay({
           {/* Toggle de Audio */}
           <button
             onClick={() => {
-              if (isSpeaking) {
-                window.speechSynthesis.cancel();
-                setIsSpeaking(false);
-              }
+              if (isSpeaking) stopSpeaking();
               setAudioEnabled(!audioEnabled);
             }}
             className="flex h-8 w-8 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-gray-300 hover:text-white transition-colors active:scale-95"

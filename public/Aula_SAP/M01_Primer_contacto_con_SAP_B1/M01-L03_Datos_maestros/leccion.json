@@ -1,0 +1,143 @@
+{
+  "id": "M01-L03",
+  "modulo": "M01",
+  "titulo": "Datos maestros: la columna vertebral",
+  "pregunta_central": "¿Por qué un error en el maestro arruina todas las transacciones?",
+  "objetivos": [
+    "Diferenciar entre un dato maestro y un documento.",
+    "Entender el impacto de configurar bien un dato maestro."
+  ],
+  "duracion_estimada_min": 12,
+  "fuentes": [
+    "10_Overview_13_MDDoc_ES"
+  ],
+  "bloques": [
+    {
+      "id": "B01",
+      "tipo": "video",
+      "titulo": "Maestros vs. Documentos",
+      "diapositivas": [
+        {
+          "archivo": "B01_video/M01-L03_B01_D01.webp",
+          "tipo": "portada",
+          "titulo_en_pantalla": "Datos Maestros",
+          "puntos_en_pantalla": [],
+          "ilustracion": null,
+          "narracion": "Vamos a hablar de la columna vertebral de SAP: los datos maestros. Entender esto es fundamental para no cometer errores costosos. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 20
+        },
+        {
+          "archivo": "B01_video/M01-L03_B01_D02.webp",
+          "tipo": "comparacion",
+          "titulo_en_pantalla": "¿Maestro o Documento?",
+          "puntos_en_pantalla": [
+            "Maestro: Fijo (Cliente, Artículo)",
+            "Documento: Evento (Factura)"
+          ],
+          "ilustracion": "_ilustraciones/M01-L03_B01_D02_ilus.webp",
+          "narracion": "En SAP B1 existen dos tipos de registros. Los datos maestros son permanentes: un cliente, un artículo o un proveedor. Los documentos son transaccionales: una factura, un pedido o un pago. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 35
+        },
+        {
+          "archivo": "B01_video/M01-L03_B01_D03.webp",
+          "tipo": "error_comun",
+          "titulo_en_pantalla": "El efecto dominó",
+          "puntos_en_pantalla": [
+            "Error en origen",
+            "Afecta en cascada"
+          ],
+          "ilustracion": "_ilustraciones/M01-L03_B01_D03_ilus.webp",
+          "narracion": "La diferencia clave es que un dato maestro mal configurado contamina todos los documentos que lo usan. Si el maestro del cliente tiene mal la cuenta contable, todas sus facturas contabilizan mal. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 35
+        },
+        {
+          "archivo": "B01_video/M01-L03_B01_D04.webp",
+          "tipo": "puente",
+          "titulo_en_pantalla": "Vamos al simulador",
+          "puntos_en_pantalla": [
+            "Práctica: Maestro de Cliente"
+          ],
+          "ilustracion": null,
+          "narracion": "Para que veas cómo luce, vamos a buscar el registro de uno de nuestros clientes en el sistema. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 20
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "tipo": "simulador",
+      "titulo": "Explora el maestro de clientes",
+      "tarjeta_mision": "B02_simulador/M01-L03_B02_mision.webp",
+      "tarjeta_logrado": "B02_simulador/M01-L03_B02_logrado.webp",
+      "screenId": "SAL006",
+      "mision": "Abre el maestro del cliente C20000 (Maxi-Teq) y localiza su condición de pago.",
+      "datos_a_usar": {
+        "cliente": "C20000"
+      },
+      "pasos_esperados": [
+        "Abrir Socios de Negocios > Datos Maestros",
+        "Buscar C20000"
+      ],
+      "criterios_validacion": [
+        {
+          "campo": "codigo_cliente",
+          "esperado": "C20000"
+        }
+      ],
+      "pistas_ia": [
+        "Pista 1: Ve al módulo de Socios de Negocios.",
+        "Pista 2: Escribe C20000 en el modo buscar y presiona Enter."
+      ],
+      "narracion_mision": "Abre el maestro del cliente C20000, Maxi-Teq, e identifica en qué pestaña está su condición de pago. Asegúrate de seguir todos los pasos indicados con mucha atención para completar esta tarea de manera exitosa.",
+      "narracion_logrado": "Muy bien. Esa información que acabas de ver es la que viajará automáticamente a cada factura de este cliente."
+    },
+    {
+      "id": "B03",
+      "tipo": "video",
+      "titulo": "Cierre de Datos Maestros",
+      "diapositivas": [
+        {
+          "archivo": "B03_video/M01-L03_B03_D01.webp",
+          "tipo": "resumen",
+          "titulo_en_pantalla": "Resumen",
+          "puntos_en_pantalla": [
+            "El maestro es la plantilla.",
+            "El documento es la transacción."
+          ],
+          "ilustracion": null,
+          "narracion": "Recuerda: cuida tus datos maestros como si fueran oro. Son la base de todo lo que ocurre después en tu empresa. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 25
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es la diferencia entre un dato maestro y un documento en SAP B1?",
+      "opciones": [
+        "No hay diferencia, son lo mismo",
+        "El maestro es permanente y define reglas; el documento registra una transacción específica",
+        "El documento es más importante que el maestro",
+        "Los maestros solo los puede editar el administrador del sistema"
+      ],
+      "correcta": 1,
+      "explicacion": "Los maestros almacenan datos recurrentes, los documentos almacenan las actividades diarias."
+    },
+    {
+      "pregunta": "Si el maestro de un artículo tiene mal asignada su cuenta de ingresos, ¿qué ocurre?",
+      "opciones": [
+        "Solo afecta a la próxima factura",
+        "No pasa nada, el sistema lo corrige solo",
+        "Todas las facturas de ese artículo contabilizan en la cuenta incorrecta",
+        "El sistema bloquea la venta del artículo de inmediato"
+      ],
+      "correcta": 2,
+      "explicacion": "El documento hereda la configuración del maestro. Si el maestro está mal, el documento registrará mal la contabilidad."
+    }
+  ],
+  "informe_clave": {
+    "nombre": "Análisis de ventas por cliente o artículo",
+    "quien_lo_usa": "Gerente Comercial",
+    "decision_que_permite": "Conocer qué clientes compran más y qué productos son más rentables, gracias a que los maestros agrupan la información."
+  }
+}

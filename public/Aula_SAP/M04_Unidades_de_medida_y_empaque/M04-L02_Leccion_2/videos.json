@@ -1,0 +1,16 @@
+{
+  "id": "M04-L02",
+  "titulo": "Leccion 2",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M04_Unidades_de_medida_y_empaque/M04-L02_Leccion_2/B01_video/M04-L02_B01.mp4",
+      "sync": "/Aula_SAP/M04_Unidades_de_medida_y_empaque/M04-L02_Leccion_2/B01_video/M04-L02_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

@@ -1,0 +1,16 @@
+{
+  "id": "M11-L01",
+  "titulo": "Leccion 1",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M11_Valoracion_de_inventario_lotes_y_ser/M11-L01_Leccion_1/B01_video/M11-L01_B01.mp4",
+      "sync": "/Aula_SAP/M11_Valoracion_de_inventario_lotes_y_ser/M11-L01_Leccion_1/B01_video/M11-L01_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

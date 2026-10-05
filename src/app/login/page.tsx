@@ -23,7 +23,7 @@ type Tab = "login" | "register";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, createStudent, resetPassword } = useAuth();
+  const { login, register, resetPassword } = useAuth();
 
   const [tab, setTab] = useState<Tab>("login");
 
@@ -40,7 +40,7 @@ export default function LoginPage() {
   // Register state
   const [regName, setRegName] = useState("");
   const [regEmail, setRegEmail] = useState("");
-  const [regCedula, setRegCedula] = useState("");
+  const [regPassword, setRegPassword] = useState("");
   const [regPhone, setRegPhone] = useState("");
   const [regLoading, setRegLoading] = useState(false);
   const [regError, setRegError] = useState("");
@@ -85,22 +85,20 @@ export default function LoginPage() {
     e.preventDefault();
     setRegError("");
     setRegSuccess("");
-    if (!regName || !regEmail || !regCedula) {
-      setRegError("Nombre, correo y cedula son obligatorios.");
+    if (!regName || !regEmail || !regPassword) {
+      setRegError("Nombre, correo y contraseña son obligatorios.");
       return;
     }
-    if (regCedula.length < 8) {
-      setRegError("La cedula debe tener al menos 8 digitos.");
+    if (regPassword.length < 12) {
+      setRegError("La contraseña debe tener al menos 12 caracteres.");
       return;
     }
     setRegLoading(true);
-    const res = await createStudent({
+    const res = await register({
       name: regName,
       email: regEmail,
-      cedula: regCedula,
+      password: regPassword,
       phone: regPhone,
-      role: "estudiante",
-      assignedTracks: ["sap-b1-core"],
     });
     setRegLoading(false);
     if (!res.success) {
@@ -108,14 +106,14 @@ export default function LoginPage() {
       return;
     }
     setRegSuccess(
-      "Cuenta creada con exito. Tu contrasena inicial es tu numero de cedula. Inicia sesion para continuar."
+      "Cuenta creada con éxito. Ya puedes iniciar sesión con tu contraseña personal."
     );
     setTimeout(() => {
       setTab("login");
       setEmail(regEmail);
       setRegName("");
       setRegEmail("");
-      setRegCedula("");
+      setRegPassword("");
       setRegPhone("");
       setRegSuccess("");
     }, 3000);
@@ -213,12 +211,13 @@ export default function LoginPage() {
 
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label htmlFor="login-email" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                     Correo Electronico
                   </label>
                   <div className="relative">
                     <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
+                      id="login-email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -231,7 +230,7 @@ export default function LoginPage() {
 
                 <div className="space-y-1.5">
                   <div className="flex justify-between items-center">
-                    <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                    <label htmlFor="login-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                       Contrasena / Cedula
                     </label>
                     <span className="text-[11px] text-slate-400">
@@ -241,6 +240,7 @@ export default function LoginPage() {
                   <div className="relative">
                     <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
+                      id="login-password"
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -249,6 +249,7 @@ export default function LoginPage() {
                       className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
                     />
                     <button
+                      aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
@@ -312,7 +313,7 @@ export default function LoginPage() {
                 <GraduationCap className="w-8 h-8 text-emerald-500 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Registro 100% Gratuito</p>
-                  <p className="text-[11px] text-slate-500">Accede al track SAP Business One Core sin costo. Tu contrasena inicial es tu cedula.</p>
+                  <p className="text-[11px] text-slate-500">Accede al track SAP Business One Core sin costo con una contraseña personal segura.</p>
                 </div>
               </div>
 
@@ -331,12 +332,13 @@ export default function LoginPage() {
 
               <form onSubmit={handleRegister} className="space-y-4">
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label htmlFor="register-name" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                     Nombre Completo *
                   </label>
                   <div className="relative">
                     <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
+                      id="register-name"
                       type="text"
                       value={regName}
                       onChange={(e) => setRegName(e.target.value)}
@@ -348,12 +350,13 @@ export default function LoginPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label htmlFor="register-email" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                     Correo Electronico *
                   </label>
                   <div className="relative">
                     <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
+                      id="register-email"
                       type="email"
                       value={regEmail}
                       onChange={(e) => setRegEmail(e.target.value)}
@@ -365,16 +368,18 @@ export default function LoginPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Cedula / Pasaporte * <span className="font-normal text-slate-400">(sera tu contrasena inicial)</span>
+                  <label htmlFor="register-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                    Contraseña personal * <span className="font-normal text-slate-400">(mínimo 12 caracteres)</span>
                   </label>
                   <div className="relative">
                     <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
-                      type="text"
-                      value={regCedula}
-                      onChange={(e) => setRegCedula(e.target.value)}
-                      placeholder="Ej: 1718293849"
+                      id="register-password"
+                      type="password"
+                      value={regPassword}
+                      onChange={(e) => setRegPassword(e.target.value)}
+                      placeholder="Crea una contraseña segura"
+                      minLength={12}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors font-mono"
                     />
@@ -382,10 +387,11 @@ export default function LoginPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                  <label htmlFor="register-phone" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                     Telefono / WhatsApp <span className="font-normal text-slate-400">(opcional)</span>
                   </label>
                   <input
+                    id="register-phone"
                     type="text"
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}

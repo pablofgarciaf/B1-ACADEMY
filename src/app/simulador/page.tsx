@@ -1,96 +1,43 @@
 'use client';
-
-import React, { useState, useEffect } from 'react';
-import SAPDesktopShell from '@/components/desktop/SAPDesktopShell';
+import { useEffect, useState } from 'react';
+import { z } from 'zod';
+import { getCompany } from '@/lib/firestore-company';
+import type { CompanyState } from '@/lib/firestore-types';
 import SimuladorLogin from '@/components/simulador/SimuladorLogin';
 import SimuladorDashboard from '@/components/simulador/SimuladorDashboard';
+import CompanyWorkspace from '@/components/simulador/CompanyWorkspace';
+import SAPLoginScreen from '@/components/sap-screens/SAPLoginScreen';
+import { Busy, buttonClass } from '@/components/sap-screens/SAPControls';
 import { useAuth } from '@/context/AuthContext';
-
+const catalogSchema = z.object({ modules: z.record(z.object({ key: z.string(), name: z.string(), icon: z.string(), screens: z.array(z.object({ id: z.string(), name: z.string() })) })), metadata: z.object({ total_screens: z.number(), total_modules: z.number() }) });
 export default function SimuladorPage() {
-  const { userProfile, logout, login } = useAuth();
-  const [showSimulator, setShowSimulator] = useState(false);
-  const [catalog, setCatalog] = useState<any>(null);
-  const [loginError, setLoginError] = useState<string | null>(null);
-  const [isLoginLoading, setIsLoginLoading] = useState(false);
-
+  const { userProfile, currentUser, loading, logout, login } = useAuth();
+  const [company, setCompany] = useState<CompanyState | null>(null);
+  const [companyError, setCompanyError] = useState('');
+  const [showSimulator, setShowSimulator] = useState(false); const [sapLoggedIn, setSapLoggedIn] = useState(false);
+  const [catalog, setCatalog] = useState<z.infer<typeof catalogSchema> | null>(null);
+  const [error, setError] = useState<string | null>(null); const [loginLoading, setLoginLoading] = useState(false); const [catalogAttempt, setCatalogAttempt] = useState(0);
   useEffect(() => {
-    const loadCatalog = async () => {
-      try {
-        const response = await fetch('/sap_ui_catalog.json');
-        const data = await response.json();
-        setCatalog(data);
-      } catch (error) {
-        console.error('Error loading SAP catalog:', error);
-      }
-    };
-
-    loadCatalog();
-  }, []);
-
-  const handleLogin = async (email: string, password: string) => {
-    setIsLoginLoading(true);
-    setLoginError(null);
-    try {
-      const result = await login(email, password);
-      if (!result.success) {
-        setLoginError(result.error || 'Error al iniciar sesión');
-      }
-    } catch (error) {
-      setLoginError('Error al iniciar sesión');
-    } finally {
-      setIsLoginLoading(false);
+    const controller = new AbortController();
+    async function load() {
+      try { setError(null); const response = await fetch('/sap_ui_catalog.json', { signal: controller.signal }); if (!response.ok) throw new Error('No se pudo cargar el catálogo SAP.'); const data: unknown = await response.json(); setCatalog(catalogSchema.parse(data)); }
+      catch (e: unknown) { if (!controller.signal.aborted) setError(e instanceof Error ? e.message : 'Error al cargar el catálogo.'); }
     }
-  };
-
-  const handleLogout = async () => {
-    await logout();
-    setShowSimulator(false);
-  };
-
-  if (!userProfile) {
-    return (
-      <SimuladorLogin
-        onLogin={handleLogin}
-        isLoading={isLoginLoading}
-        error={loginError}
-      />
-    );
-  }
-
-  if (!showSimulator) {
-    const userData = userProfile as any;
-    return (
-      <SimuladorDashboard
-        user={{
-          displayName: userProfile.displayName || 'Estudiante',
-          email: userProfile.email,
-          avatar: userData.avatar,
-          company: userData.company,
-          level: userData.simuladorLevel || 1,
-          xp: userData.simuladorXP || 0,
-          totalMissions: 120,
-          completedMissions: userData.completedMissions || 0,
-        }}
-        onStartSimulator={() => setShowSimulator(true)}
-        onLogout={handleLogout}
-      />
-    );
-  }
-
-  if (catalog) {
-    return (
-      <div className="w-full h-screen">
-        <SAPDesktopShell catalog={catalog} />
-      </div>
-    );
-  }
-
-  return (
-    <div className="w-full h-screen bg-slate-900 flex items-center justify-center">
-      <div className="text-center">
-        <div className="w-12 h-12 border-4 border-blue-600 border-t-blue-300 rounded-full animate-spin mx-auto mb-4" />
-        <p className="text-white">Cargando Simulador...</p>
-      </div>
-    </div>
-  );
+    void load(); return () => controller.abort();
+  }, [catalogAttempt]);
+  useEffect(() => { setSapLoggedIn(false); setShowSimulator(false); }, [currentUser?.uid]);
+  useEffect(() => {
+    let active = true; setCompany(null); setCompanyError('');
+    if (currentUser && !showSimulator) void getCompany(currentUser.uid).then(value => { if (active) setCompany(value); }).catch((e: unknown) => { if (active) setCompanyError(e instanceof Error ? e.message : 'No se pudo cargar el progreso.'); });
+    return () => { active = false; };
+  }, [currentUser, showSimulator]);
+  const handleLogin = async (email: string, password: string) => { setLoginLoading(true); setError(null); try { const result = await login(email, password); if (!result.success) setError(result.error ?? 'No se pudo iniciar sesión.'); } catch (e: unknown) { setError(e instanceof Error ? e.message : 'Error de acceso.'); } finally { setLoginLoading(false); } };
+  const handleLogout = async () => { try { sessionStorage.removeItem('sap_session_active'); sessionStorage.removeItem('sap_session_user'); } catch { /* Auth still signs out if browser storage is blocked. */ } await logout(); setShowSimulator(false); setSapLoggedIn(false); };
+  useEffect(() => { if (!currentUser) return; try { const previous = sessionStorage.getItem('sap_session_user'); if (previous !== currentUser.uid) sessionStorage.removeItem('sap_session_active'); sessionStorage.setItem('sap_session_user', currentUser.uid); } catch { /* SAPLoginScreen reports blocked storage. */ } }, [currentUser]);
+  if (loading) return <div className="p-10"><Busy /></div>;
+  if (!userProfile) return <SimuladorLogin onLogin={handleLogin} isLoading={loginLoading} error={error} />;
+  if (!showSimulator) return <>{companyError && <p role="alert" className="bg-amber-50 p-3 text-amber-900">{companyError}</p>}<SimuladorDashboard user={{ displayName: userProfile.displayName || 'Estudiante', email: userProfile.email, avatar: userProfile.avatar, company: company?.profile?.companyName || userProfile.company, level: company?.profile?.level || 1, xp: company?.profile?.xp || 0, totalMissions: Math.max(1, company?.missions.length || 0), completedMissions: company?.missions.filter(m => m.status === 'completed').length || 0 }} onStartSimulator={() => setShowSimulator(true)} onLogout={handleLogout} /></>;
+  if (!sapLoggedIn) return <SAPLoginScreen userEmail={userProfile.email} onLoginSuccess={() => setSapLoggedIn(true)} />;
+  if (!catalog) return <div className="p-10">{error ? <><p role="alert">{error}</p><button className={buttonClass} onClick={() => setCatalogAttempt(n => n + 1)}>Reintentar</button></> : <Busy />}</div>;
+  return <CompanyWorkspace key={currentUser?.uid} catalog={catalog} onExit={() => setShowSimulator(false)} />;
 }

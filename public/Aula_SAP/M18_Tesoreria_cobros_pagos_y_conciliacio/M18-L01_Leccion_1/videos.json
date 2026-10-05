@@ -1,0 +1,16 @@
+{
+  "id": "M18-L01",
+  "titulo": "Leccion 1",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M18_Tesoreria_cobros_pagos_y_conciliacio/M18-L01_Leccion_1/B01_video/M18-L01_B01.mp4",
+      "sync": "/Aula_SAP/M18_Tesoreria_cobros_pagos_y_conciliacio/M18-L01_Leccion_1/B01_video/M18-L01_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

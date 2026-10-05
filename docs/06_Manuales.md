@@ -2,7 +2,7 @@
 
 ## 📌 Visión General
 
-La **Biblioteca de Manuales Técnicos** (`/manuales`) es el repositorio central de los **120 manuales oficiales de capacitación de SAP Business One 10.0 (versión HANA)**. Cada manual es una unidad pedagógica autosuficiente compuesta por:
+La **Biblioteca de Manuales Técnicos** (`/manuales`) es el repositorio central de los **manuales oficiales de capacitación de SAP Business One 10.0 (versión HANA)**. Cada manual es una unidad pedagógica autosuficiente compuesta por:
 
 1. **PDF Oficial Original:** Documento canónico de SAP con capturas del sistema y casos de negocio.
 2. **Transcripción y Diapositivas Markdown (`_slides.md`):** Extracción estructurada del contenido para indexación y búsqueda.
@@ -27,7 +27,7 @@ graph TD
     end
 
     subgraph "Capa de Datos de la Aplicación (TypeScript)"
-        G[src/lib/manuals-120-data.ts] --> H[ALL_MANUALS: ManualItem[] - 120 manuales]
+        G[src/lib/manuals-120-data.ts] --> H[ALL_MANUALS: ManualItem[] - manuales]
         G --> I[MANUAL_CATEGORIES: CategoryGroup[] - 23 módulos]
         G --> J[CATEGORY_NAMES: string[] - Filtros activos]
     end
@@ -62,7 +62,7 @@ export interface ManualItem {
 
 ---
 
-## 🗂️ Las 23 Categorías Operativas (120 Manuales Oficiales)
+## 🗂️ Las 23 Categorías Operativas (Manuales Oficiales)
 
 | # | Ícono | Categoría Temática | Manuales | Enfoque Operativo |
 |---|:---:|---|:---:|---|
@@ -112,7 +112,7 @@ graph TD
 
 ## 🎮 Registro de Arquetipos de Simulación (`manual-simulator-registry.ts`)
 
-Para evitar forzar simulaciones transaccionales en temas puramente teóricos o mostrar interfaces genéricas incorrectas, los 120 manuales se clasifican mediante un registro TypeScript declarativo:
+Para evitar forzar simulaciones transaccionales en temas puramente teóricos o mostrar interfaces genéricas incorrectas, los manuales se clasifican mediante un registro TypeScript declarativo:
 
 1. **Manuales Prácticos / Transaccionales (103 manuales):**
    * **`sales`:** Documentos de ventas (`OQUT`, `ORDR`, `ODLN`, `OINV`) con cliente `C20000 (Maxi-Teq)`, grilla de líneas de artículos, IVA y cálculo automático de totales.

@@ -2,6 +2,8 @@
 
 Este ecosistema rige todos los proyectos web (EnergyEngine, Vermilion Routes, SofIA Tech, Nexo Talento, Modulares GM y nuevas aplicaciones). Garantiza que **cada desarrollo arranque en calificación A y culmine en A+ en Rendimiento, Accesibilidad, SEO Tradicional, Indexación por IA (GEO), Seguridad y Experiencia Visual**.
 
+> **Fuente global obligatoria:** usar `C:\Users\pablo\OneDrive\Documentos\Obsidian Vault\Estructura proyectos web\KAI_ARCHITECTURE_MAP.md` como arquitectura maestra para proyectos actuales y futuros. **No usar** `C:\Users\pablo\OneDrive\Documentos\Obsidian Vault\.architecture.md` como referencia global; ese archivo pertenece solo a Baterías Maresa.
+
 ---
 
 ## 👥 Matriz de Agentes Especialistas y Subagentes

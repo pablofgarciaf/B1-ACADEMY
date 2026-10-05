@@ -1,0 +1,16 @@
+{
+  "id": "M05-L07",
+  "titulo": "Leccion 7",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M05_Ciclo_de_compras_ProcuretoPay/M05-L07_Leccion_7/B01_video/M05-L07_B01.mp4",
+      "sync": "/Aula_SAP/M05_Ciclo_de_compras_ProcuretoPay/M05-L07_Leccion_7/B01_video/M05-L07_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

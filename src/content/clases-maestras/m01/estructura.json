@@ -1,0 +1,143 @@
+{
+  "modulo": "M01",
+  "titulo": "Tu primera semana en SAP B1",
+  "carrera": "C01",
+  "pregunta_central": "¿Cómo funciona el sistema y cómo me muevo en él con soltura?",
+  "duracion_total_min": 40,
+  "lecciones": [
+    {
+      "id": "m01-l01",
+      "titulo": "¿Qué es un ERP y por qué cambia todo?",
+      "duracion_min": 10,
+      "tipo": "concepto",
+      "tiene_simulador": false,
+      "imagenes_2d": [
+        "m01_l01_saludo.webp",
+        "m01_l01_islas_vs_integrado.webp",
+        "m01_l01_sap_en_mundo.webp"
+      ],
+      "audio_guion": "Antes de tocar una sola pantalla, necesitas entender por qué existe este sistema. Imagina una empresa donde ventas usa Excel, contabilidad tiene su propio programa y almacén lleva un cuaderno. Tres islas. Cuando ventas factura sin saber que el almacén ya agotó el producto, el cliente queda mal. SAP B1 elimina esas islas: una sola base de datos que todos los departamentos comparten en tiempo real.",
+      "quiz": [
+        {
+          "pregunta": "¿Cuál es el principal problema que resuelve un ERP como SAP B1?",
+          "opciones": ["Acelerar las impresoras", "Eliminar la información aislada entre departamentos", "Reemplazar a los empleados", "Mejorar el WiFi"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Cuando ventas registra un pedido en SAP B1, ¿qué otro departamento lo ve automáticamente?",
+          "opciones": ["Nadie, cada uno tiene su propio sistema", "Solo el gerente general", "Todos los que necesitan esa información: almacén, contabilidad, logística", "Solo el departamento de IT"],
+          "correcta": 2
+        }
+      ]
+    },
+    {
+      "id": "m01-l02",
+      "titulo": "El escritorio de SAP B1: tu sala de control",
+      "duracion_min": 10,
+      "tipo": "concepto + simulador",
+      "tiene_simulador": true,
+      "imagenes_2d": [
+        "m01_l02_saludo.webp",
+        "m01_l02_zonas_pantalla.webp"
+      ],
+      "audio_guion": "El escritorio de SAP B1 tiene cuatro zonas. El menú superior tiene los accesos rápidos. La barra lateral izquierda es tu índice de módulos. El área central es donde trabaja cada ventana. Y la barra inferior muestra los mensajes del sistema. Cada icono que ves tiene un propósito. Los grises están desactivados porque la acción no aplica en este momento. Los de color están disponibles.",
+      "simulador": {
+        "archivo": "m01-l02-sim.json",
+        "mision": "Navega por el escritorio: abre el módulo de Ventas, luego el de Finanzas, y regresa al inicio."
+      },
+      "quiz": [
+        {
+          "pregunta": "¿Qué indica un icono de herramienta en color gris en la barra de SAP B1?",
+          "opciones": ["Que el sistema está cargando", "Que esa acción no está disponible en la pantalla actual", "Que no tienes permisos de administrador", "Que hay un error"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "id": "m01-l03",
+      "titulo": "Datos maestros: la columna vertebral",
+      "duracion_min": 10,
+      "tipo": "concepto + simulador",
+      "tiene_simulador": true,
+      "imagenes_2d": [
+        "m01_l03_saludo.webp",
+        "m01_l03_maestro_vs_documento.webp",
+        "m01_l03_copiar_a.webp"
+      ],
+      "audio_guion": "En SAP B1 existen dos tipos de registros. Los datos maestros son permanentes: un cliente, un artículo, un proveedor. Los documentos son transaccionales: una factura, un pedido, un pago. La diferencia clave es que un dato maestro mal configurado contamina todos los documentos que lo usan. Si el maestro del cliente tiene mal la cuenta contable, todas sus facturas contabilizan mal.",
+      "simulador": {
+        "archivo": "m01-l03-sim.json",
+        "mision": "Abre el maestro del cliente C20000 (Maxi-Teq) y localiza su condición de pago y su cuenta asociada."
+      },
+      "quiz": [
+        {
+          "pregunta": "¿Cuál es la diferencia entre un dato maestro y un documento en SAP B1?",
+          "opciones": [
+            "No hay diferencia, son lo mismo",
+            "El maestro es permanente y define reglas; el documento registra una transacción específica",
+            "El documento es más importante que el maestro",
+            "Los maestros solo los puede editar el administrador"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si el maestro de un artículo tiene mal asignada su cuenta de ingresos, ¿qué ocurre?",
+          "opciones": [
+            "Solo afecta la próxima factura",
+            "No pasa nada, el sistema lo corrige solo",
+            "Todas las facturas pasadas y futuras de ese artículo contabilizan en la cuenta incorrecta",
+            "El sistema bloquea la venta del artículo"
+          ],
+          "correcta": 2
+        }
+      ]
+    },
+    {
+      "id": "m01-l04",
+      "titulo": "Buscar y navegar como un experto",
+      "duracion_min": 10,
+      "tipo": "simulador",
+      "tiene_simulador": true,
+      "imagenes_2d": [
+        "m01_l04_saludo.webp",
+        "m01_l04_flecha_naranja.webp",
+        "m01_l04_drag_relate.webp"
+      ],
+      "audio_guion": "Hay cuatro formas de llegar a cualquier dato en SAP B1. Primero: la búsqueda global, el campo en blanco del menú. Segundo: la flecha naranja junto a cualquier campo con código, que salta directo al maestro. Tercero: Drag and Relate, arrastras un código sobre una ventana y filtra al instante. Cuarto: el log de mensajes en la barra inferior, que te dice qué salió mal y por qué.",
+      "simulador": {
+        "archivo": "m01-l04-sim.json",
+        "mision": "Usa la flecha naranja en una factura para saltar al maestro del cliente. Luego usa Drag and Relate para ver todas las facturas del mismo cliente."
+      },
+      "quiz": [
+        {
+          "pregunta": "¿Para qué sirve la flecha naranja (→) junto a un campo en SAP B1?",
+          "opciones": [
+            "Para avanzar al siguiente registro",
+            "Para saltar directamente al maestro del dato que está en ese campo",
+            "Para ordenar la lista alfabéticamente",
+            "Para abrir el manual de ese módulo"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué es Drag and Relate en SAP B1?",
+          "opciones": [
+            "Una función de Excel integrada",
+            "Arrastrar un código sobre una ventana para filtrar todos sus registros al instante",
+            "Una forma de mover documentos entre módulos",
+            "El nombre del módulo de reportes"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ],
+  "defensa_oral": {
+    "preguntas": [
+      "¿Qué problema real resuelve un ERP y cuál sería la consecuencia de no tenerlo?",
+      "Explica la diferencia entre un dato maestro y un documento, con un ejemplo tuyo.",
+      "¿Por qué es importante verificar el dato maestro antes de empezar a transaccionar?"
+    ],
+    "aprobacion_minima": 0.8
+  }
+}

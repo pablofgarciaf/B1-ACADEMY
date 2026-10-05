@@ -99,7 +99,7 @@ export default function BolsaEmpleoPage() {
               Ecosistema de Contratación
             </span>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display mt-2">
-              Bolsa de Empleo y Vacantes Exclusivas SAP
+              Bolsa de empleo para profesionales SAP Business One
             </h1>
           </div>
 

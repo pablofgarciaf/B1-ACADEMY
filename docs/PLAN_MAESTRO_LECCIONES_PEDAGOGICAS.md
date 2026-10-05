@@ -1,4 +1,4 @@
-# 📚 PLAN MAESTRO: CLASES MAGISTRALES PEDAGÓGICAS SAP BUSINESS ONE (121 MANUALES)
+# 📚 PLAN MAESTRO: CLASES MAGISTRALES PEDAGÓGICAS SAP BUSINESS ONE (MANUALES)
 
 > **PROPÓSITO DE ESTE DOCUMENTO:**
 > Este archivo es la **única fuente de verdad** y la **bitácora de progreso** para la transformación pedagógica de toda la academia SAP Business One.
@@ -51,7 +51,7 @@ python scratch/pedagogical_lesson_generator.py --manual "[NOMBRE_DEL_MANUAL]"
 
 ---
 
-## 📋 4. Checklist Maestro de los 121 Manuales
+## 📋 4. Checklist Maestro de los Manuales
 
 | # | Código del Manual | Diapositivas | Estado |
 | :--- | :--- | :---: | :---: |
@@ -167,22 +167,21 @@ python scratch/pedagogical_lesson_generator.py --manual "[NOMBRE_DEL_MANUAL]"
 | 110 | `10_Sales_41_Process_Autom_ES` | 30 | [x] Completado (Clase Pedagógica) |
 | 111 | `10_Sales_51_Issues_ReturnsExchange_ES` | 16 | [x] Completado (Clase Pedagógica) |
 | 112 | `10_Sales_52_Issues_CM_ES` | 15 | [x] Completado (Clase Pedagógica)|
-| 113 | `10_Service_11_CSProcess` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
-| 114 | `10_Service_11_CSProcess_Process_ES` | 28 | [x] Completado (Clase Pedagógica)|
-| 115 | `10_Support_11_SupportProcTool_ES` | 28 | [x] Completado (Clase Pedagógica)|
-| 116 | `CSI08_Query Practice_Solutions` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
-| 117 | `CSI08_Query_Practice` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
-| 118 | `CSL01_Introduction_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
-| 119 | `CSL01_Introduction_Solution_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
-| 120 | `CSL02_Procurement_Process_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
-| 121 | `CSL02_Procurement_Process_Solution_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
+| 113 | `10_Service_11_CSProcess_Process_ES` | 28 | [x] Completado (Clase Pedagógica)|
+| 114 | `10_Support_11_SupportProcTool_ES` | 28 | [x] Completado (Clase Pedagógica)|
+| 115 | `CSI08_Query Practice_Solutions` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
+| 116 | `CSI08_Query_Practice` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
+| 117 | `CSL01_Introduction_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
+| 118 | `CSL01_Introduction_Solution_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
+| 119 | `CSL02_Procurement_Process_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
+| 120 | `CSL02_Procurement_Process_Solution_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
 
 ---
 
 ## 🔗 Enlaces Relacionados (Obsidian Vault)
 
 - [[06_LMS_Architecture]] - Arquitectura general del LMS y flujo de lecciones.
-- [[06_Manuales]] - Catálogo e índice de los 120 manuales SAP Business One.
+- [[06_Manuales]] - Catálogo e índice de los manuales SAP Business One.
 - [[07_Reconstruccion_Manuales_CS]] - Reconstrucción técnica de manuales prácticos CS.
 - [[08_B1_Secure_Exam_App]] - Arquitectura de evaluación segura y aplicación de certificación.
 - [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio SAP B1 y atlas visual.

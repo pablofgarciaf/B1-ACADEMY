@@ -10,6 +10,8 @@ import { SUBMODULE_GUIDES } from '@/lib/submodules-content';
 import { getModuleSimulation } from '@/lib/module-simulations-data';
 import { ALL_MANUALS } from '@/lib/manuals-120-data';
 import { VisualScreenSimulator } from '@/components/lms/VisualScreenSimulator';
+import { ManualSlidesViewer } from '@/components/lms/ManualSlidesViewer';
+import { getSystemSlidesForManuals } from '@/lib/slide-utils';
 import { VideoPlayer } from '@/components/lms/VideoPlayer';
 import { LessonNavigator } from '@/components/lms/LessonNavigator';
 import { EvaluationQuiz } from '@/components/lms/EvaluationQuiz';
@@ -61,6 +63,10 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
 
   const simulation = getModuleSimulation(activeSubmodule.id, track.code);
   const relatedManuals = ALL_MANUALS.filter(m => simulation.relatedManualNumbers.includes(m.number));
+
+  // Slides reales de SAP para la "Clase Real"
+  const realSystemSlides = getSystemSlidesForManuals(simulation.relatedManualNumbers, 20);
+  const hasRealSlides = realSystemSlides.length > 0;
 
   const detailedGuide = SUBMODULE_GUIDES[activeSubmodule.id] || {
     submoduleId: activeSubmodule.id,
@@ -215,16 +221,25 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
               </div>
             )}
 
-            {/* PESTAÑA 2: PANTALLA ERP */}
+            {/* PESTAÑA 2: PANTALLA ERP — Clase Real con slides SAP */}
             {activeViewTab === 'screen' && (
-              <VisualScreenSimulator
-                systemType={simulation.systemType}
-                windowTitle={simulation.windowTitle}
-                transactionCode={simulation.transactionCode}
-                screenSummary={simulation.screenSummary}
-                interactiveFields={simulation.interactiveFields}
-                workedExample={simulation.workedExample}
-              />
+              hasRealSlides ? (
+                <ManualSlidesViewer
+                  slides={realSystemSlides}
+                  windowTitle={simulation.windowTitle}
+                  transactionCode={simulation.transactionCode}
+                  screenSummary={simulation.screenSummary}
+                />
+              ) : (
+                <VisualScreenSimulator
+                  systemType={simulation.systemType}
+                  windowTitle={simulation.windowTitle}
+                  transactionCode={simulation.transactionCode}
+                  screenSummary={simulation.screenSummary}
+                  interactiveFields={simulation.interactiveFields}
+                  workedExample={simulation.workedExample}
+                />
+              )
             )}
 
             {/* PESTAÑA 3: GUÍA TÉCNICA */}

@@ -1,0 +1,10 @@
+{
+  "id": "M01",
+  "titulo": "Primer contacto con SAP Business One",
+  "lecciones": [
+    "M01-L01_Que_es_un_ERP",
+    "M01-L02_El_escritorio_de_SAP_B1",
+    "M01-L03_Datos_maestros",
+    "M01-L04_Buscar_y_navegar"
+  ]
+}

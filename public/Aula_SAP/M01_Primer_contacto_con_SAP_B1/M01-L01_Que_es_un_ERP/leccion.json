@@ -1,0 +1,126 @@
+{
+  "id": "M01-L01",
+  "modulo": "M01",
+  "titulo": "¿Qué es un ERP y por qué cambia todo?",
+  "pregunta_central": "¿Por qué una empresa necesita un sistema integrado?",
+  "objetivos": [
+    "Entender el problema de las islas de información.",
+    "Comprender el concepto de base de datos única y centralizada."
+  ],
+  "duracion_estimada_min": 10,
+  "fuentes": [
+    "10_Intro_11_Overview_IntroSAPB1_ES"
+  ],
+  "bloques": [
+    {
+      "id": "B01",
+      "tipo": "video",
+      "titulo": "Las islas de información frente al sistema integrado",
+      "diapositivas": [
+        {
+          "archivo": "B01_video/M01-L01_B01_D01.webp",
+          "tipo": "portada",
+          "titulo_en_pantalla": "¿Qué es un ERP?",
+          "puntos_en_pantalla": [],
+          "ilustracion": null,
+          "narracion": "Antes de tocar una sola pantalla, necesitas entender por qué existe este sistema y qué problema viene a resolver en las empresas. Bienvenido a tu primera lección de SAP Business One. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 20
+        },
+        {
+          "archivo": "B01_video/M01-L01_B01_D02.webp",
+          "tipo": "concepto",
+          "titulo_en_pantalla": "El problema de las islas",
+          "puntos_en_pantalla": [
+            "Ventas: Hoja de cálculo",
+            "Contabilidad: Software aislado",
+            "Bodega: Cuaderno físico"
+          ],
+          "ilustracion": "_ilustraciones/M01-L01_B01_D02_ilus.webp",
+          "narracion": "Imagina una empresa donde ventas usa Excel, contabilidad tiene su propio programa y almacén lleva un cuaderno. Son tres islas desconectadas. Cada uno defiende su propia versión de la verdad. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 35
+        },
+        {
+          "archivo": "B01_video/M01-L01_B01_D03.webp",
+          "tipo": "negocio",
+          "titulo_en_pantalla": "El impacto en el cliente",
+          "puntos_en_pantalla": [
+            "Ventas: Factura sin stock",
+            "Cliente: Insatisfecho",
+            "Contabilidad: Cobros atrasados"
+          ],
+          "ilustracion": "_ilustraciones/M01-L01_B01_D03_ilus.webp",
+          "narracion": "Cuando las áreas no se hablan, el cliente sufre. Ventas factura sin saber que el almacén ya agotó el producto. El pedido se retrasa, el cliente se queja y contabilidad no sabe qué cobrar. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 40
+        },
+        {
+          "archivo": "B01_video/M01-L01_B01_D04.webp",
+          "tipo": "concepto",
+          "titulo_en_pantalla": "La solución: un ERP",
+          "puntos_en_pantalla": [
+            "ERP: Planificación central",
+            "Base de datos única",
+            "Información compartida"
+          ],
+          "ilustracion": "_ilustraciones/M01-L01_B01_D04_ilus.webp",
+          "narracion": "Un ERP, o Planificación de Recursos Empresariales, elimina estas islas. Es una sola base de datos que todos los departamentos comparten en tiempo real. Lo que hace ventas, lo ve bodega al instante. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 45
+        },
+        {
+          "archivo": "B01_video/M01-L01_B01_D05.webp",
+          "tipo": "concepto",
+          "titulo_en_pantalla": "SAP Business One",
+          "puntos_en_pantalla": [
+            "Pymes y crecimiento",
+            "Finanzas a inventario",
+            "Cero duplicidad"
+          ],
+          "ilustracion": "_ilustraciones/M01-L01_B01_D05_ilus.webp",
+          "narracion": "SAP Business One es precisamente eso: un ERP diseñado para pequeñas y medianas empresas. Controla absolutamente todo, desde las finanzas y las compras hasta el inventario, evitando que trabajemos doble. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 40
+        },
+        {
+          "archivo": "B01_video/M01-L01_B01_D06.webp",
+          "tipo": "resumen",
+          "titulo_en_pantalla": "Resumen",
+          "puntos_en_pantalla": [
+            "ERP: Elimina islas",
+            "Única versión real",
+            "Áreas conectadas"
+          ],
+          "ilustracion": null,
+          "narracion": "En resumen: un ERP como SAP Business One elimina las islas de información, garantiza que todos miren los mismos datos reales y conecta todas las áreas para que la empresa funcione como un reloj. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 35
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es el principal problema que resuelve un ERP como SAP Business One?",
+      "opciones": [
+        "Acelerar las impresoras de la oficina",
+        "Eliminar la información aislada entre departamentos",
+        "Reemplazar a los empleados del área de ventas",
+        "Mejorar la conexión a Internet"
+      ],
+      "correcta": 1,
+      "explicacion": "El objetivo de un ERP es integrar todas las áreas, eliminando las islas de información que causan errores."
+    },
+    {
+      "pregunta": "Cuando ventas registra un pedido en SAP B1, ¿qué otro departamento lo ve automáticamente?",
+      "opciones": [
+        "Nadie, cada departamento tiene su propio sistema",
+        "Solo el gerente general de la empresa",
+        "Todos los que necesitan esa información, como almacén y contabilidad",
+        "Solo el departamento de tecnología e informática"
+      ],
+      "correcta": 2,
+      "explicacion": "Al usar una base de datos centralizada, la información se comparte en tiempo real con todas las áreas involucradas."
+    }
+  ],
+  "informe_clave": {
+    "nombre": "Informes consolidados de gestión",
+    "quien_lo_usa": "Gerencia General",
+    "decision_que_permite": "Conocer la rentabilidad real y tomar decisiones estratégicas basadas en información unificada, sin tener que sumar hojas de cálculo de distintos departamentos."
+  }
+}

@@ -102,7 +102,7 @@ sequenceDiagram
 ## 🔗 Documentos Relacionados
 
 - [[06_LMS_Architecture]] - Arquitectura general de la plataforma de aprendizaje.
-- [[06_Manuales]] - Catálogo e índice de los 120 manuales SAP Business One.
+- [[06_Manuales]] - Catálogo e índice de los manuales SAP Business One.
 - [[07_Reconstruccion_Manuales_CS]] - Reconstrucción y auditoría técnica de manuales prácticos CS.
 - [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio SAP B1 y atlas visual.
 - [[PLAN_MAESTRO_LECCIONES_PEDAGOGICAS]] - Estándar pedagógico docente y registro de lecciones.

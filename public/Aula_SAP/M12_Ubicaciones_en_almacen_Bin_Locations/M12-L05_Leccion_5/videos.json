@@ -1,0 +1,16 @@
+{
+  "id": "M12-L05",
+  "titulo": "Leccion 5",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L05_Leccion_5/B01_video/M12-L05_B01.mp4",
+      "sync": "/Aula_SAP/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L05_Leccion_5/B01_video/M12-L05_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

@@ -1,59 +1,50 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Función de validación de autenticación
-    function isAuthenticated() {
-      return request.auth != null;
+    function signedIn() { return request.auth != null; }
+    function owns(uid) { return signedIn() && request.auth.uid == uid; }
+    function profile() {
+      return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data;
     }
-    
-    // Función para validar si es el propio usuario
-    function isOwner(userId) {
-      return isAuthenticated() && request.auth.uid == userId;
-    }
-    
-    // Función para validar rol Consultor Premium
-    function isConsultorPremium() {
-      return isAuthenticated() && 
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'consultor_premium';
+    function admin() { return signedIn() && profile().role in ['super', 'admin']; }
+
+    match /usuarios/{uid} {
+      allow read: if owns(uid) || admin();
+      allow create: if owns(uid)
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.role == 'estudiante'
+        && request.resource.data.status == 'active';
+      allow update: if admin() || (owns(uid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'passwordChanged', 'simuladorXP', 'simuladorLevel', 'completedMissions',
+          'moduleProgress', 'sandboxHoursUsed', 'avatar', 'bio', 'company', 'updatedAt'
+        ]));
+      allow delete: if admin();
+
+      match /sociedades/{sociedadId}/{document=**} {
+        allow read, write: if owns(uid);
+      }
     }
 
-    // Colección de Usuarios
-    match /users/{userId} {
-      allow read: if isAuthenticated();
-      allow create: if isAuthenticated() && request.auth.uid == userId;
-      allow update: if isOwner(userId) && 
-        // No puede auto-asignarse el rol de consultor sin validación de pago/n8n
-        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['role']));
-    }
-
-    // Colección de Cursos y Módulos
-    match /courses/{courseId} {
-      // Cualquier usuario puede ver el catálogo público
-      allow read: if true;
-      // Solo administradores pueden publicar cursos
+    // Writes are validated and committed with Firebase Admin by /api/sap/company.
+    match /sapCompanies/{uid} {
+      allow read: if owns(uid) || (signedIn() && profile().role in ['teacher', 'docente']);
       allow write: if false;
+      match /{document=**} {
+        allow read: if owns(uid) || (signedIn() && profile().role in ['teacher', 'docente']);
+        allow write: if false;
+      }
     }
-
-    // Colección de Evaluaciones y Resultados
-    match /evaluations/{evalId} {
-      allow read, write: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+    match /courses/{courseId} { allow read: if true; allow write: if admin(); }
+    match /evaluations/{evaluationId} {
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || admin());
+      allow write: if false; // Solo Firebase Admin desde el servidor.
     }
-
-    // Colección de Bolsa de Empleo
-    match /job_listings/{jobId} {
-      allow read: if true;
-      // Solo empresas verificadas o administradores crean ofertas
-      allow write: if false;
-    }
-
-    // Postulaciones de Empleo
-    match /job_applications/{appId} {
-      // Consultores Premium tienen prioridad y acceso sin restricciones
-      allow create: if isConsultorPremium() || 
-        (isAuthenticated() && request.resource.data.applicantId == request.auth.uid);
-      allow read: if isAuthenticated() && 
-        (resource.data.applicantId == request.auth.uid || resource.data.employerId == request.auth.uid);
+    match /job_listings/{jobId} { allow read: if true; allow write: if admin(); }
+    match /job_applications/{applicationId} {
+      allow create: if signedIn() && request.resource.data.applicantId == request.auth.uid;
+      allow read: if signedIn() && (resource.data.applicantId == request.auth.uid || admin());
+      allow update, delete: if admin();
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "id": "M13-L08",
+  "titulo": "Leccion 8",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M13_Produccion_recetas_recursos_y_ordene/M13-L08_Leccion_8/B01_video/M13-L08_B01.mp4",
+      "sync": "/Aula_SAP/M13_Produccion_recetas_recursos_y_ordene/M13-L08_Leccion_8/B01_video/M13-L08_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

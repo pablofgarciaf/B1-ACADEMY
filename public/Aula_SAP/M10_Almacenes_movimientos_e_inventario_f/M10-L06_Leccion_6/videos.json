@@ -1,0 +1,16 @@
+{
+  "id": "M10-L06",
+  "titulo": "Leccion 6",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M10_Almacenes_movimientos_e_inventario_f/M10-L06_Leccion_6/B01_video/M10-L06_B01.mp4",
+      "sync": "/Aula_SAP/M10_Almacenes_movimientos_e_inventario_f/M10-L06_Leccion_6/B01_video/M10-L06_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

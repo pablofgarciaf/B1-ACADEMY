@@ -41,5 +41,5 @@ Master B1 habilita la pestaña **Modo Docente** en cada lección técnica (`[[06
 ## 🔗 Enlaces Relacionados (Obsidian Vault)
 
 - [[10_Campus_Escuela_SAP_B1]] - Arquitectura del Campus y las 4 Carreras.
-- [[06_Manuales]] - Biblioteca de los 121 manuales técnicos.
+- [[06_Manuales]] - Biblioteca de los manuales técnicos.
 - [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio y catálogo de pantallas.

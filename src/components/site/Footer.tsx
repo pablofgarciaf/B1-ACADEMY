@@ -37,8 +37,8 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Campus Universitario y Centro de Formación Oficial en <strong>SAP Business One 10.0 (HANA)</strong>. 
-              Carreras de especialidad, micro-certificaciones con firmas de responsabilidad, simulador transaccional integral y conexión laboral.
+              Campus virtual independiente especializado en <strong>SAP Business One 10.0 (HANA)</strong>. 
+              Rutas formativas, evaluaciones propias, simulador transaccional integral y conexión laboral.
             </p>
           </div>
 
@@ -79,7 +79,7 @@ export function Footer() {
                 <ProtectedEmail user="admisiones" domain="sapacademy.es" />
               </div>
               <p className="text-[11px] text-slate-500 pt-1">
-                Acreditación Profesional & Certificación Oficial B1 Academy • Atención 24/7
+                Acreditación propia de B1 Academy • Atención digital
               </p>
             </div>
           </div>

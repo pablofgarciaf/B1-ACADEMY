@@ -5,7 +5,7 @@
 **SAP Academy (Heinsohn B1)** es una plataforma de ingeniería de aprendizaje y certificación profesional de élite en **SAP Business One 10.0 (HANA)**. Su arquitectura está diseñada para superar la pasividad de los cursos tradicionales mediante un **entorno inmersivo, práctico y guiado por Inteligencia Artificial**.
 
 El sistema integra:
-1. **Biblioteca Universal de 120 Manuales Oficiales** organizados en 23 categorías operativas.
+1. **Biblioteca Universal de Manuales Oficiales** organizados en 23 categorías operativas.
 2. **Clases Magistrales con Video y Sincronización Dual:** Teleprompter del instructor + Guía de laboratorio paso a paso.
 3. **Simulador Interactivo Píxel a Píxel:** Replicación fidedigna de la interfaz de escritorio de SAP Business One (Windows).
 4. **Examen Oral con Profesor Evaluador IA:** Evaluación conversacional contrarreloj (35 segundos por pregunta) con detección anti-trampa.
@@ -24,7 +24,7 @@ graph TD
     end
 
     subgraph "Ecosistema Web (Next.js App Router)"
-        B --> C[Biblioteca de 120 Manuales /manuales]
+        B --> C[Biblioteca de Manuales /manuales]
         B --> D[Aula Virtual /mi-aula]
         B --> E[Simulador Integral /simulador]
         B --> F[Dashboard del Alumno & Calificaciones]
@@ -88,7 +88,7 @@ Cada una de las lecciones dentro de [`ManualViewer.tsx`](file:///c:/Users/pablo/
 
 ## 🗂️ 5. Árbol de Habilidades y Clasificación Curricular (Skill Tree)
 
-Los 120 manuales se agrupan en un árbol estructurado de competencias que desbloquea niveles de dominio:
+Los manuales se agrupan en un árbol estructurado de competencias que desbloquea niveles de dominio:
 
 ```mermaid
 graph TD
@@ -179,7 +179,7 @@ sequenceDiagram
 
 ## 🔗 8. Documentos Relacionados del Ecosistema
 
-* [[06_Manuales]] - Inventario clasificado y rutas de los 120 manuales.
+* [[06_Manuales]] - Inventario clasificado y rutas de los manuales.
 * [[07_Reconstruccion_Manuales_CS]] - Metodología de ingeniería inversa y reconstrucción tipográfica in-place de manuales prácticos.
 * [[08_B1_Secure_Exam_App]] - Arquitectura técnica detallada de la aplicación de escritorio descargable (Tauri/Rust) para exámenes oficiales.
 * [[09_Simulador_Integral_Desktop]] - Especificación técnica del escritorio virtual y el catálogo de 5,082 pantallas.

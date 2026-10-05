@@ -1,0 +1,16 @@
+{
+  "id": "M23-L01",
+  "titulo": "Leccion 1",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M23_Gestion_de_proyectos_y_facturacion_p/M23-L01_Leccion_1/B01_video/M23-L01_B01.mp4",
+      "sync": "/Aula_SAP/M23_Gestion_de_proyectos_y_facturacion_p/M23-L01_Leccion_1/B01_video/M23-L01_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

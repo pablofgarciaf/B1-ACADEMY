@@ -2,6 +2,7 @@
 
 import React, { useState, useCallback } from 'react';
 import { X, Minus, Square } from 'lucide-react';
+import SAPScreenRenderer from '@/components/sap-screens/SAPScreenRenderer';
 
 interface Window {
   id: string;
@@ -102,43 +103,47 @@ export default function SAPWindowManager({
             }}
             onMouseDown={() => onWindowFocus(window.id)}
           >
-            {/* Title Bar */}
+            {/* Drag Handle — barra de control de ventana */}
             <div
-              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing select-none"
+              className="flex items-center justify-between px-2 bg-[#1E2A3A] select-none cursor-grab active:cursor-grabbing shrink-0 border-b border-[#0D1B2A]"
+              style={{ height: '28px' }}
               onMouseDown={(e) => handleMouseDown(e, window.id)}
             >
-              <span className="text-sm font-semibold truncate">{window.title}</span>
-              <div className="flex gap-2 ml-4">
+              <span className="text-[11px] text-blue-200 truncate font-semibold">{window.title}</span>
+              <div className="flex gap-1">
                 <button
-                  onClick={() => onWindowMinimize(window.id)}
-                  className="hover:bg-blue-700 p-1 rounded transition"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={(e) => { e.stopPropagation(); onWindowMinimize(window.id); }}
+                  className="w-5 h-5 bg-yellow-500 hover:bg-yellow-300 rounded text-[9px] text-yellow-900 font-bold flex items-center justify-center transition-colors"
                   title="Minimizar"
                 >
-                  <Minus size={14} />
+                  _
                 </button>
                 <button
-                  onClick={() => onWindowMaximize(window.id)}
-                  className="hover:bg-blue-700 p-1 rounded transition"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={(e) => { e.stopPropagation(); onWindowMaximize(window.id); }}
+                  className="w-5 h-5 bg-green-600 hover:bg-green-400 rounded text-[9px] text-white font-bold flex items-center justify-center transition-colors"
                   title="Maximizar"
                 >
-                  <Square size={14} />
+                  □
                 </button>
                 <button
-                  onClick={() => onWindowClose(window.id)}
-                  className="hover:bg-red-600 p-1 rounded transition"
-                  title="Cerrar"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={(e) => { e.stopPropagation(); onWindowClose(window.id); }}
+                  className="w-5 h-5 bg-red-600 hover:bg-red-400 rounded text-[9px] text-white font-bold flex items-center justify-center transition-colors"
+                  title="Cerrar (×)"
                 >
-                  <X size={14} />
+                  ×
                 </button>
               </div>
             </div>
 
-            {/* Window Content */}
-            <div className="flex-1 overflow-auto bg-gray-50 p-4">
-              <div className="text-center text-gray-500 text-sm">
-                <p>Pantalla: {window.screenId}</p>
-                <p className="mt-2">Contenido del módulo SAP B1</p>
-              </div>
+            {/* Contenido — réplica visual de la pantalla SAP */}
+            <div className="flex-1 overflow-hidden">
+              <SAPScreenRenderer
+                screenId={window.screenId}
+                screenName={window.title}
+              />
             </div>
           </div>
         )

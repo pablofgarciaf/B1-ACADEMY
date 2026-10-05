@@ -78,7 +78,7 @@ export default function SapiChat() {
                 <p className="text-xs text-gray-400">Tu asistente experta en SAP Business One</p>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-lg transition-all"
             >
@@ -91,7 +91,7 @@ export default function SapiChat() {
             {messages.length === 0 && (
               <div className="space-y-3 mb-6">
                 <div className="bg-[#19222a] p-4 rounded-2xl rounded-tl-sm border border-white/5 max-w-[85%] text-gray-200">
-                  ¡Hola! Soy SAPI. Conozco los 120 manuales de SAP Business One. ¿En qué puedo ayudarte hoy?
+                  ¡Hola! Soy SAPI. Conozco los manuales de SAP Business One. ¿En qué puedo ayudarte hoy?
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {SUGGESTED_QUESTIONS.map((q, i) => (
@@ -108,16 +108,15 @@ export default function SapiChat() {
             )}
 
             {messages.map((msg, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
               >
-                <div 
-                  className={`p-3 rounded-2xl max-w-[85%] text-sm ${
-                    msg.role === 'user' 
-                      ? 'bg-amber-500 text-white rounded-tr-sm' 
+                <div
+                  className={`p-3 rounded-2xl max-w-[85%] text-sm ${msg.role === 'user'
+                      ? 'bg-amber-500 text-white rounded-tr-sm'
                       : 'bg-[#19222a] text-gray-200 border border-white/5 rounded-tl-sm'
-                  }`}
+                    }`}
                 >
                   {msg.role === 'user' ? (
                     msg.content
@@ -145,7 +144,7 @@ export default function SapiChat() {
 
             {isLoading && (
               <div className="flex justify-start">
-              <div className="bg-[#19222a] p-4 rounded-2xl rounded-tl-sm border border-white/5 flex gap-1.5 items-center">
+                <div className="bg-[#19222a] p-4 rounded-2xl rounded-tl-sm border border-white/5 flex gap-1.5 items-center">
                   <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
                   <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-150"></div>
                   <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce delay-300"></div>
@@ -157,7 +156,7 @@ export default function SapiChat() {
 
           {/* Input Area */}
           <div className="p-4 bg-[#131a20] border-t border-white/10">
-            <form 
+            <form
               onSubmit={(e) => {
                 e.preventDefault();
                 handleSend(input);
@@ -179,11 +178,11 @@ export default function SapiChat() {
                 <Send size={16} className={input.trim() && !isLoading ? 'ml-0.5' : ''} />
               </button>
             </form>
-            
+
             <div className="mt-3 flex justify-center">
-              <a 
-                href="https://wa.me/593983992549" 
-                target="_blank" 
+              <a
+                href="https://wa.me/593983992549"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-xs text-gray-500 hover:text-amber-500 flex items-center gap-1 transition-colors"
               >

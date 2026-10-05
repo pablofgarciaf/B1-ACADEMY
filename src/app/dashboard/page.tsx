@@ -41,6 +41,7 @@ import { TRAINING_TRACKS } from '@/lib/courses-data';
 import { useAuth } from '@/context/AuthContext';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
+import Image from 'next/image';
 
 export default function StudentDashboardPage() {
   const router = useRouter();
@@ -67,9 +68,10 @@ export default function StudentDashboardPage() {
     if (!userProfile) return;
     const prof = getStudentProfile();
     if (userProfile) {
-      prof.displayName = userProfile.name || userProfile.displayName || 'Pablo F. García';
-      prof.email = userProfile.email || 'pablofgarciaf@gmail.com';
-      prof.studentId = userProfile.cedula || '1721790721';
+      prof.uid = userProfile.uid;
+      prof.displayName = userProfile.name || userProfile.displayName || 'Estudiante';
+      prof.email = userProfile.email;
+      prof.studentId = userProfile.cedula || userProfile.uid;
     }
     setStudent({ ...prof });
   }, [userProfile]);
@@ -124,9 +126,10 @@ export default function StudentDashboardPage() {
     if (confirm('¿Deseas reiniciar tu progreso a 0% para iniciar tu formación desde cero?')) {
       const reset = resetStudentProfile();
       if (userProfile) {
-        reset.displayName = userProfile.name || userProfile.displayName || 'Pablo F. García';
-        reset.email = userProfile.email || 'pablofgarciaf@gmail.com';
-        reset.studentId = userProfile.cedula || '1721790721';
+        reset.uid = userProfile.uid;
+        reset.displayName = userProfile.name || userProfile.displayName || 'Estudiante';
+        reset.email = userProfile.email;
+        reset.studentId = userProfile.cedula || userProfile.uid;
       }
       setStudent({ ...reset });
     }
@@ -215,9 +218,12 @@ export default function StudentDashboardPage() {
               <div className="flex flex-col items-center text-center space-y-3 pt-2">
                 <div className="relative group">
                   {student.profilePhoto ? (
-                    <img
+                    <Image
                       src={student.profilePhoto}
                       alt={student.displayName}
+                      width={96}
+                      height={96}
+                      unoptimized
                       className="w-24 h-24 rounded-full object-cover border-4 border-sap-blue/30 shadow-md"
                     />
                   ) : (
@@ -300,12 +306,7 @@ export default function StudentDashboardPage() {
                   <span className="text-slate-400">Avance del Módulo</span>
                   <span className="text-sky-400 font-bold">{activeHeroProgress}%</span>
                 </div>
-                <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-sap-blue to-sky-400 transition-all duration-500"
-                    style={{ width: `${activeHeroProgress}%` }}
-                  />
-                </div>
+                <progress className="kai-progress kai-progress-blue" value={activeHeroProgress} max="100" aria-label="Avance del módulo" />
               </div>
             </div>
 
@@ -315,10 +316,10 @@ export default function StudentDashboardPage() {
                 <strong className="text-white">{activeHeroLessonId}</strong>
               </div>
               <Link
-                href={`/mi-aula/${activeHeroModule.slug}/${activeHeroLessonId}`}
+                href="/mi-aula"
                 className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue text-white font-bold text-xs shadow-lg transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                <span>Continuar Módulo</span>
+                <span>Ir a Mi Aula</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -482,16 +483,7 @@ export default function StudentDashboardPage() {
                       <span className="text-[10px] font-mono text-slate-400 uppercase">
                         {mod.lessonsCount} Lecciones • {mod.durationMinutes} min
                       </span>
-                      <div className="w-full h-2 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full transition-all duration-500 ${
-                            isDone
-                              ? 'bg-emerald-500'
-                              : 'bg-gradient-to-r from-sap-blue to-sky-400'
-                          }`}
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
+                      <progress className={`kai-progress ${isDone ? 'kai-progress-green' : 'kai-progress-blue'}`} value={pct} max="100" aria-label={`Progreso de ${mod.title}`} />
                     </div>
                   </div>
 
@@ -507,10 +499,10 @@ export default function StudentDashboardPage() {
                     )}
 
                     <Link
-                      href={`/mi-aula/${mod.slug}/${mod.lessons[0].id}`}
+                      href="/mi-aula"
                       className="px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 dark:bg-white/10 hover:bg-sap-blue dark:hover:bg-sap-blue text-white transition-all cursor-pointer active:scale-95 flex items-center gap-1.5"
                     >
-                      <span>{isDone ? 'Repasar' : 'Estudiar'}</span>
+                      <span>{isDone ? 'Repasar en Aula' : 'Estudiar en Aula'}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>

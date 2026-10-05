@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { TRAINING_MODULES } from '@/lib/modules-data';
 import { getStudentProfile } from '@/lib/student-service';
+import Image from 'next/image';
 import { StudentProfile } from '@/types/student';
 import { CheckCircle2, Circle, Clock, ArrowLeft, ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
 
@@ -61,7 +62,7 @@ export function LessonSidebar({
         <div className="flex items-center space-x-4">
           <div className="w-12 h-12 rounded-full bg-sap-blue/10 dark:bg-sky-400/10 flex items-center justify-center text-sap-blue dark:text-sky-400 font-bold text-lg flex-shrink-0 overflow-hidden">
             {studentPhoto ? (
-              <img src={studentPhoto} alt={displayName} className="w-full h-full object-cover" />
+              <Image src={studentPhoto} alt={displayName} width={48} height={48} unoptimized className="w-full h-full object-cover" />
             ) : (
               getInitials(displayName)
             )}
@@ -183,12 +184,7 @@ export function LessonSidebar({
                           {module.title}
                         </p>
                         <div className="flex items-center mt-1">
-                          <div className="w-24 bg-slate-200 dark:bg-slate-700 rounded-full h-1 mr-2">
-                            <div 
-                              className="bg-slate-400 dark:bg-slate-500 h-1 rounded-full" 
-                              style={{ width: `${moduleProgress}%` }}
-                            />
-                          </div>
+                          <progress className="kai-progress kai-progress-slate mr-2 max-w-24" value={moduleProgress} max="100" aria-label={`Progreso de ${module.title}`} />
                           <span className="text-[10px] text-slate-500">{Math.round(moduleProgress)}%</span>
                         </div>
                       </div>

@@ -1,0 +1,16 @@
+{
+  "id": "M02-L02",
+  "titulo": "Leccion 2",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M02_Fundamentos_contables_para_operar_el/M02-L02_Leccion_2/B01_video/M02-L02_B01.mp4",
+      "sync": "/Aula_SAP/M02_Fundamentos_contables_para_operar_el/M02-L02_Leccion_2/B01_video/M02-L02_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

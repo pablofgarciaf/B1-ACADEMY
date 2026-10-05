@@ -1,0 +1,16 @@
+{
+  "id": "M26-L03",
+  "titulo": "Leccion 3",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M26_Usuarios_autorizaciones_y_numeracion/M26-L03_Leccion_3/B01_video/M26-L03_B01.mp4",
+      "sync": "/Aula_SAP/M26_Usuarios_autorizaciones_y_numeracion/M26-L03_Leccion_3/B01_video/M26-L03_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

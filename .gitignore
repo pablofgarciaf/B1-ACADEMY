@@ -18,6 +18,9 @@
 # misc
 .DS_Store
 *.pem
+*firebase-adminsdk*.json
+*service-account*.json
+serviceAccount*.json
 
 # debug
 npm-debug.log*
@@ -42,3 +45,8 @@ public/Capacitacion SAP/*/clase_video.mp4
 !public/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/clase_video.mp4
 !public/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/clase_video.mp4
 !public/Capacitacion SAP/10_Overview_13_MDDoc_ES/clase_video.mp4
+
+# Temporales del generador de videos del Aula
+scratch/aula_audio_cache/
+scratch/aula_tmp/
+scratch/*.log

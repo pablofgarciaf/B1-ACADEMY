@@ -1,0 +1,53 @@
+{
+  "id": "M01-L02",
+  "titulo": "El escritorio de SAP B1",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Las cuatro zonas de control",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L02_El_escritorio_de_SAP_B1/B01_video/M01-L02_B01.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L02_El_escritorio_de_SAP_B1/B01_video/M01-L02_B01_sync.json",
+      "duracion_s": 54.53
+    },
+    {
+      "bloque": "B02",
+      "tipo": "simulador",
+      "titulo": "Navega por el escritorio",
+      "screenId": "FIN001",
+      "mision": "Navega por el escritorio: abre el módulo de Finanzas.",
+      "pasos_esperados": [
+        "Abrir Finanzas"
+      ],
+      "criterios_validacion": [],
+      "pistas_ia": [
+        "Pista 1: Revisa el panel izquierdo de módulos.",
+        "Pista 2: Busca la carpeta que dice Finanzas y hazle clic."
+      ],
+      "video_mision": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L02_El_escritorio_de_SAP_B1/B02_simulador/M01-L02_B02_mision.mp4",
+      "video_logrado": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L02_El_escritorio_de_SAP_B1/B02_simulador/M01-L02_B02_logrado.mp4"
+    },
+    {
+      "bloque": "B03",
+      "tipo": "video",
+      "titulo": "Resumen",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L02_El_escritorio_de_SAP_B1/B03_video/M01-L02_B03.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L02_El_escritorio_de_SAP_B1/B03_video/M01-L02_B03_sync.json",
+      "duracion_s": 10.18
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué indica un ícono de herramienta en color gris en la barra de SAP Business One?",
+      "opciones": [
+        "Que el sistema está cargando",
+        "Que esa acción no está disponible en la pantalla actual",
+        "Que no tienes permisos de administrador",
+        "Que hay un error en la base de datos"
+      ],
+      "correcta": 1,
+      "explicacion": "El color gris indica que, por contexto, no puedes usar esa herramienta en ese momento. Es una medida de seguridad."
+    }
+  ]
+}

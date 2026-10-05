@@ -1,0 +1,87 @@
+{
+  "instrucciones_antigravity": {
+    "carpeta_destino": "public/images/mi-aula/m01/",
+    "formato": "WebP, 1600x900px (16:9), fondo #F4F6FA",
+    "estilo_global": "Flat 2D vector illustration, minimal corporate editorial style, solid flat colors, clean geometric shapes, palette: navy blue #0B3D91 + sky blue #4C9BE8 + amber #F5A623 + white. STRICTLY NO TEXT, no letters, no numbers, no logos. Not 3D, not photorealistic.",
+    "nota": "Cada imagen debe comunicar el concepto SIN palabras. Solo formas, iconos simples y composición."
+  },
+  "imagenes": [
+    {
+      "archivo": "m01_l01_saludo.webp",
+      "leccion": "m01-l01",
+      "uso": "greeting - primera imagen que ve el alumno al abrir la lección",
+      "alt": "Una persona frente a un sistema integrado que conecta todos los departamentos de la empresa",
+      "prompt": "A friendly professional avatar standing in front of a large glowing monitor that shows a connected network diagram with four department icons (shopping cart, factory, warehouse box, coin stack) linked to a central database cylinder. The avatar has a welcoming open-hand gesture. The overall feeling is invitation and opportunity. Wide 16:9, centered composition, generous white space."
+    },
+    {
+      "archivo": "m01_l01_islas_vs_integrado.webp",
+      "leccion": "m01-l01",
+      "uso": "concepto - el problema que resuelve el ERP",
+      "alt": "Tres islas desconectadas a la izquierda versus los mismos tres departamentos conectados a una base de datos central a la derecha",
+      "prompt": "Split composition divided by a thin vertical divider. LEFT half: three small floating islands, each with a simple icon (shopping cart, warehouse box, coin stack), disconnected, with question marks and error symbols between them. RIGHT half: the same three icons now connected by clean arrows to one large glowing central database cylinder. The right side feels orderly and confident, the left feels chaotic."
+    },
+    {
+      "archivo": "m01_l01_sap_en_mundo.webp",
+      "leccion": "m01-l01",
+      "uso": "concepto - escala global de SAP B1",
+      "alt": "Un globo terráqueo con 70 000 pequeñas empresas representadas como puntos de luz conectados",
+      "prompt": "A simplified flat globe with dotted continents. Scattered across the globe are dozens of small building icons (small company symbols) connected by thin glowing lines to each other, forming a network. In the center of the globe, a subtle SAP-blue glow. Concept: 70,000 companies worldwide sharing one integrated platform."
+    },
+    {
+      "archivo": "m01_l02_saludo.webp",
+      "leccion": "m01-l02",
+      "uso": "greeting - apertura de lección sobre el escritorio",
+      "alt": "Una mano señalando las cuatro zonas de una ventana de escritorio de ERP",
+      "prompt": "A stylized desktop application window wireframe with four clearly delineated zones, each highlighted in a different flat color: a top menu bar (navy), a toolbar (sky blue), a left navigation panel (amber), and a large central workspace (white with soft shadow). A hand cursor pointing at the left navigation panel. Clean, instructional feel."
+    },
+    {
+      "archivo": "m01_l02_zonas_pantalla.webp",
+      "leccion": "m01-l02",
+      "uso": "concepto - las zonas del escritorio SAP",
+      "alt": "Diagrama de zonas del escritorio: menú superior, barra de herramientas, panel lateral y área de trabajo",
+      "prompt": "A clean wireframe layout of an ERP desktop window. Four numbered zones highlighted: 1) top menu bar, 2) icon toolbar with some colored and some greyed-out icons, 3) left navigation tree with folder icons, 4) central work area with a document form placeholder. Arrows point to each zone. Minimal, educational, no text."
+    },
+    {
+      "archivo": "m01_l03_saludo.webp",
+      "leccion": "m01-l03",
+      "uso": "greeting - apertura de lección sobre datos maestros",
+      "alt": "Una tarjeta de datos permanente que irradia líneas hacia múltiples documentos de transacciones",
+      "prompt": "A large central ID card with a customer avatar and a lock symbol. From the card, four curved arrows radiate outward to four different document types (invoice, order, delivery, payment). The card is lit up warmly; the documents receive that light. Concept: master data is the permanent source that feeds every transaction."
+    },
+    {
+      "archivo": "m01_l03_maestro_vs_documento.webp",
+      "leccion": "m01-l03",
+      "uso": "concepto - diferencia entre datos maestros y documentos",
+      "alt": "Dos columnas: la izquierda con registros permanentes, la derecha con documentos de transacciones fechados",
+      "prompt": "Two vertical columns side by side. LEFT column labeled with a lock icon (permanent): three stacked cards showing a person avatar, a box icon, and a building. RIGHT column labeled with a clock icon (transactional): three document sheets with date stamps and different icons (receipt, truck, bank). An arrow from each left card points to multiple right documents. Concept: one master record feeds many transactions."
+    },
+    {
+      "archivo": "m01_l03_copiar_a.webp",
+      "leccion": "m01-l03",
+      "uso": "concepto - función Copiar a para encadenar documentos",
+      "alt": "Dos documentos encadenados con una flecha, mostrando que los datos fluyen del primero al segundo",
+      "prompt": "Two document cards connected by a chain link. The first card has several filled data rows. The second card shows the same rows already populated, with a glowing transfer arrow between them. Below the chain, a small audit trail icon (magnifying glass over a chain). Concept: Copy-To function carries data forward and maintains the audit trail."
+    },
+    {
+      "archivo": "m01_l04_saludo.webp",
+      "leccion": "m01-l04",
+      "uso": "greeting - apertura de lección sobre navegación avanzada",
+      "alt": "Un detective con lupa examinando un mapa del sistema con cuatro rutas marcadas",
+      "prompt": "A detective-style character avatar holding a magnifying glass, standing over a simplified map of an ERP system with four glowing paths marked in different colors. Each path leads to the same destination (a glowing data record). Concept: four ways to find the same information in SAP B1. Adventurous, confident tone."
+    },
+    {
+      "archivo": "m01_l04_flecha_naranja.webp",
+      "leccion": "m01-l04",
+      "uso": "concepto - la flecha naranja para saltar a datos maestros",
+      "alt": "Un formulario con un campo y una flecha naranja que apunta hacia el maestro del dato",
+      "prompt": "A form card with one highlighted field row. Next to the field, a bright amber/orange arrow button pointing right. A curved orange arrow leaps from the button to a second floating card behind it showing a customer master record with an avatar and data fields. The jump feels instant and elegant. Concept: orange arrow jumps from any field directly to its master record."
+    },
+    {
+      "archivo": "m01_l04_drag_relate.webp",
+      "leccion": "m01-l04",
+      "uso": "concepto - Drag and Relate para filtrar vistas",
+      "alt": "Una mano arrastra una etiqueta de cliente hacia un panel de informe que se filtra instantáneamente",
+      "prompt": "A hand cursor dragging a small customer badge (circle with avatar) across the screen toward a report panel on the right. As it lands, the report panel fills with highlighted filtered rows in sky blue. Motion lines suggest the drag. Concept: drag a code onto any window to instantly filter it to that record's data."
+    }
+  ]
+}

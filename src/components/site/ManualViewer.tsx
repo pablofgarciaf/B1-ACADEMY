@@ -441,32 +441,14 @@ export default function ManualViewer({
                 src={videoUrl} 
                 controls 
                 onTimeUpdate={handleTimeUpdate}
-                onDoubleClick={toggleFullscreen}
+                  onEnded={() => { if (simConfig && syncData && syncData.some(s => s.step_guide)) { setActiveTab('simulador'); setIsSimulatorModalOpen(true); } else { setActiveTab('quiz'); } }}
+                  onDoubleClick={toggleFullscreen}
                 className="h-full w-full object-contain"
                 poster={images[0]}
               />
 
-              {/* Overlay Interactivo Master B1 con Pausa Estricta */}
-              <MasterB1CheckpointOverlay
-                isOpen={isMasterB1CheckpointOpen}
-                manualTitle={simConfig.title || manualId || 'Manual SAP B1'}
-                slideIndex={activeSyncSlide?.slide_index || currentIdx + 1}
-                stepGuide={activeSyncSlide?.step_guide}
-                simConfig={simConfig}
-                onOpenSimulator={() => {
-                  setActiveTab('simulador');
-                  setIsSimulatorModalOpen(true);
-                }}
-                onValidateAndResume={() => {
-                  if (activeSyncSlide?.slide_index) {
-                    setCompletedCheckpoints(prev => [...prev, activeSyncSlide.slide_index]);
-                  }
-                  setIsMasterB1CheckpointOpen(false);
-                  if (videoRef.current) {
-                    videoRef.current.play().catch(console.error);
-                  }
-                }}
-              />
+              {/* Overlay Interactivo Tutor IA con Pausa Estricta */}
+              
 
               {/* Botón Flotante para Pantalla Completa del Video */}
               <button 
@@ -546,7 +528,8 @@ export default function ManualViewer({
               >
                 <FileQuestion size={14} /> <span>FAQ</span>
               </button>
-              <button 
+              {simConfig.requiresSimulator && (
+<button 
                 onClick={() => setActiveTab('simulador')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'simulador' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
@@ -555,7 +538,7 @@ export default function ManualViewer({
                 {!simConfig.requiresSimulator && (
                   <span className="text-[9px] bg-blue-500/20 text-blue-300 px-1 py-0.2 rounded font-mono font-bold">Concepto</span>
                 )}
-              </button>
+              </button>)}
               <button 
                 onClick={() => setActiveTab('quiz')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'quiz' ? 'bg-emerald-500/20 text-emerald-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
@@ -599,7 +582,7 @@ export default function ManualViewer({
                             <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
                               isActive ? 'bg-amber-500 text-black' : 'bg-gray-800 text-gray-400'
                             }`}>
-                              Paso {slide.slide_index}
+                              Diapositiva {slide.slide_index}
                             </span>
                             {slide.step_guide?.menu_path && (
                               <span className="text-[10px] font-mono text-amber-300/90 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded truncate max-w-[220px]">
@@ -654,7 +637,7 @@ export default function ManualViewer({
                   <div className="shrink-0 mb-3 bg-amber-500/10 border border-amber-500/30 rounded-xl p-2.5 text-left">
                     <div className="flex items-center justify-between text-[11px] font-bold text-amber-400 mb-1">
                       <span className="flex items-center gap-1"><Sparkles size={12} /> Tutor de Laboratorio</span>
-                      <span className="font-mono text-[10px]">Paso {activeSyncSlide.slide_index}</span>
+                      <span className="font-mono text-[10px]">Diapositiva {activeSyncSlide.slide_index}</span>
                     </div>
                     <div className="text-xs text-white font-medium truncate mb-2">
                       {activeSyncSlide.step_guide.title}
@@ -734,7 +717,7 @@ export default function ManualViewer({
               <div className="flex h-full flex-col text-left space-y-3.5 overflow-y-auto custom-scrollbar pr-1">
                 <div className="rounded-xl border border-purple-500/30 bg-purple-500/10 p-3.5">
                   <div className="flex items-center gap-2 text-purple-300 font-bold text-xs uppercase tracking-wider mb-1">
-                    <Sparkles size={14} /> Guía del Catedrático • Master B1
+                    <Sparkles size={14} /> Guía del Catedrático • Tutor IA
                   </div>
                   <p className="text-xs text-purple-100 leading-relaxed">
                     Material pedagógico y orientaciones para profesores universitarios. Utiliza estas directrices para conducir la clase y evaluar a tus alumnos con el simulador.
@@ -869,17 +852,7 @@ export default function ManualViewer({
                           <p className="text-[11px] text-gray-300 leading-relaxed">
                             Has superado el simulacro web. Para que tu certificado cuente con <strong>código QR criptográfico y verificación oficial</strong>, rinde la prueba definitiva en nuestra aplicación de escritorio protegida (sin navegadores ni extensiones).
                           </p>
-                          <a 
-                            href="#descargar-app"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              alert("Iniciando descarga del instalador seguro: B1_Secure_Exam_Guard_v1.0.exe\n\nEsta aplicación bloquea capturas y garantiza la integridad de tu certificado.");
-                            }}
-                            className="inline-flex items-center justify-center gap-1.5 w-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs py-2 rounded-lg shadow transition-all active:scale-95 cursor-pointer"
-                          >
-                            <Download size={13} />
-                            <span>Descargar B1 Secure Exam Guard (.exe)</span>
-                          </a>
+                          <div className="text-emerald-400 font-bold text-center mt-4">✓ Certificado Oficial Habilitado</div>
                         </div>
                       </div>
                     ) : (

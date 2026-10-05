@@ -2,7 +2,7 @@
 
 ## 📌 Estado: ✅ OPERACIONAL - SPRINT 1, 2 & 3 COMPLETADOS
 
-El **Simulador Integral (`/simulador`)** es un entorno virtual de escritorio que replica fielmente la interfaz de **SAP Business One 10.0 (HANA)** dentro de SAP Academy. Permiteal estudiante explorar, practicar y dominar los **66+ módulos** en modo sandbox.
+El **Simulador Integral (`/simulador`)** es un entorno virtual de escritorio que replica fielmente la interfaz de **SAP Business One 10.0 (HANA)** dentro de SAP Academy. Permite al estudiante explorar, practicar y dominar las **66+ pantallas y submódulos** (distribuidas en 12 módulos canónicos) en modo sandbox.
 
 **Fecha de Lanzamiento**: 2026-10-01 | **Versión**: 1.0 | **Build Status**: ✅ EXIT CODE 0
 
@@ -62,7 +62,7 @@ El árbol lateral (`SAPModulesTree.tsx`) replica exactamente el orden oficial de
 * Permite explorar cualquier ventana, navegar entre registros con los botones de flecha (`Primero`, `Anterior`, `Siguiente`, `Último`) y consultar datos maestros simulados.
 
 ### 2. Modo Misiones Guiadas (120 Misiones Oficiales)
-* Vinculado directamente a los 120 manuales de la academia.
+* Vinculado directamente a los manuales de la academia.
 * Cada misión plantea un caso de negocio real (ej: *"Registrar un Pedido de Compras a Far East Imports por 10 Servidores ProLiant y enlazarlo con la Entrada de Mercancías"*).
 * El motor valida los campos introducidos, provee pistas contextuales mediante la IA y otorga puntos de experiencia (XP) al completarse satisfactoriamente.
 
@@ -71,7 +71,7 @@ El árbol lateral (`SAPModulesTree.tsx`) replica exactamente el orden oficial de
 ## 🔗 Documentos Relacionados
 
 * [[06_LMS_Architecture]] - Arquitectura general del ecosistema educativo.
-* [[06_Manuales]] - Índice de los 120 manuales SAP Business One.
+* [[06_Manuales]] - Índice de los manuales SAP Business One.
 * [[07_Reconstruccion_Manuales_CS]] - Reconstrucción técnica de manuales prácticos CS.
 * [[08_B1_Secure_Exam_App]] - Arquitectura de la aplicación de escritorio para exámenes oficiales.
 * [[PLAN_MAESTRO_LECCIONES_PEDAGOGICAS]] - Estándar pedagógico docente y registro de lecciones.

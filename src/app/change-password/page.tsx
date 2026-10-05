@@ -49,8 +49,8 @@ export default function ChangePasswordPage() {
     setErrorMsg('');
     setSuccessMsg('');
 
-    if (newPass.length < 8) {
-      setErrorMsg('La contrasena debe tener minimo 8 caracteres.');
+    if (newPass.length < 12) {
+      setErrorMsg('La contraseña debe tener mínimo 12 caracteres.');
       return;
     }
     if (newPass !== confirmPass) {
@@ -77,7 +77,7 @@ export default function ChangePasswordPage() {
     }, 1200);
   };
 
-  const strength = newPass.length === 0 ? 0 : newPass.length < 8 ? 1 : newPass.length < 12 ? 2 : 3;
+  const strength = newPass.length === 0 ? 0 : newPass.length < 10 ? 1 : newPass.length < 14 ? 2 : 3;
   const strengthLabel = ['', 'Muy corta', 'Aceptable', 'Segura'];
   const strengthColor = ['', 'bg-rose-500', 'bg-amber-400', 'bg-emerald-500'];
 
@@ -120,20 +120,22 @@ export default function ChangePasswordPage() {
 
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <label htmlFor="new-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                   Nueva Contrasena
                 </label>
                 <div className="relative">
                   <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
+                    id="new-password"
                     type={showNew ? 'text' : 'password'}
                     value={newPass}
                     onChange={(e) => setNewPass(e.target.value)}
-                    placeholder="Minimo 8 caracteres"
+                    placeholder="Mínimo 12 caracteres"
+                    minLength={12}
                     required
                     className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
                   />
-                  <button type="button" onClick={() => setShowNew(!showNew)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  <button type="button" aria-label={showNew ? 'Ocultar contraseña nueva' : 'Mostrar contraseña nueva'} onClick={() => setShowNew(!showNew)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                     {showNew ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>
@@ -152,12 +154,13 @@ export default function ChangePasswordPage() {
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                <label htmlFor="confirm-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                   Confirmar Contrasena
                 </label>
                 <div className="relative">
                   <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                   <input
+                    id="confirm-password"
                     type={showConfirm ? 'text' : 'password'}
                     value={confirmPass}
                     onChange={(e) => setConfirmPass(e.target.value)}
@@ -165,7 +168,7 @@ export default function ChangePasswordPage() {
                     required
                     className={`w-full pl-10 pr-10 py-3 rounded-xl border bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none transition-colors ${confirmPass && confirmPass !== newPass ? 'border-rose-400 focus:border-rose-400' : 'border-slate-200 dark:border-white/10 focus:border-sap-blue'}`}
                   />
-                  <button type="button" onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                  <button type="button" aria-label={showConfirm ? 'Ocultar confirmación' : 'Mostrar confirmación'} onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                     {showConfirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                   </button>
                 </div>

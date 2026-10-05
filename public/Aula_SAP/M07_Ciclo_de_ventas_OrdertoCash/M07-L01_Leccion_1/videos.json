@@ -1,0 +1,16 @@
+{
+  "id": "M07-L01",
+  "titulo": "Leccion 1",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Introduccion",
+      "video": "/Aula_SAP/M07_Ciclo_de_ventas_OrdertoCash/M07-L01_Leccion_1/B01_video/M07-L01_B01.mp4",
+      "sync": "/Aula_SAP/M07_Ciclo_de_ventas_OrdertoCash/M07-L01_Leccion_1/B01_video/M07-L01_B01_sync.json",
+      "duracion_s": 3.53
+    }
+  ],
+  "quiz": []
+}

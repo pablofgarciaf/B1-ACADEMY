@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Diapositiva SAP Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --fondo: #F4F6FA;
+      --primario: #0B3D91;
+      --secundario: #4C9BE8;
+      --acento: #F5A623;
+      --texto: #1F2937;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px;
+      height: 1080px;
+      background-color: var(--fondo);
+      font-family: 'Inter', sans-serif;
+      color: var(--texto);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      padding: 60px 80px 40px 80px;
+    }
+    .title {
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--primario);
+      margin: 0;
+      max-width: 1760px;
+    }
+    .content {
+      display: flex;
+      flex: 1;
+      padding: 0 80px;
+      gap: 60px;
+    }
+    .text-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .bullets {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .bullets li {
+      font-size: 36px;
+      margin-bottom: 30px;
+      line-height: 1.4;
+      position: relative;
+      padding-left: 40px;
+    }
+    .bullets li::before {
+      content: '■';
+      color: var(--secundario);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .image-column {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-column img {
+      max-width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+    }
+    .footer {
+      height: 130px;
+      padding: 0 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--primario);
+      border-top: 4px solid var(--secundario);
+      background-color: #ffffff;
+    }
+    
+    /* Layout variaciones */
+    .layout-portada {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primario) 0%, #1a56b8 100%);
+      color: white;
+    }
+    .layout-portada .title {
+      color: white;
+      font-size: 80px;
+      margin-bottom: 30px;
+    }
+    .layout-portada .subtitle {
+      font-size: 40px;
+      color: var(--acento);
+      font-weight: 600;
+    }
+    .layout-portada .footer {
+      background: transparent;
+      border: none;
+      color: rgba(255,255,255,0.8);
+      position: absolute;
+      bottom: 0;
+      width: 1760px;
+    }
+    
+    /* Misiones / Simulador */
+    .layout-mision {
+      background-color: var(--primario);
+      color: white;
+    }
+    .layout-mision .title {
+      color: white;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .layout-mision .card {
+      background: white;
+      color: var(--texto);
+      border-radius: 20px;
+      padding: 50px;
+      width: 80%;
+      margin: 0 auto;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .card-title {
+      color: var(--acento);
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    
+    /* HTML para inyectar desde python:
+       - {{TIPO_LAYOUT}} : "layout-normal" o "layout-portada" o "layout-mision"
+       - {{TITULO}}
+       - {{SUBTITULO}} (para portada)
+       - {{CONTENIDO}} (ul de bullets o div con texto)
+       - {{IMAGEN_SRC}} (ruta relativa a la ilustracion)
+       - {{PIE_IZQ}}
+       - {{PIE_DER}}
+    */
+  </style>
+</head>
+<body class="{{TIPO_LAYOUT}}" id="slide-body">
+
+  <div class="header" id="header-container">
+    <h1 class="title">{{TITULO}}</h1>
+    <div class="subtitle" id="subtitle-container">{{SUBTITULO}}</div>
+  </div>
+
+  <div class="content" id="content-container">
+    <div class="text-column">
+      {{CONTENIDO}}
+    </div>
+    <div class="image-column" id="image-container">
+      <img src="{{IMAGEN_SRC}}" alt="" id="slide-image">
+    </div>
+  </div>
+
+  <div class="footer" id="footer-container">
+    <div class="pie-izq">{{PIE_IZQ}}</div>
+    <div class="pie-der">{{PIE_DER}}</div>
+  </div>
+
+  <script>
+    // Logica simple para ocultar contenedores vacíos
+    if ("{{SUBTITULO}}" === "") document.getElementById("subtitle-container").style.display = "none";
+    if ("{{IMAGEN_SRC}}" === "") document.getElementById("image-container").style.display = "none";
+    if ("{{TIPO_LAYOUT}}" === "layout-portada") {
+      document.getElementById("header-container").style.textAlign = "center";
+      document.getElementById("content-container").style.display = "none";
+      document.getElementById("slide-body").style.justifyContent = "center";
+    }
+  </script>
+</body>
+</html>

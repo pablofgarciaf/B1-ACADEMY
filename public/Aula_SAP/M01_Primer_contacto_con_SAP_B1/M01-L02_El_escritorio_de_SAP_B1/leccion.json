@@ -1,0 +1,129 @@
+{
+  "id": "M01-L02",
+  "modulo": "M01",
+  "titulo": "El escritorio de SAP B1",
+  "pregunta_central": "¿Cómo me ubico rápidamente en el sistema?",
+  "objetivos": [
+    "Reconocer las zonas principales de la interfaz de SAP B1.",
+    "Comprender qué significa que un ícono esté disponible o deshabilitado."
+  ],
+  "duracion_estimada_min": 10,
+  "fuentes": [
+    "10_Intro_12_Overview_GettingStarted_ES"
+  ],
+  "bloques": [
+    {
+      "id": "B01",
+      "tipo": "video",
+      "titulo": "Las cuatro zonas de control",
+      "diapositivas": [
+        {
+          "archivo": "B01_video/M01-L02_B01_D01.webp",
+          "tipo": "portada",
+          "titulo_en_pantalla": "El escritorio de SAP B1",
+          "puntos_en_pantalla": [],
+          "ilustracion": null,
+          "narracion": "Bienvenido a tu sala de control. Hoy aprenderemos a navegar por el escritorio principal de SAP Business One. Es más sencillo de lo que parece. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 15
+        },
+        {
+          "archivo": "B01_video/M01-L02_B01_D02.webp",
+          "tipo": "pantalla_sap",
+          "titulo_en_pantalla": "Zonas del sistema",
+          "puntos_en_pantalla": [
+            "Menú superior: Acciones",
+            "Panel: Módulos",
+            "Centro: Trabajo",
+            "Inferior: Alertas"
+          ],
+          "ilustracion": "_ilustraciones/M01-L02_B01_D02_ilus.webp",
+          "narracion": "El escritorio tiene cuatro zonas. El menú superior con los accesos rápidos. La barra lateral izquierda, que es tu índice de módulos. El área central, donde trabaja cada ventana. Y la barra inferior, que te muestra mensajes del sistema. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 40
+        },
+        {
+          "archivo": "B01_video/M01-L02_B01_D03.webp",
+          "tipo": "concepto",
+          "titulo_en_pantalla": "El idioma de los íconos",
+          "puntos_en_pantalla": [
+            "Color: Acción permitida",
+            "Gris: Acción bloqueada",
+            "Prevención de errores"
+          ],
+          "ilustracion": "_ilustraciones/M01-L02_B01_D03_ilus.webp",
+          "narracion": "Cada ícono que ves tiene un propósito. Los grises están desactivados porque esa acción no aplica en el momento actual. Los que tienen color están listos para usarse. El sistema te guía. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 35
+        },
+        {
+          "archivo": "B01_video/M01-L02_B01_D04.webp",
+          "tipo": "puente",
+          "titulo_en_pantalla": "Ahora te toca a ti",
+          "puntos_en_pantalla": [
+            "Práctica: Simulador",
+            "Navegación libre",
+            "Seguir instrucciones"
+          ],
+          "ilustracion": null,
+          "narracion": "La mejor manera de aprender es haciendo. Vamos a entrar al simulador para que ubiques los menús tú mismo. Presta atención a las instrucciones. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 25
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "tipo": "simulador",
+      "titulo": "Navega por el escritorio",
+      "tarjeta_mision": "B02_simulador/M01-L02_B02_mision.webp",
+      "tarjeta_logrado": "B02_simulador/M01-L02_B02_logrado.webp",
+      "screenId": "FIN001",
+      "mision": "Navega por el escritorio: abre el módulo de Finanzas.",
+      "datos_a_usar": {},
+      "pasos_esperados": [
+        "Abrir Finanzas"
+      ],
+      "criterios_validacion": [],
+      "pistas_ia": [
+        "Pista 1: Revisa el panel izquierdo de módulos.",
+        "Pista 2: Busca la carpeta que dice Finanzas y hazle clic."
+      ],
+      "narracion_mision": "Tu misión es abrir el menú principal y encontrar el módulo de Finanzas. ¡Adelante! Asegúrate de seguir todos los pasos indicados con mucha atención para completar esta tarea de manera exitosa.",
+      "narracion_logrado": "¡Excelente! Has abierto tu primer menú en SAP. Así de fácil es moverse por los módulos."
+    },
+    {
+      "id": "B03",
+      "tipo": "video",
+      "titulo": "Resumen",
+      "diapositivas": [
+        {
+          "archivo": "B03_video/M01-L02_B03_D01.webp",
+          "tipo": "resumen",
+          "titulo_en_pantalla": "Lo que aprendimos",
+          "puntos_en_pantalla": [
+            "4 Áreas principales",
+            "Reconocimiento de íconos"
+          ],
+          "ilustracion": null,
+          "narracion": "¡Excelente trabajo! Has dado tus primeros pasos en SAP Business One. Ahora conoces la estructura de la pantalla principal. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 20
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Qué indica un ícono de herramienta en color gris en la barra de SAP Business One?",
+      "opciones": [
+        "Que el sistema está cargando",
+        "Que esa acción no está disponible en la pantalla actual",
+        "Que no tienes permisos de administrador",
+        "Que hay un error en la base de datos"
+      ],
+      "correcta": 1,
+      "explicacion": "El color gris indica que, por contexto, no puedes usar esa herramienta en ese momento. Es una medida de seguridad."
+    }
+  ],
+  "informe_clave": {
+    "nombre": "Acceso rápido a la información",
+    "quien_lo_usa": "Todos los usuarios",
+    "decision_que_permite": "Moverse ágilmente entre módulos para ejecutar las tareas diarias sin perder tiempo buscando opciones."
+  }
+}

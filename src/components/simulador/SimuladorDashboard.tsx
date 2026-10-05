@@ -90,22 +90,25 @@ export default function SimuladorDashboard({
             </div>
           </div>
 
-          {/* Main CTA */}
-          <button
-            onClick={onStartSimulator}
-            className="group relative w-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-2xl p-8 shadow-2xl shadow-blue-600/50 transition-all overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-1000" />
-            <div className="relative flex items-center justify-between">
-              <div className="text-left">
-                <p className="text-sm font-semibold text-blue-100 mb-1">Comienza a Aprender</p>
-                <h3 className="text-3xl font-bold">Abre el Simulador Virtual</h3>
+          {/* Main CTAs */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button
+              onClick={onStartSimulator}
+              className="group relative w-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-2xl p-6 shadow-2xl shadow-blue-600/50 transition-all overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-1000" />
+              <div className="relative flex items-center justify-between">
+                <div className="text-left">
+                  <p className="text-xs font-semibold text-blue-100 mb-1">Simulador Interactivo</p>
+                  <h3 className="text-xl font-bold">Simulador Virtual SAP</h3>
+                </div>
+                <div className="bg-white/20 backdrop-blur p-3 rounded-xl">
+                  <Play size={28} className="text-white fill-white" />
+                </div>
               </div>
-              <div className="bg-white/20 backdrop-blur p-4 rounded-xl">
-                <Play size={40} className="text-white fill-white" />
-              </div>
-            </div>
-          </button>
+            </button>
+
+          </div>
         </div>
 
         {/* Stats grid */}
@@ -131,12 +134,7 @@ export default function SimuladorDashboard({
               </span>
             </div>
             <p className="text-3xl font-bold text-white">{user.xp}</p>
-            <div className="w-full bg-slate-700/50 rounded-full h-2 mt-3">
-              <div
-                className="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full transition-all"
-                style={{ width: `${progressPercent}%` }}
-              />
-            </div>
+            <progress className="kai-progress kai-progress-purple mt-3" value={progressPercent} max="100" aria-label="Progreso de experiencia" />
             <p className="text-xs text-slate-400 mt-2">
               {user.xp % 1000} / 1000 XP para siguiente nivel
             </p>
@@ -153,12 +151,7 @@ export default function SimuladorDashboard({
             <p className="text-3xl font-bold text-white">
               {user.completedMissions}/{user.totalMissions}
             </p>
-            <div className="w-full bg-slate-700/50 rounded-full h-2 mt-3">
-              <div
-                className="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full transition-all"
-                style={{ width: `${completionPercent}%` }}
-              />
-            </div>
+            <progress className="kai-progress kai-progress-green mt-3" value={completionPercent} max="100" aria-label="Misiones completadas" />
             <p className="text-xs text-slate-400 mt-2">
               {Math.round(completionPercent)}% completado
             </p>
@@ -196,12 +189,7 @@ export default function SimuladorDashboard({
                       {data.completed}/{data.total} ({data.progress}%)
                     </p>
                   </div>
-                  <div className="w-full bg-slate-700/50 rounded-full h-2">
-                    <div
-                      className="bg-gradient-to-r from-blue-400 to-cyan-400 h-2 rounded-full transition-all"
-                      style={{ width: `${data.progress}%` }}
-                    />
-                  </div>
+                  <progress className="kai-progress kai-progress-blue" value={data.progress} max="100" aria-label={`Progreso de ${name}`} />
                 </div>
               ))}
             </div>

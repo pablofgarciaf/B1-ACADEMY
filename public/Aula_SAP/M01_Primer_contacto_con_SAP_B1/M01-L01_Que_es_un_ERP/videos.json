@@ -1,0 +1,39 @@
+{
+  "id": "M01-L01",
+  "titulo": "¿Qué es un ERP y por qué cambia todo?",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Las islas de información frente al sistema integrado",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L01_Que_es_un_ERP/B01_video/M01-L01_B01.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L01_Que_es_un_ERP/B01_video/M01-L01_B01_sync.json",
+      "duracion_s": 83.5
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es el principal problema que resuelve un ERP como SAP Business One?",
+      "opciones": [
+        "Acelerar las impresoras de la oficina",
+        "Eliminar la información aislada entre departamentos",
+        "Reemplazar a los empleados del área de ventas",
+        "Mejorar la conexión a Internet"
+      ],
+      "correcta": 1,
+      "explicacion": "El objetivo de un ERP es integrar todas las áreas, eliminando las islas de información que causan errores."
+    },
+    {
+      "pregunta": "Cuando ventas registra un pedido en SAP B1, ¿qué otro departamento lo ve automáticamente?",
+      "opciones": [
+        "Nadie, cada departamento tiene su propio sistema",
+        "Solo el gerente general de la empresa",
+        "Todos los que necesitan esa información, como almacén y contabilidad",
+        "Solo el departamento de tecnología e informática"
+      ],
+      "correcta": 2,
+      "explicacion": "Al usar una base de datos centralizada, la información se comparte en tiempo real con todas las áreas involucradas."
+    }
+  ]
+}

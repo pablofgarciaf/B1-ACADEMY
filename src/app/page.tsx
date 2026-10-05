@@ -41,7 +41,7 @@ export default function HomePage() {
                 <Sparkles className="w-5 h-5 text-sap-blue dark:text-sky-400 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-slate-900 dark:text-white font-semibold">
-                    Escuela Oficial de Capacitación Tecnológica y Consultoría:
+                    Escuela especializada de capacitación tecnológica y consultoría:
                   </strong>{' '}
                   Especialización integral en el ecosistema <strong>SAP Business One Ecuador</strong>.
                   Formación dividida en <strong>5 grandes tracks</strong> (SAP B1 Core NIIF, Localización SRI, Nómina HCM IESS/MDT, Gestión Humana Nine-Box y Verticales de Exportación Banano/Camarón/Beas).

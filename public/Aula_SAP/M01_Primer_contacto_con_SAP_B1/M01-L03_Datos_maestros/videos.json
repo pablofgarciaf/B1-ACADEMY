@@ -1,0 +1,70 @@
+{
+  "id": "M01-L03",
+  "titulo": "Datos maestros: la columna vertebral",
+  "voz": "es-MX-JorgeNeural",
+  "secuencia": [
+    {
+      "bloque": "B01",
+      "tipo": "video",
+      "titulo": "Maestros vs. Documentos",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L03_Datos_maestros/B01_video/M01-L03_B01.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L03_Datos_maestros/B01_video/M01-L03_B01_sync.json",
+      "duracion_s": 45.17
+    },
+    {
+      "bloque": "B02",
+      "tipo": "simulador",
+      "titulo": "Explora el maestro de clientes",
+      "screenId": "SAL006",
+      "mision": "Abre el maestro del cliente C20000 (Maxi-Teq) y localiza su condición de pago.",
+      "pasos_esperados": [
+        "Abrir Socios de Negocios > Datos Maestros",
+        "Buscar C20000"
+      ],
+      "criterios_validacion": [
+        {
+          "campo": "codigo_cliente",
+          "esperado": "C20000"
+        }
+      ],
+      "pistas_ia": [
+        "Pista 1: Ve al módulo de Socios de Negocios.",
+        "Pista 2: Escribe C20000 en el modo buscar y presiona Enter."
+      ],
+      "video_mision": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L03_Datos_maestros/B02_simulador/M01-L03_B02_mision.mp4",
+      "video_logrado": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L03_Datos_maestros/B02_simulador/M01-L03_B02_logrado.mp4"
+    },
+    {
+      "bloque": "B03",
+      "tipo": "video",
+      "titulo": "Cierre de Datos Maestros",
+      "video": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L03_Datos_maestros/B03_video/M01-L03_B03.mp4",
+      "sync": "/Aula_SAP/M01_Primer_contacto_con_SAP_B1/M01-L03_Datos_maestros/B03_video/M01-L03_B03_sync.json",
+      "duracion_s": 8.54
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Cuál es la diferencia entre un dato maestro y un documento en SAP B1?",
+      "opciones": [
+        "No hay diferencia, son lo mismo",
+        "El maestro es permanente y define reglas; el documento registra una transacción específica",
+        "El documento es más importante que el maestro",
+        "Los maestros solo los puede editar el administrador del sistema"
+      ],
+      "correcta": 1,
+      "explicacion": "Los maestros almacenan datos recurrentes, los documentos almacenan las actividades diarias."
+    },
+    {
+      "pregunta": "Si el maestro de un artículo tiene mal asignada su cuenta de ingresos, ¿qué ocurre?",
+      "opciones": [
+        "Solo afecta a la próxima factura",
+        "No pasa nada, el sistema lo corrige solo",
+        "Todas las facturas de ese artículo contabilizan en la cuenta incorrecta",
+        "El sistema bloquea la venta del artículo de inmediato"
+      ],
+      "correcta": 2,
+      "explicacion": "El documento hereda la configuración del maestro. Si el maestro está mal, el documento registrará mal la contabilidad."
+    }
+  ]
+}

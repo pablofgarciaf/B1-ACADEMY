@@ -1,0 +1,51 @@
+{
+  "empresa": {
+    "nombre": "Distribuidora Andina Tech S.A.",
+    "ruc": "1792456789001",
+    "direccion": "Av. República de El Salvador N34-12, Quito",
+    "moneda": "USD",
+    "iva": 0.15,
+    "bodegas": [
+      { "codigo": "01", "nombre": "Bodega Central Quito" },
+      { "codigo": "02", "nombre": "Bodega Sucursal Guayaquil" }
+    ],
+    "cuentas_bancarias": [
+      { "banco": "Banco Pichincha", "cuenta": "Cta Corriente 210001" },
+      { "banco": "Banco del Pacífico", "cuenta": "Cta Corriente 320002" },
+      { "banco": "Produbanco", "cuenta": "Cta Ahorros 430003" }
+    ],
+    "empleados": [
+      { "id": "E001", "nombre": "Juan Pérez", "cargo": "Gerente Comercial" },
+      { "id": "E002", "nombre": "María Gómez", "cargo": "Contadora General" },
+      { "id": "E003", "nombre": "Carlos López", "cargo": "Jefe de Bodega" },
+      { "id": "E004", "nombre": "Ana Silva", "cargo": "Asistente de Ventas" }
+    ]
+  },
+  "clientes": [
+    { "codigo": "C20000", "nombre": "Maxi-Teq", "ciudad": "Quito" },
+    { "codigo": "C20001", "nombre": "TechSolutions", "ciudad": "Guayaquil" },
+    { "codigo": "C20002", "nombre": "CompuMundo", "ciudad": "Cuenca" },
+    { "codigo": "C20003", "nombre": "ElectroHogar", "ciudad": "Manta" },
+    { "codigo": "C20004", "nombre": "Sistemas del Valle", "ciudad": "Quito" }
+  ],
+  "proveedores": [
+    { "codigo": "V10000", "nombre": "Dell Ecuador", "ciudad": "Quito" },
+    { "codigo": "V10001", "nombre": "HP Importaciones", "ciudad": "Guayaquil" },
+    { "codigo": "V10002", "nombre": "Lenovo Andina", "ciudad": "Quito" },
+    { "codigo": "V10003", "nombre": "Acer Distributors", "ciudad": "Cuenca" }
+  ],
+  "articulos": [
+    { "codigo": "A00001", "descripcion": "Laptop Dell Latitude 3420", "costo": 650.00, "precio": 850.00 },
+    { "codigo": "A00002", "descripcion": "Laptop HP ProBook 440", "costo": 680.00, "precio": 890.00 },
+    { "codigo": "A00003", "descripcion": "Monitor Lenovo ThinkVision 24\"", "costo": 120.00, "precio": 180.00 },
+    { "codigo": "A00004", "descripcion": "Teclado Inalámbrico Logitech", "costo": 25.00, "precio": 45.00 },
+    { "codigo": "A00005", "descripcion": "Mouse Óptico Dell", "costo": 10.00, "precio": 20.00 },
+    { "codigo": "A00006", "descripcion": "Servidor HP ProLiant DL380", "costo": 2500.00, "precio": 3200.00 },
+    { "codigo": "A00007", "descripcion": "Disco Duro SSD 1TB Samsung", "costo": 80.00, "precio": 130.00 },
+    { "codigo": "A00008", "descripcion": "Memoria RAM 16GB DDR4", "costo": 45.00, "precio": 75.00 },
+    { "codigo": "A00009", "descripcion": "Impresora Multifunción Epson", "costo": 150.00, "precio": 220.00 },
+    { "codigo": "A00010", "descripcion": "Switch Cisco 24 Puertos", "costo": 300.00, "precio": 450.00 },
+    { "codigo": "A00011", "descripcion": "Cable de Red Cat6 100m", "costo": 30.00, "precio": 55.00 },
+    { "codigo": "A00012", "descripcion": "UPS APC 1500VA", "costo": 180.00, "precio": 260.00 }
+  ]
+}

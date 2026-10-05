@@ -205,10 +205,10 @@ Firebase Auth (email/password) + Firestore profiles:
 │                      ROLES EN LA PLATAFORMA                 │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  'super'               → Superadministrador (1 usuario)    │
-│    - UID: pablofgarciaf@gmail.com                          │
+│  'super'               → Superadministrador asignado       │
+│    - UID: gestionado en Firebase Auth / Custom Claims      │
 │    - Acceso total: usuarios, cursos, sandbox, admin panel  │
-│    - Master bypass: acceso sin validación si Firebase cae  │
+│    - Sin bypass local: todo acceso valida sesión servidor  │
 │                                                             │
 │  'admin'               → Administrador de institución      │
 │    - Gestión de usuarios (crear, activar, suspender)      │
@@ -768,18 +768,11 @@ Content-Type: application/json
 ## Seguridad
 
 ### 1. **Autenticación**
-- **Firebase Auth:** Email/password con reglas de complejidad
-- **Master bypass:** Email `pablofgarciaf@gmail.com` + hardcoded pass (⚠️ revisar en producción)
-- **Sesión localStorage:** Fallback si Firebase offline
+- **Firebase Auth:** Email/password con reglas de complejidad.
+- **Sesión servidor:** cookie HttpOnly validada con Firebase Admin SDK.
+- **Administración:** privilegios por perfil/claims, sin credenciales maestras en el cliente.
 
-**Vulnerabilidad conocida:**
-```typescript
-// AuthContext.tsx línea 57-58
-const MASTER_SUPERADMIN_EMAIL = 'pablofgarciaf@gmail.com';
-const MASTER_SUPERADMIN_PASS = '1721790721'; // ← HARDCODED (revisar)
-```
-
-**Recomendación:** Mover a `.env.local` o usar Firebase Custom Claims.
+**Nota operativa:** cualquier contraseña histórica expuesta debe rotarse fuera del repositorio.
 
 ### 2. **Autorización (Firestore Rules)**
 ```firestore
@@ -894,7 +887,7 @@ gcloud firestore export gs://b1academy-backups/$(date +%Y%m%d)
 - DNS: A records o CNAME a hosting provider
 
 ### 7. **Checklist Pre-Producción**
-- [ ] Remover hardcoded passwords (master bypass)
+- [ ] Verificar que no existan contraseñas hardcoded ni bypass de autenticación
 - [ ] Validar Firestore Security Rules
 - [ ] Configurar CORS si necesario
 - [ ] Test de carga (1000+ usuarios simultáneos)

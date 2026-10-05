@@ -1,0 +1,30 @@
+[
+  {
+    "slide_index": 1,
+    "image_file": "M01-L03_B01_D01.webp",
+    "script_text": "Vamos a hablar de la columna vertebral de SAP: los datos maestros. Entender esto es fundamental para no cometer errores costosos.",
+    "start_time": 0.0,
+    "end_time": 9.91
+  },
+  {
+    "slide_index": 2,
+    "image_file": "M01-L03_B01_D02.webp",
+    "script_text": "En SAP B1 existen dos tipos de registros. Los datos maestros son permanentes: un cliente, un artículo o un proveedor. Los documentos son transaccionales: una factura, un pedido o un pago.",
+    "start_time": 9.91,
+    "end_time": 25.2
+  },
+  {
+    "slide_index": 3,
+    "image_file": "M01-L03_B01_D03.webp",
+    "script_text": "La diferencia clave es que un dato maestro mal configurado contamina todos los documentos que lo usan. Si el maestro del cliente tiene mal la cuenta contable, todas sus facturas contabilizan mal.",
+    "start_time": 25.2,
+    "end_time": 38.5
+  },
+  {
+    "slide_index": 4,
+    "image_file": "M01-L03_B01_D04.webp",
+    "script_text": "Para que veas cómo luce, vamos a buscar el registro de uno de nuestros clientes en el sistema.",
+    "start_time": 38.5,
+    "end_time": 45.17
+  }
+]

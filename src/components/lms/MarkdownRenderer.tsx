@@ -4,6 +4,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import type { Components } from 'react-markdown';
 
 /**
@@ -59,7 +60,13 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
     <div className="prose-lms max-w-none">
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeRaw]}
+        rehypePlugins={[
+          rehypeRaw,
+          [rehypeSanitize, {
+            ...defaultSchema,
+            attributes: { ...defaultSchema.attributes, div: [...(defaultSchema.attributes?.div || []), ['className', /^alert-(note|tip|important|warning|caution)$/]] },
+          }],
+        ]}
         components={customComponents}
       >
         {processed}

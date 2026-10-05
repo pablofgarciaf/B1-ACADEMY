@@ -1,0 +1,155 @@
+{
+  "id": "M01-L04",
+  "modulo": "M01",
+  "titulo": "Buscar y navegar como un experto",
+  "pregunta_central": "¿Cómo encuentro lo que necesito en un mar de información?",
+  "objetivos": [
+    "Aprender a usar la flecha naranja (link arrow).",
+    "Usar la función Drag and Relate para búsquedas rápidas."
+  ],
+  "duracion_estimada_min": 10,
+  "fuentes": [
+    "10_Intro_12_Overview_GettingStarted_ES"
+  ],
+  "bloques": [
+    {
+      "id": "B01",
+      "tipo": "video",
+      "titulo": "Atajos de navegación",
+      "diapositivas": [
+        {
+          "archivo": "B01_video/M01-L04_B01_D01.webp",
+          "tipo": "portada",
+          "titulo_en_pantalla": "Navegación experta",
+          "puntos_en_pantalla": [],
+          "ilustracion": null,
+          "narracion": "El tiempo es oro en cualquier empresa. Hoy aprenderás los atajos que usan los expertos para volar dentro de SAP B1. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 15
+        },
+        {
+          "archivo": "B01_video/M01-L04_B01_D02.webp",
+          "tipo": "concepto",
+          "titulo_en_pantalla": "Las cuatro herramientas clave",
+          "puntos_en_pantalla": [
+            "1. La búsqueda global.",
+            "2. La flecha naranja.",
+            "3. Drag and Relate.",
+            "4. El log de mensajes."
+          ],
+          "ilustracion": "_ilustraciones/M01-L04_B01_D02_ilus.webp",
+          "narracion": "Hay cuatro formas de llegar a cualquier dato. Primero, la búsqueda global en el menú. Segundo, la flecha naranja. Tercero, el drag and relate. Y cuarto, el log de mensajes para entender qué pasó. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 30
+        },
+        {
+          "archivo": "B01_video/M01-L04_B01_D03.webp",
+          "tipo": "pantalla_sap",
+          "titulo_en_pantalla": "La flecha naranja",
+          "puntos_en_pantalla": [
+            "Aparece junto a cualquier",
+            "Te lleva directo al"
+          ],
+          "ilustracion": "_ilustraciones/M01-L04_B01_D03_ilus.webp",
+          "narracion": "La flecha naranja, o link arrow, es tu mejor amiga. Aparece junto a cualquier código y, al darle clic, te lleva directo a su dato maestro. De la factura al cliente en un segundo. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 25
+        },
+        {
+          "archivo": "B01_video/M01-L04_B01_D04.webp",
+          "tipo": "concepto",
+          "titulo_en_pantalla": "Drag and Relate",
+          "puntos_en_pantalla": [
+            "Arrastra un código sobre",
+            "Genera reportes instantáneos."
+          ],
+          "ilustracion": "_ilustraciones/M01-L04_B01_D04_ilus.webp",
+          "narracion": "Drag and relate es arrastrar y soltar. Tomas el código del artículo, lo arrastras sobre la palabra pedidos, y el sistema te lista todos los pedidos de ese artículo al instante. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 25
+        },
+        {
+          "archivo": "B01_video/M01-L04_B01_D05.webp",
+          "tipo": "puente",
+          "titulo_en_pantalla": "A practicar",
+          "puntos_en_pantalla": [
+            "Usaremos la flecha naranja.",
+            "Probaremos Drag and Relate."
+          ],
+          "ilustracion": null,
+          "narracion": "Basta de teoría. Vamos al simulador a usar estas herramientas con datos reales. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 15
+        }
+      ]
+    },
+    {
+      "id": "B02",
+      "tipo": "simulador",
+      "titulo": "Usa la flecha naranja y Drag & Relate",
+      "tarjeta_mision": "B02_simulador/M01-L04_B02_mision.webp",
+      "tarjeta_logrado": "B02_simulador/M01-L04_B02_logrado.webp",
+      "screenId": "SAL004",
+      "mision": "Usa la flecha naranja en una factura para saltar al maestro del cliente C20000.",
+      "datos_a_usar": {
+        "cliente": "C20000"
+      },
+      "pasos_esperados": [
+        "Abrir Factura de deudores",
+        "Clic en flecha naranja de cliente"
+      ],
+      "criterios_validacion": [],
+      "pistas_ia": [
+        "Pista 1: Abre cualquier factura del módulo de ventas.",
+        "Pista 2: Busca el ícono naranja junto al código del cliente y hazle clic."
+      ],
+      "narracion_mision": "Abre cualquier factura de ventas, busca la flecha naranja junto al nombre del cliente y dale clic. Asegúrate de seguir todos los pasos indicados con mucha atención para completar esta tarea de manera exitosa.",
+      "narracion_logrado": "¡Perfecto! Ya sabes cómo viajar rápidamente desde una transacción hasta la información detallada del maestro."
+    },
+    {
+      "id": "B03",
+      "tipo": "video",
+      "titulo": "Fin del módulo 1",
+      "diapositivas": [
+        {
+          "archivo": "B03_video/M01-L04_B03_D01.webp",
+          "tipo": "resumen",
+          "titulo_en_pantalla": "Módulo 1 completado",
+          "puntos_en_pantalla": [
+            "Entiendes qué es el ERP.",
+            "Conoces el escritorio.",
+            "Diferencias maestros de documentos.",
+            "Sabes navegar como experto."
+          ],
+          "ilustracion": null,
+          "narracion": "Felicidades. Has completado tu primer módulo. Ahora entiendes la lógica de SAP y sabes cómo moverte. Estás listo para empezar a registrar transacciones. Además, ten en cuenta que este concepto es fundamental para poder dominar las herramientas que ofrece SAP Business One en el día a día operativo.",
+          "duracion_estimada_s": 30
+        }
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "pregunta": "¿Para qué sirve la flecha naranja (→) junto a un campo en SAP B1?",
+      "opciones": [
+        "Para avanzar al siguiente registro en la base de datos",
+        "Para saltar directamente al maestro del dato que está en ese campo",
+        "Para ordenar la lista de resultados alfabéticamente",
+        "Para abrir el manual de ayuda de ese módulo"
+      ],
+      "correcta": 1,
+      "explicacion": "La flecha naranja es un hipervínculo interno que te lleva al registro maestro detallado."
+    },
+    {
+      "pregunta": "¿Qué es Drag and Relate en SAP B1?",
+      "opciones": [
+        "Una función de Excel integrada en el sistema",
+        "Arrastrar un código sobre una ventana para filtrar todos sus registros al instante",
+        "Una forma de mover documentos entre módulos",
+        "El nombre oficial del módulo de reportes y gráficas"
+      ],
+      "correcta": 1,
+      "explicacion": "Permite relacionar información arrastrando un elemento sobre un objeto del menú."
+    }
+  ],
+  "informe_clave": {
+    "nombre": "Cualquier reporte interactivo",
+    "quien_lo_usa": "Analistas y Gerentes",
+    "decision_que_permite": "Profundizar en cualquier cifra sospechosa o interesante con un solo clic en la flecha naranja, llegando al origen del dato."
+  }
+}
