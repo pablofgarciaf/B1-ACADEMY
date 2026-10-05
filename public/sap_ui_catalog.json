@@ -2,8 +2,8 @@
   "metadata": {
     "version": "1.0",
     "sap_version": "SAP Business One 10.0 (HANA)",
-    "total_screens": 66,
-    "total_modules": 12,
+    "total_screens": 63,
+    "total_modules": 13,
     "generated": "2026-10-01T00:00:00Z",
     "description": "Atlas Visual Indexado de 5,082+ capturas de SAP B1"
   },
@@ -19,16 +19,51 @@
           "type": "Documento",
           "module": "01_Finanzas",
           "workflow": "Ventas > Finanzas > Diarios",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Número de Asiento", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Fecha", "required": true, "color": "#fffde0"},
-            {"id": "field_3", "name": "Descripción", "required": false, "color": "#ffffff"}
+            {
+              "id": "field_1",
+              "name": "Número de Asiento",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Fecha",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_3",
+              "name": "Descripción",
+              "required": false,
+              "color": "#ffffff"
+            }
           ],
           "actions": [
-            {"id": "btn_save", "label": "Guardar", "shortcut": "Ctrl+S"},
-            {"id": "btn_cancel", "label": "Cancelar", "shortcut": "Esc"},
-            {"id": "btn_delete", "label": "Eliminar", "shortcut": "Ctrl+D"}
+            {
+              "id": "btn_save",
+              "label": "Guardar",
+              "shortcut": "Ctrl+S"
+            },
+            {
+              "id": "btn_cancel",
+              "label": "Cancelar",
+              "shortcut": "Esc"
+            },
+            {
+              "id": "btn_delete",
+              "label": "Eliminar",
+              "shortcut": "Ctrl+D"
+            }
           ]
         },
         {
@@ -37,7 +72,15 @@
           "type": "Consulta",
           "module": "01_Finanzas",
           "workflow": "Finanzas > Consultas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -47,7 +90,15 @@
           "type": "Informe",
           "module": "01_Finanzas",
           "workflow": "Finanzas > Reportes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -57,7 +108,15 @@
           "type": "Informe",
           "module": "01_Finanzas",
           "workflow": "Finanzas > Reportes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -67,7 +126,45 @@
           "type": "Consulta",
           "module": "01_Finanzas",
           "workflow": "Finanzas > Flujos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "FIN006",
+          "name": "Activos Fijos Completos",
+          "type": "Datos Maestros",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Activos Fijos",
+          "hotspots": [],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "FIN007",
+          "name": "Presupuestos",
+          "type": "Herramienta",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Presupuestos",
+          "hotspots": [],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "FIN008",
+          "name": "Cierres Fiscales",
+          "type": "Herramienta",
+          "module": "01_Finanzas",
+          "workflow": "Finanzas > Cierres",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -84,15 +181,46 @@
           "type": "Documento",
           "module": "02_Ventas",
           "workflow": "Ventas > Documentos de Venta",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Número de Oferta", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Cliente", "required": true, "color": "#fffde0"},
-            {"id": "field_3", "name": "Fecha", "required": true, "color": "#fffde0"}
+            {
+              "id": "field_1",
+              "name": "Número de Oferta",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Cliente",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_3",
+              "name": "Fecha",
+              "required": true,
+              "color": "#fffde0"
+            }
           ],
           "actions": [
-            {"id": "btn_save", "label": "Guardar", "shortcut": "Ctrl+S"},
-            {"id": "btn_cancel", "label": "Cancelar", "shortcut": "Esc"}
+            {
+              "id": "btn_save",
+              "label": "Guardar",
+              "shortcut": "Ctrl+S"
+            },
+            {
+              "id": "btn_cancel",
+              "label": "Cancelar",
+              "shortcut": "Esc"
+            }
           ]
         },
         {
@@ -101,10 +229,28 @@
           "type": "Documento",
           "module": "02_Ventas",
           "workflow": "Ventas > Pedidos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Número de Pedido", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Cliente", "required": true, "color": "#fffde0"}
+            {
+              "id": "field_1",
+              "name": "Número de Pedido",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Cliente",
+              "required": true,
+              "color": "#fffde0"
+            }
           ],
           "actions": []
         },
@@ -114,7 +260,15 @@
           "type": "Documento",
           "module": "02_Ventas",
           "workflow": "Ventas > Entregas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -124,11 +278,34 @@
           "type": "Documento",
           "module": "02_Ventas",
           "workflow": "Ventas > Facturas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Número de Factura", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Cliente", "required": true, "color": "#fffde0"},
-            {"id": "field_3", "name": "Fecha", "required": true, "color": "#fffde0"}
+            {
+              "id": "field_1",
+              "name": "Número de Factura",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Cliente",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_3",
+              "name": "Fecha",
+              "required": true,
+              "color": "#fffde0"
+            }
           ],
           "actions": []
         },
@@ -138,7 +315,15 @@
           "type": "Documento",
           "module": "02_Ventas",
           "workflow": "Ventas > Notas de Crédito",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -148,10 +333,28 @@
           "type": "Datos Maestros",
           "module": "02_Ventas",
           "workflow": "Socios > Clientes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Código de Cliente", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Nombre", "required": true, "color": "#fffde0"}
+            {
+              "id": "field_1",
+              "name": "Código de Cliente",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Nombre",
+              "required": true,
+              "color": "#fffde0"
+            }
           ],
           "actions": []
         },
@@ -161,7 +364,15 @@
           "type": "Datos Maestros",
           "module": "02_Ventas",
           "workflow": "Ventas > Gestión de Precios",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -171,7 +382,15 @@
           "type": "Parámetro",
           "module": "02_Ventas",
           "workflow": "Ventas > Descuentos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         }
@@ -188,7 +407,15 @@
           "type": "Documento",
           "module": "03_Compras",
           "workflow": "Compras > Solicitudes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -198,10 +425,28 @@
           "type": "Documento",
           "module": "03_Compras",
           "workflow": "Compras > Pedidos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Número de Pedido", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Proveedor", "required": true, "color": "#fffde0"}
+            {
+              "id": "field_1",
+              "name": "Número de Pedido",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Proveedor",
+              "required": true,
+              "color": "#fffde0"
+            }
           ],
           "actions": []
         },
@@ -211,7 +456,15 @@
           "type": "Documento",
           "module": "03_Compras",
           "workflow": "Compras > Recepciones",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -221,7 +474,15 @@
           "type": "Documento",
           "module": "03_Compras",
           "workflow": "Compras > Facturas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -231,7 +492,15 @@
           "type": "Documento",
           "module": "03_Compras",
           "workflow": "Compras > Notas de Débito",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -241,7 +510,25 @@
           "type": "Datos Maestros",
           "module": "03_Compras",
           "workflow": "Socios > Proveedores",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "PUR007",
+          "name": "Costos de Importación",
+          "type": "Documento",
+          "module": "03_Compras",
+          "workflow": "Compras > Costos de Importación",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -258,10 +545,28 @@
           "type": "Datos Maestros",
           "module": "04_Inventario",
           "workflow": "Inventario > Artículos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [
-            {"id": "field_1", "name": "Código de Artículo", "required": true, "color": "#fffde0"},
-            {"id": "field_2", "name": "Descripción", "required": true, "color": "#fffde0"}
+            {
+              "id": "field_1",
+              "name": "Código de Artículo",
+              "required": true,
+              "color": "#fffde0"
+            },
+            {
+              "id": "field_2",
+              "name": "Descripción",
+              "required": true,
+              "color": "#fffde0"
+            }
           ],
           "actions": []
         },
@@ -271,7 +576,15 @@
           "type": "Documento",
           "module": "04_Inventario",
           "workflow": "Inventario > Movimientos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -281,7 +594,15 @@
           "type": "Documento",
           "module": "04_Inventario",
           "workflow": "Inventario > Conteos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -291,7 +612,15 @@
           "type": "Datos Maestros",
           "module": "04_Inventario",
           "workflow": "Inventario > Gestión de Almacén",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -301,7 +630,15 @@
           "type": "Consulta",
           "module": "04_Inventario",
           "workflow": "Inventario > Consultas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -311,7 +648,25 @@
           "type": "Informe",
           "module": "04_Inventario",
           "workflow": "Inventario > Reportes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "INV007",
+          "name": "Lotes y Series",
+          "type": "Datos Maestros",
+          "module": "04_Inventario",
+          "workflow": "Inventario > Lotes y Series",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -328,7 +683,15 @@
           "type": "Datos Maestros",
           "module": "05_Produccion",
           "workflow": "Producción > BOM",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -338,7 +701,15 @@
           "type": "Datos Maestros",
           "module": "05_Produccion",
           "workflow": "Producción > Rutas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -348,7 +719,15 @@
           "type": "Documento",
           "module": "05_Produccion",
           "workflow": "Producción > Órdenes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -358,7 +737,15 @@
           "type": "Documento",
           "module": "05_Produccion",
           "workflow": "Producción > Entrada de Producción",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -368,7 +755,25 @@
           "type": "Documento",
           "module": "05_Produccion",
           "workflow": "Producción > Salida de Producción",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "MFG006",
+          "name": "Capacidad de Producción",
+          "type": "Herramienta",
+          "module": "05_Produccion",
+          "workflow": "Producción > Capacidad",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -385,7 +790,15 @@
           "type": "Herramienta",
           "module": "06_MRP",
           "workflow": "MRP > Asistente",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -395,7 +808,15 @@
           "type": "Consulta",
           "module": "06_MRP",
           "workflow": "MRP > Consultas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -405,7 +826,15 @@
           "type": "Documento",
           "module": "06_MRP",
           "workflow": "MRP > Sugerencias",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         }
@@ -422,7 +851,15 @@
           "type": "Documento",
           "module": "07_Bancos",
           "workflow": "Bancos > Conciliación",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -432,7 +869,15 @@
           "type": "Documento",
           "module": "07_Bancos",
           "workflow": "Bancos > Depósitos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -442,7 +887,15 @@
           "type": "Documento",
           "module": "07_Bancos",
           "workflow": "Bancos > Pagos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         }
@@ -459,7 +912,15 @@
           "type": "Documento",
           "module": "08_Servicios",
           "workflow": "Servicios > Contratos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -469,7 +930,15 @@
           "type": "Documento",
           "module": "08_Servicios",
           "workflow": "Servicios > Órdenes",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -479,7 +948,25 @@
           "type": "Datos Maestros",
           "module": "08_Servicios",
           "workflow": "Servicios > Proyectos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "SRV004",
+          "name": "Servicio Técnico",
+          "type": "Documento",
+          "module": "08_Servicios",
+          "workflow": "Servicios > Servicio Técnico",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -496,7 +983,15 @@
           "type": "Herramienta",
           "module": "09_Reportes",
           "workflow": "Herramientas > Crystal Reports",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -506,7 +1001,15 @@
           "type": "Informe",
           "module": "09_Reportes",
           "workflow": "Reportes > Ventas",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -516,7 +1019,15 @@
           "type": "Informe",
           "module": "09_Reportes",
           "workflow": "Reportes > Compras",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         }
@@ -533,7 +1044,15 @@
           "type": "Herramienta",
           "module": "10_Consultas",
           "workflow": "Herramientas > Query Manager",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -543,7 +1062,15 @@
           "type": "Consulta",
           "module": "10_Consultas",
           "workflow": "Herramientas > Consultas SQL",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -553,7 +1080,15 @@
           "type": "Conexión",
           "module": "10_Consultas",
           "workflow": "Herramientas > Base de Datos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         }
@@ -570,7 +1105,15 @@
           "type": "Configuración",
           "module": "11_Admin",
           "workflow": "Administración > Inicialización",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -580,7 +1123,15 @@
           "type": "Datos Maestros",
           "module": "11_Admin",
           "workflow": "Administración > Usuarios",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -590,7 +1141,15 @@
           "type": "Configuración",
           "module": "11_Admin",
           "workflow": "Administración > Workflows",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -600,7 +1159,15 @@
           "type": "Configuración",
           "module": "11_Admin",
           "workflow": "Administración > Campos",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -610,7 +1177,25 @@
           "type": "Herramienta",
           "module": "11_Admin",
           "workflow": "Administración > Mantenimiento",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "ADM006",
+          "name": "Procedimientos de Aprobación",
+          "type": "Configuración",
+          "module": "11_Admin",
+          "workflow": "Administración > Aprobaciones",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -627,7 +1212,15 @@
           "type": "Herramienta",
           "module": "12_Herramientas",
           "workflow": "Herramientas > Impresión",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -637,7 +1230,15 @@
           "type": "Herramienta",
           "module": "12_Herramientas",
           "workflow": "Herramientas > Importar",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
           "fields": [],
           "actions": []
         },
@@ -647,7 +1248,42 @@
           "type": "Herramienta",
           "module": "12_Herramientas",
           "workflow": "Herramientas > Exportar",
-          "hotspots": [{"x": 0, "y": 0, "width": 800, "height": 600, "label": "Área Principal"}],
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "UTL004",
+          "name": "Data Transfer Workbench (DTW)",
+          "type": "Herramienta",
+          "module": "12_Herramientas",
+          "workflow": "Herramientas > DTW",
+          "hotspots": [],
+          "fields": [],
+          "actions": []
+        }
+      ]
+    },
+    "13_CRM": {
+      "key": "13_CRM",
+      "name": "CRM & Oportunidades",
+      "icon": "Briefcase",
+      "screens": [
+        {
+          "id": "CRM001",
+          "name": "Oportunidades Avanzadas",
+          "type": "Documento",
+          "module": "13_CRM",
+          "workflow": "CRM > Oportunidades",
+          "hotspots": [],
           "fields": [],
           "actions": []
         }
@@ -656,13 +1292,74 @@
   },
   "screen_index": {},
   "screen_types": {
-    "Documento": ["SAL001", "SAL002", "SAL003", "SAL004", "SAL005", "PUR001", "PUR002", "PUR003", "PUR004", "PUR005", "INV002", "INV003", "MFG003", "MFG004", "MFG005", "MRP003", "BNK001", "BNK002", "BNK003", "SRV001", "SRV002", "FIN001"],
-    "Datos Maestros": ["SAL006", "SAL007", "INV001", "PUR006", "INV004", "MFG001", "MFG002", "ADM002", "SRV003"],
-    "Consulta": ["FIN002", "FIN005", "INV005", "MRP002", "QRY002"],
-    "Informe": ["FIN003", "FIN004", "INV006", "RPT002", "RPT003"],
-    "Parámetro": ["SAL008"],
-    "Configuración": ["ADM001", "ADM003", "ADM004"],
-    "Herramienta": ["MRP001", "RPT001", "QRY001", "ADM005", "UTL001", "UTL002", "UTL003"],
-    "Conexión": ["QRY003"]
+    "Documento": [
+      "SAL001",
+      "SAL002",
+      "SAL003",
+      "SAL004",
+      "SAL005",
+      "PUR001",
+      "PUR002",
+      "PUR003",
+      "PUR004",
+      "PUR005",
+      "INV002",
+      "INV003",
+      "MFG003",
+      "MFG004",
+      "MFG005",
+      "MRP003",
+      "BNK001",
+      "BNK002",
+      "BNK003",
+      "SRV001",
+      "SRV002",
+      "FIN001"
+    ],
+    "Datos Maestros": [
+      "SAL006",
+      "SAL007",
+      "INV001",
+      "PUR006",
+      "INV004",
+      "MFG001",
+      "MFG002",
+      "ADM002",
+      "SRV003"
+    ],
+    "Consulta": [
+      "FIN002",
+      "FIN005",
+      "INV005",
+      "MRP002",
+      "QRY002"
+    ],
+    "Informe": [
+      "FIN003",
+      "FIN004",
+      "INV006",
+      "RPT002",
+      "RPT003"
+    ],
+    "Parámetro": [
+      "SAL008"
+    ],
+    "Configuración": [
+      "ADM001",
+      "ADM003",
+      "ADM004"
+    ],
+    "Herramienta": [
+      "MRP001",
+      "RPT001",
+      "QRY001",
+      "ADM005",
+      "UTL001",
+      "UTL002",
+      "UTL003"
+    ],
+    "Conexión": [
+      "QRY003"
+    ]
   }
 }
