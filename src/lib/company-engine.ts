@@ -1,6 +1,6 @@
 import { buildSRIXml } from './sri-xml';
 import type { CompanyCommand, CommandData } from './company-commands';
-import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument } from './firestore-types';
+import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine } from './firestore-types';
 import { financialSummary, moveStock, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
@@ -33,7 +33,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     if (!profile.xpHistory.some(e => e.key === key)) { profile.xpHistory.push({ key, label, points, reference, date: now }); profile.xp += points; }
   };
   const ledgerLine = (accountCode: string, debit = 0, credit = 0): JournalLine => ({ accountCode, debit: round(debit), credit: round(credit), description: '', costCenter: '' });
+  /** Un período cerrado no admite asientos ni movimientos: lo controla el motor, no la pantalla. */
+  const periodoAbierto = (date: string) => assert(!(profile.closedPeriods ?? []).includes(date.slice(0, 7)), `El período ${date.slice(0, 7)} está cerrado. Reábrelo en Cierres Fiscales o usa una fecha de un período abierto.`);
   const post = (date: string, memo: string, source: string, reference: string, input: JournalLine[]): string => {
+    periodoAbierto(date);
     const lines = input.map(l => ({ ...l, debit: round(l.debit), credit: round(l.credit) })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
     assert(lines.length >= 2 && debit > 0 && debit === credit, 'El asiento debe cuadrar al centavo y tener importe positivo.');
     for (const line of lines) { assert(state.chartOfAccounts.some(a => a.code === line.accountCode && a.active && a.postable), `Cuenta no imputable: ${line.accountCode}.`); assert(line.debit >= 0 && line.credit >= 0 && !(line.debit && line.credit), 'Una línea debe tener debe o haber, no ambos.'); }
@@ -51,6 +54,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     return row;
   };
   const move = (itemCode: string, warehouseCode: string, qty: number, cost: number, date: string, reference: string): number => {
+    periodoAbierto(date);
     const item = state.items.find(i => i.itemCode === itemCode); if (!item) throw new Error('Artículo inexistente.');
     const row = stock(itemCode, warehouseCode);
     const changed = moveStock(row, qty, item.costingMethod === 'standard' ? item.standardCost : cost, item.costingMethod, date);
@@ -58,7 +62,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const id = next('MOV', date); state.stockMovements.push({ ...meta(id), itemCode, warehouseCode, date, quantity: qty, unitCost: changed.cost / Math.abs(qty), value: round(Math.sign(qty) * changed.cost), balance: row.quantity, reference });
     return changed.cost;
   };
-  function saveDocument(kind: 'sales' | 'purchase', docType: DocType, data: CommandData<'sales'>['document']): string {
+  function saveDocument(kind: 'sales' | 'purchase', docType: DocType, data: CommandData<'sales'>['document'], aprobado = false): string {
     const sales = kind === 'sales'; const partners = sales ? state.customers : state.vendors;
     const partner = partners.find(p => p.cardCode === data.cardCode && p.active);
     if (!partner) throw new Error('Selecciona un socio activo.');
@@ -73,6 +77,14 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     if (docType === 'credit_note') assert(base, 'La nota de crédito requiere una factura base.');
     for (const line of data.lines) { const item = state.items.find(i => i.itemCode === line.itemCode && i.active); assert(item, 'Artículo inexistente o inactivo.'); if (sales && item) assert(line.discount <= item.maxDiscount, `Descuento excedido: ${line.itemCode}.`); }
+    // Autorización: sobre el monto de la regla, el documento queda retenido como borrador pendiente.
+    const regla = (state.profile?.approvalRules ?? []).find(r => r.active && r.docType === docType);
+    const preTotal = totals(data.lines).total;
+    if (!aprobado && regla && preTotal > regla.threshold) {
+      const approvalId = next('APR', data.date);
+      state.approvals.push({ ...meta(approvalId), approvalNumber: approvalId, kind, docType, cardCode: partner.cardCode, cardName: partner.name, total: preTotal, threshold: regla.threshold, document: structuredClone(data), status: 'pending', decisionComment: '', decidedAt: '', resultDocumentId: '' });
+      return approvalId;
+    }
     const id = next(prefixes[docType], data.date); const amounts = totals(data.lines); assert(amounts.total > 0, 'El total debe ser positivo.');
     let journalEntryId = ''; let inventoryCost = 0;
     const inventoryAccount = (itemCode: string) => state.boms.some(b => b.parentItemCode === itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
@@ -240,6 +252,126 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       if (existing) { existing.months = d.months; existing.updatedAt = now; }
       else state.budgets.push({ ...meta(result), year: d.year, accountCode: d.accountCode, accountName: account.name, months: d.months });
       award('budget', 50, result, 'Primer presupuesto');
+      break;
+    }
+    case 'closePeriod': {
+      const d = command.data; const cerrados = new Set(profile.closedPeriods ?? []);
+      if (d.closed) cerrados.add(d.period); else cerrados.delete(d.period);
+      profile.closedPeriods = [...cerrados].sort(); result = d.period;
+      if (d.closed) award('period-close', 150, d.period, 'Primer cierre de período');
+      break;
+    }
+    case 'closeYear': {
+      const { year } = command.data;
+      assert(!state.journalEntries.some(e => e.source === 'closing' && e.reference === year), `El ejercicio ${year} ya fue cerrado.`);
+      // Asiento de cierre: se saldan ingresos, costos y gastos del año contra Resultados acumulados (3.02).
+      const netos = new Map<string, number>();
+      for (const e of state.journalEntries) if (e.date.startsWith(year)) for (const l of e.lines) {
+        const cat = state.chartOfAccounts.find(a => a.code === l.accountCode)?.category;
+        if (cat === 'income' || cat === 'cost' || cat === 'expense') netos.set(l.accountCode, round((netos.get(l.accountCode) ?? 0) + l.debit - l.credit));
+      }
+      const lineas: JournalLine[] = [];
+      let resultado = 0;
+      netos.forEach((neto, cuenta) => { if (!neto) return; lineas.push(neto > 0 ? ledgerLine(cuenta, 0, neto) : ledgerLine(cuenta, -neto)); resultado = round(resultado - neto); });
+      if (resultado > 0) lineas.push(ledgerLine('3.02', 0, resultado)); else if (resultado < 0) lineas.push(ledgerLine('3.02', -resultado));
+      // El asiento de cierre va al 31/12 aunque diciembre ya estuviera cerrado (único caso permitido).
+      const cerradosAntes = profile.closedPeriods ?? [];
+      profile.closedPeriods = cerradosAntes.filter(p => p !== `${year}-12`);
+      result = lineas.length ? post(`${year}-12-31`, `Cierre del ejercicio ${year}`, 'closing', year, lineas) : year;
+      profile.closedPeriods = [...new Set([...(profile.closedPeriods ?? []), ...Array.from({ length: 12 }, (_, i) => `${year}-${String(i + 1).padStart(2, '0')}`)])].sort();
+      award('year-close', 500, year, 'Cierre del ejercicio fiscal');
+      break;
+    }
+    case 'approvalRule': {
+      const d = command.data; const reglas = (profile.approvalRules ?? []).filter(r => r.docType !== d.docType);
+      profile.approvalRules = [...reglas, { docType: d.docType, threshold: d.threshold, active: d.active }]; result = d.docType;
+      if (d.active) award('approval-rule', 100, d.docType, 'Primera regla de autorización');
+      break;
+    }
+    case 'approve': {
+      const d = command.data; const solicitud = state.approvals.find(a => a.id === d.id);
+      if (!solicitud) throw new Error('Solicitud de autorización inexistente.');
+      assert(solicitud.status === 'pending', 'Esta solicitud ya fue decidida.');
+      // Al aprobar se vuelve a validar todo (stock, documento base…) y recién ahí se crea el documento.
+      if (d.approved) solicitud.resultDocumentId = saveDocument(solicitud.kind, solicitud.docType, solicitud.document, true);
+      solicitud.status = d.approved ? 'approved' : 'rejected'; solicitud.decisionComment = d.comment; solicitud.decidedAt = now; solicitud.updatedAt = now;
+      result = solicitud.resultDocumentId || solicitud.id;
+      award('approval-decision', 150, solicitud.id, 'Primera decisión de autorización');
+      break;
+    }
+    case 'itemPrices': {
+      const d = command.data; const item = state.items.find(i => i.itemCode === d.itemCode); if (!item) throw new Error('Artículo inexistente.');
+      Object.assign(item, { price: d.price, price2: d.price2, price3: d.price3, updatedAt: now }); result = item.itemCode; break;
+    }
+    case 'customerPriceList': {
+      const d = command.data; assert(state.customers.some(c => c.cardCode === d.cardCode), 'Cliente inexistente.');
+      profile.customerPriceLists = { ...(profile.customerPriceLists ?? {}), [d.cardCode]: d.list }; result = d.cardCode; break;
+    }
+    case 'volumeDiscount': {
+      const d = command.data; let lista = profile.volumeDiscounts ?? [];
+      if (d.remove) { lista = lista.filter(v => v.id !== d.id); result = d.id; }
+      else {
+        assert(d.itemCode === '*' || state.items.some(i => i.itemCode === d.itemCode), 'Artículo inexistente.');
+        const maximo = d.itemCode === '*' ? Math.min(...state.items.map(i => i.maxDiscount), 100) : state.items.find(i => i.itemCode === d.itemCode)?.maxDiscount ?? 0;
+        assert(d.discount <= maximo, `El descuento supera el máximo permitido (${maximo} %).`);
+        result = d.id || next('DV');
+        lista = [...lista.filter(v => v.id !== result), { id: result, itemCode: d.itemCode, minQuantity: d.minQuantity, discount: d.discount }];
+      }
+      profile.volumeDiscounts = lista; break;
+    }
+    case 'inventoryCount': {
+      const d = command.data; assert(profile.warehouses.some(w => w.code === d.warehouseCode), 'Almacén inexistente.');
+      assert(new Set(d.lines.map(l => l.itemCode)).size === d.lines.length, 'Artículo repetido en el conteo.');
+      result = next('CNT', d.date);
+      const lines: InventoryCountLine[] = []; const porCuenta = new Map<string, number>();
+      for (const l of d.lines) {
+        const item = state.items.find(i => i.itemCode === l.itemCode && i.type === 'inventory'); if (!item) throw new Error(`Artículo inventariable inexistente: ${l.itemCode}.`);
+        const row = stock(l.itemCode, d.warehouseCode); const sistema = row.quantity;
+        const diferencia = quantityRound(l.countedQuantity - sistema);
+        let valor = 0;
+        if (diferencia !== 0) {
+          const costo = move(l.itemCode, d.warehouseCode, diferencia, row.averageCost || item.purchasePrice, d.date, result);
+          valor = round(Math.sign(diferencia) * costo);
+          const cuenta = state.boms.some(b => b.parentItemCode === l.itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
+          porCuenta.set(cuenta, round((porCuenta.get(cuenta) ?? 0) + valor));
+        }
+        lines.push({ itemCode: l.itemCode, itemName: item.name, systemQuantity: sistema, countedQuantity: l.countedQuantity, difference: diferencia, unitCost: diferencia ? round(Math.abs(valor / diferencia)) : row.averageCost, value: valor });
+      }
+      const total = round([...porCuenta.values()].reduce((s, v) => s + v, 0));
+      const asiento: JournalLine[] = [];
+      porCuenta.forEach((v, cuenta) => asiento.push(v > 0 ? ledgerLine(cuenta, v) : ledgerLine(cuenta, 0, -v)));
+      if (total > 0) asiento.push(ledgerLine('6.05', 0, total)); else if (total < 0) asiento.push(ledgerLine('6.05', -total));
+      const journalEntryId = asiento.some(l => l.debit || l.credit) && total !== 0 ? post(d.date, 'Ajuste por conteo físico', 'count', result, asiento) : '';
+      state.inventoryCounts.push({ ...meta(result), countNumber: result, date: d.date, warehouseCode: d.warehouseCode, blind: d.blind, lines, totalDifferenceValue: total, journalEntryId });
+      award('inventory-count', 200, result, 'Primer conteo físico');
+      break;
+    }
+    case 'fixedAsset': {
+      const d = command.data; assert(d.residualValue < d.cost, 'El valor residual debe ser menor al costo.');
+      result = next('AF', d.acquisitionDate);
+      const journalEntryId = post(d.acquisitionDate, `Compra de activo fijo: ${d.name}`, 'asset', result, [ledgerLine('1.2.01', d.cost), ledgerLine(d.paymentAccount, 0, d.cost)]);
+      state.fixedAssets.push({ ...meta(result), assetCode: result, name: d.name, category: d.category, acquisitionDate: d.acquisitionDate, cost: d.cost, residualValue: d.residualValue, usefulLifeMonths: d.usefulLifeMonths, accumulatedDepreciation: 0, depreciatedPeriods: [], status: 'active', journalEntryId });
+      award('fixed-asset', 150, result, 'Primer activo fijo');
+      break;
+    }
+    case 'depreciate': {
+      const { period } = command.data;
+      if (!state.chartOfAccounts.some(a => a.code === '6.06')) state.chartOfAccounts.push({ ...meta('6.06'), code: '6.06', name: 'Depreciación de activos fijos', category: 'expense', postable: true, parentCode: '6', nature: 'D', active: true });
+      let total = 0;
+      for (const a of state.fixedAssets) {
+        if (a.status !== 'active' || a.acquisitionDate.slice(0, 7) > period || a.depreciatedPeriods.includes(period)) continue;
+        const depreciable = round(a.cost - a.residualValue);
+        const cuota = round(Math.min(depreciable / a.usefulLifeMonths, depreciable - a.accumulatedDepreciation));
+        if (cuota <= 0) continue;
+        a.accumulatedDepreciation = round(a.accumulatedDepreciation + cuota); a.depreciatedPeriods.push(period); a.updatedAt = now;
+        if (a.accumulatedDepreciation >= depreciable) a.status = 'fully_depreciated';
+        total = round(total + cuota);
+      }
+      assert(total > 0, 'No hay activos pendientes de depreciar en ese período.');
+      const [y, m] = period.split('-').map(Number);
+      const finDeMes = new Date(Date.UTC(y, m, 0)).toISOString().slice(0, 10);
+      result = post(finDeMes, `Depreciación ${period}`, 'depreciation', period, [ledgerLine('6.06', total), ledgerLine('1.2.02', 0, total)]);
+      award('depreciation', 150, period, 'Primera depreciación');
       break;
     }
     case 'missionComplete': { const mission = state.missions.find(m => m.id === command.data.id); if (!mission) throw new Error('Misión inexistente.'); mission.status = 'completed'; mission.updatedAt = now; result = mission.id; break; }

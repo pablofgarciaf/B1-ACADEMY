@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { code, date, text, money, lineSchema, salesTypes, purchaseTypes, customerSchema, vendorSchema, itemSchema, employeeSchema, journalLineSchema, sriInputSchema, bomInputSchema, payrollInputLine, costMethods } from './firestore-types';
 
 const omitBase = { id: true, createdAt: true, updatedAt: true, createdBy: true } as const;
+const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con formato AAAA-MM.');
 const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('access'), data: z.object({}) }),
@@ -27,6 +28,21 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('mrp'), data: z.object({ vendorCode: code, date }) }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
   z.object({ action: z.literal('budget'), data: z.object({ year: z.string().regex(/^20\d{2}$/), accountCode: code, months: z.array(money).length(12) }) }),
+  // Cierre contable: un período cerrado no admite asientos; el cierre anual traslada el resultado.
+  z.object({ action: z.literal('closePeriod'), data: z.object({ period: period, closed: z.boolean() }) }),
+  z.object({ action: z.literal('closeYear'), data: z.object({ year: z.string().regex(/^20\d{2}$/) }) }),
+  // Autorizaciones (borradores retenidos hasta aprobación).
+  z.object({ action: z.literal('approvalRule'), data: z.object({ docType: z.enum([...salesTypes, ...purchaseTypes]), threshold: money, active: z.boolean() }) }),
+  z.object({ action: z.literal('approve'), data: z.object({ id: code, approved: z.boolean(), comment: text.min(10, 'Justifica la decisión en al menos 10 caracteres.') }) }),
+  // Precios: listas por artículo, lista por cliente y descuentos por volumen.
+  z.object({ action: z.literal('itemPrices'), data: z.object({ itemCode: code, price: money, price2: money, price3: money }) }),
+  z.object({ action: z.literal('customerPriceList'), data: z.object({ cardCode: code, list: z.union([z.literal(1), z.literal(2), z.literal(3)]) }) }),
+  z.object({ action: z.literal('volumeDiscount'), data: z.object({ id: z.string().max(80).default(''), itemCode: z.string().trim().min(1).max(80), minQuantity: money.positive(), discount: money.max(100), remove: z.boolean().default(false) }) }),
+  // Conteo físico de inventario con ajuste contable.
+  z.object({ action: z.literal('inventoryCount'), data: z.object({ warehouseCode: code, date, blind: z.boolean(), lines: z.array(z.object({ itemCode: code, countedQuantity: money })).min(1).max(200) }) }),
+  // Activos fijos y depreciación mensual en línea recta.
+  z.object({ action: z.literal('fixedAsset'), data: z.object({ name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']) }) }),
+  z.object({ action: z.literal('depreciate'), data: z.object({ period }) }),
 ]);
 export type CompanyCommand = z.infer<typeof commandSchema>;
 export type CommandData<A extends CompanyCommand['action']> = Extract<CompanyCommand, { action: A }>['data'];

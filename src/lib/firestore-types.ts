@@ -70,12 +70,35 @@ export const bomInputSchema = z.object({ parentItemCode: code, type: z.enum(['pr
 export interface BillOfMaterials extends Entity, z.infer<typeof bomInputSchema> { bomCode: string; totalCost: number }
 export interface ProductionOrder extends Entity { orderNumber: string; date: string; dueDate: string; parentItemCode: string; quantity: number; warehouseCode: string; bomCode: string; components: BillOfMaterials['components']; status: 'planned' | 'released' | 'in_progress' | 'closed'; journalEntryId: string; actualCost: number }
 export interface XPEvent { key: string; label: string; points: number; date: string; reference: string }
-export interface CompanyProfile extends Entity { uid: string; email: string; companyName: string; ruc: string; currency: 'USD'; country: 'EC'; fiscalScenario: 'training-2024'; sbu: number; incomeTaxRate: number; warehouses: { code: string; name: string }[]; xp: number; level: number; xpHistory: XPEvent[]; completedModules: string[]; lastAccess: string; sequences: Record<string, number>; documentCount: number }
+export interface CompanyProfile extends Entity { uid: string; email: string; companyName: string; ruc: string; currency: 'USD'; country: 'EC'; fiscalScenario: 'training-2024'; sbu: number; incomeTaxRate: number; warehouses: { code: string; name: string }[]; xp: number; level: number; xpHistory: XPEvent[]; completedModules: string[]; lastAccess: string; sequences: Record<string, number>; documentCount: number;
+  /** Períodos contables cerrados (AAAA-MM): no admiten asientos. */
+  closedPeriods?: string[];
+  /** Reglas de autorización: documentos de ese tipo sobre el monto requieren aprobación. */
+  approvalRules?: ApprovalRule[];
+  /** Lista de precios asignada a cada cliente (1 general, 2 mayorista, 3 distribuidor). */
+  customerPriceLists?: Record<string, 1 | 2 | 3>;
+  /** Descuentos automáticos por cantidad. itemCode '*' aplica a todos los artículos. */
+  volumeDiscounts?: VolumeDiscount[];
+}
+export interface ApprovalRule { docType: DocType; threshold: number; active: boolean }
+export interface VolumeDiscount { id: string; itemCode: string; minQuantity: number; discount: number }
 export interface Mission extends Entity { title: string; description: string; module: string; status: 'assigned' | 'completed'; teacherUid: string }
 /** Presupuesto anual de una cuenta de resultados (ingresos, costos o gastos), en 12 montos mensuales. */
 export interface Budget extends Entity { year: string; accountCode: string; accountName: string; months: number[] }
-export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget }
+/** Documento retenido hasta que alguien con criterio lo autorice (como los borradores de SAP). */
+export interface Approval extends Entity {
+  approvalNumber: string; kind: 'sales' | 'purchase'; docType: DocType; cardCode: string; cardName: string; total: number; threshold: number;
+  document: { date: string; dueDate: string; cardCode: string; reference: string; comments: string; baseDocumentId: string; lines: DocumentLine[] };
+  status: 'pending' | 'approved' | 'rejected'; decisionComment: string; decidedAt: string; resultDocumentId: string;
+}
+export interface InventoryCountLine { itemCode: string; itemName: string; systemQuantity: number; countedQuantity: number; difference: number; unitCost: number; value: number }
+export interface InventoryCount extends Entity { countNumber: string; date: string; warehouseCode: string; blind: boolean; lines: InventoryCountLine[]; totalDifferenceValue: number; journalEntryId: string }
+export interface FixedAsset extends Entity {
+  assetCode: string; name: string; category: string; acquisitionDate: string; cost: number; residualValue: number; usefulLifeMonths: number;
+  accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated'; journalEntryId: string;
+}
+export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset }
 export type CollectionName = keyof CompanyCollections;
-export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets'];
+export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets'];
 export type CompanyState = { profile: CompanyProfile | null } & { [K in CollectionName]: CompanyCollections[K][] };
-export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [] });
+export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [] });

@@ -5,6 +5,7 @@ import type { DocType, DocumentLine, PurchaseDocType, SalesDocType, DocumentInpu
 import { purchaseTypes } from '@/lib/firestore-types';
 import { documentLabels } from '@/lib/company-engine';
 import { today, totals, usd } from '@/lib/company-calculations';
+import { NOMBRES_LISTA, precioSugerido } from '@/lib/company-pricing';
 import { Screen, Field, Navigation, inputClass, buttonClass, SaveButton, Table } from './SAPControls';
 import { PartnerLookup } from './CustomerLookupModal';
 import ItemLookupModal from './ItemLookupModal';
@@ -22,6 +23,13 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const sources = (purchase ? c.data.purchaseOrders : c.data.salesOrders).filter(d => d.docType === predecessor[docType]);
   const reset = () => { setData(blank()); setIndex(-1); };
   const lineChange = (i: number, changes: Partial<DocumentLine>) => setData(d => ({ ...d, lines: d.lines.map((line, j) => j === i ? { ...line, ...changes } : line) }));
+  // Ventas: precio de la lista del cliente y descuento por volumen, como los propone SAP (se pueden editar).
+  const sugerir = (itemCode: string, quantity: number): Partial<DocumentLine> => {
+    if (purchase || data.baseDocumentId) return {};
+    const s = precioSugerido(c.data, data.cardCode, itemCode, quantity);
+    return s ? { price: s.precio, discount: s.descuento } : {};
+  };
+  const listaCliente = !purchase && partner ? NOMBRES_LISTA[c.data.profile?.customerPriceLists?.[partner.cardCode] ?? 1] : '';
   return <Screen title={documentLabels[docType]}>
     <Navigation count={docs.length} index={index} onNew={reset} onSelect={i => { setIndex(i); setData(docs[i]); }} />
     <p className="font-bold">{index >= 0 ? docs[index]?.docNumber : 'Numeración automática'} · USD</p>
@@ -35,7 +43,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
       </div>
       <Table headers={['Artículo *', 'Descripción', 'Cantidad *', 'UM', 'Precio *', 'Desc. %', 'IVA %', 'Almacén *', 'Total', 'Acción']} rows={data.lines.map((line, i) => [
         <div key="code" className="flex"><input aria-label={'Artículo línea ' + (i + 1)} required className={inputClass} value={line.itemCode} readOnly /><button type="button" aria-label={'Buscar artículo línea ' + (i + 1)} className={buttonClass} onClick={() => setItemLookup(i)}>[…]</button></div>, line.description,
-        <input key="qty" aria-label={'Cantidad línea ' + (i + 1)} type="number" min="0.000001" step="any" required className={inputClass} value={line.quantity} onChange={e => lineChange(i, { quantity: Number(e.target.value) })} />, line.unit,
+        <input key="qty" aria-label={'Cantidad línea ' + (i + 1)} type="number" min="0.000001" step="any" required className={inputClass} value={line.quantity} onChange={e => { const quantity = Number(e.target.value); lineChange(i, { quantity, ...(line.itemCode ? { discount: sugerir(line.itemCode, quantity).discount ?? line.discount } : {}) }); }} />, line.unit,
         <input key="price" aria-label={'Precio línea ' + (i + 1)} type="number" min="0" step="0.01" required className={inputClass} value={line.price} onChange={e => lineChange(i, { price: Number(e.target.value) })} />,
         <input key="discount" aria-label={'Descuento línea ' + (i + 1)} type="number" min="0" max="100" className={inputClass} value={line.discount} onChange={e => lineChange(i, { discount: Number(e.target.value) })} />,
         <select key="tax" aria-label={'IVA línea ' + (i + 1)} className={inputClass} value={line.taxRate} onChange={e => lineChange(i, { taxRate: Number(e.target.value) as 0 | 5 | 15 })}>{[0, 5, 15].map(rate => <option key={rate} value={rate}>{rate}%</option>)}</select>,
@@ -43,11 +51,12 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
         <button key="remove" type="button" aria-label={'Eliminar línea ' + (i + 1)} disabled={data.lines.length === 1} className={buttonClass} onClick={() => setData(d => ({ ...d, lines: d.lines.filter((_, j) => j !== i) }))}>✕</button>
       ])} />
       <button type="button" className={buttonClass} onClick={() => setData(d => ({ ...d, lines: [...d.lines, emptyLine()] }))}>+ Agregar línea</button>
+      {listaCliente && <p className="text-[#555]">Lista de precios del cliente: <strong>{listaCliente}</strong>. Los descuentos por volumen se aplican al cambiar la cantidad.</p>}
       <Field label="Comentarios"><textarea className={inputClass} value={data.comments} onChange={e => setData(d => ({ ...d, comments: e.target.value }))} /></Field></fieldset>
       <div className="flex justify-end gap-5 font-bold"><span>Subtotal {usd(amounts.subtotal)}</span><span>IVA {usd(amounts.tax)}</span><span>Total {usd(amounts.total)}</span></div>
       <SaveButton disabled={locked || !partner} /><button type="button" onClick={reset} disabled={c.saving} className={buttonClass + ' ml-2'}>Cancelar</button>
     </form>
     {partnerLookup && <PartnerLookup vendor={purchase} onClose={() => setPartnerLookup(false)} onSelect={p => setData(d => ({ ...d, cardCode: p.cardCode }))} />}
-    {itemLookup !== null && <ItemLookupModal onClose={() => setItemLookup(null)} onSelect={item => lineChange(itemLookup, { itemCode: item.itemCode, description: item.name, price: purchase ? item.purchasePrice : item.price, unit: purchase ? item.purchaseUnit : item.salesUnit })} />}
+    {itemLookup !== null && <ItemLookupModal onClose={() => setItemLookup(null)} onSelect={item => lineChange(itemLookup, { itemCode: item.itemCode, description: item.name, price: purchase ? item.purchasePrice : item.price, unit: purchase ? item.purchaseUnit : item.salesUnit, ...sugerir(item.itemCode, data.lines[itemLookup]?.quantity ?? 1) })} />}
   </Screen>;
 }
