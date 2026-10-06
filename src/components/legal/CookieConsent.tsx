@@ -55,7 +55,6 @@ function cargarAnalitica(gtmId: string) {
   if (document.getElementById('gtm-script')) return;
   window.dataLayer = window.dataLayer || [];
   // gtag oficial: Consent Mode exige que se empuje el objeto `arguments`, no un arreglo.
-  // eslint-disable-next-line prefer-rest-params
   function gtag(..._args: unknown[]) { window.dataLayer!.push(arguments); }
   // Consent Mode v2: concedido solo lo que el usuario aceptó (analítica); publicidad siempre denegada.
   gtag('consent', 'default', {

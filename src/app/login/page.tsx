@@ -19,7 +19,6 @@ import {
   User,
 } from "lucide-react";
 
-import Link from "next/link";
 import { validarCedula } from "@/lib/cedula";
 
 type Tab = "login" | "register";
@@ -46,6 +45,7 @@ export default function LoginPage() {
   const [regCedula, setRegCedula] = useState("");
   const [regPhone, setRegPhone] = useState("");
   const [regConsent, setRegConsent] = useState(false);
+  const [politica, setPolitica] = useState<string | null>(null);
   const [regLoading, setRegLoading] = useState(false);
   const [regError, setRegError] = useState("");
   const [regSuccess, setRegSuccess] = useState("");
@@ -417,12 +417,24 @@ export default function LoginPage() {
                     className="mt-0.5 w-4 h-4 shrink-0 accent-emerald-500"
                   />
                   <span>
-                    Acepto los <Link href="/terminos" target="_blank" className="text-sap-blue underline">Términos y condiciones</Link> y autorizo el
-                    tratamiento de mis datos personales, incluida mi cédula, según la{" "}
-                    <Link href="/privacidad" target="_blank" className="text-sap-blue underline">Política de privacidad</Link>, con transferencia a los
-                    proveedores tecnológicos allí indicados.
+                    Acepto los{" "}
+                    <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/terminos"); }} className="text-sap-blue underline">Términos y condiciones</button>{" "}
+                    y autorizo el tratamiento de mis datos personales, incluida mi cédula, según la{" "}
+                    <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/privacidad"); }} className="text-sap-blue underline">Política de privacidad</button>.
                   </span>
                 </label>
+
+                {politica && (
+                  <div role="dialog" aria-modal="true" aria-label="Política" className="fixed inset-0 z-[70] bg-black/60 flex items-center justify-center p-3">
+                    <div className="w-full max-w-3xl h-[85vh] rounded-2xl overflow-hidden bg-white dark:bg-[#0e1620] flex flex-col shadow-2xl">
+                      <iframe src={politica} title="Política" className="flex-1 w-full border-0" />
+                      <div className="p-3 flex gap-2 justify-end border-t border-slate-200 dark:border-white/10">
+                        <button type="button" onClick={() => setPolitica(null)} className="px-4 py-2 rounded-xl border border-slate-300 dark:border-white/20 text-xs font-bold active:scale-95">Cerrar</button>
+                        <button type="button" onClick={() => { setRegConsent(true); setPolitica(null); }} className="px-4 py-2 rounded-xl bg-emerald-500 text-white text-xs font-bold active:scale-95">He leído y acepto</button>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 <button
                   type="submit"
