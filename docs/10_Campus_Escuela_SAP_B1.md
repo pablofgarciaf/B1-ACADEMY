@@ -5,7 +5,7 @@ El Campus Universitario (`/mi-aula` y `/mi-aula/[careerId]`) es la plataforma de
 2. **Visor de Diapositivas Reales** en alta definición (`.webp`) extraídas directamente de los manuales oficiales.
 3. **Teleprompter y Cátedra de Master B1** con locución por síntesis de voz sincronizada.
 4. **Laboratorio de Práctica en el Simulador SAP B1 10.0 (HANA)**.
-5. **Evaluación Oral Interactiva con Master B1 (Defensa Técnica)**: Conversación en vivo donde la IA evalúa respuestas técnicas sobre casos reales de consultoría antes de otorgar cualquier acreditación.
+5. **Evaluación Interactiva con Master B1 (Defensa Técnica)**: Conversación en vivo donde la IA evalúa respuestas técnicas sobre casos reales de consultoría antes de otorgar cualquier acreditación.
 
 ---
 
@@ -24,9 +24,9 @@ graph TD
     C4 --> M4[37 Lecciones Reales con Diapositivas WebP]
 
     M1 & M2 & M3 & M4 --> VIEW[🖥️ Visor de Diapositivas Reales + Teleprompter + Simulador]
-    VIEW --> ORAL[🎙️ Evaluación Oral Interactiva con Master B1]
+    VIEW -->[🎙️ Evaluación Interactiva con Master B1]
     
-    ORAL -->|Aprobado ≥ 80% + 100% Lecciones| CERT[🏆 Desbloqueo de Certificado Oficial de Carrera]
+    -->|Aprobado ≥ 80% + 100% Lecciones| CERT[🏆 Desbloqueo de Certificado Oficial de Carrera]
     CERT --> DIP[🎓 Diploma Oficial de Grado con Hash SHA-256 y QR]
 ```
 
@@ -37,11 +37,11 @@ graph TD
 > **Regla de Rigor Universitario:** Ningún certificado se regala ni se emite con simples preguntas de selección múltiple.
 > Para desbloquear el Certificado Oficial de Carrera o el Diploma de Grado:
 > 1. El estudiante debe **completar el 100% de las lecciones** de la carrera en el visor de diapositivas.
-> 2. Debe defender sus conocimientos en la **Evaluación Oral con Master B1**, respondiendo preguntas de análisis de casos de consultoría empresarial en tiempo real con una calificación mínima del **80%** (a diferencia del **90%** requerido para aprobar cada manual / lección individual).
+> 2. Debe defender sus conocimientos en la **Evaluación con Master B1**, respondiendo preguntas de análisis de casos de consultoría empresarial en tiempo real con una calificación mínima del **80%** (a diferencia del **90%** requerido para aprobar cada manual / lección individual).
 
 ---
 
-## 🎙️ Evaluación Oral con Master B1 (`/api/oral-exam`)
+## 🎙️ Evaluación con Master B1 (`/api/oral-exam`)
 
 - **Rol de la IA:** Examinador Titular de la Escuela SAP Business One.
 - **Dinámica:** Diálogo técnico abierto donde Master B1 plantea situaciones de contingencia y audita la comprensión de la lógica contable, trazabilidad y parametrizaciones del sistema.
@@ -52,7 +52,7 @@ graph TD
 
 ## 🔗 Enlaces Relacionados (Obsidian Vault)
 
-- [[11_Master_B1_Tutor_IA]] - Especificación de la IA residente Master B1 y motor de evaluación oral.
+- [[11_Master_B1_Tutor_IA]] - Especificación de la IA residente Master B1 y motor de Evaluación .
 - [[06_LMS_Architecture]] - Arquitectura general del LMS con sidebar colapsable.
 - [[06_Manuales]] - Catálogo e índice de los manuales técnicos oficiales.
 - [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio SAP B1 y atlas visual.

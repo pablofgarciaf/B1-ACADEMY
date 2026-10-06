@@ -10,7 +10,7 @@ La **Biblioteca de Manuales Técnicos** (`/manuales`) es el repositorio central 
 4. **Sincronización Multimodal (`clase_sync.json`):** Mapeo milimétrico de tiempo entre audio/video, teleprompter docente y laboratorio paso a paso.
 5. **Video 1080p (`clase_video.mp4`):** Clase magistral con locución pedagógica humana.
 6. **Simulador Nativo SAP B1:** Replicación de ventanas oficiales (Query Generator, Fiori Cockpit, Circuito de Compras).
-7. **Examen Oral con Profesor Evaluador IA:** Preguntas dinámicas contrarreloj (35 segundos por pregunta) con detección anti-fraude.
+7. **Examen con Profesor Evaluador IA:** Preguntas dinámicas contrarreloj (35 segundos por pregunta) con detección anti-fraude.
 
 ---
 
@@ -104,7 +104,7 @@ graph TD
     D --> F[Laboratorio Guiado con Pasos de Menú y Resultados]
     D --> G[Simulador Nativo SAP B1 con Cajas Amarillas y Botones 3D]
     D --> H[Tutor IA Contextualizado con el Manual]
-    D --> I[Examen Oral con Profesor IA - Límite 35s por pregunta]
+    D --> I[Examen con Profesor IA - Límite 35s por pregunta]
     
     I -->|Aprobación >= 90%| J[Persistencia en LocalStorage & Firestore]
     J -->|Insignia de Aprobado| A
@@ -126,7 +126,7 @@ Para evitar forzar simulaciones transaccionales en temas puramente teóricos o m
 
 2. **Manuales Teóricos y Conceptuales (17 manuales):**
    * Configurados con `requiresSimulator: false` y `archetype: 'none'`.
-   * La pestaña del simulador en el aula muestra una **tarjeta pedagógica ilustrada de fundamentos** que explica los conceptos clave de la lección y redirige al alumno a profundizar en el video 1080p, teleprompter, tutor IA y prepararse para el Examen Oral (35s), con acceso directo opcional a explorar el sistema libre en `/simulador`.
+   * La pestaña del simulador en el aula muestra una **tarjeta pedagógica ilustrada de fundamentos** que explica los conceptos clave de la lección y redirige al alumno a profundizar en el video 1080p, teleprompter, tutor IA y prepararse para el Examen (35s), con acceso directo opcional a explorar el sistema libre en `/simulador`.
 
 ---
 

@@ -229,7 +229,7 @@ export default function ManualesLibraryPage() {
                 className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue cursor-pointer"
               >
                 <option value="ALL" className="dark:bg-slate-900">
-                  Todas las Categorías ({ALL_MANUALS.length})
+                  Todas las Categorías
                 </option>
                 {MANUAL_CATEGORIES.map((cat) => (
                   <option key={cat.name} value={cat.name} className="dark:bg-slate-900">

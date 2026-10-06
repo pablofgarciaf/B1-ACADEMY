@@ -3,15 +3,15 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  BookOpen, 
-  Bot, 
-  FileQuestion, 
-  Wrench, 
-  GraduationCap, 
-  Send, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  BookOpen,
+  Bot,
+  FileQuestion,
+  Wrench,
+  GraduationCap,
+  Send,
   PlayCircle,
   CheckCircle2,
   Sparkles,
@@ -64,25 +64,25 @@ interface ManualViewerProps {
   quizQuestions?: QuizQuestion[];
 }
 
-export default function ManualViewer({ 
-  manualId, 
-  content, 
-  images, 
-  videoUrl, 
-  syncData, 
-  quizQuestions: externalQuestions 
+export default function ManualViewer({
+  manualId,
+  content,
+  images,
+  videoUrl,
+  syncData,
+  quizQuestions: externalQuestions
 }: ManualViewerProps) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [activeTab, setActiveTab] = useState<'explicacion' | 'ia' | 'docente' | 'faq' | 'simulador' | 'quiz'>('explicacion');
   const [completedCheckpoints, setCompletedCheckpoints] = useState<number[]>([]);
   const [isMasterB1CheckpointOpen, setIsMasterB1CheckpointOpen] = useState(false);
-  
+
   // Detectar si es un manual de Casos Prácticos (CS)
   const isPractical = useMemo(() => {
     return !!manualId && (
-      manualId.startsWith('CS') || 
-      manualId.includes('Query') || 
-      manualId.includes('Introduction') || 
+      manualId.startsWith('CS') ||
+      manualId.includes('Query') ||
+      manualId.includes('Introduction') ||
       manualId.includes('Procurement')
     );
   }, [manualId]);
@@ -178,7 +178,7 @@ export default function ManualViewer({
     }
   }, [activeSyncSlide, activeTab]);
 
-  // Estado para el Examen Oral con Profesor IA
+  // Estado para el Examen con Profesor IA
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizScore, setQuizScore] = useState<number>(0);
@@ -188,7 +188,7 @@ export default function ManualViewer({
   const [professorFeedback, setProfessorFeedback] = useState<{ status: 'correct' | 'incorrect' | 'timeout' | null, message: string }>({ status: null, message: '' });
   const [cheatAlert, setCheatAlert] = useState<string | null>(null);
   const [writtenAnswer, setWrittenAnswer] = useState<string>('');
-  
+
   const quizQuestions = useMemo(() => {
     if (externalQuestions && externalQuestions.length > 0) {
       return externalQuestions;
@@ -252,7 +252,7 @@ export default function ManualViewer({
     }, 2500);
   }, [moveToNextQuestion, quizScore]);
 
-  // Temporizador regresivo estricto de 35 segundos para el Examen Oral
+  // Temporizador regresivo estricto de 35 segundos para el Examen
   useEffect(() => {
     if (!quizStarted || quizCompleted || isEvaluating) return;
 
@@ -276,7 +276,7 @@ export default function ManualViewer({
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        setCheatAlert("⚠️ Alerta de Seguridad: Se detectó cambio de pestaña o ventana durante el examen oral.");
+        setCheatAlert("⚠️ Alerta de Seguridad: Se detectó cambio de pestaña o ventana durante el examen.");
         setTimeout(() => setCheatAlert(null), 5000);
       }
     };
@@ -298,7 +298,7 @@ export default function ManualViewer({
 
     setProfessorFeedback({
       status: isCorrect ? 'correct' : 'incorrect',
-      message: isCorrect 
+      message: isCorrect
         ? `✓ ¡Excelente! ${quizQuestions[currentQuestion].explanation}`
         : `✗ Incorrecto. ${quizQuestions[currentQuestion].explanation}`
     });
@@ -323,12 +323,12 @@ export default function ManualViewer({
   // Estado para Chat IA Contextual
   const [chatInput, setChatInput] = useState("");
   const [isAiLoading, setIsAiLoading] = useState(false);
-  const [chatMessages, setChatMessages] = useState<{role: 'user' | 'ia', text: string}[]>([
-    { 
-      role: 'ia', 
-      text: isPractical 
+  const [chatMessages, setChatMessages] = useState<{ role: 'user' | 'ia', text: string }[]>([
+    {
+      role: 'ia',
+      text: isPractical
         ? "¡Hola! Soy tu tutor de Laboratorio Práctico de SAP Business One. Tengo cargadas las especificaciones de este caso de estudio y del simulador interactivo. ¿En qué paso o validación técnica necesitas apoyo?"
-        : "¡Hola! Soy tu tutor virtual de B1 Academy. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?" 
+        : "¡Hola! Soy tu tutor virtual de B1 Academy. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
     }
   ]);
 
@@ -341,14 +341,14 @@ export default function ManualViewer({
 
     // PROTOCOLO ESTRICTO DE INTEGRIDAD ACADÉMICA (ANTI-TRAMPAS)
     const lower = userText.toLowerCase();
-    const isAskingExam = 
-      lower.includes("respuesta") || 
-      lower.includes("quiz") || 
-      lower.includes("examen") || 
-      lower.includes("pregunta") || 
-      lower.includes("opción") || 
-      lower.includes("opcion") || 
-      lower.includes("cuál es la correcta") || 
+    const isAskingExam =
+      lower.includes("respuesta") ||
+      lower.includes("quiz") ||
+      lower.includes("examen") ||
+      lower.includes("pregunta") ||
+      lower.includes("opción") ||
+      lower.includes("opcion") ||
+      lower.includes("cuál es la correcta") ||
       lower.includes("cual es la correcta") ||
       lower.includes("dime la a") ||
       lower.includes("dime la b") ||
@@ -359,10 +359,10 @@ export default function ManualViewer({
     if (isAskingExam) {
       setTimeout(() => {
         setChatMessages(prev => [
-          ...prev, 
-          { 
-            role: 'ia', 
-            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de B1 Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners de SAP, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.` 
+          ...prev,
+          {
+            role: 'ia',
+            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de B1 Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners de SAP, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
           }
         ]);
       }, 500);
@@ -402,7 +402,7 @@ export default function ManualViewer({
     // Fallback inteligente enriquecido con el caso práctico activo
     setTimeout(() => {
       let aiResponse = "Excelente análisis. En SAP Business One, todos los procesos se comunican de forma nativa a través de la capa de objetos de negocio para garantizar trazabilidad. ¡Sigue explorando el simulador y las diapositivas para dominar los detalles!";
-      
+
       if (activeSyncSlide?.step_guide && (lower.includes("pista") || lower.includes("ayuda") || lower.includes("cómo") || lower.includes("paso"))) {
         aiResponse = `💡 **Pista Pedagógica para ${activeSyncSlide.step_guide.title}:**\n\n1. **Ubicación en SAP B1:** Navega a \`${activeSyncSlide.step_guide.menu_path || 'Menú Principal'}\`.\n2. **Procedimiento Clave:** ${activeSyncSlide.step_guide.instructions?.join(' ')}\n3. **Resultado Esperado:** ${activeSyncSlide.step_guide.expected_output || 'Verifica que la grilla o documento refleje los datos requeridos.'}\n\nPuedes probarlo directamente en el **Simulador Interactivo** a la izquierda.`;
       } else if (lower.includes("socio") || lower.includes("cliente") || lower.includes("proveedor") || lower.includes("ocrd")) {
@@ -486,23 +486,23 @@ export default function ManualViewer({
         <div className="flex flex-1 min-h-0 h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-[#0A0A0F] shadow-2xl lg:w-2/3">
           {videoUrl ? (
             <div className="relative flex flex-1 min-h-0 items-center justify-center bg-black p-0 overflow-hidden group">
-              <video 
+              <video
                 ref={videoRef}
                 key={videoUrl}
-                src={videoUrl} 
-                controls 
+                src={videoUrl}
+                controls
                 onTimeUpdate={handleTimeUpdate}
-                  onEnded={() => { if (simConfig && syncData && syncData.some(s => s.step_guide)) { setActiveTab('simulador'); setIsSimulatorModalOpen(true); } else { setActiveTab('quiz'); } }}
-                  onDoubleClick={toggleFullscreen}
+                onEnded={() => { if (simConfig && syncData && syncData.some(s => s.step_guide)) { setActiveTab('simulador'); setIsSimulatorModalOpen(true); } else { setActiveTab('quiz'); } }}
+                onDoubleClick={toggleFullscreen}
                 className="h-full w-full object-contain"
                 poster={images[0]}
               />
 
               {/* Overlay Interactivo Tutor IA con Pausa Estricta */}
-              
+
 
               {/* Botón Flotante para Pantalla Completa del Video */}
-              <button 
+              <button
                 onClick={toggleFullscreen}
                 title="Ver Video en Pantalla Completa"
                 className="absolute top-3 right-3 z-20 flex items-center gap-1.5 rounded-lg bg-black/75 hover:bg-black/95 text-white/90 hover:text-white px-2.5 py-1.5 text-xs font-semibold backdrop-blur-md border border-white/20 shadow-xl transition-all active:scale-95 opacity-85 hover:opacity-100 group-hover:opacity-100"
@@ -525,7 +525,7 @@ export default function ManualViewer({
               )}
             </div>
           )}
-          
+
           {/* Barra de Controles Inferior (Solo si NO es video) */}
           {!videoUrl && (
             <div className="flex shrink-0 items-center justify-between border-t border-gray-800 bg-[#131a20] px-4 py-2.5">
@@ -537,14 +537,13 @@ export default function ManualViewer({
                 <ChevronLeft size={16} />
                 <span>Anterior</span>
               </button>
-              
+
               <div className="flex items-center gap-3 text-xs font-medium text-gray-400">
                 {narrable && (
                   <button
                     onClick={alternarNarracion}
-                    className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${
-                      narrando ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${narrando ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
+                      }`}
                     title={narrando ? 'Pausar la clase' : 'Reproducir la clase narrada'}
                   >
                     {narrando ? <><Pause size={14} /> Pausar</> : <><PlayCircle size={14} /> {currentIdx === 0 ? 'Reproducir clase' : 'Continuar'}</>}
@@ -558,7 +557,7 @@ export default function ManualViewer({
                 {isSpeaking && <span className="hidden sm:inline text-amber-400 animate-pulse">Narrando…</span>}
                 <span><span className="text-white font-bold">{currentIdx + 1}</span> / {images.length}</span>
               </div>
-              
+
               <button
                 onClick={() => { stopSpeaking(); nextSlide(); }}
                 disabled={currentIdx === images.length - 1}
@@ -576,42 +575,42 @@ export default function ManualViewer({
           {/* Navegación de Pestañas con Indicador de Aprobado */}
           <div className="flex shrink-0 items-center justify-between border-b border-gray-800 bg-[#19222a] p-2">
             <div className="flex gap-1.5 overflow-x-auto custom-scrollbar">
-              <button 
+              <button
                 onClick={() => setActiveTab('explicacion')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'explicacion' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
                 <BookOpen size={14} /> <span>Teleprompter</span>
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('ia')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'ia' ? 'bg-amber-500/20 text-amber-500' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
                 <Bot size={14} /> <span>Tutor IA</span>
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('faq')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'faq' ? 'bg-gray-800 text-white' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
                 <FileQuestion size={14} /> <span>FAQ</span>
               </button>
               {simConfig.requiresSimulator && (
-<button 
-                onClick={() => setActiveTab('simulador')}
-                className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'simulador' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
-              >
-                <Wrench size={14} /> 
-                <span>{simConfig.requiresSimulator ? 'Simulador' : 'Teoría'}</span>
-                {!simConfig.requiresSimulator && (
-                  <span className="text-[9px] bg-blue-500/20 text-blue-300 px-1 py-0.2 rounded font-mono font-bold">Concepto</span>
-                )}
-              </button>)}
-              <button 
+                <button
+                  onClick={() => setActiveTab('simulador')}
+                  className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'simulador' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
+                >
+                  <Wrench size={14} />
+                  <span>{simConfig.requiresSimulator ? 'Simulador' : 'Teoría'}</span>
+                  {!simConfig.requiresSimulator && (
+                    <span className="text-[9px] bg-blue-500/20 text-blue-300 px-1 py-0.2 rounded font-mono font-bold">Concepto</span>
+                  )}
+                </button>)}
+              <button
                 onClick={() => setActiveTab('quiz')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'quiz' ? 'bg-emerald-500/20 text-emerald-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
                 <GraduationCap size={14} /> <span>Examen IA</span>
               </button>
-              <button 
+              <button
                 onClick={() => setActiveTab('docente')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'docente' ? 'bg-purple-500/20 text-purple-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
@@ -625,7 +624,7 @@ export default function ManualViewer({
               </span>
             )}
           </div>
-          
+
           {/* Contenido de la pestaña */}
           <div ref={teleprompterScrollRef} className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 scroll-smooth custom-scrollbar">
             {activeTab === 'explicacion' && (
@@ -635,20 +634,18 @@ export default function ManualViewer({
                     {syncData.map((slide, i) => {
                       const isActive = activeSyncSlide?.slide_index === slide.slide_index;
                       return (
-                        <div 
-                          key={i} 
+                        <div
+                          key={i}
                           data-sync-slide={slide.slide_index}
                           aria-current={isActive ? 'step' : undefined}
-                          className={`p-4 rounded-xl transition-all duration-300 ${
-                            isActive 
-                              ? 'bg-amber-500/15 border border-amber-500/40 shadow-lg scale-100 ring-1 ring-amber-500/30' 
-                              : 'opacity-50 scale-[0.99] border border-gray-800/80 bg-gray-900/40 hover:opacity-80'
-                          }`}
+                          className={`p-4 rounded-xl transition-all duration-300 ${isActive
+                            ? 'bg-amber-500/15 border border-amber-500/40 shadow-lg scale-100 ring-1 ring-amber-500/30'
+                            : 'opacity-50 scale-[0.99] border border-gray-800/80 bg-gray-900/40 hover:opacity-80'
+                            }`}
                         >
                           <div className="flex items-center justify-between gap-2 mb-2">
-                            <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
-                              isActive ? 'bg-amber-500 text-black' : 'bg-gray-800 text-gray-400'
-                            }`}>
+                            <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${isActive ? 'bg-amber-500 text-black' : 'bg-gray-800 text-gray-400'
+                              }`}>
                               Diapositiva {slide.slide_index}
                             </span>
                             {slide.step_guide?.menu_path && (
@@ -658,9 +655,8 @@ export default function ManualViewer({
                             )}
                           </div>
 
-                          <p className={`text-xs sm:text-sm leading-relaxed mb-3 ${
-                            isActive ? 'text-amber-100 font-medium' : 'text-gray-300'
-                          }`}>
+                          <p className={`text-xs sm:text-sm leading-relaxed mb-3 ${isActive ? 'text-amber-100 font-medium' : 'text-gray-300'
+                            }`}>
                             {slide.script_text}
                           </p>
 
@@ -710,19 +706,19 @@ export default function ManualViewer({
                       {activeSyncSlide.step_guide.title}
                     </div>
                     <div className="flex flex-wrap gap-1.5">
-                      <button 
+                      <button
                         onClick={() => handleSendMessage(`¿Me das una pista pedagógica para resolver "${activeSyncSlide?.step_guide?.title}"?`)}
                         className="text-[10px] bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 border border-amber-500/30 rounded px-2 py-0.5 transition-colors flex items-center gap-1"
                       >
                         <Lightbulb size={10} /> Pista del paso
                       </button>
-                      <button 
+                      <button
                         onClick={() => handleSendMessage(`¿En qué menú o ruta exacta encuentro esta ventana en SAP Business One?`)}
                         className="text-[10px] bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 border border-blue-500/30 rounded px-2 py-0.5 transition-colors flex items-center gap-1"
                       >
                         <Compass size={10} /> Ruta en el menú
                       </button>
-                      <button 
+                      <button
                         onClick={() => handleSendMessage(`¿Cuál es el resultado técnico esperado para este paso?`)}
                         className="text-[10px] bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 border border-emerald-500/30 rounded px-2 py-0.5 transition-colors flex items-center gap-1"
                       >
@@ -735,24 +731,23 @@ export default function ManualViewer({
                 <div className="flex-1 min-h-0 space-y-3 overflow-y-auto mb-3 pr-1 custom-scrollbar">
                   {chatMessages.map((msg, i) => (
                     <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-xs sm:text-sm ${
-                        msg.role === 'user' ? 'bg-amber-600 text-white rounded-br-none' : 'bg-gray-800 text-gray-200 rounded-bl-none'
-                      }`}>
+                      <div className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-xs sm:text-sm ${msg.role === 'user' ? 'bg-amber-600 text-white rounded-br-none' : 'bg-gray-800 text-gray-200 rounded-bl-none'
+                        }`}>
                         {msg.text}
                       </div>
                     </div>
                   ))}
                 </div>
                 <div className="flex shrink-0 items-center gap-2 border-t border-gray-800 pt-3">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
                     placeholder="Pregunta algo sobre SAP..."
                     className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-xs sm:text-sm text-white focus:border-amber-500 focus:outline-none"
                   />
-                  <button 
+                  <button
                     onClick={() => handleSendMessage()}
                     className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-600 text-white transition-colors hover:bg-amber-500 active:scale-95"
                   >
@@ -842,10 +837,10 @@ export default function ManualViewer({
                   </button>
                 </div>
                 <div className="flex-1 min-h-0 overflow-hidden">
-                  <SAPInteractiveSimulator 
-                    manualId={manualId || ''} 
-                    currentStepIndex={currentIdx} 
-                    stepGuide={activeSyncSlide?.step_guide} 
+                  <SAPInteractiveSimulator
+                    manualId={manualId || ''}
+                    currentStepIndex={currentIdx}
+                    stepGuide={activeSyncSlide?.step_guide}
                   />
                 </div>
               </div>
@@ -861,13 +856,13 @@ export default function ManualViewer({
                     </div>
 
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-amber-500/15 text-amber-300 border border-amber-500/30 mb-2">
-                      <Sparkles size={11} /> Examen Oral con Profesor IA
+                      <Sparkles size={11} /> Examen con Profesor IA
                     </div>
 
                     <h3 className="text-sm font-bold text-white mb-2">
-                      Evaluación Oral en Vivo (Simulacro)
+                      Evaluación en Vivo (Simulacro)
                     </h3>
-                    
+
                     <p className="text-xs text-gray-300 max-w-[280px] leading-relaxed mb-4">
                       El Profesor de B1 Academy te evaluará sobre los conceptos y procesos técnicos de este manual.
                     </p>
@@ -888,12 +883,12 @@ export default function ManualViewer({
                       </div>
                     </div>
 
-                    <button 
+                    <button
                       onClick={restartQuiz}
                       className="rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 px-6 py-2.5 text-xs font-bold text-black transition-all active:scale-95 shadow-lg shadow-amber-600/30 flex items-center gap-2"
                     >
                       <Timer size={14} />
-                      <span>Comenzar Examen Oral ({quizQuestions.length} Preguntas)</span>
+                      <span>Comenzar Examen ({quizQuestions.length} Preguntas)</span>
                     </button>
                   </div>
                 ) : quizCompleted ? (
@@ -903,13 +898,13 @@ export default function ManualViewer({
                     <h3 className="mb-1 text-lg font-bold text-white">
                       Puntuación: {quizScore} de {quizQuestions.length} ({Math.round((quizScore / quizQuestions.length) * 100)}%)
                     </h3>
-                    
+
                     {quizScore >= Math.ceil(quizQuestions.length * 0.90) ? (
                       <div className="space-y-3 mb-4 w-full max-w-[320px]">
                         <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
-                          <CheckCircle2 size={13} /> ¡Examen Oral Aprobado con Excelencia!
+                          <CheckCircle2 size={13} /> ¡Examen Aprobado con Excelencia!
                         </span>
-                        
+
                         {/* Tarjeta de la App Descargable para Certificado Oficial */}
                         <div className="p-3.5 rounded-xl bg-gradient-to-b from-[#16222f] to-[#101720] border border-blue-500/30 text-left space-y-2">
                           <div className="flex items-center gap-2 text-xs font-bold text-blue-400">
@@ -927,7 +922,7 @@ export default function ManualViewer({
                         <span className="inline-flex items-center gap-1 text-xs font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full">
                           Requiere 90% para Aprobar ({Math.ceil(quizQuestions.length * 0.90)}/{quizQuestions.length})
                         </span>
-                        
+
                         <div className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-left space-y-2 w-full max-h-44 overflow-y-auto custom-scrollbar">
                           <div className="flex items-center gap-1.5 text-[11px] font-bold text-amber-400 uppercase tracking-wider">
                             <Sparkles className="w-3.5 h-3.5" /> Diagnóstico del Profesor IA para Reforzar
@@ -949,13 +944,13 @@ export default function ManualViewer({
                     )}
 
                     <div className="flex gap-2">
-                      <button 
+                      <button
                         onClick={restartQuiz}
                         className="rounded-xl bg-gray-800 hover:bg-gray-700 px-4 py-2 text-xs font-semibold text-white transition-all active:scale-95"
                       >
-                        Reintentar Examen Oral
+                        Reintentar Examen
                       </button>
-                      <Link 
+                      <Link
                         href="/manuales"
                         className="rounded-xl bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-xs font-bold text-white transition-all active:scale-95"
                       >
@@ -964,9 +959,9 @@ export default function ManualViewer({
                     </div>
                   </div>
                 ) : (
-                  /* PANTALLA EN CURSO: EVALUACIÓN ORAL CON CRONÓMETRO */
+                  /* PANTALLA EN CURSO: Evaluación CON CRONÓMETRO */
                   <div className="flex h-full flex-col">
-                    
+
                     {/* Alerta de Seguridad Anti-Copia */}
                     {cheatAlert && (
                       <div className="mb-2 bg-rose-950/90 border border-rose-500/50 text-rose-200 px-3 py-1.5 rounded-lg text-[11px] flex items-center gap-2 animate-pulse">
@@ -987,13 +982,12 @@ export default function ManualViewer({
                       </div>
 
                       {/* Contador Regresivo de 35 Segundos */}
-                      <div className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold transition-all ${
-                        timeLeft <= 8 
-                          ? 'bg-rose-500/20 text-rose-400 border border-rose-500/50 animate-pulse' 
-                          : timeLeft <= 18 
-                            ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40' 
-                            : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
-                      }`}>
+                      <div className={`flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold transition-all ${timeLeft <= 8
+                        ? 'bg-rose-500/20 text-rose-400 border border-rose-500/50 animate-pulse'
+                        : timeLeft <= 18
+                          ? 'bg-amber-500/20 text-amber-400 border border-amber-500/40'
+                          : 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                        }`}>
                         <Timer size={13} />
                         <span>{timeLeft}s</span>
                       </div>
@@ -1001,17 +995,16 @@ export default function ManualViewer({
 
                     {/* Barra de Progreso del Tiempo Restante */}
                     <div className="w-full mb-3">
-                      <progress 
-                        value={timeLeft} 
-                        max={35} 
+                      <progress
+                        value={timeLeft}
+                        max={35}
                         aria-label="Tiempo restante para responder"
-                        className={`w-full h-1.5 rounded-full overflow-hidden transition-all duration-1000 block bg-gray-800 [&::-webkit-progress-bar]:bg-gray-800 ${
-                          timeLeft <= 8 
-                            ? 'accent-rose-500 [&::-webkit-progress-value]:bg-rose-500 [&::-moz-progress-bar]:bg-rose-500' 
-                            : timeLeft <= 18 
-                              ? 'accent-amber-500 [&::-webkit-progress-value]:bg-amber-500 [&::-moz-progress-bar]:bg-amber-500' 
-                              : 'accent-emerald-500 [&::-webkit-progress-value]:bg-emerald-500 [&::-moz-progress-bar]:bg-emerald-500'
-                        }`}
+                        className={`w-full h-1.5 rounded-full overflow-hidden transition-all duration-1000 block bg-gray-800 [&::-webkit-progress-bar]:bg-gray-800 ${timeLeft <= 8
+                          ? 'accent-rose-500 [&::-webkit-progress-value]:bg-rose-500 [&::-moz-progress-bar]:bg-rose-500'
+                          : timeLeft <= 18
+                            ? 'accent-amber-500 [&::-webkit-progress-value]:bg-amber-500 [&::-moz-progress-bar]:bg-amber-500'
+                            : 'accent-emerald-500 [&::-webkit-progress-value]:bg-emerald-500 [&::-moz-progress-bar]:bg-emerald-500'
+                          }`}
                       />
                     </div>
 
@@ -1028,31 +1021,29 @@ export default function ManualViewer({
 
                     {/* Retroalimentación en Tiempo Real si respondió o tiempo agotado */}
                     {professorFeedback.status && (
-                      <div className={`p-2.5 rounded-xl border text-xs mb-3 text-left animate-fadeIn ${
-                        professorFeedback.status === 'correct' 
-                          ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-200' 
-                          : professorFeedback.status === 'timeout'
-                            ? 'bg-rose-950/70 border-rose-500/50 text-rose-200'
-                            : 'bg-amber-950/60 border-amber-500/40 text-amber-200'
-                      }`}>
+                      <div className={`p-2.5 rounded-xl border text-xs mb-3 text-left animate-fadeIn ${professorFeedback.status === 'correct'
+                        ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-200'
+                        : professorFeedback.status === 'timeout'
+                          ? 'bg-rose-950/70 border-rose-500/50 text-rose-200'
+                          : 'bg-amber-950/60 border-amber-500/40 text-amber-200'
+                        }`}>
                         <p className="font-medium text-[11px] leading-snug">
                           {professorFeedback.message}
                         </p>
                       </div>
                     )}
 
-                    {/* Opciones de Respuesta Oral Inmediata */}
+                    {/* Opciones de Respuesta Inmediata */}
                     <div className="flex flex-col gap-2 overflow-y-auto custom-scrollbar flex-1 pr-1">
                       {quizQuestions[currentQuestion].options.map((opt, i) => (
-                        <button 
+                        <button
                           key={i}
                           disabled={isEvaluating}
                           onClick={() => handleAnswer(i)}
-                          className={`rounded-xl border p-2.5 sm:p-3 text-left text-xs sm:text-sm transition-all active:scale-[0.98] ${
-                            isEvaluating 
-                              ? 'opacity-50 cursor-not-allowed border-gray-800 bg-[#161f28] text-gray-400' 
-                              : 'border-gray-700/80 bg-[#1a232b] text-gray-200 hover:border-amber-500/50 hover:bg-[#222e38]'
-                          }`}
+                          className={`rounded-xl border p-2.5 sm:p-3 text-left text-xs sm:text-sm transition-all active:scale-[0.98] ${isEvaluating
+                            ? 'opacity-50 cursor-not-allowed border-gray-800 bg-[#161f28] text-gray-400'
+                            : 'border-gray-700/80 bg-[#1a232b] text-gray-200 hover:border-amber-500/50 hover:bg-[#222e38]'
+                            }`}
                         >
                           <span className="font-mono text-amber-400 font-bold mr-2">
                             {String.fromCharCode(65 + i)}.
@@ -1064,14 +1055,14 @@ export default function ManualViewer({
 
                     {/* Caja de Respuesta Escrita Opcional con Bloqueo de Pegado */}
                     <div className="mt-2 pt-2 border-t border-gray-800 flex items-center gap-1.5">
-                      <input 
-                        type="text" 
+                      <input
+                        type="text"
                         value={writtenAnswer}
                         disabled={isEvaluating}
                         onChange={(e) => setWrittenAnswer(e.target.value)}
                         onPaste={(e) => {
                           e.preventDefault();
-                          setCheatAlert("⚠️ Portapapeles bloqueado: No está permitido pegar texto en la evaluación oral.");
+                          setCheatAlert("⚠️ Portapapeles bloqueado: No está permitido pegar texto en la Evaluación .");
                           setTimeout(() => setCheatAlert(null), 3500);
                         }}
                         onKeyDown={(e) => {
@@ -1082,7 +1073,7 @@ export default function ManualViewer({
                         placeholder="O responde directamente aquí (sin pegar)..."
                         className="flex-1 bg-gray-900 border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-500"
                       />
-                      <button 
+                      <button
                         disabled={isEvaluating || !writtenAnswer.trim()}
                         onClick={() => handleAnswer(0)}
                         className="bg-amber-600 hover:bg-amber-500 disabled:opacity-30 text-white text-xs font-bold px-3 py-1.5 rounded-lg active:scale-95 transition-all"
@@ -1122,10 +1113,10 @@ export default function ManualViewer({
             </button>
           </div>
           <div className="flex-1 min-h-0 bg-[#0A0A0F] border-x border-b border-gray-800 rounded-b-xl overflow-hidden shadow-2xl">
-            <SAPInteractiveSimulator 
-              manualId={manualId || ''} 
-              currentStepIndex={currentIdx} 
-              stepGuide={activeSyncSlide?.step_guide} 
+            <SAPInteractiveSimulator
+              manualId={manualId || ''}
+              currentStepIndex={currentIdx}
+              stepGuide={activeSyncSlide?.step_guide}
             />
           </div>
         </div>

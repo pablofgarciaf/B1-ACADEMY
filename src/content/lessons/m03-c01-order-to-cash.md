@@ -199,9 +199,9 @@ a) 10 · b) **20** · c) 25 · d) 5
 a) Devolución de clientes · b) Entrega negativa · c) **Abono de clientes con "Sin contabilización de cantidad"** · d) Salida de mercancías
 *Explicación:* ajusta cuenta por cobrar e ingreso sin mover unidades.
 
-## 11. Defensa oral (rúbrica 0-25)
+## 11. Defensa (rúbrica 0-25)
 
-*Pendiente de redactar (pregunta de defensa oral y 3 criterios de evaluación).*
+*Pendiente de redactar (pregunta de defensa y 3 criterios de evaluación).*
 
 ## 12. Fuentes y puntos por verificar antes de publicar
 

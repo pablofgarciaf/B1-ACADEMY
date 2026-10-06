@@ -8,7 +8,7 @@ El sistema integra:
 1. **Biblioteca Universal de Manuales Oficiales** organizados en 23 categorías operativas.
 2. **Clases Magistrales con Video y Sincronización Dual:** Teleprompter del instructor + Guía de laboratorio paso a paso.
 3. **Simulador Interactivo Píxel a Píxel:** Replicación fidedigna de la interfaz de escritorio de SAP Business One (Windows).
-4. **Examen Oral con Profesor Evaluador IA:** Evaluación conversacional contrarreloj (35 segundos por pregunta) con detección anti-trampa.
+4. **Examen con Profesor Evaluador IA:** Evaluación conversacional contrarreloj (35 segundos por pregunta) con detección anti-trampa.
 5. **Simulador Integral de Escritorio (`/simulador`):** Entorno virtual multitarea con el menú canónico de los 12 módulos de SAP y más de 5,000 capturas reales indexadas.
 6. **Modelo de Certificación Segura (Dual-Tier):** Entrenamiento web ilimitado + Certificación oficial mediante la aplicación de escritorio descargable **B1 Secure Exam Guard**.
 
@@ -36,7 +36,7 @@ graph TD
         C --> I[Laboratorio Paso a Paso]
         C --> J[Simulador Nativo SAP B1]
         C --> K[Tutor IA Especialista]
-        C --> L[Examen Oral con Profesor IA - 35s]
+        C --> L[Examen con Profesor IA - 35s]
     end
 
     subgraph "Simulador Integral de Escritorio (SAPDesktopShell.tsx)"
@@ -82,7 +82,7 @@ Cada una de las lecciones dentro de [`ManualViewer.tsx`](file:///c:/Users/pablo/
 | **3. Laboratorio** | Guía Paso a Paso | Instrucciones técnicas precisas con rutas de menú (ej: *Ventas > Orden de Venta*). |
 | **4. Práctica** | Simulador Píxel a Píxel | Entorno interactivo idéntico al cliente SAP (cajas amarillas, botones 3D, resultados). |
 | **5. Tutoría** | Agente Tutor IA | Chat contextualizado que resuelve dudas técnicas citando el manual. |
-| **6. Evaluación** | Examen Oral IA (35s) | Preguntas orales en tiempo real con temporizador estricto y anti-trampa. |
+| **6. Evaluación** | Examen IA (35s) | Preguntases en tiempo real con temporizador estricto y anti-trampa. |
 
 ---
 
@@ -162,13 +162,13 @@ sequenceDiagram
     participant Cloud as Firebase Cloud Functions & DB
 
     Note over Alumno,Web: Fase de Entrenamiento
-    Alumno->>Web: Estudio de manual + Simulador + Examen Oral IA (35s)
+    Alumno->>Web: Estudio de manual + Simulador + Examen IA (35s)
     Web-->>Alumno: Puntaje formativo e insignias de práctica (Sin Certificado)
 
     Note over Alumno,App: Fase de Certificación Oficial
     Alumno->>App: Descarga e inicio de sesión en B1 Secure Exam Guard
     App->>App: Activa Modo Quiosco (Bloqueo Alt+Tab, WinKey, Clipboard, Pantallas 2)
-    Alumno->>App: Rinde Examen Oral y Práctico bajo supervisión del sistema
+    Alumno->>App: Rinde Examen y Práctico bajo supervisión del sistema
     App->>Cloud: Envío de respuestas + Métricas de telemetría anti-fraude
     Cloud->>Cloud: Evaluación, validación de integridad y firma SHA-256
     Cloud-->>App: Emisión de Certificado Oficial Inmutable

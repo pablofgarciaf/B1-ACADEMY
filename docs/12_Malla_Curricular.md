@@ -14,8 +14,8 @@
 ## Certificación
 
 - **porClase:** Quiz de comprensión: aprobación con 90 % o más.
-- **porModulo:** Quizzes aprobados + defensa oral con Master B1 (mínimo 80 %).
-- **porCarrera:** Todos los módulos de la carrera aprobados + defensa oral integradora (mínimo 80 %). Diploma con hash SHA-256 y QR.
+- **porModulo:** Quizzes aprobados + defensa con Master B1 (mínimo 80 %).
+- **porCarrera:** Todos los módulos de la carrera aprobados + defensa integradora (mínimo 80 %). Diploma con hash SHA-256 y QR.
 - **consultorIntegral:** C01 completa + al menos 5 carreras de especialidad, incluidas C06 y C09. Examen en B1 Secure Exam Guard.
 
 ## Producción de contenido

@@ -19,7 +19,7 @@ interface DictationResultEvent { resultIndex: number; results: ArrayLike<{ isFin
 interface Dictation { lang: string; continuous: boolean; interimResults: boolean; start(): void; stop(): void; onresult: ((e: DictationResultEvent) => void) | null; onend: (() => void) | null }
 type DictationCtor = new () => Dictation;
 
-export default function OralExamPage({ params }: { params: Promise<{ moduleId: string }> }) {
+export default function ExamPage({ params }: { params: Promise<{ moduleId: string }> }) {
   const { moduleId } = use(params);
   const courseModule = getModuleById(moduleId);
   const { currentUser } = useAuth();

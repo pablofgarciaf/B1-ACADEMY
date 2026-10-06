@@ -35,7 +35,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Introducción a SAP Business One",
     moduleName: "Introducción a SAP Business One",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a SAP Business One. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a SAP Business One. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Intro_12_Overview_GettingStarted_ES": {
     requiresSimulator: true,
@@ -50,7 +50,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Documentos y Datos Maestros: Conceptos Generales",
     moduleName: "Introducción a SAP Business One",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a SAP Business One. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a SAP Business One. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Impl_11_CustomTools_Queries_ES": {
     requiresSimulator: true,
@@ -233,7 +233,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Conceptos Financieros Básicos",
     moduleName: "Contabilidad Básica",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Contabilidad Básica. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Contabilidad Básica. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES": {
     requiresSimulator: true,
@@ -272,35 +272,35 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Informes Financieros del Sistema",
     moduleName: "Informes Financieros y Control",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_ControlReports_21_CashReports_cashflow_ES": {
     requiresSimulator: false,
     archetype: "none",
     title: "Informe de Flujo de Caja",
     moduleName: "Informes Financieros y Control",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_ControlReports_22_CashReports_Aging_ES": {
     requiresSimulator: false,
     archetype: "none",
     title: "Antigüedad de Saldos (Aging Report)",
     moduleName: "Informes Financieros y Control",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_ControlReports_23_CashReports_Dunning": {
     requiresSimulator: false,
     archetype: "none",
     title: "Proceso de Reclamaciones (Dunning)",
     moduleName: "Informes Financieros y Control",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Informes Financieros y Control. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_CostandBudget_11_CostAcc_CostAcc_ES": {
     requiresSimulator: false,
     archetype: "none",
     title: "Contabilidad de Costos",
     moduleName: "Costos y Presupuestos",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Costos y Presupuestos. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Costos y Presupuestos. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_CostandBudget_12_CostAcc_MultiDimensions_ES": {
     requiresSimulator: true,
@@ -355,7 +355,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Periodos Contables y Ejercicios",
     moduleName: "Procesos Financieros",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Procesos Financieros. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Procesos Financieros. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_FinProcess_22_PostPeriods_PeriodClose": {
     requiresSimulator: true,
@@ -386,7 +386,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Configuración de Monedas y Tipos de Cambio",
     moduleName: "Configuración Financiera",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Configuración Financiera. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Configuración Financiera. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_FinSetup_12_COA_ManageCOA": {
     requiresSimulator: true,
@@ -425,7 +425,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Activos Fijos: Introducción",
     moduleName: "Activos Fijos",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Activos Fijos. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Activos Fijos. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES": {
     requiresSimulator: true,
@@ -592,7 +592,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Ubicaciones de Almacén: Visión General",
     moduleName: "Ubicaciones en Almacén (Bin Locations)",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Ubicaciones en Almacén (Bin Locations). No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Ubicaciones en Almacén (Bin Locations). No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_BinLoc_12_Setup_Setup": {
     requiresSimulator: true,
@@ -711,7 +711,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Producción: Visión General",
     moduleName: "Producción",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Producción. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Producción. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Production_21_Resources_Resources_ES": {
     requiresSimulator: true,
@@ -798,7 +798,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Proceso de Compras: Visión General",
     moduleName: "Compras y Aprovisionamiento",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Compras y Aprovisionamiento. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Compras y Aprovisionamiento. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Purch_12_Process_Items_ES": {
     requiresSimulator: true,
@@ -861,7 +861,7 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Proceso de Ventas: Visión General",
     moduleName: "Ventas",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Ventas. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Ventas. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Sales_12_Process_Order2Cash_ES": {
     requiresSimulator: true,
@@ -916,14 +916,14 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     archetype: "none",
     title: "Gestión de Llamadas de Servicio",
     moduleName: "Gestión de Servicios",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Gestión de Servicios. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Gestión de Servicios. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Support_11_SupportProcTool_ES": {
     requiresSimulator: false,
     archetype: "none",
     title: "Herramientas de Soporte y Diagnóstico",
     moduleName: "Herramientas de Soporte",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Herramientas de Soporte. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA.",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Herramientas de Soporte. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "CSI08_Query Practice_Solutions": {
     requiresSimulator: true,

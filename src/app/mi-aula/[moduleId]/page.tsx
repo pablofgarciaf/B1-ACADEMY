@@ -7,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
-import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw } from 'lucide-react';
+import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2 } from 'lucide-react';
 
 // =============================================
 // Types
@@ -80,6 +80,22 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // Sidebar
   const [sidebarOpen, setSidebarOpen] = useState(true);
   useEffect(() => { setSidebarOpen(window.matchMedia('(min-width: 1024px)').matches); }, []);
+
+  // Pantalla completa: el estado se sincroniza con el evento del navegador
+  // (así también se actualiza si el estudiante sale con Esc).
+  const [pantallaCompleta, setPantallaCompleta] = useState(false);
+  useEffect(() => {
+    const sync = () => setPantallaCompleta(Boolean(document.fullscreenElement));
+    document.addEventListener('fullscreenchange', sync);
+    return () => document.removeEventListener('fullscreenchange', sync);
+  }, []);
+  const alternarPantallaCompleta = () => {
+    if (document.fullscreenElement) void document.exitFullscreen().catch(() => {});
+    else void document.documentElement.requestFullscreen?.().catch(() => {});
+  };
+
+  // Narración larga en el panel de instrucciones: recortada a 2 líneas por defecto
+  const [narracionAbierta, setNarracionAbierta] = useState(false);
 
   // Speech
   const { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload } = useAcademyVoice();
@@ -292,7 +308,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all shrink-0"
             title="Volver a Mi Aula"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
           </Link>
           <div className="w-px h-6 bg-gray-800 shrink-0" />
           {/* Sidebar toggle */}
@@ -351,13 +367,24 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
           </button>
 
-          {/* Oral exam */}
+          {/* Pantalla completa (también se sale con Esc) */}
+          <button
+            onClick={alternarPantallaCompleta}
+            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all active:scale-95"
+            title={pantallaCompleta ? 'Salir de pantalla completa (Esc)' : 'Pantalla completa'}
+            aria-label={pantallaCompleta ? 'Salir de pantalla completa' : 'Pantalla completa'}
+            aria-pressed={pantallaCompleta}
+          >
+            {pantallaCompleta ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+          </button>
+
+          {/* exam */}
           <Link
             href={`/mi-aula/${moduleId}/oral-exam`}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-purple-600/80 hover:bg-purple-600 text-white text-xs font-semibold transition-all active:scale-95"
           >
             <Award className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Evaluación Oral</span>
+            <span className="hidden sm:inline">Evaluación</span>
           </Link>
         </div>
       </header>
@@ -383,12 +410,12 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
               </div>
               <p className="text-[10px] font-semibold uppercase tracking-wider text-gray-500 mb-1">Progreso en Módulo</p>
               <div className="flex items-center justify-between mb-1.5">
-                <p className="text-xs text-gray-300">{completedCount} de {totalLessons} ({Math.round((completedCount/Math.max(totalLessons,1))*100)}%)</p>
+                <p className="text-xs text-gray-300">{completedCount} de {totalLessons} ({Math.round((completedCount / Math.max(totalLessons, 1)) * 100)}%)</p>
               </div>
               <div className="h-1.5 rounded-full bg-gray-800 overflow-hidden">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-500"
-                  style={{ width: `${(completedCount/Math.max(totalLessons,1))*100}%` }}
+                  style={{ width: `${(completedCount / Math.max(totalLessons, 1)) * 100}%` }}
                 />
               </div>
             </div>
@@ -408,17 +435,16 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 )}
               </div>
               <p className="text-[10px] text-gray-400 leading-relaxed">
-                Completa todas las clases y aprueba la evaluación oral con Tutor IA.
+                Completa todas las clases y aprueba la Evaluación con Tutor IA.
               </p>
               <Link
                 href={`/mi-aula/${moduleId}/oral-exam`}
-                className={`mt-2 w-full flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all ${
-                  completedCount >= totalLessons
-                    ? 'bg-amber-500 text-slate-900 hover:bg-amber-400 active:scale-95'
-                    : 'bg-gray-800 text-gray-500 cursor-not-allowed pointer-events-none'
-                }`}
+                className={`mt-2 w-full flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all ${completedCount >= totalLessons
+                  ? 'bg-amber-500 text-slate-900 hover:bg-amber-400 active:scale-95'
+                  : 'bg-gray-800 text-gray-500 cursor-not-allowed pointer-events-none'
+                  }`}
               >
-                Ir a Evaluación Oral
+                Ir a Evaluación
               </Link>
             </div>
 
@@ -434,17 +460,15 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   <button
                     key={cls.id}
                     onClick={() => handleSelectClass(cls.id)}
-                    className={`w-full text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-xs transition-all cursor-pointer mb-1 ${
-                      isActive
-                        ? 'bg-amber-500/20 border border-amber-500/40 text-amber-300'
-                        : 'hover:bg-gray-800/60 text-gray-400 hover:text-gray-200 border border-transparent'
-                    }`}
+                    className={`w-full text-left flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-xs transition-all cursor-pointer mb-1 ${isActive
+                      ? 'bg-amber-500/20 border border-amber-500/40 text-amber-300'
+                      : 'hover:bg-gray-800/60 text-gray-400 hover:text-gray-200 border border-transparent'
+                      }`}
                   >
-                    <div className={`h-5 w-5 rounded-lg shrink-0 flex items-center justify-center text-[10px] font-bold ${
-                      isDone ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
+                    <div className={`h-5 w-5 rounded-lg shrink-0 flex items-center justify-center text-[10px] font-bold ${isDone ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' :
                       isActive ? 'bg-amber-500 text-slate-950' :
-                      'bg-gray-800 text-gray-500 border border-gray-700'
-                    }`}>
+                        'bg-gray-800 text-gray-500 border border-gray-700'
+                      }`}>
                       {isDone ? <Check className="w-3 h-3" /> : cls.number}
                     </div>
                     <div className="min-w-0">
@@ -483,7 +507,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 <CheckCircle2 className="w-12 h-12 text-emerald-400" />
               </div>
               <h3 className="text-xl font-bold text-white mb-1">¡Misión Completada!</h3>
-              <p className="text-sm text-gray-400" role="status">{progressError || (lessonSaved ? (activeClassId === moduleClasses.at(-1)?.id ? 'Módulo terminado. Puedes acceder a la evaluación oral.' : 'Clase guardada. Preparando la siguiente lección...') : 'Guardando tu progreso...')}</p>
+              <p className="text-sm text-gray-400" role="status">{progressError || (lessonSaved ? (activeClassId === moduleClasses.at(-1)?.id ? 'Módulo terminado. Puedes acceder a la Evaluación .' : 'Clase guardada. Preparando la siguiente lección...') : 'Guardando tu progreso...')}</p>
               {progressError && <button onClick={() => { setProgressError(null); setRetrySave(value => value + 1); }} className="mt-4 rounded-lg bg-amber-500 px-4 py-2 text-slate-950 font-bold active:scale-95">Reintentar guardado</button>}
             </div>
 
@@ -510,11 +534,23 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                     </button>
                   )}
                 </div>
-                {slideScript && <p className="text-xs text-blue-100/80 mb-2 leading-relaxed">{slideScript}</p>}
+                {slideScript && (
+                  <div className="mb-2">
+                    <p className={`text-xs text-blue-100/80 leading-relaxed ${narracionAbierta ? '' : 'line-clamp-2'}`}>{slideScript}</p>
+                    {slideScript.length > 160 && (
+                      <button
+                        onClick={() => setNarracionAbierta((v) => !v)}
+                        className="mt-0.5 text-[11px] font-semibold text-amber-300 hover:text-amber-200 active:scale-95"
+                      >
+                        {narracionAbierta ? 'Ver menos' : 'Ver más'}
+                      </button>
+                    )}
+                  </div>
+                )}
                 <ol className="space-y-1">
                   {currentStepGuide.instructions.map((inst, i) => (
                     <li key={i} className="text-xs text-blue-100 flex gap-2">
-                      <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/30 text-blue-300 flex items-center justify-center text-[9px] font-bold">{i+1}</span>
+                      <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/30 text-blue-300 flex items-center justify-center text-[9px] font-bold">{i + 1}</span>
                       {inst}
                     </li>
                   ))}
@@ -575,11 +611,10 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
               {slideScript && (
                 <div className="shrink-0 max-h-[35dvh] overflow-y-auto p-4 border-t border-gray-800 bg-[#0e1620]">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold ${
-                      isSpeaking
-                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30 animate-pulse'
-                        : 'bg-gray-800 text-gray-400'
-                    }`}>
+                    <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold ${isSpeaking
+                      ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30 animate-pulse'
+                      : 'bg-gray-800 text-gray-400'
+                      }`}>
                       <Bot className="w-3.5 h-3.5" />
                       {isSpeaking ? 'Tutor IA explicando...' : 'Tutor IA'}
                     </div>
@@ -598,13 +633,13 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 </div>
               )}
 
-              {/* Oral exam notice (last slide) */}
+              {/* exam notice (last slide) */}
               {lessonData && currentSlideIndex === lessonData.totalSlides - 1 && !hasSimulatorStep && (
                 <div className="p-4 bg-[#070b14] border-t border-purple-500/20">
                   <div className="rounded-xl bg-purple-500/10 border border-purple-500/30 p-3 flex items-start gap-3">
                     <Award className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-xs font-bold text-purple-300 mb-1">Evaluación Oral con Tutor IA</p>
+                      <p className="text-xs font-bold text-purple-300 mb-1">Evaluación con Tutor IA</p>
                       <p className="text-[11px] text-gray-400">
                         {completedCount >= totalLessons
                           ? '¡Todas las clases completadas! Puedes iniciar tu evaluación.'

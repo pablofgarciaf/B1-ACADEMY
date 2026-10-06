@@ -44,7 +44,7 @@ def get_config(m_id, title, category):
                 "archetype": "none",
                 "title": title,
                 "moduleName": category,
-                "theoreticalSummary": f"Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de {category}. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen Oral con el Profesor IA."
+                "theoreticalSummary": f"Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de {category}. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA."
             }
 
     # 2. Specific Archetypes
@@ -192,7 +192,7 @@ def get_config(m_id, title, category):
 # Generate TypeScript file
 ts_lines = [
     '// ═══════════════════════════════════════════════════════════════════',
-    '// REGISTRO DE ARQUETIPOS DE SIMULADOR PARA LOS 120 MANUALES SAP B1',
+    '// REGISTRO DE ARQUETIPOS DE SIMULADOR PARA LOS MANUALES SAP B1',
     '// Clasificación exacta: Teóricos (sin formulario) vs Prácticos (9 arquetipos)',
     '// ═══════════════════════════════════════════════════════════════════',
     '',

@@ -178,3 +178,14 @@
 .prose-lms .alert-caution {
   @apply p-4 mb-4 rounded-xl border border-rose-200 dark:border-rose-800/50 bg-rose-50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-200 text-sm;
 }
+
+/* SAPI, la mascota del asistente: flota, parpadea y la antena brilla. */
+@keyframes sapi-flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes sapi-parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes sapi-antena { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+.sapi-flotar { animation: sapi-flotar 3.2s ease-in-out infinite; }
+.sapi-ojos { transform-origin: 32px 32px; animation: sapi-parpadeo 4.5s infinite; }
+.sapi-antena { animation: sapi-antena 2s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .sapi-flotar, .sapi-ojos, .sapi-antena { animation: none; }
+}

@@ -1,16 +1,74 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import { CheckCircle2, ChevronRight, Eye, FolderOpen, Lightbulb, XCircle } from 'lucide-react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { SapiCara } from '@/components/site/SapiMascota';
+import {
+  ArrowRight, ChevronDown, ChevronRight, ChevronsLeft, ChevronsRight, ChevronLeft, CircleAlert, CircleCheck,
+  FileSpreadsheet, FileText, Filter, Folder, FolderOpen, Info, Mail, Plus, Printer, Search, Settings,
+} from 'lucide-react';
 
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
 export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
 
+/** Menú principal de SAP Business One 10.0 (cliente de escritorio, español). */
 const MODULOS_SAP = [
   'Administración', 'Finanzas', 'Oportunidades', 'Ventas - Clientes', 'Compras - Proveedores', 'Socios de negocios',
-  'Gestión de bancos', 'Inventario', 'Recursos', 'Producción', 'Planificación de necesidades', 'Servicio', 'Proyectos', 'Informes',
+  'Gestión de bancos', 'Inventario', 'Recursos', 'Producción', 'Planificación de necesidades', 'Servicio',
+  'Recursos humanos', 'Proyectos', 'Informes',
 ];
-const SUBMENUS_GENERICOS = ['Definiciones', 'Datos maestros', 'Informes', 'Transacciones', 'Herramientas', 'Configuración'];
+const SUBMENUS_GENERICOS = ['Definiciones', 'Datos maestros', 'Informes', 'Transacciones', 'Herramientas', 'Configuración', 'Asistentes'];
+const MENU_SUPERIOR = ['Archivo', 'Edición', 'Ver', 'Datos', 'Ir a', 'Módulos', 'Herramientas', 'Ventana', 'Ayuda'];
+const CLAVE_GUIA = 'sapi_guia_v1';
+const GUIA_TAM = 34;
+
+/** Las clases a veces nombran el módulo de forma abreviada: se traduce al nombre oficial del menú de SAP. */
+const ALIAS_MODULO: [RegExp, string][] = [
+  [/^ventas?\b|^clientes\b|clientes de ventas/, 'Ventas - Clientes'],
+  [/^compras?\b|^proveedores\b/, 'Compras - Proveedores'],
+  [/banco|tesorer/, 'Gestión de bancos'],
+  [/^mrp$|planificaci/, 'Planificación de necesidades'],
+  [/socio/, 'Socios de negocios'],
+  [/contab|finanz/, 'Finanzas'],
+  [/almac|inventar|stock/, 'Inventario'],
+  [/^gestion$|administr|configurac/, 'Administración'],
+  [/produc|fabric/, 'Producción'],
+  [/servicio|garant/, 'Servicio'],
+  [/proyecto/, 'Proyectos'],
+  [/informe|reporte/, 'Informes'],
+  [/oportunidad|crm/, 'Oportunidades'],
+  [/activo/, 'Finanzas'],
+];
+
+const plano = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+
+function moduloOficial(nombre: string): string {
+  const p = plano(nombre);
+  const oficial = MODULOS_SAP.find((m) => plano(m) === p);
+  if (oficial) return oficial;
+  return ALIAS_MODULO.find(([re]) => re.test(p))?.[1] ?? nombre;
+}
+
+/**
+ * Convierte la ruta de la clase en la ruta real de SAP Business One:
+ * quita "Menú principal" / "Módulo de…", resuelve "Maestros de datos" y "CRM" según la tarea,
+ * y deja "Herramientas" como menú de la barra superior (en SAP no está en el Menú principal).
+ */
+export function rutaSap(menuPath: string, titulo = ''): string[] {
+  const partes = menuPath.split('>').map((s) => s.trim()).filter(Boolean);
+  while (partes.length && /^(menu( principal)?|modulos?)$/.test(plano(partes[0]))) partes.shift();
+  if (!partes.length) return partes;
+  let raiz = plano(partes[0]).replace(/^modulo( de)?\s+/, '');
+  const contexto = plano(`${partes.join(' ')} ${titulo}`);
+  if (/^(maestros? de datos|datos maestros)$/.test(raiz)) {
+    raiz = /socio|cliente|proveedor|contacto/.test(contexto) ? 'socios de negocios' : /articulo|item|almacen|precio|unidad|lote|serie/.test(contexto) ? 'inventario' : 'administracion';
+  } else if (raiz === 'crm') {
+    raiz = /oportunidad/.test(contexto) ? 'oportunidades' : 'socios de negocios';
+  } else if (raiz === 'operaciones') {
+    raiz = /venta|factura|pedido|cliente/.test(contexto) ? 'ventas' : /compra|proveedor/.test(contexto) ? 'compras' : /stock|almacen|inventario/.test(contexto) ? 'inventario' : 'administracion';
+  }
+  partes[0] = /^herramientas/.test(raiz) ? 'Herramientas' : moduloOficial(raiz);
+  return partes;
+}
 
 /** Normaliza para comparar: sin tildes, mayúsculas, espacios, símbolos de moneda; números y fechas por su valor. */
 export function normalizar(valor: string): string {
@@ -37,6 +95,33 @@ export function normalizar(valor: string): string {
   return v.replace(/[.,;:'"()_-]/g, '');
 }
 
+/**
+ * Datos maestros de Distribuidora Andina Tech: en SAP se puede escribir el código o el nombre.
+ * Cada grupo son formas equivalentes del mismo dato.
+ */
+const EQUIVALENCIAS: string[][] = [
+  ['01', 'Bodega Central Quito', 'Bodega Central', 'Almacén Central'], ['02', 'Bodega Sucursal Guayaquil', 'Bodega Guayaquil'],
+  ['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle'],
+  ['V10000', 'Dell Ecuador'], ['V10001', 'HP Importaciones'], ['V10002', 'Lenovo Andina'], ['V10003', 'Acer Distributors'],
+  ['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],
+  ['A00004', 'Teclado Inalámbrico Logitech'], ['A00005', 'Mouse Óptico Dell'], ['A00006', 'Servidor HP ProLiant DL380'],
+  ['A00007', 'Disco Duro SSD 1TB Samsung'], ['A00008', 'Memoria RAM 16GB DDR4'],
+].map((g) => g.map((v) => normalizar(v)));
+
+/** Valores de sí/no: en SAP son casillas de verificación, no texto. */
+const SI = /^(si|true|marcado|activado|activo|habilitado|x|check)$/;
+const NO = /^(no|false|desmarcado|desactivado|inactivo|deshabilitado)$/;
+const esBooleano = (valor: string) => { const n = normalizar(valor); return SI.test(n) || NO.test(n); };
+
+/** ¿La respuesta del estudiante coincide con la esperada? (formatos, código o nombre, sí/no) */
+export function coincide(respuesta: string, esperado: string): boolean {
+  const r = normalizar(respuesta);
+  const e = normalizar(esperado);
+  if (r === e) return true;
+  if (esBooleano(esperado)) return SI.test(e) ? SI.test(r) : NO.test(r) || r === '';
+  return EQUIVALENCIAS.some((g) => g.includes(r) && g.includes(e));
+}
+
 function mezclar<T>(arr: T[], semilla: number): T[] {
   const a = [...arr];
   let s = semilla;
@@ -48,145 +133,399 @@ function mezclar<T>(arr: T[], semilla: number): T[] {
   return a;
 }
 
+/** Códigos de datos maestros (C20000, V10000, A00001…): en SAP llevan la flecha naranja de enlace. */
+const esCodigoMaestro = (v: string) => /^[A-Z]{1,3}\d{3,}$/.test(v.trim());
+
+type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
+
 export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: () => void }) {
-  const ruta = useMemo(() => (guia.menu_path ?? '').split('>').map((p) => p.trim()).filter(Boolean), [guia.menu_path]);
-  const campos = guia.campos ?? [];
-  const [nivel, setNivel] = useState(0); // segmentos del menú ya elegidos
-  const [errorMenu, setErrorMenu] = useState<string | null>(null);
+  const ruta = useMemo(() => rutaSap(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
+  // "Herramientas" (consultas, alertas, personalización) se abre desde la barra de menú superior, como en SAP.
+  const porMenuSuperior = ruta[0] === 'Herramientas';
+  const campos = useMemo(() => guia.campos ?? [], [guia.campos]);
+  const [nivel, setNivel] = useState(0); // segmentos correctos ya abiertos en el árbol
+  const [moduloAbierto, setModuloAbierto] = useState<string | null>(null); // módulo incorrecto expandido
   const [valores, setValores] = useState<string[]>(() => campos.map(() => ''));
   // true = correcto, false = incorrecto, null = editado desde la última revisión (neutro).
   const [revisado, setRevisado] = useState<(boolean | null)[] | null>(null);
   const [intentos, setIntentos] = useState(0);
-  const [mostrarRespuesta, setMostrarRespuesta] = useState(false);
+  const [mostrarSolucion, setMostrarSolucion] = useState(false);
   const [logrado, setLogrado] = useState(false);
+  const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal.' });
 
-  const ventanaAbierta = nivel >= ruta.length;
-  const opciones = useMemo(() => {
-    if (ventanaAbierta) return [];
-    const correcta = ruta[nivel];
-    const base = nivel === 0 ? MODULOS_SAP : [...SUBMENUS_GENERICOS, ...ruta.slice(nivel + 1)];
-    const distractores = base.filter((o) => normalizar(o) !== normalizar(correcta)).slice(0, nivel === 0 ? 5 : 3);
-    return mezclar([correcta, ...distractores], nivel * 7 + correcta.length);
-  }, [nivel, ruta, ventanaAbierta]);
+  const ventanaAbierta = ruta.length === 0 || nivel >= ruta.length;
+  const modulos = useMemo(() => {
+    const raiz = ruta[0];
+    if (!raiz || porMenuSuperior || MODULOS_SAP.some((m) => normalizar(m) === normalizar(raiz))) return MODULOS_SAP;
+    return [...MODULOS_SAP, raiz];
+  }, [ruta, porMenuSuperior]);
 
-  const elegir = (opcion: string) => {
-    if (normalizar(opcion) === normalizar(ruta[nivel])) {
-      setErrorMenu(null);
+  /** Hijos de un nivel del árbol: el correcto mezclado con submenús distractores. */
+  const hijos = (profundidad: number) => {
+    const correcto = ruta[profundidad];
+    const distractores = SUBMENUS_GENERICOS.filter((o) => normalizar(o) !== normalizar(correcto)).slice(0, 3);
+    return mezclar([correcto, ...distractores], profundidad * 11 + correcto.length);
+  };
+
+  const elegir = (profundidad: number, opcion: string) => {
+    if (logrado) return;
+    if (profundidad === nivel && normalizar(opcion) === normalizar(ruta[profundidad])) {
       setNivel(nivel + 1);
+      setEstado(nivel + 1 >= ruta.length
+        ? { tono: 'info', texto: `Ventana "${opcion}" abierta. Completa los campos y pulsa Añadir.` }
+        : { tono: 'info', texto: 'Bien. Sigue bajando por el menú.' });
     } else {
-      setErrorMenu(`"${opcion}" no es la ruta correcta. Piensa en qué módulo vive "${guia.title}".`);
+      setEstado({ tono: 'error', texto: `"${opcion}" no es la ventana de esta tarea. Revisa la ruta en las instrucciones.` });
     }
   };
 
   const validar = () => {
-    const res = campos.map((c, i) => normalizar(valores[i]) === normalizar(c.valor));
+    if (logrado) return;
+    const res = campos.map((c, i) => coincide(valores[i], c.valor));
+    const buenos = res.filter(Boolean).length;
     setRevisado(res);
     setIntentos((n) => n + 1);
-    if (res.every(Boolean)) {
+    if (buenos === campos.length) {
       setLogrado(true);
+      setEstado({ tono: 'exito', texto: 'Operación completada con éxito.' });
       setTimeout(onCompleta, 2200);
+    } else {
+      setEstado({ tono: 'error', texto: `No se puede añadir: ${campos.length - buenos} campo(s) con valores incorrectos. Revisa los marcados en rojo.` });
     }
   };
 
-  const correctos = revisado?.filter((r) => r === true).length ?? 0;
   const tituloVentana = ruta[ruta.length - 1] ?? guia.title;
 
+  // ── Sapi guía: se desplaza hasta el siguiente elemento que hay que pulsar o llenar ──
+  const raizRef = useRef<HTMLDivElement>(null);
+  const [guiaActiva, setGuiaActiva] = useState(true);
+  useEffect(() => {
+    try { if (localStorage.getItem(CLAVE_GUIA) === 'off') setGuiaActiva(false); } catch { /* sin almacenamiento */ }
+  }, []);
+  const alternarGuia = () => {
+    setGuiaActiva((v) => {
+      try { localStorage.setItem(CLAVE_GUIA, v ? 'off' : 'on'); } catch { /* sin almacenamiento */ }
+      return !v;
+    });
+  };
+
+  /** Qué debe hacer el estudiante ahora. No revela valores: solo señala dónde actuar. */
+  const objetivo = useMemo<{ clave: string; texto: string } | null>(() => {
+    if (logrado) return null;
+    if (!ventanaAbierta) {
+      const op = ruta[nivel];
+      return { clave: `menu-${nivel}`, texto: nivel === 0 && porMenuSuperior ? `Abre el menú "${op}"` : `Haz clic en "${op}"` };
+    }
+    const mal = revisado ? revisado.findIndex((r) => r === false) : -1;
+    if (mal >= 0) return { clave: `campo-${mal}`, texto: `Corrige "${campos[mal].etiqueta}"` };
+    const vacio = campos.findIndex((c, i) => !esBooleano(c.valor) && !valores[i].trim());
+    if (vacio >= 0) return { clave: `campo-${vacio}`, texto: `Llena "${campos[vacio].etiqueta}"` };
+    return { clave: 'anadir', texto: '¡Todo listo! Pulsa Añadir' };
+  }, [logrado, ventanaAbierta, ruta, nivel, porMenuSuperior, revisado, campos, valores]);
+
+  const [posGuia, setPosGuia] = useState<{ x: number; y: number; izquierda: boolean } | null>(null);
+  useLayoutEffect(() => {
+    const raiz = raizRef.current;
+    if (!raiz || !objetivo || !guiaActiva) { setPosGuia(null); return; }
+    const calcular = () => {
+      const el = raiz.querySelector<HTMLElement>(`[data-guia="${objetivo.clave}"]`);
+      if (!el) { setPosGuia(null); return; }
+      const r = el.getBoundingClientRect();
+      const b = raiz.getBoundingClientRect();
+      const esCampo = objetivo.clave.startsWith('campo-');
+      // Campos: Sapi se posa al final del input. Menú y botones: justo a su derecha.
+      let x = (esCampo ? r.right - GUIA_TAM - 2 : r.right + 4) - b.left;
+      x = Math.max(4, Math.min(x, b.width - GUIA_TAM - 4));
+      const y = r.top - b.top + r.height / 2 - GUIA_TAM / 2;
+      // En campos el globo va hacia la izquierda (sobre el propio input) para no tapar la columna vecina.
+      const izquierda = esCampo || x > b.width - 230;
+      // Solo actualiza si cambió: evita renders en cadena con el ResizeObserver.
+      setPosGuia((p) => (p && Math.abs(p.x - x) < 0.5 && Math.abs(p.y - y) < 0.5 && p.izquierda === izquierda ? p : { x, y, izquierda }));
+    };
+    calcular();
+    const ro = new ResizeObserver(calcular);
+    ro.observe(raiz);
+    raiz.addEventListener('scroll', calcular, true); // el árbol de módulos tiene scroll propio
+    window.addEventListener('resize', calcular);
+    return () => { ro.disconnect(); raiz.removeEventListener('scroll', calcular, true); window.removeEventListener('resize', calcular); };
+  }, [objetivo, guiaActiva, moduloAbierto]);
+
   return (
-    <div className="h-full flex flex-col gap-3 p-3 text-gray-900 overflow-y-auto">
-      {/* Paso 1: navegación por el menú de SAP */}
-      <div className="rounded-lg border border-[#b0b8c4] bg-[#e4e8ef] p-3">
-        <p className="text-[11px] font-bold uppercase tracking-wider text-[#1c3a63] flex items-center gap-1.5">
-          <FolderOpen size={14} /> Paso 1 · Abre la ventana desde el menú principal
-        </p>
-        <div className="mt-2 flex flex-wrap items-center gap-1 text-xs">
-          <span className="font-semibold text-gray-600">Menú principal</span>
-          {ruta.slice(0, nivel).map((p) => (
-            <span key={p} className="flex items-center gap-1 font-semibold text-[#1c3a63]"><ChevronRight size={12} />{p}</span>
-          ))}
-          {!ventanaAbierta && <span className="flex items-center gap-1 text-gray-400"><ChevronRight size={12} />?</span>}
+    <div ref={raizRef} className="relative m-2 sm:m-3 rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs select-none">
+      {posGuia && objetivo && (
+        <div
+          aria-hidden="true"
+          // Coordenadas calculadas en tiempo real según el elemento objetivo: no expresables con clases.
+          style={{ left: posGuia.x, top: posGuia.y }}
+          className="pointer-events-none absolute z-30 transition-[left,top] duration-500 ease-out motion-reduce:transition-none"
+        >
+          <SapiCara tam={GUIA_TAM} />
+          <span
+            className={`absolute top-1 whitespace-nowrap rounded-md bg-[#0B3D91] px-2 py-1 text-[11px] font-semibold text-white shadow-lg ${
+              posGuia.izquierda ? 'right-full mr-1' : 'left-full ml-1'
+            }`}
+          >
+            {objetivo.texto}
+          </span>
         </div>
-        {!ventanaAbierta && (
-          <div className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-            {opciones.map((o) => (
-              <button
-                key={o}
-                onClick={() => elegir(o)}
-                className="text-left px-2.5 py-1.5 rounded border border-[#7f9db9] bg-white hover:bg-[#fffde0] text-xs font-medium active:scale-95"
-              >
-                {o}
-              </button>
-            ))}
-          </div>
-        )}
-        {errorMenu && <p className="mt-2 text-xs text-red-700 flex items-center gap-1"><XCircle size={13} /> {errorMenu}</p>}
+      )}
+      {/* Barra de título de la aplicación */}
+      <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1">
+        <span className="flex items-center gap-2 font-semibold">
+          <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 text-[10px] font-black italic text-white">SAP</span>
+          SAP Business One 10.0 — Distribuidora Andina Tech S.A.
+        </span>
+        <span className="hidden sm:flex gap-1" aria-hidden="true">
+          {['▁', '▢', '✕'].map((s) => <span key={s} className="w-6 h-4 flex items-center justify-center rounded-sm border border-[#9fb1c7] bg-[#eef2f7] text-[10px]">{s}</span>)}
+        </span>
       </div>
 
-      {/* Paso 2: la ventana de SAP con los campos a completar */}
-      {ventanaAbierta && (
-        <div className="rounded-lg border-2 border-[#1c3a63] bg-[#ece9d8] shadow-xl overflow-hidden">
-          <div className="bg-gradient-to-r from-[#003366] to-[#0055A5] text-white px-3 py-1.5 text-xs font-bold flex justify-between">
-            <span>{tituloVentana}</span>
-            <span className="opacity-70 tracking-[6px]">▁▢✕</span>
+      {/* Barra de menú (Herramientas abre su menú desplegable, como en SAP) */}
+      <div className="relative flex flex-wrap gap-x-4 bg-[#f6f7f9] border-b border-[#cdd6e1] px-3 py-0.5 text-[11px]">
+        {MENU_SUPERIOR.map((m) => (
+          <button
+            key={m}
+            type="button"
+            data-guia={porMenuSuperior && m === 'Herramientas' ? 'menu-0' : undefined}
+            onClick={() => {
+              if (porMenuSuperior && m === 'Herramientas') { if (nivel === 0) elegir(0, m); }
+              else setEstado({ tono: porMenuSuperior ? 'error' : 'info', texto: porMenuSuperior ? `"${m}" no contiene la ventana de esta tarea.` : 'Esta tarea se abre desde el Menú principal de la izquierda.' });
+            }}
+            className={`px-1 hover:bg-[#dde6f1] ${porMenuSuperior && m === 'Herramientas' && nivel > 0 ? 'bg-[#dde6f1] font-semibold' : ''}`}
+          >
+            {m}
+          </button>
+        ))}
+        {porMenuSuperior && nivel > 0 && !ventanaAbierta && (
+          <div className="absolute left-[38%] top-full z-20 min-w-[220px] rounded-sm border border-[#9fb1c7] bg-white shadow-xl py-1">
+            <Rama ruta={ruta} profundidad={1} nivel={nivel} hijos={hijos} elegir={elegir} />
           </div>
-          <div className="p-4 space-y-2.5">
-            {campos.map((c, i) => {
-              const estado = revisado?.[i];
+        )}
+      </div>
+
+      {/* Barra de herramientas */}
+      <div className="flex items-center gap-1 bg-[#e9edf2] border-b border-[#cdd6e1] px-2 py-1" aria-hidden="true">
+        {[Printer, Mail, FileSpreadsheet, null, Search, Plus, null, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight, null, Filter, Settings].map((Icono, i) =>
+          Icono
+            ? <span key={i} className="w-6 h-6 flex items-center justify-center rounded-sm hover:bg-[#d6dee8] text-[#2a5d9f]"><Icono size={14} /></span>
+            : <span key={i} className="w-px h-4 bg-[#b8c4d2] mx-1" />,
+        )}
+      </div>
+
+      <div className="flex flex-col md:flex-row min-h-[380px]">
+        {/* Menú principal (árbol de módulos) */}
+        <nav aria-label="Menú principal de SAP" className="md:w-60 shrink-0 bg-white border-b md:border-b-0 md:border-r border-[#cdd6e1]">
+          <div className="flex text-[11px] border-b border-[#cdd6e1]">
+            <span className="px-3 py-1 font-bold border-b-2 border-[#f0ab00]">Módulos</span>
+            <span className="px-3 py-1 text-gray-400">Drag &amp; Relate</span>
+            <span className="px-3 py-1 text-gray-400">Mi menú</span>
+          </div>
+          <ul className="py-1 max-h-[340px] overflow-y-auto">
+            {modulos.map((m) => {
+              const esRaizCorrecta = !!ruta[0] && normalizar(m) === normalizar(ruta[0]);
+              const abierto = (esRaizCorrecta && nivel > 0) || moduloAbierto === m;
               return (
-                <div key={`${i}-${c.etiqueta}`} className="grid grid-cols-[minmax(110px,180px)_1fr] items-start gap-3">
-                  <label htmlFor={`campo-${i}`} className="text-xs text-gray-700 text-right pt-1.5">{c.etiqueta}</label>
-                  <div>
-                    <input
-                      id={`campo-${i}`}
-                      value={valores[i]}
-                      disabled={logrado}
-                      onChange={(e) => {
-                        const v = [...valores]; v[i] = e.target.value; setValores(v);
-                        if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
-                      }}
-                      onKeyDown={(e) => { if (e.key === 'Enter') validar(); }}
-                      className={`w-full px-2 py-1 text-xs bg-white border rounded-sm focus:outline-none ${
-                        estado === true ? 'border-emerald-600 bg-emerald-50' : estado === false ? 'border-red-600 bg-red-50' : 'border-[#7f9db9] focus:border-[#316ac5]'
-                      }`}
-                    />
-                    {estado === false && (
-                      <p className="mt-0.5 text-[11px] text-red-700 flex items-center gap-1">
-                        <Lightbulb size={11} /> {c.pista || 'Revisa este valor con las instrucciones de la práctica.'}
-                        {mostrarRespuesta && <span className="ml-1 font-bold">Respuesta: {c.valor}</span>}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                <li key={m}>
+                  <button
+                    type="button"
+                    data-guia={esRaizCorrecta ? 'menu-0' : undefined}
+                    onClick={() => {
+                      if (esRaizCorrecta) { if (nivel === 0) elegir(0, m); }
+                      else { setModuloAbierto(abierto ? null : m); setEstado({ tono: 'info', texto: `Módulo "${m}" desplegado.` }); }
+                    }}
+                    className={`w-full flex items-center gap-1.5 px-2 py-[3px] text-left hover:bg-[#e8f1fb] ${abierto ? 'font-semibold' : ''}`}
+                  >
+                    {abierto ? <ChevronDown size={11} /> : <ChevronRight size={11} />}
+                    {abierto ? <FolderOpen size={14} className="text-[#e3a21a] fill-[#f7d774]" /> : <Folder size={14} className="text-[#e3a21a] fill-[#f7d774]" />}
+                    {m}
+                  </button>
+                  {/* Rama correcta: se despliega nivel por nivel */}
+                  {abierto && esRaizCorrecta && <Rama ruta={ruta} profundidad={1} nivel={nivel} hijos={hijos} elegir={elegir} />}
+                  {/* Rama de un módulo equivocado: submenús que no llevan a la tarea */}
+                  {abierto && !esRaizCorrecta && (
+                    <ul className="pl-5">
+                      {SUBMENUS_GENERICOS.slice(0, 4).map((s) => (
+                        <li key={s}>
+                          <button type="button" onClick={() => elegir(-1, s)} className="w-full flex items-center gap-1.5 px-2 py-[3px] text-left hover:bg-[#e8f1fb]">
+                            <FileText size={13} className="text-[#2a5d9f]" /> {s}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
               );
             })}
-          </div>
-          <div className="bg-[#d4d0c8] border-t border-[#b0b8c4] px-3 py-2 flex flex-wrap items-center justify-between gap-2">
-            <span className="text-[11px] text-gray-700">
-              {logrado
-                ? '¡Documento registrado correctamente!'
-                : revisado ? `${correctos} de ${campos.length} campos correctos · intento ${intentos}` : 'Completa los campos y pulsa Añadir.'}
-            </span>
-            <div className="flex gap-2">
-              {intentos >= 3 && !logrado && !mostrarRespuesta && (
-                <button onClick={() => setMostrarRespuesta(true)} className="flex items-center gap-1 px-3 py-1 rounded-sm border border-[#555] bg-[#dfdfdf] text-xs active:scale-95">
-                  <Eye size={12} /> Ver respuesta
-                </button>
-              )}
-              <button
-                onClick={validar}
-                disabled={logrado}
-                className="px-5 py-1 rounded-sm bg-[#ffb700] hover:bg-[#ffaa00] text-[#1c3a63] text-xs font-bold shadow active:scale-95 disabled:opacity-60"
-              >
-                Añadir
-              </button>
+          </ul>
+        </nav>
+
+        {/* Escritorio de trabajo */}
+        <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5">
+          {!ventanaAbierta ? (
+            <div className="h-full min-h-[200px] flex items-center justify-center">
+              <p className="max-w-sm text-center text-[#4a5b70] bg-white/70 rounded-md border border-[#b8c4d2] px-4 py-3">
+                Abre la ventana de la tarea desde {porMenuSuperior ? <>el menú <strong>Herramientas</strong> de la barra superior</> : <>el <strong>Menú principal</strong> de la izquierda</>}:<br />
+                <span className="font-semibold text-[#1f4f8f]">{ruta.slice(0, Math.max(nivel, 1)).join(' › ')}{nivel < ruta.length ? ' › …' : ''}</span>
+              </p>
             </div>
-          </div>
-          {logrado && (
-            <div className="px-3 py-2 bg-emerald-600 text-white text-xs font-bold flex items-center gap-2">
-              <CheckCircle2 size={14} /> Práctica superada. Volviendo a la clase…
+          ) : (
+            <div className="max-w-3xl rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl">
+              {/* Barra de título de la ventana del documento */}
+              <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2 py-1 font-semibold">
+                <span>{tituloVentana}</span>
+                <span className="flex gap-1" aria-hidden="true">
+                  {['▁', '▢', '✕'].map((s) => <span key={s} className="w-5 h-4 flex items-center justify-center rounded-sm border border-[#9fb1c7] bg-[#eef2f7] text-[9px]">{s}</span>)}
+                </span>
+              </div>
+
+              {/* Campos (dos columnas, como la cabecera de un documento SAP) */}
+              <div className="grid md:grid-cols-2 gap-x-6 gap-y-2 p-3 sm:p-4">
+                {campos.map((c, i) => {
+                  const est = revisado?.[i];
+                  return (
+                    <div key={`${i}-${c.etiqueta}`}>
+                      <div className="grid grid-cols-[150px_1fr] items-center gap-2">
+                        <label htmlFor={`campo-${i}`} className="flex items-center gap-1 text-[#32465c] leading-tight" title={c.etiqueta}>
+                          {esCodigoMaestro(c.valor) && <ArrowRight size={11} className="shrink-0 text-[#f0ab00]" aria-label="Enlace a datos maestros" />}
+                          {c.etiqueta}
+                        </label>
+                        {esBooleano(c.valor) ? (
+                          <span data-guia={`campo-${i}`} className="flex items-center h-6">
+                            <input
+                              id={`campo-${i}`}
+                              type="checkbox"
+                              checked={SI.test(normalizar(valores[i]))}
+                              disabled={logrado}
+                              onChange={(e) => {
+                                const v = [...valores]; v[i] = e.target.checked ? 'Sí' : 'No'; setValores(v);
+                                if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
+                              }}
+                              className={`w-4 h-4 accent-[#f0ab00] ${est === false ? 'outline outline-2 outline-[#c9302c]' : ''}`}
+                            />
+                          </span>
+                        ) : (
+                        <input
+                          id={`campo-${i}`}
+                          data-guia={`campo-${i}`}
+                          value={valores[i]}
+                          disabled={logrado}
+                          autoComplete="off"
+                          onChange={(e) => {
+                            const v = [...valores]; v[i] = e.target.value; setValores(v);
+                            if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
+                          }}
+                          onKeyDown={(e) => { if (e.key === 'Enter') validar(); }}
+                          className={`h-6 w-full px-1.5 bg-white border rounded-[2px] focus:outline-none select-text ${
+                            est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'
+                              : est === false ? 'border-[#c9302c] bg-[#fdf0ef]'
+                                : 'border-[#a9b7c8] focus:border-[#f0ab00] focus:ring-1 focus:ring-[#f0ab00]'
+                          }`}
+                        />
+                        )}
+                      </div>
+                      {est === false && (
+                        <p className="mt-0.5 ml-[158px] text-[10.5px] text-[#a12622]">
+                          {c.pista || 'Revisa este valor con las instrucciones.'}
+                          {mostrarSolucion && <> · <strong>Solución: {c.valor}</strong></>}
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Botones de SAP: Añadir / Cancelar abajo a la izquierda; Copiar de / a a la derecha */}
+              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#cdd6e1] px-3 py-2">
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    data-guia="anadir"
+                    onClick={validar}
+                    disabled={logrado}
+                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#c48a00] bg-gradient-to-b from-[#ffd25a] to-[#f0ab00] font-bold text-[#1d2d3e] shadow-sm hover:brightness-105 active:scale-95 disabled:opacity-60"
+                  >
+                    Añadir
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => { setValores(campos.map(() => '')); setRevisado(null); setEstado({ tono: 'info', texto: 'Cambios descartados.' }); }}
+                    disabled={logrado}
+                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-gradient-to-b from-white to-[#e4e9ef] active:scale-95 disabled:opacity-60"
+                  >
+                    Cancelar
+                  </button>
+                  {intentos >= 3 && !logrado && !mostrarSolucion && (
+                    <button type="button" onClick={() => setMostrarSolucion(true)} className="h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-white text-[#1f4f8f] underline active:scale-95">
+                      Ver solución
+                    </button>
+                  )}
+                </div>
+                <div className="hidden sm:flex gap-2" aria-hidden="true">
+                  {['Copiar de', 'Copiar a'].map((b) => <span key={b} className="h-6 px-3 flex items-center rounded-[3px] border border-[#c3ccd7] bg-[#eef1f5] text-gray-400">{b}</span>)}
+                </div>
+              </div>
             </div>
           )}
         </div>
-      )}
+      </div>
+
+      {/* Barra de estado (mensajes del sistema) */}
+      <div
+        role="status"
+        className={`flex items-center gap-2 border-t px-3 py-1 text-[11px] ${
+          estado.tono === 'error' ? 'bg-[#fdecea] border-[#e3a6a2] text-[#a12622]'
+            : estado.tono === 'exito' ? 'bg-[#e9f6e7] border-[#a8d3a0] text-[#2b6e2b]'
+              : 'bg-[#f2f4f7] border-[#cdd6e1] text-[#4a5b70]'
+        }`}
+      >
+        {estado.tono === 'error' ? <CircleAlert size={13} /> : estado.tono === 'exito' ? <CircleCheck size={13} /> : <Info size={13} />}
+        <span className="flex-1">{estado.texto}</span>
+        {logrado && <span className="font-bold">Práctica superada · volviendo a la clase…</span>}
+        {!logrado && revisado && <span>Intento {intentos}</span>}
+        {!logrado && (
+          <button
+            type="button"
+            onClick={alternarGuia}
+            aria-pressed={guiaActiva}
+            className="ml-1 rounded-sm border border-[#b8c4d2] bg-white px-1.5 py-px text-[10.5px] text-[#1f4f8f] hover:bg-[#e8f1fb] active:scale-95"
+          >
+            {guiaActiva ? 'Ocultar guía Sapi' : 'Mostrar guía Sapi'}
+          </button>
+        )}
+      </div>
     </div>
+  );
+}
+
+/** Nivel del árbol bajo el módulo correcto: el camino de la tarea mezclado con submenús distractores. */
+function Rama({ ruta, profundidad, nivel, hijos, elegir }: {
+  ruta: string[]; profundidad: number; nivel: number;
+  hijos: (p: number) => string[]; elegir: (p: number, o: string) => void;
+}) {
+  if (profundidad >= ruta.length || nivel < profundidad) return null;
+  return (
+    <ul className="pl-4">
+      {hijos(profundidad).map((o) => {
+        const correcto = normalizar(o) === normalizar(ruta[profundidad]);
+        const esHoja = profundidad === ruta.length - 1;
+        const abierto = correcto && nivel > profundidad;
+        return (
+          <li key={o}>
+            <button
+              type="button"
+              data-guia={correcto ? `menu-${profundidad}` : undefined}
+              onClick={() => elegir(profundidad, o)}
+              className={`w-full flex items-center gap-1.5 px-2 py-[3px] text-left hover:bg-[#e8f1fb] ${abierto ? 'font-semibold' : ''}`}
+            >
+              {esHoja
+                ? <FileText size={13} className="text-[#2a5d9f]" />
+                : abierto ? <FolderOpen size={13} className="text-[#e3a21a] fill-[#f7d774]" /> : <Folder size={13} className="text-[#e3a21a] fill-[#f7d774]" />}
+              {o}
+            </button>
+            {abierto && <Rama ruta={ruta} profundidad={profundidad + 1} nivel={nivel} hijos={hijos} elegir={elegir} />}
+          </li>
+        );
+      })}
+    </ul>
   );
 }

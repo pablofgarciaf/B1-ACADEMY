@@ -314,7 +314,7 @@ for m in manuals:
 # GENERAR TYPESCRIPT
 # ═══════════════════════════════════════════════════════════════════
 ts = '''// ═══════════════════════════════════════════════════════════════════
-// BASE DE DATOS DE 120 MANUALES SAP ACADEMY - AUTO-GENERADO
+// BASE DE DATOS DE MANUALES SAP ACADEMY - AUTO-GENERADO
 // Títulos en español, resúmenes extraídos del contenido real
 // ═══════════════════════════════════════════════════════════════════
 

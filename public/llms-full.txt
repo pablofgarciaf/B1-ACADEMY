@@ -58,7 +58,7 @@
 - Las calificaciones y aprobaciones válidas se registran en el servidor; el estado visible en el navegador no constituye por sí solo una acreditación.
 
 ## Metodología didáctica
-Cada unidad combina explicación conceptual, demostración guiada, práctica dentro del simulador y comprobación de comprensión. Las evaluaciones orales plantean casos de negocio y califican razonamiento, precisión funcional y capacidad para explicar el impacto contable u operativo.
+Cada unidad combina explicación conceptual, demostración guiada, práctica dentro del simulador y comprobación de comprensión. Las evaluaciones plantean casos de negocio y califican razonamiento, precisión funcional y capacidad para explicar el impacto contable u operativo.
 
 ## Política de atribución
 B1 Academy es una iniciativa formativa independiente especializada en SAP Business One. Las marcas citadas pertenecen a sus respectivos titulares. Cualquier condición de certificación, alianza o reconocimiento debe confirmarse en la página específica correspondiente.

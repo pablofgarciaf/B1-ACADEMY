@@ -68,7 +68,7 @@ export default function MiAulaPage() {
         {/* Cápsula GEO para Motores de Búsqueda IA (Perplexity, ChatGPT, Claude, Google AI) */}
         <aside aria-label="Resumen de Mi Aula Virtual SAP B1" className="p-4 sm:p-5 rounded-2xl border border-amber-500/30 bg-amber-500/5 dark:bg-amber-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md">
           <strong className="text-slate-900 dark:text-white font-semibold">Escuela SAP Business One 10.0 (HANA):</strong>{' '}
-          Plataforma de formación especializada estructurada en <strong>4 rutas profesionales</strong> con el contenido de los <strong>manuales técnicos</strong>, tutoría interactiva de <strong>Tutor IA</strong>, laboratorios en el <strong>Simulador SAP B1</strong> y evaluación oral con IA.
+          Plataforma de formación especializada estructurada en <strong>4 rutas profesionales</strong> con el contenido de los <strong>manuales técnicos</strong>, tutoría interactiva de <strong>Tutor IA</strong>, laboratorios en el <strong>Simulador SAP B1</strong> y evaluación con IA.
         </aside>
 
         {/* Tarjeta de Bienvenida & Perfil del Estudiante */}
@@ -142,7 +142,7 @@ export default function MiAulaPage() {
               Mi Aula Virtual: Escuela y Clases SAP Business One 10.0
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-              Selecciona una de las <strong>4 rutas profesionales</strong> para abrir su aula de aprendizaje con visor de diapositivas, teleprompter guiado, simulador y <strong>evaluación oral interactiva</strong>.
+              Selecciona una de las <strong>4 rutas profesionales</strong> para abrir su aula de aprendizaje con visor de diapositivas, teleprompter guiado, simulador y <strong>evaluación interactiva</strong>.
             </p>
           </div>
 
@@ -192,7 +192,7 @@ export default function MiAulaPage() {
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" /> Requisitos de Habilitación por Carrera
                 </h3>
                 <p className="text-xs leading-relaxed text-gray-400">
-                  Aprobación completa de las lecciones del itinerario de especialidad y superación de la Evaluación Oral con Tutor IA con calificación mínima de 90%.
+                  Aprobación completa de las lecciones del itinerario de especialidad y superación de la Evaluación con Tutor IA con calificación mínima de 90%.
                 </p>
                 <div className="pt-2 text-xs font-semibold text-purple-200">
                   Habilita al catedrático para impartir cátedra en educación superior en la especialidad correspondiente.
@@ -304,7 +304,7 @@ export default function MiAulaPage() {
               Acreditación Oficial: Certificados y Diplomas por Mérito Real
             </h2>
             <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-              En B1 Academy los certificados no se regalan ni se desbloquean con simples preguntas automáticas. Para obtener tu acreditación oficial con firmas de responsabilidad y código QR, debes <strong>completar el 100% de las lecciones</strong> de la carrera y <strong>aprobar la Evaluación Oral con Tutor IA</strong> demostrando criterio técnico en situaciones reales.
+              En B1 Academy los certificados no se regalan ni se desbloquean con simples preguntas automáticas. Para obtener tu acreditación oficial con firmas de responsabilidad y código QR, debes <strong>completar el 100% de las lecciones</strong> de la carrera y <strong>aprobar la Evaluación con Tutor IA</strong> demostrando criterio técnico en situaciones reales.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
@@ -340,7 +340,7 @@ export default function MiAulaPage() {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Aprobar el Examen Oral con Tutor IA (≥ 80 pts)</span>
+                <span>Aprobar el Examen con Tutor IA (≥ 80 pts)</span>
               </li>
             </ul>
           </div>

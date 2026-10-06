@@ -65,5 +65,5 @@ Para cerrar, recordemos la regla crítica de integridad: la Unidad de Medida de 
 ---
 ## Diapositiva 17
 **Aviso Legal y Certificación Oficial**
-Has completado la lección sobre Configuración de Unidades de Medida. Te invito a realizar la práctica en el simulador interactivo y comprobar tu dominio en la evaluación oral con Master B1.
+Has completado la lección sobre Configuración de Unidades de Medida. Te invito a realizar la práctica en el simulador interactivo y comprobar tu dominio en la Evaluación con Master B1.
 ---

@@ -2,15 +2,15 @@
 
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
-import { 
-  Play, 
-  Save, 
-  CheckCircle2, 
-  Sparkles, 
-  Database, 
-  Filter, 
-  Calendar, 
-  RefreshCw, 
+import {
+  Play,
+  Save,
+  CheckCircle2,
+  Sparkles,
+  Database,
+  Filter,
+  Calendar,
+  RefreshCw,
   ArrowRight,
   Network,
   Users,
@@ -187,9 +187,9 @@ const OINV_FIELDS = [
   { name: "DocStatus", desc: "Document Status" }
 ];
 
-export default function SAPInteractiveSimulator({ 
-  manualId, 
-  currentStepIndex, 
+export default function SAPInteractiveSimulator({
+  manualId,
+  currentStepIndex,
   stepGuide,
   guidedMode = false,
   onStepComplete,
@@ -362,12 +362,12 @@ export default function SAPInteractiveSimulator({
   const [selectedTable, setSelectedTable] = useState<string>("OCRD");
   const [selectedFieldInLeftList, setSelectedFieldInLeftList] = useState<string>("CardType");
   const [selectedFields, setSelectedFields] = useState<string[]>([
-    "CardCode", 
-    "CardName", 
-    "CardType", 
-    "Address", 
-    "Balance", 
-    "ZipCode", 
+    "CardCode",
+    "CardName",
+    "CardType",
+    "Address",
+    "Balance",
+    "ZipCode",
     "City"
   ]);
   const [whereClause, setWhereClause] = useState<string>('T0."CardType" = \'C\'');
@@ -442,8 +442,8 @@ export default function SAPInteractiveSimulator({
       if (typeof valA === 'number' && typeof valB === 'number') {
         return nextOrder === 'asc' ? valA - valB : valB - valA;
       }
-      return nextOrder === 'asc' 
-        ? String(valA).localeCompare(String(valB)) 
+      return nextOrder === 'asc'
+        ? String(valA).localeCompare(String(valB))
         : String(valB).localeCompare(String(valA));
     });
     setQueryResults(sorted);
@@ -466,7 +466,7 @@ export default function SAPInteractiveSimulator({
   const [activeWidgets, setActiveWidgets] = useState<string[]>(["kpi_sales", "top_customers"]);
 
   const toggleWidget = (widgetId: string) => {
-    setActiveWidgets(prev => 
+    setActiveWidgets(prev =>
       prev.includes(widgetId) ? prev.filter(w => w !== widgetId) : [...prev, widgetId]
     );
   };
@@ -620,12 +620,8 @@ export default function SAPInteractiveSimulator({
   // se valida cada valor y solo se vuelve a la clase cuando todo está correcto.
   if (stepGuide?.campos?.length) {
     return (
-      <div className={`${scrollInterno ? 'h-full overflow-y-auto' : 'min-h-full'} bg-[#101720] rounded-lg`}>
-        <div className="bg-[#18222d] border-b border-gray-800 px-3 py-1.5 text-[11px] flex flex-wrap items-center justify-between gap-2">
-          <span className="font-bold text-amber-400">SAP Business One 10.0 · Distribuidora Andina Tech S.A.</span>
-          <span className="text-gray-400">Práctica evaluada: {stepGuide.title}</span>
-        </div>
-        <div className="bg-[#f4f6fa]">
+      <div className={`${scrollInterno ? 'h-full overflow-y-auto' : 'min-h-full'} rounded-lg`}>
+        <div>
           <PracticaValidada
             guia={stepGuide}
             onCompleta={() => {
@@ -640,7 +636,7 @@ export default function SAPInteractiveSimulator({
 
   return (
     <div className={`${scrollInterno ? 'h-full overflow-hidden' : 'min-h-full'} flex flex-col bg-[#101720] text-gray-200 font-sans select-none relative`}>
-      <GuidedOverlay 
+      <GuidedOverlay
         active={guidedMode}
         message={stepGuide?.instructions?.[0] || "Sigue la instrucción para continuar con el ejercicio práctico."}
         expectedAction={stepGuide?.action_type || "Haz clic en el área resaltada"}
@@ -741,8 +737,8 @@ export default function SAPInteractiveSimulator({
           </div>
         )}
         <div className="flex gap-1">
-          <button 
-            className="p-1 hover:bg-[#d0d6e0] rounded transition-colors text-amber-500 relative" 
+          <button
+            className="p-1 hover:bg-[#d0d6e0] rounded transition-colors text-amber-500 relative"
             title="Mensajes y Alertas"
             onClick={() => {
               setShowAlertsModal(true);
@@ -765,7 +761,7 @@ export default function SAPInteractiveSimulator({
                 <Mail size={13} className="text-amber-400" />
                 <span>Resumen de mensajes y alertas</span>
               </div>
-              <button 
+              <button
                 onClick={() => {
                   setShowAlertsModal(false);
                   markStepDone(2); // Cierra ventana completado
@@ -800,13 +796,13 @@ export default function SAPInteractiveSimulator({
                 </tbody>
               </table>
               <div className="mt-4 p-2 bg-blue-50 border border-blue-200 rounded text-blue-800 text-[11px]">
-                <strong>Nota del sistema:</strong> Esta es tu bandeja de entrada de SAP Business One. 
+                <strong>Nota del sistema:</strong> Esta es tu bandeja de entrada de SAP Business One.
                 Aquí recibirás notificaciones clave, workflows de autorización y mensajes de otros usuarios.
                 Para completar la misión actual, cierra esta ventana.
               </div>
             </div>
             <div className="bg-[#ece9d8] border-t border-[#b0b8c4] p-2 flex justify-end gap-2">
-              <button 
+              <button
                 onClick={() => {
                   setShowAlertsModal(false);
                   markStepDone(2);
@@ -851,7 +847,7 @@ export default function SAPInteractiveSimulator({
                   </div>
                 </div>
                 <div className="mt-4">
-                  <button 
+                  <button
                     onClick={() => {
                       markStepDone(1);
                       setStepSuccessMsg("¡Sesión iniciada correctamente!");
@@ -913,7 +909,7 @@ export default function SAPInteractiveSimulator({
               <ul className="text-xs text-gray-400 space-y-1.5 pl-5 list-disc leading-relaxed">
                 <li>Presta atención a la clase magistral en video y al teleprompter para dominar los términos clave.</li>
                 <li>Formula preguntas al <strong>Tutor IA</strong> para despejar dudas arquitecturales.</li>
-                <li>Prepárate para el <strong>Examen Oral con el Profesor IA</strong> (límite de 35s por pregunta).</li>
+                <li>Prepárate para el <strong>Examen con el Profesor IA</strong> (límite de 35s por pregunta).</li>
               </ul>
             </div>
             <Link
@@ -987,10 +983,10 @@ export default function SAPInteractiveSimulator({
                       <td className="p-1 font-mono font-bold text-blue-700">A00001</td>
                       <td className="p-1">Servidor ProLiant DL380</td>
                       <td className="p-1 text-right">
-                        <input 
-                          type="number" 
-                          min={1} 
-                          value={salesQty1} 
+                        <input
+                          type="number"
+                          min={1}
+                          value={salesQty1}
                           onChange={(e) => setSalesQty1(Math.max(1, parseInt(e.target.value) || 1))}
                           className="w-16 text-right bg-[#fffde0] border border-[#7f9db9] px-1"
                         />
@@ -1004,10 +1000,10 @@ export default function SAPInteractiveSimulator({
                       <td className="p-1 font-mono font-bold text-blue-700">A00002</td>
                       <td className="p-1">Memoria RAM 64GB DDR4</td>
                       <td className="p-1 text-right">
-                        <input 
-                          type="number" 
-                          min={1} 
-                          value={salesQty2} 
+                        <input
+                          type="number"
+                          min={1}
+                          value={salesQty2}
                           onChange={(e) => setSalesQty2(Math.max(1, parseInt(e.target.value) || 1))}
                           className="w-16 text-right bg-[#fffde0] border border-[#7f9db9] px-1"
                         />
@@ -1052,11 +1048,10 @@ export default function SAPInteractiveSimulator({
                 <button
                   disabled={salesCreated}
                   onClick={handleCreateSalesInvoice}
-                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${
-                    salesCreated 
-                      ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default' 
+                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${salesCreated
+                      ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default'
                       : 'bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border-[#555555] active:scale-95'
-                  }`}
+                    }`}
                 >
                   {salesCreated ? '✓ Factura Contabilizada' : 'Crear / Añadir'}
                 </button>
@@ -1120,9 +1115,9 @@ export default function SAPInteractiveSimulator({
                       <td className="p-1 font-mono font-bold text-blue-700">43000000</td>
                       <td className="p-1">Clientes Nacionales (Maxi-Teq)</td>
                       <td className="p-1 text-right">
-                        <input 
-                          type="number" 
-                          value={jeDebit1} 
+                        <input
+                          type="number"
+                          value={jeDebit1}
                           onChange={(e) => setJeDebit1(parseFloat(e.target.value) || 0)}
                           className="w-24 text-right bg-[#fffde0] border border-[#7f9db9] px-1 font-mono font-bold"
                         />
@@ -1135,9 +1130,9 @@ export default function SAPInteractiveSimulator({
                       <td className="p-1">Ventas de Mercaderías</td>
                       <td className="p-1 text-right font-mono text-gray-400">0.00</td>
                       <td className="p-1 text-right">
-                        <input 
-                          type="number" 
-                          value={jeCredit2} 
+                        <input
+                          type="number"
+                          value={jeCredit2}
                           onChange={(e) => setJeCredit2(parseFloat(e.target.value) || 0)}
                           className="w-24 text-right bg-[#fffde0] border border-[#7f9db9] px-1 font-mono font-bold"
                         />
@@ -1149,9 +1144,9 @@ export default function SAPInteractiveSimulator({
                       <td className="p-1">H.P. IVA Repercutido (21%)</td>
                       <td className="p-1 text-right font-mono text-gray-400">0.00</td>
                       <td className="p-1 text-right">
-                        <input 
-                          type="number" 
-                          value={jeCredit3} 
+                        <input
+                          type="number"
+                          value={jeCredit3}
                           onChange={(e) => setJeCredit3(parseFloat(e.target.value) || 0)}
                           className="w-24 text-right bg-[#fffde0] border border-[#7f9db9] px-1 font-mono font-bold"
                         />
@@ -1176,13 +1171,12 @@ export default function SAPInteractiveSimulator({
                 <button
                   disabled={jeCreated || jeDiff !== 0}
                   onClick={handleCreateJE}
-                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${
-                    jeCreated 
-                      ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default' 
+                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${jeCreated
+                      ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default'
                       : jeDiff === 0
                         ? 'bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border-[#555555] active:scale-95'
                         : 'bg-gray-200 text-gray-400 border-gray-300 cursor-not-allowed'
-                  }`}
+                    }`}
                 >
                   {jeCreated ? '✓ Asiento Contabilizado' : 'Crear / Añadir'}
                 </button>
@@ -1241,14 +1235,13 @@ export default function SAPInteractiveSimulator({
                   { id: 'sales', label: 'Datos de Ventas' },
                   { id: 'planning', label: 'Planificación' }
                 ].map(tab => (
-                  <button 
+                  <button
                     key={tab.id}
                     onClick={() => setItemTab(tab.id as any)}
-                    className={`px-3 py-1 text-xs font-semibold rounded-t ${
-                      itemTab === tab.id 
-                        ? 'bg-white border-t-2 border-t-[#316ac5] text-[#1c3a63]' 
+                    className={`px-3 py-1 text-xs font-semibold rounded-t ${itemTab === tab.id
+                        ? 'bg-white border-t-2 border-t-[#316ac5] text-[#1c3a63]'
                         : 'text-gray-600 hover:bg-[#d0dae8]'
-                    }`}
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -1260,8 +1253,8 @@ export default function SAPInteractiveSimulator({
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[11px]">
                       <span>Método de Valoración de Stock:</span>
-                      <select 
-                        value={itemValuation} 
+                      <select
+                        value={itemValuation}
                         onChange={(e) => setItemValuation(e.target.value)}
                         className="bg-[#fffde0] border border-[#7f9db9] px-2 py-0.5 font-bold"
                       >
@@ -1344,26 +1337,26 @@ export default function SAPInteractiveSimulator({
               <div className="bg-white border border-[#7f9db9] p-2.5 rounded grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-[11px]">
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Código de Grupo:</label>
-                  <input 
-                    type="text" 
-                    value={uomCode} 
-                    onChange={e => setUomCode(e.target.value)} 
-                    className="w-full bg-[#fffde0] border border-[#7f9db9] px-2 py-1 font-mono font-bold" 
+                  <input
+                    type="text"
+                    value={uomCode}
+                    onChange={e => setUomCode(e.target.value)}
+                    className="w-full bg-[#fffde0] border border-[#7f9db9] px-2 py-1 font-mono font-bold"
                   />
                 </div>
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Descripción del Grupo:</label>
-                  <input 
-                    type="text" 
-                    value={uomName} 
-                    onChange={e => setUomName(e.target.value)} 
-                    className="w-full bg-white border border-[#7f9db9] px-2 py-1" 
+                  <input
+                    type="text"
+                    value={uomName}
+                    onChange={e => setUomName(e.target.value)}
+                    className="w-full bg-white border border-[#7f9db9] px-2 py-1"
                   />
                 </div>
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Unidad de Medida Base:</label>
-                  <select 
-                    value={baseUom} 
+                  <select
+                    value={baseUom}
                     onChange={e => setBaseUom(e.target.value)}
                     className="w-full bg-[#e8f4fd] border border-[#7f9db9] px-2 py-1 font-bold text-blue-900"
                   >
@@ -1412,9 +1405,9 @@ export default function SAPInteractiveSimulator({
                         <td className="p-1.5 font-semibold">Rollo (100m)</td>
                         <td className="p-1.5 text-center font-mono">1</td>
                         <td className="p-1.5 text-center">
-                          <input 
-                            type="number" 
-                            value={uomRollQty} 
+                          <input
+                            type="number"
+                            value={uomRollQty}
                             onChange={e => setUomRollQty(e.target.value)}
                             className="w-16 bg-[#fffde0] border border-[#7f9db9] text-center font-mono font-bold px-1 py-0.5 text-emerald-800"
                           />
@@ -1429,9 +1422,9 @@ export default function SAPInteractiveSimulator({
                         <td className="p-1.5 font-semibold">Bobina (50m)</td>
                         <td className="p-1.5 text-center font-mono">1</td>
                         <td className="p-1.5 text-center">
-                          <input 
-                            type="number" 
-                            value={uomSpoolQty} 
+                          <input
+                            type="number"
+                            value={uomSpoolQty}
                             onChange={e => setUomSpoolQty(e.target.value)}
                             className="w-16 bg-[#fffde0] border border-[#7f9db9] text-center font-mono font-bold px-1 py-0.5 text-purple-800"
                           />
@@ -1459,11 +1452,10 @@ export default function SAPInteractiveSimulator({
                   <button
                     disabled={uomGroupSaved}
                     onClick={handleSaveUomGroup}
-                    className={`font-bold text-xs px-5 py-1.5 rounded-[3px] shadow transition-all active:scale-95 ${
-                      uomGroupSaved 
-                        ? 'bg-emerald-600 text-white border border-emerald-700' 
+                    className={`font-bold text-xs px-5 py-1.5 rounded-[3px] shadow transition-all active:scale-95 ${uomGroupSaved
+                        ? 'bg-emerald-600 text-white border border-emerald-700'
                         : 'bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555]'
-                    }`}
+                      }`}
                   >
                     {uomGroupSaved ? '✓ Grupo Guardado en SAP' : 'Actualizar y Guardar Grupo'}
                   </button>
@@ -1502,8 +1494,8 @@ export default function SAPInteractiveSimulator({
                 </div>
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Medio de Pago:</label>
-                  <select 
-                    value={payMethod} 
+                  <select
+                    value={payMethod}
                     onChange={(e) => setPayMethod(e.target.value as any)}
                     className="w-full bg-[#fffde0] border border-[#7f9db9] px-1.5 py-0.5 font-bold"
                   >
@@ -1542,11 +1534,10 @@ export default function SAPInteractiveSimulator({
                 <button
                   disabled={payDone}
                   onClick={handleCreatePayment}
-                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${
-                    payDone 
-                      ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default' 
+                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${payDone
+                      ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default'
                       : 'bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border-[#555555] active:scale-95'
-                  }`}
+                    }`}
                 >
                   {payDone ? '✓ Cobro Registrado y Conciliado' : 'Crear / Añadir Cobro'}
                 </button>
@@ -1575,7 +1566,7 @@ export default function SAPInteractiveSimulator({
             <div className="p-3 space-y-2.5">
               <div className="bg-white border border-[#7f9db9] p-2 rounded flex items-center gap-3 text-[11px]">
                 <span className="font-bold text-[#1c3a63]">Tabla:</span>
-                <select 
+                <select
                   value={selectedTable}
                   onChange={(e) => setSelectedTable(e.target.value)}
                   className="bg-[#fffde0] border border-[#7f9db9] px-2 py-0.5 font-bold rounded"
@@ -1594,13 +1585,12 @@ export default function SAPInteractiveSimulator({
                   </div>
                   <div className="flex-1 overflow-y-auto custom-scrollbar">
                     {activeTableFields.map(f => (
-                      <div 
+                      <div
                         key={f.name}
                         onClick={() => setSelectedFieldInLeftList(f.name)}
                         onDoubleClick={() => handleAddFieldToSelect(f.name)}
-                        className={`grid grid-cols-2 px-2 py-0.5 cursor-pointer text-[10px] font-mono border-b border-gray-100 ${
-                          selectedFieldInLeftList === f.name ? 'bg-[#316ac5] text-white font-bold' : 'hover:bg-blue-50 text-gray-800'
-                        }`}
+                        className={`grid grid-cols-2 px-2 py-0.5 cursor-pointer text-[10px] font-mono border-b border-gray-100 ${selectedFieldInLeftList === f.name ? 'bg-[#316ac5] text-white font-bold' : 'hover:bg-blue-50 text-gray-800'
+                          }`}
                       >
                         <span>{f.name}</span>
                         <span className="truncate">{f.desc}</span>
@@ -1638,7 +1628,7 @@ export default function SAPInteractiveSimulator({
 
               {/* Botones de Ejecución */}
               <div className="flex justify-end gap-2 pt-2 border-t border-gray-300">
-                <button 
+                <button
                   onClick={handleExecuteQuery}
                   className="bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555] font-bold text-xs px-5 py-1 rounded-[3px] shadow active:scale-95"
                 >
@@ -1660,8 +1650,8 @@ export default function SAPInteractiveSimulator({
                       <thead className="bg-[#f0f2f5] border-b text-gray-700">
                         <tr>
                           {selectedFields.map(f => (
-                            <th 
-                              key={f} 
+                            <th
+                              key={f}
                               onClick={() => handleSortColumn(f)}
                               title="Ctrl+Clic para calcular suma"
                               className="p-1 text-left cursor-pointer hover:bg-blue-100"
@@ -1675,8 +1665,8 @@ export default function SAPInteractiveSimulator({
                         {queryResults.map((row, idx) => (
                           <tr key={idx} className="border-b hover:bg-blue-50">
                             {selectedFields.map(f => (
-                              <td 
-                                key={f} 
+                              <td
+                                key={f}
                                 onClick={(e) => {
                                   if (e.ctrlKey) handleCalculateColumnSum(f);
                                 }}
@@ -1716,7 +1706,7 @@ export default function SAPInteractiveSimulator({
               <div className="bg-white border border-[#7f9db9] p-2.5 rounded grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
                   <label className="text-[11px] font-bold text-[#1c3a63] block mb-1">Plantilla de Perfil / Rol:</label>
-                  <select 
+                  <select
                     value={assignedRole}
                     onChange={(e) => {
                       setAssignedRole(e.target.value);
@@ -1731,7 +1721,7 @@ export default function SAPInteractiveSimulator({
                 </div>
                 <div>
                   <label className="text-[11px] font-bold text-[#1c3a63] block mb-1">Almacén Predeterminado:</label>
-                  <select 
+                  <select
                     value={defaultWarehouse}
                     onChange={(e) => setDefaultWarehouse(e.target.value)}
                     className="w-full bg-[#f8fafc] border border-[#7f9db9] text-xs p-1 font-semibold text-gray-800 rounded focus:outline-none"
@@ -1753,14 +1743,13 @@ export default function SAPInteractiveSimulator({
                   ].map(w => {
                     const active = activeWidgets.includes(w.id);
                     return (
-                      <button 
+                      <button
                         key={w.id}
                         onClick={() => toggleWidget(w.id)}
-                        className={`px-3 py-1 rounded text-xs border font-medium transition-all ${
-                          active 
-                            ? 'bg-[#316ac5] text-white border-[#1c3a63]' 
+                        className={`px-3 py-1 rounded text-xs border font-medium transition-all ${active
+                            ? 'bg-[#316ac5] text-white border-[#1c3a63]'
                             : 'bg-[#f0f2f5] text-gray-600 border-[#b0b8c4]'
-                        }`}
+                          }`}
                       >
                         {active ? "✓ " : "+ "} {w.label}
                       </button>
@@ -1770,7 +1759,7 @@ export default function SAPInteractiveSimulator({
               </div>
 
               <div className="flex justify-end pt-1">
-                <button 
+                <button
                   onClick={() => {
                     setValidationMessage(null);
                     if (isAlertsPractice || isSearchPractice) {
@@ -1820,14 +1809,13 @@ export default function SAPInteractiveSimulator({
                   { id: 'invoice', label: '3. Factura de Proveedores' },
                   { id: 'map', label: '4. Mapa de Relaciones' }
                 ].map(step => (
-                  <button 
+                  <button
                     key={step.id}
                     onClick={() => setProcurementStage(step.id as any)}
-                    className={`px-3 py-1 text-xs font-semibold rounded ${
-                      procurementStage === step.id 
-                        ? 'bg-[#316ac5] text-white' 
+                    className={`px-3 py-1 text-xs font-semibold rounded ${procurementStage === step.id
+                        ? 'bg-[#316ac5] text-white'
                         : 'text-gray-700 hover:bg-[#d0dae8]'
-                    }`}
+                      }`}
                   >
                     {step.label}
                   </button>
@@ -1861,9 +1849,9 @@ export default function SAPInteractiveSimulator({
                         <tr>
                           <td className="p-1 font-mono">A00001 - Servidor ProLiant</td>
                           <td className="p-1 text-right">
-                            <input 
-                              type="number" 
-                              value={poQuantity} 
+                            <input
+                              type="number"
+                              value={poQuantity}
                               onChange={(e) => setPoQuantity(parseInt(e.target.value) || 0)}
                               className="w-16 text-right bg-[#fffde0] border border-[#7f9db9] px-1"
                             />
@@ -1876,7 +1864,7 @@ export default function SAPInteractiveSimulator({
                   </div>
 
                   <div className="flex justify-end pt-2">
-                    <button 
+                    <button
                       onClick={handleCreatePO}
                       className="bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555] font-bold text-xs px-4 py-1 rounded-[3px] shadow active:scale-95"
                     >
@@ -1891,7 +1879,7 @@ export default function SAPInteractiveSimulator({
                   <div className="text-[11px] font-bold text-[#1c3a63]">Entrada de Mercancías O.C. (OPDN) - Almacén 01</div>
                   <div className="flex items-center justify-between text-xs bg-[#f8fafc] p-2 border border-gray-200">
                     <span>Recepción de Artículo A00001:</span>
-                    <select 
+                    <select
                       className="bg-[#fffde0] border border-[#7f9db9] px-2 py-0.5 font-bold"
                       onChange={(e) => setPoQuantity(parseInt(e.target.value))}
                     >
@@ -1903,7 +1891,7 @@ export default function SAPInteractiveSimulator({
                     • Asiento Contable Automático: Débito a Inventario (+$6,000) / Crédito a Compensación EM/RF ($6,000).
                   </div>
                   <div className="flex justify-end pt-2">
-                    <button 
+                    <button
                       onClick={handleCreateGRPO}
                       className="bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555] font-bold text-xs px-4 py-1 rounded-[3px] shadow active:scale-95"
                     >
@@ -1940,7 +1928,7 @@ export default function SAPInteractiveSimulator({
                     </table>
                   </div>
                   <div className="flex justify-end pt-2">
-                    <button 
+                    <button
                       onClick={handleCreateInvoice}
                       className="bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555] font-bold text-xs px-4 py-1 rounded-[3px] shadow active:scale-95"
                     >

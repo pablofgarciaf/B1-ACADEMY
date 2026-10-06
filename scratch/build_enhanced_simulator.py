@@ -441,7 +441,7 @@ export default function SAPInteractiveSimulator({
               <ul className="text-xs text-gray-400 space-y-1.5 pl-5 list-disc leading-relaxed">
                 <li>Presta atención a la clase magistral en video y al teleprompter para dominar los términos clave.</li>
                 <li>Formula preguntas al <strong>Tutor IA</strong> para despejar dudas arquitecturales.</li>
-                <li>Prepárate para el <strong>Examen Oral con el Profesor IA</strong> (límite de 35s por pregunta).</li>
+                <li>Prepárate para el <strong>Examen con el Profesor IA</strong> (límite de 35s por pregunta).</li>
               </ul>
             </div>
             <Link

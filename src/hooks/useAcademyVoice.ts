@@ -66,19 +66,16 @@ export function useAcademyVoice() {
     const token = tokenRef.current;
     clearPlayback();
     setNeedsGesture(false);
+    let finished = false;
     const finish = () => {
-      if (token !== tokenRef.current) return;
+      if (token !== tokenRef.current || finished) return;
+      finished = true;
+      clearPlayback();
       setIsSpeaking(false);
       pendingEndRef.current = undefined;
       onEnd?.();
     };
     if (!text.trim()) { finish(); return; }
-    if (mutedRef.current) {
-      // Silenciado: el estudiante lee el texto; se respeta su ritmo de lectura.
-      timerRef.current = setTimeout(finish, readingTimeMs(text));
-      return;
-    }
-
     setIsSpeaking(true);
     pendingEndRef.current = finish;
     fetchAudioUrl(text, firma)
@@ -86,10 +83,12 @@ export function useAcademyVoice() {
         if (token !== tokenRef.current) return;
         const audio = audioRef.current ?? new Audio();
         audioRef.current = audio;
+        audio.muted = mutedRef.current;
         audio.src = url;
         audio.onended = finish;
         audio.onerror = finish;
         return audio.play().catch((error: unknown) => {
+          if (token !== tokenRef.current) return;
           // El navegador bloquea el audio hasta que el usuario interactúe con la página.
           if (error instanceof DOMException && error.name === 'NotAllowedError') {
             setIsSpeaking(false);
@@ -109,10 +108,12 @@ export function useAcademyVoice() {
   /** Reanuda tras el bloqueo de autoplay (se llama desde un clic del usuario). */
   const resumeAfterGesture = useCallback(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    const token = tokenRef.current;
+    const end = pendingEndRef.current;
+    if (!audio || !end) return;
     setNeedsGesture(false);
     setIsSpeaking(true);
-    audio.play().catch(() => pendingEndRef.current?.());
+    audio.play().catch(() => { if (token === tokenRef.current) end(); });
   }, []);
 
   /** Descarga por adelantado la narración siguiente para que no haya silencios entre láminas. */
@@ -124,13 +125,9 @@ export function useAcademyVoice() {
     const next = !mutedRef.current;
     mutedRef.current = next;
     setIsMuted(next);
-    if (next && audioRef.current && !audioRef.current.paused) {
-      // Al silenciar a mitad de una narración, se termina ese tramo y la clase sigue.
-      const end = pendingEndRef.current;
-      stopSpeaking();
-      end?.();
-    }
-  }, [stopSpeaking]);
+    // Muting changes volume, not lesson progress. Also applies to audio still loading.
+    if (audioRef.current) audioRef.current.muted = next;
+  }, []);
 
   useEffect(() => () => { tokenRef.current += 1; clearPlayback(); }, [clearPlayback]);
 

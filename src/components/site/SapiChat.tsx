@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Send, X, MessageCircle, Sparkles, ExternalLink } from 'lucide-react';
+import { Bot, Send, X, Sparkles, ExternalLink } from 'lucide-react';
+import SapiMascota from './SapiMascota';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 
@@ -18,6 +19,7 @@ const SUGGESTED_QUESTIONS = [
 
 export default function SapiChat() {
   const [isOpen, setIsOpen] = useState(false);
+  const [lado, setLado] = useState<'izq' | 'der'>('der');
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -59,7 +61,7 @@ export default function SapiChat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className={isOpen ? `fixed bottom-6 z-50 ${lado === 'izq' ? 'left-6' : 'right-6'}` : ''}>
       {isOpen ? (
         <div className="flex flex-col w-full sm:w-[400px] h-[550px] max-h-[85vh] bg-[#131a20] border border-white/10 rounded-2xl shadow-2xl overflow-hidden shadow-amber-500/10">
           {/* Header */}
@@ -192,12 +194,7 @@ export default function SapiChat() {
           </div>
         </div>
       ) : (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="w-14 h-14 bg-amber-500 hover:bg-amber-600 text-white rounded-full shadow-lg shadow-amber-500/20 flex items-center justify-center transition-all active:scale-95 hover:scale-105"
-        >
-          <MessageCircle size={28} />
-        </button>
+        <SapiMascota onAbrir={(l) => { setLado(l); setIsOpen(true); }} />
       )}
     </div>
   );

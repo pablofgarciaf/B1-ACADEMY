@@ -163,7 +163,7 @@ export function generateOfficialCampusCertificate({
   doc.text(`Itinerario Curricular: ${careerTitle} • Carga Horaria Acreditada: ${hours} Horas Académicas`, 148.5, 97, { align: 'center' });
 
   // 8. Resumen de Competencias y Validación Práctica
-  let descText = `Demostró dominio en la ejecución de transacciones reales, parametrización de tablas maestras, determinación de cuentas y buenas prácticas. Calificación obtenida: ${scorePercent}% en evaluación oral y simulador.`;
+  let descText = `Demostró dominio en la ejecución de transacciones reales, parametrización de tablas maestras, determinación de cuentas y buenas prácticas. Calificación obtenida: ${scorePercent}% en la evaluación y el simulador.`;
   if (certificateType === 'docente') {
     descText = `Habilitado oficialmente para la instrucción universitaria, diseño de casos pedagógicos prácticos y conducción de laboratorios con el Simulador SAP B1 10.0 en instituciones de educación superior.`;
   }

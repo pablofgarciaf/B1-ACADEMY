@@ -5,7 +5,7 @@
 Este documento define la arquitectura técnica del ecosistema de evaluación y certificación para **SAP Academy (Heinsohn B1)**, resolviendo la necesidad de impedir el uso no autorizado de asistentes de Inteligencia Artificial (ChatGPT, Copilot, etc.) o trampas durante los exámenes oficiales.
 
 Se adopta un **modelo de dos niveles (Dual-Tier)**:
-1. **Nivel 1 (Web):** Entorno de entrenamiento y práctica interactiva con el **Simulador SAP B1** y el **Examen Oral con Profesor Evaluador IA** (límite de 35 segundos por pregunta).
+1. **Nivel 1 (Web):** Entorno de entrenamiento y práctica interactiva con el **Simulador SAP B1** y el **Examen con Profesor Evaluador IA** (límite de 35 segundos por pregunta).
 2. **Nivel 2 (Desktop Kiosk App - B1 Secure Exam Guard):** Aplicación de escritorio descargable (`.exe` / `.msi`) con modo quiosco blindado para la rendición de exámenes con validez oficial y emisión criptográfica de certificados.
 
 ---
@@ -16,7 +16,7 @@ Se adopta un **modelo de dos niveles (Dual-Tier)**:
 graph TD
     subgraph "Nivel 1: Web (Entrenamiento & Simulación)"
         A[Estudiante en Plataforma Web] --> B[Simulador Nativo SAP B1]
-        A --> C[Examen Oral con Profesor IA - 35s]
+        A --> C[Examen con Profesor IA - 35s]
         C --> D[Práctica Formativa sin Certificado Oficial]
         D --> E[Recomendación de B1 Secure Exam Guard]
     end
@@ -26,7 +26,7 @@ graph TD
         G --> H[Activación de Modo Quiosco / Lockdown]
         H --> I[Bloqueo de Alt+Tab, WinKey, PrintScreen, Clipboard]
         H --> J[Detección de Pantallas Secundarias y VMs]
-        I --> K[Examen Oficial Oral & Práctico con IA]
+        I --> K[Examen Oficial & Práctico con IA]
         K --> L[Firma Criptográfica SHA-256 en Cloud Functions]
         L --> M[Certificado Oficial Verificable con QR]
     end
@@ -36,7 +36,7 @@ graph TD
 
 ---
 
-## 🖥️ 1. Nivel Web: Simulador Nativo & Examen Oral IA
+## 🖥️ 1. Nivel Web: Simulador Nativo & Examen IA
 
 Implementado en [`ManualViewer.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/sap%20academy/src/components/site/ManualViewer.tsx) y [`SAPInteractiveSimulator.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/sap%20academy/src/components/simulator/SAPInteractiveSimulator.tsx):
 
@@ -47,8 +47,8 @@ Implementado en [`ManualViewer.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/pro
 - **Botones con Relieve Clásico (Beveled):** Botones `[ Execute ]` y `[ Close ]` con sombreado de borde 3D idéntico al cliente SAP Business One para Windows.
 - **Grilla de Resultados:** Tabla de datos con selección de fila, ordenamiento de columnas y cálculo de sumatoria con `Ctrl + Clic` en cabeceras numéricas.
 
-### B. Examen Oral con Profesor Evaluador IA
-- **Contrarreloj Estricto (35 segundos):** Cada pregunta se expone como una intervención oral del profesor evaluador. Si el tiempo expira, la pregunta se califica automáticamente con 0/100 y avanza a la siguiente.
+### B. Examen con Profesor Evaluador IA
+- **Contrarreloj Estricto (35 segundos):** Cada pregunta se expone como una intervención del profesor evaluador. Si el tiempo expira, la pregunta se califica automáticamente con 0/100 y avanza a la siguiente.
 - **Protección Anti-Pegado (`Ctrl+V`):** El portapapeles web está bloqueado (`e.preventDefault()`) para impedir copiar y pegar desde ChatGPT.
 - **Detección de Cambio de Foco (`visibilitychange`):** Registra eventos de salida de ventana y emite alertas de seguridad.
 
