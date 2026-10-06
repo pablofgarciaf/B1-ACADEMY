@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import { requireBearerUser } from '@/lib/server-auth';
+import LECCIONES_AULA from '@/content/aula/lecciones.json';
 
 // =============================================================
 // CONTENIDO EDUCATIVO — Framework: Content Creator + Behavioral Nudge Engine
@@ -22,7 +23,7 @@ const LESSON_CONTENT: Record<string, {
       },
       {
         slide_index: 2,
-        script_text: "Es momento de practicar. Estás frente a la pantalla de inicio de sesión oficial. Aquí ingresas tu usuario, clave y seleccionas la sociedad (empresa) a la que te vas a conectar.",
+        script_text: "Es momento de practicar en una representación didáctica del inicio de sesión. Aquí identificas el usuario, la clave y la sociedad (empresa) a la que te vas a conectar. Utiliza únicamente los datos de demostración.",
         step_guide: {
           action_type: "login",
           title: "Acceso al Sistema",
@@ -41,7 +42,7 @@ const LESSON_CONTENT: Record<string, {
           title: "Exploración del Cockpit",
           instructions: [
             "Observa los widgets en la pantalla principal.",
-            "Haz clic en cualquier área del fondo para continuar." // O simplemente un paso de continuación simbólico
+            "Pulsa 'Terminar exploración' para continuar."
           ]
         }
       }
@@ -1370,6 +1371,21 @@ export async function GET(req: Request) {
 
     if (!foundClass || !foundModule) {
       return NextResponse.json({ error: `Clase ${classId} no encontrada` }, { status: 404 });
+    }
+
+    // Contenido publicado de Mi Aula (clases completas con prácticas evaluadas) tiene prioridad.
+    const publicada = (LECCIONES_AULA as Record<string, { images: string[]; syncData: unknown[]; quizQuestions: unknown[] }>)[classId];
+    if (publicada) {
+      return NextResponse.json({
+        classId,
+        title: foundClass.title,
+        category: foundModule.badge,
+        number: foundClass.number,
+        totalSlides: publicada.syncData.length,
+        images: publicada.images,
+        syncData: publicada.syncData,
+        quizQuestions: publicada.quizQuestions,
+      });
     }
 
     // Si hay contenido real para esta clase, usarlo

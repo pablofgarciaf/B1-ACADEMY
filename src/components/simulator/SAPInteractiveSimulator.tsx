@@ -41,6 +41,7 @@ import { BusinessPartner, Item } from '@/lib/erp/erp-models';
 import { initializeDemoCompany, getBusinessPartners, getItems, createSalesInvoice, createJournalEntry } from '@/lib/erp/erp-database-service';
 import GuidedOverlay from './GuidedOverlay';
 import SAPScreenRenderer from '@/components/sap-screens/SAPScreenRenderer';
+import PracticaValidada, { type CampoPractica } from './PracticaValidada';
 
 /** Índice del buscador del menú (lupa / F3): enseña dónde vive cada formulario de SAP B1. */
 const SAP_SEARCH_INDEX: { name: string; path: string }[] = [
@@ -115,6 +116,8 @@ interface StepGuide {
   action_type?: string;
   instructions: string[];
   expected_output?: string;
+  /** Campos y valores exactos que la práctica evalúa (prácticas de Mi Aula). */
+  campos?: CampoPractica[];
 }
 
 interface SAPInteractiveSimulatorProps {
@@ -124,6 +127,11 @@ interface SAPInteractiveSimulatorProps {
   guidedMode?: boolean;
   onStepComplete?: (stepNumber: number) => void;
   onMissionComplete?: () => void;
+  /**
+   * false = el simulador crece con su contenido y el scroll lo hace la página que lo contiene
+   * (Mi Aula). Evita que el botón final quede oculto dentro de un contenedor de altura fija.
+   */
+  scrollInterno?: boolean;
 }
 
 // Datos simulados para OCRD (Socios de Negocios)
@@ -185,7 +193,8 @@ export default function SAPInteractiveSimulator({
   stepGuide,
   guidedMode = false,
   onStepComplete,
-  onMissionComplete
+  onMissionComplete,
+  scrollInterno = true
 }: SAPInteractiveSimulatorProps) {
   const { userProfile } = useAuth();
   const missionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -607,8 +616,30 @@ export default function SAPInteractiveSimulator({
     completeMission(1800);
   };
 
+  // Prácticas de Mi Aula con campos a evaluar: pantalla y datos salen de la misma instrucción de la clase,
+  // se valida cada valor y solo se vuelve a la clase cuando todo está correcto.
+  if (stepGuide?.campos?.length) {
+    return (
+      <div className={`${scrollInterno ? 'h-full overflow-y-auto' : 'min-h-full'} bg-[#101720] rounded-lg`}>
+        <div className="bg-[#18222d] border-b border-gray-800 px-3 py-1.5 text-[11px] flex flex-wrap items-center justify-between gap-2">
+          <span className="font-bold text-amber-400">SAP Business One 10.0 · Distribuidora Andina Tech S.A.</span>
+          <span className="text-gray-400">Práctica evaluada: {stepGuide.title}</span>
+        </div>
+        <div className="bg-[#f4f6fa]">
+          <PracticaValidada
+            guia={stepGuide}
+            onCompleta={() => {
+              (stepGuide.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
+              completeMission(200);
+            }}
+          />
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="h-full flex flex-col bg-[#101720] text-gray-200 overflow-hidden font-sans select-none relative">
+    <div className={`${scrollInterno ? 'h-full overflow-hidden' : 'min-h-full'} flex flex-col bg-[#101720] text-gray-200 font-sans select-none relative`}>
       <GuidedOverlay 
         active={guidedMode}
         message={stepGuide?.instructions?.[0] || "Sigue la instrucción para continuar con el ejercicio práctico."}
@@ -792,7 +823,7 @@ export default function SAPInteractiveSimulator({
       )}
 
       {/* ÁREA DE TRABAJO PRINCIPAL DEL CLIENTE SAP */}
-      <div className="flex-1 p-2 sm:p-3 overflow-y-auto custom-scrollbar flex flex-col justify-start relative">
+      <div className={`flex-1 p-2 sm:p-3 ${scrollInterno ? 'overflow-y-auto custom-scrollbar' : 'min-h-[420px]'} flex flex-col justify-start relative`}>
 
         {/* ====================================================================
             ARQUETIPO -1: LOGIN (Override action_type='login')

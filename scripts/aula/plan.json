@@ -1,0 +1,78 @@
+{
+  "_nota": "Plan de estudios de Mi Aula. Los IDs de mod-1..mod-3 se conservan (el progreso de los estudiantes depende de ellos). 'manuales' = carpetas de public/Capacitacion SAP usadas como fuente técnica.",
+  "modulos": [
+    { "id": "mod-1", "titulo": "Fundamentos Operativos y Navegación", "clases": [
+      { "id": "mod1-c1", "titulo": "Arquitectura y Cockpit Fiori", "manuales": ["1.1_Introduccion_a_SAP_Business_One", "1.2_Primeros_Pasos_en_SAP_Business_One"] },
+      { "id": "mod1-c2", "titulo": "Parametrizaciones y Preferencias de Usuario", "manuales": ["20.3_Configuraciones_Clave_del_Sistema", "21.1_Configuracion_de_Usuarios_y_Grupos"] },
+      { "id": "mod1-c3", "titulo": "Búsqueda y Funciones de Ayuda", "manuales": ["1.2_Primeros_Pasos_en_SAP_Business_One", "1.3_Documentos_y_Datos_Maestros_Concept"] },
+      { "id": "mod1-c4", "titulo": "Mensajes, Alertas y Autorizaciones", "manuales": ["22.2_Sistema_de_Alertas_Automaticas", "21.2_Autorizaciones_Generales_del_Sistem"] }
+    ]},
+    { "id": "mod-2", "titulo": "Núcleo Maestro ERP", "clases": [
+      { "id": "mod2-c1", "titulo": "Socio de Negocios (OCRD)", "manuales": ["2.3_Datos_Maestros_de_Clientes", "1.3_Documentos_y_Datos_Maestros_Concept"] },
+      { "id": "mod2-c2", "titulo": "Datos Maestros de Artículo (OITM)", "manuales": ["4.1_Datos_Maestros_de_Articulos", "4.2_Grupos_de_Articulos"] },
+      { "id": "mod2-c3", "titulo": "Gestión de Unidades de Medida", "manuales": ["4.3_Unidades_de_Medida_Vision_General", "4.4_Unidades_de_Medida_Configuracion"] },
+      { "id": "mod2-c4", "titulo": "Determinación Estándar de Precios", "manuales": ["8.1_Determinacion_de_Precios_Conceptos", "8.2_Creacion_de_Listas_de_Precios"] }
+    ]},
+    { "id": "mod-3", "titulo": "Aprovisionamiento y Control de Inventarios", "clases": [
+      { "id": "mod3-c1", "titulo": "Ciclo Procure-to-Pay", "manuales": ["3.1_Proceso_de_Compras_Vision_General", "3.2_Compras_Articulos_y_Documentos", "3.5_Entrada_de_Mercancias_GRPO"] },
+      { "id": "mod3-c2", "titulo": "Transacciones de Almacén", "manuales": ["5.1_Gestion_de_Almacenes", "5.2_Movimientos_de_Mercancia"] },
+      { "id": "mod3-c3", "titulo": "Ubicaciones (Bin Locations)", "manuales": ["7.1_Ubicaciones_de_Almacen_Vision_Gener", "7.2_Ubicaciones_de_Almacen_Configuracio"] },
+      { "id": "mod3-c4", "titulo": "Trazabilidad por Lotes y Series", "manuales": ["5.3_Gestion_de_Series_y_Lotes", "5.4_Series_y_Lotes_Valoracion"] },
+      { "id": "mod3-c5", "titulo": "Costos de Importación", "manuales": ["3.7_Costos_de_Importacion_Fletes", "3.8_Gestion_de_Costos_de_Importacion_La"] }
+    ]},
+    { "id": "mod-4", "titulo": "Gestión de Ventas y Order-to-Cash", "clases": [
+      { "id": "mod4-c1", "titulo": "El Ciclo de Ventas Order-to-Cash", "manuales": ["2.1_Proceso_de_Ventas_Vision_General", "2.2_De_Pedido_a_Cobro_Order_to_Cash"] },
+      { "id": "mod4-c2", "titulo": "Ofertas y Pedidos de Cliente", "manuales": ["2.2_De_Pedido_a_Cobro_Order_to_Cash", "2.5_Automatizacion_del_Proceso_de_Venta"] },
+      { "id": "mod4-c3", "titulo": "Entregas y Facturación", "manuales": ["2.2_De_Pedido_a_Cobro_Order_to_Cash", "5.6_Proceso_de_Picking_y_Packing_Ventas"] },
+      { "id": "mod4-c4", "titulo": "Devoluciones y Notas de Crédito", "manuales": ["2.6_Devoluciones_y_Cambios_Ventas", "2.7_Notas_de_Credito_Ventas"] }
+    ]},
+    { "id": "mod-5", "titulo": "Estrategias Avanzadas de Precios", "clases": [
+      { "id": "mod5-c1", "titulo": "Listas de Precios y su Actualización", "manuales": ["8.2_Creacion_de_Listas_de_Precios", "8.3_Actualizacion_de_Listas_de_Precios"] },
+      { "id": "mod5-c2", "titulo": "Descuentos por Período y Volumen", "manuales": ["8.4_Descuentos_por_Periodo_y_Volumen"] },
+      { "id": "mod5-c3", "titulo": "Grupos de Descuento", "manuales": ["8.5_Grupos_de_Descuento"] },
+      { "id": "mod5-c4", "titulo": "Precios Especiales para Socios", "manuales": ["8.6_Precios_Especiales_para_Socios_de_N"] }
+    ]},
+    { "id": "mod-6", "titulo": "Gestión CRM y Servicios Post-venta", "clases": [
+      { "id": "mod6-c1", "titulo": "Gestión de Relaciones con Clientes", "manuales": ["2.4_Gestion_de_Relaciones_con_Clientes_"] },
+      { "id": "mod6-c2", "titulo": "Oportunidades y Actividades de Venta", "manuales": ["2.4_Gestion_de_Relaciones_con_Clientes_", "2.5_Automatizacion_del_Proceso_de_Venta"] },
+      { "id": "mod6-c3", "titulo": "Llamadas de Servicio", "manuales": ["12.1_Gestion_de_Llamadas_de_Servicio"] },
+      { "id": "mod6-c4", "titulo": "Tarjetas de Equipo y Garantías", "manuales": ["12.1_Gestion_de_Llamadas_de_Servicio", "7.6_Ubicaciones_de_Almacen_Numeros_de_S"] }
+    ]},
+    { "id": "mod-7", "titulo": "Contabilidad Central y NIIF", "clases": [
+      { "id": "mod7-c1", "titulo": "Plan de Cuentas", "manuales": ["13.1_Plan_de_Cuentas_Conceptos_Fundament", "13.3_Gestion_del_Plan_de_Cuentas"] },
+      { "id": "mod7-c2", "titulo": "Cuentas de Mayor por Defecto", "manuales": ["13.4_Cuentas_de_Mayor_por_Defecto_Vision", "13.5_Cuentas_de_Mayor_por_Defecto_Modo_T"] },
+      { "id": "mod7-c3", "titulo": "Asientos Contables Manuales y Automáticos", "manuales": ["14.2_Asientos_Contables_Automaticos", "15.1_Registro_de_Asientos_Contables", "15.2_Plantillas_de_Asientos_Recurrentes"] },
+      { "id": "mod7-c4", "titulo": "Períodos Contables y Cierre", "manuales": ["15.4_Periodos_Contables_y_Ejercicios", "15.5_Cierre_de_Periodo_Contable"] }
+    ]},
+    { "id": "mod-8", "titulo": "Tesorería, Cobros y Pagos (Bancos)", "clases": [
+      { "id": "mod8-c1", "titulo": "Pagos Recibidos y Efectuados", "manuales": ["16.1_Gestion_de_Pagos_Recibidos_y_Emitid"] },
+      { "id": "mod8-c2", "titulo": "Asistente de Pagos", "manuales": ["16.2_Asistente_de_Pagos_Payment_Wizard"] },
+      { "id": "mod8-c3", "titulo": "Conciliación Bancaria e Interna", "manuales": ["16.3_Reconciliacion_Bancaria", "15.6_Reconciliacion_Interna_de_Cuentas"] },
+      { "id": "mod8-c4", "titulo": "Antigüedad de Saldos y Cobranza", "manuales": ["17.3_Antiguedad_de_Saldos_Aging_Report", "17.4_Proceso_de_Reclamaciones_Dunning"] }
+    ]},
+    { "id": "mod-9", "titulo": "Control de Activos Fijos", "clases": [
+      { "id": "mod9-c1", "titulo": "Configuración de Activos Fijos", "manuales": ["19.2_Activos_Fijos_Virtuales", "19.3_Activos_Fijos_Configuracion_Inicial"] },
+      { "id": "mod9-c2", "titulo": "Alta y Datos Maestros del Activo", "manuales": ["19.4_Activos_Fijos_Activacion_y_Datos_Ma"] },
+      { "id": "mod9-c3", "titulo": "Depreciación y Ajustes", "manuales": ["19.5_Activos_Fijos_Depreciacion_y_Ajuste"] },
+      { "id": "mod9-c4", "titulo": "Bajas y Monitoreo de Activos", "manuales": ["19.6_Activos_Fijos_Bajas_y_Monitoreo"] }
+    ]},
+    { "id": "mod-10", "titulo": "Planificación de Materiales (MRP)", "clases": [
+      { "id": "mod10-c1", "titulo": "Planificación de Necesidades MRP", "manuales": ["9.1_Planificacion_de_Necesidades_MRP_Pr"] },
+      { "id": "mod10-c2", "titulo": "Pronósticos de Demanda", "manuales": ["9.2_Pronosticos_de_Consumo_y_Demanda"] },
+      { "id": "mod10-c3", "titulo": "MRP y Listas de Materiales", "manuales": ["9.3_MRP_y_Listas_de_Materiales_BOM"] },
+      { "id": "mod10-c4", "titulo": "Recomendaciones y Órdenes Sugeridas", "manuales": ["9.1_Planificacion_de_Necesidades_MRP_Pr", "9.3_MRP_y_Listas_de_Materiales_BOM"] }
+    ]},
+    { "id": "mod-11", "titulo": "Fabricación y Proyectos (BOM)", "clases": [
+      { "id": "mod11-c1", "titulo": "Listas de Materiales", "manuales": ["10.4_Lista_de_Materiales_BOM", "10.1_Produccion_Vision_General"] },
+      { "id": "mod11-c2", "titulo": "Órdenes de Producción", "manuales": ["10.5_Proceso_Basico_de_Orden_de_Producci", "10.6_Subproductos_y_Costos_Adicionales"] },
+      { "id": "mod11-c3", "titulo": "Costos de Producción", "manuales": ["10.8_Contabilizacion_de_Ordenes_de_Produ", "10.9_Analisis_de_Costos_de_Produccion"] },
+      { "id": "mod11-c4", "titulo": "Gestión y Facturación de Proyectos", "manuales": ["11.1_Gestion_de_Proyectos", "11.2_Facturacion_de_Proyectos"] }
+    ]},
+    { "id": "mod-12", "titulo": "Consultoría y Herramientas SQL", "clases": [
+      { "id": "mod12-c1", "titulo": "Consultas SQL con el Query Manager", "manuales": ["22.1_Consultas_Personalizadas_Queries", "23.6_Practica_de_Consultas_SQL"] },
+      { "id": "mod12-c2", "titulo": "Alertas y Procesos de Aprobación", "manuales": ["22.2_Sistema_de_Alertas_Automaticas", "22.3_Procesos_de_Aprobacion"] },
+      { "id": "mod12-c3", "titulo": "Campos y Valores Definidos por el Usuario", "manuales": ["22.4_Campos_Definidos_por_el_Usuario_UDF", "22.5_Valores_Definidos_por_el_Usuario_UD"] },
+      { "id": "mod12-c4", "titulo": "Migración de Datos con DTW", "manuales": ["20.6_Importacion_de_Datos_desde_Excel", "20.7_Uso_del_Data_Transfer_Workbench_DTW"] }
+    ]}
+  ]
+}

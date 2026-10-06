@@ -7,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
-import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, Send, ChevronRight, RotateCcw } from 'lucide-react';
+import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw } from 'lucide-react';
 
 // =============================================
 // Types
@@ -66,6 +66,11 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // Lesson data
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [isLoadingLesson, setIsLoadingLesson] = useState(false);
+  const [lessonError, setLessonError] = useState<string | null>(null);
+  const [progressError, setProgressError] = useState<string | null>(null);
+  const [restartKey, setRestartKey] = useState(0);
+  const [retrySave, setRetrySave] = useState(0);
+  const [lessonSaved, setLessonSaved] = useState(false);
 
   // Class flow
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
@@ -74,6 +79,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
 
   // Sidebar
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  useEffect(() => { setSidebarOpen(window.matchMedia('(min-width: 1024px)').matches); }, []);
 
   // Speech
   const { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload } = useAcademyVoice();
@@ -84,7 +90,12 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   useEffect(() => {
     if (!activeClassId || !currentUser || !moduleInfo) return;
     let isMounted = true;
+    const controller = new AbortController();
     setIsLoadingLesson(true);
+    setLessonData(null);
+    setLessonError(null);
+    setProgressError(null);
+    setLessonSaved(false);
     setCurrentSlideIndex(0);
     setPhase('narrating');
     stopSpeaking();
@@ -92,28 +103,32 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     currentUser.getIdToken()
       .then(token =>
         fetch(`/api/lesson-data?moduleId=${encodeURIComponent(moduleInfo.id)}&classId=${encodeURIComponent(activeClassId)}`, {
+          signal: controller.signal,
           headers: { Authorization: `Bearer ${token}` }
         })
       )
-      .then(r => r.ok ? r.json() : null)
+      .then(r => { if (!r.ok) throw new Error('lesson-load'); return r.json(); })
       .then(data => {
-        if (isMounted && data) setLessonData(data);
+        if (data?.classId !== activeClassId || !data.syncData?.length) throw new Error('lesson-data');
+        if (isMounted) setLessonData(data);
       })
-      .catch(() => {})
+      .catch(() => { if (isMounted) setLessonError('No se pudo cargar esta clase. Vuelve a intentarlo.'); })
       .finally(() => { if (isMounted) setIsLoadingLesson(false); });
 
     return () => {
       isMounted = false;
+      controller.abort();
       stopSpeaking();
     };
-  }, [activeClassId, currentUser, moduleInfo, stopSpeaking]);
+  }, [activeClassId, currentUser, moduleInfo, stopSpeaking, restartKey]);
 
   // =============================================
   // Derived state
   // =============================================
   const currentSync = useMemo(() =>
-    lessonData?.syncData?.find(s => s.slide_index === currentSlideIndex + 1) || null,
-    [lessonData, currentSlideIndex]
+    lessonData?.classId === activeClassId && !isLoadingLesson
+      ? lessonData.syncData.find(s => s.slide_index === currentSlideIndex + 1) || null : null,
+    [lessonData, activeClassId, isLoadingLesson, currentSlideIndex]
   );
 
   const currentStepGuide = currentSync?.step_guide || null;
@@ -133,7 +148,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // NARRATION → auto-trigger when slide changes
   // =============================================
   useEffect(() => {
-    if (phase !== 'narrating' || !slideScript) return;
+    if (isLoadingLesson || lessonData?.classId !== activeClassId || phase !== 'narrating' || !slideScript) return;
 
     // Lámina con práctica: se abre el simulador de inmediato y la narración continúa sobre él.
     if (hasSimulatorStep) {
@@ -144,8 +159,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     speakText(slideScript, () => setPhase('mission_done'));
 
     return () => { stopSpeaking(); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase, currentSlideIndex, lessonData]);
+  }, [phase, currentSlideIndex, activeClassId, lessonData, isLoadingLesson, slideScript, hasSimulatorStep, speakText, stopSpeaking]);
 
   // =============================================
   // SIMULATOR ENTRY → read instructions
@@ -155,35 +169,17 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       // Explicación de la lámina + instrucciones, narradas mientras el estudiante ya ve el simulador.
       const instText = currentStepGuide.instructions.map(i => i.replace(/\.$/, '')).join('. ');
       speakText(`${slideScript} ${instText}.`.trim());
+      return stopSpeaking;
     }
-  }, [phase, currentStepGuide, slideScript, speakText]);
-
-  // =============================================
-  // MISSION DONE → advance slide or complete class
-  // =============================================
-  useEffect(() => {
-    if (phase !== 'mission_done') return;
-    const totalSlides = lessonData?.totalSlides || 0;
-
-    const timer = setTimeout(() => {
-      if (currentSlideIndex < totalSlides - 1) {
-        setCurrentSlideIndex(prev => prev + 1);
-        setPhase('narrating');
-      } else {
-        handleMarkLessonComplete();
-      }
-    }, 1200);
-
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase]);
+  }, [phase, currentStepGuide, slideScript, speakText, stopSpeaking]);
 
   // =============================================
   // Mission complete callback from simulator
   // =============================================
   const handleMissionComplete = useCallback(() => {
+    stopSpeaking();
     setPhase('mission_done');
-  }, []);
+  }, [stopSpeaking]);
 
   // =============================================
   // Progress & lessons
@@ -200,35 +196,66 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     }
   }, [moduleInfo, currentUser]);
 
-  const handleMarkLessonComplete = useCallback(() => {
-    if (!currentUser || !moduleInfo) return;
-    currentUser.getIdToken().then(token =>
-      fetch('/api/progress', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ moduleId: moduleInfo.id, classId: activeClassId })
-      })
-    ).then(() => {
-      setCompletedClasses(prev => ({ ...prev, [activeClassId]: true }));
-      // Auto-advance to next class
-      const idx = moduleClasses.findIndex(c => c.id === activeClassId);
-      if (idx >= 0 && idx < moduleClasses.length - 1) {
-        setTimeout(() => handleSelectClass(moduleClasses[idx + 1].id), 1500);
-      }
-    }).catch(() => {});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser, moduleInfo, activeClassId, moduleClasses]);
-
   const handleSelectClass = useCallback((classId: string) => {
     if (classId === activeClassId) return;
     stopSpeaking();
+    setLessonData(null);
+    setIsLoadingLesson(true);
+    setCurrentSlideIndex(0);
+    setPhase('narrating');
+    setProgressError(null);
+    setLessonSaved(false);
     setActiveClassId(classId);
+    if (!window.matchMedia('(min-width: 1024px)').matches) setSidebarOpen(false);
   }, [activeClassId, stopSpeaking]);
+
+  // Every pending advance belongs to this lesson/slide and is cancelled on navigation.
+  useEffect(() => {
+    if (phase !== 'mission_done' || !lessonData || lessonData.classId !== activeClassId || isLoadingLesson || !currentUser || !moduleInfo) return;
+    let cancelled = false;
+    const controller = new AbortController();
+    let nextTimer: ReturnType<typeof setTimeout> | undefined;
+    const timer = setTimeout(async () => {
+      if (currentSlideIndex < lessonData.totalSlides - 1) {
+        setCurrentSlideIndex(index => index + 1);
+        setPhase('narrating');
+        return;
+      }
+      try {
+        const token = await currentUser.getIdToken();
+        if (cancelled) return;
+        const response = await fetch('/api/progress', {
+          method: 'POST', signal: controller.signal,
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ moduleId: moduleInfo.id, classId: activeClassId }),
+        });
+        if (!response.ok) throw new Error('progress-save');
+        if (cancelled) return;
+        setCompletedClasses(previous => ({ ...previous, [activeClassId]: true }));
+        setLessonSaved(true);
+        const index = moduleClasses.findIndex(cls => cls.id === activeClassId);
+        if (index >= 0 && index < moduleClasses.length - 1) {
+          nextTimer = setTimeout(() => handleSelectClass(moduleClasses[index + 1].id), 1500);
+        }
+      } catch {
+        if (!cancelled) setProgressError('No se pudo guardar el progreso. Reintenta para continuar.');
+      }
+    }, 1200);
+    return () => {
+      cancelled = true;
+      controller.abort();
+      clearTimeout(timer);
+      clearTimeout(nextTimer);
+    };
+  }, [phase, lessonData, activeClassId, isLoadingLesson, currentUser, moduleInfo, currentSlideIndex, moduleClasses, handleSelectClass, retrySave]);
 
   const handleRestart = useCallback(() => {
     stopSpeaking();
+    setLessonData(null);
+    setIsLoadingLesson(true);
     setCurrentSlideIndex(0);
     setPhase('narrating');
+    setRestartKey(key => key + 1);
   }, [stopSpeaking]);
 
   const totalLessons = moduleClasses.length;
@@ -254,10 +281,10 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // RENDER
   // =============================================
   return (
-    <div className="min-h-screen flex flex-col bg-[#070b14] text-gray-100">
+    <div className="h-dvh w-full overflow-hidden flex flex-col bg-[#070b14] text-gray-100">
 
       {/* ── BARRA SUPERIOR (sin Navbar global) ── */}
-      <header className="sticky top-0 z-30 bg-[#0e1620]/95 backdrop-blur-md border-b border-gray-800 px-4 sm:px-6 py-2.5 flex items-center justify-between gap-4">
+      <header className="shrink-0 z-30 bg-[#0e1620]/95 backdrop-blur-md border-b border-gray-800 px-2 sm:px-6 py-2.5 flex items-center justify-between gap-2 sm:gap-4">
         <div className="flex items-center gap-3 min-w-0">
           {/* Back */}
           <Link
@@ -273,6 +300,8 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             onClick={() => setSidebarOpen(v => !v)}
             className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all shrink-0"
             title={sidebarOpen ? 'Cerrar Temario' : 'Abrir Temario'}
+            aria-expanded={sidebarOpen}
+            aria-controls="aula-temario"
           >
             {sidebarOpen ? <PanelLeftClose className="w-4 h-4" /> : <PanelLeftOpen className="w-4 h-4" />}
           </button>
@@ -334,11 +363,11 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       </header>
 
       {/* ── MAIN LAYOUT ── */}
-      <div className="flex flex-1 min-h-0 overflow-hidden">
+      <div className="relative flex flex-1 min-h-0 overflow-hidden">
 
         {/* ── SIDEBAR ── */}
         {sidebarOpen && (
-          <aside className="w-60 shrink-0 bg-[#0a1018] border-r border-gray-800 flex flex-col overflow-y-auto">
+          <aside id="aula-temario" className="absolute inset-y-0 left-0 z-20 w-60 max-w-[85vw] shadow-2xl lg:shadow-none lg:static shrink-0 bg-[#0a1018] border-r border-gray-800 flex flex-col overflow-y-auto">
             {/* Student card */}
             <div className="p-4 border-b border-gray-800">
               <div className="flex items-center gap-3 mb-3">
@@ -435,7 +464,12 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
         {/* ── CONTENT AREA ── */}
         <main className="flex-1 min-w-0 flex flex-col overflow-hidden">
 
-          {isLoadingLesson ? (
+          {lessonError ? (
+            <div role="alert" className="flex-1 flex flex-col items-center justify-center gap-4 p-6 text-center">
+              <p>{lessonError}</p>
+              <button onClick={handleRestart} className="rounded-lg bg-amber-500 px-4 py-2 text-slate-950 font-bold active:scale-95">Reintentar carga</button>
+            </div>
+          ) : isLoadingLesson || !lessonData ? (
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
                 <div className="w-10 h-10 border-2 border-amber-500 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
@@ -449,14 +483,15 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 <CheckCircle2 className="w-12 h-12 text-emerald-400" />
               </div>
               <h3 className="text-xl font-bold text-white mb-1">¡Misión Completada!</h3>
-              <p className="text-sm text-gray-400">Avanzando a la siguiente diapositiva...</p>
+              <p className="text-sm text-gray-400" role="status">{progressError || (lessonSaved ? (activeClassId === moduleClasses.at(-1)?.id ? 'Módulo terminado. Puedes acceder a la evaluación oral.' : 'Clase guardada. Preparando la siguiente lección...') : 'Guardando tu progreso...')}</p>
+              {progressError && <button onClick={() => { setProgressError(null); setRetrySave(value => value + 1); }} className="mt-4 rounded-lg bg-amber-500 px-4 py-2 text-slate-950 font-bold active:scale-95">Reintentar guardado</button>}
             </div>
 
           ) : phase === 'simulator' && currentStepGuide ? (
             /* ── SIMULATOR PHASE ── */
-            <div className="flex-1 flex flex-col overflow-hidden">
+            <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
               {/* Glowing instructions bar */}
-              <div className="shrink-0 mx-4 mt-3 p-3 rounded-xl bg-gradient-to-r from-blue-900/60 to-blue-800/40 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+              <div className="shrink-0 max-h-[30dvh] overflow-y-auto mx-2 sm:mx-4 mt-3 p-3 rounded-xl bg-gradient-to-r from-blue-900/60 to-blue-800/40 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
                 <div className="flex items-center justify-between gap-2 mb-1.5">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400">
                     📋 {currentStepGuide.title}
@@ -486,21 +521,23 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 </ol>
               </div>
               {/* Simulator */}
-              <div className="flex-1 min-h-0 mt-3 px-4 pb-4 overflow-hidden">
+              <div className="flex-1 min-h-[320px] mt-3 px-2 sm:px-4 pb-4">
                 <SAPInteractiveSimulator
+                  key={`${activeClassId}:${currentSlideIndex}:${restartKey}`}
                   manualId={activeClassId}
                   currentStepIndex={currentSlideIndex}
                   stepGuide={currentStepGuide}
                   onMissionComplete={handleMissionComplete}
+                  scrollInterno={false}
                 />
               </div>
             </div>
 
           ) : (
             /* ── NARRATION PHASE ── */
-            <div className="flex-1 flex flex-col overflow-y-auto">
+            <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
               {/* Slide image */}
-              <div className="relative bg-[#0a0a10]">
+              <div className="relative flex-1 min-h-[180px] bg-[#0a0a10]">
                 {activeSlideImage ? (
                   <Image
                     src={activeSlideImage}
@@ -508,7 +545,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                     width={1920}
                     height={1080}
                     unoptimized
-                    className="w-full max-h-[52vh] object-contain mx-auto"
+                    className="absolute inset-0 w-full h-full object-contain"
                     priority={currentSlideIndex === 0}
                   />
                 ) : (
@@ -536,7 +573,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
 
               {/* Narration text */}
               {slideScript && (
-                <div className="p-4 border-t border-gray-800 bg-[#0e1620]">
+                <div className="shrink-0 max-h-[35dvh] overflow-y-auto p-4 border-t border-gray-800 bg-[#0e1620]">
                   <div className="flex items-center gap-2 mb-2">
                     <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold ${
                       isSpeaking

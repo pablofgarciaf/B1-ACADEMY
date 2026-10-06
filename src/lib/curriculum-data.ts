@@ -1,3 +1,5 @@
+import CLASES_AULA from '@/content/aula/clases.json';
+
 export interface SyllabusClass {
   id: string;
   number: number;
@@ -190,6 +192,13 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
     classes: []
   }
 ];
+
+// Temario real de Mi Aula: generado por scripts/aula/publicar_clases.py a partir de scripts/aula/plan.json.
+// Reemplaza las clases de cada módulo que tenga contenido publicado (los módulos 4-12 estaban vacíos).
+for (const mod of OFFICIAL_SYLLABUS) {
+  const publicadas = (CLASES_AULA as Record<string, SyllabusClass[]>)[mod.id];
+  if (publicadas?.length) mod.classes = publicadas;
+}
 
 export function getModuleById(id: string): SyllabusModule | undefined {
   return OFFICIAL_SYLLABUS.find(m => m.id === id);
