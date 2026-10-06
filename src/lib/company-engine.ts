@@ -1,6 +1,7 @@
 import { buildSRIXml } from './sri-xml';
-import type { CompanyCommand, CommandData } from './company-commands';
-import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine } from './firestore-types';
+import { commandSchema, type CompanyCommand, type CommandData } from './company-commands';
+import { mensajeValidacion } from './zod-es';
+import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine, LandedCost } from './firestore-types';
 import { financialSummary, moveStock, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
@@ -372,6 +373,104 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const finDeMes = new Date(Date.UTC(y, m, 0)).toISOString().slice(0, 10);
       result = post(finDeMes, `Depreciación ${period}`, 'depreciation', period, [ledgerLine('6.06', total), ledgerLine('1.2.02', 0, total)]);
       award('depreciation', 150, period, 'Primera depreciación');
+      break;
+    }
+    case 'landedCost': {
+      const d = command.data;
+      const doc = state.purchaseOrders.find(p => p.id === d.documentId);
+      assert(doc && (doc.docType === 'goods_receipt' || (doc.docType === 'vendor_invoice' && !doc.baseDocumentId)), 'Selecciona una entrada de mercancía o una factura de proveedor que haya ingresado stock.');
+      if (!doc) break;
+      const recibidos = state.stockMovements.filter(m => m.reference === doc.id && m.quantity > 0);
+      assert(recibidos.length > 0, 'Ese documento no ingresó mercadería al inventario.');
+      const total = round(d.costs.reduce((s, c) => s + c.amount, 0));
+      const base = recibidos.map(m => (d.allocation === 'value' ? m.value : m.quantity));
+      const baseTotal = base.reduce((s, v) => s + v, 0);
+      assert(baseTotal > 0, 'No hay base para prorratear.');
+      result = next('CI', d.date);
+      let asignado = 0; const porCuenta = new Map<string, number>(); let aCosto = 0; let aVariacion = 0;
+      const lineas: LandedCost['lines'] = recibidos.map((m, i) => {
+        // La última línea absorbe el redondeo para que el prorrateo sume exacto.
+        const share = i === recibidos.length - 1 ? round(total - asignado) : round((total * base[i]) / baseTotal);
+        asignado = round(asignado + share);
+        const row = stock(m.itemCode, m.warehouseCode);
+        const enBodega = Math.min(m.quantity, row.quantity);
+        const toInventory = round((share * enBodega) / m.quantity);
+        const toCostOfSales = round(share - toInventory);
+        if (toInventory > 0) {
+          if (row.costingMethod === 'standard') aVariacion = round(aVariacion + toInventory);
+          else {
+            row.value = round(row.value + toInventory); row.averageCost = row.quantity ? row.value / row.quantity : 0;
+            if (row.costingMethod === 'fifo') {
+              // Se reparte en las capas más recientes, que corresponden a lo recibido.
+              let porCubrir = enBodega; const extraUnit = toInventory / enBodega;
+              for (let k = row.layers.length - 1; k >= 0 && porCubrir > 0.000001; k--) {
+                const capa = row.layers[k];
+                if (capa.quantity > porCubrir) { row.layers.splice(k, 1, { ...capa, quantity: quantityRound(capa.quantity - porCubrir) }, { ...capa, quantity: porCubrir, cost: capa.cost + extraUnit }); porCubrir = 0; }
+                else { capa.cost += extraUnit; porCubrir = quantityRound(porCubrir - capa.quantity); }
+              }
+            }
+            row.updatedAt = now;
+            const cuenta = state.boms.some(b => b.parentItemCode === m.itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
+            porCuenta.set(cuenta, round((porCuenta.get(cuenta) ?? 0) + toInventory));
+          }
+        }
+        aCosto = round(aCosto + toCostOfSales);
+        return { itemCode: m.itemCode, warehouseCode: m.warehouseCode, quantity: m.quantity, baseValue: m.value, share, toInventory, toCostOfSales };
+      });
+      const asiento: JournalLine[] = [...Array.from(porCuenta, ([cuenta, v]) => ledgerLine(cuenta, v))];
+      if (aCosto) asiento.push(ledgerLine('5.01', aCosto));
+      if (aVariacion) asiento.push(ledgerLine('6.05', aVariacion));
+      asiento.push(ledgerLine(d.paymentAccount, 0, total));
+      const journalEntryId = post(d.date, `Costos de importación ${doc.docNumber}`, 'landed', result, asiento);
+      state.landedCosts.push({ ...meta(result), landedCostNumber: result, documentId: doc.id, documentNumber: doc.docNumber, date: d.date, allocation: d.allocation, costs: d.costs, total, lines: lineas, journalEntryId });
+      award('landed-cost', 200, result, 'Primer costeo de importación');
+      break;
+    }
+    case 'opportunity': {
+      const d = command.data;
+      const cliente = state.customers.find(c => c.cardCode === d.cardCode); if (!cliente) throw new Error('Cliente o lead inexistente.');
+      const probabilidad = { prospecto: 10, calificado: 25, propuesta: 50, negociacion: 75, ganada: 100, perdida: 0 }[d.stage];
+      assert(d.stage !== 'perdida' || d.lossReason.trim().length >= 5, 'Registra el motivo de la pérdida: es la información más valiosa para mejorar.');
+      const cerrada = d.stage === 'ganada' || d.stage === 'perdida';
+      const existente = d.id ? state.opportunities.find(o => o.id === d.id) : undefined;
+      if (d.id) assert(existente, 'Oportunidad inexistente.');
+      if (existente) {
+        Object.assign(existente, { name: d.name, cardCode: d.cardCode, cardName: cliente.name, amount: d.amount, stage: d.stage, probability: probabilidad, expectedClose: d.expectedClose, source: d.source, notes: d.notes, lossReason: d.lossReason, closedAt: cerrada ? existente.closedAt || now : '', updatedAt: now });
+        result = existente.id;
+      } else {
+        result = next('OPO');
+        state.opportunities.push({ ...meta(result), opportunityNumber: result, name: d.name, cardCode: d.cardCode, cardName: cliente.name, amount: d.amount, stage: d.stage, probability: probabilidad, expectedClose: d.expectedClose, source: d.source, notes: d.notes, lossReason: d.lossReason, closedAt: cerrada ? now : '' });
+      }
+      award('crm', 100, result, 'Primera oportunidad comercial');
+      if (d.stage === 'ganada') award('crm-won', 200, result, 'Primera oportunidad ganada');
+      break;
+    }
+    case 'companySettings': {
+      const d = command.data;
+      const codigos = new Set(d.warehouses.map(w => w.code));
+      assert(codigos.size === d.warehouses.length, 'Código de almacén repetido.');
+      for (const w of profile.warehouses) {
+        const usado = state.warehouseStock.some(s => s.warehouseCode === w.code && s.quantity !== 0);
+        assert(codigos.has(w.code) || !usado, `No se puede eliminar el almacén ${w.code}: tiene existencias.`);
+      }
+      Object.assign(profile, { companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
+      result = uid; break;
+    }
+    case 'importMasterData': {
+      const d = command.data;
+      // Cada fila pasa por la misma validación que crearla a mano; si una falla, no se importa ninguna.
+      let parcial: CompanyState = state; const creados: string[] = [];
+      d.rows.forEach((fila, i) => {
+        const parsed = commandSchema.safeParse({ action: d.kind, data: fila });
+        if (!parsed.success) throw new Error(`Fila ${i + 1}: ${parsed.error.issues.map(x => mensajeValidacion(x)).join('; ')}`);
+        try { const out = applyCommand(parcial, parsed.data, uid, email, now); parcial = out.state; creados.push(out.result); }
+        catch (e) { throw new Error(`Fila ${i + 1}: ${e instanceof Error ? e.message : 'no válida'}`); }
+      });
+      // Se conserva el mismo objeto `profile`: el motor lo sigue actualizando después del switch (XP, nivel…).
+      Object.assign(profile, parcial.profile);
+      Object.assign(state, { ...parcial, profile });
+      result = `${creados.length} registros importados`;
+      award('dtw', 200, creados[0] ?? '', 'Primera importación masiva');
       break;
     }
     case 'missionComplete': { const mission = state.missions.find(m => m.id === command.data.id); if (!mission) throw new Error('Misión inexistente.'); mission.status = 'completed'; mission.updatedAt = now; result = mission.id; break; }

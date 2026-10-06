@@ -27,6 +27,11 @@ import PriceListScreen from './PriceListScreen';
 import VolumeDiscountScreen from './VolumeDiscountScreen';
 import InventoryCountScreen from './InventoryCountScreen';
 import FixedAssetsScreen from './FixedAssetsScreen';
+import LandedCostScreen from './LandedCostScreen';
+import OpportunitiesScreen from './OpportunitiesScreen';
+import CompanySettingsScreen from './CompanySettingsScreen';
+import PrintLayoutScreen from './PrintLayoutScreen';
+import DataTransferScreen from './DataTransferScreen';
 
 export const companyScreens: Record<string, ComponentType> = {
   'EC-CUSTOMERS': CompanyPartnerForm,
@@ -36,7 +41,10 @@ export const companyScreens: Record<string, ComponentType> = {
   'BNK001': BankingScreen, 'BNK002': BankingScreen, 'BNK003': BankingScreen,
   'RPT002': SalesReportScreen, 'RPT-VENTAS': SalesReportScreen, 'RPT004': ManagementAnalysisScreen, 'RPT005': AgingScreen, 'RPT003': PurchaseAnalysisScreen, 'QRY001': QueryManagerScreen, 'QRY002': QueryManagerScreen, 'FIN007': BudgetScreen,
   'ADM003': ApprovalsScreen, 'ADM006': ApprovalsScreen, 'FIN008': PeriodCloseScreen, 'SAL007': PriceListScreen,
-  'SAL008': VolumeDiscountScreen, 'INV003': InventoryCountScreen, 'FIN006': FixedAssetsScreen, 'FIN005': CashFlowScreen,
+  'SAL008': VolumeDiscountScreen, 'INV003': InventoryCountScreen, 'FIN006': FixedAssetsScreen,
+  'PUR007': LandedCostScreen, 'CRM001': OpportunitiesScreen, 'ADM001': CompanySettingsScreen, 'UTL001': PrintLayoutScreen,
+  'UTL002': DataTransferScreen, 'UTL003': DataTransferScreen, 'UTL004': DataTransferScreen,
+  'RPT001': QueryManagerScreen, 'QRY003': QueryManagerScreen, 'FIN005': CashFlowScreen,
   'EC-SRI': SRIElectronicScreen, 'EC-RETENTION': RetentionForm, 'EC-TAX': TaxReportScreen,
   'EC-EMPLOYEE': EmployeeForm, 'EC-PAYROLL': PayrollRunScreen,
   'MFG001': BOMForm, 'MFG003': ProductionOrderForm, 'MFG004': ProductionOrderForm, 'MFG005': ProductionOrderForm,

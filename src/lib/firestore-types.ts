@@ -93,12 +93,25 @@ export interface Approval extends Entity {
 }
 export interface InventoryCountLine { itemCode: string; itemName: string; systemQuantity: number; countedQuantity: number; difference: number; unitCost: number; value: number }
 export interface InventoryCount extends Entity { countNumber: string; date: string; warehouseCode: string; blind: boolean; lines: InventoryCountLine[]; totalDifferenceValue: number; journalEntryId: string }
+/** Costos de importación (flete, seguro, arancel, FODINFA, ISD…) prorrateados sobre una recepción. */
+export interface LandedCost extends Entity {
+  landedCostNumber: string; documentId: string; documentNumber: string; date: string; allocation: 'value' | 'quantity';
+  costs: { concept: string; amount: number }[]; total: number;
+  lines: { itemCode: string; warehouseCode: string; quantity: number; baseValue: number; share: number; toInventory: number; toCostOfSales: number }[];
+  journalEntryId: string;
+}
+export type EtapaOportunidad = 'prospecto' | 'calificado' | 'propuesta' | 'negociacion' | 'ganada' | 'perdida';
+/** Oportunidad de venta del CRM (embudo comercial). */
+export interface Opportunity extends Entity {
+  opportunityNumber: string; name: string; cardCode: string; cardName: string; amount: number; stage: EtapaOportunidad; probability: number;
+  expectedClose: string; source: string; notes: string; lossReason: string; closedAt: string;
+}
 export interface FixedAsset extends Entity {
   assetCode: string; name: string; category: string; acquisitionDate: string; cost: number; residualValue: number; usefulLifeMonths: number;
   accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated'; journalEntryId: string;
 }
-export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset }
+export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset; landedCosts: LandedCost; opportunities: Opportunity }
 export type CollectionName = keyof CompanyCollections;
-export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets'];
+export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets', 'landedCosts', 'opportunities'];
 export type CompanyState = { profile: CompanyProfile | null } & { [K in CollectionName]: CompanyCollections[K][] };
-export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [] });
+export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [], landedCosts: [], opportunities: [] });

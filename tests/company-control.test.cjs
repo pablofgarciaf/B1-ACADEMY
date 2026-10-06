@@ -99,6 +99,53 @@ test('conteo físico: ajusta stock y contabiliza la merma contra 6.05', () => {
   assert.ok(cuadra(s.state));
 });
 
+test('costos de importación: lo que sigue en bodega sube el costo; lo vendido va al costo de ventas', () => {
+  const s = empresa();
+  const fp = s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.proveedor, [s.line(10, 10)]) }); // 10 u × $10
+  s.run('sales', { docType: 'invoice', document: s.doc(s.cliente, [s.line(4, 20)]) }); // vende 4
+  s.run('landedCost', { documentId: fp, date: '2026-10-06', allocation: 'value', paymentAccount: '2.1.01', costs: [{ concept: 'Flete internacional', amount: 15 }, { concept: 'ISD 5 %', amount: 5 }] });
+  const ci = s.state.landedCosts[0];
+  assert.equal(ci.total, 20);
+  assert.equal(ci.lines[0].toInventory, 12);
+  assert.equal(ci.lines[0].toCostOfSales, 8);
+  assert.equal(s.state.warehouseStock[0].value, 72);
+  assert.equal(s.state.warehouseStock[0].averageCost, 12);
+  assert.ok(cuadra(s.state));
+  assert.throws(() => s.run('landedCost', { documentId: 'NO-EXISTE', date: '2026-10-06', allocation: 'value', paymentAccount: '2.1.01', costs: [{ concept: 'Flete', amount: 1 }] }), /entrada de mercancía/);
+});
+
+test('CRM: probabilidad por etapa, motivo obligatorio al perder y actualización sin duplicar', () => {
+  const s = empresa();
+  const id = s.run('opportunity', { name: 'Renovación de equipos', cardCode: s.cliente, amount: 5000, stage: 'propuesta', expectedClose: '2026-11-30', source: 'Referido', notes: '' });
+  assert.equal(s.state.opportunities[0].probability, 50);
+  assert.throws(() => s.run('opportunity', { id, name: 'Renovación de equipos', cardCode: s.cliente, amount: 5000, stage: 'perdida', expectedClose: '2026-11-30', source: 'Referido', notes: '' }), /motivo de la pérdida/);
+  s.run('opportunity', { id, name: 'Renovación de equipos', cardCode: s.cliente, amount: 5000, stage: 'ganada', expectedClose: '2026-11-30', source: 'Referido', notes: '' });
+  assert.equal(s.state.opportunities.length, 1);
+  assert.equal(s.state.opportunities[0].probability, 100);
+  assert.ok(s.state.opportunities[0].closedAt);
+});
+
+test('datos de la empresa: valida el RUC y no permite borrar un almacén con stock', () => {
+  const s = empresa();
+  assert.throws(() => s.run('companySettings', { companyName: 'Demo', ruc: '1790000000', incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Principal' }] }), /13 dígitos/);
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.proveedor, [s.line(1, 10)]) });
+  assert.throws(() => s.run('companySettings', { companyName: 'Demo', ruc: '1790012345001', incomeTaxRate: 25, warehouses: [{ code: 'SECUNDARIO', name: 'Secundario' }] }), /tiene existencias/);
+  s.run('companySettings', { companyName: 'Andina S.A.', ruc: '1790012345001', incomeTaxRate: 22, warehouses: [{ code: 'PRINCIPAL', name: 'Matriz Quito' }, { code: 'GYE', name: 'Bodega Guayaquil' }] });
+  assert.equal(s.state.profile.ruc, '1790012345001');
+  assert.equal(s.state.profile.warehouses.length, 2);
+});
+
+test('importación masiva: valida cada fila con las mismas reglas y es todo o nada', () => {
+  const s = empresa();
+  const fila = (n) => ({ ...socio, name: `Cliente ${n}`, ruc: `17900000001${String(n).padStart(2, '0')}`, kind: 'customer' });
+  const antes = s.state.customers.length;
+  assert.throws(() => s.run('importMasterData', { kind: 'customer', rows: [fila(10), { ...fila(11), ruc: 'malo' }] }), /Fila 2/);
+  assert.equal(s.state.customers.length, antes, 'si una fila falla no se importa ninguna');
+  assert.equal(s.run('importMasterData', { kind: 'customer', rows: [fila(10), fila(11), fila(12)] }), '3 registros importados');
+  assert.equal(s.state.customers.length, antes + 3);
+  assert.ok(s.state.profile.xpHistory.some(e => e.key === 'dtw'), 'el perfil sigue actualizándose');
+});
+
 test('activo fijo: compra y depreciación mensual en línea recta, sin pasarse del valor depreciable', () => {
   const s = empresa();
   s.run('fixedAsset', { name: 'Computador', category: 'Equipo de cómputo', acquisitionDate: '2026-01-15', cost: 1200, residualValue: 0, usefulLifeMonths: 36, paymentAccount: '2.2.01' });

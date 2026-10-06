@@ -43,6 +43,14 @@ export const commandSchema = z.discriminatedUnion('action', [
   // Activos fijos y depreciación mensual en línea recta.
   z.object({ action: z.literal('fixedAsset'), data: z.object({ name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']) }) }),
   z.object({ action: z.literal('depreciate'), data: z.object({ period }) }),
+  // Costos de importación prorrateados sobre una recepción de mercadería.
+  z.object({ action: z.literal('landedCost'), data: z.object({ documentId: code, date, allocation: z.enum(['value', 'quantity']), paymentAccount: z.enum(['2.1.01', '1.1.01']), costs: z.array(z.object({ concept: text.min(2), amount: money.positive() })).min(1).max(10) }) }),
+  // CRM: crear o actualizar una oportunidad (id vacío = nueva).
+  z.object({ action: z.literal('opportunity'), data: z.object({ id: z.string().max(80).default(''), name: text.min(3), cardCode: code, amount: money, stage: z.enum(['prospecto', 'calificado', 'propuesta', 'negociacion', 'ganada', 'perdida']), expectedClose: date, source: text, notes: text, lossReason: text.default('') }) }),
+  // Datos de la empresa (inicialización).
+  z.object({ action: z.literal('companySettings'), data: z.object({ companyName: text.min(2), ruc: z.string().regex(/^\d{10}001$/, 'El RUC tiene 13 dígitos y termina en 001.'), incomeTaxRate: z.number().min(0).max(40), warehouses: z.array(z.object({ code: code, name: text.min(2) })).min(1).max(20) }) }),
+  // Importación masiva de datos maestros (estilo Data Transfer Workbench): todo o nada.
+  z.object({ action: z.literal('importMasterData'), data: z.object({ kind: z.enum(['customer', 'vendor', 'item']), rows: z.array(z.record(z.unknown())).min(1).max(200) }) }),
 ]);
 export type CompanyCommand = z.infer<typeof commandSchema>;
 export type CommandData<A extends CompanyCommand['action']> = Extract<CompanyCommand, { action: A }>['data'];
