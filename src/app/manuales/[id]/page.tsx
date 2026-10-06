@@ -48,15 +48,21 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
       .map(f => `/Capacitacion SAP/${manualId}/Imagenes_Diapositivas/${f}`);
   }
 
-  // 3. Verificar si existe el video generado por la IA
+  // 3. Usar el video solo cuando corresponde al guion vigente. Los manuales
+  // fueron reconstruidos y algunos equipos conservan un MP4 anterior junto a
+  // las nuevas láminas; mezclar ambos hace que imagen, voz y teleprompter difieran.
   let videoUrl: string | undefined = undefined;
-  if (fs.existsSync(path.join(manualDir, 'clase_video.mp4'))) {
+  const videoFile = path.join(manualDir, 'clase_video.mp4');
+  const syncFile = path.join(manualDir, 'clase_sync.json');
+  const videoIsCurrent = fs.existsSync(videoFile) && (
+    !fs.existsSync(syncFile) || fs.statSync(videoFile).mtimeMs >= fs.statSync(syncFile).mtimeMs
+  );
+  if (videoIsCurrent) {
     videoUrl = `/Capacitacion SAP/${manualId}/clase_video.mp4`;
   }
 
   // 4. Leer los metadatos de sincronización (JSON Teleprompter)
   let syncData: SyncData[] | undefined = undefined;
-  const syncFile = path.join(manualDir, 'clase_sync.json');
   if (fs.existsSync(syncFile)) {
     try {
       // Cada guion va firmado: permite narrarlo con la voz de Jorge sin sesión y sin video (modo narrado).

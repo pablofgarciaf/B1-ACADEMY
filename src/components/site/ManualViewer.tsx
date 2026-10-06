@@ -131,7 +131,15 @@ export default function ManualViewer({
 
   // Ref y estado para Sincronización Teleprompter
   const videoRef = useRef<HTMLVideoElement>(null);
+  const teleprompterScrollRef = useRef<HTMLDivElement>(null);
   const [currentVideoTime, setCurrentVideoTime] = useState(0);
+
+  // Imagen, voz y texto activo siempre se resuelven desde el mismo registro.
+  const syncSlideForIndex = useCallback((idx: number) => {
+    if (!syncData) return undefined;
+    const fileName = images[idx]?.split('/').pop();
+    return syncData.find((slide) => slide.image_file === fileName) ?? syncData[idx];
+  }, [images, syncData]);
 
   const handleTimeUpdate = () => {
     if (videoRef.current) {
@@ -151,19 +159,21 @@ export default function ManualViewer({
 
   const activeSyncSlide = useMemo(() => {
     if (!syncData || syncData.length === 0) return null;
-    if (!videoUrl) { return syncData.find(s => s.slide_index === currentIdx + 1) || syncData[0]; }
+    if (!videoUrl) return syncSlideForIndex(currentIdx) ?? syncData[0];
     return syncData.find(s => currentVideoTime >= s.start_time && currentVideoTime < s.end_time) || syncData[0];
-  }, [currentVideoTime, syncData, videoUrl, currentIdx]);
+  }, [currentVideoTime, syncData, videoUrl, currentIdx, syncSlideForIndex]);
 
   // Auto-scroll del Teleprompter para que el texto vaya subiendo fluidamente
   useEffect(() => {
     if (activeSyncSlide && activeTab === 'explicacion') {
-      const activeEl = document.getElementById(`sync-slide-${activeSyncSlide.slide_index}`);
-      if (activeEl) {
-        activeEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        });
+      const scrollArea = teleprompterScrollRef.current;
+      const activeEl = scrollArea?.querySelector<HTMLElement>(`[data-sync-slide="${activeSyncSlide.slide_index}"]`);
+      if (scrollArea && activeEl) {
+        const areaRect = scrollArea.getBoundingClientRect();
+        const itemRect = activeEl.getBoundingClientRect();
+        const itemTop = itemRect.top - areaRect.top + scrollArea.scrollTop;
+        const centeredTop = itemTop - (scrollArea.clientHeight - activeEl.offsetHeight) / 2;
+        scrollArea.scrollTo({ top: Math.max(0, centeredTop), behavior: 'smooth' });
       }
     }
   }, [activeSyncSlide, activeTab]);
@@ -423,17 +433,10 @@ export default function ManualViewer({
   const { isSpeaking, needsGesture, speakText, stopSpeaking, resumeAfterGesture, preload } = useAcademyVoice();
   const [narrando, setNarrando] = useState(false);
 
-  // Lámina actual → su guion: por nombre de archivo y, si no coincide, por posición.
-  const guionDeLamina = useCallback((idx: number) => {
-    if (!syncData) return undefined;
-    const archivo = images[idx]?.split('/').pop();
-    return syncData.find(s => s.image_file && s.image_file === archivo) ?? syncData[idx];
-  }, [syncData, images]);
-
   useEffect(() => {
     if (!narrable || !narrando) return;
-    const guion = guionDeLamina(currentIdx);
-    const siguiente = guionDeLamina(currentIdx + 1);
+    const guion = syncSlideForIndex(currentIdx);
+    const siguiente = syncSlideForIndex(currentIdx + 1);
     if (siguiente?.script_text) preload(siguiente.script_text, siguiente.firma);
     if (!guion?.script_text) { setNarrando(false); return; }
     speakText(guion.script_text, () => {
@@ -624,7 +627,7 @@ export default function ManualViewer({
           </div>
           
           {/* Contenido de la pestaña */}
-          <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 scroll-smooth custom-scrollbar">
+          <div ref={teleprompterScrollRef} className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-5 scroll-smooth custom-scrollbar">
             {activeTab === 'explicacion' && (
               <div className="flex flex-col h-full">
                 {syncData && syncData.length > 0 ? (
@@ -634,7 +637,8 @@ export default function ManualViewer({
                       return (
                         <div 
                           key={i} 
-                          id={`sync-slide-${slide.slide_index}`}
+                          data-sync-slide={slide.slide_index}
+                          aria-current={isActive ? 'step' : undefined}
                           className={`p-4 rounded-xl transition-all duration-300 ${
                             isActive 
                               ? 'bg-amber-500/15 border border-amber-500/40 shadow-lg scale-100 ring-1 ring-amber-500/30' 
