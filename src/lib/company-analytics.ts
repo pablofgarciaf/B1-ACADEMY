@@ -1,4 +1,4 @@
-import type { CompanyState, TrialBalanceRow } from './firestore-types';
+import type { CompanyState, JournalLine, TrialBalanceRow } from './firestore-types';
 import { financialSummary, round, trialBalance } from './company-calculations';
 
 /**
@@ -187,4 +187,149 @@ export function analisisGerencial(state: CompanyState, desde: string, hasta: str
     cifras: { ventas, costoVentas, utilidadBruta, gastos, utilidadOperacional, utilidadNeta, activoCorriente, inventario, cuentasPorCobrar, efectivo, activoTotal, pasivoCorriente, cuentasPorPagar, pasivoTotal, patrimonio },
     indicadores, diagnostico, decisiones, suficientesDatos,
   };
+}
+
+/* ───────────── Antigüedad de saldos: quién nos debe / a quién debemos, y desde cuándo ───────────── */
+
+export const TRAMOS = ['Por vencer', '1–30 días', '31–60 días', '61–90 días', 'Más de 90'] as const;
+export interface FilaAntiguedad { cardCode: string; nombre: string; tramos: number[]; total: number }
+export interface Antiguedad { tipo: 'cobrar' | 'pagar'; corte: string; filas: FilaAntiguedad[]; totales: number[]; total: number; vencidoPct: number; alertas: string[]; preguntas: string[] }
+
+function tramo(diasVencido: number) {
+  if (diasVencido <= 0) return 0;
+  if (diasVencido <= 30) return 1;
+  if (diasVencido <= 60) return 2;
+  if (diasVencido <= 90) return 3;
+  return 4;
+}
+
+export function antiguedadSaldos(state: CompanyState, corte: string, tipo: 'cobrar' | 'pagar'): Antiguedad {
+  const docs = tipo === 'cobrar'
+    ? state.salesOrders.filter(d => d.docType === 'invoice')
+    : state.purchaseOrders.filter(d => d.docType === 'vendor_invoice' || d.docType === 'debit_note');
+  const notas = tipo === 'cobrar' ? state.salesOrders.filter(d => d.docType === 'credit_note') : [];
+  const porSocio = new Map<string, FilaAntiguedad>();
+  for (const d of docs) {
+    if (d.date > corte || d.status !== 'open') continue;
+    const acreditado = notas.filter(n => n.baseDocumentId === d.id && n.date <= corte).reduce((s, n) => s + n.total, 0);
+    const pendiente = round(d.total - d.paidAmount - acreditado);
+    if (pendiente <= 0.009) continue;
+    const t = d.dueDate >= corte ? 0 : tramo(diasEntre(d.dueDate, corte) - 1);
+    const fila = porSocio.get(d.cardCode) ?? { cardCode: d.cardCode, nombre: d.cardName, tramos: [0, 0, 0, 0, 0], total: 0 };
+    fila.tramos[t] = round(fila.tramos[t] + pendiente);
+    fila.total = round(fila.total + pendiente);
+    porSocio.set(d.cardCode, fila);
+  }
+  const filas = [...porSocio.values()].sort((a, b) => b.total - a.total);
+  const totales = [0, 1, 2, 3, 4].map(i => round(filas.reduce((s, f) => s + f.tramos[i], 0)));
+  const total = round(totales.reduce((s, v) => s + v, 0));
+  const vencidoPct = total > 0 ? round(((total - totales[0]) / total) * 100) : 0;
+
+  const alertas: string[] = [];
+  const quien = tipo === 'cobrar' ? 'clientes' : 'proveedores';
+  if (totales[4] > 0) alertas.push(tipo === 'cobrar'
+    ? `Hay ${totales[4].toFixed(2)} USD con más de 90 días de atraso: probabilidad real de no cobrarlos. Evalúa provisionar cuentas incobrables.`
+    : `Debes ${totales[4].toFixed(2)} USD con más de 90 días de atraso: riesgo de que te corten el crédito o el abastecimiento.`);
+  if (vencidoPct >= 30) alertas.push(`El ${vencidoPct} % del saldo con ${quien} está vencido.`);
+  const mayor = filas[0];
+  if (mayor && total > 0 && mayor.total / total >= 0.5) alertas.push(`${mayor.nombre} concentra el ${round((mayor.total / total) * 100)} % del saldo.`);
+
+  const preguntas = tipo === 'cobrar'
+    ? ['¿A qué cliente llamarías primero y qué le ofrecerías para que pague?', '¿Seguirías vendiéndole a crédito al cliente con más atraso? ¿Con qué condiciones?', '¿Qué cambiarías en la política de crédito para que esto no se repita?']
+    : ['¿Qué proveedor es crítico para tu operación y debe pagarse primero?', '¿Conviene negociar un plan de pagos o pedir un préstamo para ponerse al día?', '¿Qué pasa con tus ventas si un proveedor clave deja de despacharte?'];
+  return { tipo, corte, filas, totales, total, vencidoPct, alertas, preguntas };
+}
+
+/* ───────────── Flujo de caja (método directo) desde los asientos de Caja y Bancos ───────────── */
+
+export type Actividad = 'Operación' | 'Inversión' | 'Financiamiento';
+export interface FlujoCaja { desde: string; hasta: string; saldoInicial: number; entradas: number; salidas: number; saldoFinal: number; categorias: { categoria: string; actividad: Actividad; monto: number }[]; porActividad: Record<Actividad, number>; lectura: string[]; preguntas: string[] }
+
+const esCaja = (cuenta: string) => cuenta === '1.1.01' || cuenta === '1.1.02';
+
+function clasificar(contrapartida: string): { categoria: string; actividad: Actividad } {
+  if (contrapartida === '1.1.03') return { categoria: 'Cobros a clientes', actividad: 'Operación' };
+  if (contrapartida === '2.1.01' || contrapartida === '2.1.06') return { categoria: 'Pagos a proveedores', actividad: 'Operación' };
+  if (['2.1.04', '2.1.05', '2.1.07', '2.1.08', '1.1.08', '6.01', '6.02', '6.04'].includes(contrapartida)) return { categoria: 'Nómina y beneficios', actividad: 'Operación' };
+  if (['2.1.02', '2.1.03', '1.1.06'].includes(contrapartida)) return { categoria: 'Impuestos (IVA y retenciones)', actividad: 'Operación' };
+  if (contrapartida.startsWith('1.2.')) return { categoria: 'Compra/venta de activos fijos', actividad: 'Inversión' };
+  if (contrapartida.startsWith('2.2.')) return { categoria: 'Préstamos', actividad: 'Financiamiento' };
+  if (contrapartida.startsWith('3.')) return { categoria: 'Aportes y retiros de socios', actividad: 'Financiamiento' };
+  if (contrapartida.startsWith('4.')) return { categoria: 'Ventas de contado', actividad: 'Operación' };
+  return { categoria: 'Otros gastos e ingresos operativos', actividad: 'Operación' };
+}
+
+export function flujoCaja(state: CompanyState, desde: string, hasta: string): FlujoCaja {
+  let saldoInicial = 0; let entradas = 0; let salidas = 0;
+  const categorias = new Map<string, { categoria: string; actividad: Actividad; monto: number }>();
+  for (const e of state.journalEntries) {
+    if (e.date > hasta) continue;
+    const delta = round(e.lines.filter(l => esCaja(l.accountCode)).reduce((s, l) => s + l.debit - l.credit, 0));
+    if (!delta) continue;
+    if (e.date < desde) { saldoInicial += delta; continue; }
+    if (delta > 0) entradas += delta; else salidas -= delta;
+    // La contrapartida es la línea que no es caja con mayor importe en el asiento.
+    const otras: JournalLine[] = e.lines.filter(l => !esCaja(l.accountCode)).sort((a, b) => (b.debit + b.credit) - (a.debit + a.credit));
+    const c = clasificar(otras[0]?.accountCode ?? '');
+    const fila = categorias.get(c.categoria) ?? { ...c, monto: 0 };
+    fila.monto = round(fila.monto + delta);
+    categorias.set(c.categoria, fila);
+  }
+  const lista = [...categorias.values()].sort((a, b) => Math.abs(b.monto) - Math.abs(a.monto));
+  const porActividad: Record<Actividad, number> = { 'Operación': 0, 'Inversión': 0, 'Financiamiento': 0 };
+  for (const c of lista) porActividad[c.actividad] = round(porActividad[c.actividad] + c.monto);
+  saldoInicial = round(saldoInicial); entradas = round(entradas); salidas = round(salidas);
+  const saldoFinal = round(saldoInicial + entradas - salidas);
+
+  const lectura: string[] = [];
+  if (porActividad['Operación'] > 0) lectura.push('La operación genera caja: el negocio se financia a sí mismo.');
+  if (porActividad['Operación'] < 0 && porActividad['Financiamiento'] > 0) lectura.push('La operación consume caja y el hueco se tapa con préstamos o aportes: sostenible solo por un tiempo.');
+  if (porActividad['Operación'] < 0 && porActividad['Financiamiento'] <= 0) lectura.push('La operación consume caja y no hay financiamiento que la cubra: el saldo de bancos se está agotando.');
+  if (saldoFinal < 0) lectura.push('El saldo final es negativo: en la vida real serían cheques rebotados o sobregiro bancario.');
+
+  const preguntas = [
+    '¿La utilidad del estado de resultados se parece al flujo de operación? Si no, ¿dónde quedó el dinero (cuentas por cobrar, inventario)?',
+    'Si mañana no pudieras pedir préstamos, ¿cuántos meses aguantaría la empresa con este ritmo de salidas?',
+    '¿Qué pago podrías postergar y cuál nunca deberías atrasar? ¿Por qué?',
+  ];
+  return { desde, hasta, saldoInicial, entradas, salidas, saldoFinal, categorias: lista, porActividad, lectura, preguntas };
+}
+
+/* ───────────── Comparativo con el período anterior de igual duración ───────────── */
+
+export interface FilaComparativo { concepto: string; actual: number; anterior: number; variacionPct: number | null; mejorSiSube: boolean; formato: 'usd' | 'porcentaje' | 'dias' }
+export interface Comparativo { actual: { desde: string; hasta: string }; anterior: { desde: string; hasta: string }; filas: FilaComparativo[]; lectura: string[] }
+
+function sumarDias(fecha: string, dias: number) {
+  const d = new Date(`${fecha}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + dias);
+  return d.toISOString().slice(0, 10);
+}
+
+export function comparativoPeriodos(state: CompanyState, desde: string, hasta: string): Comparativo {
+  const dias = diasEntre(desde, hasta);
+  const antHasta = sumarDias(desde, -1);
+  const antDesde = sumarDias(antHasta, -(dias - 1));
+  const a = analisisGerencial(state, desde, hasta);
+  const b = analisisGerencial(state, antDesde, antHasta);
+  const ind = (x: AnalisisGerencial, clave: string) => x.indicadores.find(i => i.clave === clave)?.valor ?? 0;
+  const fila = (concepto: string, actual: number, anterior: number, mejorSiSube: boolean, formato: FilaComparativo['formato']): FilaComparativo =>
+    ({ concepto, actual, anterior, mejorSiSube, formato, variacionPct: anterior === 0 ? null : round(((actual - anterior) / Math.abs(anterior)) * 100) });
+  const filas = [
+    fila('Ventas', a.cifras.ventas, b.cifras.ventas, true, 'usd'),
+    fila('Utilidad bruta', a.cifras.utilidadBruta, b.cifras.utilidadBruta, true, 'usd'),
+    fila('Gastos operacionales', a.cifras.gastos, b.cifras.gastos, false, 'usd'),
+    fila('Utilidad operacional', a.cifras.utilidadOperacional, b.cifras.utilidadOperacional, true, 'usd'),
+    fila('Margen bruto', ind(a, 'margenBruto'), ind(b, 'margenBruto'), true, 'porcentaje'),
+    fila('Días de cobro', ind(a, 'dso'), ind(b, 'dso'), false, 'dias'),
+  ];
+  const [ventas, , gastos, operacional] = filas;
+  const lectura: string[] = [];
+  if (b.cifras.ventas === 0) lectura.push('El período anterior no tiene ventas registradas: el comparativo tendrá sentido cuando haya historia.');
+  else {
+    if (ventas.variacionPct !== null && gastos.variacionPct !== null && gastos.variacionPct > ventas.variacionPct) lectura.push('Los gastos crecen más rápido que las ventas: la empresa se está volviendo menos eficiente.');
+    if ((ventas.variacionPct ?? 0) > 0 && operacional.actual < operacional.anterior) lectura.push('Se vende más pero se gana menos: revisa precios, descuentos y costos.');
+    if ((ventas.variacionPct ?? 0) < 0) lectura.push('Las ventas cayeron frente al período anterior: ¿es estacional, perdiste clientes o subió la competencia?');
+  }
+  return { actual: { desde, hasta }, anterior: { desde: antDesde, hasta: antHasta }, filas, lectura };
 }

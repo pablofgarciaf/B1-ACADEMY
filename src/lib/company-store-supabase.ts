@@ -17,10 +17,18 @@ import type { CompanyCommand } from './company-commands';
 
 const MAX_REINTENTOS = 4;
 
+let avisoClave = false;
 function config() {
-  const url = process.env.SUPABASE_URL?.replace(/\/$/, '');
-  const key = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
-  return url && key ? { url, key } : null;
+  const url = process.env.SUPABASE_URL?.trim().replace(/^"|"$/g, '').replace(/\/$/, '');
+  const key = (process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY)?.trim().replace(/^"|"$/g, '');
+  if (!url || !key) return null;
+  // La clave publicable es pública y no tiene permiso sobre las tablas del simulador:
+  // si se pegó por error, se ignora y el simulador sigue en Firestore en vez de fallar.
+  if (key.startsWith('sb_publishable_')) {
+    if (!avisoClave) { console.error('[simulador] SUPABASE_SECRET_KEY contiene la clave PUBLICABLE; usa la Secret key (sb_secret_…). Se mantiene Firestore.'); avisoClave = true; }
+    return null;
+  }
+  return { url, key };
 }
 
 export function supabaseActivo(): boolean {

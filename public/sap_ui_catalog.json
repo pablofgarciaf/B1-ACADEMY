@@ -2,7 +2,7 @@
   "metadata": {
     "version": "1.0",
     "sap_version": "SAP Business One 10.0 (HANA)",
-    "total_screens": 64,
+    "total_screens": 65,
     "total_modules": 13,
     "generated": "2026-10-01T00:00:00Z",
     "description": "Atlas Visual Indexado de 5,082+ capturas de SAP B1"
@@ -1037,6 +1037,24 @@
           "type": "Informe",
           "module": "09_Reportes",
           "workflow": "Reportes > Análisis Gerencial",
+          "hotspots": [
+            {
+              "x": 0,
+              "y": 0,
+              "width": 800,
+              "height": 600,
+              "label": "Área Principal"
+            }
+          ],
+          "fields": [],
+          "actions": []
+        },
+        {
+          "id": "RPT005",
+          "name": "Antigüedad de Saldos",
+          "type": "Informe",
+          "module": "09_Reportes",
+          "workflow": "Reportes > Socios de negocios > Antigüedad",
           "hotspots": [
             {
               "x": 0,

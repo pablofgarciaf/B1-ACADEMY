@@ -5,7 +5,7 @@ require('ts-node').register({ transpileOnly: true, compilerOptions: { module: 'C
 const { applyCommand } = require('../src/lib/company-engine.ts');
 const { emptyCompany } = require('../src/lib/firestore-types.ts');
 const { commandSchema } = require('../src/lib/company-commands.ts');
-const { analisisGerencial } = require('../src/lib/company-analytics.ts');
+const { analisisGerencial, antiguedadSaldos, flujoCaja, comparativoPeriodos } = require('../src/lib/company-analytics.ts');
 
 const now = '2026-10-04T12:00:00.000Z';
 const partner = { name: 'Socio ficticio', ruc: '1790000000001', email: '', phone: '', address: '', city: 'Quito', contactName: '', currency: 'USD', paymentTermsDays: 30, creditLimit: 10000, active: true, group: 'General', notes: '' };
@@ -76,4 +76,43 @@ test('cobrar al cliente mejora los días de cobro', () => {
   const despues = valor(analisisGerencial(s.state, '2026-01-01', '2026-12-31'), 'dso').valor;
   assert.ok(antes > 0);
   assert.equal(despues, 0);
+});
+
+test('antigüedad de saldos: factura de proveedor vencida 46 días cae en el tramo 31-60', () => {
+  const s = empresa();
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.vendor, [s.line(10, 10)]) });
+  s.run('sales', { docType: 'invoice', document: s.doc(s.customer, [s.line(2, 20)]) });
+  const pagar = antiguedadSaldos(s.state, '2026-12-15', 'pagar');
+  assert.equal(pagar.total, 115);
+  assert.deepEqual(pagar.totales, [0, 0, 115, 0, 0]);
+  assert.equal(pagar.vencidoPct, 100);
+  const porVencer = antiguedadSaldos(s.state, '2026-10-10', 'cobrar');
+  assert.deepEqual(porVencer.totales, [46, 0, 0, 0, 0]);
+  assert.equal(porVencer.preguntas.length, 3);
+});
+
+test('flujo de caja: el cobro al cliente entra como operación y cuadra con el saldo final', () => {
+  const s = empresa();
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.vendor, [s.line(10, 10)]) });
+  const factura = s.run('sales', { docType: 'invoice', document: s.doc(s.customer, [s.line(2, 20)]) });
+  s.run('bank', { bankAccountId: 'BAN-1', date: '2026-10-04', type: 'deposit', amount: 46, counterpartAccount: '1.1.03', reference: '', documentId: factura });
+  const f = flujoCaja(s.state, '2026-01-01', '2026-12-31');
+  assert.equal(f.entradas, 46);
+  assert.equal(f.salidas, 0);
+  assert.equal(f.saldoFinal, 46);
+  assert.equal(f.porActividad['Operación'], 46);
+  assert.equal(f.categorias[0].categoria, 'Cobros a clientes');
+  assert.ok(f.lectura.some(l => l.includes('genera caja')));
+});
+
+test('comparativo: sin historia previa lo dice en vez de inventar variaciones', () => {
+  const s = empresa();
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.vendor, [s.line(10, 10)]) });
+  s.run('sales', { docType: 'invoice', document: s.doc(s.customer, [s.line(2, 20)]) });
+  const c = comparativoPeriodos(s.state, '2026-10-01', '2026-10-31');
+  assert.equal(c.anterior.desde, '2026-08-31');
+  assert.equal(c.anterior.hasta, '2026-09-30');
+  assert.equal(c.filas[0].actual, 40);
+  assert.equal(c.filas[0].variacionPct, null);
+  assert.ok(c.lectura[0].includes('no tiene ventas'));
 });

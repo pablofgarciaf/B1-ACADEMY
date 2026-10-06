@@ -2,7 +2,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { today, usd } from '@/lib/company-calculations';
-import { analisisGerencial, type Area, type Indicador, type Semaforo } from '@/lib/company-analytics';
+import { analisisGerencial, comparativoPeriodos, type Area, type FilaComparativo, type Indicador, type Semaforo } from '@/lib/company-analytics';
+import { Lectura } from './AnalysisBlocks';
 import { Screen, Field, Table, inputClass } from './SAPControls';
 
 /**
@@ -21,6 +22,19 @@ function formatear(i: Indicador) {
   if (i.formato === 'porcentaje') return `${i.valor.toLocaleString('es-EC', { maximumFractionDigits: 1 })} %`;
   if (i.formato === 'dias') return `${Math.round(i.valor)} días`;
   return `${i.valor.toLocaleString('es-EC', { maximumFractionDigits: 2 })} veces`;
+}
+
+function cifra(valor: number, formato: FilaComparativo['formato']) {
+  if (formato === 'usd') return usd(valor);
+  if (formato === 'porcentaje') return `${valor.toLocaleString('es-EC', { maximumFractionDigits: 1 })} %`;
+  return `${Math.round(valor)} días`;
+}
+
+function Variacion({ f }: { f: FilaComparativo }) {
+  if (f.variacionPct === null) return <span className="text-[#555]">—</span>;
+  const mejora = f.variacionPct === 0 ? null : (f.variacionPct > 0) === f.mejorSiSube;
+  const color = mejora === null ? 'text-[#555]' : mejora ? 'text-[#2e7d32]' : 'text-[#c62828]';
+  return <span className={`font-bold ${color}`}>{f.variacionPct > 0 ? '▲' : f.variacionPct < 0 ? '▼' : '='} {Math.abs(f.variacionPct).toLocaleString('es-EC', { maximumFractionDigits: 1 })} %</span>;
 }
 
 function Tarjeta({ i }: { i: Indicador }) {
@@ -52,6 +66,7 @@ export default function ManagementAnalysisScreen() {
   const [desde, setDesde] = useState(today().slice(0, 4) + '-01-01');
   const [hasta, setHasta] = useState(today());
   const a = useMemo(() => analisisGerencial(c.data, desde, hasta), [c.data, desde, hasta]);
+  const comp = useMemo(() => comparativoPeriodos(c.data, desde, hasta), [c.data, desde, hasta]);
 
   // La reflexión del estudiante se guarda en su navegador, por empresa y período.
   const clave = `b1_reflexion_${c.data.profile?.uid ?? 'anon'}_${desde}_${hasta}`;
@@ -87,6 +102,13 @@ export default function ManagementAnalysisScreen() {
         ['Utilidad operacional', usd(k.utilidadOperacional), 'Pasivo total', usd(k.pasivoTotal)],
         ['Utilidad neta estimada', usd(k.utilidadNeta), 'Patrimonio (incl. resultado)', usd(k.patrimonio)],
       ]} />
+
+      <h3 className="font-bold text-[#003366]">
+        Comparativo con el período anterior ({comp.anterior.desde} a {comp.anterior.hasta})
+      </h3>
+      <Table headers={['Concepto', 'Período actual', 'Período anterior', 'Variación']}
+        rows={comp.filas.map(f => [f.concepto, cifra(f.actual, f.formato), cifra(f.anterior, f.formato), <Variacion key={f.concepto} f={f} />])} />
+      <Lectura titulo="Qué dice la comparación" frases={comp.lectura} />
 
       {AREAS.map(area => {
         const lista = a.indicadores.filter(i => i.area === area);
