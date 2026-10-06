@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import { 
   Play, 
@@ -188,6 +188,27 @@ export default function SAPInteractiveSimulator({
   onMissionComplete
 }: SAPInteractiveSimulatorProps) {
   const { userProfile } = useAuth();
+  const missionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const missionFinished = useRef(false);
+  useEffect(() => {
+    missionFinished.current = false;
+    return () => {
+      if (missionTimer.current) clearTimeout(missionTimer.current);
+      missionTimer.current = null;
+    };
+  }, [manualId, currentStepIndex]);
+  const completeMission = (delay = 1000) => {
+    if (missionFinished.current || missionTimer.current) return;
+    missionTimer.current = setTimeout(() => {
+      missionTimer.current = null;
+      missionFinished.current = true;
+      onMissionComplete?.();
+    }, delay);
+  };
+  const practiceTitle = `${stepGuide?.title ?? ''} ${stepGuide?.menu_path ?? ''}`;
+  const isAlertsPractice = /alerta|bandeja|buz[oó]n|mensaje/i.test(practiceTitle);
+  const isSearchPractice = /b[uú]squeda|lupa/i.test(practiceTitle);
+  const isExplorationPractice = manualId === 'mod1-c1' && stepGuide?.action_type === 'cockpit';
 
   // Configuración del Simulador basada en el catálogo unificado
   const simConfig = useMemo<ManualSimulatorConfig>(() => {
@@ -209,6 +230,7 @@ export default function SAPInteractiveSimulator({
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [saveLoading, setSaveLoading] = useState(false);
   const [stepSuccessMsg, setStepSuccessMsg] = useState<string | null>(null);
+  const [validationMessage, setValidationMessage] = useState<string | null>(null);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -272,6 +294,7 @@ export default function SAPInteractiveSimulator({
   useEffect(() => {
     setCompletedSteps([]);
     setStepSuccessMsg(null);
+    setValidationMessage(null);
   }, [manualId, currentStepIndex]);
 
   const markStepDone = async (stepNum: number) => {
@@ -321,9 +344,7 @@ export default function SAPInteractiveSimulator({
     setStepSuccessMsg("¡Grupo de Unidades de Medida registrado en OUGP/UGP1! Base: Metro. Conversiones: 1 Rollo = 100m, 1 Bobina = 50m.");
     markStepDone(1);
     markStepDone(2);
-    setTimeout(() => {
-      onMissionComplete?.();
-    }, 1200);
+    completeMission(1200);
   };
 
   // ═════════════════════════════════════════════════════════════════
@@ -395,6 +416,9 @@ export default function SAPInteractiveSimulator({
     setQueryExecuted(true);
     markStepDone(1);
     markStepDone(2);
+    // Solo vuelve a la clase si la consulta trajo resultados (una consulta vacía no demuestra dominio).
+    if (data.length > 0) completeMission(3000);
+    else setStepSuccessMsg('La consulta no devolvió filas: revisa el filtro WHERE e inténtalo de nuevo.');
   };
 
   const handleSortColumn = (colName: string) => {
@@ -462,6 +486,7 @@ export default function SAPInteractiveSimulator({
     setInvoiceCreated(true);
     markStepDone(3);
     setProcurementStage('map');
+    completeMission(3500); // deja ver el mapa del flujo P2P antes de volver a la clase
   };
 
   // ═════════════════════════════════════════════════════════════════
@@ -476,8 +501,16 @@ export default function SAPInteractiveSimulator({
   const salesTotal = salesSubtotal + salesTax;
 
   const handleCreateSalesInvoice = async () => {
-    if (!userProfile?.uid) return;
-    
+    if (!userProfile?.uid) {
+      // Sin perfil cargado: la práctica cuenta igual (no se guarda en la empresa simulada) y la clase continúa.
+      setSalesCreated(true);
+      markStepDone(1);
+      markStepDone(2);
+      setStepSuccessMsg('¡Factura contabilizada! (práctica registrada sin guardar en tu empresa simulada)');
+      completeMission(1800);
+      return;
+    }
+
     // Call Firebase Service to save OINV and discount stock
     const result = await createSalesInvoice(
       userProfile.uid,
@@ -495,6 +528,7 @@ export default function SAPInteractiveSimulator({
       markStepDone(1);
       markStepDone(2);
       setStepSuccessMsg(`¡Factura #${result.docNum} contabilizada en Firebase! Inventario descontado.`);
+      completeMission(1800);
     } else {
       alert("Error al contabilizar: " + result.error);
     }
@@ -517,7 +551,14 @@ export default function SAPInteractiveSimulator({
       alert("El asiento contable está descuadrado. La suma del Debe debe ser igual a la del Haber.");
       return;
     }
-    if (!userProfile?.uid) return;
+    if (!userProfile?.uid) {
+      setJeCreated(true);
+      markStepDone(1);
+      markStepDone(2);
+      setStepSuccessMsg('¡Asiento cuadrado y contabilizado! (práctica registrada sin guardar en tu empresa simulada)');
+      completeMission(1800);
+      return;
+    }
 
     // Conectar con el Motor Financiero en Firebase
     const result = await createJournalEntry(userProfile.uid, "ASIENTO-VENTAS", [
@@ -531,6 +572,7 @@ export default function SAPInteractiveSimulator({
       markStepDone(1);
       markStepDone(2);
       setStepSuccessMsg(`¡Asiento Contable #${result.transId} registrado en el Libro Mayor de Firebase!`);
+      completeMission(1800);
     } else {
       alert("Error contabilizando: " + result.error);
     }
@@ -548,6 +590,7 @@ export default function SAPInteractiveSimulator({
     markStepDone(1);
     markStepDone(2);
     setStepSuccessMsg("¡Datos Maestros de Artículo A00001 actualizados!");
+    completeMission(1800);
   };
 
   // ═════════════════════════════════════════════════════════════════
@@ -561,6 +604,7 @@ export default function SAPInteractiveSimulator({
     markStepDone(1);
     markStepDone(2);
     setStepSuccessMsg("¡Pago Recibido #804 contabilizado y conciliado!");
+    completeMission(1800);
   };
 
   return (
@@ -572,8 +616,8 @@ export default function SAPInteractiveSimulator({
         onActionSimulated={() => markStepDone(currentStepIndex)}
       />
       {/* Barra de Estado Superior */}
-      <div className="bg-[#18222d] border-b border-gray-800 px-3 py-1.5 flex items-center justify-between text-[11px] shrink-0 relative z-10">
-        <div className="flex items-center gap-2">
+      <div className="bg-[#18222d] border-b border-gray-800 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px] shrink-0 relative z-10">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="font-bold text-amber-400">SAP Business One 10.0 (HANA)</span>
           <span className="text-gray-500">•</span>
           <span className="text-gray-400">Sociedad: <strong className="text-gray-300">SBODEMO_ES</strong></span>
@@ -582,7 +626,11 @@ export default function SAPInteractiveSimulator({
         </div>
 
         <div className="flex items-center gap-2">
-          {stepSuccessMsg ? (
+          {validationMessage ? (
+            <span role="alert" className="text-amber-200 bg-amber-950/60 border border-amber-500/40 px-2 py-0.5 rounded text-[10px]">
+              {validationMessage}
+            </span>
+          ) : stepSuccessMsg ? (
             <span className="text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-500/40 px-2 py-0.5 rounded text-[10px] animate-pulse">
               ✓ {stepSuccessMsg}
             </span>
@@ -628,9 +676,9 @@ export default function SAPInteractiveSimulator({
                   setShowSearch(false);
                   markStepDone(3); // Cierra la barra
                   // La lupa solo cierra la misión cuando la práctica activa es la de búsqueda.
-                  if (/b[uú]squeda/i.test(`${stepGuide?.title ?? ''} ${stepGuide?.menu_path ?? ''}`)) {
+                  if (isSearchPractice) {
                     setStepSuccessMsg('¡Búsqueda rápida dominada!');
-                    setTimeout(() => onMissionComplete?.(), 1000);
+                    completeMission();
                   }
                 }}
               >
@@ -691,7 +739,7 @@ export default function SAPInteractiveSimulator({
                   setShowAlertsModal(false);
                   markStepDone(2); // Cierra ventana completado
                   setStepSuccessMsg("¡Buzón revisado correctamente!");
-                  setTimeout(() => onMissionComplete?.(), 1000);
+                  if (isAlertsPractice) completeMission();
                 }}
                 className="w-4 h-4 rounded bg-[#992222] text-white font-bold flex items-center justify-center hover:bg-red-600"
               >
@@ -732,7 +780,7 @@ export default function SAPInteractiveSimulator({
                   setShowAlertsModal(false);
                   markStepDone(2);
                   setStepSuccessMsg("¡Buzón revisado correctamente!");
-                  setTimeout(() => onMissionComplete?.(), 1000);
+                  if (isAlertsPractice) completeMission();
                 }}
                 className="bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555] px-4 py-1 rounded-[3px] shadow active:scale-95"
               >
@@ -776,7 +824,7 @@ export default function SAPInteractiveSimulator({
                     onClick={() => {
                       markStepDone(1);
                       setStepSuccessMsg("¡Sesión iniciada correctamente!");
-                      setTimeout(() => onMissionComplete?.(), 1000);
+                      completeMission();
                     }}
                     className="w-full bg-[#ffb700] hover:bg-[#ffaa00] text-[#1c3a63] font-bold py-2 rounded shadow transition-all active:scale-95"
                   >
@@ -805,7 +853,7 @@ export default function SAPInteractiveSimulator({
                 onClick={() => {
                   (stepGuide?.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
                   setStepSuccessMsg('¡Práctica completada!');
-                  setTimeout(() => onMissionComplete?.(), 800);
+                  completeMission(800);
                 }}
                 className="px-4 py-1.5 rounded bg-[#ffb700] hover:bg-[#ffaa00] text-[#1c3a63] text-xs font-bold shadow active:scale-95 transition-all"
               >
@@ -1692,18 +1740,25 @@ export default function SAPInteractiveSimulator({
 
               <div className="flex justify-end pt-1">
                 <button 
-                  onClick={async () => {
+                  onClick={() => {
+                    setValidationMessage(null);
+                    if (isAlertsPractice || isSearchPractice) {
+                      setValidationMessage('Usa la herramienta indicada en las instrucciones para completar esta práctica.');
+                      return;
+                    }
+                    if (manualId === 'mod1-c2' && (assignedRole !== 'Ventas y Distribución' || defaultWarehouse !== '02 - Almacén Logístico Norte')) {
+                      setValidationMessage('Selecciona Ventas y Distribución y el Almacén Logístico Norte antes de guardar.');
+                      return;
+                    }
                     // Solo contar como 1 paso completado (la misión completa = guardar los cambios)
-                    await markStepDone(1);
+                    void markStepDone(1);
                     setStepSuccessMsg("¡Parametrizaciones de Cockpit guardadas correctamente!");
                     // Esperar 1.5s para que el estudiante vea el éxito, luego continuar
-                    setTimeout(() => {
-                      onMissionComplete?.();
-                    }, 1500);
+                    completeMission(1500);
                   }}
                   className="bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555] font-bold text-xs px-5 py-1 rounded-[3px] shadow active:scale-95"
                 >
-                  Actualizar y Guardar
+                  {isExplorationPractice ? 'Terminar exploración' : 'Actualizar y Guardar'}
                 </button>
               </div>
             </div>
