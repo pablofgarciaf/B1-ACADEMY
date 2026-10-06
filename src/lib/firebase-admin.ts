@@ -10,7 +10,14 @@ function getCredential() {
   const privateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n');
 
   if (projectId && clientEmail && privateKey) {
-    return cert({ projectId, clientEmail, privateKey });
+    try {
+      return cert({ projectId, clientEmail, privateKey });
+    } catch (error) {
+      // Llave mal pegada en el hosting: no se tumba el sitio entero; las rutas que dependan de Admin fallarán controladamente.
+      console.error('FIREBASE_ADMIN_PRIVATE_KEY inválida:', error instanceof Error ? error.message : error);
+    }
+  } else {
+    console.error('Faltan variables FIREBASE_ADMIN_* en el entorno; Firebase Admin queda sin credenciales propias.');
   }
 
   return applicationDefault();

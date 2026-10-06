@@ -1,3 +1,5 @@
+// Obsoleto: el registro público ahora se hace desde el navegador (AuthContext.register) con la cédula
+// como clave del primer ingreso. Se conserva por compatibilidad con clientes antiguos.
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { adminAuth, adminDb } from '@/lib/firebase-admin';

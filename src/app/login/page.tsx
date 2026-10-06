@@ -19,6 +19,9 @@ import {
   User,
 } from "lucide-react";
 
+import Link from "next/link";
+import { validarCedula } from "@/lib/cedula";
+
 type Tab = "login" | "register";
 
 export default function LoginPage() {
@@ -40,8 +43,9 @@ export default function LoginPage() {
   // Register state
   const [regName, setRegName] = useState("");
   const [regEmail, setRegEmail] = useState("");
-  const [regPassword, setRegPassword] = useState("");
+  const [regCedula, setRegCedula] = useState("");
   const [regPhone, setRegPhone] = useState("");
+  const [regConsent, setRegConsent] = useState(false);
   const [regLoading, setRegLoading] = useState(false);
   const [regError, setRegError] = useState("");
   const [regSuccess, setRegSuccess] = useState("");
@@ -85,38 +89,37 @@ export default function LoginPage() {
     e.preventDefault();
     setRegError("");
     setRegSuccess("");
-    if (!regName || !regEmail || !regPassword) {
-      setRegError("Nombre, correo y contraseña son obligatorios.");
+    if (!regName || !regEmail || !regCedula) {
+      setRegError("Nombre, correo y cédula son obligatorios.");
       return;
     }
-    if (regPassword.length < 12) {
-      setRegError("La contraseña debe tener al menos 12 caracteres.");
+    if (!regConsent) {
+      setRegError("Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.");
+      return;
+    }
+    const errorCedula = validarCedula(regCedula);
+    if (errorCedula) {
+      setRegError(errorCedula);
       return;
     }
     setRegLoading(true);
-    const res = await register({
-      name: regName,
-      email: regEmail,
-      password: regPassword,
-      phone: regPhone,
-    });
-    setRegLoading(false);
+    const res = await register({ name: regName, email: regEmail, cedula: regCedula, phone: regPhone });
     if (!res.success) {
+      setRegLoading(false);
       setRegError(res.error || "Error al registrar. Intenta de nuevo.");
       return;
     }
-    setRegSuccess(
-      "Cuenta creada con éxito. Ya puedes iniciar sesión con tu contraseña personal."
-    );
-    setTimeout(() => {
-      setTab("login");
-      setEmail(regEmail);
-      setRegName("");
-      setRegEmail("");
-      setRegPassword("");
-      setRegPhone("");
-      setRegSuccess("");
-    }, 3000);
+    // Primer ingreso automático con la cédula; el login lleva a crear la clave personal.
+    setRegSuccess("¡Cuenta creada! Ahora crea tu contraseña personal...");
+    const ingreso = await login(regEmail, regCedula);
+    setRegLoading(false);
+    if (ingreso.success) {
+      setTimeout(() => router.push(ingreso.passwordChanged === false ? "/change-password" : "/dashboard"), 700);
+      return;
+    }
+    setRegSuccess("Cuenta creada. Inicia sesión con tu correo y tu cédula para crear tu contraseña personal.");
+    setTab("login");
+    setEmail(regEmail);
   };
 
     const handleForgotPassword = async () => {
@@ -368,18 +371,21 @@ export default function LoginPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="register-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Contraseña personal * <span className="font-normal text-slate-400">(mínimo 12 caracteres)</span>
+                  <label htmlFor="register-cedula" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                    Cédula o pasaporte * <span className="font-normal text-slate-400">(será tu clave del primer ingreso)</span>
                   </label>
                   <div className="relative">
                     <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
-                      id="register-password"
-                      type="password"
-                      value={regPassword}
-                      onChange={(e) => setRegPassword(e.target.value)}
-                      placeholder="Crea una contraseña segura"
-                      minLength={12}
+                      id="register-cedula"
+                      type="text"
+                      inputMode="text"
+                      autoComplete="off"
+                      value={regCedula}
+                      onChange={(e) => setRegCedula(e.target.value.replace(/\s/g, ''))}
+                      placeholder="Ej: 1712345678"
+                      minLength={6}
+                      maxLength={20}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors font-mono"
                     />
@@ -400,9 +406,27 @@ export default function LoginPage() {
                   />
                 </div>
 
+                {/* LOPDP: consentimiento expreso, informado y no premarcado para tratar nombre, correo y cédula. */}
+                <label htmlFor="register-consent" className="flex items-start gap-3 text-[11px] leading-relaxed text-slate-600 dark:text-slate-300 cursor-pointer">
+                  <input
+                    id="register-consent"
+                    type="checkbox"
+                    checked={regConsent}
+                    onChange={(e) => setRegConsent(e.target.checked)}
+                    required
+                    className="mt-0.5 w-4 h-4 shrink-0 accent-emerald-500"
+                  />
+                  <span>
+                    Acepto los <Link href="/terminos" target="_blank" className="text-sap-blue underline">Términos y condiciones</Link> y autorizo el
+                    tratamiento de mis datos personales, incluida mi cédula, según la{" "}
+                    <Link href="/privacidad" target="_blank" className="text-sap-blue underline">Política de privacidad</Link>, con transferencia a los
+                    proveedores tecnológicos allí indicados.
+                  </span>
+                </label>
+
                 <button
                   type="submit"
-                  disabled={regLoading}
+                  disabled={regLoading || !regConsent}
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
                 >
                   {regLoading ? (

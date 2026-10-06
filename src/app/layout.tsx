@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import Script from "next/script";
+import CookieConsent from "@/components/legal/CookieConsent";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { AuthProvider } from "@/context/AuthContext";
 import HelpWidget from "@/components/site/HelpWidget";
@@ -136,26 +136,6 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning className={`${inter.variable} ${jakarta.variable}`}>
       <body className="min-h-screen bg-slate-50 dark:bg-[#080d1a] text-slate-900 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
-        {/* Inyección de GTM mediante Script lazyOnload (Total Blocking Time = 0ms) */}
-        <Script
-          id="gtm-script"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`,
-          }}
-        />
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            className="hidden invisible"
-          />
-        </noscript>
 
         {/* Inyección de Grafo Estructurado Schema.org en Byte-0 */}
         <script
@@ -168,6 +148,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {children}
             <HelpWidget />
           </AuthProvider>
+          {/* LOPDP: Google Tag Manager solo se carga tras el consentimiento de analítica (antes se cargaba siempre). */}
+          <CookieConsent gtmId={GTM_ID} />
         </ThemeProvider>
       </body>
     </html>

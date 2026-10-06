@@ -53,7 +53,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     OFFICIAL_SYLLABUS.find(m => m.id === moduleId),
     [moduleId]
   );
-  const moduleClasses = moduleInfo?.classes ?? [];
+  const moduleClasses = useMemo(() => moduleInfo?.classes ?? [], [moduleInfo]);
 
   // Active class
   const [activeClassId, setActiveClassId] = useState<string>('');

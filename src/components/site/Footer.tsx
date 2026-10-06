@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { BotonConfigurarCookies } from '@/components/legal/CookieConsent';
 import { ProtectedEmail } from '@/components/site/ProtectedEmail';
 
 export function Footer() {
@@ -86,13 +87,26 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-100 dark:border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} B1 Academy. Certificación y Formación Profesional SAP Business One.</p>
-          <div className="flex gap-6">
+          <p>© {new Date().getFullYear()} B1 Academy. Formación profesional en SAP Business One.</p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/mi-aula" className="hover:underline">Mi Aula Virtual</Link>
             <Link href="/simulador" className="hover:underline">Simulador</Link>
             <Link href="/manuales" className="hover:underline">Manuales & Atlas</Link>
             <Link href="/bolsa-empleo" className="hover:underline">Vacantes Activas</Link>
           </div>
+        </div>
+
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+          <nav aria-label="Información legal" className="flex flex-wrap justify-center gap-x-5 gap-y-2">
+            <Link href="/privacidad" className="hover:underline">Privacidad y datos personales</Link>
+            <Link href="/terminos" className="hover:underline">Términos y condiciones</Link>
+            <Link href="/cookies" className="hover:underline">Política de cookies</Link>
+            <BotonConfigurarCookies className="hover:underline" />
+          </nav>
+          <p className="text-[11px] text-center sm:text-right max-w-xl">
+            B1 Academy es independiente y no está afiliada a SAP SE. SAP y SAP Business One son marcas registradas de SAP SE. Los certificados
+            de B1 Academy no son certificaciones oficiales de SAP.
+          </p>
         </div>
       </div>
     </footer>

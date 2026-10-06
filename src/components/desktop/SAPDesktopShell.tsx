@@ -161,7 +161,7 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
       <SimuladorAIAdvisor
         currentScreen={windows[windows.length - 1]?.title || 'Dashboard'}
         currentModule={Object.keys(catalog.modules)[0] || 'Finanzas'}
-        isOpen={false}
+        isOpen={true}
       />
     </div>
   );

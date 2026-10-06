@@ -140,7 +140,8 @@ export async function getSessionUser(): Promise<AuthenticatedUser | null> {
   const session = store.get(SESSION_COOKIE)?.value;
   if (!session) return null;
   try {
-    if (session.startsWith('idtoken:')) return authenticateIdToken(session.slice('idtoken:'.length));
+    // `await` obligatorio: sin él, un token vencido escapa del try/catch y la página responde 500 en vez de ir al login.
+    if (session.startsWith('idtoken:')) return await authenticateIdToken(session.slice('idtoken:'.length));
 
     const decoded = await adminAuth.verifySessionCookie(session, true);
     const email = decoded.email?.toLowerCase();

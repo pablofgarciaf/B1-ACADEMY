@@ -118,6 +118,7 @@ export default function AdminStudentsPanel() {
       name: formName,
       email: formEmail,
       temporaryPassword: formCedula,
+      cedula: formCedula,
       phone: formPhone,
       role: formRole,
       assignedTracks: formTracks,

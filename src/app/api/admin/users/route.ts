@@ -6,7 +6,9 @@ import { isAdmin, requireBearerUser } from '@/lib/server-auth';
 const newUserSchema = z.object({
   name: z.string().trim().min(2).max(100),
   email: z.string().trim().toLowerCase().email().max(254),
-  temporaryPassword: z.string().min(12).max(128),
+  // La clave temporal es la cédula (10 dígitos) o el pasaporte: el estudiante la cambia en su primer ingreso.
+  temporaryPassword: z.string().trim().min(6).max(128),
+  cedula: z.string().trim().max(20).optional(),
   role: z.enum(['estudiante', 'docente', 'admin']).default('estudiante'),
   assignedTracks: z.array(z.string().min(1).max(80)).max(20).default(['sap-b1-core']),
   phone: z.string().trim().max(30).optional(),
@@ -42,7 +44,7 @@ export async function POST(request: Request) {
       email: data.email,
       name: data.name,
       displayName: data.name,
-      cedula: '',
+      cedula: data.cedula || data.temporaryPassword,
       role: data.role,
       status: 'active',
       createdAt: new Date().toISOString(),
