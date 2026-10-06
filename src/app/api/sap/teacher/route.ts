@@ -3,7 +3,8 @@ import { z } from 'zod';
 import type { CompanyProfile } from '@/lib/firestore-types';
 import type { TeacherStudent } from '@/lib/company-summary';
 import { companySummary } from '@/lib/company-summary';
-import { readCompany } from '@/lib/company-server';
+import { readCompany, almacenSimulador } from '@/lib/company-server';
+import { listCompaniesSupabase, addMissionSupabase } from '@/lib/company-store-supabase';
 import { adminDb } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { today } from '@/lib/company-calculations';
@@ -15,18 +16,21 @@ export async function GET(request: Request) {
     if (!['teacher', 'docente'].includes(actor.profile.role)) return NextResponse.json({ error: 'Acceso exclusivo de docentes.' }, { status: 403 });
     const params = new URL(request.url).searchParams;
     const cursor = params.get('cursor'); const moduleFilter = params.get('module') ?? '';
-    const companies = await adminDb.collection('sapCompanies').get();
+    // Empresas desde el almacén activo (Supabase o Firestore); los usuarios siguen en Firestore.
+    const companies = almacenSimulador() === 'supabase'
+      ? await listCompaniesSupabase()
+      : (await adminDb.collection('sapCompanies').get()).docs.map(doc => ({ uid: doc.id, raw: doc.data() as Record<string, unknown> }));
     const users = await adminDb.collection('usuarios').select('uid', 'email', 'displayName', 'name', 'status', 'role').get();
     const day = today();
-    const all = await Promise.all(companies.docs.map(async doc => {
-      const profile = doc.data() as CompanyProfile;
-      const user = users.docs.find(u => u.id === doc.id || u.data().uid === doc.id) ?? users.docs.find(u => u.data().email === profile.email);
-      const raw = doc.data();
+    const all = await Promise.all(companies.map(async doc => {
+      const profile = doc.raw as unknown as CompanyProfile;
+      const user = users.docs.find(u => u.id === doc.uid || u.data().uid === doc.uid) ?? users.docs.find(u => u.data().email === profile.email);
+      const raw = doc.raw;
       const stats = typeof raw.pendingAlerts === 'number' ? {
         documentsToday: raw.activityDate === day ? Number(raw.documentsToday ?? 0) : 0,
         pendingAlerts: Number(raw.pendingAlerts), salesCycle: Boolean(raw.salesCycle), balanced: Boolean(raw.balanced),
-      } : companySummary(await readCompany(doc.id), day);
-      const student: TeacherStudent = { ...profile, hasCompany: true, uid: doc.id, studentName: String(user?.data().displayName || user?.data().name || 'Estudiante'), studentStatus: user?.data().status === 'suspended' ? 'suspended' : user?.data().status === 'active' ? 'active' : 'unknown', pendingAlerts: stats.pendingAlerts };
+      } : companySummary(await readCompany(doc.uid), day);
+      const student: TeacherStudent = { ...profile, hasCompany: true, uid: doc.uid, studentName: String(user?.data().displayName || user?.data().name || 'Estudiante'), studentStatus: user?.data().status === 'suspended' ? 'suspended' : user?.data().status === 'active' ? 'active' : 'unknown', pendingAlerts: stats.pendingAlerts };
       return { student, stats };
     }));
     const seenEmails = new Set(all.map(row => row.student.email.toLowerCase()));
@@ -54,6 +58,11 @@ export async function POST(request: Request) {
     if (!['teacher', 'docente'].includes(actor.profile.role)) return NextResponse.json({ error: 'Acceso exclusivo de docentes.' }, { status: 403 });
     const parsed = missionSchema.safeParse(await request.json()); if (!parsed.success) return NextResponse.json({ error: 'Completa la misión.' }, { status: 400 });
     const { uid, title, description, module, requestId } = parsed.data;
+    if (almacenSimulador() === 'supabase') {
+      const now = new Date().toISOString();
+      const id = await addMissionSupabase(uid, { id: requestId, title, description, module, status: 'assigned', teacherUid: actor.uid, createdBy: actor.uid, createdAt: now, updatedAt: now });
+      return NextResponse.json({ result: id });
+    }
     const root = adminDb.collection('sapCompanies').doc(uid); const ref = root.collection('missions').doc(requestId);
     await adminDb.runTransaction(async tx => { const [company, existing] = await Promise.all([tx.get(root), tx.get(ref)]); if (!company.exists) throw new Error('Empresa inexistente.'); if (existing.exists) return; const now = new Date().toISOString(); tx.set(ref, { id: ref.id, title, description, module, status: 'assigned', teacherUid: actor.uid, createdBy: actor.uid, createdAt: now, updatedAt: now }); tx.update(root, { pendingAlerts: Number(company.data()?.pendingAlerts ?? 0) + 1 }); });
     return NextResponse.json({ result: ref.id });

@@ -13,7 +13,8 @@ export async function GET(request: Request) {
     const uid = new URL(request.url).searchParams.get('uid') || actor.uid;
     if (uid !== actor.uid && !['teacher', 'docente'].includes(actor.profile.role)) return NextResponse.json({ error: 'Acceso denegado.' }, { status: 403 });
     if (!/^[\w-]{1,128}$/.test(uid)) return NextResponse.json({ error: 'Identificador inválido.' }, { status: 400 });
-    return NextResponse.json(await readCompany(uid), { headers: { 'Cache-Control': 'no-store' } });
+    // El correo solo se pasa cuando el estudiante lee su propia empresa (necesario para migrarla).
+    return NextResponse.json(await readCompany(uid, uid === actor.uid ? actor.email : ''), { headers: { 'Cache-Control': 'no-store' } });
   } catch (error: unknown) {
     console.error('SAP company read failed', error instanceof Error ? error.message : 'Unknown');
     return NextResponse.json({ error: 'No se pudo cargar la empresa. Comprueba tu sesión y la configuración de Firebase Admin.' }, { status: 503 });
