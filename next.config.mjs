@@ -8,6 +8,10 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const baseConfig = {
   outputFileTracingRoot: __dirname,
+  // msedge-tts opens a real Node.js WebSocket. Bundling ws rewrites its
+  // optional native buffer helper and breaks speech at runtime (mask is not a
+  // function), so keep these packages as Node dependencies in the server trace.
+  serverExternalPackages: ['msedge-tts', 'ws', 'isomorphic-ws'],
   reactStrictMode: true,
   poweredByHeader: false,
   images: {
