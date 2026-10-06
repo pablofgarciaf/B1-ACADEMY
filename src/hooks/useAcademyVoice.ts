@@ -28,9 +28,26 @@ function fetchAudioUrl(text: string, firma?: string): Promise<string> {
   return request;
 }
 
-/** Tiempo aproximado de lectura en voz alta (≈150 palabras por minuto). */
-function readingTimeMs(text: string) {
-  return Math.max(2500, (text.split(/\s+/).length / 2.5) * 1000);
+/** Tiempo aproximado de lectura en voz alta (≈150 palabras por minuto a velocidad 1×). */
+function readingTimeMs(text: string, velocidad = 1) {
+  return Math.max(2500, (text.split(/\s+/).length / 2.5) * 1000) / velocidad;
+}
+
+/** Velocidades de narración disponibles (el botón las recorre en orden). */
+export const VELOCIDADES_VOZ = [1, 1.25, 1.5, 1.75] as const;
+const CLAVE_VELOCIDAD = 'b1_voz_velocidad';
+
+function velocidadGuardada(): number {
+  try {
+    const v = Number(localStorage.getItem(CLAVE_VELOCIDAD));
+    return (VELOCIDADES_VOZ as readonly number[]).includes(v) ? v : 1;
+  } catch { return 1; }
+}
+
+/** Aplica la velocidad sin cambiar el tono de la voz (sin efecto "ardilla"). */
+function aplicarVelocidad(audio: HTMLAudioElement, velocidad: number) {
+  audio.preservesPitch = true;
+  audio.playbackRate = velocidad;
 }
 
 export function useAcademyVoice() {
@@ -42,6 +59,9 @@ export function useAcademyVoice() {
   const tokenRef = useRef(0);
   const pendingEndRef = useRef<(() => void) | undefined>(undefined);
   const mutedRef = useRef(false);
+  const [velocidad, setVelocidad] = useState(1);
+  const velocidadRef = useRef(1);
+  useEffect(() => { const v = velocidadGuardada(); velocidadRef.current = v; setVelocidad(v); }, []);
 
   const clearPlayback = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -85,6 +105,7 @@ export function useAcademyVoice() {
         audioRef.current = audio;
         audio.muted = mutedRef.current;
         audio.src = url;
+        aplicarVelocidad(audio, velocidadRef.current); // tras src: cambiar la fuente puede reiniciar la velocidad
         audio.onended = finish;
         audio.onerror = finish;
         return audio.play().catch((error: unknown) => {
@@ -101,7 +122,7 @@ export function useAcademyVoice() {
       .catch(() => {
         if (token !== tokenRef.current) return;
         setIsSpeaking(false);
-        timerRef.current = setTimeout(finish, readingTimeMs(text));
+        timerRef.current = setTimeout(finish, readingTimeMs(text, velocidadRef.current));
       });
   }, [clearPlayback]);
 
@@ -129,7 +150,17 @@ export function useAcademyVoice() {
     if (audioRef.current) audioRef.current.muted = next;
   }, []);
 
+  /** Pasa a la siguiente velocidad (1× → 1.25× → 1.5× → 1.75× → 1×); se aplica al instante y se recuerda. */
+  const cambiarVelocidad = useCallback(() => {
+    const actual = VELOCIDADES_VOZ.indexOf(velocidadRef.current as (typeof VELOCIDADES_VOZ)[number]);
+    const siguiente = VELOCIDADES_VOZ[(actual + 1) % VELOCIDADES_VOZ.length];
+    velocidadRef.current = siguiente;
+    setVelocidad(siguiente);
+    if (audioRef.current) aplicarVelocidad(audioRef.current, siguiente);
+    try { localStorage.setItem(CLAVE_VELOCIDAD, String(siguiente)); } catch { /* sin almacenamiento */ }
+  }, []);
+
   useEffect(() => () => { tokenRef.current += 1; clearPlayback(); }, [clearPlayback]);
 
-  return { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload };
+  return { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload, velocidad, cambiarVelocidad };
 }

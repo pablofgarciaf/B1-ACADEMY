@@ -98,7 +98,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   const [narracionAbierta, setNarracionAbierta] = useState(false);
 
   // Speech
-  const { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload } = useAcademyVoice();
+  const { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload, velocidad, cambiarVelocidad } = useAcademyVoice();
 
   // =============================================
   // Load lesson data when class changes
@@ -365,6 +365,18 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             title={isMuted ? 'Activar audio' : 'Silenciar'}
           >
             {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+          </button>
+
+          {/* Velocidad de narración (1× → 1.25× → 1.5× → 1.75×) */}
+          <button
+            onClick={cambiarVelocidad}
+            className={`min-w-[44px] px-2 py-1.5 rounded-lg text-xs font-bold tabular-nums transition-all active:scale-95 ${
+              velocidad > 1 ? 'text-amber-300 bg-amber-500/15 hover:bg-amber-500/25' : 'text-gray-400 hover:text-white hover:bg-gray-800'
+            }`}
+            title="Velocidad de la narración"
+            aria-label={`Velocidad de la narración: ${velocidad}×. Pulsa para cambiar`}
+          >
+            {velocidad}×
           </button>
 
           {/* Pantalla completa (también se sale con Esc) */}
