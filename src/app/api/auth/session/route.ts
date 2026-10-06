@@ -1,11 +1,23 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import {
   AuthRejectedError,
   authenticateIdToken,
   createSessionValue,
+  getSessionUser,
   SESSION_COOKIE,
   SESSION_MAX_AGE_MS,
 } from '@/lib/server-auth';
+
+export const dynamic = 'force-dynamic';
+
+/** Diagnóstico de la sesión propia (sin secretos): qué tipo de cookie hay y si el servidor la acepta. */
+export async function GET() {
+  const valor = (await cookies()).get(SESSION_COOKIE)?.value;
+  const tipo = !valor ? 'ninguna' : valor.startsWith('idtoken:') ? 'respaldo-idtoken (caduca en 1 h)' : 'cookie-firebase (5 días)';
+  const usuario = valor ? await getSessionUser() : null;
+  return NextResponse.json({ tipo, valida: Boolean(usuario), rol: usuario?.profile.role ?? null });
+}
 
 export async function POST(request: Request) {
   try {

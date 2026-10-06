@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { Navbar } from "@/components/site/Navbar";
@@ -23,11 +23,31 @@ import { validarCedula } from "@/lib/cedula";
 
 type Tab = "login" | "register";
 
+/** Destino interno seguro de `?next=` (evita redirecciones abiertas a otros dominios). */
+function destinoSeguro(valor: string | null): string | null {
+  if (!valor || !valor.startsWith("/") || valor.startsWith("//") || valor.startsWith("/login")) return null;
+  return valor;
+}
+
 export default function LoginPage() {
   const router = useRouter();
-  const { login, register, resetPassword } = useAuth();
+  const { login, register, resetPassword, userProfile, loading: authLoading } = useAuth();
 
   const [tab, setTab] = useState<Tab>("login");
+
+  // `?next=` lo pone el servidor al proteger /mi-aula, /simulador, etc. Se lee en el cliente
+  // (window) para no obligar a envolver la página en Suspense por useSearchParams.
+  const [siguiente, setSiguiente] = useState<string | null>(null);
+  useEffect(() => {
+    setSiguiente(destinoSeguro(new URLSearchParams(window.location.search).get("next")));
+  }, []);
+
+  // Si el navegador ya tiene sesión de Firebase (la cookie del servidor solo había caducado),
+  // AuthProvider la renueva y aquí se devuelve al estudiante a donde iba, sin pedir la clave otra vez.
+  useEffect(() => {
+    if (authLoading || !userProfile || !siguiente) return;
+    router.replace(userProfile.passwordChanged === false ? "/change-password" : siguiente);
+  }, [authLoading, userProfile, siguiente, router]);
 
   // Login state
   const [email, setEmail] = useState("");
@@ -73,7 +93,9 @@ export default function LoginPage() {
       }
       setSuccessMsg("Bienvenido! Redirigiendo...");
       setTimeout(() => {
-        if (res.role === "super" || res.role === "admin") {
+        if (siguiente) {
+          router.push(siguiente);
+        } else if (res.role === "super" || res.role === "admin") {
           router.push("/admin");
         } else {
           router.push("/dashboard");

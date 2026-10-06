@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { auth, db } from '@/lib/firebase';
 import { FirebaseError } from 'firebase/app';
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword as fbUpdatePassword, updateProfile, type User as FirebaseUser } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onIdTokenChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword as fbUpdatePassword, updateProfile, type User as FirebaseUser } from 'firebase/auth';
 import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import { POLITICAS_VERSION } from '@/lib/legal-config';
 
@@ -79,7 +79,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Durante el registro, el perfil aún no existe: no se valida la sesión para no cerrarla a mitad de camino.
   const registeringRef = useRef(false);
 
-  useEffect(() => onAuthStateChanged(auth, async (fbUser) => {
+  // onIdTokenChanged (no onAuthStateChanged): también se dispara cuando Firebase renueva el token cada hora,
+  // así la cookie de sesión del servidor se renueva antes de caducar y el estudiante no es expulsado al login.
+  useEffect(() => onIdTokenChanged(auth, async (fbUser) => {
     if (registeringRef.current) return;
     setCurrentUser(fbUser);
     if (!fbUser) {
