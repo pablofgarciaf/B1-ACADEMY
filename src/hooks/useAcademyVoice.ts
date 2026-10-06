@@ -10,14 +10,15 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 const audioCache = new Map<string, Promise<string>>();
 
-function fetchAudioUrl(text: string): Promise<string> {
+function fetchAudioUrl(text: string, firma?: string): Promise<string> {
   const key = text.trim();
   const cached = audioCache.get(key);
   if (cached) return cached;
   const request = fetch('/api/tts', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: key }),
+    // La firma (de guiones publicados por el sitio) permite narrar sin sesión iniciada.
+    body: JSON.stringify(firma ? { text: key, firma } : { text: key }),
   }).then(async (response) => {
     if (!response.ok) throw new Error(`TTS ${response.status}`);
     return URL.createObjectURL(await response.blob());
@@ -60,7 +61,7 @@ export function useAcademyVoice() {
     setNeedsGesture(false);
   }, [clearPlayback]);
 
-  const speakText = useCallback((text: string, onEnd?: () => void) => {
+  const speakText = useCallback((text: string, onEnd?: () => void, firma?: string) => {
     tokenRef.current += 1;
     const token = tokenRef.current;
     clearPlayback();
@@ -80,7 +81,7 @@ export function useAcademyVoice() {
 
     setIsSpeaking(true);
     pendingEndRef.current = finish;
-    fetchAudioUrl(text)
+    fetchAudioUrl(text, firma)
       .then((url) => {
         if (token !== tokenRef.current) return;
         const audio = audioRef.current ?? new Audio();
@@ -115,8 +116,8 @@ export function useAcademyVoice() {
   }, []);
 
   /** Descarga por adelantado la narración siguiente para que no haya silencios entre láminas. */
-  const preload = useCallback((text: string) => {
-    if (text.trim()) fetchAudioUrl(text).catch(() => undefined);
+  const preload = useCallback((text: string, firma?: string) => {
+    if (text.trim()) fetchAudioUrl(text, firma).catch(() => undefined);
   }, []);
 
   const toggleMute = useCallback(() => {

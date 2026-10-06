@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import ManualViewer from '@/components/site/ManualViewer';
+import ManualViewer, { type SyncData } from '@/components/site/ManualViewer';
 import OfflineManager from '@/components/site/OfflineManager';
 import { ALL_MANUALS } from '@/lib/manuals-120-data';
 import { getQuizForManual } from '@/lib/manual-quizzes-data';
+import { firmarTexto } from '@/lib/tts-firma';
 
 export async function generateStaticParams() {
   const dir = path.join(process.cwd(), 'public', 'Capacitacion SAP');
@@ -54,11 +55,13 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
   }
 
   // 4. Leer los metadatos de sincronización (JSON Teleprompter)
-  let syncData = null;
+  let syncData: SyncData[] | undefined = undefined;
   const syncFile = path.join(manualDir, 'clase_sync.json');
   if (fs.existsSync(syncFile)) {
     try {
-      syncData = JSON.parse(fs.readFileSync(syncFile, 'utf-8'));
+      // Cada guion va firmado: permite narrarlo con la voz de Jorge sin sesión y sin video (modo narrado).
+      syncData = (JSON.parse(fs.readFileSync(syncFile, 'utf-8')) as SyncData[])
+        .map((s) => ({ ...s, firma: firmarTexto(s.script_text ?? '') }));
     } catch (e) {
       console.error("Error parseando clase_sync.json:", e);
     }

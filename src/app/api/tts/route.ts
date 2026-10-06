@@ -2,10 +2,11 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { getSessionUser } from '@/lib/server-auth';
 import { synthesize, TTS_MAX_CHARS } from '@/lib/tts';
+import { firmaValida } from '@/lib/tts-firma';
 
 export const runtime = 'nodejs';
 
-const schema = z.object({ text: z.string().trim().min(1).max(TTS_MAX_CHARS) });
+const schema = z.object({ text: z.string().trim().min(1).max(TTS_MAX_CHARS), firma: z.string().max(64).optional() });
 
 // Límite por estudiante: el servicio de voz es externo y no debe usarse como proxy abierto.
 const WINDOW_MS = 10 * 60_000;
@@ -25,12 +26,15 @@ function allow(uid: string) {
 }
 
 export async function POST(request: Request) {
-  const user = await getSessionUser().catch(() => null);
-  if (!user) return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
-  if (!allow(user.uid)) return NextResponse.json({ error: 'Demasiadas solicitudes de voz.' }, { status: 429 });
-
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Texto inválido.' }, { status: 400 });
+
+  // Sin sesión solo se narran guiones firmados por el sitio (manuales públicos); con sesión, cualquier texto del aula.
+  const firmado = firmaValida(parsed.data.text, parsed.data.firma);
+  const user = firmado ? null : await getSessionUser().catch(() => null);
+  if (!firmado && !user) return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
+  const quien = user?.uid ?? `ip:${request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'desconocida'}`;
+  if (!allow(quien)) return NextResponse.json({ error: 'Demasiadas solicitudes de voz.' }, { status: 429 });
 
   try {
     const audio = await synthesize(parsed.data.text);

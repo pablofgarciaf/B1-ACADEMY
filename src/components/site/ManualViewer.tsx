@@ -25,8 +25,11 @@ import {
   Award,
   Download,
   AlertTriangle,
-  ShieldCheck
+  ShieldCheck,
+  Pause,
+  Volume2
 } from 'lucide-react';
+import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 
 import { QuizQuestion, getQuizForManual } from '@/lib/manual-quizzes-data';
 import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
@@ -48,6 +51,8 @@ export interface SyncData {
   start_time: number;
   end_time: number;
   step_guide?: StepGuide;
+  /** Firma del servidor que permite narrar este guion sin sesión (modo narrado). */
+  firma?: string;
 }
 
 interface ManualViewerProps {
@@ -412,6 +417,48 @@ export default function ManualViewer({
     if (currentIdx > 0) setCurrentIdx(prev => prev - 1);
   }, [currentIdx]);
 
+  // ── Modo narrado: sin archivo de video, Jorge narra cada lámina con su guion (clase_sync.json) ──
+  // Es lo mismo que el video (lámina fija + voz), pero sin almacenar gigas de MP4 en el hosting.
+  const narrable = !videoUrl && !!syncData && syncData.length > 0;
+  const { isSpeaking, needsGesture, speakText, stopSpeaking, resumeAfterGesture, preload } = useAcademyVoice();
+  const [narrando, setNarrando] = useState(false);
+
+  // Lámina actual → su guion: por nombre de archivo y, si no coincide, por posición.
+  const guionDeLamina = useCallback((idx: number) => {
+    if (!syncData) return undefined;
+    const archivo = images[idx]?.split('/').pop();
+    return syncData.find(s => s.image_file && s.image_file === archivo) ?? syncData[idx];
+  }, [syncData, images]);
+
+  useEffect(() => {
+    if (!narrable || !narrando) return;
+    const guion = guionDeLamina(currentIdx);
+    const siguiente = guionDeLamina(currentIdx + 1);
+    if (siguiente?.script_text) preload(siguiente.script_text, siguiente.firma);
+    if (!guion?.script_text) { setNarrando(false); return; }
+    speakText(guion.script_text, () => {
+      // Práctica del simulador en esta lámina: se pausa la clase y se abre la práctica.
+      if (guion.step_guide && !completedCheckpoints.includes(guion.slide_index)) {
+        setCompletedCheckpoints(prev => [...prev, guion.slide_index]);
+        setNarrando(false);
+        setActiveTab('simulador');
+        return;
+      }
+      if (currentIdx < images.length - 1) setCurrentIdx(prev => prev + 1);
+      else {
+        setNarrando(false);
+        setActiveTab(simConfig && syncData?.some(s => s.step_guide) ? 'simulador' : 'quiz');
+      }
+    }, guion.firma);
+    return () => stopSpeaking();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [narrable, narrando, currentIdx]);
+
+  const alternarNarracion = () => {
+    if (narrando) { stopSpeaking(); setNarrando(false); }
+    else setNarrando(true);
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight') nextSlide();
@@ -479,8 +526,8 @@ export default function ManualViewer({
           {/* Barra de Controles Inferior (Solo si NO es video) */}
           {!videoUrl && (
             <div className="flex shrink-0 items-center justify-between border-t border-gray-800 bg-[#131a20] px-4 py-2.5">
-              <button 
-                onClick={prevSlide}
+              <button
+                onClick={() => { stopSpeaking(); prevSlide(); }}
                 disabled={currentIdx === 0}
                 className="flex items-center gap-1.5 rounded-lg bg-gray-800/50 px-3 py-1.5 text-xs font-medium text-white transition-all hover:bg-gray-700 active:scale-95 disabled:pointer-events-none disabled:opacity-30"
               >
@@ -488,14 +535,29 @@ export default function ManualViewer({
                 <span>Anterior</span>
               </button>
               
-              <div className="flex items-center gap-1.5 text-xs font-medium text-gray-400">
-                <span className="text-white font-bold">{currentIdx + 1}</span> 
-                <span>/</span> 
-                <span>{images.length}</span>
+              <div className="flex items-center gap-3 text-xs font-medium text-gray-400">
+                {narrable && (
+                  <button
+                    onClick={alternarNarracion}
+                    className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${
+                      narrando ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
+                    }`}
+                    title={narrando ? 'Pausar la clase' : 'Reproducir la clase narrada'}
+                  >
+                    {narrando ? <><Pause size={14} /> Pausar</> : <><PlayCircle size={14} /> {currentIdx === 0 ? 'Reproducir clase' : 'Continuar'}</>}
+                  </button>
+                )}
+                {needsGesture && (
+                  <button onClick={resumeAfterGesture} className="flex items-center gap-1 rounded-lg bg-amber-500/20 px-2 py-1 text-amber-300 active:scale-95">
+                    <Volume2 size={13} /> Activar voz
+                  </button>
+                )}
+                {isSpeaking && <span className="hidden sm:inline text-amber-400 animate-pulse">Narrando…</span>}
+                <span><span className="text-white font-bold">{currentIdx + 1}</span> / {images.length}</span>
               </div>
               
-              <button 
-                onClick={nextSlide}
+              <button
+                onClick={() => { stopSpeaking(); nextSlide(); }}
                 disabled={currentIdx === images.length - 1}
                 className="flex items-center gap-1.5 rounded-lg bg-amber-500/10 px-3 py-1.5 text-xs font-medium text-amber-500 transition-all hover:bg-amber-500/20 active:scale-95 disabled:pointer-events-none disabled:opacity-30"
               >
