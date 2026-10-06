@@ -395,6 +395,60 @@ export function presupuestoVsReal(state: CompanyState, year: string, hastaMes: n
   return { year, hastaMes, filas, utilidadPresupuestada, utilidadReal, lectura, preguntas };
 }
 
+/* ───────────── Segregación de funciones (control interno) ───────────── */
+
+export const AREAS_PERMISO = ['Compras', 'Aprobaciones', 'Pagos y bancos', 'Ventas', 'Cobranza', 'Inventario', 'Contabilidad', 'Nómina', 'Cierres'] as const;
+const INCOMPATIBLES: [string, string, string][] = [
+  ['Compras', 'Pagos y bancos', 'Podría crear una compra ficticia y pagársela a sí mismo o a un proveedor amigo.'],
+  ['Compras', 'Aprobaciones', 'Aprobaría sus propias compras: la segunda firma deja de existir.'],
+  ['Ventas', 'Cobranza', 'Podría registrar ventas y desviar cobros sin que nadie lo note.'],
+  ['Inventario', 'Contabilidad', 'Podría sacar mercadería y ajustar el registro contable para ocultar el faltante.'],
+  ['Nómina', 'Pagos y bancos', 'Podría crear empleados fantasma y pagarles.'],
+  ['Contabilidad', 'Cierres', 'Podría modificar asientos y reabrir períodos ya reportados sin control.'],
+];
+export function conflictosSoD(permisos: Record<string, 'total' | 'consulta' | 'ninguno'>) {
+  return INCOMPATIBLES.filter(([a, b]) => permisos[a] === 'total' && permisos[b] === 'total').map(([a, b, riesgo]) => ({ a, b, riesgo }));
+}
+
+/* ───────────── Verificación de integridad: auxiliares vs. mayor ───────────── */
+
+export interface Verificacion { nombre: string; auxiliar: number; mayor: number; diferencia: number; ok: boolean; explicacion: string }
+export function verificarIntegridad(state: CompanyState): Verificacion[] {
+  const rows = trialBalance(state.chartOfAccounts, state.journalEntries, '0000-00-00', '9999-12-31');
+  const s = (prefijo: string) => round(rows.filter(r => r.accountCode.startsWith(prefijo)).reduce((t, r) => t + r.closing, 0));
+  const fila = (nombre: string, auxiliar: number, mayor: number, explicacion: string): Verificacion => {
+    const diferencia = round(auxiliar - mayor); return { nombre, auxiliar: round(auxiliar), mayor: round(mayor), diferencia, ok: Math.abs(diferencia) < 0.01, explicacion };
+  };
+  const debe = round(state.journalEntries.reduce((t, e) => t + e.totalDebit, 0));
+  const haber = round(state.journalEntries.reduce((t, e) => t + e.totalCredit, 0));
+  return [
+    fila('Partida doble (debe = haber)', debe, haber, 'Todo asiento debe cuadrar. Si no, hay un error grave en el registro.'),
+    fila('Inventario vs. cuentas de inventario', state.warehouseStock.reduce((t, w) => t + w.value, 0), s('1.1.05') + s('1.1.07'), 'El valor de las existencias en bodega debe ser igual al saldo contable de inventarios.'),
+    fila('Clientes vs. cuentas por cobrar', state.customers.reduce((t, c) => t + c.balance, 0), s('1.1.03'), 'La suma de lo que debe cada cliente debe igualar la cuenta por cobrar. Una diferencia indica asientos manuales a 1.1.03 sin cliente.'),
+    fila('Proveedores vs. cuentas por pagar', state.vendors.reduce((t, v) => t + v.balance, 0), -s('2.1.01'), 'Deudas registradas sin proveedor asociado (activos a crédito, costos de importación) aparecen aquí como diferencia: hay que identificarlas.'),
+    fila('Bancos vs. cuenta Bancos', state.bankAccounts.reduce((t, b) => t + b.balance, 0), s('1.1.02'), 'El saldo de cada cuenta bancaria debe igualar la cuenta contable de Bancos.'),
+    fila('Activos fijos (costo) vs. 1.2.01', state.fixedAssets.reduce((t, a) => t + a.cost, 0), s('1.2.01'), 'El registro de activos debe coincidir con la cuenta Propiedad, planta y equipo.'),
+    fila('Depreciación acumulada vs. 1.2.02', state.fixedAssets.reduce((t, a) => t + a.accumulatedDepreciation, 0), -s('1.2.02'), 'La depreciación del registro de activos debe coincidir con la cuenta de depreciación acumulada.'),
+  ];
+}
+
+/* ───────────── Carga vs. capacidad por centro de trabajo ───────────── */
+
+export function cargaCapacidad(state: CompanyState, horasPorDia: number, dias: number) {
+  const carga = new Map<string, { centro: string; horas: number; ordenes: number }>();
+  for (const o of state.productionOrders) {
+    if (o.status === 'closed') continue;
+    const ruta = state.routings.find(r => r.itemCode === o.parentItemCode);
+    for (const op of ruta?.operations ?? []) {
+      const fila = carga.get(op.workCenter) ?? { centro: op.workCenter, horas: 0, ordenes: 0 };
+      fila.horas = round(fila.horas + (op.setupMinutes + op.runMinutesPerUnit * o.quantity) / 60); fila.ordenes += 1;
+      carga.set(op.workCenter, fila);
+    }
+  }
+  const disponible = round(horasPorDia * dias);
+  return [...carga.values()].map(f => ({ ...f, disponible, utilizacion: disponible ? round((f.horas / disponible) * 100) : 0 })).sort((a, b) => b.utilizacion - a.utilizacion);
+}
+
 /* ───────────── Comparativo con el período anterior de igual duración ───────────── */
 
 export interface FilaComparativo { concepto: string; actual: number; anterior: number; variacionPct: number | null; mejorSiSube: boolean; formato: 'usd' | 'porcentaje' | 'dias' }

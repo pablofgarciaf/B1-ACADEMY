@@ -49,6 +49,25 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('opportunity'), data: z.object({ id: z.string().max(80).default(''), name: text.min(3), cardCode: code, amount: money, stage: z.enum(['prospecto', 'calificado', 'propuesta', 'negociacion', 'ganada', 'perdida']), expectedClose: date, source: text, notes: text, lossReason: text.default('') }) }),
   // Datos de la empresa (inicialización).
   z.object({ action: z.literal('companySettings'), data: z.object({ companyName: text.min(2), ruc: z.string().regex(/^\d{10}001$/, 'El RUC tiene 13 dígitos y termina en 001.'), incomeTaxRate: z.number().min(0).max(40), warehouses: z.array(z.object({ code: code, name: text.min(2) })).min(1).max(20) }) }),
+  // Servicio: contratos con SLA, llamadas de servicio y proyectos.
+  z.object({ action: z.literal('serviceContract'), data: z.object({ cardCode: code, type: z.enum(['garantia', 'mantenimiento', 'soporte']), startDate: date, endDate: date, monthlyFee: money, responseHours: z.number().int().min(1).max(720), coverage: text.min(3) }).refine(d => d.endDate > d.startDate, 'La fecha de fin debe ser posterior al inicio.') }),
+  z.object({ action: z.literal('serviceCall'), data: z.object({ cardCode: code, subject: text.min(5), itemCode: z.string().max(80).default(''), priority: z.enum(['alta', 'media', 'baja']), openedAt: z.string().datetime() }) }),
+  z.object({ action: z.literal('serviceCallUpdate'), data: z.object({ id: code, status: z.enum(['abierta', 'en_proceso', 'resuelta', 'cerrada']), technician: text, resolution: text, hoursWorked: money.max(1000), at: z.string().datetime() }) }),
+  z.object({ action: z.literal('project'), data: z.object({ name: text.min(3), cardCode: code, startDate: date, endDate: date, budget: money, hourlyCost: money, stages: z.array(z.object({ name: text.min(2), budgetHours: money })).min(1).max(20) }) }),
+  z.object({ action: z.literal('projectProgress'), data: z.object({ id: code, stage: z.number().int().min(0), hours: money.max(1000), done: z.boolean(), expense: z.object({ date, concept: text.min(2), amount: money }).optional(), close: z.boolean().default(false) }) }),
+  // Usuarios simulados del equipo con permisos por área.
+  z.object({ action: z.literal('teamUser'), data: z.object({ userCode: z.string().max(80).default(''), name: text.min(2), role: text.min(2), permissions: z.record(z.enum(['total', 'consulta', 'ninguno'])), active: z.boolean() }) }),
+  // Rutas de fabricación.
+  z.object({ action: z.literal('routing'), data: z.object({ itemCode: code, operations: z.array(z.object({ seq: z.number().int().min(1), name: text.min(2), workCenter: text.min(2), setupMinutes: money, runMinutesPerUnit: money })).min(1).max(30) }) }),
+  // Ubicaciones de bodega (bins).
+  z.object({ action: z.literal('binLocation'), data: z.object({ warehouseCode: code, binCode: code, description: text, maxQuantity: money.positive() }) }),
+  z.object({ action: z.literal('binMove'), data: z.object({ warehouseCode: code, itemCode: code, fromBin: z.string().max(80), toBin: z.string().max(80), quantity: money.positive() }) }),
+  // Lotes y series: registro en la recepción y salida asignada a un documento de venta.
+  z.object({ action: z.literal('lotRegister'), data: z.object({ documentId: code, itemCode: code, kind: z.enum(['lote', 'serie']), lots: z.array(z.object({ lotNumber: code, quantity: money.positive(), expiryDate: z.union([date, z.literal('')]) })).min(1).max(100) }) }),
+  z.object({ action: z.literal('lotIssue'), data: z.object({ documentId: code, itemCode: code, allocations: z.array(z.object({ lotNumber: code, quantity: money.positive() })).min(1).max(100) }) }),
+  // Campos definidos por el usuario.
+  z.object({ action: z.literal('udfDefine'), data: z.object({ table: z.enum(['OCRD', 'OITM']), field: z.string().regex(/^U_[A-Za-z][A-Za-z0-9_]{1,30}$/, 'El campo debe empezar con U_ y usar letras, números o _.'), label: text.min(2), type: z.enum(['texto', 'numero', 'lista']), options: z.array(text.min(1)).max(30).default([]), remove: z.boolean().default(false) }) }),
+  z.object({ action: z.literal('udfSet'), data: z.object({ table: z.enum(['OCRD', 'OITM']), key: code, values: z.record(z.union([z.string().max(500), z.number().finite()])) }) }),
   // Importación masiva de datos maestros (estilo Data Transfer Workbench): todo o nada.
   z.object({ action: z.literal('importMasterData'), data: z.object({ kind: z.enum(['customer', 'vendor', 'item']), rows: z.array(z.record(z.unknown())).min(1).max(200) }) }),
 ]);

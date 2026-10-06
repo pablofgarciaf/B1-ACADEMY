@@ -456,6 +456,68 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       Object.assign(profile, { companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
       result = uid; break;
     }
+    case 'serviceContract': {
+      const d = command.data; const cliente = state.customers.find(c => c.cardCode === d.cardCode); if (!cliente) throw new Error('Cliente inexistente.');
+      result = next('CS', d.startDate);
+      state.serviceContracts.push({ ...meta(result), contractNumber: result, cardCode: d.cardCode, cardName: cliente.name, type: d.type, startDate: d.startDate, endDate: d.endDate, monthlyFee: d.monthlyFee, responseHours: d.responseHours, coverage: d.coverage, status: 'active' });
+      award('service-contract', 100, result, 'Primer contrato de servicio'); break;
+    }
+    case 'serviceCall': {
+      const d = command.data; const cliente = state.customers.find(c => c.cardCode === d.cardCode); if (!cliente) throw new Error('Cliente inexistente.');
+      const dia = d.openedAt.slice(0, 10);
+      // Si el cliente tiene contrato vigente, la llamada hereda su SLA; si no, se atiende sin compromiso de tiempo.
+      const contrato = state.serviceContracts.find(k => k.cardCode === d.cardCode && k.status === 'active' && k.startDate <= dia && k.endDate >= dia);
+      result = next('LS', dia);
+      state.serviceCalls.push({ ...meta(result), callNumber: result, cardCode: d.cardCode, cardName: cliente.name, subject: d.subject, itemCode: d.itemCode, priority: d.priority, status: 'abierta', technician: '', contractId: contrato?.id ?? '', openedAt: d.openedAt, resolvedAt: '', resolution: '', hoursWorked: 0, responseHours: contrato?.responseHours ?? 0, slaMet: null });
+      award('service-call', 100, result, 'Primera llamada de servicio'); break;
+    }
+    case 'serviceCallUpdate': {
+      const d = command.data; const llamada = state.serviceCalls.find(x => x.id === d.id); if (!llamada) throw new Error('Llamada inexistente.');
+      assert(llamada.status !== 'cerrada', 'La llamada ya está cerrada.');
+      const orden: Record<string, number> = { abierta: 0, en_proceso: 1, resuelta: 2, cerrada: 3 };
+      assert(orden[d.status] >= orden[llamada.status], 'Una llamada no puede volver a un estado anterior.');
+      if (d.status === 'resuelta' || d.status === 'cerrada') assert(d.resolution.trim().length >= 10, 'Describe la solución aplicada (mínimo 10 caracteres).');
+      if (d.status !== 'abierta') assert(d.technician.trim().length >= 2, 'Asigna un técnico.');
+      Object.assign(llamada, { status: d.status, technician: d.technician, resolution: d.resolution, hoursWorked: d.hoursWorked, updatedAt: now });
+      if ((d.status === 'resuelta' || d.status === 'cerrada') && !llamada.resolvedAt) {
+        llamada.resolvedAt = d.at;
+        const horas = (Date.parse(d.at) - Date.parse(llamada.openedAt)) / 3_600_000;
+        llamada.slaMet = llamada.responseHours ? horas <= llamada.responseHours : null;
+      }
+      result = llamada.id; break;
+    }
+    case 'project': {
+      const d = command.data; const cliente = state.customers.find(c => c.cardCode === d.cardCode); if (!cliente) throw new Error('Cliente inexistente.');
+      assert(d.endDate >= d.startDate, 'La fecha de fin debe ser posterior al inicio.');
+      result = next('PRY', d.startDate);
+      state.projects.push({ ...meta(result), projectNumber: result, name: d.name, cardCode: d.cardCode, cardName: cliente.name, startDate: d.startDate, endDate: d.endDate, budget: d.budget, hourlyCost: d.hourlyCost, status: 'activo', stages: d.stages.map(s => ({ ...s, actualHours: 0, done: false })), expenses: [] });
+      award('project', 100, result, 'Primer proyecto'); break;
+    }
+    case 'projectProgress': {
+      const d = command.data; const p = state.projects.find(x => x.id === d.id); if (!p) throw new Error('Proyecto inexistente.');
+      assert(p.status === 'activo', 'El proyecto está cerrado.');
+      const etapa = p.stages[d.stage]; if (!etapa) throw new Error('Etapa inexistente.');
+      etapa.actualHours = round(etapa.actualHours + d.hours); etapa.done = d.done;
+      if (d.expense && d.expense.amount > 0) p.expenses.push(d.expense);
+      if (d.close) { assert(p.stages.every(s => s.done), 'Para cerrar el proyecto todas las etapas deben estar terminadas.'); p.status = 'cerrado'; }
+      p.updatedAt = now; result = p.id; break;
+    }
+    case 'teamUser': {
+      const d = command.data; const existente = d.userCode ? state.teamUsers.find(u => u.userCode === d.userCode) : undefined;
+      if (d.userCode) assert(existente, 'Usuario inexistente.');
+      if (existente) { Object.assign(existente, { name: d.name, role: d.role, permissions: d.permissions, active: d.active, updatedAt: now }); result = existente.userCode; }
+      else { result = next('USR'); state.teamUsers.push({ ...meta(result), userCode: result, name: d.name, role: d.role, permissions: d.permissions, active: d.active }); }
+      award('team-user', 100, result, 'Primer usuario del equipo'); break;
+    }
+    case 'routing': {
+      const d = command.data; assert(state.items.some(i => i.itemCode === d.itemCode), 'Artículo inexistente.');
+      assert(new Set(d.operations.map(o => o.seq)).size === d.operations.length, 'Secuencia de operación repetida.');
+      const ops = [...d.operations].sort((a, b) => a.seq - b.seq);
+      const existente = state.routings.find(r => r.itemCode === d.itemCode);
+      if (existente) { existente.operations = ops; existente.updatedAt = now; result = existente.id; }
+      else { result = `RUTA-${d.itemCode}`; state.routings.push({ ...meta(result), itemCode: d.itemCode, operations: ops }); }
+      award('routing', 100, result, 'Primera ruta de fabricación'); break;
+    }
     case 'importMasterData': {
       const d = command.data;
       // Cada fila pasa por la misma validación que crearla a mano; si una falla, no se importa ninguna.

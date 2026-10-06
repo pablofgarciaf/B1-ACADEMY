@@ -146,6 +146,42 @@ test('importación masiva: valida cada fila con las mismas reglas y es todo o na
   assert.ok(s.state.profile.xpHistory.some(e => e.key === 'dtw'), 'el perfil sigue actualizándose');
 });
 
+test('servicio: la llamada hereda el SLA del contrato y mide si se cumplió', () => {
+  const s = empresa();
+  s.run('serviceContract', { cardCode: s.cliente, type: 'soporte', startDate: '2026-01-01', endDate: '2026-12-31', monthlyFee: 120, responseHours: 8, coverage: 'Soporte de equipos en sitio' });
+  const ok = s.run('serviceCall', { cardCode: s.cliente, subject: 'Laptop no enciende', priority: 'alta', openedAt: '2026-10-05T08:00:00.000Z' });
+  assert.throws(() => s.run('serviceCallUpdate', { id: ok, status: 'resuelta', technician: 'Ana', resolution: 'corto', hoursWorked: 1, at: '2026-10-05T10:00:00.000Z' }), /Describe la solución/);
+  s.run('serviceCallUpdate', { id: ok, status: 'resuelta', technician: 'Ana', resolution: 'Se reemplazó la fuente de poder.', hoursWorked: 1.5, at: '2026-10-05T12:00:00.000Z' });
+  const tarde = s.run('serviceCall', { cardCode: s.cliente, subject: 'Impresora atascada', priority: 'media', openedAt: '2026-10-05T08:00:00.000Z' });
+  s.run('serviceCallUpdate', { id: tarde, status: 'resuelta', technician: 'Luis', resolution: 'Se limpió el rodillo de arrastre.', hoursWorked: 1, at: '2026-10-06T08:00:00.000Z' });
+  assert.equal(s.state.serviceCalls[0].slaMet, true);   // 4 h ≤ 8 h
+  assert.equal(s.state.serviceCalls[1].slaMet, false);  // 24 h > 8 h
+  assert.throws(() => s.run('serviceCallUpdate', { id: ok, status: 'abierta', technician: 'Ana', resolution: '', hoursWorked: 0, at: '2026-10-06T08:00:00.000Z' }), /estado anterior/);
+});
+
+test('proyecto: horas reales por etapa y cierre solo con todas las etapas terminadas', () => {
+  const s = empresa();
+  const p = s.run('project', { name: 'Implementación ERP', cardCode: s.cliente, startDate: '2026-10-01', endDate: '2026-12-31', budget: 8000, hourlyCost: 25, stages: [{ name: 'Análisis', budgetHours: 40 }, { name: 'Configuración', budgetHours: 80 }] });
+  s.run('projectProgress', { id: p, stage: 0, hours: 50, done: true });
+  assert.throws(() => s.run('projectProgress', { id: p, stage: 1, hours: 10, done: false, close: true }), /todas las etapas/);
+  s.run('projectProgress', { id: p, stage: 1, hours: 70, done: true, expense: { date: '2026-11-10', concept: 'Viáticos', amount: 150 }, close: true });
+  const pr = s.state.projects[0];
+  assert.equal(pr.stages[0].actualHours, 50); assert.equal(pr.status, 'cerrado'); assert.equal(pr.expenses.length, 1);
+});
+
+test('segregación de funciones y verificación de integridad', () => {
+  const { conflictosSoD, verificarIntegridad } = require('../src/lib/company-analytics.ts');
+  const conflictos = conflictosSoD({ Compras: 'total', 'Pagos y bancos': 'total', Aprobaciones: 'consulta' });
+  assert.equal(conflictos.length, 1); assert.match(conflictos[0].riesgo, /pagársela/);
+  const s = empresa();
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.proveedor, [s.line(10, 10)]) });
+  s.run('sales', { docType: 'invoice', document: s.doc(s.cliente, [s.line(2, 20)]) });
+  assert.ok(verificarIntegridad(s.state).every(v => v.ok), 'una empresa operada solo con documentos cuadra en todo');
+  s.run('fixedAsset', { name: 'Equipo', category: 'Otros', acquisitionDate: '2026-10-04', cost: 500, residualValue: 0, usefulLifeMonths: 12, paymentAccount: '2.1.01' });
+  const prov = verificarIntegridad(s.state).find(v => v.nombre.startsWith('Proveedores'));
+  assert.equal(prov.ok, false); assert.equal(prov.diferencia, -500, 'la deuda del activo sin proveedor se detecta');
+});
+
 test('activo fijo: compra y depreciación mensual en línea recta, sin pasarse del valor depreciable', () => {
   const s = empresa();
   s.run('fixedAsset', { name: 'Computador', category: 'Equipo de cómputo', acquisitionDate: '2026-01-15', cost: 1200, residualValue: 0, usefulLifeMonths: 36, paymentAccount: '2.2.01' });

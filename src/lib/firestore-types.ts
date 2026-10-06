@@ -79,6 +79,8 @@ export interface CompanyProfile extends Entity { uid: string; email: string; com
   customerPriceLists?: Record<string, 1 | 2 | 3>;
   /** Descuentos automáticos por cantidad. itemCode '*' aplica a todos los artículos. */
   volumeDiscounts?: VolumeDiscount[];
+  /** Campos definidos por el usuario (como los U_ de SAP). */
+  udfDefinitions?: UdfDefinition[];
 }
 export interface ApprovalRule { docType: DocType; threshold: number; active: boolean }
 export interface VolumeDiscount { id: string; itemCode: string; minQuantity: number; discount: number }
@@ -106,12 +108,43 @@ export interface Opportunity extends Entity {
   opportunityNumber: string; name: string; cardCode: string; cardName: string; amount: number; stage: EtapaOportunidad; probability: number;
   expectedClose: string; source: string; notes: string; lossReason: string; closedAt: string;
 }
+/** Contrato de servicio con nivel de servicio (SLA) en horas de respuesta. */
+export interface ServiceContract extends Entity {
+  contractNumber: string; cardCode: string; cardName: string; type: 'garantia' | 'mantenimiento' | 'soporte';
+  startDate: string; endDate: string; monthlyFee: number; responseHours: number; coverage: string; status: 'active' | 'cancelled';
+}
+export type EstadoLlamada = 'abierta' | 'en_proceso' | 'resuelta' | 'cerrada';
+/** Llamada / orden de servicio técnico. */
+export interface ServiceCall extends Entity {
+  callNumber: string; cardCode: string; cardName: string; subject: string; itemCode: string; priority: 'alta' | 'media' | 'baja';
+  status: EstadoLlamada; technician: string; contractId: string; openedAt: string; resolvedAt: string; resolution: string;
+  hoursWorked: number; responseHours: number; slaMet: boolean | null;
+}
+/** Proyecto con etapas presupuestadas en horas y costo. */
+export interface Project extends Entity {
+  projectNumber: string; name: string; cardCode: string; cardName: string; startDate: string; endDate: string; budget: number; hourlyCost: number;
+  status: 'activo' | 'cerrado'; stages: { name: string; budgetHours: number; actualHours: number; done: boolean }[]; expenses: { date: string; concept: string; amount: number }[];
+}
+/** Miembro simulado del equipo con su rol y permisos por área (segregación de funciones). */
+export interface TeamUser extends Entity { userCode: string; name: string; role: string; permissions: Record<string, 'total' | 'consulta' | 'ninguno'>; active: boolean }
+/** Ruta de fabricación: operaciones por centro de trabajo con tiempos estándar. */
+export interface Routing extends Entity { itemCode: string; operations: { seq: number; name: string; workCenter: string; setupMinutes: number; runMinutesPerUnit: number }[] }
+/** Ubicación (bin) dentro de un almacén con su contenido. */
+export interface BinLocation extends Entity { warehouseCode: string; binCode: string; description: string; maxQuantity: number; contents: { itemCode: string; quantity: number }[] }
+/** Lote o número de serie, con vencimiento y trazabilidad de entradas y salidas. */
+export interface Lot extends Entity {
+  itemCode: string; warehouseCode: string; lotNumber: string; kind: 'lote' | 'serie'; receivedQuantity: number; quantity: number; expiryDate: string;
+  receiptDocumentId: string; receiptDocumentNumber: string; vendorName: string; issues: { documentId: string; documentNumber: string; cardName: string; date: string; quantity: number }[];
+}
+/** Valores de campos definidos por el usuario (UDF) para un registro de OCRD u OITM. */
+export interface UdfValues extends Entity { table: 'OCRD' | 'OITM'; key: string; values: Record<string, string | number> }
+export interface UdfDefinition { table: 'OCRD' | 'OITM'; field: string; label: string; type: 'texto' | 'numero' | 'lista'; options: string[] }
 export interface FixedAsset extends Entity {
   assetCode: string; name: string; category: string; acquisitionDate: string; cost: number; residualValue: number; usefulLifeMonths: number;
   accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated'; journalEntryId: string;
 }
-export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset; landedCosts: LandedCost; opportunities: Opportunity }
+export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset; landedCosts: LandedCost; opportunities: Opportunity; serviceContracts: ServiceContract; serviceCalls: ServiceCall; projects: Project; teamUsers: TeamUser; routings: Routing; binLocations: BinLocation; lots: Lot; udfValues: UdfValues }
 export type CollectionName = keyof CompanyCollections;
-export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets', 'landedCosts', 'opportunities'];
+export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets', 'landedCosts', 'opportunities', 'serviceContracts', 'serviceCalls', 'projects', 'teamUsers', 'routings', 'binLocations', 'lots', 'udfValues'];
 export type CompanyState = { profile: CompanyProfile | null } & { [K in CollectionName]: CompanyCollections[K][] };
-export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [], landedCosts: [], opportunities: [] });
+export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [], landedCosts: [], opportunities: [], serviceContracts: [], serviceCalls: [], projects: [], teamUsers: [], routings: [], binLocations: [], lots: [], udfValues: [] });

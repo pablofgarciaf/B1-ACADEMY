@@ -32,6 +32,8 @@ import OpportunitiesScreen from './OpportunitiesScreen';
 import CompanySettingsScreen from './CompanySettingsScreen';
 import PrintLayoutScreen from './PrintLayoutScreen';
 import DataTransferScreen from './DataTransferScreen';
+import { ServiceContractsScreen, ServiceCallsScreen, ProjectsScreen } from './ServiceScreens';
+import { TeamUsersScreen, DataVerificationScreen, RoutingScreen, CapacityScreen } from './AdminProductionScreens';
 
 export const companyScreens: Record<string, ComponentType> = {
   'EC-CUSTOMERS': CompanyPartnerForm,
@@ -44,7 +46,9 @@ export const companyScreens: Record<string, ComponentType> = {
   'SAL008': VolumeDiscountScreen, 'INV003': InventoryCountScreen, 'FIN006': FixedAssetsScreen,
   'PUR007': LandedCostScreen, 'CRM001': OpportunitiesScreen, 'ADM001': CompanySettingsScreen, 'UTL001': PrintLayoutScreen,
   'UTL002': DataTransferScreen, 'UTL003': DataTransferScreen, 'UTL004': DataTransferScreen,
-  'RPT001': QueryManagerScreen, 'QRY003': QueryManagerScreen, 'FIN005': CashFlowScreen,
+  'RPT001': QueryManagerScreen, 'QRY003': QueryManagerScreen,
+  'SRV001': ServiceContractsScreen, 'SRV002': ServiceCallsScreen, 'SRV004': ServiceCallsScreen, 'SRV003': ProjectsScreen,
+  'ADM002': TeamUsersScreen, 'ADM005': DataVerificationScreen, 'MFG002': RoutingScreen, 'MFG006': CapacityScreen, 'FIN005': CashFlowScreen,
   'EC-SRI': SRIElectronicScreen, 'EC-RETENTION': RetentionForm, 'EC-TAX': TaxReportScreen,
   'EC-EMPLOYEE': EmployeeForm, 'EC-PAYROLL': PayrollRunScreen,
   'MFG001': BOMForm, 'MFG003': ProductionOrderForm, 'MFG004': ProductionOrderForm, 'MFG005': ProductionOrderForm,
