@@ -1,1 +1,369 @@
-{}
+{
+ "mod-1": [
+  {
+   "id": "mod1-c1",
+   "number": 1,
+   "title": "Arquitectura y Cockpit Fiori",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod1-c2",
+   "number": 2,
+   "title": "Parametrizaciones y Preferencias de Usuario",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod1-c3",
+   "number": 3,
+   "title": "Búsqueda y Funciones de Ayuda",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod1-c4",
+   "number": 4,
+   "title": "Mensajes, Alertas y Autorizaciones",
+   "description": "",
+   "durationMinutes": 13
+  }
+ ],
+ "mod-2": [
+  {
+   "id": "mod2-c1",
+   "number": 1,
+   "title": "Socio de Negocios (OCRD)",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod2-c2",
+   "number": 2,
+   "title": "Datos Maestros de Artículo (OITM)",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod2-c3",
+   "number": 3,
+   "title": "Gestión de Unidades de Medida",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod2-c4",
+   "number": 4,
+   "title": "Determinación Estándar de Precios",
+   "description": "",
+   "durationMinutes": 13
+  }
+ ],
+ "mod-3": [
+  {
+   "id": "mod3-c1",
+   "number": 1,
+   "title": "Ciclo Procure-to-Pay",
+   "description": "",
+   "durationMinutes": 22
+  },
+  {
+   "id": "mod3-c2",
+   "number": 2,
+   "title": "Transacciones de Almacén",
+   "description": "",
+   "durationMinutes": 22
+  },
+  {
+   "id": "mod3-c3",
+   "number": 3,
+   "title": "Ubicaciones (Bin Locations)",
+   "description": "",
+   "durationMinutes": 22
+  },
+  {
+   "id": "mod3-c4",
+   "number": 4,
+   "title": "Trazabilidad por Lotes y Series",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod3-c5",
+   "number": 5,
+   "title": "Costos de Importación",
+   "description": "",
+   "durationMinutes": 23
+  }
+ ],
+ "mod-4": [
+  {
+   "id": "mod4-c1",
+   "number": 1,
+   "title": "El Ciclo de Ventas Order-to-Cash",
+   "description": "",
+   "durationMinutes": 25
+  },
+  {
+   "id": "mod4-c2",
+   "number": 2,
+   "title": "Ofertas y Pedidos de Cliente",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod4-c3",
+   "number": 3,
+   "title": "Entregas y Facturación",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod4-c4",
+   "number": 4,
+   "title": "Devoluciones y Notas de Crédito",
+   "description": "",
+   "durationMinutes": 21
+  }
+ ],
+ "mod-5": [
+  {
+   "id": "mod5-c1",
+   "number": 1,
+   "title": "Listas de Precios y su Actualización",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod5-c2",
+   "number": 2,
+   "title": "Descuentos por Período y Volumen",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod5-c3",
+   "number": 3,
+   "title": "Grupos de Descuento",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod5-c4",
+   "number": 4,
+   "title": "Precios Especiales para Socios",
+   "description": "",
+   "durationMinutes": 12
+  }
+ ],
+ "mod-6": [
+  {
+   "id": "mod6-c1",
+   "number": 1,
+   "title": "Gestión de Relaciones con Clientes",
+   "description": "",
+   "durationMinutes": 22
+  },
+  {
+   "id": "mod6-c2",
+   "number": 2,
+   "title": "Oportunidades y Actividades de Venta",
+   "description": "",
+   "durationMinutes": 21
+  },
+  {
+   "id": "mod6-c3",
+   "number": 3,
+   "title": "Llamadas de Servicio",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod6-c4",
+   "number": 4,
+   "title": "Tarjetas de Equipo y Garantías",
+   "description": "",
+   "durationMinutes": 15
+  }
+ ],
+ "mod-7": [
+  {
+   "id": "mod7-c1",
+   "number": 1,
+   "title": "Plan de Cuentas",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod7-c2",
+   "number": 2,
+   "title": "Cuentas de Mayor por Defecto",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod7-c3",
+   "number": 3,
+   "title": "Asientos Contables Manuales y Automáticos",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod7-c4",
+   "number": 4,
+   "title": "Períodos Contables y Cierre",
+   "description": "",
+   "durationMinutes": 20
+  }
+ ],
+ "mod-8": [
+  {
+   "id": "mod8-c1",
+   "number": 1,
+   "title": "Pagos Recibidos y Efectuados",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod8-c2",
+   "number": 2,
+   "title": "Asistente de Pagos",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod8-c3",
+   "number": 3,
+   "title": "Conciliación Bancaria e Interna",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod8-c4",
+   "number": 4,
+   "title": "Antigüedad de Saldos y Cobranza",
+   "description": "",
+   "durationMinutes": 12
+  }
+ ],
+ "mod-9": [
+  {
+   "id": "mod9-c1",
+   "number": 1,
+   "title": "Configuración de Activos Fijos",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod9-c2",
+   "number": 2,
+   "title": "Alta y Datos Maestros del Activo",
+   "description": "",
+   "durationMinutes": 21
+  },
+  {
+   "id": "mod9-c3",
+   "number": 3,
+   "title": "Depreciación y Ajustes",
+   "description": "",
+   "durationMinutes": 12
+  },
+  {
+   "id": "mod9-c4",
+   "number": 4,
+   "title": "Bajas y Monitoreo de Activos",
+   "description": "",
+   "durationMinutes": 16
+  }
+ ],
+ "mod-10": [
+  {
+   "id": "mod10-c1",
+   "number": 1,
+   "title": "Planificación de Necesidades MRP",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod10-c2",
+   "number": 2,
+   "title": "Pronósticos de Demanda",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod10-c3",
+   "number": 3,
+   "title": "MRP y Listas de Materiales",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod10-c4",
+   "number": 4,
+   "title": "Recomendaciones y Órdenes Sugeridas",
+   "description": "",
+   "durationMinutes": 13
+  }
+ ],
+ "mod-11": [
+  {
+   "id": "mod11-c1",
+   "number": 1,
+   "title": "Listas de Materiales",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod11-c2",
+   "number": 2,
+   "title": "Órdenes de Producción",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod11-c3",
+   "number": 3,
+   "title": "Costos de Producción",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod11-c4",
+   "number": 4,
+   "title": "Gestión y Facturación de Proyectos",
+   "description": "",
+   "durationMinutes": 22
+  }
+ ],
+ "mod-12": [
+  {
+   "id": "mod12-c1",
+   "number": 1,
+   "title": "Consultas SQL con el Query Manager",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod12-c2",
+   "number": 2,
+   "title": "Alertas y Procesos de Aprobación",
+   "description": "",
+   "durationMinutes": 24
+  },
+  {
+   "id": "mod12-c3",
+   "number": 3,
+   "title": "Campos y Valores Definidos por el Usuario",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod12-c4",
+   "number": 4,
+   "title": "Migración de Datos con DTW",
+   "description": "",
+   "durationMinutes": 19
+  }
+ ]
+}

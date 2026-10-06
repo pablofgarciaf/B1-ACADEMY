@@ -132,7 +132,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
             {campos.map((c, i) => {
               const estado = revisado?.[i];
               return (
-                <div key={c.etiqueta} className="grid grid-cols-[minmax(110px,180px)_1fr] items-start gap-3">
+                <div key={`${i}-${c.etiqueta}`} className="grid grid-cols-[minmax(110px,180px)_1fr] items-start gap-3">
                   <label htmlFor={`campo-${i}`} className="text-xs text-gray-700 text-right pt-1.5">{c.etiqueta}</label>
                   <div>
                     <input

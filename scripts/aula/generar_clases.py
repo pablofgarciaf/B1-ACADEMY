@@ -72,10 +72,14 @@ def conocimiento(clase):
 
 def valida(datos):
     lam = [x for x in datos.get("laminas", []) if isinstance(x, dict)]
-    if not 11 <= len(lam) <= 18:
+    if not 10 <= len(lam) <= 20:
         return None, f"{len(lam)} láminas"
     practicas = [x for x in lam if isinstance(x.get("practica"), dict)]
-    if not 2 <= len(practicas) <= 4:  # mínimo 2 prácticas; hasta 4 es bienvenido (más práctica)
+    # Más de 4 prácticas: las extra quedan como láminas de pantalla explicativas (sin evaluación).
+    for extra in practicas[4:]:
+        extra.pop("practica", None)
+    practicas = practicas[:4]
+    if len(practicas) < 2:
         return None, f"{len(practicas)} prácticas"
     for p in practicas:
         campos = p["practica"].get("campos") or []

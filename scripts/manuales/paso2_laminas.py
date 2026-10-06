@@ -217,7 +217,35 @@ RENDER = {"portada": portada, "objetivos": objetivos, "concepto": concepto, "flu
           "pantalla": pantalla, "asiento": asiento, "tabla": tabla, "kpi": kpi, "resumen": resumen}
 
 
+def _como_lista(x):
+    """La IA a veces devuelve una fila como objeto o un texto suelto: se normaliza a lista de celdas."""
+    if isinstance(x, dict):
+        return [str(v) for v in x.values()]
+    if isinstance(x, (list, tuple)):
+        return [str(v) if not isinstance(v, (dict, list)) else " ".join(map(str, v.values() if isinstance(v, dict) else v)) for v in x]
+    return [str(x)]
+
+
+def _normalizar(L):
+    """Tolera variaciones de formato de la IA sin que se caiga el render (nunca una lámina rota)."""
+    L = dict(L)
+    if isinstance(L.get("tabla"), dict):
+        t = dict(L["tabla"])
+        t["encabezados"] = _como_lista(t.get("encabezados") or [])
+        t["filas"] = [_como_lista(f) for f in (t.get("filas") or [])]
+        L["tabla"] = t
+    for clave, campo_texto in (("pasos", "texto"), ("kpis", "etiqueta"), ("campos", "etiqueta")):
+        if isinstance(L.get(clave), list):
+            L[clave] = [x if isinstance(x, dict) else {campo_texto: str(x)} for x in L[clave]]
+    if isinstance(L.get("claves"), list):
+        L["claves"] = [str(c) for c in L["claves"]]
+    if isinstance(L.get("columnas"), list):
+        L["columnas"] = [c if isinstance(c, dict) else {"titulo": str(c), "puntos": []} for c in L["columnas"]]
+    return L
+
+
 def html_lamina(L, ctx):
+    L = _normalizar(L)
     layout = L.get("layout") if L.get("layout") in RENDER else "concepto"
     # Sin datos para el diagrama elegido → concepto (nunca una lámina vacía).
     requisitos = {"flujo": "pasos", "comparacion": "columnas", "pantalla": "campos", "asiento": "lineas", "tabla": "tabla", "kpi": "kpis"}

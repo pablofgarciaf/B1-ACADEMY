@@ -27,14 +27,38 @@ DESTINO = ROOT / "public" / "aula"
 CONTENIDO = ROOT / "src" / "content" / "aula"
 
 
-def step_guide(practica):
+def _plano(texto):
+    import unicodedata
+    t = unicodedata.normalize("NFD", str(texto).lower())
+    return "".join(c for c in t if unicodedata.category(c) != "Mn" and c.isalnum())
+
+
+def _etiquetas_unicas(campos):
+    """Documentos con varias líneas (asientos, grupos de UdM): 'Debe', 'Debe (línea 2)'..."""
+    vistos = {}
+    for c in campos:
+        k = _plano(c["etiqueta"])
+        vistos[k] = vistos.get(k, 0) + 1
+        if vistos[k] > 1:
+            c["etiqueta"] = f"{c['etiqueta']} (línea {vistos[k]})"
+    return campos
+
+
+def step_guide(practica, narracion=""):
+    """Toda práctica debe poder resolverse: si un valor a escribir no aparece en las instrucciones
+    ni en la narración, se agrega en una línea 'Datos a registrar'."""
+    instrucciones = [str(i) for i in practica.get("instrucciones", [])]
+    visible = _plano(" ".join(instrucciones) + " " + narracion)
+    faltan = [c for c in practica.get("campos", []) if _plano(c["valor"]) and _plano(c["valor"]) not in visible]
+    if faltan:
+        instrucciones.append("Datos a registrar: " + "; ".join(f"{c['etiqueta']} = {c['valor']}" for c in faltan) + ".")
     return {
         "action_type": "practica",
         "title": practica.get("titulo", "Práctica"),
         "menu_path": practica.get("menu_path", ""),
-        "instructions": practica.get("instrucciones", []),
-        "campos": [{"etiqueta": c["etiqueta"], "valor": str(c["valor"]), "pista": c.get("pista", "")}
-                   for c in practica.get("campos", [])],
+        "instructions": instrucciones,
+        "campos": _etiquetas_unicas([{"etiqueta": c["etiqueta"], "valor": str(c["valor"]), "pista": c.get("pista", "")}
+                                     for c in practica.get("campos", [])]),
     }
 
 
@@ -65,7 +89,7 @@ def main():
                         Image.open(io.BytesIO(page.screenshot(type="png"))).convert("RGB").save(archivo, "WEBP", quality=86, method=6)
                     imagenes.append(f"/aula/{clase['id']}/{archivo.name}")
                     item = {"slide_index": i, "script_text": L["narracion"].strip(),
-                            "step_guide": step_guide(L["practica"]) if isinstance(L.get("practica"), dict) else None}
+                            "step_guide": step_guide(L["practica"], L.get("narracion", "")) if isinstance(L.get("practica"), dict) else None}
                     sync.append(item)
                     palabras += len(L["narracion"].split())
                 practicas = sum(1 for s in sync if s["step_guide"])
