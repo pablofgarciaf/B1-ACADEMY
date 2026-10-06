@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
-import { FieldValue } from 'firebase-admin/firestore';
-import { adminDb } from '@/lib/firebase-admin';
+import { adminDb, fieldValue } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
 
@@ -29,7 +28,7 @@ export async function POST(request: Request) {
     await adminDb.collection('academic_progress').doc(`${user.uid}_${parsed.data.moduleId}`).set({
       uid: user.uid,
       moduleId: parsed.data.moduleId,
-      completedClasses: FieldValue.arrayUnion(parsed.data.classId),
+      completedClasses: fieldValue().arrayUnion(parsed.data.classId),
       updatedAt: new Date().toISOString(),
     }, { merge: true });
     return NextResponse.json({ success: true });
