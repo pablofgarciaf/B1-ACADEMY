@@ -38,9 +38,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-scratch/node_modules/
+# generated/scratch folders (exclude from git)
+scratch/
+*.log
+*.tmp
+*.temp
 
-# large generated video binaries (exclude 3.6GB from git & Vercel deployment payload)
+# large generated video binaries (exclude from git & Vercel deployment payload)
 public/Capacitacion SAP/*/clase_video.mp4
 !public/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/clase_video.mp4
 !public/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/clase_video.mp4
@@ -50,3 +54,14 @@ public/Capacitacion SAP/*/clase_video.mp4
 scratch/aula_audio_cache/
 scratch/aula_tmp/
 scratch/*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
