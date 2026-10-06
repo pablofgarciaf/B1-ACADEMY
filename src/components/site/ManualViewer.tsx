@@ -146,8 +146,9 @@ export default function ManualViewer({
 
   const activeSyncSlide = useMemo(() => {
     if (!syncData || syncData.length === 0) return null;
+    if (!videoUrl) { return syncData.find(s => s.slide_index === currentIdx + 1) || syncData[0]; }
     return syncData.find(s => currentVideoTime >= s.start_time && currentVideoTime < s.end_time) || syncData[0];
-  }, [currentVideoTime, syncData]);
+  }, [currentVideoTime, syncData, videoUrl, currentIdx]);
 
   // Auto-scroll del Teleprompter para que el texto vaya subiendo fluidamente
   useEffect(() => {
