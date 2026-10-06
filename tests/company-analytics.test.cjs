@@ -5,7 +5,7 @@ require('ts-node').register({ transpileOnly: true, compilerOptions: { module: 'C
 const { applyCommand } = require('../src/lib/company-engine.ts');
 const { emptyCompany } = require('../src/lib/firestore-types.ts');
 const { commandSchema } = require('../src/lib/company-commands.ts');
-const { analisisGerencial, antiguedadSaldos, flujoCaja, comparativoPeriodos } = require('../src/lib/company-analytics.ts');
+const { analisisGerencial, antiguedadSaldos, flujoCaja, comparativoPeriodos, analisisCompras, presupuestoVsReal } = require('../src/lib/company-analytics.ts');
 
 const now = '2026-10-04T12:00:00.000Z';
 const partner = { name: 'Socio ficticio', ruc: '1790000000001', email: '', phone: '', address: '', city: 'Quito', contactName: '', currency: 'USD', paymentTermsDays: 30, creditLimit: 10000, active: true, group: 'General', notes: '' };
@@ -115,4 +115,38 @@ test('comparativo: sin historia previa lo dice en vez de inventar variaciones', 
   assert.equal(c.filas[0].actual, 40);
   assert.equal(c.filas[0].variacionPct, null);
   assert.ok(c.lectura[0].includes('no tiene ventas'));
+});
+
+test('análisis de compras: proveedor dominante y variación de precio', () => {
+  const s = empresa();
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.vendor, [s.line(10, 10)]) });
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.vendor, [s.line(10, 12)]) });
+  const a = analisisCompras(s.state, '2026-01-01', '2026-12-31');
+  assert.equal(a.total, 220);
+  assert.equal(a.proveedores[0].participacion, 100);
+  assert.equal(a.articulos[0].precioMin, 10);
+  assert.equal(a.articulos[0].precioMax, 12);
+  assert.equal(a.articulos[0].dispersionPct, 20);
+  assert.ok(a.lectura.some(l => l.includes('varió 20 %')));
+});
+
+test('presupuesto: se guarda, se actualiza sin duplicar y mide la desviación según el tipo de cuenta', () => {
+  const s = empresa();
+  const meses = (v) => Array(12).fill(v);
+  s.run('budget', { year: '2026', accountCode: '4.01', months: meses(10) });
+  s.run('budget', { year: '2026', accountCode: '4.01', months: meses(5) }); // actualización, no duplica
+  s.run('budget', { year: '2026', accountCode: '5.01', months: meses(1) });
+  assert.equal(s.state.budgets.length, 2);
+  assert.throws(() => s.run('budget', { year: '2026', accountCode: '1.1.01', months: meses(1) }), /ingresos, costos o gastos/);
+  s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.vendor, [s.line(10, 10)]) });
+  s.run('sales', { docType: 'invoice', document: s.doc(s.customer, [s.line(2, 20)]) }); // ventas 40, costo 20 en octubre
+  const r = presupuestoVsReal(s.state, '2026', 10);
+  const ventas = r.filas.find(f => f.accountCode === '4.01');
+  const costo = r.filas.find(f => f.accountCode === '5.01');
+  // Ventas: presupuesto 5 × 10 meses = 50; real 40 → desviación −10, desfavorable.
+  assert.equal(ventas.presupuestoAcum, 50); assert.equal(ventas.realAcum, 40); assert.equal(ventas.favorable, false);
+  // Costo: presupuesto 10; real 20 → +10, desfavorable (gastar más de lo previsto es malo).
+  assert.equal(costo.realAcum, 20); assert.equal(costo.favorable, false);
+  assert.equal(r.utilidadPresupuestada, 40); assert.equal(r.utilidadReal, 20);
+  assert.ok(r.lectura.some(l => l.includes('por debajo de la presupuestada')));
 });

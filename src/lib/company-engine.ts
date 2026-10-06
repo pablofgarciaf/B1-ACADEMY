@@ -231,6 +231,17 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const lines: DocumentLine[] = requirements.map(r => { const item = state.items.find(i => i.itemCode === r.itemCode); if (!item) throw new Error('Artículo no encontrado.'); return { itemCode: item.itemCode, description: item.name, quantity: r.shortage, unit: item.purchaseUnit, price: item.purchasePrice, discount: 0, taxRate: 15, warehouseCode: profile.warehouses[0].code }; });
       result = saveDocument('purchase', 'purchase_request', { date: command.data.date, dueDate: command.data.date, cardCode: command.data.vendorCode, reference: 'MRP', comments: 'Necesidades netas de pedidos abiertos', baseDocumentId: '', lines }); break;
     }
+    case 'budget': {
+      const d = command.data;
+      const account = state.chartOfAccounts.find(a => a.code === d.accountCode);
+      if (!account || !account.postable || !['income', 'cost', 'expense'].includes(account.category)) throw new Error('Solo se presupuestan cuentas imputables de ingresos, costos o gastos.');
+      result = `PRE-${d.year}-${d.accountCode}`;
+      const existing = state.budgets.find(b => b.id === result);
+      if (existing) { existing.months = d.months; existing.updatedAt = now; }
+      else state.budgets.push({ ...meta(result), year: d.year, accountCode: d.accountCode, accountName: account.name, months: d.months });
+      award('budget', 50, result, 'Primer presupuesto');
+      break;
+    }
     case 'missionComplete': { const mission = state.missions.find(m => m.id === command.data.id); if (!mission) throw new Error('Misión inexistente.'); mission.status = 'completed'; mission.updatedAt = now; result = mission.id; break; }
   }
   const linkedCycle = (records: (SalesDocument | PurchaseDocument)[], types: DocType[]): boolean => records.filter(d => d.docType === types[types.length - 1]).some(end => {

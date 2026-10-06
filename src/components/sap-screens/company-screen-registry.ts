@@ -18,6 +18,9 @@ import MRPScreen from './MRPScreen';
 import ManagementAnalysisScreen from './ManagementAnalysisScreen';
 import AgingScreen from './AgingScreen';
 import CashFlowScreen from './CashFlowScreen';
+import PurchaseAnalysisScreen from './PurchaseAnalysisScreen';
+import QueryManagerScreen from './QueryManagerScreen';
+import BudgetScreen from './BudgetScreen';
 
 export const companyScreens: Record<string, ComponentType> = {
   'EC-CUSTOMERS': CompanyPartnerForm,
@@ -25,7 +28,7 @@ export const companyScreens: Record<string, ComponentType> = {
   'INV001': ItemMasterForm, 'INV002': WarehouseTransferForm, 'INV005': InventoryReportScreen, 'INV006': InventoryReportScreen,
   'EC-ACCOUNTS': ChartOfAccountsScreen, 'FIN002': FinancialStatementsScreen, 'FIN003': FinancialStatementsScreen, 'FIN004': FinancialStatementsScreen,
   'BNK001': BankingScreen, 'BNK002': BankingScreen, 'BNK003': BankingScreen,
-  'RPT002': SalesReportScreen, 'RPT-VENTAS': SalesReportScreen, 'RPT004': ManagementAnalysisScreen, 'RPT005': AgingScreen, 'FIN005': CashFlowScreen,
+  'RPT002': SalesReportScreen, 'RPT-VENTAS': SalesReportScreen, 'RPT004': ManagementAnalysisScreen, 'RPT005': AgingScreen, 'RPT003': PurchaseAnalysisScreen, 'QRY001': QueryManagerScreen, 'QRY002': QueryManagerScreen, 'FIN007': BudgetScreen, 'FIN005': CashFlowScreen,
   'EC-SRI': SRIElectronicScreen, 'EC-RETENTION': RetentionForm, 'EC-TAX': TaxReportScreen,
   'EC-EMPLOYEE': EmployeeForm, 'EC-PAYROLL': PayrollRunScreen,
   'MFG001': BOMForm, 'MFG003': ProductionOrderForm, 'MFG004': ProductionOrderForm, 'MFG005': ProductionOrderForm,

@@ -1,5 +1,8 @@
 import type { CompanyState, JournalLine, TrialBalanceRow } from './firestore-types';
-import { financialSummary, round, trialBalance } from './company-calculations';
+import { financialSummary, round, trialBalance, usd } from './company-calculations';
+
+/** Porcentaje con coma decimal (formato Ecuador) para los textos de lectura. */
+const pctTxt = (n: number) => n.toLocaleString('es-EC', { maximumFractionDigits: 1 });
 
 /**
  * Análisis gerencial de la empresa del estudiante.
@@ -228,11 +231,11 @@ export function antiguedadSaldos(state: CompanyState, corte: string, tipo: 'cobr
   const alertas: string[] = [];
   const quien = tipo === 'cobrar' ? 'clientes' : 'proveedores';
   if (totales[4] > 0) alertas.push(tipo === 'cobrar'
-    ? `Hay ${totales[4].toFixed(2)} USD con más de 90 días de atraso: probabilidad real de no cobrarlos. Evalúa provisionar cuentas incobrables.`
-    : `Debes ${totales[4].toFixed(2)} USD con más de 90 días de atraso: riesgo de que te corten el crédito o el abastecimiento.`);
-  if (vencidoPct >= 30) alertas.push(`El ${vencidoPct} % del saldo con ${quien} está vencido.`);
+    ? `Hay ${usd(totales[4])} con más de 90 días de atraso: probabilidad real de no cobrarlos. Evalúa provisionar cuentas incobrables.`
+    : `Debes ${usd(totales[4])} con más de 90 días de atraso: riesgo de que te corten el crédito o el abastecimiento.`);
+  if (vencidoPct >= 30) alertas.push(`El ${pctTxt(vencidoPct)} % del saldo con ${quien} está vencido.`);
   const mayor = filas[0];
-  if (mayor && total > 0 && mayor.total / total >= 0.5) alertas.push(`${mayor.nombre} concentra el ${round((mayor.total / total) * 100)} % del saldo.`);
+  if (mayor && total > 0 && mayor.total / total >= 0.5) alertas.push(`${mayor.nombre} concentra el ${pctTxt((mayor.total / total) * 100)} % del saldo.`);
 
   const preguntas = tipo === 'cobrar'
     ? ['¿A qué cliente llamarías primero y qué le ofrecerías para que pague?', '¿Seguirías vendiéndole a crédito al cliente con más atraso? ¿Con qué condiciones?', '¿Qué cambiarías en la política de crédito para que esto no se repita?']
@@ -293,6 +296,103 @@ export function flujoCaja(state: CompanyState, desde: string, hasta: string): Fl
     '¿Qué pago podrías postergar y cuál nunca deberías atrasar? ¿Por qué?',
   ];
   return { desde, hasta, saldoInicial, entradas, salidas, saldoFinal, categorias: lista, porActividad, lectura, preguntas };
+}
+
+/* ───────────── Análisis de compras: a quién, qué y a qué precio compramos ───────────── */
+
+export interface CompraProveedor { cardCode: string; nombre: string; monto: number; participacion: number; documentos: number }
+export interface CompraArticulo { itemCode: string; descripcion: string; cantidad: number; monto: number; precioMin: number; precioMax: number; precioPromedio: number; dispersionPct: number }
+export interface AnalisisCompras { total: number; proveedores: CompraProveedor[]; articulos: CompraArticulo[]; pedidosAbiertos: number; recibidoSinFactura: number; lectura: string[]; preguntas: string[] }
+
+export function analisisCompras(state: CompanyState, desde: string, hasta: string): AnalisisCompras {
+  const facturas = state.purchaseOrders.filter(d => (d.docType === 'vendor_invoice' || d.docType === 'debit_note') && d.date >= desde && d.date <= hasta);
+  const total = round(facturas.reduce((s, d) => s + d.subtotal, 0));
+  const porProveedor = new Map<string, CompraProveedor>();
+  const porArticulo = new Map<string, { itemCode: string; descripcion: string; cantidad: number; monto: number; precios: number[] }>();
+  for (const d of facturas) {
+    const p = porProveedor.get(d.cardCode) ?? { cardCode: d.cardCode, nombre: d.cardName, monto: 0, participacion: 0, documentos: 0 };
+    p.monto = round(p.monto + d.subtotal); p.documentos += 1; porProveedor.set(d.cardCode, p);
+    if (d.docType !== 'vendor_invoice') continue;
+    for (const l of d.lines) {
+      const neto = round(l.quantity * l.price * (1 - l.discount / 100));
+      const a = porArticulo.get(l.itemCode) ?? { itemCode: l.itemCode, descripcion: l.description, cantidad: 0, monto: 0, precios: [] };
+      a.cantidad += l.quantity; a.monto = round(a.monto + neto); a.precios.push(round(neto / l.quantity));
+      porArticulo.set(l.itemCode, a);
+    }
+  }
+  const proveedores = [...porProveedor.values()].map(p => ({ ...p, participacion: total > 0 ? round((p.monto / total) * 100) : 0 })).sort((a, b) => b.monto - a.monto);
+  const articulos: CompraArticulo[] = [...porArticulo.values()].map(a => {
+    const min = Math.min(...a.precios); const max = Math.max(...a.precios); const prom = a.cantidad > 0 ? round(a.monto / a.cantidad) : 0;
+    return { itemCode: a.itemCode, descripcion: a.descripcion, cantidad: a.cantidad, monto: a.monto, precioMin: min, precioMax: max, precioPromedio: prom, dispersionPct: min > 0 ? round(((max - min) / min) * 100) : 0 };
+  }).sort((a, b) => b.monto - a.monto);
+  const pedidosAbiertos = round(state.purchaseOrders.filter(d => d.docType === 'purchase_order' && d.status === 'open').reduce((s, d) => s + d.subtotal, 0));
+  const recibidoSinFactura = round(state.purchaseOrders.filter(d => d.docType === 'goods_receipt' && d.status === 'open').reduce((s, d) => s + d.subtotal, 0));
+
+  const lectura: string[] = [];
+  if (proveedores[0] && proveedores[0].participacion >= 60) lectura.push(`Dependes de ${proveedores[0].nombre} para el ${pctTxt(proveedores[0].participacion)} % de tus compras: si falla, se detiene la operación.`);
+  const variable = articulos.find(a => a.dispersionPct >= 10);
+  if (variable) lectura.push(`El precio de ${variable.descripcion} varió ${pctTxt(variable.dispersionPct)} % entre compras: hay margen para negociar un precio fijo o comprar en otro momento.`);
+  if (recibidoSinFactura > 0) lectura.push(`Hay mercadería recibida sin factura por ${usd(recibidoSinFactura)}: es una deuda real aunque el proveedor no la haya facturado.`);
+  if (pedidosAbiertos > 0) lectura.push(`Tienes pedidos de compra abiertos por ${usd(pedidosAbiertos)}: compromisos de caja que llegarán pronto.`);
+
+  const preguntas = [
+    '¿Con qué proveedor negociarías primero y qué pedirías: precio, plazo de pago o descuento por volumen?',
+    'Si tu proveedor principal subiera precios 10 %, ¿cuánto bajaría tu margen bruto? ¿Lo trasladarías al cliente?',
+    '¿Conviene tener un segundo proveedor aunque sea un poco más caro? ¿Qué riesgo reduce?',
+  ];
+  return { total, proveedores, articulos, pedidosAbiertos, recibidoSinFactura, lectura, preguntas };
+}
+
+/* ───────────── Presupuesto vs. real ───────────── */
+
+export interface FilaPresupuesto {
+  accountCode: string; nombre: string; tipo: 'income' | 'cost' | 'expense';
+  presupuestoMeses: number[]; realMeses: number[];
+  presupuestoAcum: number; realAcum: number; desviacion: number; cumplimientoPct: number | null; favorable: boolean;
+}
+export interface PresupuestoVsReal { year: string; hastaMes: number; filas: FilaPresupuesto[]; utilidadPresupuestada: number; utilidadReal: number; lectura: string[]; preguntas: string[] }
+
+/** `hastaMes` (1-12): se compara el acumulado de enero a ese mes. */
+export function presupuestoVsReal(state: CompanyState, year: string, hastaMes: number): PresupuestoVsReal {
+  const categoria = new Map(state.chartOfAccounts.map(a => [a.code, a.category]));
+  const filas: FilaPresupuesto[] = state.budgets.filter(b => b.year === year).map(b => {
+    const tipo = categoria.get(b.accountCode) as FilaPresupuesto['tipo'];
+    const realMeses = Array.from({ length: 12 }, () => 0);
+    for (const e of state.journalEntries) {
+      if (!e.date.startsWith(year)) continue;
+      const mes = Number(e.date.slice(5, 7)) - 1;
+      for (const l of e.lines) if (l.accountCode === b.accountCode) realMeses[mes] += tipo === 'income' ? l.credit - l.debit : l.debit - l.credit;
+    }
+    const presupuestoAcum = round(b.months.slice(0, hastaMes).reduce((s, v) => s + v, 0));
+    const realAcum = round(realMeses.slice(0, hastaMes).reduce((s, v) => s + v, 0));
+    const desviacion = round(realAcum - presupuestoAcum);
+    // En ingresos, superar el presupuesto es bueno; en costos y gastos, es malo.
+    const favorable = tipo === 'income' ? desviacion >= 0 : desviacion <= 0;
+    return {
+      accountCode: b.accountCode, nombre: b.accountName, tipo, presupuestoMeses: b.months, realMeses: realMeses.map(round),
+      presupuestoAcum, realAcum, desviacion, cumplimientoPct: presupuestoAcum ? round((realAcum / presupuestoAcum) * 100) : null, favorable,
+    };
+  }).sort((a, b) => a.accountCode.localeCompare(b.accountCode));
+
+  const signo = (f: FilaPresupuesto) => (f.tipo === 'income' ? 1 : -1);
+  const utilidadPresupuestada = round(filas.reduce((s, f) => s + signo(f) * f.presupuestoAcum, 0));
+  const utilidadReal = round(filas.reduce((s, f) => s + signo(f) * f.realAcum, 0));
+
+  const lectura: string[] = [];
+  const peor = [...filas].filter(f => !f.favorable).sort((a, b) => Math.abs(b.desviacion) - Math.abs(a.desviacion))[0];
+  if (peor) lectura.push(`La mayor desviación desfavorable está en ${peor.nombre}: ${usd(Math.abs(peor.desviacion))} ${peor.tipo === 'income' ? 'por debajo' : 'por encima'} de lo presupuestado.`);
+  const ingresos = filas.filter(f => f.tipo === 'income');
+  if (ingresos.length && ingresos.every(f => f.favorable)) lectura.push('Los ingresos cumplen o superan el presupuesto.');
+  if (filas.length && utilidadReal < utilidadPresupuestada) lectura.push(`La utilidad real (${usd(utilidadReal)}) está por debajo de la presupuestada (${usd(utilidadPresupuestada)}).`);
+  if (filas.length && utilidadReal >= utilidadPresupuestada) lectura.push(`La utilidad real (${usd(utilidadReal)}) cumple la meta presupuestada (${usd(utilidadPresupuestada)}).`);
+  if (!filas.length) lectura.push('Todavía no hay presupuesto para este año. Empieza por las ventas, el costo de ventas y los gastos principales.');
+
+  const preguntas = [
+    'Cuando una cuenta se desvía, ¿fue un error del presupuesto o de la ejecución? ¿Cómo lo distinguirías?',
+    'Si las ventas están bajo el presupuesto, ¿qué gastos recortarías primero para proteger la utilidad y cuáles nunca?',
+    '¿Ajustarías el presupuesto de los meses restantes o mantendrías la meta? ¿Qué mensaje le da eso al equipo?',
+  ];
+  return { year, hastaMes, filas, utilidadPresupuestada, utilidadReal, lectura, preguntas };
 }
 
 /* ───────────── Comparativo con el período anterior de igual duración ───────────── */
