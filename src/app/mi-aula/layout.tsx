@@ -27,7 +27,20 @@ export default async function MiAulaLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getSessionUser();
-  if (!user) redirect('/login?next=/mi-aula');
-  return children;
+  try {
+    const user = await getSessionUser();
+    if (!user) redirect('/login?next=/mi-aula');
+    return <>{children}</>;
+  } catch (error) {
+    const errorMsg = error instanceof Error ? error.stack || error.message : String(error);
+    // Verificamos si es NEXT_REDIRECT para no atrapar el redireccionamiento!
+    if (errorMsg.includes('NEXT_REDIRECT')) throw error;
+    
+    return (
+      <div style={{ padding: '2rem', color: 'red', backgroundColor: '#fee' }}>
+        <h1>Error Crítico de Servidor (500)</h1>
+        <pre>{errorMsg}</pre>
+      </div>
+    );
+  }
 }
