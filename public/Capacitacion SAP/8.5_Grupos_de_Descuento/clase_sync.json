@@ -1,184 +1,184 @@
 [
   {
     "slide_index": 1,
-    "image_file": "085_Slide_01_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Pricing 32 DiscSP DiscGrp en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Determinación de precios: Grupos de descuento Le damos la bienvenida al tema sobre los grupos de descuento.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de grupos de descuento en SAP Business One 10.0. Aquí aprenderá cómo configurar y utilizar esta herramienta flexible para crear ofertas comerciales personalizadas según clientes, artículos o fabricantes. Este tema le permitirá diseñar promociones efectivas que se adapten a las necesidades de su empresa.",
     "start_time": 0.0,
-    "end_time": 21.17
+    "end_time": 21.74
   },
   {
     "slide_index": 2,
-    "image_file": "085_Slide_02_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "En este tema, aprenderá a determinar grupos de descuento para satisfacer sus necesidades en cuanto a la determinación de precios 2 Al finalizar este tema, podrá: Definir los grupos de descuento que necesite para determinar los precios Objetivos",
-    "start_time": 21.17,
-    "end_time": 36.86
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá definir los grupos de descuento que necesite para determinar los precios según sus requerimientos comerciales. Aprenderá a configurar estas herramientas para aplicar descuentos específicos a distintos tipos de interlocutores comerciales, artículos o fabricantes, mejorando la flexibilidad de su política de precios en SAP Business One.",
+    "start_time": 21.74,
+    "end_time": 44.74
   },
   {
     "slide_index": 3,
-    "image_file": "085_Slide_03_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Imagine que su compañía desea introducir algunos descuentos nuevos. Algunas de estas ofertas se basarán en grupos de clientes específicos, otras ofertas estarán disponibles para todos los interlocutores comerciales, pero en base a artículos o fabricantes específicos. Algunos clientes reunirán los requisitos para múltiples descuentos del mismo producto, pero otros recibirán solo uno de los descuentos. Una oferta será \"pague por 2, obtenga uno gratis\" por un rango de productos como teléfonos móviles, recargas de cartuchos de tinta y discos. Para crear estas ofertas de descuento, puede utilizar los grupos de descuento. 3 3 Escenario empresarial Su compañía desea introducir algunos descuentos nuevos. Algunas de estas ofertas se basarán en determinados grupos de clientes. Otras ofertas estarán disponibles para todos los interlocutores comerciales pero en base a artículos específicos o fabricantes. Algunos clientes reunirán los requisitos para múltiples descuentos del mismo producto, pero otros recibirán solo uno de los descuentos. Una oferta será \"pague 2, obtenga 1 gratis\" para un rango de productos. Para crear estas ofertas de descuento, utilizarán grupos de descuento.",
-    "start_time": 36.86,
-    "end_time": 114.5
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagine que su compañía quiere introducir nuevos descuentos: algunos aplicables a grupos específicos de clientes, otros disponibles para todos pero vinculados a artículos o fabricantes ciertos. Algunos clientes podrían calificar para múltiples descuentos en el mismo producto, mientras otros recibirían solo uno. También podría crear una oferta 'pague 2, obtenga 1 gratis' en productos como teléfonos o cartuchos. Los grupos de descuento le permiten diseñar todas estas promociones de forma estructurada en SAP.",
+    "start_time": 44.74,
+    "end_time": 78.43
   },
   {
     "slide_index": 4,
-    "image_file": "085_Slide_04_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Los grupos de descuento son el tipo de determinación de precios más flexible. Puede asignar un grupo de descuento a un interlocutor comercial específico, un grupo de interlocutores comerciales o hasta todos los interlocutores comerciales. Los descuentos se definen para los artículos específicos o grupos de artículos, una combinación de propiedades del artículo o un fabricante de artículo. Se pueden definir múltiples descuentos dentro del grupo de descuento. Por ejemplo, dentro del mismo grupo de descuento puede tener un descuento en un grupo de artículos, así como también un descuento para un fabricante específico. Los descuentos se pueden fijar en un porcentaje o se calculan por cantidad comprada. Observemos las diferentes combinaciones de descuentos que puede crear usando grupos de descuento. 4 Base del descuento Los grupos de descuento pueden asignarse a: Interlocutores comerciales específicos Grupos interlocutores comerciales Todos los interlocutores comerciales Los grupos de descuento pueden basarse en: Artículos específicos Grupos de artículos Propiedades del artículo Fabricantes de artículos % Grupos de descuento",
-    "start_time": 114.5,
-    "end_time": 184.06
+    "image_file": "Slide_004.webp",
+    "script_text": "Los grupos de descuento son el tipo más flexible de determinación de precios en SAP Business One. Puede asignarlos a un interlocutor comercial específico, a un grupo de ellos o a todos. Los descuentos se definen por artículos específicos, grupos de artículos, propiedades del artículo o fabricantes. Dentro de un mismo grupo, puede combinar distintos tipos de descuentos, como un porcentaje en una línea de productos y otro por fabricante, ya sea por porcentaje o por cantidad comprada.",
+    "start_time": 78.43,
+    "end_time": 110.71
   },
   {
     "slide_index": 5,
-    "image_file": "085_Slide_05_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "El primer paso para crear un grupo de descuento es pensar los tipos de descuentos que serían adecuados para uno o más interlocutores comerciales y agruparlos dentro del grupo de descuento. Por ejemplo, es posible que desee otorgar 5% de descuento en impresoras a los clientes minoristas y una oferta de 1 caja gratis de papel reciclado cuando compran 2 cajas. Un conjunto de descuentos diferente puede aplicarse al grupo de clientes para los grandes clientes. Para ellos, puede ofrecer 2% de descuento en productos del fabricante Rainbow y 3% de descuento en artículos que tienen la propiedad de artículo de productos comerciales. Una vez que conoce el tipo de descuentos que desea agrupar, el primer paso para crear el grupo de descuento es seleccionar los interlocutores comerciales a los que los descuentos se aplicarán. 5 Crear grupos de descuento 5% de descuento en el grupo de artículos para impresoras 1 caja gratis de papel reciclado al comprar dos cajas 2% de descuento en productos fabricados por Rainbow 3% de descuento en artículos con la propiedad de artículo de productos comerciales Clientes minoristas Grandes clientes",
-    "start_time": 184.06,
-    "end_time": 254.59
+    "image_file": "Slide_005.webp",
+    "script_text": "El primer paso para crear un grupo de descuento es pensar qué tipos de descuentos serían adecuados para uno o más interlocutores comerciales y agruparlos lógicamente. Por ejemplo, podría ofrecer 5% de descuento en impresoras a clientes minoristas y una caja gratis de papel al comprar dos. Para grandes clientes, podría aplicar 2% en productos Rainbow y 3% en artículos con propiedad 'productos comerciales'. Una vez definido el conjunto, selecciona a quiénes se aplicará el grupo.",
+    "start_time": 110.71,
+    "end_time": 143.69
   },
   {
     "slide_index": 6,
-    "image_file": "085_Slide_06_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Los grupos de descuento se pueden asignar no solo a interlocutores comerciales específicos, sino a grupos de interlocutores específicos (como los grupos de proveedores o clientes) o hasta asignarse a todos los interlocutores comerciales. Ya que puede asignar un descuento por grupos y para todos los interlocutores comerciales, SAP brinda la opción de excluir interlocutores comerciales específicos de los grupos de descuento. Volveremos a este tema más adelante. Ahora observaremos los tipos de descuentos específicos que están disponibles en todos los grupos de descuento y cómo se aplican. 6 Asignación de grupos de descuento Opciones de selección para quien reciba los descuentos. Asignar a: IC específico Grupo de clientes Grupo de acreedores Todos los IC",
-    "start_time": 254.59,
-    "end_time": 303.02
+    "image_file": "Slide_006.webp",
+    "script_text": "En SAP Business One, los grupos de descuento se pueden asignar no solo a interlocutores comerciales específicos, sino también a grupos como clientes o proveedores, o incluso a todos. Además, existe la opción de excluir ciertos interlocutores si es necesario. Esta flexibilidad permite aplicar promociones de forma segmentada. Por ejemplo, puede crear un grupo llamado 'DESC-MINORISTA', asignarlo al grupo de clientes 'CLIENTES-MINORISTAS' y activarlo para todo el año 2026, gestionándolo desde la ventana de mantenimiento de grupos de descuento.",
+    "start_time": 143.69,
+    "end_time": 181.18
   },
   {
     "slide_index": 7,
-    "image_file": "085_Slide_07_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Hay cuatro fichas en todos los grupos de descuento para definir descuentos: Grupos de artículos, propiedades, fabricantes y artículos. Primero observaremos los grupos de artículos. La ficha grupo de artículos muestra todos los grupos de artículos definidos para la empresa. Registre el descuento que desee en la línea para cada grupo de artículos. Las parametrizaciones de formulario establecidas solo muestran la opción para los descuentos de porcentaje, sin embargo, puede añadir los campos para otorgar artículos gratis en base a la cantidad comprada en la ventana Parametrizaciones de formulario. Una vez que estableció un descuento en base a un grupo de artículos, todos los artículos que pertenecen a ese grupo de artículos se incluyen automáticamente en el descuento. Esto significa que cuando un nuevo registro maestro de artículos se asigna a un grupo de artículos, este automáticamente se añadirá a cualquier grupo de descuento que esté basado en ese grupo de artículos. 7 Grupos de descuento para grupos de artículos Ficha para descuentos de grupo de artículos Todos los grupos de artículos definidos para la empresa Establecer importe de descuento para grupos de artículos",
-    "start_time": 303.02,
-    "end_time": 374.64
+    "image_file": "Slide_007.webp",
+    "script_text": "En esta ficha define descuentos por grupo de artículos. Cada línea representa un grupo de artículos existente en su empresa, como Impresoras o Cartuchos. Ingrese el porcentaje de descuento que desea aplicar. Una vez configurado, cualquier artículo asignado a ese grupo hereda automáticamente el descuento. Esto incluye nuevos maestros de artículos: si asigna un artículo al grupo 'Impresoras', recibirá el 10% de descuento sin configuración adicional. Ideal para aplicar promociones amplias de forma eficiente.",
+    "start_time": 181.18,
+    "end_time": 216.7
   },
   {
     "slide_index": 8,
-    "image_file": "085_Slide_08_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Otra opción es utilizar propiedades de artículo como una forma de indicar qué artículos deben tener un descuento. Una excelente función de los grupos de descuento a nivel de propiedades de artículo es que SAP Business One le permite definir un descuento para varias propiedades a la vez. Además, puede utilizar una regla para decidir el descuento que debe utilizar el sistema para efectuar el cálculo: Descuento más alto: la propiedad con el descuento superior determinará el descuento general calculado para el artículo. Descuento más bajo: la propiedad con el descuento inferior determinará el descuento general calculado para el artículo. El descuento medio: el sistema calcula la media de todos los descuentos de las propiedades. La media resultante se utiliza como valor de descuento. Descuento total: el sistema suma todos los descuentos de las propiedades aplicables al artículo. El total resultante (hasta un máximo de 100%) se utiliza como valor de descuento. Descuentos múltiples: El sistema multiplica los descuentos de las propiedades que se aplican al artículo. 8 Grupos de descuento por propiedades Establezca una regla para: El más alto El más bajo Promedio Total de todos los descuentos Multiplicación de descuentos Seleccionar una regla para calcular el descuento Ficha para propiedades de artículo",
-    "start_time": 374.64,
-    "end_time": 456.36
+    "image_file": "Slide_008.webp",
+    "script_text": "Las propiedades de artículo permiten aplicar descuentos según múltiples atributos. Puede elegir una regla para determinar el descuento final: el más alto aplica solo el valor máximo entre las propiedades; el más bajo toma el mínimo; el promedio calcula la media aritmética; el total suma todos los descuentos (hasta 100%); y el múltiplo los multiplica entre sí. Esta flexibilidad permite adaptar la política comercial a estrategias complejas, como premiar combinaciones de características o evitar sobre-descuentos.",
+    "start_time": 216.7,
+    "end_time": 250.13
   },
   {
     "slide_index": 9,
-    "image_file": "085_Slide_09_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Otra forma de definir un grupo de descuento es por fabricante. Por ejemplo, imagine que vende impresoras y accesorios Rainbow. El fabricante, Rainbow, le ofrece un precio menor como distribuidor para todos sus productos. Le gustaría compartir este ahorro ofreciendo un descuento del 2% en todos los productos Rainbow a los clientes grandes. Puede fijar un grupo de descuentos para el grupo de clientes de grandes cuentas que incluya un 2% de descuento para todos los productos fabricados por Rainbow. 9 Grupos de descuento por fabricantes Defina un descuento para los productos de un fabricante concreto Ficha de los fabricantes Puede añadir nuevos fabricantes a la lista.",
-    "start_time": 456.36,
-    "end_time": 499.18
+    "image_file": "Slide_009.webp",
+    "script_text": "Esta ficha le permite aplicar un descuento uniforme a todos los artículos de un fabricante específico. Por ejemplo, si Rainbow le ofrece un mejor precio como distribuidor, puede trasladar ese beneficio a sus clientes grandes mediante un 2% de descuento en todos sus productos. Simplemente seleccione el fabricante 'Rainbow', establezca el 2% y asocie el grupo de descuento a clientes de grandes cuentas. Todos los artículos fabricados por Rainbow heredarán ese descuento automáticamente.",
+    "start_time": 250.13,
+    "end_time": 282.31
   },
   {
     "slide_index": 10,
-    "image_file": "085_Slide_10_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "La cuarta ficha es la ficha Artículos. Aquí puede enumerar artículos individuales que desee descontar. A diferencia de otras fichas, la lista está vacía hasta que añada los artículos que desea descontar. Esto funciona si piensa en las grandes cantidades de artículos que una empresa puede tener. Aquí vemos un grupo de descuento definido para los colegios, para promocionar la venta de papel de copia. 10 Grupos de descuento por artículos Ficha para definir descuentos por código de artículo Añadir artículos a la tabla",
-    "start_time": 499.18,
-    "end_time": 533.45
+    "image_file": "Slide_010.webp",
+    "script_text": "La ficha Artículos le permite seleccionar artículos individuales para descuento, ideal para promociones puntuales. A diferencia de otras fichas, comienza vacía y solo se llenan los artículos que elija. Por ejemplo, para una campaña dirigida a colegios, puede agregar códigos como 'COPIA-A4' con 12% de descuento y 'TONER-NEGRO' con 8%. Esto ofrece control preciso sobre qué productos se promocionan, sin afectar a otros del mismo grupo o fabricante.",
+    "start_time": 282.31,
+    "end_time": 314.93
   },
   {
     "slide_index": 11,
-    "image_file": "085_Slide_11_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Las compañías con frecuencia deben ofrecer precios de incentivo con productos gratuitos. Los descuentos se pueden basar en función de la cantidad comprada. Los descuentos de productos gratuitos pueden fijarse en las cuatro fichas. Existen 3 campos para establecer un descuento variable conforme a la cantidad comprada. Los campos se ocultan hasta que los selecciona en Parametrizaciones de formulario y luego amplíe la ventana o desplácese para ver los campos adicionales. 11 Artículos gratis Descuento conforme a la cantidad comprada Los descuentos de productos gratis pueden definirse en las 4 fichas",
-    "start_time": 533.45,
-    "end_time": 571.25
+    "image_file": "Slide_011.webp",
+    "script_text": "Los descuentos por cantidad comprada, como 'compre 2 y lleve 1 gratis', se configuran en cualquiera de las cuatro fichas de grupos de descuento: artículos, grupos de artículos, propiedades o fabricantes. Estos descuentos variables se activan mediante la parametrización de formulario, donde se revelan campos adicionales para definir la cantidad pagada, la gratuita y un límite opcional. Esta funcionalidad incentiva compras mayores y es aplicable uniformemente sin importar la base de agrupación del descuento.",
+    "start_time": 314.93,
+    "end_time": 347.76
   },
   {
     "slide_index": 12,
-    "image_file": "085_Slide_12_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Para fijar un descuento variable conforme a la cantidad comprada: Especifique la cantidad pagada en la primera columna. Esta es la cantidad que un cliente abonará o que usted compraría de un proveedor. En este ejemplo, la cantidad abonada es 2. La segunda columna especifica la cantidad que se otorga de forma gratuita cuando la cantidad de pago se compra. En este ejemplo, el cliente recibe 1 artículo gratis por cada dos comprados. El último campo es opcional, pero especifica un límite para los artículos gratis. En el ejemplo, está definido en 4. El cliente recibirá hasta 4 artículos gratis con 8 artículos pagados. Si hay más de 8 artículos pagados, el cliente solo recibe 4. Observe que los artículos comprados y los artículos gratuitos deben tener el mismo código de artículo. La funcionalidad no cubre la compra de artículos con un artículo diferente como el artículo gratuito. 12 Artículos gratis Compre 3 cartuchos, obtenga 1 gratis. 4 cartuchos gratuitos como máximo.",
-    "start_time": 571.25,
-    "end_time": 640.78
+    "image_file": "Slide_012.webp",
+    "script_text": "Para configurar un descuento por cantidad comprada, indique cuántas unidades el cliente paga y cuántas recibe gratis. En este ejemplo, por cada 2 artículos pagados, se otorga 1 gratis, hasta un máximo de 4 artículos gratuitos. Esto significa que con 8 pagados, el cliente recibe 4 gratis; pero si compra 9 o más, sigue recibiendo solo 4 gratis debido al límite. Ambos artículos, el pagado y el gratuito, deben compartir el mismo código de artículo. Esta regla se aplica en cualquiera de las cuatro fichas una vez activada en parametrizaciones de formulario.",
+    "start_time": 347.76,
+    "end_time": 387.1
   },
   {
     "slide_index": 13,
-    "image_file": "085_Slide_13_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Exploremos cómo se calcula realmente el descuento. En el ejemplo mostrado, el grupo de descuento se establece de la siguiente forma: La cantidad abonada se fija en 2 La cantidad gratuita se fija en 1 El número máximo de artículos gratuitos es 4. Si el cliente compra 2, no se aplicará el descuento. Si el cliente compra 3, el descuento se aplicará otorgando un descuento del 33,33% del precio regular. En otras palabras, si el cliente compra 3 obtiene 1 de los 3 gratis. Si el cliente compra 4, solo obtienen un descuento en base a 3 comprados, por lo tanto, el porcentaje de descuento se reduce de un tercio a un cuarto. Si el cliente compra 6 artículos, el descuento es del 33,33%. el cliente abona por 4 artículos y obtiene 2 gratis. El cliente básicamente obtiene 1 gratis con cada 3 artículos comprados, con un límite máximo de 4 artículos gratis. Por lo tanto, si el cliente compra 12 artículos (4 3 artículos), obtendrá el número máximo de productos gratuitos. 13 Cálculo de descuento de productos gratuitos Cantidad comprada % de descuento Total (ML) Comentarios 2 0 Precio unitario 2 Sin descuento 3 33,33 Precio unitario 2 Pague 2 y obtenga 1 gratis 4 25 Precio unitario 3 Pague 3 y obtenga 1 gratis 5 20 Precio unitario 4 Pague 4 y obtenga 1 gratis 6 33,33 Precio unitario 4 Pague 4 y obtenga 2 gratis 12 33,33 Precio unitario 8 Pague 8 y obtenga 4 gratis 15 26,67 Precio unitario 11 Pague 11 y obtenga 4 gratis Artículo N.º Cantidad pagada Cantidad gratuita Cantidad gratuita máxima I00031 2 1",
-    "start_time": 640.78,
-    "end_time": 759.12
+    "image_file": "Slide_013.webp",
+    "script_text": "En este ejemplo vemos cómo se calcula el descuento basado en la cantidad comprada usando un grupo de descuento con cantidad abonada de 2, cantidad gratuita de 1 y máximo de 4 artículos gratuitos. Al comprar 3 artículos, se aplica un 33,33% de descuento porque se paga por 2 y se obtiene 1 gratis. Al comprar 4, el descuento baja al 25% porque solo se aplica el beneficio a 3 de los 4. Al llegar a 12 artículos (4 ciclos de 3), se alcanza el máximo de 4 gratuitos. El sistema aplica el descuento proporcionalmente según la regla definida.",
+    "start_time": 387.1,
+    "end_time": 426.98
   },
   {
     "slide_index": 14,
-    "image_file": "085_Slide_14_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Podemos ver el efecto del descuento de cantidad múltiple en un pedido de cliente. Cuando la cantidad de artículos se registra en la línea, el sistema automáticamente registra el porcentaje de descuento calculado en la línea. Cuando la cantidad de artículos registrada es 3, el sistema automáticamente registra automáticamente un descuento de 33,33% en el campo Descuento en la línea del pedido de cliente. Si el cliente devuelve uno de los artículos, el cliente recibirá un reembolso en base al precio de compra descontado. En este ejemplo, el cliente recibirá un tercio del precio total abonado por los tres artículos. 14 Productos gratuitos en el pedido de cliente Si se devuelve el artículo, el cliente recibirá el reembolso en base al precio descontado. Cuando la cantidad introducida es 3… El descuento se aplica automáticamente en base a la cantidad comprada",
-    "start_time": 759.12,
-    "end_time": 816.62
+    "image_file": "Slide_014.webp",
+    "script_text": "Al registrar una línea en un pedido de cliente con cantidad 3, el sistema aplica automáticamente el 33,33% de descuento definido en el grupo de descuento. El total de la línea se calcula como precio unitario veces 2, reflejando 'pague 2, obtenga 1 gratis'. Si el cliente devuelve un artículo, el reembolso se basa en el precio neto pagado, es decir, un tercio del total original. Esto asegura coherencia en devoluciones y mantiene la lógica del descuento por cantidad.",
+    "start_time": 426.98,
+    "end_time": 460.78
   },
   {
     "slide_index": 15,
-    "image_file": "085_Slide_15_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Para cada línea, defina el descuento por un porcentaje de descuento fijo o un descuento variable conforme a la cantidad comprada. En otras palabras, los dos tipos de descuento son mutuamente exclusivos. En el ejemplo vemos que las columnas de los productos gratuitos están desactivadas en la primera línea en la que aparece el porcentaje de descuento fijo. En las otras dos líneas, vemos que la columna de porcentaje de descuento está desactivada porque hemos definido el descuento conforme a la cantidad comprada de dichos artículos. 15 Productos gratuitos o porcentaje Descuento por porcentaje Descuento conforme a la cantidad comprada Descuentos exclusivos mutuamente: Descuento fijo por porcentaje Descuento variable conforme a la cantidad comprada",
-    "start_time": 816.62,
-    "end_time": 862.87
+    "image_file": "Slide_015.webp",
+    "script_text": "En SAP Business One, los dos tipos de descuento en líneas de documento son mutuamente exclusivos: se puede aplicar un descuento fijo por porcentaje o un descuento variable basado en la cantidad comprada, pero no ambos simultáneamente. Cuando se activa uno, el sistema desactiva automáticamente los campos del otro. Esto evita conflictos y asegura que solo una regla de descuento se aplique por línea, como se muestra en el ejemplo donde una línea tiene porcentaje fijo y las otras usan descuento por cantidad.",
+    "start_time": 460.78,
+    "end_time": 492.46
   },
   {
     "slide_index": 16,
-    "image_file": "085_Slide_16_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Cuando el sistema busca un precio, busca el tipo de precio más específico primero. Primero, el sistema busca un precio en un acuerdo global válido. Si no se encuentra ninguno, el sistema verifica precios especiales para interlocutores comerciales. Si no existe uno, entonces el sistema busca los grupos de descuento. El sistema buscará grupos de descuento que se apliquen a este interlocutor comercial, los grupos de interlocutores comerciales asociados con esos interlocutores comerciales o un grupo de descuentos que se aplique a todos los interlocutores comerciales. Una vez que se encuentran los grupos de descuento, el sistema aplica el descuento(s) y, a continuación, busca un precio en los descuentos por período y cantidad o en la lista de precios para que se apliquen los descuentos. Existen algunos factores que controlan si un grupo de descuento se encontrará cuando se crea un documento de marketing. 16 Determinación de precios ¿Existe un precio de acuerdo global o precio especial para el interlocutor comercial en este documento de marketing? ¿No? Entonces revise los grupos de descuento que se aplican a: Este interlocutor comercial El grupo de interlocutores comerciales del interlocutor comercial, o Todos los interlocutores comerciales Si se encuentra un grupo de descuentos, el sistema aplica el descuento(s) y continúa buscando un precio en la lista de descuentos por período y cantidad o en los registros de lista de precios. Precios especiales para los IC Grupos de descuento Descuentos por período y cantidad Listas de precios Acuerdos globales",
-    "start_time": 862.87,
-    "end_time": 959.74
+    "image_file": "Slide_016.webp",
+    "script_text": "El sistema sigue una jerarquía estricta al determinar el precio: primero busca acuerdos globales válidos, luego precios especiales para el interlocutor comercial, después grupos de descuento que apliquen al cliente, su grupo o todos los clientes. Solo después de aplicar los descuentos encontrados, continúa con descuentos por período y cantidad y finalmente la lista de precios. Este orden garantiza que se aplique siempre la regla más específica y beneficiosa según la configuración.",
+    "start_time": 492.46,
+    "end_time": 523.1
   },
   {
     "slide_index": 17,
-    "image_file": "085_Slide_17_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Cuando el sistema busca un precio, busca el tipo de precio más específico primero. Primero, el sistema busca los acuerdos globales aplicables o precios especiales para los interlocutores comerciales. Si no existe uno, entonces el sistema busca los grupos de descuento. El sistema buscará grupos de descuento que se apliquen a este interlocutor comercial, los grupos de interlocutores comerciales asociados con esos interlocutores comerciales o un grupo de descuentos que se aplique a todos los interlocutores comerciales. 17 Artículo Precio p un. Descuento Documento 5% ??? Determinación de precios y grupos de descuento Artículo Precio p un. Descuento Documento ??? ??? 3. ¿Existe un grupo de descuento? 2. ¿Existe un precio especial para los IC? 1. ¿Existe un acuerdo global específico válido para el artículo? 4. Lista de precios 3. ¿Existen descuentos por período y cantidad en la lista de precios? NO NO SÍ",
-    "start_time": 959.74,
-    "end_time": 1025.5
+    "image_file": "Slide_017.webp",
+    "script_text": "Este diagrama muestra la secuencia lógica que sigue SAP Business One para determinar el precio de un artículo en un documento de marketing. Primero verifica si existe un acuerdo global específico y válido. Si no, busca un precio especial para el interlocutor comercial. Si tampoco existe, consulta los grupos de descuento que apliquen al cliente, su grupo o todos los clientes. Tras aplicar esos descuentos, continúa con descuentos por período y cantidad en la lista de precios, y finalmente usa el precio base de la lista de precios asignada.",
+    "start_time": 523.1,
+    "end_time": 559.03
   },
   {
     "slide_index": 18,
-    "image_file": "085_Slide_18_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Un grupo de descuentos contiene descuentos, pero no incluye ningún precio. Si se encuentra un grupo de descuentos, se introducirá el descuento o descuentos aplicados. El sistema continuará buscando un precio en la lista de precios asignada al cliente. 18 Artículo Precio p un. Descuento Documento 5% 199 Artículo Precio p un. Descuento Documento 5% ??? Determinación de precios y grupos de descuento Artículo Precio p un. Descuento Documento ??? ??? 3. ¿Existe un grupo de descuento? 2. ¿Existe un precio especial para los IC? 1. ¿Existe un acuerdo global específico válido para el artículo? 4. Lista de precios 3. ¿Existen descuentos por período y cantidad en la lista de precios? NO NO SÍ Búsqueda del precio por unidad continúa",
-    "start_time": 1025.5,
-    "end_time": 1082.33
+    "image_file": "Slide_018.webp",
+    "script_text": "Un grupo de descuento solo contiene reglas de descuento, no precios. Cuando el sistema encuentra un grupo de descuento aplicable (como el 5% en este ejemplo), aplica ese descuento y luego continúa buscando el precio neto en la lista de precios asignada al cliente. En este caso, el precio unitario de 199,00 se obtiene de la lista de precios, y luego se le aplica el 5% de descuento del grupo. Esto separa claramente la lógica de descuento de la de precios base.",
+    "start_time": 559.03,
+    "end_time": 591.12
   },
   {
     "slide_index": 19,
-    "image_file": "085_Slide_19_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Existen algunos factores que controlan si un grupo de descuento se encontrará cuando se crea un documento de marketing. Uno de los factores que controla si un grupo de descuento se aplica a un documento es la parametrización de validez. Como todos los precios, tiene la opción de marcar un grupo de descuento como inactivo o fijar un rango de fechas de validez para un grupo de descuento. Puede marcar el grupo de descuento como activo o inactivo. Los grupos de descuento están activos de forma predeterminada. Si un rango de fecha se fija para un grupo de descuento activo, el descuento se aplicará a un documento de marketing si la fecha de contabilización del documento se encuentra en el rango de fecha activo. 19 Parametrizaciones de validez Puede establecer que los grupos de descuento estén activos o inactivos, con un rango de fecha opcional.",
-    "start_time": 1082.33,
-    "end_time": 1134.12
+    "image_file": "Slide_019.webp",
+    "script_text": "Los grupos de descuento pueden activarse o desactivarse manualmente, y además se pueden limitar por un rango de fechas de validez. Por defecto, están activos al crearse. Si se define un rango de fechas, el descuento solo se aplicará en un documento de marketing cuando la fecha de contabilización del documento esté dentro de ese período activo. Esto permite controlar cuándo y bajo qué condiciones se aplican los descuentos, evitando su uso fuera de campañas o promociones definidas.",
+    "start_time": 591.12,
+    "end_time": 621.86
   },
   {
     "slide_index": 20,
-    "image_file": "085_Slide_20_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Otro factor para aplicar un grupo de descuento en un documento de marketing puede ser que un interlocutor comercial o artículo se excluya de los grupos de descuento. Aunque defina que un grupo de descuento se aplique a todos los interlocutores comerciales, tiene la opción de excluir un interlocutor comercial de todos los grupos de descuento. Tal vez, este cliente posee contratos muy específicos o tal vez elige no aplicar ningún grupo de descuento para los nuevos clientes hasta que hayan comprado una determinada cantidad. De forma similar, tiene la opción de excluir un artículo de todos los grupos de descuento, aunque ese artículo normalmente se incluiría en un descuento en base al grupo de artículos, propiedades del artículo o fabricante. Tal vez, es un artículo de temporada que nunca tiene descuento durante las ventas de temporada alta. En cualquiera de estos casos, usted elige excluir el interlocutor comercial o el artículo en el registro de datos maestros. 20 Exclusión de IC o artículos",
-    "start_time": 1134.12,
-    "end_time": 1196.66
+    "image_file": "Slide_020.webp",
+    "script_text": "Aunque un grupo de descuento esté configurado para aplicarse a todos, es posible excluir específicos interlocutores comerciales o artículos de su aplicación. Esto es útil cuando un cliente tiene condiciones especiales o cuando un artículo, por ser estacional o de alto margen, no debe recibir descuentos automáticos. La exclusión se define directamente en el registro de datos maestros del interlocutor comercial o del artículo, permitiendo un control preciso sobre quién o qué recibe el descuento.",
+    "start_time": 621.86,
+    "end_time": 652.78
   },
   {
     "slide_index": 21,
-    "image_file": "085_Slide_21_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "La casilla de verificación se localiza en la ficha Condiciones de pago del registro de datos maestros del interlocutor comercial. La casilla de verificación está desmarcada de forma predeterminada. Si selecciona la casilla de verificación No aplicar grupos de descuento, todos los grupos de descuento que normalmente se aplicarían se ignoran en los documentos de marketing para este interlocutor comercial. Esta casilla de verificación afecta solo a grupos de descuento no a otros precios especiales. Aunque la casilla de verificación esté marcada para un interlocutor comercial, aún puede definir un descuento manualmente en el área de cabecera o en la línea de un documento. Esta configuración no afecta a los descuentos que se copian de los documentos base. Al copiar un documento a un documento destino, los descuentos del documento base se copian al documento destino independientemente de lo que se define en la casilla de verificación No aplicar grupos de descuento. Por ejemplo, podría existir un pedido de cliente creado antes de que la casilla de verificación se marque para un interlocutor comercial. 21 Exclusión de IC Si se selecciona, todos los grupos de descuento que se aplicarían se ignoran en los documentos. La casilla de verificación afecta solo a grupos de descuento no a otros precios especiales. Aún puede establecer descuentos manualmente en los documentos. No afecta a los descuentos que se copian de los documentos base La casilla de verificación No aplicar grupos de descuento está ubicada en la ficha Condiciones de pago.",
-    "start_time": 1196.66,
-    "end_time": 1290.55
+    "image_file": "Slide_021.webp",
+    "script_text": "En la ficha Condiciones de pago del registro de datos maestros del interlocutor comercial se encuentra la casilla 'No aplicar grupos de descuento'. Al marcarla, se ignora cualquier grupo de descuento que normalmente se aplicaría en documentos de marketing para ese cliente. Esta configuración solo afecta a los grupos de descuento, no a otros precios especiales. Además, permite aplicar descuentos manualmente en el documento y no afecta a los descuentos copiados de documentos base, como pedidos previos.",
+    "start_time": 652.78,
+    "end_time": 685.27
   },
   {
     "slide_index": 22,
-    "image_file": "085_Slide_22_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "La misma casilla de verificación aparece en los datos maestros del artículo para excluir un artículo específico de los grupos de descuento. Esto podría ser útil para un artículo de temporada que no desea descontar durante la temporada alta. Como con la parametrización de los interlocutores comerciales, aún puede aplicar descuentos manualmente en el artículo en los documentos de marketing. Los descuentos de un documento base se copian al documento destino, aunque la casilla de verificación No aplicar grupos de descuento esté marcada. 22 Excluir artículo de grupos de descuento La misma c. de verificación en el reg. maestro de Art. Aún puede aplicar los descuentos en documentos manualmente. Los descuentos se copian a los documentos destino, aunque la casilla de verificación esté marcada.",
-    "start_time": 1290.55,
-    "end_time": 1340.11
+    "image_file": "Slide_022.webp",
+    "script_text": "La misma casilla 'No aplicar grupos de descuento' está disponible en los datos maestros del artículo. Al activarla, se excluye ese artículo específico de cualquier grupo de descuento, incluso si pertenece a un grupo de artículos o fabricante que normalmente tendría descuento. Esto es útil para artículos estacionales o de promoción limitada. Aunque esté excluido, aún se pueden aplicar descuentos manualmente en el documento, y los descuentos de documentos base (como cotizaciones) se siguen copiando al documento destino, independientemente de esta configuración.",
+    "start_time": 685.27,
+    "end_time": 722.38
   },
   {
     "slide_index": 23,
-    "image_file": "085_Slide_23_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Luego de que el sistema eliminó un precio especial para el interlocutor comercial y artículo en una línea del documento de ventas, el sistema busca un grupo de descuento. Sin embargo, ya que los grupos de descuento se pueden aplicar a un interlocutor comercial, un grupo de interlocutores comerciales y a todos los interlocutores comerciales con solapamiento de períodos de validez, el sistema puede buscar más de un grupo de descuento. De hecho, hasta dentro de un grupo de descuento, se pueden aplicar múltiples descuentos, por ejemplo si un grupo de descuento contiene un 3% en un grupo de artículos que contiene artículos que también reúnen los requisitos para un 5% de descuento por fabricante. En todos estos casos, el sistema debe determinar cómo aplicar los múltiples descuentos encontrados. La forma de gestionar el problema de múltiples descuentos es fijar una regla para la determinación del descuento efectivo. 23 Múltiples descuentos Documento Artículo ??? Descuento NO ¿Existe un descuento del grupo de descuento? ¿Existe un precio especial específico de artículo e IC? SÍ Ya que los grupos de descuento se pueden aplicar a: Un interlocutor comercial específico Un grupo de interlocutores comerciales Todos los interlocutores comerciales Más de un grupo de descuento puede aplicar a..",
-    "start_time": 1340.11,
-    "end_time": 1420.8
+    "image_file": "Slide_023.webp",
+    "script_text": "Cuando se elimina un precio específico para un interlocutor comercial y artículo en una línea de documento de ventas, el sistema busca automáticamente un grupo de descuento aplicable. Debido a que los grupos pueden aplicarse a nivel individual, de grupo o global, y pueden solaparse en periodos de validez, es posible que se encuentren múltiples grupos. Además, dentro de un mismo grupo pueden existir varios descuentos (por artículo y por fabricante, por ejemplo). En estos casos, el sistema requiere una regla definida para determinar cuál será el descuento efectivo aplicado.",
+    "start_time": 722.38,
+    "end_time": 759.31
   },
   {
     "slide_index": 24,
-    "image_file": "085_Slide_24_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Puede establecer la regla para el descuento efectivo para un interlocutor comercial o para un grupo de interlocutores comerciales Puede seleccionar una de cinco parametrizaciones para el descuento efectivo: el más bajo, el más alto, promedio, total, multiplicado: El descuento más bajo: Se establece el descuento más bajo disponible (Este es el predeterminado). El descuento más alto: Se establece el descuento más alto. Promedio: Se establece el promedio de todos los descuentos disponibles. Total: Se establece la suma de todos los descuentos disponibles. Multiplicado: El sistema multiplica todos los descuentos disponibles y utiliza el resultado como el descuento. Cuando crea un nuevo registro de interlocutores comerciales, el sistema le preguntará si desea traer el descuento efectivo del grupo de interlocutores comerciales. Si responde \"no\", el nuevo interlocutor comercial se establecerá en el descuento efectivo más bajo. Puede modificar esto en cualquier momento en los datos maestros de interlocutores comerciales. Nota: El descuento efectivo se desactiva si marca la casilla de verificación No aplicar grupos de descuento. También puede modificar el descuento efectivo en las ventanas de configuración del grupo de interlocutores comerciales. Si selecciona un nuevo valor de descuento efectivo, se le pregunta si se actualizan todos los registros de interlocutores comerciales existentes para el grupo. 24 Regla de descuento efectivo Descuento efectivo: El más bajo (predeterminado) El más alto Promedio Total Multiplicado",
-    "start_time": 1420.8,
-    "end_time": 1519.15
+    "image_file": "Slide_024.webp",
+    "script_text": "Se pueden definir cinco reglas para calcular el descuento efectivo cuando aplican múltiples grupos: el más bajo (predeterminado), el más alto, el promedio, la suma total o el producto multiplicado. Al crear un nuevo interlocutor comercial, el sistema propone heredar la regla del grupo, pero se puede cambiar a 'no' para aplicar el más bajo por defecto. Esta regla se configura en los datos maestros del interlocutor comercial o del grupo, y al modificarla se puede aplicar a todos los miembros existentes. Importante: si se marca 'No aplicar grupos de descuento', la regla de descuento efectivo se desactiva.",
+    "start_time": 759.31,
+    "end_time": 799.3
   },
   {
     "slide_index": 25,
-    "image_file": "085_Slide_25_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Una gran ventaja al usar los grupos de descuento es cuando crea nuevos artículos, cualquier grupo de descuento que se aplica se incluye automáticamente. Por ejemplo, digamos que existe un grupo de descuento para productos asignados al grupo de artículos para escáneres. Cada vez que crea un artículo nuevo y lo asigna al grupo de artículos para escáneres, pertenecerá automáticamente al grupo de descuento de escáneres. Puede incluir o excluir artículos e interlocutores comerciales Puede definir una determinación de precios libre basándose en las cantidades compradas, así como en porcentajes de descuento fijo. Además, la realización de informes está disponible para los grupos de descuento. 25 Ventas de los grupos de descuento Los grupos de descuento son muy flexibles Nuevos artículos se incluyen automáticamente en los grupos de descuento aplicables Se puede incluir o excluir artículos Se puede incluir o excluir interlocutores comerciales Se pueden establecer los precios para los productos gratuitos Realización de informe de grupos de descuento",
-    "start_time": 1519.15,
-    "end_time": 1581.98
+    "image_file": "Slide_025.webp",
+    "script_text": "Los grupos de descuento en SAP Business One ofrecen una gran ventaja al crear nuevos artículos: se asignan automáticamente al grupo correspondiente según su grupo de artículos, propiedades o fabricante. Esto asegura coherencia en los precios sin intervención manual. Además, permiten incluir o excluir artículos y interlocutores comerciales, definir precios basados en cantidades o porcentajes fijos, y generar informes para análisis. Esta flexibilidad mejora la gestión comercial y reduce errores en la determinación de precios.",
+    "start_time": 799.3,
+    "end_time": 833.76
   },
   {
     "slide_index": 26,
-    "image_file": "085_Slide_26_10_Pricing_32_DiscSP_DiscGrp_ES.webp",
-    "script_text": "Aquí se detallan algunos puntos clave que muestran las ventajas y la flexibilidad de los grupos de descuento. Los grupos de descuento pueden definirse para IC específicos, grupos de IC o todos los IC. Dentro de un grupo de descuentos, puede establecer descuentos en grupos de artículos, propiedades, fabricantes o artículos. Si se establecen múltiples descuentos de propiedades en un grupo de descuento, la regla se establece para determinar cómo aplicar los descuentos. Los descuentos se pueden aplicar en base a un porcentaje fijo o una cantidad variable comprada. La última opción se utiliza para otorgar productos gratuitos. Los nuevos artículos se añaden automáticamente a los grupos de descuento aplicables en base a los grupos de artículos, propiedades o fabricantes. Los artículos e interlocutores comerciales se pueden excluir de los grupos de descuento. Los grupos de descuento pueden tener períodos de validez o se pueden marcar como inactivos. Las reglas de descuento efectivo resuelven situaciones en las que los grupos de descuento múltiples se aplican a un documento de marketing. Los grupos de descuento contienen solo descuentos, no contienen precios por unidad. Una vez se ha aplicado un grupo de descuentos a una línea del documento, el sistema continuará buscando un precio por unidad en la lista de precios. 26 A continuación, se detallan algunos puntos clave: Los grupos de descuento pueden definirse para IC específicos, grupos de IC o todos los IC. Dentro de un grupo de descuentos, puede establecer descuentos en grupos de artículos, propiedades, fabricantes o artículos. Si se establecen múltiples descuentos de propiedades en un grupo de descuento, la regla se establece para determinar cómo aplicar los descuentos. Los descuentos se pueden aplicar en base a un porcentaje fijo o una cantidad variable comprada. La última opción se utiliza para otorgar productos gratuitos. Los nuevos artículos se añaden automáticamente a los grupos de descuento aplicables en base a los grupos de artículos, propiedades o fabricantes. Los artículos e interlocutores comerciales se pueden excluir de los grupos de descuento. Los grupos de descuento pueden tener períodos de validez o se pueden marcar como inactivos. Las reglas de descuento efectivo resuelven situaciones en las que los grupos de descuento múltiples se aplican a un documento de marketing. Los grupos de descuento contienen solo descuentos, no contienen precios por unidad. Una vez se ha aplicado un grupo de descuentos a una línea del documento, el sistema continuará buscando un precio por unidad en la lista de precios. Resumen",
-    "start_time": 1581.98,
-    "end_time": 1746.22
+    "image_file": "Slide_026.webp",
+    "script_text": "Los grupos de descuento pueden configurarse para interlocutores comerciales específicos, grupos de ellos o para todos. Dentro del grupo, se aplican descuentos según grupos de artículos, propiedades, fabricantes o artículos individuales. Cuando hay múltiples descuentos de propiedades, se define una regla para su aplicación. Los descuentos pueden basarse en un porcentaje fijo o en una cantidad variable comprada, siendo esta última útil para ofrecer productos gratuitos. Los nuevos artículos se agregan automáticamente según su clasificación, mientras que artículos y socios comerciales pueden excluirse. Además, se pueden establecer periodos de validez o marcar grupos como inactivos, y las reglas de descuento efectivo resuelven conflictos cuando varios grupos aplican al mismo documento.",
+    "start_time": 833.76,
+    "end_time": 884.3
   }
 ]

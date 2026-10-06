@@ -1,212 +1,205 @@
 [
   {
     "slide_index": 1,
-    "image_file": "104_Slide_01_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Bienvenidos a esta clase sobre Purch 32 LandedCost Freight en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Purchasing: Freight SAP Business One Version 10.0 Welcome to the topic on managing freight in SAP Business One.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre la gestión de gastos de envío en SAP Business One Versión 10.0. Aquí aprenderás cómo registrar y gestionar los cargos por transporte y servicios adicionales como el seguro, para que reflejen correctamente en el costo del inventario y en la contabilidad de tu empresa.",
     "start_time": 0.0,
-    "end_time": 21.02
+    "end_time": 19.03
   },
   {
     "slide_index": 2,
-    "image_file": "104_Slide_02_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "At the end of this topic, you will be able to: Describe how freight charges are managed in business processes Set up freight Add freight in sales and purchasing documents Objectives At the end of this topic, you will be able to: • Describe how freight charges are managed in business processes • Set up freight • Add freight in sales and purchasing documents",
-    "start_time": 21.02,
-    "end_time": 39.6
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás describir cómo se gestionan los gastos de envío en los procesos de negocio, configurarlos según las necesidades de tu empresa y agregarlos tanto en documentos de compras como de ventas, ya sea a nivel de cabecera o de fila, para un control preciso de costos.",
+    "start_time": 19.03,
+    "end_time": 36.98
   },
   {
     "slide_index": 3,
-    "image_file": "104_Slide_03_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Your company buys and sells items throughout the country • When items are shipped to your warehouse, you get charged for the shipping and delivery. You want to record these charges, as well to have the inventory unit cost reflect the additional charge. • Some items that you sell are high value and require insurance during shipping. You charge your customers a fixed amount for insurance, however you do not want the insurance cost to affect unit cost. 3 3 Business Scenario  Your company buys and sells items throughout the country  When items are shipped to your warehouse, you get charged for the shipping and delivery. You want to record these charges, as well to have the inventory unit cost reflect the additional charge.  Some items that you sell are high value and require insurance during shipping. You charge your customers a fixed amount for insurance, however you do not want the insurance cost to affect unit cost.",
-    "start_time": 39.6,
-    "end_time": 90.02
+    "image_file": "Slide_003.webp",
+    "script_text": "Tu empresa distribuye artículos en todo el país y paga fletes por transporte terrestre, aéreo o marítimo. Además, algunos productos de alto valor requieren seguro durante el envío, que facturas a tus clientes como cargo fijo, pero deseas que solo el flete afecte el costo unitario del inventario, no el seguro.",
+    "start_time": 36.98,
+    "end_time": 57.48
   },
   {
     "slide_index": 4,
-    "image_file": "104_Slide_04_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Freight definition Freight is a charge paid for carriage or transportation of goods by air, land, or sea. You can also use freight to apply any additional expenses that are not part of the basic item price such as insurance of the goods. Freight can be added on any purchasing or sales document. Freight is a charge paid for carriage or transportation of goods by air, land, or sea. You can also use freight to apply any additional expenses that are not part of the basic item price such as insurance of the goods. Freight can be added to any of the sales and purchasing documents.",
-    "start_time": 90.02,
-    "end_time": 124.1
+    "image_file": "Slide_004.webp",
+    "script_text": "Los Gastos de Envío son cargos por el transporte de mercancías por aire, tierra o mar. También incluyen gastos adicionales como el seguro de la carga. Estos se pueden aplicar a cualquier documento de compras o ventas, ya sea a nivel de documento completo o por fila específica, según el artículo involucrado.",
+    "start_time": 57.48,
+    "end_time": 77.98
   },
   {
     "slide_index": 5,
-    "image_file": "104_Slide_05_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Freight Charges in Business Processes Special handling item 1 50 Special handling item 2 25 General shipping 125 Insurance 45 Total freight 245 Freight can be added to the total document or on the row level. Freight can be added to the total document or on the row level for specific items. You can apply freight in both purchasing and sales documents. You may charge freight when shipping items from your warehouse or your vendor may add freight charges to items you receive. For example, we see an A/P invoice with freight added. Each item had a special handling charge in addition to the overall shipping charge that was added at the document level. The special handling items were added on the rows. The overall charges for freight and insurance were added by choosing the link arrow on total freight. The amount on the total document and the rows combine to give the total for freight in the document.",
-    "start_time": 124.1,
-    "end_time": 178.8
+    "image_file": "Slide_005.webp",
+    "script_text": "En este ejemplo, se aplican gastos especiales a artículos específicos (50 y 25), un cargo general de envío (125) y un seguro (45), sumando un total de 245. Los gastos pueden añadirse al total del documento o a nivel de fila, permitiendo que cargos como manipulación especial se asignen por artículo, mientras el flete general va en la cabecera.",
+    "start_time": 77.98,
+    "end_time": 104.69
   },
   {
     "slide_index": 6,
-    "image_file": "104_Slide_06_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Accounting and Inventory Effects Different types of freight can be defined to post to different accounts. For example:  Insurance might post to an expense account.  Shipping costs might be set up to post to the stock account for the item. In this way, the freight cost becomes part of the unit cost of the item. Insurance cost posting to freight expense account Cost of item plus shipping cost posting to stock account You have the option to define different types of freight charges. One type of freight might post to an expense account while another type could be set up to post to the stock account for the item. In the latter, the freight cost becomes part of the unit cost of the item. In our previous example, freight shipping charges were set up to be posted to the item’s stock account along with the cost of the item. Insurance charges were set up to be charged to an expense account. Both the cost of the items (800) and the freight shipping charges (200) post to the item stock account. Insurance is posted instead to an expense account that has been specified in the setup window.",
-    "start_time": 178.8,
-    "end_time": 240.43
+    "image_file": "Slide_006.webp",
+    "script_text": "Los costos de los artículos (800) y los gastos de envío configurados para stock (200) se contabilizan en la cuenta de stock, aumentando el costo unitario del inventario. El seguro (100) va a una cuenta de gastos, ya que no forma parte del costo del producto. El total del documento (1.300) se acredita al proveedor.",
+    "start_time": 104.69,
+    "end_time": 129.31
   },
   {
     "slide_index": 7,
-    "image_file": "104_Slide_07_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Incorporating freight into item cost Example: Document shipping cost: 100 Shipping costs applied to items based on row weight Row 1 is 80% of weight in total shipment Cost of 80 is posted to the stock account for the item. Row 2 is 20% of weight in total shipment Cost of 20 is posted to the stock account for the item You can distribute total freight to rows and incorporate the costs into the item’s unit cost. You may wish to incorporate the freight costs into the cost of the item. It is easy to factor in the freight cost if it is on the row level. However, when freight is charged at the document level, we need a method for how to distribute those costs to the individual items. The freight amount added to each line item in the document is calculated based on a distribution method that you define while setting up freight. For example, OEC Computers regularly buys electronic equipment to resell. Freight costs are factored into each item’s cost. This ensures that all freight costs related to the item are taken into account when viewing the cost of goods sold. When multiple items are purchased on the same document, the total freight costs needs to be distributed among the rows. Most freight costs charged to OEC are based on weight. Therefore, OEC uses a distribution method for freight based on the weight of the items on the rows.",
-    "start_time": 240.43,
-    "end_time": 317.83
+    "image_file": "Slide_007.webp",
+    "script_text": "En este paso, incorporas los gastos de envío al costo del artículo. Primero defines el método de distribución, luego asignas el peso relativo a cada fila del documento. El sistema calcula el costo de envío para cada fila según ese peso y lo contabiliza directamente en la cuenta de stock del artículo. Así, el costo unitario del producto se actualiza automáticamente. Este proceso asegura que los gastos de envío se reflejen correctamente en el valor de inventario, tal como se define en la configuración de gastos de envío.",
+    "start_time": 129.31,
+    "end_time": 163.44
   },
   {
     "slide_index": 8,
-    "image_file": "104_Slide_08_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Copying Freight Charges Item Quantity Unit Price Freight Type Freight Amount A1000 10 100 Insurance 10 Item Quantity Unit Price Freight Type Freight Amount A1000 5 100 Insurance 10 Based on the freight definition, row freight charges are copied fully on the first reference, partially or not at all to subsequent documents. Purchase Order Goods Receipt PO In our example, the freight type insurance definition is set to copy the full amount the first time that row is copied even when the row quantity is reduced. In our example, we saw freight added in an A/P invoice. Freight might be added at an earlier point, for example in a Goods Receipt PO based on a shipping document. On the sales side, we might charge freight at the point of sale. In that case, the sales order would contain the freight charges that would be then copied over to the delivery and A/R invoice. When you have freight charges entered on the row level and you use the Draw Document Wizard to copy from one document to another, the row level freight charges will be copied to the target document based on the freight type’s definition. You have the option to define a freight type to either draw the amount fully the first time a row is partially copied, partially (in relation to the total or the quantity copied) or not at all.",
-    "start_time": 317.83,
-    "end_time": 389.11
+    "image_file": "Slide_008.webp",
+    "script_text": "Al copiar una fila con gastos de envío a otro documento, el importe se copia completo en la primera referencia, incluso si reduces la cantidad. Por ejemplo, al pasar de 10 a 5 unidades, el seguro de 10 USD se transfiere íntegro. Esto depende de la configuración del tipo de gasto de envío: si está definido como 'copia completa en primera referencia', se aplica así. En documentos posteriores, el gasto puede copiarse parcialmente o no copiarse, según lo establecido en la configuración.",
+    "start_time": 163.44,
+    "end_time": 196.9
   },
   {
     "slide_index": 9,
-    "image_file": "104_Slide_09_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Freight Setup Now let’s see how to set up freight in SAP Business One",
-    "start_time": 389.11,
-    "end_time": 394.06
+    "image_file": "Slide_009.webp",
+    "script_text": "Ahora aprenderás cómo configurar los gastos de envío en SAP Business One. Este paso es esencial para comenzar a usar esta funcionalidad. Verás dónde activar la opción, qué parámetros definir y cómo adaptarlos a tu escenario de negocio. Al final, podrás crear tipos de gastos como envío y seguro, asignar cuentas contables y elegir el método de distribución adecuado según tus necesidades operativas.",
+    "start_time": 196.9,
+    "end_time": 223.66
   },
   {
     "slide_index": 10,
-    "image_file": "104_Slide_10_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Administration System Initialization Document Settings On the General Tab, choose Manage Freight in Documents Activation in Document Settings General Manage Freight in Documents Freight - Setup You cannot reverse this setting after a document has been posted. To start using freight, you first must activate it in Document Settings. This setting will add a Freight field in all purchasing and sales documents, and allow you to calculate additional costs connected to a document. Once you have selected this checkbox you cannot reverse it after a document has been posted.",
-    "start_time": 394.06,
-    "end_time": 425.81
+    "image_file": "Slide_010.webp",
+    "script_text": "Para usar gastos de envío, primero debes activarlos en Configuración de Documentos, bajo Administración → Inicialización del Sistema. En la pestaña General, marca la opción 'Gestionar Gastos de Envío en Documentos'. Esta configuración es irreversible una vez que registres un documento con gastos de envío. Al activarla, SAP Business One añadirá automáticamente un campo de Gastos de Envío en todos los documentos de compras y ventas, permitiéndote comenzar a capturar estos costos.",
+    "start_time": 223.66,
+    "end_time": 255.7
   },
   {
     "slide_index": 11,
-    "image_file": "104_Slide_11_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Freight Setup Use the button on the General Tab of Document Settings Or use the menu path: Administration Setup General Freight Name Revenue and Expense accounts / Tax Groups Fixed Amount Revenue / Expenses Gross Freight WTax Liable Distribution Method Drawing Methods Stock / Last Purchase Price checkboxes Shipping Revenue/ Expense account √ Volume Quantity √ Insurance Revenue/ Expense account 5 None Total Freight - Setup In the Freight Setup window, you need to create a row for each type of freight charge you plan to track. In our business example, we would need to set up two rows, one for shipping charges and the second for insurance that is used to insure high value items during transport. After you enter the name, select an expense account to be used in purchasing documents and a revenue account to be used in sales documents. You also select a default tax group for incoming and outgoing documents, to be used if one does not default in from the Business Partner Master Data. You can define a fixed expense amount that is added automatically to every sales or purchasing document. You can modify this amount in the document if needed. Next you can choose whether the fixed amount you entered includes tax, by checking the gross freight box. You can also mark whether the costs are subject to withholding tax. Then choose one of the six distribution methods. A distribution method is used when freight is entered in the document header and is set up to affect stock. We will see an example in the upcoming slide. In the Drawing Method, specify the required portion of the freight to apply when you partially copy a base document to a target document. We will see more details in upcoming slides. Select the Stock checkbox in order for freight charges to be added to the item’s unit cost, when the item is purchased. This is applicable for items with a valuation method of FIFO, moving average or serial and batch valuation. If freight charges are added to a standard cost item, the amount will be recorded as an expense. You can check the Last Purchase Price checkbox if you wish the freight charges to be added to the items’ last purchase price in a purchasing document. If the either the Stock/Fixed Asset or Last Purchase Price checkboxes are selected, a distribution method (other than None) must be selected. You can optionally assign a distribution rule, or a project code, to be assigned to the freight revenue or expenses account row in the journal entry. Note, freight charges that affect stock, such as shipping in our example, used in a document with inventory item, will not appear as a separate row in the journal entry, therefore no distribution rule or project code will be assigned. Based on our business scenario, we will define two (2) freight charges, the first one will be for shipping, without a fixed amount, and it will affect stock. The second for insurance cost that you charge your customers during the sales cycle. Here we enter a fixed amount, since most deliveries have insurance.",
-    "start_time": 425.81,
-    "end_time": 600.65
+    "image_file": "Slide_011.webp",
+    "script_text": "En la ventana de Configuración de Gastos de Envío, creas una fila por cada tipo de gasto que necesitas rastrear. En nuestro escenario, definimos dos tipos: uno para envío, que afecta al stock y se distribuye por peso, y otro para seguro, con importe fijo que no afecta al stock ni al precio de compra. Cada tipo requiere definir nombre, cuentas de ingresos y gastos, grupos de impuestos, y si está sujeto a retención. También se especifican los métodos de distribución y extracción, y si actualizan el stock o el último precio de compra.",
+    "start_time": 255.7,
+    "end_time": 290.78
   },
   {
     "slide_index": 12,
-    "image_file": "104_Slide_12_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Freight setup – Distribution Method 0 0 10 20 15 15 20 10 Examples of Distributed Amounts for each Distribution Method None Quantity Volume Weight Row Total 10 20 10 20 Contents Qty Total Item A1000 A2000 100 200 300 600 Freight on Header Level: 30 Volume 3 30 6 60 Weight Equally Let’s look at how freight is distributed between the rows in a purchasing document for each of the 6 distribution methods. In this example, the amount of 30 is entered as freight on the document header. • None - Freight expenses are not distributed to the line items. • Quantity - Expenses are distributed to the line items according to the relation of the quantities per line item. • Volume - Expenses are distributed to the line items according to the relation of the volumes per line item. • Weight - Expenses are distributed to the line items according to the relation of the weights per line item. • Equally - Expenses are distributed to the line items equally. • Row Total - Expenses are distributed to the line items according to the relation of the row totals of the line items.",
-    "start_time": 600.65,
-    "end_time": 667.46
+    "image_file": "Slide_012.webp",
+    "script_text": "Los métodos de distribución determinan cómo se asignan los gastos de envío del encabezado a las filas del documento. Con un total de 30 en gastos de envío, el método 'Ninguno' asigna 0 a ambos artículos. 'Cantidad' reparte 10 y 20 según la cantidad de cada fila. 'Peso' lo hace según el peso relativo. 'Igualmente' divide 15 y 15. 'Total de fila' asigna 6 y 24, proporcional al subtotal de cada fila. Estos métodos permiten adaptar la distribución a la lógica de tu negocio, ya sea por volumen, peso, valor o cantidad.",
+    "start_time": 290.78,
+    "end_time": 330.6
   },
   {
     "slide_index": 13,
-    "image_file": "104_Slide_13_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Let’s look at the four options for Drawing Methods. When you use the Draw Document Wizard to copy from one document to another, freight entered in the row level will be copied to the target document based on the proportionate quantity that was drawn. The drawing method determines how the system copies the freight expenses or revenues from the base document to the target document in case you only partially copy the row items. In the graphic, we see the results based on each method.  All - The system copies the entire amount the first time you copy any partial amount of the line item.  None – When the drawing method is None, nothing is taken into the target document.  Total - If you copy a line item only partially, the system copies the proportionate amount based the total you copied. When you copy the outstanding line items, the system copies the remaining amount.  Quantity - If you only partially copy a line item, the system copies the proportionate amount based on the quantity you copied. When you copy the outstanding line items, the system copies the remaining amount. 13 13 Freight Setup – Drawing Method Quantity Total Add. Exp. Contents xxx xxx xxx xxx 10 20 General Information (Header) Sales or Purchasing Document Quantity Total Add. Exp. Contents xxx xxx xxx xxx 0 0 All Quantity Total Add. Exp. Contents xxx xxx 150 150 2,5 10 Quantity Total Add. Exp. Contents 50 50 xxx xxx 5 5 None Total Quantity Quantity Total Add. Exp. Contents 100 200 300 600 10",
-    "start_time": 667.46,
-    "end_time": 768.5
+    "image_file": "Slide_013.webp",
+    "script_text": "Al copiar parcialmente una fila con gastos de envío, el método de extracción define cómo se transfiere el importe al documento destino. Hay cuatro opciones: Todo copia el importe completo la primera vez que se copia cualquier parte de la fila; Ninguno no copia nada; Total reparte el gasto proporcionalmente al porcentaje de fila copiada; y Cantidad lo reparte según la cantidad copiada. Esto permite controlar cómo se asignan los costos de envío al dividir documentos, según las necesidades operativas de la empresa.",
+    "start_time": 330.6,
+    "end_time": 363.0
   },
   {
     "slide_index": 14,
-    "image_file": "104_Slide_14_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Adding Freight in Marketing Documents Now that we’ve seen how the setup works, let’s review the process of adding freight in marketing documents.",
-    "start_time": 768.5,
-    "end_time": 776.95
+    "image_file": "Slide_014.webp",
+    "script_text": "Ya vimos cómo se configuran los gastos de envío. Ahora repasamos el proceso práctico para agregarlos en documentos comerciales, tanto en nivel de fila como de cabecera. Este flujo es clave para que los costos de transporte, seguros o manejo se reflejen correctamente en ventas y compras, afectando el costo real de los productos y la rentabilidad. Veremos cómo aplicarlo en SAP Business One de forma precisa y controlada.",
+    "start_time": 363.0,
+    "end_time": 390.5
   },
   {
     "slide_index": 15,
-    "image_file": "104_Slide_15_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Adding Freight in Sales Documents - Rows Row level freight in Sales Contents Quantity Total Item A1000 A2000 10 5 50 100 Freight 1 Freight 1 LC Freight 2 Freight 2 LC Freight 3 Freight 3LC Freight Freight Insurance Insurance 10 5 5 2 Other Other 8 8 Total Freight (From Row) 10+5+8+5+2+8 = 38 Since there are a few differences between sales and purchasing documents, let’s review each type separately. Let’s look at what happens when we enter freight in the row level of sales documents. You have the ability to define up to 3 kinds of freight in the row level. The columns for the freight and freight amount can be added using Form Settings. First you choose the freight charges using a dropdown, and then you enter the freight amount for the particular row. You can add additional information regarding each freight charge such as a freight distribution rule, a project code, a tax code, and display a tax amount. The total freight entered in the rows is displayed in the Freight field, at the bottom of the document. The total includes row and additional header freight amounts.",
-    "start_time": 776.95,
-    "end_time": 841.97
+    "image_file": "Slide_015.webp",
+    "script_text": "En una fila de documento de ventas, puedes definir hasta tres tipos de gastos de envío. Primero seleccionas el tipo desde un desplegable (como Flete Internacional), luego ingresas el importe base (120,50 USD). Puedes añadir detalles como regla de distribución (Por Cantidad), código de proyecto, código de impuesto y su importe. El total de todos los gastos de fila se muestra automáticamente en el campo Gastos de Envío al pie del documento, aquí 138,58 USD, lo que permite un desglose claro para control de costos.",
+    "start_time": 390.5,
+    "end_time": 427.51
   },
   {
     "slide_index": 16,
-    "image_file": "104_Slide_16_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Adding Freight in Sales Documents - Header Header level freight in Sales Documents: Open the Freight Charges by clicking the drill down arrow next to the Freight field Freight Name Remarks Tax Code/ Amount Distribution Method Net Amount Status DL/Project Freight Expedited delivery Exempt Volume 5 O Insurance High Value Items Exempt None 5 O Set the Distribute Freight to Yes on the row to distribute the header freight to that row To view and maintain freight charges for the document header, use the drill down arrow next to the Freight field. In this window, all the freight types that you defined during the setup are displayed. If you entered a fixed amount for revenues during the setup, it will be added to all sales documents. You can delete the amount or add to that amount as needed in the Net Amount column. The distribution method is also automatically populated based on the freight setup, and can be modified here. Note in a sales document, the purpose of distributing freight amounts between the rows is informative only. In sales document’s rows, you can find a column called Distribute Freight. If set to Yes, the freight amount in the header is distributed to the row, based on the distribution method defined here. In fact the field’s default is set to No, however if it is important for you to see the impact of freight in the row level, change this field to Yes. You can view the status of the freight line here as well. Note that it’s possible to have a closed freight line in an open document. Lastly if a distribution rule or freight was defined during setup, it will appear here, and can also be modified in documents. In the journal entry, the Freight Revenue account shows as a separate row and it will be assigned with a distribution rule or a project code, if one was assigned here. The total freight amount displayed in the document includes the row and the header freight charges, however when you drill down to the freight charges window, only the header freight details display.",
-    "start_time": 841.97,
-    "end_time": 951.89
+    "image_file": "Slide_016.webp",
+    "script_text": "En el nivel de cabecera, al hacer clic en la flecha de desglose del campo Gastos de Envío, se abre la ventana de Cargos de Envío. Aquí aparecen todos los tipos configurados, como Seguro de Carga. Si se definió un importe fijo en configuración (25,00 USD), se aplica automáticamente a todos los documentos de ventas. Puedes modificarlo en Importe Neto. La columna Distribuir Gastos de Envío en las filas está en No por defecto; cámbiala a Sí si necesitas ver cómo se reparte el gasto por fila, aunque su propósito aquí es meramente informativo.",
+    "start_time": 427.51,
+    "end_time": 464.02
   },
   {
     "slide_index": 17,
-    "image_file": "104_Slide_17_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Adding Freight in Purchasing Documents - Rows Row level freight in purchasing: Contents Total Item A1000 A2000 10 5 50 100 Qty Freight 1 Freight 1 LC Last Purchase Price Inventory Freight Freight Yes No 10 5 Yes No In purchasing documents, there are additional two columns related to freight that do not exist in sales documents: Last Purchase Price and Inventory. The values (yes or no) are copied from the freight setup. If you wish to override the default value, for example for one particular purchase, you can add these columns, using Form Settings, and change the default for each row. Other than these 2 columns, the rest of freight fields are the same as in sales documents.",
-    "start_time": 951.89,
-    "end_time": 993.26
+    "image_file": "Slide_017.webp",
+    "script_text": "En documentos de compras, al agregar gastos de envío a nivel de fila, aparecen dos columnas exclusivas: Último Precio de Compra e Inventario. Estos valores se copian desde la configuración de gastos de envío, pero se pueden anular por fila usando Configuración de Formulario. Por ejemplo, si el flete afecta al costo del producto, marcas Últ. Precio de Compra como Sí; si no afecta al stock, dejas Inventario en No. Esto permite controlar cómo el gasto impacta en la valoración de inventario y precios de compra.",
+    "start_time": 464.02,
+    "end_time": 498.17
   },
   {
     "slide_index": 18,
-    "image_file": "104_Slide_18_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Adding Freight in Purchasing Documents - Header Header level freight in Purchasing: Open the Freight Charges by clicking the drill down arrow next to the Freight field Freight Name Remarks Tax Code/ Amount Distribution Method Net Amount Status DL/Project Freight Expedited delivery Exempt Volume 5 O Insurance High Value Items Exempt None 5 O Freight in the purchasing document header is also similar to freight in the sales document header. If the freight is not set up to affect stock or last purchase price, such as in our scenario for the insurance, the freight amounts will be recorded as expenses.",
-    "start_time": 993.26,
-    "end_time": 1026.34
+    "image_file": "Slide_018.webp",
+    "script_text": "En la cabecera de documentos de compras, los gastos de envío funcionan igual que en ventas. Sin embargo, si no están configurados para afectar al stock o al último precio de compra —como en el caso del seguro— sus importes se registran directamente como gastos operativos, no como parte del costo del producto. Esto significa que aumentan el gasto de la empresa, pero no alteran la valoración de inventario ni el precio de venta sugerido, manteniendo una contabilidad precisa según el naturaleza real del cargo.",
+    "start_time": 498.17,
+    "end_time": 530.35
   },
   {
     "slide_index": 19,
-    "image_file": "104_Slide_19_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Freight Charges Journal Entry A/R Invoice (based on a Delivery): A/P Invoice (based on a Goods Receipt PO): Account Debit Credit Project/Distribution Rule Customer 110 Revenue 100 Freight Revenue 1 5 Project Code/Distribution Rule Freight Revenue 2 5 Project Code/Distribution Rule Account Debit Credit Project/Distribution Rule Vendor 110 Inventory 105 Freight Expense 5 Project Code/Distribution Rule Let’s take a look at the journal entries that are created on sales and purchasing documents when adding freight. On the sales side, if we assume our freight amount is 5 for shipping and 5 for insurance, the freight amounts are posted on the credit side to the freight revenue account as defined in the freight setup. If a project code and a distribution rule were selected, this displays in the journal entry row for the freight revenues. On the purchasing side, in our example we have a freight amount of 5 that affects inventory, and 5 that doesn’t, therefore the first 5 will be added to the inventory account, and the second amount of 5 will be posted on the debit side to the freight expense account. If a project code and a distribution rule were selected, these will only apply to the freight expense that did not affect inventory.",
-    "start_time": 1026.34,
-    "end_time": 1100.06
+    "image_file": "Slide_019.webp",
+    "script_text": "Este asiento muestra el impacto contable al registrar gastos de envío en documentos de ventas y compras. En la factura A/R, el cliente se debita por el total, mientras que los ingresos y los ingresos de envío se acreditan. En la factura A/P, el proveedor se acredita, el inventario se debita si el gasto forma parte del costo, y el resto va a gastos de envío. Así se refleja correctamente el costo real del inventario y los gastos asociados en SAP Business One.",
+    "start_time": 530.35,
+    "end_time": 562.56
   },
   {
     "slide_index": 20,
-    "image_file": "104_Slide_20_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Here are some key points to take away:  Freight is used to record additional charges on sales and purchasing documents  Freight can be added to the document row or header  Header level freight can be allocated to the rows as needed using different allocation methods  Freight can affect inventory item’s unit cost and last purchase price 20 Here are some key points to take away: Freight is used to record additional charges on sales and purchasing documents Freight can be added to the document row or header Header level freight can be allocated to the rows as needed using different allocation methods Freight can affect inventory item’s unit cost and last purchase price Summary",
-    "start_time": 1100.06,
-    "end_time": 1133.57
+    "image_file": "Slide_020.webp",
+    "script_text": "Los gastos de envío permiten registrar cargos adicionales en documentos de ventas y compras. Pueden aplicarse a nivel de cabecera o de fila, y al estar en cabecera, se distribuyen a las filas según el método elegido. Estos gastos pueden formar parte del costo unitario del inventario y afectar el último precio de compra, lo que asegura una valuación más precisa de los productos en stock.",
+    "start_time": 562.56,
+    "end_time": 587.45
   },
   {
     "slide_index": 21,
-    "image_file": "104_Slide_21_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
-    "start_time": 1133.57,
-    "end_time": 1141.56
+    "image_file": "Slide_021.webp",
+    "script_text": "Esta lámina introduce una sección de evaluación para validar lo aprendido sobre los gastos de envío en SAP Business One. A través de preguntas de opción múltiple, podrás reforzar tu comprensión sobre dónde se aplican estos gastos, cómo se configuran y su impacto contable y de inventario. Es una oportunidad para aplicar la teoría a casos prácticos del sistema.",
+    "start_time": 587.45,
+    "end_time": 610.32
   },
   {
     "slide_index": 22,
-    "image_file": "104_Slide_22_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight Freight can be in a sales document… 1. In the document header only 2. In the row level only 3. In document header and row level 4. In document header and inventory items row only",
-    "start_time": 1141.56,
-    "end_time": 1157.59
+    "image_file": "Slide_022.webp",
+    "script_text": "En un documento de ventas, los gastos de envío pueden configurarse para aparecer en diferentes niveles: solo en la cabecera, solo a nivel de fila, o en ambos. Esta pregunta evalúa tu conocimiento sobre la flexibilidad de SAP Business One al permitir la asignación de gastos de envío según las necesidades del negocio, ya sea para aplicar un cargo global o desglosarlo por artículo.",
+    "start_time": 610.32,
+    "end_time": 634.25
   },
   {
     "slide_index": 23,
-    "image_file": "104_Slide_23_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight Freight can be in a sales document… 1. In the document header only 2. In the row level only 3. In document header and row level 4. In document header and inventory items row only",
-    "start_time": 1157.59,
-    "end_time": 1173.62
+    "image_file": "Slide_023.webp",
+    "script_text": "La respuesta correcta es la opción 3: los gastos de envío en un documento de ventas pueden estar tanto en la cabecera como a nivel de fila. Esto permite mayor flexibilidad: por ejemplo, aplicar un cargo fijo en cabecera y gastos específicos por artículo en las filas. SAP Business One soporta esta configuración para adaptarse a distintos escenarios de facturación y control de costos.",
+    "start_time": 634.25,
+    "end_time": 659.09
   },
   {
     "slide_index": 24,
-    "image_file": "104_Slide_24_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight When you enter freight for the row, no tax code or group are displayed. Why? 1. You didn’t check the Gross Freight in the freight setup 2. You checked the Gross Freight in the freight setup 3. In a purchasing document, tax is not calculated on freight 4. The tax code or groups were not marked to affect freight",
-    "start_time": 1173.62,
-    "end_time": 1195.9
+    "image_file": "Slide_024.webp",
+    "script_text": "Al introducir gastos de envío en la fila de un documento, si no se muestra ningún código de impuesto o grupo, suele deberse a que la opción 'Gross Freight' no está marcada en la configuración de gastos de envío. Cuando esta opción está desactivada, SAP no aplica impuestos automáticamente a esos cargos. Es importante revisar la configuración para asegurar el tratamiento fiscal correcto según las normas locales.",
+    "start_time": 659.09,
+    "end_time": 685.61
   },
   {
     "slide_index": 25,
-    "image_file": "104_Slide_25_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight When you enter freight for the row, no tax code or group are displayed. Why? 1. You didn’t check the Gross Freight in the freight setup 2. You checked the Gross Freight in the freight setup 3. In a purchasing document, tax is not calculated on freight 4. The tax code or groups were not marked to affect freight",
-    "start_time": 1195.9,
-    "end_time": 1218.17
+    "image_file": "Slide_025.webp",
+    "script_text": "Cuando introduces gastos de envío en una fila de documento en SAP Business One, no se asigna automáticamente ningún código de impuesto ni grupo de impuestos. Esto ocurre porque, en la configuración de gastos de envío, se seleccionó la opción 'Gross Freight', que indica que el monto se trata como parte del valor bruto del artículo y no como un cargo gravable separado. Es útil para reflejar costos logísticos que forman parte del costo de adquisición sin afectar el cálculo del IVA directamente en la línea.",
+    "start_time": 685.61,
+    "end_time": 717.34
   },
   {
     "slide_index": 26,
-    "image_file": "104_Slide_26_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight True/False – you can only assign freight charges with a project code in sales documents 1. True 2. False",
-    "start_time": 1218.17,
-    "end_time": 1229.3
+    "image_file": "Slide_026.webp",
+    "script_text": "En este test de conocimientos se evalúa si los gastos de envío pueden asignarse únicamente con un código de proyecto en documentos de ventas. La pregunta plantea si esta asignación es exclusiva o si existen otras formas de vincular gastos de envío a proyectos. Es importante entender cómo SAP Business One maneja la relación entre costos logísticos y seguimiento de proyectos, especialmente en empresas que requieren control detallado de rentabilidad por obra o cliente.",
+    "start_time": 717.34,
+    "end_time": 746.42
   },
   {
     "slide_index": 27,
-    "image_file": "104_Slide_27_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight True/False – you can only assign freight charges with a project code in sales documents 1. True 2. False",
-    "start_time": 1229.3,
-    "end_time": 1240.44
+    "image_file": "Slide_027.webp",
+    "script_text": "La respuesta correcta al test es 'Falso': no es cierto que solo se puedan asignar gastos de envío con un código de proyecto en documentos de ventas. En SAP Business One, los gastos de envío pueden vincularse a proyectos mediante otros métodos, como la asignación directa en el documento o mediante reglas de distribución, dependiendo de la configuración. Esto permite flexibilidad en el seguimiento de costos sin obligar siempre al uso de un código de proyecto.",
+    "start_time": 746.42,
+    "end_time": 775.49
   },
   {
     "slide_index": 28,
-    "image_file": "104_Slide_28_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight True/False – row level freight is copied in full when the document is converted to a higher level document 1. True 2. False",
-    "start_time": 1240.44,
-    "end_time": 1252.25
+    "image_file": "Slide_028.webp",
+    "script_text": "Este test evalúa el comportamiento de los gastos de envío a nivel de fila al convertir un documento (como un pedido de venta) en un documento de nivel superior (como una factura). Se pregunta si estos gastos se copian en su totalidad automáticamente. La respuesta depende de configuraciones previas, especialmente del método de extracción definido en la gestión de gastos de envío, lo que determina cómo se heredan estos costos durante la transformación del documento.",
+    "start_time": 775.49,
+    "end_time": 804.38
   },
   {
     "slide_index": 29,
-    "image_file": "104_Slide_29_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "Test your knowledge – Freight True/False – row level freight is copied in full when the document is converted to a higher level document 1. True 2. False",
-    "start_time": 1252.25,
-    "end_time": 1264.06
-  },
-  {
-    "slide_index": 30,
-    "image_file": "104_Slide_30_10_Purch_32_LandedCost_Freight.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1264.06,
-    "end_time": 1401.24
+    "image_file": "Slide_029.webp",
+    "script_text": "La respuesta correcta es 'Falso': los gastos de envío a nivel de fila no se copian en su totalidad al convertir el documento en uno de nivel superior. Su comportamiento depende del 'Método de Extracción' configurado en SAP Business One. Este método define si los gastos se distribuyen, se copian completamente o se ignoran según reglas predefinidas. Es clave para controlar cómo se transfieren los costos logísticos entre etapas del proceso de ventas.",
+    "start_time": 804.38,
+    "end_time": 834.14
   }
 ]

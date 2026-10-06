@@ -1,107 +1,107 @@
 [
   {
     "slide_index": 1,
-    "image_file": "070_Slide_01_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre ItemInv 32 WM GM en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Artículos e inventario: Movimientos de mercancías Bienvenido al tema de gestión de inventario sobre movimientos de mercancías.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de movimientos de mercancía en SAP Business One 10.0. Aquí aprenderá cómo gestionar el ingreso, egreso y traslado de inventario entre almacenes, esencial para mantener el control preciso del stock en operaciones reales de distribución y producción.",
     "start_time": 0.0,
-    "end_time": 21.74
+    "end_time": 18.02
   },
   {
     "slide_index": 2,
-    "image_file": "070_Slide_02_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "En este tema, observaremos cómo trasladas las mercancías hacia adentro, afuera y entre los almacenes. Aprenderá a crear entradas de mercancías y salidas de mercancías. Aprenderá a crear un documento de traslado de inventario para mover artículos entre dos almacenes, uno de los cuales está gestionado con depósitos. 2 Al finalizar este tema, podrá: Crear una entrada de mercancías Crear una salida de mercancías Registrar un documento de traslado de inventario Objetivos",
-    "start_time": 21.74,
-    "end_time": 53.66
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá crear entradas de mercancías para recibir stock sin compra ni producción, registrar salidas para consumo interno o muestras, y generar documentos de traslado para mover artículos entre almacenes, incluso aquellos gestionados con depósitos, mejorando la disponibilidad y el control de inventario en su empresa.",
+    "start_time": 18.02,
+    "end_time": 39.34
   },
   {
     "slide_index": 3,
-    "image_file": "070_Slide_03_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Imagine que su empresa fabrica, compra y vende artículos almacenados en varios almacenes. Transfiere artículos entre los almacenes para mejorar la disponibilidad. A veces recibe artículos en stock que no cumplen con los procesos regulares de compra o producción. A veces, el stock sale del almacén, como muestra para ferias u otros fines de marketing. Periódicamente el stock dañado se quita del almacén. 3 3 Escenario empresarial Su empresa fabrica, compra y vende artículos almacenados en varios almacenes. Transfiere artículos entre los almacenes para mejorar la disponibilidad A veces recibe artículos en stock que no cumplen con los procesos regulares de compra o producción A veces, el stock sale del almacén, como muestra para ferias u otros fines de marketing Periódicamente el stock dañado se quita del almacén",
-    "start_time": 53.66,
-    "end_time": 106.9
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina una empresa que fabrica, compra y vende artículos en múltiples almacenes. Traslada stock para mejorar disponibilidad, recibe muestras o ingresos no estándar, retira artículos para ferias o marketing, y elimina stock dañado. Estos movimientos requieren registros precisos en SAP para reflejar correctamente el inventario real y evitar diferencias contables.",
+    "start_time": 39.34,
+    "end_time": 63.72
   },
   {
     "slide_index": 4,
-    "image_file": "070_Slide_04_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Este gráfico muestra un resumen de las distintas posibilidades de movimientos de stock, incluidos algunos de los movimientos iniciados desde los documentos de compra, producción y venta. Nos centraremos en las flechas rojas del proceso comercial en este tema, estos son los movimientos de mercancías de inventario básicos. 4 Resumen de gestión de almacenes Pedido de EM Devoluciones de mercancías de funciones de compras Entrega Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén",
-    "start_time": 106.9,
-    "end_time": 146.59
+    "image_file": "Slide_004.webp",
+    "script_text": "Este gráfico resume las posibilidades de movimiento de stock, incluyendo aquellos desde compras, producción y ventas. En este tema nos enfocamos en los movimientos básicos de inventario, señalados en rojo: entradas, salidas, traslados entre almacenes, eliminación de componentes, entradas para producto final y carga de cantidades iniciales, todos esenciales para el control diario del almacén.",
+    "start_time": 63.72,
+    "end_time": 90.0
   },
   {
     "slide_index": 5,
-    "image_file": "070_Slide_05_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Los documentos de entrada de mercancías se usan para recibir el inventario que no se compra ni produce. Un ejemplo puede ser recibir una muestra de un proveedor para la inspección. Usted selecciona recibirla en el almacén en una entrada de mercancías es lugar de una entrada de mercancías de pedido debido a que el artículo no es relevante para la determinación de precios o los informes de análisis de compra. 5 Documentos de entrada de mercancías Entrega Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén Pedido de EM Devoluciones de mercancías de funciones de compras",
-    "start_time": 146.59,
-    "end_time": 191.81
+    "image_file": "Slide_005.webp",
+    "script_text": "Los documentos de entrada de mercancías se usan para recibir inventario que no proviene de una compra ni producción, como una muestra de un proveedor para inspección. En SAP, selecciona el artículo, ingresa la cantidad y el almacén de destino. Este movimiento no afecta precios ni informes de compra, ya que el artículo no es relevante para determinación de costos ni análisis de proveedores, pero sí actualiza el stock disponible.",
+    "start_time": 90.0,
+    "end_time": 117.46
   },
   {
     "slide_index": 6,
-    "image_file": "070_Slide_06_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Los traslados se usan para mover artículos entre almacenes. 6 Traslados de inventario Entrega Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén Pedido de EM Devoluciones de mercancías de funciones de compras",
-    "start_time": 191.81,
-    "end_time": 216.12
+    "image_file": "Slide_006.webp",
+    "script_text": "Los traslados mueven artículos entre almacenes para mejorar disponibilidad o reorganizar stock. En este caso, traslada 25 unidades del artículo TEC-ANDINA-001 desde el almacén Principal (01), depósito Estante A-01, al almacén Secundario (02), depósito Estante B-03. Este documento actualiza las cantidades en ambos almacenes y depósitos, sin generar movimiento contable, solo afectando el inventario físico y lógico en SAP.",
+    "start_time": 117.46,
+    "end_time": 150.1
   },
   {
     "slide_index": 7,
-    "image_file": "070_Slide_07_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "La salida de mercancías puede ser útil en casos donde los artículos estén dañados, quizás por una inundación en el almacén. Si el daño que ocasionó el agua los vuelve inservibles y no pueden venderse, se retiran del almacén. 7 Documentos de salidas de mercancías Entrega Devoluciones de la funcionalidad de ventas Entrada de mercancías Eliminación de componentes de producción Entradas de mercancías para el producto final Traslado de inventario entre almacenes Salida de mercancías Cantidades iniciales Almacén Pedido de EM Devoluciones de mercancías de funciones de compras",
-    "start_time": 216.12,
-    "end_time": 251.47
+    "image_file": "Slide_007.webp",
+    "script_text": "La salida de mercancías se utiliza cuando los artículos están dañados y no pueden venderse, por ejemplo, tras una inundación en el almacén. En estos casos, el daño hace que los productos sean inservibles y deben retirarse del inventario. Este movimiento registra la salida física de mercancía del almacén, aunque no implique una venta. Es importante para mantener la precisión del inventario y reflejar pérdidas reales. En SAP Business One, este proceso se documenta mediante un documento de salida de mercancías, que reduce las existencias y permite llevar un control preciso de las mercancías disponibles para la venta.",
+    "start_time": 150.1,
+    "end_time": 190.78
   },
   {
     "slide_index": 8,
-    "image_file": "070_Slide_08_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Las ventanas de entrada de mercancías y salida de mercancías son muy similares. Ambos documentos requieren que introduzca el almacén asignado. Si no especifica un almacén, el sistema utilizará el almacén por defecto del registro maestro de artículo. Contrariamente a lo que sucede en los documentos de marketing, en los procesos de compra y venta no puede introducir un interlocutor comercial. Una diferencia entre ambos documentos: La entrada de mercancías le permite introducir el precio del artículo que ingresa al almacén. La salida de mercancías, por otro lado, utiliza el coste del artículo para calcular el valor de la transacción contable y el campo del precio es sólo con fines informativos. 8 Entrada y salida de mercancías Salida de mercancías Comentarios Comentario Entrada de mercancías Información general 1 Número Lista precios Salida de mercancías Nº artículo. Cantidad Precio Total 22 Principal A1000 10 10 EUR 100 EUR Información general 2 Entrada de mercancías Entrada de mercancías Último precio de compra N.º 1 2 Ventana de tabla",
-    "start_time": 251.47,
-    "end_time": 319.15
+    "image_file": "Slide_008.webp",
+    "script_text": "Las ventanas de entrada y salida de mercancías son similares en estructura, pero difieren en funcionalidad clave. Ambas requieren especificar el almacén, usando el predeterminado del artículo si no se indica uno. A diferencia de los documentos de marketing, aquí no se puede ingresar un interlocutor comercial. La entrada de mercancías permite ingresar el precio de compra, mientras que la salida utiliza el costo del artículo para calcular el valor contable, mostrando el precio solo como información. En el ejemplo, se registra una salida de 10 unidades del artículo A1000 a 10 EUR cada una, totalizando 100 EUR, lo que ayuda a valorar correctamente la transacción en contabilidad.",
+    "start_time": 190.78,
+    "end_time": 234.74
   },
   {
     "slide_index": 9,
-    "image_file": "070_Slide_09_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Si una empresa utiliza un inventario permanente, grabar una transacción de inventario crea un asiento de forma automática. Aquí vemos una representación gráfica de las contabilizaciones para una entrada de mercancías (en la parte superior) y una salida de mercancías (en la parte inferior). Las entradas de mercancías crean un asiento que contabiliza el valor de las mercancías recibidas en la columna del Debe de la cuenta de existencias y en la columna del Haber de la cuenta de incremento de compensación de stocks. La salida de mercancías crea un asiento que contabiliza el valor de las mercancías enviadas en la columna del Debe de la cuenta de reducción de compensación de stocks y en la columna del Haber de la cuenta de existencias. 9 Contabilización de stocks 100 100 Cuenta de existencias Compensación de stocks: Incremento 100 Cuenta de existencias Compensación de stocks: Reducción 100 Entrada de mercancías Salida de mercancías Artículo de inventario",
-    "start_time": 319.15,
-    "end_time": 375.62
+    "image_file": "Slide_009.webp",
+    "script_text": "En un sistema de inventario permanente, cada transacción de entrada o salida de mercancías genera automáticamente un asiento contable. Una entrada de mercancías aumenta el valor del inventario: se debita la cuenta de existencias y se acredita la cuenta de incremento de compensación de stocks. Por el contrario, una salida de mercancías reduce el inventario: se debita la cuenta de reducción de compensación de stocks y se acredita la cuenta de existencias. Este mecanismo asegura que el valor del inventario en contabilidad coincida siempre con las existencias físicas registradas en el sistema, proporcionando una visión precisa y actualizada del estado financiero de la empresa.",
+    "start_time": 234.74,
+    "end_time": 276.17
   },
   {
     "slide_index": 10,
-    "image_file": "070_Slide_10_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Cuando tiene varios almacenes, puede que necesite transferir el inventario desde un almacén a otro. Aquí hay un ejemplo. Acaba de ingresar un pedido de cliente de 5 cajas de un artículo. El almacén 01 tiene 2 cajas. Hay más cajas disponibles en el almacén 02. Podemos transferir las 3 cajas desde el almacén 02 al 01, para que puedan entregarse todos los artículos de un almacén a otro. 10 Traslado de stock Almacén 01 Almacén 02 Artículo de inventario Acaba de ingresar un pedido de cliente de 5 cajas de un artículo. El almacén 01 tiene 2 cajas. Hay más cajas disponibles en el almacén 02. Podemos transferir 3 cajas desde el almacén 02 al 01 para poder entregar las 5 cajas juntas. Traslado de inventario",
-    "start_time": 375.62,
-    "end_time": 430.85
+    "image_file": "Slide_010.webp",
+    "script_text": "Cuando un cliente realiza un pedido que no puede ser atendido completamente desde un solo almacén, es necesario transferir inventario entre ubicaciones. En este caso, se recibe un pedido de 5 cajas, pero el almacén 01 solo tiene 2 unidades. Como hay stock disponible en el almacén 02, se transfiere lo faltante (3 cajas) desde allí al almacén 01. Esta operación permite consolidar el inventario necesario para cumplir con el pedido completo. El traslado de inventario entre almacenes es una función clave en SAP Business One para optimizar la distribución interna y garantizar la disponibilidad de productos donde se necesiten, sin afectar el valor total del inventario de la empresa.",
+    "start_time": 276.17,
+    "end_time": 322.01
   },
   {
     "slide_index": 11,
-    "image_file": "070_Slide_11_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Cuando añade un traslado de inventario desde el almacén 02 al 01, el sistema contabiliza un asiento. El asiento contabiliza el valor de las mercancías trasladas en el lado del débito de la cuenta de stock del almacén 01 y en el lado del crédito de la cuenta de inventario del almacén 02. 11 Traslado de stock Almacén 01 Almacén 02 Traslado de inventario Artículo de inventario Cuenta de existencias (Almacén 01) 150 Cuenta de existencias (Almacén 02)",
-    "start_time": 430.85,
-    "end_time": 463.58
+    "image_file": "Slide_011.webp",
+    "script_text": "Al registrar un traslado de inventario desde el almacén 02 al 01, SAP Business One genera automáticamente un asiento contable que refleja el movimiento de valor entre ubicaciones. El valor de las mercancías trasladadas se debita en la cuenta de existencias del almacén receptor (01) y se acredita en la cuenta de existencias del almacén origen (02). Este asiento asegura que el valor total del inventario de la empresa permanezca constante, mientras se actualizan correctamente los saldos por ubicación. En el ejemplo, se transfiere un valor de 150,00 unidades monetarias, lo que aumenta el stock valorado en el almacén 01 y lo disminuye en el almacén 02, manteniendo el equilibrio contable.",
+    "start_time": 322.01,
+    "end_time": 368.69
   },
   {
     "slide_index": 12,
-    "image_file": "070_Slide_12_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Los documentos de traslado de inventario también pueden utilizarse para trasladar artículos a un almacén en consignación en las instalaciones de un cliente. A diferencia de los documentos de entrada de mercancías o salida de mercancías, los traslados de inventario tienen campos para un interlocutor comercial, una persona de contacto y una dirección de envío. Cuando los artículos se extraigan del almacén en consignación de las instalaciones del cliente, cree una factura de cliente para los artículos y las cantidades utilizadas. Cada línea hace referencia al almacén en consignación para que el inventario se muestre como eliminado del almacén cuando la factura se grabe. 12 Consignación del cliente Almacén 01 Almacén 07 Su almacén en el lugar del cliente Su almacén en su propio lugar Utilice un traslado de inventario para mover artículos a un almacén en consignación Cree una factura de clientes para los artículos y las cantidades utilizadas por el cliente",
-    "start_time": 463.58,
-    "end_time": 522.17
+    "image_file": "Slide_012.webp",
+    "script_text": "Los documentos de traslado de inventario también se utilizan para mover artículos a un almacén en consignación ubicado en las instalaciones del cliente. A diferencia de las entradas o salidas de mercancías estándar, estos traslados permiten incluir un interlocutor comercial, persona de contacto y dirección de envío. Los bienes permanecen como propiedad de la empresa hasta que el cliente los consume o utiliza. En ese momento, se emite una factura de cliente por las cantidades usadas, y cada línea del documento hace referencia al almacén en consignación para que el sistema elimine automáticamente ese inventario de sus registros. Este modelo es útil para mejorar la disponibilidad del producto cerca del cliente sin transferir inmediatamente la propiedad.",
+    "start_time": 368.69,
+    "end_time": 415.44
   },
   {
     "slide_index": 13,
-    "image_file": "070_Slide_13_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Las solicitudes de traslado de inventario hacen que los artículos se trasladen de un almacén al otro sin que esto afecte a los movimientos de inventario o estados financieros. Una vez que la solicitud se cierra, el stock se traslada y se realizan las contabilizaciones financieras. Cuando la solicitud de traslado de inventario tiene el estado Abierto: Para el almacén emisor, la cantidad solicitada se considera como Comprometida. Para el almacén receptor, la cantidad solicitada se considera como Solicitada. Cuando la solicitud de traslado de inventario tiene el estado Cerrado: Para el almacén emisor, la cantidad solicitada se considera como cantidad Comprometida. Si copia esta solicitud por completo a un traslado de inventario, la cantidad se resta de la cantidad En stock. Para el almacén receptor, la cantidad solicitada se considera como cantidad solicitada. Si copia esta solicitud por completo a un traslado de inventario, la cantidad se agrega a la cantidad En stock. 13 Solicitud de traslado Estado de traslado de inventario En stock Comprometido Solicitado Disponible Alm.01 10 10 Alm.02 En stock Comprometido Solicitado Disp. Alm.01 10 1 9 Alm.01 > Alm.02 Alm.02 1 1 Solicitud de traslado En stock Comprometido Solicitado Disp. Alm.01 9 9 Alm.01 > Alm.02 Alm.02 1 1 Traslado de inventario Almacén 01 Almacén",
-    "start_time": 522.17,
-    "end_time": 613.56
+    "image_file": "Slide_013.webp",
+    "script_text": "Cuando creas una solicitud de traslado de inventario en SAP Business One, el stock no se mueve físicamente hasta que cierras la solicitud. Mientras está abierta, el almacén emisor considera la cantidad como comprometida y el receptor como solicitada. Al cerrarla y copiarla a un documento de traslado de inventario, el stock se resta del almacén origen y se suma al destino, actualizando los niveles reales de inventario. Este proceso permite planificar movimientos sin afectar inmediatamente la contabilidad ni el stock disponible.",
+    "start_time": 415.44,
+    "end_time": 449.86
   },
   {
     "slide_index": 14,
-    "image_file": "070_Slide_14_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Si un almacén está gestionado por depósito, entonces la ubicación del depósito será necesaria en los documentos de inventario para todos los artículos almacenados en ese almacén. Las ubicaciones de depósitos representan una estantería física o depósito donde los artículos se ubican. Los códigos de depósito consisten en el código de almacén más el código de cada subnivel. Puede definir los depósitos predeterminados para la entrada de mercancías y las reglas para automáticamente determinar los depósitos para las salidas de mercancías. Para especificar manualmente un depósito, haga clic derecho en el campo cantidad de una fila para abrir la ventana de Asignación de depósito. En esta ventana, puede especificar las cantidades y los códigos de depósito para el artículo de esa línea. 14 Las ubicaciones de depósito en los movimientos de mercancías S1 S2 S3 A1 A2 A3 L1 L2 L3 L1 L2 L3 L1 L2 L3 L1 L2 L3 S4 A4 05 A4 S3 L1 Almacén 05 Asignación de ubicación Entrada",
-    "start_time": 613.56,
-    "end_time": 682.39
+    "image_file": "Slide_014.webp",
+    "script_text": "En almacenes gestionados por depósito, SAP Business One requiere especificar la ubicación exacta donde se guarda o retira cada artículo. El código de depósito se forma combinando el código del almacén con los subniveles de estantería, como 05-A4-S3-L1. Para asignarlo manualmente en un documento de entrada de mercancías, haces clic derecho en el campo cantidad y seleccionas 'Asignación de depósito'. Allí defines cuántas unidades van a cada ubicación, asegurando un control preciso del stock físico.",
+    "start_time": 449.86,
+    "end_time": 484.85
   },
   {
     "slide_index": 15,
-    "image_file": "070_Slide_15_10_ItemInv_32_WM_GM_ES.webp",
-    "script_text": "Los movimientos de mercancías se registran con documentos de marketing y transacciones de inventario. Las tres transacciones de inventario principales son: salida de mercancías, traslado de inventario y entrada de mercancías. Una entrada de mercancías se utiliza para ingresar artículos en un almacén. Una salida de mercancías se utiliza para trasladas mercancías fuera de un almacén. Y el traslado de inventario se utiliza para trasladar artículos entre almacenes. Se requiere un almacén en todos los documentos de inventario. Si uno no se registra manualmente en la transacción, se asignará el almacén predeterminado para el artículo. No puede registrar un interlocutor comercial en la entrada de mercancías o salida de mercancías, a diferencia de los documentos de marketing que siempre requieren interlocutores comerciales. Una solicitud de traslado de inventario puede utilizarse para comprometer el movimiento del stock de un almacén a otro. Es posible especificar un interlocutor comercial en un traslado de inventario. Si activa los depósitos para un almacén, entonces un almacén se requiere cada vez que utilice ese almacén en los documentos de inventario. Cuando utiliza un inventario permanente, cada movimiento de mercancías crea un asiento de forma automática. 15 15 Resumen A continuación, se detallan algunos puntos clave: Los movimientos de mercancías se registran con documentos de marketing y transacciones de inventario. Las tres transacciones de inventario principales son: entrada de mercancías, salida de mercancías y traslado de inventario. Se requiere un almacén en todos los documentos de inventario. No puede introducir un interlocutor comercial en la entrada de mercancías o salida de mercancías. Una solicitud de traslado de inventario puede utilizarse para comprometer el movimiento del stock de un almacén a otro. Si activa los depósitos para un almacén, entonces un almacén se requiere cada vez que utilice ese almacén en los documentos de inventario. Cuando utiliza un inventario permanente, cada movimiento de mercancías crea un asiento.",
-    "start_time": 682.39,
-    "end_time": 814.97
+    "image_file": "Slide_015.webp",
+    "script_text": "Los movimientos de mercancías en SAP Business One se registran mediante documentos de marketing o transacciones de inventario: entrada, salida y traslado de mercancías. En todos estos documentos es obligatorio especificar un almacén, que se asigna por defecto si no se ingresa manualmente. No puedes incluir un interlocutor comercial en entradas o salidas de mercancías, solo en documentos de marketing o traslados de inventario. La solicitud de traslado permite comprometer stock entre almacenes antes del movimiento físico. Si activas depósitos, se requiere su especificación en cada uso de almacén. Con inventario permanente, cada movimiento genera automáticamente un asiento contable.",
+    "start_time": 484.85,
+    "end_time": 530.04
   }
 ]

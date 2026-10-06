@@ -1,170 +1,163 @@
 [
   {
     "slide_index": 1,
-    "image_file": "049_Slide_01_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 26 ImplTools QuickCopy en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Implementation Tools: Quick Copy SAP Business One Version 10.0 In this topic, we will look at how to select and copy database records between SAP Business One company databases.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Quick Copy en SAP Business One versión 10.0. Esta herramienta permite copiar registros entre bases de datos de distintas compañías durante un proyecto de implementación. Aprenderás a usarla para transferir datos maestros y de configuración de forma rápida y segura.",
     "start_time": 0.0,
-    "end_time": 25.22
+    "end_time": 18.2
   },
   {
     "slide_index": 2,
-    "image_file": "049_Slide_02_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "This topic covers the use of the Quick Copy tool during an implementation project. On completing this topic, you will be able to select and copy records between SAP Business One company databases. 2  At the end of this topic, you will be able to select and copy records between SAP Business One company databases using the Quick Copy tool Objectives",
-    "start_time": 25.22,
-    "end_time": 46.82
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás seleccionar y copiar registros entre bases de datos de distintas compañías SAP Business One utilizando la herramienta Quick Copy. Esto es esencial durante un proyecto de implementación para mover datos entre bases de prueba, capacitación y producción.",
+    "start_time": 18.2,
+    "end_time": 35.6
   },
   {
     "slide_index": 3,
-    "image_file": "049_Slide_03_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Business Scenario Copy Data Demo database Test database (for system testing) Production database Use for requirements gathering Training database (for hands-on exercises)  During an implementation project you will typically use and create multiple company databases  You will need separate database for testing and training purposes  Quick Copy allows you to quickly copy subsets of data to other databases (individual records or categories of data) Quick Copy is a very useful tool during an implementation project. During the implementation project you will typically create multiple company databases. For example: • A new production database that you will configure for the customer • A copy of the production database for testing • A copy of the production database for training The Quick Copy tool enables you to quickly copy subsets of data from the production database to other databases. You can select individual records or entire categories of data. For example, you might want to copy master data records and configuration settings from the production database to a test database. Or you can copy recent customizations you make on the production system to another database for testing and validation. Note that Quick Copy is not a full database copy. You still need to maintain full database backups for recovery purposes.",
-    "start_time": 46.82,
-    "end_time": 122.33
+    "image_file": "Slide_003.webp",
+    "script_text": "Quick Copy es una herramienta que permite copiar subconjuntos de datos —como registros individuales o categorías completas— desde una base de datos de origen a otra de destino. Es muy útil durante la implementación para crear bases de prueba y capacitación sin duplicar toda la base. No reemplaza los respaldos completos.",
+    "start_time": 35.6,
+    "end_time": 56.6
   },
   {
     "slide_index": 4,
-    "image_file": "049_Slide_04_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Quick Copy is one of the tools provided in the Implementation Center in SAP Business One. To launch Quick Copy, choose Copy Data Between Companies. 4 4 Implementation Center Administration > System Initialization > Implementation Center > Implementation Tasks > Data Management tab",
-    "start_time": 122.33,
-    "end_time": 140.71
+    "image_file": "Slide_004.webp",
+    "script_text": "Para lanzar Quick Copy, accede al Implementation Center desde el módulo de Administración. Sigue la ruta: System Initialization > Implementation Center > Implementation Tasks > pestaña Data Management. Allí encontrarás la opción 'Copy Data Between Companies' para iniciar la herramienta.",
+    "start_time": 56.6,
+    "end_time": 73.2
   },
   {
     "slide_index": 5,
-    "image_file": "049_Slide_05_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Quick Copy allows you to: • Copy directly between company databases. The database version of the target company should match that of the source company. • Copy indirectly via an intermediate file. If you choose indirect copy, Quick Copy saves the selected records in a file with the extension .qdf. You then login to the target company and run the import using Quick Copy. The company database that you are currently using is the source. For direct copy, you will be prompted to select the target company on the database server and provide the login credentials. For indirect copy, you will create the qdf file on the source, then login to the target company to import the qdf file. You can optionally save an xml project file containing your data category selections and copy options. You can use this project file the next time you use Quick Copy, saving you from having to make the selections again. 5 5 Quick Copy Overview Source company Target companies  Direct copy from source to target database (same version required)  Indirect copy (using an intermediate file) Copy to File Copy from File Direct copy to company *.qdf *.xml Project file with saved category selections",
-    "start_time": 140.71,
-    "end_time": 212.54
+    "image_file": "Slide_005.webp",
+    "script_text": "Quick Copy ofrece dos modos: directo e indirecto. En copia directa, transfieres datos entre compañías en el mismo servidor, requiriendo misma versión y credenciales. En copia indirecta, guardas los datos en un archivo .qdf, luego lo importas en la compañía destino. También puedes guardar un archivo .xml con tus selecciones para reutilizarlas.",
+    "start_time": 73.2,
+    "end_time": 94.6
   },
   {
     "slide_index": 6,
-    "image_file": "049_Slide_06_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
-    "start_time": 212.54,
-    "end_time": 220.54
+    "image_file": "Slide_006.webp",
+    "script_text": "Quick Copy es una herramienta esencial en proyectos de implementación de SAP Business One. Permite copiar selectivamente datos maestros y de configuración entre compañías, ya sea directamente o mediante un archivo intermedio. Recuerda que la versión de la base de datos destino debe coincidir con la del origen, y que no sustituye los respaldos completos.",
+    "start_time": 94.6,
+    "end_time": 117.2
   },
   {
     "slide_index": 7,
-    "image_file": "049_Slide_07_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "When you open the Quick Copy window you can see that the categories of data are shown on the left- hand side of the screen. The categories are initially blocked for selection until you select or set options on the right-hand side of the window. After you make selections on the right side of the window, the OK button becomes active. Choose the OK button, and the data categories will open up for selection. 7 7 Quick Copy Window Quick Copy window has two sections:  Data categories are shown on the left  Options for the copy are shown on the right  Data categories are blocked from selection until you select all the required options and choose OK (the OK button is not active until the required options are set) Categories are initially blocked for selection",
-    "start_time": 220.54,
-    "end_time": 261.91
+    "image_file": "Slide_007.webp",
+    "script_text": "Al abrir la ventana de Copia Rápida, ves que las categorías de datos están en el lado izquierdo y están bloqueadas para selección hasta que configures las opciones en el lado derecho. Solo después de definir correctamente la función de copia, el archivo QDF o la empresa objetivo, y elegir el método de copia, el botón OK se activa. Al presionarlo, las categorías de datos se desbloquean y puedes seleccionar qué información copiar. Este diseño evita errores al obligarte a completar primero los parámetros esenciales antes de elegir qué datos transferir entre compañías en SAP Business One.",
+    "start_time": 117.2,
+    "end_time": 156.6
   },
   {
     "slide_index": 8,
-    "image_file": "049_Slide_08_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "There are four sections with options:  Select the copy function and browse to choose the qdf file or the target company database.  Select the copy method (this applies only for Copy from File or Copy to Company)  Set options for handling errors.  Select the copy options (for import to the target company). Once you have made these settings, and choose the OK button, the data categories on the left-hand side of the screen will open up for selection. 8 8 Options for Quick Copy Source or Target Select:  Copy to File to copy records to an intermediate file (*.qdf)  Copy from File to import records to a target company from a qdf file  Copy to Company to copy directly Copy Method Defines how the import will insert or update records in the target database. Not applicable for Copy to File. Error Handling Defines how the system will handle errors encountered during either the copy or import process Copy Options Defines various options for the import. Not applicable for Copy to File.",
-    "start_time": 261.91,
-    "end_time": 320.38
+    "image_file": "Slide_008.webp",
+    "script_text": "En la sección de opciones de Copia Rápida, defines cuatro aspectos clave antes de proceder. Primero, eliges la función: copiar a un archivo QDF, importar desde uno o copiar directamente a otra compañía. Segundo, seleccionas el método de copia, que determina si se agregan, actualizan o reemplazan registros — solo aplica cuando no es 'Copiar a archivo'. Tercero, configuras cómo maneja el sistema los errores: puedes omitir registros afectados o detener el proceso tras un número límite de errores. Finalmente, estableces opciones de importación, como cómo se asignan las cuentas o qué hacer con campos vacíos. Solo después de completar estos ajustes y presionar OK, las categorías de datos en la izquierda se habilitan para selección.",
+    "start_time": 156.6,
+    "end_time": 203.6
   },
   {
     "slide_index": 9,
-    "image_file": "049_Slide_09_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "The copy method works as follows:  Add new records and update existing records that have a matching key  Add new records but not update records with matching keys  Only update existing records with matching keys without adding new records  Erase all existing records for the categories in the target database before adding new records 9 9 Copy Methods Add new records and update existing records that have a matching key And new records only but do not update records with a matching key Only update existing records with a matching key Erase all records for the categories before adding new records",
-    "start_time": 320.38,
-    "end_time": 350.62
+    "image_file": "Slide_009.webp",
+    "script_text": "Los métodos de copia definen cómo se transfieren los registros entre la base de datos de origen y la de destino. El primero agrega nuevos registros y actualiza los existentes que tengan una clave coincidente. El segundo solo agrega nuevos registros, sin modificar los que ya existen con la misma clave. El tercero únicamente actualiza los registros con clave coincidente, sin agregar ninguno nuevo. El cuarto elimina todos los registros existentes en las categorías seleccionadas antes de agregar los nuevos desde el origen. Estos métodos te permiten controlar precisamente el impacto en la empresa objetivo, ya sea para sincronizar datos, hacer una carga inicial o reemplazar información desactualizada.",
+    "start_time": 203.6,
+    "end_time": 247.4
   },
   {
     "slide_index": 10,
-    "image_file": "049_Slide_10_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Understanding Copy Methods The effect of each copy method on the target database is shown here: The source database T1 has four records (keys 1, 2, 3 and 4). The target database T2 has three records with matching keys 1,2 and 3. This slide shows the effect of each of the copy methods on the target company database: • Add New Records and Update Existing Records: In the example, a new record is added to the target database T2 with key 4. The records with matching keys 1, 2 and 3 will be updated with the values from the source database T1. Notice that the content for record keys 1, 2 and 3 has changed. • Add New Records Without Updating Existing Records: In the example, a new record is added to the target database T2 with key 4. However, unlike the first method shown above, in this case the records with keys 1, 2 and 3 are not updated. • Update Existing Records Without Adding New Records: This method does not add any new records so record key 4 is not inserted in the target database. The records with matching keys 1, 2 and 3 will be updated with the values from the source database T1. • Delete All Records Then Add New Records: This option deletes data for a matching key, then adds new records.",
-    "start_time": 350.62,
-    "end_time": 423.41
+    "image_file": "Slide_010.webp",
+    "script_text": "Este ejemplo muestra el efecto de cada método de copia en la base de datos de destino. La empresa de origen T1 tiene cuatro registros con claves 1, 2, 3 y 4. La empresa de destino T2 ya tiene tres registros con claves 1, 2 y 3. Al aplicar el primer método — agregar y actualizar — se agrega el registro con clave 4 y se actualizan los valores de las claves 1, 2 y 3 con los del origen. En el segundo método, solo se agrega la clave 4, dejando intactos los registros 1, 2 y 3. El tercer método no agrega nada, pero actualiza los registros 1, 2 y 3. Finalmente, el cuarto método elimina primero todos los registros con claves 1, 2 y 3 en el destino, y luego agrega los cuatro registros desde el origen, resultando en una reposición completa de los datos.",
+    "start_time": 247.4,
+    "end_time": 306.8
   },
   {
     "slide_index": 11,
-    "image_file": "049_Slide_11_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "The error handling choices govern the Quick Copy response to an error while importing the records. You can choose to:  Skip the affected record and continue copying valid records, or  Stop the copy process when the number of errors reaches a specified limit If the objects to be copied contain user-defined fields (UDFs), and the target system does not contain the UDFs, you can elect to skip the records, or to copy the records and ignore the missing UDFs: • If you select the Copy Records and Ignore Missing UDFs option, the application copies records even when user-defined fields in the source company are missing from the target company. • If you select Do Not Copy Records with Missing UDFs, and for example, the master data in the source company contains a UDF that is not present in the target company, the copy operation will fail. For example, the BP table in the source company contains a user-defined field, whose definition has not been copied to the target company. If this field is not selected, when you try to copy BP records to the target company, the copy operation fails. 11 11 Error handling choices govern Quick Copy response while importing records: Ignore errors and continue copying valid records Terminate the copy process after a specified number of errors If the records contain UDFs, but the target system does not, you can elect to skip the records, or, copy them and ignore the missing UDFs Error Handling",
-    "start_time": 423.41,
-    "end_time": 504.84
+    "image_file": "Slide_011.webp",
+    "script_text": "El manejo de errores en Copia Rápida determina cómo el sistema responde cuando encuentra problemas durante la importación. Puedes elegir omitir el registro afectado y continuar copiando los válidos, ideal para minimizar interrupciones cuando pocos datos tienen errores. Alternativamente, puedes detener el proceso automáticamente cuando se alcance un límite predefinido de errores, útil para evitar la propagación de problemas graves. Además, si los registros contienen campos definidos por el usuario (UDFs) que no existen en la empresa de destino, tienes dos opciones: copiar los registros e ignorar los UDFs faltantes, o no copiar los registros en absoluto si falta alguno de esos campos personalizados. Esto evita fallos por esquemas incompatibles entre compañías.",
+    "start_time": 306.8,
+    "end_time": 352.2
   },
   {
     "slide_index": 12,
-    "image_file": "049_Slide_12_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Many database records contain assigned accounts. The copy option for accounts can be chosen to:  Use Accounts in Source – If the source accounts also exist in the target, then the application copies the account assignments from the object in the source to the object in the target. However, if the source accounts do not exist in the target, then the application encounters an error during the copy process.  Use Default Accounts in Target – The application assigns the default accounts in the target to the object, and does not copy the source assignments. Note: If default accounts are not configured in the target company, and you select this option, then the account fields of the object in the target are empty after the copy process. The copy option for empty fields only affects updates:  Do Not Overwrite Target Fields and Keep Original Values – If a field in the source is empty, then the application skips copying this field. The application keeps the original value of the corresponding field in the target, which remains the same before and after the copy process.  Overwrite Target Fields with Empty Values – If a field in the source is empty, then the application overwrites the target field with empty values. You also have the option to: • Enforce a backup before the import starts. If you select the Enforce Backup Before Starting Copy Process checkbox, the import will not proceed if the target database has not been backed up within two hours. • Allow the import of data to the target company database, even when there are user connections to it. 12 12 If objects to be copied contain accounts, you can choose to copy the accounts to the target, or assign default accounts from the target If the objects contain empty fields, you can choose to skip copying the field and leave the original value in the target, or overwrite the target field with empty values Option to force backup before the import starts Option to copy to target even when there are active connections Copy Options",
-    "start_time": 504.84,
-    "end_time": 612.86
+    "image_file": "Slide_012.webp",
+    "script_text": "Al copiar objetos que contienen cuentas contables, puedes elegir cómo se asignan en la empresa de destino. Si seleccionas 'Usar cuentas en origen', el sistema copia las asignaciones de cuenta solo si esas cuentas existen también en el destino; si no existen, se genera un error. Con 'Usar cuentas predeterminadas en destino', se ignora lo que viene del origen y se asigna la cuenta predeterminada configurada en la empresa objetivo — pero si no hay predeterminadas definidas, los campos de cuenta quedan vacíos. Para campos vacíos en el origen, puedes decidir no sobrescribir el valor existente en el destino (manteniendo el valor original) o, al contrario, sobrescribirlo con un valor vacío. Además, puedes forzar una copia de seguridad reciente antes de iniciar o permitir la importación incluso si hay usuarios activos en el sistema.",
+    "start_time": 352.2,
+    "end_time": 406.4
   },
   {
     "slide_index": 13,
-    "image_file": "049_Slide_13_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Categories and Dependencies",
-    "start_time": 612.86,
-    "end_time": 616.08
+    "image_file": "Slide_013.webp",
+    "script_text": "Bienvenido a esta guía sobre la Copia Rápida entre Compañías en SAP Business One. Esta herramienta permite transferir datos maestros y de configuración de una compañía a otra de forma eficiente. Aprenderás cómo seleccionar categorías, gestionar dependencias y ejecutar el proceso sin errores. Ideal para implementaciones, actualizaciones o entornos multi-compañía. Comenzamos con los conceptos básicos.",
+    "start_time": 406.4,
+    "end_time": 429.0
   },
   {
     "slide_index": 14,
-    "image_file": "049_Slide_14_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "You select data from a category tree structure that when expanded follows the SAP Business One menu structure. Note that the structure does not change from company to company. The categories cover customizations (including queries and reports), administration and configuration settings, financial settings, business partner master data, inventory (including item master data and price lists), resource and production master data, and human resource master data. 14 14 Category Structure  Categories are shown in a tree structure that when expanded follows the SAP Business One menu structure",
-    "start_time": 616.08,
-    "end_time": 651.94
+    "image_file": "Slide_014.webp",
+    "script_text": "Las categorías en la Copia Rápida se organizan en un árbol que refleja exactamente la estructura del menú de SAP Business One. Esta estructura es idéntica en todas las compañías, lo que garantiza consistencia. Las categorías agrupan personalizaciones, administración, configuración financiera, maestros de socios de negocio, inventario, recursos, producción y recursos humanos. Al expandir una categoría, ves sus subelementos como aparecen en el menú estándar.",
+    "start_time": 429.0,
+    "end_time": 455.6
   },
   {
     "slide_index": 15,
-    "image_file": "049_Slide_15_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Selecting Data for the Copy  Select the categories required for copy  The system shows data dependencies and you can choose to continue with the copy process, or adjust the selected categories You can select one or more categories at the top level of the category tree or at a lower level. Choose the copy button to initiate the copy process. The system first checks data dependencies and will show dependent objects that will be automatically copied together with the data you selected. You can choose to continue with the copy process or cancel and adjust your selected categories. Note: If the target database already contains records that reference G/L accounts , for example, business partner and item master data, journal entries posted by transactions, then you will not be able to import the chart of accounts from the source database",
-    "start_time": 651.94,
-    "end_time": 698.69
+    "image_file": "Slide_015.webp",
+    "script_text": "Para comenzar la copia, seleccionas las categorías necesarias desde el árbol. El sistema analiza automáticamente las dependencias de datos y muestra qué objetos se copiarán junto con tu selección. Puedes proceder con la copia o ajustar las categorías si es necesario. Al hacer clic en el botón de copia, el sistema valida primero las dependencias antes de transferir los datos seleccionados.",
+    "start_time": 455.6,
+    "end_time": 480.6
   },
   {
     "slide_index": 16,
-    "image_file": "049_Slide_16_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "To see the eligible records that you can copy, select the row for the object at the lowest level in a category. The list of records is shown on the right.  You can individually deselect records that are not required for copy. 16 16 Viewing and Selecting Records to be Copied  Before you run the copy you can view all records for a category  You can deselect individual records from the copy process.",
-    "start_time": 698.69,
-    "end_time": 722.33
+    "image_file": "Slide_016.webp",
+    "script_text": "En esta pantalla, al seleccionar una categoría en el nivel más bajo del árbol, ves todos los registros asociados en el panel derecho. Aquí puedes revisar cada registro individualmente y deseleccionar aquellos que no necesitas copiar. Esto te da control granular sobre qué datos se transfieren, evitando la copia innecesaria de información no relevante para tu proceso.",
+    "start_time": 480.6,
+    "end_time": 504.0
   },
   {
     "slide_index": 17,
-    "image_file": "049_Slide_17_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "When you select a category, there might be data dependencies on other categories. For example, the item master data category has dependencies on business partner master data (vendors or resellers) as well as item groups and price lists. 17 17 Dependent Categories Inventory > Item Master Data Business Partner Master Data BP Groups Item Groups Price Lists Customs Groups Manufacturers etc.  ",
-    "start_time": 722.33,
-    "end_time": 747.86
+    "image_file": "Slide_017.webp",
+    "script_text": "Al seleccionar la categoría de Maestro de Artículos, el sistema muestra sus dependencias en otras categorías. Por ejemplo, los artículos pueden estar vinculados a socios de negocio (como proveedores o clientes), grupos de artículos para clasificación y listas de precio para ventas. Estas dependencias aseguran que los datos relacionados se copien correctamente para mantener la integridad referencial en la compañía destino.",
+    "start_time": 504.0,
+    "end_time": 529.0
   },
   {
     "slide_index": 18,
-    "image_file": "049_Slide_18_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "The Quick Copy tool indicates possible dependencies on other categories. These dependencies are derived from the database table structure, and not from the actual data records to be copied, and are therefore provided as warning for you to check if records in the marked category should also be copied. In the example shown, the item master data category is selected:  A black exclamation mark ‘!’ indicates that the item master data category is possibly dependent on other data categories.  A red exclamation mark ‘!’ indicates for an unselected category that the selected item master data category is possibly dependent on this category. In the example, the categories Bar Codes, Bin Location Master Data, and Price Lists are possibly dependent on the item master data category. Again this information is derived from the database table structure and may not represent the actual data.  When you see a category marked with red parentheses ‘(!)’, this indicates that the possible dependencies are deeper in the category structure. You can expand the category to see the dependent objects within its structure. In the example the Administration, Financials and Business Partners categories possibly have dependencies on the selected category, at a deeper level within the category. 18 18 Dependent Categories (Cont.) When you select an object or category, possible dependencies on other categories are marked Marked dependencies are derived from the database structure and are provided as a warning ! Selected category is dependent up on other categories ! Other categories are dependent on this category (!) Other categories are dependent on a category deeper in the structure",
-    "start_time": 747.86,
-    "end_time": 845.02
+    "image_file": "Slide_018.webp",
+    "script_text": "El sistema usa símbolos visuales para advertir sobre dependencias potenciales. Un '!' negro indica que la categoría seleccionada podría depender de otras. Un '!' rojo en una categoría no seleccionada significa que la seleccionada depende de ella. Cuando ves '(!)' rojo, señala que la dependencia está en un nivel más profundo del árbol; al expandir esa categoría, verás los objetos específicos involucrados. Estas advertencias provienen de la estructura de la base de datos, no de los datos reales.",
+    "start_time": 529.0,
+    "end_time": 560.8
   },
   {
     "slide_index": 19,
-    "image_file": "049_Slide_19_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "During the copy process, the system displays the real dependent objects, dynamically derived from the data records to be copied. These dependent objects are automatically selected for copy with the other data. Links are provided to view the dependent records, enabling you to decide whether to include them in the copy. Be aware that if you deselect a dependent object, the copy may fail. 19 19 Viewing Dependent Records During the copy process, the system displays actual dependent objects dynamically derived from the data records to be copied Dependent objects are automatically selected for copy with the other data Links are provided to view dependent records If you deselect a dependent object, copy may fail",
-    "start_time": 845.02,
-    "end_time": 885.82
+    "image_file": "Slide_019.webp",
+    "script_text": "Durante el proceso de copia rápida, el sistema muestra automáticamente los objetos dependientes relacionados con los registros seleccionados. Estos objetos se marcan para copiarse junto con los datos principales. Se proporcionan enlaces para revisar esos registros dependientes y decidir si se incluyen en la copia. Es importante saber que si deselecciona un objeto dependiente, la copia podría fallar debido a relaciones rotas entre los datos. Esta función ayuda a mantener la integridad de la información al copiar entre compañías.",
+    "start_time": 560.8,
+    "end_time": 593.0
   },
   {
     "slide_index": 20,
-    "image_file": "049_Slide_20_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "The copy process may take a long time if you are doing a direct copy and there are many records. For this reason it may be better to copy to an intermediate file so that you can perform the import at any time. After the copy, the system provides a full log record of the number of records copied, the number of records that failed, and the number of records not copied, together with a link to the records. Note: if you chose the option to stop after 1 error, you will only see records copies up to the point of failure. In the example, shown, we can see the number of records copied for the selected Customization and Item Master Data categories, plus the dependent data categories. And we can drill-down to see the codes of the copied records. Since the report shows an error on Bin Location master data, we can drill down to see the reason why this failed. 20 20 Copy Log  Log shows number of records copied, number of records filed, number of records not copies, and a link to drill down to records",
-    "start_time": 885.82,
-    "end_time": 943.58
+    "image_file": "Slide_020.webp",
+    "script_text": "Después de ejecutar una copia rápida, el sistema genera un registro detallado que muestra cuántos registros se copiaron correctamente, cuántos fallaron y cuántos no se procesaron. Este log incluye un enlace para hacer drill-down y revisar los códigos de los registros afectados, especialmente útil cuando hay errores. Por ejemplo, si falla la copia de datos de ubicación de contenedores, puede ver el motivo exacto. Este registro ayuda a auditar el proceso y repetirlo con correcciones si es necesario, guardando tiempo en proyectos de implementación o migración.",
+    "start_time": 593.0,
+    "end_time": 628.0
   },
   {
     "slide_index": 21,
-    "image_file": "049_Slide_21_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Quick Copy Window (cont.)  Icon bar displays when Quick Copy window open  Contains icons to view and display project files and log files  Toggle dependencies on and off  Access the copy options in the right-side of the window  View online help When the Quick Copy window is open you see a new icon bar in the client application. The icons enable you to: • Open a previously saved project XML file • Save a new project file • Toggle on and off the display of dependent categories • Show the copy options in the right-side of the window. These options become hidden when the copy process has run, so you can use this icon to view them again. • View the online help for Quick Copy",
-    "start_time": 943.58,
-    "end_time": 981.58
+    "image_file": "Slide_021.webp",
+    "script_text": "Cuando abre la ventana de Copia Rápida, aparece una barra de íconos en la aplicación cliente que le permite administrar su proyecto de copia. Puede abrir un proyecto XML previamente guardado o guardar uno nuevo. Los íconos le permiten activar o desactivar la visualización de categorías dependientes, mostrar nuevamente las opciones de copia (que se ocultan tras ejecutar el proceso) y acceder a la ayuda en línea. Esta barra mejora la usabilidad al mantener las herramientas esenciales visibles y accesibles durante todo el proceso de configuración y ejecución de la copia.",
+    "start_time": 628.0,
+    "end_time": 665.0
   },
   {
     "slide_index": 22,
-    "image_file": "049_Slide_22_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "The XML project file contains the saved data categories and the selected copy options (copy methods, error handling, etc.). This file can be reused and can save time if you repeatedly need to export the same types of data. The system will prompt you to create a project file if you close the Quick Copy window, or you can choose the save icon from the icon toolbar. You can also create and save a project file when you import on the target company. 22 22 Saving a Project File Option to save settings and selected categories in a project file (XML) To reuse the project file, choose the toolbar icon",
-    "start_time": 981.58,
-    "end_time": 1018.32
+    "image_file": "Slide_022.webp",
+    "script_text": "El archivo de proyecto XML guarda las categorías de datos seleccionadas y las opciones de copia configuradas, como el método de copia y el manejo de errores. Este archivo puede reutilizarse para evitar configurar nuevamente los mismos parámetros cuando necesite exportar los mismos tipos de datos con frecuencia. El sistema le pedirá crear un proyecto al cerrar la ventana de Copia Rápida, o puede hacerlo manualmente usando el ícono de guardar en la barra de herramientas. También puede guardar un proyecto al importar en la compañía destino, lo que facilita procesos repetitivos en implementaciones o actualizaciones del sistema.",
+    "start_time": 665.0,
+    "end_time": 704.8
   },
   {
     "slide_index": 23,
-    "image_file": "049_Slide_23_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "Here are some key points to take away from this session.  Quick Copy allows you to selectively copy data records from one company database to another.  The tool is useful during an implementation project for copying customizations and configuration information, or master data, to a test or training system, or to a different entity for the same company.  You can copy directly, or copy to an intermediate file: • For direct copy, both companies must have the same product version • The intermediate file has the extension qdf  You can select one or more categories for copy. Note: Categories are not selectable until you complete all the required copy options on the right-side of the window.  To see eligible records for copy, select the object row in the category hierarchy. You can deselect individual records.  When you select a category for copy, the Quick Copy tool automatically marks dependent objects. During the copy process the dependent objects are also selected for copying.  You can optionally save an XML project file containing your selected data categories and copy options. This can save time if you repeatedly need to export the same types of data. 23 23 Summary Here are some key points:  Quick Copy allows you to selectively copy data records from one company database to another  Quick Copy is useful during an implementation project for copying customizations and configuration information, and master data, to a test or training system or to a different company entity  You can copy directly, or copy to an intermediate file:  For direct copy, both companies must have the same product version  The intermediate file has the extension qdf  You can select one or more categories for copy. Note: Categories are not selectable until you complete all the required copy options on the right-side of the window.  To see eligible records for copy, select the object row in the category hierarchy. You can deselect individual records.  When you select a category for export, Quick Copy automatically marks dependent objects. During the copy process the dependent objects are also selected for copying.  You can optionally save the selected categories and settings in an xml file, for repeat use.",
-    "start_time": 1018.32,
-    "end_time": 1147.73
-  },
-  {
-    "slide_index": 24,
-    "image_file": "049_Slide_24_10_Impl_26_ImplTools_QuickCopy.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and/or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1147.73,
-    "end_time": 1285.34
+    "image_file": "Slide_023.webp",
+    "script_text": "La Copia Rápida permite copiar selectivamente registros de una base de datos de compañía a otra, útil durante proyectos de implementación para transferir personalizaciones, configuraciones y datos maestros a sistemas de prueba, capacitación o distintas entidades de la misma empresa. Puede copiar directamente (requiriendo misma versión de producto) o a un archivo intermedio con extensión QDF para importar después. Las categorías solo se seleccionan tras completar las opciones requeridas. Puede ver registros elegibles y deselectar individualmente. Al elegir una categoría, el sistema marca automáticamente los objetos dependientes. También puede guardar sus selecciones en un archivo XML para reutilizarlo y ahorrar tiempo en copias recurrentes.",
+    "start_time": 704.8,
+    "end_time": 747.0
   }
 ]

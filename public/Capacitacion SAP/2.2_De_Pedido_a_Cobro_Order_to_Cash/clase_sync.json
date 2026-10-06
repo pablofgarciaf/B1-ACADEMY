@@ -1,114 +1,114 @@
 [
   {
     "slide_index": 1,
-    "image_file": "107_Slide_01_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Sales 12 Process Order2Cash en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Ventas - clientes: Del pedido de cliente al cobro Bienvenido al tema del pedido del cliente al cobro.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema De Pedido a Cobro, también conocido como Order to Cash, en SAP Business One versión 10.0. Aquí aprenderás cómo gestionar el ciclo completo de ventas, desde que el cliente hace un pedido hasta que recibes el pago. Este proceso es clave para mantener una buena relación con tus clientes y asegurar el flujo de caja de tu empresa. Veremos cada documento involucrado y su impacto en inventario y contabilidad.",
     "start_time": 0.0,
-    "end_time": 20.28
+    "end_time": 28.15
   },
   {
     "slide_index": 2,
-    "image_file": "107_Slide_02_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "En este tema, llevaremos a cabo los pasos del proceso de ventas desde el pedido al cobro. A medida que creamos cada documento, describimos el efecto de cada paso en el inventario y la contabilidad. 2 Al finalizar este tema, podrá:  Llevar a cabo los pasos en el proceso de ventas desde el pedido del cliente al cobro  Describir el efecto que tiene cada paso en el inventario y la contabilidad Objetivos",
-    "start_time": 20.28,
-    "end_time": 46.13
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás llevar a cabo todos los pasos del proceso de ventas, desde el pedido del cliente hasta el cobro, siguiendo el flujo estándar en SAP Business One. Además, serás capaz de describir con precisión el efecto que cada documento tiene en los niveles de inventario y en los asientos contables generados. Esto te permitirá entender no solo qué se hace, sino por qué y cómo afecta a la empresa.",
+    "start_time": 28.15,
+    "end_time": 54.82
   },
   {
     "slide_index": 3,
-    "image_file": "107_Slide_03_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Su empresa fijó que la satisfacción del cliente será la mayor prioridad y desea usar los procesos eficientes en ventas para garantizar que las demandas del cliente se puedan cumplir lo más rápido posible. Revisaremos el proceso de ventas desde el pedido al cobro prestando atención a la comprensión del impacto de cada paso para ver cómo podemos mejorar el proceso. 3 3 Escenario empresarial  Su empresa fijó que la satisfacción del cliente será la mayor prioridad y desea usar los procesos eficientes en ventas para garantizar que las demandas del cliente se puedan cumplir lo más rápido posible.  Revisaremos el proceso de ventas desde el pedido al cobro prestando atención a la comprensión del impacto de cada paso para ver cómo podemos mejorar el proceso.",
-    "start_time": 46.13,
-    "end_time": 90.72
+    "image_file": "Slide_003.webp",
+    "script_text": "En este escenario, tu empresa tiene como prioridad máxima la satisfacción del cliente. Para lograrlo, busca optimizar los procesos de venta para responder rápidamente a las demandas. Revisaremos el flujo completo de pedido a cobro, enfocándonos en entender el impacto de cada paso. Esta visión te permitirá identificar oportunidades de mejora y tomar decisiones que agilicen la entrega y fortalezcan la relación con tus clientes.",
+    "start_time": 54.82,
+    "end_time": 83.23
   },
   {
     "slide_index": 4,
-    "image_file": "107_Slide_04_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "El pedido de cliente es un documento importante, ya que avisa a todos que deben comenzar a trabajar para cumplir con el pedido. Como tal, este documento es importante para planificar la producción, crear pedidos y programar recursos.  Puede modificar un pedido de cliente (modificar las cantidades, actualizar los precios o descuentos, etc.) una vez que lo contabilice. Esto es posible siempre y cuando haya establecido las parametrizaciones correctas en Parametrizaciones de documento y el pedido del cliente aún este abierto.  Un pedido de cliente puede basarse en una o más ofertas de venta.  Una característica exclusiva de SAP Business One consiste en la posibilidad de crear pedidos directamente desde los pedidos de cliente, lo que optimiza la cadena de suministro y los procesos de planificación de los materiales necesarios. En SAP Business One, los pedidos de cliente afectan el nivel de stock disponible. Es decir, las cantidades de los pedidos reducen el stock disponible. Cuando introduce pedidos de cliente, las transacciones de inventario o los cambios basados en el valor no se contabilizan en el libro mayor, pero los artículos se añaden a la cantidad comprometida en el módulo de inventario. 4 Pedido de cliente Pedido de cliente Entrega Factura de clientes Cobro Características del pedido de cliente: Puede modificar un pedido de cliente una vez que lo haya contabilizado. Un pedido de cliente puede basarse en una o más ofertas de venta. Puede crear pedidos directamente desde los pedidos de cliente. El pedido de cliente no contabiliza las transacciones de inventario o los cambios basados en valores, pero los artículos se añaden a la cantidad comprometida en el módulo de inventario.",
-    "start_time": 90.72,
-    "end_time": 196.73
+    "image_file": "Slide_004.webp",
+    "script_text": "El pedido de cliente es el primer documento que activa el proceso de venta. Informa a áreas como producción y almacén que se debe preparar el despacho. Aunque no genera asientos contables ni afecta el stock físico, sí reduce el stock disponible al comprometer las cantidades. Puedes modificarlo después de contabilizarlo si está abierto y la parametrización lo permite. Además, puede basarse en una o más ofertas y servir como origen para crear un pedido de producción, optimizando la planificación de materiales.",
+    "start_time": 83.23,
+    "end_time": 116.52
   },
   {
     "slide_index": 5,
-    "image_file": "107_Slide_05_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Imaginemos que nuestro cliente solicita 5 impresoras. En el pedido de cliente, introducimos el cliente, los artículos y la cantidad El sistema determina el precio automáticamente, en función de la lista de precios asignada. El vendedor ofrece un descuento al cliente, por lo que se indica un descuento manual del 1% en el pedido de cliente En función de las condiciones de pago, el cliente cumple los requisitos para recibir un descuento del 2% por pronto pago 5 Escenario de pedido de cliente  Nuestro cliente solicita 5 impresoras  En el pedido de cliente, introducimos el cliente, los artículos y la cantidad  El sistema determina el precio automáticamente  Se introduce un descuento manual del 1% en el pedido  El cliente también cumple los requisitos para recibir un descuento del 2% por pago adelantado Pedido de cliente Entrega Factura de clientes Cobro",
-    "start_time": 196.73,
-    "end_time": 250.73
+    "image_file": "Slide_005.webp",
+    "script_text": "Imaginemos que un cliente solicita 5 impresoras. En el pedido de cliente, ingresamos su datos, el artículo y la cantidad. El sistema calcula el precio unitario usando la lista de precios asignada al cliente. Luego, el vendedor aplica un descuento manual del 1% por negociación. Además, como el cliente paga antes de la fecha de vencimiento, califica para un descuento del 2% por pronto pago. Estos descuentos se acumulan y reducen el total a pagar, reflejándose en los documentos posteriores.",
+    "start_time": 116.52,
+    "end_time": 152.02
   },
   {
     "slide_index": 6,
-    "image_file": "107_Slide_06_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Una entrega registra que las mercancías se enviaron. Este documento también suele denominarse documento de embalaje o nota de entrega. Puede crear una nota de entrega a partir de un pedido de cliente o una oferta de cliente. Para hacerlo, abra el pedido o la oferta de cliente y seleccione Entrega en la lista desplegable Copiar a. Si tiene varios pedidos de cliente para entregar a un cliente, abra una entrega vacía, añada el nombre de cliente y use la opción Copiar de para seleccionar a partir de una lista de pedidos y ofertas de clientes de ese cliente en particular. 6 Entrega Pedido de cliente Entrega Factura de clientes Cobro Características de entrega: Registra que las mercancías se enviaron. Se puede crear a partir de un pedido de cliente u oferta de ventas. Puede contener artículos de varios pedidos de cliente u ofertas",
-    "start_time": 250.73,
-    "end_time": 304.3
+    "image_file": "Slide_006.webp",
+    "script_text": "La nota de entrega confirma que las mercancías han sido enviadas al cliente. Se puede generar directamente desde un pedido de cliente o una oferta de ventas usando la función 'Copiar a'. Si necesitas despachar varios pedidos a un mismo cliente, puedes abrir una entrega vacía, cargar el cliente y usar 'Copiar de' para seleccionar múltiples pedidos o ofertas. Este documento no afecta la contabilidad, pero sí reduce el stock disponible y aumenta la cantidad entregada en el módulo de inventario.",
+    "start_time": 152.02,
+    "end_time": 184.61
   },
   {
     "slide_index": 7,
-    "image_file": "107_Slide_07_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Añadir una entrega reduce los niveles de inventario reales. Cuando se contabiliza una entrega, también se contabiliza la salida de mercancías. Las mercancías abandonan el almacén, se reducen las cantidades de inventario y, si utiliza un inventario permanente, los cambios relevantes de inventario se contabilizan. Si la entrega está basada en un pedido de cliente, también se reducirá la cantidad comprometida de ese pedido. 7 Efecto de entrega Pedido de cliente Entrega Factura de clientes Cobro Añadir una entrega reduce los niveles de inventario. Si utiliza un inventario permanente, los cambios de inventario relevantes se contabilizan. Si la entrega está basada en un pedido de cliente, también se reduce la cantidad comprometida de ese pedido.",
-    "start_time": 304.3,
-    "end_time": 353.95
+    "image_file": "Slide_007.webp",
+    "script_text": "Al registrar una entrega en SAP Business One, se reduce el inventario físico y, si aplica, el inventario permanente se actualiza automáticamente. Además, si la entrega está vinculada a un pedido de cliente, se disminuye la cantidad comprometida en ese pedido. Esto asegura coherencia entre stock disponible y compromisos comerciales.",
+    "start_time": 184.61,
+    "end_time": 208.03
   },
   {
     "slide_index": 8,
-    "image_file": "107_Slide_08_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "En nuestra situación de ejemplo, nuestro cliente solicitó 5 impresoras. Cuando es el momento, enviamos 5 impresoras al cliente. Se borra la cantidad de 5 impresoras del inventario. Se abona el coste del artículo a la cuenta de inventario. Se carga el coste de la cuenta de variación de existencias. 8 Escenario de entrega  Enviamos 5 impresoras al cliente  Se borra la cantidad de 5 impresoras del inventario  Se abona el coste del artículo a la cuenta de inventario  Se carga a la cuenta de variación de existencias Pedido de cliente Entrega Factura de clientes Cobro",
-    "start_time": 353.95,
-    "end_time": 390.74
+    "image_file": "Slide_008.webp",
+    "script_text": "En este escenario, al entregar 5 impresoras, se registra un asiento contable: se acredita el costo del artículo en la cuenta de inventario y se debita la cuenta de variación de existencias. Esto refleja la salida de mercancía y su impacto en valoración de stock, manteniendo el equilibrio debe-haber.",
+    "start_time": 208.03,
+    "end_time": 227.52
   },
   {
     "slide_index": 9,
-    "image_file": "107_Slide_09_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Si utiliza un inventario permanente, el sistema crea un asiento automáticamente. El asiento contabiliza el valor del coste del artículo actual en la columna del Debe de la cuenta de gastos (tales como el coste de la mercancía vendida) y en la columna del Haber de la cuenta de existencias. La cuenta de existencias y la cuenta de gastos se recuperan a partir del campo Cuenta de existencias y el campo Cuenta de costes de la ficha Inventario del registro maestro de artículos. La cantidad del stock se ve siempre afectada, utilice o no un inventario permanente. 9 Entregas y contabilidad Artículo de compra Artículo de inventario Artículo de venta 100 100 Cuenta de existencias Cuenta de gastos Pedido de cliente Entrega Factura de clientes Si utiliza un inventario permanente, la entrega crea un asiento automáticamente. Las cuentas de stock y de costes se recuperan desde los campos de la ficha Inventario del registro maestro de artículo.",
-    "start_time": 390.74,
-    "end_time": 447.84
+    "image_file": "Slide_009.webp",
+    "script_text": "Con inventario permanente activo, SAP genera automáticamente un asiento al registrar una entrega: debita la cuenta de gastos (como costo de mercancía vendida) y acredita la cuenta de existencias. Estas cuentas se toman del maestro de artículo. El stock siempre se actualiza, independientemente del método de valuación.",
+    "start_time": 227.52,
+    "end_time": 249.24
   },
   {
     "slide_index": 10,
-    "image_file": "107_Slide_10_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Una factura de clientes es una solicitud de pago. La contabilización de una factura de clientes registra los ingresos en la cuenta de pérdidas y ganancias. Una vez añadida, la factura de clientes crea automáticamente la contabilización del asiento en las cuentas de cliente y de ingresos correspondientes. 10 Factura de clientes Pedido de cliente Entrega Factura de clientes Cobro  La factura de clientes representa una solicitud de pago.  La contabilización de una factura de clientes registra los ingresos en la cuenta de pérdidas y ganancias.  Una vez añadida, la factura de clientes crea automáticamente la contabilización del asiento en las cuentas de cliente y de ingresos.",
-    "start_time": 447.84,
-    "end_time": 490.18
+    "image_file": "Slide_010.webp",
+    "script_text": "Una factura de clientes en SAP representa una solicitud de pago al cliente. Al contabilizarse, registra ingresos en la cuenta de pérdidas y ganancias y crea automáticamente el asiento contable en las cuentas de cliente (debe) e ingresos (haber), asegurando trazabilidad financiera de la venta.",
+    "start_time": 249.24,
+    "end_time": 268.68
   },
   {
     "slide_index": 11,
-    "image_file": "107_Slide_11_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "En nuestra situación de ejemplo, hemos entregado 5 impresoras a nuestro cliente. Ahora realizamos la factura de las impresoras para nuestro cliente. El importe total se redujo en un 1% de descuento que introdujo el vendedor manualmente. La fecha de vencimiento se basa en las condiciones de pago del cliente. Estas condiciones de pago también incluyen un descuento del 2% por pago adelantado. Cuando se añade la factura de clientes, se crea automáticamente un asiento para registrar el Haber en los ingresos y el Debe en la cuenta del cliente. 11 Escenario de factura de clientes Realizamos la factura de las 5 impresoras para nuestro cliente El importe total incluye el descuento manual del 1% La fecha de vencimiento se basa en las condiciones de pago del cliente Se crea un asiento para registrar lo siguiente:  el Haber en los ingresos  al Debe de la cuenta del cliente Pedido de cliente Entrega Factura de clientes Cobro",
-    "start_time": 490.18,
-    "end_time": 547.63
+    "image_file": "Slide_011.webp",
+    "script_text": "Al facturar las 5 impresoras entregadas, se aplica un descuento manual del 1% sobre el total. La fecha de vencimiento se calcula según las condiciones de pago del cliente, que pueden incluir un 2% de descuento por pronto pago. SAP genera automáticamente el asiento: debe en cuenta cliente y haber en ingresos.",
+    "start_time": 268.68,
+    "end_time": 290.38
   },
   {
     "slide_index": 12,
-    "image_file": "107_Slide_12_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Aquí vemos los asientos realizados en un sistema de inventario permanente para artículos de inventario. Anteriormente vimos que la entrega crea un asiento asociado con la venta de mercancías y la reducción en el valor del inventario. Una factura de clientes registra lo que debe el cliente y los ingresos que derivan de la venta. Es posible que existan contabilizaciones adicionales para los impuestos o ingresos y gastos adicionales. 12 Contabilizaciones del proceso de ventas de artículos de inventario Artículo de compra Artículo de inventario Artículo de venta Ingresos por ventas Cliente 500 500 Pedido de cliente Entrega Factura de clientes 100 100 Cuenta de existencias Cuenta de gastos",
-    "start_time": 547.63,
-    "end_time": 590.35
+    "image_file": "Slide_012.webp",
+    "script_text": "En un sistema de inventario permanente, la entrega genera un asiento por salida de mercancía y reducción de inventario. La factura de clientes registra el derecho de cobro y los ingresos por venta. Pueden asientos adicionales para impuestos u otros gastos, según configuración fiscal y contable.",
+    "start_time": 290.38,
+    "end_time": 309.89
   },
   {
     "slide_index": 13,
-    "image_file": "107_Slide_13_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Una vez que se realiza el asiento, no puede modificarse, solo anularse. La previsualización del asiento le permite simular los asientos antes de que realmente ocurran en la base de datos. Esto puede ser útil si crea una factura de cliente con circunstancias especiales y desea comprobar el asiento antes de contabilizar la factura. También es útil para capacitar a los nuevos empleados o probar las parametrizaciones durante una implementación. La función está disponible para todos los documentos que crean contabilizaciones de asiento. Seleccione el icono Previsualización de asiento para ver de forma instantánea lo que sucede cuando contabiliza el documento. La simulación incluye cuentas de libro mayor y la distribución del Centro de coste. 13 Previsualización de asiento Ingresos p/ ventas Cliente 500 500 100 100 Cuenta de existencias Cuenta de gastos . La previsualización del asiento le permite simular los asientos antes de que se contabilicen. Previsualización de asiento 100 100 Cuenta de existencias Cuenta de gastos",
-    "start_time": 590.35,
-    "end_time": 657.55
+    "image_file": "Slide_013.webp",
+    "script_text": "La previsualización de asiento le permite simular el impacto contable antes de registrar un documento en SAP Business One. Al seleccionar el icono de previsualización, ve de forma instantánea cómo afectarán los débitos y créditos a las cuentas del libro mayor y la distribución del centro de costo. Esto es útil para validar facturas con circunstancias especiales, capacitar a nuevos empleados o probar configuraciones durante una implementación. La simulación muestra, por ejemplo, un débito al cliente y un crédito a ingresos por ventas, junto con el movimiento de existencias y gastos asociados. Así evita errores antes de que el asiento se escriba en la base de datos.",
+    "start_time": 309.89,
+    "end_time": 352.32
   },
   {
     "slide_index": 14,
-    "image_file": "107_Slide_14_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Los cobros representan el último paso del proceso básico de ventas, a pesar de que son una función en el módulo Gestión de bancos. Al contabilizar un cobro, se recibe el pago del cliente. Los pagos de clientes pueden procesarse para transferencias bancarias, cheques, tarjetas de crédito y efectivo. En algunas localizaciones, también puede utilizarse una letra de cambio. Cuando se añade el cobro, se crea un asiento que acredita el importe de la cuenta del cliente para el pago. Según el medio de pago, se debitará de la cuenta de mayor correspondiente (por ejemplo, una de nuestras cuentas bancarias). Si se aplica un descuento por pago adelantado, se realizará un débito en la cuenta de descuento. Cuando crea un cobro para borrar (total o parcialmente) un documento o una transacción, la reconciliación interna ocurre automáticamente, lo que significa que la factura del cliente y el pago coinciden en el sistema. Además, el asistente de pago se puede usar para procesar tanto los cobros como los pagos efectuados. También se pueden recibir pagos automáticamente desde una transferencia bancaria mediante el proceso de transferencia bancaria en diversas localizaciones. 14 Cobro Pedido de cliente Entrega Factura de clientes Cobro Los cobros representan el último paso del proceso básico de ventas, a pesar de que son una función en Gestión de bancos. Los pagos de clientes pueden procesarse para transferencias bancarias, cheques, tarjetas de crédito y efectivo. En algunas localizaciones, también puede utilizarse una letra de cambio. Cuando se añade el pago, se crea un asiento de forma automática.",
-    "start_time": 657.55,
-    "end_time": 761.66
+    "image_file": "Slide_014.webp",
+    "script_text": "El cobro representa el último paso del proceso Order to Cash, aunque se gestiona desde el módulo de Gestión de bancos. Al registrar un cobro, SAP crea automáticamente un asiento que acredita la cuenta del cliente y debita la cuenta correspondiente según el medio de pago: banco, efectivo, tarjeta o letra de cambio. Si aplica un descuento por pronto pago, se debita la cuenta de descuentos concedidos. El sistema realiza una reconciliación interna automática, vinculando el pago con la factura original. Además, el asistente de pago permite procesar cobros y pagos, y en algunas localizaciones se pueden recibir pagos automáticamente desde transferencias bancarias.",
+    "start_time": 352.32,
+    "end_time": 395.93
   },
   {
     "slide_index": 15,
-    "image_file": "107_Slide_15_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Consideremos la situación de ejemplo. El cliente paga la factura a tiempo por las 5 impresoras El importe total incluye el descuento manual del 1% y el descuento del 2% por pronto pago. El descuento por pronto pago aparece por defecto en las condiciones de pago asociadas al registro maestro de clientes. Se crea un asiento para registrar lo siguiente:  el Debe de la cuenta bancaria local, o una cuenta de compensación dependiendo de las condiciones de pago seleccionadas, y para las cuentas con descuento  y el Haber en la cuenta del cliente 15 Pedido de cliente Entrega Factura de clientes Cobro Escenario de cobro El cliente paga la factura a tiempo por las 5 impresoras. El importe total incluye el descuento manual del 1% y el descuento del 2% por pronto pago. Se crea un asiento para registrar lo siguiente: el Debe de la cuenta bancaria local y de las cuentas de descuentos el Haber en la cuenta del cliente",
-    "start_time": 761.66,
-    "end_time": 818.83
+    "image_file": "Slide_015.webp",
+    "script_text": "En este escenario, el cliente paga a tiempo la factura de 5 impresoras, aplicando un descuento manual del 1% y un descuento por pronto pago del 2%. El importe total a cobrar es de 485,00 USD. SAP genera automáticamente un asiento contable que debita la cuenta bancaria local por el importe recibido y la cuenta de descuentos concedidos por el 3% (15,00 USD), mientras que acredita la cuenta del cliente por el valor total de la factura (500,00 USD). Este asiento refleja correctamente el ingreso neto, el gasto por descuento y la eliminación del saldo del cliente, cumpliendo con el principio de partida doble.",
+    "start_time": 395.93,
+    "end_time": 438.5
   },
   {
     "slide_index": 16,
-    "image_file": "107_Slide_16_10_Sales_12_Process_Order2Cash_ES.webp",
-    "script_text": "Los pedidos de cliente incluyen la información básica para realizar el pedido, entregar mercancías y facturar al cliente. Un pedido de cliente no tiene efecto en la contabilidad. Los pedidos del cliente pueden modificarse luego de la contabilización siempre y cuando se lleven a cabo las parametrizaciones correctas y el pedido aún esté abierto. Una entrega indica que las mercancías se enviaron y reduce los niveles de inventario. Si ejecuta un inventario permanente, contabilizar una entrega debita el coste del artículo actual y acredita la cuenta de stock de inventario. Una factura de clientes es una solicitud de pago. Cuando uno se contabiliza una factura de cliente, un asiento contabiliza un débito a la cuenta del cliente y un crédito a los ingresos de ventas y todas las cuentas de impuestos. Puede previsualizar los asientos antes de que se contabilicen. Los cobros representan el último paso del proceso básico de ventas, a pesar de que son una función en Gestión de bancos. 16 16 Resumen A continuación, se detallan algunos puntos clave:  Los pedidos de cliente incluyen información para realizar el pedido, entregar mercancías y facturar al cliente. No tienen efecto en la contabilidad.  Los pedidos del cliente pueden modificarse luego de la contabilización siempre y cuando se lleven a cabo las parametrizaciones correctas y el pedido aún esté abierto.  Una entrega indica que las mercancías se enviaron y reduce los niveles de inventario.  En el inventario permanente, contabilizar una entrega debita el coste del artículo actual y acredita la cuenta de stock de inventario.  Una factura de clientes es una solicitud de pago. Cuando uno se contabiliza, un asiento contabiliza un débito a la cuenta del cliente y un crédito a los ingresos de ventas y todas las cuentas de impuestos.  Puede previsualizar los asientos antes de que se contabilicen.  Los cobros representan el último paso del proceso de ventas, a pesar de que son una función en Gestión de bancos.",
-    "start_time": 818.83,
-    "end_time": 942.48
+    "image_file": "Slide_016.webp",
+    "script_text": "Este resumen revisa el flujo completo del proceso Order to Cash en SAP Business One. Un pedido de cliente registra la intención de compra pero no afecta la contabilidad y puede modificarse si está abierto y se cumplen las parametrizaciones. Una entrega confirma el envío de mercancías y, en inventario permanente, debita el costo del artículo y acredita el stock. La factura de cliente solicita pago y genera un asiento que debita al cliente y acredita ingresos por ventas e impuestos. Los cobros, aunque gestionados en Gestión de bancos, concluyen el proceso al registrar el pago, aplicar posibles descuentos y conciliar automáticamente la factura. La previsualización de asiento está disponible en todos los documentos contables para validar asientos antes de registrarlos.",
+    "start_time": 438.5,
+    "end_time": 487.73
   }
 ]

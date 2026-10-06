@@ -1,198 +1,198 @@
 [
   {
     "slide_index": 1,
-    "image_file": "113_Slide_01_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Service 11 CSProcess Process en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Servicio: Proceso de servicio Bienvenido al tema sobre el proceso del servicio al cliente.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre el proceso de servicio al cliente en SAP Business One versión 10.0. Aquí aprenderá cómo gestionar los servicios que brinda a sus clientes, desde la definición de equipos hasta la facturación de costos. Este módulo es clave para mejorar la postventa y la satisfacción del cliente mediante herramientas integradas de servicio.",
     "start_time": 0.0,
-    "end_time": 19.94
+    "end_time": 22.6
   },
   {
     "slide_index": 2,
-    "image_file": "113_Slide_02_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "En este tema nos centramos en ver cómo definir y gestionar los servicios que presta a sus clientes. La funcionalidad del servicio también se puede utilizar para gestionar los servicios que le presentan sus proveedores. Ese tema se trata en un tema del curso aparte. Al finalizar este tema, podrá: Definir la generación automática de tarjetas de equipo Crear un modelo de contrato de servicio asociado a un artículo Vender un artículo asociado a un contrato de servicio Crear y gestionar una llamada de servicio 2 Al finalizar este tema, podrá: Definir la generación automática de tarjetas de equipo Crear un modelo de contrato de servicio asociado a un artículo Vender un artículo asociado a un contrato de servicio Crear y gestionar una llamada de servicio Establecer preferencias de impresión para llamadas y contratos de servicio Objetivos",
-    "start_time": 19.94,
-    "end_time": 71.59
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá definir la generación automática de tarjetas de equipo, crear modelos de contrato de servicio vinculados a artículos, vender artículos con contratos asociados y gestionar llamadas de servicio completas. También aprenderá a configurar preferencias de impresión para documentos de servicio, mejorando la trazabilidad y eficiencia en el soporte al cliente.",
+    "start_time": 22.6,
+    "end_time": 44.8
   },
   {
     "slide_index": 3,
-    "image_file": "113_Slide_03_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Escenario empresarial El cliente informa de un problema El representante de servicio abre una llamada de servicio para registrar el problema. Comprueba la garantía la cobertura del contrato. Si el representante de servicio no puede solucionar el problema, se reenvía. A veces esto implica una visita técnica a las instalaciones del cliente. Una vez que el problema está solucionado, se cierra la llamada de servicio. Todos los costes de servicio en los que se incurra se facturan al cliente. En nuestro escenario empresarial el centro de llamadas está definido para ofrecer el mejor servicio a nuestros clientes. Cuando un cliente informa de un problema, un representante de ventas abre una llamada de servicio para registrar el problema. El sistema comprueba automáticamente la garantía y la cobertura del contrato del cliente y del artículo. El representante de ventas intenta solucionar el problema pero si no puede hacerlo, se reenvía a alguien que tenga más experiencia. A veces esto puede implicar que un técnico vaya a las instalaciones del cliente. Una vez que el problema está solucionado, se cierra la llamada de servicio. Todos los costes del servicio que no estén cubiertos por el contrato o la garantía se facturan al cliente.",
-    "start_time": 71.59,
-    "end_time": 149.64
+    "image_file": "Slide_003.webp",
+    "script_text": "Cuando un cliente reporta un problema, el representante de servicio abre una llamada de servicio para registrarlo. El sistema verifica automáticamente la garantía y cobertura del contrato. Si el problema no se puede resolver internamente, se reenvía a un técnico especializado, posiblemente para una visita técnica. Tras la solución, se cierra la llamada y se facturan los costos no cubiertos por garantía o contrato.",
+    "start_time": 44.8,
+    "end_time": 71.0
   },
   {
     "slide_index": 4,
-    "image_file": "113_Slide_04_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Herramientas de servicio SAP Business One ofrece las siguientes herramientas para realizar el servicio: Tarjetas de equipo para registrar el historial de servicio Modelos y contratos de servicio y garantía Colas de servicio para dirigir las llamadas de servicio Documentos de llamada de servicio para gestionar la respuesta y la resolución del servicio y realizar su seguimiento Base de conocimientos de soluciones, un repositorio de síntomas y soluciones Informes de servicio SAP Business One ofrece las siguientes herramientas para realizar el servicio: Modelos y contratos de servicio y garantía Tarjetas de equipo para registrar el historial de servicio Colas de servicio para dirigir las llamadas de servicio Documentos de llamada de servicio para gestionar la respuesta y la resolución del servicio y realizar su seguimiento Base de conocimientos de soluciones, un repositorio de síntomas y soluciones Informes de servicio Vamos a ver cómo funcionan todas estas herramientas juntas para gestionar el proceso de servicio al cliente.",
-    "start_time": 149.64,
-    "end_time": 209.69
+    "image_file": "Slide_004.webp",
+    "script_text": "SAP Business One ofrece herramientas integradas para gestionar el servicio al cliente: tarjetas de equipo para historial de artículos serializados, modelos y contratos de servicio y garantía, colas para priorizar llamadas, documentos de llamada para seguimiento, base de conocimientos de soluciones y reportes de servicio. Estas trabajan juntas para ofrecer un proceso eficiente y trazable desde el reporte hasta la resolución.",
+    "start_time": 71.0,
+    "end_time": 96.0
   },
   {
     "slide_index": 5,
-    "image_file": "113_Slide_05_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Tarjetas de equipo Interlocutor comercial Artículo serializado Tarjeta de equipo Número de serie Cliente Artículo Factura de clientes o entrega con artículo serializado Creación automática Creación manual Dirección Historial Anexos Las tarjetas de equipo almacenan información sobre los artículos específicos (identificados con un número de serie) que se encuentran en el sitio del cliente y que pueden necesitar servicios. Además de la información básica como el número de serie, el cliente y el artículo, la tarjeta también incluye una dirección, historial del artículo (que incluye llamadas de servicio, contratos, datos de ventas y transacciones) y anexos. Las tarjetas de equipo se pueden crear de forma automática o manual: Una vez que se ha configurado adecuadamente el registro maestro de artículos, una factura de clientes o una entrega pueden desencadenar la creación de una tarjeta de equipo para un artículo serializado. Explicaremos cómo realizar la configuración más adelante en este tema. También se puede crear una tarjeta de equipo manualmente. Esto es útil si brinda servicios para artículos que no vende. Desde dentro de una tarjeta de equipo puede ver las llamadas de servicio correspondientes o incluso crear una nueva llamada de servicio.",
-    "start_time": 209.69,
-    "end_time": 287.35
+    "image_file": "Slide_005.webp",
+    "script_text": "La tarjeta de equipo registra el historial de un artículo serializado en sitio del cliente. Incluye número de serie, cliente, artículo, dirección, historial de servicio, ventas y anexos. Se crea automáticamente al facturar un artículo serializado o manualmente para equipos no vendidos. Desde aquí se pueden ver o crear llamadas de servicio relacionadas, permitiendo un seguimiento completo del activo.",
+    "start_time": 96.0,
+    "end_time": 120.2
   },
   {
     "slide_index": 6,
-    "image_file": "113_Slide_06_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Contratos de servicio y garantías Cuando se vende un producto, se puede ofrecer una garantía para cubrir su mantenimiento durante un plazo de tiempo concreto. Además, algunas empresas ofrecen garantías o contratos de servicio ampliados por un precio adicional. En SAP Business One puede definir un modelo de contrato para los servicios y garantías que se suelen ofrecer. De este modo, cuando se vende un producto, es posible crear un contrato automática o manualmente a partir de uno de los modelos. Cuando se vende un producto, se puede ofrecer una garantía para cubrir su mantenimiento durante un plazo de tiempo concreto. Además, algunas empresas ofrecen garantías o contratos de servicio ampliados por un precio adicional. En SAP Business One puede definir un modelo para los servicios y garantías que se suelen ofrecer. De este modo, cuando se vende un producto, es posible crear un contrato automática o manualmente a partir de uno de los modelos.",
-    "start_time": 287.35,
-    "end_time": 348.38
+    "image_file": "Slide_006.webp",
+    "script_text": "Al vender un producto, puede ofrecerse una garantía básica o un contrato de servicio ampliado por costo adicional. En SAP Business One se definen modelos de contrato para servicios y garantías habituales. Al vender un artículo, se puede generar automáticamente un contrato desde uno de estos modelos, o crearlo manualmente. Esto asegura cobertura clara y facturación oportuna de servicios no incluidos.",
+    "start_time": 120.2,
+    "end_time": 145.2
   },
   {
     "slide_index": 7,
-    "image_file": "113_Slide_07_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Tres tipos de contratos y modelos Cliente Para ofrecer servicios a clientes especiales No relacionado con artículos concretos Grupo de artículos Para servicios que se ofrecen a un cliente pero limitado a ciertos grupos de artículos. Número de serie Para servicios sobre artículos con números de serie para los cuales existe una tarjeta de equipo Los contratos de servicio se centran en los servicios de una de las siguientes opciones (tipos de contrato): Servicios sobre artículos con números de serie para los cuales existe una tarjeta de equipo: por lo general, un contrato de servicio que ofrece servicios a un cliente según la garantía de un artículo. Servicios para clientes especiales: es posible que haya llegado a un acuerdo con el cliente para proporcionarle servicios que no están relacionados con ningún artículo. Servicios ofrecidos para ciertos grupos de artículos: estos contratos son válidos únicamente para grupos de artículos específicos. Puede crear modelos de contrato que contengan valores por defecto para los tres tipos de contrato. Puede introducir un modelo de contrato para artículos con números de serie en el registro maestro de artículos. Si crea una factura de clientes o una entrega para dicho artículo, el sistema creará automáticamente no sólo una tarjeta de equipo, sino también un contrato de servicio del tipo Garantía. Si desea crear un contrato de servicio del tipo Regular, deberá hacerlo de forma manual. No obstante, también puede crear su contrato basándose en un modelo de cualquiera de los tres tipos de contrato introduciendo el nombre del modelo de contrato en el campo Modelo.",
-    "start_time": 348.38,
-    "end_time": 444.98
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, los contratos de servicio se clasifican en tres tipos según su enfoque: servicios para clientes especiales, sin relación con artículos; servicios limitados a grupos específicos de artículos; y servicios vinculados a artículos con números de serie y tarjeta de equipo. Estos contratos permiten ofrecer soporte personalizado según las necesidades del cliente. Además, se pueden crear modelos de contrato con valores por defecto para agilizar su uso. Los modelos se aplican automáticamente al generar facturas o entregas de artículos serializados, vinculando la creación del contrato y la tarjeta de equipo. Este enfoque asegura consistencia y reduce la carga administrativa en la gestión de servicios postventa.",
+    "start_time": 145.2,
+    "end_time": 189.0
   },
   {
     "slide_index": 8,
-    "image_file": "113_Slide_08_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Detalles de contrato: Acuerdo sobre el nivel de servicio Detalles del acuerdo sobre el nivel de servicio Ficha General Tiempo de respuesta Tiempo de resolución Ficha Cobertura Horas disponibles para el servicio Tipo de servicios cubiertos: Piezas Mano de obra Desplazamiento En la ficha General de un contrato de servicio, se especifica el acuerdo sobre el nivel de servicio del cliente. Allí se especifican el tiempo de respuesta permitido y el tiempo de resolución requerido por el contrato. En la ficha Cobertura, se enumeran el día y la hora de la disponibilidad del servicio. Puede definir períodos para cada día, incluso 24 horas. También puede indicar si se incluyen las vacaciones. Asimismo, puede enumerar los tipos de servicios cubiertos, por ejemplo, piezas, trabajo o viaje. Todos estos campos se pueden definir automáticamente con valores por defecto a partir de un modelo de contrato. Además, puede especificar los artículos que abarca el contrato.",
-    "start_time": 444.98,
-    "end_time": 506.71
+    "image_file": "Slide_008.webp",
+    "script_text": "En la ficha General del contrato de servicio se define el acuerdo de nivel de servicio, incluyendo los tiempos de respuesta y resolución que el cliente espera. En la ficha Cobertura se configuran los horarios disponibles para atender el servicio, permitiendo definir períodos diarios e incluir o excluir fines de semana y festivos. También se especifican los tipos de servicios cubiertos, como piezas, mano de obra o desplazamiento. Estos valores pueden cargarse automáticamente desde un modelo de contrato, lo que garantiza consistencia y ahorra tiempo. Además, es posible vincular el contrato a artículos o grupos de artículos específicos para limitar su aplicación.",
+    "start_time": 189.0,
+    "end_time": 230.4
   },
   {
     "slide_index": 9,
-    "image_file": "113_Slide_09_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Creación automática del contrato y la tarjeta de equipo Tarjeta de equipo Factura de clientes o entrega con artículo serializado Servicio (garantía) Contrato En la ficha Parametrizaciones generales, Inventario: Defina los números de serie únicos para la empresa. Marque la casilla de selección Creación automática de tarjeta de equipo En el Registro maestro de artículos: Defina que el artículo se gestione por números de serie Asigne un modelo de contrato (del tipo de número de serie) en el campo de modelo de contrato Para definir la creación automática es necesario hacer algunas configuraciones generales a nivel de empresa, así como en el registro maestro de artículos. Primero tiene que configurar dos cosas aplicables a toda la empresa en la ficha Inventario de Parametrizaciones generales. Defina los números de serie únicos para la empresa. En el campo Números de serie unívocos por, seleccione Números de serie. A continuación, marque la casilla de selección para activar la creación automática de tarjetas de equipo. Una vez que se han configurado estas dos cosas, todos los artículos que estén definidos para gestionarse por números de serie generarán una tarjeta de equipo cuando se contabilice una factura de clientes o una entrega. Para crear el contrato a la vez, también debe asignar un modelo de contrato en el campo Modelo de garantía del registro maestro de artículos. Tenga en cuenta que el modelo de contrato debe ser del tipo de número de serie.",
-    "start_time": 506.71,
-    "end_time": 596.42
+    "image_file": "Slide_009.webp",
+    "script_text": "Para habilitar la creación automática de la tarjeta de equipo y el contrato de servicio, primero se debe configurar a nivel de empresa: definir que los números de serie son únicos y activar la creación automática de tarjetas de equipo en las parametrizaciones de inventario. Luego, en el registro maestro del artículo, se debe indicar que se gestiona por número de serie y asignar un modelo de contrato del tipo garantía. Cuando se genera una factura de clientes o una entrega para ese artículo, SAP Business One crea automáticamente tanto la tarjeta de equipo como el contrato de servicio vinculado, asegurando trazabilidad y cumplimiento de la garantía sin intervención manual.",
+    "start_time": 230.4,
+    "end_time": 275.0
   },
   {
     "slide_index": 10,
-    "image_file": "113_Slide_10_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Vincular una tarjeta de equipo a varios interlocutores comerciales Puede añadir manualmente varios interlocutores comerciales a una tarjeta de equipo. Ejemplo empresarial: su empresa compra un producto de un proveedor y lo vende a un cliente. Desea conservar toda la información de este producto en la misma tarjeta de equipo. Al crear una factura de clientes o una entrega para un interlocutor comercial con un número de serie que ya existe en una tarjeta de equipo sin terminar, este interlocutor comercial se puede añadir automáticamente a la tarjeta de equipo. Ejemplo empresarial: el cliente devuelve un producto y la empresa lo vende de nuevo a otro cliente. Desea conservar toda la información en la misma tarjeta de equipo. Para poder enlazar manualmente una tarjeta de equipo a un proveedor y a un cliente, vaya a la ficha Parametrizaciones de documento > Por documento > Tarjeta de equipo y seleccione la opción: Añadir varios interlocutores comerciales a una tarjeta de equipo. Esta definición puede ser útil si su empresa compra un producto de un proveedor y lo vende a un cliente. Desea conservar toda la información (es decir, datos maestros, transacciones relacionadas, llamadas de servicio y contratos) de este producto en la misma tarjeta de equipo. La otra opción es: Añadir automáticamente interlocutores comerciales de documentos nuevos a tarjetas de equipo existentes. Se utilizará en casos de creación de una factura de clientes o una entrega para un interlocutor comercial con un número de serie que ya existe en una tarjeta de equipo sin terminar. El interlocutor comercial se añadirá automáticamente a la tarjeta de equipo. Por ejemplo, si su empresa ha vendido un producto a un cliente que luego lo ha devuelto. La empresa puede volver a vender el artículo con el mismo número de serie a otro cliente que se añadirá a la misma tarjeta de equipo.",
-    "start_time": 596.42,
-    "end_time": 712.2
+    "image_file": "Slide_010.webp",
+    "script_text": "SAP Business One permite asociar una tarjeta de equipo a múltiples interlocutores comerciales, como proveedores y clientes, para mantener un historial unificado de un artículo a lo largo de su vida útil. Esto se puede hacer manualmente mediante la opción 'Añadir varios interlocutores comerciales a una tarjeta de equipo' en las parametrizaciones de documento. También se puede activar la adición automática: cuando se genera una factura o entrega con un número de serie que ya existe en una tarjeta de equipo abierta, el nuevo interlocutor se agrega automáticamente. Esto es útil en casos de devoluciones y reventas, garantizando que todas las transacciones, llamadas de servicio y contratos queden vinculados al mismo artículo.",
+    "start_time": 275.0,
+    "end_time": 320.4
   },
   {
     "slide_index": 11,
-    "image_file": "113_Slide_11_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Proceso de servicio Crear una llamada de servicio. Respuesta de servicio Resolución de servicio Ahora vamos a ver el proceso para dar respuesta a los problemas del cliente. Lo hemos dividido en tres etapas generales: creación de la llamada de servicio, respuesta al problema del cliente y resolución del problema.",
-    "start_time": 712.2,
-    "end_time": 732.24
+    "image_file": "Slide_011.webp",
+    "script_text": "El proceso de servicio en SAP Business One se estructura en tres etapas clave: creación de la llamada de servicio, respuesta al problema y resolución del mismo. Cuando un cliente reporta un incidente, se crea una llamada de servicio que el sistema asigna automáticamente a un empleado según disponibilidad o expertise. Esta llamada sirve como registro central para seguir el diagnóstico, las acciones realizadas y los tiempos involucrados. Al finalizar, se registra la resolución y se cierra la llamada, asegurando trazabilidad y calidad en la atención al cliente. Este flujo permite gestionar eficientemente los servicios postventa y mejorar la satisfacción del cliente.",
+    "start_time": 320.4,
+    "end_time": 361.8
   },
   {
     "slide_index": 12,
-    "image_file": "113_Slide_12_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Llamada servicio Crea una llamada de servicio cuando un cliente se pone en contacto con usted para informarle sobre un problema relacionado con el servicio. El sistema busca los contratos que tiene el cliente. La llamada de servicio se asigna a un empleado para que responda al problema del cliente. Crear una llamada de servicio. Crea una llamada de servicio cuando un cliente se pone en contacto con usted para informarle sobre un problema relacionado con el servicio. El sistema busca los contratos que tiene el cliente. La llamada de servicio se asigna a un empleado para que responda al problema del cliente.",
-    "start_time": 732.24,
-    "end_time": 770.93
+    "image_file": "Slide_012.webp",
+    "script_text": "Al crear una llamada de servicio en SAP Business One, se registran los datos del cliente, el artículo involucrado (si aplica) y una descripción clara del problema reportado. El sistema busca automáticamente los contratos de servicio activos del cliente para determinar cobertura y condiciones. Luego, la llamada se asigna a un empleado responsable, quien será el encargado de dar seguimiento y resolver el incidente. Esta asignación puede ser manual o basada en reglas de disponibilidad y especialidad. La llamada sirve como punto central de comunicación y seguimiento, asegurando que ninguna solicitud quede sin atención y que se cumplan los tiempos acordados en el contrato.",
+    "start_time": 361.8,
+    "end_time": 404.0
   },
   {
     "slide_index": 13,
-    "image_file": "113_Slide_13_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Respuesta de servicio El representante de servicio asignado revisa la información de la llamada de servicio y cualquier historial que conste en el registro de equipo. Después, da un diagnóstico para el problema y ofrece soluciones. Todas las acciones se documentan y registran en la ficha del historial. Si el primer representante no puede resolver el problema, la llamada de servicio se asigna a un técnico. Respuesta de servicio El representante de servicio asignado revisa la información de la llamada de servicio y cualquier historial que conste en el registro de equipo. Después, da un diagnóstico para el problema y ofrece soluciones. Todas las acciones se documentan y registran en la ficha del historial. Si el primer representante no puede resolver el problema, la llamada de servicio se asigna a un técnico.",
-    "start_time": 770.93,
-    "end_time": 822.67
+    "image_file": "Slide_013.webp",
+    "script_text": "El representante de servicio asignado revisa la información de la llamada de servicio y el historial del equipo. Luego, realiza un diagnóstico del problema y ofrece soluciones al cliente. Todas las acciones se documentan y registran en la ficha de historial para trazabilidad. Si el representante no puede resolver el problema, la llamada se asigna a un técnico especializado. Este flujo garantiza un seguimiento ordenado y una resolución eficiente del servicio.",
+    "start_time": 404.0,
+    "end_time": 433.0
   },
   {
     "slide_index": 14,
-    "image_file": "113_Slide_14_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Proceso de servicio Cuando se resuelve el problema: cierre la llamada de servicio realice la facturación del servicio correspondiente Es posible crear y gestionar actividades técnicas en el documento de la llamada de servicio. Todos los gastos de servicio se pueden registrar y controlar durante la llamada. Resolución de servicio Es posible crear y gestionar actividades técnicas en el documento de la llamada de servicio. Todos los gastos de servicio se pueden registrar y controlar durante la llamada. Cuando se resuelve el problema: Cierre la llamada de servicio y prosiga con la facturación del servicio según corresponda.",
-    "start_time": 822.67,
-    "end_time": 860.88
+    "image_file": "Slide_014.webp",
+    "script_text": "Cuando se resuelve el problema, se cierra la llamada de servicio y se procede con la facturación correspondiente. Durante la llamada, es posible crear y gestionar actividades técnicas, como diagnósticos o reparaciones. Todos los gastos de servicio se registran y controlan en tiempo real dentro del documento de la llamada. Esto permite una gestión completa del servicio, desde la atención al cliente hasta la contabilización de ingresos y costos.",
+    "start_time": 433.0,
+    "end_time": 461.2
   },
   {
     "slide_index": 15,
-    "image_file": "113_Slide_15_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Llamadas de servicio Llamada servicio Contrato de servicio Tarjeta de equipo Número de serie Cliente Artículo ? Abra una llamada de servicio desde el menú Servicio para registrar y hacer el seguimiento de las quejas o problemas de los clientes. Las llamadas de servicio permiten gestionar el proceso de servicio llevado a cabo para un problema específico de un cliente. Mediante la llamada de servicio es posible gestionar actividades, documentar acciones, gestionar reparaciones y gastos, crear facturas o movimientos de mercancías para piezas de recambio, buscar soluciones y realizar un seguimiento del historial de llamadas de servicio. Generalmente, un cliente tiene un contrato de servicio válido o el artículo está cubierto por una garantía. Si no hay ningún contrato de servicio válido para el cliente o si se recibe la llamada fuera del tiempo de cobertura, el sistema emitirá una advertencia. Cuando se recibe una llamada, el representante del servicio al cliente pregunta si el servicio corresponde a un artículo específico. En ese momento, el representante puede seleccionar la tarjeta de equipo que representa el equipo. La tarjeta de equipo no es obligatoria. La cobertura de los artículos también puede originarse en un contrato de servicio del tipo Cliente. Sólo puede remitirse a una tarjeta de equipo de cliente si su Estado es Activo o Concedido en préstamo. Cuando intenta consultar una tarjeta de equipo con el estado Devuelto, Cancelado o En laboratorio, aparece un mensaje de error.",
-    "start_time": 860.88,
-    "end_time": 955.46
+    "image_file": "Slide_015.webp",
+    "script_text": "Una llamada de servicio se abre desde el menú Servicio para registrar y hacer seguimiento de quejas o problemas de los clientes. Permite gestionar todo el proceso de servicio para un problema específico, incluyendo actividades, acciones, reparaciones, gastos, facturas y movimientos de mercancía para repuestos. Generalmente, el cliente tiene un contrato de servicio válido o el artículo está bajo garantía. Si no hay cobertura, el sistema emite una advertencia. El representante puede seleccionar la tarjeta de equipo asociada al artículo, si está activa o en préstamo.",
+    "start_time": 461.2,
+    "end_time": 496.2
   },
   {
     "slide_index": 16,
-    "image_file": "113_Slide_16_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Llamada servicio: Contenido Llamada servicio General Comentarios Historial Resolución Soluciones Actividades Base de conocimientos Lista de documentos Doc. rel. Actividades IC Planificación Anexo Archivos Log de modificaciones Visitas técnicas Direcciones La cabecera y las fichas de la llamada de servicio permiten organizar la información sobre el problema, los pasos realizados para solucionarlo, los objetos relacionados que se utilizan durante el proceso de servicio y la solución encontrada. La cabecera de la llamada de servicio contiene información básica sobre la llamada: el cliente, la persona de contacto, la información de contacto, el asunto de la llamada, el contrato de servicio relacionado y todos los números de serie relacionados con el objeto de la llamada. Los campos de la ficha General permiten definir características adicionales del problema o la llamada de servicio (Origen, Tipo de problema, Tipo de llamada). Esta ficha también contiene información sobre la persona que se encargará de los problemas del servicio. La ficha Interlocutor comercial contiene las direcciones de envío y facturación del cliente así como la información de contacto. Puede utilizar la ficha Comentarios para describir el problema en detalle. Todos los pasos relacionados con el análisis y la solución se registran como actividades. Estos pasos se enumeran en la ficha Actividades. En la ficha Soluciones, puede utilizar la base de conocimientos para buscar soluciones del problema. El sistema muestra todos los documentos relacionados con esta llamada de servicio en la ficha Documentos relacionados. En esta ficha, también puede generar facturas de servicio y transacciones de movimiento de inventario. En la ficha Resolución, puede indicar cómo solucionó el problema o cómo ayudó al cliente. La ficha Historial muestra un log de modificaciones simplificado de la llamada de servicio. Puede ver una vista detallada de todos los casos seleccionando Log de modificaciones en el menú Herramientas. Es posible definir las visitas técnicas en la ficha Planificación. En función de la configuración que elija puede hacer que la ficha muestre la planificación de una o de varias visitas técnicas. Si dispone de diagramas técnicos o correspondencia con el cliente que tiene que tener durante la llamada de servicio, puede añadir los archivos en la ficha Anexos para informar al técnico o al representante de servicio.",
-    "start_time": 955.46,
-    "end_time": 1104.72
+    "image_file": "Slide_016.webp",
+    "script_text": "La cabecera de la llamada de servicio muestra información básica como cliente, contacto, asunto, contrato de servicio y números de serie relacionados. La ficha General define características adicionales como origen, tipo de problema y tipo de llamada, y asigna al responsable. La ficha Historial registra un log simplificado de modificaciones, mientras que la ficha Documentos relacionados muestra todos los archivos vinculados y permite generar facturas de servicio o movimientos de inventario. Esta organización facilita el seguimiento completo del servicio.",
+    "start_time": 496.2,
+    "end_time": 528.4
   },
   {
     "slide_index": 17,
-    "image_file": "113_Slide_17_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Llamada servicio: Colas Representante del centro de llamadas registra el problema del cliente Cola A Cola B Miembro de la cola A Comprueba la cola Recibe la llamada Las llamadas de servicio se asignan automáticamente a los usuarios que las han introducido. El campo Responsable representa a la persona encargada de resolver la llamada antes de la fecha y la hora que figuran en el campo La resolución tiene que ser antes de. La fecha y la hora se calculan automáticamente en función del Tiempo de resolución del contrato de servicio. Si el responsable no puede solucionar el problema, puede remitirlo a un colega. Para ello, sólo debe seleccionar su nombre en el campo Responsable. Si existe un grupo de colaboradores expertos en solucionar problemas especiales, este grupo puede formar una cola. Las colas se definen en el menú de configuración del servicio. Para introducir los miembros de la cola, haga doble clic en su definición. Un representante del centro de llamadas puede registrar el problema del cliente en una llamada de servicio y, a continuación, remitirla a una cola. Para ello, debe seleccionar la opción Cola e introducir el nombre de la cola en el campo Cola de la ficha General. Los miembros de la cola comprueban la cola periódicamente. Para ello, seleccionan la vía de acceso al menú Servicio Informes servicio Llamadas de servicio por cola. Un miembro de la cola se puede asignar una de las llamadas de servicio a sí mismo y trabajar en ella. Todos los usuarios pueden ver las llamadas de servicio que tienen asignadas en los informes servicio que se llaman Mis llamadas de servicio o Mis llamadas de servicio pendientes o Mis llamadas de servicio atrasadas. Además, puede asignar un técnico a la llamada de servicio. Para hacerlo, cree registros maestros de empleados para tus técnicos y asigne el rol Técnico en la ficha Pertenencia del registro maestro de empleados.",
-    "start_time": 1104.72,
-    "end_time": 1221.1
+    "image_file": "Slide_017.webp",
+    "script_text": "El representante del centro de llamadas registra el problema del cliente y puede asignar la llamada a una cola predefinida desde la ficha General. Los miembros de la cola revisan periódicamente las llamadas asignadas mediante el informe 'Llamadas de servicio por cola' y pueden tomar una para trabajar en ella. Si se requiere expertise técnico, se puede asignar un técnico previamente creado como registro maestro de empleados con rol Técnico. Este sistema optimiza la distribución y seguimiento de las llamadas según especialización y disponibilidad.",
+    "start_time": 528.4,
+    "end_time": 562.6
   },
   {
     "slide_index": 18,
-    "image_file": "113_Slide_18_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Respuesta de servicio Martes Lunes Perfiles de tiempo de respuesta Lunes a viernes 8 a. m. a 5 p. m. 8 horas 4 horas 2 horas Lunes a viernes 7 a. m. a 7 p. m. 8 horas 4 horas 2 horas 8 a. m. 1 p. m. 6 p .m. 8 a. m. 1 p. m. 6 p. m. Notificación recibida Los contratos de servicio especifican: Horas de cobertura Tiempo de respuesta en horas Tiempo de resolución en horas Si las horas de cobertura se limitan a 8 5, por ejemplo, las fechas límite serán mayores que si las horas de cobertura son 7 7 o 24 horas al día. Un tiempo de respuesta de 8 horas para una llamada de servicio realizada a la 1 pm será al mediodía cuando la cobertura es solo de las 8 a.m. a las 5 p.m. Los plazos de la respuesta del servicio se copian en la llamada de servicio a partir de los detalles del contrato de servicio. La ficha Cobertura del contrato contiene un perfil de la disponibilidad de los servicios para el cliente, por ejemplo, de lunes a viernes, de 8 a. m. a 5 p. m., o todos los días, las 24 horas. El contrato también especifica, en horas o días, la velocidad con la que el departamento de servicio al cliente debe responder a la solicitud de servicio y solucionarla. Esta información se define en la ficha General. A partir de la combinación de estos dos requisitos, se calcula la hora límite de respuesta del equipo de servicio al cliente.",
-    "start_time": 1221.1,
-    "end_time": 1312.87
+    "image_file": "Slide_018.webp",
+    "script_text": "Los contratos de servicio especifican horas de cobertura, tiempo de respuesta y tiempo de resolución en horas. Si la cobertura es limitada (por ejemplo, lunes a viernes de 8 a.m. a 5 p.m.), los plazos de respuesta y resolución se ajustan en consecuencia, haciendo que las fechas límite sean más lejanas que con cobertura extendida. Por ejemplo, una llamada recibida a la 1 p.m. con un tiempo de respuesta de 8 horas tendrá su plazo al día siguiente si la cobertura termina a las 5 p.m. Esta información se define en la ficha General del contrato y se copia automáticamente a la llamada de servicio para calcular la hora límite de respuesta del equipo.",
+    "start_time": 562.6,
+    "end_time": 608.8
   },
   {
     "slide_index": 19,
-    "image_file": "113_Slide_19_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Respuesta de servicio: Base de conocimientos de soluciones Base de conocimientos de soluciones Llamada servicio La base de conocimientos de soluciones es una recopilación de soluciones para problemas conocidos. Puede crear y actualizar soluciones comunes a problemas y preguntas de clientes. La base de conocimientos de soluciones muestra todas las soluciones que se han registrado en SAP Business One. Puede buscar soluciones existentes y enlazar una solución existente a una llamada de servicio. Una llamada de servicio puede tener más de una solución. Si encuentra una nueva solución para un problema, puede añadirla directamente a la base de conocimientos desde la pantalla Llamada de servicio. Por consiguiente, la próxima vez que ocurra un problema similar, los técnicos conocerán las soluciones posibles y podrán solucionar los problemas de los clientes con mayor rapidez. Las soluciones tienen diferentes estados, por ejemplo, Interno, de ación, y de Revisión. Es posible definir estados nuevos. Los estados pueden definir cómo se debe utilizar una solución. Las autorizaciones controlan quiénes pueden modificar el estado de la solución. Para actualizar la base de conocimientos, seleccione Servicio Soluciones de conocimiento. Además, puede utilizar Data Transfer Workbench (DTW) cuando guarde un gran número de soluciones en la base de datos de conocimientos.",
-    "start_time": 1312.87,
-    "end_time": 1401.34
+    "image_file": "Slide_019.webp",
+    "script_text": "La base de conocimientos de soluciones es una recopilación de soluciones para problemas conocidos en el servicio técnico. Permite crear, actualizar y reutilizar soluciones comunes a preguntas y problemas de clientes. Estas soluciones se registran en SAP Business One y pueden vincularse a llamadas de servicio, con más de una solución por llamada. Los técnicos pueden añadir nuevas soluciones directamente desde la pantalla de llamada de servicio, lo que acelera la resolución futura. Las soluciones tienen estados como Interno, de Publicación o de Revisión, que se pueden personalizar y controlar mediante autorizaciones. Para gestionarlas, se accede desde Servicio ► Soluciones de conocimiento, o se pueden cargar en lote usando Data Transfer Workbench (DTW).",
+    "start_time": 608.8,
+    "end_time": 654.6
   },
   {
     "slide_index": 20,
-    "image_file": "113_Slide_20_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Planificar las visitas de los técnicos Dos opciones de interfaz 2 1 La interfaz de usuario predeterminada de la ficha Planificación le permite introducir una visita técnica por llamada de servicio. Existe la opción de cambiar la interfaz de usuario de la ficha y que sea una tabla que permite planificar varias visitas técnicas en el documento de llamada de servicio. Esta parametrización se realiza en Parametrizaciones de documento marcando la casilla de selección Habilitar programación múltiple para llamadas de servicio en la ficha Por documento – Llamada de servicio. Al configurarla de esta forma, la ficha Planificación contiene una tabla en la que puede introducir varias visitas o varios técnicos en distintas ubicaciones. Este cambio es irreversible por lo que, una vez que se hace, no es posible recuperar la interfaz original de la ficha.",
-    "start_time": 1401.34,
-    "end_time": 1452.14
+    "image_file": "Slide_020.webp",
+    "script_text": "En la ficha Planificación de la llamada de servicio, existen dos opciones de interfaz para planificar visitas técnicas. La predeterminada permite ingresar una visita por llamada. La alternativa, activada mediante la casilla 'Habilitar programación múltiple para llamadas de servicio' en Parametrizaciones de documento, convierte la ficha en una tabla que permite planificar varias visitas o técnicos en distintas ubicaciones. Esta configuración es irreversible: una vez activada, no se puede volver a la interfaz original. Ambas opciones se gestionan desde el mismo documento de llamada de servicio, pero la segunda brinda mayor flexibilidad para equipos que atienden múltiples servicios en una sola llamada.",
+    "start_time": 654.6,
+    "end_time": 696.0
   },
   {
     "slide_index": 21,
-    "image_file": "113_Slide_21_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Resolución de servicio Resolución de servicio El cliente está conforme con la solución del problema. Introduzca el texto en la ficha Resolución de la llamada de servicio. Marque la llamada de servicio como cerrada. La fecha y la hora de resolución del servicio se calculan de acuerdo con el tiempo de resolución y la cobertura del contrato de servicio. En la ficha General de la llamada de servicio, se encuentran dos campos para la resolución del servicio. Antes de: la última fecha y hora en las que está comprometido a proporcionar una resolución para la llamada de servicio. Esta fecha se calcula según el campo Tiempo de resolución y la cobertura del contrato de servicio (en la ficha Cobertura, en Servicio Contrato de servicio). El: la fecha y hora de la resolución proporcionada para la llamada de servicio. SAP Business One considera que se da una resolución cuando se añade una resolución o una solución. Cuando se resuelve una llamada de servicio, debe introducir un texto en la ficha Resolución. Y después debe marcar la orden de servicio como cerrada. No puede definir una llamada de servicio como Cerrada si no anexó una solución o si no indicó una resolución. La fecha y la hora correspondientes al momento en que se definió el estado de llamada de servicio como Cerrada se registran en el campo Cerrado el. Si vuelve a abrir una llamada de servicio, la fecha y la hora se borrarán. Nota: Si se borran las soluciones de la ficha Solución o el texto de la ficha Resolución, se borra el campo Resolución el. El campo Respuesta el se mantiene porque aún está respondiendo la llamada de servicio que ya no está definida como resuelta.",
-    "start_time": 1452.14,
-    "end_time": 1555.13
+    "image_file": "Slide_021.webp",
+    "script_text": "Para resolver una llamada de servicio, primero se debe ingresar un texto descriptivo en la ficha Resolución, explicando la solución aplicada al problema del cliente. Luego, se marca la llamada como cerrada, acción que solo está disponible si se ha añadido una solución o se ha indicado una resolución. El sistema calcula automáticamente la fecha y hora de resolución según el tiempo de resolución y la cobertura del contrato de servicio. En la ficha General, aparecen dos campos: 'Antes de' (fecha límite comprometida) y 'El' (fecha y hora real de resolución). Al cerrar, se registra el momento en 'Cerrado el'. Si se vuelve a abrir la llamada, este campo se borra. Es importante no eliminar el texto de resolución ni las soluciones, ya que eso borraría el campo 'Resolución el', aunque 'Respuesta el' se mantiene mientras la llamada siga en curso.",
+    "start_time": 696.0,
+    "end_time": 753.0
   },
   {
     "slide_index": 22,
-    "image_file": "113_Slide_22_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Resolución de servicio: Documentos relacionados Los gastos relacionados de los documentos de marketing aparecen en la ficha Documentos relacionados Si selecciona el indicador Visualizar todos los docs., el sistema también muestra los traslados Durante la llamada de servicio un técnico puede tener gastos de desplazamiento, de mano de obra o de materiales de los que es necesario hacer un seguimiento. El sistema muestra todos los gastos relacionados con una llamada de servicio en la ficha Documentos relacionados. Esta ficha contiene todos los documentos de marketing que creó en relación con la gestión de la llamada de servicio. Si selecciona el indicador Visualizar todos los docs., el sistema también muestra los traslados (transferencias al técnico y devoluciones del técnico).",
-    "start_time": 1555.13,
-    "end_time": 1602.38
+    "image_file": "Slide_022.webp",
+    "script_text": "La ficha Documentos relacionados en la llamada de servicio muestra todos los gastos asociados a la intervención técnica, como desplazamiento, mano de obra o materiales. Incluye documentos de marketing creados en relación con la gestión de la llamada. Al activar el indicador 'Visualizar todos los docs.', el sistema también muestra traslados, es decir, transferencias al técnico y devoluciones del mismo. Esta ficha permite hacer seguimiento completo de los costos y movimientos generados durante el servicio, asegurando que ningún gasto quede sin registrar. Es esencial para la precisión en la facturación y el control de rentabilidad por llamada de servicio.",
+    "start_time": 753.0,
+    "end_time": 793.2
   },
   {
     "slide_index": 23,
-    "image_file": "113_Slide_23_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Resolución de servicio: Detalles de los documentos relacionados En la ficha Documentos relacionados puede seleccionar Detalles para obtener una visión detallada o introducir nuevos gastos. La ventana Detalles de documentos relacionados con la llamada de servicio muestra las líneas del documento agrupadas por artículos del tipo Artículos, y artículos que pertenecen a los tipos Trabajo o Viaje. Seleccione Documento nuevo, para crear documentos de clientes, proveedores e inventario. En la ficha Documentos relacionados puede seleccionar Detalles para obtener una visión detallada o introducir nuevos gastos. La ventana Detalles de documentos relacionados con la llamada de servicio muestra las líneas de los documentos agrupadas por artículos que pertenecen al tipo Artículos de inventario, y artículos que pertenecen a los tipos Artículos sin inventario, trabajo o Viaje. Seleccione Documento nuevo, para crear documentos de clientes, proveedores e inventario. En las llamadas de servicio de los clientes las opciones por defecto son: ofertas de ventas, pedidos de cliente, entregas, devoluciones, facturas de cliente, abonos de clientes, traslados a los técnicos (en el caso de los artículos indicados como traslados) y devoluciones de los técnicos (en el caso de los artículos indicados como traslados). También puede enlazar documentos existentes a la llamada de servicio. Siga el procedimiento para añadir un nuevo documento. Cuando se abra el documento en blanco, cambie al modo Buscar e introduzca el interlocutor comercial para buscar documentos existentes. Seleccione el documento relacionado correcto de la lista. Cuando pulse OK en el documento seleccionado, volverá a la ventana Detalles de documentos relacionados con la llamada de servicio. A continuación, seleccione Actualizar para terminar de enlazar el documento a la llamada de servicio.",
-    "start_time": 1602.38,
-    "end_time": 1718.47
+    "image_file": "Slide_023.webp",
+    "script_text": "Desde la ficha Documentos relacionados, al seleccionar 'Detalles', se abre una ventana que muestra las líneas de los documentos agrupados por tipo de artículo: inventario, sin inventario, trabajo o viaje. Esta vista permite analizar con detalle los gastos o crear nuevos documentos de clientes, proveedores o inventario directamente desde ahí. Para vincular un documento existente, se debe hacer clic en 'Documento nuevo', luego cambiar al modo Buscar, ingresar el interlocutor comercial y seleccionar el documento correcto de la lista. Al confirmar con OK y luego Actualizar, el documento se enlaza a la llamada de servicio. Este flujo es clave para mantener trazabilidad entre el servicio y las transacciones comerciales o logísticas asociadas.",
+    "start_time": 793.2,
+    "end_time": 838.6
   },
   {
     "slide_index": 24,
-    "image_file": "113_Slide_24_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Informes durante el proceso de servicio Tiempo de cierre medio Monitor de servicio Informe de tiempo de respuesta por responsable Informes de llamadas de servicio Análisis de llamadas de servicio por empleado Información sobre las llamadas de servicio pendientes y cerradas Visualizar tiempos de respuesta por empleados Utilice este informe al asignar las llamadas de servicio directamente a empleados. Detalles sobre el tiempo de cierre medio de las llamadas Compruebe la eficiencia del departamento de servicio al cliente. Llamadas de servicio pendientes o atrasadas Ofrece dos vistas dinámicas en forma de gráficos. Mis llamadas de servicio Informe específico del usuario Permite que un empleado del departamento servicio al cliente vea todas las llamadas asignadas y defina prioridades rápidamente. Visualizar tiempos de respuesta por cola Utilice este informe al asignar las llamadas de servicio por cola. Llamadas de servicio por cola Existe una serie de informes de servicio útiles. Seleccione Servicio Informes servicio. Además de los informes enumerados en la diapositiva, existen otros informes importantes: Los empleados pueden controlar las llamadas de servicio que tienen asignadas con tres informes principales (uno de ellos enumerado en la diapositiva anterior): Mis llamadas de servicio, Mis llamadas de servicio pendientes y Mis llamadas de servicio atrasadas. El estado del contrato de servicio se puede visualizar en el informe de contrato de servicio. Este informe brinda información concisa sobre todos los contratos de servicio existentes y sus estados. El informe de tarjeta de equipo ofrece información sobre artículos específicos comprados por cada cliente o asignados a cada cliente.",
-    "start_time": 1718.47,
-    "end_time": 1821.17
+    "image_file": "Slide_024.webp",
+    "script_text": "SAP Business One ofrece varios informes para monitorear la eficiencia del servicio técnico. El informe de Tiempo de cierre medio ayuda a evaluar la rapidez en resolver llamadas, indicando la eficiencia del departamento. El informe de Tiempo de respuesta por responsable muestra cuánto tardan los técnicos en responder, útil al asignar llamadas directamente a empleados. El informe de Llamadas de servicio por cola brinda dos vistas dinámicas en forma de gráficos, ideal cuando se gestiona por equipos o colas de trabajo. Además, el informe Mis llamadas de servicio permite a cada empleado ver sus asignaciones y definir prioridades. Otros informes útiles incluyen el de contrato de servicio y la tarjeta de equipo, que muestran el estado de los contratos y los artículos asignados a cada cliente.",
+    "start_time": 838.6,
+    "end_time": 889.6
   },
   {
     "slide_index": 25,
-    "image_file": "113_Slide_25_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Parametrizaciones de servicio Opciones de configuración de servicio Creación automática de tarjetas de equipo Números de serie unívocos Modelos de contrato Colas de llamadas de servicio Territorios de servicio Permitir la programación múltiple (parametrización irreversible) Definición de servicio en datos maestros Creación automática de contratos para artículos serializados específicos Enlace de territorios y técnicos a clientes de servicio Existen varias parametrizaciones usadas para definir valores por defecto para el servicio. En la vía de acceso al menú Gestión →Inicialización sistema →Parametrizaciones generales → ficha Inventario puede activar la creación automática de tarjetas de equipo. En primer lugar, debe definir números de serie únicos para el sistema. Los números de serie se pueden definir como únicos al introducir el número de serie o un número de serie del fabricante; no obstante, debe seleccionar una de estas opciones en las Parametrizaciones generales. A continuación, marque la casilla de selección para activar la creación automática de tarjetas de equipo. En la vía de acceso al menú: Gestión → Definición → Servicio puede definir: Modelos de contrato. Luego, puede asignar estos modelos de contrato a un registro maestro de artículo en el campo Modelo de garantía. Esto permitirá que el sistema cree un contrato de servicio de manera automática cuando se entregue el artículo al cliente. Colas de llamadas de servicio. En Parametrizaciones de documento, en la ficha Por documento – Llamada de servicio puede habilitar la programación múltiple para las llamadas de servicio. Esto hace que la ficha Programación se convierta en una tabla que permite planificar a varios técnicos para distintas visitas. Una vez que se hace este cambio, la configuración es irreversible. En Parametrizaciones de documento, en la ficha Por documento – Tarjeta de equipo puede habilitar la opción para añadir varios interlocutores comerciales a una tarjeta de equipo. En el registro maestro de artículo, se activa la creación automática de tarjetas de equipo y la creación automática de contratos de servicio para un artículo específico. Puede asignar un técnico y un territorio de servicio específico al cliente en el registro maestro de interlocutores comerciales, en la ficha General. Se puede designar un técnico para un empleado en el registro de datos maestros de empleados. Especifique el rol en la ficha Pertenencia del registro maestro de empleados. Los territorios se definen en la transacción Territorios del menú Configuración general del módulo Gestión.",
-    "start_time": 1821.17,
-    "end_time": 1979.23
+    "image_file": "Slide_025.webp",
+    "script_text": "Las parametrizaciones de servicio permiten definir valores por defecto para gestionar eficientemente el servicio postventa. Incluyen la creación automática de tarjetas de equipo al activarla en Parametrizaciones generales, tras definir números de serie únicos. También se configuran modelos de contrato que se asignan a artículos para generar contratos automáticamente al entregar el producto. Además, se habilitan colas de llamadas y territorios para organizar la atención técnica. Estas opciones se encuentran en Gestión → Definición → Servicio y en la ruta de inicialización del sistema. Es clave activar cada función según las necesidades del negocio para asegurar trazabilidad y automatización en el servicio técnico.",
+    "start_time": 889.6,
+    "end_time": 931.4
   },
   {
     "slide_index": 26,
-    "image_file": "113_Slide_26_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Establecer parametrizaciones de impresión para llamadas y contratos de servicio Seleccione sus opciones al añadir una llamada de servicio y un contrato de servicio: Imprimir documento Enviar documento por correo electrónico Exportar a PDF En Parametrizaciones de impresión > Por documento > Llamada de servicio Contrato de servicio, seleccione sus opciones para las acciones automáticas después de añadir el documento: Imprimir documento Enviar documento por correo electrónico; y Exportar a PDF",
-    "start_time": 1979.23,
-    "end_time": 2009.35
+    "image_file": "Slide_026.webp",
+    "script_text": "En las parametrizaciones de impresión, puedes definir acciones automáticas que se ejecutan al agregar una llamada de servicio o un contrato de servicio. Estas opciones incluyen imprimir el documento, enviarlo por correo electrónico mediante SAP Business One Mailer o Outlook, y exportarlo a PDF. Se configuran por tipo de documento en la ruta: Parametrizaciones de impresión → Por documento → Llamada de servicio/Contrato de servicio. Al marcar estas casillas, el sistema ejecuta las acciones seleccionadas sin intervención manual, lo que agiliza la comunicación con el cliente y garantiza la entrega oportuna de los documentos de servicio.",
+    "start_time": 931.4,
+    "end_time": 970.4
   },
   {
     "slide_index": 27,
-    "image_file": "113_Slide_27_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Llamada de servicio y contrato de servicio Impresión de múltiples documentos Tiene la opción de: Imprimir varias llamadas y contratos de servicio Enviar varias llamadas y contratos de servicio por correo electrónico a través de SAP Business One Mailer o correo electrónico de Outlook EImprimir varias llamadas y contratos de servicio; y Enviar varias llamadas de servicio y contratos por correo electrónico a través de SAP Business One Mailer o correo electrónico de Outlook. n la ventana Impresión de documentos tiene la opción de:",
-    "start_time": 2009.35,
-    "end_time": 2040.46
+    "image_file": "Slide_027.webp",
+    "script_text": "La ventana de impresión de documentos permite procesar múltiples llamadas y contratos de servicio de forma simultánea. Puedes seleccionar un rango de documentos y elegir si deseas imprimirlos, enviarlos por correo electrónico mediante SAP Business One Mailer o Outlook, o exportarlos a PDF. Esta funcionalidad es útil cuando se necesita generar reportes periódicos, notificar a varios clientes o archivar documentación en lote. Al habilitar la impresión múltiple, se ahorra tiempo y se reduce el riesgo de omisiones, especialmente en entornos con alto volumen de servicio técnico.",
+    "start_time": 970.4,
+    "end_time": 1005.4
   },
   {
     "slide_index": 28,
-    "image_file": "113_Slide_28_10_Service_11_CSProcess_Process_ES.webp",
-    "script_text": "Resumen A continuación, se detallan algunos puntos clave: Es necesario abrir una llamada de servicio cuando un cliente tiene un problema relacionado con un servicio. El equipo de cliente realiza un seguimiento de un artículo serializado que se vendió a un cliente. Las tarjetas de equipo se pueden crear de forma automática o manual. Los contratos de servicio se basan en modelos de contrato. Los modelos de contrato se pueden asociar a un registro maestro de artículo para definir la creación automática de contratos. Cuando se crea una tarjeta de equipo de cliente automáticamente, se puede asignar un contrato de servicio de manera automática. Las parametrizaciones de contrato para tiempo de respuesta, el tiempo de resolución y las horas de cobertura se utilizan para que un técnico determine los plazos de respuesta del servicio y para la resolución del problema en una llamada de servicio. Hay varias parametrizaciones y opciones disponibles para definir las preferencias de impresión para las llamadas y los contratos de servicio Es necesario abrir una llamada de servicio cuando un cliente tiene un problema relacionado con un servicio. El equipo de cliente realiza un seguimiento de un artículo serializado que se vendió a un cliente. Las tarjetas de equipo se pueden crear de forma automática o manual. Los contratos de servicio se basan en modelos de contrato. Los modelos de contrato se pueden asociar a un registro maestro de artículo para definir la creación automática de contratos. Cuando se crea una tarjeta de equipo de cliente automáticamente, se puede asignar un contrato de servicio de manera automática. Las parametrizaciones de contrato para tiempo de respuesta, el tiempo de resolución y las horas de cobertura se utilizan para que un técnico determine los plazos de respuesta del servicio y para la resolución del problema en una llamada de servicio.",
-    "start_time": 2040.46,
-    "end_time": 2154.05
+    "image_file": "Slide_028.webp",
+    "script_text": "Este módulo permite gestionar el servicio técnico de forma integral. Se abre una llamada de servicio cuando el cliente reporta un problema con un artículo serializado. Las tarjetas de equipo se pueden crear automáticamente si se activó la parametrización correspondiente, y se vinculan a contratos de servicio generados desde modelos asociados a los artículos. Los territorios y técnicos se asignan a los clientes para una mejor organización. Las parametrizaciones de tiempo de respuesta, resolución y cobertura ayudan al técnico a cumplir con los acuerdos de servicio. Además, se pueden configurar opciones de impresión y envío automático de documentos, mejorando la eficiencia y la comunicación con el cliente.",
+    "start_time": 1005.4,
+    "end_time": 1048.8
   }
 ]

@@ -1,212 +1,205 @@
 [
   {
     "slide_index": 1,
-    "image_file": "011_Slide_01_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Bienvenidos a esta clase sobre BinLoc 16 Serial Serial en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Bin Location Serial Numbers and Batches SAP Business One Version 10.0 Welcome to the course: Managing Serial Numbers and Batches in Bin Locations. This course is a part of a series of courses available for the Bin Locations topic. In this course we will cover the processes of purchasing, selling and managing serial number or batch managed items in a bin location managed warehouse.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de Gestión de Números de Serie y Lotes en Ubicaciones de Almacén con SAP Business One 10.0. Aquí aprenderás a manejar artículos controlados por serie o lote dentro de un almacén organizado por ubicaciones. Veremos cómo aplicar estos conceptos en procesos reales de compra y venta, mejorando la trazabilidad y el control de inventario en tu empresa.",
     "start_time": 0.0,
-    "end_time": 36.41
+    "end_time": 24.02
   },
   {
     "slide_index": 2,
-    "image_file": "011_Slide_02_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "At the end of this course, you will be able to describe how to allocate bin locations for serial numbers and batches in the sales and purchasing processes. 2 At the end of this topic, you will be able to:  Describe how to allocate bin locations for serial numbers and batches in the sales and purchasing processes. Objectives",
-    "start_time": 36.41,
-    "end_time": 56.18
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este curso, podrás describir cómo asignar ubicaciones de almacén para artículos administrados por número de serie o lote en los procesos de ventas y compras. Aprenderás a configurar y ejecutar estas asignaciones correctamente en SAP Business One, asegurando un control preciso del inventario y cumpliendo con los requerimientos de trazabilidad en tu operación diaria.",
+    "start_time": 24.02,
+    "end_time": 47.66
   },
   {
     "slide_index": 3,
-    "image_file": "011_Slide_03_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "This is the agenda for this course. Let us start with a business example. 3 3 Agenda  Business example  Purchasing process  Sales process  Differences in Batches",
-    "start_time": 56.18,
-    "end_time": 67.94
+    "image_file": "Slide_003.webp",
+    "script_text": "La agenda del curso está estructurada en cuatro bloques clave. Comenzamos con un ejemplo de negocio basado en OEC Computers para contextualizar el aprendizaje. Luego profundizamos en el proceso de compras, seguido del proceso de ventas, ambos enfocados en artículos por serie o lote. Finalmente, analizamos las diferencias específicas entre el manejo de lotes y series, aplicando lo aprendido a ambos tipos de control de inventario.",
+    "start_time": 47.66,
+    "end_time": 76.13
   },
   {
     "slide_index": 4,
-    "image_file": "011_Slide_04_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "You have finished configuring the bin location setup at OEC Computers. You have also guided OEC Computers employees through performing allocation processes and executing inventory reports for bin locations. Since OEC Computers purchases and sells many items managed by serial numbers and batches, you explain George, the warehouse manager, and his employees, about the allocation process of these items. 4 4 Business Scenario  You have finished configuring the bin location setup at OEC Computers.  You have also guided OEC Computers employees through performing allocation processes and executing inventory reports for bin locations.  Since OEC Computers purchases and sells many items managed by serial numbers and batches, you explain George, the warehouse manager, and his employees, about the allocation process of these items.",
-    "start_time": 67.94,
-    "end_time": 118.03
+    "image_file": "Slide_004.webp",
+    "script_text": "Imagina que ya configuraste las ubicaciones de almacén en OEC Computers y capacitaste al equipo en reportes de inventario por ubicación. Ahora, como esta empresa maneja muchos artículos por serie o lote, debes explicar a George, el gerente, y su equipo cómo asignar correctamente estos artículos en el almacén. Este escenario establece la base práctica para aplicar los conceptos de serie y lote dentro de una estructura de ubicaciones ya definida.",
+    "start_time": 76.13,
+    "end_time": 104.88
   },
   {
     "slide_index": 5,
-    "image_file": "011_Slide_05_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "In this course we will look at some typical business scenarios in OEC Computers. These scenarios include purchasing, selling and picking items managed by serial numbers in a bin location managed warehouse that can be implemented at OEC Computers. We will start by adding a Goods Receipt PO for tablet devices which are also managed by serial numbers. In the Goods Receipt PO we will allocate the tablets to the desired bin locations and update their serial numbers. After that, we will create three sales scenarios and examine different issue methods:  In scenario 1, we will issue a Delivery document that is not based on another sales document.  In scenario 2, we will see what happens when the Delivery document is based on a Sales Order.  In scenario 3, we will see how the pick and pack process is influenced by the issue method. Please note,  To simplify the explanations in this course, the scenarios refer to serial numbers and not to batches throughout the training. Nevertheless, most explanations are relevant also to batches. We will however cover the key differences between serial and batch related processes.  In addition the scenarios in this training refer to Goods Receipt PO and Delivery documents. However, the majority of the incoming and outgoing inventory processes are the same as with the Goods Receipt PO and the Delivery documents respectively. 5 5 Business Example Business Process integrated with Bin Locations and Serial Numbers Goods Receipt PO Allocation to Bin Location Complete/ Update S/N Purchasing Pick & Pack Delivery Allocation from Bin Locations Select S/N Sales Sales Order Sales Order Scenario 1 Scenario 2 Scenario 3 Delivery",
-    "start_time": 118.03,
-    "end_time": 217.63
+    "image_file": "Slide_005.webp",
+    "script_text": "En este curso trabajaremos con escenarios típicos de OEC Computers que involucran la compra, venta y picking de artículos por número de serie en un almacén con ubicaciones. Primero, agregaremos una Entrada de Mercancías OC para tablets administradas por serie, asignándolas a ubicaciones específicas y actualizando sus números de serie. Luego, exploraremos tres escenarios de venta: entrega independiente, basada en pedido de venta y el impacto del método de emisión en el proceso de picking y embalaje. Aunque nos enfocamos en serie, los conceptos aplican también a lotes.",
+    "start_time": 104.88,
+    "end_time": 142.3
   },
   {
     "slide_index": 6,
-    "image_file": "011_Slide_06_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Let us examine a short purchasing process that demonstrates allocation of items managed by serial numbers in bin locations. 6 6 Agenda  Business example  Purchasing process  Sales process  Differences in Batches",
-    "start_time": 217.63,
-    "end_time": 231.31
+    "image_file": "Slide_006.webp",
+    "script_text": "Veamos un proceso de compras que muestra cómo asignar artículos administrados por número de serie en ubicaciones de almacén. Al registrar una Entrada de Mercancías OC, seleccionas el artículo gestionado por serie y luego lo asignas a una ubicación específica dentro del almacén. Durante este paso, también actualizas el número de serie asociado a esa unidad. Finalmente, el sistema actualiza el stock reflejando tanto la cantidad como la ubicación y el número de serie, asegurando trazabilidad completa desde la recepción.",
+    "start_time": 142.3,
+    "end_time": 176.45
   },
   {
     "slide_index": 7,
-    "image_file": "011_Slide_07_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "This is a general schema of the working processes for incoming bin location allocation of serial numbered items. As you are likely familiar, all items managed by serial numbers or batches have a management method assigned. The management method controls when serial numbers or batches are required. The two methods are: On every transaction and Release Only. As the graphic shows, the first method “On every transaction” will require you to assign a serial number when items are received into stock. When you create a goods receipt for the serial numbered item, the Serial Number – Setup window opens. There you assign the serial numbers and then the bin locations. When you have a serial numbered item that is managed by Release Only, there is no requirement to enter a serial number when the item is received into stock. Therefore, when you create a Goods Receipt PO, you do not have to open the Serial Number – Setup window. Instead, you will use the Bin Location Allocation window, as you would with any other item not managed by serial numbers. If you do decide to add serial numbers when receiving an item managed by Release Only you can manually open the Serial Number – Setup window to enter serial numbers. Note, This is a general process only. The detailed working processes are affected when automatic allocations rules apply. In addition the Automatic Serial Creation definition in the Item Master Data, also affect working processes. Let us examine these working processes in the next slides. 7 7 Serial Numbers in Incoming Bin Location Allocation Method 2- Release only (Serial numbers are not mandatory) Method 1 – On every transaction (Serial numbers are mandatory) First Step • Go to the Serial Numbers - Setup window Second Step • Enter serial numbers Third Step • Allocate items to Bin Locations First Step • Go to the Bin Location Allocation window Second Step • Allocate to bin locations",
-    "start_time": 231.31,
-    "end_time": 343.73
+    "image_file": "Slide_007.webp",
+    "script_text": "Los artículos administrados por número de serie o lote usan uno de dos métodos de gestión: En Cada Transacción o Solo en Liberación. En Cada Transacción requiere asignar un número de serie al recibir el artículo, abriendo la ventana Configuración de Número de Serie para luego asignar ubicación. En Solo en Liberación no es obligatorio ingresar el número al recibir; se puede hacer opcionalmente en la ventana Asignación de Ubicación o Configuración de Número de Serie. Este enfoque depende de la configuración en el Maestro de Artículos y afecta cómo se manejan los ingresos de inventario en SAP Business One.",
+    "start_time": 176.45,
+    "end_time": 213.67
   },
   {
     "slide_index": 8,
-    "image_file": "011_Slide_08_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "In the graphic we see an item which has the serial number management method On Every Transaction. When this item is added to a Goods Receipt PO, we no longer have the option to open the Bin Location Allocation – Issue/Receipt window, like we would normally do with other items. As mentioned previously, we need to enter the allocation for the bin location from the Serial Number – Setup window, after entering the mandatory serial numbers. However, after serial numbers are assigned and the allocation is made, we will be able to change the allocation by using the link in the Bin Location Allocation field to open the Serial Number – Setup window. Let us see how the allocation process is done in the next slide. 8 8 Serial Numbers in Incoming Bin Location Allocation Method 1 - On Every transaction (1/2) In Method 1 - Bin location allocation is done only via the Serial Number - Setup window",
-    "start_time": 343.73,
-    "end_time": 396.65
+    "image_file": "Slide_008.webp",
+    "script_text": "Cuando se usa el método En Cada Transacción, al crear una Entrada de Mercancías OC para un artículo en serie, no se puede abrir directamente la ventana Asignación de Ubicación. Primero se debe ingresar el número de serie obligatorio en la ventana Configuración de Número de Serie. Después, el sistema puede asignar una ubicación automáticamente según reglas o de forma manual. Si se necesita cambiar la ubicación asignada, se usa la flecha de enlace en el campo Asignación de Ubicación para volver a abrir la ventana de configuración de serie y ajustarla.",
+    "start_time": 213.67,
+    "end_time": 248.42
   },
   {
     "slide_index": 9,
-    "image_file": "011_Slide_09_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "The image shows the two steps needed when receiving items with the management method On Every Transaction. For every row of the document with an item requiring serial numbers, you enter the Serial Number – Setup window. First, you enter the serial numbers. Once serial numbers are assigned, the system allocates a bin location automatically (assuming automatic allocation rules apply). You can also allocate a bin location manually. Note,  Documents may contain several rows. Some may be serials and some may not. When entering the Serial Numbers – Setup window, we see only the serial managed items.  Further more, when choosing a non-bin location managed warehouse in the document row, none of the bin location related fields or buttons are visible in the window. 9 9 Serial Numbers in Incoming Bin Location Allocation Method 1 - On Every transaction (2/2)  Bin location allocation First Step Second Step  Enter a serial number Step Step Method: On Every Transaction 1st 2nd",
-    "start_time": 396.65,
-    "end_time": 458.42
+    "image_file": "Slide_009.webp",
+    "script_text": "Para cada fila de un documento que contiene un artículo administrado por número de serie con método En Cada Transacción, se debe ingresar primero el número de serie en la ventana Configuración de Número de Serie. Una vez asignado, el sistema puede asignar una ubicación automáticamente si hay reglas activas, o se puede hacer manualmente. Esta ventana solo muestra los artículos que requieren serie. Si el almacén en la fila no gestiona ubicaciones, no aparecen campos ni botones relacionados con ubicación en la ventana.",
+    "start_time": 248.42,
+    "end_time": 281.62
   },
   {
     "slide_index": 10,
-    "image_file": "011_Slide_10_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "For serial numbered items with the management method Release Only, you can assign numbers either in the usual way in the Bin Location Allocation window or when assigning the optional serial number through the Serial Numbers – Setup window. If the Serial Number Management field in the Item Master Data record is set to On Release Only and the Automatic Serial Number Creation On Receipt box is checked, the system will automatically assign a bin location when adding the document, assuming automatic allocation rules apply. If no automatic receipt allocation rules apply then the incoming item is assigned to the system bin location. 10 10 Serial Numbers in Incoming Bin Location Allocation Method 2 – Release Only Do you want to set up serial numbers? Set up serial numbers and allocate bin locations via the allocation window or the serial numbers window Allocate bin location in the allocation window Yes No",
-    "start_time": 458.42,
-    "end_time": 508.44
+    "image_file": "Slide_010.webp",
+    "script_text": "En el método Solo en Liberación, los números de serie no son obligatorios al recibir el artículo. Se pueden asignar opcionalmente en la ventana Asignación de Ubicación o Configuración de Número de Serie. Si está activada la Creación Automática de Número de Serie en Recepción, el sistema asigna una ubicación automáticamente al agregar el documento, siempre que apliquen reglas de asignación. Si no hay reglas, el artículo se asigna a la Ubicación del Sistema. Este método brinda flexibilidad en la recepción, especialmente para artículos de alto volumen o baja trazabilidad inmediata.",
+    "start_time": 281.62,
+    "end_time": 319.8
   },
   {
     "slide_index": 11,
-    "image_file": "011_Slide_11_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Sometimes a large quantity of an item is received and you would like to redistribute the quantity into multiple bin locations. In the Serial Numbers – Setup window there is a way to distribute items from the Created Serial Numbers grid into bin locations. Choose the Reallocate Bin Locations button to open the Bin Location Reallocation for Serial Numbers window. The list of items is then copied to this window. To trigger the reallocation, just select the serial numbers to reallocate and choose the target bin in the Reallocate to Bin Location field. After update, the new bin locations appear in the Serial Numbers – Setup window. OEC Computers purchases large quantities of a tablets. Each tablet has a unique serial number and the quantity is too large for just one bin location. The warehouse employee opens the Serial Numbers – Setup window and updates the serial numbers for the whole quantity. When he finishes, he chooses the Reallocate Bin Locations button to open the Bin Location Reallocation for Serial Numbers window. Here he selects about 20 units and allocates them to a bin location. Then he selects another 20 and allocates them to another bin. The employee repeats this action until everything is allocated. This is an easy way to allocate large quantities of the same item rather than choosing the bin location in every serial row in the Created Serial Numbers grid. Note, reallocation is possible both for items which were already allocated and for those which were not allocated yet. 11 11 Serial Number Setup Reallocate Bin Locations Reallocation",
-    "start_time": 508.44,
-    "end_time": 600.84
+    "image_file": "Slide_011.webp",
+    "script_text": "Cuando se recibe una gran cantidad de un mismo artículo en serie, como tablets, es eficiente reasignar ubicaciones desde la ventana Configuración de Número de Serie. Al elegir el botón Reasignar Ubicaciones de Almacén, se abre una ventana donde se listan los números de serie creados. Allí, se seleccionan los artículos a reasignar y se elige la ubicación destino. Tras confirmar, las nuevas ubicaciones se reflejan en la ventana original. Este método evita asignar ubicación fila por fila y es útil tanto para artículos ya asignados como para los pendientes de asignación.",
+    "start_time": 319.8,
+    "end_time": 357.58
   },
   {
     "slide_index": 12,
-    "image_file": "011_Slide_12_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "As always with receiving serialized items, you have the option to have the system generate serial numbers for incoming items so that you do not need to enter the numbers manually. To do this, choose the Automatic Creation button to open the Automatic Serial Numbers Creation window. The Bin Location field allows selecting a bin location from a list filtered by the Warehouse field. Entering data in this field is optional. If it is populated then the same bin location code will be applied to all serial number rows created by this window. The Bin Location field will be updated automatically with the Default bin location if one exists. 12 12 Serial Number Setup Automatic Serial Number Creation",
-    "start_time": 600.84,
-    "end_time": 641.95
+    "image_file": "Slide_012.webp",
+    "script_text": "En la ventana Creación Automática de Números de Serie, se pueden generar números de serie para artículos entrantes sin ingreso manual. El campo Almacén filtra las ubicaciones disponibles. El campo Ubicación de Almacén es opcional: si se completa, se aplica el mismo código a todas las series creadas. Si existe una Ubicación Predeterminada definida, el sistema la usa automáticamente al dejar vacío este campo. Esta función es útil para recibir grandes volúmenes de artículos idénticos, como tablets, asegurando trazabilidad y ubicación consistente desde el ingreso.",
+    "start_time": 357.58,
+    "end_time": 395.26
   },
   {
     "slide_index": 13,
-    "image_file": "011_Slide_13_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Some items that OEC purchases, such as tablet computers, are received into the warehouse without serial numbers. However, the company likes to assign serial numbers to them shortly after, for tracking purposes. In those cases, the items are set up with the management method On Release Only and received without serial numbers into bin locations. Later, George assigns serial numbers to these items using the Serial Number Management – Complete window. This window is accessed from the Serial Numbers Management window. We can see an example of this is the image. A Goods Receipt PO number 756 was created for 2 tablet units. Those 2 tablets were allocated to 2 different bins. The next step is to complete the serial numbers for the items and relate each serial to the relevant bin. In the Serial Number Management – Complete window, in the Created Serial Numbers grid, we first enter the serial number and then we can choose the relevant bin location from the list of bins entered for the item in the Goods receipt PO. When only one bin is chosen in the Goods Receipt PO for the whole quantity, then this bin is updated automatically in the Bin Location column of the Created Serial Numbers grid. 13 13 Complete Serial Numbers Inventory Item management Item serial Numbers Serial Number management  Complete Mode From the incoming inventory document Available bins to choose from",
-    "start_time": 641.95,
-    "end_time": 723.48
+    "image_file": "Slide_013.webp",
+    "script_text": "En este caso, las tablets se reciben sin números de serie pero luego se les asignan para su trazabilidad. Primero, se configuran con el método 'Solo en Liberación' y se reciben en distintas ubicaciones. Luego, desde la ventana Gestión de Número de Serie – Completo, se ingresa cada número de serie y se elige la ubicación correspondiente de la lista generada en la entrada de mercancías. Si solo se usó una ubicación en el documento, esta se actualiza automáticamente en la cuadrícula. Este proceso permite vincular físicamente cada artículo con su ubicación de almacén tras la recepción.",
+    "start_time": 395.26,
+    "end_time": 434.11
   },
   {
     "slide_index": 14,
-    "image_file": "011_Slide_14_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Changes or updates to existing serial numbers created can be done in the Update mode of the Serial Number Management window. The bin location code however can not be changed. The read only Bin Location column allows you to view in which bin location each serial is located. 14 14 Update Serial Numbers",
-    "start_time": 723.48,
-    "end_time": 742.99
+    "image_file": "Slide_014.webp",
+    "script_text": "Una vez creados, los números de serie pueden actualizarse en el modo Actualización de la ventana Gestión de Número de Serie. Sin embargo, el código de ubicación de almacén no se puede modificar una vez asignado. La columna Ubicación de Almacén permanece en solo lectura para mostrar en qué ubicación está cada número de serie, garantizando trazabilidad sin permitir cambios que rompan la vinculación física del artículo con su lugar de almacenamiento.",
+    "start_time": 434.11,
+    "end_time": 462.14
   },
   {
     "slide_index": 15,
-    "image_file": "011_Slide_15_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Let us see the changes made in the sales processes. 15 15 Agenda  Business example  Purchasing process  Sales process  Differences in Batches",
-    "start_time": 742.99,
-    "end_time": 752.93
+    "image_file": "Slide_015.webp",
+    "script_text": "En esta sección revisaremos el flujo completo de operaciones en OEC Computers. Analizaremos un caso práctico de negocio, seguido del proceso de compras y luego el proceso de ventas. Finalmente, compararemos cómo se manejan los lotes en distintos escenarios, destacando las diferencias operativas según el método de emisión y los requisitos de trazabilidad en cada etapa.",
+    "start_time": 462.14,
+    "end_time": 486.41
   },
   {
     "slide_index": 16,
-    "image_file": "011_Slide_16_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "In OEC Computers, some items are picked according to their serial numbers and not according to their bin location. For example, OEC Computers resells custom-made servers according to special configuration ordered by the customer. All these servers have the same item code and every unique server is identified by its serial number. When the server is delivered to the customer, the server is picked according to its serial number. In SAP Business One, we can identify the picking method needed for these items by indicating the appropriate issuing method on the item master data record:  Method 1 – Issue Primarily By Bin Locations. In this method you first choose the bin location to allocate from and then choose a specific serial item stored within the chosen bin.  Method 2 - Issue Primarily By Serial and Batch Numbers. In this method you choose the serial number and then consequently the bin location the item is stored in. In OEC Computers, almost every item issue method is set to method 1 – Issue Primarily by Bin Locations, due to the following reasons:  First, in most cases when selling products, it does not matter to the customer nor to OEC Computers which exact serial number to issue.  Second, this method allows easy and fast picking because there is no need to look for a specific serial number.  In addition, this method enables maximum control of the storage arrangement in the different bin locations. Note that these two methods also affect scenarios where serial number selection and bin location allocation are not performed in the same document. For example, issuing a Sales Order with serials and then copying it to a Delivery where the bin location allocation is done. We will explore this scenario and another scenario involving the Pick and Pack procedure later on in this training. 16 16 Priority of Number or Bin Location Selection Introducing the Issuing Methods Method 1- Issue Primarily By: Bin Locations Method 2 - Issue Primarily By: Serial and Batch Numbers Choose the serial number The related bin is chosen First Step • Choose a Bin Location Second Step • From the chosen bin choose a serial number",
-    "start_time": 752.93,
-    "end_time": 872.09
+    "image_file": "Slide_016.webp",
+    "script_text": "En OEC Computers, el método de emisión define cómo se entregan los artículos. El Método 1 selecciona primero la ubicación de almacén y luego un artículo con número de serie dentro de ella, ideal cuando no importa qué unidad específica se entrega. El Método 2 comienza eligiendo el número de serie y luego asigna automáticamente la ubicación donde está guardado, útil para servidores a medida. La empresa prefiere el Método 1 por su eficiencia en picking y mejor organización del almacén, salvo en casos donde se requiere trazabilidad estricta por unidad.",
+    "start_time": 486.41,
+    "end_time": 521.71
   },
   {
     "slide_index": 17,
-    "image_file": "011_Slide_17_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Let us see how we define the issue method in the system. the issue method is defined in the Item Master Data and can be changed manually. The value in this field is defaulted from the General Settings Inventory Items Issue Primarily By field. Note, the settings of the field in Item Master Data cannot be changed if open sales orders with serial or batch allocations exist. In the next slides we will examine 3 scenarios: • Scenario 1 - a delivery not based on a sales order • Scenario 2 – a delivery based on a sales order • Scenario 3 – Pick and Pack procedure 17 17 Priority of Number or Bin Location Selection Definitions",
-    "start_time": 872.09,
-    "end_time": 910.15
+    "image_file": "Slide_017.webp",
+    "script_text": "El método de emisión se define en el Maestro de Artículos y por defecto toma el valor de la configuración general en Inventario → Artículos. Este campo puede modificarse manualmente, pero no si existen pedidos de venta abiertos con asignaciones de serie o lote, para evitar inconsistencias. En las próximas diapositivas se analizarán tres escenarios de entrega: sin pedido de venta, basado en pedido de venta, y el proceso de picking y embalaje, para ver cómo afecta el método de emisión en cada caso.",
+    "start_time": 521.71,
+    "end_time": 553.46
   },
   {
     "slide_index": 18,
-    "image_file": "011_Slide_18_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Let us go back to OEC Computers. In the first scenario we issue a delivery not based on a sales order. OEC Computers sell their customer, Parameter Technology, two items. The first is a custom-made server that is issued primarily by serial numbers. The second item is a tablet item which is also managed by serial numbers but with an issue method primarily by bin locations. Let us see the differences in the allocation processes of these items. Look at the server item row. The Bin Location column is blocked and the only way to allocate the item from a bin location is by entering the Serial Number Selection window through the Quantity field. In contrast, the tablet item can be allocated from a bin location also by choosing the link arrow in the Bin Location Allocation column. It can also be allocated automatically assuming automatic allocation rules apply. In the image we see the tablet item was already allocated automatically. Note that when working with issue method Primarily By Serials and Batches, you need to first choose the serial numbers and then the associated bins will be allocated as well. In the next slide we will see how the allocation is made for each item. 18 18 Scenario 1 – Issuing a Delivery Not Based on a Sale Order",
-    "start_time": 910.15,
-    "end_time": 985.8
+    "image_file": "Slide_018.webp",
+    "script_text": "En este escenario, OEC entrega un servidor a medida y una tablet sin referencia a un pedido de venta. El servidor, gestionado por número de serie, tiene la ubicación bloqueada y solo se puede asignar mediante la ventana Selección de Número de Serie desde el campo Cantidad. En cambio, la tablet, aunque también se controla por serie, permite asignar ubicación directamente mediante la flecha de enlace en la columna Asignación de Ubicación o mediante reglas automáticas. En la imagen, la tablet ya fue asignada automáticamente a una ubicación, mostrando la flexibilidad del Método 1 cuando se combina con control por serie.",
+    "start_time": 553.46,
+    "end_time": 593.76
   },
   {
     "slide_index": 19,
-    "image_file": "011_Slide_19_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "The Serial Number Selection window supports allocating bin locations for both issue methods. In the Available Serial Number grid, we can display the different sub level codes, bin location attributes and alternative sort code. The primary purpose of these fields is to assist the Auto Select functionality. The Auto Select simply selects serial numbers for the quantity required according to the current sort order of the Available Serial Numbers grid. The serial number selection can be managed by bin location sort sequences or attributes, even for an item which is set to issue primarily by serial number. The different functionalities available in the window behave differently according to the issue method of the item chosen in the Rows from Documents grid. In the image the server item is chosen which is issued primarily by serial numbers. Look at the available serial numbers for the server. The Serial Number column is displayed followed by the Bin Location Column. There are Filter and Find functions in the Available Serial Numbers header that allow selecting the relevant field to be filtered by and filtering the list displayed accordingly. The Filter By field supports the selection of the different serial number properties: Serial Number, Lot Number, Manufacturer Serial Number and System Number. When selecting the serial number the associated bin location is selected automatically. 19 19 Scenario 1 – Issuing a Delivery Not Based on a Sale Order Serial Numbers Selection Window – Issue Primarily By SN",
-    "start_time": 985.8,
-    "end_time": 1072.49
+    "image_file": "Slide_019.webp",
+    "script_text": "En la ventana Selección de Número de Serie, puedes asignar ubicaciones a los números de serie según el método de emisión del artículo. La cuadrícula Números de Serie Disponibles muestra el número de serie y su ubicación asociada, junto con atributos como subnivel y clasificación alternativa. Estos campos ayudan a la función de Autoselección, que elige números de serie según el orden de la cuadrícula. Puedes filtrar por número de serie, lote, fabricante o sistema usando los campos Filtrar y Buscar en el encabezado. Al seleccionar un número de serie, su ubicación se selecciona automáticamente, lo que garantiza coherencia en el proceso de emisión.",
+    "start_time": 593.76,
+    "end_time": 635.38
   },
   {
     "slide_index": 20,
-    "image_file": "011_Slide_20_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Let us examine what happens to the Serial Number Selection window when choosing an item with the issue method Primarily by Bin Locations. In our example we have chosen the tablet item. Here, the Filter fields allow filtering by the bin location codes or warehouse sublevels. The Bin Location Column is displayed first followed by the serial Number column. Instead of the Auto Select button there is a Selection Method button. This button provides the regular bin location selection options in addition to the Auto Selection option. The Auto Select option selects bin locations according to their order of appearance in the Available Serial Numbers grid. 20 20 Scenario 1 – Issuing a Non-Based Delivery Document Serial Numbers Selection Window – Issue Primarily By Bin Locations",
-    "start_time": 1072.49,
-    "end_time": 1118.54
+    "image_file": "Slide_020.webp",
+    "script_text": "Cuando el artículo se configura para emitirse principalmente por ubicaciones, como en el caso de la tablet, la ventana Selección de Número de Serie cambia su enfoque. Aquí, la columna Ubicación aparece primero, seguida de la Número de Serie. En lugar del botón Autoselección, se muestra el botón Método de Selección, que incluye opciones regulares de ubicación además de la Autoselección. Los campos de filtro permiten buscar por códigos de ubicación de almacén o subniveles. La Autoselección elige ubicaciones según el orden en que aparecen en la cuadrícula de Números de Serie Disponibles, facilitando el proceso cuando el método principal es por ubicación.",
+    "start_time": 635.38,
+    "end_time": 676.63
   },
   {
     "slide_index": 21,
-    "image_file": "011_Slide_21_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "In the second scenario, a delivery is issued based on a sales order. In most cases, the process for allocating bin locations in a delivery will remain the same whether or not the delivery is based on the sales order. However there can be circumstances that affect allocation in the delivery. First let us look at issuing items primarily by bin locations. It is not possible to select serial numbers in a sales order for items set to this method. Therefore the allocation process in a Delivery document based on the sales order remains the same as described in the former slides. For items that are issued primarily by serial numbers, it is possible to select the serial numbers in the sales order. If serial numbers are not selected in the sales order, then the allocation process for the delivery remains the same as described in the former slides. However, if serial numbers were selected in the sales order, then the bin locations associated with the selected serial numbers are automatically allocated in the document. 21 21 Scenario 2 – Delivery Based on a Sales Order Issue Primarily by SN and Batches Issue Primarily by Bin Locations Possible Not possible Serial selection in a Sales Order If serials were not selected then select serials and the associated bin location If serials were selected in the Sales Order then the Bin Location is selected automatically in the document. Regular allocation according to the Issue Primarily by Bin Locations rules Allocation of serial numbers and bin locations in a delivery based on a sales order",
-    "start_time": 1118.54,
-    "end_time": 1206.7
+    "image_file": "Slide_021.webp",
+    "script_text": "En una entrega basada en un pedido de venta, la asignación de ubicaciones depende de si se seleccionaron números de serie en el pedido. Para artículos emitidos principalmente por número de serie, si no se seleccionaron en el pedido, el sistema requiere hacerlo durante la entrega, abriendo la ventana Selección de Número de Serie. Pero si ya se seleccionaron en el pedido, las ubicaciones asociadas se asignan automáticamente en el documento de entrega. Para artículos emitidos principalmente por ubicaciones, no es posible seleccionar números de serie en el pedido de venta, por lo que el proceso en la entrega es idéntico al descrito: se elige la ubicación según el método configurado, ya sea manualmente o mediante Autoselección.",
+    "start_time": 676.63,
+    "end_time": 722.11
   },
   {
     "slide_index": 22,
-    "image_file": "011_Slide_22_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "The third scenario refers to the Pick and Pack process. This process changes according to the “Issue primarily by” method of each item involved in the process. The table displayed here lists the main differences between each issuing method in the pick and pack processes. For items issued primarily by serial numbers, all pick and pack functions can be performed only if serial numbers have been selected. For example, generating pick lists and creating a delivery is only possible when the serial numbers have already been specified in the sales order. If serials were not selected and the Release to Pick List button was chosen, then the system opens the Serial Number Selection window and thus enables selecting serials during the Pick and Pack procedure. For items issued primarily by bin locations, most pick and pack functions can be done in the regular way. It is not possible, however, to select serial numbers before a delivery document is created. Note that any differences that refer to creating deliveries are relevant also for creating invoices. 22 22 Scenario 3 - Serial Numbers in Pick and Pack Primarily By Bin Locations Primarily By Serial and Batch Numbers Function Not possible Possible Select Serials in the Pick and Pack Manager Generates pick list for all order lines Generates pick list only for orders lines already containing serials Generation wizard Subject to the regular wizard filtering Filter bin locations by selected serial numbers Generation wizard filtering Regular pick list behavior, without serial allocation Pick list cannot be edited or processed unless there is a full allocation of both SN and bin locations Released Qty field in the Released Drawer Serial numbers are selected when creating the Delivery Serial numbers should be selected first for the Sales Order Creating a Delivery based on a picked Sales Order Possible to open the Bin Location Allocation window and edit the bin location allocation Possible to open the Select Serial Number window and edit the selection of both serial numbers and bin locations Bin location allocation changes in the pick list before the items are picked",
-    "start_time": 1206.7,
-    "end_time": 1324.66
+    "image_file": "Slide_022.webp",
+    "script_text": "El proceso de picking y embalaje varía según el método de emisión principal del artículo. Para artículos emitidos principalmente por número de serie, todas las funciones de picking y embalaje solo pueden ejecutarse si ya se han seleccionado los números de serie; por ejemplo, generar listas de picking o crear entregas requiere que los números de serie estén especificados en el pedido de venta. Si no se seleccionaron y se elige 'Liberar a Lista de Picking', el sistema abre la ventana Selección de Número de Serie para permitir la selección durante el proceso. En cambio, para artículos emitidos principalmente por ubicaciones, la mayoría de las funciones de picking y embalaje se pueden realizar de forma habitual, aunque no es posible seleccionar números de serie antes de crear el documento de entrega. Estas reglas también aplican a la creación de facturas.",
+    "start_time": 722.11,
+    "end_time": 775.22
   },
   {
     "slide_index": 23,
-    "image_file": "011_Slide_23_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Finally, we will go over the main differences in processes involving batch numbers instead of serial numbers. In addition we will examine a scenario for working with Batches using the FIFO allocation method. 23 23 Agenda  Business example  Purchasing process  Sales process  Differences in Batches",
-    "start_time": 1324.66,
-    "end_time": 1343.98
+    "image_file": "Slide_023.webp",
+    "script_text": "En esta sección revisaremos las principales diferencias en los procesos que involucran números de lote en lugar de números de serie. También examinaremos un escenario práctico para trabajar con lotes usando el método de asignación FIFO. El contenido incluye: un ejemplo de negocio, el proceso de compras, el proceso de ventas y las diferencias clave en el manejo de lotes frente a números de serie. Este enfoque nos permitirá entender cómo SAP Business One gestiona los artículos agrupados por lote, especialmente en almacenes con ubicaciones, y cómo afecta esto a las operaciones diarias de inventario y trazabilidad.",
+    "start_time": 775.22,
+    "end_time": 813.77
   },
   {
     "slide_index": 24,
-    "image_file": "011_Slide_24_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "The purchasing and sales processes for batch-managed items in a bin location managed warehouse is similar to the processes of serial number managed items. In this section, we will review some of the differences between processes based on batch items and processes based on serial items. Look at difference number one. This is one of the more obvious differences. For batch managed items, the First Bin Location column is used instead of the Bin Location column. Since one batch number represents a group of items and not just a single item as in serial numbers. When choosing the link arrow of the First Bin Location, the Bin Location Content List opens filtered by the chosen batch. Look at difference number two. Since one batch can be stored in multiple bin locations, in the Batch - Setup window as well as in the Batch Complete and Update windows, the batch selection is done via the Bin Location Allocation – Receipt window. In the Batch Setup window, the link arrow in the Bin Location field opens the Bin Location Allocation – Receipt window. 24 24 Functionality Differences for Batch Related Items (1/2) First Bin Location column Batches Serials Bin Location column Batches are entered via the allocation window Serial numbers are entered directly in the setup window Difference No. 1 Difference No.",
-    "start_time": 1343.98,
-    "end_time": 1420.58
+    "image_file": "Slide_024.webp",
+    "script_text": "En la ventana Configuración de Lote, el campo Primera Ubicación reemplaza a la Ubicación de Almacén usada en números de serie, ya que un lote representa un grupo de artículos, no una unidad individual. Al hacer clic en la flecha de enlace de Primera Ubicación, se abre la Lista de Contenido de Ubicaciones filtrada por el lote seleccionado, mostrando solo las ubicaciones donde ese lote está almacenado. Además, en ventanas como Completar y Actualizar Lote, la selección del lote se realiza a través de la ventana Asignación de Ubicación – Recepción. Desde allí, al vincular el campo Ubicación, se accede nuevamente a Asignación de Ubicación – Recepción para definir o modificar dónde se encuentra físicamente el lote dentro del almacén.",
+    "start_time": 813.77,
+    "end_time": 859.85
   },
   {
     "slide_index": 25,
-    "image_file": "011_Slide_25_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "The last difference discussed in this training is the reallocation option in the setup window. The reallocation option we saw earlier in this training in the Serial Numbers – Setup window, does not exist in the Batches - Setup window. The main reason for this behavior is that unlike serial numbers, where each item purchased has its own serial number, a few batch numbers are usually associated with large quantity of items. For example, in OEC Computers, the Printer Label item is batch managed. The printer labels are purchased in dozens but each 10 units batch has one batch number. Therefor, in the example shown here, there are only five rows in the Created Batches grid and the allocation function is redundant. 25 25 Functionality differences for Batch related items (2/2) Batches Serials No Reallocation option Reallocation is possible Difference No.",
-    "start_time": 1420.58,
-    "end_time": 1472.69
+    "image_file": "Slide_025.webp",
+    "script_text": "La reasignación de ubicaciones es útil cuando cada artículo tiene un identificador único, como en los números de serie. Pero en el caso de los números de lote, donde un solo número representa múltiples unidades, esta función pierde sentido. Por ejemplo, si compras etiquetas de impresora en docenas y cada lote de diez unidades comparte el mismo número, reasignar ubicaciones lot por lot no aporta valor. Por eso, SAP Business One no incluye la opción de reasignación en la configuración de lotes, ya que sería redundante y poco práctica en operaciones reales.",
+    "start_time": 859.85,
+    "end_time": 896.23
   },
   {
     "slide_index": 26,
-    "image_file": "011_Slide_26_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "In some cases, when working with batch managed items, there is a need to pick items by both issuing methods: bin location first and batch number first. Therefore a First Bin Location column exists also in the Available Batches table in the Batch Number Selection window – even for items which are primarily selected by batch and serial numbers. The First Bin Location column is also available in the Sales Order. Please note that this column is not visible by default. 26 26 First Bin Location in Batch Number Selection First Bin Location  First Bin Location column is available also for items managed by batch number first.  Enable choosing items by both batch number and bin location",
-    "start_time": 1472.69,
-    "end_time": 1513.61
+    "image_file": "Slide_026.webp",
+    "script_text": "En la ventana de Selección de Número de Lote, la columna Primera Ubicación muestra dónde se asignó inicialmente el primer artículo de un lote. Esto es clave cuando se trabaja con emisión principalmente por ubicación, ya que permite rastrear el origen del lote aunque se seleccione por número. Aunque no es visible por defecto, puede activarse para mejorar la trazabilidad en documentos como el Pedido de Venta. En Distribuidora Andina Tech, esto ayuda a mantener control sobre lotes de componentes importados, incluso cuando la selección principal es por lote o serie.",
+    "start_time": 896.23,
+    "end_time": 931.46
   },
   {
     "slide_index": 27,
-    "image_file": "011_Slide_27_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "In the Allocation processes in Bin Locations course, we were introduced to the FIFO-LIFO automatic allocation methods for outbound transactions. Companies that work mainly with items managed with batch numbers, can find these methods very useful. If the company’s policy is to issue the oldest items first then a good solution will be to use the FIFO allocation method. In the FIFO method the items are allocated according to the entry date of the item per bin location per batch or serial number. Let us examine the scenario demonstrated here. Item A is stored in two bin locations. Bin_1 contains two batches: batch_a and batch_b. Bin_2 contains batch_c. Let us say we need to issue a quantity of 2000 units of item A and we are using the FIFO method. The system looks for the batch with the earliest entry date. This will be Batch_b. Next, the system should allocate another 1,500 units and it looks for the batch with the next earliest date in sequence which is Batch_c. Even thought Batch_a is located in the same bin location as Batch_b the system knows how to trace the specific batch. 27 27 Using the FIFO Automatic Allocation Method with Batches Bin# Batch# Stored QTY of Item A Entrance date of the batch Bin_1 Batch_a 1000 1.7. Batch_b 500 1.5. Bin_2 Batch_c 2000 1.6. Row quantity = 2000 Quantity of 500 from Batch_b Quantity of 1500 from Batch_c",
-    "start_time": 1513.61,
-    "end_time": 1613.42
+    "image_file": "Slide_027.webp",
+    "script_text": "Con el método FIFO, el sistema prioriza los artículos más antiguos según su fecha de entrada en la ubicación, independientemente de la ubicación física. En el ejemplo, aunque el lote_a y lote_b están en la misma ubicación, el sistema selecciona primero lote_b por ser el más antiguo (1 de mayo), luego pasa a lote_c en Ubic_2 (1 de junio). Esto asegura que se liberen primero los lotes más antiguos, incluso si están en distintas ubicaciones. Es ideal para empresas que requieren rotación de inventario basada en antigüedad, como en Distribuidora Andina Tech con componentes electrónicos sensibles al tiempo.",
+    "start_time": 931.46,
+    "end_time": 974.23
   },
   {
     "slide_index": 28,
-    "image_file": "011_Slide_28_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "Here are some key points you can take away from this training: • With incoming allocation, when the management method of the serial or batch number is set to On Every Transaction – then bin locations can be allocated only in the Serial Numbers – Setup window. • In order to shorten a receipt process of serial or batch numbered items, you can first allocate the entire quantity to one bin location and then reallocate to different bin locations using the Bin Location Reallocation window. • In the Item Master data, define the Issue Primarily by method: bin locations or serial and batch numbers. Choose the second method if you need to choose a specific serial number or batch. • When the issuing method is set to Issue Primarily by Bin Locations, you cannot assign Serial or batch numbers in a sales order, only later on in a delivery or invoice. 28 28 Summary Here are some key points for working with serial numbers and batches in a bin locations managed warehouse: With incoming allocation, when the management method of the serial or batch number is set to On Every Transaction – then bin locations can be allocated only in the Serial Numbers – Setup window. In order to shorten a receipt process of serial or batch numbered items, you can first allocate the entire quantity to one bin location and then reallocate to different bin locations using the Bin Location Reallocation window. In the Item Master data, define the Issue Primarily by method: bin locations or serial and batch numbers. Choose the second method if you need to choose a specific serial number or batch. When the issuing method is set to Issue Primarily by Bin Locations, you cannot assign Serial or batch numbers in a sales order, only later on in a delivery or invoice.",
-    "start_time": 1613.42,
-    "end_time": 1709.09
+    "image_file": "Slide_028.webp",
+    "script_text": "Cuando el método de gestión es 'En Cada Transacción', las ubicaciones se asignan solo en la Configuración de Número de Serie. Para acelerar recepciones, se puede asignar todo a una ubicación y luego reasignar usando la ventana Reasignación de Ubicación. En el Maestro de Artículos, definir 'Emisión Principalmente por' como ubicaciones o números de serie/lote determina dónde se puede seleccionar cada identificador. Si se elige 'Principalmente por Ubicaciones', no es posible asignar números de serie o lote directamente en un Pedido de Venta; dicha asignación se pospone a la entrega o factura. Esto asegura coherencia en el flujo de trabajo según la política de emisión definida.",
+    "start_time": 974.23,
+    "end_time": 1019.06
   },
   {
     "slide_index": 29,
-    "image_file": "011_Slide_29_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "The same rule applies in the Pick and Pack process – selecting serial or batch numbers are available only when the issuing method is set to primarily by serial numbers and batches. • The issuing method also affect the pick list generation and the working procedures in the Pick Pack and Production wizard. • When working with batch numbers, since one batch contains several items, instead of the Bin Locations filed, the First Bin Location displays where the first item of the batch was allocated. • When choosing the link arrow of the First Bin Location in a document, the Bin Location Content List opens filtered by the chosen batch. • In the FIFO issuing method, the items are allocated according to the entry date of the item per bin location per batch or serial number and not just per bin location. This method assists in releasing older batches first. 29 29 Summary The same rule applies in the Pick and Pack process – selecting serial or batch numbers are available only when the issuing method is set to primarily by serial numbers and batches. The issuing method also affect the pick list generation and the working procedures in the Pick Pack and Production wizard. When working with batch numbers, since one batch contains several items, instead of the Bin Locations filed, the First Bin Location displays where the first item of the batch was allocated. When choosing the link arrow of the First Bin Location in a document, the Bin Location Content List opens filtered by the chosen batch. In the FIFO issuing method, the items are allocated according to the entry date of the item per bin location per batch or serial number and not just per bin location. This method assists in releasing older batches first.",
-    "start_time": 1709.09,
-    "end_time": 1802.45
-  },
-  {
-    "slide_index": 30,
-    "image_file": "011_Slide_30_10_BinLoc_16_Serial_Serial.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1802.45,
-    "end_time": 1939.63
+    "image_file": "Slide_029.webp",
+    "script_text": "En los procesos de Picking y Embalaje, la selección de números de serie o lote solo está disponible cuando el método de emisión está configurado como 'Principalmente por Números de Serie y Lote'. Al trabajar con lotes, se muestra la Primera Ubicación en lugar de la ubicación genérica, indicando dónde se asignó el primer artículo del lote. Al hacer clic en su flecha de enlace, se abre la Lista de Contenido de Ubicaciones filtrada por ese lote. Además, con el método FIFO, la asignación se basa en la fecha de entrada del artículo en la ubicación por lote o serie, no solo por ubicación, lo que garantiza que se liberen primero los lotes más antiguos, optimizando la rotación de inventario.",
+    "start_time": 1019.06,
+    "end_time": 1062.79
   }
 ]

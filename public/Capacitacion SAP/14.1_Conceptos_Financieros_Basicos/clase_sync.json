@@ -1,93 +1,86 @@
 [
   {
     "slide_index": 1,
-    "image_file": "001_Slide_01_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Bienvenidos a esta clase fundamental de SAP Business One. En esta lección exploraremos las bases contables y financieras que rigen todo el sistema. Comprenderemos cómo cada transacción comercial, desde una venta hasta una cobranza, se traduce de forma transparente y automática en la contabilidad general de la empresa.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema Fundamentos de finanzas de SAP Business One Versión 10.0. Aquí aprenderá los principios básicos de la contabilidad y cómo se aplican en el sistema. Este conocimiento es esencial para gestionar eficazmente una empresa, generar informes financieros precisos y cumplir con las obligaciones tributarias. Comenzaremos desde lo más básico para construir una base sólida en los procesos contables automatizados que ofrece SAP Business One.",
     "start_time": 0.0,
-    "end_time": 21.12
+    "end_time": 27.0
   },
   {
     "slide_index": 2,
-    "image_file": "001_Slide_02_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Nuestro objetivo principal como consultores es dominar las convenciones de la contabilidad por partida doble aplicadas a SAP Business One. Analizaremos cómo se determinan los saldos de cuenta y examinaremos con precisión qué documentos de los procesos operativos generan asientos automáticos en el Libro Mayor.",
-    "start_time": 21.12,
-    "end_time": 40.2
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá analizar algunas convenciones de contabilidad general y comprender cómo SAP Business One genera asientos automáticos durante los procesos de venta. Esto le permitirá interpretar correctamente el impacto contable de cada transacción y explicar a la gerencia cómo se reflejan las operaciones en los estados financieros. El enfoque está en conectar la teoría contable con la ejecución práctica en el sistema.",
+    "start_time": 27.0,
+    "end_time": 53.6
   },
   {
     "slide_index": 3,
-    "image_file": "001_Slide_03_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Para aterrizar estos conceptos en la práctica, analicemos nuestro escenario de negocio. Estamos implementando SAP Business One en OEC Computers, una empresa comercializadora de equipos tecnológicos. Nuestra interlocutora es María, la jefa de contabilidad. María necesita tener la certeza de que el sistema registrará cada movimiento con rigor contable para emitir estados financieros confiables al cierre de cada período.",
-    "start_time": 40.2,
-    "end_time": 68.21
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagine que está implementando SAP Business One en OEC Computers, donde María, la responsable de contabilidad, necesita comprender cómo el sistema gestiona los procesos financieros. Su objetivo es informar periódicamente a los propietarios sobre los resultados de la empresa. Este escenario típico muestra la importancia de tener una visión clara del flujo contable para tomar decisiones informadas y comunicar el desempeño financiero con precisión y oportunidad.",
+    "start_time": 53.6,
+    "end_time": 80.6
   },
   {
     "slide_index": 4,
-    "image_file": "001_Slide_04_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "En el corazón financiero de SAP Business One se encuentra el principio de intercambio de valor. Toda operación económica requiere que al menos una cuenta reciba un cargo en el Debe y otra cuenta reciba un abono en el Haber por importes equivalentes. Esta disciplina garantiza que los libros de la empresa se mantengan siempre cuadrados y listos para auditorías fiscales y de gestión.",
-    "start_time": 68.21,
-    "end_time": 91.82
+    "image_file": "Slide_004.webp",
+    "script_text": "Todas las transacciones comerciales se registran en los libros de la empresa, lo que permite gestionarla eficazmente mediante informes financieros y cumplir con las autoridades tributarias. Cada transacción implica un intercambio de valor: una cuenta aumenta mientras otra disminuye, generando el registro contable de debe y haber. Este principio fundamental de la partida doble es la base sobre la cual SAP Business One construye todos sus asientos automáticos, asegurando que los libros siempre estén balanceados.",
+    "start_time": 80.6,
+    "end_time": 111.2
   },
   {
     "slide_index": 5,
-    "image_file": "001_Slide_05_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Pensemos en el flujo comercial típico de una empresa: emitimos una oferta de ventas, la convertimos en pedido, realizamos la entrega física, emitimos la factura de clientes, registramos el cobro y finalmente hacemos el depósito bancario. Frente a esta cadena, surge una pregunta clave de consultoría: ¿Cuáles de estos documentos tienen un impacto real en la contabilidad?",
-    "start_time": 91.82,
-    "end_time": 116.33
+    "image_file": "Slide_005.webp",
+    "script_text": "En temas anteriores revisamos los documentos del proceso de ventas y su impacto contable. Ahora reflexionemos: en un proceso de ventas estándar, ¿qué documentos generan asientos automáticos en el sistema contable? Esta pregunta nos ayuda a identificar qué operaciones realmente afectan los libros de la empresa y cuáles son meramente informativas. Comprender esta distinción es clave para controlar el flujo financiero y asegurar la precisión de los reportes gerenciales y fiscales.",
+    "start_time": 111.2,
+    "end_time": 140.2
   },
   {
     "slide_index": 6,
-    "image_file": "001_Slide_06_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "La respuesta técnica es determinante: los documentos preliminares como ofertas y pedidos no generan asientos contables. Los documentos que sí afectan los libros son: la entrega de mercancías únicamente cuando la empresa opera con inventario permanente, la factura de clientes que reconoce la cuenta por cobrar y el ingreso, el cobro recibido y el depósito bancario final.",
-    "start_time": 116.33,
-    "end_time": 139.99
+    "image_file": "Slide_006.webp",
+    "script_text": "En el proceso de ventas estándar, los documentos que crean asientos automáticos y afectan al sistema contable son la entrega, la factura de clientes, los pagos recibidos y el depósito. Es importante tener en cuenta que la entrega solo genera contabilización cuando se utiliza el método de inventario permanente. Estos documentos actualizan automáticamente las cuentas de inventario, ingresos, clientes y bancos, asegurando que la contabilidad refleje con precisión el flujo económico de cada venta sin intervención manual.",
+    "start_time": 140.2,
+    "end_time": 171.6
   },
   {
     "slide_index": 7,
-    "image_file": "001_Slide_07_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Analicemos la anatomía contable de una factura de clientes. En el momento en que se añade la factura, SAP Business One genera automáticamente un asiento: carga en el Debe la cuenta de control del cliente por el total del documento, y abona en el Haber la cuenta de impuestos sobre las ventas y la cuenta de ingresos comerciales. Además, el sistema permite parametrizar la división del asiento por cada línea del documento comercial.",
-    "start_time": 139.99,
-    "end_time": 167.38
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, al emitir una factura de clientes, el sistema genera automáticamente un asiento contable. El debe registra el aumento en la cuenta del cliente por el total de la venta. El haber se divide entre la cuenta de impuestos y la cuenta de ingresos, separados para claridad. Esta estructura refleja el principio de partida doble: cada transacción afecta al menos dos cuentas. Puedes habilitar la opción de dividir el asiento por líneas de documento en la parametrización, lo que evita agrupar movimientos similares. Cada fila del asiento puede vincularse a una fila del documento de origen, como una oferta o pedido. Esto permite mayor trazabilidad en auditorías y reportes. El cliente Distribuidora Andina Tech, al facturar un producto de 100 USD con 5 USD de IVA, verá este asiento reflejado en su libro diario.",
+    "start_time": 171.6,
+    "end_time": 227.0
   },
   {
     "slide_index": 8,
-    "image_file": "001_Slide_08_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Examinemos ahora el saldo del cliente en el Libro Mayor. El saldo representa la diferencia neta acumulada entre el total de cargos en el Debe y el total de abonos en el Haber. Cuando facturamos, el Debe del cliente aumenta. Cuando el cliente paga, registramos un Haber que reduce su deuda pendiente. En este ejemplo, los débitos superan a los créditos, arrojando un saldo deudor a favor de la empresa.",
-    "start_time": 167.38,
-    "end_time": 194.78
+    "image_file": "Slide_008.webp",
+    "script_text": "El saldo de una cuenta se calcula restando el total del haber del total del debe. En este ejemplo, la cuenta del cliente muestra un saldo debe de 700,00 USD, lo que indica que el cliente nos debe dinero. Los débitos provienen de facturas de venta, mientras que el haber incluye un abono o nota de crédito. Los cobros al cliente se registran en debe, ya que reducen el derecho de cobro. Este tipo de resumen ayuda a gestionar el riesgo crediticio y a tomar decisiones de cobranza. En SAP, puedes ver este detalle en el informe de cuenta de mayor o en la ficha del socio de negocio. Es clave para mantener una cartera sana y prever flujo de caja.",
+    "start_time": 227.0,
+    "end_time": 276.0
   },
   {
     "slide_index": 9,
-    "image_file": "001_Slide_09_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Para parametrizar el sistema correctamente, debemos tener muy clara la naturaleza de cada cuenta. Las cuentas de Activo y de Gastos tienen saldo natural en el Debe; por lo tanto, aumentan con los débitos y disminuyen con los créditos. Por el contrario, las cuentas de Pasivo, Patrimonio e Ingresos aumentan en el Haber y disminuyen en el Debe. Esta regla es universal en todo SAP.",
-    "start_time": 194.78,
-    "end_time": 220.66
+    "image_file": "Slide_009.webp",
+    "script_text": "En contabilidad, el efecto del debe y haber depende del tipo de cuenta. En las cuentas de activo, como bancos o clientes, un movimiento en debe aumenta su valor, mientras que el haber lo disminuye. Al revés, en pasivo y capital propio, el haber aumenta el valor y el debe lo disminuye. Los ingresos también aumentan en haber, al igual que las reservas. Los gastos, como alquiler o electricidad, aumentan en debe. Este comportamiento asegura que la ecuación contable (Activo = Pasivo + Patrimonio) se mantenga equilibrada. En SAP Business One, cada asiento respeta esta lógica automáticamente. Entenderlo te ayuda a interpretar reportes, validar asientos y detectar errores en la contabilización de operaciones cotidianas.",
+    "start_time": 276.0,
+    "end_time": 322.2
   },
   {
     "slide_index": 10,
-    "image_file": "001_Slide_10_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Pongamos a prueba este concepto con un caso directo. Supongamos que emitimos una factura de clientes por cuatrocientos cuarenta dólares a un cliente exento de impuestos bajo un modelo de inventario no permanente. El asiento carga cuatrocientos cuarenta al cliente y abona cuatrocientos cuarenta a ingresos. ¿Cómo se ven afectados los saldos de ambas cuentas involucradas?",
-    "start_time": 220.66,
-    "end_time": 244.49
+    "image_file": "Slide_010.webp",
+    "script_text": "Cuando un cliente está exento de impuestos, la factura de clientes solo afecta dos cuentas: se debe la cuenta del cliente y se haber la cuenta de ingresos. En este caso, sin IVA involucrado, el importe total de 440,00 USD se registra íntegramente en ambas columnas. Esto refleja un aumento en el derecho de cobro (activo) y en las ganancias generadas (ingresos). Aunque no hay impuestos, el asiento sigue cumpliendo con el principio de partida doble. En SAP, puedes previsualizar este asiento antes de guardar el documento usando la función de presentación preliminar. Esto es útil para validar que la contabilización sea correcta, especialmente en operaciones con regímenes especiales o clientes exentos según la normativa tributaria ecuatoriana.",
+    "start_time": 322.2,
+    "end_time": 369.6
   },
   {
     "slide_index": 11,
-    "image_file": "001_Slide_11_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Efectivamente, ambas cuentas incrementan su saldo. La cuenta del cliente es un activo que aumenta por el Debe, reflejando el derecho de cobro. La cuenta de ingresos incrementa por el Haber, reconociendo la ganancia del ejercicio. Un consejo de oro para el consultor: antes de crear cualquier documento, puedes pulsar el icono de Presentación Preliminar de Asiento en la barra de herramientas para verificar exactamente qué cuentas se afectarán.",
-    "start_time": 244.49,
-    "end_time": 272.64
+    "image_file": "Slide_011.webp",
+    "script_text": "En esta operación, tanto la cuenta de cliente como la de ingresos aumentan su valor. La cuenta de cliente, siendo un activo, se incrementa con un movimiento en debe. La cuenta de ingresos, aunque se registre en haber, también aumenta su valor, ya que las cuentas de ganancia crecen en esa columna. Esto puede parecer contradictorio, pero responde a la lógica contable: el haber en ingresos significa una ganancia generada. El asiento refleja correctamente el aumento de patrimonio por la venta y el aumento del derecho de cobro. En SAP Business One, esta contabilización ocurre de forma automática al guardar la factura. Puedes verificarla previamente con la herramienta de presentación preliminar de asiento, accesible desde la barra de herramientas o mediante clic derecho sobre el documento.",
+    "start_time": 369.6,
+    "end_time": 420.6
   },
   {
     "slide_index": 12,
-    "image_file": "001_Slide_12_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Como puntos clave de esta sesión, recordemos: el saldo de cuenta es el balance entre los cargos del Debe y los abonos del Haber. Todo asiento en SAP Business One mantiene el balance patrimonial estricto. Las cuentas de activo y gastos crecen por el Debe, mientras que pasivos, capital e ingresos crecen por el Haber.",
-    "start_time": 272.64,
-    "end_time": 293.57
-  },
-  {
-    "slide_index": 13,
-    "image_file": "001_Slide_13_10_AccBasics_11_AccBasics_Financial_Basics_ES.webp",
-    "script_text": "Hemos concluido nuestra clase de Fundamentos Financieros en SAP Business One. Con estas bases sólidas, estamos listos para avanzar al siguiente módulo, donde exploraremos la parametrización de asientos automáticos avanzados y la gestión del Plan de Cuentas.",
-    "start_time": 293.57,
-    "end_time": 310.54
+    "image_file": "Slide_012.webp",
+    "script_text": "El saldo de una cuenta es la diferencia entre sus movimientos totales en debe y haber. En cada asiento contable, una cuenta aumenta y otra disminuye, manteniendo el equilibrio entre ambas columnas. Las cuentas de activo, gastos y arrastre normalmente registran aumentos en debe, mientras que pasivo, ingresos y capital propio lo hacen en haber. Este comportamiento es fundamental para entender cómo SAP Business One refleja las transacciones en los libros contables. Aplicar estos conceptos te permite validar asientos, interpretar estados financieros y tomar decisiones informadas sobre la salud financiera de tu empresa. Es la base para trabajar con confianza en cualquier proceso contable dentro del sistema.",
+    "start_time": 420.6,
+    "end_time": 464.0
   }
 ]

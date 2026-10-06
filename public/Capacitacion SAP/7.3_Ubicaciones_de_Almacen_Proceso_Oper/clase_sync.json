@@ -1,373 +1,366 @@
 [
   {
     "slide_index": 1,
-    "image_file": "008_Slide_01_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Bienvenidos a esta clase sobre BinLoc 13 Process Process en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Bin Location Allocation Processes SAP Business One Version 10.0 Welcome to the course: Allocation Process in Bin Locations. This course is one of a series of courses available for the bin location subject.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de Proceso de Asignación en Ubicaciones de Almacén en SAP Business One versión 10.0. Este módulo forma parte de una serie especializada en la gestión eficiente de almacenes. Aprenderás cómo asignar artículos de forma manual y automática en procesos clave como ventas, compras, inventario, picking, embalaje y producción. El objetivo es optimizar el flujo de mercancías dentro del almacén mediante reglas claras y configuraciones precisas. Al finalizar, podrás aplicar estas asignaciones en escenarios reales de negocio, mejorando la trazabilidad y el control de stock. Este curso te prepara para implementar y asesorar en el uso efectivo de las funcionalidades de ubicación de almacén en SAP Business One.",
     "start_time": 0.0,
-    "end_time": 26.54
+    "end_time": 47.78
   },
   {
     "slide_index": 2,
-    "image_file": "008_Slide_02_10_BinLoc_13_Process_Process.webp",
-    "script_text": "At the end of this module, you will be able to:  Allocate items manually and automatically in the business processes: – Sales and Purchasing – Inventory – Pick and Pack – And Production 2 At the end of this topic, you will be able to:  Allocate items manually and automatically in the business processes:  Sales and Purchasing  Inventory  Pick and Pack  Production Objectives",
-    "start_time": 26.54,
-    "end_time": 46.87
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este módulo, podrás asignar artículos tanto de forma manual como automática en los procesos de negocio más relevantes: ventas, compras, inventario, picking y embalaje, y producción. Aprenderás a crear asignaciones manuales en transacciones de entrada y salida de mercancía, así como a definir y aplicar reglas para asignaciones automáticas según los métodos configurados. Este conocimiento te permitirá asesorar al equipo de almacén sobre cómo estructurar y ejecutar las asignaciones de manera eficiente, asegurando que cada artículo esté en el lugar correcto según las necesidades operativas. Dominar estas habilidades mejora la precisión del inventario y optimiza la logística interna.",
+    "start_time": 47.78,
+    "end_time": 92.21
   },
   {
     "slide_index": 3,
-    "image_file": "008_Slide_03_10_BinLoc_13_Process_Process.webp",
-    "script_text": "This is the agenda for the current course. We will start by shortly reviewing the setup process we discussed in the Setup course of bin locations. Then, we will see how to perform manual allocation of incoming and outgoing transactions. After that, we will learn the different automatic allocation methods. After we get familiar with the automatic methods we will see how the system allocates items according to these methods. We will also examine different scenarios involving bin locations like making a change in the allocation made, copying and canceling a document, using drafts and more. Later on we will allocate items in inventory transactions. And finally we will see how the Pick and Pack and the Production processes are affected by the Bin Locations solution. But first, let us go over a short business example about OEC Computers and go over their Warehouse structure. 3 3 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 46.87,
-    "end_time": 115.85
+    "image_file": "Slide_003.webp",
+    "script_text": "La agenda del curso comienza con una breve revisión de la configuración de ubicaciones de almacén vista en el curso anterior. Luego avanzamos hacia la asignación manual en transacciones de entrada y salida, seguida de los distintos métodos de asignación automática. Después, veremos cómo el sistema aplica esas reglas en la práctica. Examinaremos escenarios adicionales como cambiar asignaciones, copiar o cancelar documentos, y usar borradores. Posteriormente, asignaremos artículos en documentos de inventario. Finalmente, analizaremos cómo se ven afectados los procesos de picking, embalaje y producción por la solución de ubicaciones de almacén. Todo esto se ilustra con un ejemplo de negocio basado en OEC Computers y su estructura de almacén.",
+    "start_time": 92.21,
+    "end_time": 140.93
   },
   {
     "slide_index": 4,
-    "image_file": "008_Slide_04_10_BinLoc_13_Process_Process.webp",
-    "script_text": "You have just finished configuring the bin location setup at OEC Computers. You now proceed with the implementation of the bin locations module. OEC Computers buy goods from different manufacturers and distributers and then sell them to their customers. During these logistics processes, goods are allocated to and from bin locations. You advise the warehouse manager and his team on how to create manual allocations. In addition, you show the warehouse manager how to define the rules for automatic allocations, and how the rules are used in the business process. 4 4 Business Scenario You have just finished configuring the bin location setup at OEC Computers. You now proceed with the implementation of the bin locations module. OEC Computers buy goods from different manufacturers and distributers and then sell them to their customers. When doing so, goods are allocated to and from bin locations. You advise the warehouse manager and his team on how to create manual allocations. In addition, you show the warehouse manager how to define the rules for automatic allocations, and how the rules are used in the business process.",
-    "start_time": 115.85,
-    "end_time": 183.0
+    "image_file": "Slide_004.webp",
+    "script_text": "Ya configuraste las ubicaciones de almacén en OEC Computers y ahora continúas con la implementación del módulo. Esta empresa compra mercancías a fabricantes y distribuidores y las vende a sus clientes. Durante estos procesos logísticos, las mercancías se asignan a y desde ubicaciones de almacén específicas. Tu rol es asesor al gerente de almacén y su equipo sobre cómo crear asignaciones manuales de forma precisa. Además, le mostrarás cómo definir las reglas para asignaciones automáticas y cómo se aplican esas reglas en los procesos de negocio reales, como ventas y compras. Esto garantiza que cada movimiento de inventario tenga una ubicación asignada correctamente, mejorando el control y la eficiencia operativa.",
+    "start_time": 140.93,
+    "end_time": 187.32
   },
   {
     "slide_index": 5,
-    "image_file": "008_Slide_05_10_BinLoc_13_Process_Process.webp",
-    "script_text": "To set up bin locations at OEC Computers, we first need to examine the structure of the warehouse. In the image, we can see the main warehouse of OEC Computers. The warehouse is a big hangar divided into aisles. Each aisle has shelves stretching along the sides and each shelf is divided into levels, as shown in the image. 5 5 Business Scenario OEC Computers Warehouse Structure Shelf  Shelf  Shelf Shelf",
-    "start_time": 183.0,
-    "end_time": 208.82
+    "image_file": "Slide_005.webp",
+    "script_text": "Para configurar las ubicaciones de almacén en OEC Computers, primero examinamos su estructura física. El almacén principal es un gran hangar dividido en pasillos. Cada pasillo cuenta con estantes a ambos lados, y cada estante se divide en niveles verticales, como se muestra en la imagen. Esta organización jerárquica permite definir ubicaciones precisas mediante la combinación de pasillo, estantería y nivel. Entender esta estructura es esencial para crear códigos de ubicación que reflejen fielmente la disposición física del almacén, facilitando el picking, el almacenamiento y el control de inventario en SAP Business One.",
+    "start_time": 187.32,
+    "end_time": 227.64
   },
   {
     "slide_index": 6,
-    "image_file": "008_Slide_06_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Let us get to know the sublevel structure of a warehouse managed by bin locations, so we understand how to define bin locations in OEC Computers’ warehouse. A warehouse structure often consists of a combination of different levels, such as an aisle, shelf, or floor. One area type can be a sublevel area of another type. At OEC Computers, for example, a shelf is a sublevel of an aisle. This means an aisle contains several shelves. SAP Business One supports up to 4 warehouse sublevels. A combination of the warehouse code and warehouse sublevels codes defines the unique bin location code. An example in the graphic can be the bin location code 05-A1-S2-L1. The same warehouse sublevel code can be used in many bin location codes. We can see that level L1 is connected to shelf S1 and shelf S2. 6 6 Warehouse Sublevels Structure Bin Location Code Composition - Example Warehouse 05 A1 S1 S2 L1 L2 L1 L2 Bin Locations Code A2 Warehouse Level Warehouse Sublevel 1 - Aisle Warehouse Sublevel 2 - Shelf Warehouse Sublevel 3 - Level A unique combination of the warehouse code and the warehouse sublevel codes",
-    "start_time": 208.82,
-    "end_time": 280.7
+    "image_file": "Slide_006.webp",
+    "script_text": "La estructura de un almacén gestionado por ubicaciones suele organizarse en niveles como pasillo, estantería o piso, donde un tipo de área puede ser subnivel de otro. En OEC Computers, por ejemplo, una estantería es subnivel de un pasillo, es decir, cada pasillo contiene varias estanterías. SAP Business One admite hasta 4 subniveles de almacén. El código único de ubicación se forma combinando el código de almacén con los códigos de cada subnivel. Por ejemplo: 05-A1-S2-L1, donde 05 es el almacén, A1 el pasillo, S2 la estantería y L1 el nivel. El mismo código de subnivel (como L1) puede reutilizarse en distintas estanterías (S1 y S2), lo que permite flexibilidad y escalabilidad en la definición de ubicaciones.",
+    "start_time": 227.64,
+    "end_time": 280.75
   },
   {
     "slide_index": 7,
-    "image_file": "008_Slide_07_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Now , let us see an example of a bin location code structure. We can see that the bin location code is a combination of the warehouse and warehouse sublevel codes. 7 7 OEC Computers: Bin Location Code Structure 01 – A4 – S2 – L9 Warehouse - Sublevel1 - Sublevel2 - Sublevel3 Warehouse 01 – Aisle 4 - Shelf 2 - Level 9 Sublevel structure Bin Location Code in OEC Computers Details",
-    "start_time": 280.7,
-    "end_time": 308.69
+    "image_file": "Slide_007.webp",
+    "script_text": "El código de ubicación en SAP Business One combina el almacén y subniveles para identificar exactamente dónde está un artículo. Por ejemplo, 01 – A4 – S2 – L9 significa Almacén 01, Pasillo 4, Estantería 2 y Nivel 9. Esta estructura permite una ubicación precisa y eficiente del inventario dentro del almacén gestionado por ubicaciones.",
+    "start_time": 280.75,
+    "end_time": 306.41
   },
   {
     "slide_index": 8,
-    "image_file": "008_Slide_08_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Let us see how a manual allocation is made and get to know the allocation window. 8 8 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 308.69,
-    "end_time": 331.42
+    "image_file": "Slide_008.webp",
+    "script_text": "En esta lámina revisamos los objetivos del módulo: conocer cómo se realiza la asignación manual y automática de ubicaciones en documentos de entrada y salida de mercancía. También exploraremos escenarios adicionales, como el uso en picking, embalaje y producción, y cómo se reflejan las asignaciones en los documentos de inventario.",
+    "start_time": 306.41,
+    "end_time": 327.55
   },
   {
     "slide_index": 9,
-    "image_file": "008_Slide_09_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In marketing documents, inventory transactions, Pick and Pack procedure and production process you can allocate items to and from bin locations. The allocation occurs when issuing documents that create inventory transactions (including inventory counting process). Therefore, the bin location allocation option does not exist in documents like orders. In the following slides, we will follow a manual allocation process done in marketing documents for issuing goods from bin locations and receiving goods to bin locations. Let us start with a short demonstration of the allocation made in a Delivery document. 9 9 Usage in Documents Marketing Documents Pick & Pack Production Inventory Transactions Bin Locations",
-    "start_time": 331.42,
-    "end_time": 373.94
+    "image_file": "Slide_009.webp",
+    "script_text": "La asignación de ubicación se aplica en documentos de marketing, transacciones de inventario, procesos de picking y embalaje, y producción. Ocurre al generar transacciones de inventario, incluyendo conteos. No está disponible en órdenes de venta, ya que no generan movimiento inmediato de stock. En las próximas diapositivas veremos la asignación manual en un documento de entrega.",
+    "start_time": 327.55,
+    "end_time": 353.18
   },
   {
     "slide_index": 10,
-    "image_file": "008_Slide_10_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Every inventory receiving document that involves a bin locations managed warehouse, requires allocation to specific bin locations. This allocation can be manual or automatic. We will start by learning about manual allocation in order to better understand the allocation mechanism. The allocation is made per document row in the Bin Location Allocation window. Before allocating, make sure the correct quantity and correct warehouse code are updated in the row. In order to manually allocate the quantity of the item in the row, choose the link arrow in the Bin location allocation field to open the allocation - receipt window. In the header of this window you can see information taken from the original document row like Document Number, Row Number, Warehouse Code and Item Number. You can also see the allocation quantity. In the matrix at the bottom of the screen, allocate the row quantity to the desired bin locations. You may choose a bin location code from a list or enter it manually. You may split the allocated quantity to many bin location codes. Use the CTRL+B keyboard combination to enter the remaining quantity in the Allocated field. The quantity allocated can not exceed the row quantity. You can clear the quantities allocated by choosing the Clear Allocation button. Note, you can access the Bin Location Allocation window also from the context menu. 10 10 Original row quantity Incoming Transaction Warehouse Manual allocation processes Incoming Allocations",
-    "start_time": 373.94,
-    "end_time": 461.69
+    "image_file": "Slide_010.webp",
+    "script_text": "Para asignar una ubicación manualmente en un documento de recepción, abre la ventana Asignación de Ubicación de Almacén desde el campo de asignación. Verifica primero que el artículo, cantidad y almacén sean correctos. En la matriz inferior, asigna la cantidad a una o más ubicaciones, ya sea seleccionando de la lista o ingresando manualmente. Usa CTRL+B para completar el resto. La cantidad asignada no debe superar la de la fila. Puedes borrarla o acceder desde el menú contextual.",
+    "start_time": 353.18,
+    "end_time": 387.02
   },
   {
     "slide_index": 11,
-    "image_file": "008_Slide_11_10_BinLoc_13_Process_Process.webp",
-    "script_text": "The Bin Location Allocation windows (receipt and issue) will open only when all of the following data exists in the chosen row: Item No., Quantity and Warehouse Code.  The quantity entered in the Allocated field, in the Bin Location Allocation window, is always positive, even if the line quantity in the document is negative. We will see negative quantity allocation in the next slides.  It is possible to have multiple warehouses in one document: bin location managed warehouses and regular warehouses.  After the document is added, choosing the link arrow in the Bin Location Allocation column, opens up the Inventory Posting List report, filtered for the transactions related to the relevant document line. This report can be very useful when receiving goods. The warehouseman can physically allocate items in their bin locations according the issued report. 11 11 Manual allocation processes Important Notes Mandatory information before allocation: Item Number, Quantity and Warehouse code. Allocation quantity is always positive. It is possible to have multiple warehouses in one document: bin location managed warehouses and regular warehouses. After the document is added, the link arrow of the Bin Location Allocation column opens the Inventory Posting List.",
-    "start_time": 461.69,
-    "end_time": 536.86
+    "image_file": "Slide_011.webp",
+    "script_text": "La ventana de asignación solo se abre si la fila tiene artículo, cantidad y código de almacén válidos. El campo Asignado siempre recibe valores positivos, incluso si la fila es negativa (como en emisiones). Una asignación puede incluir múltiples almacenes, gestionados o no. Tras guardar, la flecha de enlace abre el Informe de Registros de Inventario filtrado por esa fila, útil para localizar físicamente los artículos al recibir mercancía.",
+    "start_time": 387.02,
+    "end_time": 417.34
   },
   {
     "slide_index": 12,
-    "image_file": "008_Slide_12_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Now, we will see how automatic allocations are made. First we will examine the goods receiving process. We will learn the two automatic issuing methods for receiving goods and see how the allocation is done automatically. Then, we will examine the goods issuing process. We will go over the five automatic receiving methods and see an example for each one. We will also see what happens when allocation quantity is missing and what happens when changing the row details after allocation was made. But first, let us remember the two automatic allocation methods for receiving goods. 12 12 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 536.86,
-    "end_time": 589.78
+    "image_file": "Slide_012.webp",
+    "script_text": "Ahora examinaremos la asignación automática en recepción y emisión de mercancías. Veremos los dos métodos automáticos para recepción y cinco para emisión, con ejemplos de cada uno. También analizaremos qué ocurre cuando la cantidad es insuficiente o se modifican los detalles de la fila después de una asignación. Comenzamos recordando los dos métodos automáticos de recepción.",
+    "start_time": 417.34,
+    "end_time": 442.08
   },
   {
     "slide_index": 13,
-    "image_file": "008_Slide_13_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the Setup course topic we were introduced with the two automatic allocation on receipt methods:  The first method is to choose an automatic allocation strategy. There are different automatic allocation strategies. The strategy can be to choose a certain Default bin location or to allocate to the current or historical bin locations of the item.  The second method is to define certain bin locations as Receiving bin locations. The Receiving bin location in SAP Business One can be a transit bin location that is used as an inspection area for quality checks or any other receiving procedures. The graphics demonstrated the two suggested process of allocating items received in the warehouse. On the left, we can see a process that can be used in a warehouse that work with automatic allocation strategies. In this process items are allocated directly to the storage bin locations. On the right, we can see a process that can be used in a warehouse that work with the Receiving bin locations method. In this process the items are allocated to a Receiving bin location. In the receiving bin location the items go through a goods receipt procedure. Then, the items are moved to the storage bin location. Let us take a closer look at these two options in the next slides. 13 13 Auto. Allocation Strategies Vs. Receiving Bin Locations Working with Auto. Allocation Strategies Working with Receiving Bin Locations Receipt procedure of the goods in the Receiving bin location Storage Bin Locations Items are automatically allocated to the storage bin locations Inbound allocation documents Only purchasing documents Items are automatically allocated to the Receiving bin locations Inventory transfer to storage Bin Location",
-    "start_time": 589.78,
-    "end_time": 688.42
+    "image_file": "Slide_013.webp",
+    "script_text": "En SAP Business One existen dos métodos para asignar automáticamente ubicaciones al recibir mercancía. El primero aplica una estrategia de asignación automática, como ubicación predeterminada o ubicaciones históricas, enviando el artículo directamente a su ubicación de almacenamiento. El segundo utiliza Ubicaciones de Recepción como área de tránsito: el artículo llega primero allí y luego se transfiere al almacenamiento mediante un documento de Transferencia de Inventario. Ambos procesos se activan al crear el documento de entrada, según la configuración del almacén.",
+    "start_time": 442.08,
+    "end_time": 478.37
   },
   {
     "slide_index": 14,
-    "image_file": "008_Slide_14_10_BinLoc_13_Process_Process.webp",
-    "script_text": "One main strategy in the list of the automatic allocation strategies is the Default bin location. These defaults, in contrast to the Receiving bin locations, are the storage bin location and not a temporary location. Default bin locations can be defined on a Warehouse, Item Group or Item level. An incoming transaction involving a Warehouse, Item Group or Item with a Default bin location, will be automatically updated with the Default bin location code defined in these entities (According to certain priority rules). This automatic allocation occurs once selecting an item in the document row, as long as the Quantity and Warehouse columns are defined. Default bin locations can be enforced at any level. Enforcing a Default bin location means allocation can not be done to any other bin location, even if another automatic allocation strategy was chosen in the Warehouse - Setup window. 14 14 Incoming Allocations Automatic Allocation Strategies - Default Bin Locations Priority 1: Item Level Default Priority 2: Item Group Level Default Priority 3: Warehouse Level Default  Regular storage bin location  Can be defined by the item, item group or warehouse level",
-    "start_time": 688.42,
-    "end_time": 756.53
+    "image_file": "Slide_014.webp",
+    "script_text": "La Ubicación Predeterminada es una ubicación de almacenamiento permanente, no temporal como las de recepción. Se puede definir a nivel de artículo, grupo de artículos o almacén. Al crear un documento de entrada, si el artículo, su grupo o el almacén tienen una ubicación predeterminada definida, el sistema la asigna automáticamente siguiendo el orden de prioridad: primero artículo, luego grupo, luego almacén. Esta asignación ocurre al seleccionar el artículo en el documento, siempre que cantidad y almacén estén definidos. Si se fuerza en algún nivel, no se puede cambiar, incluso si se elige otra estrategia.",
+    "start_time": 478.37,
+    "end_time": 519.36
   },
   {
     "slide_index": 15,
-    "image_file": "008_Slide_15_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In order to explain the other three strategies, we use an example. Look at the table displayed here. There are three bin locations. Bin_1 and Bin_2 currently have a non-zero quantity of item A. The quantity of Bin_1 was last entered on July 1st and the quantity of Bin_2 was entered on June 1st. Bin_3 has no current quantity of item A but on May 1st there was an inbound transaction of the item. The item was later sold and therefore the quantity in this bin location is currently zero. The Last Bin Location Used That Received Item strategy allocates the item automatically to the last bin location used in an inbound transaction to store the specific item in the specific warehouse. In our example, the system looks for the latest entry and therefore the item is allocated to Bin_1. In the Item’s Current Bin Location strategy the system allocates the item to a bin location that currently contains the item and according to the bin location code sequence. In our case there are two bin locations that currently contain this item: Bin_1 and Bin_2. The system chooses Bin_2 since the bin location code of Bin_2 appears before that of Bin_1 in an alpha-numeric sort order. When using the Item’s Current and Historical Bin Locations, the system allocates to Bin_3. In this strategy, the system looks for the first bin location code in an alpha- numeric sort order among all bin locations that ever received item A. A useful option SAP Business One provides in all automatic allocation strategies, is the ability to automatically allocate quantity up to the maximum defined for the bin location. In order to activate this option go to the Warehouse - Setup window and choose the checkbox: Receive Up to Maximum Quantity. In addition, if the allocation is done manually and the quantity exceeds to maximum defined, then a warning message is provided asking to approve this allocation. 15 15 Incoming Allocations Automatic Allocation Strategies – More Strategies Bin # Bin Location Code Current QTY of Item A Date of last entry of item A in the bin location Appears as first choice in the following method: Bin_1 01-A4-S1-L1 10 July 1st Last Bin Location That Received Item Bin_2 01-A1-S4-L3 12 June 1st Item’s Current Bin Location Bin_3 01-A1-S1-L4 0 May 1st Item’s Current and Historical Bin Locations",
-    "start_time": 756.53,
-    "end_time": 904.66
+    "image_file": "Slide_015.webp",
+    "script_text": "En este ejemplo, vemos cómo funcionan tres estrategias de asignación automática. La estrategia 'Última Ubicación Usada que Recibió el Artículo' elige Ubic_1 porque tuvo la entrada más reciente (1 de julio). La estrategia 'Ubicación Actual del Artículo' asigna a Ubic_2, ya que actualmente contiene el artículo y es la primera en orden alfabético entre las que lo tienen. La estrategia 'Ubicaciones Actuales e Históricas del Artículo' elige Ubic_3, la primera en orden alfabético entre todas las que alguna vez recibieron el artículo, aunque ahora tenga cero stock. Además, se puede activar 'Recibir hasta Cantidad Máxima' para evitar sobrepasar el límite de una ubicación.",
+    "start_time": 519.36,
+    "end_time": 567.36
   },
   {
     "slide_index": 16,
-    "image_file": "008_Slide_16_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Let us get to know the second method of automatic allocation – working with Receiving bin locations. The Receiving bin location is a transit bin location that can be used as an inspection area for quality check or any other receipt procedures. Another reason for using Receiving bin locations can be to allow the receiving of goods to the warehouse even if the warehouseman does not know yet where to physically allocate the goods received. When working with Receiving bin locations, all incoming transactions are placed in the Receiving bin locations unless alternative bin locations are chosen manually in the document. The automatic allocation in the document occurs when adding the document. If the row quantity is not fully allocated, when trying to add the document, the system raises a message suggesting allocating to the Receiving bin location. When approving this message, the system will allocate the un-allocated quantity to the bin location defined as Receiving in the Bin Location Master Data window. After completing the receipt, the items received can be transferred, using an Inventory Transfer document, to a storage bin locations. Please note that companies may choose to use the Receiving bin location as a regular storage bin. In this case, the items will not be transferred to another bin location. Please also note that the Receiving bin location functionality is active only for purchasing document and not for inventory documents including: Good Receipt, Inventory Transfer, Receipt From Production and any incoming assembly BOM transactions. 16 16 Incoming Allocations Receiving Bin Locations  A transit bin location that is used as an inspection area for receipt procedures  After the receipt procedure the items are transferred to their regular storage bin location",
-    "start_time": 904.66,
-    "end_time": 1003.2
+    "image_file": "Slide_016.webp",
+    "script_text": "Las Ubicaciones de Recepción son zonas de tránsito usadas para inspección, control de calidad o cuando aún no se sabe dónde almacenar físicamente la mercancía. En este maestro de ubicación, se marca el tipo como 'Recepción' para indicar su función. Todas las transacciones de entrada van aquí por defecto, salvo asignación manual. Al aprobar el documento, si queda cantidad sin asignar, el sistema la dirige a esta ubicación. Luego, se transfiere el inventario a almacenamiento definitivo mediante un documento de Transferencia de Inventario. Esta función solo aplica a documentos de compra.",
+    "start_time": 567.36,
+    "end_time": 606.86
   },
   {
     "slide_index": 17,
-    "image_file": "008_Slide_17_10_BinLoc_13_Process_Process.webp",
-    "script_text": "This table summarizes the difference between the two different types of automatic allocation: When using one of the automatic allocation strategies, the bin locations are populated automatically in the document rows before adding the document. On the other hand, the Receiving bin locations are populated only after adding the document. In our example we use the automatic allocation strategies to allocate goods to the main storage bin location and the Receiving bin location as the in transit, reception area. In addition, in contrast with the automatic allocation strategies, after allocating to a Receiving bin location, we may transfer the items to the main storage bin. Finally, look at the last row. In purchasing marketing documents, when both automatic allocation strategy and Receiving bin locations apply for the document row then:  The system does not automatically allocate the item according to the automatic allocation strategy. This is also true when a Default bin location was enforced.  When adding the document, if no manual allocation has been made, the system suggests to allocate the unallocated quantity to the Receiving bin location. 17 17 Incoming Allocation Automatic Allocation Strategies Vs. Receiving Bin Locations Method 2 - Receiving bin locations Method 1 – Automatic allocation strategies After choosing the Add button After entry of item code, quantity and warehouse Automatic allocation occurs: Receiving Bin Location Main storage bin location Possible Target bin location: Transfer items to the main storage bin location None needed Possible Process after allocation: Allocation to Receiving bin location is suggested Allocation will not occur When both methods are defined:",
-    "start_time": 1003.2,
-    "end_time": 1100.5
+    "image_file": "Slide_017.webp",
+    "script_text": "Con las estrategias de asignación automática, el sistema asigna la ubicación directamente en las filas del documento antes de que lo agregues, enviando el artículo a su ubicación final de almacenamiento. En cambio, con las Ubicaciones de Recepción, la asignación ocurre solo después de agregar el documento: el artículo va primero a la ubicación de recepción y luego se transfiere al almacenamiento mediante un documento de Transferencia de Inventario. Cuando ambos métodos aplican en un documento de compra, el sistema ignora la estrategia automática y sugiere asignar la cantidad no asignada a la Ubicación de Recepción.",
+    "start_time": 606.86,
+    "end_time": 644.3
   },
   {
     "slide_index": 18,
-    "image_file": "008_Slide_18_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Here are some important notes concerning automatic incoming allocation:  When a Default bin location is enforced, then no matter which automatic allocation strategy is currently defined in the Warehouse – Setup window, the allocation is done to the Default bin location.  It is also important to know that in case you want to avoid any automatic allocation, just make sure the Default bin location allocation strategy is chosen and that there is no Default bin location defined in the warehouses, item groups and items.  And finally, note that in the Form Settings window you may choose another bin location for allocation, for the whole document. In this way you can override the automatic allocation strategy defined if necessary (unless Default bin location was enforced). Since this change affects all rows in the document, this action may be used to allocate items to a transit bin location from which the items will later be transferred to the main storage bin locations.  You may also want to refer to the Setup course unit for more details about the definitions needed for the automatic allocation on receipt. 18 18 Automatic Incoming allocation Important Notes An enforced Default bin location overcomes any automatic allocation strategy that is currently defined in the Warehouse – Setup window. To avoid any automatic allocation, just make sure the Default Bin Location allocation strategy is chosen and that no Default bin location was defined. Allocation to a bin location can be done for the whole document in the Form Setting window.",
-    "start_time": 1100.5,
-    "end_time": 1184.64
+    "image_file": "Slide_018.webp",
+    "script_text": "Si una Ubicación Predeterminada está forzada en cualquier nivel (artículo, grupo o almacén), el sistema siempre la asignará, ignorando cualquier estrategia de asignación automática definida en la configuración del almacén. Para evitar totalmente la asignación automática, selecciona la estrategia 'Ubicación Predeterminada' y asegúrate de que no exista ninguna ubicación predeterminada definida en ninguno de los tres niveles. Además, en la ventana Configuración de Formulario puedes elegir una ubicación de asignación para todo el documento, anulando la estrategia automática — excepto cuando haya una ubicación predeterminada forzada. Para detalles sobre las configuraciones necesarias, revisa el curso de Configuración.",
+    "start_time": 644.3,
+    "end_time": 690.77
   },
   {
     "slide_index": 19,
-    "image_file": "008_Slide_19_10_BinLoc_13_Process_Process.webp",
-    "script_text": "After we covered the automatic incoming allocation methods let us discuss the automatic outgoing allocation methods. Allocation of items from bin locations can be done automatically when issuing documents that create outgoing inventory transactions. The quantity to allocate can be chosen from different bin locations in a certain order. The definition for this automatic allocation is done in the Warehouse – Setup window. This definition will apply to all issuing transactions. Having said that, it is also possible to manually change the automatic allocation method per outgoing transaction. We will learn how to do that in the following slides. Let us first go through the different automatic methods for issuing items from bin locations. 19 19 Setup Inventory Warehouse Outgoing Allocations Automatic Allocation on Issue Definition",
-    "start_time": 1184.64,
-    "end_time": 1234.44
+    "image_file": "Slide_019.webp",
+    "script_text": "La asignación automática de salidas permite que el sistema seleccione las ubicaciones de donde tomar el inventario al emitir documentos como facturas de venta o entregas. Esta configuración se define una vez en la ventana Configuración del Almacén y se aplica a todas las transacciones de salida, aunque puede sobrescribirse manualmente por documento. Es útil para estandarizar procesos y reducir errores en la preparación de pedidos. En empresas como Distribuidora Andina Tech, esto agiliza el picking en el almacén de Quito al seguir reglas predefinidas según el método elegido.",
+    "start_time": 690.77,
+    "end_time": 726.6
   },
   {
     "slide_index": 20,
-    "image_file": "008_Slide_20_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the table we see all issuing methods along with a short description. • The Single Choice method means that Automatic allocation only occurs when there is only one possible allocation option. • The Bin Location Code Order method means that items are allocated according to the alphanumeric order of the bin location codes. • The Alternative Sort Code Order method means that items are allocated according to the alphanumeric order of the Alternative Sort codes. • The Descending Quantity method means that items are allocated according to the descending bin location quantities. • The Ascending Quantity method means that items are allocated according to the ascending bin location quantities. • The Ascending Quantity - Single Bin Preferred method means that items are allocated to the first bin location that contains the entire quantity in the list of ascending quantity. • Both FIFO and LIFO methods mean that items are allocated according to the order of the entrance date of the item in the bin location. In FIFO, the allocation starts from the earliest date and in LIFO from the latest. Let us explain each method with an example. 20 20 Outgoing Allocations Automatic Allocation Issuing Methods Description Issuing Method Automatic allocation occurs when there is only one possible allocation option. Single Choice According to the alphanumeric order of the Bin Location codes. Bin Location Code Order According to the alphanumeric order of the Alternative Sort codes. Alternative Sort Code Order According to the descending Bin Location quantities. Descending Quantity According to the ascending Bin Location quantities. Ascending Quantity Allocation is done to the first bin location that contains the entire quantity in the list of ascending bin location quantities. Ascending Quantity - Single Bin Preferred According to the entrance date of the item in the bin location, starting from the earliest. FIFO According to the entrance date of the item in the bin location, starting from the latest. LIFO",
-    "start_time": 1234.44,
-    "end_time": 1345.15
+    "image_file": "Slide_020.webp",
+    "script_text": "Existen varios métodos para definir cómo el sistema asigna automáticamente el inventario durante las salidas. Estos se basan en criterios como disponibilidad única, orden alfabético de códigos, niveles de stock o antigüedad de ingreso. Cada método responde a distintas necesidades operativas: desde control estricto hasta optimización de espacio o rotación. En Distribuidora Andina Tech, elegir el método adecuado depende del tipo de producto, frecuencia de movimiento y estrategia de gestión de almacén.",
+    "start_time": 726.6,
+    "end_time": 759.26
   },
   {
     "slide_index": 21,
-    "image_file": "008_Slide_21_10_BinLoc_13_Process_Process.webp",
-    "script_text": "The first option in the list is Single Choice. Businesses may choose to work with this method if they want to carefully control the allocation process. This method will only trigger automatic allocation when one option of allocation is possible. Let us have a look at the examples illustrated here. In the table illustrated here we see three bin locations. In each bin location we see the stored quantity of item A. In addition, we see the Alternative Sort code of each bin location. In example 1 we need to allocate a quantity of 7 in the document row. In this case it is clear we need to allocate the whole quantity from each bin location. There is no other option for allocation. In example 2 we need to allocate a quantity of 3. This can be done by allocating quantity of 2 from Bin_1 + quantity of 1 from Bin_2. Another option for allocation is to issue a quantity of 3 from Bin_3. When SAP Business One recognizes there is more than 1 option of allocation, then no automatic allocation will be made. In this case a manual allocation is needed. 21 21 Automatic Allocation Issuing Methods Single Choice Bin # Bin Location Code Stored QTY of Item A Bin_1 01-A4-S1-L1 2 Bin_2 01-A1-S4-L3 1 Bin_3 01-A3-S1-L4 4 Example 1 Automatic allocation will occur Example 2 Automatic allocation will not occur Row quantity = 7 Bin_1 Bin_2 Bin_3 Row quantity = 3 Bin_1 Bin_2 Bin_3",
-    "start_time": 1345.15,
-    "end_time": 1446.34
+    "image_file": "Slide_021.webp",
+    "script_text": "El método Elección Única solo activa la asignación automática cuando existe una forma posible de cumplir la cantidad solicitada. Si hay más de una combinación de ubicaciones que pueda servir el pedido, el sistema no asigna nada y requiere intervención manual. Esto brinda control total al operador, ideal para artículos de alto valor o lotes críticos. En Distribuidora Andina Tech, se usa para productos donde la trazabilidad o el lote específico es importante, evitando mezclas no deseadas durante el picking.",
+    "start_time": 759.26,
+    "end_time": 792.34
   },
   {
     "slide_index": 22,
-    "image_file": "008_Slide_22_10_BinLoc_13_Process_Process.webp",
-    "script_text": "The second and third methods perform allocation according to an alphanumeric order. An automatic allocation will be made whenever there is quantity available to allocate in any bin location. The Bin Location Code Order method will allocate quantity from bin locations according to the alphanumeric order of their bin location codes. Let us go back to our example table, this time we need to allocate a quantity of 3 of item A. On the left we see how the system allocates items to Bin Locations when using the Bin Location Code Order method.  SAP Business One looks for the first bin location code in an alphanumeric order – Bin_1.  The system allocates a quantity of 2 from this bin location and moves on to the next bin location in the list.  The second bin location codes in the alphanumeric order is Bin_2.  The system allocates the remaining quantity of 1 from this bin location. The Alternative Sort Code order method allocates quantity from bin locations according the alphanumeric order of their Alternative Sort code. As apposed to the bin location code, the Alternative Sort Code of the bin locations can be edited to form a different order of bin locations to allocate items from. The allocation logic is the same as we previously saw. On the right we see an example of using the Alternative Sort Code Order method.  SAP Business One looks for the first alternative sort codes using alphanumeric order.  In this case Bin_2 first because its alternative sort code is 00010. The system allocates a quantity of 1 from this bin location.  The second bin location in the Alternative Sort code order is Bin_3. The system allocates the remaining quantity of 2 from this bin location. 22 22 Automatic Allocation Issuing Methods Bin Location Code Order and Alternative Sort Code Order Row quantity = 3 Quantity of 2 from Bin_1 Quantity of 1 from Bin_2 Bin Location Code Order Alternative Sort Code Order Row quantity = 3 Quantity of 1 from Bin_2 Quantity of 2 from Bin_3 Bin # Bin Location Code Stored QTY of Item A Alternative Sort Code Bin_1 01-A4-S1-L1 2 00065 Bin_2 01-A1-S4-L3 1 00010 Bin_3 01-A3-S1-L4 4",
-    "start_time": 1446.34,
-    "end_time": 1586.16
+    "image_file": "Slide_022.webp",
+    "script_text": "Los métodos de Orden por Código de Ubicación y Orden por Código de Clasificación Alternativa asignan inventario siguiendo el orden alfanumérico de sus respectivos códigos. El primero usa el código fijo de ubicación; el segundo usa un código alternativo que puede editarse para cambiar la prioridad. Esto permite adaptar el flujo de picking a diseños de almacén o estrategias de ubicación. En Distribuidora Andina Tech, se podría usar el código alternativo para dar prioridad a ubicaciones cerca del muelle de embarque.",
+    "start_time": 792.34,
+    "end_time": 824.98
   },
   {
     "slide_index": 23,
-    "image_file": "008_Slide_23_10_BinLoc_13_Process_Process.webp",
-    "script_text": "The fourth and fifth methods perform allocations according to the order of quantity of the item in each bin location. An automatic allocation is made whenever there is available quantity to allocate in any bin location. The Descending Quantity method allocates quantity starting with the bin location containing the largest quantity of the item. As before, we have a table with three bin locations. This time however, the three bins contain a total quantity of 5 of item A. On the left we see how the system allocates according to the Descending Quantity method. Using this method SAP Business One looks for the bin location with the largest quantity of item A. • The system allocates a quantity of 4 from Bin_3. • Then the system looks for the bin location with the next largest quantity of the item. That will be Bin_1. Therefor, the system allocates the remaining quantity of 1 from Bin_1. Now, let us look at the Ascending Quantity method example. The Ascending Quantity method allocates quantity starting with the bin location containing the smallest quantity. In the example on the right hand of the screen: • SAP Business One looks for the bin location with the smallest quantity of item A. • The system allocates a quantity of 1 from Bin_2. • Then the system looks for the next bin location with the smallest quantity of the item. • That will be Bin_1 from which the system allocates a quantity of 2. • Bin_3 will be the next in line to allocate the remaining quantity of 2. When considering which of these two methods to choose, you should keep in mind the following:  The Descending Quantity method involves the least number of bins possible for each transaction and therefore involves the minimum number of picks.  The Ascending Quantity method eventually reduces the number of bins used for an item since the bins with the smallest quantities are emptied first. 23 23 Automatic Allocation Issuing Methods Descending Quantity and Ascending Quantity Descending Quantity Ascending Quantity Row quantity = 5 Row quantity = 5 Quantity of 4 from Bin_3 Quantity of 1 from Bin_1 Quantity of 1 from Bin_2 Quantity of 2 from Bin_1 Quantity of 2 from Bin_3 Bin # Bin Location Code Stored QTY of Item A Bin_1 01-A4-S1-L1 2 Bin_2 01-A1-S4-L3 1 Bin_3 01-A3-S1-L4",
-    "start_time": 1586.16,
-    "end_time": 1728.43
+    "image_file": "Slide_023.webp",
+    "script_text": "Los métodos Cantidad Descendente y Cantidad Ascendente priorizan ubicaciones según el nivel de stock disponible. El primero toma de la ubicación con más inventario, reduciendo el número de ubicaciones usadas por pedido (menos picks). El segundo comienza con la que tiene menos stock, ayudando a vaciar ubicaciones poco llenas y evitar stock disperso. Ambos mejoran la eficiencia según el objetivo: minimizar esfuerzo o optimizar espacio.",
+    "start_time": 824.98,
+    "end_time": 853.9
   },
   {
     "slide_index": 24,
-    "image_file": "008_Slide_24_10_BinLoc_13_Process_Process.webp",
-    "script_text": "When setting the FIFO or LIFO methods, the system checks the date of the last inbound transaction made in each single bin location. We can demonstrate this principle by looking at the example shown here. Look at the FIFO example on the left side.  The system looks for the earliest date out of the last inbound transaction dates of each bin location. This is why the system allocates from Bin_2. June 1st is earlier than July 1st.  Since no quantity was left to allocate in Bin_2 the system looks for the next bin location, in our example it is Bin_1. In the LIFO method the system looks for the latest date out of the last inbound transaction dates of each bin location, in our example it is Bin_1. The system can allocate the whole quantity from Bin_1. 24 24 Row quantity = 2 Automatic Allocation Issuing Methods FIFO and LIFO Bin # Bin Location Code Stored QTY of Item A Entrance date of the item to the bin location Bin_1 01-A4-S1-L1 2 Qty of 1 – 1.7 Qty of 1 – 1.5 Bin_2 01-A1-S4-L3 1 Qty of 1 – 1.6 FIFO LIFO Quantity of 1 from Bin_2 Quantity of 1 from Bin_1 Row quantity = 2 Quantity of 2 from Bin_1",
-    "start_time": 1728.43,
-    "end_time": 1806.91
+    "image_file": "Slide_024.webp",
+    "script_text": "FIFO y LIFO asignan inventario según la fecha de la última entrada en cada ubicación. FIFO (First In, First Out) toma primero el stock más antiguo, ideal para productos perecibles o con vencimiento. LIFO (Last In, First Out) usa el más reciente, útil cuando el nuevo stock tiene características distintas o se quiere mantener el antiguo en reserva. En Distribuidora Andina Tech, FIFO asegura rotación adecuada de componentes electrónicos con vida útil limitada.",
+    "start_time": 853.9,
+    "end_time": 885.53
   },
   {
     "slide_index": 25,
-    "image_file": "008_Slide_25_10_BinLoc_13_Process_Process.webp",
-    "script_text": "No matter what method you have defined in the Warehouse Setup window, you can still change the issue method of the document and the document row before adding the document. To change the allocation method of the whole document, enter the Form Settings  Document Table tab and choose the automatic allocation method desired. You can also change the allocation method in the row, just enter the Bin Location Allocation – Issue window and choose the Automatic Allocation button. There you can choose the method desired from a list. In the example demonstrated here, we chose the Bin Location Code Order method. Once the option was chosen, the system automatically allocates the quantity. The table is sorted by the bin location code and the first bin location has only one unit of the item. For this reason, the system allocates a quantity of 1 from the first bin and another 1 from the second bin. In our business example, OEC Computers defined the Ascending Quantity method as the default in the New York warehouse because this method minimizes the number of bin locations for each item in the warehouse. However, when many bin locations are used for one item, it is more useful to use the Descending Quantity method. With those items, the warehouse personnel can go to the Bin Location Allocation window, and choose this method from the Automatic Allocation drop down list. 25 25 Outgoing Allocation in Marketing Documents Changing allocation method in the document",
-    "start_time": 1806.91,
-    "end_time": 1889.66
+    "image_file": "Slide_025.webp",
+    "script_text": "Puedes cambiar el método de asignación de ubicación tanto para todo el documento como para una fila específica. Para modificar el método del documento completo, accede a Configuración de Formulario y selecciona la pestaña Tabla del Documento. Si deseas cambiar solo una fila, abre la ventana Asignación de Ubicación – Emisión y haz clic en el botón Asignación Automática. Allí podrás elegir el método que mejor se ajuste a tu necesidad, como Orden por Código de Ubicación o Cantidad Ascendente/Descendente. Esta flexibilidad permite adaptar la asignación a las características del artículo y del almacén, mejorando la precisión en la gestión de inventario.",
+    "start_time": 885.53,
+    "end_time": 927.65
   },
   {
     "slide_index": 26,
-    "image_file": "008_Slide_26_10_BinLoc_13_Process_Process.webp",
-    "script_text": "The first option in the dropdown list for automatic allocation is Remaining. This option is not one of the methods defined in the Warehouse Setup window. Instead it is a way to control the order of allocation according to multiple parameters. The Remaining method allows you to use additional parameters that are not covered by the standard allocation methods. Using this method, you can prioritize the picking order of a delivery based on the order of additional fields that you add to a form. As you can see in the graphic, a number of additional fields are available in the Form Settings window. For example, OEC Computers can use the Remaining option to sort the allocation grid by Aisle, then Areas, and then Rows. In this way, they can narrow down the picking area. Bin Locations will appear in the allocation table, sorted by both their available quantity and by their physical location. This is because the allocation is done in the order that bin locations appear in the table. In the example in the graphic, we see that the bin locations appear sorted by floor, area and then row. The system will allocate the quantity needed up to the maximum available in each bin and then move to the next bin on the list. 26 26 Outgoing Allocation in Marketing Documents Remaining method",
-    "start_time": 1889.66,
-    "end_time": 1963.56
+    "image_file": "Slide_026.webp",
+    "script_text": "El método Restante no forma parte de los métodos estándar de configuración del almacén, sino que permite controlar el orden de asignación usando parámetros adicionales no cubiertos por los métodos convencionales. Con este método, puedes priorizar el picking según campos como Pasillo, Área y Fila, optimizando el recorrido en el almacén. Por ejemplo, OEC Computers usa esta opción para ordenar la cuadrícula de asignación por estos criterios, reduciendo el área de picking. Las ubicaciones se muestran ordenadas por cantidad disponible y ubicación física, y el sistema asigna en esa secuencia, mejorando la eficiencia operativa.",
+    "start_time": 927.65,
+    "end_time": 967.61
   },
   {
     "slide_index": 27,
-    "image_file": "008_Slide_27_10_BinLoc_13_Process_Process.webp",
-    "script_text": "We can conclude and say that the system allocates automatically whenever quantity exists in the warehouse used in the document row. In addition, when working with the Single Choice method, the system allocates automatically only when one allocation option exists. In all other cases you can choose to do one or more of the following:  Allocate manually.  Choose another automatic allocation for the whole document or document row.  Choose the Remaining option to allocate the items by the order you set. 27 27 Outgoing Allocation Process Conditions for automatic allocation The system allocates automatically when the following condition exists: Quantity exists in the warehouse Single Choice with one allocation option Any method but Single Choice AND ( OR )",
-    "start_time": 1963.56,
-    "end_time": 2005.49
+    "image_file": "Slide_027.webp",
+    "script_text": "El sistema asigna automáticamente solo cuando hay cantidad disponible en el almacén del documento. Con el método Elección Única, la asignación ocurre únicamente si existe una sola opción válida. En cualquier otro caso, tienes alternativas: asignar manualmente, elegir otro método automático para el documento o la fila, o usar el método Restante para definir un orden personalizado según tus criterios. Esto brinda flexibilidad para adaptarse a distintos escenarios operativos, garantizando que la asignación se ajuste tanto a reglas definidas como a necesidades específicas del usuario.",
+    "start_time": 967.61,
+    "end_time": 1005.43
   },
   {
     "slide_index": 28,
-    "image_file": "008_Slide_28_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Now that we are familiar with both automatic and manual allocation procedures, we are facing the question: when should we use each procedure. The general recommendation is to use automatic allocation when automatic methods meet business requirements. Automatic allocation saves time, prevents human mistakes and assures allocation is made according to the allocation rules defined. On the other hand manual allocation is flexible and allows a full manual control of each allocation. A good example when automatic allocation is useful will be when the same bin location is used regularly for a specific item. Then it make sense to set a Default bin location for this item. But, let us say, that the physical allocation to the bin locations is done first by the warehouseman, with no pre-defined rules, then, to match the actual allocation, we need to manually allocate the items in the document. In some cases we use automatic methods that combine manual allocation. For example, when using the Single Choice method for outgoing allocation, the system automatically allocates only when there is one allocation option. If that is not the case, we need to allocate the item manually. Remember that when automatic allocation rules are set, we can always change the allocation made before adding the document. 28 28 Automatic Allocation Vs. Manual Allocation Automatic Allocations  Fast process  No human mistakes  Optimize allocation according to allocation rules Manual Allocations  Flexible  Full manual control  Handle exceptions in automatic processes",
-    "start_time": 2005.49,
-    "end_time": 2096.26
+    "image_file": "Slide_028.webp",
+    "script_text": "Se recomienda usar la asignación automática cuando cumpla con los requisitos del negocio, ya que ahorra tiempo, reduce errores humanos y garantiza el cumplimiento de las reglas establecidas. La asignación manual, por su parte, ofrece control total y flexibilidad, ideal cuando no existen reglas predefinidas o cuando el almacén requiere reflejar la ubicación física real de los artículos. Un buen caso para la automática es cuando un artículo siempre se ubica en el mismo lugar: allí tiene sentido definir una ubicación predeterminada. En cambio, si el almacén opera sin reglas fijas, se necesita asignación manual. En algunos casos, como con Elección Única, se combinan ambos: el sistema asigna automáticamente solo si hay una opción; si no, se asigna manualmente. Además, siempre puedes modificar la asignación antes de agregar el documento, incluso si hay reglas automáticas activas.",
+    "start_time": 1005.43,
+    "end_time": 1063.92
   },
   {
     "slide_index": 29,
-    "image_file": "008_Slide_29_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the additional processes we will see what happens when saving a document as draft and when cancelling it. 29 29 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 2096.26,
-    "end_time": 2120.83
+    "image_file": "Slide_029.webp",
+    "script_text": "En los procesos adicionales se abordarán los siguientes temas: qué ocurre al guardar un documento como borrador y al cancelarlo. La agenda incluye: ejemplo de negocio, procesos de asignación manual (entradas y salidas), procesos de asignación automática (entradas y salidas), escenarios adicionales, ubicaciones de almacén en documentos de inventario, asignaciones en picking, embalaje y producción, y asignaciones en el proceso de producción. Estos temas permitirán profundizar en el flujo completo de gestión de ubicaciones dentro de SAP Business One, desde la creación hasta la ejecución de documentos logísticos y productivos.",
+    "start_time": 1063.92,
+    "end_time": 1104.02
   },
   {
     "slide_index": 30,
-    "image_file": "008_Slide_30_10_BinLoc_13_Process_Process.webp",
-    "script_text": "The procedure described in the former slides was based on the assumption that there is a sufficient quantity to allocate. But what happens if there is not enough quantity to allocate? When there is insufficient quantity available in the warehouse, the available quantity is automatically allocated and the partial allocated quantity is displayed in red in the Bin Location Allocation field. We can see this in the image shown here. In the first row of the delivery – there is no quantity available to allocate for the item and therefore we see a zero in the field. In the second row there is only one unit available in the warehouse. When we enter the Bin Location Allocation – Issue window we can see that the quantity needed is 2 but the available quantity is only 1. Note, in this case, if there is available quantity in other warehouses, you may change the warehouse in the rows to fully allocate the quantity. Changing the warehouse in the row triggers the automatic allocation again. In case you add a document and you do not notice that the quantity was not fully allocated, the system opens the Bin Location Allocation – Issue window automatically to allow you to complete the missing allocation. 30 30 Insufficient Quantity in Outgoing Allocation Partial quantity available No quantity available",
-    "start_time": 2120.83,
-    "end_time": 2192.26
+    "image_file": "Slide_030.webp",
+    "script_text": "Cuando la cantidad disponible en el almacén es insuficiente, el sistema asigna automáticamente lo que haya disponible y muestra en rojo la cantidad asignada parcialmente en el campo Asignación de Ubicación. Por ejemplo, si se solicitan 2 unidades pero solo hay 1 disponible, se asigna 1 y el campo aparece en rojo, indicando asignación parcial. En la primera fila de la entrega, si no hay cantidad disponible, se muestra cero. Si hay stock en otros almacenes, puedes cambiar el almacén de la fila para completar la asignación, lo que vuelve a activar la asignación automática. Si intentas agregar el documento sin notar la asignación incompleta, SAP abre automáticamente la ventana de emisión para que completes la falta antes de continuar.",
+    "start_time": 1104.02,
+    "end_time": 1151.42
   },
   {
     "slide_index": 31,
-    "image_file": "008_Slide_31_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In some cases, in OEC Computers, the warehouse worker issues a Delivery document for items that are still located in the receiving area. This happens when, due to workload, the warehouse worker did not manage to enter an Inventory Transfer yet to the regular storage bin. Since the inventory transfer will be added eventually, the worker issues a Delivery document from the regular storage bin of the item. This transaction may lead to a negative quantity of the item in the storage bin. In situations where the quantity needed for allocation exceeds available quantity, you have an option to allow negative quantity. To do this, you need to add the column Allow Negative Inventory. We see an example of this in the image. The total quantity needed to allocate is 3, but there are only 2 units available. After checking the Allow Negative Inventory box, we can allocate the full quantity. Note the available quantity left in this bin location after the allocation shows as -1 units. 31 31 Allow Negative Inventory in Outgoing Allocation",
-    "start_time": 2192.26,
-    "end_time": 2255.52
+    "image_file": "Slide_031.webp",
+    "script_text": "En OEC Computers, el almacenero puede emitir una entrega antes de transferir el inventario al área de almacenamiento, lo que genera una cantidad negativa en la ubicación. Para permitir esto, se activa la opción 'Permitir Inventario Negativo' en la columna correspondiente. En el ejemplo, se necesitan 3 unidades pero solo hay 2 disponibles. Al marcar la opción, el sistema permite asignar las 3 unidades, y la cantidad disponible en esa ubicación pasa a -1. Esto evita bloqueos operativos cuando hay retrasos en la transferencia de inventario.",
+    "start_time": 1151.42,
+    "end_time": 1188.91
   },
   {
     "slide_index": 32,
-    "image_file": "008_Slide_32_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Sometimes, you may want to make changes to the row details after an allocation is made. For example, if you need to increase or decrease the quantity needed, or substitute a different item on the row. If you change the item or warehouse in the row, the system clears the allocation. The system will try to automatically allocate items if possible. This flow chart demonstrates what happens when the user changes the quantity in a row. If the original allocation was automatic, then an automatic allocation will occur for the new values. If you alter the quantity for a manual allocation, the system gives you the option to allocate manually or automatically. This behavior was designed with the assumption that if you originally made a manual allocation for this row, you may want to do it again. 32 32 Outgoing Allocation in Marketing Documents Process Making a Change in the Row Details",
-    "start_time": 2255.52,
-    "end_time": 2307.84
+    "image_file": "Slide_032.webp",
+    "script_text": "Cuando modificas los detalles de una fila después de una asignación —como cambiar la cantidad, el artículo o el almacén— el sistema reacciona según el tipo de asignación original. Si la asignación fue automática, al guardar el cambio, el sistema vuelve a asignar automáticamente con los nuevos valores. Si fue manual, te da la opción de volver a asignar manual o automáticamente, asumiendo que prefieres mantener el control manual. Esto asegura flexibilidad sin perder trazabilidad en las asignaciones de ubicación.",
+    "start_time": 1188.91,
+    "end_time": 1222.9
   },
   {
     "slide_index": 33,
-    "image_file": "008_Slide_33_10_BinLoc_13_Process_Process.webp",
-    "script_text": "When saving a document as a draft, all manual allocations are saved with it. Automatic allocations however, are not saved. Note, any update made in the Bin Location Allocation – Issue/Receipt window, causes the allocations to be considered as manual. This is true even for updates that change an automatic allocation. 33 33 Automatic Allocation Working with Drafts  When saving a document as a draft, manual allocations are saved with it.  Automatic allocations are not saved.  Any update made in the Bin Location Allocation – Issue/Receipt window, causes the allocation to be considered as manual allocation.",
-    "start_time": 2307.84,
-    "end_time": 2348.78
+    "image_file": "Slide_033.webp",
+    "script_text": "Al guardar un documento como borrador en SAP Business One, solo las asignaciones manuales de ubicación se conservan con el borrador. Las asignaciones automáticas no se guardan y se pierden al cerrar el documento. Además, cualquier cambio realizado en la ventana 'Asignación de Ubicación de Almacén – Emisión/Recepción' —incluso si solo se modifica una asignación automática— hace que el sistema la considere manual desde ese momento. Esto significa que, al volver a abrir el borrador, esa asignación se comportará como si la hubieras hecho tú directamente.",
+    "start_time": 1222.9,
+    "end_time": 1259.59
   },
   {
     "slide_index": 34,
-    "image_file": "008_Slide_34_10_BinLoc_13_Process_Process.webp",
-    "script_text": "There are two cancelation options of marketing documents:  The first is to copy the document to a reverse document (for example copy a Delivery to a Return document). When copying the document, all automatic processes for incoming and outgoing allocations apply in the normal way.  The second option is to choose the Cancel option from the context menu. – In this case a new document of the same type opens in Add mode and the items should be allocated again. – The allocations made in the original document are copied to the cancellation document. Automatic allocation processes also apply to documents that create inventory transactions and are copied from other base documents. 34 34 Cancel and Copy Marketing Documents Right click the document to enter the context menu",
-    "start_time": 2348.78,
-    "end_time": 2394.6
+    "image_file": "Slide_034.webp",
+    "script_text": "Hay dos formas de cancelar un documento de marketing en SAP Business One. La primera es copiarlo a un documento inverso, como pasar una Entrega a una Devolución; aquí se aplican los procesos automáticos normales de asignación de entradas y salidas. La segunda opción es elegir 'Cancelar' en el menú contextual: se abre un nuevo documento del mismo tipo en modo Agregar, y debes volver a asignar los artículos, aunque las asignaciones del documento original se copian como punto de partida. En ambos casos, los procesos de asignación automática también se aplican si el documento genera transacciones de inventario y se copia desde un documento base.",
+    "start_time": 1259.59,
+    "end_time": 1300.7
   },
   {
     "slide_index": 35,
-    "image_file": "008_Slide_35_10_BinLoc_13_Process_Process.webp",
-    "script_text": "When the line quantity is negative, for incoming transactions, the Bin Location Allocation – Issue window opens.  The Bin Location Allocation – Receipt window opens for outgoing transactions with negative quantity. 35 35 Allocating Negative Quantities For negative quantity in an incoming allocation document, the Bin Location Allocation – Issue window opens. For negative quantity in an outgoing allocation document, the Bin Location Allocation – Receipt window opens.",
-    "start_time": 2394.6,
-    "end_time": 2423.83
+    "image_file": "Slide_035.webp",
+    "script_text": "Cuando la cantidad de una fila es negativa, el sistema abre automáticamente la ventana de asignación correspondiente según el tipo de transacción. Para una transacción de entrada con cantidad negativa —como una devolución a proveedor o un ajuste de inventario— se abre la ventana 'Asignación de Ubicación – Emisión'. Para una transacción de salida con cantidad negativa —como una entrega con ajuste negativo— se abre la ventana 'Asignación de Ubicación – Recepción'. Esto asegura que, incluso con valores negativos, el usuario pueda definir correctamente de dónde se toma o se devuelve el inventario en cada ubicación.",
+    "start_time": 1300.7,
+    "end_time": 1340.23
   },
   {
     "slide_index": 36,
-    "image_file": "008_Slide_36_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Let us see how allocations are made in inventory documents. 36 36 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 2423.83,
-    "end_time": 2446.87
+    "image_file": "Slide_036.webp",
+    "script_text": "En esta sección veremos cómo funcionan las asignaciones de ubicación en los documentos de inventario de SAP Business One. Incluye un ejemplo de negocio práctico, seguido de los procesos de asignación manual y automática tanto para entradas como para salidas. También revisaremos escenarios adicionales, el uso de ubicaciones de almacén en documentos de inventario, y cómo se manejan las asignaciones en procesos específicos como picking, embalaje y producción. Finalmente, analizaremos las asignaciones dentro del flujo de producción, donde el consumo de materiales y la liberación de productos terminados también requieren control preciso de ubicación.",
+    "start_time": 1340.23,
+    "end_time": 1381.03
   },
   {
     "slide_index": 37,
-    "image_file": "008_Slide_37_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Allocation procedures in Goods Receipt and Goods Issue are similar to those of the incoming and outgoing marketing documents respectively with one exception: In inventory documents, there is no automatic allocation to Receiving bin location. 37 37 Automatic Allocation in Goods Receipt and Goods Issue Incoming Transaction Warehouse Outgoing Transaction Warehouse",
-    "start_time": 2446.87,
-    "end_time": 2468.06
+    "image_file": "Slide_037.webp",
+    "script_text": "En los documentos de Recepción y Emisión de Mercancías, el proceso de asignación de ubicaciones es similar al de los documentos de marketing, excepto que en los documentos de inventario no hay asignación automática a la Ubicación de Recepción. Esto significa que el usuario debe asignar manualmente la ubicación donde se guarda o se retira la mercancía, lo que brinda mayor control pero requiere intervención directa en cada operación de inventario.",
+    "start_time": 1381.03,
+    "end_time": 1407.62
   },
   {
     "slide_index": 38,
-    "image_file": "008_Slide_38_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In our example, OEC Computers works with Receiving bin location. They then transfer the goods received, from the receiving area to the storage bin locations. Therefore, George enters several Inventory Transfers a day to transfer inventory from the Receiving bin location to the storage bin location. The Inventory Transfer document supports transfer between bin locations within a warehouse or between different warehouses. The From Warehouse, To Warehouse and To Bin Location fields in the header holds the default values for the fields in the grid. The inventory transaction will be made according to the values indicated in the rows. In the image we see another column called First Bin Location. Here we see the bin location without drilling down into the Bin Location Allocation window. In case multiple bin location were used, the system displays the first bin location used according to the allocation order. This structure allows the Inventory Transfer document to be created for multiple originating warehouses simultaneously. This ability is available even when bin location functionality is not activated for any warehouse. In any row where an originating or receiving warehouse does not manage bin locations, the respective from/to bin locations field is grayed out. 38 38 Allocation in Inventory Transfer (1/2) Warehouse Incoming Transaction Outgoing Transaction These fields contain the default values for the fields in the grid",
-    "start_time": 2468.06,
-    "end_time": 2552.86
+    "image_file": "Slide_038.webp",
+    "script_text": "La Transferencia de Inventario permite mover mercancías entre ubicaciones dentro del mismo almacén o entre almacenes distintos. Los campos Almacén Origen, Almacén Destino y Ubicación Destino en el encabezado establecen valores predeterminados para las filas. La columna 'Primera Ubicación' muestra la primera ubicación asignada sin abrir la ventana de asignación. Este diseño permite crear documentos para múltiples almacenes de origen simultáneamente, incluso si la funcionalidad de ubicaciones no está activada en alguno de ellos, desactivando los campos correspondientes cuando no aplican.",
+    "start_time": 1407.62,
+    "end_time": 1445.64
   },
   {
     "slide_index": 39,
-    "image_file": "008_Slide_39_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Note, the inventory transfer creates the two kinds of allocations - incoming and outgoing allocations.  Choosing the From Bin Locations field link arrow opens the Bin Location Allocation – Issue window  Choosing the To Bin Locations field link arrow opens the Bin Location Allocation – Receipt window. 39 39 Allocation in Inventory Transfer (2/2)",
-    "start_time": 2552.86,
-    "end_time": 2575.8
+    "image_file": "Slide_039.webp",
+    "script_text": "En la Transferencia de Inventario, se generan dos tipos de asignación: una de salida al retirar mercancía del almacén origen y otra de entrada al guardarla en el destino. El campo Ubicaciones Origen tiene una flecha de enlace que abre la ventana Asignación de Ubicación – Emisión para definir dónde se toma el stock. Del mismo modo, el campo Ubicaciones Destino tiene una flecha que abre la ventana Asignación de Ubicación – Recepción para especificar dónde se coloca la mercancía. Esta estructura permite gestionar claramente ambos extremos del movimiento.",
+    "start_time": 1445.64,
+    "end_time": 1480.58
   },
   {
     "slide_index": 40,
-    "image_file": "008_Slide_40_10_BinLoc_13_Process_Process.webp",
-    "script_text": "You may choose to cancel or reverse an existing Inventory Transfer. In both cases, the system creates another Inventory Transfer document with opposite signs for the quantities. When canceling an Inventory Transfer, a cancellation Inventory Transfer is added automatically. When reversing an Inventory Transfer , a new Inventory Transfer document opens automatically in Add mode and can be changed manually before it is saved. In the new document:  The assignment of the From Bin Locations and To Bin Locations fields are reversed. The From Warehouse and To Warehouse fields are also reversed. Note the Reverse functionality is available even if bin location functionality has not been activated. 40 40 Cancelation and Reverse of Inventory Transfer Right click anywhere to receive the context menu",
-    "start_time": 2575.8,
-    "end_time": 2623.63
+    "image_file": "Slide_040.webp",
+    "script_text": "Una Transferencia de Inventario existente puede cancelarse o invertirse. Al cancelar, el sistema crea automáticamente una nueva transferencia con cantidades de signo opuesto, denominada transferencia de cancelación. Al invertir, se abre un nuevo documento en modo Agregar para edición manual antes de guardarlo. En este documento, los campos Ubicaciones Origen y Destino, así como Almacén Origen y Destino, se invierten automáticamente. Importante: la función de inversión está disponible incluso si las ubicaciones de almacén no están activadas.",
+    "start_time": 1480.58,
+    "end_time": 1517.35
   },
   {
     "slide_index": 41,
-    "image_file": "008_Slide_41_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Let us go over the Pick Pack and Production module allocations procedure 41 41 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 2623.63,
-    "end_time": 2646.02
+    "image_file": "Slide_041.webp",
+    "script_text": "Revisemos el procedimiento de asignaciones en el módulo de Picking, Embalaje y Producción. La agenda incluye: ejemplo de negocio, procesos de asignación manual para entradas y salidas, procesos de asignación automática para entradas y salidas, escenarios adicionales, el uso de ubicaciones de almacén en documentos de inventario, asignaciones específicas en Picking, Embalaje y Producción, y finalmente, las asignaciones dentro del proceso de Producción.",
+    "start_time": 1517.35,
+    "end_time": 1547.02
   },
   {
     "slide_index": 42,
-    "image_file": "008_Slide_42_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the Pick Pack and Production Manager we create outgoing allocations for the Pick List. In the Open draw, choose the Release to Pick List button to enter the Pick List Generation Wizard.  In the first step you can filter the warehouse sublevels and attributes of bin locations you want to pick from.  Then, in the second step, you can indicate if you want to create several pick lists by splitting the order rows by a warehouse, warehouse sublevel or attributes and also choose the automatic allocation method.  Note, since this wizard can run for several warehouse simultaneously, the allocation method is not copied from the Warehouse Setup window. Therefore, the default method is set to Bin Location Code Order.  In the third step you can see and edit the list of the proposed pick lists about to be generated. In the grid, the system displays a column for each Warehouse Sublevel or Attribute chosen in the second step.  Choosing the Generate button creates the pick lists that appear in the table. A two steps wizard is provided for picking items from a-non bin location activated warehouse. Note, In some cases we will pick items from different rows, related to different warehouses, while some are bin locations managed and some are not. When doing so, a single pick list will be generated for all the document rows related to the non-bin location warehouses. The Pick Pack and Production Manager also allows you to create deliveries and invoices. The documents created are subject to the automatic allocation rules we covered earlier. Let us look at a business example. 42 42 Allocation in Pick and Pack Releasing Orders Outgoing Transaction Warehouse",
-    "start_time": 2646.02,
-    "end_time": 2741.64
+    "image_file": "Slide_042.webp",
+    "script_text": "En el Gestor de Picking, Embalaje y Producción, se crean asignaciones de salida para la Lista de Picking. Al elegir 'Liberar a Lista de Picking' en el cajón Abierto, se inicia el Asistente de Generación de Listas de Picking. En el primer paso, se pueden filtrar subniveles de almacén y atributos de las ubicaciones de origen. En el segundo paso, se indica si se desean varias listas dividiendo por almacén, subnivel o atributo, y se elige el método de asignación automática. Como el asistente puede ejecutarse para varios almacenes simultáneamente, el método no se copia desde la configuración del almacén; por defecto es 'Orden por Código de Ubicación'. En el tercer paso, se visualiza y edita la lista de listas propuestas, mostrando una columna por cada subnivel o atributo seleccionado. Para almacenes sin ubicaciones, se ofrece un asistente simplificado de dos pasos, y si hay pedidos mixtos, se genera una única lista para los almacenes sin ubicaciones. El gestor también permite crear entregas y facturas, sujetas a las reglas de asignación automática previamente vistas.",
+    "start_time": 1547.02,
+    "end_time": 1618.27
   },
   {
     "slide_index": 43,
-    "image_file": "008_Slide_43_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Let us go back to our business example. In OEC Computers’ New York three-story warehouse, preparing a shipment for a delivery previously was a difficult task. During the implementation, a decision was made to include the following steps to improve the process: First, George, the warehouse manager, nominated a warehouse worker for each floor. Second, from now on, when creating the pick lists, George creates a separate Pick List for each Floor by splitting the pick list in the Pick List Generation Wizard by the Floor warehouse sublevel. In addition, in the pick list, for each Floor, George indicates the picker’s name. For big shipments, George occasionally split the pick list also by the Area sublevel and assigns different pickers for different areas. George assesses the workload anticipated by looking at Number of Picks and Total Released quantity columns in the third step of the wizard. If needed George goes back one step to split the pick lists by another sublevel. 43 43 Pick and Pack Allocation – Business Example",
-    "start_time": 2741.64,
-    "end_time": 2803.3
+    "image_file": "Slide_043.webp",
+    "script_text": "En el almacén de tres pisos de OEC Computers, George mejora el proceso de picking asignando un operario por piso. Al crear listas de picking, las divide por piso usando el Asistente y asigna el nombre del picker a cada lista. Para envíos grandes, también divide por subnivel de área y asigna pickers diferentes a distintas áreas. George evalúa la carga de trabajo mirando las columnas Número de Picks y Cantidad Total Liberada en el tercer paso del asistente. Si es necesario, retrocede un paso para volver a dividir las listas por otro subnivel y balancear el trabajo.",
+    "start_time": 1618.27,
+    "end_time": 1655.54
   },
   {
     "slide_index": 44,
-    "image_file": "008_Slide_44_10_BinLoc_13_Process_Process.webp",
-    "script_text": "There is an opportunity to make changes to allocations in the Released drawer. When you open the list of released rows, you can choose any link arrow in the Bin Location Allocation column to open the Bin Location Allocation – Issue window. From there, you can reallocate row quantities or fill in missing quantities for allocations. A re-allocation is possible also for warehouse sublevels or Attributes that were not included in the Pick List Generation Wizard. For example, let us say that in the Pick List Generation Wizard I chose only Aisle A1. The system will automatically allocate only 6 items but I can still enter the Bin Location Allocation – Issue window and allocate another 4 items from Aisle A2. When choosing the Create button in the Released draw, you can create a Delivery or Invoice including the allocations made. 44 44 Pick and Pack – Released Drawer Choosing the link arrow opens the Bin Location Allocation – Issue window, there you can change the automatic allocation made",
-    "start_time": 2803.3,
-    "end_time": 2860.37
+    "image_file": "Slide_044.webp",
+    "script_text": "En el cajón Liberado, al abrir la lista de filas liberadas, cualquier flecha de enlace en la columna Asignación de Ubicación abre la ventana de emisión. Desde allí puedes reasignar cantidades o completar cantidades faltantes, incluso para subniveles o atributos no incluidos en el Asistente. Por ejemplo, si el Asistente asignó solo 6 artículos del pasillo A1, puedes entrar a la ventana y asignar 4 más del pasillo A2. Al elegir el botón Crear, generas una Entrega o Factura con las asignaciones realizadas.",
+    "start_time": 1655.54,
+    "end_time": 1689.79
   },
   {
     "slide_index": 45,
-    "image_file": "008_Slide_45_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the Pick List we see one row per bin location per Sales Order row. Before items are picked, you can still reallocate them. From the context menu select the Bin Location Allocation option. The Bin Location Allocation – Issue window appears and there you can change the allocations for this item. Note, reallocation is made per item per original document row, even if the item is allocated from several bin locations (and there for several rows in the Pick List). This means that quantity from several rows in the Pick List may be allocated in one Bin Location Allocation – Issue window. In the image we see a pick list containing 2 rows for the same item.  The item is split because the bin location in the first row is different than the bin location in the second row. SAP Business One allows you to save time by reallocating items directly in the Pick List rather than having to navigate back to the list of released items. This is useful because sometimes a picker may select items from different bins than those that were originally chosen in the Pick Pack and Production Manager. 45 45 Pick List Right click to enter the Allocation window",
-    "start_time": 2860.37,
-    "end_time": 2926.42
+    "image_file": "Slide_045.webp",
+    "script_text": "En la Lista de Picking aparece una fila por ubicación por fila de Pedido de Venta. Antes de que los artículos sean recogidos, aún puedes reasignarlos. En el menú contextual, selecciona Asignación de Ubicación y aparece la ventana de emisión donde puedes cambiar las asignaciones. La reasignación se hace por artículo por fila de documento original, incluso si el artículo está asignado desde varias ubicaciones. SAP Business One permite reasignar directamente en la Lista de Picking, ahorrando tiempo cuando un operario elige artículos de ubicaciones diferentes a las originalmente seleccionadas.",
+    "start_time": 1689.79,
+    "end_time": 1728.43
   },
   {
     "slide_index": 46,
-    "image_file": "008_Slide_46_10_BinLoc_13_Process_Process.webp",
-    "script_text": "A Pick List can be created also directly from the sales order. Instead of generating a Pick List via the Pick and Pack Wizard, just right click the Sales Order and choose the option Generate/ View Pick Lists from the context menu. When doing so, a new Pick List is opened already containing the relevant items, warehouses and bin locations (according to the automatic allocation rules). This solution also supports companies that pick the goods of each sales order separately. You may follow this suggested process:  Issue the Open Items List report.  From the report, enter each sales order to be delivered.  Right click the order to generate the Pick List.  Assign the pick list to the pickers in the warehouse. Alternatively, you may issue a Sales Analysis report to receive a list of sales orders already filtered by certain items, customers, groups etc. Note that an automatic generation of the pick list will be done only if items can be fully allocated to bin locations. If not fully allocated then the first step of the Pick Pack and Production Wizard opens, already containing the sales order rows. Further more, the direct pick list option is available for both bin location and non-bin location managed warehouses and can also be issued from a Reserve Invoice. 46 46 Pick List from Sales Order Sales Order Pick List Delivery A\\R Invoice",
-    "start_time": 2926.42,
-    "end_time": 3007.97
+    "image_file": "Slide_046.webp",
+    "script_text": "Una Lista de Picking también puede crearse directamente desde el Pedido de Venta. En lugar de usar el Asistente, haz clic derecho en el Pedido de Venta y elige Generar/Ver Listas de Picking. Se abre una nueva Lista de Picking con los artículos, almacenes y ubicaciones ya completados según las reglas automáticas. Esta solución admite empresas que procesan pedidos individualmente: emite el informe Lista de Artículos Abiertos, entra a cada pedido a entregar, haz clic derecho para generar la Lista de Picking, y asigna las listas a los operarios. Alternativamente, puedes usar el informe Análisis de Ventas para filtrar pedidos por artículo, cliente, grupo, etc. La generación automática solo ocurre si los artículos pueden asignarse completamente a ubicaciones; si no, se abre el primer paso del Asistente con las filas del pedido incluidas.",
+    "start_time": 1728.43,
+    "end_time": 1784.04
   },
   {
     "slide_index": 47,
-    "image_file": "008_Slide_47_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Finally we will see how the Production order was impacted by the Bin Location solution 47 47 Agenda Business example Manual allocation processes  Incoming allocations  Outgoing allocations Automatic allocation processes  Incoming allocations  Outgoing allocations Additional Scenarios Bin Locations in inventory documents Allocations in Pick Pack and Production module Allocations in the Production process",
-    "start_time": 3007.97,
-    "end_time": 3031.2
+    "image_file": "Slide_047.webp",
+    "script_text": "En esta lámina revisamos cómo el proceso de Producción se ve afectado por la solución de Ubicaciones de Almacén. Veremos un ejemplo de negocio, los procesos de asignación manual y automática para entradas y salidas, escenarios adicionales, el uso de ubicaciones de almacén en documentos de inventario, y las asignaciones en los procesos de Picking, Embalaje y Producción. Finalmente, analizaremos específicamente las asignaciones en el proceso de Producción.",
+    "start_time": 1784.04,
+    "end_time": 1813.78
   },
   {
     "slide_index": 48,
-    "image_file": "008_Slide_48_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the production process, bin locations can be specified in the Receipt from Production and Issue for Production documents. Automatic allocation rules apply to the allocation of the parent product to bin location and the allocation of its components from bin locations. When working with the Backflush method the component items are automatically allocated from bin locations.  In case automatic allocation rules do not apply (when working with Single Choice for example), then the system will allocate the components from the Default bin location.  If no Default bin location was defined then the allocation is made from the System Bin Location (Read more about the System Bin Locations in the Setup unit). This allocation will probably cause a negative quantity in the System Bin Location since in most cases this bin location will not contain any quantity.  To complete the production procedure, and to clear the negative quantity created in the System Bin location, a manual Inventory Transfer is needed to allocate the components from their actual bin locations. Let us see in the next slide, the solution SAP Business One provides to override the need of a manual Inventory Transfer from the System Bin Location. 48 48 Production Process",
-    "start_time": 3031.2,
-    "end_time": 3101.42
+    "image_file": "Slide_048.webp",
+    "script_text": "En el proceso de producción, se pueden especificar ubicaciones de almacén en los documentos de Recepción de Producción y Emisión de Producción. Las reglas de asignación automática aplican tanto para el producto padre como para sus componentes. Con el método de Retroalimentación (Backflush), los componentes se asignan automáticamente desde las ubicaciones. Si las reglas automáticas no aplican, por ejemplo con Elección Única, el sistema asigna desde la Ubicación Predeterminada. Si no hay ninguna definida, la asignación se hace desde la Ubicación del Sistema, lo que probablemente generará una cantidad negativa en esa ubicación. Para completar el proceso de producción y eliminar esa cantidad negativa, se necesita una Transferencia de Inventario manual.",
+    "start_time": 1813.78,
+    "end_time": 1862.45
   },
   {
     "slide_index": 49,
-    "image_file": "008_Slide_49_10_BinLoc_13_Process_Process.webp",
-    "script_text": "This solution creates an Inventory Transfer to a production area warehouse. In order to use this solution you first need to define a warehouse for the production area. Then, add a Production Order and indicate the new production warehouse in the rows. After adding the Production Order, open the context menu to choose the Transfer Components option. A new Inventory Transfer opens, and the components from the Production Order appear in the rows. The To Warehouse is automatically populated with the production warehouse that was specified in the production order. When you add the Inventory Transfer, the items are then transferred to the production warehouse. Note that all component items are fully copied to the Inventory Transfer, even if the production order was partially manufactured. 49 49 Production Process Transfer Components Right click to enter the Component Transfer",
-    "start_time": 3101.42,
-    "end_time": 3153.19
+    "image_file": "Slide_049.webp",
+    "script_text": "Para mover componentes a un almacén de producción, primero define ese almacén en SAP Business One. Luego crea una Orden de Producción y asigna el almacén de producción en las filas del documento. Al hacer clic derecho sobre la orden, selecciona 'Transferir Componentes' para generar automáticamente una Transferencia de Inventario con los mismos componentes. El campo Almacén Destino se completa con el valor especificado en la orden. Al registrar la transferencia, los artículos se trasladan físicamente al almacén de producción. Nota: incluso si la orden estuvo parcialmente producida, todos los componentes se copian íntegramente en la transferencia.",
+    "start_time": 1862.45,
+    "end_time": 1905.46
   },
   {
     "slide_index": 50,
-    "image_file": "008_Slide_50_10_BinLoc_13_Process_Process.webp",
-    "script_text": "This solution creates an Inventory Transfer to a production area warehouse. In order to use this solution you first need to define a warehouse for the production area. Then, add a Production Order and indicate the new production warehouse in the rows. After adding the Production Order, open the context menu to choose the Transfer Components option. A new Inventory Transfer opens, and the components from the Production Order appear in the rows. The To Warehouse is automatically populated with the production warehouse that was specified in the production order. When you add the Inventory Transfer, the items are then transferred to the production warehouse. Note that all component items are fully copied to the Inventory Transfer, even if the production order was partially manufactured. 50 50 Production Process Transfer Components",
-    "start_time": 3153.19,
-    "end_time": 3202.68
+    "image_file": "Slide_050.webp",
+    "script_text": "Para mover componentes a un almacén de producción, primero define ese almacén en SAP Business One. Luego crea una Orden de Producción y asigna el almacén de producción en las filas del documento. Al hacer clic derecho sobre la orden, selecciona 'Transferir Componentes' para generar automáticamente una Transferencia de Inventario con los mismos componentes. El campo Almacén Destino se completa con el valor especificado en la orden. Al registrar la transferencia, los artículos se trasladan físicamente al almacén de producción. Nota: incluso si la orden estuvo parcialmente producida, todos los componentes se copian íntegramente en la transferencia.",
+    "start_time": 1905.46,
+    "end_time": 1948.46
   },
   {
     "slide_index": 51,
-    "image_file": "008_Slide_51_10_BinLoc_13_Process_Process.webp",
-    "script_text": "Here are some key notes:  In marketing documents, inventory transactions, Pick and Pack procedure and production process you can allocate items to and from bin locations.  Bin location allocation can be done manually or automatically by defining allocation rules.  There are two types of automatic incoming allocation:  Receiving bin locations – designated bin locations usually defined as a transit area.  Allocation strategies – different automatic strategies like default or current bin location. • There are several automatic outgoing allocation strategies like a certain bin location code order or according to the entrance date of the items to the bin location. • The Pick Pack and Production Wizard:  can be filtered and split by warehouse sublevel or attribute.  Shows the list of suggested pick list organized by warehouse sublevel and number of picks.  Items can be reallocated in a pick list according to the actual picking made. 51 51 Summary 1/2 Key notes:  In marketing documents, inventory transactions, Pick and Pack procedure and production process you can allocate items to and from bin locations.  Bin location allocation can be done manually or automatically by defining allocation rules.  There are two types of automatic incoming allocation: Receiving bin locations – designated bin locations usually defined as a transit area. Allocation strategies – different automatic strategies like default or current bin location. • There are several automatic outgoing allocation strategies like a certain bin location code order or according to the entrance date of the items to the bin location. • The Pick Pack and Production Wizard: can be filtered and split by warehouse sublevel or attribute. Shows the list of suggested pick list organized by warehouse sublevel and number of picks. Items can be reallocated in a pick list according to the actual picking made.",
-    "start_time": 3202.68,
-    "end_time": 3309.62
+    "image_file": "Slide_051.webp",
+    "script_text": "En SAP Business One, puedes asignar artículos a ubicaciones específicas dentro del almacén en documentos como facturas de venta, transferencias de inventario, picking y producción. La asignación puede hacerse manualmente o de forma automática mediante reglas predefinidas. Para entradas, existen dos tipos: Ubicaciones de Recepción (áreas de tránsito) y Estrategias de asignación (como ubicación predeterminada o actual). Para salidas, los métodos incluyen orden por código de ubicación o por fecha de entrada. El Asistente de Picking, Embalaje y Producción permite filtrar por subnivel o atributo, muestra listas organizadas y permite reasignar artículos según el picking real ejecutado.",
+    "start_time": 1948.46,
+    "end_time": 1994.21
   },
   {
     "slide_index": 52,
-    "image_file": "008_Slide_52_10_BinLoc_13_Process_Process.webp",
-    "script_text": "In the production process:  Bin locations can be specified in the Receipt from Production and Issue for Production documents.  When working with the Backflush method the component items are automatically allocated from bin locations.  In case automatic allocation rules do not apply (including default bin location), the allocation is made from the System Bin Location.  To move inventory allocation from the system bin location to a designated production warehouse issue an Inventory Transfer document from the Production Order. 52 52 Summary 2/2 Key notes:  In the production process: Bin locations can be specified in the Receipt from Production and Issue for Production documents. When working with the Backflush method the component items are automatically allocated from bin locations. In case automatic allocation rules do not apply (including default bin location), the allocation is made from the System Bin Location. To move inventory allocation from the system bin location to a designated production warehouse issue an Inventory Transfer document from the Production Order.",
-    "start_time": 3309.62,
-    "end_time": 3371.57
-  },
-  {
-    "slide_index": 53,
-    "image_file": "008_Slide_53_10_BinLoc_13_Process_Process.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distr ibutors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be constr ued as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this docume nt or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies a t any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forwa rd-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undu e reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trade marks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companie s. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 3371.57,
-    "end_time": 3509.45
+    "image_file": "Slide_052.webp",
+    "script_text": "En los documentos de Recepción e Emisión de Producción, puedes especificar ubicaciones de almacén para los componentes. Con el método de Retroalimentación, SAP asigna automáticamente los componentes desde sus ubicaciones actuales. Si ninguna regla automática aplica —incluida la ubicación predeterminada—, el sistema toma la Ubicación del Sistema como origen. Para mover esa asignación a un almacén de producción designado, emite un documento de Transferencia de Inventario desde la Orden de Producción. Esto traslada físicamente el inventario desde la ubicación del sistema al almacén de producción, manteniendo la trazabilidad en el proceso.",
+    "start_time": 1994.21,
+    "end_time": 2035.27
   }
 ]

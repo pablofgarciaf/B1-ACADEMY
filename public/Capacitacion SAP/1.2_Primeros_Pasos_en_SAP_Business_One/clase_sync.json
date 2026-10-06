@@ -1,50 +1,45 @@
 [
   {
     "slide_index": 1,
-    "image_file": "061_Slide_01_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Intro 12 Overview GettingStarted en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Introducción: Primeros pasos",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de Primeros Pasos en SAP Business One versión 10.0. Esta capacitación está diseñada para que nuevos usuarios adquieran las habilidades básicas necesarias para operar con confianza en el sistema. Aprenderá a iniciar sesión, navegar por el entorno y personalizar su espacio de trabajo según su rol. Al finalizar, estará listo para usar SAP Business One de forma eficiente en su día a día.",
     "start_time": 0.0,
-    "end_time": 16.8,
-    "step_guide": null
+    "end_time": 27.82
   },
   {
     "slide_index": 2,
-    "image_file": "061_Slide_02_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "En esta sesión, daremos los primeros pasos con SAP Business One. Luego de esta sesión, usted podrá iniciar sesión y navegar en SAP Business One. También podrá establecer un cockpit personalizado adaptado a un rol y grabarlo como modelo. 2 2 Objetivos Al finalizar este tema, podrá: Iniciar sesión en SAP Business One Desplazarse por el sistema Personalizar un cockpit y grabar como modelo",
-    "start_time": 16.8,
-    "end_time": 43.78,
-    "step_guide": null
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar esta sesión, podrá iniciar sesión en SAP Business One con su usuario y contraseña, desplazarse por los distintos módulos y ventanas del sistema con fluidez, y personalizar un cockpit adaptado a sus funciones específicas. Además, aprenderá a guardar esa configuración como modelo para reutilizarla o compartirla con otros usuarios del mismo rol, optimizando su experiencia de trabajo.",
+    "start_time": 27.82,
+    "end_time": 53.64
   },
   {
     "slide_index": 3,
-    "image_file": "061_Slide_03_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Al ser un nuevo integrante del equipo de OEC Computers va a recibir una formación completa sobre una serie de temas. Desea configurar un cockpit de SAP Business One que hará que su trabajo sea más fácil y también más rápido para poder asumir nuevas tareas. Sus primeros pasos consistirán en acceder al sistema, aprender a desplazarse por él y configurar un cockpit que le ayudará a cubrir sus necesidades. 3 Al ser un nuevo integrante del equipo de OEC Computers va a recibir una formación completa sobre una serie de temas. Desea configurar un cockpit de SAP Business One que hará que su trabajo sea más fácil y también más rápido para poder asumir nuevas tareas. Sus primeros pasos consistirán en acceder al sistema, aprender a desplazarse por él y configurar un cockpit que le ayudará a cubrir sus necesidades. Ejemplo empresarial",
-    "start_time": 43.78,
-    "end_time": 96.98,
-    "step_guide": null
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que eres un nuevo miembro del equipo de OEC Computers y estás recibiendo una formación integral en diversos temas. Tu objetivo es configurar un cockpit en SAP Business One que simplifique y acelere tus tareas diarias, permitiéndote asumir nuevas responsabilidades con mayor eficacia. Para lograrlo, tus primeros pasos serán acceder al sistema, familiarizarte con su navegación y diseñar un entorno de trabajo personalizado que se ajuste a tus necesidades operativas.",
+    "start_time": 53.64,
+    "end_time": 83.83
   },
   {
     "slide_index": 4,
-    "image_file": "061_Slide_04_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Existen dos clases de usuario en SAP Business One: superusuarios y usuarios normales (o finales). Los superusuarios tienen acceso a todo, por lo tanto, ven por lo general el menú completo. Los usuarios finales están limitados a ciertas acciones y opciones de menú debido al tipo de licencia y a las autorizaciones. Por lo tanto, los usuarios finales por lo general ven un subgrupo de opciones hecho a medida de su rol. Vamos a ver una serie de formas de adatar el cockpit y el menú a los usuarios para que trabajar en SAP Business One sea más eficiente y agradable. 4 Superusuarios y usuarios finales Superusuarios Acceso a todo Usuarios finales Restringido debido a las autorizaciones Generalmente ve un subconjunto del menú",
-    "start_time": 96.98,
-    "end_time": 143.62,
-    "step_guide": null
+    "image_file": "Slide_004.webp",
+    "script_text": "En SAP Business One existen dos tipos principales de usuarios: los superusuarios, que tienen acceso ilimitado a todas las funciones y ven el menú completo, y los usuarios finales o normales, cuyo acceso está restringido según su tipo de licencia y las autorizaciones asignadas. Estos últimos generalmente ven solo un subconjunto del menú, adaptado a su rol específico, lo que mejora la seguridad y la relevancia de las opciones disponibles. Personalizar el cockpit y el menú según el tipo de usuario permite hacer el trabajo más eficiente y agradable.",
+    "start_time": 83.83,
+    "end_time": 118.97
   },
   {
     "slide_index": 5,
-    "image_file": "061_Slide_05_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Bases de datos de la empresa Servidor Bases de datos de la empresa En SAP Business One, una empresa está representada por una base de datos. En SAP Business One, una empresa está representada por una base de datos. Cuando inicia sesión en SAP Business One, seleccione la compañía en la que iniciará sesión. ¿Por qué un pequeño negocio tendría más de una empresa? Quizás la empresa tiene dos entidades legales dentro de su negocio, una situación en la que es necesario mantener bases de datos separadas. Además de especificar la empresa, indica un usuario y contraseña para iniciar sesión. La próxima vez que inicie sesión, se lo enviará directamente a la base de datos de la misma empresa. Si desea iniciar sesión en una diferente, seleccione Cambiar empresa en la ventana de inicio de sesión.",
-    "start_time": 143.62,
-    "end_time": 196.3,
-    "step_guide": null
+    "image_file": "Slide_005.webp",
+    "script_text": "En SAP Business One, cada empresa se representa mediante una base de datos independiente. Al iniciar sesión, debe seleccionar la compañía en la que desea trabajar, junto con su usuario y contraseña. Un pequeño negocio puede tener más de una empresa si posee dos entidades legales distintas, lo que requiere mantener bases de datos separadas para cumplir con requisitos contables y legales. La próxima vez que ingrese, el sistema lo dirigirá automáticamente a la última empresa usada, salvo que elija 'Cambiar empresa' en la ventana de inicio.",
+    "start_time": 118.97,
+    "end_time": 154.99
   },
   {
     "slide_index": 6,
-    "image_file": "061_Slide_06_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Seleccionar sociedad GL Empresa Usuario Administración Seleccionar empresa Después de iniciar sesión, el nombre de usuario y la empresa aparecerán en el centro superior de la pantalla de SAP Business One. Al hacer clic en ella, se abrirá la ventana Seleccionar empresa directamente para cambiar el usuario o la empresa. También puede acceder a la ventana Seleccionar empresa desde el menú Gestión.",
-    "start_time": 196.3,
-    "end_time": 221.71,
+    "image_file": "Slide_006.webp",
+    "script_text": "Después de iniciar sesión en SAP Business One, el nombre de usuario y la empresa seleccionada aparecen en el centro superior de la pantalla. Al hacer clic en esa información, se abre directamente la ventana 'Seleccionar empresa', desde donde puede cambiar su usuario o compañía sin salir del sistema. Esta misma ventana también es accesible a través del menú 'Gestión' → 'Seleccionar empresa'. Es una forma rápida y conveniente de cambiar entre diferentes compañías o perfiles de usuario según sus necesidades operativas.",
+    "start_time": 154.99,
+    "end_time": 188.71,
     "step_guide": {
       "title": "Acceso al Sistema y Selección de Sociedad",
       "menu_path": "Inicio de Sesión > SAP Business One",
@@ -59,186 +54,164 @@
   },
   {
     "slide_index": 7,
-    "image_file": "061_Slide_07_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Primeras impresiones Haga clic en el icono para abrir o cerrar el menú Módulos. Haga clic en el icono para ocultar la barra de herramientas Cuando inicie sesión en SAP Business One por primera vez, seguramente su cockpit estará vacío y el menú principal estará oculto. En la parte superior verá un menú y una barra de herramientas. En el centro de la pantalla aparecen unas instrucciones que le explican cómo añadir widgets al cockpit. Hablaremos sobre eso más tarde. Antes, vamos a ver cómo desplazarse por el sistema. Para abrir el menú principal puede utilizar el icono que hay en la parte superior izquierda de la pantalla. Este icono le permite abrir y cerrar el menú de forma alternativa. Puede ocultar la barra de herramientas para aumentar el área de trabajo si es necesario.",
-    "start_time": 221.71,
-    "end_time": 272.09,
-    "step_guide": null
+    "image_file": "Slide_007.webp",
+    "script_text": "Al ingresar por primera vez a SAP Business One, el cockpit aparece vacío y el menú principal está oculto. En la parte superior se encuentra el menú y la barra de herramientas, mientras que en el centro aparecen instrucciones para agregar widgets al cockpit, tema que se abordará más adelante. Para navegar, puede usar el icono en la esquina superior izquierda para abrir o cerrar el menú principal de forma alternativa. Si necesita más espacio, puede ocultar la barra de herramientas haciendo clic en su respectivo icono, lo que aumenta el área de trabajo disponible. Estas acciones permiten personalizar la vista inicial según sus necesidades de visualización y acceso rápido a las funciones del sistema.",
+    "start_time": 188.71,
+    "end_time": 232.63
   },
   {
     "slide_index": 8,
-    "image_file": "061_Slide_08_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Cuando el menú está abierto es posible desglosar cada opción del menú. El nivel más alto del menú contiene los módulos de SAP Business One. A partir de ahí es posible desglosar a los submenús y después a las transacciones. O también puede utilizar el campo de búsqueda de menús para encontrar las opciones de menú rápidamente. Por ejemplo, puede escribir «maestros artículo» para encontrar rápidamente la transacción Datos maestros de artículo en el menú. Conforme escribe, se encuentra la opción del menú. Y después basta con hacer clic en la opción de menú para abrirla. 8 8 Desglose o búsqueda del menú …utilice Buscar menú para buscar transacciones Desglose el menú, o… Pulse en un módulo para abrirlo más Un guion se corresponde con una transacción, mientras que una carpeta indica que dentro hay un menú con artículos. Conforme escribe, se encuentra la opción del menú. Pulse en la opción de menú para abrir la ventana.",
-    "start_time": 272.09,
-    "end_time": 332.95,
-    "step_guide": null
+    "image_file": "Slide_008.webp",
+    "script_text": "Cuando el menú está abierto, puede explorarlo de dos formas: desglosándolo manualmente o usando el buscador. El nivel superior muestra los módulos de SAP Business One; al hacer clic en uno, se expanden sus submenús y transacciones. Las carpetas indican que hay más opciones dentro, mientras que un guion representa una transacción directa. Alternativamente, puede escribir en el campo de búsqueda, como 'maestros artículo', para localizar rápidamente la transacción correspondiente. A medida que escribe, el sistema filtra y muestra la opción coincidente. Finalmente, al hacer clic en la opción del menú, se abre la ventana asociada para comenzar a trabajar.",
+    "start_time": 232.63,
+    "end_time": 276.96
   },
   {
     "slide_index": 9,
-    "image_file": "061_Slide_09_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Además, una barra de menús se muestra en la parte superior de la pantalla. La barra de menús contiene el menú estándar de Windows (Fichero, Tratar, Ventana, Ayuda), así como funciones genéricas de SAP Business One. Una línea de barras de herramientas se muestra debajo de la barra del menú. Cada barra de herramientas es una recopilación de iconos que permiten acceder con facilidad a funciones de uso común. Las funciones representadas por los iconos se encuentran disponibles también en la barra de menús. Las funciones activas del formulario seleccionado aparecen en color y las funciones inactivas aparecen en gris. Este gráfico muestra solo dos de las barras de herramientas disponibles. Puede seleccionar las barras de herramientas que se mostrarán o se suprimirán. Para ocultar o mostrar una barra de herramientas, haga clic con el botón derecho en la línea de barra de herramientas y active o desactive la barra de herramientas que desee. Puede elegir si desea exportar ficheros de Word y Excel a una carpeta local o utilizar la función Integración de SAP Business One Office 365. La función Integración de Office 365 le permite exportar documentos, informes y consultas a Microsoft One Drive como archivos de Word o Excel, y visualizarlos en línea. También puede diseñar sus propias plantillas de exportación. Para obtener más información, consulte la guía de usuario: Cómo trabajar con la integración de SAP Business One Office 365. 9 Barra de menús y barra de herramientas Imprimir vista previa Imprimir Enviar correo Enviar SMS Enviar Fax Exportar a MS Excel Exportar a MS Word Lanzar Aplicación Bloquear Pantalla Barra de herramientas del fichero Ver barra de herramientas Barra de menús Añadir Primer registro Registro anterior Siguiente Registro Último Registro Barra de herramientas Actualizar registro Buscar Exportar a PDF Puede elegir si desea exportar ficheros de Word y Excel a una carpeta local o utilizar la función Integración de SAP Business One Office 365.",
-    "start_time": 332.95,
-    "end_time": 458.3,
-    "step_guide": null
+    "image_file": "Slide_009.webp",
+    "script_text": "En la parte superior de la pantalla se muestra la barra de menús, que incluye el menú estándar de Windows (Fichero, Tratar, Ventana, Ayuda) junto con funciones genéricas de SAP Business One. Debajo de ella se encuentra una o más barras de herramientas, cada una compuesta por iconos que permiten acceder rápidamente a funciones de uso común. Estas funciones también están disponibles en la barra de menús. Las funciones activas del formulario seleccionado aparecen en color, mientras que las inactivas se muestran en gris. Puede personalizar qué barras de herramientas se muestran haciendo clic derecho en la línea de herramientas y activando o desactivando las deseadas. Además, puede elegir entre exportar archivos de Word y Excel a una carpeta local o usar la Integración de SAP Business One Office 365 para guardarlos en One Drive y visualizarlos en línea, incluso diseñando sus propias plantillas de exportación.",
+    "start_time": 276.96,
+    "end_time": 334.73
   },
   {
     "slide_index": 10,
-    "image_file": "061_Slide_10_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Se puede acceder a la ayuda online de varias formas. El icono de Ayuda de contexto se encuentra en el borde derecho de la barra de herramientas. Este icono le brindará ayuda contextual sobre la pantalla determinada en la que se encuentra. Otra forma de acceder a la ayuda contextual es presionar la tecla F1. Al resaltar un campo y presionar Shift + F1, obtiene la Ayuda a nivel de campo. El panel Log de mensajes de sistema muestra los últimos 50 mensajes del sistema que se mostraron en la ventana de la aplicación del cliente actual desde la última entrada al sistema. La ventana muestra errores, advertencias o mensajes informativos. Este panel se muestra en la parte inferior de la aplicación SAP Business One, pero puede cerrarlo, moverlo y cambiarle el tamaño, al igual que con la ventana de cualquier otra aplicación. Es posible que se muestre en la línea un hiperenlace a ficheros de ayuda relevantes. Haga clic para obtener información detallada en el mensaje. Cuando esté disponible, el mensaje del sistema mostrará un identificador único de ocho o nueve dígitos. Puede utilizar este ID como una clave de búsqueda en la ayuda online. 10 Ayuda online Ayuda online Ayuda sensible al contexto Ayuda a nivel de campo Log de mensajes del sistema Errores, advertencias e información Historial de mensajes",
-    "start_time": 458.3,
-    "end_time": 542.54,
-    "step_guide": null
+    "image_file": "Slide_010.webp",
+    "script_text": "Puede acceder a la ayuda en línea de SAP Business One de varias maneras. El icono de ayuda de contexto, ubicado en el borde derecho de la barra de herramientas, brinda asistencia específica sobre la pantalla en la que se encuentra. También puede presionar la tecla F1 para obtener ayuda contextual general. Si necesita ayuda sobre un campo en particular, resáltelo y presione Shift + F1 para acceder a la ayuda a nivel de campo. Además, el panel de Log de mensajes del sistema muestra los últimos 50 mensajes generados desde el último ingreso al sistema, incluyendo errores, advertencias e información informativa. Este panel se encuentra por defecto en la parte inferior de la aplicación, pero puede cerrarse, moverse o redimensionarse como cualquier otra ventana. Cuando un mensaje incluye un hipervínculo o un ID único de ocho o nueve dígitos, puede hacer clic o usar ese ID como clave de búsqueda en la ayuda en línea para obtener información detallada.",
+    "start_time": 334.73,
+    "end_time": 395.35
   },
   {
     "slide_index": 11,
-    "image_file": "061_Slide_11_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Opciones de cockpit Cockpit Para elegir el tipo de cockpit: Gestión > Inicialización del sistema > Parametrizaciones generales > pestaña Cockpit Cockpit tipo Fiori SAP Business One ofrece cockpits que puede personalizar para que el sistema ofrezca una información valiosa que el usuario puede utilizar en su trabajo diario y para tomar decisiones. SAP Business One ofrece cockpits que puede personalizar para que el sistema ofrezca una información valiosa que el usuario puede utilizar en su trabajo diario y para tomar decisiones. Si está ejecutando la versión para HANA de SAP Business One, tiene la posibilidad de utilizar el cockpit Fiori con una interfaz gráfica HTML5, así como el cockpit del estilo que había antes. Con MS SQL no tiene la opción de utilizar la interfaz Fiori. En ambas plataformas es posible desactivar el cockpit. Puede elegir el tipo de cockpit que prefiera utilizar para una base de datos de empresa en la ficha Cockpit de la transacción Parametrizaciones generales. Un usuario individual no puede elegir el tipo de cockpit que quiere utilizar, pero sí que puede desactivar su propio cockpit. La decisión que tomo no afectará al resto de los usuarios. Esto se hace en la ventana Cockpit del menú Herramientas.",
-    "start_time": 542.54,
-    "end_time": 619.75,
-    "step_guide": null
+    "image_file": "Slide_011.webp",
+    "script_text": "SAP Business One ofrece dos tipos de cockpit: el estilo Fiori, basado en HTML5 y disponible solo en la versión para HANA, y el cockpit clásico, que es la interfaz tradicional. En plataformas HANA, puede elegir entre ambos, mientras que con MS SQL solo está disponible el cockpit clásico. En ambas plataformas es posible desactivar el cockpit completamente. La selección del tipo de cockpit se realiza a nivel de empresa mediante la ruta: Gestión > Inicialización del sistema > Parametrizaciones generales > pestaña Cockpit. Un usuario individual no puede cambiar el tipo de cockpit asignado a su empresa, pero sí puede desactivar su propio cockpit desde la ventana Cockpit en el menú Herramientas, sin afectar a otros usuarios.",
+    "start_time": 395.35,
+    "end_time": 443.14
   },
   {
     "slide_index": 12,
-    "image_file": "061_Slide_12_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Puede personalizar el cockpit para organizar mejor su entorno de trabajo de tal modo que las herramientas de análisis y las funciones cotidianas estén organizadas de manera inmediata y visual. En este curso nos centramos en cómo personalizar el cockpit estilo Fiori. Puede cambiar los widgets de su cockpit en cualquier momento. Es posible desplazar, añadir o eliminar widgets. Seleccione el icono en forma de lápiz y el cockpit se desactiva permitiéndole modificarlo. Puede arrastrar los widgets que no desee utilizar a la papelera u organizar de otro modo los widgets que hay en la pantalla. El icono + aparecerá cuando haya empezado a modificar el cockpit. Seleccione este icono para abrir la Galería de widgets La galería de widgets contiene todos los widgets disponibles. Busque el widget que desee y después haga clic en el símbolo + que hay debajo del widget para añadirlo a su cockpit. Cuando acabe de modificarlo, seleccione la marca de verificación. 12 12 Personalización del cockpit estilo Fiori Utilice este icono para modificar el cockpit Los widgets del cockpit se desactivarán Puede arrastrar los widgets que no desee utilizar a la papelera Puede organizar los widgets de otra forma Utilice este icono para abrir la Galería de widgets Para seleccionar los widgets haga clic en el símbolo + que hay debajo de cada widget. Después utilice la flecha para volver al cockpit Utilice este icono para acabar de modificar Puede personalizar el cockpit para optimizar su entorno de trabajo. Mover, añadir o eliminar widgets.",
-    "start_time": 619.75,
-    "end_time": 714.34,
-    "step_guide": null
+    "image_file": "Slide_012.webp",
+    "script_text": "Para personalizar el cockpit estilo Fiori, primero seleccione el icono en forma de lápiz, lo que desactiva temporalmente el cockpit y permite modificarlo. Luego puede arrastrar los widgets que no desea utilizar a la papelera o reorganizarlos en la pantalla según su preferencia. Cuando comienza la edición, aparece el icono +; al seleccionarlo, se abre la Galería de widgets, que contiene todos los widgets disponibles para agregar. Busque el widget deseado y haga clic en el símbolo + debajo de él para incorporarlo al cockpit. Finalmente, al terminar las modificaciones, seleccione la marca de verificación para guardar los cambios y reactivar el cockpit con la nueva configuración. Este proceso permite adaptar el entorno de trabajo de forma inmediata y visual.",
+    "start_time": 443.14,
+    "end_time": 491.42
   },
   {
     "slide_index": 13,
-    "image_file": "061_Slide_13_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Galería de widgets Utilice la flecha de retorno para volver al cockpit después de modificarlo Buscar un widget por nombre Seleccione un widget haciendo clic en el símbolo Limite la selección de widgets por tipo En la Galería de widgets, por defecto se muestran todos los widgets disponibles. Puede delimitar la selección con el desplegable. Las distintas opciones permiten mostrar únicamente los paneles, los indicadores clave de rendimiento, los widgets de recuento, los workbench o el widget de actualizaciones recientes. También puede tener la opción de encontrar un widget por nombre utilizando el campo de búsqueda. Una vez que encuentre el widget que desea, seleccione el icono con el símbolo + que tiene debajo. Una vez que haya seleccionado todos los widgets que desee, utilice la flecha de regreso para volver a su cockpit. Vamos a ver los tipos de widgets que hay disponibles en el cockpit tipo Fiori.",
-    "start_time": 714.34,
-    "end_time": 769.51,
-    "step_guide": null
+    "image_file": "Slide_013.webp",
+    "script_text": "En la Galería de widgets puedes buscar y seleccionar los componentes que quieres agregar a tu cockpit Fiori. Por defecto se muestran todos los widgets disponibles, pero puedes filtrarlos por tipo usando el desplegable: paneles, KPIs, workbench, recuento o actualizaciones recientes. También puedes encontrar un widget específico escribiendo su nombre en el campo de búsqueda. Una vez localizado, selecciona el símbolo + para añadirlo. Cuando hayas terminado, usa la flecha de regreso para volver al cockpit y ver tus cambios aplicados.",
+    "start_time": 491.42,
+    "end_time": 526.99
   },
   {
     "slide_index": 14,
-    "image_file": "061_Slide_14_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Tipos de widgets del cockpit Widgets de análisis Paneles Indicadores clave de rendimiento (KPIs) Widgets operativos Workbench Funciones comunes Mensajes y alertas Mis actualizaciones recientes Recuento de Business Object Hay 5 tipos de widgets operativos y 2 tipos de widgets de análisis. El widget de workbench está diseñado para cubrir el 80% de las operaciones cotidianas del rol de un usuario. Los usuarios pueden hacer clic en los iconos que representan las transacciones que más se utilizan en un proceso empresarial. Este widget ayuda a los nuevos usuarios a familiarizarse con el sistema. Para obtener otras transacciones que un usuario necesita diariamente puede utilizar el widget Función común que le permite añadir una lista de transacciones que se pueden abrir con un clic. El widget Mis actualizaciones recientes muestra las transacciones más recientes del usuario, de forma que este puede ver fácilmente y acceder rápidamente a los documentos o datos maestros guardados. El widget Mensajes y alertas muestra todos los mensajes o alertas que se le muestran al usuario. El widget Recuento de Business Object muestra el número de artículos que devuelve una consulta. Por ejemplo, un recuento puede mostrar el número de clientes de alto valor que contribuyeron a obtener, como mínimo, el 10% de los beneficios del año anterior. Los usuarios pueden añadir muchos widgets de paneles a un cockpit. Los usuarios tienen la opción de utilizar una gran cantidad de paneles suministrados previamente pero también puede añadir paneles específicamente creados para su empresa. El widget de KPI le permite saber rápidamente si ha alcanzado o no su objetivo en un indicador clave de rendimiento, como pueden ser los objetivos de venta o el margen de ganancia bruta. El valor que se muestra en una fuente grande, el color y la flecha arriba abajo hace que resulte fácil ver si se alcanza un objetivo y qué tendencia presentan los valores. Un usuario puede tener varios KPI en un cockpit. Más adelante describiremos con más detalle algunos de estos tipos de widget. Y después verá cómo puede combinarlos en un cockpit.",
-    "start_time": 769.51,
-    "end_time": 900.55,
-    "step_guide": null
+    "image_file": "Slide_014.webp",
+    "script_text": "Los widgets del cockpit se dividen en dos categorías principales: análisis y operativos. Los de análisis incluyen paneles para visualización gráfica y KPIs que muestran metas con colores y flechas de tendencia. Los operativos soportan el trabajo diario: el workbench agrupa transacciones frecuentes, Funciones comunes permite acceder a acciones con un clic, Mis actualizaciones recientes muestra objetos modificados, Mensajes y alertas notifica eventos importantes y Recuento de Business Object muestra resultados de consultas, como clientes de alto valor o facturas pendientes.",
+    "start_time": 526.99,
+    "end_time": 563.9
   },
   {
     "slide_index": 15,
-    "image_file": "061_Slide_15_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "SAP ofrece cuatro widgets de workbench estándar para los roles del proceso empresarial relacionados con la gestión del inventario, las compras, las finanzas y las ventas. Cada widget tiene un resumen visual de la mayoría de las transacciones que un usuario necesita endicho rol del proceso empresarial. Por ejemplo, el workbench financiero se centra en las transacciones que necesita un usuario de tipo financiero: procesamiento de pagos, asientos, acceso a cuentas, reconciliación externa e interna, proceso de periodos contables e informes financieros. Además de proporcionar las transacciones del proceso empresarial, cada workbench también permite a los usuarios actuar inmediatamente sin tener que cambiar entre distintos módulos o funciones. Todas las transacciones visuales que tienen un punto azul disponen de opciones de menú contextual. Por ejemplo, desde la oferta de ventas del workbench Proceso de ventas es posible ver la lista de partidas abiertas, abrir una lista de documentos preliminares y ver los informes de precios o el estado de inventario. Es posible personalizar los workbench para satisfacer las necesidades de su empresa. Para nuestro nuevo rol en el equipo vamos a empezar añadiendo el workbench Proceso de ventas. 15 15 Cuatro widgets de workbench estándar",
-    "start_time": 900.55,
-    "end_time": 980.71,
-    "step_guide": null
+    "image_file": "Slide_015.webp",
+    "script_text": "SAP Business One incluye cuatro workbench estándar para inventario, compras, finanzas y ventas. Cada uno muestra visualmente las transacciones más usadas en ese rol. Por ejemplo, el workbench de Proceso de ventas se centra en ofertas, pedidos y facturas de cliente. Las transacciones con un punto azul tienen menú contextual: desde una oferta puedes ver partidas abiertas, abrir documentos preliminares o consultar informes de precios e inventario. Estos workbench son personalizables para adaptarse a las necesidades de tu empresa, y en nuestro caso vamos a comenzar añadiendo el workbench de Proceso de ventas al cockpit.",
+    "start_time": 563.9,
+    "end_time": 604.46
   },
   {
     "slide_index": 16,
-    "image_file": "061_Slide_16_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Funciones comunes El icono Llave inglesa abre las instrucciones visuales sobre cómo añadir o eliminar transacciones desde el widget. El widget Funciones comunes le permite abrir transacciones con un clic. Para algunas transacciones comunes que pensamos usar y no están cubiertas por el workbench Ventas, añadiremos el widget Funciones comunes. El widget Funciones comunes le permite abrir transacciones solo con hacer clic. Una vez que ha añadido el widget puede seleccionar qué transacciones desea agregar. Basta con hacer clic en la opción de menú que desee y arrastrarla al widget. Para eliminar las transacciones solo tiene que arrastrarlas fuera del widget. El icono de la Llave inglesa abre las instrucciones visuales sobre cómo añadir o eliminar transacciones. Para nuestro ejemplo empresarial vamos a añadir las siguientes transacciones al widget: Datos maestros de artículo, Pedido, Pedido de entrada de mercancías y factura de proveedores.",
-    "start_time": 980.71,
-    "end_time": 1040.3,
-    "step_guide": null
+    "image_file": "Slide_016.webp",
+    "script_text": "El widget Funciones comunes te permite abrir transacciones frecuentemente usadas con un solo clic, incluso si no están incluidas en tu workbench. Para configurarlo, haz clic en el icono de llave inglesa para ver las instrucciones visuales. Luego, selecciona las transacciones que deseas agregar desde el menú y arrástralas al widget. Para eliminarlas, simplemente arrástralas fuera. En nuestro ejemplo, vamos a añadir: datos maestros de artículo, pedido de cliente, pedido de entrada de mercancías y factura de proveedores, para acceder rápidamente a estas operaciones clave en el flujo de ventas y compras.",
+    "start_time": 604.46,
+    "end_time": 644.69
   },
   {
     "slide_index": 17,
-    "image_file": "061_Slide_17_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Vamos a añadir el widget Mis actualizaciones recientes para poder acceder fácilmente a los objetos con los que estamos trabajando. Este widget muestra los datos maestros, los documentos de marketing, el plan de cuentas y mucha otra información de otro tipo que son nuevos o se actualizan. A medida que realiza su trabajo diario, el widget de actualizaciones recientes va guardando sus transacciones recientes. Puede hacer clic en un documento para abrir la transacción que desea ver y hacer cambios si es necesario. 17 17 Widget de objetos actualizados recientemente Este widget proporciona una lista de las transacciones recientes del usuario Incluye documentos de marketing, datos maestros y cuentas, entre otras cosas. Haga clic en un elemento de la lista para ver la transacción.",
-    "start_time": 1040.3,
-    "end_time": 1089.72,
-    "step_guide": null
+    "image_file": "Slide_017.webp",
+    "script_text": "El widget Mis actualizaciones recientes te ayuda a acceder rápidamente a los objetos con los que estás trabajando activamente. Cada vez que creas o modificas un dato maestro, documento de marketing, cuenta contable o cualquier otro registro, SAP lo guarda automáticamente en este widget. Así, puedes hacer clic en cualquier elemento de la lista para abrir la transacción correspondiente, revisarla o hacer cambios si es necesario. Es ideal para retomar tu trabajo donde lo dejaste y mantener una visión clara de tu actividad reciente en el sistema.",
+    "start_time": 644.69,
+    "end_time": 678.86
   },
   {
     "slide_index": 18,
-    "image_file": "061_Slide_18_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Widget Recuento de Business Object Muestra el número de resultados de una consulta Existen widgets predefinidos para contabilizar: Los pedidos de cliente no entregados Facturas de clientes o proveedores abiertas Los pedidos no recibidos Las solicitudes de traslado pendientes Puede crear sus propios widgets de recuento. Desde el widget puede abrirlos resultados de la consulta. Un widget de recuento de objetos empresariales muestra el número de resultados de una consulta. Existen widgets predefinidos para contar los pedidos de cliente no entregados, las facturas de clientes pendientes, los pedidos no recibidos, las facturas de proveedores pendientes y las solicitudes de traslado de inventario pendientes. Además, puede crear sus propios widgets de recuento. Desde el widget de recuento puede abrir los resultados detallados de la consulta para consultar más información. En este caso, podemos ver el número de facturas de clientes abiertas en la empresa y acceder al documento o los datos maestros seleccionando la flecha de enlace naranja.",
-    "start_time": 1089.72,
-    "end_time": 1153.06,
-    "step_guide": null
+    "image_file": "Slide_018.webp",
+    "script_text": "El widget Recuento de Business Object muestra el número de resultados de una consulta específica, ideal para monitorear indicadores operativos. Por ejemplo, puede mostrar cuántos pedidos de cliente aún no se han entregado, facturas de clientes o proveedores abiertas, o solicitudes de traslado de inventario pendientes. SAP incluye varios widgets predefinidos para estos casos comunes, pero también puedes crear los tuyos según las necesidades de tu empresa. Desde el widget, puedes hacer clic en el recuento para abrir los resultados detallados y consultar más información, como acceder al documento o datos maestros relacionados mediante el enlace nario.",
+    "start_time": 678.86,
+    "end_time": 719.9
   },
   {
     "slide_index": 19,
-    "image_file": "061_Slide_19_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Paneles SAP ofrece una gran cantidad de paneles de análisis detallado. Los usuarios autorizados pueden crear sus propios paneles y añadirlos a la galería de widgets Es posible añadir más acciones a los paneles para que los usuarios puedan actuar inmediatamente basándose en los resultados de los análisis. SAP ofrece una gran cantidad de paneles de análisis detallado que proporcionan el tipo de análisis empresariales que suelen necesitarse. Los usuarios autorizados pueden crear sus propios paneles de análisis detallado en el Diseñador de análisis detallado. Además, se pueden desarrollar paneles Crystal y ponerlos a disposición de los usuarios del cockpit. Es posible añadir más acciones a los paneles de análisis detallado para que los usuarios puedan actuar inmediatamente basándose en los resultados de los análisis. Estas acciones incluyen la capacidad de abrir un panel avanzado con análisis relacionados, abrir un documento o ventana de datos maestros e iniciar una búsqueda relacionada de la base de datos. Encontrará las instrucciones sobre cómo crear paneles de análisis detallado y añadir acciones en el tema del curso Análisis. Vamos a añadir dos paneles de análisis detallado en nuestro cockpit. Los 5 mejores clientes por ventas y los 5 artículos más vendidos.",
-    "start_time": 1153.06,
-    "end_time": 1232.76,
-    "step_guide": null
+    "image_file": "Slide_019.webp",
+    "script_text": "Los paneles de análisis detallado en SAP Business One permiten visualizar información clave de forma gráfica y personalizada. Los usuarios autorizados pueden crear sus propios paneles en el Diseñador de análisis detallado, eligiendo el tipo de visualización, los datos a mostrar y las acciones asociadas. Por ejemplo, podemos configurar un panel que muestre los cinco mejores clientes por ventas, con una acción que al hacer clic abra el documento de venta correspondiente. Esto permite actuar inmediatamente sobre los resultados del análisis, mejorando la toma de decisiones operativas.",
+    "start_time": 719.9,
+    "end_time": 756.86
   },
   {
     "slide_index": 20,
-    "image_file": "061_Slide_20_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Indicadores clave de rendimiento (KPIs) En la parte superior izquierda del widget KPI, puede ver el nombre. En la parte inferior izquierda puede ver el rango de datos del KPI. El valor de KPI aparece en el centro. El color indique que se ha alcanzado el objetivo para este KPI. Este KPI muestra una tendencia ascendente. El color de la flecha indica una tendencia positiva. Existen varios widgets de KPI predefinidos para realizar el seguimiento de los objetivos de rendimiento. Utilizar KPIs aporta dos ventajas principales. Los KPIs le permiten comprobar el progreso hacia la consecución de los objetivos estratégicos de la empresa. Como sucede con los paneles de análisis detallado, los usuarios autorizados pueden crear nuevos KPIs con el Diseñador de análisis detallado.",
-    "start_time": 1232.76,
-    "end_time": 1287.07,
-    "step_guide": null
+    "image_file": "Slide_020.webp",
+    "script_text": "Los KPIs en SAP Business One muestran de forma visual el desempeño frente a objetivos estratégicos. En la parte superior izquierda se indica el nombre del KPI, en la inferior izquierda el rango de datos, y el valor central refleja el resultado actual. El color y la flecha indican si se alcanzó la meta y la tendencia, como un crecimiento sostenido en las ventas. Los usuarios autorizados pueden crear KPIs personalizados con el Diseñador de análisis detallado, lo que permite monitorear en tiempo real indicadores críticos como el cumplimiento de metas o el volumen de pedidos, apoyando decisiones ágiles y alineadas con la estrategia empresarial.",
+    "start_time": 756.86,
+    "end_time": 797.47
   },
   {
     "slide_index": 21,
-    "image_file": "061_Slide_21_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Grabación de un cockpit Grabe el diseño de su cockpit para su propio uso O si está autorizado, grábelo como modelo Publique un modelo de cockpit para que otros lo utilicen: Herramientas > Cockpit > Gestión de Cockpit seleccione ar en la ventana Gestión de Cockpit: Configuración Una vez que ha creado un diseño de cockpit, puede grabar el cockpit para su propio uso. Los usuarios autorizados pueden grabar el cockpit como modelo para otros usuarios. Si está autorizado, verá dos opciones cuando grabe el modelo: \"Actualizar mi cockpit\" y \"Grabar como modelo\". Si lo graba como modelo, puede ar el modelo y asignarlo a un grupo de usuarios.",
-    "start_time": 1287.07,
-    "end_time": 1327.37,
-    "step_guide": null
+    "image_file": "Slide_021.webp",
+    "script_text": "Una vez diseñado su cockpit en SAP Business One, puede guardarlo para uso personal o, si está autorizado, grabarlo como modelo para compartirlo con otros usuarios. Desde el menú Herramientas > Cockpit > Gestión de Cockpit, selecciona la opción Publicar para almacenar el diseño como un modelo reutilizable. Luego, puedes asignarlo a un grupo de usuarios específico, permitiendo que todos los miembros accedan al mismo diseño estándar. Esto asegura consistencia en la visualización de información clave entre equipos, facilitando la adopción uniforme de buenas prácticas en el uso del sistema.",
+    "start_time": 797.47,
+    "end_time": 835.44
   },
   {
     "slide_index": 22,
-    "image_file": "061_Slide_22_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Cockpits basados en roles predefinidos Hay disponibles cuatro cockpits predefinidos: Ventas, Compras, Finanzas e Inventario La autorización para los widgets de cockpit se corresponde con las autorizaciones de un grupo de usuarios de autorización con el mismo nombre. Los cockpits predefinidos pueden modificarse. También puede crear nuevos modelos o modificar los modelos existentes y grabarlos con otro nombre. Cockpit Ventas Grupo Autorización de ventas Cockpit Compras Grupo Autorización de compras Cockpit finanzas Grupo Autorización de finanzas Cockpit inventario Grupo Autorización de inventario Además de los modelos de cockpit que crea, se han creado cuatro modelos de cockpit predefinidos para ventas, compras, finanzas e inventario. Estos cockpits también los puede modificar un usuario autorizado. Estos cuatro cockpits se aplican directamente a cuatro grupos de autorización. Cuando un usuario es asignado a un grupo de autorización, tiene la autorización para los widgets relacionados con el cockpit que está vinculado a dicho grupo. Un usuario puede tener la capacidad de acceder a otros widgets y utilizarlos de acuerdo con ciertas autorizaciones y, por lo general, con autorizaciones que se dan a dicho usuario en concreto.",
-    "start_time": 1327.37,
-    "end_time": 1402.51,
-    "step_guide": null
+    "image_file": "Slide_022.webp",
+    "script_text": "SAP Business One incluye cuatro cockpits predefinidos diseñados para roles específicos: Ventas, Compras, Finanzas e Inventario. Cada cockpit está vinculado a un grupo de autorización del mismo nombre, lo que significa que solo los usuarios pertenecientes a ese grupo pueden acceder a los widgets asociados. Estos modelos vienen configurados de fábrica pero pueden modificarse o duplicarse con otro nombre para adaptarlos a necesidades particulares. Esta estructura asegura que los usuarios vean únicamente la información relevante para su función, mejorando la seguridad y la usabilidad del sistema.",
+    "start_time": 835.44,
+    "end_time": 873.24
   },
   {
     "slide_index": 23,
-    "image_file": "061_Slide_23_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Cockpit inventario Grupo autorización inventario Asignación de usuarios a roles y cockpits Mi workbench: Transacciones del Proceso de inventario Widget de recuento: Una solicitud de traslado pendiente de un usuario Mis actualizaciones recientes: Lista de las transacciones actualizadas recientemente KPIs: Valores de stocks generales, de salida y de entrada, y volumen de negocios del inventario del año. Paneles: Los 5 mejores artículos por valor de stocks y volumen de negocios de inventario de los últimos 12 meses, por grupo de artículos y por almacén. Por defecto, el grupo de autorización de inventario proporciona autorización para los widgets del cockpit de inventario. Por ejemplo, el jefe de almacén de OEC Computers, quiere que los integrantes de su equipo utilicen el cockpit de inventario. Por ello, pide al jefe de informática que asigne el grupo de autorización de inventario a todos los usuarios de su equipo. Una vez que se asigna el grupo de autorización, todos los usuarios pueden acceder a los widgets relacionados con ese cockpit. El cockpit de inventario incluye un widget de workbench con las transacciones de inventario cotidianas, un widget de recuento de las solicitudes de traslado pendientes de cada usuario y una lista de transacciones actualizadas recientemente. Por defecto, el grupo de autorización de inventario proporciona autorización total para los indicadores clave de rendimiento que muestran los valores de stocks generales, de salida y de entrada, y el volumen de negocios del inventario del año. También le permite acceder a paneles que muestran los mejores artículos en cuanto a valor de stocks y volumen de negocios del inventario, por fecha, artículo y almacén.",
-    "start_time": 1402.51,
-    "end_time": 1505.45,
-    "step_guide": null
+    "image_file": "Slide_023.webp",
+    "script_text": "El cockpit de inventario en SAP Business One proporciona una visión integral del estado y movimiento de los productos. Incluye un widget de workbench que muestra las transacciones diarias de inventario, como ingresos, egresos y transferencias. Otro widget lista las solicitudes de traslado pendientes por usuario, permitiendo seguir el flujo de materiales entre almacenes. Además, muestra KPIs clave como el valor total de stocks, las entradas y salidas, y el volumen de negocios del inventario anual. Los usuarios también pueden acceder a paneles que destacan los cinco artículos más relevantes por valor de stock o volumen de negocios, agrupados por artículo, grupo o almacén, apoyando una gestión proactiva del inventario.",
+    "start_time": 873.24,
+    "end_time": 919.56
   },
   {
     "slide_index": 24,
-    "image_file": "061_Slide_24_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Asignar autorización de roles y cockpits a un usuario 1. Abra la ventana Grupo de usuarios Gestión > Configuración > General > Grupos de usuarios 2. Seleccione un grupo de autorizaciones para el rol 3. Asigne el cockpit adecuado para el rol 4. Asigne usuarios al grupo de usuarios de autorización 5. Opcionalmente, introduzca rangos de fechas para el grupo de usuarios o usuarios como desee. En la ventana Grupos de usuarios, el jefe de almacén selecciona el grupo de autorizaciones que contiene las autorizaciones para el rol. En este caso, el grupo de autorización de inventario. Le garantiza que el modelo de cockpit de inventario está asignado como el valor por defecto. A continuación, el jefe de almacén asigna dos integrantes de su equipo, Kora y Vicky, al grupo de autorización de inventario. Los usuarios pueden personalizar sus cockpits una vez que el modelo está asignado. Un usuario puede tener la capacidad de acceder a otros widgets y utilizarlos de acuerdo con ciertas autorizaciones y, por lo general, con autorizaciones que se dan a dicho usuario en concreto. Si es un superusuario, puede crear nuevos grupos de autorización en caso necesario para sus nuevos modelos. Recuerde que los nuevos grupos, deberá contar con las autorizaciones adecuadas para los objetos y datos en el modelo que asigne. Más adelante aprenderá a configurar autorizaciones en el curso en línea en Autorizaciones generales.",
-    "start_time": 1505.45,
-    "end_time": 1598.78,
-    "step_guide": null
+    "image_file": "Slide_024.webp",
+    "script_text": "Para asignar un cockpit predefinido a un usuario en SAP Business One, primero debe acceder a la ventana de Grupos de usuarios desde el menú de Configuración. Allí, selecciona el grupo de autorización correspondiente al rol, como el grupo de autorización de inventario. Luego, asegúrate de que el modelo de cockpit adecuado esté asignado como valor por defecto para ese grupo. Después, agrega los usuarios que necesitan acceso al cockpit, como Kora y Vicky en el ejemplo. Una vez asignados, esos usuarios podrán personalizar su cockpit según sus necesidades, siempre dentro de los permisos otorgados por su grupo de autorización.",
+    "start_time": 919.56,
+    "end_time": 960.6
   },
   {
     "slide_index": 25,
-    "image_file": "061_Slide_25_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Forma alternativa de asignar usuarios a un grupo de autorización y cockpit 1 2 Otra manera de asignar usuarios a un modelo de cockpit es abrir la ventana Usuarios: Configurar y añadir el usuario a un grupo de autorizaciones que tiene asociado un modelo. Después, el usuario aparecerá en la ventana Grupos de usuarios como asignado al grupo. Sólo puede asignar un modelo estándar para un grupo de usuarios, pero un usuario puede pertenecer a varios grupos de usuarios y, por lo tanto, estar autorizado en varios modelos.",
-    "start_time": 1598.78,
-    "end_time": 1631.23,
-    "step_guide": null
+    "image_file": "Slide_025.webp",
+    "script_text": "Para asignar usuarios a un modelo de cockpit, abra la ventana Usuarios: Configurar y añada el usuario a un grupo de autorización que tenga asociado un modelo de cockpit. Una vez hecho esto, el usuario aparecerá en la ventana Grupos de usuarios como asignado a ese grupo. Recuerde que solo puede asignar un modelo estándar por grupo de usuarios, pero un usuario puede pertenecer a varios grupos y, por lo tanto, estar autorizado en varios modelos de cockpit simultáneamente.",
+    "start_time": 960.6,
+    "end_time": 990.7
   },
   {
     "slide_index": 26,
-    "image_file": "061_Slide_26_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Cambio entre modelos de cockpit disponibles Los usuarios pueden cambiar entre modelos de cockpit disponibles Para seleccionar un modelo, haga clic en el icono de carpeta y seleccione desde una lista. Para cambiar a otro modelo, seleccione la flecha Atrás en la esquina superior izquierda del cockpit. Esta acción devuelve un usuario a un cockpit en blanco y vuelve a aparecer el icono Carpeta. Los usuarios pueden cambiar entre modelos de cockpit para los que están autorizados. Para seleccionar un modelo de cockpit, haga clic en el icono Carpeta y seleccione desde una lista de modelos. Para cambiar a otro modelo, seleccione la flecha Atrás en la esquina superior del cockpit. Esta acción devuelve un usuario al cockpit en blanco y vuelve a aparecer el icono Carpeta. Los usuarios también pueden modificar modelos de cockpit disponibles para su propio usuario o arlos como cockpits que pueden compartir otros usuarios.",
-    "start_time": 1631.23,
-    "end_time": 1687.85,
-    "step_guide": null
+    "image_file": "Slide_026.webp",
+    "script_text": "Los usuarios pueden cambiar entre modelos de cockpit para los que están autorizados. Para seleccionar un modelo, haga clic en el icono de carpeta y elija desde la lista de modelos disponibles. Para cambiar a otro modelo, seleccione la flecha Atrás en la esquina superior izquierda del cockpit. Esta acción devuelve al usuario a un cockpit en blanco y vuelve a mostrar el icono Carpeta. Además, los usuarios pueden modificar o publicar sus propios modelos de cockpit para uso personal o compartido.",
+    "start_time": 990.7,
+    "end_time": 1022.83
   },
   {
     "slide_index": 27,
-    "image_file": "061_Slide_27_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Los usuarios pueden crear sus propias parametrizaciones de visualización en la ventana Usuarios: Configuración en la ficha Visualización. Estilo de diseño Colores Idioma Estilo y tamaño de fuente Utilice el icono de la barra de herramientas Parametrizaciones de visualización personalizadas Algunas de las parametrizaciones de la ventana Usuario: Configuración pueden actualizarlas usuarios individuales. Por ejemplo, los usuarios pueden personalizar sus propias parametrizaciones de visualización en la ficha Visualización. Se incluyen las parametrizaciones para el estilo de diseño, los colores, el idioma, el estilo de fuente y el tamaño. Los usuarios pueden abrir sus propias parametrizaciones de usuario mediante el icono Mis parametrizaciones personales (tal como se muestra en el gráfico).",
-    "start_time": 1687.85,
-    "end_time": 1736.64,
-    "step_guide": null
+    "image_file": "Slide_027.webp",
+    "script_text": "En la ventana Usuarios: Configuración, en la ficha Visualización, los usuarios pueden personalizar su experiencia en SAP Business One. Aquí pueden ajustar el estilo de diseño, los colores, el idioma, el estilo y el tamaño de la fuente. Estas parametrizaciones son individuales y se guardan por usuario. Para acceder rápidamente, pueden usar el icono Mis parametrizaciones personales en la barra de herramientas, lo que permite adaptar la interfaz a sus preferencias sin afectar a otros usuarios.",
+    "start_time": 1022.83,
+    "end_time": 1055.54
   },
   {
     "slide_index": 28,
-    "image_file": "061_Slide_28_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Simplificar el menú principal Los usuarios pueden elegir si desean ocultar o mostrar las opciones del menú principal utilizando la ventana Parametrizaciones de formulario Menú principal. Otra forma de ajustar SAP Business One a un usuario es simplificar el menú principal (Módulos). La mayoría de los usuarios tienen limitaciones en cuanto a las funciones que pueden utilizar. Para evitar que esto sea frustrante, los usuarios pueden ocultar aquellas funciones de menú que no utilizan o que no pueden usar. Al ser un cockpit personalizado, esto puede acelerar el tiempo de acceso necesario para abrir las transacciones que se suelen utilizar. La herramienta que sirve para controlar lo que se oculta y lo que se muestra se llama Parametrizaciones de formulario. Para acceder a las parametrizaciones del formulario para el menú principal, seleccione el icono Llave inglesa que hay a la izquierda del campo Menú de búsqueda. Verá una lista con todas las opciones de menú. Puede elegir si prefiere ocultar o mostrar un menú completo o ciertas opciones del menú. En la ventana Parametrizaciones de formulario Menú principal, pulse el botón Aplicar autorización. Esto hace que el menú vuelva a tener su estado original. Para guardar los cambios, pulse el botón Actualizar. En el ejemplo, el usuario ha eliminado algunas opciones del menú Ventas Clientes.",
-    "start_time": 1736.64,
-    "end_time": 1821.67,
-    "step_guide": null
+    "image_file": "Slide_028.webp",
+    "script_text": "Para simplificar el menú principal y mejorar la experiencia de usuario, abra la ventana Parametrizaciones de formulario - Menú principal mediante el icono de llave inglesa junto al campo de búsqueda. Allí podrá ver todas las opciones de menú y elegir si las oculta o muestra. Esto es útil cuando un usuario no necesita o no puede acceder a ciertas funciones. Al hacer clic en Aplicar autorización, el menú vuelve a su estado original. Para guardar los cambios personalizados, pulse el botón Actualizar.",
+    "start_time": 1055.54,
+    "end_time": 1088.23
   },
   {
     "slide_index": 29,
-    "image_file": "061_Slide_29_10_Intro_12_Overview_GettingStarted_ES.webp",
-    "script_text": "Una compañía está representada como una base de datos dentro de SAP Business One. Cuando inicia sesión en SAP Business One, seleccione la compañía en la que iniciará sesión. Existen dos clases de usuarios: superusuarios y usuarios normales (o finales). Los superusuarios tienen acceso a todo. El usuario final está restringido por las autorizaciones a las funciones relacionadas con sus trabajos. Hay dos menús. En la parte superior de la pantalla aparece una barra de menús horizontal y el menú principal de Módulos está situado a la izquierda. Las funciones de la barra de menús más utilizadas se representan también como iconos en una barra de herramientas. La barra de herramientas se muestra debajo de la barra de menús. Una búsqueda de menús le permite encontrar opciones rápidamente en el menú Módulos. Los usuarios pueden personalizar su cockpit para que se ajuste a sus necesidades. Los usuarios pueden reorganizar, eliminar o añadir widgets a partir de una galería de widgets. Utilizar grupos de autorización con una plantilla de cockpit asignada es una forma sencilla de asignar cockpits en función del rol. Cuatro modelos de cockpit basados en roles entregados que se asignan a cuatro grupos de autorización proporcionan widgets adaptados a las operaciones diarias y necesidades analíticas del usuario. Los usuarios autorizados pueden modificar o crear nuevos modelos de cockpit y grupos de autorización. Los usuarios pueden modificar sus parametrizaciones de visualización abriendo Mis parametrizaciones personales. Además, los usuarios pueden ocultar menús y opciones del menú Módulos utilizando la herramienta Parametrizaciones de formulario. 29 Una compañía está representada como una base de datos dentro de SAP Business One. Existen dos clases de usuarios: superusuarios y usuarios normales (finales). En la parte superior de la pantalla aparece una barra de menús horizontal y el menú principal de Módulos está situado a la izquierda. Las funciones de la barra de menús más utilizadas se representan como iconos en una barra de herramientas. Una búsqueda de menús le permite encontrar opciones rápidamente en el menú Módulos. Los usuarios pueden personalizar un cockpit para que se ajuste a sus necesidades. Los usuarios pueden reorganizar, eliminar o añadir widgets a partir de una galería de widgets. Utilizar grupos de autorización con una plantilla de cockpit asignada es una forma sencilla de asignar cockpits en función del rol. Los usuarios autorizados pueden modificar o crear nuevos modelos de cockpit y grupos de autorización. Los usuarios pueden modificar sus parametrizaciones de visualización abriendo Mis parametrizaciones personales. Los usuarios pueden ocultar menús y opciones del menú Módulos utilizando la herramienta Parametrizaciones de formulario. Resumen",
-    "start_time": 1821.67,
-    "end_time": 2001.36,
+    "image_file": "Slide_029.webp",
+    "script_text": "En SAP Business One, cada compañía se representa como una base de datos independiente. Hay dos tipos de usuarios: superusuarios, con acceso total, y usuarios finales, cuyas funciones están limitadas por autorizaciones. La interfaz incluye una barra de menús horizontal y un menú principal de Módulos a la izquierda, con accesos rápidos en la barra de herramientas. Los usuarios pueden personalizar su cockpit reorganizando widgets, usar grupos de autorización con plantillas de cockpit para asignar roles, modificar sus parametrizaciones de visualización y simplificar el menú principal ocultando opciones innecesarias mediante Parametrizaciones de formulario.",
+    "start_time": 1088.23,
+    "end_time": 1130.54,
     "step_guide": {
       "title": "Navegación del Menú y Personalización del Cockpit",
       "menu_path": "Menú Principal > Fiori Cockpit",

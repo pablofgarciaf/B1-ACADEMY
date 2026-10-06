@@ -1,149 +1,142 @@
 [
   {
     "slide_index": 1,
-    "image_file": "036_Slide_01_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Bienvenidos a esta clase sobre FixedAsset 32 WorkingProcessFA Depreciation Adjustments en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Fixed Assets: Depreciation and Adjustments SAP Business One Version 10.0 Welcome to the Depreciation and Adjustments topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Amortización y Ajustes de Activos Fijos en SAP Business One Versión 10.0. Aquí aprenderás cómo registrar y gestionar la depreciación de los activos fijos de una empresa, como camiones o maquinaria, para reflejar su valor real en los estados financieros. Este proceso es clave para cumplir con normas contables y fiscales, y tomar decisiones informadas sobre el uso y reemplazo de activos. Prepárate para configurar, ejecutar y analizar las amortizaciones directamente en SAP.",
     "start_time": 0.0,
-    "end_time": 23.45
+    "end_time": 31.4
   },
   {
     "slide_index": 2,
-    "image_file": "036_Slide_02_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "At the end of this course, you will be able to:  Generate documents to reflect the fixed asset value. Note!  You need to make decisions about legal and industry requirements together with the client accountant. Objectives At the end of this course, you will be able to generate documents to reflect the fixed asset value. Note! You need to make decisions about legal and industry requirements together with the client accountant.",
-    "start_time": 23.45,
-    "end_time": 49.9
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este curso, podrás generar documentos en SAP Business One que reflejen con precisión el valor de los activos fijos a lo largo de su vida útil. Esto incluye registrar amortizaciones, transferencias y revaluaciones. Es importante que, junto con el contable del cliente, evalúes los requisitos legales y específicos del sector para aplicar el tratamiento contable correcto. Así garantizas que los estados financieros sean confiables y cumplan con las normas vigentes.",
+    "start_time": 31.4,
+    "end_time": 60.8
   },
   {
     "slide_index": 3,
-    "image_file": "036_Slide_03_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Business Example  In order to present the updated trucks’ value in the company financial reports, they need to document the transactions affecting the vehicles’ value during their useful life.  Use the depreciation option to write off the cost of an asset over its useful lifetime.  OEC Computers utilizes a small fleet of delivery trucks.  After purchasing the trucks, they defined them as fixed assets in SAP Business One. OEC Computers For adjustments - utilize additional fixed assets documents: Transfer, Manual Depreciation, and Asset Revaluation OEC Computers • OEC Computers utilizes a small fleet of delivery trucks. • After purchasing the trucks, they defined them as fixed assets in SAP Business One. • In order to present the updated trucks’ value in the company financial reports, they need to document the transactions affecting the vehicles’ value during their useful life. • You are a consultant implementing fixed assets and you show them the Fixed Assets functionality and working process in SAP Business One. • Use the depreciation option to write off the cost of an asset over its useful lifetime. • For adjustments - utilize additional fixed assets documents: Transfer, Manual Depreciation, and Asset Revaluation.",
-    "start_time": 49.9,
-    "end_time": 123.48
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers adquirió una flota de camiones de reparto y los registró como activos fijos en SAP Business One. Para mostrar su valor actualizado en los informes financieros, la empresa debe documentar todas las transacciones que afectan el valor de los vehículos durante su vida útil. Esto incluye usar la amortización para distribuir el costo a lo largo del tiempo y aplicar ajustes como transferencias, amortización manual o revaluación cuando sea necesario. Estos pasos aseguran que la contabilidad refleje el desgaste real de los activos.",
+    "start_time": 60.8,
+    "end_time": 95.4
   },
   {
     "slide_index": 4,
-    "image_file": "036_Slide_04_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Depreciation Type Asset Class Depreciation Type Method: Straight Line 6000 / 36 months of useful life = 166.67 per month. 12 Months * 166.67 = 2000 yearly depreciation. Depreciation value per year: Depreciation OEC Computers • Depreciation is used to write off the cost of an asset over its useful lifetime. • It represents the reduction in the book value of an asset for both tax and accounting purposes. • SAP Business One allows you to set up depreciation types using several pre-defined depreciation methods. • The depreciation method sets the depreciation value calculation. • In our example we choose the Straight Line method which is the most common method and attached it to the Motor Vehicles asset class. • In the Calculation Method field, under the Calculation tab, we choose the first option Acquisition Value /Total Useful Life. • So, if we look at our truck, its acquisition value was 6000 and the useful life defined for the asset class is 3 years, that is 36 months. • The calculated depreciation value for one year will be 2000 according to the following calculation: ─The monthly rate will be 6000/ 36 months of useful life = 166.67 ─And then the yearly depreciation is calculated: 12 Months * 166.67 = 2000.",
-    "start_time": 123.48,
-    "end_time": 210.62
+    "image_file": "Slide_004.webp",
+    "script_text": "En este ejemplo, el camión tiene un costo de adquisición de 6.000 USD y una vida útil de 36 meses. Usando el método lineal, se divide el costo entre los meses de vida: 6.000 ÷ 36 = 166,67 USD por mes. Multiplicado por 12 meses, da una amortización anual de 2.000 USD. Este método distribuye el gasto de manera uniforme cada año y representa la pérdida de valor contable y fiscal del activo. SAP Business One permite configurar este y otros métodos predefinidos según las necesidades de la empresa.",
+    "start_time": 95.4,
+    "end_time": 131.6
   },
   {
     "slide_index": 5,
-    "image_file": "036_Slide_05_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Fixed Assets Depreciation - Asset Net Book Value 6000 Useful Life : 3 years 4000 Value Date: January 1st December 31st 2000 December 31st 0 December 31st Depreciation Method: Straight Line • In our example when we define the new truck that OEC Computers purchased, we define the asset Useful Life - a period during which an asset is expected to be usable for the purpose for which it was acquired. Useful life may, or may not, correspond with the asset's actual physical life, or economic life. Before the end of an asset’s useful life, the asset should be written off completely. We define the truck useful life as 3 years. • Every period the company calculates the depreciation on the asset. Depreciation would be included with the company expenses. • As was mentioned in the previous slide, the truck is planned to reduce its value by 2000 each year. • During the asset’s useful life the system also calculates the asset Net Book Value - the value of an asset in the accounting books which is calculated using the historical cost of the asset less any accumulated depreciation. So in our case, after the first year the truck value will be 4000, then after the second year 2000 and until 0 value at the end of its useful life. • The asset Net Book Value calculation appear in the Asset Master Data.",
-    "start_time": 210.62,
-    "end_time": 289.1
+    "image_file": "Slide_005.webp",
+    "script_text": "El valor contable neto se calcula restando la amortización acumulada al costo histórico del activo. En nuestro caso, el camión vale 6.000 al inicio. Tras un año de amortización (2.000), su valor neto es 4.000. Al segundo año, baja a 2.000, y al tercer año llega a 0. Este valor aparece en los datos maestros del activo en SAP y refleja lo que queda por depreciar. Es clave para balances, impuestos y decisiones de reemplazo o venta del activo.",
+    "start_time": 131.6,
+    "end_time": 163.8
   },
   {
     "slide_index": 6,
-    "image_file": "036_Slide_06_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Depreciation Run – Depreciation Area Asset Class Depreciation Area OEC Computers • Remember, that the accounts and the amounts in the depreciation process derive from the Asset Master Data definition. • In the truck example the defined asset class is attached to the GAAP area as the main area and posting to G/L. • If the type of depreciation area is posting to G/L, in addition to posting the depreciation for each asset, there is financial posting. • In the Posting of Depreciation field, if we define the Direct Posting, the system will post the depreciation directly to the asset balance sheet account specified for the asset. • In Indirect Posting, the system uses the accumulated depreciation account to post the depreciation. • In this option, the asset balance sheet account is affected only when the asset is purchased or retired.",
-    "start_time": 289.1,
-    "end_time": 338.09
+    "image_file": "Slide_006.webp",
+    "script_text": "En SAP Business One, el área de amortización define cómo se contabiliza la depreciación. En este caso, la clase de activo 'Camiones de Reparto' está vinculada al área PCGA como principal y para contabilización en C/G. Si el tipo es 'Contabilización en C/G', además de registrar la amortización, se genera un asiento financiero. En el campo 'Contabilización de Amortización', elegir 'Directa' hace que el sistema asiente el gasto directamente en la cuenta de gastos del activo. Si fuera 'Indirecta', usaría una cuenta de amortización acumulada, afectando el balance solo al dar de baja o vender el activo.",
+    "start_time": 163.8,
+    "end_time": 203.2
   },
   {
     "slide_index": 7,
-    "image_file": "036_Slide_07_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Fixed Asset Transactions Fixed Asset Sub Ledger Fixed Asset Transaction Let us talk a bit more about the connection between the depreciation area and the transactions that the asset registers.  The Asset Master Data cannot be defined as an Inventory Item.  Therefore, it does not register inventory transactions.  The system does register fixed asset transactions.  Depending on the asset class attached to the fixed asset, one or more areas are defined for the asset master data record.  In the presented example, two depreciation areas are defined for the truck asset master data. These are the two depreciation areas that OEC Computers defined in their system  The GAAP areas (that is, Local Generally Accepted Accounting Principles), is the main depreciation area and defined as Posting to G/L – meaning, it posts financial transactions to the fixed assets sub-ledger in addition to fixed asset transactions.  The IFRS (that is International Financial Reporting Standards) is the additional area and hence will not post financial transactions to the general ledger.  Although the additional area does not register transactions to the general ledger it will affect the values in the asset master data and in different reports.  In the presented example you can see that depreciation amounts were posted according to both the GAAP and the IFRS areas.  The GAAP area also registered journal entries to the accounts assigned to the asset master data.  The IFRS area posted depreciation transaction with no effect on accounts.  This information is stored in the asset master data allowing the user to analyze both dimensions.",
-    "start_time": 338.09,
-    "end_time": 432.26
+    "image_file": "Slide_007.webp",
+    "script_text": "Los datos maestros de activos fijos no se definen como artículos de inventario, por lo que no generan transacciones de inventario. En cambio, el sistema registra transacciones específicas de activos fijos. Cada activo puede tener una o más áreas de amortización según su clase. En el ejemplo del camión, el área PCGA es principal y contabiliza en C/G, afectando tanto el libro auxiliar como el mayor. El área NIIF es adicional: no contabiliza en el libro mayor, pero sí actualiza valores en los datos maestros y reportes, útil para análisis normativo sin impacto contable directo.",
+    "start_time": 203.2,
+    "end_time": 241.8
   },
   {
     "slide_index": 8,
-    "image_file": "036_Slide_08_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Depreciation Run Financials Fixed Assets Depreciation Run • Execute the Depreciation Run option to update the value with the actual depreciation. • Choose Financials Fixed Assets Depreciation Run. • You execute the Depreciation Run for each Depreciation Area. In the presented example we execute the depreciation run for the main depreciation area, that is, the GAAP area. • Every time you run the Depreciation Run you can see the previous runs. • To execute a new run, choose the Preview button.",
-    "start_time": 432.26,
-    "end_time": 464.02
+    "image_file": "Slide_008.webp",
+    "script_text": "Para actualizar el valor de los activos con la amortización real, accedes a Finanzas → Activos Fijos → Ejecución de Amortización. Debes ejecutar este proceso por cada área de amortización definida. En el ejemplo, se ejecuta para el área principal PCGA. Cada ejecución muestra un historial de ejecuciones previas. Para iniciar una nueva, seleccionas el botón Vista Previa, que te permite revisar los importes antes de contabilizarlos. Este paso es clave para garantizar precisión antes de registrar en contabilidad.",
+    "start_time": 241.8,
+    "end_time": 274.0
   },
   {
     "slide_index": 9,
-    "image_file": "036_Slide_09_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Depreciation Run – Preview • In the Depreciation Run - Preview window, the financial postings are grouped by the asset class. • Only when you execute the depreciation run does the system carries out all depreciations planned up to the specified date. • In order to trigger the posting of a planned depreciation it is usually sufficient to start one depreciation run for several posting periods. • However, it is possible to execute several depreciation runs for the same depreciation period. • In depreciation runs, un-posted planned depreciation is posted using a catch-up method. • In the catch-up method, the system gathers any planned depreciation that has not been posted yet for the entire depreciation period and then creates a collective posting. Therefore, the resulting posting can also include planned depreciation from several periods. • Note! ─If you want to include in the current year the depreciation posting from previous fiscal years, you need to first run the Fiscal Year Change. This action will carry over the values from previous years to the current fiscal year. We will refer to the Fiscal Year Change later on in this course. ─A depreciation run can be repeated as often as necessary, provided no depreciation run has been executed for later periods. That is, the current depreciation run cannot be earlier than any runs which had been already executed for a selected depreciation area. • A repeat depreciation run may be necessary, if the asset values have changed once again after posting planned depreciation. When repeating a depreciation run, only the value differences to the postings of the last depreciation run are considered. • To register the depreciation amounts to the general ledger choose the Execute button.",
-    "start_time": 464.02,
-    "end_time": 566.14
+    "image_file": "Slide_009.webp",
+    "script_text": "En la ventana Vista Previa de la Ejecución de Amortización, las contabilizaciones financieras se agrupan por clase de activo. Al ejecutar, el sistema procesa todas las amortizaciones planificadas hasta la fecha indicada. Para activar una amortización pendiente, basta con iniciar una ejecución para varios períodos. El método de recuperación acumula amortizaciones no contabilizadas del período y genera una sola escritura. Esta puede incluir varios períodos. Puedes repetir la ejecución si no se han procesado períodos futuros. Para registrar en el libro mayor, usas el botón Ejecutar.",
+    "start_time": 274.0,
+    "end_time": 309.0
   },
   {
     "slide_index": 10,
-    "image_file": "036_Slide_10_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Depreciation Run – Journal Entries • Here is an example of a journal entry created by the depreciation run. • As was mentioned before, the financial postings are grouped by an asset class. • The system will credit the balance sheet asset account (in the Direct Posting option) and debit the depreciation account. • In Indirect Posting, the system uses the accumulated depreciation account in the credit side. • In this option, the asset balance sheet account is affected only when the asset is purchased or retired. • In the debit amount you can see that depreciation is included within the company expenses. • The user can choose to split the asset balance sheet account by assets in the journal entry. • You define the split in Administration System initialization Document Settings  Per Document Depreciation Run. The default value is not split.",
-    "start_time": 566.14,
-    "end_time": 615.89
+    "image_file": "Slide_010.webp",
+    "script_text": "En la Contabilización Directa, el sistema acredita la cuenta de balance del activo y debita la cuenta de gasto por amortización. En la Indirecta, usa la cuenta de amortización acumulada en el haber, afectando la cuenta del activo solo al alta o baja. El débito refleja el gasto empresarial. Puedes dividir la cuenta del activo por unidad en el asiento, configurándolo en Administración → Inicialización → Configuración de Documentos → Por Documento → Ejecución de Amortización. El valor predeterminado es sin división, útil para activos individuales.",
+    "start_time": 309.0,
+    "end_time": 344.0
   },
   {
     "slide_index": 11,
-    "image_file": "036_Slide_11_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Depreciation Run - Status • In the Motor Vehicles asset class example we defined the GAAP area and the IFRS area with the GAAP area defined as the main area and posting to G/L. • If the type of depreciation area is posting to G/L, besides posting the depreciation for each asset, there is a financial posting. • The IFRS area, in our example was defined as the Additional Area and therefore does not post journal entries. • Still, you can post depreciation amounts to this depreciation area to be used in reports. • Therefore, in the third run you can see that for the IFRS area the status No Depreciation Posted appears.",
-    "start_time": 615.89,
-    "end_time": 655.01
+    "image_file": "Slide_011.webp",
+    "script_text": "En la clase Vehículos de Motor, el área PCGA es principal y está configurada para Contabilización en C/G, por lo que registra amortización tanto en el libro auxiliar como en el mayor, generando asientos financieros. El área NIIF es adicional: no contabiliza en el libro mayor, pero sí permite registrar amortización para uso en informes normativos. En la tercera ejecución, el área NIIF muestra el estado 'Sin Amortización Contabilizada', indicando que no hubo movimiento en ese período, aunque sus valores sí actualizan los datos maestros y aparecen en reportes especializados para cumplimiento IFRS.",
+    "start_time": 344.0,
+    "end_time": 381.8
   },
   {
     "slide_index": 12,
-    "image_file": "036_Slide_12_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Asset Accounts in the Company Balance Sheet Asset Balance Sheet Account Direct Posting 6000 -2000 4000 Capitalization Depreciation Net Book Value D Balance Sheet C Fixed Asset Account 4000 • Let us discuss the fixed asset effect on the company financial reports. • The Balance Sheet of a company contains the asset accounts. • As we have seen in this course, the Capitalization document debits the asset balance sheet account specified for the asset. • When using the direct posting method, the Depreciation document credits the same asset balance sheet account. • Therefore, the net book value of the asset is reflected in the account balance.",
-    "start_time": 655.01,
-    "end_time": 692.18
+    "image_file": "Slide_012.webp",
+    "script_text": "En contabilización directa, el documento de Capitalización debita la cuenta de balance del activo (ej. 6.000). El documento de Amortización acredita la misma cuenta (ej. 2.000). El saldo resultante (4.000) representa el valor contable neto del activo, reflejado directamente en la cuenta de activo fijo del balance. Este mecanismo asegura que el valor del activo en libros muestre su costo histórico menos la depreciación acumulada, sin necesidad de cuentas auxiliares, simplificando la conciliación y reporte financiero.",
+    "start_time": 381.8,
+    "end_time": 412.8
   },
   {
     "slide_index": 13,
-    "image_file": "036_Slide_13_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Asset Accounts in the Company Balance Sheet D Balance Sheet C Fixed Asset Account 6000 Accumulated Depreciation Account -2000 Accumulated Depreciation Account Indirect Posting Asset Balance Sheet Account 6000 -2000 4000 Capitalization Depreciation Net Book Value • In indirect posting, the system uses the accumulated depreciation account to post the depreciation. • In this option, the asset balance sheet account is affected only when the asset is capitalized or retired. • Therefore, the net book value of the asset will be reflected in the sub-total display of the Balance Sheet.",
-    "start_time": 692.18,
-    "end_time": 726.29
+    "image_file": "Slide_013.webp",
+    "script_text": "En la contabilización indirecta, el activo fijo se mantiene en su valor histórico en el balance, mientras que la amortización se registra en una cuenta separada de amortización acumulada. El valor contable neto se obtiene restando la amortización acumulada del costo del activo. Por ejemplo, si un activo cuesta 6.000 USD y tiene 2.000 USD de amortización acumulada, su valor neto es 4.000 USD. La cuenta del activo solo cambia al capitalizar o dar de baja el activo. El saldo neto se muestra en los subtotales del balance para reflejar el valor real del activo en la empresa Distribuidora Andina Tech.",
+    "start_time": 412.8,
+    "end_time": 453.8
   },
   {
     "slide_index": 14,
-    "image_file": "036_Slide_14_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Adjustments and the Fiscal Year Change  During the life cycle of a fixed asset, additional documents support the need for adjustments, if necessary: ─ Transfer. ─ Manual Depreciation. ─ Asset Revaluation.  Fiscal Year Change: ─ In fixed asset management, you must execute a fiscal year change when a fiscal year ends. Adjustments • During the life cycle of a fixed asset, additional documents support the need for adjustments, if necessary. The documents are: Transfer, Manual Depreciation, and Asset revaluation. • Note! In order to decide which of the adjustment documents to use, you need to verify, together with the client accountant, what are the legal and industry requirements. • For all documents, go to Financials Fixed Assets. In the next slides we review the different documents. • The accounts required for the different adjustment documents are defined in Account Determination setup attached to the fixed asset chosen in the relevant document. • In fixed asset management, you must execute a fiscal year change when a fiscal year ends. With the change, SAP Business One transfers all the asset depreciations and balances from the current fiscal year to the new fiscal year.",
-    "start_time": 726.29,
-    "end_time": 798.72
+    "image_file": "Slide_014.webp",
+    "script_text": "Durante el ciclo de vida de un activo fijo en Distribuidora Andina Tech, puedes realizar ajustes como transferencia, amortización manual o revaluación según necesidades operativas o contables. Al finalizar el ejercicio fiscal, debes ejecutar el cambio de ejercicio fiscal desde Finanzas → Activos Fijos. Este proceso transfiere todas las amortizaciones y saldos del ejercicio actual al nuevo, recalcula la amortización planificada y actualiza los valores iniciales del activo. Siempre verifica con el contable los requisitos legales antes de aplicar estos documentos.",
+    "start_time": 453.8,
+    "end_time": 486.8
   },
   {
     "slide_index": 15,
-    "image_file": "036_Slide_15_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Transfer You can transfer an asset or part of an asset to a different asset. This may be necessary when: 1. The value was activated to wrong Asset Master Data and you need to transfer it to the right one. 2. The asset was activated to the wrong Asset Class and depreciations have been already created. 3. The asset is on hold. For example, the asset is under constructions. When it is finished, it will be moved to the corrected asset class. • We start with the Transfer document. • You can transfer an asset or part of an asset to a different asset. This may be necessary when: 1. The value was activated to wrong Asset Master Data and you need to transfer it to the right one. 2. The asset was activated to the wrong Asset Class and depreciations have been already created. 3. The asset is on hold. For example, the asset is under constructions. When it is finished, it will be moved to the corrected asset class. • According to the different uses of the Transfer document, it includes two transactions types: Asset Transfer and Asset Class Transfer. • Once you choose a transaction type, the table structure changes accordingly.",
-    "start_time": 798.72,
-    "end_time": 869.83
+    "image_file": "Slide_015.webp",
+    "script_text": "La transferencia permite mover un activo o parte de él a otro activo cuando se registró en el dato maestro o clase de activo incorrecta, o cuando el activo está en construcción y necesita reclasificarse al finalizar. Por ejemplo, si un equipo se activó en la clase 'Oficina' pero pertenece a 'Producción', se transfiere para corregir la clasificación sin afectar las amortizaciones ya generadas. En Distribuidora Andina Tech, esto asegura que los activos estén correctamente clasificados para reportes y decisiones de inversión, manteniendo la integridad del maestro de activos.",
+    "start_time": 486.8,
+    "end_time": 523.0
   },
   {
     "slide_index": 16,
-    "image_file": "036_Slide_16_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Manual Depreciation In some cases you may want to manually depreciate certain assets: • There is an unexpected permanent reduction in the value of the asset, for example caused by an accident. • There are special depreciations that you want to use partially. • You are using unit-of-production depreciation and want to manually plan depreciation. • You can also appreciate the fixed asset value to reverse an unplanned depreciation. • In a regular work, the system uses the saved depreciation types to automatically determine the planned depreciation for the current fiscal year. • In some cases however, you may want to manually depreciate certain assets: 1. There is an unexpected permanent reduction in the value of the asset, for example caused by an accident. 2. There are special depreciations that you want to use partially. 3. You are using unit-of-production depreciation and want to manually plan depreciation. 4. You can also appreciate the fixed asset value to reverse an unplanned depreciation. ─For example: the Gas and Oil corporation has built a new gas station with 10 filling dispenser close to a major city. ─The revenue in the first 2 years was only 80% of the expected amount before starting the new business. ─As the installation of 10 filling dispenser was overestimated and 8 would have been enough, a special depreciation can be done to reflect the real value of the gas station at the end of the second year. ─In the third year a new by-pass road was opened close to the gas station and the revenue suddenly increased to the original expected amount. The reason for the special depreciation is no longer valid and an appreciation needs to be done. • According to the different uses of the Manual Depreciation document, it includes four document types: Ordinary Depreciation, Unplanned Depreciation, Appreciation and Special Depreciation • The default value is Ordinary Depreciation.",
-    "start_time": 869.83,
-    "end_time": 978.43
+    "image_file": "Slide_016.webp",
+    "script_text": "La amortización manual se usa cuando ocurre una reducción inesperada en el valor del activo, como por un accidente, o cuando se requieren amortizaciones especiales, planificación por unidades de producción o reversión de amortizaciones no planificadas. En Distribuidora Andina Tech, por ejemplo, si un vehículo sufre daños irreversibles, puedes aplicar una amortización no planificada. El documento incluye cuatro tipos: ordinaria, no planificada, apreciación y especial, siendo la ordinaria el predeterminado. Esto permite ajustar la contabilidad al valor real del activo sin esperar al ciclo regular.",
+    "start_time": 523.0,
+    "end_time": 557.6
   },
   {
     "slide_index": 17,
-    "image_file": "036_Slide_17_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Asset Revaluation With the Asset Revaluation option you can write an increase or decrease in the book value of an asset in order to reflect its current fair market value. • With the Asset Revaluation option you can write an increase or decrease in the book value of an asset in order to reflect its current fair market value. • Fair value accounting requires that revaluations are carried out whenever there is a difference between the current market value of an asset and the value on the balance sheet. • The revaluation is based on one depreciation area. Once the user chooses a different depreciation area, the table is cleared. • Note! ─You need to verify, together with the client accountant if this document is allowed in your localization. ─The difference will increase the asset value but will be also posted against the revaluation reverse account.",
-    "start_time": 978.43,
-    "end_time": 1026.58
+    "image_file": "Slide_017.webp",
+    "script_text": "La revaluación de activos permite ajustar el valor contable de un activo fijo para reflejar su valor de mercado justo actual, requerido bajo contabilidad de valor razonable. Se realiza cuando hay una diferencia entre el valor en balance y el valor de mercado real. La revaluación se basa en un área de amortización, y al cambiar dicha área, la tabla se limpia para evitar errores. En Distribuidora Andina Tech, si un edificio aumenta su valor por ubicación, se puede revaluar. Siempre consulta con el contable si esta operación está permitida según la normativa local y sectorial antes de aplicarla.",
+    "start_time": 557.6,
+    "end_time": 597.8
   },
   {
     "slide_index": 18,
-    "image_file": "036_Slide_18_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Fiscal Year Change  SAP Business One transfers all the asset depreciations and balances from the current fiscal year to the new fiscal year.  Go to Financials Fixed Assets Fiscal Year Change. • In fixed asset management, you must execute a fiscal year change when a fiscal year ends. With the change, SAP Business One transfers all the asset depreciations and balances from the current fiscal year to the new fiscal year. • Go to Financials Fixed Assets Fiscal Year Change. • When you change a fiscal year, SAP Business One performs the following calculations for each asset: ─Calculates the year-end values of all asset transactions. These values are saved in the asset master data and serve as start values for the new fiscal year. ─Recalculates the planned depreciation for the new fiscal year. • Note! If the next fiscal year, to which you want to change, is not yet defined in SAP Business One, you receive an error message.",
-    "start_time": 1026.58,
-    "end_time": 1083.07
+    "image_file": "Slide_018.webp",
+    "script_text": "Al finalizar el ejercicio fiscal en Distribuidora Andina Tech, debes ejecutar el cambio de ejercicio fiscal desde Finanzas → Activos Fijos → Cambio de Ejercicio Fiscal. SAP Business One transfiere todas las amortizaciones y saldos del ejercicio actual al nuevo, calcula los valores de fin de año de cada activo y los guarda en el dato maestro como valores iniciales para el próximo período. Luego, recalcula la amortización planificada basada en esos valores. Si el nuevo ejercicio no está definido, el sistema mostrará un error. Este proceso asegura continuidad y precisión en la contabilidad de activos año a año.",
+    "start_time": 597.8,
+    "end_time": 638.0
   },
   {
     "slide_index": 19,
-    "image_file": "036_Slide_19_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Summary Here are some key points to take away: Depreciation is used to write off the cost of an asset over its useful lifetime. You can set up depreciation types using several pre-defined depreciation methods. Define the asset Useful Life. Before the end of an asset’s useful life, the asset should be written off completely. The system registers fixed asset transactions. The accounts and the amounts in the depreciation process derive from the Asset Master Data definition. • Here are some key points to take away: • Depreciation is used to write off the cost of an asset over its useful lifetime. • SAP Business One allows you to set up depreciation types using several pre-defined depreciation methods. • We define the asset Useful Life - a period during which an asset is expected to be usable for the purpose for which it was acquired. Before the end of an asset’s useful life, the asset should be written off completely. • The system registers fixed asset transactions. • The accounts and the amounts in the depreciation process derive from the Asset Master Data definition.",
-    "start_time": 1083.07,
-    "end_time": 1146.0
+    "image_file": "Slide_019.webp",
+    "script_text": "En esta lámina repasamos los puntos clave sobre la amortización de activos fijos. La amortización permite distribuir el costo de un activo a lo largo de su vida útil. Puedes configurar tipos de amortización usando métodos predefinidos y definir la vida útil del activo. Antes de que finalice su vida útil, el activo debe darse de baja completamente. El sistema registra automáticamente las transacciones de activos fijos, y las cuentas y montos se derivan de los datos maestros definidos. Esto asegura un control preciso y conforme a normas contables durante todo el ciclo de vida del activo.",
+    "start_time": 638.0,
+    "end_time": 677.4
   },
   {
     "slide_index": 20,
-    "image_file": "036_Slide_20_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "Summary – cont. Execute the Depreciation Run option to update the value with the actual depreciation. You execute the depreciation run for each Depreciation Area. If the type of depreciation area is posting to G/L, besides posting the depreciation for each asset, there is a financial posting. During the life cycle of a fixed asset, additional documents support the need for adjustments, if necessary. The documents are: Transfer, Manual Depreciation, and Asset revaluation. In fixed asset management, you must execute a fiscal year change when a fiscal year ends. SAP Business One transfers all the asset depreciations and balances from the current fiscal year to the new fiscal year. • Execute the Depreciation Run option to update the value with the actual depreciation. • You execute the depreciation run for each Depreciation Area. If the type of depreciation area is posting to G/L, besides posting the depreciation for each asset, there is a financial posting. • During the life cycle of a fixed asset, additional documents support the need for adjustments, if necessary. The documents are: Transfer, Manual Depreciation, and Asset revaluation. • In fixed asset management, you must execute a fiscal year change when a fiscal year ends. With the change, SAP Business One transfers all the asset depreciations and balances from the current fiscal year to the new fiscal year.",
-    "start_time": 1146.0,
-    "end_time": 1234.2
-  },
-  {
-    "slide_index": 21,
-    "image_file": "036_Slide_21_10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1234.2,
-    "end_time": 1371.38
+    "image_file": "Slide_020.webp",
+    "script_text": "Para actualizar el valor contable, debes ejecutar la opción de Ejecución de Amortización por cada Área de Amortización. Si el tipo es Contabilización en C/G, además de registrar la amortización, se genera un asiento financiero. Durante la vida del activo, puedes realizar ajustes necesarios usando documentos como Transferencia, Amortización Manual o Revaluación. Al finalizar el ejercicio fiscal, es obligatorio ejecutar el cambio de ejercicio; SAP Business One transfiere automáticamente todas las amortizaciones y saldos del ejercicio actual al nuevo, asegurando continuidad y correcto cierre contable.",
+    "start_time": 677.4,
+    "end_time": 712.0
   }
 ]

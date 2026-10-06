@@ -1,107 +1,100 @@
 [
   {
     "slide_index": 1,
-    "image_file": "101_Slide_01_10_Purch_14_Process_Services.webp",
-    "script_text": "Bienvenidos a esta clase sobre Purch 14 Process Services en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Purchasing: Purchasing Services SAP Business One Version 10.0",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre la compra de servicios en SAP Business One versión 10.0. Aquí aprenderás cómo gestionar la adquisición de servicios no físicos, como diseño web, jardinería o suministros, desde la creación de pedidos hasta el pago al proveedor. Este módulo te mostrará las opciones disponibles para registrar estas transacciones de forma eficiente y conforme a los procesos contables de tu empresa.",
     "start_time": 0.0,
-    "end_time": 18.86
+    "end_time": 26.45
   },
   {
     "slide_index": 2,
-    "image_file": "101_Slide_02_10_Purch_14_Process_Services.webp",
-    "script_text": "In this session, we will discuss the options for purchasing services. We look at two ways services are handled in purchasing – with and without purchase orders. Then we will look at the steps needed to enter A/P invoices for services such as rent or utilities. In the end, we discuss the possibility of using recurring transactions. 2 At the end of this topic, you will be able to:  Describe the options for purchasing services. Objectives",
-    "start_time": 18.86,
-    "end_time": 47.98
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás describir las distintas opciones para comprar servicios en SAP Business One. Analizaremos cómo gestionar servicios con y sin pedidos de compra, revisaremos los pasos para registrar facturas A/P de servicios como alquiler o suministros, y exploraremos el uso de transacciones recurrentes para pagos periódicos. Estas habilidades te permitirá manejar compras de servicios de forma precisa y eficiente.",
+    "start_time": 26.45,
+    "end_time": 55.2
   },
   {
     "slide_index": 3,
-    "image_file": "101_Slide_03_10_Purch_14_Process_Services.webp",
-    "script_text": "Sometimes you purchase services such as web design or landscaping from vendors. In cases like these, you work with the vendor beforehand to agree on the type of work to be done and the price. In these cases, it makes sense to use a purchase order in the purchasing process to confirm your agreement with the vendor. Other services such as electricity or rent, are purchased without purchase orders. Instead when the invoice is received from the vendor, you enter the information directly in an A/P invoice. Recurring transactions help you generate A/P invoices for service agreements with regular payments. 3 3 Business Scenario  You purchase services such as web design and landscaping from vendors using purchase orders.  Other services such as electricity or rent are purchased with an A/P invoice and no preceding documents.  Recurring transactions help you generate A/P invoices for service agreements with regular payments.",
-    "start_time": 47.98,
-    "end_time": 105.07
+    "image_file": "Slide_003.webp",
+    "script_text": "Algunos servicios como diseño web o jardinería se gestionan con un pedido de compra para acordar previamente el tipo de trabajo y precio con el proveedor. Otros, como electricidad o alquiler, se compran directamente mediante una Factura A/P al recibir la factura del proveedor, sin documentos previos. Las transacciones recurrentes son útiles para servicios con pagos periódicos, facilitando la generación automática de facturas según el acuerdo establecido.",
+    "start_time": 55.2,
+    "end_time": 84.53
   },
   {
     "slide_index": 4,
-    "image_file": "101_Slide_04_10_Purch_14_Process_Services.webp",
-    "script_text": "When you buy landscaping, training or other non-physical purchases, you can still use purchase orders and A/P invoices. When purchasing services, you may wish to begin with a purchase order which describes the service being purchased, the price agreed to, and the G/L account associated with the service. The purchase order is optional. The advantage of using a purchase order is that it gives you a document in which to set the conditions and price for the service. Generally you discuss the scope of the project and expected price with the vendor and at that point the purchase order is created with the details of the agreement. When the vendor receives the purchase order, they confirm the agreement and dates are set for them to perform the service. The goods receipt PO document is generally not used for purchasing services. Usually, this step occurs outside the system. After the service is received and the vendor sends an invoice, an A/P invoice is entered into the system. Finally, an outgoing payment is created to pay the vendor. 4 Purchasing Services – Process Overview Purchase Order Service Receipt A\\P Invoice Outgoing Payment",
-    "start_time": 105.07,
-    "end_time": 173.3
+    "image_file": "Slide_004.webp",
+    "script_text": "El proceso de compra de servicios comienza opcionalmente con un pedido de compra que detalla el servicio, precio y cuenta G/L asociada. Tras acordar el alcance y precio con el proveedor, se crea el pedido. Al recibir el servicio y la factura del proveedor, se registra la Factura A/P en el sistema. Finalmente, se genera un pago saliente para saldar la obligación con el proveedor. La entrada de mercancías no se usa típicamente para servicios.",
+    "start_time": 84.53,
+    "end_time": 116.04
   },
   {
     "slide_index": 5,
-    "image_file": "101_Slide_05_10_Purch_14_Process_Services.webp",
-    "script_text": "You have two options when purchasing services, you can either set up a service as an item or use a description to purchase the service. A sales or purchasing document can include either pre-defined items from master data or descriptions of services which are directly entered in its rows. The document cannot include both. When you create a document, you set the Item/Service Type to either Service or Item. This setting applies to the entire document, and you cannot change it once you have saved the document The table view on the Content tab page is different for each option. When would you set the Item/Service type to Service? You only use the Service option in SAP Business One to buy or sell a service that does not have a master record. When would you set the Item/Service Type to Item? When you are purchasing physical items and/or services set up as item master data. 5 Item / Service Type Service Customer Description Document G/L Account Price C00001 Name Smith Item Customer Item No. Document Description Quantity C00001 Name Smith Price In Purchasing (and Sales), you can set your documents as either Item type or Service type.",
-    "start_time": 173.3,
-    "end_time": 245.54
+    "image_file": "Slide_005.webp",
+    "script_text": "En SAP Business One, al crear un documento de compras o ventas, debes definir si será de tipo Artículo o Servicio. Esta configuración aplica a todo el documento y no se puede cambiar después de guardarlo. Un documento no puede mezclar ambos tipos. El tipo Servicio se usa cuando el servicio no tiene un maestro de artículo, mientras que el tipo Artículo es adecuado para bienes físicos o servicios configurados como datos maestros. La vista de contenido varía según esta selección.",
+    "start_time": 116.04,
+    "end_time": 148.22
   },
   {
     "slide_index": 6,
-    "image_file": "101_Slide_06_10_Purch_14_Process_Services.webp",
-    "script_text": "Let us take a look at setting up a service in an item master record. Service items can be very useful if you purchase a service frequently and the price is pre-set with the vendor. As we mentioned before, a nice advantage of using service items is that you can add the service item onto item-type marketing documents, such as purchase orders. This allows you to combine items and services on the same document. When you add the item master onto a marketing document, you specify the quantity used. This allows you to better track services in standard reports. You can use the usual sales and purchasing analyses for services. Having item master data for your services also reduces the chance for errors during data entry. You can set up prices, sales quantities, and so on, that default into your documents. When you create a service item, you will set the item category as a non- inventory item. For service items you buy, you mark the checkbox for purchased items. Service items can also be used in sales as well as in purchasing. In fact, typically creating a service item is done more frequently for selling services, than for purchasing services. 6 Service Items L1919 General Item Master Data Purchasing Data Sales Data Landscape Service Description Item No. Document Item Customer Item No. Purchase Order Description Landscape Service Quantity C00001 Name Smith 1 L1919 Purchased Item Inventory Item Sales Item Item Category:",
-    "start_time": 245.54,
-    "end_time": 336.79
+    "image_file": "Slide_006.webp",
+    "script_text": "Los artículos de servicio son útiles cuando adquieres un servicio con frecuencia y precio preestablecido con el proveedor. Al estar creados como datos maestros, pueden añadirse a documentos de tipo Artículo, como pedidos de compra, permitiendo combinar bienes y servicios en un mismo documento. Facilitan el seguimiento mediante la especificación de cantidad usada y reducen errores de entrada. Además, permiten usar análisis estándar de compras y ventas. Para crearlos, define la categoría como no inventariable y marca la casilla de artículos comprados.",
+    "start_time": 148.22,
+    "end_time": 184.54
   },
   {
     "slide_index": 7,
-    "image_file": "101_Slide_07_10_Purch_14_Process_Services.webp",
-    "script_text": "For services such as electricity or rent, there is usually no purchase order involved in the process. Let us take a look at the process of creating an A/P invoice for this type of service. Imagine that you just received a vendor invoice for rent from your landlord. The vendor invoice contains the vendor’s name, their own invoice number, the date the invoice was issued, a description of the service purchased and the amount due. 7 Create a Service Invoice Vendor Invoice  Vendor name  Invoice number  Invoice date  Description  Amount due  …",
-    "start_time": 336.79,
-    "end_time": 368.23
+    "image_file": "Slide_007.webp",
+    "script_text": "Una factura de servicio se crea cuando recibes un gasto como electricidad o alquiler, sin necesidad de un pedido de compra previo. En SAP Business One, ingresas los datos del proveedor y la factura para registrar el gasto. Esto te permite controlar los pagos y actualizar automáticamente las cuentas contables relacionadas. Es clave para mantener una contabilidad precisa y evitar errores en el registro de gastos recurrentes.",
+    "start_time": 184.54,
+    "end_time": 212.42
   },
   {
     "slide_index": 8,
-    "image_file": "101_Slide_08_10_Purch_14_Process_Services.webp",
-    "script_text": "You create an A/P invoice in SAP Business One and enter in the vendor code. 8 Create a Service Invoice Vendor Invoice Enter data A /P Invoice  Vendor number  Vendor name  Invoice number  Invoice date  Description  Amount due  …",
-    "start_time": 368.23,
-    "end_time": 382.61
+    "image_file": "Slide_008.webp",
+    "script_text": "En la ventana de Factura A/P, ingresas el código del proveedor para que SAP cargue automáticamente sus datos maestros. Esto incluye nombre, dirección y condiciones de pago, ahorrando tiempo y reduciendo errores de digitación. Verificar que el código sea correcto asegura que la factura se asocie al registro adecuado del proveedor, facilitando el seguimiento de cuentas por pagar y la generación de reportes precisos.",
+    "start_time": 212.42,
+    "end_time": 239.62
   },
   {
     "slide_index": 9,
-    "image_file": "101_Slide_09_10_Purch_14_Process_Services.webp",
-    "script_text": "This brings in the default data from the vendor master record such as the vendor name, address, payment terms, payment method and more. 9 Create a Service Invoice Vendor Master Data Vendor Invoice Default data Enter data A /P Invoice  Vendor number  Vendor name  Invoice number  Invoice date  Description  Amount due  …  Vendor number  Vendor name  Address  Payment terms  Payment method  …",
-    "start_time": 382.61,
-    "end_time": 404.11
+    "image_file": "Slide_009.webp",
+    "script_text": "Al ingresar el código de proveedor, SAP Business One completa automáticamente los campos como nombre, dirección, condiciones de pago y método de pago desde el registro maestro. Esto garantiza consistencia en los datos y evita tener que ingresarlos manualmente cada vez. Por ejemplo, si el proveedor tiene condiciones de 'Net 30', el sistema las aplica directamente, facilitando el control de vencimientos y la planificación de pagos.",
+    "start_time": 239.62,
+    "end_time": 268.61
   },
   {
     "slide_index": 10,
-    "image_file": "101_Slide_10_10_Purch_14_Process_Services.webp",
-    "script_text": "You enter the vendor invoice number and the vendor invoice date that you read on the vendor invoice. You verify that the correct Item/Service type setting exists to enter service information such as the description of the services and the appropriate G/L account. And of course, you enter the amount due in the total due field in the A/P invoice. 10 Create a Service Invoice Vendor Master Data Vendor Invoice Default data Enter data A /P Invoice  Vendor number  Invoice number  Invoice date  Description  G/L Account  Total due  Vendor name  Invoice number  Invoice date  Description  Amount due  …  Vendor number  Vendor name  Address  Payment terms  Payment method  …",
-    "start_time": 404.11,
-    "end_time": 442.78
+    "image_file": "Slide_010.webp",
+    "script_text": "En la Factura A/P, ingresas el número y fecha de la factura del proveedor, seleccionas 'Servicio' como tipo de artículo para habilitar la descripción y la cuenta G/L correspondiente. Luego describes el servicio (como 'Alquiler oficina abril 2026') y asignas la cuenta de gastos adecuada, como '6100 - Alquileres'. Finalmente, ingresas el importe total adeudado. Este proceso asegura que el gasto se registre correctamente en contabilidad y se vincule al proveedor adecuado.",
+    "start_time": 268.61,
+    "end_time": 303.84
   },
   {
     "slide_index": 11,
-    "image_file": "101_Slide_11_10_Purch_14_Process_Services.webp",
-    "script_text": "When you save the invoice, SAP Business One performs a duplicate invoice number check for the vendor. The system alerts you if the vendor invoice number is found so you can research the invoice. This function helps us to avoid duplicate payments. 11 Create a Service Invoice Vendor Master Data Vendor Invoice Default data Enter data A /P Invoice  Vendor number  Invoice number  Invoice date  Description  G/L Account  Total due  Vendor name  Invoice number  Invoice date  Description  Amount due  …  Vendor number  Vendor name  Address  Payment terms  Payment method  … Check for duplicate invoice numbers.",
-    "start_time": 442.78,
-    "end_time": 478.15
+    "image_file": "Slide_011.webp",
+    "script_text": "Al guardar la factura, SAP Business One verifica automáticamente si el número de factura del proveedor ya existe en el sistema para evitar pagos duplicados. Si detecta una coincidencia, te muestra una alerta para que investigues antes de continuar. Esta función es esencial para mantener la integridad financiera, prevenir errores de pago y asegurar que cada factura se procese solo una vez, especialmente en gastos recurrentes como alquileres o servicios públicos.",
+    "start_time": 303.84,
+    "end_time": 333.72
   },
   {
     "slide_index": 12,
-    "image_file": "101_Slide_12_10_Purch_14_Process_Services.webp",
-    "script_text": "When the system saves the invoice, the value updates the amount due to the vendor, the related expense account, and the related general ledger control account at the same time. 12 Create a Service Invoice Vendor Master Data Vendor Invoice Default data Enter data A /P Invoice  Vendor number  Invoice number  Invoice date  Description  G/L Account  Total due  Vendor name  Invoice number  Invoice date  Description  Amount due  …  Vendor number  Vendor name  Address  Payment terms  Payment method  … Check for duplicate invoice numbers",
-    "start_time": 478.15,
-    "end_time": 508.25
+    "image_file": "Slide_012.webp",
+    "script_text": "Al guardar la factura de servicio, SAP Business One actualiza automáticamente las cuentas contables: debita la cuenta de gastos relacionada (como 6100 - Alquileres) y acredita la cuenta de control de proveedores (2100 - Proveedores). Esto refleja el aumento del gasto y la obligación de pago al mismo tiempo, manteniendo el equilibrio contable. El proceso es instantáneo y garantiza que tus estados financieros estén siempre actualizados sin necesidad de asientos manuales.",
+    "start_time": 333.72,
+    "end_time": 365.26
   },
   {
     "slide_index": 13,
-    "image_file": "101_Slide_13_10_Purch_14_Process_Services.webp",
-    "script_text": "Sometimes services such as rent or maintenance are supplied on a regular basis with a periodic standard fee. In these cases you can use recurring transactions. This functionality allows you to automatically generate purchasing, sales or inventory documents on a regular basis. Just set up a template where you select the frequency, date range and document type for the recurring transaction. Recurring transactions are also available for inventory documents as well as purchasing and sales marketing documents. In our business example, we have agreed with a vendor to lease some commercial space for one year. We set up the template to generate an A/P invoice for paying the lease amount each month. When we execute the template, the documents for the period are created. At the end of the period, a total of 12 invoices will have been triggered. 13 Recurring Transactions Agreement with vendor requiring monthly payments Create a template Recurring transactions template Template Name Transaction Type Recurrence Period Start Date Valid Until Lease A/P Invoice Monthly January 2020 December 2020 ..12 Invoices will be triggered during the period Execute Transactions",
-    "start_time": 508.25,
-    "end_time": 576.94
+    "image_file": "Slide_013.webp",
+    "script_text": "Las transacciones recurrentes permiten automatizar la generación de documentos periódicos, como facturas de alquiler o mantenimiento. Solo necesitas crear una plantilla donde defines la frecuencia, el rango de fechas y el tipo de documento, en este caso una Factura A/P para el pago mensual de un espacio comercial. Al ejecutar la plantilla, SAP Business One genera automáticamente los documentos correspondientes a cada período. En nuestro ejemplo, al configurar una plantilla mensual por un año, se generan un total de 12 facturas al finalizar el período. Esto ahorra tiempo, reduce errores y garantiza la puntualidad en los pagos recurrentes.",
+    "start_time": 365.26,
+    "end_time": 408.05
   },
   {
     "slide_index": 14,
-    "image_file": "101_Slide_14_10_Purch_14_Process_Services.webp",
-    "script_text": "For purchasing services, the A/P invoice is the only mandatory document in purchasing.  You have the option of using a purchase order to specify services required to the vendor.  Setting up item master data for a service can be useful for services you regularly buy or sell. Service items are entered on item-type marketing documents.  Using an item master allows you to track quantities used in regular purchasing and sales analysis, as well as eliminate data-entry errors.  A recurring transaction template can be useful for generating purchasing documents on a periodic basis. 14 14 Summary Here are some key points: For purchasing services, the A/P invoice is the only mandatory document in purchasing. You have the option of using a purchase order to specify services required to the vendor. Setting up item master data for a service can be useful for services you regularly buy or sell. Service items are entered on item-type marketing documents. Using an item master allows you to track quantities used in regular purchasing and sales analysis, as well as eliminate data-entry errors. A recurring transaction template can be useful for generating purchasing documents on a periodic basis.",
-    "start_time": 576.94,
-    "end_time": 650.14
-  },
-  {
-    "slide_index": 15,
-    "image_file": "101_Slide_15_10_Purch_14_Process_Services.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 650.14,
-    "end_time": 787.32
+    "image_file": "Slide_014.webp",
+    "script_text": "En la compra de servicios, la Factura A/P es el único documento obligatorio, aunque puedes usar un pedido de compra para especificar los requisitos al proveedor. Configurar datos maestros de artículo para servicios que compras o vendes con frecuencia mejora el seguimiento de cantidades en análisis de compras y ventas y evita errores de ingreso. Estos artículos se usan en documentos comerciales de tipo Artículo. Además, una plantilla de transacción recurrente es ideal para generar documentos de compras de forma periódica, como facturas mensuales de alquiler o mantenimiento, asegurando consistencia y eficiencia en los procesos habituales.",
+    "start_time": 408.05,
+    "end_time": 448.42
   }
 ]

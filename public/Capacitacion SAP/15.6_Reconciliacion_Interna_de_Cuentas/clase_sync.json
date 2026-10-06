@@ -1,184 +1,184 @@
 [
   {
     "slide_index": 1,
-    "image_file": "025_Slide_01_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinProcess 31 InternalRecon InternalRecon en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Proceso financiero: Reconciliación interna Bienvenido al tema Reconciliación interna.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de reconciliación interna en SAP Business One versión 10.0. Este proceso financiero permite asegurar la consistencia entre los datos maestros de interlocutores comerciales y las cuentas de mayor. Aprenderá cómo el sistema gestiona automáticamente las reconciliaciones y cómo puede intervenir manualmente cuando sea necesario. Esta lámina introduce el contexto empresarial y el objetivo del módulo: comprender y aplicar la reconciliación interna para mejorar el control contable y el cierre de períodos en empresas como Distribuidora Andina Tech.",
     "start_time": 0.0,
-    "end_time": 20.54
+    "end_time": 32.6
   },
   {
     "slide_index": 2,
-    "image_file": "025_Slide_02_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "En este tema, discutiremos cómo utilizar el proceso de reconciliación interna, ambas reconciliaciones, tanto las del sistema como las del usuario, en las cuentas de mayor e interlocutores comerciales. Aprenderá cómo repasar las reconciliaciones del sistema automáticas y semiautomáticas, y cómo realizar reconciliaciones internas manualmente. 2 Al finalizar este tema, podrá:  Utilizar el proceso de reconciliación interna en cuentas de mayor e interlocutores comerciales.  Revisar las reconciliaciones del sistema  Realizar una reconciliación interna (clase manual) Objetivos",
-    "start_time": 20.54,
-    "end_time": 58.7
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá utilizar el proceso de reconciliación interna en cuentas de mayor e interlocutores comerciales, revisar las reconciliaciones automáticas del sistema y realizar reconciliaciones internas de clase manual. Estos objetivos le permitirán garantizar la precisión contable, detectar discrepancias y mantener el control sobre las transacciones financieras. En una empresa real como Distribuidora Andina Tech, esto es esencial para validar que los pagos a proveedores y cobros de clientes coincidan con sus documentos origen antes del cierre mensual.",
+    "start_time": 32.6,
+    "end_time": 65.2
   },
   {
     "slide_index": 3,
-    "image_file": "025_Slide_03_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Agenda Reconciliación interna  Definición de la reconciliación interna Reconciliaciones del sistema Reconciliación completa Reconciliación parcial Reconciliación de usuario Clases de reconciliaciones de usuario Moneda de reconciliación Presentaremos el tema reconciliación interna estudiando el proceso de reconciliación de los datos maestros de un interlocutor comercial.",
-    "start_time": 58.7,
-    "end_time": 80.5
+    "image_file": "Slide_003.webp",
+    "script_text": "Esta lámina presenta la agenda del tema: comenzaremos con la definición de reconciliación interna, luego exploraremos las reconciliaciones del sistema (completas y parciales), seguido de las reconciliaciones de usuario y sus clases (manual, automática y semiautomática). También veremos cómo se aplica la moneda en el proceso. El enfoque se centra en reconciliar los datos maestros de un interlocutor comercial, asegurando que sus saldos en libros coincidan con las transacciones registradas. Esto es clave para mantener la integridad del libro mayor en entornos empresariales reales.",
+    "start_time": 65.2,
+    "end_time": 99.4
   },
   {
     "slide_index": 4,
-    "image_file": "025_Slide_04_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Imagine que está implementando SAP Business One con un cliente nuevo, OEC Computers. María, la responsable del área de contabilidad de OEC Computers, le hace algunas preguntas más sobre el proceso de reconciliación interno. Recuerda que usted le mencionó anteriormente, que, entre otros procesos, se relaciona con el cierre del período. A María le complace escuchar que la mayoría de las reconciliaciones internas las realiza automáticamente SAP Business One. Estas son las reconciliaciones del sistema. Las reconciliaciones automáticas del sistema pueden ser parciales o totales. 4 Debe Haber Escenario empresarial  Clases de reconciliaciones de usuario:  Proceso de reconciliación interna Debe Haber  Estados de reconciliaciones del sistema:  Estados de reconciliaciones de usuario:",
-    "start_time": 80.5,
-    "end_time": 131.71
+    "image_file": "Slide_004.webp",
+    "script_text": "Imagine que está implementando SAP Business One con un cliente nuevo, OEC Computers. María, la responsable de contabilidad, le consulta sobre el proceso de reconciliación interna y su relación con el cierre del período. Le explica que la mayoría de las reconciliaciones internas se realizan automáticamente mediante el sistema, conocidas como reconciliaciones del sistema, que pueden ser parciales o totales. Este flujo muestra cómo se inicia el diálogo funcional entre el consultor y el usuario clave, sentando las bases para entender cuándo el sistema actúa y cuándo se requiere intervención humana.",
+    "start_time": 99.4,
+    "end_time": 136.4
   },
   {
     "slide_index": 5,
-    "image_file": "025_Slide_05_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Ofrece a María dos ejemplos de reconciliaciones automáticas totales:  Primero, en las cuentas de datos maestros de interlocutores comerciales, cuando un pago recibido se basa en una factura de clientes (o un abono en una factura de cliente).  Y en segundo lugar, en las cuentas de mayor de compensación, cuando deposita un cheque recibido mediante un pago recibido. Le explica a María que SAP Business One también realiza reconciliaciones del sistema parciales si, por ejemplo, un cliente abona parcialmente una factura de clientes. 5 Debe Haber Escenario empresarial  Estados de reconciliaciones del sistema:  Completa  Parcial  Clases de reconciliaciones de usuario:  Estados de reconciliaciones de usuario:  Proceso de reconciliación interna Debe Haber",
-    "start_time": 131.71,
-    "end_time": 179.4
+    "image_file": "Slide_005.webp",
+    "script_text": "SAP Business One realiza reconciliaciones automáticas del sistema que pueden ser totales o parciales. Un ejemplo de reconciliación total es cuando un pago recibido se aplica completamente a una factura de cliente o cuando se deposita un cheque mediante un pago recibido en cuentas de compensación. Otra situación total ocurre con un abono en una factura de cliente. En cambio, las reconciliaciones parciales ocurren cuando un cliente paga solo parte de una factura, dejando un saldo pendiente. Estas operaciones se registran en cuentas de mayor de interlocutores comerciales o de compensación, asegurando que el reflejo contable coincida con el estado real de las transacciones.",
+    "start_time": 136.4,
+    "end_time": 178.6
   },
   {
     "slide_index": 6,
-    "image_file": "025_Slide_06_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "No obstante, habrá situaciones en las que la propia María realizará reconciliaciones internas; estas son las reconciliaciones de usuario. Por ejemplo, cuando OEC Computers realice un pago adelantado a un proveedor y reciba la factura de proveedores más tarde, María deberá reconciliar los datos maestros de proveedor de manera interna y conciliar el pago con las operaciones de la factura de proveedores. María puede realizar la reconciliación de usuario mediante una de las tres clases de reconciliación:  Manual  Automática  Semiautomática 6 Debe Haber Escenario empresarial  Estados de reconciliaciones del sistema:  Completa  Parcial  Clases de reconciliaciones de usuario:  Manual  Automática  Semiautomática  Estados de reconciliaciones de usuario:  Proceso de reconciliación interna Debe Haber",
-    "start_time": 179.4,
-    "end_time": 226.9
+    "image_file": "Slide_006.webp",
+    "script_text": "En situaciones como cuando OEC Computers realiza un pago adelantado a un proveedor y recibe la factura más tarde, María debe reconciliar internamente los datos maestros del proveedor y vincular el pago con la factura correspondiente. Para ello, puede utilizar una de las tres clases de reconciliación de usuario: manual, automática o semiautomática. Este flujo muestra el proceso típico que enfrenta un contador: anticipar un pago, esperar el documento origen y luego conciliar ambos en el sistema. En SAP Business One, esto se hace desde el módulo de compras o mediante la función de reconciliación interna, asegurando que el saldo del proveedor refleje con precisión sus obligaciones reales.",
+    "start_time": 178.6,
+    "end_time": 222.4
   },
   {
     "slide_index": 7,
-    "image_file": "025_Slide_07_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Al igual que las reconciliaciones del sistema, las reconciliaciones del usuario pueden ser totales o parciales. 7 Debe Haber Escenario empresarial  Estados de reconciliaciones del sistema:  Completa  Parcial  Clases de reconciliaciones de usuario:  Manual  Automática  Semiautomática  Estados de reconciliaciones de usuario:  Total  Parcial  Proceso de reconciliación interna Debe Haber",
-    "start_time": 226.9,
-    "end_time": 250.8
+    "image_file": "Slide_007.webp",
+    "script_text": "Las reconciliaciones pueden ser del sistema o del usuario, y cada una puede ser total o parcial. Las del sistema ocurren automáticamente durante operaciones como aplicar pagos o crear abonos. Las del usuario se realizan manual, automática o semiautomáticamente, según la necesidad de ajustar datos maestros. Ambas aseguran que los débitos y haberes en una cuenta estén alineados, evitando saldos inconsistentes. En una empresa como Distribuidora Andina Tech, esto previene errores en proveedores o clientes al vincular pagos con facturas. El objetivo es que cada movimiento del Haber tenga su contrapartida en Debe, y viceversa, para cerrar el ciclo contable correctamente.",
+    "start_time": 222.4,
+    "end_time": 263.4
   },
   {
     "slide_index": 8,
-    "image_file": "025_Slide_08_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Consideremos el caso que acabamos de analizar, en el que OEC Computers paga a un proveedor con antelación y recibe la factura de proveedores más adelante. Cuando María ve el saldo de cuenta del proveedor, este refleja el pago por adelantado y las operaciones de la factura de proveedores. ¿Por qué es entonces importarte que María efectúe una reconciliación interna de los datos maestros de proveedor? 8 Pregunta de reflexión: proceso de reconciliación interna Cuando María ve el saldo de cuenta del proveedor, este refleja el pago por adelantado y las operaciones de la factura de proveedores. ¿Por qué es entonces importarte que María efectúe una reconciliación interna de los datos maestros de proveedor?",
-    "start_time": 250.8,
-    "end_time": 293.78
+    "image_file": "Slide_008.webp",
+    "script_text": "En la ficha del proveedor OEC Computers, el saldo de cuenta muestra -1.250,00 USD, resultado de un pago adelantado de 1.500,00 y una factura pendiente de 250,00. Este saldo neto refleja ambas operaciones, pero no indica si están vinculadas. Para María, es clave reconciliar internamente porque, aunque el saldo esté correcto, la factura sigue apareciendo como abierta. Sin reconciliación, el sistema no sabe que el pago ya cubre esa obligación. En Distribuidora Andina Tech, esto evita pagos duplicados y mantiene la precisión en reportes de cuentas por pagar. La reconciliación interna une el débito del pago con el haber de la factura, cerrando el ciclo.",
+    "start_time": 263.4,
+    "end_time": 306.0
   },
   {
     "slide_index": 9,
-    "image_file": "025_Slide_09_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "El motivo es que si no se realiza la reconciliación, la factura de proveedores aparecerá como pendiente al crear un nuevo pago al proveedor. Otra razón es el efecto en los informes, como los de antigüedad y créditos de dudoso cobro. La factura de proveedores aparecerá como pendiente en esos informes si María no lo reconcilia con la transacción de pago. 9 Pregunta de reflexión: proceso de reconciliación interna  La factura de proveedores debería aparecer como cerrada para:  Pago  Informes de antigüedad y créditos de dudoso cobro Cuando María ve el saldo de cuenta del proveedor, este refleja el pago por adelantado y las operaciones de la factura de proveedores. ¿Por qué es entonces importarte que María efectúe una reconciliación interna de los datos maestros de proveedor?",
-    "start_time": 293.78,
-    "end_time": 340.49
+    "image_file": "Slide_009.webp",
+    "script_text": "Si María no reconcilia el pago adelantado con la factura de proveedor, el sistema mantiene la factura como pendiente. Esto distorsiona los informes de antigüedad, mostrando una deuda que ya fue saldada, y aumenta el riesgo de que se genere un nuevo pago por el mismo importe. Además, afecta los cálculos de créditos dudosos cobro, pues una factura antigua pero pagada podría considerarse morosa. Al reconciliar internamente, se vincula el haber de la factura con el débito del pago, cerrando el documento. En Distribuidora Andina Tech, esto asegura que los reportes reflejen la realidad financiera y evita errores operativos en el módulo de cuentas por pagar.",
+    "start_time": 306.0,
+    "end_time": 349.0
   },
   {
     "slide_index": 10,
-    "image_file": "025_Slide_10_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Agenda Reconciliación interna  Definición de la reconciliación interna Reconciliaciones del sistema Reconciliación completa Reconciliación parcial Reconciliación de usuario Clases de reconciliaciones de usuario Moneda de reconciliación Comenzaremos con la reconciliación del sistema que tiene lugar durante el trabajo diario.",
-    "start_time": 340.49,
-    "end_time": 359.71
+    "image_file": "Slide_010.webp",
+    "script_text": "Esta unidad cubre la reconciliación interna en SAP Business One, comenzando por su definición como el ajuste de débitos y haberes en una cuenta. Luego se analizan las reconciliaciones del sistema, que ocurren automáticamente al aplicar pagos, crear abonos o cancelar documentos, y pueden ser completas o parciales. Se examinan también las reconciliaciones de usuario, clasificadas como manuales, automáticas o semiautomáticas, según el nivel de intervención requerida. Finalmente, se aborda la moneda de reconciliación, clave en operaciones multimoneda. El objetivo es entender cuándo y cómo se asegura la consistencia contable en procesos como pagos a proveedores o cobros a clientes.",
+    "start_time": 349.0,
+    "end_time": 389.6
   },
   {
     "slide_index": 11,
-    "image_file": "025_Slide_11_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "El término reconciliación interna hace referencia a la confrontación y compensación de posiciones abiertas del Haber con posiciones abiertas del Debe en una cuenta (por lo tanto, son internas). Esto es necesario para las cuentas en donde un proceso empresarial no se considera completo hasta que cada importe del Haber tiene un importe del Debe correspondiente:  En el caso de las cuentas de clientes, un crédito (Debe) debe ir seguido de un cobro (Haber).  En las cuentas de proveedores, un pasivo (Haber) debe ir seguido de un pago (Debe). 11 Definición de la reconciliación interna Reconciliación interna: Conciliación y compensación posiciones abiertas del Haber con posiciones abiertas del Debe en una cuenta. Debe Haber Debe Haber",
-    "start_time": 359.71,
-    "end_time": 406.9
+    "image_file": "Slide_011.webp",
+    "script_text": "La reconciliación interna se refiere a la confrontación y compensación de posiciones abiertas del Haber con posiciones abiertas del Debe dentro de una misma cuenta. Es necesaria cuando un proceso empresarial no se considera completo hasta que cada importe del Haber tiene su correspondiente en Debe. Por ejemplo, en cuentas de clientes, un crédito (venta) debe ir seguido de un cobro; en proveedores, un pasivo (factura) debe ir seguido de un pago. Este ajuste asegura que las cuentas reflejen correctamente el estado de las transacciones. En Distribuidora Andina Tech, aplicar este principio evita saldos engañosos y garantiza que los cierres de periodo sean precisos y auditables.",
+    "start_time": 389.6,
+    "end_time": 432.6
   },
   {
     "slide_index": 12,
-    "image_file": "025_Slide_12_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "En primer lugar, hablemos sobre la reconciliación del sistema. La reconciliación del sistema se realiza automáticamente. Analicemos algunos ejemplos: Al aplicar un pago a una factura, crear un abono para una factura o cancelar un documento, el asiento original se reconcilia con la anulación. Al depositar un cheque, el asiento de pago se reconcilia con los depósitos de la línea en la cuenta de compensación. Esto significa mayoritariamente, que no debe mantener ni conducir reconciliaciones internas en el sistema. Como dijimos anteriormente, el sistema puede reconciliar las transacciones ya sea total o parcialmente. Veremos ambos. 12 Reconciliaciones del sistema Debe Haber Estados de reconciliaciones del sistema: – Completa – Parcial Debe Haber",
-    "start_time": 406.9,
-    "end_time": 457.87
+    "image_file": "Slide_012.webp",
+    "script_text": "La reconciliación del sistema se ejecuta automáticamente durante operaciones cotidianas en SAP Business One. Cuando se aplica un pago a una factura, el sistema vincula automáticamente el débito del pago con el haber de la factura. Lo mismo ocurre al crear un abono o cancelar un documento: el asiento original se reconcilia con la operación de reversión. Al depositar un cheque, el asiento de pago se concilia con el depósito en la cuenta de compensación. Estos procesos aseguran que las transacciones queden vinculadas sin intervención del usuario, ya sea de forma total o parcial. En Distribuidora Andina Tech, esto reduce la carga manual y minimiza errores en conciliaciones bancarias y de cuentas por pagar o cobrar.",
+    "start_time": 432.6,
+    "end_time": 479.6
   },
   {
     "slide_index": 13,
-    "image_file": "025_Slide_13_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "El sistema intentará realizar automáticamente la reconciliación completa al contabilizar un pago a un cliente o proveedor. El sistema asocia la línea empresarial en el asiento del pago con la factura o facturas que seleccionó y cierra las transacciones. También cerrará los abonos seleccionados y otras transacciones que se seleccionaron en el pago. En el gráfico mostramos cómo la reconciliación completa del sistema tiene lugar sin un pago a un proveedor. A la izquierda mostramos la factura del proveedor con su asiento. A la derecha vemos el pago de la factura. Cuando la factura está pagada, el sistema automáticamente realiza la reconciliación interna en el registro maestro del proveedor. En este ejemplo, mostramos solo una factura, pero el pago podría haberse efectuado para 2 o más facturas y la reconciliación automática se habría realizado de todas maneras. Con respecto a los pagos realizados con el asistente de pago o el tratamiento de extracto bancario, el sistema propone automáticamente (y, algunas veces, asocia automáticamente) pagos con facturas o abonos en función de los criterios que se faciliten, como la fecha de vencimiento o el importe. 13 Reconciliación del sistema: reconciliación completa Pago basado en una factura (o facturas) de proveedor Debe Haber Cuenta bancaria 202 Proveedor 202 Factura de proveedor Debe Haber Proveedor 202 Cuenta de compensación/ gastos 202 Reconciliación interna automática en los datos maestros de proveedor 1 2",
-    "start_time": 457.87,
-    "end_time": 552.55
+    "image_file": "Slide_013.webp",
+    "script_text": "Al registrar un pago a un proveedor, SAP Business One intenta reconciliar automáticamente el pago con las facturas seleccionadas. El sistema asocia la línea del pago en el asiento contable con la factura o facturas correspondientes y cierra esas transacciones. También cierra los abonos y otras transacciones seleccionadas en el pago. En el diagrama, vemos a la izquierda la factura del proveedor con su asiento, y a la derecha el pago. Cuando la factura está pagada, el sistema realiza automáticamente la reconciliación interna en el registro maestro del proveedor. Aunque el ejemplo muestra una sola factura, el proceso funciona igual si se pagaron dos o más facturas. Este mecanismo también aplica cuando se usa el asistente de pago o el tratamiento de extracto bancario, donde el sistema propone o asocia pagos con facturas según criterios como fecha de vencimiento o importe.",
+    "start_time": 479.6,
+    "end_time": 536.6
   },
   {
     "slide_index": 14,
-    "image_file": "025_Slide_14_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "También es posible reconciliar las transacciones de manera parcial al emitir los pagos y cobros. La reconciliación parcial se realiza cuando el monto de un pago no corresponde con el monto de las transacciones seleccionadas. Por ejemplo, un cliente puede realizar el pago de un monto parcial a pagar. Cuando se realiza un pago parcial, el sistema ajusta el saldo vencido apropiadamente y reconcilia parcialmente la factura. Cuando se pague el saldo restante de la factura, la factura se reconciliará por completo y el saldo vencido será cero. 14 Reconciliación del sistema - Reconciliación parcial Debe Haber Cuenta bancaria 100 Proveedor 100 Debe Haber Proveedor 202 Cuenta de compensación/ gastos 202 Saldo vencido: Haber = 102 2 Saldo vencido en el informe de antigüedad de deudas del proveedor Pago basado en una factura (o facturas) de proveedor Factura de proveedor Reconciliación interna automática en los datos maestros de proveedor 1",
-    "start_time": 552.55,
-    "end_time": 613.08
+    "image_file": "Slide_014.webp",
+    "script_text": "Cuando el monto de un pago no coincide con el total de las transacciones seleccionadas, ocurre una reconciliación parcial. Por ejemplo, si un cliente paga solo una parte de lo que debe, el sistema ajusta el saldo vencido de forma adecuada y concilia parcialmente la factura. El saldo restante queda pendiente y se mostrará en el informe de antigüedad de deudas. Cuando más tarde se pague el resto, la factura se reconciliará completamente y el saldo vencido llegará a cero. Este proceso asegura que los saldos reflejen con precisión lo que se debe o se debe recibir, incluso cuando los pagos son fraccionados.",
+    "start_time": 536.6,
+    "end_time": 578.4
   },
   {
     "slide_index": 15,
-    "image_file": "025_Slide_15_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "SAP Business One automáticamente reconcilia las siguientes cuentas provisionales:  Cuenta de asignación, Cuenta de compensación de gastos y Cuenta de stock en tránsito.  El trabajo en el tratamiento de cuenta de inventario.  En algunas localizaciones, la Cuenta de impuestos diferidos (relevante para: Austria, Costa Rica, España, Francia, Guatemala, Italia, México y Sudáfrica)  La Cuenta interina de anticipo y la Cuenta de compensación de anticipo. Veamos el ejemplo de cuenta de compensación: Si la empresa utiliza el sistema de inventario permanente, normalmente se reconcilia la cuenta de compensación. Recuerde que una cuenta de compensación se acredita cuando se emite un pedido de entrada de mercancías y se debita en una factura de proveedores. El sistema realiza esta reconciliación en esta cuenta provisional. 15 Reconciliación del sistema de cuentas provisionales Factura de proveedor Pedido de EM Cuenta de compensación Acreditado Debitado",
-    "start_time": 613.08,
-    "end_time": 673.56
+    "image_file": "Slide_015.webp",
+    "script_text": "SAP Business One reconcilia automáticamente ciertas cuentas provisionales que se usan temporalmente durante operaciones logísticas y contables. Estas incluyen la cuenta de asignación, la cuenta de compensación de gastos y la cuenta de stock en tránsito. También se reconcilia el trabajo en proceso de inventario. En algunas localizaciones, como Austria, Costa Rica, España, Francia, Guatemala, Italia, México y Sudáfrica, se incluye la cuenta de impuestos diferidos. Asimismo, se reconcilian la cuenta interina de anticipo y la cuenta de compensación de anticipo. Por ejemplo, en el caso de la cuenta de compensación: cuando se emite un pedido de entrada de mercancías, se acredita esta cuenta; al recibir la factura del proveedor, se debita. El sistema realiza automáticamente esta reconciliación en la cuenta provisional, asegurando que su saldo regrese a cero cuando el ciclo esté completo.",
+    "start_time": 578.4,
+    "end_time": 632.6
   },
   {
     "slide_index": 16,
-    "image_file": "025_Slide_16_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Agenda Reconciliación interna  Definición de la reconciliación interna Reconciliaciones del sistema Reconciliación completa Reconciliación parcial Reconciliación de usuario Clases de reconciliaciones de usuario Moneda de reconciliación A continuación, veamos cómo puede el usuario gestionar el proceso de reconciliación.",
-    "start_time": 673.56,
-    "end_time": 692.88
+    "image_file": "Slide_016.webp",
+    "script_text": "En esta sección revisaremos los aspectos clave de la reconciliación interna en SAP Business One. Comenzaremos con la definición de qué es la reconciliación interna y por qué es importante para mantener la integridad de los datos contables. Luego analizaremos las reconciliaciones realizadas automáticamente por el sistema, distinguiendo entre reconciliación completa y parcial. Después, veremos cómo el usuario puede intervenir mediante reconciliaciones de usuario, incluyendo sus diferentes clases: manual, automática y semiautomática. Finalmente, abordaremos el tema de la moneda de reconciliación, relevante en operaciones multimoneda. El objetivo es que comprendas tanto el funcionamiento automático como las herramientas disponibles para gestionar excepciones o casos especiales.",
+    "start_time": 632.6,
+    "end_time": 674.8
   },
   {
     "slide_index": 17,
-    "image_file": "025_Slide_17_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Veamos las circunstancias en las que podría realizar una reconciliación de usuario: Un cliente le paga, pero se olvida de seleccionar la factura al procesar el pago. En ese caso, se realiza un pago en la cuenta y no en una factura en particular. Si el pago se contabilizó como pago a cuenta porque no se seleccionaron facturas, el pago y las facturas estarán pendientes (y por lo tanto, sin reconciliar). Otro ejemplo del pago a cuenta puede ser cuando existe un acuerdo con un cliente para pagar un importe fijo mensual independientemente de los montos actuales de la factura. Nuevamente, al no seleccionar facturas, no se reconcilian. En estos casos, debe reconciliar la cuenta de interlocutor comercial con la función Reconciliación como reconciliación de usuario. Para realizar una reconciliación interna para un interlocutor comercial, seleccione la opción Reconciliación en el área Reconciliación interna del módulo Interlocutores comerciales. También puede realizar la reconciliación de usuario en una cuenta de mayor. Por ejemplo, en escenarios especiales de saldos pendientes y cuando se trabaja con cuentas diferidas. La ventana Reconciliación para las cuentas de mayor se encuentra en el área Reconciliación interna en el módulo Finanzas. 17 Seleccionada Origen Fe. contabilización Importe Saldo vencido Importe a reconciliar FA 10,07 1000,00 1000,00 1000,00 FA 17,08 2000,00 2000,00 1500,00 RC 24,08 (1000,00) (1000,00) (1000,00) RC 24,08 (1500,00) (1500,00) (1500,00) FA 01,09 3000,00 3000,00 Reconciliación de usuario: clase manual Cuenta de interlocutor comercial      En este ejemplo, datos maestros de cliente Reconciliación interna manual en los datos maestros de cliente 0,",
-    "start_time": 692.88,
-    "end_time": 818.83
+    "image_file": "Slide_017.webp",
+    "script_text": "En situaciones donde el sistema no puede reconciliar automáticamente, como cuando se registra un pago a cuenta sin seleccionar una factura específica, es necesario intervenir manualmente. Por ejemplo, si un cliente paga pero olvida marcar la factura al procesar el pago, el dinero queda en cuenta y las facturas permanecen pendientes, sin reconciliar. Esto también ocurre cuando existe un acuerdo de pago fijo mensual, independiente del monto real de la factura. En estos casos, se debe usar la función de reconciliación de usuario para vincular el pago a cuenta con las facturas correspondientes. Para hacerlo, se accede al módulo de Interlocutores comerciales, se selecciona el socio de negocio y se elige la opción Reconciliación en el área de Reconciliación interna. También es posible realizar esta acción en cuentas de mayor, útil en escenarios con saldos diferidos o pendientes especiales.",
+    "start_time": 674.8,
+    "end_time": 731.0
   },
   {
     "slide_index": 18,
-    "image_file": "025_Slide_18_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Puede realizar la reconciliación de usuario mediante una de las tres clases de reconciliación: Manual, automática y semiautomática La reconciliación manual es útil si trabaja con pocas transacciones o casos en los que las reconciliaciones parciales lo requieren o donde las transacciones se contabilizan para más de un interlocutor comercial. La reconciliación automática se usa para reconciliar una gran cantidad de transacciones, o una gama de interlocutores comerciales, basada en las prioridades y los parámetros definidos por el usuario. La reconciliación semiautomática se usa para reconciliar manualmente transacciones basadas en recomendaciones proporcionadas por SAP Business One. La opción múltiples BP aparece solo cuando se selecciona la clase reconciliación manual. Esta opción permite que se reconcilien las transacciones de más de un interlocutor comercial. Por ejemplo, en algunas localizaciones, si un determinado interlocutor comercial es cliente y proveedor a la vez y, por tanto, tiene dos registros maestros de interlocutor comercial, las transacciones creadas se pueden reconciliar con ambos registros de datos maestros de interlocutor comercial. 18 Debe Haber Clases de reconciliaciones de usuario  Clases de reconciliaciones de usuario:  Manual  Automática  Semiautomática Debe Haber",
-    "start_time": 818.83,
-    "end_time": 898.87
+    "image_file": "Slide_018.webp",
+    "script_text": "SAP Business One ofrece tres clases de reconciliación de usuario para adaptarse a distintos escenarios operativos. La reconciliación manual es ideal cuando se trabaja con pocas transacciones o cuando se necesitan ajustes específicos, como en casos de pagos parciales o cuando una transacción involucra a varios interlocutores comerciales. También permite usar la opción 'múltiples BP' para reconciliar contra varios registros de socio de negocio, útil cuando una misma entidad actúa como cliente y proveedor. La reconciliación automática se usa para procesar grandes volúmenes de transacciones, aplicando reglas y prioridades definidas previamente por el usuario, como coincidir por fecha de vencimiento o importe. Finalmente, la reconciliación semiautomática combina ambos enfoques: el sistema sugiere coincidencias basadas en algoritmos, y el usuario las confirma o ajusta manualmente, ofreciendo control con eficiencia.",
+    "start_time": 731.0,
+    "end_time": 782.8
   },
   {
     "slide_index": 19,
-    "image_file": "025_Slide_19_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Reconciliación de varios interlocutores comerciales Un interlocutor comercial conectado Es posible reconciliar varios interlocutores comerciales entre sí. Uno de los escenarios comunes de la reconciliación de varios interlocutores comerciales se produce entre un cliente y un proveedor conectados. En este escenario, hay un proveedor que también es un cliente de la empresa. En este caso, la empresa desea hacer igualar la deuda del proveedor con el saldo pendiente del cliente. Cuando selecciona la casilla de selección Considerar IC conectados y selecciona el interlocutor comercial, el sistema añade automáticamente el interlocutor comercial conectado a la ventana de criterios de selección. En la imagen, puede ver la ventana Reconciliación interna de IC - Criterios de selección y que la casilla de selección considerar IC conectados está marcada. En la tabla, se seleccionan los registros de Maxi Teq, el cliente, y Maxi Teq, el proveedor. Una vez seleccione Reconciliar, se visualizarán las facturas de clientes y las facturas de proveedores pendientes. Ahora es posible compensar el saldo vencido de las facturas de proveedores desde las facturas de cliente. Consulte el tema Clientes y grupos de clientes para aprender a conectar un cliente con un proveedor. Tenga en cuenta que también puede reconciliar varios interlocutores comerciales que no están conectados. Seleccione los interlocutores comerciales relevantes en la tabla de la ventana de criterios de selección.",
-    "start_time": 898.87,
-    "end_time": 991.13
+    "image_file": "Slide_019.webp",
+    "script_text": "En esta lámina ves cómo reconciliar un interlocutor comercial que actúa como cliente y proveedor al mismo tiempo. Al marcar la casilla 'Considerar IC conectados' y seleccionar a Maxi Teq, el sistema incluye automáticamente tanto su registro de cliente como de proveedor en los criterios. Esto permite ver las facturas pendientes de ambos roles en una sola vista. Así, puedes compensar saldos vencidos entre lo que el cliente debe y lo que le debes como proveedor, todo desde la ventana de reconciliación interna de SAP Business One.",
+    "start_time": 782.8,
+    "end_time": 818.2
   },
   {
     "slide_index": 20,
-    "image_file": "025_Slide_20_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Reconciliación de varios interlocutores comerciales – Asiento Ninguna reconciliación entre dos o más interlocutores comerciales (conectados y no conectados) genera un asiento automático. El asiento compensa el registro de los interlocutores comerciales. La imagen muestra el asiento que se creó cuando la factura de clientes se reconcilió con la factura de proveedores. Este es un ejemplo sencillo en el que los importes reconciliados son iguales. Se efectúa un abono al cliente y un cargo al proveedor.",
-    "start_time": 991.13,
-    "end_time": 1023.79
+    "image_file": "Slide_020.webp",
+    "script_text": "Cuando reconcilias una factura de cliente con una de proveedor del mismo interlocutor, SAP genera un asiento contable que compensa ambos saldos. En este caso, se abona la cuenta de clientes y se carga la de proveedores por el mismo importe, sin afectar resultados. Este movimiento refleja la cancelación mutua de deudas: lo que el cliente debe se paga con lo que la empresa le debe como proveedor. Es un ajuste interno que mantiene la consistencia contable sin generar nuevos cobros o pagos externos.",
+    "start_time": 818.2,
+    "end_time": 852.4
   },
   {
     "slide_index": 21,
-    "image_file": "025_Slide_21_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Una reconciliación interna se realiza en una moneda: la moneda de la cuenta. Esto es relevante tanto para la reconciliación de usuario como para la de sistema, y para las cuentas de interlocutor comercial y de mayor. Si la moneda del interlocutor comercial especificado se fija en moneda local o todas las monedas, la moneda de reconciliación será la moneda local. Si una de las monedas extranjeras se especificó para el interlocutor comercial, la moneda de reconciliación es esta moneda extranjera. En el ejemplo presentado la moneda local de la empresa es Libra esterlina y Maxi-Teq es un cliente local que tiene Libra esterlina definida como moneda de interlocutor comercial. Por lo tanto, la moneda de reconciliación es la moneda local, que es libra esterlina. 21 Moneda de reconciliación Moneda IC",
-    "start_time": 1023.79,
-    "end_time": 1075.63
+    "image_file": "Slide_021.webp",
+    "script_text": "La reconciliación interna se realiza en una sola moneda: la de la cuenta contable involucrada. Si el interlocutor comercial tiene definida la moneda local, esa será la usada en la reconciliación. Si tiene una moneda extranjera asignada, entonces esa será la moneda de referencia. En el ejemplo, como Maxi-Teq es un cliente local con libra esterlina como moneda de interlocutor y la empresa también usa libras, la reconciliación se hace en esa moneda. Esto asegura coherencia en los cálculos y evita ajustes innecesarios por tipo de cambio durante el proceso.",
+    "start_time": 852.4,
+    "end_time": 889.0
   },
   {
     "slide_index": 22,
-    "image_file": "025_Slide_22_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Transacciones de saldo en reconciliación interna Una diferencia en la moneda local cuando hay implicada una moneda extranjera Durante la reconciliación, el sistema verifica: Una diferencia en la moneda del sistema cuando la moneda local de la empresa es distinta a la moneda del sistema El sistema crea de forma automática: Un asiento de la diferencia en tipo de cambio (en ML y MS) Un asiento de la diferencia de conversión (solo en MS) Existen dos clases de transacciones de saldo:  Diferencia de tipo de cambio – Este asiento se crea automáticamente al reconciliar las transacciones en una moneda extranjera, donde el importe en moneda local se diferencia entre las transacciones reconciliadas, debido a los diferentes tipos de cambio de la moneda extranjera. Por ejemplo: se envíaun pago un mes después de la creación de la factura.  Diferencia del tipo de conversión: Este asiento se crea automáticamente cuando la moneda del sistema es diferente de la moneda local y la moneda del sistema difiere entre las operaciones reconciliadas.",
-    "start_time": 1075.63,
-    "end_time": 1137.62
+    "image_file": "Slide_022.webp",
+    "script_text": "Durante la reconciliación, si hay diferencias por tipo de cambio o conversión, SAP genera asientos automáticos para ajustarlas. La diferencia de tipo de cambio ocurre cuando se pagan facturas en moneda extranjera en fechas distintas, generando variaciones en el importe local. La diferencia de conversión aplica cuando la moneda del sistema distinta de la local afecta las transacciones reconciliadas. Estos asientos aseguran que el balance refleje correctamente el impacto económico real, sin dejar diferencias sin contabilizar en libros mayores o del sistema.",
+    "start_time": 889.0,
+    "end_time": 922.4
   },
   {
     "slide_index": 23,
-    "image_file": "025_Slide_23_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "El sistema asigna un número de reconciliación único a cada reconciliación de usuario interno completa (ya sea manual, automática o semiautomática). También graba y asigna un número único a las reconciliaciones del sistema, por ejemplo, las reconciliaciones efectuadas durante el procesamiento de pagos. 23 Identificadores únicos  Identificador único para reconciliaciones internas:  Reconciliaciones de usuario: Manual, automática o semiautomática  Reconciliaciones del sistema Debe Haber Debe Haber",
-    "start_time": 1137.62,
-    "end_time": 1170.31
+    "image_file": "Slide_023.webp",
+    "script_text": "Cada reconciliación interna, ya sea hecha por el usuario o generada automáticamente por el sistema, recibe un número único de identificación. Esto permite rastrear cada proceso, ya sea manual, automático o semiautomático, así como las realizadas durante el pago de facturas. Estos identificadores son esenciales para auditorías, revisión de históricos y gestión de reconciliaciones anteriores, garantizando trazabilidad y control total sobre los ajustes internos realizados en SAP Business One.",
+    "start_time": 922.4,
+    "end_time": 950.6
   },
   {
     "slide_index": 24,
-    "image_file": "025_Slide_24_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "La función Gestionar reconciliaciones anteriores permite revisar o cancelar una reconciliación de usuario. Esta función no permite anular contabilizaciones de reconciliación. Las contabilizaciones siguen existiendo, aunque se cancele la reconciliación. Si desea anular estas contabilizaciones, deberá anularlas en el libro mayor de la forma habitual seleccionando Datos Cancelar en la visualización del asiento. Para cancelar reconciliaciones de usuario para interlocutores comerciales o cuentas de mayor, seleccione la opción Gestionar reconciliaciones anteriores en el área Reconciliaciones internas del módulo Interlocutores comerciales o Finanzas. 24 Gestión de reconciliaciones anteriores Cuenta 2000 5000 3000 2000 Cancelar reconciliación de usuario Cuenta 2000 5000 3000",
-    "start_time": 1170.31,
-    "end_time": 1225.56
+    "image_file": "Slide_024.webp",
+    "script_text": "Esta función permite revisar o cancelar reconciliaciones de usuario realizadas previamente, ya sea en interlocutores comerciales o cuentas de mayor. Al cancelar, las contabilizaciones generadas no se eliminan: permanecen en el libro mayor y deben anularse manualmente mediante la opción 'Datos > Cancelar' en el asiento contable. Es útil para corregir errores sin afectar el historial de transacciones. El acceso se hace desde el módulo correspondiente, asegurando control y trazabilidad en la gestión de reconciliaciones pasadas.",
+    "start_time": 950.6,
+    "end_time": 981.6
   },
   {
     "slide_index": 25,
-    "image_file": "025_Slide_25_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Resumen (1/2) A continuación, se detallan algunos puntos clave: El término Reconciliación interna, hace referencia a: • La conciliación y compensación de las partidas abiertas del Haber con las partidas abiertas del Debe de una cuenta (por lo tanto, internas). Para cuentas de proveedor: • Una deuda (Haber) se reconcilia con un pago (Debe). La reconciliación interna puede ser: • Reconciliación del sistema • Reconciliaciones de usuario Ambos estados, la reconciliación del sistema y la reconciliación de usuario son: • Total • Parcial Clases de reconciliaciones de usuario: • Manual (con la opción Múltiples IC) • Automática • Semiautomática  A continuación, se detallan algunos puntos clave para tener en cuenta:  El término reconciliación interna hace referencia a la confrontación y compensación interna de posiciones abiertas del Haber con posiciones abiertas del Debe en una cuenta.  En las cuentas de proveedor, una deuda (Haber) se reconcilia con un pago (Debe). En el caso de las cuentas de clientes, un crédito (Debe) debe ir seguido de un pago recibido (Haber).  La reconciliación interna puede ser reconciliación del sistema o reconciliación de usuario.  Existen dos estatus tanto para la reconciliación del sistema como para la reconciliación de usuario: completa y parcial  Existen tres tipos de reconciliación de usuario: manual, automática y semiautomática. El tipo manual incluye una opción para reconciliar múltiples interlocutores comerciales entre sí.",
-    "start_time": 1225.56,
-    "end_time": 1320.41
+    "image_file": "Slide_025.webp",
+    "script_text": "La reconciliación interna en SAP Business One permite conciliar partidas abiertas del Haber con las del Debe dentro de una misma cuenta, especialmente útil en cuentas de proveedor y cliente. Puede realizarse de forma automática por el sistema o mediante acciones de usuario, ya sea manual, automática o semiautomática. Cada reconciliación puede tener un estado total o parcial, dependiendo del grado de compensación alcanzado. En el caso de la reconciliación manual de usuario, existe la opción de vincular múltiples interlocutores comerciales en una sola operación, lo que brinda flexibilidad en procesos contables complejos. Este mecanismo asegura la consistencia de los registros contables al eliminar saldos pendientes internamente.",
+    "start_time": 981.6,
+    "end_time": 1025.0
   },
   {
     "slide_index": 26,
-    "image_file": "025_Slide_26_10_FinProcess_31_InternalRecon_InternalRecon_ES.webp",
-    "script_text": "Resumen (2/2) Una reconciliación interna se realiza en una moneda: • Moneda local (IC/Cuenta = moneda local o todas las monedas) • Moneda extranjera (IC/Cuenta = Moneda extranjera) SAP Business One puede gestionar la contabilidad en dos monedas paralelas: • En la moneda local • y en la moneda de sistema. Todas las reconciliaciones internas (de sistema y de usuario) deben saldarse: • En la moneda local • y en la moneda de sistema. El sistema asigna un único número de reconciliación a cada reconciliación interna tanto para: • Reconciliación del sistema • Reconciliaciones de usuario La función Gestionar reconciliaciones anteriores permite: • Revisar o cancelar una reconciliación de usuario.  Una reconciliación interna se realiza en una moneda. La moneda puede ser la moneda local o una moneda extranjera. La moneda local se usa si la cuenta de interlocutor comercial se fijó en moneda local o en todas las monedas. Si el interlocutor comercial se fija en una moneda extranjera, entonces esa moneda se usará para la reconciliación.  SAP Business One puede gestionar la contabilidad en dos monedas paralelas: la moneda local y la moneda del sistema.  Todas las reconciliaciones internas, sean del sistema o de usuario, deben saldarse en la moneda local y en la moneda del sistema.  El sistema asigna un único número de reconciliación a cada reconciliación interna tanto para las reconciliaciones del sistema como para las reconciliaciones de usuario.  La función Gestionar reconciliaciones anteriores permite revisar o cancelar una reconciliación de usuario.",
-    "start_time": 1320.41,
-    "end_time": 1422.05
+    "image_file": "Slide_026.webp",
+    "script_text": "Cada reconciliación interna en SAP Business One se realiza en una sola moneda, que puede ser la local o una extranjera, según la configuración de la cuenta del interlocutor comercial. El sistema soporta contabilidad en dos monedas paralelas: la moneda local y la moneda del sistema, requiriendo que todas las reconciliaciones —tanto del sistema como de usuario— se salden en ambas. Para garantizar trazabilidad, el sistema asigna un único número de reconciliación a cada operación, independientemente de su tipo. Además, la función 'Gestionar reconciliaciones anteriores' permite a los usuarios revisar el historial o cancelar una reconciliación de usuario si es necesario, brindando control y flexibilidad en el cierre contable.",
+    "start_time": 1025.0,
+    "end_time": 1069.2
   }
 ]

@@ -1,128 +1,121 @@
 [
   {
     "slide_index": 1,
-    "image_file": "024_Slide_01_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinProcess 22 PostPeriods PeriodClose en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Financial Process: Period-End Closing SAP Business One Version 10.0 Welcome to the course on the period end closing.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso sobre el cierre de período en SAP Business One versión 10.0. Este proceso financiero es esencial para mantener la integridad contable de tu empresa. Aprenderás cómo prepararte y ejecutar el cierre correctamente, asegurando que los estados financieros reflejen con precisión el desempeño anual. Este primer paso te introduce al tema y su importancia en la gestión financiera.",
     "start_time": 0.0,
-    "end_time": 22.08
+    "end_time": 24.6
   },
   {
     "slide_index": 2,
-    "image_file": "024_Slide_02_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "In this course we will discuss how to prepare for and perform period-end closing. 2 At the end of this topic, you will be able to:  Prepare for Period-End Closing  Perform Period-End Closing Objectives",
-    "start_time": 22.08,
-    "end_time": 34.54
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás prepararte adecuadamente para el cierre de período y llevarlo a cabo con éxito. Estos objetivos te guiarán para comprender no solo qué hacer, sino también por qué cada paso es crítico en el ciclo contable. Dominar estas habilidades te permitirá garantizar reportes financieros precisos y cumplir con los requisitos de control interno en tu organización.",
+    "start_time": 24.6,
+    "end_time": 49.2
   },
   {
     "slide_index": 3,
-    "image_file": "024_Slide_03_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Business Scenario Your company creates a financial statement once a year:  They need twelve posting periods for internal controlling.  You have defined the Fiscal Year as the calendar year and sub-periods as Months.  The company will not run the Period-End Closing process at the end of each month.  Instead they will run it at the end of the fiscal year.  There are several period-end tasks they do at month end.  The accountant follows a list of steps for year-end closing. Imagine that your company creates an annual financial statement once a year. They need twelve posting periods for their internal controlling. Therefore, you have already created a new company database and defined the Fiscal Year as the calendar year and the sub-periods as Months. They will not run the Period-End Closing process at the end of each month, they will do it at the end of the main posting period - the fiscal year. Even so, there are several period-end tasks they do at month end. For example, each month they do internal reconciliation and send debtor statements for outstanding debts. And finally, the accountant follows a list of steps for year-end closing.",
-    "start_time": 34.54,
-    "end_time": 100.56
+    "image_file": "Slide_003.webp",
+    "script_text": "Tu empresa elabora estados financieros una vez al año, necesitando doce períodos de registro para control interno. Has definido el ejercicio fiscal como el año natural y los subperíodos como meses. Aunque no cierres mensualmente, realizas tareas como conciliación interna y envío de extractos de deudores. El cierre se ejecuta al final del ejercicio fiscal, siguiendo una lista de pasos para el cierre de fin de año, lo que asegura precisión y trazabilidad en la contabilidad anual.",
+    "start_time": 49.2,
+    "end_time": 80.6
   },
   {
     "slide_index": 4,
-    "image_file": "024_Slide_04_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Agenda Period End Process  Period-End Closing - Overview  Month End vs. Year End  Period End Tasks Period-End Closing  Period-End Closing Utility  Posting Period Status Let us review the period end closing process. We will emphasize the different actions a user should take in month end closing versus year end.",
-    "start_time": 100.56,
-    "end_time": 118.61
+    "image_file": "Slide_004.webp",
+    "script_text": "Esta lámina presenta la agenda del tema, organizando el proceso de fin de período en secciones claras. Revisaremos el cierre de período como visión general, compararemos el cierre mensual con el de fin de año, detallaremos las tareas periódicas, explicaremos la utilidad de cierre y analizaremos los estados del período de registro. Este flujo te ayuda a entender dónde encaja cada actividad dentro del ciclo contable completo.",
+    "start_time": 80.6,
+    "end_time": 108.0
   },
   {
     "slide_index": 5,
-    "image_file": "024_Slide_05_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Here, you can see an overview of the posting periods process. There are three stages in the posting periods process. In this topic we will focus on Period End Closing, the last stage of the process. First let us review each step. In the first stage, we define settings for posting periods. First we define the main posting period for the Fiscal Year. Then we define the sub- periods in the fiscal year: Year, Quarters, Months, or Days. The second stage is the Operational stage. In everyday work, we enter documents and manual journal entries with a posting date that will be registered automatically to the appropriate sub-period. Sub-periods allows the user to control posting into them, that way, postings to each month can be controlled. The third stage is what we will focus on: the Period End Closing process. 5 Posting Periods – Process Overview  Fiscal Year: 2018 Posting date Sub-period  Sub-Periods: Months  2018-01  2018-02  2018-03  …….  Additional settings Period End / Year End Closing",
-    "start_time": 118.61,
-    "end_time": 186.79
+    "image_file": "Slide_005.webp",
+    "script_text": "El proceso de períodos de registro tiene tres etapas. Primero, se define la configuración: ejercicio fiscal principal y subperíodos (meses, trimestres, etc.). Segundo, en la etapa operativa, se registran documentos y asientos manuales, los cuales se asignan automáticamente al subperíodo correspondiente según la fecha. Tercero, se ejecuta el cierre de período, etapa en la que nos enfocaremos en este curso. Esta estructura permite un control preciso y ordenado de las contabilizaciones mensuales.",
+    "start_time": 108.0,
+    "end_time": 137.4
   },
   {
     "slide_index": 6,
-    "image_file": "024_Slide_06_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "There are four tasks in period end closing. First you change the posting period status to Closing Period. This status will limit who can post to the period. Then you perform the year end tasks, such as reconciliation. Then you use the period end closing utility to close the period. This step will move all Profit and Loss account balances to the retained earnings account and zero the Profit and Loss accounts. Finally you change the period status to Locked. The period end closing process is typically done at the end of a financial period that is a year in length. You do that using the Period-End Closing window. You can, however, close a Sub-Period too. We will discuss posting period statuses later on in this course. 6 Period End Process:  Change to Closing Period  Period End Tasks  Period End Closing – Move all P&L account balances to the Retained Earnings account and zero the P&L accounts  Change Period Status to Locked Period-End Closing",
-    "start_time": 186.79,
-    "end_time": 244.9
+    "image_file": "Slide_006.webp",
+    "script_text": "El cierre de período sigue cuatro pasos clave. Primero, se cambia el estado del período a 'Período de Cierre', restringiendo quién puede contabilizar en él. Luego, se realizan las tareas de fin de año, como conciliaciones y revisión de saldos. A continuación, se usa la utilidad de cierre de período, que transfiere los saldos de cuentas de pérdidas y ganancias a resultados acumulados y las pone a cero. Finalmente, el estado se cambia a 'Bloqueado', completando el proceso y asegurando que no se realicen más cambios.",
+    "start_time": 137.4,
+    "end_time": 172.4
   },
   {
     "slide_index": 7,
-    "image_file": "024_Slide_07_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Remember our business example. Your company’s main period is a year, but you also have monthly sub-periods. You have decided not to close each sub-period, although you perform monthly period-end tasks. This is because you use the sub-periods mainly for internal controlling. When your company does the year-end closing, at that point, your company closes all the sub-periods. Other companies may choose to close each sub-period at the end of each sub-period. Since they have already closed sub-periods during the year, they close the last sub-period of the fiscal year. In either case, to prevent users from creating documents for the previous fiscal year, you can change the status of the period you are about to close to Closing Period. This means that only authorized users can post data, documents, and transactions. The key purpose of the Period-End Closing is to prepare the accounts for submission to the authorities and therefore involves the re-setting of the Profit and Loss accounts to zero so that the next period can begin again collecting Profit and Loss data that is relevant to it. You then close or inactivate the sub-posting periods in the fiscal year by locking them using the Period Status field in the Posting Periods window. 7  Change to Closing Period  Period End Tasks  Period End Closing – OPTIONAL: move all P&L account balances to the Retained Earnings account and zero the P&L accounts  Change Period Status to Locked Period-End Closing: at the Month End vs. at Year End Month End Closing Year End Closing  Change to Closing Period  Year End Tasks  Year End Closing – Move all P&L account balances to the Retained Earnings account and zero the P&L accounts  Change Period Status to Locked  Fiscal Year:",
-    "start_time": 244.9,
-    "end_time": 339.58
+    "image_file": "Slide_007.webp",
+    "script_text": "En tu empresa, el ejercicio fiscal es de un año con subperíodos mensuales. Para el cierre mensual, cambias el período a 'Período de Cierre', realizas las tareas de fin de período, opcionalmente ejecutas el cierre de período y luego bloqueas el estado. En el cierre anual, además de las tareas de fin de año, trasladas los saldos de Pérdidas y Ganancias a la cuenta de Resultados Acumulados y los pones a cero antes de bloquear el período. Esto asegura que el próximo ejercicio comience con datos limpios. En ambos casos, bloquear el período evita que usuarios no autorizados generen documentos en ejercicios cerrados.",
+    "start_time": 172.4,
+    "end_time": 214.2
   },
   {
     "slide_index": 8,
-    "image_file": "024_Slide_08_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Here are some examples for period-end tasks: Ensure that all period-end transactions were posted properly, including adjustments and accruals. Post all open Journal Vouchers. Internally reconcile expense clearing accounts. As a best practice, you should reconcile them regularly at the end of each month; otherwise, you have a high number of transactions to reconcile at the end of the year. For more details on the internal reconciliation process refer to the internal reconciliation topic. Print the reports:  Trial Balance (a balance of each account and a current status).  Vendor Liabilities Aging and Customer Receivables Aging reports to reconcile receivable accounts with the G/L.  Inventory Audit report to reconcile inventory with the G/L.  And all Financial Statements. Review the open items list and close documents when possible. Lastly, make a backup of your database and put it in an off-site storage location. 8 Here are some examples for period-end tasks:  Ensure period-end transactions were posted properly  Post all Journal Vouchers  Internally reconcile expense clearing accounts  Print:  Trial Balance  Vendor Liabilities Aging and Customer Receivables Aging reports  Inventory Audit report  Financial Statements  Review the open items list and close documents when possible  Make a backup of your database and put it in an off-site storage location Period End Tasks",
-    "start_time": 339.58,
-    "end_time": 419.93
+    "image_file": "Slide_008.webp",
+    "script_text": "Al final de cada mes, debes verificar que todas las transacciones, incluidos ajustes y provisiones, estén correctamente contabilizadas. Luego, registras los Vales Contables abiertos y concilias las cuentas de compensación de gastos, una práctica mensual que evita acumular trabajo al final del año. Imprimir informes como el Balance de Comprobación y los de antigüedad te ayuda a conciliar cuentas por cobrar y pagar con el libro mayor, mientras que el Informe de Auditoría de Inventario asegura coincidencia entre stock físico y contable. Finalmente, respaldas la base de datos en un lugar externo para proteger la información del ejercicio.",
+    "start_time": 214.2,
+    "end_time": 254.0
   },
   {
     "slide_index": 9,
-    "image_file": "024_Slide_09_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Here are some examples for year-end tasks: Post any doubtful debts that you feel may not be recoverable. Post exchange rate differences and conversion differences. Post final transactions for the period in all modules and any final adjusting entries in the general ledger. Close the last period of the fiscal year. Print any reports such as a final detailed Trial Balance and Financial Statements. Set up a new fiscal year (if you have not already done so). Once again, you should do a backup. This time to save the status of the previous fiscal year. 9 Year End Tasks Here are some examples for Year-End Tasks:  Post doubtful debts  Post exchange rate differences  Post final transactions for the period in all modules  Close the last period of the fiscal year  Print any year-end reports, such as financial statements  Set up a new fiscal year  Backup to save the status of the previous fiscal year",
-    "start_time": 419.93,
-    "end_time": 472.66
+    "image_file": "Slide_009.webp",
+    "script_text": "En el cierre de año, primero contabilizas las deudas que consideras irrecuperables como pérdidas por dudosos. Luego, registras las diferencias generadas por fluctuaciones en tipo de cambio y conversión de monedas extranjeras. Después, aseguras que todas las transacciones del período en todos los módulos estén contabilizadas, incluyendo los asientos de ajuste finales en el libro mayor. Imprimir un Balance de Comprobación detallado y los Estados Financieros te permite presentar la situación financiera ante autoridades. Si aún no lo has hecho, configuras el nuevo ejercicio fiscal y, como buena práctica, respaldas la base de datos para preservar el estado del año cerrado.",
+    "start_time": 254.0,
+    "end_time": 295.0
   },
   {
     "slide_index": 10,
-    "image_file": "024_Slide_10_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Agenda Period End Process  Period-End Closing - Overview  Month End vs. Year End  Period End Tasks Period-End Closing  Period-End Closing Utility  Posting Period Status The next step in the period end closing process is to run the period end closing utility and then change the posting period status.",
-    "start_time": 472.66,
-    "end_time": 489.67
+    "image_file": "Slide_010.webp",
+    "script_text": "Una vez finalizadas las tareas de fin de período, como verificar transacciones y conciliar cuentas, estás listo para ejecutar la Utilidad de Cierre de Período desde el módulo de Administración. Esta herramienta prepara los asientos necesarios para transferir los saldos de Pérdidas y Ganancias. Tras ejecutarla, el siguiente paso es cambiar el estado del período de registro a 'Bloqueado' en la ventana Períodos de Registro. Esta acción impide que usuarios no autorizados generen documentos en el período cerrado, asegurando la integridad de los datos históricos mientras el nuevo período comienza a acumular información.",
+    "start_time": 295.0,
+    "end_time": 332.8
   },
   {
     "slide_index": 11,
-    "image_file": "024_Slide_11_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "After the period-end tasks are complete, we now are ready to run the period-end closing utility to close the fiscal year. This action will zero all Profit and Loss account balances to the Retained Earnings account. The retained earnings account is a Balance Sheet account in the Capital and Reserves drawer. Capital and Reserves is called Equity in some localizations, such as the United States. After closing the period, the retained earnings account contains the total brought-forward cumulated profit. The next period can then begin again collecting profit and loss data that is relevant to it. You then close or inactivate the sub-posting Periods in the fiscal year by locking them. 11 Perform Period-End Closing Move all P&L account balances to the Retained Earnings account and zero the P&L accounts  Change Periods Status to Locked  Period-End Closing",
-    "start_time": 489.67,
-    "end_time": 538.37
+    "image_file": "Slide_011.webp",
+    "script_text": "Al ejecutar el cierre de período, el sistema transfiere los saldos de todas las cuentas de Pérdidas y Ganancias a la cuenta de Resultados Acumulados, dejándolas en cero para el nuevo período. Por ejemplo, si la cuenta de Gastos de Agua tiene un saldo deudor de 150,00 USD, se abona esa cuenta y se debe la de Resultados Acumulados. Esta cuenta pertenece al Patrimonio Neto y acumula el resultado de todos los ejercicios anteriores. Tras el cierre, contiene el beneficio o pérdida total traído de períodos pasados, permitiendo que el nuevo ejercicio comience a registrar únicamente los ingresos y gastos relevantes a su período.",
+    "start_time": 332.8,
+    "end_time": 375.0
   },
   {
     "slide_index": 12,
-    "image_file": "024_Slide_12_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "With the Period-End Closing utility, you can choose profit and loss accounts and periods, and specify a retained earnings and period-end closing account. When you execute the period-end closing, the system generates a list of proposals for closing entries. You can accept each proposal individually. Here is an example for one account. When we run the period end-closing utility for the water expense account, we get a proposal for a closing entry. The Period-End Closing utility is found in the Utilities area of the Administration module. 12 Period-End Closing Utility  Choose profit and loss accounts and periods  Specify a retained earnings and period-end closing account.  Execute the period-end closing.  Get a list of proposals for closing entries.  Accept each proposal individually. Accept and Post Proposal Proposal Example: Water Expense Account Balance",
-    "start_time": 538.37,
-    "end_time": 592.44
+    "image_file": "Slide_012.webp",
+    "script_text": "La Utilidad de Cierre de Período, ubicada en el área de Utilidades del módulo de Administración, te permite seleccionar qué cuentas de Pérdidas y Ganancias y qué períodos deseas cerrar. Luego, especificas la cuenta de Resultados Acumulados donde se transferirán los saldos y una cuenta de cierre de período para el asiento generado. Al ejecutar la utilidad, el sistema analiza los saldos y propone los asientos de cierre necesarios. Cada propuesta puede revisarse y aceptarse individualmente antes de contabilizarse. Por ejemplo, para la cuenta de Gastos de Agua, obtienes una propuesta que debes aceptar y registrar para completar el cierre.",
+    "start_time": 375.0,
+    "end_time": 415.6
   },
   {
     "slide_index": 13,
-    "image_file": "024_Slide_13_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "When you accept the proposal for the account, two transactions are created for each account and two journal entries are automatically created to reflect those transactions. This way the financial reports are correct in both periods. In the first journal entry, the system transfers the account balance from the Expense and the Revenue accounts to the Period-End Closing account on the same day (the last day of the period). This sets the accounts balances to zero. The Period-End Closing account is a temporary or clearing account which holds the balance until the beginning of the new period. 13 Period-End Closing Utility Debit Credit Water Expense Account 11500 Period-End Closing Account 11500  Posting Date: December 31st  Period-End Closing period Automatic Journal Entries:",
-    "start_time": 592.44,
-    "end_time": 637.73
+    "image_file": "Slide_013.webp",
+    "script_text": "Cuando aceptas la propuesta de cierre para una cuenta, el sistema genera automáticamente dos transacciones y dos asientos contables. En el primer asiento, creado el último día del período, el saldo de la cuenta de Gastos e Ingresos se transfiere a la cuenta de Cierre de Período. Esto pone a cero los saldos de las cuentas de resultado. La cuenta de Cierre de Período es transitoria y retiene el saldo hasta el inicio del nuevo período. En este ejemplo, se transfiere 11.500 desde Gastos de Agua a Cierre de Período el 31 de diciembre. Este proceso asegura que los informes financieros reflejen correctamente el período cerrado.",
+    "start_time": 415.6,
+    "end_time": 458.6
   },
   {
     "slide_index": 14,
-    "image_file": "024_Slide_14_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "The second journal entry is created at the same time as the first, however the second journal entry is dated on the first day of the following posting period. On the first day of the following posting period, the system transfers the balance from the Period-End Closing account to the Retained Earnings account. Now, the Retained Earnings account, which is a Balance Sheet account, contains the total brought-forward cumulated profit. You can recognize journal entries posted by the Period-End Closing Utility, because they have the origin “BC”. In the balance sheet report, you can later choose whether to include or exclude these types of transactions by selecting the Add Closing Balances box. If you make postings after entering the balances carried forward, you need to repeat the period-end closing routine to include these subsequent postings. 14 Period-End Closing Utility Debit Credit Water Expense Account 11500 Period-End Closing Account 11500  Posting Date: December 31st  Period-End Closing period Automatic Journal Entries: Debit Credit Period-End Closing Account 11500 Retained Earning Account 11500  Posting Date: January 1st  Following posting period",
-    "start_time": 637.73,
-    "end_time": 705.74
+    "image_file": "Slide_014.webp",
+    "script_text": "El segundo asiento contable se genera simultáneamente al primero, pero con fecha del primer día del siguiente período. En este paso, el sistema transfiere el saldo desde la cuenta de Cierre de Período a la cuenta de Resultados Acumulados, que forma parte del Balance bajo Capital y Reservas. Esto incorpora el resultado del período cerrado al beneficio acumulado. En el ejemplo, el 1 de enero, se mueven 11.500 desde Cierre de Período a Resultados Acumulados. Estos asientos tienen el origen \"BC\" y pueden filtrarse en el informe del balance usando la casilla \"Agregar Saldos de Cierre\". Si se registran transacciones después del arrastre, se debe repetir el cierre.",
+    "start_time": 458.6,
+    "end_time": 502.4
   },
   {
     "slide_index": 15,
-    "image_file": "024_Slide_15_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Let us review the statuses available for posting periods. The Posting Periods window is found under System Initialization in the Administration module. For example if we look at the graphic we see the current fiscal year. We are currently in sub period 3. The current sub period is unlocked. In everyday work, when a posting period is Unlocked, anyone can post transactions with a posting date that falls within the period start and end. At end of a posting period, after all business transactions belonging to that period have been posted to the system, you can lock the period so that no additional postings can be made by any user. We click the link arrow for the period we want to lock. And change the period status from Unlocked to Locked. If we look at the first sub period of the current fiscal year, we see it is locked as well as all the sub periods in the previous year, except sub period 12. During the first periods of the new fiscal year you may need to make postings for the year- end closing of the previous fiscal year. This is why the last period of the old year (sub period 12) has the status “Closing Period”. As well as Unlocked and Locked, you can set the period status to:  Unlocked Except Sales. If a period has this status, authorized users can post any document or journal entry to the period except for documents from the Sales A/R menu.  Closing Period. If a period has this status, only authorized people can post transactions to the period.  The authorization “Period Status: Closing Period” is set using Administration  System Initialization Authorizations General Authorizations.  You can have the system automatically change the status to Closing Period by selecting the checkbox on the posting periods screen. In our example, sub-period 12 of the previous fiscal year and sub-period 2 of the current year have the status Closing Period. 15 Posting Period Status Locked Closing Period Current period - Unlocked 1 2 3 4 5 6 7 8 9 10 11 12 Previous fiscal year 1 2 3 4 5 6 7 8 9 10 11 12 Current fiscal year Locked or Unlocked",
-    "start_time": 705.74,
-    "end_time": 831.48
+    "image_file": "Slide_015.webp",
+    "script_text": "La ventana Períodos de Registro, ubicada en Inicialización del Sistema bajo Administración, muestra el estado de cada subperíodo. Actualmente estamos en el subperíodo 3 del ejercicio fiscal 2026, que está Desbloqueado, permitiendo a cualquier usuario contabilizar transacciones con fecha dentro de ese período. Al finalizar un período, tras registrar todas las operaciones, se puede bloquearlo para evitar cambios adicionales. El primer subperíodo del año actual también está bloqueado, al igual que todos los del año anterior excepto el subperíodo 12, que tiene estado \"Período de Cierre\" para permitir ajustes de cierre. Además de Desbloqueado y Bloqueado, existen los estados \"Desbloqueado Excepto Ventas\" y \"Período de Cierre\", este último requiriendo autorización específica. El sistema puede cambiar automáticamente a Período de Cierre si se marca la casilla correspondiente.",
+    "start_time": 502.4,
+    "end_time": 553.4
   },
   {
     "slide_index": 16,
-    "image_file": "024_Slide_16_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Summary (1/2) Here are some key points: You can run the Period-End Closing process at: • The end of each sub-period and at the end of the main posting period (the Fiscal Year). • Or at the end of the main posting period only (this will close all the sub-periods). There are four tasks in period-end closing: • Change the posting period status to Closing Period. • Perform the year-end tasks, such as reconciliation. • Use the period-end closing utility to close the period. • Change the period status to Locked. Here are some key points to take away:  You can run the Period-End Closing process at the end of each sub-period and the end of the main posting period (the Fiscal Year) or you can wait to run Period-End Closing until the end of the main posting period. This will close not only the main period but also all the sub-periods.  There are four tasks in period-end closing: changing the posting period status to Closing period, performing the year-end tasks, such as reconciliation, using the period-end closing utility to close the period, and changing the period status to Locked.",
-    "start_time": 831.48,
-    "end_time": 894.36
+    "image_file": "Slide_016.webp",
+    "script_text": "El proceso de Cierre de Período se puede ejecutar al final de cada subperíodo o solo al final del ejercicio fiscal, lo que cerrará todos los subperíodos involucrados. Este proceso consta de cuatro tareas esenciales: primero, cambiar el estado del período de registro a \"Período de Cierre\"; segundo, realizar las tareas de fin de año, como la conciliación de cuentas; tercero, utilizar la utilidad de cierre de período para generar los asientos automáticos que transfieren los saldos; y cuarto, cambiar el estado del período a \"Bloqueado\" para impedir nuevas contabilizaciones. Seguir estos pasos garantiza un cierre ordenado y preciso de la contabilidad del período.",
+    "start_time": 553.4,
+    "end_time": 595.6
   },
   {
     "slide_index": 17,
-    "image_file": "024_Slide_17_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "Summary (2/2) The period-end closing utility will: • Zero all Profit and Loss account balances to the Retained Earnings (a Balance Sheet account in the Capital and Reserves drawer). Two journal entries are automatically created for each account: • First - the system transfers the account balance from the Expense and the Revenue accounts to the Period-End Closing account on the last day of the period. • Second - on the first day of the following posting period - the system transfers the balance from the Period-End Closing account to the Retained Earnings account. You can set the period status to: • Unlocked • Unlocked Except Sales • Period Closing • Locked The period-end closing utility will zero out the profit and loss account balances when they are transferred to the retained earnings account. The retained earnings account is a balance sheet account in the Capital and Reserves drawer. Two journal entries are automatically created for each account:  First the system transfers the account balance from the Expense and Revenue accounts to the Period-End Closing account on the last day of the period.  Second the system transfers the balance from the Period-End Closing account to the Retained Earnings account on the first day of the following posting period. You can set the period status to one of four statuses: Unlocked, Unlocked Except Sales, Period Closing and Locked.",
-    "start_time": 894.36,
-    "end_time": 967.06
-  },
-  {
-    "slide_index": 18,
-    "image_file": "024_Slide_18_10_FinProcess_22_PostPeriods_PeriodClose.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 967.06,
-    "end_time": 1104.24
+    "image_file": "Slide_017.webp",
+    "script_text": "La utilidad de cierre de período pone a cero todos los saldos de las cuentas de Pérdidas y Ganancias al transferirlos a la cuenta de Resultados Acumulados, que pertenece al Balance en el cajón de Capital y Reservas. Para cada cuenta, se crean automáticamente dos asientos contables: el primero, el último día del período, transfiere el saldo de Gastos e Ingresos a la cuenta de Cierre de Período; el segundo, el primer día del siguiente período, mueve ese saldo desde Cierre de Período a Resultados Acumulados. Además, el estado del período puede configurarse en cuatro opciones: Desbloqueado, Desbloqueado Excepto Ventas, Período de Cierre y Bloqueado, según el nivel de acceso requerido durante el cierre.",
+    "start_time": 595.6,
+    "end_time": 641.8
   }
 ]

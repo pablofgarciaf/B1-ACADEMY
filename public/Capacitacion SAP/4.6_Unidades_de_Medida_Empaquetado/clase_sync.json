@@ -1,121 +1,114 @@
 [
   {
     "slide_index": 1,
-    "image_file": "075_Slide_01_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Bienvenidos a esta clase sobre Item 24 UoM Packaging en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Items and Inventory: UOM Set up packages SAP Business One Version 10.0 Welcome to the topic on setting up packages.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre la configuración de paquetes en SAP Business One versión 10.0. Aquí aprenderás cómo definir unidades de medida empaquetadas para optimizar el manejo de inventario en procesos de venta y compra. Este módulo es clave para empresas que manejan productos en presentaciones como palés, cajas o contenedores, permitiendo automatizar cálculos y documentos relacionados con el embalaje.",
     "start_time": 0.0,
-    "end_time": 21.94
+    "end_time": 26.09
   },
   {
     "slide_index": 2,
-    "image_file": "075_Slide_02_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Objectives At the end of this topic, you will be able to: Set up automatic calculations for the type and quantity of package materials to use when shipping or receiving an item In this topic, you will learn how to set up automatic calculations for the type and amount of package materials to use when shipping or receiving an item. You will also see how to automatically create a packing slip showing the contents of the packages in a delivery.",
-    "start_time": 21.94,
-    "end_time": 45.36
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás configurar cálculos automáticos del tipo y cantidad de materiales de embalaje al enviar o recibir un artículo. Aprenderás a definir cómo el sistema determina qué tipo de paquete usar y cuántas unidades caben en él. También verás cómo generar automáticamente un albarán de embalaje con el contenido de los paquetes en una entrega, mejorando la precisión y eficiencia en logística.",
+    "start_time": 26.09,
+    "end_time": 51.91
   },
   {
     "slide_index": 3,
-    "image_file": "075_Slide_03_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Business Scenario OEC Computers purchases paper in pallets and sells paper with or without a package. When paper is sold in large quantities, the warehouse team packs paper in boxes. We want to set up automatic calculation for packing materials for paper in order to speed up the process. Additionally, we want to ensure correct packing slips are automatically created for our items in sales and purchasing. OEC Computers purchases paper in pallets and sells paper with or without a package. When paper is sold in large quantities, the warehouse team packs paper in boxes. We want to set up automatic calculation for packing materials for paper in order to speed up the process. Additionally, we want to ensure correct packing slips are automatically created for our items in sales and purchasing.",
-    "start_time": 45.36,
-    "end_time": 92.74
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers compra papel en palés y lo vende con o sin embalaje. Cuando se vende en grandes cantidades, el almacén lo empaqueta en cajas. Se necesita configurar el cálculo automático de materiales de embalaje para agilizar el proceso y garantizar que se generen correctamente los albaranes de embalaje en ventas y compras. Este escenario refleja una necesidad común en distribución: adaptar el embalaje según la cantidad y optimizar el uso de recursos.",
+    "start_time": 51.91,
+    "end_time": 81.46
   },
   {
     "slide_index": 4,
-    "image_file": "075_Slide_04_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Set up the packaging in the item for each unit of measure Assign a unit of measure group to the item Set up global package types Steps to Set Up Packaging 1 2 3 Inventory Setup Item Master Data Item Master Data Let’s look at the steps to set up packaging by unit of measure for an item. 1. Set up global package types. This is done in the Inventory Setup menu. 2. Assign a unit of measure group to the item (How to set up unit of measure groups for items was covered in an earlier course topic.) 3. Set up packaging in the item for each unit of measure. You can set up packaging for sales from a button on the Sales Data tab and for purchasing from a button on the Purchasing Data tab.",
-    "start_time": 92.74,
-    "end_time": 133.06
+    "image_file": "Slide_004.webp",
+    "script_text": "Para configurar el embalaje por unidad de medida, sigue tres pasos clave. Primero, define los tipos de paquete globales en Administración → Configuración → Inventario. Luego, asigna un grupo de unidades de medida al artículo en sus datos maestros. Finalmente, configura el embalaje específico para cada unidad de medida desde las pestañas de Datos de Ventas o Compras. Este flujo asegura que el sistema tenga toda la información necesaria para automatizar cálculos y documentos.",
+    "start_time": 81.46,
+    "end_time": 113.52
   },
   {
     "slide_index": 5,
-    "image_file": "075_Slide_05_10_Item_24_UoM_Packaging.webp",
-    "script_text": "The first step is to set up the package types that you will use globally. The menu path for the package setup window is shown in the graphic. For each package type, enter a name and its dimensions. If dimensions have also been entered for each unit of measure, entering package dimensions will enable the system to calculate the number of units for each specific package. For our business example, paper is bought on pallets. When the paper is sold, large quantities are shipped either in boxes, containers or on pallets. As we see in our graphic, dimensions for length, width, height, volume and weight have been entered for each of the package types used for paper products. 5 5 1. Set up Package Type Administration > Setup > Inventory > Package Types",
-    "start_time": 133.06,
-    "end_time": 179.95
+    "image_file": "Slide_005.webp",
+    "script_text": "En esta ventana defines los tipos de paquete que se usarán globalmente en SAP Business One. Para cada tipo, ingresas un nombre y sus dimensiones: longitud, ancho, altura, volumen y peso. Si también definiste dimensiones por unidad de medida, el sistema usa estos valores para calcular cuántas unidades caben en un paquete. En el ejemplo, el papel se compra en palés y se vende en cajas, por lo que se configuran tipos como 'Caja Estándar' con medidas realistas para optimizar el embalaje.",
+    "start_time": 113.52,
+    "end_time": 146.71
   },
   {
     "slide_index": 6,
-    "image_file": "075_Slide_06_10_Item_24_UoM_Packaging.webp",
-    "script_text": "The weight listed for a package type can either refer to the gross weight including its contents or the net package weight without its contents. This gives you the flexibility to use the weight column based on your business needs. When deciding how to use this field you should consider whether you plan to use this value to calculate the number of units that can fit into a package. If you want this data to be the default value for the calculation of the number of units in each package, you should refer to the weight as the gross weight available for this package. The disadvantage of using the gross weight is that the package definition will need to be limited to items that share the same weight for the same volume. If you plan to use the package type for many items that vary in weight, then you will not want to use a default gross weight for the item. 6 6 An empty box weighs 0.5 kg A box containing 6 units of 6 Packs weighs 60.5 kg Using weight in a package type A box containing 5 tablets weighs 6 kg The weight listed for a package type can refer to gross weight including its contents or to the net package weight without contents.",
-    "start_time": 179.95,
-    "end_time": 242.04
+    "image_file": "Slide_006.webp",
+    "script_text": "El peso indicado en un tipo de paquete puede referirse al peso bruto (contenido incluido) o al peso neto (solo el empaque). Esto brinda flexibilidad según las necesidades del negocio. Si usas el peso bruto para calcular cuántas unidades caben en un paquete, debe representar el peso disponible para el contenido. Sin embargo, si manejas artículos con distintos pesos pero mismo volumen, usar un peso bruto fijo limita la aplicabilidad. En esos casos, es mejor basar el cálculo en volumen o cantidad fija.",
+    "start_time": 146.71,
+    "end_time": 181.42
   },
   {
     "slide_index": 7,
-    "image_file": "075_Slide_07_10_Item_24_UoM_Packaging.webp",
-    "script_text": "The second step in setting up automatic package selection for an item, is to assign a units of measure group to an item. You can assign a unit of measure group to an item manually or have the unit of measure group default into an item from item categories. You also have a global option of having all the units in the group available in the item rather than having to choose which units of measure you would like to use for the item. This is controlled by the Auto add All UoM Group Definitions checkbox in General Settings. If this checkbox is not selected, then you need to add the units from the group individually in an item by using the Add Row button. Even if you have added all the units as a default, you can also use the context menu to remove unwanted units of measure for an item. The details on how to set up a unit of measure group are covered in another course topic “Set up Units of Measure”. Once the unit of measure group is assigned to an item master record, you can take the next step to set up packaging for each unit of measure. 7 Step 2: Assign the UoM Group to an Item Item Master Data Printer Paper White Packaging by UoM Paper Unit of Measure Group Pack = 21x30x4 cm Small Pack = 0.5 Pack 6 Pack = 6 Pack Carton = 24 Pack Pallet = 48 Pack Once the unit of measure group is assigned to an item master record, you can take the next step to set up packaging for each unit of measure",
-    "start_time": 242.04,
-    "end_time": 322.68
+    "image_file": "Slide_007.webp",
+    "script_text": "En este paso, asignas el grupo de unidades de medida al artículo desde sus datos maestros. Puedes hacerlo manualmente o dejar que se herede por defecto desde la categoría del artículo. También puedes activar la opción global 'Agregar Automáticamente Todas las Definiciones del Grupo de UdM' para que el sistema añada todas las unidades del grupo sin intervención. Si no la activas, debes agregar cada unidad individualmente usando el botón 'Agregar Fila'. Una vez asignado, el artículo está listo para configurar el embalaje por cada unidad de medida, como se muestra en el ejemplo con grupos como Pack, Pack Pequeño, Paquete de 6, Caja y Palé.",
+    "start_time": 181.42,
+    "end_time": 224.04
   },
   {
     "slide_index": 8,
-    "image_file": "075_Slide_08_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Step 3 – Set up packaging in the item Set up packaging for: Sales Purchasing There are two types of packaging that you can set up for an item: packages for sales and packages for purchasing. To set up packages for items you sell to customers, choose the Sales Data tab and choose the button to the right of the Package Type field. To set up the types of packages you use for receiving items, go to the Purchasing Data tab and choose the button to the right of the Package Type field. These buttons will open a window where you can set up a relationship between each unit of measure and specific package types based on the number of units needed and dimensions of those units. The type of packages used in sales can be different from the type of packages used in purchasing. In our business example, OEC Computers receives paper from its suppliers on a pallet. When they sell paper to customers, it may be sold without packages, in boxes, in containers or on pallets.",
-    "start_time": 322.68,
-    "end_time": 376.56
+    "image_file": "Slide_008.webp",
+    "script_text": "Aquí configuras los tipos de embalaje por separado para ventas y compras. En la pestaña Datos de Ventas, haces clic en el botón al lado del campo Tipo de Paquete para definir cómo se empaqueta lo que vendes a clientes. Lo mismo se hace en Datos de Compras para lo que recibes de proveedores. Estos botones abren una ventana donde relacionas cada unidad de medida con tipos de paquete específicos, según la cantidad de unidades y sus dimensiones. Los tipos de paquete para ventas pueden ser distintos de los usados en compras, como en el ejemplo: OEC Computers recibe papel en palé, pero lo vende suelto, en cajas, contenedores o palés. Esta flexibilidad permite adaptar el embalaje a cada flujo operativo.",
+    "start_time": 224.04,
+    "end_time": 269.74
   },
   {
     "slide_index": 9,
-    "image_file": "075_Slide_09_10_Item_24_UoM_Packaging.webp",
-    "script_text": "For our example, we will look at sales windows, but keep in mind that packages for sales and purchasing are set up in the same way. From the Sales Data tab, the button leads you to the Sales UoM and Package Types window. This window is where you define the default units of measure, their measurements and package data for each unit. On the left side of the graphic, we see the left side of the Sales UoM and Package Types window. Here we see the units of measure. One of the units of measure can be set as the default for sales. In our example, the most popular unit for this paper item is the 6 pack so it has been set as the unit default for sales. We see that the 6 pack unit is highlighted and appears on Sales Data tab along with its ratio to the inventory unit of measure (the pack). When you choose a unit, the dimensions for that unit are displayed at the bottom of the window. These measurements are drawn from the global Unit of Measure setup and can be changed manually. 9 9 Step 3 Details: Item Sales Data Sales Unit of Measure From the Item Master Data – Sales Data tab",
-    "start_time": 376.56,
-    "end_time": 440.18
+    "image_file": "Slide_009.webp",
+    "script_text": "Desde la pestaña Datos de Ventas, accedes a la ventana UdM de Ventas y Tipos de Paquete. En el lado izquierdo ves todas las unidades de medida disponibles y puedes establecer una como predeterminada para ventas. En este caso, se eligió el Paquete de 6 porque es la unidad más utilizada. Al seleccionarla, el sistema muestra automáticamente sus dimensiones (largo, ancho, altura), que provienen de la configuración global de unidades de medida, aunque puedes modificarlas manualmente si es necesario. Esta unidad predeterminada será la base para calcular cuántas unidades entran en cada tipo de paquete definido en el lado derecho de la ventana.",
+    "start_time": 269.74,
+    "end_time": 312.05
   },
   {
     "slide_index": 10,
-    "image_file": "075_Slide_10_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Now we see the right side of Sales UoM and Package Types window. On this side we enter the package information for each item. You have the option of having all package types appear in this window as a default. This option is controlled by the Auto. add All Package Definitions check box in General Settings. This can be a very useful setting if you do not have a large number of package types. However if you have a large number of package types and do not select this checkbox, then you can add the package types individually by using the Add Row button. Of course you always have an option to delete package types using the context menu. You can set a package type as the default for when you sell the item. The default package type is copied to the Package Type field in the Sales Data tab. When you click on a package type, you can see and define its dimensions. The dimensions are drawn by default from the Package Types Setup but they can be changed manually. 10 10 Step 3 Details: Item Sales Data – Package Type From the Item Master Data – Sales Data tab",
-    "start_time": 440.18,
-    "end_time": 503.04
+    "image_file": "Slide_010.webp",
+    "script_text": "En el lado derecho de la ventana UdM de Ventas y Tipos de Paquete defines los tipos de paquete asociados a cada unidad de medida. Puedes activar la casilla 'Agregar Automáticamente Todas las Definiciones de Paquete' para que el sistema los cargue por defecto, útil cuando hay pocos tipos. Si hay muchos, es mejor agregarlos uno a uno con 'Agregar Fila' o eliminarlos desde el menú contextual. También puedes establecer uno como predeterminado, que se copiará automáticamente al campo Tipo de Paquete en la pestaña Datos de Ventas. Al seleccionar cualquier tipo de paquete, puedes ver y ajustar sus dimensiones, que por defecto vienen de la configuración de tipos de paquete pero pueden modificarse manualmente según las necesidades reales de embalaje.",
+    "start_time": 312.05,
+    "end_time": 359.38
   },
   {
     "slide_index": 11,
-    "image_file": "075_Slide_11_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Here we see the full window for the Sales UoM and Package Types window. We can see the connection between the units of measure and the packages and what the system uses to calculate the quantity per package. The system uses the volume dimensions of the package and of the unit of measure to determine how many units will fit in a package. The result of the calculation appears in the Quantity per Package field. Notice the dimensions of the 6 Pack unit. It is 30 centimeters long and 21 centimeters wide. Now, look at the dimensions of the Box Package. It is 60 centimeters long and 42 centimeters wide. The 6 Pack UoM and the Box package are the same height. This means that 2 6 Pack units can fit in the Box length and another 2 6 Pack units can fit in the Box width. This means a total of 4 6 pack units can fit in the box since the height is the same. 11 11 Step 3 Details: Quantity per Package A “Box” package can contain 4 “6 Packs” 60 cm Box 6 pack 6 pack 6 pack 6 pack",
-    "start_time": 503.04,
-    "end_time": 566.21
+    "image_file": "Slide_011.webp",
+    "script_text": "En esta ventana completa, el sistema calcula automáticamente la cantidad de unidades de medida que caben dentro de un tipo de paquete, usando las dimensiones de volumen. Por ejemplo, si un Paquete de 6 mide 30 cm de largo y 21 cm de ancho, y una Caja mide 60 cm de largo y 42 cm de ancho (con la misma altura), entonces entran 2 paquetes en el largo (60 ÷ 30) y 2 en el ancho (42 ÷ 21), dando un total de 4 Paquetes de 6 por caja. Este resultado se muestra en el campo 'Cantidad por Paquete' y es clave para que el sistema determine cuántos paquetes se necesitan cuando se ingresa una cantidad en un documento de venta o compra.",
+    "start_time": 359.38,
+    "end_time": 406.22
   },
   {
     "slide_index": 12,
-    "image_file": "075_Slide_12_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Let’s look in detail at how the number of packages is calculated automatically by the system. First notice the Quantity and Number of Packages fields. The Number of Packages field shows a calculation of the quantity entered in the row, divided by the quantity per package. We can see where that number comes from by looking at the Sales UoM and Package Types window in the bottom left of the graphic. We see that the Box is default because it is highlighted in bold. The Quantity per Package field shows that the box can contain 4 of the default unit (the 6 pack). Therefore, if we sell 8 6 packs of paper, then we need 2 boxes. The inventory isn’t counted by the sales unit of 6 pack. Instead the inventory unit is a pack. We can see in the upper right of the graphic the total number of inventory units is calculated. The Quantity (Inventory Unit of Measure) field shows the sales quantity multiplied by the items per unit. In our example, the items per unit defined in the Sales Purchasing UoM and Package Type window, is 6. This means 1 6 Pack unit equals 6 packs. The Quantity (inventory Unit of Measure) field shows the total quantity of packs. Therefore the system calculates: a quantity of 8 multiplied by 6 inventory units equals 48 inventory units 12 12 8 “6 Packs” (4 “6 packs” in 1 box) equals 2 boxes 8 “6 Packs” multiplied by 6 items per unit equals 48 packs Calculating Packages in Documents 1 2",
-    "start_time": 566.21,
-    "end_time": 656.52
+    "image_file": "Slide_012.webp",
+    "script_text": "Al crear un documento de venta, el campo Número de Paquetes se calcula dividiendo la cantidad ingresada entre la cantidad por paquete definida en la configuración. Por ejemplo, si vendes 8 Paquetes de 6 y cada Caja contiene 4 Paquetes de 6, necesitas 2 cajas (8 ÷ 4 = 2). Sin embargo, el inventario no se controla por la unidad de venta, sino por la unidad de inventario base, que en este caso es el Pack. Como cada Paquete de 6 equivale a 6 Packs, la cantidad total en inventario es 8 × 6 = 48 Packs. Este campo asegura que el movimiento de stock sea preciso, reflejando la verdadera cantidad de artículos disponibles, independientemente de cómo se empaqueten para venta o compra.",
+    "start_time": 406.22,
+    "end_time": 454.27
   },
   {
     "slide_index": 13,
-    "image_file": "075_Slide_13_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Useful tips It is always possible to change dimensions of units and package types within the item sales data or purchasing data If volume dimensions are missing, then the Qty per Package field in the sales and purchasing package type windows in the Item Master Data record will be calculated according to weight. If you want to calculate by weight, then remember to use the gross weight of a fully loaded package in the package type definition. The Qty per Packaging field can only contain integers and the result of a calculation is always rounded down. It is always possible to change dimensions of units and package types within the item sales data or purchasing data If volume dimensions are missing, then the Quantity per Package field in the sales and purchasing package type windows in the Item Master Data record will be calculated according to weight. If you want to calculate by weight, then remember to use the gross weight of a fully loaded package in the package type definition. The Quantity per Packaging field can only contain integers and the result of a calculation is always rounded down. In our example the box can hold 4 six packs based on its size. If the box size could have held only 3 1 2 six packs based on the dimensions, it would have rounded down to 3. Furthermore, if the calculation of the package quantity for a specific unit of measure is less than 1, then no value will appear in the field.",
-    "start_time": 656.52,
-    "end_time": 734.52
+    "image_file": "Slide_013.webp",
+    "script_text": "En SAP Business One, puedes ajustar las dimensiones de unidades y tipos de paquete directamente en los datos de ventas o compras del artículo. Si falta el volumen, el sistema calcula la cantidad por paquete usando el peso bruto del paquete cargado. Este campo solo acepta números enteros y redondea hacia abajo. Si el resultado es menor que 1, no se muestra ningún valor. Esto asegura cálculos coherentes al empaquetar productos según sus características físicas.",
+    "start_time": 454.27,
+    "end_time": 485.71
   },
   {
     "slide_index": 14,
-    "image_file": "075_Slide_14_10_Item_24_UoM_Packaging.webp",
-    "script_text": "SAP Business One can create an automatic packing slip for deliveries and A R invoices made for multiple unit of measure items. Set up this option in the Document Settings window on the Per Document tab. In the Document field, choose Delivery or A R Invoice, then select the box Recommend Packaging Based on Item Master Data. 14 14 Automatic Creation of a Packing Slip System initialization Document Settings Per Document tab",
-    "start_time": 734.52,
-    "end_time": 760.78
+    "image_file": "Slide_014.webp",
+    "script_text": "Para habilitar la creación automática de albaranes de embalaje en SAP Business One, accede a Configuración de Documentos desde el menú de Inicialización del Sistema. En la pestaña Por Documento, selecciona Entrega o Factura A/R en el campo Documento y marca la opción Recomendar Embalaje Según los Datos Maestros del Artículo. Esto permite que el sistema genere el albarán cuando se procese una entrega o factura para artículos con múltiples unidades de medida, basándose en su configuración maestra.",
+    "start_time": 485.71,
+    "end_time": 517.3
   },
   {
     "slide_index": 15,
-    "image_file": "075_Slide_15_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Here is a look at a packing slip that was automatically created for a delivery that includes packages. The data is drawn from the Sales UoM and Package Type window combined with the data entered in the delivery. In our business example, we issued a delivery for 8 units of 6 Pack. According to the definitions made in the Sales UoM and Package Type window, 4 units of 6 Pack fit into 1 box. This means, we need 2 boxes to deliver 8 units. The total weight is a calculation of the weight per unit times the number of units in each package. In this example, 1 6 Pack unit weighs 15 kg and 1 box contains 4 units. This means that the total weight of the box is 60 kg. When we choose a row in the list of existing packages, we can view the items packed in the box at the bottom right of the window. 15 15 Packing Slip Contents 15 kg X 4 units in a Box = 60 kg Packing Slip",
-    "start_time": 760.78,
-    "end_time": 819.07
+    "image_file": "Slide_015.webp",
+    "script_text": "Este albarán de embalaje se genera automáticamente para una entrega de 8 unidades de Paquete de 6. Según la configuración, 4 unidades de este tipo caben en 1 caja, por lo que se requieren 2 cajas. El peso por unidad es de 15 kg, así que cada caja pesa 60 kg (15 kg × 4). Al seleccionar una fila de paquetes en la lista, el sistema muestra en la parte inferior derecha los artículos contenidos en ese paquete específico, integrando datos de la unidad de medida y los tipos de paquete definidos.",
+    "start_time": 517.3,
+    "end_time": 552.86
   },
   {
     "slide_index": 16,
-    "image_file": "075_Slide_16_10_Item_24_UoM_Packaging.webp",
-    "script_text": "Summary Here are some key points: There are three steps to set up packages based on the units of measure. 1. Set up global package types. This is done in the Inventory Setup menu. 2. Assign a unit of measure group to the item 3. Set up packages in the item master record for each unit of measure. You have the option of having all package types appear in this window as a default. You can set default package types for sales and for purchasing. The system uses the volume dimensions of the package and of the unit of measure to determine automatically how many units will fit in a package SAP Business One can create an automatic packing slip for deliveries and A R invoices made for multiple unit of measure items. There are three steps to set up packages for selling or purchasing items based on the units of measure. 1. Set up global package types. This is done in the Inventory Setup menu. 2. Assign a unit of measure group to the item (How to set up unit of measure groups for items was covered in an earlier course topic.) 3. Set up packaging in the item for each unit of measure. You can set up packaging for sales from a button on the Sales Data tab and for purchasing from a button on the Purchasing Data tab. You have the option of having all package types appear in this window as a default. This option is controlled by the Auto. add All Package Definitions check box in General Settings. This can be a very useful setting if you do not have a large number of package types. You can set default package types for sales and for purchasing. The system uses the volume dimensions of the package and of the unit of measure to determine automatically how many units will fit in a package. The result of the calculation is shown in the Quantity per Package field in the Sales Uom and Package Types and Purchasing Uom and Package Types windows in the Item Master Data record. If volume dimensions are missing, then the Quantity per Package field will be calculated according to weight. SAP Business One can create an automatic packing slip for deliveries and A R invoices made for multiple unit of measure items. This setting is maintained on the Document Settings tabs for deliveries and A R invoices.",
-    "start_time": 819.07,
-    "end_time": 948.5
-  },
-  {
-    "slide_index": 17,
-    "image_file": "075_Slide_17_10_Item_24_UoM_Packaging.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 948.5,
-    "end_time": 1081.34
+    "image_file": "Slide_016.webp",
+    "script_text": "Para configurar paquetes basados en unidades de medida, sigue tres pasos: define los tipos de paquete globales en Administración, asigna un grupo de UdM al artículo y configura los paquetes en sus datos maestros por unidad de medida. Puedes mostrar automáticamente todos los tipos de paquete usando la casilla correspondiente en Configuración General. También es posible establecer predeterminados para ventas y compras. El sistema calcula cuántas unidades caben en un paquete usando volumen o peso si falta volumen. Además, puede generar albaranes de embalaje para entregas y facturas A/R cuando se activa en Configuración de Documentos.",
+    "start_time": 552.86,
+    "end_time": 594.24
   }
 ]

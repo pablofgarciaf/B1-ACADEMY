@@ -1,156 +1,149 @@
 [
   {
     "slide_index": 1,
-    "image_file": "019_Slide_01_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Bienvenidos a esta clase sobre CostandBudget 21 Budget Budget en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Cost Accounting and Budget: Budget Management SAP Business One Version 10.0 Welcome to the Budget Management topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Gestión de Presupuesto en SAP Business One versión 10.0. Aquí aprenderás a planificar, controlar y monitorear los gastos de tu empresa usando el módulo de presupuesto. Este proceso te permite comparar lo previsto con lo real y tomar decisiones financieras más acertadas durante el año fiscal.",
     "start_time": 0.0,
-    "end_time": 21.43
+    "end_time": 20.6
   },
   {
     "slide_index": 2,
-    "image_file": "019_Slide_02_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Objectives At the end of this topic, you will be able to:  Describe how to manage budget. In this topic, we will look at the budget module and see how it helps in managing and track company expenses.",
-    "start_time": 21.43,
-    "end_time": 33.98
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás describir cómo gestionar el presupuesto en SAP Business One. Revisaremos el módulo de presupuesto y veremos cómo te ayuda a planificar y controlar los gastos de la empresa, evitando sorpresas al final del ejercicio fiscal mediante un seguimiento continuo durante el año.",
+    "start_time": 20.6,
+    "end_time": 40.0
   },
   {
     "slide_index": 3,
-    "image_file": "019_Slide_03_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Business Scenario  You are implementing SAP Business One at a new customer, OEC Computers.  Maria, the accountant says that in previous years they ended the fiscal year with much more expenses than expected.  They would like to be able to plan their expenses for a fiscal year and track them during the year. You are implementing SAP Business One at a new customer, OEC Computers. Maria, the accountant says that in previous years they ended the fiscal year with much more expenses than expected. They would like to be able to plan their expenses for a fiscal year and track them during the year. Note that you need to make decisions about accounting definitions together with the client accountant.",
-    "start_time": 33.98,
-    "end_time": 73.37
+    "image_file": "Slide_003.webp",
+    "script_text": "Estás implementando SAP Business One en OEC Computers. María, la contable, explica que en años anteriores los gastos superaron lo previsto. Ahora desean planificar sus gastos anuales y hacer un seguimiento durante el año. Tú, junto con el contable, definirás las cuentas contables relevantes para el presupuesto.",
+    "start_time": 40.0,
+    "end_time": 59.4
   },
   {
     "slide_index": 4,
-    "image_file": "019_Slide_04_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Budget Management Year forecast Expenses G/L account: Max Amount Flights 5000 Conferences 10000 Team outing 2500 … … January The Budget module helps you manage and track company expenses.  The purpose of budgeting is to provide a forecast of revenues and expenditures.  The actual financial operation of the business can be then measured against the forecast.  Enter the maximum amount that can be allocated to a particular G/L account. The Budget module helps you manage and track company expenses.  The purpose of budgeting is to provide a forecast of revenues and expenditures.  This way, the actual financial operation of the business can be measured against the forecast.  In SAP Business One a budget is based on the data you enter, which specifies the maximum amount that can be allocated to a particular G/L account.  In our example, OEC wants to control the expenses they exceeded last year.  Therefore, at the beginning of the fiscal year, Maria the accountant, enters amounts to the budget forecast for those expense G/L accounts.",
-    "start_time": 73.37,
-    "end_time": 139.61
+    "image_file": "Slide_004.webp",
+    "script_text": "El presupuesto en SAP Business One es una previsión anual de ingresos y gastos basada en importes máximos por cuenta G/L. Te permite comparar lo real con lo previsto. En este caso, OEC quiere controlar los gastos que excedieron el año pasado, como vuelos, conferencias y viajes en equipo, definiendo importes máximos al inicio del ejercicio fiscal.",
+    "start_time": 59.4,
+    "end_time": 82.8
   },
   {
     "slide_index": 5,
-    "image_file": "019_Slide_05_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Actual Amounts Expenses G/L account: Acc. Balance Flights 5000 Conferences 2000 Team outing 2000 … … September Purchasing order: Flight tickets 1200 This year forecast Expenses G/L account: Max Amount Flights 6000 Conferences 10000 Team outing 2500 … … Budget Management  You can block the creation of transactions for G/L accounts that exceed their budget limit.  In the course of routine work, the application checks the debit side of the transactions registered to G/L account for which a budget has been defined. If the budget is exceeded, the application either issues a warning or blocks the action, depending on the chosen setting.  In our example, Maria chose to block transactions that will exceed the budget amounts she defined.  In September, when a purchase order for flight tickets that exceeds the budget forecast amount is issued, the user is blocked by the system and will not be able to add the order.",
-    "start_time": 139.61,
-    "end_time": 197.38
+    "image_file": "Slide_005.webp",
+    "script_text": "Durante el trabajo diario, SAP Business One verifica el lado del debe de las transacciones en cuentas G/L con presupuesto definido. Si el gasto real supera el importe máximo permitido, el sistema puede advertir o bloquear la transacción, según la configuración. En el ejemplo, María eligió bloquear: al intentar registrar un pedido de vuelos que excede el presupuesto de septiembre, el usuario no puede continuar.",
+    "start_time": 82.8,
+    "end_time": 109.4
   },
   {
     "slide_index": 6,
-    "image_file": "019_Slide_06_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Setup Budget 4 Define Budget Amounts 3 Define Budget Distribution Methods 2 Define the relevant to budget accounts 1 Initialize the budget functionality In order to setup the budget functionality you need to: Initialize the budget functionality in the company database. Define the G/L accounts that will be relevant for budget control. Define budget distribution methods that will automatically divide the budget amount among the months of year. And Finally, define budget amounts for the relevant G/L accounts. In the next slides we will review these steps. During this process we will discuss some concepts related to budget definition.",
-    "start_time": 197.38,
-    "end_time": 235.39
+    "image_file": "Slide_006.webp",
+    "script_text": "Para activar el control presupuestario, primero debes inicializar la funcionalidad en la base de datos de la empresa. Luego, seleccionas las cuentas G/L que serán parte del presupuesto. Después, defines cómo se distribuirá el importe anual entre los meses (por ejemplo, mensual o estacional). Finalmente, ingresas los importes presupuestados para cada cuenta, como se muestra en los ejemplos de vuelos o conferencias.",
+    "start_time": 109.4,
+    "end_time": 134.8
   },
   {
     "slide_index": 7,
-    "image_file": "019_Slide_07_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Step 1 - Initialize the Budget Functionality 1 Initialize the budget functionality * Subjected to authorization to confirm budget deviation First, the budget functionality has to be initialized. Go to Administration System Initialization General Settings, and on the Budget tab select the Budget Initialization checkbox. Then, you define what should happen when documents deviates from budget. Whether to block the creation of transactions that cause the budget to be exceeded. Or to present an alert when the budget is exceeded. The user can confirm and add the transaction, or cancel. In the Authorization window, under the Financials module, there is a Budget clause in which you can define authorizations for users to confirm budget deviation in case a G/L account exceeds the budget and an alert is displayed. When the Without Warning option is chosen, the user will be able to add, without any restriction or warning, transactions that exceed the budget. For Purchase Requests, Purchase Orders and Goods Receipt POs the check is made against the budget during the issuing of the document including all open documents and the current one. For the Accounting option a check is conducted during the issuing of an A/P invoice or any other accounting transaction that involves a G/L account relevant to the budget. You can manage the budget on an annual or monthly basis. We will discuss these two options in the next slides.",
-    "start_time": 235.39,
-    "end_time": 318.41
+    "image_file": "Slide_007.webp",
+    "script_text": "Para comenzar a usar el presupuesto en SAP Business One, primero debes inicializar la funcionalidad. Ve a Administración, luego Inicialización del Sistema y abre Configuración General. En la pestaña Presupuesto, marca la casilla de Inicialización del Presupuesto. Allí defines qué ocurre cuando un documento supera el presupuesto: se puede bloquear la transacción o mostrar una alerta. Si se elige alerta, el usuario necesita autorización para confirmar y continuar. Esta autorización se configura en el módulo Finanzas, bajo la ventana de Autorización, donde se establece quién puede aprobar desviaciones. También puedes elegir la opción Sin Advertencia, que permite transacciones sin límite ni aviso. La comprobación varía según el tipo de documento: para compras, se hace al emitir el pedido; para contabilidad, al registrar facturas. El presupuesto puede gestionarse de forma anual o mensual, tema que veremos a continuación.",
+    "start_time": 134.8,
+    "end_time": 190.2
   },
   {
     "slide_index": 8,
-    "image_file": "019_Slide_08_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Define the relevant to budget accounts Step 2 - Define the Relevant to Budget Accounts After you initialize the budget functionality, and update the General Settings window, you have the option to mark all profit and loss accounts as budget accounts. By choosing Yes, the Relevant to Budget checkbox is selected in all your profit-and-loss G/L accounts. You can then find this checkbox in Financials → Chart of Accounts → Account Details pushbutton. Note that you can manually select non profit-and-loss G/L accounts to be relevant to the budget by selecting the Relevant to Budget checkbox for each G/L account.",
-    "start_time": 318.41,
-    "end_time": 353.33
+    "image_file": "Slide_008.webp",
+    "script_text": "Tras inicializar el presupuesto, el siguiente paso es definir qué cuentas participarán en el control presupuestario. En SAP Business One, esto se hace desde el Plan de Cuentas, en el módulo Finanzas. Al abrir los Detalles de la Cuenta de una cuenta G/L, encuentras la casilla Relevante para Presupuesto. Si marcas Sí, esa cuenta será monitoreada contra el presupuesto. Puedes hacerlo manualmente cuenta por cuenta o, de forma rápida, marcar todas las cuentas de pérdidas y ganancias como relevantes al inicializar el sistema. Esto es útil para gastos como vuelos, servicios o suministros. Solo las cuentas marcadas como relevantes participarán en las verificaciones de desviación. Es importante revisar que las cuentas correctas estén seleccionadas para evitar omisiones en el control presupuestario.",
+    "start_time": 190.2,
+    "end_time": 239.2
   },
   {
     "slide_index": 9,
-    "image_file": "019_Slide_09_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Annual Versus Monthly Budget Year forecast Monthly Budget Flights 6000:12 = 500 Year forecast Annual Budget Flights 6000 You can manage the budget on an annual or monthly basis. With the annual option, the deviation from the budget forecast is measured against the actual balance of the G/L account for the current fiscal year. In our example, if OEC Computers will choose the annual budget option and enter a forecast amount of 6000 to the flight expense account, then the check for budget deviation would always be against this amount. For the monthly option, the system distributes the budget forecast amount for each G/L account among the months of the year. In each month the transactions that debit this G/L account are being compared against the distributed monthly amount. If OEC Computers will choose the monthly option and enter the same amount of 6000 as the forecast amount of the flight expense account, then the system would distribute this amount to 12, allocating a monthly budget of 500. The check for budget deviation would be against this distributed amount.",
-    "start_time": 353.33,
-    "end_time": 415.94
+    "image_file": "Slide_009.webp",
+    "script_text": "SAP Business One permite gestionar el presupuesto de dos formas: anual o mensual. Con la opción anual, el sistema compara los gastos acumulados contra el total presupuestado para todo el año. Por ejemplo, si presupuestas 6.000 USD para gastos de vuelos, se revisa que el gasto acumulado no supere ese monto. En cambio, con la opción mensual, el presupuesto se divide equitativamente entre los 12 meses: 6.000 USD al año se convierten en 500 USD por mes. Cada mes, los gastos se comparan contra ese límite mensual. Esto permite un control más estricto y temprano, ideal para gastos regulares como vuelos o servicios. La elección depende del patrón de gasto: si es uniforme, mensual es mejor; si varía mucho, anual puede ser más flexible. Ambas opciones se configuran en la inicialización del presupuesto.",
+    "start_time": 239.2,
+    "end_time": 293.0
   },
   {
     "slide_index": 10,
-    "image_file": "019_Slide_10_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Annual Versus Monthly Budget Year forecast Monthly Budget Flights 6000:12 = 500 actual balance in the flight expense G\\L account 5000 Year forecast Annual Budget Flights 6000 October Purchasing order: Flight tickets 600 Let us assume we are now in October, the actual balance in the flight expense G\\L account is 5000, a purchase order for a flight ticket with a total amount of 600 is being issued. With the annual option, the budget check will approve this expense because 5600 is still within the year forecast amount of 6000. According to the monthly budget, the limit for expenses on flight tickets in each month is 500, so 600 is already a budget deviation and therefore the purchase order would be blocked. Note that if the warning option is chosen in the General Settings for budget, then the system would present an alert when the budget is exceeded. The user can confirm and add the transaction if an authorization to confirm budget deviation was defined for this user.",
-    "start_time": 415.94,
-    "end_time": 474.41
+    "image_file": "Slide_010.webp",
+    "script_text": "Veamos cómo funciona el control presupuestario en la práctica. Supongamos que en octubre el saldo real en la cuenta de gastos de vuelos es de 5.000 USD y se emite un pedido de compra por 600 USD. Con presupuesto anual, el total acumulado sería 5.600 USD, que aún está dentro del límite de 6.000 USD, por lo que el pedido se aprueba. Sin embargo, con presupuesto mensual, cada mes tiene un límite de 500 USD (6.000 ÷ 12). Al intentar gastar 600 USD en octubre, se supera ese límite, generando una desviación. Si el sistema está configurado para alertar, se muestra una advertencia. El usuario puede entonces confirmar la transacción solo si tiene autorización para hacerlo, definida previamente en Finanzas. Si no tiene permiso, el pedido se bloquea. Este mecanismo evita gastos no planificados y asegura el cumplimiento financiero.",
+    "start_time": 293.0,
+    "end_time": 349.2
   },
   {
     "slide_index": 11,
-    "image_file": "019_Slide_11_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Step 3 - Define Budget Distribution Methods * Not relevant for working with an annual budget. 3 Define Budget Distribution Methods In the example we have just seen, SAP Business One used the Equal budget distribution method to automatically divide the budget amount among the months of year. SAP Business One automatically defines the following 3 common budget distribution methods: The Equal one. Ascending Order – which distributes the budget amount in an ascending order and is used when you increase your budget expenses over the months of the year. For example, in January you use only a small proportion of your budget amount, in February you increase your expenses, and so on. Descending Order – that distributes the budget amount in a descending order and is used when you decrease your budget expenses over the months of the year. For example, in January you use the largest proportion of your budget amount, in February you use a little less, and so on. These methods cannot be revised. However, you can choose to add additional methods. Choose Financials Budget Setup Budget Distribution Methods. Note that later on, you can change the distribution of the budget amounts manually for each account. You can define a certain distribution method as the default method by choosing the Set as Default button. Also note that budget distribution methods are not relevant for working with an annual budget.",
-    "start_time": 474.41,
-    "end_time": 556.68
+    "image_file": "Slide_011.webp",
+    "script_text": "Al usar presupuesto mensual, SAP Business One distribuye el importe anual entre los meses mediante métodos predefinidos. El método Igual divide el total en partes iguales cada mes. El método Orden Ascendente asigna menos al inicio y más al final, útil si los gastos aumentan durante el año. El método Orden Descendente hace lo contrario: más al inicio y menos al final, ideal para gastos que disminuyen. Estos tres métodos vienen configurados por defecto y no se pueden modificar. Sin embargo, puedes crear métodos personalizados en Finanzas → Configuración de Presupuesto → Métodos de Distribución del Presupuesto. Allí también puedes establecer uno como predeterminado. Es importante recordar que estos métodos solo aplican al presupuesto mensual; si trabajas con anual, no se usa ninguna distribución, ya que el control es contra el total acumulado del año.",
+    "start_time": 349.2,
+    "end_time": 403.8
   },
   {
     "slide_index": 12,
-    "image_file": "019_Slide_12_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Budget Scenarios Optimistic Scenario Account 100000 Account 200000 Account 300000 Account 400000 Account 500000 Main Scenario Pessimistic Scenario Note that during routine work, deviation from the budget is checked against the main budget scenario only. The other scenarios are used for budget reports! Budget scenarios are used mainly for displaying budget reports. Using a scenario, you create an analysis of a particular situation for the company's budget and obtain information about what the budgetary balance would be according to the selected scenario. For example: an optimistic scenario versus a pessimistic scenario. When you set up a new company, the application provides a default scenario called Main Budget. This scenario cannot be edited. For each scenario the company uses, you should later enter budget amounts Note that in the course of routine work, deviation from the budget is checked against the main budget only. The other scenarios are used only for budget reports!",
-    "start_time": 556.68,
-    "end_time": 615.89
+    "image_file": "Slide_012.webp",
+    "script_text": "SAP Business One permite trabajar con múltiples escenarios de presupuesto para análisis y planificación. Durante las operaciones normales, el sistema solo verifica las desviaciones contra el escenario llamado Presupuesto Principal, que se crea por defecto y no se puede editar. Los otros escenarios, como Optimista y Pesimista, se usan exclusivamente para generar informes de presupuesto comparativos. Por ejemplo, puedes comparar el desempeño real contra un escenario optimista (con presupuestos más altos) o pesimista (con presupuestos más ajustados). Esto ayuda a evaluar qué tan conservadora o ambiciosa fue la planificación inicial. Cada escenario requiere que ingreses manualmente los importes presupuestados para cada cuenta G/L relevante. Estos escenarios no afectan las transacciones ni los controles en tiempo real, solo sirven para el análisis posterior mediante informes.",
+    "start_time": 403.8,
+    "end_time": 454.0
   },
   {
     "slide_index": 13,
-    "image_file": "019_Slide_13_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Budget Scenarios To define budget scenarios choose Financials Budget Setup Budget Scenarios. Select a fiscal year. Then, in the menu bar, choose Data Add Row or right-click in the window and choose Add Row. The first defined scenario will be the default main scenario and therefore cannot be deleted. In addition, the Based On and the Initial Ratio fields in the main scenario cannot be changed. In the next step we will enter budget amounts to this main budget scenario. The Import Scenario function lets you import budget scenario from other SAP Business One company into new budget scenario. Make sure during the operation that the G/L account codes in the source company match those in the target company. The Copy Scenario function lets you copy budget data from a budget scenario into a target budget scenario in the same company for the same fiscal year or for the next fiscal year.",
-    "start_time": 615.89,
-    "end_time": 668.78
+    "image_file": "Slide_013.webp",
+    "script_text": "Para definir escenarios de presupuesto en SAP Business One, accede a Finanzas, luego Configuración de Presupuesto y selecciona Escenarios de Presupuesto. Elige el ejercicio fiscal correspondiente. En la barra de menú, elige Datos → Agregar Fila o haz clic derecho y selecciona la misma opción. El primer escenario que crees se convierte automáticamente en el escenario principal predeterminado, por lo que no puede eliminarse. Además, sus campos Basado En e Índice Inicial están bloqueados y no pueden modificarse. Este escenario principal será donde introduzcas los importes del presupuesto. También puedes importar un escenario desde otra empresa, asegurando que los códigos de cuenta G/L coincidan, o copiar datos entre escenarios dentro de la misma empresa para el mismo o siguiente ejercicio fiscal.",
+    "start_time": 454.0,
+    "end_time": 503.0
   },
   {
     "slide_index": 14,
-    "image_file": "019_Slide_14_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Define Budget Amounts Step 4 - Defining Budget Amounts Finally, you define budget amounts. Choose Financials Budget Setup Budget. Choose the scenario for which you want to define a budget and choose the required G/L accounts.",
-    "start_time": 668.78,
-    "end_time": 684.26
+    "image_file": "Slide_014.webp",
+    "script_text": "En esta etapa, defines los importes del presupuesto para las cuentas contables seleccionadas. Ve a Finanzas → Configuración de Presupuesto → Presupuesto. Allí, elige el escenario para el cual deseas establecer el presupuesto, por ejemplo, el escenario principal del ejercicio 2026. Luego, selecciona las cuentas G/L que necesitas presupuestar, como gastos de oficina o servicios públicos. En la columna Debe/Haber en Moneda Local, ingresa el importe planeado para cada cuenta en moneda local, en este caso dólares estadounidenses. Este paso es clave para establecer las metas financieras que el sistema luego monitoreará contra las transacciones reales.",
+    "start_time": 503.0,
+    "end_time": 542.0
   },
   {
     "slide_index": 15,
-    "image_file": "019_Slide_15_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Defining Budget Amounts In the Local Debit / Credit column specify an amount in local currency for each G/L account. Note that: You can define budget amounts only for G/L accounts which are defined as Relevant to Budget in the Chart of Accounts. SAP Business One checks the budget for deviations against the debit side of the transactions registered to the G/L account. Thus, alerts are only triggered for accounts with a budgeted amount in the Debit column. You can use the Credit field for sales accounts to set revenue targets which you can track with the budget report. When you create a new budget that includes accounts without previous budget definitions, the window does not display any accounts. In such a case, select the Display Accounts with no Budget checkbox. For each account, you can change the budget amount and the distribution method. You can also change the distribution of the budget amounts manually using the Budget Item Details window. Double-click the required row number in the table, or right-click the row and choose Row Details. If you change the budget amounts manually, the Method column in the Budget Scenarios – Setup window changes to Manual and is marked in red in the corresponding G/L account row.",
-    "start_time": 684.26,
-    "end_time": 756.74
+    "image_file": "Slide_015.webp",
+    "script_text": "En la columna Debe/Haber en Moneda Local, especifica el importe presupuestado para cada cuenta G/L en moneda local. Solo puedes definir importes para cuentas marcadas como Relevantes para Presupuesto en el Plan de Cuentas. El sistema compara las desviaciones contra el lado del Debe de las transacciones, por lo que las alertas se activan solo si hay un importe presupuestado en Debe. Usa la columna Haber para cuentas de ventas, estableciendo objetivos de ingresos que podrás seguir con el informe de presupuesto. Si creas un presupuesto nuevo y no aparecen cuentas, marca la casilla Mostrar Cuentas sin Presupuesto. Para cada cuenta, puedes ajustar el importe, cambiar el método de distribución o modificar manualmente la distribución en la ventana Detalles de Partida de Presupuesto. Si editas manualmente, el método pasa a Manual y se marca en rojo en la configuración de escenarios.",
+    "start_time": 542.0,
+    "end_time": 599.0
   },
   {
     "slide_index": 16,
-    "image_file": "019_Slide_16_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Defining Budget Amounts The Actual column will present the balance in this account based on its journal entries. When you define a budget amount for a G/L account that already has a bookkeeping balance, SAP Business One displays a system message about existing transactions in the system and asks you if you want to restore the account accumulator. Choosing Yes Copies the current G/L account's bookkeeping balance for the chosen fiscal year to the Actual column. This means that SAP Business One considers the current bookkeeping balance as its starts to calculate the used budget amounts. Choosing No Ignores the G/L account's current bookkeeping balance and starts calculating the used budget as of this moment (zero budget amount used).",
-    "start_time": 756.74,
-    "end_time": 799.3
+    "image_file": "Slide_016.webp",
+    "script_text": "La columna Real en la ventana de presupuesto muestra el saldo contable actual de la cuenta G/L basado en los asientos registrados. Si defines un importe de presupuesto para una cuenta que ya tiene saldo, SAP Business One muestra un mensaje preguntando si deseas restaurar el acumulador. Al elegir Sí, el sistema copia el saldo contable actual de la cuenta para el ejercicio fiscal seleccionado a la columna Real, considerando ese saldo al comenzar el cálculo del presupuesto utilizado. Si eliges No, ignora el saldo actual y comienza a calcular el presupuesto usado desde cero, es decir, el importe de presupuesto utilizado inicia en cero. Esta decisión afecta cómo se mide el cumplimiento del presupuesto desde el inicio del ejercicio.",
+    "start_time": 599.0,
+    "end_time": 647.6
   },
   {
     "slide_index": 17,
-    "image_file": "019_Slide_17_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Purchasing order: Flight tickets 600 Getting Down to Work Now the budget is defined for the selected accounts, enabling you to perform an analysis by comparing the defined budget with the actual business activity. In the course of routine work, when you create a transaction against an expense G/L account which is relevant to budget, a check for deviation from the main budget scenario is executed, and if the budget is exceeded, an alert is issued. When the Warning option is chosen in the general settings for budget, the user can choose to continue and add the transaction, or cancel. Note that this is subjected to authorization to confirm budget deviation. If the Block Deviation from Budget option was defined, then the system will block the creation of the transaction that causes the budget to be exceeded.",
-    "start_time": 799.3,
-    "end_time": 844.9
+    "image_file": "Slide_017.webp",
+    "script_text": "Una vez definido el presupuesto, puedes comenzar a trabajar normalmente. Al crear una transacción contra una cuenta G/L de gastos relevante para el presupuesto, SAP Business One realiza automáticamente una comprobación de desviación respecto al escenario de presupuesto principal. Si el gasto supera el importe presupuestado, el sistema emite una alerta. Si la configuración general está establecida en Advertencia, el usuario puede decidir continuar y registrar la transacción o cancelarla. Esta acción requiere autorización para confirmar la desviación. Sin embargo, si se ha activado la opción Bloquear Desviación del Presupuesto, el sistema impedirá completamente la creación de cualquier transacción que cause una superación del presupuesto, garantizando el cumplimiento estricto del plan financiero.",
+    "start_time": 647.6,
+    "end_time": 693.0
   },
   {
     "slide_index": 18,
-    "image_file": "019_Slide_18_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Budget Report Choose Financials Financial Reports Budget Reports Budget Report. The Budget Report enables you to display the company’s budget data according to your requirements. This report analyzes the business activities that occur during a defined period, with reference to a selected budget scenario.",
-    "start_time": 844.9,
-    "end_time": 863.88
+    "image_file": "Slide_018.webp",
+    "script_text": "El Informe de Presupuesto te permite analizar el desempeño financiero comparando lo planeado con lo real. Para acceder a él, ve a Finanzas → Informes Financieros → Informes de Presupuesto → Informe de Presupuesto. Este informe muestra los datos del presupuesto de la empresa según tus requerimientos de filtrado, como escenario, período y cuentas. Analiza las actividades empresariales que ocurren durante un período definido, por ejemplo, un mes o trimestre, y las compara con el escenario de presupuesto seleccionado. Es una herramienta clave para tomar decisiones informadas, identificar desviaciones tempranas y ajustar operaciones o planes futuros según el rendimiento real frente al plan establecido.",
+    "start_time": 693.0,
+    "end_time": 735.2
   },
   {
     "slide_index": 19,
-    "image_file": "019_Slide_19_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Financial Budget Reports Choose Financials Financial Reports Budget Reports The standard financial reports can be displayed along with the budget data: Balance Sheet, Trial Balance, Profit and Loss Statement. You can run the budget reports according to a preferred budget scenario.",
-    "start_time": 863.88,
-    "end_time": 880.49
+    "image_file": "Slide_019.webp",
+    "script_text": "En SAP Business One, puedes acceder a los informes financieros de presupuesto desde el módulo de Finanzas, luego Informes Financieros y finalmente Informes de Presupuesto. Estos informes te permiten comparar la actividad real con lo previsto, mostrando el Balance, la Cuenta de Pérdidas y Ganancias y el Balance de Comprobación junto con los datos del presupuesto. Puedes ejecutarlos según el escenario de presupuesto que hayas definido, como el principal o alternativos, para analizar desviaciones en tiempo real. Esto es clave para tomar decisiones financieras informadas en tu empresa.",
+    "start_time": 735.2,
+    "end_time": 771.0
   },
   {
     "slide_index": 20,
-    "image_file": "019_Slide_20_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Summary Here are some key points:  The purpose of budgeting is to provide a forecast of revenues and expenditures. This way, the actual financial operation of the business can be measured against the forecast.  After initializing the budget, you define what should happen when documents deviate from budget. Whether to block the creation of transactions that cause the budget to be exceeded. Or to present an alert. The user can confirm and add the transaction if an authorization to confirm budget deviation was defined for this user.  You have the option to mark all profit and loss accounts as budget accounts. Here are some key points: The purpose of budgeting is to provide a forecast of revenues and expenditures. This way, the actual financial operation of the business can be measured against the forecast. After initializing the budget, you define what should happen when documents deviate from budget. Whether to block the creation of transactions that cause the budget to be exceeded. Or to present an alert. The user can confirm and add the transaction if an authorization to confirm budget deviation was defined for this user. You have the option to mark all profit and loss accounts as budget accounts.",
-    "start_time": 880.49,
-    "end_time": 950.95
+    "image_file": "Slide_020.webp",
+    "script_text": "El presupuesto en SAP Business One sirve para prever ingresos y gastos, permitiendo comparar la actividad financiera real con lo previsto. Tras inicializarlo, defines cómo actuar ante desviaciones: bloquear transacciones que lo excedan o mostrar una alerta. Los usuarios con autorización pueden confirmar y agregar transacciones pese a la desviación. Además, puedes marcar todas las cuentas de Pérdidas y Ganancias como cuentas de presupuesto para incluir su control. Esto brinda flexibilidad y control financiero adaptado a las necesidades de tu empresa.",
+    "start_time": 771.0,
+    "end_time": 804.0
   },
   {
     "slide_index": 21,
-    "image_file": "019_Slide_21_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "Summary – cont.  You can manage the budget on an annual or monthly basis. With the annual option, the deviation from the budget forecast is measured against the actual balance of the G/L account for the current fiscal year.  For the monthly option, the system distributes the budget forecast amount for each G/L account among the months of the year. The check for budget deviation would be against this distributed amount.  You define budget amounts to the budget scenario.  In the course of routine work, deviation from the budget is checked against the main budget only. The other scenarios are used for budget reports!  SAP Business One checks the budget for deviations against the debit side of the transactions registered to the G/L account. You can manage the budget on an annual or monthly basis. With the annual option, the deviation from the budget forecast is measured against the actual balance of the G/L account for the current fiscal year. For the monthly option, the system distributes the budget forecast amount for each G/L account among the months of the year. The check for budget deviation would be against this distributed amount. You define budget amounts to the budget scenario. In the course of routine work, deviation from the budget is checked against the main budget only. The other scenarios are used for budget reports! SAP Business One checks the budget for deviations against the debit side of the transactions registered to the G/L account.",
-    "start_time": 950.95,
-    "end_time": 1040.59
-  },
-  {
-    "slide_index": 22,
-    "image_file": "019_Slide_22_10_CostandBudget_21_Budget_Budget.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epxfor additional trademark information and notices.",
-    "start_time": 1040.59,
-    "end_time": 1177.87
+    "image_file": "Slide_021.webp",
+    "script_text": "Puedes gestionar el presupuesto de forma anual o mensual según tus necesidades. Con la opción anual, la desviación se mide contra el saldo real de la cuenta G/L del ejercicio fiscal actual. En la modalidad mensual, el sistema reparte el importe presupuestado de cada cuenta G/L entre los meses del año, y la desviación se calcula contra ese importe distribuido. Los importes se definen en el escenario de presupuesto, pero durante el trabajo habitual, solo se verifica contra el presupuesto principal. Los demás escenarios se reservan exclusivamente para informes de presupuesto, no para control operativo.",
+    "start_time": 804.0,
+    "end_time": 842.6
   }
 ]

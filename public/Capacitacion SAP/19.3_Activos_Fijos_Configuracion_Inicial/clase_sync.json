@@ -1,226 +1,219 @@
 [
   {
     "slide_index": 1,
-    "image_file": "034_Slide_01_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Bienvenidos a esta clase sobre FixedAsset 21 FixedAsset InitSettings en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Fixed Assets: Initial Settings SAP Business One Version 10.0 Welcome to the Fixed Assets – Initial Settings topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Activos Fijos: Configuración Inicial en SAP Business One versión 10.0. Aquí aprenderás los pasos esenciales para habilitar y configurar la gestión de activos fijos en una empresa, desde la activación de la solución hasta la definición de datos maestros y conjuntos de definiciones. Este tema es clave para llevar un control preciso del valor y vida útil de los bienes de la empresa, como vehículos o equipos, cumpliendo con requisitos contables y legales.",
     "start_time": 0.0,
-    "end_time": 22.18
+    "end_time": 31.4
   },
   {
     "slide_index": 2,
-    "image_file": "034_Slide_02_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "At the end of this topic, you will be able to: • Set-up fixed asset definitions in the system. • Define Fixed Assets Master Data. Objectives Note! You need to make decisions about legal and industry requirements together with the client accountant. At the end of this topic, you will be able to: • Set-up fixed asset definitions in the system. • Define Fixed Assets Master Data. Note! You need to make decisions about legal and industry requirements together with the client accountant.",
-    "start_time": 22.18,
-    "end_time": 53.95
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás configurar las definiciones de activos fijos en el sistema y definir los datos maestros de activos necesarios para tu empresa. Además, comprenderás la importancia de coordinar con el contable del cliente para establecer requisitos legales y sectoriales que influyan en la configuración. Estos objetivos te prepararán para implementar correctamente la solución de activos fijos en SAP Business One, asegurando un registro preciso y conforme a normativas.",
+    "start_time": 31.4,
+    "end_time": 60.4
   },
   {
     "slide_index": 3,
-    "image_file": "034_Slide_03_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Business Example Bryce the accountant, wanted to have the option to manage and monitor the trucks’ value. After you introduced him to the Fixed Assets solution in SAP Business One, he decided to enable it in the company database. You help him to set it up in the system. OEC Computers utilizes a small fleet of delivery trucks. As the company purchases the trucks, they want to set them up as assets. OEC Computers OEC Computers • OEC Computers utilizes a small fleet of delivery trucks. • As the company purchases the trucks, they want to set them up as assets. • Bryce the accountant, wanted to have the option to manage and monitor the trucks’ value. • After you introduced him to the Fixed Assets solution in SAP Business One, he decided to enable it in the company database. • You help him to set it up in the system.",
-    "start_time": 53.95,
-    "end_time": 104.74
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers necesita registrar su flota de camiones de reparto como activos fijos para controlar su valor y vida útil. Bryce, el contable, quiere gestionar y supervisar el valor de estos activos tras adquirir la solución de Activos Fijos en SAP Business One. Tú, como asistente, lo ayudarás a habilitar y configurar esta funcionalidad en la base de datos de la empresa. Este escenario muestra cómo una empresa real puede usar SAP para transformar una necesidad operativa en un proceso contable estructurado y automatizado.",
+    "start_time": 60.4,
+    "end_time": 94.6
   },
   {
     "slide_index": 4,
-    "image_file": "034_Slide_04_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "System Initialization - Steps To start working with the Fixed Assets solution you should follow these steps: 1. Activate the new solution. 2. For each type of asset the company owns, configure a set of definitions. 3. Define document numbering for the fixed asset documents the company is going to work with. 4. Define an Asset Master Data record for each asset. 5. Attach the relevant set of definitions to each asset master data. To start working with the Fixed Assets solution you should follow these steps: 1. First, you need to activate the new solution. 2. Next, for each type of asset the company owns, configure a set of definitions. For example define the Heavy Vehicles set of definitions to be attached to the fleet of delivery trucks that the OEC Computers owns. 3. You should also define document numbering for the fixed asset documents the company is going to work with. 4. Then, define an Asset Master Data record for each asset. For example, define the Truck as Asset Master Data. 5. Next, you attach the relevant set of definitions to each asset master data. So, in our example, you attach the Heavy Vehicles set of definitions to the Truck Asset Master Data In the next slides we will follow these steps in more details.",
-    "start_time": 104.74,
-    "end_time": 182.42
+    "image_file": "Slide_004.webp",
+    "script_text": "Para comenzar a trabajar con la solución de Activos Fijos en SAP Business One, debes seguir cinco pasos clave. Primero, activas la solución desde la inicialización del sistema. Luego, para cada tipo de activo (como vehículos), configuras un conjunto de definiciones específico. Después, defines la numeración de documentos que usará la empresa para transacciones de activos fijos. A continuación, creas un registro de datos maestros para cada activo individual, como un camión. Finalmente, adjuntas el conjunto de definiciones correspondiente a cada dato maestro, vinculando la configuración técnica al activo específico. Este flujo asegura una setup estructurada y lista para operar.",
+    "start_time": 94.6,
+    "end_time": 135.2
   },
   {
     "slide_index": 5,
-    "image_file": "034_Slide_05_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": ". Activate the New Solution Administration System Initialization Company Details Basic Initialization Check the Enable Fixed Assets box: New windows and fields will be available for the user: – Administration Setup Financials Fixed Assets. – Financials Fixed Assets.  To enable the new solution go to: Administration System Initialization  Company Details Basic Initialization.  Check the Enable Fixed Assets box.  Once the user checks the box, the Fixed Assets functionality will be activated and new windows and fields will be available under Administration Setup Financials  Fixed Assets.  And under Financials Fixed Assets.  Once the solution is activated, you cannot deactivate it and the Enable Fixed Assets box becomes disabled.",
-    "start_time": 182.42,
-    "end_time": 227.45
+    "image_file": "Slide_005.webp",
+    "script_text": "Para activar la solución de Activos Fijos en SAP Business One, navegas a Administración → Inicialización del Sistema → Datos de la Empresa → Inicialización Básica. Allí, marcas la casilla Habilitar Activos Fijos. Una vez activada, no podrás desactivarla y la casilla quedará deshabilitada. Tras la activación, aparecen nuevas ventanas y campos en Finanzas → Activos Fijos y en Administración → Configuración → Finanzas → Activos Fijos. Este paso es irreversible durante el ejercicio fiscal y habilita todo el módulo para comenzar a configurar tipos de activos, datos maestros y procesos de amortización.",
+    "start_time": 135.2,
+    "end_time": 173.0
   },
   {
     "slide_index": 6,
-    "image_file": "034_Slide_06_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Activate the Fixed Assets Solution – Set Depreciation Calculation  After you activate the Fixed Assets solution, a new option appears, Calculate Depreciation By, enabling the user to define the depreciation calculation period.  In this field you specify whether you want the system to calculate the depreciation of fixed assets by month or day.  The default selection is Month.  This is a global setting on a company level. You cannot change it during a fiscal year if a depreciation transaction was already posted.  You will be able to change the selected value at the next fiscal year.  In the presented example you can see the Transit vehicle that thethe useful life of this vehicle is 12 months.  company purchased in a cost of 6000.  For the sake of the example, let us assume that In the monthly calculation, the system will calculate the same value for each month. For example, 6000 : 12 Months = 500 depreciation rate per month.  This calculation will be displayed as the Planned Depreciation rates in the Asset Master Data Fixed Assets tab Depreciation sub-tab.  You can see the calculation in the presented Asset Master Data with the planned monthly depreciation rate of 500.  The daily calculation will have the following calculation 6000 : 365 Days = 16.44 per day. So, the depreciation amount for February for example, will be 28 Days * 16.44 = 460.27.  Note! in the calculations we present here we assume that the Straight Line Deprecation Method was defined for the asset master data. We will discuss the deprecation methods in the next slides.",
-    "start_time": 227.45,
-    "end_time": 329.11
+    "image_file": "Slide_006.webp",
+    "script_text": "Tras activar la solución de Activos Fijos, aparece la opción Calcular Amortización Por, que define si el sistema calcula la amortización por mes o por día. Esta es una configuración global a nivel de empresa y no se puede cambiar durante un ejercicio fiscal si ya se ha contabilizado una transacción de amortización; solo se puede modificar en el siguiente ejercicio. En el ejemplo, un vehículo de 6.000 USD con vida útil de 12 meses genera una cuota mensual de 500 USD (6.000 ÷ 12) o diaria de 16,44 USD (6.000 ÷ 365). Para febrero, eso sería 28 días × 16,44 = 460,27 USD. Este cálculo se basa en el método lineal y se muestra en los Datos Maestros de Activos, pestaña Activos Fijos → subpestaña Amortización, como cuota de Amortización Planificada.",
+    "start_time": 173.0,
+    "end_time": 226.4
   },
   {
     "slide_index": 7,
-    "image_file": "034_Slide_07_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": ". Fixed Assets Set of Definitions Asset Class Asset master Data Truck Depreciation Type Account Determination Depreciation Area Main Depreciation Area: GAAP Method: Straight Line Code: FA Motors Code: Motor Vehicles • Let us look at our example. We have the new truck that OEC Computers purchased at the beginning of the fiscal year. • We create a set of definitions relevant to this kind of asset. In our example we define the Motor Vehicles set of definitions. • Then, we define this truck as Asset Master Data under Financials Fixed Assets  Asset Master Data and attach the Motor Vehicles set of definitions to the truck master data. • The main definition in the Asset Master Data is the Asset Class which groups the other definitions: Depreciation Area, Account Determination and Depreciation Type. • In the next slides we will review the different definitions.",
-    "start_time": 329.11,
-    "end_time": 379.39
+    "image_file": "Slide_007.webp",
+    "script_text": "En este paso definimos el conjunto de definiciones para activos fijos, que agrupa la clase de activo, el tipo de amortización, la determinación de cuentas y el área de amortización. Primero creamos el conjunto llamado Vehículos de Motor. Luego, en Finanzas → Activos Fijos → Datos Maestros de Activos, registramos el camión y le asignamos ese conjunto. La clase de activo, como Vehículos de Motor, es la definición principal que agrupa las demás. Así, todas las transacciones del activo usarán automáticamente las cuentas y reglas vinculadas. Este enfoque asegura consistencia en la contabilidad de activos desde su creación.",
+    "start_time": 226.4,
+    "end_time": 266.2
   },
   {
     "slide_index": 8,
-    "image_file": "034_Slide_08_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Depreciation Area Asset Class Truck Depreciation Type Account Determination Depreciation Area Code: Motor Vehicles Main Depreciation Area: GAAP • You define the Depreciation Area in Administration Setup Financials Fixed Assets. • The Depreciation Area is a financial dimension showing the valuation of the asset according to a particular accounting standard, for example: book depreciation, tax depreciation, or depreciation for cost accounting. • In the Type field we choose between three options: Posting to G/L, Additional Area and Derived Area. The default option is Additional Area. ─The Posting to G/L option - means that this area will post transactions to the assets sub-ledger. In our example, we will define GAAP that is, Local Generally Accepted Accounting Principles, as the Posting to G/L area. ─You can define an Additional Area if necessary. In our example, we will define the IFRS as the additional area that is, International Financial Reporting Standards. ─The additional area can be used for reports. ─For the unique main depreciation area, the user can define one Derived Area. The derived area is a reference to the main depreciation area. The value differences between them are mostly used to keep unplanned depreciation values. ─So, in our case when you post a special or unplanned depreciation to the main area (the GAAP area) , the derived area will keep the unplanned depreciation values enabling the main area to reflect the basic calculation defined in the initial setup. • Note! • You cannot change the depreciation area type in case the area was assigned to an asset class.",
-    "start_time": 379.39,
-    "end_time": 479.16
+    "image_file": "Slide_008.webp",
+    "script_text": "El área de amortización es una dimensión financiera que muestra cómo se valora un activo según una norma contable específica, como PCGA o NIIF. Se define en Administración → Configuración → Finanzas → Activos Fijos. Hay tres tipos: Contabilización en C/G, Área Adicional y Área Derivada. La predeterminada es Área Adicional. Contabilización en C/G registra transacciones en el libro auxiliar de activos. En nuestro caso, PCGA es el área Contabilización en C/G y NIIF el área adicional, útil para informes distintos. El área derivada refleja la principal y conserva diferencias por amortización no planificada.",
+    "start_time": 266.2,
+    "end_time": 304.4
   },
   {
     "slide_index": 9,
-    "image_file": "034_Slide_09_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Depreciation Area - Posting to G/L Type Asset Class Truck Depreciation Type Account Determination Depreciation Area Main Depreciation Area: GAAP Code: Motor Vehicles • When you choose the Posting to G/L type other fields appear. • These fields are unique to the Posting to G/L type and will not appear when you choose the Additional Area or the Derived area. • The Main Depreciation Area is the first definition you choose. • You need to define one depreciation area as the main area in the company. • In our example, the main area is GAAP that is, Local Generally Accepted Accounting Principles • This main depreciation area will post transactions to the system. • Note! You can define another Posting to G/L area type which is different from the main depreciation area. But, remember that both of them will post transactions to the assets sub-ledger. • For the main area you can choose a derived depreciation area.",
-    "start_time": 479.16,
-    "end_time": 536.11
+    "image_file": "Slide_009.webp",
+    "script_text": "Al seleccionar el tipo Contabilización en C/G en el área de amortización, aparecen campos específicos. Aquí definimos el área principal, que en nuestro ejemplo es PCGA, y que contabilizará todas las transacciones en el libro auxiliar de activos. También podemos definir un área adicional, como NIIF, para informes alternativos, y un área derivada que referencia a la principal para conservar valores de amortización no planificada. El área principal debe ser única por empresa y se usa como base para cálculos estándar.",
+    "start_time": 304.4,
+    "end_time": 337.4
   },
   {
     "slide_index": 10,
-    "image_file": "034_Slide_10_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Depreciation Area - Posting to G/L Type – Cont. Asset Class Truck Depreciation Type Account Determination Depreciation Area Main Depreciation Area: GAAP Code: Motor Vehicles • Two more fields that become available when you choose the Posting to G/L area type are: Posting of Depreciation and Posting of Retirement. • These definitions will apply in the Depreciation and the Retirement documents respectively. • Here, you decide which accounts will be used automatically in the Depreciation and the Retirement documents. • The accounts are taken from the fixed assets Account Determination definition attached to the asset master data. • We will discuss the account determination window in the next slides. • In the Posting of Depreciation field you choose between Direct Posing and Indirect posting. The default value is Direct Posting. • In Direct Posting, the system will post the depreciation directly to the asset balance sheet account specified for the asset. • In Indirect Posting, the system uses the accumulated depreciation account to post the depreciation. • In this option, the asset balance sheet account is affected only when the asset is purchased or retired. • Note! this setting depends on the local Generally Accepted Accounting Principles or the internal company accounting policy. It should not be changed in praxis. If it is changed, the reporting might not be transparent. • In the Posting of Retirement field you choose between Gross and Net. The default value is Gross. • This definition will apply in a Retirement document of Scrapping type (as oppose to Sales type). The system will always treat scrapping as loss. In Gross the system uses the default expense Gross account. And in Net the system uses the default expense Net account.",
-    "start_time": 536.11,
-    "end_time": 641.04
+    "image_file": "Slide_010.webp",
+    "script_text": "En el tipo Contabilización en C/G, se activan dos campos clave: Contabilización de Amortización y Contabilización de Baja. En Amortización, elegimos entre Directa (el gasto va directo a la cuenta del activo) e Indirecta (se usa la cuenta de amortización acumulada). El predeterminado es Directa. En Baja, elegimos entre Bruto (usa cuenta de gastos brutos) y Neto (usa cuenta de gastos netos), aplicable a documentos de desecho. El sistema trata el desecho como pérdida. Estos ajustes dependen de PCGA o política interna y no deben modificarse tras la configuración inicial para mantener la transparencia de los informes.",
+    "start_time": 337.4,
+    "end_time": 376.8
   },
   {
     "slide_index": 11,
-    "image_file": "034_Slide_11_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Account Determination for Fixed Assets Asset Class Truck Depreciation Type Account Determination Depreciation Area Main Depreciation Area: GAAP Code: FA Motors Code: Motor Vehicles • You setup the Account Determination for fixed assets in Administration Setup  Financials Fixed Assets. • The Account Determination definition enables the system to automatically select the relevant G/L accounts for assets accounting. • For each type of asset the company owns you define a set of accounts. In our example we defined the FA Motors set of accounts. • Then, you will attach this definition to the appropriate asset class. In our example it will be the Motor Vehicles asset class. • The asset class will be selected for heavy vehicles assets for example the truck that the company owns. • Therefor, all transactions involving the truck will automatically register entries to the FA Motors set of accounts. • Note! you need to make decisions about G/L Account Determination together with the client accountant.",
-    "start_time": 641.04,
-    "end_time": 700.1
+    "image_file": "Slide_011.webp",
+    "script_text": "La Determinación de Cuentas para activos fijos permite al sistema seleccionar automáticamente las cuentas contables correctas al registrar transacciones. En nuestro ejemplo, definimos el conjunto FA Motores para la clase de activo Vehículos de Motor. Este conjunto incluye cuentas como el activo fijo (150000), su amortización acumulada (150001), el gasto de amortización (650000) y la cuenta de baja (650001). Al crear el datos maestros del camión y asignarle esta clase, todas las transacciones —compra, amortización o baja— generarán asientos automáticos en estas cuentas, asegurando consistencia y reduciendo errores manuales.",
+    "start_time": 376.8,
+    "end_time": 413.0
   },
   {
     "slide_index": 12,
-    "image_file": "034_Slide_12_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Depreciation Type Motor Vehicles Truck Depreciation Type Account Determination Depreciation Area Main Depreciation Area: GAAP Method: Straight Line Code: FA Motors Code: Heavy Vehicles • You define Depreciation Type in Administration Setup Financials Fixed Assets. • The Depreciation Type classifies the depreciation based on the reason for the value adjustment. • The main parameter in the Depreciation Type definition is the depreciation Method. • In the graphic, an example of depreciation type is the straight line method of depreciation.",
-    "start_time": 700.1,
-    "end_time": 732.29
+    "image_file": "Slide_012.webp",
+    "script_text": "El tipo de amortización clasifica la amortización según el motivo del ajuste de valor del activo, como uso, obsolescencia o accidente. Su parámetro principal es el método de amortización, que define cómo se reparte el costo a lo largo de la vida útil. En el ejemplo, se muestra el método lineal, donde el monto anual es constante. Este tipo se define en Administración → Configuración → Finanzas → Activos Fijos y se vincula al activo mediante su clase. Elegir el tipo correcto asegura que la amortización refleje fielmente la realidad económica del activo y cumpla con normas como PCGA o NIIF.",
+    "start_time": 413.0,
+    "end_time": 454.0
   },
   {
     "slide_index": 13,
-    "image_file": "034_Slide_13_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Depreciation Type - Depreciation Method • SAP Business One allows you to set up depreciation types using several pre- defined depreciation methods: ─No Deprecation ─Straight Line ─Straight Line Period Control ─Declining Balance. ─Multilevel ─Immediate Write-Off ─Special Depreciation ─And Manual Deprecation • The depreciation method sets the depreciation value calculation. • In our example we choose the Straight Line method which is the most common method. • After you define the code, the description and choose the method for the depreciation type, you set the Calculation Base. • You can choose between two options: Yearly and Monthly. The default value is Yearly. • Note! The use of the Monthly option is exceptional. In most countries it is illegal by local Generally Accepted Accounting Principles and might only be used in an Additional Area. • The value you choose in the Calculation Base field will influence the calculation tab. • For details on the other fields in the General tab of the Definition Types – Setup window refer to the On Line Help. • Next, let us discuss the calculation tab.",
-    "start_time": 732.29,
-    "end_time": 797.18
+    "image_file": "Slide_013.webp",
+    "script_text": "En SAP Business One puedes configurar varios métodos de amortización para activos fijos. Los más usados son lineal, saldo decreciente y multinivel. También existen opciones como sin amortización, inmediata, especial y manual. El método elegido determina cómo se calcula el gasto de amortización periódico. En la práctica contable, el lineal es el más común por su simplicidad y aceptación normativa. Cada método se adapta a distintos patrones de desgaste del activo. La configuración se hace en el módulo de activos fijos bajo administración y finanzas.",
+    "start_time": 454.0,
+    "end_time": 488.6
   },
   {
     "slide_index": 14,
-    "image_file": "034_Slide_14_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Straight Line Method - The Calculation Tab 4800/ 24 months of useful life = 200 200 * 12 months = 2400 Acquisition Value * percentage * Months of the period / 12 Net Book Value * months of the period / Remaining Life of the asset • The depreciation method you choose sets the values and fields in the Calculation tab. • When you choose the Straight Line method the Calculation Method field appears in the calculation tab. • The Straight Line depreciation is the simplest and most commonly used depreciation method, which assumes an asset loses an equal amount of value each year over its estimated useful life. This means that the acquisition and production costs are distributed evenly across the entire useful life of the asset. • Generally, the straight line depreciation is calculated by subtracting the salvage value of the asset from the acquisition and production costs, and then dividing this amount by the useful life of the asset. In SAP Business One, you are provided with two additional calculation methods. • So, in the Calculation Method field, under the Calculation tab, you can choose between three options: • The first option is Acquisition Value /Total Useful Life - ─If we look at our truck, let us assume that the acquisition value of the truck was 4800 and the useful life defined for the asset is 24 months. The calculated depreciation value for a year will be: ─ 4800 / 24 months of useful life = 200. ─ The yearly calculation will then be: 200*12 = 2400 • The second option is Percentage of Acquisition Value – ─When you choose this option the Annual Percentage field appears allowing you to enter the percentage value. ─The calculation of the depreciation value will be the acquisition value * the entered percentage * months of the period / 12. • And the third option is Net Book Value /Remaining Life - ─The Net Book Value is the acquisition value of the asset less any depreciation that has been applied or the asset’s last revaluation value. ─The calculation of the depreciation value will be the Net Book Value * months of the period / Remaining Life of the asset.",
-    "start_time": 797.18,
-    "end_time": 927.29
+    "image_file": "Slide_014.webp",
+    "script_text": "El método lineal reparte el costo del activo de forma uniforme durante su vida útil. SAP Business One ofrece tres formas de calcularlo dentro de la pestaña de cálculo. Primero, dividir el valor de adquisición entre la vida útil total. Segundo, aplicar un porcentaje anual al valor de adquisición. Tercero, usar el valor contable neto dividido por la vida restante. Cada opción se elige según la política contable de la empresa. El resultado es el gasto de amortización mensual o anual, según la base de cálculo definida.",
+    "start_time": 488.6,
+    "end_time": 524.0
   },
   {
     "slide_index": 15,
-    "image_file": "034_Slide_15_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Declining Balance Method • The second most common method in use is the Declining Balance method. • The declining balance method involves higher depreciation charges at the beginning of an asset's useful life and gradually decreasing charges in subsequent periods. • Each year, the depreciation is calculated using the same constant percentage rate. In the first year, the system calculates the depreciation based on the asset's acquisition and production costs. In the following years, the calculation is based on the asset's remaining net book value.",
-    "start_time": 927.29,
-    "end_time": 959.64
+    "image_file": "Slide_015.webp",
+    "script_text": "El método de saldo decreciente genera mayores gastos de amortización al inicio de la vida del activo, que van disminuyendo con el tiempo. Se aplica un porcentaje fijo anual sobre el valor contable neto restante. En el primer año, se usa el costo de adquisición; en los años siguientes, el valor neto después de las amortizaciones previas. Este método refleja mejor el desgaste acelerado de ciertos activos, como equipos tecnológicos o vehículos. Es aceptado en muchas normas contables cuando se justifica el patrón de uso del activo.",
+    "start_time": 524.0,
+    "end_time": 559.4
   },
   {
     "slide_index": 16,
-    "image_file": "034_Slide_16_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Declining Balance Method – The Calculation Tab • Let us review the fields that appear in the Calculation tab when you choose the Declining Balance method. • In the Percentage field do either of the following: ─If you have selected Yearly in the Calculation Base field, enter the annual percentage rate for the depreciation calculation. ─If you have selected Monthly in the Calculation Base field, enter the monthly percentage rate for the depreciation calculation. ─Note! The use of the Monthly option is exceptional. In most countries it is illegal by local Generally Accepted Accounting Principles and might only be used in an Additional Area. • The depreciation amount determined by the Declining Balance method must not exceed a specified upper limit. • The value you enter in the Factor field controls the upper limit of the depreciation amount. • The upper limit is calculated using the straight line method and multiplied by this factor. • Note! If an asset's depreciation amount exceeds the upper limit, SAP Business One uses the upper limit as the depreciation amount instead. • Another rule you can set here is the Automatically Change To field. • The system can switch to straight line depreciation towards the end of the useful life. • In this field, you define that the declining balance depreciation method will change to a different depreciation type defined in the system. • Recommendation: in the Automatically Change To field, do not specify a depreciation type that does not use the straight line method. If you do so, SAP Business One always calculates the depreciation of an asset as zero. • The system compares the depreciation amounts between the declining balance and straight line method. When the depreciation amount calculated with the declining balance method falls below the straight line depreciation amount in a point of an asset's life, SAP Business One automatically switches to the straight line depreciation from that point on. • If the user leaves the Automatically Change To field empty, the system will continue to calculate the depreciation amounts according to the declining balance method until the asset’s end of useful life.",
-    "start_time": 959.64,
-    "end_time": 1080.05
+    "image_file": "Slide_016.webp",
+    "script_text": "En esta pantalla defines los parámetros clave para el método de saldo decreciente. Introduces el porcentaje anual de amortización, que se aplica al valor contable neto. El factor controla el límite máximo: si el cálculo supera el límite lineal multiplicado por ese factor, se usa el límite. También puedes configurar un cambio automático al método lineal cuando el saldo decreciente resulte menor. La base de cálculo, normalmente anual, afecta cómo se interpreta el porcentaje. Estos ajustes aseguran que la amortización se mantenga dentro de límites razonables y normativos.",
+    "start_time": 559.4,
+    "end_time": 595.2
   },
   {
     "slide_index": 17,
-    "image_file": "034_Slide_17_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Multilevel Method – The Calculation Tab Acquisition Value or Net Book Value * annual percentage * months of the period / 12 • The third most common method in use is the Multilevel method. • With the multilevel method, you can view an asset's useful life as several phases and depreciate the asset by a defined rate in each phase. • SAP Business One lets you break down an asset's useful life into five phases. • Within each level, a certain percentage rate is used for depreciation. This percentage rate is replaced by the percentage rate of the subsequent level after the validity period expires. • Let us review the fields that appear in the Calculation tab when you choose the Multilevel method. • In the Base column you choose between two options: Acquisition Value and Net Book Value. • In the Number of Years column you enter the number of years for this level. • Then you enter the annual percentage to be depreciated in this level. • Note! You should define at least one level. • The calculation will be the acquisition Value or the net book value * the annual percentage * the months of the period / 12",
-    "start_time": 1080.05,
-    "end_time": 1147.25
+    "image_file": "Slide_017.webp",
+    "script_text": "El método multinivel permite dividir la vida útil de un activo en hasta cinco fases, cada una con su propio porcentaje de amortización. En cada nivel defines si la base es el valor de adquisición o el valor contable neto, la duración en años y el porcentaje anual a aplicar. Cuando finaliza un nivel, el sistema pasa automáticamente al siguiente. Este método es útil para activos cuya pérdida de valor no es uniforme, como maquinaria con obsolescencia tecnológica rápida. Debe definirse al menos un nivel para activar el cálculo.",
+    "start_time": 595.2,
+    "end_time": 631.4
   },
   {
     "slide_index": 18,
-    "image_file": "034_Slide_18_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Asset Class Asset Class Truck Depreciation Type Account Determination Depreciation Area Code: Motor Vehicles • You define the Asset Classes in Administration Setup Financials Fixed Assets. • Each asset class groups the definitions of the other settings: Depreciation Area, Account Determination and Depreciation Type. • Each fixed asset will be assigned to one asset class. In our example, the truck belongs to the Motor vehicles asset class. • When defining a new asset class you enter the Code and optionally the Description. • In the Asset Type field you choose between General and Low Value Asset. ─A Low Value Asset is an asset for which the acquisition and production costs (less included sales tax) does not exceed a legally predefined amount. Typically, a low value asset can be completely written off within the period in which it is acquired. ─Once the user chooses the Low Value Asset option, two additional fields appear: Value Limit From and Value Limit To enabling to enter the minimal and the maximal values allowed by national laws.",
-    "start_time": 1147.25,
-    "end_time": 1207.68
+    "image_file": "Slide_018.webp",
+    "script_text": "Las clases de activo agrupan configuraciones clave como el tipo de amortización, el área de amortización y la determinación de cuentas contables. Cada activo fijo se asigna a una clase, lo que simplifica su gestión. En este ejemplo, se crea la clase 'VEH001' para vehículos de motor. También puedes marcar un activo como de bajo valor, lo que activa límites mínimo y máximo definidos por ley. Estos activos suelen gastarse completamente en el período de adquisición. Esta clasificación asegura consistencia en la contabilidad y facilita reportes y auditorías.",
+    "start_time": 631.4,
+    "end_time": 667.2
   },
   {
     "slide_index": 19,
-    "image_file": "034_Slide_19_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Asset Class – Depreciation Areas Section Code: Motor Vehicles Asset Class Truck Depreciation Type Account Determination Depreciation Area • In the Depreciation areas section, you first choose the depreciation areas according to which you want to valuate the asset. • Each asset class must contain the main depreciation area (GAAP in our example). If a derived area was defined for the main area it will appear right below the main area. • You can choose an additional area for the asset class definition if necessary. In our example, we define the IFRS as the additional area in the Motor vehicles asset class. • The additional area can be used for reports. • The default status of the Active field is checked. In the main depreciation area and the derived area rows, this field is checked and is not-editable. The user can update the field in the other areas. • Next, you choose the Account Determination definition and the Depreciation Type for each area. • In the Useful Life field, you enter (in months) the period during which this asset type is expected to be usable for the purpose for which it was acquired. • Useful life may, or may not, correspond with the asset's actual physical life, or economic life. Before the end of an asset’s useful life, the asset should be written off completely.",
-    "start_time": 1207.68,
-    "end_time": 1284.65
+    "image_file": "Slide_019.webp",
+    "script_text": "En la configuración de una clase de activo en SAP Business One, primero seleccionas las áreas de amortización según las cuales deseas valorar el activo. Cada clase debe incluir el área de amortización principal, como PCGA en nuestro ejemplo. Si existe un área derivada, aparece debajo y no se puede editar directamente. También puedes definir un área adicional, como NIIF, útil para informes financieros. El campo Activo está marcado por defecto en las áreas principal y derivada, y es editable solo en otras áreas. Luego, defines la Determinación de Cuentas y el Tipo de Amortización para cada área. Finalmente, en el campo Vida Útil, ingresas en meses el período durante el cual se espera que el activo sea utilizable para su propósito adquirido.",
+    "start_time": 667.2,
+    "end_time": 717.0
   },
   {
     "slide_index": 20,
-    "image_file": "034_Slide_20_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": ". Define Document Numbering Fixed asset documents in the Document Numbering window:  Capitalization  Capitalization Credit Memo  Manual Depreciation  Revaluation  Transfer  Retirement  When working with fixed assets as virtual items, define dedicated numbering series for the created assets.  Note, that the fixed asset and the items master data use the same numbering series setup. Therefore, define a series for virtual fixed assets in the Items object in Document Numbering window.  Before you start working with fixed assets, define document numbering for the fixed asset documents the company is going to work with.  The following numbering objects in the Document Numbering window are dedicated for fixed asset documents:  Capitalization  Capitalization Credit Memo  Manual Depreciation  Revaluation  Transfer  Retirement  The default value in the First No. column is 1. You can change this value before starting to work with this document.  If your company would like to define some of their fixed assets as virtual items, you should set-up a dedicated numbering series for the created assets.  Once you define an asset master data as a virtual item, you can start using it as a template for purchasing a bulk of identical assets.  Using the numbering series, enables the system to create several new assets when a virtual item is purchased in a single transaction row.  Note, that the fixed asset and the items master data use the same numbering series setup. Therefore, in the Document Numbering window, double-click the Items row and define a series for virtual fixed assets.",
-    "start_time": 1284.65,
-    "end_time": 1374.07
+    "image_file": "Slide_020.webp",
+    "script_text": "Para gestionar correctamente los documentos de activos fijos en SAP Business One, debes definir series de numeración dedicadas en la ventana de Numeración de Documentos. Esto aplica especialmente cuando trabajas con activos fijos como artículos virtuales, ya que comparten la misma configuración de series que los datos maestros de artículos. Los documentos que requieren numeración incluyen: Capitalización, Nota de Crédito de Capitalización, Amortización Manual, Revaluación, Transferencia y Baja. Al definir una serie específica para activos fijos virtuales en el objeto Artículos, el sistema puede generar automáticamente múltiples activos nuevos al comprar un artículo virtual en una sola fila de transacción, facilitando la creación masiva de activos idénticos.",
+    "start_time": 717.0,
+    "end_time": 760.4
   },
   {
     "slide_index": 21,
-    "image_file": "034_Slide_21_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": ". Define Asset Master Data Asset Master Data: Truck Asset Master Data: Building Asset Master Data Laptop OEC Compu ters OEC Computers  Next, you define an Asset Master Data record for each asset the company owns, for example, vehicle, building or a laptop.  In the next slides we will see how the definition in the Asset Master Data influences the automatically created journal entries and the value of the fixed asset item.",
-    "start_time": 1374.07,
-    "end_time": 1399.1
+    "image_file": "Slide_021.webp",
+    "script_text": "En SAP Business One, debes crear un registro de Datos Maestros de Activos para cada activo que posee la empresa, ya sea un camión, edificio o portátil. Este registro contiene toda la información técnica y financiera necesaria para gestionar el activo durante su vida útil. La definición realizada aquí influye directamente en dos aspectos críticos: los asientos contables que se generan automáticamente (como depreciación o revaluación) y el valor contable del activo fijo en los estados financieros. Por eso, es fundamental completar correctamente todos los campos en esta etapa inicial, ya que cualquier error afectará la precisión de la contabilidad y los reportes de activos.",
+    "start_time": 760.4,
+    "end_time": 803.0
   },
   {
     "slide_index": 22,
-    "image_file": "034_Slide_22_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Define an Asset Master Data – Fixed Assets Tab  The Asset Master Data is located under Financials Fixed Assets Asset Master Data .  In this window you define the assets the company owns.  It is very similar to the Item Master Data window with the addition of the Fixed Assets Item Type and the Fixed Assets tab.  With the Asset Master Data being separated from the Item Master Data, authorizations are handled more efficiently.  You can follow the process of managing an asset by using the different sub-tabs in the Asset Master Data: ─Overview ─Values ─Depreciation ─Cost Accounting ─And Attributes  Let us review the Overview sub-tab.",
-    "start_time": 1399.1,
-    "end_time": 1435.06
+    "image_file": "Slide_022.webp",
+    "script_text": "Los Datos Maestros de Activos se acceden desde el menú Finanzas → Activos Fijos → Datos Maestros de Activos en SAP Business One. Esta ventana es muy similar a la de Datos Maestros de Artículos, pero incluye dos elementos clave: el Tipo de Artículo de Activos Fijos y la pestaña Activos Fijos. Al mantenerlos separados de los datos maestros de artículos, se mejora la gestión de autorizaciones, ya que se pueden aplicar permisos específicos solo a quienes gestionan activos fijos. Desde aquí, puedes seguir el ciclo de vida de un activo usando las subpestañas: Resumen, Valores, Amortización, Contabilidad de Costos y Atributos, cada una enfocada en un aspecto específico de la gestión del activo.",
+    "start_time": 803.0,
+    "end_time": 849.2
   },
   {
     "slide_index": 23,
-    "image_file": "034_Slide_23_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "The Overview Sub-Tab Information General Definitions Depreciation Parameters The Overview sub-tab includes three main areas: The General Definitions area where you define the settings for the asset according to its’ type. The Depreciation Parameters area where you set the parameters for depreciation calculation. The Information area where you can see high level information about the selected asset in a certain fiscal year and depreciation area. Let us review the three areas.",
-    "start_time": 1435.06,
-    "end_time": 1462.9
+    "image_file": "Slide_023.webp",
+    "script_text": "La subpestaña Resumen en los Datos Maestros de Activos se divide en tres áreas principales que organizan la información esencial del activo. El área Definiciones Generales permite configurar las características básicas del activo según su tipo, como clase de activo y estado. En el área Parámetros de Amortización, estableces los valores necesarios para el cálculo automático de la depreciación, como vida útil y método. Finalmente, el área Información muestra datos de alto nivel sobre el activo, como su valor contable y acumulación de amortización, filtrados por un ejercicio fiscal y área de amortización específicos, facilitando el seguimiento financiero y auditoría.",
+    "start_time": 849.2,
+    "end_time": 889.8
   },
   {
     "slide_index": 24,
-    "image_file": "034_Slide_24_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "The Overview Sub-Tab: General Definitions Area General Definitions • In the general definitions area you enter the settings that reflect the asset type. • The Status field is updated automatically with the three system statuses: New, Active and Inactive. ─The Default value when the asset is created is New. This means that the fixed asset was added, but was not capitalized yet. ─The status changes to Active when the asset is capitalized (that is when the depreciation process starts). ─When the fixed asset is retired by scrapping or has been sold, the status changes to Inactive. From now on, no value will be registered in the books for this asset. • In the Capitalization Date field, specify the date on which the asset is capitalized. You can manually specify and update the date before the capitalization actually takes place. Alternatively, SAP Business One automatically fill the date when you capitalize the asset upon the creation of either the Capitalization document, or the A/P Invoice. • The main definition in the Asset Master Data is the Asset Class which includes the association to the other definitions: Depreciation Area, Account Determination and Depreciation Type. • For details on the other fields in the general definitions area refer to the On Line Help.",
-    "start_time": 1462.9,
-    "end_time": 1539.84
+    "image_file": "Slide_024.webp",
+    "script_text": "En el área de Definiciones Generales dentro de la subpestaña Resumen, defines la configuración que refleja el tipo de activo. El campo Estado se actualiza automáticamente según el ciclo de vida: comienza como Nuevo al crearse, cambia a Activo cuando se capitaliza (inicia la amortización) y pasa a Inactivo al darse de baja por desecho o venta, momento en el cual deja de generar valores contables. La Fecha de Capitalización indica exactamente cuando se inicia dicho proceso. La definición más importante en esta sección es la Clase de Activo, que vincula el activo con su Área de Amortización, Determinación de Cuentas y Tipo de Amortización, heredando así toda su configuración contable y de valuación.",
+    "start_time": 889.8,
+    "end_time": 936.0
   },
   {
     "slide_index": 25,
-    "image_file": "034_Slide_25_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Depreciation Parameters The Overview Sub-Tab: Depreciation Parameters Area Step 5 Attach the relevant set of definitions to each asset master data. • This is the fifth step where you attach the relevant set of definitions to each asset master data. So, in our example, you attach the Motor Vehicles Asset Class to the Truck Asset Master Data. • Once you attach the Asset Class to the Asset Master Data window all related definitions will apply to this asset. • In the presented example you can see that the Depreciation Areas, the Useful Life and the Depreciation Types defined for the Motor Vehicles Asset Class apply to the presented Asset Master Data. • The user can change the Useful Life and the Depreciation Type of the asset. • To define specific depreciation calculation factors for different periods, choose the Period Control pushbutton. • Note that this pushbutton is enabled only if you have selected a row where the depreciation type meets the following conditions: • The depreciation type has the Straight Line Period Control method. • The depreciation period of the depreciation type (defined under the Calculation tab in the Depreciation Types – Setup window) is Individual or Individual Usage.",
-    "start_time": 1539.84,
-    "end_time": 1608.1
+    "image_file": "Slide_025.webp",
+    "script_text": "En este paso, adjuntas la clase de activo correspondiente a cada dato maestro de activo. Por ejemplo, asignas la clase 'Vehículos de Motor' al camión. Al hacerlo, todas las definiciones de amortización — como áreas, vida útil y tipos — se aplican automáticamente al activo. Esto asegura consistencia en el cálculo. El usuario puede ajustar luego la vida útil o el tipo de amortización si es necesario, según políticas contables o uso real del activo.",
+    "start_time": 936.0,
+    "end_time": 966.6
   },
   {
     "slide_index": 26,
-    "image_file": "034_Slide_26_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "The Overview Sub-Tab: Information Area Information • In the information area you can see a high level view of the asset data. • The data is presented according to the selected Depreciation Area and the selected Fiscal year. • Once you choose a depreciation area and a fiscal year in the corresponding fields, the other fields in the information area presents the numbers according to this selection. • For details on the fields in the information area refer to the On Line Help.",
-    "start_time": 1608.1,
-    "end_time": 1635.53
+    "image_file": "Slide_026.webp",
+    "script_text": "Esta área muestra un resumen clave del activo según el área de amortización y ejercicio fiscal seleccionados. Al elegir, por ejemplo, 'Argentina' y '2026', el sistema actualiza automáticamente los valores como valor de libro, depreciación acumulada y vida útil restante. Es útil para consultar rápidamente el estado contable del activo sin generar informes complejos.",
+    "start_time": 966.6,
+    "end_time": 988.8
   },
   {
     "slide_index": 27,
-    "image_file": "034_Slide_27_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Manage Multiple Assets VS. Manage Overall Quantity in Fixed Assets  In many cases the company will define a separate asset master data record for each single asset. For example, when each laptop is assigned to a different employee, or has different software components installed in it.  In this case, each laptop will be defined as a separated Asset Master Data.  You can manage fixed assets with the Virtual Item function. When your company needs to purchase identical fixed assets in large quantities for internal use, create a virtual item representing the fixed asset. In the A/P Invoice choose this template item and enter a certain quantity in the item row.  Then, SAP Business One automatically creates the same quantity of asset master data records, and capitalizes them for you.  Some companies however want to manage the fixed asset only for the accounting side and therefor will define one type of asset representing the value of the entire quantity of this asset. For example, the chairs that the OEC Computers purchase for their classroom.",
-    "start_time": 1635.53,
-    "end_time": 1696.82
+    "image_file": "Slide_027.webp",
+    "script_text": "Puedes gestionar activos fijos de dos formas: creando un dato maestro por cada activo individual — como portátiles asignados a empleados distintos — o usando un artículo virtual para activos idénticos en lote. El artículo virtual permite que, al ingresar una cantidad en una factura de compra, SAP cree automáticamente tantos datos maestros de activos como unidades especificadas, cada uno con su propio número de serie y valores contables.",
+    "start_time": 988.8,
+    "end_time": 1017.0
   },
   {
     "slide_index": 28,
-    "image_file": "034_Slide_28_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Manage Overall Quantity in Fixed Assets  In case OEC Computers wants to manage the classroom chairs only for the accounting side, they will define a single asseCCt master data record representing all the chairs they purchase for their classroom.  Then, for this asset master data record, the company can decide whether to document the number of purchased items or not.  So, in the A/P Invoice they need to decide whether to consider the purchased quantity or not.  In the Form Settings of the A/P Invoice under the Table Format tab, they should choose to make the Consider Quantity column Visible and Active.  The Consider Quantity column will be active only for asset master data records. It will be disabled for a regular item.  Once the user adds the A/P Invoice, the purchased quantity will be registered in the asset master data in the Quantity field under the Overview sub-tab. This data will also appear in reports.",
-    "start_time": 1696.82,
-    "end_time": 1751.4
+    "image_file": "Slide_028.webp",
+    "script_text": "Para gestionar activos por cantidad global — como todas las sillas de un aula bajo un solo registro — debes activar la columna 'Considerar Cantidad' en el formato de tabla de la factura de compra. Esta columna solo está disponible para datos maestros de activos, no para artículos normales. Al registrar la factura, la cantidad ingresada se guarda en el campo 'Cantidad' del activo y se refleja en los informes, permitiendo control contable sin multiplicar registros.",
+    "start_time": 1017.0,
+    "end_time": 1048.0
   },
   {
     "slide_index": 29,
-    "image_file": "034_Slide_29_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "OEC Computers defined a virtual item for the mobile phones they purchase for their employees. • Virtual items can be capitalized by A/P invoices only. 29 Manage Multiple Assets with the Virtual Item Option.",
-    "start_time": 1751.4,
-    "end_time": 1766.5
+    "image_file": "Slide_029.webp",
+    "script_text": "Un artículo virtual actúa como plantilla para crear múltiples activos fijos idénticos. Solo puede capitalizarse mediante facturas de compra (OC). No tiene valor contable por sí mismo, pero al usarlo en una transacción, SAP genera automáticamente los datos maestros de activos correspondientes, cada uno con su propio registro y valor de capitalización.",
+    "start_time": 1048.0,
+    "end_time": 1069.4
   },
   {
     "slide_index": 30,
-    "image_file": "034_Slide_30_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "The quantity of the automatically created asset master data is the same as the quantity you have specified in the A/P invoice. • The item numbers are automatically assigned to newly created asset master data, according to the rules you have defined for the series used in the master data of the virtual fixed asset (step 3 in our initialization process). • In our example, when OEC Computers enter a quantity of 9 mobile phones in the A/P Invoice row, the system automatically creates 9 asset master data, one for each mobile phone. • The information in the asset master data of the virtual fixed asset is copied to the newly created asset master data, except the Virtual Item checkbox which stays unselected. • The assets created are regular fixed assets with monetary values. The virtual item functions as a template and therefore will not have any values under the Fixed Assets tab. 30 Manage Multiple Assets with the Virtual Item Option.",
-    "start_time": 1766.5,
-    "end_time": 1822.56
+    "image_file": "Slide_030.webp",
+    "script_text": "Cuando especificas una cantidad en una factura de compra usando un artículo virtual — por ejemplo, 9 teléfonos móviles — SAP crea automáticamente esa misma cantidad de datos maestros de activos, uno por unidad. Copia la información del artículo virtual, excepto la marca de 'artículo virtual', que se desactiva. Los activos resultantes son normales, con valor contable, y sus números de artículo se asignan según la serie definida en la configuración inicial.",
+    "start_time": 1069.4,
+    "end_time": 1098.8
   },
   {
     "slide_index": 31,
-    "image_file": "034_Slide_31_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "Summary To start working with the Fixed Assets solution you should follow these steps: • Activate the new solution. • For each type of asset the company owns, configure a set of definitions. • Define document numbering for the fixed asset documents the company is going to work with. • Define an Asset Master Data record for each asset. • Attach the relevant set of definitions to each asset master data. For certain assets decide: • Whether to define a separate master data record for each single asset using the Virtual Item function. • Or, to manage the fixed asset only for the accounting side and therefor define one asset representing the value of the entire quantity of this asset. Here are some key points to take away: • Here are some key points to take away: • To start working with the Fixed Assets solution you should follow these steps:  Activate the new solution.  For each type of asset the company owns, configure a set of definitions.  Define document numbering for the fixed asset documents the company is going to work with.  Define an Asset Master Data record for each asset.  Attach the relevant set of definitions to each asset master data.  For certain assets, decide whether to define a separate master data record for each single asset using the Virtual Item function. Or, to manage the fixed asset only for the accounting side and therefor define one asset representing the value of the entire quantity of this asset.",
-    "start_time": 1822.56,
-    "end_time": 1904.06
-  },
-  {
-    "slide_index": 32,
-    "image_file": "034_Slide_32_10_FixedAsset_21_FixedAsset_InitSettings.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epxfor additional trademark information and notices.",
-    "start_time": 1904.06,
-    "end_time": 2041.34
+    "image_file": "Slide_031.webp",
+    "script_text": "Para comenzar a trabajar con la solución de Activos Fijos en SAP Business One, primero debes activar la nueva solución desde el menú de administración. Luego, para cada tipo de activo que tenga tu empresa —como maquinaria, equipos de oficina o vehículos— debes configurar un conjunto de definiciones que incluyan vida útil, método de depreciación y cuentas contables. Después, define la numeración de documentos específicos para activos fijos, como solicitudes de compra o transferencias. A continuación, crea un registro de Datos Maestros de Activos para cada bien, ya sea individualmente o agrupado. Adjunta el conjunto de definiciones correspondiente a cada activo maestro. Finalmente, decide si gestionar ciertos activos individualmente usando la función Artículo Virtual o representar su valor total en un solo activo para fines contables únicamente.",
+    "start_time": 1098.8,
+    "end_time": 1150.2
   }
 ]

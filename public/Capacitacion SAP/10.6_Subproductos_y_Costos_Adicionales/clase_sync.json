@@ -1,65 +1,65 @@
 [
   {
     "slide_index": 1,
-    "image_file": "092_Slide_01_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "Bienvenidos a esta clase sobre Production 42 Process ByProductsandAdditional en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Production and MRP: By Products and Additional Quantity SAP Business One Version 10.0 Welcome to the By Product and Additional Quantity course topic. In order to take this course, you should first complete the Production Process training topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de subproductos y cantidades adicionales en el proceso de producción de SAP Business One 10.0. Aquí aprenderás cómo los subproductos se generan como resultado secundario de la producción y cómo se configuran en la Lista de Materiales con cantidades negativas. También verás cómo procesarlos mediante métodos manuales o de retroimputación, y cómo se registran en el inventario al completar una Orden de Producción. Este conocimiento es esencial para empresas manufactureras que desean reflejar con precisión todos los outputs de su proceso productivo, incluyendo aquellos que no son el artículo principal pero que tienen valor comercial o de inventario.",
     "start_time": 0.0,
-    "end_time": 28.8
+    "end_time": 41.0
   },
   {
     "slide_index": 2,
-    "image_file": "092_Slide_02_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "After completing this topic, you will be able to: Explain the concept of a by product. Add By–Products to inventory during the production process Define Additional Quantity in the Production Order Calculate the planned quantity of items and resources in the Production Order 2 At the end of this topic, you will be able to: Explain the concept of a by product. Add By–Products to inventory during the production process Define Additional Quantity in the Production Order Calculate the planned quantity of items and resources in the Production Order Objectives",
-    "start_time": 28.8,
-    "end_time": 58.94
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás configurar subproductos en una Lista de Materiales asignándoles cantidades negativas para indicar su generación como salida del proceso. También aprenderás a procesar estos subproductos en una Orden de Producción, ya sea mediante el método manual, donde creas explícitamente una Entrada desde Producción, o mediante retroimputación, donde el sistema los agrega automáticamente al inventario al cerrar la orden. Finalmente, comprenderás cómo configurar y utilizar las Cantidades Adicionales, que permiten registrar insumos no planificados durante la producción, como materiales de limpieza o lubricantes, asegurando un control preciso de costos e inventario.",
+    "start_time": 41.0,
+    "end_time": 79.2
   },
   {
     "slide_index": 3,
-    "image_file": "092_Slide_03_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "So What is a by product? A by product is an item produced from left over materials in the production process. One or more by products can be produced along with the main product, using a single production order. These by products are then stored in the warehouse as separate items and later are sold or used again as a component in production. In our business example, production of window and door frames involves cuts that leave wood remains that can be re used for producing smaller sized items. Other examples include: Production of chemicals, where beside the main chemical also some side chemicals can be produced. Metal plate cutting, where the remains are re used for production. 3 3 By Products What is a by product? A by product is an item produced from left over materials in the production process. One or more by products can be produced along with the main product, using a single production order. These by products are then stored in the warehouse as separate items and later are sold or used again as a component in production. Examples: Production of window and door frames, where the remains after cutting are re used for production of smaller sizes of final products. Production of chemicals, where beside the main chemical also some side chemicals can be produced. Metal plate cutting, where remains are re used.",
-    "start_time": 58.94,
-    "end_time": 136.13
+    "image_file": "Slide_003.webp",
+    "script_text": "Un subproducto es un artículo que se genera como resultado secundario del proceso de producción, además del artículo principal que se pretende fabricar. En SAP Business One, este subproducto no se trata como un insumo consumido, sino como una salida que aumenta el inventario. Para representarlo correctamente, se incluye como componente en la Lista de Materiales con una cantidad negativa, por ejemplo -0.5, indicando que por cada unidad del artículo principal producida, se generan 0.5 unidades del subproducto. Esta configuración le indica al sistema que, al completar la producción, ese artículo debe añadirse al inventario en el almacén designado, reflejando con precisión todos los outputs del proceso productivo.",
+    "start_time": 79.2,
+    "end_time": 123.0
   },
   {
     "slide_index": 4,
-    "image_file": "092_Slide_04_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "By products are defined in Bill of Materials and Production Orders as items, but with a negative quantity. Both the Manual and Backflush issue method are supported for by product. By products are received to a warehouse by Receipt from Production document, like the main final product. Here we see a by product item with a negative quantity of 1 entered on a Production Order row. Since the planned quantity for the finished product is 20, the total of by products produced during manufacturing will be 40. Because we know that this quantity is always produced when making this finished product, we choose to backflush the by product. 4 4 By Products in BOM and Production Order By products are defined in BOMs and Production Orders as items, but with a negative quantity Both the Manual and Backflush issue methods are supported for by products",
-    "start_time": 136.13,
-    "end_time": 182.9
+    "image_file": "Slide_004.webp",
+    "script_text": "Para configurar un subproducto en la Lista de Materiales, primero accedes a la ventana de Lista de Materiales del artículo que se produce, como FG-ANDINA-100. Luego, agregas una nueva fila donde seleccionas el artículo que será el subproducto, en este caso SP-RESINA-EXC, que representa un excedente de resina generado durante el proceso. En el campo de cantidad, ingresas un valor negativo, como -0.5, para indicar que por cada unidad del producto terminado se generan medio unidad del subproducto. Es esencial que el tipo de componente esté configurado como 'Artículo' y no como recurso o gasto. Esta configuración le indica a SAP Business One que, al finalizar la producción, ese subproducto debe ingresarse al inventario del almacén especificado, en este caso el almacén 01 - Principal, con su costo estándar asociado.",
+    "start_time": 123.0,
+    "end_time": 175.6
   },
   {
     "slide_index": 5,
-    "image_file": "092_Slide_05_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "By products are received from production into the warehouse by a Receipt from Production, along with the main final product. When the Manual issue method is used, the quantities can by manually adjusted. However, when the Backflush issue method is used the quantity is derived from the parent item quantity of the main final product. By products with Backflush issue method are added or removed together with the parent item, they are bound together. By products with Manual issue method can be added or removed from the document as independent lines. A By Product column can be added in the Receipt from Production document that indicates if the item is a by product or not. 5 5 Receiving By Products By products are received from production into the warehouse by a Receipt from Production, along with the main final product When the Manual Issue method is used then the quantity can be manually adjusted When the Backflush issue method is used then the quantity is derived from the quantity of the main final product Two items are added: the produced item and the by product Indicates whether an item is a by product",
-    "start_time": 182.9,
-    "end_time": 240.7
+    "image_file": "Slide_005.webp",
+    "script_text": "Existen dos métodos para procesar subproductos en una Orden de Producción. En el método manual, el usuario debe crear explícitamente un documento de Entrada desde Producción al momento de recibir o generar el subproducto, registrando su ingreso al inventario con cantidad y almacén de destino. Este método brinda mayor control y es útil cuando el subproducto se genera en un momento específico o requiere inspección previa. En cambio, el método de retroimputación (backflush) automatiza el proceso: al cerrar la Orden de Producción, el sistema agrega automáticamente el subproducto al inventario según la cantidad definida en la Lista de Materiales, sin necesidad de crear un documento intermedio. Este método es más eficiente para operaciones estandarizadas y de alto volumen, donde la trazabilidad inmediata no es crítica.",
+    "start_time": 175.6,
+    "end_time": 226.2
   },
   {
     "slide_index": 6,
-    "image_file": "092_Slide_06_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "What is Additional Quantity? Additional Quantity (Setup Quantity) represents items or resources that need to be consumed at the beginning or at the end of a production process. Examples include: Machine startup time (Resource). A lead component used to adjust the machine (Item). The Planned Quantity of a component in a Production Order is calculated using this formula: Planned Quantity = (produced item planned Qty x base Qty) + Additional Qty. This rule applies for both items and resources. 6 6 Additional Quantities What is an Additional Quantity? Additional Quantity (Setup Quantity) are items or resources that need to be consumed at the beginning or at the end of a production process. Additional Quantities are not affected by the number of parent items produced. Examples: Machine startup time (Resource) Lead component used to set up the machine (Item) Planned Quantity = (produced item planned Qty x base Qty) + Additional Qty",
-    "start_time": 240.7,
-    "end_time": 302.23
+    "image_file": "Slide_006.webp",
+    "script_text": "Cuando se utiliza el método manual para procesar subproductos, al completar la producción se genera un documento de Entrada desde Producción que registra tanto el artículo principal fabricado como el subproducto generado. En este ejemplo, al cerrar la Orden de Producción OP-2026-0456 para producir 10 unidades de FG-ANDINA-100, el sistema registra la producción del artículo principal y, simultáneamente, el ingreso de 5 unidades del subproducto SP-RESINA-EXC al almacén 01 - Principal, calculado como 10 unidades producidas multiplicadas por la cantidad negativa de -0.5 definida en la Lista de Materiales. El costo del subproducto se valúa usando su costo estándar de 2.50 USD por unidad, lo que genera un aumento de inventario valorado en 12.50 USD. Este documento asegura que tanto la producción como los subproductos se reflejen con precisión en el inventario y los costos de la empresa.",
+    "start_time": 226.2,
+    "end_time": 282.0
   },
   {
     "slide_index": 7,
-    "image_file": "092_Slide_07_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "Example: Additional Quantities Example – Additional Qty represents setup time of the resource BOM definition: Qty = 1 , Additional Qty = 0.25 Planned final product Qty = 10 Planned resource component Qty = (10 1) + 0.25 = 10.25 Here is an example of calculating an Additional Quantity. Here the Additional Quantity represents the setup time for the resource. In our business example, we use a lathe machine in the production process. In the bill of materials we define the Quantity as 1 hour for running the lathe machine, but add an Additional Quantity of 0.25 hours for the time taking to set up the drill of the machine. In our Production Order we produce a quantity of 10 items, therefore the total time for manufacturing the final product is 10 hours based on 10 times 1 hours. However we must add the additional time for the machine set up. Since the set up is not dependent on the number of items produced, we just add the additional time to the 10 hours manufacturing time and receive a total of 10.25 hours.",
-    "start_time": 302.23,
-    "end_time": 368.47
+    "image_file": "Slide_007.webp",
+    "script_text": "Las cantidades adicionales son cantidades fijas de un componente que se requieren para preparar o configurar el proceso de producción, sin importar cuántas unidades se fabriquen. Por ejemplo, una hora de operario para preparar la máquina se necesita siempre, ya sea que se produzcan 10 o 1.000 unidades. Esto permite modelar con precisión los costos reales de setup en SAP Business One, separando lo variable de lo fijo en la lista de materiales.",
+    "start_time": 282.0,
+    "end_time": 311.8
   },
   {
     "slide_index": 8,
-    "image_file": "092_Slide_08_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "Summary Here are some key points: By products are defined in Bills of Materials and Production Orders as items, but with negative quantity. Additional Quantity is an amount of items or resources that needs to be consumed at the beginning or at the end of a production process, and is not affected by the number of parent items to produce. The Planned Quantity of a component in the Production Order row is equal to: (the quantity in the row X the planned quantity of the production order) + the additional quantity in the row. Here are some key points to take away from this session: By products are defined in Bills of Materials and Production Orders as items, but with negative quantity. Additional Quantity is an amount of items or resources that needs to be consumed at the beginning or at the end of a production process, and is not affected by the number of parent items to produce. The Planned Quantity of a component in the Production Order row equals to: (the quantity in the row X the planned quantity of the production order) + the additional quantity in the row.",
-    "start_time": 368.47,
-    "end_time": 424.03
+    "image_file": "Slide_008.webp",
+    "script_text": "La cantidad total planificada de un componente con cantidad adicional se calcula multiplicando la cantidad de la orden de producción por la cantidad base del componente, y luego sumando la cantidad adicional fija. Por ejemplo, para una OP de 100 servidores con 2 horas de operario por servidor y 1 hora de setup, el cálculo es (100 × 2) + 1 = 201 horas. Esta fórmula asegura que los costos de preparación se incluyan correctamente en la planificación de materiales en SAP Business One.",
+    "start_time": 311.8,
+    "end_time": 346.0
   },
   {
     "slide_index": 9,
-    "image_file": "092_Slide_09_10_Production_42_Process_ByProductsandAdditional.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 424.03,
-    "end_time": 556.87
+    "image_file": "Slide_009.webp",
+    "script_text": "Los subproductos se modelan con cantidades negativas en la lista de materiales para reflejar su ingreso al inventario durante la producción. Se procesan manualmente o mediante retroimputación al cerrar la orden. Las cantidades adicionales representan costos fijos de setup que se suman a los costos variables. Juntas, estas funcionalidades permiten representar con fidelidad los procesos reales de producción en SAP Business One, mejorando la precisión de costos y planificación.",
+    "start_time": 346.0,
+    "end_time": 374.2
   }
 ]

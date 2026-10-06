@@ -1,107 +1,107 @@
 [
   {
     "slide_index": 1,
-    "image_file": "090_Slide_01_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Production 31 BOM BOM en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Producción y MRP: Lista de materiales Bienvenido al tema sobre la lista de materiales de la formación. Antes de realizar esta formación tiene que completar el tema Recursos.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre la lista de materiales en SAP Business One Versión 10.0. Antes de comenzar, asegúrate de haber completado el tema de Recursos. Aquí aprenderás qué es una lista de materiales, para qué sirve y cómo se utiliza en el proceso de producción. Esta formación te permitirá comprender su estructura y aplicación en escenarios reales de fabricación.",
     "start_time": 0.0,
-    "end_time": 25.97
+    "end_time": 24.98
   },
   {
     "slide_index": 2,
-    "image_file": "090_Slide_02_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Al finalizar este tema, podrá: Describir la estructura de la lista de materiales Explicar cuándo se utilizan los distintos tipos de lista de materiales 2 Al finalizar este tema, podrá: Describir la estructura de la lista de materiales Explicar cuándo se utilizan los distintos tipos de lista de materiales Objetivos",
-    "start_time": 25.97,
-    "end_time": 45.48
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás describir la estructura de la lista de materiales y explicar cuándo se utilizan los distintos tipos de lista de materiales en SAP Business One. Estos objetivos te guiarán para comprender cómo organizar los componentes y recursos necesarios para fabricar un producto, ya sea en producción estándar o en kits para ensamblaje.",
+    "start_time": 24.98,
+    "end_time": 46.9
   },
   {
     "slide_index": 3,
-    "image_file": "090_Slide_03_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "En este ejemplo, nos fijamos en la empresa OC WoodTrend, que fabrica puertas y armarios de madera personalizados. Dichos artículos se fabrican a partir de varios artículos componente y requieren en uso de recursos para producirse. La lista de artículos y recursos necesarios para producir el producto terminado se registra en la lista de materiales. Para producción compleja, OC WoodTrend define etapas en secuencias con dependencias de fecha. OC WoodTrend también vende distintos kits de muebles para montar en casa. Estos kits incluyen planchas de madera ya cortadas, tornillos y bisagras. Cada kit tiene una lista de materiales, aunque no se utilice en el proceso de producción. 3 OC WoodTrend fabrica puertas y armarios de madera decorativos. Dichos artículos se fabrican a partir de varios artículos componente y requieren en uso de recursos para producirse. La lista de artículos y recursos necesarios para producir el producto terminado se registra en la lista de materiales. Para producción compleja, OC WoodTrend define etapas en secuencias con dependencias de fecha. OC WoodTrend también vende distintos kits de muebles para montar en casa. Estos kits incluyen planchas de madera ya cortadas, tornillos y bisagras. Cada kit tiene una lista de materiales, aunque no se utilice en el proceso de producción. Ejemplo empresarial",
-    "start_time": 45.48,
-    "end_time": 133.37
+    "image_file": "Slide_003.webp",
+    "script_text": "La lista de materiales registra los artículos y recursos necesarios para producir un producto terminado. En el ejemplo de OC WoodTrend, se fabrican puertas y armarios a partir de componentes como madera, pomos y tornillos, requiriendo recursos como torno y operario. También se aplica a kits de muebles para casa, aunque no se usen en producción directa. Es un dato maestro esencial en SAP B1 para planificar la fabricación.",
+    "start_time": 46.9,
+    "end_time": 75.1
   },
   {
     "slide_index": 4,
-    "image_file": "090_Slide_04_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Ejemplo de lista de materiales 1 Puerta decorativa de madera Puerta de madera Torno Pomo Operario de la máquina = Artículo = Recurso Vamos a explicar el concepto de Lista de materiales con el siguiente ejemplo: Para fabricar una puerta de madera tallada necesitamos dos artículos: una puerta de madera normal y un pomo. Además, tenemos que grabar un dibujo decorativo. Para hacerlo, necesitamos dos recursos: Un torno y un operario que maneje la máquina. Esos son los artículos y recursos que forman la lista de materiales para hacer la puerta de madera decorativa. Cuando empieza el proceso de producción, esta Lista de materiales se copia a una Orden de producción. En un entorno de producción real, las listas de materiales suelen tener varios niveles. En nuestro ejemplo, el componente de la pieza de madera también puede tener una lista de materiales. Tenga en cuenta que los productos terminados también se definen como artículos (datos maestros) en el sistema.",
-    "start_time": 133.37,
-    "end_time": 195.29
+    "image_file": "Slide_004.webp",
+    "script_text": "Para fabricar una puerta de madera decorativa se necesita una puerta de madera normal, un pomo, dos ciclos de torno y una hora de operario. Estos artículos y recursos forman la lista de materiales. Al iniciar la producción, esta lista se copia a una Orden de producción en SAP Business One. En entornos reales, los componentes pueden tener sus propias listas de materiales, creando estructuras multinivel. Los productos terminados también se definen como artículos en el sistema.",
+    "start_time": 75.1,
+    "end_time": 107.62
   },
   {
     "slide_index": 5,
-    "image_file": "090_Slide_05_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Ejemplo de lista de materiales 2 Planchas de madera x 2 Relleno aislante Máquina de prensar = Artículo = Recurso Una lista de materiales puede tener varios niveles. Un artículo de componente también puede ser un artículo producido desde otra lista de materiales. En nuestro ejemplo, la puerta de madera es un artículo producido de un segundo nivel de lista de materiales que tiene dos artículos y un recurso. Para comenzar el proceso de producción, esta lista de materiales se copia a una orden de producción. Seguiremos hablando de la orden de pedido en el tema del tema El proceso de producción.",
-    "start_time": 195.29,
-    "end_time": 233.62
+    "image_file": "Slide_005.webp",
+    "script_text": "Una lista de materiales puede tener varios niveles: la puerta de madera decorativa (nivel 1) se fabrica usando una puerta de madera que, a su vez, se produce desde una lista de materiales de nivel 2 con dos planchas de madera, relleno aislante y una máquina de prensar. Esta estructura permite representar productos complejos. Al iniciar la producción, la lista de materiales se copia a una Orden de producción, tema que se profundizará en el módulo del proceso de producción.",
+    "start_time": 107.62,
+    "end_time": 138.55
   },
   {
     "slide_index": 6,
-    "image_file": "090_Slide_06_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Ejemplo básico de lista de materiales Producción Lista de materiales Este es el aspecto que tiene la Lista de materiales de la puerta de madera decorativa en el sistema. Como podemos ver, la puerta decorativa se compone de: 1 puerta de madera, 1 pomo, Un total de 3 ciclos del torno Y 1 hora del operario que maneja la máquina(2X0.5 horas). En WoodTrend, el almacén 02 se ha definido como la zona de planta de la tienda y se indica en las líneas de los documentos. Cuando se creó esta lista de materiales, el jefe de producción añadió una línea de texto (número 4) en la que indicó unas instrucciones de producción en las que se indicaba que había que girar la puerta 180º. También vemos que el torno aparece en dos líneas. En la línea número 3, la máquina está activada para 2 ciclos. A continuación, las instrucciones indican que hay que girar la puerta y que la máquina no se activará para otro ciclo hasta haberlo hecho. También podemos utilizar los botones de flecha que hay en la parte derecha de la ventana para cambiar el orden de las líneas de la Lista de materiales. En la parte inferior de la ventana se puede definir el precio del producto manualmente o bien generarlo automáticamente de acuerdo con los precios de los componentes que se toman de la lista de precios seleccionada y el coste del recurso.",
-    "start_time": 233.62,
-    "end_time": 316.73
+    "image_file": "Slide_006.webp",
+    "script_text": "En SAP Business One, la lista de materiales de la puerta decorativa muestra su composición: una puerta de madera normal, un pomo, tres ciclos de torno y una hora de operario. El torno aparece en dos líneas debido a una instrucción de producción: después de dos ciclos, se gira la puerta 180º antes de continuar. Se pueden reordenar las líneas con los botones de flecha. En la parte inferior, se puede definir el precio del producto manualmente o calcularlo automáticamente desde los precios de componentes y el coste de los recursos, usando la lista de precios seleccionada.",
+    "start_time": 138.55,
+    "end_time": 176.06
   },
   {
     "slide_index": 7,
-    "image_file": "090_Slide_07_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Lista de materiales enrutada N.º Tipo Sec. ruta N.º Descripción Cant. Días espera … 1 Etapa de ruta 1 Corte Corte 2 Texto 1 Corte las planchas según el manual 3 Artículo 1 W00001 Planchas de madera 7 4 Recurso 1 RC0001 Cortadora 6 5 Recurso 1 RE0001 Operario de la máquina 2 6 Etapa de ruta 2 Pintura Pintura 1 7 Texto 2 Mover las planchas cortadas al área de pintura 8 Recurso 2 R00012 Máquina de pintura 8 9 .. Lista de materiales Armario A partir de la versión 9.3 PL02, las listas de materiales también se pueden estructurar en etapas, permitiendo procedimientos de hoja de ruta de producción. OC WoodTrend fabrica una variedad de distintos armarios. Las listas de materiales de armarios incluyen tipos de recursos de empleado y máquina. Estos recursos pueden afectar el tiempo de producción de la etapa de producción. Cada etapa puede depender de su etapa adyacente (o bien la etapa anterior o la posterior), de manera que la fecha de inicio o fin de una determinada etapa afecta a la fecha de inicio o fin de la siguiente etapa. El procedimiento de hoja de ruta permite el cálculo automático de la fecha de inicio y la fecha de fin de las etapas en función al tiempo de producción de cada etapa. Consulte la formación del proceso de producción para obtener más información sobre el cálculo de la fecha de hoja de ruta. Cada etapa tiene una cabecera de etapa de ruta y un número de secuencia de ruta. La primera fila de la etapa es la cabecera, que contiene una descripción de la etapa. Una fila se fija como la cabecera una vez seleccionado el tipo Etapa de ruta Todas las filas que siguen la cabecera se refieren a la misma etapa y tienen el mismo número de secuencia de ruta. La imagen muestra una lista de materiales enrutada de un armario y muestra dos etapas. En la primera etapa, las planchas de madera se cortan utilizando una cortada, manejada por el operario. Solo cuando se haya completado esta etapa el proceso de producción podrá pasar a la siguiente etapa: pintar las planchas. Tenga en cuenta que es necesario 1 día de espera para que se seque la pintura una vez completada la etapa.",
-    "start_time": 316.73,
-    "end_time": 457.9
+    "image_file": "Slide_007.webp",
+    "script_text": "Esta lámina muestra una lista de materiales enrutada para un armario, organizada en etapas de producción. Cada etapa tiene una cabecera que describe la operación, seguida de líneas que especifican los artículos, recursos y tiempos necesarios. En la primera etapa, se cortan las planchas de madera usando una cortadora y un operario. Solo al completar esta etapa se puede pasar a la siguiente: pintar las planchas. El número de secuencia de ruta fija el orden y permite el cálculo automático de fechas de inicio y fin según el tiempo de cada etapa. Esto asegura que la producción fluya de forma secuencial y coordinada.",
+    "start_time": 176.06,
+    "end_time": 216.55
   },
   {
     "slide_index": 8,
-    "image_file": "090_Slide_08_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "El número de secuencia de ruta fija el orden de aparición en la lista de materiales. Para cambiar la ubicación de toda la etapa, seleccione otro número de secuencia en la línea de cabecera. Al hacerlo, todos los números de secuencia de ruta asociados también se modifican. Cuando se traslada una línea de una fase a otra, la línea hereda el nuevo número de secuencia de línea de la etapa.",
-    "start_time": 457.9,
-    "end_time": 483.38
+    "image_file": "Slide_008.webp",
+    "script_text": "El número de secuencia de ruta define el orden en que aparecen las etapas en la lista de materiales. Al cambiar este número en la línea de cabecera de una etapa, todos los números de secuencia asociados a esa etapa se actualizan automáticamente. Esto permite reorganizar fácilmente todo un bloque de etapas sin modificar cada línea individualmente. Cuando se mueve una línea de una etapa a otra, hereda el nuevo número de secuencia de la etapa destino. Esta funcionalidad simplifica el mantenimiento de listas de materiales complejas con múltiples etapas de producción.",
+    "start_time": 216.55,
+    "end_time": 252.67
   },
   {
     "slide_index": 9,
-    "image_file": "090_Slide_09_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Determinar precios de la lista de materiales Vamos a explicar brevemente la determinación de precios de la lista de materiales. Como se trata de una lista de materiales de producción, en la columna del precio por unidad vemos el coste de cada componente. En un sistema no permanente, el precio por unidad es el precio del artículo que se toma de la lista de precios. El precio del producto, que aparece en la parte inferior de la lista de materiales, se puede derivar del precio por unidad total de los componentes (multiplicar por la cantidad de la línea). Para copiar el precio por unidad total, seleccionamos la flecha abajo, tal como se muestra en la imagen. El precio del producto también se puede introducir manualmente. Al añadir o actualizar la lista de materiales, el precio del producto se actualiza en la mención de la lista de precios que figura en el encabezado de la lista de materiales. SAP Business One también permite realizar una actualización global de un grupo de precios de producto de la lista de materiales, de acuerdo con los precios de los componentes. Esto se puede hacer en la ventana Producción Actualizar precios de artículo globalmente.",
-    "start_time": 483.38,
-    "end_time": 553.9
+    "image_file": "Slide_009.webp",
+    "script_text": "En una lista de materiales de producción, el precio por unidad de cada componente se muestra en su columna correspondiente. En un sistema no permanente, este precio se toma directamente de la lista de precios del artículo. El precio total del producto se calcula multiplicando el precio unitario por la cantidad de cada línea y sumando los resultados. Este total puede copiarse usando la flecha abajo o ingresarse manualmente. Al actualizar la lista de materiales, el precio del producto se actualiza automáticamente en la mención de la lista de precios del encabezado. Además, SAP Business One permite actualizaciones globales de precios de producto según cambios en los costos de los componentes, accesible desde Producción → Actualizar precios de artículo globalmente.",
+    "start_time": 252.67,
+    "end_time": 300.91
   },
   {
     "slide_index": 10,
-    "image_file": "090_Slide_10_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Artículo ficticio Plancha Eje Tornillos x 2 Ruedas x 4 Rueda Llanta Tornillos x 4 Patinete Artículo ficticio (no aparece en órdenes de producción) Un artículo ficticio es un subconjunto de la lista de materiales que en realidad no existe en el inventario. Se utiliza para simplificar la lista de materiales. Aunque el artículo ficticio aparece en la lista de materiales, en la orden de pedido no figura el artículo ficticio en sí sino los componentes necesarios para crearlo. Es posible definir un artículo como artículo ficticio en los datos maestros de artículo. Al copiar la lista de materiales en la orden de producción, los componentes ficticios de la lista de materiales se copia también. En el gráfico vemos una lista de materiales de un patinete. Las 4 ruedas del patinete son un artículo ficticio. Cuando la lista de materiales del patinete se copia en la orden de producción, aparecerán los componentes rueda, tire y tornillos, pero no figurarán las ruedas. Los requisitos de la lista de materiales pueden variar entre distintos departamentos de la misma empresa. El departamento de ingeniería podría crear una lista de materiales de distintos niveles para definir un motor, por ejemplo. Mientras que es posible que el departamento de producción incluya esta lista de materiales como un solo artículo ficticio. Tenga en cuenta que no es posible añadir líneas de etapa de ruta a una lista de materiales que contiene un artículo ficticio.",
-    "start_time": 553.9,
-    "end_time": 644.98
+    "image_file": "Slide_010.webp",
+    "script_text": "Un artículo ficticio es un subconjunto de la lista de materiales que no existe físicamente en el inventario, pero se usa para simplificar su estructura. Aunque aparece en la LdM, al copiarla en una orden de producción, solo se muestran sus componentes reales, no el artículo ficticio mismo. Por ejemplo, en un patinete, las 4 ruedas pueden definirse como un artículo ficticio compuesto por llanta, neumático y tornillos. Al usar la LdM en la orden de producción, aparecen estos componentes, pero no el artículo 'rueda'. Los artículos ficticios se definen en los datos maestros de artículo. Sin embargo, no es posible agregar líneas de etapa de ruta a una LdM que contenga un artículo ficticio, ya que estos no recorren un proceso de producción tradicional.",
+    "start_time": 300.91,
+    "end_time": 352.44
   },
   {
     "slide_index": 11,
-    "image_file": "090_Slide_11_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "En la ventana Lista de materiales (LdM) es posible elegir uno de los cuatro tipos de listas de materiales. Ya hemos visto lo que es una LdM de producción, así que ahora vamos a ver los otros tres tipos de listas: LdM de ventas, de montaje y de plantilla. Estos tres tipos de listas de materiales se utilizan en los documentos de marketing y no recorren un proceso de producción (por lo tanto, en estas LdM no figura ningún recurso). Los componentes de estas LdM se juntan para crear un artículo de nivel superior. La LdM de ventas se utiliza en los documentos de ventas. El artículo de nivel superior debe ser un artículo de venta. Por ejemplo, OC WoodTrend vende kits de muebles para montar en casa. El artículo producido se corresponde con el nombre del kit y los artículos componentes son los artículos de inventario que forman el kit. Cuando selecciona el artículo de nivel superior en un documento de ventas, todos los componentes aparecen como subartículos. Puede actualizar las cantidades del artículo producido o de los componentes. Sin embargo, no puede borrar un componente o añadir nuevos subartículos al kit en el documento de ventas. Cuando define una LMat, puede seleccionar la opción Suprimir componentes de lista de materiales en la impresión por lo que cuando imprima el documento, sólo figurará el artículo de nivel superior. La LMat de Montaje es similar a la LMat de ventas. Incluye un conjunto de artículos individuales de un grupo con un precio concreto. A diferencia de la lista de materiales de ventas, en el pedido de cliente únicamente figura el producto terminado; los componentes no aparecen como subartículos. Tanto en el caso de la LMat de ventas como de la LMat de montaje, un producto terminado no se maneja como un artículo de inventario, sino como un artículo de venta. Los componentes pueden ser artículos de venta y de inventario a la vez. 10 Tipos de listas de materiales Tipos de listas de materiales Producción Fabricado en un proceso de producción Kit del armario Planchas de madera Bisagras Tornillos Ventas Montaje Plantilla Juntos para usarlos en los documentos de marketing",
-    "start_time": 644.98,
-    "end_time": 781.51
+    "image_file": "Slide_011.webp",
+    "script_text": "SAP Business One ofrece cuatro tipos de listas de materiales. La de producción se usa en el proceso de fabricación y incluye recursos como máquinas y operarios. Las de ventas y montaje se utilizan en documentos de marketing: la primera muestra componentes como subartículos en documentos de venta, mientras que la segunda solo muestra el producto terminado en pedidos de cliente. Ambas tratan el producto terminado como artículo de venta, no de inventario. La lista de plantilla no tiene restricciones: puede incluir cualquier tipo de artículo y se usa tanto en ventas como en compras, permitiendo ediciones libres como borrar, añadir o duplicar líneas según sea necesario en los documentos de marketing.",
+    "start_time": 352.44,
+    "end_time": 396.34
   },
   {
     "slide_index": 12,
-    "image_file": "090_Slide_12_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "La LMat de plantilla no tiene restricciones. Tanto el artículo de nivel superior como los que dependen de él pueden ser artículos de cualquier tipo. Se puede utilizar en los documentos de ventas y en el de compras. Al seleccionar el artículo de nivel superior, aparecen todos los artículos que dependen de él. Es posible borrar, añadir o duplicar líneas y hacer todos los cambios que sean necesarios en los documentos de marketing.",
-    "start_time": 781.51,
-    "end_time": 810.05
+    "image_file": "Slide_012.webp",
+    "script_text": "La lista de materiales de plantilla es la más flexible, ya que no impone restricciones sobre el tipo de artículo de nivel superior ni de sus componentes. Puede utilizarse tanto en documentos de ventas como de compras. Al seleccionar el artículo de nivel superior, se muestran todos los artículos dependientes, y es posible realizar cualquier modificación necesaria: borrar, añadir o duplicar líneas, ajustar cantidades, etc. Esta libertad la hace ideal para documentos de marketing donde se requiere adaptar rápidamente kits, promociones o configuraciones personalizadas sin seguir un flujo de producción rígido.",
+    "start_time": 396.34,
+    "end_time": 435.67
   },
   {
     "slide_index": 13,
-    "image_file": "090_Slide_13_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "En función del tipo de LMat es posible definir una categoría en el registro maestro del artículo del artículo producido: En el caso de las LdM de montaje y ventas el producto terminado debe ser un artículo de ventas. Estos modelos pueden tener tres de los atributos (artículos comprados, de ventas y de inventario). El producto terminado de la lista de materiales de producción tiene que ser un artículo de inventario. Si también quiere comprar este artículo lo puede definir como un artículo comprado. Si también quiere venderlo, debería definirlo como un artículo de ventas. Si lo fabrica para el inventario, como componente de otra LdM, no lo defina como un artículo de venta y no aparecerá como opción en la lista de artículos del documento de ventas. Los componentes también pueden tener las tres categorías (artículos comprados, de venta y de inventario), y también se pueden comprar o vender individualmente. Los componentes de la LdM de ventas y la LdM de montaje deben ser artículos de venta. 11 Categoría del registro maestro del artículo de los artículos producidos en la lista de materiales LMat de montaje LMat de producción LMat de ventas Artículo de inventario Artículo de venta Artículo de compra (1) (1) opcional Plantilla Tipo de LMat Categoría artículo (1) (1) (1) (1)",
-    "start_time": 810.05,
-    "end_time": 894.65
+    "image_file": "Slide_013.webp",
+    "script_text": "En una lista de materiales, el artículo producido debe clasificarse según su uso: si es para ventas, debe ser artículo de venta; si es para producción, debe ser artículo de inventario, aunque opcionalmente puede marcarse como comprado o vendido también. Los componentes pueden tener cualquiera de las tres categorías y ser comprados o vendidos individualmente. En las BOM de montaje y ventas, los componentes deben ser artículos de venta. Esta clasificación controla si el artículo aparece en documentos de ventas o solo en producción e inventario.",
+    "start_time": 435.67,
+    "end_time": 471.36
   },
   {
     "slide_index": 14,
-    "image_file": "090_Slide_14_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "La ventana Gestión de componentes permite hacer cambios colectivos en varias listas de materiales simultáneamente. Es posible: Añadir nuevos componentes en las listas de materiales seleccionadas Suprimir componentes específicos de las listas de materiales seleccionadas Cambiar los parámetros (como la cantidad, el almacén, el método de envío, etc.) en los componentes de la LdM Modificar secuencia de ruta Sustituir los componentes de la lista de materiales Actualizar datos de cabecera Tenga en cuenta que las líneas de la lista de materiales incluyen artículos, recursos, etapas de ruta y líneas de texto. Una vez que seleccione la tarea interna relevante en la lista desplegable, los campos para editar y los tipos de posibles modificaciones se ajustan de acuerdo con la acción seleccionada. 12 12 Lista de materiales Gestión de componentes Esta función le permite realizar cambios en varias LdM simultáneamente: Añadir o borrar componentes de las listas de materiales seleccionadas Cambiar los parámetros (como la cantidad, el almacén, el método de envío, etc.) en los componentes de la LdM Modificar secuencia de ruta Sustituir los componentes de la lista de materiales Actualizar datos de cabecera Producción > Lista de materiales Gestión de componentes",
-    "start_time": 894.65,
-    "end_time": 971.69
+    "image_file": "Slide_014.webp",
+    "script_text": "La ventana Gestión de componentes permite modificar varias listas de materiales al mismo tiempo. Desde aquí puedes añadir o eliminar componentes, cambiar cantidades, almacenes o métodos de envío, actualizar la secuencia de ruta, sustituir piezas o actualizar datos de encabezado. Las líneas pueden incluir artículos, recursos, etapas de ruta o texto. Al seleccionar una acción en el menú desplegable, los campos disponibles se ajustan automáticamente para mostrar solo los relevantes a esa tarea.",
+    "start_time": 471.36,
+    "end_time": 504.72
   },
   {
     "slide_index": 15,
-    "image_file": "090_Slide_15_10_Production_31_BOM_BOM_ES.webp",
-    "script_text": "Resumen A continuación, se detallan algunos puntos clave: Una lista de materiales de producción es una lista que contienen los artículos y los posibles recursos que se utilizan en el proceso de producción. Una lista de materiales de producción enrutada se compone de etapas de proceso en secuencia. Una LMat puede tener varios niveles; si es el caso, uno o varios componentes del artículo también es una LMat. La ventana Lista de materiales Gestión de componentes permite realizar cambios en varias LdM simultáneamente. Además, en la LdM de producción hay otros tres tipos de listas de materiales disponibles para usarlas en documentos de marketing: LdM de ventas, de montaje y de modelo. Una lista de materiales de producción es una lista que contienen los artículos y los posibles recursos que se utilizan en el proceso de producción. Una LMat de producción enrutada se compone de etapas en secuencia, en las que cada etapa tiene una cabecera y componentes que tienen el mismo número de secuencia de ruta. Una LMat puede tener varios niveles; si es el caso, uno o varios componentes del artículo también es una LMat. La ventana Lista de materiales Gestión de componentes permite realizar cambios en varias LdM simultáneamente. Además, en la LdM de producción hay otros tres tipos de listas de materiales disponibles para usarlas en el documento de marketing: LdM de ventas, de montaje y de modelo.",
-    "start_time": 971.69,
-    "end_time": 1062.55
+    "image_file": "Slide_015.webp",
+    "script_text": "Una lista de materiales de producción incluye los artículos y recursos usados en el proceso de fabricación. Puede tener varios niveles, donde un componente a su vez sea otra lista de materiales. Existen tres tipos especiales para documentos de marketing: ventas, montaje y modelo. La ventana Gestión de componentes permite realizar cambios masivos en varias BOM simultáneamente, como añadir o eliminar piezas, modificar cantidades, almacenes, secuencia de ruta o datos de encabezado. Esto mejora la eficiencia en el mantenimiento de estructuras de producto complejas.",
+    "start_time": 504.72,
+    "end_time": 543.12
   }
 ]

@@ -1,10 +1,10 @@
 [
   {
     "slide_index": 1,
-    "image_file": "073_Slide_01_10_Item_22_UoM_Setup.webp",
-    "script_text": "Bienvenidos a esta clase sobre la Configuración de Unidades de Medida y Grupos de Unidades de Medida en SAP Business One versión diez punto cero. En esta sesión aprenderemos a configurar un catálogo unificado de unidades y cómo combinarlas en grupos con reglas de conversión exactas para compras, ventas y almacén.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenidos a esta clase sobre la Configuración de Unidades de Medida y Grupos de Unidades de Medida en SAP Business One versión diez punto cero. En esta sesión aprenderemos a configurar un catálogo unificado de unidades y cómo combinarlas en grupos con reglas de conversión exactas para compras, ventas y almacén. Esta configuración es esencial para mantener la precisión del inventario cuando se manejan distintas presentaciones de un mismo artículo, como rollos, bobinas o metros sueltos, asegurando que todas las transacciones se reflejen correctamente en la unidad base de valoración.",
     "start_time": 0.0,
-    "end_time": 19.8,
+    "end_time": 35.83,
     "step_guide": {
       "title": "Introducción y Arquitectura de Unidades",
       "menu_path": "Gestión > Definición > Inventario",
@@ -17,10 +17,10 @@
   },
   {
     "slide_index": 2,
-    "image_file": "073_Slide_02_10_Item_22_UoM_Setup.webp",
-    "script_text": "Al finalizar esta clase serás capaz de estructurar grupos de unidades de medida, establecer equivalencias matemáticas respecto a la unidad base y vincular estos grupos a familias de artículos o productos individuales de forma óptima.",
-    "start_time": 19.8,
-    "end_time": 34.03,
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar esta clase serás capaz de estructurar grupos de unidades de medida, establecer equivalencias matemáticas respecto a la unidad base y vincular estos grupos a familias de artículos o productos individuales de forma óptima. Esto significa que podrás definir cómo se relacionan distintas unidades como metros, rollos y bobinas mediante factores de conversión precisos, asignarlos correctamente según la familia o artículo específico, y garantizar que el sistema realice automáticamente las conversiones necesarias en cada operación de compra, venta o ajuste de inventario.",
+    "start_time": 35.83,
+    "end_time": 71.09,
     "step_guide": {
       "title": "Objetivos Operativos",
       "action_type": "planning",
@@ -32,10 +32,10 @@
   },
   {
     "slide_index": 3,
-    "image_file": "073_Slide_03_10_Item_22_UoM_Setup.webp",
-    "script_text": "Analicemos el caso de negocio real de OEC Computers. La compañía compra cables a distribuidores internacionales por rollos de cien metros, pero sus clientes técnicos compran bobinas de cincuenta metros o metros individuales fraccionados. Para evitar descuadres de stock, SAP Business One gestionará la conversión automática en cada transacción.",
-    "start_time": 34.03,
-    "end_time": 56.9,
+    "image_file": "Slide_003.webp",
+    "script_text": "Analicemos el caso de negocio real de OEC Computers. La compañía compra cables a distribuidores internacionales por rollos de cien metros, pero sus clientes técnicos compran bobinas de cincuenta metros o metros individuales fraccionados. Para evitar descuadres de stock, SAP Business One gestionará la conversión automática en cada transacción. Cuando se registra una compra de un rollo, el sistema lo convierte a la unidad base (metros) y aumenta el inventario en consecuencia. Al vender bobinas o metros sueltos, realiza la conversión inversa para deducir exactamente la cantidad correspondiente del stock, manteniendo la integridad del valor contable y evitando diferencias entre lo físico y lo registrado.",
+    "start_time": 71.09,
+    "end_time": 116.54,
     "step_guide": {
       "title": "Análisis del Caso de Negocio",
       "action_type": "case_study",
@@ -47,10 +47,10 @@
   },
   {
     "slide_index": 4,
-    "image_file": "073_Slide_04_10_Item_22_UoM_Setup.webp",
-    "script_text": "Todos los cables se valorizan en inventario por metros, que será la unidad base. Cuando compras un rollo de cien metros, el inventario ingresa cien unidades base. Cuando vendes dos bobinas de cincuenta metros, el sistema deduce exactamente cien metros del stock, manteniendo el valor contable impecable.",
-    "start_time": 56.9,
-    "end_time": 77.5,
+    "image_file": "Slide_004.webp",
+    "script_text": "Todos los cables se valorizan en inventario por metros, que será la unidad base. Cuando compras un rollo de cien metros, el inventario ingresa cien unidades base. Cuando vendes dos bobinas de cincuenta metros, el sistema deduce exactamente cien metros del stock, manteniendo el valor contable impecable. Esto significa que, independientemente de la unidad en que se realice la transacción —ya sea compra en rollos o venta en bobinas o metros sueltos—, SAP Business One aplica las reglas de conversión definidas en el grupo de unidades de medida para actualizar el inventario siempre en la unidad base, asegurando coherencia en el stock y precisión en la valoración contable.",
+    "start_time": 116.54,
+    "end_time": 158.09,
     "step_guide": {
       "title": "Definición de Conversiones",
       "action_type": "setup",
@@ -63,10 +63,10 @@
   },
   {
     "slide_index": 5,
-    "image_file": "073_Slide_05_10_Item_22_UoM_Setup.webp",
-    "script_text": "La implementación sigue una metodología secuencial estricta de cuatro pasos: primero, definimos el catálogo global de unidades en la tabla O U O M; segundo, construimos los grupos y sus fórmulas en O U G P; tercero, asignamos el grupo a la familia de artículos; y cuarto, definimos las unidades predeterminadas en la ficha del artículo.",
-    "start_time": 77.5,
-    "end_time": 99.82,
+    "image_file": "Slide_005.webp",
+    "script_text": "La implementación sigue una metodología secuencial estricta de cuatro pasos: primero, definimos el catálogo global de unidades en la tabla O U O M; segundo, construimos los grupos y sus fórmulas en O U G P; tercero, asignamos el grupo a la familia de artículos; y cuarto, definimos las unidades predeterminadas en la ficha del artículo. Este orden garantiza que primero tengamos disponibles todas las unidades necesarias, luego establezcamos cómo se relacionan entre sí mediante factores de conversión, luego las apliquemos a nivel de familia o artículo individual, y finalmente configuremos las unidades por defecto que se usarán en transacciones específicas, asegurando consistencia y evitando errores de configuración.",
+    "start_time": 158.09,
+    "end_time": 202.87,
     "step_guide": {
       "title": "Metodología de 4 Pasos",
       "action_type": "workflow",
@@ -80,10 +80,10 @@
   },
   {
     "slide_index": 6,
-    "image_file": "073_Slide_06_10_Item_22_UoM_Setup.webp",
-    "script_text": "Comencemos con el Paso 1. Ingresamos al menú Gestión, seleccionamos Definición, luego Inventario y abrimos Unidades de Medida. En esta ventana registramos los códigos y nombres globales: Metro, Rollo y Bobina. Este catálogo maestro estará disponible para todas las operaciones de la empresa.",
-    "start_time": 99.82,
-    "end_time": 121.3,
+    "image_file": "Slide_006.webp",
+    "script_text": "Comencemos con el Paso 1. Ingresamos al menú Gestión, seleccionamos Definición, luego Inventario y abrimos Unidades de Medida. En esta ventana registramos los códigos y nombres globales: Metro, Rollo y Bobina. Este catálogo maestro estará disponible para todas las operaciones de la empresa. Aquí se definen las unidades que podrán usarse posteriormente en grupos de unidades de medida y en las fichas de artículos. Es importante asignar códigos cortos y descriptivos, como MT para metro, RL para rollo y BB para bobina, y opcionalmente especificar el tipo de magnitud (como longitud, peso o volumen) para facilitar su clasificación y uso coherente en todo el sistema.",
+    "start_time": 202.87,
+    "end_time": 248.93,
     "step_guide": {
       "title": "Paso 1: Crear Unidades Globales",
       "menu_path": "Gestión > Definición > Inventario > Unidades de medida",
@@ -98,10 +98,10 @@
   },
   {
     "slide_index": 7,
-    "image_file": "073_Slide_07_10_Item_22_UoM_Setup.webp",
-    "script_text": "Opcionalmente, podemos asociar dimensiones físicas a cada unidad de medida: largo, ancho, alto y peso. Esto permite que SAP Business One calcule automáticamente el volumen y cubicaje de los paquetes para optimizar fletes de exportación y capacidad de bodega.",
-    "start_time": 121.3,
-    "end_time": 139.08,
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One puedes asociar dimensiones físicas como largo, ancho, alto y peso a cada unidad de medida. Esto permite que el sistema calcule automáticamente el volumen y el cubicaje de los paquetes. Con estos datos, optimizas la planificación de fletes de exportación y mejoras el uso del espacio en bodega, evitando sobrecostos y mejorando la eficiencia logística.",
+    "start_time": 248.93,
+    "end_time": 273.6,
     "step_guide": {
       "title": "Dimensiones Físicas",
       "menu_path": "Gestión > Definición > Inventario > Longitud y anchura / Peso",
@@ -115,10 +115,10 @@
   },
   {
     "slide_index": 8,
-    "image_file": "073_Slide_08_10_Item_22_UoM_Setup.webp",
-    "script_text": "La gran ventaja del catálogo global es la reutilización. Una misma unidad como Caja se puede usar en productos electrónicos y en suministros de papelería, sin necesidad de crear códigos duplicados como Caja10 o Caja20. Las reglas de cuántos productos contiene esa caja se definirán en el siguiente nivel.",
-    "start_time": 139.08,
-    "end_time": 159.79,
+    "image_file": "Slide_008.webp",
+    "script_text": "El catálogo global de unidades de medida permite reutilizar una misma unidad, como Caja, en diferentes tipos de productos, ya sean electrónicos o suministros de papelería. Esto evita crear códigos duplicados como Caja10 o Caja20. Las reglas de cuántos productos contiene cada unidad se definen en niveles posteriores, manteniendo la consistencia y reduciendo el mantenimiento maestro.",
+    "start_time": 273.6,
+    "end_time": 299.35,
     "step_guide": {
       "title": "Reutilización de Unidades",
       "action_type": "concept",
@@ -130,10 +130,10 @@
   },
   {
     "slide_index": 9,
-    "image_file": "073_Slide_09_10_Item_22_UoM_Setup.webp",
-    "script_text": "Un Grupo de Unidades de Medida es el corazón de la conversión. Cada grupo exige designar una Unidad de Medida Base. Como regla de oro de consultoría SAP, la unidad base debe ser siempre la Unidad de Medida de Inventario, para que todas las equivalencias matemáticas sean enteras y directas.",
-    "start_time": 159.79,
-    "end_time": 179.3,
+    "image_file": "Slide_009.webp",
+    "script_text": "Un Grupo de Unidades de Medida es el núcleo del sistema de conversión en SAP Business One. Cada grupo debe tener una Unidad de Medida Base definida. Según las mejores prácticas de consultoría SAP, esa unidad base debe coincidir siempre con la Unidad de Medida de Inventario. Esto garantiza que todas las equivalencias sean numéricamente enteras y directas, evitando redondeos y errores en transacciones.",
+    "start_time": 299.35,
+    "end_time": 326.02,
     "step_guide": {
       "title": "Regla de Oro de la Unidad Base",
       "action_type": "best_practice",
@@ -145,10 +145,10 @@
   },
   {
     "slide_index": 10,
-    "image_file": "073_Slide_10_10_Item_22_UoM_Setup.webp",
-    "script_text": "Para el Paso 2, navegamos a Grupos de unidades de medida. Creamos el grupo Cables de Red, fijamos Metro como unidad base, y en la matriz de conversión añadimos dos filas: un Rollo equivale a cien Metros, y una Bobina equivale a cincuenta Metros. El sistema validará la fórmula inmediatamente.",
-    "start_time": 179.3,
-    "end_time": 199.82,
+    "image_file": "Slide_010.webp",
+    "script_text": "En el Paso 2 de la configuración, accedes al módulo de Grupos de unidades de medida. Allí creas un grupo llamado 'Cables de Red' y estableces el Metro como unidad de medida base. Luego, en la matriz de conversión, defines que un Rollo equivale a cien Metros y una Bobina a cincuenta Metros. El sistema valida automáticamente la coherencia de las fórmulas al ingresarlas.",
+    "start_time": 326.02,
+    "end_time": 351.38,
     "step_guide": {
       "title": "Paso 2: Crear Grupo de Cables",
       "menu_path": "Gestión > Definición > Inventario > Grupos de unidades de medida",
@@ -164,10 +164,10 @@
   },
   {
     "slide_index": 11,
-    "image_file": "073_Slide_11_10_Item_22_UoM_Setup.webp",
-    "script_text": "La ventana de configuración de grupos te permite también asignar tipos de empaque predeterminados a cada unidad alternativa. Así, al generar una orden de entrega, el personal de bodega sabrá de inmediato si el producto debe cargarse en cajas, carretes o palets sin consultar manuales externos.",
-    "start_time": 199.82,
-    "end_time": 219.19,
+    "image_file": "Slide_011.webp",
+    "script_text": "La ventana de configuración de grupos de unidades de medida en SAP Business One permite no solo definir conversiones, sino también asignar tipos de empaque predeterminados a cada unidad alternativa. Por ejemplo, puedes indicar que cierta unidad se empaque en cajas, carretes o palets. Al generar una orden de entrega, el personal de bodega ve esta información directamente y sabe cómo manejar el producto sin necesidad de consultar documentos externos.",
+    "start_time": 351.38,
+    "end_time": 380.52,
     "step_guide": {
       "title": "Inspección de la Matriz UGP1",
       "action_type": "verification",
@@ -179,10 +179,10 @@
   },
   {
     "slide_index": 12,
-    "image_file": "073_Slide_12_10_Item_22_UoM_Setup.webp",
-    "script_text": "El Paso 3 ofrece dos alternativas. La opción más eficiente es asociar el grupo de UdM directamente al Grupo de Artículos en O I T B. De esta manera, cada vez que un asistente dé de alta un nuevo cable, heredará de forma automática toda la estructura sin riesgo de errores humanos.",
-    "start_time": 219.19,
-    "end_time": 238.99,
+    "image_file": "Slide_012.webp",
+    "script_text": "En el Paso 3 de la configuración, tienes dos formas de aplicar el grupo de UdM. La más eficiente es asignarlo directamente al Grupo de Artículos en el módulo OITB. Cuando lo haces, cada nuevo artículo que se dé de alta bajo ese grupo hereda automáticamente toda la estructura de unidades y conversiones. Esto elimina la necesidad de configuración manual por producto y reduce significativamente el riesgo de errores humanos en el maestro de artículos.",
+    "start_time": 380.52,
+    "end_time": 410.18,
     "step_guide": {
       "title": "Paso 3A: Herencia por Grupo de Artículos",
       "menu_path": "Gestión > Definición > Inventario > Grupos de artículos",
@@ -196,10 +196,10 @@
   },
   {
     "slide_index": 13,
-    "image_file": "073_Slide_13_10_Item_22_UoM_Setup.webp",
-    "script_text": "La segunda opción es asignar el grupo de forma manual en la pestaña General de los Datos Maestros del Artículo. Esta alternativa se utiliza cuando los productos dentro de una misma categoría tienen configuraciones de empaque atípicas o formatos especiales de importación.",
-    "start_time": 238.99,
-    "end_time": 255.94,
+    "image_file": "Slide_013.webp",
+    "script_text": "En este paso, asignas directamente el grupo de unidades de medida en la pestaña General de los datos maestros del artículo. Esto es útil cuando productos de la misma categoría requieren empaques atípicos o formatos especiales de importación. En SAP Business One, ingresas al maestro del artículo, vas a la pestaña General y seleccionas el grupo correspondiente desde el menú desplegable. Así personalizas la unidad por artículo, sin afectar a otros del mismo grupo. Es una configuración puntual y flexible para casos excepcionales.",
+    "start_time": 410.18,
+    "end_time": 445.63,
     "step_guide": {
       "title": "Paso 3B: Asignación Manual en OITM",
       "menu_path": "Inventario > Datos maestros de artículo > Pestaña General",
@@ -213,10 +213,10 @@
   },
   {
     "slide_index": 14,
-    "image_file": "073_Slide_14_10_Item_22_UoM_Setup.webp",
-    "script_text": "Finalmente, en el Paso 4, configuramos los valores por defecto: en Datos de Compras establecemos Rollo, en Datos de Ventas establecemos Bobina, y en Datos de Inventario verificamos que Metro quede fijado. Además, podemos asignar un código de barras único para cada formato de venta.",
-    "start_time": 255.94,
-    "end_time": 275.81,
+    "image_file": "Slide_014.webp",
+    "script_text": "Aquí estableces los valores predeterminados de unidad de medida según el área: Rollo para compras, Bobina para ventas y Metro para inventario. Esto permite que cada módulo use la unidad más adecuada a su proceso, manteniendo la consistencia mediante factores de conversión. Además, puedes asignar un código de barras único por formato de venta para mejorar la trazabilidad. En SAP, estos se configuran en las pestañas de Datos de Compras, Ventas e Inventario del maestro de artículo, asegurando que las transacciones usen la unidad correcta automáticamente.",
+    "start_time": 445.63,
+    "end_time": 481.61,
     "step_guide": {
       "title": "Paso 4: Parametrizar Unidades por Defecto",
       "menu_path": "Inventario > Datos maestros de artículo",
@@ -231,10 +231,10 @@
   },
   {
     "slide_index": 15,
-    "image_file": "073_Slide_15_10_Item_22_UoM_Setup.webp",
-    "script_text": "Repasemos las cuatro rutas esenciales en el menú de SAP Business One: Gestión, Definición, Inventario, Unidades de medida; luego Grupos de unidades de medida; Grupos de artículos; y finalmente Datos maestros de artículo en el módulo de Inventario.",
-    "start_time": 275.81,
-    "end_time": 292.7,
+    "image_file": "Slide_015.webp",
+    "script_text": "Este flujo muestra las cuatro rutas esenciales para parametrizar unidades de medida en SAP Business One. Comienzas en Gestión, vas a Definición, luego ingresas al módulo de Inventario para acceder a Unidades de medida. Allí configuras los grupos de unidades y los asignas a grupos de artículos. Finalmente, en los datos maestros de artículo, aplicas la unidad según el producto. Este recorrido garantiza una estructura coherente desde lo general hasta lo específico, facilitando la administración de medidas en compras, ventas y almacenamiento.",
+    "start_time": 481.61,
+    "end_time": 517.75,
     "step_guide": {
       "title": "Mapa de Rutas del Consultor",
       "action_type": "summary",
@@ -246,31 +246,16 @@
   },
   {
     "slide_index": 16,
-    "image_file": "073_Slide_16_10_Item_22_UoM_Setup.webp",
-    "script_text": "Para cerrar, recordemos la regla crítica de integridad: la Unidad de Medida de Inventario queda completamente bloqueada y no se puede modificar una vez que se registra la primera transacción con ese artículo. Planificar correctamente las unidades desde el inicio es el sello de un consultor profesional.",
-    "start_time": 292.7,
-    "end_time": 311.71,
+    "image_file": "Slide_016.webp",
+    "script_text": "La unidad de medida de inventario queda bloqueada tras registrar la primera transacción con el artículo, impidiendo cualquier modificación posterior. Esta regla de integridad asegura la consistencia histórica de los movimientos de stock y evita errores en reportes y costos. Por eso, es fundamental definir correctamente las unidades desde el inicio, considerando todos los escenarios de compra, venta y almacenamiento. Un consultor profesional distingue por anticipar estas necesidades y configurar el sistema con precisión antes de operar, evitando rework costoso y garantizando datos confiables para la toma de decisiones.",
+    "start_time": 517.75,
+    "end_time": 556.9,
     "step_guide": {
       "title": "Regla Crítica de Integridad",
       "action_type": "best_practice",
       "instructions": [
         "¡Alerta de Consultoría!: La UdM de inventario es inalterable tras el primer movimiento.",
         "Valida siempre la configuración antes del arranque en vivo (Go-Live)."
-      ]
-    }
-  },
-  {
-    "slide_index": 17,
-    "image_file": "073_Slide_17_10_Item_22_UoM_Setup.webp",
-    "script_text": "Has completado la lección sobre Configuración de Unidades de Medida. Te invito a realizar la práctica en el simulador interactivo y comprobar tu dominio en la evaluación oral con Master B1.",
-    "start_time": 311.71,
-    "end_time": 324.07,
-    "step_guide": {
-      "title": "Fin de la Lección",
-      "action_type": "completion",
-      "instructions": [
-        "¡Lección completada!",
-        "Pasa a la pestaña 'Simulador' o 'Evaluación Oral' para validar tu aprendizaje."
       ]
     }
   }

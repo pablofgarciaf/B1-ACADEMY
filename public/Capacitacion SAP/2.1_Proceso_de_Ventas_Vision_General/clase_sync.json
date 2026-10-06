@@ -1,100 +1,100 @@
 [
   {
     "slide_index": 1,
-    "image_file": "106_Slide_01_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Sales 11 Process Overview en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Ventas - clientes: Descripción general del proceso de ventas Le damos la bienvenida al tema de resumen del proceso de ventas.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de resumen del proceso de ventas en SAP Business One versión 10.0. Aquí iniciamos nuestro recorrido por el flujo completo desde el pedido hasta el cobro, diseñado para ayudarle a comprender cómo gestionar eficientemente las ventas en una empresa como Distribuidora Andina Tech. Este módulo le mostrará los pasos esenciales y cómo optimizarlos para mejorar la satisfacción del cliente.",
     "start_time": 0.0,
-    "end_time": 21.6
+    "end_time": 26.06
   },
   {
     "slide_index": 2,
-    "image_file": "106_Slide_02_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "En este tema presentamos el proceso de ventas. Primero enumeramos los pasos básicos y los datos clave del proceso de ventas y después le mostramos cómo puede optimizar el proceso de ventas de modo que solo haga falta un documento. 2 Al finalizar este tema, podrá:  Enumerar los pasos básicos del proceso de ventas  Utilizar un proceso de ventas optimizado Objetivos",
-    "start_time": 21.6,
-    "end_time": 45.43
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá enumerar los pasos básicos del proceso de ventas en SAP Business One y utilizar un proceso optimizado que reduzca la cantidad de documentos necesarios. Esto le permitirá agilizar las operaciones comerciales, minimizar errores y responder más rápido a las necesidades de sus clientes, como en el caso de Distribuidora Andina Tech, donde la rapidez y precisión son clave para mantener la competitividad en el mercado quiteño.",
+    "start_time": 26.06,
+    "end_time": 54.26
   },
   {
     "slide_index": 3,
-    "image_file": "106_Slide_03_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Imagínese que su empresa estableció que la satisfacción del cliente es su mayor prioridad. Revisa los pasos básicos del proceso de ventas y decide utilizar un proceso optimizado para los pedidos con entrega inmediata para garantizar que las demandas del cliente se cumplan lo más rápido posible. 3 3 Escenario empresarial  Su empresa estableció que la satisfacción del cliente es su mayor prioridad  Revisa los pasos básicos del proceso de ventas y decide utilizar un proceso optimizado para los pedidos con entrega inmediata para garantizar que las demandas del cliente se cumplan lo más rápido posible.",
-    "start_time": 45.43,
-    "end_time": 81.34
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagínese que su empresa, como Distribuidora Andina Tech en Quito, tiene como prioridad máxima la satisfacción del cliente. Para lograrlo, revisa los pasos del proceso de ventas y decide implementar un proceso optimizado para pedidos con entrega inmediata. Esto asegura que las demandas se cumplan lo más rápido posible, mejorando la experiencia del cliente y fortaleciendo la lealtad mediante un flujo ágil y sin retrasos innecesarios en la gestión de ventas.",
+    "start_time": 54.26,
+    "end_time": 83.47
   },
   {
     "slide_index": 4,
-    "image_file": "106_Slide_04_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "El proceso de Ventas -Clientes, abarca desde la venta de mercancías (y servicios), la entrega de esas mercancías y la facturación al cliente por las compras, hasta el último paso de contabilidad que es la recepción del cobro. Cada uno de los pasos involucra el uso de un documento, por ejemplo, un pedido de cliente, un documento de entrega o una factura de clientes. SAP Business One transfiere eficientemente la información pertinente de un documento al siguiente durante el flujo de documentos. Según las necesidades comerciales, puede seleccionar qué documentos incluir como pasos del proceso. El único documento obligatorio en el proceso de ventas es la factura de clientes. Los documentos de venta contienen, en su mayoría, la misma información durante todo el proceso de ventas. El contenido de este tema le ayudará a reconocer cuál es la información que se repite en cada documento, de modo tal que pueda concentrarse rápidamente sólo en la información que necesita. Tenga en cuenta que también tiene la opción de usar una oferta para iniciar el proceso de ventas. La oferta no está incluida en este curso de e-learning. 4 Proceso de ventas Pedido de cliente Entrega Factura de clientes Cobro El proceso de Ventas- Clientes se traslada de la venta de mercancías (y servicios) a la entrega de dichas mercancías, la facturación al cliente y a la recepción del cobro.",
-    "start_time": 81.34,
-    "end_time": 167.06
+    "image_file": "Slide_004.webp",
+    "script_text": "El proceso de ventas en SAP Business One abarca desde la venta de mercancías o servicios, pasando por su entrega y facturación, hasta la recepción del pago. Cada paso utiliza un documento específico: pedido, entrega, factura y cobro. El sistema transfiere automáticamente la información entre ellos, evitando reingresos. Aunque puede personalizar el flujo, la factura es el único documento obligatorio. Este enfoque le permite enfocarse en los datos que realmente cambian en cada etapa.",
+    "start_time": 83.47,
+    "end_time": 116.47
   },
   {
     "slide_index": 5,
-    "image_file": "106_Slide_05_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "El pedido de cliente representa un compromiso de compra del producto o servicio por parte del cliente o cliente potencial, según el precio y las cantidades acordadas. 5 Proceso de ventas Pedido de cliente Entrega Factura de clientes Cobro  El pedido de cliente representa un compromiso de compra del producto o servicio por parte del cliente o cliente potencial, según el precio y las cantidades acordadas.",
-    "start_time": 167.06,
-    "end_time": 192.1
+    "image_file": "Slide_005.webp",
+    "script_text": "El pedido de cliente representa un compromiso formal de compra por parte del cliente o potencial cliente, basado en el precio y las cantidades acordadas. En SAP Business One, este documento inicia el proceso de ventas y contiene información clave como códigos de artículos, descripciones, precios unitarios y fechas de entrega esperadas. En una empresa como Distribuidora Andina Tech, este documento asegura que tanto el cliente como la empresa tengan claro lo que se va a vender, evitando malentendidos antes de proceder con la entrega o facturación.",
+    "start_time": 116.47,
+    "end_time": 151.13
   },
   {
     "slide_index": 6,
-    "image_file": "106_Slide_06_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "La entrega indica que se llevó a cabo el envío de las mercancías. 6 Proceso de ventas Pedido de cliente Entrega Factura de clientes Cobro  La entrega indica que se llevó a cabo el envío de las mercancías.",
-    "start_time": 192.1,
-    "end_time": 205.54
+    "image_file": "Slide_006.webp",
+    "script_text": "El documento de entrega en SAP Business One confirma que se ha llevado a cabo el envío de las mercancías al cliente. Este paso es crítico porque marca el momento en que la responsabilidad del producto pasa del vendedor al comprador. En Distribuidora Andina Tech, al generar este documento, se actualizan automáticamente los niveles de inventario y se prepara la base para la facturación posterior. Garantiza trazabilidad y permite al cliente verificar que recibió lo que ordenó, en las condiciones y tiempos acordados.",
+    "start_time": 151.13,
+    "end_time": 183.53
   },
   {
     "slide_index": 7,
-    "image_file": "106_Slide_07_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "La factura de clientes es el único documento que se debe crear en el proceso de ventas. También representa la solicitud de pago y registra los ingresos en la cuenta de pérdidas y ganancias. 7 Proceso de ventas Pedido de cliente Entrega Factura de clientes Cobro La factura de clientes es el único documento obligatorio en el proceso de ventas. También representa la solicitud de pago y registra los ingresos en la cuenta de pérdidas y ganancias.",
-    "start_time": 205.54,
-    "end_time": 233.62
+    "image_file": "Slide_007.webp",
+    "script_text": "La factura de clientes es el único documento obligatorio en el proceso de ventas. Representa la solicitud de pago al cliente y registra los ingresos en la cuenta de pérdidas y ganancias. En SAP Business One, al crear esta factura, se actualizan automáticamente los registros contables y de ventas, reflejando el derecho de cobro y el ingreso generado por la venta de productos o servicios.",
+    "start_time": 183.53,
+    "end_time": 208.49
   },
   {
     "slide_index": 8,
-    "image_file": "106_Slide_08_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "El cobro recibe el pago del cliente y borra la deuda de la cuenta del cliente. La reconciliación interna se realiza automáticamente. Los pagos efectuados se realizan en el módulo Gestión de bancos. Como parte de un proceso de ventas optimizado, es posible contabilizar un pago y crear la factura. Para hacerlo, seleccione el icono Medios de pago cuando cree la factura e introduzca el importe del cobro. Esto creará un importe a pagar de cobro que se aplica a la factura que acaba de crear. 8 Proceso de ventas Pedido de cliente Entrega Factura de clientes Cobro El cobro recibe el pago del cliente y borra la deuda de la cuenta del cliente. Los pagos efectuados se realizan en el módulo Gestión de bancos.",
-    "start_time": 233.62,
-    "end_time": 279.65
+    "image_file": "Slide_008.webp",
+    "script_text": "El cobro recibe el pago del cliente y elimina la deuda de su cuenta. Los pagos se registran en el módulo de Gestión de bancos, donde se concilian automáticamente con las facturas pendientes. En un proceso optimizado, es posible registrar el pago y crear la factura simultáneamente seleccionando el icono de Medios de pago al emitir la factura, generando un importe a aplicar directamente.",
+    "start_time": 208.49,
+    "end_time": 233.62
   },
   {
     "slide_index": 9,
-    "image_file": "106_Slide_09_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Cada documento en el proceso de ventas debe tener asignado un interlocutor comercial. Los interlocutores comerciales utilizados en el proceso de ventas son clientes potenciales y clientes. Un cliente potencial puede convertirse fácilmente en un cliente. Un pedido de un cliente puede tener asignado a un cliente o a un cliente potencial. Una vez que pasa a la entrega, debe tener un cliente. Los datos maestros de clientes describen a las personas y organizaciones a quienes su empresa les vende productos y servicios. Los registros maestros de datos de clientes se utilizan como base para la creación de documentos relacionados con el procesamiento y cumplimiento de pedidos para clientes y para el asistente para reclamaciones de clientes. 9 Datos clave: Interlocutores comerciales  Cada documento en el proceso de ventas debe tener asignado un interlocutor comercial.  Interlocutores comerciales del proceso de ventas:  Clientes potenciales  Clientes  Datos sobre los clientes potenciales y clientes: 1. Un cliente potencial puede convertirse fácilmente en un cliente. 2. Los pedidos de cliente pueden tener asignado un cliente o un cliente potencial. 3. Una vez que pasa a la entrega, debe tener un cliente.",
-    "start_time": 279.65,
-    "end_time": 357.24
+    "image_file": "Slide_009.webp",
+    "script_text": "Cada documento en el proceso de ventas debe tener asignado un interlocutor comercial, que puede ser un cliente potencial o un cliente. Los clientes potenciales pueden convertirse fácilmente en clientes. Mientras un pedido puede tener asignado uno u otro, al pasar a la entrega debe tener necesariamente un cliente asignado. Los datos maestros de clientes almacenan la información de las personas y organizaciones a quienes se les vende, y sirven como base para crear documentos de venta, cumplimiento y gestión de reclamaciones.",
+    "start_time": 233.62,
+    "end_time": 267.36
   },
   {
     "slide_index": 10,
-    "image_file": "106_Slide_10_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Además del interlocutor comercial, otros datos clave que se introducen en el pedido de cliente son los datos del artículo. Los artículos representan productos en venta, ya sean mercancías o servicios. Al igual que los datos maestros del cliente, la información de los artículos se almacena en informes de datos maestros. Los servicios que vende también pueden definirse como informes de datos maestros de artículos. Si los servicios se definen como artículos, pueden introducirse junto con los artículos físicos en el pedido de cliente. En caso contrario, utilice el campo Clase de artículo/servicio para cambiar a un documento de servicio en el cual puedan introducirse las descripciones de los servicios y los precios. 10 Datos clave: Artículos  Los artículos representan productos en venta  Los artículos pueden ser tanto para mercancías como para servicios  La información sobre artículos se almacena en el registro maestro de artículo.",
-    "start_time": 357.24,
-    "end_time": 416.35
+    "image_file": "Slide_010.webp",
+    "script_text": "Los artículos representan los productos o servicios que la empresa vende y se almacenan en el registro maestro de artículos. Esta información incluye datos de mercancías y servicios, y sirve como base para la creación de documentos de venta. Los servicios pueden definirse como artículos y agregarse junto con los físicos en el pedido de cliente, o bien gestionarse mediante el campo 'Clase de artículo/servicio' para usar un documento de servicio específico cuando se requieran descripciones y precios detallados.",
+    "start_time": 267.36,
+    "end_time": 299.45
   },
   {
     "slide_index": 11,
-    "image_file": "106_Slide_11_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Cuando introduce un artículo en un documento de ventas, se encuentra automáticamente un precio. ¿Cómo funciona? SAP Business One proporciona 10 listas de precios estándar. Luego, defina los precios para cada lista de precios de sus artículos. Claro que, no debe usar las diez listas de precios, pero se le proporcionan para que pueda ofrecer diferentes precios a los diferentes grupos de clientes. Asigna una lista de precios a cada cliente mediante las condiciones de pago estándar. Sin duda, la lista de precios se puede cambiar en el registro maestro de clientes. Cuando introduce un cliente en un documento de venta, la lista de precios asignada aparece por defecto en el documento automáticamente. El sistema usa dicha lista para asignar los precios a los artículos en el pedido. Sin duda, pueden utilizarse asignaciones de precios más complejas, como precios especiales, grupos de descuento y jerarquías de precios. Éstas se explican en los temas de e-learning sobre precios. Los usuarios autorizados pueden modificar los precios en el pedido de cliente. Por ejemplo, un vendedor puede otorgar un 5% de descuento en un artículo específico o en un pedido de cliente completo. 11 Uso de listas de precios Lista de precios Registro maestro de clientes Documentos de ventas Conceptos básicos de la lista de precios:  Se proporcionan 10 listas de precios estándar.  Fije los precios para sus artículos en las listas de precios.  Asigne una lista de precios a cada cliente.  La lista de precios asignada aparece automáticamente en el documento de venta.",
-    "start_time": 416.35,
-    "end_time": 518.06
+    "image_file": "Slide_011.webp",
+    "script_text": "SAP Business One proporciona 10 listas de precios estándar para definir precios por artículo según grupos de clientes. Se asigna una lista de precios a cada cliente mediante las condiciones de pago, y al crear un documento de venta, esa lista se aplica automáticamente para determinar los precios de los artículos. Aunque se pueden usar menos de diez listas, esta estructura permite ofrecer precios diferenciados. Los usuarios autorizados pueden modificar precios directamente en el pedido, como aplicar un 5% de descuento en un artículo o en todo el pedido.",
+    "start_time": 299.45,
+    "end_time": 335.42
   },
   {
     "slide_index": 12,
-    "image_file": "106_Slide_12_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Para nuestro proceso optimizado, utilizaremos solo un documento: la factura de cliente. La factura de clientes es el único documento obligatorio en el proceso de ventas. La factura de cliente está diseñada para ser un documento extremadamente eficiente para pequeños negocios con solo algunos empleados. La factura de cliente puede realizar el trabajo de registrar el pedido del cliente, iniciar la entrega, contabilizar la salida de mercancías y registrar lo que el cliente debe. 12 Factura de clientes en un proceso de ventas optimizado Factura de clientes:  El único documento obligatorio en el proceso de ventas.  Diseñada como documento extremadamente eficiente para un negocio pequeño con pocos empleados.  Puede realizar el trabajo de registrar el pedido del cliente, iniciar la entrega, contabilizar la salida de mercancías y registrar lo que el cliente debe.",
-    "start_time": 518.06,
-    "end_time": 573.46
+    "image_file": "Slide_012.webp",
+    "script_text": "En un proceso de ventas optimizado, la factura de cliente es el único documento obligatorio y está diseñada para ser extremadamente eficiente en pequeños negocios con pocos empleados. Este documento puede registrar el pedido del cliente, iniciar la entrega, contabilizar la salida de mercancías y registrar lo que el cliente debe pagar. En la ventana de factura de SAP Business One, se ingresan los datos del cliente, fecha, artículos, cantidades y precios, y el sistema calcula automáticamente los impuestos y totales, generando un documento que cumple múltiples funciones operativas y contables.",
+    "start_time": 335.42,
+    "end_time": 374.04
   },
   {
     "slide_index": 13,
-    "image_file": "106_Slide_13_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Grabar una factura de cliente siempre activa dos contabilizaciones: un débito a la cuenta del cliente para mostrar lo que se debe y un crédito para los ingresos de ventas. Cuando un artículo de inventario se vende en una factura de cliente que no posee documentos precedentes, se realizan dos contabilizaciones adicionales. Estas son las contabilizaciones para sacar el artículo del inventario que generalmente se gestiona por un documento de entrega en un sistema de inventario permanente: un débito para el coste de la cuenta de mercancías vendidas y un crédito para la cuenta de stock. Sin duda, este gráfico cubre solo las transacciones contables básicas. Es posible que existan contabilizaciones adicionales para los impuestos o ingresos y gastos adicionales. 13 Contabilizaciones de factura de clientes 50 Cta. existencias 50 Cta. de gastos Ingresos por ventas 100 Cliente 100 Grabar una factura de cliente siempre activa dos contabilizaciones:  Debe en la cuenta del cliente  Haber en los ingresos por ventas Cuando una factura de clientes no posee documentos precedentes, se realizan dos contabilizaciones adicionales  Debe en el coste de los artículos vendidos  Haber en una cuenta de existencias",
-    "start_time": 573.46,
-    "end_time": 646.63
+    "image_file": "Slide_013.webp",
+    "script_text": "Al grabar una factura de cliente sin documentos precedentes, se generan cuatro contabilizaciones. Primero, se debita la cuenta del cliente por el valor de la factura, reflejando lo que el cliente debe. Segundo, se acredita la cuenta de ingresos por ventas por el mismo monto. Tercero, se debita el costo de mercancías vendidas para reconocer el gasto asociado al artículo vendido. Finalmente, se acredita la cuenta de existencias para reducir el inventario. Estas asientos reflejan el impacto contable completo de una venta de inventario en un sistema permanente.",
+    "start_time": 374.04,
+    "end_time": 411.82
   },
   {
     "slide_index": 14,
-    "image_file": "106_Slide_14_10_Sales_11_Process_Overview_ES.webp",
-    "script_text": "Los documentos principales del proceso de venta son el pedido de cliente, entrega y factura de cliente. El cobro al final del proceso de venta se lleva a cabo en un módulo bancario. Todos los documentos de ventas deben tener un interlocutor comercial asignado. Un documento de ventas puede vender productos o servicios. Las mercancías se representan por los registros maestros de artículos. Si los servicios se representan como artículos, pueden venderse con artículos físicos en documentos de ventas, de lo contrario se venden en documentos de venta de tipo servicio. SAP Business One calcula la determinación de precios de forma automática en el pedido de cliente. La determinación de precios puede modificarse en los documentos de ventas por parte de usuarios autorizados. El único documento de venta obligatorio es la factura de clientes. Cuando una factura de cliente se utiliza sola sin documentos precedentes, esta puede llevar a cabo las funciones del pedido del cliente, entrega y la factura. Esto es por qué la factura de cliente con frecuencia se utiliza en un proceso de ventas optimizado. 14 14 Resumen A continuación, se detallan algunos puntos clave:  Los documentos principales del proceso de venta son el pedido de cliente, entrega y factura de cliente. El cobro al final del proceso de venta se lleva a cabo en un módulo bancario.  Todos los documentos de ventas deben tener un interlocutor comercial asignado.  Un documento de ventas puede vender productos o servicios. Las mercancías se representan por los registros maestros de artículos. Si los servicios se representan como artículos, pueden venderse con artículos físicos en documentos de ventas, de lo contrario se venden en documentos de tipo servicio.  SAP Business One calcula la determinación de precios de forma automática en los pedidos de cliente. La determinación de precios puede modificarse en los documentos de ventas por parte de usuarios autorizados.  El único documento de venta obligatorio es la factura de clientes. Cuando una factura de cliente se utiliza sola sin documentos precedentes, puede llevar a cabo las funciones del pedido del cliente, entrega y la factura.  La factura de cliente con frecuencia se utiliza en un proceso de ventas optimizado.",
-    "start_time": 646.63,
-    "end_time": 788.54
+    "image_file": "Slide_014.webp",
+    "script_text": "En el proceso de venta de SAP Business One, los documentos principales son el pedido de cliente, la entrega y la factura de cliente. El cobro se gestiona en el módulo bancario. Todos los documentos deben tener un interlocutor comercial asignado. Se pueden vender productos o servicios, representados por maestros de artículos. Los precios se calculan automáticamente en el pedido y pueden modificarse por usuarios autorizados en los documentos de venta. El único documento obligatorio es la factura de cliente. Cuando se usa sola, sin documentos precedentes, la factura cumple las funciones de pedido, entrega y factura, por lo que se usa frecuentemente en procesos de venta optimizados.",
+    "start_time": 411.82,
+    "end_time": 457.25
   }
 ]

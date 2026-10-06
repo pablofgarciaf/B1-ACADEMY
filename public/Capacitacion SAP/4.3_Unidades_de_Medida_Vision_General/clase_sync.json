@@ -1,86 +1,86 @@
 [
   {
     "slide_index": 1,
-    "image_file": "068_Slide_01_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre ItemInv 21 UoM Overview en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Artículos e inventario: Descripción general de unidades de medida Bienvenidos a un resumen de las unidades de medida en SAP Business One.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al resumen de las unidades de medida en SAP Business One versión 10.0. Este tema le mostrará cómo gestionar las distintas formas en que se compran, almacenan y venden los artículos. Aprenderá a asignar unidades adecuadas según el proceso, usando grupos que aseguran consistencia en compras, ventas e inventario. Es clave para evitar errores en conversiones y mantener datos precisos en toda la cadena de suministro.",
     "start_time": 0.0,
-    "end_time": 22.34
+    "end_time": 28.8
   },
   {
     "slide_index": 2,
-    "image_file": "068_Slide_02_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Objetivos Al finalizar este tema, podrá: Asignar unidades de medida a un artículo Describir la relación de los diferentes tipos de unidades de medida Modificar reglas de conversación para artículos específicos En este tema, aprenderá a asignar unidades de medida a artículos utilizando grupos de unidades de medida y describir la relación de los diferentes tipos de unidades de medida para los artículos en ventas, compras e inventario. Además, puede modificar las tasas de conversación para artículos específicos.",
-    "start_time": 22.34,
-    "end_time": 54.0
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá asignar unidades de medida a un artículo, describir la relación entre los diferentes tipos de unidades de medida y modificar las reglas de conversación para artículos específicos. Aprenderá a usar grupos de unidades de medida para estandarizar cómo se manejan los artículos en ventas, compras e inventario. Esto le permitirá adaptar SAP a las necesidades reales de su empresa, como Distribuidora Andina Tech, asegurando precisión en cada transacción.",
+    "start_time": 28.8,
+    "end_time": 59.59
   },
   {
     "slide_index": 3,
-    "image_file": "068_Slide_03_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Escenario empresarial Los artículos se suelen vender y comprar en diferentes unidades de medida. El papel, por ejemplo, se puede comprar en cajas o palés y se vende en paquetes o paquetes de 6 unidades. OEC Computers ha creado un grupo de unidades de medida para el papel con el objetivo de que haya una mayor consistencia y resulte más fácil asignar un conjunto de unidades de medida adecuadas a cada artículo de papel. Los grupos de unidades de medida contribuyen a gestionar mejor cómo se manejan los artículos en las ventas, compras y procesos de inventario estableciendo relaciones entre las unidades que se utilizan en los distintos procesos. Los artículos se suelen vender y comprar en diferentes unidades de medida. El papel, por ejemplo, se puede comprar en cajas o palés y se vende en paquetes o paquetes de 6 unidades. La empresa ha creado unos grupos de unidades de medida con el objetivo de que haya una mayor consistencia y resulte más fácil asignar un conjunto de unidades de medida adecuadas a cada artículo. Un grupo de unidades de medida asignado contendrá todas las unidades diferentes que el artículo necesita para las ventas, las compras y el inventario. Los grupos de unidades de medida contribuyen a gestionar mejor cómo se manejan los artículos en las ventas, compras y procesos de inventario estableciendo relaciones entre las unidades que se utilizan en los distintos procesos.",
-    "start_time": 54.0,
-    "end_time": 139.3
+    "image_file": "Slide_003.webp",
+    "script_text": "En la práctica, los artículos se compran y venden en distintas unidades de medida. Por ejemplo, el papel se compra en cajas o palés y se vende en paquetes o paquetes de 6 unidades. Para gestionar esta variabilidad, OEC Computers creó un grupo de unidades de medida para el papel, logrando mayor consistencia y facilidad al asignar las unidades adecuadas. Estos grupos establecen relaciones entre las unidades usadas en compras, ventas e inventario, mejorando el control y reduciendo errores operativos.",
+    "start_time": 59.59,
+    "end_time": 92.62
   },
   {
     "slide_index": 4,
-    "image_file": "068_Slide_04_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Unidades de medida básicas Compras Caja Almacén Paquete Ventas Paquete Ventas Paquete pequeño Ventas Paquete de 6 unidades Compras Palé Utilice diferentes unidades de medida en: Documentos de compras Documentos de ventas Almacén Generalmente, en un negocio un artículo puede venderse en diferentes tipos de embalaje que como se compra. En el gráfico, vemos un ejemplo del papel. Los proveedores venden el artículo en cajas o pallets y nosotros vendemos el papel en paquetes, paquetes pequeños o grupos de 6 paquetes. Cada registro maestro de artículos incluye las unidades de medida utilizadas para la compra, almacenamiento y venta de ese artículo en particular. Cuando fija un artículo, asigna un grupo que incluye las unidades de medida más comúnmente usadas para este tipo de artículo. El grupo \"manual\" se suministra para las compañías actualizadas y utilizadas como el valor predeterminado hasta que otro grupo se asigne.",
-    "start_time": 139.3,
-    "end_time": 197.3
+    "image_file": "Slide_004.webp",
+    "script_text": "Un mismo artículo puede manejarse con distintas unidades según el proceso: se compra en cajas, se almacena en paquetes y se vende en paquetes de 6 unidades. Este flujo refleja cómo Distribuidora Andina Tech gestiona el papel: los proveedores entregan en cajas o palés, el almacén maneja paquetes estándar y las ventas se hacen en paquetes pequeños o de 6 unidades. SAP permite configurar estas diferencias por proceso, asegurando que cada área use la unidad adecuada sin confusiones.",
+    "start_time": 92.62,
+    "end_time": 124.2
   },
   {
     "slide_index": 5,
-    "image_file": "068_Slide_05_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Unidades de medida en artículos Grupo de UM de papel Paquete = 21x30x4 cm Paquete pequeño = 0.5 paquete Paquete (6 un.) = 6 paquetes Caja = 24 paquetes Palé = 48 paquetes Cuando cree un registro de datos maestros del artículo, asigne un grupo de unidades de medida. El grupo contiene todas las unidades de medida relevantes que necesita para el artículo y las relaciones que existen entre dichas unidades. Número de artículo Descripción Clase de artículo Datos maestros de artículo R1001 Artículos Lista de precio Lista de precios base Artículos Papel de impresora A4 Papel Grupo de artículos Grupo de UM Cuando cree un registro de datos maestros del artículo, asigne un grupo de unidades de medida. El grupo contiene todas las unidades de medida relevantes que necesita para el artículo así como las relaciones que existen entre dichas unidades. En nuestro ejemplo, podemos asignar el grupo de unidades de medida de papel porque tiene todas las medidas que necesitamos.",
-    "start_time": 197.3,
-    "end_time": 264.17
+    "image_file": "Slide_005.webp",
+    "script_text": "En el maestro de artículos de SAP, al crear el registro para el papel A4, asigna el grupo de unidades de medida 'Papel'. Este grupo define todas las unidades relevantes y sus relaciones: un paquete mide 21x30x4 cm, el paquete pequeño es la mitad, el de 6 unidades equivale a seis paquetes, una caja contiene 24 paquetes y un palé 48. Al seleccionar este grupo, SAP aplica automáticamente estas conversiones en compras, ventas e inventario, evitando cálculos manuales y asegurando consistencia en Distribuidora Andina Tech.",
+    "start_time": 124.2,
+    "end_time": 162.12
   },
   {
     "slide_index": 6,
-    "image_file": "068_Slide_06_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Agrupación de unidades de medida cada uno litro Paquete Paquete pequeño Paquete 6 un. Caja Palé mm ml … Lista de grupos UM Papel Manual … Unidades de medida globales Paquete = 21x30x4 cm Paquete pequeño = 0.5 paquete Paquete de 6 un. = 6 paquetes Caja = 24 paquetes Palé = 48 paquetes Grupo de unidades de medida de papel Vimos que un grupo de unidades de medida contiene un conjunto de unidades relevantes de medida. Realicemos un paso atrás para ver cómo se realizan. Existe una tabla con una lista de todas las unidades de medida posibles. Esta es la unidad de medida global. Vemos esta lista a la izquierda del gráfico. Los artículos individuales de esta tabla luego se agrupan juntos en un grupo. En nuestra situación de ejemplo, fijamos un grupo para papel. Dentro de un grupo, defina las relaciones entre las mediciones enumeradas en base a las reglas de conversión. A la derecha vemos las mediciones que conforman el grupo de unidades de medida \"Papel\". Observe que las mediciones enumeradas en la tabla de unidades de medida globales pueden asignarse a múltiples grupos de unidades de medida.",
-    "start_time": 264.17,
-    "end_time": 342.6
+    "image_file": "Slide_006.webp",
+    "script_text": "Esta tabla muestra las relaciones de conversión dentro del grupo de unidades de medida 'Papel'. Cada unidad se define en términos del paquete base: el paquete pequeño es 0.5 veces un paquete, el de 6 unidades equivale a 6 paquetes, una caja contiene 24 paquetes y un palé 48. Estas reglas permiten que SAP convierta automáticamente entre unidades al crear documentos de compra, venta o transferencias de almacén. Por ejemplo, si compra 2 cajas, SAP calcula 48 paquetes en inventario. Esto es esencial para empresas como Distribuidora Andina Tech que manejan múltiples presentaciones del mismo artículo.",
+    "start_time": 162.12,
+    "end_time": 204.24
   },
   {
     "slide_index": 7,
-    "image_file": "068_Slide_07_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Un grupo de unidades de medida puede asignarse a múltiples artículos. Paquete = 21x30x4 cm Paquete pequeño = 0.5 paquete Paquete 6 un. = 6 paquetes Caja = 24 paquetes Palé = 48 paquetes Papel de impresora A4 blanco Registros de datos maestros de artículo Papel de impresora A4 reciclado Grupo de unidades de medida de papel Papel de impresora A4 amarillo OEC Computers puede utilizar este mismo grupo de unidades de medida para los diferentes tipos de papel de impresora que venden. Una vez que un grupo de unidades de medida se crea, este puede asignarse a varios registros de datos maestros de artículo. En nuestro gráfico, el grupo de unidades de medida se asigna a 3 registros maestros de artículo que necesitan el mismo tipo de relaciones entre las unidades de medida del grupo. Debido a que el grupo de unidades de medida de papel se definió de forma flexible, puede utilizarse para diferentes tipos de papel de impresora que la compañía vende.",
-    "start_time": 342.6,
-    "end_time": 406.58
+    "image_file": "Slide_007.webp",
+    "script_text": "Un grupo de unidades de medida se crea una vez y puede asignarse a varios artículos que requieran las mismas relaciones entre unidades. En este caso, el grupo de UM de papel se define con conversiones como paquete pequeño igual a 0.5 paquete o caja igual a 24 paquetes. Este grupo se asigna a tres registros maestros de artículo diferentes, todos relacionados con tipos de papel de impresora. Al usar un grupo flexible, se evita duplicar configuraciones y se mantiene consistencia en el manejo de unidades. Así, cualquier cambio en el grupo se refleja en todos los artículos asignados, siempre que no haya documentos abiertos que lo impidan.",
+    "start_time": 204.24,
+    "end_time": 246.67
   },
   {
     "slide_index": 8,
-    "image_file": "068_Slide_08_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Modificaciones de reglas de conversión para un artículo específico asignado a un grupo de UM Paquete = 21x30x4 cm Paquete pequeño = 0.5 paquete Paquete 6 unidades = 6 paquetes Caja = 24 paquetes Palé = 48 paquetes Papel de impresora A4 blanco Registros de datos maestros de artículo Papel de impresora A4 reciclado Grupo de UM de papel Papel de impresora A4 amarillo Paquete = 21x30x4 cm Paquete pequeño = 0.5 paquete Paquete 6 unidades = 6 paquetes Caja = 30 paquetes Palé = 48 paquetes Palé dual = 96 paquetes Grupo de UM de papel 2 Papel de impresora A4 reciclado Reto: Modificar la tasa de conversación dentro de un grupo de UM para un artículo en particular. Debe crear un segundo grupo de UM (grupo 2) que incluya un conjunto idéntico de UM al primer grupo. El nuevo grupo también puede contener tasas de conversación adicionales. Asigne el artículo afectado al nuevo grupo de UM 2. Verá que la tasa de conversión sigue siendo la misma que en el primer grupo de UM original. NOTA: No puede modificar las tasas de conversión dentro del grupo de UM 2 mientras haya documentos abiertos vinculados al artículo afectado. Debe cerrar todos los documentos enlazados y abiertos que contengan el artículo afectado. Después de cerrar todos los documentos que contienen el artículo afectado, podrá navegar a la definición de grupo de UM del grupo de UM 2 y modificar la tasa de conversación según corresponda.",
-    "start_time": 406.58,
-    "end_time": 509.06
+    "image_file": "Slide_008.webp",
+    "script_text": "Cuando un artículo necesita una conversión diferente dentro de un grupo de unidades de medida, no se puede modificar el grupo original directamente si tiene documentos abiertos. La solución es crear un segundo grupo de UM con la misma estructura pero con las tasas de conversión ajustadas para ese artículo específico. Por ejemplo, cambiar la caja de 24 a 30 paquetes o agregar un palé dual de 96 paquetes. Antes de modificar el grupo 2, se deben cerrar todos los documentos vinculados al artículo. Luego, se puede editar el grupo y asignarlo al artículo afectado, manteniendo la integridad de las transacciones previas.",
+    "start_time": 246.67,
+    "end_time": 287.5
   },
   {
     "slide_index": 9,
-    "image_file": "068_Slide_09_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Unidades de medida en el registro maestro de materiales Datos maestros de artículo Papel de impresora A4 blanco Códigos de barras por unidad de medida Determinación de precios por unidad de medida Embalaje por unidad de medida Paquete = 21x30x4 cm Paquete pequeño = 0.5 paquete Paquete 6 un. = 6 paquetes Caja = 24 paquetes Palé = 48 paquetes Un grupo de unidades de medida puede ser útil para administrar todas las funciones que se relacionan con el tamaño del artículo. Grupo de UM de papel Un grupo de unidades de medida puede ser muy útil para administrar todas las funciones que se relacionan con el tamaño del artículo. Luego de que un grupo de unidades de medida se asigna a los datos maestros de artículo, puede definir los códigos de barras, la determinación de precios y el embalaje para el artículo relacionado con cada unidad de medida dentro del grupo.",
-    "start_time": 509.06,
-    "end_time": 565.42
+    "image_file": "Slide_009.webp",
+    "script_text": "Una vez que un grupo de unidades de medida se asigna al registro maestro de un artículo, se pueden definir funciones específicas para cada unidad dentro del grupo. Esto incluye asignar códigos de barras únicos, establecer precios de venta y compra diferenciados, y definir reglas de embalaje según la unidad. Por ejemplo, el paquete puede tener su propio código de barras y precio, mientras que la caja tiene otro. Esto permite que SAP gestione correctamente transacciones, reportes y procesos logísticos según la unidad utilizada en cada documento, todo desde el mismo registro maestro.",
+    "start_time": 287.5,
+    "end_time": 325.13
   },
   {
     "slide_index": 10,
-    "image_file": "068_Slide_10_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Tipos de unidades de medida para un artículo Todas las transacciones de inventario se realizan en esta unidad. Los documentos de inventario y ventas pueden realizarse para cualquiera de las unidades de medida de venta definidas en el registro maestro del artículo Datos maestros de artículo Los documentos de inventario y compras pueden realizarse para cualquiera de las unidades de medida de compra definidas en el registro maestro del artículo. Unidad de inventario 1 1 o más unidades de medida de venta de la definición del grupo de UdM 1 o más unidades de medida de compra de la definición del grupo de UdM Documentos de inventario y marketing En los Datos maestros del artículo definimos tres tipos diferentes de unidades de medida: La Unidad de medida de inventario: esta unidad de medida individual se utiliza para contabilizar todas las transacciones de inventario. La unidad de medida de inventario no puede cambiar una vez que se hayan realizado transacciones con el artículo. Observe que el campo Unidad de medida de inventario de Datos maestros de artículo no aparece si se asigna el grupo Manual. La Unidad de medida de venta: un artículo puede estar relacionado con muchas unidades de medida de venta. Es posible utilizar cada una de dichas unidades de medida en un documento de ventas o de inventario. La Unidad de medida de compra: un artículo puede estar relacionado con muchas unidades de medida de compra. Es posible utilizar cada uno de dichos códigos en un documento de compras o de inventario. Todo el seguimiento y la realización de informes del inventario se lleva a cabo en la unidad de medida del inventario. La verificación de disponibilidad se realiza para la unidad de medida del inventario.",
-    "start_time": 565.42,
-    "end_time": 666.82
+    "image_file": "Slide_010.webp",
+    "script_text": "En el registro maestro de artículo se definen tres tipos de unidades de medida: inventario, venta y compra. La unidad de medida de inventario es la única que se usa para contabilizar todas las transacciones de inventario y no puede cambiarse una vez que hay movimientos registrados. Las unidades de medida de venta y compra permiten operar con diferentes presentaciones en documentos de ventas o compras, respectivamente. Todas las transacciones, sin importar la unidad usada en el documento, se convierten y se registran en la unidad de medida de inventario para mantener la consistencia del seguimiento y los reportes de stock.",
+    "start_time": 325.13,
+    "end_time": 363.62
   },
   {
     "slide_index": 11,
-    "image_file": "068_Slide_11_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Unidades de medida en documentos Documentos de inventario Picking y embalaje MRP ATP Informes de inventario Documentos de ventas Documentos de compras Papel de impresora A4 Inventariado Grupo de unidades de medida: Papel Un. medida de invent. = Paquete Un. medida de compra = Caja Un. medida de vta. = Paquete 6 un En nuestra situación de ejemplo, definimos que la unidad de medida de inventario es el paquete. Por lo tanto, el paquete aparecerá como la unidad en todas las transacciones de inventario. Definimos la caja como unidad de medida de compra porque es la unidad típica utilizada por nuestros proveedores. Independientemente de cómo lo compramos, podemos optar por vender un producto con diferente embalaje. En nuestro ejemplo, el papel es más frecuentemente vendido embalado como un paquete de 6 unidades. Por lo tanto, fijamos la unidad de medida de ventas como un paquete de 6 unidades por lo que esta medición es la predeterminada para nuestros documentos de ventas. Puede sobrescribir la unidad de medida y los artículos por unidad en documentos de marketing, según lo necesite. Por ejemplo, generalmente compra a un proveedor que entrega los artículos en cajas de cartón, cada una de 12 unidades. Sin embargo, está probando a un nuevo proveedor que lo abastece del artículo en cajas de madera. Cada caja de madera contiene 20 unidades. Ya que la unidad de medida de compra es una caja de cartón, la unidad de medida en el pedido aparece por defecto como caja de cartón. Siempre que la unidad de medida «caja de madera» esté en el grupo de unidades de medida de papel, puede sustituir «caja» y cambiar la unidad de medida y la unidad de medida de compra de los artículos en el pedido sin que esto afecte al registro maestro del artículo. Si el cambio es permanente, también puede hacer el mismo cambio a la unidad de medida de compra predeterminada en el registro de datos maestros de artículo. Recuerde que independientemente de la unidad de compra o venta que se utilice en un documento, las contabilizaciones son siempre realizadas en la unidad de medida de inventario. Por lo tanto, en nuestra situación de ejemplo, una entrada de mercancías de pedido de 1 caja creará una contabilización de inventario de 24 paquetes, debido a que cada caja contiene 24 paquetes",
-    "start_time": 666.82,
-    "end_time": 813.38
+    "image_file": "Slide_011.webp",
+    "script_text": "En los documentos de negocio, cada tipo de unidad de medida tiene un propósito específico. La unidad de medida de inventario (como el paquete) es la base para todas las contabilizaciones de stock. La unidad de medida de compra (como la caja) se usa en órdenes a proveedores, y la de venta (como paquete de 6 unidades) en facturas a clientes. Al registrar una entrada de mercancías de 1 caja, SAP convierte automáticamente a 24 paquetes usando las reglas del grupo de UM, y esa es la cantidad que se contabiliza en inventario. Esto permite flexibilidad en la operación manteniendo la precisión en el control de stock.",
+    "start_time": 363.62,
+    "end_time": 404.74
   },
   {
     "slide_index": 12,
-    "image_file": "068_Slide_12_10_ItemInv_21_UoM_Overview_ES.webp",
-    "script_text": "Resumen Las unidades de medida (UdM) se definen globalmente en una empresa. Un grupo de unidades de medida contiene una lista de unidades y define las relaciones entre las unidades enumeradas en base a las reglas de conversión. Un grupo de unidades de medida definidas de forma flexible puede asignarse a muchos artículos y contendrá todas las unidades de medida que necesita para dichos artículos. Un grupo de unidades de medida puede administrar las funciones relacionadas con el tamaño como códigos de barras, determinación de precios y embalaje para el artículo de cada unidad de medida. En el registro maestro de artículos se definen tres tipos de unidades de medida: unidades de medida de inventario, de venta y de compra. Cada artículo tiene una única unidad de medida de inventario asignada para todas las transacciones de inventario. Esta definición no puede modificarse una vez que se realizan transacciones con el artículo. Las unidades de medida (UdM) se definen globalmente en una empresa. Un grupo de unidades de medida contiene una lista de unidades y define las relaciones entre las unidades enumeradas en base a las reglas de conversión. Cuando cree un registro de datos maestros del artículo, asigne un grupo de unidades de medida. Un grupo de unidades de medida definidas de forma flexible puede asignarse a muchos artículos y contendrá todas las unidades de medida relevantes que necesita para dichos artículos. Un grupo de unidades de medida asignado a un artículo puede gestionar funciones relacionadas con el tamaño de artículo como los códigos de barras, la determinación de precios y el embalaje del artículo relacionado con cada unidad de medida dentro del grupo. En los Datos maestros del artículo definimos tres tipos distintos de unidades de medida: unidades de medida de inventario, de venta y de compra. Un artículo puede tener muchas unidades de medida de venta y compra. Cada artículo tiene una única unidad de medida de inventario asignada para contabilizar todas las transacciones de inventario. Esta definición no puede modificarse una vez que se realizan transacciones con el artículo.",
-    "start_time": 813.38,
-    "end_time": 943.7
+    "image_file": "Slide_012.webp",
+    "script_text": "Las unidades de medida se definen globalmente y se agrupan en grupos que establecen relaciones de conversión entre unidades. Un grupo flexible puede asignarse a múltiples artículos y gestionar funciones como códigos de barras, precios y embalaje por unidad. En el registro maestro de artículo se definen tres tipos: inventario (única y no modificable tras transacciones), venta y compra. Todas las transacciones se registran en la unidad de medida de inventario, garantizando consistencia en el stock y los reportes, sin importar la unidad usada en documentos de compra o venta.",
+    "start_time": 404.74,
+    "end_time": 441.29
   }
 ]

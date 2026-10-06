@@ -1,79 +1,72 @@
 [
   {
     "slide_index": 1,
-    "image_file": "095_Slide_01_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Bienvenidos a esta clase sobre Production 52 Accounting Cost en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Production and MRP: Production Standard Cost SAP Business One Version 10.0 Welcome to the Production Std. Cost training topic. Although Production Standard Cost fields exist for both perpetual and non perpetual inventory, we only cover the functionality for perpetual inventory in this course. In addition, in order to take this training, you first need to complete the Production Process and By products and Additional Quantity training topics.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre el Costo Estándar de Producción en SAP Business One Versión 10.0. En este curso aprenderás a utilizar esta funcionalidad específicamente para inventario perpetuo. Antes de comenzar, es necesario haber completado los temas de Proceso de Producción y Subproductos y Cantidades Adicionales. El costo estándar de producción es una herramienta clave para planificar y controlar los costos en la fabricación, permitiendo comparar lo presupuestado con lo real. A lo largo del módulo, verás cómo configurarlo, acumularlo y actualizarlo según la Lista de Materiales y los recursos involucrados en la producción.",
     "start_time": 0.0,
-    "end_time": 39.84
+    "end_time": 37.8
   },
   {
     "slide_index": 2,
-    "image_file": "095_Slide_02_10_Production_52_Accounting_Cost.webp",
-    "script_text": "After completing this topic, you will be able to: Define a production standard cost for produced items Explain the total production standard cost calculation in the Bill of Materials Describe the production standard cost rollup and update procedures 2 At the end of this topic, you will be able to: Define a production standard cost for produced items Explain the total production standard cost calculation in the Bill of Materials Describe the production standard cost rollup and update procedures Objectives",
-    "start_time": 39.84,
-    "end_time": 67.54
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás definir un costo estándar de producción para los artículos que tu empresa fabrica. Aprenderás a explicar cómo se calcula este costo total a partir de la Lista de Materiales, considerando tanto componentes como recursos. Además, conocerás los procedimientos de acumulación y actualización del costo estándar, que permiten mantener los valores actualizados según cambios en insumos, mano de obra o gastos indirectos. Estos conocimientos te ayudarán a mejorar la precisión en la planificación y el control de costos de producción.",
+    "start_time": 37.8,
+    "end_time": 72.0
   },
   {
     "slide_index": 3,
-    "image_file": "095_Slide_03_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Business Scenario OC WoodTrend produces custom wooden doors. They use the Production module in SAP Business One to record the production process. There was large fluctuation in the production cost of the doors over the last year and the accountant would like to have better cost prediction. OC WoodTrend decides to manage Production Standard cost in order to analyze and more accurately predict costs. In addition, she would like to set up the relevant cost accounts for the resources in the GL account determination. OC WoodTrend produces custom wooden doors. They use the Production module in SAP Business One to record the production process. There was large fluctuation in the production cost of the doors over the last year and the accountant would like to have better cost prediction. OC WoodTrend decides to manage Production Standard cost in order to analyze and more accurately predict costs. In addition, she would like to set up the relevant cost accounts for the resources in the GL account determination.",
-    "start_time": 67.54,
-    "end_time": 124.78
+    "image_file": "Slide_003.webp",
+    "script_text": "OC WoodTrend es una empresa que fabrica puertas de madera personalizadas y utiliza el módulo de Producción de SAP Business One para gestionar su proceso productivo. Durante el último año, enfrentaron grandes fluctuaciones en los costos de producción, lo que dificultó la predicción financiera. Para mejorar la precisión, decidieron implementar el Costo Estándar de Producción como herramienta de análisis y forecast. Además, quieren configurar las cuentas de costo adecuadas para cada recurso, de modo que la determinación automática de cuentas G/L refleje correctamente los gastos asociados a mano de obra, máquinas y otros factores de producción.",
+    "start_time": 72.0,
+    "end_time": 111.0
   },
   {
     "slide_index": 4,
-    "image_file": "095_Slide_04_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Concept Production std. cost is a budgeted production cost which can be compared to the actual production cost. Item Master Data Production Std Cost can be optionally set to the current valuation cost and can also be optionally rolled up through multiple levels of bill of materials. Bill of Materials window displays the Production Std. Cost data for item components, the cost data for resource components and the Production Std Cost data for the produced item. Benefit: Facilitates budget to actual cost comparisons and production variance calculations. Actual Cost Production Std. Cost Difference Copy The main idea behind this feature is to allow us to plan a budget for the production cost. Then we can compare the actual cost of a product to this budgeted cost. In addition we can copy the actual cost of the produced items in a BOM to their Production Std. Cost in an automatic procedure. When working in the Bill of Material and Production Order windows, we can see the Production Std. Cost information. In addition we can analyze the difference between the budgeted cost and the actual cost in the Inventory Audit Trail report.",
-    "start_time": 124.78,
-    "end_time": 190.9
+    "image_file": "Slide_004.webp",
+    "script_text": "El Costo Estándar de Producción es un valor presupuestado que se puede comparar con el costo real de producción para identificar varianzas y mejorar la toma de decisiones. En los Datos Maestros del Artículo, este costo puede configurarse manualmente o basarse en el costo de valoración actual. Además, puede acumularse automáticamente a través de múltiples niveles de la Lista de Materiales, sumando los costos de componentes y recursos. La ventana de Lista de Materiales muestra detalladamente estos valores para componentes, recursos y el artículo final. Su principal beneficio es facilitar el análisis de desviaciones entre lo presupuestado y lo real, apoyando el cálculo de varianzas de producción.",
+    "start_time": 111.0,
+    "end_time": 154.4
   },
   {
     "slide_index": 5,
-    "image_file": "095_Slide_05_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Resource Std. Cost Definition G L Account Determination (standard) Resource Group Resource Master Data Resource Std. Cost name and Default cost ratio Each resource expense account is related to a resource std. cost The std. cost of a resource is the total of all std. cost elements and is also the actual cost of the resource The cost of a resource is actually the std. cost that is defined in the Resource Master data. This cost is composed from a list of different std. cost elements that are copied from the Resource Group. For the lathe machine, the standard cost is comprised of 3 elements: amortization, maintenance and overhead. Each cost element is related to a certain account in the GL Account Determination window (when using standard G L account determination). There, we can define up to ten resource expense accounts, corresponding to the ten cost components in the Resource Master Data. The cost element in each row in the Resource Master Data is linked by the element number to the cost expense fields in the G L account definition. In OC WoodTrens, Resource Std. Cost 1 of the Lathe machine is named Amortization and refers to account 510160 as shown in the image. The same cost element may have a different name in another resource. In Advanced GL Account Determination it is possible to set rules that connect resource std. cost elements to different G L accounts.",
-    "start_time": 190.9,
-    "end_time": 277.94
+    "image_file": "Slide_005.webp",
+    "script_text": "El costo estándar de un recurso se define a partir de su Grupo de Recursos y se compone de diversos elementos de costo, como amortización, mantenimiento y gastos generales. Cada uno de estos elementos está vinculado a una cuenta de gasto específica en la ventana de Determinación de Cuentas G/L, cuando se usa el método estándar. Allí se pueden configurar hasta diez cuentas diferentes, correspondientes a los diez componentes posibles en los Datos Maestros del Recurso. El costo total del recurso es la suma de todos sus elementos de costo estándar y representa tanto el costo presupuestado como el real, ya que en este modelo se asume que el costo real coincide con el estándar definido.",
+    "start_time": 154.4,
+    "end_time": 201.4
   },
   {
     "slide_index": 6,
-    "image_file": "095_Slide_06_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Item Std. Cost Definition Can be entered manually or populated during the Production Std. Cost Rollup procedure The Production Std. Cost of an item is defined manually in the Item Master Data. The Production Std. Cost value can also be copied on a batch basis from the actual product cost of the Item (including component items). This is done in the Rollup procedure. We can see in the image a checkbox indicating this item is included in the Production Std. Cost Rollup. We will explore this option later on in the training.",
-    "start_time": 277.94,
-    "end_time": 310.15
+    "image_file": "Slide_006.webp",
+    "script_text": "El Costo Estándar de Producción de un artículo puede ingresarse de forma manual o generarse automáticamente mediante el procedimiento de Acumulación del Costo Estándar de Producción. Este proceso también permite copiar en bloque el costo real del producto, incluyendo sus artículos componentes, lo que es útil para actualizar estándares basado en datos históricos. Existe una casilla de verificación que indica si el artículo participa o no en el proceso de acumulación. Esta funcionalidad es clave para mantener los costos actualizados ante cambios en precios de insumos, tiempos de máquina o tarifas de mano de obra, asegurando que los estándares reflejen la realidad operativa de la empresa.",
+    "start_time": 201.4,
+    "end_time": 244.4
   },
   {
     "slide_index": 7,
-    "image_file": "095_Slide_07_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Production Std. Cost Calculation in the Bill of Materials Production Std. Cost X Qty. Production Std. Cost Planned Avg. Prod. Size + Total Production Std. Cost X Additional Qty In the Bill of Materials we can see the Production Std. Cost that is taken from the Item Master Data as seen in the previous slide. Beneath this field there is another field called: Planned Average Production Size. Here we enter the average quantity of produced items we usually produce in one production run. In our example, we can say that on average, we produce 10 Decorative Wooden Doors every time we go through a production process of Decorative Wooden Doors. This value is relevant for the Additional Quantity we got to know in the By products and Additional Quantity training. The Production Std. Cost of a produced item is equal to the cost of all its components plus the fixed cost of the additional quantity needed to produce one item. In our case, since we need 1 Machine Operator hour, the fixed cost needed to produced 1 Decorative Wooden Doors is 30 divided by a planned average production quantity of 10 multiplied by 1 Additional Quantity. This means that the fixed cost (derived from the Additional Quantity) of producing 1 Decorative Wooden Door is 3. Therefore, the Total Production Std. Cost of the Machine Operator resource is 30, times a quantity of 2 hours, plus 3 of fixed cost. This sums up to 63. At the bottom of the table we see the total production std. cost for the Decorative Wooden Door. Note that this calculated total is different than the cost of 200, that we see in the header and that is originated from the Item Master Data. SAP Business one provides an automatic routine that updates the Production Std. Cost of the item according to the calculated cost in the bill of materials. Let us see it in the next slide.",
-    "start_time": 310.15,
-    "end_time": 420.58
+    "image_file": "Slide_007.webp",
+    "script_text": "El costo estándar de producción se calcula multiplicando el costo estándar por la cantidad planificada, más el costo adicional dividido por el tamaño promedio de producción. En la lista de materiales, este valor se toma de los datos maestros del artículo. El tamaño promedio representa la cantidad típica producida en una corrida. Por ejemplo, si se producen 10 puertas por corrida y el costo adicional es 30, entonces el costo por unidad adicional es 3. Sumando esto al costo base se obtiene el total, como en el operario de máquina: 30 × 2 horas + 3 = 63.",
+    "start_time": 244.4,
+    "end_time": 284.2
   },
   {
     "slide_index": 8,
-    "image_file": "095_Slide_08_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Production Std. Cost Rollup Production Production Std. Cost Management Production Std. Cost Roll Up Inventory Item Master Data Production Tab Relevant for produced items that are marked as included in the rollup procedure. In Production Production Std. Cost Management Production Std. Cost Roll Up, we can choose which items to update. Once we choose OK, the Production Std. Cost in the Item Master Data is updated according to the calculated Production Std. Cost of the Bill of Materials. Before we run the roll up procedure, we need to make sure the items are marked as Included in Production Std. Cost Rollup. Note that the roll up procedure is calculated for all levels of the Bill of Material.",
-    "start_time": 420.58,
-    "end_time": 463.22
+    "image_file": "Slide_008.webp",
+    "script_text": "La acumulación del costo estándar se inicia desde el menú de Producción, pasando por Gestión del Costo Estándar y seleccionando la opción de Acumulación. Desde allí, se accede a Inventario y luego a los Datos Maestros del Artículo, específicamente en la pestaña Producción. Esta función actualiza el costo estándar en los artículos marcados para acumulación, usando el valor calculado en la lista de materiales, y se aplica a todos los niveles de la lista.",
+    "start_time": 284.2,
+    "end_time": 314.4
   },
   {
     "slide_index": 9,
-    "image_file": "095_Slide_09_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Production Std. Cost Update Production Production Std. Cost Management Production Std. Cost Update Relevant for all items First perform a Production Std. Cost Update Then the Std. Cost Rollup procedure The rollup procedure updated the Production Std. Cost of produced items according to their components’ Production Std. Cost. In the Production Std. Cost Update window we can update the items’ Production Std. Cost, according to their actual cost. This procedure works similarly to the rollup procedure. In the Production Std. Cost Update window, choose the relevant items and choose the Ok button. The update is done instantly. Note that in the Selection Criteria window you can choose any item, even if it is not a produced item nor a component. In a manufacturing company, it is recommended to first perform a Production Std. Cost Update and then a rollup procedure. This way we update the actual cost of the components and then roll it up to the Production Std. Cost of the produced item. Note that this feature does not apply to non perpetual inventory managed companies.",
-    "start_time": 463.22,
-    "end_time": 529.34
+    "image_file": "Slide_009.webp",
+    "script_text": "La actualización del costo estándar se ejecuta desde Producción → Gestión del Costo Estándar → Actualización del Costo Estándar de Producción. Esta función es aplicable a todos los artículos y se recomienda ejecutarla antes de la acumulación. Permite actualizar el costo estándar según el costo real de los artículos. En la ventana, se seleccionan los artículos relevantes y se confirma con Aceptar, realizando la actualización de forma inmediata. Se puede elegir cualquier artículo, incluso si no es producido o componente, pero no aplica en inventario no perpetuo.",
+    "start_time": 314.4,
+    "end_time": 349.8
   },
   {
     "slide_index": 10,
-    "image_file": "095_Slide_10_10_Production_52_Accounting_Cost.webp",
-    "script_text": "Key Points Key points from this topic: The Production Std. Cost feature allows us to plan a budget for the production cost. The Production Std. cost can be entered manually or copied via the rollups procedure. The Production Std. Cost Rollup procedure updates the Production Std. Cost in the Item Master Data of the produced items according to the calculated Production Std. Cost in the Bill of Materials. In the Production Std. Cost Update window we can update the items’ Production Std. Cost, according to their actual cost. This feature is relevant for all items. Here are some key points to take away from this session: The Production Std. Cost feature allows us to plan a budget for the production cost. The Production Std. cost can be entered manually or copied via the rollups procedure. The Production Std. Cost Rollup procedure updates the Production Std. Cost in the Item Master Data of the produced items according to the calculated Production Std. Cost in the Bill of Materials. In the Production Std. Cost Update window we can update the items’ Production Std. Cost, according to their actual cost. This feature is relevant for all items",
-    "start_time": 529.34,
-    "end_time": 599.42
-  },
-  {
-    "slide_index": 11,
-    "image_file": "095_Slide_11_10_Production_52_Accounting_Cost.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 599.42,
-    "end_time": 732.26
+    "image_file": "Slide_010.webp",
+    "script_text": "La función de costo estándar de producción permite planificar un presupuesto para los costos de fabricación. Este valor puede ingresarse manualmente o actualizarse mediante el procedimiento de acumulación, que toma el costo calculado en la lista de materiales y lo actualiza en los datos maestros del artículo para los productos terminados. Además, la actualización del costo estándar permite ajustar estos valores según el costo real de los artículos y es aplicable a todos los tipos de artículos, mejorando la precisión en la valoración de inventario y costos de producción.",
+    "start_time": 349.8,
+    "end_time": 386.0
   }
 ]

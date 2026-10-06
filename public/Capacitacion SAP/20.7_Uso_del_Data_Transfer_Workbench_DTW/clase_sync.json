@@ -1,296 +1,289 @@
 [
   {
     "slide_index": 1,
-    "image_file": "053_Slide_01_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 32 Using Data Trans Workbench en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Implementation Tools: Using Data Transfer Workbench (DTW) SAP Business One Version 10.0 Welcome to the course on using the Data Transfer Workbench (DTW). This course should be useful to anyone using DTW for the first time.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso sobre el uso del Workbench de Transferencia de Datos (DTW) en SAP Business One versión 10.0. Este curso está diseñado para quienes utilizan DTW por primera vez y necesitan importar datos de forma masiva. Aprenderás cómo esta herramienta facilita la carga de información desde Excel hacia SAP B1 usando plantillas predefinidas. Es ideal para implementaciones, migraciones o actualizaciones periódicas de datos maestros y transaccionales. Al finalizar, podrás usar DTW con confianza en escenarios reales de negocio.",
     "start_time": 0.0,
-    "end_time": 30.48
+    "end_time": 32.2
   },
   {
     "slide_index": 2,
-    "image_file": "053_Slide_02_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Objectives On completion of this course you will be able to:  Describe the process for importing data using Data Transfer Workbench  List the type of objects that can be imported using DTW  Explain the relationship between SAP Business One objects and the provided DTW templates  Explain how to improve performance when importing into a SAP HANA database  Explain how to update child records for an object  Describe how to create a new template by customizing an existing template In this topic, you will see the process and steps for using Data Transfer Workbench to import objects. You will also be able to: • List the type of objects that can be imported using DTW • Explain the relationship between SAP Business One objects and the provided DTW templates • Explain how to improve performance when importing into a SAP HANA database • Describe how to create a new template by customizing an existing template",
-    "start_time": 30.48,
-    "end_time": 80.23
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este curso, podrás describir el proceso completo para importar datos usando el Workbench de Transferencia de Datos (DTW). Sabrás enumerar los tipos de objetos que se pueden importar, como maestros, configuración y documentos abiertos. Entenderás cómo las plantillas DTW se relacionan con los objetos de SAP Business One. Además, aprenderás a optimizar el rendimiento en bases de datos SAP HANA, actualizar registros secundarios y crear plantillas personalizadas a partir de existentes. Estas habilidades te permitirán gestionar datos de forma eficiente en tu empresa.",
+    "start_time": 32.2,
+    "end_time": 66.8
   },
   {
     "slide_index": 3,
-    "image_file": "053_Slide_03_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Overview and References In this segment we introduce the Data Transfer Workbench tool and provide some references to help you with the objects and fields.",
-    "start_time": 80.23,
-    "end_time": 88.9
+    "image_file": "Slide_003.webp",
+    "script_text": "En este segmento se presenta el Workbench de Transferencia de Datos (DTW) como la herramienta oficial de SAP Business One para importación masiva de datos. Se explica su papel central en el flujo de implementación y carga de información. Además, se ofrecen referencias útiles para consultar los objetos y campos compatibles con DTW, lo que facilita el mapeo correcto entre Excel y SAP B1. Esta visión general te ayuda a entender cuándo y cómo usar DTW según tus necesidades de importación o actualización de datos.",
+    "start_time": 66.8,
+    "end_time": 101.4
   },
   {
     "slide_index": 4,
-    "image_file": "053_Slide_04_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Data Transfer Workbench (DTW) Microsoft Excel SAP Business One database External Database ODBC DI-API DTW Import and/or update  Data Transfer Workbench (DTW) is a tool provided with SAP Business One for bulk import of data into SAP Business One objects using predefined Microsoft Excel templates  DTW supports the import of master data, setup data, journal entries and open sales, purchasing production and service documents. Data Transfer Workbench (DTW) is a tool provided with SAP Business One for importing data into SAP Business One objects using predefined Microsoft Excel templates. The Data Transfer Workbench is designed primarily for bulk import or update of master data, setup data, chart of accounts, journal entries and open sales, purchasing, production and service documents. The financial data you can import includes opening balances, journal entries and journal vouchers. You can also import setup data, such as users, tax codes, and banks. DTW uses the DI API to access the SAP Business One database. Some familiarity with SAP Business One table and field names is required. For this reason, end users might be more comfortable with using the Import from Excel utility as a periodic import tool. DTW can also import data from external databases, using SQL queries over an ODBC connection. Note: The Data Transfer Workbench does not support the import of documents that have already been closed. It also does not support the deletion of records from the database.",
-    "start_time": 88.9,
-    "end_time": 184.9
+    "image_file": "Slide_004.webp",
+    "script_text": "El Workbench de Transferencia de Datos (DTW) actúa como puente entre Microsoft Excel y la base de datos de SAP Business One. Primero, prepares tus datos en una plantilla de Excel. Luego, DTW los lee y los envía mediante la DI-API, que es la interfaz oficial de SAP para acceder a la base de datos. Este proceso permite importar o actualizar datos maestros, de configuración, asientos contables y documentos abiertos como facturas de ventas o compras. DTW no requiere intervención directa en la base de datos, sino que trabaja a través de capas seguras y autorizadas de SAP.",
+    "start_time": 101.4,
+    "end_time": 141.2
   },
   {
     "slide_index": 5,
-    "image_file": "053_Slide_05_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Starting DTW Start from SAP Business One implementation center: Administration > System Initialization > Implementation Center > Implementation Tasks + To start DTW from the implementation center you must provide the path to the DTW executable in the Settings window Start from desktop: Program Files > SAP > Data Transfer Workbench > DTW.exe Data Transfer Workbench (DTW) is supplied with the SAP Business One client installation files and is an optional package. The DTW package can be installed on the client desktop or on a remote desktop without the SAP Business One client. Since DTW uses the DI API for access to the database, then the DI API should also be selected for installation on the same desktop. To start DTW from the desktop, open the executable DTW.exe. You can also start DTW from the Implementation Center within SAP Business One. To do this, select the link on the Data Management tab of the Implementation Tasks window. If you wish to start DTW from the Implementation Tasks window you must provide the path to the DTW executable in the Implementation Center Path Settings window. Note: Microsoft Excel should be installed on the system where DTW is installed.",
-    "start_time": 184.9,
-    "end_time": 260.74
+    "image_file": "Slide_005.webp",
+    "script_text": "Para iniciar el Workbench de Transferencia de Datos (DTW), puedes acceder desde dos ubicaciones principales. Desde el Centro de Implementación de SAP Business One, navega por Administración → Inicialización del Sistema → Centro de Implementación → Tareas de Implementación, donde deberás configurar previamente la ruta al ejecutable DTW.exe. Alternativamente, puedes lanzarlo directamente desde el escritorio mediante el acceso directo en Archivos de Programa → SAP → Data Transfer Workbench → DTW.exe. Recuerda que DTW se instala como parte opcional del cliente SAP B1 y requiere que Microsoft Excel esté presente en el mismo equipo para funcionar correctamente.",
+    "start_time": 141.2,
+    "end_time": 180.6
   },
   {
     "slide_index": 6,
-    "image_file": "053_Slide_06_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Connecting to the Database Server In the DTW logon window, you need to login to SAP Business One target company as a super user Servers are displayed from SLD In the DTW Login window: • The database server type and server names are taken from the System Landscape Directory (SLD). Only registered servers and company databases are displayed. You no longer need to login to the database server. Note for SAP HANA the port number (for example 30015) is required in addition to the server name or IP address. You should then see one or more company databases that exists on the chosen server. If you do not see a company displayed, choose the Refresh button to reload the list of companies on the selected server. Select the relevant SAP Business One company and login with a super user account. A super user is required since this user must have full authorization to objects. The Enable Faster Import checkbox in the Logon window allows for faster import of records into SAP HANA databases by running the import using multiple threads. This will be covered later in this course.",
-    "start_time": 260.74,
-    "end_time": 326.95
+    "image_file": "Slide_006.webp",
+    "script_text": "Para conectar DTW con tu empresa en SAP Business One, debes iniciar sesión en la ventana de inicio de sesión como superusuario. Los servidores disponibles se obtienen del Directorio del Panorama del Sistema (SLD), mostrando solo aquellos registrados y sus bases de datos de empresa. Si usas SAP HANA, además del nombre del servidor o IP, debes especificar el número de puerto, como 30015 en este caso. Si no ves tu empresa, haz clic en el botón Actualizar para recargar la lista. La casilla 'Activar Importación Más Rápida' permite usar múltiples subprocesos, lo que mejora significativamente el rendimiento al importar grandes volúmenes de datos en bases de datos SAP HANA.",
+    "start_time": 180.6,
+    "end_time": 225.2
   },
   {
     "slide_index": 7,
-    "image_file": "053_Slide_07_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Enable Faster Import for SAP HANA  With an SAP HANA database, you can run the import using multiple, parallel processes  Select the Enable Faster Import checkbox, and select the number of processes (default is 4) When you use a SAP HANA database you can increase the performance of the import by running multiple parallel DI API processes. You must make the selection when you logon to DTW, by checking the Enable Faster Import checkbox. Then select the number of processes. The default is 4 but you can select up to 21 threads, depending on the hardware configuration size you have. When you select Enable Faster Import, DTW will run the DI API under a COM+ application. The rows from the spreadsheet will be shared out to the threads and imported in parallel. Thus the order in which the records are imported can differ from the order of the spreadsheet. There are some limitations on the use of this option: • The performance increase is only effective for imports of more than 1000 records. • You cannot run a simulation before the import (the button is deactivated). • Only certain objects are supported: Setup data is not supported at all. For master data, only business partner and item master data are supported. For documents, only quotations, orders, deliveries, goods receipts and invoices are supported. See SAP note 2229208 for more information.",
-    "start_time": 326.95,
-    "end_time": 411.84
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP HANA, puedes acelerar la importación de datos con DTW activando la opción Importación Más Rápida. Esto permite ejecutar múltiples procesos paralelos, distribuyendo las filas de la hoja de cálculo entre subprocesos para una carga más eficiente. El valor predeterminado es 4 procesos, pero puedes aumentar hasta 21 según tu hardware. Esta función usa la API DI bajo una aplicación COM+ y solo mejora el rendimiento si importas más de 1.000 registros. Ten en cuenta que no se puede hacer una simulación previa y solo aplica a ciertos objetos. Para más detalles, revisa la nota SAP 2229208.",
+    "start_time": 225.2,
+    "end_time": 265.0
   },
   {
     "slide_index": 8,
-    "image_file": "053_Slide_08_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Menu and Help After logging in, the DTW application window opens showing the menu options:  Tools: Import wizard, log manager  Templates: creation of new templates  Help: DTW online help, DI API Reference and Database Tables Reference The bottom of the application window shows the status of the connection to the target database, including the company After you successfully login to the company, the DTW application window opens: • To start the import wizard, use the Tools menu or choose the Import button. From the Tools menu you can also access log files from previous import runs. • Use the Templates menu to generate new templates. This functionality is covered later in this course. • Under the Help menu you can find the online help, the DI API Reference and the Database Tables Reference. You may need to reference these resources when entering data into the templates: • The DI API Reference describes objects and object properties • The Database Tables Reference shows the table fields including default values for fields, field types, and constraints on field values At the bottom of the DTW application window you can see the status of the connection to the target database, including the server and target company name.",
-    "start_time": 411.84,
-    "end_time": 483.58
+    "image_file": "Slide_008.webp",
+    "script_text": "Al iniciar sesión en DTW, se muestra la ventana principal con un menú organizado en cuatro secciones: Herramientas, que incluye el asistente de importación y el gestor de registros; Plantillas, para crear nuevas plantillas; y Ayuda, con acceso a la ayuda en línea, la referencia de la API DI y la referencia de tablas de base de datos. En la parte inferior, aparece el estado de la conexión a la empresa de destino. La referencia de la API DI detalla objetos y propiedades, mientras que la de tablas muestra campos, tipos, valores predeterminados y restricciones. Esta interfaz te guía para usar DTW de forma estructurada y segura.",
+    "start_time": 265.0,
+    "end_time": 308.4
   },
   {
     "slide_index": 9,
-    "image_file": "053_Slide_09_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Overall Process for Import Log in to target company database Save template as delimited file* In DTW, choose Import button to run import wizard *tab delimited, comma delimited, or semi-colon delimited file. Note: the delimiter character should not appear in any field data. Enter data into predefined templates To import data, you will use the predefined templates and enter your data in the columns of each template. After you have entered the data, save the template as a tab, comma, or semi-colon delimited file type. Any of these file types is accepted by DTW. In DTW, log in to the target company as a super user, and start the import wizard. Note: The delimiter character (tab, comma or semi-colon) should not be present in any of the data in the template, since it will be interpreted as the end of the data. Thus, if the data is likely to contain commas or semi-colons, save as a tab delimited file.",
-    "start_time": 483.58,
-    "end_time": 541.3
+    "image_file": "Slide_009.webp",
+    "script_text": "El proceso general de importación en DTW comienza iniciando sesión en la base de datos de la empresa de destino. Luego, debes guardar la plantilla como archivo delimitado, usando tabulador, coma o punto y coma, asegurándote de que ese carácter no aparezca dentro de los datos. En DTW, haces clic en el botón Importar para lanzar el asistente de importación. Finalmente, introduces los datos en las plantillas predefinidas, respetando su estructura. Este flujo garantiza que la carga sea ordenada y evita errores comunes como la corrupción de campos por delimitadores no válidos.",
+    "start_time": 308.4,
+    "end_time": 345.8
   },
   {
     "slide_index": 10,
-    "image_file": "053_Slide_10_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Predefined Templates Let’s look at the predefined templates provided in DTW.",
-    "start_time": 541.3,
-    "end_time": 546.94
+    "image_file": "Slide_010.webp",
+    "script_text": "En esta lámina se introduce el concepto de las plantillas predefinidas proporcionadas por DTW. Estas son archivos de Microsoft Excel listos para usar, diseñados para facilitar la importación de datos maestros y transaccionales en SAP Business One. Al mostrarlas, se prepara al usuario para explorar su estructura y uso en los pasos siguientes. No se requieren acciones aún, solo reconocer que existen como punto de partida estándar para trabajar con DTW de forma eficiente y segura.",
+    "start_time": 345.8,
+    "end_time": 376.8
   },
   {
     "slide_index": 11,
-    "image_file": "053_Slide_11_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Templates After DTW is installed, the DTW executable folder contains the predefined Microsoft Excel templates (in the Templates subfolder). Some sample templates are also provided in this folder. The templates are organized by folders similar to the main menu in the SAP Business One client. Predefined Microsoft Excel templates are provided for each object that can be imported. An object in SAP Business One can be represented by multiple tables in the database, and each predefined template aligns to a table for the object. The template names start with the four character database table name, so, for instance, the parent business partner master data template is OCRD – BusinessPartners. A template is provided for each of the child tables. For the business partner master data object the child templates include CRD1, CRD2, OCPR, OCRB, and so on. The Samples folder contains examples of completed templates.",
-    "start_time": 546.94,
-    "end_time": 606.62
+    "image_file": "Slide_011.webp",
+    "script_text": "Tras instalar DTW, las plantillas predefinidas se encuentran en la subcarpeta Plantillas dentro del directorio del ejecutable. Cada plantilla lleva como nombre el código de cuatro caracteres de la tabla de base de datos, seguido de su descripción, como OCRD – BusinessPartners para el socio comercial maestro. Existe una plantilla para cada tabla secundaria. Además, la carpeta Ejemplos contiene plantillas ya completadas que sirven como referencia para entender cómo deben llenarse los datos. Esta organización ayuda a localizar y usar rápidamente la plantilla correcta según el objeto que se quiere importar.",
+    "start_time": 376.8,
+    "end_time": 413.8
   },
   {
     "slide_index": 12,
-    "image_file": "053_Slide_12_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Each predefined template includes a column for each field exposed to the DI API  The two header rows should not be removed. They contain the object properties and the DI API field names  These fields are described in the DI API Objects Reference and the Database Tables Reference  SAP recommends you do not remove columns from a template; instead leave a column blank, or generate a customized template Example: OCRD Template The predefined templates include a column for every field in the table that is exposed to the DI API. Each template contains two header rows which should not be removed: • The names in the first header row are the object properties. These are documented in the DI API – Objects Reference. • The names in the second header row are the DI API field names. These are documented in the Database Tables Reference Sometimes the names are identical. If you do not want to import data for a field, or you want to use the default value, leave the column blank. SAP recommends you do not remove columns from the original template. If you want to remove columns, you can generate a customized template from an existing template. Customized templates will be covered later in this course.",
-    "start_time": 606.62,
-    "end_time": 674.9
+    "image_file": "Slide_012.webp",
+    "script_text": "Cada plantilla predefinida de DTW incluye una columna para cada campo expuesto a la API DI, asegurando que todos los datos relevantes puedan ser importados. Las dos primeras filas son de encabezado y contienen metadatos importantes: las propiedades del objeto y los nombres exactos de los campos según la API DI. Estas filas no deben eliminarse, ya que DTW las usa para mapear correctamente los datos. SAP recomienda no borrar columnas; si no necesitas un campo, déjalo en blanco. Para cambios estructurales, es mejor crear una plantilla personalizada en lugar de modificar la predefinida, preservando su integridad y compatibilidad.",
+    "start_time": 413.8,
+    "end_time": 454.0
   },
   {
     "slide_index": 13,
-    "image_file": "053_Slide_13_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Field Comments and Enumerated Data  Each header field in the template includes a comment showing data type and field length  If the type is shown as enum, then you must use one of the valid values shown  If the comment shows a related table, then enter the code of the related table in the template field Each field in the template heading row includes a comment. The comment pops up when you hold the mouse over the field and shows the field description, type, and length. If the field is mandatory, such as a code, this is indicated in the comment. If the type shows as enum, then DTW expects you to enter one of the valid values shown. These are the values expected by the DI API. In the example, in the business partner master data template, the CardType (column C) and VatLiable (column R) fields have enumerated data. As an example, in the CardType field you must enter cCustomer, cSupplier or cLid and not the values as specified in the Database Tables Reference. If the comment shows the field with a related table, this column holds the key to the related table, and in this column you enter the key value. For example, in the GroupCode field (column D), you would enter the code allocated by the system when you create new customer or supplier groups. To see the codes run a query on the table.",
-    "start_time": 674.9,
-    "end_time": 749.45
+    "image_file": "Slide_013.webp",
+    "script_text": "En DTW, cada campo de la plantilla incluye un comentario que indica el tipo de dato, su longitud y, si es enumerado, los valores válidos que debes usar. Por ejemplo, en el campo CardType, el comentario especifica que debes ingresar cCustomer, cSupplier o cLid, no las letras C, S o L. Este comentario te guía para evitar errores de validación al importar. Siempre revisa estos comentarios antes de llenar la plantilla, ya que aseguran que los datos ingresados coincidan con lo que SAP Business One espera. Si el campo referencia una tabla relacionada, como un grupo de socios comerciales, debes ingresar el código de esa tabla, no su descripción. Esto garantiza la integridad referencial durante la importación.",
+    "start_time": 454.0,
+    "end_time": 501.4
   },
   {
     "slide_index": 14,
-    "image_file": "053_Slide_14_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Valid Values and Database Tables Reference  If a field has valid values in the template comment, always use these values and do not enter the constraints shown in the Database Tables Reference If the valid values shown in the comment are different to the values documented in the Database Tables Reference, you must always enter one of the values in the comment, and not use the constraints from the Database Tables Reference. As an example, the Database Tables Reference shows the constraints for the CardType field (column C) as C, S and L (customer, vendor and lead). However, DTW expects one of the values cCustomer, cSupplier or cLid. You can however leave the field blank if the CardType is a customer, since this is the default as indicated in the Database tables Reference.",
-    "start_time": 749.45,
-    "end_time": 793.34
+    "image_file": "Slide_014.webp",
+    "script_text": "Aunque la Referencia de Tablas de Base de Datos muestre valores como C, S y L para el campo CardType, DTW espera los valores con prefijo 'c': cCustomer, cSupplier o cLid. Es fundamental usar siempre los valores indicados en el comentario de la plantilla, no los de la referencia técnica. Los comentarios están diseñados específicamente para guiar la importación mediante DTW y reflejan el formato interno que el sistema reconoce. Ignorarlos y usar los valores de la referencia provocará errores de validación, incluso si parecen equivalentes. Siempre prioriza lo que dice el comentario: es la fuente de verdad para una importación exitosa y sin rechazos por formato incorrecto.",
+    "start_time": 501.4,
+    "end_time": 545.2
   },
   {
     "slide_index": 15,
-    "image_file": "053_Slide_15_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Leaving Columns Blank  The data entry rules for DTW are identical to manual data entry. You do not need to enter default field values or non-required data  Make sure that prerequisite data is created before you import the data When you manually create master data or documents in the SAP Business One application, you take advantage of default field values, and only enter the required or mandatory fields. The same is true for DTW. You can leave columns blank in the template and enter just the required fields and non-default values. Shown is an example of a completed OCRD template for the business partner master data header, with columns left blank if there are default values. Make sure that any prerequisite data is created for the data you with to import. For the business partner master data object, prerequisite data includes: • Business partner groups (GroupCode column D in the template) • Currencies (Currency column AC) • Bank codes for business partner banks (BankCode column AQ) • House bank definitions (columns CB to CD)",
-    "start_time": 793.34,
-    "end_time": 854.21
+    "image_file": "Slide_015.webp",
+    "script_text": "En DTW, no es necesario llenar columnas con valores predeterminados ni datos no obligatorios: dejarlos en blanco es válido y sigue las mismas reglas que la entrada manual en SAP. Sin embargo, sí debes asegurarte de que los datos previos requeridos ya estén creados en el sistema antes de importar. Para los socios comerciales, esto incluye grupos de socios comerciales, monedas, códigos bancarios y definiciones de banco domiciliario. Si estos no existen, la importación fallará, incluso si la plantilla está correctamente llena. Por eso, siempre verifica primero que los datos de referencia estén cargados: son la base para que los nuevos registros se vinculen correctamente y mantengan la integridad de la base de datos.",
+    "start_time": 545.2,
+    "end_time": 591.4
   },
   {
     "slide_index": 16,
-    "image_file": "053_Slide_16_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Parent and Child Templates If there are child tables for an object, you can import the child records together with the parent records To relate the child and parent templates, the parent key field in the child template will link back to the primary key (column A) in the parent template. Child template Parent template C001 C001 If there are child tables for an object, such as the contact employees table OCPR for the business partner object as shown here, you can import the child records in the same import run as the parent records. To relate the child and parent templates, the parent key field in the child template will link back to the primary key (column A) in the parent template.",
-    "start_time": 854.21,
-    "end_time": 891.96
+    "image_file": "Slide_016.webp",
+    "script_text": "Cuando un objeto en SAP Business One tiene tablas secundarias, como los contactos de un socio comercial, puedes importar los registros principales y secundarios en un solo proceso usando DTW. Para vincularlos, el campo clave en la plantilla secundaria debe contener el mismo valor que la clave primaria (columna A) de la plantilla principal. Por ejemplo, si la fila principal tiene C001 en la columna A, la secundaria debe tener C001 en su campo de referencia. Al importar ambas plantillas juntas, DTW asocia automáticamente cada registro secundario con su principal usando esa clave. Esto evita importaciones separadas y garantiza que los datos secundarios queden correctamente vinculados desde el inicio, manteniendo la consistencia relacional en la base de datos.",
+    "start_time": 591.4,
+    "end_time": 639.2
   },
   {
     "slide_index": 17,
-    "image_file": "053_Slide_17_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Import Process Let’s now look at the overall process for importing the data.",
-    "start_time": 891.96,
-    "end_time": 897.29
+    "image_file": "Slide_017.webp",
+    "script_text": "Ahora veamos el proceso general para importar datos usando el Data Transfer Workbench. Este flujo te guiará desde la selección del tipo de datos hasta la carga exitosa en SAP Business One. Es importante seguir cada paso en orden para evitar errores y asegurar que la información se integre correctamente al sistema. El proceso está diseñado para ser intuitivo, pero requiere atención a detalles como el tipo de datos, la plantilla usada y los requisitos previos. Al comprender este flujo general, podrás aplicar el mismo enfoque ya sea que estés importando configuraciones, maestros o transacciones, optimizando tiempo y reduciendo riesgos de inconsistencia en los datos.",
+    "start_time": 639.2,
+    "end_time": 681.8
   },
   {
     "slide_index": 18,
-    "image_file": "053_Slide_18_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Select the type of data to be imported:  Setup data  Master data  Transactional data In the first step of the import wizard, select the type of data to be imported (setup data, master data or transactional data): • Setup data includes banks, house banks, business partner and item groups, tax codes, opening balance data, and users. For the full list of templates, check the subfolders for the Templates folder • Master data includes business partner, item and employee master data • Transactional data includes journal entries, sales and purchasing documents, business partner activities, payments, and inventory transactions.",
-    "start_time": 897.29,
-    "end_time": 935.3
+    "image_file": "Slide_018.webp",
+    "script_text": "En el Asistente de Importación de DTW, primero seleccionas el tipo de datos que deseas importar: configuración, maestros o transacciones. Los datos de configuración incluyen elementos básicos como bancos, bancos domiciliarios, grupos de socios comerciales, artículos, códigos de impuestos, saldos iniciales y usuarios. Los datos maestros son los registros centrales: socios comerciales, artículos y empleados. Los datos de transacciones cubren movimientos operativos: asientos contables, documentos de ventas y compras, actividades de socios comerciales, pagos y transacciones de inventario. Esta clasificación te ayuda a elegir la plantilla correcta y seguir el orden lógico de importación: primero configuración, luego maestros y finalmente transacciones, para asegurar dependencias válidas.",
+    "start_time": 681.8,
+    "end_time": 724.4
   },
   {
     "slide_index": 19,
-    "image_file": "053_Slide_19_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Select the operation to be performed:  Add  Update  Add and Update In the next step, select whether you want to import new data (insert) or update data (update): • To import new data objects, choose “Add New Data.” • To update information in a parent or child template, choose “Update Existing Data.” • To import new parent records for an object while at the same time updating existing child records, choose “Add New Data and Update Existing Data.” Note the selection “Add new data and update existing data” will create a new record in the database if the key does not exist, and update an existing record if the key matches. This selection is not available if transactional data was selected in step 1.",
-    "start_time": 935.3,
-    "end_time": 975.94
+    "image_file": "Slide_019.webp",
+    "script_text": "En el Asistente de Importación DTW, elige la operación según tu necesidad: Agregar para nuevos datos, Actualizar para modificar registros existentes o Agregar y Actualizar para combinar ambas acciones. Esta última opción no está disponible si seleccionaste datos de transacciones en el paso anterior. Selecciona con cuidado para evitar errores en la importación y asegurar la integridad de tus datos en SAP Business One.",
+    "start_time": 724.4,
+    "end_time": 750.6
   },
   {
     "slide_index": 20,
-    "image_file": "053_Slide_20_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Navigate to the business object by expanding the list You can only import data for a single business object for each import run Navigate to the business object by expanding the list. Only objects for the type of data selected in step 1 (e.g., master data) are selectable. The rest are greyed out. Using the wizard you can only import data for a single business object at a time. For example, you cannot mix business partner master data and item master data in the same import run.",
-    "start_time": 975.94,
-    "end_time": 1006.82
+    "image_file": "Slide_020.webp",
+    "script_text": "En cada ejecución del Asistente de Importación DTW, solo puedes importar datos para un único objeto de negocio. Por ejemplo, no está permitido combinar datos maestros de socios comerciales y datos maestros de artículos en la misma importación. Esto asegura que el proceso sea claro, controlado y libre de conflictos de asignación, manteniendo la consistencia de tu base de datos en SAP Business One.",
+    "start_time": 750.6,
+    "end_time": 776.8
   },
   {
     "slide_index": 21,
-    "image_file": "053_Slide_21_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Select the file type for the saved template:  Comma separated  Semicolon separated  Tab delimited  ODBC In this step select the format of the saved template files (comma separated, semicolon separated, or tab delimited). If you select ODBC, you will be prompted to supply a SQL query. The query will extract the data from a source database, and import the data into the target SAP Business One database.",
-    "start_time": 1006.82,
-    "end_time": 1033.08
+    "image_file": "Slide_021.webp",
+    "script_text": "Selecciona el tipo de archivo para tu plantilla DTW: separado por comas, punto y coma, tabulador o mediante conexión ODBC. Si eliges ODBC, deberás proporcionar una consulta SQL que extraiga los datos desde una base de datos de origen y los importe en SAP Business One. Esta flexibilidad permite adaptar la importación a distintos formatos y fuentes de datos según tus necesidades operativas.",
+    "start_time": 776.8,
+    "end_time": 802.6
   },
   {
     "slide_index": 22,
-    "image_file": "053_Slide_22_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard  The wizard displays all the available templates for the selected business object  For each table to be imported, select the browse button and locate the saved template file (comma, semi-colon or tab delimited)  After selection, the path to the template is shown The wizard displays all the available templates for the selected business object. For each table you want to import, select the browse button and then locate the relevant saved template (saved as a comma, semi-colon or tab delimited file). A red x indicates a template has been selected and the path is shown.",
-    "start_time": 1033.08,
-    "end_time": 1065.48
+    "image_file": "Slide_022.webp",
+    "script_text": "En esta pantalla del Asistente de Importación DTW, seleccionas las plantillas de origen para cada tabla que deseas importar. Al hacer clic en el botón de exploración, localizas el archivo guardado. Una vez seleccionado, aparece una X roja y se muestra la ruta completa del archivo. Esto te permite confirmar que estás usando la plantilla correcta antes de proceder con la asignación de campos y la carga de datos en SAP Business One.",
+    "start_time": 802.6,
+    "end_time": 832.4
   },
   {
     "slide_index": 23,
-    "image_file": "053_Slide_23_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Use the Mapping Rules tab to visually check the mapping between the template source data fields and the DI API fields In this step, using the Mapping Rules tab, you can visually check that the fields in the source data template map to the DI API database fields. If the target field is blank, you can manually map it to the source field. Note: if several target fields are blank, you may have selected the wrong template file.",
-    "start_time": 1065.48,
-    "end_time": 1090.87
+    "image_file": "Slide_023.webp",
+    "script_text": "En la pestaña Reglas de Asignación del DTW, verificas visualmente cómo se relacionan los campos de tu plantilla de origen con los campos de la API DI de SAP Business One. Si un campo de destino está en blanco, significa que no se asignó automáticamente y debes hacerlo manualmente seleccionando el campo correspondiente de origen. Este paso es clave para asegurar que los datos se importen en los lugares correctos y evitas errores de mapeo durante la carga.",
+    "start_time": 832.4,
+    "end_time": 864.2
   },
   {
     "slide_index": 24,
-    "image_file": "053_Slide_24_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Use the Source Data tab to visually scan the template data to make sure each field is interpreted correctly On the Source Data tab you can visually scan the input data from the template to make sure the fields are interpreted correctly by DTW.",
-    "start_time": 1090.87,
-    "end_time": 1105.37
+    "image_file": "Slide_024.webp",
+    "script_text": "En la pestaña Datos de Origen del Asistente de Importación DTW, puedes ver una vista previa de los datos que contiene tu plantilla. Esto te permite verificar que cada campo se interprete correctamente: que los códigos, descripciones, cantidades y precios estén en la columna esperada y con el formato adecuado. Revisar aquí evita errores de importación por mal alineamiento o interpretación incorrecta de los datos antes de finalizar el proceso en SAP Business One.",
+    "start_time": 864.2,
+    "end_time": 894.4
   },
   {
     "slide_index": 25,
-    "image_file": "053_Slide_25_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Use the Target Data tab to visually scan the expected target data fields based on the mapping Expand the object structure to see the expected data for each field Use the Target Data tab to visually scan the target data fields based on the mapping. Expand the object (BOM/BO) structure then expand each row and each field to see the expected data. This can be useful for troubleshooting errors during an import. If the target fields are not as expected this might be the cause of the error.",
-    "start_time": 1105.37,
-    "end_time": 1135.54
+    "image_file": "Slide_025.webp",
+    "script_text": "En el asistente de importación DTW, usa la pestaña Datos de Destino para ver cómo se mapean los campos de tu plantilla a los campos de SAP Business One. Al expandir la estructura del objeto, puedes ver el valor esperado, tipo de dato y formato para cada campo. Esto te ayuda a detectar inconsistencias antes de importar, como fechas en formato incorrecto o campos obligatorios vacíos. Es clave para solucionar errores de validación durante la importación.",
+    "start_time": 894.4,
+    "end_time": 925.4
   },
   {
     "slide_index": 26,
-    "image_file": "053_Slide_26_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard You can define how the wizard will handle any errors during the import: Cancel the import after the first error is encountered Ignore all errors and import valid records Ignore a set number of errors and import valid records Option to run a simulation before actual import of records You can define how the wizard will handle any errors during the import: • Cancel the import after the first error is encountered • Ignore all errors and import valid records • Ignore a set number of errors and import valid records Also on this step you have the option to run a simulation before the actual import. The simulation will point out any errors but will not import any data. SAP recommends that you run a simulation first, or import the data into a test database so you can validate the results.",
-    "start_time": 1135.54,
-    "end_time": 1179.5
+    "image_file": "Slide_026.webp",
+    "script_text": "Durante la importación con DTW, puedes elegir cómo manejar los errores: cancelar al primer error, ignorar todos e importar solo los válidos, o ignorar un número específico de errores. SAP recomienda siempre ejecutar una simulación primero o importar en una base de prueba para validar los datos sin riesgo. Esto te permite revisar los resultados, corregir la plantilla si es necesario y asegurar una importación exitosa en producción.",
+    "start_time": 925.4,
+    "end_time": 953.2
   },
   {
     "slide_index": 27,
-    "image_file": "053_Slide_27_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Import Wizard Log entry produced for each record imported into the database The final step is the import of data. A log is produced for each record imported successfully into the database.",
-    "start_time": 1179.5,
-    "end_time": 1191.7
+    "image_file": "Slide_027.webp",
+    "script_text": "El paso final del asistente de importación DTW es la actualización de la base de datos. Por cada registro que se importa correctamente, DTW genera un nuevo registro en la tabla correspondiente de SAP Business One, como una factura de venta o un artículo. Esto significa que los datos de tu plantilla ahora forman parte del sistema operativo de la empresa, listos para ser usados en procesos contables, de inventario o de ventas. Es la confirmación de que la importación se completó sin errores.",
+    "start_time": 953.2,
+    "end_time": 987.4
   },
   {
     "slide_index": 28,
-    "image_file": "053_Slide_28_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "DTW Errors  If any errors are detected with the template data, the Key and Description of the failing record is shown  Drill-down to the row in the template by clicking the Error File button Depending on the error options you selected, the import run will stop when one or more errors occur. For failed records, the window will show information to help you debug the error. You can also drill-down to see the row in the template that failed by clicking the Error File button.",
-    "start_time": 1191.7,
-    "end_time": 1216.58
+    "image_file": "Slide_028.webp",
+    "script_text": "Cuando DTW detecta errores en los datos de la plantilla, muestra la clave del registro fallido y una descripción del problema, como una fecha en formato incorrecto. Puedes hacer clic en el botón 'Archivo de Error' para ir directamente a la fila problemática en tu plantilla de Excel o CSV. Esto acelera la corrección, ya que no necesitas buscar manualmente el error. Es una herramienta esencial para depurar importaciones fallidas y asegurar la calidad de los datos.",
+    "start_time": 987.4,
+    "end_time": 1018.8
   },
   {
     "slide_index": 29,
-    "image_file": "053_Slide_29_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Working With the Templates",
-    "start_time": 1216.58,
-    "end_time": 1219.46
+    "image_file": "Slide_029.webp",
+    "script_text": "Esta sección introduce el trabajo con las plantillas en el Data Transfer Workbench. Las plantillas son archivos estructurados, generalmente en formato Excel o CSV, que contienen los datos que deseas importar a SAP Business One. Cada columna representa un campo del objeto de destino, y cada fila es un registro a importar. Es fundamental que la plantilla siga exactamente el formato esperado por DTW, incluyendo los nombres de columna correctos y los tipos de dato adecuados, para evitar errores durante la importación.",
+    "start_time": 1018.8,
+    "end_time": 1052.2
   },
   {
     "slide_index": 30,
-    "image_file": "053_Slide_30_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "To import data into a user-defined field, add the name of the user-defined field and the data in a column at the end of the template  If an object has many user-defined fields, you have the option to generate a new template for the object that includes user-defined fields Importing into User-Defined Fields The predefined templates obviously do not include user-defined fields. If the object has just a few user-defined fields, you can simply add the name of the user-defined field in a column header at the end of the template and enter the data in the column. Use the database field name for the user-defined field, which starts with “U_”. If the object has many user-defined fields, you have the option to generate a new template for the object that includes all the user-defined fields. This is done from within the DTW application and is covered in the next section.",
-    "start_time": 1219.46,
-    "end_time": 1266.14
+    "image_file": "Slide_030.webp",
+    "script_text": "Para importar datos en campos definidos por el usuario (UDO) en SAP Business One, debes agregar el nombre exacto del campo al final de tu plantilla de importación, comenzando siempre con 'U_', como 'U_TipoGarantía' o 'U_UbicaciónAlmacén'. Si el objeto tiene muchos campos de usuario, puedes generar una nueva plantilla que los incluya automáticamente desde el asistente DTW. Esto asegura que los datos personalizados, como especificaciones técnicas o información logística, se importen correctamente junto con los campos estándar.",
+    "start_time": 1052.2,
+    "end_time": 1083.6
   },
   {
     "slide_index": 31,
-    "image_file": "053_Slide_31_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Adding or Updating Contact Employees for a Business Partner - 1  You can update or add records to the child tables of an existing object without the parent template  For example, you can add new contact employees, or update contact information, for a business partner using the child template OCPR  Enter the key for the parent table in column A  To update an existing contact, enter the LineNum in column B as 0, 1, 2, etc.) to match the order in the object  To add a new contact for a business partner, leave the LineNum blank You can use the child templates without the respective parent template to update or add individual records for the child tables of an existing object. For example, you can update or add new contact employees in the child table OCPR for the business partner master data object. In the child template, enter the code for the parent object in column A, and identify the child row using the LineNum field in column B. The LineNum field is entered as an integer: 0 for the first row, 1 for the second row, and so on. For contact persons, the LineNum field is not saved in the database: • To update an existing contact, you must enter 0 for the first contact, 1 for the second contact, and so on. The order is determined by the order the contacts were initially added and this is how they display on the Contact Persons tab of the master data record • To add a new contact person to an existing object, leave the LineNum field blank In the slide example: • For business partner C00001, the spreadsheet will update the first contact (LineNum 0) and will add 2 new contacts (LineNum left blank) • For business partner C00300, the spreadsheet will update 3 existing contacts (LineNum 0, 1 and 2) • For business partner C00005, the spreadsheet will add 2 new contacts (LineNum left blank)",
-    "start_time": 1266.14,
-    "end_time": 1372.44
+    "image_file": "Slide_031.webp",
+    "script_text": "Para actualizar o agregar empleados de contacto de un socio comercial, no necesitas la plantilla principal. Usa la plantilla secundaria OCPR. En la columna A, ingresa el código del socio comercial. Si actualizas un contacto existente, coloca su LineNum (0, 1, 2…) según su orden en el objeto. Para agregar uno nuevo, deja el LineNum vacío. Luego completa los campos de contacto como nombre, teléfono o correo. Así mantienes actualizada la información de tus contactos sin afectar otros datos del socio comercial.",
+    "start_time": 1083.6,
+    "end_time": 1117.0
   },
   {
     "slide_index": 32,
-    "image_file": "053_Slide_32_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Adding or Updating Contact Employees for a Business Partner - 2 When you run the import, choose “Update Existing Data” Only select the OCPR spreadsheet as the data source When you run the DTW import, choose the option to “Update Existing Data” so that the parent template is not required. Then only select the child spreadsheet file as the data source.",
-    "start_time": 1372.44,
-    "end_time": 1392.14
+    "image_file": "Slide_032.webp",
+    "script_text": "Al ejecutar la importación mediante DTW, selecciona la opción 'Actualizar Datos Existentes' para evitar que se requiera la plantilla principal. Luego, elige únicamente el archivo de hoja de cálculo que contiene los datos secundarios, como la plantilla OCPR para contactos. Asegúrate de que el mapeo de columnas esté correcto y que el objeto de destino coincida con la tabla que deseas actualizar. Así, solo se modificarán los registros especificados sin afectar otros datos del socio comercial.",
+    "start_time": 1117.0,
+    "end_time": 1148.0
   },
   {
     "slide_index": 33,
-    "image_file": "053_Slide_33_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Adding or Updating Addresses for a Business Partner To add new addresses, or update existing addresses for a business partner, you do not use the LineNum field because you can identify addresses using the Address ID: Enter the code in column A In column C enter the Address ID that will be updated or added to the business partner record In column N enter the address type (bo_BillTo or bo_ShipTo)  When you run the import, choose “Update Existing Data” Only select the CRD1 spreadsheet as the data source To add new addresses, or update existing billing and shipping addresses for a business partner, you do not use the LineNum field because you can identify each address using its Address ID. The Address ID can be viewed in the business partner master data. Each address for the business partner has a unique Address ID. To update or add new billing and shipping addresses:  Enter the code in column A  In column C enter the Address ID to match the address that will be updated, or a new Address ID for a new billing or shipping address  In column N enter the address type (bo_BillTo or bo_ShipTo)  When you run the import, choose “Update Existing Data”  Only select the CRD1 spreadsheet as the data source In the slide example: • For the customer C00001, 2 new addresses are being added • For the customer C00005, the existing shipping and billing addresses are updated",
-    "start_time": 1392.14,
-    "end_time": 1470.12
+    "image_file": "Slide_033.webp",
+    "script_text": "Para agregar o actualizar direcciones de un socio comercial, no se usa el LineNum, ya que las direcciones se identifican por su ID de Dirección. En la columna A, ingresa el código del socio comercial. En la columna C, coloca el ID de Dirección que deseas actualizar o agregar. En la columna N, especifica el tipo: bo_BillTo para facturación o bo_ShipTo para envío. Luego completa los campos de calle, ciudad, código postal y país. Al ejecutar la importación, elige 'Actualizar Datos Existentes' y selecciona solo la hoja CRD1 como fuente. Así mantienes actualizadas las direcciones de envío y facturación de tus socios comerciales.",
+    "start_time": 1148.0,
+    "end_time": 1189.8
   },
   {
     "slide_index": 34,
-    "image_file": "053_Slide_34_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Customized Templates This segment covers the creation of customized templates.",
-    "start_time": 1470.12,
-    "end_time": 1475.62
+    "image_file": "Slide_034.webp",
+    "script_text": "Este segmento explica cómo crear plantillas personalizadas en el Data Transfer Workbench. Una plantilla personalizada te permite adaptar la estructura de importación a tus necesidades específicas, eliminando campos innecesarios y enfocándote solo en los datos relevantes. Esto simplifica la carga de información maestros, como artículos o socios comerciales, reduciendo errores y tiempo de entrada. Es útil cuando las plantillas predefinidas contienen muchos campos que no utilizas en tu empresa.",
+    "start_time": 1189.8,
+    "end_time": 1218.0
   },
   {
     "slide_index": 35,
-    "image_file": "053_Slide_35_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Business Example for Customized Templates  You want to import item master data into a new SAP Business One system.  The predefined template OITM contains many fields including sales and purchasing units and properties. The products to be imported do not use many of these template fields.  To simplify the data entry process, you can remove unused fields and generate a custom template. This will make the templates easier to work with. Some objects in SAP Business One contain many, many fields. Examples are the business partner master data (OCRD) and the item master data (OITM). In this example, the products being imported do not use many of the fields in the OITM template. To simplify the process of entering data in the template, you can remove unused fields and generate a custom template.",
-    "start_time": 1475.62,
-    "end_time": 1525.99
+    "image_file": "Slide_035.webp",
+    "script_text": "Imagina que deseas importar datos maestros de artículos a un nuevo sistema SAP Business One. La plantilla predefinida OITM incluye muchos campos que tus productos no utilizan, como atributos complejos o datos de producción. Para simplificar la entrada, puedes crear una plantilla personalizada eliminando esos campos no utilizados. Así, solo ingresas la información esencial: código, descripción, grupo de artículos, precio y unidad de medida. Esto reduce la confusión y acelera el proceso de carga de datos maestros.",
+    "start_time": 1218.0,
+    "end_time": 1249.4
   },
   {
     "slide_index": 36,
-    "image_file": "053_Slide_36_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Customize Template - 1  To create a template tailored to your needs, choose Templates>Customize Template  Select the business object which will be the basis for the new template You may have noticed that the predefined templates are based on a preconfigured data transfer interface that maps to SAP Business One tables. You can create custom templates to better match to the data you are importing. For example, if you do not use most of the fields in the predefined template, you can create a custom template with just the columns you need. From the DTW user interface, select Templates Customize Template. The select the business object which will be the basis for the new template. In the example the item master data object is selected.",
-    "start_time": 1525.99,
-    "end_time": 1567.87
+    "image_file": "Slide_036.webp",
+    "script_text": "Para crear una plantilla adaptada a tus necesidades, ve al menú Plantillas y selecciona Personalizar Plantilla. Luego, elige el objeto de negocio que será la base de tu nueva plantilla; en este caso, los datos maestros de artículos (OITM). Aparecerá la lista completa de campos disponibles. Desde allí, puedes marcar o desmarcar los campos según lo que necesites importar. En el ejemplo, se seleccionan solo los esenciales: código, nombre, grupo y precio, excluyendo atributos, lotes o datos de producción. Finalmente, asigna un nombre descriptivo a tu plantilla y guárdala para usarla en futuras importaciones.",
+    "start_time": 1249.4,
+    "end_time": 1287.6
   },
   {
     "slide_index": 37,
-    "image_file": "053_Slide_37_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Customize Template - 2  Expand the node for the table to see the complete list of DI API fields  When you select a field, the field’s attributes display in the lower right  You can:  Rearrange the field order by dragging and dropping  Delete a field from the template  Add a previously removed field When you expand the node for an object, such as the Items object, you see a list of the fields from the predefined template. When you select a field you can see the field’s attributes displayed in the lower right. You can rearrange the order of the fields by dragging and dropping. So you can move the fields you use the most to appear first in the template. You can also right-click on a field and either remove it from the template, or add back a previously deleted field. Do not remove mandatory fields or primary keys from the template. You can only move or delete one field at a time.",
-    "start_time": 1567.87,
-    "end_time": 1615.08
+    "image_file": "Slide_037.webp",
+    "script_text": "En esta lámina ves cómo personalizar una plantilla en el Data Transfer Workbench. Al expandir el nodo de la tabla, se muestra la lista completa de campos de la API DI. Al seleccionar un campo, sus atributos como tipo, longitud y si es obligatorio aparecen en la parte inferior derecha. Puedes reorganizar el orden arrastrando y soltando, eliminar un campo o agregar uno previamente eliminado. Es importante no eliminar campos obligatorios ni claves primarias, ya que esto podría causar errores en la importación. Esta personalización te permite adaptar la plantilla a tus necesidades específicas de carga de datos en SAP Business One.",
+    "start_time": 1287.6,
+    "end_time": 1329.0
   },
   {
     "slide_index": 38,
-    "image_file": "053_Slide_38_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Customize Template - 3  After you have rearranged the fields, right- click the table node and select Create Template for the Structure  The new template is saved in the templates folder as a .xlt file After you have rearranged the fields, right-click the table node and choose the option to create a new template. The template is saved as an .xlt file. You can then enter your data into the template and save as a delimited file for the import.",
-    "start_time": 1615.08,
-    "end_time": 1639.54
+    "image_file": "Slide_038.webp",
+    "script_text": "Una vez que hayas reorganizado los campos en la plantilla según tus necesidades, el siguiente paso es hacer clic derecho sobre el nodo de la tabla. Aparecerá un menú contextual donde debes seleccionar la opción 'Crear Plantilla para la Estructura'. El sistema guardará automáticamente la nueva plantilla en la carpeta de plantillas con la extensión .xlt. Este archivo podrás reutilizar en futuras importaciones, asegurando que los campos estén en el orden deseado y que se incluyan solo los necesarios para tu proceso de carga de datos.",
+    "start_time": 1329.0,
+    "end_time": 1364.0
   },
   {
     "slide_index": 39,
-    "image_file": "053_Slide_39_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Generating UDF Templates User-defined fields (UDFs) added to an object do not appear in the predefined templates, but you can generate a new template to include the UDFs: Choose Generate UDF Templates The window shows a list of all objects with UDFs The system will generate templates for selected objects with the UDFs included in the template The templates are saved in the file location shown in the window • User-defined fields (UDFs) added to an object do not appear by default in the predefined templates. If there are only a few UDFs for the object, you can add them manually at the end of the predefined template. If there are many UDFs for an object you can generate a new template that includes the UDFs. • Choose the Generate UDF Templates option from the Templates menu. A window opens showing all objects that contain UDFs. Deselect objects for which you do not want templates generated. • When you choose Generate Templates the system generates a new template for each of the selected objects with the UDFs. Included in the template. Columns for the UDFs are automatically added to the end of the predefined template. • The new templates are saved in the location displayed in the window. You can browse to select a different location.",
-    "start_time": 1639.54,
-    "end_time": 1712.3
+    "image_file": "Slide_039.webp",
+    "script_text": "Los campos definidos por el usuario (CUD) que agregues a un objeto en SAP Business One no aparecen en las plantillas predefinidas del DTW. Para incluirlos, debes generar una nueva plantilla específicamente para ellos. Al elegir 'Generar Plantillas de CUD', se abre una ventana que lista todos los objetos que tienen CUD definidos. Seleccionas los objetos que necesitas y el sistema crea una plantilla para cada uno, incorporando los CUD seleccionados. Las plantillas se guardan en la ubicación mostrada en la ventana, lista para ser usada en tu proceso de importación de datos maestros o transacciones.",
+    "start_time": 1364.0,
+    "end_time": 1403.0
   },
   {
     "slide_index": 40,
-    "image_file": "053_Slide_40_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Generating UDO Templates You can also generate new templates for user- defined objects (UDOs):  Choose Generate UDO Templates  The window shows all user-defined objects that have been registered (type Master Data or Document)  The system will generate templates for selected user-defined objects User-defined Objects (UDOs) are tables added to the database by the partner or by a user. Often it is easier to populate these objects using DTW. You can generate DTW templates for the UDO tables by choosing Generate UDO Templates from the Templates menu. The window will show all User-defined Objects that have been registered with the database (object type is Master Data or Document). A template will be generated for each selected UDO.",
-    "start_time": 1712.3,
-    "end_time": 1755.41
+    "image_file": "Slide_040.webp",
+    "script_text": "Del mismo modo que con los CUD, puedes generar plantillas para objetos definidos por el usuario (UDO) en SAP Business One. Al seleccionar 'Generar Plantillas de UDO', se muestra una ventana con todos los UDO que han sido registrados en el sistema, ya sea como datos maestros o como documentos. El sistema generará una plantilla independiente para cada UDO que selecciones, incluyendo todos sus campos definidos. Esto te permite importar datos relacionados con tus personalizaciones de forma masiva y estructurada, asegurando que la información se cargue correctamente en los objetos personalizados de tu empresa.",
+    "start_time": 1403.0,
+    "end_time": 1441.2
   },
   {
     "slide_index": 41,
-    "image_file": "053_Slide_41_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "Summary Key points from this course: • Data Transfer Workbench (DTW) makes it possible to import setup data, master data, and open transactions in bulk. • DTW provides predefined templates for the objects in SAP Business One, based on the DI API interface. The Database Tables Reference provides documentation for the templates. • When you use a SAP HANA database you can increasing performance by checking the Enable Faster Import checkbox. DTW will import the data using multiple parallel threads. • After you have entered the data in the template, save the templates as a tab, comma, or semi- colon delimited file before you run the import wizard. SAP recommends that you run a simulation first, or import the data into a test database so you can validate the results. • You can create customized templates; for example, a template with only the columns you need for the data to be imported. • You can also generate new templates for an object that include user-defined fields (UDFs). And you can generate new templates for registered user-defined objects (UDOs). Here are some key points to take away from this course. Please take a minute to review these key points: • The Data Transfer Workbench (DTW) makes it possible to import setup data, master data, and open transactions in bulk. • DTW provides predefined templates for the objects in SAP Business One, based on the DI API interface. The Database Tables Reference provides documentation for the fields in the templates, including default values for fields, as well as field lengths and constraints on the data. • When you use a SAP HANA database you can increasing the performance of the import by checking the Enable Faster Import checkbox . DTW will import the data using multiple parallel threads. • After you have entered the data in the template, save the templates as a tab, comma, or semi-colon delimited file before you run the import wizard. SAP recommends that you run a simulation first, or import the data into a test database so you can validate the results. • You can create customized templates for ease of use. For example, if you do not use most of the columns in the predefined template, you can create a customized template with only the columns you need to import. • You can also generate new templates for an object that include any user-defined fields (UDFs) added to the object. And you can generate new templates for registered user-defined objects (UDOs) so you can import data into them using DTW.",
-    "start_time": 1755.41,
-    "end_time": 1905.89
-  },
-  {
-    "slide_index": 42,
-    "image_file": "053_Slide_42_10_Impl_32_Using_Data_Trans_Workbench.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and/or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1905.89,
-    "end_time": 2043.5
+    "image_file": "Slide_041.webp",
+    "script_text": "Este curso te mostró cómo el Workbench de Transferencia de Datos (DTW) permite importar de forma masiva datos de configuración, datos maestros y transacciones abiertas en SAP Business One. DTW incluye plantillas predefinidas basadas en la API DI para cada objeto estándar. La Referencia de Tablas de Base de Datos detalla los campos de estas plantillas, incluyendo valores predeterminados, longitudes y restricciones. Si usas SAP HANA, puedes mejorar el rendimiento activando la opción 'Activar Importación Más Rápida'. Antes de importar, introduce los datos en la plantilla y guárdala como archivo delimitado (tabulador, coma o punto y coma). SAP recomienda hacer primero una simulación o importar en una base de datos de prueba. Finalmente, aprendiste a crear plantillas personalizadas y a generar nuevas para campos definidos por el usuario (CUD) y objetos definidos por el usuario (UDO).",
+    "start_time": 1441.2,
+    "end_time": 1496.2
   }
 ]

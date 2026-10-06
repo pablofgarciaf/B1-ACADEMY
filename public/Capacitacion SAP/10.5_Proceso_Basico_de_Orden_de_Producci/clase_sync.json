@@ -1,86 +1,86 @@
 [
   {
     "slide_index": 1,
-    "image_file": "091_Slide_01_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Production 41 Process BasicProductionProcess en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Producción y MRP: Proceso de producción básico Le damos la bienvenida al tema de formación Proceso de producción básico. Para hacer este curso se recomienda completar antes el tema Lista de materiales.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de Proceso de Producción Básico en SAP Business One Versión 10.0. Este tema le enseñará cómo gestionar la producción desde la creación de una orden hasta su finalización. Se recomienda haber completado previamente el tema de Lista de materiales para comprender mejor los componentes involucrados. Aquí iniciamos el flujo productivo clave para empresas manufactureras.",
     "start_time": 0.0,
-    "end_time": 27.89
+    "end_time": 23.4
   },
   {
     "slide_index": 2,
-    "image_file": "091_Slide_02_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Al finalizar este tema, podrá: Añadir una orden de producción Completar un proceso de producción básico 2 Al finalizar este tema, podrá: Añadir una orden de producción Completar un proceso de producción básico Objetivos",
-    "start_time": 27.89,
-    "end_time": 42.62
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá añadir una orden de producción en SAP Business One y completar todo el proceso de producción básico. Esto incluye desde la creación del documento hasta el recibo de productos terminados en almacén. Estas habilidades son esenciales para supervisar la fabricación eficiente y el control de costes en entornos productivos reales.",
+    "start_time": 23.4,
+    "end_time": 46.0
   },
   {
     "slide_index": 3,
-    "image_file": "091_Slide_03_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "El concepto de proceso de producción Crear la orden de producción Enviar a la planta de producción Enviar componentes y recursos Informar de la finalización El proceso de producción comienza con una Orden de producción. Es el documento principal del proceso de producción. En él se registra el progreso del proceso de producción de cada artículo que se produce. Antes de empezar a trabajar, el estado Orden de producción se debe cambiar a Liberado. En ese momento, la orden de producción puede empezar a recopilar los costes de producción. Los componentes que se utilizan en el proceso de producción pueden enviarse a la planta de producción (dependiendo del método de envío). Cuando el trabajo está completado, informa de la finalización en la orden de producción. En ese momento, los artículos terminados se reciben en el almacén Tenga en cuenta que cuando se selecciona el método automático para enviar componentes a la planta de producción, los componentes y los recursos se declaran como emitidos en cuanto se informe de la finalización. Cuando acaba el proceso de producción se cierra la orden de producción. El hecho de cerrarla crea un asiento para saldar las cuentas de inventario en las empresas que utilizan un inventario permanente. En las siguientes diapositivas veremos en más detalle la orden de producción y el proceso de producción.",
-    "start_time": 42.62,
-    "end_time": 123.72
+    "image_file": "Slide_003.webp",
+    "script_text": "El proceso de producción comienza con la creación de una Orden de producción, el documento principal que registra el progreso de cada artículo fabricado. Antes de iniciar, debe cambiar su estado a Liberado para que pueda acumular costes y permitir el envío de componentes. Cuando el trabajo termina, se informa la finalización, momento en que los productos terminados se reciben en almacén. Finalmente, al cerrar la orden, se genera un asiento contable en sistemas de inventario permanente para saldar las cuentas de inventario.",
+    "start_time": 46.0,
+    "end_time": 79.8
   },
   {
     "slide_index": 4,
-    "image_file": "091_Slide_04_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "El concepto de orden de producción Orden de producción Orden de producción: Puerta decorativa de madera x 6 Fecha de vencimiento: 31.09.20XX Artículo: Puerta de madera Artículo: Pomo Recurso: Operario de la máquina Recurso: Torno La orden de producción es una orden para producir o reparar un artículo de producción. Una lista de materiales (LdM) se copia en el documento Orden de producción. A continuación, se introduce la cantidad necesaria del artículo terminado junto con la fecha de vencimiento de la orden de producción deseada y otros datos relevantes. La orden de producción también sirve para hacer el seguimiento de todas las transacciones de materiales y costes que existen en el proceso de producción. Tenga en cuenta que las órdenes de producción también se pueden generar en los procesos de planificación de la necesidad material y de picking, embalaje y producción. Estos aspectos se explican más detalladamente en los temas sobre la planificación de necesidad de material y picking, embalaje y producción.",
-    "start_time": 123.72,
-    "end_time": 188.45
+    "image_file": "Slide_004.webp",
+    "script_text": "La Orden de producción es una instrucción para fabricar o reparar un artículo. Se basa en la Lista de materiales (LdM), cuyos datos se copian al seleccionar el producto. Además de definir qué producir y en qué cantidad, sirve para seguir todas las transacciones de materiales y costes durante el proceso. Puede generarse también desde MRP, picking o embalaje, temas que se profundizan en otros módulos del curso.",
+    "start_time": 79.8,
+    "end_time": 107.6
   },
   {
     "slide_index": 5,
-    "image_file": "091_Slide_05_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Orden de producción: información de cabecera Una vez que seleccione el artículo de la lista de materiales, todos los datos de los datos maestros de la lista de materiales se copian en la orden de producción. →Indicar la cantidad planificada para la producción. →Utilizar el campo de prioridad para determinar manualmente la prioridad de esta orden de producción. →Introducir las fechas de inicio y fin de la producción. Esta es la cabecera de una orden de producción para la LMat (lista de materiales) de una puerta de madera decorativa. Cuando se selecciona el artículo que hay que fabricar en el campo Número de producto, los datos se copian del documento de lista de materiales a la orden de producción. En el encabezado del documento, en el campo Cantidad planificada, el jefe de producción ha indicado que desea fabricar 10 puertas de madera decorativas. La cantidad base de los componentes en las filas se multiplica por la cantidad planificada. Utilice el campo de prioridad para determinar manualmente la prioridad de una orden de producción; por ejemplo, fije el valor 1 para obtener una prioridad más alta. De forma predeterminada, el valor se fija en 100. OC WoodTrend proporciona prioridades mayores a pedidos grandes. El campo prioridad se visualiza en la ventana picking, embalaje y producción y en el informe Lista de partidas abiertas. Al abrir una orden de producción, el estado de la orden se define como Planificado. Con este estado no es posible enviar componentes o informar sobre la finalización de la orden de producción. No obstante, sí que se pueden hacer cambios en los datos de la orden de producción. Más adelante, para poder seguir con el siguiente paso del proceso de producción, el jefe de producción cambia el estado a Liberado. Observe las fechas en el lado derecho de la imagen. La fecha de pedido es la fecha en la que se contabilizó la orden de fabricación y la fecha de inicio y la fecha de fin son el rango de fecha planificado de este proceso de producción. Por defecto, la fecha de vencimiento es igual a la fecha de inicio + el ciclo de producción del artículo",
-    "start_time": 188.45,
-    "end_time": 320.11
+    "image_file": "Slide_005.webp",
+    "script_text": "En la cabecera de la Orden de producción, al seleccionar el artículo a fabricar —como 'Puerta de madera'—, se copian automáticamente los datos maestros de la Lista de materiales. Aquí se define la cantidad planificada (10 unidades), las fechas de inicio y fin del proceso, y la prioridad (valor 1 para alta urgencia). Estos datos sirven como base para calcular el consumo de componentes en las líneas. La fecha de vencimiento se calcula por defecto como fecha de inicio más el ciclo de producción del artículo.",
+    "start_time": 107.6,
+    "end_time": 142.6
   },
   {
     "slide_index": 6,
-    "image_file": "091_Slide_06_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "fabricado, si es que existe. Este ciclo de producción se define en los datos maestros de artículo, en la ficha de planificación, y se utiliza en el proceso de fabricación y de planificación de la necesidad de material para definir el tiempo previsto de compra o producción de un artículo. La fecha de inicio puede ofrecer flexibilidad adicional al responsable de producción en la programación de órdenes de producción. Tenga en cuenta que la información de cabecera también se utiliza como base o valor por defecto en las líneas de orden de producción. Vamos a analizar las líneas de la orden de producción en la siguiente diapositiva.",
-    "start_time": 320.11,
-    "end_time": 358.54
+    "image_file": "Slide_006.webp",
+    "script_text": "La información de cabecera de la Orden de producción no solo identifica el producto y las fechas, sino que también sirve como valor por defecto para las líneas del documento. Por ejemplo, la cantidad planificada en la cabecera se multiplica por la cantidad base de cada componente en las líneas para determinar el total necesario. Además, la fecha de inicio ofrece flexibilidad al jefe de producción para reprogramar órdenes según la carga de trabajo, sin afectar los datos maestros. Hasta que no se libere la orden, no se pueden enviar componentes ni reportar finalización, aunque sí se pueden editar sus datos.",
+    "start_time": 142.6,
+    "end_time": 183.6
   },
   {
     "slide_index": 7,
-    "image_file": "091_Slide_07_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Líneas de orden de producción →Los datos de línea se copian de la LMat y la cantidad planificada en las líneas se multiplica según la cantidad planificada en la cabecera. →Campo Tiempo de producción = tiempo de recurso total calculado en la línea cantidad planificada X tiempo de recurso. Cabecera Cantidad planificada = 10 Puede ver que los datos de esa línea también se han copiado a la orden de producción, aunque todavía se pueden realizar modificaciones. Utilice las flechas de la derecha para definir la secuencia correcta de las líneas o modifique los datos en las líneas. El campoTiempo de producción indica el tiempo de recurso total calculado en la línea. La Cantidad base se ha copiado de la LMat y la Cantidad planificada se calcula según la cantidad de cabecera planificada que el jefe de producción ha introducido. También existe un estado en el nivel de línea. El estado se puede ajustar manualmente. No se ve afectado por el estado en la cabecera y se utiliza únicamente para fines informativos. En las líneas también hay campos de fecha. Por defecto, la Fecha de inicio y las Fechas de vencimiento de las líneas se copian en la Fecha de inicio y en la Fecha de vencimiento del encabezado respectivamente. Cuando modifica una fecha en la cabecera, puede seleccionar aplicar las modificaciones en las filas. En este escenario básico, la puerta de madera decorativa se fabrica en un día para que la fecha de inicio y la fecha de fin sea la misma en todas las filas. En las siguientes diapositivas conocerá un escenario de varias de etapas de ruta en las que las fechas de inicio y de fin pueden variar en las distintas etapas.",
-    "start_time": 358.54,
-    "end_time": 459.46
+    "image_file": "Slide_007.webp",
+    "script_text": "En esta lámina vemos cómo se calcula el tiempo de producción en una línea de orden de producción. El tiempo de producción se obtiene multiplicando la cantidad planificada por el tiempo de recurso total calculado en la línea. Este campo es clave para planificar la duración de cada operación. Los datos de la línea se copian desde la lista de materiales y se ajustan según la cantidad de la cabecera. Puede modificar la secuencia o los datos usando las flechas. El tiempo de producción indica el esfuerzo total de recurso necesario. En este escenario básico, la puerta decorativa se fabrica en un día, por lo que las fechas de inicio y fin coinciden en todas las líneas.",
+    "start_time": 183.6,
+    "end_time": 231.0
   },
   {
     "slide_index": 8,
-    "image_file": "091_Slide_08_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Vamos a empezar con el proceso de producción de la puerta de madera decorativa. Una vez que se introduce la orden de producción, pasa lo siguiente: La cantidad de los componentes del artículo de la orden de producción se resta de la cantidad disponible de los artículos y se convierte en una cantidad comprometida (como se puede ver en la ficha Datos maestros artículoInventario). La capacidad de los recursos de la orden de producción se resta de la capacidad interna y se convierte en una capacidad comprometida (se puede encontrar más información sobre la capacidad de los recursos en el tema Capacidad de los recursos). El jefe de producción modifica el estado de la orden a Liberado para que empiece el proceso de producción. Una vez que el estado se ha definido como Liberado, podemos: enviar componentes (dependiendo del método de envío que se utilice) recibir el artículo producido en el inventario e informar sobre la finalización de la orden de producción. En ese punto todavía es posible añadir o modificar componentes y recursos que no se hayan enviado todavía. OC WoodTrend gestiona la zona de la planta de producción como un almacén aparte, por lo que el jefe de 7 7 Crear y enviar una orden de producción Enviar a la planta de producción Estado: Planificado Liberado Crear una orden de producción",
-    "start_time": 459.46,
-    "end_time": 537.14
+    "image_file": "Slide_008.webp",
+    "script_text": "Al liberar la orden de producción, el sistema compromete los componentes del inventario y la capacidad de los recursos internos. Esto significa que las cantidades se reservan para la producción y ya no están disponibles para otros usos. El jefe de producción cambia el estado de 'Planificado' a 'Liberado' para autorizar el inicio del trabajo. En este punto, aún puede modificar componentes o recursos no enviados. OC WoodTrend trata la planta como un almacén separado, por lo que se requiere un traslado de inventario para mover los materiales al área de producción. La orden refleja los datos copiados de la lista de materiales, con fechas sincronizadas por defecto.",
+    "start_time": 231.0,
+    "end_time": 274.8
   },
   {
     "slide_index": 9,
-    "image_file": "091_Slide_09_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "producción traslada los componentes del almacén principal a la planta de producción. Para hacerlo, crea un traslado de inventario utilizando el menú contextual de la orden de producción.",
-    "start_time": 537.14,
-    "end_time": 549.58
+    "image_file": "Slide_009.webp",
+    "script_text": "Para mover los componentes desde el almacén principal a la planta de producción, se utiliza un traslado de inventario generado desde el menú contextual de la orden de producción. Este paso es necesario porque OC WoodTrend gestiona la planta como un almacén separado. El traslado registra la salida del componente del almacén principal y su entrada en la planta de producción, manteniendo el control de inventario preciso. No modifica la orden de producción, solo refleja el movimiento físico de los materiales. Este documento permite que el equipo de producción tenga los componentes disponibles para comenzar el trabajo una vez que la orden esté liberada.",
+    "start_time": 274.8,
+    "end_time": 317.0
   },
   {
     "slide_index": 10,
-    "image_file": "091_Slide_10_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Una vez completado el proceso, el jefe de producción informa de la finalización de la producción. En el menú contextual, selecciona Recibo de producción. Al informar de la finalización, el sistema automáticamente: Recibe el producto terminado en el inventario añadiendo un documento de recibo de producción. Envía los componentes de toma retroactiva añadiendo un documento de salida para producción. Calcula el coste de producir el artículo. Nota: También es posible enviar un documento de recibo de producción desde la entrada de menú Producción. 8 Informar de la finalización Cuando informa de la finalización, el sistema automáticamente: Recibe el producto terminado en el inventario Emite los componentes obtenidos mediante toma retroactiva. Calcula el coste de producir el artículo Informar de la finalización Seleccione el menú contextual de la orden de producción para informar de la finalización. Otra opción es añadir un documento de recibo de producción",
-    "start_time": 549.58,
-    "end_time": 610.54
+    "image_file": "Slide_010.webp",
+    "script_text": "Al informar de la finalización de la producción desde el menú contextual de la orden, el sistema ejecuta tres acciones automáticas: recibe el producto terminado en el inventario mediante un documento de recibo de producción, emite los componentes mediante toma retroactiva con un documento de salida para producción y calcula el coste total de producción. Este proceso cierra el ciclo productivo. También es posible generar el recibo desde el menú principal de Producción. Al confirmar, el artículo producido aumenta el stock y los componentes se descuentan, reflejando el consumo real. El coste se basa en el consumo de materiales y recursos, valorado según los métodos de valuación configurados.",
+    "start_time": 317.0,
+    "end_time": 360.8
   },
   {
     "slide_index": 11,
-    "image_file": "091_Slide_11_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Modificaciones de inventario en el proceso de producción + Indica un aumento en la cantidad Indica una disminución en la cantidad En inventario Comprom. + Solicitado = Disponible Finalización notificada Estado: Planificado Componentes Producto terminado Componentes Producto terminado + + + + En esta diapositiva se resumen los cambios que se han hecho en los datos de inventario durante el proceso de producción. Cuando se planifica el estado de producción, se crea un compromiso para los componentes, y la cantidad solicitada del artículo fabricado aumenta. Cuando se completa la orden de producción, los productos terminados se reciben en el inventario. Recuerde que los componentes se pueden enviar en diferentes etapas del proceso de producción en función de su método de envío (de forma manual o de toma retroactiva). Tenga en cuenta que es posible visualizar las modificaciones de inventario (y la contabilidad de costes) de cada componente por orden de producción, introduciendo el informe de desviación de la ficha Resumen de la orden. Para obtener más información sobre el informe de desviación consulte la formación Contabilidad de la producción.",
-    "start_time": 610.54,
-    "end_time": 679.8
+    "image_file": "Slide_011.webp",
+    "script_text": "Esta lámina resume los cambios en el inventario durante el proceso de producción. En estado planificado, se crea un compromiso para los componentes (disminuye disponible) y aumenta la cantidad solicitada del producto terminado. Al finalizar la orden, se recibe el producto terminado en inventario (aumenta disponible) y se descuentan los componentes mediante toma retroactiva. El saldo disponible se calcula como: Disponible = En inventario - Comprometido + Solicitado. Puede ver el detalle por componente usando el informe de desviación de la orden, útil para análisis de costes y control de producción. Este flujo refleja el movimiento real de materiales en la fábrica.",
+    "start_time": 360.8,
+    "end_time": 402.2
   },
   {
     "slide_index": 12,
-    "image_file": "091_Slide_12_10_Production_41_Process_BasicProductionProcess_ES.webp",
-    "script_text": "Estos son algunos puntos clave acerca del proceso de producción de esta sesión: La orden de producción se basa en la lista de materiales. Una orden de producción está en estado de planificación hasta que el estado cambia a Liberado. Cuando la orden de producción se envía a la planta de producción, es posible enviar los componentes (artículos y recursos) para la producción y el trabajo puede empezar. Los componentes se envían cuando se añade un documento de Salida para producción. Los componentes se pueden enviar utilizando el método manual o el método de toma retroactiva. Con el método de toma retroactiva, cuando se crea un recibo de producción, los artículos se envían automáticamente a la producción. El método de salida manual le permite enviar los componentes con precisión cuando se necesitan en el proceso de producción y también enviar una cantidad parcial si es necesario, incluso antes de informar de la finalización. Cuando informa de la finalización, el sistema recibe automáticamente el producto terminado en el inventario y envía los componentes de toma retroactiva. 10 10 Resumen A continuación, se muestran algunos puntos clave sobre el proceso de producción: La orden de producción se basa en la lista de materiales. Una orden de producción está en estado de planificación hasta que el estado cambia a Liberado. Cuando la orden de producción se envía a la planta de producción, es posible enviar los componentes (artículos y recursos) para la producción y el trabajo puede empezar. Los componentes se envían cuando se añade el documento Salida para producción. Los componentes se pueden enviar utilizando el método manual o el método de toma retroactiva. Con el método de toma retroactiva, cuando se crea un recibo de producción, los artículos se envían automáticamente a la producción. El método de salida manual le permite enviar los componentes con precisión cuando se necesitan en el proceso de producción y también enviar una cantidad parcial si es necesario, incluso antes de informar de la finalización. Cuando informa de la finalización, el sistema recibe automáticamente el producto terminado en el inventario y envía los componentes de toma retroactiva.",
-    "start_time": 679.8,
-    "end_time": 812.62
+    "image_file": "Slide_012.webp",
+    "script_text": "El proceso de producción en SAP Business One comienza con una orden basada en la lista de materiales. La orden permanece en estado 'Planificado' hasta que el jefe de producción la cambia a 'Liberado', autorizando el inicio. Al enviarla a la planta, se pueden enviar componentes mediante salida para producción, ya sea manualmente o con toma retroactiva. El método manual permite envíos precisos y parciales antes de la finalización. Con toma retroactiva, los componentes se envían automáticamente al crear el recibo de producción. Al finalizar, el sistema recibe el producto terminado en inventario y descuenta los componentes de toma retroactiva, completando el ciclo productivo con actualización automática de inventario y costes.",
+    "start_time": 402.2,
+    "end_time": 447.2
   }
 ]

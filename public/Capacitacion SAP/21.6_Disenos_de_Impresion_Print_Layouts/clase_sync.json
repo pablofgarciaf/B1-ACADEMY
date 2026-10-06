@@ -1,121 +1,114 @@
 [
   {
     "slide_index": 1,
-    "image_file": "058_Slide_01_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 36 SystemSetup Print layouts en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. System Setup & Administration: Print Layouts SAP Business One Version 10.0 This topic covers print layouts which are required for the printing of documents and reports.",
+    "image_file": "Slide_001.webp",
+    "script_text": "En SAP Business One, los formatos de impresión son plantillas que controlan cómo se ven los documentos al imprimirse. Este tema cubre su configuración y administración, esencial para adaptar la salida de documentos a las necesidades de tu empresa. Aprenderás a definir, personalizar y gestionar estos formatos para garantizar una presentación profesional y coherente en todos los informes y documentos comerciales.",
     "start_time": 0.0,
-    "end_time": 24.24
+    "end_time": 25.0
   },
   {
     "slide_index": 2,
-    "image_file": "058_Slide_02_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Objectives Objectives: Describe the function of a print layout Set default print layouts for users and by business partner Use the Report and Layout Manager for managing reports and print layouts Define a printing sequence for a document On completion of this topic, you will be able to: Describe the function of a print layout Set default print layouts for users and by business partner Use the Report and Layout Manager for managing reports and print layouts Define a printing sequence for a document",
-    "start_time": 24.24,
-    "end_time": 50.64
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás describir qué es un formato de impresión y su función en SAP Business One. Aprenderás a establecer formatos predeterminados para usuarios específicos o para todos, así como por socio comercial. También utilizarás el Gestor de Informes y Formatos para administrar estas plantillas y definir secuencias de impresión según el tipo de documento, todo dentro de las herramientas estándar del sistema.",
+    "start_time": 25.0,
+    "end_time": 51.6
   },
   {
     "slide_index": 3,
-    "image_file": "058_Slide_03_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Print Layout Concept SAP Business One Each marketing document or report has a print layout This is a template for how the on screen document will look in printed form Printed documents Layout Layout Print layouts are templates that define how an on screen document or report will look when it is printed. SAP provides a set of predefined layouts for each marketing document. You can use these right out of the box or you can edit them to create client specific printed documents. This is typically done for external facing documents, but you can also customize the layouts for internally used documents such as pick lists and bills of materials. You can also create new print layouts for customized reports that you develop.",
-    "start_time": 50.64,
-    "end_time": 89.86
+    "image_file": "Slide_003.webp",
+    "script_text": "Un formato de impresión en SAP Business One es una plantilla que define cómo se muestra un documento en pantalla y al imprimirse. Cada documento de marketing o informe tiene asociado un formato que controla su diseño. SAP incluye formatos predefinidos listos para usar, pero puedes editarlos para adaptarlos a las necesidades de tus clientes, ya sea para documentos externos como facturas o internos como listas de materiales.",
+    "start_time": 51.6,
+    "end_time": 79.4
   },
   {
     "slide_index": 4,
-    "image_file": "058_Slide_04_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Print Layouts for a Document A document can have multiple print layouts To preview a document in the available layouts, open a document and choose File > Preview Layouts… The default layout is marked in bold There can be multiple print layouts for a document. To see the available print layouts, open a document and choose the preview layouts option from the File menu. The layouts available for the current document type are shown. Then select a layout to view the printed document. The one in bold is the default template that will be used when this user prints this document. You should decide with the customer which templates will be required for each document. For example, an A R invoice can be printed as a packing list as well as an invoice. Note: If you print or preview a document before you add it to the system, the system automatically adds the Draft watermark to the printout.",
-    "start_time": 89.86,
-    "end_time": 139.73
+    "image_file": "Slide_004.webp",
+    "script_text": "Para ver los formatos de impresión disponibles para un documento, simplemente ábrelo y ve al menú Archivo, luego elige Previsualizar Formatos. Allí se mostrarán todas las plantillas asociadas a ese documento, con el formato predeterminado resaltado en negrita. Esta función te permite comparar diseños antes de imprimir y elegir el más adecuado según el contexto del cliente o el tipo de operación.",
+    "start_time": 79.4,
+    "end_time": 104.8
   },
   {
     "slide_index": 5,
-    "image_file": "058_Slide_05_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Setting the Default Print Layout A default layout can be specified for all users, for the current user only, or for specified users You can also set a default for all business partners or for specified business partners Authorization required to set default layout It is quite possible that users might need to use more than one print layout template for a document. A user might need to use an invoice layout for each of their customers’ languages, or set a different invoice layout for certain groups of customers. Authorized users can set a different layout to be used as default for different users or business partners. To set the default layout, open a document and choose the Layout Designer icon from the icon toolbar. This opens a window where you can choose another layout and set as default. A new template can be set as default for: All users The current user only Specific users that you select from the list of users You can also set the layout as default for: All business partners for which a default template has not yet been assigned Selected business partners – this allows you to select one or more business partners. Note: To be authorized to change the default print layout for a document or report, the general authorization General Change Default Report is required.",
-    "start_time": 139.73,
-    "end_time": 209.18
+    "image_file": "Slide_005.webp",
+    "script_text": "Para establecer un formato de impresión como predeterminado, abre cualquier documento y haz clic en el icono del Diseñador de Formatos en la barra de herramientas. Desde allí, puedes definir si el formato aplicará a todos los usuarios, solo al usuario actual, a usuarios específicos, o bien a todos los socios comerciales o a algunos en particular. Esta acción requiere la autorización específica 'Cambiar Informe Predeterminado General' para garantizar que solo usuarios habilitados realicen cambios.",
+    "start_time": 104.8,
+    "end_time": 135.4
   },
   {
     "slide_index": 6,
-    "image_file": "058_Slide_06_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Customizing Print Layouts Print layouts need to be customized to meet the customer’s needs for external facing documents You can also translate print layouts to provide documents in the customer’s native language To save time during an implementation, demonstrate the various print layouts available for a document, and identify a layout as the base for changes Print layouts need to be customized during an implementation project to meet the customer’s needs for external facing documents. You will need at minimum to insert the company’s logo and address. You might need to translate the print layout to provide printed documents in a customer’s native language. These changes can take a considerable amount of time. During an implementation you should demonstrate the various print layouts to the customer. When you identify a layout that best fits the customer’s needs, you can use that layout as the base for changes.",
-    "start_time": 209.18,
-    "end_time": 258.38
+    "image_file": "Slide_006.webp",
+    "script_text": "Durante la implementación, es común personalizar los formatos de impresión para cumplir con los requisitos del cliente, especialmente en documentos enviados a terceros. Esto incluye insertar el logotipo y la dirección de la empresa, traducir el contenido al idioma local y adaptar diseños según necesidades específicas. Se recomienda mostrar al cliente los formatos disponibles y usar el más cercano como punto de partida para las modificaciones, asegurando consistencia y profesionalismo en la comunicación externa.",
+    "start_time": 135.4,
+    "end_time": 165.6
   },
   {
     "slide_index": 7,
-    "image_file": "058_Slide_07_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Managing Print Layouts and Reports Administration Setup General Report and Layout Manager Report and Layout Manager is the central point for managing print layouts and user reports When you select a document type you will see all the print layouts for that document type The Report and Layout Manager is the central point for managing print layouts and also user reports. When you install SAP Business One, print layouts for documents and reports are loaded according to the localization. You can view and manage these print layouts using the Report and Layout Manager. You can browse the list, or search for a named report or layout. When you select a document type you will see all the print layouts for that document type. There are different layouts for item type and service type documents.",
-    "start_time": 258.38,
-    "end_time": 301.46
+    "image_file": "Slide_007.webp",
+    "script_text": "El Gestor de Informes y Formatos es el punto central para administrar los formatos de impresión y los informes de usuario en SAP Business One. Desde aquí puedes acceder a todos los formatos disponibles según el tipo de documento seleccionado, ya sea de artículo o servicio. Los formatos se cargan automáticamente según la localización del sistema, en este caso Ecuador. Al elegir un tipo de documento como factura de venta, ves todos los formatos de impresión asociados. Esto te permite seleccionar el formato adecuado antes de imprimir o generar un informe, asegurando que cumpla con los requisitos locales y del tipo de transacción.",
+    "start_time": 165.6,
+    "end_time": 207.4
   },
   {
     "slide_index": 8,
-    "image_file": "058_Slide_08_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Managing Print Layouts and Reports (cont.) You can also access the Report and Layout Manager by choosing the Layout Designer icon from an open document. Then choose the Manage Layout button.",
-    "start_time": 301.46,
-    "end_time": 314.26
+    "image_file": "Slide_008.webp",
+    "script_text": "Puedes acceder al Gestor de Informes y Formatos directamente desde un documento abierto en SAP Business One, como una factura de venta. Solo necesitas hacer clic en el icono del Diseñador de Formatos que aparece en la barra de herramientas del documento. Esto abre una opción para gestionar el formato asociado a ese documento específico. Luego, al elegir el botón 'Gestionar Formato', el sistema te lleva al Gestor de Informes y Formatos para ver, seleccionar o modificar el formato de impresión. Este acceso directo ahorra tiempo y permite ajustes rápidos según el contexto del documento que estás procesando.",
+    "start_time": 207.4,
+    "end_time": 247.2
   },
   {
     "slide_index": 9,
-    "image_file": "058_Slide_09_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Editing Print Layouts All new layouts are provided in Crystal Reports Older layouts are provided in Print Layout Designer (PLD) To change a print layout, select the layout and choose Edit After you make your changes you will save the layout with a new name Print layouts are provided in either Crystal Reports (CR) or Print Layout Designer (PLD) format. All new print layouts from SAP Business One are written in Crystal Reports. To change a print layout, select the layout and choose Edit. After you have made your changes you will save the layout with a new name. It is not possible to directly modify a print layout provided in SAP Business One. Note: You cannot delete the reports and layouts that are provided with the core product.",
-    "start_time": 314.26,
-    "end_time": 355.61
+    "image_file": "Slide_009.webp",
+    "script_text": "Los formatos de impresión en SAP Business One se dividen en dos tipos: los nuevos, que se basan en Crystal Reports, y los más antiguos, que usan el Diseñador de Formatos de Impresión (PLD). Para editar cualquiera de ellos, seleccionas el formato y eliges la opción Editar. Tras hacer los cambios, debes guardarlo con un nuevo nombre, ya que no se permite modificar directamente los formatos proporcionados por SAP. Además, no es posible eliminar los informes y formatos que vienen incluidos con el producto principal, lo que protege la integridad del sistema estándar.",
+    "start_time": 247.2,
+    "end_time": 285.0
   },
   {
     "slide_index": 10,
-    "image_file": "058_Slide_10_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Editing Print Layout Designer Layouts When you edit a PLD layout, the system opens the Print Layout Designer tool After you choose Edit, and if the print layout is the Print Layout Designer type, the built in Print Layout Designer tool will automatically open, allowing you to edit and save the layout. The detailed steps for editing a print layout are not covered in this topic. For more information on editing a print layout, see the how to guide How to Customize Printing Layouts with the Print Layout Designer.",
-    "start_time": 355.61,
-    "end_time": 382.8
+    "image_file": "Slide_010.webp",
+    "script_text": "Cuando editas un formato de impresión PLD (Diseñador de Formatos de Impresión), SAP Business One abre automáticamente la herramienta integrada Diseñador de Formatos de Impresión. Esta interfaz te permite modificar el diseño del formato, como la posición de campos, textos o líneas, y luego guardarlo con un nuevo nombre. No necesitas salir del sistema para realizar estos cambios. Es ideal para ajustes simples en formatos antiguos. Recuerda que siempre debes guardar el formato editado bajo un nombre diferente para no sobrescribir el original proporcionado por SAP.",
+    "start_time": 285.0,
+    "end_time": 320.0
   },
   {
     "slide_index": 11,
-    "image_file": "058_Slide_11_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Editing Crystal Reports Layouts When you edit a Crystal Reports layout, the system opens SAP Crystal Reports for SAP Business One If the print layout is the Crystal Reports type, the system automatically opens SAP Crystal Reports for SAP Business One designer. This allows you to edit the layout and save it as a new layout. Crystal Reports Designer is required and must be installed in order to edit layouts. The detailed steps for editing a print layout are not covered in this topic. For more information on editing a print layout, see the how to guide How to Work with Crystal Reports in SAP Business One.",
-    "start_time": 382.8,
-    "end_time": 418.34
+    "image_file": "Slide_011.webp",
+    "script_text": "Para editar un formato de impresión basado en Crystal Reports, SAP Business One lanza automáticamente SAP Crystal Reports para SAP Business One. Esta herramienta externa permite realizar modificaciones avanzadas en el diseño del informe, como cambiar fuentes, agregar gráficos o reorganizar secciones. Es necesario que Crystal Reports Designer esté instalado previamente en tu equipo para que esta función funcione. Después de editar, guardas el formato con un nuevo nombre directamente desde Crystal Reports, y el sistema lo reconoce como un formato personalizado disponible para usar en transacciones futuras.",
+    "start_time": 320.0,
+    "end_time": 355.8
   },
   {
     "slide_index": 12,
-    "image_file": "058_Slide_12_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Crystal Integration SAP Crystal Reports integration for SAP Business One is provided with the installation files After you make changes to a print layout, you can save it directly in SAP Business One using the Add ins menu You can also preview how the changes will look in SAP Business One SAP Crystal Reports integration for the SAP Business One application is provided with the installation files for SAP Business One. Once the integration package is installed, SAP Business One is shown as a data source in Crystal Reports and the SAP Business One tables match the application menu structure. There are additional functions that are specific for SAP Business One, such as drill downs and selection criteria. After you make changes to a print layout, you can save it directly in SAP Business One using the Add ins menu. The new layout will then show in the list of layouts in the Report and Layout Manager window. You can also preview how the changes will look in SAP Business One.",
-    "start_time": 418.34,
-    "end_time": 473.83
+    "image_file": "Slide_012.webp",
+    "script_text": "La integración entre SAP Business One y SAP Crystal Reports se activa instalando el paquete de complementos correspondiente. Una vez instalado, SAP Business One se convierte en una fuente de datos disponible dentro de Crystal Reports, permitiéndote acceder a sus tablas y estructuras. Después de realizar cambios en un formato de impresión en Crystal Reports, puedes guardarlo directamente en SAP Business One usando el menú Complementos. El nuevo formato se almacena en el sistema y aparece automáticamente en la lista del Gestor de Informes y Formatos. Desde allí, puedes previsualizar cómo se verá el documento impreso antes de usarlo en una transacción real.",
+    "start_time": 355.8,
+    "end_time": 397.6
   },
   {
     "slide_index": 13,
-    "image_file": "058_Slide_13_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Import and Export (Modified Crystal Reports Layouts) Export and Import wizards allow you to move modified Crystal Reports print layouts between SAP Business One companies Layouts are packaged as b1px file Wizards also support import and export of user defined reports developed in Crystal Reports You can export Crystal Reports layouts that you have modified to another SAP Business One system. This can save time during the course of a SAP Business One implementation, when you need to move templates from one company to another, or to apply a layout to different types of documents. To export print layouts, choose Export. A wizard opens, allowing you to select the layouts for export. The selected layouts are exported as a package ( .b1px file type) and can only be imported into another SAP Business One system. To import layouts, choose Import. You can also use these buttons to import and export user defined reports developed in Crystal Reports.",
-    "start_time": 473.83,
-    "end_time": 530.28
+    "image_file": "Slide_013.webp",
+    "script_text": "Para mover formatos Crystal Reports modificados entre empresas, use los asistentes de exportación e importación. Al exportar, seleccione los formatos y genere un archivo b1px que los empaqueta. Para importar, cargue ese archivo b1px en el sistema destino. Los asistentes también admiten informes definidos por el usuario creados en Crystal Reports. Este proceso permite transferir diseños de impresión personalizados, como facturas o albaranes, manteniendo la consistencia entre empresas. Es útil durante migraciones, actualizaciones o cuando se comparte diseño entre sucursales. No se requieren pasos adicionales: el archivo b1px contiene todo lo necesario para restaurar el formato exactamente como estaba.",
+    "start_time": 397.6,
+    "end_time": 437.8
   },
   {
     "slide_index": 14,
-    "image_file": "058_Slide_14_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Master Layouts You can import a Crystal Reports layout as a master layout for other document types When you import a Crystal Reports layout you can specify a layout as a master layout for other document types. This enables you to make common changes, such as company logo, in one layout and use this layout for other documents with a similar structure. For example, a master layout that is created for a sales invoice can be applied to sales quotations or deliveries. Master layouts can be applied to sales, purchasing, inventory and production document types. When you import the package file: In the Report and Layout Selection window, select the Master Layout checkbox In the Set Master Layout window, select the other document types to which you want to assign this layout. Fine tune the duplicated layouts as needed. For example, you should update text fields that refer to the document type, and delete or add fields based on the specific document type. Note: You can also duplicate a PLD layout to create a new PLD layout for another document type. The utility is located under the menu Administration > Utilities > Duplicate Layout Template.",
-    "start_time": 530.28,
-    "end_time": 596.3
+    "image_file": "Slide_014.webp",
+    "script_text": "Un formato maestro permite aplicar cambios comunes, como el logotipo de la empresa, a múltiples tipos de documento con estructura similar. Al importar un paquete b1px, puede designar el formato como maestro y elegir a qué otros tipos de documentos (ventas, compras, inventario, producción) se aplicará. Esto evita editar cada formato por separado. Por ejemplo, actualizar el logotipo en el formato maestro lo refleja automáticamente en todos los documentos vinculados. Después, ajuste los formatos duplicados si es necesario. También puede duplicar un formato PLD desde Administración → Utilidades → Duplicar Plantilla de Formato para crear un nuevo formato basado en uno existente, útil cuando necesita variaciones ligeras sin perder el diseño base.",
+    "start_time": 437.8,
+    "end_time": 483.2
   },
   {
     "slide_index": 15,
-    "image_file": "058_Slide_15_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Printing Sequence Use the Printing Seqs tab to define the set of print layouts to be printed for a print layout You can include other document types in the printing sequence You can set a sequence as default for when you print a document The sequence of layouts to be printed for the A R invoice layout Different companies have different printing needs and procedures. Perhaps a company wants to always include a packing slip or a delivery note when they print an invoice for a customer. This can easily be done using a printing sequence. In the Report and Layout Manager window, select a print layout, then choose the printing sequence tab and create a new sequence. The sample printing sequence shown here will first print a packing list, followed by two copies of a delivery note, followed by the A R invoice using the default print layout followed by a tax only invoice. You simply select from the available print layouts. You can also select the printer for each document. After you create a printing sequence for a document type, it appears in the Layout Designer window and you can set it as a default for the document.",
-    "start_time": 596.3,
-    "end_time": 656.06
+    "image_file": "Slide_015.webp",
+    "script_text": "La pestaña Secuencias de Impresión le permite definir qué documentos se imprimirán y en qué orden al procesar un formato de impresión. Puede incluir otros tipos de documento, como albaranes o listas de selección, y establecer cuántas copias de cada uno se imprimen. Una secuencia puede marcarse como predeterminada para que se use automáticamente al imprimir determinado documento. Por ejemplo, una empresa puede configurar que al imprimir una factura se imprima primero una lista de selección, luego dos copias del albarán, seguida de la factura con formato predeterminado y finalmente una factura solo de impuestos. Esto adapta la impresión a procedimientos internos o requisitos legales, como incluir documentos de respaldo o cumplir con normas de facturación.",
+    "start_time": 483.2,
+    "end_time": 530.2
   },
   {
     "slide_index": 16,
-    "image_file": "058_Slide_16_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "Summary Key points from this topic: A print layout defines how an on screen document looks when printed SAP provides predefined print layouts for each marketing document. A document may have several available print layouts, and you can assign different default layouts to different users. During the implementation, you edit the print layouts to meet the customer’s need for external facing documents. The Report and Layout Manager is the central point for managing print layouts and reports. You can edit Crystal Reports layouts using the Crystal Reports Designer. Older print layouts can be edited using the Print Layout Designer tool which is part of SAP Business One. Using the Report and Layout Manager, you can export modified Crystal layouts and user defined reports to another SAP Business One system. When you import Crystal Reports print layouts, you can designate a master layout to apply to multiple document types. You can duplicate a PLD print layout as a template for another document. You can define a printing sequence for a document to include number of copies, printer, and any additional document types Here are some key points to take from this topic: A print layout defines how an on screen document looks when printed SAP provides predefined print layouts for each marketing document. A document may have several available print layouts, and you can assign different default layouts to different users. During the implementation, you need to edit the print layouts to meet the customer’s need for external facing documents. The Report and Layout Manager is the central point for managing print layouts, and also for managing reports. You can edit Crystal Reports layouts using the Crystal Reports Designer. Older print layouts can be edited using the Print Layout Designer tool which is part of SAP Business One. An integration package is provided to integrate Crystal layouts with SAP Crystal Reports. Using the Report and Layout Manager, you can export modified Crystal layouts and user defined reports, and import them on another SAP Business One system. When you import Crystal Reports print layouts as a package, you can designate a master layout and apply it to multiple document types. You can duplicate a layout of type print layout designer (PLD) as a template for another document. You can define a printing sequence for a document to include number of copies, printer, and any additional document types.",
-    "start_time": 656.06,
-    "end_time": 794.5
-  },
-  {
-    "slide_index": 17,
-    "image_file": "058_Slide_17_10_Impl_36_SystemSetup_Print_layouts.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and or platform directions and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 794.5,
-    "end_time": 926.93
+    "image_file": "Slide_016.webp",
+    "script_text": "Un formato de impresión define cómo se ve un documento al imprimirse o mostrarse en pantalla. SAP Business One incluye formatos predefinidos para cada tipo de documento de marketing, pero puede tener varios formatos disponibles y asignar distintos predeterminados a diferentes usuarios. Durante la implementación, edite los formatos para adaptarlos a las necesidades del cliente en documentos externos. El Gestor de Informes y Formatos es el centro para gestionar todos los formatos e informes. Puede editar formatos Crystal Reports con Crystal Reports Designer o los formatos PLD más antiguos con el Diseñador de Formatos de Impresión. Exporte e importe formatos modificados e informes definidos por el usuario usando archivos b1px. Al importar, designe un formato maestro para aplicarlo a múltiples tipos de documento. Duplique un formato PLD como plantilla para otros documentos. Defina secuencias de impresión para incluir número de copias, impresora y tipos de documentos adicionales.",
+    "start_time": 530.2,
+    "end_time": 589.6
   }
 ]

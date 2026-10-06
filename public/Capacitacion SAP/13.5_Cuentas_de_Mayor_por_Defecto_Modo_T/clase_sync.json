@@ -1,65 +1,58 @@
 [
   {
     "slide_index": 1,
-    "image_file": "030_Slide_01_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinSetup 22 DefaultGLAcc Traditional en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Financial Setup: Default G/L Accounts Traditional Solution SAP Business One Version 10.0 Welcome to the Default G/L Accounts – Traditional Solution topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Cuentas G/L Predeterminadas en SAP Business One versión 10.0. Esta configuración es esencial para que el sistema asigne automáticamente las cuentas contables correctas al procesar documentos como facturas o notas de crédito. Aprenderás cómo funciona la solución tradicional para definir estas cuentas según diferentes niveles: almacén, grupo de artículos o artículo individual. Esta base te permitirá asegurar una contabilidad precisa y alineada con las necesidades de tu empresa.",
     "start_time": 0.0,
-    "end_time": 25.97
+    "end_time": 29.4
   },
   {
     "slide_index": 2,
-    "image_file": "030_Slide_02_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "In this session, we will discuss how to implement the G/L Account Determination – Traditional Solution. 2 At the end of this topic, you will be able to:  Implement the G/L Account Determination – Traditional Solution. Objectives",
-    "start_time": 25.97,
-    "end_time": 42.74
+    "image_file": "Slide_002.webp",
+    "script_text": "En esta sesión aprenderás a implementar la Determinación de Cuentas G/L usando la Solución Tradicional en SAP Business One. Al finalizar, podrás configurar correctamente cómo el sistema asigna las cuentas contables a los artículos según su nivel de control: almacén, grupo de artículos o artículo. Esto es clave para que los asientos generados en ventas, compras o inventario se reflejen con precisión en los estados financieros, especialmente en el informe de Pérdidas y Ganancias por grupo de artículos.",
+    "start_time": 29.4,
+    "end_time": 61.2
   },
   {
     "slide_index": 3,
-    "image_file": "030_Slide_03_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "Imagine that you are implementing SAP Business One at a new customer.  James, the CEO, tells you that in the Profit and Loss report, he wants to see what are the profits for each item group (for example, Printers).  He wants the system to automatically post journal entries to the relevant profit and loss accounts. 3 3 Business Scenario You are implementing SAP Business One at a new customer, OEC Computers.  James, the CEO, tells you that in the Profit and Loss report, he wants to see what are the profits for each item group (for example, Printers).  He wants the system to automatically post journal entries to the relevant profit and loss accounts.",
-    "start_time": 42.74,
-    "end_time": 82.46
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que estás implementando SAP Business One en OEC Computers, un cliente nuevo. James, su CEO, necesita ver en el informe de Pérdidas y Ganancias los beneficios por cada grupo de artículos, como impresoras o laptops. Para ello, el sistema debe contabilizar automáticamente los asientos en las cuentas correctas de ingresos y costos. Esta necesidad impulsa la configuración de las Cuentas G/L Predeterminadas, que permite asignar cuentas contables según el grupo de artículos, asegurando reportes financieros detallados y útiles para la toma de decisiones.",
+    "start_time": 61.2,
+    "end_time": 95.4
   },
   {
     "slide_index": 4,
-    "image_file": "030_Slide_04_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "Here is a reminder for the traditional solution.  According to the traditional solution there are three options to define a default G/L method for an item: warehouse level, item group level, and item level. Each item will have one method defined for it. You can set the method in advance for all new items. You can then change the method per item.  The values that you define under the tabs in the G/L Account Determination window are defaulted into all 3 levels. You can then change the default accounts for any of the levels. For example, you can manage different inventory accounts for each warehouse the company owns.  Whenever you add a document that posts a journal entry, an A/R Invoice for example, the system looks at each item in the document to determine the level set for that item and then finds the associated G/L accounts to use from the default accounts. 4  Advanced G/L Account Determination  Traditional Solution – Default G/L method for an item  At the warehouse level  At the item group level  At the item level Reminder: what is the traditional solution option for defining default G/L accounts? Default G/L accounts For Items Used in Documents  G/L Account Determination Window  Sales  Purchasing  General (for example, Period End Closing)  Inventory  Resources and WIP Mapping",
-    "start_time": 82.46,
-    "end_time": 162.89
+    "image_file": "Slide_004.webp",
+    "script_text": "En la Solución Tradicional, existen tres niveles para definir el método de cuenta G/L predeterminado de un artículo: almacén, grupo de artículos o artículo. Cada artículo tiene un método asignado, y puedes establecer valores predeterminados para nuevos artículos y modificarlos después. Las cuentas definidas en la ventana Determinación de Cuentas G/L se aplican como base a los tres niveles, pero puedes sobrescribirlas en cualquier nivel. Por ejemplo, podrías usar distintas cuentas de inventario para cada almacén. Al generar un documento como una Factura A/R, el sistema verifica el nivel definido del artículo y toma las cuentas correspondientes de su configuración predeterminada.",
+    "start_time": 95.4,
+    "end_time": 136.4
   },
   {
     "slide_index": 5,
-    "image_file": "030_Slide_05_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "Let us review the set-up of the traditional solution for G/L Account Determination. The company default accounts under the G/L Account Determination window default to all 3 levels (warehouse level, item group level, and item level). Then, you define the accounts at each required level. In the presented example, we define the accounts for each item group (this is step 1 in the graphic). This means that when an item using the item group level is chosen in a document, the system will automatically retrieve the accounts from the definition of the item group to which the item belongs. Where are these default accounts set?  For the item group level, the default accounts are set in the definition of each item group. The place to define an item group is found in the inventory setup area of the Administration module. Default accounts are maintained on the Accounting tab for the item group.  Similarly, for the warehouse level, default accounts are set on the Accounting tab in the definition of each warehouse. Defining a warehouse is also done in the inventory setup area.  If you set an item to be controlled at the item level, you set the G/L accounts directly in the item master. 5 Default G/L accounts The Setup for the Traditional Solution",
-    "start_time": 162.89,
-    "end_time": 238.61
+    "image_file": "Slide_005.webp",
+    "script_text": "Primero, defines las cuentas predeterminadas en la ventana Determinación de Cuentas G/L, que sirven como base para los tres niveles. Luego, en el ejemplo, se configuran las cuentas específicas para cada grupo de artículos (paso 1). Esto significa que cuando se usa un artículo con control por grupo de artículos, el sistema toma las cuentas desde la definición de ese grupo. Estas cuentas se definen en el maestro de cada grupo de artículos, bajo la pestaña Contabilidad, dentro del módulo de Administración. Igualmente, para almacenes, se configuran en su pestaña Contabilidad. Si el control es por artículo, las cuentas se ingresan directamente en el maestro del artículo.",
+    "start_time": 136.4,
+    "end_time": 179.8
   },
   {
     "slide_index": 6,
-    "image_file": "030_Slide_06_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "Once you have set the default accounts, you should also choose the default G/L method for new items in the General Settings on the Inventory tab. On the sub-tab for items, you will find the Set G/L Accounts By field. (This is step 2 in the graphic). In our example, the default G/L method for new items was set to item group. Therefore, the default in any new item is the Item Group Level (as presented in step 3) and the accounts assigned to the item master data derive from the item group defined for this item (step 4). 6 Default G/L accounts The Setup for the Traditional Solution 1 3 2",
-    "start_time": 238.61,
-    "end_time": 278.35
+    "image_file": "Slide_006.webp",
+    "script_text": "Después de definir las cuentas predeterminadas, debes elegir el método G/L que se aplicará por defecto a los artículos nuevos. Esto se hace en Configuración General, bajo Inventario → Artículos, en el campo 'Establecer Cuentas G/L Por'. En el ejemplo, se seleccionó 'Grupo de Artículos' como método predeterminado (paso 2). Por lo tanto, cualquier artículo nuevo heredará automáticamente ese nivel (paso 3), y sus cuentas contables se obtendrán del grupo de artículos al que pertenece (paso 4). Esto asegura consistencia y reduce errores al crear nuevos artículos en el sistema.",
+    "start_time": 179.8,
+    "end_time": 216.4
   },
   {
     "slide_index": 7,
-    "image_file": "030_Slide_07_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "These are the three options for choosing a default account set presented from the item point of view. Each item can have one method defined for it. In the warehouse and item group levels the accounts are derived from the warehouse or the item group and the user cannot change them. In the item level the user enters the accounts manually into the item master. Note that although you specify one default G/L method for new items, you can manage different items with different methods if this scenario is necessary in your company. Just change the default level in the item master as needed. Note! After the warehouse or the item group level is defined in an item, you can switch to the item level method and assign different G/L Accounts to be used in the monetary transactions. 7 Set G/L Accounts by Warehouse Set G/L Accounts by Item Group Set G/L Accounts by Item Level # WH Code WH Name Accounts Types 1 01 General Warehouse 2 02 Drop Shipment 3 03 Consignation Accounts from Warehouse Definition # WH Code WH Name Accounts Types 1 01 General Warehouse 2 02 Drop Shipment 3 03 Consignation Accounts from Item Group Definition # WH Code WH Name Accounts Types 1 01 General Warehouse 2 02 Drop Shipment 3 03 Consignation Accounts Entered Manually Default G/L accounts in the Item Level The Setup for the Traditional Solution",
-    "start_time": 278.35,
-    "end_time": 364.94
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, las cuentas contables predeterminadas para los artículos se definen según tres niveles: almacén, grupo de artículos o artículo. En los niveles de almacén y grupo, las cuentas se derivan automáticamente y no se pueden modificar. En el nivel de artículo, el usuario ingresa las cuentas manualmente en el maestro del artículo. Aunque se establezca un método predeterminado para nuevos artículos, es posible asignar diferentes métodos a distintos artículos cambiando el nivel en el maestro del artículo según las necesidades de la empresa. Además, si ya se definió un nivel de almacén o grupo, se puede cambiar posteriormente al nivel de artículo para asignar cuentas específicas para transacciones monetarias.",
+    "start_time": 216.4,
+    "end_time": 261.8
   },
   {
     "slide_index": 8,
-    "image_file": "030_Slide_08_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "Here are some key points: In the G/L Account Determination window, you define the default G/L accounts to be used in transactions. The traditional solution allows you to define default G/L method for an item. There are three options to define a default G/L method for an item:  Warehouse level  Item group level  Item level 8 8 Summary Here are some key points: In the G/L Account Determination window you define: • Default G/L accounts to be used in transactions. The traditional solution allows you to define: • Default G/L method for an item. There are three options to define a default G/L method for an item: • Warehouse level • Item group level • Item level",
-    "start_time": 364.94,
-    "end_time": 408.6
-  },
-  {
-    "slide_index": 9,
-    "image_file": "030_Slide_09_10_FinSetup_22_DefaultGLAcc_Traditional.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epxfor additional trademark information and notices.",
-    "start_time": 408.6,
-    "end_time": 545.88
+    "image_file": "Slide_008.webp",
+    "script_text": "En la ventana Determinación de Cuentas G/L se definen las cuentas predeterminadas usadas en las transacciones contables. La solución tradicional permite establecer el método de cuenta G/L predeterminado para un artículo. Existen tres opciones para definir este método: nivel de almacén, nivel de grupo de artículos o nivel de artículo. Cada nivel determina cómo se derivan o se ingresan las cuentas, ofreciendo flexibilidad según la estructura de la empresa y sus requerimientos contables.",
+    "start_time": 261.8,
+    "end_time": 291.6
   }
 ]

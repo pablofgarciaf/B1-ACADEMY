@@ -1,142 +1,135 @@
 [
   {
     "slide_index": 1,
-    "image_file": "031_Slide_01_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinSetup 23 DefaultGLAcc Advanced en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Financial Setup: Advanced G/L Account Determination SAP Business One Version 10.0 Welcome to the advanced G/L account determination topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Determinación Avanzada de Cuentas G/L en SAP Business One versión 10.0. Este módulo forma parte de la configuración financiera avanzada y te permitirá comprender cómo definir y aplicar reglas inteligentes para la asignación automática de cuentas contables. Aprenderás a mejorar la precisión y consistencia en tus asientos, especialmente en empresas con operaciones complejas o internacionales. Prepárate para optimizar tu gestión contable con herramientas diseñadas para escalar con tu negocio.",
     "start_time": 0.0,
-    "end_time": 25.06
+    "end_time": 29.8
   },
   {
     "slide_index": 2,
-    "image_file": "031_Slide_02_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "At the end of this course, you will be able to:  Implement the G/L Account Determination – Advanced Solution in a new company.  Explain how to convert an existing company to start using the advanced solution. 2 At the end of this topic, you will be able to:  Implement the G/L Account Determination – Advanced Solution in a new company.  Explain how to convert an existing company to start using the advanced solution. Objectives",
-    "start_time": 25.06,
-    "end_time": 53.21
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este curso, estarás capacitado para implementar la Determinación Avanzada de Cuentas G/L en una nueva empresa SAP Business One. También podrás convertir una empresa existente para comenzar a usar esta solución avanzada sin interrumpir operaciones. Aprenderás a definir reglas personalizadas que se aplican automáticamente en los asientos contables, mejorando la trazabilidad y el cumplimiento normativo. Estos objetivos te preparan para liderar mejoras en la contabilidad de tu organización.",
+    "start_time": 29.8,
+    "end_time": 58.4
   },
   {
     "slide_index": 3,
-    "image_file": "031_Slide_03_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "OEC Computers is located in the US and previously sold mostly to domestic customers. Now they are expanding sales in Canada and Brazil. In the Profit and Loss report James, the CEO, wants to see what are the profits for each item group (for example, Printers) per country (for example, Canada). For this purpose, they should define a separate revenue account for each item group per country (for example, revenues from printers in Canada). 3 3 Business Scenario OEC Computers is located in the US and previously sold mostly to domestic customers. Now they are expanding sales in Canada and Brazil.  In the Profit and Loss report James, the CEO, wants to see what are the profits for each item group (for example Printers) per country (for example Canada).  For this purpose, they should define a separate revenue account for each item group per country (for example, revenues from printers in Canada).",
-    "start_time": 53.21,
-    "end_time": 109.44
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers, una empresa con sede en EE.UU., está expandiendo sus ventas a Canadá y Brasil. Para analizar la rentabilidad por grupo de artículos y país, su CEO necesita ver utilidades desglosadas, como los ingresos por impresoras en Canadá. Esto requiere crear cuentas de ingresos separadas para cada combinación de artículo y país. En SAP Business One, esto se logra mediante la Determinación Avanzada de Cuentas G/L, que permite asignar dinámicamente cuentas contables según criterios como artículo, cliente o región, facilitando informes financieros más detallados y útiles para la toma de decisiones.",
+    "start_time": 58.4,
+    "end_time": 95.8
   },
   {
     "slide_index": 4,
-    "image_file": "031_Slide_04_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Here is a reminder for the advanced solution: The G/L Account Determination window is used to define G/L accounts in the company level. In addition, the advanced solution provides centralized matrix to determine rules for assigning G/L accounts in journal entries according to a predefined (closed) list of criteria. Therefore, the solution is more flexible and consistent with accounting. 4  Traditional Solution –  Default G/L method for an item  Advanced G/L Account Determination  G/L Account Determination window is used to define G/L accounts in the company level  You can also define rules for assigning G/L accounts in journal entries. Reminder: what is the Advanced G/L Account Determination solution for defining default G/L accounts? Default G/L accounts The Setup for the Advanced Solution  G/L Account Determination Window  Sales  Purchasing  General (for example, Period End Closing)  Inventory  Resources and WIP Mapping",
-    "start_time": 109.44,
-    "end_time": 171.98
+    "image_file": "Slide_004.webp",
+    "script_text": "La Determinación Avanzada de Cuentas G/L va más allá del método tradicional de cuenta predeterminada por artículo. Utiliza la ventana Determinación de Cuentas G/L para definir cuentas a nivel de empresa y, además, ofrece una matriz centralizada donde se establecen reglas de asignación basadas en criterios predefinidos. Esto permite que el sistema asigne automáticamente la cuenta contable correcta en cada asiento, según factores como tipo de transacción, socio de negocio o artículo. El resultado es un proceso más flexible, consistente y alineado con las mejores prácticas contables, reduciendo errores manuales y mejorando la auditoría.",
+    "start_time": 95.8,
+    "end_time": 134.0
   },
   {
     "slide_index": 5,
-    "image_file": "031_Slide_05_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Let us review the setup of the advanced solution for G/L Account Determination. The current G/L Account Determination form will be used to define G/L accounts in the company level (go to the Administration module, choose Setup, Financials, G/L Account Determination and again G/L Account Determination). The Advanced Rules column will indicate if a rule exists. Once the user defines an advanced rule for a specific account, the Advanced Rules column of this account will be updated in the G/L Account Determination window with a number of rules defined for the account and a link to the advanced form. While choosing the link arrow, the advanced form opens (in editable mode), filtered, and displays only the advanced rules related to this account. Using the Advanced button you open the Advanced G/L Account Determination Rules window. 5 Default G/L accounts The Setup for the Advanced Solution",
-    "start_time": 171.98,
-    "end_time": 228.77
+    "image_file": "Slide_005.webp",
+    "script_text": "En SAP Business One, accedes a la ventana Determinación de Cuentas G/L desde Administración → Configuración → Finanzas → Determinación de Cuentas G/L. Aquí defines las cuentas contables a nivel de empresa y ves si tienen reglas avanzadas asociadas. La columna 'Reglas Avanzadas' muestra cuántas reglas están configuradas para cada cuenta y incluye un enlace para editarlas. Al hacer clic en la flecha, se abre el formulario avanzado filtrado para esa cuenta específica. Esto permite gestionar de forma centralizada quiénes son los responsables de cada regla y asegura que solo se modifiquen las configuraciones relevantes, manteniendo el control y la trazabilidad.",
+    "start_time": 134.0,
+    "end_time": 175.0
   },
   {
     "slide_index": 6,
-    "image_file": "031_Slide_06_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Let us go over the necessary definitions for start working with the advanced solution. In a new database you should follow these steps to start working with the G/L Account Determination – Advanced Solution:  First, you activate the solution.  All new items will be automatically set to Advanced Rule Type: General.  Then, you define determination criteria.  And finally, Set the Advanced G/L Account Determination Rules - Inventory form.  In the following slides we will go over the four steps and see how to initialize the G/L Account Determination – Advanced Solution. 6 6 System Initialization - Steps In a new database You should follow these steps to start working with the G/L Account Determination – Advanced Solution: 1. Activate the solution. 2. All new items will be set to Advanced Rule Type: General (automatic). 3. Define determination criteria. 4. Set the Advanced G/L Account Determination Rules - Inventory form.",
-    "start_time": 228.77,
-    "end_time": 290.54
+    "image_file": "Slide_006.webp",
+    "script_text": "Para comenzar a usar la Determinación Avanzada de Cuentas G/L en una base de datos nueva, sigue estos cuatro pasos esenciales. Primero, activa la solución desde el menú de configuración. Luego, el sistema asignará automáticamente el Tipo de Regla Avanzada: General a todos los artículos creados posteriormente. Después, define los criterios que determinarán cuándo se aplica cada regla, como grupo de artículos, país o socio de negocio. Finalmente, configura el formulario de Reglas de Determinación Avanzada de Cuentas G/L específicamente para el módulo de Inventario. Estos pasos aseguran una base sólida para escalar la solución según las necesidades de tu empresa.",
+    "start_time": 175.0,
+    "end_time": 216.0
   },
   {
     "slide_index": 7,
-    "image_file": "031_Slide_07_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "To activate the solution go to: Administration System Initialization Company Details Basic Initialization and check the Enable Advanced G/L Account Determination box.  Once you check the box, new windows and fields are available under the G/L Account Determination menu item in the Financials Setup area in the Administration module.  In an existing company, fields will be changed or removed after checking the Enable Advanced G/L Account Determination box.  More details on the changes in an upgraded company and on how to configure it will be discussed later.  Note! you need to make decisions about G/L Account Determination together with the client accountant. 7 7 1. Activate the Advanced Solution In a New Database Activating the solution: Administration System Initialization Company Details Basic Initialization Check the Enable Advanced G/L Account Determination box: New windows and fields will be available for the user. In an existing company, fields will be changed or removed. Note! you need to make decisions about G/L Account Determination together with the client accountant.",
-    "start_time": 290.54,
-    "end_time": 359.3
+    "image_file": "Slide_007.webp",
+    "script_text": "Para activar la solución avanzada de determinación de cuentas G/L, accede a Administración → Inicialización del Sistema → Datos de la Empresa → Inicialización Básica y marca la casilla Habilitar Determinación Avanzada de Cuentas G/L. Al hacerlo, se desbloquean nuevas ventanas y campos en el menú Determinación de Cuentas G/L dentro de Configuración de Finanzas. En empresas existentes, algunos campos pueden cambiar o eliminarse. Es clave coordinar esta activación con el contable del cliente, ya que afecta cómo se generan los asientos contables. Esta configuración es el primer paso para usar reglas personalizadas según criterios de negocio.",
+    "start_time": 216.0,
+    "end_time": 255.4
   },
   {
     "slide_index": 8,
-    "image_file": "031_Slide_08_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "The Advanced Rule Type in the item is a new field that determines which rule will be used to choose the inventory G/L accounts in the journal entry created by the document for this item.  After activating the advanced solution, all new items will be set automatically to Advanced Rule Type: General.  The advanced rule type is the first criterion for automatically picking of the advanced G/L account determination rule.  We recommend to keep the General advanced rule type in all items and rules. A different advanced rule type will be set automatically by the system in special scenarios of migration from the traditional solution to the advanced solution.  Note!  For items defined as Warehouse and Item Group rule type, rules with the same type as well as the General type will be considered as relevant.  Also note! The Set G/L Account By field in the Item Master Data under the Inventory Data tab is changed to: Set Inventory Method By. The field values (Warehouse, Item Group and Item Level) will remain the same but they will no longer affect the accounts determination. 8 8 2. Item Master Data – Advanced Rule Type Field.",
-    "start_time": 359.3,
-    "end_time": 428.33
+    "image_file": "Slide_008.webp",
+    "script_text": "El Tipo de Regla Avanzada en el maestro de artículos define qué regla se aplicará para seleccionar las cuentas G/L de inventario en los asientos contables generados por documentos como facturas o notas de entrega. Tras activar la solución avanzada, todos los artículos nuevos se asignan automáticamente como Tipo de Regla Avanzada: General. Este campo es el primer criterio que el sistema evalúa al buscar una regla aplicable. Se recomienda mantener el tipo General en todos los artículos y reglas, excepto en casos especiales de migración desde la solución tradicional. En artículos con tipo Almacén o Grupo de Artículos, el sistema considera tanto reglas del mismo tipo como las de tipo General.",
+    "start_time": 255.4,
+    "end_time": 300.8
   },
   {
     "slide_index": 9,
-    "image_file": "031_Slide_09_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "When you enable the advanced solution, the Determination Criteria – Inventory window appears under the G/L Account Determination menu item in the Financials Setup area in the Administration module. The Determination Criteria – Inventory window provides a predefined (closed) list of criteria: Item Code, Item Group, Warehouse Code, Ship-to Country, Ship-to State, Business Partner Group, user defined fields and more. In this window, you will be able to activate all or some of the criteria depending on the business need. If an active determination criterion is not in use by any of the advanced rules, you can uncheck it to make it inactive. You can define or change the criteria priority using the Up and Down buttons. Note!  Once you activate the advanced solution the system checks the criteria in this window according to the values (Warehouse, Item Group, Item Level) defined in the Set G/L Account By field in the Item Master Data under the Inventory Data tab.  When you choose the Item Code criterion, the Item Group criterion will be automatically selected too. This is due to the fact that in the item master data, item group is a mandatory field.  Use the Determination Criteria – Resources window for criteria definition of those accounts which will be used when posting transactions involving Resources.  You can then define advanced rules based on this set of criteria in the Advanced G/L Account Determination Rules – Resources window. 9 3. Define Determination Criteria The Determination Criteria window provides a predefined (closed) list of criteria The user will be able to: Activate all or some of the criteria depends on the business need. Define (or change) the criteria priority using the Up and Down buttons.",
-    "start_time": 428.33,
-    "end_time": 533.59
+    "image_file": "Slide_009.webp",
+    "script_text": "Tras habilitar la solución avanzada, se habilita la ventana Criterios de Determinación – Inventario, accesible desde Determinación de Cuentas G/L en Configuración de Finanzas. Aquí se muestra una lista predefinida de criterios como Código de Artículo, Grupo de Artículos, Código de Almacén, País de Envío, Estado de Envío, Grupo de Interlocutor Comercial y campos definidos por el usuario. Puedes activar o desactivar criterios según las necesidades del negocio y ajustar su prioridad usando los botones Subir y Bajar. El orden establece qué criterio tiene más peso al aplicar las reglas. Si seleccionas Código de Artículo, el Grupo de Artículos se activa automáticamente, ya es obligatorio en el maestro de artículos.",
+    "start_time": 300.8,
+    "end_time": 345.4
   },
   {
     "slide_index": 10,
-    "image_file": "031_Slide_10_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "In the Advanced G/L Account Determination Rules – Inventory form you define rules for assigning G/L accounts in journal entries.  The advanced form deals with item-related accounts only. These are the same accounts that you define in the Item Master Data in the traditional solution.  When creating a new posting period, rules from the last period will be copied to the new period.  For each rule you should define at least one criterion and one account.  When defining new rules, we recommend to keep the General advanced rule type unless a special scenario was migrated from the traditional solution.  General is the default type for each new rule you create. The Type column is hidden as default. You can add it to the Advanced G/L Account Determination Rules – Inventory window by choosing the Form Settings option from the tool bar.  Use the Warehouse Code and the Item Group criterions instead of using the Warehouse and Item Group advanced rule types. 10 4. Set the Advanced G/L Account Determination Rules for Inventory",
-    "start_time": 533.59,
-    "end_time": 596.69
+    "image_file": "Slide_010.webp",
+    "script_text": "En el formulario Reglas de Determinación Avanzada de Cuentas G/L – Inventario, defines reglas para asignar cuentas G/L en los asientos cont relacionados con artículos. Estas reglas usan las mismas cuentas que configuras en el Maestro de Artículos en la solución tradicional. Al crear un nuevo período, las reglas del período anterior se copian automáticamente. Cada regla debe tener al menos un criterio y una cuenta asignada. Se recomienda mantener el Tipo de Regla Avanzada como General, salvo en migraciones especiales. La columna Tipo está oculta por defecto, pero puedes mostrarla mediante Configuración de Formulario. En lugar de usar tipos de regla como Almacén o Grupo de Artículos, se sugiere usar directamente los criterios Código de Almacén y Grupo de Artículos para mayor claridad.",
+    "start_time": 345.4,
+    "end_time": 395.6
   },
   {
     "slide_index": 11,
-    "image_file": "031_Slide_11_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "The priority (that is the rows’ order) in the Determination Criteria window sets the priorities in the Advanced G/L Account Determination Rules window. This is reflected in two ways:  First, the columns names and order - the first row in the Determination Criteria window sets the highest priority. And so on for the rest of the rows.  Then, the rows order – the first row in the Determination Criteria window sets the rule with the highest priority in the Advanced G/L Account Determination Rules table. And so on for the rest of the rows. Once you define a new advanced rule (or change the rule criteria) and update the form, the system will automatically prioritize the rules according to the determination criteria. When you change the determination criteria priorities, the advanced rules priorities will be automatically updated accordingly the next time you open the form. Note!  Entering a specific value has a higher priority than the value All.  Let us look at the example shown: the 3 rules in the Advanced G/L Account Determination Rules window have specific values.  In the first 2 rules an item group is specified and in the third rule a warehouse is specified.  The first 2 rules have higher priority since Item Group is ranked higher than Warehouse Code in the Determination criteria window. 11 Advanced Rules Priority The priority (rows order) in the Determination Criteria window sets the priorities in the Advanced G/L Account Determination Rules window. Note! Entering a specific value has a higher priority than the value All.",
-    "start_time": 596.69,
-    "end_time": 691.56
+    "image_file": "Slide_011.webp",
+    "script_text": "El orden de las filas en la ventana Criterios de Determinación define directamente la prioridad tanto de los criterios como de las reglas avanzadas en la ventana Reglas de Determinación Avanzada de Cuentas G/L. La primera fila tiene la prioridad más alta, y así sucesivamente. Este orden se refleja en dos aspectos: primero, en el nombre y secuencia de las columnas; segundo, en el orden de las reglas en la tabla, donde la primera fila corresponde a la regla de mayor prioridad. Cuando modificas los criterios o su orden y guardas los cambios, el sistema recalcula automáticamente las prioridades de las reglas la próxima vez que abras el formulario. Un valor específico (como '01' o 'MATERIALES') tiene mayor prioridad que el valor genérico 'Todos'.",
+    "start_time": 395.6,
+    "end_time": 445.8
   },
   {
     "slide_index": 12,
-    "image_file": "031_Slide_12_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Let us see how the G/L Account Determination – Advanced Solution behaves in everyday work.  In marketing and inventory documents the item related accounts are automatically picked according to the rules defined in the company.  When you choose an item in a marketing document for example, an A/R Invoice, the system checks the accounts required for the transaction. In our example, the inventory and the revenue accounts.  The system checks if there are any rules defined for these accounts in the G/L Account Determination window.  If not, the accounts are taken from the company level - G/L Account Determination window.  If there are rules defined for the necessary accounts, the system goes to the Advanced G/L Account Determination Rules window and looks for the appropriate rule.  The system checks if the document criteria match any of the advanced rules criteria.  If so, it picks the advanced rule with the highest priority. 12 12 How Does it Work in Marketing and Inventory Documents Do the accounts required for the document row hold any advanced rules? Take the accounts from the company level - G/L Account Determination window Go to the Advanced G/L Account Determination Rules matrix and find the relevant accounts Yes No Does the document criteria match the advanced rule criteria? Take the accounts from the company level Use the highest priority advanced rule Yes No.",
-    "start_time": 691.56,
-    "end_time": 773.78
+    "image_file": "Slide_012.webp",
+    "script_text": "En el trabajo diario, cuando ingresas un artículo en un documento como una Factura A/R, el sistema determina automáticamente las cuentas G/L de inventario e ingresos. Primero verifica si existen reglas definidas para esas cuentas en la ventana Determinación de Cuentas G/L. Si no hay reglas, toma las cuentas del nivel de empresa. Si existen reglas, accede a la ventana Reglas de Determinación Avanzada de Cuentas G/L y busca la regla cuyos criterios coincidan con los del documento (como almacén, grupo de artículos, etc.). Si hay coincidencia, selecciona la regla con mayor prioridad según el orden de los criterios. Si no hay coincidencia, vuelve a tomar las cuentas del nivel de empresa. Este flujo asegura que la contabilidad refleje correctamente las reglas de negocio definidas.",
+    "start_time": 445.8,
+    "end_time": 496.4
   },
   {
     "slide_index": 13,
-    "image_file": "031_Slide_13_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "When you issue a marketing document for example, an A/R Invoice, the system picks the rules from the period that matches the document posting date.  From these rules, the system filters the advanced rule type that matches the type in the item master data.  In our example, the advanced rule type in the item is General. The system will pick from the rules defined as General type. 13 13 Account Picking Rules – Document Criteria.",
-    "start_time": 773.78,
-    "end_time": 801.05
+    "image_file": "Slide_013.webp",
+    "script_text": "Al emitir un documento como una Factura A/R, el sistema primero identifica el período contable basado en la fecha de contabilización del documento. Luego, dentro de las reglas definidas para ese período, filtra aquellas cuyo tipo coincide con el tipo de regla avanzada asignado al artículo en su maestro. En el ejemplo, si el artículo tiene tipo 'General', solo se consideran las reglas marcadas como 'General'. Este es el primer paso en la lógica de determinación avanzada de cuentas G/L, asegurando que la regla aplicada sea coherente con el contexto temporal y el tipo de artículo.",
+    "start_time": 496.4,
+    "end_time": 535.4
   },
   {
     "slide_index": 14,
-    "image_file": "031_Slide_14_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Next, the system checks the business partner and the item master data chosen in the document, and filters the rules list by the criteria defined for them.  In our example, the system picks the rule according to the following criteria:  If the Ship-to Country of the business partner master data is Canada and the item belongs to the J.B Printers item group, then choose the revenue and inventory accounts defined in the first rule.  The rule overrides the G/L accounts defined in the G/L Account Determination window.  The inventory and revenue accounts defined for this rule will be included in the journal entry created by the A/R Invoice.  If only one account is defined in the rule, the other accounts relevant for the journal entry creation will be taken from the company level definition, that is from the G/L Account Determination window.  So for example, if a rule matches the two relevant criteria (that is, ship-to country Canada and the item group J.B. Printers) and has only the revenue account defined, the inventory account will be taken from the G/L Account Determination window.  If more than one rule answers the document line criteria, the highest priority rule will be picked. 14 14 Account Picking Rules – Document Criteria Ship-to Country Ship-to State BP Group. BP Code BP Type …. Determination Criteria: Business Partner Master Data Driven: Item Code Item Group Warehouse Code. … Item Master Data Driven:",
-    "start_time": 801.05,
-    "end_time": 888.0
+    "image_file": "Slide_014.webp",
+    "script_text": "Una vez filtradas las reglas por período y tipo, el sistema evalúa los datos del interlocutor comercial y del artículo en el documento. Verifica si el país de envío del interlocutor es Canadá y si el artículo pertenece al grupo J.B. Printers. Si ambos criterios coinciden, selecciona la regla asociada. Esta regla define las cuentas de ingresos e inventario que se usarán en el asiento contable, anulando las cuentas predeterminadas de la ventana de Determinación de Cuentas G/L. Si falta alguna cuenta en la regla, se toma del nivel de empresa. Si hay múltiples reglas válidas, gana la de mayor prioridad.",
+    "start_time": 535.4,
+    "end_time": 576.4
   },
   {
     "slide_index": 15,
-    "image_file": "031_Slide_15_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "If the user changes an account in the document manually, the updated account will be used in the journal entry.  Note!  To ensure you defined the advanced G/L account determination rules according to the customer expectations, we recommend to use the Journal Entry Preview option before adding the document. This option presents a simulation of the journal entry that will be created after adding this document (Right Click on the document header or footer to open the context menu and choose the Journal Entry Preview option). 15 15 The Journal Entry Created.",
-    "start_time": 888.0,
-    "end_time": 920.71
+    "image_file": "Slide_015.webp",
+    "script_text": "Si modificas manualmente una cuenta en el documento, esa cuenta sobrescribe lo que la regla habría seleccionado y se usa directamente en el asiento contable. Para evitar errores, se recomienda usar la Vista Previa del Asiento Contable antes de guardar el documento. Esta función simula el asiento que se generará al agregar el documento, permitiéndote verificar las cuentas afectadas. Se accede desde el menú contextual del encabezado o pie del documento. Es una herramienta clave para validar que la determinación avanzada de cuentas G/L esté funcionando como se espera en tu empresa.",
+    "start_time": 576.4,
+    "end_time": 613.8
   },
   {
     "slide_index": 16,
-    "image_file": "031_Slide_16_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "Finally, let us see how to configure the system in an existing company that uses the traditional solution. Check the Enable Advanced G/L Account Determination box in Administration System Initialization Company Details Basic Initialization to activate the advanced solution. As mentioned in previous slides, once the user checks the box, the G/L account advanced functionality will be activated and new windows and fields will be available for the user. In an existing company, fields will be changed or removed after checking the Enable Advanced G/L Account Determination box:  Set G/L Account By field is changed to: Set Inventory Method By in: – Administration System Initialization General Settings Inventory tab  Items tab. – And in Inventory Items Master Data Inventory Data tab. – The field values (Warehouse, Item Group and Item Level) will remain the same. – All implementations of the field (for example, the Multi Branches function) will remain as they are, except the G/L account assignment in documents.  The Accounting tab including all accounts will be removed from: – Administration Setup Inventory Warehouses – And from Administration Setup Inventory Items Groups  In the Inventory Data tab of the item master data, all account columns in the matrix will be removed. 16 16 In an existing company that uses the traditional solution: Check the Enable Advanced G/L Account Determination box to activate the advanced solution. New windows and fields will be available. Fields will be changed or removed: – Set G/L Account By field is changed to: Set Inventory Method By in the Item Master Data window under the Inventory Data tab. – The Accounting tab including all accounts will be removed from the warehouse and item group definitions. – All account columns in the matrix will be removed from the Item Master Data Inventory Data tab. Activating the Advanced Solution in an Existing Database.",
-    "start_time": 920.71,
-    "end_time": 1035.82
+    "image_file": "Slide_016.webp",
+    "script_text": "Para activar la Determinación Avanzada de Cuentas G/L en una empresa existente, debes marcar la casilla en Administración → Inicialización del Sistema → Datos de la Empresa → Inicialización Básica. Al hacerlo, el sistema transforma la interfaz: el campo 'Establecer Cuentas G/L Por' pasa a llamarse 'Establecer Método de Inventario Por' y se mueve a la configuración de inventario. Además, se eliminan las pestañas de Contabilidad en almacenes y grupos de artículos, y se borran las columnas de cuentas en la matriz del maestro de artículos. Estos cambios preparan el sistema para usar exclusivamente la nueva matriz de reglas avanzadas, manteniendo los valores existentes de almacén, grupo y nivel de artículo.",
+    "start_time": 613.8,
+    "end_time": 658.8
   },
   {
     "slide_index": 17,
-    "image_file": "031_Slide_17_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "After the user checks the Enable Advanced G/L Account Determination box, the system suggests three options:  With the first option, Migrate Account Assignments and Inventory G/L Account Determination Settings, all existing accounts assignment in warehouse level, item group level and item level will be migrated into the advanced G/L account determination rules.  In the second option, Preview Advanced G/L Account Determination Rules, the system will simulate the expected accounts assignment and the user can view the advanced rules matrix and adopt or reject the rules.  And in the last option, Migrate Inventory G/L Account Determination Settings Only, no accounts assignment is expected and only system forms and settings will be adjusted to the G/L Account Determination new matrix. We recommend to choose this option in case the company wants to reset the accounts determination and work according to the advanced rules structure. Note! Once the box is checked and transactions exist, it can be un-checked again, however in this case no accounts will be assigned and the G/L Account Determination form will be used to define G/L accounts in all levels: warehouse, item group and item level. The accounts assignment will be migrated into all existing periods (Unlocked, Unlocked Except Sales, Closing Period, Locked). 17 17 How To Convert Data in an Existing Database?",
-    "start_time": 1035.82,
-    "end_time": 1118.9
+    "image_file": "Slide_017.webp",
+    "script_text": "Tras activar la casilla, el sistema ofrece tres opciones de migración. La primera migra todas las asignaciones de cuentas existentes (por almacén, grupo de artículos y artículo) a las nuevas reglas avanzadas. La segunda muestra una vista previa de las reglas esperadas, permitiéndote revisarlas y aceptarlas o rechazarlas antes de aplicar cambios. La tercera solo ajusta los formularios y la configuración del sistema sin migrar asignaciones, ideal si quieres reiniciar la determinación de cuentas desde cero. Se recomienda esta última si la empresa desea reestructurar su lógica de cuentas. Nota: si hay transacciones y luego desmarcas la casilla, no se asignarán cuentas y se usará la ventana tradicional en todos los niveles.",
+    "start_time": 658.8,
+    "end_time": 704.2
   },
   {
     "slide_index": 18,
-    "image_file": "031_Slide_18_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "The advanced solution provides centralized matrix to determine rules for assigning G/L accounts in journal entries according to a predefined (closed) list of criteria. In a new company, you should follow these steps to start working with the G/L Account Determination – Advanced Solution: Activate the solution. As a result, all new items will be set to Advanced Rule Type: General. Then, define determination criteria and set the Advanced G/L Account Determination Rules - Inventory form. In marketing and inventory documents, the item related accounts are automatically picked according to the advanced rules defined in the company. 18 18 Summary Here are some key points: The advanced solution provides: • Centralized matrix to determine rules for assigning G/L accounts in journal entries according to a predefined (closed) list of criteria. In a new company, you should follow these steps to start working with the G/L Account Determination – Advanced Solution: • Activate the solution. • All new items will be set to Advanced Rule Type: General (automatic). • Define determination criteria. • Set the Advanced G/L Account Determination Rules - Inventory form. In marketing and inventory documents: • The item related accounts are automatically picked according to the advanced rules defined in the company.",
-    "start_time": 1118.9,
-    "end_time": 1200.7
+    "image_file": "Slide_018.webp",
+    "script_text": "La Determinación Avanzada de Cuentas G/L ofrece una matriz centralizada que define reglas basadas en criterios cerrados y predefinidos, como país de envío, grupo de artículos o tipo de interlocutor. En una empresa nueva, el proceso comienza activando la solución, tras lo cual los artículos nuevos se asignan automáticamente al tipo de regla 'General'. Luego, se definen los criterios de determinación y se configura el formulario de reglas avanzadas para inventario. En los documentos de marketing e inventario, el sistema selecciona automáticamente las cuentas de ingresos e inventario según las reglas establecidas, eliminando la necesidad de asignación manual y asegurando consistencia en los asientos contables.",
+    "start_time": 704.2,
+    "end_time": 746.8
   },
   {
     "slide_index": 19,
-    "image_file": "031_Slide_19_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "If no rules were defined for these accounts, the accounts are taken from the company level, that is the G/L Account Determination window. If you choose to activate the advanced solution in an existing company that uses the traditional solution, you have 3 options for migrating the existing account assignments to the advanced G/L accounts determination rules. 19 19 Summary If no rules were defined for these accounts: • The accounts are taken from the company level, that is the G/L Account Determination window. When activating the advanced solution in an existing company that uses the traditional solution, you have 3 options for: • Migrating the existing account assignments to the advanced G/L accounts determination rules.",
-    "start_time": 1200.7,
-    "end_time": 1244.11
-  },
-  {
-    "slide_index": 20,
-    "image_file": "031_Slide_20_10_FinSetup_23_DefaultGLAcc_Advanced.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1244.11,
-    "end_time": 1381.3
+    "image_file": "Slide_019.webp",
+    "script_text": "Si no definiste reglas específicas para las cuentas de mayor, SAP Business One las toma automáticamente del nivel de empresa, desde la ventana Determinación de Cuentas G/L. Al activar la solución avanzada en una empresa que usaba la tradicional, tienes tres opciones para migrar tus asignaciones existentes. Primero, evalúa qué cuentas están actualmente asignadas. Luego, elige la opción de migración que mejor se ajuste a tu proceso. Finalmente, aplica las reglas avanzadas de determinación de cuentas G/L para asegurar que las transacciones futuras usen la nueva lógica. Esto garantiza continuidad y precisión contable durante la transición.",
+    "start_time": 746.8,
+    "end_time": 785.8
   }
 ]

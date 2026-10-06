@@ -1,93 +1,86 @@
 [
   {
     "slide_index": 1,
-    "image_file": "035_Slide_01_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Bienvenidos a esta clase sobre FixedAsset 31 WorkingProcessFA Activate AssetMD en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Fixed Assets: Activate the Asset Master Data SAP Business One Version 10.0 Welcome to the Activate the Asset Master Data topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de activar los datos maestros de activos en SAP Business One versión 10.0. Este módulo te guiará para comprender cómo configurar y utilizar los datos maestros necesarios para gestionar activos fijos como camiones, maquinaria o equipos. Aprenderás a activar estos registros desde la factura de compra y a vincularlos con las definiciones contables y de amortización. Es el primer paso para que tu empresa pueda reflejar correctamente el valor de sus activos en los informes financieros.",
     "start_time": 0.0,
-    "end_time": 23.74
+    "end_time": 32.2
   },
   {
     "slide_index": 2,
-    "image_file": "035_Slide_02_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "At the end of this course, you will be able to: • Activate the Asset Master Data. Objectives At the end of this course, you will be able to activate the Asset Master Data.",
-    "start_time": 23.74,
-    "end_time": 34.82
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este curso, podrás activar los datos maestros de activos en SAP Business One. Esto significa que serás capaz de vincular una factura de compra con un activo fijo, definir sus características como clase, tipo de amortización y área contable, y asegurar que el sistema genere automáticamente el documento de capitalización. Estas habilidades te permitirán apoyar a empresas como OEC Computers en la correcta contabilización y seguimiento de sus activos durante toda su vida útil.",
+    "start_time": 32.2,
+    "end_time": 63.2
   },
   {
     "slide_index": 3,
-    "image_file": "035_Slide_03_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Business Example  In order to present the updated trucks’ value in the company financial reports, they need to document the transactions affecting the vehicles’ value during their useful life.  You are a consultant implementing fixed assets and you show them the Fixed Assets functionality and working process in SAP Business One.  OEC Computers utilizes a small fleet of delivery trucks. After purchasing the trucks, they defined them as fixed assets in SAP Business One. OEC Computers OEC Computers • OEC Computers utilizes a small fleet of delivery trucks. • After purchasing the trucks, they defined them as fixed assets in SAP Business One. • In order to present the updated trucks’ value in the company financial reports, they need to document the transactions affecting the vehicles’ value during their useful life. • You are a consultant implementing fixed assets and you show them the Fixed Assets functionality and working process in SAP Business One.",
-    "start_time": 34.82,
-    "end_time": 90.77
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers utiliza una pequeña flota de camiones de reparto que adquirió y definió como activos fijos en SAP Business One. Para mostrar el valor actualizado de estos vehículos en sus informes financieros, necesita documentar todas las transacciones que afectan su valor durante su vida útil, como compras, depreciaciones o mejoras. Como consultor, tu rol es mostrarles cómo funciona el módulo de Activos Fijos en SAP B1, desde la activación de datos maestros hasta el seguimiento contable, para que puedan tomar decisiones informadas basadas en datos precisos y actualizados.",
+    "start_time": 63.2,
+    "end_time": 99.4
   },
   {
     "slide_index": 4,
-    "image_file": "035_Slide_04_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "A/P Invoice Fixed Assets Activation - Documents Capitalization OEC Computers Acquisition and Production Cost = 6000 • The Capitalization is the process of recording the acquisition and production cost (APC) as a fixed asset. • In our example, the acquisition value of the truck is 6000. • The user can purchase a fixed asset using an A/P Invoice. • The A/P Invoice automatically generates the Capitalization document for each A/P Invoice that includes fixed asset master data. • The user can choose whether to generate the Capitalization document directly, or to automatically generate it from the A/P Invoice. Note that this is also relevant for A/P Reserve Invoice • You can find the Capitalization document at FinancialsFixed Assets  Capitalization. • In both options the Asset Master Data is activated. • Note! you can choose an asset master data record in the A/P Invoice and you can create a new one from within the A/P Invoice. In order to do so, go to Administration Setup  General User Defaults under the Defaults tab, check the Allow Creating Fixed Assets in Marketing Documents.",
-    "start_time": 90.77,
-    "end_time": 162.1
+    "image_file": "Slide_004.webp",
+    "script_text": "En SAP Business One, cuando emites una Factura de Compra (OC) que incluye datos maestros de activos fijos, el sistema puede generar automáticamente un documento de Capitalización. Este proceso registra el costo de adquisición y producción como un activo fijo en los libros contables. En el caso de OEC Computers, al comprar un camión por 6.000 USD, la Factura OC desencadena la creación del documento de Capitalización, ya sea de forma directa o automática. Este documento se encuentra en Finanzas → Activos Fijos → Capitalización y es esencial para activar formalmente los datos maestros del activo en el sistema.",
+    "start_time": 99.4,
+    "end_time": 139.6
   },
   {
     "slide_index": 5,
-    "image_file": "035_Slide_05_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Asset Value Date A/P Invoice Capitalization • When you issue the A/P Invoice, the Asset Value Date (under the Accounting tab) is set by default to be the same as the A/P Invoice Posting Date. This date can be changed before adding the A/P Invoice to update the Asset Value Date in the Capitalization document. • The asset value date can be different from the posting date and document date, but it must be within the same period as the posting date. • In our example, the truck Asset Value Date was set to the 1st of January. • The Asset Value Date sets the Capitalization Date in the Asset Master Data.",
-    "start_time": 162.1,
-    "end_time": 199.8
+    "image_file": "Slide_005.webp",
+    "script_text": "En la Factura de Compra OC, la Fecha de Valoración del Activo se establece por defecto igual a la Fecha de Contabilización, pero puedes modificarla antes de guardar el documento. Esta fecha determina cuándo se considera que el activo entra en operación y afecta directamente a la Fecha de Capitalización registrada en los datos maestros del activo. Aunque puede diferir de la fecha del documento, debe estar dentro del mismo período contable. En el ejemplo, ambas fechas se fijaron el 1 de enero de 2026, lo que asegura una correcta asignación temporal desde el inicio de la vida útil del camión.",
+    "start_time": 139.6,
+    "end_time": 180.6
   },
   {
     "slide_index": 6,
-    "image_file": "035_Slide_06_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Fixed Assets Set of Definitions Asset Class Asset master Data Truck Depreciation Type Account Determination Depreciation Area Main Depreciation Area: GAAP Method: Straight Line Code: Motor Vehicles Code: Motor Vehicles • Let us refresh our memory with the fixed asset set of definitions. • In our example, we have the new truck that OEC Computers purchased. • We define a set of definitions relevant to this kind of asset, the Heavy Vehicles set of definitions. • Then, we define this truck as an Asset Master Data record under Financials Fixed Assets Asset Master Data and attach the Motor Vehicles set of definitions to this master data record. • The main definition in the Asset Master Data is the Asset Class which includes the association to the other definitions: Depreciation Area, Account Determination and Depreciation Type. • For more details about the fixed assets set of definitions, refer to the initial settings topic.",
-    "start_time": 199.8,
-    "end_time": 253.49
+    "image_file": "Slide_006.webp",
+    "script_text": "Para definir correctamente un activo fijo como un camión en SAP Business One, es necesario crear un conjunto de definiciones que agrupe la Clase de Activo, el Tipo de Amortización, la Determinación de Cuentas y el Área de Amortización. En este caso, se define el camión bajo la clase 'Vehículos de Motor', con método de amortización lineal, área principal bajo PCGA y cuenta contable asociada. Este conjunto se adjunta al registro del activo en Finanzas → Activos Fijos → Datos Maestros de Activos. La Clase de Activo actúa como eje central, vinculando todas las demás definiciones para asegurar una contabilización y depreciación correcta según las normas contables y la naturaleza del activo.",
+    "start_time": 180.6,
+    "end_time": 226.0
   },
   {
     "slide_index": 7,
-    "image_file": "035_Slide_07_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Activation – Accounts Determination Asset Balance Sheet Account 6000 Acquisition and Production Cost = 6000 Asset Class Account Determination Code: Motor Vehicles Code: Motor Vehicles OEC Computers • The Account Determination definition enables the system to automatically select the relevant G/L accounts for assets accounting. • In our example we defined the Motor Vehicles set of accounts. Then, we attached this definition to the Motor Vehicles asset class. • The asset class will be selected for heavy vehicles assets for example the truck that the company owns. • Therefor, all transactions involving the truck will automatically register entries to the Motor Vehicles set of accounts. • So, in our example, the Capitalization document will debit the Asset Balance Sheet Account defined in the Motor Vehicles set of accounts with the acquisition cost of 6000. • Let us talk a bit more about the created journal entries.",
-    "start_time": 253.49,
-    "end_time": 307.27
+    "image_file": "Slide_007.webp",
+    "script_text": "La determinación de cuentas permite al sistema seleccionar automáticamente las cuentas contables relevantes para cada activo fijo. En este caso, definimos un conjunto de cuentas llamado Vehículos de Motor y lo vinculamos a la clase de activo del mismo nombre. Así, cuando se registre un activo como un camión de empresa, el sistema aplicará automáticamente las cuentas correctas. Por ejemplo, al capitalizar el camión con un costo de adquisición de 6.000, se debitará la cuenta del balance del activo definida en ese conjunto. Esto asegura consistencia y reduce errores en la contabilidad de activos.",
+    "start_time": 226.0,
+    "end_time": 264.2
   },
   {
     "slide_index": 8,
-    "image_file": "035_Slide_08_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Fixed Assets Activation - Journal Entries A/P Invoice Capitalization Debit Credit Vendor 6000 Acquisition Clearing Account 6000 Debit Credit Acquisition Clearing Account 6000 Asset Balance Sheet Account 6000 • The graphic shows the automatic journal entries created during the activation process including the involved accounts. • If a vendor is not involved, then the user can generate a Capitalization document directly. In this case, only the capitalization journal entry will be created and therefore the clearing account will appear as an obligation in the Balance Sheet.",
-    "start_time": 307.27,
-    "end_time": 340.54
+    "image_file": "Slide_008.webp",
+    "script_text": "Durante la activación de un activo fijo, se generan automáticamente dos asientos contables. Primero, al registrar la factura de compra al proveedor, se debita la cuenta de proveedor y se acredita la cuenta de compensación de adquisición por 6.000. Luego, al emitir el documento de capitalización, se debita la cuenta del balance del activo y se acredita la cuenta de compensación de adquisición, también por 6.000. Si no hay proveedor involucrado, se puede generar directamente el documento de capitalización, dejando la cuenta de compensación como una obligación temporal en el balance hasta su aclaración.",
+    "start_time": 264.2,
+    "end_time": 302.4
   },
   {
     "slide_index": 9,
-    "image_file": "035_Slide_09_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "When your company needs to purchase identical fixed assets in large quantities for internal use, create a virtual item representing the fixed asset. In the A/P Invoice choose this template item and enter a certain quantity in the item row. • Optionally, you can manage serial numbers for the generated virtual fixed assets. • You can use the virtual item definition for cases where the company purchases identical assets for office usage, such as laptops, mobile phones or chairs. • Note that virtual items can be capitalized by A/P invoices only. • The quantity of the automatically created asset master data is the same as the quantity you have specified in the A/P invoice. • The item numbers are automatically assigned to newly created asset master data, according to the rules you have defined for the series used in the master data of the virtual fixed asset. • In our example, when OEC Computers enter a quantity of 9 mobile phones in the A/P Invoice row, the system automatically creates 9 asset master data, one for each mobile phone. • The information in the asset master data of the virtual fixed asset is copied to the newly created asset master data, except the Virtual Item checkbox which stays unselected. • The assets created are regular fixed assets with monetary values. The virtual item functions as a template and therefore will not have any values under the Fixed Assets tab. 9 Capitalizing Virtual Fixed Assets.",
-    "start_time": 340.54,
-    "end_time": 426.72
+    "image_file": "Slide_009.webp",
+    "script_text": "Cuando necesitas adquirir múltiples activos idénticos para uso interno, como portátiles o sillas de oficina, puedes crear un artículo virtual que actúe como plantilla. Al emitir una factura de compra (OC), seleccionas este artículo y especificas la cantidad deseada. Opcionalmente, puedes asignar números de serie a cada activo generado. Los artículos virtuales solo pueden capitalizarse mediante facturas de compra, y la cantidad de maestros de activos creados corresponde exactamente a la cantidad indicada en la factura. Esto simplifica la creación masiva de activos fijos sin duplicar datos maestros innecesariamente.",
+    "start_time": 302.4,
+    "end_time": 338.6
   },
   {
     "slide_index": 10,
-    "image_file": "035_Slide_10_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "A Capitalization document including the created assets is issued automatically as well as a journal entry against the asset account. • Note that you can include multiple virtual fixed assets in the same A/P invoice, but you cannot include both virtual fixed assets and normal fixed assets in the same A/P invoice. 10 Capitalizing Virtual Fixed Assets.",
-    "start_time": 426.72,
-    "end_time": 449.04
+    "image_file": "Slide_010.webp",
+    "script_text": "Al procesar una factura de compra que incluye artículos virtuales, el sistema genera automáticamente un documento de capitalización que registra los activos creados. Simultáneamente, se crea un asiento contable que afecta la cuenta del activo correspondiente. Es posible incluir varios activos fijos virtuales en la misma factura de compra, pero no se pueden mezclar activos virtuales y activos fijos normales en un mismo documento. Esta restricción asegura claridad en el procesamiento y evita confusiones en la generación de datos maestros y asientos contables.",
+    "start_time": 338.6,
+    "end_time": 372.4
   },
   {
     "slide_index": 11,
-    "image_file": "035_Slide_11_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "When issuing an A/P invoice, to facilitate spotting a virtual item out of the list of items and fixed assets, modify the list of items settings and display the Virtual Asset Item field. • To do that, after opening the List of Items window, choose the Form Setting icon from the upper menu bar to modify the list display. 11 List of Items Capitalizing Virtual Fixed Assets List of - Settings.",
-    "start_time": 449.04,
-    "end_time": 473.16
+    "image_file": "Slide_011.webp",
+    "script_text": "Para identificar fácilmente los artículos virtuales al emitir una factura de compra, puedes modificar la lista de artículos para mostrar el campo 'Artículo Virtual de Activo'. Al abrir la ventana Lista de Artículos, selecciona el icono de Configuración de Formulario en el menú superior y activa la visualización de dicho campo. Esto te permite distinguir rápidamente qué artículos son plantillas virtuales y cuáles son convencionales, mejorando la precisión al seleccionar artículos en transacciones de compra y evitando errores en la creación de activos fijos.",
+    "start_time": 372.4,
+    "end_time": 406.6
   },
   {
     "slide_index": 12,
-    "image_file": "035_Slide_12_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "Summary Here are some key points to take away:  The Capitalization is the process of recording the acquisition and production cost (APC) as a fixed asset.  The A/P Invoice automatically generates the Capitalization document for each A/P invoice that includes fixed asset master data. The user can generate the Capitalization document directly. In both options the Asset Master Data is activated.  The account determination definition enables the system to automatically select the relevant G/L accounts for assets accounting.  Virtual items can be capitalized by A/P invoices only. A Capitalization document including the created assets is issued automatically as well as a journal entry against the asset account.  The assets created are regular fixed assets with monetary values. The virtual item functions as a template and therefore will not have any values under the Fixed Assets tab.  You can include multiple virtual fixed assets in the same A/P invoice, but you cannot include both virtual fixed assets and normal fixed assets in the same A/P invoice. • The Capitalization is the process of recording the acquisition and production cost (APC) as a fixed asset. • The A/P Invoice automatically generates the Capitalization document for each A/P Invoice that includes fixed asset master data. The user can generate the Capitalization document directly. • In both options the Asset Master Data is activated. • The Account Determination definition enables the system to automatically select the relevant G/L accounts for assets accounting. • Virtual items can be capitalized by A/P invoices only. A Capitalization document including the created assets is issued automatically as well as a journal entry against the asset account. • The assets created are regular fixed assets with monetary values. The virtual item functions as a template and therefore will not have any values under the Fixed Assets tab. • You can include multiple virtual fixed assets in the same A/P invoice, but you cannot include both virtual fixed assets and normal fixed assets in the same A/P invoice.",
-    "start_time": 473.16,
-    "end_time": 603.96
-  },
-  {
-    "slide_index": 13,
-    "image_file": "035_Slide_13_10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 603.96,
-    "end_time": 741.14
+    "image_file": "Slide_012.webp",
+    "script_text": "La capitalización registra el costo de adquisición y producción como un activo fijo. La factura de compra genera automáticamente el documento de capitalización cuando incluye maestros de activos fijos, aunque el usuario también puede crearlo directamente. En ambos casos, se activan los datos maestros de activos. La determinación de cuentas asegura que el sistema seleccione las cuentas contables correctas. Los artículos virtuales solo se capitalizan mediante facturas de compra y actúan como plantillas sin valor en el módulo de activos fijos. Se pueden incluir múltiples artículos virtuales en una misma factura, pero no mezclarlos con activos normales. El documento de capitalización incluye los activos creados y genera un asiento contable contra la cuenta del activo.",
+    "start_time": 406.6,
+    "end_time": 453.2
   }
 ]

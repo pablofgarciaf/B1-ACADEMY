@@ -1,212 +1,212 @@
 [
   {
     "slide_index": 1,
-    "image_file": "012_Slide_01_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre ControlReports 11 FinReports FinReports en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Informes de control: Informes financieros Bienvenido al tema Informes financieros.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Informes financieros en SAP Business One Versión 10.0. Aquí aprenderás a analizar el impacto de los procesos estándar en los estados financieros clave como el balance, el balance de sumas y saldos y la cuenta de pérdidas y ganancias. Este módulo te prepara para interpretar datos reales de informes financieros y tomar decisiones informadas desde el rol de controlador financiero.",
     "start_time": 0.0,
-    "end_time": 20.23
+    "end_time": 26.2
   },
   {
     "slide_index": 2,
-    "image_file": "012_Slide_02_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Analizaremos el efecto de los procesos estándar en los informes financieros de SAP Business One: como el balance, el balance de sumas y saldos y la cuenta de pérdidas y ganancias. Describimos cuándo usar cada informe y cómo interpretar datos de informes típicos. 2 Al finalizar este tema, podrá:  Analizar el efecto de los procesos estándar en los Informes financieros de SAP Business One:  Balance  Balance de sumas y saldos  Pérdidas y ganancias  Describir cuándo se debe utilizar cada informe.  Interpretar los datos de informes típicos. Objetivos",
-    "start_time": 20.23,
-    "end_time": 57.0
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás analizar el efecto de los procesos estándar en los informes financieros de SAP Business One, específicamente en el balance, el balance de sumas y saldos y la cuenta de pérdidas y ganancias. También sabrás describir cuándo utilizar cada informe y cómo interpretar los datos típicos que presentan, lo que te permitirá evaluar el estado financiero de una empresa con criterio profesional.",
+    "start_time": 26.2,
+    "end_time": 53.2
   },
   {
     "slide_index": 3,
-    "image_file": "012_Slide_03_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Imagínese que está revisando los informes financieros con María, la contable de OEC Computers: María dice que analizaron la influencia del cierre del período en los informes de balance y de pérdidas y ganancias. Esto se debe a que los informes financieros se suelen generar el último día de cada ejercicio o período contable para conocer el estado financiero de la empresa. Demuestra los informes financieros en SAP Business One. Tenga en cuenta que la empresa generalmente obtiene los documentos relacionados del año anterior después del final del ejercicio o período. Por lo tanto, los informes también se generan para el período del cierre, durante el período siguiente. 3 Escenario empresarial Examina los informes financieros con María, la responsable del área de contabilidad de la empresa:  María dice que han analizado la influencia del cierre del período en los informes de balance y de pérdidas y ganancias.  Esto se debe a que los informes financieros se suelen generar el último día de cada ejercicio o período contable para conocer el estado financiero de la empresa.  Demuestra los informes financieros en SAP Business One.",
-    "start_time": 57.0,
-    "end_time": 126.1
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que estás revisando los informes financieros con María, la contable de OEC Computers. Ella explica que analizaron cómo el cierre del período afecta los informes de balance y de pérdidas y ganancias. Esto ocurre porque los informes financieros se generan al final de cada ejercicio o período contable para conocer el estado financiero real de la empresa. En SAP Business One, estos informes se demuestran directamente desde el sistema, considerando que los documentos del año anterior se obtienen después del cierre y que también se generan informes para el período de cierre durante el siguiente.",
+    "start_time": 53.2,
+    "end_time": 92.2
   },
   {
     "slide_index": 4,
-    "image_file": "012_Slide_04_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Agenda Estructura del plan de cuentas  La influencia de la estructura del plan de cuentas en los informes financieros. Informes financieros Balance Balance de sumas y saldos Pérdidas y ganancias Declaración de flujo de caja Comenzamos hablando de la estrecha conexión entre la estructura del plan de cuentas y los distintos informes financieros.",
-    "start_time": 126.1,
-    "end_time": 146.38
+    "image_file": "Slide_004.webp",
+    "script_text": "Comenzamos explorando la estrecha conexión entre la estructura del plan de cuentas y los distintos informes financieros en SAP Business One. Veremos cómo la organización del plan de cuentas influye directamente en la generación y precisión de informes como el balance, el balance de sumas y saldos, la cuenta de pérdidas y ganancias y la declaración de flujo de caja. Esta base es esencial para entender cómo se clasifican y reportan los movimientos contables en el sistema.",
+    "start_time": 92.2,
+    "end_time": 123.6
   },
   {
     "slide_index": 5,
-    "image_file": "012_Slide_05_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Al final del ejercicio, genera el informe Balance. El informe se visualiza en formato resumido. Para el cajón de activos, puede ver el resultado que se muestra en la diapositiva. ¿Dónde se invierte la mayor parte del dinero desde el punto de vista de un controlador financiero? ¿Son activos que pueden convertirse en fondos líquidos con poca antelación o propiedad que pertenece a una empresa y que esta utiliza, y que no se espera que se consuma o convierta en efectivo en un futuro cercano? 5 Pregunta de reflexión Balance: Activos:  Activos fijos: 10,04%  Capital circulante:89,96% Activos totales: 100%  ¿Dónde se invierte la mayor parte del dinero desde el punto de vista de un controlador financiero? A. Los activos pueden convertirse en fondos líquidos con poca antelación. B. La propiedad que pertenece a una empresa y que esta utiliza, no se espera que se consuma o convierta en efectivo en un futuro cercano.",
-    "start_time": 146.38,
-    "end_time": 210.74
+    "image_file": "Slide_005.webp",
+    "script_text": "Al final del ejercicio, se genera el informe de Balance en formato resumido. En el cajón de activos, se observa que el capital circulante representa el 89,96% del total, mientras que los activos fijos representan solo el 10,04%. Esto indica que la mayor parte del dinero está invertida en activos que pueden convertirse fácilmente en fondos líquidos, como cuentas por cobrar, inventarios y efectivo. Desde la perspectiva de un controlador financiero, esto refleja una alta liquidez y menor inversión en activos de largo plazo.",
+    "start_time": 123.6,
+    "end_time": 157.8
   },
   {
     "slide_index": 6,
-    "image_file": "012_Slide_06_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Se muestra la respuesta correcta. Los activos fijos son la propiedad que pertenece a la firma y los activos circulantes son los activos líquidos que se pueden convertir en efectivo fácilmente. Los activos circulantes contienen casi el 90% de los activos totales y, por lo tanto, esta es la respuesta correcta. 6 Pregunta de reflexión Balance: Activos:  Activos fijos: 10,04%  Capital circulante:89,96% Activos totales: 100%  ¿Dónde se invierte la mayor parte del dinero desde el punto de vista de un controlador financiero? A. Los activos pueden convertirse en fondos líquidos con poca antelación. B. La propiedad que pertenece a una empresa y que esta utiliza, no se espera que se consuma o convierta en efectivo en un futuro cercano.",
-    "start_time": 210.74,
-    "end_time": 264.43
+    "image_file": "Slide_006.webp",
+    "script_text": "La respuesta correcta es que los activos circulantes son los que se pueden convertir fácilmente en efectivo, mientras que los activos fijos representan propiedad, planta y equipo que la empresa utiliza pero no espera convertir en efectivo pronto. Dado que el capital circulante representa casi el 90% de los activos totales, esto confirma que la mayor parte de la inversión está en activos líquidos. Esto es clave para la gestión financiera, ya que indica buena capacidad de respuesta ante obligaciones a corto plazo.",
+    "start_time": 157.8,
+    "end_time": 191.6
   },
   {
     "slide_index": 7,
-    "image_file": "012_Slide_07_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Regresemos y examinemos la estructura del plan de cuentas en asociación con los informes financieros. Esto se trata en el tema Plan de cuentas: Conceptos. A pesar de que el plan de cuentas variará de acuerdo a la localización de una empresa, las estructuras son muy similares alrededor del mundo. Recuerde cómo en el libro mayor, se distingue entre cuentas de balance y cuentas de resultados, también denominadas cuentas de pérdidas y ganancias. 7 Estructura del plan de cuentas Nivel 1 Cuentas de balance Cuentas de pérdidas y ganancias Clase de cuenta Cuenta de proveedores Cuenta de ingresos Cuenta bancaria Activos Pasivo Cap. + Res. Vol. negocios Costes ventas Costes explotación No derivados de explotación Impuestos y otros gastos #9 #10 Libro mayor",
-    "start_time": 264.43,
-    "end_time": 312.84
+    "image_file": "Slide_007.webp",
+    "script_text": "El plan de cuentas organiza las cuentas contables en dos grupos principales: cuentas de balance y cuentas de resultados, también llamadas de pérdidas y ganancias. Aunque varía según la localización, su estructura es similar a nivel global. En el libro mayor, se distingue claramente entre lo que la empresa posee y debe (balance) y lo que gana o pierde (resultados). Esta clasificación es la base para generar informes financieros precisos.",
+    "start_time": 191.6,
+    "end_time": 220.2
   },
   {
     "slide_index": 8,
-    "image_file": "012_Slide_08_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Los distintos informes se ejecutan en los saldos de cuenta relevantes para una fecha o un intervalo de fechas seleccionado y los informes los presentan según su cajón, nivel y tipo. Por ejemplo, el informe de balance se basa en las cuentas de balance, y de manera similar, el de pérdidas y ganancias se basa en las cuentas de pérdidas y ganancias. El balance de sumas y saldos muestra todas las clases de cuenta. A todos estos informes se los emite el último día de cada ejercicio o período. Veamos cada informe de cerca: 8 Influencia sobre informes financieros Informes financieros Nivel 1 Cuentas de balance Cuentas de pérdidas y ganancias Clase de cuenta Activos Pasivo Cap. + Res. Vol. negocios Costes de ventas Costes explotación No derivados de explotación Impuestos y otros gastos #9 #10 Libro mayor Balance Balance de sumas y saldos Cuenta de pérdidas y ganancias",
-    "start_time": 312.84,
-    "end_time": 368.09
+    "image_file": "Slide_008.webp",
+    "script_text": "Los informes financieros se generan a partir de los saldos de las cuentas relevantes para una fecha o período seleccionado. El informe de balance usa únicamente las cuentas de balance, mientras que el de pérdidas y ganancias se basa en las cuentas de resultados. El balance de sumas y saldos muestra todas las clases de cuenta. Estos informes se emiten al cierre de cada ejercicio o período contable.",
+    "start_time": 220.2,
+    "end_time": 248.0
   },
   {
     "slide_index": 9,
-    "image_file": "012_Slide_09_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Agenda Estructura del plan de cuentas  La influencia de la estructura del plan de cuentas en los informes financieros. Informes financieros Balance Balance de sumas y saldos Pérdidas y ganancias Declaración de flujo de caja Todos los informes financieros aparecerán en el menú Informes financieros del módulo Finanzas.",
-    "start_time": 368.09,
-    "end_time": 387.53
+    "image_file": "Slide_009.webp",
+    "script_text": "Este tema cubre la estructura del plan de cuentas y cómo influye directamente en la generación de los informes financieros. Se revisarán los principales informes: balance, balance de sumas y saldos, estado de pérdidas y ganancias y declaración de flujo de caja. Todos estos informes están disponibles en el menú Informes financieros dentro del módulo de Finanzas de SAP Business One.",
+    "start_time": 248.0,
+    "end_time": 273.0
   },
   {
     "slide_index": 10,
-    "image_file": "012_Slide_10_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "El balance presenta la posición financiera de un negocio, el valor de la empresa. 10 Balance Fechas Hasta una fecha determinada Cajones/Tipo Todas las cuentas de balance: Cuentas de activo, pasivo y de capital propio Cálculo Activos totales = Pasivo total + Neto. Además: Porcentaje relativo de cada saldo en el activo, pasivo y neto de la empresa. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Clientes, cuenta de impuestos sobre ventas. Pago - Cuenta bancaria. Entrada de mercancías de pedido - Cuenta de inventario Presenta la posición financiera de un negocio, el valor de la empresa.",
-    "start_time": 387.53,
-    "end_time": 430.8
+    "image_file": "Slide_010.webp",
+    "script_text": "El balance presenta la posición financiera de un negocio en una fecha determinada, mostrando qué posee y debe la empresa, así como su valor neto. Se basa en la ecuación contable: el activo total es igual al pasivo total más el patrimonio neto. Además, muestra el porcentaje relativo de cada cuenta dentro del activo, pasivo y neto. Documentos como facturas de clientes, pagos y entradas de mercancía afectan directamente sus saldos.",
+    "start_time": 273.0,
+    "end_time": 302.0
   },
   {
     "slide_index": 11,
-    "image_file": "012_Slide_11_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Ejecuta el balance hasta cierta fecha, que sería desde el inicio de la empresa hasta esa fecha. 11 Balance Fechas Hasta una fecha determinada Cajones/Tipo Todas las cuentas de balance: Cuentas de activo, pasivo, y de capital propio Cálculo Activo total = Pasivo total + Neto. Además: Porcentaje relativo de cada saldo en el activo, pasivo y neto de la empresa. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Clientes, cuenta de impuestos sobre ventas. Pago - Cuenta bancaria. Entrada de mercancías de pedido - Cuenta de inventario Presenta la posición financiera de un negocio, el valor de la empresa.",
-    "start_time": 430.8,
-    "end_time": 475.08
+    "image_file": "Slide_011.webp",
+    "script_text": "Para ejecutar el balance, se selecciona la opción 'Hasta una fecha determinada', lo que muestra la posición financiera desde el inicio de la empresa hasta esa fecha. El informe incluye todas las cuentas de balance: activo, pasivo y capital propio. Se calcula el activo total como suma de pasivo y neto, y se muestra el porcentaje relativo de cada cuenta. En Distribuidora Andina Tech, ejemplos como facturas de clientes (afectan clientes e impuestos), pagos (cuenta bancaria) y entradas de mercancía (inventario) impactan el balance.",
+    "start_time": 302.0,
+    "end_time": 336.2
   },
   {
     "slide_index": 12,
-    "image_file": "012_Slide_12_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "El balance presenta todas las cuentas de balance: Activo, pasivo y neto 12 Balance Fechas Hasta una fecha determinada Cajones/Tipo Todas las cuentas de balance: Cuentas de activo, pasivo, y de capital propio Cálculo Activo total = Pasivo total + Neto. Además: Porcentaje relativo de cada saldo en el activo, pasivo y neto de la empresa. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Clientes, cuenta de impuestos sobre ventas. Pago - Cuenta bancaria. Entrada de mercancías de pedido - Cuenta de inventario Presenta la posición financiera de un negocio, el valor de la empresa.",
-    "start_time": 475.08,
-    "end_time": 517.56
+    "image_file": "Slide_012.webp",
+    "script_text": "El balance presenta de forma clara y organizada todas las cuentas de balance: activo, pasivo y patrimonio neto. Permite ver la situación financiera de la empresa en un momento específico, mostrando qué posee, qué debe y cuál es su valor real. Es un informe esencial para tomar decisiones estratégicas, evaluar solvencia y cumplir con obligaciones contables y fiscales.",
+    "start_time": 336.2,
+    "end_time": 360.0
   },
   {
     "slide_index": 13,
-    "image_file": "012_Slide_13_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Al emitir el informe, el sistema ejecuta el informe en los saldos de cuenta de las cuentas de balance y resume sus valores de acuerdo a la fórmula: Activo total = Pasivo total + Neto. Además, se presenta el porcentaje relativo de cada saldo en el activo, pasivo y neto de la empresa. La sección del neto incluye el período de ganancias. Esta cantidad se calcula a medida que se va componiendo el informe, para representar el resumen de las pérdidas y ganancias del período. 13 Balance Fechas Hasta una fecha determinada Cajones/Tipo Todas las cuentas de balance: Cuentas de activo, pasivo, y de capital propio Cálculo Activo total = Pasivo total + Neto. Además: Porcentaje relativo de cada saldo en el activo, pasivo y neto de la empresa. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Clientes, cuenta de impuestos sobre ventas. Pago - Cuenta bancaria. Entrada de mercancías de pedido - Cuenta de inventario Presenta la posición financiera de un negocio, el valor de la empresa.",
-    "start_time": 517.56,
-    "end_time": 586.06
+    "image_file": "Slide_013.webp",
+    "script_text": "El balance general muestra la situación financiera de tu empresa en un momento dado. En SAP Business One, al emitir este informe, el sistema calcula el activo total como la suma del pasivo y el neto, siguiendo la ecuación contable fundamental. Además, presenta el porcentaje relativo de cada cuenta dentro del activo, pasivo y neto, lo que te permite analizar la estructura financiera. El neto incluye las ganancias o pérdidas del período, actualizadas dinámicamente. Este informe es clave para tomar decisiones estratégicas, ya que refleja el valor real de tu empresa. En Distribuidora Andina Tech, lo usamos para evaluar liquidez y solvencia antes de nuevas inversiones.",
+    "start_time": 360.0,
+    "end_time": 403.0
   },
   {
     "slide_index": 14,
-    "image_file": "012_Slide_14_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Algunos ejemplos de documentos y cuentas relacionadas que afectan al informe:  Cuentas de clientes y de impuestos sobre ventas en una factura de cliente.  La cuenta bancaria en un pago y  La cuenta de existencias en un pedido de entrada de mercancías. 14 Balance Fechas Hasta una fecha determinada Cajones/Tipo Todas las cuentas de balance: Cuentas de activo, pasivo, y de capital propio Cálculo Activo total = Pasivo total + Neto. Además: Porcentaje relativo de cada saldo en el activo, pasivo y neto de la empresa. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Clientes, cuenta de impuestos sobre ventas. Pago - Cuenta bancaria. Entrada de mercancías de pedido - Cuenta de inventario Presenta la posición financiera de un negocio, el valor de la empresa.",
-    "start_time": 586.06,
-    "end_time": 639.0
+    "image_file": "Slide_014.webp",
+    "script_text": "Este informe se ve afectado por las transacciones diarias que registras en SAP. Por ejemplo, cuando emites una factura de cliente, se incrementan las cuentas de Clientes y de Impuestos sobre Ventas, lo que aumenta el activo y el pasivo respectivamente. Un pago reduce la cuenta bancaria (activo) y una cuenta de pasivo o capital. Al registrar una entrada de mercancías desde un pedido, se aumenta el inventario (activo) y se registra el pasivo correspondiente al proveedor. En Distribuidora Andina Tech, revisamos estos impactos diariamente para asegurar que el balance refleje con precisión nuestra posición financiera en dólares estadounidenses.",
+    "start_time": 403.0,
+    "end_time": 443.2
   },
   {
     "slide_index": 15,
-    "image_file": "012_Slide_15_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "El balance de sumas y saldos muestra un resumen de todas las cuentas o saldos de interlocutores comerciales. El informe puede comprender una sección específico de las cuentas y los interlocutores comerciales. 15 Balance de sumas y saldos Fechas Período seleccionado Cajones/Tipo Selección entre: Todas las cuentas (Balance y Pérdidas y ganancias) Todos los datos maestros de interlocutores comerciales. Cálculo Para cada cuenta: importes totales del Debe y del Haber, y el saldo final. Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas de un período completo, los totales del Debe y el Haber deben ser idénticos. Saldo del informe total = 0. Ejemplo de documentos y cuentas que afectan el informe Factura de proveedores: cuenta de proveedores, cuenta de gastos/compensación/existencias, cuenta de IVA soportado. Un resumen de todas las cuentas o saldos de interlocutores comerciales. Puede abarcar un período específico.",
-    "start_time": 639.0,
-    "end_time": 704.64
+    "image_file": "Slide_015.webp",
+    "script_text": "El balance de sumas y saldos te muestra un resumen detallado de todas las cuentas contables, incluyendo los importes totales del Debe y del Haber, y el saldo final de cada una. En SAP Business One, este informe puede incluir también los datos maestros de tus interlocutores comerciales, como clientes y proveedores. Es especialmente útil para verificar la consistencia de tus registros: si el período es completo, los totales del Debe y del Haber deben ser idénticos, lo que resulta en un saldo de informe igual a cero. Este control te ayuda a detectar errores de registro antes de cerrar contablemente. En Distribuidora Andina Tech, lo ejecutamos mensualmente para validar nuestra contabilidad en Quito.",
+    "start_time": 443.2,
+    "end_time": 489.4
   },
   {
     "slide_index": 16,
-    "image_file": "012_Slide_16_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Puede emitir el informe para un período o períodos contables seleccionados. 16 Balance de sumas y saldos Un resumen de todas las cuentas o saldos de interlocutores comerciales. Puede abarcar un período específico. Fechas Período seleccionado Cajones/Tipo Selección entre: Todas las cuentas (Balance y Pérdidas y ganancias) Todos los datos maestros de interlocutores comerciales. Cálculo Para cada cuenta: importes totales del Debe y del Haber, y el saldo final. Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas de un período completo, los totales del Debe y el Haber deben ser idénticos. Saldo del informe total = 0. Ejemplo de documentos y cuentas que afectan el informe Factura de proveedores: cuenta de proveedores, cuenta de gastos/compensación/existencias, cuenta de IVA soportado.",
-    "start_time": 704.64,
-    "end_time": 762.43
+    "image_file": "Slide_016.webp",
+    "script_text": "En SAP Business One, puedes emitir el balance de sumas y saldos para uno o varios períodos contables que elijas, ya sea un mes, un trimestre o el año completo. Primero, seleccionas el rango de fechas deseado. Luego, decides si quieres ver todas las cuentas (incluyendo balance y pérdidas y ganancias) o solo los datos maestros de tus interlocutores comerciales, como clientes y proveedores. Al ejecutar el informe, el sistema muestra para cada cuenta los totales del Debe, del Haber y el saldo final. Si el período es completo, verifica que los totales generales del Debe y del Haber sean iguales, lo que confirma que tu contabilidad está balanceada. Este flujo es esencial en Distribuidora Andina Tech para nuestros cierres mensuales en Quito.",
+    "start_time": 489.4,
+    "end_time": 539.2
   },
   {
     "slide_index": 17,
-    "image_file": "012_Slide_17_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "El balance de sumas y saldos presenta todas las cuentas seleccionadas (de balances y pérdidas y ganancias) y de datos maestros de interlocutores comerciales. Si incluye interlocutores comerciales en el informe, se mostrarán al final, después de la lista de cuentas. El saldo total para clientes y proveedores está representado en la lista de cuentas, mediante las cuentas asociadas. 17 Balance de sumas y saldos Un resumen de todas las cuentas o saldos de interlocutores comerciales. Puede abarcar un período específico. Fechas Período seleccionado Cajones/Tipo Selección entre: Todas las cuentas (Balance y Pérdidas y ganancias) Todos los datos maestros de interlocutores comerciales. Cálculo Para cada cuenta: importes totales del Debe y del Haber, y el saldo final. Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas de un período completo, los totales del Debe y el Haber deben ser idénticos. Saldo del informe total = 0. Ejemplo de documentos y cuentas que afectan el informe Factura de proveedores: cuenta de proveedores, cuenta de gastos/compensación/existencias, cuenta de IVA soportado.",
-    "start_time": 762.43,
-    "end_time": 839.9
+    "image_file": "Slide_017.webp",
+    "script_text": "El balance de sumas y saldos en SAP Business One puede incluir no solo las cuentas contables de balance y pérdidas y ganancias, sino también los datos maestros de tus interlocutores comerciales, como clientes y proveedores. Cuando activas esta opción, el sistema muestra al final del informe una sección adicional con los totales por interlocutor. Sin embargo, el saldo total de clientes y proveedores ya está reflejado dentro de las cuentas contables asociadas, como la cuenta de clientes o la de proveedores, para evitar duplicación. Esto te da una visión completa: tanto contable como comercial. En Distribuidora Andina Tech, usamos esta vista para analizar tanto nuestra situación financiera como el estado de nuestras relaciones con clientes y proveedores en Ecuador.",
+    "start_time": 539.2,
+    "end_time": 587.8
   },
   {
     "slide_index": 18,
-    "image_file": "012_Slide_18_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Al emitir el informe para cada cuenta el sistema presenta los importes totales del Debe y del Haber, y el saldo final que se calcula como el importe del Debe menos el importe del Haber. Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas de un período completo, los totales del Debe y el Haber deben ser idénticos. Es decir, el saldo del informe total debe ser cero. 18 Balance de sumas y saldos Un resumen de todas las cuentas o saldos de interlocutores comerciales. Puede abarcar un período específico. Fechas Período seleccionado Cajones/Tipo Selección entre: Todas las cuentas (Balance y Pérdidas y ganancias) Todos los datos maestros de interlocutores comerciales. Cálculo Para cada cuenta: importes totales del Debe y del Haber, y el saldo final. Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas de un período completo, los totales del Debe y el Haber deben ser idénticos. Saldo del informe total = 0. Ejemplo de documentos y cuentas que afectan el informe Factura de proveedores: cuenta de proveedores, cuenta de gastos/compensación/existencias, cuenta de IVA soportado.",
-    "start_time": 839.9,
-    "end_time": 917.5
+    "image_file": "Slide_018.webp",
+    "script_text": "En el balance de sumas y saldos, SAP Business One calcula para cada cuenta el total del Debe, el total del Haber y su saldo final (Debe menos Haber). Para todo el informe, si incluye todas las cuentas de un período contable completo, los importes globales del Debe y del Haber deben ser exactamente iguales. Esto significa que el saldo del informe total debe ser cero, lo que confirma que no hay errores de registro y que tu contabilidad está balanceada. Este principio es fundamental en contabilidad y lo validamos constantemente en Distribuidora Andina Tech. Cuando vemos que el saldo es cero en dólares, sabemos que nuestros libros en Quito están correctos para ese período.",
+    "start_time": 587.8,
+    "end_time": 634.4
   },
   {
     "slide_index": 19,
-    "image_file": "012_Slide_19_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Aquí se muestra un ejemplo de un documento y sus cuentas relacionadas, que afectan al informe de balance de sumas y saldos:  Una factura de proveedor incluye: proveedor, cuenta de proveedores, cuenta de compensación o cuenta de inventario y cuenta de IVA soportado. 19 Balance de sumas y saldos Un resumen de todas las cuentas o saldos de interlocutores comerciales. Puede abarcar un período específico. Fechas Período seleccionado Cajones/Tipo Selección entre: Todas las cuentas (Balance y Pérdidas y ganancias) Todos los datos maestros de interlocutores comerciales. Cálculo Para cada cuenta: importes totales del Debe y del Haber, y el saldo final. Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas de un período completo, los totales del Debe y el Haber deben ser idénticos. Saldo del informe total = 0. Ejemplo de documentos y cuentas que afectan el informe Factura de proveedores: cuenta de proveedores, cuenta de gastos/compensación/existencias, cuenta de IVA soportado.",
-    "start_time": 917.5,
-    "end_time": 986.06
+    "image_file": "Slide_019.webp",
+    "script_text": "El balance de sumas y saldos es un resumen de todas las cuentas contables o los saldos de interlocutores comerciales. Muestra los importes totales del debe y del haber, y el saldo final de cada cuenta. Si el informe incluye todas las cuentas de un período completo, los totales del debe y del haber deben ser idénticos, lo que resulta en un saldo total de cero. Este informe ayuda a verificar la consistencia contable antes de elaborar estados financieros. En SAP Business One, se ejecuta seleccionando un período y el tipo de cuentas a incluir, ya sea todas las cuentas del balance y pérdidas y ganancias o todos los datos maestros de interlocutores comerciales.",
+    "start_time": 634.4,
+    "end_time": 680.6
   },
   {
     "slide_index": 20,
-    "image_file": "012_Slide_20_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "La cuenta de pérdidas y ganancias muestra las ganancias (o las pérdidas) de su negocio para el ejercicio o el período seleccionado. Explica el cambio en el valor de la empresa. 20 Cuenta de pérdidas y ganancias Fechas Período seleccionado Cajones/Tipo Todas las cuentas de pérdidas y ganancias: Los últimos 5 cajones: Ingresos, Coste de ventas, Gastos, Financiación, y Otros ingresos y gastos Cálculo Los saldos de las cuentas de gastos se restarán de los saldos de las cuentas de ingresos para obtener las pérdidas o ganancias del ejercicio o período seleccionado. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Cuenta de ingresos. Factura de proveedores - Cuenta de gastos. Muestra la ganancia (o pérdida) de su empresa en el ejercicio/ período seleccionado, y explica el cambio en el valor de la empresa.",
-    "start_time": 986.06,
-    "end_time": 1041.12
+    "image_file": "Slide_020.webp",
+    "script_text": "La cuenta de pérdidas y ganancias muestra las ganancias o pérdidas de su negocio para un ejercicio o período seleccionado. Explica el cambio en el valor de la empresa al comparar ingresos y gastos. Los saldos de las cuentas de gastos se restan de los saldos de las cuentas de ingresos para obtener el resultado. Este informe es esencial para evaluar el desempeño financiero y tomar decisiones estratégicas. En SAP Business One, se ejecuta seleccionando un período y se agrupan automáticamente las cuentas de ingresos, coste de ventas, gastos, financiación y otros ingresos y gastos, que corresponden a los últimos cinco cajones del plan de cuentas.",
+    "start_time": 680.6,
+    "end_time": 723.6
   },
   {
     "slide_index": 21,
-    "image_file": "012_Slide_21_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Ejecuta el informe para un período seleccionado. 21 Cuenta de pérdidas y ganancias Muestra la ganancia (o pérdida) de su empresa en el ejercicio/ período seleccionado, y explica el cambio en el valor de la empresa. Fechas Período seleccionado Cajones/Tipo Todas las cuentas de pérdidas y ganancias: Los últimos 5 cajones: Ingresos, Coste de ventas, Gastos, Financiación, y Otros ingresos y gastos Cálculo Los saldos de las cuentas de gastos se restarán de los saldos de las cuentas de ingresos para obtener las pérdidas o ganancias del ejercicio o período seleccionado. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Cuenta de ingresos. Factura de proveedores - Cuenta de gastos.",
-    "start_time": 1041.12,
-    "end_time": 1088.45
+    "image_file": "Slide_021.webp",
+    "script_text": "Para obtener la ganancia o pérdida del ejercicio o período seleccionado, ejecute el informe de cuenta de pérdidas y ganancias. Este informe muestra el resultado financiero y explica el cambio en el valor de la empresa. Incluye todas las cuentas ubicadas en los cinco cajones de pérdidas y ganancias: ingresos, coste de ventas, gastos, financiación y otros ingresos y gastos. El cálculo consiste en restar los saldos de las cuentas de gastos de los saldos de las cuentas de ingresos. Documentos como facturas de clientes afectan la cuenta de ingresos, mientras que facturas de proveedores impactan la cuenta de gastos. Al ejecutarlo, el sistema procesa automáticamente estos datos según el período definido.",
+    "start_time": 723.6,
+    "end_time": 769.0
   },
   {
     "slide_index": 22,
-    "image_file": "012_Slide_22_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "La cuenta de pérdidas y ganancias presenta todas las cuentas ubicadas en los 5 cajones de pérdidas y ganancias: Ingresos, coste de ventas, gastos, financiación, y otros ingresos y gastos. 22 Cuenta de pérdidas y ganancias Muestra la ganancia (o pérdida) de su empresa en el ejercicio/ período seleccionado, y explica el cambio en el valor de la empresa. Fechas Período seleccionado Cajones/Tipo Todas las cuentas de pérdidas y ganancias: Los últimos 5 cajones: Ingresos, Coste de ventas, Gastos, Financiación, y Otros ingresos y gastos Cálculo Los saldos de las cuentas de gastos se restarán de los saldos de las cuentas de ingresos para obtener las pérdidas o ganancias del ejercicio o período seleccionado. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Cuenta de ingresos. Factura de proveedores - Cuenta de gastos.",
-    "start_time": 1088.45,
-    "end_time": 1144.7
+    "image_file": "Slide_022.webp",
+    "script_text": "La cuenta de pérdidas y ganancias se organiza en cinco cajones principales que agrupan cuentas según su naturaleza. Los primeros dos cajones, ingresos y coste de ventas, reflejan la actividad operacional básica de la empresa. El tercer cajón, gastos, incluye costos de administración, ventas y otros gastos operacionales. Los dos últimos cajones, financiación y otros ingresos y gastos, registran movimientos no directamente relacionados con la operación principal, como intereses o ingresos por arrendamiento. Esta estructura permite analizar el resultado desde diferentes perspectivas: operacional, financiera y extraordinaria. En SAP Business One, estos cajones se definen en el plan de cuentas y se seleccionan automáticamente al ejecutar el informe.",
+    "start_time": 769.0,
+    "end_time": 812.4
   },
   {
     "slide_index": 23,
-    "image_file": "012_Slide_23_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Al ejecutar el informe, el sistema calcula la ganancia o pérdida del ejercicio o período seleccionado de acuerdo con el siguiente cálculo: Los saldos de la cuenta de gastos se restarán de los saldos de las cuentas de ingresos. 23 Cuenta de pérdidas y ganancias Muestra la ganancia (o pérdida) de su empresa en el ejercicio/ período seleccionado, y explica el cambio en el valor de la empresa. Fechas Período seleccionado Cajones/Tipo Todas las cuentas de pérdidas y ganancias: Los últimos 5 cajones: Ingresos, Coste de ventas, Gastos, Financiación, y Otros ingresos y gastos Cálculo Los saldos de las cuentas de gastos se restarán de los saldos de las cuentas de ingresos para obtener las pérdidas o ganancias del ejercicio o período seleccionado. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Cuenta de ingresos. Factura de proveedores - Cuenta de gastos.",
-    "start_time": 1144.7,
-    "end_time": 1201.61
+    "image_file": "Slide_023.webp",
+    "script_text": "El sistema calcula la ganancia o pérdida del ejercicio o período seleccionado mediante un proceso sencillo pero fundamental. Primero, suma los saldos de todas las cuentas de ingresos para obtener el total de ingresos del período. Luego, suma los saldos de todas las cuentas de gastos para obtener el total de gastos. Finalmente, resta el total de gastos del total de ingresos. El resultado positivo indica una ganancia; el negativo, una pérdida. Este cálculo explica el cambio en el valor de la empresa durante el período analizado. En SAP Business One, este proceso se ejecuta automáticamente al generar el informe de cuenta de pérdidas y ganancias, siempre que se haya seleccionado correctamente el período y las cuentas correspondientes a los cinco cajones de P y G.",
+    "start_time": 812.4,
+    "end_time": 863.4
   },
   {
     "slide_index": 24,
-    "image_file": "012_Slide_24_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Aquí hay algunos ejemplos de documentos y cuentas relacionadas que afectan al informe:  La cuenta de ingresos en una factura de cliente.  Y la cuenta de gastos en una factura de proveedores. 24 Cuenta de pérdidas y ganancias Muestra la ganancia (o pérdida) de su empresa en el ejercicio/ período seleccionado, y explica el cambio en el valor de la empresa. Fechas Período seleccionado Cajones/Tipo Todas las cuentas de pérdidas y ganancias: Los últimos 5 cajones: Ingresos, Coste de ventas, Gastos, Financiación, y Otros ingresos y gastos Cálculo Los saldos de las cuentas de gastos se restarán de los saldos de las cuentas de ingresos para obtener las pérdidas o ganancias del ejercicio o período seleccionado. Ejemplo de documentos y cuentas que afectan el informe Factura de clientes - Cuenta de ingresos. Factura de proveedores - Cuenta de gastos.",
-    "start_time": 1201.61,
-    "end_time": 1257.29
+    "image_file": "Slide_024.webp",
+    "script_text": "Al ejecutar el informe de cuenta de pérdidas y ganancias, ciertos documentos tienen un impacto directo en su resultado. Una factura de cliente aumenta la cuenta de ingresos, lo que incrementa la ganancia o reduce la pérdida. Por el contrario, una factura de proveedor aumenta la cuenta de gastos, lo que reduce la ganancia o aumenta la pérdida. Estos movimientos se reflejan automáticamente en el informe según el período de la factura. En SAP Business One, al registrar una factura de cliente, el sistema asigna el importe a una cuenta de ingresos definida en la factura o en el maestro del cliente. Asimismo, al registrar una factura de proveedor, el importe se asigna a una cuenta de gastos, generalmente relacionada con compras o servicios recibidos. Estos asientos son los que alimentan el cálculo final de ganancia o pérdida.",
+    "start_time": 863.4,
+    "end_time": 919.2
   },
   {
     "slide_index": 25,
-    "image_file": "012_Slide_25_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Desde los informes financieros puede desglosar los datos maestros de interlocutor comercial.",
-    "start_time": 1257.29,
-    "end_time": 1263.79
+    "image_file": "Slide_025.webp",
+    "script_text": "Desde los informes financieros puedes desglosar los datos maestros de tus interlocutores comerciales. Esto te permite ver detalles como código, nombre, tipo, límite de crédito y saldo actual de cada cliente o proveedor. En una empresa como Distribuidora Andina Tech, esto ayuda a analizar la exposición crediticia y tomar decisiones de cobro o pago. En SAP Business One, accedes a esta función desde el módulo de informes financieros y seleccionas el desglose por interlocutor para obtener una vista detallada y actualizada.",
+    "start_time": 919.2,
+    "end_time": 952.2
   },
   {
     "slide_index": 26,
-    "image_file": "012_Slide_26_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Desde los informes financieros puede desglosar el plan de cuentas.",
-    "start_time": 1263.79,
-    "end_time": 1268.86
+    "image_file": "Slide_026.webp",
+    "script_text": "Los informes financieros también permiten desglosar el plan de cuentas para ver el detalle de cada cuenta contable. Puedes consultar código, nombre, clase, nivel y saldo actual de cuentas como caja, bancos o inventario. Esto es útil para validar saldos, preparar conciliaciones o analizar la composición del activo y pasivo. En SAP Business One, esta funcionalidad se encuentra en los informes financieros, donde seleccionas el desglose por cuenta para obtener un detalle preciso y actualizado de tu estructura contable.",
+    "start_time": 952.2,
+    "end_time": 984.4
   },
   {
     "slide_index": 27,
-    "image_file": "012_Slide_27_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "Esta es una pregunta para los que tengan formación contable: El cálculo del balance es el siguiente: Activo total = Pasivo total + Neto. ¿Cómo cuadra el cálculo si el informe solo considera las cuentas de balance? 27 Pregunta de reflexión avanzada Activo total = Pasivo total + Neto.  ¿Cómo cuadra el cálculo si el informe solo considera las cuentas de balance?  El cálculo del balance es el siguiente:",
-    "start_time": 1268.86,
-    "end_time": 1296.98
+    "image_file": "Slide_027.webp",
+    "script_text": "El cálculo del balance sigue la ecuación contable fundamental: el activo total es igual al pasivo total más el neto o capital propio. Esta relación debe mantenerse siempre en equilibrio. Cuando un informe financiero solo considera las cuentas de balance, verifica que esta ecuación se cumpla al sumar todos los saldos de activo, pasivo y patrimonio. Es la base para validar la integridad de la información contable presentada en el balance general.",
+    "start_time": 984.4,
+    "end_time": 1013.8
   },
   {
     "slide_index": 28,
-    "image_file": "012_Slide_28_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "El acumulador de pérdidas o ganancias se incluye en el informe de balance y disminuirá o incrementará el neto en el balance. 28 Respuesta Cuentas de balance Cuentas de pérdidas y ganancias Cuentas activo Cuentas pasivo Cuenta de activo Cuentas de gastos Balance Cuenta de pérdidas y ganancias Ingresos Gastos = Pérdidas/Ganancias Capital propio Activos Pasivo Cuentas capital propio -",
-    "start_time": 1296.98,
-    "end_time": 1321.75
+    "image_file": "Slide_028.webp",
+    "script_text": "El acumulador de pérdidas o ganancias se incluye en el informe de balance y afecta directamente al neto o capital propio. Si hay utilidad, aumenta el neto; si hay pérdida, lo disminuye. Esta cuenta se alimenta de la diferencia entre ingresos y gastos del período. Así, el resultado del ejercicio se refleja en el patrimonio, manteniendo el equilibrio de la ecuación contable: Activo = Pasivo + Patrimonio.",
+    "start_time": 1013.8,
+    "end_time": 1041.2
   },
   {
     "slide_index": 29,
-    "image_file": "012_Slide_29_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "A continuación, se detallan algunos puntos clave para tener en cuenta: En el libro mayor, se distingue entre Cuentas de balance y Cuentas de resultados, también denominadas Cuentas de pérdidas y ganancias. Los diferentes informes financieros se ejecutan en los saldos de cuenta. Los informes financieros presentan los saldos de cuenta dependiendo de una fecha o un rango de fechas seleccionado y su cajón, nivel y tipo. 29 29 Resumen (1/2) A continuación, se detallan algunos puntos clave: En el Libro mayor puede distinguir entre: • Cuentas de balance y • la Cuenta de resultados, también denominada Cuenta de pérdidas y ganancias. Los diferentes informes financieros se ejecutan en: • Los saldos de cuenta. Los informes financieros presentan los saldos de cuenta según: • Una fecha seleccionada o un intervalo de fechas • Su cajón, nivel y tipo. El informe de balance se basa en: Y presenta: • Las cuentas de balance. • El valor de la empresa. • Activo total = Pasivo total + Neto. • Además: El porcentaje relativo de cada saldo",
-    "start_time": 1321.75,
-    "end_time": 1391.18
+    "image_file": "Slide_029.webp",
+    "script_text": "En el libro mayor se distinguen las cuentas de balance (activo, pasivo y patrimonio) y las cuentas de resultados, también llamadas de pérdidas y ganancias. Los informes financieros se ejecutan sobre los saldos de cuenta y presentan dicha información según una fecha o rango seleccionado, así como el cajón, nivel y tipo de cuenta. El informe de balance se basa en las cuentas de balance, muestra el valor de la empresa mediante la ecuación activo total igual a pasivo total más neto, y incluye el porcentaje relativo de cada saldo para un análisis más detallado.",
+    "start_time": 1041.2,
+    "end_time": 1079.8
   },
   {
     "slide_index": 30,
-    "image_file": "012_Slide_30_10_ControlReports_11_FinReports_FinReports_ES.webp",
-    "script_text": "El informe del balance se basa en las cuentas de balance. Presenta el valor de la empresa mediante la fórmula: Activo total = Pasivo total + Neto. El informe muestra el porcentaje relativo de cada saldo. La declaración de pérdidas y ganancias se basa en todas las cuentas de pérdidas y ganancias. Presenta las pérdidas o ganancias de su empresa. La ganancia o pérdida del período seleccionado es igual a la diferencia entre los saldos de las cuentas de ingresos y los saldos de las cuentas de gastos. El balance de sumas y saldos se basa en todas las clases de cuenta. Este informe presenta un resumen de todas las cuentas o saldos de interlocutores comerciales. Para cada cuenta, el informe muestra los importes totales en el deber y haber y el saldo final. Si el balance de sumas y saldos incluye todas las cuentas de un período completo, el saldo del informe será cero. 30 Resumen (2/2) La cuenta de pérdidas y ganancias se basa en: Y presenta: • Todas las cuentas de pérdidas y ganancias. • La ganancia (o pérdida) de su empresa. • Ganancia o pérdidas para el período seleccionado = Los saldos de las Cuentas de ingresos - Los saldos de las Cuentas de gastos El balance de sumas y saldos se basa en: Y presenta: • Todas las clases de cuenta. • Un resumen de todas las cuentas o saldos de interlocutores comerciales. • Para cada cuenta: importes totales del Debe y del Haber, y el saldo final. • Para todo el informe: si el balance de sumas y saldos incluye todas las cuentas en un período completo, el saldo total del informe es",
-    "start_time": 1391.18,
-    "end_time": 1492.56
+    "image_file": "Slide_030.webp",
+    "script_text": "El informe de balance se basa en las cuentas de balance y presenta el valor de la empresa mediante la fórmula activo total igual a pasivo total más neto, mostrando además el porcentaje relativo de cada saldo. La declaración de pérdidas y ganancias se basa en todas las cuentas de pérdidas y ganancias y presenta la ganancia o pérdida del período, calculada como la diferencia entre los saldos de ingresos y gastos. El balance de sumas y saldos incluye todas las clases de cuenta y resume las cuentas o saldos de interlocutores comerciales, mostrando para cada cuenta los totales del debe y haber, así como el saldo final. Si el período es completo, el saldo total del informe será cero.",
+    "start_time": 1079.8,
+    "end_time": 1128.4
   }
 ]

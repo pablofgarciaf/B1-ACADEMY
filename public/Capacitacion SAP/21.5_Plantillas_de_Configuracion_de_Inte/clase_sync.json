@@ -1,191 +1,191 @@
 [
   {
     "slide_index": 1,
-    "image_file": "057_Slide_01_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 35 SystemSetup UIConfigurationTemplates en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Configuración y gestión del sistema: Modelos de configuración de la IU En este tema veremos cómo simplificar los formularios predefinidos en SAP Business One.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de configuración y gestión del sistema en SAP Business One versión 10.0. En esta capacitación aprenderemos cómo simplificar los formularios predefinidos para adaptarlos a las necesidades específicas de los usuarios. Veremos cómo editar layouts, asignar formularios personalizados mediante modelos de configuración de la IU y gestionar múltiples modelos según roles. Este enfoque mejora la usabilidad y la eficiencia en el trabajo diario.",
     "start_time": 0.0,
-    "end_time": 25.13
+    "end_time": 26.6
   },
   {
     "slide_index": 2,
-    "image_file": "057_Slide_02_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Al finalizar este tema, podrá: Editar el layout de documentos y formularios estándar de SAP Business One Asignar los documentos y formularios editados a usuarios en un modelo de configuración de la IU Explicar cómo gestionar múltiples modelos de configuración de la IU Describir cómo funciona la ficha Elementos de la IU en la ventana de parametrizaciones de formulario 2 Al finalizar este tema, podrá: Editar y simplificar el layout de documentos y formularios estándar Asignar los documentos y formularios editados a varios usuarios mediante un modelo de configuración de la IU Explicar cómo gestionar múltiples modelos de configuración de la IU Describir cómo funciona la ficha Elementos de la IU en la ventana de parametrizaciones de formulario Objetivos",
-    "start_time": 25.13,
-    "end_time": 70.15
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá editar y simplificar el layout de documentos y formularios estándar de SAP Business One. Aprenderá a asignar estos formularios editados a varios usuarios mediante un modelo de configuración de la IU, explicará cómo gestionar múltiples modelos según roles y describirá el funcionamiento de la ficha Elementos de la IU en la ventana de parametrizaciones de formulario. Estas habilidades le permitirán personalizar la interfaz según las necesidades de cada área.",
+    "start_time": 26.6,
+    "end_time": 56.8
   },
   {
     "slide_index": 3,
-    "image_file": "057_Slide_03_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "El servicio es fundamental para OEC Computers. Para mejorar la eficiencia de las llamadas de servicio, el personal de soporte al cliente debe tener la posibilidad de encontrar rápidamente información clave en documentos y datos maestros. Necesitan una versión simplificada de los formularios estándar, con la consolidación en la misma ficha de campos que estén relacionados con el servicio, con la retirada de campos no utilizados del formulario y con campos definidos por el usuario de fácil acceso. Los usuarios necesitan una interfaz de usuario que esté optimizada y que resulte fácil trabajar con ella. Los formularios estándar pueden simplificarse fácilmente para satisfacer las necesidades de un grupo de usuarios. Estos formularios editados se agrupan en modelos de configuración de la IU que pueden asignarse a usuarios finales de acuerdo con su rol. 3 3 Para mejorar la eficiencia de las llamadas de servicio, el personal de soporte al cliente tiene que encontrar rápidamente información clave en documentos y datos maestros. Necesitan una versión simplificada de los formularios estándar donde se retiren campos que no sean relevantes, los campos que estén relacionados con el servicio se encuentren en la misma ficha y los campos definidos por el usuario sean de fácil acceso. Ejemplo empresarial Este requisito puede implementarse fácilmente con un modelo de configuración de la IU que contenga el conjunto de formularios simplificados.",
-    "start_time": 70.15,
-    "end_time": 157.94
+    "image_file": "Slide_003.webp",
+    "script_text": "En OEC Computers, el servicio es fundamental y el personal de soporte necesita encontrar información clave rápidamente en documentos y datos maestros. Para ello, requieren formularios estándar simplificados, donde se eliminen campos no utilizados, se agrupen los relacionados con el servicio en una misma ficha y se haga accesible los campos definidos por el usuario. Una interfaz optimizada mejora la experiencia y reduce el tiempo de respuesta en las llamadas de servicio.",
+    "start_time": 56.8,
+    "end_time": 86.2
   },
   {
     "slide_index": 4,
-    "image_file": "057_Slide_04_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Simplificación de formularios Mover campos definidos por el usuario Mover campos o botones partes del formulario más adecuadas Ocultar o desactivar los campos no deseados Mover campos de la ficha a la parte principal del formulario En lugar de trabajar con formularios estándar, puede hacer que cumplan con sus necesidades ocultando o desactivando los campos no utilizados, moviendo campos o botones a una parte del formulario más adecuada, moviendo campos de otra ficha a la principal para facilitar el acceso y moviendo los campos definidos por el usuario desde la ventana lateral.",
-    "start_time": 157.94,
-    "end_time": 192.38
+    "image_file": "Slide_004.webp",
+    "script_text": "Para simplificar formularios en SAP Business One, puede ocultar o desactivar campos que no se utilizan, mover campos o botones a una sección más adecuada del formulario, trasladar campos de otras fichas a la parte principal para facilitar el acceso y llevar los campos definidos por el usuario desde la ventana lateral a una ubicación más visible. Estas acciones permiten adaptar el formulario a las necesidades específicas de cada usuario o rol sin modificar el estándar.",
+    "start_time": 86.2,
+    "end_time": 117.2
   },
   {
     "slide_index": 5,
-    "image_file": "057_Slide_05_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Modelos de configuración de la IU La primera parte de este tema explica la finalidad de un modelo de configuración de la IU.",
-    "start_time": 192.38,
-    "end_time": 200.59
+    "image_file": "Slide_005.webp",
+    "script_text": "Un modelo de configuración de la IU es un contenedor que agrupa varios formularios editados y simplificados. Su propósito es permitir que estos formularios personalizados se asignen a usuarios finales según su rol o función dentro de la empresa. De esta forma, cada usuario trabaja con una interfaz adaptada a sus necesidades, sin afectar la configuración estándar del sistema ni requerir cambios individuales en cada cuenta.",
+    "start_time": 117.2,
+    "end_time": 144.2
   },
   {
     "slide_index": 6,
-    "image_file": "057_Slide_06_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Autorizaciones para modificaciones de IU Para editar un formulario para uso personal, el usuario necesita autorización general: GeneralEditar IU de formulario Para modificar los formularios de otros usuarios, el usuario necesita una autorización general: GestiónUtilidades Modelo de configuración de la IU Autorización Vía de acceso a menú Requisito General Editar IU de formulario Herramientas > Editar IU de formulario Editar un formulario para uso personal GestiónUtilidades Modelo de configuración de la IU Gestión > Utilidades > Modelo de configuración de la IU Editar formularios para los demás en un modelo de IU Los usuarios autorizados pueden editar y modificar formularios para uso personal utilizando la herramienta Editar IU de formulario. El menú de herramientas se convierte en activo cuando el usuario abre un formulario elegible. La autorización necesaria para editar un formulario se encuentra bajo el área temática General en la ventana de autorizaciones generales. Los usuarios autorizados pueden modificar formularios para otros usuarios mediante la creación de un modelo de configuración de IU. La autorización general necesaria se encuentra en el área temática Administración > Utilidades en las autorizaciones generales.",
-    "start_time": 200.59,
-    "end_time": 275.14
+    "image_file": "Slide_006.webp",
+    "script_text": "Para editar un formulario para uso personal, el usuario necesita la autorización General > Editar IU de formulario, accesible desde Herramientas > Editar IU de formulario cuando abre un formulario elegible. Para modificar formularios de otros usuarios, se requiere la autorización Gestión > Utilidades > Modelo de configuración de la IU, disponible en el menú Gestión > Utilidades. Estas autorizaciones permiten controlar quién puede personalizar la interfaz y quién puede distribuir esos cambios a otros usuarios mediante modelos de configuración.",
+    "start_time": 144.2,
+    "end_time": 176.8
   },
   {
     "slide_index": 7,
-    "image_file": "057_Slide_07_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Modelo de configuración de la IU Gestión > Utilidades > Modelo de configuración de la IU El modelo de configuración de la IU es un conjunto de formularios editados para las necesidades de los usuarios finales Para crear un nuevo modelo, abra la ventana Modelo de configuración de la IU y seleccione Datos > Añadir Lista de formularios editados para un grupo de usuarios Un modelo de configuración de la IU es un conjunto de formularios que se han simplificado y o modificado para satisfacer las necesidades comunes de un conjunto de usuarios finales En SAP Business One, todos los formularios y documentos pueden modificarse. Para crear una plantilla de configuración de IU, seleccione la vía de acceso de menú que se muestra en la diapositiva y, a continuación, seleccione Datos > Añadir de la barra de menús.",
-    "start_time": 275.14,
-    "end_time": 323.9
+    "image_file": "Slide_007.webp",
+    "script_text": "El modelo de configuración de la IU es un conjunto de formularios editados para adaptarse a las necesidades específicas de los usuarios finales. Permite simplificar o modificar formularios estándar de SAP Business One para mejorar la usabilidad. Cada modelo se crea desde la ruta Gestión > Utilidades > Modelo de configuración de la IU, donde se añaden listas de formularios editados para un grupo de usuarios. Así, se garantiza que los formularios reflejen las tareas reales que realizan los usuarios en su día a día.",
+    "start_time": 176.8,
+    "end_time": 211.4
   },
   {
     "slide_index": 8,
-    "image_file": "057_Slide_08_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Adición de formularios Seleccionar formularios que irán en el modelo Los formularios individuales se seleccionan de la lista desplegable y, a continuación, se editan para cumplir con los requisitos de usuario Pueden crearse modelos de IU adicionales para diferentes conjuntos de usuarios. Nota: Algunas funcionalidades de edición se solapan con las parametrizaciones de formulario. Los usuarios todavía pueden realizar más modificaciones en sus propios formularios mediante las parametrizaciones de formulario Los formularios individuales se seleccionan desde una lista desplegable en la ficha Formularios y, a continuación, se editan de forma individual. Pueden crearse modelos de IU adicionales para diferentes conjuntos de usuarios finales. Nota: Algunas de las funcionalidades de edición, como la de ocultar campos, también se pueden lograr utilizando las parametrizaciones de formulario. Los usuarios todavía pueden realizar más modificaciones en un formulario mediante las parametrizaciones de formulario",
-    "start_time": 323.9,
-    "end_time": 385.61
+    "image_file": "Slide_008.webp",
+    "script_text": "Para agregar formularios al modelo de configuración de la IU, primero se selecciona uno desde la lista desplegable en la ficha Formularios. Luego, se edita individualmente para cumplir con los requisitos específicos de los usuarios, como ocultar campos innecesarios o reordenar elementos. Es posible crear múltiples modelos de IU para diferentes grupos de usuarios, adaptando cada uno a sus funciones específicas. Algunas ediciones, como ocultar campos, también se pueden lograr mediante parametrizaciones de formulario, pero el modelo de IU ofrece una capa adicional de personalización centralizada.",
+    "start_time": 211.4,
+    "end_time": 246.4
   },
   {
     "slide_index": 9,
-    "image_file": "057_Slide_09_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Editar el modo de IU Seleccione un formulario y, a continuación, el botón Editar IU de formulario En el modo de edición, el formulario tiene un área de título negra distintiva El campo en el que se ha hecho clic se resalta para la edición Para editar un formulario, seleccione la fila del formulario en el modelo y, a continuación, seleccione el botón Editar IU de formulario. Tenga en cuenta que este botón no se convierte en activo hasta que seleccione un formulario. Al pulsar el botón Editar IU de formulario entrará en el modo de edición. El formulario tiene un área de título negra distintiva. El título del formulario cambia para incluir el texto “Modo edición de la IU”. Ahora ya puede realizar cambios de diseño. Al hacer clic en un campo, se resalta inmediatamente y puede realizar una acción en él, como ocultarlo o moverlo.",
-    "start_time": 385.61,
-    "end_time": 438.94
+    "image_file": "Slide_009.webp",
+    "script_text": "Al seleccionar un formulario en el modelo y hacer clic en el botón Editar IU de formulario, se activa el modo de edición. En este estado, el formulario muestra un área de título negra distintiva y el título cambia para incluir 'Modo edición de la IU'. El campo en el que se hace clic se resalta inmediatamente, permitiendo acciones como ocultarlo, moverlo o modificarlo. Este botón solo se activa cuando se selecciona un formulario, evitando ediciones accidentales. Desde aquí, los diseñadores pueden ajustar el layout para que coincida con las tareas reales de los usuarios.",
+    "start_time": 246.4,
+    "end_time": 285.0
   },
   {
     "slide_index": 10,
-    "image_file": "057_Slide_10_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Asignación de usuarios al modelo de IU Los usuarios pueden asignarse al modelo de IU de forma individual o por grupo de usuarios Tras la asignación, los formularios modificados se abrirán automáticamente en lugar de los formularios estándar cuando el usuario asignado vuelva a iniciar sesión Después de que el conjunto de formularios se haya editado, el modelo de configuración de IU se asigna a los usuarios: De forma individual por nombre en la ficha Usuarios asignados Como grupo de usuarios en la ficha Grupos asignados. El grupo de usuarios debe ser del tipo Configuración de modelos o En todos los tipos. Consulte el curso complementario Usuarios y Grupos de usuarios para obtener más información sobre grupos de usuarios. Estos formularios modificados se abrirán automáticamente en lugar de los formularios estándar cuando el usuario asignado vuelva a iniciar sesión.",
-    "start_time": 438.94,
-    "end_time": 491.23
+    "image_file": "Slide_010.webp",
+    "script_text": "Los usuarios pueden asignarse al modelo de configuración de la IU de forma individual, por nombre en la ficha Usuarios asignados, o por grupo, en la ficha Grupos asignados. El grupo de usuarios debe ser del tipo 'Configuración de modelos' o 'En todos los tipos'. Tras la asignación, cuando el usuario vuelva a iniciar sesión en SAP Business One, los formularios modificados del modelo se abrirán automáticamente en lugar de los estándar. Esto garantiza una experiencia consistente y adaptada sin requerir que cada usuario ajuste su interfaz manualmente.",
+    "start_time": 285.0,
+    "end_time": 320.8
   },
   {
     "slide_index": 11,
-    "image_file": "057_Slide_11_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Realización de modificaciones En esta sección se muestra cómo editar y simplificar formularios.",
-    "start_time": 491.23,
-    "end_time": 498.0
+    "image_file": "Slide_011.webp",
+    "script_text": "Esta sección muestra cómo editar y simplificar formularios dentro del modo de edición de la IU. El objetivo es adaptar la interfaz a las necesidades reales de los usuarios finales, eliminando campos innecesarios, reordenando elementos o ajustando diseños para mejorar la eficiencia. Estas modificaciones se aplican directamente al modelo de configuración de la IU y se reflejan en todos los usuarios asignados a él, asegurando una experiencia de usuario uniforme y optimizada según sus roles y tareas habituales en la empresa.",
+    "start_time": 320.8,
+    "end_time": 353.8
   },
   {
     "slide_index": 12,
-    "image_file": "057_Slide_12_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Ocultar y deshabilitar campos En modo Edición de la IU, seleccione un campo o múltiples campos y abra el menú contextual para ver opciones de edición: Ocultar: retira el campo y descripción del formulario Deshabilitar: un campo editable pasa a estar en gris y no puede ser modificado por el usuario En el modo edición puede seleccionar un campo individual o múltiples campos y abrir el menú de contexto haciendo clic con el botón derecho del ratón. Si el campo fuera editable, el menú contextual le permitirá ocultar o deshabilitar el campo o campos seleccionados. Cuando oculta un campo, se deja un espacio en el formulario. Cuando deshabilita un campo, este pasa a estar en gris y no puede ser cambiado por el usuario. Si el campo estuviera inactivo (se muestra en gris), el menú contextual solo permitirá ocultar el campo. En el ejemplo se muestra el formulario de datos maestros del interlocutor comercial, aunque se aplican las mismas reglas de edición a todos los formularios elegibles.",
-    "start_time": 498.0,
-    "end_time": 558.29
+    "image_file": "Slide_012.webp",
+    "script_text": "En el modo de edición de la IU, al seleccionar un campo o múltiples campos y hacer clic derecho, se abre el menú contextual con opciones de edición. Seleccionar 'Ocultar' elimina el campo y su descripción del formulario, dejando un espacio en blanco. Elegir 'Deshabilitar' cambia el campo a gris, impidiendo su modificación por el usuario, aunque sigue visible. Si un campo ya está inactivo (gris), solo se permite ocultarlo. Estas reglas se aplican a todos los formularios elegibles, como el mostrado en el ejemplo de datos maestros del interlocutor comercial, permitiendo adaptar la interfaz según el rol del usuario sin perder información esencial.",
+    "start_time": 353.8,
+    "end_time": 396.0
   },
   {
     "slide_index": 13,
-    "image_file": "057_Slide_13_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Arrastrar y soltar Hacer uso del espacio en blanco en el formulario desplazando campos a una posición más adecuada Para mover un campo, seleccione el campo y arrástrelo hasta la nueva posición Se puede mover el campo de una ficha a la cabecera del formulario, o de una ficha a otra ficha diferente Puede hacer uso del espacio en blanco en un formulario para desplazar campos a una posición más adecuada. Puede mover campos seleccionándolos y arrastrándolos y soltándolos en su posición. Puede mover un campo desde una ficha hasta la cabecera principal del formulario. También puede mover un campo desde una ficha a una ficha diferente dejándola temporalmente en el espacio de la cabecera antes de cambiar a la ficha destino.",
-    "start_time": 558.29,
-    "end_time": 600.58
+    "image_file": "Slide_013.webp",
+    "script_text": "En SAP Business One, puede reorganizar los campos de un formulario usando la función de arrastrar y soltar. Seleccione el campo que desea mover, mantenga presionado el mouse y arrástrelo a una nueva posición dentro del mismo formulario. Puede colocarlo en la cabecera, en otra ficha o en un espacio libre. Esta funcionalidad le permite personalizar la vista según sus necesidades de trabajo, mejorando la usabilidad sin alterar la estructura subyacente del documento. Es ideal para destacar información importante en formularios de ventas o compras.",
+    "start_time": 396.0,
+    "end_time": 430.6
   },
   {
     "slide_index": 14,
-    "image_file": "057_Slide_14_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Alineamiento de campos Para alinear campos movidos con campos existentes, seleccione los campos y elija Alinear desde el menú contextual Campos alineados a la izquierda Después de mover los campos, puede alinearlos con los campos existentes seleccionando Alinear desde el menú contextual. Para alinear campos con un campo existente, seleccione el campo existente además de los campos movidos y seleccione la izquierda o derecha. Para cerrar cualquier espacio, seleccione un campo existente además de los campos movidos y seleccione superior o inferior.",
-    "start_time": 600.58,
-    "end_time": 634.18
+    "image_file": "Slide_014.webp",
+    "script_text": "Después de mover campos en un formulario de SAP Business One, es importante alinearlos con los existentes para mantener una apariencia ordenada y profesional. Seleccione los campos que movió, abra el menú contextual y elija la opción 'Alinear'. Puede alinearlos a la izquierda o derecha respecto a un campo de referencia, o ajustar espacios verticalmente seleccionando superior o inferior. Esto garantiza que el diseño del formulario quede visualmente coherente, facilitando la lectura y reduciendo errores al ingresar datos en procesos como facturación o pedidos.",
+    "start_time": 430.6,
+    "end_time": 464.8
   },
   {
     "slide_index": 15,
-    "image_file": "057_Slide_15_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Para mover un campo definido por el usuario (UDF) desde la ventana lateral hasta el espacio del formulario principal: Seleccione y mantenga pulsado el ratón en el campo hasta que aparezca un borde negro (1) Arrastre el rectángulo negro hasta el espacio principal (2) Muévalo hasta la posición y libérelo (3) Cómo mover campos definidos por el usuario 3 1 2 3 Una ventaja fundamental de la edición de un formulario consiste en mover campos definidos por el usuario desde la ventana lateral a la cabecera principal del formulario o a una ficha dentro del mismo. Esto resulta especialmente útil para UDF añadidos a documentos de marketing. Ya que edita cada tipo de documento de forma independiente, puede mover campos definidos por el usuario solo relevantes para ese tipo de documento sin necesidad de utilizar categorías de UDF en la ventana lateral. Solo puede moverse un campo UDF a la vez. Para mover un UDF: Seleccione el campo, no la etiqueta, y manténgalo pulsado con el ratón hasta que aparezca un borde negro (consulte la captura de pantalla 1). Arrastre el campo hasta el formulario principal (consulte la captura de pantalla 2). Sitúe el UDF en el formulario principal (consulte la captura de pantalla 3).",
-    "start_time": 634.18,
-    "end_time": 713.54
+    "image_file": "Slide_015.webp",
+    "script_text": "Para mover un campo definido por el usuario (UDF) desde la ventana lateral al formulario principal en SAP Business One, primero seleccione el campo (no su etiqueta) y mantenga presionado el mouse hasta que aparezca un borde negro alrededor. Luego, arrástrelo hacia el espacio del formulario principal y suéltelo en la posición deseada, como la cabecera o una ficha. Esta acción es especialmente útil para personalizar documentos de marketing, permitiendo mostrar solo los UDF relevantes por tipo de documento sin depender de categorías. Recuerde que solo se puede mover un UDF a la vez para evitar errores de posicionamiento.",
+    "start_time": 464.8,
+    "end_time": 505.0
   },
   {
     "slide_index": 16,
-    "image_file": "057_Slide_16_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Grabar y restablecer valores propuestos Después de haber realizado los cambios de edición, haga clic en cualquier espacio en blanco del formulario y abra el menú contextual en: Grabar: confirma los cambios Restablecer valores propuestos: Deshace todos los cambios y restablece los campos con el formato original Después de realizar los cambios, tiene que grabarlos. Haga clic en cualquier lugar del espacio en blanco del formulario y abra el menú contextual. Seleccione Grabar para confirmar los cambios. Si cierra la ventana Edición de la IU sin grabar, perderá los cambios. La opción Restablecer valores propuestos en el menú contextual actúa como un botón “deshacer”. Por lo tanto, si hubiera ocultado un campo, este se restaurará en el formulario en la posición original. Tenga en cuenta que la acción de restablecimiento de valores propuestos hace que todos los campos del formulario vuelvan al formato original. Incluso si hubiera grabado y cerrado el modelo de IU, cuando restablezca el formulario este se volverá a establecer con las parametrizaciones originales. Sugerencia: Si decide cambiar un documento ya modificado ampliamente que están utilizando varios usuarios, realice primero una copia del modelo de IU. Esto ofrece la capacidad de restablecer el documento, si fuera necesario, desde la copia, en lugar de tener que restablecerlo con las parametrizaciones originales.",
-    "start_time": 713.54,
-    "end_time": 799.37
+    "image_file": "Slide_016.webp",
+    "script_text": "Tras editar un formulario en SAP Business One, debe grabar los cambios para que se conserven. Haga clic en cualquier espacio en blanco del formulario y abra el menú contextual. Allí, seleccione 'Grabar' para confirmar las modificaciones realizadas. Si cierra la ventana sin grabar, se perderán todos los cambios. Para revertir ediciones, use 'Restablecer valores propuestos', que devuelve todos los campos al formato original, como si nunca se hubieran editado. Esta función actúa como un 'deshacer' total. Se recomienda hacer una copia del modelo antes de modificar documentos usados por varios usuarios, para poder restablecer desde la copia si es necesario.",
+    "start_time": 505.0,
+    "end_time": 546.0
   },
   {
     "slide_index": 17,
-    "image_file": "057_Slide_17_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Cómo añadir fichas Seleccione Añadir ficha desde el menú contextual del espacio en blanco para añadir una nueva ficha a un formulario Si el formulario o documento incluyera fichas, puede añadir una nueva ficha. Seleccione la opción del menú contextual. Puede mover campos existentes a una nueva ficha, incluyendo campos definidos por el usuario.",
-    "start_time": 799.37,
-    "end_time": 821.52
+    "image_file": "Slide_017.webp",
+    "script_text": "En SAP Business One, puede agregar nuevas fichas a un formulario durante la edición de la interfaz de usuario para organizar mejor los campos. Para hacerlo, haga clic en un espacio en blanco del formulario, abra el menú contextual y seleccione la opción 'Añadir ficha'. Aparecerá una nueva ficha que puede nombrar según su propósito. Luego, puede arrastrar y soltar campos existentes — incluidos los definidos por el usuario — hacia esta nueva ficha. Esta funcionalidad es útil cuando necesita agrupar información relacionada, como datos de envío o condiciones especiales, mejorando la claridad y eficiencia al trabajar con documentos de ventas o compras.",
+    "start_time": 546.0,
+    "end_time": 587.8
   },
   {
     "slide_index": 18,
-    "image_file": "057_Slide_18_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Parametrizaciones de formulario en modo de edición de IU Cuando abra parametrizaciones de formulario en el Modo edición de la IU, la ficha Elementos de la IU generará una lista de todos los campos de la cabecera y de todos los campos de cada una de las fichas Puede ocultar y deshabilitar campos marcando las casillas de selección Visible y Activo (equivalente a ocultar y deshabilitar del menú contextual) En el Modo edición de la IU, cuando abre la ventana de parametrizaciones de formulario, verá una ficha adicional denominada Elementos de la IU. Esta ficha muestra todos los campos visualizados en la cabecera y en cada ficha del documento, y puede ocultar y deshabilitar campos desde esta ventana con las columnas Visible y Activo. Esto es equivalente a ocultar y deshabilitar campos utilizando el menú contextual. Tenga en cuenta que la ficha Elementos de la IU solo aparece cuando parametrizaciones de formulario se abre desde un formulario en Modo edición de la IU. Los usuarios finales nunca ven la ficha Elementos de la IU.",
-    "start_time": 821.52,
-    "end_time": 883.37
+    "image_file": "Slide_018.webp",
+    "script_text": "Al acceder a las parametrizaciones de formulario desde el modo de edición de la IU en SAP Business One, se muestra una ficha adicional llamada 'Elementos de la IU'. Esta ficha lista todos los campos de la cabecera y de cada ficha del formulario, permitiéndole ocultar o deshabilitar campos marcando o desmarcando las columnas 'Visible' y 'Activo'. Ocultar un campo lo elimina de la vista del usuario, mientras que deshabilitarlo lo muestra en gris y evita su edición. Estos cambios solo afectan la interfaz y no se ven por usuarios finales, ya que la ficha 'Elementos de la IU' desaparece al salir del modo de edición. Es útil para simplificar formularios según roles o procesos específicos.",
+    "start_time": 587.8,
+    "end_time": 634.8
   },
   {
     "slide_index": 19,
-    "image_file": "057_Slide_19_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Cómo ocultar una ficha con parametrizaciones de formulario Opción para ocultar la ficha haciendo que la entrada de la ficha sea invisible en los elementos de la IU También puede ocultar una ficha completa haciendo que la entrada de la ficha sea invisible en la ficha Elementos de la IU. En el ejemplo, queremos ocultar las fichas Datos de planificación y Propiedades desde los datos maestros de artículo ya que no se utilizan en la empresa. En los parámetros de formulario retiramos la marca de selección de las casillas relevantes para las fichas Datos de planificación y Propiedades. Como resultado, las fichas, ya no aparecerán en el formulario de datos maestros de artículo. Las fichas Cabecera y General en los formularos de datos maestros se sitúan en gris en las parametrizaciones de formulario y no pueden ocultarse. En los documentos de marketing, la ficha Contenido no puede ocultarse.",
-    "start_time": 883.37,
-    "end_time": 937.54
+    "image_file": "Slide_019.webp",
+    "script_text": "En SAP Business One, puedes ocultar fichas que no utilizas en los formularios de datos maestros mediante la parametrización de formulario. Al desmarcar las casillas correspondientes a las fichas 'Datos de planificación' y 'Propiedades' en los parámetros de formulario, estas desaparecerán de la interfaz de usuario al abrir el maestro de artículo. Esto simplifica la vista para usuarios que no requieren esa información. Las fichas 'Cabecera' y 'General' aparecen en gris y no se pueden ocultar, al igual que la ficha 'Contenido' en documentos de marketing. Esta personalización mejora la usabilidad al mostrar solo lo relevante según las necesidades de tu empresa, como Distribuidora Andina Tech.",
+    "start_time": 634.8,
+    "end_time": 677.8
   },
   {
     "slide_index": 20,
-    "image_file": "057_Slide_20_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Resumen Modo de edición de la IU Ficha Elementos de la IU Param. de formulario Mover un campo (arrastrar y soltar) Mover un campo a otra ficha Mover un campo definido por el usuario al formulario principal Alinear y compactar campos Ocultar un campo Deshabilitar un campo Añadir una ficha Ocultar una ficha La diapositiva muestra una comparación de las acciones de edición que se pueden realizar utilizando el modo de edición de IU, la ventana de parametrizaciones de formulario mediante la ficha Elementos de IU y la ventana de parametrizaciones de formulario estándar. Tenga en cuenta que la ventana de parametrizaciones de formulario estándar sólo está disponible para ciertos formularios, como los documentos de marketing.",
-    "start_time": 937.54,
-    "end_time": 981.1
+    "image_file": "Slide_020.webp",
+    "script_text": "La edición de la interfaz de usuario en SAP Business One se puede realizar de dos formas: mediante el modo de edición de IU o mediante la ventana de parametrizaciones de formulario. El modo de edición permite mover campos (incluyendo los definidos por el usuario), ocultarlos, deshabilitarlos y añadir nuevas fichas directamente al arrastre. Por otro lado, la parametrización de formulario estándar permite ocultar fichas, mover campos entre fichas y alinear o compactar campos para mejorar la organización visual. Es importante destacar que esta última opción solo está disponible en ciertos formularios, como los documentos de marketing. Ambas herramientas son complementarias y permiten adaptar la interfaz a las necesidades específicas de cada usuario o rol en empresas como Distribuidora Andina Tech.",
+    "start_time": 677.8,
+    "end_time": 726.8
   },
   {
     "slide_index": 21,
-    "image_file": "057_Slide_21_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Gestión de modelos de configuración de la IU La siguiente parte de este tema se centra en cómo puede gestionar modelos de configuración de la IU.",
-    "start_time": 981.1,
-    "end_time": 990.29
+    "image_file": "Slide_021.webp",
+    "script_text": "En SAP Business One, los modelos de configuración de la IU permiten definir diferentes versiones de la interfaz de usuario según las necesidades de distintos grupos de usuarios. En lugar de configurar cada formulario individualmente para cada usuario, puedes crear un modelo que agrupe todos los cambios realizados en la interfaz — como ocultar fichas, mover campos o deshabilitar opciones — y asignarlo a un conjunto de usuarios. Esto facilita la administración y garantiza una experiencia consistente dentro de equipos o departamentos. Por ejemplo, el área de ventas puede tener un modelo simplificado, mientras que almacén requiere más campos visibles. Esta sección introduce cómo gestionar estos modelos para optimizar la usabilidad del sistema.",
+    "start_time": 726.8,
+    "end_time": 772.6
   },
   {
     "slide_index": 22,
-    "image_file": "057_Slide_22_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Copia de los formularios editados en otros modelos de IU Pueden crearse y asignarse múltiples modelos de configuración de la IU en diferentes conjuntos de usuarios Para ahorrar tiempo, puede copiar formularios editados de una plantilla de IU a otra. Seleccione uno o varios formularios y, a continuación, el botón Copiar a Con frecuencia, existe la necesidad de crear múltiples modelos de configuración de la IU y asignarlos a diferentes conjuntos de usuarios. Una vez que haya realizado los cambios en un formulario en un modelo de configuración de la IU, puede copiar los cambios en otro modelo de configuración de la IU. Para ello, seleccione las flechas para los formularios que desea copiar, seleccione el botón Copiar a y seleccione el modelo de la IU destino.",
-    "start_time": 990.29,
-    "end_time": 1037.59
+    "image_file": "Slide_022.webp",
+    "script_text": "Para ahorrar tiempo al configurar múltiples modelos de interfaz de usuario en SAP Business One, puedes copiar formularios ya editados de un modelo a otro. Primero, seleccionas uno o varios formularios que hayas modificado en la plantilla de IU origen. Luego, haces clic en el botón 'Copiar a' y eliges el modelo de IU destino donde deseas aplicar esos cambios. Finalmente, confirmas la acción para completar la copia. Esta funcionalidad es especialmente útil cuando necesitas crear varios modelos similares para diferentes equipos — como Grupo de ventas 1 y Grupo de ventas 2 — evitando tener que repetir manualmente los mismos ajustes en cada uno. Así, Distribuidora Andina Tech puede escalar eficientemente sus personalizaciones de IU.",
+    "start_time": 772.6,
+    "end_time": 819.6
   },
   {
     "slide_index": 23,
-    "image_file": "057_Slide_23_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Modelo de IU por defecto Opción para designar un modelo de configuración de la IU por defecto en Parametrizaciones generales El modelo por defecto se aplicará a todos los nuevos usuarios y a los usuarios existentes que no estén asignados a ningún otro modelo de IU Si un usuario se asignara posteriormente a un modelo de IU diferente, el modelo de IU nuevo tendrá preferencia sobre el modelo de IU por defecto. Ejemplo: Se crea un nuevo modelo de IU Grupo de ventas 2. ¿Qué ocurrirá cuando se establezca como un modelo por defecto? Resultado: Aún asignado al modelo Grupo de ventas 1 Asignado al modelo Grupo de ventas 2 Ya asignado al modelo de IU Grupo de ventas 1 No asignado a ningún modelo de IU En lugar de asignar un modelo de IU a cada usuario, puede designar un modelo de IU por defecto en la ficha Visualización de Parametrizaciones generales. Los formularios de modelo por defecto se aplicarán automáticamente a todos los nuevos usuarios creados después de establecer el modelo por defecto, y también se aplicará a usuarios existentes que no están asignados actualmente a ningún modelo de IU. Si un nuevo usuario se asignara posteriormente a un modelo de IU que no sea el modelo por defecto, los formularios asignados del modelo tendrán preferencia sobre el modelo de IU por defecto. Vamos a examinar cómo la designación de un modelo de IU por defecto afecta a usuarios existentes que puede que ya estén asignados a un modelo de IU. En este ejemplo, disponemos de un modelo de IU existente Grupo de ventas 1. Creamos un nuevo modelo de IU Grupo de ventas 2 y lo establecemos como por defecto. El Usuario A, que fue asignado previamente por nombre al modelo Grupo de ventas 1, no se verá afectado por el modelo por defecto. El Usuario A seguirá viendo los formularios desde el modelo Grupo de ventas 1. El Usuario B, que no se asignó a ningún modelo, se verá afectado y ahora verá los formularios del modelo Grupo de ventas 2.",
-    "start_time": 1037.59,
-    "end_time": 1157.09
+    "image_file": "Slide_023.webp",
+    "script_text": "En SAP Business One, puedes designar un modelo de configuración de la IU como predeterminado desde las Parametrizaciones generales. Este modelo se aplicará automáticamente a todos los nuevos usuarios creados después de su activación, así como a los usuarios existentes que no tengan asignado ningún otro modelo de IU. Sin embargo, si un usuario ya está asignado a un modelo específico — como 'Grupo de ventas 1' — ese modelo tendrá prioridad sobre el por defecto, incluso si posteriormente se establece uno nuevo como predeterminado. Solo los usuarios sin asignación explícita recibirán el modelo por defecto. Esta lógica asegura que las personalizaciones individuales no se sobrescriban accidentalmente, manteniendo la consistencia y el control en entornos con múltiples roles, como en Distribuidora Andina Tech.",
+    "start_time": 819.6,
+    "end_time": 869.4
   },
   {
     "slide_index": 24,
-    "image_file": "057_Slide_24_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
-    "start_time": 1157.09,
-    "end_time": 1165.08
+    "image_file": "Slide_024.webp",
+    "script_text": "La capacidad de personalizar la interfaz de usuario en SAP Business One permite adaptar el sistema a las necesidades específicas de cada usuario o equipo, mejorando la experiencia y la eficiencia operativa. Al ocultar fichas innecesarias, mover campos relevantes y aplicar modelos de configuración por defecto o por grupo, las empresas como Distribuidora Andina Tech reducen la complejidad visual y evitan errores por sobrecarga de información. Estas herramientas de configuración de IU no requieren programación y están diseñadas para ser usadas por administradores funcionales, lo que permite una adaptación rápida y sostenible del ERP a los cambios en los procesos de negocio.",
+    "start_time": 869.4,
+    "end_time": 910.8
   },
   {
     "slide_index": 25,
-    "image_file": "057_Slide_25_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Parametrizaciones de formulario El usuario puede mostrar y ocultar campos utilizando las parametrizaciones de formulario Si el formulario se asigna al usuario en una plantilla de configuración de IU, el nombre de la plantilla aparece en la ventana de parametrizaciones de formulario El usuario todavía puede realizar modificaciones mediante las parametrizaciones de formulario Cualquier usuario puede mostrar y ocultar campos en un formulario de documento de marketing mediante el icono de parametrizaciones de formulario (si tienen la autorización General > Parametrizaciones de documento). Si el usuario pulsa el icono de parametrizaciones de formulario de un formulario al que están asignados en una plantilla de configuración de IU, el nombre del modelo de IU aparecerá en la ventana de parametrizaciones de formulario. El usuario todavía puede realizar modificaciones en el formulario.",
-    "start_time": 1165.08,
-    "end_time": 1217.02
+    "image_file": "Slide_025.webp",
+    "script_text": "En SAP Business One, el usuario puede mostrar u ocultar campos en formularios de documentos de marketing mediante el icono de parametrizaciones de formulario, siempre que tenga la autorización General > Parametrizaciones de documento. Si el formulario está asociado a una plantilla de configuración de IU asignada al usuario, el nombre de esa plantilla aparecerá en la ventana de parametrizaciones. Aunque la plantilla define una configuración inicial, el usuario aún puede modificarla según sus necesidades, como ocultar el campo de teléfono o dejar visible el email. Esta flexibilidad permite adaptar la interfaz al rol de cada usuario sin requerir cambios técnicos profundos.",
+    "start_time": 910.8,
+    "end_time": 952.2
   },
   {
     "slide_index": 26,
-    "image_file": "057_Slide_26_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Varios modelos de IU Si el usuario se asignara a múltiples modelos de IU con formularios solapados: El primer modelo asignado se considera que tiene la prioridad más alta El usuario tiene la opción de aplicar un modelo de IU diferente en las parametrizaciones de formulario El sistema permite asignar múltiples modelos de IU a un usuario. Ya que los modelos podrían contener formularios solapados, ¿cómo sabe el sistema cuál utilizar? El primer modelo asignado a un usuario se considera que tiene la prioridad más alta. El usuario tiene la opción de seleccionar un modelo de IU diferente de una lista desplegable en la ventana de parametrizaciones de formulario y cambiar a los formularios de ese modelo seleccionando el botón Aplicar.",
-    "start_time": 1217.02,
-    "end_time": 1260.79
+    "image_file": "Slide_026.webp",
+    "script_text": "Cuando un usuario se le asignan múltiples modelos de IU en SAP Business One, el sistema determina cuál aplicar siguiendo un orden de prioridad: el primer modelo asignado tiene la mayor prioridad y se aplica por defecto. Sin embargo, el usuario puede cambiar esto manualmente desde la ventana de parametrizaciones de formulario, donde encontrará una lista desplegable con todos los modelos asignados. Al seleccionar un modelo diferente y hacer clic en el botón 'Aplicar', el sistema recarga los formularios asociados a ese modelo, superando la configuración inicial. Esto permite una personalización dinámica según la tarea que esté realizando el usuario.",
+    "start_time": 952.2,
+    "end_time": 992.8
   },
   {
     "slide_index": 27,
-    "image_file": "057_Slide_27_10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.webp",
-    "script_text": "Resumen Puntos clave de este tema: La simplificación de los formularios y documentos utilizados frecuentemente puede mejorar la productividad de los usuarios y reducir errores al procesar formularios Un modelo de configuración de la IU es un conjunto de formularios que se han simplificado y o modificado para satisfacer las necesidades de usuarios finales Puede crear diferentes modelos de IU para diferentes conjuntos de usuarios Todos los formularios y documentos del sistema pueden modificarse Los cambios incluyen: reordenar campos mediante la función de arrastrar y soltar, mover campos a una nueva ficha, ocultar e inhabilitar campos, alinear campos, añadir y eliminar fichas, mover campos definidos por el usuario desde la ventada lateral Puede asignar usuarios al modelo de IU de manera individual o desde un grupo de usuarios En las parametrizaciones generales puede fijar un modelo de IU predeterminado para todos los nuevos usuarios Estos son los puntos clave de este tema: La simplificación de los formularios y documentos utilizados frecuentemente puede mejorar la productividad de los usuarios y reducir errores al procesar formularios Un modelo de configuración de la IU es un conjunto de formularios que se han simplificado y o modificado para satisfacer las necesidades de usuarios finales Puede crear diferentes modelos de IU para diferentes conjuntos de usuarios Todos los formularios y documentos del sistema pueden modificarse Los cambios incluyen reordenar campos mediante la función de arrastrar y soltar, mover campos a una nueva ficha, ocultar e inhabilitar campos, alinear campos, añadir y eliminar fichas, mover campos definidos por el usuario desde la ventada lateral Puede asignar usuarios a la plantilla de IU de manera individual por nombre o desde un grupo de usuarios. En las parametrizaciones generales puede fijar un modelo de IU predeterminado para aplicarla a todos los nuevos usuarios",
-    "start_time": 1260.79,
-    "end_time": 1373.9
+    "image_file": "Slide_027.webp",
+    "script_text": "Este tema muestra cómo simplificar formularios y documentos frecuentemente usados en SAP Business One mejora la productividad del usuario y reduce errores al procesarlos. Un modelo de configuración de la IU es un conjunto de formularios adaptados mediante acciones como reordenar campos con arrastrar y soltar, moverlos a nuevas fichas, ocultar o inhabilitar campos, alinearlos, añadir o eliminar fichas, o mover campos definidos por el usuario desde la ventana lateral. Estos modelos pueden crearse para diferentes grupos de usuarios y asignarse individualmente o por grupo. Además, desde las parametrizaciones generales, se puede establecer un modelo de IU predeterminado que se aplique automáticamente a todos los nuevos usuarios, asegurando una experiencia consistente desde el inicio.",
+    "start_time": 992.8,
+    "end_time": 1039.0
   }
 ]

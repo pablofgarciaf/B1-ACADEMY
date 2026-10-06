@@ -1,8 +1,10 @@
 [
   {
     "slide_index": 1,
-    "image_file": "Slide_01.webp",
-    "script_text": "Comenzamos el estudio del ciclo de aprovisionamiento en SAP Business One analizando el Pedido de Compras en la tabla OPOR. Como consultores, una de las preguntas de certificación más frecuentes es: ¿genera el pedido un asiento contable en el Libro Mayor? La respuesta es un rotundo no. El pedido representa un acuerdo comercial de intención de compra entre la empresa y el proveedor, pero no transfiere la propiedad física del material ni crea una obligación jurídica de pago inmediata. Sin embargo, en la gestión logística cumple un papel estelar: reserva el compromiso de compra en la columna de stock solicitado, permitiendo que el planificador de compras y el módulo MRP de SAP calculen con precisión la disponibilidad futura de inventario sin inflar artificialmente el balance general de la compañía.",
+    "image_file": "Slide_001.webp",
+    "script_text": "El pedido de compras en SAP Business One es un acuerdo comercial que indica la intención de adquirir materiales, pero no genera asiento contable porque no transfiere la propiedad ni crea obligación de pago inmediata. Su función clave es reservar el compromiso de compra en el stock solicitado, lo que permite al módulo MRP calcular con precisión la disponibilidad futura de inventario sin afectar el balance general. Esto evita inflar artificialmente los activos y apoya una planificación de compras realista y alineada con la logística real de la empresa.",
+    "start_time": 0.0,
+    "end_time": 36.2,
     "step_guide": {
       "title": "Lección 1: Arquitectura del Pedido de Compras (OPOR)",
       "menu_path": "Compras - Proveedores > Pedido",
@@ -15,14 +17,14 @@
       ],
       "expected_output": "Pedido registrado en estado Abierto con impacto en stock solicitado y cero impacto contable.",
       "consultant_tip": "El pedido compromete la compra pero no afecta el Libro Mayor hasta la recepción física del material."
-    },
-    "start_time": 0.0,
-    "end_time": 49.424
+    }
   },
   {
     "slide_index": 2,
-    "image_file": "Slide_02.webp",
-    "script_text": "El momento de la verdad en la logística ocurre con la Entrada de Mercancías en la tabla OPDN. Al ingresar físicamente los artículos al almacén, si la empresa opera bajo el esquema de inventario permanente, SAP Business One ejecuta automáticamente un asiento contable trascendental: incrementa el valor de las existencias en el activo en la columna del Debe, pero como aún no ha llegado la factura del proveedor, no podemos acreditar la cuenta por pagar definitiva. Aquí es donde entra en juego la cuenta transitoria o puente de Compensación EM/RF, acreditando el Haber. Este mecanismo financiero asegura que el balance refleje el incremento real del activo físico sin anticipar facturas fiscales no validadas.",
+    "image_file": "Slide_002.webp",
+    "script_text": "Al registrar la entrada de mercancías en SAP Business One bajo inventario permanente, el sistema incrementa el valor de las existencias en el activo mediante un asiento automático: debita la cuenta de existencias y acredita la cuenta transitoria de Compensación EM/RF. Esto refleja el aumento real del activo físico sin reconocer aún la obligación de pago, ya que no ha llegado la factura del proveedor. La cuenta puente asegura que el balance muestre fielmente el inventario recibido, evitando anticipar gastos o pasivos no validados fiscalmente.",
+    "start_time": 36.2,
+    "end_time": 70.8,
     "step_guide": {
       "title": "Lección 2: Entrada de Mercancías (OPDN) y Cuenta Puente EM/RF",
       "menu_path": "Compras - Proveedores > Entrada de Mercancías por Pedido",
@@ -34,14 +36,14 @@
       ],
       "expected_output": "Inventario físico incrementado y asiento de provisión (Existencias vs Compensación EM/RF) registrado.",
       "consultant_tip": "La cuenta puente EM/RF garantiza que el balance cuadre antes de recibir la factura legal del proveedor."
-    },
-    "start_time": 49.424,
-    "end_time": 94.456
+    }
   },
   {
     "slide_index": 3,
-    "image_file": "Slide_03.webp",
-    "script_text": "El cierre económico del aprovisionamiento se materializa con la Factura de Proveedores en la tabla OPCH. Al contabilizar la factura referenciando la entrada de mercancías previa mediante la función Copiar a, SAP realiza una operación de compensación perfecta: debita y salda a cero la cuenta puente transitoria de Compensación EM/RF, reconoce el impuesto de IVA soportado y acredita formalmente la deuda en la cuenta de control del proveedor en el pasivo. Este diseño de triple coincidencia entre pedido, entrada física y factura previene pagos indebidos y garantiza una auditoría contable inmaculada al momento de programar los pagos en tesorería.",
+    "image_file": "Slide_003.webp",
+    "script_text": "Al contabilizar la factura de proveedores en SAP Business One y referenciar la entrada de mercancías previa mediante 'Copiar a', el sistema realiza una compensación perfecta: debita y salda a cero la cuenta puente EM/RF, reconoce el IVA soportado como gasto recuperable y acredita la deuda total en la cuenta de control del proveedor. Este proceso de triple coincidencia (pedido, entrada y factura) evita pagos indebidos, asegura la precisión contable y permite una auditoría transparente al momento de programar los pagos en tesorería.",
+    "start_time": 70.8,
+    "end_time": 104.6,
     "step_guide": {
       "title": "Lección 3: Factura de Proveedores (OPCH) y Compensación Contable",
       "menu_path": "Compras - Proveedores > Factura de Proveedores",
@@ -53,14 +55,14 @@
       ],
       "expected_output": "Cuenta transitoria compensada a cero y deuda comercial registrada en el pasivo.",
       "consultant_tip": "El proceso de triple coincidencia en SAP B1 blinda la empresa contra facturaciones duplicadas o erróneas."
-    },
-    "start_time": 94.456,
-    "end_time": 135.072
+    }
   },
   {
     "slide_index": 4,
-    "image_file": "Slide_04.webp",
-    "script_text": "Uno de los mayores diferenciadores competitivos de SAP Business One frente a otros ERPs es su Mapa de Relaciones visual. Con un solo clic derecho sobre cualquier documento del circuito, el consultor o auditor financiero puede visualizar el árbol genealógico completo de la transacción: desde la cotización inicial, pasando por el pedido y la entrada de almacén, hasta la factura y el pago efectuado. Además, al hacer doble clic sobre la línea de conexión o los iconos contables, el sistema nos abre directamente el asiento en el Libro Mayor, permitiendo rastrear discrepancias de inventario o precios en cuestión de segundos y sin consultar tablas intermedias.",
+    "image_file": "Slide_004.webp",
+    "script_text": "El Mapa de Relaciones en SAP Business One permite visualizar con un clic derecho el árbol genealógico completo de una transacción, desde la cotización hasta el pago. Al hacer doble clic en los íconos contables o líneas de conexión, el sistema abre directamente el asiento correspondiente en el Libro Mayor, facilitando el rastreo rápido de discrepancias en inventario o precios. Esta herramienta es clave para auditores y consultores, ya que elimina la necesidad de consultar tablas intermedias y acelera la resolución de problemas durante el cierre contable o auditorías internas.",
+    "start_time": 104.6,
+    "end_time": 141.2,
     "step_guide": {
       "title": "Lección 4: Mapa de Relaciones y Auditoría de Trazabilidad Total",
       "menu_path": "Clic Derecho en Documento > Mapa de Relaciones",
@@ -72,8 +74,6 @@
       ],
       "expected_output": "Árbol gráfico interactivo mostrando el ciclo logístico completo y su estado de cierre.",
       "consultant_tip": "El Mapa de Relaciones es la herramienta definitiva para auditorías fiscales y resolución rápida de disputas."
-    },
-    "start_time": 135.072,
-    "end_time": 175.808
+    }
   }
 ]

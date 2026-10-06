@@ -1,135 +1,135 @@
 [
   {
     "slide_index": 1,
-    "image_file": "082_Slide_01_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Pricing 21 Pricelist CreatePricelist en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Determinación de precios: Crear una lista de precios Le damos la bienvenida al tema sobre la creación de listas de precios.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre la creación de listas de precios en SAP Business One versión 10.0. En este módulo aprenderá cómo configurar y utilizar listas de precios para adaptar la determinación de precios a las necesidades de su empresa. Este tema es fundamental para gestionar correctamente los precios de venta y compra según el tipo de cliente o artículo.",
     "start_time": 0.0,
-    "end_time": 21.77
+    "end_time": 23.02
   },
   {
     "slide_index": 2,
-    "image_file": "082_Slide_02_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "En este tema, aprenderá cómo crear listas de precios en SAP Business One. 2 Al finalizar este tema, podrá: Describir cómo se crean las listas de precios en SAP Business One Objetivos",
-    "start_time": 21.77,
-    "end_time": 35.62
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá describir cómo se crean las listas de precios en SAP Business One. Este objetivo le permitirá comprender el proceso completo de configuración, desde la creación manual hasta la actualización automática basada en otras listas, para aplicar una estrategia de precios coherente y eficiente en su empresa.",
+    "start_time": 23.02,
+    "end_time": 43.58
   },
   {
     "slide_index": 3,
-    "image_file": "082_Slide_03_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Escenario empresarial Su empresa conserva múltiples listas de precios para brindar una determinación de precios adecuada para diferentes tipos de clientes. Por lo tanto, vincula las listas de precios a los grupos de clientes. Cuando se crea un nuevo registro maestro de clientes, la lista de precios se determina del grupo de clientes asignado al registro maestro de clientes. Establezca que algunas listas de precios se actualicen automáticamente cuando se modifique una lista de precios base. Algunas listas de precios son temporales por lo que se gestionan con fechas de validez. Las nuevas listas de precios se marcan como inactivas hasta que estén listas para utilizarse. Su empresa conserva múltiples listas de precios para brindar una determinación de precios adecuada para diferentes tipos de clientes. Por lo tanto, vincula las listas de precios a los grupos de clientes. Cuando se crea un nuevo registro maestro de clientes, la lista de precios se determina del grupo de clientes asignado al registro maestro de clientes. Establezca que algunas listas de precios se actualicen automáticamente cuando se modifique una lista de precios base. Por ejemplo, base algunos precios de venta en una lista de precios basada en el precio de compra. Algunas listas de precios son temporales por lo que se gestionan con fechas de validez. Las nuevas listas de precios se marcan como inactivas hasta que estén listas para utilizarse.",
-    "start_time": 35.62,
-    "end_time": 123.84
+    "image_file": "Slide_003.webp",
+    "script_text": "Su empresa mantiene múltiples listas de precios para ofrecer precios adecuados según el tipo de cliente. Estas listas se vinculan a grupos de clientes, de modo que al crear un nuevo cliente, su lista de precios se determina automáticamente. Algunas listas se actualizan cuando cambia una lista base, otras son temporales con fechas de validez, y las nuevas se marcan como inactivas hasta su activación.",
+    "start_time": 43.58,
+    "end_time": 69.05
   },
   {
     "slide_index": 4,
-    "image_file": "082_Slide_04_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Lista precios Datos maestros de artículo 299,00 Precio de compra 499,00 599,00 799,00 Núm. artículo A1001 299,00 Concepto de lista de precios Datos maestros de interlocutor comercial Lista precios Lista de precios p. gran cantidad C1001 Cond. de pago Documento Artículo Precio A1001 C1001 Interl. comercial Lista precios p. gran ctd. Revendedor Lista de precios 04 Lista de precios 05 499,00 SAP Business One utiliza listas de precios como la base para la determinación de precios en el proceso de venta y compra. Las listas de precios incluyen la determinación de precios de los artículos. Cada interlocutor comercial tiene una lista de precios asignada. Puede ver la lista de precios asignada en el registro maestro del interlocutor comercial. Cuando se registra un interlocutor comercial en un documento de marketing, la lista de precios se asocia con el documento. Cuando registra un artículo en el documento, el precio para ese artículo se extrae de la lista de precios asociada con ese documento.",
-    "start_time": 123.84,
-    "end_time": 202.63
+    "image_file": "Slide_004.webp",
+    "script_text": "En SAP Business One, las listas de precios sirven como base para la determinación de precios en procesos de venta y compra. Cada artículo tiene precios definidos en una o más listas, y cada interlocutor comercial tiene una lista asignada. Al crear un documento de venta, el sistema extrae el precio del artículo desde la lista asociada al documento, garantizando coherencia en la facturación.",
+    "start_time": 69.05,
+    "end_time": 94.42
   },
   {
     "slide_index": 5,
-    "image_file": "082_Slide_05_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Listas de precios SAP Business One proporciona 10 listas de precios. Puede añadir, modificar o eliminar precios de las listas de precios para conservar su estrategia de determinación de precios. Puede utilizar: todas las 10 listas de precios Solo algunas de ellas; o Crear adicionales según sea necesario. SAP Business One brinda 10 listas de precios. Puede añadir, modificar o eliminar precios de las listas de precios para conservar su estrategia de determinación de precios. Puede utilizar las 10 listas de precios, utilice solo algunas de ellas o cree adicionales según sea necesario.",
-    "start_time": 202.63,
-    "end_time": 241.9
+    "image_file": "Slide_005.webp",
+    "script_text": "SAP Business One incluye 10 listas de precios predeterminadas que puede usar totalmente, parcialmente o como base para crear listas adicionales según sus necesidades. Puede añadir, modificar o eliminar precios en cualquiera de ellas para mantener una estrategia de precios alineada con su política comercial, ya sea por segmento de cliente, volumen o campaña promocional.",
+    "start_time": 94.42,
+    "end_time": 118.18
   },
   {
     "slide_index": 6,
-    "image_file": "082_Slide_06_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Formas de crear listas de precios Importar listas de precios Importar de Excel, o Data Transfer Workbench Crear listas de precios individuales Crear una lista de precios e introducir los precios manualmente, o Basar una lista de precios en otra lista de precios para realizar actualizaciones automáticas La mayoría de los clientes de SAP Business One importarán las listas de precios que están usando en sus empresas. Dichas listas de precios pueden estar en hojas de cálculo o en el sistema existente. Hay dos formas principales de importar datos maestros, utilizando la herramienta Importar de Excel o Data Transfer Workbench. Estas herramientas se explican en los temas del curso sobre Herramientas de migración de datos. En este tema del curso nos vamos a centrar en cómo crear listas de precios individuales. Cuando crea una lista de precios, introduce los precios manualmente o basa una lista de precios en otra lista de precios para que los precios se actualicen automáticamente cuando la lista de precios base cambie. Vamos a ver cómo se hace.",
-    "start_time": 241.9,
-    "end_time": 305.4
+    "image_file": "Slide_006.webp",
+    "script_text": "Para crear una lista de precios en SAP Business One, puede ingresar los precios manualmente o basar la nueva lista en una existente para que se actualice automáticamente cuando cambie la lista base. Este enfoque le permite mantener precios actualizados sin intervención manual repetida. Una vez creada, la lista se guarda y se activa cuando esté lista para usarse en transacciones.",
+    "start_time": 118.18,
+    "end_time": 142.08
   },
   {
     "slide_index": 7,
-    "image_file": "082_Slide_07_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Crear una lista de precios Inventario Listas de precios Listas de precios. Gr.2 Escuelas 2 Lista de precios base 1 Gr.1 Último precio de compra 0 Último precio evaluado 0 Grupo Método de redondeo Factor por defecto Lista de precios base por defecto Nombre de lista precios N.º Para añadir una nueva lista de precios Abra el menú contextual y seleccione Añadir línea. Introduzca el nombre de la nueva lista de precios. Puede controlar la autorización en la lista de precios mediante grupos de autorización Las listas de precios se crean y mantienen en el módulo Inventario, debajo de la zona del menú de listas de precios. Para añadir una nueva lista de precios, abra el menú contextual haciendo clic con el botón derecho del ratón y seleccione Añadir línea. A continuación, introduzca el nombre de su nueva lista de precios. Es este ejemplo estamos creando una nueva lista de precios para clientes que son colegios. Puede controlar quién está autorizado a cambiar la lista de precios mediante el uso de grupos de autorización.",
-    "start_time": 305.4,
-    "end_time": 370.15
+    "image_file": "Slide_007.webp",
+    "script_text": "Para crear una nueva lista de precios en SAP Business One, acceda al módulo Inventario y seleccione Listas de precios. Allí, abra el menú contextual con clic derecho y elija Añadir línea. Luego, ingrese un nombre descriptivo para la lista, como 'Escuelas 2' para clientes colegios. Puede controlar quién puede modificarla usando grupos de autorización. Esta lista se crea y mantiene exclusivamente en el módulo de Inventario, bajo la sección de listas de precios. Cada lista puede tener una lista base y un factor de cálculo para derivar precios automáticamente.",
+    "start_time": 142.08,
+    "end_time": 180.7
   },
   {
     "slide_index": 8,
-    "image_file": "082_Slide_08_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Basar una lista de precios en otra lista de precios Gr.2 2,0 Lista de precios base Escuelas 2 Lista de precios base 1 Gr.1 Sin redondeo Último precio de compra 0 Último precio evaluado 0 Grupo Método de redondeo Factor por defecto Lista de precios base por defecto Nombre de lista de precios N.º Lista de precios base 1,0 Defina una lista de precios base Definimos que los precios para los colegios sean el doble que los precios de la lista de precios base. Cada vez que la lista de precios cambia, la lista de precios de los colegios se actualiza automáticamente. Una opción muy útil consiste en basar una lista de precios en otra lista de precios. En nuestro ejemplo, la lista de precios para los colegios estará basada en nuestra lista de precios base que hemos definido previamente. Nos gustaría que los precios de la lista de precios de los colegios fuesen siempre el doble que los precios de la lista de precios base. Vamos a definir que la lista de precios base sea nuestra «lista de precios base». Definimos un factor por defecto de 2.0. Cada artículo con precio que haya en la lista de precios base aparecerá a un precio fijado en un 200% del precio del artículo en la lista de precios base. Por ejemplo, si un artículo tiene un precio de 10 en la lista de precios base, el mismo artículo tendrá un precio de 20 en la lista de precios de los colegios. Cada vez que los precios cambien en la lista de precios base, el precio correspondiente en la lista de precios de los colegios se actualizará automáticamente de modo que el precio siempre será el doble del precio base.",
-    "start_time": 370.15,
-    "end_time": 467.69
+    "image_file": "Slide_008.webp",
+    "script_text": "Una lista de precios puede basarse en otra lista existente, lo que permite derivar precios mediante un factor multiplicativo. En este caso, la lista 'Escuelas 2' se basa en la 'Lista de precios base 1' con un factor por defecto de 2.0. Esto significa que cada artículo tendrá un precio igual al doble del precio en la lista base. Por ejemplo, si un artículo cuesta 10 en la base, costará 20 en la lista de colegios. Lo más útil es que cualquier cambio en la lista base se refleja automáticamente en la lista derivada, manteniendo siempre la relación de doble precio sin necesidad de actualizaciones manuales.",
+    "start_time": 180.7,
+    "end_time": 221.59
   },
   {
     "slide_index": 9,
-    "image_file": "082_Slide_09_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Desglosar detalles de precio Gr.2 Sin redondeo 2 Lista de precios base Escuelas 2 Grupo Método de redondeo Factor Nombre N.º Lista de precios base hacer doble clic Puede hacer doble clic sobre una línea para abrir la lista de precios y ver y gestionar los precios de cada artículo.",
-    "start_time": 467.69,
-    "end_time": 486.24
+    "image_file": "Slide_009.webp",
+    "script_text": "Para ver y gestionar los precios detallados de cada artículo en una lista de precios, simplemente haga doble clic sobre la línea de la lista en la ventana principal. Esto abre una vista detallada donde se muestran todos los artículos del sistema con sus precios asignados en esa lista. En este caso, al hacer doble clic en 'Escuelas 2', se accede al desglose de precios por artículo, donde se puede observar cómo se aplican los factores y se calculan los precios finales. Esta acción es esencial para revisar, validar o ajustar precios individuales cuando sea necesario.",
+    "start_time": 221.59,
+    "end_time": 257.86
   },
   {
     "slide_index": 10,
-    "image_file": "082_Slide_10_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Desglosar detalles de precio 100 2 50 Escáneres A0004 2.400 2 1200 Portátil A0003 540 2 270 Tablet A0002 90 2 45 Impresora A0001 Precio Factor Precio base Descripción Núm.artículo N.º 4 3 2 1 Lista precios base Lista precios base Lista precios base Lista precios base Lista precios base hacer doble clic Gr.2 Sin redondeo 2 Lista de precios base Escuelas 2 Grupo Método de redondeo Factor Nombre N.º Lista de precios base Al abrir una lista de precios, se ven todos los artículos del sistema y los precios asignados. Aquí vemos que la lista de precios Escuelas está basada en la lista de precios base. Los precios se calculan usando un factor de 2. Observe que la tablet actualmente tiene un cálculo de precio automático de 540, el cual es dos veces el precio base de 270.",
-    "start_time": 486.24,
-    "end_time": 547.85
+    "image_file": "Slide_010.webp",
+    "script_text": "Al abrir la lista de precios 'Escuelas 2', se visualizan todos los artículos con sus precios calculados automáticamente usando un factor de 2.0 sobre el precio base. Por ejemplo, el artículo 'Portátil A0003' tiene un precio de 540, que resulta de aplicar el factor 2.0 a su precio base de 270. Lo mismo ocurre con la tablet (90 = 2 × 45) y los escáneres (2.400 = 2 × 1200). Este cálculo se actualiza dinámicamente: si el precio base de algún artículo cambia, su precio en esta lista se ajusta automáticamente manteniendo el factor de 2.0, garantizando coherencia y reduciendo el esfuerzo de mantenimiento manual.",
+    "start_time": 257.86,
+    "end_time": 306.36
   },
   {
     "slide_index": 11,
-    "image_file": "082_Slide_11_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Desglosar precios de las unidades de medida (UdM) 2 2 1 Papel copia B00320 Act. Precio Factor Precio base Descripción Núm.artículo N.º 29 hacer doble clic hacer doble clic 48 48 Caja 12 12 Paquete 6 UN 2 1 Paquete Auto Precio por unidad Reducir en % Precio base Código UM N.º 3 2 1 Ventana Precios de UM del Artículo B00320 Lista de precios: Escuelas Gr.2 Sin redondeo 2 Lista de precios base Escuelas 2 Grupo Método de redondeo Factor Nombre N.º Lista de precios base Puede mantener precios para cada unidad de medida de un artículo que posee un grupo de unidades de medida asignado. Para definir la determinación de precios de la unidad de medida, seleccione la lista de precios, luego haga doble clic en la línea del artículo de la lista de precios para abrir la ventana Precios de la unidad de medida. La determinación de precios por unidad de medida de base aparecerá en la ventana Precios de la unidad de medida pero estará inactiva. Su precio se define en la ventana de lista de precios de los artículos. La determinación de precios por unidad de medida se selecciona en el maestro del artículo y no se puede cambiar en las listas de precios. Tiene la posibilidad de añadir cualquier unidad que pertenezca al grupo de unidades de medida asignado del artículo en la ventana Precios de la unidad de medida y definir sus precios. Para obtener más información sobre las unidades de medida y cómo se definen, consulte los cursos de aprendizaje en línea sobre las unidades de medida.",
-    "start_time": 547.85,
-    "end_time": 645.1
+    "image_file": "Slide_011.webp",
+    "script_text": "Para gestionar precios según distintas unidades de medida de un artículo, como caja, paquete o unidad, debe abrir la ventana 'Precios de la unidad de medida'. Esto se hace haciendo doble clic en la línea del artículo dentro de la lista de precios. En esta ventana, puede definir precios específicos para cada UdM perteneciente al grupo asignado al artículo. Por ejemplo, para el artículo B00320 (papel copia), se puede establecer un precio de 40,80 por caja. El precio por unidad se calcula automáticamente basado en las relaciones del grupo de UdM, pero puede sobrescribirse manualmente si se requiere un precio distinto o un descuento porcentual.",
+    "start_time": 306.36,
+    "end_time": 349.97
   },
   {
     "slide_index": 12,
-    "image_file": "082_Slide_12_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Mantener los precios de la unidad de medida 40,80 15 48 Caja 11,40 5 12 Paquete 6 UN 2 2 Paquete Auto Precio por unidad Reducir en % Precio base Código UM N . º 3 2 1 Ventana Precios de UM del Artículo B00320 Lista de precios: Escuelas Cuando añade una unidad de medida, el sistema calcula automáticamente el precio por unidad basándose en las definiciones del grupo de unidades de medida. Si decide no introducir una unidad y precio para esta lista de precios, el precio de la unidad se calculará automáticamente cuando la unidad se utilice en un documento. La casilla de selección le permite mantener el descuento cuando el precio cambia. Es posible ajustar el precio por unidad: introduzca un nuevo precio por unidad o defina un descuento en porcentaje. Cuando añade una línea para una unidad de medida, el sistema calcula automáticamente el precio por unidad de cada unidad de medida basándose en las definiciones del grupo de unidades de medida. Aunque decida no introducir una unidad y precio para esta lista de precios, todavía será posible utilizar dicha unidad en un documento de ventas o de compras. También se calculará automáticamente un precio para la unidad utilizada en el documento, y el cálculo se hará basándose en la relación de dicha determinación de precios por unidad con la unidad base y su precio. Una razón para añadir el precio de una unidad de medida en esta ventana es que es posible introducir un precio por unidad distinto o modificar un precio por unidad con un porcentaje de descuento o recargo en la columna Reducir en porcentaje. La reducción o recargo se calcula de inmediato y se refleja en el precio unitario. Seleccione la casilla de verificación Automático en la línea si desea que los precios de la unidad de medida se actualicen conforme a la reducción de descuento cada vez que los precios de la unidad de medida de inventario se actualicen en la ventana Lista de precios. Si la casilla de verificación Automático no se selecciona en la línea, los precios de la unidad de medida no se actualizan cuando actualiza los precios de la unidad de medida del inventario en la ventana Lista de precios.",
-    "start_time": 645.1,
-    "end_time": 775.13
+    "image_file": "Slide_012.webp",
+    "script_text": "En la ventana de precios por unidad de medida, puede definir un precio específico por unidad o aplicar un descuento o recargo porcentual en la columna 'Reducir en %'. Por ejemplo, para el artículo B00320 en unidad 'Paquete', se establece un precio de 11,40. Si marca la casilla 'Automático', el sistema actualizará este precio cada vez que cambie el precio base en la lista de precios, aplicando el mismo porcentaje de reducción. Si no la marca, el precio permanece fijo aunque el base cambie. Incluso si no define un precio para una UdM, el sistema lo calculará automáticamente al usarla en un documento, basándose en la relación con la unidad base y su precio.",
+    "start_time": 349.97,
+    "end_time": 395.09
   },
   {
     "slide_index": 13,
-    "image_file": "082_Slide_13_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": ",80 15 48 Caja 11,40 5 12 Paquete 6 UN 2 2 Paquete Auto Precio por unidad Reducir en % Precio base Código UM N . º 3 2 1 Ventana Precios de UM del Artículo B00320 Lista de precios: Escuelas Copiar los porcentajes de ‘Reducir en’ Copie Reducir en porcentaje para precios de la unidad de medida a varios artículos y listas de precios. Todos los artículos deben pertenecer al mismo grupo de unidades de medida. Copiar \"Reducir en\" Otra función útil de la ventana de precio de la unidad de medida es que es posible copiar los porcentajes de ‘Reducir en’ a otros artículos que comparten el mismo grupo de unidades de medida. Puede utilizar el botón Copiar reducido por para copiar los porcentajes definidos en la columna Reducir en % de los precios de la unidad de medida de un artículo a varios artículos de varias listas de precios siempre y cuando todos los artículos pertenezcan al mismo grupo de unidades de medida. Por ejemplo, si tenemos varios tipos de papel de copia y siempre damos un descuento del 5% en los paquetes de 6 unidades y del 15% en las cajas, podemos copiar estos porcentajes de descuento de un artículo al resto de los artículos de papel de copia que tengan las mismas unidades de medida. Observe que el nuevo botón no aparece en la ventana Precios de unidad de medida hasta que se accede a los precios de unidad de medida desde la línea del artículo de la lista de precios. Si accede a la ventana de precios de unidad de medida desde los datos maestros de artículo seleccionando Explorar, el nuevo botón está inactivo.",
-    "start_time": 775.13,
-    "end_time": 872.26
+    "image_file": "Slide_013.webp",
+    "script_text": "En esta ventana defines los precios según la unidad de medida del artículo. Aquí estableces el precio base y el porcentaje de reducción para cada unidad, como paquetes o cajas. Es útil cuando vendes el mismo producto en distintas presentaciones con precios diferentes. Por ejemplo, un paquete de 6 unidades puede tener un 15% de descuento sobre el precio unitario. Solo se puede copiar el 'Reducir en %' si los artículos comparten el mismo grupo de unidades de medida, como todos usando 'UN' o 'CJA'. El botón de copiar solo aparece si accedes desde la lista de precios, no desde los datos maestros.",
+    "start_time": 395.09,
+    "end_time": 436.87
   },
   {
     "slide_index": 14,
-    "image_file": "082_Slide_14_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Validez de las listas de precios Fije las listas de precios como inactivas hasta que estén listas para usar. Las Listas de precios pueden estar activas para un rango de fecha específico 4 Gr.2 1,5 Precio base Pequeños clientes 3 Gr.2 2,0 Precio base Escuelas 2 Gr.1 Sin redondeo 1,0 Precio base Precio base 1 Últ. precio compra 0 Grupo Método redondeo Factor Lista precios base Nombre lista precios N.º Activo Válido de Válido a Puede fijar una lista de precios como inactiva hasta que esté lista para usarla. Una empresa puede definir la determinación de precios por adelantado y activar una lista de precios cuando se requiera. También puede definir una lista de precios para que esté activa para un rango de fecha específico. Esto les permite a las compañías ofrecer cambios de precio por un período limitado. La determinación de precios solo será efectiva cuando la primera fecha de validez se alcance. Cuando el rango ya no sea válido, la lista de precios se convierte en inactiva. Si utiliza una lista de precios inactiva en un documento, no aparecerán los precios. Si un documento de marketing hace referencia a una lista de precios inactiva, por ejemplo para un cliente asociado con una lista de precios inactiva, el precio del artículo es cero y el campo precio unitario es muestra como vacío en la línea del documento. Cuando agrega un documento asociado con una lista de precios inactiva, el sistema le advertirá sobre el precio cero. Si una lista de precios activa tiene un rango de fecha, entonces la fecha de contabilización del documento debe estar dentro del rango de fecha, de lo contrario la lista de precios se considerará inactiva. En otras ventanas como la de datos maestros de artículo, la fecha del sistema se utiliza para la comparación con el rango de fecha de la lista de precios. Una lista de precios puede desactivarse en cualquier momento, aunque ya esté asignada a un interlocutor comercial.",
-    "start_time": 872.26,
-    "end_time": 994.1
+    "image_file": "Slide_014.webp",
+    "script_text": "Puedes controlar cuándo una lista de precios está disponible para usarla. Una lista puede estar inactiva hasta que la necesites, o activa solo dentro de un rango de fechas específico. Esto es ideal para promociones temporales, como descuentos de verano o precios especiales para un trimestre. Si intentas usar una lista inactiva en un documento, el precio aparecerá como cero y el sistema te advertirá. Cuando la lista tiene un rango de fechas, solo se aplica si la fecha del documento está dentro de ese periodo. En otros módulos, como artículos, se usa la fecha del sistema para validar la vigencia.",
+    "start_time": 436.87,
+    "end_time": 476.3
   },
   {
     "slide_index": 15,
-    "image_file": "082_Slide_15_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Para cada entrada de la lista de precios, puede mantener hasta 3 precios con diferentes monedas (la moneda principal y dos monedas adicionales). Esto es útil cuando desea un precio exacto en una moneda diferente en lugar de depender de la conversión de moneda realizada dentro de un documento. Puede mantener la determinación de precios en monedas alternativas no solo al nivel de artículo, sino también de cada unidad de medida para un artículo. Los campos de moneda adicional se ocultan inicialmente, pero puede visualizarlos usando las Parametrizaciones de formulario. 15 Determinación de precios exacta para monedas adicionales Moneda principal Moneda adicional 1 Moneda adicional 2 Para cada entrada de la lista de precios, puede mantener 3 precios con diferentes monedas: La moneda principal Moneda adicional 1 Moneda adicional",
-    "start_time": 994.1,
-    "end_time": 1045.22
+    "image_file": "Slide_015.webp",
+    "script_text": "Para cada artículo y unidad de medida, puedes definir hasta tres precios en monedas diferentes: la moneda principal de tu empresa y dos adicionales. Esto evita depender de la conversión automática al momento de facturar, asegurando precios exactos en divisas como euros o pesos colombianos. Los campos de monedas adicionales están ocultos por defecto, pero puedes mostrarlos mediante las parametrizaciones de formulario. Es útil si vendes internacionalmente y necesitas precios fijos en la moneda del cliente, sin variaciones por tipo de cambio diario.",
+    "start_time": 476.3,
+    "end_time": 511.42
   },
   {
     "slide_index": 16,
-    "image_file": "082_Slide_16_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Hay dos listas de precios que se crean automáticamente y que los usuarios no pueden mantener: La lista de Último precio evaluado La lista Último precio de compra El sistema mantiene estas listas de precios de forma automática. La Lista Último precio evaluado se actualiza automáticamente cuando ejecuta el Informe de simulación de valoración de inventario. Este precio se calcula solo para la unidad de medida de inventario del artículo y solo en la moneda principal. El último precio de compra se actualiza automáticamente cuando un artículo se introduce al inventario con su precio original. Estas 2 listas de precios se desactivan en la ventana Listas de precios porque no puede modificarlas. 16 Listas de precios mantenidas por el sistema Las dos listas de precios mantenidas de forma automática: Último precio evaluado: actualizado por el Informe de simulación de inventario Último precio de compra: actualizado cuando un artículo se introduce en el inventario con su precio original Desactivado porque no puede modificar estas listas de precios",
-    "start_time": 1045.22,
-    "end_time": 1107.46
+    "image_file": "Slide_016.webp",
+    "script_text": "SAP Business One crea automáticamente dos listas de precios que no puedes modificar manualmente: el Último precio evaluado y el Último precio de compra. La primera se actualiza cuando ejecutas el Informe de simulación de valoración de inventario y refleja el valor contable del stock en la unidad de medida de inventario y moneda principal. La segunda se actualiza cada vez que el artículo ingresa al inventario con su costo real, como mediante una factura de proveedor o entrada de mercancías. Estas listas son de solo lectura y aparecen desactivadas en la ventana de listas de precios porque su contenido depende únicamente de movimientos del sistema.",
+    "start_time": 511.42,
+    "end_time": 550.66
   },
   {
     "slide_index": 17,
-    "image_file": "082_Slide_17_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "El último precio de compra se actualiza mediante: facturas de proveedores, entradas y salidas de mercancías de pedido, contabilizaciones de stock para cantidades iniciales o ajustes para diferencias positivas de stock, documentos de precios de entrega y cálculo automático del precio de la última compra para facturas de materiales usados en producción. Cancelar cualquier documento no afectará este precio. Si no se ha realizado ninguna de esas acciones del cuadro en referencia a un artículo en el sistema, la lista Último precio de compra no contendrá un precio para el artículo. Puede basar otras listas de precios en el precio Último precio de compra. Sin embargo, no puede modificar manualmente la lista de precios Último precio de compra. 17 Lista de precios Último precio de compra Cuando contabiliza una de las transacciones siguientes en el sistema, éste actualiza el último precio de compra: Solo actualización automática Lista de precios base Último precio de compra Factura de proveedores Otras entradas de mercancías Introducir un saldo de existencias positivas Documento de precios de entrega Producción de un producto con un cálculo automático de los últimos precios de compra para todos los componentes.",
-    "start_time": 1107.46,
-    "end_time": 1180.44
+    "image_file": "Slide_017.webp",
+    "script_text": "El Último precio de compra se actualiza automáticamente cuando registras ciertas transacciones que involucran el ingreso del artículo al inventario con su costo original. Esto incluye facturas de proveedores, otras entradas de mercancías, introducción de saldos iniciales positivos, documentos de precios de entrega y la producción de un producto donde se calcula el costo de los componentes. El sistema actualiza este precio solo si el movimiento representa un ingreso real de stock al costo de adquisición. Cancelar cualquiera de estos documentos no afecta el precio ya registrado. Si ninguna de estas acciones ocurre, el artículo no tendrá precio en esta lista.",
+    "start_time": 550.66,
+    "end_time": 592.08
   },
   {
     "slide_index": 18,
-    "image_file": "082_Slide_18_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Parametrizaciones de configuración de las listas de precios Gestión Inicialización del sistema Parametrizaciones generales Ficha Determinación de precios. Listas de precios inactivas: Mostrar precios cero en los documentos si la fuente del precio se basa en listas de precios inactivas Mostrar listas de precios inactivas en: Informes Documentos de ventas, compras e inventario Parametrizaciones Artículos sin precio: Eliminar artículos sin precio de las tablas de listas de precios Determinación de precios por unidad de medida: Definir una forma predeterminada de manejar los cambios con reglas de conversión de las unidades de medida. Hay una serie de controles para determinar los precios en la ficha Determinación de precios de Parametrizaciones generales. Dichos controles cubren tres aspectos principales: listas de precios inactivas, artículos sin precio y determinación de precios de la unidad de medida. Puede controlar si los precios se muestran en documentos cuando una fuente de precios se basa en una lista de precios inactiva para tres tipos de precios. Tres cuadros de selección distintos definen si se muestran o no los precios especiales para los interlocutores comerciales, los descuentos por periodo y cantidad, y los precios de las listas de precios. También es posible ocultar o mostrar las listas de precios inactivas en tres aspectos: en los informes, en los documentos de ventas, compras e inventario y en las parametrizaciones. Cada uno de estos aspectos tiene un cuadro de selección que, cuando se activa, indica al sistema que debe mostrar las listas de precios inactivas correspondientes a dicho aspecto. Algunas empresas pueden tener una gran cantidad de artículos sin precio que no se venden ni se compran. Dado que cada artículo aparece en todas las listas de precios por defecto, es posible que las empresas que tienen una gran cantidad de artículos quieran eliminar los artículos sin precio de las tablas de lista de precios. Al seleccionar esta casilla de verificación, todos los artículos con precio cero se eliminarán de inmediato de la tabla de artículos (ITM1). Esto reducirá sustancialmente el tamaño de esta tabla y mejorará el rendimiento. Tenga en cuenta que esta acción no se registra en el fichero de log, debido a que no se llevan a cabo cambios de precio. Cuando la casilla de verificación se selecciona, no hay cambios de UI para el usuario. Si la casilla de verificación se desmarca posteriormente, todos los artículos eliminados se restaurarán en la tabla ITM1 para que puedan utilizarse en las operaciones comerciales normales. Observe que no es necesario realizar una copia de respaldo antes de restaurar. Esta casilla de verificación no es relevante para las listas de precios Último precio de compra y Último precio evaluado. Todos los artículos permanecen asociados con estas dos listas de precios. Los artículos que no tienen precios se siguen mostrando a los usuarios cuando miran las listas de precios. Si desea ver las listas de precios sin ver estos artículos, seleccione la opción Ocultar artículos sin precio en la ventana Lista de precios – Criterios de selección. Existe una opción similar en los informes de la lista de precios. Como la determinación de precios por unidad de medida se basa en los grupos de unidades de medida y en sus reglas para convertir una unidad en otra, es posible que quiera que los cambios que se produzcan en las relaciones entre las unidades afecten a los precios de su empresa. Tiene distintas opciones: actualizar los precios en consecuencia, eliminar la determinación de precio por unidad de medida, conservar el precio por unidad de medida correspondiente o mantener todos los precios sin cambiarlos. Una vez que lo decida, tiene una opción adicional que consiste en activar o no un cuadro de selección que indica al sistema que elimine o actualice los precios por unidad de medida basándose en los cambios que se realicen en las listas de precios mantenidas por el sistema: la lista del último precio de compra y la lista de último precio evaluado.",
-    "start_time": 1180.44,
-    "end_time": 1420.27
+    "image_file": "Slide_018.webp",
+    "script_text": "Desde esta ventana controlas cómo se comportan las listas de precios en todo el sistema. Puedes decidir si se muestran precios cero cuando se usa una lista inactiva, y en qué contextos (informes, documentos, etc.) se visibilizan esas listas inactivas. También puedes activar la eliminación automática de artículos sin precio de las tablas de listas de precios, lo que mejora el rendimiento si tienes muchos artículos que no se compran ni venden. Además, defines una regla predeterminada para manejar conversiones entre unidades de medida, estableciendo método de redondeo, grupo y factor. Estos ajustes aseguran consistencia en los precios según tu política comercial.",
+    "start_time": 592.08,
+    "end_time": 635.38
   },
   {
     "slide_index": 19,
-    "image_file": "082_Slide_19_10_Pricing_21_Pricelist_CreatePricelist_ES.webp",
-    "script_text": "Los precios de compra y venta se actualizan en las listas de precios. Existen 10 listas de precios definidas. Puede definir más. Es posible definir precios para todas las listas de precios excepto para las dos listas de precios mantenidas por el sistema: la lista del último precio de compra y la lista de último precio evaluado. Puede mantener los precios de todas las unidades de medida de un artículo si dicho artículo tiene un grupo de unidades de medida asignado. Todos los artículos están vinculados a todas las listas de precios por defecto. Sin embargo, tiene la opción de eliminar los artículos con precio cero de todas las listas de precios excepto de las listas de precios mantenidas por el sistema. Una lista de precios puede estar basada en otra usando un factor. De esta forma los precios se actualizan de forma automática cuando la lista de precios cambia. Si un precio de la lista de precios se modifica manualmente, ya no puede modificarlo de forma automática. Puede determinar las fechas de validez para las listas de precios o marcar una lista de precios como inactiva. Las parametrizaciones de configuración le permiten controlar dónde se muestran las listas de precios inactivas y si sus precios. 19 A continuación, se detallan algunos puntos clave: Los precios de compra y venta se actualizan en las listas de precios. Existen 10 listas de precios definidas. Puede definir más. Puede definir precios para todas las listas de precios excepto para las listas de precios último precio de compra y precio evaluado. Puede mantener los precios de todas las unidades de medida de un grupo de unidades de medida de un artículo. Cada artículo se vincula a cada lista de precios, pero es posible eliminar los artículos con precio cero de todas las listas de precios, exceptuando las listas de precios mantenidas por el sistema. Los precios de una lista de precios pueden estar basados en otra lista de precios usando un factor. De esta forma los precios se actualizan de forma automática cuando la lista de precios cambia. Si un precio de la lista de precios se modifica manualmente, ya no puede modificarlo de forma automática. Puede determinar las fechas de validez para las listas de precios o marcar una lista de precios como inactiva. Resumen",
-    "start_time": 1420.27,
-    "end_time": 1561.87
+    "image_file": "Slide_019.webp",
+    "script_text": "En SAP Business One, las listas de precios permiten gestionar los precios de compra y venta de forma centralizada. Por defecto, existen 10 listas predefinidas, aunque puedes crear más según las necesidades de tu empresa. Puedes asignar precios a todas las listas, excepto a las dos mantenidas por el sistema: último precio de compra y último precio evaluado. Cada artículo se vincula automáticamente a todas las listas, pero puedes eliminar aquellos con precio cero, excepto en las listas del sistema. Además, puedes basar una lista en otra usando un factor, lo que permite actualizaciones automáticas cuando cambia la lista origen. Sin embargo, si editas un precio manualmente, se rompe ese vínculo y ya no se actualizará automáticamente. También puedes definir fechas de validez o marcar una lista como inactiva, controlando su visibilidad mediante la parametrización. Esto brinda flexibilidad para adaptar los precios a campañas, clientes o períodos específicos, manteniendo el control y la consistencia en la gestión comercial.",
+    "start_time": 635.38,
+    "end_time": 702.12
   }
 ]

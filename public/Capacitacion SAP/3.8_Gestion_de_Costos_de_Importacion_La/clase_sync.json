@@ -1,219 +1,212 @@
 [
   {
     "slide_index": 1,
-    "image_file": "105_Slide_01_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Bienvenidos a esta clase sobre Purch 32 LandedCost ManageLandedCosts en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Purchasing: Managing Landed Costs SAP Business One Version 10.0 Welcome to the topic on how to manage costs. We will look at how to estimate and track actual landed costs. Then we will review how landed costs are set up.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de gestión de costos de importación en SAP Business One 10.0. Aquí aprenderás cómo estimar y rastrear los costos reales de importación, como derechos de aduana, seguro y envío, y cómo configurar esta funcionalidad para reflejar con precisión el costo total de tus artículos importados. Este proceso es clave para empresas que traen mercancía del extranjero y necesitan contabilizar todos los gastos asociados hasta que el producto llega al almacén. Verás cómo SAP B1 integra estos costos en el valor de inventario y, opcionalmente, en los precios de venta, asegurando una contabilidad precisa del Costo de Ventas.",
     "start_time": 0.0,
-    "end_time": 28.85
+    "end_time": 40.94
   },
   {
     "slide_index": 2,
-    "image_file": "105_Slide_02_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "In this topic, we will first discuss how landed costs are tracked in a business process. Then we will set up customs groups and landed cost charges for use in landed cost documents. 2 At the end of this topic, you will be able to:  Understand how landed costs are tracked in business processes  Set up customs group and landed cost charges used in landed cost documents Objectives",
-    "start_time": 28.85,
-    "end_time": 51.1
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás entender cómo se rastrean los costos de importación dentro de los procesos de negocio de tu empresa, desde la llegada de la mercancía al puerto hasta su ingreso al almacén. Además, aprenderás a configurar los grupos de aduanas necesarios para calcular los derechos de importación y definir los cargos de costos de importación que se utilizarán en los documentos específicos de esta funcionalidad en SAP Business One. Estos pasos son fundamentales para que los gastos adicionales se asignen correctamente al costo de los artículos.",
+    "start_time": 40.94,
+    "end_time": 75.05
   },
   {
     "slide_index": 3,
-    "image_file": "105_Slide_03_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Imagine that a large part of your company’s business is importing goods from overseas and selling locally.  When goods arrive to the port, additional charges must be paid, before you can release the goods to your warehouse.  These charges include customs and additional expenses for storage and shipping.  In order for your Cost of Goods Sold accounting to be correct, these additional charges must be embedded in the item’s cost. 3 3 Business Scenario  A large part of your company’s business is importing goods from overseas and selling locally.  When goods arrive to the port, additional charges must be paid, before you can release the goods to your warehouse.  These charges include customs duty and additional expenses for storage and shipping.  In order for your Cost of Goods Sold accounting to be correct, these additional charges must be embedded in the item’s cost.",
-    "start_time": 51.1,
-    "end_time": 100.2
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que tu empresa importa gran parte de su mercancía del extranjero para venderla localmente. Cuando los productos llegan al puerto, deben pagarse cargos adicionales como derechos de aduana, almacenamiento y envío antes de poder trasladarlos al almacén. Para que la contabilidad refleje el verdadero Costo de Ventas, estos gastos deben incorporarse al costo unitario de cada artículo. SAP Business One permite capturar estos costos reales y estimados, asegurando que el valor de inventario incluya todos los gastos necesarios para dejar la mercancía lista para la venta.",
+    "start_time": 75.05,
+    "end_time": 111.48
   },
   {
     "slide_index": 4,
-    "image_file": "105_Slide_04_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "What are Landed Costs? Landed Costs are additional expenses that may apply during the import of goods. These costs are in addition to customs duties that you pay for importing items. Landed Costs may include  Shipping  Insurance  Storage The landed costs document will help you estimate and track customs duties and landed costs so that you can capture these costs in the unit cost of items and optionally affect pricing. First let’s define what landed costs are. When items are imported, you often pay customs duties on top of the cost of merchandise. A customs duty is a tariff or tax imposed on goods when the goods are transported across international borders. In addition to customs duties, additional expenses may apply during the import of goods. Expenses such as shipping, insurance and storage are considered landed costs. You can use the landed cost document to help you estimate and track customs duties and landed costs so that you can capture these expenses and update the inventory unit cost of the items you purchase. You can also choose to update a price list of your choice as well as last purchase price.",
-    "start_time": 100.2,
-    "end_time": 164.69
+    "image_file": "Slide_004.webp",
+    "script_text": "Los Costos de Importación, también conocidos como Landed Costs, son gastos adicionales que se generan durante el proceso de importación de mercancías del extranjero. Estos costos van más allá de los derechos de aduana e incluyen conceptos como el envío, el seguro y el almacenamiento en puertos o almacenes fiscales. El documento de costos de importación en SAP Business One te permite estimar y rastrear tanto los derechos de aduana como estos otros gastos, para que se incorporen al costo unitario de los artículos. Opcionalmente, estos costos también pueden afectar los precios de venta, garantizando una rentabilidad realista.",
+    "start_time": 111.48,
+    "end_time": 151.27
   },
   {
     "slide_index": 5,
-    "image_file": "105_Slide_05_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Insurance Distributed by Price Cost 10 Distributing Landed Costs Item Quantity Price Weight AB100 1 500 1 Kilo BB150 1 200 3 Kilo CD390 2 300 2 Kilo Shipping Distributed by Weight Cost 120 Insurance Shipping 5 20 2 60 3 40  You can choose how the landed costs are distributed.  For example, an overseas order might have additional insurance and shipping costs.  Some costs may be distributed by cost and others by weight.  When landed costs are entered you can choose how the landed costs are distributed.  For example, insurance is often based on the value of an item so you may wish to have the insurance cost distributed to the items based on the cost of each item.  On the other hand, shipping costs are typically based on weight or volume. Therefore you are likely to choose one of those methods for distributing shipping charges across several different items.",
-    "start_time": 164.69,
-    "end_time": 218.62
+    "image_file": "Slide_005.webp",
+    "script_text": "En este ejemplo, vemos cómo se distribuyen los costos de importación entre distintos artículos según diferentes criterios. El seguro de 10 USD se reparte por precio: AB100 recibe 5, BB150 recibe 2 y CD390 recibe 3 (por ser dos unidades). El envío de 120 USD se distribuye por peso: AB100 (1 kg) lleva 20, BB150 (3 kg) lleva 60 y CD390 (2 kg x 2 = 4 kg) lleva 40. SAP Business One permite elegir el método de distribución — por precio, peso, cantidad o volumen — según la naturaleza del costo. El seguro suele ir por precio, ya que depende del valor; el envío, por peso o volumen, según lo que más influya en el costo real.",
+    "start_time": 151.27,
+    "end_time": 204.31
   },
   {
     "slide_index": 6,
-    "image_file": "105_Slide_06_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Goods Receipt or A/P Invoice Landed Costs Document Landed Costs Document The Landed Cost Process in SAP Business One Estimated Customs Duty and Landed Costs Broker’s A/P invoice with actual landed costs Bill of Lading or Vendor Invoice Let’s take a look at the landed cost process in SAP Business One. Once you receive a notice that the items have arrived to the port, you start by issuing either a Goods Receipt PO or an A/P invoice. You must record the customs duties and any additional cost related to this import. The landed cost is based on the goods receipt PO or the A/P invoice. Each item must have a customs group assigned to it, which is associated with a percentage, to calculate the customs amount. Note that basing landed cost on AP invoice is only supported in a perpetual inventory system. Optionally, additional expenses such as shipping and storage can be applied to the landed cost document. The customs and landed cost expenses are allocated to each unit, and are added to adjust the item cost, so the unit cost reflects the additional expenses paid in addition to the purchase price that appears in the goods receipt PO or A/P invoice. The broker is a third party vendor who charges you customs and landed costs. The broker issues a separate A/P invoice based on the landed cost document. In some cases, you don’t know the final charges, so you may create a landed cost document, with an estimated amount for customs and landed costs. Later, once you get the final amounts, you can copy the landed cost to a second landed cost document to adjust the amounts.",
-    "start_time": 218.62,
-    "end_time": 313.37
+    "image_file": "Slide_006.webp",
+    "script_text": "El proceso comienza cuando recibes aviso de que tus artículos han llegado al puerto. En ese momento, emites una Entrada de Mercancías basada en una Orden de Compra o una Factura A/P. Sobre ese documento, creas el Documento de Costos de Importación, donde estimas los derechos de aduana y otros gastos como seguro y envío. Cada artículo debe tener un grupo de aduanas asignado, que determina el porcentaje para calcular el importe de aduanas. Luego, el agente de aduanas — un proveedor externo que gestiona estos pagos — emite una Factura A/P separada con los costos reales, basada en el conocimiento de embarque y el documento de costos de importación previamente generado.",
+    "start_time": 204.31,
+    "end_time": 249.19
   },
   {
     "slide_index": 7,
-    "image_file": "105_Slide_07_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Landed Costs Example Item Z00004 Tablet PC - 128 GB Data Storage Vendor Price: 400 Item Z00005 Tablet PC - 256 GB Data Storage Vendor Price: 600  We have ordered 3 new tablet items from our vendor  When the items arrive, we receive them on a Goods Receipt PO  All three items are the same weight and volume  However they have different prices Item Z00002 Tablet PC - 64 GB Data Storage Vendor Price: 300  We will look at a simple example with landed costs.  In this case, we have ordered three new tablet items from a vendor.  We receive the items on our goods receipt PO, but we do not yet have the shipping, insurance and storage costs.  The three items are the same weight and volume, but they vary in price.  We will use a landed costs document to add those costs and allocate them appropriately.",
-    "start_time": 313.37,
-    "end_time": 368.62
+    "image_file": "Slide_007.webp",
+    "script_text": "Los costos de importación como seguro, envío y almacenamiento se añaden después de recibir la mercancía. En este caso, se han recibido tres modelos de tablet con precios diferentes pero mismo peso y volumen. Al no tener aún los costos de envío, seguro y almacenamiento, se usa un documento de costos de importación para asignarlos correctamente según la configuración del sistema. Esto permite que el costo real del artículo refleje todos los gastos necesarios para tenerlo en almacén.",
+    "start_time": 249.19,
+    "end_time": 281.14
   },
   {
     "slide_index": 8,
-    "image_file": "105_Slide_08_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "We enter the vendor code into a new Landed Costs document, then use Copy From to bring in information from the Goods Receipt PO.  Information for the items, prices, weight and volume is copied into the document.  The Expenditure and Allocation Cost Value columns will fill in automatically based on allocation setup once costs are entered.  Items Tab: Creating a Landed Costs Document # Item No. Qty Weight Volume Base Doc Price Base Doc Value Expenditure Allocation Cost Value 1 Z00002 10 4000g 10 300 3000 ? ? 2 Z00004 10 4000g 10 400 4000 ? ? 3 Z00005 10 4000g 10 600 6000 ? ?  We enter the vendor code into a new Landed Costs document, then use Copy From to bring in information from the Goods Receipt PO.  Information on the items, prices, weight and volume is copied into the document.  The Expenditure and Allocation Cost Value columns will fill in when we add landed costs into the document.",
-    "start_time": 368.62,
-    "end_time": 436.01
+    "image_file": "Slide_008.webp",
+    "script_text": "Para crear un documento de costos de importación, primero se ingresa el código del proveedor. Luego, usando la función 'Copiar Desde', se trae la información de la Entrada de Mercancías relacionada. Esto copia automáticamente los artículos, cantidades, precios, peso y volumen. Las columnas de Gasto y Valor de Costo de Asignación se completarán después al ingresar los costos reales, según las reglas de asignación predefinidas en el sistema.",
+    "start_time": 281.14,
+    "end_time": 311.04
   },
   {
     "slide_index": 9,
-    "image_file": "105_Slide_09_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "We received invoices for insurance, shipping and storage during transit  We enter the amounts on the Costs tab.  Our company has landed costs categories preset with allocation methods  In our system:  Insurance is based on item price  Shipping is allocated based on item weight  Storage is based on item volume Entering Landed Costs  We have received invoices for insurance, shipping and storage during transit.  We enter the amounts into the appropriate categories on the Costs tab.  Notice that each type of costs has been set up in our system to be allocated based on a different quality of the items.  Insurance is allocated based on price  Shipping is allocated based on weight  Storage is allocated based on volume  These allocations can be changed inside the landed costs document if needed.",
-    "start_time": 436.01,
-    "end_time": 479.02
+    "image_file": "Slide_009.webp",
+    "script_text": "Se ingresan los importes reales de seguro, envío y almacenamiento en la pestaña Costos. El sistema ya tiene configuradas las reglas de asignación: el seguro se reparte según el precio de cada artículo, el envío según su peso y el almacenamiento según su volumen. Estas reglas se aplican automáticamente, pero pueden ajustarse manualmente si se requiere una distribución diferente según acuerdos comerciales o condiciones específicas del envío.",
+    "start_time": 311.04,
+    "end_time": 339.77
   },
   {
     "slide_index": 10,
-    "image_file": "105_Slide_10_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Automatic Allocation # Item No. Qty Weight Volume Base Doc Price Base Doc Value Expenditure Allocation Cost Value 1 Z00002 10 4000g 10 300 3000 6.41 64.11 2 Z00004 10 4000g 10 400 4000 6.60 66.01 3 Z00005 10 4000g 10 600 6000 6.99 69.88  After entering the costs, we return to the Items tab to see the changes.  The total costs for insurance, shipping and storage have been distributed to the rows.  The Allocation Costs column shows what is actually being allocated to each row.  The Expenditure column gives you the allocation by unit.  After entering the costs, we return to the Items tab and see the changes.  The total costs of 200 have been distributed.  The Allocation Costs column shows what is actually being allocated to each row.  The Expenditure column shows the allocation per unit.",
-    "start_time": 479.02,
-    "end_time": 547.87
+    "image_file": "Slide_010.webp",
+    "script_text": "Tras ingresar los costos de seguro, envío y almacenamiento, el sistema distribuye automáticamente los importes entre los artículos según las reglas de asignación. En la pestaña Artículos se observa cómo cada tablet recibe una parte proporcional. Por ejemplo, el artículo más caro (Z00005) recibe mayor asignación en seguro, mientras que los de menor precio pagan menos. El Gasto muestra el costo por unidad y la Asignación el total por fila.",
+    "start_time": 339.77,
+    "end_time": 371.04
   },
   {
     "slide_index": 11,
-    "image_file": "105_Slide_11_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "In the journal entry, we see the total landed costs are:  debited to the inventory account, and  credited to a landed costs allocation account.  These costs are then added into the base price to come up with anew warehouse print for the item.  When we pay the invoices for insurance, shipping and storage, we will enter those costs into the appropriate accounts payable expense accounts.  Then we credit accounts payable instead of debiting shipping expense, we debit landed costs to zero these costs out. Effect in Accounting G/L Account Account Name Debit Credit 132000 Electronics 200 208080 Landed Costs allocation 200  In the journal entry for the landed costs, we see the total additional landed costs are debited to the inventory account and credited to a landed costs allocation account.  The costs have been added into the base price to come up with a new warehouse cost price for the item.  When we pay the invoices for insurance, shipping and storage, we will enter those costs into the appropriate accounts payable expense accounts. Then we credit accounts payable instead of debiting shipping expense, we debit landed costs to zero these costs out.  Note that in a non-perpetual company, no journal entry is created when adding the landed cost.",
-    "start_time": 547.87,
-    "end_time": 620.98
+    "image_file": "Slide_011.webp",
+    "script_text": "Al registrar el documento de costos de importación, el sistema genera un asiento contable donde se debita la cuenta de inventario por el total de los costos y se acredita una cuenta de asignación de costos de importación. Esto aumenta el valor del artículo en almacén. Cuando se pagan las facturas reales, se abona a cuentas por pagar y se debita la cuenta de asignación para cancelarla. En inventario no perpetuo, no se genera este asiento al agregar el costo.",
+    "start_time": 371.04,
+    "end_time": 400.15
   },
   {
     "slide_index": 12,
-    "image_file": "105_Slide_12_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Effect on Last Purchase Price  Landed costs can also affect the last purchase price and other price lists  On the Details tab in the Landed Costs document, we can view the updated last purchase price which now includes landed costs.  Landed costs can also affect the last purchase price and other price lists.  On the Details tab in the Landed Costs document, we can view the updated last purchase price which now includes the landed costs.  Note that when the Expenditure field states No, then the landed cost row freight amount will not affect this item’s cost.",
-    "start_time": 620.98,
-    "end_time": 652.2
+    "image_file": "Slide_012.webp",
+    "script_text": "En la pestaña Detalles del documento de costos de importación se muestra el último precio de compra actualizado, que ahora incluye los costos de importación. Este valor puede usarse en listas de precios y afectar futuras cotizaciones. Si el campo 'Gasto' está marcado como 'No' para una fila, ese artículo no recibirá el costo de importación en su valor de almacén, útil cuando ciertos ítems no deben absorber esos gastos por acuerdos especiales.",
+    "start_time": 400.15,
+    "end_time": 429.55
   },
   {
     "slide_index": 13,
-    "image_file": "105_Slide_13_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Multiple Vendors Goods Receipt PO Goods Receipt PO Landed Costs Vendor 2000 Vendor 1000 Add another vendor by replacing the first vendor and answering “no”  Landed costs might come in from more than one vendor. For example, you might have two different shipments associated with the order that come from two different vendors, or even copy two different purchasing documents into the same landed costs document.  Copy in the first goods receipt (or A/P invoice) with the first vendor, then replace the vendor at the header of the Landed Costs document. The system asks if you wish to delete the first vendor. Answer “no” and you will see “Different vendors” appear in the vendor field.  All vendors will appear on the Vendors tab.",
-    "start_time": 652.2,
-    "end_time": 693.41
+    "image_file": "Slide_013.webp",
+    "script_text": "En SAP Business One, un solo documento de Costos de Importación puede incluir artículos de varios proveedores. Para lograrlo, primero copias el albarán o factura A/P del primer proveedor. Luego, en la cabecera del documento, reemplazas ese proveedor por otro. El sistema te preguntará si deseas eliminar el primer proveedor; debes responder No para conservarlo. Al hacerlo, aparecerá la etiqueta 'Diferentes proveedores' en el campo de proveedor. Finalmente, todos los proveedores involucrados quedarán registrados en la pestaña Proveedores del documento, permitiendo una gestión clara y consolidada de múltiples fuentes en una sola operación de importación.",
+    "start_time": 429.55,
+    "end_time": 474.38
   },
   {
     "slide_index": 14,
-    "image_file": "105_Slide_14_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Define Customs Groups We will start setting up landing costs by defining customs groups.",
-    "start_time": 693.41,
-    "end_time": 699.38
+    "image_file": "Slide_014.webp",
+    "script_text": "Este paso inicia la configuración de los costos de importación en SAP Business One mediante la definición de los grupos de aduanas. Estos grupos son esenciales porque permiten asignar porcentajes estimados de derechos e impuestos aduaneros según el tipo de artículo y su origen. Al configurarlos correctamente, podrás calcular automáticamente los gastos de importación y actualizar el costo unitario de tu inventario. Este proceso se realiza en el menú de Administración, bajo Configuración de Inventario, y es el primer paso para asegurar que los costos de importación se reflejen con precisión en tus operaciones contables y de inventario.",
+    "start_time": 474.38,
+    "end_time": 513.17
   },
   {
     "slide_index": 15,
-    "image_file": "105_Slide_15_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "What is Customs Duty?  Customs duty is a tariff or tax imposed on goods when transported across international borders  Each item type has a specific duty rate which is determined by a number of factors, including where you acquired the item, where it was made, and what it is made of.  The customs duty rate is a percentage. This percentage is determined by the total purchased value of the items paid at a foreign country What is customs duty? Customs duty is a tariff or tax imposed on goods when the goods are transported across international borders Each item type has a specific duty rate which is determined by a number of factors, including where you acquired the item, where it was made, and what it is made of. The customs duty rate is a percentage. This percentage is determined by the total purchased value of the items paid at a foreign country Remember that every county has different regulations regarding customs, therefore you must follow the local requirements when working with customs duties.",
-    "start_time": 699.38,
-    "end_time": 752.74
+    "image_file": "Slide_015.webp",
+    "script_text": "Los derechos de aduana son aranceles o impuestos que se aplican a las mercancías al cruzar fronteras internacionales. Cada tipo de producto tiene una tasa específica, determinada por factores como el país de origen, lugar de fabricación y materiales utilizados. Esta tasa se expresa como un porcentaje sobre el valor total de compra de los artículos pagado en el extranjero. Es importante recordar que cada país tiene sus propias regulaciones aduaneras, por lo que al trabajar con importaciones debes cumplir siempre con los requisitos locales para evitar retrasos o multas. En SAP Business One, estos porcentajes se configuran previamente para automatizar su cálculo en los documentos de costos de importación.",
+    "start_time": 513.17,
+    "end_time": 557.57
   },
   {
     "slide_index": 16,
-    "image_file": "105_Slide_16_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Customs Groups in SAP Business One Customs Groups:  Reflect a projected percentage of the purchase price to calculate customs duty expenses  Affect the inventory unit cost  Affect a price list of your choice and last purchase price  Are assigned to the item master data record. You need to define customs groups in SAP Business One based on the type of items you are importing from foreign countries Each group reflects a projected percentage of the purchase price to calculate customs duty expenses. When the landed cost document is created, you can choose that customs affect the inventory unit cost. In addition, custom duties can affect a price list of your choice and last purchase price. Customs groups are assigned to the item master data record in the Purchasing tab.",
-    "start_time": 752.74,
-    "end_time": 794.98
+    "image_file": "Slide_016.webp",
+    "script_text": "En SAP Business One, los Grupos de Aduanas se definen para reflejar un porcentaje proyectado del precio de compra que se usará para calcular los gastos de derechos de aduana. Estos grupos afectan directamente al costo unitario del inventario, a una lista de precios seleccionada y al último precio de compra. Se asignan al registro de Datos Maestros del Artículo, específicamente en la pestaña Datos de Compras. Cada grupo representa un tipo de cargo aduanero (como Electrónica, Vehículos o Alimentación) y permite desglosar los porcentajes en Aduanas, Compra y Otros, cuyo total se usa en el documento de Costos de Importación. Además, se definen aquí las cuentas contables de asignación y de gastos para una correcta contabilización.",
+    "start_time": 557.57,
+    "end_time": 604.44
   },
   {
     "slide_index": 17,
-    "image_file": "105_Slide_17_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Define Customs Groups Administration Setup Inventory Customs Groups Name Customs % Purchase % Other % Total % Allocation account Expense Account Vehicle 5 0.5 1 5.53 Allocation Expenses Electronics 4 Allocation Expenses As explained earlier, customs charges vary based on the type of items you are importing, for example vehicles, electronics, food and beverage. For each type of duty charges, create a different customs group. Enter the name of the customs group. The customs, purchase and other columns, are percentages that represent the breakdown of the customs charges. The total column, displays the total percent that is used in the landed cost document, to calculate customs amounts. This column is calculated based on the preceding 3 columns using a specific formula based on customs requirements. Alternatively you can simply enter the total percentage in the total column. In our scenario, you are importing Vehicles and Electronics. Each has different customs duties, therefore you need to set up two customs groups. These groups, needs to be assigned to the item master data after they are created. In the last two columns, define the customs allocation and expense accounts. These are used when landed cost document is added to the system, and when the broker invoice is posted.",
-    "start_time": 794.98,
-    "end_time": 877.37
+    "image_file": "Slide_017.webp",
+    "script_text": "Para definir los Grupos de Aduanas en SAP Business One, accedes a Administración → Configuración → Inventario → Grupos de Aduanas. En esta ventana, creas un grupo distinto para cada tipo de cargo aduanero, por ejemplo: Vehículos, Electrónica o Alimentación. Las columnas % Aduanas, % Compra y % Otros representan el desglose porcentual de los cargos, mientras que % Total muestra la suma utilizada en el documento de Costos de Importación para calcular los importes. Las dos últimas columnas son contables: Cuenta de Asignación y Cuenta de Gastos, donde se registran los movimientos relacionados con los derechos de aduana. Esta configuración es esencial para automatizar y precisar el cálculo de costos en las importaciones.",
+    "start_time": 604.44,
+    "end_time": 651.96
   },
   {
     "slide_index": 18,
-    "image_file": "105_Slide_18_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Define Customs Groups – Account setup Landed cost with NO effect on inventory: Landed cost that affect inventory: Broker’s invoice (A/P invoice based on landed cost) Account Debit Credit Customs allocation 10 Custom Expenses 10 Account Debit Credit Customs allocation 10 Inventory 10 Account Debit Credit Customs allocation 10 Broker (Vendor) 10 Let us talk about how the 2 accounts are used in the accounting system. The customs expense account should be set up as an expense type in the chart of accounts. It is used when customs do not affect inventory. Once you add the landed cost document, the customs expense account is debited and the customs allocation account is credited. When you post a landed cost document that affects inventory, the customs allocation account is credited and the inventory account is debited. Later, when you create the broker’s A/P invoice, and you base it on the landed cost document, the customs allocation is cleared and its balance zeroes out. Since the customs account is a clearing account, it can be set up under the liabilities, with the other inventory variance accounts. To indicate whether or not customs should affect inventory or not, check the box Custom Affect Inventory in the Items tab of the Landed Cost document. When this check box is NOT selected then the customs amount is posted to the customs expense account.",
-    "start_time": 877.37,
-    "end_time": 955.61
+    "image_file": "Slide_018.webp",
+    "script_text": "En SAP Business One, el impacto contable de los costos de importación depende de si las aduanas afectan o no al inventario. Cuando no afectan al inventario, se debita la cuenta de Gastos de Aduanas y se acredita la de Asignación de Aduanas. Cuando sí afectan al inventario, la cuenta de Inventario se debita y la de Asignación de Aduanas se acredita, reflejando el aumento en el valor del stock. Al generar la Factura A/P del agente basada en el documento de Costos de Importación, la cuenta de Asignación de Aduanas se debita para cancelar su saldo anterior, y se acredita la cuenta del Proveedor (Agente). Esto deja el saldo de asignación en cero, cerrando el ciclo contable de la operación. La casilla 'Aduanas Afectan Inventario' en la pestaña Artículos del documento define este comportamiento.",
+    "start_time": 651.96,
+    "end_time": 702.7
   },
   {
     "slide_index": 19,
-    "image_file": "105_Slide_19_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Define Landed Costs Next we define landed costs.",
-    "start_time": 955.61,
-    "end_time": 960.0
+    "image_file": "Slide_019.webp",
+    "script_text": "Los costos de importación son los gastos adicionales que se generan al traer mercancía desde el extranjero, como fletes, seguros o aranceles. En SAP Business One, estos costos se configuran previamente para poder asignarlos posteriormente a los artículos de un documento de compra. Esta configuración permite que el sistema distribuya automáticamente el importe total del gasto entre los productos según el método elegido. Es un paso esencial para reflejar el costo real de inventario y cumplir con normas contables. No se ingresan montos aquí, solo se define la estructura que se usará en los documentos posteriores.",
+    "start_time": 702.7,
+    "end_time": 742.15
   },
   {
     "slide_index": 20,
-    "image_file": "105_Slide_20_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "You can define landed costs in the setup menu for purchasing. • First, you define a code and a name for the expense. • Since a landed cost is entered as one amount, you need to decide how this amount is allocated between items in the landed cost document. There are 6 allocation methods available. These are explained in the next slide. • A liability account needs to be defined per expense. This account is used as an allocation account when the landed cost document is added. The entry is cleared once the A/P invoice from the broker is entered. In the upcoming slide, you will see an example of the automatic journal entry. • As you can see, there are no amounts of percentages in the setup for landed costs, as well as no item affiliations. Those are entered in the landed cost document itself. 20 Define Landed Costs Administration Setup Purchasing Landed Costs Code Name Allocation By Landed Cost Alloc. Account 01 Insurance Cash value before customs Liability Account 02 Shipping Weight Liability Account.",
-    "start_time": 960.0,
-    "end_time": 1023.1
+    "image_file": "Slide_020.webp",
+    "script_text": "Para definir los costos de importación en SAP Business One, se accede mediante el menú: Administración → Configuración → Compras → Costos de Importación. En esta ventana, se ingresan los datos básicos de cada gasto: un código identificativo, un nombre descriptivo, el método de distribución (Distribuir Por) y la cuenta contable de asignación. Esta cuenta es de tipo pasivo y se usa temporalmente cuando se registra el documento de costos de importación, quedando a deber hasta que se reciba la factura del agente. Los valores reales de importe o porcentaje no se definen aquí, sino en el documento mismo, lo que permite flexibilidad por operación.",
+    "start_time": 742.15,
+    "end_time": 783.53
   },
   {
     "slide_index": 21,
-    "image_file": "105_Slide_21_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Define Landed Costs - Allocation Methods There are 6 possible ways to allocate landed cost amounts between items on a landed cost document: Cash Value Before Customs Proportionate unit price determined by comparing the total before customs amount was applied Cash Value After Customs Proportionate unit price determined by comparing the total after customs amount was applied Quantity Percentage based on each item’s quantity, out of the total quantity in the landed cost document Weight Percentage based on each item’s weight, out of the total weight in the landed cost document Volume Percentage of each item’s volume, out of the total volume in the landed cost document Equal Equal percentage for each unit in the landed cost document There are 6 possible way to allocate landed cost amounts between the items included in the landed cost document:  Cash value before customs – calculates the proportionate unit price, compare to the total, before customs amount was applied  Cash value after customs - calculates the proportionate unit price, compare to the total, after customs amount was applied  Quantity – calculates the proportionate percentage of each item’s quantity, out of the total quantity in the landed cost documents  Weight - calculates the proportionate percentage of each item’s weight, out of the total weight in the landed cost documents. The weight must be defined in the item master data.  Volume - calculates the proportionate percentage of each item’s volume, out of the total volume in the landed cost documents. The volume must be defined in the item master data.  Equal – allocate an equal amount for each single unit in the landed cost document. The allocation methods are for your discretion. For example, it is common sense to base insurance expenses on the cash value, but storage is most likely to be tied to the items’ volume. Shipping could be related to the items weight or volume. Expenses like security would probably be divided equally, since security is unlikely to vary due to factors relating to each item’s characteristics. Note that the allocation method can be modified in the landed cost document as needed for exceptional cases.",
-    "start_time": 1023.1,
-    "end_time": 1143.19
+    "image_file": "Slide_021.webp",
+    "script_text": "SAP Business One ofrece seis métodos para distribuir los costos de importación entre los artículos de un documento. El método 'Valor en Efectivo Antes de Aduanas' asigna según el precio unitario antes de impuestos. 'Después de Aduanas' lo hace tras aplicar dichos impuestos. 'Cantidad' reparte proporcionalmente a la cantidad de unidades. 'Peso' y 'Volumen' dependen de los datos maestros del artículo. Finalmente, 'Igual' divide el total en partes iguales por línea. Estos métodos permiten adaptar la distribución a la naturaleza del gasto y del producto, asegurando un costo de inventario preciso y justo.",
+    "start_time": 783.53,
+    "end_time": 826.1
   },
   {
     "slide_index": 22,
-    "image_file": "105_Slide_22_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Define Landed Costs– Accounting Transactions Landed Cost Document Broker’s invoice (A/P invoice based on landed cost) Account Debit Credit Inventory Finished Goods 10 Landed Cost Allocation 10 Account Debit Credit Landed Cost Allocation 10 Broker (Vendor) 10 Let’s take a closer look at the allocation account. When the landed cost document is added, the inventory finished goods account is debited, the landed cost allocation account gets credited. Later, when the broker invoices is added based on the landed cost document, the account is cleared and debited, the vendor gets credited. Therefore the landed cost allocation account’s balance represent the total landed costs posted, but not billed by the broker.",
-    "start_time": 1143.19,
-    "end_time": 1185.12
+    "image_file": "Slide_022.webp",
+    "script_text": "Al registrar un documento de costos de importación, SAP Business One debita la cuenta de Inventario de Productos Terminados y acredita la cuenta de Asignación de Costos de Importación, reflejando el aumento en el valor de inventario y la obligación pendiente. Cuando se genera la factura A/P del agente basada en dicho documento, se invierte el movimiento: se debita la cuenta de asignación (cancelando el pasivo) y se acredita al proveedor (agente). Así, el saldo de la cuenta de asignación muestra los costos ya contabilizados pero aún no facturados, permitiendo un control preciso de gastos en tránsito y cumplimiento con el principio de devengado.",
+    "start_time": 826.1,
+    "end_time": 866.59
   },
   {
     "slide_index": 23,
-    "image_file": "105_Slide_23_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Customs versus Landed Cost expenses Customs Landed Costs Mandatory? Depending on local regulations and type of items you import Depending on expenses incur until items were released Where to assign? Item master data Landed Cost Document Amount or percentage? Percentage on the item’s purchase price Total amount for the landed cost document Effect on unit cost? Optional Yes Affect price list? Optional Optional A/P invoice from broker needed? Yes Yes Now we have reviewed all the setup entries for landed cost, here is a summary showing the differences between customs and landed cost charges. Is it mandatory? Customs expenses are mostly mandatory on the majority items. Some items may be duty free, but this depends on the local country's regulations. Landed cost is not mandatory. It depends on the type of expenses you incur during the import process, how long the items stay in the port, if is there a need to insure the items until they get released, and will you be charged for storage and other expenses. You assign a customs group to the particular item, but landed cost expenses are entered only in the landed cost document. Customs is calculated as a percentage of the item’s purchase price, and landed cost is entered as one amount that is allocated to the items in the document based on the selected allocation method. Customs can affect inventory unit cost if you choose, but if you enter any landed costs, they will affect inventory unit cost. It is optional to affect a price list with both options. Lastly, if customs and landed cost are entered, an A/P invoice for the broker needs to be entered based on the landed cost document to complete the process. If we go back to the business scenario we discussed at the beginning, according to the company’s requirements, both customs group and landed cost must be set up, both must affect inventory, and once you have completed the landed cost, an A/P invoice from the broker should be added based on the landed cost document.",
-    "start_time": 1185.12,
-    "end_time": 1303.9
+    "image_file": "Slide_023.webp",
+    "script_text": "Los derechos de aduana y los costos de importación difieren en naturaleza y manejo contable. Las aduanas dependen de regulaciones locales y tipo de artículo, se asignan en los datos maestros del artículo como porcentaje del precio de compra, y su efecto en costo unitario es opcional. Los costos de importación, en cambio, dependen de gastos reales hasta la liberación, se asignan en el documento como importe total, siempre afectan el costo unitario y requieren una cuenta de pasivo. Ambos necesitan una factura A/P del agente para completar el proceso, pero su configuración y momento de aplicación son distintos, lo que exige un manejo separado en SAP.",
+    "start_time": 866.59,
+    "end_time": 908.45
   },
   {
     "slide_index": 24,
-    "image_file": "105_Slide_24_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Test your knowledge – Landed Cost Setup Where do you assign a customs group? 1. Warehouse master data 2. Item master data 3. Landed Cost document 4. Vendor master data Test your knowledge on landed cost setup: Where do you assign a customs group? 1. Warehouse master data 2. Item master data 3. Landed Cost document 4. Vendor master data",
-    "start_time": 1303.9,
-    "end_time": 1332.29
+    "image_file": "Slide_024.webp",
+    "script_text": "En el contexto de la configuración de costos de importación en SAP Business One, el grupo de aduanas se asigna en los datos maestros del artículo. Esta información es esencial para que el sistema calcule correctamente los derechos de importación aplicables según el tipo de mercancía y las regulaciones locales. No se configura a nivel de almacén, proveedor ni en el documento de costos de importación, ya que está vinculado directamente a las características del producto. Esta distinción es clave para evitar errores en el cálculo de costos y cumplir con requisitos aduaneros y contables.",
+    "start_time": 908.45,
+    "end_time": 944.5
   },
   {
     "slide_index": 25,
-    "image_file": "105_Slide_25_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Correct answer: Item Master Data 25 Test your knowledge – Landed Cost Setup Where do you assign Customs Group 1. Warehouse master data 2. Item master data 3. Landed Cost document 4. Vendor master data",
-    "start_time": 1332.29,
-    "end_time": 1349.66
+    "image_file": "Slide_025.webp",
+    "script_text": "El grupo de aduanas se asigna en los datos maestros del artículo, no en la configuración general de costos de importación. Esto permite que cada artículo tenga su propio régimen aduanero según su clasificación. En SAP Business One, al crear o editar un artículo, se define el grupo de aduanas correspondiente para que el sistema aplique correctamente los costos de importación asociados. Es clave para habilitar el cálculo automático de gastos como aranceles e IVA de importación al recibir mercancía.",
+    "start_time": 944.5,
+    "end_time": 976.3
   },
   {
     "slide_index": 26,
-    "image_file": "105_Slide_26_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "True or False: Customs expenses are only used when customs to not affect inventory? 26 Test your knowledge – Landed Cost Setup True/False – Customs expenses are used only when customs do not affect inventory 1. True 2. False",
-    "start_time": 1349.66,
-    "end_time": 1367.47
+    "image_file": "Slide_026.webp",
+    "script_text": "Los gastos de aduanas no se limitan solo a cuando no afectan al inventario. En realidad, se usan tanto cuando impactan en el valor de inventario como cuando se contabilizan como gasto directo, según la configuración del grupo de aduanas y el tipo de costo asignado. SAP permite definir si el gasto de aduana aumenta el costo del artículo (afectando inventario) o se registra como gasto operativo. Por eso, la afirmación es falsa: su uso depende de cómo se configure su impacto contable y de inventario.",
+    "start_time": 976.3,
+    "end_time": 1008.89
   },
   {
     "slide_index": 27,
-    "image_file": "105_Slide_27_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Correct answer: False 27 Test your knowledge – Landed Cost Setup True/False – Customs expenses are used only when customs do not affect inventory 1. True 2. False",
-    "start_time": 1367.47,
-    "end_time": 1381.32
+    "image_file": "Slide_027.webp",
+    "script_text": "La afirmación 'Los gastos de aduanas solo se usan cuando las aduanas no afectan al inventario' es falsa. En SAP Business One, los gastos de aduanas pueden configurarse para afectar o no al inventario, según las necesidades contables y operativas de la empresa. Si se quiere que el gasto de aduana forme parte del costo del artículo (por ejemplo, para valorar correctamente el inventario importado), se activa su impacto en inventario. Si se prefiere contabilizarlo como gasto inmediato, se descarta ese impacto. Esta flexibilidad permite adaptarse a distintos regímenes aduaneros y políticas de valuación.",
+    "start_time": 1008.89,
+    "end_time": 1048.32
   },
   {
     "slide_index": 28,
-    "image_file": "105_Slide_28_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "True or False: Landed cost allocation methods can only be defined in the landed cost setup? 28 Test your knowledge – Landed Cost Setup True/False – Landed cost allocation methods can only be defined in the landed cost setup 1. True 2. False",
-    "start_time": 1381.32,
-    "end_time": 1399.7
+    "image_file": "Slide_028.webp",
+    "script_text": "Los métodos de asignación de costos de importación no están limitados solo a la configuración general. Aunque se definen inicialmente en la configuración de costos de importación, SAP Business One permite modificarlos directamente dentro del propio documento de costos de importación. Esto brinda flexibilidad para ajustar cómo se distribuyen los gastos (por cantidad, peso, valor, etc.) según las características específicas de cada embarque o proveedor, sin necesidad de cambiar la configuración maestra cada vez.",
+    "start_time": 1048.32,
+    "end_time": 1081.15
   },
   {
     "slide_index": 29,
-    "image_file": "105_Slide_29_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "False. 29 Test your knowledge – Landed Cost Setup True/False – Landed cost allocation method can only be defined in the landed cost setup 1. True 2. False",
-    "start_time": 1399.7,
-    "end_time": 1413.79
+    "image_file": "Slide_029.webp",
+    "script_text": "La afirmación es falsa: los métodos de asignación de costos de importación pueden modificarse dentro del documento de costos de importación, no solo en la configuración maestra. Esto permite adaptar la distribución de gastos (por peso, valor, cantidad, etc.) a cada operación específica, según el tipo de mercancía, proveedor o condiciones del embarque. Por ejemplo, un embarque aéreo podría usar asignación por peso, mientras que uno marítimo por valor. Esta funcionalidad mejora la precisión en el cálculo del costo unitario sin requerir cambios constantes en la configuración general.",
+    "start_time": 1081.15,
+    "end_time": 1119.74
   },
   {
     "slide_index": 30,
-    "image_file": "105_Slide_30_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "Here are some key points to take away:  Landed cost is used in companies that import goods from foreign countries.  The main purpose of the tracking landed cost is to see and record the effect of additional import expenses on the item’s unit cost.  Customs groups and landed costs must be setup with the corresponding general ledger accounts to enable automatic journal entries.  Landed costs can also be used to affect last purchase price or any other price list. 30 Here are some key points to take away:  Landed cost is used in companies that import goods from foreign countries.  The main purpose of using landed costs is to see and record the effect of additional import expenses on the item’s unit cost.  Customs groups and landed costs must be set up with the corresponding general ledger accounts to enable automatic journal entries.  Landed costs can also be used to affect last purchase price or any other price list. Summary",
-    "start_time": 1413.79,
-    "end_time": 1466.9
-  },
-  {
-    "slide_index": 31,
-    "image_file": "105_Slide_31_10_Purch_32_LandedCost_ManageLandedCosts.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 1466.9,
-    "end_time": 1604.09
+    "image_file": "Slide_030.webp",
+    "script_text": "Los costos de importación en SAP Business One son esenciales para empresas que traen mercancía del extranjero. Su objetivo es registrar con precisión el impacto de gastos como fletes, seguros y aduanas en el costo unitario del artículo. Para que funcione correctamente, es necesario configurar grupos de aduanas y costos de importación con las cuentas contables adecuadas, lo que habilita asientos automáticos al recibir la mercancía. Además, estos costos pueden actualizar el último precio de compra u otras listas de precios, asegurando que los costos reales se reflejen en futuras cotizaciones y ventas.",
+    "start_time": 1119.74,
+    "end_time": 1158.29
   }
 ]

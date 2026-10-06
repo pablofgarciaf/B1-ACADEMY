@@ -1,8 +1,10 @@
 [
   {
     "slide_index": 1,
-    "image_file": "Slide_01.webp",
-    "script_text": "Cuando implementamos SAP Business One en una empresa, uno de los mayores retos es la adopción del usuario. Si un nuevo gerente de ventas entra al sistema y ve cientos de menús desconocidos, la fricción es enorme. La solución oficial de SAP para este desafío es el Cockpit estilo Fiori. Las plantillas de Cockpit no son solo pantallas decorativas; son entornos preconfigurados que agrupan los indicadores clave de rendimiento, como el KPI de facturación mensual, los accesos directos transaccionales y los embudos de ventas. Al asignar la plantilla de Ventas a nuestro nuevo responsable comercial, transformamos el ERP en una cabina de mando enfocada en el cierre de oportunidades desde el primer día.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al caso práctico de introducción a SAP Business One 10.0, versión para SAP HANA. Este ejercicio te guiará paso a paso en tareas clave para usuarios de ventas, como asignar un cockpit, modificar vistas, buscar funciones y crear documentos comerciales. Trabajarás con la base de datos de muestra y las credenciales de usuario 'director'. El objetivo es familiarizarte con la interfaz y las herramientas esenciales del sistema en un entorno realista de una empresa distribuidora de tecnología.",
+    "start_time": 0.0,
+    "end_time": 31.8,
     "step_guide": {
       "title": "Lección 1: Filosofía y Asignación de Cockpit Fiori",
       "menu_path": "Herramientas > Cockpit > Seleccionar Plantilla de Cockpit",
@@ -14,14 +16,14 @@
       ],
       "expected_output": "Lienzo Cockpit Fiori activo con KPIs y accesos comerciales.",
       "consultant_tip": "Las plantillas de cockpit alinean la interfaz del ERP con los objetivos estratégicos del puesto."
-    },
-    "start_time": 0.0,
-    "end_time": 44.168
+    }
   },
   {
     "slide_index": 2,
-    "image_file": "Slide_02.webp",
-    "script_text": "La asignación de cuentas en el maestro de interlocutores comerciales OCRD es una de las decisiones de diseño más trascendentales en SAP Business One. ¿Por qué es tan crítico el campo Empleado de Ventas? Porque en SAP, este vínculo desencadena tres procesos automáticos fundamentales: primero, los permisos de visibilidad para que el comercial solo vea a sus clientes asignados si la empresa activa restricciones de propiedad de datos; segundo, el cálculo automático de comisiones en el libro mayor y nómina; y tercero, la trazabilidad directa en todos los pedidos futuros, asegurando que cada dólar facturado se atribuya con exactitud en las métricas de rendimiento del vendedor.",
+    "image_file": "Slide_002.webp",
+    "script_text": "En este caso práctico, aprenderás a realizar tareas esenciales para un usuario de ventas en SAP Business One. Asignarás una plantilla de cockpit de ventas, modificarás un cockpit existente para adaptarlo a tus necesidades, utilizarás Enterprise Search para localizar funciones rápidamente, crearás documentos de ventas como ofertas y pedidos, y aprenderás a vincular información entre ellos. Estas habilidades te permitirán trabajar de forma eficiente desde el primer día en el sistema, tal como lo haría Bill, el nuevo jefe de ventas en OEC Computers.",
+    "start_time": 31.8,
+    "end_time": 66.0,
     "step_guide": {
       "title": "Lección 2: Asignación Estratégica en Maestro de Clientes (OCRD)",
       "menu_path": "Socios de Negocios > Datos Maestros Socio de Negocios",
@@ -33,14 +35,14 @@
       ],
       "expected_output": "Cuentas comerciales asignadas formalmente al asesor responsable.",
       "consultant_tip": "El empleado de ventas en OCRD alimenta automáticamente las comisiones y los filtros de informes."
-    },
-    "start_time": 44.168,
-    "end_time": 86.416
+    }
   },
   {
     "slide_index": 3,
-    "image_file": "Slide_03.webp",
-    "script_text": "La eficiencia operativa de un equipo comercial depende de reducir los clics innecesarios en la interfaz. En lugar de obligar al usuario a navegar por ramas complejas del árbol de menús, SAP Business One cuenta con el widget de Funciones Comunes. Al personalizar este panel con el módulo de Actividades y la creación de citas, dotamos al vendedor de un centro neurálgico de gestión CRM. Desde aquí puede programar llamadas de seguimiento, registrar minutas de reuniones y auditar el historial de interacciones con el cliente, manteniendo a todo el equipo alineado sin salir de su pantalla de inicio.",
+    "image_file": "Slide_003.webp",
+    "script_text": "Para crear una oferta de ventas en SAP Business One, ingresa al módulo de ventas y selecciona 'Oferta de Ventas'. Completa el código del cliente C20000 y la fecha actual. Luego, agrega los artículos solicitados: A00002 con cantidad 10, A00005 con cantidad 5 y C00008 con cantidad 15. Aplica un descuento del 5% en la línea correspondiente, ya que el cliente es principal. Revisa los totales y guarda el documento. Esta oferta servirá como base para generar posteriormente un pedido de cliente cuando el cliente confirme su interés.",
+    "start_time": 66.0,
+    "end_time": 101.8,
     "step_guide": {
       "title": "Lección 3: Productividad y CRM con Funciones Comunes",
       "menu_path": "Cockpit > Widget de Funciones Comunes",
@@ -52,14 +54,14 @@
       ],
       "expected_output": "Centro de actividades comerciales disponible a un solo clic.",
       "consultant_tip": "Centralizar actividades en el cockpit previene el olvido de compromisos y llamadas con prospectos."
-    },
-    "start_time": 86.416,
-    "end_time": 124.008
+    }
   },
   {
     "slide_index": 4,
-    "image_file": "Slide_04.webp",
-    "script_text": "El ciclo comercial en SAP Business One alcanza su madurez con el análisis del documento de ventas y el comportamiento del cliente. Al explorar la ficha técnica del interlocutor comercial y examinar sus condiciones de pago, listas de precios vinculadas y el límite de crédito asignado, el asesor comercial comprende que cada oferta o factura es parte de un ecosistema interconectado. La navegación contextual con las flechas de enlace naranja permite auditar en segundos el historial de transacciones y estados de cuenta, consolidando una experiencia fluida que une la gestión comercial con el rigor contable.",
+    "image_file": "Slide_004.webp",
+    "script_text": "Enterprise Search permite localizar rápidamente cualquier objeto en SAP Business One mediante palabras clave. En este caso, Bill busca la oferta de ventas para el cliente C20000 utilizando el número de cliente y la fecha de contabilización como criterios. Al ingresar estos términos en el campo de búsqueda, el sistema muestra la oferta correspondiente, que puede abrirse directamente. Desde allí, Bill puede crear el pedido de cliente con un solo clic, ahorrando tiempo y evitando navegar por menús. Esta herramienta es ideal para usuarios que necesitan acceder frecuentemente a documentos específicos.",
+    "start_time": 101.8,
+    "end_time": 138.8,
     "step_guide": {
       "title": "Lección 4: Integración Comercial y Auditoría Contable",
       "menu_path": "Ventas - Clientes > Documentos de Ventas",
@@ -71,8 +73,6 @@
       ],
       "expected_output": "Ecosistema comercial comprendido y auditado visualmente.",
       "consultant_tip": "Las flechas de enlace naranja son el sello distintivo de trazabilidad relacional en SAP Business One."
-    },
-    "start_time": 124.008,
-    "end_time": 160.76
+    }
   }
 ]

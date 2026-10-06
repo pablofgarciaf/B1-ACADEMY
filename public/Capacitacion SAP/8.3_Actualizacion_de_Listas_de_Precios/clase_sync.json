@@ -1,205 +1,205 @@
 [
   {
     "slide_index": 1,
-    "image_file": "083_Slide_01_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Pricing 22 Pricelist UpdatePricelist en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Determinación de precios: Actualización de las listas de precios Le damos la bienvenida al tema sobre la actualización de listas de precios.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de actualización de listas de precios en SAP Business One versión 10.0. En esta capacitación aprenderá cómo mantener actualizados los precios de sus artículos de forma eficiente. Este conocimiento es esencial para gestionar cambios de precios en respuesta a variaciones de costos, estrategias comerciales o condiciones del mercado. A lo largo del tema, exploraremos los métodos disponibles para actualizar listas de precios, tanto de forma manual como automática, utilizando las herramientas integradas de SAP Business One. Prepárese para mejorar su control sobre la política de precios de su empresa.",
     "start_time": 0.0,
-    "end_time": 22.58
+    "end_time": 39.94
   },
   {
     "slide_index": 2,
-    "image_file": "083_Slide_02_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "En este tema será capaz de describir las distintas formas de actualizar las listas de precios en SAP Business One. 2 Al finalizar este tema, podrá: Describir las distintas formas de actualizar las listas de precios en SAP Business One Objetivos",
-    "start_time": 22.58,
-    "end_time": 39.26
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá describir las distintas formas de actualizar las listas de precios en SAP Business One. Esto incluye entender tanto el mantenimiento directo en la ventana de lista de precios como el uso del asistente de actualización de precios. Sabrá cuándo aplicar cada método según la situación: si requiere cambios automáticos mediante factores, ajustes individuales o actualizaciones masivas por selección. Este conocimiento le permitirá mantener una política de precios coherente y actualizada, adaptada a las necesidades de su empresa, mejorando la precisión y eficiencia en la gestión comercial.",
+    "start_time": 39.94,
+    "end_time": 77.98
   },
   {
     "slide_index": 3,
-    "image_file": "083_Slide_03_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Escenario empresarial El jefe de ventas de OEC Computers utiliza factores para definir relaciones entre las listas de precios. Una serie de listas de precios de venta se basan en una lista de precios base. Cuando la lista de precios base cambia, el resto de las listas de precios de venta se actualizan automáticamente. Cuando necesita ajustar algún precio de forma individual, realiza los cambios directamente en las ventanas de la lista de precios correspondiente. Ahora sabe que es posible mantener de forma sistemática los precios de los artículos de varias listas de precios utilizando el asistente de actualización de precios. Dicho asistente le permitirá acceder a más parámetros de selección así como tener más visibilidad del efecto que tienen los cambios antes de aplicarlos. El jefe de ventas de OEC Computers utiliza factores para definir relaciones entre las listas de precios. Una serie de listas de precios de venta se basan en una lista de precios base. Cuando la lista de precios base cambia, el resto de las listas de precios de venta se actualizan automáticamente. Cuando necesita ajustar algún precio de forma individual, realiza los cambios directamente en las ventanas de la lista de precios correspondiente. Ahora sabe que es posible mantener de forma sistemática los precios de los artículos de varias listas de precios utilizando el asistente de actualización de precios. Dicho asistente le permitirá acceder a más parámetros de selección así como tener más visibilidad del efecto que tienen los cambios antes de aplicarlos.",
-    "start_time": 39.26,
-    "end_time": 132.79
+    "image_file": "Slide_003.webp",
+    "script_text": "En este escenario, el jefe de ventas de OEC Computers utiliza factores para establecer relaciones entre listas de precios. Una o más listas de precios de venta se basan en una lista de precios base mediante un factor multiplicador. Cuando la lista base se actualiza, las listas dependientes se ajustan automáticamente, garantizando coherencia en los precios. Para ajustes específicos, se pueden realizar cambios directamente en la ventana de la lista de precios correspondiente. Además, el asistente de actualización de precios permite aplicar cambios sistemáticos a una o varias listas, ofrecer visibilidad previa mediante simulación y acceder a más parámetros de selección, mejorando el control sobre el impacto de los cambios antes de aplicarlos.",
+    "start_time": 77.98,
+    "end_time": 124.94
   },
   {
     "slide_index": 4,
-    "image_file": "083_Slide_04_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Hay dos métodos para mantener las listas de precios Mantenimiento en la ventana Lista de precios Utilizar factores para actualizar precios automáticamente Hacer cambios manuales en precios individuales de una lista de precios Cambiar los precios de varios artículos de una lista de precios utilizando la opción Actualizar por selección Asistente de actualización de precios Aplicar cambios de forma sistemática a los precios de una o varias listas de precios Convertir los precios a otras monedas de forma colectiva Tener una vista previa de los cambios en modo de simulación Hay dos formas de mantener los precios de sus listas de precios. El primer método consiste en mantener los precios directamente en la ventana de lista de precios. Como hemos visto en la lección anterior, es posible utilizar factores para actualizar los precios automáticamente. También tiene la opción de hacer cambios manualmente en los precios individuales de las listas de precios. Utilizando la opción Actualizar por selección es posible abrir la lista de precios completa para actualizar artículos o cambiar precios de varios artículos de una lista de precios. El segundo método consiste en utilizar un asistente de actualización de precios. El asistente de actualización de precios ofrece varias formas de hacer cambios sistemáticos en los precios de una o varias listas de precios y convertir los precios a otras monedas de forma colectiva. El asistente le guía a través del proceso y le permite tener una vista previa de los cambios en modo de simulación antes de aplicarlos de manera irreversible. En esta lección vamos a ver los dos métodos y vamos a explicar cómo se utilizan.",
-    "start_time": 132.79,
-    "end_time": 229.01
+    "image_file": "Slide_004.webp",
+    "script_text": "Hay dos métodos principales para mantener las listas de precios en SAP Business One. El primero es el mantenimiento directo en la ventana de lista de precios, donde puede utilizar factores para actualizar precios automáticamente o hacer cambios manualmente en artículos individuales o por selección. El segundo método es el uso del asistente de actualización de precios, que permite aplicar cambios sistemáticos a una o varias listas de precios, convertir precios a otras monedas de forma colectiva y, lo más importante, tener una vista previa de los cambios en modo de simulación antes de aplicarlos de forma irreversible. Este asistente brinda mayor control y visibilidad sobre el impacto de las modificaciones.",
+    "start_time": 124.94,
+    "end_time": 168.36
   },
   {
     "slide_index": 5,
-    "image_file": "083_Slide_05_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 1: Mantenimiento de los precios de la lista de precios El jefe de ventas tiene una serie de listas de precios que están basadas en una lista de precios base. Utilizar factores para gestionar las diferencias de porcentaje entre la lista de precios base y el resto de las listas de precios. La ventaja de este método es que resulta sencillo gestionar dichos aumentos de porcentaje en las distintas listas de precios que se basan en la lista de precios base. Cuando los precios deben ser diferentes respecto a un porcentaje estándar, hace los cambios directamente en la lista de precios. Puede hacer cambios en un único artículo o utilizar criterios de selección para elegir varios artículos que desee cambiar. El jefe de ventas tiene una serie de listas de precios que están basadas en una lista de precios base. Utilizar factores para gestionar las diferencias de porcentaje entre la lista de precios base y el resto de las listas de precios. Por ejemplo, se define que los precios de la lista de precios por temporada siempre sean el doble de los precios de la lista de precios base. La ventaja de este método es que resulta sencillo gestionar dichos aumentos de porcentaje en las distintas listas de precios que se basan en la lista de precios base. El único problema surge cuando algunos precios deben ser distintos del porcentaje estándar. En esos casos, hace los cambios directamente en la lista de precios. Puede hacer cambios en el precio de un solo artículo o utilizar criterios de selección para elegir los precios de varios artículos que desee cambiar.",
-    "start_time": 229.01,
-    "end_time": 323.66
+    "image_file": "Slide_005.webp",
+    "script_text": "El jefe de ventas gestiona varias listas de precios basadas en una lista de precios base utilizando factores. Por ejemplo, define que la lista de precios por temporada tenga un factor de 2, lo que significa que todos sus precios son el doble de los de la lista base. Esta configuración permite actualizaciones automáticas: cuando cambia la lista base, las listas dependientes se actualizan sin intervención manual. Sin embargo, cuando algunos precios deben desviarse del factor estándar, se realizan cambios directamente en la lista de precios correspondiente, ya sea en un artículo individual o en varios artículos usando criterios de selección. Esta combinación de automatización y flexibilidad asegura tanto eficiencia como precisión en la gestión de precios.",
+    "start_time": 168.36,
+    "end_time": 215.45
   },
   {
     "slide_index": 6,
-    "image_file": "083_Slide_06_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Determinación de precios automática de una lista de precios 2,0 Lista de precios base Escuelas 2 Lista de precios base 1 Último precio de compra 0 Último precio evaluado 0 Factor por defecto Lista de precios base por defecto Nombre lista precios N.º Lista de precios base 1,0 La lista de precios Escuelas está basada en otra lista de precios (la lista de precios base) El factor se utiliza como un multiplicador. Todos los precios de la lista de precios Escuelas son el doble de los precios de la lista de precios base. Cada vez que la lista de precios cambia, la lista de precios de los colegios se actualiza automáticamente. En el curso sobre la creación de listas de precios vimos que es posible basar una lista de precios en otra lista de precios. En el curso anterior sobre la creación de listas de precios vimos cómo puede basar una lista de precios en otra lista de precios utilizando un factor. Por ejemplo, cuando la empresa decidió que necesitaban una nueva lista de precios para los colegios, el jefe creó una lista de precios basada en la lista de precios base con un factor de 2. El factor se utiliza como un multiplicador. Todos los precios de la lista de precios Escuelas son el doble de los precios de la lista de precios base. Cada vez que la lista de precios cambia, la lista de precios de los colegios se actualiza automáticamente. Es una forma práctica de realizar actualizaciones de precios automáticas.",
-    "start_time": 323.66,
-    "end_time": 410.47
+    "image_file": "Slide_006.webp",
+    "script_text": "En esta pantalla se muestra la configuración de la lista de precios 'Escuelas', que está basada en la lista de precios base (N.º 1) mediante un factor de 2,0. Este factor actúa como un multiplicador: todos los precios de la lista 'Escuelas' son el doble de los precios de la lista base. Cada vez que se actualiza la lista de precios base, los precios de la lista 'Escuelas' se actualizan automáticamente, manteniendo la relación definida. Este enfoque es práctico para gestionar listas de precios que siguen un patrón porcentual fijo respecto a una lista maestra, reduciendo el esfuerzo de mantenimiento y asegurando consistencia en la política de precios.",
+    "start_time": 215.45,
+    "end_time": 257.66
   },
   {
     "slide_index": 7,
-    "image_file": "083_Slide_07_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Actualización manual de precios individuales Gr.1 Sin redondeo 2 Lista de precios base Escuelas 3 Grupo Método redondeo Factor Nombre N.º Lista de precios base Actualización de precios hacer doble clic 100 2 50 Escáneres K0004 2.400 2 1200 Portátil K0003 540 2 270 Tablet K0002 190 2 85 Impresora K0001 Act. Precio Precio base Descripción Núm.artículo N.º 4 3 2 1 Factor Lista precios base Lista precios base Lista precios base Lista precios base Lista precios base La función de actualización automática ha sido útil pero el jefe de ventas se ha dado cuenta de que a veces puede ser necesario cambiar algunos productos de la lista de precios para vender mejor en el mercado. La tablet de la lista de precios base tiene un precio de 270 por lo que la determinación de precios automática de acuerdo con el factor fija el precio a 540. Sin embargo, el jefe de ventas cree que este producto se vendría mejor en los colegios a un precio de 500.",
-    "start_time": 410.47,
-    "end_time": 479.38
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, es posible actualizar manualmente el precio de un producto individual dentro de una lista de precios. Esto permite al jefe de ventas ajustar precios específicos para mejorar la competitividad en el mercado, como en el caso de la tablet cuyo precio automático era 540 pero se ajusta a 500 para colegios. Al hacerlo, se rompe la vinculación automática con el factor y la lista base.",
+    "start_time": 257.66,
+    "end_time": 284.45
   },
   {
     "slide_index": 8,
-    "image_file": "083_Slide_08_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Actualización manual de precios individuales Gr.1 Sin redondeo 2 Lista de precios base Escuelas 3 Grupo Método redondeo Factor Nombre N.º Lista de precios base Actualización de precios 50 1200 270 85 100 2 50 Escáneres K0004 2.400 2 1200 Portátil K0003 540 2 270 Tablet K0002 190 2 85 Impresora K0001 Act. Precio Precio base Descripción Núm.artículo N.º 4 3 2 1 Factor Lista precios base Lista precios base Lista precios base Lista precios base Lista precios base Cuando un precio se define como manual deja de mantenerse automáticamente. Por ello, fija el precio en 500 directamente en la lista de precios de los colegios. Una vez que cambia este precio, la casilla de selección ‘manual’ queda marcada y el precio ya no se mantiene automáticamente. Este método funciona bien cuando solo se hacen unos pocos cambios simultáneamente.",
-    "start_time": 479.38,
-    "end_time": 545.88
+    "image_file": "Slide_008.webp",
+    "script_text": "Cuando se define un precio como manual en SAP Business One, deja de actualizarse automáticamente ante cambios en la lista de precios base o el factor. En el ejemplo, al fijar el precio de la tablet en 500 directamente, la casilla 'manual' se marca y el precio permanece fijo, incluso si la lista base o el factor cambian. Este enfoque es ideal para ajustes puntuales y pocos productos.",
+    "start_time": 284.45,
+    "end_time": 310.63
   },
   {
     "slide_index": 9,
-    "image_file": "083_Slide_09_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Definición de una lista de precios base factor distintos por artículo Además, es posible determinar los precios automáticamente de los artículos individuales de una lista de precios. En este caso, la lista de precios está basada en una lista de precios base con un factor de 2, pero la tablet está basada en una lista de precios de descuento con un factor de 2.5. 50 1200 270 85 100 2 50 Escáneres K0004 2.400 2 1200 Portátil K0003 500 2,5 200 Tablet K0002 190 2 85 Impresora K0001 Act. Precio Precio base Descripción Núm.artículo N.º 4 3 2 1 Factor Lista precios base Lista precios base Lista precios descuento Lista precios base Lista precios base Otra opción es definir que para un artículo se utilice una lista de precios base o un factor distintos para la determinación de precios automática. También en este caso, tenemos una lista de precios basada en una lista de precios base con un factor de 2. En esta ocasión, se ha definido que la tablet se base en una lista de precios distinta. El precio de la tablet se basa en la lista de precios de descuento con un factor de 2,5. El precio de la tablet no cambiará cuando los otros artículos cambien sino que el precio de este artículo cambiará cuando cambie la lista de precios de descuento.",
-    "start_time": 545.88,
-    "end_time": 635.9
+    "image_file": "Slide_009.webp",
+    "script_text": "En SAP Business One, se puede aplicar un factor distinto por artículo dentro de la misma lista de precios. Mientras la mayoría de los artículos usan un factor de 2 sobre la lista de precios base, la tablet puede configurarse con un factor de 2.5 sobre una lista de precios de descuento. Esto permite que su precio siga solo cambios en esa lista específica, no en la base general.",
+    "start_time": 310.63,
+    "end_time": 335.62
   },
   {
     "slide_index": 10,
-    "image_file": "083_Slide_10_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Definición de una lista de precios base factor distintos por artículo Además, es posible determinar los precios automáticamente de los artículos individuales de una lista de precios. 50 1200 270 85 150 3 50 Escáneres K0004 2.400 2 1200 Portátil K0003 400 2 200 Tablet K0002 190 2 85 Impresora K0001 Act. Precio Precio base Descripción Núm.artículo N.º 4 3 2 1 Factor Lista precios base Lista precios base Lista precios descuento Lista precios base Lista precios de descuento El precio del escáner se basa en la lista de precios de descuento con un factor de 3. La lista de precios se basa en la lista de precios base con un factor de 2, de modo que todas las líneas se predeterminan en dicho factor. Otra opción es definir que para un artículo se utilice una lista de precios base o un factor distintos para la determinación de precios automática. También en este caso, tenemos una lista de precios basada en una lista de precios base con un factor de 2. El factor y las listas de precios base se establecen en el nivel de cabecera para que todas las filas se predeterminen en la misma lista de precios base y factor. En esta ocasión, se ha definido que el escáner se base en una lista de precios distinta. El precio del escáner se basa en la lista de precios de descuento con un factor de 3. El precio del escáner no se modificará cuando los otros artículos se modifiquen debido a un cambio en la lista de precios de base; en su lugar, se realizará un cambio en el precio de este artículo cuando la lista de precios de descuentos se modifique.",
-    "start_time": 635.9,
-    "end_time": 742.56
+    "image_file": "Slide_010.webp",
+    "script_text": "En SAP Business One, es posible asignar una lista de precios y factor distintos a un artículo específico. En este caso, mientras la lista de precios general usa un factor de 2 sobre la lista base, el escáner se configura con un factor de 3 sobre una lista de precios de descuento. Así, su precio solo cambia si se modifica esa lista de descuento, no cuando cambian los otros artículos o la lista base.",
+    "start_time": 335.62,
+    "end_time": 362.45
   },
   {
     "slide_index": 11,
-    "image_file": "083_Slide_11_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Actualización de la lista de precios por selección Actualizar por selección En la ventana Listas de precios, seleccione: Elija la lista de precios que desea mantener Utilice los criterios de selección para indicar qué precios desea mantener Todos los precios modificados quedan marcados como ‘Manual’ Una tercera opción para mantener los precios de la ventana Lista de precios es utilizar la Actualización de la lista de precios por selección. En la ventana Listas de precios, seleccione el pulsador de radio Actualizar por selección. A continuación, haga doble clic en la lista de precios que desea actualizar. Utilice los criterios de selección para indicar qué precios desea mantener. Puede seleccionar los precios de artículo por proveedor, número de artículo, grupo de artículos y propiedades. Aparecerá la selección de los precios de artículo y podrá hacer los cambios. Todos los precios que cambie quedarán marcados como ‘manual’ y ya no se actualizarán automáticamente cuando cambie una lista de precios base.",
-    "start_time": 742.56,
-    "end_time": 804.74
+    "image_file": "Slide_011.webp",
+    "script_text": "En la ventana Listas de precios de SAP Business One, la función 'Actualizar por selección' permite modificar precios de artículos específicos usando filtros como proveedor, número de artículo, grupo o propiedades. Tras aplicar los criterios y hacer los cambios, los precios editados se marcan automáticamente como 'manual', quedando excluidos de futuras actualizaciones automáticas de la lista base o factor.",
+    "start_time": 362.45,
+    "end_time": 389.09
   },
   {
     "slide_index": 12,
-    "image_file": "083_Slide_12_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Asistente de actualización de precios Precios de artículos Convertir a UM \"Reducir en\" Lista de precios base Actualiza los precios del artículo utilizando operaciones matemáticas o definiendo un valor Cambia el factor o el precio base de una lista de precios Convierte los precios de una moneda a otra Ajusta los precios basados en unidades de medida cambiando el valor del campo Reducir en % Una buena práctica cuando hay una o varias listas de precios que necesitan mayores actualizaciones es usar el asistente de actualización de precios. El asistente de actualización de precios es muy flexible y le permitirá cambiar los artículos seleccionados de una o varias listas de precios utilizando 4 métodos. 1. Es posible utilizar el método de los precios del artículo para actualizar los precios de los artículos ya sea usando una operación matemática o definiendo un valor para el precio. 2. Es posible utilizar el método de la lista de precios base para cambiar el factor y o la lista de precios base de una o varias listas de precios. 3. Es posible utilizar el método de ‘convertir a’ para convertir los precios de una lista de precios de una moneda a otra. 4. Es posible utilizar el método de UM ‘Reducir por’ para hacer un ajuste colectivo de los precios basados en una unidad de medida cambiando el valor del campo ‘Reducir en porcentaje’. Vamos a ver algunos ejemplos que servirán para aclarar las distintas funciones del asistente.",
-    "start_time": 804.74,
-    "end_time": 891.84
+    "image_file": "Slide_012.webp",
+    "script_text": "El asistente de actualización de precios en SAP Business One ofrece cuatro métodos flexibles para modificar precios en una o varias listas. Permite actualizar precios de artículos mediante operaciones matemáticas o valores fijos, cambiar el factor o lista de precios base, convertir precios entre monedas, o ajustar precios según unidades de medida usando el campo 'Reducir en porcentaje'. Es ideal para actualizaciones masivas y controladas.",
+    "start_time": 389.09,
+    "end_time": 417.24
   },
   {
     "slide_index": 13,
-    "image_file": "083_Slide_13_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Definir cambios de precio porcentuales con el asistente El jefe de ventas quiere ajustar en un 5% todos los productos para un fabricante en concreto. Todos los productos fabricados por Rainbow deberían incrementarse en un 5% en todas las listas de precios de venta, excepto en la lista de precios de la web. Los artículos sin precio no deberían actualizarse. Los artículos inactivos no deberían actualizarse. Vamos a hacer estos cambios con el asistente de actualización de precios. El jefe de ventas quiere ajustar en un 5% todos los productos para un fabricante en concreto. Todos los productos fabricados por Rainbow deberían incrementarse en un 5% en todas las listas de precios de venta, excepto en la lista de precios de la web. Los artículos sin precio no deberían actualizarse. Los artículos inactivos no deberían actualizarse. Vamos a hacer estos cambios con el asistente de actualización de precios.",
-    "start_time": 891.84,
-    "end_time": 953.47
+    "image_file": "Slide_013.webp",
+    "script_text": "El jefe de ventas necesita aumentar en un 5% los precios de todos los productos fabricados por Rainbow en todas las listas de venta, excepto en la lista de la web. Los artículos sin precio o inactivos no se modifican. Este ajuste se realiza con el asistente de actualización de precios de SAP Business One, que permite aplicar cambios masivos según criterios específicos. El objetivo es mantener actualizados los precios de venta de forma controlada y eficiente, evitando actualizaciones innecesarias o incorrectas. El proceso comienza seleccionando el método de ajuste, seguido por la definición de qué artículos y listas de precios se verán afectados.",
+    "start_time": 417.24,
+    "end_time": 459.5
   },
   {
     "slide_index": 14,
-    "image_file": "083_Slide_14_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Elija el método de actualización 1.Método de actualización El método de los precios del artículo le permite multiplicar, dividir, sumar, restar o definir un valor. Elige \"multiplicar\"» e introduce el valor 1,05. Elige el método de Precios del artículo para ajustar los precios en un porcentaje. El primer paso del asistente es seleccionar el método de actualización. En nuestro primer ejemplo, el jefe de ventas quiere incrementar el precio del artículo en un 5 por ciento. Por lo tanto, elige el método de los precios del artículo para hacer este ajuste. El método de los precios del artículo nos permite multiplicar, dividir, sumar, restar o definir un valor. Elegimos «multiplicar» e introducimos el valor 1,05.",
-    "start_time": 953.47,
-    "end_time": 1005.12
+    "image_file": "Slide_014.webp",
+    "script_text": "En el primer paso del asistente, se selecciona el método de actualización para ajustar los precios. Aquí se elige 'Precios del artículo' como método, seguido de la operación 'Multiplicar' y el valor 1,05, lo que equivale a un aumento del 5%. Este enfoque permite aplicar el cambio porcentual directamente sobre el precio base de cada artículo. La ventana muestra claramente las opciones disponibles y confirma la selección realizada. Es fundamental elegir correctamente el método y el valor para asegurar que el ajuste sea preciso y conforme a lo solicitado por el jefe de ventas.",
+    "start_time": 459.5,
+    "end_time": 498.96
   },
   {
     "slide_index": 15,
-    "image_file": "083_Slide_15_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Precios del artículo – operaciones disponibles Precio inicial Operación Valor introducido Precio resultante 10 Multiplicar 2 20 10 Dividir 2 5 10 Agregar 2 12 10 Restar 2 8 10 Definir valor 2 2 En nuestro ejemplo hemos utilizado la opción de multiplicar el precio, pero hay otras 4 opciones. Vamos a ver cómo funcionan. Digamos que tenemos un artículo cuyo precio es 10 y vamos a ver cómo funcionan las otras opciones si introducimos el valor 2. Si elegimos la opción multiplicar e introducimos el valor 2, 10 se multiplica por 2 y el precio resultante es 20. Si elegimos la opción dividir, 10 se divide entre 2 y el precio resultante es 5. Si elegimos la opción sumar, el sistema suma 2, lo que resulta en un precio de 12. Si elegimos la opción restar, el sistema resta 2, lo que resulta en un precio de 8. Si elegimos la operación de definir valor, no importa cuál era el valor inicial. El valor que introduzcamos será el precio resultante.",
-    "start_time": 1005.12,
-    "end_time": 1072.03
+    "image_file": "Slide_015.webp",
+    "script_text": "SAP Business One ofrece cinco operaciones para modificar precios mediante el asistente de actualización. Multiplicar aumenta el precio por un factor (ej: 10 × 2 = 20). Dividir lo reduce (ej: 10 ÷ 2 = 5). Sumar y restar agregan o quitan un valor fijo (ej: 10 + 2 = 12, 10 – 2 = 8). La opción 'Definir valor' establece un precio fijo sin importar el inicial (ej: siempre 2). En este caso, se usa 'Multiplicar' con 1,05 para un aumento del 5%. Conocer estas opciones permite aplicar el ajuste correcto según la necesidad de precios.",
+    "start_time": 498.96,
+    "end_time": 543.84
   },
   {
     "slide_index": 16,
-    "image_file": "083_Slide_16_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Seleccionar artículos 2. Criterios de selección: Selección del artículo Selecciona el nombre del fabricante. Marca los cuadros de selección para que no se actualicen los artículos sin precio o inactivos. El segundo paso es para indicar los criterios de selección. En este paso, en primer lugar, seleccionamos los artículos a los que es necesario cambiarles el precio. Tenemos distintas opciones para seleccionar los artículos, ya sea basándonos en un rango de proveedores preferentes, de números de artículo, de grupo de artículos, de fabricantes o de propiedades de los artículos. Si seleccionamos los artículos o proveedores por rango, recuerde marcar el comienzo y el final del rango. Por ejemplo, si solo quiere el artículo A1000, tendrá que seleccionar desde el A1000 hasta el A1000 ya que si selecciona desde el A1000 tendrá todos los artículos que van detrás de este, como el A1001 y los siguientes. Esta ventana también nos permite excluir los artículos que no tienen precio o están inactivos. En nuestro ejemplo el jefe de ventas quiere cambiar los precios de los artículos fabricados por Rainbow y excluir todos los artículos sin precio o inactivos. Después, seleccionamos Siguiente para ir a la segunda parte del paso Criterios de selección.",
-    "start_time": 1072.03,
-    "end_time": 1154.28
+    "image_file": "Slide_016.webp",
+    "script_text": "En este paso, se definen los criterios para seleccionar qué artículos recibirán el ajuste de precio. Se elige 'Fabricante' como grupo de selección y se especifica 'Rainbow' tanto en 'Desde' como en 'Hasta' para incluir únicamente sus productos. Además, se marcan las opciones para excluir artículos sin precio y aquellos inactivos, tal como requiere el escenario. Esto asegura que solo los artículos activos con precio definido de Rainbow se vean afectados. La precisión en esta configuración evita cambios no deseados y garantiza que la actualización sea selectiva y controlada.",
+    "start_time": 543.84,
+    "end_time": 583.15
   },
   {
     "slide_index": 17,
-    "image_file": "083_Slide_17_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Seleccionar las listas de precios que se desean cambiar Utilice el botón Explorar para seleccionar varias listas de precios 2. Criterios de selección: Selección del precio En el paso Criterios de selección, también tiene que cambiar los tipos de precios que le gustaría cambiar. Primero seleccionamos la lista o listas de precios que queremos incluir. En nuestro ejemplo el jefe de ventas quiere cambiar todas las listas de precios de venta excepto la lista de precios de la web. Para hacerlo, pulsa el botón Explorar para abrir la ventana Listas de precios y seleccionar varias listas de precios. Otra opción de esta ventana le permite decidir si va a cambiar los precios expresados en la moneda principal o en monedas adicionales. En nuestro ejemplo solo queremos cambiar los precios expresados en la moneda principal .",
-    "start_time": 1154.28,
-    "end_time": 1205.42
+    "image_file": "Slide_017.webp",
+    "script_text": "Aquí se eligen las listas de precios que se actualizarán. El jefe de ventas quiere modificar todas las listas de venta excepto la de la web, por lo que se usan las listas estándar de venta y se excluye explícitamente la lista web. Además, se especifica que solo se actualizarán los precios expresados en la moneda principal (USD en el caso de Distribuidora Andina Tech), sin tocar las monedas adicionales. El botón 'Explorar' permite seleccionar múltiples listas de forma visual y segura. Esta configuración asegura que el cambio se aplique donde corresponde, respetando las excepciones definidas.",
+    "start_time": 583.15,
+    "end_time": 621.94
   },
   {
     "slide_index": 18,
-    "image_file": "083_Slide_18_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Seleccionar el precio por unidad que se quiere cambiar 2. Criterios de selección: Selección del precio Puede seleccionar Manual, Otros o ambos tipos de grupos de unidades de medida Después indique qué precios de unidades desea incluir Una tercera opción en la ventana de selección de precios es qué precios de unidades de medida deberían incluirse en el cambio. Puede optar entre incluir solo el grupo de unidades de medida manual, solo otros grupos de unidades de medida o ambos tipos de grupos de unidades de medida. Al seleccionar Otros o ambos grupos, se abre la ventana Unidades de medida. En dicha ventana es posible elegir si desea actualizar los precios de las unidades de medida de inventario o de unas unidades concretas. Una vez que haya elegido, puede buscar y seleccionar las unidades concretas que desea actualizar.",
-    "start_time": 1205.42,
-    "end_time": 1256.23
+    "image_file": "Slide_018.webp",
+    "script_text": "Este paso permite definir qué tipos de precios de unidad de medida se actualizarán. Se puede elegir entre 'Manual', 'Otros' o 'Ambos' grupos de unidades de medida. En este caso, como no se especifica una necesidad particular, se deja la selección en 'Manual' por defecto, que corresponde al precio de venta estándar. Al seleccionar 'Otros' o 'Ambos', se abriría una ventana adicional para elegir unidades específicas como kg, litros, etc. Aquí, se confirma que solo se actualizarán los precios en la unidad de medida de inventario, lo que es suficiente para el ajuste general de precios solicitado.",
+    "start_time": 621.94,
+    "end_time": 663.26
   },
   {
     "slide_index": 19,
-    "image_file": "083_Slide_19_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Ver simulación 3. Simulación Ver simulación por artículo o por lista de precios. Una vez que seleccione Ejecutar, no podrá revertir los cambios. El tercer paso del asistente es ver una simulación de los cambios de precio. Es posible ver la simulación por artículos o por listas de precios. Si la ve por artículos, puede seleccionar qué artículos desea actualizar. Si la ve por lista de precios, puede seleccionar si desea actualizar o no dicha lista de precios, pero no puede seleccionar artículos concretos que desee incluir o excluir en la lista de precios. Puede ampliar o reducir el informe y desplazarse entre páginas. Si en la simulación se muestra algo que desea cambiar, puede utilizar el botón Atrás para volver a los pasos anteriores para hacer los cambios. El último paso consiste el seleccionar el cuadro de selección de las líneas que le gustaría cambiar y después pulsar Ejecutar. Recibirá un mensaje en el que se le informa que si hay otros usuarios haciendo cambios en la base de datos es posible que reciba unos resultados distintos de los que muestra la simulación. En general es una buena práctica hacer cambios en el asistente de determinación de precios en los momentos en los que sabe que no hay otros usuarios actualizando los precios. Una vez que seleccione Ejecutar, no podrá revertir los cambios.",
-    "start_time": 1256.23,
-    "end_time": 1340.54
+    "image_file": "Slide_019.webp",
+    "script_text": "En este paso del asistente de actualización de precios, visualiza una simulación de los cambios antes de aplicarlos. Puedes ver el impacto por artículo o por lista de precios, lo que te permite seleccionar qué actualizar. Si usas la vista por artículo, eliges los artículos específicos; si usas la vista por lista, decides actualizar toda la lista o no, sin filtrar artículos. La simulación es interactiva: puedes ampliar, reducir y navegar entre páginas. Si detectas algo que deseas modificar, usa el botón Atrás para regresar a pasos anteriores y ajustar parámetros. Solo al confirmar con Ejecutar se aplican los cambios, y desde ese momento no se pueden revertir. Es clave recordar que si otros usuarios están modificando la base de datos simultáneamente, tus resultados finales pueden diferir de la simulación. Por eso, se recomienda ejecutar este proceso en horarios de baja actividad para garantizar consistencia en los precios de Distribuidora Andina Tech.",
+    "start_time": 663.26,
+    "end_time": 726.02
   },
   {
     "slide_index": 20,
-    "image_file": "083_Slide_20_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 2: Ver resultados 4. Resultados Ver información y errores en los cambios de precios Los precios que se han cambiado utilizando la opción Precios del artículo del asistente aparecen marcados como Manual en las listas de precios Manual El cuarto paso del asistente muestra el resultado de sus cambios. Puede ver la información sobre lo que ha cambiado con fecha y hora. Si hay errores también los verá. Tal y como hemos visto antes, el hecho de hacer cambios individuales en una lista de precios hace que el sistema marque el cuadro de selección Manual. El cuadro de selección Manual se marca también al cambiar los precios del artículo cuando se usa el asistente de actualización de precios. Esto significa que los precios ya no se actualizarán automáticamente usando factores.",
-    "start_time": 1340.54,
-    "end_time": 1388.86
+    "image_file": "Slide_020.webp",
+    "script_text": "Este pantalla muestra el resultado final tras ejecutar los cambios en el asistente de actualización de precios. Aquí ves un registro detallado de cada modificación realizada, incluyendo el artículo afectado, la lista de precios involucrada, el precio anterior y el nuevo valor aplicado. Cada cambio queda marcado como 'Manual' en el sistema, lo que indica que ya no se actualizará automáticamente mediante factores. Además, se registra el usuario que realizó el cambio y la fecha y hora exactas, lo que permite trazabilidad total. Si hubo errores durante el proceso, también se muestran en esta ventana para su revisión y corrección. Esta trazabilidad es esencial en Distribuidora Andina Tech para mantener el control sobre modificaciones de precios y asegurar que cualquier ajuste esté documentado y autorizado.",
+    "start_time": 726.02,
+    "end_time": 777.43
   },
   {
     "slide_index": 21,
-    "image_file": "083_Slide_21_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 3: Cambiar los precios base y los factores Vamos a ver un escenario en el que se usa otra opción del asistente de actualización de precios. La lista de precios de compra con descuento se basa en la lista de precios base con un factor de 0,5. El jefe de ventas quiere cambiar el factor en el grupo de artículos de accesorios para que sea 0,75. En el asistente de actualización de precios, seleccionamos: Lista de precios base Cambia el factor o el precio base de una lista de precios Vamos a ver un escenario en el que se usa otra opción del asistente de actualización de precios. La lista de precios de descuento se basa en la lista de precios base con un factor de 0,5. El jefe de ventas quiere cambiar el factor en el grupo de artículos de accesorios para que sea 0,75. En el asistente de actualización de precios seleccionamos la opción Lista de precios base. Esta opción nos permite cambiar el factor de una lista de precios y, si queremos, la lista de precios que se usa como lista de precios base.",
-    "start_time": 1388.86,
-    "end_time": 1453.66
+    "image_file": "Slide_021.webp",
+    "script_text": "En este ejemplo, se muestra cómo modificar el factor que relaciona una lista de precios con su lista base. La lista de precios de compra con descuento se calcula aplicando un factor del 0,5 sobre la lista de precios base. El jefe de ventas requiere aumentar ese factor al 0,75 específicamente para el grupo de artículos de accesorios, lo que implica un ajuste en los precios de compra con descuento para esos productos. Para lograr esto, se utiliza el asistente de actualización de precios y se selecciona la opción 'Lista de precios base', que permite cambiar tanto el factor como la lista base utilizada. Esta funcionalidad es clave cuando se necesita ajustar la política de precios de un segmento específico de productos sin afectar a otras listas o grupos de artículos, manteniendo la coherencia en la estructura de precios de Distribuidora Andina Tech.",
+    "start_time": 777.43,
+    "end_time": 830.09
   },
   {
     "slide_index": 22,
-    "image_file": "083_Slide_22_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 3: Opción Lista de precios base Lista precios base Lista de precios base actual Precio base Precio de compra con descuento Precio de venta del distribuidor Precio de venta normal Precio de venta de temporada Escuelas Último precio de compra Misma lista que la de destino Conserva la misma lista de precios como lista de precios base Defina una nueva lista de precios base Basa una lista de precios en sí misma Cuando selecciona la opción Lista de precios base, puede elegir la lista de precios base actual o una nueva. Si selecciona la lista de precios base actual, la lista de precios base es la misma y puede elegir un nuevo factor. Esto es lo que haríamos en el ejemplo 3. Queremos mantener la lista de precios base y únicamente ajustar el factor. O puede seleccionar una lista de precios distinta, como una nueva base. Es posible tomar cualquier lista de precios existente como base. Otra opción es basar una lista de precios en sí misma. Normalmente hará esto cuando ya no quiera que una lista de precios se actualice automáticamente. Una vez que elige Igual que el destino y un factor de 1, podrá mantener la lista de precios directamente a través del asistente o directamente en la ventana de lista de precios.",
-    "start_time": 1453.66,
-    "end_time": 1529.23
+    "image_file": "Slide_022.webp",
+    "script_text": "Al seleccionar la opción 'Lista de precios base' en el asistente de actualización de precios, tienes dos caminos posibles. Primero, puedes mantener la lista de precios base actual y únicamente modificar el factor aplicado, lo que es lo que se hace en el Ejemplo 3 para ajustar el factor de accesorios de 0,5 a 0,75. Esta opción permite ajustes finos sin cambiar la estructura subyacente. Segundo, puedes elegir una lista de precios distinta como nueva base, incluso basar una lista en sí misma (igual que el destino), lo que se usa cuando deseas desconectar una lista de actualizaciones automáticas y gestionarla manualmente. Por ejemplo, si estableces la lista base como igual a la destino y el factor en 1, puedes mantener los precios directamente desde el asistente o la ventana de lista de precios. Esta flexibilidad permite adaptar la estrategia de precios según las necesidades comerciales de Distribuidora Andina Tech.",
+    "start_time": 830.09,
+    "end_time": 889.73
   },
   {
     "slide_index": 23,
-    "image_file": "083_Slide_23_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 4: Convertir la moneda en una lista de precios Tiene una lista de precios de ventas que le gustaría reutilizar para algunos nuevos clientes internacionales. Actualmente la lista de precios tiene lo precios expresados en 3 monedas, pero necesita una cuarta moneda. Puede utilizar el asistente de lista de precios para convertir la moneda de una lista de precios. En el asistente de actualización de precios, seleccionamos: Convertir a Convierte los precios de una moneda a otra Puede utilizar el asistente de lista de precios para convertir la moneda de una lista de precios. En el ejemplo 4 tiene una lista de precios de ventas que le gustaría reutilizar para algunos nuevos clientes internacionales. Actualmente, los precios de la lista de precios están expresados en 3 monedas: una moneda principal y dos monedas adicionales. Necesita que en esta lista de precios haya una cuarta moneda. Para ello, puede utilizar la opción Convertir. Esta opción permite convertir los precios de una moneda a otra.",
-    "start_time": 1529.23,
-    "end_time": 1594.27
+    "image_file": "Slide_023.webp",
+    "script_text": "Esta diapositiva explica cómo usar el asistente de actualización de precios para agregar una nueva moneda a una lista de precios existente. En el caso de Distribuidora Andina Tech, tienes una lista de precios de ventas actualmente expresada en tres monedas: una principal y dos adicionales. Para atender a nuevos clientes internacionales, necesitas incluir una cuarta moneda. La opción 'Convertir a' del asistente permite transformar los precios de una moneda a otra, facilitando la expansión sin crear una lista desde cero. Por ejemplo, si tu lista tiene precios en dólares y necesitas una versión en euros, puedes aplicar un tipo de cambio para generar los nuevos valores. Esta función es ideal cuando se busca reutilizar estructuras de precios existentes en nuevos mercados, evitando trabajo duplicado y asegurando coherencia en la política de precios internacional.",
+    "start_time": 889.73,
+    "end_time": 944.95
   },
   {
     "slide_index": 24,
-    "image_file": "083_Slide_24_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 4: La opción Convertir a Convertir a Libra esterlina Euro dólar canadiense dólar estadounidense … Tipo de cambio 1,00000 Abra el asistente Actualización de precios y seleccione la opción Convertir a. Seleccione la moneda en el desplegable y, a continuación, seleccione el tipo de cambio. Al seleccionar la lista de precios que desea cambiar, puede elegir si quiere cambiar la moneda principal, la moneda adicional 1 o la moneda adicional 2. En nuestro ejemplo queríamos duplicar una lista de precios existente y cambiar la moneda principal. Una vez que tengamos la nueva lista de precios, podemos abrir el asistente de actualización de precios y seleccionar la opción ‘Convertir a’. Seleccione la nueva moneda en el desplegable. El tipo de cambio por defecto se toma del tipo de cambio que se define en la ventana Especificar tipos de cambio moneda extranjera. Los usuarios pueden cambiar el tipo de cambio manualmente. En las ventanas siguientes puede elegir si desea cambiar los artículos seleccionados o una lista de precios entera. En nuestro ejemplo vamos a elegir cambiar nuestra nueva lista de precios. Después, puede elegir si desea cambiar la moneda principal o una de las monedas adicionales.",
-    "start_time": 1594.27,
-    "end_time": 1671.77
+    "image_file": "Slide_024.webp",
+    "script_text": "Esta ventana se abre al seleccionar la opción 'Convertir a' dentro del asistente de actualización de precios. Aquí eliges la lista de precios que deseas modificar y especificas si quieres cambiar la moneda principal, la primera adicional o la segunda adicional. En el ejemplo, se decide convertir la moneda principal de una lista duplicada a libra esterlina (GBP). El tipo de cambio se carga automáticamente desde la configuración de tipos de cambio de moneda extranjera en SAP Business One, aunque el usuario puede ajustarlo manualmente si es necesario. Una vez seleccionada la moneda destino y confirmado el tipo de cambio, el sistema recalcula todos los precios de la lista aplicando dicho factor. Esto permite a Distribuidora Andina Tech generar rápidamente versiones multimoneda de sus listas de precios para atender a clientes en diferentes regiones, manteniendo el control sobre las tasas de conversión aplicadas.",
+    "start_time": 944.95,
+    "end_time": 1002.02
   },
   {
     "slide_index": 25,
-    "image_file": "083_Slide_25_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 5: Ajustar la determinación de precios de la unidad de medida El jefe de ventas decide aplicar unos descuentos de precio adicionales a las cajas de papel de impresora. Le gustaría ofrecer un 10% de descuento en las cajas de papel de impresora, en dos listas de precios. Actualmente, solo se aplica un 5% de descuento a las cajas respecto al precio de los paquetes. Para hacer este cambio, vamos a definir 10 en el campo UM ‘Reducir en %’ de los artículos seleccionados en estas listas de precios. En el asistente de actualización de precios, seleccionamos: UM \"Reducir en %\" Ajusta los precios basados en unidades de medida cambiando el valor del campo Reducir en % La última opción del asistente de actualización de precios le permite ajustar la determinación de precios de las unidades de medida. En el ejemplo 5, el jefe de ventas decide aplicar unos descuentos de precio adicionales a la venta de cajas de papel de impresora. Le gustaría ofrecer un 10% de descuento en las cajas de papel de impresora en dos listas de precios, la lista de precios Escuelas y la lista de precios Cuentas pequeñas. En estos momentos, las cajas solo tienen un 5% de descuento en dichas listas de precios respecto al precio que cuesta el mismo número de paquetes que hay en una caja. Para aplicar este descuento vamos a cambiar el valor 5 al valor 10 en el campo UM ‘Reducir por %’ para los artículos de papel de impresora seleccionados en las dos listas de precios. En el asistente de actualización de precios, seleccionamos la opción UM ‘Reducir por %’.",
-    "start_time": 1671.77,
-    "end_time": 1770.91
+    "image_file": "Slide_025.webp",
+    "script_text": "En este ejemplo, el jefe de ventas quiere aplicar un descuento adicional del 10% en las cajas de papel de impresora en dos listas de precios: Escuelas y Cuentas pequeñas. Actualmente, solo se aplica un 5% de descuento respecto al precio de los paquetes. Para lograrlo, se modificará el campo UM 'Reducir en %' de los artículos seleccionados en esas listas. Este ajuste permite ofrecer precios diferenciados según la unidad de medida, como cajas o paquetes, sin cambiar el precio base del artículo. Es útil cuando se venden productos en distintas presentaciones y se requieren promociones específicas por formato. El cambio se realiza mediante el asistente de actualización de precios, que permite modificar este campo de forma masiva y controlada.",
+    "start_time": 1002.02,
+    "end_time": 1051.56
   },
   {
     "slide_index": 26,
-    "image_file": "083_Slide_26_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 5: Campo Reducir en % UM Precio base Reducir en % Precio por unidad Paquete 2,00 2,00 Caja 48,00 5 47,10 En nuestro ejemplo, el precio del paquete de papel de impresora es 2 en la lista de precios Escuelas. En una caja hay 24 paquetes. El precio base de una caja es 48. El campo Reducir en % nos permite ofrecer un descuento respecto a dicho precio. Actualmente, el descuento es del 5% por lo que el precio de una caja es 47,10. Si ofrecemos un descuento del 10%, el precio de la caja pasará a ser 44,20. 10 44,20 El campo Reducir en % de los precios de la unidad de medida nos permite ofrecer un descuento en unidades concretas. En nuestro ejemplo, supongamos que el precio del paquete de papel de impresora es 2 en la lista de precios Escuelas. En una caja hay 24 paquetes. Por lo tanto, el precio base de una caja (sin aplicar ningún descuento) es 48. El campo Reducir en % nos permite ofrecer un descuento respecto a dicho precio. Actualmente, el descuento es del 5% por lo que el precio de una caja es 47,10. Así que, si ofrecemos un descuento del 10%, el precio de la caja pasará a ser 44,20. Podríamos hacer este cambio manualmente en la lista de precios pero cuando se trata de varios artículos o varias listas de precios, es mucho más fácil hacer el cambio en el asistente de Actualización de precios.",
-    "start_time": 1770.91,
-    "end_time": 1873.49
+    "image_file": "Slide_026.webp",
+    "script_text": "El precio base de una caja de papel de impresora es de 48,00 USD, considerando que contiene 24 paquetes a 2,00 USD cada uno. Actualmente, se aplica un descuento del 5% en el campo UM 'Reducir en %', lo que reduce el precio de la caja a 47,10 USD. Si se aumenta ese descuento al 10%, el precio final pasa a ser 44,20 USD. Este cálculo muestra cómo el campo 'Reducir en %' actúa sobre el precio base de la unidad de medida seleccionada, permitiendo ajustes precisos según la presentación del producto. Es una forma eficiente de gestionar promociones por volumen o presentación sin alterar los precios unitarios básicos.",
+    "start_time": 1051.56,
+    "end_time": 1098.07
   },
   {
     "slide_index": 27,
-    "image_file": "083_Slide_27_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Ejemplo 5: Cambiar el campo UM Reducir en % UM \"Reducir en %\" Igual a Multiplicar Dividir Agregar Restar Reducir en % 10 En el asistente de actualización de precios: En las ventanas de criterios de selección, seleccionamos los artículos de papel de impresora, las dos listas de precios y la unidad de medida. En el asistente de actualización de precios: Definimos que el campo UM ‘Reducir por %’ sea igual a 10. Esto hará que se aplique un 10% de descuento en las cajas. A continuación, en las ventanas de criterios de selección, seleccionamos los artículos de papel de impresora, después las dos listas de precios y, finalmente, la unidad de medida. En la simulación veremos el precio actual y el precio sugerido y podremos decidir si queremos aplicar el cambio.",
-    "start_time": 1873.49,
-    "end_time": 1924.7
+    "image_file": "Slide_027.webp",
+    "script_text": "En el asistente de actualización de precios, primero se seleccionan los criterios: los artículos de papel de impresora, las dos listas de precios objetivo (Escuelas y Cuentas pequeñas) y la unidad de medida 'Caja'. Luego, se define que el campo UM 'Reducir en %' se establecerá en un valor fijo de 10, lo que aplicará un descuento del 10% sobre el precio base de la caja. El asistente muestra una simulación que compara el precio actual (con 5% de descuento) y el precio sugerido (con 10%), permitiendo validar el cambio antes de aplicarlo. Este flujo garantiza que la modificación sea precisa, reversible y alineada con la política de precios deseada.",
+    "start_time": 1098.07,
+    "end_time": 1143.02
   },
   {
     "slide_index": 28,
-    "image_file": "083_Slide_28_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "Diferencias entre el asistente de actualización de precios y Copiar UM reducida en % Asistente de actualización de precios Permite cambiar las cantidades del campo UM ‘Reducir en % Para ello, es necesario que las unidades de medida tengan antes una entrada con una cantidad que actualizar Copiar UM reducida en % Permite introducir un gran número de cantidades nuevas en el campo UM 'Reducir en % Es posible utilizar los valores del campo UM ‘Reducir en %’ de un artículo como fuente para copiarlos y trasladarlos a otros productos y o listas de precios. El asistente de actualización de precios no permite crear una nueva entrada para el campo Unidad de medida reducir por %. El asistente solo permite cambiar las entradas existentes. Utilice el asistente de actualización de precios para cambiar las cantidades existentes. Todas las unidades de medida deben tener antes una entrada con una cantidad que actualizar. Por lo que, si en ese momento no existe ninguna cantidad en el campo UM ‘Reducir por %’ para una unidad de medida concreta de una lista de precios, al asistente no se podrá utilizar. En los casos en los que quiera introducir un gran número de cantidades nuevas en el campo UM ‘Reducir por %’ para una serie de unidades de medida, utilice la función Copiar UM reducida en %. Introduzca los valores del campo UM ‘Reducir por %’ para un artículo de la lista de precios y podrá ver dichos valores y utilizarlos como fuente para copiarlos y trasladarlos a otros productos y o listas de precios.",
-    "start_time": 1924.7,
-    "end_time": 2023.66
+    "image_file": "Slide_028.webp",
+    "script_text": "El asistente de actualización de precios solo permite modificar valores ya existentes en el campo UM 'Reducir en %'; para usarlo, la unidad de medida debe tener previamente una entrada en ese campo. No puede crear nuevas entradas desde cero. En cambio, la función 'Copiar UM reducida en %' está diseñada para introducir un gran número de valores nuevos: se toman los valores de un artículo y lista de precios como origen y se copian a otros productos o listas. Esta herramienta es ideal cuando se necesita establecer precios de unidad de medida en muchos artículos simultáneamente, especialmente al configurar nuevas listas o productos.",
+    "start_time": 1143.02,
+    "end_time": 1184.81
   },
   {
     "slide_index": 29,
-    "image_file": "083_Slide_29_10_Pricing_22_Pricelist_UpdatePricelist_ES.webp",
-    "script_text": "A continuación, se detallan algunos puntos clave: Es posible basar una lista de precios en otra lista de precios y utilizar factores como multiplicador. Cuando la lista de precios base cambia, todas las listas de precios basadas en ella también cambiarán. Puede hacer cambios manuales directamente en una lista de precios. Si hace un cambio manual en un precio de una lista de precios que utilizar factores, dicho precio modificado ya no se actualizará automáticamente. El asistente de actualización de precios le permite hacer cambios de forma colectiva en varias listas de precios simultáneamente. El asistente permite cambiar los precios de los artículos, definir nuevos factores y listas de precios base, convertir monedas en las listas de precios y ajustar los precios de las unidades de medida utilizando el campo Reducir en porcentaje. Los precios que se modifiquen utilizando la opción Precios del artículo del asistente de actualización de precios quedarán marcados como Manual y dejarán de actualizarse automáticamente cuando se realicen cambios de precio. El asistente de actualización de precios incluye un paso de simulación que le permite comprobar cuál sería el resultado en caso de realizarse los cambios antes de aplicarlos realmente. 29 A continuación, se detallan algunos puntos clave: Es posible basar una lista de precios en otra lista de precios y utilizar factores como multiplicador. Cuando la lista de precios base cambia, todas las listas de precios basadas en ella también cambiarán. Puede hacer cambios manuales directamente en una lista de precios. Si hace un cambio manual en un precio de una lista de precios que utilizar factores, dicho precio modificado ya no se actualizará automáticamente. El asistente de actualización de precios le permite hacer cambios de forma colectiva en varias listas de precios simultáneamente. El asistente permite cambiar los precios de los artículos, definir nuevos factores y listas de precios base, convertir monedas en las listas de precios y ajustar los precios de las unidades de medida. Los precios que se modifiquen utilizando la opción Precios del artículo quedarán marcados como Manual. El asistente de actualización de precios incluye un paso de simulación que le permite comprobar cuál sería el resultado en caso de realizarse los cambios antes de aplicarlos realmente. Resumen",
-    "start_time": 2023.66,
-    "end_time": 2165.42
+    "image_file": "Slide_029.webp",
+    "script_text": "El asistente de actualización de precios permite vincular listas de precios mediante factores, de modo que cambios en la base se propagan automáticamente. Los cambios manuales en una lista vinculada rompen esa actualización automática. El asistente apoya ediciones colectivas en múltiples listas, incluyendo ajuste de precios, conversión de monedas, definición de factores y modificación del campo 'Reducir en %' para unidades de medida. Los precios editados manualmente quedan marcados como tal y dejan de actualizarse. Una ventaja clave es el paso de simulación, que permite previsualizar los resultados antes de aplicar los cambios, reduciendo riesgos y asegurando precisión en la política de precios.",
+    "start_time": 1184.81,
+    "end_time": 1229.78
   }
 ]

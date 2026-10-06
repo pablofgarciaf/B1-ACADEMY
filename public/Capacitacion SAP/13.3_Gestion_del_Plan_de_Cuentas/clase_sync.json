@@ -1,58 +1,51 @@
 [
   {
     "slide_index": 1,
-    "image_file": "028_Slide_01_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinSetup 12 COA ManageCOA en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Financial Setup: Chart of Accounts Management SAP Business One Version 10.0 Welcome to the Manage Chart of Accounts topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Gestión del Plan de Cuentas en SAP Business One versión 10.0. Aquí aprenderás cómo configurar y administrar la estructura contable de tu empresa desde cero. Este tema es esencial para garantizar que tu contabilidad refleje con precisión las operaciones financieras. Comenzaremos con los conceptos básicos y avanzaremos hacia la personalización del plan según las necesidades de tu negocio.",
     "start_time": 0.0,
-    "end_time": 21.74
+    "end_time": 25.4
   },
   {
     "slide_index": 2,
-    "image_file": "028_Slide_02_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "In this session, we will explore how to set up a chart of accounts adapted to the company type. We will also look at how you manage the chart of accounts. 2 At the end of this topic, you will be able to:  Set up a Chart of Accounts adapted to the company type  Manage the Chart of Accounts:  Add a new title  Add a new G/L account to an existing title.  Update different properties of existing accounts.  Change the structure of the chart of accounts and move titles and accounts.  Delete an account. Objectives",
-    "start_time": 21.74,
-    "end_time": 52.87
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar esta sesión, podrás configurar un Plan de Cuentas adaptado al tipo de empresa, ya sea nueva o en migración. Aprenderás a agregar nuevos títulos y cuentas G/L, actualizar propiedades existentes, reestructurar el plan moviendo títulos y cuentas, y eliminar cuentas cuando ya no sean necesarias. Estas habilidades te permitirán mantener una contabilidad ordenada y alineada con la realidad de tu negocio en SAP Business One.",
+    "start_time": 25.4,
+    "end_time": 52.8
   },
   {
     "slide_index": 3,
-    "image_file": "028_Slide_03_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "Imagine that you are implementing SAP Business One at a new customer.  Maria the accountant, tells you that moving to SAP Business One is a good opportunity for her to organize the company accounts structure.  You show Maria the pre-defined Chart of Account templates in SAP Business One. You tell her that she can use this template as the basis for her Chart of Accounts and adjust it before go-live.  Maria has chosen a Chart of Account template, and now, you show her how to adjust the accounts: add, remove and update. 3 3 Business Scenario You are implementing SAP Business One at a new customer, OEC Computers.  Maria, the accountant, tells you that moving to SAP Business One is a good opportunity for her to organize the company accounts structure.  You show Maria the pre-defined Chart of Account templates in SAP Business One. You tell her that she can use this template as the basis for her Chart of Accounts and adjust it before go-live.  Maria has chosen a Chart of Account template and now, you show her how to adjust the accounts: add, remove and update.",
-    "start_time": 52.87,
-    "end_time": 113.76
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que estás ayudando a un cliente a implementar SAP Business One. María, la contable, ve esta migración como una oportunidad para organizar su plan de cuentas. Le muestras las plantillas predefinidas que ofrece SAP y le explicas que puede usarlas como punto de partida, ajustándolas antes de poner en marcha el sistema. Este enfoque permite partir de una base sólida y personalizarla según las necesidades reales de la empresa, evitando estructuras contables obsoletas o ineficientes.",
+    "start_time": 52.8,
+    "end_time": 83.8
   },
   {
     "slide_index": 4,
-    "image_file": "028_Slide_04_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "You have 3 options for defining a Chart of Accounts:  The first option is selecting a pre-defined Chart of Accounts template. – This option could be suitable for a standard company, especially a new company without a legacy chart of accounts. – Note that once you have started to work with the company database you cannot choose a different Chart of Accounts template. You can however add, update or remove accounts in the Chart of Accounts.  The second option is to import the chart of accounts data from your legacy system using the Data Transfer Workbench (DTW) tool. – If the company wants to keep their chart of accounts, they can still reorganize the structure before the import.  Alternatively, you can define your own Chart of Accounts. – This option allows you to create your own customized chart of accounts. An organization can use this opportunity to determine what the chart of account structure should look like to accommodate their needs. Defining the entire chart of accounts is a long, complex procedure.  You can use one of the existing standard charts of accounts and adapt it to the company’s needs.  Work together with the client accountant to decide on the company’s chart of accounts content and structure.  Although using one of the existing standard chart of accounts could suffice in many situations, organizations can take this opportunity to determine what the chart of account structure should look like to accommodate their needs.  Note that the practice of choosing a pre-defined Chart of Accounts template will be done in the implementation and support training. 4 Define Valid Legal Chart of Accounts  You have 3 options for defining a Chart of Accounts: Select a pre-defined Chart of Accounts template. Import the chart of accounts data from a legacy system. Define your own Chart of Accounts. Chart of Accounts",
-    "start_time": 113.76,
-    "end_time": 214.66
+    "image_file": "Slide_004.webp",
+    "script_text": "Hay tres formas de definir tu Plan de Cuentas en SAP Business One. La primera es elegir una plantilla predefinida, ideal para empresas nuevas o estándar, aunque una vez iniciado no se puede cambiar la plantilla base. La segunda opción es importar tu plan actual desde un sistema legado usando DTW, permitiendo reestructurar antes de la carga. La tercera es crear un plan totalmente personalizado desde cero, lo que brinda máxima flexibilidad para adaptar la estructura contable a los procesos únicos de tu empresa.",
+    "start_time": 83.8,
+    "end_time": 118.0
   },
   {
     "slide_index": 5,
-    "image_file": "028_Slide_05_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "There are two windows for maintaining the chart of accounts: the Chart of Accounts window and the Edit Chart of Accounts window. We can perform different tasks in each. These are the recommended tasks to perform in the Chart of Accounts window:  Add a new G/L account to an existing title. For example add new loan account to the bank loans title.  View information about existing accounts.  And update different properties of existing accounts using the Accounts Details button. Not the different colors of accounts. These colors represent different type of object in the chart of accounts:  Titles appear in blue.  Normal active accounts in black  Accounts that were entered in the G/L Account Determination window (that is default accounts) are displayed in green. 5 Manage the Chart of Accounts – Tasks 1 Financials Chart of Accounts window:  Add a new G/L account to an existing title  View information about existing accounts  Update different properties of existing accounts Edit Chart of Accounts window:  Add a new title  Delete an account  Change the structure of the chart of accounts and move titles and accounts * You can also add a new account",
-    "start_time": 214.66,
-    "end_time": 279.67
+    "image_file": "Slide_005.webp",
+    "script_text": "En la ventana Plan de Cuentas puedes realizar tareas esenciales para mantener tu contabilidad actualizada. Aquí puedes agregar una nueva cuenta G/L dentro de un título existente, como añadir una cuenta de préstamo bajo 'Préstamos Bancarios'. También puedes ver el detalle de cualquier cuenta y actualizar sus propiedades usando el botón 'Detalles de la Cuenta'. Los títulos aparecen en azul, las cuentas normales en negro y las predeterminadas de determinación en verde, lo que ayuda a identificar rápidamente su función.",
+    "start_time": 118.0,
+    "end_time": 150.6
   },
   {
     "slide_index": 6,
-    "image_file": "028_Slide_06_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "Enter the Edit Chart of Accounts from the Financials module and then we choose a drawer. For example, Liabilities. These are the recommended tasks to perform in the Edit Chart of Accounts window: Add a new title Delete an account. Change the structure of the chart of accounts and move titles and accounts. Add an account using the Add Sub-Level Account button. Note: it is a good practice to have all your active accounts at the same level. For example, level 5. 6 Manage the Chart of Accounts – Tasks 2 Financials Chart of Accounts window:  Add a new G/L account to an existing title  View information about existing accounts  Update different properties of existing accounts Edit Chart of Accounts window:  Add a new title  Delete an account  Change the structure of the chart of accounts and move titles and accounts * You can also add a new account",
-    "start_time": 279.67,
-    "end_time": 328.46
+    "image_file": "Slide_006.webp",
+    "script_text": "La ventana Editar Plan de Cuentas te permite realizar cambios estructurales en tu contabilidad. Desde aquí, puedes agregar un nuevo título dentro de un cajón como Pasivo, eliminar cuentas que ya no se usan, y reorganizar la estructura moviendo títulos y cuentas entre niveles. Es buena práctica mantener todas las cuentas activas en el mismo nivel, por ejemplo nivel 5, para facilitar reportes y consultas. También puedes agregar una cuenta de subnivel directamente desde esta ventana usando el botón correspondiente.",
+    "start_time": 150.6,
+    "end_time": 183.2
   },
   {
     "slide_index": 7,
-    "image_file": "028_Slide_07_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "Here are some key points to take away: You have 3 options for defining a chart of accounts. You can select a pre-defined chart of accounts template. You can import the chart of accounts data from a legacy system. Or you can define your own chart of accounts. We have two windows for maintaining the chart of accounts: the Chart of Accounts window and the Edit Chart of Accounts window. In each of them we can perform different tasks. 7 7 Summary Here are some key points: You have 3 options for defining a Chart of Accounts: • Select a pre-defined Chart of Accounts template. • Import the chart of accounts data from a legacy system. • Define your own Chart of Accounts. We have two windows for maintaining the chart of accounts: • The Chart of Accounts window • And the Edit Chart of Accounts window. • In each of them we can perform different tasks.",
-    "start_time": 328.46,
-    "end_time": 378.07
-  },
-  {
-    "slide_index": 8,
-    "image_file": "028_Slide_08_10_FinSetup_12_COA_ManageCOA.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 378.07,
-    "end_time": 515.26
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One tienes tres formas de definir tu plan de cuentas: seleccionar una plantilla predefinida, importar desde un sistema heredado o crear uno desde cero. Para mantenerlo, cuentas con dos ventanas: la ventana Plan de Cuentas, donde visualizas y gestionas la estructura, y la ventana Editar Plan de Cuentas, donde modificas cuentas individuales. Ambas te permiten adaptar el plan a las necesidades de tu empresa, como Distribuidora Andina Tech, asegurando que refleje correctamente tus operaciones contables en Quito, bajo normas locales y en dólares estadounidenses.",
+    "start_time": 183.2,
+    "end_time": 218.6
   }
 ]

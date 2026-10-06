@@ -1,135 +1,135 @@
 [
   {
     "slide_index": 1,
-    "image_file": "046_Slide_01_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 22 ImplTools ExpressWizard en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Herramientas de implementación: Asistente de configuración rápida El asistente de configuración rápida facilita la tarea de creación y configuración de una nueva base de datos empresarial.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso sobre el Asistente de Configuración Rápida de SAP Business One versión 10.0. Esta herramienta simplifica la creación y configuración de una nueva base de datos empresarial. En las siguientes láminas veremos cómo usarla paso a paso para poner en marcha una empresa de forma guiada y estructurada, siguiendo las mejores prácticas de implementación.",
     "start_time": 0.0,
-    "end_time": 25.46
+    "end_time": 23.0
   },
   {
     "slide_index": 2,
-    "image_file": "046_Slide_02_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Al final de este tema, podrá crear una nueva empresa de SAP Business One y configurar parametrizaciones clave en una empresa con un asistente fácil de utilizar. 2 2 Al concluir este curso, estará en condiciones de:  Crear una nueva empresa de SAP Business One y  Configurar parametrizaciones clave en una empresa con un asistente fácil de utilizar Objetivos.",
-    "start_time": 25.46,
-    "end_time": 48.67
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, estarás en condiciones de crear una nueva empresa en SAP Business One y configurar sus parametrizaciones clave utilizando el Asistente de Configuración Rápida. Esta herramienta te guiará de forma sencilla y estructurada para asegurar una puesta en marcha correcta y eficiente del sistema.",
+    "start_time": 23.0,
+    "end_time": 42.4
   },
   {
     "slide_index": 3,
-    "image_file": "046_Slide_03_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Veamos un ejemplo empresarial.  Está configurando una nueva base de datos de cliente y desea asegurarse de que configurar las parametrizaciones clave en el orden correcto. Además, el cliente ha pedido un registro de auditoría de todas las parametrizaciones de configuración.  Solución: El Asistente de configuración rápida ofrece una manera estructurada y sistemática de crear y/o configurar una nueva empresa. Además, se graba automáticamente un informe de auditoría de cualquier cambio en la parametrización o configuración realizado en el asistente. 3 3 Desea asegurarse de que puede configurar las parametrizaciones clave en el orden correcto. Además, el cliente ha pedido un registro de auditoría que muestre todas las parametrizaciones de configuración. Solución: El Asistente de configuración rápida ofrece una manera estructurada y sistemática de crear y/o configurar una empresa. Adicionalmente, se graba automáticamente un informe de auditoría de cualquier cambio en la parametrización o configuración realizado en el asistente. Ejemplo empresarial.",
-    "start_time": 48.67,
-    "end_time": 116.98
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que estás configurando una nueva base de datos para un cliente y necesitas asegurar que las parametrizaciones se realicen en el orden correcto. Además, el cliente requiere un registro de auditoría de todos los cambios. El Asistente de Configuración Rápida ofrece un proceso estructurado y graba automáticamente un informe de auditoría de cada cambio realizado, cumpliendo con ambos requisitos.",
+    "start_time": 42.4,
+    "end_time": 67.0
   },
   {
     "slide_index": 4,
-    "image_file": "046_Slide_04_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Instalación del software  El software de SAP Business One se descarga desde el centro de descarga de software (accesible desde PartnerEdge o desde el portal de soporte)  Para obtener instrucciones de instalación paso a paso, consulte la Guía del administrador  Durante la instalación, establezca la clave de usuario del sitio  De forma opcional, puede instalar una base de datos de muestra durante la instalación del software  Puede utilizar el software durante 31 días sin licencia. Hay disponibles en PartnerEdge para interlocutores autorizados enlaces para descargar el software de SAP Business One. Para obtener instrucciones de instalación paso a paso, consulte la Guía del administrador Durante la instalación, establezca la clave de usuario (B1SiteUser) del sitio. La clave de usuario del sitio es necesaria para realizar diversas tareas de nivel de sistema como:  Crear empresas nuevas.  Actualizar una versión o nivel de patch  Ingresar al System Landscape Directory (SLD)  Creación de un usuario de base de datos con privilegios de solo lectura para informes y consultas Nota: La clave de usuario del sitio solo puede se puede modificar posteriormente en el System Landscape Directory (SLD). Puede ejecutar la versión recientemente instalada del producto SAP Business One por 31 días sin licencia. Para continuar utilizando la aplicación después de los 31 días, debe instalar una clave de licencia válida asignada por SAP.",
-    "start_time": 116.98,
-    "end_time": 205.61
+    "image_file": "Slide_004.webp",
+    "script_text": "El software de SAP Business One se descarga desde el centro de descarga de software, accesible desde PartnerEdge o el portal de soporte. Durante la instalación, debes establecer la clave de usuario del sitio (B1SiteUser), necesaria para tareas como crear empresas o actualizar versiones. Opcionalmente, puedes instalar una base de muestra y usar el software por 31 días sin licencia.",
+    "start_time": 67.0,
+    "end_time": 91.6
   },
   {
     "slide_index": 5,
-    "image_file": "046_Slide_05_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Directorio de infraestructura del sistema (SLD) https://<Server>:<Port>/ControlCenter  Lugar de trabajo central para la gestión de bases de datos de la empresa en los servidores de base de datos  Gestión de la seguridad, incluida la autenticación de la base de datos, el inicio de sesión único, las claves de cifrado, la clave de usuario del sitio, las credenciales de usuario de la base de datos  Gestión de licencias, correo, alertas y servicios de acceso del navegador System Landscape Directory (SLD) es el lugar de trabajo central para realizar varias tareas administrativas y de seguridad. Se puede acceder desde un navegador web con la URL que mostrada anteriormente. Utilice el SLD para:  Gestionar empresas en los servidores de base de datos. Las empresas añadidas aquí se mostrarán en la pantalla de inicio de sesión del usuario.  Gestionar la autenticación de usuarios de la base de datos  Permitir funcionalidad de entrada individual  Gestionar las claves de cifrado utilizadas para cifrar datos en SAP Business One  Modificar la clave de acceso de usuario al sitio  Modificar el usuario de base de datos utilizado para conectar al servidor de la base de datos En la ficha Servicios del SLD, puede gestionar varios servicios entre los que se incluyen:  El servicio de licencia  Los servicios de correo electrónico y alertas  El servicio de acceso al navegador",
-    "start_time": 205.61,
-    "end_time": 294.74
+    "image_file": "Slide_005.webp",
+    "script_text": "El System Landscape Directory (SLD) es el lugar de trabajo central para gestionar bases de datos, seguridad y licencias de SAP Business One. Desde él puedes administrar empresas, autenticación de usuarios, claves de cifrado, correo, alertas y servicios de acceso al navegador. También es donde se modifica la clave de usuario del sitio tras la instalación inicial.",
+    "start_time": 91.6,
+    "end_time": 115.0
   },
   {
     "slide_index": 6,
-    "image_file": "046_Slide_06_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Opciones para crear una nueva empresa (seleccione el icono a la derecha del botón Nueva)  Para crear una nueva empresa, seleccione Nueva en la ventana Seleccionar empresa  Para crear y configurar una nueva empresa mediante un asistente, seleccione Nueva con el asistente en la ventana Seleccionar empresa Es necesaria la contraseña B1SiteUser Creación de una nueva empresa Administración > Seleccionar empresa Se le pedirá que introduzca la clave de acceso de usuario de sitio para continuar. Para crear una empresa, seleccione Gestión Seleccionar empresa. En la ventana Seleccionar empresa seleccione el icono a la derecha del botón -Nueva para ver las entradas de la lista desplegable: • Seleccione Nueva para crear una nueva empresa. Después de crear la empresa puede utilizar las ventanas de configuración en el menú Gestión para configurarla. • Seleccione Nueva con el asistente para crear la base de datos de la empresa y configurar la empresa utilizando el asistente. El asistente permite que la organización de un interlocutor adopte un método uniforme para la configuración con consultores siguiendo una secuencia recomendada de configuración. En ambos casos, se le pedirá que introduzca la clave de acceso de usuario del sitio para continuar.",
-    "start_time": 294.74,
-    "end_time": 368.98
+    "image_file": "Slide_006.webp",
+    "script_text": "Para crear una nueva empresa con el Asistente de Configuración Rápida, ve al menú Administración > Seleccionar empresa. En la ventana Seleccionar empresa, haz clic en Nueva y elige la opción 'Nueva con el asistente' del menú desplegable. Se te pedirá la clave de usuario del sitio (B1SiteUser) para continuar. Esta opción inicia un proceso guiado que crea la base de datos y configura la empresa siguiendo una secuencia recomendada.",
+    "start_time": 115.0,
+    "end_time": 143.6
   },
   {
     "slide_index": 7,
-    "image_file": "046_Slide_07_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Creación de una nueva empresa con el asistente de configuración rápida",
-    "start_time": 368.98,
-    "end_time": 374.4
+    "image_file": "Slide_007.webp",
+    "script_text": "Bienvenido al Asistente Express de Configuración de SAP Business One. Esta herramienta le guiará paso a paso para crear una nueva empresa de forma rápida y estructurada. Ideal para implementaciones nuevas o entornos de prueba, le permite definir desde el nombre de la empresa hasta el plan de cuentas y los períodos contables. En esta lámina iniciamos el proceso que simplifica la puesta en marcha de su sistema ERP.",
+    "start_time": 143.6,
+    "end_time": 171.8
   },
   {
     "slide_index": 8,
-    "image_file": "046_Slide_08_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Asistente de configuración rápida – Detalles de la empresa Detalles iniciales de la empresa Licencia requerida (o versión de prueba) Nombre y nombre de la base de datos Opción para copiar en UDF, UDT y UDO desde empresa actual Las parametrizaciones locales activan tablas y funcionalidad locales Modelo del plan de cuentas (o definido por el usuario) Localización Idioma base para la IU El asistente le dirige primero a la pantalla de creación de empresa estándar donde introducirá los detalles iniciales de la nueva empresa.  Si se trata de una nueva instalación de SAP Business One, puede seleccionar la casilla de selección Versión de prueba. Pasados 31 días, vencerá el período de validez de la ventana y deberá instalar la clave de licencia. Si ya se ha instalado una licencia, la nueva empresa deberá pertenecer a la misma localización.  Nombre y nombre de la base de datos. El nombre aparecerá en la pantalla Detalles de la empresa.  Opción para copiar las tablas, los campos y los objetos definidos por el usuario de la empresa existente a la nueva. Esto resulta útil cuando es necesario crear una empresa adicional para la empresa del cliente o para crear una base de datos de prueba.  Opciones locales. Cuando selecciona las parametrizaciones de la localización, se activan las tablas y funcionalidad locales de la nueva empresa. No puede modificar la localización después de que haya creado la empresa.  Plan de cuentas. Los modelos del plan de cuentas que verá dependen de las parametrizaciones locales. Si selecciona la opción “modelo”, se creará automáticamente un plan de cuentas por defecto en base a la localización, cuyas cuentas puede editar como desee. O bien, puede seleccionar la opción \"definido por el usuario\". Solo los cajones de nivel superior se proporcionan en un plan de cuentas definido por el usuario, lo que permite añadir cuentas manualmente a los cajones. Nota: No puede modificar el plan de cuentas después de que haya contabilizado las transacciones.  Idioma fuente. El idioma de visualización inicial de la IU. Se puede modificar posteriormente.",
-    "start_time": 374.4,
-    "end_time": 508.06
+    "image_file": "Slide_008.webp",
+    "script_text": "En esta pantalla del asistente, ingresa los datos fundamentales de tu nueva empresa. Define si usas una licencia o versión de prueba, el nombre que identificará tu empresa y el de la base de datos. Puedes copiar configuraciones personalizadas como UDF, UDT y UDO desde una empresa existente, útil para pruebas o sucursales. Selecciona la localización (Ecuador), que activa tablas y funcionalidades específicas. Elige el modelo de plan de cuentas: automático por localización o definido por el usuario. Finalmente, establece el idioma inicial de la interfaz, modificable más tarde.",
+    "start_time": 171.8,
+    "end_time": 208.0
   },
   {
     "slide_index": 9,
-    "image_file": "046_Slide_09_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Asistente de configuración rápida (cont.) Para completar las parametrizaciones iniciales, seleccione el botón Explorar para definir los períodos contables Debe definir los períodos contables del ejercicio más antiguo que serán necesarios en la nueva empresa para los informes.  Para completar las parametrizaciones iniciales, seleccione el botón Explorar para definir los períodos contables. Este paso es obligatorio.  Debe definir los períodos contables para el ejercicio más antiguo que serán necesarios en la nueva empresa para los informes. Una vez creada la empresa, puede definir períodos contables para los ejercicios siguientes, pero no se puede definir períodos contables para un ejercicio anterior.  Para las fechas de vencimiento, SAP recomienda que defina un rango que es mayor que el intervalo de fechas de contabilización del período concreto. Esto le permite alojar las condiciones de pago que calculan una fecha de vencimiento posterior a la fecha actual del sistema.  Las fechas de vencimiento de los períodos contables se pueden modificar posteriormente. Por ejemplo, si el rango de fecha de vencimiento no permite una transacción con una condición de pago determinada, es posible ajustarlo.  No puede crear períodos que se solapen. Después de crear períodos, puede ajustar el rango de fecha y el inicio del ejercicio según sus necesidades. El ejercicio no tiene que ser el mismo que el año natural; sin embargo, el comienzo del ejercicio debe ser el primer día del mes. En este caso, debe modificar el intervalo de fechas de los períodos del ejercicio fiscal. Para ello comience con el último período y vaya hacia atrás para evitar una situación en la cual los períodos se solapen.",
-    "start_time": 508.06,
-    "end_time": 615.1
+    "image_file": "Slide_009.webp",
+    "script_text": "Para completar la configuración inicial, debe definir los períodos contables del ejercicio más antiguo que necesitará para sus informes. Este paso es obligatorio y se hace desde el botón Explorar. Los períodos deben ser consecutivos y no solaparse. SAP recomienda que el rango de fechas de vencimiento sea mayor que el intervalo de contabilización, para acomodar condiciones de pago que generen fechas futuras. Aunque puede ajustar estos rangos después, no podrá crear períodos para ejercicios pasados una vez establecidos. El ejercicio fiscal puede diferir del calendario, pero debe comenzar el primer día de un mes.",
+    "start_time": 208.0,
+    "end_time": 246.6
   },
   {
     "slide_index": 10,
-    "image_file": "046_Slide_10_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Base de datos de la empresa - Finalización  Después de definir el período contable el asistente crea las tablas de base de datos  El progreso se muestra en la barra de estado  La cuenta de director se crea y deberá proporcionar la contraseña El usuario “director” se crea por defecto. Deberá proporcionar una contraseña de director. Después de definir los períodos contables, el asistente crea las tablas para la nueva empresa. La cuenta de usuario \"director\" se ha creado de manera predeterminada. Introduzca una clave de acceso para este usuario y utilice estas credenciales para entrar en la empresa por primera vez.",
-    "start_time": 615.1,
-    "end_time": 653.4
+    "image_file": "Slide_010.webp",
+    "script_text": "Tras definir los períodos contables, el asistente procede a crear las tablas de la base de datos para su nueva empresa. Este proceso se muestra en tiempo real mediante la barra de estado. Automáticamente se crea el usuario 'director', necesario para el primer acceso a la empresa. Debe asignarle una contraseña segura, la cual utilizará para ingresar por primera vez y comenzar a trabajar en SAP Business One. Este usuario tiene privilegios totales y debe protegerse adecuadamente.",
+    "start_time": 246.6,
+    "end_time": 278.0
   },
   {
     "slide_index": 11,
-    "image_file": "046_Slide_11_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Utilización del asistente para configurar una empresa",
-    "start_time": 653.4,
-    "end_time": 657.94
+    "image_file": "Slide_011.webp",
+    "script_text": "Esta lámina introduce el uso práctico del Asistente de Configuración Rápida para crear una nueva empresa en SAP Business One. El asistente lo guía mediante una secuencia lógica de pantallas, desde los detalles iniciales hasta la finalización de la base de datos. Es especialmente útil cuando se necesita implementar rápidamente una empresa nueva, ya sea para un cliente, una sucursal o un entorno de prueba, asegurando que se cubran todos los pasos críticos sin omitir configuraciones esenciales.",
+    "start_time": 278.0,
+    "end_time": 309.4
   },
   {
     "slide_index": 12,
-    "image_file": "046_Slide_12_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Configuración de una nueva empresa Para preparar el uso de SAP Business One, debe crear la base de datos de empresa y configurar varias parametrizaciones Debido a las dependencias de datos, existe un orden sugerido para la configuración y establecimiento de una nueva empresa La mayoría de estas parametrizaciones se ubican en los menús: Gestión > Inicialización del sistema Gestión > Definiciones  Para preparar SAP Business One para utilizarlo con una empresa, configure varias parametrizaciones, como contabilidad, inventario, interlocutores comerciales, usuarios, ventas y compras. Debido a las dependencias de datos, existe un orden sugerido para la configuración y establecimiento de una nueva empresa. Por ejemplo, debe configurar primero las parametrizaciones de contabilidad.  Las pantallas de configuración se ubican principalmente en los menús Gestión > Inicialización del sistema y Gestión > Definiciones.  En lugar de utilizar las pantallas de configuración individuales, suele ser más sencillo utilizar el Asistente de configuración rápida.",
-    "start_time": 657.94,
-    "end_time": 723.79
+    "image_file": "Slide_012.webp",
+    "script_text": "Para garantizar un correcto funcionamiento de SAP Business One, se recomienda seguir un orden lógico en la configuración debido a las dependencias entre módulos. Primero debe configurar la contabilidad, ya que muchos otros procesos dependen de ella. Luego procede con el inventario, seguido de la definición de interlocutores comerciales (clientes y proveedores). Después configura los módulos de ventas y compras, y finalmente crea los usuarios y sus permisos. Aunque puede usar pantallas individuales, el Asistente de Configuración Rápida simplifica este proceso al agrupar pasos esenciales.",
+    "start_time": 309.4,
+    "end_time": 344.0
   },
   {
     "slide_index": 13,
-    "image_file": "046_Slide_13_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Configuración de una nueva empresa o empresa existente Gestión > Inicialización del sistema > Centro de implementación > Tareas de implementación – Configurar parametrizaciones de empresa  Para acceder al asistente para configurar una empresa, ábralo desde el Centro de implementación  Puede utilizar el asistente para realizar cambios de configuración en la nueva empresa además de hacerlo en una empresa existente. Para acceder al asistente, abra el Centro de implementación y seleccione Configurar parametrizaciones de empresa.  Para utilizar las tareas del centro de implementación, es necesaria la autorización general Gestión >Inicialización del sistema> Tareas de implementación > Tareas de implementación.",
-    "start_time": 723.79,
-    "end_time": 765.91
+    "image_file": "Slide_013.webp",
+    "script_text": "Para iniciar la configuración de una empresa nueva o existente en SAP Business One, primero acceda al módulo de Gestión. Desde allí, seleccione Inicialización del sistema y luego el Centro de implementación. Dentro de este centro, encuentre las Tareas de implementación y seleccione la opción Configurar parametrizaciones de empresa. Este es el punto de entrada al Asistente Express de Configuración, que le permitirá ajustar los parámetros iniciales de su empresa. Es necesario contar con la autorización general para acceder a estas tareas. Una vez dentro, el asistente lo guiará paso a paso según las áreas definidas.",
+    "start_time": 344.0,
+    "end_time": 383.0
   },
   {
     "slide_index": 14,
-    "image_file": "046_Slide_14_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Orden de configuración del asistente de configuración rápida Contabilidad Gestión de bancos Interlocutores comerciales Inventario Compras y ventas Usuarios Plan de cuentas, Inventario permanente, Almacenes Bancos y Bancos propios Condiciones de pago, Grupos de interlocutores comerciales Grupos de artículos, Ciclos de inventario, Listas de precios Parametrizaciones de documento, Numeración de documentos Cuentas de usuario, Licencias, Autorizaciones Detalles de la empresa Información de la empresa, Ocultar funcionalidad  El asistente le guiará a través de los pasos del proceso de configuración de la empresa para cada área:  Detalles de la empresa  Contabilidad  Gestión de bancos  Interlocutores comerciales  Inventario (stock)  Compras y ventas  Usuarios.",
-    "start_time": 765.91,
-    "end_time": 811.75
+    "image_file": "Slide_014.webp",
+    "script_text": "El Asistente Express de Configuración sigue un orden lógico y recomendado para configurar cada área de su empresa en SAP Business One. Comienza con los Detalles de la empresa, como nombre, dirección y datos fiscales. Luego pasa a Contabilidad para definir el plan de cuentas y parámetros financieros. Continúa con Gestión de bancos para configurar cuentas bancarias y propias. Después, se configuran los Interlocutores comerciales (clientes y proveedores), seguido del Inventario para definir almacenes, listas de precios y ciclos de conteo. Luego se ajustan Compras y ventas, incluyendo numeración de documentos y condiciones de pago. Finalmente, se crean los Usuarios y se asignan licencias y autorizaciones. Este flujo garantiza una configuración coherente y completa.",
+    "start_time": 383.0,
+    "end_time": 429.2
   },
   {
     "slide_index": 15,
-    "image_file": "046_Slide_15_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Beneficios del uso del asistente para configuración  Para facilitar el uso, las pantallas de configuración para cada área se agrupan en un orden recomendado  El asistente resalta parametrizaciones irreversibles con antelación mediante un signo de exclamación rojo  Después de contabilizar una transacción, estas parametrizaciones se desactivan y no pueden cambiarse en el asistente  La ventaja de utilizar el asistente consiste en que las pantallas de configuración se agrupan en un orden recomendado para cada módulo o área: contabilidad, gestión de bancos, interlocutores comerciales, inventario (stock), compras y ventas y usuarios. Aquí se muestra un ejemplo de pantallas de configuración de contabilidad. Existen varias pantallas de contabilidad.  El asistente también resalta de forma anticipada cualquier parametrización que no pueda modificarse después de que se hayan contabilizado las transacciones para la empresa. Estas parametrizaciones tienen un signo de exclamación en rojo (!).  Cuando una parametrización pasa a ser irreversible, se desactiva en el asistente y no puede modificarse.",
-    "start_time": 811.75,
-    "end_time": 879.62
+    "image_file": "Slide_015.webp",
+    "script_text": "El Asistente Express de Configuración agrupa las pantallas de configuración en un orden lógico por módulo, lo que facilita el proceso y reduce errores. Una de sus ventajas clave es que identifica con anticipación las parametrizaciones que se vuelven irreversibles después de contabilizar una transacción, marcándolas con un signo de exclamación rojo (!). Estas configuraciones, una vez usadas en transacciones reales, se desactivan en el asistente y no pueden modificarse desde allí. Esto protege la integridad de los datos contables y operativos. Al seguir el asistente, asegura que se definan correctamente aspectos críticos como el plan de cuentas, almacenes o numeración de documentos antes de comenzar a operar.",
+    "start_time": 429.2,
+    "end_time": 473.0
   },
   {
     "slide_index": 16,
-    "image_file": "046_Slide_16_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Resumen de pantallas de configuración utilizadas en el asistente Área Pantallas de configuración equivalentes Contabilidad Gestión > Inicialización del sistema > Detalles de la empresa Finanzas > Plan de cuentas Gestión > Definiciones > Finanzas Gestión > Definiciones > Finanzas > Impuestos Gestión de bancos Gestión > Definiciones > Gestión de bancos Interlocutores comerciales Gestión > Inicialización del sistema > Parametrizaciones generales – Ficha IC Gestión > Definiciones > Interlocutores comerciales Inventario Gestión > Definiciones > Inventario Inventario > Listas de precios Compras y ventas Gestión > Inicialización del sistema > Parametrizaciones de documento Gestión > Inicialización del sistema > Parametrizaciones generales – Ficha Visualización. Gestión > Inicialización del sistema > Numeración de documento Gestión > Definiciones > Compras > Precios de entrega Gestión > Definiciones > General > Vínculos a campos de referencia Gestión > Definiciones > Oportunidades Usuarios Gestión > Definiciones Gestión > Licencia Gestión > Inicialización del sistema > Autorizaciones Recursos Humanos La diapositiva muestra un resumen de los pasos del asistente y de las pantallas de configuración de empresa equivalentes.",
-    "start_time": 879.62,
-    "end_time": 950.57
+    "image_file": "Slide_016.webp",
+    "script_text": "Esta lámina muestra las rutas de menú equivalentes en SAP Business One para cada área configurada por el Asistente Express. Por ejemplo, en Contabilidad, el asistente agrupa accesos como Detalles de la empresa, Plan de cuentas, Finanzas e Impuestos, que normalmente se encuentran en distintas rutas del menú. Lo mismo aplica para Gestión de bancos, Interlocutores comerciales, Inventario, Compras y ventas y Usuarios. El asistente simplifica el acceso reuniendo estas configuraciones en un flujo guiado, evitando que el usuario tenga que buscar manualmente cada opción en el menú tradicional. Esto acelera la implementación y reduce la posibilidad de omisiones.",
+    "start_time": 473.0,
+    "end_time": 513.2
   },
   {
     "slide_index": 17,
-    "image_file": "046_Slide_17_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Informe de configuración  Al finalizar el asistente para una nueva empresa, se crea un informe de configuración estándar. Al ejecutar el asistente para una nueva empresa, se crea un informe de configuración estándar. Este informe puede entregarse al cliente como documentación. Cada posible parametrización se muestra con el valor configurado o por defecto.",
-    "start_time": 950.57,
-    "end_time": 974.54
+    "image_file": "Slide_017.webp",
+    "script_text": "Al finalizar el Asistente Express de Configuración para una nueva empresa, SAP Business One genera automáticamente un informe de configuración estándar. Este documento contiene todas las parametrizaciones realizadas, mostrando tanto los valores definidos por el usuario como los valores por defecto del sistema. El informe sirve como documentación formal de la implementación y puede entregarse al cliente como evidencia de la configuración inicial. Incluye detalles de áreas como contabilidad, inventario, bancos y usuarios, permitiendo una revisión clara de qué se configuró y cómo. Es un recurso valioso para auditorías, capacitación o futuras actualizaciones del sistema.",
+    "start_time": 513.2,
+    "end_time": 551.8
   },
   {
     "slide_index": 18,
-    "image_file": "046_Slide_18_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Informe de configuración Gestión > Inicialización del sistema > Centro de implementación > Gestión de configuración  El informe de configuración se graba cada vez que se ejecute el asistente, lo que proporciona un seguimiento de auditoría.  Acceda y compare informes de configuración grabados Seleccione el informe grabado y compárelo con la configuración actual (para comprobar si los cambios se realizaron directamente desde los menús Gestión) Seleccione varios informes para su comparación  Otra ventaja del uso del asistente de configuración consiste en que se graba un informe cada vez que se ejecute el asistente, lo que proporciona un seguimiento de auditoría de los cambios realizados.  Puede acceder a informes de la configuración grabados en cualquier momento seleccionando Gestión de configuración desde el menú Centro de implementación:  Puede seleccionar un informe grabado y compararlo con la configuración actual. Ya que no se realiza el seguimiento de los cambios de configuración realizados fuera del asistente, puede realizar esta comparación para comprobar si los cambios de configuración se han realizado directamente desde los menús Gestión y no utilizando el Asistente de configuración rápida.  También puede seleccionar varios informes y compararlos. Esto permite ver cambios realizados en diferentes fases de la implementación o a lo largo del tiempo.  También tiene la posibilidad de grabar una instantánea de la configuración actual en cualquier momento, desde la ficha General de la pantalla Gestión de configuración.",
-    "start_time": 974.54,
-    "end_time": 1062.43
+    "image_file": "Slide_018.webp",
+    "script_text": "Cada vez que ejecuta el Asistente Express de Configuración, SAP Business One guarda un informe de configuración que sirve como historial de cambios. Estos informes se acceden desde el Centro de implementación, en la opción Gestión de configuración. Allí puede seleccionar un informe grabado y compararlo con la configuración actual del sistema para verificar si los cambios se hicieron dentro o fuera del asistente. También es posible comparar múltiples informes para observar la evolución de la configuración a lo largo del tiempo o entre fases de implementación. Además, desde la ficha General de esta pantalla, puede grabar una instantánea de la configuración actual en cualquier momento, lo que brinda flexibilidad para documentar hitos importantes durante el proyecto.",
+    "start_time": 551.8,
+    "end_time": 599.2
   },
   {
     "slide_index": 19,
-    "image_file": "046_Slide_19_10_Impl_22_ImplTools_ExpressWizard_ES.webp",
-    "script_text": "Resumen Puntos clave de este tema: Tiene dos opciones para crear una nueva empresa: la opción Asistente de configuración exprés reduce el tiempo necesario para crear una nueva empresa siguiendo un asistente de fácil uso. Esto hace posible que un interlocutor a adopte un enfoque uniforme para la configuración. El asistente agrupa pantallas de configuración relacionadas que es posible que no aparezcan en los mismos menús de gestión y, también importante, el asistente le avisa con antelación sobre las parametrizaciones irreversibles. También puede utilizar el asistente de configuración exprés para configurar una empresa existente. Después de ejecutar el asistente por primera vez, el sistema graba un informe de configuración estándar. Cada vez que utilice el asistente, se crea un nuevo informe y puede comparar y controlar las modificaciones de configuración. La clave de acceso de usuario al sitio es necesaria para crear una nueva empresa. La clave de acceso de usuario al sitio se establece y actualiza en el System Landscape Directory. Durante 31 días, puede ejecutar sin licencia la versión del producto SAP Business One recientemente instalada y crear bases de datos de la empresa utilizando la versión de prueba.  Estos son los puntos clave de este tema:  Tiene dos opciones para crear una nueva empresa: seleccionar Nueva o Nueva con el asistente. La última opción le permite ahorrar tiempo y elimina la necesidad de navegar por pantallas de configuración individuales. Esto hace posible que la organización de un interlocutor adopte un enfoque uniforme para la configuración. El asistente le guiará a través del orden correcto para realizar la configuración.  El asistente reúne las parametrizaciones de configuración encontradas en los menús Gestión > Inicialización del sistema, Gestión > Definiciones y en otros menús relevantes para Contabilidad, Gestión de bancos, Interlocutores comerciales, Inventario, Compras y ventas y Usuarios. El asistente agrupa automáticamente pantallas de configuración relacionadas.  Y también importante, el asistente le avisa sobre parametrizaciones irreversibles que están marcadas con un signo de exclamación rojo.  También puede ejecutar el asistente para configurar una empresa existente.  Después de ejecutar el asistente por primera vez, el sistema graba un informe de configuración estándar. Cada vez que utilice el asistente para realizar cambios adicionales de configuración, se crea un nuevo informe. Puede comparar los cambios en los informes con la función Gestión de configuración.  La clave de acceso de usuario del sitio se establece durante la instalación y es necesaria para crear una nueva empresa. La clave de acceso de usuario al sitio la gestiona el System Landscape Directory. Durante 31 días, puede ejecutar sin licencia la versión del producto SAP Business One recientemente instalada y crear bases de datos de la empresa utilizando la versión de prueba.",
-    "start_time": 1062.43,
-    "end_time": 1244.09
+    "image_file": "Slide_019.webp",
+    "script_text": "El asistente de configuración exprés simplifica la creación de una nueva empresa en SAP Business One, reduciendo tiempo y garantizando un enfoque uniforme. Agrupa pantallas de configuración dispersas en menús como Gestión > Inicialización del sistema y otros relevantes para contabilidad, bancos, interlocutores, inventario, compras, ventas y usuarios. Te avisa con antelación sobre parametrizaciones irreversibles marcadas con un signo de exclamación rojo. También sirve para configurar empresas existentes, generando un informe de configuración estándar tras la primera ejecución y nuevos informes en cada uso posterior, lo que permite comparar y controlar cambios. Para crear una nueva empresa se requiere la clave de acceso de usuario al sitio, definida en el System Landscape Directory. Además, puedes usar la versión de prueba sin licencia durante 31 días tras la instalación reciente para crear bases de datos de empresa.",
+    "start_time": 599.2,
+    "end_time": 654.2
   }
 ]

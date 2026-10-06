@@ -1,107 +1,107 @@
 [
   {
     "slide_index": 1,
-    "image_file": "103_Slide_01_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Purch 22 Issues ReturnsCM en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Compras: Devoluciones de mercancías y abonos Bienvenido al tema sobre las devoluciones de mercancías y abonos de proveedores.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre devoluciones de mercancías y abonos de proveedores en SAP Business One versión 10.0. Aquí aprenderá cómo gestionar las devoluciones de artículos y los créditos recibidos de proveedores, ya sea por mercancías dañadas, no conformes o errores en la facturación. Este proceso es clave para mantener un inventario preciso y unos libros contables equilibrados. Veremos los documentos principales que SAP Business One ofrece para manejar estas situaciones de forma eficiente y conforme a las mejores prácticas contables.",
     "start_time": 0.0,
-    "end_time": 21.82
+    "end_time": 34.66
   },
   {
     "slide_index": 2,
-    "image_file": "103_Slide_02_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "En este tema, observaremos el proceso de devolución de artículos y recepción de crédito de un proveedor. Analizaremos cómo y cuándo crear una devolución de mercancías o abono para compras y utilizamos una solicitud de devolución de mercancías para optimizar el proceso de devolución de artículos o recepción de crédito de un proveedor. 2 Al finalizar este tema, podrá:  Describir cómo y cuándo crear una devolución de mercancías o abonos para las compras  Utilizar una solicitud de devolución de mercancías para optimizar el proceso de devolver artículos o recibir crédito de un proveedor Objetivos",
-    "start_time": 21.82,
-    "end_time": 57.86
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá describir cómo y cuándo crear una devolución de mercancías o un abono para compras en SAP Business One. También aprenderá a utilizar una solicitud de devolución de mercancías para optimizar el proceso de devolver artículos o recibir crédito de un proveedor, sin necesidad de verificar el estado de la facturación previamente. Esto simplifica la gestión de devoluciones y mejora la trazabilidad desde la recepción hasta el abono contable.",
+    "start_time": 34.66,
+    "end_time": 63.29
   },
   {
     "slide_index": 3,
-    "image_file": "103_Slide_03_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Incluso cuando recibe todo tal como lo solicitó de parte de un proveedor, puede descubrir que las mercancías entregadas no cumplen con sus estándares de calidad o que se dañaron durante el transporte. Le devuelve estos artículos al proveedor para obtener crédito antes o después de haber recibido la factura. A veces, el envío es correcto y de gran calidad, pero la factura tiene un error. En esos casos, solicite un crédito del proveedor. Examinaremos las opciones disponibles en SAP Business One para la devolución de artículos de mala calidad o dañados y para corregir la factura de un proveedor. 3 3 Escenario empresarial  Incluso cuando recibe todo tal como lo solicitó de parte de un proveedor, puede descubrir que las mercancías entregadas no cumplen con sus estándares de calidad o que se dañaron durante el transporte.  Le devuelve estos artículos al proveedor para obtener crédito antes o después de haber recibido la factura.  A veces, el envío es correcto y de gran calidad, pero la factura tiene un error. En esos casos, solicite un crédito del proveedor.",
-    "start_time": 57.86,
-    "end_time": 124.75
+    "image_file": "Slide_003.webp",
+    "script_text": "Incluso cuando recibe exactamente lo solicitado, puede encontrar que las mercancías no cumplen con los estándares de calidad o se dañaron en el transporte. En esos casos, devuelve los artículos al proveedor para obtener crédito, ya sea antes o después de recibir la factura. También puede ocurrir que el envío sea correcto, pero la factura contenga un error: entonces solicita un crédito al proveedor. SAP Business One ofrece documentos específicos para manejar ambas situaciones: devoluciones de mercancías y abonos de proveedores.",
+    "start_time": 63.29,
+    "end_time": 97.44
   },
   {
     "slide_index": 4,
-    "image_file": "103_Slide_04_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Devoluciones de mercancías y abonos EM pedido Factura de proveedores Devolución de mercancías Abono de proveedores Utilizar la devolución de mercancías antes de que se introduzca una factura de proveedores Utilizar un abono de proveedores una vez se ha introducido una factura de proveedores Existen dos documentos principales en SAP Business One que se han diseñado para eliminar un artículo de un inventario y proporcionar un abono en el libro mayor. La primera es la devolución de mercancías. La devolución de mercancías se utiliza cuando se descubre el problema una vez que las mercancías se reciben en el inventario, pero antes de que se haya introducido una factura de proveedores. El segundo documento es el abono de proveedores. El abono se utiliza una vez se ha introducido una factura de proveedores.",
-    "start_time": 124.75,
-    "end_time": 174.14
+    "image_file": "Slide_004.webp",
+    "script_text": "En SAP Business One, existen dos documentos principales para devolver artículos y generar un abono contable. La devolución de mercancías se usa cuando se detecta un problema después de recibir las mercancías en inventario, pero antes de que se ingrese la factura de proveedores. El abono de proveedores se utiliza únicamente después de que la factura ya ha sido introducida en el sistema. Ambos documentos eliminan el artículo del inventario y generan un haber en contabilidad.",
+    "start_time": 97.44,
+    "end_time": 127.75
   },
   {
     "slide_index": 5,
-    "image_file": "103_Slide_05_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Simplificar el proceso con la solicitud de devolución de mercancías EM pedido Solicitud de devolución de mercancías Factura de proveedores Devolución de mercancías Abono de proveedores • Gestionar los artículos devueltos en cualquier momento del proceso • Simplifica el proceso porque la solicitud de devolución de mercancías selecciona automáticamente el documento a seguir correcto • Documentar el motivo por el que se ha realizado la devolución y capturar cualquier número RMA proporcionado por el proveedor La solicitud de devolución de mercancías puede ayudar a simplificar el proceso para sus empleados. Está diseñado para gestionar los artículos devueltos en cualquier punto del proceso de compra. Se puede crear una solicitud de devolución de mercancías en base a una entrada de mercancías de pedido o una factura de proveedores. Los empleados no tendrán que investigar el estado de compra para determinar si se ha introducido una factura de proveedores. La solicitud de devolución de mercancías selecciona automáticamente el documento correcto para la contabilización del movimiento de inventario y el haber. Este documento opcional también le permite documentar el motivo de la devolución o el Haber. Si un proveedor le proporciona un número de autorización de devolución de material (RMA), puede registrarlo aquí.",
-    "start_time": 174.14,
-    "end_time": 252.58
+    "image_file": "Slide_005.webp",
+    "script_text": "La solicitud de devolución de mercancías es un documento opcional que simplifica el proceso de devolución al permitir gestionar artículos devueltos en cualquier punto del proceso de compra. Se puede crear basada en una entrada de mercancías de pedido o una factura de proveedores. Este documento selecciona automáticamente el siguiente paso correcto (devolución de mercancías o abono de proveedores) según el estado de la facturación. Además, permite documentar el motivo de la devolución y registrar un número RMA proporcionado por el proveedor para seguimiento externo.",
+    "start_time": 127.75,
+    "end_time": 163.34
   },
   {
     "slide_index": 6,
-    "image_file": "103_Slide_06_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Imagine que solicitamos 20 escáneres. El proveedor entregó un total de 20 y los recibimos con una entrada de mercancías de pedido. Luego descubrimos que 2 se dañaron durante el transporte. El responsable de la recepción puede crear una solicitud de devolución de mercancías para documentar la necesidad de devolver los escáneres al proveedor para obtener crédito. Puede escribir el motivo necesario para devolver los artículos. El responsable puede ponerse en contacto con el proveedor y obtener instrucciones sobre cómo devolver el artículo al proveedor, tal vez, incluyendo un número de autorización de devolución de materiales (RMA) para utilizarlo al enviar de vuelta el artículo al proveedor. Más adelante, cuando el artículo se retira del stock para enviarlo al proveedor, el responsable copia los artículos en una devolución de mercancías para registrar la retirada de los escáneres del inventario y contabilizar el crédito que se espera del proveedor. 6 Devoluciones de mercancías Pedido de compra EM pedido Solicitud de devolución de mercancías Devolución de mercancías 20 escáneres solicitados 20 escáneres recibidos Es necesario devolver los 2 escáneres dañados Refleje el motivo de la devolución y la información acerca de cómo devolver el artículo al proveedor 2 escáneres dañados se han eliminado del inventario y se han acreditado",
-    "start_time": 252.58,
-    "end_time": 334.46
+    "image_file": "Slide_006.webp",
+    "script_text": "Imagine que ordenó 20 escáneres, los recibió mediante una entrada de mercancías de pedido y luego descubrió que 2 estaban dañados durante el transporte. El responsable crea una solicitud de devolución de mercancías para documentar la necesidad de devolver esos artículos. En ella indica el motivo (daño durante transporte), contacta al proveedor para obtener instrucciones y registra el número RMA proporcionado. Más tarde, al retirar los artículos del stock para enviarlos de vuelta, copia los datos en una devolución de mercancías para sacar los escáneres del inventario y registrar el crédito esperado del proveedor.",
+    "start_time": 163.34,
+    "end_time": 202.68
   },
   {
     "slide_index": 7,
-    "image_file": "103_Slide_07_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Considere la devolución de mercancías como el documento de compensación de la entrada de mercancías de pedido. Cuando introduce un documento de devolución de mercancías, las mercancías se envían desde el almacén y se reducen las cantidades. Si su empresa utiliza un sistema de inventario permanente, SAP Business One crea las contabilizaciones en cuenta correspondientes para actualizar también los valores del stock. Si devuelve mercancías a un proveedor para intercambiar y luego recibir un envío, puede o bien introducir una entrada de mercancías de pedido sin referencia o un pedido en el sistema o duplicar uno de los documentos anteriores. Es posible abrir el pedido cuando se hace una devolución. Esto le permite basar su nueva entrega en el pedido original. Observe que cuando se crea un documento de devolución de mercancías sin tener como base un documento anterior, el valor de un artículo de media variable es el coste calculado actual del artículo para el artículo y no el precio por unidad introducido en el documento de devolución de mercancías. 7 Efecto de devolución de mercancías Pedido de compra EM pedido Solicitud de devolución de mercancías Devolución de mercancías Cta. existencias 2000 2000 Cta. asignación Cta. existencias Cta. asignación 200 200 20 escáneres solicitados 20 escáneres recibidos Es necesario devolver los 2 escáneres dañados 2 escáneres dañados se han eliminado del inventario y se han acreditado Libro mayor (Valor) Almacén (Cantidad)",
-    "start_time": 334.46,
-    "end_time": 426.7
+    "image_file": "Slide_007.webp",
+    "script_text": "Al registrar una devolución de mercancías, SAP Business One actualiza tanto el stock como la contabilidad. Las cantidades salen del almacén y se reducen en inventario. Si usas inventario permanente, el sistema genera automáticamente los asientos contables correspondientes para ajustar el valor del stock. En este caso, se devuelven 2 escáneres dañados: se acredita el libro mayor por su valor y se debita la cuenta de asignación, reflejando el costo real del artículo, no el precio de compra.",
+    "start_time": 202.68,
+    "end_time": 235.13
   },
   {
     "slide_index": 8,
-    "image_file": "103_Slide_08_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Efecto de inventario para la solicitud de devolución de mercancías y las devoluciones de mercancías Devolución de mercancías Solic. devolución de mercancías En stock Comprometido Solicitado Disponible 20 20 20 2 18 18 * 18* EM pedido Antes del pedido de recepción de mercancías, aparecían 0 en stock. * Si hubiera un pedido anterior y la parametrización de configuración permitía la reapertura del pedido, se añadiría una cantidad de 2 en la columna Pedido y la cantidad Disponible incrementaría en 2. Veamos un ejemplo de una entrada de mercancías de pedido (sin un pedido anterior) para los 20 escáneres. Antes de realizar la entrada de mercancías de pedido teníamos 0 en stock. Una vez realizada la entrada de mercancías de pedido de 20 escáneres, aparecen 20 en stock y 20 disponibles. Cuando se agrega la solicitud de devolución de mercancías, se añaden 2 escáneres en Comprometido y se resta del stock Disponible. La solicitud de devolución de mercancías no tiene ningún efecto en la contabilidad. Cuando la solicitud de devolución de mercancías se copia a una devolución de mercancías, los 2 escáneres se retiran del stock y se realiza una contabilización que anula la contabilización de la entrada de mercancías de pedido. Si hubiera habido un pedido anterior y se hubiera efectuado la parametrización para permitir la reapertura del pedido, se hubiera añadido una cantidad de 2 en la columna Pedido y la cantidad de la columna Disponible hubiera incrementado en 2.",
-    "start_time": 426.7,
-    "end_time": 520.92
+    "image_file": "Slide_008.webp",
+    "script_text": "Esta tabla muestra cómo varían los niveles de stock tras una entrada de mercancías y una solicitud de devolución. Al recibir 20 escáneres, el stock disponible pasa de 0 a 20. Al generar una solicitud de devolución por 2 unidades, esas cantidades se mueven a 'Comprometido' y se restan del 'Disponible', quedando 18 disponibles. La solicitud no afecta contabilidad, solo reserva el stock. Si se reabriera un pedido anterior, el campo 'Pedido' aumentaría y el disponible se ajustaría en consecuencia.",
+    "start_time": 235.13,
+    "end_time": 270.72
   },
   {
     "slide_index": 9,
-    "image_file": "103_Slide_09_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Ahora imaginemos otro escenario. Solicitamos 50 cajas de auriculares. El proveedor entregó los artículos y la factura. Después de introducir la factura de proveedores en SAP Business One pero sin haberle pagado aún al proveedor, descubrimos que 5 cajas estaban defectuosas. Utilizamos la solicitud de devolución de mercancías para iniciar el proceso de devolución. Aquí se introduce el motivo para la devolución y cualquier información del proveedor sobre cómo devolver el producto. Debido a que la factura ya se ha creado, el sistema crea un abono de proveedores desde la solicitud de devolución de mercancías. No podemos crear una devolución de mercancías con referencia a la entrada de mercancías de pedido porque ya existe una factura de proveedores. 9 Abono de proveedores para compras Se solicitaron 50 cajas de auriculares y se recibieron en el inventario Entrada de mercancías de pedido Factura de proveedores Solicitud de devolución de mercancías Abono de proveedores Hemos introducido la factura de proveedores antes de descubrir que 5 de las cajas están defectuosas Utilice la solicitud de devolución de mercancías para iniciar el proceso de devolución Utilizamos el abono para devolver las 5 cajas y obtener crédito cuando exista una factura de proveedores.",
-    "start_time": 520.92,
-    "end_time": 600.55
+    "image_file": "Slide_009.webp",
+    "script_text": "Cuando ya se ingresó la factura de proveedor pero se detectan productos defectuosos, no se puede hacer una devolución de mercancías con referencia a la entrada de mercancías. En su lugar, se usa una solicitud de devolución de mercancías para iniciar el proceso. Desde ahí, el sistema genera automáticamente un abono de proveedores, que permitirá obtener un crédito futuro. Este flujo es clave cuando la factura ya está contabilizada y no se puede retroceder en el proceso de compra.",
+    "start_time": 270.72,
+    "end_time": 301.63
   },
   {
     "slide_index": 10,
-    "image_file": "103_Slide_10_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "El abono de proveedores tiene el mismo efecto que la devolución de mercancías. El abono actualiza las cantidades de stock y corrige los valores en la contabilidad. Ya que en este caso, pudimos crear el abono copiando los artículos desde la solicitud de devolución de mercancías a la factura de proveedores, el sistema encuentra las mismas cuentas que se usaron para contabilizar la factura y les contabiliza un valor negativo. Sin embargo, en algunos casos, puede que no sea apropiado copiar los artículos a un abono desde una factura. Por ejemplo, si el crédito era para una diferencia de precio y no para devolver artículos o si el crédito hacía referencia a la factura del proveedor que ya habíamos pagado. 10 Entrada de mercancías de pedido Factura de proveedores Solicitud de devolución de mercancías Abono de proveedores Abono de proveedores para compras Se solicitaron 50 cajas de auriculares y se recibieron en el inventario Hemos introducido la factura de proveedores antes de descubrir que 5 de las cajas están defectuosas Utilice la solicitud de devolución de mercancías para iniciar el proceso de devolución Utilizamos el abono para devolver las 5 cajas y obtener crédito cuando exista una factura de proveedores. Proveedor Cuenta de costes de asignación 100 100 Cuenta de existencias Proveedor 10 10 Cuenta de existencias 100 100 Cuenta de costes de asignación",
-    "start_time": 600.55,
-    "end_time": 684.12
+    "image_file": "Slide_010.webp",
+    "script_text": "El abono de proveedores generado desde una solicitud de devolución tiene el mismo efecto que una devolución de mercancías: reduce las cantidades en stock y corrige los valores contables. Al copiar los artículos desde la solicitud a la factura original, SAP usa las mismas cuentas contables pero con signo negativo. Aquí, se devuelven 5 cajas de auriculares: se acredita al proveedor y se debita inventario y asignación, revirtiendo el efecto de la factura original. Esto mantiene coherencia entre stock y libros.",
+    "start_time": 301.63,
+    "end_time": 334.73
   },
   {
     "slide_index": 11,
-    "image_file": "103_Slide_11_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Existe también la opción de crear un abono sin reducir las cuentas de stock. Tal vez, su proveedor le otorga crédito por un descuento faltante en un artículo o le reembolsa el precio de su compra. En esos casos, puede seleccionar la casilla de verificación \"Sin contabilización de cantidad\". Este indicador le permite crear un abono tipo artículo que afecte solo el precio. En el ejemplo del gráfico, faltó un 10% de descuento en la factura del proveedor por 100, por lo tanto se creó una factura de proveedor por 100 y se realizó un pago por el importe total. Cuando se descubre el problema, el proveedor envía un abono por el importe con descuento de 10. La casilla de verificación Sin contabilización de cantidad se utiliza para crear un abono en SAP Business One que no reduce la cantidad en stock sino que registra el cambio monetario en el Libro mayor. 11 Proveedor Cuenta de costes de asignación 100 100 Abono sin reducir stock Sin contab. cantidad  Faltó un 10% de descuento en la factura del proveedor por 100.  El proveedor envía un abono por la cantidad con descuento.  Utilice la casilla de selección Sin contabilización de cantidad al registrar el abono de proveedores con referencia a la factura. Pedido de compra Entrada de mercancías de pedido Factura de proveedor Abono de proveedores Libro mayor (Valor) Almacén (Cantidad) Cta. existencias Proveedor 10 10 Cuenta de existencias 100 100 Cuenta de costes de asignación",
-    "start_time": 684.12,
-    "end_time": 774.74
+    "image_file": "Slide_011.webp",
+    "script_text": "Cuando el crédito del proveedor no implica devolución de artículos —como un descuento faltante o reembolso— se puede crear un abono sin reducir stock. Al marcar 'Sin contabilización de cantidad', el abono solo afecta al libro mayor, registrando el ajuste monetario. En este caso, falta un 10% de descuento en una factura de 100: el proveedor emite un abono de 10. El sistema acredita al proveedor y debita la cuenta de asignación de costes, dejando el inventario sin cambios. Ideal para ajustes de precio, no de cantidad.",
+    "start_time": 334.73,
+    "end_time": 370.25
   },
   {
     "slide_index": 12,
-    "image_file": "103_Slide_12_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Creación de un abono sin referencia Abono de proveedores Cree un abono sin hacer referencia a cualquier documento anterior Factura de proveedor Factura de proveedor Varias facturas que deben abonarse O una factura de proveedores cerrada Abono de proveedores Pago efectuado A veces, un proveedor le proporciona un crédito que se relaciona con varias facturas. O es posible que deba crear un abono para una factura cerrada cuando devuelva los artículos después de haber pagado por ellos. En esos casos, cree un abono de proveedores sin referencia. Como siempre, puede crear un abono para un importe total o parcial. Cuando crea un abono sin realizar una copia desde la factura original, el abono reduce el saldo total a pagar al proveedor. Los valores de un asiento creados por un abono de proveedores sin una referencia se basan en el valor actual calculado de los artículos devueltos. Por esta razón es mejor copiar una factura cada vez que sea posible.",
-    "start_time": 774.74,
-    "end_time": 832.63
+    "image_file": "Slide_012.webp",
+    "script_text": "Se crea un abono de proveedores sin referencia cuando el crédito se relaciona con varias facturas o con una ya cerrada tras el pago. En estos casos, no se copia desde un documento anterior, sino que se ingresa manualmente. Aunque siempre es preferible copiar la factura original para asegurar correcta asignación de cuentas, el abono sin referencia sigue siendo válido para reducir el saldo a pagar. El sistema calcula el valor contable basado en el costo actual de los artículos, por lo que se recomienda usarlo solo cuando no exista vínculo documental directo.",
+    "start_time": 370.25,
+    "end_time": 404.88
   },
   {
     "slide_index": 13,
-    "image_file": "103_Slide_13_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Otra opción además de crear documentos de Devoluciones de mercancías o abono es cancelar el documento original. Business One brinda la posibilidad de cancelar documentos de marketing como una entrada de mercancías de pedido o una factura de proveedor. Cuando cancela un documento de marketing, se crea un documento de \"cancelación\" nuevo durante cada procedimiento de cancelación. Tanto la anulación como los documentos anulados se cierran de forma automática y se reconcilian por completo. Por ejemplo, se registra una entrada de mercancías de pedido de forma incorrecta. El usuario cancela la entrada de mercancías de pedido y se crea un documento de cancelación de forma automática. El pedido se vuelve a abrir luego de la cancelación y se puede utilizar como documento base para crear una nueva entrada de mercancías de pedido. 13 Cancelación  Se registra una entrada de mercancías de pedido de forma incorrecta.  El usuario cancela la entrada de mercancías de pedido.  Se crea un documento de cancelación de forma automática.  El pedido se vuelve a abrir y se utiliza como documento base para una entrada de mercancías de pedido nueva. X",
-    "start_time": 832.63,
-    "end_time": 905.04
+    "image_file": "Slide_013.webp",
+    "script_text": "Cuando registra una entrada de mercancías de pedido de forma incorrecta, puede cancelarla directamente en SAP Business One. Al hacerlo, el sistema crea automáticamente un documento de cancelación y vuelve a abrir el pedido de compras asociado. Este pedido reabierto puede usarse como base para generar una nueva entrada de mercancías de pedido correcta. Tanto el documento original como el de cancelación se cierran y se reconcilian automáticamente, manteniendo la integridad del proceso sin afectar el inventario ni la contabilidad de forma desbalanceada.",
+    "start_time": 404.88,
+    "end_time": 439.61
   },
   {
     "slide_index": 14,
-    "image_file": "103_Slide_14_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "Resumen de opciones para devoluciones y haber Problemas Soluciones sugeridas Entrada incorrecta de una entrada de mercancías de pedido Cancele la entrada mercancías de pedido El pedido se vuelve a abrir para crear nuevas entradas de mercancías de pedido Necesidad de devolver artículos recibidos en una entrada de mercancías de pedido pero que aún no se han facturado Copie los artículos de la entrada de mercancías de pedido en una solicitud de devolución de mercancías A continuación, cópielos a la devolución de mercancías Necesidad de devolver o abonar artículos facturados en una factura de proveedores pero que aún no se han pagado Copiar artículos en una solicitud de devolución de mercancías A continuación, cópielos a un abono de proveedores Si no se desea utilizar el movimiento de stock, utilice Sin contabilización de cantidad Necesidad de devolver artículos que ya se han facturado y pagado Cree un abono de proveedores sin referencia Necesidad de devolver o abonar artículos de varias facturas de proveedores Cree un abono de proveedores sin referencia Si no se desea utilizar el movimiento de stock, utilice Sin contabilización de cantidad Aquí hay un resumen de las opciones para devoluciones y abonos en compras. • Para la entrada incorrecta de una entrada de mercancías de pedido, puede cancelar el documento. El pedido de compras relacionado se volverá a abrir para que pueda crear una entrada de mercancías de pedido nueva. Lo mismo ocurre cuando introduce una factura de manera incorrecta; puede cancelarla y volver a enviar la factura de la entrada de mercancías de pedido. • Si necesita devolver los artículos recibidos en una entrada de mercancías de pedido que aún no se ha facturado, resulta útil copiarlos a una solicitud de devolución de mercancías. El sistema le propondrá automáticamente copiarlos a una devolución de mercancías. • Si necesita devolver los artículos que se han facturado, pero no se han pagado, resulta útil copiarlos a una solicitud de devolución de mercancías. El sistema le propondrá automáticamente copiarlos a un abono de proveedores. • Cuando se haya pagado una factura, ya no podrá hacer referencia a la misma para crear una solicitud de devolución de mercancías o un abono de proveedores. • Del mismo modo, no puede realizar copias de múltiples facturas para crear un abono.",
-    "start_time": 905.04,
-    "end_time": 1042.73
+    "image_file": "Slide_014.webp",
+    "script_text": "En SAP Business One, según el estado de la transacción, existen distintas formas de manejar devoluciones y abonos en compras. Si ingresó incorrectamente una entrada de mercancías, puede cancelarla y el pedido se reabre para corregirla. Para devolver artículos recibidos pero no facturados, copie los ítems a una solicitud de devolución y luego a una devolución de mercancías. Si los artículos ya están facturados pero no pagados, el mismo flujo lleva a un abono de proveedor. Cuando la factura ya fue pagada o se trata de múltiples facturas, se crea un abono sin referencia a documento base. En todos los casos, puede evitar el movimiento de stock usando la opción 'Sin contabilización de cantidad'.",
+    "start_time": 439.61,
+    "end_time": 485.62
   },
   {
     "slide_index": 15,
-    "image_file": "103_Slide_15_10_Purch_22_Issues_ReturnsCM_ES.webp",
-    "script_text": "A continuación, se detallan algunos puntos clave para tener en cuenta:  Una devolución de mercancías se utiliza para devolver artículos recibidos en una entrada de mercancías de pedido.  Si necesita anular una factura de proveedor de forma completa o parcial, entonces use un abono de proveedor.  Para simplificar el proceso, utilice una solicitud de devolución de mercancías. El sistema determinará automáticamente el documento de corrección correspondiente que debe utilizar.  Los abonos de proveedores y los documentos de devolución de mercancías corrigen tanto las cantidades como los valores.  Para proporcionar un abono sin que haga efecto en el inventario, use la casilla de verificación Sin contabilización de cantidad  Siempre que sea posible, consulte la entrada de mercancías de pedido original o una factura de proveedores al corregir el problema.  Si la factura relacionada se cierra o si el crédito se relaciona con múltiples facturas, entonces cree un abono sin hacer referencia a un documento base. 15 15 Resumen A continuación, se detallan algunos puntos clave:  Una devolución de mercancías se utiliza para devolver artículos recibidos en una entrada de mercancías de pedido.  Si necesita anular una factura de proveedor de forma completa o parcial, entonces use un abono de proveedor.  Para simplificar el proceso, utilice una solicitud de devolución de mercancías. El sistema determinará automáticamente el documento de corrección correspondiente que debe utilizar.  Los abonos de proveedor y los documentos de devolución de mercancías corrigen tanto las cantidades como los valores.  Para proporcionar un abono sin que haga efecto en el inventario, use la casilla de verificación Sin contabilización de cantidad  Siempre que sea posible, consulte la entrada de mercancías de pedido original o una factura de proveedores al corregir el problema.  Si la factura de proveedores relacionada se cierra o si el crédito se relaciona con múltiples facturas, entonces cree un abono sin hacer referencia a un documento de base.",
-    "start_time": 1042.73,
-    "end_time": 1168.1
+    "image_file": "Slide_015.webp",
+    "script_text": "Para gestionar correctamente devoluciones y abonos en compras, recuerde: use una devolución de mercancías para devolver artículos recibidos en una entrada de mercancías de pedido; emplee un abono de proveedor para anular total o parcialmente una factura; simplifique el proceso con una solicitud de devolución, ya que el sistema sugiere automáticamente el documento de corrección adecuado; tanto los abonos como las devoluciones ajustan cantidades y valores; si necesita un abono sin afectar inventario, active la casilla 'Sin contabilización de cantidad'; y siempre que sea posible, haga referencia al documento original de entrada de mercancías o factura para asegurar trazabilidad y corrección precisa.",
+    "start_time": 485.62,
+    "end_time": 528.02
   }
 ]

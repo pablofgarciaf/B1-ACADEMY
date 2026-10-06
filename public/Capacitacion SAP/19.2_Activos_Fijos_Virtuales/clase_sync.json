@@ -1,72 +1,72 @@
 [
   {
     "slide_index": 1,
-    "image_file": "033_Slide_01_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre FixedAsset 12 FixedAsset Intro Virtual Asset en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Activos fijos: Activo fijo virtual Bienvenido al tema Activos fijos virtuales.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de activos fijos virtuales en SAP Business One 10.0. Aquí aprenderá cómo gestionar eficientemente la adquisición de activos idénticos en grandes cantidades utilizando la función de artículo virtual. Este enfoque evita la carga manual de datos repetitivos y mejora la precisión y velocidad en el registro de activos fijos. Prepárese para comprender el proceso completo, desde la definición del modelo hasta la capitalización automática.",
     "start_time": 0.0,
-    "end_time": 20.16
+    "end_time": 27.4
   },
   {
     "slide_index": 2,
-    "image_file": "033_Slide_02_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Después de completar este tema, podrá explicar el proceso de gestión de activos fijos virtuales. 2 Al finalizar este tema, podrá: Explicar el proceso de gestión de activos fijos virtuales. Objetivos.",
-    "start_time": 20.16,
-    "end_time": 35.59
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá explicar el proceso de gestión de activos fijos virtuales en SAP Business One. Esto incluye comprender cómo se define un artículo virtual como modelo, cómo se utiliza en facturas de proveedores para crear múltiples activos fijos idénticos y cómo el sistema automatiza la creación de registros maestros y su capitalización. Este conocimiento le permitirá aplicar esta funcionalidad en escenarios reales de compra de equipos de oficina como laptops o teléfonos.",
+    "start_time": 27.4,
+    "end_time": 58.0
   },
   {
     "slide_index": 3,
-    "image_file": "033_Slide_03_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Cuando la empresa deba comprar activos fijos idénticos en grandes cantidades para uso interno, cree un artículo virtual que represente el activo fijo.  En la Factura de proveedores seleccione este artículo modelo e indique una cantidad en la línea de artículo.  A continuación, SAP Business One creará automáticamente la misma cantidad de registros de datos maestros de activo fijo y los capitalizará.  Esta función evita tener que indicar manualmente grandes volúmenes de información repetida y, por tanto, mejora la eficiencia de la empresa en la gestión de activos fijos.  Opcionalmente, puede utilizar números de serie para los activos fijos virtuales generados.  Puede utilizar la definición de artículo virtual para los casos en los que la empresa compra activos idénticos para utilizarlos en la oficina, como portátiles, teléfonos móviles o sillas.  Veamos cómo trabajar con activos fijos virtuales. 3 Activo fijo virtual Activos fijos con la función de artículo virtual: – Permite definir un artículo modelo que representa el activo fijo. – Permite a la empresa comprar activos fijos idénticos en grandes cantidades para uso interno. – Crea automáticamente la misma cantidad de registros de datos maestros de activo fijo y los capitaliza. – Opcionalmente, puede utilizar números de serie para los activos fijos virtuales generados.",
-    "start_time": 35.59,
-    "end_time": 120.38
+    "image_file": "Slide_003.webp",
+    "script_text": "Un activo fijo virtual es un artículo modelo que representa un activo fijo idéntico que la empresa compra en grandes cantidades para uso interno, como laptops, teléfonos o sillas de oficina. Al seleccionar este artículo en una factura de proveedores y especificar una cantidad, SAP Business One crea automáticamente la misma cantidad de registros de datos maestros de activo fijo y los capitaliza. Esto evita la entrada manual repetitiva y mejora significativamente la eficiencia en la gestión de activos fijos.",
+    "start_time": 58.0,
+    "end_time": 90.6
   },
   {
     "slide_index": 4,
-    "image_file": "033_Slide_04_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "La casilla de selección Artículo virtual solo está disponible si se utilizan series de numeración para los datos maestros de activo fijo.  Con las series de numeración, el sistema puede crear varios activos nuevos cuando se compra un artículo virtual en una única línea de transacción.  Observe que ambos datos maestros, activo fijo y artículos, utilizan la misma configuración de serie de numeración.  Una vez que define unos datos maestros de activo fijo como artículo virtual, puede empezar a utilizarlo como modelo para comprar una gran cantidad de activos fijos idénticos.  OEC Computers ha definido un artículo virtual para los teléfonos móviles que compran para sus empleados.  Si marca la casilla Forzar números de serie, cuando compre activos fijos mediante artículos virtuales en facturas de proveedores, deberá especificar un número de serie para cada activo fijo generado. 4 Creación de un activo fijo virtual.",
-    "start_time": 120.38,
-    "end_time": 178.75
+    "image_file": "Slide_004.webp",
+    "script_text": "Para crear un activo fijo virtual, primero debe definir series de numeración para los datos maestros de activo fijo. Luego, marque la casilla 'Artículo virtual' en la ficha del artículo, lo cual solo está disponible si se usan series de numeración. Ambos maestros, activo fijo y artículo, deben compartir la misma configuración de serie. Una vez definido, puede usarlo como modelo en facturas de proveedores. Si activa 'Forzar números de serie', deberá asignar un número de serie único a cada activo generado durante la compra.",
+    "start_time": 90.6,
+    "end_time": 125.2
   },
   {
     "slide_index": 5,
-    "image_file": "033_Slide_05_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Los artículos virtuales solo se pueden capitalizar mediante facturas de proveedores.  La cantidad de los datos maestros de activo fijo creados automáticamente es igual que la cantidad que se ha especificado en la factura de proveedores (en nuestro ejemplo, 9).  Los números de artículo se asignan automáticamente a los datos maestros de activo fijo recién creados, según las reglas que se han definido para las series utilizadas en los datos maestros del activo fijo virtual.  En nuestro ejemplo, cuando OEC Computers indica la cantidad de 9 teléfonos móviles en la fila de factura de proveedores, el sistema crea automáticamente 9 datos maestros de activo fijo, uno para cada teléfono móvil.  La información de los datos maestros de activo fijo del activo fijo virtual se copia en los datos maestros de activo fijo recién creados, excepto la casilla de selección Artículo virtual que está desmarcada.  Los activos creados son activos fijos normales con valores monetarios. El artículo virtual funciona como modelo y, por tanto, no tendrá valores en la ficha Activos fijos. 5 Capitalización de activos fijos virtuales Sin Forzar números de serie.",
-    "start_time": 178.75,
-    "end_time": 250.7
+    "image_file": "Slide_005.webp",
+    "script_text": "Los artículos virtuales solo se pueden capitalizar mediante facturas de proveedores. Al ingresar una factura y especificar una cantidad en la línea del artículo virtual (por ejemplo, 9 teléfonos móviles), SAP Business One crea automáticamente la misma cantidad de registros de datos maestros de activo fijo. Los números de artículo se asignan según las reglas de serie definidas. La información del artículo virtual se copia en cada activo creado, excepto la casilla 'Artículo virtual', que se desmarca. Los activos resultantes son normales, con valores monetarios, listos para depreciación.",
+    "start_time": 125.2,
+    "end_time": 161.0
   },
   {
     "slide_index": 6,
-    "image_file": "033_Slide_06_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Se emite automáticamente un documento de Capitalización que incluye los activos creados y también un asiento contra la cuenta de activos.  Observe que puede incluir varios activos fijos virtuales en la misma factura de proveedores, pero no puede incluir activos fijos virtuales y activos fijos normales en la misma factura de proveedores. 6 Capitalización de activos fijos virtuales Sin Forzar números de serie.",
-    "start_time": 250.7,
-    "end_time": 276.62
+    "image_file": "Slide_006.webp",
+    "script_text": "Al capitalizar activos fijos virtuales, SAP Business One emite automáticamente un documento de Capitalización que incluye todos los activos creados y genera un asiento contable contra la cuenta de activos fijos. Puede incluir varios activos fijos virtuales en la misma factura de proveedores, pero no puede mezclar activos fijos virtuales con activos fijos normales en una sola factura. Esta restricción asegura la consistencia en el proceso de creación y contabilización, manteniendo la integridad de los datos maestros y los movimientos contables asociados.",
+    "start_time": 161.0,
+    "end_time": 194.4
   },
   {
     "slide_index": 7,
-    "image_file": "033_Slide_07_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Si selecciona forzar números de serie, deberá definir estos números de serie cuando compre los activos en la Factura de proveedores.  En la Factura de proveedores, haga clic con el botón derecho del ratón y seleccione la opción Números de serie de activo fijo. En la ventana Números de serie de activo fijo: Configuración, indique números de serie para cada activo fijo comprado mediante la línea Factura de proveedores.  El resto del proceso es el mismo que se ha descrito en las diapositivas anteriores. La única diferencia es que los datos maestros de activo fijo creados incluirán el número de serie que se ha indicado en la Factura de proveedores. Puede hacer un seguimiento del número de serie en los datos maestros de activo fijo. La Factura de proveedores también incluye los números de serie creados y puede visualizarlos haciendo clic con el botón derecho del ratón en la factura de proveedores.  Observe que no se pueden definir datos maestros de activo fijo como artículo de inventario y, por tanto, no son números de serie regulares. Son números de serie de activo fijo que se graban en los datos maestros de activo fijo con finalidades de seguimiento. 7 Capitalización de activos fijos virtuales CON forzar números de serie LT22005541 LT22005542 LT22005543 Activo fijo Artículo de inventario.",
-    "start_time": 276.62,
-    "end_time": 363.98
+    "image_file": "Slide_007.webp",
+    "script_text": "Cuando activa la opción forzar números de serie, debe asignarlos al comprar el activo fijo en la factura de proveedores. En SAP Business One, al hacer clic derecho en la factura y seleccionar Números de serie de activo fijo, ingresa los códigos como LT22005541, LT22005542 y LT22005543. Estos se graban en los datos maestros del activo fijo para seguimiento y también aparecen en la factura. No son números de serie de inventario, sino específicos para activos fijos.",
+    "start_time": 194.4,
+    "end_time": 225.8
   },
   {
     "slide_index": 8,
-    "image_file": "033_Slide_08_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Cuando emita una factura de proveedores, para que resulte más fácil localizar un artículo virtual de la lista de artículos y activos fijos, modifique las opciones de la lista de artículos y visualice el campo Artículo de activo visual.  Para ello, después de abrir la ventana Lista de artículos, seleccione el icono Parametrizaciones de formulario de la barra de menús superior para modificar la visualización de lista. 8 Capitalización de activos fijos virtuales: Sugerencia.",
-    "start_time": 363.98,
-    "end_time": 393.74
+    "image_file": "Slide_008.webp",
+    "script_text": "Para localizar fácilmente artículos virtuales en la lista de artículos, active la columna Artículo de activo. Abra la ventana Lista de artículos, haga clic en el icono Parametrizaciones de formulario y seleccione mostrar ese campo. Así podrá identificar rápidamente qué artículos representan activos fijos virtuales al emitir una factura de proveedores, mejorando la eficiencia en la selección.",
+    "start_time": 225.8,
+    "end_time": 249.2
   },
   {
     "slide_index": 9,
-    "image_file": "033_Slide_09_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Resumen (1/2) Cuando la empresa debe comprar activos fijos idénticos en grandes cantidades para uso interno: • Cree un artículo virtual que represente el activo fijo. • En la factura de proveedores seleccione este artículo modelo e indique una cantidad en la fila de artículo (los artículos virtuales solo se pueden capitalizar mediante facturas de proveedores). Una vez se añade la factura de proveedores con el artículo virtual: • Se crean automáticamente los registros de datos maestros de activo fijo en la misma cantidad que se ha especificado en la línea de factura de proveedores. • Se emite automáticamente un documento de Capitalización que incluye los activos creados y también un asiento contra la cuenta de activos.  Cuando la empresa deba comprar activos fijos idénticos en grandes cantidades para uso interno, cree un artículo virtual que represente el activo fijo.  En la factura de proveedores seleccione este artículo modelo e indique una cantidad en la fila de artículo (los artículos virtuales solo se pueden capitalizar mediante facturas de proveedores)  Una vez se añade la factura de proveedores con el artículo virtual:  Se crean automáticamente los registros de datos maestros de activo fijo en la misma cantidad que se ha especificado en la línea de factura de proveedores.  Se emite automáticamente un documento de Capitalización que incluye los activos creados y también un asiento contra la cuenta de activos.",
-    "start_time": 393.74,
-    "end_time": 478.49
+    "image_file": "Slide_009.webp",
+    "script_text": "Cuando necesita comprar varios activos fijos idénticos, cree un artículo virtual que lo represente. En la factura de proveedores, seleccione ese artículo y especifique la cantidad. SAP crea automáticamente tantos registros de datos maestros de activo fijo como unidades indicó. Luego genera un documento de capitalización que incluye los activos y registra un asiento contable contra la cuenta de activos, todo sin intervención manual.",
+    "start_time": 249.2,
+    "end_time": 275.4
   },
   {
     "slide_index": 10,
-    "image_file": "033_Slide_10_10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.webp",
-    "script_text": "Resumen (2/2) Algunos datos sobre los activos fijos virtuales: • La casilla de selección Artículo virtual solo está disponible si se utilizan series de numeración para los datos maestros de activo fijo. • Si selecciona forzar números de serie para unos datos maestros de activo fijo, deberá definir estos números cuando compre el activo fijo en la factura de proveedores. • No se pueden definir datos maestros de activo fijo como artículo de inventario y, por tanto, no son números de serie regulares. Son números de serie de activo fijo que se graban en los datos maestros de activo fijo con finalidades de seguimiento.  Algunos datos sobre los activos fijos virtuales:  La casilla de selección Artículo virtual solo está disponible si se utilizan series de numeración para los datos maestros de activo fijo.  Si selecciona forzar números de serie para unos datos maestros de activo fijo, deberá definir estos números cuando compre el activo fijo en la factura de proveedores.  No se pueden definir datos maestros de artículo de inventario como artículo de inventario y, por tanto, no son números de serie regulares. Son números de serie de activo fijo que se graban en los datos maestros de activo fijo con finalidades de seguimiento.",
-    "start_time": 478.49,
-    "end_time": 555.31
+    "image_file": "Slide_010.webp",
+    "script_text": "Los activos fijos virtuales requieren que se active la serie de numeración para que esté disponible la casilla Artículo virtual. Si activa forzar números de serie, debe definirlos al comprar en la factura de proveedores. Estos no son números de serie de inventario, sino códigos únicos grabados en los datos maestros del activo fijo únicamente para fines de seguimiento y control interno.",
+    "start_time": 275.4,
+    "end_time": 300.8
   }
 ]

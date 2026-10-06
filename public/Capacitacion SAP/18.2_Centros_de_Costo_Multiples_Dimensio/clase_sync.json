@@ -1,72 +1,72 @@
 [
   {
     "slide_index": 1,
-    "image_file": "017_Slide_01_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre CostandBudget 12 CostAcc MultiDimensions en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Contabilidad de costes y presupuesto: Dimensiones múltiples en la contabilidad de costes Bienvenido al tema Dimensiones múltiples en la contabilidad de costes.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de dimensiones múltiples en la contabilidad de costes de SAP Business One 10.0. Aquí aprenderá cómo utilizar esta funcionalidad para analizar los costes e ingresos desde distintas perspectivas dentro de una misma empresa. Esta herramienta permite generar múltiples vistas analíticas de los mismos datos contables, lo que mejora la toma de decisiones. A lo largo del tema, veremos ejemplos prácticos de configuración y uso en escenarios reales como el de una empresa tecnológica que necesita analizar su desempeño por departamento y por línea de negocio simultáneamente.",
     "start_time": 0.0,
-    "end_time": 24.05
+    "end_time": 36.2
   },
   {
     "slide_index": 2,
-    "image_file": "017_Slide_02_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "En este tema, observaremos la posibilidad de utilizar dimensiones múltiples al trabajar con la contabilidad de costes.  Tenga en cuenta que este tema se basa en el concepto de contabilidad de costes. 2 Al finalizar este tema, podrá:  Describir cómo utilizar las dimensiones múltiples al trabajar con la contabilidad de costes Nota: Este tema se basa en el concepto de contabilidad de costes. Objetivos.",
-    "start_time": 24.05,
-    "end_time": 51.1
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá describir cómo utilizar las dimensiones múltiples al trabajar con la contabilidad de costes en SAP Business One. Aprenderá a configurar y aplicar esta funcionalidad para obtener diferentes vistas de los mismos datos, según las necesidades de análisis de su empresa. Este tema asume conocimiento previo de los conceptos básicos de contabilidad de costes, por lo que se enfoca en la aplicación práctica de las dimensiones múltiples para enriquecer el análisis financiero y operacional.",
+    "start_time": 36.2,
+    "end_time": 68.0
   },
   {
     "slide_index": 3,
-    "image_file": "017_Slide_03_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Dimensiones múltiples - Ejemplo empresarial Cuando analizan los ingresos y gastos, desean conocer los resultados finales de cada línea de productos. Desean generar el informe Resumen de contabilidad de costes por departamento (ventas, soporte y desarrollo) y por línea de negocio. OEC Computers utiliza la opción de contabilidad de costes en SAP Business One. Anteriormente, definía los tres departamentos: ventas, soporte y desarrollo como centros de coste. OEC Computers también tiene dos líneas de negocio:  Hardware  Aplicaciones  OEC Computers utiliza la opción de contabilidad de costes en SAP Business One. Anteriormente, definía los tres departamentos: ventas, soporte y desarrollo como centros de coste.  Ahora, al examinar los productos que vende OEC Computers, el director le dice que desea analizar los ingresos y gastos por las dos líneas de negocio que dirigen: hardware y aplicaciones.  Quieren ver los resultados finales de cada línea de negocio.  El contable afirma que sería mejor una vista analítica por departamentos. Es decir, ventas, soporte y desarrollo.  Les explica que pueden analizar los mismos datos según los departamentos de la empresa y también por línea de negocio.",
-    "start_time": 51.1,
-    "end_time": 131.23
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers quiere analizar sus ingresos y gastos tanto por departamento (ventas, soporte y desarrollo) como por línea de negocio (hardware y aplicaciones). Antes, solo usaba centros de coste para los departamentos. Ahora, necesita una visión más detallada que combine ambas perspectivas. El director solicita ver los resultados por línea de negocio, mientras el contable prefiere el análisis por departamento. Con dimensiones múltiples, ambos enfoques son posibles usando los mismos datos, lo que permite una visión integral y flexible del desempeño empresarial sin duplicar registros ni perder consistencia.",
+    "start_time": 68.0,
+    "end_time": 103.8
   },
   {
     "slide_index": 4,
-    "image_file": "017_Slide_04_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Dimensiones múltiples Soporte Centro_z Ventas Desarrollo OEC Computers Dimensión 1: Departamentos Dimensión 2: Línea de negocio (LOB) Aplicaciones Centro_z Hardware OEC Computers  Las dimensiones múltiples permiten generar hasta cinco vistas distintas de los mismos datos.  Observe que cada centro de coste y norma de reparto pertenecen a solo una dimensión.  Las dimensiones múltiples permiten generar hasta cinco vistas distintas de los mismos datos.  Esta opción solo aparece si se marca la casilla de selección Utilizar dimensiones múltiples en la ficha Contabilidad de costes de la ventana Parametrizaciones generales en Gestión  Inicialización del sistema Parametrizaciones generales.  Para definir dimensiones seleccione Finanzas Contabilidad de costes Dimensiones.  En nuestro ejemplo puede definir los departamentos de la empresa como dimensión 1 y las líneas de negocio como dimensión 2.  Para cada dimensión cree centros de coste y normas de reparto que se correspondan con sus requisitos de generación de informes. Observe que cada centro de coste y norma de reparto pertenecen a solo una dimensión.  Al emitir los distintos informes, seleccione la dimensión relevante.",
-    "start_time": 131.23,
-    "end_time": 206.52
+    "image_file": "Slide_004.webp",
+    "script_text": "Para utilizar dimensiones múltiples en SAP Business One, primero debe activar la opción en Parametrizaciones generales bajo Contabilidad de costes. Luego, en Finanzas > Contabilidad de costes > Dimensiones, define cada dimensión (por ejemplo, Departamentos como Dimensión 1 y Línea de negocio como Dimensión 2). Para cada dimensión, cree los centros de coste y normas de reparto que correspondan a sus necesidades de informes. Recuerde que cada centro de coste y norma de reparto pertenece a una sola dimensión. Al ejecutar informes, seleccione la dimensión relevante para obtener la vista deseada.",
+    "start_time": 103.8,
+    "end_time": 140.8
   },
   {
     "slide_index": 5,
-    "image_file": "017_Slide_05_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Enlace entre el Libro mayor y la Contabilidad de costes con Dimensiones múltiples Costes de electricidad, cuenta de mayor Norma de reparto X Área Centro de coste 1: Ventas Centro de coste 2: Soporte Centro de coste 3: Desarrollo Asiento 1000 Costes de calefacción Norma reparto área Asiento 2000 Área Costes electricidad Norma reparto Dimensión 1: Departamentos Dimensión 2: LOB Norma de reparto X Nº de empleados Asiento 1000 Costes de calefacción Norma reparto área Asiento 2000 nº de empleado Costes electricidad Norma reparto Centro de coste 1: Hardware Centro de coste 2: Software  Veamos el coste de electricidad de la empresa:  En la ventana Plan de cuentas, enlace la cuenta de gastos de electricidad con las 2 dimensiones: Departamentos y Líneas de negocio.  Para cada dimensión defina la norma de reparto relevante. En la dimensión de departamentos es la norma indirecta la que distribuye los costes según el tamaño de las áreas del departamento. En la dimensión de línea de negocio, los costes se distribuirán entre el número de empleados de cada centro de coste.  En el trabajo diario, cada vez que emita un gasto en la cuenta de gastos de electricidad, el importe se asignará automáticamente a los distintos departamentos según la norma de reparto definida en la dimensión 1. Y, paralelamente, el mismo importe se asignará conforme al número de empleados que trabajan para cada línea de negocio según se ha definido en la dimensión 2.  Entonces, puede ejecutar los distintos informes y comparar el análisis de costes e ingresos por departamento y por línea de negocio.",
-    "start_time": 206.52,
-    "end_time": 304.92
+    "image_file": "Slide_005.webp",
+    "script_text": "En SAP Business One, puede vincular una cuenta de gastos como electricidad a ambas dimensiones: Departamentos y Línea de negocio. Para cada dimensión, define la norma de reparto adecuada: por área en la dimensión de departamentos y por número de empleados en la dimensión de línea de negocio. Cada vez que registre un gasto en esa cuenta, el sistema lo distribuirá automáticamente según ambas normas en paralelo. Así, podrá obtener informes que muestren el mismo gasto analizado por departamento y, simultáneamente, por línea de negocio, permitiendo comparaciones cruzadas sin asientos duplicados.",
+    "start_time": 140.8,
+    "end_time": 177.8
   },
   {
     "slide_index": 6,
-    "image_file": "017_Slide_06_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Opciones de dimensiones  Puede configurar la visualización de las normas de reparto en los documentos de marketing y asientos.  En la ventana Parametrizaciones generales – Contabilidad de costes, puede fijar la visualización de las normas de reparto en los documentos de marketing y asientos. Seleccione si desea visualizar las normas de reparto de varias dimensiones en una columna, separadas por punto y coma (;) o si desea visualizar todas las dimensiones activas en columnas separadas. Para obtener más información acerca de estas dos opciones, consulte la ayuda en línea.  Puede modificar el estado del botón de selección en cualquier momento. La modificación solo afecta a la forma en que se visualizan las normas de reparto; no afecta la base de datos.",
-    "start_time": 304.92,
-    "end_time": 352.66
+    "image_file": "Slide_006.webp",
+    "script_text": "En la ventana Parametrizaciones generales bajo Contabilidad de costes, puede elegir cómo se visualizan las normas de reparto de múltiples dimensiones en documentos y asientos. Una opción muestra todas las normas en un solo campo, separadas por punto y coma (;). La otra las muestra en columnas distintas, una por cada dimensión activa. Este ajuste solo afecta la presentación en pantalla e impresión, no modifica la base de datos ni el cálculo de costes. Puede cambiarlo en cualquier momento según sus necesidades de visualización en reportes o documentos de marketing.",
+    "start_time": 177.8,
+    "end_time": 214.4
   },
   {
     "slide_index": 7,
-    "image_file": "017_Slide_07_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Informes de contabilidad de costes  Informes estándar para una determinada dimensión y norma de reparto: Cuenta de pérdidas y ganancias, Balance de sumas y saldos e Informe de presupuesto.  Informes de contabilidad de costes:  Informe de centro de coste  Informe de distribución  Informe de resumen de contabilidad de costes Tenga en cuenta que también puede ejecutar estos informes según un proyecto financiero seleccionado.  Puede generar algunos informes estándar para una determinada dimensión y norma de reparto; por ejemplo, Cuenta de pérdidas y ganancias, Balance de sumas y saldos o Informe de presupuesto.  Seleccione Finanzas Contabilidad de costes para ejecutar informes específicos de contabilidad de costes:  Informe de centro de coste para visualizar un resumen de los gastos e ingresos contabilizados.  Informe de distribución para obtener una visión de los gastos generales contabilizados por transacciones específicas y los importes distribuidos en cada centro de coste.  Informe de resumen de contabilidad de costes que incluye documentos preliminares y utilice jerarquías para la estructura de informes que requiera. Tenga en cuenta que también puede ejecutar estos informes según un proyecto financiero seleccionado.",
-    "start_time": 352.66,
-    "end_time": 426.55
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, los informes de contabilidad de costes le permiten analizar gastos e ingresos por centro de coste, distribución o resumen general. Puede ejecutarlos desde Finanzas > Contabilidad de costes. El informe de centro de coste muestra un resumen de lo contabilizado. El de distribución visualiza gastos generales y cómo se distribuyen por centro. El informe de resumen incluye documentos preliminares y permite usar jerarquías. También puede filtrar por proyecto financiero seleccionado, como el Proyecto Andina 2026, para un análisis más detallado.",
+    "start_time": 214.4,
+    "end_time": 248.6
   },
   {
     "slide_index": 8,
-    "image_file": "017_Slide_08_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Jerarquía de centros de coste  Utilice la Jerarquía de centros de coste para definir modelos de informes de contabilidad de costes según las necesidades de la empresa.  Puede utilizar estos modelos en varios informes.  El modelo permite agrupar los datos de distintas maneras. Según el modo en que se agrupan los datos, la dirección de la empresa obtiene una visión mejor del rendimiento de las distintas partes de la organización.  Cada jerarquía se relaciona directamente con una dimensión (si se utilizan dimensiones en la empresa).  Para cada dimensión se pueden crear varios modelos.  Puede definir jerarquías de hasta tres niveles.  Los centros de coste solo se pueden incluir en los nodos inferiores de la jerarquía.  También puede utilizar fórmulas para agregar varios centros de coste.  En el ejemplo presentado, para la dimensión Departamentos, los centros de coste Ventas y Soporte se agrupan bajo el título Servicio al cliente y se totalizan con la opción Subtotal.  Seleccione Finanzas Contabilidad de costes Jerarquía de centros de coste para definir y visualizar los modelos de informes de contabilidad de costes.",
-    "start_time": 426.55,
-    "end_time": 496.42
+    "image_file": "Slide_008.webp",
+    "script_text": "La Jerarquía de centros de coste en SAP Business One le permite definir modelos de informes personalizados según las necesidades de su empresa. Puede crear hasta tres niveles de agrupación, donde solo los nodos inferiores pueden contener centros de coste. Estos modelos se reutilizan en varios informes para agrupar datos de distintas maneras, brindando a la dirección una visión clara del rendimiento organizacional. También puede usar fórmulas para sumar varios centros de coste, como en el ejemplo donde Ventas y Soporte se agrupan bajo 'Servicio al cliente' con subtotal.",
+    "start_time": 248.6,
+    "end_time": 284.8
   },
   {
     "slide_index": 9,
-    "image_file": "017_Slide_09_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Resumen - 1  Las dimensiones múltiples permiten generar hasta cinco vistas distintas de los mismos datos. Esta opción solo aparece si se marca la casilla de selección en la ficha Contabilidad de costes de la ventana Parametrizaciones generales.  Para cada dimensión cree centros de coste y normas de reparto que se correspondan con sus requisitos de generación de informes.  En la ventana Plan de cuentas, enlace las cuentas relevantes con las dimensiones: Para cada dimensión defina la norma de reparto relevante. A continuación, se detallan algunos puntos clave:  Las dimensiones múltiples permiten generar hasta cinco vistas distintas de los mismos datos. Esta opción solo aparece si se marca la casilla de selección en la ficha Contabilidad de costes de la ventana Parametrizaciones generales.  Para cada dimensión cree centros de coste y normas de reparto que se correspondan con sus requisitos de generación de informes.  En la ventana Plan de cuentas, enlace las cuentas relevantes con las dimensiones: Para cada dimensión defina la norma de reparto relevante.",
-    "start_time": 496.42,
-    "end_time": 562.25
+    "image_file": "Slide_009.webp",
+    "script_text": "Las dimensiones múltiples en SAP Business One permiten generar hasta cinco vistas distintas de los mismos datos financieros, pero solo si se activa la casilla en Contabilidad de costes dentro de Parametrizaciones generales. Para cada dimensión, debe crear centros de coste y normas de reparto alineados con sus necesidades de informes. Luego, en la ventana Plan de cuentas, enlaza las cuentas relevantes con cada dimensión y define la norma de reparto correspondiente. Esto permite que los importes se distribuyan automáticamente según las reglas establecidas, facilitando un análisis multidimensional sin duplicar registros.",
+    "start_time": 284.8,
+    "end_time": 321.8
   },
   {
     "slide_index": 10,
-    "image_file": "017_Slide_10_10_CostandBudget_12_CostAcc_MultiDimensions_ES.webp",
-    "script_text": "Resumen – 2  En el trabajo diario, cada vez que envíe un importe a la cuenta de gastos o ventas, se asignará el mismo importe automáticamente a las dimensiones y a sus normas de reparto en paralelo.  Puede configurar la visualización de las normas de reparto en los documentos de marketing y asientos.  Al emitir los distintos informes, seleccione la dimensión deseada.  En el trabajo diario, cada vez que envíe un importe a la cuenta de gastos o ventas, se asignará el mismo importe automáticamente a las dimensiones y sus normas de reparto en paralelo.  Puede configurar la visualización de las normas de reparto en los documentos de marketing y asientos.  Al emitir los distintos informes, seleccione la dimensión deseada.",
-    "start_time": 562.25,
-    "end_time": 607.22
+    "image_file": "Slide_010.webp",
+    "script_text": "En el trabajo diario, cada vez que registre un gasto o venta en SAP Business One, el sistema asigna automáticamente el mismo importe a todas las dimensiones activas y sus normas de reparto en paralelo, sin intervención manual. Puede configurar si desea ver estas normas de reparto en documentos de marketing y asientos contables. Al generar informes, simplemente selecciona la dimensión deseada para analizar los datos desde esa perspectiva. Esto asegura consistencia, reduce errores y permite un seguimiento financiero multidimensional en tiempo real, adaptado a las necesidades de gestión de Distribuidora Andina Tech.",
+    "start_time": 321.8,
+    "end_time": 359.6
   }
 ]

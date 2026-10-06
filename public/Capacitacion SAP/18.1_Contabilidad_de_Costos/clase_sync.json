@@ -1,107 +1,107 @@
 [
   {
     "slide_index": 1,
-    "image_file": "016_Slide_01_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre CostandBudget 11 CostAcc CostAcc en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Contabilidad de costes y presupuesto: Contabilidad de costes Bienvenido al tema Contabilidad de costes.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de Contabilidad de costes en SAP Business One versión 10.0. Este módulo le permitirá comprender cómo analizar la rentabilidad de cada departamento o actividad empresarial mediante el uso de centros de coste y normas de reparto. Aprenderá a configurar, gestionar y generar informes que le ayuden a tomar decisiones financieras más informadas en su empresa.",
     "start_time": 0.0,
-    "end_time": 21.31
+    "end_time": 23.8
   },
   {
     "slide_index": 2,
-    "image_file": "016_Slide_02_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "En este tema, veremos las ventajas de utilizar la contabilidad de costes y describiremos cómo gestionarla. 2 Al finalizar este tema, podrá:  Describir cómo se debe gestionar la contabilidad de costes Objetivos.",
-    "start_time": 21.31,
-    "end_time": 36.19
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá describir cómo se debe gestionar la contabilidad de costes en SAP Business One. Aprenderá a definir centros de coste según los departamentos de su empresa y a aplicar normas de reparto para asignar gastos e ingresos de manera automática. Esto le permitirá obtener una visión clara de la rentabilidad por unidad organizativa y tomar decisiones basadas en datos reales del sistema.",
+    "start_time": 23.8,
+    "end_time": 50.8
   },
   {
     "slide_index": 3,
-    "image_file": "016_Slide_03_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Ejemplo empresarial El departamento de ventas genera más ingresos que los otros departamentos. Por otro lado, este departamento también tiene muchos gastos: viajes, hotel, cena, conferencias, idad, bonos, etc. ¿Cómo puede conocer el contable de la empresa los resultados finales de cada departamento? ¿Cómo pueden generar un informe de pérdidas y ganancias para un departamento? Implementará SAP Business One en un nuevo cliente, OEC Computers. La empresa está divida en departamentos:  Ventas  Soporte  Desarrollo  Veamos un ejemplo empresarial:  Supongamos que está implementando SAP Business One en una empresa con tres departamentos: ventas, soporte y desarrollo.  Lógicamente, el departamento de ventas genera más ingresos que los otros departamentos. Por otro lado, este departamento también tiene muchos gastos: viajes, hotel, cena, conferencias, idad, bonos, etc.  El contable de la empresa le pregunta cómo pueden conocer los resultados finales de cada departamento. ¿Cómo pueden generar un informe de pérdidas y ganancias para un departamento?",
-    "start_time": 36.19,
-    "end_time": 106.44
+    "image_file": "Slide_003.webp",
+    "script_text": "Imaginemos que está implementando SAP Business One en OEC Computers, una empresa dividida en tres departamentos: ventas, soporte y desarrollo. El departamento de ventas genera más ingresos, pero también tiene altos gastos en viajes, hotel, publicidad y bonos. El contable necesita saber cómo conocer los resultados finales de cada departamento y generar un informe de pérdidas y ganancias por área. Aquí es donde entra la contabilidad de costes de SAP Business One.",
+    "start_time": 50.8,
+    "end_time": 80.2
   },
   {
     "slide_index": 4,
-    "image_file": "016_Slide_04_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "¿Qué es la contabilidad de costes en SAP Business One?  Además de su contabilidad periódica, muchas empresas realizan análisis de gastos e ingresos que miden la rentabilidad de cada una de sus actividades empresariales o departamentos.  Para ello, define unidades de la empresa para cada actividad empresarial o departamento. Estos son los centros de coste que se utilizan para consolidar los gastos y los ingresos que resultan de la actividad continua de la unidad organizativa específica.  Una norma de reparto es un método de contabilidad de costes utilizado para asignar gastos e ingresos directos e indirectos a uno o más centros de coste. Contiene información relativa a la parte o los importes fijos de gastos o ingresos que se asignarán a cada centro de coste. Antes de sumergirnos en el proceso de contabilidad de costes, veamos la terminología correspondiente tal y como está definida en SAP Business One.  Además de su contabilidad periódica, muchas empresas realizan análisis de gastos e ingresos que miden la rentabilidad de cada una de sus actividades empresariales o departamentos.  Para ello, define unidades de la empresa para cada actividad empresarial o departamento. Estos son los centros de coste que se utilizan para consolidar los gastos y los ingresos que resultan de la actividad continua de la unidad organizativa específica.  Una norma de reparto es un método de contabilidad de costes utilizado para asignar gastos e ingresos directos e indirectos a uno o más centros de coste. Contiene información relativa a la parte o los importes fijos de gastos o ingresos que se asignarán a cada centro de coste.",
-    "start_time": 106.44,
-    "end_time": 206.21
+    "image_file": "Slide_004.webp",
+    "script_text": "Además de la contabilidad periódica, muchas empresas usan la contabilidad de costes en SAP Business One para medir la rentabilidad de cada actividad o departamento. Para ello, definen unidades como centros de coste, que consolidan los gastos e ingresos de una unidad organizativa. Una norma de reparto es el método que asigna gastos e ingresos directos e indirectos a uno o más centros de coste, según partes fijas o porcentajes definidos.",
+    "start_time": 80.2,
+    "end_time": 109.2
   },
   {
     "slide_index": 5,
-    "image_file": "016_Slide_05_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "¿Qué es la contabilidad de costes en SAP Business One? Cont.  Al trabajar con el proceso de contabilidad de costes, los costes presentados en el libro mayor se distribuyen automáticamente a los centros de coste mediante las normas de reparto definidas.  La función de contabilidad de costes de SAP Business One le permite definir conjuntos de centros de coste y normas de reparto. La generación de los respectivos informes le proporciona información importante relativa al coste. El sistema recopila los datos contabilizados en las cuentas y los presenta de diferentes maneras en los informes.  Al trabajar con el proceso de contabilidad de costes, los costes presentados en el libro mayor se distribuyen automáticamente a los centros de coste mediante las normas de reparto definidas.  La función de contabilidad de costes de SAP Business One le permite definir conjuntos de centros de coste y normas de reparto. La generación de los respectivos informes le proporciona información importante relativa al coste. El sistema recopila los datos contabilizados en las cuentas y los presenta de diferentes maneras en los informes.",
-    "start_time": 206.21,
-    "end_time": 275.66
+    "image_file": "Slide_005.webp",
+    "script_text": "Al trabajar con la contabilidad de costes, los costes registrados en el libro mayor se distribuyen automáticamente a los centros de coste mediante las normas de reparto que usted haya definido. El sistema le permite crear conjuntos de centros de coste y normas de reparto, y al generar los informes correspondientes, obtiene información clave sobre el costo por departamento. Los datos se recopilan de las cuentas contables y se presentan en distintos formatos para facilitar el análisis.",
+    "start_time": 109.2,
+    "end_time": 140.6
   },
   {
     "slide_index": 6,
-    "image_file": "016_Slide_06_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Centros de coste Soporte Centro_z Ventas Desarrollo Admin. OEC Computers Código de clasificación Centros de coste  Para utilizar las funciones de contabilidad de costes en SAP Business One, debe definir los centros de beneficio o los departamentos de la empresa como centros de coste. Posteriormente, puede compilar una cuenta de pérdidas y ganancias para cada centro de coste en cada período.  En nuestro ejemplo, OEC Computers ha definido sus tres departamentos: ventas, soporte y desarrollo como centros de coste.  Puede agrupar los centros de coste mediante un código de clasificación.  Seleccione Finanzas Contabilidad de costes Centros de coste para definir y actualizar centros de coste.  El sistema crea automáticamente un centro de coste cero (Centro_z) que reúne los costes e ingresos que no pueden distribuirse claramente en otros centros de coste porque no se dispone de suficiente información. El centro de coste Centro_z también puede registrar costes que no se presentarán en la contabilidad de costes interna. Por ejemplo, si sólo desea mostrar el 80% de sus gastos de alquiler como costes, puede asignar el 20% restante al Centro_z.",
-    "start_time": 275.66,
-    "end_time": 352.01
+    "image_file": "Slide_006.webp",
+    "script_text": "Para usar la contabilidad de costes en SAP Business One, debe definir los departamentos de su empresa como centros de coste. En el ejemplo de OEC Computers, los tres departamentos —ventas, soporte y desarrollo— se crean como centros de coste. Puede agruparlos usando un código de clasificación como 'DEPT'. Acceda a través de Finanzas ► Contabilidad de costes ► Centros de coste. El sistema crea automáticamente un centro de coste cero (Centro_z) para costes que no se pueden asignar claramente, como parte de un gasto que no desea incluir en el análisis interno.",
+    "start_time": 140.6,
+    "end_time": 178.4
   },
   {
     "slide_index": 7,
-    "image_file": "016_Slide_07_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Normas de reparto Enlace entre el Libro mayor y la Contabilidad de costes Gastos de vehículo de la empresa, cuenta de mayor Norma de reparto directa X Ventas Ventas Centro de coste 1 Asiento 1000 Costes de calefacción Norma reparto área Asiento Importe de coste 100% Vehículo empresa Norma reparto Asignación de costes e ingresos directos Cuando se crea un centro de coste, el sistema crea automáticamente una norma de reparto con el mismo nombre.  Si desea incluir los costes enviados al libro mayor automáticamente en la contabilidad de costes, debe enlazar una cuenta con una norma de reparto, en el Plan de cuentas.  Solo se pueden enlazar cuentas con el tipo de cuenta Ventas o Gastos en el plan de cuentas.  Las normas de reparto definen cómo se distribuyen los costes o ingresos contabilizados para una cuenta en los centros de coste.  En el trabajo diario, contabiliza asientos o documentos de marketing en una cuenta de mayor que está enlazada a una norma de reparto.  Cuando se crea un centro de coste, el sistema crea automáticamente una norma de reparto con el mismo nombre. Esta norma (que no se puede modificar) se configura para que el sistema contabilice todos los costes o ingresos en el centro de coste correspondiente. En otras palabras, el sistema no divide los importes. Puede utilizar estas normas de reparto para costes e ingresos directos, que puede asignar exclusiva y completamente a un determinado centro de coste.  Por ejemplo, en OEC Computers, los gastos de vehículos de la empresa se asignan directamente al centro de coste Ventas porque sólo los empleados de ventas disponen de vehículos de la empresa.  Después de enlazar la cuenta de gastos de vehículos con la norma de reparto Ventas, cada vez que se emita un gasto en la cuenta de gastos de vehículos de la empresa, el importe completo se imputará directamente al centro de coste de ventas.",
-    "start_time": 352.01,
-    "end_time": 465.98
+    "image_file": "Slide_007.webp",
+    "script_text": "Cuando creas un centro de coste en SAP Business One, el sistema genera automáticamente una norma de reparto con el mismo nombre. Esta norma asigna el 100% de los costes o ingresos contabilizados en una cuenta de mayor vinculada directamente a ese centro. Por ejemplo, si enlazas la cuenta de gastos de vehículos de la empresa con la norma 'Ventas', cada gasto registrado en esa cuenta se imputa íntegramente al centro de coste Ventas. Esto es ideal para costes directos, como los vehículos usados exclusivamente por el equipo de ventas. No se realiza ninguna división: el importe total va al centro asignado. Así, la contabilidad de costes refleja con precisión el consumo de recursos por área funcional, sin necesidad de intervención manual en cada asiento.",
+    "start_time": 178.4,
+    "end_time": 229.0
   },
   {
     "slide_index": 8,
-    "image_file": "016_Slide_08_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Asignación de costes e ingresos indirectos Norma de reparto indirecta Área Centro de coste 1: Ventas Centro de coste 2: Soporte Centro de coste 3: Desarrollo Total: 500 (en unidades de área local)  Los costes e ingresos indirectos no se asignan directamente a un centro de coste. En lugar de ello, se asignan a uno o varios centros de coste mediante una norma de reparto. En la norma de reparto, se especifica cómo se distribuirá el importe entre los centros de coste. Puede realizar asignaciones por porcentaje o ratio. Por ejemplo, puede distribuir los costes en los centros de coste según el tamaño de las áreas del departamento. De la misma forma, puede distribuir los beneficios de empleados voluntarios entre el número de empleados.  Si no puede definir la asignación total (porque no dispone de suficiente información en ese momento), el sistema asignará los costes o ingresos no asignados al centro de coste Centro_z. Cuando disponga de la información necesaria, podrá modificar la norma de reparto para que el sistema corrija la distribución correspondientemente.  Seleccione Finanzas Contabilidad de costes Normas de reparto para definir y actualizar normas de reparto.",
-    "start_time": 465.98,
-    "end_time": 542.33
+    "image_file": "Slide_008.webp",
+    "script_text": "Los costes indirectos, como la electricidad o el alquiler, no se pueden asignar directamente a un solo centro de coste porque benefician a varias áreas. En su lugar, se usan normas de reparto indirectas que distribuyen el importe según una base de reparto, como el área ocupada por cada departamento. Por ejemplo, si el total es 500 unidades de área y Ventas ocupa 200, Soporte 150 y Desarrollo 150, el gasto se reparte proporcionalmente. Si en un momento no tienes los datos completos, el sistema asigna lo no distribuido a un centro temporal llamado Centro_z. Más tarde, al actualizar la norma con la información correcta, puedes corregir la distribución. Estas normas se definen y actualizan en el menú Finanzas > Contabilidad de costes > Normas de reparto.",
+    "start_time": 229.0,
+    "end_time": 280.4
   },
   {
     "slide_index": 9,
-    "image_file": "016_Slide_09_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Asignación de costes e ingresos indirectos Costes de electricidad, cuenta de mayor Norma de reparto X Área Centro de coste 1: Ventas Centro de coste 2: Soporte Centro de coste 3: Desarrollo Asiento 1000 Costes de calefacción Norma reparto área Asiento Importe 2000 Área Costes electricidad Norma reparto  Igual que en la asignación de costes e ingresos indirectos, enlace las cuentas pertinentes con una norma de reparto indirecta en el Plan de cuentas.  Contabilice un asiento o un documento de marketing en una cuenta de mayor que esté enlazada con una norma de reparto.  En nuestro ejemplo, cada vez que emita un gasto en la cuenta de gastos de electricidad, el importe se asignará automáticamente a los distintos departamentos según la definición de la norma de reparto.",
-    "start_time": 542.33,
-    "end_time": 589.2
+    "image_file": "Slide_009.webp",
+    "script_text": "Para que los gastos de electricidad se distribuyan automáticamente entre los centros de coste según su área, primero debes vincular la cuenta de mayor correspondiente a una norma de reparto en el Plan de cuentas. En este caso, la cuenta 6200 'Gastos de electricidad' se enlaza con la norma de reparto llamada 'Área'. Esta norma define cómo se reparte el gasto entre Ventas, Soporte y Desarrollo según los metros cuadrados que cada uno ocupa. Cada vez que registres un asiento o documento de marketing en esta cuenta, el sistema calculará automáticamente la distribución proporcional y asignará los importes a los centros de coste respectivos. No necesitas intervenir manualmente en cada transacción: la vinculación en el plan de cuentas asegura que la contabilidad de costes se actualice de forma coherente y automática.",
+    "start_time": 280.4,
+    "end_time": 333.4
   },
   {
     "slide_index": 10,
-    "image_file": "016_Slide_10_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Asignación de costes e ingresos  Puede modificar la norma de reparto fijada en la cuenta de mayor al emitir un documento de marketing o un asiento manual.  Puede modificar la norma de reparto fijada en la cuenta de mayor al emitir un documento de marketing o un asiento manual.  Para los asientos creados a partir de los documentos de marketing y para los asientos manuales, puede modificar la norma de reparto asignada en cualquier momento.  Esta norma de reparto tiene prioridad sobre la regla definida en la cuenta de mayor y en el documento de marketing.  En el asiento, seleccione la línea de cuenta de mayor y utilice el campo de norma de reparto en la tabla o en Desplegar modo de tratamiento.",
-    "start_time": 589.2,
-    "end_time": 630.6
+    "image_file": "Slide_010.webp",
+    "script_text": "En SAP Business One, puedes modificar la norma de reparto asignada a una cuenta de mayor directamente al crear un asiento manual o al procesar un documento de marketing. Esta modificación tiene prioridad sobre la norma definida en el Plan de cuentas, lo que te permite ajustar la distribución de un gasto específico sin cambiar la configuración permanente de la cuenta. Por ejemplo, si normalmente los gastos de electricidad se reparten por área, pero en un mes determinado sabes que el consumo fue excepcionalmente alto en el área de Desarrollo, puedes sobrescribir la norma en el asiento y asignar un porcentaje distinto. Para hacerlo, seleccionas la línea de cuenta de mayor en el asiento y editas el campo de norma de reparto, ya sea desde la tabla principal o mediante la opción 'Desplegar modo de tratamiento'. Esta flexibilidad es útil para manejar excepciones manteniendo el control sobre la precisión de la contabilidad de costes.",
+    "start_time": 333.4,
+    "end_time": 395.6
   },
   {
     "slide_index": 11,
-    "image_file": "016_Slide_11_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Norma de reparto manual  Al contabilizar un asiento manual, tiene la opción de definir una norma de reparto manual.  El importe que indica en la línea del asiento es el importe total a distribuir.  En la ventana Definir norma de reparto manual, seleccione los centros de coste y asigne el importe entre ellos.  No podrá utilizar esta norma de reparto manual en asientos futuros.  Puede ver los importes de esta norma de distribución en el Informe de distribución y el Informe de resumen de contabilidad de costes.",
-    "start_time": 630.6,
-    "end_time": 663.26
+    "image_file": "Slide_011.webp",
+    "script_text": "Al contabilizar un asiento manual en SAP Business One, tienes la opción de definir una norma de reparto manual exclusivamente para ese asiento. Esta norma te permite distribuir libremente el importe total entre los centros de coste que elijas, sin estar limitado por las reglas predefinidas en el Plan de cuentas. Por ejemplo, si debes distribuir 5000 USD de un gasto único, puedes asignar 2000 a Ventas, 1500 a Soporte y 1500 a Desarrollo según tu criterio. Es importante destacar que esta norma de reparto manual solo se aplica al asiento en curso y no se guarda para uso futuro: no podrá reutilizarse en asientos posteriores. Sin embargo, puedes revisar los resultados de esta distribución en el Informe de distribución y el Informe de resumen de contabilidad de costes, lo que te permite validar que los costes se asignaron conforme a lo planeado, incluso en casos excepcionales o no recurrentes.",
+    "start_time": 395.6,
+    "end_time": 456.2
   },
   {
     "slide_index": 12,
-    "image_file": "016_Slide_12_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Asignación por importe fijo Norma de reparto de importe fijo Alquiler mensual Centro de coste 1: Ventas Centro de coste 2: Soporte Centro de coste 3: Desarrollo No hay ningún importe total * Las diferencias se asignarán al centro de coste sin ningún valor o al Centro_z. A veces, es necesario asignar los importes fijos a centros de coste específicos. Por ejemplo, los empleados de ventas aparecen en el campo; sin embargo, los empleados de soporte y desarrollo no. Por lo tanto, la empresa desea asignar un importe fijo de los gastos del alquiler mensual al departamento de soporte y al departamento de desarrollo. Para lograrlo, en la configuración de la norma de reparto puede definir un importe fijo de 3000 para los centros de coste de desarrollo y soporte. Puede incluir también el centro de coste de ventas sin ningún valor de coste para que asuma las diferencias. Nota:  Al enviar los costes, los importes asignados fijos se mantendrán igual. En caso de que se produzca una diferencia entre el importe total definido (6000 en nuestro ejemplo) y el importe de coste enviado cada mes, el resto del coste se enviará al centro de coste sin ningún valor definido (que en nuestro ejemplo es el centro de coste de ventas).  En el caso que solo mantenga los centros de coste de desarrollo y soporte definidos. Cualquier diferencia se asignará al centro de coste cero (Centro_z).  Esto hace referencia a ambos casos: cuando el importe de coste es mayor o menor que el importe total definido.",
-    "start_time": 663.26,
-    "end_time": 759.46
+    "image_file": "Slide_012.webp",
+    "script_text": "En algunos casos, es necesario asignar importes fijos a centros de coste específicos, independientemente del consumo real o de una base de reparto proporcional. Por ejemplo, si el alquiler mensual total es de 6000 USD pero solo los departamentos de Soporte y Desarrollo generan gastos de alquiler (porque utilizan espacios adicionales), puedes fijar 3000 USD para cada uno de ellos mediante una norma de reparto de importe fijo. El centro de Ventas se deja en 0,00 porque no incurre en ese gasto directamente, pero asumirá cualquier diferencia si el total real supera o es inferior a los 6000 USD definidos. Si el gasto real es de 5500 USD, los 500 USD faltantes se asignarán al centro de coste con valor cero (en este caso, Ventas). Si el gasto es de 6500 USD, los 500 USD extra también irán a ese centro. Si solo defines Soporte y Desarrollo y dejas fuera a Ventas, cualquier diferencia irá al centro especial Centro_z. Este mecanismo asegura que los importes fijos se respeten mes a mes, mientras las variaciones se gestionan de forma controlada.",
+    "start_time": 456.2,
+    "end_time": 528.4
   },
   {
     "slide_index": 13,
-    "image_file": "016_Slide_13_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Tabla de centros de coste y normas de reparto 6 8 4 2 20 Empleados 200 200 100 0 500 Área 100 0 0 0 100 CC 3 Desarrollo 0 100 0 0 100 CC 2 Soporte 0 0 100 0 100 CC 1 Ventas CC 3 Des. CC 2 Soporte CC 1 Ventas Centro_z Total Centro de coste Norma Regla Normas de reparto para costes e ingresos DIRECTOS Normas de reparto para costes e ingresos INDIRECTOS * Centro de coste (CC)  Una vez que OEC Computers haya configurado sus centros de coste y normas de reparto, podrá ver las asignaciones en formato de tabla.  Seleccione Finanzas Contabilidad de costes Tabla de centros de coste y normas de reparto para visualizar las asignaciones para las normas de reparto.  Aquí se ofrece un ejemplo de cómo podría OEC Computers fijar sus normas de reparto para distribuir los costes en los correspondientes centros de coste del departamento.",
-    "start_time": 759.46,
-    "end_time": 818.21
+    "image_file": "Slide_013.webp",
+    "script_text": "En esta lámina se muestra la tabla de centros de coste y normas de reparto para OEC Computers. Cada centro de coste — Ventas, Soporte y Desarrollo — tiene asignaciones basadas en criterios como número de empleados, área física y actividades específicas. Estas normas permiten distribuir los costes e ingresos de forma equitativa entre los departamentos. En SAP Business One, esta configuración se accede desde Finanzas > Contabilidad de costes > Tabla de centros de coste y normas de reparto, donde se visualizan y gestionan las reglas de reparto para costes directos e indirectos.",
+    "start_time": 528.4,
+    "end_time": 566.6
   },
   {
     "slide_index": 14,
-    "image_file": "016_Slide_14_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Resumen - 1 A continuación, se detallan algunos puntos clave:  Para utilizar las funciones de contabilidad de costes, debe definir los centros de beneficio o los departamentos de la empresa como centros de coste.  Cuando se crea un centro de coste, el sistema crea automáticamente una norma de reparto con el mismo nombre. Esta norma se configura para que el sistema contabilice todos los costes o ingresos en el centro de coste correspondiente.  Los costes e ingresos indirectos no se asignan directamente a un centro de coste. En su lugar, se asignan a uno o varios centros de coste mediante una norma de reparto indirecta. En la norma de reparto, se especifica cómo se distribuirá el importe entre los centros de coste.  A continuación, se detallan algunos puntos clave:  Para utilizar las funciones de contabilidad de costes, debe definir los centros de beneficio o los departamentos de la empresa como centros de coste.  Cuando se crea un centro de coste, el sistema crea automáticamente una norma de reparto con el mismo nombre. Esta norma se configura para que el sistema contabilice todos los costes o ingresos en el centro de coste correspondiente.  Los costes e ingresos indirectos no se asignan directamente a un centro de coste. En su lugar, se asignan a uno o varios centros de coste mediante una norma de reparto indirecta. En la norma de reparto, se especifica cómo se distribuirá el importe entre los centros de coste.",
-    "start_time": 818.21,
-    "end_time": 909.07
+    "image_file": "Slide_014.webp",
+    "script_text": "Para usar la contabilidad de costes en SAP Business One, primero debe definir los centros de beneficio o departamentos como centros de coste. Al crear uno, el sistema genera automáticamente una norma de reparto con el mismo nombre, que asigna todos los costes o ingresos a ese centro. Los costes e ingresos indirectos no se asignan directamente; en su lugar, se distribuyen a uno o varios centros mediante una norma de reparto indirecta, donde se especifica el criterio de distribución. Este proceso asegura una asignación precisa y coherente de los gastos según la estructura organizacional de la empresa.",
+    "start_time": 566.6,
+    "end_time": 606.4
   },
   {
     "slide_index": 15,
-    "image_file": "016_Slide_15_10_CostandBudget_11_CostAcc_CostAcc_ES.webp",
-    "script_text": "Resumen – 2  Para incluir automáticamente costes del libro mayor en la contabilidad de costes, enlace una norma de reparto con cuentas del Plan de cuentas.  Cada vez que emita un importe en estas cuentas, el importe se asignará a los distintos departamentos según la definición de la norma de reparto.  Puede modificar la norma de reparto fijada en la cuenta de mayor al emitir un documento de marketing o un asiento manual.  Para los asientos creados a partir de los documentos de marketing y para los asientos manuales, puede modificar la norma de reparto asignada en cualquier momento.  Esta norma de reparto tiene prioridad sobre la regla definida en la cuenta de mayor y en el documento de marketing.  Para incluir automáticamente costes del libro mayor en la contabilidad de costes, enlace una norma de reparto con cuentas del Plan de cuentas.  Cada vez que emita un importe en estas cuentas, el importe se asignará a los distintos departamentos según la definición de la norma de reparto.  Puede modificar la norma de reparto fijada en la cuenta de mayor al emitir un documento de marketing o un asiento manual.  Para los asientos creados a partir de los documentos de marketing y para los asientos manuales, puede modificar la norma de reparto asignada en cualquier momento.  Esta norma de reparto tiene prioridad sobre la regla definida en la cuenta de mayor y en el documento de marketing.",
-    "start_time": 909.07,
-    "end_time": 991.8
+    "image_file": "Slide_015.webp",
+    "script_text": "Para integrar automáticamente los costes del libro mayor en la contabilidad de costes, debe enlazar una norma de reparto con las cuentas correspondientes del Plan de cuentas. Cada vez que registre un importe en esas cuentas, el sistema lo asignará a los departamentos según la norma definida. Puede modificar esta norma al emitir documentos de marketing o asientos manuales, y dicha modificación tiene prioridad sobre la regla establecida en la cuenta de mayor o en el documento original. Esta flexibilidad permite ajustar la distribución de costes en tiempo real según las necesidades operativas.",
+    "start_time": 606.4,
+    "end_time": 644.2
   }
 ]

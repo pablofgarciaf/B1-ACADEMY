@@ -1,107 +1,107 @@
 [
   {
     "slide_index": 1,
-    "image_file": "108_Slide_01_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Sales 21 Cust Customers en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Ventas - clientes: Clientes y grupos de clientes Bienvenido al tema sobre clientes y grupos de clientes.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre clientes y grupos de clientes en SAP Business One versión 10.0. Aquí aprenderá a gestionar información clave de sus clientes, desde su creación hasta su organización en grupos para mejorar el control comercial y financiero. Este módulo es fundamental para optimizar el proceso de ventas y mantener datos maestros precisos y actualizados en su empresa.",
     "start_time": 0.0,
-    "end_time": 20.71
+    "end_time": 24.7
   },
   {
     "slide_index": 2,
-    "image_file": "108_Slide_02_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "En este tema, definiremos un nuevo grupo de clientes y un nuevo cliente que pertenece a este grupo. Crearemos un cliente potencial y luego convertiremos el cliente potencial en cliente. 2 Al finalizar este tema, podrá:  Definir un grupo de clientes  Crear un nuevo cliente  Crear un cliente potencial  Convertir un cliente potencial en un cliente Objetivos",
-    "start_time": 20.71,
-    "end_time": 44.14
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá definir un grupo de clientes para organizar su cartera, crear un nuevo cliente desde cero, registrar un cliente potencial como parte del proceso de ventas y convertirlo en cliente tras la primera venta. Estas habilidades le permitirán gestionar eficientemente el ciclo de vida comercial en SAP Business One, mejorando la trazabilidad y el seguimiento de oportunidades.",
+    "start_time": 24.7,
+    "end_time": 49.63
   },
   {
     "slide_index": 3,
-    "image_file": "108_Slide_03_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Usted tiene una campaña itaria centrada en atraer escuelas locales como nuevos clientes. Cree un nuevo grupo de clientes para gestionar la determinación especial de precios y las condiciones de pago para las escuelas. Usar el grupo de cliente ayuda a simplificar el proceso de creación de clientes potenciales y clientes, así como también facilita una mejor realización de informes. 3 3 Escenario empresarial  Usted tiene una campaña itaria centrada en atraer escuelas locales como nuevos clientes.  Cree un nuevo grupo de clientes para gestionar la determinación especial de precios y las condiciones de pago para las escuelas.  Usar el grupo de cliente ayuda a simplificar el proceso de creación de clientes y facilita una mejor realización de informes.",
-    "start_time": 44.14,
-    "end_time": 91.18
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagina que su empresa lanza una campaña para atraer escuelas locales como nuevos clientes. Para gestionar precios especiales y condiciones de pago diferenciadas, crea un grupo de clientes específico. Este grupo simplifica la creación de clientes potenciales y clientes, aplica automáticamente reglas comerciales y mejora la generación de informes segmentados por sector, facilitando decisiones más acertadas en su estrategia comercial.",
+    "start_time": 49.63,
+    "end_time": 77.69
   },
   {
     "slide_index": 4,
-    "image_file": "108_Slide_04_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Dos tipos de interlocutores comerciales se utilizan en el proceso de ventas: clientes potenciales y clientes. Puede comenzar el proceso con el tipo de interlocutor comercial maestro: cliente potencial. Un cliente potencial describe a las personas y organizaciones en el pipeline de ventas, es decir, los clientes potenciales. Los registros maestros de datos de clientes potenciales se utilizan como base para las ventas y el marketing. Cuando realiza la primera venta a un cliente potencial, cambia la clase de interlocutor comercial a cliente, lo que convierte al cliente potencial en un cliente real. Un pedido de un cliente puede tener asignado a un cliente o a un cliente potencial. Una vez que pasa a la entrega, debe tener un cliente. La información sobre los clientes potenciales y clientes se conserva en los registros maestros del interlocutor comercial. Mantener los datos maestros centralmente para los interlocutores comerciales le permite almacenar toda la información necesaria para ventas, reducir la duplicación y evitar los errores de registro de datos. 4 Interlocutores comerciales  Dos tipos de interlocutores comerciales se utilizan en el proceso de ventas:  Clientes potenciales  Clientes  Cuando realiza la primera venta, cambia la clase de interlocutor comercial a cliente  Los pedidos de cliente pueden tener clientes o clientes potenciales. Las entregas deben tener clientes.",
-    "start_time": 91.18,
-    "end_time": 179.16
+    "image_file": "Slide_004.webp",
+    "script_text": "En el proceso de ventas, comienza con un cliente potencial, que representa a una organización o persona interesada en sus productos. Al realizar la primera venta, cambia su clase a cliente, completando la conversión. Los pedidos pueden asociarse a cualquiera de los dos, pero las entregas requieren obligatoriamente un cliente registrado. Esta estructura evita duplicación y asegura que la información comercial esté centralizada y actualizada.",
+    "start_time": 77.69,
+    "end_time": 106.73
   },
   {
     "slide_index": 5,
-    "image_file": "108_Slide_05_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Nos interesan los clientes potenciales y clientes utilizados en el proceso de ventas, pero existe también otro registro maestro de interlocutores comerciales, el registro maestro de proveedores, el cual utiliza en las compras. La razón por la que se menciona aquí es debido a que los datos para estos tres tipos de registros maestros de datos son muy similares. Por lo tanto, SAP Business One usa ventanas con una estructura común para los tres tipos de datos maestros: cliente, cliente potencial y proveedor. El registro maestro del interlocutor comercial incluye detalles de la empresa como las direcciones y números de teléfono, las personas de contacto empresarial, detalles de logística, información de impuestos, información contable, así como también enlaces a los saldos de cuentas y realización de informes. 5 Datos maestros de interlocutor comercial  Estructura común para todos los interlocutores comerciales:  Cliente  Cliente potencial  Proveedor  Vincular al saldo de cuenta  Realización de informes disponible directamente del registro maestro",
-    "start_time": 179.16,
-    "end_time": 244.3
+    "image_file": "Slide_005.webp",
+    "script_text": "SAP Business One utiliza una estructura común para los registros maestros de clientes, clientes potenciales y proveedores. Esto incluye datos de empresa, contactos, logística, impuestos, información contable y enlaces a saldos de cuentas. Esta uniformidad reduce la complejidad del sistema, evita la duplicación de entrada de datos y permite generar informes consistentes across módulos de ventas, compras y contabilidad.",
+    "start_time": 106.73,
+    "end_time": 135.58
   },
   {
     "slide_index": 6,
-    "image_file": "108_Slide_06_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Los clientes y los clientes potenciales tienen múltiples direcciones de facturación y envío almacenadas en el registro maestro de interlocutores comerciales. Puede fijar una dirección de facturación y una dirección de envío como predeterminadas. Además, tiene direcciones para todas las personas de contacto del interlocutor comercial. Las direcciones se copian automáticamente desde el registro maestro de interlocutores comerciales a los documentos de marketing. Cuando se encuentran disponibles múltiples direcciones, una casilla de selección está disponible dentro de los documentos de marketing para seleccionar la dirección correcta. 6 Direcciones de interlocutores comerciales Dirección de entrega Dirección de facturación Dirección de persona de contacto  Varias direcciones posibles para cada clase de dirección  Puede fijar valores predeterminados para cada clase de dirección",
-    "start_time": 244.3,
-    "end_time": 297.5
+    "image_file": "Slide_006.webp",
+    "script_text": "En el maestro de interlocutor comercial, puede almacenar múltiples direcciones para facturación, envío y contactos. Puede definir una dirección predeterminada para cada tipo, lo que agiliza la creación de documentos. Por ejemplo, la facturación se envía a la Av. Amazonas, mientras que los productos se despachan desde la Av. América. En los documentos de marketing, si hay varias opciones, puede seleccionar la correcta mediante una casilla de verificación, asegurando precisión en logística y facturación.",
+    "start_time": 135.58,
+    "end_time": 169.08
   },
   {
     "slide_index": 7,
-    "image_file": "108_Slide_07_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Antes de comenzar a introducir interlocutores comerciales al sistema, fije los valores predeterminados para los interlocutores comerciales a nivel de la empresa. En la ficha IC de las Parametrizaciones generales de la empresa, tiene la opción de fijar las condiciones de pago predeterminadas, los métodos de pago predeterminados y las condiciones de reclamación (para cuando un cliente no abona a tiempo). Estos valores predeterminados luego se copian a cada uno de los registros de datos maestros de interlocutores comerciales recién creados. Claro que, todos estos valores estándar pueden modificarse en el registro de datos maestros, y hasta cuando sea necesario en los documentos de ventas. 7 Parametrizaciones previas Valores predeterminados de IC:  Condiciones de pago  Vías de pago  Condiciones de reclamación",
-    "start_time": 297.5,
-    "end_time": 348.14
+    "image_file": "Slide_007.webp",
+    "script_text": "Antes de crear interlocutores comerciales en SAP Business One, es clave fijar valores predeterminados a nivel de empresa. Estos incluyen condiciones de pago, vías de pago y condiciones de reclamación para clientes morosos. Se configuran en la ficha IC de las Parametrizaciones generales de la empresa. Estos valores se copian automáticamente a cada nuevo registro de datos maestros, aunque pueden modificarse posteriormente en el maestro o en documentos de ventas. Esto asegura consistencia y ahorra tiempo en la carga inicial de datos.",
+    "start_time": 169.08,
+    "end_time": 204.46
   },
   {
     "slide_index": 8,
-    "image_file": "108_Slide_08_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Los detalles detrás de las parametrizaciones predeterminadas así como también las opciones de configuración adicionales se encuentran en el menú Gestión, en Configuración para Interlocutores comerciales. En este menú puede encontrar los detalles detrás de las condiciones de pago y condiciones de reclamación, así como también otras parametrizaciones relacionadas con los interlocutores comerciales. Las condiciones de pago son muy importantes y no sólo contienen cálculos de la fecha de vencimiento y descuento por pronto pago. Los límites de crédito y las listas de precio también se especifican en las definiciones de las condiciones de pago. Además, una lista de precios predeterminada puede asignarse para todos los clientes a través de la definición de las condiciones de pago. Otra opción para asignar una lista de precios es a través de un grupo de clientes. 8 Condiciones de pago Gestión > Configuración > Interlocutores comerciales",
-    "start_time": 348.14,
-    "end_time": 405.48
+    "image_file": "Slide_008.webp",
+    "script_text": "En el menú Gestión > Configuración > Interlocutores comerciales se encuentran las opciones avanzadas para configurar interlocutores comerciales. Aquí se definen en detalle las condiciones de pago, que incluyen no solo cálculos de vencimiento y descuentos por pronto pago, sino también límites de crédito y asignación de listas de precio predeterminadas. Estas listas pueden aplicarse a todos los clientes mediante las condiciones de pago o, alternativamente, mediante grupos de clientes. Esta centralización permite un control preciso sobre precios y riesgos crediticios.",
+    "start_time": 204.46,
+    "end_time": 240.74
   },
   {
     "slide_index": 9,
-    "image_file": "108_Slide_09_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Los grupos de clientes son una forma de clasificar los clientes para la determinación de precios y la realización de informes. Es posible que desee clasificar a los clientes por sectores o por tamaño. Un cliente puede estar asignado a un grupo. Cuando ejecute los informes, puede ejecutarlos por grupos de clientes. Esto le permite ver las cifras de ventas de los diferentes sectores. Luego, puede clasificar los datos o realizar selecciones en base a los grupos. Si asigna una lista de precios a un grupo de clientes, la lista de precios asignada al grupo de clientes reemplazará la predeterminada de las parametrizaciones generales. 9 Grupos de clientes Para determinar precios y realizar de informes  Cliente asignado a solo un grupo  Puede utilizar grupos de clientes en la gestión de informes para ver las cifras de ventas de diferentes sectores.  Puede asignar una lista de precios a un grupo de clientes  La lista de precios asignada al grupo reemplazará el valor por defecto de Parametrizaciones generales.",
-    "start_time": 405.48,
-    "end_time": 468.07
+    "image_file": "Slide_009.webp",
+    "script_text": "Los grupos de clientes permiten clasificar a los clientes según criterios como sector o tamaño, facilitando la determinación de precios y la generación de informes segmentados. Cada cliente solo puede pertenecer a un grupo. Al ejecutar informes, es posible filtrar por grupo para analizar ventas por sector. Además, se puede asignar una lista de precio específica a un grupo, la cual sobrescribirá la predeterminada de las parametrizaciones generales. Esto brinda flexibilidad para aplicar políticas comerciales diferenciadas según el tipo de cliente.",
+    "start_time": 240.74,
+    "end_time": 276.84
   },
   {
     "slide_index": 10,
-    "image_file": "108_Slide_10_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Además de los clientes en el proceso de ventas, también tenemos los clientes potenciales. Los clientes potenciales se utilizan para identificar un cliente potencial. Tener datos maestros de clientes potenciales le permite documentar y realizar un seguimiento de las actividades de preventa para un cliente potencial. Puede crear los siguientes documentos para los datos maestros de un cliente potencial: oferta de cliente, pedido de cliente, oportunidad de venta y actividad. Los clientes potenciales no pueden utilizarse en entregas o facturas. Esto le permite comenzar el procesamiento de un pedido de cliente potencial, pero evita que los usuarios no informados entreguen artículos a un cliente no conocido o no aprobado. Una vez que asigna un cliente potencial a un documento de ventas, éste no se puede eliminar, aunque no se proceda con la operación. 10 Clientes potenciales y clientes Clientes potenciales  Utilizados en documentos o pedidos de cliente previos a la venta.  No se utilizan en entregas ni en facturas",
-    "start_time": 468.07,
-    "end_time": 533.26
+    "image_file": "Slide_010.webp",
+    "script_text": "Los clientes potenciales en SAP Business One se utilizan para gestionar la fase de preventa. Permiten crear documentos como ofertas, pedidos de cliente, oportunidades de venta y actividades, pero no pueden usarse en entregas ni facturas. Esto asegura que solo se procese con clientes verificados. Tener un maestro de cliente potencial permite documentar interacciones previas a la venta y dar seguimiento a negociaciones. Es una herramienta clave para controlar el proceso comercial desde el primer contacto hasta la conversión en cliente efectivo.",
+    "start_time": 276.84,
+    "end_time": 311.86
   },
   {
     "slide_index": 11,
-    "image_file": "108_Slide_11_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Cuando el cliente potencial compra el producto o servicio se transforma en un cliente. En este caso, todo lo que debe hacer es modificar la clase de interlocutor comercial en el registro maestro de cliente potencial a cliente. Toda la información añadida al registro maestro de datos de clientes potenciales se graba, así como los documentos creados para el cliente potencial. Por ejemplo, si creó un pedido de cliente para un cliente potencial, cuando dicho cliente potencial se transforme en un cliente y compre los artículos del pedido de cliente, puede utilizar este pedido como base para crear un documento de entrega y, más adelante, una factura. Dado que SAP Business One automatiza muchos procesos relacionados con el proceso de Ventas - clientes, es fundamental que seleccione o introduzca la información correcta sobre el cliente y los artículos en el momento de iniciar el pedido de cliente. Por ejemplo, si se introducen incorrectamente o de manera incompleta datos tan simples como la dirección de facturación o la dirección de envío del cliente, esto puede afectar gravemente el balance final de la empresa cuando los artículos pedidos lleguen a lugares incorrectos o las facturas se envíen a oficinas erróneas. Además, en algunas localizaciones como Estados Unidos el indicador de impuestos y la tasa se determinan de acuerdo con la asignación de envío. Por lo tanto, asegúrese de seleccionar la dirección de envío correcta desde la lista desplegable. 11 Clientes potenciales y clientes Clientes potenciales  Utilizados en documentos o pedidos de cliente previos a la venta.  No se utilizan en entregas ni en facturas clientes  Utilizados en cualquier documento de ventas  Los clientes potenciales se transforman en clientes cuando realizan una compra",
-    "start_time": 533.26,
-    "end_time": 639.05
+    "image_file": "Slide_011.webp",
+    "script_text": "Cuando un cliente potencial decide comprar, se convierte en cliente cambiando su clase en el registro maestro de interlocutor comercial. Toda la información cargada previamente —como contactos, actividades y documentos creados— se conserva. Por ejemplo, un pedido de cliente hecho mientras era potencial puede usarse como base para generar una entrega y luego una factuna tras la conversión. Esto evita doble ingreso de datos y asegura trazabilidad. Es vital cargar correctamente datos como direcciones de facturación y envío, ya que errores afectan entregas y facturación, especialmente en regiones como EE.UU. donde los impuestos dependen de la ubicación de envío.",
+    "start_time": 311.86,
+    "end_time": 354.65
   },
   {
     "slide_index": 12,
-    "image_file": "108_Slide_12_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Observemos la utilización de los clientes potenciales en los documentos de venta en un escenario empresarial clásico. Un cliente potencial solicita una oferta para un ordenador con accesorios. En las ofertas introducimos los datos maestros del cliente potencial, los artículos y las cantidades. La oferta de ventas actúa como una oferta para el interesado en mercancías específicas a un precio específico. La determinación de precios para este artículo asociado con el cliente potencial se determina automáticamente. Decidimos brindarle este cliente potencial un descuento adicional, por lo que registramos un descuento manual del 1% en la oferta. 12 Clientes potenciales en ofertas de venta  Un cliente potencial solicita una oferta para un ordenador con accesorios.  En las ofertas introducimos los datos maestros del cliente potencial, los artículos y las cantidades.  El sistema determina el precio automáticamente  Se introduce un descuento manual del 1% en la oferta. Oferta de ventas Pedido de cliente Entrega Factura de clientes",
-    "start_time": 639.05,
-    "end_time": 706.37
+    "image_file": "Slide_012.webp",
+    "script_text": "En este escenario, un cliente potencial solicita una oferta para una computadora con accesorios. En SAP Business One, se ingresan los datos maestros del cliente potencial, los artículos solicitados y sus cantidades. El sistema calcula el precio automáticamente según las reglas vigentes. Luego, se aplica un descuento manual del 1% directamente en la línea de la oferta. Esta oferta puede convertirse luego en un pedido de cliente, y tras la aceptación y conversión del potencial en cliente, servir como base para una entrega y factura. El flujo muestra cómo se gestiona una negociación comercial desde la oferta inicial hasta la facturación.",
+    "start_time": 354.65,
+    "end_time": 397.66
   },
   {
     "slide_index": 13,
-    "image_file": "108_Slide_13_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Si el cliente potencial decide pedir los artículos, copiamos la oferta a un pedido de cliente. Toda la información: los datos maestros del cliente potencial, el artículo, la determinación de precios que incluye el descuento manual, se copian en el pedido del cliente. El cliente potencial puede convertirse ahora en un cliente, para el pedido de ventas o al momento de la entrega. 13 Clientes potenciales en el pedido de cliente  Si el cliente potencial decide pedir los artículos, copiamos la oferta a un pedido de cliente.  Toda la información, incluido el descuento manual, se copia al pedido de cliente.  El cliente potencial puede convertirse a un cliente real en este momento o en el momento de la entrega. Oferta de ventas Pedido de cliente Entrega Factura de clientes",
-    "start_time": 706.37,
-    "end_time": 757.01
+    "image_file": "Slide_013.webp",
+    "script_text": "Cuando el cliente potencial acepta la oferta, se copia toda la información al pedido de cliente: datos maestros, artículos, precios y descuentos manuales. En este momento, el cliente potencial puede convertirse en un cliente real, ya sea al crear el pedido o al momento de la entrega. Esto permite iniciar el proceso de ventas con todos los datos necesarios ya cargados en SAP Business One.",
+    "start_time": 397.66,
+    "end_time": 424.08
   },
   {
     "slide_index": 14,
-    "image_file": "108_Slide_14_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Conexión de clientes y proveedores Cliente C1999 Proveedor V2999 Contabilidad Contabilidad Proveedor conectado V2999 Cliente conectado C1999 Informes de antigüedad Reclamaciones Reconciliación La conexión le ofrece visibilidad de ambas operaciones abiertas del IC en: Si tiene un cliente que también es un proveedor, puede conectar los dos registros de datos maestros de interlocutor comercial entre sí mediante Proveedor conectado y Cliente conectado. Cuando haya introducido un valor en uno de los campos, el otro campo se rellena automáticamente con el interlocutor comercial relacionado. Una flecha de enlace junto al campo le permite desplazarse de un interlocutor comercial a otro. La conexión de los dos interlocutores comerciales le permite ver en su totalidad las operaciones abiertas del proveedor y del cliente en los informes de antigüedad y en el asistente de reclamaciones. También le proporciona la capacidad de reconciliar las transacciones de clientes abiertas con transacciones de proveedores abiertas. Encontrará más información acerca del impacto de la gestión financiera de esta conexión en los temas financieros que tratan la reconciliación interna, de reclamaciones y de antigüedad.",
-    "start_time": 757.01,
-    "end_time": 832.06
+    "image_file": "Slide_014.webp",
+    "script_text": "En SAP Business One, puedes vincular un registro de cliente con uno de proveedor cuando la misma entidad desempeña ambos roles. Al ingresar un valor en el campo 'Cliente conectado' o 'Proveedor conectado', el sistema completa automáticamente el otro campo con el código relacionado. Esta conexión permite ver todas las operaciones abiertas en informes de antigüedad y reconciliar transacciones entre cliente y proveedor, mejorando la gestión financiera.",
+    "start_time": 424.08,
+    "end_time": 453.46
   },
   {
     "slide_index": 15,
-    "image_file": "108_Slide_15_10_Sales_21_Cust_Customers_ES.webp",
-    "script_text": "Existen tres clases de interlocutores comerciales: clientes potenciales, clientes y proveedores. Los clientes y clientes potenciales se utilizan en el proceso de ventas. Los proveedores se utilizan en las compras. Los clientes potenciales se utilizan en su mayoría en las preventas, pero se pueden utilizar en un pedido de cliente. El registro de datos maestros de un cliente potencial puede convertirse en el registro de datos maestros de un cliente. Los clientes potenciales no pueden usarse en entregas o facturas. Un cliente debe utilizarse en documentos con un posible impacto contable. Los clientes y clientes potenciales tienen múltiples direcciones de envío, facturación y personas de contacto. Puede establecer un valor por defecto para cada clase de dirección. 15 15 Resumen A continuación, se detallan algunos puntos clave:  Existen tres clases de interlocutores comerciales: clientes potenciales, clientes y proveedores.  Los clientes y clientes potenciales se utilizan en el proceso de ventas.  Los clientes potenciales se utilizan en su mayoría en las preventas, pero se pueden utilizar en un pedido de cliente.  El registro de datos maestros de un cliente potencial puede convertirse en el registro de datos maestros de un cliente.  Los clientes potenciales no pueden usarse en entregas o facturas.  Los clientes y clientes potenciales tienen múltiples direcciones de envío, facturación y personas de contacto. Puede establecer un valor por defecto para cada clase de dirección.",
-    "start_time": 832.06,
-    "end_time": 930.17
+    "image_file": "Slide_015.webp",
+    "script_text": "En SAP Business One, existen tres clases de interlocutores comerciales: clientes potenciales, clientes y proveedores. Los clientes y clientes potenciales se usan en el proceso de ventas, mientras que los proveedores se usan en compras. Los clientes potenciales se usan principalmente en preventas, pero pueden aparecer en pedidos de cliente. Su registro puede convertirse en un cliente real, aunque no se usan en entregas o facturas. Ambos tipos permiten múltiples direcciones de envío, facturación y contactos, con valores predeterminados configurables por clase.",
+    "start_time": 453.46,
+    "end_time": 491.52
   }
 ]

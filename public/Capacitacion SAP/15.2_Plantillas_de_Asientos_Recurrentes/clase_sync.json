@@ -1,51 +1,51 @@
 [
   {
     "slide_index": 1,
-    "image_file": "021_Slide_01_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinProcess 12 PostJE template en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Proceso financiero: Modelos de contabilización y contabilizaciones periódicas Bienvenido al tema sobre modelos de contabilización y contabilizaciones periódicas.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre modelos de contabilización y contabilizaciones periódicas en SAP Business One versión 10.0. Aquí aprenderá a utilizar herramientas que automatizan asientos contables recurrentes, mejorando la eficiencia del área financiera. Este módulo es clave para empresas que manejan transacciones regulares como alquileres o pagos variables. Conocerá cómo configurar y aplicar estos modelos para reducir errores y ahorrar tiempo en el cierre mensual.",
     "start_time": 0.0,
-    "end_time": 24.1
+    "end_time": 26.2
   },
   {
     "slide_index": 2,
-    "image_file": "021_Slide_02_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "Al finalizar este tema, podrá: - Definir y utilizar un modelo de contabilización - Definir una contabilización periódica 2 Al finalizar este tema, podrá:  - Definir y utilizar modelos de contabilización  - Definir una contabilización periódica Objetivos",
-    "start_time": 24.1,
-    "end_time": 41.09
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá definir y utilizar un modelo de contabilización, así como definir una contabilización periódica en SAP Business One. Estas habilidades le permitiran automatizar asientos contables que se repiten mensualmente, como pagos de alquiler fijo o complementos salariales variables. Al dominar estas herramientas, contribuirá a hacer más eficaz el proceso contable, reduciendo tareas manuales y mejorando la precisión en el registro financiero de la empresa.",
+    "start_time": 26.2,
+    "end_time": 54.0
   },
   {
     "slide_index": 3,
-    "image_file": "021_Slide_03_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "Escenario empresarial Implementará SAP Business One en un nuevo cliente.  La responsable de contabilidad le comunica que cada mes graba manualmente dos tipos de asiento.  El primero es una transacción de alquiler con un importe fijo.  El segundo es un pago de complemento salarial para los empleados del departamento de ventas. Cada empleado recibe un porcentaje fijo de los ingresos mensuales.  Le muestra las herramientas Contabilización periódica y Modelo de contabilización que pueden hacer que el proceso sea más eficaz.  Imagine que está implementando SAP Business One a un nuevo cliente.  La responsable de contabilidad le comunica que cada mes graba manualmente dos tipos de asiento.  El primero es una transacción de alquiler con un importe fijo.  El segundo es un pago de complemento salarial para los empleados del departamento de ventas. Cada empleado recibe un porcentaje fijo de los ingresos mensuales.  Le muestra las herramientas Contabilización periódica y Modelo de contabilización que pueden hacer que el proceso sea más eficaz.",
-    "start_time": 41.09,
-    "end_time": 108.0
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagine que está implementando SAP Business One en un nuevo cliente donde la responsable de contabilidad graba manualmente cada mes dos tipos de asientos: uno es un alquiler con importe fijo y el otro es un pago de complemento salarial basado en un porcentaje de los ingresos mensuales del departamento de ventas. Este proceso manual consume tiempo y es propenso a errores. SAP Business One ofrece herramientas como contabilizaciones periódicas y modelos de contabilización para automatizar estas transacciones recurrentes, haciendo el proceso más eficaz y confiable.",
+    "start_time": 54.0,
+    "end_time": 89.0
   },
   {
     "slide_index": 4,
-    "image_file": "021_Slide_04_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "SAP Business One incluye una función de contabilizaciones periódicas para asientos de importe fijo similares que se crean regularmente. Las contabilizaciones periódicas utilizan un modelo que se almacena con un código y una descripción. En este modelo debe definir, entre otras cosas, la frecuencia con la que se creará el asiento y una fecha de validez que indique hasta cuándo será válida la contabilización periódica. Para definir un tipo de modelo de contabilización periódica, utilice la ventana Contabilizaciones periódicas del módulo Finanzas. El sistema duplica la contabilización periódica original (instancia 0) cada vez que se acerca la fecha de ejecución, y presenta un informe que recomienda contabilizar las operaciones que vencen. Cuando utilice esta instancia y la añada al sistema, esta se borrará. Puede configurar el sistema para que muestre todas las transacciones periódicas disponibles para su procesamiento en la fecha actual al iniciar sesión. Esta parametrización se realiza en la ventana Parametrizaciones generales en Inicialización del sistema en el módulo Gestión. En la ficha Servicios, marque la casilla de selección Visualizar contabilizaciones periódicas durante la Ejecución. Recuerde que puede añadir contabilizaciones periódicas al flujo de caja, que se visualizan en color verde en el informe. 4 Contabilizaciones periódicas Haber Debe Cuenta de mayor/ Nombre IC Cuenta de mayor/ Nº IC 620000 Alquiler de propiedad 1000 161000 Cuenta de giro bancario 1000 Código: Alquiler Descripción: Pago de alquiler Frecuencia: El 10 Siguiente ejecución: 01/10/2016 Fin de validez 12/10/2021  Mensual",
-    "start_time": 108.0,
-    "end_time": 215.3
+    "image_file": "Slide_004.webp",
+    "script_text": "Las contabilizaciones periódicas en SAP Business One automatizan asientos de importe fijo que se repiten regularmente, como el pago mensual de alquiler. Se definen en la ventana Contabilizaciones periódicas del módulo Finanzas, donde se especifica un código, descripción, frecuencia (como mensual), fecha de próxima ejecución y fecha de fin de validez. El sistema genera una instancia lista para contabilizar cada vez que se acerca la fecha, la cual se elimina tras su uso. Puede configurarse para mostrar estas transacciones al iniciar sesión, y aparecen en verde en el informe de flujo de caja.",
+    "start_time": 89.0,
+    "end_time": 126.8
   },
   {
     "slide_index": 5,
-    "image_file": "021_Slide_05_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "Tiene pocas opciones al definir una contabilización periódica.  Puede definir la frecuencia con la que ocurrirá la contabilización.  Puede elegir la frecuencia desde la lista de frecuencias.  También puede definir la fecha de validez para la contabilización que especifica la última fecha posible en la que puede realizarse una contabilización.  Si no desea realizar la contabilización regularmente, también tiene la opción de definir una contabilización periódica como un modelo que se utilizará cuando sea necesario.  Puede crear estas contabilizaciones periódicas de antemano. Fije el estatus en Aún no ejecutada hasta que deba iniciar las contabilizaciones. Este estatus también puede utilizarse para desactivar una contabilización frecuente. 5 Opciones para contabilizaciones periódicas Frecuencia: El 10 Siguiente ejecución: 01/10/2020 ■Diaria ■Semanal ■Mensual ■Trimestral ■Semestral ■Anual ■Una vez Aún no ejecutada Plantilla Lista de frecuencia Para asientos manuales Tipo de modelo: Contabilización periódica Inactivo Fin validez 12/10/2025  Mensual.",
-    "start_time": 215.3,
-    "end_time": 283.54
+    "image_file": "Slide_005.webp",
+    "script_text": "Al definir una contabilización periódica, puede configurar la frecuencia (diaria, semanal, mensual, etc.), la fecha de validez que indica hasta cuándo es válida, y el estatus, como 'Aún no ejecutada' para activarla cuando sea necesario o para desactivar una frecuente. Estas contabilizaciones se crean de antemano y se almacenan con un código y descripción. El sistema las duplica cada vez que se acerca la fecha de ejecución, generando una instancia lista para procesar, la cual se elimina tras su uso en el asiento contable.",
+    "start_time": 126.8,
+    "end_time": 161.0
   },
   {
     "slide_index": 6,
-    "image_file": "021_Slide_06_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "Puede crear modelos de contabilización para asientos que cuentan con una estructura muy similar. Para definir un tipo de modelo de porcentaje, utilice la ventana Modelos de contabilización del módulo Finanzas. Estos modelos pueden contener números de cuenta, pero también puede limitarse a especificar la descripción de la cuenta en una partida individual si no sabe todavía qué cuenta se va a utilizar para ella. En lugar de importes fijos, aquí solo se introducen porcentajes. Estos porcentajes indican cómo se distribuye el importe total entre las partidas individuales. En la figura, se muestra un ejemplo de cómo puede asignar los gastos de servicios, como facturas de electricidad, a sus gastos componentes según un porcentaje específico. El modelo de contabilización se almacena con un código y una descripción. Luego, al registrar un asiento manual, puede elegir el tipo de modelo Porcentaje y el modelo relevante e indicar un importe en una de las partidas individuales, y el modelo asignará los importes a las otras partidas según el porcentaje que haya definido. Utilice la opción Cancelar modelo para indicar los importes sin el cálculo automático. 6 Modelo de contabilización con porcentajes % del Haber % del Debe Cuenta de mayor/ Nombre IC Cuenta de mayor/ Nº IC 6320 Servicios 25 6321 Electricidad 75 V550 Servicio público 100 Código: Servicio Descripción: Facturas de servicios",
-    "start_time": 283.54,
-    "end_time": 379.22
+    "image_file": "Slide_006.webp",
+    "script_text": "Los modelos de contabilización con porcentajes permiten distribuir un importe total entre varias cuentas según porcentajes definidos previamente. Se crean en la ventana Modelos de contabilización del módulo Finanzas y pueden incluir números de cuenta o solo descripciones si la cuenta aún no se conoce. Al registrar un asiento manual, selecciona el tipo 'Porcentaje', elige el modelo y ingresa un importe en una partida; el sistema calcula automáticamente los importes en las demás cuentas según los porcentajes definidos. Esta herramienta es ideal para gastos variables como servicios públicos, donde se conoce la proporción pero no el monto exacto hasta recibir la factura.",
+    "start_time": 161.0,
+    "end_time": 202.4
   },
   {
     "slide_index": 7,
-    "image_file": "021_Slide_07_10_FinProcess_12_PostJE_template_ES.webp",
-    "script_text": "Resumen A continuación, se detallan algunos puntos clave: Existen dos tipos de modelo de asiento manual: Se crea un modelo de contabilización con porcentajes para: • Asientos que tienen una estructura similar. • Seleccionándolo en un asiento que introduce manualmente. Se crea una contabilización periódica para: • Asientos similares, con importes fijos creados con regularidad. • Cómo establecer la frecuencia con la que ocurrirá la contabilización. • Se presenta un informe que le recomienda contabilizar la transacción que vence cuando ingresa al sistema.  A continuación, se detallan algunos puntos clave para tener en cuenta:  Existen dos tipos de modelo de asiento manual.  Debe crear un modelo de contabilización con porcentajes para asientos que tienen una estructura muy similar. Entonces podrá seleccionar este modelo de contabilización en un asiento que se registra manualmente.  Debe crear una contabilización periódica para asientos de importe fijo similares que se crean regularmente. Puede definir la frecuencia con la que ocurrirá la contabilización. El sistema presenta un informe que recomienda contabilizar las operaciones que vencen cuando se inicia sesión en el sistema.",
-    "start_time": 379.22,
-    "end_time": 454.15
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, los asientos recurrentes se gestionan mediante dos modelos. El modelo porcentual se usa cuando los asientos tienen una estructura similar pero importes variables; se crea un modelo con porcentajes y se selecciona al registrar manualmente. El modelo periódico es para asientos de importe fijo que se repiten regularmente; aquí se define la frecuencia de generación. El sistema también genera un informe que recomienda contabilizar las transacciones que vencen al iniciar sesión. Esto automatiza tareas repetitivas, reduce errores y asegura el cumplimiento contable en empresas como Distribuidora Andina Tech, donde se manejan gastos mensuales, amortizaciones o ingresos recurrentes con precisión y control.",
+    "start_time": 202.4,
+    "end_time": 245.0
   }
 ]

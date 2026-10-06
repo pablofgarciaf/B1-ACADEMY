@@ -1,65 +1,58 @@
 [
   {
     "slide_index": 1,
-    "image_file": "065_Slide_01_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "Bienvenidos a esta clase sobre Inven 23 PNP PNPTTransfer en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Items and Inventory: Pick and Pack in the Inventory Transfer Process SAP Business One Version 10.0 Welcome to the Pick and Pack in the Inventory Transfer Process course. In this training we will see how we can use the Pick Pack and Production Manager in the process of picking items for transfer. In order to take this course, you first need to complete the Pick and Pack in the Sales Process course topic.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de Preparación y Embalaje en el Proceso de Transferencia de Inventario con SAP Business One 10.0. Aquí aprenderás a usar el Gestor de Preparación, Embalaje y Producción para organizar el movimiento de artículos entre almacenes. Este módulo asume que ya completaste el tema de preparación para ventas. Nos enfocaremos en cómo preparar mercancías para transferencias internas, un paso clave para mantener el stock equilibrado entre tu almacén de producción y los de distribución. Verás todo el flujo, desde la solicitud hasta el registro de la transferencia en el sistema.",
     "start_time": 0.0,
-    "end_time": 37.42
+    "end_time": 37.32
   },
   {
     "slide_index": 2,
-    "image_file": "065_Slide_02_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "After completing this topic, you will be able to: Run the Pick Pack and Production Manager to create Pick Lists and documents for inventory transfer. 2 At the end of this topic, you will be able to: Run the Pick Pack and Production Manager to create Pick Lists and documents for inventory transfer. Objectives",
-    "start_time": 37.42,
-    "end_time": 56.64
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás ejecutar el Gestor de Preparación, Embalaje y Producción para generar listas de preparación y crear documentos de transferencia de inventario. Esto significa que serás capaz de tomar una solicitud de transferencia entre almacenes, preparar físicamente los artículos en el almacén de origen y luego registrar oficialmente su movimiento en SAP. El objetivo es que domines esta herramienta para asegurar que las transferencias se realicen con precisión, trazabilidad y sin errores de stock.",
+    "start_time": 37.32,
+    "end_time": 69.0
   },
   {
     "slide_index": 3,
-    "image_file": "065_Slide_03_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "OEC Computers manages multiple warehouses. From time to time, they need to replenish the distribution warehouses from their main production warehouse. OEC has already implement pick and pack processes for sales and production in their warehouses. Now they would like to add functionality for picking items for transfers between warehouses. Their Business One consultant shows them how to use the Pick Pack and Production Manager to create pick lists and record inventory transfers. 3 OEC Computers manages multiple warehouses. From time to time, they need to replenish the distribution warehouses from their main production warehouse. Business Example OEC has already implement pick and pack processes for sales and production in their warehouses. Now they would like to add functionality for picking items for transfers between warehouses. Their Business One consultant shows them how to use the Pick Pack and Production Manager to create pick lists and record inventory transfers.",
-    "start_time": 56.64,
-    "end_time": 113.35
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers maneja varios almacenes: uno principal de producción y otros de distribución. Necesitan reponer periódicamente los almacenes de distribución desde el principal. Ya usan preparación y embalaje para ventas y producción, pero ahora quieren aplicarlo a las transferencias entre almacenes. Su consultor de SAP Business One les mostrará cómo usar el Gestor de Preparación, Embalaje y Producción para crear listas de preparación y registrar las transferencias. Este escenario refleja una necesidad real: asegurar que el stock se mueva de forma controlada y registrada entre ubicaciones.",
+    "start_time": 69.0,
+    "end_time": 107.52
   },
   {
     "slide_index": 4,
-    "image_file": "065_Slide_04_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "Pick and Pack for Inventory Transfer Process – Concept and Scenario Create pick lists for the Inventory Transfer Request Create an Inventory Transfer from the Pick Pack and Production Manager Creating a pick list based on an Inventory Transfer Request: Create an Inventory Transfer Request In the distribution warehouse In the main warehouse In the main warehouse OEC Computers has integrated the pick and pack process for inventory transfers. When the inventory in the distribution warehouse is about to be depleted, the warehouse employee creates an Inventory Transfer Request, to transfer the goods from the main warehouse. The employee in the main warehouse opens the Pick Pack and Production Manager, selects the inventory transfer request rows and creates pick lists. After the goods are picked, the main warehouse employee creates an Inventory Transfer document from the Pick Pack and Production Manager, based on the picked rows from the inventory transfer request. In the next slides we will see how it is done in the system.",
-    "start_time": 113.35,
-    "end_time": 168.29
+    "image_file": "Slide_004.webp",
+    "script_text": "El proceso comienza en el almacén de distribución, donde se crea una Solicitud de Transferencia de Inventario. Luego, en el almacén principal, el empleado abre el Gestor de Preparación, Embalaje y Producción, selecciona las filas de esa solicitud y crea listas de preparación. Después de preparar físicamente los artículos, el mismo empleado usa el Gestor para generar un documento de Transferencia de Inventario basado en las filas preparadas. Este flujo garantiza que solo se transfiera lo que está listo y verificado.",
+    "start_time": 107.52,
+    "end_time": 141.02
   },
   {
     "slide_index": 5,
-    "image_file": "065_Slide_05_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "Inventory Transfer in the Pick Pack and Production Manager 1 2 Inventory Pick and Pack Pick Pack and Production Manager The main warehouse employee runs the Pick Pack and Production Manager to generate the pick lists for the Inventory Transfer Requests. In the Pick Pack and Production Manager Selection Criteria window he chooses Inventory Transfer Requests. Then he chooses OK to enter the Open drawer. Next, he checks all Inventory Transfers Request rows and chooses the Release to Pick List button.",
-    "start_time": 168.29,
-    "end_time": 197.62
+    "image_file": "Slide_005.webp",
+    "script_text": "Para iniciar el proceso, el empleado del almacén principal accede al Gestor de Preparación, Embalaje y Producción desde el menú de Inventario. En la ventana de Criterios de Selección, elige específicamente las Solicitudes de Transferencia de Inventario en estado Abierto. Al presionar Aceptar, se abre el cajón Abierto donde aparecen todas las solicitudes pendientes. Allí, selecciona todas las filas relevantes y pulsa el botón 'Liberar a Lista de Preparación' para generar las instrucciones de picking que guiarán la preparación física de los artículos.",
+    "start_time": 141.02,
+    "end_time": 176.57
   },
   {
     "slide_index": 6,
-    "image_file": "065_Slide_06_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "Inventory Transfer in the Pick Pack and Production Manager 2 2 After pick lists are generated and items are picked, the main warehouse employee opens the Picked drawer to create an Inventory Transfer for the Inventory Transfer Request rows.",
-    "start_time": 197.62,
-    "end_time": 211.18
+    "image_file": "Slide_006.webp",
+    "script_text": "Una vez que las listas de preparación se han generado y los artículos han sido recogidos y empaquetados, el empleado vuelve al Gestor y abre el cajón Preparado. Allí ve todas las listas listas para ser procesadas. Selecciona las filas correspondientes a las solicitudes de transferencia y elige crear un documento de Transferencia de Inventario directamente desde el Gestor. Este documento tomará los datos de las listas preparadas, incluyendo cantidades y artículos, y registrará oficialmente el movimiento de stock desde el almacén principal al de distribución, actualizando los niveles en tiempo real.",
+    "start_time": 176.57,
+    "end_time": 214.34
   },
   {
     "slide_index": 7,
-    "image_file": "065_Slide_07_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "Additional scenario – Inventory Transfer Request as a Target Document Create Sales Orders Create Inventory Transfer Requests in the Pick Pack and Production Manager Pick items and create Inventory Transfer for the picked rows OEC Computers has a special packing area for deliveries of delicate or fragile items. This area is managed as a separate bin location in the warehouse, in order to track the items that are transferred to this packing area. To transfer the items, the warehouse employee uses the Create option from the Pick Pack and Production Manager. In this case the process would be: Create sales orders Then, in the Pick Pack and Production Manager, in the Open drawer, select the sales order rows and create Inventory Transfer Requests. And then pick the items and create the Inventory Transfer documents as explained in the previous scenario.",
-    "start_time": 211.18,
-    "end_time": 259.42
+    "image_file": "Slide_007.webp",
+    "script_text": "En este escenario adicional, el proceso comienza con la creación de pedidos de ventas. Luego, en el Gestor de Preparación, Embalaje y Producción, se seleccionan las filas del pedido en el cajón Abierto para generar una Solicitud de Transferencia de Inventario. Después, el empleado de almacén prepara los artículos y crea el documento de Transferencia de Inventario para las filas preparadas. Esto es útil cuando se necesita mover stock a una ubicación especial, como el área de embalaje para artículos frágiles de OEC Computers, gestionada como una ubicación de almacén separada para un mejor seguimiento.",
+    "start_time": 214.34,
+    "end_time": 252.41
   },
   {
     "slide_index": 8,
-    "image_file": "065_Slide_08_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "Summary Key points from this topic: In the Pick Pack and Production Manager you can process Inventory Transfer Requests. This means you can create pick lists to collect the items and then create an Inventory Transfer document that is based on the request. In addition, you can use the Pick Pack and Production Manager to create Inventory Transfer Requests, based on Sales Orders, Reserve Invoices or Production Orders. Here are some key points to take away from this session: In the Pick Pack and Production Manager you can process Inventory Transfer Requests. This means you can create pick lists to collect the items and then create an Inventory Transfer document that is based on the request. In addition, you can use the Pick Pack and Production Manager to create Inventory Transfer Requests, based on Sales Orders, Reserve Invoices or Production Orders.",
-    "start_time": 259.42,
-    "end_time": 307.73
-  },
-  {
-    "slide_index": 9,
-    "image_file": "065_Slide_09_10_Inven_23_PNP_PNPTTransfer.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 307.73,
-    "end_time": 440.57
+    "image_file": "Slide_008.webp",
+    "script_text": "En este tema aprendiste que el Gestor de Preparación, Embalaje y Producción permite procesar Solicitudes de Transferencia de Inventario, lo que incluye crear listas de preparación para recoger artículos y generar documentos de Transferencia de Inventario basados en esas solicitudes. Además, puedes usar este gestor para crear solicitudes a partir de Pedidos de Ventas, Facturas de Reserva u Órdenes de Producción, lo que lo convierte en una herramienta clave para coordinar la preparación y el movimiento de inventario según las necesidades del negocio.",
+    "start_time": 252.41,
+    "end_time": 285.5
   }
 ]

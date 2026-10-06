@@ -1,303 +1,296 @@
 [
   {
     "slide_index": 1,
-    "image_file": "007_Slide_01_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Bienvenidos a esta clase sobre BinLoc 12 Setup Setup en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Bin Location Bin Locations Setup SAP Business One Version 10.0 Welcome to the Setup course of the bin locations topic. This is one of a series of courses available on the topic of bin locations.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de configuración de ubicaciones en SAP Business One versión 10.0. Este módulo forma parte de los cursos disponibles sobre el tema de ubicaciones. Aprenderás a configurar y gestionar la ubicación de artículos dentro de los almacenes, una funcionalidad clave para empresas con inventario complejo. El curso está diseñado para usuarios que necesitan mejorar la precisión y eficiencia en el control de stock mediante la estructuración detallada de los espacios de almacenamiento.",
     "start_time": 0.0,
-    "end_time": 25.68
+    "end_time": 31.34
   },
   {
     "slide_index": 2,
-    "image_file": "007_Slide_02_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "At the end of this module, you will be able to: Set up bin location managed Warehouses, Warehouse Sublevels and bin location codes Maintain and make changes in existing Warehouse Sublevels and bin location codes Define automatic Allocation Strategies and Receiving bin locations. 2 At the end of this topic, you will be able to:  Set up bin location managed Warehouses, Warehouse Sublevels and bin location codes  Maintain and make changes in existing Warehouse Sublevels and bin location codes  Define automatic allocation strategies and Receiving bin locations. Objectives",
-    "start_time": 25.68,
-    "end_time": 58.37
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este módulo, podrás configurar almacenes gestionados por ubicaciones, incluyendo la definición de subniveles y códigos de ubicación. También aprenderás a mantener y modificar estos elementos existentes. Finalmente, definirás estrategias de asignación automática y designarás ubicaciones receptoras para optimizar los procesos de entrada y salida de mercancías en tu empresa.",
+    "start_time": 31.34,
+    "end_time": 56.98
   },
   {
     "slide_index": 3,
-    "image_file": "007_Slide_03_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "This is the agenda for our Setup course. We will start by giving a short introduction of the setup process and introduce a business example. 3 3 Agenda Introduction Warehouse Sublevels and Bin Location structure Setup of a warehouse managed with bin locations Warehouse Sublevels Sublevel Field Activation Warehouse Sublevels Codes Setup Warehouse Sublevels Codes Management Bin Location codes Bin Location Master Data Bin Location Attributes Bin Location Management Bin Locations Codes Modification Automatic allocation strategies and Receiving bin location",
-    "start_time": 58.37,
-    "end_time": 89.62
+    "image_file": "Slide_003.webp",
+    "script_text": "El curso comienza con una introducción al proceso de configuración y un ejemplo empresarial. Luego abordaremos los subniveles de almacén y su estructura, seguido de la configuración de un almacén gestionado con ubicaciones. Profundizaremos en la activación y configuración de códigos de subnivel, su gestión, y los códigos de ubicación. También veremos los datos maestros y atributos de ubicación, su gestión y modificación. Finalmente, definiremos estrategias de asignación automática y ubicaciones receptoras.",
+    "start_time": 56.98,
+    "end_time": 90.62
   },
   {
     "slide_index": 4,
-    "image_file": "007_Slide_04_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Most inventory based businesses require the ability to locate items within their warehouses and therefore require bin location functionality. In SAP Business One, you are able to activate bin location functionality per warehouse. Warehouses can be split into multiple sublevels supporting 4 sublevel dimensions. With some organizations managing thousands of bin locations, these sublevels and bin location codes can easily be managed manually or automatically with batch generation / update / delete functions. Business One allows you to define a number of different automatic allocation processes for receiving or issuing goods, making these processes as streamlined and automatic as possible. In this training topic we will cover the setup and definition needed before starting to work with bin locations. 4 4 Introduction 1/2  Most inventory based businesses require the ability to locate items within their warehouses and therefore require bin location functionality.  In SAP Business One, you are now able to activate bin location functionality per warehouse. Warehouses can now be split into multiple sublevels supporting 4 sublevel dimensions.  With some organizations managing thousands of bin locations, these sublevels and bin location codes can easily be managed manually or automatically with batch generation / update / delete functions.  Business One allows you to define a number of different automatic allocation processes for receiving or issuing goods, making these processes as streamlined and automatic as possible.  In this training topic we will cover the setup and definition needed before starting to work with bin locations.",
-    "start_time": 89.62,
-    "end_time": 185.04
+    "image_file": "Slide_004.webp",
+    "script_text": "Las empresas con inventario necesitan localizar artículos dentro de sus almacenes, por lo que requieren la funcionalidad de ubicaciones. En SAP Business One, esta funcionalidad se puede activar por almacén. Los almacenes se dividen en múltiples subniveles que soportan cuatro dimensiones. Estos subniveles y códigos de ubicación se gestionan fácilmente manualmente o mediante funciones por lotes. Además, se pueden definir varios procesos de asignación automática para recepción o emisión, haciendo estos procesos más eficientes. Este tema cubre la configuración necesaria antes de trabajar con ubicaciones.",
+    "start_time": 90.62,
+    "end_time": 131.14
   },
   {
     "slide_index": 5,
-    "image_file": "007_Slide_05_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In this training unit we will describe the bin location set up according to the displayed configuration flow. This setup is done in four phases: Phase one defining a bin location managed Warehouse In phase two, warehouse sublevels are added as well as attributes. Also once a bin location managed warehouse was defined, automatic allocation strategies can be defined as well. In phase three, after the warehouse sublevels were added, bin location codes can be created. Then, in phase four, once bin locations are available, some of them can be defined as receiving bin locations. 5 5 Introduction 2/2 Set up a Bin Location managed Warehouse Set up Attributes Define automatic allocation strategy Phase 1 Phase 2 Phase 3 Set up Bin Location Codes Set up Receiving Bin Locations Set up Warehouse Sublevels Phase",
-    "start_time": 185.04,
-    "end_time": 233.16
+    "image_file": "Slide_005.webp",
+    "script_text": "La configuración de ubicaciones se realiza en cuatro fases. La fase uno consiste en definir un almacén gestionado por ubicaciones. En la fase dos se añaden los subniveles de almacén y sus atributos. Una vez definido el almacén, también se pueden definir estrategias de asignación automática. En la fase tres, tras agregar los subniveles, se crean los códigos de ubicación. Finalmente, en la fase cuatro, una vez disponibles las ubicaciones, algunas se designan como ubicaciones receptoras para optimizar flujos de mercancías.",
+    "start_time": 131.14,
+    "end_time": 167.47
   },
   {
     "slide_index": 6,
-    "image_file": "007_Slide_06_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "OEC Computers sells equipment and office supplies to retailers in the US. OEC Computers has two main warehouses: in New York and in Los Angeles. George is the warehouse manager in New York. George and his staff have challenges in locating items within their large warehouse. They need a solution that will enable dividing the warehouse in New York, into sublevels and locations. You demonstrate the Bin Locations module to George. 6 6 Business Scenario OEC Computers sells equipment and office supplies to retailers in the US. OEC Computers has two main warehouses: in New York and in Los Angeles. George is the warehouse manager in New York. George and his staff have some challenges in locating items within their large warehouse. They need a solution that will enable dividing the warehouse in New York, into sublevels and locations. You demonstrate the Bin Locations module to George.",
-    "start_time": 233.16,
-    "end_time": 289.1
+    "image_file": "Slide_006.webp",
+    "script_text": "OEC Computers distribuye equipos y material de oficina a minoristas en Estados Unidos. Tiene dos almacenes principales: uno en Nueva York y otro en Los Ángeles. George, el jefe de almacén en Nueva York, enfrenta dificultades para localizar artículos debido al tamaño de su almacén. Le demostramos cómo el módulo de Ubicaciones en SAP Business One le permite dividir el almacén en subniveles y definir códigos de ubicación, mejorando significativamente la localización y gestión del inventario.",
+    "start_time": 167.47,
+    "end_time": 199.68
   },
   {
     "slide_index": 7,
-    "image_file": "007_Slide_07_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Let us examine the warehouse sublevels and bin location structure. 7 7 Agenda Introduction Warehouse sublevels and bin location structure Setup of a warehouse managed with bin locations Warehouse Sublevels Sublevel field activation Warehouse sublevels codes set up Warehouse sublevels codes management Bin location codes Bin location master data Bin location attributes Bin location management Bin locations codes modification Automatic allocation strategies and Receiving bin location",
-    "start_time": 289.1,
-    "end_time": 316.22
+    "image_file": "Slide_007.webp",
+    "script_text": "En esta lámina revisamos los objetivos del módulo: comprender los subniveles de almacén y cómo se organiza la estructura de ubicaciones. Veremos cómo configurar un almacén gestionado con ubicaciones, activar campos de subnivel, definir códigos y gestionarlos. También abordaremos los datos maestros de ubicación, sus atributos y estrategias de asignación automática. Todo esto nos permitirá organizar eficientemente el inventario en SAP Business One, usando una estructura jerárquica que refleje la disposición física del almacén.",
+    "start_time": 199.68,
+    "end_time": 234.14
   },
   {
     "slide_index": 8,
-    "image_file": "007_Slide_08_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "To set up bin locations at OEC Computers, we first need to examine the structure of the warehouse. In the image, we can see the main warehouse of OEC Computers. The warehouse is a big hangar divided into aisles. Each aisle has shelves stretchingalong the sides and each shelf is divided into levels, as shown in the image. 8 8 Business Scenario OEC Computers Warehouse Structure Shelf  Shelf  Shelf Shelf",
-    "start_time": 316.22,
-    "end_time": 341.9
+    "image_file": "Slide_008.webp",
+    "script_text": "Esta lámina muestra el almacén principal de OEC Computers en Los Ángeles, un gran hangar organizado en pasillos con estanterías a los lados, cada una dividida en niveles. Esta estructura física nos ayuda a entender cómo mapear el diseño real a SAP Business One. Al configurar el almacén, reflejaremos esta jerarquía: almacén → pasillo → estantería → nivel, usando códigos únicos para cada ubicación. El separador guía será el guion (-), como se usa en el ejemplo 01-A4-S2-L9.",
+    "start_time": 234.14,
+    "end_time": 268.34
   },
   {
     "slide_index": 9,
-    "image_file": "007_Slide_09_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Let us get to know the sublevel structure of a warehouse managed by bin locations, so we understand how to define bin locations in OEC Computers’ warehouse. A warehouse structure often consists of a combination of different levels, such as an aisle, shelf, or floor. One area type can be a sublevel area of another type. At OEC Computers, for example, a shelf is a sublevel of an aisle. This means an aisle contains several shelves. SAP Business One supports up to 4 warehouse sublevels. A combination of the warehouse code and warehouse sublevels codes defines the unique bin location code. An example in the graphic can be the bin location code 05-A1-S2-L1. The same warehouse sublevel code can be used in many bin location codes. We can see that level L1 is connected to shelf S1 and shelf S2. 9 9 Warehouse Sublevels Structure Bin Location Code Composition - Example Warehouse 05 A1 S1 S2 L1 L2 L1 L2 Bin Locations Code A2 Warehouse Level Warehouse Sublevel 1 - Aisle Warehouse Sublevel 2 - Shelf Warehouse Sublevel 3 - Level A unique combination of the warehouse code and the warehouse sublevel codes",
-    "start_time": 341.9,
-    "end_time": 413.69
+    "image_file": "Slide_009.webp",
+    "script_text": "Esta lámina explica la estructura de subniveles en un almacén gestionado por ubicaciones. En OEC Computers, un pasillo (Subnivel 1) contiene estanterías (Subnivel 2), y cada estantería tiene niveles (Subnivel 3). SAP Business One permite hasta 4 subniveles. El código de ubicación se forma combinando el código de almacén y los códigos de subnivel, como 05-A1-S2-L1. Los mismos códigos de subnivel (como L1) pueden reutilizarse en distintas estanterías, lo que permite flexibilidad y consistencia en la codificación.",
+    "start_time": 268.34,
+    "end_time": 307.3
   },
   {
     "slide_index": 10,
-    "image_file": "007_Slide_10_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Now , let us see an example of a bin location code structure. We can see that the bin location code is a combination of the warehouse and warehouse sublevel codes. 10 10 OEC Computers: Bin Location Code Structure 01 – A4 – S2 – L9 Warehouse - Sublevel1 - Sublevel2 - Sublevel3 Warehouse 01 – Aisle 4 - Shelf 2 - Level 9 Sublevel structure Bin Location Code in OEC Computers Details",
-    "start_time": 413.69,
-    "end_time": 441.38
+    "image_file": "Slide_010.webp",
+    "script_text": "Esta lámina muestra un ejemplo concreto de código de ubicación en OEC Computers: 01-A4-S2-L9. Este código identifica de forma única una ubicación física dentro del almacén 01, correspondiente al pasillo 4, estantería 2 y nivel 9. En SAP Business One, al crear una ubicación maestra, ingresamos este código junto con su descripción y asociamos los valores de cada subnivel. Este enfoque permite rastrear con precisión dónde se encuentra cada artículo en inventario, mejorando la exactitud en operaciones como recepción, picking y embarque.",
+    "start_time": 307.3,
+    "end_time": 345.86
   },
   {
     "slide_index": 11,
-    "image_file": "007_Slide_11_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Let us set up a warehouse managed with bin locations 11 11 Agenda Introduction Warehouse sublevels and bin location structure Setup of a warehouse managed with bin locations Warehouse Sublevels Sublevel field activation Warehouse sublevels codes set up Warehouse sublevels codes management Bin location codes Bin location master data Bin location attributes Bin location management Bin locations codes modification Automatic allocation strategies and Receiving bin location",
-    "start_time": 441.38,
-    "end_time": 466.9
+    "image_file": "Slide_011.webp",
+    "script_text": "Esta lámina presenta el proceso para configurar un almacén gestionado con ubicaciones en SAP Business One. Incluye la activación del campo de subnivel, la definición y gestión de códigos de subniveles, la creación de códigos de ubicación, la carga de datos maestros de ubicación, la definición de atributos y la gestión diaria de ubicaciones. También se abordan las estrategias de asignación automática y la definición de una ubicación receptora predeterminada. Este flujo garantiza que el almacén opere con precisión espacial y control de inventario.",
+    "start_time": 345.86,
+    "end_time": 380.78
   },
   {
     "slide_index": 12,
-    "image_file": "007_Slide_12_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "OEC Computers decided to manage bin locations for their main warehouses in Los Angeles and New York. OEC Computers has also some small warehouses including some lab warehouses. George, the warehouse manager, decides not to manage bin locations for these warehouses since they are small and easy to navigate. In SAP Business One, you have the option to enable bin locations on a warehouse by warehouse basis. To activate bin locations in the warehouse, select the Enable Bin Locations checkbox. Once bin locations have been activated for a warehouse, then: A Bin Locations tab appears in the Warehouse – Setup window containing the bin location setup fields. All the bin location related fields appear in the Warehouse - Setup window. All other bin locations menu entries and windows appear. The System Bin Location is created. Every future inventory transaction will involve bin locations. The Enable Bin Location checkbox can be un-checked at any time as long as there are no bin location transactions and no bin location codes have been generated (except for the System Bin Locations code). Any warehouse sublevel codes defined in the system will be saved and be available once enabling bin locations again. Note that in this window, you also define the bin locations code separator. Indicate a character (or several) that will be used as a separator between the different segments of the bin locations code (as shown earlier in the Bin Location Code Structure slide). 12 12 Administration Setup  inventory Warehouses Enable Bin Locations 1/2 A character to distinguish between the different segment of the bin location code",
-    "start_time": 466.9,
-    "end_time": 562.25
+    "image_file": "Slide_012.webp",
+    "script_text": "Para habilitar la gestión de ubicaciones en un almacén de OEC Computers, como los de Los Ángeles o Nueva York, se debe marcar la casilla 'Activar ubicaciones' en la ventana Almacén – Configuración. Al hacerlo, aparece la pestaña Ubicaciones con todos los campos de configuración, se crean las entradas de menú relacionadas y se genera la Ubicación del sistema (ej. SYS-01). Todas las transacciones futuras de inventario usarán ubicaciones. El separador (como el guion) define cómo se estructuran los segmentos del código de ubicación. Esta activación puede revertirse si no hay transacciones ni códigos generados.",
+    "start_time": 380.78,
+    "end_time": 421.82
   },
   {
     "slide_index": 13,
-    "image_file": "007_Slide_13_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "George enabled bin locations for the New York warehouse. He is now creating the warehouse sublevels and did not have a chance to create the bin locations codes yet. Even though, the system enforces bin locations in every Inventory transaction after enabling bin locations. All SAP Business One users in OEC Computers, continue to work as usual. This is possible due to the System bin location. When bin location functionality is activated for a warehouse, a single system bin location is automatically created for that warehouse. The System Bin Location code name will be: [Warehouse code]-SYSTEM-BIN-LOCATION. By default, on bin location activation for a warehouse: All inventory will automatically be placed in the System Bin Location. All receipts will be automatically received to the System Bin Location. All issues will automatically be made from the System Bin Location. SAP Business One updates the System Bin Location in the Default Bin Location field and this is why inventory transactions are made for this bin location. This means “Business as usual” until finishing all setup. Then you can create Inventory Transfer documents to transfer the inventory from the System Bin Location code to the real physical bin location. In order to work with bin locations, at least one code for Sublevel 1 should be defined. For this reason, the system generates a system code for Sublevel 1 named: SYSTEM-BIN- LOCATION. This Warehouse Sublevel code can be renamed but not removed. We will learn how to rename Warehouse Sublevels in the next slides 13 13 System Bin Location  System warehouse Sublevel 1 code: SYSTEM-BIN-LOCATION System Bin Location code:  [Warehouse code]-SYSTEM-BIN-LOCATION",
-    "start_time": 562.25,
-    "end_time": 663.77
+    "image_file": "Slide_013.webp",
+    "script_text": "Cuando activas las ubicaciones para un almacén en SAP Business One, el sistema crea automáticamente una Ubicación del sistema. Esta ubicación permite que todas las transacciones de inventario continúen funcionando normalmente, incluso si aún no has definido las ubicaciones físicas. El inventario, las recepciones y las emisiones se asignan automáticamente a esta ubicación predeterminada, lo que garantiza \"negocio como siempre\" mientras completas la configuración de los subniveles y códigos de ubicación reales.",
+    "start_time": 421.82,
+    "end_time": 454.25
   },
   {
     "slide_index": 14,
-    "image_file": "007_Slide_14_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "After enabling bin locations for a warehouse, you need to set up the structure of the Warehouse Sublevels. Let us see how we can create and manage Warehouse Sublevels. 14 14 Agenda Introduction Warehouse sublevels and bin location structure Setup of a warehouse managed with bin locations Warehouse Sublevels Sublevel field activation Warehouse sublevels codes set up Warehouse sublevels codes management Bin location codes Bin location master data Bin location attributes Bin location management Bin locations codes modification Automatic allocation strategies and Receiving bin location",
-    "start_time": 663.77,
-    "end_time": 696.55
+    "image_file": "Slide_014.webp",
+    "script_text": "Después de habilitar las ubicaciones para un almacén, el siguiente paso es configurar la estructura de los subniveles de almacén. Esto incluye definir cuántos niveles usar (hasta 4), activarlos de forma secuencial, asignar nombres descriptivos que aparecerán como etiquetas en pantallas e informes, y crear los códigos que formarán parte del código de ubicación completo. Una correcta configuración permite una organización lógica y escalable del inventario físico.",
+    "start_time": 454.25,
+    "end_time": 484.1
   },
   {
     "slide_index": 15,
-    "image_file": "007_Slide_15_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In SAP Business One you can manage up to 4 warehouse sublevels. For example, OEC Computers is using all four sublevels: The warehouse building Floors were set as Sublevel 1 The Areas in each Floor as Sublevel 2 The Rows of Shelves of each Area as Sublevels 3 The Shelves in each Row as Sublevel 4 Warehouse Sublevel 1 is always activated and cannot be de-activated. By default all other Sublevels are deactivated. Sublevels must be activated sequentially. The Sublevels names are used as field labels in all relevant screens and reports. 15 15 SetupInventoryBin LocationsBin Locations field activationWarehouse Sublevels Sublevels Field Activation",
-    "start_time": 696.55,
-    "end_time": 736.54
+    "image_file": "Slide_015.webp",
+    "script_text": "En SAP Business One, puedes configurar hasta 4 subniveles de almacén, pero deben activarse de forma secuencial: el Subnivel 1 siempre está activado y no se puede desactivar; para activar el Subnivel 2, primero debe estar activo el 1; para el 3, debe estar activo el 2; y así sucesivamente. Los nombres que asignes a cada subnivel se utilizan como etiquetas de campo en todas las pantallas e informes relacionados con ubicaciones, lo que facilita la identificación y el uso consistente en toda la empresa.",
+    "start_time": 484.1,
+    "end_time": 516.7
   },
   {
     "slide_index": 16,
-    "image_file": "007_Slide_16_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the Warehouse Sublevel Codes window, we can add the different warehouse sublevel codes for each level. The sublevels available are the sublevels we defined in the Bin Location Field Activation window. Each code will be a segment in a bin location code. For example, in OEC Computers New York warehouse, there are 3 Floors, 4 Areas in each Floor, many Rows in each Area and many Shelves in each Row. In Sublevel 1 we see the SYSTEM-BIN-LOCATION code. In this window we can also update and delete Warehouse Sublevel codes manually (one by one). Note! It is important to understand that the warehouse sublevel codes are common to all warehouses. This means the warehouse sublevels codes are available to use in all warehouses. However, if a different warehouse has a different structure and therefore different warehouse sublevels, new warehouse sublevels should be set up in addition to the existing sublevels. Further more, every warehouse sublevel is defined as an independent code with no 16 16 Warehouse Sublevel codes Manual Creation of Warehouse Sublevels codes SetupInventoryBin LocationsWarehouse Sublevel codes Warehouse Sublevel 1 Warehouse Sublevel 2 Warehouse Sublevel 3 Warehouse Sublevel",
-    "start_time": 736.54,
-    "end_time": 807.67
+    "image_file": "Slide_016.webp",
+    "script_text": "En la ventana Códigos de subniveles de almacén, defines los códigos que formarán cada segmento del código de ubicación completo. Estos códigos son comunes a todos los almacenes, lo que significa que una vez creados, están disponibles para usar en cualquier almacén de la empresa. Cada fila representa un subnivel (como Piso, Área, Fila o Estantería), y el valor ingresado será un segmento del código de ubicación. Por ejemplo, el Subnivel 1 incluye automáticamente el código SYSTEM-BIN-LOCATION, que no se puede eliminar pero sí renombrar. Esta configuración es esencial antes de crear códigos de ubicación reales.",
+    "start_time": 516.7,
+    "end_time": 557.54
   },
   {
     "slide_index": 17,
-    "image_file": "007_Slide_17_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "dependence or connection to another higher Sublevel.",
-    "start_time": 807.67,
-    "end_time": 811.8
+    "image_file": "Slide_017.webp",
+    "script_text": "Cada subnivel de almacén en SAP Business One se define como un código independiente, sin dependencia ni conexión con ningún subnivel superior. Esto significa que puedes crear, modificar o eliminar los códigos de un subnivel (como Estantería) sin afectar directamente a los códigos de otros niveles (como Fila o Área). Esta independencia brinda flexibilidad para adaptar la estructura de ubicación a las necesidades específicas de cada almacén, aunque se recomienda mantener coherencia en la jerarquía para evitar confusiones en las operaciones de inventario.",
+    "start_time": 557.54,
+    "end_time": 592.08
   },
   {
     "slide_index": 18,
-    "image_file": "007_Slide_18_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In our example the Row and Shelf Sublevels have many codes. Adding them manually can be time consuming. SAP Business One allows automated batch creation of Sublevel codes. In the Warehouse Sublevel Codes window, choose the Manage Sublevels Codes button to open the Warehouse Sublevel Code Management window. George created 30 Rows with the prefix R: R01 to R30. In order to combine this code structure, George do as follows: In the first segment field he choses Fixed and entered the value R In the second segment field he chose Numeric and entered the values 1 to 30. The system automatically added leading zeroes to match the longest number length. Leading zeroes enable an optimal alpha-numeric sorting. You may create a more complicated code by defining up to 6 segments of a Sublevel code. George also creates warehouse sublevel codes automatically for the Shelf sublevel. In the Shelf sublevel code, George choses an Alphabetic segment. In order to generate the range of codes he choose the OK button to open the Generation Preview window. 17 17 Warehouse Sublevel Code Management Automatic Generation of Warehouse Sublevels 1",
-    "start_time": 811.8,
-    "end_time": 881.42
+    "image_file": "Slide_018.webp",
+    "script_text": "Para evitar la carga manual de crear muchos códigos de subnivel, SAP Business One permite la generación automática por lotes. En la ventana Gestión de códigos de subniveles de almacén, puedes definir hasta 6 segmentos por código. Por ejemplo, para crear códigos de fila como R01 a R30, configuras el primer segmento como Fijo con valor 'R', y el segundo como Numérico con rango del 1 al 30. El sistema rellena automáticamente con ceros iniciales (R01, R02, etc.) para asegurar una ordenación alfanumérica correcta. Este método es ideal para crear rápidamente estructuras grandes y uniformes, como filas o estanterías.",
+    "start_time": 592.08,
+    "end_time": 636.7
   },
   {
     "slide_index": 19,
-    "image_file": "007_Slide_19_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "After George selected the OK Button, the Preview window opens. In this window you can review the codes that are about to be generated. You can also see if there is an error associated with one or more codes. codes with error messages will appear in red. If In the Generation Preview you can see the codes appear in red and all have an error message saying the code already exist. This is due to the fact that these codes already exist. The system will not allow adding these codes again. Choose the Generate button to add the codes that appear in the preview window with no error message. Note! • All generated codes will be in uppercase. • You can also access the Warehouse Sublevel Code Management window from the following path: Administration SetupInventory Bin Locations Warehouse Sublevel Code Management. 18 18 Warehouse Sublevel Code Management Automatic Generation of Warehouse Sublevels – Preview Window 2",
-    "start_time": 881.42,
-    "end_time": 936.48
+    "image_file": "Slide_019.webp",
+    "script_text": "Después de hacer clic en Aceptar, se abre la ventana de Vista previa donde puedes revisar los códigos que están a punto de generarse. Aquí verás si alguno tiene un error, como que ya existe, y aparecerá en rojo. Solo los códigos sin mensaje de error se generarán al presionar Generar. Todos los códigos creados estarán en mayúsculas. También puedes acceder a esta función desde Administración > Configuración > Inventario > Ubicaciones > Gestión de códigos de subniveles de almacén. Esto te permite validar antes de crear, evitando duplicados en tu almacén Distribuidora Andina Tech.",
+    "start_time": 636.7,
+    "end_time": 674.93
   },
   {
     "slide_index": 20,
-    "image_file": "007_Slide_20_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the Warehouse Sublevel Code Management window we can also update or delete warehouse sublevels codes. The update option allows updating warehouse sublevels codes description. The deletion option allows deleting a range of sublevel codes. Sublevel codes which are currently in use as part of a bin location code, will not be deleted. If there are some codes, in use, within the range of codes to delete, then the system will delete only the unused codes. You may filter the codes to delete by entering a description string in the Expanded Selection Criteria. 19 19 Warehouse Sublevel Code Management Update and Delete a Range of Codes Update Warehouse Sublevels Properties Delete Warehouse Sublevels Codes",
-    "start_time": 936.48,
-    "end_time": 977.88
+    "image_file": "Slide_020.webp",
+    "script_text": "En la ventana Gestión de códigos de subniveles de almacén puedes actualizar la descripción de los códigos o eliminar un rango que ya no se usa. Si algún código está en uso como parte de una ubicación, el sistema no lo eliminará para evitar inconsistencias. Solo se borran los que no tienen transacciones asociadas. Puedes filtrar qué eliminar usando una cadena en los Criterios de selección ampliados, por ejemplo, buscando por descripción. Esto es útil en Distribuidora Andina Tech para mantener limpio el catálogo sin afectar operaciones activas.",
+    "start_time": 674.93,
+    "end_time": 709.99
   },
   {
     "slide_index": 21,
-    "image_file": "007_Slide_21_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Next, let us learn how to manage bin location codes. 20 20 Agenda Introduction Warehouse Sublevels and Bin Location structure Setup of a warehouse managed with bin locations Warehouse Sublevels Sublevel Field Activation Warehouse Sublevels Codes Setup Warehouse Sublevels Codes Management Bin Location codes Bin Location Master Data Bin Location Attributes Bin Location Management Bin Locations Codes Modification Automatic allocation strategies and Receiving bin location",
-    "start_time": 977.88,
-    "end_time": 1004.71
+    "image_file": "Slide_021.webp",
+    "script_text": "Ahora aprenderemos a gestionar los códigos de ubicación en SAP Business One. Veremos cómo se estructuran los subniveles de almacén, cómo configurar un almacén gestionado por ubicaciones, activar el campo de subnivel y definir los códigos. También exploraremos la creación y mantenimiento de los datos maestros de ubicación, sus atributos y las estrategias para asignación automática y ubicación receptora en transacciones de entrada y salida.",
+    "start_time": 709.99,
+    "end_time": 737.76
   },
   {
     "slide_index": 22,
-    "image_file": "007_Slide_22_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "As in any master data window, the Bin Location Master Data can be created updated, removed or duplicated. The Bin Location Master Data window can be divided into 4 logical parts: code structure, bin location properties, restrictions on bin locations and bin location attributes. Let us go over each part in the next slides. 21 21 Bin Location Master Data Inventory Bin Locations Bin Location Master Data Code Structure Properties Restrictions Attributes",
-    "start_time": 1004.71,
-    "end_time": 1033.78
+    "image_file": "Slide_022.webp",
+    "script_text": "La ventana de Datos maestros de ubicación se divide en cuatro secciones lógicas: la estructura del código, que muestra cómo se forma el código de ubicación; las propiedades de la ubicación, con información de inventario y configuración; las restricciones, que limitan ciertas operaciones; y los atributos, que son campos personalizables. Cada parte se explicará en detalle en las diapositivas siguientes para entender completamente cómo se gestiona una ubicación en Distribuidora Andina Tech.",
+    "start_time": 737.76,
+    "end_time": 767.98
   },
   {
     "slide_index": 23,
-    "image_file": "007_Slide_23_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "A bin location code is constructed by selecting a unique combination of a warehouse and warehouse sublevel codes. We can see in the image that each sublevel we defined appears as a field name. The warehouse sublevels that are available to choose are those we generated in the Warehouse Sublevel Codes Management window. Once you entered the warehouse and warehouse sublevel codes, the Bin Location Code field is automatically constructed with the values entered along with the separator character we defined in the Warehouse Setup window. George manually created a new bin location in warehouse 01, first floor, Blue Area, Row 01 and Shelf B. 22 22 Bin Location Master Data Code Structure",
-    "start_time": 1033.78,
-    "end_time": 1072.75
+    "image_file": "Slide_023.webp",
+    "script_text": "Un código de ubicación se crea combinando un almacén y uno o más códigos de subniveles de almacén. Cada subnivel definido aparece como un campo en la interfaz, y solo puedes elegir aquellos que hayas generado previamente en la ventana de Gestión de códigos de subniveles de almacén. Al ingresar el almacén y los subniveles, el sistema construye automáticamente el Código de ubicación usando el separador definido en la Configuración de almacén. Por ejemplo, George creó una ubicación en el almacén 01, primer piso, Área Azul, Fila 01 y Estantería B, lo que resultó en un código único basado en esa estructura.",
+    "start_time": 767.98,
+    "end_time": 807.6
   },
   {
     "slide_index": 24,
-    "image_file": "007_Slide_24_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the bin location properties section we can view relevant information about the selected bin location: • Quantities of items, Serial Numbers and Batches. • The number of different items in this bin location. We can also define information like description and minimum and maximum quantities. Check the Inactive field when you want to block this bin location from being used. A bin location code can be checked as Inactive only if it has no inventory and no open inventory counting document. George decided to set a certain bin location inactive, since this specific shelf is close to the drainpipe and suffers from wetness. Since this bin locations had historic transactions, George didn’t remove it and only set it as Inactive. The Alternative Sort Code is a free text reference field. When issuing items, you can choose to allocate items to bin locations by alpha-numeric order of the bin location code or by alpha- numeric order of this alternative sort code (among other methods of allocations). You may enter strings of numbers and text to the Alternative Sort Code field in a way that ensures a certain alpha-numeric order. There is also an option to exclude specific bin locations from automatic allocation in outbound transactions by checking the Exclude from Automatic Allocation on Issue checkbox. 23 23 Bin Location Master Data Bin Location Properties",
-    "start_time": 1072.75,
-    "end_time": 1150.87
+    "image_file": "Slide_024.webp",
+    "script_text": "En la sección de propiedades de la ubicación ves datos clave como las cantidades de artículos, números de serie y lotes, y cuántos artículos diferentes hay almacenados. Aquí defines la descripción y estableces niveles mínimos y máximos de stock. Puedes marcar la ubicación como Inactivo si no tiene inventario ni documentos abiertos, como hizo George con una estantería húmeda cerca de tubería de drenaje. Aunque tuviera historial, no la eliminó, solo la inactivó. También puedes usar el Código de clasificación alternativo para ordenar asignaciones o excluirla de la asignación automática en emisión.",
+    "start_time": 807.6,
+    "end_time": 846.36
   },
   {
     "slide_index": 25,
-    "image_file": "007_Slide_25_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In this section of the master data window we can define some restrictions for this bin location. These restrictions determine which bin locations will be available for allocations in marketing documents and inventory transactions. There are different types of restrictions that can be defined for a bin location like restricting a certain item or item group, certain unit of measure, certain batch or even specific types of inventory transactions. Note that when you choose a Transaction Restriction, you allow all transactions except for the type of transactions you chose. On the other hand, in the Item and Batch Restriction you allow transactions only to the type of restriction you did choose. In addition it is important to understand the difference between checking a bin location as Inactive and simply restricting all its transactions. In both cases we can not perform any transaction for those bin locations. But, when checking a bin location as Inactive, in addition to the transactions restriction, the bin location will not show in the bin locations reports and also will not be available for manual allocation. For any method we choose, we can view historic transactions in the Inventory Posting List report. Finally note that the system will not allow setting a restriction to a bin location that its current content contradicts the restriction. 24 24 Bin Location Master Data Restrictions for Bin Location (1/2)",
-    "start_time": 1150.87,
-    "end_time": 1231.58
+    "image_file": "Slide_025.webp",
+    "script_text": "Las restricciones de ubicación definen qué operaciones se permiten en cada ubicación del almacén. Puedes limitar por artículo, grupo de artículos, unidad de medida, lote o tipo de transacción. Al marcar una ubicación como inactiva, además de bloquear transacciones, se oculta en reportes y asignaciones manuales. El sistema evita aplicar restricciones que conflicten con el stock actual.",
+    "start_time": 846.36,
+    "end_time": 872.47
   },
   {
     "slide_index": 26,
-    "image_file": "007_Slide_26_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "On the bottom of the window we can see the Attribute fields. The bin location Attribute names are taken from the definition we made in the Bin Location Field Activation window Bin Location Attributes tab. New Attribute values can be added easily, in any Attribute selection field by entering the value as free text and pressing Ctrl+TAB in the keyboard. Let us learn some more about the attributes in the next slides. 25 25 Bin Location Master Data Bin Location Attributes",
-    "start_time": 1231.58,
-    "end_time": 1260.86
+    "image_file": "Slide_026.webp",
+    "script_text": "Los atributos de ubicación son características definidas por el usuario que añaden información adicional a cada ubicación. Una vez activados en la configuración de inventario, aparecen como filtros en reportes y permiten mostrar datos como dimensiones o propiedades especiales. Se activan marcando la casilla correspondiente y pueden renombrarse para mayor claridad.",
+    "start_time": 872.47,
+    "end_time": 895.7
   },
   {
     "slide_index": 27,
-    "image_file": "007_Slide_27_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "A Bin Location Attribute is a characteristic, given by the user, that provides additional information or meaning to the bin location. After activating Attribute fields, they are added as filtering fields to the selection criteria of the bin location reports and their values can be displayed in the Bin Location Content List report. The Attributes are defined and activated in Administration Setup Inventory Bin Locations Bin Location Field Activation. The system supports up to 10 Attributes. By default all attributes are not active. To activate an Attribute just check the Active checkbox. In addition, we recommend to change the default name of the Attribute (from Attribute 1, 2, 3.) to a meaningful name. The name can be changed at any time. In our business example, in the New York warehouse, it is important for George and his team to distinguish between different storage shelves sizes. The attributes Height, Width and Depth describe the exact size of each shelf. This way, they know if a certain package or item can fit a certain shelf. In addition, electronic components should be stored in an anti-static storage place (depends on the package type) and for that reason George added the Anti- Static Attribute. Note! A Bin Location Attribute can not be deactivated if it is currently related to a bin location. Only when an Attribute is activated it appears as a field in the different reports and selection criteria windows. 26 26 Bin Location Attributes Activating Attributes  A Bin Location Attribute is a characteristic, given by the user, that provides additional information or meaning to the bin location. Administration Setup Inventory Bin Locations Bin Location Field Activation  Once created, the Bin Locations Attributes are then used as field labels in all relevant screens and reports",
-    "start_time": 1260.86,
-    "end_time": 1368.46
+    "image_file": "Slide_027.webp",
+    "script_text": "En el almacén de Nueva York, George usa atributos como Alto, Ancho y Profundidad para describir el tamaño exacto de cada estantería y saber si un artículo cabe en ella. Además, agregó el atributo Antiestático para componentes electrónicos que requieren protección especial. Estos atributos se activan en Administración > Configuración > Inventario > Ubicaciones > Activación de campos de ubicación y luego se usan como filtros en reportes y selecciones.",
+    "start_time": 895.7,
+    "end_time": 924.34
   },
   {
     "slide_index": 28,
-    "image_file": "007_Slide_28_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "For each Attribute defined in the Bin Location Field Activation Window, we can enter values as Attribute codes. Go to Administration Setup Inventory Bin Locations Bin Locations Attribute Codes. From the drop down list, choose the attribute you whish to enter codes for. In the above example we can see that George entered the possible Shelf heights, anywhere in the warehouse. This window also displays, for each attribute, how many bin locations it currently contains. Choosing the link arrow will open the Bin Location List filtered for the selected attribute. Attribute codes can be manually deleted from this window if they are not assigned to any bin location code. Attribute codes cannot be changed if they are in use – For example when associated with a bin location code. Note, The attributes codes definition, the same as the warehouse sublevels definition, are cross warehouses definitions. This means that any attribute added can be used in the bin locations definition of every warehouse. 27 27 Bin Location Attributes Adding and maintaining Attributes Codes (Values) Administration Setup Inventory Bin Locations Bin Locations Attribute Codes",
-    "start_time": 1368.46,
-    "end_time": 1437.43
+    "image_file": "Slide_028.webp",
+    "script_text": "En la ventana Códigos de atributos de ubicación, defines los valores posibles para cada atributo activado, como las alturas de estantería (120 cm, 150 cm, etc.). Desde aquí puedes ver cuántas ubicaciones usan cada código y filtrar la lista de ubicaciones por atributo seleccionado. Los códigos no se pueden modificar si están en uso, pero sí eliminarse si no están asignados. Estos valores son globales y aplicables a todos los almacenes.",
+    "start_time": 924.34,
+    "end_time": 956.38
   },
   {
     "slide_index": 29,
-    "image_file": "007_Slide_29_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "The Bin Location Management window allows adding, deleting and updating bin location codes in a batch. In order to generate new bin location codes, choose the Generate Bin Locations option from the drop down list of the management task field. For each bin location created a record of a Bin Location Master Data is added. Look at the image above, we are trying to add Bin Locations codes to the second Floor, Red Area, Rows 1 to 20, Shelves A to F. Any value we enter to the Bin Location Properties fields will be updated in the new bin locations we add. To add the new bin locations codes, choose the OK button. When doing so, a preview window is opened that displays the list of bin location codes that are about to be added. Use this preview window to go over these bin location codes. When trying to add a bin location code that already exist, the system displays the existing code, in the preview window, in red and ignore it in the generation process. 28 28 Bin Location Management Generating Bin Location Codes Inventory Bin Locations Bin Location Management",
-    "start_time": 1437.43,
-    "end_time": 1501.42
+    "image_file": "Slide_029.webp",
+    "script_text": "La ventana Gestión de ubicaciones permite crear múltiples códigos de ubicación de forma batch. Seleccionas la tarea 'Generar ubicaciones', defines propiedades como piso, área, fila y estantería, y el sistema genera los códigos. Antes de confirmar, se muestra una vista previa donde los duplicados aparecen en rojo y se ignoran automáticamente. Al aceptar, se crean los registros de datos maestros de ubicación con los valores definidos.",
+    "start_time": 956.38,
+    "end_time": 986.4
   },
   {
     "slide_index": 30,
-    "image_file": "007_Slide_30_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "It is possible to generate bin locations along with their user defined field values. After you define user defined fields to the Bin Location Management window in the User Defined Field Management window under Tools menu- Customization Tools, enter values for those fields. To do so just choose the User Defined Fields browsing button to enter the Bin Location User- Defined Fields window. Here you can see all user defined fields that exist for the Bin Location Master Data. Enter the values you wish to update in all the bin locations about to be generated. In the example shown here, we can see that OEC Computers manages two user defined fields in the Bin Location Master Data: Warehouseman and Remarks. When George generated a group of bin locations he also entered values for the user defined fields. We can see in the bin location created that the user defined fields values were copied from the Bin Location User-Defined Fields window. Note it is also possible to delete or update bin locations according to their user defined fields values. For example, update a restriction in all bin locations that their Warehouseman is set to George. In the next slide we will see how to update and delete a group of bin locations in the Bin Location Management window. 29 29 Bin Location Management Generating Bin Location Codes with User Defined Field Values From the User Defined Field Management window under Tools menu- Customization Tools. Add new fields to Bin Location Management window A bin location generated from the Bin Location Management window along with the user defined field values",
-    "start_time": 1501.42,
-    "end_time": 1592.9
+    "image_file": "Slide_030.webp",
+    "script_text": "Al generar ubicaciones, puedes incluir valores para campos definidos por el usuario, como Encargado de almacén y Observaciones. Estos se configuran previamente en Herramientas > Herramientas de personalización > Gestión de campos definidos por el usuario. Al crear un lote de ubicaciones, los valores ingresados se copian automáticamente a todas las nuevas ubicaciones. Esto permite estandarizar información operativa y facilitar el seguimiento y mantenimiento posterior.",
+    "start_time": 986.4,
+    "end_time": 1016.52
   },
   {
     "slide_index": 31,
-    "image_file": "007_Slide_31_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Using the Update mode in the Bin Location Management window allows updating different properties for existing bin locations. If a bin location code in the range does not exist then it will be ignored and will not be updated. A Restriction to a bin location will not be updated if it contradicts the current bin location content. For example, if we try to restrict a bin location code to a specific Item and in the same bin location code there are already two items, the system will not update this bin location code. Any contradiction will generate an error message in the preview window. In the image above we see that when we try to update a Single Item restriction to other bin location we receive an error message in the preview window saying that the bin location contains more then one item. Note, when an error message appears, no update will take place for this bin location even if we updated another property field which is not related to the error message received. In the above image we also tried to update the Description of the bin locations but since we received an error message, the Description, as well as the Restriction, will not be updated. In order to delete a certain property, choose the relevant checkbox and leave it blank. 30 30 Bin Location Management Updating Bin Location Codes",
-    "start_time": 1592.9,
-    "end_time": 1665.14
+    "image_file": "Slide_031.webp",
+    "script_text": "En la ventana Gestión de ubicaciones, el modo Actualizar permite modificar propiedades de ubicaciones existentes en lote. Selecciona el rango de códigos y define los cambios en los campos de propiedad. Si un código no existe, se ignora. Las restricciones solo se aplican si no contradicen el contenido actual; de lo contrario, aparece un error en la vista previa y ninguna actualización se ejecuta para esa ubicación, incluso si otros campos fueron modificados. Así se evitan inconsistencias en el almacén.",
+    "start_time": 1016.52,
+    "end_time": 1050.58
   },
   {
     "slide_index": 32,
-    "image_file": "007_Slide_32_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "When using the Delete mode in the Bin Location Management window we can delete bin locations in a batch. The properties fields are used as filters and only bin locations that meet the properties defined will be deleted. If nothing is checked then all bin location codes in the specified range will be deleted. bin location codes with content or with transaction history can not be deleted. When trying to do so, an error will appear in the preview window for those bin locations. As a best practice: The Delete option can be used when there is a need to delete bin location codes that were added by mistake. In addition, In some cases it is easier to generate a range of bin location codes and then delete just a few inside this range. 31 31 Bin Location Management Deleting Bin Location Codes",
-    "start_time": 1665.14,
-    "end_time": 1711.54
+    "image_file": "Slide_032.webp",
+    "script_text": "El modo Eliminar en Gestión de ubicaciones permite borrar códigos de ubicación en lote usando campos de propiedad como filtros. Si no se selecciona ningún filtro, se eliminan todos los códigos en el rango. Las ubicaciones con artículos o historial de transacciones no se pueden eliminar y generan un error en la vista previa. Es útil para corregir códigos creados por error o limpiar rangos excesivos, manteniendo la integridad del inventario.",
+    "start_time": 1050.58,
+    "end_time": 1078.94
   },
   {
     "slide_index": 33,
-    "image_file": "007_Slide_33_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the Bin Location Code Modification window, we can make batch changes of bin location codes structure. Modifying bin location codes is often needed due to warehouse reorganization or even to amend mistakes in the bin locations codes. This modification is possible even if these bin locations already contain items. SAP Business One automatically creates an Inventory Transfer document that transfers the inventory from the source bin location to the target bin location and deactivates the source bin location. In the above image we can see the window is divided in two. In the upper section, enter the range of bin location codes to modify. In the lower section, enter the new warehouse sublevels you want to update in the range selected above. In our business example, due to renovations made in the New York warehouse, in the third floor, a section of the Red Area was transferred to the Green Area. In order to update this change in the system, George entered the Bin Location Codes Modification window and changed the Area sublevel of these bin location codes. George entered the range of bin location code to modify, checked the Area sublevel and chose Green. George also changed the Rows number to the new Rows number in the Green area. Note! In the lower section, if the sublevel is checked and the field is blank, the sublevel code will be set to blank. This means that the new bin location code created will not include the segment of this level. 32 32 Bin Location Codes Modification 1/2 Range of bin location codes to modify = Source bin locations New sublevel segment to be updated in the above range of bin location codes = Target bin location Inventory Bin Locations Bin Location Code Modification",
-    "start_time": 1711.54,
-    "end_time": 1811.88
+    "image_file": "Slide_033.webp",
+    "script_text": "La ventana Modificación de códigos de ubicación permite cambiar masivamente la estructura de los códigos, útil al reorganizar el almacén o corregir errores. En la sección superior se define el rango de ubicaciones de origen y en la inferior los nuevos subniveles. SAP crea automáticamente un documento de Transferencia de inventario para mover el stock desde la ubicación de origen a la destino y desactiva la origen. Si un subnivel está marcado pero el campo está vacío, ese segmento se elimina del nuevo código.",
+    "start_time": 1078.94,
+    "end_time": 1111.06
   },
   {
     "slide_index": 34,
-    "image_file": "007_Slide_34_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "The merging of bin locations codes will be required when one of the following conditions arises: • The target bin location code already exists. In this case, the target bin location code will be merged with the existing bin location code. • Multiple source bin location codes share one target bin location code. In this case, all source bin location codes will be merged into one. If the target bin location code does not exist, SAP Business One automatically creates the target bin location with the same properties as those of the source bin location. In the preview window, the system will indicate when a merge is needed. Look at rows 1 to 4 in the above image. The system indicates these target bin location codes already exist and this is why a Merge to the existing bin location code is required. To enable this modification, we first need to check the Merge Bin Location Codes checkbox at the bottom of the window. If we do not choose to merge, and merging is required, the selected rows are colored red and the system will not allow the modification to proceed. This system behavior helps to prevent mistakes in bin location code modifications. 33 33 Bin Location Codes Modification 2/2 Merging Bin Location Codes",
-    "start_time": 1811.88,
-    "end_time": 1885.94
+    "image_file": "Slide_034.webp",
+    "script_text": "La fusión de códigos de ubicación es necesaria cuando el código de destino ya existe o varios orígenes comparten un mismo destino. Sin marcar la casilla 'Fusionar códigos de ubicación', el sistema bloquea la modificación y muestra las filas en rojo si se requiere fusión. Al habilitarla, los orígenes se consolidan en el destino existente o se crea uno nuevo con las mismas propiedades. Esto evita duplicados y mantiene la coherencia en la estructura del almacén.",
+    "start_time": 1111.06,
+    "end_time": 1141.03
   },
   {
     "slide_index": 35,
-    "image_file": "007_Slide_35_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Finally, let us see how to define an automatic allocation strategy for inbound transactions 34 34 Agenda Introduction Warehouse sublevels and bin location structure Setup of a warehouse managed with bin locations Warehouse Sublevels Sublevel field activation Warehouse sublevels codes set up Warehouse sublevels codes management Bin location codes Bin location master data Bin location attributes Bin location management Bin locations codes modification Automatic allocation strategies and Receiving bin location",
-    "start_time": 1885.94,
-    "end_time": 1915.9
+    "image_file": "Slide_035.webp",
+    "script_text": "Definir una estrategia de asignación automática para transacciones de entrada permite que el sistema ubique automáticamente los artículos recibidos según reglas predefinidas. Esto mejora la eficiencia en el almacén al reducir decisiones manuales y asegurar consistencia en el almacenamiento. Se configura en el módulo de almacén y depende de los subniveles y códigos de ubicación establecidos previamente.",
+    "start_time": 1141.03,
+    "end_time": 1166.23
   },
   {
     "slide_index": 36,
-    "image_file": "007_Slide_36_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "There are two methods of automatic allocations for incoming transactions. The first method refers to the different automatic allocations strategies that are listed in the Automatic Allocation on Receipt field in the Warehouse – Setup window. The different strategies include allocating to: A predefined default bin location, or The last bin location that received items, or The current bin location of the item, or The current and historical bin location. The second method refers to automatic allocation to a receiving area bin locations. The receiving areas are specific bin locations that are defined as Receiving. This definition is done in the Bin Location Master Data. Let us continue by learning more about the Receiving bin locations. 35 35 Incoming Allocations Automatic Allocation types on receipt Automatic allocation strategies Receiving bin locations",
-    "start_time": 1915.9,
-    "end_time": 1967.18
+    "image_file": "Slide_036.webp",
+    "script_text": "Existen dos métodos de asignación automática para transacciones de entrada. El primero usa estrategias como asignar a una ubicación predeterminada, la última que recibió artículos, la actual del artículo o su historial. El segundo asigna a ubicaciones de área receptora, que son ubicaciones específicas marcadas como receptoras en los datos maestros de ubicación. Ambos métodos automatizan la ubicación de ingresos, mejorando la precisión y velocidad en el almacén.",
+    "start_time": 1166.23,
+    "end_time": 1197.05
   },
   {
     "slide_index": 37,
-    "image_file": "007_Slide_37_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "Receiving bin location can be used as a special section in a warehouse which typically represents a receiving inspection area or just a transit area for temporary storage of incoming goods. In OEC Computers, George decided to manage a receiving area for the following reasons: In some cases, the warehouse employees do not know where to allocate certain goods. In other cases there is no room for all goods received. In order to keep correct level of inventory in SAP Business One, inventory that was not fully allocated in the inbound transaction, will enter the Receiving bin location. Once a suitable bin location was found for the goods stored in the receiving area, the warehouse employee creates an Inventory Transfer document, to allocate the goods in the storage bin location. The Receiving bin location definitions are set up in two windows: The Warehouse Setup window – Here you indicate whether Receiving bin locations can be defined in this warehouse. The Bin Location Master Date window – Once Receiving bin locations are enabled for a warehouse, you can designate any bin location as a Receiving bin location by selecting the Receiving Bin Location checkbox. In the Warehouse Setup window, you can also choose the order of the Receiving bin locations codes. In the Received Items By field, choose to receive items to Receiving bin locations according to the bin location codes alpha numeric order or the Alternative Sort code alpha numeric order. To learn more about the Receiving bin location procedure, refer to the Allocation Processes in Bin Locations course 36 36 Receiving Bin Locations  First define your warehouse as Receiving Bin Locations Enabled 1 2 Then choose the bin locations you wish to set as a Receiving bin location",
-    "start_time": 1967.18,
-    "end_time": 2063.62
+    "image_file": "Slide_037.webp",
+    "script_text": "La ubicación receptora es un área especial dentro del almacén, usada para inspección o tránsito temporal de mercancías entrantes. En OEC Computers, George la implementó porque los empleados no siempre saben dónde asignar productos o no hay espacio suficiente. Cuando el inventario no se asigna completamente en una transacción de entrada, va a esta ubicación. Luego, el empleado crea una transferencia de inventario para moverlo a su ubicación final. Se configura en dos ventanas: Configuración de almacén y Datos maestros de ubicación.",
+    "start_time": 1197.05,
+    "end_time": 1232.21
   },
   {
     "slide_index": 38,
-    "image_file": "007_Slide_38_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "A Default bin location is used as a default for incoming bin location transactions. When a Default is defined, it is updated automatically in the row of the document. There are three levels of Defaults: Warehouse, Item Group and Item. You may enter Defaults for all three levels. When the system encounters a conflict between one or more Defaults, the Default bin location code is chosen according to the priority displayed in the above image. The first priority is the Item level Default. The second priority is the Item Group level Default. And the third priority is the Warehouse level Default. The use of a Default bin location code can be enforced at each level. When doing so, the default bin location is chosen automatically and it is not possible to change it. Default bin location codes that are not enforced can be changed at any time. 37 37 Automatic Allocation Strategies - Default Bin Location Priority 1: Item Level Default Priority 2: Item Group Level Default Priority 3: Warehouse Level Default",
-    "start_time": 2063.62,
-    "end_time": 2126.62
+    "image_file": "Slide_038.webp",
+    "script_text": "Una ubicación predeterminada se asigna automáticamente en transacciones de entrada. Existen tres niveles: artículo, grupo de artículos y almacén, con prioridad en ese orden. Si hay conflicto, el sistema elige según esta jerarquía: primero el predeterminado a nivel de artículo, luego grupo de artículos y finalmente almacén. Estos predeterminados pueden imponerse, lo que bloquea su modificación, o dejarse opcionales para permitir cambios manuales.",
+    "start_time": 1232.21,
+    "end_time": 1263.14
   },
   {
     "slide_index": 39,
-    "image_file": "007_Slide_39_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the Warehouse Setup window you can enter a Default bin location code and choose whether to enforce it. When enabling bin locations in a warehouse, SAP Business One automatically enters the System Bin Location code to the Default Bin Location field. This is done to ensure that every inbound transaction will be easily made to a bin location even if the whole set of bin location codes was not constructed yet. Since the System bin location is not a real - physical bin location, it is important to replace the default code of the warehouse to a meaningful bin location code or delete the default value. 38 38 Automatic Allocation Strategies - Default Bin Location Third Priority: Warehouse Level Default",
-    "start_time": 2126.62,
-    "end_time": 2166.77
+    "image_file": "Slide_039.webp",
+    "script_text": "En la ventana Configuración de almacén, se define el código de ubicación predeterminada y se decide si se impone. Al habilitar ubicaciones, SAP Business One inserta automáticamente el código 'Ubicación del sistema' como valor inicial. Como no es una ubicación física real, debe reemplazarse por un código significativo o eliminarse. Esto asegura que las transacciones de entrada tengan una ubicación válida incluso si el esquema de ubicaciones no está completo.",
+    "start_time": 1263.14,
+    "end_time": 1294.15
   },
   {
     "slide_index": 40,
-    "image_file": "007_Slide_40_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the Item Group – Setup, in the Default Bin Locations table you can choose, per Warehouse, a Default bin location code and whether to enforce it. 39 39 Automatic Allocation Strategies - Default Bin Location Second Priority: Item Group Level Default",
-    "start_time": 2166.77,
-    "end_time": 2183.35
+    "image_file": "Slide_040.webp",
+    "script_text": "En la ventana Configuración – Grupo de artículos, en la tabla Ubicaciones predeterminadas, se puede asignar un código de ubicación predeterminada por almacén y decidir si se impone. Esto permite definir comportamientos específicos según el grupo de artículos y el almacén involucrado. Es el segundo nivel de prioridad en la asignación automática de ubicaciones, útil cuando se quiere estandarizar ubicaciones para tipos de productos similares.",
+    "start_time": 1294.15,
+    "end_time": 1322.06
   },
   {
     "slide_index": 41,
-    "image_file": "007_Slide_41_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "In the Item Master Data, in the Inventory Data tab, you can enter a Default bin location code and choose whether to enforce this bin location code. This Default is defined per Warehouse row. For Warehouses that are not bin location Enabled, all bin location fields will be disabled. In the next bin location course - Using Bin Locations in the Business Processes, we will learn about the use of the default bin locations and other automatic allocation strategies in the allocation process. 40 40 Automatic Allocation Strategies - Default Bin Location First Priority: Item Level Default",
-    "start_time": 2183.35,
-    "end_time": 2218.82
+    "image_file": "Slide_041.webp",
+    "script_text": "En los datos maestros de artículo, pestaña Datos de inventario, se define el código de ubicación predeterminada por fila de almacén. Esta configuración tiene la máxima prioridad en la asignación automática. Para almacenes no habilitados para ubicaciones, los campos de ubicación aparecen desactivados. Esta opción permite controlar con precisión dónde se guarda cada producto según su características y el almacén de destino.",
+    "start_time": 1322.06,
+    "end_time": 1350.24
   },
   {
     "slide_index": 42,
-    "image_file": "007_Slide_42_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "You should now be able to Set up bin location managed Warehouses, Warehouse Sublevels and bin location codes Maintain and make changes in existing Warehouse Sublevels and bin location codes Define Default bin locations and Receiving bin locations. 41 41 Summary You should now be able to:  Setup basic bin locations managed Warehouses, Warehouse Sublevels and bin location codes.  Maintain and make changes in existing Warehouse Sublevels and bin location codes  Define Default and receiving bin locations",
-    "start_time": 2218.82,
-    "end_time": 2247.94
-  },
-  {
-    "slide_index": 43,
-    "image_file": "007_Slide_43_10_BinLoc_12_Setup_Setup.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward-looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward-looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http://global.sap.com/corporate-en/legal/copyright/index.epx for additional trademark information and notices.",
-    "start_time": 2247.94,
-    "end_time": 2385.12
+    "image_file": "Slide_042.webp",
+    "script_text": "Ahora estás capacitado para configurar almacenes gestionados por ubicaciones, incluyendo subniveles y códigos de ubicación. Puedes mantener y modificar estos elementos existentes según cambien las necesidades operativas. Además, sabes cómo definir tanto ubicaciones predeterminadas como ubicaciones receptoras, herramientas clave para controlar el flujo de inventario desde la recepción hasta el almacenamiento definitivo en SAP Business One.",
+    "start_time": 1350.24,
+    "end_time": 1378.78
   }
 ]

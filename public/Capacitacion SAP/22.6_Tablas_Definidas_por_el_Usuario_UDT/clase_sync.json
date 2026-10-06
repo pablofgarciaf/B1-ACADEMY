@@ -1,149 +1,149 @@
 [
   {
     "slide_index": 1,
-    "image_file": "043_Slide_01_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 16 CustomTools UserDefinedTables en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Herramientas de personalización: Tablas definidas por el usuario Bienvenido al tema sobre Tablas definidas por el usuario.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre Tablas definidas por el usuario en SAP Business One versión 10.0. Aquí aprenderá cómo ampliar la funcionalidad del sistema mediante la creación de tablas personalizadas para almacenar datos específicos de su empresa. Estas tablas le permiten adaptar SAP B1 a sus procesos únicos sin modificar el núcleo del sistema. Exploraremos cómo crearlas, configurarlas y vincularlas a documentos y formularios para uso práctico en la gestión diaria.",
     "start_time": 0.0,
-    "end_time": 22.06
+    "end_time": 28.6
   },
   {
     "slide_index": 2,
-    "image_file": "043_Slide_02_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Al finalizar este tema, podrá:  Añadir una tabla definida por el usuario (UDT) a la base de datos de empresa de SAP Business One y hacer que sea accesible en un documento o formulario.  Crear un objeto definido por el usuario (UDO) desde una tabla de usuario y hacer que el objeto sea accesible desde el menú principal. 2 2 Objetivos Objetivos:  Añadir una tabla definida por el usuario (UDT) a la base de datos de SAP Business One y hacer que sea accesible en un documento o formulario  Crear un objeto definido por el usuario (UDO) desde una tabla definida por el usuario y hacer que el objeto sea accesible desde el menú principal.",
-    "start_time": 22.06,
-    "end_time": 63.62
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá agregar una tabla definida por el usuario (UDT) a la base de datos de SAP Business One y hacerla accesible en un documento o formulario. También aprenderá a crear un objeto definido por el usuario (UDO) desde una tabla de usuario y habilitar su acceso desde el menú principal. Estas habilidades le permitirán personalizar SAP B1 según las necesidades específicas de su empresa, mejorando la captura y el uso de información clave en procesos como ventas, entregas y facturación.",
+    "start_time": 28.6,
+    "end_time": 62.8
   },
   {
     "slide_index": 3,
-    "image_file": "043_Slide_03_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "La empresa desea asignar un conductor de entrega a los documentos de entrega. Los conductores de entrega pueden mantenerse en una tabla definida por el usuario a la que se puede acceder desde el documento de entrega.  La tabla puede ser mantenida por los usuarios. Escenario empresarial Pedido de cliente Entrega Factura de clientes Cobro  Una empresa desea la capacidad de asignar un vehículo de entrega a los documentos de entrega.  La flota de entrega puede mantenerse como una tabla definida por el usuario y hacer que esté disponible para el documento de entrega.  Los usuarios pueden gestionar las entradas de la flota en la tabla.",
-    "start_time": 63.62,
-    "end_time": 102.14
+    "image_file": "Slide_003.webp",
+    "script_text": "En este escenario empresarial, la empresa necesita asignar un conductor de entrega a los documentos de entrega. Para ello, utiliza una tabla definida por el usuario donde se mantienen los conductores, accesible desde el documento de entrega. Del mismo modo, puede gestionar una flota de vehículos de entrega como otra UDT, permitiendo a los usuarios actualizar las entradas según sea necesario. Este flujo muestra cómo los datos personalizados se integran en el proceso estándar de venta: desde el pedido hasta el cobro, pasando por la entrega y facturación, con información adaptada a las necesidades logísticas de la empresa.",
+    "start_time": 62.8,
+    "end_time": 102.6
   },
   {
     "slide_index": 4,
-    "image_file": "043_Slide_04_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Tablas definidas por el usuario  Las tablas definidas por el usuario (UDT) almacenan conjuntos de datos relacionados  Las tablas de usuario tienen el prefijo @  Opción de copiar UDT al crear una nueva empresa Herramientas → Herramientas de customizing → Tablas definidas por el usuario - Configuración @Conductores  Además de los campos definidos por el usuario, puede añadir tablas nuevas a la base de datos. Las tablas definidas por el usuario (UDT) permiten almacenar conjuntos adicionales de datos relacionados.  Las tablas definidas por el usuario pasan a formar parte de la base de datos de la empresa. El sistema identifica las tablas definidas por el usuario con el prefijo ‘@’ para que pueda distinguirlas fácilmente de las tablas del sistema.  Cuando crea una nueva empresa, tiene la opción de copiar tablas definidas por el usuario de la empresa actualmente seleccionada en la nueva empresa.",
-    "start_time": 102.14,
-    "end_time": 157.1
+    "image_file": "Slide_004.webp",
+    "script_text": "Las tablas definidas por el usuario (UDT) almacenan conjuntos de datos relacionados que no están incluidos por defecto en SAP Business One. Cada UDT se identifica con el prefijo ‘@’ para distinguirla fácilmente de las tablas del sistema. Además, al crear una nueva empresa, tiene la opción de copiar las UDT de la empresa actualmente seleccionada, lo que facilita la estandarización entre entidades. Estas tablas se convierten en parte permanente de la base de datos de la empresa y permiten guardar información adicional como conductores, vehículos, tipos de servicio o cualquier otro dato específico del negocio.",
+    "start_time": 102.6,
+    "end_time": 141.6
   },
   {
     "slide_index": 5,
-    "image_file": "043_Slide_05_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Tipo de objeto para tablas definidas por el usuario  Para configurar una tabla, introduzca el nombre y la descripción, y seleccione el tipo de objeto Tipo de objeto: Para vincular la tabla con un campo definido por el usuario (UDF) en un documento o formulario, seleccione:  Ningún objeto  Ningún objeto con incremento automático Para vincular la tabla con un objeto definido por el usuario (UDO), seleccione: • Datos maestros • Líneas de datos maestros • Documento • Líneas de documento Herramientas → Herramientas de customizing → Tablas definidas por el usuario - Configuración  Las tablas definidas por el usuario pueden vincularse con un campo definido por el usuario (UDF) en un documento o formulario. Para ello, debe seleccionar el tipo de objeto correcto cuando cree la tabla.  Para vincular con un UDF, seleccione Sin objeto o Sin objeto con incremento automático.  Para vincular con un objeto definido por el usuario (UDO), seleccione una de las otras opciones:  Seleccione Datos maestros si el objeto va a contener datos maestros. También puede crear tablas de nivel inferior seleccionando Líneas de datos maestros como el tipo de objeto.  Seleccione Documento si el objeto va a contener datos de transacciones. También puede crear tablas de nivel inferior seleccionando Líneas de documento como el tipo de objeto.  Tenga en cuenta que no puede cambiar el Tipo de objeto después de haber añadido la tabla de usuario al sistema.",
-    "start_time": 157.1,
-    "end_time": 246.67
+    "image_file": "Slide_005.webp",
+    "script_text": "Al configurar una tabla definida por el usuario, debe seleccionar el tipo de objeto según cómo planea usarla. Si desea vincularla con un campo definido por el usuario (UDF) en un documento o formulario, elija 'Ningún objeto' o 'Ningún objeto con incremento automático'. Para crear un objeto definido por el usuario (UDO), seleccione 'Datos maestros' si contendrá información como clientes o productos, o 'Documento' si almacenará datos transaccionales como facturas o pedidos. También puede crear tablas relacionadas eligiendo 'Líneas de datos maestros' o 'Líneas de documento'. Importante: este tipo de objeto no se puede modificar después de agregar la tabla al sistema.",
+    "start_time": 141.6,
+    "end_time": 183.0
   },
   {
     "slide_index": 6,
-    "image_file": "043_Slide_06_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Información sobre tablas definidas por el usuario  La información acerca de nuevas tablas se almacena en la tabla OUTB  La información de cada tabla nueva se almacena en la tabla OUTB del sistema. La información incluye el tipo de objeto.",
-    "start_time": 246.67,
-    "end_time": 262.01
+    "image_file": "Slide_006.webp",
+    "script_text": "La información sobre cada tabla definida por el usuario que cree se almacena en la tabla del sistema llamada OUTB. Esta tabla contiene los metadatos de todas las UDT, incluyendo su nombre, descripción y, importantly, el tipo de objeto que seleccionó durante la configuración. El sistema utiliza esta información para gestionar cómo se comportan las UDT en la base de datos, cómo se vinculan a documentos o formularios y cómo se presentan en el menú. Aunque no la modifica directamente, la tabla OUTB es esencial para el funcionamiento interno de las personalizaciones en SAP Business One.",
+    "start_time": 183.0,
+    "end_time": 222.0
   },
   {
     "slide_index": 7,
-    "image_file": "043_Slide_07_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Vínculo de una tabla definida por el usuario a un UDF  Para vincular la tabla con un campo definido por el usuario (UDF) en un documento o formulario, cree la tabla con el tipo de objeto Sin objeto.",
-    "start_time": 262.01,
-    "end_time": 275.45
+    "image_file": "Slide_007.webp",
+    "script_text": "Para vincular una tabla definida por el usuario (UDT) a un campo definido por el usuario (UDF) en un documento o formulario, primero debe crear la UDT con el tipo de objeto 'Sin objeto'. Esta configuración permite que la tabla se asocie correctamente al UDF, permitiendo su uso en formularios como selecciones desplegables o campos de referencia. Es el primer paso para integrar datos personalizados en transacciones de SAP Business One.",
+    "start_time": 222.0,
+    "end_time": 251.0
   },
   {
     "slide_index": 8,
-    "image_file": "043_Slide_08_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Acceso a una nueva tabla Herramientas → Ventanas definidas por el usuario  Acceda a la nueva tabla desde el menú Herramientas  La tabla contiene inicialmente dos columnas: código y nombre  Accederá a una tabla definida por el usuario creada recientemente seleccionando la tabla desde el menú Herramientas.  La tabla contiene inicialmente dos columnas: código y nombre.",
-    "start_time": 275.45,
-    "end_time": 297.55
+    "image_file": "Slide_008.webp",
+    "script_text": "Para acceder a una tabla definida por el usuario recién creada, vaya al menú Herramientas y seleccione 'Ventanas definidas por el usuario'. Allí encontrará su UDT, la cual inicialmente contiene solo dos columnas: Código y Nombre. Este es el punto de entrada para visualizar, modificar o ingresar datos en la tabla antes de vincularla a formularios o usarla en consultas.",
+    "start_time": 251.0,
+    "end_time": 275.6
   },
   {
     "slide_index": 9,
-    "image_file": "043_Slide_09_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Introducción de datos en una nueva tabla  Si el tipo de objeto fuera Sin objeto, el campo Código es editable  Si el tipo de objeto fuera Sin objeto con incremento automático, el campo Código no es editable y se incrementa automáticamente  Código es la clave principal y Nombre debe ser único en cada línea Clave principal Único  En nuestro escenario, queremos utilizar la tabla en un campo definido por el usuario en un documento de entrega. Por lo tanto, cuando configuramos la tabla, pudimos seleccionar Sin objeto o Sin objeto con incremento automático como el tipo de objeto.  Si selecciona Sin objeto como el tipo de objeto cuando crea la tabla, la columna Código es editable y puede introducir un valor único para cada línea.  Si selecciona Sin objeto con incremento automático como el tipo de objeto, la columna Código no es editable y el valor se incrementará automáticamente para cada línea de datos que introduzca. Seleccionamos esta opción para que la clave principal se actualice por nosotros.  El Código es la clave principal y el Nombre debe ser único para cada línea que añada a la tabla. Además, tiene la opción de seleccionar cualquier campo o combinación de campos de la tabla de usuario para formar una clave nueva. Esta opción puede acelerar las búsquedas.",
-    "start_time": 297.55,
-    "end_time": 374.83
+    "image_file": "Slide_009.webp",
+    "script_text": "Al crear una UDT, el tipo de objeto determina el comportamiento del campo Código. Si selecciona 'Sin objeto', el Código es editable y debe ingresar un valor único para cada fila. Si elige 'Sin objeto con incremento automático', el Código no es editable y se incrementa automáticamente. En ambos casos, el Código es la clave principal y el Nombre debe ser único por línea. Esta configuración es clave al usar la UDT en un UDF de un documento de entrega.",
+    "start_time": 275.6,
+    "end_time": 308.2
   },
   {
     "slide_index": 10,
-    "image_file": "043_Slide_10_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Cómo añadir columnas a una UDT Herramientas → Herramientas de customizing → Campos definidos por el usuario - Gestión  Para añadir columnas a la tabla, seleccione la tabla y elija Añadir  Para que resulte útil, una tabla definida por el usuario necesita columnas adicionales. Cada columna se añade como un campo definido por el usuario.  Seleccione el nombre de la tabla en la ventana de gestión de campos definidos por el usuario. A continuación, añada un campo definido por el usuario para cada columna.  En el ejemplo, hemos añadido cuatro columnas adicionales: Nombre, Turno, Disponible y Ubicación a la tabla Conductores de entrega. En estos campos registraremos el nombre del conductor, su horario de trabajo, si se encuentra disponible para la asignación y su ubicación. Con esta información, un usuario podrá seleccionar el mejor conductor para la entrega.  Para disponer de información sobre campos definidos por el usuario, consulte el curso relacionado Campos definidos por el usuario.",
-    "start_time": 374.83,
-    "end_time": 438.48
+    "image_file": "Slide_010.webp",
+    "script_text": "Para añadir columnas adicionales a una tabla definida por el usuario, acceda a Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión. Seleccione la tabla UDT y elija 'Añadir'. Cada columna que agregue se crea como un campo definido por el usuario (UDF). En el ejemplo, se añadieron cuatro columnas a la tabla 'Conductores de entrega': Nombre, Turno, Disponible y Ubicación, permitiendo registrar datos operativos clave para asignar el mejor conductor a cada entrega.",
+    "start_time": 308.2,
+    "end_time": 340.0
   },
   {
     "slide_index": 11,
-    "image_file": "043_Slide_11_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Visualización de las columnas añadidas a una UDT  Para introducir datos en las columnas adicionales o para añadir nuevas líneas a la tabla, abra la tabla desde el menú Herramientas  Si no visualiza las columnas nuevas en la ventana, ajuste su ancho Herramientas →Ventanas definidas por el usuario Columnas adicionales  Después de añadir columnas adicionales a la tabla, puede introducir datos o añadir nuevas líneas seleccionando el menú Herramientas > Ventanas definidas por el usuario. Elija y seleccione la tabla. Si no visualiza las columnas nuevas en la ventana, tal vez deba ajustar su ancho para poder ver los campos nuevos.",
-    "start_time": 438.48,
-    "end_time": 476.16
+    "image_file": "Slide_011.webp",
+    "script_text": "Después de añadir columnas adicionales a una UDT, ábrala desde Herramientas > Ventanas definidas por el usuario. Si no ve las nuevas columnas, ajuste el ancho de la ventana para que se muestren completamente. Este ajuste es común cuando se agregan varios campos y el ancho predeterminado no es suficiente. Una vez visible, puede ingresar datos o agregar nuevas líneas a la tabla para usarla en documentos o consultas.",
+    "start_time": 340.0,
+    "end_time": 368.2
   },
   {
     "slide_index": 12,
-    "image_file": "043_Slide_12_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Consultas  La tabla definida por el usuario aún no se encuentra adjunta a un formulario o documento, sino que puede utilizarse en consultas  El nombre de tabla comienza con @  Las columnas son UDF por lo que empiezan con U_  También puede importar datos en la tabla por medio de Data Transfer Workbench.  En este punto, la tabla definida por el usuario no está adjunta a ningún formulario o documento por lo que no es accesible para el usuario; sin embargo, puede utilizarla en consultas e importarle datos mediante Data Transfer Workbench.",
-    "start_time": 476.16,
-    "end_time": 508.9
+    "image_file": "Slide_012.webp",
+    "script_text": "Una tabla definida por el usuario no adjunta a un formulario aún puede usarse en consultas y recibir datos mediante Data Transfer Workbench. En SAP Business One, el nombre de la UDT siempre comienza con '@' y sus columnas, siendo UDF, empiezan con 'U_'. Aunque no esté vinculada a un documento, permite consultar sus datos o importar información masiva, lo que es útil para cargar catálogos iniciales como listas de conductores, productos o centros de costo antes de vincularlos a transacciones.",
+    "start_time": 368.2,
+    "end_time": 401.2
   },
   {
     "slide_index": 13,
-    "image_file": "043_Slide_13_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Vínculo de la tabla con un UDF Herramientas → Herramientas de customizing → Campos definidos por el usuario - Gestión  Para hacer que la tabla sea accesible a los usuarios, vincúlela a un UDF en un documento o formulario  Los UDF deben ser Alfanuméricos. Nota: Puede vincular la misma tabla definida por el usuario a varios campos definidos por el usuario.  Para hacer visible una tabla de usuario directamente a los usuarios en un formulario o documento, puede vincular la tabla a un campo definido por el usuario en el documento o formulario.  Tenga en cuenta que las tablas de usuario solo se pueden vincular con UDF de tipo Alfanumérico y estructura Regular.  En este ejemplo, un campo definido por el usuario denominado Conductores se añade al área del título del objeto de documentos de marketing. Cuando añada el campo definido por el usuario, seleccione la opción de validación Fijar tabla vinculada. A continuación, seleccione la tabla definida por el usuario de la lista desplegable.  Puede vincular la misma tabla definida por el usuario a varios campos definidos por el usuario en diferentes objetos, tanto en la cabecera como a nivel de línea. Por ejemplo, podría vincular la tabla de camiones a un campo definido por el usuario en el documento de lista de picking además del documento de entrega.",
-    "start_time": 508.9,
-    "end_time": 588.22
+    "image_file": "Slide_013.webp",
+    "script_text": "Para hacer accesible una tabla definida por el usuario, debe vincularse a un campo definido por el usuario tipo Alfanumérico. Desde Herramientas de customizing, seleccione el UDF, active la validación 'Fijar tabla vinculada' y elija la UDT desde la lista desplegable. Esta vinculación permite que el usuario seleccione valores de la UDT directamente en documentos como entregas o pedidos. Puede reutilizar la misma UDT en múltiples UDF, incluso en diferentes objetos y niveles (cabecera o línea). Así, por ejemplo, una tabla de camiones puede usarse tanto en un picking como en una entrega, asegurando consistencia y facilitando la captura de datos mediante listas desplegables vinculadas a la UDT.",
+    "start_time": 401.2,
+    "end_time": 445.0
   },
   {
     "slide_index": 14,
-    "image_file": "043_Slide_14_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Uso de la UDT en un documento  Para ver y acceder a todas las columnas, seleccione Definir nuevo  Cuando seleccione el campo definido por el usuario, puede ver las primeras dos columnas. Seleccione Definir nuevo para ver y acceder a todas las columnas de la tabla.  El usuario puede editar y añadir líneas a la tabla.",
-    "start_time": 588.22,
-    "end_time": 608.93
+    "image_file": "Slide_014.webp",
+    "script_text": "Al seleccionar un campo definido por el usuario vinculado a una UDT en un documento, inicialmente se muestran solo las primeras dos columnas. Para acceder a todas las columnas de la tabla, el usuario debe hacer clic en 'Definir nuevo'. Esto abre una ventana donde puede ver, editar y agregar líneas a la UDT directamente desde el documento. Por ejemplo, al elegir un conductor para una entrega nocturna, se visualizan datos como nombre, placa y tipo de servicio. Esta funcionalidad permite una interacción dinámica con la tabla de referencia, asegurando que el usuario tenga toda la información necesaria para completar el registro correctamente.",
+    "start_time": 445.0,
+    "end_time": 486.8
   },
   {
     "slide_index": 15,
-    "image_file": "043_Slide_15_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Selección del valor desde la UDT El valor seleccionado en la tabla definida por el usuario se almacena en el campo definido por el usuario  En este ejemplo, el cliente ha solicitado una entrega por la noche, por lo que se ha seleccionado un conductor disponible para ello. El Nombre de la tabla definida por el usuario se almacena ahora en el campo definido por el usuario en el documento.",
-    "start_time": 608.93,
-    "end_time": 631.94
+    "image_file": "Slide_015.webp",
+    "script_text": "Cuando un usuario selecciona un valor desde la tabla definida por el usuario, ese valor se almacena automáticamente en el campo definido por el usuario asociado. Por ejemplo, si se elige a 'María López' como conductor disponible para una entrega nocturna, su nombre se guarda en el UDF 'Conductor' del documento. Esto asegura que la información seleccionada quede registrada y disponible para reportes, seguimiento o procesos posteriores. El vínculo entre UDT y UDF garantiza consistencia: lo que se elige en la lista se persiste exactamente en el campo, sin necesidad de ingreso manual, reduciendo errores y estandarizando datos críticos como recursos humanos o equipos asignados.",
+    "start_time": 486.8,
+    "end_time": 529.4
   },
   {
     "slide_index": 16,
-    "image_file": "043_Slide_16_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Vínculo de una UDT a un objeto definido por el usuario  Para vincular una tabla de usuario con un objeto definido por el usuario (UDO), cree la tabla con el tipo de objeto Datos maestros o Documento.",
-    "start_time": 631.94,
-    "end_time": 644.83
+    "image_file": "Slide_016.webp",
+    "script_text": "Para vincular una tabla definida por el usuario con un objeto definido por el usuario (UDO), la UDT debe crearse previamente con el tipo de objeto configurado como 'Datos maestros' o 'Documento'. Este paso es esencial porque solo estos tipos permiten que la tabla sea reconocida como base estructural de un UDO. Al definir la UDT con uno de estos tipos, se sienta la fundación para agregar posteriormente campos personalizados que complementarán la información del nuevo objeto empresarial. Sin esta configuración inicial, no será posible proceder al registro del UDO, ya que el sistema requiere que la tabla tenga el rol adecuado para funcionar como núcleo de un objeto personalizado en SAP Business One.",
+    "start_time": 529.4,
+    "end_time": 575.6
   },
   {
     "slide_index": 17,
-    "image_file": "043_Slide_17_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Cómo añadir campos a la tabla de usuario para UDO  Para vincular una tabla de usuario con un objeto definido por el usuario (UDO), cree la tabla con el tipo de objeto Datos maestros o Documento.  Un Objeto definido por el usuario (UDO) está formado por una UDT y UDF añadidos  Estos campos contendrán datos para el nuevo objeto empresarial  Para añadir campos definidos por el usuario a la tabla de usuario, utilice la vía de acceso mostrada aquí o utilice la DI API Herramientas → Herramientas de customizing → Campos definidos por el usuario - Gestión  Para vincular una tabla de usuario con un objeto definido por el usuario (UDO), asegúrese de haber creado la tabla con el tipo de objeto Datos maestros o Documento.  Un objeto definido por el usuario está formado por una tabla definida por el usuario y campos añadidos definidos por el usuario. Estos campos contendrán los datos para el nuevo objeto empresarial.  Puede añadir campos definidos por el usuario utilizando la aplicación SAP Business One o a través de la DI API. En este ejemplo, hemos creado una tabla de usuario denominada Coches de la empresa como un objeto de datos maestros.  Hemos añadido 4 campos definidos por el usuario.",
-    "start_time": 644.83,
-    "end_time": 718.99
+    "image_file": "Slide_017.webp",
+    "script_text": "Para enriquecer una tabla definida por el usuario destinada a convertirse en un objeto definido por el usuario, se agregan campos definidos por el usuario (UDF) mediante la ruta Herramientas → Herramientas de customizing → Campos definidos por el usuario - Gestión o mediante la DI API. Estos campos almacenarán los datos específicos del nuevo objeto empresarial. En el ejemplo, se crea una UDT llamada 'Coches de la empresa' como tipo Datos maestros y se le añaden cuatro UDF, como marca, modelo, año y placa. Cada campo captura un atributo relevante, permitiendo que la UDT, junto con sus UDF, forme un UDO completo capaz de representar entidades como vehículos en el sistema, con todos sus atributos necesarios para operaciones de gestión.",
+    "start_time": 575.6,
+    "end_time": 624.6
   },
   {
     "slide_index": 18,
-    "image_file": "043_Slide_18_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Registro de la nueva tabla como un objeto Utilice el asistente de registro para registrar tablas de usuario como objetos definidos por el usuario El registro se realiza por empresa Introduzca un ID único y seleccione la tabla Seleccione los servicios para el objeto, como por ejemplo: Agregar Actualizar Buscar Borrar Opcionalmente, seleccione la tabla de nivel inferior como líneas Herramientas → Herramientas de customizing → Asistente de registro de objetos  Una vez que haya creado la tabla de usuario con los campos definidos por el usuario, tiene que registrarla como objeto en SAP Business One utilizando el Asistente de registro de objetos. El registro se realiza por empresa.  Introduzca un ID único y seleccione el nombre de la tabla definida por el usuario.  A medida que avance por el asistente, se le pedirá que seleccione los servicios para el objeto, por ejemplo, Añadir, Actualizar, Buscar, Borrar. Añadir y Actualizar son servicios básicos y no pueden desmarcarse.  Puede seleccionar de forma opcional una tabla de nivel inferior, que aparecerá como líneas en los datos maestros u objeto del documento. Las tablas de nivel inferior se crean seleccionando el tipo de objeto como Líneas de documento o Líneas de datos maestros.",
-    "start_time": 718.99,
-    "end_time": 795.58
+    "image_file": "Slide_018.webp",
+    "script_text": "Una vez creada la tabla de usuario con sus campos definidos por el usuario, debe registrarse como objeto en SAP Business One usando el Asistente de registro de objetos, acceso mediante Herramientas → Herramientas de customizing → Asistente de registro de objetos. El registro se realiza por empresa y requiere un ID único y la selección de la UDT. En el asistente, se eligen los servicios del objeto: Añadir y Actualizar son obligatorios; Buscar y Borrar pueden activarse opcionalmente. Además, se puede vincular una tabla de nivel inferior (tipo Líneas de documento o Límites de datos maestros) que aparecerá como líneas dentro del maestro o documento. Este paso final habilita el UDO para uso completo en transacciones, consultas y reportes dentro del sistema.",
+    "start_time": 624.6,
+    "end_time": 674.4
   },
   {
     "slide_index": 19,
-    "image_file": "043_Slide_19_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Cómo añadir el objeto al menú principal  Para añadir el objeto como una opción de menú, seleccione la casilla de selección Opción de menú y seleccione el módulo y posición  Puede añadir el objeto al menú principal seleccionando la casilla de selección Opción de menú en el asistente. A continuación, seleccione el módulo del formulario de selección y la posición dentro del menú del módulo.",
-    "start_time": 795.58,
-    "end_time": 818.83
+    "image_file": "Slide_019.webp",
+    "script_text": "Para hacer que su tabla definida por el usuario sea fácil de acceder, puede añadirla como una opción en el menú principal de SAP Business One. En el asistente de registro de objetos, marque la casilla 'Opción de menú'. Luego, seleccione el módulo donde quiere que aparezca, por ejemplo Ventas, y defina la posición dentro de ese menú, como después de Cotizaciones. Así, los usuarios encontrarán su UDT directamente en el menú, sin necesidad de buscarla en listas genéricas. Esto mejora la usabilidad y adopción del dato personalizado en procesos diarios.",
+    "start_time": 674.4,
+    "end_time": 711.4
   },
   {
     "slide_index": 20,
-    "image_file": "043_Slide_20_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Tipo de la nueva tabla Tipo matriz Tipo línea de cabecera  Puede seleccionar Tipo línea de cabecera o Tipo matriz en el asistente. Esto afectará a cómo se mostrará la tabla cuando un usuario acceda a ella. A continuación, se muestran algunos ejemplos.",
-    "start_time": 818.83,
-    "end_time": 836.11
+    "image_file": "Slide_020.webp",
+    "script_text": "Al crear una tabla definida por el usuario, debe elegir su tipo: Tipo matriz o Tipo línea de cabecera. Esta elección determina cómo se mostrará la tabla cuando un usuario la abra. El Tipo matriz se muestra como una lista simple de registros, ideal para listas de códigos o catálogos. El Tipo línea de cabecera permite ver un encabezado con sus líneas relacionadas, como en una factura con sus ítems. Seleccionar el tipo correcto asegura que la experiencia de uso sea intuitiva y acorde al propósito de los datos que está almacenando.",
+    "start_time": 711.4,
+    "end_time": 748.8
   },
   {
     "slide_index": 21,
-    "image_file": "043_Slide_21_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
-    "script_text": "Tablas definidas por el usuario: Puntos clave Puntos clave de este tema: Puede añadir tablas definidas por el usuario (UDT) a la base de datos para mantener información adicional y relacionada Las tablas definidas por el usuario tienen el prefijo “@” Para vincular una tabla definida por el usuario con un campo definido por el usuario en un documento o formulario:  Seleccione Tipo de objeto como Sin objeto o Sin objeto con incremento automático  La tabla se crea inicialmente con dos columnas: código y nombre. Añada campos definidos por el usuario como columnas adicionales en la tabla  Para hacer que la tabla se encuentre disponible en un documento o formulario, vincule la tabla con un campo definido por el usuario en el documento o formulario (seleccione la opción Fijar tabla vinculada).  Para utilizar una tabla como un objeto definido por el usuario:  Seleccione el Tipo de objeto como Datos maestros o Documento  Añada campos definidos por el usuario como columnas  Ejecute el asistente de registro de objetos para crear el objeto definido por el usuario, seleccione los servicios del objeto, seleccione tablas de nivel inferior para líneas y añada el objeto al menú principal.  Estos son algunos puntos que hay que destacar sobre las tablas definidas por el usuario:  Puede añadir sus propias tablas definidas por el usuario a la base de datos. Estas tablas pueden albergar información adicional relacionada.  Las tablas definidas por el usuario se pueden identificar con el prefijo “@”.  Para poder vincular una tabla definida por el usuario con un campo definido por el usuario en un documento o formulario, seleccione el Tipo de objeto como Sin objeto o Sin objeto con incremento automático.  La tabla se crea inicialmente con dos columnas: código y nombre. Los campos definidos por el usuario pueden añadirse como columnas adicionales en la tabla.  Para hacer que una UDT sea accesible para un usuario en un documento o formulario, cree un campo definido por el usuario en el documento o formulario y seleccione la opción Fijar tabla vinculada para vincular la tabla con el UDF. Solo las UDT con Tipo de objeto Sin objeto o Sin objeto con incremento automático pueden vincularse con un UDF. Los usuarios finales pueden acceder a la tabla a través del UDF, y tienen la posibilidad de añadir líneas a la tabla e introducir datos en las columnas del campo definido por el usuario.  Para utilizar una tabla como objeto definido por el usuario (UDO), seleccione el Tipo de objeto como Datos maestros o Documento.  Añada campos definidos por el usuario a la tabla como columnas.  Ejecute el asistente de registro de objetos para crear el objeto, seleccione los servicios para el objeto, seleccione cualquier tabla de nivel inferior para líneas en el objeto y añada el objeto al menú principal. Los usuarios pueden acceder y mantener el objeto desde el menú y navegar por registros.",
-    "start_time": 836.11,
-    "end_time": 1012.01
+    "image_file": "Slide_021.webp",
+    "script_text": "Las tablas definidas por el usuario le permiten ampliar la base de datos de SAP Business One con información adicional relacionada a su negocio. Estas tablas siempre llevan el prefijo '@' en su nombre. Para vincularlas a un documento o formulario mediante un campo definido por el usuario, debe establecer el Tipo de objeto como 'Sin objeto' o 'Sin objeto con incremento automático'. Al crearse, la tabla incluye inicialmente solo las columnas Código y Nombre, a las que puede agregar más campos definidos por el usuario. Para hacerla accesible en un formulario, cree un UDF y seleccione 'Fijar tabla vinculada'. Los usuarios podrán entonces ver y agregar líneas a la tabla desde ese campo. Si desea usar la tabla como un objeto completo (como un maestro o documento), seleccione Tipo de objeto como 'Datos maestros' o 'Documento', agregue columnas, ejecute el asistente de registro y añádalo al menú principal.",
+    "start_time": 748.8,
+    "end_time": 809.0
   }
 ]

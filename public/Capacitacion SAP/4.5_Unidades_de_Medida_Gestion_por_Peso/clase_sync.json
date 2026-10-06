@@ -1,100 +1,93 @@
 [
   {
     "slide_index": 1,
-    "image_file": "074_Slide_01_10_Item_23_UoM_Weight.webp",
-    "script_text": "Bienvenidos a esta clase sobre Item 23 UoM Weight en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Items and Inventory: Use Weights as Units of Measure SAP Business One Version 10.0 Welcome to the topic of using weights as units of measure.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre el uso de pesos como unidades de medida en SAP Business One 10.0. Aquí aprenderás cómo gestionar artículos cuyo inventario se controla en una unidad, como metros, pero se compra o vende por peso, como kilogramos. Esto es común en industrias donde el peso varía por artículo, como cables, telas o metales. Verás cómo configurar esto sin crear múltiples grupos de unidades de medida, gracias al factor de peso. Este enfoque mejora la precisión y simplifica el manejo de inventario en empresas como Distribuidora Andina Tech.",
     "start_time": 0.0,
-    "end_time": 22.1
+    "end_time": 36.55
   },
   {
     "slide_index": 2,
-    "image_file": "074_Slide_02_10_Item_23_UoM_Weight.webp",
-    "script_text": "Objectives At the end of this topic, you will be able to: Set up weights in unit of measure groups In this topic, you will learn how to set up weights as a unit of measure in a unit of measure group. To fully understand this topic, you need to already know how to set up unit of measure groups.",
-    "start_time": 22.1,
-    "end_time": 38.62
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás configurar pesos como unidad de medida alternativa dentro de un grupo de unidades de medida existente. Aprenderás a definir el peso en la configuración de unidades de medida y asignarlo como alternativa en un grupo. También comprenderás que para aplicar este tema necesitas conocer previamente cómo crear y modificar grupos de unidades de medida. Este conocimiento es esencial para adaptar el sistema a proveedores que venden por peso, manteniendo el control de inventario en longitudes o unidades estándar.",
+    "start_time": 36.55,
+    "end_time": 69.98
   },
   {
     "slide_index": 3,
-    "image_file": "074_Slide_03_10_Item_23_UoM_Weight.webp",
-    "script_text": "Business Scenario OEC Computers buys cables for resale. Previously the cables were purchased by the meter. However they are changing to a new supplier who sells the cables by weight. They would like to add a weight unit of measure to the existing unit of measure group. Then set that measure as the default measure for purchasing. They would also like to create a new unit of measure group for USB connectors which uses weight as a base unit of measure. OEC Computers buys cables for resale. Previously the cables were purchased by the meter. However they are changing to a new supplier who sells the cables by weight. They would like to add a weight unit of measure to the existing unit of measure group. Then set that measure as the default measure for purchasing. They would also like to create a new unit of measure group for USB connectors which uses weight as a base unit of measure.",
-    "start_time": 38.62,
-    "end_time": 90.48
+    "image_file": "Slide_003.webp",
+    "script_text": "OEC Computers cambió de proveedor de cables: ahora vende por peso en lugar de por metros. Necesitan agregar kilogramos como unidad de medida alternativa al grupo existente de cables, donde el metro es la unidad base. Además, quieren crear un nuevo grupo de unidades de medida para conectores USB que use el peso como unidad base. Esto les permite comprar por peso, gestionar inventario en metros y vender en diversas unidades, todo dentro del mismo sistema. El flujo muestra cómo adaptar el grupo actual y crear uno nuevo para distintos tipos de artículos según su unidad de manejo.",
+    "start_time": 69.98,
+    "end_time": 107.93
   },
   {
     "slide_index": 4,
-    "image_file": "074_Slide_04_10_Item_23_UoM_Weight.webp",
-    "script_text": "Business Example 1 – Adding a weight unit of measure to a group OEC is changing suppliers for cables. The new supplier sells cables by weight. OEC will purchase cables in kilograms (kg) and manage them in inventory by meters. 1 meter Network cable = 1 kg 1 meter of HDMI cable = 2 kg 1 meter of Power cable = 4 kg We will change an existing unit of measure group to support purchasing these items by weight while selling the items in meters. OEC computers resells different types of cables. A unit of measure group already exists for this item with meter as the base unit of measure. Previously the cables were purchased in 100 meter reels. OEC has decided to change to a new supplier who sells the cables by weight. OEC will purchase cables by weight and manage them in inventory by meters. These cables will be sold in various units that convert to meters. Because cables are purchased by weight and sold by lengths in meters, the unit of measure group of cables must be able to convert quantities in kilograms into quantities in meters Here are 3 examples of cable items managed in OEC Computers : Network cable, HDMI cable and Power cable. A meter inventory UoM is defined for each item. Each meter unit has a different weight: 1 meter of network cable weighs 1 kg, 1 meter of HDMI cable weighs 2 kg and 1 meter of industrial power cable weighs 4 kg. We will look at how we can change an existing unit of measure group to support purchasing these items by weight while storing and selling the items in meters.",
-    "start_time": 90.48,
-    "end_time": 184.8
+    "image_file": "Slide_004.webp",
+    "script_text": "OEC compra cables en kilogramos pero los gestiona y vende en metros. Un metro de cable de red equivale a 1 kg, HDMI a 2 kg y alimentación a 4 kg. Se modificará el grupo existente de unidades de medida (con metro como base) para incluir kilogramos como unidad alternativa. Esto permite comprar por peso mientras el inventario y las ventas se manejan en metros. El sistema convertirá automáticamente kilogramos a metros usando el factor de peso definido en los datos maestros del artículo. Así, un mismo grupo sirve para todos los tipos de cable, evitando duplicados.",
+    "start_time": 107.93,
+    "end_time": 148.51
   },
   {
     "slide_index": 5,
-    "image_file": "074_Slide_05_10_Item_23_UoM_Weight.webp",
-    "script_text": "Using Weight in a Unit of Measure Group Group Group Description Unit of Measure Groups 1 Manual Manual 2 Paper Paper 3 Cable Cable Group Definition – Cable Setup 1 1 Meter = 1 Meter 2 1 Reel = 100 Meter 3 1 Spool = 50 Meter 4 1 Kilo kg = 1 Meter Alt Qty Alt UoM Weight Factor = Base Qty Base UoM Enter the weight unit in the Alternate Unit of Measure field. Use a weight factor when you need to adjust the unit quantity based on the weight of the item. Select the existing group and choose Group Definition. In our business example, we currently have a unit of measure group for cables. We would like to add kilo to the unit of measure group so that we can use it when purchasing the cables. First we define kilo as a unit of measure and set it equal to a weight of 1 kilogram in the Units of Measure Setup window. Then we open the Unit of Measure Group window to enter our new unit to the cable unit of measure group. We select the group and choose the Group Definition button to open a window to define the relationship between unit of measure codes within the group. In the existing group, Meter is already set as the base unit and all other units in the same group are related to the base unit by conversion rules. Since we purchase the cables by weight in kilograms, we enter the unit Kilo as an alternative unit of measure. Then we need to enter the fields alternative quantity and base quantity. In our example, 1 kilogram is equal to 1 Meter of cable for our most popular types of cables. However, some cable items have a different weight, therefore we also enter a weight factor. The factor will allow us to easily adjust the unit based on the weight of the item.",
-    "start_time": 184.8,
-    "end_time": 281.66
+    "image_file": "Slide_005.webp",
+    "script_text": "En la ventana de Grupos de Unidades de Medida, seleccionas el grupo 'Cable', cuyo unidad base es el metro. Luego, en la definición del grupo, introduces 'Kilo (kg)' como unidad de medida alternativa. Estableces que 1 kilogramo equivale a 1 metro (cantidad alternativa: 1, cantidad base: 1). Activas la opción 'Usar Factor de Peso' para permitir que el sistema ajuste la conversión según el peso específico de cada artículo definido en sus datos maestros. Este campo es clave porque permite manejar distintos pesos por metro sin crear múltiples grupos. La configuración se aplica desde el 1 de enero de 2026.",
+    "start_time": 148.51,
+    "end_time": 191.83
   },
   {
     "slide_index": 6,
-    "image_file": "074_Slide_06_10_Item_23_UoM_Weight.webp",
-    "script_text": "Advantage of Weight Factor Group Definition – Cable Setup 1 1 Meter = 1 Meter 4 1 Kilo kg = 1 Meter Alt Qty Alt UoM Weight Factor = Base Qty Base UoM Network Cables 1 meter = 1 kg HDMI Cables 1 meter = 2 kg Power cables 1 meter = 3 kg “Alt Qty” x “Weight Factor “(from Item Master Weight) = Base Qty in Document Use the weight specified in the item master record for the conversion. Let’s talk for a moment of the advantage of using a weight factor in situations where we want to convert quantities in weights to quantities in lengths. In previous releases, we did not have a weight factor and it was much more difficult to manage items that had different weights while having the same length, width or height. Now with a weight factor we can use the weight listed in the item master record to make the conversion. This makes it possible to share the same unit of measure group for cable rather than having three separate unit of measure groups. For example, in our company we have 3 general types of cable: network cables, HDMI cables and power cables and they all have different weights. For network cables, 1 meter equals 1 kilogram. HDMI cables are twice as heavy so 1 meter equals 2 kilograms. Power cables are heavier still, with 3 kilograms for each meter. Now we can use the weight factor field to calculate the weight different for the meter unit of measure. Because we have entered the kilogram weight factor, the system will look at the weight specified in the item master and calculate the actual weight being purchased, sold or inventoried. The system multiplies the alternative quantity by the weight from the item master to calculate the amount of base quantity for a document.",
-    "start_time": 281.66,
-    "end_time": 381.89
+    "image_file": "Slide_006.webp",
+    "script_text": "Cuando creas un documento de compra y ingresas una cantidad en kilogramos, el sistema usa el factor de peso para convertirla a metros. Primero, toma la cantidad alternativa (kg) ingresada. Luego, busca el peso unitario del artículo en sus datos maestros (por ejemplo, 2 kg/metro para HDMI). Multiplica la cantidad alternativa por ese factor: si compras 5 kg de cable HDMI, el sistema calcula 5 × 2 = 10 metros como cantidad base. Ese valor se usa para actualizar el inventario y guiar las ventas. Esto permite usar un solo grupo de unidades de medida para todos los cables, sin importar su peso por metro, gracias a la automatización del factor de peso en SAP Business One.",
+    "start_time": 191.83,
+    "end_time": 242.06
   },
   {
     "slide_index": 7,
-    "image_file": "074_Slide_07_10_Item_23_UoM_Weight.webp",
-    "script_text": "Example of how conversion works The weight factor value comes from the item master weight field. If the unit differs, a calculation is performed. For example: converting grams to kilograms. Then calculations are made to convert the Alternative Quantity (Kilo) to the Base Quantity (Meter). The Weight factor of the network cable = 1 kg The Weight factor of the HDMI cable = 2 kg The Weight factor of the power cable = 4 kg 1 Kg of the network cable = 1 meter 1 Kg of the HDMI cable = 0.5 meter 1 Kg of the power cable = 0.25 meter Let’s look at how this works with our business example. The value for the weight factor comes from the value in the Item Master Data Weight field. If the weight of the item was entered in a different weight measurement than the one indicated in the factor field, then the system converts the weight according to the weight factor. For example, if the weight of the item is 2000 grams then the factor will be 2 (kilograms). We have set conversion rules in our unit of measure group. So calculations are performed to convert the alternative quantity (in our case in kilograms) to the base quantity (in our case meters). Remember the formula Alternative Quantity multiplied by the weight factor equals the base quantity. Logically this also means that an alternative quantity of a unit equals the base quantity of the unit divided by the weight factor. Therefore the following is true for our cable items. Since we manage the cable inventory by kilograms, we entered the following weights in the Weight field of the Item Master data: 1 kg for the network cable 2 kg for the HDMI cable and 4 kg for the power cable This means that: 1 kilogram unit of the network cable equals 1 meter unit 1 kilogram unit of the HDMI cable equals 0.5 meter unit 1 kilogram unit of the power cable equals 0.25 meter unit",
-    "start_time": 381.89,
-    "end_time": 494.64
+    "image_file": "Slide_007.webp",
+    "script_text": "En este ejemplo vemos cómo el factor de peso permite convertir una unidad alternativa a la unidad base. Primero, se obtiene el peso del artículo desde sus datos maestros. Luego, se aplica el factor de peso para transformar la cantidad alternativa en cantidad base. Por ejemplo, un cable de red con peso de 1 kg equivale a 1 metro, mientras que un cable HDMI de 2 kg equivale a 0,5 metros por kilogramo. Este proceso es esencial cuando la unidad de compra o venta difiere de la unidad de inventario.",
+    "start_time": 242.06,
+    "end_time": 277.03
   },
   {
     "slide_index": 8,
-    "image_file": "074_Slide_08_10_Item_23_UoM_Weight.webp",
-    "script_text": "Effect of Weight Factor in Documents The Weight factor of the network cable = 1 kg The Weight factor of the HDMI cable = 2 kg The Weight factor of the power cable = 4 kg 1 Kg of the network cable = 1 meter 1 Kg of the HDMI cable = 0.5 meter 1 Kg of the power cable = 0.25 meter Once we have made the settings, we test the items and units of measure in a document. Notice how the calculation using the weight factor affects the Item per Unit field. For example, look at the power cable item. Since the weight factor of the power cable is 4 kilograms. If we purchase one kilogram worth of power cable, the length is only a quarter of a meter long.",
-    "start_time": 494.64,
-    "end_time": 538.22
+    "image_file": "Slide_008.webp",
+    "script_text": "Al registrar un documento de compra, el factor de peso influye directamente en el campo 'Artículos por unidad'. Si compras 1 kilogramo de cable de alimentación, cuyo factor de peso es 4 kg, el sistema calcula que equivale a 0,25 metros. Esto ocurre porque el factor de peso se usa para convertir la cantidad alternativa (kg) a la unidad base (metro). Es clave verificar este cálculo en documentos para asegurar que las cantidades registradas reflejen correctamente la longitud, peso o volumen real del artículo.",
+    "start_time": 277.03,
+    "end_time": 312.98
   },
   {
     "slide_index": 9,
-    "image_file": "074_Slide_09_10_Item_23_UoM_Weight.webp",
-    "script_text": "Business Example 2: Weight as the Base unit USB Connectors 1 Kg = Base unit UDF factor (Pcs) USB Connectors 100 Pcs OEC Computers resells USB connectors. The USB connectors are bought and stored in kilograms but sold as pieces. Therefore it is a good practice to use a weight as the base unit. We can create a user defined field to specify the conversion between the base unit in weights and another type of unit, such as pieces. Then we can use the UDF Factor field in the Unit of Measure Group window to handle the conversion. In our previous business example, the cables are stored in meters so we have chosen meters as the base unit. For other items, a weight may need to be a base unit. For example, OEC Computers resells USB connectors. The USB connectors are bought and stored in kilograms. However they are sold individually as pieces. The inventory unit is a weight (kilograms). Therefore, it is a good practice to use the weight as the base unit. Since the item is sold with a non weight unit, we need to convert from a weight to a non weight unit. To do this, we can create a user defined field to specify the conversion between the base unit in weights and another type of unit, such as pieces. Then we can use the UDF Factor field in the Unit of Measure group to handle the conversion.",
-    "start_time": 538.22,
-    "end_time": 619.9
+    "image_file": "Slide_009.webp",
+    "script_text": "Cuando el peso se usa como unidad base, el factor CUD permite convertir entre unidades como kilogramos y piezas. En este caso, los conectores USB se compran y almacenan en kilogramos, pero se venden como piezas. Al definir un campo definido por el usuario (CUD) con un valor de 100, se indica que 100 piezas equivalen a 1 kg. Este enfoque es ideal cuando la unidad de inventario es peso, pero la venta se realiza en conteo. El sistema usa el factor CUD para hacer la conversión automática en transacciones.",
+    "start_time": 312.98,
+    "end_time": 348.31
   },
   {
     "slide_index": 10,
-    "image_file": "074_Slide_10_10_Item_23_UoM_Weight.webp",
-    "script_text": "Steps for using a UDF Field Base unit UDF factor (Pcs) Group Definition – Connectors Setup 1 1 Kg = 1 Kg 2 1 Pcs Pcs = 1 Kg Alt Qty Alt UoM UDF Factor Weight Factor = Base Qty Base UoM Set up a user defined field (UDF) in the item master The user defined field contains conversion value (e.g. 100) Enter the UDF name in the UDF factor field Calculates conversion of 100 pcs for each 1 kg of connectors USB Connectors 1 Kg USB Connectors 100 Pcs = To use the UDF Field take the following steps: Set up a user defined field in the item master. The user defined field contains conversion values from the base unit in weight to alternative units. Let’s look at an example. OEC computers sells connectors. Connectors are managed by weight in the inventory. The base and inventory units are set to Kilograms. In the graphic, we can see the Connectors unit of measure group. The base unit is set to Kilogram and the alternative unit is pieces. One of the items using this unit of measure group is the USB connector item. A user defined field was added to the item to indicate how many connector pieces are equal to 1 kilogram of connectors. Then the user defined field name was entered into the UDF Factor field. The UDF field value of the USB connector item is 100. This means that 100 pieces equal 1 kg of connectors. Notice that the weight factor is not needed because weight is the base unit. A UDF factor can also be helpful when you want to record additional measurements for an item such as density or volume or any other element needed for conversion rules.",
-    "start_time": 619.9,
-    "end_time": 723.31
+    "image_file": "Slide_010.webp",
+    "script_text": "Para usar un campo CUD, primero se crea en los datos maestros del artículo y se le asigna un valor, como 100 piezas por kg. Luego, se introduce ese nombre en el campo Factor CUD del grupo de unidades de medida. En el grupo 'Conectores', la unidad base es kilogramo y la alternativa es piezas. El sistema calcula que 100 piezas equivalen a 1 kg. Este método no requiere factor de peso porque el peso ya es la unidad base. El CUD también puede usarse para densidad, volumen u otras propiedades necesarias en reglas de conversión.",
+    "start_time": 348.31,
+    "end_time": 385.49
   },
   {
     "slide_index": 11,
-    "image_file": "074_Slide_11_10_Item_23_UoM_Weight.webp",
-    "script_text": "Example 3: Use UDF to Convert Length to Volume Group Definition – Box Setup 1 1 Inch = 1 Inch 2 2 Liter Liters = 6 Inch Alt Qty Alt UoM UDF Factor Weight Factor = Base Qty Base UoM 2 Liters of the box item = 6 inches The Liters UDF factor of a box item = 2 liters Use a UDF field to convert between types of measurements such as length to volume. A UDF factor can also be helpful when you want to convert between different types of measurements. For example if you wish to record additional measurements for an item such as density or volume or any other element needed for conversion rules. OEC Computers keeps a supply of boxes that are used as packaging materials. These boxes are managed as items and tracked in the inventory. When boxes are folded they are flat and measured in inches. The boxes can also be measured by their volume, in our case we use liters. In the graphic, we see the Box unit of measure group that has been created for these items. A UDF Factor field has been defined for liters and has been assigned in the Item Master Data header for the box items. For the most commonly used box item, the value of the Liters UDF field is 2. This means that 2 liters of the box item equals 6 inches.",
-    "start_time": 723.31,
-    "end_time": 797.98
+    "image_file": "Slide_011.webp",
+    "script_text": "En este ejemplo, el campo CUD se usa para convertir entre longitud y volumen. Para la caja más común, el factor CUD de litros es 2, lo que significa que 2 litros de caja equivalen a 6 pulgadas de longitud cuando está plegada. Esto es útil porque OEC Computers gestiona las cajas en inventario por su longitud cuando están planas, pero necesita conocer su volumen para embalaje. Al definir el grupo de unidades de medida 'Caja' con pulgada como base y litro como alternativa, y asignar el CUD en el artículo, el sistema permite convertir automáticamente entre estas unidades distintas según el contexto de uso.",
+    "start_time": 385.49,
+    "end_time": 425.35
   },
   {
     "slide_index": 12,
-    "image_file": "074_Slide_12_10_Item_23_UoM_Weight.webp",
-    "script_text": "Summary Here are some key points: Units based on weight can be used in units of measure groups. A weight factor can be used to convert units of weight to a base unit. The weight factor value is derived from the Weight field in the Item Master record. The formula for calculating weight is: Alt Qty” x “Weight Factor “(from Item Master Weight) = Base Qty SAP Business One has provided a UDF Factor field in the Unit of Measure Group that allows you to include values from a user defined field to perform additional conversions for units of measure. The UDF factor allows you to have a weight unit as the base unit of measure in a group. A weight factor can be used to convert units of weight to the base unit. The weight factor value is derived from the Weight field in the Item Master record. When using a weight factor, the formula for the calculating quantities is: “Alternative Quantity” multiplied by the “Weight Factor “(from Item Master Weight) equals the Base Quantity. Additionally Business One has provided a UDF Factor field in the Unit of Measure Group window that allows include values from a user defined field in the item master to perform additional conversions for units of measure. For example, a UDF could be used to convert lengths or widths to densities or volumes. The UDF factor also allows you to have a weight unit as the base unit of measure in a group.",
-    "start_time": 797.98,
-    "end_time": 874.94
+    "image_file": "Slide_012.webp",
+    "script_text": "Las unidades basadas en peso pueden usarse como base en grupos de unidades de medida. El factor de peso convierte unidades de peso a la unidad base usando el campo Peso de los datos maestros del artículo. La fórmula es: Cantidad Alternativa × Factor de Peso = Cantidad Base. SAP Business One incluye el campo Factor CUD en el grupo de unidades de medida para incorporar valores de un campo definido por el usuario, permitiendo conversiones adicionales como peso a piezas o longitud a volumen. Este campo también permite usar el peso como unidad de medida base, ampliando la flexibilidad del sistema para gestionar diversos tipos de artículos.",
+    "start_time": 425.35,
+    "end_time": 466.54
   },
   {
     "slide_index": 13,
-    "image_file": "074_Slide_13_10_Item_23_UoM_Weight.webp",
-    "script_text": "You have completed the topic on using weights as units of measure. Thank you for your time. 13 Thank you You have completed the topic on using weights as units of measure. Thank you for your time!",
-    "start_time": 874.94,
-    "end_time": 888.14
-  },
-  {
-    "slide_index": 14,
-    "image_file": "074_Slide_14_10_Item_23_UoM_Weight.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 888.14,
-    "end_time": 1020.98
+    "image_file": "Slide_013.webp",
+    "script_text": "Has completado el tema sobre el uso de pesos como unidades de medida en SAP Business One. Aprendiste cómo configurar el peso como unidad alternativa para productos pesables, permitiendo conversiones automáticas entre unidades de inventario y unidades de venta o compra. Esto mejora la precisión en el control de inventario, especialmente en industrias como alimentos, químicos o materiales a granel. Ahora puedes aplicar esta configuración en documentos de ventas, compras y producción, asegurando que las transacciones reflejen correctamente el peso real del producto. ¡Gracias por tu tiempo y por avanzar en tu capacitación!",
+    "start_time": 466.54,
+    "end_time": 506.18
   }
 ]

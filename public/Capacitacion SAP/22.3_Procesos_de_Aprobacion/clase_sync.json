@@ -1,233 +1,233 @@
 [
   {
     "slide_index": 1,
-    "image_file": "040_Slide_01_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 13 CustomTools ApprovalProcesses en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Herramientas de personalización: Procesos de autorización Este tema trata la configuración y el uso de los procedimientos de autorización.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de procesos de autorización en SAP Business One versión 10.0. Aquí aprenderá cómo configurar y utilizar esta funcionalidad para controlar documentos según reglas de negocio. Es clave para garantizar que compras, gastos y otros documentos críticos sean revisados antes de su procesamiento final. Esta lámina presenta el objetivo general del módulo: comprender el flujo, la configuración y el impacto de los procesos de autorización en la operativa diaria de una empresa.",
     "start_time": 0.0,
-    "end_time": 22.85
+    "end_time": 30.2
   },
   {
     "slide_index": 2,
-    "image_file": "040_Slide_02_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Objetivos Objetivo:  Describir el flujo de procesos comerciales al utilizar un proceso de autorización  Configurar un proceso de autorización en SAP Business One  Explicar el estado de un documento durante un proceso de autorización y cómo se gestionan las actualizaciones de documentos pendientes de autorización  Tratar los requisitos especiales para escribir una consulta para un procedimiento de autorización  Al finalizar este tema, podrá:  Describir el flujo de procesos comerciales al utilizar un proceso de autorización  Configurar un nuevo proceso de autorización en SAP Business One  Explicar el estado de un documento durante un proceso de aprobación y cómo se gestionan las actualizaciones de documentos pendientes de aprobación  Tratar los requisitos especiales para escribir una consulta para un procedimiento de autorización",
-    "start_time": 22.85,
-    "end_time": 71.04
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá describir el flujo de procesos comerciales al utilizar un proceso de autorización, configurar uno nuevo en SAP Business One, explicar el estado de un documento durante el proceso y cómo se gestionan las actualizaciones de los documentos pendientes. También aprenderá los requisitos especiales para escribir consultas en un procedimiento de autorización. Estos objetivos le permitirán aplicar la autorización en escenarios reales como compras, ventas o pagos, asegurando control y trazabilidad.",
+    "start_time": 30.2,
+    "end_time": 60.8
   },
   {
     "slide_index": 3,
-    "image_file": "040_Slide_03_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": " Para controlar los costes, la empresa requiere ahora que todas las compras y gastos internos por encima de un cierto límite sean autorizados por un jefe antes de que puedan procesarse. Solución: Definir un procedimiento de autorización. Si el valor del documento supera el límite, el procedimiento de autorización bloqueará automáticamente el documento hasta que se autorice o modifique. Escenario empresarial Pedido Pedido de entrada de mercancías Factura de proveedores Pago efectuado  Un proceso de autorización se puede configurar en documentos de ventas, compras e inventario. En el escenario empresarial mostrado aquí, existe el requisito de autorizar las compras y gastos internos que superen un cierto límite. Las solicitudes de compra o pedidos para estos gastos deben ser autorizados por un jefe antes de que puedan añadirse.  Se pueden establecer procesos de autorización para una amplia variedad de documentos en SAP Business One. Puede utilizar un procedimiento de autorización siempre que el procedimiento de trabajo requiera autorización antes de que un usuario pueda generar ciertos documentos, por ejemplo, solicitudes de compra o pedidos.  Si el valor del documento supera el límite, el procedimiento de autorización bloqueará el documento hasta que se autorice.  Los procedimientos de autorización también pueden utilizarse en el proceso de ventas, en el procesamiento de pagos efectuados, en la recepción y traslados de inventario y en el recuento de stocks.",
-    "start_time": 71.04,
-    "end_time": 160.94
+    "image_file": "Slide_003.webp",
+    "script_text": "Un proceso de autorización se usa para controlar que ciertas acciones, como compras o gastos internos que superen un límite definido, requieran aprobación previa por un jefe. Si el valor del documento supera el umbral, el sistema lo bloquea automáticamente hasta que se autorice o modifique. Este mecanismo se puede aplicar a documentos de ventas, compras, inventario, pagos y más. Es ideal cuando el flujo de trabajo exige una revisión antes de generar documentos como solicitudes de compra o pedidos, asegurando gobernanza y cumplimiento.",
+    "start_time": 60.8,
+    "end_time": 95.0
   },
   {
     "slide_index": 4,
-    "image_file": "040_Slide_04_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Workflow de autorización básico Creador Añadir ¿Es necesaria autorización? Proceso de autorización ¿Autorizado? Sí No ¿Es necesaria autorización? Nuevo proceso de autorización Sí Sí No No Acceder y modificar documento preliminar [Autorizado] • En el proceso de autorización, un usuario que está sujeto a un proceso de autorización se conoce como el creador. Cuando el creador añade un documento que cumple con las condiciones de autorización predefinidas, se notifica al creador y el documento se graba como un documento preliminar. El documento tiene el estado Documento preliminar [pendiente]. • El creador no verá el documento preliminar al explorar los registros, pero puede acceder al mismo desde el informe de borradores de documentos. • Es necesario autorizar el documento preliminar antes de poderlo generar como documento. Se envía una solicitud interna a los autorizadores predefinidos. Esta solicitud aparece en la ventana emergente Resumen de Mensajes/Alertas y el autorizador puede desglosar para ver el documento preliminar. Si se integra la aplicación móvil, las autorizaciones pueden realizarse desde dispositivos móviles. • Si el autorizador rechaza el documento, el creador recibe un mensaje interno con un vínculo al documento rechazado. El creador puede modificar el documento, y si la condición de autorización ya no se cumple, el documento se puede añadir al sistema como un documento normal. Si la condición de autorización aún se cumple, comenzará otro procedimiento de autorización. • Si el documento se autoriza en el primer nivel de autorización, se envía una solicitud de autorización al siguiente nivel de autorización (si fuera aplicable). Si el documento se autoriza en el nivel final de autorización, el creador recibirá un mensaje interno con un vínculo al documento preliminar. Ahora el creador puede añadir el documento. • Después de la autorización del documento, este tiene el estado Autorizado en el título.",
-    "start_time": 160.94,
-    "end_time": 285.29
+    "image_file": "Slide_004.webp",
+    "script_text": "En el flujo básico de autorización, el creador agrega un documento que cumple con las condiciones predefinidas. El sistema lo guarda como documento preliminar con estado 'pendiente' y notifica al autorizador mediante una alerta. El autorizador puede revisarlo, aprobarlo o rechazarlo. Si lo rechaza, el creador puede modificarlo. Si lo aprueba y hay varios niveles, se envía al siguiente. Una vez aprobado en el último nivel, el documento pasa a estado 'Autorizado' y el creador puede generarlo oficialmente en el sistema.",
+    "start_time": 95.0,
+    "end_time": 128.0
   },
   {
     "slide_index": 5,
-    "image_file": "040_Slide_05_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Configuración de un proceso de autorización En esta sección aprenderá cómo configurar un proceso de autorización.",
-    "start_time": 285.29,
-    "end_time": 292.82
+    "image_file": "Slide_005.webp",
+    "script_text": "En esta sección aprenderá cómo configurar un proceso de autorización en SAP Business One. Antes de crear cualquier modelo, es necesario activar la funcionalidad en las parametrizaciones generales. Una vez activada, podrá definir los modelos según sus necesidades de negocio. También verá cómo habilitar la autorización para la DI API, útil para desarrolladores de add-ons, y cómo manejar la actualización de documentos generados o pendientes. Es importante recordar que un usuario creador no puede desactivar la función si hay modelos activos.",
+    "start_time": 128.0,
+    "end_time": 161.0
   },
   {
     "slide_index": 6,
-    "image_file": "040_Slide_06_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Activación  La funcionalidad del proceso de autorización está habilitada en las Parametrizaciones generales  Una vez activada, la funcionalidad no se puede desactivar si hay modelos de autorización activos  Casilla de selección para habilitar el proceso de autorización para la DI API  Las casillas de selección adicionales permiten actualizar documentos generados y/o documentos pendientes de autorización  Un usuario definido como creador no puede desactivar el proceso de autorización Parametrizaciones generales Primero debe activar la funcionalidad del proceso de autorización en el sistema. En Parametrizaciones generales, seleccione la ficha IC y seleccione la casilla de selección Habilitar el proceso de autorización. Tenga en cuenta que esta es una parametrización que afecta a todo el sistema; una vez que haya creado y activado un modelo de autorización, no podrá desactivar la funcionalidad de autorización desde aquí, pero podrá desactivar el modelo de autorización individual. En esta ventana, también puede habilitar la funcionalidad del proceso de autorización para la DI API. Esto es lo que más interesa a los proveedores de add-ons. La DI API proporciona métodos para desencadenar un proceso de autorización y grabar el documento preliminar. También puede utilizar la DI API para aprobar documentos preliminares. Hay tres casillas de selección más que permiten actualizar documentos que se han generado mediante un proceso de autorización y/o documentos que todavía se encuentran en el proceso de autorización y esperan ser autorizados. Esto se explicará más adelante en el curso.",
-    "start_time": 292.82,
-    "end_time": 388.7
+    "image_file": "Slide_006.webp",
+    "script_text": "Para activar la funcionalidad de autorización, debe acceder a Parametrizaciones generales, pestaña IC, y marcar la casilla 'Habilitar el proceso de autorización'. Esta configuración afecta a todo el sistema. También puede habilitarla para la DI API, lo que permite a los add-ons desencadenar y aprobar documentos preliminares. Las casillas adicionales permiten actualizar documentos ya generados o aquellos aún pendientes de autorización. Importante: una vez que se active un modelo de autorización, no podrá desactivar la función desde aquí, aunque sí podrá desactivar modelos individuales.",
+    "start_time": 161.0,
+    "end_time": 195.2
   },
   {
     "slide_index": 7,
-    "image_file": "040_Slide_07_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Etapas de autorización Para configurar un procedimiento de autorización, defina etapas de autorización y modelos de autorización.  Un nivel de autorización es una lista de autorizadores designados que pueden autorizar un documento en el mismo nivel.  El modelo de autorización combina los creadores, los documentos, los criterios de autorización y una o varias etapas de autorización  Las etapas son independientes del modelo de autorización, y puede reutilizar etapas de autorización en otros modelos  Puede definir varios modelos de autorización para diferentes conjuntos de usuarios y/o documentos y con diferentes criterios. Modelos de autorización y Etapas Modelo de autorización Etapas de autorización Autorizadores de primer nivel Autorizadores de segundo nivel Creadores Documentos Criterios (condiciones) Para configurar un procedimiento de autorización, defina etapas de autorización y modelos de autorización.  Un nivel de autorización es una lista de autorizadores designados que pueden autorizar un documento en el mismo nivel.  El modelo de autorización combina los creadores, los documentos que requieren autorización, los criterios de autorización y uno o varios niveles de autorización Las etapas de autorización son independientes del modelo de autorización, y puede reutilizar etapas de autorización en otros modelos. El modelo de autorización le permite modelar todo un proceso de autorización. Puede definir varios modelos de autorización para diferentes conjuntos de usuarios o documentos y con diferentes criterios. Solo las clases de documento seleccionadas en el modelo de autorización activarán un proceso de aprobación, y únicamente cuando las añada un creador.",
-    "start_time": 388.7,
-    "end_time": 489.22
+    "image_file": "Slide_007.webp",
+    "script_text": "Para configurar un procedimiento de autorización en SAP Business One, primero debe definir las etapas de autorización y luego los modelos. Una etapa es un grupo de autorizadores que pueden validar un documento en el mismo nivel. El modelo combina creadores, documentos, criterios y una o varias etapas. Las etapas son independientes y reutilizables en distintos modelos. Puede crear varios modelos para diferentes usuarios, documentos o condiciones. Solo los documentos seleccionados en el modelo activan el proceso cuando los crea un creador designado.",
+    "start_time": 195.2,
+    "end_time": 229.0
   },
   {
     "slide_index": 8,
-    "image_file": "040_Slide_08_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Autorizaciones del proceso de autorización El permiso para definir etapas y modelos del proceso de autorización lo fijan las autorizaciones generales Para configurar un proceso de aprobación, necesita las autorizaciones generales como se muestra aquí en el tema Proceso de autorización: • Etapas de autorización: para definir y actualizar etapas de autorización • Modelos de autorización: para definir y actualizar modelos de autorización • Informe de estado de autorización: para ver las solicitudes pendientes de aprobación • Informe de decisión de autorización: para visualizar y aprobar las solicitudes pendientes de aprobación",
-    "start_time": 489.22,
-    "end_time": 526.8
+    "image_file": "Slide_008.webp",
+    "script_text": "Para configurar un proceso de aprobación en SAP Business One, necesita autorizaciones generales específicas. Estas le permiten definir y actualizar etapas de autorización, crear y modificar modelos, ver el estado de las solicitudes pendientes y aprobar o rechazar decisiones. Sin estos permisos, no podrá gestionar el flujo de autorización. Los informes de estado y decisión son esenciales para monitorear y ejecutar el proceso de aprobación de manera eficiente.",
+    "start_time": 229.0,
+    "end_time": 256.8
   },
   {
     "slide_index": 9,
-    "image_file": "040_Slide_09_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Configuración – Niveles de autorización  Todos los autorizadores deben definirse primero como usuarios en SAP Business One  Añadir más de un usuario en una etapa para permitir ausencias del personal. Especificar un número mínimo de autorizaciones para la etapa  Los niveles pueden combinarse en cualquier orden para crear un procedimiento de autorización de varios niveles Cuando combine niveles, asegúrese de que el mismo usuario no aparezca en varios niveles. Si define más de un autorizador por nivel, puede establecer el número mínimo de autorizaciones necesarias o rechazos requeridos antes de que el proceso pase al siguiente nivel Gestión > Inicialización del sistema >Procesos de autorización > Niveles de autorización Antes de crear un modelo de autorización debe definir las etapas de autorización. Todos los autorizadores deben definirse primero como usuarios en SAP Business One. Una buena práctica es incluir más de un usuario en una etapa para permitir que el personal salga de vacaciones o se ausente. Puede especificar una cantidad mínima de autorizaciones requeridas desde el pool de autorizadores. La etapa de autorización se graba en el sistema y puede combinarse posteriormente con cualquier otra etapa de aprobación para crear un procedimiento de autorización de varios niveles. Cuando combine niveles, asegúrese de que no se defina el mismo usuario en varios niveles. En la diapositiva de ejemplo, hemos definido dos etapas de autorización. En la primera etapa hay dos usuarios de compras que pueden autorizar un documento de compras, pero solo necesitamos la autorización de uno de los dos. De forma similar, en el segundo paso vuelve a haber dos autorizadores, pero únicamente es necesaria la autorización de uno de ellos. Las dos etapas son independientes, pero podemos combinarlas en el orden correcto en el modelo de autorización.",
-    "start_time": 526.8,
-    "end_time": 638.81
+    "image_file": "Slide_009.webp",
+    "script_text": "Antes de crear un modelo, debe definir los niveles de autorización en SAP Business One. Todos los autorizadores deben existir primero como usuarios en el sistema. Puede agregar varios usuarios por nivel para cubrir ausencias y establecer un número mínimo de aprobaciones requeridas. Los niveles se combinan en secuencia para crear un proceso de varios niveles. Es clave que ningún usuario aparezca en más de un nivel para evitar conflictos. En el ejemplo, dos etapas con dos compradores cada una requieren solo una aprobación por etapa para avanzar.",
+    "start_time": 256.8,
+    "end_time": 292.6
   },
   {
     "slide_index": 10,
-    "image_file": "040_Slide_10_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": " Especifique los usuarios que están sujetos a autorización cuando crean ciertos documentos  Solo los usuarios aquí especificados están sujetos al proceso de autorización  Un usuario no puede modificar un modelo de autorización si ha sido seleccionado como creador en el modelo  El proceso de autorización también se aplica a un creador que ejecuta el asistente de generación de documentos Configuración – Modelos de autorización Ficha Creador Gestión > Inicialización del sistema >Procesos de autorización > Modelos de autorización  En la ficha Creadores, seleccione los usuarios que están sujetos a la autorización cuando crean documentos. Todos los creadores deben definirse primero como usuarios en SAP Business One.  Solo los usuarios aquí especificados están sujetos al proceso de autorización. Un usuario que no está especificado como creador puede añadir o actualizar un documento sin autorización.  Tenga en cuenta que el sistema no permite que un usuario modifique un modelo de autorización si el usuario ha sido seleccionado como creador en el modelo. Esto no se aplica a los superusuarios.  El creador no puede desactivar el proceso de autorización en las Parametrizaciones generales, aunque sea un superusuario.  Nota: El proceso de aprobación también se aplica cuando un creador genera documentos por lote utilizando el asistente de generación de documentos. Se envía una solicitud de aprobación para cada documento que necesita autorización; es decir, cada documento sigue su propio proceso de autorización.",
-    "start_time": 638.81,
-    "end_time": 731.21
+    "image_file": "Slide_010.webp",
+    "script_text": "En la ficha Creadores del modelo de autorización, selecciona los usuarios que estarán sujetos al proceso cuando creen documentos. Solo estos usuarios activarán la autorización al generar un documento. Un creador no puede modificar el modelo si está seleccionado en él, excepto los superusuarios. El proceso también aplica cuando se usa el asistente de generación de documentos: cada documento generado por lote activa su propia solicitud de aprobación. Todos los creadores deben existir previamente como usuarios en SAP Business One.",
+    "start_time": 292.6,
+    "end_time": 325.2
   },
   {
     "slide_index": 11,
-    "image_file": "040_Slide_11_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Configuración – Modelos de autorización  Seleccione los documentos que requieren autorización (cuando los creen los creadores)  La aprobación se aplicará a cada instancia del documento si se cumple con las condiciones de autorización:  Los tipos de documentos de compras y ventas pueden seleccionarse en un modelo, aunque tendrá que crear modelos de autorización separados si las condiciones o autorizadores fueran diferentes  No se pueden combinar documentos de marketing con los tipos de documento de transacción de inventario, pago, solicitud interna, acuerdo global o recuento de inventario en la misma plantilla Ficha Documentos  En la ficha Documentos, seleccione las clases de documento que requieren autorización cuando las añade un creador. El proceso de autorización se aplicará a cada instancia de la clase de documento seleccionada aquí, cuando la crea un usuario especificado en la ficha Creadores.  Ambos tipos de documentos de compras y ventas pueden seleccionarse en un modelo; no obstante, si las condiciones en la ficha condiciones o los creadores fueran diferentes, debe crear modelos de autorización separados.  El sistema no le permitirá combinar tipos de documentos de compras y ventas con tipos de documentos de inventario o de pago en el mismo modelo. Tendrá que crear modelos separados.  Tenga en cuenta que la plantilla de autorización de un pago saliente solo se aplica a un pago manual y no se activará para los pagos salientes creados por el asistente de pago.",
-    "start_time": 731.21,
-    "end_time": 817.87
+    "image_file": "Slide_011.webp",
+    "script_text": "En la ficha Documentos del modelo de autorización, elige las clases de documento que requieren aprobación cuando las crea un creador designado. El proceso se aplica a cada instancia del documento seleccionado. Puede incluir compras y ventas en el mismo modelo, pero si las condiciones o creadores difieren, necesita modelos separados. No puede mezclar documentos de transacción como inventario, pago o requisición interna en un solo modelo. La plantilla de pago saliente solo se activa para pagos manuales, no para los generados por el asistente de pago.",
+    "start_time": 325.2,
+    "end_time": 360.6
   },
   {
     "slide_index": 12,
-    "image_file": "040_Slide_12_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": " Incluya los niveles de autorización predefinidos  La secuencia de los niveles en el modelo sigue el orden de un proceso de autorización de varios niveles  Puede reorganizar la secuencia haciendo clic en la fila y utilizando las flechas Configuración – Modelos de autorización Ficha Etapas  En la ficha Etapas, incluya uno o más niveles predefinidos.  La secuencia en la que los niveles se presentan en el modelo sigue el orden de un proceso de autorización de varios niveles.  Puede reordenar la secuencia con las flechas arriba y abajo.",
-    "start_time": 817.87,
-    "end_time": 849.65
+    "image_file": "Slide_012.webp",
+    "script_text": "En la ficha Etapas del modelo de autorización, agrega uno o más niveles predefinidos que creaste previamente. El orden en que aparecen las etapas en este cuadro define la secuencia del proceso de autorización de varios niveles. Puede cambiar el orden usando las flechas arriba y abajo para mover una etapa hacia adelante o atrás. Es fundamental que la secuencia refleje correctamente el flujo real de aprobaciones: primero nivel uno, luego dos, etc. Un orden incorrecto invalidará el proceso lógico de autorización.",
+    "start_time": 360.6,
+    "end_time": 394.0
   },
   {
     "slide_index": 13,
-    "image_file": "040_Slide_13_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Criterios de autorización:  Siempre (sin condiciones)  Condiciones predefinidas (varían de acuerdo con los tipos de documentos seleccionados)  Consultas de usuario Modelos de autorización - Ficha Condiciones Nota: Las condiciones predefinidas funcionan únicamente en el nivel de cabecera de un documento, no en el nivel de línea. Por ejemplo: El descuento y el total aparecen en cada fila, así como también en la cabecera de documento, pero el modelo de autorización solo tiene en cuenta los campos de cabecera En la ficha Condiciones, configure las condiciones de la autorización:  El valor por defecto es Siempre. Los tipos de documentos seleccionados siempre pasarán por la autorización cuando los cree el creador.  Puede seleccionar una condición predefinida. Las condiciones predefinidas disponibles en el modelo dependen de los tipos de documentos seleccionados y abarcan situaciones comunes, como un descuento o un total que supera un valor definido. En este ejemplo, hemos especificado la condición de que el total del documento supera 500.  En función del documento seleccionado para la autorización, se visualizarán diferentes condiciones.  Puede decidir añadir sus propias condiciones a través de una consulta de usuario. Esto permite modelar condiciones de autorización más complejas. Tenga en cuenta que las condiciones predefinidas para el descuento y el total funcionan únicamente en el nivel de cabecera del documento, no en el nivel de la línea.",
-    "start_time": 849.65,
-    "end_time": 939.65
+    "image_file": "Slide_013.webp",
+    "script_text": "Los criterios de autorización definen cuándo un documento requiere aprobación en SAP Business One. Puede configurarse como 'Siempre', sin condiciones, o mediante condiciones predefinidas que dependen del tipo de documento, como un total que supera 500 USD. También puede usar consultas de usuario para crear reglas más complejas. Es importante recordar que las condiciones predefinidas solo se aplican al nivel de cabecera del documento, no al nivel de línea, por lo que descuentos y totales en filas no son evaluados por el modelo si solo se configuraron en cabecera.",
+    "start_time": 394.0,
+    "end_time": 430.2
   },
   {
     "slide_index": 14,
-    "image_file": "040_Slide_14_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Condición predefinida Ratio Valor Total 500 Cantidad 5 - 200  Seleccione un operador (mayor que, menor que, igual a, etc.) e indique un valor  Seleccione un rango (En rango, Fuera de rango) e introduzca un rango de bajo a alto, separado con guion Uso de condiciones predefinidas Mayor que Menor que Igual a No igual a En rango Fuera de rango . . Mayor que Menor que Igual a No igual a En rango Fuera de rango . .  Varias condiciones predefinidas evaluadas mediante la lógica \"o\"  El proceso de autorización se aplicará si solo se cumple una de las condiciones predefinidas.  Cuando utiliza una condición predefinida, puede seleccionar un operador tal como “mayor que” o “igual a” e indicar un valor para la comparación.  También puede seleccionar “En rango” o “Fuera de rango” como el ratio e introducir dos valores del rango, de bajo a alto, separados con un guion.  Puede seleccionar más de una condición predefinida. En ese caso, el proceso de autorización se activará si solo se cumple uno de los términos predefinidos. En el ejemplo, el importe total del documento es mayor que 500 o la cantidad se encuentra entre 5 y 200.",
-    "start_time": 939.65,
-    "end_time": 1011.34
+    "image_file": "Slide_014.webp",
+    "script_text": "En SAP Business One, las condiciones predefinidas permiten autorizar documentos según criterios como importe total o cantidad. Puede seleccionar operadores como 'mayor que', 'menor que' o 'igual a', y especificar un valor. También puede usar rangos con 'En rango' o 'Fuera de rango', definiendo un intervalo de bajo a alto. Varias condiciones se evalúan con lógica 'o': basta con que se cumpla una para activar la autorización. Por ejemplo, se requiere aprobación si el total es mayor a 500 USD o la cantidad está entre 5 y 200 unidades.",
+    "start_time": 430.2,
+    "end_time": 466.4
   },
   {
     "slide_index": 15,
-    "image_file": "040_Slide_15_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "La casilla de selección Activar está activada por defecto: Desmárquela si desea configurar el modelo ahora y activarlo posteriormente También puede desmarcar para desactivar un proceso de autorización existente (asegúrese de que todos los documentos están autorizados) Activación de un modelo de autorización La casilla de selección Activar al actualizar documentos no generados por el proceso de autorización también se define por defecto: - Cubre la condición mediante la cual un creador actualiza un documento que originalmente no ha pasado por un proceso de autorización - Si la casilla de selección está marcada, se creará un borrador nuevo y se activará un proceso de autorización si, a causa a la actualización, el documento ahora cumple con los criterios de autorización La casilla de selección Activar en el modelo de autorización se fija de forma predeterminada. Puede desmarcar esta casilla de selección si desea configurar el proceso de aprobación ahora y activarlo más adelante. Puede desactivar un proceso de aprobación en cualquier momento desmarcando la casilla de selección, siempre y cuando no sea el creador, aunque debe asegurarse de no existen documentos pendientes de autorización. La casilla de selección Activar al actualizar documentos no generados por el proceso de autorización también se marca por defecto: Esto cubre la condición mediante la cual un creador actualiza un documento que originalmente no se ha generado tras la autorización. Esto puede ser debido a que lo ha creado otro usuario no especificado como creador, o porque no cumplía con los criterios de autorización cuando el creador lo añadió por primera vez. Si marca esta casilla de selección, se creará un borrador nuevo y se activará un proceso de autorización si, a causa a la actualización, el documento ahora cumple con los criterios de autorización Por ejemplo: el creador crea y graba una oferta de ventas, por lo general, sin descuento. Posteriormente, el creador actualiza la oferta de ventas para añadir un descuento y este proceso requiere una autorización. Si se ha enviado una solicitud de autorización para actualizaciones de un documento existente, las siguientes operaciones no serán posibles hasta que finalice o se cancele el proceso de autorización: • Actualización del documento • Cierre del documento • Cancelación del documento • Creación de documentos a partir del documento Por ejemplo, no se puede copiar un pedido de cliente en una factura de clientes, crear una solicitud de traslado de inventario o un traslado de artículo (traslado) a partir de un pedido de cliente, o generar una lista de picking basada en un pedido de cliente. Si se requieren actualizaciones, aplíquelas al borrador pendiente de autorización.",
-    "start_time": 1011.34,
-    "end_time": 1171.97
+    "image_file": "Slide_015.webp",
+    "script_text": "La casilla 'Activar' en el modelo de autorización está marcada por defecto. Puede desmarcarla para configurar el modelo ahora y activarlo más tarde, o para desactivar un proceso existente, siempre que no haya documentos pendientes. La casilla 'Activar al actualizar documentos no generados por el proceso' también está activada por defecto. Si un usuario modifica un documento previamente no autorizado y el cambio cumple con los criterios (como añadir un descuento que supera el límite), SAP crea un borrador nuevo y dispara un proceso de autorización. Durante este proceso, no se pueden cerrar, cancelar ni generar documentos derivados hasta que se apruebe o cancele.",
+    "start_time": 466.4,
+    "end_time": 508.6
   },
   {
     "slide_index": 16,
-    "image_file": "040_Slide_16_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Gestión del proceso de autorización En esta sección se describe el flujo y el estado de un documento durante un proceso de autorización.",
-    "start_time": 1171.97,
-    "end_time": 1180.82
+    "image_file": "Slide_016.webp",
+    "script_text": "Esta sección describe el flujo y los estados de un documento durante el proceso de autorización en SAP Business One. Veremos cómo evoluciona el documento desde su creación como preliminar hasta su aprobación final, incluyendo notificaciones, ventanas emergentes y acciones posibles por parte del creador y autorizadores. El objetivo es comprender el ciclo completo para gestionar aprobaciones de forma efectiva y evitar bloqueos en operaciones como cierre, cancelación o generación de documentos relacionados.",
+    "start_time": 508.6,
+    "end_time": 538.4
   },
   {
     "slide_index": 17,
-    "image_file": "040_Slide_17_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Estado del documento durante el proceso de autorización Solicitud para aprobar la generación de documentos Estado [Doc. preliminar pendiente] Generación de documento aprobada Estado [Aprobado] El creador añade el documento preliminar al sistema Estado [Documento preliminar aprobado]  El creador recibe una ventana emergente cuando añade un documento que activa un proceso de aprobación. En esta ventana el creador puede escribir comentarios sobre los autorizadores.  El documento se graba con el estado [Documento preliminar pendiente] y se envía una solicitud de autorización para cada uno de los autorizadores.  Se notifica a los aprobadores en la ventana emergente Resumen de Mensajes/Alertas. Desde esta ventana pueden abrir la solicitud de autorización, desglosar para ver el documento preliminar y aprobar o rechazar el documento.  Si el documento se aprueba el estado pasa a ser [Documento preliminar aprobado] hasta que el creador añade el documento y entonces pasa a ser [Aprobado]  Si el documento se rechaza, el estado es [Documento preliminar rechazado]. El creador puede acceder al documento preliminar y actualizarlo.",
-    "start_time": 1180.82,
-    "end_time": 1253.59
+    "image_file": "Slide_017.webp",
+    "script_text": "Durante el proceso de autorización, el documento pasa por varios estados. Al crearlo, se graba como [Documento preliminar pendiente] y se envía una solicitud de autorización. El creador puede agregar comentarios en una ventana emergente. Los autorizadores reciben notificaciones y pueden aprobar o rechazar desde el Resumen de Mensajes/Alertas. Si se aprueba, el estado cambia a [Documento preliminar aprobado] hasta que el creador lo agrega oficialmente, pasando entonces a [Aprobado]. Si se rechaza, el estado es [Documento preliminar rechazado], y el creador puede acceder al documento para modificarlo y volver a enviarlo.",
+    "start_time": 538.4,
+    "end_time": 575.8
   },
   {
     "slide_index": 18,
-    "image_file": "040_Slide_18_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Vista del creador Vista del autorizador Supervisión de un proceso de autorización  Durante un proceso de autorización, el autor puede supervisar sus solicitudes de aprobación mediante el Informe de estado de autorización.  Los autorizadores pueden utilizar el Informe de decisión de autorización para ver todos los documentos que necesitan su autorización. A partir de este informe pueden autorizar o rechazar varios documentos.",
-    "start_time": 1253.59,
-    "end_time": 1279.97
+    "image_file": "Slide_018.webp",
+    "script_text": "En SAP Business One, el creador puede supervisar sus solicitudes de aprobación mediante el Informe de estado de autorización, que muestra todos los documentos pendientes de su autorización. Los autorizadores, por su parte, utilizan el Informe de decisión de autorización para ver los documentos que requieren su aprobación. Desde este informe pueden autorizar o rechazar varios documentos a la vez, agilizando el proceso. Estos informes son esenciales para mantener el control y la trazabilidad en los flujos de aprobación, especialmente en entornos con alto volumen de transacciones.",
+    "start_time": 575.8,
+    "end_time": 611.2
   },
   {
     "slide_index": 19,
-    "image_file": "040_Slide_19_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Cancelación de un proceso de autorización Se puede cancelar un proceso de autorización con el informe de estado de autorización. Si es necesario, se puede restaurar utilizando la opción de clic derecho o con el menú Datos Si, por ejemplo, se encuentra un error en el documento después de que el documento se haya enviado para su autorización, el proceso de autorización puede cancelarse. El informe de estado de autorización permite a un creador (o un autorizador) solicitar una cancelación de un proceso de autorización actual. Seleccione la línea para el documento y hagadoble clic; luego seleccione Cancelar desde el menú contextual. También puede cancelar el proceso de aprobación seleccionando el menú Datos > Cancelar . Después, el documento no se podrá añadir al sistema y no se podrá actualizar. Se puede restaurar un proceso de autorización cancelado de la misma manera. La restauración de un procedimiento de autorización no se puede aplicar a documentos que se han creado sin autorizaciones y se han actualizado más tarde.",
-    "start_time": 1279.97,
-    "end_time": 1344.34
+    "image_file": "Slide_019.webp",
+    "script_text": "Para cancelar un proceso de autorización en SAP Business One, acceda al informe de estado de autorización. Seleccione la línea del documento y haga doble clic, luego elija Cancelar desde el menú contextual. También puede usar el menú Datos > Cancelar. Tras la cancelación, el documento no podrá añadirse ni actualizarse en el sistema. Si es necesario, puede restaurar el proceso siguiendo los mismos pasos. Esta función es útil cuando se detecta un error después de enviar el documento para autorización, evitando que se procese incorrectamente.",
+    "start_time": 611.2,
+    "end_time": 646.2
   },
   {
     "slide_index": 20,
-    "image_file": "040_Slide_20_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Resumen de los estados del documento Estado de documento Comentario Documento preliminar [pendiente]  El documento está en proceso de autorización Documento preliminar [aprobado]  El documento se ha autorizado pero el creador todavía no lo ha grabado Documento preliminar [rechazado]  Los autorizadores han rechazado el documento. Lo puede actualizar el creador. Si todavía cumple con los criterios de autorización, se iniciará otro proceso de autorización. Documento preliminar [Cancelado]  El creador o autorizador han cancelado el documento en el proceso de autorización. El documento preliminar no se puede añadir o actualizar. [Autorizado]  El documento se ha aprobado y el creador lo ha grabado. El creador no lo puede actualizar a menos que se haya fijado la casilla de selección en Parametrizaciones generales Documento preliminar para la actualización de documento [Pendiente]  El creador actualiza un documento que no se había aprobado previamente, y ahora reúne los criterios necesarios para un proceso de autorización Documento preliminar para la actualización de documento [Autorizado]  El documento preliminar para la actualización de documento se ha autorizado y se puede añadir. Borrador de la actualización de documento [Cancelado] • Se ha cancelado el borrador de la actualización de documento Esta diapositiva muestra un resumen de los estados del documento que se pueden definir durante un proceso de autorización.",
-    "start_time": 1344.34,
-    "end_time": 1430.76
+    "image_file": "Slide_020.webp",
+    "script_text": "Durante un proceso de autorización en SAP Business One, el documento pasa por diversos estados que reflejan su progreso. Puede estar como documento preliminar pendiente, aprobado, rechazado o cancelado. Una vez autorizado y grabado, pasa al estado [Autorizado], donde no se puede modificar sin habilitación específica en parametrizaciones generales. También existen estados para actualizaciones de documentos no aprobados previamente. Estos estados permiten controlar quién puede modificar el documento y en qué momento, asegurando trazabilidad y control interno en la empresa.",
+    "start_time": 646.2,
+    "end_time": 678.8
   },
   {
     "slide_index": 21,
-    "image_file": "040_Slide_21_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Numeración de documentos y claves de documento preliminar  Un número de documento preliminar se asigna a un documento cuando se graba como documento preliminar, pendiente de autorización  Dado que el creador puede continuar trabajando en otros documentos, es posible modificar el número de documento real cuando el documento se añada al sistema tras la autorización Núm. doc. preliminar 727 Número real 728 Cuando un documento preliminar se graba como pendiente de autorización, se le asigna un número de documento. Este es simplemente un número de documento preliminar y el número de documento real se asigna solo cuando el creador aprueba y graba el documento preliminar. Dado que puede haber un lapso de tiempo antes de que se autorice el documento y el creador puede trabajar en otros documentos, el número de documento real puede variar respecto al número de documento preliminar. Por ejemplo, se asigna la clave de documento preliminar 727 a un pedido de cliente y se envía para su autorización. A continuación, el creador crea los pedidos de cliente 727 que no requieren aprobación. Cuando se aprueba el primer pedido de cliente y el creador lo graba, se le asigna el siguiente número disponible en la serie, por ejemplo, 728.",
-    "start_time": 1430.76,
-    "end_time": 1508.76
+    "image_file": "Slide_021.webp",
+    "script_text": "Cuando se graba un documento como preliminar pendiente de autorización, SAP Business One le asigna un número de documento preliminar. Este número es temporal y solo sirve para seguimiento durante el proceso de aprobación. El número real del documento se asigna únicamente cuando el creador aprueba y graba el documento en el sistema. Debido a que el creador puede seguir trabajando en otros documentos mientras espera la autorización, el número real puede ser diferente al preliminar. Por ejemplo, si el preliminar es 727 y se crean otros documentos antes de aprobarlo, el número real asignado podría ser 728. Esta numeración evita conflictos y mantiene la integridad de la secuencia documental.",
+    "start_time": 678.8,
+    "end_time": 723.4
   },
   {
     "slide_index": 22,
-    "image_file": "040_Slide_22_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Se puede acceder a un documento en el proceso de autorización desde el informe de borradores de documentos  Hay protección para evitar que un creador/autorizador actualice un documento con los estados [Documento preliminar pendiente], [Documento preliminar autorizado] o [Autorizado]  Las casillas de selección en las parametrizaciones generales controlan las actualizaciones de documentos con estos estados: La actualización de un documento autorizado solo es posible si la casilla de selección Habilitar la actualización del documento generado o actualizado por el proceso de autorización está fijada La actualización de un documento [Documento preliminar pendiente] o [Documento preliminar aprobado] por parte del creador solo es posible si la casilla de selección Permitir que el creador actualice el documento preliminar con el estado Pendiente/Autorizado está activada La actualización de un documento [Documento preliminar pendiente] por parte del autorizador solo es posible si la casilla de selección Permitir que el autorizador actualice el borrador del documento en estado Pendiente Actualizaciones del documento durante el proceso de autorización Parametrizaciones generales • Un documento autorizado por un proceso de autorización tiene el estado Documento preliminar [Autorizado]. Cuando el creador añada este documento al sistema, el estado cambiará a [Autorizado]. Un creador puede actualizar este documento autorizado si la casilla de selección 'Habilitar la actualización del documento generado/actualizado por el proceso de aprobación ’está fijada en las parametrizaciones generales. Si el documento actualizado aún cumple con los criterios de autorización, se iniciará un nuevo proceso de autorización. • Un documento que está pendiente de aprobación tiene el estado Documento preliminar [Pendiente]. Un creador puede realizar modificaciones en este documento preliminar, incluso cuando está pendiente de autorización, si la casilla de selección \"Permitir que el creador actualice el documento preliminar con el estado Pendiente/Autorizado\" está fijada en las parametrizaciones generales. Si el documento actualizado aún cumple con los criterios de autorización, se iniciará un nuevo proceso de autorización y el proceso de aprobación actual se cancelará. Si el documento actualizado no cumple con los criterios de autorización (por ejemplo modificar el % de descuento de 15 a 13%) el documento se puede añadir como un documento normal, sin el estado [Autorizado] • La casilla de selección Permitir que el autorizador actualice el borrador del documento en estado Pendiente permitirá al autorizador actualizar el borrador mientras esté en estado pendiente. En este caso, independientemente de si se cumplen o no las condiciones de la autorización, el borrador permanece en estado pendiente, a la espera de su autorización. Nota: Si las casillas de selección NO se fijan, el creador puede modificar determinados campos en el documento preliminar, entre ellos: Comentarios del documento, comentarios del asiento, comentarios de apertura y cierre (menú contextual), anexos y elementos de IU.",
-    "start_time": 1508.76,
-    "end_time": 1696.3
+    "image_file": "Slide_022.webp",
+    "script_text": "En SAP Business One, las actualizaciones de documentos durante un proceso de autorización están controladas por casillas de selección en las Parametrizaciones Generales. Estas opciones determinan si un creador o autorizador puede modificar un documento en estados como [Documento preliminar pendiente], [Documento preliminar autorizado] o [Autorizado]. Por ejemplo, para permitir que el creador edite un documento pendiente de aprobación, debe activarse la casilla 'Permitir que el creador actualice el documento preliminar con el estado Pendiente/Autorizado'. Si tras la actualización el documento aún cumple los criterios de autorización, se inicia un nuevo proceso. Si no cumple, se graba como documento normal sin estado [Autorizado]. Esto evita cambios no autorizados y mantiene el control del flujo de aprobación.",
+    "start_time": 723.4,
+    "end_time": 770.4
   },
   {
     "slide_index": 23,
-    "image_file": "040_Slide_23_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Múltiples autorizadores en un nivel Resultado: Ya que solo se requiere una autorización para el nivel, el rechazo se ignora y el documento se autoriza y puede añadirse al sistema. Jane Autoriza  John Rechaza  Tiempo Ejemplo: la cantidad mínima de autorizadores es 1  Cuando especifica múltiples autorizadores en el mismo nivel, tendrán el mismo nivel de autorización.  Tenga en cuenta el efecto de varios autorizadores en el mismo nivel.  En este ejemplo, la cantidad mínima necesaria de autorizadores es 1.  Uno de los autorizadores autoriza el documento. Posteriormente, otro lo rechaza.  Pero este rechazo no tiene efecto si se produce después de la primera autorización. Debido a que solo es necesaria una autorización, el documento se autoriza y puede añadirse al sistema.",
-    "start_time": 1696.3,
-    "end_time": 1747.37
+    "image_file": "Slide_023.webp",
+    "script_text": "Cuando se configuran múltiples autorizadores en el mismo nivel en SAP Business One y se establece que solo se requiere una autorización, el sistema actúa según el principio de 'primero en cumplir'. En este caso, si Jane autoriza el documento y posteriormente John lo rechaza, el rechazo no tiene efecto porque ya se alcanzó el mínimo necesario de autorizadores (uno). El documento se considera autorizado y puede añadirse al sistema. Esto evita que un rechazo posterior anule una aprobación ya válida, asegurando agilidad en el proceso cuando no se requiere consenso total.",
+    "start_time": 770.4,
+    "end_time": 807.8
   },
   {
     "slide_index": 24,
-    "image_file": "040_Slide_24_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Múltiples autorizadores en un nivel (Cont.) Jane Rechaza  John Autoriza  Resultado: documento pendiente hasta que responda otro autorizador Tiempo Ejemplo: la cantidad mínima de autorizadores es 1  En el segundo escenario, uno de los autorizadores rechaza el documento. El documento queda pendiente hasta que los otros autorizadores respondan.  Si todos los autorizadores rechazan el documento, se avisa al creador que el documento ha sido rechazado.  Aunque si otro autorizador lo autoriza y se alcanza la cantidad mínima de autorizadores necesarios, el documento se autoriza y el creador puede añadirlo al sistema.",
-    "start_time": 1747.37,
-    "end_time": 1786.58
+    "image_file": "Slide_024.webp",
+    "script_text": "En SAP Business One, cuando se configuran múltiples autorizadores en el mismo nivel con un mínimo de uno requerido, el estado del documento depende de las respuestas recibidas. Si el primer autorizador, Jane, rechaza el documento, pero el segundo, John, aún no ha respondido, el documento queda en estado pendiente. No se autoriza ni se rechaza definitivamente hasta que otro autorizador actúe. Si John luego lo autoriza, se cumple el mínimo requerido y el documento se autoriza para agregarse al sistema. Si todos rechazan, se notifica al creador que el documento fue rechazado. Esto asegura que se respete la regla de mínimo sin decidir prematuramente.",
+    "start_time": 807.8,
+    "end_time": 850.4
   },
   {
     "slide_index": 25,
-    "image_file": "040_Slide_25_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Preferencias de impresión  Las preferencias de impresión pueden establecerse según el documento que se encuentra en proceso de autorización  Puede evitar que el documento sea exportado, imprimido o enviado por fax  Cuando un documento se encuentra en un proceso de autorización, puede evitar que sea exportado, imprimido, enviado por correo electrónico o enviado por fax. Estas preferencias se fijan sobre una base por documento en la ventana Parametrizaciones de impresión (ficha Por documento).  El usuario recibirá un mensaje de error cuando intente realizar una función si la casilla de selección está seleccionada.  Tenga en cuenta que las casillas de selección no se encuentran seleccionadas por defecto.",
-    "start_time": 1786.58,
-    "end_time": 1828.61
+    "image_file": "Slide_025.webp",
+    "script_text": "En SAP Business One, puedes controlar qué acciones se permiten sobre un documento durante su proceso de autorización. Desde la ventana Parametrizaciones de impresión, en la ficha Por documento, marcas las casillas para evitar que se imprima, exporte, envíe por fax o correo. Estas opciones no están activadas por defecto. Si intentas realizar una acción bloqueada, el sistema mostrará un mensaje de error. Esto ayuda a mantener el control de documentos sensibles hasta que estén aprobados.",
+    "start_time": 850.4,
+    "end_time": 881.4
   },
   {
     "slide_index": 26,
-    "image_file": "040_Slide_26_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Uso de consultas en procesos de autorización Puede definir sus propios criterios de autorización utilizando consultas de usuario grabadas.",
-    "start_time": 1828.61,
-    "end_time": 1837.66
+    "image_file": "Slide_026.webp",
+    "script_text": "Puedes usar consultas de usuario grabadas para definir tus propios criterios de autorización en SAP Business One. Esto te permite ir más allá de las condiciones predefinidas y crear reglas específicas según las necesidades de tu empresa. Por ejemplo, puedes autorizar solo ciertos tipos de pedidos o según el valor del cliente. Las consultas se guardan previamente y luego se seleccionan en el modelo de autorización para evaluar si se debe iniciar el proceso de aprobación.",
+    "start_time": 881.4,
+    "end_time": 912.4
   },
   {
     "slide_index": 27,
-    "image_file": "040_Slide_27_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Uso de consultas como condiciones Ficha Condiciones: Las consultas de usuario grabadas se pueden añadir a modelos de autorización Las consultas pueden utilizarse en lugar de, o junto con condiciones predefinidas Le permite desarrollar escenarios de autorización personalizados Ejemplo: Deseamos un proceso de aprobación para los pedidos de clase de artículo superiores a 500 y los pedidos de clase de servicio superiores a 250.  Puede añadir consultas de usuario grabadas a las condiciones de un proceso de aprobación. Las consultas se añaden en la parte inferior del formulario de modelos de autorización y pueden utilizarse en lugar de las condiciones predefinidas, o junto con ellas. Esto le permite desarrollar escenarios de autorización personalizados con muchas más condiciones granulares.  Por ejemplo, si deseamos aplicar un proceso de autorización a pedidos de clase de artículo superiores a 500 y a pedidos de clase de servicio superiores a 250, podemos escribir una consulta para buscar las dos condiciones. Las condiciones predefinidas no se aplican en este nivel de granularidad ya que no distinguen entre el tipo de documento.",
-    "start_time": 1837.66,
-    "end_time": 1907.26
+    "image_file": "Slide_027.webp",
+    "script_text": "En la ficha Condiciones del modelo de autorización, puedes añadir consultas de usuario grabadas para reemplazar o complementar las condiciones predefinidas. Estas consultas se agregan al final del formulario y permiten construir escenarios de autorización más detallados y específicos. Por ejemplo, puedes crear una regla que se aplique solo a pedidos de artículos mayores a 500 o servicios mayores a 250. Esto brinda mayor flexibilidad para adaptar los flujos de aprobación a reglas de negocio complejas.",
+    "start_time": 912.4,
+    "end_time": 943.4
   },
   {
     "slide_index": 28,
-    "image_file": "040_Slide_28_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Combinación de consultas y condiciones predefinidas Ficha Condiciones Si se combinan condiciones predefinidas con una consulta, el proceso de autorización se iniciará solo si se cumple una de las condiciones; se evalúa mediante la lógica O: En el ejemplo, se iniciará un proceso de autorización si  El documento propone un presupuesto superior a 500 O bien  Si el documento cumple con las condiciones de la consulta  Si se combinan condiciones predefinidas con una consulta en un modelo de autorización, el proceso de autorización se iniciará solo si se cumple una de las condiciones. En otras palabras, las condiciones se evalúan con la lógica OR.  Por ejemplo, si combinamos el término predefinido \"Desviación del presupuesto\" con la consulta mencionada anteriormente de los pedidos de clase de servicio y artículo, entonces el proceso de autorización se activará si el documento propone un presupuesto superior a 500 o si se cumple una de las condiciones de consulta.",
-    "start_time": 1907.26,
-    "end_time": 1965.77
+    "image_file": "Slide_028.webp",
+    "script_text": "Cuando combinas una condición predefinida con una consulta de usuario en un modelo de autorización, el sistema usa lógica OR: el proceso de autorización se inicia si se cumple cualquiera de las dos condiciones. Por ejemplo, si el documento tiene un presupuesto mayor a 500 o si cumple con la consulta que verifica pedidos de artículo o servicio por encima de ciertos montos, se activa el flujo de aprobación. Esto permite mayor flexibilidad sin requerir que se cumplan todos los criterios.",
+    "start_time": 943.4,
+    "end_time": 976.4
   },
   {
     "slide_index": 29,
-    "image_file": "040_Slide_29_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Sintaxis de consulta para procedimientos de autorización Una consulta utilizada en un proceso de autorización tiene requisitos especiales:  Hace referencia al documento actual en una ventana activa  Para hacer referencia a un campo en la ventana activa, debe incluir un signo $ delante del campo con corchetes  La consulta debe utilizar SELECT DISTINCT ‘True’  La consulta no hace referencia a los campos de nivel de línea Ejemplo: Autorización para pedidos con:  Tipo de servicio Y total > 250 O  Tipo artículo Y total > 500 SELECT distinct 'true' from OPOR T0 where ($[OPOR.\"DocType\"] = 'S' and CAST($[OPOR.\"DocTotal\"] as DECIMAL) > 250) O ($[OPOR.\"DocType\"] = 'I' and CAST($[OPOR.\"DocTotal\"] as DECIMAL) > 500) Ventana activa  Cuando escriba una consulta para utilizarla en un proceso de autorización, la consulta debe hacer referencia al documento actual en la ventana Activar. La ventana activa es la ventana en la que está trabajando el creador ya que el documento aún no se ha grabado en la base de datos.  Para hacer referencia a un campo en la ventana activa, debe incluir el símbolo$ delante del campo y rodear el campo con corchetes.  La consulta también puede hacer referencia a campos de registros en la base de datos, por ejemplo, para seleccionar un campo de los datos maestros de interlocutor comercial del documento actual. En este caso no es necesario el símbolo $ para estos campos, ya que se recogen de la base de datos.  La consulta también debe utilizar la cláusula SELECT DISTINCT ‘TRUE’ para que el resultado sea una declaración TRUE si se produjeran resultados de la consulta. Una declaración TRUE activará un proceso de autorización; una declaración FALSE no lo hará.  La consulta solo puede hacer referencia a campos de la cabecera del documento, no a nivel de línea. Los campos de nivel de línea requieren un procedimiento almacenado en la base de datos.  En la consulta que se muestra existen dos condiciones y el signo $ se utiliza con los campos DocType y DocTotal en el documento de pedido activo. La consulta de ejemplo se muestra para la sintaxis de SAP HANA.",
-    "start_time": 1965.77,
-    "end_time": 2102.69
+    "image_file": "Slide_029.webp",
+    "script_text": "Una consulta utilizada en procesos de autorización debe hacer referencia al documento activo mediante el signo $ y corchetes alrededor del nombre del campo, como $[OPOR.\"DocType\"]. Debe incluir SELECT DISTINCT 'true' para devolver un resultado booleano: true activa la autorización, false no. Solo se pueden usar campos de cabecera, no de nivel de línea. Por ejemplo, para autorizar pedidos de servicio mayores a 250 o artículos mayores a 500, se combina la condición del tipo de documento con el total convertido a número. Esta sintaxis es específica de SAP HANA.",
+    "start_time": 976.4,
+    "end_time": 1013.0
   },
   {
     "slide_index": 30,
-    "image_file": "040_Slide_30_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Consultas para múltiples tipos de documentos Si se seleccionan varios tipos de documentos en el modelo de autorización, la consulta debe poder trabajar con varios tipos de documentos similares Utilice la sintaxis de número de artículo y columna en lugar de la sintaxis de nombre de tabla y campo: $[$Item.Column.0] $[$Item.Column.Number] $[$Item.Column.Currency] $[$Item.Column.Date] En esta sintaxis se añade un segundo signo $ antes del número de artículo. El número de columna es siempre 0 ya que la consulta solo puede hacer referencia a campos de cabecera Si utiliza una consulta en un modelo de autorización con varios tipos de documentos seleccionados, entonces la consulta debe poder trabajar con los distintos tipos de documentos (por ejemplo, todos los documentos de ventas y compras).  Si utiliza la sintaxis de nombre de tabla y campo, la consulta incluirá el nombre de tabla para que solo pueda utilizarse con un tipo de documento individual.  Si utiliza la sintaxis de número de artículo y columna, la consulta no incluye el nombre de tabla y puede utilizarse con varios tipos de documentos de una estructura similar, por ejemplo, todos los documentos de compras y ventas.  Para utilizar la sintaxis de número de artículo, añada un segundo símbolo $ delante del número de artículo, entre paréntesis, para indicar que se utiliza la sintaxis de artículo. El número de columna es siempre 0 en las consultas del procedimiento de autorización ya que la consulta solo puede hacer referencia a los campos de la cabecera de un documento.  Al utilizar la sintaxis de número de artículo y columna, el campo se extrae como una cadena por lo que si necesitara el resultado en un formato diferente, tiene que especificar el formato después del número de columna. Los formatos son:  0 - que es el formato de cadena por defecto  Número – que devuelve el resultado como un valor numérico que puede utilizar en operadores de cálculo o relacionales.  Moneda – que devuelve el símbolo de moneda de un campo que contiene la cantidad y el símbolo de moneda, como el DocTotal.  Fecha – que solo debe utilizarse si el campo es un campo de fecha. La fecha se devuelve en un formato que pueda utilizarse en operadores de cálculo o relacionales.",
-    "start_time": 2102.69,
-    "end_time": 2237.14
+    "image_file": "Slide_030.webp",
+    "script_text": "Cuando tu modelo de autorización incluye varios tipos de documentos (como ventas y compras), debes usar la sintaxis de número de artículo y columna en lugar de nombre de tabla y campo. Esto se hace con expresiones como $[$Item.Column.0] o $[$Item.Column.Number]. El segundo $ indica que se usa sintaxis de artículo, y el número de columna es siempre 0 porque solo se pueden usar campos de cabecera. Puedes especificar el formato después de la columna: 0 para texto, Número para valores numéricos, Moneda para símbolos como el de DocTotal, o Fecha para campos de fecha. Esto permite que una misma consulta funcione en distintos tipos de documentos con estructura similar.",
+    "start_time": 1013.0,
+    "end_time": 1057.6
   },
   {
     "slide_index": 31,
-    "image_file": "040_Slide_31_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Ejemplos de consulta de la ventana Activar [.. Artículo= ## Columna= ## …. Nombre de tabla, Nombre de campo] Línea=1 Barra de estado Número de artículo y columna $[Nombre de tabla. Nombre de campo] $[$ Número de artículo. Número de columna.0] .Número] .Moneda] .Fecha] Nombre de tabla y campo Ver > Información del sistema Ctrl+Mayús+I Sintaxis de tabla y campo SELECT distinct ‘true’ FROM OPOR T0 WHERE $[OPOR.\"DocType\"] = ‘S’ and CAST($[OPOR.\"DocTotal\"] as DECIMAL) > 250 SELECT distinct ‘true’ FROM DUMMY WHERE $[$3.0.0] = ‘S’ and $[$29.0.number] > 250 Sintaxis de número de artículo y columna  Cuando hace referencia a un campo en la ventana activa, puede utilizar la sintaxis de nombre de tabla y campo o la sintaxis de número de artículo y columna. Para ver el número de artículo y columna así como el nombre de tabla y campo para un campo de un documento o formulario, utilice Información del sistema.  En el ejemplo de la izquierda, la consulta solo puede ejecutarse en un pedido en la ventana activa ya que el nombre de tabla OPOR del pedido se incluye en la consulta.  La consulta de la derecha puede utilizarse en un modelo de autorización con varios documentos de marketing seleccionados. La consulta funciona porque el campo de tipo de documento siempre es el número de artículo 3 y el total del documento siempre es el número de artículo 29 en todos los documentos de marketing. El número de columna siempre es 0 para campos de cabecera. En el ejemplo de la diapositiva, el resultado se compara con 250. Dado que el campo DocTotal en la ventana activa incluye el símbolo de moneda, si se especifica .number después del número de columna se extraerá solo el importe de la operación de comparación.  Para obtener más información sobre Información del sistema y la sintaxis de las consultas, consulte el tema Consultas de esta unidad.",
-    "start_time": 2237.14,
-    "end_time": 2365.68
+    "image_file": "Slide_031.webp",
+    "script_text": "En SAP Business One, las consultas de autorización pueden usar dos sintaxis: nombre de tabla y campo, o número de artículo y columna. La primera depende del documento activo, como OPOR para pedidos. La segunda es más flexible y funciona en múltiples documentos si los campos están en las mismas posiciones. Para verificar los números de artículo y columna, use Información del sistema con Ctrl+Mayús+I. Al comparar valores monetarios, agregue .number para ignorar el símbolo de moneda. Esto asegura que la comparación sea numérica y precisa. Estas consultas se prueban en la ventana activa antes de aplicarlas en modelos de autorización.",
+    "start_time": 1057.6,
+    "end_time": 1098.6
   },
   {
     "slide_index": 32,
-    "image_file": "040_Slide_32_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Prueba de una consulta para procedimientos de autorización Herramientas > Consultas > Consultas de usuario > Nombre de categoría > Consulta Para probar la consulta, mantenga el documento en la ventana activa y ejecute la consulta desde el menú Herramientas. Ventana activa  Es recomendable probar una nueva consulta antes de incluirla en el modelo de autorización.  Para probar una consulta que hace referencia a la ventana activa, cree un documento que cumpla las condiciones de aprobación. Mantenga este documento en la ventana activa y ejecute la consulta desde el menú Herramientas. La consulta debería devolver un resultado verdadero.",
-    "start_time": 2365.68,
-    "end_time": 2405.02
+    "image_file": "Slide_032.webp",
+    "script_text": "Antes de incluir una consulta en un modelo de autorización, es esencial probarla en SAP Business One. Primero, cree un documento que cumpla con las condiciones que desea evaluar. Mantenga ese documento abierto y en la ventana activa. Luego, acceda al menú Herramientas, elija Consultas y seleccione su consulta de usuario por categoría y nombre. Al ejecutarla, observe el resultado: debe devolver 'verdadero' si las condiciones se cumplen. Este paso garantiza que la consulta funcione correctamente antes de integrarla en el flujo de autorización, evitando errores en producción.",
+    "start_time": 1098.6,
+    "end_time": 1134.4
   },
   {
     "slide_index": 33,
-    "image_file": "040_Slide_33_10_Impl_13_CustomTools_ApprovalProcesses_ES.webp",
-    "script_text": "Puntos clave Puntos clave de este tema:  Pueden establecerse procesos de autorización para documentos de ventas, compras, inventario y pago  Para configurar un procedimiento de autorización, habilite la funcionalidad y defina las etapas de autorización y un modelo de autorización. Todos los creadores y autorizadores deben ser usuarios de SAP Business One.  Para crear un procedimiento de autorización de varios niveles, combine varios niveles predefinidos en el modelo de autorización.  En el modelo de autorización, puede seleccionar una o más condiciones predefinidas y/o seleccionar una consulta de usuario grabada.  Hay medidas de seguridad para evitar que los documentos se actualicen tras la autorización o mientras están pendientes de autorización. Hay casillas de selección disponibles para permitir estas acciones. También puede activar el proceso de autorización cuando un creador actualiza un documento que se haya añadido antes sin necesidad de aprobación.  El creador o autorizador pueden cancelar los procesos de aprobación.  Las consultas utilizadas en los procedimientos de autorización hacen referencia al documento actual en la ventana activa, y debe seleccionar una respuesta verdadera. Para utilizar la misma consulta con varios tipos de documentos con la misma estructura, utilice la sintaxis de índice y columna.  Tómese un momento para revisar estos puntos clave:  Pueden establecerse procesos de autorización para varios documentos de ventas, compras, inventario y pago  Para configurar un procedimiento de autorización, habilite la funcionalidad en Parametrizaciones generales y defina las etapas de autorización y un modelo de autorización. Todos los creadores y autorizadores deben ser usuarios de SAP Business One  Para crear un procedimiento de autorización de varios niveles, combine varios niveles predefinidos en el modelo de autorización.  En el modelo de autorización puede fijar condiciones para un proceso de autorización:  Si selecciona “siempre”, se iniciará una autorización para cada tipo de documento seleccionado en el modelo.  Puede seleccionar una condición predefinida y/o añadir su propia consulta de usuario que contenga las condiciones.  Hay medidas de seguridad para evitar que los documentos se actualicen tras la autorización o mientras están pendientes de autorización. Existen casillas de selección en las parametrizaciones generales para permitir las actualizaciones. En el modelo de autorización existe una casilla de selección para activar un proceso de autorización cuando un creador actualiza un documento que no ha pasado por un proceso de autorización  Un creador o autorizador pueden cancelar los procesos de aprobación  Al escribir una consulta para un modelo de autorización, hace referencia al documento actual en la ventana activa (todavía no se ha grabado en la base de datos) y la consulta debe seleccionar una respuesta verdadera. Para hacer referencia a campos de la ventana activa, incluya el símbolo $ delante de los corchetes. Si la consulta es para varios tipos de documentos con la misma estructura, utilice la sintaxis de número de artículo y columna e incluya el símbolo $ dentro de los corchetes.",
-    "start_time": 2405.02,
-    "end_time": 2593.87
+    "image_file": "Slide_033.webp",
+    "script_text": "En este tema aprendió que los procesos de autorización se pueden aplicar a documentos de ventas, compras, inventario y pago. Para configurarlos, debe habilitar la funcionalidad en Parametrizaciones generales, definir las etapas de autorización y crear un modelo de autorización donde todos los participantes sean usuarios de SAP Business One. Puede combinar niveles predefinidos para crear flujos de varios niveles y seleccionar condiciones predefinidas o consultas de usuario. Existen medidas de seguridad, como casillas de selección, para evitar actualizaciones no autorizadas durante o después del proceso. El creador o autorizador pueden cancelar el proceso, y las consultas deben referirse al documento activo y devolver un resultado verdadero para continuar.",
+    "start_time": 1134.4,
+    "end_time": 1178.6
   }
 ]

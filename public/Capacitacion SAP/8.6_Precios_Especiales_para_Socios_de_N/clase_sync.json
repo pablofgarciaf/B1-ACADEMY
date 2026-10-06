@@ -1,65 +1,65 @@
 [
   {
     "slide_index": 1,
-    "image_file": "086_Slide_01_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Pricing 33 DiscSP SpPrBP en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Determinación de precios: Precios especiales para interlocutores comerciales Le damos la bienvenida al tema sobre los precios especiales para interlocutores comerciales.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de precios especiales para interlocutores comerciales en SAP Business One versión 10.0. Aquí aprenderá cómo configurar precios personalizados para clientes específicos, basados en su relación comercial. Este tema asume conocimiento previo de descuentos por período y cantidad. Comenzaremos con los conceptos básicos y avanzaremos hacia la configuración práctica en el sistema.",
     "start_time": 0.0,
-    "end_time": 24.77
+    "end_time": 26.83
   },
   {
     "slide_index": 2,
-    "image_file": "086_Slide_02_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "En este tema, aprenderá a configurar los precios especiales para interlocutores comerciales. Se recomienda completar la formación sobre descuentos por período y cantidad antes de empezar este tema. 2 Objetivos Al finalizar este tema, podrá: Establecer los precios especiales para interlocutores comerciales.",
-    "start_time": 24.77,
-    "end_time": 45.86
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá establecer los precios especiales para interlocutores comerciales en SAP Business One. Esto incluye configurar descuentos o recargos específicos para clientes, ya sea vinculados o no a una lista de precios. Aprenderá a aplicar estas reglas en documentos de venta y a gestionar su actualización automática cuando cambien las listas de precios de referencia.",
+    "start_time": 26.83,
+    "end_time": 51.6
   },
   {
     "slide_index": 3,
-    "image_file": "086_Slide_03_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Imagine que algunos clientes reciben precios especiales debido a su relación con la empresa. A veces, estos precios se configuran en relación con una lista de precios determinada, como la lista de precios asignada a ese interlocutor comercial. Otras veces, los precios se configuran específicamente para este interlocutor comercial sin hacer referencia a ninguna lista de precios. Esto se lleva a cabo usando precios especiales para interlocutores comerciales. 3 3 Escenario empresarial Algunos clientes reciben precios especiales de artículos debido a su relación con la empresa. Algunos de estos precios se establecen en relación con una lista de precios determinada. Otras veces, estos precios se configuran específicamente para este interlocutor comercial y artículo sin hacer referencia a ninguna lista de precios.",
-    "start_time": 45.86,
-    "end_time": 98.47
+    "image_file": "Slide_003.webp",
+    "script_text": "Algunos clientes reciben precios especiales debido a su relación comercial con la empresa. Estos precios pueden estar vinculados a una lista de precios específica asignada al interlocutor, o configurarse directamente para ese cliente y artículo sin referencia a ninguna lista. Los precios especiales permiten flexibilidad total: se pueden aplicar con o senza referencia a listas de precios, y no es necesario que coincidan con la lista asignada al cliente.",
+    "start_time": 51.6,
+    "end_time": 80.3
   },
   {
     "slide_index": 4,
-    "image_file": "086_Slide_04_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Los precios especiales para los interlocutores comerciales le permiten otorgar un descuento (o recargo) en artículos para un determinado interlocutor comercial. Los precios especiales son muy flexibles. Puede crear precios especiales con o sin referencia a una lista de precios, y ni siquiera debe ser la lista de precios asociada al interlocutor comercial. Puede establecer un descuento de porcentaje estándar o recargo para el interlocutor comercial que se predeterminará en las líneas a medida que añada artículos por precios especiales. Puede modificar este porcentaje luego de añadir el artículo. Puede incluso definir el precio especial para que se actualice y vuelva a calcular cuando la lista de precios a la que hace referencia se actualiza. 4 Precios especiales para interlocutores comerciales Con o sin referencia a una lista de precios Puede ser una lista de precios diferente a la que se ha asignado al IC Cálculo del descuento Actualización automática cuando se actualizan las listas de precios Precios especiales para artículos seleccionados de un interlocutor comercial: Para un interlocutor comercial determinado",
-    "start_time": 98.47,
-    "end_time": 165.86
+    "image_file": "Slide_004.webp",
+    "script_text": "Los precios especiales para interlocutores comerciales permiten otorgar descuentos o recargos en artículos para un cliente específico. Son muy flexibles: puede crearlos con o sin referencia a una lista de precios, y esta lista no necesita ser la asignada al cliente. Puede definir un porcentaje estándar de descuento o recargo que se predetermina en las líneas al agregar artículos. Este porcentaje se puede modificar después de agregar el artículo. Además, puede configurar el precio especial para que se actualice y recalcule automáticamente cuando la lista de precios a la que hace referencia se actualice.",
+    "start_time": 80.3,
+    "end_time": 118.94
   },
   {
     "slide_index": 5,
-    "image_file": "086_Slide_05_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Al igual que se aplican descuentos de período y cantidad a las listas de precios, los precios especiales para los interlocutores comerciales también pueden tener descuentos de período y cantidad. Hay que hacer doble clic en el precio especial para que se abran los campos en los que puede introducir las fechas en las que el precio es válido. Haciendo clic una segunda vez puede definir el descuento de cantidad basado en una escala de cantidad para el período de validez que acaba de definir. Al igual que sucede con los descuentos de período y cantidad, cualquier artículo que pertenezca a un grupo de unidades de medida le permitirá definir precios por unidad a los artículos que pertenezcan a dicho grupo de unidades de medida. Una vez que haya definido un precio especial para un artículo, podrá copiar los descuentos para copiar el intervalo de fechas y los porcentajes en otros artículos seleccionados para dicho interlocutor comercial. 5 Precios especiales para interlocutores comerciales hacer doble clic hacer doble clic Períodos de validez De a De a Escala de cantidad Con o sin referencia a una lista de precios Puede ser una lista de precios diferente a la que se ha asignado al IC Cálculo del descuento Actualización automática cuando se actualizan las listas de precios Precios especiales para artículos seleccionados de un interlocutor comercial: Para un interlocutor comercial determinado",
-    "start_time": 165.86,
-    "end_time": 245.3
+    "image_file": "Slide_005.webp",
+    "script_text": "Al igual que con los descuentos por período y cantidad en las listas de precios, los precios especiales para interlocutores comerciales también pueden incluir descuentos por período y cantidad. Para configurarlos, haga doble clic en el precio especial para abrir los campos donde ingresará las fechas de validez. Al hacer clic una segunda vez, podrá definir un descuento de cantidad basado en una escala para ese período. Los artículos que pertenecen a un grupo de unidades de medida permiten definir precios por unidad. Una vez definido un precio especial para un artículo, puede copiar los descuentos (fechas y porcentajes) a otros artículos seleccionados para el mismo interlocutor comercial.",
+    "start_time": 118.94,
+    "end_time": 161.98
   },
   {
     "slide_index": 6,
-    "image_file": "086_Slide_06_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Los precios especiales definidos para un interlocutor comercial sustituyen el resto de los precios en un documento de marketing, excepto los precios fijados en un acuerdo global específico con este interlocutor comercial. Esto es así porque son los precios más específicos que se pueden definir en SAP Business One. Es el primer precio que busca el sistema. Si no se encuentra un precio especial para este interlocutor comercial, el sistema buscará un grupo de descuento, a continuación, los descuentos de período y cantidad de la lista de precios asignada al documento y, finalmente, un precio de la lista de precios. Para que un precio especial se aplique a un artículo del documento, la fecha debe estar dentro del período de validez y la unidad de medida de la línea debe coincidir con la unidad de medida de la definición del precio especial. 6 Determinación de precios en Business One Precios especiales para interlocutores comerciales Sustituye a todos los precios excepto los acuerdos globales específicos. 3. ¿Existe un grupo de descuento? 4. ¿Existen descuentos por período y cantidad en la lista de precios? 2. ¿Existe un precio especial específico de artículo e IC? 5. Lista de precios 1. ¿Existe un precio de acuerdo global específico? SÍ NO",
-    "start_time": 245.3,
-    "end_time": 326.93
+    "image_file": "Slide_006.webp",
+    "script_text": "Los precios especiales definidos para un interlocutor comercial sustituyen todos los demás precios en un documento de marketing, excepto aquellos fijados en un acuerdo global específico con ese cliente. Son los precios más específicos que se pueden definir en SAP Business One, por lo que el sistema los busca primero. Si no existe un precio especial para ese cliente y artículo, el sistema verifica: existencia de un grupo de descuento, luego descuentos por período y cantidad en la lista de precios asignada al documento, y finalmente recurre al precio estándar de la lista de precios. Para que un precio especial se aplique, la fecha del documento debe estar dentro de su período de validez y la unidad de medida de la línea debe coincidir con la definida en el precio especial.",
+    "start_time": 161.98,
+    "end_time": 209.3
   },
   {
     "slide_index": 7,
-    "image_file": "086_Slide_07_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Una función muy práctica de los precios especiales es que, una vez que defines un precio especial, puedes copiarlo y aplicarlo a otros interlocutores comerciales. Hay una serie de reglas para copiar los precios especiales de un interlocutor comercial a otros: Sustituir artículos (todos): El sistema copia todos los precios especiales y posiblemente sobrescribe los precios existentes. Sustituir sólo artículos existentes: El sistema sobrescribe todos los precios especiales que existen en los registros del interlocutor comercial (IC) de origen y de destino. Al utilizar esta función no se añade ningún nuevo precio especial. No sustituir artículos: El sistema añade los nuevos precios especiales, pero no cambia los existentes. En la transacción se selecciona el interlocutor comercial que en ese momento tiene los precios especiales que quiere copiar. A continuación, se seleccionan los interlocutores comerciales por código, el grupo de interlocutores comerciales o las propiedades del interlocutor comercial. 7 Copiar precios especiales Una vez haya fijado un precio especial, puede copiar el precio a otros interlocutores comerciales. Opciones Copiar precios especiales en criterios de selección: Sustituir todos los artículos Sustituir sólo los artículos existentes No sustituir artículos",
-    "start_time": 326.93,
-    "end_time": 409.99
+    "image_file": "Slide_007.webp",
+    "script_text": "Una vez definido un precio especial para un interlocutor comercial, puedes copiarlo a otros usando reglas específicas. Primero seleccionas el interlocutor que tiene el precio especial como origen. Luego eliges entre tres opciones: sustituir todos los artículos (sobrescribe precios existentes), sustituir solo los existentes (no agrega nuevos) o no sustituir (solo agrega nuevos). Finalmente, seleccionas los interlocutores destino por código, grupo o propiedades y aplicas la regla elegida. Esto permite replicar configuraciones de precios de forma controlada y eficiente en tu empresa Distribuidora Andina Tech.",
+    "start_time": 209.3,
+    "end_time": 250.42
   },
   {
     "slide_index": 8,
-    "image_file": "086_Slide_08_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Hay una transacción que permite actualizar todos los precios especiales de forma global en SAP Business One. Dicha transacción contiene cuatro fichas que ofrecen distintas opciones sobre cómo actualizar los precios. Seleccionará la ficha correspondiente para: cambiar el descuento aumentando o disminuyendo el porcentaje, cambiar los precios de los artículos por porcentaje, actualizar los precios especiales desde la lista de precios vinculada o borrar los precios especiales existentes. En todas estas fichas hay unos criterios de selección que permiten seleccionar los precios por interlocutores comerciales, grupo de clientes, grupo de proveedores o propiedades del interlocutor comercial. 8 Actualizar globalmente los precios especiales Hay 4 fichas para actualizar los precios especiales globalmente: Cambiar descuento aumentando o disminuyendo el porcentaje Cambiar precios de los artículos por porcentaje Actualizar precios especiales desde la lista de precios vinculada Borrar precios especiales",
-    "start_time": 409.99,
-    "end_time": 470.04
+    "image_file": "Slide_008.webp",
+    "script_text": "Esta transacción permite actualizar todos los precios especiales de forma global mediante cuatro fichas especializadas. En la ficha 'Cambiar descuento', ajustas el porcentaje de aumento o disminución (por ejemplo, -15% para una rebaja). Puedes segmentar la actualización por interlocutores comerciales, grupos de clientes o proveedores, o por propiedades como zona geográfica. Las fechas de inicio y fin definen el período de vigencia del cambio. Esta herramienta es esencial para ajustes masivos en Distribuidora Andina Tech, como campañas promocionales o actualizaciones por inflación, sin modificar cada precio individualmente.",
+    "start_time": 250.42,
+    "end_time": 292.1
   },
   {
     "slide_index": 9,
-    "image_file": "086_Slide_09_10_Pricing_33_DiscSP_SpPrBP_ES.webp",
-    "script_text": "Es posible aplicar precios especiales a interlocutores comerciales para definir un descuento o recargo en los artículos de un interlocutor comercial concreto. El sistema busca primero los precios especiales para los interlocutores comerciales antes de buscar cualquier otro tipo de precio. Si encuentra un precio especial para el interlocutor comercial, utilizará ese precio en la línea del documento de marketing. El precio puede estar en relación con una lista de precios o no. No es necesario que la lista de precios referenciada sea la lista de precios asociada con el interlocutor comercial. Puede establecer un descuento de porcentaje estándar para el interlocutor comercial que se predeterminará en las líneas a medida que añada artículos por precios especiales. Puede modificar este porcentaje luego de añadir el artículo. Puede definir que el precio especial se vuelva a ajustar automáticamente cuando la lista de precios a la que hace referencia se actualice. Las mismas opciones que hay en los descuentos por período y cantidad existen para los precios especiales. Se puede definir un periodo de validez y o precios basados en una escala de cantidad. Si un artículo pertenece a un grupo de unidades de medida, puede definir descuentos por cantidad por unidad de medida; pero, para que se puedan aplicar dichos descuentos, la unidad de medida de la línea debe coincidir con la unidad de medida especificada en el descuento. 9 9 Resumen A continuación, se detallan algunos puntos clave: Es posible aplicar precios especiales a interlocutores comerciales para definir un descuento o recargo en los artículos de un interlocutor comercial concreto. El precio especial puede estar en relación con una lista de precios o no. Puede seleccionar un porcentaje por defecto para las líneas. Puede modificar este porcentaje después de añadir artículos. Puede definir que el precio especial se vuelva a ajustar cuando la lista de precios de referencia se actualice. Las mismas opciones que hay en los descuentos por período y cantidad existen para los precios especiales. Se puede definir un periodo de validez y o precios basados en una escala de cantidad. Si un artículo pertenece a un grupo de unidades de medida, puede definir descuentos por cantidad por unidad de medida.",
-    "start_time": 470.04,
-    "end_time": 608.26
+    "image_file": "Slide_009.webp",
+    "script_text": "Los precios especiales permiten definir descuentos o recargos específicos para un interlocutor comercial en sus artículos. El sistema prioriza estos precios sobre otros al generar documentos de marketing. Pueden estar vinculados o no a una lista de precios, y puedes establecer un porcentaje por defecto que se aplica automáticamente al agregar artículos, modificable posteriormente. Además, puedes configurar que el precio especial se ajuste automáticamente cuando se actualice la lista de precios de referencia. Incluyen las mismas opciones que los descuentos por período y cantidad: validez temporal, escalas de cantidad y, para artículos con grupos de unidades de medida, descuentos por unidad de medida siempre que coincida la unidad de la línea del documento.",
+    "start_time": 292.1,
+    "end_time": 339.24
   }
 ]

@@ -1,114 +1,114 @@
 [
   {
     "slide_index": 1,
-    "image_file": "020_Slide_01_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinProcess 11 PostJE PostJE en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Proceso financiero: Contabilización de un asiento Bienvenido al tema Contabilización de un asiento.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de contabilización de un asiento en SAP Business One versión 10.0. En este curso aprenderá cómo registrar transacciones contables de forma manual dentro del sistema. Este proceso es fundamental para mantener una contabilidad precisa y actualizada, especialmente cuando se trata de operaciones que no generan documentos automáticos. A lo largo del tema, veremos los conceptos clave, el escenario empresarial y los pasos prácticos para ingresar un asiento manual correctamente. Prepárese para aplicar estos conocimientos en un entorno real de gestión financiera.",
     "start_time": 0.0,
-    "end_time": 21.0
+    "end_time": 34.2
   },
   {
     "slide_index": 2,
-    "image_file": "020_Slide_02_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "En este curso, explicaremos cómo introducir un asiento manual. 2 Al finalizar este tema, podrá:  Introducir un asiento manual Objetivos",
-    "start_time": 21.0,
-    "end_time": 31.99
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá introducir un asiento manual en SAP Business One. Este objetivo es esencial para que los usuarios de contabilidad puedan registrar operaciones financieras que no se generan automáticamente desde documentos como facturas o pedidos. Aprenderá a acceder al módulo de asientos, completar los campos necesarios y validar el registro para asegurar la integridad contable. Dominar esta habilidad le permitirá apoyar con precisión la gestión financiera de la empresa, especialmente en casos de gastos menores o ajustes contables puntuales.",
+    "start_time": 34.2,
+    "end_time": 67.6
   },
   {
     "slide_index": 3,
-    "image_file": "020_Slide_03_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Escenario empresarial  Está implementando SAP Business One en un nuevo cliente. El responsable del área de contabilidad de la empresa desea registrar transacciones de forma manual para los gastos menores. Ella le pide registrar estas transacciones en el sistema. Le muestra los asientos manuales. Está implementando SAP Business One en un nuevo cliente. El responsable del área de contabilidad de la empresa desea registrar transacciones de forma manual para los gastos menores. Ella le pide registrar estas transacciones en el sistema. Le muestra los asientos manuales.",
-    "start_time": 31.99,
-    "end_time": 70.66
+    "image_file": "Slide_003.webp",
+    "script_text": "En este escenario, está implementando SAP Business One en un nuevo cliente y el responsable de contabilidad necesita registrar transacciones manuales para gastos menores. Le solicita que ingrese estos asientos en el sistema y le muestra ejemplos de cómo deben quedar. Este contexto refleja una situación común en empresas que están adoptando el sistema: aunque muchos procesos se automatizan, ciertas operaciones como pequeños gastos, reembolsos o ajustes requieren intervención manual. Su tarea será replicar estos asientos con precisión, siguiendo las normas contables y la configuración del cliente.",
+    "start_time": 67.6,
+    "end_time": 103.0
   },
   {
     "slide_index": 4,
-    "image_file": "020_Slide_04_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "En SAP Business One, un asiento se contabiliza automáticamente a partir de varios documentos, como facturas de clientes y de proveedores. 4 Asiento Asientos contables automáticos Fact. clientes Cobro Depósito Fact. proveedor Pago EM de pedido Documento de SAP Business One",
-    "start_time": 70.66,
-    "end_time": 90.77
+    "image_file": "Slide_004.webp",
+    "script_text": "En SAP Business One, muchos asientos se generan automáticamente al procesar documentos comerciales. Por ejemplo, al emitir una factura de cliente, el sistema crea el asiento contable correspondiente al ingreso y al IVA. Cuando se registra un cobro, se actualiza la cuenta de bancos y se cancela la cuenta por cobrar. Lo mismo ocurre con las facturas de proveedor: al registrarlas, se genera el asiento de gasto e IVA deducible, y al pagar, se afecta la cuenta de bancos y se cancela la cuenta por pagar. Incluso los pedidos pueden generar asientos de compromiso. Este flujo automático reduce errores y ahorra tiempo en la contabilidad diaria.",
+    "start_time": 103.0,
+    "end_time": 146.0
   },
   {
     "slide_index": 5,
-    "image_file": "020_Slide_05_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Asimismo, se puede contabilizar un asiento manual directamente en una cuenta de mayor o en una cuenta de libro auxiliar de interlocutor comercial. 5 Asiento Fact. proveedor Pago EM de pedido Asientos contables automáticos Fact. clientes Cobro Depósito Asientos contables automáticos Documento de SAP Business One",
-    "start_time": 90.77,
-    "end_time": 112.46
+    "image_file": "Slide_005.webp",
+    "script_text": "Además de los asientos automáticos, SAP Business One permite contabilizar un asiento manual directamente en una cuenta de mayor o en una cuenta de libro auxiliar de un interlocutor comercial. Esto es útil cuando se necesita registrar un gasto menor, un ajuste contable o una transacción que no origina un documento estándar. Por ejemplo, puede ingresar un gasto de oficina directamente en la cuenta de gastos y afectar la cuenta de bancos o caja. Esta funcionalidad brinda flexibilidad al contador para manejar operaciones puntuales sin depender de un documento previo, siempre respetando el principio de doble entrada.",
+    "start_time": 146.0,
+    "end_time": 185.4
   },
   {
     "slide_index": 6,
-    "image_file": "020_Slide_06_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Todos los asientos se contabilizan en un fichero en SAP Business One: el fichero de asientos. Se pueden fijar varios valores por defecto para los asientos. 6 Asiento Fichero de asientos Fact. proveedor Pago EM de pedido Asientos contables automáticos Fact. clientes Cobro Depósito Asientos contables automáticos Documento de SAP Business One",
-    "start_time": 112.46,
-    "end_time": 136.73
+    "image_file": "Slide_006.webp",
+    "script_text": "Todos los asientos contables en SAP Business One, ya sean automáticos o manuales, se almacenan en un fichero central llamado fichero de asientos. Este archivo mantiene un registro completo y ordenado de cada transacción contable ingresada en el sistema. Además, es posible configurar varios valores por defecto para los asientos, como la fecha, el período contable o el tipo de documento, lo que agiliza el ingreso de datos y reduce errores. Este fichero es la base para generar reportes financieros, estados de cuenta y auditorías, por lo que su integridad es fundamental para la confiabilidad de la información contable de la empresa.",
+    "start_time": 185.4,
+    "end_time": 226.8
   },
   {
     "slide_index": 7,
-    "image_file": "020_Slide_07_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "También puede modificar algunas parametrizaciones de documento para un asiento individual. 7 Asiento Fijar opciones del documento Fichero de asientos Asientos contables manuales Fact. proveedor Pago EM de pedido Documento de SAP Business One Asientos contables automáticos Fact. clientes Cobro Depósito",
-    "start_time": 136.73,
-    "end_time": 157.58
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One, puede personalizar la parametrización del documento para un asiento contable individual. Esto le permite ajustar cómo se procesa cada asiento según su tipo de documento origen, como facturas de proveedor, pagos, depósitos o asientos automáticos. Cada tipo de documento tiene su propia configuración predeterminada, pero puede sobrescribirla puntualmente para adaptarla a necesidades específicas de la transacción, sin afectar la configuración global. Esto brinda flexibilidad al registrar asientos manuales vinculados a distintos flujos documentales.",
+    "start_time": 226.8,
+    "end_time": 258.2
   },
   {
     "slide_index": 8,
-    "image_file": "020_Slide_08_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Todos los asientos hacen referencia al tipo y número del documento original, ya que con frecuencia, los asientos se crean automáticamente a partir de otro documento. Por ejemplo, FA se utiliza para las facturas de cliente. Los documentos de origen de los asientos manuales son los asientos mismos. Por este motivo, hacen referencia a sí mismos y son de la clase JE (que es estándar para el registro en el diario). La mayoría de los asientos hace referencia a otros tipos de documento (por ejemplo PU para las facturas de proveedores). 8 Documentos de origen Referencia a tipo de documento de origen y número de documento de origen",
-    "start_time": 157.58,
-    "end_time": 198.58
+    "image_file": "Slide_008.webp",
+    "script_text": "Cada asiento contable en SAP Business One hace referencia al tipo y número del documento original que lo generó. Por ejemplo, las facturas de cliente usan el código FA, mientras que las de proveedor usan PU. Los asientos manuales, al crearse directamente, se referencian a sí mismos y se asignan a la clase JE (registro en diario estándar). Esta trazabilidad permite auditar fácilmente el origen de cada movimiento contable, ya sea automático o manual, y garantiza coherencia entre los módulos de ventas, compras y finanzas.",
+    "start_time": 258.2,
+    "end_time": 292.8
   },
   {
     "slide_index": 9,
-    "image_file": "020_Slide_09_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "La ventana Asiento se encuentra en el módulo Finanzas. La ventana para introducir los asientos se divide en tres secciones: los datos de cabecera del documento, el modo de tratamiento ampliado de una posición y la tabla de posiciones. Puede mostrar u ocultar el modo de tratamiento ampliado. El modo siempre hace referencia a la línea actualmente seleccionada y muestra todos los campos de la posición para registrar los datos necesarios. Con las Parametrizaciones de formulario, puede definir qué columnas se mostrarán en la tabla de partidas individuales. Tenga en cuenta que también puede importar líneas de asientos desde Excel seleccionando el botón Importar de Excel. Para obtener más información, consulte el curso Importar de Excel. 9 Campos de formulario para asientos Parametrizaciones de formulario Datos de cabecera de documento Modo de tratamiento ampliado de una partida individual",
-    "start_time": 198.58,
-    "end_time": 254.38
+    "image_file": "Slide_009.webp",
+    "script_text": "La ventana de asiento contable se encuentra en el módulo Finanzas y se divide en tres secciones: datos de cabecera del documento, modo de tratamiento ampliado de una posición y la tabla de posiciones. Puede mostrar u ocultar el tratamiento ampliado, que siempre se refiere a la línea seleccionada y permite editar todos los campos de la partida. Mediante las parametrizaciones de formulario, define qué columnas aparecen en la tabla. Además, puede importar líneas desde Excel usando el botón correspondiente, lo que facilita la carga masiva de asientos.",
+    "start_time": 292.8,
+    "end_time": 328.6
   },
   {
     "slide_index": 10,
-    "image_file": "020_Slide_10_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Puede introducir varias líneas con importes en el Debe o el Haber. En cada línea que añada, SAP Business One recomendará un importe de compensación que se puede actualizar. Al registrar asientos manuales, en cada línea, coloque el cursor en el campo Cuenta de mayor/Código IC y pulse Tab para visualizar la lista de cuentas, o CTRL + Tab para visualizar la lista de datos maestros de interlocutores comerciales. De forma alternativa, puede utilizar el menú contextual para abrir la lista de cuentas o la lista de interlocutores comerciales. Tenga en cuenta que puede buscar una cuenta o un interlocutor comercial mediante el campo Cuenta de mayor/Nombre IC. Si conoce el primer carácter del código o nombre del cliente, indíquelo, seguido de un asterisco. A continuación, pulse CTRL + Tab para generar una lista de todos los códigos de cliente que empiecen por ese carácter. Si conoce un código o nombre de cliente parcial, escriba primero un asterisco (*) y, a continuación, el código o nombre parcial. A continuación, presione CTRL + Tab para visualizar una lista de todos los registros que contiene el string al que ha accedido. Lo mismo es válido para las cuentas, pero pulsando Tab para visualizar la lista de cuentas. 10 Métodos de trabajo de asiento Cuando introduzca los asientos manuales:  Pulse la tecla Tab para visualizar la lista de cuentas o  CTRL+TAB para visualizar la lista de interlocutores comerciales o  Utilice el menú contextual para visualizar alguna de las listas Es posible buscar una cuenta o interlocutores comerciales mediante un string de código o nombre parcial: • *[string]: para encontrarle a un nombre un código que contiene o termina con este string • [string]*: para encontrarle un código a un nombre que comience con este string",
-    "start_time": 254.38,
-    "end_time": 368.04
+    "image_file": "Slide_010.webp",
+    "script_text": "Al ingresar asientos manuales en SAP Business One, puede usar la tecla Tab para abrir la lista de cuentas contables o CTRL+Tab para ver la lista de interlocutores comerciales. También puede acceder a estas listas mediante el menú contextual. Para buscar una cuenta o socio comercial por código o nombre parcial, use el campo Cuenta de mayor/Nombre IC: escriba *[string] para encontrar coincidencias que contengan o terminen con ese texto, o [string]* para aquellos que comiencen con él. Luego presione CTRL+Tab para ver los resultados. Este método acelera la selección precisa sin necesidad de conocer el código completo.",
+    "start_time": 328.6,
+    "end_time": 368.4
   },
   {
     "slide_index": 11,
-    "image_file": "020_Slide_11_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Es posible que los usuarios hagan entradas incorrectas. Como consecuencia, el asiento creado puede contener información errónea. Para proporcionar una auditoría de la corrección, el usuario primero debe anular el asiento erróneo y, a continuación, realizar una captura correcta del documento.  Para cancelar un asiento manual seleccione Cancelar en el menú Datos o directamente desde el menú contextual del asiento.  Puede especificar si se llevarán a cabo transacciones de anulación: Como transacción de anulación estándar o Como transacciones de anulación con importes negativos. El método elegido también determina el asiento de anulación automático creado para los documentos de marketing cancelados. 11 Transacciones de anulación ■Transacción de anulación estándar ■Transacciones de anulación con importes negativos Asiento original con error Haber Debe Cuenta 2050 Cuenta A 2050 Cuenta B 2050 2050 .",
-    "start_time": 368.04,
-    "end_time": 426.38
+    "image_file": "Slide_011.webp",
+    "script_text": "Si se registra un asiento con datos incorrectos, primero debe anularlo para mantener una trazabilidad clara de la corrección. Luego, registre el asiento correcto. Puede anular un asiento manual desde el menú Datos o el menú contextual. Tiene dos opciones: anulación estándar (invierte debe y haber) o anulación con importes negativos. El método elegido afecta cómo se genera el asiento de anulación automático para documentos de marketing cancelados. Este proceso asegura integridad contable y respalda auditorías internas.",
+    "start_time": 368.4,
+    "end_time": 399.8
   },
   {
     "slide_index": 12,
-    "image_file": "020_Slide_12_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "La transacción de anulación estándar hace que el sistema contabilice el Debe erróneamente como Haber y viceversa. De este modo, se corrige el saldo de las cuentas. Sin embargo, la transacción de anulación estándar provoca un aumento adicional de los totales en el Debe y el Haber, y ello puede generar confusiones.  En la parte izquierda de la imagen puede ver un ejemplo de un asiento con errores y la correspondiente entrada de anulación. A la derecha puede ver el efecto de la entrada de anulación en el saldo de cuenta A. El saldo total se compensa, sin embargo, el Debe no se ve afectado y aumenta la columna del Haber. 12 Transacciones de anulación - Transacción de anulación estándar Asiento original con error Haber Debe Cuenta 2050 Cuenta A 2050 Cuenta B 2050 2050  Asiento de anulación Haber Debe Cuenta 2050 Cuenta A 2050 Cuenta B 2050 2050  Saldo de cuenta [A] – antes de la anulación Saldo total (H/D) Haber total Debe total 2050 0 2050 Saldo de cuenta [A] – después de la anulación Saldo total (H/D) Haber total Debe total 0 2050 2050 La anulación estándar aumenta el total del lado opuesto.",
-    "start_time": 426.38,
-    "end_time": 504.82
+    "image_file": "Slide_012.webp",
+    "script_text": "La anulación estándar invierte los valores de debe y haber en cada línea del asiento original. Esto corrige el saldo de las cuentas afectadas, pero aumenta simultáneamente los totales generales del debe y del haber, lo que puede generar confusión al ver los reportes de suma de movimientos. Por ejemplo, si un asiento tenía un debe de 1.150,00 y haber de 1.150,00, su anulación generará un haber de 1.150,00 y debe de 1.150,00 en las mismas cuentas. Aunque el saldo neto por cuenta se compensa a cero, los movimientos adicionales aumentan los totales del diario, por lo que se recomienda revisar el contexto al analizar reportes.",
+    "start_time": 399.8,
+    "end_time": 442.8
   },
   {
     "slide_index": 13,
-    "image_file": "020_Slide_13_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "La transacción de anulación estándar con importes negativos hace que el sistema contabilice el Debe y el Haber erróneamente como créditos negativos. De este modo, no solo se corrige el saldo de las cuentas, sino también los totales. Como puede ver en la imagen de la tabla del saldo de cuenta. 13 Transacciones de anulación - Transacciones de anulación con importes negativos. La transacción de anulación con importes negativos reinicializa los totales del mismo lado Asiento original con error Haber Debe Cuenta 2050 Cuenta A 2050 Cuenta B 2050 2050  Asiento de anulación Haber Debe Cuenta -2050 Cuenta A -2050 Cuenta B -2050 -2050  Saldo de cuenta [A] – antes de la anulación Saldo total (H/D) Haber total Debe total 2050 0 2050 Saldo de cuenta [A] – después de la anulación Saldo total (H/D) Haber total Debe total 0 0.",
-    "start_time": 504.82,
-    "end_time": 566.06
+    "image_file": "Slide_013.webp",
+    "script_text": "En la anulación estándar con importes negativos, el sistema registra un asiento de anulación que invierte los valores del asiento original mediante importes negativos en el mismo lado contable. Por ejemplo, si el asiento original tuvo un haber de 2050 en la cuenta A y otro en la cuenta B, el asiento de anulación registra -2050 en el haber de ambas cuentas. Esto corrige tanto el saldo de las cuentas como los totales generales, dejando el saldo final en cero. Es útil para ajustes donde se necesita revertir completamente una transacción sin afectar la trazabilidad del documento original.",
+    "start_time": 442.8,
+    "end_time": 482.6
   },
   {
     "slide_index": 14,
-    "image_file": "020_Slide_14_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Opciones de anulación Esta parametrización es relevante para los asientos automáticos y manuales. La necesidad de llevar a cabo transacciones de anulación estándar o transacciones de anulación con importes negativos depende del país. Puede establecer qué tipo de anulación se utilizará en la ventana Detalles de la empresa en el área de menú Inicialización del sistema del módulo Gestión. En la ficha Inicialización básica, puede seleccionar el campo Permitir importes negativos para contabilización de transacción de anulación para activar la transacción de anulación con importes negativos. De otro modo, el sistema utilizará la transacción de anulación estándar. Esta parametrización es importante para los asientos automáticos (p. ej. factura de clientes) y los manuales.",
-    "start_time": 566.06,
-    "end_time": 614.71
+    "image_file": "Slide_014.webp",
+    "script_text": "Esta configuración define si el sistema usa anulación estándar o anulación con importes negativos, según las normas contables del país. Se accede desde el módulo de Gestión, en Inicialización del sistema, ficha Inicialización básica. Allí, al marcar o desmarcar el campo 'Permitir importes negativos para contabilización de transacción de anulación', se activa el tipo de anulación deseado. Esta parametrización afecta tanto a asientos generados automáticamente, como facturas de clientes, como a los ingresados manualmente. Es esencial para asegurar que las anulaciones se ajusten a los requisitos legales y contables locales.",
+    "start_time": 482.6,
+    "end_time": 519.2
   },
   {
     "slide_index": 15,
-    "image_file": "020_Slide_15_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Al registrar un asiento manual, puede marcar la casilla de selección Anular. Esto le permite crear una transacción de anulación para el asiento actual y definir la fecha en la que la transacción de anulación debería crearse. Un ejemplo del uso de esta opción puede ser en los casos en que la empresa debe emitir un informe de período y tiene aplazamientos de ingresos. Cuando se acerca la fecha de anulación de la transacción, se muestra la ventana Anular transacciones al iniciar sesión. Como alternativa, puede abrir la ventana Anular transacciones en el módulo Finanzas. Para ejecutar la transacción de anulación, seleccione el pulsador Ejecutar. Como consecuencia, se crea una nueva transacción. En el campo Comentarios de esta transacción se muestra el texto (anulación) y el número de la transacción original. La opción Anular está deshabilitada. En la transacción original, la opción Anular no está visible y la palabra Cancelada indica que se ha cancelado la transacción. Nota: Las transacciones de anulación pueden contabilizarse únicamente cuando ya ha pasado la fecha de anulación y Puede anular cada asiento una única vez. 15 Anulación programada de los asientos manuales",
-    "start_time": 614.71,
-    "end_time": 691.1
+    "image_file": "Slide_015.webp",
+    "script_text": "Para programar la anulación de un asiento manual, primero debe marcarse la casilla 'Anular' al registrar el asiento y definir una fecha futura en la que se generará la transacción de anulación. Una vez guardado, el sistema permanece en espera. Cuando se alcanza la fecha especificada, aparece una notificación al iniciar sesión o se puede acceder manualmente desde el módulo Finanzas mediante la ventana 'Anular transacciones'. Al seleccionar el botón 'Ejecutar', se crea automáticamente un nuevo asiento de anulación que incluye el comentario '(anulación)' y el número del asiento original. Esta función solo está disponible si la fecha de anulación ya pasó y cada asiento solo puede anularse una vez.",
+    "start_time": 519.2,
+    "end_time": 563.8
   },
   {
     "slide_index": 16,
-    "image_file": "020_Slide_16_10_FinProcess_11_PostJE_PostJE_ES.webp",
-    "script_text": "Resumen A continuación, se detallan algunos puntos clave: Todos los asientos se contabilizan en el archivo Asientos, incluidos: • Asientos automáticos que se contabilizan a partir de varios documentos, como facturas de clientes y de proveedores. • Asientos contabilizados manualmente. Al registrar asientos manuales, en el campo Cta.mayor/Código IC pulse: • Tab para visualizar la lista de cuentas. • Y CTRL + Tab para visualizar la lista de Datos maestros de interlocutores comerciales. • O utilice el menú contextual Dependiendo de los estándares de su país, puede especificar si se realizarán transacciones de anulación: • Como transacción de anulación estándar. • O como transacciones de anulación con importes negativos. La anulación programada: • Se lleva a cabo introduciendo una fecha futura de cancelación en el asiento. • Se puede definir para que le avise automáticamente  A continuación, se detallan algunos puntos clave para tener en cuenta:  Todos los asientos se contabilizan en el archivo Asientos. Se incluyen los asientos automáticos contabilizados desde documentos como facturas de clientes y proveedores y asientos contabilizados manualmente.  Cuando registre asientos manuales, en el campo Cta.mayor/Código IC pulse Tab para visualizar la lista de cuentas. O CTRL + Tab para visualizar la lista de Datos maestros de interlocutores comerciales. Recuerde que también puede indicar la lista de cuentas o interlocutores comerciales desde el menú contextual.  Dependiendo de los estándares de su país, puede especificar si se realizarán transacciones de anulación como transacciones de anulación estándar o como transacciones de anulación con importes negativos.  La anulación programada se lleva a cabo introduciendo una fecha futura de cancelación en el asiento. Se puede definir la transacción de cancelación para que le avise automáticamente.",
-    "start_time": 691.1,
-    "end_time": 809.21
+    "image_file": "Slide_016.webp",
+    "script_text": "Todos los asientos, ya sean automáticos o manuales, se registran en el archivo Asientos de SAP Business One. Los automáticos se generan desde documentos como facturas de clientes y proveedores, mientras que los manuales se ingresan directamente. Al registrar un asiento manual, se puede usar Tab para ver el listado de cuentas mayores o CTRL + Tab para ver los datos maestros de interlocutores comerciales, también accesible desde el menú contextual. Según la legislación del país, se puede elegir entre anulación estándar o anulación con importes negativos. La anulación programada permite ingresar una fecha futura de cancelación en el asiento, que puede configurarse para generar una notificación automática cuando llegue esa fecha, facilitando el control y seguimiento de las anulaciones.",
+    "start_time": 563.8,
+    "end_time": 612.4
   }
 ]

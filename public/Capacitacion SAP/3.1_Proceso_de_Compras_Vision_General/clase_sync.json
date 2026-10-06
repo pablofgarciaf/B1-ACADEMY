@@ -1,86 +1,86 @@
 [
   {
     "slide_index": 1,
-    "image_file": "098_Slide_01_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Purch 11 Process Process en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Compras: Conceptos básicos Le damos la bienvenida al curso sobre los conceptos básicos de compra.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso de conceptos básicos de compras en SAP Business One versión 10.0. Este módulo le introducirá al proceso de aprovisionamiento, desde la necesidad de un artículo hasta su pago. Aprenderá cómo SAP Business One apoya una gestión eficiente de compras, integrando documentos clave como el pedido de compra, la entrada de mercancías y la factura del proveedor. Al final, podrá aplicar estos conocimientos en escenarios reales de empresa.",
     "start_time": 0.0,
-    "end_time": 19.82
+    "end_time": 30.46
   },
   {
     "slide_index": 2,
-    "image_file": "098_Slide_02_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "En esta sesión, observaremos un resumen del proceso de aprovisionamiento. Al final, podrá enumerar los pasos del proceso de aprovisionamiento y comprar un artículo usando un proceso de aprovisionamiento optimizado. 2 Al finalizar este tema, podrá: Enumerar los pasos básicos del proceso de aprovisionamiento Utilizar un proceso de aprovisionamiento optimizado Objetivos",
-    "start_time": 19.82,
-    "end_time": 44.4
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá enumerar los pasos básicos del proceso de aprovisionamiento y utilizar un proceso de aprovisionamiento optimizado. Esto significa que entenderá no solo la secuencia tradicional de documentos, sino también cómo simplificar el flujo cuando se requiere rapidez, como en compras urgentes por teléfono. El objetivo es que aplique estos conocimientos para mejorar la eficiencia en su área de compras.",
+    "start_time": 30.46,
+    "end_time": 57.07
   },
   {
     "slide_index": 3,
-    "image_file": "098_Slide_03_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "Imagínese que su compañía compra artículos de proveedores externos. Normalmente usted utiliza el proceso de aprovisionamiento completo. No obstante, a veces, necesita los artículos de inmediato. Realiza el pedido por teléfono y su proveedor entrega los artículos de forma inmediata. Para agilizar el proceso no utilice el proceso completo, use sólo un documento de compra para mantener el proceso lo más simple y veloz posible. 3 3 Ejemplo empresarial Su empresa compra artículos de proveedores externos. Normalmente usted utiliza el proceso de aprovisionamiento completo. No obstante, en algunos casos, puede realizar el pedido por teléfono y su proveedor entrega los artículos de forma inmediata.",
-    "start_time": 44.4,
-    "end_time": 91.78
+    "image_file": "Slide_003.webp",
+    "script_text": "Imagínese que su compañía compra artículos de proveedores externos. Normalmente utiliza el proceso completo de aprovisionamiento, pero en casos urgentes, puede realizar el pedido por teléfono y recibir la entrega de forma inmediata. Para agilizar, se usa solo un documento de compra, manteniendo el proceso simple y veloz. Este enfoque es común en empresas que necesitan reposición rápida sin sacrificar el control.",
+    "start_time": 57.07,
+    "end_time": 85.1
   },
   {
     "slide_index": 4,
-    "image_file": "098_Slide_04_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "El proceso de compras no es simplemente realizar un pedido y pagar por lápices y sujetapapeles. En cambio, la compra es el proceso de asegurar que un flujo constante de materiales necesarios llegue a su empresa cuándo y dónde lo necesite. Como una aplicación de gestión empresarial global, SAP Business One lo ayuda a realizar el proceso de compras, empezando con un pedido y siguiendo con el resto de los documentos de compra. SAP Business One captura información automáticamente a cada paso para que siempre conozca lo que hay en el inventario como también el estado financiero actualizado de su empresa. La visualización en tiempo real ayuda a identificar posibles insuficiencias de stock antes de que sucedan. La información precisa del historial ayuda a realizar un seguimiento de los proveedores que siempre cumplieron. El gráfico muestra los procesos de cuatro partes básicas: pedir, recibir y pagar por las mercancías o los servicios. 4 Resumen el proceso de aprovisionamiento Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado Proceso de cuatro partes básicas: pedir, recibir y pagar para mercancías o servicios.",
-    "start_time": 91.78,
-    "end_time": 163.01
+    "image_file": "Slide_004.webp",
+    "script_text": "El proceso de compras asegura un flujo constante de materiales necesarios, en el momento y lugar adecuados. SAP Business One lo apoya desde el pedido hasta el pago, capturando información automáticamente en cada paso. Esto permite conocer el inventario y el estado financiero actualizado, identificar insuficiencias de stock y seguir el cumplimiento de proveedores. El proceso básico tiene cuatro partes: pedir, recibir y pagar por mercancías o servicios.",
+    "start_time": 85.1,
+    "end_time": 115.44
   },
   {
     "slide_index": 5,
-    "image_file": "098_Slide_05_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "El pedido (PO) es el documento que proporciona al proveedor especificando los artículos o servicios que desea comprar, incluidas las cantidades y los precios acordados. Representa su compromiso con el proveedor para comprar los artículos. 5 Compra de artículos: Resumen del proceso Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado El pedido (PO) es el documento que le proporciona al proveedor especificando los artículos o servicios que desea comprar. Representa su compromiso con el proveedor.",
-    "start_time": 163.01,
-    "end_time": 201.38
+    "image_file": "Slide_005.webp",
+    "script_text": "El pedido de compra (PO) es el documento que le proporciona al proveedor especificando los artículos o servicios que desea comprar, incluyendo cantidades y precios acordados. Representa su compromiso formal con el proveedor. En SAP Business One, al crear este documento, se definen los términos de la compra y se inicia el proceso de aprovisionamiento. Es el primer paso clave para garantizar que se adquieran los bienes correctos, en las cantidades y precios esperados.",
+    "start_time": 115.44,
+    "end_time": 146.06
   },
   {
     "slide_index": 6,
-    "image_file": "098_Slide_06_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "La entrada de mercancías de pedido es el documento que muestra la entrega de las mercancías del proveedor a la empresa. Se usa para actualizar las cantidades y los valores del inventario. 6 Compra de artículos: Resumen del proceso Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado Entrada de mercancías de pedido es el documento que muestra la entrega de las mercancías de un proveedor. Se usa para actualizar la cantidad de inventario y los precios.",
-    "start_time": 201.38,
-    "end_time": 231.14
+    "image_file": "Slide_006.webp",
+    "script_text": "La entrada de mercancías de pedido registra la entrega de los artículos por parte del proveedor a su empresa. Se utiliza para actualizar las cantidades y los valores del inventario en SAP Business One. Al ingresar este documento, el sistema incrementa el stock y actualiza el costo promedio ponderado, manteniendo la coherencia entre lo físicamente recibido y lo contabilizado. Es esencial para tener una visión precisa del inventario disponible y evitar diferencias entre stock físico y sistema.",
+    "start_time": 146.06,
+    "end_time": 177.55
   },
   {
     "slide_index": 7,
-    "image_file": "098_Slide_07_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "La factura de proveedores es el documento en el cual su departamento de Proveedor introduce la información de la factura del proveedor para solicitar que se realice un pago al proveedor. 7 Compra de artículos: Resumen del proceso Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado La factura de proveedores es el documento en el cual Proveedores introduce la solicitud de pago del proveedor.",
-    "start_time": 231.14,
-    "end_time": 255.74
+    "image_file": "Slide_007.webp",
+    "script_text": "El proceso estándar de compra en SAP Business One comienza con un pedido de compra, seguido de la entrada de mercancías al recibir los productos. Luego se registra la factura del proveedor para solicitar el pago, y finalmente se efectúa el pago. Cada paso genera un documento que avanza la transacción y actualiza el inventario y la contabilidad de forma secuencial.",
+    "start_time": 177.55,
+    "end_time": 200.9
   },
   {
     "slide_index": 8,
-    "image_file": "098_Slide_08_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "El pago efectuado es el documento que inicia un pago a la cuenta del proveedor. Hay, en general, cuatro formas de efectuar un pago: efectivo, cheques, tarjetas de crédito y transferencias bancarias. También hay disponibles otras formas de pago específicas del país. En SAP Business One, se puede acceder a la funcionalidad y a los informes asociados con el procesamiento de pagos mediante el módulo Gestión de bancos. 8 Compra de artículos: Resumen del proceso Pedido de compra Entrada de mercancías de pedido Factura de proveedores Pago efectuado El pago efectuado es el documento que inicia un pago a la cuenta del proveedor. La funcionalidad y los informes para el procesamiento de pagos pertenecen al módulo Gestión de bancos.",
-    "start_time": 255.74,
-    "end_time": 302.18
+    "image_file": "Slide_008.webp",
+    "script_text": "El pago efectuado es el documento que inicia el desembolso a la cuenta del proveedor. En SAP Business One, se registra desde el módulo Gestión de bancos, donde se elige el método de pago: efectivo, cheque, tarjeta de crédito o transferencia bancaria. Este módulo también permite generar informes de pagos realizados y pendientes, esenciales para el control de caja y conciliación bancaria.",
+    "start_time": 200.9,
+    "end_time": 226.87
   },
   {
     "slide_index": 9,
-    "image_file": "098_Slide_09_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "Ahora miremos la información sobre los datos maestros claves necesarios para el pedido. La primera parte de datos maestros necesarios es el proveedor. El proveedor es uno de los tres tipos de datos maestros de interlocutores comerciales que se mantienen en SAP Business One. Los datos del proveedor identifican quién provee las mercancías y los servicios. Utilice registros maestros de proveedor en todas las transacciones de compra. El proveedor también se utiliza en las transacciones de aprovisionamiento financiero automáticas y manuales. El registro maestro de proveedores contiene: detalles de la persona de contacto, direcciones, condiciones de pago y otra información contable. Puede buscar el proveedor apropiado en cualquier documento de compra. Si está autorizado, también podrá introducir nueva información de proveedor al crear un documento de compra. 9 Datos maestros clave en la compra: Proveedor Todas las transacciones de compra Transacciones de aprovisionamien to financiero automáticas y manuales Contiene: Proveedores Personas de contacto Direcciones Medio de pago Información contable Cuándo se utiliza:",
-    "start_time": 302.18,
-    "end_time": 372.31
+    "image_file": "Slide_009.webp",
+    "script_text": "El proveedor es uno de los tres tipos de datos maestros de interlocutores comerciales en SAP Business One. Su registro maestro contiene información esencial como datos de contacto, direcciones, condiciones de pago y detalles contables. Este registro se utiliza en todas las transacciones de compra y en los procesos de aprovisionamiento financiero, tanto automáticos como manuales, garantizando trazabilidad y consistencia en las operaciones.",
+    "start_time": 226.87,
+    "end_time": 255.22
   },
   {
     "slide_index": 10,
-    "image_file": "098_Slide_10_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "Otra parte clave de los datos maestros en el proceso de compra son los datos maestros de artículo. Los datos maestros del artículo identifican lo que se compra. Con frecuencia, se compran, se incluyen en el inventario y se venden los mismos artículos. La información es la misma, solamente se usa de forma diferente. Esta es la ventaja de usar un registro maestro de artículo, el cual se puede copiar en cualquier documento de los módulos de compra, venta, producción, MRP, inventario y servicio. La cabecera del registro de datos maestros de artículo contiene información general acerca del artículo, incluido un número de ID único asignado por el usuario, una descripción (incluida una descripción en un idioma extranjero) y parametrizaciones para determinar el tipo de artículo, el grupo al que pertenece y la lista de precios seleccionada. Las casillas de selección situadas a la derecha indican si el artículo se mantiene en el inventario y si se ofrece para la compra o venta (en muchos casos, ambas opciones son válidas). La ficha General en la ventana Datos maestros de artículo cuenta con una combinación de información sobre el fabricante del artículo, identificadores adicionales, métodos de envío y método de emisión. La ficha Datos de compras indica el proveedor usual que vende el artículo, cómo identificar el artículo en un catálogo, las unidades de medida utilizadas para el artículo con fines de compra y las dimensiones del artículo físico. Se encuentra también disponible la información sobre impuestos y grupos de aduanas para la información importada. Si el artículo cuenta con un historial de compra, puede hacer clic en el icono del gráfico, a la izquierda de la ficha, a fin de visualizar un análisis gráfico de compras. 10 Datos maestros clave en la compra: Artículos Campos maestros del artículo útiles en la compra Proveedores preferentes Número de catálogo del fabricante Unidad de medida de compra Dimensiones del artículo Información fiscal Grupo aduanero de los artículos importados Enlace al análisis de compra",
-    "start_time": 372.31,
-    "end_time": 498.05
+    "image_file": "Slide_010.webp",
+    "script_text": "Los datos maestros de artículo definen lo que se compra, se almacena en inventario y se vende. En SAP Business One, este registro se reutiliza en los módulos de compra, venta, producción, MRP, inventario y servicio. Incluye ID único, descripción, grupo de artículos, unidad de medida y flags para stock, compra y venta. También contiene datos de compras como proveedor preferente, unidad de medida de compra y información fiscal, evitando duplicación y asegurando consistencia.",
+    "start_time": 255.22,
+    "end_time": 288.79
   },
   {
     "slide_index": 11,
-    "image_file": "098_Slide_11_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "Ahora observemos el proceso de aprovisionamiento y su efecto en el inventario y la contabilidad. Cuando se crea un pedido, no existen contabilizaciones en el inventario y la contabilidad. La primera contabilización se realizará cuando se registre una entrada de mercancías de pedido. La entrada de mercancías de pedido crea un asiento que contabiliza el valor de las mercancías recibidas en el Debe de la cuenta de stock y en el Haber de la cuenta de costes de asignación. La cuenta de stock y la cuenta de costes de asignación se recuperan desde el campo Cuenta de inventario y el campo Cuenta de asignación en la ficha Datos de inventario del registro maestro de artículos. La cuenta de costes de dotación es una cuenta de transferencia que se usa para controlar si las entradas de mercancías de pedidos y las facturas de proveedores coinciden. El balance total de la cuenta de asignación representa el valor de todas las entradas de mercancías de pedidos pendientes que todavía no se copiaron a una factura de proveedores. Luego, cuando se contabiliza la factura del proveedor, se cierra la entrada de mercancías de pedido. En este punto, la factura de proveedores crea un asiento que contabiliza la cantidad facturada en la columna del Debe de la cuenta de costes de asignación y en la columna del Haber de la cuenta del proveedor. De esta manera, la cantidad en la cuenta de costes de asignación desde la entrada de mercancías pedido está seleccionada y el sistema registra la cantidad que se le debe al proveedor. 11 Efectos en el inventario y en la contabilidad Proveedor 100 100 Cuenta de asignación Pedido de compra Entrada de mercancías de pedido Factura de proveedores Cuenta de asignación 100 100 Cuenta de existencias Ninguna contabilización",
-    "start_time": 498.05,
-    "end_time": 601.54
+    "image_file": "Slide_011.webp",
+    "script_text": "Al registrar una entrada de mercancías de pedido en SAP Business One, se genera un asiento contable que aumenta el valor del inventario. Se debita la cuenta de stock y se acredita la cuenta de costes de asignación. Esta cuenta de asignación actúa como un registro temporal para controlar que las mercancías recibidas coincidan posteriormente con la factura del proveedor, evitando pagos por mercancías no recibidas.",
+    "start_time": 288.79,
+    "end_time": 314.76
   },
   {
     "slide_index": 12,
-    "image_file": "098_Slide_12_10_Purch_11_Process_Process_ES.webp",
-    "script_text": "A veces, es posible que deba optimizar o simplificar el proceso de compra para que sea más eficiente. Quizás necesite obtener un artículo de inmediato. En ese caso, llame al proveedor y pídale que se lo entregue hoy. Debido a la urgencia, saltea el pedido. Cuando se entrega el artículo, también se entrega la factura del proveedor. Por lo tanto, en lugar de crear una entrada de mercancías de pedido, introduzca una factura de proveedor para procesar la recepción de los artículos en las existencias y la obligación de pagar al proveedor. En este caso, cuando contabiliza directamente la factura del proveedor sin crear primero una entrada de mercancías de pedido, se omiten las contabilizaciones a la cuenta de costes de dotación. La contabilización carga la cuenta de stock para mostrar el aumento en las existencias y el Haber a la cuenta del proveedor para mostrar la necesidad de pagarle al proveedor. Debido a que una factura de proveedor que no hace referencia a una entrada de mercancías de pedido aumentará las existencias, es importante asegurarse de que no haya una entrada de mercancías de pedido anterior si crea una factura de proveedor sin referencia. 12 Proceso de aprovisionamiento optimizado Proveedor 100 100 Cuenta de existencias Puede optimizar el proceso de compras mediante una factura de proveedores independiente. Para órdenes urgentes, omita el pedido y la entrada de mercancías de pedido La factura de proveedores: Aumentará el stock Mostrará lo que se le debe al proveedor Factura de proveedores",
-    "start_time": 601.54,
-    "end_time": 694.37
+    "image_file": "Slide_012.webp",
+    "script_text": "En un proceso de compra optimizado, cuando se registra directamente una factura de proveedor sin entrada de mercancías previa, se omite la cuenta de asignación. El asiento debita la cuenta de stock para reflejar el aumento de inventario y acredita la cuenta del proveedor, mostrando la obligación de pago. Este flujo es útil para compras urgentes, pero requiere verificar que no exista una entrada de mercancías previa para evitar duplicar el stock.",
+    "start_time": 314.76,
+    "end_time": 342.58
   }
 ]

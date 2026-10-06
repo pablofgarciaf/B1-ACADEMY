@@ -1,212 +1,212 @@
 [
   {
     "slide_index": 1,
-    "image_file": "110_Slide_01_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Sales 41 Process Autom en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Ventas - clientes: Automatización del proceso de ventas Bienvenido al tema sobre la automatización del proceso de ventas.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema sobre la automatización del proceso de ventas en SAP Business One versión 10.0. Aquí aprenderás cómo optimizar cada etapa del ciclo de venta, desde el pedido hasta la facturación, mediante herramientas integradas que mejoran la eficiencia y la satisfacción del cliente en empresas como Distribuidora Andina Tech.",
     "start_time": 0.0,
-    "end_time": 21.67
+    "end_time": 21.19
   },
   {
     "slide_index": 2,
-    "image_file": "110_Slide_02_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Al finalizar este tema, podrá:  Analizar las formas de automatizar el proceso de ventas  Explicar el funcionamiento de la verificación de disponibilidad en el proceso de ventas  Enumerar las funciones del responsable de picking, embalaje y producción  Describir las ventajas de utilizar el Asistente de generación de documentos Objetivos En este tema, analizaremos las formas de automatizar el proceso de ventas, especialmente cómo interactuamos con la gestión de almacén. Veremos el funcionamiento de la verificación de disponibilidad automática en el proceso de ventas. También veremos las funciones suministradas por el responsable de picking, embalaje y producción y cómo se integran al proceso de ventas. Analizaremos la ventaja de utilizar el Asistente de generación de documentos.",
-    "start_time": 21.67,
-    "end_time": 68.88
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás analizar las formas de automatizar el proceso de ventas, explicar el funcionamiento de la verificación de disponibilidad, enumerar las funciones del responsable de picking, embalaje y producción, y describir las ventajas de utilizar el Asistente de generación de documentos. Estas habilidades te permitirán mejorar la eficiencia operativa en tu empresa.",
+    "start_time": 21.19,
+    "end_time": 45.26
   },
   {
     "slide_index": 3,
-    "image_file": "110_Slide_03_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Escenario empresarial  La empresa define la satisfacción del cliente como prioridad. Por lo tanto, ellos han seleccionado automatizar los pasos del proceso de ventas.  Las verificaciones de disponibilidad automáticas se llevan a cabo en el pedido del cliente para garantizar que las cantidades suficientes estén disponibles para completar los pedidos del cliente de forma oportuna.  Si un producto no está disponible en el almacén local, usan las opciones disponibles para enviar ese artículo u otro artículo aceptable tan rápido como sea posible. En caso de recibir pedidos de cliente de prioridad muy alta, pueden reprogramar las entregas.  La empresa usa el encargo de picking, embalaje y producción para automatizar el proceso de picking y entregar artículos de forma oportuna.  La facturación se automatiza usando el asistente de generación de documentos.  La empresa define la satisfacción del cliente como prioridad. Por lo tanto, ellos han seleccionado automatizar los pasos del proceso de ventas.  Las verificaciones de disponibilidad automáticas se llevan a cabo en el pedido del cliente para garantizar que las cantidades suficientes estén disponibles para completar los pedidos del cliente de forma oportuna.  Si un producto no está disponible en el almacén local, usa las opciones disponibles para enviar ese artículo u otro artículo aceptable tan rápido como sea posible. En caso de recibir pedidos de cliente de prioridad muy alta, pueden reprogramar las entregas.  La empresa usa el encargo de picking, embalaje y producción para automatizar el proceso de picking y entregar artículos de forma oportuna.  La facturación se automatiza usando el asistente de generación de documentos.",
-    "start_time": 68.88,
-    "end_time": 174.38
+    "image_file": "Slide_003.webp",
+    "script_text": "La empresa prioriza la satisfacción del cliente mediante la automatización del proceso de ventas. Esto incluye verificaciones automáticas de disponibilidad en pedidos, reprogramación de entregas para pedidos prioritarios, uso del encargo de picking, embalaje y producción para optimizar el almacén, y facturación automatizada con el Asistente de generación de documentos, todo para garantizar entregas oportunas y precisas.",
+    "start_time": 45.26,
+    "end_time": 71.69
   },
   {
     "slide_index": 4,
-    "image_file": "110_Slide_04_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Automatización del proceso de ventas Verificación de disponibilidad  Verificación de disponibilidad  Picking utilizando listas de picking  Embalaje  Generación de documentos de entrega  Generación de facturas de clientes Pedido de cliente Picking Embalaje Entrega Factura de clientes Veremos cinco lugares del proceso de ventas en los que la automatización de ventas añade eficiencia: Verificación de disponibilidad, picking utilizando listas de picking, embalaje, generación de documentos de entrega y facturas de clientes mediante el asistente de generación de documentos.",
-    "start_time": 174.38,
-    "end_time": 207.86
+    "image_file": "Slide_004.webp",
+    "script_text": "La automatización del proceso de ventas añade eficiencia en cinco puntos clave: verificación automática de disponibilidad al ingresar un pedido, uso de listas de picking para organizar el almacén, embalaje con documentación generada, creación de documentos de entrega y facturación por lotes mediante el Asistente de generación de documentos. Cada paso reduce errores y acelera el ciclo de venta.",
+    "start_time": 71.69,
+    "end_time": 96.62
   },
   {
     "slide_index": 5,
-    "image_file": "110_Slide_05_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Pedido de cliente Picking Embalaje Entrega Factura de clientes Cómo hace la automatización que el proceso de ventas sea eficiente Se produce una verificación de disponibilidad automática para los pedidos de cliente. La cantidad disponible se compromete en el inventario. El personal del almacén utiliza el Responsable de picking, embalaje y producción para crear listas de picking para pedidos de cliente que deben entregarse. Los colectores seleccionan los artículos y registran las cantidades seleccionadas en el sistema. Los colectores embalan los artículos y generan documentos de entrega. La entrega contabiliza la reducción del inventario y reduce la cantidad comprometida. Las facturas de cliente se generan en lotes mediante el asistente de generación de documentos. Verificación de disponibilidad  Vamos a ver un ejemplo sobre cómo puede la automatización contribuir para hacer que el proceso de ventas sea más eficiente.  Se produce una verificación de disponibilidad automática cuando introduce artículos y cantidades en un pedido de cliente.  Cuando se confirma que los artículos están disponibles, la cantidad se compromete en el inventario.  El personal del almacén accede y filtra los pedidos de cliente pendientes en el Responsable de picking, embalaje y producción para crear listas de picking para pedidos de cliente que deben entregarse.  Los colectores seleccionan los artículos de los estantes del almacén y registran las cantidades seleccionadas en el sistema.  Los colectores crean paquetes para los artículos con listas de embalaje y documentos de entrega generados a través del Responsable de picking, embalaje y producción.  La entrega contabiliza la reducción en el inventario y reduce la cantidad comprometida del pedido de cliente.  Luego de que se envían los artículos, las facturas de cliente se generan en lotes de facturación mediante el asistente de generación de documentos.",
-    "start_time": 207.86,
-    "end_time": 323.16
+    "image_file": "Slide_005.webp",
+    "script_text": "La automatización mejora la eficiencia al generar una verificación automática de disponibilidad al ingresar artículos en un pedido, comprometer el inventario disponible, permitir al almacén crear listas de picking mediante el Responsable de picking, embalaje y producción, guiar a los colectores en la selección y embalaje de artículos con documentos generados, reducir el inventario al registrar la entrega, y finalmente generar facturas de cliente en lotes usando el Asistente de generación de documentos.",
+    "start_time": 96.62,
+    "end_time": 127.66
   },
   {
     "slide_index": 6,
-    "image_file": "110_Slide_06_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Objetivo de la verificación de la disponibilidad de los artículos  La verificación de disponibilidad de artículos determina si el artículo está disponible:  En una cantidad suficiente  En un almacén particular  En la fecha de entrega que solicita el cliente Pedido de cliente Verificación de disponibilidad  La verificación de disponibilidad de artículos determinará si el artículo está disponible: • En cantidad suficiente para su pedido de cliente • En el almacén particular asociado con su línea de pedido de cliente • En la fecha de entrega que solicita el cliente",
-    "start_time": 323.16,
-    "end_time": 356.02
+    "image_file": "Slide_006.webp",
+    "script_text": "La verificación de disponibilidad de artículos determina si un producto está disponible en cantidad suficiente, en el almacén específico asociado a la línea del pedido y en la fecha de entrega solicitada por el cliente. Este proceso asegura que solo se confirmen pedidos que puedan cumplirse oportunamente, evitando retrasos y mejorando la planificación del inventario y la logística en SAP Business One.",
+    "start_time": 127.66,
+    "end_time": 152.42
   },
   {
     "slide_index": 7,
-    "image_file": "110_Slide_07_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Cálculo de disponibilidad Pedido de cliente Verificación de disponibilidad = En stock - Comprometido + solicitado Cantidad disponible ¿Cómo se calcula la disponibilidad?  ¿Cómo se calcula la disponibilidad? La definición básica es: La cantidad disponible se calcula como la cantidad en stock menos la cantidad comprometida más la cantidad solicitada.",
-    "start_time": 356.02,
-    "end_time": 379.1
+    "image_file": "Slide_007.webp",
+    "script_text": "La disponibilidad se calcula restando la cantidad comprometida al stock y sumando la cantidad solicitada. Esta fórmula permite saber cuántas unidades están realmente disponibles para atender un pedido de cliente. En SAP Business One, este cálculo se realiza automáticamente en tiempo real, considerando el stock físico, las reservas existentes y las órdenes de compra pendientes. Así, el sistema brinda una visión precisa del inventario utilizable, evitando sobreventas y mejorando la planificación de reposición. Es clave para una gestión eficiente del inventario y el cumplimiento de entregas.",
+    "start_time": 152.42,
+    "end_time": 191.98
   },
   {
     "slide_index": 8,
-    "image_file": "110_Slide_08_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Datos de inventario en el registro maestro de artículo En stock Comprometido Solicitado Nombre de almacén # Cód. almacén Almacén general 688 38 100 750 Costa Este 40 10 10 40 Costa oeste 40 40 Entrega directa = En stock - Comprometido + solicitado Cantidad disponible 1 2 3 4 5 01 02 03 04 768 48 110 830 Disponible  El sistema realiza un seguimiento de las cantidades de cada artículo y muestra las cantidades de cada almacén en el registro maestro de artículos.  La ficha de datos de inventario del informe maestro de artículos muestra información actualizada de los niveles de stock y la demanda del artículo de cada almacén. Esta información se actualiza de manera dinámica para mostrar una imagen real en cualquier momento. Puede visualizar: – La cantidad en stock – La cantidad comprometida, que representa una cantidad reservada, como la cantidad solicitada por los clientes necesaria para los componentes de una orden de producción o la cantidad que se aparta para trasladarla a otro almacén. – La cantidad solicitada, que representa cualquier cantidad solicitada por su empresa para la compra pero que no se ha entregada todavía. o la cantidad que figura en las órdenes de producción para un artículo producido internamente, o una cantidad solicitada de otro almacén – Por último, muestra la cantidad disponible, que es la cantidad disponible para sus pedidos de cliente.",
-    "start_time": 379.1,
-    "end_time": 471.82
+    "image_file": "Slide_008.webp",
+    "script_text": "El registro maestro de artículo en SAP Business One muestra el inventario detallado por almacén, incluyendo en stock, comprometido y solicitado. Estos datos se actualizan dinámicamente para reflejar la situación real en cualquier momento. El disponible se calcula como en stock menos comprometido más solicitado. Esta visibilidad permite al usuario tomar decisiones informadas sobre ventas, compras y traslados. En el ejemplo, se observan cuatro almacenes con distintos niveles, útil para verificar dónde hay stock suficiente para atender un pedido.",
+    "start_time": 191.98,
+    "end_time": 228.1
   },
   {
     "slide_index": 9,
-    "image_file": "110_Slide_09_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Existen dos opciones en la verificación de disponibilidad 1) Verificación de disponibilidad estándar Busca automáticamente las cantidades de las líneas en los documentos de ventas. Si las cantidades no son suficientes, ofrece opciones para:  cambiar almacenes,  elegir artículos alternativos,  modificar las cantidades, o  ver un informe con varios almacenes 2) Verificación de cantidad ATP avanzada Ofrece más funciones para:  Crear líneas de programa confirmadas  Ver datos del programa de entregas  Reprogramar entregas de varios documentos  Solo disponible con SAP HANA • Existen dos opciones en la verificación de disponibilidad. • Solo puede seleccionar una opción: la verificación de disponibilidad estándar de SAP Business One o una verificación de cantidad ATP avanzada. • La verificación de disponibilidad estándar comprueba automáticamente las cantidades de las líneas de los documentos de ventas. Si no hay suficiente cantidad de algo, este sistema de verificación muestra un cuadro emergente que ofrece distintas opciones para cambiar de almacén, elegir un artículo alternativo, cambiar las cantidades solicitadas o ver un informe en el que se muestren varios almacenes. • La verificación de disponibilidad estándar está disponible para las bases de datos de SAP HANA y MS SQL. • La segunda opción, la verificación de cantidad ATP avanzada, ofrece una función adicional para crear líneas de programa confirmadas con fechas de entrega para los artículos verificados, y la posibilidad de ver los datos del programa de dichos artículos. Si es necesario, puede reprogramar las entregas de varios documentos. Esta opción solo está disponible si utiliza una base de datos SAP HANA.",
-    "start_time": 471.82,
-    "end_time": 576.17
+    "image_file": "Slide_009.webp",
+    "script_text": "SAP Business One ofrece dos opciones de verificación de disponibilidad: estándar y ATP avanzado. La estándar verifica automáticamente las cantidades en documentos de venta y, si hay falta, muestra opciones como cambiar almacén, elegir artículo alternativo, modificar cantidad o ver informe multisalmacén. Está disponible en HANA y MS SQL. La ATP avanzado incluye funciones adicionales: crear líneas de programa confirmadas, ver datos de entregas y reprogramar entregas de varios documentos, pero solo está habilitado con base de datos SAP HANA. El usuario debe elegir una de las dos, no ambas simultáneamente.",
+    "start_time": 228.1,
+    "end_time": 269.78
   },
   {
     "slide_index": 10,
-    "image_file": "110_Slide_10_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Ejemplo empresarial – Verificación de disponibilidad  Un cliente muy importante hace un pedido de 7 escáneres, pero solo hay 5 en el almacén principal  Se abre una ventana emergente que muestra que no se puede confirmar toda la cantidad  El vendedor puede hacer distintas cosas para satisfacer la solicitud del cliente Pedido de cliente Entrega Factura de clientes Verificación de disponibilidad  Vamos a ver cómo funciona la verificación de disponibilidad con un ejemplo empresarial.  Un cliente muy importante solicita 7 escáneres, pero lamentablemente solo 5 están disponibles actualmente en el almacén principal.  Cuando el vendedor introduce el artículo en el sistema, aparece un cuadro emergente en el que se le indica que no se puede confirmar toda la cantidad.  El vendedor tiene distintas opciones en cuanto a qué puede hacer para satisfacer la solicitud del cliente.  Vamos a ver qué opciones tiene cada verificación de disponibilidad.",
-    "start_time": 576.17,
-    "end_time": 632.52
+    "image_file": "Slide_010.webp",
+    "script_text": "Un cliente importante solicita 7 escáneres, pero solo hay 5 disponibles en el almacén principal. Al ingresar el pedido en SAP Business One, el sistema detecta la insuficiencia y muestra una ventana emergente que impide confirmar la cantidad completa. Esto activa el flujo de verificación de disponibilidad, donde el vendedor debe decidir cómo proceder: cambiar de almacén, elegir un artículo alternativo, ajustar la cantidad o consultar un informe. El objetivo es satisfacer al cliente sin comprometer el servicio o generar sobreventas, manteniendo el control del inventario en tiempo real.",
+    "start_time": 269.78,
+    "end_time": 307.99
   },
   {
     "slide_index": 11,
-    "image_file": "110_Slide_11_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Opción 1: Verificación de disponibilidad estándar Pedido de cliente Verificación de disponibilidad Pedido de cliente SC7701 Núm. artículo Descripción … Cantidad 7 01 Alm.  Vamos a ver la primera opción: La verificación de disponibilidad estándar de SAP Business One.  Cada vez que esté creando un pedido de cliente e indique una cantidad para un artículo que es mayor que la cantidad disponible para este artículo menos el stock mínimo en la fecha de entrega, la ventana Verificación de disponibilidad de artículos aparecerá de forma automática.  El vendedor ha introducido una cantidad de 7 para el artículo escáner, pero el sistema le indica que solo hay 5 unidades disponibles.",
-    "start_time": 632.52,
-    "end_time": 676.73
+    "image_file": "Slide_011.webp",
+    "script_text": "Al crear un pedido de cliente en SAP Business One, si la cantidad solicitada supera el disponible, aparece automáticamente la ventana de Verificación de disponibilidad de artículos. En este caso, se solicita 7 escáneres (artículo SC7701) pero solo hay 5 disponibles en el almacén 01. El sistema muestra los datos del artículo, el almacén, las cantidades y las fechas clave. Esta pantalla permite al vendedor evaluar las opciones de acción antes de continuar. El campo de cantidad solicitada se destaca como el punto de partida del conflicto de disponibilidad que se debe resolver.",
+    "start_time": 307.99,
+    "end_time": 348.62
   },
   {
     "slide_index": 12,
-    "image_file": "110_Slide_12_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Opción 1: Verificación de disponibilidad estándar Pedido de cliente SC7701 Núm. artículo Descripción … Cantidad 7 01 Alm. Si Cantidad de pedido de cliente > Cantidad disponible Verificación de disponibilidad de artículos Seleccionar acción: Continuar Cambiar a cantidad disponible Visualizar cantidades en otros almacenes Visualizar artículos alternativos Borrar línea Número de artículo Almacén Cantidad solicitada Cantidad disponible A1000 01 7 06.06 Fe. vencimiento solic. 05.06 5 Disponib. más temprana Visualizar informe cantidad ATP Pedido de cliente Verificación de disponibilidad  Aparece la ventana Verificación disponibilidad artículo. Muestra la cantidad de 7 artículos solicitados en el pedido de cliente y la cantidad disponible en el inventario.  Se ofrecen varias acciones en esta ventana.  La primera opción es continuar. Esto le permite aceptar la información y proceder sin cambiar el pedido de cliente. En ese caso el artículo quedará pendiente.  La segunda opción es cambiar la cantidad en el pedido de cliente de la partida individual para que coincida con la cantidad disponible. Esto reduce la cantidad pedida a la cantidad disponible.  Si desea obtener más información antes de decidir sobre una resolución, puede elegir la opción de visualizar el Informe de disponibilidad. Esto ofrece un informe rápido sobre la entrada y salida de stock, incluidas las proyecciones. Este informe también está disponible directamente en el menú contextual.  También puede verificar las cantidades en otros almacenes. A partir de este informe, puede verificar e incluso seleccionar cantidades de otro almacén.  En ocasiones, se definió un artículo con artículos alternativos. Cuando opta por esta opción, puede verificar si hay artículos alternativos y si así fuera, puede seleccionar las cantidades desde un artículo alternativo.  Si el artículo no está disponible y no quedan opciones para puntualidad en las entregas, un cliente puede decidir no solicitar ese artículo. Una de las opciones disponibles es eliminar el artículo de la línea del pedido de cliente.  En ocasiones, puede ver una opción adicional, Cambiar a disponibilidad más temprana. Esta opción sólo aparece cuando puede calcularse la fecha de disponibilidad. Copia la fecha de disponibilidad más temprana en la línea de fecha de entrega.",
-    "start_time": 676.73,
-    "end_time": 829.27
+    "image_file": "Slide_012.webp",
+    "script_text": "En la ventana de Verificación de disponibilidad de artículos, SAP Business One presenta varias acciones cuando el stock es insuficiente. El vendedor puede continuar (dejando el artículo pendiente), cambiar la cantidad al disponible, ver stock en otros almacenes, consultar artículos alternativos o eliminar la línea. También puede optar por ver el informe ATP para análisis de entradas y salidas. En este ejemplo, se muestra el artículo A1000 en el almacén 01 con 7 solicitados y 5 disponibles. La opción resaltada permite verificar disponibilidad en otros almacenes, una alternativa común para cumplir con el pedido sin perder la venta.",
+    "start_time": 348.62,
+    "end_time": 391.1
   },
   {
     "slide_index": 13,
-    "image_file": "110_Slide_13_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Informe de cantidad ATP 12 07.06 Microchips Solic. 359 40 Acme Associates Pedido 396 25 06.06 Yogi Yoga Solic. 343 87 04.06.2018 CTI Corp Pedido 390 Disponible Solicitado Fe. entrega Fe. pedido Cliente/Proveedor Documento N. º 4 3 2 1 Comprom. 06.06 06.06 08.06 08.06 10.06 Núm. artículo Almacén SC7701 92 95 107 67 Almacén general  El informe de disponibilidad se encuentra en la verificación de disponibilidad, sin embargo, aun cuando tenga suficiente cantidad en un pedido, puede verificar la disponibilidad para comprometer un artículo.  En el menú contextual de una línea, seleccione la opción Disponibilidad. Esto abre una ventana con el informe de estado de inventario para el artículo de la línea.  Puede ver todos los documentos que afectan la entrada o salida de este artículo desde el almacén enumerado en la línea. Puede utilizar la lista desplegable para ver un almacén alternativo.  En cada documento de la lista, usted puede ver el cliente o proveedor, fecha del pedido, fecha de entrega, la cantidad solicitada o comprometida.  Los documentos se enumeran en orden de fecha de entrega y se muestra la disponibilidad proyectada para el artículo en esa fecha.  Puede ampliar la información de cada documento de la lista.",
-    "start_time": 829.27,
-    "end_time": 925.08
+    "image_file": "Slide_013.webp",
+    "script_text": "Este informe muestra la disponibilidad proyectada de un artículo según pedidos y compromisos futuros. En una empresa como Distribuidora Andina Tech, permite anticipar si habrá stock suficiente para cumplir con entregas acordadas. En SAP Business One, se accede desde el menú contextual de una línea de documento, seleccionando 'Disponibilidad'. Allí se visualizan todos los documentos que afectan el stock del artículo, ordenados por fecha de entrega, con cantidades solicitadas o comprometidas. También se puede cambiar el almacén para verificar alternativas y ampliar detalles de cada documento.",
+    "start_time": 391.1,
+    "end_time": 430.61
   },
   {
     "slide_index": 14,
-    "image_file": "110_Slide_14_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Configuración de la verificación de disponibilidad estándar Gestión Inicialización del sistema Parametrizaciones de documento Activar verificación de disponibilidad automática Parametrizaciones de documento: Ficha Por documento Pedido de cliente Documento Para activar esta opción, vaya a la ficha Por documento de la ventana Parametrizaciones de documento y seleccione Pedido de cliente. Marque la casilla de selección Activar verificación de disponibilidad automática.",
-    "start_time": 925.08,
-    "end_time": 952.66
+    "image_file": "Slide_014.webp",
+    "script_text": "Esta configuración permite que SAP Business One verifique automáticamente la disponibilidad de stock al crear un pedido de cliente. En Distribuidora Andina Tech, evita prometer entregas que no se puedan cumplir. Para activarla, va a Gestión → Inicialización del sistema → Parametrizaciones de documento, elige la ficha 'Por documento', selecciona 'Pedido de cliente' y marca la casilla 'Activar verificación de disponibilidad automática'. Así, cada vez que se ingrese un pedido, el sistema chequeará si hay stock suficiente en la fecha solicitada.",
+    "start_time": 430.61,
+    "end_time": 466.7
   },
   {
     "slide_index": 15,
-    "image_file": "110_Slide_15_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Opción 2: Verificación de cantidad ATP avanzada  Detalles del plan de entregas para diferentes tipos de documentos de demanda  Cantidades confirmadas para las fechas de entrega  Las reglas de verificación se pueden configurar de distinta forma para los artículos o los grupos de artículos  La verificación de disponibilidad de ATP se lleva a cabo para los documentos de demanda, por ejemplo:  Pedidos de cliente  Factura de reserva de clientes  Solicitudes de traslado  Pedidos (con cantidad negativa)  Facturas de reserva de cliente (con cantidad negativa)  Órdenes de producción  Las reglas de verificación se pueden configurar de distinta forma para los artículos o los grupos de artículos  Si está ejecutando la base de datos SAP HANA como base de datos de transacciones, es posible que quiera utilizar la segunda opción como función adicional.  SAP Business One, versión para SAP HANA tiene una opción de configuración para activar la cantidad ATP avanzada.  Tal y como se ha mencionado previamente, esta opción admite detalles de plan de entregas para distintos tipos de documentos que crean demanda y tienen una posible salida.  La verificación de ATP confirma la cantidad y las fechas de entrega y de reserva la información sobre la disponibilidad.  La verificación de ATP se lleva a cabo para los documentos de demanda como los pedidos de cliente y las facturas de reserva de cliente con cantidades positivas, solicitud de traslado de inventario, pedidos y facturas de reserva de proveedores con cantidades negativas, y órdenes de producción.  Las reglas de verificación se pueden configurar de distinta forma para los artículos o los grupos de artículos",
-    "start_time": 952.66,
-    "end_time": 1051.27
+    "image_file": "Slide_015.webp",
+    "script_text": "La verificación ATP avanzada permite validar no solo la cantidad disponible, sino también las fechas de entrega y reserva según reglas personalizables. En Distribuidora Andina Tech, es útil para gestionar compromisos complejos con clientes. Se aplica a documentos como pedidos de cliente, facturas de reserva, solicitudes de traslado y órdenes de producción, incluso con cantidades negativas. Las reglas se pueden configurar por artículo o grupo de artículos, y en SAP HANA se puede activar como función adicional para mayor precisión en la planificación de entregas.",
+    "start_time": 466.7,
+    "end_time": 503.86
   },
   {
     "slide_index": 16,
-    "image_file": "110_Slide_16_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Proceso de verificación de cantidad ATP avanzada  Introducción de datos = artículo+ almacén + cant. requerida + fecha requerida  Cantidad disponible = en stock + entradas previstas – cantidad solicitada/confirmada existente – cantidad asignada temporalmente Estrategias de entrega: Propuesta de entrega se divide la entrega para que coincida con cantidades disponibles, permite varias entregas. Entrega única solo se entregan artículos cuando se pueden mandar en la fecha solicitada. Entrega completa no se realiza la entrega hasta que no se puede enviar la cantidad completa Cuando crea un documento con demanda, como un pedido de cliente, la verificación de la cantidad ATP comprueba si se dispone de suficiente cantidad de artículos para entregarlos en la fecha solicitada. La verificación toma el artículo, el almacén, la cantidad solicitada y la fecha solicitada del documento para calcular la cantidad base. La disponibilidad es la suma de las cantidades en stock más las entradas previstas menos las cantidades solicitadas o confirmadas existentes. La verificación también tiene en cuenta las cantidades asignadas temporalmente que estén tomando otros usuarios que también estén haciendo una verificación de cantidad ATP. El resultado es el resultado de la verificación de cantidad ATP. Si en la verificación se determina que no hay una cantidad suficiente, se abre la ventana Detalles de plan de entregas en la que se indican algunas recomendaciones para las cantidades y las fechas de entrega solicitadas. En nuestro ejemplo, el cliente solicitaba 7 escáneres, pero solo se podían entregar a tiempo 5. Si no hay suficiente cantidad disponible en las fechas solicitadas, es posible aplicar una estrategia de entregas. En las estrategias de entregas se comprueba si un artículo se puede asignar a varias entregas. Hay tres estrategias de entregas:  Propuesta de entrega: se divide la entrega para que concuerde con la cantidad disponible que tiene. Si se elige esta opción, se entregarían 5 escáneres al cliente en la primera fecha disponible y los otros 2 restantes en una fecha posterior.  Entrega única: solo se entregan los artículos cuando se pueden mandar en la fecha solicitada. Si se elige esta opción, solo se entregarían 5 escáneres. Un cliente que necesite los escáneres inmediatamente para un evento concreto elegiría esta opción.  Entrega completa: se retrasa la entrega para poder entregar la totalidad de la cantidad de los artículos solicitados. Esta sería la opción elegida si el cliente quiere instalar los 7 escáneres a la vez. Es posible que quieran asegurarse de que toda la cantidad llega en la misma fecha. Es posible volver a abrir la ventana Detalles de plan de entregas desde el menú contextual de una línea de artículo del documento.",
-    "start_time": 1051.27,
-    "end_time": 1226.88
+    "image_file": "Slide_016.webp",
+    "script_text": "Al crear un pedido de cliente, el sistema toma el artículo, almacén, cantidad y fecha solicitados para calcular la disponibilidad ATP. Esta se obtiene sumando el stock actual y las entradas previstas, restando las cantidades ya solicitadas o confirmadas y las asignadas temporalmente por otros usuarios. Si no hay suficiente stock, se abre la ventana de Detalles de plan de entregas para aplicar una estrategia: propuesta (entregas parciales), única (solo si se puede entregar todo en la fecha) o completa (se espera hasta tener el total). Esto ayuda a gestionar expectativas reales de entrega en Distribuidora Andina Tech.",
+    "start_time": 503.86,
+    "end_time": 544.66
   },
   {
     "slide_index": 17,
-    "image_file": "110_Slide_17_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Verificar ATP sin un documento Introduzca la cantidad Consulte cuándo estará disponible la cantidad completa en la línea cronológica Abra la ventana Verificación ATP pulsando el icono Introduzca un artículo Además de verificar la disponibilidad desde documentos internos también es posible abrir una vista gráfica de la disponibilidad desde un icono de la barra de herramientas. Pulse el icono de Verificación ATP en la barra de herramientas para abrir la vista de la disponibilidad en todos los almacenes de un artículo concreto. Introduzca el artículo y la cantidad requerida. Seleccione los almacenes cuyo inventario le gustaría ver. En nuestro ejemplo empresarial queremos ver cuándo estarán disponibles los 7 escáneres para nuestro cliente. Una vista gráfica muestra la disponibilidad de los artículos. El color rojo indica que no es posible entregar la cantidad total en dichas fechas. El color azul indica cuándo estará disponible la cantidad completa en la línea cronológica. Como podemos observar, el 6 de junio solo habrá 5 artículos disponibles. Puede recorrer la línea cronológica hacia la izquierda y hacia la derecha para ver cuándo estará disponible el artículo. También tiene la opción de cambiar de almacén y ver la disponibilidad de los artículos alternativos.",
-    "start_time": 1226.88,
-    "end_time": 1305.98
+    "image_file": "Slide_017.webp",
+    "script_text": "Esta función permite verificar la disponibilidad de un artículo sin estar dentro de un documento de venta. En Distribuidora Andina Tech, es útil para planificar entregas o responder consultas de clientes. Al hacer clic en el icono de Verificación ATP en la barra de herramientas, se abre una vista gráfica donde se ingresa el artículo y cantidad requerida. Se pueden seleccionar uno o varios almacenes. La línea cronológica muestra en rojo las fechas sin stock suficiente y en azul cuándo estará disponible el total. Así, se puede ver, por ejemplo, que solo 5 de 7 escáneres estarán disponibles el 6 de junio, y decidir si esperar, dividir la entrega o buscar alternativas.",
+    "start_time": 544.66,
+    "end_time": 589.85
   },
   {
     "slide_index": 18,
-    "image_file": "110_Slide_18_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Configuración de la verificación ATP avanzada Parametrizaciones de documento: General Reglas verif. ATP - Configuración Activar cantidad ATP avanzada X Es posible asignar reglas de verificación a:  Grupos de artículos o  Artículos (ficha Datos de planificación) Para activar la verificación ATP avanzada hay que ir a la ficha Parametrizaciones del documento, General. Marque el cuadro de selección Activar cantidad ATP avanzada. Después pulse el botón para configurar las reglas de verificación de ATP. Al hacerlo se abre Lista de reglas de verificación ATP. La regla por defecto es AA. Es posible crear más reglas de verificación. Cuando cree una regla nueva, póngale un nombre y defina sus detalles. Las reglas de verificación se pueden asignar a grupos de artículos o a artículos concretos. Las reglas permiten definir si se desea incluir las entradas previstas pasadas, realizar o no una verificación automática, mostrar los detalles de la línea de programa y permitir que se entreguen las cantidades no confirmadas o retrasadas. También puede definir si desea permitir que haya varias entregas o no. La regla de verificación asignada aparece en la ficha Datos de planificación de los artículos.",
-    "start_time": 1305.98,
-    "end_time": 1385.95
+    "image_file": "Slide_018.webp",
+    "script_text": "Para usar la verificación ATP avanzada, primero debe activarse en la configuración del documento. En Distribuidora Andina Tech, esto permite definir reglas personalizadas según el tipo de artículo o grupo. Se accede desde Parametrizaciones de documento → General, se marca 'Activar cantidad ATP avanzada' y se hace clic en 'Configurar reglas de verificación'. Aparece la lista de reglas, donde la predeterminada es 'AA'. Al crear una nueva regla, se le asigna un nombre y se definen detalles como si incluir entradas previstas, permitir entregas parciales o mostrar detalles de línea. Luego, la regla se asigna en la ficha Datos de planificación del artículo.",
+    "start_time": 589.85,
+    "end_time": 634.9
   },
   {
     "slide_index": 19,
-    "image_file": "110_Slide_19_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Herramienta para reprogramar entregas Amplíe los pedidos de cliente para ver los detalles sobre la cantidad que se va a entregar y las fechas de entrega. Abra Reprogramar entrega pulsando en el icono La gestión del plan de entregas es una herramienta que sirve para reprogramar las entregas. Para abrir esta herramienta hay que pulsar el icono de la barra de herramientas o seleccionar el menú Ventas – clientes. En nuestro ejemplo empresarial, un cliente muy importante necesita recibir los 7 escáneres puntualmente a toda cosa y no está dispuesto a aceptar otra opción. Únicamente los usuarios actualizados pueden reprogramar las entregas. En nuestro ejemplo empresarial, el jefe de ventas y el jefe del almacén son los únicos empleados que tienen acceso. Después de hablar con el jefe de ventas, el jefe de almacén abre la herramienta de gestión del plan de entregas para ver todos los pedidos pendientes que hay para el artículo. Comprueba si puede reprogramar la cantidad comprometida de otro pedido de cliente que tenga menos prioridad para satisfacer el pedido urgente del cliente importante. Para hacerlo, abre la ventana de gestión del plan de entregas desde dentro del pedido guardado haciendo doble clic en la línea de la cantidad no confirmada. Puede ver todas las líneas de pedido de cliente de este artículo. Otra forma de abrir la ventana es pulsar el icono de gestión del plan de entregas en la barra de herramientas y seleccionar después el artículo. Una vez que se abre la ventana puede ampliar cada pedido de cliente haciendo clic en la línea para ver las cantidades que hay que entregar y las fechas de entrega. Como podemos ver, hemos retrasado 4 días el pedido de cliente del cliente.",
-    "start_time": 1385.95,
-    "end_time": 1487.66
+    "image_file": "Slide_019.webp",
+    "script_text": "La herramienta de gestión del plan de entregas permite reprogramar las fechas y cantidades de los pedidos de cliente según prioridades empresariales. Solo usuarios autorizados, como el jefe de ventas y el jefe de almacén, pueden acceder a esta función desde el menú Ventas – clientes o mediante el icono de la barra de herramientas. Al abrir la herramienta, se visualizan todos los pedidos pendientes de un artículo específico. Luego, se puede ajustar la cantidad comprometida de un pedido de menor prioridad para liberar inventario y atender un pedido urgente. Los cambios se confirman arrastrando una barra interactiva que transfiere cantidades entre pedidos, actualizando automáticamente las fechas de entrega.",
+    "start_time": 634.9,
+    "end_time": 678.84
   },
   {
     "slide_index": 20,
-    "image_file": "110_Slide_20_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Reprogramación de entregas – Mover cantidades entre pedidos Haga clic en la barra para modificar la cantidad. La barra de color azul se vuelve dorada (amarilla) y aparece un botón de desplazamiento. Para hacer que el inventario esté disponible, seleccione el pedido de cliente del que quiere tomar los artículos y pulse la barra azul. La barra se vuelve de color amarillo y aparece un botón de desplazamiento. Arrastre la barra hacia la izquierda para reducir la cantidad. En la imagen se ve que el usuario quita 2 artículos del pedido de cliente.",
-    "start_time": 1487.66,
-    "end_time": 1523.23
+    "image_file": "Slide_020.webp",
+    "script_text": "En la ventana de gestión del plan de entregas, se puede mover cantidades entre pedidos de cliente usando una barra interactiva de ajuste. Al hacer clic en la barra azul, esta se vuelve amarilla y activa un control de desplazamiento que permite transferir inventario de un pedido a otro. Al arrastrar la barra hacia la izquierda, se reduce la cantidad en el pedido de origen y se aumenta en el de destino, haciendo disponible el stock para reprogramar entregas. Este ajuste visual muestra en tiempo real cómo se reasignan los artículos según prioridades, manteniendo el control de disponibilidad y fechas de entrega actualizadas.",
+    "start_time": 678.84,
+    "end_time": 717.0
   },
   {
     "slide_index": 21,
-    "image_file": "110_Slide_21_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Reprogramación de entregas – Confirmar los cambios La cantidad se desplaza de un pedido de cliente a otro. Si está de acuerdo con el resultado puede confirmar el cambio. La cantidad se desplaza de un pedido de cliente al otro. Como se puede observar, la cantidad completa está ahora disponible para entregarse en el primer pedido de cliente. El pedido de cliente de menor prioridad se ha retrasado 3 días.",
-    "start_time": 1523.23,
-    "end_time": 1550.16
+    "image_file": "Slide_021.webp",
+    "script_text": "Una vez que se ha movido la cantidad requerida de un pedido de menor prioridad a uno urgente mediante la barra de ajuste, el sistema muestra que el stock está ahora completamente disponible para el primer pedido. Al confirmar el cambio, la cantidad se transfiere oficialmente entre los pedidos, actualizando sus respectivas cantidades y fechas de entrega. En este caso, el pedido de alta prioridad recibe las 7 unidades necesarias, mientras que el pedido reprogramado se retrasa 3 días. Esta confirmación asegura que el inventario se asigna correctamente y que los equipos de almacén y ventas trabajan con información actualizada.",
+    "start_time": 717.0,
+    "end_time": 756.26
   },
   {
     "slide_index": 22,
-    "image_file": "110_Slide_22_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Automatización de los pasos del proceso – Picking y embalaje Pedido de cliente Picking Embalaje Entrega Factura de clientes El Responsable de picking, embalaje y producción le permite gestionar de forma más eficiente los procesos de almacén de picking, embalaje y entrega.  Ahora veremos de forma más detallada el Responsable de picking, embalaje y producción y cómo puede mejorar el picking, el embalaje y la entrega.  Los temas del Responsable picking, embalaje y producción relacionados con las ventas, los traslados y la producción se tratan detalladamente en otras sesiones del curso.",
-    "start_time": 1550.16,
-    "end_time": 1585.99
+    "image_file": "Slide_022.webp",
+    "script_text": "El Responsable de picking, embalaje y producción es una herramienta de SAP Business One que permite gestionar de forma más eficiente los procesos clave del almacén: picking, embalaje y entrega. Desde esta funcionalidad, se pueden visualizar múltiples líneas de pedido de cliente, agrupar artículos en listas de picking para optimizar el recorrido de los colectores y centralizar el embalaje de los productos listos para enviar. Además, permite generar automáticamente los documentos de entrega para todos los artículos que han sido picked y empaquetados. Este módulo mejora la trazabilidad y reduce errores en la preparación de pedidos, integrándose con las etapas posteriores como la facturación de clientes.",
+    "start_time": 756.26,
+    "end_time": 800.09
   },
   {
     "slide_index": 23,
-    "image_file": "110_Slide_23_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Pedido de cliente Picking Embalaje Entrega Factura de clientes Pedido de cliente Picking Embalaje Entrega Factura de clientes Pedido de cliente Picking Embalaje Entrega Factura de clientes Ventajas del responsable de efectuar picking, embalaje y producción  Ver varias líneas de pedido de cliente  Agrupar partidas para las que se debe efectuar el picking en listas de picking para obtener una mayor eficacia.  El embalaje para las entregas puede realizarse centralmente.  Se pueden generar entregas para todos los artículos embalados y de picking.  El Responsable de picking, embalaje y producción le permite ver múltiples líneas de pedido de cliente y agruparlas en listas de picking para mayor eficacia.  Luego del picking, el embalaje para las entregas puede realizarse centralmente.  Entonces se pueden generar los documentos de entrega para todos los artículos embalados y de picking.  De esta forma, puede gestionar la logística de los pedidos de cliente de picking y envío de forma más eficiente.  En este tema del curso se presenta el concepto que hay detrás del Responsable de picking, embalaje y producción. Para obtener información más detallada sobre este tema, véanse los tres cursos que se centran exclusivamente en el picking y embalaje.",
-    "start_time": 1585.99,
-    "end_time": 1661.88
+    "image_file": "Slide_023.webp",
+    "script_text": "El Responsable de picking, embalaje y producción ofrece varias ventajas operativas para mejorar la eficiencia del almacén. Permite ver múltiples líneas de pedido de cliente simultáneamente, facilitando la planificación del trabajo. Además, permite agrupar partidas que requieren picking en listas específicas, lo que reduce los desplazamientos de los colectores y aumenta su productividad. El embalaje puede realizarse de forma centralizada una vez que los artículos están picked, asegurando consistencia y control de calidad. Desde esta herramienta, se generan automáticamente los documentos de entrega para todos los artículos que han sido procesados, eliminando pasos manuales. De esta manera, se logra una gestión más ágil y precisa de la logística de pedidos, desde la preparación hasta el envío.",
+    "start_time": 800.09,
+    "end_time": 851.83
   },
   {
     "slide_index": 24,
-    "image_file": "110_Slide_24_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Crear lista de picking Picking Abra un cajón para ver una pantalla con partidas abiertas, artículos liberados (en listas de picking) o artículos de picking El cajón abierto muestra líneas de varios pedidos de cliente. Puede seleccionar los artículos que desea liberar a las listas de picking e imprimir las listas para los colectores.  En nuestro ejemplo empresarial, el jefe de almacén abre el Responsable de picking, embalaje y producción.  Define los criterios de selección para sacar adelante todas las entregas de la semana.  El Responsable de picking, embalaje y producción muestra 3 cajones: Abierto en el caso de los artículos que todavía no están en una lista de picking, Liberado en el caso de los artículos que se han liberado a una lista de picking y Picking efectuado en el caso de todos los artículos que ya se han tomado.  En el cajón Abierto ve estas líneas del pedido de cliente y las líneas de muchos otros pedidos de cliente.  Selecciona los artículos que se van a liberar para la lista de picking e imprime las listas de picking de todos los colectores del almacén.",
-    "start_time": 1661.88,
-    "end_time": 1726.94
+    "image_file": "Slide_024.webp",
+    "script_text": "En el Responsable de picking, embalaje y producción, el cajón 'Abierto' muestra los artículos que aún no han sido asignados a una lista de picking. Aquí, el jefe de almacén puede seleccionar los artículos que desea liberar para incluir en las listas de picking de los colectores. Al marcar un artículo como 'Liberar a picking', se pasa automáticamente al cajón 'Liberado' y se prepara para su impresión. En este ejemplo, se seleccionan 4 escáneres pendientes del pedido ORD-2026-042 para ser asignados al colector ALM-03. Luego, se imprimen las listas de picking para todos los colectores del almacén, permitiéndoles recolectar los artículos de forma organizada y eficiente según los criterios definidos para las entregas de la semana.",
+    "start_time": 851.83,
+    "end_time": 902.83
   },
   {
     "slide_index": 25,
-    "image_file": "110_Slide_25_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Crear lista de picking Picking  En nuestro ejemplo empresarial, el jefe de almacén abre el Responsable de picking, embalaje y producción.  Define los criterios de selección para sacar adelante todas las entregas de la semana.  El Responsable de picking, embalaje y producción muestra 3 cajones: Abierto en el caso de los artículos que todavía no están en una lista de picking, Liberado en el caso de los artículos que se han liberado a una lista de picking y Picking efectuado en el caso de todos los artículos que ya se han tomado.  En el cajón Abierto ve estas líneas del pedido de cliente y las líneas de muchos otros pedidos de cliente.  Selecciona los artículos que se van a liberar para la lista de picking e imprime las listas de picking de todos los colectores del almacén.",
-    "start_time": 1726.94,
-    "end_time": 1773.55
+    "image_file": "Slide_025.webp",
+    "script_text": "En este paso, el jefe de almacén inicia el proceso de picking definiendo los criterios para seleccionar qué artículos se incluirán en la lista de picking de la semana. El responsable de picking muestra tres estados: Abierto (artículos no asignados), Liberado (asignados a lista) y Picking efectuado (ya tomados). Desde el cajón Abierto, se visualizan las líneas de pedidos de cliente pendientes. El responsable selecciona los artículos a liberar y genera las listas de picking impresas para cada colector del almacén, permitiéndoles comenzar la preparación de las entregas.",
+    "start_time": 902.83,
+    "end_time": 939.94
   },
   {
     "slide_index": 26,
-    "image_file": "110_Slide_26_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "El asistente de generación de listas de picking le proporciona formas de dividir sus listas de picking para un picking óptimo. Asistente de generación de listas de picking  Por interlocutor comercial  Por clase de documento  Por documento  Por grupo de artículos  Por almacén Picking Cuando se liberan artículos a una lista de picking, se abre el asistente de generación de listas de picking. El asistente le proporciona formas de dividir sus listas de picking para un picking óptimo. Puede dividir las listas de picking por interlocutor comercial, clase de documento, documento individual, grupo de artículos, artículo o almacén. En este almacén, los artículos se organizan por grupos de artículos por lo que el responsable de almacén selecciona los grupos de artículos para organizar las listas de picking.",
-    "start_time": 1773.55,
-    "end_time": 1822.01
+    "image_file": "Slide_026.webp",
+    "script_text": "Al liberar artículos a una lista de picking, se abre el asistente que permite dividir las listas para optimizar el proceso en el almacén. En Distribuidora Andina Tech, como los artículos están organizados por grupos, el responsable selecciona este criterio para agrupar eficientemente los picking. El asistente ofrece opciones como dividir por interlocutor, clase de documento, documento individual, grupo de artículos o almacén. Al elegir 'Grupo de artículos', se asegura que los colectores recorran zonas lógicas del almacén, reduciendo tiempos de desplazamiento y mejorando la precisión del picking.",
+    "start_time": 939.94,
+    "end_time": 978.53
   },
   {
     "slide_index": 27,
-    "image_file": "110_Slide_27_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Picking, embalaje y creación de la entrega Picking Embalaje Entrega Los colectores: Utilizan una impresión de la lista de picking para encontrar los artículos. Preparan las entregas en la zona de picking Actualizan la lista de picking con las cantidades de picking Generan las entregas desde la lista de picking  Los colectores utilizan una impresión de la lista de picking para encontrar todos los artículos.  Preparan las entregas en la zona de picking.  Actualizan la lista de picking con la información sobre lo que han tomado.  Y después generan las entregas desde la lista de picking.  Cuando cada entrega se contabiliza, la cantidad comprometida se reduce para el pedido del cliente cuando la cantidad del stock se emite para la entrega.  Las entregas se cargan en camiones para llevarlas a los clientes.",
-    "start_time": 1822.01,
-    "end_time": 1870.94
+    "image_file": "Slide_027.webp",
+    "script_text": "Los colectores utilizan la impresión de la lista de picking para localizar los artículos en el almacén y preparan las entregas en la zona designada. A medida que toman los artículos, actualizan la lista de picking con las cantidades reales recogidas. Luego, generan las entregas directamente desde la lista, lo que actualiza el stock y reduce la cantidad comprometida en el pedido del cliente. Finalmente, las entregas se cargan en camiones para su distribución. Este flujo garantiza trazabilidad desde el picking hasta la entrega, sincronizando inventario y documentos de venta en tiempo real.",
+    "start_time": 978.53,
+    "end_time": 1016.45
   },
   {
     "slide_index": 28,
-    "image_file": "110_Slide_28_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Automatización de los pasos del proceso – Asistente de creación de documentos Pedido de cliente Picking Embalaje Entrega Factura de clientes  Una empresa generará un número de facturas de una vez en un lote.  El asistente de generación de documentos es una herramienta para ejecutar un lote de documentos de una vez.  Una empresa generará un número de facturas de una vez en un lote.  El asistente de generación de documentos es una herramienta para ejecutar un lote de documentos de una vez.",
-    "start_time": 1870.94,
-    "end_time": 1901.06
+    "image_file": "Slide_028.webp",
+    "script_text": "El asistente de generación de documentos permite procesar un lote de documentos de venta, como facturas de clientes, de una sola vez. En lugar de crear cada factura individualmente, la herramienta agrupa múltiples documentos para su generación masiva, lo que ahorra tiempo y reduce errores manuales. En Distribuidora Andina Tech, el departamento de facturación usa este asistente semanalmente para emitir todas las facturas correspondientes a las entregas realizadas. Es especialmente útil cuando se necesita facturar varios pedidos a la vez, manteniendo consistencia en fechas, impuestos y formato según los parámetros predefinidos.",
+    "start_time": 1016.45,
+    "end_time": 1057.25
   },
   {
     "slide_index": 29,
-    "image_file": "110_Slide_29_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Asistente de creación de documentos Entregas para un cliente Opcionalmente, consolide facturas para un cliente individual en una factura Se deben generar facturas El asistente recopila líneas de documentos base y crea documentos de destino en función de los parámetros que defina.  El asistente es un proceso simple que se utiliza para recopilar líneas de los documentos base a los documentos de destino, según varios parámetros definidos por el usuario. Los ejemplos de parámetros que existen son: el tipo de documento de destino, la fecha de contabilización, la fecha del documento, los artículos o servicios, y muchos más.  El asistente se puede usar, por ejemplo, para generar una factura de clientes resumida para un cliente que contenga todas las notas de entrega que se crearon para el cliente durante la semana anterior. Es un método simple y a la vez eficaz de resumir los datos para reducir la entrada de datos. Todas las entregas para un cliente individual pueden consolidarse en una factura o configurarse para crear facturas separadas.",
-    "start_time": 1901.06,
-    "end_time": 1965.1
+    "image_file": "Slide_029.webp",
+    "script_text": "Este asistente permite generar una factura resumida para un cliente específico al consolidar todas sus notas de entrega de un período, como la semana anterior. En Distribuidora Andina Tech, se usa para reducir la carga de entrada de datos: en lugar de emitir una factura por cada entrega, se agrupan las líneas de varios documentos de base (como notas de entrega) en una sola factura de destino. El usuario define parámetros como tipo de documento, fechas y criterios de agrupación (por cliente, artículo, etc.). Al activar la consolidación por cliente, se crea una factura única que resume todas las entregas, simplificando la contabilidad y mejorando la claridad para el cliente.",
+    "start_time": 1057.25,
+    "end_time": 1101.07
   },
   {
     "slide_index": 30,
-    "image_file": "110_Slide_30_10_Sales_41_Process_Autom_ES.webp",
-    "script_text": "Al final del día, el asistente de generación de documentos genera facturas consolidadas para las entregas de cliente recientes. En nuestro caso, el departamento de facturación ha creado un conjunto de parámetros para generar las facturas que utilizan cada semana y crear las facturas por lotes. El generador de documentos crea facturas con líneas de resumen por nota de entrega. En dicho departamento han especificado qué criterios utilizan habitualmente para consolidar las facturas y cómo gestionar los problemas automáticamente cuando surgen. 30 30 Ejemplo empresarial: Generación de facturas",
-    "start_time": 1965.1,
-    "end_time": 2003.74
+    "image_file": "Slide_030.webp",
+    "script_text": "Al final del día, el asistente genera facturas consolidadas para las entregas de clientes recientes, usando un conjunto de parámetros predefinidos por el departamento de facturación. En Distribuidora Andina Tech, estos parámetros se usan cada semana para crear lotes de facturas automáticamente, incluyendo líneas de resumen por nota de entrega. Esto permite facturar múltiples entregas de forma rápida y precisa, reduciendo el tiempo de procesamiento de horas a minutos. El sistema gestiona automáticamente excepciones según reglas establecidas, asegurando que el proceso sea eficiente, confiable y alineado con las prácticas contables semanales de la empresa.",
+    "start_time": 1101.07,
+    "end_time": 1143.38
   }
 ]

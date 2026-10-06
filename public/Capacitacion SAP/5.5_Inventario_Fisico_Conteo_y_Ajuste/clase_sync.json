@@ -1,149 +1,142 @@
 [
   {
     "slide_index": 1,
-    "image_file": "062_Slide_01_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Bienvenidos a esta clase sobre Inven 13 WM PhyInv en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Items and Inventory: Physical Inventory SAP Business One Version 10.0 Welcome to the inventory management topic on physical inventory.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de gestión de inventario sobre inventario físico en SAP Business One Versión 10.0. Aquí aprenderás cómo realizar el recuento físico de los artículos almacenados en tu empresa, un proceso clave para mantener la precisión del stock y cumplir con requisitos financieros y fiscales. Este módulo te guiará desde la configuración hasta la contabilización de diferencias.",
     "start_time": 0.0,
-    "end_time": 23.14
+    "end_time": 24.79
   },
   {
     "slide_index": 2,
-    "image_file": "062_Slide_02_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "In this topic, we go through the process steps for counting inventory. It covers basic concepts and process, for more detailed information on physical inventory, we recommend you read the How to Guide: How to Conduct Inventory Counting in SAP Business One. 2 At the end of this topic, you will be able to: Describe the process steps for counting inventory Objectives",
-    "start_time": 23.14,
-    "end_time": 45.62
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás describir los pasos del proceso para el recuento de inventario en SAP Business One. Aprenderás cómo configurar ciclos, imprimir hojas de conteo, registrar resultados y contabilizar diferencias. Para profundizar, se recomienda consultar la Guía Práctica: Cómo Realizar el Recuento de Inventario en SAP Business One, que detalla cada etapa con ejemplos aplicables a tu empresa.",
+    "start_time": 24.79,
+    "end_time": 51.62
   },
   {
     "slide_index": 3,
-    "image_file": "062_Slide_03_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Business Scenario Your company needs to have an accurate count of the stock physically in the company warehouses. The company uses perpetual inventory which tracks the receipt and use of inventory and calculates the quantity on hand. The company needs an annual physical count of inventory for financial and tax reasons, so they have set up an inventory cycle linked to cycle count recommendations. If the physical count reveals any discrepancies from the quantity recorded in the system, the quantity difference is posted. Imagine that: Your company needs to have an accurate count of the stock physically in the company warehouses. The company uses perpetual inventory which tracks the receipt and use of inventory and calculates the quantity on hand. The company wants a physical count of inventory for financial and tax reasons, so they have set up an periodic counts linked to cycle count recommendations. If the physical count reveals any discrepancies from the quantity recorded in the system, the quantity difference is posted.",
-    "start_time": 45.62,
-    "end_time": 103.32
+    "image_file": "Slide_003.webp",
+    "script_text": "Tu empresa necesita un recuento preciso del stock físico en sus almacenes para validar el inventario permanente, que registra recepciones y consumos. El recuento periódico es esencial por razones financieras y fiscales. Se configura un ciclo vinculado a recomendaciones de recuento cíclico. Si hay diferencias entre lo físico y lo registrado, se contabiliza el ajuste de cantidad para mantener la integridad contable.",
+    "start_time": 51.62,
+    "end_time": 79.13
   },
   {
     "slide_index": 4,
-    "image_file": "062_Slide_04_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Inventory Counting You can set up inventory cycles with recommendations for periodic counts. Matching actual item availability and system quantities is crucial for inventory management. Inventory Counting is a recurrent activity in every item based business. Matching the actual items availability and the quantities saved in the system is crucial for inventory management. You can set up inventory cycles with recommendations for periodic counts to be triggered annually, monthly, bi monthly weekly or even daily.",
-    "start_time": 103.32,
-    "end_time": 134.35
+    "image_file": "Slide_004.webp",
+    "script_text": "Puedes configurar ciclos de inventario con recomendaciones para recuentos periódicos que se activen anualmente, mensualmente, bimensualmente, semanalmente o incluso diariamente. Hacer coincidir la disponibilidad real de artículos con las cantidades del sistema es crucial para la gestión de inventario. El recuento es una actividad recurrente en todo negocio basado en artículos, y SAP Business One permite automatizar su programación y seguimiento.",
+    "start_time": 79.13,
+    "end_time": 107.59
   },
   {
     "slide_index": 5,
-    "image_file": "062_Slide_05_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Cycle Counting Process Overview Alert for A items Print count sheet Count Enter results Post quantity differences Cycle Count Recommendation Select items Freeze items A items 6 times year B items 6 times year C items 1 time year Cycle counting is the process of counting inventory items throughout the year based on a schedule, so that all items are counted at least once a year. First set up the various cycles you need. You can set cycles for different intervals. Then in cycle count determination, you assign the cycles to item groups or warehouse sublevels and set up an alert. The alert sends a recommendation for the count to specific user. The user can then select the items for counting. Once items are selected, you can freeze the items for counting. Freezing an item ensures that the item in the selected warehouse or bin is blocked from any business inventory transaction until the item has been counted and relevant postings made. When the inventory document is ready, you then print a count sheet for the stock takers to fill out. You can choose to include or exclude a display of the quantities recorded by the system. During the counting, you use a centralized inventory counting document to record and manage the inventory count process. The last step is to post any quantity differences that the stock takers detect. From the inventory counting document, you can copy the differences into an inventory posting document.",
-    "start_time": 134.35,
-    "end_time": 216.17
+    "image_file": "Slide_005.webp",
+    "script_text": "El proceso de recuento cíclico comienza con una alerta para artículos A, que activa una recomendación de recuento. Luego se imprime una hoja de recuento para que el personal la llene durante el conteo físico. Después, se introducen los resultados en el sistema. El último paso es contabilizar las diferencias de cantidad detectadas desde el documento de recuento de inventario, copiándolas a un documento de contabilización de inventario para ajustar el stock.",
+    "start_time": 107.59,
+    "end_time": 136.73
   },
   {
     "slide_index": 6,
-    "image_file": "062_Slide_06_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Let’s look at the details behind the process. We will begin with the setup. The first step in managing physical inventory is setting up the cycle counts. You can set up different cycles with different frequencies. Generally the primary focus is on items that move more frequently, with less attention given to items that move less frequently. For example, you may want to count some more popular items every other month. Other less popular items may only need to be counted annually. For each cycle, set a basic unit for the recurrence – for example: daily, weekly, monthly, annually Then define the details. Set the recurrence, for example, repeat “every 2 months.” You can specify the start date by either an exact date or a relative day, for example “annually, every second Tuesday in January”. In this way you can stagger the start dates for each cycle to better manage the workload of the physical count. 6 Setup Step 1: Set up Cycles First you set up the inventory cycles you need. You can set cycles for different intervals. Administration Setup Inventory Inventory Cycles Cycle 1 6 times year Cycle 2 1 time year",
-    "start_time": 216.17,
-    "end_time": 287.52
+    "image_file": "Slide_006.webp",
+    "script_text": "En el primer paso de configuración, accedes a Administración → Configuración → Inventario → Ciclos de Inventario para definir los ciclos necesarios. Aquí estableces la unidad básica de recurrencia (diaria, semanal, mensual, anual) y defines detalles como frecuencia de repetición y fecha de inicio exacta o día relativo. Por ejemplo, puedes configurar un ciclo que se repita cada dos meses, comenzando el segundo lunes de febrero de 2026, para escalonar la carga de trabajo del recuento físico.",
+    "start_time": 136.73,
+    "end_time": 169.42
   },
   {
     "slide_index": 7,
-    "image_file": "062_Slide_07_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Setup Step 2: Cycle Count Determination Administration Setup Inventory Cycle Count Determination Printers 6 times year Accessories 6 times year General items 1 time year Set up the cycle count determination to get recommendations. The second step is to set up the cycle count determination to get recommendations. You can define your inventory cycle counts by item group or, if you are using bin location management, by warehouse sub levels. Once you have made these settings, you can then go into the inventory cycle count definition to set up alerts for the item groups or warehouse sublevels that need counting.",
-    "start_time": 287.52,
-    "end_time": 321.7
+    "image_file": "Slide_007.webp",
+    "script_text": "En este paso configuras la determinación del recuento cíclico para obtener recomendaciones automáticas. Accedes a Administración → Configuración → Inventario → Determinación del Recuento Cíclico. Allí defines la frecuencia según el tipo de artículo: impresoras y accesorios se cuentan seis veces al año, mientras que los artículos generales se cuentan una vez al año. Puedes configurar esto por grupo de artículos o, si usas gestión de ubicaciones, por subníveles de almacén. Una vez definidas estas reglas, el sistema genera alertas para los grupos o subníveles que requieren recuento, permitiéndote planificar eficientemente las verificaciones de inventario.",
+    "start_time": 169.42,
+    "end_time": 211.34
   },
   {
     "slide_index": 8,
-    "image_file": "062_Slide_08_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Process: Receive Alerts The designated user receives an alert for cycle count recommendations. The user can select which items to count and The user can open an inventory counting document from the alert. You can also use the menu for cycle count recommendations: Inventory Inventory Transactions Cycle Count Recommendations The designated user receives an alert with cycle count recommendations. The user can select which items to count. Then the user can open an inventory counting document for those items from the alert by pressing the Inventory Counting button. You can also use a menu path to select and view open cycle count recommendations.",
-    "start_time": 321.7,
-    "end_time": 359.69
+    "image_file": "Slide_008.webp",
+    "script_text": "El usuario designado recibe una alerta del sistema con las recomendaciones de recuento cíclico generadas según la configuración previa. Desde esta notificación, puede seleccionar los artículos que necesita contar y abrir directamente un documento de Recuento de Inventario haciendo clic en el botón correspondiente. Alternativamente, puede acceder manualmente a las recomendaciones a través del menú: Inventario → Transacciones de Inventario → Recomendaciones de Recuento Cíclico. Esta flexibilidad permite que el usuario elija la forma más cómoda para iniciar el proceso de verificación física de inventario.",
+    "start_time": 211.34,
+    "end_time": 248.76
   },
   {
     "slide_index": 9,
-    "image_file": "062_Slide_09_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Process: Inventory Counting The Inventory Counting document centralizes the process of recording and managing the inventory count process. When the count is complete, you use this document to enter the quantities counted. The Inventory Counting document centralizes the process of recording and managing the inventory count process. In the Inventory Counting document, you can: Freeze items you plan to count so that no inventory movements can take place during the count. Set the count to be done by one or multiple stock takers. Assign the count to teams or individual users or employees Print a count sheet for the stock takers to fill out. When the count is complete, you use this document to enter the quantities counted.",
-    "start_time": 359.69,
-    "end_time": 401.69
+    "image_file": "Slide_009.webp",
+    "script_text": "El documento de Recuento de Inventario sirve como herramienta centralizada para gestionar todo el proceso de verificación física. En este documento, puedes bloquear los artículos que se van a contar para evitar movimientos de inventario durante el proceso. También puedes configurar si el recuento lo hará un solo inventariador o varios, asignarlo a equipos o individuos específicos, e imprimir una hoja de conteo para que los encargados la completen físicamente. Una vez finalizado el conteo, vuelves a este documento para ingresar las cantidades reales contadas por cada persona o equipo, permitiendo al sistema procesar y comparar los resultados.",
+    "start_time": 248.76,
+    "end_time": 288.55
   },
   {
     "slide_index": 10,
-    "image_file": "062_Slide_10_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "You have the option to assign multiple individual counters, teams of counters or a mix of teams and individuals to count items in the same area. The teams or individuals enter their own results. You can then compare results for an area. Be careful to choose the correct counting type for single or multiple counters on the Inventory Counting document. If you change this setting after entering results, you may affect data already entered. For example, if you change from 'multiple' to 'single', and you have already entered counting results for two individual counters, when changing to single counter one of the individual counter's results will be deleted. 10 Inventory Counting Option: Multiple Counters Multiple stock takers (either individuals or teams) can count items in the same area The teams or individuals enter their own results. You can then compare the results Single Counter Multiple Individual Counters Team Counting Mix of Team and Individual Multiple Counters",
-    "start_time": 401.69,
-    "end_time": 458.14
+    "image_file": "Slide_010.webp",
+    "script_text": "En el documento de Recuento de Inventario, puedes elegir entre diferentes opciones según cómo quieras organizar el conteo. Las opciones individuales incluyen el Contador Único, donde una persona cuenta todo, y Múltiples Contadores Individuales, donde varios cuentan por separado y sus resultados se registran de forma independiente. Las opciones de equipo son Recuento en Equipo, donde un grupo cuenta junto y registra un solo total, y Combinación de Equipo e Individual, que mezcla ambos enfoques. Es crucial seleccionar el tipo correcto antes de ingresar resultados, ya que cambiarlo después puede afectar los datos ya registrados en el sistema.",
+    "start_time": 288.55,
+    "end_time": 328.7
   },
   {
     "slide_index": 11,
-    "image_file": "062_Slide_11_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Saul’s count: 76 Lee’s count: 75 Total 151 Three employees count one section of a warehouse. Keisha counts the entire section alone. Lee and Saul work as a team. Each employee’s count is entered into the Inventory Counting Document. Keisha’s result is compared to the team result of Saul and Lee. Multiple Counters Example Keisha’s count: 151 Here’s an example of using a mix of individual and team counters. Let’s assume you have three employees available to do a count in a section of the warehouse. One employee, Keisha, is much faster than the others so you assign her to count the entire section. The other two employees, Lee and Saul are slower so you assign them to the same team. When the count is complete, enter the quantities for each individual into the Inventory Counting document. The system automatically adds Lee’s and Saul’s results together for their team. You can then compare Keisha’s individual results to the team results.",
-    "start_time": 458.14,
-    "end_time": 518.47
+    "image_file": "Slide_011.webp",
+    "script_text": "En este ejemplo, tres empleados verifican una sección del almacén: Keisha cuenta toda el área individualmente y registra 151 unidades. Lee y Saúl trabajan como equipo, donde Lee cuenta 75 y Saúl cuenta 76. El sistema suma automáticamente los resultados de Lee y Saúl, obteniendo un total de equipo de 151 unidades. Luego, el resultado individual de Keisha (151) se compara con el total del equipo de Lee y Saúl (151). Como coinciden, se confirma la precisión del conteo. Al finalizar, el usuario ingresa cada cantidad individual en el documento de Recuento de Inventario, y el sistema calcula los totales por equipo para facilitar la comparación y detección de discrepancias.",
+    "start_time": 328.7,
+    "end_time": 379.1
   },
   {
     "slide_index": 12,
-    "image_file": "062_Slide_12_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Process: Compare Results and Post Differences When there is a discrepancy from the expected in warehouse quantity: Option 1: recount or adjust counted quantities Option 2: copy the difference to an inventory posting In the last step, you handle any quantity differences that the stock takers detect. You have two main options to handle discrepancies. Option 1: Adjust Counted Quantities. If you suspect the stock takers have counted incorrectly, then you can set the item as not counted and do a recount. You can also adjust the counted quantities to the system’s in stock quantities. Option 2: Copy to Inventory Posting. Choose which values in the document to copy into an Inventory Posting Document. If the stock takers disagree, you can select one of the counts or if they all agree, then you can take the items with no counters’ differences. In the graphic, we see a situation where two individual stock takers count the same quantity, but it disagrees with the system’s in stock quantity for the item. Apparently, the warehouse is missing one of the printers that should be in stock. In this case, we could choose any of the three quantities to copy for inventory posting because all agree that one is missing.",
-    "start_time": 518.47,
-    "end_time": 589.1
+    "image_file": "Slide_012.webp",
+    "script_text": "Cuando se detecta una discrepancia entre la cantidad esperada y lo contado, tienes dos opciones principales para gestionarla. La Opción 1 consiste en ajustar las cantidades contadas: si crees que hubo un error en el conteo, puedes marcar el artículo como no contado y hacer un nuevo recuento, o bien modificar directamente las cantidades ingresadas para que coincidan con las del sistema. La Opción 2 es copiar la diferencia a un documento de Contabilización de Inventario: aquí eliges qué valores transferir, seleccionando un recuento específico si los inventariadores no coinciden, o tomando los artículos sin diferencias entre contadores cuando todos están de acuerdo. Ambas opciones permiten mantener la precisión del inventario según el nivel de confianza en los resultados obtenidos.",
+    "start_time": 379.1,
+    "end_time": 426.82
   },
   {
     "slide_index": 13,
-    "image_file": "062_Slide_13_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Additional Options in the Process Managing counts for bin locations Counting serial and batch numbers Counting different units of measures Importing items and counts into Inventory Counting Documents Setting inventory document dates or inventory posting dates as default for the in house warehouse quantities Let’s look at some of the additional options you have in the Inventory Counting Process.",
-    "start_time": 589.1,
-    "end_time": 609.19
+    "image_file": "Slide_013.webp",
+    "script_text": "En el proceso de inventario físico, SAP Business One ofrece opciones adicionales para adaptar el recuento a la complejidad real del almacén. Puedes gestionar recuentos por ubicación dentro del almacén, contar artículos con números de serie o lotes, manejar diferentes unidades de medida, importar datos masivamente desde Excel y establecer fechas predeterminadas para las cantidades en el almacén. Estas funcionalidades permiten mayor precisión y eficiencia, especialmente en empresas con operaciones logísticas detalladas como Distribuidora Andina Tech.",
+    "start_time": 426.82,
+    "end_time": 461.78
   },
   {
     "slide_index": 14,
-    "image_file": "062_Slide_14_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Options: Manage Counts for Bin Locations For warehouses with bin locations, you can: Enter bin locations in the Inventory Counting document Enter quantities at the level of each bin location View in stock quantities by bin location You can count at the level of the bin location. For warehouses with bin locations, you can: Enter bin locations in the Inventory Counting Document Enter quantities at the level of each bin location View in stock quantities by bin location",
-    "start_time": 609.19,
-    "end_time": 634.66
+    "image_file": "Slide_014.webp",
+    "script_text": "En almacenes con ubicaciones definidas, SAP permite registrar el recuento a nivel de cada ubicación específica. En la ventana de Recuento de Inventario, puedes ingresar el código del artículo, seleccionar el almacén y especificar la ubicación física donde se encuentra el producto, como un estante o pasillo. Luego ingresas la cantidad contada en esa ubicación y el sistema muestra automáticamente la cantidad en stock según su registro. Esta funcionalidad es clave para identificar desviaciones precisas y mejorar el control en almacenes grandes o con múltiples zonas de almacenamiento.",
+    "start_time": 461.78,
+    "end_time": 498.5
   },
   {
     "slide_index": 15,
-    "image_file": "062_Slide_15_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Options: Counting Serial Numbers and Batches When counting serial numbers and batches, if there is a discrepancy, you can delete or add serial numbers or batch numbers. 1. OEC Computers performed a count for a printer item. Current inventory showed 54 in stock. 2. The stock taker entered a count of 55 into the Inventory Counting Document. 3. Stock taker creates a draft serial number in the Inventory Counting document. 4. When the counting differences are posted in an Inventory Posting document, the draft serial number becomes an actual serial number. You can count items which are managed by serial numbers and batches. The system can create new serial numbers or batch numbers if needed. After the count is complete, you can enter draft serial numbers or batches in the Inventory Counting document. The serial numbers will be created as actual serial numbers during inventory posting. For example, OEC Computers performed a count for a printer item. There were 55 printers in the warehouse, but only 54 had serial numbers. The stock taker entered the quantity in the Inventory Counting document and created a new draft serial number for the additional printer. The draft became an actual serial number when the counting differences were posted in an Inventory Posting document.",
-    "start_time": 634.66,
-    "end_time": 714.77
+    "image_file": "Slide_015.webp",
+    "script_text": "Cuando al contar un artículo con números de serie o lotes se encuentra una discrepancia entre el stock registrado y el contado, SAP permite corregirla directamente en el proceso. Primero, se identifica la diferencia en el documento de Recuento de Inventario. Luego, se agrega o elimina el número de serie o lote necesario. Si se agrega, el sistema crea inicialmente un número de serie provisional. Al contabilizar la diferencia mediante un documento de Contabilización de Inventario, ese número provisional se convierte en un número de serie real y válido, asegurando trazabilidad y precisión en el inventario.",
+    "start_time": 498.5,
+    "end_time": 537.86
   },
   {
     "slide_index": 16,
-    "image_file": "062_Slide_16_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Options: Counting Different Units of Measure An item may be stored in different units of measure in a warehouse Units of measure groups contain relationships between units. The system automatically converts the different units into the inventory unit of measure Example: Pack is inventory unit 24 packs in a carton 7 packs counted 10 cartons counted Total counted: (24 x 10) + 7 = 247 packs You have the option to count different units of measure. An individual item may be stored in different units of measure within a warehouse. Because unit of measure groups are set up with relationships between units, the system automatically converts the counted units into the inventory unit of measure. For example, a company selling paper may store paper in both cartons and in individual packs. The inventory unit of measure is the pack and there are 24 packs in a carton. In this situation, let’s assume a stock taker counts 10 cartons and 7 individual packs. The stock taker can enter both the count in cartons and the count in packs. SAP Business One will do the conversion of the units and determine the total of 247 packs for the inventory unit of measure.",
-    "start_time": 714.77,
-    "end_time": 784.61
+    "image_file": "Slide_016.webp",
+    "script_text": "SAP Business One permite contar el mismo artículo en diferentes unidades de medida, como paquetes y cajas, siempre que estén definidos en un grupo de unidades de medida con sus relaciones de conversión. El sistema convierte automáticamente todas las cantidades contadas a la unidad de medida de inventario para calcular el total correcto. Por ejemplo, si la unidad de inventario es el paquete y hay 24 paquetes en una caja, al contar 7 paquetes y 10 cajas, el sistema calcula (24 × 10) + 7 = 247 paquetes. Esto evita errores manuales y asegura consistencia en el registro de inventario, especialmente útil en distribuidores como Andina Tech que manejan empaques múltiples.",
+    "start_time": 537.86,
+    "end_time": 584.33
   },
   {
     "slide_index": 17,
-    "image_file": "062_Slide_17_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Options: Importing Items and Counts Define import template Enter data in Excel Import items and counts Adjust as needed Add the document Use the Import from Excel tool to import items and counts: You have the option to import items and counts into a counting document using the Import from Excel tool. This tool is covered in detail in its own course topic and specific instructions for inventory counts are covered in the Inventory Counting How to Guide. This option is very useful for companies who have a large number of items and extensive warehouses. Even if you are not importing the count, it may be useful to import item details into the document. You can import the fields for item codes and descriptions, warehouse codes, bin locations, bar codes, units of measure, batches, serial numbers, and counted quantities.",
-    "start_time": 784.61,
-    "end_time": 830.69
+    "image_file": "Slide_017.webp",
+    "script_text": "Para empresas con muchos artículos o almacenes extensos, como Distribuidora Andina Tech, SAP permite importar artículos y sus cantidades contadas desde una hoja de Excel. Primero, se define una plantilla de importación con los campos necesarios: código de artículo, descripción, almacén, ubicación, código de barras, unidad de medida, lote, número de serie y cantidad contada. Luego, se llenan los datos en Excel y se importa usando la herramienta 'Importar desde Excel'. Después de la importación, se pueden ajustar los datos si es necesario antes de agregar el documento de Recuento de Inventario. Este método ahorra tiempo y reduce errores de digitación manual.",
+    "start_time": 584.33,
+    "end_time": 629.04
   },
   {
     "slide_index": 18,
-    "image_file": "062_Slide_18_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Options: Default Date for Warehouse Quantities Administration System Initialization Document Settings Per Document Tab For Inventory Counting Document Two choices for the default date for calculation of the in warehouse quantity for inventory counts. In most circumstances, the best date to use is inventory transactions’ creation date. However, the posting date is another option for customers who create inventory documents with a posting date that differs from the current date. Document Settings Calculate In Whse Qty on Count Date Based On: Transactions’ Creation Date Transactions’ Posting Date There are two choices available for the default date for calculating the in warehouse quantity for inventory counts. In most circumstances, the best date to use is inventory transactions’ creation date. However, the posting date is another option for customers who create inventory documents with a posting date that differs from the current date. This may be useful for companies with large volumes of incoming and outgoing transactions and who want to limit the period of time they freeze inventory items.",
-    "start_time": 830.69,
-    "end_time": 892.99
+    "image_file": "Slide_018.webp",
+    "script_text": "En SAP Business One, puedes establecer si la cantidad en el almacén se calcula según la fecha de creación o la fecha de contabilización de las transacciones, específicamente para el documento de Recuento de Inventario. Esta configuración se encuentra en Administración → Inicialización del Sistema → Configuración de Documentos → Por Documento → Documento de Recuento de Inventario. La fecha de creación es la predeterminada recomendada en la mayoría de los casos, ya que refleja cuándo se realizó físicamente el conteo. Sin embargo, la fecha de contabilización está disponible para empresas que registran documentos de inventario con una fecha contable distinta a la actual, como en cortes de periodo o ajustes contables diferidos.",
+    "start_time": 629.04,
+    "end_time": 672.7
   },
   {
     "slide_index": 19,
-    "image_file": "062_Slide_19_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Example: Default date for In Warehouse Quantities September 6 Shipment with a quantity of 10 arrives at the warehouse September 8 Goods receipt created for Qty. 10 (with posting date of September 6) September 7 Physical inventory count performed September 9 Inventory Counting Document created (with count date of September 7) to record results Default as Posting Date: In warehouse quantity includes the 10. More information on this option is available in note 1899113 Default as Creation Date: In warehouse quantity does not include the 10. Here is an example of when using the posting date makes the most sense: Sometimes the OEC Computers warehouse team cannot keep up with the volume of inventory transactions and delays the entry of a goods receipt or goods issue until the next day. They receive a shipment with a quantity of 10 on September 6, but do not enter a goods receipt on that day. Physical inventory is performed on September 7. On September 8, a goods receipt is created for the quantity of 10. The posting date is set to September 6. The Inventory Counting document is created on the following day, September 9, with a count date of September 7. If the default date for in warehouse quantity is set to the creation date, the system will not include the 10 because the document was not yet created. If the default date is set to the posting date, then the 10 will be included because the posting date of the transaction was set to September 6. To learn more about this option, look at both the How to Guide on Physical Inventory and the note 1889113.",
-    "start_time": 892.99,
-    "end_time": 986.11
+    "image_file": "Slide_019.webp",
+    "script_text": "En este ejemplo, el 6 de septiembre llega un envío de 10 unidades al almacén. Ese mismo día se crea una Entrada de Mercancías para esas 10 unidades, pero con fecha de contabilización del 6 de septiembre. El 7 de septiembre se realiza el recuento físico de inventario. El 9 de septiembre se genera el documento de Recuento de Inventario, con fecha de recuento del 7 de septiembre. Si se usa como predeterminado la Fecha de Contabilización, el stock incluye las 10 unidades desde el 6 de septiembre. Si se usa la Fecha de Creación, el stock no las incluye hasta que se crea el documento. Esta configuración afecta cómo se reflejan las cantidades en el sistema según la fecha elegida.",
+    "start_time": 672.7,
+    "end_time": 718.61
   },
   {
     "slide_index": 20,
-    "image_file": "062_Slide_20_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "Summary Here are some key points: Inventory Counting is done periodically in every item based business to match the actual physical count to the quantities saved in the system. You can set up inventory cycles with recommendations for periodic counts to be triggered annually, monthly, weekly or even daily. Cycle counts can be tied to item groups and warehouse sublevels. Alerts remind you about items due for inventory counting. Inventory counts can be done by individuals or teams or a mix of individuals and teams. The Inventory Counting document coordinates counting by multiple stock takers, records the results, manages the process and allows you to copy any differences into inventory posting documents. Here are some key points: Inventory Counting is done periodically in every item based business to match the actual physical count to the quantities saved in the system. You can set up inventory cycles with recommendations for periodic counts to be triggered annually, monthly, weekly or even daily. The cycles can be tied to item groups and, in warehouses with bin locations, warehouse sublevels. Alerts remind you about items that are due for inventory counts. Inventory counts can be done by individuals, teams or a mix of individuals and teams. The Inventory Counting document coordinates counting by multiple stock takers, records the results, manages the process and allows you to copy any differences into inventory posting documents.",
-    "start_time": 986.11,
-    "end_time": 1070.83
-  },
-  {
-    "slide_index": 21,
-    "image_file": "062_Slide_21_10_Inven_13_WM_PhyInv.webp",
-    "script_text": "No part of this ation may be reproduced or transmitted in any form or for any purpose without the express permission of SAP SE or an SAP affiliate company. The information contained herein may be changed without prior notice. Some software products marketed by SAP SE and its distributors contain proprietary software components of other software vendors. National product specifications may vary. These materials are provided by SAP SE or an SAP affiliate company for informational purposes only, without representation or warranty of any kind, and SAP or its affiliated companies shall not be liable for errors or omissions with respect to the materials. The only warranties for SAP or SAP affiliate company products and services are those that are set forth in the express warranty statements accompanying such products and services, if any. Nothing herein should be construed as constituting an additional warranty. In particular, SAP SE or its affiliated companies have no obligation to pursue any course of business outlined in this document or any related presentation, or to develop or release any functionality mentioned therein. This document, or any related presentation, and SAP SE’s or its affiliated companies’ strategy and possible future developments, products, and platforms, directions, and functionality are all subject to change and may be changed by SAP SE or its affiliated companies at any time for any reason without notice. The information in this document is not a commitment, promise, or legal obligation to deliver any material, code, or functionality. All forward looking statements are subject to various risks and uncertainties that could cause actual results to differ materially from expectations. Readers are cautioned not to place undue reliance on these forward looking statements, and they should not be relied upon in making purchasing decisions. SAP and other SAP products and services mentioned herein as well as their respective logos are trademarks or registered trademarks of SAP SE (or an SAP affiliate company) in Germany and other countries. All other product and service names mentioned are the trademarks of their respective companies. See http: global.sap.com corporate en legal copyright index.epx for additional trademark information and notices.",
-    "start_time": 1070.83,
-    "end_time": 1127.11
+    "image_file": "Slide_020.webp",
+    "script_text": "El Recuento de Inventario se hace de forma regular en empresas que manejan artículos, para que el conteo físico coincida con lo registrado en el sistema. Puedes programar ciclos de inventario que se activen anualmente, mensualmente, semanalmente o incluso diariamente, y vincularlos a grupos de artículos o subniveles de almacén si hay ubicaciones. El sistema envía alertas para recordar qué artículos deben contarse. Los conteos pueden hacerse por una persona, un equipo o ambos trabajando juntos. El documento de Recuento de Inventario organiza todo el proceso: coordina a los inventariadores, registra los resultados, controla el flujo y permite transferir las diferencias a documentos de ajuste de inventario.",
+    "start_time": 718.61,
+    "end_time": 764.14
   }
 ]

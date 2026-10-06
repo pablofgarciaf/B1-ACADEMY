@@ -1,212 +1,212 @@
 [
   {
     "slide_index": 1,
-    "image_file": "051_Slide_01_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Impl 31 SystemSetup Users Groups en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Configuración y gestión del sistema: Usuarios y grupos de usuarios Este tema trata las cuentas de usuario, las parametrizaciones por defecto de los usuarios y los grupos de usuarios.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de configuración y gestión de usuarios y grupos en SAP Business One versión 10.0. Aquí aprenderás a crear cuentas de usuario, asignar parametrizaciones por defecto y organizar usuarios en grupos para una administración eficiente. Este conocimiento es esencial para garantizar que cada usuario tenga el acceso adecuado según su rol en la empresa.",
     "start_time": 0.0,
-    "end_time": 25.46
+    "end_time": 23.0
   },
   {
     "slide_index": 2,
-    "image_file": "051_Slide_02_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Al finalizar este tema, podrá definir y gestionar cuentas y las parametrizaciones por defecto para los usuarios de SAP Business One.  También podrá designar un usuario como superusuario o usuario móvil.  Podrá explicar el concepto de grupo de usuarios y cómo funcionan dichos grupos.  Por último, se pueden gestionar las contraseñas de usuarios, incluida la definición de una política de claves de acceso para toda la empresa. 2 2 Objetivos: Definir y gestionar cuentas y valores por defecto para usuarios de SAP Business One Designar a un usuario como un superusuario o usuario móvil Explicar el concepto de un grupo de usuarios y cómo funciona Gestionar claves de acceso de usuario y definir una política de claves de acceso para toda la empresa Objetivos.",
-    "start_time": 25.46,
-    "end_time": 73.44
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrás definir y gestionar cuentas de usuario y sus valores por defecto en SAP Business One. También aprenderás a designar un usuario como superusuario o usuario móvil, explicar el concepto y funcionamiento de los grupos de usuarios, y gestionar las contraseñas mediante una política de claves de acceso empresarial segura y estandarizada.",
+    "start_time": 23.0,
+    "end_time": 46.0
   },
   {
     "slide_index": 3,
-    "image_file": "051_Slide_03_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "DG Industries tiene 15 usuarios en el departamento de ventas que necesitan acceder a SAP Business One. Estos usuarios trabajan con los mismos formularios y menús.  Al procesar los documentos de ventas, los usuarios deben tener las mismas parametrizaciones de formulario para los documentos, el mismo formato y diseño de IU y necesidades similares para las parametrizaciones de impresión.  La empresa desea aplicar una política segura de claves de acceso que requiera que los usuarios seleccionen una clave de acceso de una longitud mínima establecida.  Solución:  Definir un conjunto de valores predeterminados comunes para visualizar e imprimir parametrizaciones y asignarlas a cada cuenta de usuario como Opciones de usuario  Configurar una cuenta de usuario con las parametrizaciones de formulario necesarias y copiar las parametrizaciones de formulario a otras cuentas de usuario (o a un grupo de usuarios)  Definir un conjunto común de modificaciones en la configuración de IU en un modelo de IU asignarlas a cada una de las cuentas de usuario (o a un grupo de usuarios)  Definir una política de claves de acceso personalizada en SAP Business One.  Nota: Los grupos de usuarios pueden acelerar la asignación de parametrizaciones comunes, incluidas las autorizaciones generales, a varios usuarios. Los grupos de usuarios se tratarán en este curso. 3 3 DG Industries tiene 15 usuarios en el departamento de ventas. Cada uno de estos usuarios trabaja con los mismos formularios y menús, y necesita las mismas parametrizaciones de formulario para los documentos, el mismo formato y diseño de IU y necesidades similares para las parametrizaciones de impresión La empresa desea aplicar una política segura de claves de acceso que requiera que los usuarios seleccionen una clave de acceso de una longitud mínima establecida. Ejemplo empresarial Solución:  Definir un conjunto común de opciones de usuario y asignarlo a cada cuenta de usuario  Definir parametrizaciones de formulario en común para un usuario y copiar a las otras cuentas de usuario (o a un grupo de usuarios)  Definir un conjunto de cambios de IU común y asignarlo a cada cuenta de usuario (o a un grupo de usuarios)  Definir una política de claves de acceso personalizada para la empresa.",
-    "start_time": 73.44,
-    "end_time": 210.1
+    "image_file": "Slide_003.webp",
+    "script_text": "DG Industries tiene 15 usuarios en ventas que requieren los mismos formularios, menús, parametrizaciones de documento, formato de IU y necesidades de impresión similares. La empresa busca aplicar una política segura de claves de acceso con longitud mínima. La solución consiste en definir opciones de usuario comunes, copiar parametrizaciones de formulario, aplicar modelos de IU y establecer una política de claves personalizada, facilitada por el uso de grupos de usuarios para asignaciones masivas y eficientes.",
+    "start_time": 46.0,
+    "end_time": 76.6
   },
   {
     "slide_index": 4,
-    "image_file": "051_Slide_04_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
-    "start_time": 210.1,
-    "end_time": 218.09
+    "image_file": "Slide_004.webp",
+    "script_text": "Ahora nos enfocamos en las cuentas de usuario, elemento fundamental para acceder a SAP Business One. Cada usuario debe tener una cuenta única que contenga su ID, contraseña y detalles personales. Sin embargo, tener una cuenta no garantiza el acceso funcional: se requiere además la asignación correcta de licencia y autorizaciones generales para poder usar el sistema según el rol y responsabilidades del usuario.",
+    "start_time": 76.6,
+    "end_time": 102.8
   },
   {
     "slide_index": 5,
-    "image_file": "051_Slide_05_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Cuentas de usuario Cuenta usuario Cada usuario necesita una cuenta. Además, un usuario no puede acceder a ninguna funcionalidad hasta que le hayan asignado la licencia y las autorizaciones generales correctas. Autorizaciones Personalización Registros vinculados Licencia Autorizaciones generales Parametrizacion es de formulario Configuración de IU Val. por defecto de usuario Comprador/empleado del departamento de ventas Datos maestros de empleados Paneles Para trabajar con SAP Business One, un usuario necesita una cuenta. La cuenta de usuario contiene el ID de usuario, la contraseña y otros detalles. Incluso con una cuenta, el usuario no puede acceder a ninguna funcionalidad hasta que le hayan asignado la licencia y las autorizaciones generales correctas.  La licencia permite el uso legal del software  Las autorizaciones generales permiten el acceso a funciones y menús en SAP Business One, según la clase de licencia del usuario, y se puede refinar más mediante el rol La cuenta del usuario se asocia con opciones de personalización, como las parametrizaciones de formulario, las opciones de usuario, los modelos de configuración de IU y los paneles de cockpit. La cuenta de usuario puede enlazarse opcionalmente a un registro de datos maestros de empleado para fines de RR.HH. y para otra autorización, la propiedad de datos. La cuenta de usuario se puede enlazar a un empleado del departamento de ventas o comprador designado, que se indica en los documentos de marketing.",
-    "start_time": 218.09,
-    "end_time": 310.27
+    "image_file": "Slide_005.webp",
+    "script_text": "La cuenta de usuario en SAP Business One contiene el ID de usuario, la contraseña y otros datos de identificación. Para acceder a funcionalidades, el usuario necesita tanto una licencia válida, que autoriza el uso legal del software, como autorizaciones generales adecuadas, que definen el acceso a menús y funciones según su clase de licencia. Estas autorizaciones pueden refinarse mediante roles. Además, la cuenta puede vincularse a registros de empleado para RR.HH., propiedad de datos o roles de ventas y compras.",
+    "start_time": 102.8,
+    "end_time": 135.8
   },
   {
     "slide_index": 6,
-    "image_file": "051_Slide_06_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Configuración de cuentas de usuario Gestión Definición General Usuarios  Para crear una cuenta de usuario, introduzca los detalles en la ventana Usuarios – Configuración  El Código de usuario debe ser único y diferenciar entre mayúsculas y minúsculas  Después de haber grabado la ventana, no podrá modificar el código de usuario  Para habilitar entrada individual (SSO), introduzca el dominio Microsoft Windows y la cuenta de usuario Nota:  Tiene la opción de generar una cuenta de usuario utilizando información de los datos maestros del empleado.  También puede acceder a esta pantalla de configuración desde el Asistente de configuración rápida Para crear una cuenta de usuario, seleccione la vía de acceso mostrada en la diapositiva e introduzca los detalles de usuario. El código de usuario debe ser único, de hasta 8 caracteres y distinguir mayúsculas y minúsculas. Una vez grabado, el código de usuario no se puede modificar. Para permitir que el usuario inicie sesión con entrada individual (SSO), introduzca el dominio Windows y un nombre de cuenta. También debe habilitar la funcionalidad de entrada individual en el System Landscape Directory (SLD). Como resultado, los usuarios pueden acceder a SAP Business One sin introducir su código de usuario y clave de acceso. Si desea utilizar la función de entrada individual para SAP Business One, versión para SAP HANA, debe seleccionar la autenticación de usuario de dominio y especificar el nombre y usuario de dominio durante la instalación de los componentes del servidor de SAP Business One. Nota:  Si crea los datos maestros del empleado en primer lugar, tiene la opción de generar la cuenta de usuario al crear los datos maestros  También puede acceder a esta ventana de configuración de usuario desde el Asistente de configuración rápida Consulte el curso correspondiente en el plan de formación Herramientas de implementación.",
-    "start_time": 310.27,
-    "end_time": 425.35
+    "image_file": "Slide_006.webp",
+    "script_text": "Para crear una cuenta de usuario en SAP Business One, accede a través de Gestión > Definición > General > Usuarios. En la ventana Usuarios – Configuración, ingresa los datos requeridos. El Código de usuario debe ser único, de hasta 8 caracteres y distinguir mayúsculas y minúsculas; una vez guardado, no puede modificarse. Para habilitar el ingreso único (SSO), ingresa el dominio y cuenta de Windows, y asegúrate de tener configurado el System Landscape Directory. También puedes generar la cuenta automáticamente desde los datos maestros del empleado o acceder desde el Asistente de configuración rápida.",
+    "start_time": 135.8,
+    "end_time": 174.4
   },
   {
     "slide_index": 7,
-    "image_file": "051_Slide_07_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Cuenta para superusuario  Marque la casilla de selección Superusuario para designar un superusuario  Un superusuario tiene, por defecto, autorización para cada función del sistema; no puede editar las autorizaciones generales de un superusuario  Debe asignarse una licencia profesional a esta cuenta  Quienes no son superusuarios no tienen autorización por defecto a ninguna función, por eso, necesita establecer autorizaciones generales a cada usuario.  Si verifica la casilla de selección Superusuario en la cuenta de usuario, el usuario pasa a ser un superusuario. Un superusuario tiene por defecto autorización total a cada función de SAP Business One y necesita tener asignada una licencia profesional. No puede editar las autorizaciones para una cuenta de superusuario.  Si no marca la casilla de selección Superusuario, el usuario no tiene autorizaciones por defecto para utilizar ninguna funcionalidad del sistema. Las Autorizaciones generales deben establecerse en cada usuario para cada función con la que trabaje. Puede asignar a este usuario una licencia limitada o una licencia profesional.  Un superusuario puede crear nuevas cuentas de usuario, restablecer las claves de acceso de otros usuarios y asignar licencias y autorizaciones para otros usuarios. Durante el proyecto de implementación se nominarán a los superusuarios y deberán recibir formación sobre toda la funcionalidad de administración y del sistema.",
-    "start_time": 425.35,
-    "end_time": 512.18
+    "image_file": "Slide_007.webp",
+    "script_text": "Un superusuario en SAP Business One tiene autorización total por defecto para todas las funciones del sistema. Para designarlo, debe marcarse la casilla de Superusuario en la cuenta de usuario. Este rol requiere una licencia profesional asignada y no permite editar sus propias autorizaciones generales. Los usuarios que no son superusuarios no tienen permisos por defecto y necesitan autorizaciones explícitas para cada función que vayan a usar. Durante la implementación, se nombran superusuarios y reciben formación completa en administración y funcionalidad del sistema para gestionar usuarios, licencias y restablecer claves.",
+    "start_time": 174.4,
+    "end_time": 211.0
   },
   {
     "slide_index": 8,
-    "image_file": "051_Slide_08_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Cuenta para el usuario móvil  Marque la casilla de selección Usuario móvil para habilitar el acceso utilizando aplicaciones móviles para IOS y Android  Introduzca el número de teléfono móvil e ID del dispositivo  Instale el marco de integración de SAP Business One y active el escenario sap.B1Mobile  Asigne una licencia B1i al usuario móvil además de la licencia contratada  Para permitir que un usuario acceda a SAP Business One con las aplicaciones móviles para IOS y Android, seleccione la casilla de selección Usuario móvil. El número de teléfono móvil es obligatorio en la cuenta de usuario ya que el usuario debe introducir este número cuando se conecte desde el teléfono. Si el dispositivo no tuviera número de teléfono, por ejemplo, un iPad, seleccione un número de teléfono móvil ficticio.  También debe introducir el ID del dispositivo móvil del usuario, que es una dirección MAC única. Para encontrar el ID del dispositivo, inicie la aplicación móvil SAP Business One en el dispositivo. En la página de Inicio de sesión, pulse Parametrizaciones. El ID del dispositivo aparece en el campo ID de dispositivo en la sección Parametrizaciones de conexión.  Las aplicaciones móviles utilizan servicios Web del marco de integración para conectarse a la base de datos. Por lo tanto, debe instalar el marco de integración de SAP Business One. Esto es gratuito y se distribuye con la instalación de SAP Business One Software. También tiene que activar el escenario móvil sap.B1Mobile dentro del marco de integración.  El marco de integración utiliza el usuario B1i para conectarse a SAP Business One, por ejemplo para la autentificación cuando se utiliza la solución móvil. Tiene que asignar una licencia B1i al usuario. Esta licencia es gratuita, aunque debe asignarse además de la licencia contratada.  Consulte las guías de usuario correspondientes sobre IOS y Android para obtener más información sobre el uso de aplicaciones móviles.",
-    "start_time": 512.18,
-    "end_time": 637.61
+    "image_file": "Slide_008.webp",
+    "script_text": "Para habilitar el acceso móvil en SAP Business One mediante iOS o Android, debe marcarse la casilla de Usuario móvil en la cuenta de usuario. El número de teléfono móvil es obligatorio, incluso si se usa un iPad, en cuyo caso se asigna un número ficticio. También se requiere el ID único del dispositivo (dirección MAC), que se obtiene desde la app móvil en Parametrizaciones > ID de dispositivo. Además, es necesario instalar y activar el marco de integración de SAP Business One y el escenario sap.B1Mobile. Finalmente, se debe asignar una licencia B1i gratuita, además de la licencia contratada, para permitir la autenticación mediante el usuario técnico B1i.",
+    "start_time": 211.0,
+    "end_time": 255.2
   },
   {
     "slide_index": 9,
-    "image_file": "051_Slide_09_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Datos maestros del empleado y cuenta de usuario  Los datos maestros del empleado se utilizan para definir jerarquías organizativas, equipos, departamento y sucursales  El registro de empleado y cuenta de usuario pueden vincularse para facilitar el mantenimiento de registros de usuario  Los datos maestros del empleado se utilizan para definir jerarquías organizativas, equipos, departamento y sucursales. Estas vinculaciones se utilizan para autorizaciones de propiedad de datos.  El registro de usuario y la cuenta de usuario pueden vincularse con el Código de usuario en el registro de empleado y el nombre de Empleado en la cuenta de usuario. Esto puede facilitar el mantenimiento y actualización de registros de usuario.  Muchos campos son comunes en los datos maestros del empleado y en la cuenta de usuario. Cuando añade el registro de datos maestros de un empleado, el sistema le pedirá que cree automáticamente una cuenta de usuario si aún no existiera. Varios campos del registro de empleado se copian en la cuenta de usuario y se vinculan los dos registros.  Si ya existe una cuenta de usuario, puede tener copiados los campos comunes de los datos maestros en la cuenta de usuario.  Cuando se vinculan los registros, si introduce datos adicionales en la cuenta de usuario, el sistema copiará los datos en el registro de empleado y viceversa.",
-    "start_time": 637.61,
-    "end_time": 718.94
+    "image_file": "Slide_009.webp",
+    "script_text": "En SAP Business One, los datos maestros del empleado se usan para definir estructuras organizativas como departamentos, equipos y sucursales. Al crear un registro de empleado, el sistema solicita automáticamente crear una cuenta de usuario si no existe. Varios campos del empleado se copian en la cuenta de usuario y los dos registros se vinculan mediante el Código de usuario y el nombre de Empleado. Esta vinculación facilita el mantenimiento: si se modifica un dato en cualquiera de los dos registros, el sistema lo replica en el otro. Además, estas relaciones se utilizan para configurar autorizaciones basadas en la propiedad de datos, asegurando que los usuarios solo accedan a la información correspondiente a su rol o unidad organizativa.",
+    "start_time": 255.2,
+    "end_time": 303.0
   },
   {
     "slide_index": 10,
-    "image_file": "051_Slide_10_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Retirada de una cuenta  Para eliminar una cuenta de usuario, abra la cuenta de usuario y seleccione Datos > Eliminar  Acuérdese de eliminar la asignación de licencia antes de borrar la cuenta  El sistema no le permitirá crear una nueva cuenta posteriormente con el mismo código de usuario  Con el tiempo, podría ser necesario eliminar cuentas de usuario. Para ello, seleccione la cuenta de usuario y abra el menú Datos y seleccione Eliminar.  Acuérdese de eliminar la asignación de licencia antes de eliminar la cuenta para evitar la asignación errónea de licencias o que estas queden huérfanas.  Tenga en cuenta que el sistema no le permitirá crear posteriormente una nueva cuenta con el mismo código de usuario (el registro se seguirá manteniendo en la base de datos).",
-    "start_time": 718.94,
-    "end_time": 764.78
+    "image_file": "Slide_010.webp",
+    "script_text": "Para eliminar una cuenta de usuario en SAP Business One, primero debe abrir la cuenta y seleccionar la opción Eliminar desde el menú Datos. Es esencial retirar previamente la asignación de licencia para evitar que queden licencias huérfanas o mal asignadas. Una vez eliminada, el sistema no permite crear una nueva cuenta con el mismo código de usuario, ya que el registro permanece en la base de datos como histórico. Esta restricción garantiza la trazabilidad y evita conflictos en auditorías o reportes. Por eso, se recomienda planificar cuidadosamente la eliminación de usuarios, especialmente en entornos con requisitos de cumplimiento o control interno estricto.",
+    "start_time": 303.0,
+    "end_time": 344.8
   },
   {
     "slide_index": 11,
-    "image_file": "051_Slide_11_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Usuarios predefinidos  En el momento de la instalación, se crean y reservan cuentas de usuarios predefinidos:  Jefe  B1i  Workflow  AlertSvc  Soporte Cuando se instala SAP Business One, se crean y reservan algunas cuentas de usuarios predefinidos:  El usuario jefe se crea cuando se crea primero la empresa.  El usuario B1i se crea cuando se selecciona el marco de integración de SAP Business One para la instalación. Esta es la cuenta de usuario técnico utilizada internamente por el marco de integración para conectarse a SAP Business One.  El usuario Workflow se crea cuando se instala el servicio de Workflow. El servicio de Workflow permite a las empresas designar y ejecutar procesos empresariales estándar que consisten en tareas y lógica empresarial. El usuario Workflow se utiliza para conectarse desde el servicio a la base de datos de empresa.  El usuario AlertSvc se crea automáticamente en el momento de la instalación. Este usuario interno técnico asegura que el servicio de alerta envíe notificaciones de alerta a un usuario incluso si el usuario ya no tuviera ninguna sesión iniciada con SAP Business One. Consulte el tema relacionado sobre Alertas para obtener más detalles.  El usuario Soporte está disponible cuando la Plataforma de soporte remoto (RSP) se encuentra activada en el servidor del cliente. Proporciona un medio para que un consultor de soporte inicie sesión y acceda al sistema de una empresa para realizar el soporte y mantenimiento sin necesidad de licencia.",
-    "start_time": 764.78,
-    "end_time": 858.38
+    "image_file": "Slide_011.webp",
+    "script_text": "Durante la instalación de SAP Business One, se crean automáticamente cuentas de usuario predefinidas para funciones técnicas y operativas clave. El usuario Jefe se genera al crear la primera empresa y tiene privilegios administrativos. El usuario B1i se crea si se instala el marco de integración y se usa internamente para conectar aplicaciones móviles o web. El usuario Workflow se activa con el servicio de Workflow para ejecutar procesos empresariales estándar. El usuario AlertSvc asegura que las notificaciones de alerta se envíen incluso sin sesión activa. Finalmente, el usuario Soporte permite acceso remoto para consultores sin consumir licencia, siempre que la Plataforma de Soporte Remoto esté activada en el servidor.",
+    "start_time": 344.8,
+    "end_time": 389.4
   },
   {
     "slide_index": 12,
-    "image_file": "051_Slide_12_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Asignación de una licencia Gestión Licencia Gestión de licencias  Cada usuario debe tener asignada una licencia  Además, los usuarios móviles deben tener asignada la licencia B1i  Cada usuario debe tener asignada una licencia para utilizar el sistema. Para asignar una licencia, seleccione el código de usuario y el tipo de licencia de las licencias adquiridas disponibles. Cada vez que se asigne una licencia a un usuario, se reducirá el número de licencias disponibles.  Los usuarios móviles también deben tener asignada una licencia B1i, que es gratuita y que permite utilizar el marco de integración para aplicaciones web móviles.  Tenga en cuenta que puede importar el fichero de licencias desde esta pantalla. El fichero de licencias es enviado por SAP y contiene las licencias que ha comprado para el cliente.  Para obtener más información sobre las licencias, consulte la guía de licencias.",
-    "start_time": 858.38,
-    "end_time": 915.82
+    "image_file": "Slide_012.webp",
+    "script_text": "En SAP Business One, cada usuario debe tener asignada una licencia para acceder al sistema. Para hacerlo, vaya al menú Licencia > Gestión de licencias, seleccione el código de usuario y el tipo de licencia entre las disponibles. Cada asignación reduce el contador de licencias libres. Los usuarios móviles requieren, además de su licencia estándar, una licencia B1i gratuita para usar el marco de integración con aplicaciones iOS o Android. Desde esta pantalla también se puede importar un archivo de licencias proporcionado por SAP, que contiene los derechos adquiridos por el cliente. Es importante revisar periódicamente el consumo de licencias para evitar interrupciones en el acceso de los usuarios.",
+    "start_time": 389.4,
+    "end_time": 433.6
   },
   {
     "slide_index": 13,
-    "image_file": "051_Slide_13_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "En esta diapositiva examinamos la arquitectura de datos, flujos de trabajo y parámetros aplicables en el sistema.",
-    "start_time": 915.82,
-    "end_time": 923.81
+    "image_file": "Slide_013.webp",
+    "script_text": "Un grupo de usuarios es una lista de usuarios que comparten características similares, como roles o responsabilidades dentro de la empresa. En lugar de configurar cada usuario individualmente, se aplican parametrizaciones comunes a todo el grupo. Esto simplifica la administración y garantiza consistencia en autorizaciones, alertas, formularios y diseño de interfaz. En una empresa como Distribuidora Andina Tech, esto permite gestionar eficientemente a vendedores, contables o directores con necesidades idénticas.",
+    "start_time": 433.6,
+    "end_time": 462.2
   },
   {
     "slide_index": 14,
-    "image_file": "051_Slide_14_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Grupos de usuarios  En la cuenta de usuario, de forma opcional, puede asignar el usuario a un grupo de usuarios  Un grupo de usuarios es una lista de usuarios con características similares  Los grupos de usuarios operan en base al concepto de que los usuarios con el mismo rol requieren parametrizaciones similares En la cuenta de usuario, de forma opcional, puede asignar el usuario a un grupo de usuarios. Básicamente, un grupo de usuarios es una lista de usuarios que comparten requisitos comunes, por ejemplo, parametrizaciones de formulario o autorizaciones generales. La idea es asignar parametrizaciones comunes en el nivel de grupo en lugar de hacerlo a cada usuario individual. Los grupos de usuarios operan en base al concepto de que los empleados de una empresa se pueden agrupar en función de sus roles o de las funciones con las que trabajan (por ejemplo, vendedores, contables y directores). Generalmente, los usuarios con el mismo rol requieren lo siguiente de forma similar: • Autorizaciones generales • Notificaciones de alerta • Parametrizaciones de formulario • Parametrizaciones de formato y diseño de IU",
-    "start_time": 923.81,
-    "end_time": 990.79
+    "image_file": "Slide_014.webp",
+    "script_text": "Los grupos de usuarios permiten asignar parametrizaciones comunes a usuarios con roles similares, evitando configuraciones repetitivas. Por ejemplo, todos los vendedores pueden recibir las mismas autorizaciones, alertas de stock bajo y diseños de factura. Esto mejora la consistencia operativa y reduce errores. En SAP Business One, se asigna el grupo desde la ficha de usuario de forma opcional, aplicando reglas definidas a nivel de grupo en lugar de individual.",
+    "start_time": 462.2,
+    "end_time": 490.4
   },
   {
     "slide_index": 15,
-    "image_file": "051_Slide_15_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Creación de grupos de usuarios Gestión DefiniciónGeneral Grupos de usuarios Seleccione el botón Crear grupo. Antes de crear un grupo de usuarios debe identificar los usuarios con roles y responsabilidades similares para poder seleccionar el tipo correcto:  Autorización  Alertas  Parametrizaciones de formulario  Modelos de configuración de la IU  En todos los tipos Seleccione Tipo de grupo y añada usuarios por nombre Para crear un nuevo grupo de usuarios, abra el menú que se muestra en la diapositiva y seleccione el pulsador Crear grupo (o pulse Ctrl +A para cambiar al modo Añadir). Un grupo de usuarios pueden ser del tipo Autorización, Alertas, Parametrizaciones de formulario, Modelos de configuración de IU o En todos los tipos. Antes de crear un grupo de usuarios debe identificar los usuarios con roles y requisitos similares para poder crear un grupo con el tipo correcto:  Autorización. Para los usuarios que comparten los mismos requisitos de autorizaciones generales. Para obtener más información acerca de los grupos de usuarios de autorización, consulte el curso relacionado Autorizaciones generales.  Alertas. Para usuarios que necesitan las mismas notificaciones de alerta. Para obtener más información acerca de las alertas, consulte el curso relacionado Alertas.  Parametrizaciones de formulario. Para los usuarios con parametrizaciones de formulario comunes por documento. Parametrizaciones de formulario para poder copiar un usuario rápidamente a los usuarios de un grupo de usuarios.  Modelos de configuración de la IU. Para los usuarios con requisitos de formato y diseño de IU comunes. Para obtener más información sobre los grupos de usuario de modelos de configuración de la IU, consulte el curso relacionado Modelos de configuración de la IU.  En todos los tipos. Para usuarios que comparten parametrizaciones comunes en más de un grupo de los otros tipos de grupo. A continuación, puede agregar usuarios al grupo seleccionándolos de la lista de usuarios. De forma opcional, puede fijar un rango de fechas válido para el nuevo grupo. Por ejemplo, puede predefinir un conjunto de autorizaciones en un grupo y activarlas en una fecha posterior.",
-    "start_time": 990.79,
-    "end_time": 1128.36
+    "image_file": "Slide_015.webp",
+    "script_text": "Para crear un grupo de usuarios, primero identifique qué usuarios comparten roles y responsabilidades similares. Luego, acceda a Gestión ► Definición ► General ► Grupos de usuarios y seleccione Crear grupo. Elija el tipo adecuado según las necesidades compartidas: autorización, alertas, parametrizaciones de formulario, modelos de IU o todos los tipos. Finalmente, agregue los usuarios por nombre y, opcionalmente, defina un rango de fechas válido para el grupo.",
+    "start_time": 490.4,
+    "end_time": 518.2
   },
   {
     "slide_index": 16,
-    "image_file": "051_Slide_16_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Ventana Tipo de grupo Autorizaciones generales Gestiones de alarma Copia param. formulario Mod. configuración IU Autorización X Alertas X Param. formulario X Mod. configuración de la IU X En todos los tipos X X X X Cómo funcionan las clases de grupo de usuarios Los grupos de usuarios aparecen en ventanas de configuración según el tipo: Los grupos de usuarios aparecen en ventanas de configuración según el tipo: • Los grupos Autorización aparecen en la ventana Autorizaciones generales, lo que le permite asignar autorizaciones simultáneamente a todos los que pertenezcan al grupo de usuarios. • Los grupos Alerta aparecen en la ventana Gestión de alertas cuando configura una nueva alerta, lo que le permite asignar todos los usuarios del grupo para que reciban notificaciones de alerta. • Los grupos Parametrizaciones de formulario aparecen en la ventana Copiar parametrizaciones de formulario, lo que le permite copiar simultáneamente parametrizaciones de formulario de un usuario fuente a todos los usuarios del grupo. • Los grupos Modelos de configuración de IU aparecen en la ventana Configuración del modelo de configuración de IU, lo que le permite asignar una plantilla de IU de forma simultánea para todos los usuarios en el grupo. • Los grupos En todos los tipos aparecen en las cuatro ventanas de configuración. Esto le permite asignar los usuarios de este grupo a cualquiera de las ventanas de configuración.",
-    "start_time": 1128.36,
-    "end_time": 1216.1
+    "image_file": "Slide_016.webp",
+    "script_text": "Cada tipo de grupo de usuarios se asocia a una ventana específica de configuración en SAP Business One, donde se aplican las parametrizaciones compartidas. Los grupos de autorización van a Autorizaciones generales, los de alerta a Gestión de alertas, los de parametrizaciones de formulario a Copiar parametrizaciones de formulario, y los de modelos de IU a Configuración del modelo de configuración de IU. Los grupos 'En todos los tipos' aparecen en las cuatro ventanas, permitiendo asignaciones múltiples.",
+    "start_time": 518.2,
+    "end_time": 549.6
   },
   {
     "slide_index": 17,
-    "image_file": "051_Slide_17_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Ejemplo: Grupo de usuarios de parametrizaciones de formulario Para asignar parametrizaciones de formulario a un grupo de usuarios:  Cree el grupo de usuarios con el tipo Parametrizaciones de formulario o En todos los tipos y añada los usuarios  Inicie sesión como uno de los usuarios y defina las parametrizaciones de formulario  Seleccione el botón Copiar parametrizaciones de formulario de la cuenta del usuario  En la ventana Copiar parametrizaciones de formulario, seleccione la ficha Grupos y seleccione el grupo predefinido Para asignar parametrizaciones de formulario a un grupo de usuarios: • Cree el grupo de usuarios con el tipo Parametrizaciones de formulario o En todos los tipos y añada los usuarios al grupo • Inicie sesión como uno de los usuarios y defina las parametrizaciones de formulario para los documentos • Seleccione el botón Copiar parametrizaciones de formulario de la cuenta del usuario • En la ventana Copiar parametrizaciones de formulario, seleccione la ficha Grupos y seleccione el grupo predefinido. Los miembros del grupo recibirán las mismas parametrizaciones de formulario. Para ver cómo funcionan los grupos de usuarios de autorización, consulte el curso relacionado sobre Autorizaciones generales. Para ver cómo funcionan los grupos de usuario de modelos de configuración de la IU, consulte el curso relacionado Modelos de configuración de la IU. Para ver cómo funcionan los grupos de usuarios de alertas, consulte el curso relacionado sobre Alertas.",
-    "start_time": 1216.1,
-    "end_time": 1304.3
+    "image_file": "Slide_017.webp",
+    "script_text": "Para aplicar parametrizaciones de formulario a un grupo, primero cree un grupo del tipo 'Parametrizaciones de formulario' o 'En todos los tipos' y agregue los usuarios. Luego, inicie sesión como uno de ellos y configure las parametrizaciones deseadas para documentos como facturas o pedidos. Después, use el botón 'Copiar parametrizaciones de formulario' desde su cuenta y, en la ventana correspondiente, seleccione la ficha Grupos y el grupo predefinido. Así, todos los miembros reciben las mismas configuraciones automáticamente.",
+    "start_time": 549.6,
+    "end_time": 581.0
   },
   {
     "slide_index": 18,
-    "image_file": "051_Slide_18_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Parametrizaciones de usuario y valores por defecto",
-    "start_time": 1304.3,
-    "end_time": 1308.67
+    "image_file": "Slide_018.webp",
+    "script_text": "Esta diapositiva introduce el tema de las parametrizaciones de usuario y sus valores por defecto, que permiten personalizar la experiencia de cada usuario en SAP Business One según sus preferencias individuales. A diferencia de los grupos de usuarios, estas configuraciones se aplican a nivel individual y pueden incluir formatos de fecha, moneda, diseños de pantalla y comportamientos predeterminados. Se configuran desde la cuenta de usuario y sobrescriben los valores del grupo cuando existen.",
+    "start_time": 581.0,
+    "end_time": 610.8
   },
   {
     "slide_index": 19,
-    "image_file": "051_Slide_19_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Parametrizaciones de usuario (parametrizaciones generales)  Puede definir las parametrizaciones por defecto de las sesiones de inicio de sesión, la visualización y la fuente y fondo en las fichas Servicios, Visualización y Fuente y fondo de las parametrizaciones generales En Parametrizaciones generales puede definir las parametrizaciones por defecto que se aplicarán a las cuentas de usuario. Estas parametrizaciones incluyen acciones al comienzo de cada sesión de inicio de sesión, idioma de visualización, formatos de fecha y hora y fuentes y fondos.",
-    "start_time": 1308.67,
-    "end_time": 1341.72
+    "image_file": "Slide_019.webp",
+    "script_text": "Las parametrizaciones generales definen valores por defecto para todas las cuentas de usuario en SAP Business One. Incluyen acciones al iniciar sesión, idioma de visualización, formatos de fecha y hora, y opciones de fuente y fondo. Estas configuraciones se aplican a menos que se sobrescriban a nivel de usuario o de documento. Establecerlas correctamente garantiza una experiencia consistente y adaptada al entorno laboral de la empresa, como Distribuidora Andina Tech en Quito.",
+    "start_time": 610.8,
+    "end_time": 640.2
   },
   {
     "slide_index": 20,
-    "image_file": "051_Slide_20_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Parametrizaciones de usuario (valores por defecto de usuario) Gestión DefiniciónGeneral Opciones de usuario  Las Opciones de usuario incluyen las parametrizaciones de visualización, formato de fecha y hora, idioma y fuente e impresión  Los valores por defecto se asignan a los usuarios que tienen requisitos comunes en estas áreas  Nota: Las parametrizaciones de impresión se seleccionan por documento y sustituyen parametrizaciones por documento similares en la ventana Preferencias de impresión  En la pantalla Opciones de usuario, puede predefinir un conjunto de parametrizaciones por defecto y asignarlas a cuentas de usuario. Asigne un código al conjunto de valores por defecto y posteriormente seleccione el código en la cuenta de usuario.  Un ejemplo podría ser la configuración de valores por defecto comunes para usuarios que trabajan en el mismo departamento local o que trabajan con el mismo almacén.  En las parametrizaciones se incluyen los formatos de fecha y hora, el color, idioma y fuente de visualización, además de las cuentas utilizadas para efectivo y cheques, almacén por defecto, etc.  En la ficha Imprimir puede definir acciones de impresión según el documento. Estas incluyen el número de copias y observaciones para imprimir, además de acciones que se realizan automáticamente al añadir un documento, como por ejemplo enviar un correo electrónico o exportar a PDF. En la diapositiva de muestra, las opciones para exportar y enviar automáticamente por correo electrónico una oferta de ventas como PDF están seleccionadas para ese documento. Tenga en cuenta que las parametrizaciones por documento pueden realizarse en la ventana Parametrizaciones de impresión Por documento. Estas parametrizaciones de opciones de usuario tienen prioridad sobre las parametrizaciones de las preferencias de impresión.",
-    "start_time": 1341.72,
-    "end_time": 1449.84
+    "image_file": "Slide_020.webp",
+    "script_text": "En la ventana Opciones de usuario, se definen valores por defecto para grupos de usuarios con necesidades comunes, como mismo departamento o almacén. Aquí se configuran formato de fecha y hora, idioma, fuente, color de visualización, y predeterminados como almacén por defecto o cuentas para efectivo y cheques. En la ficha Imprimir, se establecen acciones automáticas como número de copias, observaciones, envío por correo o exportación a PDF al agregar un documento. Estas opciones tienen prioridad sobre las preferencias de impresión por documento.",
+    "start_time": 640.2,
+    "end_time": 674.0
   },
   {
     "slide_index": 21,
-    "image_file": "051_Slide_21_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Parametrizaciones de usuario (valores por defecto de usuario) Cont. Las opciones de usuario también cubren las parametrizaciones de tarjeta de crédito. . . y la vía de acceso a una carpeta de anexos para los usuarios Nota: La vía de acceso a la carpeta de anexos superior se define en Parametrizaciones generales. En la ventana Opciones de usuario puede asignar una subcarpeta como la carpeta de anexos Las opciones de usuario también cubren cuentas de mayor de tarjeta de crédito y le permiten configurar por separado diferentes carpetas de anexos para distintos grupos de usuarios. La carpeta de anexos se utiliza cuando un usuario:  Exporta un documento como PDF  Adjunta un documento a un correo electrónico  Añade un anexo a un documento, actividad, interlocutor comercial u otra forma que tenga una ficha Anexos. La vía de acceso a la carpeta de anexos a nivel de empresa se debe definir primero en Parametrizaciones generales (ficha Fía de acceso). A continuación, puede definir subcarpetas de las carpetas de anexos principales y asignar la vía de acceso a la subcarpeta para un grupo de usuarios. Debería determinar un programa apropiado para realizar una copia de seguridad de las carpetas de anexos. Puede planificar la copia de seguridad de las carpetas de anexos mediante la herramienta de la plataforma de soporte remoto (RSP).",
-    "start_time": 1449.84,
-    "end_time": 1532.3
+    "image_file": "Slide_021.webp",
+    "script_text": "Las Opciones de usuario permiten configurar la vía de acceso a una subcarpeta de anexos para cada grupo de usuarios, basada en la carpeta principal definida en Parametrizaciones generales. Esta carpeta se usa al exportar documentos como PDF, adjuntar archivos a correos o agregar anexos a actividades o interlocutores. También se configuran cuentas de mayor para tarjetas de crédito. Se recomienda planificar copias de seguridad de las carpetas de anexos usando la herramienta RSP para garantizar la disponibilidad y protección de los archivos adjuntos en Distribuidora Andina Tech.",
+    "start_time": 674.0,
+    "end_time": 709.8
   },
   {
     "slide_index": 22,
-    "image_file": "051_Slide_22_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Opciones de usuario (cuenta de usuario) Parametrizaciones generales Val. por defecto de usuario Cuenta de usuario El usuario puede modificar algunas de las parametrizaciones por defecto de su cuenta. Sus usuarios pueden abrir su cuenta mediante el icono Mis parametrizaciones personales. No todas las parametrizaciones están disponibles en la cuenta de usuario, pero cuando si lo están, sustituyen las mismas parametrizaciones definidas en las opciones de usuario o en Parametrizaciones generales. Por lo tanto, las parametrizaciones más limitadas tienen prioridad sobre las parametrizaciones más amplias. Un usuario puede modificar las parametrizaciones de las fichas General, Servicios y Visualización de su cuenta. Una parametrización importante que puede controlar un usuario es la capacidad de utilizar la tecla Intro en un teclado numérico como tecla tab para que el usuario pueda desplazarse entre los campos de un documento para introducir datos más rápidamente. Tenga en cuenta que esta parametrización se aplica solo a los teclados numéricos.",
-    "start_time": 1532.3,
-    "end_time": 1597.42
+    "image_file": "Slide_022.webp",
+    "script_text": "Cada usuario puede acceder a su cuenta mediante el icono 'Mis parametrizaciones personales' para modificar ciertas configuraciones definidas a nivel general o por defecto. Las modificaciones en las fichas General, Servicios y Visualización tienen prioridad sobre las opciones de usuario y las parametrizaciones generales. Una función útil es configurar la tecla Intro del teclado numérico como tecla Tab, lo que permite navegar rápidamente entre campos en documentos para ingresar datos más eficientemente. Esta ajustes solo aplica a teclados numéricos y mejora la productividad en tareas repetitivas.",
+    "start_time": 709.8,
+    "end_time": 744.8
   },
   {
     "slide_index": 23,
-    "image_file": "051_Slide_23_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Gestión de claves de acceso",
-    "start_time": 1597.42,
-    "end_time": 1600.54
+    "image_file": "Slide_023.webp",
+    "script_text": "La gestión de claves de acceso en SAP Business One permite definir políticas de seguridad que se aplican a todos los usuarios del sistema. Estas políticas establecen requisitos como longitud mínima, composición de caracteres y frecuencia de cambio. Es una función reservada principalmente a superusuarios y es esencial para cumplir con estándares de seguridad interna. En Distribuidora Andina Tech, configurar adecuadamente esta política ayuda a proteger el acceso al sistema contra vulnerabilidades comunes.",
+    "start_time": 744.8,
+    "end_time": 774.6
   },
   {
     "slide_index": 24,
-    "image_file": "051_Slide_24_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Política de claves de acceso GestiónConfiguración General Seguridad Gestión de claves de acceso  La política de claves de acceso se aplica a todos los usuarios y determina el nivel de seguridad de la clave de acceso y con qué frecuencia es necesario cambiarla. El nivel de seguridad seleccionado en esta pantalla se aplica al sistema  Opciones de política: baja, media, alta y personalizada  Ejemplo de clave de acceso que se muestra a un usuario como plantilla para crear una nueva clave de acceso Política por defecto Política personalizada (ejemplo)  Por lo general, la gestión de claves de acceso se realiza utilizando el superusuario.  Se proporciona una política de claves de acceso por defecto para lograr la conformidad en relación con las claves de acceso. La política por defecto está disponible en la función de gestión de claves de acceso. Solo los superusuarios tienen acceso a esta función.  La política de claves de acceso se aplica a todos los usuarios y determina el nivel de seguridad requerido de la clave de acceso de usuario, la composición de caracteres y con qué frecuencia es necesario cambiarla.  Puede seleccionar baja, media, alta o introducir parametrizaciones personalizadas para la política de claves de acceso. El nivel de seguridad seleccionado en esta pantalla se aplica al sistema  La política de claves de acceso por defecto es baja y solo requiere una longitud de clave de acceso mínima de 4 caracteres y la clave de acceso nunca caduca. La política de claves de acceso alta requiere una longitud de clave de acceso mínima de 8 caracteres y obliga a cambiar la clave de acceso cada 30 días. Puede establecer su propia política personalizada.  Independientemente de la política que elija, puede seleccionar un ejemplo de clave de acceso que se muestre a usuarios cuando creen claves de acceso, y que actúe cómo un modelo para los criterios de clave de acceso requeridos.  Si en la empresa se utiliza la entrada individual, el usuario aún tiene la opción de iniciar sesión con sus credenciales de SAP Business One, por lo que debe mantenerse la política de claves de acceso.",
-    "start_time": 1600.54,
-    "end_time": 1726.58
+    "image_file": "Slide_024.webp",
+    "script_text": "La política de claves de acceso por defecto está configurada en nivel bajo: requiere solo 4 caracteres y nunca caduca, lo que representa un riesgo de seguridad. En contraste, la política alta exige mínimo 8 caracteres y obliga a cambiar la clave cada 30 días, aumentando la protección. Las políticas personalizadas permiten ajustar estos parámetros según las necesidades de la empresa. Un ejemplo de clave se muestra como guía al crear nuevas credenciales. Aunque se use entrada individual, se debe mantener la política de claves para garantizar consistencia en seguridad.",
+    "start_time": 774.6,
+    "end_time": 811.2
   },
   {
     "slide_index": 25,
-    "image_file": "051_Slide_25_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Parametrización de la clave de acceso de un usuario  La clave de acceso la puede fijar un superusuario cuando se crea la cuenta  O bien, el usuario puede crear una clave de acceso en el primer inicio de sesión (casilla de selección Modificar contraseña en siguiente inicio de sesión )  La clave de acceso debe cumplir la política de claves de acceso actual Gestión Definiciones General Usuarios  La clave de acceso inicial de un usuario la puede fijar el superusuario cuando se crea la cuenta seleccionando el botón de puntos suspensivos a la derecha del campo de clave de acceso.  O bien, el superusuario puede dejar la clave de acceso en blanco y seleccionar la casilla de selección para que el usuario cree una clave de acceso la primera vez que inicie sesión. En este caso el usuario recibe un aviso para crear una clave de acceso de acuerdo con la política de claves de acceso. El usuario deja el campo de la clave de acceso anterior vacío y simplemente indica y confirma la nueva contraseña.",
-    "start_time": 1726.58,
-    "end_time": 1783.75
+    "image_file": "Slide_025.webp",
+    "script_text": "La clave de acceso de un usuario puede ser establecida por un superusuario al crear la cuenta o bien dejada en blanco para que el usuario la cree en su primer inicio de sesión. En este último caso, se activa la casilla 'Modificar contraseña en siguiente inicio de sesión' y el sistema solicita una nueva clave que debe cumplir con la política de claves de acceso vigente. Esta política se configura en Gestión ► Definiciones ► General ► Usuarios. El superusuario también puede usar el botón de puntos suspensivos junto al campo de clave para definirla inicialmente. Así se garantiza seguridad desde el primer acceso al sistema.",
+    "start_time": 811.2,
+    "end_time": 854.6
   },
   {
     "slide_index": 26,
-    "image_file": "051_Slide_26_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Cambio de la propia clave de acceso Gestión Configuración General Seguridad Cambio de clave de acceso  Los usuarios pueden cambiar su propia clave de acceso en cualquier momento con la función de cambio de clave de acceso  La función de cambio de clave de acceso se encuentra disponible para todos los usuarios independientemente de la licencia o autorizaciones  El usuario debe cumplir la política de claves de acceso  Todas las claves de acceso están cifradas  Los usuarios pueden cambiar su clave de acceso en cualquier momento seleccionando la función de cambio de clave de acceso. Esta función está disponible para todos los usuarios independientemente de la licencia o autorizaciones. La nueva clave de acceso debe cumplir la política de claves de acceso.  Tenga en cuenta que en SAP Business One se cifran todas las claves de acceso.",
-    "start_time": 1783.75,
-    "end_time": 1832.47
+    "image_file": "Slide_026.webp",
+    "script_text": "Los usuarios pueden cambiar su propia clave de acceso en cualquier momento mediante la función ubicada en Gestión ► Configuración ► General ► Seguridad ► Cambio de clave de acceso. Esta opción está disponible para todos los usuarios, sin importar su licencia o autorizaciones. El proceso requiere ingresar la clave actual, luego crear y confirmar una nueva que debe cumplir con la política de claves de acceso. Todas las claves en SAP Business One están cifradas para proteger la seguridad del sistema. Este mecanismo permite mantener credenciales actualizadas y seguras sin depender del superusuario.",
+    "start_time": 854.6,
+    "end_time": 892.8
   },
   {
     "slide_index": 27,
-    "image_file": "051_Slide_27_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Cuenta de usuario bloqueada  El superusuario puede bloquear y desbloquear una cuenta de usuario  La cuenta de usuario puede bloquearse para evitar el acceso o deshabilitar temporalmente una cuenta  La cuenta se bloqueará automáticamente después de una cantidad específica de intentos fallidos de inicio de sesión (según se determina en la política de claves de acceso)  Una cuenta de usuario puede bloquearse para evitar el acceso a SAP Business One o deshabilitar temporalmente una cuenta. El superusuario puede bloquear una cuenta manualmente y esta se bloqueará automáticamente después de un número específico de intentos fallidos de inicio de sesión del usuario, si así lo define la política de claves de acceso. La política de claves de acceso baja por defecto no bloquea una cuenta de usuario.  Solo un superusuario puede desbloquear una cuenta de usuario.",
-    "start_time": 1832.47,
-    "end_time": 1882.15
+    "image_file": "Slide_027.webp",
+    "script_text": "El superusuario tiene la capacidad de bloquear y desbloquear cuentas de usuario para evitar accesos no autorizados o deshabilitar temporalmente un acceso. Una cuenta puede bloquearse manualmente por el superusuario o automáticamente tras un número específico de intentos fallidos de inicio de sesión, según lo definido en la política de claves de acceso. Por defecto, la política de claves de acceso baja no activa el bloqueo automático. Solo un superusuario puede desbloquear una cuenta una vez bloqueada. Esta funcionalidad es esencial para controlar el acceso al sistema ante riesgos de seguridad o cambios en el personal.",
+    "start_time": 892.8,
+    "end_time": 931.8
   },
   {
     "slide_index": 28,
-    "image_file": "051_Slide_28_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Log de acceso Herramientas > Log de acceso  Registra cada vez que el usuario inicia sesión en el sistema o sale de él y los cambios de clave de acceso  Haga doble clic en la línea para ver el log detallado  Se actualiza un log de auditoría en el cual se registran tanto los inicios de sesión del usuario en el sistema como las salidas de él y los cambios de clave de acceso.  Esto resulta muy útil en especial para controlar los cambios de clave de acceso y los intentos fallidos de inicio de sesión en el sistema.  Para ver el log, seleccione el menú Herramientas y posteriormente Log de acceso.  Puede hacer doble clic en una línea para ver más información acerca de un usuario. La dirección IP del cliente está incluida en la información, la cual permite al administrador realizar el seguimiento de quién intentó iniciar sesión en el sistema.",
-    "start_time": 1882.15,
-    "end_time": 1931.4
+    "image_file": "Slide_028.webp",
+    "script_text": "El Log de acceso, accesible desde Herramientas > Log de acceso, registra cada inicio y cierre de sesión en SAP Business One, así como los cambios de clave de acceso. Cada entrada incluye usuario, fecha, hora, acción realizada, dirección IP del cliente y resultado del intento. Al hacer doble clic en una línea, se muestra el detalle completo, lo que permite al administrador auditar actividades sospechosas, como múltiples intentos fallidos o cambios de clave fuera de horario. Este registro es clave para cumplir con requisitos de seguridad y rastrear el acceso al sistema por parte de los usuarios.",
+    "start_time": 931.8,
+    "end_time": 971.6
   },
   {
     "slide_index": 29,
-    "image_file": "051_Slide_29_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "Resumen  Todos los usuarios necesitan una cuenta y una licencia. Existen dos tipos de cuentas de usuario:  Un superusuario tiene autorización total por defecto para todas las funciones y necesita una licencia profesional  Los usuarios normales no tienen autorización para ninguna función y necesitan autorizaciones generales para cada función y una licencia. Hay varias cuentas de usuario predefinidas en la base de datos de una empresa nueva que están reservadas Un grupo de usuarios es una lista de usuarios que comparten requisitos comunes, por ejemplo, parametrizaciones de formulario, formato y diseño de IU o autorizaciones generales. Los grupos de usuario le permiten asignar parametrizaciones comunes en el nivel de grupo en lugar de hacerlo a cada usuario individual. Puede definir parametrizaciones globales para los usuarios en las Parametrizaciones generales Puede definir opciones de usuario que se pueden asignar a un grupo o subgrupo de usuarios También puede definir algunas parametrizaciones en la misma cuenta de usuario, que sustituyen las parametrizaciones generales y las opciones usuario La función de gestión de claves de acceso permite a un superusuario establecer el nivel de seguridad de la clave de acceso según la empresa. Los superusuarios pueden bloquear una cuenta para evitar el acceso. El log de acceso proporciona un seguimiento de auditoría de inicios de sesión del usuario y de cambios de la clave de acceso Estos son algunos puntos clave de esta sesión.  Todos los usuarios necesitan una cuenta y una licencia. Existen dos tipos de cuentas de usuario. Si marca la casilla de selección Superusuario al crear una cuenta de usuario, el usuario tendrá autorización total para todas las funciones de SAP Business One y este cambio no se podrá modificar. Este tipo de usuario necesita una licencia profesional. Si no marca la casilla de selección Superusuario, el usuario no tendrá autorizaciones para ninguna función y deberá otorgar autorizaciones generales a cada usuario más una licencia adecuada.  Hay varias cuentas de usuario predefinidas en la base de datos de una empresa nueva que están reservadas.  Un grupo de usuarios es una lista de usuarios que comparten requisitos comunes, por ejemplo, parametrizaciones de formulario, formato y diseño de IU o autorizaciones generales. Los grupos de usuario le permiten asignar parametrizaciones comunes en el nivel de grupo en lugar de hacerlo a cada usuario individual.  Puede definir parametrizaciones globales para los usuarios en Parametrizaciones generales en las fichas Servicios, Visualización y Fuente y fondo.  Puede definir un conjunto de Opciones de usuario incluyendo opciones de impresión, tarjetas de crédito y una carpeta de anexos, y asignar estas opciones a los usuarios con requisitos, roles y/o ubicaciones comunes.  También existe la opción de definir muchas de estas parametrizaciones en el nivel de cuenta de usuario. Las parametrizaciones realizadas a nivel de cuentas de usuario sustituyen las parametrizaciones en las opciones de usuario o en las parametrizaciones generales.  La función de gestión de claves de acceso permite a un superusuario establecer el nivel de seguridad de la clave de acceso con una política de claves de acceso. Existen tres políticas de claves de acceso predefinidas (baja, media y alta) más la posibilidad de definir una política para sus propios requisitos. Los superusuarios pueden cambiar la clave de acceso para una cuenta de usuario o bloquear una cuenta para evitar el acceso  Todos los usuarios pueden cambiar su propia clave de acceso. La nueva clave de acceso debe cumplir la política de claves de acceso y al usuario se muestra un ejemplo de la clave de acceso requerida.",
-    "start_time": 1931.4,
-    "end_time": 2153.57
+    "image_file": "Slide_029.webp",
+    "script_text": "Todos los usuarios requieren una cuenta y una licencia en SAP Business One. Existen dos tipos: el superusuario, con autorización total y necesidad de licencia profesional, y el usuario normal, que requiere autorizaciones generales por función y una licencia adecuada. Hay cuentas predefinidas en nuevas empresas que están reservadas. Los grupos de usuarios permiten asignar parametrizaciones comunes (como formato de IU o autorizaciones) a varios usuarios a la vez, evitando configuraciones individuales. Las parametrizaciones se pueden definir a nivel global, por grupo o directamente en la cuenta de usuario, con jerarquía de sobrescritura. La gestión de claves permite al superusuario definir políticas de seguridad y bloquear cuentas. Finalmente, el log de acceso brinda trazabilidad de inicios de sesión y cambios de clave, incluyendo IP de cliente, esencial para auditoría y seguridad.",
+    "start_time": 971.6,
+    "end_time": 1024.6
   },
   {
     "slide_index": 30,
-    "image_file": "051_Slide_30_10_Impl_31_SystemSetup_Users_Groups_ES.webp",
-    "script_text": "El log de acceso proporciona un seguimiento de auditoría de inicios de sesión del usuario y de cambios de la clave de acceso.",
-    "start_time": 2153.57,
-    "end_time": 2161.68
+    "image_file": "Slide_030.webp",
+    "script_text": "El log de acceso proporciona un seguimiento detallado de auditoría que registra cada inicio y cierre de sesión del usuario, así como cualquier cambio realizado en su clave de acceso. Este registro se actualiza automáticamente y es accesible mediante doble clic sobre cualquier entrada para ver información ampliada, incluyendo la dirección IP del equipo cliente. Esta funcionalidad es fundamental para monitorear intentos de acceso no autorizados, detectar patrones sospechosos y cumplir con requisitos de seguridad interna o externa. Permite al administrador rastrear quién intentó ingresar al sistema, desde dónde y con qué resultado, fortaleciendo el control sobre el entorno SAP Business One.",
+    "start_time": 1024.6,
+    "end_time": 1066.0
   }
 ]

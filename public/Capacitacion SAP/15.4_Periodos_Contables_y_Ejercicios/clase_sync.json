@@ -1,51 +1,51 @@
 [
   {
     "slide_index": 1,
-    "image_file": "023_Slide_01_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre FinProcess 21 PostPeriods PostPeriods en SAP Business One. En esta lección exploraremos las mejores prácticas de consultoría, flujos operativos y configuraciones del sistema. Proceso financiero: Períodos contables Bienvenido al curso sobre el proceso de períodos contables.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al curso sobre el proceso de períodos contables en SAP Business One versión 10.0. Aquí aprenderás cómo definir y gestionar los períodos contables, un paso fundamental para iniciar correctamente la contabilidad de una empresa. Este tema es esencial para garantizar que las transacciones se registren en el período correcto según su fecha de contabilización. Al finalizar, estarás preparado para configurar los períodos contables en una nueva base de datos empresarial, tal como se requiere en implementaciones reales como la de OEC Computers. Este conocimiento te permitirá apoyar procesos financieros ordenados y auditables desde el inicio.",
     "start_time": 0.0,
-    "end_time": 20.98
+    "end_time": 39.0
   },
   {
     "slide_index": 2,
-    "image_file": "023_Slide_02_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Después de completar este tema, podrá establecer cómo definir y gestionar los períodos de contables. 2 Al finalizar este tema, podrá:  Establecer cómo se definen y gestionan los períodos contables. Objetivos",
-    "start_time": 20.98,
-    "end_time": 36.65
+    "image_file": "Slide_002.webp",
+    "script_text": "Al completar este tema, podrás establecer cómo se definen y gestionan los períodos contables en SAP Business One. Aprenderás a configurar el ejercicio contable y sus subperiodos según las necesidades de la empresa, como meses, trimestres o días. Este conocimiento es clave para asegurar que el sistema registre correctamente las transacciones financieras en el período adecuado. Serás capaz de aplicar estos conceptos en escenarios reales de implementación, como el caso de OEC Computers, donde se requiere definir un ejercicio anual con subperiodos mensuales para control interno y elaboración de balances anuales.",
+    "start_time": 39.0,
+    "end_time": 76.0
   },
   {
     "slide_index": 3,
-    "image_file": "023_Slide_03_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Escenario empresarial Implementará SAP Business One en un nuevo cliente, OEC Computers.  Le explica a María, la responsable del área de contabilidad, que para crear la base de datos de empresa es obligatorio definir los períodos contables de la empresa:  El período contable principal: el ejercicio.  Los subperiodos del ejercicio.  La empresa crea el balance contable anual una vez al año. Sin embargo, necesitan doce períodos contables para el control interno.  Crea una nueva base de datos de empresa y define el ejercicio como año natural y los subperiodos como meses.  María pregunta qué necesita para registrar un determinado documento o un asiento en un periodo contable o un subperiodo.  Le responde que SAP Business One determina automáticamente a qué período contable pertenece la transacción en función de la fecha de contabilización de la transacción.  Implementará SAP Business One en un nuevo cliente, OEC Computers.  Le explica a María, la responsable del área de contabilidad, que para crear la base de datos de empresa es obligatorio definir los períodos contables de la empresa:  Define el período contable principal: el ejercicio, que por lo general corresponde al año natural.  Y luego los subperiodos del ejercicio.  Ambos analizan los procesos financieros de OEC Computers. La empresa crea el balance contable anual una vez al año. Sin embargo, necesitan doce períodos contables para el control interno.  Crea una nueva base de datos empresarial y define el ejercicio como año natural y los subperiodos como meses.  María pregunta qué necesita para registrar un determinado documento o un asiento en un periodo contable o un subperiodo.  Le responde que SAP Business One determina automáticamente a qué período contable pertenece la transacción en función de la fecha de contabilización de la transacción.",
-    "start_time": 36.65,
-    "end_time": 154.18
+    "image_file": "Slide_003.webp",
+    "script_text": "En el escenario de OEC Computers, implementas SAP Business One y le explicas a María, la contadora, que definir los períodos contables es obligatorio al crear la base de datos. El ejercicio se configura como año natural y los subperiodos como meses, lo que genera doce períodos para control interno, aunque el balance anual se elabora solo una vez al año. María pregunta qué se necesita para registrar un documento o asiento en un período, y tú le respondes que SAP Business One determina automáticamente el período contable según la fecha de contabilización de la transacción. Este flujo garantiza que cada operación se asigne correctamente al subperiodo correspondiente, facilitando el seguimiento mensual y el cierre financiero ordenado.",
+    "start_time": 76.0,
+    "end_time": 123.4
   },
   {
     "slide_index": 4,
-    "image_file": "023_Slide_04_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Aquí, puede ver un resumen del proceso de períodos contables. Existen tres pasos en el proceso de períodos contables. En este curso nos centraremos en los pasos operativos y de parametrizaciones, los dos primeros pasos del proceso. En el primer paso, definimos las parametrizaciones de los períodos contables. Primero se define el período contable principal para el ejercicio. Y, a continuación, los subperiodos del ejercicio: año, trimestres, meses o días. El segundo paso es el operativo. En el trabajo diario, introducimos los documentos y los asientos con una fecha de contabilización que se registrará automáticamente en el subperiodo adecuado. Los subperiodos permiten al usuario controlar su contabilización. De esa manera, se pueden controlar las contabilizaciones mensuales. El tercer período es el cierre del período donde se traspasan todos los saldos de cuenta de PyG a la cuenta de arrastre de saldos y se definen en cero las cuentas de PyG. Analizaremos el proceso de cierre del período en otro tema. 4 Períodos contables: resumen del proceso  Ejercicio: 20XX Fecha de contabilización Subperíodo  Subperíodos: Meses  20XX-01  20XX-02  20XX-03  …….  Parametrizaciones adicionales Cierre del período/ejercicio",
-    "start_time": 154.18,
-    "end_time": 241.9
+    "image_file": "Slide_004.webp",
+    "script_text": "El proceso de períodos contables consta de tres pasos, pero en este curso nos enfocamos en los dos primeros: parametrización y operación. Primero, defines el ejercicio contable y sus subperiodos (año, trimestre, mes o día) según las necesidades de la empresa. Luego, en el trabajo diario, ingresas documentos y asientos con una fecha de contabilización, y SAP Business One los asigna automáticamente al subperiodo correcto. Esto permite un control preciso de las contabilizaciones mensuales. El tercer paso, el cierre del período, se verá en otro tema y consiste en transferir los saldos de PyG a la cuenta de arrastre y dejar las cuentas de PyG en cero para el nuevo período.",
+    "start_time": 123.4,
+    "end_time": 168.4
   },
   {
     "slide_index": 5,
-    "image_file": "023_Slide_05_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Al crear una base de datos de empresa nueva, se crean los períodos contables del primer ejercicio. A los subperiodos los crea automáticamente SAP Business One en el ejercicio basado en la clase de subperiodo seleccionado. Los cuatro subperiodos disponibles son: año, trimestre, mes y día. Define los subperíodos dependiendo de las necesidades empresariales de la empresa:  Un año tiene un subperiodo.  Los trimestres tienen cuatro subperiodos.  Los meses tienen doce subperiodos.  Los días pueden tener cualquier cantidad de subperiodos. Con esta selección, el sistema crea automáticamente el número correspondiente de períodos contables. Un motivo para definir subperiodos será la posibilidad de bloquear un período pasado para que ningún usuario pueda realizar contabilizaciones adicionales. 5 Definición de períodos contables y subperiodos 1 2 3 4 Trimestres 1 2 3 4 5 6 7 8 9 10 11 12 Meses Días Año Ejercicio",
-    "start_time": 241.9,
-    "end_time": 305.95
+    "image_file": "Slide_005.webp",
+    "script_text": "Al crear una nueva base de datos en SAP Business One, el sistema genera automáticamente los subperiodos del ejercicio según la clase seleccionada. Puedes elegir entre año, trimestre, mes o día, y el sistema creará la cantidad correspondiente de períodos contables. Por ejemplo, si seleccionas 'mes', se crearán doce subperiodos (uno por cada mes). Esta configuración depende de las necesidades de control interno de la empresa. Un caso común es usar meses para permitir el cierre mensual y bloquear períodos pasados, evitando modificaciones posteriores. La selección se hace durante la creación de la base de datos y afecta directamente cómo se organizan las transacciones en el tiempo.",
+    "start_time": 168.4,
+    "end_time": 211.8
   },
   {
     "slide_index": 6,
-    "image_file": "023_Slide_06_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Al crear nuevos períodos contables, tenga en cuenta las advertencias importantes siguientes:  El inicio del ejercicio solo puede ser el primer día del mes. El inicio del ejercicio se fija automáticamente en el primer día del mes que se ha indicado en el campo \"Fecha de contabilización desde\".  Le recomendamos crear los períodos contables desde el más antiguo en adelante. Tenga en cuenta los datos más antiguos que desea migrar para determinar el primer período.  Asegúrese de crear un nuevo período con antelación para permitir validaciones y posibles modificaciones antes de empezar el trabajo.  No puede tener períodos contables que se solapen.  De manera predeterminada, \"Desde la fecha\" es el día posterior a la fecha de finalización del último período contable existente y \"Hasta la fecha\" es un año después.  La determinación de cuentas de mayor se graba por período y se copia del período anterior al siguiente. Por consiguiente, se recomienda crear el período más antiguo, seleccionar la cuenta primaria y, a continuación, crear los períodos adicionales. Puede modificar la determinación de cuentas de mayor antes de comenzar a trabajar con un nuevo período.  Aunque se podría modificar a mitad del período, no se recomienda hacerlo porque la determinación de cuentas influye en los informes financieros.  Debe tomar decisiones junto con la persona responsable del área de contabilidad del cliente. Juntos deben considerar temas como los informes legales y la consolidación empresarial. 6 Notas importantes sobre períodos contables El inicio del ejercicio solo puede ser el primer día del mes. Cree primero los períodos contables más antiguos. Cree un nuevo período contable con antelación. Sin períodos que se solapen. La determinación de cuentas de mayor se graba por período y se copia del período anterior al siguiente. Tome las decisiones junto con la persona responsable del área de contabilidad del cliente.",
-    "start_time": 305.95,
-    "end_time": 427.1
+    "image_file": "Slide_006.webp",
+    "script_text": "Al crear nuevos períodos contables en SAP Business One, es clave seguir ciertas reglas para evitar errores. El ejercicio debe comenzar siempre el primer día de un mes, como el 01/01/2026. Se recomienda crear los períodos desde el más antiguo hacia adelante, especialmente si vas a migrar datos históricos. Además, debes crear un nuevo período con antelación para hacer pruebas y ajustes antes de comenzar a trabajar. Es importante que ningún período se solape con otro, ya que esto generaría conflictos en la contabilidad. El sistema sugiere automáticamente las fechas 'desde' y 'hasta', pero tú puedes ajustarlas según las necesidades de la empresa, como en el caso de Distribuidora Andina Tech, que opera bajo año calendario y requiere control mensual.",
+    "start_time": 211.8,
+    "end_time": 260.4
   },
   {
     "slide_index": 7,
-    "image_file": "023_Slide_07_10_FinProcess_21_PostPeriods_PostPeriods_ES.webp",
-    "script_text": "Resumen A continuación, se detallan algunos puntos clave: Al crear períodos contables, debe definir: • El período contable principal: el ejercicio, que suele corresponder al año natural. • Los subperiodos del ejercicio (año, trimestres, meses o días). SAP Business One determina automáticamente a qué subperiodo pertenece la transacción: • Según la fecha de contabilización de la transacción. Cuando crea un nuevo período contable: • Tenga en cuenta las notas importantes mencionadas en el curso.  A continuación, se detallan algunos puntos clave para tener en cuenta:  Al crear períodos contables, debe definir el período contable principal: el ejercicio, que normalmente corresponde al año natural.  Los subperiodos del ejercicio (Año, Trimestres, Meses o Días).  SAP Business One determina automáticamente a qué subperiodo pertenece la transacción en función de la fecha de contabilización de la transacción.  Cuando crea un nuevo período contable, tenga en cuenta las advertencias importantes mencionadas en el curso.",
-    "start_time": 427.1,
-    "end_time": 493.99
+    "image_file": "Slide_007.webp",
+    "script_text": "Al crear períodos contables en SAP Business One, primero debe definir el ejercicio como período contable principal, que generalmente coincide con el año natural. Luego, establezca los subperiodos del ejercicio, como años, trimestres, meses o días, según las necesidades de su empresa. El sistema asigna automáticamente cada transacción al subperiodo correspondiente, basándose únicamente en su fecha de contabilización. Al crear un nuevo período, recuerde siempre revisar las advertencias importantes del curso para evitar errores de configuración que puedan afectar la contabilidad.",
+    "start_time": 260.4,
+    "end_time": 293.4
   }
 ]

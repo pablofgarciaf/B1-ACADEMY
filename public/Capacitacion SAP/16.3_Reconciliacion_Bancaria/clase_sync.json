@@ -1,100 +1,100 @@
 [
   {
     "slide_index": 1,
-    "image_file": "005_Slide_01_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre Reconciliación de Cuentas Bancarias en SAP Business One. La conciliación bancaria es el control de cierre financiero más crítico de una empresa. Es el mecanismo que garantiza que cada centavo registrado en el Libro Mayor coincida exactamente con la realidad del dinero depositado en las cuentas corrientes del banco.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema de reconciliación de cuenta bancaria en SAP Business One Versión 10.0. Este proceso es esencial para garantizar que las transacciones bancarias registradas en el sistema coincidan con las reportadas por el banco. Aprenderás a conciliar movimientos externos como cheques, transferencias y depósitos, asegurando la precisión contable y el control financiero en tu empresa.",
     "start_time": 0.0,
-    "end_time": 21.98
+    "end_time": 23.0
   },
   {
     "slide_index": 2,
-    "image_file": "005_Slide_02_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Nuestro objetivo en esta sesión es dominar los métodos de conciliación que ofrece SAP Business One. Aprenderemos a diferenciar con claridad la reconciliación interna de la reconciliación externa y evaluaremos las tres herramientas que ofrece el sistema: la Reconciliación estándar, la Reconciliación Manual y el Tratamiento de Extracto Bancario conocido como TEB.",
-    "start_time": 21.98,
-    "end_time": 44.64
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar esta unidad, podrás explicar las opciones disponibles para realizar la reconciliación externa de una cuenta bancaria de mayor en SAP Business One. Este tema asume que ya tienes un buen conocimiento de los procesos financieros del sistema y de los principios contables generalmente aceptados, necesarios para comprender correctamente el flujo de conciliación bancaria.",
+    "start_time": 23.0,
+    "end_time": 45.6
   },
   {
     "slide_index": 3,
-    "image_file": "005_Slide_03_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Para entender su importancia práctica, volvamos a OEC Computers. Cada semana, María descarga el extracto electrónico de su banco comercial. Su misión es cotejar todos los movimientos del extracto contra los asientos bancarios de SAP Business One, identificando cheques en tránsito, comisiones bancarias no contabilizadas o transferencias de clientes no identificadas.",
-    "start_time": 44.64,
-    "end_time": 69.22
+    "image_file": "Slide_003.webp",
+    "script_text": "María, la contable de OEC Computers, recibe cada semana un extracto bancario y necesita registrarlo de forma eficaz en SAP Business One. Su tarea consiste en comparar las operaciones que el banco ha registrado (como depósitos, cheques y transferencias) con aquellas que ella ya contabilizó en la cuenta de mayor bancaria. Debe considerar todos los medios de pago utilizados por la empresa para asegurar una conciliación precisa y oportuna.",
+    "start_time": 45.6,
+    "end_time": 73.8
   },
   {
     "slide_index": 4,
-    "image_file": "005_Slide_04_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "En el ciclo de pagos de SAP Business One intervienen dos fuentes de información: la contabilidad interna de la empresa en la cuenta de banco propio y el extracto de cuenta emitido por la institución financiera. Conciliar significa verificar que ambas fuentes hablen exactamente el mismo idioma y reflejen los mismos saldos.",
-    "start_time": 69.22,
-    "end_time": 89.26
+    "image_file": "Slide_004.webp",
+    "script_text": "La reconciliación bancaria en SAP Business One consiste en comparar las operaciones registradas en la cuenta de banco propio del sistema con los datos del extracto de cuenta externo proporcionado por el banco. Este proceso, también llamado reconciliación externa, permite validar que los cobros, pagos y depósitos estén correctamente contabilizados. Es necesario esperar el extracto bancario antes de conciliar partidas abiertas para asegurar que el banco haya efectivizado el pago.",
+    "start_time": 73.8,
+    "end_time": 102.4
   },
   {
     "slide_index": 5,
-    "image_file": "005_Slide_05_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "La Reconciliación Externa consiste en confrontar los cargos y abonos registrados en el Libro Mayor de SAP frente a las líneas del extracto bancario externo. Cuando una partida coincide en fecha e importe, se marca como conciliada. Si el banco cobró un gasto de mantenimiento que no estaba en el sistema, SAP permite generar el asiento de ajuste directamente desde la pantalla de conciliación.",
-    "start_time": 89.26,
-    "end_time": 114.1
+    "image_file": "Slide_005.webp",
+    "script_text": "En la reconciliación externa de SAP Business One, se comparan las partidas abiertas de la cuenta de mayor bancaria con las del extracto de cuenta externo, ya sea del banco o de un interlocutor comercial. Una vez que coinciden, el sistema marca esas operaciones como reconciliadas externamente. Este proceso asegura que todas las transacciones bancarias estén correctamente reflejadas en la contabilidad, evitando diferencias entre libros y estado de cuenta.",
+    "start_time": 102.4,
+    "end_time": 130.6
   },
   {
     "slide_index": 6,
-    "image_file": "005_Slide_06_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Es vital no confundir la Reconciliación Externa con la Reconciliación Interna. La reconciliación interna compensa débitos y créditos entre transacciones dentro del propio sistema, por ejemplo, cuando cruzamos una factura de clientes con su respectivo recibo de cobro. En cambio, la reconciliación externa siempre compara los datos de SAP contra un agente externo: el banco.",
-    "start_time": 114.1,
-    "end_time": 138.89
+    "image_file": "Slide_006.webp",
+    "script_text": "La reconciliación interna se refiere a la compensación de partidas abiertas del Haber con las del Debe dentro de una misma cuenta, necesaria cuando un proceso empresarial no está completo hasta que cada crédito tiene su débito correspondiente, como en cuentas de clientes (crédito seguido de cobro) o proveedores (pasivo seguido de pago). En este tema nos enfocamos únicamente en la reconciliación externa, que compara registros internos con fuentes externas como el extracto bancario.",
+    "start_time": 130.6,
+    "end_time": 160.8
   },
   {
     "slide_index": 7,
-    "image_file": "005_Slide_07_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Para ejecutar la Reconciliación Externa, SAP Business One nos ofrece tres caminos según el volumen de operaciones y la localización de la empresa: la Reconciliación estándar, la Reconciliación Manual y el avanzado Tratamiento de Extractos Bancarios.",
-    "start_time": 138.89,
-    "end_time": 154.7
+    "image_file": "Slide_007.webp",
+    "script_text": "En SAP Business One existen tres opciones para realizar reconciliaciones externas: Reconciliación, Reconciliación manual y Tratamiento de extracto bancario. La elección depende de la localización de la empresa. Cada opción corresponde a una ventana específica del sistema. Es importante seleccionar una sola opción y usarla de forma consistente para evitar duplicados. Estas herramientas permiten alinear los registros internos con los movimientos bancarios externos, garantizando la precisión contable. Vamos a revisar cada una en detalle para comprender su aplicación según las necesidades de la empresa.",
+    "start_time": 160.8,
+    "end_time": 195.0
   },
   {
     "slide_index": 8,
-    "image_file": "005_Slide_08_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "La primera opción es la Reconciliación Estándar. Funciona presentando dos paneles paralelos: a la izquierda, las transacciones abiertas de la cuenta de mayor en SAP; a la derecha, las líneas del extracto bancario importadas o digitadas. El usuario puede conciliar de forma manual, automática por coincidencia de importes y fechas, o semiautomática con criterios de tolerancia.",
-    "start_time": 154.7,
-    "end_time": 179.62
+    "image_file": "Slide_008.webp",
+    "script_text": "La opción Reconciliación en SAP Business One permite importar o escribir manualmente las operaciones del extracto bancario. Luego, el sistema muestra lado a lado las transacciones abiertas de la cuenta de mayor y las del extracto, para que reconciliés los movimientos coincidentes. Podés elegir entre clases Manual, Automática o Semiautomática, según tu flujo de trabajo. Esta función está disponible en todas las localizaciones y se accede desde Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Reconciliación. Es ideal cuando necesitás controlar cada paso del proceso de conciliación.",
+    "start_time": 195.0,
+    "end_time": 231.6
   },
   {
     "slide_index": 9,
-    "image_file": "005_Slide_09_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "La segunda alternativa es la Reconciliación Manual, disponible en localizaciones como Estados Unidos y Reino Unido. En esta modalidad, el usuario digita la fecha y el saldo final del extracto bancario y va marcando las partidas de SAP hasta que la diferencia calculada por el sistema llegue estrictamente a cero.",
-    "start_time": 179.62,
-    "end_time": 199.27
+    "image_file": "Slide_009.webp",
+    "script_text": "Con la Reconciliación manual, indicás la fecha y el saldo final del extracto recibido del banco. El sistema muestra entonces las operaciones abiertas de la cuenta de mayor bancaria, y tenés que conciliarlas manualmente hasta que la diferencia llegue a cero. Esta opción está disponible en países como Ecuador, España, México y otros de América Latina y Europa. Permite crear ajustes, como depositar pagos en efectivo o con tarjeta, o generar asientos contables para cerrar brechas. El sistema rastrea el saldo del extracto para usarlo en la próxima reconciliación. Se accede desde Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Reconciliación manual.",
+    "start_time": 231.6,
+    "end_time": 274.2
   },
   {
     "slide_index": 10,
-    "image_file": "005_Slide_10_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "La tercera opción, y la más avanzada, es el Tratamiento de Extracto Bancario, conocido como TEB. Está diseñada para empresas con alto tráfico de transferencias electrónicas. TEB procesa el archivo bancario y es capaz de generar de forma automática los cobros, los pagos y las reconciliaciones internas y externas en una sola operación programada.",
-    "start_time": 199.27,
-    "end_time": 223.49
+    "image_file": "Slide_010.webp",
+    "script_text": "El Tratamiento de extracto bancario (TEB) automatiza el procesamiento y reconciliación de movimientos bancarios, ideal para empresas que usan mucho las transferencias directas. Al importar el archivo del banco, el sistema genera automáticamente pagos recibidos y efectuados, y realiza reconciliaciones internas y externas. La clave está en una buena configuración según las necesidades de tu empresa. Esta opción está disponible en todas las localizaciones y se accede desde el mismo menú de gestión de bancos. Permite crear operaciones aún no contabilizadas, como débitos automáticos o transferencias entrantes, mejorando la eficiencia y reduciendo errores manuales.",
+    "start_time": 274.2,
+    "end_time": 312.4
   },
   {
     "slide_index": 11,
-    "image_file": "005_Slide_11_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Planteemos un caso de consultoría para afianzar estos conceptos: María, la contadora de OEC Computers, emite una transferencia bancaria de quinientos dólares para pagar una factura a un proveedor tecnológico. Para esta única transacción de quinientos dólares, ¿cuáles son las dos reconciliaciones que deben llevarse a cabo?",
-    "start_time": 223.49,
-    "end_time": 244.25
+    "image_file": "Slide_011.webp",
+    "script_text": "María, la contable de OEC Computers, emitió una transferencia bancaria de 500 para pagar una factura de un proveedor. Para que este pago quede correctamente registrado y conciliado, se deben realizar dos tipos de reconciliación: una interna y una externa. La interna asegura que el pago al proveedor coincida con la factura registrada. La externa verifica que el movimiento en el banco coincida con lo registrado en SAP Business One. Esta reflexión nos ayuda a comprender por qué es necesario vincular tanto los libros contables como el estado de cuenta bancario para mantener la integridad financiera.",
+    "start_time": 312.4,
+    "end_time": 351.4
   },
   {
     "slide_index": 12,
-    "image_file": "005_Slide_12_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "La respuesta técnica comprende ambos frentes: primero, una Reconciliación Interna que cruza el débito del pago contra el crédito de la factura del proveedor en su ficha auxiliar. Y segundo, una Reconciliación Externa que coteja el abono de quinientos dólares de la cuenta de banco en SAP contra el débito que aparecerá en el extracto que envíe el banco.",
-    "start_time": 244.25,
-    "end_time": 266.06
+    "image_file": "Slide_012.webp",
+    "script_text": "Para el pago de 500 realizado por María, se aplican dos reconciliaciones. La interna asegura que el registro del pago al proveedor (en debe) coincida con el importe de la factura de proveedores (en haber), validando la precisión del libro de cuentas. La externa compara la operación de pago registrada en la cuenta bancaria de SAP Business One con los datos que aparecerán en el extracto que María recibirá del banco. Ambas son esenciales: la interna controla la contabilidad interna, mientras la externa confirma que lo registrado en el sistema coincida con lo que realmente pasó en el banco, evitando diferencias y fraudes.",
+    "start_time": 351.4,
+    "end_time": 393.2
   },
   {
     "slide_index": 13,
-    "image_file": "005_Slide_13_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Como puntos clave de auditoría: la reconciliación externa es el único mecanismo que certifica ante los auditores que los saldos disponibles en el balance general son reales y están respaldados por las instituciones financieras oficiales.",
-    "start_time": 266.06,
-    "end_time": 280.92
+    "image_file": "Slide_013.webp",
+    "script_text": "En este resumen se repasan los fundamentos de la conciliación bancaria en SAP Business One. Debe comparar las operaciones registradas en su cuenta bancaria del sistema con el extracto recibido del banco y realizar los ajustes necesarios. Este proceso se conoce como reconciliación externa. Una vez completado, el sistema marca esas operaciones como reconciliadas externamente, asegurando que la contabilidad refleje correctamente los movimientos reales de la cuenta. Es un paso esencial para mantener la precisión financiera y detectar diferencias oportunamente.",
+    "start_time": 393.2,
+    "end_time": 425.8
   },
   {
     "slide_index": 14,
-    "image_file": "005_Slide_14_10_BankProcess_21_BankReconcile_Overview_ES.webp",
-    "script_text": "Una recomendación final de arquitectura: la empresa debe definir una única metodología de reconciliación externa entre las tres disponibles y mantenerla de forma consistente en cada ejercicio fiscal para evitar duplicidades y garantizar cierres mensuales fluidos.",
-    "start_time": 280.92,
-    "end_time": 296.4
+    "image_file": "Slide_014.webp",
+    "script_text": "SAP Business One ofrece tres métodos para realizar la reconciliación externa: la reconciliación estándar, la reconciliación manual y el tratamiento de extracto bancario (TEB). Cada opción se adapta a distintos niveles de automatización y complejidad del proceso. Para evitar generar reconciliaciones duplicadas, es fundamental que el usuario seleccione una sola opción y la aplique de forma consistente. Esto garantiza un control adecuado y evita errores en el registro de las operaciones bancarias conciliadas.",
+    "start_time": 425.8,
+    "end_time": 455.6
   }
 ]

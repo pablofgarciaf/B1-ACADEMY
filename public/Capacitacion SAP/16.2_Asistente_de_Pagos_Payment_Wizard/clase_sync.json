@@ -1,72 +1,72 @@
 [
   {
     "slide_index": 1,
-    "image_file": "004_Slide_01_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "Bienvenidos a esta clase sobre el Asistente de Pagos en SAP Business One. Cuando una empresa crece y gestiona cientos o miles de facturas cada mes, procesar los cobros y pagos de forma manual se vuelve ineficiente y riesgoso. En esta lección aprenderemos a configurar y operar el Asistente de Pagos, la herramienta insignia de tesorería para automatizar desembolsos masivos y transferencias electrónicas.",
+    "image_file": "Slide_001.webp",
+    "script_text": "Bienvenido al tema del asistente de pagos en SAP Business One versión 10.0. Este módulo le mostrará cómo gestionar eficientemente los pagos y cobros mediante lotes para transferencias bancarias, cheques y efectos. Aprenderá a utilizar esta herramienta para optimizar el proceso contable de su empresa, como la Distribuidora Andina Tech, reduciendo errores y ahorrando tiempo en la conciliación bancaria.",
     "start_time": 0.0,
-    "end_time": 25.94
+    "end_time": 24.2
   },
   {
     "slide_index": 2,
-    "image_file": "004_Slide_02_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "Nuestro objetivo como consultores es dominar la ejecución de pagos en lotes. Veremos cómo definir filtros inteligentes de vencimiento, cómo evaluar el informe de recomendaciones, cómo emitir órdenes de pago previas a la confirmación bancaria y cómo generar archivos electrónicos en formato estándar para los bancos.",
-    "start_time": 25.94,
-    "end_time": 45.77
+    "image_file": "Slide_002.webp",
+    "script_text": "Al finalizar este tema, podrá ejecutar el asistente de pagos para generar pagos en un lote, lo que le permitirá procesar múltiples facturas de clientes y proveedores de forma automática. También podrá explicar distintos escenarios al ejecutar el asistente, como pagos por cheque o transferencia, y cuándo usar cada opción según las necesidades de su empresa, mejorando la toma de decisiones financieras.",
+    "start_time": 24.2,
+    "end_time": 49.6
   },
   {
     "slide_index": 3,
-    "image_file": "004_Slide_03_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "Volvamos a nuestro caso de negocio en OEC Computers. Cada viernes, María y su equipo de contabilidad deben procesar los pagos a más de ochenta proveedores de insumos tecnológicos. Hacer ochenta pagos manuales uno por uno consume horas y abre la puerta a errores de digitación. María necesita una solución que consolide facturas por proveedor, seleccione las que vencen en la semana y emita una sola nómina de transferencias para subir al portal del banco.",
-    "start_time": 45.77,
-    "end_time": 75.31
+    "image_file": "Slide_003.webp",
+    "script_text": "María, responsable de contabilidad de OEC Computers, busca hacer más eficaz el proceso de creación de pagos a clientes y proveedores. Quiere crear pagos mensuales en un lote para reducir el trabajo manual. Le presentamos el Asistente de pagos y las opciones necesarias para ejecutarlo, mostrando cómo esta herramienta responde a su necesidad de eficiencia en la gestión diaria de pagos.",
+    "start_time": 49.6,
+    "end_time": 74.6
   },
   {
     "slide_index": 4,
-    "image_file": "004_Slide_04_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "El Asistente de Pagos de SAP Business One es exactamente esa solución. Permite procesar de manera masiva cobros de clientes por transferencia y domiciliación, así como pagos a proveedores mediante cheques corporativos o transferencias bancarias. El sistema evalúa condiciones de crédito, descuentos por pronto pago y líneas de crédito de forma centralizada.",
-    "start_time": 75.31,
-    "end_time": 98.98
+    "image_file": "Slide_004.webp",
+    "script_text": "El Asistente de pagos permite crear cobros y pagos en lotes para transferencias bancarias, cheques y efectos. Los pagos se generan según criterios de selección y vías de pago definidos. Crea cobros por transferencia y pagos por cheque o transferencia. Incluye transacciones de clientes y proveedores no pagados, abonados ni reconciliados, así como pagos a cuenta no imputados. Si son transferencias o débitos bancarios, genera archivos de pago en formato nacional. También existe la opción de Ejecución de orden de pago, que genera un archivo bancario sin crear asientos, dejando facturas abiertas hasta confirmación bancaria, respaldada por dos informes específicos.",
+    "start_time": 74.6,
+    "end_time": 115.2
   },
   {
     "slide_index": 5,
-    "image_file": "004_Slide_05_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "El asistente guía al usuario a través de un flujo estructurado de pasos. Definimos si creamos una nueva ejecución o cargamos una anterior; seleccionamos el rango de fechas de vencimiento de las facturas; filtramos los interlocutores comerciales; y elegimos las vías de pago autorizadas. Con estos parámetros, el motor de SAP analiza toda la base de datos y genera un Informe de Recomendación.",
-    "start_time": 98.98,
-    "end_time": 124.46
+    "image_file": "Slide_005.webp",
+    "script_text": "En el asistente de pagos, los pagos se crean según criterios de selección y vías de pago. Primero, se identifica cada ejecución con un nombre y fecha. Luego, se especifican criterios: parámetros generales (fecha, clase, medio de pago, serie), interlocutores comerciales para facturas vencidas, criterios de documentos (rango de fechas) y métodos de pago. Con estos, el sistema genera un informe de recomendaciones o lista de pagos sugeridos. Puede aceptarlos o rechazarlos, añadir filas manualmente para órdenes de pago sin documento SAP, o ver transacciones no incluidas en la ejecución.",
+    "start_time": 115.2,
+    "end_time": 151.8
   },
   {
     "slide_index": 6,
-    "image_file": "004_Slide_06_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "En el paso de Opciones de Grabación encontramos cinco alternativas estratégicas. Podemos guardar los criterios sin reservar facturas; podemos grabar las recomendaciones, lo que bloquea temporalmente las facturas para que ningún otro usuario las pague; o podemos emitir una Orden de Pago, que genera el archivo para el banco pero no crea asientos contables hasta que el tesorero reciba la confirmación oficial del extracto bancario.",
-    "start_time": 124.46,
-    "end_time": 150.31
+    "image_file": "Slide_006.webp",
+    "script_text": "En el paso Opciones de grabación, puede elegir varias alternativas. La primera: grabar los criterios sin el informe de recomendación, lo que no reserva las transacciones seleccionadas, aunque podrá compensarlas después con documentos de cobro o pago o una nueva ejecución. La segunda: grabar las recomendaciones para continuar luego, reservando exclusivamente las transacciones abiertas para esta ejecución, impidiendo su compensación con otros documentos o ejecuciones. También está la opción de Ejecución de orden de pago, que genera un archivo bancario sin crear asientos y deja facturas abiertas hasta confirmación bancaria. La cuarta opción ejecuta los pagos directamente, y la última permite programar la ejecución en el servidor para una hora futura con retraso.",
+    "start_time": 151.8,
+    "end_time": 197.6
   },
   {
     "slide_index": 7,
-    "image_file": "004_Slide_07_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "Al ejecutar los pagos aceptados, SAP Business One agrupa todas las facturas de un mismo proveedor en un único pago consolidado. Si el medio es transferencia, el asistente exporta el archivo electrónico bancario mediante el complemento Electronic File Manager, conocido como EFM. Si el medio es cheque, el sistema envía los cheques en lote a la impresora y posteriormente solicita la confirmación de numeración correlativa.",
-    "start_time": 150.31,
-    "end_time": 178.08
+    "image_file": "Slide_007.webp",
+    "script_text": "Al ejecutar los pagos, el sistema crea automáticamente los documentos de pago para las recomendaciones aceptadas. Un pago generalmente consolida facturas para un interlocutor comercial, salvo que se especifique lo contrario en el maestro. Puede elegir pago único para generar un pago por factura. Si son transferencias o débitos bancarios, el asistente crea el fichero de pago en formato específico del país para enviarlo al banco, usando el Administrador de ficheros electrónico (EFM) para definir o adaptar formatos. Si son cheques, se imprimen directamente desde el sistema y, tras la impresión, se asignan los números de cheque. Finalmente, en Gestión de bancos, se confirma el número de cheque asignado.",
+    "start_time": 197.6,
+    "end_time": 241.8
   },
   {
     "slide_index": 8,
-    "image_file": "004_Slide_08_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "La columna vertebral del asistente son las Vías de Pago. En el módulo de Gestión definimos cada método: indicamos si es un cobro o un pago, si opera por cheque o transferencia, a qué cuenta de banco propio de la empresa está vinculado, qué validaciones de código postal o cuenta bancaria exige y qué límites de importe mínimo y máximo aplican.",
-    "start_time": 178.08,
-    "end_time": 200.06
+    "image_file": "Slide_008.webp",
+    "script_text": "Definir vías de pago es fundamental al configurar la gestión de bancos en el módulo Gestión, ya que estos datos se usan por defecto en todas las ejecuciones de pago. Una vía de pago controla todo el proceso y requiere definir: primero, la clase y medio de pago (cheque o transferencia para pagos efectuados; solo transferencia para recibidos); segundo, el banco propio y cuenta asociada, repitiendo la definición si hay múltiples bancos o sucursales; tercero, las verificaciones de validación y restricciones de importe; y por último, las contabilizaciones en cuentas de mayor provisionales. Además, se puede desactivar una vía desmarcando la casilla Activo para excluirla de las ejecuciones.",
+    "start_time": 241.8,
+    "end_time": 285.6
   },
   {
     "slide_index": 9,
-    "image_file": "004_Slide_09_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "Para que el asistente reconozca cómo pagarle a un proveedor, debemos activar las vías de pago autorizadas en la ficha Ejecución de Pago de su dato maestro. Además, en la ficha Condiciones de Pago registramos su número de cuenta bancaria y código IBAN. Si en una factura específica se requiere utilizar una vía distinta, podemos seleccionarla directamente en el documento antes de la ejecución.",
-    "start_time": 200.06,
-    "end_time": 225.14
+    "image_file": "Slide_009.webp",
+    "script_text": "En el registro maestro del interlocutor comercial, en la ficha Ejecución de pago, aparecen todas las vías de pago definidas en SAP Business One. Para especificar qué métodos usar con cada interlocutor, seleccione la casilla Incluir del método preferido; quizás deba desplazarse hacia la derecha para verla. Puede fijar una vía de pago por defecto en la ficha IC de Parametrizaciones generales, que se asignará automáticamente a nuevos interlocutores. También, en el registro maestro, puede establecer una vía como predeterminada para todos los documentos de ese interlocutor. El sistema selecciona automáticamente una vía según las parametrizaciones de ejecución de pago, pero puede anularla indicando directamente la vía en la factura. Para usar el asistente de pago, asegúrese de haber configurado los bancos y cuentas de banco propio en el área de configuración de gestión de bancos, y definir los datos bancarios del interlocutor en su ficha de Condiciones de pago.",
+    "start_time": 285.6,
+    "end_time": 346.2
   },
   {
     "slide_index": 10,
-    "image_file": "004_Slide_10_10_BankProcess_12_Payments_Payment Wizard_ES.webp",
-    "script_text": "Como resumen de consultoría: el Asistente de Pagos transforma un proceso manual de varias horas en una operación de tres minutos. Con la correcta parametrización de vías de pago, bancos propios y plantillas EFM, la empresa garantiza un control absoluto de su liquidez, elimina pagos duplicados y automatiza su relación digital con el sistema bancario.",
-    "start_time": 225.14,
-    "end_time": 248.42
+    "image_file": "Slide_010.webp",
+    "script_text": "El Asistente de pago crea pagos en lotes para cobros y pagos de transferencias bancarias, así como para pagos de transferencias y cheques efectuados. También ofrece una opción para emitir una Ejecución de orden de pago que genera un fichero bancario sin crear asientos contables y dejando las facturas abiertas. Con la vía de pago, se controla todo el proceso del asistente. En el registro maestro de cada interlocutor comercial, debe especificar qué vías de pago desea usar y establecer una como predeterminada, que se aplicará a todos los documentos de ese interlocutor. Estos puntos garantizan una ejecución de pagos flexible, controlada y alineada con la configuración bancaria y las relaciones comerciales.",
+    "start_time": 346.2,
+    "end_time": 391.6
   }
 ]
