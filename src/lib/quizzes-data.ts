@@ -65,11 +65,11 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
       options: [
         '1.00%',
         '1.75%',
-        '2.75%',
-        '8.00%'
+        '2.00%',
+        '3.00%'
       ],
-      correctAnswer: 1,
-      explanation: 'El código 312 aplica una retención del 1.75% sobre la compra de bienes muebles corporales según la tabla vigente del SRI.'
+      correctAnswer: 2,
+      explanation: 'Desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) el código 312 retiene el 2% sobre la compra de bienes muebles corporales. El 1.75% quedó solo para productos agrícolas comprados a distribuidores.'
     },
     {
       id: 3,

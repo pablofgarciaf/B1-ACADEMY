@@ -248,7 +248,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "level": "ARQ",
     "title": "Retenciones en la fuente: IVA e Impuesto a la Renta",
     "category": "Tributación SRI",
-    "summary": "Códigos 312 (1.75%), 343 (1.00%), 332 (8.00%), 344 (2.75%) y retención IVA 30%/70%/100%."
+    "summary": "Retenciones vigentes desde marzo 2026: 312 bienes (2%), 304 mano de obra (3%), sociedades profesionales (5%), 303 honorarios (10%) y retención IVA 30%/70%/100%."
   },
   {
     "id": "man-25",

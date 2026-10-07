@@ -6,6 +6,7 @@ import {
   ArrowRight, ChevronDown, ChevronRight, ChevronsLeft, ChevronsRight, ChevronLeft, CircleAlert, CircleCheck,
   FileSpreadsheet, FileText, Filter, Folder, FolderOpen, Info, Mail, Plus, Printer, Search, Settings,
 } from 'lucide-react';
+import { normalizar, coincide, SI, esBooleano, type IntentoPractica } from '@/lib/practice-check';
 
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
 export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
@@ -70,57 +71,8 @@ export function rutaSap(menuPath: string, titulo = ''): string[] {
   return partes;
 }
 
-/** Normaliza para comparar: sin tildes, mayúsculas, espacios, símbolos de moneda; números y fechas por su valor. */
-export function normalizar(valor: string): string {
-  let v = valor.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
-  v = v.replace(/\b(usd|us\$)\b/g, '').replace(/[$\s]/g, '');
-  const fecha = v.match(/^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})$/);
-  if (fecha) return `${Number(fecha[1])}/${Number(fecha[2])}/${fecha[3].length === 2 ? `20${fecha[3]}` : fecha[3]}`;
-  const num = v.replace(/%$/, '');
-  if (/^-?[\d.,]+$/.test(num) && /\d/.test(num)) {
-    const ultimo = Math.max(num.lastIndexOf('.'), num.lastIndexOf(','));
-    let n: number;
-    if (ultimo === -1) n = Number(num);
-    else {
-      const usaAmbos = num.includes('.') && num.includes(',');
-      const decimales = num.length - ultimo - 1;
-      // "1.150" o "1,150" (un solo tipo y 3 dígitos al final) = miles; si no, es separador decimal.
-      const esDecimal = usaAmbos || decimales !== 3;
-      n = esDecimal
-        ? Number(num.slice(0, ultimo).replace(/[.,]/g, '') + '.' + num.slice(ultimo + 1))
-        : Number(num.replace(/[.,]/g, ''));
-    }
-    if (!Number.isNaN(n)) return String(Math.round(n * 100) / 100);
-  }
-  return v.replace(/[.,;:'"()_-]/g, '');
-}
-
-/**
- * Datos maestros de Distribuidora Andina Tech: en SAP se puede escribir el código o el nombre.
- * Cada grupo son formas equivalentes del mismo dato.
- */
-const EQUIVALENCIAS: string[][] = [
-  ['01', 'Bodega Central Quito', 'Bodega Central', 'Almacén Central'], ['02', 'Bodega Sucursal Guayaquil', 'Bodega Guayaquil'],
-  ['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle'],
-  ['V10000', 'Dell Ecuador'], ['V10001', 'HP Importaciones'], ['V10002', 'Lenovo Andina'], ['V10003', 'Acer Distributors'],
-  ['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],
-  ['A00004', 'Teclado Inalámbrico Logitech'], ['A00005', 'Mouse Óptico Dell'], ['A00006', 'Servidor HP ProLiant DL380'],
-  ['A00007', 'Disco Duro SSD 1TB Samsung'], ['A00008', 'Memoria RAM 16GB DDR4'],
-].map((g) => g.map((v) => normalizar(v)));
-
-/** Valores de sí/no: en SAP son casillas de verificación, no texto. */
-const SI = /^(si|true|marcado|activado|activo|habilitado|x|check)$/;
-const NO = /^(no|false|desmarcado|desactivado|inactivo|deshabilitado)$/;
-const esBooleano = (valor: string) => { const n = normalizar(valor); return SI.test(n) || NO.test(n); };
-
-/** ¿La respuesta del estudiante coincide con la esperada? (formatos, código o nombre, sí/no) */
-export function coincide(respuesta: string, esperado: string): boolean {
-  const r = normalizar(respuesta);
-  const e = normalizar(esperado);
-  if (r === e) return true;
-  if (esBooleano(esperado)) return SI.test(e) ? SI.test(r) : NO.test(r) || r === '';
-  return EQUIVALENCIAS.some((g) => g.includes(r) && g.includes(e));
-}
+// Las reglas de comparación viven en un módulo compartido: el servidor (/api/practice) califica igual que esta pantalla.
+export { normalizar, coincide } from '@/lib/practice-check';
 
 function mezclar<T>(arr: T[], semilla: number): T[] {
   const a = [...arr];
@@ -138,7 +90,7 @@ const esCodigoMaestro = (v: string) => /^[A-Z]{1,3}\d{3,}$/.test(v.trim());
 
 type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
 
-export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: () => void }) {
+export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void }) {
   const ruta = useMemo(() => rutaSap(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
   // "Herramientas" (consultas, alertas, personalización) se abre desde la barra de menú superior, como en SAP.
   const porMenuSuperior = ruta[0] === 'Herramientas';
@@ -188,7 +140,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
     if (buenos === campos.length) {
       setLogrado(true);
       setEstado({ tono: 'exito', texto: 'Operación completada con éxito.' });
-      setTimeout(onCompleta, 2200);
+      const intento: IntentoPractica = { valores: [...valores], intentos: intentos + 1, vioSolucion: mostrarSolucion };
+      setTimeout(() => onCompleta(intento), 2200);
     } else {
       setEstado({ tono: 'error', texto: `No se puede añadir: ${campos.length - buenos} campo(s) con valores incorrectos. Revisa los marcados en rojo.` });
     }

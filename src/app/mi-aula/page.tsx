@@ -43,7 +43,10 @@ import { Footer } from '@/components/site/Footer';
 import {
   SPECIALTY_DIPLOMAS,
   OFFICIAL_SYLLABUS,
-  getModuleById
+  SYLLABUS_BLOCKS,
+  MASTER_PROGRAM,
+  getModuleById,
+  moduleMinutes
 } from '@/lib/curriculum-data';
 import { useAuth } from '@/context/AuthContext';
 
@@ -68,7 +71,7 @@ export default function MiAulaPage() {
         {/* Cápsula GEO para Motores de Búsqueda IA (Perplexity, ChatGPT, Claude, Google AI) */}
         <aside aria-label="Resumen de Mi Aula Virtual SAP B1" className="p-4 sm:p-5 rounded-2xl border border-amber-500/30 bg-amber-500/5 dark:bg-amber-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md">
           <strong className="text-slate-900 dark:text-white font-semibold">Escuela SAP Business One 10.0 (HANA):</strong>{' '}
-          Plataforma de formación especializada estructurada en <strong>4 rutas profesionales</strong> con el contenido de los <strong>manuales técnicos</strong>, tutoría interactiva de <strong>Tutor IA</strong>, laboratorios en el <strong>Simulador SAP B1</strong> y evaluación con IA.
+          {OFFICIAL_SYLLABUS.length} módulos prácticos, cada uno con su <strong>certificado de competencia verificable</strong>, que se combinan en <strong>{SPECIALTY_DIPLOMAS.length} diplomas por rol profesional</strong> y en el Programa Consultor Integral. Cada clase incluye prácticas calificadas en el <strong>Simulador SAP B1</strong>, tutoría con <strong>Tutor IA</strong> y evaluación final.
         </aside>
 
         {/* Tarjeta de Bienvenida & Perfil del Estudiante */}
@@ -142,7 +145,7 @@ export default function MiAulaPage() {
               Mi Aula Virtual: Escuela y Clases SAP Business One 10.0
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
-              Selecciona una de las <strong>4 rutas profesionales</strong> para abrir su aula de aprendizaje con visor de diapositivas, teleprompter guiado, simulador y <strong>evaluación interactiva</strong>.
+              Elige un módulo y gana su <strong>certificado de competencia</strong>, o sigue un <strong>diploma por rol</strong>: clases narradas, prácticas en el simulador y <strong>evaluación interactiva</strong>.
             </p>
           </div>
 
@@ -214,84 +217,156 @@ export default function MiAulaPage() {
           </div>
         )}
 
-        {/* LOS 4 DIPLOMAS DE ESPECIALIDAD */}
+        {/* TRES NIVELES DE CREDENCIALES */}
+        <section aria-labelledby="niveles" className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <h2 id="niveles" className="sr-only">Cómo se obtienen las credenciales</h2>
+          {[
+            { n: 1, icon: Award, titulo: 'Certificado de Competencia', texto: `Uno por cada módulo (${OFFICIAL_SYLLABUS.length} en total). Acredita una tarea concreta del trabajo: facturar, conciliar bancos, depreciar activos…` },
+            { n: 2, icon: GraduationCap, titulo: 'Diploma por Rol', texto: `${SPECIALTY_DIPLOMAS.length} diplomas que combinan certificados según el puesto: Asistente Contable, Jefe de Bodega, Consultor…` },
+            { n: 3, icon: ShieldCheck, titulo: 'Consultor Integral', texto: 'Todos los certificados más el Proyecto Integrador: el programa completo de SAP Business One.' },
+          ].map(({ n, icon: Icono, titulo, texto }) => (
+            <div key={n} className="rounded-2xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#131a20] p-5 shadow-lg space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="h-7 w-7 rounded-lg bg-amber-500/15 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs font-extrabold">{n}</span>
+                <Icono className="w-4 h-4 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white">{titulo}</h3>
+              </div>
+              <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">{texto}</p>
+            </div>
+          ))}
+        </section>
+
+        {/* NIVEL 1 — CERTIFICADOS DE COMPETENCIA POR MÓDULO, AGRUPADOS POR BLOQUE */}
         <section className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                Acreditación Profesional
+                Nivel 1 · Certificados de Competencia
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-                Los 4 Diplomas de Especialidad SAP B1
+                {OFFICIAL_SYLLABUS.length} Módulos, {OFFICIAL_SYLLABUS.length} Certificados
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 max-w-md">
-              Para obtener un Diploma de Especialidad debes aprobar los módulos correspondientes. Ingresa a cualquier módulo para empezar.
+              Cada módulo es corto y práctico. Al aprobarlo obtienes un certificado con código verificable que puedes mostrar a cualquier empleador.
+            </p>
+          </div>
+
+          {SYLLABUS_BLOCKS.map(bloque => {
+            const modulos = OFFICIAL_SYLLABUS.filter(m => m.block === bloque);
+            if (!modulos.length) return null;
+            return (
+              <div key={bloque} className="space-y-3">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">{bloque}</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {modulos.map(mod => {
+                    const disponible = mod.classes.length > 0;
+                    const tarjeta = (
+                      <>
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[11px] font-bold text-slate-500 dark:text-gray-400">Módulo {mod.number}</span>
+                          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${disponible ? 'bg-amber-500/10 text-amber-700 dark:text-amber-400' : 'bg-slate-100 dark:bg-gray-800 text-slate-500 dark:text-gray-400'}`}>
+                            {disponible ? `${mod.classes.length} clases · ${moduleMinutes(mod)} min` : 'Próximamente'}
+                          </span>
+                        </div>
+                        <p className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">{mod.title}</p>
+                        <p className="flex items-start gap-1.5 text-[11px] font-semibold text-slate-600 dark:text-gray-300">
+                          <Award className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-px" aria-hidden="true" /> {mod.certificateTitle}
+                        </p>
+                      </>
+                    );
+                    return disponible ? (
+                      <Link key={mod.id} href={`/mi-aula/${mod.id}`} className="group rounded-2xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#131a20] p-4 space-y-2 shadow-md hover:border-amber-500/50 transition-all active:scale-95">
+                        {tarjeta}
+                      </Link>
+                    ) : (
+                      <div key={mod.id} className="rounded-2xl border border-dashed border-slate-300 dark:border-gray-700 bg-white/60 dark:bg-[#131a20]/60 p-4 space-y-2">
+                        {tarjeta}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </section>
+
+        {/* NIVEL 2 — DIPLOMAS POR ROL PROFESIONAL */}
+        <section className="space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                Nivel 2 · Diplomas por Rol
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+                {SPECIALTY_DIPLOMAS.length} Diplomas para Puestos Reales
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-gray-400 max-w-md">
+              Un diploma se obtiene al reunir los certificados de sus módulos. Los módulos se comparten: lo que apruebas para un diploma también cuenta para los demás.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {SPECIALTY_DIPLOMAS.map((diploma, idx) => {
+            {SPECIALTY_DIPLOMAS.map(diploma => {
               const reqModules = diploma.requiredModules.map(modId => getModuleById(modId)).filter(Boolean) as typeof OFFICIAL_SYLLABUS;
+              const previos = (diploma.requiresOneDiplomaOf ?? []).map(id => SPECIALTY_DIPLOMAS.find(d => d.id === id)?.role).filter(Boolean);
 
               return (
                 <div
                   key={diploma.id}
-                  className="rounded-3xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#131a20] p-6 sm:p-8 shadow-xl flex flex-col justify-between space-y-6 hover:border-amber-500/50 transition-all duration-300"
+                  className="rounded-3xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#131a20] p-6 shadow-xl space-y-4 hover:border-amber-500/50 transition-all duration-300"
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between gap-2">
-                      <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-gray-800 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-gray-700">
-                        Diploma {idx + 1}
-                      </span>
-                      <span className="text-xs font-bold text-slate-500 dark:text-gray-400 flex items-center gap-1">
-                        <Award className="w-3.5 h-3.5 text-amber-500" /> Acreditación Oficial
-                      </span>
-                    </div>
-
-                    <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-                        {diploma.title}
-                      </h3>
-                      <p className="text-xs font-bold text-amber-600 dark:text-amber-400 mt-1">
-                        {diploma.description}
-                      </p>
-                    </div>
-
-                    {/* Módulos que agrupa */}
-                    <div className="space-y-2 pt-2">
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                        Módulos Requeridos ({reqModules.length}):
-                      </span>
-                      <div className="grid grid-cols-1 gap-2">
-                        {reqModules.map((mod, ci) => (
-                          <Link
-                            key={mod.id}
-                            href={`/mi-aula/${mod.id}`}
-                            className="group flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-gray-800/40 border border-slate-200 dark:border-gray-700/60 hover:border-amber-500/40 transition-colors"
-                          >
-                            <div className="flex flex-col min-w-0 pr-4">
-                              <span className="text-xs font-bold text-slate-800 dark:text-gray-200 truncate group-hover:text-amber-500 transition-colors">
-                                Módulo {mod.number}: {mod.title}
-                              </span>
-                              <span className="text-[10px] text-slate-500 dark:text-gray-400 truncate">
-                                {mod.classes.length} Clases • {mod.badge}
-                              </span>
-                            </div>
-                            <div className="shrink-0">
-                              <div className="h-8 w-8 rounded-full bg-amber-500/10 flex items-center justify-center group-hover:bg-amber-500 transition-colors">
-                                <ArrowRight className="w-4 h-4 text-amber-600 dark:text-amber-400 group-hover:text-white" />
-                              </div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 dark:bg-gray-800 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-gray-700">
+                      {diploma.role}
+                    </span>
+                    <span className="text-xs font-bold text-slate-500 dark:text-gray-400 flex items-center gap-1">
+                      <Award className="w-3.5 h-3.5 text-amber-500" aria-hidden="true" /> {reqModules.length} certificados
+                    </span>
                   </div>
+
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">{diploma.title}</h3>
+                    <p className="text-xs font-semibold text-amber-700 dark:text-amber-400 mt-1">{diploma.description}</p>
+                  </div>
+
+                  <ul className="grid grid-cols-1 gap-1.5">
+                    {reqModules.map(mod => (
+                      <li key={mod.id}>
+                        <Link
+                          href={`/mi-aula/${mod.id}`}
+                          className="group flex items-center justify-between gap-3 px-3 py-2 rounded-xl bg-slate-50 dark:bg-gray-800/40 border border-slate-200 dark:border-gray-700/60 hover:border-amber-500/40 transition-colors"
+                        >
+                          <span className="text-xs font-semibold text-slate-800 dark:text-gray-200 truncate group-hover:text-amber-600 dark:group-hover:text-amber-400">
+                            Módulo {mod.number}: {mod.title}
+                          </span>
+                          <ArrowRight className="w-3.5 h-3.5 shrink-0 text-amber-600 dark:text-amber-400" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  {previos.length > 0 && (
+                    <p className="text-[11px] text-slate-500 dark:text-gray-400">
+                      Además requiere un diploma funcional: {previos.join(', ')}.
+                    </p>
+                  )}
                 </div>
               );
             })}
           </div>
+        </section>
+
+        {/* NIVEL 3 — PROGRAMA CONSULTOR INTEGRAL */}
+        <section className="rounded-3xl border border-amber-500/40 bg-gradient-to-r from-amber-500/10 via-amber-500/5 to-transparent p-6 sm:p-8 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">Nivel 3 · Programa Completo</span>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">{MASTER_PROGRAM.title}</h2>
+            <p className="text-sm text-slate-600 dark:text-gray-300">{MASTER_PROGRAM.description}</p>
+          </div>
+          <Link href="/verificar" className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold shadow-md transition-all active:scale-95 shrink-0">
+            <ShieldCheck className="w-4 h-4" aria-hidden="true" /> Verificar un certificado
+          </Link>
         </section>
 
         {/* MODELO DE TITULACIÓN Y RIGOR ACADÉMICO */}
@@ -301,10 +376,13 @@ export default function MiAulaPage() {
               <ShieldCheck className="w-4 h-4" /> Política de Integridad & Rigor Universitario
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-              Acreditación Oficial: Certificados y Diplomas por Mérito Real
+              Certificados y Diplomas por Mérito Real
             </h2>
             <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-              En B1 Academy los certificados no se regalan ni se desbloquean con simples preguntas automáticas. Para obtener tu acreditación oficial con firmas de responsabilidad y código QR, debes <strong>completar el 100% de las lecciones</strong> de la carrera y <strong>aprobar la Evaluación con Tutor IA</strong> demostrando criterio técnico en situaciones reales.
+              En B1 Academy los certificados no se regalan ni se desbloquean con simples preguntas automáticas. Para obtener tu certificado con código de verificación público debes <strong>completar el 100% de las clases</strong> del módulo, <strong>aprobar cada práctica del simulador</strong> (calificada en el servidor) y <strong>aprobar la Evaluación con Tutor IA</strong> demostrando criterio técnico en situaciones reales.
+            </p>
+            <p className="text-[11px] text-gray-400 leading-relaxed">
+              B1 Academy es una institución de formación independiente: sus certificados acreditan competencias prácticas y no constituyen una certificación oficial de SAP SE.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link
@@ -336,7 +414,7 @@ export default function MiAulaPage() {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                <span>Ejecutar los talleres en el simulador</span>
+                <span>Aprobar cada práctica en el simulador</span>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />

@@ -42,6 +42,7 @@ import { initializeDemoCompany, getBusinessPartners, getItems, createSalesInvoic
 import GuidedOverlay from './GuidedOverlay';
 import SAPScreenRenderer from '@/components/sap-screens/SAPScreenRenderer';
 import PracticaValidada, { type CampoPractica } from './PracticaValidada';
+import type { IntentoPractica } from '@/lib/practice-check';
 
 /** Índice del buscador del menú (lupa / F3): enseña dónde vive cada formulario de SAP B1. */
 const SAP_SEARCH_INDEX: { name: string; path: string }[] = [
@@ -126,7 +127,8 @@ interface SAPInteractiveSimulatorProps {
   stepGuide?: StepGuide;
   guidedMode?: boolean;
   onStepComplete?: (stepNumber: number) => void;
-  onMissionComplete?: () => void;
+  /** En las prácticas evaluadas de Mi Aula recibe el intento, para que el servidor lo califique. */
+  onMissionComplete?: (intento?: IntentoPractica) => void;
   /**
    * false = el simulador crece con su contenido y el scroll lo hace la página que lo contiene
    * (Mi Aula). Evita que el botón final quede oculto dentro de un contenedor de altura fija.
@@ -206,12 +208,12 @@ export default function SAPInteractiveSimulator({
       missionTimer.current = null;
     };
   }, [manualId, currentStepIndex]);
-  const completeMission = (delay = 1000) => {
+  const completeMission = (delay = 1000, intento?: IntentoPractica) => {
     if (missionFinished.current || missionTimer.current) return;
     missionTimer.current = setTimeout(() => {
       missionTimer.current = null;
       missionFinished.current = true;
-      onMissionComplete?.();
+      onMissionComplete?.(intento);
     }, delay);
   };
   const practiceTitle = `${stepGuide?.title ?? ''} ${stepGuide?.menu_path ?? ''}`;
@@ -624,9 +626,9 @@ export default function SAPInteractiveSimulator({
         <div>
           <PracticaValidada
             guia={stepGuide}
-            onCompleta={() => {
+            onCompleta={(intento) => {
               (stepGuide.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
-              completeMission(200);
+              completeMission(200, intento);
             }}
           />
         </div>

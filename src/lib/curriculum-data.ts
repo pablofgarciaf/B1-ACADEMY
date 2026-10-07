@@ -8,12 +8,19 @@ export interface SyllabusClass {
   durationMinutes: number;
 }
 
+export type SyllabusBlock = 'Fundamentos' | 'Logística' | 'Comercial' | 'Finanzas' | 'Producción' | 'Sistema y Consultoría' | 'Proyecto Final';
+
 export interface SyllabusModule {
+  /** Clave estable (progreso, láminas y clases publicadas dependen de ella): nunca se renumera. */
   id: string;
+  /** Número visible para el alumno: sigue el orden pedagógico. */
   number: number;
   title: string;
   description: string;
   badge: string;
+  block: SyllabusBlock;
+  /** Certificado de competencia que otorga el módulo: nombrado por lo que el alumno sabe hacer en el trabajo. */
+  certificateTitle: string;
   diplomaId?: string;
   classes: SyllabusClass[];
 }
@@ -21,180 +28,182 @@ export interface SyllabusModule {
 export interface SpecialtyDiploma {
   id: string;
   title: string;
+  /** Rol profesional al que apunta el diploma. */
+  role: string;
   requiredModules: string[];
+  /** Además, al menos uno de estos diplomas (p. ej. el de consultor exige una especialidad funcional). */
+  requiresOneDiplomaOf?: string[];
   description: string;
 }
 
-export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
-  {
-    id: "dip-logistica",
-    title: "Diploma de Especialidad en Logística y Supply Chain",
-    requiredModules: ["mod-1", "mod-2", "mod-3"],
-    description: "Especialista en abastecimiento, control de almacenes y entregas."
-  },
-  {
-    id: "dip-comercial",
-    title: "Diploma de Especialidad en Gestión Comercial y CRM",
-    requiredModules: ["mod-1", "mod-4", "mod-5", "mod-6"],
-    description: "Especialista en el ciclo Order-to-Cash, CRM y servicios."
-  },
-  {
-    id: "dip-finanzas",
-    title: "Diploma de Especialidad en Finanzas y Control NIIF",
-    requiredModules: ["mod-1", "mod-7", "mod-8", "mod-9"],
-    description: "Especialista contable, tributario, bancario y de activos fijos."
-  },
-  {
-    id: "dip-industrial",
-    title: "Diploma de Especialidad en Producción e Inteligencia de Negocios",
-    requiredModules: ["mod-1", "mod-10", "mod-11", "mod-12"],
-    description: "Experto en MRP, manufactura, proyectos y Query Manager SQL."
-  }
+/** Orden pedagógico: Fundamentos → Logística → Comercial → Finanzas → Producción → Sistema → Proyecto final. */
+export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
+  // ── Fundamentos ──
+  { id: 'mod-1', number: 1, block: 'Fundamentos', badge: 'Core Basics',
+    title: 'Fundamentos Operativos y Navegación',
+    description: 'Arquitectura, Cockpit Fiori, preferencias de usuario, búsquedas, alertas y autorizaciones.',
+    certificateTitle: 'Certificado en Navegación y Operación de SAP Business One', classes: [] },
+  { id: 'mod-2', number: 2, block: 'Fundamentos', badge: 'Master Data',
+    title: 'Núcleo Maestro ERP',
+    description: 'Socios de negocio, artículos, unidades de medida y determinación estándar de precios.',
+    certificateTitle: 'Certificado en Datos Maestros de Socios y Artículos', classes: [] },
+
+  // ── Logística ──
+  { id: 'mod-3', number: 3, block: 'Logística', badge: 'Supply Chain',
+    title: 'Aprovisionamiento y Control de Inventarios',
+    description: 'Ciclo Procure-to-Pay, transacciones de almacén, ubicaciones, lotes, series y costos de importación.',
+    certificateTitle: 'Certificado en Compras e Inventarios (Procure-to-Pay)', classes: [] },
+  { id: 'mod-13', number: 4, block: 'Logística', badge: 'Compras',
+    title: 'Compras Avanzadas',
+    description: 'Solicitudes de compra, cotizaciones de proveedores, compras de servicios y devoluciones.',
+    certificateTitle: 'Certificado en Cotizaciones, Compras de Servicios y Devoluciones', classes: [] },
+  { id: 'mod-14', number: 5, block: 'Logística', badge: 'Valoración',
+    title: 'Unidades de Medida y Valoración de Inventario',
+    description: 'Unidades por peso y empaque, métodos de valoración y ajuste de costos de inventario.',
+    certificateTitle: 'Certificado en Valoración de Inventario', classes: [] },
+  { id: 'mod-15', number: 6, block: 'Logística', badge: 'Bodega',
+    title: 'Operación de Almacén e Inventario Físico',
+    description: 'Operación diaria con ubicaciones, reglas de bodega, informes y conteo físico.',
+    certificateTitle: 'Certificado en Gestión de Bodega e Inventario Físico', classes: [] },
+  { id: 'mod-16', number: 7, block: 'Logística', badge: 'Despacho',
+    title: 'Picking, Packing y Despacho',
+    description: 'Preparación de pedidos para producción y transferencias entre bodegas.',
+    certificateTitle: 'Certificado en Preparación y Despacho de Pedidos', classes: [] },
+
+  // ── Comercial ──
+  { id: 'mod-4', number: 8, block: 'Comercial', badge: 'Ventas',
+    title: 'Gestión de Ventas y Order-to-Cash',
+    description: 'Ofertas, pedidos, entregas, facturación, devoluciones y notas de crédito.',
+    certificateTitle: 'Certificado en Facturación y Ciclo de Ventas', classes: [] },
+  { id: 'mod-5', number: 9, block: 'Comercial', badge: 'Precios',
+    title: 'Estrategias Avanzadas de Precios',
+    description: 'Listas de precios, descuentos por período y volumen, grupos de descuento y precios especiales.',
+    certificateTitle: 'Certificado en Listas de Precios y Descuentos', classes: [] },
+  { id: 'mod-6', number: 10, block: 'Comercial', badge: 'CRM',
+    title: 'Gestión CRM y Servicios Post-venta',
+    description: 'Relación con clientes, oportunidades, llamadas de servicio, tarjetas de equipo y garantías.',
+    certificateTitle: 'Certificado en CRM y Servicio Postventa', classes: [] },
+
+  // ── Finanzas ──
+  { id: 'mod-7', number: 11, block: 'Finanzas', badge: 'Contabilidad',
+    title: 'Contabilidad Central y NIIF',
+    description: 'Plan de cuentas, determinación de cuentas, asientos y cierre de períodos.',
+    certificateTitle: 'Certificado en Contabilidad General NIIF', classes: [] },
+  { id: 'mod-17', number: 12, block: 'Finanzas', badge: 'Informes',
+    title: 'Monedas, Cierre e Informes Financieros',
+    description: 'Monedas y tipos de cambio, determinación avanzada de cuentas, vouchers, informes y flujo de caja.',
+    certificateTitle: 'Certificado en Informes Financieros y Flujo de Caja', classes: [] },
+  { id: 'mod-8', number: 13, block: 'Finanzas', badge: 'Tesorería',
+    title: 'Tesorería, Cobros y Pagos (Bancos)',
+    description: 'Pagos recibidos y efectuados, asistente de pagos, conciliación y cobranza.',
+    certificateTitle: 'Certificado en Conciliación Bancaria, Cobros y Pagos', classes: [] },
+  { id: 'mod-9', number: 14, block: 'Finanzas', badge: 'Activos Fijos',
+    title: 'Control de Activos Fijos',
+    description: 'Configuración, alta, depreciación, ajustes y bajas de activos.',
+    certificateTitle: 'Certificado en Gestión de Activos Fijos y Depreciación', classes: [] },
+  { id: 'mod-18', number: 15, block: 'Finanzas', badge: 'Costos',
+    title: 'Costos, Dimensiones y Presupuestos',
+    description: 'Contabilidad de costos, centros de costo con dimensiones y control presupuestario.',
+    certificateTitle: 'Certificado en Centros de Costo y Presupuestos', classes: [] },
+  { id: 'mod-19', number: 16, block: 'Finanzas', badge: 'SRI 2026',
+    title: 'Facturación Electrónica y Retenciones SRI 2026',
+    description: 'Transmisión inmediata, anulaciones, retenciones de renta e IVA según la normativa vigente del SRI.',
+    certificateTitle: 'Certificado en Facturación Electrónica y Retenciones SRI 2026', classes: [] },
+
+  // ── Producción ──
+  { id: 'mod-10', number: 17, block: 'Producción', badge: 'MRP',
+    title: 'Planificación de Materiales (MRP)',
+    description: 'Planificación de necesidades, pronósticos, MRP con listas de materiales y órdenes sugeridas.',
+    certificateTitle: 'Certificado en Planificación de Materiales (MRP)', classes: [] },
+  { id: 'mod-11', number: 18, block: 'Producción', badge: 'Producción',
+    title: 'Fabricación y Proyectos (BOM)',
+    description: 'Listas de materiales, órdenes de producción, costos y facturación de proyectos.',
+    certificateTitle: 'Certificado en Órdenes de Producción y Proyectos', classes: [] },
+  { id: 'mod-20', number: 19, block: 'Producción', badge: 'Capacidad',
+    title: 'Recursos, Capacidad y Rutas de Producción',
+    description: 'Recursos de producción, capacidad disponible y rutas de fabricación.',
+    certificateTitle: 'Certificado en Recursos, Capacidad y Rutas de Producción', classes: [] },
+
+  // ── Sistema y Consultoría ──
+  { id: 'mod-21', number: 20, block: 'Sistema y Consultoría', badge: 'Administración',
+    title: 'Administración del Sistema',
+    description: 'Numeración de documentos, diseños de impresión, correo, plantillas y propiedad de los datos.',
+    certificateTitle: 'Certificado en Administración del Sistema SAP B1', classes: [] },
+  { id: 'mod-22', number: 21, block: 'Sistema y Consultoría', badge: 'Extensibilidad',
+    title: 'Extensibilidad y Analítica',
+    description: 'Tablas definidas por el usuario y analítica con SAP Analytics.',
+    certificateTitle: 'Certificado en Tablas de Usuario y SAP Analytics', classes: [] },
+  { id: 'mod-12', number: 22, block: 'Sistema y Consultoría', badge: 'Consultoría',
+    title: 'Consultoría y Herramientas SQL',
+    description: 'Query Manager, alertas, procesos de aprobación, campos de usuario y migración con DTW.',
+    certificateTitle: 'Certificado en Consultas SQL, Alertas y Migración DTW', classes: [] },
+  { id: 'mod-23', number: 23, block: 'Sistema y Consultoría', badge: 'Implementación',
+    title: 'Implementación, Saldos Iniciales y Go-Live',
+    description: 'Metodología de implementación, asistente express, saldos iniciales, Quick Copy e importación DTW.',
+    certificateTitle: 'Certificado en Implementación y Puesta en Marcha', classes: [] },
+
+  // ── Proyecto final ──
+  { id: 'mod-24', number: 24, block: 'Proyecto Final', badge: 'Integrador',
+    title: 'Proyecto Integrador',
+    description: 'Casos completos de puesta en marcha, aprovisionamiento y consultas SQL con la empresa del curso.',
+    certificateTitle: 'Certificado de Proyecto Integrador SAP B1', classes: [] },
 ];
 
-export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
-  {
-    id: "mod-1",
-    number: 1,
-    title: "Fundamentos Operativos y Navegación",
-    description: "Aprende la arquitectura general, el inicio de sesión y la navegación fluida a través del Cockpit y los menús.",
-    badge: "Core Basics",
-    diplomaId: "dip-logistica", // Opcional, solo para taggear visualmente
-    classes: [
-      {
-        id: "mod1-c1",
-        number: 1,
-        title: "Arquitectura y Cockpit Fiori",
-        description: "Introducción al sistema, inicio de sesión y personalización de widgets.",
-        durationMinutes: 15
-      },
-      {
-        id: "mod1-c2",
-        number: 2,
-        title: "Parametrizaciones y Preferencias de Usuario",
-        description: "Ajuste de idioma, formatos de fecha, moneda y atajos de teclado.",
-        durationMinutes: 10
-      },
-      {
-        id: "mod1-c3",
-        number: 3,
-        title: "Búsqueda y Funciones de Ayuda",
-        description: "Uso del buscador Enterprise Search y consulta de ayudas nativas.",
-        durationMinutes: 10
-      },
-      {
-        id: "mod1-c4",
-        number: 4,
-        title: "Mensajes, Alertas y Autorizaciones",
-        description: "Bandeja de entrada, alertas de sistema y restricciones de perfiles.",
-        durationMinutes: 15
-      }
-    ]
-  },
-  {
-    id: "mod-2",
-    number: 2,
-    title: "Núcleo Maestro ERP",
-    description: "Gestión de Socios de Negocio, Catálogo de Artículos y Listas de Precios base.",
-    badge: "Master Data",
-    classes: [
-      { id: "mod2-c1", number: 1, title: "Socio de Negocios (OCRD)", description: "", durationMinutes: 20 },
-      { id: "mod2-c2", number: 2, title: "Datos Maestros de Artículo (OITM)", description: "", durationMinutes: 20 },
-      { id: "mod2-c3", number: 3, title: "Gestión de Unidades de Medida", description: "", durationMinutes: 15 },
-      { id: "mod2-c4", number: 4, title: "Determinación Estándar de Precios", description: "", durationMinutes: 25 },
-    ]
-  },
-  {
-    id: "mod-3",
-    number: 3,
-    title: "Aprovisionamiento y Control de Inventarios",
-    description: "Ciclo Procure-to-Pay y control de almacenes logísticos.",
-    badge: "Supply Chain",
-    classes: [
-      { id: "mod3-c1", number: 1, title: "Ciclo Procure-to-Pay", description: "", durationMinutes: 25 },
-      { id: "mod3-c2", number: 2, title: "Transacciones de Almacén", description: "", durationMinutes: 20 },
-      { id: "mod3-c3", number: 3, title: "Ubicaciones (Bin Locations)", description: "", durationMinutes: 20 },
-      { id: "mod3-c4", number: 4, title: "Trazabilidad por Lotes y Series", description: "", durationMinutes: 20 },
-      { id: "mod3-c5", number: 5, title: "Costos de Importación", description: "", durationMinutes: 25 },
-    ]
-  },
-  // The rest are mocked for now to build the UI
-  {
-    id: "mod-4",
-    number: 4,
-    title: "Gestión de Ventas y Order-to-Cash",
-    description: "Ciclo de ventas y facturación.",
-    badge: "Ventas",
-    classes: []
-  },
-  {
-    id: "mod-5",
-    number: 5,
-    title: "Estrategias Avanzadas de Precios",
-    description: "Descuentos, campañas y periodos.",
-    badge: "Comercial",
-    classes: []
-  },
-  {
-    id: "mod-6",
-    number: 6,
-    title: "Gestión CRM y Servicios Post-venta",
-    description: "Llamadas de servicio, garantías.",
-    badge: "CRM",
-    classes: []
-  },
-  {
-    id: "mod-7",
-    number: 7,
-    title: "Contabilidad Central y NIIF",
-    description: "Plan de cuentas, asientos manuales.",
-    badge: "Finanzas",
-    classes: []
-  },
-  {
-    id: "mod-8",
-    number: 8,
-    title: "Tesorería, Cobros y Pagos (Bancos)",
-    description: "Gestión de cobros, pagos, extractos.",
-    badge: "Tesorería",
-    classes: []
-  },
-  {
-    id: "mod-9",
-    number: 9,
-    title: "Control de Activos Fijos",
-    description: "Amortizaciones, altas y bajas.",
-    badge: "Activos Fijos",
-    classes: []
-  },
-  {
-    id: "mod-10",
-    number: 10,
-    title: "Planificación de Materiales (MRP)",
-    description: "Pronósticos y asistente MRP.",
-    badge: "Logística",
-    classes: []
-  },
-  {
-    id: "mod-11",
-    number: 11,
-    title: "Fabricación y Proyectos (BOM)",
-    description: "Órdenes de producción, recetas.",
-    badge: "Producción",
-    classes: []
-  },
-  {
-    id: "mod-12",
-    number: 12,
-    title: "Consultoría y Herramientas SQL",
-    description: "Consultas SQL, DTW.",
-    badge: "Consultoría",
-    classes: []
-  }
+/** Diplomas por rol profesional: cada uno combina certificados de módulo (los módulos se comparten entre diplomas). */
+export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
+  { id: 'dip-compras', role: 'Asistente de Compras e Inventario',
+    title: 'Diploma de Asistente de Compras e Inventario',
+    requiredModules: ['mod-1', 'mod-2', 'mod-3', 'mod-13', 'mod-14'],
+    description: 'Gestiona solicitudes, cotizaciones, órdenes de compra, recepciones y valoración de inventario.' },
+  { id: 'dip-bodega', role: 'Jefe de Bodega',
+    title: 'Diploma de Jefe de Bodega',
+    requiredModules: ['mod-1', 'mod-2', 'mod-3', 'mod-15', 'mod-16'],
+    description: 'Controla ubicaciones, movimientos, conteos físicos y despacho de pedidos.' },
+  { id: 'dip-comercial', role: 'Ejecutivo Comercial',
+    title: 'Diploma de Ejecutivo Comercial',
+    requiredModules: ['mod-1', 'mod-2', 'mod-4', 'mod-5'],
+    description: 'Lleva el ciclo de ventas completo: ofertas, pedidos, facturación y estrategia de precios.' },
+  { id: 'dip-postventa', role: 'Servicio Postventa',
+    title: 'Diploma de Servicio Postventa',
+    requiredModules: ['mod-1', 'mod-2', 'mod-4', 'mod-6'],
+    description: 'Atiende clientes con CRM, llamadas de servicio, garantías y devoluciones.' },
+  { id: 'dip-contable', role: 'Asistente Contable',
+    title: 'Diploma de Asistente Contable NIIF',
+    requiredModules: ['mod-1', 'mod-2', 'mod-7', 'mod-17', 'mod-19'],
+    description: 'Registra asientos, cierra períodos, emite informes y aplica las retenciones vigentes del SRI.' },
+  { id: 'dip-tesoreria', role: 'Tesorería y Cobranzas',
+    title: 'Diploma de Tesorería y Cobranzas',
+    requiredModules: ['mod-1', 'mod-7', 'mod-8', 'mod-19'],
+    description: 'Gestiona cobros, pagos, conciliación bancaria, cartera y retenciones.' },
+  { id: 'dip-costos', role: 'Analista de Costos y Presupuestos',
+    title: 'Diploma de Analista de Costos y Presupuestos',
+    requiredModules: ['mod-7', 'mod-14', 'mod-9', 'mod-18'],
+    description: 'Controla costos, centros de costo, presupuestos, valoración y activos fijos.' },
+  { id: 'dip-produccion', role: 'Planificador de Producción',
+    title: 'Diploma de Planificador de Producción',
+    requiredModules: ['mod-2', 'mod-10', 'mod-11', 'mod-20'],
+    description: 'Planifica materiales con MRP, programa órdenes de producción y administra la capacidad.' },
+  { id: 'dip-admin', role: 'Administrador SAP B1 (Key User)',
+    title: 'Diploma de Administrador SAP Business One',
+    requiredModules: ['mod-1', 'mod-21', 'mod-22', 'mod-12'],
+    description: 'Configura usuarios, documentos, impresión, extensiones, consultas y alertas.' },
+  { id: 'dip-consultor', role: 'Consultor de Implementación',
+    title: 'Diploma de Consultor de Implementación',
+    requiredModules: ['mod-21', 'mod-12', 'mod-23', 'mod-24'],
+    requiresOneDiplomaOf: ['dip-compras', 'dip-bodega', 'dip-comercial', 'dip-postventa', 'dip-contable', 'dip-tesoreria', 'dip-costos', 'dip-produccion'],
+    description: 'Lidera implementaciones: metodología, migración de datos, saldos iniciales y puesta en marcha.' },
 ];
+
+/** Programa máximo: todos los certificados de módulo. El Proyecto Integrador funciona como examen final. */
+export const MASTER_PROGRAM = {
+  id: 'master-consultor-integral',
+  title: 'Programa Consultor Integral SAP Business One',
+  description: 'Reúne los 24 certificados de competencia y culmina con el Proyecto Integrador.',
+} as const;
+
+export const SYLLABUS_BLOCKS: SyllabusBlock[] = ['Fundamentos', 'Logística', 'Comercial', 'Finanzas', 'Producción', 'Sistema y Consultoría', 'Proyecto Final'];
 
 // Temario real de Mi Aula: generado por scripts/aula/publicar_clases.py a partir de scripts/aula/plan.json.
-// Reemplaza las clases de cada módulo que tenga contenido publicado (los módulos 4-12 estaban vacíos).
 for (const mod of OFFICIAL_SYLLABUS) {
   const publicadas = (CLASES_AULA as Record<string, SyllabusClass[]>)[mod.id];
   if (publicadas?.length) mod.classes = publicadas;
@@ -207,4 +216,9 @@ export function getModuleById(id: string): SyllabusModule | undefined {
 export function getClassById(moduleId: string, classId: string): SyllabusClass | undefined {
   const mod = getModuleById(moduleId);
   return mod?.classes.find(c => c.id === classId);
+}
+
+/** Minutos totales de un módulo (suma de sus clases publicadas). */
+export function moduleMinutes(mod: SyllabusModule): number {
+  return mod.classes.reduce((acc, c) => acc + c.durationMinutes, 0);
 }

@@ -193,14 +193,14 @@ Efecto: El inventario de OEC Computers se valoriza formalmente por $500.
 Haber (JDT1): 210000 - Cuenta de Compensación de Mercancías = -$500.00 USD
 Efecto: Se crea una provisión de pasivo temporal por mercancía recibida no facturada.
 Paso 2: Recepción y Registro de la Factura del Proveedor (A/P Invoice)
-Tres días después, el departamento de finanzas de OEC Computers recibe la factura fiscal de Coconut Devices por $500.00 USD más $60.00 USD de IVA (12%). El contador crea la factura copiando desde el documento GRPO previo.
+Tres días después, el departamento de finanzas de OEC Computers recibe la factura fiscal de Coconut Devices por $500.00 USD más $75.00 USD de IVA (15%). El contador crea la factura copiando desde el documento GRPO previo.
 
 Asiento Contable Generado Automáticamente (OJDT):
 Debe (JDT1): 210000 - Cuenta de Compensación de Mercancías = +$500.00 USD
 Efecto: La cuenta puente de pasivo temporal queda completamente saldada en $0.00.
-Debe (JDT1): 115000 - IVA Crédito Tributario Soportado = +$60.00 USD
+Debe (JDT1): 115000 - IVA Crédito Tributario Soportado = +$75.00 USD
 Efecto: Crédito fiscal recuperable para la empresa.
-Haber (JDT1): 200000 - Cuenta Asociada Proveedor (Coconut Devices) = -$560.00 USD
+Haber (JDT1): 200000 - Cuenta Asociada Proveedor (Coconut Devices) = -$575.00 USD
 Efecto: Se establece la deuda comercial definitiva en el pasivo corriente.
 
 

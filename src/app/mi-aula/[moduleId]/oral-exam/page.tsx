@@ -270,7 +270,12 @@ export default function ExamPage({ params }: { params: Promise<{ moduleId: strin
             </ul>
             {final.passed ? (
               certificate ? (
-                <p className="flex items-center gap-2 text-sm text-emerald-300"><ShieldCheck className="w-5 h-5" /> Certificado emitido. Código de verificación: <strong className="font-mono">{certificate}</strong></p>
+                <div className="space-y-2">
+                  <p className="flex items-center gap-2 text-sm text-emerald-300"><ShieldCheck className="w-5 h-5" /> {courseModule.certificateTitle} emitido. Código de verificación: <strong className="font-mono">{certificate}</strong></p>
+                  <Link href={`/verificar/${encodeURIComponent(certificate)}`} className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200">
+                    Ver página pública de verificación (para compartir con empleadores)
+                  </Link>
+                </div>
               ) : (
                 <button onClick={issueCertificate} disabled={busy} className="px-6 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold active:scale-95 transition-all">
                   {busy ? 'Emitiendo...' : 'Emitir mi certificado'}

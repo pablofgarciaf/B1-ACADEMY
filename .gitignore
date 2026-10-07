@@ -50,3 +50,5 @@ public/Capacitacion SAP/*/clase_video.mp4
 scratch/aula_audio_cache/
 scratch/aula_tmp/
 scratch/*.log
+# Borradores de clases de Mi Aula (generar_clases.py → publicar_clases.py publica en src/content/aula y public/aula)
+scratch/aula_es/

@@ -16,6 +16,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "manuales"))
 from comun import ICONOS, ROOT, cargar_env, llm_json  # noqa: E402
+sys.path.insert(0, str(Path(__file__).parent))
+from validar_normativa import revisar_borrador  # noqa: E402
 
 PLAN = json.loads((Path(__file__).parent / "plan.json").read_text(encoding="utf-8"))
 SALIDA = ROOT / "scratch" / "aula_es"
@@ -56,14 +58,34 @@ LAS DOS PRÁCTICAS usan layout "pantalla" y además llevan:
 - Los "campos" de la lámina pantalla muestran los mismos valores que la práctica.
 - La "narracion" de una práctica presenta la misión (qué vas a hacer y por qué), 50 a 90 palabras.
 
+NORMATIVA (Ecuador, obligatoria; un validador rechaza la clase si no se cumple):
+- IVA general 15 % (tarifas posibles: 0 %, 5 %, 8 %, 15 %). Nunca 12 %: está derogado.
+- Retención en la fuente del Impuesto a la Renta: solo 0 %, 1 %, 1,75 %, 2 %, 3 %, 5 % o 10 %, se calcula sobre la base imponible.
+- Retención del IVA: solo 10 %, 20 %, 30 %, 70 % o 100 %, se calcula sobre el valor del IVA (no sobre la base).
+- Si el contenido técnico trae porcentajes o resoluciones del SRI, usa EXACTAMENTE esos; no cites resoluciones que no aparezcan ahí.
+- El layout "asiento" es SOLO para asientos contables reales de partida doble: mínimo dos líneas y suma del debe = suma del haber.
+  Para capacidades, pesos, horas o cantidades usa "tabla" o "kpi", nunca "asiento".
+- Toda cifra derivada debe cuadrar: IVA = 15 % de la base, total = base + IVA.
+- Naturaleza del IVA: en COMPRAS la cuenta es "IVA crédito tributario" (o "IVA en compras") y va al DEBE;
+  en VENTAS la cuenta es "IVA débito fiscal" (o "IVA cobrado") y va al HABER. Nunca uses "IVA débito" en una compra.
+- La factura de proveedores acredita la cuenta "Proveedores" (cuenta por pagar) por el neto; el banco solo se mueve en el pago.
+- La entrega a clientes no registra ingresos ni IVA (eso ocurre en la factura de clientes).
+
 EMPRESA FICTICIA: {EMPRESA}
 
 Responde SOLO con JSON: {{"laminas": [ ... ]}}"""
 
 
+FUENTES = Path(__file__).parent / "fuentes"
+
+
 def conocimiento(clase):
     partes = []
     for m in clase["manuales"]:
+        # "fuente:<nombre>" = documento investigado fuera de la biblioteca de manuales (p. ej. normativa SRI del año).
+        if m.startswith("fuente:"):
+            partes.append(f"## Fuente {m[7:]}\n" + (FUENTES / f"{m[7:]}.md").read_text(encoding="utf-8"))
+            continue
         p = MANUALES / m / "clase_sync.json"
         sync = json.loads(p.read_text(encoding="utf-8"))
         partes.append(f"## Manual {m}\n" + "\n".join(f"- {s['script_text']}" for s in sync))
@@ -74,22 +96,31 @@ def valida(datos):
     lam = [x for x in datos.get("laminas", []) if isinstance(x, dict)]
     if not 10 <= len(lam) <= 20:
         return None, f"{len(lam)} láminas"
-    practicas = [x for x in lam if isinstance(x.get("practica"), dict)]
-    # Más de 4 prácticas: las extra quedan como láminas de pantalla explicativas (sin evaluación).
-    for extra in practicas[4:]:
-        extra.pop("practica", None)
-    practicas = practicas[:4]
-    if len(practicas) < 2:
-        return None, f"{len(practicas)} prácticas"
-    for p in practicas:
+    def evaluable(p):
         campos = p["practica"].get("campos") or []
-        if not 3 <= len(campos) <= 6 or any(not str(c.get("valor", "")).strip() or len(str(c["valor"])) > 40 for c in campos):
-            return None, "campos de práctica inválidos"
-        if not p["practica"].get("instrucciones"):
-            return None, "práctica sin instrucciones"
+        # La práctica se abre navegando el menú real de SAP: necesita al menos "Módulo > Ventana" (revisar_aula.py lo exige).
+        ruta = [s for s in str(p["practica"].get("menu_path", "")).split(">") if s.strip()]
+        return (3 <= len(campos) <= 6 and p["practica"].get("instrucciones") and len(ruta) >= 2
+                and all(str(c.get("valor", "")).strip() and len(str(c["valor"])) <= 40 for c in campos))
+
+    practicas = [x for x in lam if isinstance(x.get("practica"), dict)]
+    # Una práctica que no se puede evaluar con exactitud (valores largos, sin instrucciones) queda como lámina
+    # de pantalla explicativa; las que se evalúan conservan la misma exigencia. Más de 4: las extra también.
+    validas = [x for x in practicas if evaluable(x)]
+    for x in practicas:
+        if x not in validas[:4]:
+            x.pop("practica", None)
+    if len(validas) < 2:
+        return None, f"{len(validas)} prácticas evaluables"
     for x in lam:
         if len((x.get("narracion") or "").split()) < 30:
             return None, "narración corta"
+    # Normativa: impuestos, retenciones, asientos y resoluciones se validan antes de aceptar la clase;
+    # si algo no cumple, la clase se rechaza y se vuelve a pedir al modelo.
+    errores = []
+    revisar_borrador("clase", {"laminas": lam}, errores)
+    if errores:
+        return None, f"normativa: {errores[0]}"
     return lam, "ok"
 
 
@@ -97,7 +128,7 @@ def generar(modulo, clase, env):
     out = SALIDA / clase["id"] / "clase.json"
     entrada = json.dumps({"modulo": modulo["titulo"], "clase": clase["titulo"], "contenido_tecnico": conocimiento(clase)}, ensure_ascii=False)
     motivo = ""
-    for _ in range(3):
+    for _ in range(5):  # con el validador normativo hay más rechazos legítimos: se dan más oportunidades
         datos, prov = llm_json(SYSTEM, entrada, env, max_tokens=14000)
         lam, motivo = valida(datos)
         if lam:
@@ -116,8 +147,12 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     a = ap.parse_args()
     env = cargar_env()
+    # Las clases ya publicadas en src/content/aula/lecciones.json no se regeneran (aunque su borrador
+    # en scratch/ ya no exista): solo se rehacen si se piden explícitamente con --only ... --force.
+    publicadas = set(json.loads((ROOT / "src" / "content" / "aula" / "lecciones.json").read_text(encoding="utf-8")))
     tareas = [(m, c) for m in PLAN["modulos"] for c in m["clases"]
-              if (not a.only or c["id"] in a.only) and (a.force or not (SALIDA / c["id"] / "clase.json").exists())]
+              if (not a.only or c["id"] in a.only)
+              and (a.force and a.only or (c["id"] not in publicadas and not (SALIDA / c["id"] / "clase.json").exists()))]
     print(f"Clases por generar: {len(tareas)}", flush=True)
     fallos = []
     with ThreadPoolExecutor(max_workers=a.workers) as pool:

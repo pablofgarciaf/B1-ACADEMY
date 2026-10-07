@@ -365,5 +365,309 @@
    "description": "",
    "durationMinutes": 19
   }
+ ],
+ "mod-13": [
+  {
+   "id": "mod13-c1",
+   "number": 1,
+   "title": "Solicitudes de Compra y Cotizaciones",
+   "description": "",
+   "durationMinutes": 19
+  },
+  {
+   "id": "mod13-c2",
+   "number": 2,
+   "title": "Compras de Servicios",
+   "description": "",
+   "durationMinutes": 12
+  },
+  {
+   "id": "mod13-c3",
+   "number": 3,
+   "title": "Devoluciones y Notas de Crédito de Proveedor",
+   "description": "",
+   "durationMinutes": 12
+  }
+ ],
+ "mod-14": [
+  {
+   "id": "mod14-c1",
+   "number": 1,
+   "title": "Unidades de Medida por Peso y Volumen",
+   "description": "",
+   "durationMinutes": 21
+  },
+  {
+   "id": "mod14-c2",
+   "number": 2,
+   "title": "Unidades de Empaquetado",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod14-c3",
+   "number": 3,
+   "title": "Métodos de Valoración de Inventario",
+   "description": "",
+   "durationMinutes": 20
+  },
+  {
+   "id": "mod14-c4",
+   "number": 4,
+   "title": "Ajuste de Costos de Inventario",
+   "description": "",
+   "durationMinutes": 12
+  }
+ ],
+ "mod-15": [
+  {
+   "id": "mod15-c1",
+   "number": 1,
+   "title": "Operación Diaria con Ubicaciones",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod15-c2",
+   "number": 2,
+   "title": "Reglas y Gestión de Ubicaciones",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod15-c3",
+   "number": 3,
+   "title": "Informes de Ubicaciones",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod15-c4",
+   "number": 4,
+   "title": "Inventario Físico: Conteo y Ajuste",
+   "description": "",
+   "durationMinutes": 14
+  }
+ ],
+ "mod-16": [
+  {
+   "id": "mod16-c1",
+   "number": 1,
+   "title": "Picking y Packing para Producción",
+   "description": "",
+   "durationMinutes": 21
+  },
+  {
+   "id": "mod16-c2",
+   "number": 2,
+   "title": "Picking y Packing para Transferencias",
+   "description": "",
+   "durationMinutes": 16
+  }
+ ],
+ "mod-17": [
+  {
+   "id": "mod17-c1",
+   "number": 1,
+   "title": "Monedas y Tipos de Cambio",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod17-c2",
+   "number": 2,
+   "title": "Determinación Avanzada de Cuentas",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod17-c3",
+   "number": 3,
+   "title": "Documentos Preliminares de Asiento",
+   "description": "",
+   "durationMinutes": 16
+  },
+  {
+   "id": "mod17-c4",
+   "number": 4,
+   "title": "Informes Financieros y Flujo de Caja",
+   "description": "",
+   "durationMinutes": 17
+  }
+ ],
+ "mod-18": [
+  {
+   "id": "mod18-c1",
+   "number": 1,
+   "title": "Contabilidad de Costos",
+   "description": "",
+   "durationMinutes": 21
+  },
+  {
+   "id": "mod18-c2",
+   "number": 2,
+   "title": "Centros de Costo y Dimensiones",
+   "description": "",
+   "durationMinutes": 22
+  },
+  {
+   "id": "mod18-c3",
+   "number": 3,
+   "title": "Gestión de Presupuestos",
+   "description": "",
+   "durationMinutes": 16
+  }
+ ],
+ "mod-19": [
+  {
+   "id": "mod19-c1",
+   "number": 1,
+   "title": "Facturación Electrónica 2026: Transmisión y Anulación",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod19-c2",
+   "number": 2,
+   "title": "Retención en la Fuente del Impuesto a la Renta",
+   "description": "",
+   "durationMinutes": 16
+  },
+  {
+   "id": "mod19-c3",
+   "number": 3,
+   "title": "Retención del IVA y Comprobante de Retención",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod19-c4",
+   "number": 4,
+   "title": "Retenciones en la Factura de Proveedores de SAP B1",
+   "description": "",
+   "durationMinutes": 16
+  }
+ ],
+ "mod-20": [
+  {
+   "id": "mod20-c1",
+   "number": 1,
+   "title": "Recursos de Producción",
+   "description": "",
+   "durationMinutes": 15
+  },
+  {
+   "id": "mod20-c2",
+   "number": 2,
+   "title": "Capacidad de Recursos",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod20-c3",
+   "number": 3,
+   "title": "Rutas de Producción (Routing)",
+   "description": "",
+   "durationMinutes": 15
+  }
+ ],
+ "mod-21": [
+  {
+   "id": "mod21-c1",
+   "number": 1,
+   "title": "Numeración de Documentos y Datos Maestros",
+   "description": "",
+   "durationMinutes": 16
+  },
+  {
+   "id": "mod21-c2",
+   "number": 2,
+   "title": "Diseños de Impresión",
+   "description": "",
+   "durationMinutes": 22
+  },
+  {
+   "id": "mod21-c3",
+   "number": 3,
+   "title": "Correo Electrónico y Plantillas de Interfaz",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod21-c4",
+   "number": 4,
+   "title": "Propiedad de los Datos y Soporte",
+   "description": "",
+   "durationMinutes": 20
+  }
+ ],
+ "mod-22": [
+  {
+   "id": "mod22-c1",
+   "number": 1,
+   "title": "Tablas Definidas por el Usuario",
+   "description": "",
+   "durationMinutes": 23
+  },
+  {
+   "id": "mod22-c2",
+   "number": 2,
+   "title": "Introducción a SAP Analytics",
+   "description": "",
+   "durationMinutes": 15
+  }
+ ],
+ "mod-23": [
+  {
+   "id": "mod23-c1",
+   "number": 1,
+   "title": "Metodología de Implementación",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod23-c2",
+   "number": 2,
+   "title": "Asistente Express de Configuración",
+   "description": "",
+   "durationMinutes": 24
+  },
+  {
+   "id": "mod23-c3",
+   "number": 3,
+   "title": "Carga de Saldos Iniciales",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod23-c4",
+   "number": 4,
+   "title": "Copia Rápida e Importación de Documentos",
+   "description": "",
+   "durationMinutes": 15
+  }
+ ],
+ "mod-24": [
+  {
+   "id": "mod24-c1",
+   "number": 1,
+   "title": "Caso Integrador: Puesta en Marcha",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod24-c2",
+   "number": 2,
+   "title": "Caso Integrador: Aprovisionamiento",
+   "description": "",
+   "durationMinutes": 24
+  },
+  {
+   "id": "mod24-c3",
+   "number": 3,
+   "title": "Caso Integrador: Consultas SQL",
+   "description": "",
+   "durationMinutes": 15
+  }
  ]
 }

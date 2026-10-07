@@ -38,7 +38,7 @@ export default function CapacitacionPage() {
           <strong className="text-slate-900 dark:text-white font-semibold">Currículo Oficial de la Escuela:</strong>{' '}
           Formación de élite en el ecosistema empresarial de Ecuador dividida en <strong>5 Tracks Maestros</strong>:{' '}
           <strong>SAP Business One</strong> (Finanzas NIIF, Order-to-Cash, MRP),{' '}
-          <strong>Localización SRI</strong> (Facturación electrónica XML, retenciones 312/343/332/344, ATS),{' '}
+          <strong>Localización SRI</strong> (Facturación electrónica XML, retenciones de renta e IVA vigentes en 2026, ATS),{' '}
           <strong> Nómina HCM</strong> (biométricos, horas extras con base 240, IESS 9.45%/12.15%, SBU 2026 $482, finiquitos SUT),
           <strong> Gestión Humana</strong> (Evaluación 360°, Nine-Box, ATS de selección) y{' '}
           <strong>Verticales de Exportación</strong> (bananera con trazabilidad GlobalGAP, camaronera con costeo por piscina, manufactura Beas y WMS Produmex).

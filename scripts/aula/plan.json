@@ -1,5 +1,5 @@
 {
-  "_nota": "Plan de estudios de Mi Aula. Los IDs de mod-1..mod-3 se conservan (el progreso de los estudiantes depende de ellos). 'manuales' = carpetas de public/Capacitacion SAP usadas como fuente técnica.",
+  "_nota": "Plan de estudios de Mi Aula. Los IDs (mod-N, modN-cM) son claves estables: progreso, láminas y clases publicadas dependen de ellos; el número visible y el orden pedagógico se definen en src/lib/curriculum-data.ts. 'manuales' = carpetas de public/Capacitacion SAP; 'fuente:<nombre>' = documento investigado en scripts/aula/fuentes/ (normativa SRI: revisar cada año). Flujo: generar_clases.py (rechaza clases que no cumplen validar_normativa.py) → validar_normativa.py → publicar_clases.py (conserva lo ya publicado) → revisar_aula.py.",
   "modulos": [
     { "id": "mod-1", "titulo": "Fundamentos Operativos y Navegación", "clases": [
       { "id": "mod1-c1", "titulo": "Arquitectura y Cockpit Fiori", "manuales": ["1.1_Introduccion_a_SAP_Business_One", "1.2_Primeros_Pasos_en_SAP_Business_One"] },
@@ -73,6 +73,70 @@
       { "id": "mod12-c2", "titulo": "Alertas y Procesos de Aprobación", "manuales": ["22.2_Sistema_de_Alertas_Automaticas", "22.3_Procesos_de_Aprobacion"] },
       { "id": "mod12-c3", "titulo": "Campos y Valores Definidos por el Usuario", "manuales": ["22.4_Campos_Definidos_por_el_Usuario_UDF", "22.5_Valores_Definidos_por_el_Usuario_UD"] },
       { "id": "mod12-c4", "titulo": "Migración de Datos con DTW", "manuales": ["20.6_Importacion_de_Datos_desde_Excel", "20.7_Uso_del_Data_Transfer_Workbench_DTW"] }
+    ]},
+    { "id": "mod-13", "titulo": "Compras Avanzadas", "clases": [
+      { "id": "mod13-c1", "titulo": "Solicitudes de Compra y Cotizaciones", "manuales": ["3.3_Solicitudes_de_Compra_y_Cotizacione"] },
+      { "id": "mod13-c2", "titulo": "Compras de Servicios", "manuales": ["3.4_Compras_de_Servicios"] },
+      { "id": "mod13-c3", "titulo": "Devoluciones y Notas de Crédito de Proveedor", "manuales": ["3.6_Devoluciones_y_Notas_de_Credito_Com"] }
+    ]},
+    { "id": "mod-14", "titulo": "Unidades de Medida y Valoración de Inventario", "clases": [
+      { "id": "mod14-c1", "titulo": "Unidades de Medida por Peso y Volumen", "manuales": ["4.5_Unidades_de_Medida_Gestion_por_Peso"] },
+      { "id": "mod14-c2", "titulo": "Unidades de Empaquetado", "manuales": ["4.6_Unidades_de_Medida_Empaquetado"] },
+      { "id": "mod14-c3", "titulo": "Métodos de Valoración de Inventario", "manuales": ["4.7_Metodos_de_Valoracion_de_Inventario"] },
+      { "id": "mod14-c4", "titulo": "Ajuste de Costos de Inventario", "manuales": ["18.3_Ajuste_de_Costos_de_Inventario"] }
+    ]},
+    { "id": "mod-15", "titulo": "Operación de Almacén e Inventario Físico", "clases": [
+      { "id": "mod15-c1", "titulo": "Operación Diaria con Ubicaciones", "manuales": ["7.3_Ubicaciones_de_Almacen_Proceso_Oper"] },
+      { "id": "mod15-c2", "titulo": "Reglas y Gestión de Ubicaciones", "manuales": ["7.4_Ubicaciones_de_Almacen_Gestion_por_"] },
+      { "id": "mod15-c3", "titulo": "Informes de Ubicaciones", "manuales": ["7.5_Ubicaciones_de_Almacen_Informes"] },
+      { "id": "mod15-c4", "titulo": "Inventario Físico: Conteo y Ajuste", "manuales": ["5.5_Inventario_Fisico_Conteo_y_Ajuste"] }
+    ]},
+    { "id": "mod-16", "titulo": "Picking, Packing y Despacho", "clases": [
+      { "id": "mod16-c1", "titulo": "Picking y Packing para Producción", "manuales": ["6.1_Proceso_de_Picking_y_Packing_Produc"] },
+      { "id": "mod16-c2", "titulo": "Picking y Packing para Transferencias", "manuales": ["6.2_Proceso_de_Picking_y_Packing_Transf"] }
+    ]},
+    { "id": "mod-17", "titulo": "Monedas, Cierre e Informes Financieros", "clases": [
+      { "id": "mod17-c1", "titulo": "Monedas y Tipos de Cambio", "manuales": ["13.2_Configuracion_de_Monedas_y_Tipos_de"] },
+      { "id": "mod17-c2", "titulo": "Determinación Avanzada de Cuentas", "manuales": ["13.6_Cuentas_de_Mayor_por_Defecto_Modo_A", "14.1_Conceptos_Financieros_Basicos"] },
+      { "id": "mod17-c3", "titulo": "Documentos Preliminares de Asiento", "manuales": ["15.3_Documentos_Preliminares_Vouchers"] },
+      { "id": "mod17-c4", "titulo": "Informes Financieros y Flujo de Caja", "manuales": ["17.1_Informes_Financieros_del_Sistema", "17.2_Informe_de_Flujo_de_Caja"] }
+    ]},
+    { "id": "mod-18", "titulo": "Costos, Dimensiones y Presupuestos", "clases": [
+      { "id": "mod18-c1", "titulo": "Contabilidad de Costos", "manuales": ["18.1_Contabilidad_de_Costos"] },
+      { "id": "mod18-c2", "titulo": "Centros de Costo y Dimensiones", "manuales": ["18.2_Centros_de_Costo_Multiples_Dimensio"] },
+      { "id": "mod18-c3", "titulo": "Gestión de Presupuestos", "manuales": ["18.4_Gestion_de_Presupuestos"] }
+    ]},
+    { "id": "mod-19", "titulo": "Facturación Electrónica y Retenciones SRI 2026", "clases": [
+      { "id": "mod19-c1", "titulo": "Facturación Electrónica 2026: Transmisión y Anulación", "manuales": ["fuente:sri_2026"] },
+      { "id": "mod19-c2", "titulo": "Retención en la Fuente del Impuesto a la Renta", "manuales": ["fuente:sri_2026"] },
+      { "id": "mod19-c3", "titulo": "Retención del IVA y Comprobante de Retención", "manuales": ["fuente:sri_2026"] },
+      { "id": "mod19-c4", "titulo": "Retenciones en la Factura de Proveedores de SAP B1", "manuales": ["fuente:sri_2026", "3.2_Compras_Articulos_y_Documentos"] }
+    ]},
+    { "id": "mod-20", "titulo": "Recursos, Capacidad y Rutas de Producción", "clases": [
+      { "id": "mod20-c1", "titulo": "Recursos de Producción", "manuales": ["10.2_Recursos_de_Produccion"] },
+      { "id": "mod20-c2", "titulo": "Capacidad de Recursos", "manuales": ["10.3_Capacidad_de_Recursos"] },
+      { "id": "mod20-c3", "titulo": "Rutas de Producción (Routing)", "manuales": ["10.7_Rutas_de_Produccion_Routing"] }
+    ]},
+    { "id": "mod-21", "titulo": "Administración del Sistema", "clases": [
+      { "id": "mod21-c1", "titulo": "Numeración de Documentos y Datos Maestros", "manuales": ["21.4_Numeracion_de_Documentos_y_Datos_Ma"] },
+      { "id": "mod21-c2", "titulo": "Diseños de Impresión", "manuales": ["21.6_Disenos_de_Impresion_Print_Layouts"] },
+      { "id": "mod21-c3", "titulo": "Correo Electrónico y Plantillas de Interfaz", "manuales": ["21.7_Preferencias_de_Correo_Electronico", "21.5_Plantillas_de_Configuracion_de_Inte"] },
+      { "id": "mod21-c4", "titulo": "Propiedad de los Datos y Soporte", "manuales": ["21.3_Propiedad_de_los_Datos_Data_Ownersh", "23.1_Herramientas_de_Soporte_y_Diagnosti"] }
+    ]},
+    { "id": "mod-22", "titulo": "Extensibilidad y Analítica", "clases": [
+      { "id": "mod22-c1", "titulo": "Tablas Definidas por el Usuario", "manuales": ["22.6_Tablas_Definidas_por_el_Usuario_UDT"] },
+      { "id": "mod22-c2", "titulo": "Introducción a SAP Analytics", "manuales": ["22.7_Introduccion_a_SAP_Analytics"] }
+    ]},
+    { "id": "mod-23", "titulo": "Implementación, Saldos Iniciales y Go-Live", "clases": [
+      { "id": "mod23-c1", "titulo": "Metodología de Implementación", "manuales": ["20.1_Metodologia_de_Implementacion_SAP"] },
+      { "id": "mod23-c2", "titulo": "Asistente Express de Configuración", "manuales": ["20.2_Asistente_Express_de_Configuracion"] },
+      { "id": "mod23-c3", "titulo": "Carga de Saldos Iniciales", "manuales": ["20.4_Carga_de_Saldos_Iniciales"] },
+      { "id": "mod23-c4", "titulo": "Copia Rápida e Importación de Documentos", "manuales": ["20.5_Copia_Rapida_entre_Companias_Quick_", "20.8_Importacion_de_Documentos_con_DTW"] }
+    ]},
+    { "id": "mod-24", "titulo": "Proyecto Integrador", "clases": [
+      { "id": "mod24-c1", "titulo": "Caso Integrador: Puesta en Marcha", "manuales": ["23.2_Caso_Practico_Introduccion", "23.3_Caso_Practico_Introduccion_Solucion"] },
+      { "id": "mod24-c2", "titulo": "Caso Integrador: Aprovisionamiento", "manuales": ["23.4_Caso_Practico_Proceso_de_Aprovision", "23.5_Caso_Practico_Aprovisionamiento_Sol"] },
+      { "id": "mod24-c3", "titulo": "Caso Integrador: Consultas SQL", "manuales": ["23.7_Practica_de_Consultas_SQL_Solucione", "23.6_Practica_de_Consultas_SQL"] }
     ]}
   ]
 }

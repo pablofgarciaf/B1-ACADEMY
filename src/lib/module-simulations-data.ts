@@ -322,7 +322,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "label": "Sujeto a Retención SRI",
-        "value": "SI (Códigos 312 Bienes / 344 Servicios)",
+        "value": "SI (Códigos 312 Bienes 2% / 304 Servicios 3%)",
         "helperExplanation": "Asocia la tabla de retenciones impositivas para retener en compras.",
         "isMandatory": true
       },
@@ -569,8 +569,8 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "label": "Código Retención Renta",
-        "value": "312 - Compra de Bienes Muebles (1.75%)",
-        "helperExplanation": "Retención en la fuente del impuesto a la renta obligatoria por ley.",
+        "value": "312 - Compra de Bienes Muebles (2%)",
+        "helperExplanation": "Retención en la fuente del impuesto a la renta obligatoria por ley (2% desde el 1 de marzo de 2026, Resolución NAC-DGERCGC26-00000009).",
         "isMandatory": true
       },
       {
@@ -586,10 +586,10 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Escenario: Compra de inventario por $10,000.00 a sociedad nacional.",
         "Paso 1: Subtotal Compra = $10,000.00.",
         "Paso 2: IVA 15% = $10,000.00 × 0.15 = $1,500.00.",
-        "Paso 3: Retención Renta 1.75% (Cód. 312) = $10,000.00 × 0.0175 = $175.00.",
+        "Paso 3: Retención Renta 2% (Cód. 312) = $10,000.00 × 0.02 = $200.00.",
         "Paso 4: Retención IVA 30% = $1,500.00 × 0.30 = $450.00.",
-        "Paso 5: Total Retenido que no se paga al proveedor = $175.00 + $450.00 = $625.00.",
-        "Paso 6: Valor Neto a Pagar al Proveedor = ($10,000 + $1,500) - $625.00 = $10,875.00."
+        "Paso 5: Total Retenido que no se paga al proveedor = $200.00 + $450.00 = $650.00.",
+        "Paso 6: Valor Neto a Pagar al Proveedor = ($10,000 + $1,500) - $650.00 = $10,850.00."
       ],
       "accountingJournalEntry": [
         {
@@ -602,7 +602,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         },
         {
           "account": "2.1.04.01 Retenciones Renta por Pagar SRI (Cód 312)",
-          "haber": 175
+          "haber": 200
         },
         {
           "account": "2.1.04.02 Retenciones IVA por Pagar SRI (30%)",
@@ -610,14 +610,14 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         },
         {
           "account": "2.1.01.01 Proveedores Locales por Pagar (Líquido)",
-          "haber": 10875
+          "haber": 10850
         }
       ]
     },
     "practiceLab": {
       "title": "Laboratorio 05: Conciliación de GRPO contra Factura A/P y Liquidación de Retención",
-      "mission": "Carga una factura de compras por $10,000, aplica retención código 312 (1.75%) y retención de IVA del 30% generando el comprobante de retención tipo 07.",
-      "expectedResult": "El sistema debe arrojar saldo a pagar al proveedor de $10,875.00 y dejar las retenciones pendientes para el Formulario 103."
+      "mission": "Carga una factura de compras por $10,000, aplica retención código 312 (2%) y retención de IVA del 30% generando el comprobante de retención tipo 07.",
+      "expectedResult": "El sistema debe arrojar saldo a pagar al proveedor de $10,850.00 y dejar las retenciones pendientes para el Formulario 103."
     },
     "quickCheckQuestions": [
       {
@@ -1139,10 +1139,10 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "screenSummary": "Al registrar una factura de compras de un proveedor en Ecuador, SAP B1 determina qué retención de Impuesto a la Renta y de IVA se debe descontar. El dinero retenido no se le paga al proveedor, sino que se entrega al SRI al mes siguiente mediante el Formulario 103.",
     "classTranscript": {
       "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
-      "summary": "Aprende a configurar las tablas de retención en la fuente de SAP B1. Revisaremos los porcentajes vigentes de Impuesto a la Renta (códigos 312, 343, 344) y los porcentajes de IVA (30%, 70%, 100%) según el régimen tributario del emisor y receptor.",
+      "summary": "Aprende a configurar las tablas de retención en la fuente de SAP B1. Revisaremos los porcentajes de Impuesto a la Renta vigentes desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) y los porcentajes de IVA (30%, 70%, 100%) según el régimen tributario del emisor y receptor.",
       "keyPoints": [
-        "Código 312 aplica a compras de bienes muebles (1.75%).",
-        "Código 344 aplica a servicios en general (2.75%).",
+        "Código 312 aplica a compras de bienes muebles (2% desde marzo 2026).",
+        "Código 304 aplica a servicios con predominio de mano de obra (3%); todo pago sin porcentaje específico también retiene el 3%.",
         "Si compras a un contribuyente RIMPE Negocio Popular, no se aplica retención de renta ni de IVA."
       ],
       "deepDiveText": "La determinación de retenciones en SAP B1 se apoya en la tabla OWHT (Withholding Tax). Cada código de retención debe tener vinculado su porcentaje, la cuenta contable de pasivo donde se acredita el valor y el código oficial del Anexo Transaccional Simplificado (ATS)."
@@ -1156,14 +1156,14 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "label": "Código Retención Bienes",
-        "value": "312 - Transferencia de Bienes Muebles (1.75%)",
+        "value": "312 - Transferencia de Bienes Muebles (2%)",
         "helperExplanation": "Aplica a compras de productos físicos, materias primas y mercadería.",
         "isMandatory": true
       },
       {
         "label": "Código Retención Servicios",
-        "value": "344 - Servicios en General (2.75%)",
-        "helperExplanation": "Aplica a mano de obra, mantenimiento, consultorías estándar y transporte.",
+        "value": "304 - Servicios con Predominio de Mano de Obra (3%)",
+        "helperExplanation": "Aplica a mano de obra y mantenimiento. Los servicios profesionales de sociedades retienen 5% y los honorarios de personas naturales 10%.",
         "isMandatory": true
       },
       {
@@ -1182,16 +1182,16 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "workedExample": {
       "title": "Caso Práctico Resuelto: Factura Mixta de Insumos y Mantenimiento",
       "stepByStepMath": [
-        "Escenario: Compras $4,000 en insumos de cómputo (Bienes) y $1,500 en soporte técnico (Servicios). Proveedor es Régimen General.",
+        "Escenario: Compras $4,000 en insumos de cómputo (Bienes) y $1,500 en mantenimiento de equipos (servicio con predominio de mano de obra). Proveedor es Régimen General.",
         "Paso 1: Subtotal Compra = $4,000.00 (Bienes) + $1,500.00 (Servicios) = $5,500.00.",
         "Paso 2: IVA 15% Total = $5,500.00 × 0.15 = $825.00 ($600 de bienes + $225 de servicios).",
-        "Paso 3: Retención Renta Bienes Cód. 312 (1.75%) = $4,000.00 × 0.0175 = $70.00.",
-        "Paso 4: Retención Renta Servicios Cód. 344 (2.75%) = $1,500.00 × 0.0275 = $41.25.",
+        "Paso 3: Retención Renta Bienes Cód. 312 (2%) = $4,000.00 × 0.02 = $80.00.",
+        "Paso 4: Retención Renta Servicios Cód. 304 (3%) = $1,500.00 × 0.03 = $45.00.",
         "Paso 5: Retención IVA Bienes 30% = $600.00 × 0.30 = $180.00.",
         "Paso 6: Retención IVA Servicios 70% = $225.00 × 0.70 = $157.50.",
-        "Paso 7: Total Retenido que NO pagas al proveedor = $70.00 + $41.25 + $180.00 + $157.50 = $448.75.",
+        "Paso 7: Total Retenido que NO pagas al proveedor = $80.00 + $45.00 + $180.00 + $157.50 = $462.50.",
         "Paso 8: Total Factura con IVA = $5,500.00 + $825.00 = $6,325.00.",
-        "Paso 9: Valor Neto a Transferir al Proveedor = $6,325.00 - $448.75 = $5,876.25."
+        "Paso 9: Valor Neto a Transferir al Proveedor = $6,325.00 - $462.50 = $5,862.50."
       ],
       "accountingJournalEntry": [
         {
@@ -1207,8 +1207,8 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "debe": 825
         },
         {
-          "account": "2.1.04.01 Retención en la Fuente Renta por Pagar (312 + 344)",
-          "haber": 111.25
+          "account": "2.1.04.01 Retención en la Fuente Renta por Pagar (312 + 304)",
+          "haber": 125
         },
         {
           "account": "2.1.04.02 Retención en la Fuente IVA por Pagar (30% + 70%)",
@@ -1216,14 +1216,14 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         },
         {
           "account": "2.1.01.01 Proveedores Locales por Pagar (Líquido)",
-          "haber": 5876.25
+          "haber": 5862.5
         }
       ]
     },
     "practiceLab": {
       "title": "Laboratorio 10: Parametrización de Código de Retención en OWHT",
-      "mission": "Crea el código de retención 344 en la tabla de retenciones de SAP B1, asigna la tasa del 2.75% y enlaza la cuenta de pasivo 2.1.04.01.",
-      "expectedResult": "Al ingresar una factura de servicios de $1,000, el sistema debe retener automáticamente $27.50 de renta."
+      "mission": "Actualiza el código de retención 304 en la tabla de retenciones de SAP B1 a la tasa vigente del 3% (Resolución NAC-DGERCGC26-00000009) y enlaza la cuenta de pasivo 2.1.04.01.",
+      "expectedResult": "Al ingresar una factura de servicios de mano de obra por $1,000, el sistema debe retener automáticamente $30.00 de renta."
     },
     "quickCheckQuestions": [
       {
@@ -1232,11 +1232,11 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "options": [
           "1.00%",
           "1.75%",
-          "2.75%",
-          "8.00%"
+          "2.00%",
+          "3.00%"
         ],
-        "correctIndex": 1,
-        "explanation": "El código 312 para transferencia de bienes muebles corporales fija una retención del 1.75% en Ecuador."
+        "correctIndex": 2,
+        "explanation": "Desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) el código 312 retiene el 2% sobre bienes muebles corporales; antes era 1.75%."
       },
       {
         "id": 2,
@@ -1695,7 +1695,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "practiceLab": {
       "title": "Laboratorio 14: Configuración de Socio de Negocios RIMPE Emprendedor",
       "mission": "Crea un proveedor RIMPE Emprendedor en OCRD, efectúa una compra de $2,000 y aplica la retención exclusiva del 1% en la fuente.",
-      "expectedResult": "El sistema debe liquidar exactamente $20.00 de retención de renta en lugar del 1.75% o 2.75% habitual."
+      "expectedResult": "El sistema debe liquidar exactamente $20.00 de retención de renta en lugar del 2% (bienes) o 3% (servicios) del régimen general."
     },
     "quickCheckQuestions": [
       {
@@ -1704,11 +1704,11 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "options": [
           "1.00%",
           "1.75%",
-          "2.75%",
+          "2.00%",
           "10.00%"
         ],
         "correctIndex": 0,
-        "explanation": "La normativa vigente del SRI fija una tarifa reducida de retención en la fuente del 1% para sujetos pasivos calificados como RIMPE Emprendedor."
+        "explanation": "La Resolución NAC-DGERCGC26-00000009 (vigente desde marzo 2026) fija una retención en la fuente del 1% en compras a contribuyentes RIMPE Emprendedor (0% a Negocios Populares)."
       },
       {
         "id": 2,
@@ -3296,15 +3296,15 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Cuál es el porcentaje de retención en la fuente de Impuesto a la Renta Único aplicable a los productores bananeros en Ecuador?",
+        "question": "¿Qué norma determina la retención en la fuente aplicable a las compras locales de banano a productores en Ecuador?",
         "options": [
-          "1.50%",
-          "2.75%",
-          "5.00%",
-          "10.00%"
+          "La tabla general de la Resolución NAC-DGERCGC26-00000009 (2% como bienes muebles).",
+          "La Ley de Régimen Tributario Interno y su Reglamento, bajo el régimen de Impuesto a la Renta Único del sector bananero.",
+          "Un acuerdo privado entre exportador y productor.",
+          "No existe retención para el banano."
         ],
-        "correctIndex": 0,
-        "explanation": "La Ley de Régimen Tributario establece un régimen de impuesto a la renta único para el banano con retención en la fuente del 1.50%."
+        "correctIndex": 1,
+        "explanation": "La compra local de banano a productores tiene su propio porcentaje de retención, fijado por la Ley de Régimen Tributario Interno y su Reglamento (Impuesto a la Renta Único, con tarifas progresivas según el volumen). La tabla general de 2026 lo remite expresamente a esa norma. El régimen único bananero tiene vigencia hasta diciembre de 2026: hay que revisar su renovación."
       },
       {
         "id": 3,

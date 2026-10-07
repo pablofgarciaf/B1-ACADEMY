@@ -65,7 +65,13 @@ def step_guide(practica, narracion=""):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--only", nargs="*", help="Rehace solo estas clases aunque ya estén publicadas")
     a = ap.parse_args()
+    # Lo ya publicado se conserva tal cual: una clase publicada solo se reemplaza si se pide con --only.
+    # (Antes el archivo se reconstruía solo desde scratch/ y se perdían las clases sin borrador.)
+    previas = json.loads((CONTENIDO / "lecciones.json").read_text(encoding="utf-8")) if (CONTENIDO / "lecciones.json").exists() else {}
+    temario_previo = json.loads((CONTENIDO / "clases.json").read_text(encoding="utf-8")) if (CONTENIDO / "clases.json").exists() else {}
+    duracion_previa = {c["id"]: c["durationMinutes"] for cs in temario_previo.values() for c in cs}
     lecciones, temario, faltan = {}, {}, []
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
@@ -74,6 +80,11 @@ def main():
             temario[modulo["id"]] = []
             for n, clase in enumerate(modulo["clases"], 1):
                 fuente = ORIGEN / clase["id"] / "clase.json"
+                if clase["id"] in previas and not (a.only and clase["id"] in a.only):
+                    lecciones[clase["id"]] = previas[clase["id"]]
+                    temario[modulo["id"]].append({"id": clase["id"], "number": n, "title": clase["titulo"], "description": "",
+                                                  "durationMinutes": duracion_previa.get(clase["id"], 20)})
+                    continue
                 if not fuente.exists():
                     faltan.append(clase["id"])
                     continue
@@ -84,7 +95,8 @@ def main():
                 imagenes, sync, palabras = [], [], 0
                 for i, L in enumerate(lam, 1):
                     archivo = carpeta / f"Slide_{i:03d}.webp"
-                    if a.force or not archivo.exists():
+                    # Una clase rehecha con --only también rehace sus láminas: si no, quedaría la imagen vieja con la narración nueva.
+                    if a.force or not archivo.exists() or (a.only and clase["id"] in a.only):
                         page.set_content(html_lamina(L, {"n": i, "total": len(lam), "manual": modulo["titulo"]}))
                         Image.open(io.BytesIO(page.screenshot(type="png"))).convert("RGB").save(archivo, "WEBP", quality=86, method=6)
                     imagenes.append(f"/aula/{clase['id']}/{archivo.name}")
@@ -92,6 +104,10 @@ def main():
                             "step_guide": step_guide(L["practica"], L.get("narracion", "")) if isinstance(L.get("practica"), dict) else None}
                     sync.append(item)
                     palabras += len(L["narracion"].split())
+                # Si la clase rehecha tiene menos láminas que antes, se borran las sobrantes de la versión anterior.
+                for sobrante in carpeta.glob("Slide_*.webp"):
+                    if sobrante.name not in {Path(u).name for u in imagenes}:
+                        sobrante.unlink()
                 practicas = sum(1 for s in sync if s["step_guide"])
                 lecciones[clase["id"]] = {"images": imagenes, "syncData": sync, "quizQuestions": []}
                 temario[modulo["id"]].append({

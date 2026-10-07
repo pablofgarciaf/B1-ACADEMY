@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useAuth } from '@/context/AuthContext';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
+import type { IntentoPractica } from '@/lib/practice-check';
 import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
 import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2 } from 'lucide-react';
 
@@ -76,6 +77,9 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [phase, setPhase] = useState<'narrating' | 'simulator' | 'mission_done'>('narrating');
   const [completedClasses, setCompletedClasses] = useState<Record<string, boolean>>({});
+  const [passedPractices, setPassedPractices] = useState<string[]>([]);
+  const [requiredPractices, setRequiredPractices] = useState<string[]>([]);
+  const [practiceNotice, setPracticeNotice] = useState<string | null>(null);
 
   // Sidebar
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -192,10 +196,25 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // =============================================
   // Mission complete callback from simulator
   // =============================================
-  const handleMissionComplete = useCallback(() => {
+  const handleMissionComplete = useCallback((intento?: IntentoPractica) => {
     stopSpeaking();
     setPhase('mission_done');
-  }, [stopSpeaking]);
+    if (!intento || !currentUser || !moduleInfo) return;
+    // La práctica se califica en el servidor: solo así cuenta para el certificado del módulo.
+    const clave = `${activeClassId}#${currentSlideIndex + 1}`;
+    void currentUser.getIdToken()
+      .then(token => fetch('/api/practice', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ moduleId: moduleInfo.id, classId: activeClassId, slideIndex: currentSlideIndex + 1, ...intento }),
+      }))
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('practice-save')))
+      .then((res: { aprobada: boolean }) => {
+        if (res.aprobada) setPassedPractices(prev => (prev.includes(clave) ? prev : [...prev, clave]));
+        setPracticeNotice(res.aprobada ? null : 'Práctica completada, pero no cumple los requisitos del certificado. Repítela para que se registre.');
+      })
+      .catch(() => setPracticeNotice('No se pudo registrar la práctica para tu certificado. Repítela cuando tengas conexión.'));
+  }, [stopSpeaking, currentUser, moduleInfo, activeClassId, currentSlideIndex]);
 
   // =============================================
   // Progress & lessons
@@ -205,9 +224,11 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       currentUser.getIdToken()
         .then(token => fetch(`/api/progress?moduleId=${encodeURIComponent(moduleInfo.id)}`, { headers: { Authorization: `Bearer ${token}` } }))
         .then(r => r.ok ? r.json() : { completedClasses: [] })
-        .then((data: { completedClasses: string[] }) =>
-          setCompletedClasses(Object.fromEntries(data.completedClasses.map(id => [id, true])))
-        )
+        .then((data: { completedClasses: string[]; passedPractices?: string[]; requiredPractices?: string[] }) => {
+          setCompletedClasses(Object.fromEntries(data.completedClasses.map(id => [id, true])));
+          setPassedPractices(data.passedPractices ?? []);
+          setRequiredPractices(data.requiredPractices ?? []);
+        })
         .catch(() => setCompletedClasses({}));
     }
   }, [moduleInfo, currentUser]);
@@ -220,6 +241,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     setCurrentSlideIndex(0);
     setPhase('narrating');
     setProgressError(null);
+    setPracticeNotice(null);
     setLessonSaved(false);
     setActiveClassId(classId);
     if (!window.matchMedia('(min-width: 1024px)').matches) setSidebarOpen(false);
@@ -446,9 +468,18 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   <span className="text-[10px] bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded-md font-medium">¡Listo!</span>
                 )}
               </div>
+              {moduleInfo?.certificateTitle && (
+                <p className="text-[11px] font-semibold text-amber-200 leading-snug mb-1">{moduleInfo.certificateTitle}</p>
+              )}
               <p className="text-[10px] text-gray-400 leading-relaxed">
-                Completa todas las clases y aprueba la Evaluación con Tutor IA.
+                Completa todas las clases, aprueba las prácticas del simulador y la Evaluación con Tutor IA.
               </p>
+              {requiredPractices.length > 0 && (
+                <p className="mt-1 text-[10px] font-semibold text-blue-300">
+                  Prácticas aprobadas: {requiredPractices.filter(p => passedPractices.includes(p)).length} de {requiredPractices.length}
+                </p>
+              )}
+              {practiceNotice && <p className="mt-1 text-[10px] text-amber-300" role="status">{practiceNotice}</p>}
               <Link
                 href={`/mi-aula/${moduleId}/oral-exam`}
                 className={`mt-2 w-full flex items-center justify-center gap-1 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all ${completedCount >= totalLessons
@@ -521,6 +552,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
               <h3 className="text-xl font-bold text-white mb-1">¡Misión Completada!</h3>
               <p className="text-sm text-gray-400" role="status">{progressError || (lessonSaved ? (activeClassId === moduleClasses.at(-1)?.id ? 'Módulo terminado. Puedes acceder a la Evaluación .' : 'Clase guardada. Preparando la siguiente lección...') : 'Guardando tu progreso...')}</p>
               {progressError && <button onClick={() => { setProgressError(null); setRetrySave(value => value + 1); }} className="mt-4 rounded-lg bg-amber-500 px-4 py-2 text-slate-950 font-bold active:scale-95">Reintentar guardado</button>}
+              {practiceNotice && <p className="mt-3 max-w-md text-xs text-amber-300" role="status">{practiceNotice}</p>}
             </div>
 
           ) : phase === 'simulator' && currentStepGuide ? (

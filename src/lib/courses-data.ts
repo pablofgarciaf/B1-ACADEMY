@@ -96,7 +96,7 @@ export const TRAINING_TRACKS: TrainingTrack[] = [
     category: 'Tributación & Compliance',
     iconName: 'ShieldCheck',
     badge: 'SRI Ecuador 2026',
-    description: 'Ingeniería de parametrización tributaria en SAP Business One: emisión de comprobantes XML autorizados por el SRI, retenciones en la fuente (códigos 312, 343, 332, 344), generación del ATS y metadatos con UDFs.',
+    description: 'Ingeniería de parametrización tributaria en SAP Business One: emisión de comprobantes XML autorizados por el SRI, retenciones en la fuente según la tabla vigente desde marzo 2026 (Resolución NAC-DGERCGC26-00000009), generación del ATS y metadatos con UDFs.',
     targetAudience: 'Contadores Generales, Analistas de Impuestos, Auditores Fiscales y Consultores Funcionales SAP.',
     totalDurationHours: 48,
     submodulesCount: 6,
@@ -116,7 +116,7 @@ export const TRAINING_TRACKS: TrainingTrack[] = [
         title: 'Retenciones en la Fuente: Parametrización Códigos SRI',
         level: 'ARQ',
         durationHours: 10,
-        description: 'Mapeo maestro de códigos tributarios: 312 (bienes 1.75%), 343 (construcción 1%), 332 (honorarios 8%) y 344 (servicios 2.75%).',
+        description: 'Mapeo maestro de retenciones vigentes desde marzo 2026: 312 (bienes 2%), construcción (2%), 304 (mano de obra 3%), sociedades profesionales (5%) y 303 (honorarios 10%).',
         keyTopics: ['Tablas de retención', 'Cuentas de pasivo tributario', 'IVA presuntivo y retención', 'Fechas de vigencia'],
       },
       {
