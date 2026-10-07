@@ -14,7 +14,7 @@ export type PurchaseDocType = typeof purchaseTypes[number];
 export type DocType = SalesDocType | PurchaseDocType;
 export const costMethods = ['average', 'fifo', 'standard'] as const;
 export type CostingMethod = typeof costMethods[number];
-export const lineSchema = z.object({ itemCode: code, description: text.min(1), quantity: money.positive(), unit: text.min(1), price: money, discount: money.max(100), taxRate: z.union([z.literal(0), z.literal(5), z.literal(15)]), warehouseCode: code });
+export const lineSchema = z.object({ itemCode: code, description: text.min(1), quantity: money.positive(), unit: text.min(1), price: money, discount: money.max(100), taxRate: z.union([z.literal(0), z.literal(5), z.literal(8), z.literal(15)]), warehouseCode: code });
 export type DocumentLine = z.infer<typeof lineSchema>;
 const documentSchema = base.extend({ docNumber: code, date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).min(1).max(80), subtotal: money, tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
 export const salesSchema = documentSchema.extend({ docType: z.enum(salesTypes) });
@@ -65,7 +65,7 @@ export const sriDetailsSchema = z.object({
   plate: text.default(''), transportStart: date.or(z.literal('')).default(''), transportEnd: date.or(z.literal('')).default(''), route: text.default(''),
 });
 export const sriInputSchema = z.object({ docType: z.enum(sriTypes), date, partnerCode: code, sourceDocumentId: z.string(), series: z.string().regex(/^\d{3}-\d{3}$/), retentionLines: z.array(retentionLineSchema).max(30), ats: atsSchema, details: sriDetailsSchema.default({}) });
-export interface SRITaxDocument extends Entity, z.infer<typeof sriInputSchema> { claveAcceso: string; number: string; environment: '1'; emissionType: '1'; status: 'PENDIENTE' | 'AUTORIZADO'; authorizedAt: string; xml: string; totalRetention: number; simulated: true }
+export interface SRITaxDocument extends Entity, z.infer<typeof sriInputSchema> { claveAcceso: string; number: string; environment: '1'; emissionType: '1'; status: 'PENDIENTE' | 'AUTORIZADO' | 'DEVUELTA' | 'NO AUTORIZADO'; authorizedAt: string; xml: string; totalRetention: number; simulated: true; sriMessages?: { identificador: string; mensaje: string; tipo: 'ERROR' | 'ADVERTENCIA' | 'INFORMATIVO' }[]; journalEntryId?: string }
 export const bomInputSchema = z.object({ parentItemCode: code, type: z.enum(['production', 'template', 'sales']), components: z.array(z.object({ itemCode: code, quantity: money.positive(), unit: text.min(1), cost: money })).min(1).max(60) });
 export interface BillOfMaterials extends Entity, z.infer<typeof bomInputSchema> { bomCode: string; totalCost: number }
 export interface ProductionOrder extends Entity { orderNumber: string; date: string; dueDate: string; parentItemCode: string; quantity: number; warehouseCode: string; bomCode: string; components: BillOfMaterials['components']; status: 'planned' | 'released' | 'in_progress' | 'closed'; journalEntryId: string; actualCost: number }

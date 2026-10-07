@@ -6,17 +6,17 @@ import type { CompanyCommand } from '@/lib/company-commands';
 export const EMPRESA_CURSO = 'B1 Center';
 
 const CLIENTES = [
-  { name: 'Maxi-Teq', city: 'Quito', ruc: '1790011001001' },
-  { name: 'TechSolutions', city: 'Guayaquil', ruc: '0990022002001' },
-  { name: 'CompuMundo', city: 'Cuenca', ruc: '0190033003001' },
-  { name: 'ElectroHogar', city: 'Manta', ruc: '1390044004001' },
-  { name: 'Sistemas del Valle', city: 'Quito', ruc: '1790055005001' },
+  { name: 'Maxi-Teq', city: 'Quito', ruc: '1790011003001' },
+  { name: 'TechSolutions', city: 'Guayaquil', ruc: '0990022003001' },
+  { name: 'CompuMundo', city: 'Cuenca', ruc: '0190033007001' },
+  { name: 'ElectroHogar', city: 'Manta', ruc: '1390045006001' },
+  { name: 'Sistemas del Valle', city: 'Quito', ruc: '1790055000001' },
 ];
 const PROVEEDORES = [
-  { name: 'Dell Ecuador', city: 'Quito', ruc: '1790066006001' },
-  { name: 'HP Importaciones', city: 'Guayaquil', ruc: '0990077007001' },
-  { name: 'Lenovo Andina', city: 'Quito', ruc: '1790088008001' },
-  { name: 'Acer Distributors', city: 'Cuenca', ruc: '0190099009001' },
+  { name: 'Dell Ecuador', city: 'Quito', ruc: '1790066002001' },
+  { name: 'HP Importaciones', city: 'Guayaquil', ruc: '0990077002001' },
+  { name: 'Lenovo Andina', city: 'Quito', ruc: '1790088006001' },
+  { name: 'Acer Distributors', city: 'Cuenca', ruc: '0190099008001' },
 ];
 const ARTICULOS: [string, number, number][] = [
   ['Laptop Dell Latitude 3420', 650, 850], ['Laptop HP ProBook 440', 680, 890], ['Monitor Lenovo ThinkVision 24"', 120, 180],

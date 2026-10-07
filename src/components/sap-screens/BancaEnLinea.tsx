@@ -62,7 +62,8 @@ export default function BancaEnLinea() {
         </label>
         <button type="button" className={buttonClass} disabled={!facturasProveedor.length} onClick={() => descargar(`pagos_${banco}_${cuenta.accountNumber}.txt`, generarArchivoPagos(banco, cuenta.accountNumber, facturasProveedor.map(f => {
           const proveedor = c.data.vendors.find(v => v.cardCode === f.cardCode);
-          return { proveedor: proveedor?.name ?? f.cardCode, ruc: proveedor?.ruc ?? '', monto: f.total, referencia: f.docNumber ?? f.id };
+          // Se paga solo el saldo: la factura menos lo ya pagado y lo retenido (renta e IVA).
+          return { proveedor: proveedor?.name ?? f.cardCode, ruc: proveedor?.ruc ?? '', monto: Math.round((f.total - f.paidAmount) * 100) / 100, referencia: f.docNumber ?? f.id };
         })))}>
           3. Generar archivo de pagos a proveedores
         </button>

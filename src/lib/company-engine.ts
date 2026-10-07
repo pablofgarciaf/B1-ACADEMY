@@ -2,6 +2,7 @@ import { buildSRIXml } from './sri-xml';
 import { commandSchema, type CompanyCommand, type CommandData } from './company-commands';
 import { mensajeValidacion } from './zod-es';
 import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine, LandedCost } from './firestore-types';
+import { enviarAlSRI, opcionRetencion } from './sri-catalogo';
 import { financialSummary, moveStock, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
@@ -201,17 +202,42 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'sri': {
       const d = command.data; assert([...state.customers, ...state.vendors].some(p => p.cardCode === d.partnerCode), 'Beneficiario inexistente.');
       if (d.sourceDocumentId) assert([...state.salesOrders, ...state.purchaseOrders].some(doc => doc.id === d.sourceDocumentId && doc.cardCode === d.partnerCode), 'Documento de sustento incompatible.');
-      if (d.docType === '07') assert(d.retentionLines.length > 0 && d.retentionLines.every(l => l.base > 0), 'Añade retenciones con base positiva.');
+      if (d.docType === '07') {
+        assert(d.retentionLines.length > 0 && d.retentionLines.every(l => l.base > 0), 'Añade retenciones con base positiva.');
+        const sustento = state.purchaseOrders.find(doc => doc.id === d.sourceDocumentId); if (!sustento) throw new Error('Selecciona la factura del proveedor que vas a retener.');
+        // El porcentaje lo fija la tabla vigente del SRI, no la pantalla: así nadie puede retener un porcentaje inventado.
+        d.retentionLines = d.retentionLines.map(l => { const o = opcionRetencion(l.code); if (!o) throw new Error(`El código de retención ${l.code} no está vigente en 2026. Elige uno de la tabla actual.`); return { ...l, tax: o.tax, rate: o.rate }; });
+        const baseIR = round(d.retentionLines.filter(l => l.tax === 'IR').reduce((s, l) => s + l.base, 0)); const baseIVA = round(d.retentionLines.filter(l => l.tax === 'IVA').reduce((s, l) => s + l.base, 0));
+        assert(baseIR <= round(sustento.subtotal + 0.01), `La base de la retención de renta (${baseIR.toFixed(2)}) no puede superar el subtotal sin IVA de la factura (${sustento.subtotal.toFixed(2)}).`);
+        assert(baseIVA <= round(sustento.tax + 0.01), `La retención del IVA se calcula sobre el IVA de la factura (${sustento.tax.toFixed(2)}), no sobre la base imponible. Tu base de IVA es ${baseIVA.toFixed(2)}.`);
+      }
       const key = `SRI-${d.docType}-${d.series}`; const seq = (profile.sequences[key] ?? 0) + 1; profile.sequences[key] = seq;
       result = sriAccessKey(d.date, d.docType, profile.ruc, d.series, seq, String(seq).padStart(8, '0'));
       const number = `${d.series}-${String(seq).padStart(9, '0')}`;
       const totalRetention = round(d.retentionLines.reduce((s, l) => s + round(l.base * l.rate / 100), 0));
-      assert(!state.sriDocuments.some(doc => doc.docType === d.docType && doc.sourceDocumentId === d.sourceDocumentId), 'Este documento ya tiene un comprobante del mismo tipo.');
+      assert(!state.sriDocuments.some(doc => doc.docType === d.docType && doc.sourceDocumentId === d.sourceDocumentId && !['DEVUELTA', 'NO AUTORIZADO'].includes(doc.status)), 'Este documento ya tiene un comprobante del mismo tipo.');
       const xml = buildSRIXml(state, d, result, seq);
       state.sriDocuments.push({ ...meta(result), ...d, ats: { ...d.ats, secuencial: String(seq).padStart(9, '0'), autorizacion: result }, claveAcceso: result, number, environment: '1', emissionType: '1', status: 'PENDIENTE', authorizedAt: '', xml, totalRetention, simulated: true }); award('sri', 300, result, 'Primer comprobante SRI simulado'); break;
     }
     case 'authorize': {
-      const row = state.sriDocuments.find(d => d.id === command.data.id); if (!row) throw new Error('Comprobante inexistente.'); assert(Date.parse(now) - Date.parse(row.createdAt) >= 2000, 'La simulación tarda al menos dos segundos.'); row.status = 'AUTORIZADO'; row.authorizedAt = now; row.updatedAt = now; result = row.id; break;
+      const row = state.sriDocuments.find(d => d.id === command.data.id); if (!row) throw new Error('Comprobante inexistente.');
+      assert(row.status === 'PENDIENTE', row.status === 'AUTORIZADO' ? 'Este comprobante ya está autorizado.' : 'El SRI rechazó este comprobante: corrige el dato y genera uno nuevo.');
+      assert(Date.parse(now) - Date.parse(row.createdAt) >= 2000, 'La simulación tarda al menos dos segundos.');
+      const hoyEcuador = new Date(Date.parse(now) - 5 * 3600_000).toISOString().slice(0, 10); // Ecuador continental: UTC−5
+      const autorizadas = new Set(state.sriDocuments.filter(x => x.status === 'AUTORIZADO').map(x => x.claveAcceso));
+      const respuesta = enviarAlSRI(row.xml, autorizadas, hoyEcuador);
+      row.status = respuesta.estado; row.sriMessages = respuesta.mensajes; row.updatedAt = now; result = row.id;
+      if (respuesta.estado !== 'AUTORIZADO') break;
+      row.authorizedAt = now;
+      // La retención autorizada reduce lo que se le debe al proveedor y crea la obligación con el SRI.
+      if (row.docType === '07' && row.totalRetention > 0) {
+        const factura = state.purchaseOrders.find(doc => doc.id === row.sourceDocumentId); if (!factura) throw new Error('Factura de proveedor inexistente.');
+        assert(row.totalRetention <= round(factura.total - factura.paidAmount), `La retención (${row.totalRetention.toFixed(2)}) supera el saldo pendiente de la factura (${round(factura.total - factura.paidAmount).toFixed(2)}): ya se pagó de más al proveedor.`);
+        row.journalEntryId = post(row.date, `Retención ${row.number}`, 'sri', row.number, [ledgerLine('2.1.01', row.totalRetention), ledgerLine('2.1.03', 0, row.totalRetention)]);
+        factura.paidAmount = round(factura.paidAmount + row.totalRetention); factura.status = factura.paidAmount >= factura.total ? 'closed' : 'open'; factura.updatedAt = now;
+        const proveedor = state.vendors.find(v => v.cardCode === factura.cardCode); if (proveedor) { proveedor.balance = round(proveedor.balance - row.totalRetention); proveedor.updatedAt = now; }
+      }
+      break;
     }
     case 'bom': {
       const d = command.data; assert(state.items.some(i => i.itemCode === d.parentItemCode && i.type === 'inventory'), 'Producto padre inventariable requerido.'); assert(!state.boms.some(b => b.parentItemCode === d.parentItemCode && b.type === d.type), 'Ya existe una BOM de este tipo.');

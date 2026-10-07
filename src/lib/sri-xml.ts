@@ -2,6 +2,7 @@ import type { CommandData } from './company-commands';
 import type { CompanyState, DocumentLine, DocType } from './firestore-types';
 import { round, totals, xmlEscape } from './company-calculations';
 import { sriDetailsSchema } from './firestore-types';
+import { CODIGO_PORCENTAJE_IVA, opcionRetencion } from './sri-catalogo';
 
 export const sriLabels = { '01': 'Factura', '03': 'Liquidación de compra', '04': 'Nota de crédito', '05': 'Nota de débito', '06': 'Guía de remisión', '07': 'Comprobante de retención' } as const;
 export const sriSourceTypes: Record<CommandData<'sri'>['docType'], readonly DocType[]> = {
@@ -13,10 +14,11 @@ const group = (name: string, children: string): string => `<${name}>${children}<
 const amount = (value: number): string => round(value).toFixed(2);
 const fiscalDate = (value: string): string => value.split('-').reverse().join('/');
 const identificationType = (value: string): string => value.length === 13 ? '04' : '05';
-const rateCode = (rate: number): string => rate === 15 ? '4' : rate === 5 ? '5' : '0';
+const rateCode = (rate: number): string => CODIGO_PORCENTAJE_IVA[rate] ?? 'X';
+const TARIFAS = [0, 5, 8, 15];
 
 function taxes(lines: DocumentLine[], detail = false): string {
-  return [0, 5, 15].filter(rate => lines.some(l => l.taxRate === rate)).map(rate => {
+  return TARIFAS.filter(rate => lines.some(l => l.taxRate === rate)).map(rate => {
     const values = totals(lines.filter(l => l.taxRate === rate));
     return group(detail ? 'impuesto' : 'totalImpuesto', tag('codigo', '2') + tag('codigoPorcentaje', rateCode(rate)) +
       (detail ? tag('tarifa', amount(rate)) : '') + tag('baseImponible', amount(values.subtotal)) + tag('valor', amount(values.tax)));
@@ -78,9 +80,8 @@ export function buildSRIXml(state: CompanyState, data: CommandData<'sri'>, acces
       break;
     }
     case '07': {
-      const numericCodes: Record<string, string> = { 'IR-BIENES': '312', 'IR-SERVICIOS': '307', 'IR-ARRIENDO': '320', 'IR-HONORARIOS': '303', 'IVA-BIENES': '1', 'IVA-SERVICIOS': '2', 'IVA-HONORARIOS': '3' };
-      const retained = group('retenciones', data.retentionLines.map(l => group('retencion', tag('codigo', l.tax === 'IR' ? '1' : '2') + tag('codigoRetencion', numericCodes[l.code] ?? l.code) + tag('baseImponible', amount(l.base)) + tag('porcentajeRetener', amount(l.rate)) + tag('valorRetenido', amount(l.base * l.rate / 100)))).join(''));
-      const supportTax = group('impuestosDocSustento', [0, 5, 15].filter(rate => source.lines.some(l => l.taxRate === rate)).map(rate => { const values = totals(source.lines.filter(l => l.taxRate === rate)); return group('impuestoDocSustento', tag('codImpuestoDocSustento', '2') + tag('codigoPorcentaje', rateCode(rate)) + tag('baseImponible', amount(values.subtotal)) + tag('tarifa', amount(rate)) + tag('valorImpuesto', amount(values.tax))); }).join(''));
+      const retained = group('retenciones', data.retentionLines.map(l => group('retencion', tag('codigo', l.tax === 'IR' ? '1' : '2') + tag('codigoRetencion', opcionRetencion(l.code)?.codigo ?? l.code) + tag('baseImponible', amount(l.base)) + tag('porcentajeRetener', amount(l.rate)) + tag('valorRetenido', amount(round(l.base * l.rate / 100))))).join(''));
+      const supportTax = group('impuestosDocSustento', TARIFAS.filter(rate => source.lines.some(l => l.taxRate === rate)).map(rate => { const values = totals(source.lines.filter(l => l.taxRate === rate)); return group('impuestoDocSustento', tag('codImpuestoDocSustento', '2') + tag('codigoPorcentaje', rateCode(rate)) + tag('baseImponible', amount(values.subtotal)) + tag('tarifa', amount(rate)) + tag('valorImpuesto', amount(values.tax))); }).join(''));
       const ats = data.ats;
       content = group('infoCompRetencion', dateAddress + accounting + tag('tipoIdentificacionSujetoRetenido', identificationType(partner.ruc)) + tag('parteRel', ats.parteRel ? 'SI' : 'NO') + tag('razonSocialSujetoRetenido', partner.name) + tag('identificacionSujetoRetenido', partner.ruc) + tag('periodoFiscal', data.date.slice(5, 7) + '/' + data.date.slice(0, 4))) + group('docsSustento', group('docSustento', tag('codSustento', ats.sustentoTributario || '01') + tag('codDocSustento', source.docType === 'debit_note' ? '05' : '01') + tag('numDocSustento', d.supportNumber.replaceAll('-', '')) + tag('fechaEmisionDocSustento', fiscalDate(source.date)) + tag('fechaRegistroContable', fiscalDate(ats.fechaRegistro)) + tag('pagoLocExt', ats.pagoLocExt) + (ats.pagoLocExt === '02' ? tag('paisEfecPago', ats.paisEfecPago) + tag('aplicConvDobTrib', ats.aplicConvDobTrib ? 'SI' : 'NO') + tag('pagExtSujRetNorLeg', ats.pagExtSujRetNorLeg ? 'SI' : 'NO') : '') + subtotal + tag('importeTotal', amount(source.total)) + supportTax + retained + payments));
       break;
