@@ -114,14 +114,17 @@
       { "id": "mod19-c4", "titulo": "Retenciones en la Factura de Proveedores de SAP B1", "manuales": ["fuente:sri_2026", "3.2_Compras_Articulos_y_Documentos"] },
       { "id": "mod19-c5", "titulo": "Declaraciones Mensuales: Formularios 103, 104 y ATS", "manuales": ["fuente:sri_2026"], "rutas_regex": "factura de (proveedores|clientes)|informe|impuesto|retenci" },
       { "id": "mod19-c6", "titulo": "Nota de Débito, Guía de Remisión y Liquidación de Compra", "manuales": ["fuente:sri_2026"], "rutas_regex": "factura de (proveedores|clientes)|nota de cr[eé]dito|entrega|datos maestros (de socio|interlocutor)" },
-      { "id": "mod19-c7", "titulo": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa", "manuales": ["fuente:sri_2026"], "rutas_regex": "datos maestros (de socio|interlocutor)|factura de proveedores|detalles de la sociedad|inicializaci[oó]n del sistema" }
+      { "id": "mod19-c7", "titulo": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa", "manuales": ["fuente:sri_2026", "fuente:impuestos_avanzados_2026"], "rutas_regex": "datos maestros (de socio|interlocutor)|factura de proveedores|detalles de la sociedad|inicializaci[oó]n del sistema" },
+      { "id": "mod19-c9", "titulo": "ISD: Pagos al Exterior y Salida de Divisas", "manuales": ["fuente:impuestos_avanzados_2026"], "rutas_regex": "pagos (efectuados|recibidos)|factura de proveedores" },
+      { "id": "mod19-c10", "titulo": "Retenciones que te Hacen tus Clientes: Crédito Tributario", "manuales": ["fuente:impuestos_avanzados_2026"], "rutas_regex": "pagos recibidos|factura de clientes" }
     ]},
     { "id": "mod-25", "titulo": "Nómina y Talento Humano Ecuador 2026", "clases": [
       { "id": "mod25-c1", "titulo": "Ficha del Empleado y Costo Laboral 2026", "manuales": ["fuente:nomina_ec_2026"], "rutas_regex": "empleado|recursos humanos|asiento|pagos (efectuados|recibidos)|hoja de tiempo" },
       { "id": "mod25-c2", "titulo": "Rol de Pagos: Sueldo, Horas Extras y Descuentos", "manuales": ["fuente:nomina_ec_2026"], "rutas_regex": "empleado|recursos humanos|asiento|pagos (efectuados|recibidos)|hoja de tiempo" },
       { "id": "mod25-c3", "titulo": "Décimos, Fondos de Reserva y Vacaciones", "manuales": ["fuente:nomina_ec_2026"], "rutas_regex": "empleado|recursos humanos|asiento|pagos (efectuados|recibidos)|hoja de tiempo" },
       { "id": "mod25-c4", "titulo": "Contabilidad de la Nómina y Pago al IESS", "manuales": ["fuente:nomina_ec_2026"], "rutas_regex": "empleado|recursos humanos|asiento|pagos (efectuados|recibidos)|hoja de tiempo" },
-      { "id": "mod25-c5", "titulo": "Comisiones, Impuesto a la Renta de Empleados y Utilidades", "manuales": ["fuente:nomina_ec_2026"], "rutas_regex": "empleado|recursos humanos|asiento|pagos (efectuados|recibidos)|hoja de tiempo" }
+      { "id": "mod25-c5", "titulo": "Comisiones y Retención del Impuesto a la Renta del Empleado", "manuales": ["fuente:nomina_ec_2026"], "rutas_regex": "empleado|recursos humanos|asiento|pagos (efectuados|recibidos)|hoja de tiempo" },
+      { "id": "mod25-c6", "titulo": "Cierre del Año: Utilidades, Impuesto a la Renta y Anticipo", "manuales": ["fuente:impuestos_avanzados_2026", "fuente:nomina_ec_2026"], "rutas_regex": "asiento|pagos efectuados" }
     ]},
     { "id": "mod-20", "titulo": "Recursos, Capacidad y Rutas de Producción", "clases": [
       { "id": "mod20-c1", "titulo": "Recursos de Producción", "manuales": ["10.2_Recursos_de_Produccion"] },

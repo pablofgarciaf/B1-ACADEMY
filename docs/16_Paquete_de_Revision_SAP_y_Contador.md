@@ -89,3 +89,26 @@
 
 ## 7. Validación del estudiante
 La aprobación de una práctica la decide el servidor (`src/lib/practice-check.ts`, función `practicaAprobada`): compara lo que el estudiante hizo con la clase publicada y, en prácticas conectadas, comprueba que el registro exista en su empresa. La política exacta (¿cuenta si vio la solución? ¿cuántos intentos?) está pendiente de decisión del dueño del curso.
+
+## 8. Impuestos añadidos al simulador (7-oct-2026): qué confirmar
+
+Todo lo siguiente está implementado, probado con el motor (`npm run test:motor`) y explicado en clases. Los ⚠ son supuestos que **solo un contador puede cerrar**.
+
+| Tema | Qué hace el simulador | Fuente | ⚠ A confirmar |
+|---|---|---|---|
+| **Retención de IR al empleado** | Proyección simple: remuneración gravada del rol × 12 − IESS × 12; tabla 2026 (fracción básica 12.208, tramos 5 %–37 %); retención mensual = impuesto neto ÷ 12. Décimos, reserva y utilidades no son gravados. | Resolución NAC-DGERCGC25-00000043 | El método oficial del SRI recalcula cada mes con lo ya retenido y los meses restantes; el simulador usa una proyección constante. |
+| **Gastos personales** | Rebaja del 18 % sobre el menor valor entre los gastos proyectados y el tope por cargas (canasta 821,80 × 7, 9, 11, 14, 17 o 20). | Fuentes secundarias (factuplan) | **El mecanismo (rebaja del 18 % vs deducción de la base) y los topes.** Es el punto más delicado. |
+| **Utilidades 15 %** | 10 % por días trabajados + 5 % por cargas (sin cargas se reparte por días); tope 24 SBU (11.568) y el excedente va al IESS; asiento gasto 6.06 / utilidades por pagar 2.1.09. | Código del Trabajo art. 97 y 104 | Destino del excedente y reparto del 5 % cuando nadie tiene cargas. |
+| **Impuesto a la renta de la empresa** | Base = utilidad − participación de trabajadores; × 25 %; se restan anticipo pagado y retenciones recibidas; asiento 6.07 / 2.1.10. | LORTI | **Sin conciliación tributaria** (gastos no deducibles, ingresos exentos); tarifa del 22 % por reinversión no cubierta. |
+| **Anticipo** | 50 % del impuesto causado − retenciones, en dos cuotas (julio y septiembre). | Resolución NAC-DGERCGC20-00000071 (anticipo voluntario) | ¿Aplica además el anticipo mínimo obligatorio? |
+| **ISD** | 5 % sobre el pago al exterior; tarifas 2,5 % y 0 % elegibles; crédito tributario solo en importaciones de insumos y bienes de capital, si no es gasto. | Decreto Ejecutivo 2026 (tarifas diferenciadas) | El simulador no verifica si la empresa es beneficiaria de la tarifa reducida; no aplica exoneraciones. |
+| **ICE** | Perfumes 20 %, videojuegos 35 % (ad valorem), cigarrillos USD 0,16 por unidad. IVA sobre base + ICE; venta acredita ICE por pagar 2.1.11; compra lo capitaliza en el inventario. | Resoluciones NAC-DGERCGC25-00000040 a 00000043 | **Base imponible real** (PVP sugerido o ex fábrica + 25 %) y los **códigos del XML** (3610, 3620, 3011). Alcohol, cerveza y vehículos no están implementados. |
+| **RIMPE** | Proveedor Negocio Popular: sin IVA ni retención. Emprendedor: retención de renta 1 % (343). Empresa Negocio Popular: nota de venta sin IVA, sin factura electrónica. Emprendedor: leyenda en el XML. | Fuentes secundarias (siigo, otros) | La etiqueta XML `contribuyenteRimpe`; el tratamiento del IR de los RIMPE (no se calcula). |
+| **Retenciones recibidas** | Al cobrar una factura el cliente puede retener renta e IVA: quedan como crédito tributario (1.1.10 y 1.1.11) y el IVA recibido baja el Formulario 104. | LORTI | — |
+
+**Preguntas concretas adicionales para el contador**
+1. ¿La rebaja del 18 % sobre gastos personales (y no una deducción de la base) es el mecanismo vigente en 2026? ¿Los topes por cargas son correctos?
+2. ¿El simulador puede retener en proyección constante, o la clase debe enseñar el recálculo mensual?
+3. ¿El 5 % de utilidades por cargas, cuando nadie tiene cargas, se redistribuye por días como en el simulador?
+4. ¿Qué falta para considerar correcto el cierre del impuesto a la renta (conciliación tributaria)?
+5. ¿Los códigos de ICE del XML son 3610 (perfumes), 3620 (videojuegos) y 3011 (cigarrillos rubios)?

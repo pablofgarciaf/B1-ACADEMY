@@ -142,10 +142,16 @@ def importes(texto):
 
 
 def cifras_clase(clase):
-    """Clases de nómina: los únicos importes con decimales permitidos son los de su fuente (calculados por el motor)."""
-    if "fuente:nomina_ec_2026" not in clase.get("manuales", []):
+    """Clases de nómina e impuestos avanzados: los únicos importes con decimales permitidos son los de sus fuentes (calculados por el motor)."""
+    con_cifras = [m.split(":", 1)[1] for m in clase.get("manuales", []) if m in ("fuente:nomina_ec_2026", "fuente:impuestos_avanzados_2026")]
+    if not con_cifras:
         return None
-    return importes((FUENTES / "nomina_ec_2026.md").read_text(encoding="utf-8"))
+    permitidos = set()
+    if "fuente:sri_2026" in clase.get("manuales", []):
+        con_cifras.append("sri_2026")
+    for nombre in con_cifras:
+        permitidos |= importes((FUENTES / f"{nombre}.md").read_text(encoding="utf-8"))
+    return permitidos
 
 
 def valida(datos, permitidas=None, cifras=None):
@@ -199,7 +205,8 @@ def valida(datos, permitidas=None, cifras=None):
     if cifras is not None:
         # Cada cuenta de nómina solo admite los importes que el motor calcula para ella.
         POR_CUENTA = [
-            ("sueldos por pagar", "haber", {845.57, 516.79, 724.40, 1483.25, 543.30}),
+            ("sueldos por pagar", "haber", {845.57, 516.79, 724.40, 1463.08, 543.30}),
+            ("retenciones por pagar", "haber", {20.17, 22.00, 0.0}),
             ("iess por pagar", "haber", {206.55, 104.11, 172.80, 324.00, 129.60}),
             ("gasto de nomina", "debe", {1035.94, 562.34, 800.00, 1625.00, 600.00}),
             ("iess patronal", "debe", {116.18, 58.56, 97.20, 182.25, 72.90}),

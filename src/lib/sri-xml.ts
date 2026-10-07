@@ -2,7 +2,8 @@ import type { CommandData } from './company-commands';
 import type { CompanyState, DocumentLine, DocType } from './firestore-types';
 import { round, totals, xmlEscape } from './company-calculations';
 import { sriDetailsSchema } from './firestore-types';
-import { CODIGO_PORCENTAJE_IVA, opcionRetencion } from './sri-catalogo';
+import { CODIGO_PORCENTAJE_IVA, ICE_CATALOGO, opcionRetencion, type IceTipo } from './sri-catalogo';
+import type { Item } from './firestore-types';
 
 export const sriLabels = { '01': 'Factura', '03': 'Liquidación de compra', '04': 'Nota de crédito', '05': 'Nota de débito', '06': 'Guía de remisión', '07': 'Comprobante de retención' } as const;
 export const sriSourceTypes: Record<CommandData<'sri'>['docType'], readonly DocType[]> = {
@@ -17,19 +18,27 @@ const identificationType = (value: string): string => value.length === 13 ? '04'
 const rateCode = (rate: number): string => CODIGO_PORCENTAJE_IVA[rate] ?? 'X';
 const TARIFAS = [0, 5, 8, 15];
 
-function taxes(lines: DocumentLine[], detail = false): string {
-  return TARIFAS.filter(rate => lines.some(l => l.taxRate === rate)).map(rate => {
+function taxes(lines: DocumentLine[], items: Item[], detail = false): string {
+  const tipoIce = (l: DocumentLine): IceTipo => items.find(i => i.itemCode === l.itemCode)?.ice ?? 'none';
+  // ICE (código 3): un total por tipo de producto; el IVA se calcula sobre la base más el ICE.
+  const ice = (Object.keys(ICE_CATALOGO) as Exclude<IceTipo, 'none'>[]).filter(t => lines.some(l => tipoIce(l) === t && (l.ice ?? 0) > 0)).map(t => {
+    const ls = lines.filter(l => tipoIce(l) === t);
+    return group(detail ? 'impuesto' : 'totalImpuesto', tag('codigo', '3') + tag('codigoPorcentaje', ICE_CATALOGO[t].codigoSRI) +
+      (detail ? tag('tarifa', amount(ICE_CATALOGO[t].modo === 'advalorem' ? ICE_CATALOGO[t].valor : 0)) : '') + tag('baseImponible', amount(totals(ls).subtotal)) + tag('valor', amount(totals(ls).ice)));
+  }).join('');
+  const iva = TARIFAS.filter(rate => lines.some(l => l.taxRate === rate)).map(rate => {
     const values = totals(lines.filter(l => l.taxRate === rate));
     return group(detail ? 'impuesto' : 'totalImpuesto', tag('codigo', '2') + tag('codigoPorcentaje', rateCode(rate)) +
-      (detail ? tag('tarifa', amount(rate)) : '') + tag('baseImponible', amount(values.subtotal)) + tag('valor', amount(values.tax)));
+      (detail ? tag('tarifa', amount(rate)) : '') + tag('baseImponible', amount(values.subtotal + values.ice)) + tag('valor', amount(values.tax)));
   }).join('');
+  return ice + iva;
 }
 
-function details(lines: DocumentLine[], credit = false): string {
+function details(lines: DocumentLine[], items: Item[], credit = false): string {
   return group('detalles', lines.map(line => group('detalle', tag(credit ? 'codigoInterno' : 'codigoPrincipal', line.itemCode) +
     tag('descripcion', line.description) + tag('cantidad', line.quantity.toFixed(6)) + tag('precioUnitario', line.price.toFixed(6)) +
     tag('descuento', amount(round(line.quantity * line.price) - totals([line]).subtotal)) + tag('precioTotalSinImpuesto', amount(totals([line]).subtotal)) +
-    group('impuestos', taxes([line], true)))).join(''));
+    group('impuestos', taxes([line], items, true)))).join(''));
 }
 
 /** Unsigned training XML, based on the SRI document structures. Never submits to SRI. */
@@ -51,27 +60,27 @@ export function buildSRIXml(state: CompanyState, data: CommandData<'sri'>, acces
   const roots = { '01': 'factura', '03': 'liquidacionCompra', '04': 'notaCredito', '05': 'notaDebito', '06': 'guiaRemision', '07': 'comprobanteRetencion' } as const;
   const tributary = group('infoTributaria', tag('ambiente', '1') + tag('tipoEmision', '1') + tag('razonSocial', profile.companyName) +
     tag('ruc', profile.ruc) + tag('claveAcceso', accessKey) + tag('codDoc', data.docType) + tag('estab', data.series.slice(0, 3)) +
-    tag('ptoEmi', data.series.slice(4)) + tag('secuencial', String(sequential).padStart(9, '0')) + tag('dirMatriz', d.matrixAddress));
+    tag('ptoEmi', data.series.slice(4)) + tag('secuencial', String(sequential).padStart(9, '0')) + tag('dirMatriz', d.matrixAddress) + (profile.regimen === 'rimpe-emprendedor' ? tag('contribuyenteRimpe', 'CONTRIBUYENTE RÉGIMEN RIMPE') : ''));
   const dateAddress = tag('fechaEmision', fiscalDate(data.date)) + tag('dirEstablecimiento', d.establishmentAddress);
   const accounting = tag('obligadoContabilidad', d.accountingRequired ? 'SI' : 'NO');
   const buyer = tag('tipoIdentificacionComprador', identificationType(partner.ruc)) + tag('razonSocialComprador', partner.name) + tag('identificacionComprador', partner.ruc);
   const subtotal = tag('totalSinImpuestos', amount(source.subtotal));
   const discount = tag('totalDescuento', amount(source.lines.reduce((sum, line) => sum + round(line.quantity * line.price) - totals([line]).subtotal, 0)));
-  const totalTaxes = group('totalConImpuestos', taxes(source.lines));
+  const totalTaxes = group('totalConImpuestos', taxes(source.lines, state.items));
   const payments = group('pagos', group('pago', tag('formaPago', data.ats.formasDePago[0] || '20') + tag('total', amount(source.total))));
   let content = '';
   switch (data.docType) {
     case '01':
-      content = group('infoFactura', dateAddress + accounting + buyer + tag('direccionComprador', partner.address || 'Dirección de práctica') + subtotal + discount + totalTaxes + tag('propina', '0.00') + tag('importeTotal', amount(source.total)) + tag('moneda', 'DOLAR') + payments) + details(source.lines);
+      content = group('infoFactura', dateAddress + accounting + buyer + tag('direccionComprador', partner.address || 'Dirección de práctica') + subtotal + discount + totalTaxes + tag('propina', '0.00') + tag('importeTotal', amount(source.total)) + tag('moneda', 'DOLAR') + payments) + details(source.lines, state.items);
       break;
     case '03':
-      content = group('infoLiquidacionCompra', dateAddress + accounting + tag('tipoIdentificacionProveedor', identificationType(partner.ruc)) + tag('razonSocialProveedor', partner.name) + tag('identificacionProveedor', partner.ruc) + tag('direccionProveedor', partner.address || 'Dirección de práctica') + subtotal + discount + totalTaxes + tag('importeTotal', amount(source.total)) + tag('moneda', 'DOLAR') + payments) + details(source.lines);
+      content = group('infoLiquidacionCompra', dateAddress + accounting + tag('tipoIdentificacionProveedor', identificationType(partner.ruc)) + tag('razonSocialProveedor', partner.name) + tag('identificacionProveedor', partner.ruc) + tag('direccionProveedor', partner.address || 'Dirección de práctica') + subtotal + discount + totalTaxes + tag('importeTotal', amount(source.total)) + tag('moneda', 'DOLAR') + payments) + details(source.lines, state.items);
       break;
     case '04':
-      content = group('infoNotaCredito', dateAddress + buyer + accounting + tag('codDocModificado', '01') + tag('numDocModificado', supportNumber) + tag('fechaEmisionDocSustento', fiscalDate(supportDate)) + subtotal + tag('valorModificacion', amount(source.total)) + tag('moneda', 'DOLAR') + totalTaxes + tag('motivo', d.reason)) + details(source.lines, true);
+      content = group('infoNotaCredito', dateAddress + buyer + accounting + tag('codDocModificado', '01') + tag('numDocModificado', supportNumber) + tag('fechaEmisionDocSustento', fiscalDate(supportDate)) + subtotal + tag('valorModificacion', amount(source.total)) + tag('moneda', 'DOLAR') + totalTaxes + tag('motivo', d.reason)) + details(source.lines, state.items, true);
       break;
     case '05':
-      content = group('infoNotaDebito', dateAddress + buyer + accounting + tag('codDocModificado', '01') + tag('numDocModificado', supportNumber) + tag('fechaEmisionDocSustento', fiscalDate(supportDate)) + subtotal + group('impuestos', taxes(source.lines, true)) + tag('valorTotal', amount(source.total)) + payments) + group('motivos', group('motivo', tag('razon', d.reason) + tag('valor', amount(source.subtotal))));
+      content = group('infoNotaDebito', dateAddress + buyer + accounting + tag('codDocModificado', '01') + tag('numDocModificado', supportNumber) + tag('fechaEmisionDocSustento', fiscalDate(supportDate)) + subtotal + group('impuestos', taxes(source.lines, state.items, true)) + tag('valorTotal', amount(source.total)) + payments) + group('motivos', group('motivo', tag('razon', d.reason) + tag('valor', amount(source.subtotal))));
       break;
     case '06': {
       if (![d.departureAddress, d.destinationAddress, d.carrierName, d.carrierId, d.plate, d.transportStart, d.transportEnd, d.reason].every(Boolean) || d.transportEnd < d.transportStart) throw new Error('Completa transportista, placa, direcciones, motivo y fechas de traslado válidas.');

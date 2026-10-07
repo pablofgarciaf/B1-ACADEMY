@@ -1,7 +1,7 @@
 import { applyCommand } from '../../src/lib/company-engine';
 import { emptyCompany } from '../../src/lib/firestore-types';
 import { comandosB1Center } from '../../src/lib/b1-center-datos';
-import { revisarIdentificacion, digitoModulo11 } from '../../src/lib/sri-catalogo';
+import { revisarIdentificacion, digitoModulo11, impuestoRenta, topeGastosPersonales, retencionIREmpleado } from '../../src/lib/sri-catalogo';
 import { construirRIDE } from '../../src/lib/sri-ride';
 import { defaultATS } from '../../src/lib/company-defaults';
 
@@ -96,6 +96,21 @@ check('Ana Silva (menos de 1 año): sin fondos de reserva · neto 516.79', ana.r
 const asientoNomina = s.journalEntries.find(j => j.id === rol.journalEntryId)!;
 check('asiento de nómina cuadra', asientoNomina.totalDebit === asientoNomina.totalCredit && asientoNomina.totalDebit > 0, `${asientoNomina.totalDebit}/${asientoNomina.totalCredit}`);
 check('un empleado no cobra dos veces el mismo período', falla({ action: 'payroll', data: { period: '2026-04', date: '2026-04-30', sbu: 482, lines: [lineaNomina('E002', {})] } }).includes('ya tiene rol'));
+// Impuesto a la renta del empleado (tabla 2026): proyección de este rol × 12, base = gravado − IESS, sin décimos ni reserva
+check('IR: sobre la fracción básica no hay impuesto', impuestoRenta(12208) === 0 && impuestoRenta(10000) === 0);
+check('IR: 16.299 → 167 + 10 % de 750 = 242', impuestoRenta(16299) === 242, String(impuestoRenta(16299)));
+check('IR: 120.000 → 24.572 + 37 % del excedente', impuestoRenta(120000) === Math.round((24572 + (120000 - 109956) * 0.37) * 100) / 100);
+check('tope de gastos personales: 7 canastas sin cargas, 20 con 5 o más', topeGastosPersonales(0) === 5752.6 && topeGastosPersonales(5) === 16436 && topeGastosPersonales(9) === 16436, `${topeGastosPersonales(0)}/${topeGastosPersonales(5)}`);
+const jIR = retencionIREmpleado(1500, 141.75, 0, 0);
+check('Juan con comisión: base 16.299, impuesto 242, retención 20,17/mes', jIR.base === 16299 && jIR.impuesto === 242 && jIR.mensual === 20.17, JSON.stringify(jIR));
+const jRebaja = retencionIREmpleado(1500, 141.75, 6000, 1);
+check('con gastos de 6.000 y 1 carga: rebaja 18 % = 1.080 > 242 → retención 0', jRebaja.rebaja === 1080 && jRebaja.mensual === 0, JSON.stringify(jRebaja));
+run({ action: 'payroll', data: { period: '2026-06', date: '2026-06-30', sbu: 482, lines: [lineaNomina('E001', { }), lineaNomina('E002', {})].map((l, i) => i === 0 ? { ...l, commissions: 300 } : l) } });
+const rolJun = s.payrollRuns.at(-1)!; const juan06 = rolJun.lines.find(l => l.employeeCode === 'E001')!;
+check('rol de junio de Juan: IR 20.17 y neto 1463.08', juan06.incomeTax === 20.17 && juan06.net === 1463.08, `${juan06.incomeTax}/${juan06.net}`);
+const asJun = s.journalEntries.find(j => j.id === rolJun.journalEntryId)!;
+check('el IR retenido se acredita en Retenciones por pagar (2.1.03) y el asiento cuadra', asJun.lines.some(l => l.accountCode === '2.1.03' && l.credit === 20.17) && asJun.totalDebit === asJun.totalCredit, JSON.stringify(asJun.lines.filter(l => l.accountCode === '2.1.03')));
+
 check('no se puede repetir el mismo empleado en un rol', falla({ action: 'payroll', data: { period: '2026-05', date: '2026-05-31', sbu: 482, lines: [lineaNomina('E001', {}), lineaNomina('E001', {})] } }).includes('duplicado'));
 
 // Códigos de B1 Center = los que enseñan las clases (Mi Aula y el simulador hablan el mismo idioma)

@@ -6,6 +6,10 @@ const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con forma
 const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('access'), data: z.object({}) }),
+  z.object({ action: z.literal('profitShare'), data: z.object({ year: z.number().int().min(2020).max(2100), date, profit: money.optional() }) }),
+  z.object({ action: z.literal('incomeTaxClose'), data: z.object({ year: z.number().int().min(2020).max(2100), date }) }),
+  z.object({ action: z.literal('incomeTaxAdvance'), data: z.object({ year: z.number().int().min(2020).max(2100), date }) }),
+  z.object({ action: z.literal('foreignPayment'), data: z.object({ date, bankAccountId: code, concept: text.min(2), destination: z.enum(['importacion', 'servicio']), vendorCode: z.string().max(80), amount: money.positive(), tarifa: z.enum(['5', '2.5', '0']), imputacion: z.enum(['gasto', 'credito']), reference: text }) }),
   z.object({ action: z.literal('initialize'), data: z.object({ companyName: text.min(2) }) }),
   z.object({ action: z.literal('sales'), data: z.object({ docType: z.enum(salesTypes), document: documentInput }) }),
   z.object({ action: z.literal('purchase'), data: z.object({ docType: z.enum(purchaseTypes), document: documentInput }) }),
@@ -17,7 +21,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('reverse'), data: z.object({ entryId: code, date }) }),
   z.object({ action: z.literal('stock'), data: z.object({ itemCode: code, warehouseCode: code, qty: z.number().finite().refine(v => v !== 0), costingMethod: z.enum(costMethods) }) }),
   z.object({ action: z.literal('transfer'), data: z.object({ from: code, to: code, date, lines: z.array(z.object({ itemCode: code, quantity: money.positive() })).min(1).max(60) }) }),
-  z.object({ action: z.literal('bank'), data: z.object({ bankAccountId: code, date, type: z.enum(['deposit', 'payment']), amount: money.positive(), counterpartAccount: code, reference: text, documentId: z.string().max(80) }) }),
+  z.object({ action: z.literal('bank'), data: z.object({ bankAccountId: code, date, type: z.enum(['deposit', 'payment']), amount: money.positive(), counterpartAccount: code, reference: text, documentId: z.string().max(80), retentionIR: money.optional(), retentionIVA: money.optional() }) }),
   z.object({ action: z.literal('reconcile'), data: z.object({ id: code, statementAmount: z.number().finite(), reconciled: z.boolean() }) }),
   z.object({ action: z.literal('payroll'), data: z.object({ period: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/), date, sbu: money.positive(), lines: z.array(payrollInputLine).min(1).max(80) }) }),
   z.object({ action: z.literal('sri'), data: sriInputSchema }),
@@ -48,7 +52,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   // CRM: crear o actualizar una oportunidad (id vacío = nueva).
   z.object({ action: z.literal('opportunity'), data: z.object({ id: z.string().max(80).default(''), name: text.min(3), cardCode: code, amount: money, stage: z.enum(['prospecto', 'calificado', 'propuesta', 'negociacion', 'ganada', 'perdida']), expectedClose: date, source: text, notes: text, lossReason: text.default('') }) }),
   // Datos de la empresa (inicialización).
-  z.object({ action: z.literal('companySettings'), data: z.object({ companyName: text.min(2), ruc: z.string().regex(/^\d{10}001$/, 'El RUC tiene 13 dígitos y termina en 001.'), incomeTaxRate: z.number().min(0).max(40), warehouses: z.array(z.object({ code: code, name: text.min(2) })).min(1).max(20) }) }),
+  z.object({ action: z.literal('companySettings'), data: z.object({ companyName: text.min(2), ruc: z.string().regex(/^\d{10}001$/, 'El RUC tiene 13 dígitos y termina en 001.'), incomeTaxRate: z.number().min(0).max(40), regimen: z.enum(['general', 'rimpe-emprendedor', 'rimpe-popular']).optional(), warehouses: z.array(z.object({ code: code, name: text.min(2) })).min(1).max(20) }) }),
   // Servicio: contratos con SLA, llamadas de servicio y proyectos.
   z.object({ action: z.literal('serviceContract'), data: z.object({ cardCode: code, type: z.enum(['garantia', 'mantenimiento', 'soporte']), startDate: date, endDate: date, monthlyFee: money, responseHours: z.number().int().min(1).max(720), coverage: text.min(3) }).refine(d => d.endDate > d.startDate, 'La fecha de fin debe ser posterior al inicio.') }),
   z.object({ action: z.literal('serviceCall'), data: z.object({ cardCode: code, subject: text.min(5), itemCode: z.string().max(80).default(''), priority: z.enum(['alta', 'media', 'baja']), openedAt: z.string().datetime() }) }),

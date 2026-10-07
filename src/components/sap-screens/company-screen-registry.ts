@@ -12,6 +12,8 @@ import RetentionForm from './RetentionForm';
 import TaxReportScreen from './TaxReportScreen';
 import EmployeeForm from './EmployeeForm';
 import PayrollRunScreen from './PayrollRunScreen';
+import TaxCloseScreen from './TaxCloseScreen';
+import ForeignPaymentScreen from './ForeignPaymentScreen';
 import BOMForm from './BOMForm';
 import ProductionOrderForm from './ProductionOrderForm';
 import MRPScreen from './MRPScreen';
@@ -50,7 +52,7 @@ export const companyScreens: Record<string, ComponentType> = {
   'SRV001': ServiceContractsScreen, 'SRV002': ServiceCallsScreen, 'SRV004': ServiceCallsScreen, 'SRV003': ProjectsScreen,
   'ADM002': TeamUsersScreen, 'ADM005': DataVerificationScreen, 'MFG002': RoutingScreen, 'MFG006': CapacityScreen, 'FIN005': CashFlowScreen,
   'EC-SRI': SRIElectronicScreen, 'EC-RETENTION': RetentionForm, 'EC-TAX': TaxReportScreen,
-  'EC-EMPLOYEE': EmployeeForm, 'EC-PAYROLL': PayrollRunScreen,
+  'EC-EMPLOYEE': EmployeeForm, 'EC-PAYROLL': PayrollRunScreen, 'EC-TAXCLOSE': TaxCloseScreen, 'EC-ISD': ForeignPaymentScreen,
   'MFG001': BOMForm, 'MFG003': ProductionOrderForm, 'MFG004': ProductionOrderForm, 'MFG005': ProductionOrderForm,
   'MRP001': MRPScreen, 'MRP002': MRPScreen, 'MRP003': MRPScreen,
 };

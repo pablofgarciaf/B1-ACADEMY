@@ -14,8 +14,8 @@
 - Vacaciones: 15 días por año. La empresa provisiona cada mes: remuneración × 15 / 360.
 - Horas extras: el valor de la hora es el sueldo / 240. Suplementarias (recargo del 50 %): hora × 1,5. Extraordinarias (sábados, domingos y feriados, recargo del 100 %): hora × 2. Máximo 4 horas por día y 12 por semana.
 - Sueldo del período = sueldo mensual × días trabajados / 30.
-- Impuesto a la renta en relación de dependencia 2026 (Resolución NAC-DGERCGC25-00000043): la fracción básica desgravada es USD 12.208 anuales; sobre el excedente se aplica una tabla progresiva del 5 % al 37 %. La base es el ingreso anual menos el aporte personal al IESS menos la rebaja de gastos personales. Un sueldo de USD 482 mensuales (5.784 al año) no llega a la fracción básica y no tiene retención. El simulador de B1 Academy NO calcula esta retención: se explica como concepto.
-- Utilidades: 15 % de la utilidad líquida de la empresa (10 % para los trabajadores y 5 % por cargas familiares); se pagan hasta el 15 de abril del año siguiente. El simulador no las calcula.
+- Impuesto a la renta en relación de dependencia 2026 (Resolución NAC-DGERCGC25-00000043): la fracción básica desgravada es USD 12.208 anuales; sobre el excedente se aplica una tabla progresiva del 5 % al 37 %. El simulador SÍ calcula la retención mensual (ver sección 11).
+- Utilidades: 15 % de la utilidad líquida de la empresa (10 % para los trabajadores y 5 % por cargas familiares); se pagan hasta el 15 de abril del año siguiente. El simulador las calcula en «Cierre tributario» (ver la fuente impuestos_avanzados_2026).
 
 ## 2. Empleados de B1 Center (datos de prueba del curso)
 | Código | Nombre | Cargo | Sueldo | Ingreso | Décimo 13 | Décimo 14 | Fondos de reserva |
@@ -76,7 +76,9 @@ Cuentas del plan de B1 Center: 6.01 Gasto de nómina, 6.02 IESS patronal, 6.04 B
 ### Ejemplo D — Juan Pérez (E001), junio de 2026: 30 días, comisión de 300,00, fondos de reserva mensualizados
 - Sueldo 1.200,00 + comisión 300,00 = remuneración sujeta a aporte 1.500,00.
 - Fondos de reserva (ya cumplió un año): 1.500 / 12 = 125,00 (se pagan en el rol). Ingreso total: 1.625,00.
-- Aporte personal 9,45 %: 141,75. Neto: 1.625,00 − 141,75 = 1.483,25. Aporte patronal 12,15 %: 182,25.
+- Aporte personal 9,45 %: 141,75.
+- Retención de impuesto a la renta del empleado: base anual proyectada = 1.500,00 × 12 − 141,75 × 12 = 16.299,00; impuesto de la tabla 2026 = 167,00 + 10 % × (16.299,00 − 15.549,00) = 242,00 al año; dividido para 12 = 20,17 al mes.
+- Neto: 1.625,00 − 141,75 − 20,17 = 1.463,08. Aporte patronal 12,15 %: 182,25.
 - Provisiones: décimo tercero 125,00, décimo cuarto 40,17, vacaciones 62,50.
 
 ### Empleado nuevo para la práctica de la ficha del empleado
@@ -87,7 +89,7 @@ Cuentas del plan de B1 Center: 6.01 Gasto de nómina, 6.02 IESS patronal, 6.04 B
 - Clase del rol de pagos: práctica "Ejecutar el rol de pagos de abril de María Gómez" en "Finanzas > Asiento". Campos: período 2026-04, empleado María Gómez, días trabajados 30, horas extras al 50 % 10, anticipo 100.00.
 - Clase de décimos, fondos de reserva y vacaciones: práctica "Ejecutar el rol de pagos de mayo de Ana Silva" (período 2026-05, empleado Ana Silva, días 30, sin extras: neto 516,79) y práctica "Ejecutar el rol de pagos de mayo de Carlos López" (período 2026-05, días 30, horas extras al 100 % 8: neto 724,40), ambas en "Finanzas > Asiento".
 - Clase de contabilidad de la nómina: primero la práctica "Depositar el capital inicial en el banco" en "Gestión de bancos > Pagos recibidos > Pagos recibidos" (banco Banco Pichincha, depósito, monto 5000.00, contrapartida Capital social); luego "Pagar los sueldos netos por transferencia" en "Gestión de bancos > Pagos efectuados > Pagos efectuados" (monto 845.57, contrapartida Sueldos por pagar) y "Pagar la planilla del IESS" en la misma ruta (monto 206.55, contrapartida IESS por pagar).
-- Clase de comisiones, impuesto a la renta y utilidades: práctica "Ejecutar el rol de pagos de junio de Juan Pérez con comisión" (período 2026-06, empleado Juan Pérez, días 30, comisión 300.00; neto 1.483,25) en "Finanzas > Asiento".
+- Clase de comisiones, impuesto a la renta y utilidades: práctica "Ejecutar el rol de pagos de junio de Juan Pérez con comisión" (período 2026-06, empleado Juan Pérez, días 30, comisión 300.00; neto 1.463,08) en "Finanzas > Asiento".
 
 ## 8. Uso de este ejemplo en la clase "Documentos Preliminares de Asiento" (mod17-c3)
 - Si la clase trata de documentos preliminares, el documento preliminar de ejemplo es el asiento de nómina de la sección 4 (María Gómez, abril de 2026), con las cuentas del plan de B1 Center y SUS importes exactos: Debe Gasto de nómina 1.035,94, IESS patronal 116,18, Beneficios sociales 159,70; Haber Sueldos por pagar 845,57, IESS por pagar 206,55, Anticipos al personal 100,00, Beneficios sociales por pagar 159,70.
@@ -97,13 +99,13 @@ Cuentas del plan de B1 Center: 6.01 Gasto de nómina, 6.02 IESS patronal, 6.04 B
 ## 9. Asientos de nómina calculados por el motor (ÚNICAS cifras permitidas en las clases de nómina)
 Regla de oro del asiento: el **ingreso total del rol** (incluye lo que se paga mensualizado: fondos de reserva y décimos mensualizados) va completo al Gasto de nómina; solo se PROVISIONAN (Beneficios sociales) los beneficios que quedan acumulados y las vacaciones. El aporte personal NO es gasto de la empresa: se descuenta del trabajador y se acredita en IESS por pagar junto con el aporte patronal. Por eso el neto a pagar = ingreso total − aporte personal − anticipos.
 
-| Caso | Debe: Gasto de nómina | Debe: IESS patronal | Debe: Beneficios sociales (provisiones) | **Total debe** | Haber: Sueldos por pagar (neto) | Haber: IESS por pagar | Haber: Anticipos al personal | Haber: Beneficios sociales por pagar | **Total haber** |
-|---|---|---|---|---|---|---|---|---|---|
-| A María Gómez, abril | 1.035,94 | 116,18 | 159,70 | **1.311,82** | 845,57 | 206,55 | 100,00 | 159,70 | **1.311,82** |
-| B Ana Silva, mayo | 562,34 | 58,56 | 20,08 | **640,98** | 516,79 | 104,11 | 0,00 | 20,08 | **640,98** |
-| C Carlos López, mayo | 800,00 | 97,20 | 206,84 | **1.104,04** | 724,40 | 172,80 | 0,00 | 206,84 | **1.104,04** |
-| D Juan Pérez con comisión, junio | 1.625,00 | 182,25 | 227,67 | **2.034,92** | 1.483,25 | 324,00 | 0,00 | 227,67 | **2.034,92** |
-| P Pedro Andrade, mayo (nuevo) | 600,00 | 72,90 | 115,17 | **788,07** | 543,30 | 129,60 | 0,00 | 115,17 | **788,07** |
+| Caso | Debe: Gasto de nómina | Debe: IESS patronal | Debe: Beneficios sociales (provisiones) | **Total debe** | Haber: Sueldos por pagar (neto) | Haber: IESS por pagar | Haber: Retenciones por pagar (IR del empleado) | Haber: Anticipos al personal | Haber: Beneficios sociales por pagar | **Total haber** |
+|---|---|---|---|---|---|---|---|---|---|---|
+| A María Gómez, abril | 1.035,94 | 116,18 | 159,70 | **1.311,82** | 845,57 | 206,55 | 0,00 | 100,00 | 159,70 | **1.311,82** |
+| B Ana Silva, mayo | 562,34 | 58,56 | 20,08 | **640,98** | 516,79 | 104,11 | 0,00 | 0,00 | 20,08 | **640,98** |
+| C Carlos López, mayo | 800,00 | 97,20 | 206,84 | **1.104,04** | 724,40 | 172,80 | 0,00 | 0,00 | 206,84 | **1.104,04** |
+| D Juan Pérez con comisión, junio | 1.625,00 | 182,25 | 227,67 | **2.034,92** | 1.463,08 | 324,00 | 20,17 | 0,00 | 227,67 | **2.034,92** |
+| P Pedro Andrade, mayo (nuevo) | 600,00 | 72,90 | 115,17 | **788,07** | 543,30 | 129,60 | 0,00 | 0,00 | 115,17 | **788,07** |
 
 Detalle de las provisiones (Beneficios sociales):
 - A María: décimo tercero 79,69 + décimo cuarto 40,17 + vacaciones 39,84 = 159,70.
@@ -116,7 +118,7 @@ Aporte personal 9,45 % por caso: A 90,37 · B 45,55 · C 75,60 · D 141,75 · P 
 
 **Costo total mensual para la empresa** (ingreso del rol + aporte patronal + provisiones = total debe): María 1.311,82 · Ana 640,98 · Carlos 1.104,04 · Juan (con comisión) 2.034,92 · Pedro 788,07.
 
-**Efecto de una comisión (caso Juan, junio):** sin comisión: remuneración sujeta a aporte 1.200,00, fondos de reserva 100,00, ingreso 1.300,00, aporte personal 113,40, neto 1.186,60, aporte patronal 145,80. Con comisión de 300,00: remuneración 1.500,00, reserva 125,00, ingreso 1.625,00, aporte personal 141,75, neto 1.483,25, aporte patronal 182,25. La comisión sube el neto en 296,65.
+**Efecto de una comisión (caso Juan, junio):** sin comisión: remuneración sujeta a aporte 1.200,00, fondos de reserva 100,00, ingreso 1.300,00, aporte personal 113,40, retención de IR 3,46 (base anual 13.039,20; impuesto 41,56 al año), neto 1.183,14, aporte patronal 145,80. Con comisión de 300,00: remuneración 1.500,00, reserva 125,00, ingreso 1.625,00, aporte personal 141,75, retención de IR 20,17, neto 1.463,08, aporte patronal 182,25. La comisión sube el neto en 279,94 (sube menos que la comisión porque también aumentan el IESS y el impuesto).
 
 **Pagos posteriores en el banco (caso A):** sueldos netos 845,57 (debe Sueldos por pagar, haber Bancos) y planilla del IESS 206,55 (debe IESS por pagar, haber Bancos). Cuenta de banco en el simulador: "Banco Pichincha · Cta. corriente" (BAN-1, número 2100000001).
 
@@ -124,3 +126,14 @@ Aporte personal 9,45 % por caso: A 90,37 · B 45,55 · C 75,60 · D 141,75 · P 
 - En las clases de nómina SOLO puedes escribir importes con decimales (xx,xx) que aparezcan en esta fuente. No inventes otros empleados, importes, totales ni tablas de costo; no sumes ni restes cifras nuevas.
 - Un "total del asiento" es el "Total debe" de la tabla de la sección 9; no lo recalcules.
 - No cites números de cuenta bancaria distintos de "Banco Pichincha · Cta. corriente (2100000001)".
+
+## 11. Retención de impuesto a la renta del empleado (calculada por el simulador)
+- Método del simulador (proyección simple): ingreso gravado anual = remuneración sujeta a aporte de este rol × 12; base = ingreso gravado anual − aporte personal al IESS × 12. Los décimos, los fondos de reserva y las utilidades NO forman parte del ingreso gravado.
+- Impuesto del año = tabla 2026 sobre la base (fracción básica 12.208,00; tramos 5 %, 10 %, 12 %, 15 %, 20 %, 25 %, 30 %, 35 % y 37 %). Retención mensual = impuesto neto / 12.
+- Gastos personales: el empleado entrega su proyección de gastos del año (vivienda, salud, educación, alimentación, vestimenta, turismo). Se aplica una rebaja del 18 % sobre el menor valor entre sus gastos proyectados y el tope según sus cargas familiares (canasta básica de enero de 2026 = 821,80): sin cargas 7 canastas = 5.752,60; 1 carga 9 = 7.396,20; 2 cargas 11 = 9.039,80; 3 cargas 14 = 11.505,20; 4 cargas 17 = 13.970,60; 5 o más cargas 20 = 16.436,00. ⚠ Mecanismo y topes tomados de fuentes secundarias: confirmar con el contador.
+- La retención se acredita en Retenciones por pagar (2.1.03) y se declara en el formulario 103 con el código 302.
+- Un sueldo de 482,00 mensuales no llega a la fracción básica: no tiene retención. María, Carlos, Ana y Pedro tampoco.
+
+### Ejemplo E — Juan Pérez (E001) con 1 carga familiar y gastos personales proyectados de 3.000,00 (mismo rol del ejemplo D)
+- Impuesto anual de la tabla: 242,00. Tope con 1 carga: 7.396,20; menor valor entre 3.000,00 y 7.396,20 = 3.000,00; rebaja 18 % = 540,00, que supera los 242,00 de impuesto: la retención mensual es 0,00 y el neto sube a 1.483,25 (1.625,00 − 141,75).
+- Para probarlo, en la ficha del empleado (pestaña «Impuesto a la renta») se registran 1 carga familiar y gastos proyectados de 3000.00.

@@ -50,7 +50,7 @@ export function comandosB1Center(): CompanyCommand[] {
       maxDiscount: 10, purchasePrice: costo, preferredVendor: '', weight: 0, length: 0, width: 0, height: 0, costingMethod: 'average',
       standardCost: costo, minStock: 2, maxStock: 50, reorderPoint: 5, description: name, specifications: '', active: true,
     })) } },
-    ...EMPLEADOS.map((e): CompanyCommand => ({ action: 'employee', data: { ...e, contract: 'indefinite', schedule: 'full', employerRate: 12.15, personalRate: 9.45, vacationDays: 15, active: true } })),
+    ...EMPLEADOS.map((e): CompanyCommand => ({ action: 'employee', data: { ...e, contract: 'indefinite', schedule: 'full', employerRate: 12.15, personalRate: 9.45, vacationDays: 15, dependents: 0, projectedExpenses: 0, active: true } })),
   ];
 }
 

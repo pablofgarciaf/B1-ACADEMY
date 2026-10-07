@@ -1,13 +1,26 @@
 import type { AccountingAccount, CompanyState, DocumentLine, JournalEntry, PayrollEmployee, PayrollInputLine, PayrollLine, TrialBalanceRow, WarehouseStock, CostingMethod } from './firestore-types';
+import { retencionIREmpleado } from './sri-catalogo';
 
 export const round = (value: number): number => Math.round((value + Number.EPSILON) * 100) / 100;
 export const quantityRound = (value: number): number => Math.round(value * 1e6) / 1e6;
 export const today = (): string => new Date().toLocaleDateString('en-CA', { timeZone: 'America/Guayaquil' });
 export const usd = (value: number): string => new Intl.NumberFormat('es-EC', { style: 'currency', currency: 'USD' }).format(value);
+/** Resultado del ejercicio antes de participación de trabajadores e impuesto a la renta (ingresos − costos − gastos). */
+export function resultadoEjercicio(state: CompanyState, year: number): number {
+  const categoria = new Map(state.chartOfAccounts.map(a => [a.code, a.category]));
+  let r = 0;
+  for (const e of state.journalEntries.filter(x => x.date.startsWith(`${year}-`))) for (const l of e.lines) {
+    const c = categoria.get(l.accountCode);
+    if (c === 'income') r += l.credit - l.debit;
+    else if ((c === 'cost' || c === 'expense') && l.accountCode !== '6.06' && l.accountCode !== '6.07') r -= l.debit - l.credit;
+  }
+  return round(r);
+}
 export function totals(lines: DocumentLine[]) {
-  let subtotal = 0; let tax = 0;
-  for (const line of lines) { const net = round(line.quantity * line.price * (1 - line.discount / 100)); subtotal += net; tax += round(net * line.taxRate / 100); }
-  return { subtotal: round(subtotal), tax: round(tax), total: round(subtotal + tax) };
+  let subtotal = 0; let tax = 0; let ice = 0;
+  // El IVA se calcula sobre la base imponible más el ICE de la línea.
+  for (const line of lines) { const net = round(line.quantity * line.price * (1 - line.discount / 100)); const lineIce = line.ice ?? 0; subtotal += net; ice += lineIce; tax += round((net + lineIce) * line.taxRate / 100); }
+  return { subtotal: round(subtotal), ice: round(ice), tax: round(tax), total: round(subtotal + ice + tax) };
 }
 export function trialBalance(accounts: AccountingAccount[], entries: JournalEntry[], from: string, to: string): TrialBalanceRow[] {
   return accounts.filter(a => a.postable).map(account => {
@@ -61,9 +74,11 @@ export function payrollLine(employee: PayrollEmployee, input: PayrollInputLine, 
   const reserves = end >= anniversary ? round(contributory / 12) : 0;
   const personalIESS = round(contributory * employee.personalRate / 100); const employerIESS = round(contributory * employee.employerRate / 100);
   const income = round(contributory + (employee.thirteenthMonthly ? thirteenth : 0) + (employee.fourteenthMonthly ? fourteenth : 0) + (employee.reserveMonthly ? reserves : 0));
-  const deductions = round(personalIESS + input.advances + input.otherDeductions);
+  // Retención de IR del empleado (proyección de este rol × 12; los décimos y la reserva no son gravados).
+  const incomeTax = retencionIREmpleado(contributory, personalIESS, employee.projectedExpenses ?? 0, employee.dependents ?? 0).mensual;
+  const deductions = round(personalIESS + incomeTax + input.advances + input.otherDeductions);
   if (deductions > income) throw new Error(`Descuentos mayores al ingreso: ${employee.firstName}.`);
-  return { ...input, employeeName: `${employee.firstName} ${employee.lastName}`, salary, overtime50, overtime100, contributory, thirteenth: employee.thirteenthMonthly ? thirteenth : 0, fourteenth: employee.fourteenthMonthly ? fourteenth : 0, reserves: employee.reserveMonthly ? reserves : 0, thirteenthProvision: employee.thirteenthMonthly ? 0 : thirteenth, fourteenthProvision: employee.fourteenthMonthly ? 0 : fourteenth, reserveProvision: employee.reserveMonthly ? 0 : reserves, vacationProvision: round(contributory * employee.vacationDays / 360), personalIESS, employerIESS, income, deductions, net: round(income - deductions) };
+  return { ...input, employeeName: `${employee.firstName} ${employee.lastName}`, salary, overtime50, overtime100, contributory, thirteenth: employee.thirteenthMonthly ? thirteenth : 0, fourteenth: employee.fourteenthMonthly ? fourteenth : 0, reserves: employee.reserveMonthly ? reserves : 0, thirteenthProvision: employee.thirteenthMonthly ? 0 : thirteenth, fourteenthProvision: employee.fourteenthMonthly ? 0 : fourteenth, reserveProvision: employee.reserveMonthly ? 0 : reserves, vacationProvision: round(contributory * employee.vacationDays / 360), personalIESS, incomeTax, employerIESS, income, deductions, net: round(income - deductions) };
 }
 export function sriAccessKey(date: string, type: string, ruc: string, series: string, sequence: number, numericCode: string): string {
   const [year, month, day] = date.split('-');

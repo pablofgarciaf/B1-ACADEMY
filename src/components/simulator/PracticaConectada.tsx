@@ -35,6 +35,8 @@ const P = {
   consultas: dynamic(() => import('@/components/sap-screens/QueryManagerScreen'), { loading: cargando }),
   sri: dynamic(() => import('@/components/sap-screens/SRIElectronicScreen'), { loading: cargando }),
   nomina: dynamic(() => import('@/components/sap-screens/PayrollRunScreen'), { loading: cargando }),
+  cierreTributario: dynamic(() => import('@/components/sap-screens/TaxCloseScreen'), { loading: cargando }),
+  isd: dynamic(() => import('@/components/sap-screens/ForeignPaymentScreen'), { loading: cargando }),
 };
 
 function Pantalla({ p }: { p: PantallaConectada }) {

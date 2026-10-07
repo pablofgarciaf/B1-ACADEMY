@@ -135,9 +135,88 @@ export function enviarAlSRI(xml: string, claves: Set<string>, hoy: string): Resp
     if (Math.abs(lineas - sinImp) > 0.01) err('52', `ERROR EN DIFERENCIAS: la suma de las líneas (${lineas.toFixed(2)}) no coincide con el total sin impuestos (${sinImp.toFixed(2)}).`);
     if (Math.abs(r2(sinImp + ivaTotal + num(valor(xml, 'propina'))) - num(valor(xml, 'importeTotal'))) > 0.01) err('52', 'ERROR EN DIFERENCIAS: el importe total no es igual a subtotal + IVA + propina.');
   }
-  const tarifas = valores(xml, 'codigoPorcentaje').filter((c) => !Object.values(CODIGO_PORCENTAJE_IVA).includes(c));
-  if (tarifas.length) err('—', `TARIFA DE IVA NO VIGENTE (código ${tarifas[0]}): en 2026 solo existen 0 %, 5 %, 8 % y 15 %.`);
+  // Cada impuesto se valida según su código: 2 = IVA (solo tarifas vigentes) y 3 = ICE (solo productos del catálogo).
+  const pares = [...xml.matchAll(/<codigo>(\d)<\/codigo>\s*<codigoPorcentaje>(\w+)<\/codigoPorcentaje>/g)].map((m) => [m[1], m[2]] as const);
+  const ivaMalo = pares.filter(([k, c]) => k === '2' && !Object.values(CODIGO_PORCENTAJE_IVA).includes(c));
+  if (ivaMalo.length) err('—', `TARIFA DE IVA NO VIGENTE (código ${ivaMalo[0][1]}): en 2026 solo existen 0 %, 5 %, 8 % y 15 %.`);
+  const iceMalo = pares.filter(([k, c]) => k === '3' && !Object.values(ICE_CATALOGO).some((e) => e.codigoSRI === c));
+  if (iceMalo.length) err('—', `CÓDIGO DE ICE NO RECONOCIDO (${iceMalo[0][1]}): el producto no está en el catálogo de ICE del simulador.`);
 
   mensajes.push({ identificador: '—', mensaje: 'AMBIENTE DE PRUEBAS ACADÉMICO: sin firma electrónica XAdES-BES. En el SRI real cada empresa firma con su propio certificado y su propio RUC.', tipo: 'INFORMATIVO' });
   return { estado: mensajes.some((x) => x.tipo === 'ERROR') ? 'NO AUTORIZADO' : 'AUTORIZADO', mensajes };
 }
+
+// ── Impuesto a la renta de personas naturales 2026 (empleados) ───────────────────
+// Tabla: Resolución NAC-DGERCGC25-00000043. Gastos personales: rebaja del 18 % sobre el menor valor entre los gastos
+// proyectados y el tope por cargas familiares (canasta básica de enero de 2026). ⚠ El mecanismo de rebaja y los topes
+// provienen de fuentes secundarias: confirmar con el contador (docs/16).
+
+/** [desde, hasta, impuesto de la fracción básica, % sobre el excedente] */
+export const TABLA_IR_2026: readonly (readonly [number, number, number, number])[] = [
+  [0, 12208, 0, 0], [12208, 15549, 0, 5], [15549, 20188, 167, 10], [20188, 26700, 631, 12], [26700, 35136, 1412, 15],
+  [35136, 46575, 2678, 20], [46575, 62005, 4965, 25], [62005, 82679, 8823, 30], [82679, 109956, 15025, 35], [109956, Infinity, 24572, 37],
+];
+export const FRACCION_BASICA_2026 = 12208;
+export const CANASTA_BASICA_2026 = 821.8;
+/** Canastas básicas que topan los gastos personales según las cargas familiares (0, 1, 2, 3, 4, 5 o más). */
+export const CANASTAS_POR_CARGAS = [7, 9, 11, 14, 17, 20] as const;
+export const REBAJA_GASTOS_PERSONALES = 0.18;
+
+const r2c = (n: number) => Math.round(n * 100) / 100;
+
+export function impuestoRenta(baseAnual: number): number {
+  if (baseAnual <= FRACCION_BASICA_2026) return 0;
+  const tramo = TABLA_IR_2026.find(([desde, hasta]) => baseAnual > desde && baseAnual <= hasta) ?? TABLA_IR_2026[TABLA_IR_2026.length - 1];
+  return r2c(tramo[2] + (baseAnual - tramo[0]) * tramo[3] / 100);
+}
+
+export function topeGastosPersonales(cargas: number): number {
+  return r2c(CANASTA_BASICA_2026 * CANASTAS_POR_CARGAS[Math.min(Math.max(Math.trunc(cargas), 0), 5)]);
+}
+
+/**
+ * Retención mensual de IR de un empleado en relación de dependencia: proyección simple (lo gravado de este rol × 12).
+ * Base = ingreso gravado anual − aporte personal al IESS anual; los décimos, los fondos de reserva y las utilidades no entran.
+ */
+export function retencionIREmpleado(gravadoMensual: number, iessPersonalMensual: number, gastosProyectados: number, cargas: number) {
+  const base = r2c(gravadoMensual * 12 - iessPersonalMensual * 12);
+  const impuesto = impuestoRenta(base);
+  const rebaja = r2c(REBAJA_GASTOS_PERSONALES * Math.min(Math.max(gastosProyectados, 0), topeGastosPersonales(cargas)));
+  const neto = Math.max(0, r2c(impuesto - rebaja));
+  return { base, impuesto, rebaja, neto, mensual: r2c(neto / 12) };
+}
+
+// ── ICE (Impuesto a los Consumos Especiales) 2026 ─────────────────────────────────
+// Resoluciones NAC-DGERCGC25-00000040 a 00000043 (diciembre de 2025). ⚠ La base imponible real del ICE es el precio de venta
+// al público sugerido (o el ex fábrica más 25 % de margen); el simulador la simplifica al precio facturado: confirmar con el contador.
+// ⚠ Los códigos del XML (3011, 3610, 3620) vienen de la ficha técnica según fuentes secundarias.
+export const ICE_TIPOS = ['none', 'perfumes', 'videojuegos', 'cigarrillos'] as const;
+export type IceTipo = (typeof ICE_TIPOS)[number];
+export const ICE_CATALOGO: Record<Exclude<IceTipo, 'none'>, { label: string; modo: 'advalorem' | 'unidad'; valor: number; codigoSRI: string }> = {
+  perfumes: { label: 'Perfumes y aguas de tocador · 20 %', modo: 'advalorem', valor: 20, codigoSRI: '3610' },
+  videojuegos: { label: 'Videojuegos · 35 %', modo: 'advalorem', valor: 35, codigoSRI: '3620' },
+  cigarrillos: { label: 'Cigarrillos · USD 0,16 por unidad (cigarrillo)', modo: 'unidad', valor: 0.16, codigoSRI: '3011' },
+};
+export const ICE_ETIQUETAS: Record<IceTipo, string> = { none: 'Sin ICE', perfumes: ICE_CATALOGO.perfumes.label, videojuegos: ICE_CATALOGO.videojuegos.label, cigarrillos: ICE_CATALOGO.cigarrillos.label };
+
+/** ICE de una línea: ad valorem sobre el valor neto o específico por unidad. */
+export function iceDeLinea(tipo: string | undefined, cantidad: number, netoLinea: number): number {
+  if (!tipo || tipo === 'none' || !(tipo in ICE_CATALOGO)) return 0;
+  const e = ICE_CATALOGO[tipo as Exclude<IceTipo, 'none'>];
+  return r2c(e.modo === 'advalorem' ? netoLinea * e.valor / 100 : cantidad * e.valor);
+}
+
+// ── ISD (Impuesto a la Salida de Divisas) 2026 ────────────────────────────────────
+// Tarifa general 5 %; para 2026 el Decreto Ejecutivo fija tarifas diferenciadas: 0 % sector farmacéutico y 2,5 % otros
+// sectores productivos según acuerdo ministerial. ⚠ El simulador no verifica quién es beneficiario: el estudiante elige.
+export const ISD_TARIFAS = [
+  { id: '5', rate: 5, label: 'Tarifa general · 5 %' },
+  { id: '2.5', rate: 2.5, label: 'Tarifa reducida 2026 (sector productivo beneficiario) · 2,5 %' },
+  { id: '0', rate: 0, label: 'Sector farmacéutico beneficiario · 0 %' },
+] as const;
+
+// ── RIMPE ─────────────────────────────────────────────────────────────────────────
+export const REGIMENES = ['general', 'rimpe-emprendedor', 'rimpe-popular'] as const;
+export const REGIMEN_ETIQUETAS: Record<(typeof REGIMENES)[number], string> = { general: 'Régimen general', 'rimpe-emprendedor': 'RIMPE Emprendedor', 'rimpe-popular': 'RIMPE Negocio Popular' };
+export const RIMPE_PROVEEDOR = ['ninguno', 'emprendedor', 'popular'] as const;
+export const RIMPE_PROVEEDOR_ETIQUETAS: Record<(typeof RIMPE_PROVEEDOR)[number], string> = { ninguno: 'Régimen general', emprendedor: 'RIMPE Emprendedor (retención de renta 1 %)', popular: 'RIMPE Negocio Popular (nota de venta, sin IVA ni retención)' };

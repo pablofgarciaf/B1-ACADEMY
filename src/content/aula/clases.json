@@ -574,6 +574,20 @@
    "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
    "description": "",
    "durationMinutes": 20
+  },
+  {
+   "id": "mod19-c9",
+   "number": 8,
+   "title": "ISD: Pagos al Exterior y Salida de Divisas",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod19-c10",
+   "number": 9,
+   "title": "Retenciones que te Hacen tus Clientes: Crédito Tributario",
+   "description": "",
+   "durationMinutes": 9
   }
  ],
  "mod-25": [
@@ -608,9 +622,16 @@
   {
    "id": "mod25-c5",
    "number": 5,
-   "title": "Comisiones, Impuesto a la Renta de Empleados y Utilidades",
+   "title": "Comisiones y Retención del Impuesto a la Renta del Empleado",
    "description": "",
-   "durationMinutes": 10
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod25-c6",
+   "number": 6,
+   "title": "Cierre del Año: Utilidades, Impuesto a la Renta y Anticipo",
+   "description": "",
+   "durationMinutes": 21
   }
  ],
  "mod-20": [

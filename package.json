@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "npm run lint && tsc --noEmit --pretty false",
-    "test:motor": "npx --yes tsx scripts/pruebas/motor_sri.ts && npx --yes tsx scripts/pruebas/motor_banca.ts"
+    "test:motor": "npx --yes tsx scripts/pruebas/motor_sri.ts && npx --yes tsx scripts/pruebas/motor_impuestos.ts && npx --yes tsx scripts/pruebas/motor_banca.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.20",

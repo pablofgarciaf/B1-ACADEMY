@@ -9,7 +9,7 @@ export type PantallaConectada =
   | { clave: 'asiento' } | { clave: 'activos' } | { clave: 'bom' } | { clave: 'produccion' } | { clave: 'transferencia' }
   | { clave: 'conteo' } | { clave: 'precios' } | { clave: 'descuentos' } | { clave: 'bancos' } | { clave: 'empleado' }
   | { clave: 'oportunidad' } | { clave: 'empresa' } | { clave: 'presupuesto' } | { clave: 'cierre' } | { clave: 'importacion' }
-  | { clave: 'mrp' } | { clave: 'consultas' } | { clave: 'sri' } | { clave: 'nomina' };
+  | { clave: 'mrp' } | { clave: 'consultas' } | { clave: 'sri' } | { clave: 'nomina' } | { clave: 'cierreTributario' } | { clave: 'isd' };
 
 const plano = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
@@ -18,6 +18,8 @@ const REGLAS: [RegExp, PantallaConectada][] = [
   // SRI y notas de crédito primero: sus títulos mencionan "factura de proveedor/cliente" y se los comería otra regla.
   [/ruc del sistema|ingresar (el )?ruc/, { clave: 'empresa' }],
   [/comprobante de retencion|emitir (la )?retencion|generar (el )?comprobante|retencion electronica|comprobante electronico|guia de remision|autorizar.*sri|\bsri\b/, { clave: 'sri' }],
+  [/utilidades de los trabajadores|participacion de (los )?trabajadores|impuesto a la renta (del ejercicio|anual|de la empresa)|cierre tributario|anticipo (de|del) impuesto/, { clave: 'cierreTributario' }],
+  [/(^|[^a-z])isd([^a-z]|$)|salida de divisas|pago al exterior|pagos al exterior/, { clave: 'isd' }],
   [/pagos (efectuados|recibidos)|pagar (los )?sueldos|pagar (la )?planilla/, { clave: 'bancos' }], // antes que "transferencia" (que es de stock)
   [/(^|[^a-z])rol(es)?([^a-z]|$)|liquidar sueldos|ejecutar nomina/, { clave: 'nomina' }],
   [/nota de credito|abono de cliente/, { clave: 'documento', docType: 'credit_note' }], // "Abono de clientes" es el nombre de SAP en español

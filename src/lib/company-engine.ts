@@ -2,8 +2,8 @@ import { buildSRIXml } from './sri-xml';
 import { commandSchema, type CompanyCommand, type CommandData } from './company-commands';
 import { mensajeValidacion } from './zod-es';
 import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine, LandedCost } from './firestore-types';
-import { enviarAlSRI, opcionRetencion, revisarIdentificacion } from './sri-catalogo';
-import { financialSummary, moveStock, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
+import { enviarAlSRI, iceDeLinea, ISD_TARIFAS, opcionRetencion, revisarIdentificacion } from './sri-catalogo';
+import { financialSummary, moveStock, resultadoEjercicio, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
@@ -11,6 +11,9 @@ const accountDefinitions: [string, string, AccountingAccount['category'], boolea
   ['1', 'ACTIVO', 'asset', false], ['1.1', 'Activo corriente', 'asset', false], ['1.1.01', 'Caja', 'asset', true], ['1.1.02', 'Bancos', 'asset', true], ['1.1.03', 'Cuentas por cobrar clientes', 'asset', true], ['1.1.04', 'Provisión cuentas incobrables', 'asset', true], ['1.1.05', 'Inventarios materia prima / mercaderías', 'asset', true], ['1.1.06', 'IVA en compras', 'asset', true], ['1.1.07', 'Inventarios producto terminado', 'asset', true], ['1.1.08', 'Anticipos al personal', 'asset', true], ['1.2', 'Activo no corriente', 'asset', false], ['1.2.01', 'Propiedad, planta y equipo', 'asset', true], ['1.2.02', 'Depreciación acumulada', 'asset', true],
   ['2', 'PASIVO', 'liability', false], ['2.1', 'Pasivo corriente', 'liability', false], ['2.1.01', 'Cuentas por pagar proveedores', 'liability', true], ['2.1.02', 'IVA en ventas', 'liability', true], ['2.1.03', 'Retenciones por pagar', 'liability', true], ['2.1.04', 'IESS por pagar', 'liability', true], ['2.1.05', 'Sueldos por pagar', 'liability', true], ['2.1.06', 'Mercadería recibida no facturada', 'liability', true], ['2.1.07', 'Beneficios sociales por pagar', 'liability', true], ['2.1.08', 'Otros descuentos por pagar', 'liability', true], ['2.2', 'Pasivo no corriente', 'liability', false], ['2.2.01', 'Préstamos largo plazo', 'liability', true],
   ['3', 'PATRIMONIO', 'equity', false], ['3.01', 'Capital social', 'equity', true], ['3.02', 'Resultados acumulados', 'equity', true], ['4', 'INGRESOS', 'income', false], ['4.01', 'Ventas operacionales', 'income', true], ['4.02', 'Otros ingresos', 'income', true], ['5', 'COSTOS', 'cost', false], ['5.01', 'Costo de ventas', 'cost', true], ['6', 'GASTOS', 'expense', false], ['6.01', 'Gasto de nómina', 'expense', true], ['6.02', 'IESS patronal', 'expense', true], ['6.03', 'Gastos administrativos', 'expense', true], ['6.04', 'Beneficios sociales', 'expense', true], ['6.05', 'Diferencias de inventario y costo estándar', 'expense', true],
+  ['1.1.09', 'Anticipo de impuesto a la renta', 'asset', true], ['1.1.10', 'Crédito tributario: retenciones de renta recibidas', 'asset', true], ['1.1.11', 'Crédito tributario: retenciones de IVA recibidas', 'asset', true], ['1.1.12', 'ISD pagado (crédito tributario)', 'asset', true],
+  ['2.1.09', 'Utilidades por pagar a trabajadores', 'liability', true], ['2.1.10', 'Impuesto a la renta por pagar', 'liability', true], ['2.1.11', 'ICE por pagar', 'liability', true],
+  ['6.06', 'Participación de trabajadores en utilidades', 'expense', true], ['6.07', 'Impuesto a la renta', 'expense', true], ['6.08', 'Impuesto a la salida de divisas (ISD)', 'expense', true],
 ];
 const assert = (condition: unknown, message: string): void => { if (!condition) throw new Error(message); };
 
@@ -37,6 +40,14 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const key = `COD-${prefix}`; const seq = (profile.sequences[key] ?? 0) + 1; profile.sequences[key] = seq;
     return prefix === 'C' ? `C${20000 + seq - 1}` : prefix === 'V' ? `V${10000 + seq - 1}` : `A${String(seq).padStart(5, '0')}`;
   };
+  // Empresas creadas antes de una versión nueva reciben las cuentas que les faltan (sin tocar las que ya tienen).
+  for (const [codigo, nombre, categoria, imputable] of accountDefinitions) {
+    if (!state.chartOfAccounts.some(a => a.code === codigo)) state.chartOfAccounts.push({ ...meta(codigo), code: codigo, name: nombre, category: categoria, postable: imputable, parentCode: codigo.includes('.') ? codigo.slice(0, codigo.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(categoria) && !['1.1.04', '1.2.02'].includes(codigo)) ? 'D' : 'H', active: true });
+  }
+  /** Saldo (debe − haber) de una cuenta hasta una fecha. */
+  const saldoDeudor = (cuenta: string, hasta: string): number => round(state.journalEntries.filter(e => e.date <= hasta).flatMap(e => e.lines).filter(l => l.accountCode === cuenta).reduce((s, l) => s + l.debit - l.credit, 0));
+  /** Resultado del ejercicio antes de participación de trabajadores e impuesto a la renta (ingresos − costos − gastos). */
+  const resultadoAntesDeImpuestos = (year: number): number => resultadoEjercicio(state, year);
   const award = (key: string, points: number, reference: string, label = key): void => {
     if (!profile.xpHistory.some(e => e.key === key)) { profile.xpHistory.push({ key, label, points, reference, date: now }); profile.xp += points; }
   };
@@ -74,6 +85,11 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const sales = kind === 'sales'; const partners = sales ? state.customers : state.vendors;
     const partner = partners.find(p => p.cardCode === data.cardCode && p.active);
     if (!partner) throw new Error('Selecciona un socio activo.');
+    // ICE: lo fija el artículo (catálogo del SRI), nunca el navegador.
+    data = { ...data, lines: data.lines.map(l => { const it = state.items.find(i => i.itemCode === l.itemCode); return { ...l, ice: iceDeLinea(it?.ice, l.quantity, round(l.quantity * l.price * (1 - l.discount / 100))) }; }) };
+    // RIMPE: un Negocio Popular no cobra IVA (ni como emisor ni como proveedor).
+    if (sales) assert(state.profile?.regimen !== 'rimpe-popular' || data.lines.every(l => l.taxRate === 0), 'Tu empresa es RIMPE Negocio Popular: emite notas de venta sin IVA (tarifa 0 %).');
+    else assert(!('rimpe' in partner) || partner.rimpe !== 'popular' || data.lines.every(l => l.taxRate === 0), `${partner.name} es RIMPE Negocio Popular: entrega nota de venta y no cobra IVA; usa tarifa 0 %. Si necesitas el crédito del IVA, emite una liquidación de compra.`);
     if (sales && 'kind' in partner && partner.kind === 'lead' && docType !== 'quotation') throw new Error('Un lead solo puede recibir cotizaciones.');
     const records = sales ? state.salesOrders : state.purchaseOrders;
     const base = records.find(d => d.id === data.baseDocumentId);
@@ -101,17 +117,17 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const affectsIn = docType === 'goods_receipt' || (docType === 'vendor_invoice' && !base);
     if (affectsOut || affectsIn) for (const line of data.lines) {
       if (state.items.find(i => i.itemCode === line.itemCode)?.type !== 'inventory') continue;
-      const cost = move(line.itemCode, line.warehouseCode, line.quantity * (affectsOut ? -1 : 1), line.price * (1 - line.discount / 100), data.date, id);
+      const cost = move(line.itemCode, line.warehouseCode, line.quantity * (affectsOut ? -1 : 1), line.price * (1 - line.discount / 100) + (affectsIn ? (line.ice ?? 0) / line.quantity : 0), data.date, id);
       inventoryCost += cost;
       const account = inventoryAccount(line.itemCode); inventoryByAccount.set(account, round((inventoryByAccount.get(account) ?? 0) + cost));
     }
     inventoryCost = round(inventoryCost);
     const lines: JournalLine[] = [];
     if (affectsOut && inventoryCost) { lines.push(ledgerLine('5.01', inventoryCost)); inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, 0, cost))); }
-    if (docType === 'invoice') { partner.balance = round(partner.balance + amounts.total); lines.push(ledgerLine('1.1.03', amounts.total), ledgerLine('4.01', 0, amounts.subtotal), ledgerLine('2.1.02', 0, amounts.tax)); }
+    if (docType === 'invoice') { partner.balance = round(partner.balance + amounts.total); lines.push(ledgerLine('1.1.03', amounts.total), ledgerLine('4.01', 0, amounts.subtotal), ledgerLine('2.1.02', 0, amounts.tax), ledgerLine('2.1.11', 0, amounts.ice)); }
     if (docType === 'credit_note' && base) {
       partner.balance = round(partner.balance - amounts.total);
-      lines.push(ledgerLine('4.01', amounts.subtotal), ledgerLine('2.1.02', amounts.tax), ledgerLine('1.1.03', 0, amounts.total));
+      lines.push(ledgerLine('4.01', amounts.subtotal), ledgerLine('2.1.02', amounts.tax), ledgerLine('2.1.11', amounts.ice), ledgerLine('1.1.03', 0, amounts.total));
       const delivery = state.salesOrders.find(d => d.id === base.baseDocumentId);
       const source = delivery?.id ?? base.id;
       let returned = 0;
@@ -123,7 +139,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       partner.balance = round(partner.balance + amounts.total);
       const received = base?.docType === 'goods_receipt' ? round(state.stockMovements.filter(m => m.reference === base.id).reduce((s, m) => s + m.value, 0)) : inventoryCost;
       if (received) { if (base?.docType === 'goods_receipt') lines.push(ledgerLine('2.1.06', received)); else inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, cost))); }
-      const other = round(amounts.subtotal - received);
+      const other = round(amounts.subtotal + amounts.ice - received);
       if (other >= 0) lines.push(ledgerLine('6.03', other)); else lines.push(ledgerLine('6.05', 0, -other));
       lines.push(ledgerLine('1.1.06', amounts.tax), ledgerLine('2.1.01', 0, amounts.total));
     }
@@ -180,15 +196,17 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const d = command.data; const bank = state.bankAccounts.find(b => b.id === d.bankAccountId && b.active); if (!bank) throw new Error('Cuenta bancaria inexistente.');
       const deposit = d.type === 'deposit'; const records = [...state.salesOrders, ...state.purchaseOrders]; const invoice = records.find(doc => doc.id === d.documentId);
       let counterpart = d.counterpartAccount;
+      const retIR = d.retentionIR ?? 0; const retIVA = d.retentionIVA ?? 0; const settle = round(d.amount + retIR + retIVA);
+      assert(!(retIR || retIVA) || (deposit && d.documentId), 'Las retenciones recibidas se registran al cobrar una factura de venta.');
       if (d.documentId) {
         assert(invoice && (deposit ? invoice.docType === 'invoice' : ['vendor_invoice', 'debit_note', 'credit_note'].includes(invoice.docType)), 'Selecciona una factura o nota de débito compatible.');
-        if (!invoice) break; assert(invoice.status === 'open' && round(invoice.paidAmount + d.amount) <= invoice.total, 'Pago excedido o factura cerrada.');
-        counterpart = deposit || invoice.docType === 'credit_note' ? '1.1.03' : '2.1.01'; invoice.paidAmount = round(invoice.paidAmount + d.amount); invoice.status = invoice.paidAmount === invoice.total ? 'closed' : 'open'; invoice.updatedAt = now;
-        const partner = (deposit || invoice.docType === 'credit_note' ? state.customers : state.vendors).find(p => p.cardCode === invoice.cardCode); if (partner) { partner.balance = round(partner.balance + (invoice.docType === 'credit_note' ? d.amount : -d.amount)); partner.updatedAt = now; }
+        if (!invoice) break; assert(invoice.status === 'open' && round(invoice.paidAmount + settle) <= invoice.total, 'Pago excedido o factura cerrada.');
+        counterpart = deposit || invoice.docType === 'credit_note' ? '1.1.03' : '2.1.01'; invoice.paidAmount = round(invoice.paidAmount + settle); invoice.status = invoice.paidAmount === invoice.total ? 'closed' : 'open'; invoice.updatedAt = now;
+        const partner = (deposit || invoice.docType === 'credit_note' ? state.customers : state.vendors).find(p => p.cardCode === invoice.cardCode); if (partner) { partner.balance = round(partner.balance + (invoice.docType === 'credit_note' ? settle : -settle)); partner.updatedAt = now; }
       }
       assert(counterpart !== bank.ledgerAccount, 'Selecciona una contrapartida distinta de bancos.');
       assert(deposit || bank.balance >= d.amount, 'Saldo bancario insuficiente.'); result = next('BAN', d.date);
-      const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine(counterpart, 0, d.amount)] : [ledgerLine(counterpart, d.amount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
+      const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine('1.1.10', retIR), ledgerLine('1.1.11', retIVA), ledgerLine(counterpart, 0, settle)] : [ledgerLine(counterpart, d.amount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
       bank.balance = round(bank.balance + (deposit ? d.amount : -d.amount)); bank.updatedAt = now;
       state.bankTransactions.push({ ...meta(result), ...d, counterpartAccount: counterpart, transactionId: result, reconciled: false, statementAmount: null, journalEntryId }); break;
     }
@@ -203,8 +221,78 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const lines = d.lines.map(input => { const employee = state.employees.find(e => e.employeeCode === input.employeeCode && e.active); if (!employee) throw new Error('Empleado inactivo o inexistente.'); assert(employee.contract !== 'fees', 'Honorarios se procesan como compra de servicios, no como nómina.'); assert(employee.hireDate <= d.date, 'Empleado aún no contratado.'); assert(!state.payrollRuns.some(p => p.period === d.period && p.lines.some(l => l.employeeCode === input.employeeCode)), 'Empleado ya liquidado en este mes.'); return payrollLine(employee, input, d.period, d.sbu); });
       const sum = (key: keyof typeof lines[number]) => round(lines.reduce((s, l) => s + (typeof l[key] === 'number' ? l[key] as number : 0), 0));
       result = next('ROL', d.date); const provisions = round(sum('thirteenthProvision') + sum('fourteenthProvision') + sum('reserveProvision') + sum('vacationProvision'));
-      const journalEntryId = post(d.date, `Nómina ${d.period}`, 'payroll', result, [ledgerLine('6.01', sum('income')), ledgerLine('6.02', sum('employerIESS')), ledgerLine('6.04', provisions), ledgerLine('2.1.05', 0, sum('net')), ledgerLine('2.1.04', 0, sum('personalIESS') + sum('employerIESS')), ledgerLine('1.1.08', 0, sum('advances')), ledgerLine('2.1.08', 0, sum('otherDeductions')), ledgerLine('2.1.07', 0, provisions)]);
+      const journalEntryId = post(d.date, `Nómina ${d.period}`, 'payroll', result, [ledgerLine('6.01', sum('income')), ledgerLine('6.02', sum('employerIESS')), ledgerLine('6.04', provisions), ledgerLine('2.1.05', 0, sum('net')), ledgerLine('2.1.04', 0, sum('personalIESS') + sum('employerIESS')), ledgerLine('2.1.03', 0, sum('incomeTax')), ledgerLine('1.1.08', 0, sum('advances')), ledgerLine('2.1.08', 0, sum('otherDeductions')), ledgerLine('2.1.07', 0, provisions)]);
       state.payrollRuns.push({ ...meta(result), payrollId: result, date: d.date, period: d.period, sbu: d.sbu, lines, totalIncome: sum('income'), totalDeductions: sum('deductions'), totalNet: sum('net'), employerIESS: sum('employerIESS'), journalEntryId, status: 'posted' }); award('payroll', 400, result, 'Primera nómina'); break;
+    }
+    case 'profitShare': {
+      const d = command.data; assert(d.date.startsWith(`${d.year}-`), 'La fecha debe estar dentro del ejercicio.');
+      assert(!state.taxRuns.some(r => r.kind === 'utilidades' && r.year === d.year), `Las utilidades de ${d.year} ya fueron calculadas.`);
+      const utilidad = d.profit ?? resultadoAntesDeImpuestos(d.year);
+      assert(utilidad > 0, `No hay utilidad en ${d.year} (${utilidad.toFixed(2)}): sin utilidad no hay participación de trabajadores.`);
+      const empleados = state.employees.filter(e => e.contract !== 'fees' && e.hireDate <= `${d.year}-12-31`);
+      assert(empleados.length > 0, 'No hay empleados que participen en las utilidades.');
+      const dias = (e: { hireDate: string }) => Math.round((Date.parse(`${d.year}-12-31`) - Date.parse(e.hireDate > `${d.year}-01-01` ? e.hireDate : `${d.year}-01-01`)) / 86400000) + 1;
+      const totalDias = empleados.reduce((s, e) => s + dias(e), 0); const totalCargas = empleados.reduce((s, e) => s + (e.dependents ?? 0), 0);
+      const pool10 = utilidad * 0.10; const pool5 = utilidad * 0.05; const tope = round(24 * profile.sbu);
+      const reparto = empleados.map(e => {
+        const p10 = pool10 * dias(e) / totalDias; const p5 = totalCargas > 0 ? pool5 * (e.dependents ?? 0) / totalCargas : pool5 * dias(e) / totalDias;
+        const total = round(p10 + p5); const pagar = Math.min(total, tope);
+        return { e, dias: dias(e), p10: round(p10), p5: round(p5), total, pagar, exceso: round(total - pagar) };
+      });
+      const totalPool = round(reparto.reduce((s, r) => s + r.total, 0)); const totalPagar = round(reparto.reduce((s, r) => s + r.pagar, 0)); const totalExceso = round(totalPool - totalPagar);
+      result = next('TAX', d.date);
+      const journalEntryId = post(d.date, `Participación de trabajadores en utilidades ${d.year}`, 'tax', result, [ledgerLine('6.06', totalPool), ledgerLine('2.1.09', 0, totalPagar), ledgerLine('2.1.04', 0, totalExceso)]);
+      state.taxRuns.push({ ...meta(result), runId: result, kind: 'utilidades', year: d.year, date: d.date, title: `Utilidades de los trabajadores ${d.year}`, journalEntryId,
+        figures: { utilidad, participacion: totalPool, pagar: totalPagar, excesoAlIESS: totalExceso, tope },
+        lines: [{ label: 'Utilidad líquida del ejercicio', value: utilidad.toFixed(2), note: 'ingresos − costos − gastos, antes de participación e impuesto a la renta' }, { label: '15 % para trabajadores', value: totalPool.toFixed(2), note: '10 % por días trabajados + 5 % por cargas familiares' },
+          ...reparto.map(r => ({ label: `${r.e.firstName} ${r.e.lastName}`, value: r.pagar.toFixed(2), note: `${r.dias} días · 10 %: ${r.p10.toFixed(2)} · 5 %: ${r.p5.toFixed(2)}${r.exceso ? ` · excede el tope de 24 SBU en ${r.exceso.toFixed(2)} (va al IESS)` : ''}` }))] });
+      break;
+    }
+    case 'incomeTaxClose': {
+      const d = command.data; assert(d.date.startsWith(`${d.year}-`) || d.date.startsWith(`${d.year + 1}-`), 'La fecha debe corresponder al cierre del ejercicio.');
+      assert((profile.regimen ?? 'general') === 'general', 'Los RIMPE pagan el impuesto a la renta con su propio régimen (no con la tarifa general de sociedades): este cierre es solo para el régimen general.');
+      assert(!state.taxRuns.some(r => r.kind === 'renta' && r.year === d.year), `El impuesto a la renta de ${d.year} ya fue calculado.`);
+      const util = state.taxRuns.find(r => r.kind === 'utilidades' && r.year === d.year);
+      if (!util) throw new Error(`Primero calcula las utilidades de los trabajadores de ${d.year}: la participación es deducible del impuesto a la renta.`);
+      const base = round(Math.max(0, util.figures.utilidad - util.figures.participacion)); const ir = round(base * profile.incomeTaxRate / 100);
+      const fin = `${d.year}-12-31`; const anticipo = Math.max(0, saldoDeudor('1.1.09', fin)); const retenciones = Math.max(0, saldoDeudor('1.1.10', fin));
+      const usadoAnt = round(Math.min(anticipo, ir)); const usadoRet = round(Math.min(retenciones, ir - usadoAnt)); const pagar = round(ir - usadoAnt - usadoRet);
+      result = next('TAX', d.date);
+      let journalEntryId = '';
+      if (ir > 0) journalEntryId = post(d.date, `Impuesto a la renta ${d.year}`, 'tax', result, [ledgerLine('6.07', ir), ledgerLine('1.1.09', 0, usadoAnt), ledgerLine('1.1.10', 0, usadoRet), ledgerLine('2.1.10', 0, pagar)]);
+      state.taxRuns.push({ ...meta(result), runId: result, kind: 'renta', year: d.year, date: d.date, title: `Impuesto a la renta ${d.year}`, journalEntryId,
+        figures: { utilidad: util.figures.utilidad, participacion: util.figures.participacion, base, tarifa: profile.incomeTaxRate, ir, anticipo: usadoAnt, retenciones: usadoRet, pagar, saldoAFavor: round(anticipo + retenciones - usadoAnt - usadoRet) },
+        lines: [{ label: 'Utilidad antes de participación e impuesto', value: util.figures.utilidad.toFixed(2), note: '' }, { label: '(−) Participación de trabajadores 15 %', value: util.figures.participacion.toFixed(2), note: 'deducible' }, { label: 'Base del impuesto a la renta', value: base.toFixed(2), note: 'sin conciliación tributaria (simplificación didáctica)' },
+          { label: `Impuesto a la renta causado ${profile.incomeTaxRate} %`, value: ir.toFixed(2), note: '' }, { label: '(−) Anticipo pagado', value: usadoAnt.toFixed(2), note: 'cuenta 1.1.09' }, { label: '(−) Retenciones de renta recibidas', value: usadoRet.toFixed(2), note: 'cuenta 1.1.10' }, { label: 'Impuesto a pagar', value: pagar.toFixed(2), note: 'cuenta 2.1.10' }] });
+      break;
+    }
+    case 'incomeTaxAdvance': {
+      const d = command.data; const renta = state.taxRuns.find(r => r.kind === 'renta' && r.year === d.year);
+      if (!renta) throw new Error(`Primero cierra el impuesto a la renta de ${d.year}: el anticipo se calcula sobre el impuesto causado.`);
+      assert(!state.taxRuns.some(r => r.kind === 'anticipo' && r.year === d.year), `El anticipo basado en ${d.year} ya fue calculado.`);
+      const retenciones = renta.figures.retenciones; const total = round(Math.max(0, renta.figures.ir * 0.5 - retenciones)); const cuota = round(total / 2);
+      result = next('TAX', d.date);
+      state.taxRuns.push({ ...meta(result), runId: result, kind: 'anticipo', year: d.year, date: d.date, title: `Anticipo voluntario de impuesto a la renta (base ${d.year})`, journalEntryId: '',
+        figures: { irCausado: renta.figures.ir, retenciones, anticipo: total, cuota },
+        lines: [{ label: 'Impuesto a la renta causado', value: renta.figures.ir.toFixed(2), note: '' }, { label: '50 % del impuesto causado', value: round(renta.figures.ir * 0.5).toFixed(2), note: '' }, { label: '(−) Retenciones de renta del ejercicio', value: retenciones.toFixed(2), note: '' }, { label: 'Anticipo', value: total.toFixed(2), note: 'se paga en dos cuotas iguales' }, { label: 'Cuota de julio', value: cuota.toFixed(2), note: 'contrapartida 1.1.09 Anticipo de impuesto a la renta' }, { label: 'Cuota de septiembre', value: cuota.toFixed(2), note: 'contrapartida 1.1.09 Anticipo de impuesto a la renta' }] });
+      break;
+    }
+    case 'foreignPayment': {
+      const d = command.data; const bank = state.bankAccounts.find(b => b.id === d.bankAccountId && b.active); if (!bank) throw new Error('Cuenta bancaria inexistente.');
+      const tarifa = ISD_TARIFAS.find(t => t.id === d.tarifa); if (!tarifa) throw new Error('Tarifa de ISD no vigente en 2026.');
+      assert(d.imputacion === 'gasto' || d.destination === 'importacion', 'El ISD solo es crédito tributario cuando el pago es por importación de materias primas, insumos o bienes de capital; en otros pagos va al gasto.');
+      const isd = round(d.amount * tarifa.rate / 100); const proveedor = d.vendorCode ? state.vendors.find(v => v.cardCode === d.vendorCode) : undefined;
+      if (d.vendorCode) assert(proveedor, 'Proveedor inexistente.');
+      assert(bank.balance >= round(d.amount + isd), `Saldo bancario insuficiente: necesitas ${(d.amount + isd).toFixed(2)} (pago ${d.amount.toFixed(2)} + ISD ${isd.toFixed(2)}).`);
+      result = next('BAN', d.date);
+      const principal = proveedor ? '2.1.01' : '6.03';
+      const journalEntryId = post(d.date, `Pago al exterior: ${d.concept}`, 'bank', result, [ledgerLine(principal, d.amount), ledgerLine(d.imputacion === 'credito' ? '1.1.12' : '6.08', isd), ledgerLine(bank.ledgerAccount, 0, round(d.amount + isd))]);
+      if (proveedor) { proveedor.balance = round(proveedor.balance - d.amount); proveedor.updatedAt = now; }
+      bank.balance = round(bank.balance - d.amount - isd); bank.updatedAt = now;
+      state.bankTransactions.push({ ...meta(result), transactionId: result, bankAccountId: bank.id, date: d.date, type: 'payment', amount: round(d.amount + isd), counterpartAccount: principal, reference: d.reference || d.concept, documentId: '', reconciled: false, statementAmount: null, journalEntryId });
+      state.taxRuns.push({ ...meta(`${result}-ISD`), runId: `${result}-ISD`, kind: 'isd', year: Number(d.date.slice(0, 4)), date: d.date, title: `ISD · ${d.concept}`, journalEntryId, figures: { pago: d.amount, tarifa: tarifa.rate, isd, total: round(d.amount + isd) },
+        lines: [{ label: 'Pago al exterior', value: d.amount.toFixed(2), note: d.concept }, { label: `ISD ${tarifa.rate} %`, value: isd.toFixed(2), note: d.imputacion === 'credito' ? 'crédito tributario (1.1.12)' : 'gasto (6.08)' }, { label: 'Total que sale del banco', value: round(d.amount + isd).toFixed(2), note: '' }] });
+      break;
     }
     case 'sri': {
       const d = command.data; assert([...state.customers, ...state.vendors].some(p => p.cardCode === d.partnerCode), 'Beneficiario inexistente.');
@@ -217,6 +305,12 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         const baseIR = round(d.retentionLines.filter(l => l.tax === 'IR').reduce((s, l) => s + l.base, 0)); const baseIVA = round(d.retentionLines.filter(l => l.tax === 'IVA').reduce((s, l) => s + l.base, 0));
         assert(baseIR <= round(sustento.subtotal + 0.01), `La base de la retención de renta (${baseIR.toFixed(2)}) no puede superar el subtotal sin IVA de la factura (${sustento.subtotal.toFixed(2)}).`);
         assert(baseIVA <= round(sustento.tax + 0.01), `La retención del IVA se calcula sobre el IVA de la factura (${sustento.tax.toFixed(2)}), no sobre la base imponible. Tu base de IVA es ${baseIVA.toFixed(2)}.`);
+      }
+      assert(!(d.docType === '01' && profile.regimen === 'rimpe-popular'), 'Un RIMPE Negocio Popular no emite factura electrónica: entrega nota de venta RIMPE.');
+      if (d.docType === '07') {
+        const prov = state.vendors.find(v => v.cardCode === d.partnerCode);
+        if (prov?.rimpe === 'popular') assert(d.retentionLines.every(l => l.rate === 0), `${prov.name} es Negocio Popular: no se le retiene renta ni IVA (código 332, 0 %).`);
+        if (prov?.rimpe === 'emprendedor') assert(d.retentionLines.filter(l => l.tax === 'IR').every(l => opcionRetencion(l.code)?.codigo === '343'), `${prov.name} es RIMPE Emprendedor: la retención de renta es del 1 % (código 343).`);
       }
       const key = `SRI-${d.docType}-${d.series}`; const seq = (profile.sequences[key] ?? 0) + 1; profile.sequences[key] = seq;
       result = sriAccessKey(d.date, d.docType, profile.ruc, d.series, seq, String(seq).padStart(8, '0'));
@@ -489,7 +583,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       // Un RUC con estructura imposible (provincia, tercer dígito, cédula base) se rechaza al guardar; el dígito
       // verificador de una sociedad solo advierte porque el SRI ha emitido RUC que no cumplen el módulo 11.
       const rucRevisado = revisarIdentificacion(d.ruc); assert(!rucRevisado.error, rucRevisado.error ?? '');
-      Object.assign(profile, { companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
+      Object.assign(profile, { regimen: d.regimen ?? profile.regimen ?? 'general', companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
       result = uid; break;
     }
     case 'serviceContract': {

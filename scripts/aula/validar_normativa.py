@@ -112,6 +112,10 @@ def revisar_texto(texto, donde, errores):
             if valor is None:
                 continue
             despues = plano(frase[m.end(): m.end() + 25])
+            # Otros impuestos con su propio porcentaje (ICE, ISD, utilidades, impuesto a la renta de la empresa) no son tarifas de IVA ni retenciones.
+            if re.search(r"(^|[^a-z])(ice|isd)([^a-z][^%]{0,30})?$", plano(frase[: m.start()])) or re.match(r"\s*(de|del)\s+(ice|isd)([^a-z]|$)|\s*ad\s+valorem", despues):
+                anterior = None
+                continue
             # "el 30 % del IVA" es siempre una retención (un porcentaje del impuesto, no una tarifa).
             # "2 % de renta" o "2 % del impuesto a la renta" es retención de renta aunque antes se hable del IVA.
             if es_renta_despues(frase[m.end(): m.end() + 80], frase[: m.start()]):
@@ -301,7 +305,7 @@ def revisar_nomina(texto, donde, errores):
     for v in valores(r"fondos? de reserva[^.%0-9]{0,40}(\d+[.,]?\d*) ?%"):
         if abs(v - 8.33) > 0.011:
             errores.append(f"{donde}: los fondos de reserva son 8,33 % (1/12), no {v:g} %")
-    for m in re.finditer(r"(?:sbu|salario basico unificado)(?: 20\d\d)?[^.0-9]{0,30}(?:usd|\$)? ?(\d[\d.,]*)", t):
+    for m in re.finditer(r"(?<![\d] )(?<!\d)(?:sbu|salario basico unificado)(?: 20\d\d)?[^.0-9]{0,30}(?:usd|\$)? ?(\d[\d.,]*)", t):
         v = numero(m.group(1))
         if v is not None and v >= 100 and abs(v - 482) > 0.001:
             errores.append(f"{donde}: el SBU 2026 es USD 482, no {v:g}")
