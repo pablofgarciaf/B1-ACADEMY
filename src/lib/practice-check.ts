@@ -64,6 +64,8 @@ export interface IntentoPractica {
   intentos: number;
   /** true si abrió la solución antes de completar la práctica. */
   vioSolucion: boolean;
+  /** true si se hizo en una pantalla real del Simulador (el servidor verifica el registro en la empresa). */
+  conectada?: boolean;
 }
 
 /**

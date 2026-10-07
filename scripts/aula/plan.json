@@ -8,7 +8,7 @@
       { "id": "mod1-c4", "titulo": "Preferencias de Usuario y Búsquedas", "manuales": ["1.2_Primeros_Pasos_en_SAP_Business_One", "20.3_Configuraciones_Clave_del_Sistema"] }
     ]},
     { "id": "mod-2", "titulo": "Núcleo Maestro ERP", "clases": [
-      { "id": "mod2-c1", "titulo": "Socio de Negocios (OCRD)", "manuales": ["2.3_Datos_Maestros_de_Clientes", "1.3_Documentos_y_Datos_Maestros_Concept"] },
+      { "id": "mod2-c1", "titulo": "Socio de Negocios (OCRD)", "manuales": ["2.3_Datos_Maestros_de_Clientes"] },
       { "id": "mod2-c2", "titulo": "Datos Maestros de Artículo (OITM)", "manuales": ["4.1_Datos_Maestros_de_Articulos", "4.2_Grupos_de_Articulos"] },
       { "id": "mod2-c3", "titulo": "Gestión de Unidades de Medida", "manuales": ["4.3_Unidades_de_Medida_Vision_General", "4.4_Unidades_de_Medida_Configuracion"] },
       { "id": "mod2-c4", "titulo": "Determinación Estándar de Precios", "manuales": ["8.1_Determinacion_de_Precios_Conceptos", "8.2_Creacion_de_Listas_de_Precios"] }

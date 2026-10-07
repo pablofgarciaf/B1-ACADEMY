@@ -43,6 +43,8 @@ import GuidedOverlay from './GuidedOverlay';
 import SAPScreenRenderer from '@/components/sap-screens/SAPScreenRenderer';
 import PracticaValidada, { type CampoPractica } from './PracticaValidada';
 import type { IntentoPractica } from '@/lib/practice-check';
+import { pantallaConectada } from '@/lib/practica-conectada';
+import PracticaConectada from './PracticaConectada';
 
 /** Índice del buscador del menú (lupa / F3): enseña dónde vive cada formulario de SAP B1. */
 const SAP_SEARCH_INDEX: { name: string; path: string }[] = [
@@ -617,6 +619,24 @@ export default function SAPInteractiveSimulator({
     setStepSuccessMsg("¡Pago Recibido #804 contabilizado y conciliado!");
     completeMission(1800);
   };
+
+  // Prácticas conectadas: si la práctica corresponde a una pantalla real del Simulador, el estudiante la hace
+  // en SU empresa (Supabase), eligiendo de listas sus propios datos.
+  const conectada = stepGuide?.campos?.length ? pantallaConectada(stepGuide) : null;
+  if (stepGuide && conectada) {
+    return (
+      <div className={`${scrollInterno ? 'h-full overflow-y-auto' : 'min-h-full'} rounded-lg`}>
+        <PracticaConectada
+          guia={stepGuide}
+          pantalla={conectada}
+          onCompleta={(intento) => {
+            (stepGuide.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
+            completeMission(200, intento);
+          }}
+        />
+      </div>
+    );
+  }
 
   // Prácticas de Mi Aula con campos a evaluar: pantalla y datos salen de la misma instrucción de la clase,
   // se valida cada valor y solo se vuelve a la clase cuando todo está correcto.
