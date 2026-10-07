@@ -16,7 +16,7 @@
 - **Tarifas:** IVA solo 0 %, 5 %, 8 %, 15 %; retención de renta solo 0, 1, 1,75, 2, 3, 5, 10 %; retención de IVA solo 10, 20, 30, 70, 100 %.
 - **Naturaleza del IVA:** en una compra es crédito tributario (debe), en una venta es IVA cobrado (haber).
 - **Nómina:** aporte personal 9,45 %, patronal 11,15 % (12,15 % con IECE y SECAP), fondos de reserva 8,33 %, SBU 482.
-- **Motor del simulador:** 44 pruebas automáticas (`npm run test:motor`) cubren retenciones, autorización SRI simulada, banca y nómina.
+- **Motor del simulador:** 98 pruebas automáticas (`npm run test:motor`) cubren retenciones, autorización SRI simulada, banca y nómina.
 
 ## 3. Para el contador — tabla de retenciones del simulador (`src/lib/sri-catalogo.ts`)
 
