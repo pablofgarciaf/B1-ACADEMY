@@ -430,8 +430,21 @@ export default function ManualViewer({
   // ── Modo narrado: sin archivo de video, Jorge narra cada lámina con su guion (clase_sync.json) ──
   // Es lo mismo que el video (lámina fija + voz), pero sin almacenar gigas de MP4 en el hosting.
   const narrable = !videoUrl && !!syncData && syncData.length > 0;
-  const { isSpeaking, needsGesture, speakText, stopSpeaking, resumeAfterGesture, preload } = useAcademyVoice();
+  const { isSpeaking, needsGesture, vozFallo, speakText, stopSpeaking, resumeAfterGesture, preload } = useAcademyVoice();
   const [narrando, setNarrando] = useState(false);
+
+  // La clase arranca sola 2 segundos después de abrir el manual (como un video).
+  // Si el navegador bloquea el audio por no haber interacción previa, se muestra el botón "Escuchar a Jorge".
+  useEffect(() => {
+    if (!narrable) return;
+    const inicio = setTimeout(() => setNarrando(true), 2000);
+    return () => clearTimeout(inicio);
+  }, [narrable]);
+
+  // Si la voz no responde, la clase se detiene en la lámina actual: nunca avanza en silencio.
+  useEffect(() => {
+    if (vozFallo && narrando) { stopSpeaking(); setNarrando(false); }
+  }, [vozFallo, narrando, stopSpeaking]);
 
   useEffect(() => {
     if (!narrable || !narrando) return;
@@ -522,6 +535,20 @@ export default function ManualViewer({
                 />
               ) : (
                 <div className="text-gray-500">No hay imágenes disponibles para este manual</div>
+              )}
+
+              {/* Botón superpuesto si el navegador bloqueó el autoplay de audio */}
+              {needsGesture && (
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center z-20 p-4 text-center">
+                  <button
+                    onClick={resumeAfterGesture}
+                    className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-2xl transition-all active:scale-95 animate-pulse"
+                  >
+                    <Volume2 size={20} />
+                    <span>Escuchar narración de Jorge</span>
+                  </button>
+                  <p className="mt-2 text-xs text-amber-200/90 font-medium">Haz clic para activar el audio de la clase</p>
+                </div>
               )}
             </div>
           )}

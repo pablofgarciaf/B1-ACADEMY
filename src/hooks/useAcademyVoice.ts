@@ -54,6 +54,8 @@ export function useAcademyVoice() {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [needsGesture, setNeedsGesture] = useState(false);
+  /** true si el servicio de voz no respondió (red, 401, 503) en la última narración. */
+  const [vozFallo, setVozFallo] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const tokenRef = useRef(0);
@@ -86,6 +88,7 @@ export function useAcademyVoice() {
     const token = tokenRef.current;
     clearPlayback();
     setNeedsGesture(false);
+    setVozFallo(false);
     let finished = false;
     const finish = () => {
       if (token !== tokenRef.current || finished) return;
@@ -122,6 +125,7 @@ export function useAcademyVoice() {
       .catch(() => {
         if (token !== tokenRef.current) return;
         setIsSpeaking(false);
+        setVozFallo(true); // quien use el hook puede detenerse en lugar de avanzar en silencio
         timerRef.current = setTimeout(finish, readingTimeMs(text, velocidadRef.current));
       });
   }, [clearPlayback]);
@@ -162,5 +166,5 @@ export function useAcademyVoice() {
 
   useEffect(() => () => { tokenRef.current += 1; clearPlayback(); }, [clearPlayback]);
 
-  return { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload, velocidad, cambiarVelocidad };
+  return { isSpeaking, isMuted, needsGesture, vozFallo, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload, velocidad, cambiarVelocidad };
 }

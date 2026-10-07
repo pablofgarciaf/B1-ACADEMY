@@ -128,6 +128,29 @@ Para evitar forzar simulaciones transaccionales en temas puramente teóricos o m
    * Configurados con `requiresSimulator: false` y `archetype: 'none'`.
    * La pestaña del simulador en el aula muestra una **tarjeta pedagógica ilustrada de fundamentos** que explica los conceptos clave de la lección y redirige al alumno a profundizar en el video 1080p, teleprompter, tutor IA y prepararse para el Examen (35s), con acceso directo opcional a explorar el sistema libre en `/simulador`.
 
+## 🎙️ Modo Narrado Multimodal y Voz Oficial de Jorge
+
+Para garantizar una experiencia equivalente a una masterclass en video sin depender del peso de gigabytes de archivos `.mp4` en el despliegue de hosting:
+
+```mermaid
+graph LR
+    A[Apertura de Manual] -->|Espera 2s| B[Arranque Automático de Narración]
+    B --> C{Autoplay Permitido?}
+    C -->|Sí| D[Síntesis de Audio /api/tts]
+    C -->|No / Bloqueo Navegador| E[Overlay Desbloqueo: 'Escuchar narración de Jorge']
+    E -->|Clic Usuario| D
+    D -->|HMAC Válido| F[Streaming es-MX-JorgeNeural]
+    F --> G[Sincronización Teleprompter + Láminas WebP]
+    G --> H{¿Hay Práctica step_guide?}
+    H -->|Sí| I[Pausa Automática + Apertura Simulador]
+    H -->|No| J[Avance Automático a la Siguiente Lámina]
+```
+
+1. **Arranque Automático en 2 Segundos:** El visor inicia la locución de forma automática tras 2 segundos para dar tiempo al renderizado visual y evitar cortes bruscos.
+2. **Desbloqueo de Audio Transparente:** Si la política de autoplay del navegador bloquea el audio no interactuado, se despliega una tarjeta de acción clara (*"Escuchar narración de Jorge"*) que al hacer clic reanuda la clase al instante.
+3. **Firmado Criptográfico Multi-Clave:** Cada guion cuenta con una firma HMAC calculada con `TTS_BUILD_SECRET` o variables de entorno, evitando errores 401 en producción sin requerir configuraciones manuales complejas.
+4. **Mapeo Canónico de Metadatos:** Resolución biunívoca entre la numeración académica moderna (`1.1_Introduccion_a_SAP_Business_One`) y los códigos oficiales (`10_Intro_11_Overview_IntroSAPB1_ES`), garantizando que cada examen técnico y cada configuración de simulador se conecten con precisión milimétrica.
+
 ---
 
 ## 🔗 Documentos Relacionados (Obsidian Vault)

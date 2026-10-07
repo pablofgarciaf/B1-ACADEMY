@@ -3,6 +3,10 @@
 // Clasificación exacta: Teóricos (sin formulario) vs Prácticos (9 arquetipos)
 // ═══════════════════════════════════════════════════════════════════
 
+// Tabla pequeña de equivalencias (10 KB): este registro lo usa el simulador en el navegador,
+// así que no se importa manuals-120-data (225 KB).
+import { legacyManualCode } from './manual-legacy-codes';
+
 export type SimulatorArchetype =
   | "query"           // Generador de Consultas SQL (Query Generator)
   | "sales"           // Documentos de Ventas (OQUT / ORDR / OINV)
@@ -979,6 +983,13 @@ export function getManualSimulatorConfig(manualId: string): ManualSimulatorConfi
   if (MANUAL_SIMULATOR_MAP[manualId]) {
     return MANUAL_SIMULATOR_MAP[manualId];
   }
+
+  // Resolver correspondencia con código original (ej. 1.1_Introduccion_a_SAP_Business_One -> 10_Intro_11_Overview_IntroSAPB1_ES)
+  const legacyCode = legacyManualCode(manualId);
+  if (legacyCode && MANUAL_SIMULATOR_MAP[legacyCode]) {
+    return MANUAL_SIMULATOR_MAP[legacyCode];
+  }
+
   // Fallback inteligente por coincidencia de texto
   const lower = manualId.toLowerCase();
   if (lower.includes("query") || lower.includes("csi08")) {

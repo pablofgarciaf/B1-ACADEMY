@@ -48,20 +48,13 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
       .map(f => `/Capacitacion SAP/${manualId}/Imagenes_Diapositivas/${f}`);
   }
 
-  // 3. Usar el video solo cuando corresponde al guion vigente. Los manuales
-  // fueron reconstruidos y algunos equipos conservan un MP4 anterior junto a
-  // las nuevas láminas; mezclar ambos hace que imagen, voz y teleprompter difieran.
-  let videoUrl: string | undefined = undefined;
-  const videoFile = path.join(manualDir, 'clase_video.mp4');
-  const syncFile = path.join(manualDir, 'clase_sync.json');
-  const videoIsCurrent = fs.existsSync(videoFile) && (
-    !fs.existsSync(syncFile) || fs.statSync(videoFile).mtimeMs >= fs.statSync(syncFile).mtimeMs
-  );
-  if (videoIsCurrent) {
-    videoUrl = `/Capacitacion SAP/${manualId}/clase_video.mp4`;
-  }
+  // 3. El estándar oficial de la academia es el Modo Interactivo Narrado:
+  // láminas nítidas extraídas de los manuales oficiales + teleprompter sincronizado +
+  // voz de Jorge con arranque automático a los 2s + simulador SAP + quiz.
+  const videoUrl: string | undefined = undefined;
 
   // 4. Leer los metadatos de sincronización (JSON Teleprompter)
+  const syncFile = path.join(manualDir, 'clase_sync.json');
   let syncData: SyncData[] | undefined = undefined;
   if (fs.existsSync(syncFile)) {
     try {

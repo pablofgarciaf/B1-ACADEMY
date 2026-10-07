@@ -1,4 +1,5 @@
 import path from 'path';
+import { randomBytes } from 'crypto';
 import { fileURLToPath } from 'url';
 import { PHASE_DEVELOPMENT_SERVER } from 'next/constants.js';
 
@@ -8,6 +9,10 @@ const __dirname = path.dirname(__filename);
 /** @type {import('next').NextConfig} */
 const baseConfig = {
   outputFileTracingRoot: __dirname,
+  // Clave de respaldo para firmar los guiones narrados de los manuales (src/lib/tts-firma.ts, solo servidor).
+  // Se genera una vez por build y queda fija en ese build: las páginas firmadas y /api/tts usan la misma.
+  // Sin esto, si Vercel no tiene TTS_SIGNING_SECRET, la voz de Jorge responde 401 y las láminas pasan mudas.
+  env: { TTS_BUILD_SECRET: randomBytes(32).toString('hex') },
   // msedge-tts opens a real Node.js WebSocket. Bundling ws rewrites its
   // optional native buffer helper and breaks speech at runtime (mask is not a
   // function), so keep these packages as Node dependencies in the server trace.

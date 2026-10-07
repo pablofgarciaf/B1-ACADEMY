@@ -1,3 +1,5 @@
+import { legacyManualCode } from './manual-legacy-codes';
+
 export interface QuizQuestion {
   q: string;
   options: string[];
@@ -735,6 +737,12 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
 export function getQuizForManual(manualId: string, manualTitle: string, manualCategory: string): QuizQuestion[] {
   if (MANUAL_SPECIFIC_QUIZZES[manualId]) {
     return MANUAL_SPECIFIC_QUIZZES[manualId];
+  }
+
+  // Resolver correspondencia con código original (ej. 1.1_Introduccion_a_SAP_Business_One -> 10_Intro_11_Overview_IntroSAPB1_ES)
+  const legacyCode = legacyManualCode(manualId);
+  if (legacyCode && MANUAL_SPECIFIC_QUIZZES[legacyCode]) {
+    return MANUAL_SPECIFIC_QUIZZES[legacyCode];
   }
 
   return [
