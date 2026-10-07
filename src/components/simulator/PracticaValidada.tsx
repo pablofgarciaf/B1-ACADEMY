@@ -8,7 +8,8 @@ import {
 } from 'lucide-react';
 import { normalizar, coincide, SI, esBooleano, type IntentoPractica } from '@/lib/practice-check';
 import { useAuth } from '@/context/AuthContext';
-import { getCompany, initializeCompany } from '@/lib/firestore-company';
+import { getCompany } from '@/lib/firestore-company';
+import { EMPRESA_CURSO } from '@/lib/b1-center-datos';
 
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
 export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
@@ -109,8 +110,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   // ("Mi Empresa", "Pruebas"…). undefined = cargando o sin conexión; null = aún no ha creado su empresa.
   const { currentUser } = useAuth();
   const [empresa, setEmpresa] = useState<string | null | undefined>(undefined);
-  const [nombreNueva, setNombreNueva] = useState('');
-  const [creandoEmpresa, setCreandoEmpresa] = useState(false);
   useEffect(() => {
     if (!currentUser) return;
     let activo = true;
@@ -119,14 +118,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       .catch(() => { if (activo) setEmpresa(undefined); });
     return () => { activo = false; };
   }, [currentUser]);
-  const crearEmpresa = async () => {
-    const nombre = nombreNueva.trim();
-    if (!currentUser?.email || nombre.length < 2) return;
-    setCreandoEmpresa(true);
-    try { await initializeCompany(currentUser.uid, currentUser.email, nombre); setEmpresa(nombre); }
-    catch { /* si falla se mantiene el formulario para reintentar */ }
-    finally { setCreandoEmpresa(false); }
-  };
   const [logrado, setLogrado] = useState(false);
   const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal.' });
 
@@ -252,7 +243,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1">
         <span className="flex items-center gap-2 font-semibold">
           <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 text-[10px] font-black italic text-white">SAP</span>
-          SAP Business One 10.0 — {empresa || 'Mi Empresa'}
+          SAP Business One 10.0 — {empresa || EMPRESA_CURSO}
         </span>
         <span className="hidden sm:flex gap-1" aria-hidden="true">
           {['▁', '▢', '✕'].map((s) => <span key={s} className="w-6 h-4 flex items-center justify-center rounded-sm border border-[#9fb1c7] bg-[#eef2f7] text-[10px]">{s}</span>)}
@@ -340,28 +331,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
 
         {/* Escritorio de trabajo */}
         <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3">
-          {/* Empresa propia: si aún no la tiene, se le invita a crearla (queda guardada para todo el curso). */}
-          {empresa === null && (
-            <div className="max-w-3xl rounded-sm border border-[#f0ab00] bg-[#fff8e6] px-3 py-2 flex flex-wrap items-center gap-2">
-              <span className="font-semibold text-[#5c4300]">Ponle nombre a tu empresa de práctica:</span>
-              <input
-                value={nombreNueva}
-                onChange={(e) => setNombreNueva(e.target.value)}
-                placeholder="Ej.: Mi Empresa, Pruebas…"
-                maxLength={80}
-                className="h-6 flex-1 min-w-[160px] rounded-[2px] border border-[#8a9bb0] bg-white px-1.5 text-xs text-[#1d2d3e]"
-              />
-              <button
-                type="button"
-                onClick={crearEmpresa}
-                disabled={creandoEmpresa || nombreNueva.trim().length < 2}
-                className="h-6 px-3 rounded-[3px] bg-[#f0ab00] font-bold text-[#1d2d3e] disabled:opacity-50 active:scale-95"
-              >
-                {creandoEmpresa ? 'Creando…' : 'Crear mi empresa'}
-              </button>
-            </div>
-          )}
-
           {/* Ficha del ejercicio: como en los ejercicios de SAP Learning, el dato de cada campo es explícito.
               El reto es encontrar la ventana en el menú y registrar bien el documento, no adivinar valores. */}
           {campos.length > 0 && (

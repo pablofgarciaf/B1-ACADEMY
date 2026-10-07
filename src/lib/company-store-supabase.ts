@@ -83,6 +83,9 @@ function filasNuevas(before: CompanyState, after: CompanyState) {
  */
 async function asegurarMigrada(uid: string, email: string, lectura: Awaited<ReturnType<typeof leer>>) {
   if (lectura.exists) return lectura;
+  // Supabase es ya la base oficial del simulador: la copia desde Firestore queda desactivada (si no, al vaciar
+  // Supabase las empresas antiguas "resucitarían"). Se reactiva solo con SIMULADOR_MIGRAR_FIRESTORE=1.
+  if (process.env.SIMULADOR_MIGRAR_FIRESTORE !== '1') return lectura;
   let origen: CompanyState | null = null;
   try {
     const { readCompanyFirestore } = await import('./company-server-firestore');

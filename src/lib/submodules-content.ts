@@ -35,7 +35,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     functionalOverview: 'La parametrización inicial de SAP Business One define las bases de la sociedad (moneda funcional USD, ejercicio fiscal del 1 de enero al 31 de diciembre, plan de cuentas base NIIF y flujos de aprobación por montos). El Data Transfer Workbench (DTW) es el utilitario que permite la migración masiva de maestros (OCRD, OITM) sin romper la integridad referencial.',
     sapMenuPath: 'Gestión → Inicialización del sistema → Detalles de la sociedad / Procedimientos de aprobación',
     businessCaseEC: {
-      companyName: 'Distribuidora Andina S.A.S. (Guayaquil, Ecuador)',
+      companyName: 'B1 Center (Guayaquil, Ecuador)',
       scenario: 'Puesta en marcha de una distribuidora mayorista con 5,000 SKUs y 1,200 clientes corporativos, requiriendo aprobación de compras superiores a $5,000.',
       calculationOrConfig: 'Configuración de Approval Template en Compras: Si "Total de documento > $5,000", disparar solicitud al perfil CFO. Mapeo en DTW de OCRD con RUC ecuatoriano de 13 dígitos terminado en 001.',
     },

@@ -30,7 +30,7 @@ export function normalizar(valor: string): string {
 }
 
 /**
- * Datos maestros de Distribuidora Andina Tech: en SAP se puede escribir el código o el nombre.
+ * Datos maestros de B1 Center: en SAP se puede escribir el código o el nombre.
  * Cada grupo son formas equivalentes del mismo dato.
  */
 const EQUIVALENCIAS: string[][] = [

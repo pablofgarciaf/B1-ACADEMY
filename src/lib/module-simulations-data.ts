@@ -90,7 +90,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "workedExample": {
       "title": "Caso Práctico Resuelto: Parametrización Inicial y Carga DTW de 1,200 Clientes",
       "stepByStepMath": [
-        "Escenario: Distribuidora Andina migra 1,200 clientes con saldos iniciales de cartera por $145,000.",
+        "Escenario: B1 Center migra 1,200 clientes con saldos iniciales de cartera por $145,000.",
         "Paso 1: Validación de RUCs en plantilla OCRD.csv: 1,200 registros validados con fórmula =LARGO(A2)=13.",
         "Paso 2: Conversión a formato Texto en Excel para evitar que RUCs iniciados en 0 (ej. 0992348...) pierdan el primer dígito.",
         "Paso 3: Carga de saldos iniciales en cuenta transitoria puente: 1.1.02.01 (Clientes) vs 3.1.03.01 (Saldos de Apertura).",

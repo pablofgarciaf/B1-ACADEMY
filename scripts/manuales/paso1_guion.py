@@ -32,7 +32,7 @@ Para CADA diapositiva de entrada devuelves un objeto con:
 - Datos del diagrama SOLO según el layout (cadenas cortas, máx. 4 palabras cada una):
   flujo → "pasos": [{{"texto": "...", "icono": "..."}}] (3 a 6)
   comparacion → "columnas": [{{"titulo": "...", "icono": "...", "puntos": ["...", "..."]}}, {{...}}] (exactamente 2, 2-3 puntos)
-  pantalla → "ventana": "nombre de la ventana SAP", "campos": [{{"etiqueta": "...", "valor": "..."}}] (4 a 7, valores realistas de la empresa ficticia Distribuidora Andina Tech, Quito, USD, fechas de 2026), "resaltar": índice del campo clave
+  pantalla → "ventana": "nombre de la ventana SAP", "campos": [{{"etiqueta": "...", "valor": "..."}}] (4 a 7, valores realistas de la empresa ficticia B1 Center, Quito, USD, fechas de 2026), "resaltar": índice del campo clave
   asiento → "lineas": [{{"cuenta": "...", "debe": "1.150,00" o "", "haber": "" o "1.150,00"}}] (2 a 5, debe=haber)
   tabla → "tabla": {{"encabezados": [...], "filas": [[...], ...]}} (máx. 4 columnas, 5 filas)
   kpi → "kpis": [{{"valor": "...", "etiqueta": "...", "icono": "..."}}] (3)
