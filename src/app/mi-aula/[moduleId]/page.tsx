@@ -7,7 +7,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import type { IntentoPractica } from '@/lib/practice-check';
-import { getCompany } from '@/lib/firestore-company';
+import { getCompany, usarEmpresaCurso } from '@/lib/firestore-company';
 import PasoCeroEmpresa from '@/components/lms/PasoCeroEmpresa';
 import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
 import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2 } from 'lucide-react';
@@ -69,6 +69,8 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // Paso 0: la clase no arranca (ni la narración) hasta que el estudiante tenga su empresa de práctica.
   // Si la consulta falla por red, no se bloquea la clase.
   const [empresaEstado, setEmpresaEstado] = useState<'cargando' | 'falta' | 'ok'>('cargando');
+  // En Mi Aula todo ocurre en la B1 Center del estudiante, aunque en el Simulador tenga elegida su empresa libre.
+  useEffect(() => usarEmpresaCurso(), []);
   useEffect(() => {
     if (!currentUser) return;
     let activo = true;

@@ -90,6 +90,13 @@ def main():
                     continue
                 datos = json.loads(fuente.read_text(encoding="utf-8"))
                 lam = datos["laminas"]
+                # Regla única: una ventana de SAP solo se muestra si es una práctica. Una lámina de pantalla
+                # sin práctica se publica como explicación, sin ventana (aplica también a borradores antiguos).
+                for L in lam:
+                    if L.get("layout") == "pantalla" and not isinstance(L.get("practica"), dict):
+                        for k in ("campos", "ventana", "resaltar"):
+                            L.pop(k, None)
+                        L["layout"] = "concepto"
                 carpeta = DESTINO / clase["id"]
                 carpeta.mkdir(parents=True, exist_ok=True)
                 imagenes, sync, palabras = [], [], 0

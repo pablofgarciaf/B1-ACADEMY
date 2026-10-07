@@ -98,6 +98,9 @@ def es_renta_despues(despues, antes=""):
     d, a = plano(despues), plano(antes)[-60:]
     if re.match(r"\s*(de|del)\s+(la\s+)?(impuesto\s+a\s+la\s+)?renta\b", d):
         return True
+    # "5 % de retención de renta" / "5 % de retención en la fuente del impuesto a la renta": renta explícita.
+    if re.match(r"\s*de\s+retencion\s+(en\s+la\s+fuente\s+)?(de|del)\s+(la\s+)?(impuesto\s+a\s+la\s+)?renta\b", d):
+        return True
     return bool(re.match(r"\s*de\s+retencion\b", d) and not re.search(r"\biva\b", d[:60] + " " + a))
 
 
@@ -120,7 +123,7 @@ def revisar_texto(texto, donde, errores):
             # El contexto se toma de lo que precede; lo que sigue solo se usa si antes no hay ninguna pista
             # (si no, en "renta (1 %, 2 %) y del IVA (30 %)" el 2 % se leería como retención de IVA).
             # "30 % del IVA" (una parte del impuesto) o "30 % de retención … del IVA" es retención de IVA; "15 % de IVA" es la tarifa.
-            tipo = "retencion_iva" if re.match(r"\s*del\s+(valor\s+del\s+)?iva\b|\s*de\s+valor\s+del\s+iva\b|\s*de\s+retencion\b", despues) \
+            tipo = "retencion_iva" if re.match(r"\s*del\s+(valor\s+del\s+)?iva\b|\s*de\s+valor\s+del\s+iva\b|\s*de\s+retencion\b|\s*sobre\s+el\s+(valor\s+del\s+)?iva\b", despues) \
                 else (contexto_fiscal(frase[: m.start()]) or contexto_fiscal(frase[: m.start()] + " " + frase[m.end(): m.end() + 25]))
             if anterior and anterior.startswith("retencion") and tipo == "tarifa_iva":
                 tipo = anterior

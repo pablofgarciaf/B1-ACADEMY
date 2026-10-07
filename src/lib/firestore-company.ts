@@ -5,12 +5,31 @@ import type { CompanyCommand, CommandData } from './company-commands';
 import type { CompanyState, SalesDocType, PurchaseDocType, CostingMethod, SRITaxDocument } from './firestore-types';
 import { trialBalance } from './company-calculations';
 
+/**
+ * Cada estudiante tiene dos empresas: "curso" (su B1 Center, la de Mi Aula) y "libre" (la suya, para practicar
+ * con sus propios datos en el Simulador). El servidor decide la empresa real a partir de la sesión; aquí solo
+ * se indica cuál se quiere usar. Mi Aula siempre trabaja en "curso".
+ */
+export type EmpresaSlot = 'curso' | 'libre';
+const CLAVE_EMPRESA = 'b1_empresa_activa';
+export function empresaActiva(): EmpresaSlot {
+  try { return localStorage.getItem(CLAVE_EMPRESA) === 'libre' ? 'libre' : 'curso'; } catch { return 'curso'; }
+}
+export function cambiarEmpresaActiva(slot: EmpresaSlot) {
+  try { localStorage.setItem(CLAVE_EMPRESA, slot); } catch { /* sin almacenamiento: se usa B1 Center */ }
+  window.dispatchEvent(new Event('sap-company-changed'));
+}
+// Fuerza la empresa del curso mientras se ejecuta Mi Aula (ver usarEmpresaCurso).
+let forzarCurso = 0;
+export function usarEmpresaCurso(): () => void { forzarCurso++; return () => { forzarCurso = Math.max(0, forzarCurso - 1); }; }
+const slotActual = (): EmpresaSlot => (forzarCurso > 0 ? 'curso' : empresaActiva());
+
 export async function companyFetch<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     const user = auth.currentUser;
     if (!user) throw new Error('Inicia sesión en la academia.');
     const token = await user.getIdToken();
-    const response = await fetch(path, { ...init, cache: 'no-store', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, ...init?.headers } });
+    const response = await fetch(path, { ...init, cache: 'no-store', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, 'X-Empresa': slotActual(), ...init?.headers } });
     const data: unknown = await response.json();
     if (!response.ok) throw new Error(typeof data === 'object' && data && 'error' in data ? String(data.error) : 'Operación fallida.');
     return data as T;

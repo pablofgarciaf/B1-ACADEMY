@@ -137,7 +137,8 @@ export async function listCompaniesSupabase(): Promise<{ uid: string; raw: Recor
   const response = await fetch(`${c.url}/rest/v1/sim_companies?select=uid,profile,summary&profile=not.is.null`, { headers, cache: 'no-store' });
   if (!response.ok) throw new Error(`Supabase ${response.status}`);
   const filas = (await response.json()) as { uid: string; profile: Record<string, unknown>; summary: Record<string, unknown> }[];
-  return filas.map(f => ({ uid: f.uid, raw: { ...f.profile, ...f.summary } }));
+  // El docente ve la B1 Center de cada estudiante; la empresa libre ("<uid>__libre") es personal y no se lista.
+  return filas.filter(f => !f.uid.endsWith('__libre')).map(f => ({ uid: f.uid, raw: { ...f.profile, ...f.summary } }));
 }
 
 export async function addMissionSupabase(uid: string, mission: Record<string, unknown> & { id: string }): Promise<string> {

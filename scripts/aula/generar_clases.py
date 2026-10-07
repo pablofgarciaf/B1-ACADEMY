@@ -33,7 +33,7 @@ con práctica integrada en un simulador. Español neutro latinoamericano, tuteo 
 La clase alterna teoría breve y PRÁCTICA (entre 12 y 16 láminas): se aprende haciendo.
 1. portada  2. objetivos  3-4. teoría esencial (concepto / flujo): qué es y para qué sirve en una empresa real
 Luego, por cada ventana de SAP que enseña la clase: una PRÁCTICA seguida de 1 lámina que explica qué ocurrió en el
-sistema (impacto, asiento o informe resultante). Entre 3 y 5 PRÁCTICAS por clase, de menor a mayor dificultad,
+sistema (impacto, asiento o informe resultante). Una PRÁCTICA por cada ventana que la clase enseña, de menor a mayor dificultad,
 encadenadas como un proceso real (por ejemplo: crear el socio → registrar el pedido → facturar).
 Penúltima: errores comunes / buenas prácticas. Última: resumen.
 REGLA: toda lámina que muestre una ventana de SAP (layout "pantalla") ES una práctica; no muestres ventanas solo para mirarlas.
@@ -113,6 +113,11 @@ def rutas_permitidas(modulo, clase):
     def de(manuales):
         return [r for m in manuales if not m.startswith("fuente:") for r in MENU_SAP["por_manual"].get(m, [])]
     rutas = de(clase["manuales"])
+    # Clases basadas en una fuente investigada (p. ej. normativa SRI) no tienen manual propio: se les dan las rutas
+    # reales de los manuales relacionadas con documentos tributarios, impuestos y socios de negocios.
+    if any(m.startswith("fuente:") for m in clase["manuales"]):
+        rutas += [r for r in MENU_SAP["todas"]
+                  if re.search(r"factura de (proveedores|clientes|deudores|acreedores)|nota de cr[eé]dito|datos maestros (de socio|interlocutor)|impuesto|retenci", r, re.I)]
     if len(rutas) < 4:
         rutas += de([m for c in modulo["clases"] for m in c["manuales"]])
     if len(rutas) < 4:
@@ -134,21 +139,26 @@ def valida(datos, permitidas=None):
         ruta_real = not rutas_ok or _plano_ruta(p["practica"].get("menu_path", "")) in rutas_ok
         # Campos falsos: acciones o estados disfrazados de campo ("Acción: Agregar", "Estado: Guardado"…) no existen en SAP
         # y el estudiante no sabe qué escribir. Se aceptan solo campos de datos reales.
-        falsos = re.compile(r"^(acci[oó]n|estado|confirmaci[oó]n|resultado|modo|paso|segundo|tercer|primer|elemento|operaci[oó]n realizada)", re.I)
+        falsos = re.compile(r"^(acci[oó]n|estado|confirmaci[oó]n|resultado|modo|paso|segundo|tercer|primer|elemento|operaci[oó]n realizada|icono|bot[oó]n|marca|transacci[oó]n \d|opci[oó]n \d|clic)", re.I)
         if any(falsos.match(str(c.get("etiqueta", "")).strip()) for c in campos):
             return False
         return (3 <= len(campos) <= 6 and p["practica"].get("instrucciones") and len(ruta) >= 2 and ruta_real
                 and all(str(c.get("valor", "")).strip() and len(str(c["valor"])) <= 40 for c in campos))
 
     practicas = [x for x in lam if isinstance(x.get("practica"), dict)]
-    # Una práctica que no se puede evaluar con exactitud (valores largos, sin instrucciones) queda como lámina
-    # de pantalla explicativa; las que se evalúan conservan la misma exigencia. Más de 6: las extra también.
     validas = [x for x in practicas if evaluable(x)]
-    for x in practicas:
-        if x not in validas[:6]:
+    # REGLA ÚNICA: toda lámina que muestra una ventana de SAP es una práctica, sin tope de cantidad.
+    # Una ventana que no se puede practicar con datos reales (menú inventado, campo falso…) no se muestra:
+    # la lámina pasa a ser una explicación sin ventana. Así, si el estudiante ve una ventana, la practica.
+    for x in lam:
+        es_ventana = x.get("layout") == "pantalla" or isinstance(x.get("practica"), dict)
+        if es_ventana and x not in validas:
             x.pop("practica", None)
-    if len(validas) < 3:  # se aprende haciendo: al menos 3 prácticas por clase
-        return None, f"{len(validas)} prácticas evaluables"
+            for k in ("campos", "ventana", "resaltar"):
+                x.pop(k, None)
+            x["layout"] = "concepto"
+    if not validas:  # toda clase enseña al menos una ventana de SAP
+        return None, "0 prácticas evaluables"
     for x in lam:
         if len((x.get("narracion") or "").split()) < 30:
             return None, "narración corta"

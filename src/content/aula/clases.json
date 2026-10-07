@@ -12,7 +12,7 @@
    "number": 2,
    "title": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit",
    "description": "",
-   "durationMinutes": 19
+   "durationMinutes": 12
   },
   {
    "id": "mod1-c3",
@@ -26,7 +26,7 @@
    "number": 4,
    "title": "Preferencias de Usuario y Búsquedas",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 12
   }
  ],
  "mod-2": [
@@ -35,28 +35,28 @@
    "number": 1,
    "title": "Socio de Negocios (OCRD)",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 19
   },
   {
    "id": "mod2-c2",
    "number": 2,
    "title": "Datos Maestros de Artículo (OITM)",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 21
   },
   {
    "id": "mod2-c3",
    "number": 3,
    "title": "Gestión de Unidades de Medida",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 22
   },
   {
    "id": "mod2-c4",
    "number": 4,
    "title": "Determinación Estándar de Precios",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 18
   }
  ],
  "mod-3": [
@@ -79,21 +79,21 @@
    "number": 3,
    "title": "Ubicaciones (Bin Locations)",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 15
   },
   {
    "id": "mod3-c4",
    "number": 4,
    "title": "Trazabilidad por Lotes y Series",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 18
   },
   {
    "id": "mod3-c5",
    "number": 5,
    "title": "Costos de Importación",
    "description": "",
-   "durationMinutes": 23
+   "durationMinutes": 12
   }
  ],
  "mod-4": [
@@ -102,28 +102,28 @@
    "number": 1,
    "title": "El Ciclo de Ventas Order-to-Cash",
    "description": "",
-   "durationMinutes": 25
+   "durationMinutes": 21
   },
   {
    "id": "mod4-c2",
    "number": 2,
    "title": "Ofertas y Pedidos de Cliente",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 20
   },
   {
    "id": "mod4-c3",
    "number": 3,
    "title": "Entregas y Facturación",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 21
   },
   {
    "id": "mod4-c4",
    "number": 4,
    "title": "Devoluciones y Notas de Crédito",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 19
   }
  ],
  "mod-5": [
@@ -132,28 +132,28 @@
    "number": 1,
    "title": "Listas de Precios y su Actualización",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 20
   },
   {
    "id": "mod5-c2",
    "number": 2,
    "title": "Descuentos por Período y Volumen",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 25
   },
   {
    "id": "mod5-c3",
    "number": 3,
    "title": "Grupos de Descuento",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 21
   },
   {
    "id": "mod5-c4",
    "number": 4,
    "title": "Precios Especiales para Socios",
    "description": "",
-   "durationMinutes": 12
+   "durationMinutes": 16
   }
  ],
  "mod-6": [
@@ -162,14 +162,14 @@
    "number": 1,
    "title": "Gestión de Relaciones con Clientes",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 19
   },
   {
    "id": "mod6-c2",
    "number": 2,
    "title": "Oportunidades y Actividades de Venta",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 20
   },
   {
    "id": "mod6-c3",
@@ -183,7 +183,7 @@
    "number": 4,
    "title": "Tarjetas de Equipo y Garantías",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 19
   }
  ],
  "mod-7": [
@@ -192,28 +192,28 @@
    "number": 1,
    "title": "Plan de Cuentas",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 24
   },
   {
    "id": "mod7-c2",
    "number": 2,
    "title": "Cuentas de Mayor por Defecto",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 20
   },
   {
    "id": "mod7-c3",
    "number": 3,
    "title": "Asientos Contables Manuales y Automáticos",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 16
   },
   {
    "id": "mod7-c4",
    "number": 4,
    "title": "Períodos Contables y Cierre",
    "description": "",
-   "durationMinutes": 20
+   "durationMinutes": 17
   }
  ],
  "mod-8": [
@@ -222,28 +222,28 @@
    "number": 1,
    "title": "Pagos Recibidos y Efectuados",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 21
   },
   {
    "id": "mod8-c2",
    "number": 2,
    "title": "Asistente de Pagos",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 30
   },
   {
    "id": "mod8-c3",
    "number": 3,
    "title": "Conciliación Bancaria e Interna",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 24
   },
   {
    "id": "mod8-c4",
    "number": 4,
    "title": "Antigüedad de Saldos y Cobranza",
    "description": "",
-   "durationMinutes": 12
+   "durationMinutes": 17
   }
  ],
  "mod-9": [
@@ -252,28 +252,28 @@
    "number": 1,
    "title": "Configuración de Activos Fijos",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 16
   },
   {
    "id": "mod9-c2",
    "number": 2,
    "title": "Alta y Datos Maestros del Activo",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 19
   },
   {
    "id": "mod9-c3",
    "number": 3,
    "title": "Depreciación y Ajustes",
    "description": "",
-   "durationMinutes": 12
+   "durationMinutes": 16
   },
   {
    "id": "mod9-c4",
    "number": 4,
    "title": "Bajas y Monitoreo de Activos",
    "description": "",
-   "durationMinutes": 16
+   "durationMinutes": 14
   }
  ],
  "mod-10": [
@@ -282,28 +282,28 @@
    "number": 1,
    "title": "Planificación de Necesidades MRP",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 20
   },
   {
    "id": "mod10-c2",
    "number": 2,
    "title": "Pronósticos de Demanda",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 19
   },
   {
    "id": "mod10-c3",
    "number": 3,
    "title": "MRP y Listas de Materiales",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 23
   },
   {
    "id": "mod10-c4",
    "number": 4,
    "title": "Recomendaciones y Órdenes Sugeridas",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 20
   }
  ],
  "mod-11": [
@@ -312,28 +312,28 @@
    "number": 1,
    "title": "Listas de Materiales",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 31
   },
   {
    "id": "mod11-c2",
    "number": 2,
    "title": "Órdenes de Producción",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 16
   },
   {
    "id": "mod11-c3",
    "number": 3,
    "title": "Costos de Producción",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 17
   },
   {
    "id": "mod11-c4",
    "number": 4,
    "title": "Gestión y Facturación de Proyectos",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 10
   }
  ],
  "mod-12": [
@@ -342,28 +342,28 @@
    "number": 1,
    "title": "Consultas SQL con el Query Manager",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 21
   },
   {
    "id": "mod12-c2",
    "number": 2,
    "title": "Alertas y Procesos de Aprobación",
    "description": "",
-   "durationMinutes": 24
+   "durationMinutes": 19
   },
   {
    "id": "mod12-c3",
    "number": 3,
    "title": "Campos y Valores Definidos por el Usuario",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 19
   },
   {
    "id": "mod12-c4",
    "number": 4,
    "title": "Migración de Datos con DTW",
    "description": "",
-   "durationMinutes": 19
+   "durationMinutes": 16
   }
  ],
  "mod-13": [
@@ -372,21 +372,21 @@
    "number": 1,
    "title": "Solicitudes de Compra y Cotizaciones",
    "description": "",
-   "durationMinutes": 19
+   "durationMinutes": 16
   },
   {
    "id": "mod13-c2",
    "number": 2,
    "title": "Compras de Servicios",
    "description": "",
-   "durationMinutes": 12
+   "durationMinutes": 15
   },
   {
    "id": "mod13-c3",
    "number": 3,
    "title": "Devoluciones y Notas de Crédito de Proveedor",
    "description": "",
-   "durationMinutes": 12
+   "durationMinutes": 22
   }
  ],
  "mod-14": [
@@ -402,21 +402,21 @@
    "number": 2,
    "title": "Unidades de Empaquetado",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 12
   },
   {
    "id": "mod14-c3",
    "number": 3,
    "title": "Métodos de Valoración de Inventario",
    "description": "",
-   "durationMinutes": 20
+   "durationMinutes": 16
   },
   {
    "id": "mod14-c4",
    "number": 4,
    "title": "Ajuste de Costos de Inventario",
    "description": "",
-   "durationMinutes": 12
+   "durationMinutes": 22
   }
  ],
  "mod-15": [
@@ -425,28 +425,28 @@
    "number": 1,
    "title": "Operación Diaria con Ubicaciones",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 9
   },
   {
    "id": "mod15-c2",
    "number": 2,
    "title": "Reglas y Gestión de Ubicaciones",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 22
   },
   {
    "id": "mod15-c3",
    "number": 3,
    "title": "Informes de Ubicaciones",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 22
   },
   {
    "id": "mod15-c4",
    "number": 4,
    "title": "Inventario Físico: Conteo y Ajuste",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 25
   }
  ],
  "mod-16": [
@@ -455,7 +455,7 @@
    "number": 1,
    "title": "Picking y Packing para Producción",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 19
   },
   {
    "id": "mod16-c2",
@@ -471,28 +471,28 @@
    "number": 1,
    "title": "Monedas y Tipos de Cambio",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 14
   },
   {
    "id": "mod17-c2",
    "number": 2,
    "title": "Determinación Avanzada de Cuentas",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 20
   },
   {
    "id": "mod17-c3",
    "number": 3,
    "title": "Documentos Preliminares de Asiento",
    "description": "",
-   "durationMinutes": 16
+   "durationMinutes": 19
   },
   {
    "id": "mod17-c4",
    "number": 4,
    "title": "Informes Financieros y Flujo de Caja",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 25
   }
  ],
  "mod-18": [
@@ -501,21 +501,21 @@
    "number": 1,
    "title": "Contabilidad de Costos",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 20
   },
   {
    "id": "mod18-c2",
    "number": 2,
    "title": "Centros de Costo y Dimensiones",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 20
   },
   {
    "id": "mod18-c3",
    "number": 3,
    "title": "Gestión de Presupuestos",
    "description": "",
-   "durationMinutes": 16
+   "durationMinutes": 18
   }
  ],
  "mod-19": [
@@ -524,28 +524,28 @@
    "number": 1,
    "title": "Facturación Electrónica 2026: Transmisión y Anulación",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 16
   },
   {
    "id": "mod19-c2",
    "number": 2,
    "title": "Retención en la Fuente del Impuesto a la Renta",
    "description": "",
-   "durationMinutes": 16
+   "durationMinutes": 17
   },
   {
    "id": "mod19-c3",
    "number": 3,
    "title": "Retención del IVA y Comprobante de Retención",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 17
   },
   {
    "id": "mod19-c4",
    "number": 4,
    "title": "Retenciones en la Factura de Proveedores de SAP B1",
    "description": "",
-   "durationMinutes": 16
+   "durationMinutes": 10
   }
  ],
  "mod-20": [
@@ -554,21 +554,21 @@
    "number": 1,
    "title": "Recursos de Producción",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 21
   },
   {
    "id": "mod20-c2",
    "number": 2,
    "title": "Capacidad de Recursos",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 16
   },
   {
    "id": "mod20-c3",
    "number": 3,
    "title": "Rutas de Producción (Routing)",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 20
   }
  ],
  "mod-21": [
@@ -577,42 +577,42 @@
    "number": 1,
    "title": "Numeración de Documentos y Datos Maestros",
    "description": "",
-   "durationMinutes": 16
+   "durationMinutes": 18
   },
   {
    "id": "mod21-c2",
    "number": 2,
    "title": "Diseños de Impresión",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 21
   },
   {
    "id": "mod21-c3",
    "number": 3,
    "title": "Correo Electrónico y Plantillas de Interfaz",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 25
   },
   {
    "id": "mod21-c4",
    "number": 4,
    "title": "Propiedad de los Datos y Soporte",
    "description": "",
-   "durationMinutes": 20
+   "durationMinutes": 17
   },
   {
    "id": "mod21-c5",
    "number": 5,
    "title": "Usuarios, Grupos y Configuraciones Clave",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 16
   },
   {
    "id": "mod21-c6",
    "number": 6,
    "title": "Mensajes, Alertas y Autorizaciones",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 20
   }
  ],
  "mod-22": [
@@ -621,14 +621,14 @@
    "number": 1,
    "title": "Tablas Definidas por el Usuario",
    "description": "",
-   "durationMinutes": 23
+   "durationMinutes": 27
   },
   {
    "id": "mod22-c2",
    "number": 2,
    "title": "Introducción a SAP Analytics",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 23
   }
  ],
  "mod-23": [
@@ -637,28 +637,28 @@
    "number": 1,
    "title": "Metodología de Implementación",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 12
   },
   {
    "id": "mod23-c2",
    "number": 2,
    "title": "Asistente Express de Configuración",
    "description": "",
-   "durationMinutes": 24
+   "durationMinutes": 18
   },
   {
    "id": "mod23-c3",
    "number": 3,
    "title": "Carga de Saldos Iniciales",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 18
   },
   {
    "id": "mod23-c4",
    "number": 4,
    "title": "Copia Rápida e Importación de Documentos",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 22
   }
  ],
  "mod-24": [
@@ -667,21 +667,21 @@
    "number": 1,
    "title": "Caso Integrador: Puesta en Marcha",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 22
   },
   {
    "id": "mod24-c2",
    "number": 2,
    "title": "Caso Integrador: Aprovisionamiento",
    "description": "",
-   "durationMinutes": 24
+   "durationMinutes": 27
   },
   {
    "id": "mod24-c3",
    "number": 3,
    "title": "Caso Integrador: Consultas SQL",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 22
   }
  ]
 }
