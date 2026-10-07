@@ -39,7 +39,7 @@ def main():
                 texto = re.sub(a, b, texto)
             datos = json.loads(texto)
             if c["id"] not in A_MANO:
-                lam, motivo = g.valida(copy.deepcopy(datos), g.rutas_permitidas(m, c))
+                lam, motivo = g.valida(copy.deepcopy(datos), g.rutas_permitidas(m, c), g.cifras_clase(c))
                 if not lam:
                     cola.append(c["id"])
                     print(f"  ✗ {c['id']}: {motivo}")

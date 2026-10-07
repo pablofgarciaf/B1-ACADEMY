@@ -116,7 +116,7 @@ export const TRAINING_TRACKS: TrainingTrack[] = [
         title: 'Retenciones en la Fuente: Parametrización Códigos SRI',
         level: 'ARQ',
         durationHours: 10,
-        description: 'Mapeo maestro de retenciones vigentes desde marzo 2026: 312 (bienes 2%), construcción (2%), 304 (mano de obra 3%), sociedades profesionales (5%) y 303 (honorarios 10%).',
+        description: 'Mapeo maestro de retenciones vigentes desde marzo 2026: 312 (bienes 2%), construcción (2%), 307 (mano de obra 3%), 303A (servicios profesionales de sociedades 5%) y 303 (honorarios 10%).',
         keyTopics: ['Tablas de retención', 'Cuentas de pasivo tributario', 'IVA presuntivo y retención', 'Fechas de vigencia'],
       },
       {

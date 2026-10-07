@@ -109,41 +109,45 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
     title: 'Facturación Electrónica y Retenciones SRI 2026',
     description: 'Transmisión inmediata, anulaciones, retenciones de renta e IVA según la normativa vigente del SRI.',
     certificateTitle: 'Certificado en Facturación Electrónica y Retenciones SRI 2026', classes: [] },
+  { id: 'mod-25', number: 17, block: 'Finanzas', badge: 'Nómina 2026',
+    title: 'Nómina y Talento Humano Ecuador 2026',
+    description: 'Ficha del empleado, rol de pagos, horas extras, décimos, fondos de reserva, vacaciones, IESS y contabilización de la nómina con las cifras vigentes en 2026.',
+    certificateTitle: 'Certificado en Nómina y Talento Humano Ecuador 2026', classes: [] },
 
   // ── Producción ──
-  { id: 'mod-10', number: 17, block: 'Producción', badge: 'MRP',
+  { id: 'mod-10', number: 18, block: 'Producción', badge: 'MRP',
     title: 'Planificación de Materiales (MRP)',
     description: 'Planificación de necesidades, pronósticos, MRP con listas de materiales y órdenes sugeridas.',
     certificateTitle: 'Certificado en Planificación de Materiales (MRP)', classes: [] },
-  { id: 'mod-11', number: 18, block: 'Producción', badge: 'Producción',
+  { id: 'mod-11', number: 19, block: 'Producción', badge: 'Producción',
     title: 'Fabricación y Proyectos (BOM)',
     description: 'Listas de materiales, órdenes de producción, costos y facturación de proyectos.',
     certificateTitle: 'Certificado en Órdenes de Producción y Proyectos', classes: [] },
-  { id: 'mod-20', number: 19, block: 'Producción', badge: 'Capacidad',
+  { id: 'mod-20', number: 20, block: 'Producción', badge: 'Capacidad',
     title: 'Recursos, Capacidad y Rutas de Producción',
     description: 'Recursos de producción, capacidad disponible y rutas de fabricación.',
     certificateTitle: 'Certificado en Recursos, Capacidad y Rutas de Producción', classes: [] },
 
   // ── Sistema y Consultoría ──
-  { id: 'mod-21', number: 20, block: 'Sistema y Consultoría', badge: 'Administración',
+  { id: 'mod-21', number: 21, block: 'Sistema y Consultoría', badge: 'Administración',
     title: 'Administración del Sistema',
     description: 'Usuarios y grupos, autorizaciones, alertas, numeración de documentos, diseños de impresión, correo y propiedad de los datos.',
     certificateTitle: 'Certificado en Administración del Sistema SAP B1', classes: [] },
-  { id: 'mod-22', number: 21, block: 'Sistema y Consultoría', badge: 'Extensibilidad',
+  { id: 'mod-22', number: 22, block: 'Sistema y Consultoría', badge: 'Extensibilidad',
     title: 'Extensibilidad y Analítica',
     description: 'Tablas definidas por el usuario y analítica con SAP Analytics.',
     certificateTitle: 'Certificado en Tablas de Usuario y SAP Analytics', classes: [] },
-  { id: 'mod-12', number: 22, block: 'Sistema y Consultoría', badge: 'Consultoría',
+  { id: 'mod-12', number: 23, block: 'Sistema y Consultoría', badge: 'Consultoría',
     title: 'Consultoría y Herramientas SQL',
     description: 'Query Manager, alertas, procesos de aprobación, campos de usuario y migración con DTW.',
     certificateTitle: 'Certificado en Consultas SQL, Alertas y Migración DTW', classes: [] },
-  { id: 'mod-23', number: 23, block: 'Sistema y Consultoría', badge: 'Implementación',
+  { id: 'mod-23', number: 24, block: 'Sistema y Consultoría', badge: 'Implementación',
     title: 'Implementación, Saldos Iniciales y Go-Live',
     description: 'Metodología de implementación, asistente express, saldos iniciales, Quick Copy e importación DTW.',
     certificateTitle: 'Certificado en Implementación y Puesta en Marcha', classes: [] },
 
   // ── Proyecto final ──
-  { id: 'mod-24', number: 24, block: 'Proyecto Final', badge: 'Integrador',
+  { id: 'mod-24', number: 25, block: 'Proyecto Final', badge: 'Integrador',
     title: 'Proyecto Integrador',
     description: 'Casos completos de puesta en marcha, aprovisionamiento y consultas SQL con la empresa del curso.',
     certificateTitle: 'Certificado de Proyecto Integrador SAP B1', classes: [] },
@@ -171,6 +175,10 @@ export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
     title: 'Diploma de Asistente Contable NIIF',
     requiredModules: ['mod-1', 'mod-2', 'mod-7', 'mod-17', 'mod-19'],
     description: 'Registra asientos, cierra períodos, emite informes y aplica las retenciones vigentes del SRI.' },
+  { id: 'dip-nomina', role: 'Asistente de Nómina y Talento Humano',
+    title: 'Diploma de Asistente de Nómina y Talento Humano',
+    requiredModules: ['mod-1', 'mod-2', 'mod-7', 'mod-25'],
+    description: 'Calcula el rol de pagos, los décimos, los fondos de reserva y los aportes al IESS, y contabiliza la nómina con la normativa de 2026.' },
   { id: 'dip-tesoreria', role: 'Tesorería y Cobranzas',
     title: 'Diploma de Tesorería y Cobranzas',
     requiredModules: ['mod-1', 'mod-7', 'mod-8', 'mod-19'],
@@ -190,7 +198,7 @@ export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
   { id: 'dip-consultor', role: 'Consultor de Implementación',
     title: 'Diploma de Consultor de Implementación',
     requiredModules: ['mod-21', 'mod-12', 'mod-23', 'mod-24'],
-    requiresOneDiplomaOf: ['dip-compras', 'dip-bodega', 'dip-comercial', 'dip-postventa', 'dip-contable', 'dip-tesoreria', 'dip-costos', 'dip-produccion'],
+    requiresOneDiplomaOf: ['dip-compras', 'dip-bodega', 'dip-comercial', 'dip-postventa', 'dip-contable', 'dip-nomina', 'dip-tesoreria', 'dip-costos', 'dip-produccion'],
     description: 'Lidera implementaciones: metodología, migración de datos, saldos iniciales y puesta en marcha.' },
 ];
 
@@ -198,7 +206,7 @@ export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
 export const MASTER_PROGRAM = {
   id: 'master-consultor-integral',
   title: 'Programa Consultor Integral SAP Business One',
-  description: 'Reúne los 24 certificados de competencia y culmina con el Proyecto Integrador.',
+  description: 'Reúne los 25 certificados de competencia y culmina con el Proyecto Integrador.',
 } as const;
 
 export const SYLLABUS_BLOCKS: SyllabusBlock[] = ['Fundamentos', 'Logística', 'Comercial', 'Finanzas', 'Producción', 'Sistema y Consultoría', 'Proyecto Final'];

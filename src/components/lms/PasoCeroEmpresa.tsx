@@ -7,7 +7,7 @@ import { crearB1Center, EMPRESA_CURSO } from '@/lib/b1-center';
 
 /**
  * Paso 0 de Mi Aula: antes de la primera clase, el estudiante recibe SU empresa del curso, "B1 Center",
- * con clientes, proveedores, artículos, bodegas y stock de prueba. Todas las prácticas del curso ocurren en ella.
+ * con clientes, proveedores, empleados, artículos, bodegas y stock de prueba. Todas las prácticas del curso ocurren en ella.
  */
 export default function PasoCeroEmpresa({ onLista }: { onLista: () => void }) {
   const { currentUser, userProfile } = useAuth();
@@ -30,7 +30,7 @@ export default function PasoCeroEmpresa({ onLista }: { onLista: () => void }) {
     { icon: Award, titulo: 'Te certificas', texto: 'Apruebas prácticas y evaluación: obtienes tu certificado verificable.' },
   ];
   const contenido = [
-    { icon: Users, texto: '5 clientes y 4 proveedores' },
+    { icon: Users, texto: '5 clientes, 4 proveedores y 4 empleados' },
     { icon: Package, texto: '12 artículos con precio y costo' },
     { icon: Warehouse, texto: '2 bodegas con stock inicial' },
   ];

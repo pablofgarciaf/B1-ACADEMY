@@ -30,6 +30,13 @@ const socio = (s: { name: string; city: string; ruc: string }) => ({
   paymentTermsDays: 30, creditLimit: 10000, active: true, group: 'Nacional', notes: 'Dato de prueba de B1 Center',
 });
 
+const EMPLEADOS = [
+  { firstName: 'Juan', lastName: 'Pérez', identification: '1712345675', position: 'Gerente Comercial', department: 'Comercial', hireDate: '2022-01-10', baseSalary: 1200, thirteenthMonthly: false, fourteenthMonthly: false, reserveMonthly: true },
+  { firstName: 'María', lastName: 'Gómez', identification: '1709876542', position: 'Contadora General', department: 'Contabilidad', hireDate: '2024-03-01', baseSalary: 900, thirteenthMonthly: false, fourteenthMonthly: false, reserveMonthly: true },
+  { firstName: 'Carlos', lastName: 'López', identification: '1711111110', position: 'Jefe de Bodega', department: 'Bodega', hireDate: '2023-06-10', baseSalary: 750, thirteenthMonthly: false, fourteenthMonthly: false, reserveMonthly: false },
+  { firstName: 'Ana', lastName: 'Silva', identification: '1722222229', position: 'Asistente de Ventas', department: 'Ventas', hireDate: '2026-01-15', baseSalary: 482, thirteenthMonthly: true, fourteenthMonthly: true, reserveMonthly: true },
+];
+
 /** Comandos que crean la B1 Center completa (sin el stock, que necesita los códigos de artículo generados). */
 export function comandosB1Center(): CompanyCommand[] {
   return [
@@ -43,6 +50,7 @@ export function comandosB1Center(): CompanyCommand[] {
       maxDiscount: 10, purchasePrice: costo, preferredVendor: '', weight: 0, length: 0, width: 0, height: 0, costingMethod: 'average',
       standardCost: costo, minStock: 2, maxStock: 50, reorderPoint: 5, description: name, specifications: '', active: true,
     })) } },
+    ...EMPLEADOS.map((e): CompanyCommand => ({ action: 'employee', data: { ...e, contract: 'indefinite', schedule: 'full', employerRate: 12.15, personalRate: 9.45, vacationDays: 15, active: true } })),
   ];
 }
 

@@ -235,12 +235,12 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     code: 'DOC-LOC-008',
     title: 'Retenciones en la Fuente: Parametrización Códigos SRI',
     trackId: 'sap-loc-ec',
-    functionalOverview: 'En compras a proveedores, los agentes de retención en Ecuador están obligados por ley a retener un porcentaje de Impuesto a la Renta y de IVA. Desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) los porcentajes de renta son: 312 (Transferencia de bienes muebles de naturaleza corporal: 2%), construcción (2%), 304 (Servicios con predominio de mano de obra: 3%), servicios profesionales de sociedades (5%) y 303 (Honorarios profesionales de personas naturales: 10%); todo pago sin porcentaje específico retiene el 3%. Se suman el IVA 15% y sus retenciones del 30%, 70% o 100% (10% y 20% a contribuyentes especiales).',
+    functionalOverview: 'En compras a proveedores, los agentes de retención en Ecuador están obligados por ley a retener un porcentaje de Impuesto a la Renta y de IVA. Desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) los porcentajes de renta son: 312 (Transferencia de bienes muebles de naturaleza corporal: 2%), construcción (2%), 307 (Servicios con predominio de mano de obra: 3%), servicios profesionales de sociedades (5%) y 303 (Honorarios profesionales de personas naturales: 10%); todo pago sin porcentaje específico retiene el 3%. Se suman el IVA 15% y sus retenciones del 30%, 70% o 100% (10% y 20% a contribuyentes especiales).',
     sapMenuPath: 'Gestión → Definiciones → Finanzas → Impuesto → Retención de Impuestos',
     businessCaseEC: {
       companyName: 'Constructora del Pacífico S.A. (Manta, Ecuador)',
       scenario: 'Pago de factura de proveedor por $5,000 en materiales (bien) y $2,000 en mano de obra técnica (servicio), aplicando retención en la fuente e IVA.',
-      calculationOrConfig: 'Subtotal Bienes: $5,000 x 2% (Cod 312) = $100.00. Subtotal Servicios de mano de obra: $2,000 x 3% (Cod 304) = $60.00. IVA Total: $7,000 x 15% = $1,050. Retención IVA Bienes (30% de $750) = $225. Retención IVA Servicios (70% de $300) = $210. Total Retenido: $595.00.',
+      calculationOrConfig: 'Subtotal Bienes: $5,000 x 2% (Cod 312) = $100.00. Subtotal Servicios de mano de obra: $2,000 x 3% (Cod 307) = $60.00. IVA Total: $7,000 x 15% = $1,050. Retención IVA Bienes (30% de $750) = $225. Retención IVA Servicios (70% de $300) = $210. Total Retenido: $595.00.',
     },
     stepByStepSteps: [
       {

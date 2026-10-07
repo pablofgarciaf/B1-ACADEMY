@@ -248,7 +248,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "level": "ARQ",
     "title": "Retenciones en la fuente: IVA e Impuesto a la Renta",
     "category": "Tributación SRI",
-    "summary": "Retenciones vigentes desde marzo 2026: 312 bienes (2%), 304 mano de obra (3%), sociedades profesionales (5%), 303 honorarios (10%) y retención IVA 30%/70%/100%."
+    "summary": "Retenciones vigentes desde marzo 2026: 312 bienes (2%), 307 mano de obra (3%), 303A servicios profesionales de sociedades (5%), 303 honorarios (10%) y retención IVA 30%/70%/100%."
   },
   {
     "id": "man-25",

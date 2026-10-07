@@ -492,7 +492,7 @@
    "number": 3,
    "title": "Documentos Preliminares de Asiento",
    "description": "",
-   "durationMinutes": 19
+   "durationMinutes": 36
   },
   {
    "id": "mod17-c4",
@@ -574,6 +574,43 @@
    "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
    "description": "",
    "durationMinutes": 20
+  }
+ ],
+ "mod-25": [
+  {
+   "id": "mod25-c1",
+   "number": 1,
+   "title": "Ficha del Empleado y Costo Laboral 2026",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod25-c2",
+   "number": 2,
+   "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos",
+   "description": "",
+   "durationMinutes": 14
+  },
+  {
+   "id": "mod25-c3",
+   "number": 3,
+   "title": "Décimos, Fondos de Reserva y Vacaciones",
+   "description": "",
+   "durationMinutes": 9
+  },
+  {
+   "id": "mod25-c4",
+   "number": 4,
+   "title": "Contabilidad de la Nómina y Pago al IESS",
+   "description": "",
+   "durationMinutes": 18
+  },
+  {
+   "id": "mod25-c5",
+   "number": 5,
+   "title": "Comisiones, Impuesto a la Renta de Empleados y Utilidades",
+   "description": "",
+   "durationMinutes": 10
   }
  ],
  "mod-20": [

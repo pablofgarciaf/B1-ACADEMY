@@ -286,12 +286,34 @@ def _revisar_asiento(lineas, donde, errores, es_compra_ctx=False):
             errores.append(f"{donde}: el IVA del asiento es {tasa:.2f} % de la base ({monto(ivas[0]):g} sobre {monto(bases[0]):g}); debe ser 15 %")
 
 
+def revisar_nomina(texto, donde, errores):
+    """Nómina Ecuador 2026: aporte personal 9,45 %, patronal 11,15 % (12,15 % con IECE y SECAP), fondos de reserva 8,33 %,
+    SBU 482 y décimo cuarto = 1 SBU. Si un texto cita estas cifras con otro valor, se rechaza."""
+    t = plano(texto)
+    def valores(patron):
+        return [numero(m.group(1)) for m in re.finditer(patron, t) if numero(m.group(1)) is not None]
+    for v in valores(r"(?:aporte|iess)[^.%]{0,25}personal[^.%0-9]{0,25}(\d+[.,]?\d*) ?%"):
+        if abs(v - 9.45) > 0.001:
+            errores.append(f"{donde}: el aporte personal al IESS es 9,45 %, no {v:g} %")
+    for v in valores(r"(?:aporte|iess)[^.%]{0,25}patronal[^.%0-9]{0,25}(\d+[.,]?\d*) ?%"):
+        if not any(abs(v - x) < 0.001 for x in (11.15, 12.15)):
+            errores.append(f"{donde}: el aporte patronal es 11,15 % (12,15 % con IECE y SECAP), no {v:g} %")
+    for v in valores(r"fondos? de reserva[^.%0-9]{0,40}(\d+[.,]?\d*) ?%"):
+        if abs(v - 8.33) > 0.011:
+            errores.append(f"{donde}: los fondos de reserva son 8,33 % (1/12), no {v:g} %")
+    for m in re.finditer(r"(?:sbu|salario basico unificado)(?: 20\d\d)?[^.0-9]{0,30}(?:usd|\$)? ?(\d[\d.,]*)", t):
+        v = numero(m.group(1))
+        if v is not None and v >= 100 and abs(v - 482) > 0.001:
+            errores.append(f"{donde}: el SBU 2026 es USD 482, no {v:g}")
+
+
 def revisar_borrador(cid, datos, errores):
     for i, L in enumerate(datos.get("laminas", []), 1):
         donde = f"{cid} lámina {i}"
         for campo in ("titulo", "narracion"):
             revisar_texto(L.get(campo, ""), donde, errores)
         revisar_cadena(L.get("narracion", ""), donde, errores)
+        revisar_nomina(f"{L.get('titulo', '')}. {L.get('narracion', '')}", donde, errores)
         practica = L.get("practica") if isinstance(L.get("practica"), dict) else {}
         codigos = " ".join(str(c.get("valor", "")) for c in practica.get("campos", []) + (L.get("campos") or []))
         revisar_clasificacion(f"{L.get('narracion', '')} {codigos}", donde, errores)

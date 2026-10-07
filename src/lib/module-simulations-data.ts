@@ -1186,7 +1186,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Paso 1: Subtotal Compra = $4,000.00 (Bienes) + $1,500.00 (Servicios) = $5,500.00.",
         "Paso 2: IVA 15% Total = $5,500.00 × 0.15 = $825.00 ($600 de bienes + $225 de servicios).",
         "Paso 3: Retención Renta Bienes Cód. 312 (2%) = $4,000.00 × 0.02 = $80.00.",
-        "Paso 4: Retención Renta Servicios Cód. 304 (3%) = $1,500.00 × 0.03 = $45.00.",
+        "Paso 4: Retención Renta Servicios Cód. 307 (3%) = $1,500.00 × 0.03 = $45.00.",
         "Paso 5: Retención IVA Bienes 30% = $600.00 × 0.30 = $180.00.",
         "Paso 6: Retención IVA Servicios 70% = $225.00 × 0.70 = $157.50.",
         "Paso 7: Total Retenido que NO pagas al proveedor = $80.00 + $45.00 + $180.00 + $157.50 = $462.50.",
@@ -1207,7 +1207,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "debe": 825
         },
         {
-          "account": "2.1.04.01 Retención en la Fuente Renta por Pagar (312 + 304)",
+          "account": "2.1.04.01 Retención en la Fuente Renta por Pagar (312 + 307)",
           "haber": 125
         },
         {
@@ -1222,7 +1222,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 10: Parametrización de Código de Retención en OWHT",
-      "mission": "Actualiza el código de retención 304 en la tabla de retenciones de SAP B1 a la tasa vigente del 3% (Resolución NAC-DGERCGC26-00000009) y enlaza la cuenta de pasivo 2.1.04.01.",
+      "mission": "Actualiza el código de retención 307 en la tabla de retenciones de SAP B1 a la tasa vigente del 3% (Resolución NAC-DGERCGC26-00000009) y enlaza la cuenta de pasivo 2.1.04.01.",
       "expectedResult": "Al ingresar una factura de servicios de mano de obra por $1,000, el sistema debe retener automáticamente $30.00 de renta."
     },
     "quickCheckQuestions": [

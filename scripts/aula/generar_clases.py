@@ -128,7 +128,27 @@ def rutas_permitidas(modulo, clase):
     return list(dict.fromkeys(rutas))
 
 
-def valida(datos, permitidas=None):
+_DINERO = re.compile(r"\d{1,3}(?:[.,]\d{3})*[.,]\d{2}(?!\d)|\d+[.,]\d{2}(?!\d)")
+
+
+def _importe(t):
+    """'1.311,82' / '1,311.82' / '845.57' -> 1311.82 / 1311.82 / 845.57"""
+    u = max(t.rfind("."), t.rfind(","))
+    return round(float(re.sub(r"[.,]", "", t[:u]) + "." + t[u + 1:]), 2)
+
+
+def importes(texto):
+    return {_importe(m.group(0)) for m in _DINERO.finditer(str(texto))}
+
+
+def cifras_clase(clase):
+    """Clases de nómina: los únicos importes con decimales permitidos son los de su fuente (calculados por el motor)."""
+    if "fuente:nomina_ec_2026" not in clase.get("manuales", []):
+        return None
+    return importes((FUENTES / "nomina_ec_2026.md").read_text(encoding="utf-8"))
+
+
+def valida(datos, permitidas=None, cifras=None):
     lam = [x for x in datos.get("laminas", []) if isinstance(x, dict)]
     if not 10 <= len(lam) <= 20:
         return None, f"{len(lam)} láminas"
@@ -176,6 +196,31 @@ def valida(datos, permitidas=None):
         # En una compra el IVA es crédito tributario (debe), nunca débito fiscal.
         if "débito fiscal" in n and ("compra" in n or "proveedor" in n):
             return None, "IVA 'débito fiscal' en una compra"
+    if cifras is not None:
+        # Cada cuenta de nómina solo admite los importes que el motor calcula para ella.
+        POR_CUENTA = [
+            ("sueldos por pagar", "haber", {845.57, 516.79, 724.40, 1483.25, 543.30}),
+            ("iess por pagar", "haber", {206.55, 104.11, 172.80, 324.00, 129.60}),
+            ("gasto de nomina", "debe", {1035.94, 562.34, 800.00, 1625.00, 600.00}),
+            ("iess patronal", "debe", {116.18, 58.56, 97.20, 182.25, 72.90}),
+            ("anticipos al personal", "haber", {100.00, 0.0}),
+        ]
+        for x in lam:
+            a_ = x.get("asiento")
+            lineas = x.get("lineas") or (a_.get("lineas") if isinstance(a_, dict) else a_ if isinstance(a_, list) else None) or []
+            for l in lineas:
+                cuenta = re.sub(r"[^a-z ]", "", str(l.get("cuenta", "")).lower().translate(str.maketrans("áéíóú", "aeiou"))).strip()
+                for nombre, lado, ok in POR_CUENTA:
+                    if cuenta.endswith(nombre) or nombre in cuenta:
+                        vals = importes(l.get(lado, ""))
+                        if vals and not vals <= ok:
+                            return None, f"importe {sorted(vals)} no corresponde a «{l.get('cuenta')}» ({lado}) en «{x.get('titulo')}»"
+            if "210001" in json.dumps(x, ensure_ascii=False):
+                return None, "número de cuenta bancaria inexistente en el simulador (usa Banco Pichincha · Cta. corriente 2100000001)"
+        for x in lam:
+            desconocidas = sorted(v for v in importes(json.dumps(x, ensure_ascii=False)) if v >= 10 and v not in cifras)
+            if desconocidas:
+                return None, f"cifra no calculada por el motor {desconocidas[:3]} en «{x.get('titulo')}»"
     # Normativa: impuestos, retenciones, asientos y resoluciones se validan antes de aceptar la clase;
     # si algo no cumple, la clase se rechaza y se vuelve a pedir al modelo.
     errores = []
@@ -193,7 +238,7 @@ def generar(modulo, clase, env):
     motivo = ""
     for _ in range(5):  # con el validador normativo hay más rechazos legítimos: se dan más oportunidades
         datos, prov = llm_json(SYSTEM, entrada, env, max_tokens=14000)
-        lam, motivo = valida(datos, permitidas)
+        lam, motivo = valida(datos, permitidas, cifras_clase(clase))
         if lam:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(json.dumps({"id": clase["id"], "modulo": modulo["id"], "titulo": clase["titulo"],

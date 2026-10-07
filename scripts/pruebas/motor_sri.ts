@@ -83,6 +83,24 @@ if (juan) {
   check('tras el rechazo se puede emitir otro', eOtra === 'NO FALLÓ', eOtra);
 }
 
+// Nómina: los empleados de B1 Center y las cifras que enseña la clase salen del mismo motor
+check('4 empleados E001..E004 en B1 Center', s.employees.length === 4 && s.employees[0].employeeCode === 'E001' && s.employees[3].employeeCode === 'E004', s.employees.map(e => e.employeeCode).join());
+const lineaNomina = (code: string, extra: Partial<{ days: number; extra50: number; extra100: number; advances: number }>) => ({ employeeCode: code, days: 30, extra50: 0, extra100: 0, commissions: 0, otherIncome: 0, advances: 0, otherDeductions: 0, ...extra });
+const eNom = falla({ action: 'payroll', data: { period: '2026-04', date: '2026-04-30', sbu: 482, lines: [lineaNomina('E001', {}), lineaNomina('E002', { extra50: 10, advances: 100 }), lineaNomina('E003', { extra100: 8 }), lineaNomina('E004', {})] } });
+check('rol de pagos de abril se registra', eNom === 'NO FALLÓ', eNom);
+const rol = s.payrollRuns.at(-1)!;
+const maria = rol.lines.find(l => l.employeeCode === 'E002')!;
+check('María Gómez: ingreso 1035.94 · descuentos 190.37 · neto 845.57', maria.income === 1035.94 && maria.deductions === 190.37 && maria.net === 845.57, `${maria.income}/${maria.deductions}/${maria.net}`);
+const ana = rol.lines.find(l => l.employeeCode === 'E004')!;
+check('Ana Silva (menos de 1 año): sin fondos de reserva · neto 516.79', ana.reserves === 0 && ana.net === 516.79, `${ana.reserves}/${ana.net}`);
+const asientoNomina = s.journalEntries.find(j => j.id === rol.journalEntryId)!;
+check('asiento de nómina cuadra', asientoNomina.totalDebit === asientoNomina.totalCredit && asientoNomina.totalDebit > 0, `${asientoNomina.totalDebit}/${asientoNomina.totalCredit}`);
+check('un empleado no cobra dos veces el mismo período', falla({ action: 'payroll', data: { period: '2026-04', date: '2026-04-30', sbu: 482, lines: [lineaNomina('E002', {})] } }).includes('ya tiene rol'));
+check('no se puede repetir el mismo empleado en un rol', falla({ action: 'payroll', data: { period: '2026-05', date: '2026-05-31', sbu: 482, lines: [lineaNomina('E001', {}), lineaNomina('E001', {})] } }).includes('duplicado'));
+
+// Códigos de B1 Center = los que enseñan las clases (Mi Aula y el simulador hablan el mismo idioma)
+check('códigos C20000 / V10000 / A00001 como en las clases', s.customers[0].cardCode === 'C20000' && s.customers[4].cardCode === 'C20004' && s.vendors[0].cardCode === 'V10000' && s.vendors[3].cardCode === 'V10003' && s.items[0].itemCode === 'A00001' && s.items[11].itemCode === 'A00012', `${s.customers[0].cardCode} ${s.vendors[0].cardCode} ${s.items[0].itemCode}`);
+
 // RUC de la empresa: el de una empresa nueva es válido y uno imposible se rechaza al guardar
 check('RUC por defecto de empresa nueva válido', JSON.stringify(revisarIdentificacion('1790000001001')) === '{}');
 const eRuc = falla({ action: 'companySettings', data: { companyName: 'Mi empresa', ruc: '9990000001001', incomeTaxRate: 25, warehouses: s.profile!.warehouses } });

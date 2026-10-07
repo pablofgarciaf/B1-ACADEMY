@@ -5,7 +5,7 @@ import { comandosB1Center, comandoStock } from '@/lib/b1-center-datos';
 
 export { EMPRESA_CURSO } from '@/lib/b1-center-datos';
 
-const AVANCES = ['Creando tu empresa B1 Center…', 'Configurando bodegas…', 'Registrando clientes de prueba…', 'Registrando proveedores…', 'Cargando artículos…'];
+const AVANCES = ['Creando tu empresa B1 Center…', 'Configurando bodegas…', 'Registrando clientes de prueba…', 'Registrando proveedores…', 'Cargando artículos…', 'Registrando empleados…', 'Registrando empleados…', 'Registrando empleados…', 'Registrando empleados…'];
 
 /** Crea la B1 Center del estudiante con sus datos de prueba. `avance` informa cada paso a la interfaz. */
 export async function crearB1Center(uid: string, avance: (texto: string) => void = () => {}): Promise<void> {

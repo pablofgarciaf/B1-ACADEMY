@@ -31,6 +31,12 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const key = `${prefix}-${date.slice(0, 4)}`; const seq = (profile.sequences[key] ?? 0) + 1;
     profile.sequences[key] = seq; return `${key}-${String(seq).padStart(4, '0')}`;
   };
+  /** Códigos al estilo SAP que enseñan las clases: clientes C20000+, proveedores V10000+, artículos A00001+. */
+  const nextEmp = (): string => { const seq = (profile.sequences['COD-E'] ?? 0) + 1; profile.sequences['COD-E'] = seq; return `E${String(seq).padStart(3, '0')}`; };
+  const nextSap = (prefix: 'C' | 'V' | 'A'): string => {
+    const key = `COD-${prefix}`; const seq = (profile.sequences[key] ?? 0) + 1; profile.sequences[key] = seq;
+    return prefix === 'C' ? `C${20000 + seq - 1}` : prefix === 'V' ? `V${10000 + seq - 1}` : `A${String(seq).padStart(5, '0')}`;
+  };
   const award = (key: string, points: number, reference: string, label = key): void => {
     if (!profile.xpHistory.some(e => e.key === key)) { profile.xpHistory.push({ key, label, points, reference, date: now }); profile.xp += points; }
   };
@@ -137,10 +143,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'access': profile.lastAccess = now; result = uid; break;
     case 'sales': result = saveDocument('sales', command.data.docType, command.data.document); break;
     case 'purchase': result = saveDocument('purchase', command.data.docType, command.data.document); break;
-    case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = next('CLI'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
-    case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = next('PRO'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
-    case 'item': { result = next('ART'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
-    case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); result = next('EMP'); state.employees.push({ ...meta(result), ...command.data, employeeCode: result }); break; }
+    case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextSap('C'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
+    case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextSap('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
+    case 'item': { result = nextSap('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
+    case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, employeeCode: result }); break; }
     case 'journal': { const d = command.data; result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
     case 'reverse': {
       const entry = state.journalEntries.find(e => e.id === command.data.entryId); assert(entry && !entry.reversedBy && !entry.reversalOf && entry.source === 'manual', 'Solo se revierte un asiento manual original sin reversión previa.');
@@ -193,6 +199,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'payroll': {
       const d = command.data; assert(d.date.startsWith(d.period), 'Fecha fuera del período.');
       assert(new Set(d.lines.map(l => l.employeeCode)).size === d.lines.length, 'Empleado duplicado.');
+      for (const input of d.lines) assert(!state.payrollRuns.some(r => r.period === d.period && r.lines.some(l => l.employeeCode === input.employeeCode)), `El empleado ${input.employeeCode} ya tiene rol de pagos en ${d.period}: no se paga dos veces el mismo período.`);
       const lines = d.lines.map(input => { const employee = state.employees.find(e => e.employeeCode === input.employeeCode && e.active); if (!employee) throw new Error('Empleado inactivo o inexistente.'); assert(employee.contract !== 'fees', 'Honorarios se procesan como compra de servicios, no como nómina.'); assert(employee.hireDate <= d.date, 'Empleado aún no contratado.'); assert(!state.payrollRuns.some(p => p.period === d.period && p.lines.some(l => l.employeeCode === input.employeeCode)), 'Empleado ya liquidado en este mes.'); return payrollLine(employee, input, d.period, d.sbu); });
       const sum = (key: keyof typeof lines[number]) => round(lines.reduce((s, l) => s + (typeof l[key] === 'number' ? l[key] as number : 0), 0));
       result = next('ROL', d.date); const provisions = round(sum('thirteenthProvision') + sum('fourteenthProvision') + sum('reserveProvision') + sum('vacationProvision'));
