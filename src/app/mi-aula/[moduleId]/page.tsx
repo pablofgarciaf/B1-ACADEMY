@@ -78,6 +78,22 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     return () => { activo = false; };
   }, [currentUser]);
 
+  // Módulo 1 = inducción obligatoria: los demás módulos se abren al completarlo (el servidor también lo exige).
+  const [induccionLista, setInduccionLista] = useState<boolean | null>(null);
+  useEffect(() => {
+    if (!currentUser || !moduleId) return;
+    const sinRequisito = moduleId === 'mod-1' || ['super', 'admin', 'docente'].includes(userProfile?.role ?? '');
+    if (sinRequisito) { setInduccionLista(true); return; }
+    const totalMod1 = OFFICIAL_SYLLABUS.find(m => m.id === 'mod-1')?.classes.length ?? 0;
+    let activo = true;
+    currentUser.getIdToken()
+      .then(token => fetch('/api/progress?moduleId=mod-1', { headers: { Authorization: `Bearer ${token}` } }))
+      .then(r => (r.ok ? r.json() : { completedClasses: [] }))
+      .then((d: { completedClasses?: string[] }) => { if (activo) setInduccionLista((d.completedClasses ?? []).length >= totalMod1); })
+      .catch(() => { if (activo) setInduccionLista(true); }); // sin red no se bloquea: el servidor decide
+    return () => { activo = false; };
+  }, [currentUser, moduleId, userProfile?.role]);
+
   // Lesson data
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [isLoadingLesson, setIsLoadingLesson] = useState(false);
@@ -122,7 +138,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // Load lesson data when class changes
   // =============================================
   useEffect(() => {
-    if (!activeClassId || !currentUser || !moduleInfo || empresaEstado !== 'ok') return;
+    if (!activeClassId || !currentUser || !moduleInfo || empresaEstado !== 'ok' || induccionLista !== true) return;
     let isMounted = true;
     const controller = new AbortController();
     setIsLoadingLesson(true);
@@ -154,7 +170,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       controller.abort();
       stopSpeaking();
     };
-  }, [activeClassId, currentUser, moduleInfo, stopSpeaking, restartKey, empresaEstado]);
+  }, [activeClassId, currentUser, moduleInfo, stopSpeaking, restartKey, empresaEstado, induccionLista]);
 
   // =============================================
   // Derived state
@@ -325,6 +341,24 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
         <Link href="/mi-aula" className="px-5 py-2.5 rounded-xl bg-amber-600 font-bold text-xs">
           Volver a Mi Aula
         </Link>
+      </div>
+    );
+  }
+
+  // Módulo bloqueado hasta completar el Módulo 1 (inducción).
+  if (induccionLista === false) {
+    return (
+      <div className="min-h-dvh flex flex-col items-center justify-center gap-4 bg-[#070b14] text-white p-6 text-center">
+        <Lock className="w-10 h-10 text-amber-400" aria-hidden="true" />
+        <h1 className="text-2xl font-bold">Primero, el Módulo 1</h1>
+        <p className="max-w-md text-sm text-gray-300">
+          El Módulo 1 es tu inducción: creas tu empresa de práctica y aprendes a moverte en SAP Business One.
+          Al completarlo se abren todos los demás módulos.
+        </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          <Link href="/mi-aula/mod-1" className="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm active:scale-95">Ir al Módulo 1</Link>
+          <Link href="/mi-aula" className="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-semibold text-sm active:scale-95">Volver a Mi Aula</Link>
+        </div>
       </div>
     );
   }

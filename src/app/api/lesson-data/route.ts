@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import { requireBearerUser } from '@/lib/server-auth';
+import { MODULO_INDUCCION, moduloInduccionCompleto } from '@/lib/requisitos-aula';
 import LECCIONES_AULA from '@/content/aula/lecciones.json';
 
 // =============================================================
@@ -1349,7 +1350,7 @@ const LESSON_CONTENT: Record<string, {
 
 export async function GET(req: Request) {
   try {
-    await requireBearerUser(req);
+    const actor = await requireBearerUser(req);
     const { searchParams } = new URL(req.url);
     const classId = searchParams.get('classId');
 
@@ -1371,6 +1372,11 @@ export async function GET(req: Request) {
 
     if (!foundClass || !foundModule) {
       return NextResponse.json({ error: `Clase ${classId} no encontrada` }, { status: 404 });
+    }
+
+    // El Módulo 1 (inducción) es requisito de todos los demás: se exige también aquí, no solo en la interfaz.
+    if (foundModule.id !== MODULO_INDUCCION && !(await moduloInduccionCompleto(actor.uid, actor.profile.role))) {
+      return NextResponse.json({ error: 'Completa primero el Módulo 1 para acceder a este módulo.' }, { status: 403 });
     }
 
     // Contenido publicado de Mi Aula (clases completas con prácticas evaluadas) tiene prioridad.
