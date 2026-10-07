@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   // absolute: evita que la plantilla del layout agregue "| SAP Academy" y pase de 60 caracteres (51).
   title: { absolute: 'Verificar Certificado SAP Business One | B1 Academy' },
   description: 'Ingresa el código de un certificado de B1 Academy para comprobar al instante su autenticidad, titular, competencia acreditada y fecha de emisión.',
-  alternates: { canonical: 'https://sapacademy.es/verificar' },
+  alternates: { canonical: 'https://b1-academy.vercel.app/verificar' },
 };
 
 export default async function VerificarPage({ searchParams }: { searchParams: Promise<{ codigo?: string }> }) {

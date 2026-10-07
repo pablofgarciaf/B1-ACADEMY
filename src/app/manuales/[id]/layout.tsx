@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: ManualRouteLayoutProps): Prom
 
   return {
     alternates: {
-      canonical: `https://sapacademy.es/manuales/${encodeURIComponent(id)}`,
+      canonical: `https://b1-academy.vercel.app/manuales/${encodeURIComponent(id)}`,
     },
   };
 }

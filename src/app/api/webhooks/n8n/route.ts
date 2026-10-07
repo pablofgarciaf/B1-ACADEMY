@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
           id: certificateId,
           hash: verificationHash,
           issuedDate: new Date().toISOString(),
-          pdfDownloadUrl: `https://sapacademy.es/api/certificates/${certificateId}.pdf`,
+          pdfDownloadUrl: `https://b1-academy.vercel.app/api/certificates/${certificateId}.pdf`,
           publishedToJobBoard: true,
         },
       });

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: SubmoduleRouteLayoutProps): P
 
   return {
     alternates: {
-      canonical: `https://sapacademy.es/capacitacion/${encodeURIComponent(moduloId)}/${encodeURIComponent(submoduleId)}`,
+      canonical: `https://b1-academy.vercel.app/capacitacion/${encodeURIComponent(moduloId)}/${encodeURIComponent(submoduleId)}`,
     },
   };
 }

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://sapacademy.es';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://b1-academy.vercel.app';
 
   // Rutas canónicas estáticas limpias con respuesta garantizada 200 OK
   const staticRoutes = [

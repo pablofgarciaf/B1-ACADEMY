@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Artículos especializados en parametrización SAP S/4HANA, directivas de migración Brownfield, tablas maestras y scripts de automatización con n8n.",
   alternates: {
-    canonical: "https://sapacademy.es/blog",
+    canonical: "https://b1-academy.vercel.app/blog",
   },
 };
 
@@ -21,7 +21,7 @@ const blogSchema = {
   "@type": "CollectionPage",
   name: "Centro de Recursos y Blog Técnico SAP",
   description: "Artículos técnicos, guías de configuración y buenas prácticas en soluciones SAP.",
-  url: "https://sapacademy.es/blog",
+  url: "https://b1-academy.vercel.app/blog",
 };
 
 export default function BlogPage() {

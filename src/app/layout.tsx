@@ -21,7 +21,7 @@ const jakarta = Plus_Jakarta_Sans({
 // Title estricto: 50-60 caracteres (Actual: 55 caracteres)
 // Meta description estricta: 120-160 caracteres (Actual: 149 caracteres)
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sapacademy.es"),
+  metadataBase: new URL("https://b1-academy.vercel.app"),
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Bolsa de empleo SAP",
     "SAP FICO MM SD",
   ],
-  authors: [{ name: "SAP Academy Engineering Team", url: "https://sapacademy.es" }],
+  authors: [{ name: "SAP Academy Engineering Team", url: "https://b1-academy.vercel.app" }],
   creator: "SAP Academy",
   publisher: "SAP Academy",
   formatDetection: {
@@ -49,19 +49,19 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://sapacademy.es",
+    canonical: "https://b1-academy.vercel.app",
   },
   openGraph: {
     title: "SAP Academy | Formación y Consultoría SAP Business One",
     description:
       "Formación especializada y consultoría en SAP Business One para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
-    url: "https://sapacademy.es",
+    url: "https://b1-academy.vercel.app",
     siteName: "SAP Academy",
     locale: "es_ES",
     type: "website",
     images: [
       {
-        url: "https://sapacademy.es/b1-academy-logo.webp",
+        url: "https://b1-academy.vercel.app/b1-academy-logo.webp",
         width: 500,
         height: 500,
         alt: "SAP Academy - Plataforma de Capacitación y Consultoría Empresarial SAP",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: "SAP Academy | Formación y Consultoría SAP Business One",
     description:
       "Formación especializada y consultoría en SAP Business One para profesionales y empresas.",
-    images: ["https://sapacademy.es/b1-academy-logo.webp"],
+    images: ["https://b1-academy.vercel.app/b1-academy-logo.webp"],
   },
   robots: {
     index: true,
@@ -95,8 +95,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   name: "SAP Academy",
-  url: "https://sapacademy.es",
-  logo: "https://sapacademy.es/logo.png",
+  url: "https://b1-academy.vercel.app",
+  logo: "https://b1-academy.vercel.app/logo.png",
   description:
     "Institución especializada en capacitación operativa, consultoría empresarial y certificación avanzada en soluciones de ecosistema SAP.",
   sameAs: [
@@ -116,7 +116,7 @@ const organizationSchema = {
         provider: {
           "@type": "Organization",
           name: "SAP Academy",
-          sameAs: "https://sapacademy.es",
+          sameAs: "https://b1-academy.vercel.app",
         },
       },
     ],

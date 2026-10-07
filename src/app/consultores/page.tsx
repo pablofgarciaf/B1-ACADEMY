@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Valida y contrata consultores especializados en SAP S/4HANA. Perfiles certificados con horas comprobadas de sandbox y proyectos de arquitectura ERP.",
   alternates: {
-    canonical: "https://sapacademy.es/consultores",
+    canonical: "https://b1-academy.vercel.app/consultores",
   },
 };
 

@@ -31,7 +31,8 @@ function destinoSeguro(valor: string | null): string | null {
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, register, resetPassword, userProfile, loading: authLoading } = useAuth();
+  const { login, register, resetPassword, userProfile, currentUser, loading: authLoading } = useAuth();
+  const [avisoSesion, setAvisoSesion] = useState("");
 
   const [tab, setTab] = useState<Tab>("login");
 
@@ -44,10 +45,33 @@ export default function LoginPage() {
 
   // Si el navegador ya tiene sesión de Firebase (la cookie del servidor solo había caducado),
   // AuthProvider la renueva y aquí se devuelve al estudiante a donde iba, sin pedir la clave otra vez.
+  // Solo se redirige cuando el SERVIDOR confirma la sesión. Antes bastaba con que el navegador tuviera
+  // sesión de Firebase: si la cookie del servidor no era válida, /mi-aula devolvía al login y este volvía
+  // a /mi-aula, en bucle. Ahora se renueva la cookie una vez y, si aún falla, se avisa en vez de rebotar.
   useEffect(() => {
     if (authLoading || !userProfile || !siguiente) return;
-    router.replace(userProfile.passwordChanged === false ? "/change-password" : siguiente);
-  }, [authLoading, userProfile, siguiente, router]);
+    let cancelado = false;
+    const sesionValida = async () => {
+      try {
+        const r = await fetch("/api/auth/session", { cache: "no-store" });
+        return r.ok && Boolean(((await r.json()) as { valida?: boolean }).valida);
+      } catch { return false; }
+    };
+    (async () => {
+      let valida = await sesionValida();
+      if (!valida && currentUser) {
+        try {
+          const idToken = await currentUser.getIdToken(true);
+          await fetch("/api/auth/session", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ idToken }) });
+          valida = await sesionValida();
+        } catch { /* se informa abajo */ }
+      }
+      if (cancelado) return;
+      if (valida) router.replace(userProfile.passwordChanged === false ? "/change-password" : siguiente);
+      else setAvisoSesion("No pudimos abrir tu sesión en el servidor. Espera unos segundos y vuelve a ingresar con tu correo y clave.");
+    })();
+    return () => { cancelado = true; };
+  }, [authLoading, userProfile, currentUser, siguiente, router]);
 
   // Login state
   const [email, setEmail] = useState("");
@@ -221,10 +245,10 @@ export default function LoginPage() {
           {/* LOGIN FORM */}
           {tab === "login" && (
             <div className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-xl space-y-6">
-              {errorMsg && (
-                <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2.5 animate-in fade-in">
+              {(errorMsg || avisoSesion) && (
+                <div role="alert" className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs flex items-center gap-2.5 animate-in fade-in">
                   <AlertCircle className="w-4 h-4 shrink-0" />
-                  <span>{errorMsg}</span>
+                  <span>{errorMsg || avisoSesion}</span>
                 </div>
               )}
               {successMsg && (

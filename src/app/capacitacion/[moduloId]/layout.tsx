@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: ModuleRouteLayoutProps): Prom
 
   return {
     alternates: {
-      canonical: `https://sapacademy.es/capacitacion/${encodeURIComponent(moduloId)}`,
+      canonical: `https://b1-academy.vercel.app/capacitacion/${encodeURIComponent(moduloId)}`,
     },
   };
 }

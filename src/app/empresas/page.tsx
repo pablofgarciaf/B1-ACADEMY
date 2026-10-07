@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Directorio de corporaciones que confían en nuestro programa formativo para capacitar a sus equipos internos e incorporar consultores SAP certificados.",
   alternates: {
-    canonical: "https://sapacademy.es/empresas",
+    canonical: "https://b1-academy.vercel.app/empresas",
   },
 };
 
@@ -20,7 +20,7 @@ const partnerSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "SAP Academy Partner Network",
-  url: "https://sapacademy.es/empresas",
+  url: "https://b1-academy.vercel.app/empresas",
   description: "Red de corporaciones validadoras y contratantes de talento certificado en SAP.",
 };
 

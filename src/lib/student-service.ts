@@ -223,7 +223,7 @@ export function recordExamResult(courseIdOrCode: string, quizId: string, courseT
       courseCode: courseIdOrCode,
       title: certTitle,
       issuedDate: new Date().toISOString().split('T')[0],
-      credentialUrl: `https://sapacademy.es/certificados/CERT-${courseIdOrCode.toUpperCase()}-2026`,
+      credentialUrl: `https://b1-academy.vercel.app/certificados/CERT-${courseIdOrCode.toUpperCase()}-2026`,
       verificationHash: `sha256-${Math.random().toString(36).substring(2, 12)}`,
     });
   }

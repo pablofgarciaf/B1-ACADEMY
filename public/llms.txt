@@ -50,5 +50,5 @@
 - **[ARQ] Nivel Arquitectura (Consultor Premium)**: Parametrización profunda de base de datos, APIs y cumplimiento fiscal/laboral.
 
 ## Contacto & Plataforma
-- URL Oficial: https://sapacademy.es
+- URL Oficial: https://b1-academy.vercel.app
 - Admisiones: info@sapacademy.es
