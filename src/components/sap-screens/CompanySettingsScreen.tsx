@@ -8,8 +8,8 @@ import { Screen, Field, Table, inputClass, buttonClass } from './SAPControls';
 export default function CompanySettingsScreen() {
   const c = useCompany();
   const p = c.data.profile;
-  const [f, setF] = useState({ companyName: '', ruc: '', incomeTaxRate: 25, regimen: 'general' as (typeof REGIMENES)[number], warehouses: [] as { code: string; name: string }[] });
-  useEffect(() => { if (p) setF({ companyName: p.companyName, ruc: p.ruc, incomeTaxRate: p.incomeTaxRate, regimen: p.regimen ?? 'general', warehouses: p.warehouses.map(w => ({ ...w })) }); }, [p]);
+  const [f, setF] = useState({ companyName: '', ruc: '', address: '', phone: '', incomeTaxRate: 25, regimen: 'general' as (typeof REGIMENES)[number], warehouses: [] as { code: string; name: string }[] });
+  useEffect(() => { if (p) setF({ companyName: p.companyName, ruc: p.ruc, address: p.address ?? '', phone: p.phone ?? '', incomeTaxRate: p.incomeTaxRate, regimen: p.regimen ?? 'general', warehouses: p.warehouses.map(w => ({ ...w })) }); }, [p]);
   const rucValido = /^\d{10}001$/.test(f.ruc);
   const conStock = (code: string) => c.data.warehouseStock.some(s => s.warehouseCode === code && s.quantity !== 0);
 
@@ -21,6 +21,8 @@ export default function CompanySettingsScreen() {
           <Field label="RUC (13 dígitos, termina en 001)" required>
             <input required inputMode="numeric" maxLength={13} className={`${inputClass} ${f.ruc && !rucValido ? 'outline outline-2 outline-[#c62828]' : ''}`} value={f.ruc} onChange={e => setF(v => ({ ...v, ruc: e.target.value.replace(/\D/g, '') }))} />
           </Field>
+          <Field label="Dirección"><input className={inputClass} value={f.address} onChange={e => setF(v => ({ ...v, address: e.target.value }))} /></Field>
+          <Field label="Teléfono 1"><input inputMode="tel" maxLength={30} className={inputClass} value={f.phone} onChange={e => setF(v => ({ ...v, phone: e.target.value }))} /></Field>
           <Field label="Régimen tributario"><select className={inputClass} value={f.regimen} onChange={e => setF(v => ({ ...v, regimen: e.target.value as (typeof REGIMENES)[number] }))}>{REGIMENES.map(r => <option key={r} value={r}>{REGIMEN_ETIQUETAS[r]}</option>)}</select></Field>
           <Field label="Tarifa de impuesto a la renta (%)"><input type="number" min={0} max={40} step="0.5" className={inputClass} value={f.incomeTaxRate} onChange={e => setF(v => ({ ...v, incomeTaxRate: Number(e.target.value) }))} /></Field>
         </div>

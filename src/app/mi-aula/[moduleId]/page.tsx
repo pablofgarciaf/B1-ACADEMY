@@ -219,7 +219,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   useEffect(() => {
     if (phase === 'simulator' && currentStepGuide) {
       // Explicación de la lámina + instrucciones, narradas mientras el estudiante ya ve el simulador.
-      const instText = currentStepGuide.instructions.map(i => i.replace(/\.$/, '')).join('. ');
+      const instText = currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map(i => i.replace(/\.$/, '')).join('. ');
       speakText(`${slideScript} ${instText}.`.trim());
       return stopSpeaking;
     }
@@ -657,7 +657,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   </div>
                 )}
                 <ol className="space-y-1">
-                  {currentStepGuide.instructions.map((inst, i) => (
+                  {currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map((inst, i) => (
                     <li key={i} className="text-xs text-blue-100 flex gap-2">
                       <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/30 text-blue-300 flex items-center justify-center text-[9px] font-bold">{i + 1}</span>
                       {inst}

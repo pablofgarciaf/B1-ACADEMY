@@ -41,7 +41,7 @@ const EMPLEADOS = [
 export function comandosB1Center(): CompanyCommand[] {
   return [
     { action: 'initialize', data: { companyName: EMPRESA_CURSO } },
-    { action: 'companySettings', data: { companyName: EMPRESA_CURSO, ruc: '1792456789001', incomeTaxRate: 25,
+    { action: 'companySettings', data: { companyName: EMPRESA_CURSO, ruc: '1792456789001', address: 'Av. El Salvador N34-12, Quito', phone: '022345678', incomeTaxRate: 25,
       warehouses: [{ code: '01', name: 'Bodega Central Quito' }, { code: '02', name: 'Bodega Sucursal Guayaquil' }] } },
     { action: 'importMasterData', data: { kind: 'customer', rows: CLIENTES.map((c) => ({ ...socio(c), kind: 'customer' })) } },
     { action: 'importMasterData', data: { kind: 'vendor', rows: PROVEEDORES.map(socio) } },

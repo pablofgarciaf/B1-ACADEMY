@@ -10,7 +10,7 @@ import { sriLabels as labels, sriSourceTypes } from '@/lib/sri-xml';
 import { SRIDetailFields, ATSFields } from './SRIDetailFields';
 import RespuestaSRIPanel from './RespuestaSRIPanel';
 export default function SRIElectronicScreen({ initialType = '01' }: { initialType?: SRITaxDocument['docType'] }) {
-  const c = useCompany(); const blank = (): CommandData<'sri'> => ({ docType: initialType, date: today(), partnerCode: '', sourceDocumentId: '', series: '001-001', retentionLines: [], ats: defaultATS(), details: sriDetailsSchema.parse({}) });
+  const c = useCompany(); const blank = (): CommandData<'sri'> => ({ docType: initialType, date: today(), partnerCode: '', sourceDocumentId: '', series: '001-001', retentionLines: [], ats: defaultATS(), details: sriDetailsSchema.parse({ matrixAddress: c.data.profile?.address || undefined, establishmentAddress: c.data.profile?.address || undefined }) });
   const [data, setData] = useState(blank); const [index, setIndex] = useState(-1);
   const docs = initialType === '07' ? c.data.sriDocuments.filter(d => d.docType === '07') : c.data.sriDocuments;
   const current = docs[index]; const partners = [...c.data.customers, ...c.data.vendors]; const sources = [...c.data.salesOrders, ...c.data.purchaseOrders].filter(d => sriSourceTypes[data.docType].includes(d.docType) && (!data.partnerCode || d.cardCode === data.partnerCode));

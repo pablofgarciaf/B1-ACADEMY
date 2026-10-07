@@ -84,6 +84,7 @@ if (juan) {
 }
 
 // Nómina: los empleados de B1 Center y las cifras que enseña la clase salen del mismo motor
+check('B1 Center guarda dirección y teléfono en la ficha de la empresa', s.profile!.address === 'Av. El Salvador N34-12, Quito' && s.profile!.phone === '022345678', `${s.profile!.address}/${s.profile!.phone}`);
 check('4 empleados E001..E004 en B1 Center', s.employees.length === 4 && s.employees[0].employeeCode === 'E001' && s.employees[3].employeeCode === 'E004', s.employees.map(e => e.employeeCode).join());
 const lineaNomina = (code: string, extra: Partial<{ days: number; extra50: number; extra100: number; advances: number }>) => ({ employeeCode: code, days: 30, extra50: 0, extra100: 0, commissions: 0, otherIncome: 0, advances: 0, otherDeductions: 0, ...extra });
 const eNom = falla({ action: 'payroll', data: { period: '2026-04', date: '2026-04-30', sbu: 482, lines: [lineaNomina('E001', {}), lineaNomina('E002', { extra50: 10, advances: 100 }), lineaNomina('E003', { extra100: 8 }), lineaNomina('E004', {})] } });

@@ -48,9 +48,12 @@ public/Capacitacion SAP/*/clase_video.mp4
 
 # Temporales del generador de videos del Aula
 scratch/aula_audio_cache/
+scratch/marketing_audio_cache/
 scratch/aula_tmp/
 scratch/*.log
 # Borradores de clases de Mi Aula (generar_clases.py → publicar_clases.py publica en src/content/aula y public/aula)
 scratch/aula_es/
 _backup_videos_descartados/
+exports/
+
 

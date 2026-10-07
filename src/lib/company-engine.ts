@@ -583,7 +583,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       // Un RUC con estructura imposible (provincia, tercer dígito, cédula base) se rechaza al guardar; el dígito
       // verificador de una sociedad solo advierte porque el SRI ha emitido RUC que no cumplen el módulo 11.
       const rucRevisado = revisarIdentificacion(d.ruc); assert(!rucRevisado.error, rucRevisado.error ?? '');
-      Object.assign(profile, { regimen: d.regimen ?? profile.regimen ?? 'general', companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
+      Object.assign(profile, { address: d.address ?? profile.address ?? '', phone: d.phone ?? profile.phone ?? '', regimen: d.regimen ?? profile.regimen ?? 'general', companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
       result = uid; break;
     }
     case 'serviceContract': {

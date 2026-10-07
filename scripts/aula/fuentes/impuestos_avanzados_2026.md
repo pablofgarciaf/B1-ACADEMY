@@ -14,7 +14,7 @@
 
 ### Ejemplo ICE (artículo nuevo: «Perfume Eau 100ml», código A00013, ICE perfumes 20 %, precio de lista 100,00)
 - Compra de 5 perfumes a USD 50,00 al proveedor V10000: base 250,00 + ICE 20 % (50,00) + IVA 15 % sobre 300,00 (45,00) = total 345,00. Asiento: Debe Inventarios 300,00 (250,00 + 50,00 de ICE capitalizado) · Debe IVA en compras 45,00 · Haber Cuentas por pagar proveedores 345,00. Cada perfume queda con un costo de 60,00.
-- Venta de 2 perfumes a USD 100,00 al cliente C20000: base 200,00 + ICE 20 % (40,00) + IVA 15 % sobre 240,00 (36,00) = total 276,00. Asiento: Debe Costo de ventas 120,00 · Haber Inventarios 120,00 · Debe Cuentas por cobrar clientes 276,00 · Haber Ventas operacionales 200,00 · Haber IVA en ventas 36,00 · Haber ICE por pagar 40,00.
+- Venta de 2 perfumes a USD 100,00 al cliente C20000: base 200,00 + ICE 20 % (40,00) + IVA 15 % sobre 240,00 (36,00) = total 276,00. Asiento: Debe Costo de ventas 120,00 · Haber Inventarios 120,00 · Debe Cuentas por cobrar clientes 276,00 · Haber Ventas operacionales 200,00 · Haber IVA en ventas 36,00 · Haber ICE por pagar 40,00. Total del asiento: debe 396,00 y haber 396,00.
 - Cigarrillos: 100 cigarrillos vendidos a USD 0,50 = base 50,00; ICE 100 × 0,16 = 16,00; IVA 15 % sobre 66,00 = 9,90; total 75,90.
 
 ## 2. ISD — Impuesto a la Salida de Divisas
