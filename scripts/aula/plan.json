@@ -115,6 +115,7 @@
       { "id": "mod19-c5", "titulo": "Declaraciones Mensuales: Formularios 103, 104 y ATS", "manuales": ["fuente:sri_2026"], "rutas_regex": "factura de (proveedores|clientes)|informe|impuesto|retenci" },
       { "id": "mod19-c6", "titulo": "Nota de Débito, Guía de Remisión y Liquidación de Compra", "manuales": ["fuente:sri_2026"], "rutas_regex": "factura de (proveedores|clientes)|nota de cr[eé]dito|entrega|datos maestros (de socio|interlocutor)" },
       { "id": "mod19-c7", "titulo": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa", "manuales": ["fuente:sri_2026", "fuente:impuestos_avanzados_2026"], "rutas_regex": "datos maestros (de socio|interlocutor)|factura de proveedores|detalles de la sociedad|inicializaci[oó]n del sistema" },
+      { "id": "mod19-c8", "titulo": "ICE: Impuesto a los Consumos Especiales", "manuales": ["fuente:impuestos_avanzados_2026"], "rutas_regex": "datos maestros de art[ií]culo|factura de (proveedores|clientes)" },
       { "id": "mod19-c9", "titulo": "ISD: Pagos al Exterior y Salida de Divisas", "manuales": ["fuente:impuestos_avanzados_2026"], "rutas_regex": "pagos (efectuados|recibidos)|factura de proveedores" },
       { "id": "mod19-c10", "titulo": "Retenciones que te Hacen tus Clientes: Crédito Tributario", "manuales": ["fuente:impuestos_avanzados_2026"], "rutas_regex": "pagos recibidos|factura de clientes" }
     ]},

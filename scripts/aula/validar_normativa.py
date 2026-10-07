@@ -285,7 +285,8 @@ def _revisar_asiento(lineas, donde, errores, es_compra_ctx=False):
         if "cliente" in cuentas and not al_debe and re.search(r"credito tributario|iva (en )?compras|iva pagado", c):
             errores.append(f"{donde}: en una venta el IVA es débito fiscal (IVA cobrado), no «{l.get('cuenta')}»")
     if len(ivas) == 1 and len(bases) == 1 and monto(bases[0]) > 0 and monto(ivas[0]) > 0:
-        tasa = monto(ivas[0]) / monto(bases[0]) * 100
+        ice = sum(monto(l) for l in lineas if re.search(r"(^|[^a-z])ice([^a-z]|$)", plano(l.get("cuenta", ""))))  # el IVA se calcula sobre base + ICE
+        tasa = monto(ivas[0]) / (monto(bases[0]) + ice) * 100
         if not any(abs(tasa - t) < 0.1 for t in TARIFAS_IVA if t):
             errores.append(f"{donde}: el IVA del asiento es {tasa:.2f} % de la base ({monto(ivas[0]):g} sobre {monto(bases[0]):g}); debe ser 15 %")
 

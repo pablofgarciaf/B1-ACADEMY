@@ -576,15 +576,22 @@
    "durationMinutes": 20
   },
   {
-   "id": "mod19-c9",
+   "id": "mod19-c8",
    "number": 8,
+   "title": "ICE: Impuesto a los Consumos Especiales",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod19-c9",
+   "number": 9,
    "title": "ISD: Pagos al Exterior y Salida de Divisas",
    "description": "",
    "durationMinutes": 14
   },
   {
    "id": "mod19-c10",
-   "number": 9,
+   "number": 10,
    "title": "Retenciones que te Hacen tus Clientes: Crédito Tributario",
    "description": "",
    "durationMinutes": 9
