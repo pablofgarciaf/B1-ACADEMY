@@ -124,12 +124,13 @@ export default function MiAulaPage() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">{d.role}</p>
                       <h3 className="font-bold leading-snug">{d.title}</h3>
-                      <p className="text-xs text-slate-500 dark:text-gray-400 mt-0.5">{mods.length} certificados</p>
+                      <p className="text-xs text-slate-600 dark:text-gray-300 mt-1.5 leading-relaxed">{d.description}</p>
+                      <p className="text-xs font-semibold text-amber-700 dark:text-amber-400 mt-2 flex items-center gap-1">
+                        Ver sus {mods.length} módulos <ChevronDown className="w-3.5 h-3.5 group-open:rotate-180 transition-transform" aria-hidden="true" />
+                      </p>
                     </div>
-                    <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform shrink-0 mt-1" aria-hidden="true" />
                   </summary>
-                  <div className="px-5 pb-5 space-y-2">
-                    <p className="text-xs text-slate-600 dark:text-gray-300">{d.description}</p>
+                  <div className="px-5 pb-5">
                     <ul className="space-y-1">
                       {mods.map(m => (
                         <li key={m.id}>

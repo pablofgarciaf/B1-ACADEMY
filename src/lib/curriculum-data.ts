@@ -41,7 +41,7 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
   // ── Fundamentos ──
   { id: 'mod-1', number: 1, block: 'Fundamentos', badge: 'Core Basics',
     title: 'Fundamentos Operativos y Navegación',
-    description: 'Arquitectura, Cockpit Fiori, preferencias de usuario, búsquedas, alertas y autorizaciones.',
+    description: 'Inducción: qué es SAP Business One, primeros pasos, escritorio y Cockpit, documentos y datos maestros, y tu empresa de práctica.',
     certificateTitle: 'Certificado en Navegación y Operación de SAP Business One', classes: [] },
   { id: 'mod-2', number: 2, block: 'Fundamentos', badge: 'Master Data',
     title: 'Núcleo Maestro ERP',
@@ -127,7 +127,7 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
   // ── Sistema y Consultoría ──
   { id: 'mod-21', number: 20, block: 'Sistema y Consultoría', badge: 'Administración',
     title: 'Administración del Sistema',
-    description: 'Numeración de documentos, diseños de impresión, correo, plantillas y propiedad de los datos.',
+    description: 'Usuarios y grupos, autorizaciones, alertas, numeración de documentos, diseños de impresión, correo y propiedad de los datos.',
     certificateTitle: 'Certificado en Administración del Sistema SAP B1', classes: [] },
   { id: 'mod-22', number: 21, block: 'Sistema y Consultoría', badge: 'Extensibilidad',
     title: 'Extensibilidad y Analítica',

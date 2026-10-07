@@ -10,6 +10,7 @@ Salida: scratch/aula_es/<claseId>/clase.json (reanudable; --force para rehacer)
 """
 import argparse
 import json
+import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
@@ -49,7 +50,7 @@ Cada lámina es un objeto con:
 LAS DOS PRÁCTICAS usan layout "pantalla" y además llevan:
 "practica": {{
   "titulo": "verbo + objeto, máx 6 palabras",
-  "menu_path": "Módulo > Submenú > Ventana (ruta real de SAP Business One)",
+  "menu_path": "COPIADA EXACTAMENTE de la lista 'rutas_reales_del_menu' de la entrada (son rutas reales de los manuales; no inventes ninguna)",
   "instrucciones": [3 a 5 pasos cortos y concretos],
   "campos": [3 a 6 objetos {{"etiqueta": "nombre del campo en SAP", "valor": "valor EXACTO a escribir", "pista": "ayuda breve sin dar la respuesta"}}]
 }}
@@ -57,6 +58,9 @@ LAS DOS PRÁCTICAS usan layout "pantalla" y además llevan:
 - Usa SOLO clientes, proveedores, artículos, bodegas y bancos de la empresa ficticia (abajo). IVA 15 %.
 - Los "campos" de la lámina pantalla muestran los mismos valores que la práctica.
 - La "narracion" de una práctica presenta la misión (qué vas a hacer y por qué), 50 a 90 palabras.
+- Cada práctica ejercita el tema de ESTA clase en la ventana de SAP que corresponde a ese tema
+  (por ejemplo, una clase de ubicaciones practica en ventanas de ubicaciones, no una factura de ventas).
+- Los "campos" son campos reales de esa ventana de SAP; nunca "Resultado", "Confirmar" u otras acciones disfrazadas de campo.
 
 NORMATIVA (Ecuador, obligatoria; un validador rechaza la clase si no se cumple):
 - IVA general 15 % (tarifas posibles: 0 %, 5 %, 8 %, 15 %). Nunca 12 %: está derogado.
@@ -92,15 +96,45 @@ def conocimiento(clase):
     return "\n\n".join(partes)[:16000]
 
 
-def valida(datos):
+MENU_SAP = json.loads((FUENTES / "menu_sap.json").read_text(encoding="utf-8"))
+
+
+def _plano_ruta(r):
+    import unicodedata
+    t = unicodedata.normalize("NFD", str(r).lower())
+    return " > ".join(s.strip() for s in "".join(c for c in t if unicodedata.category(c) != "Mn").split(">") if s.strip())
+
+
+def rutas_permitidas(modulo, clase):
+    """Rutas reales del menú (extraídas de los manuales) para una clase: las de sus manuales y, si son pocas, las del módulo."""
+    def de(manuales):
+        return [r for m in manuales if not m.startswith("fuente:") for r in MENU_SAP["por_manual"].get(m, [])]
+    rutas = de(clase["manuales"])
+    if len(rutas) < 4:
+        rutas += de([m for c in modulo["clases"] for m in c["manuales"]])
+    if len(rutas) < 4:
+        rutas = MENU_SAP["todas"]
+    return list(dict.fromkeys(rutas))
+
+
+def valida(datos, permitidas=None):
     lam = [x for x in datos.get("laminas", []) if isinstance(x, dict)]
     if not 10 <= len(lam) <= 20:
         return None, f"{len(lam)} láminas"
+    rutas_ok = {_plano_ruta(r) for r in (permitidas or [])}
+
     def evaluable(p):
         campos = p["practica"].get("campos") or []
-        # La práctica se abre navegando el menú real de SAP: necesita al menos "Módulo > Ventana" (revisar_aula.py lo exige).
+        # La práctica se abre navegando el menú real de SAP: necesita al menos "Módulo > Ventana" (revisar_aula.py lo exige)
+        # y, si hay catálogo, una ruta que exista de verdad en los manuales (antes el modelo inventaba menús).
         ruta = [s for s in str(p["practica"].get("menu_path", "")).split(">") if s.strip()]
-        return (3 <= len(campos) <= 6 and p["practica"].get("instrucciones") and len(ruta) >= 2
+        ruta_real = not rutas_ok or _plano_ruta(p["practica"].get("menu_path", "")) in rutas_ok
+        # Campos falsos: acciones o estados disfrazados de campo ("Acción: Agregar", "Estado: Guardado"…) no existen en SAP
+        # y el estudiante no sabe qué escribir. Se aceptan solo campos de datos reales.
+        falsos = re.compile(r"^(acci[oó]n|estado|confirmaci[oó]n|resultado|modo|paso|segundo|tercer|primer|elemento|operaci[oó]n realizada)", re.I)
+        if any(falsos.match(str(c.get("etiqueta", "")).strip()) for c in campos):
+            return False
+        return (3 <= len(campos) <= 6 and p["practica"].get("instrucciones") and len(ruta) >= 2 and ruta_real
                 and all(str(c.get("valor", "")).strip() and len(str(c["valor"])) <= 40 for c in campos))
 
     practicas = [x for x in lam if isinstance(x.get("practica"), dict)]
@@ -126,11 +160,13 @@ def valida(datos):
 
 def generar(modulo, clase, env):
     out = SALIDA / clase["id"] / "clase.json"
-    entrada = json.dumps({"modulo": modulo["titulo"], "clase": clase["titulo"], "contenido_tecnico": conocimiento(clase)}, ensure_ascii=False)
+    permitidas = rutas_permitidas(modulo, clase)
+    entrada = json.dumps({"modulo": modulo["titulo"], "clase": clase["titulo"], "contenido_tecnico": conocimiento(clase),
+                          "rutas_reales_del_menu": permitidas[:60]}, ensure_ascii=False)
     motivo = ""
     for _ in range(5):  # con el validador normativo hay más rechazos legítimos: se dan más oportunidades
         datos, prov = llm_json(SYSTEM, entrada, env, max_tokens=14000)
-        lam, motivo = valida(datos)
+        lam, motivo = valida(datos, permitidas)
         if lam:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(json.dumps({"id": clase["id"], "modulo": modulo["id"], "titulo": clase["titulo"],

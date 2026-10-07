@@ -3,28 +3,28 @@
   {
    "id": "mod1-c1",
    "number": 1,
-   "title": "Arquitectura y Cockpit Fiori",
+   "title": "¿Qué es SAP Business One?",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 18
   },
   {
    "id": "mod1-c2",
    "number": 2,
-   "title": "Parametrizaciones y Preferencias de Usuario",
+   "title": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit",
    "description": "",
-   "durationMinutes": 14
+   "durationMinutes": 19
   },
   {
    "id": "mod1-c3",
    "number": 3,
-   "title": "Búsqueda y Funciones de Ayuda",
+   "title": "Documentos y Datos Maestros",
    "description": "",
-   "durationMinutes": 15
+   "durationMinutes": 14
   },
   {
    "id": "mod1-c4",
    "number": 4,
-   "title": "Mensajes, Alertas y Autorizaciones",
+   "title": "Preferencias de Usuario y Búsquedas",
    "description": "",
    "durationMinutes": 13
   }
@@ -599,6 +599,20 @@
    "title": "Propiedad de los Datos y Soporte",
    "description": "",
    "durationMinutes": 20
+  },
+  {
+   "id": "mod21-c5",
+   "number": 5,
+   "title": "Usuarios, Grupos y Configuraciones Clave",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod21-c6",
+   "number": 6,
+   "title": "Mensajes, Alertas y Autorizaciones",
+   "description": "",
+   "durationMinutes": 13
   }
  ],
  "mod-22": [

@@ -59,7 +59,7 @@ def numero(texto):
     """Convierte '1.150,50', '$ 1,150.50', '45' en float; None si no es un monto."""
     v = re.sub(r"(usd|us\$|\$|\s)", "", plano(texto))
     v = v.rstrip("%")
-    if not re.fullmatch(r"-?[\d.,]+", v or "x"):
+    if not re.fullmatch(r"-?[\d.,]+", v or "x") or not re.search(r"\d", v):  # "." o "," solos no son montos
         return None
     ultimo = max(v.rfind("."), v.rfind(","))
     if ultimo == -1:

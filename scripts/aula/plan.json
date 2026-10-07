@@ -2,10 +2,10 @@
   "_nota": "Plan de estudios de Mi Aula. Los IDs (mod-N, modN-cM) son claves estables: progreso, láminas y clases publicadas dependen de ellos; el número visible y el orden pedagógico se definen en src/lib/curriculum-data.ts. 'manuales' = carpetas de public/Capacitacion SAP; 'fuente:<nombre>' = documento investigado en scripts/aula/fuentes/ (normativa SRI: revisar cada año). Flujo: generar_clases.py (rechaza clases que no cumplen validar_normativa.py) → validar_normativa.py → publicar_clases.py (conserva lo ya publicado) → revisar_aula.py.",
   "modulos": [
     { "id": "mod-1", "titulo": "Fundamentos Operativos y Navegación", "clases": [
-      { "id": "mod1-c1", "titulo": "Arquitectura y Cockpit Fiori", "manuales": ["1.1_Introduccion_a_SAP_Business_One", "1.2_Primeros_Pasos_en_SAP_Business_One"] },
-      { "id": "mod1-c2", "titulo": "Parametrizaciones y Preferencias de Usuario", "manuales": ["20.3_Configuraciones_Clave_del_Sistema", "21.1_Configuracion_de_Usuarios_y_Grupos"] },
-      { "id": "mod1-c3", "titulo": "Búsqueda y Funciones de Ayuda", "manuales": ["1.2_Primeros_Pasos_en_SAP_Business_One", "1.3_Documentos_y_Datos_Maestros_Concept"] },
-      { "id": "mod1-c4", "titulo": "Mensajes, Alertas y Autorizaciones", "manuales": ["22.2_Sistema_de_Alertas_Automaticas", "21.2_Autorizaciones_Generales_del_Sistem"] }
+      { "id": "mod1-c1", "titulo": "¿Qué es SAP Business One?", "manuales": ["1.1_Introduccion_a_SAP_Business_One"] },
+      { "id": "mod1-c2", "titulo": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit", "manuales": ["1.2_Primeros_Pasos_en_SAP_Business_One"] },
+      { "id": "mod1-c3", "titulo": "Documentos y Datos Maestros", "manuales": ["1.3_Documentos_y_Datos_Maestros_Concept"] },
+      { "id": "mod1-c4", "titulo": "Preferencias de Usuario y Búsquedas", "manuales": ["1.2_Primeros_Pasos_en_SAP_Business_One", "20.3_Configuraciones_Clave_del_Sistema"] }
     ]},
     { "id": "mod-2", "titulo": "Núcleo Maestro ERP", "clases": [
       { "id": "mod2-c1", "titulo": "Socio de Negocios (OCRD)", "manuales": ["2.3_Datos_Maestros_de_Clientes", "1.3_Documentos_y_Datos_Maestros_Concept"] },
@@ -121,7 +121,9 @@
       { "id": "mod21-c1", "titulo": "Numeración de Documentos y Datos Maestros", "manuales": ["21.4_Numeracion_de_Documentos_y_Datos_Ma"] },
       { "id": "mod21-c2", "titulo": "Diseños de Impresión", "manuales": ["21.6_Disenos_de_Impresion_Print_Layouts"] },
       { "id": "mod21-c3", "titulo": "Correo Electrónico y Plantillas de Interfaz", "manuales": ["21.7_Preferencias_de_Correo_Electronico", "21.5_Plantillas_de_Configuracion_de_Inte"] },
-      { "id": "mod21-c4", "titulo": "Propiedad de los Datos y Soporte", "manuales": ["21.3_Propiedad_de_los_Datos_Data_Ownersh", "23.1_Herramientas_de_Soporte_y_Diagnosti"] }
+      { "id": "mod21-c4", "titulo": "Propiedad de los Datos y Soporte", "manuales": ["21.3_Propiedad_de_los_Datos_Data_Ownersh", "23.1_Herramientas_de_Soporte_y_Diagnosti"] },
+      { "id": "mod21-c5", "titulo": "Usuarios, Grupos y Configuraciones Clave", "manuales": ["21.1_Configuracion_de_Usuarios_y_Grupos", "20.3_Configuraciones_Clave_del_Sistema"] },
+      { "id": "mod21-c6", "titulo": "Mensajes, Alertas y Autorizaciones", "manuales": ["22.2_Sistema_de_Alertas_Automaticas", "21.2_Autorizaciones_Generales_del_Sistem"] }
     ]},
     { "id": "mod-22", "titulo": "Extensibilidad y Analítica", "clases": [
       { "id": "mod22-c1", "titulo": "Tablas Definidas por el Usuario", "manuales": ["22.6_Tablas_Definidas_por_el_Usuario_UDT"] },

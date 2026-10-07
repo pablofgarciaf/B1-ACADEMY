@@ -30,7 +30,7 @@ const ALIAS_MODULO: [RegExp, string][] = [
   [/^compras?\b|^proveedores\b/, 'Compras - Proveedores'],
   [/banco|tesorer/, 'Gestión de bancos'],
   [/^mrp$|planificaci/, 'Planificación de necesidades'],
-  [/socio/, 'Socios de negocios'],
+  [/socio|interlocutor/, 'Socios de negocios'], // los manuales usan "Interlocutores comerciales" (traducción de España)
   [/contab|finanz/, 'Finanzas'],
   [/almac|inventar|stock/, 'Inventario'],
   [/^gestion$|administr|configurac/, 'Administración'],
