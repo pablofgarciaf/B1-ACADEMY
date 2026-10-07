@@ -465,6 +465,16 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             {pantallaCompleta ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           </button>
 
+          {/* SAPI siempre a mano: abre el mismo chat que el robot flotante */}
+          <button
+            onClick={() => window.dispatchEvent(new Event('sapi-abrir'))}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/90 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all active:scale-95"
+            title="Pregúntale a SAPI cualquier duda de la clase"
+          >
+            <Bot className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">Preguntar a SAPI</span>
+          </button>
+
           {/* exam */}
           <Link
             href={`/mi-aula/${moduleId}/oral-exam`}

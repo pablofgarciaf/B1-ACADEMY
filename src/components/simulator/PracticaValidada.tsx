@@ -91,6 +91,33 @@ function mezclar<T>(arr: T[], semilla: number): T[] {
 /** Códigos de datos maestros (C20000, V10000, A00001…): en SAP llevan la flecha naranja de enlace. */
 const esCodigoMaestro = (v: string) => /^[A-Z]{1,3}\d{3,}$/.test(v.trim());
 
+const CLIENTES = [['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle']];
+const PROVEEDORES = [['V10000', 'Dell Ecuador'], ['V10001', 'HP Importaciones'], ['V10002', 'Lenovo Andina'], ['V10003', 'Acer Distributors']];
+const ARTICULOS = [['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'], ['A00004', 'Teclado Inalámbrico Logitech'], ['A00005', 'Mouse Óptico Dell'], ['A00006', 'Servidor HP ProLiant DL380'], ['A00007', 'Disco Duro SSD 1TB Samsung'], ['A00008', 'Memoria RAM 16GB DDR4'], ['A00009', 'Impresora Multifunción Epson'], ['A00010', 'Switch Cisco 24 Puertos'], ['A00011', 'Cable de Red Cat6 100m'], ['A00012', 'UPS APC 1500VA']];
+type Opcion = { valor: string; texto: string };
+const lista = (pares: string[][]): Opcion[] => pares.map(([valor, nombre]) => ({ valor, texto: `${valor} · ${nombre}` }));
+
+/**
+ * Opciones de un campo de valores cerrados: en SAP no se escriben, se eligen. Devuelve null si el campo es libre.
+ * El valor esperado siempre está entre las opciones (el reto es elegir el correcto, no adivinar el formato).
+ */
+function opcionesCampo(c: CampoPractica): Opcion[] | null {
+  const et = plano(c.etiqueta);
+  const v = c.valor.trim();
+  let ops: Opcion[] | null = null;
+  if (/^C2\d{4}$/.test(v) || (/cliente|socio/.test(et) && CLIENTES.some(([, n]) => plano(n) === plano(v)))) ops = lista(CLIENTES);
+  else if (/^V1\d{4}$/.test(v) || (/proveedor/.test(et) && PROVEEDORES.some(([, n]) => plano(n) === plano(v)))) ops = lista(PROVEEDORES);
+  else if (/^A0\d{4}$/.test(v)) ops = lista(ARTICULOS);
+  else if (/\biva\b|impuesto/.test(et) && !/retenc/.test(et)) ops = ['IVA 15%', 'IVA 5%', 'IVA 8%', 'IVA 0%'].map((o) => ({ valor: o, texto: o }));
+  else if (/retenc/.test(et) && /%/.test(v)) return null;
+  else if (/bodega|almacen/.test(et) && /^0[12]$|bodega/i.test(v)) ops = [{ valor: '01', texto: '01 · Bodega Central Quito' }, { valor: '02', texto: '02 · Bodega Sucursal Guayaquil' }];
+  else if (/moneda/.test(et)) ops = ['USD', 'EUR', 'COP', 'PEN'].map((o) => ({ valor: o, texto: o }));
+  else if (/condici.n de pago|plazo de pago|terminos de pago/.test(et)) ops = ['Contado', '15 días', '30 días', '45 días', '60 días'].map((o) => ({ valor: o, texto: o }));
+  else if (/^tipo( de socio)?$/.test(et) && /cliente|proveedor|lead/i.test(v)) ops = ['Cliente', 'Proveedor', 'Lead'].map((o) => ({ valor: o, texto: o }));
+  if (!ops) return null;
+  return ops.some((o) => coincide(o.valor, v) || coincide(o.texto, v)) ? ops : [...ops, { valor: v, texto: v }];
+}
+
 type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
 
 export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void }) {
@@ -392,6 +419,26 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                               className={`w-4 h-4 accent-[#f0ab00] ${est === false ? 'outline outline-2 outline-[#c9302c]' : ''}`}
                             />
                           </span>
+                        ) : opcionesCampo(c) ? (
+                        // Campos de valores cerrados (IVA, bodega, moneda, socio, artículo…): se eligen de una lista, como en SAP.
+                        <select
+                          id={`campo-${i}`}
+                          data-guia={`campo-${i}`}
+                          value={valores[i]}
+                          disabled={logrado}
+                          onChange={(e) => {
+                            const v = [...valores]; v[i] = e.target.value; setValores(v);
+                            if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
+                          }}
+                          className={`h-6 w-full px-1 bg-white border rounded-[2px] focus:outline-none ${
+                            est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'
+                              : est === false ? 'border-[#c9302c] bg-[#fdf0ef]'
+                                : 'border-[#a9b7c8] focus:border-[#f0ab00] focus:ring-1 focus:ring-[#f0ab00]'
+                          }`}
+                        >
+                          <option value="">Selecciona…</option>
+                          {opcionesCampo(c)!.map((o) => <option key={o.valor} value={o.valor}>{o.texto}</option>)}
+                        </select>
                         ) : (
                         <input
                           id={`campo-${i}`}

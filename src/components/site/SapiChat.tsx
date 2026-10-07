@@ -20,6 +20,13 @@ const SUGGESTED_QUESTIONS = [
 export default function SapiChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [lado, setLado] = useState<'izq' | 'der'>('der');
+
+  // Cualquier botón de la plataforma puede abrir SAPI (p. ej. "Preguntar a SAPI" en la barra de la clase).
+  useEffect(() => {
+    const abrir = () => { setLado('der'); setIsOpen(true); };
+    window.addEventListener('sapi-abrir', abrir);
+    return () => window.removeEventListener('sapi-abrir', abrir);
+  }, []);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);

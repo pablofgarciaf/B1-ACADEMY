@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Genera las clases de Mi Aula (escuela con práctica integrada) a partir de plan.json y los manuales en español.
-Cada clase: portada → objetivos → teoría → PRÁCTICA 1 → explicación → PRÁCTICA 2 → resumen.
+Cada clase alterna teoría breve y 3 a 5 prácticas encadenadas (toda ventana de SAP mostrada es práctica).
 Las prácticas traen los campos y valores exactos que el simulador evaluará.
 
 Salida: scratch/aula_es/<claseId>/clase.json (reanudable; --force para rehacer)
@@ -30,10 +30,13 @@ LAYOUTS = ["portada", "objetivos", "concepto", "flujo", "comparacion", "pantalla
 SYSTEM = f"""Eres el diseñador instruccional jefe de SAP Academy Ecuador. Diseñas UNA clase de una escuela de SAP Business One
 con práctica integrada en un simulador. Español neutro latinoamericano, tuteo cercano y profesional.
 
-La clase sigue SIEMPRE este orden (entre 12 y 16 láminas):
-1. portada  2. objetivos  3-6. teoría (concepto / flujo / comparacion / tabla / asiento / kpi): qué es y para qué sirve en una empresa real
-7. PRÁCTICA 1   8-9. explicación de lo que ocurrió en el sistema (impacto, asiento o informe resultante)
-10. PRÁCTICA 2 (un paso más difícil o el documento siguiente del proceso)   11-12. errores comunes / buenas prácticas   13. resumen
+La clase alterna teoría breve y PRÁCTICA (entre 12 y 16 láminas): se aprende haciendo.
+1. portada  2. objetivos  3-4. teoría esencial (concepto / flujo): qué es y para qué sirve en una empresa real
+Luego, por cada ventana de SAP que enseña la clase: una PRÁCTICA seguida de 1 lámina que explica qué ocurrió en el
+sistema (impacto, asiento o informe resultante). Entre 3 y 5 PRÁCTICAS por clase, de menor a mayor dificultad,
+encadenadas como un proceso real (por ejemplo: crear el socio → registrar el pedido → facturar).
+Penúltima: errores comunes / buenas prácticas. Última: resumen.
+REGLA: toda lámina que muestre una ventana de SAP (layout "pantalla") ES una práctica; no muestres ventanas solo para mirarlas.
 
 Cada lámina es un objeto con:
 - "layout": uno de {LAYOUTS}
@@ -47,7 +50,7 @@ Cada lámina es un objeto con:
 - "narracion": 60 a 110 palabras que EXPLICAN la lámina (qué es, para qué sirve, cómo se hace en SAP). Sin "en esta diapositiva".
   Números como se pronuncian. Basada en el contenido técnico recibido: no inventes funciones de SAP.
 
-LAS DOS PRÁCTICAS usan layout "pantalla" y además llevan:
+LAS PRÁCTICAS usan layout "pantalla" y además llevan:
 "practica": {{
   "titulo": "verbo + objeto, máx 6 palabras",
   "menu_path": "COPIADA EXACTAMENTE de la lista 'rutas_reales_del_menu' de la entrada (son rutas reales de los manuales; no inventes ninguna)",
@@ -139,12 +142,12 @@ def valida(datos, permitidas=None):
 
     practicas = [x for x in lam if isinstance(x.get("practica"), dict)]
     # Una práctica que no se puede evaluar con exactitud (valores largos, sin instrucciones) queda como lámina
-    # de pantalla explicativa; las que se evalúan conservan la misma exigencia. Más de 4: las extra también.
+    # de pantalla explicativa; las que se evalúan conservan la misma exigencia. Más de 6: las extra también.
     validas = [x for x in practicas if evaluable(x)]
     for x in practicas:
-        if x not in validas[:4]:
+        if x not in validas[:6]:
             x.pop("practica", None)
-    if len(validas) < 2:
+    if len(validas) < 3:  # se aprende haciendo: al menos 3 prácticas por clase
         return None, f"{len(validas)} prácticas evaluables"
     for x in lam:
         if len((x.get("narracion") or "").split()) < 30:
