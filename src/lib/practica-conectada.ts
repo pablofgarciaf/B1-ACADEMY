@@ -15,6 +15,10 @@ const plano = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g
 
 /** Reglas en orden: la primera que coincide con el título y la ruta de la práctica decide la pantalla. */
 const REGLAS: [RegExp, PantallaConectada][] = [
+  // SRI y notas de crédito primero: sus títulos mencionan "factura de proveedor/cliente" y se los comería otra regla.
+  [/ruc del sistema|ingresar (el )?ruc/, { clave: 'empresa' }],
+  [/comprobante de retencion|emitir (la )?retencion|generar (el )?comprobante|retencion electronica|comprobante electronico|guia de remision|autorizar.*sri|\bsri\b/, { clave: 'sri' }],
+  [/nota de credito|abono de cliente/, { clave: 'documento', docType: 'credit_note' }], // "Abono de clientes" es el nombre de SAP en español
   [/factura de proveedor|factura de acreedor/, { clave: 'documento', docType: 'vendor_invoice' }],
   [/entrada de mercanc|recepcion de mercanc|grpo/, { clave: 'documento', docType: 'goods_receipt' }],
   [/solicitud de compra/, { clave: 'documento', docType: 'purchase_request' }],
@@ -50,7 +54,11 @@ const REGLAS: [RegExp, PantallaConectada][] = [
 export function pantallaConectada(guia?: { title?: string; menu_path?: string } | null): PantallaConectada | null {
   if (!guia) return null;
   // Buscar o consultar no guarda nada en la empresa: esas prácticas siguen con la ficha del ejercicio.
-  if (/buscar|consultar|identificar|verificar|revisar|visualizar/.test(plano(guia.title ?? ''))) return null;
+  // Ver, solicitar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.
+  if (/buscar|consultar|identificar|verificar|revisar|visualizar|solicitar|anular|anulacion|asistente de pagos|payment wizard/.test(plano(guia.title ?? '')) || /^ver\b/.test(plano(guia.title ?? '').trim())) return null;
   const texto = plano(`${guia.title ?? ''} ${guia.menu_path ?? ''}`);
+  // Asistente de pagos: ejecutarlo registra pagos reales (pantalla de Bancos); ver recomendaciones, elegir opciones
+  // o generar el archivo no guardan nada en la empresa y siguen como ficha.
+  if (/asistente de pagos|payment wizard/.test(texto)) return /ejecutar/.test(plano(guia.title ?? '')) ? { clave: 'bancos' } : null;
   return REGLAS.find(([re]) => re.test(texto))?.[1] ?? null;
 }

@@ -299,8 +299,12 @@ def revisar_borrador(cid, datos, errores):
         tabla = L.get("tabla") or {}
         for fila in [tabla.get("encabezados", [])] + tabla.get("filas", []):
             revisar_texto(" ".join(map(str, fila)), donde, errores)
-        if L.get("lineas"):
-            revisar_asiento(L["lineas"], donde, errores, f"{L.get('titulo', '')}. {L.get('narracion', '')}")
+        # El asiento puede venir en la raíz ("lineas"), en "asiento": {"lineas": [...]} o en "asiento": [...]:
+        # antes solo se revisaba la primera forma y los asientos descuadrados de las otras pasaban sin control.
+        asiento = L.get("asiento")
+        lineas_asiento = L.get("lineas") or (asiento.get("lineas") if isinstance(asiento, dict) else asiento if isinstance(asiento, list) else None)
+        if lineas_asiento:
+            revisar_asiento(lineas_asiento, donde, errores, f"{L.get('titulo', '')}. {L.get('narracion', '')}")
         practica = L.get("practica")
         if isinstance(practica, dict):
             revisar_texto(" ".join(practica.get("instrucciones", [])), donde, errores)

@@ -42,7 +42,7 @@
    "number": 2,
    "title": "Datos Maestros de Artículo (OITM)",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 32
   },
   {
    "id": "mod2-c3",
@@ -123,7 +123,7 @@
    "number": 4,
    "title": "Devoluciones y Notas de Crédito",
    "description": "",
-   "durationMinutes": 19
+   "durationMinutes": 17
   }
  ],
  "mod-5": [
@@ -176,7 +176,7 @@
    "number": 3,
    "title": "Llamadas de Servicio",
    "description": "",
-   "durationMinutes": 13
+   "durationMinutes": 12
   },
   {
    "id": "mod6-c4",
@@ -199,7 +199,7 @@
    "number": 2,
    "title": "Cuentas de Mayor por Defecto",
    "description": "",
-   "durationMinutes": 20
+   "durationMinutes": 22
   },
   {
    "id": "mod7-c3",
@@ -244,6 +244,13 @@
    "title": "Antigüedad de Saldos y Cobranza",
    "description": "",
    "durationMinutes": 17
+  },
+  {
+   "id": "mod8-c5",
+   "number": 5,
+   "title": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos",
+   "description": "",
+   "durationMinutes": 12
   }
  ],
  "mod-9": [
@@ -356,7 +363,7 @@
    "number": 3,
    "title": "Campos y Valores Definidos por el Usuario",
    "description": "",
-   "durationMinutes": 19
+   "durationMinutes": 27
   },
   {
    "id": "mod12-c4",
@@ -395,7 +402,7 @@
    "number": 1,
    "title": "Unidades de Medida por Peso y Volumen",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 14
   },
   {
    "id": "mod14-c2",
@@ -432,7 +439,7 @@
    "number": 2,
    "title": "Reglas y Gestión de Ubicaciones",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 17
   },
   {
    "id": "mod15-c3",
@@ -515,7 +522,7 @@
    "number": 3,
    "title": "Gestión de Presupuestos",
    "description": "",
-   "durationMinutes": 18
+   "durationMinutes": 20
   }
  ],
  "mod-19": [
@@ -546,6 +553,27 @@
    "title": "Retenciones en la Factura de Proveedores de SAP B1",
    "description": "",
    "durationMinutes": 10
+  },
+  {
+   "id": "mod19-c5",
+   "number": 5,
+   "title": "Declaraciones Mensuales: Formularios 103, 104 y ATS",
+   "description": "",
+   "durationMinutes": 13
+  },
+  {
+   "id": "mod19-c6",
+   "number": 6,
+   "title": "Nota de Débito, Guía de Remisión y Liquidación de Compra",
+   "description": "",
+   "durationMinutes": 17
+  },
+  {
+   "id": "mod19-c7",
+   "number": 7,
+   "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
+   "description": "",
+   "durationMinutes": 20
   }
  ],
  "mod-20": [
@@ -577,14 +605,14 @@
    "number": 1,
    "title": "Numeración de Documentos y Datos Maestros",
    "description": "",
-   "durationMinutes": 18
+   "durationMinutes": 31
   },
   {
    "id": "mod21-c2",
    "number": 2,
    "title": "Diseños de Impresión",
    "description": "",
-   "durationMinutes": 21
+   "durationMinutes": 17
   },
   {
    "id": "mod21-c3",
@@ -598,7 +626,7 @@
    "number": 4,
    "title": "Propiedad de los Datos y Soporte",
    "description": "",
-   "durationMinutes": 17
+   "durationMinutes": 25
   },
   {
    "id": "mod21-c5",
@@ -667,7 +695,7 @@
    "number": 1,
    "title": "Caso Integrador: Puesta en Marcha",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 17
   },
   {
    "id": "mod24-c2",
@@ -681,7 +709,7 @@
    "number": 3,
    "title": "Caso Integrador: Consultas SQL",
    "description": "",
-   "durationMinutes": 22
+   "durationMinutes": 57
   }
  ]
 }

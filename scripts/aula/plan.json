@@ -48,7 +48,8 @@
       { "id": "mod8-c1", "titulo": "Pagos Recibidos y Efectuados", "manuales": ["16.1_Gestion_de_Pagos_Recibidos_y_Emitid"] },
       { "id": "mod8-c2", "titulo": "Asistente de Pagos", "manuales": ["16.2_Asistente_de_Pagos_Payment_Wizard"] },
       { "id": "mod8-c3", "titulo": "Conciliación Bancaria e Interna", "manuales": ["16.3_Reconciliacion_Bancaria", "15.6_Reconciliacion_Interna_de_Cuentas"] },
-      { "id": "mod8-c4", "titulo": "Antigüedad de Saldos y Cobranza", "manuales": ["17.3_Antiguedad_de_Saldos_Aging_Report", "17.4_Proceso_de_Reclamaciones_Dunning"] }
+      { "id": "mod8-c4", "titulo": "Antigüedad de Saldos y Cobranza", "manuales": ["17.3_Antiguedad_de_Saldos_Aging_Report", "17.4_Proceso_de_Reclamaciones_Dunning"] },
+      { "id": "mod8-c5", "titulo": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos", "manuales": ["16.3_Reconciliacion_Bancaria", "16.2_Asistente_de_Pagos_Payment_Wizard", "fuente:banca_ec"] }
     ]},
     { "id": "mod-9", "titulo": "Control de Activos Fijos", "clases": [
       { "id": "mod9-c1", "titulo": "Configuración de Activos Fijos", "manuales": ["19.2_Activos_Fijos_Virtuales", "19.3_Activos_Fijos_Configuracion_Inicial"] },
@@ -110,7 +111,10 @@
       { "id": "mod19-c1", "titulo": "Facturación Electrónica 2026: Transmisión y Anulación", "manuales": ["fuente:sri_2026"] },
       { "id": "mod19-c2", "titulo": "Retención en la Fuente del Impuesto a la Renta", "manuales": ["fuente:sri_2026"] },
       { "id": "mod19-c3", "titulo": "Retención del IVA y Comprobante de Retención", "manuales": ["fuente:sri_2026"] },
-      { "id": "mod19-c4", "titulo": "Retenciones en la Factura de Proveedores de SAP B1", "manuales": ["fuente:sri_2026", "3.2_Compras_Articulos_y_Documentos"] }
+      { "id": "mod19-c4", "titulo": "Retenciones en la Factura de Proveedores de SAP B1", "manuales": ["fuente:sri_2026", "3.2_Compras_Articulos_y_Documentos"] },
+      { "id": "mod19-c5", "titulo": "Declaraciones Mensuales: Formularios 103, 104 y ATS", "manuales": ["fuente:sri_2026"], "rutas_regex": "factura de (proveedores|clientes)|informe|impuesto|retenci" },
+      { "id": "mod19-c6", "titulo": "Nota de Débito, Guía de Remisión y Liquidación de Compra", "manuales": ["fuente:sri_2026"], "rutas_regex": "factura de (proveedores|clientes)|nota de cr[eé]dito|entrega|datos maestros (de socio|interlocutor)" },
+      { "id": "mod19-c7", "titulo": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa", "manuales": ["fuente:sri_2026"], "rutas_regex": "datos maestros (de socio|interlocutor)|factura de proveedores|detalles de la sociedad|inicializaci[oó]n del sistema" }
     ]},
     { "id": "mod-20", "titulo": "Recursos, Capacidad y Rutas de Producción", "clases": [
       { "id": "mod20-c1", "titulo": "Recursos de Producción", "manuales": ["10.2_Recursos_de_Produccion"] },

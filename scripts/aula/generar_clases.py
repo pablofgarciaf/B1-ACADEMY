@@ -118,6 +118,9 @@ def rutas_permitidas(modulo, clase):
     if any(m.startswith("fuente:") for m in clase["manuales"]):
         rutas += [r for r in MENU_SAP["todas"]
                   if re.search(r"factura de (proveedores|clientes|deudores|acreedores)|nota de cr[eé]dito|datos maestros (de socio|interlocutor)|impuesto|retenci", r, re.I)]
+    # Filtro opcional por clase (plan.json "rutas_regex"): rutas reales adicionales que sí aplican a su tema.
+    if clase.get("rutas_regex"):
+        rutas += [r for r in MENU_SAP["todas"] if re.search(clase["rutas_regex"], r, re.I)]
     if len(rutas) < 4:
         rutas += de([m for c in modulo["clases"] for m in c["manuales"]])
     if len(rutas) < 4:
@@ -160,8 +163,19 @@ def valida(datos, permitidas=None):
     if not validas:  # toda clase enseña al menos una ventana de SAP
         return None, "0 prácticas evaluables"
     for x in lam:
-        if len((x.get("narracion") or "").split()) < 30:
+        narr = x.get("narracion") or ""
+        if len(narr.split()) < 30:
             return None, "narración corta"
+        n = narr.lower()
+        # Una lámina sin práctica no puede invitar a practicar (el estudiante buscaría un ejercicio que no existe).
+        if not isinstance(x.get("practica"), dict) and re.search(r"en esta pr[aá]ctica|esta pr[aá]ctica|ahora t[uú]|vas a practicar", n):
+            return None, f"lámina sin práctica que invita a practicar: «{x.get('titulo')}»"
+        # Ventanas que NO existen en SAP Business One estándar (el modelo las inventaba).
+        if re.search(r"ventana (de )?(gu[ií]as? de remisi[oó]n|liquidaci[oó]n de compra|notas? de d[eé]bito)|tipo de documento: nota de d[eé]bito", n):
+            return None, "ventana inventada que no existe en SAP B1 estándar"
+        # En una compra el IVA es crédito tributario (debe), nunca débito fiscal.
+        if "débito fiscal" in n and ("compra" in n or "proveedor" in n):
+            return None, "IVA 'débito fiscal' en una compra"
     # Normativa: impuestos, retenciones, asientos y resoluciones se validan antes de aceptar la clase;
     # si algo no cumple, la clase se rechaza y se vuelve a pedir al modelo.
     errores = []

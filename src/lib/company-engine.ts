@@ -2,7 +2,7 @@ import { buildSRIXml } from './sri-xml';
 import { commandSchema, type CompanyCommand, type CommandData } from './company-commands';
 import { mensajeValidacion } from './zod-es';
 import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine, LandedCost } from './firestore-types';
-import { enviarAlSRI, opcionRetencion } from './sri-catalogo';
+import { enviarAlSRI, opcionRetencion, revisarIdentificacion } from './sri-catalogo';
 import { financialSummary, moveStock, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
@@ -20,7 +20,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   const meta = (id: string): Entity => ({ id, createdAt: now, updatedAt: now, createdBy: uid });
   if (command.action === 'initialize') {
     if (state.profile) { state.profile.lastAccess = now; return { state, result: uid }; }
-    state.profile = { ...meta(uid), uid, email, companyName: command.data.companyName, ruc: '1790000000001', currency: 'USD', country: 'EC', fiscalScenario: 'ecuador-2026', sbu: 482, incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Almacén principal' }, { code: 'SECUNDARIO', name: 'Almacén secundario' }], xp: 0, level: 1, xpHistory: [], completedModules: [], lastAccess: now, sequences: {}, documentCount: 0 };
+    state.profile = { ...meta(uid), uid, email, companyName: command.data.companyName, ruc: '1790000001001', currency: 'USD', country: 'EC', fiscalScenario: 'ecuador-2026', sbu: 482, incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Almacén principal' }, { code: 'SECUNDARIO', name: 'Almacén secundario' }], xp: 0, level: 1, xpHistory: [], completedModules: [], lastAccess: now, sequences: {}, documentCount: 0 };
     state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02'].includes(code)) ? 'D' : 'H', active: true }));
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
     return { state, result: uid };
@@ -479,6 +479,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         const usado = state.warehouseStock.some(s => s.warehouseCode === w.code && s.quantity !== 0);
         assert(codigos.has(w.code) || !usado, `No se puede eliminar el almacén ${w.code}: tiene existencias.`);
       }
+      // Un RUC con estructura imposible (provincia, tercer dígito, cédula base) se rechaza al guardar; el dígito
+      // verificador de una sociedad solo advierte porque el SRI ha emitido RUC que no cumplen el módulo 11.
+      const rucRevisado = revisarIdentificacion(d.ruc); assert(!rucRevisado.error, rucRevisado.error ?? '');
       Object.assign(profile, { companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
       result = uid; break;
     }
