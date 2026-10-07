@@ -7,6 +7,8 @@ import {
   FileSpreadsheet, FileText, Filter, Folder, FolderOpen, Info, Mail, Plus, Printer, Search, Settings,
 } from 'lucide-react';
 import { normalizar, coincide, SI, esBooleano, type IntentoPractica } from '@/lib/practice-check';
+import { useAuth } from '@/context/AuthContext';
+import { getCompany, initializeCompany } from '@/lib/firestore-company';
 
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
 export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
@@ -102,6 +104,29 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [revisado, setRevisado] = useState<(boolean | null)[] | null>(null);
   const [intentos, setIntentos] = useState(0);
   const [mostrarSolucion, setMostrarSolucion] = useState(false);
+
+  // Empresa propia del estudiante (la misma del Simulador integral): cada uno trabaja en la suya
+  // ("Mi Empresa", "Pruebas"…). undefined = cargando o sin conexión; null = aún no ha creado su empresa.
+  const { currentUser } = useAuth();
+  const [empresa, setEmpresa] = useState<string | null | undefined>(undefined);
+  const [nombreNueva, setNombreNueva] = useState('');
+  const [creandoEmpresa, setCreandoEmpresa] = useState(false);
+  useEffect(() => {
+    if (!currentUser) return;
+    let activo = true;
+    getCompany(currentUser.uid)
+      .then((s) => { if (activo) setEmpresa(s.profile?.companyName ?? null); })
+      .catch(() => { if (activo) setEmpresa(undefined); });
+    return () => { activo = false; };
+  }, [currentUser]);
+  const crearEmpresa = async () => {
+    const nombre = nombreNueva.trim();
+    if (!currentUser?.email || nombre.length < 2) return;
+    setCreandoEmpresa(true);
+    try { await initializeCompany(currentUser.uid, currentUser.email, nombre); setEmpresa(nombre); }
+    catch { /* si falla se mantiene el formulario para reintentar */ }
+    finally { setCreandoEmpresa(false); }
+  };
   const [logrado, setLogrado] = useState(false);
   const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal.' });
 
@@ -186,12 +211,13 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       const r = el.getBoundingClientRect();
       const b = raiz.getBoundingClientRect();
       const esCampo = objetivo.clave.startsWith('campo-');
-      // Campos: Sapi se posa al final del input. Menú y botones: justo a su derecha.
-      let x = (esCampo ? r.right - GUIA_TAM - 2 : r.right + 4) - b.left;
+      // Sapi se coloca DEBAJO del elemento donde hay que hacer clic o escribir, nunca encima:
+      // así el estudiante siempre ve el campo y lo que escribe.
+      let x = r.left - b.left + (esCampo ? 4 : 0);
       x = Math.max(4, Math.min(x, b.width - GUIA_TAM - 4));
-      const y = r.top - b.top + r.height / 2 - GUIA_TAM / 2;
-      // En campos el globo va hacia la izquierda (sobre el propio input) para no tapar la columna vecina.
-      const izquierda = esCampo || x > b.width - 230;
+      const y = r.bottom - b.top + 2;
+      // El globo va a la derecha de Sapi, salvo que no quepa.
+      const izquierda = x > b.width - 230;
       // Solo actualiza si cambió: evita renders en cadena con el ResizeObserver.
       setPosGuia((p) => (p && Math.abs(p.x - x) < 0.5 && Math.abs(p.y - y) < 0.5 && p.izquierda === izquierda ? p : { x, y, izquierda }));
     };
@@ -226,7 +252,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1">
         <span className="flex items-center gap-2 font-semibold">
           <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 text-[10px] font-black italic text-white">SAP</span>
-          SAP Business One 10.0 — Distribuidora Andina Tech S.A.
+          SAP Business One 10.0 — {empresa || 'Mi Empresa'}
         </span>
         <span className="hidden sm:flex gap-1" aria-hidden="true">
           {['▁', '▢', '✕'].map((s) => <span key={s} className="w-6 h-4 flex items-center justify-center rounded-sm border border-[#9fb1c7] bg-[#eef2f7] text-[10px]">{s}</span>)}
@@ -313,7 +339,48 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
         </nav>
 
         {/* Escritorio de trabajo */}
-        <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5">
+        <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3">
+          {/* Empresa propia: si aún no la tiene, se le invita a crearla (queda guardada para todo el curso). */}
+          {empresa === null && (
+            <div className="max-w-3xl rounded-sm border border-[#f0ab00] bg-[#fff8e6] px-3 py-2 flex flex-wrap items-center gap-2">
+              <span className="font-semibold text-[#5c4300]">Ponle nombre a tu empresa de práctica:</span>
+              <input
+                value={nombreNueva}
+                onChange={(e) => setNombreNueva(e.target.value)}
+                placeholder="Ej.: Mi Empresa, Pruebas…"
+                maxLength={80}
+                className="h-6 flex-1 min-w-[160px] rounded-[2px] border border-[#8a9bb0] bg-white px-1.5 text-xs text-[#1d2d3e]"
+              />
+              <button
+                type="button"
+                onClick={crearEmpresa}
+                disabled={creandoEmpresa || nombreNueva.trim().length < 2}
+                className="h-6 px-3 rounded-[3px] bg-[#f0ab00] font-bold text-[#1d2d3e] disabled:opacity-50 active:scale-95"
+              >
+                {creandoEmpresa ? 'Creando…' : 'Crear mi empresa'}
+              </button>
+            </div>
+          )}
+
+          {/* Ficha del ejercicio: como en los ejercicios de SAP Learning, el dato de cada campo es explícito.
+              El reto es encontrar la ventana en el menú y registrar bien el documento, no adivinar valores. */}
+          {campos.length > 0 && (
+            <div className="max-w-3xl rounded-sm border border-[#7f93ab] bg-white px-3 py-2">
+              <p className="font-bold text-[#0B3D91] mb-1">Ficha del ejercicio</p>
+              {ruta.length > 0 && (
+                <p className="text-[#4a5b70] mb-1.5">Ventana: <strong className="text-[#1d2d3e]">{ruta.join(' › ')}</strong></p>
+              )}
+              <dl className="grid sm:grid-cols-2 gap-x-4 gap-y-0.5">
+                {campos.map((c, i) => (
+                  <div key={i} className="flex gap-1.5">
+                    <dt className="text-[#4a5b70]">{c.etiqueta}:</dt>
+                    <dd className="font-semibold text-[#1d2d3e]">{esBooleano(c.valor) ? (SI.test(normalizar(c.valor)) ? 'marcar la casilla' : 'dejar sin marcar') : c.valor}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+
           {!ventanaAbierta ? (
             <div className="h-full min-h-[200px] flex items-center justify-center">
               <p className="max-w-sm text-center text-[#4a5b70] bg-white/70 rounded-md border border-[#b8c4d2] px-4 py-3">

@@ -43,6 +43,14 @@ export async function POST(request: Request) {
   const aprobada = practicaAprobada(correctos, campos.length, { valores, intentos, vioSolucion });
 
   try {
+    // Registro de cada práctica completada (aprobada o no): qué escribió el estudiante y cuándo.
+    // Una ficha por práctica, que se actualiza en cada intento: queda guardado aunque cambie de dispositivo.
+    await adminDb.collection('practice_records').doc(`${uid}_${classId}_${slideIndex}`).set({
+      uid, moduleId, classId, slideIndex,
+      campos: campos.map((c, i) => ({ etiqueta: c.etiqueta, valor: valores[i] })),
+      correctos, total: campos.length, aprobada, intentos, vioSolucion,
+      updatedAt: new Date().toISOString(),
+    }, { merge: true });
     if (aprobada) {
       await adminDb.collection('academic_progress').doc(`${uid}_${moduleId}`).set({
         uid,

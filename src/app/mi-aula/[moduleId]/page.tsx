@@ -7,6 +7,8 @@ import { useAuth } from '@/context/AuthContext';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import type { IntentoPractica } from '@/lib/practice-check';
+import { getCompany } from '@/lib/firestore-company';
+import PasoCeroEmpresa from '@/components/lms/PasoCeroEmpresa';
 import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
 import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2 } from 'lucide-react';
 
@@ -64,6 +66,18 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     }
   }, [moduleClasses, activeClassId]);
 
+  // Paso 0: la clase no arranca (ni la narración) hasta que el estudiante tenga su empresa de práctica.
+  // Si la consulta falla por red, no se bloquea la clase.
+  const [empresaEstado, setEmpresaEstado] = useState<'cargando' | 'falta' | 'ok'>('cargando');
+  useEffect(() => {
+    if (!currentUser) return;
+    let activo = true;
+    getCompany(currentUser.uid)
+      .then(s => { if (activo) setEmpresaEstado(s.profile ? 'ok' : 'falta'); })
+      .catch(() => { if (activo) setEmpresaEstado('ok'); });
+    return () => { activo = false; };
+  }, [currentUser]);
+
   // Lesson data
   const [lessonData, setLessonData] = useState<LessonData | null>(null);
   const [isLoadingLesson, setIsLoadingLesson] = useState(false);
@@ -108,7 +122,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // Load lesson data when class changes
   // =============================================
   useEffect(() => {
-    if (!activeClassId || !currentUser || !moduleInfo) return;
+    if (!activeClassId || !currentUser || !moduleInfo || empresaEstado !== 'ok') return;
     let isMounted = true;
     const controller = new AbortController();
     setIsLoadingLesson(true);
@@ -140,7 +154,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       controller.abort();
       stopSpeaking();
     };
-  }, [activeClassId, currentUser, moduleInfo, stopSpeaking, restartKey]);
+  }, [activeClassId, currentUser, moduleInfo, stopSpeaking, restartKey, empresaEstado]);
 
   // =============================================
   // Derived state
@@ -313,6 +327,11 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
         </Link>
       </div>
     );
+  }
+
+  // Paso 0: sin empresa de práctica todavía → bienvenida y creación de la empresa antes de la clase.
+  if (empresaEstado === 'falta') {
+    return <PasoCeroEmpresa onLista={() => setEmpresaEstado('ok')} />;
   }
 
   // =============================================
