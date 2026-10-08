@@ -96,25 +96,12 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
         SAP Business One 10.0 — {empresa || EMPRESA_CURSO}
       </div>
 
-      {/* Ficha del ejercicio: objetivo, ventana y datos sugeridos (el estudiante puede usar los suyos). */}
-      <div className="m-3 rounded-sm border border-[#7f93ab] bg-white px-3 py-2 space-y-1.5">
-        <p className="font-bold text-[#0B3D91] flex items-center gap-1.5"><Building2 className="w-3.5 h-3.5" aria-hidden="true" /> Práctica en tu empresa: {guia.title}</p>
-        {guia.menu_path && <p className="text-[#4a5b70]">En SAP: <strong className="text-[#1d2d3e]">{guia.menu_path}</strong></p>}
-        {/* Los pasos ya se muestran en el panel de la lección: aquí solo van los datos, para no repetir. */}
-        {!!guia.campos?.length && (
-          <div className="rounded-sm bg-[#f4f7fb] border border-[#d5dde8] px-2 py-1.5">
-            <p className="flex items-center gap-1 text-[#4a5b70] mb-1"><Info className="w-3 h-3" aria-hidden="true" /> Datos de esta práctica:</p>
-            <dl className="grid sm:grid-cols-2 gap-x-4">
-              {guia.campos.map((f, i) => <div key={i} className="flex gap-1.5"><dt className="text-[#4a5b70]">{f.etiqueta}:</dt><dd className="font-semibold">{f.valor}</dd></div>)}
-            </dl>
-          </div>
-        )}
-        {logrado ? (
-          <p role="status" className="flex items-center gap-1.5 font-bold text-emerald-700"><CheckCircle2 className="w-4 h-4" aria-hidden="true" /> ¡Guardado en tu empresa! ({logrado}) Continuamos con la clase…</p>
-        ) : (
-          <p className="text-[#4a5b70]">La práctica se completa cuando el registro queda guardado en tu empresa.</p>
-        )}
-      </div>
+      {logrado && (
+        <div className="mx-3 mt-2 rounded-sm bg-emerald-50 border border-emerald-400 p-2 text-emerald-800 font-bold flex items-center gap-1.5">
+          <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
+          ¡Guardado en tu empresa! ({logrado}) Continuamos con la clase…
+        </div>
+      )}
 
       <CompanyContext.Provider value={valor}>
         <div className="mx-3 mb-3 rounded-sm border border-[#7f93ab] bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222] min-h-[320px]">

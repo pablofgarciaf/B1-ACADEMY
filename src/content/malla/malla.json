@@ -2,10 +2,10 @@
   "version": "1.0-oficial",
   "generado": "2026-10-07",
   "resumen": {
-    "carreras": 11,
-    "modulos": 25,
-    "clases": 104,
-    "manuales": 120
+    "carreras": 12,
+    "modulos": 29,
+    "clases": 120,
+    "manuales": 124
   },
   "certificacion": {
     "porClase": "Quiz de comprensión: aprobación con 90 % o más.",
@@ -125,6 +125,18 @@
         "M12",
         "M23",
         "M24"
+      ]
+    },
+    {
+      "id": "C12",
+      "name": "Consultor Funcional y Business Analyst SAP B1",
+      "modules": [
+        "M01",
+        "M02",
+        "M26",
+        "M27",
+        "M28",
+        "M29"
       ]
     }
   ],
@@ -1006,6 +1018,62 @@
           "number": 2,
           "id": "fuente:impuestos_avanzados_2026",
           "title": "fuente:impuestos avanzados 2026"
+        }
+      ]
+    },
+    {
+      "id": "M26",
+      "modKey": "mod-26",
+      "number": 26,
+      "name": "Metodología de Implementación y Ciclo de Vida SAP",
+      "clasesCount": 4,
+      "manuals": [
+        {
+          "number": 1,
+          "id": "fuente:consultoria_metodologia_activate",
+          "title": "Metodología SAP Activate y Ciclo de Vida ERP"
+        }
+      ]
+    },
+    {
+      "id": "M27",
+      "modKey": "mod-27",
+      "number": 27,
+      "name": "Modelado y Optimización de Procesos de Negocio (BPMN 2.0)",
+      "clasesCount": 4,
+      "manuals": [
+        {
+          "number": 1,
+          "id": "fuente:consultoria_bpmn_procesos",
+          "title": "Modelado de Procesos de Negocio BPMN 2.0 para SAP"
+        }
+      ]
+    },
+    {
+      "id": "M28",
+      "modKey": "mod-28",
+      "number": 28,
+      "name": "Levantamiento de Requerimientos y Documentación de Negocio",
+      "clasesCount": 4,
+      "manuals": [
+        {
+          "number": 1,
+          "id": "fuente:consultoria_requerimientos_brd",
+          "title": "Elicitación de Requisitos, Business Blueprint y Gherkin"
+        }
+      ]
+    },
+    {
+      "id": "M29",
+      "modKey": "mod-29",
+      "number": 29,
+      "name": "Gestión de Clientes, Pruebas UAT y Adopción del Cambio",
+      "clasesCount": 4,
+      "manuals": [
+        {
+          "number": 1,
+          "id": "fuente:consultoria_clientes_uat",
+          "title": "Gestión de Stakeholders, Guiones UAT y Go-Live"
         }
       ]
     }
