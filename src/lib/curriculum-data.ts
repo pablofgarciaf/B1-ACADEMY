@@ -151,6 +151,22 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
     title: 'Nómina y Talento Humano Ecuador 2026',
     description: 'Ficha del empleado, rol de pagos, horas extras, décimos, fondos de reserva, vacaciones, IESS y contabilización de la nómina con las cifras vigentes en 2026.',
     certificateTitle: 'Certificado en Nómina y Talento Humano Ecuador 2026', classes: [] },
+  { id: 'mod-26', number: 26, block: 'Sistema y Consultoría', badge: 'Activate',
+    title: 'Metodología de Implementación y Ciclo de Vida SAP',
+    description: 'Marco metodológico SAP Activate y AIP, gobernanza de proyecto, talleres Explore, Golden DB, migración masiva y Cutover Runbook.',
+    certificateTitle: 'Certificado en Metodología de Implementación SAP (Activate & AIP)', classes: [] },
+  { id: 'mod-27', number: 27, block: 'Sistema y Consultoría', badge: 'BPMN 2.0',
+    title: 'Modelado y Optimización de Procesos de Negocio (BPMN 2.0)',
+    description: 'Notación BPMN 2.0 para ERP, diagnóstico AS-IS, diseño TO-BE con mejores prácticas SAP y traducción de compuertas a modelos de autorización.',
+    certificateTitle: 'Certificado en Modelado y Optimización de Procesos (BPMN 2.0)', classes: [] },
+  { id: 'mod-28', number: 28, block: 'Sistema y Consultoría', badge: 'Blueprint',
+    title: 'Levantamiento de Requerimientos y Documentación de Negocio',
+    description: 'Elicitación con Cinco Porqués, Business Blueprint (BBD), Historias de Usuario con Gherkin, Matriz RTM y configuración de UDFs.',
+    certificateTitle: 'Certificado en Business Blueprint y Levantamiento de Requerimientos', classes: [] },
+  { id: 'mod-29', number: 29, block: 'Sistema y Consultoría', badge: 'UAT & Go-Live',
+    title: 'Gestión de Clientes, Pruebas UAT y Adopción del Cambio',
+    description: 'Matriz de Mendelow, Change Requests, Train the Trainer, elaboración de Test Scripts UAT, validación contable y Acta de Go-Live.',
+    certificateTitle: 'Certificado en Pruebas UAT, Adopción del Cambio y Go-Live', classes: [] },
 ];
 
 /** Diplomas por rol profesional: cada uno combina certificados de módulo (los módulos se comparten entre diplomas). */
@@ -198,15 +214,19 @@ export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
   { id: 'dip-consultor', role: 'Consultor de Implementación',
     title: 'Diploma de Consultor de Implementación',
     requiredModules: ['mod-21', 'mod-12', 'mod-23', 'mod-24'],
-    requiresOneDiplomaOf: ['dip-compras', 'dip-bodega', 'dip-comercial', 'dip-postventa', 'dip-contable', 'dip-nomina', 'dip-tesoreria', 'dip-costos', 'dip-produccion'],
+    requiresOneDiplomaOf: ['dip-compras', 'dip-bodega', 'dip-comercial', 'dip-postventa', 'dip-contable', 'dip-nomina', 'dip-tesoreria', 'dip-costos', 'dip-produccion', 'dip-business-analyst'],
     description: 'Lidera implementaciones: metodología, migración de datos, saldos iniciales y puesta en marcha.' },
+  { id: 'dip-business-analyst', role: 'Consultor Funcional y Business Analyst SAP B1',
+    title: 'Diploma de Consultor Funcional & Business Analyst SAP Business One',
+    requiredModules: ['mod-1', 'mod-2', 'mod-26', 'mod-27', 'mod-28', 'mod-29'],
+    description: 'Lidera la transformación digital de la empresa: metodología SAP Activate/AIP, modelado BPMN 2.0 (AS-IS/TO-BE), Business Blueprint (BBD), elicitación con Gherkin, gestión de stakeholders y pruebas UAT.' },
 ];
 
 /** Programa máximo: todos los certificados de módulo. El Proyecto Integrador funciona como examen final. */
 export const MASTER_PROGRAM = {
   id: 'master-consultor-integral',
   title: 'Programa Consultor Integral SAP Business One',
-  description: 'Reúne los 25 certificados de competencia y culmina con el Proyecto Integrador.',
+  description: 'Reúne los 29 certificados de competencia y culmina con el Proyecto Integrador.',
 } as const;
 
 export const SYLLABUS_BLOCKS: SyllabusBlock[] = ['Fundamentos', 'Logística', 'Comercial', 'Finanzas', 'Producción', 'Sistema y Consultoría', 'Proyecto Final'];

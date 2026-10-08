@@ -358,24 +358,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
 
         {/* Escritorio de trabajo */}
         <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3">
-          {/* Ficha del ejercicio: como en los ejercicios de SAP Learning, el dato de cada campo es explícito.
-              El reto es encontrar la ventana en el menú y registrar bien el documento, no adivinar valores. */}
-          {campos.length > 0 && (
-            <div className="max-w-3xl rounded-sm border border-[#7f93ab] bg-white px-3 py-2">
-              <p className="font-bold text-[#0B3D91] mb-1">Ficha del ejercicio</p>
-              {ruta.length > 0 && (
-                <p className="text-[#4a5b70] mb-1.5">Ventana: <strong className="text-[#1d2d3e]">{ruta.join(' › ')}</strong></p>
-              )}
-              <dl className="grid sm:grid-cols-2 gap-x-4 gap-y-0.5">
-                {campos.map((c, i) => (
-                  <div key={i} className="flex gap-1.5">
-                    <dt className="text-[#4a5b70]">{c.etiqueta}:</dt>
-                    <dd className="font-semibold text-[#1d2d3e]">{esBooleano(c.valor) ? (SI.test(normalizar(c.valor)) ? 'marcar la casilla' : 'dejar sin marcar') : c.valor}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          )}
 
           {!ventanaAbierta ? (
             <div className="h-full min-h-[200px] flex items-center justify-center">

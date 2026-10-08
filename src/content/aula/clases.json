@@ -776,5 +776,125 @@
    "description": "",
    "durationMinutes": 57
   }
+ ],
+ "mod-26": [
+  {
+   "id": "mod26-c1",
+   "number": 1,
+   "title": "El Marco Metodológico: De Waterfall a SAP Activate y AIP",
+   "description": "",
+   "durationMinutes": 8
+  },
+  {
+   "id": "mod26-c2",
+   "number": 2,
+   "title": "Talleres de Exploración (Explore) y Análisis Fit / Gap",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod26-c3",
+   "number": 3,
+   "title": "Fase de Realización: Parametrización y Migración Golden DB",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod26-c4",
+   "number": 4,
+   "title": "Estrategia de Salida en Vivo (Cutover), Go-Live e Hypercare",
+   "description": "",
+   "durationMinutes": 7
+  }
+ ],
+ "mod-27": [
+  {
+   "id": "mod27-c1",
+   "number": 1,
+   "title": "Fundamentos de BPMN 2.0 para Consultores ERP",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod27-c2",
+   "number": 2,
+   "title": "Mapeo del Estado Actual (AS-IS) y Detección de Ineficiencias",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod27-c3",
+   "number": 3,
+   "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod27-c4",
+   "number": 4,
+   "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1",
+   "description": "",
+   "durationMinutes": 6
+  }
+ ],
+ "mod-28": [
+  {
+   "id": "mod28-c1",
+   "number": 1,
+   "title": "Técnicas de Elicitación de Requisitos y Entrevistas Clave",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod28-c2",
+   "number": 2,
+   "title": "El Business Blueprint (BBD) y Business Requirements Document (BRD)",
+   "description": "",
+   "durationMinutes": 6
+  },
+  {
+   "id": "mod28-c3",
+   "number": 3,
+   "title": "Historias de Usuario, Criterios Gherkin y Matriz RTM",
+   "description": "",
+   "durationMinutes": 6
+  },
+  {
+   "id": "mod28-c4",
+   "number": 4,
+   "title": "De Requerimiento a Configuración: Campos UDF y Valores Válidos",
+   "description": "",
+   "durationMinutes": 7
+  }
+ ],
+ "mod-29": [
+  {
+   "id": "mod29-c1",
+   "number": 1,
+   "title": "Gestión de Stakeholders y Control de Cambios (Change Requests)",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod29-c2",
+   "number": 2,
+   "title": "Gestión del Cambio Organizacional y Estrategia Train the Trainer",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod29-c3",
+   "number": 3,
+   "title": "Estrategia y Elaboración de Guiones de Prueba UAT (Test Scripts)",
+   "description": "",
+   "durationMinutes": 7
+  },
+  {
+   "id": "mod29-c4",
+   "number": 4,
+   "title": "Ejecución de Ciclo UAT, Validación Contable y Acta de Go-Live",
+   "description": "",
+   "durationMinutes": 7
+  }
  ]
 }
