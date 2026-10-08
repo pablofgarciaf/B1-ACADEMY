@@ -24,6 +24,7 @@ from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parent.parent
 MANUALES = RAIZ / "public" / "Capacitacion SAP"
+FUENTES = RAIZ / "scripts" / "aula" / "fuentes"  # ids "fuente:<nombre>" de la malla
 
 STOP = set(
     """de la el en y a los las del se que por un una con para es al lo como mas
@@ -105,6 +106,10 @@ def main():
             t = leer_manual(carpeta)
             textos_manual[carpeta.name] = t
             df.update(set(tokens(t)))
+    for md in FUENTES.glob("*.md"):
+        t = md.read_text(encoding="utf-8", errors="ignore")
+        textos_manual["fuente:" + md.stem] = t
+        df.update(set(tokens(t)))
     N = max(len(textos_manual), 1)
     idf = {w: math.log((N + 1) / (c + 1)) + 1 for w, c in df.items()}
 
