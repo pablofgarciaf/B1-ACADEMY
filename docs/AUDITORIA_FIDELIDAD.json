@@ -1,0 +1,3795 @@
+[
+  {
+    "modulo": "mod-1",
+    "nombre": "Fundamentos Operativos y Navegación",
+    "clases": [
+      {
+        "id": "mod1-c1",
+        "titulo": "¿Qué es SAP Business One?",
+        "hallazgos": [
+          "La clase cubre solo 25% de los términos de su manual más cercano (1.1_Introduccion_a_SAP_Business_One)"
+        ],
+        "manual_mas_cercano": "1.1_Introduccion_a_SAP_Business_One",
+        "cobertura_terminos": 0.25
+      },
+      {
+        "id": "mod1-c2",
+        "titulo": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit",
+        "hallazgos": [],
+        "manual_mas_cercano": "1.2_Primeros_Pasos_en_SAP_Business_One",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod1-c3",
+        "titulo": "Documentos y Datos Maestros",
+        "hallazgos": [],
+        "manual_mas_cercano": "1.3_Documentos_y_Datos_Maestros_Concept",
+        "cobertura_terminos": 0.65
+      },
+      {
+        "id": "mod1-c4",
+        "titulo": "Preferencias de Usuario y Búsquedas",
+        "hallazgos": [],
+        "manual_mas_cercano": "1.2_Primeros_Pasos_en_SAP_Business_One",
+        "cobertura_terminos": 0.567
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "1.1_Introduccion_a_SAP_Business_One",
+        "cobertura_terminos": 0.367,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "digital",
+          "scope",
+          "overview",
+          "search",
+          "memoria",
+          "introsapb1",
+          "restful",
+          "pymes",
+          "columnar",
+          "client",
+          "motor",
+          "oins",
+          "intro",
+          "integration",
+          "microsoft"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "1.2_Primeros_Pasos_en_SAP_Business_One",
+        "cobertura_terminos": 0.717,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "paneles",
+          "autorizacion",
+          "cockpits",
+          "menus",
+          "ayuda",
+          "public",
+          "analisis",
+          "mensajes",
+          "busqueda",
+          "ocultar",
+          "utilizar",
+          "alex",
+          "purpose",
+          "iconos",
+          "grupos"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "1.3_Documentos_y_Datos_Maestros_Concept",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "subtotal",
+          "alternativo",
+          "linea",
+          "texto",
+          "referenciados",
+          "copiar",
+          "relate",
+          "public",
+          "contenido",
+          "drag",
+          "header",
+          "lines",
+          "prospecto",
+          "odrf",
+          "desc"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.3_Configuraciones_Clave_del_Sistema",
+        "cobertura_terminos": 0.383,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "moneda",
+          "parameter",
+          "habilitar",
+          "irreversible",
+          "irreversibles",
+          "localizacion",
+          "ocultar",
+          "contabilizado",
+          "costes",
+          "carpeta",
+          "imagenes",
+          "reversible",
+          "fijos",
+          "public",
+          "impact"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-2",
+    "nombre": "Núcleo Maestro ERP",
+    "clases": [
+      {
+        "id": "mod2-c1",
+        "titulo": "Socio de Negocios (OCRD)",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.3_Datos_Maestros_de_Clientes",
+        "cobertura_terminos": 0.583
+      },
+      {
+        "id": "mod2-c2",
+        "titulo": "Datos Maestros de Artículo (OITM)",
+        "hallazgos": [],
+        "manual_mas_cercano": "4.1_Datos_Maestros_de_Articulos",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod2-c3",
+        "titulo": "Gestión de Unidades de Medida",
+        "hallazgos": [],
+        "manual_mas_cercano": "4.4_Unidades_de_Medida_Configuracion",
+        "cobertura_terminos": 0.467
+      },
+      {
+        "id": "mod2-c4",
+        "titulo": "Determinación Estándar de Precios",
+        "hallazgos": [],
+        "manual_mas_cercano": "8.1_Determinacion_de_Precios_Conceptos",
+        "cobertura_terminos": 0.567
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "2.3_Datos_Maestros_de_Clientes",
+        "cobertura_terminos": 0.65,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "lead",
+          "direcciones",
+          "direccion",
+          "pedido",
+          "ocrg",
+          "personas",
+          "public",
+          "cardtype",
+          "utilizan",
+          "parametrizaciones",
+          "contacto",
+          "sectores",
+          "customer",
+          "envio",
+          "reclamaciones"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "4.1_Datos_Maestros_de_Articulos",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "2018",
+          "rights",
+          "reserved",
+          "affiliate",
+          "company",
+          "prchseitem",
+          "sellitem",
+          "invntitem",
+          "propiedades",
+          "materiales",
+          "comprarse",
+          "inactivos",
+          "item",
+          "marketing",
+          "eliminarse"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "4.2_Grupos_de_Articulos",
+        "cobertura_terminos": 0.433,
+        "cobertura_cifras": 0.167,
+        "terminos_faltantes": [
+          "realizacion",
+          "escaneres",
+          "busqueda",
+          "oitb",
+          "agrupar",
+          "reformatear",
+          "cuentas",
+          "campos",
+          "item",
+          "itemgrp",
+          "ingresos",
+          "criterios",
+          "costo",
+          "clasificar",
+          "analisis"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "4.3_Unidades_de_Medida_Vision_General",
+        "cobertura_terminos": 0.467,
+        "cobertura_cifras": 0.167,
+        "terminos_faltantes": [
+          "papel",
+          "paquetes",
+          "paquete",
+          "caja",
+          "pale",
+          "cajas",
+          "reciclado",
+          "impresora",
+          "pequeno",
+          "embalaje",
+          "21x30x4",
+          "conversacion",
+          "tasa",
+          "enumeradas",
+          "barras"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "4.4_Unidades_de_Medida_Configuracion",
+        "cobertura_terminos": 0.483,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "ugp1",
+          "text",
+          "cien",
+          "caja",
+          "alternativa",
+          "invntryuom",
+          "ouom",
+          "global",
+          "altqty",
+          "equivalencias",
+          "roll",
+          "spool",
+          "cincuenta",
+          "setup",
+          "barras"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "8.1_Determinacion_de_Precios_Conceptos",
+        "cobertura_terminos": 0.65,
+        "cobertura_cifras": 0.214,
+        "terminos_faltantes": [
+          "existe",
+          "brutos",
+          "bruto",
+          "especial",
+          "valido",
+          "acuerdo",
+          "public",
+          "global",
+          "price",
+          "sustituye",
+          "pricing",
+          "rightarrow",
+          "a1001",
+          "basados",
+          "c1001"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "8.2_Creacion_de_Listas_de_Precios",
+        "cobertura_terminos": 0.45,
+        "cobertura_cifras": 0.143,
+        "terminos_faltantes": [
+          "ultimo",
+          "evaluado",
+          "inactiva",
+          "price",
+          "inactivas",
+          "redondeo",
+          "mantenidas",
+          "reducir",
+          "itm1",
+          "colegios",
+          "pricing",
+          "last",
+          "public",
+          "paquete",
+          "b00320"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-3",
+    "nombre": "Aprovisionamiento y Control de Inventarios",
+    "clases": [
+      {
+        "id": "mod3-c1",
+        "titulo": "Ciclo Procure-to-Pay",
+        "hallazgos": [],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.517
+      },
+      {
+        "id": "mod3-c2",
+        "titulo": "Transacciones de Almacén",
+        "hallazgos": [],
+        "manual_mas_cercano": "5.2_Movimientos_de_Mercancia",
+        "cobertura_terminos": 0.517
+      },
+      {
+        "id": "mod3-c3",
+        "titulo": "Ubicaciones (Bin Locations)",
+        "hallazgos": [],
+        "manual_mas_cercano": "7.1_Ubicaciones_de_Almacen_Vision_Gener",
+        "cobertura_terminos": 0.4
+      },
+      {
+        "id": "mod3-c4",
+        "titulo": "Trazabilidad por Lotes y Series",
+        "hallazgos": [],
+        "manual_mas_cercano": "5.4_Series_y_Lotes_Valoracion",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod3-c5",
+        "titulo": "Costos de Importación",
+        "hallazgos": [],
+        "manual_mas_cercano": "3.7_Costos_de_Importacion_Fletes",
+        "cobertura_terminos": 0.5
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "3.1_Proceso_de_Compras_Vision_General",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.111,
+        "terminos_faltantes": [
+          "dotacion",
+          "debito",
+          "incrementa",
+          "name",
+          "description",
+          "cardcode",
+          "public",
+          "opdn",
+          "compromiso",
+          "opch",
+          "puente",
+          "informacion",
+          "independiente",
+          "instock",
+          "intel"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.733,
+        "cobertura_cifras": 0.067,
+        "terminos_faltantes": [
+          "copiar",
+          "impresoras",
+          "public",
+          "debito",
+          "pendientes",
+          "object",
+          "solicitado",
+          "base",
+          "oitw",
+          "impact",
+          "acordados",
+          "asistente",
+          "enumeran",
+          "receipt",
+          "outgoing"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "3.5_Entrada_de_Mercancias_GRPO",
+        "cobertura_terminos": 0.367,
+        "cobertura_cifras": 0.125,
+        "terminos_faltantes": [
+          "cerrar",
+          "y1000",
+          "prov",
+          "linea",
+          "sustitucion",
+          "sustituto",
+          "c003",
+          "entregas",
+          "b002",
+          "cerrado",
+          "copiar",
+          "solicitado",
+          "veces",
+          "esperan",
+          "analisis"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "5.1_Gestion_de_Almacenes",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "ship",
+          "drop",
+          "directa",
+          "compensable",
+          "virtual",
+          "warehouses",
+          "warehouse",
+          "whscode",
+          "asistente",
+          "dropship",
+          "incluyan",
+          "confirmacion",
+          "public",
+          "casilla",
+          "rutas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "5.2_Movimientos_de_Mercancia",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.167,
+        "terminos_faltantes": [
+          "consignacion",
+          "solicitud",
+          "emisor",
+          "devoluciones",
+          "cajas",
+          "public",
+          "muestras",
+          "comprometida",
+          "goods",
+          "ferias",
+          "trasladas",
+          "onorder",
+          "marketing",
+          "iniciales",
+          "iscommited"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "7.1_Ubicaciones_de_Almacen_Vision_Gener",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "receptora",
+          "ratones",
+          "george",
+          "automatica",
+          "jerarquia",
+          "rightarrow",
+          "estrategias",
+          "public",
+          "location",
+          "receptoras",
+          "overview",
+          "asignaciones",
+          "receiving",
+          "realizar",
+          "ascendente"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "7.2_Ubicaciones_de_Almacen_Configuracio",
+        "cobertura_terminos": 0.45,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "atributos",
+          "atributo",
+          "receptoras",
+          "estrategias",
+          "receptora",
+          "george",
+          "public",
+          "automatica",
+          "location",
+          "york",
+          "podemos",
+          "campos",
+          "activacion",
+          "modificacion",
+          "predeterminada"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "5.3_Gestion_de_Series_y_Lotes",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "opcional",
+          "snbatch",
+          "atributos",
+          "serial",
+          "tarjeta",
+          "equipo",
+          "realizar",
+          "batches",
+          "numbers",
+          "caducidad",
+          "gestionados",
+          "sobremesa",
+          "leche",
+          "asignen",
+          "apenas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "5.4_Series_y_Lotes_Valoracion",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.214,
+        "terminos_faltantes": [
+          "l003",
+          "webp",
+          "valuation",
+          "sn10001",
+          "slide",
+          "imagenes",
+          "multiples",
+          "serial",
+          "batch",
+          "costing",
+          "rastrea",
+          "tablets",
+          "snbatch",
+          "bloquear",
+          "diapositivas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "3.7_Costos_de_Importacion_Fletes",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.19,
+        "terminos_faltantes": [
+          "porte",
+          "freight",
+          "portes",
+          "oexd",
+          "extraccion",
+          "falso",
+          "cargos",
+          "test",
+          "transporte",
+          "copia",
+          "cargo",
+          "proyecto",
+          "gross",
+          "ingresos",
+          "prorrateo"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "3.8_Gestion_de_Costos_de_Importacion_La",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.111,
+        "terminos_faltantes": [
+          "aduanas",
+          "agente",
+          "aduana",
+          "derechos",
+          "falso",
+          "landed",
+          "costes",
+          "tablet",
+          "porcentaje",
+          "customs",
+          "volumen",
+          "costs",
+          "test",
+          "aduanero",
+          "cargos"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-4",
+    "nombre": "Gestión de Ventas y Order-to-Cash",
+    "clases": [
+      {
+        "id": "mod4-c1",
+        "titulo": "El Ciclo de Ventas Order-to-Cash",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
+        "cobertura_terminos": 0.55
+      },
+      {
+        "id": "mod4-c2",
+        "titulo": "Ofertas y Pedidos de Cliente",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
+        "cobertura_terminos": 0.45
+      },
+      {
+        "id": "mod4-c3",
+        "titulo": "Entregas y Facturación",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
+        "cobertura_terminos": 0.583
+      },
+      {
+        "id": "mod4-c4",
+        "titulo": "Devoluciones y Notas de Crédito",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.6_Devoluciones_y_Cambios_Ventas",
+        "cobertura_terminos": 0.55
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "2.1_Proceso_de_Ventas_Vision_General",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "effect",
+          "servicios",
+          "lead",
+          "potencial",
+          "potenciales",
+          "sales",
+          "customer",
+          "public",
+          "stage",
+          "allowed",
+          "contabilizaciones",
+          "precedentes",
+          "oinv",
+          "medios",
+          "table"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "iscommited",
+          "efecto",
+          "comprometida",
+          "public",
+          "bancaria",
+          "coste",
+          "impact",
+          "oitw",
+          "contabiliza",
+          "order2cash",
+          "enviaron",
+          "onhand",
+          "pesar",
+          "austro",
+          "sales"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "2.5_Automatizacion_del_Proceso_de_Venta",
+        "cobertura_terminos": 0.483,
+        "cobertura_cifras": 0.071,
+        "terminos_faltantes": [
+          "picking",
+          "embalaje",
+          "reprogramar",
+          "public",
+          "solicitada",
+          "generacion",
+          "colectores",
+          "avanzada",
+          "escaneres",
+          "listas",
+          "responsable",
+          "automatizacion",
+          "pick",
+          "opcion",
+          "solicitado"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "5.6_Proceso_de_Picking_y_Packing_Ventas",
+        "cobertura_terminos": 0.417,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "preparacion",
+          "embalaje",
+          "gestor",
+          "picking",
+          "listas",
+          "pick",
+          "filas",
+          "cajon",
+          "liberar",
+          "pack",
+          "george",
+          "inventariables",
+          "recoleccion",
+          "preparadas",
+          "preparado"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "2.6_Devoluciones_y_Cambios_Ventas",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "devolver",
+          "volver",
+          "baterias",
+          "reemplazo",
+          "return",
+          "devuelven",
+          "opcion",
+          "public",
+          "problemas",
+          "reentrega",
+          "intercambiarlo",
+          "volverlo",
+          "autorizacion",
+          "returns",
+          "proporcionar"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "2.7_Notas_de_Credito_Ventas",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.167,
+        "terminos_faltantes": [
+          "cancelacion",
+          "problemas",
+          "camara",
+          "cancelar",
+          "devolver",
+          "tipo",
+          "anulacion",
+          "public",
+          "facturado",
+          "coste",
+          "facturo",
+          "correccion",
+          "memo",
+          "marketing",
+          "abonar"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-5",
+    "nombre": "Estrategias Avanzadas de Precios",
+    "clases": [
+      {
+        "id": "mod5-c1",
+        "titulo": "Listas de Precios y su Actualización",
+        "hallazgos": [],
+        "manual_mas_cercano": "8.2_Creacion_de_Listas_de_Precios",
+        "cobertura_terminos": 0.433
+      },
+      {
+        "id": "mod5-c2",
+        "titulo": "Descuentos por Período y Volumen",
+        "hallazgos": [],
+        "manual_mas_cercano": "8.4_Descuentos_por_Periodo_y_Volumen",
+        "cobertura_terminos": 0.5
+      },
+      {
+        "id": "mod5-c3",
+        "titulo": "Grupos de Descuento",
+        "hallazgos": [],
+        "manual_mas_cercano": "8.5_Grupos_de_Descuento",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod5-c4",
+        "titulo": "Precios Especiales para Socios",
+        "hallazgos": [],
+        "manual_mas_cercano": "8.6_Precios_Especiales_para_Socios_de_N",
+        "cobertura_terminos": 0.533
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "8.2_Creacion_de_Listas_de_Precios",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.048,
+        "terminos_faltantes": [
+          "ultimo",
+          "evaluado",
+          "inactiva",
+          "price",
+          "inactivas",
+          "redondeo",
+          "mantenidas",
+          "reducir",
+          "itm1",
+          "colegios",
+          "pricing",
+          "last",
+          "public",
+          "paquete",
+          "b00320"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "8.3_Actualizacion_de_Listas_de_Precios",
+        "cobertura_terminos": 0.517,
+        "cobertura_cifras": 0.167,
+        "terminos_faltantes": [
+          "reducir",
+          "cambiar",
+          "convertir",
+          "multiplicar",
+          "public",
+          "jefe",
+          "seleccionamos",
+          "vamos",
+          "tablet",
+          "inactivos",
+          "valor",
+          "monedas",
+          "restar",
+          "1200",
+          "utilizar"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "8.4_Descuentos_por_Periodo_y_Volumen",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.214,
+        "terminos_faltantes": [
+          "sillas",
+          "discounts",
+          "spp2",
+          "pricing",
+          "priority",
+          "ventana",
+          "public",
+          "spp1",
+          "ospp",
+          "oficina",
+          "pervoldisc",
+          "silla",
+          "otono",
+          "basados",
+          "opln"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "8.5_Grupos_de_Descuento",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.143,
+        "terminos_faltantes": [
+          "productos",
+          "rainbow",
+          "efectivo",
+          "fabricante",
+          "public",
+          "excluir",
+          "discount",
+          "oedg",
+          "free",
+          "alto",
+          "verificacion",
+          "bonificacion",
+          "conforme",
+          "multiplicado",
+          "edg1"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "8.6_Precios_Especiales_para_Socios_de_N",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.143,
+        "terminos_faltantes": [
+          "ospp",
+          "spp2",
+          "special",
+          "spp1",
+          "recargo",
+          "prices",
+          "acuerdo",
+          "pricing",
+          "sobrescribe",
+          "escalas",
+          "spprbp",
+          "autoupdt",
+          "relacion",
+          "public",
+          "discsp"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-6",
+    "nombre": "Gestión CRM y Servicios Post-venta",
+    "clases": [
+      {
+        "id": "mod6-c1",
+        "titulo": "Gestión de Relaciones con Clientes",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.4_Gestion_de_Relaciones_con_Clientes_",
+        "cobertura_terminos": 0.65
+      },
+      {
+        "id": "mod6-c2",
+        "titulo": "Oportunidades y Actividades de Venta",
+        "hallazgos": [],
+        "manual_mas_cercano": "2.4_Gestion_de_Relaciones_con_Clientes_",
+        "cobertura_terminos": 0.533
+      },
+      {
+        "id": "mod6-c3",
+        "titulo": "Llamadas de Servicio",
+        "hallazgos": [],
+        "manual_mas_cercano": "12.1_Gestion_de_Llamadas_de_Servicio",
+        "cobertura_terminos": 0.483
+      },
+      {
+        "id": "mod6-c4",
+        "titulo": "Tarjetas de Equipo y Garantías",
+        "hallazgos": [],
+        "manual_mas_cercano": "12.1_Gestion_de_Llamadas_de_Servicio",
+        "cobertura_terminos": 0.4
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "2.4_Gestion_de_Relaciones_con_Clientes_",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.083,
+        "terminos_faltantes": [
+          "outlook",
+          "destinatarios",
+          "microsoft",
+          "telefonicas",
+          "public",
+          "integration",
+          "usuarios",
+          "trato",
+          "alerta",
+          "lista",
+          "exito",
+          "euros",
+          "programadas",
+          "diarias",
+          "activity"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "2.5_Automatizacion_del_Proceso_de_Venta",
+        "cobertura_terminos": 0.383,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "picking",
+          "disponibilidad",
+          "embalaje",
+          "entregas",
+          "almacen",
+          "reprogramar",
+          "public",
+          "solicitada",
+          "colectores",
+          "avanzada",
+          "produccion",
+          "pedidos",
+          "escaneres",
+          "listas",
+          "automatizacion"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "12.1_Gestion_de_Llamadas_de_Servicio",
+        "cobertura_terminos": 0.6,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "cola",
+          "soluciones",
+          "conocimientos",
+          "representante",
+          "colas",
+          "service",
+          "public",
+          "modelos",
+          "tiempo",
+          "visitas",
+          "numeros",
+          "parametrizaciones",
+          "respuesta",
+          "contract",
+          "problemas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "7.6_Ubicaciones_de_Almacen_Numeros_de_S",
+        "cobertura_terminos": 0.267,
+        "cobertura_cifras": 0.125,
+        "terminos_faltantes": [
+          "ubicacion",
+          "numeros",
+          "ubicaciones",
+          "lote",
+          "principalmente",
+          "lotes",
+          "administrados",
+          "metodo",
+          "asignacion",
+          "series",
+          "picking",
+          "ventana",
+          "almacen",
+          "serial",
+          "reasignacion"
+        ],
+        "estado": "CONOCIMIENTO FALTANTE"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-7",
+    "nombre": "Contabilidad Central y NIIF",
+    "clases": [
+      {
+        "id": "mod7-c1",
+        "titulo": "Plan de Cuentas",
+        "hallazgos": [],
+        "manual_mas_cercano": "13.1_Plan_de_Cuentas_Conceptos_Fundament",
+        "cobertura_terminos": 0.533
+      },
+      {
+        "id": "mod7-c2",
+        "titulo": "Cuentas de Mayor por Defecto",
+        "hallazgos": [],
+        "manual_mas_cercano": "13.4_Cuentas_de_Mayor_por_Defecto_Vision",
+        "cobertura_terminos": 0.65
+      },
+      {
+        "id": "mod7-c3",
+        "titulo": "Asientos Contables Manuales y Automáticos",
+        "hallazgos": [],
+        "manual_mas_cercano": "14.2_Asientos_Contables_Automaticos",
+        "cobertura_terminos": 0.433
+      },
+      {
+        "id": "mod7-c4",
+        "titulo": "Períodos Contables y Cierre",
+        "hallazgos": [],
+        "manual_mas_cercano": "15.5_Cierre_de_Periodo_Contable",
+        "cobertura_terminos": 0.617
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "13.1_Plan_de_Cuentas_Conceptos_Fundament",
+        "cobertura_terminos": 0.6,
+        "cobertura_cifras": 0.3,
+        "terminos_faltantes": [
+          "drawer",
+          "statement",
+          "deudora",
+          "maria",
+          "nature",
+          "capital",
+          "costes",
+          "acreedora",
+          "financial",
+          "proyecto",
+          "derivados",
+          "cumbre",
+          "impuestos",
+          "activos",
+          "accounts"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "13.3_Gestion_del_Plan_de_Cuentas",
+        "cobertura_terminos": 0.433,
+        "cobertura_cifras": 1.0,
+        "terminos_faltantes": [
+          "tratar",
+          "agrupadores",
+          "eliminar",
+          "postable",
+          "imputables",
+          "mover",
+          "heredado",
+          "existentes",
+          "adaptado",
+          "bancarios",
+          "reorganizacion",
+          "prestamo",
+          "mantenimiento",
+          "estructural",
+          "cambiar"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "13.4_Cuentas_de_Mayor_por_Defecto_Vision",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.133,
+        "terminos_faltantes": [
+          "canada",
+          "jaime",
+          "centralizada",
+          "opciones",
+          "public",
+          "regla",
+          "matriz",
+          "finsetup",
+          "owhs",
+          "director",
+          "defaultglaccoveriew",
+          "exportacion",
+          "utilizaran",
+          "basan",
+          "action"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "13.5_Cuentas_de_Mayor_por_Defecto_Modo_T",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.4,
+        "terminos_faltantes": [
+          "glmethod",
+          "traditional",
+          "s10000",
+          "8007",
+          "x70007",
+          "7002",
+          "action",
+          "definido",
+          "almacenes",
+          "path",
+          "finsetup",
+          "coste",
+          "owhs",
+          "definicion",
+          "balinvntac"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "14.2_Asientos_Contables_Automaticos",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.273,
+        "terminos_faltantes": [
+          "precios",
+          "multimedia",
+          "coconut",
+          "devices",
+          "revendedor",
+          "valor",
+          "precio",
+          "reproductores",
+          "1000",
+          "accbasics",
+          "star",
+          "trek",
+          "coste",
+          "grpo",
+          "slide"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "15.1_Registro_de_Asientos_Contables",
+        "cobertura_terminos": 0.5,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "2050",
+          "negativos",
+          "importes",
+          "fact",
+          "ctrl",
+          "postje",
+          "string",
+          "programada",
+          "public",
+          "storno",
+          "finprocess",
+          "ampliado",
+          "pulse",
+          "name",
+          "description"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "15.2_Plantillas_de_Asientos_Recurrentes",
+        "cobertura_terminos": 0.233,
+        "cobertura_cifras": 0.059,
+        "terminos_faltantes": [
+          "periodicas",
+          "contabilizaciones",
+          "modelos",
+          "modelo",
+          "periodica",
+          "frecuencia",
+          "porcentajes",
+          "importes",
+          "validez",
+          "porcentual",
+          "alquiler",
+          "ejecucion",
+          "finprocess",
+          "recurrentes",
+          "template"
+        ],
+        "estado": "CONOCIMIENTO FALTANTE"
+      },
+      {
+        "manual": "15.4_Periodos_Contables_y_Ejercicios",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "2027",
+          "postperiods",
+          "refdate",
+          "date",
+          "finprocess",
+          "20xx",
+          "taxdate",
+          "duedate",
+          "antiguo",
+          "maria",
+          "delimita",
+          "calendario",
+          "corresponder",
+          "doce",
+          "name"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "15.5_Cierre_de_Periodo_Contable",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.2,
+        "terminos_faltantes": [
+          "closing",
+          "contabilizar",
+          "propuesta",
+          "retenidos",
+          "period",
+          "habilitado",
+          "excepto",
+          "conciliacion",
+          "cambiar",
+          "beneficios",
+          "finprocess",
+          "arrastre",
+          "capital",
+          "2018",
+          "reservas"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-8",
+    "nombre": "Tesorería, Cobros y Pagos (Bancos)",
+    "clases": [
+      {
+        "id": "mod8-c1",
+        "titulo": "Pagos Recibidos y Efectuados",
+        "hallazgos": [],
+        "manual_mas_cercano": "16.1_Gestion_de_Pagos_Recibidos_y_Emitid",
+        "cobertura_terminos": 0.6
+      },
+      {
+        "id": "mod8-c2",
+        "titulo": "Asistente de Pagos",
+        "hallazgos": [],
+        "manual_mas_cercano": "16.2_Asistente_de_Pagos_Payment_Wizard",
+        "cobertura_terminos": 0.667
+      },
+      {
+        "id": "mod8-c3",
+        "titulo": "Conciliación Bancaria e Interna",
+        "hallazgos": [],
+        "manual_mas_cercano": "16.3_Reconciliacion_Bancaria",
+        "cobertura_terminos": 0.517
+      },
+      {
+        "id": "mod8-c4",
+        "titulo": "Antigüedad de Saldos y Cobranza",
+        "hallazgos": [],
+        "manual_mas_cercano": "17.3_Antiguedad_de_Saldos_Aging_Report",
+        "cobertura_terminos": 0.5
+      },
+      {
+        "id": "mod8-c5",
+        "titulo": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos",
+        "hallazgos": [],
+        "manual_mas_cercano": "16.3_Reconciliacion_Bancaria",
+        "cobertura_terminos": 0.35
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "16.1_Gestion_de_Pagos_Recibidos_y_Emitid",
+        "cobertura_terminos": 0.767,
+        "cobertura_cifras": 0.231,
+        "terminos_faltantes": [
+          "pronto",
+          "payments",
+          "asterisco",
+          "outgoing",
+          "flow",
+          "public",
+          "incoming",
+          "deudor",
+          "checks",
+          "plazos",
+          "handling",
+          "cards",
+          "npaso",
+          "descuento"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "16.2_Asistente_de_Pagos_Payment_Wizard",
+        "cobertura_terminos": 0.7,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "payment",
+          "seleccion",
+          "wizard",
+          "comercial",
+          "desc",
+          "maria",
+          "step",
+          "fichero",
+          "confirmacion",
+          "execute",
+          "public",
+          "remesa",
+          "name",
+          "bankprocess",
+          "payments"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "16.3_Reconciliacion_Bancaria",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.125,
+        "terminos_faltantes": [
+          "reconciliation",
+          "externo",
+          "localizaciones",
+          "maria",
+          "denomina",
+          "bank",
+          "statement",
+          "public",
+          "recibido",
+          "efectuar",
+          "external",
+          "processing",
+          "3000",
+          "bankreconcile",
+          "australia"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "15.6_Reconciliacion_Interna_de_Cuentas",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.077,
+        "terminos_faltantes": [
+          "usuario",
+          "local",
+          "semiautomatica",
+          "reconcilia",
+          "parcial",
+          "public",
+          "maria",
+          "clases",
+          "anteriores",
+          "cancelar",
+          "posiciones",
+          "estados",
+          "extranjera",
+          "comercial",
+          "2000"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "17.3_Antiguedad_de_Saldos_Aging_Report",
+        "cobertura_terminos": 0.65,
+        "cobertura_cifras": 0.182,
+        "terminos_faltantes": [
+          "fact",
+          "funtech",
+          "aging",
+          "intervalos",
+          "mora",
+          "tramo",
+          "conectado",
+          "controlreports",
+          "crediticia",
+          "abono",
+          "microchips",
+          "future",
+          "cuanto",
+          "agingreports",
+          "surf"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "17.4_Proceso_de_Reclamaciones_Dunning",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "carta",
+          "dunning",
+          "tasa",
+          "nivel",
+          "interest",
+          "moratorios",
+          "controlreports",
+          "recomendacion",
+          "effective",
+          "public",
+          "deudores",
+          "terms",
+          "after",
+          "dunningletters",
+          "applied"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-9",
+    "nombre": "Control de Activos Fijos",
+    "clases": [
+      {
+        "id": "mod9-c1",
+        "titulo": "Configuración de Activos Fijos",
+        "hallazgos": [],
+        "manual_mas_cercano": "19.2_Activos_Fijos_Virtuales",
+        "cobertura_terminos": 0.5
+      },
+      {
+        "id": "mod9-c2",
+        "titulo": "Alta y Datos Maestros del Activo",
+        "hallazgos": [],
+        "manual_mas_cercano": "19.4_Activos_Fijos_Activacion_y_Datos_Ma",
+        "cobertura_terminos": 0.55
+      },
+      {
+        "id": "mod9-c3",
+        "titulo": "Depreciación y Ajustes",
+        "hallazgos": [],
+        "manual_mas_cercano": "19.5_Activos_Fijos_Depreciacion_y_Ajuste",
+        "cobertura_terminos": 0.617
+      },
+      {
+        "id": "mod9-c4",
+        "titulo": "Bajas y Monitoreo de Activos",
+        "hallazgos": [],
+        "manual_mas_cercano": "19.6_Activos_Fijos_Bajas_y_Monitoreo",
+        "cobertura_terminos": 0.567
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "19.2_Activos_Fijos_Virtuales",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "forzar",
+          "imei",
+          "creados",
+          "fixedasset",
+          "asset",
+          "compre",
+          "isvirtual",
+          "virt",
+          "finalidades",
+          "oitm",
+          "public",
+          "fichas",
+          "serial",
+          "capitalization",
+          "corp"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "19.3_Activos_Fijos_Configuracion_Inicial",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.273,
+        "terminos_faltantes": [
+          "decreciente",
+          "definiciones",
+          "vehiculos",
+          "derivada",
+          "depreciation",
+          "puedes",
+          "principal",
+          "conjunto",
+          "nuestro",
+          "areas",
+          "porcentaje",
+          "subpestana",
+          "determinacion",
+          "campo",
+          "asset"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "19.4_Activos_Fijos_Activacion_y_Datos_Ma",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "vehiculos",
+          "capitalization",
+          "asset",
+          "puedes",
+          "oacq",
+          "conjunto",
+          "assetmd",
+          "puesta",
+          "activate",
+          "capitalizarse",
+          "definiciones",
+          "motor",
+          "workingprocessfa",
+          "pestana",
+          "incluir"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "19.5_Activos_Fijos_Depreciacion_y_Ajuste",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.714,
+        "terminos_faltantes": [
+          "depreciation",
+          "deterioro",
+          "year",
+          "catch",
+          "change",
+          "adjustments",
+          "planificadas",
+          "corrida",
+          "recuperacion",
+          "diciembre",
+          "odep",
+          "puedes",
+          "mercado",
+          "niif",
+          "contabilizar"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "19.6_Activos_Fijos_Bajas_y_Monitoreo",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "retirement",
+          "asset",
+          "prevision",
+          "puedes",
+          "monitoring",
+          "implicado",
+          "truck",
+          "debit",
+          "desguace",
+          "odpv",
+          "scrapping",
+          "sheet",
+          "value",
+          "estatus",
+          "workingprocessfa"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-10",
+    "nombre": "Planificación de Materiales (MRP)",
+    "clases": [
+      {
+        "id": "mod10-c1",
+        "titulo": "Planificación de Necesidades MRP",
+        "hallazgos": [],
+        "manual_mas_cercano": "9.1_Planificacion_de_Necesidades_MRP_Pr",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod10-c2",
+        "titulo": "Pronósticos de Demanda",
+        "hallazgos": [],
+        "manual_mas_cercano": "9.2_Pronosticos_de_Consumo_y_Demanda",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod10-c3",
+        "titulo": "MRP y Listas de Materiales",
+        "hallazgos": [],
+        "manual_mas_cercano": "9.1_Planificacion_de_Necesidades_MRP_Pr",
+        "cobertura_terminos": 0.55
+      },
+      {
+        "id": "mod10-c4",
+        "titulo": "Recomendaciones y Órdenes Sugeridas",
+        "hallazgos": [],
+        "manual_mas_cercano": "9.1_Planificacion_de_Necesidades_MRP_Pr",
+        "cobertura_terminos": 0.567
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "9.1_Planificacion_de_Necesidades_MRP_Pr",
+        "cobertura_terminos": 0.85,
+        "cobertura_cifras": 0.375,
+        "terminos_faltantes": [
+          "solicitudes",
+          "recomendados",
+          "public",
+          "globales",
+          "ofertas",
+          "tolerancia",
+          "satisfacer",
+          "desc",
+          "lead"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "9.2_Pronosticos_de_Consumo_y_Demanda",
+        "cobertura_terminos": 0.633,
+        "cobertura_cifras": 0.231,
+        "terminos_faltantes": [
+          "minimiza",
+          "backward",
+          "forward",
+          "webp",
+          "slide",
+          "imagenes",
+          "forecast",
+          "consumption",
+          "diapositivas",
+          "consumeforecast",
+          "insatisfecha",
+          "ofct",
+          "fct1",
+          "consuman",
+          "blanket"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "9.3_MRP_y_Listas_de_Materiales_BOM",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "lead",
+          "time",
+          "padre",
+          "webp",
+          "slide",
+          "imagenes",
+          "montaje",
+          "fabricacion",
+          "teoricas",
+          "cumulative",
+          "octubre",
+          "diapositivas",
+          "p10009",
+          "solicitudes",
+          "futuros"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-11",
+    "nombre": "Fabricación y Proyectos (BOM)",
+    "clases": [
+      {
+        "id": "mod11-c1",
+        "titulo": "Listas de Materiales",
+        "hallazgos": [],
+        "manual_mas_cercano": "10.1_Produccion_Vision_General",
+        "cobertura_terminos": 0.483
+      },
+      {
+        "id": "mod11-c2",
+        "titulo": "Órdenes de Producción",
+        "hallazgos": [],
+        "manual_mas_cercano": "10.8_Contabilizacion_de_Ordenes_de_Produ",
+        "cobertura_terminos": 0.45
+      },
+      {
+        "id": "mod11-c3",
+        "titulo": "Costos de Producción",
+        "hallazgos": [],
+        "manual_mas_cercano": "10.8_Contabilizacion_de_Ordenes_de_Produ",
+        "cobertura_terminos": 0.483
+      },
+      {
+        "id": "mod11-c4",
+        "titulo": "Gestión y Facturación de Proyectos",
+        "hallazgos": [],
+        "manual_mas_cercano": "11.1_Gestion_de_Proyectos",
+        "cobertura_terminos": 0.433
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "10.4_Lista_de_Materiales_BOM",
+        "cobertura_terminos": 0.467,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "ficticio",
+          "lmat",
+          "madera",
+          "ruta",
+          "puerta",
+          "padre",
+          "planchas",
+          "woodtrend",
+          "secuencia",
+          "phantom",
+          "tornillos",
+          "precio",
+          "invntitem",
+          "parent",
+          "texto"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.1_Produccion_Vision_General",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "madera",
+          "production",
+          "puerta",
+          "overview",
+          "pomo",
+          "decorativa",
+          "type",
+          "concepto",
+          "ruta",
+          "owor",
+          "oitt",
+          "effect",
+          "oige",
+          "oign",
+          "link"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.5_Proceso_Basico_de_Orden_de_Producci",
+        "cobertura_terminos": 0.533,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "enviar",
+          "planificada",
+          "salida",
+          "metodo",
+          "production",
+          "serie",
+          "madera",
+          "basico",
+          "desviacion",
+          "oige",
+          "oign",
+          "cabecera",
+          "puerta",
+          "comprometida",
+          "planned"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.6_Subproductos_y_Costos_Adicionales",
+        "cobertura_terminos": 0.367,
+        "cobertura_cifras": 0.4,
+        "terminos_faltantes": [
+          "subproducto",
+          "subproductos",
+          "text",
+          "planificada",
+          "adicional",
+          "padre",
+          "oign",
+          "additional",
+          "setup",
+          "times",
+          "production",
+          "formula",
+          "byproducts",
+          "byproduct",
+          "cat7"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.8_Contabilizacion_de_Ordenes_de_Produ",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.167,
+        "terminos_faltantes": [
+          "desviacion",
+          "production",
+          "padre",
+          "offset",
+          "existencias",
+          "variacion",
+          "variance",
+          "kardex",
+          "name",
+          "puertas",
+          "description",
+          "subproductos",
+          "continuo",
+          "residual",
+          "wipactcode"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.9_Analisis_de_Costos_de_Produccion",
+        "cobertura_terminos": 0.467,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "rollup",
+          "text",
+          "costes",
+          "production",
+          "times",
+          "tamano",
+          "promedio",
+          "cost",
+          "puerta",
+          "adicional",
+          "mathbf",
+          "left",
+          "right",
+          "procedimiento",
+          "update"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "11.1_Gestion_de_Proyectos",
+        "cobertura_terminos": 0.467,
+        "cobertura_cifras": 0.118,
+        "terminos_faltantes": [
+          "subproyectos",
+          "subproyecto",
+          "kate",
+          "contribucion",
+          "londres",
+          "project",
+          "problemas",
+          "vision",
+          "problema",
+          "oprj",
+          "open",
+          "parameter100",
+          "stage",
+          "completado",
+          "abiertos"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "11.2_Facturacion_de_Proyectos",
+        "cobertura_terminos": 0.483,
+        "cobertura_cifras": 0.125,
+        "terminos_faltantes": [
+          "facturables",
+          "facturable",
+          "hojas",
+          "chargeable",
+          "generacion",
+          "billing",
+          "registros",
+          "kate",
+          "entrega",
+          "clientes",
+          "l10001",
+          "fuentes",
+          "name",
+          "presupuestos",
+          "projectmanage"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-12",
+    "nombre": "Consultoría y Herramientas SQL",
+    "clases": [
+      {
+        "id": "mod12-c1",
+        "titulo": "Consultas SQL con el Query Manager",
+        "hallazgos": [],
+        "manual_mas_cercano": "22.1_Consultas_Personalizadas_Queries",
+        "cobertura_terminos": 0.617
+      },
+      {
+        "id": "mod12-c2",
+        "titulo": "Alertas y Procesos de Aprobación",
+        "hallazgos": [],
+        "manual_mas_cercano": "22.2_Sistema_de_Alertas_Automaticas",
+        "cobertura_terminos": 0.6
+      },
+      {
+        "id": "mod12-c3",
+        "titulo": "Campos y Valores Definidos por el Usuario",
+        "hallazgos": [],
+        "manual_mas_cercano": "22.4_Campos_Definidos_por_el_Usuario_UDF",
+        "cobertura_terminos": 0.65
+      },
+      {
+        "id": "mod12-c4",
+        "titulo": "Migración de Datos con DTW",
+        "hallazgos": [],
+        "manual_mas_cercano": "20.6_Importacion_de_Datos_desde_Excel",
+        "cobertura_terminos": 0.617
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "22.1_Consultas_Personalizadas_Queries",
+        "cobertura_terminos": 0.783,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "from",
+          "numero",
+          "cabecera",
+          "grabadas",
+          "public",
+          "referencia",
+          "opor",
+          "simbolo",
+          "elementos",
+          "corchetes",
+          "autorizaciones",
+          "gestor",
+          "hana"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.6_Practica_de_Consultas_SQL",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "widget",
+          "oslp",
+          "recuento",
+          "cockpit",
+          "publico",
+          "informe",
+          "afiliadas",
+          "hana",
+          "oqut",
+          "task",
+          "count",
+          "utilizando",
+          "requerimiento",
+          "slpname",
+          "parametro"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "22.2_Sistema_de_Alertas_Automaticas",
+        "cobertura_terminos": 0.633,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "service",
+          "alerts",
+          "layer",
+          "tareas",
+          "electronico",
+          "definidas",
+          "landscape",
+          "directory",
+          "public",
+          "alert",
+          "produzca",
+          "ganancia",
+          "bruta",
+          "ejecute",
+          "minutos"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "22.3_Procesos_de_Aprobacion",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "autorizadores",
+          "borrador",
+          "etapas",
+          "aprobado",
+          "creadores",
+          "numero",
+          "public",
+          "procedimiento",
+          "rechazado",
+          "seleccion",
+          "varios",
+          "criterios",
+          "approval",
+          "iniciara",
+          "etapa"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "22.4_Campos_Definidos_por_el_Usuario_UDF",
+        "cobertura_terminos": 0.767,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "cabecera",
+          "defecto",
+          "public",
+          "vinculo",
+          "imagen",
+          "anadidos",
+          "mayus",
+          "impositivo",
+          "instancias",
+          "255kb",
+          "marketing",
+          "anade",
+          "titulo",
+          "structures"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "22.5_Valores_Definidos_por_el_Usuario_UD",
+        "cobertura_terminos": 0.467,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "dependiente",
+          "lupa",
+          "regularmente",
+          "ejecutara",
+          "grabados",
+          "automatica",
+          "dependientes",
+          "colectores",
+          "icono",
+          "cabecera",
+          "public",
+          "editables",
+          "buscar",
+          "formateada",
+          "anadida"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.6_Importacion_de_Datos_desde_Excel",
+        "cobertura_terminos": 0.817,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "puedes",
+          "numeros",
+          "contacto",
+          "apertura",
+          "saldos",
+          "direcciones",
+          "import",
+          "serie",
+          "importarse",
+          "ugpentry",
+          "object"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.7_Uso_del_Data_Transfer_Workbench_DTW",
+        "cobertura_terminos": 0.6,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "workbench",
+          "linenum",
+          "puedes",
+          "data",
+          "coma",
+          "contacto",
+          "secundaria",
+          "simulacion",
+          "blanco",
+          "referencia",
+          "subprocesos",
+          "transferencia",
+          "odbc",
+          "ocpr",
+          "hana"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-13",
+    "nombre": "Compras Avanzadas",
+    "clases": [
+      {
+        "id": "mod13-c1",
+        "titulo": "Solicitudes de Compra y Cotizaciones",
+        "hallazgos": [],
+        "manual_mas_cercano": "3.3_Solicitudes_de_Compra_y_Cotizacione",
+        "cobertura_terminos": 0.517
+      },
+      {
+        "id": "mod13-c2",
+        "titulo": "Compras de Servicios",
+        "hallazgos": [],
+        "manual_mas_cercano": "3.4_Compras_de_Servicios",
+        "cobertura_terminos": 0.6
+      },
+      {
+        "id": "mod13-c3",
+        "titulo": "Devoluciones y Notas de Crédito de Proveedor",
+        "hallazgos": [],
+        "manual_mas_cercano": "3.6_Devoluciones_y_Notas_de_Credito_Com",
+        "cobertura_terminos": 0.55
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "3.3_Solicitudes_de_Compra_y_Cotizacione",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.125,
+        "terminos_faltantes": [
+          "purchase",
+          "solicitante",
+          "quotation",
+          "comparativo",
+          "preferentes",
+          "itm2",
+          "adjudicacion",
+          "cuadro",
+          "object",
+          "request",
+          "correo",
+          "solicitar",
+          "aprovisionamiento",
+          "oprq",
+          "opor"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "3.4_Compras_de_Servicios",
+        "cobertura_terminos": 0.633,
+        "cobertura_cifras": 0.125,
+        "terminos_faltantes": [
+          "numatcard",
+          "arrendador",
+          "periodica",
+          "transactions",
+          "recurring",
+          "alquileres",
+          "clima",
+          "type",
+          "otor",
+          "invoice",
+          "cont",
+          "template",
+          "document",
+          "debito",
+          "opch"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "3.6_Devoluciones_y_Notas_de_Credito_Com",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.143,
+        "terminos_faltantes": [
+          "escaneres",
+          "return",
+          "object",
+          "cancelacion",
+          "cajas",
+          "goods",
+          "existencias",
+          "defectuosas",
+          "calidad",
+          "auriculares",
+          "pagado",
+          "public",
+          "inversa",
+          "comprometido",
+          "memo"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-14",
+    "nombre": "Unidades de Medida y Valoración de Inventario",
+    "clases": [
+      {
+        "id": "mod14-c1",
+        "titulo": "Unidades de Medida por Peso y Volumen",
+        "hallazgos": [],
+        "manual_mas_cercano": "4.5_Unidades_de_Medida_Gestion_por_Peso",
+        "cobertura_terminos": 0.683
+      },
+      {
+        "id": "mod14-c2",
+        "titulo": "Unidades de Empaquetado",
+        "hallazgos": [],
+        "manual_mas_cercano": "4.6_Unidades_de_Medida_Empaquetado",
+        "cobertura_terminos": 0.783
+      },
+      {
+        "id": "mod14-c3",
+        "titulo": "Métodos de Valoración de Inventario",
+        "hallazgos": [],
+        "manual_mas_cercano": "4.7_Metodos_de_Valoracion_de_Inventario",
+        "cobertura_terminos": 0.483
+      },
+      {
+        "id": "mod14-c4",
+        "titulo": "Ajuste de Costos de Inventario",
+        "hallazgos": [],
+        "manual_mas_cercano": "18.3_Ajuste_de_Costos_de_Inventario",
+        "cobertura_terminos": 0.583
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "4.5_Unidades_de_Medida_Gestion_por_Peso",
+        "cobertura_terminos": 0.717,
+        "cobertura_cifras": 0.667,
+        "terminos_faltantes": [
+          "kilo",
+          "litros",
+          "weight",
+          "pulgadas",
+          "text",
+          "oitm",
+          "cant",
+          "iweight1",
+          "ugp1",
+          "discretas",
+          "plegadas",
+          "compraban",
+          "observese",
+          "pulgada",
+          "venden"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "4.6_Unidades_de_Medida_Empaquetado",
+        "cobertura_terminos": 0.783,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "packaging",
+          "text",
+          "packing",
+          "package",
+          "alto",
+          "embalajes",
+          "slip",
+          "bultos",
+          "times",
+          "abajo",
+          "slips",
+          "floor",
+          "contenedores"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "4.7_Metodos_de_Valoracion_de_Inventario",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.471,
+        "terminos_faltantes": [
+          "capa",
+          "stocks",
+          "first",
+          "capas",
+          "medio",
+          "media",
+          "valuation",
+          "public",
+          "antigua",
+          "constante",
+          "contabiliza",
+          "controlados",
+          "niveles",
+          "libro",
+          "revaloracion"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "18.3_Ajuste_de_Costos_de_Inventario",
+        "cobertura_terminos": 0.633,
+        "cobertura_cifras": 0.364,
+        "terminos_faltantes": [
+          "reparto",
+          "norma",
+          "610999",
+          "puente",
+          "normas",
+          "emisor",
+          "costadjustment",
+          "adjustment",
+          "accounting",
+          "cost",
+          "costandbudget",
+          "dedicado",
+          "diario",
+          "especializada",
+          "nnm1"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-15",
+    "nombre": "Operación de Almacén e Inventario Físico",
+    "clases": [
+      {
+        "id": "mod15-c1",
+        "titulo": "Operación Diaria con Ubicaciones",
+        "hallazgos": [],
+        "manual_mas_cercano": "7.3_Ubicaciones_de_Almacen_Proceso_Oper",
+        "cobertura_terminos": 0.533
+      },
+      {
+        "id": "mod15-c2",
+        "titulo": "Reglas y Gestión de Ubicaciones",
+        "hallazgos": [],
+        "manual_mas_cercano": "7.4_Ubicaciones_de_Almacen_Gestion_por_",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod15-c3",
+        "titulo": "Informes de Ubicaciones",
+        "hallazgos": [],
+        "manual_mas_cercano": "7.5_Ubicaciones_de_Almacen_Informes",
+        "cobertura_terminos": 0.55
+      },
+      {
+        "id": "mod15-c4",
+        "titulo": "Inventario Físico: Conteo y Ajuste",
+        "hallazgos": [],
+        "manual_mas_cercano": "5.5_Inventario_Fisico_Conteo_y_Ajuste",
+        "cobertura_terminos": 0.533
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "7.3_Ubicaciones_de_Almacen_Proceso_Oper",
+        "cobertura_terminos": 0.75,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "metodos",
+          "entradas",
+          "celda",
+          "estrategia",
+          "negativa",
+          "alfanumerico",
+          "ascendente",
+          "filas",
+          "unica",
+          "agregar",
+          "lifo",
+          "agenda",
+          "estrategias",
+          "ocurre",
+          "area"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "7.4_Ubicaciones_de_Almacen_Gestion_por_",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.375,
+        "terminos_faltantes": [
+          "celda",
+          "weight",
+          "papel",
+          "pesa",
+          "obin",
+          "allocation",
+          "limitacion",
+          "emite",
+          "binloc",
+          "george",
+          "text",
+          "itemweight",
+          "maxweight",
+          "desborda",
+          "portante"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "7.5_Ubicaciones_de_Almacen_Informes",
+        "cobertura_terminos": 0.6,
+        "cobertura_cifras": 0.2,
+        "terminos_faltantes": [
+          "celda",
+          "reabastecimiento",
+          "minimo",
+          "currentqty",
+          "reporting",
+          "llena",
+          "replenishment",
+          "minima",
+          "location",
+          "columna",
+          "maxqty",
+          "reabastecer",
+          "george",
+          "procedimiento",
+          "celdas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "5.5_Inventario_Fisico_Conteo_y_Ajuste",
+        "cobertura_terminos": 0.6,
+        "cobertura_cifras": 0.2,
+        "terminos_faltantes": [
+          "inventariadores",
+          "recuentos",
+          "serie",
+          "counting",
+          "inc1",
+          "oiqr",
+          "contadas",
+          "inventory",
+          "cycle",
+          "septiembre",
+          "freeze",
+          "subniveis",
+          "numeros",
+          "draft",
+          "discrepancias"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-16",
+    "nombre": "Picking, Packing y Despacho",
+    "clases": [
+      {
+        "id": "mod16-c1",
+        "titulo": "Picking y Packing para Producción",
+        "hallazgos": [],
+        "manual_mas_cercano": "6.1_Proceso_de_Picking_y_Packing_Produc",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod16-c2",
+        "titulo": "Picking y Packing para Transferencias",
+        "hallazgos": [],
+        "manual_mas_cercano": "6.2_Proceso_de_Picking_y_Packing_Transf",
+        "cobertura_terminos": 0.433
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "6.1_Proceso_de_Picking_y_Packing_Produc",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "pick",
+          "pack",
+          "backflush",
+          "emision",
+          "production",
+          "recibo",
+          "routing",
+          "insumos",
+          "ruta",
+          "route",
+          "recoleccion",
+          "shop",
+          "gabinetes",
+          "list",
+          "floor"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "6.2_Proceso_de_Picking_y_Packing_Transf",
+        "cobertura_terminos": 0.517,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "pick",
+          "transfer",
+          "pack",
+          "owtq",
+          "owtr",
+          "inventory",
+          "recoleccion",
+          "recolectado",
+          "sucursal",
+          "request",
+          "mouse",
+          "phase",
+          "list",
+          "empaque",
+          "pnpttransfer"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-17",
+    "nombre": "Monedas, Cierre e Informes Financieros",
+    "clases": [
+      {
+        "id": "mod17-c1",
+        "titulo": "Monedas y Tipos de Cambio",
+        "hallazgos": [],
+        "manual_mas_cercano": "13.2_Configuracion_de_Monedas_y_Tipos_de",
+        "cobertura_terminos": 0.533
+      },
+      {
+        "id": "mod17-c2",
+        "titulo": "Determinación Avanzada de Cuentas",
+        "hallazgos": [],
+        "manual_mas_cercano": "13.6_Cuentas_de_Mayor_por_Defecto_Modo_A",
+        "cobertura_terminos": 0.633
+      },
+      {
+        "id": "mod17-c3",
+        "titulo": "Documentos Preliminares de Asiento",
+        "hallazgos": [],
+        "manual_mas_cercano": "15.3_Documentos_Preliminares_Vouchers",
+        "cobertura_terminos": 0.367
+      },
+      {
+        "id": "mod17-c4",
+        "titulo": "Informes Financieros y Flujo de Caja",
+        "hallazgos": [],
+        "manual_mas_cercano": "17.1_Informes_Financieros_del_Sistema",
+        "cobertura_terminos": 0.667
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "13.2_Configuracion_de_Monedas_y_Tipos_de",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.667,
+        "terminos_faltantes": [
+          "currencies",
+          "estadounidenses",
+          "dolares",
+          "currency",
+          "public",
+          "divisa",
+          "subsidiaria",
+          "subsidiarias",
+          "sede",
+          "reconciliacion",
+          "paralelo",
+          "deferencia",
+          "euros",
+          "reino",
+          "unido"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "13.6_Cuentas_de_Mayor_por_Defecto_Modo_A",
+        "cobertura_terminos": 0.65,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "formulario",
+          "printers",
+          "estableceran",
+          "definidas",
+          "coincide",
+          "migrar",
+          "advanced",
+          "destinatario",
+          "criterio",
+          "existente",
+          "administracion",
+          "prioridades",
+          "eliminaran",
+          "recomendamos",
+          "filas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "14.1_Conceptos_Financieros_Basicos",
+        "cobertura_terminos": 0.567,
+        "cobertura_cifras": 0.273,
+        "terminos_faltantes": [
+          "aumenta",
+          "debit",
+          "accbasics",
+          "credit",
+          "fundamentos",
+          "account",
+          "impacts",
+          "natural",
+          "slide",
+          "public",
+          "suelen",
+          "basics",
+          "intercambio",
+          "deposito",
+          "exento"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "15.3_Documentos_Preliminares_Vouchers",
+        "cobertura_terminos": 0.4,
+        "cobertura_cifras": 1.0,
+        "terminos_faltantes": [
+          "lote",
+          "voucher",
+          "grabar",
+          "pasante",
+          "finprocess",
+          "carlos",
+          "vouchers",
+          "journal",
+          "responsable",
+          "obtf",
+          "batchnum",
+          "corregirlos",
+          "archivo",
+          "supervisor",
+          "public"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "17.1_Informes_Financieros_del_Sistema",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.429,
+        "terminos_faltantes": [
+          "ejercicio",
+          "cajon",
+          "seleccionado",
+          "afectan",
+          "presenta",
+          "public",
+          "interlocutores",
+          "explotacion",
+          "fechas",
+          "calculo",
+          "comerciales",
+          "costes",
+          "restaran",
+          "influencia",
+          "explica"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "17.2_Informe_de_Flujo_de_Caja",
+        "cobertura_terminos": 0.433,
+        "cobertura_cifras": 0.2,
+        "terminos_faltantes": [
+          "prevision",
+          "deudas",
+          "certeza",
+          "cobros",
+          "proyectadas",
+          "monetarias",
+          "cash",
+          "flow",
+          "semana",
+          "cashflow",
+          "intervalo",
+          "pendientes",
+          "verde",
+          "controlreports",
+          "borradores"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-18",
+    "nombre": "Costos, Dimensiones y Presupuestos",
+    "clases": [
+      {
+        "id": "mod18-c1",
+        "titulo": "Contabilidad de Costos",
+        "hallazgos": [],
+        "manual_mas_cercano": "18.1_Contabilidad_de_Costos",
+        "cobertura_terminos": 0.633
+      },
+      {
+        "id": "mod18-c2",
+        "titulo": "Centros de Costo y Dimensiones",
+        "hallazgos": [],
+        "manual_mas_cercano": "18.2_Centros_de_Costo_Multiples_Dimensio",
+        "cobertura_terminos": 0.533
+      },
+      {
+        "id": "mod18-c3",
+        "titulo": "Gestión de Presupuestos",
+        "hallazgos": [],
+        "manual_mas_cercano": "18.4_Gestion_de_Presupuestos",
+        "cobertura_terminos": 0.633
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "18.1_Contabilidad_de_Costos",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.438,
+        "terminos_faltantes": [
+          "center",
+          "vehiculos",
+          "marketing",
+          "ocrcode",
+          "costacc",
+          "oprc",
+          "public",
+          "odrf",
+          "fijo",
+          "ganancias",
+          "relativa",
+          "perdidas",
+          "costandbudget",
+          "comodin",
+          "documento"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "18.2_Centros_de_Costo_Multiples_Dimensio",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.364,
+        "terminos_faltantes": [
+          "jerarquia",
+          "nodos",
+          "multidimensions",
+          "dimcode",
+          "vistas",
+          "modelos",
+          "oprc",
+          "jerarquias",
+          "costandbudget",
+          "formulas",
+          "analiticas",
+          "odim",
+          "occh",
+          "cch1",
+          "terminales"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "18.4_Gestion_de_Presupuestos",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "budget",
+          "confirmar",
+          "comprobacion",
+          "saldo",
+          "modalidad",
+          "advertencia",
+          "autorizacion",
+          "meses",
+          "optimista",
+          "ascendente",
+          "descendente",
+          "pedido",
+          "usuario",
+          "agregar",
+          "costandbudget"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-19",
+    "nombre": "Facturación Electrónica y Retenciones SRI 2026",
+    "clases": [
+      {
+        "id": "mod19-c1",
+        "titulo": "Facturación Electrónica 2026: Transmisión y Anulación",
+        "hallazgos": [
+          "La clase cubre solo 20% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.2
+      },
+      {
+        "id": "mod19-c2",
+        "titulo": "Retención en la Fuente del Impuesto a la Renta",
+        "hallazgos": [
+          "La clase cubre solo 27% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.267
+      },
+      {
+        "id": "mod19-c3",
+        "titulo": "Retención del IVA y Comprobante de Retención",
+        "hallazgos": [
+          "La clase cubre solo 23% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.233
+      },
+      {
+        "id": "mod19-c4",
+        "titulo": "Retenciones en la Factura de Proveedores de SAP B1",
+        "hallazgos": [
+          "La clase cubre solo 28% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.283
+      },
+      {
+        "id": "mod19-c5",
+        "titulo": "Declaraciones Mensuales: Formularios 103, 104 y ATS",
+        "hallazgos": [
+          "La clase cubre solo 18% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.183
+      },
+      {
+        "id": "mod19-c6",
+        "titulo": "Nota de Débito, Guía de Remisión y Liquidación de Compra",
+        "hallazgos": [
+          "La clase cubre solo 30% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.3
+      },
+      {
+        "id": "mod19-c7",
+        "titulo": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
+        "hallazgos": [
+          "La clase cubre solo 27% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.267
+      },
+      {
+        "id": "mod19-c8",
+        "titulo": "ICE: Impuesto a los Consumos Especiales",
+        "hallazgos": [
+          "La clase cubre solo 22% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.217
+      },
+      {
+        "id": "mod19-c9",
+        "titulo": "ISD: Pagos al Exterior y Salida de Divisas",
+        "hallazgos": [
+          "La clase cubre solo 18% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.183
+      },
+      {
+        "id": "mod19-c10",
+        "titulo": "Retenciones que te Hacen tus Clientes: Crédito Tributario",
+        "hallazgos": [
+          "La clase cubre solo 17% de los términos de su manual más cercano (3.2_Compras_Articulos_y_Documentos)"
+        ],
+        "manual_mas_cercano": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.167
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "3.2_Compras_Articulos_y_Documentos",
+        "cobertura_terminos": 0.483,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "stock",
+          "copiar",
+          "impresoras",
+          "articulos",
+          "efectuado",
+          "pedidos",
+          "public",
+          "existencias",
+          "pendientes",
+          "object",
+          "solicitado",
+          "stocks",
+          "oitw",
+          "crea",
+          "impact"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-20",
+    "nombre": "Recursos, Capacidad y Rutas de Producción",
+    "clases": [
+      {
+        "id": "mod20-c1",
+        "titulo": "Recursos de Producción",
+        "hallazgos": [],
+        "manual_mas_cercano": "10.2_Recursos_de_Produccion",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod20-c2",
+        "titulo": "Capacidad de Recursos",
+        "hallazgos": [],
+        "manual_mas_cercano": "10.3_Capacidad_de_Recursos",
+        "cobertura_terminos": 0.617
+      },
+      {
+        "id": "mod20-c3",
+        "titulo": "Rutas de Producción (Routing)",
+        "hallazgos": [],
+        "manual_mas_cercano": "10.7_Rutas_de_Produccion_Routing",
+        "cobertura_terminos": 0.667
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "10.2_Recursos_de_Produccion",
+        "cobertura_terminos": 0.683,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "text",
+          "maquinaria",
+          "internal",
+          "coste",
+          "resources",
+          "grupo",
+          "hora",
+          "estandar",
+          "resource",
+          "maximo",
+          "amortizacion",
+          "puerta",
+          "producir",
+          "costes",
+          "time"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.3_Capacidad_de_Recursos",
+        "cobertura_terminos": 0.733,
+        "cobertura_cifras": 0.25,
+        "terminos_faltantes": [
+          "consumida",
+          "acumulada",
+          "capacity",
+          "negativa",
+          "description",
+          "date",
+          "obtiene",
+          "toda",
+          "production",
+          "public",
+          "sobrecarga",
+          "comprometen",
+          "planta",
+          "start",
+          "table"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "10.7_Rutas_de_Produccion_Routing",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "rights",
+          "reserved",
+          "2020",
+          "affiliate",
+          "junio",
+          "espera",
+          "date",
+          "company",
+          "capacity",
+          "days",
+          "routing",
+          "ultima",
+          "production",
+          "secado",
+          "time"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-21",
+    "nombre": "Administración del Sistema",
+    "clases": [
+      {
+        "id": "mod21-c1",
+        "titulo": "Numeración de Documentos y Datos Maestros",
+        "hallazgos": [],
+        "manual_mas_cercano": "21.4_Numeracion_de_Documentos_y_Datos_Ma",
+        "cobertura_terminos": 0.667
+      },
+      {
+        "id": "mod21-c2",
+        "titulo": "Diseños de Impresión",
+        "hallazgos": [],
+        "manual_mas_cercano": "21.6_Disenos_de_Impresion_Print_Layouts",
+        "cobertura_terminos": 0.533
+      },
+      {
+        "id": "mod21-c3",
+        "titulo": "Correo Electrónico y Plantillas de Interfaz",
+        "hallazgos": [],
+        "manual_mas_cercano": "21.7_Preferencias_de_Correo_Electronico",
+        "cobertura_terminos": 0.75
+      },
+      {
+        "id": "mod21-c4",
+        "titulo": "Propiedad de los Datos y Soporte",
+        "hallazgos": [],
+        "manual_mas_cercano": "21.3_Propiedad_de_los_Datos_Data_Ownersh",
+        "cobertura_terminos": 0.683
+      },
+      {
+        "id": "mod21-c5",
+        "titulo": "Usuarios, Grupos y Configuraciones Clave",
+        "hallazgos": [],
+        "manual_mas_cercano": "21.1_Configuracion_de_Usuarios_y_Grupos",
+        "cobertura_terminos": 0.45
+      },
+      {
+        "id": "mod21-c6",
+        "titulo": "Mensajes, Alertas y Autorizaciones",
+        "hallazgos": [],
+        "manual_mas_cercano": "22.2_Sistema_de_Alertas_Automaticas",
+        "cobertura_terminos": 0.4
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "21.4_Numeracion_de_Documentos_y_Datos_Ma",
+        "cobertura_terminos": 0.75,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "indicador",
+          "principal",
+          "0001",
+          "indicadores",
+          "public",
+          "desplegable",
+          "solaparse",
+          "ejercicio",
+          "autorizados",
+          "numbering",
+          "linea",
+          "autorizado",
+          "varias",
+          "introducir",
+          "menu"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "21.6_Disenos_de_Impresion_Print_Layouts",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "layouts",
+          "layout",
+          "print",
+          "designer",
+          "b1px",
+          "impresora",
+          "printing",
+          "sequences",
+          "dirigidos",
+          "agua",
+          "duplicar",
+          "systemsetup",
+          "paquete",
+          "complementos",
+          "exportacion"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "21.7_Preferencias_de_Correo_Electronico",
+        "cobertura_terminos": 0.85,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "jean",
+          "ruta",
+          "archivos",
+          "cotizaciones",
+          "emailprefrences",
+          "email",
+          "systemsetup",
+          "aparece",
+          "carpeta"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "21.5_Plantillas_de_Configuracion_de_Inte",
+        "cobertura_terminos": 0.483,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "formulario",
+          "edicion",
+          "lateral",
+          "elementos",
+          "fichas",
+          "deshabilitar",
+          "editados",
+          "modo",
+          "public",
+          "espacio",
+          "contextual",
+          "template",
+          "cabecera",
+          "restablecer",
+          "propuestos"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "21.3_Propiedad_de_los_Datos_Data_Ownersh",
+        "cobertura_terminos": 0.75,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "cabecera",
+          "fred",
+          "mary",
+          "creador",
+          "comprador",
+          "george",
+          "tuviera",
+          "compartir",
+          "marc",
+          "linea",
+          "ganancias",
+          "tuvieran",
+          "public",
+          "solicitud",
+          "oportunidad"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.1_Herramientas_de_Soporte_y_Diagnosti",
+        "cobertura_terminos": 0.433,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "incidente",
+          "support",
+          "problema",
+          "launchpad",
+          "incidentes",
+          "remoto",
+          "tareas",
+          "plataforma",
+          "nivel",
+          "documentacion",
+          "problemas",
+          "solucion",
+          "grabacion",
+          "estado",
+          "mantenimiento"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "21.1_Configuracion_de_Usuarios_y_Grupos",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "formulario",
+          "movil",
+          "dispositivo",
+          "opciones",
+          "anexos",
+          "public",
+          "moviles",
+          "marco",
+          "user",
+          "minusculas",
+          "inicie",
+          "personales",
+          "mayusculas",
+          "nivel",
+          "integracion"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.3_Configuraciones_Clave_del_Sistema",
+        "cobertura_terminos": 0.483,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "moneda",
+          "parameter",
+          "irreversible",
+          "irreversibles",
+          "anexos",
+          "detalles",
+          "decimales",
+          "contabilizado",
+          "costes",
+          "carpeta",
+          "imagenes",
+          "reversible",
+          "fijos",
+          "public",
+          "impact"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "22.2_Sistema_de_Alertas_Automaticas",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "service",
+          "mensajes",
+          "alerts",
+          "layer",
+          "limite",
+          "resultados",
+          "tareas",
+          "landscape",
+          "directory",
+          "public",
+          "alert",
+          "produzca",
+          "ganancia",
+          "bruta",
+          "bandeja"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "21.2_Autorizaciones_Generales_del_Sistem",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "modificaciones",
+          "efectivas",
+          "concedidas",
+          "public",
+          "efectiva",
+          "generosa",
+          "analisis",
+          "excel",
+          "varios",
+          "descuento",
+          "maximo",
+          "manualmente",
+          "combinadas",
+          "tematica",
+          "authorizations"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-22",
+    "nombre": "Extensibilidad y Analítica",
+    "clases": [
+      {
+        "id": "mod22-c1",
+        "titulo": "Tablas Definidas por el Usuario",
+        "hallazgos": [],
+        "manual_mas_cercano": "22.6_Tablas_Definidas_por_el_Usuario_UDT",
+        "cobertura_terminos": 0.7
+      },
+      {
+        "id": "mod22-c2",
+        "titulo": "Introducción a SAP Analytics",
+        "hallazgos": [],
+        "manual_mas_cercano": "22.7_Introduccion_a_SAP_Analytics",
+        "cobertura_terminos": 0.767
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "22.6_Tablas_Definidas_por_el_Usuario_UDT",
+        "cobertura_terminos": 0.7,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "incremento",
+          "formulario",
+          "anadir",
+          "lineas",
+          "automatico",
+          "public",
+          "anada",
+          "object",
+          "nueva",
+          "cabecera",
+          "servicios",
+          "userdefinedtables",
+          "inferior",
+          "licencia",
+          "code"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "22.7_Introduccion_a_SAP_Analytics",
+        "cobertura_terminos": 0.8,
+        "cobertura_cifras": 0.4,
+        "terminos_faltantes": [
+          "accion",
+          "busqueda",
+          "designer",
+          "public",
+          "interlocutor",
+          "microsoft",
+          "40000",
+          "vinculacion",
+          "comercial",
+          "iniciar",
+          "interactive",
+          "barra"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-23",
+    "nombre": "Implementación, Saldos Iniciales y Go-Live",
+    "clases": [
+      {
+        "id": "mod23-c1",
+        "titulo": "Metodología de Implementación",
+        "hallazgos": [],
+        "manual_mas_cercano": "20.1_Metodologia_de_Implementacion_SAP",
+        "cobertura_terminos": 0.433
+      },
+      {
+        "id": "mod23-c2",
+        "titulo": "Asistente Express de Configuración",
+        "hallazgos": [],
+        "manual_mas_cercano": "20.2_Asistente_Express_de_Configuracion",
+        "cobertura_terminos": 0.567
+      },
+      {
+        "id": "mod23-c3",
+        "titulo": "Carga de Saldos Iniciales",
+        "hallazgos": [],
+        "manual_mas_cercano": "20.4_Carga_de_Saldos_Iniciales",
+        "cobertura_terminos": 0.7
+      },
+      {
+        "id": "mod23-c4",
+        "titulo": "Copia Rápida e Importación de Documentos",
+        "hallazgos": [],
+        "manual_mas_cercano": "20.8_Importacion_de_Documentos_con_DTW",
+        "cobertura_terminos": 0.517
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "20.1_Metodologia_de_Implementacion_SAP",
+        "cobertura_terminos": 0.667,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "formacion",
+          "modelos",
+          "analisis",
+          "talleres",
+          "aceptacion",
+          "empresariales",
+          "equipo",
+          "reunion",
+          "procesos",
+          "software",
+          "preguntas",
+          "alcance",
+          "consultor",
+          "public",
+          "problemas"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.2_Asistente_Express_de_Configuracion",
+        "cobertura_terminos": 0.65,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "sitio",
+          "pantallas",
+          "b1siteuser",
+          "bancos",
+          "landscape",
+          "directory",
+          "definiciones",
+          "exclamacion",
+          "public",
+          "menus",
+          "instalacion",
+          "configuration",
+          "step",
+          "scope",
+          "graba"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.4_Carga_de_Saldos_Iniciales",
+        "cobertura_terminos": 0.85,
+        "cobertura_cifras": 0.5,
+        "terminos_faltantes": [
+          "contrapartida",
+          "apuntes",
+          "compensatoria",
+          "openingbalances",
+          "excel",
+          "valoracion",
+          "opening",
+          "existencias",
+          "recuento"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "20.5_Copia_Rapida_entre_Companias_Quick_",
+        "cobertura_terminos": 0.117,
+        "cobertura_cifras": 0.333,
+        "terminos_faltantes": [
+          "records",
+          "categories",
+          "category",
+          "target",
+          "file",
+          "dependent",
+          "this",
+          "company",
+          "that",
+          "will",
+          "with",
+          "select",
+          "selected",
+          "from",
+          "project"
+        ],
+        "estado": "CONOCIMIENTO FALTANTE"
+      },
+      {
+        "manual": "20.8_Importacion_de_Documentos_con_DTW",
+        "cobertura_terminos": 0.55,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "handwritten",
+          "ddocument",
+          "tyes",
+          "doctype",
+          "filas",
+          "basetype",
+          "recordkey",
+          "baseentry",
+          "baseline",
+          "objeto",
+          "secundaria",
+          "importing",
+          "using",
+          "docentry",
+          "service"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-24",
+    "nombre": "Proyecto Integrador",
+    "clases": [
+      {
+        "id": "mod24-c1",
+        "titulo": "Caso Integrador: Puesta en Marcha",
+        "hallazgos": [],
+        "manual_mas_cercano": "23.2_Caso_Practico_Introduccion",
+        "cobertura_terminos": 0.483
+      },
+      {
+        "id": "mod24-c2",
+        "titulo": "Caso Integrador: Aprovisionamiento",
+        "hallazgos": [],
+        "manual_mas_cercano": "23.5_Caso_Practico_Aprovisionamiento_Sol",
+        "cobertura_terminos": 0.35
+      },
+      {
+        "id": "mod24-c3",
+        "titulo": "Caso Integrador: Consultas SQL",
+        "hallazgos": [],
+        "manual_mas_cercano": "23.7_Practica_de_Consultas_SQL_Solucione",
+        "cobertura_terminos": 0.617
+      }
+    ],
+    "manuales": [
+      {
+        "manual": "23.2_Caso_Practico_Introduccion",
+        "cobertura_terminos": 0.533,
+        "cobertura_cifras": 1.0,
+        "terminos_faltantes": [
+          "bill",
+          "tarea",
+          "c50000",
+          "c60000",
+          "problema",
+          "csl01",
+          "c00008",
+          "llamada",
+          "subtotales",
+          "publico",
+          "introduction",
+          "quantity",
+          "pedidos",
+          "subtotal",
+          "texto"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.3_Caso_Practico_Introduccion_Solucion",
+        "cobertura_terminos": 0.5,
+        "cobertura_cifras": 1.0,
+        "terminos_faltantes": [
+          "publico",
+          "tarea",
+          "abra",
+          "task",
+          "icono",
+          "subtotal",
+          "texto",
+          "arrastrar",
+          "solucion",
+          "anada",
+          "galeria",
+          "ingrese",
+          "drag",
+          "presione",
+          "ubique"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.4_Caso_Practico_Proceso_de_Aprovision",
+        "cobertura_terminos": 0.35,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "i00004",
+          "james",
+          "i00008",
+          "tarea",
+          "i00002",
+          "i00003",
+          "i00007",
+          "procurement",
+          "entregados",
+          "accion",
+          "csl02",
+          "publico",
+          "stocks",
+          "parciales",
+          "i00009"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.5_Caso_Practico_Aprovisionamiento_Sol",
+        "cobertura_terminos": 0.433,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "i00004",
+          "publico",
+          "solucion",
+          "presione",
+          "fila",
+          "tarea",
+          "abra",
+          "i00003",
+          "i00008",
+          "i00002",
+          "comentario",
+          "step",
+          "stocks",
+          "opor",
+          "i00007"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.7_Practica_de_Consultas_SQL_Solucione",
+        "cobertura_terminos": 0.617,
+        "cobertura_cifras": 1.0,
+        "terminos_faltantes": [
+          "elija",
+          "publico",
+          "oslp",
+          "solucion",
+          "query",
+          "presione",
+          "docnum",
+          "tarea",
+          "oqut",
+          "ingrese",
+          "lista",
+          "entregas",
+          "sintaxis",
+          "ofertas",
+          "practice"
+        ],
+        "estado": "OK"
+      },
+      {
+        "manual": "23.6_Practica_de_Consultas_SQL",
+        "cobertura_terminos": 0.583,
+        "cobertura_cifras": 0.0,
+        "terminos_faltantes": [
+          "oslp",
+          "publico",
+          "query",
+          "afiliadas",
+          "guarde",
+          "oqut",
+          "task",
+          "count",
+          "utilizando",
+          "requerimiento",
+          "entregas",
+          "columna",
+          "lista",
+          "practice",
+          "elija"
+        ],
+        "estado": "OK"
+      }
+    ]
+  },
+  {
+    "modulo": "mod-25",
+    "nombre": "Nómina y Talento Humano Ecuador 2026",
+    "clases": [
+      {
+        "id": "mod25-c1",
+        "titulo": "Ficha del Empleado y Costo Laboral 2026",
+        "hallazgos": [],
+        "manual_mas_cercano": null,
+        "cobertura_terminos": 0.0
+      },
+      {
+        "id": "mod25-c2",
+        "titulo": "Rol de Pagos: Sueldo, Horas Extras y Descuentos",
+        "hallazgos": [],
+        "manual_mas_cercano": null,
+        "cobertura_terminos": 0.0
+      },
+      {
+        "id": "mod25-c3",
+        "titulo": "Décimos, Fondos de Reserva y Vacaciones",
+        "hallazgos": [],
+        "manual_mas_cercano": null,
+        "cobertura_terminos": 0.0
+      },
+      {
+        "id": "mod25-c4",
+        "titulo": "Contabilidad de la Nómina y Pago al IESS",
+        "hallazgos": [],
+        "manual_mas_cercano": null,
+        "cobertura_terminos": 0.0
+      },
+      {
+        "id": "mod25-c5",
+        "titulo": "Comisiones y Retención del Impuesto a la Renta del Empleado",
+        "hallazgos": [],
+        "manual_mas_cercano": null,
+        "cobertura_terminos": 0.0
+      },
+      {
+        "id": "mod25-c6",
+        "titulo": "Cierre del Año: Utilidades, Impuesto a la Renta y Anticipo",
+        "hallazgos": [],
+        "manual_mas_cercano": null,
+        "cobertura_terminos": 0.0
+      }
+    ],
+    "manuales": []
+  }
+]

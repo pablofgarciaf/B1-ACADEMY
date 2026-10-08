@@ -6,6 +6,7 @@ import { today, totals, usd } from '@/lib/company-calculations';
 import { Screen, Table, Field, inputClass, buttonClass } from './SAPControls';
 import { opcionRetencion } from '@/lib/sri-catalogo';
 import { buildATSXml, validateATS, buildIESSPlanillaTxt } from '@/lib/ats-generator';
+import { fiscalGateways, SRI_ENDPOINTS, type CertificadoInfo, type SriAmbiente } from '@/lib/fiscal-gateway';
 
 export default function ATSScreen() {
   const c = useCompany();
@@ -13,11 +14,13 @@ export default function ATSScreen() {
   const [tab, setTab] = useState<'104' | '103' | 'ATS' | 'P12' | 'IESS'>('104');
 
   // Firma electrónica .p12 local state
-  const [certPassword, setCertPassword] = useState('ClaveFirma2026!');
-  const [certLoaded, setCertLoaded] = useState(true);
-  const [certFileName, setCertFileName] = useState('CERTIFICADO_B1_CENTER_PROD.p12');
+  const [certPassword, setCertPassword] = useState('');
+  const [certFile, setCertFile] = useState<File | null>(null);
+  const [certInfo, setCertInfo] = useState<CertificadoInfo | null>(null);
+  const [certMsg, setCertMsg] = useState('');
   const [wsEnvironment, setWsEnvironment] = useState<'1' | '2'>('1');
-  const [wsStatus, setWsStatus] = useState<'idle' | 'testing' | 'success'>('idle');
+  const [wsStatus, setWsStatus] = useState<'idle' | 'testing' | 'done'>('idle');
+  const [wsMsg, setWsMsg] = useState('');
 
   // IESS state
   const [iessClave, setIessClave] = useState('••••••••••');
@@ -115,11 +118,21 @@ export default function ATSScreen() {
     }
   };
 
-  const probarConexionSRI = () => {
+  const probarConexionSRI = async () => {
     setWsStatus('testing');
-    setTimeout(() => {
-      setWsStatus('success');
-    }, 900);
+    const r = await fiscalGateways.sri.probarConexion(Number(wsEnvironment) as SriAmbiente);
+    setWsMsg(r.mensaje);
+    setWsStatus('done');
+  };
+
+  const cargarCertificado = async () => {
+    if (!certFile) {
+      setCertMsg('Seleccione primero el archivo .p12.');
+      return;
+    }
+    const r = await fiscalGateways.firma.cargarCertificado(await certFile.arrayBuffer(), certPassword);
+    setCertInfo(r.datos ?? null);
+    setCertMsg(r.mensaje);
   };
 
   return (
@@ -355,7 +368,7 @@ export default function ATSScreen() {
                 <label className="block font-semibold">Archivo de Certificado PKCS#12:</label>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="font-mono text-xs bg-[#EEE] p-1 border flex-1 truncate">
-                    {certFileName}
+                    {certFile?.name ?? 'Ningún archivo seleccionado'}
                   </span>
                   <label className={`${buttonClass} cursor-pointer`}>
                     Subir .p12
@@ -365,10 +378,9 @@ export default function ATSScreen() {
                       className="hidden"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
-                        if (file) {
-                          setCertFileName(file.name);
-                          setCertLoaded(true);
-                        }
+                        setCertFile(file ?? null);
+                        setCertInfo(null);
+                        setCertMsg('');
                       }}
                     />
                   </label>
@@ -385,13 +397,18 @@ export default function ATSScreen() {
                 />
               </div>
 
+              <button type="button" className={buttonClass} onClick={cargarCertificado}>
+                Cargar certificado
+              </button>
               <div className="rounded bg-[#F9F9F9] p-2 border text-[10px] space-y-1">
-                <p><b>Titular:</b> {c.data.profile?.companyName || 'B1 CENTER ECUADOR S.A.S.'}</p>
-                <p><b>RUC / Cédula:</b> {c.data.profile?.ruc || '1792345678001'}</p>
-                <p><b>Entidad Certificadora:</b> SECURITY DATA S.A. / BANCO CENTRAL DEL ECUADOR</p>
-                <p><b>Algoritmo Criptográfico:</b> SHA256withRSA (2048 bits)</p>
-                <p><b>Validez:</b> 2026-01-01 hasta 2028-01-01 (VIGENTE)</p>
-                <p><b>Estado Criptográfico:</b> <span className="font-bold text-green-700">VÁLIDO PARA XAdES-BES</span></p>
+                <p><b>Titular:</b> {certInfo?.titular ?? '—'}</p>
+                <p>
+                  <b>Estado criptográfico:</b>{' '}
+                  <span className="font-bold text-amber-700">
+                    {certInfo?.verificadoCriptograficamente ? 'VERIFICADO' : 'NO VERIFICADO (simulación)'}
+                  </span>
+                </p>
+                {certMsg && <p>{certMsg}</p>}
               </div>
             </div>
 
@@ -412,14 +429,10 @@ export default function ATSScreen() {
               <div className="rounded bg-[#F9F9F9] p-2 border text-[10px] space-y-1 font-mono">
                 <p className="font-bold text-[#333]">Endpoints SOAP WSDL Configurados:</p>
                 <p className="break-all text-blue-900">
-                  {wsEnvironment === '1'
-                    ? 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline?wsdl'
-                    : 'https://cel.sri.gob.ec/comprobantes-electronicos-ws/RecepcionComprobantesOffline?wsdl'}
+                  {SRI_ENDPOINTS[Number(wsEnvironment) as SriAmbiente].recepcion}
                 </p>
                 <p className="break-all text-blue-900">
-                  {wsEnvironment === '1'
-                    ? 'https://celcer.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl'
-                    : 'https://cel.sri.gob.ec/comprobantes-electronicos-ws/AutorizacionComprobantesOffline?wsdl'}
+                  {SRI_ENDPOINTS[Number(wsEnvironment) as SriAmbiente].autorizacion}
                 </p>
               </div>
 
@@ -430,13 +443,9 @@ export default function ATSScreen() {
                   onClick={probarConexionSRI}
                   disabled={wsStatus === 'testing'}
                 >
-                  {wsStatus === 'testing' ? 'Verificando Handshake SSL/TLS…' : 'Probar Conexión con Web Service SRI'}
+                  {wsStatus === 'testing' ? 'Verificando…' : 'Probar Conexión con Web Service SRI'}
                 </button>
-                {wsStatus === 'success' && (
-                  <p className="mt-2 text-xs font-bold text-green-700">
-                    ✓ Handshake TLS 1.3 exitoso. Servicio SOAP de Recepción y Autorización disponible.
-                  </p>
-                )}
+                {wsStatus === 'done' && <p className="mt-2 text-xs font-bold text-amber-700">{wsMsg}</p>}
               </div>
 
               <p className="text-[10px] text-[#666]">
@@ -490,7 +499,7 @@ export default function ATSScreen() {
               </button>
               <p className="text-[10px] text-green-800">
                 ✓ Incluye: Cédulas, días laborados (30), código de relación laboral 06, aporte personal
-                (9.45 %) y aporte patronal (11.15 % + 1.0 % SECAP/SECAP).
+                (9.45 %) y aporte patronal (11.15 % IESS + 0.5 % IECE + 0.5 % SECAP).
               </p>
             </div>
           </div>

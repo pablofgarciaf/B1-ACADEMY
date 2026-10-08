@@ -2,6 +2,9 @@ import type { CompanyState } from './firestore-types';
 import { round, totals, xmlEscape } from './company-calculations';
 import { opcionRetencion } from './sri-catalogo';
 
+/** Marcador que el validador rechaza: el ATS real exige la autorización del comprobante del proveedor. */
+export const ATS_AUTORIZACION_PENDIENTE = '0000000000';
+
 const tag = (name: string, value: string | number): string => `<${name}>${xmlEscape(String(value))}</${name}>`;
 const amount = (value: number): string => round(value).toFixed(2);
 const fiscalDate = (value: string): string => value.split('-').reverse().join('/');
@@ -133,7 +136,7 @@ export function buildATSXml(state: CompanyState, period: string): string {
         tag('puntoEmision', ptoEmi) +
         tag('secuencial', secuencial) +
         tag('fechaEmision', fiscalDate(purchase.date)) +
-        tag('autorizacion', retDoc?.claveAcceso || '1234567890123456789012345678901234567890123456789') +
+        tag('autorizacion', /^(\d{10}|\d{37}|\d{49})$/.test(retDoc?.claveAcceso ?? '') ? retDoc!.claveAcceso : ATS_AUTORIZACION_PENDIENTE) +
         tag('baseNoGraIva', '0.00') +
         tag('baseImponible', amount(base0)) +
         tag('baseImpGrav', amount(baseGravada)) +
@@ -266,6 +269,15 @@ export function validateATS(state: CompanyState, period: string): ATSValidationR
     if (!vendor) errors.push(`Factura de proveedor ${p.docNumber} no tiene proveedor registrado.`);
     else if (!vendor.ruc || vendor.ruc.length < 10) {
       errors.push(`Proveedor ${vendor.name} (${vendor.cardCode}) tiene RUC/Cédula inválido: ${vendor.ruc}.`);
+    }
+  }
+
+  for (const p of purchases) {
+    const retDoc = sriDocs.find((r) => r.docType === '07' && r.sourceDocumentId === p.id);
+    if (!/^(\d{10}|\d{37}|\d{49})$/.test(retDoc?.claveAcceso ?? '')) {
+      warnings.push(
+        `Compra ${p.docNumber}: falta el número de autorización del comprobante del proveedor (10, 37 o 49 dígitos); el DIMM rechazará el anexo hasta registrarlo.`,
+      );
     }
   }
 
