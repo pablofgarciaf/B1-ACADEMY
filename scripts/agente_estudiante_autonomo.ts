@@ -112,7 +112,7 @@ function filasNuevas(before: CompanyState, after: CompanyState) {
   return upserts;
 }
 
-async function ejecutarComandoSupabase(uid: string, email: string, command: CompanyCommand, requestId: string): Promise<string> {
+async function ejecutarComandoSupabase(uid: string, email: string, command: any, requestId: string): Promise<string> {
   const actual = await leerEmpresaSupabase(uid);
   const aplicacion = applyCommand(actual.state, command, uid, email, new Date().toISOString());
   const upserts = filasNuevas(actual.state, aplicacion.state);
@@ -137,7 +137,7 @@ const leccionesAula = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src/c
 
 interface DiscrepanciaAudit {
   moduloId: string;
-  claseId: string;
+  classId: string;
   slideIndex: number;
   tipo: string;
   descripcion: string;
@@ -202,7 +202,7 @@ export async function runStudentSimulatorAgent(targetEmail = 'pablofgarciaf@gmai
   console.log(`\n[1/4] Verificando empresa 'B1 Center' en Supabase...`);
   try {
     const empActual = await leerEmpresaSupabase(user.uid);
-    console.log(`✓ Empresa en Supabase cargada. Registros existentes: ${empActual.entitiesCount || 'OK'}, Versión: ${empActual.version}`);
+    console.log(`✓ Empresa en Supabase cargada. Registros existentes: ${empActual.exists ? 'OK' : 'Nueva'}, Versión: ${empActual.version}`);
     await ejecutarComandoSupabase(user.uid, user.email, {
       action: 'profile',
       data: {
