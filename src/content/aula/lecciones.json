@@ -21930,5 +21930,1427 @@
       }
     ],
     "quizQuestions": []
+  },
+  "mod26-c1": {
+    "images": [
+      "/aula/mod26-c1/Slide_001.webp",
+      "/aula/mod26-c1/Slide_002.webp",
+      "/aula/mod26-c1/Slide_003.webp",
+      "/aula/mod26-c1/Slide_004.webp",
+      "/aula/mod26-c1/Slide_005.webp",
+      "/aula/mod26-c1/Slide_006.webp",
+      "/aula/mod26-c1/Slide_007.webp",
+      "/aula/mod26-c1/Slide_008.webp",
+      "/aula/mod26-c1/Slide_009.webp",
+      "/aula/mod26-c1/Slide_010.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Bienvenido a la clase magistral sobre metodologías de implementación en SAP. Hoy aprenderás cómo la consultoría moderna superó los viejos modelos en cascada para adoptar SAP Activate y AIP en el mercado empresarial. Conocerás las seis fases del ciclo de vida, la conformación del equipo de proyecto y las reglas de gobernanza que garantizan implementaciones a tiempo, en presupuesto y con máxima satisfacción del cliente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase comprenderás los principios de SAP Activate y el programa acelerado AIP. Podrás identificar las actividades y entregables críticos de cada una de las seis fases del proyecto. Sabrás estructurar la gobernanza con roles como Sponsor, Project Manager y Key Users, y practicarás en el sistema la inicialización de los parámetros maestros de la sociedad.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "El modelo tradicional en cascada generaba entregas tardías y gran fricción, porque el cliente veía el sistema funcionando meses después del diseño inicial. En cambio, SAP Activate propone un modelo ágil e híbrido basado en mejores prácticas preconfiguradas. El cliente interactúa con prototipos desde las primeras semanas, validando requerimientos en tiempo real y eliminando sorpresas desagradables al final del proyecto.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "SAP Activate estructura el ciclo de vida en seis fases continuas. Discover define la visión de negocio y retorno de inversión. Prepare establece el acta de constitución y el equipo. Explore ejecuta los talleres Fit-Gap sobre el estándar. Realize parametriza la Golden Database y migra datos. Deploy realiza las pruebas UAT, la transición y el Go-Live. Finalmente, Run asegura la estabilización durante el período de Hypercare.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Comparar Waterfall con SAP Activate evidencia por qué los proyectos modernos tienen mayor tasa de éxito. Mientras Waterfall gastaba meses en documentos estáticos sin tocar software, SAP Activate parte de una base preconfigurada con las mejores prácticas de la industria. El cliente evalúa los flujos en vivo, lo que acelera el aprendizaje y reduce drásticamente las desviaciones de alcance.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 6,
+        "script_text": "En la fase de preparación, el consultor inicializa la base de datos modelo configurando la ventana Detalles de la empresa. En esta práctica verificarás los datos de tu sociedad B1 Center: razón social, RUC tributario, moneda funcional USD y domicilio fiscal. Estos parámetros son la piedra angular que alimentará todos los documentos legales, facturas y comprobantes emitidos en el sistema.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Verificar parámetros maestros de la sociedad",
+          "menu_path": "Gestión > Inicialización del sistema > Detalles de la empresa",
+          "instructions": [
+            "Ingresa al menú Gestión e Inicialización del sistema",
+            "Abre la ventana Detalles de la empresa",
+            "Verifica que la razón social sea B1 Center y el RUC 1792456789001",
+            "Comprueba que la moneda local sea USD y guarda los cambios",
+            "Datos a registrar: Dirección fiscal = Av. República de El Salvador N34-12, Quito."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Razón social",
+              "valor": "B1 Center",
+              "pista": "Nombre legal de la sociedad de prueba"
+            },
+            {
+              "etiqueta": "RUC",
+              "valor": "1792456789001",
+              "pista": "Identificador tributario de 13 dígitos"
+            },
+            {
+              "etiqueta": "Moneda local",
+              "valor": "USD",
+              "pista": "Moneda funcional de operación"
+            },
+            {
+              "etiqueta": "Dirección fiscal",
+              "valor": "Av. República de El Salvador N34-12, Quito",
+              "pista": "Domicilio legal"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Una gobernanza sólida asigna responsabilidades claras mediante la matriz RACI. El Sponsor asegura el respaldo financiero y estratégico. El Project Manager vela por los tiempos y recursos. El Business Analyst traduce necesidades en soluciones SAP estándar, y los Key Users aportan el conocimiento del día a día y validan las pruebas de aceptación.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Tres indicadores determinan si la fase de preparación concluyó exitosamente: tener el cien por ciento de los roles definidos con dedicación horaria real, cero ambigüedades en el alcance del proyecto acordado con el cliente, y el ambiente de pruebas listo y operativo para comenzar los talleres de exploración.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 9,
+        "script_text": "El mayor riesgo en la fase de preparación es la falta de tiempo de los usuarios clave debido a su carga operativa diaria. La consultora debe acordar formalmente con la gerencia un porcentaje de dedicación de los Key Users. Si los dueños del proceso no participan activamente en el diseño, el sistema resultante no reflejará la realidad del negocio y generará rechazo.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 10,
+        "script_text": "Hemos revisado los fundamentos metodológicos de SAP Activate y AIP. Recuerda que la clave del consultor de clase mundial no es imponer tecnología, sino guiar al cliente por un ciclo estructurado de seis fases, mitigando riesgos desde el primer día y asegurando que cada decisión técnica responda a un objetivo de negocio concreto.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod26-c2": {
+    "images": [
+      "/aula/mod26-c2/Slide_001.webp",
+      "/aula/mod26-c2/Slide_002.webp",
+      "/aula/mod26-c2/Slide_003.webp",
+      "/aula/mod26-c2/Slide_004.webp",
+      "/aula/mod26-c2/Slide_005.webp",
+      "/aula/mod26-c2/Slide_006.webp",
+      "/aula/mod26-c2/Slide_007.webp",
+      "/aula/mod26-c2/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "La fase de exploración es el corazón de la consultoría funcional en SAP. En esta clase aprenderás cómo liderar talleres Fit-Gap profesionales, cómo categorizar los requerimientos del cliente frente al estándar de SAP Business One y cómo documentar la Matriz Fit-Gap que servirá de contrato funcional para la construcción del sistema.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás conducir talleres de exploración por cada ciclo operativo. Aprenderás a clasificar requerimientos en cuatro categorías: estándar, configuración, add-on o desarrollo. Sabrás defender las mejores prácticas para evitar sobre-personalizaciones costosas y parametrizarás reglas de crédito nativas en SAP Business One.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "En el taller Fit-Gap no se pregunta al cliente qué quiere que haga el sistema desde una hoja en blanco. El consultor demuestra el proceso estándar funcionando en SAP Business One con datos de ejemplo y luego analiza con el usuario clave si ese flujo cubre sus necesidades. Cada diferencia observada se registra y evalúa metódicamente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Clasificar correctamente cada requerimiento es vital para la salud del proyecto. El Fit estándar aprovecha la inversión inmediatamente. El Gap configurable se resuelve con herramientas nativas de SAP B1 como UDFs y alertas. Los Gaps de add-on incorporan soluciones certificadas, y solo cuando sea estrictamente imprescindible se aprueba un desarrollo a medida.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Durante el taller de exploración comercial, el cliente solicita controlar estrictamente que ningún vendedor facture a clientes con deudas vencidas. En esta práctica configuras la solución estándar en Parametrizaciones de documento, activando el bloqueo automático en pedidos y entregas cuando se exceda el límite de crédito asignado.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Activar bloqueo por límite de crédito",
+          "menu_path": "Gestión > Inicialización del sistema > Parametrizaciones de documento",
+          "instructions": [
+            "Accede a Gestión e Inicialización del sistema",
+            "Selecciona Parametrizaciones de documento",
+            "En la pestaña General activa la verificación de límite de crédito",
+            "Selecciona la opción de Bloqueo al superar el cupo y guarda los cambios",
+            "Datos a registrar: Verificar límite de crédito = Activo."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Verificar límite de crédito",
+              "valor": "Activo",
+              "pista": "Casilla de verificación de cupo"
+            },
+            {
+              "etiqueta": "Aplicar en pedido de cliente",
+              "valor": "Sí",
+              "pista": "Control en la captura de ventas"
+            },
+            {
+              "etiqueta": "Aplicar en entrega",
+              "valor": "Sí",
+              "pista": "Control previo al despacho de bodega"
+            },
+            {
+              "etiqueta": "Mensaje de advertencia o bloqueo",
+              "valor": "Bloqueo",
+              "pista": "Impide guardar sin autorización"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "El error más costoso de un consultor novato es decir sí a todas las solicitudes de cambio del cliente. Sobre-personalizar un ERP genera deuda técnica masiva, dificulta las actualizaciones de versión y aumenta los costos de soporte. El buen consultor asesora al cliente para adaptar sus procesos internos al estándar probado de SAP.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Un proyecto saludable mantiene al menos un ochenta y cinco por ciento de sus procesos dentro del estándar de SAP Business One. El cien por ciento de las brechas deben tener solución técnica aprobada, culminando con la firma solemne del Business Blueprint antes de iniciar la construcción.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Los talleres Fit-Gap son el puente entre las expectativas del cliente y la realidad del sistema. Al guiar la exploración con empatía y firmeza técnica, aseguras un Business Blueprint claro que servirá de mapa indiscutible para la fase de realización que veremos a continuación.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod26-c3": {
+    "images": [
+      "/aula/mod26-c3/Slide_001.webp",
+      "/aula/mod26-c3/Slide_002.webp",
+      "/aula/mod26-c3/Slide_003.webp",
+      "/aula/mod26-c3/Slide_004.webp",
+      "/aula/mod26-c3/Slide_005.webp",
+      "/aula/mod26-c3/Slide_006.webp",
+      "/aula/mod26-c3/Slide_007.webp",
+      "/aula/mod26-c3/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "En la fase de Realización el diseño conceptual del Blueprint se convierte en una solución viva y funcional. Hoy aprenderás a estructurar la Golden Database, la base de datos maestra que contendrá todas las configuraciones definitivas, y cómo liderar la migración masiva de datos limpios mediante Data Transfer Workbench.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase comprenderás cómo mantener el aislamiento entre la base de datos de desarrollo y la base maestra Golden. Aprenderás a preparar plantillas de carga masiva de clientes, proveedores y artículos con DTW, y practicarás en el sistema el registro contable de saldos iniciales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "La Golden Database es la base de datos de referencia absoluta del proyecto. Contiene el plan de cuentas aprobado, las parametrizaciones generales, autorizaciones, formatos y tablas de usuario, pero sin registros operativos transaccionales de prueba. De ella nacerá la base de producción definitiva en el arranque.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "La migración de datos sigue un proceso riguroso en cinco pasos. Se extraen los datos del sistema antiguo, el cliente los depura eliminando duplicados e inactivos, se completan las plantillas oficiales de DTW, se ejecuta una simulación para detectar errores de tipos de datos, y finalmente se importan en SAP Business One.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "El inventario inicial es uno de los saldos críticos que se cargan antes del Go-Live. En esta práctica registras en la ventana de Saldos iniciales de inventario cincuenta unidades de la Laptop Dell en la Bodega Central Quito a un costo unitario de seiscientos cincuenta dólares, alimentando simultáneamente el kardex físico y la contabilidad.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Registrar saldo de apertura de inventario",
+          "menu_path": "Inventario > Transacciones de inventario > Saldos iniciales de inventario",
+          "instructions": [
+            "Ingresa a Inventario y Transacciones de inventario",
+            "Abre Saldos iniciales de inventario",
+            "Selecciona el artículo A00001 (Laptop Dell) para la Bodega 01",
+            "Ingresa 50 unidades a un costo de 650.00 dólares y procesa la carga"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Artículo",
+              "valor": "A00001",
+              "pista": "Código del artículo modelo"
+            },
+            {
+              "etiqueta": "Almacén",
+              "valor": "01",
+              "pista": "Bodega Central Quito"
+            },
+            {
+              "etiqueta": "Cantidad inicial",
+              "valor": "50",
+              "pista": "Existencia física de apertura"
+            },
+            {
+              "etiqueta": "Precio por unidad",
+              "valor": "650.00",
+              "pista": "Costo promedio ponderado"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Al registrar el saldo inicial de inventario, el sistema genera automáticamente un asiento por treinta y dos mil quinientos dólares. Se debita la cuenta de Inventario de mercaderías aumentando el activo, y se acredita la cuenta puente de Saldos iniciales de patrimonio, garantizando la partida doble exacta requerida por las normas contables.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "La fase de Realización se considera exitosa cuando los datos maestros están validados al cien por ciento, la diferencia entre el balance del sistema anterior y el balance de apertura en SAP es exactamente cero dólares, y todas las pruebas funcionales unitarias han sido certificadas.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "La fase de Realización materializa la solución. Mantener la disciplina en la Golden Database y realizar una migración de datos impecable son las bases que permitirán a los usuarios ejecutar sus pruebas UAT con confianza y asegurar una salida en vivo sin sobresaltos.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod26-c4": {
+    "images": [
+      "/aula/mod26-c4/Slide_001.webp",
+      "/aula/mod26-c4/Slide_002.webp",
+      "/aula/mod26-c4/Slide_003.webp",
+      "/aula/mod26-c4/Slide_004.webp",
+      "/aula/mod26-c4/Slide_005.webp",
+      "/aula/mod26-c4/Slide_006.webp",
+      "/aula/mod26-c4/Slide_007.webp",
+      "/aula/mod26-c4/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "El momento culminante de todo proyecto ERP es la salida en vivo. En esta clase dominarás la planificación del Cutover Runbook, el cronograma hora a hora del fin de semana de arranque, los criterios del comité Go/No-Go y el acompañamiento durante el período de Hypercare para estabilizar la operación del cliente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás redactar un plan de transición detallado con responsables y tiempos precisos. Conocerás los criterios innegociables para autorizar la salida en vivo, aprenderás a gestionar el período de congelamiento transaccional y practicarás el bloqueo de períodos contables en SAP Business One.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "El Cutover Runbook es el documento maestro que coordina todas las actividades durante el fin de semana del Go-Live. Detalla minuto a minuto quién apaga el sistema legado, quién extrae los saldos finales, quién ejecuta las cargas en SAP, quién valida los balances y a qué hora exacta se autoriza el ingreso a los usuarios de producción.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "La secuencia típica de Cutover inicia el viernes al cerrar operaciones en el sistema anterior. El sábado por la mañana se extraen saldos finales y por la tarde se cargan en producción mediante DTW. El domingo se cuadran balances con el contador general y se realiza la reunión Go/No-Go. El lunes por la mañana los usuarios inician labores directamente en SAP Business One.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Al arrancar la producción es indispensable evitar que los usuarios sigan registrando documentos con fechas del ejercicio anterior. En esta práctica accedes a Períodos contables y cambias el estado del período a Bloqueado, blindando la contabilidad histórica y obligando a operar únicamente en el período vigente.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Bloquear período contable cerrado",
+          "menu_path": "Gestión > Inicialización del sistema > Períodos contables",
+          "instructions": [
+            "Ingresa a Gestión e Inicialización del sistema",
+            "Abre la ventana Períodos contables",
+            "Ubica el período contable del mes anterior",
+            "Cambia su estado de Activo a Bloqueado y actualiza la ventana",
+            "Datos a registrar: Código de período = 2026-01; Nombre del período = Enero 2026; Fecha de vencimiento hasta = 31/01/2026."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Código de período",
+              "valor": "2026-01",
+              "pista": "Código del período mensual"
+            },
+            {
+              "etiqueta": "Nombre del período",
+              "valor": "Enero 2026",
+              "pista": "Descripción del ejercicio"
+            },
+            {
+              "etiqueta": "Estado del período",
+              "valor": "Bloqueado",
+              "pista": "Impide nuevas contabilizaciones"
+            },
+            {
+              "etiqueta": "Fecha de vencimiento hasta",
+              "valor": "31/01/2026",
+              "pista": "Límite temporal"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "El Go-Live no termina el lunes de apertura; se extiende durante las tres a cuatro semanas de Hypercare. Los consultores acompañan a los usuarios en sitio, resolviendo dudas, ajustando reportes y asegurando que el primer cierre de mes en SAP se realice con éxito antes de traspasar la cuenta al equipo de soporte permanente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "La excelencia de la implementación se mide en la estabilidad: mantener el sistema disponible al noventa y nueve coma nueve por ciento, responder incidentes críticos en menos de dos horas y lograr el primer cierre contable mensual en los primeros tres días del mes siguiente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Concluir exitosamente la metodología SAP exige planificación milimétrica en el Cutover y empatía en el Hypercare. Has completado el módulo de metodología y estás listo para profundizar en el modelado formal de procesos con BPMN dos punto cero.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod27-c1": {
+    "images": [
+      "/aula/mod27-c1/Slide_001.webp",
+      "/aula/mod27-c1/Slide_002.webp",
+      "/aula/mod27-c1/Slide_003.webp",
+      "/aula/mod27-c1/Slide_004.webp",
+      "/aula/mod27-c1/Slide_005.webp",
+      "/aula/mod27-c1/Slide_006.webp",
+      "/aula/mod27-c1/Slide_007.webp",
+      "/aula/mod27-c1/Slide_008.webp",
+      "/aula/mod27-c1/Slide_009.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Bienvenido a la clase sobre modelado de procesos con BPMN dos punto cero. Como consultor funcional en SAP, tu labor principal es traducir realidades operativas complejas en flujos visuales comprensibles y libres de ambigüedad. Hoy aprenderás la notación gráfica estándar que conecta a gerentes de negocio con consultores y parametrizadores del sistema.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase dominarás la simbología central de BPMN dos punto cero: eventos, actividades y compuertas lógicas. Aprenderás a delimitar responsabilidades entre departamentos mediante Pools y Lanes, y practicarás en SAP Business One la creación de usuarios vinculados a sus respectivos carriles funcionales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "BPMN dos punto cero es la norma internacional mantenida por el Object Management Group para la representación gráfica de procesos. A diferencia de los diagramas informales, cada símbolo de BPMN tiene una semántica matemática precisa. Esto evita que los requerimientos se presten a interpretaciones contradictorias durante la implementación de SAP.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Todo proceso BPMN comienza con un evento de inicio que detona la acción. Las actividades representan tareas específicas etiquetadas con verbo y sustantivo. Las compuertas bifurcan el camino según condiciones de negocio. Las líneas de secuencia marcan el orden temporal, culminando en un evento de fin que registra el resultado alcanzado.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Los diagramas informales hechos en pizarras suelen esconder lagunas de información que explotan durante la puesta en marcha. Por el contrario, BPMN dos punto cero fuerza al consultor a definir con exactitud quién realiza cada paso y qué ocurre ante cada excepción, sirviendo de base directa para parametrizar el ERP.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 6,
+        "script_text": "En el modelo BPMN cada carril o Lane representa un rol de la organización. Para que el proceso cobre vida en SAP Business One, creamos los usuarios correspondientes en el sistema. En esta práctica creas a la usuaria Ana Silva vinculada al departamento de Ventas, habilitándola para operar las pantallas de su carril de proceso.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Registrar usuario asignado a carril de ventas",
+          "menu_path": "Gestión > Definición > General > Usuarios",
+          "instructions": [
+            "Accede a Gestión y Definición General",
+            "Abre la ventana Usuarios",
+            "Ingresa el código de usuario ASILVA y nombre Ana Silva",
+            "Asigna el departamento de Ventas y guarda el registro"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Código de usuario",
+              "valor": "ASILVA",
+              "pista": "Código corto del empleado"
+            },
+            {
+              "etiqueta": "Nombre de usuario",
+              "valor": "Ana Silva",
+              "pista": "Nombre completo de la asistente"
+            },
+            {
+              "etiqueta": "Departamento",
+              "valor": "Ventas",
+              "pista": "Área funcional correspondiente al carril BPMN"
+            },
+            {
+              "etiqueta": "Bloqueado",
+              "valor": "No",
+              "pista": "Usuario habilitado para operar"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Dominar las compuertas es fundamental para modelar decisiones. La compuerta exclusiva evalúa condiciones mutuamente excluyentes, como aprobar o rechazar un pedido. La paralela ejecuta tareas simultáneas en distintos departamentos, y la inclusiva permite caminos combinados según múltiples criterios comerciales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Un diagrama de procesos es de clase mundial cuando el cien por ciento de las actividades tiene un carril de responsabilidad explícito, no existe ninguna compuerta sin regla lógica de salida, y la notación respeta estrictamente los estándares internacionales de la industria.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 9,
+        "script_text": "BPMN dos punto cero es la herramienta de pensamiento del consultor de élite. Has aprendido a estructurar flujos visuales que facilitan el diálogo con el cliente y sientan las bases para el diagnóstico del estado actual que abordaremos en la próxima lección.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod27-c2": {
+    "images": [
+      "/aula/mod27-c2/Slide_001.webp",
+      "/aula/mod27-c2/Slide_002.webp",
+      "/aula/mod27-c2/Slide_003.webp",
+      "/aula/mod27-c2/Slide_004.webp",
+      "/aula/mod27-c2/Slide_005.webp",
+      "/aula/mod27-c2/Slide_006.webp",
+      "/aula/mod27-c2/Slide_007.webp",
+      "/aula/mod27-c2/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Antes de proponer mejoras o configurar software, el consultor debe comprender con exactitud la realidad operativa del cliente. En esta clase aprenderás las técnicas de levantamiento del estado actual AS-IS, cómo identificar cuellos de botella y silos de información, y cómo medir el impacto de las ineficiencias en el negocio.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás aplicar técnicas de observación directa y entrevistas para mapear el proceso AS-IS. Aprenderás a diagnosticar patologías comunes como la doble digitación y las aprobaciones informales, y practicarás en el sistema la auditoría de pedidos pendientes de entrega.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Automatizar un proceso ineficiente sin revisarlo solo produce ineficiencia automatizada a mayor velocidad. El mapeo AS-IS permite entender las causas profundas de los problemas del cliente, cuantificar los tiempos perdidos y sustentar con datos sólidos ante la gerencia por qué el nuevo flujo en SAP generará ahorros millonarios.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El relevamiento efectivo combina múltiples fuentes. Se entrevista a los usuarios clave, se realiza un recorrido de observación en el puesto de trabajo para ver qué hacen realmente, se analizan los documentos y hojas de cálculo auxiliares, se dibuja el flujo en BPMN y se valida en conjunto para certificar el diagnóstico.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Durante el diagnóstico del proceso comercial, descubrimos que los pedidos tardan cuatro días en despacharse porque Bodega no recibe la información a tiempo. En esta práctica abres la Lista de partidas abiertas en SAP Business One para auditar los pedidos de clientes pendientes, detectando con precisión dónde se concentra el cuello de botella.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Consultar lista de pedidos pendientes",
+          "menu_path": "Ventas - Clientes > Informes de ventas > Lista de partidas abiertas",
+          "instructions": [
+            "Ingresa al módulo Ventas - Clientes e Informes de ventas",
+            "Abre el informe Lista de partidas abiertas",
+            "Selecciona el tipo de documento Pedidos de cliente",
+            "Verifica los pedidos pendientes de despacho para medir el retraso",
+            "Datos a registrar: Estado = Abierto; Cliente = C20000 - Maxi-Teq; Fecha de contabilización = 07/10/2026."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Documento",
+              "valor": "Pedidos de cliente",
+              "pista": "Filtro por tipo de documento abierto"
+            },
+            {
+              "etiqueta": "Estado",
+              "valor": "Abierto",
+              "pista": "Documentos sin entrega completa"
+            },
+            {
+              "etiqueta": "Cliente",
+              "valor": "C20000 - Maxi-Teq",
+              "pista": "Socio de negocios con pedidos pendientes"
+            },
+            {
+              "etiqueta": "Fecha de contabilización",
+              "valor": "07/10/2026",
+              "pista": "Fecha de corte del informe"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Identificar estas patologías permite al consultor formular la prescripción exacta. Si hay silos de datos, la solución es la base unificada de SAP. Si hay aprobaciones por mensaje informal, se parametrizan procedimientos formales de autorización. Si hay ventas sin stock, se activa el control de ATP en tiempo real.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Presentar los problemas del cliente con números concretos es la marca de un consultor senior: demostrar que el despacho demora setenta y dos horas, que se desperdician quince horas semanales reescribiendo datos y que la precisión del inventario apenas alcanza el sesenta y ocho por ciento crea la urgencia necesaria para el cambio.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "El diagnóstico AS-IS te proporciona la radiografía del negocio. Con las ineficiencias claramente expuestas y cuantificadas, estamos en posición de diseñar el estado futuro TO-BE bajo las mejores prácticas globales de SAP Business One.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod27-c3": {
+    "images": [
+      "/aula/mod27-c3/Slide_001.webp",
+      "/aula/mod27-c3/Slide_002.webp",
+      "/aula/mod27-c3/Slide_003.webp",
+      "/aula/mod27-c3/Slide_004.webp",
+      "/aula/mod27-c3/Slide_005.webp",
+      "/aula/mod27-c3/Slide_006.webp",
+      "/aula/mod27-c3/Slide_007.webp",
+      "/aula/mod27-c3/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Diseñar el estado futuro TO-BE es la oportunidad de transformar la empresa cliente. En esta clase aprenderás cómo redefinir los flujos operativos para alinearlos con las mejores prácticas globales de SAP Business One, eliminando pasos redundantes y garantizando trazabilidad total desde la oferta comercial hasta el cobro en banco.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás modelar el proceso futuro en BPMN dos punto cero. Aprenderás a mapear cada tarea gráfica a un documento transaccional de SAP Business One, garantizando la continuidad de la información, y practicarás la creación de una oferta de venta que inicia el ciclo Order-to-Cash.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "El diseño TO-BE no busca replicar lo que la empresa hacía antes, sino simplificar radicalmente la operación mediante el flujo nativo de SAP. Cada documento transaccional copia los datos del documento anterior, heredando socios, precios, cantidades y cuentas contables sin necesidad de que el usuario vuelva a escribir un solo dato.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "En el flujo TO-BE de Order-to-Cash, la oferta comercial se convierte en pedido reservando el stock. Bodega despacha la mercadería generando la entrega y rebajando el inventario físico. Facturación genera el comprobante fiscal y el asiento con IVA, y Tesorería registra el cobro cerrando el ciclo con conciliación bancaria automática.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "En el proceso rediseñado, la venta formal comienza con la oferta comercial en el sistema. En esta práctica creas la oferta de ventas para Maxi-Teq por cinco laptops Dell a ochocientos cincuenta dólares cada una. Esta oferta alimentará automáticamente el pedido y la entrega sin que nadie tenga que volver a digitar la información.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Crear oferta comercial según flujo TO-BE",
+          "menu_path": "Ventas - Clientes > Oferta de ventas",
+          "instructions": [
+            "Accede a Ventas - Clientes y selecciona Oferta de ventas",
+            "Elige al cliente C20000 (Maxi-Teq)",
+            "Agrega 5 unidades del artículo A00001 a precio de 850.00 dólares",
+            "Verifica el cálculo de IVA y guarda la oferta comercial",
+            "Datos a registrar: Artículo = A00001 - Laptop Dell Latitude 3420."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Cliente",
+              "valor": "C20000 - Maxi-Teq",
+              "pista": "Socio de negocios comercial"
+            },
+            {
+              "etiqueta": "Artículo",
+              "valor": "A00001 - Laptop Dell Latitude 3420",
+              "pista": "Código del producto a cotizar"
+            },
+            {
+              "etiqueta": "Cantidad",
+              "valor": "5",
+              "pista": "Unidades cotizadas"
+            },
+            {
+              "etiqueta": "Precio unitario",
+              "valor": "850.00",
+              "pista": "Precio de lista según catálogo"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "El contraste es contundente: en lugar de documentos dispersos en computadoras individuales, el flujo TO-BE de SAP Business One conecta todos los eslabones de la cadena. El Mapa de Relaciones permite al gerente hacer un clic y ver la cotización original, la entrega, la factura y el cobro en un solo gráfico interactivo.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "El valor del rediseño TO-BE se refleja en resultados de alto impacto: reducir el tiempo de despacho de setenta y dos a doce horas, eliminar el cien por ciento de la digitación redundante y alcanzar un noventa y nueve coma cinco por ciento de precisión en las entregas a clientes.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Diseñar procesos TO-BE es dotar a la empresa de una estructura ágil y escalable. A continuación aprenderemos cómo convertir las compuertas de decisión de este flujo en procedimientos de aprobación auditables dentro de SAP Business One.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod27-c4": {
+    "images": [
+      "/aula/mod27-c4/Slide_001.webp",
+      "/aula/mod27-c4/Slide_002.webp",
+      "/aula/mod27-c4/Slide_003.webp",
+      "/aula/mod27-c4/Slide_004.webp",
+      "/aula/mod27-c4/Slide_005.webp",
+      "/aula/mod27-c4/Slide_006.webp",
+      "/aula/mod27-c4/Slide_007.webp",
+      "/aula/mod27-c4/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "En esta clase aprenderás a traducir las compuertas de decisión de tus diagramas BPMN en procedimientos de aprobación reales dentro de SAP Business One. Descubrirás cómo parametrizar autorizaciones por monto, descuentos o margen comercial para que el sistema controle por excepción de forma totalmente automática y auditable.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase comprenderás la arquitectura de los procedimientos de aprobación en SAP: etapas, autores, modelos y condiciones. Aprenderás a configurar reglas preventivas para compras y ventas, y practicarás en el sistema la creación de un modelo de aprobación para pedidos comerciales de alto valor.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Cuando un documento viola una regla de negocio (como superar el descuento máximo o el importe de crédito), SAP Business One detiene su creación y lo guarda como documento preliminar. Simultáneamente, el sistema envía una alerta y correo electrónico a los usuarios autorizadores definidos en la etapa correspondiente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El ciclo es completamente transparente y sin papeles. El empleado genera el pedido; el sistema detecta que supera el umbral y lo congela; el gerente recibe una alerta instantánea en su escritorio; el gerente evalúa y aprueba con un clic, y el pedido queda formalmente generado con registro auditable de quién aprobó y a qué hora.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "En el diagrama BPMN modelamos una compuerta que exige la firma del Gerente Comercial si la venta supera dos mil dólares. En esta práctica traduces esa compuerta en SAP Business One configurando un Modelo de autorización para que cualquier pedido superior a dos mil dólares requiera la aprobación digital de Juan Pérez.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Crear modelo de aprobación para ventas mayores a $2.000",
+          "menu_path": "Gestión > Procedimientos de aprobación > Modelos de autorización",
+          "instructions": [
+            "Accede a Gestión y Procedimientos de aprobación",
+            "Abre Modelos de autorización",
+            "Define el nombre del modelo: Aprobación Pedidos > $2.000",
+            "Asigna al autorizador Juan Pérez (E001) para pedidos que superen 2000.00 dólares y guarda",
+            "Datos a registrar: Documento = Pedido de cliente; Autorizador = E001 - Juan Pérez; Condición = Total documento > 2000.00."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Nombre del modelo",
+              "valor": "Aprobación Pedidos > $2.000",
+              "pista": "Nombre descriptivo de la regla"
+            },
+            {
+              "etiqueta": "Documento",
+              "valor": "Pedido de cliente",
+              "pista": "Tipo de documento sujeto a control"
+            },
+            {
+              "etiqueta": "Autorizador",
+              "valor": "E001 - Juan Pérez",
+              "pista": "Gerente Comercial autorizador"
+            },
+            {
+              "etiqueta": "Condición",
+              "valor": "Total documento > 2000.00",
+              "pista": "Criterio financiero de activación"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "SAP Business One permite activar aprobaciones mediante condiciones nativas predefinidas o mediante consultas SQL personalizadas. Como consultor, utiliza siempre las condiciones estándar por su rapidez de configuración y alta estabilidad, reservando las consultas SQL solo para reglas de alta sofisticación de negocio.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Automatizar las compuertas de decisión elimina las fugas de dinero: cien por ciento de los pedidos críticos auditados, tiempos de respuesta gerencial menores a treinta minutos y cero descuentos indebidos en las ventas de la compañía.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Has completado el Módulo 27 aprendiendo a tender el puente entre los modelos conceptuales BPMN dos punto cero y la parametrización ejecutiva de SAP Business One. Estás listo para avanzar al Módulo 28 sobre levantamiento y documentación de requerimientos.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod28-c1": {
+    "images": [
+      "/aula/mod28-c1/Slide_001.webp",
+      "/aula/mod28-c1/Slide_002.webp",
+      "/aula/mod28-c1/Slide_003.webp",
+      "/aula/mod28-c1/Slide_004.webp",
+      "/aula/mod28-c1/Slide_005.webp",
+      "/aula/mod28-c1/Slide_006.webp",
+      "/aula/mod28-c1/Slide_007.webp",
+      "/aula/mod28-c1/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Bienvenido a la clase sobre elicitación de requerimientos en consultoría ERP. El éxito de una implementación no depende de lo que el cliente dice que quiere, sino de lo que realmente necesita para operar y crecer. Hoy aprenderás las técnicas de interrogación apreciativa, cómo descubrir la causa raíz de los problemas y cómo clasificar los requisitos con rigor profesional.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás estructurar entrevistas de descubrimiento con gerentes y usuarios operativos. Aprenderás a aplicar la técnica de los Cinco Porqués para desarmar solicitudes superficiales y encontrar la necesidad real, y practicarás en SAP Business One la configuración de propiedades maestras de interlocutores comerciales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Un tomador de pedidos transcribe lo que el usuario pide; un Business Analyst de clase mundial elicita, es decir, extrae la verdad operativa mediante preguntas estratégicas. Cuando un usuario pide una función extravagante, el consultor indaga qué dolor intenta resolver, mostrando cómo el estándar de SAP soluciona el problema de raíz sin desarrollos costosos.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "La técnica de los Cinco Porqués desmonta falsas necesidades. Ante la solicitud de permitir inventario negativo, preguntamos por qué hasta descubrir que el problema real era que Compras demoraba días en registrar facturas mientras el camión ya estaba en bodega. La solución no era inventario negativo, sino implementar la Entrada de Mercancías por Pedido en recepción física.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "En la entrevista con la Dirección Comercial, el cliente solicita clasificar a sus clientes estratégicos para campañas y descuentos especiales. En esta práctica configuras la Propiedad 1 en el maestro de interlocutores comerciales con el nombre Cliente Corporativo VIP, resolviendo el requerimiento con una función estándar y sin crear tablas adicionales.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Definir propiedad de segmentación de clientes",
+          "menu_path": "Gestión > Definición > Interlocutores comerciales > Propiedades",
+          "instructions": [
+            "Accede a Gestión y Definición de Interlocutores comerciales",
+            "Abre la ventana Propiedades",
+            "En la propiedad número 1 escribe: Cliente Corporativo VIP",
+            "Actualiza la ventana para que esté disponible en los datos maestros",
+            "Datos a registrar: Estado = Activo; Área de aplicación = Ventas."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Número de propiedad",
+              "valor": "1",
+              "pista": "Posición de la propiedad en el formulario"
+            },
+            {
+              "etiqueta": "Nombre de propiedad",
+              "valor": "Cliente Corporativo VIP",
+              "pista": "Etiqueta requerida por la gerencia"
+            },
+            {
+              "etiqueta": "Estado",
+              "valor": "Activo",
+              "pista": "Propiedad habilitada"
+            },
+            {
+              "etiqueta": "Área de aplicación",
+              "valor": "Ventas",
+              "pista": "Uso en módulo comercial"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Clasificar los requerimientos en estas cuatro categorías evita confusiones. Los funcionales definen la operación diaria. Los no funcionales establecen los límites técnicos. Los de transición garantizan el arranque con datos históricos, y los regulatorios aseguran el cumplimiento ineludible de las leyes del país.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "La excelencia de la elicitación se valida cuando el cien por ciento de los requerimientos cumple con los criterios SMART: específicos, medibles, alcanzables, relevantes y con plazos claros, eliminando por completo los supuestos no contrastados.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Has aprendido a conducir entrevistas de descubrimiento como un consultor de alto calibre. Con los requerimientos genuinos identificados y libres de caprichos, estás preparado para documentar el Business Blueprint que veremos en la siguiente clase.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod28-c2": {
+    "images": [
+      "/aula/mod28-c2/Slide_001.webp",
+      "/aula/mod28-c2/Slide_002.webp",
+      "/aula/mod28-c2/Slide_003.webp",
+      "/aula/mod28-c2/Slide_004.webp",
+      "/aula/mod28-c2/Slide_005.webp",
+      "/aula/mod28-c2/Slide_006.webp",
+      "/aula/mod28-c2/Slide_007.webp",
+      "/aula/mod28-c2/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "El Business Blueprint es el documento más importante de una implementación SAP. Es el contrato técnico y funcional que describe con detalle milimétrico cómo operará la empresa dentro del ERP. En esta clase aprenderás la estructura oficial del Blueprint, cómo delimitar el alcance In-Scope y Out-of-Scope y cómo configurar el plan contable maestro.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás redactar las secciones esenciales de un Business Blueprint oficial de SAP. Aprenderás a blindar el proyecto delimitando qué requerimientos están incluidos y cuáles quedan fuera de alcance, y practicarás en el sistema la creación de cuentas contables según las especificaciones del diseño financiero.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "El BRD describe el problema y los objetivos desde la perspectiva del cliente, sin importar el software. El Business Blueprint de SAP toma esos requerimientos de negocio y los traduce a la arquitectura de SAP Business One: qué módulo se usa, qué pantalla, qué reglas de determinación contable y qué campos personalizados intervienen.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El Business Blueprint se compone de cinco secciones fundamentales. Define la estructura organizativa, los estándares de datos maestros, los flujos operativos paso a paso, la matriz de campos de usuario y la delimitación estricta del alcance acordado.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "En el diseño del módulo financiero del Business Blueprint se acordó separar los ingresos de ventas minoristas de los corporativos para mejorar los reportes gerenciales. En esta práctica creas la cuenta 410105 Ventas Canal Corporativo en el Plan de Cuentas, dejando listo el sistema para la determinación contable automática.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Registrar cuenta contable aprobada en Blueprint",
+          "menu_path": "Finanzas > Plan de cuentas",
+          "instructions": [
+            "Ingresa al módulo Finanzas y abre Plan de cuentas",
+            "Ubica el rubro de Ingresos operacionales",
+            "Agrega la subcuenta 410105 con nombre Ventas Canal Corporativo",
+            "Verifica que la moneda sea USD en nivel 4 y actualiza el plan"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Código de cuenta",
+              "valor": "410105",
+              "pista": "Código numérico de ingresos"
+            },
+            {
+              "etiqueta": "Nombre de cuenta",
+              "valor": "Ventas Canal Corporativo",
+              "pista": "Descripción aprobada en el BBD"
+            },
+            {
+              "etiqueta": "Moneda",
+              "valor": "USD",
+              "pista": "Moneda de la cuenta"
+            },
+            {
+              "etiqueta": "Nivel",
+              "valor": "4",
+              "pista": "Nivel de subcuenta imputable"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Definir con absoluta claridad lo que queda fuera de alcance es la mejor protección de un consultor. Todo lo que no esté explícitamente en el In-Scope se considera fuera de alcance y requerirá una solicitud formal de cambio con costo y tiempo adicionales si el cliente desea incorporarlo más adelante.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "El Business Blueprint es perfecto cuando cuenta con la firma formal de todos los involucrados, no deja ningún vacío en la definición de procesos y mantiene la alineación total con los compromisos contractuales del proyecto.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "El Business Blueprint es el cimiento sobre el que descansa toda la solución. Con este documento formalmente aprobado, podemos traducir cada requerimiento en historias de usuario ágiles y matrices de trazabilidad.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod28-c3": {
+    "images": [
+      "/aula/mod28-c3/Slide_001.webp",
+      "/aula/mod28-c3/Slide_002.webp",
+      "/aula/mod28-c3/Slide_003.webp",
+      "/aula/mod28-c3/Slide_004.webp",
+      "/aula/mod28-c3/Slide_005.webp",
+      "/aula/mod28-c3/Slide_006.webp",
+      "/aula/mod28-c3/Slide_007.webp",
+      "/aula/mod28-c3/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "En la gestión moderna de proyectos ERP, los requerimientos se gestionan con agilidad y precisión matemática. En esta clase aprenderás a redactar historias de usuario profesionales, cómo formular criterios de aceptación en formato Gherkin (Dado-Cuando-Entonces) y cómo mantener la Matriz de Trazabilidad de Requisitos para que nada se pierda.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás redactar historias de usuario bajo el estándar internacional. Aprenderás a definir criterios de aceptación claros que servirán directamente como casos de prueba para los usuarios, y practicarás en SAP Business One la configuración de una alerta automática de stock crítico.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Una historia de usuario captura la intención sin tecnicismos innecesarios. Sigue el formato: Como [rol en la empresa], Quiero [ejecutar una acción en el sistema], Para [obtener un beneficio de negocio concreto]. Esto asegura que el equipo técnico nunca olvide para qué existe la funcionalidad que está configurando.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El formato Gherkin elimina las dudas en las pruebas. Por ejemplo: DADO que el artículo A00001 tiene un stock mínimo de diez unidades; CUANDO Bodega despacha cinco unidades dejando el stock en ocho; ENTONCES el sistema genera automáticamente una alerta al Jefe de Compras para gestionar el reabastecimiento.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Para materializar el criterio de aceptación de la historia de usuario de compras, configuramos una alerta en el sistema. En esta práctica accedes a la ventana de Alertas y programas la notificación automática de stock crítico con prioridad alta y evaluación horaria, protegiendo a la empresa contra quiebres de inventario.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Parametrizar alerta de inventario mínimo",
+          "menu_path": "Gestión > Alertas",
+          "instructions": [
+            "Accede a Gestión y selecciona Alertas",
+            "Crea una nueva alerta con el nombre: Alerta Stock Crítico Laptops",
+            "Establece la prioridad en Alta y marca la casilla Activo",
+            "Configura la frecuencia en Cada 1 hora y guarda la parametrización"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Nombre de la alerta",
+              "valor": "Alerta Stock Crítico Laptops",
+              "pista": "Nombre descriptivo de la regla"
+            },
+            {
+              "etiqueta": "Prioridad",
+              "valor": "Alta",
+              "pista": "Nivel de urgencia en la bandeja"
+            },
+            {
+              "etiqueta": "Activo",
+              "valor": "Sí",
+              "pista": "Habilita la evaluación periódica"
+            },
+            {
+              "etiqueta": "Frecuencia",
+              "valor": "Cada 1 hora",
+              "pista": "Intervalo de revisión de stock"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "La Matriz de Trazabilidad de Requisitos (RTM) vincula cada necesidad del cliente con su configuración en SAP y su respectivo caso de prueba UAT. Si un requerimiento no tiene caso de prueba asignado, la matriz lo evidencia de inmediato, garantizando cobertura total.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "La trazabilidad del cien por ciento asegura dos cosas: que nada de lo solicitado quede sin implementar, y que no se construya ninguna funcionalidad innecesaria que no esté respaldada por una historia de usuario aprobada.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Dominar historias de usuario y matrices de trazabilidad eleva tu perfil profesional a nivel internacional. A continuación aprenderemos cómo modelar campos personalizados y valores válidos cuando el negocio exige datos especializados.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod28-c4": {
+    "images": [
+      "/aula/mod28-c4/Slide_001.webp",
+      "/aula/mod28-c4/Slide_002.webp",
+      "/aula/mod28-c4/Slide_003.webp",
+      "/aula/mod28-c4/Slide_004.webp",
+      "/aula/mod28-c4/Slide_005.webp",
+      "/aula/mod28-c4/Slide_006.webp",
+      "/aula/mod28-c4/Slide_007.webp",
+      "/aula/mod28-c4/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Cuando un requerimiento de negocio supera los campos estándar del ERP, el consultor utiliza los Campos Definidos por el Usuario (UDF). En esta clase aprenderás la arquitectura de extensibilidad de SAP Business One, las mejores prácticas de nomenclatura y cómo crear campos con listas de valores válidos para proteger la calidad de la información.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase comprenderás cuándo está justificado crear un UDF y cuándo es preferible usar campos nativos. Aprenderás a configurar tipos alfanuméricos, numéricos y de fecha, y practicarás en el sistema la creación de un campo de canal de ventas con valores controlados en el maestro de clientes.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "SAP Business One ofrece una arquitectura de extensibilidad líder en el mercado. Permite agregar campos personalizados en tablas maestras y documentos sin alterar el código fuente ni poner en riesgo futuras actualizaciones de versión. Toda la información añadida en UDFs queda inmediatamente disponible para consultas SQL y reportes.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Como regla de oro de consultoría, jamás utilices campos de texto libre para datos que deban agruparse en reportes. Crear una lista desplegable con valores válidos cerrados garantiza que nadie escriba variaciones arbitrarias, protegiendo la integridad de la base de datos.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "En el Business Blueprint se especificó que la empresa necesita clasificar a sus clientes por canal comercial para calcular comisiones diferenciadas. En esta práctica accedes a la gestión de UDFs y creas el campo técnico U_CanalVenta en la tabla OCRD de interlocutores comerciales, dotando al sistema del dato exacto requerido por el negocio.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Crear campo UDF de canal de distribución",
+          "menu_path": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+          "instructions": [
+            "Accede al menú Herramientas y Herramientas de customizing",
+            "Abre Campos definidos por el usuario - Gestión",
+            "Selecciona Datos maestros de interlocutor comercial",
+            "Agrega el campo U_CanalVenta de tipo Alfanumérico con descripción Canal de Distribución",
+            "Datos a registrar: Tabla de destino = Datos maestros interlocutor comercial (OCRD); Tipo = Alfanumérico (20)."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Tabla de destino",
+              "valor": "Datos maestros interlocutor comercial (OCRD)",
+              "pista": "Tabla maestra de clientes"
+            },
+            {
+              "etiqueta": "Nombre del campo",
+              "valor": "U_CanalVenta",
+              "pista": "Código técnico con prefijo U_"
+            },
+            {
+              "etiqueta": "Descripción",
+              "valor": "Canal de Distribución",
+              "pista": "Etiqueta visible para el usuario"
+            },
+            {
+              "etiqueta": "Tipo",
+              "valor": "Alfanumérico (20)",
+              "pista": "Tipo de dato y longitud"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Respetar la nomenclatura estándar de SAP protege el sistema. Los nombres técnicos deben llevar el prefijo U guion bajo, las etiquetas deben ser comprensibles para el usuario final y la longitud de caracteres debe ajustarse al tamaño real de los datos para no degradar el rendimiento de la base de datos.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "El impacto es inmediato: tener el cien por ciento de los campos de clasificación bajo listas cerradas elimina los errores de digitación y garantiza que las consultas SQL y reportes gerenciales entreguen información limpia desde el primer día.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Has completado el Módulo 28 dominando todo el ciclo de análisis de requerimientos: desde la entrevista inicial y la redacción del Blueprint hasta la creación de campos de usuario en el ERP. Estás listo para el módulo final sobre gestión de clientes, pruebas UAT y Go-Live.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod29-c1": {
+    "images": [
+      "/aula/mod29-c1/Slide_001.webp",
+      "/aula/mod29-c1/Slide_002.webp",
+      "/aula/mod29-c1/Slide_003.webp",
+      "/aula/mod29-c1/Slide_004.webp",
+      "/aula/mod29-c1/Slide_005.webp",
+      "/aula/mod29-c1/Slide_006.webp",
+      "/aula/mod29-c1/Slide_007.webp",
+      "/aula/mod29-c1/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Bienvenido al módulo definitivo sobre consultoría y gestión de clientes. Los proyectos de software no fracasan por la base de datos; fracasan cuando no se gestionan las expectativas humanas y el alcance se desborda sin control. Hoy aprenderás a mapear a los interesados clave, negociar con firmeza y gestionar las solicitudes de cambio formales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás clasificar a los interesados según su poder e interés en el proyecto. Aprenderás a gestionar solicitudes de cambio evaluando su impacto en costo, tiempo y calidad, y practicarás en SAP Business One el registro de minutas y compromisos formales mediante el módulo de CRM.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "No todos los interesados reciben la misma atención. La matriz de Mendelow divide a los actores en cuatro cuadrantes: los de alto poder y alto interés (Sponsor y Directores) se gestionan de cerca. Los de alto poder y bajo interés se mantienen satisfechos. Los Key Users se mantienen informados y motivados, y el resto del personal se monitorea periódicamente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Cuando el cliente pide algo fuera del Blueprint, nunca se dice un sí apresurado ni un no cortante. Se inicia el proceso formal de Change Request: el consultor calcula el impacto en horas de trabajo, costo económico y posible retraso del Go-Live. El Comité de Proyecto evalúa y decide formalmente si aprueba la ampliación.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Las palabras se las lleva el viento; los acuerdos de consultoría deben quedar registrados. En esta práctica utilizas el módulo de CRM de SAP Business One para registrar una Actividad formal documentando la reunión del Change Request con Maxi-Teq, asegurando respaldo y trazabilidad institucional ante cualquier controversia.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Registrar minuta de acuerdo con cliente",
+          "menu_path": "CRM > Actividades",
+          "instructions": [
+            "Accede al módulo CRM y selecciona Actividades",
+            "Elige el tipo de actividad Reunión con el asunto Revisión Change Request CR-04",
+            "Vincula al cliente Maxi-Teq (C20000)",
+            "En comentarios registra Aprobado impacto en cronograma +3 días y guarda",
+            "Datos a registrar: Interlocutor comercial = C20000 - Maxi-Teq."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Tipo de actividad",
+              "valor": "Reunión",
+              "pista": "Clasificación de la interacción"
+            },
+            {
+              "etiqueta": "Asunto",
+              "valor": "Revisión Change Request CR-04",
+              "pista": "Tema central acordado"
+            },
+            {
+              "etiqueta": "Interlocutor comercial",
+              "valor": "C20000 - Maxi-Teq",
+              "pista": "Socio de negocios involucrado"
+            },
+            {
+              "etiqueta": "Comentarios",
+              "valor": "Aprobado impacto en cronograma +3 días",
+              "pista": "Minuta formal de resolución"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "El crecimiento descontrolado del alcance, conocido como Scope Creep, es el enemigo silencioso de los proyectos. Gestionar cada modificación mediante Change Requests formales protege el presupuesto de la consultora y garantiza que el cliente tenga plena conciencia del costo y tiempo de sus decisiones.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "La disciplina en la gestión de interesados se refleja en indicadores rigurosos: cien por ciento de los cambios respaldados por un Change Request, cero alteraciones sin la firma del Sponsor y una desviación presupuestaria contenida por debajo del cinco por ciento.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Manejar a los interesados y controlar los cambios de alcance es el sello del consultor maduro. A continuación aprenderemos cómo gestionar el cambio organizacional y capacitar a los usuarios con la metodología Train the Trainer.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod29-c2": {
+    "images": [
+      "/aula/mod29-c2/Slide_001.webp",
+      "/aula/mod29-c2/Slide_002.webp",
+      "/aula/mod29-c2/Slide_003.webp",
+      "/aula/mod29-c2/Slide_004.webp",
+      "/aula/mod29-c2/Slide_005.webp",
+      "/aula/mod29-c2/Slide_006.webp",
+      "/aula/mod29-c2/Slide_007.webp",
+      "/aula/mod29-c2/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Implementar un ERP cambia la rutina diaria de cientos de personas, lo que genera miedo y resistencia natural. En esta clase aprenderás la psicología de la adopción del cambio, cómo acompañar a los usuarios a través de la curva de Kübler-Ross y cómo implementar la exitosa estrategia Train the Trainer para empoderar a los líderes internos de la empresa.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás diagnosticar y desactivar la resistencia de los usuarios ante el nuevo sistema. Aprenderás a formar a los Key Users para que capaciten a sus propios equipos con entusiasmo, y practicarás en SAP Business One la configuración de autorizaciones seguras para sesiones de entrenamiento.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Los empleados no rechazan a SAP Business One por sus pantallas, sino por la incertidumbre que genera. Un sistema integrado aporta transparencia total: ya no se pueden ocultar errores en cuadernos y los controles son automáticos. El consultor debe actuar con empatía, mostrando cómo el sistema elimina tareas repetitivas y jerarquiza su trabajo.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Todo usuario atraviesa cuatro etapas psicológicas. Pasa de la negación inicial a la resistencia activa; luego, al practicar y ver el valor de los informes automáticos, entra en la fase de exploración y aprendizaje, culminando en el compromiso total donde reconoce que no volvería al sistema anterior.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "El modelo Train the Trainer es incomparablemente superior. En lugar de que consultores externos dicten cursos masivos que se olvidan rápido, capacitamos a los Key Users hasta convertirlos en expertos. Ellos enseñan a sus propios compañeros con su vocabulario cotidiano, creando una red de soporte interno que perdura en el tiempo.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Durante las semanas de capacitación previa al arranque, los usuarios deben practicar sin riesgo de alterar la contabilidad. En esta práctica configuras las Autorizaciones generales de Ana Silva otorgando permiso de creación en ofertas pero restringiendo las facturas a sólo lectura, garantizando un entorno de aprendizaje seguro.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Configurar permisos de entrenamiento para usuario",
+          "menu_path": "Gestión > Inicialización del sistema > Autorizaciones > Autorizaciones generales",
+          "instructions": [
+            "Accede a Gestión e Inicialización del sistema",
+            "Abre Autorizaciones y Autorizaciones generales",
+            "Selecciona a la usuaria Ana Silva (ASILVA)",
+            "En el módulo Ventas asigna Sólo lectura para Factura de clientes y guarda",
+            "Datos a registrar: Usuario = ASILVA - Ana Silva; Módulo = Ventas - Clientes; Oferta de ventas = Autorización total."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Usuario",
+              "valor": "ASILVA - Ana Silva",
+              "pista": "Usuario en etapa de capacitación"
+            },
+            {
+              "etiqueta": "Módulo",
+              "valor": "Ventas - Clientes",
+              "pista": "Área funcional correspondiente"
+            },
+            {
+              "etiqueta": "Oferta de ventas",
+              "valor": "Autorización total",
+              "pista": "Permiso para practicar creación"
+            },
+            {
+              "etiqueta": "Factura de clientes",
+              "valor": "Sólo lectura",
+              "pista": "Protección para evitar emisión contable"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 7,
+        "script_text": "El éxito de la gestión del cambio se mide con hechos: lograr que el cien por ciento de los Key Users esté certificado para capacitar, mantener una asistencia superior al noventa y cinco por ciento y certificar que más del noventa por ciento del personal apruebe la evaluación operativa antes de tocar producción.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Empoderar a los usuarios clave transforma la resistencia en entusiasmo y orgullo de pertenencia. En la próxima clase aprenderemos cómo estos usuarios validan formalmente el sistema mediante las Pruebas de Aceptación UAT.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod29-c3": {
+    "images": [
+      "/aula/mod29-c3/Slide_001.webp",
+      "/aula/mod29-c3/Slide_002.webp",
+      "/aula/mod29-c3/Slide_003.webp",
+      "/aula/mod29-c3/Slide_004.webp",
+      "/aula/mod29-c3/Slide_005.webp",
+      "/aula/mod29-c3/Slide_006.webp",
+      "/aula/mod29-c3/Slide_007.webp",
+      "/aula/mod29-c3/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Las Pruebas de Aceptación de Usuario (UAT) son el examen final del sistema antes de autorizar el arranque. En esta clase aprenderás la estrategia para diseñar Guiones de Prueba (Test Scripts) profesionales, cómo registrar defectos metódicamente y cómo guiar a los Key Users para certificar que el ERP cumple con el Business Blueprint.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase sabrás estructurar guiones de prueba con datos maestros reales, condiciones de entrada y resultados esperados. Aprenderás a clasificar los defectos por severidad para gestionar su resolución rápida, y practicarás en el sistema la ejecución paso a paso de un caso de prueba comercial.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Las pruebas UAT no son para que el consultor demuestre cómo funciona el software; son para que los propios usuarios de la empresa ejecuten sus tareas cotidianas en el sistema sin ayuda externa. Solo cuando el usuario clave firma que pudo operar sus casos reales con éxito, el sistema se considera técnicamente aceptado.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Cuando una prueba falla se sigue un ciclo riguroso. El usuario documenta el error con captura de pantalla. El equipo de consultoría clasifica la severidad y corrige la causa raíz en la base modelo. Luego el mismo usuario repite la prueba en el ambiente de UAT y, si el resultado coincide con lo esperado, firma el cierre formal del caso.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "El guion UAT-O2C-01 pide validar que un pedido comercial calcule automáticamente el subtotal de mil setecientos dólares y el IVA del quince por ciento por doscientos cincuenta y cinco dólares para Maxi-Teq. En esta práctica ejecutas el caso en la ventana de Pedido de cliente, verificando que los valores coincidan exactamente con la especificación.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Ejecutar guion UAT de captura de pedido",
+          "menu_path": "Ventas - Clientes > Pedido de cliente",
+          "instructions": [
+            "Accede a Ventas - Clientes y selecciona Pedido de cliente",
+            "Elige al cliente C20000 (Maxi-Teq) según el guion UAT-O2C-01",
+            "Ingresa 2 unidades del artículo A00001 a 850.00 dólares",
+            "Comprueba que el subtotal sea 1.700,00 dólares, el IVA 15% sea 255,00 y guarda el pedido",
+            "Datos a registrar: Artículo = A00001 - Laptop Dell Latitude 3420."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Cliente",
+              "valor": "C20000 - Maxi-Teq",
+              "pista": "Socio de prueba del script"
+            },
+            {
+              "etiqueta": "Artículo",
+              "valor": "A00001 - Laptop Dell Latitude 3420",
+              "pista": "Artículo a validar"
+            },
+            {
+              "etiqueta": "Cantidad",
+              "valor": "2",
+              "pista": "Cantidad especificada en el guion"
+            },
+            {
+              "etiqueta": "Precio unitario",
+              "valor": "850.00",
+              "pista": "Precio de catálogo"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "La severidad de los defectos determina la decisión de salida en vivo. Los defectos críticos impiden el Go-Live hasta ser completamente subsanados. Los mayores pueden tolerarse si existe una alternativa operativa viable, mientras que los menores y cosméticos se programan para el período de Hypercare.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "La meta innegociable de la fase UAT es alcanzar el cien por ciento de los guiones ejecutados por los propios usuarios de la empresa, cerrando con cero defectos bloqueantes abiertos para llegar al comité de decisión final con total tranquilidad.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Las pruebas UAT transforman las dudas en certeza técnica y operativa. En la clase final de la academia realizaremos la validación contable de un ciclo completo y firmaremos el Acta de Go-Live.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
+  },
+  "mod29-c4": {
+    "images": [
+      "/aula/mod29-c4/Slide_001.webp",
+      "/aula/mod29-c4/Slide_002.webp",
+      "/aula/mod29-c4/Slide_003.webp",
+      "/aula/mod29-c4/Slide_004.webp",
+      "/aula/mod29-c4/Slide_005.webp",
+      "/aula/mod29-c4/Slide_006.webp",
+      "/aula/mod29-c4/Slide_007.webp",
+      "/aula/mod29-c4/Slide_008.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Has llegado a la clase cumbre de tu formación como Consultor y Business Analyst en SAP Business One. Hoy ejecutarás la validación integral de un ciclo completo de negocio de punta a punta, verificarás el balance de comprobación contable para certificar la partida doble y conocerás el protocolo formal del Acta de Go-Live que autoriza el pase a producción.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase magistral sabrás auditar la coherencia contable y logística de un ciclo operativo completo. Aprenderás a interpretar el Balance de comprobación para certificar que todas las cuentas puente y de inventario cuadran con exactitud, y dominarás el protocolo de firma del Acta de Go-Live con el Comité de Proyecto.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Probar pantallas aisladas no basta; la verdadera prueba de fuego es el flujo interconectado: comprar la mercadería, recibirla en muelle con GRPO, venderla al cliente, despacharla desde bodega, facturar electrónicamente, cobrar en banco y validar que el costo de ventas, el IVA y las retenciones hayan contabilizado exactamente en el libro mayor.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Antes de emitir el visto bueno para la salida en vivo, el consultor y el contador general generan el Balance de comprobación. En esta práctica accedes a Informes financieros en SAP Business One y ejecutas el Balance a nivel cuatro, verificando que la suma de todos los débitos sea idéntica a la suma de los créditos con una diferencia de cero dólares.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Generar balance de comprobación y validar cuadre",
+          "menu_path": "Finanzas > Informes financieros > Financiero > Balance",
+          "instructions": [
+            "Ingresa a Finanzas e Informes financieros",
+            "Abre el informe Balance",
+            "Selecciona la opción de Moneda local en Nivel 4",
+            "Comprueba que la diferencia entre Débito y Crédito sea exactamente cero dólares y genera el reporte",
+            "Datos a registrar: Moneda = Moneda local (USD); Ejercicio fiscal = 2026; Diferencia Debe - Haber = 0.00."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Moneda",
+              "valor": "Moneda local (USD)",
+              "pista": "Moneda de reporte funcional"
+            },
+            {
+              "etiqueta": "Nivel de detalle",
+              "valor": "4",
+              "pista": "Nivel analítico de subcuentas"
+            },
+            {
+              "etiqueta": "Ejercicio fiscal",
+              "valor": "2026",
+              "pista": "Año de operación"
+            },
+            {
+              "etiqueta": "Diferencia Debe - Haber",
+              "valor": "0.00",
+              "pista": "Cuadre contable exacto"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 5,
+        "script_text": "El ciclo operativo culmina con la contabilización automática de la venta por dos laptops. La factura debita Clientes por cobrar por mil novecientos cincuenta y cinco dólares, acredita la cuenta de Ingresos por mil setecientos y registra el IVA del quince por ciento por doscientos cincuenta y cinco dólares al haber, manteniendo la partida doble intacta.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 6,
+        "script_text": "El Acta de Go-Live es el documento supremo del proyecto. Revisa uno a uno los cinco pilares obligatorios: pruebas UAT aprobadas, personal capacitado, datos maestros cuadrados al centavo, infraestructura tecnológica lista y plan de corte coordinado. Cuando todos firman conforme, el proyecto recibe la luz verde para iniciar operaciones en vivo.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Completar este track formativo te sitúa en la élite de la consultoría internacional: dominas la metodología de implementación, el modelado formal BPMN dos punto cero, el levantamiento de requerimientos con Business Blueprint, la gestión del cambio y la puesta en marcha en el sistema real.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Felicitaciones. Has culminado los módulos de Consultoría y Business Analysis de B1 Academy, integrando la metodología global con la práctica transaccional en SAP Business One. Estás preparado para defender tu conocimiento ante Master B1 y obtener tu certificación oficial con hash criptográfico.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
   }
 }

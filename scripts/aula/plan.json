@@ -154,6 +154,30 @@
       { "id": "mod24-c1", "titulo": "Caso Integrador: Puesta en Marcha", "manuales": ["23.2_Caso_Practico_Introduccion", "23.3_Caso_Practico_Introduccion_Solucion"] },
       { "id": "mod24-c2", "titulo": "Caso Integrador: Aprovisionamiento", "manuales": ["23.4_Caso_Practico_Proceso_de_Aprovision", "23.5_Caso_Practico_Aprovisionamiento_Sol"] },
       { "id": "mod24-c3", "titulo": "Caso Integrador: Consultas SQL", "manuales": ["23.7_Practica_de_Consultas_SQL_Solucione", "23.6_Practica_de_Consultas_SQL"] }
+    ]},
+    { "id": "mod-26", "titulo": "Metodología de Implementación y Ciclo de Vida SAP", "clases": [
+      { "id": "mod26-c1", "titulo": "El Marco Metodológico: De Waterfall a SAP Activate y AIP", "manuales": ["fuente:consultoria_metodologia_activate", "20.1_Metodologia_de_Implementacion_SAP"], "rutas_regex": "gesti[oó]n|inicializaci[oó]n|parametrizaciones" },
+      { "id": "mod26-c2", "titulo": "Talleres de Exploración (Explore) y Análisis Fit / Gap", "manuales": ["fuente:consultoria_metodologia_activate", "20.2_Asistente_Express_de_Configuracion"], "rutas_regex": "gesti[oó]n|asistente express|detalles de la sociedad" },
+      { "id": "mod26-c3", "titulo": "Fase de Realización: Parametrización y Migración Golden DB", "manuales": ["fuente:consultoria_metodologia_activate", "20.4_Carga_de_Saldos_Iniciales", "20.7_Uso_del_Data_Transfer_Workbench_DTW"], "rutas_regex": "gesti[oó]n|saldos iniciales|migraci[oó]n" },
+      { "id": "mod26-c4", "titulo": "Estrategia de Salida en Vivo (Cutover), Go-Live e Hypercare", "manuales": ["fuente:consultoria_metodologia_activate", "20.5_Copia_Rapida_entre_Companias_Quick_"], "rutas_regex": "gesti[oó]n|copia r[aá]pida|cierre de per[ií]odo" }
+    ]},
+    { "id": "mod-27", "titulo": "Modelado y Optimización de Procesos de Negocio (BPMN 2.0)", "clases": [
+      { "id": "mod27-c1", "titulo": "Fundamentos de BPMN 2.0 para Consultores ERP", "manuales": ["fuente:consultoria_bpmn_procesos", "1.1_Introduccion_a_SAP_Business_One"], "rutas_regex": "gesti[oó]n|interlocutores|ventas|compras" },
+      { "id": "mod27-c2", "titulo": "Mapeo del Estado Actual (AS-IS) y Detección de Ineficiencias", "manuales": ["fuente:consultoria_bpmn_procesos", "2.1_Proceso_de_Ventas_Vision_General"], "rutas_regex": "ventas|pedido de cliente|oferta" },
+      { "id": "mod27-c3", "titulo": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP", "manuales": ["fuente:consultoria_bpmn_procesos", "3.1_Proceso_de_Compras_Vision_General"], "rutas_regex": "compras|pedido|orden de compra|solicitud" },
+      { "id": "mod27-c4", "titulo": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1", "manuales": ["fuente:consultoria_bpmn_procesos", "22.3_Procesos_de_Aprobacion"], "rutas_regex": "procedimiento de aprobaci[oó]n|etapas de autorizaci[oó]n|autorizaciones" }
+    ]},
+    { "id": "mod-28", "titulo": "Levantamiento de Requerimientos y Documentación de Negocio", "clases": [
+      { "id": "mod28-c1", "titulo": "Técnicas de Elicitación de Requisitos y Entrevistas Clave", "manuales": ["fuente:consultoria_requerimientos_brd", "2.3_Datos_Maestros_de_Clientes"], "rutas_regex": "interlocutores comerciales|datos maestros" },
+      { "id": "mod28-c2", "titulo": "El Business Blueprint (BBD) y Business Requirements Document (BRD)", "manuales": ["fuente:consultoria_requerimientos_brd", "1.3_Documentos_y_Datos_Maestros_Concept"], "rutas_regex": "interlocutores|inventario|datos maestros" },
+      { "id": "mod28-c3", "titulo": "Historias de Usuario, Criterios Gherkin y Matriz RTM", "manuales": ["fuente:consultoria_requerimientos_brd", "22.2_Sistema_de_Alertas_Automaticas"], "rutas_regex": "gesti[oó]n|alertas|mensajes" },
+      { "id": "mod28-c4", "titulo": "De Requerimiento a Configuración: Campos UDF y Valores Válidos", "manuales": ["fuente:consultoria_requerimientos_brd", "22.4_Campos_Definidos_por_el_Usuario_UDF", "22.5_Valores_Definidos_por_el_Usuario_UD"], "rutas_regex": "campos definidos por el usuario|herramientas de personalizaci[oó]n|valores v[aá]lidos" }
+    ]},
+    { "id": "mod-29", "titulo": "Gestión de Clientes, Pruebas UAT y Adopción del Cambio", "clases": [
+      { "id": "mod29-c1", "titulo": "Gestión de Stakeholders y Control de Cambios (Change Requests)", "manuales": ["fuente:consultoria_clientes_uat", "2.4_Gestion_de_Relaciones_con_Clientes_"], "rutas_regex": "crm|oportunidades|actividades" },
+      { "id": "mod29-c2", "titulo": "Gestión del Cambio Organizacional y Estrategia Train the Trainer", "manuales": ["fuente:consultoria_clientes_uat", "21.1_Configuracion_de_Usuarios_y_Grupos"], "rutas_regex": "gesti[oó]n|usuarios|definici[oó]n" },
+      { "id": "mod29-c3", "titulo": "Estrategia y Elaboración de Guiones de Prueba UAT (Test Scripts)", "manuales": ["fuente:consultoria_clientes_uat", "2.2_De_Pedido_a_Cobro_Order_to_Cash"], "rutas_regex": "ventas|pedido de cliente|entrega|factura" },
+      { "id": "mod29-c4", "titulo": "Ejecución de Ciclo UAT, Validación Contable y Acta de Go-Live", "manuales": ["fuente:consultoria_clientes_uat", "15.1_Registro_de_Asientos_Contables", "17.1_Informes_Financieros_del_Sistema"], "rutas_regex": "finanzas|asiento|balance|informes financieros" }
     ]}
   ]
 }
