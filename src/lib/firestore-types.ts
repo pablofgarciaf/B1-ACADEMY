@@ -78,7 +78,9 @@ export interface CompanyProfile extends Entity { address?: string; phone?: strin
   /** Reglas de autorización: documentos de ese tipo sobre el monto requieren aprobación. */
   approvalRules?: ApprovalRule[];
   /** Lista de precios asignada a cada cliente (1 general, 2 mayorista, 3 distribuidor). */
-  customerPriceLists?: Record<string, 1 | 2 | 3>;
+  customerPriceLists?: Record<string, number>;
+  /** Listas de precios derivadas de otra con un factor (las listas 1, 2 y 3 son las base y siempre existen). */
+  priceLists?: { no: number; name: string; base: number; factor: number }[];
   /** Descuentos automáticos por cantidad. itemCode '*' aplica a todos los artículos. */
   volumeDiscounts?: VolumeDiscount[];
   /** Campos definidos por el usuario (como los U_ de SAP). */

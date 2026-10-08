@@ -3,8 +3,28 @@ import { round } from './company-calculations';
 
 export const NOMBRES_LISTA: Record<1 | 2 | 3, string> = { 1: 'General', 2: 'Mayorista', 3: 'Distribuidor' };
 
+export interface ListaPrecios { no: number; name: string; base: number; factor: number; derivada: boolean }
+
+/** Las tres listas base (precios por artículo) más las derivadas de otra lista con un factor. */
+export function listasDePrecios(state: CompanyState): ListaPrecios[] {
+  const base: ListaPrecios[] = ([1, 2, 3] as const).map(no => ({ no, name: NOMBRES_LISTA[no], base: 0, factor: 1, derivada: false }));
+  return [...base, ...(state.profile?.priceLists ?? []).map(l => ({ ...l, derivada: true }))];
+}
+
+export const nombreLista = (state: CompanyState, no: number): string => listasDePrecios(state).find(l => l.no === no)?.name ?? NOMBRES_LISTA[1];
+
+/** Precio de un artículo en una lista: el propio de las listas 1 a 3, o el de la lista base por el factor. */
+export function precioDeLista(state: CompanyState, item: { price: number; price2: number; price3: number }, no: number, profundidad = 0): number {
+  if (no === 2) return item.price2;
+  if (no === 3) return item.price3;
+  if (no === 1) return item.price;
+  const lista = state.profile?.priceLists?.find(l => l.no === no);
+  if (!lista || profundidad > 10) return item.price;
+  return round(precioDeLista(state, item, lista.base, profundidad + 1) * lista.factor);
+}
+
 export interface PrecioSugerido {
-  lista: 1 | 2 | 3; nombreLista: string; precio: number; descuento: number; reglaDescuento: string;
+  lista: number; nombreLista: string; precio: number; descuento: number; reglaDescuento: string;
   precioNeto: number; costo: number; margenPct: number | null; topeDescuento: number;
 }
 
@@ -24,7 +44,7 @@ export function precioSugerido(state: CompanyState, cardCode: string, itemCode: 
   const item = state.items.find(i => i.itemCode === itemCode);
   if (!item) return null;
   const lista = state.profile?.customerPriceLists?.[cardCode] ?? 1;
-  const porLista = lista === 2 ? item.price2 : lista === 3 ? item.price3 : item.price;
+  const porLista = precioDeLista(state, item, lista);
   const precio = porLista > 0 ? porLista : item.price;
   const reglas = (state.profile?.volumeDiscounts ?? [])
     .filter(v => (v.itemCode === itemCode || v.itemCode === '*') && cantidad >= v.minQuantity)
@@ -33,7 +53,7 @@ export function precioSugerido(state: CompanyState, cardCode: string, itemCode: 
   const precioNeto = round(precio * (1 - descuento / 100));
   const costo = costoUnitario(state, itemCode);
   return {
-    lista, nombreLista: NOMBRES_LISTA[lista], precio, descuento,
+    lista, nombreLista: nombreLista(state, lista), precio, descuento,
     reglaDescuento: reglas[0] ? `Desde ${reglas[0].minQuantity} unidades: ${reglas[0].discount} %` : '',
     precioNeto, costo, margenPct: precioNeto > 0 ? round(((precioNeto - costo) / precioNeto) * 100) : null, topeDescuento: item.maxDiscount,
   };

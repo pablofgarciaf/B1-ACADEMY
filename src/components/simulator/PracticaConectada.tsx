@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import dynamic from 'next/dynamic';
 import { useMemo, useState } from 'react';
 import { CheckCircle2, Building2, Info } from 'lucide-react';
@@ -37,15 +38,30 @@ const P = {
   nomina: dynamic(() => import('@/components/sap-screens/PayrollRunScreen'), { loading: cargando }),
   cierreTributario: dynamic(() => import('@/components/sap-screens/TaxCloseScreen'), { loading: cargando }),
   isd: dynamic(() => import('@/components/sap-screens/ForeignPaymentScreen'), { loading: cargando }),
+  // Pantallas nuevas (mod-2 .. mod-24)
+  series: dynamic(() => import('@/components/sap-screens/SeriesNumeracionScreen'), { loading: cargando }),
+  grupos: dynamic(() => import('@/components/sap-screens/GruposScreen'), { loading: cargando }),
+  monedas: dynamic(() => import('@/components/sap-screens/MonedasScreen'), { loading: cargando }),
+  costos: dynamic(() => import('@/components/sap-screens/CentroCostesScreen'), { loading: cargando }),
+  recursos: dynamic(() => import('@/components/sap-screens/RecursosProduccionScreen'), { loading: cargando }),
+  udo: dynamic(() => import('@/components/sap-screens/UDOScreen'), { loading: cargando }),
+  cockpit: dynamic(() => import('@/components/sap-screens/CockpitScreen'), { loading: cargando }),
 };
 
 function Pantalla({ p }: { p: PantallaConectada }) {
   switch (p.clave) {
-    case 'cliente': return <P.socio />;
+    case 'cliente':   return <P.socio />;
     case 'proveedor': return <P.socio vendor />;
-    case 'articulo': return <P.articulo />;
+    case 'articulo':  return <P.articulo />;
     case 'documento': return <P.documento docType={p.docType} />;
-    default: { const Comp = P[p.clave]; return <Comp />; }
+    case 'series':    return <P.series docType={(p as { clave: 'series'; docType?: string }).docType} />;
+    case 'grupos':    return <P.grupos tipo={(p as { clave: 'grupos'; tipo: 'cliente' | 'articulo' }).tipo} />;
+    case 'recursos':  return <P.recursos tipo={(p as { clave: 'recursos'; tipo?: 'trabajo' | 'maquina' }).tipo} />;
+    case 'monedas':   return <P.monedas />;
+    case 'costos':    return <P.costos />;
+    case 'udo':       return <P.udo />;
+    case 'cockpit':   return <P.cockpit />;
+    default: { const Comp = P[p.clave as keyof typeof P] as React.ComponentType; return <Comp />; }
   }
 }
 

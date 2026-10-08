@@ -5,7 +5,7 @@ import type { DocType, DocumentLine, PurchaseDocType, SalesDocType, DocumentInpu
 import { purchaseTypes } from '@/lib/firestore-types';
 import { documentLabels } from '@/lib/company-engine';
 import { today, totals, usd } from '@/lib/company-calculations';
-import { NOMBRES_LISTA, precioSugerido } from '@/lib/company-pricing';
+import { nombreLista, precioSugerido } from '@/lib/company-pricing';
 import { Screen, Field, Navigation, inputClass, buttonClass, SaveButton, Table } from './SAPControls';
 import { PartnerLookup } from './CustomerLookupModal';
 import ItemLookupModal from './ItemLookupModal';
@@ -29,7 +29,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
     const s = precioSugerido(c.data, data.cardCode, itemCode, quantity);
     return s ? { price: s.precio, discount: s.descuento } : {};
   };
-  const listaCliente = !purchase && partner ? NOMBRES_LISTA[c.data.profile?.customerPriceLists?.[partner.cardCode] ?? 1] : '';
+  const listaCliente = !purchase && partner ? nombreLista(c.data, c.data.profile?.customerPriceLists?.[partner.cardCode] ?? 1) : '';
   return <Screen title={documentLabels[docType]}>
     <Navigation count={docs.length} index={index} onNew={reset} onSelect={i => { setIndex(i); setData(docs[i]); }} />
     <p className="font-bold">{index >= 0 ? docs[index]?.docNumber : 'Numeración automática'} · USD</p>

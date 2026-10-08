@@ -25,16 +25,21 @@ export default function QueryManagerScreen() {
   // Columnas reales de cada tabla, tomadas de los datos de la empresa.
   const columnas = useMemo(() => Object.fromEntries(TABLAS.map(t => [t.nombre, [...new Set(t.filas(c.data).flatMap(f => Object.keys(f)))]])), [c.data]);
 
-  const ejecutar = (texto = sql) => {
-    try { setResultado(ejecutarConsulta(c.data, texto)); setError(''); }
+  const ejecutar = async (texto = sql) => {
+    try {
+      const res = ejecutarConsulta(c.data, texto);
+      setResultado(res);
+      setError('');
+      try { await c.save({ action: 'query', data: { title: 'Consulta ejecutada', sql: texto } }); } catch { /* error silencioso en save */ }
+    }
     catch (e) { setResultado(null); setError(e instanceof Error ? e.message : 'Consulta no válida.'); }
   };
-  const guardar = () => {
-    const titulo = window.prompt('Nombre de la consulta:')?.trim();
-    if (!titulo) return;
+  const guardar = async () => {
+    const titulo = window.prompt('Nombre de la consulta:')?.trim() || 'Consulta guardada';
     const nuevas = [...guardadas.filter(g => g.titulo !== titulo), { titulo, sql }];
     setGuardadas(nuevas);
     try { localStorage.setItem(CLAVE_GUARDADAS, JSON.stringify(nuevas)); } catch { /* sin almacenamiento */ }
+    try { await c.save({ action: 'query', data: { title: titulo, sql } }); } catch { /* error silencioso en save */ }
   };
   const exportar = () => {
     if (!resultado) return;

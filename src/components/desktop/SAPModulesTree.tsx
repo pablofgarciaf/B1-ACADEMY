@@ -29,7 +29,7 @@ interface Module {
 
 interface SAPModulesTreeProps {
   modules: Module[];
-  onScreenSelect: (screenId: string, screenName: string) => void;
+  onScreenSelect: (screenId: string, screenName: string, moduleKey?: string) => void;
 }
 
 const iconMap: Record<string, React.ComponentType<any>> = {
@@ -117,7 +117,7 @@ export default function SAPModulesTree({ modules, onScreenSelect }: SAPModulesTr
                   {module.screens.map((screen) => (
                     <button
                       key={screen.id}
-                      onClick={() => onScreenSelect(screen.id, screen.name)}
+                      onClick={() => onScreenSelect(screen.id, screen.name, module.key)}
                       className="w-full text-left px-8 py-1.5 text-xs text-gray-600 hover:bg-blue-100 hover:text-blue-800 transition"
                     >
                       <span className="truncate block">

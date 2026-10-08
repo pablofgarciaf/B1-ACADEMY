@@ -7,12 +7,12 @@ import { Screen, Field, Table, inputClass, buttonClass } from './SAPControls';
 import { ParaPensar } from './AnalysisBlocks';
 
 const ETAPAS: { clave: EtapaOportunidad; nombre: string; prob: number }[] = [
-  { clave: 'prospecto', nombre: 'Prospecto', prob: 10 }, { clave: 'calificado', nombre: 'Calificado', prob: 25 },
+  { clave: 'prospecto', nombre: 'Primera reunión', prob: 10 }, { clave: 'calificado', nombre: 'Presentación', prob: 25 },
   { clave: 'propuesta', nombre: 'Propuesta', prob: 50 }, { clave: 'negociacion', nombre: 'Negociación', prob: 75 },
   { clave: 'ganada', nombre: 'Ganada', prob: 100 }, { clave: 'perdida', nombre: 'Perdida', prob: 0 },
 ];
 const ABIERTAS: EtapaOportunidad[] = ['prospecto', 'calificado', 'propuesta', 'negociacion'];
-const vacia = () => ({ id: '', name: '', cardCode: '', amount: 0, stage: 'prospecto' as EtapaOportunidad, expectedClose: today(), source: 'Referido', notes: '', lossReason: '' });
+const vacia = () => ({ id: '', name: '', cardCode: '', amount: 0, stage: 'prospecto' as EtapaOportunidad, probability: 10, expectedClose: today(), source: 'Referido', notes: '', lossReason: '' });
 
 /** Oportunidades (CRM001): embudo comercial, pronóstico ponderado y aprendizaje de las pérdidas. */
 export default function OpportunitiesScreen() {
@@ -29,7 +29,7 @@ export default function OpportunitiesScreen() {
   const vencidas = abiertas.filter(o => o.expectedClose < today());
 
   const guardar = async () => { try { await c.save({ action: 'opportunity', data: f }); setF(vacia()); } catch { /* error visible */ } };
-  const editar = (o: Opportunity) => setF({ id: o.id, name: o.name, cardCode: o.cardCode, amount: o.amount, stage: o.stage, expectedClose: o.expectedClose, source: o.source, notes: o.notes, lossReason: o.lossReason });
+  const editar = (o: Opportunity) => setF({ id: o.id, name: o.name, cardCode: o.cardCode, amount: o.amount, stage: o.stage, probability: o.probability, expectedClose: o.expectedClose, source: o.source, notes: o.notes, lossReason: o.lossReason });
 
   return (
     <Screen title="Oportunidades de venta">
@@ -70,7 +70,8 @@ export default function OpportunitiesScreen() {
           <Field label="Nombre" required><input required minLength={3} className={inputClass} value={f.name} onChange={e => setF(v => ({ ...v, name: e.target.value }))} placeholder="Ej.: Equipamiento sala de cómputo" /></Field>
           <Field label="Cliente" required><select required className={inputClass} value={f.cardCode} onChange={e => setF(v => ({ ...v, cardCode: e.target.value }))}><option value="">Selecciona…</option>{c.data.customers.map(cl => <option key={cl.id} value={cl.cardCode}>{cl.name}</option>)}</select></Field>
           <Field label="Monto estimado (USD)"><input type="number" min={0} step="0.01" className={inputClass} value={f.amount} onChange={e => setF(v => ({ ...v, amount: Number(e.target.value) }))} /></Field>
-          <Field label="Etapa"><select className={inputClass} value={f.stage} onChange={e => setF(v => ({ ...v, stage: e.target.value as EtapaOportunidad }))}>{ETAPAS.map(e => <option key={e.clave} value={e.clave}>{e.nombre} ({e.prob} %)</option>)}</select></Field>
+          <Field label="Etapa"><select className={inputClass} value={f.stage} onChange={e => { const stage = e.target.value as EtapaOportunidad; setF(v => ({ ...v, stage, probability: ETAPAS.find(x => x.clave === stage)?.prob ?? v.probability })); }}>{ETAPAS.map(e => <option key={e.clave} value={e.clave}>{e.nombre} ({e.prob} %)</option>)}</select></Field>
+          <Field label="Probabilidad de cierre (%)"><input type="number" min={0} max={100} className={inputClass} disabled={f.stage === 'ganada' || f.stage === 'perdida'} value={f.stage === 'ganada' ? 100 : f.stage === 'perdida' ? 0 : f.probability} onChange={e => setF(v => ({ ...v, probability: Number(e.target.value) }))} /></Field>
           <Field label="Cierre esperado"><input type="date" className={inputClass} value={f.expectedClose} onChange={e => setF(v => ({ ...v, expectedClose: e.target.value }))} /></Field>
           <Field label="Origen"><select className={inputClass} value={f.source} onChange={e => setF(v => ({ ...v, source: e.target.value }))}>{['Referido', 'Web', 'Feria', 'Llamada en frío', 'Cliente actual', 'Redes sociales'].map(x => <option key={x}>{x}</option>)}</select></Field>
           {f.stage === 'perdida' && <Field label="Motivo de la pérdida" required><input required minLength={5} className={inputClass} value={f.lossReason} onChange={e => setF(v => ({ ...v, lossReason: e.target.value }))} placeholder="Ej.: Precio, plazo de entrega, competidor…" /></Field>}

@@ -1,15 +1,11 @@
 {
-  "version": "0.1-borrador",
-  "generado": "2026-10-03",
+  "version": "1.0-oficial",
+  "generado": "2026-10-07",
   "resumen": {
-    "carreras": 10,
-    "modulos": 31,
+    "carreras": 11,
+    "modulos": 25,
+    "clases": 104,
     "manuales": 120
-  },
-  "produccion": {
-    "voz": "es-MX-JorgeNeural",
-    "nota": "Voz documentada en los videos de los manuales CS (docs/07); se mantiene por continuidad. Por verificar qué voz usan los demás videos. Alternativas a probar para acento ecuatoriano: es-EC-LuisNeural, es-EC-AndreaNeural (hay que confirmar que edge-tts las ofrezca).",
-    "imagenes": "Ilustración 2D plana (sin texto) generada con Gemini; diagramas con cifras como SVG/HTML."
   },
   "certificacion": {
     "porClase": "Quiz de comprensión: aprobación con 90 % o más.",
@@ -20,1388 +16,998 @@
   "carreras": [
     {
       "id": "C01",
-      "name": "Fundamentos y Usuario Experto B1",
-      "level": "OP",
-      "description": "Base común: entender el sistema, la contabilidad que lo mueve y los datos maestros.",
+      "name": "Asistente de Compras e Inventario",
       "modules": [
         "M01",
         "M02",
         "M03",
-        "M04"
+        "M13",
+        "M14"
       ]
     },
     {
       "id": "C02",
-      "name": "Compras e Importaciones",
-      "level": "OP",
-      "description": "Del requerimiento al pago, con costo real de importación.",
+      "name": "Jefe de Bodega",
       "modules": [
-        "M05",
-        "M06"
+        "M01",
+        "M02",
+        "M03",
+        "M15",
+        "M16"
       ]
     },
     {
       "id": "C03",
-      "name": "Ventas y Estrategia de Precios",
-      "level": "OP",
-      "description": "Del cliente al cobro, con precios y márgenes bajo control.",
+      "name": "Ejecutivo Comercial",
       "modules": [
-        "M07",
-        "M08"
+        "M01",
+        "M02",
+        "M04",
+        "M05"
       ]
     },
     {
       "id": "C04",
-      "name": "Logística, Inventarios y Bodegas",
-      "level": "OP",
-      "description": "Existencias, valoración, trazabilidad y bodegas por ubicación.",
+      "name": "Servicio Postventa",
       "modules": [
-        "M10",
-        "M11",
-        "M12"
+        "M01",
+        "M02",
+        "M04",
+        "M06"
       ]
     },
     {
       "id": "C05",
-      "name": "Producción y Planificación (MRP)",
-      "level": "ARQ",
-      "description": "Recetas, órdenes, costo de fabricación y planificación de necesidades.",
+      "name": "Asistente Contable NIIF",
       "modules": [
-        "M13",
-        "M14",
-        "M15"
-      ]
-    },
-    {
-      "id": "C06",
-      "name": "Contabilidad y Finanzas",
-      "level": "ARQ",
-      "description": "Plan de cuentas, asientos, cierres, tesorería y activos fijos.",
-      "modules": [
-        "M16",
+        "M01",
+        "M02",
+        "M07",
         "M17",
-        "M18",
         "M19"
       ]
     },
     {
-      "id": "C07",
-      "name": "Control de Gestión, Costos y Analítica",
-      "level": "ARQ",
-      "description": "Leer y verificar informes, costear, presupuestar y consultar datos.",
+      "id": "C06",
+      "name": "Asistente de Nómina y Talento Humano",
       "modules": [
-        "M20",
-        "M21",
-        "M22"
+        "M01",
+        "M02",
+        "M07",
+        "M25"
+      ]
+    },
+    {
+      "id": "C07",
+      "name": "Tesorería y Cobranzas",
+      "modules": [
+        "M01",
+        "M07",
+        "M08",
+        "M19"
       ]
     },
     {
       "id": "C08",
-      "name": "Servicio al Cliente y Proyectos",
-      "level": "OP",
-      "description": "CRM, postventa con SLA y proyectos con facturación por hitos.",
+      "name": "Analista de Costos y Presupuestos",
       "modules": [
+        "M07",
+        "M14",
         "M09",
-        "M23"
+        "M18"
       ]
     },
     {
       "id": "C09",
-      "name": "Consultoría, Implementación y Administración",
-      "level": "ARQ",
-      "description": "Implementar, migrar, asegurar, personalizar y dar soporte.",
+      "name": "Planificador de Producción",
       "modules": [
-        "M24",
-        "M25",
-        "M26",
-        "M27",
-        "M28",
-        "M29"
+        "M02",
+        "M10",
+        "M11",
+        "M20"
       ]
     },
     {
       "id": "C10",
-      "name": "Localización Ecuador (SRI)",
-      "level": "ARQ",
-      "status": "propuesto",
-      "description": "Comprobantes electrónicos, retenciones y ATS (no cubierto por los manuales).",
+      "name": "Administrador SAP Business One",
       "modules": [
-        "M30",
-        "M31"
+        "M01",
+        "M21",
+        "M22",
+        "M12"
+      ]
+    },
+    {
+      "id": "C11",
+      "name": "Consultor de Implementación",
+      "modules": [
+        "M21",
+        "M12",
+        "M23",
+        "M24"
       ]
     }
   ],
   "modulos": [
     {
       "id": "M01",
-      "career": "C01",
-      "name": "Primer contacto con SAP Business One",
-      "purpose": "Entender qué es un ERP, cómo se organiza SAP Business One y moverse por el sistema con soltura.",
-      "question": "¿Dónde está la información de mi empresa y cómo la encuentro?",
+      "modKey": "mod-1",
+      "number": 1,
+      "name": "Fundamentos Operativos y Navegación",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "10_Intro_11_Overview_IntroSAPB1_ES",
-          "title": "Introducción a SAP Business One",
-          "category": "Introducción a SAP Business One"
+          "id": "1.1_Introduccion_a_SAP_Business_One",
+          "title": "1.1 Introduccion a SAP Business One"
         },
         {
           "number": 2,
-          "id": "10_Intro_12_Overview_GettingStarted_ES",
-          "title": "Primeros Pasos en SAP Business One",
-          "category": "Introducción a SAP Business One"
+          "id": "1.2_Primeros_Pasos_en_SAP_Business_One",
+          "title": "1.2 Primeros Pasos en SAP Business One"
         },
         {
           "number": 3,
-          "id": "10_Overview_13_MDDoc_ES",
-          "title": "Documentos y Datos Maestros: Conceptos Generales",
-          "category": "Introducción a SAP Business One"
+          "id": "1.3_Documentos_y_Datos_Maestros_Concept",
+          "title": "1.3 Documentos y Datos Maestros Concept"
         },
         {
-          "number": 117,
-          "id": "CSL01_Introduction_ES",
-          "title": "Caso Práctico: Introducción",
-          "category": "Casos Prácticos y Ejercicios"
-        },
-        {
-          "number": 118,
-          "id": "CSL01_Introduction_Solution_ES",
-          "title": "Caso Práctico: Introducción (Solución)",
-          "category": "Casos Prácticos y Ejercicios"
+          "number": 4,
+          "id": "20.3_Configuraciones_Clave_del_Sistema",
+          "title": "20.3 Configuraciones Clave del Sistema"
         }
-      ],
-      "requires": [],
-      "status": "definido",
-      "baseClasses": 5,
-      "extraClasses": 2,
-      "integratorClass": 1,
-      "extra": [
-        "Qué es un ERP y para qué sirve a una empresa",
-        "Una empresa = una base de datos: arquitectura, HANA frente a SQL Server, nube frente a instalación local"
       ]
     },
     {
       "id": "M02",
-      "career": "C01",
-      "name": "Fundamentos contables para operar el ERP",
-      "purpose": "Leer y predecir asientos: debe y haber, balance, estado de resultados y asientos automáticos.",
-      "question": "¿Qué le pasa a la contabilidad cada vez que registro un documento?",
+      "modKey": "mod-2",
+      "number": 2,
+      "name": "Núcleo Maestro ERP",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 26,
-          "id": "10_AccBasics_11_AccBasics_Financial_Basics_ES",
-          "title": "Conceptos Financieros Básicos",
-          "category": "Contabilidad Básica"
+          "number": 1,
+          "id": "2.3_Datos_Maestros_de_Clientes",
+          "title": "2.3 Datos Maestros de Clientes"
         },
         {
-          "number": 27,
-          "id": "10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES",
-          "title": "Asientos Contables Automáticos",
-          "category": "Contabilidad Básica"
+          "number": 2,
+          "id": "4.1_Datos_Maestros_de_Articulos",
+          "title": "4.1 Datos Maestros de Articulos"
+        },
+        {
+          "number": 3,
+          "id": "4.2_Grupos_de_Articulos",
+          "title": "4.2 Grupos de Articulos"
+        },
+        {
+          "number": 4,
+          "id": "4.3_Unidades_de_Medida_Vision_General",
+          "title": "4.3 Unidades de Medida Vision General"
+        },
+        {
+          "number": 5,
+          "id": "4.4_Unidades_de_Medida_Configuracion",
+          "title": "4.4 Unidades de Medida Configuracion"
+        },
+        {
+          "number": 6,
+          "id": "8.1_Determinacion_de_Precios_Conceptos",
+          "title": "8.1 Determinacion de Precios Conceptos"
+        },
+        {
+          "number": 7,
+          "id": "8.2_Creacion_de_Listas_de_Precios",
+          "title": "8.2 Creacion de Listas de Precios"
         }
-      ],
-      "requires": [],
-      "status": "definido",
-      "baseClasses": 2,
-      "extraClasses": 2,
-      "integratorClass": 1,
-      "extra": [
-        "Debe, haber, balance general y estado de resultados desde cero",
-        "IVA: crédito y débito fiscal en una factura"
       ]
     },
     {
       "id": "M03",
-      "career": "C01",
-      "name": "Socios de negocios y artículos: los datos maestros",
-      "purpose": "Crear y mantener clientes, proveedores y artículos, y entender por qué su calidad define la de todos los informes.",
-      "question": "¿Qué campo del maestro cambia qué informe?",
+      "modKey": "mod-3",
+      "number": 3,
+      "name": "Aprovisionamiento y Control de Inventarios",
+      "clasesCount": 5,
       "manuals": [
         {
-          "number": 57,
-          "id": "10_ItemInv_11_Item_ItemMD_ES",
-          "title": "Datos Maestros de Artículos",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 1,
+          "id": "3.1_Proceso_de_Compras_Vision_General",
+          "title": "3.1 Proceso de Compras Vision General"
         },
         {
-          "number": 58,
-          "id": "10_ItemInv_12_Item_ItemGrp_ES",
-          "title": "Grupos de Artículos",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 2,
+          "id": "3.2_Compras_Articulos_y_Documentos",
+          "title": "3.2 Compras Articulos y Documentos"
         },
         {
-          "number": 108,
-          "id": "10_Sales_21_Cust_Customers_ES",
-          "title": "Datos Maestros de Clientes",
-          "category": "Ventas"
+          "number": 3,
+          "id": "3.5_Entrada_de_Mercancias_GRPO",
+          "title": "3.5 Entrada de Mercancias GRPO"
+        },
+        {
+          "number": 4,
+          "id": "5.1_Gestion_de_Almacenes",
+          "title": "5.1 Gestion de Almacenes"
+        },
+        {
+          "number": 5,
+          "id": "5.2_Movimientos_de_Mercancia",
+          "title": "5.2 Movimientos de Mercancia"
+        },
+        {
+          "number": 6,
+          "id": "7.1_Ubicaciones_de_Almacen_Vision_Gener",
+          "title": "7.1 Ubicaciones de Almacen Vision Gener"
+        },
+        {
+          "number": 7,
+          "id": "7.2_Ubicaciones_de_Almacen_Configuracio",
+          "title": "7.2 Ubicaciones de Almacen Configuracio"
+        },
+        {
+          "number": 8,
+          "id": "5.3_Gestion_de_Series_y_Lotes",
+          "title": "5.3 Gestion de Series y Lotes"
+        },
+        {
+          "number": 9,
+          "id": "5.4_Series_y_Lotes_Valoracion",
+          "title": "5.4 Series y Lotes Valoracion"
+        },
+        {
+          "number": 10,
+          "id": "3.7_Costos_de_Importacion_Fletes",
+          "title": "3.7 Costos de Importacion Fletes"
+        },
+        {
+          "number": 11,
+          "id": "3.8_Gestion_de_Costos_de_Importacion_La",
+          "title": "3.8 Gestion de Costos de Importacion La"
         }
-      ],
-      "requires": [
-        "M01"
-      ],
-      "status": "definido",
-      "baseClasses": 3,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Calidad de datos maestros: qué campos alteran los informes"
       ]
     },
     {
       "id": "M04",
-      "career": "C01",
-      "name": "Unidades de medida y empaque",
-      "purpose": "Comprar, almacenar y vender en unidades distintas sin descuadrar el inventario.",
-      "question": "¿Cómo compro en cajas, guardo en unidades y vendo en pallets?",
+      "modKey": "mod-4",
+      "number": 4,
+      "name": "Gestión de Ventas y Order-to-Cash",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 59,
-          "id": "10_ItemInv_21_UoM_Overview_ES",
-          "title": "Unidades de Medida: Visión General",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 1,
+          "id": "2.1_Proceso_de_Ventas_Vision_General",
+          "title": "2.1 Proceso de Ventas Vision General"
         },
         {
-          "number": 64,
-          "id": "10_Item_22_UoM_Setup",
-          "title": "Unidades de Medida: Configuración",
-          "category": "Datos Maestros de Artículo"
+          "number": 2,
+          "id": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
+          "title": "2.2 De Pedido a Cobro Order to Cash"
         },
         {
-          "number": 65,
-          "id": "10_Item_23_UoM_Weight",
-          "title": "Unidades de Medida: Gestión por Peso",
-          "category": "Datos Maestros de Artículo"
+          "number": 3,
+          "id": "2.5_Automatizacion_del_Proceso_de_Venta",
+          "title": "2.5 Automatizacion del Proceso de Venta"
         },
         {
-          "number": 66,
-          "id": "10_Item_24_UoM_Packaging",
-          "title": "Unidades de Medida: Empaquetado",
-          "category": "Datos Maestros de Artículo"
+          "number": 4,
+          "id": "5.6_Proceso_de_Picking_y_Packing_Ventas",
+          "title": "5.6 Proceso de Picking y Packing Ventas"
+        },
+        {
+          "number": 5,
+          "id": "2.6_Devoluciones_y_Cambios_Ventas",
+          "title": "2.6 Devoluciones y Cambios Ventas"
+        },
+        {
+          "number": 6,
+          "id": "2.7_Notas_de_Credito_Ventas",
+          "title": "2.7 Notas de Credito Ventas"
         }
-      ],
-      "requires": [
-        "M03"
-      ],
-      "status": "definido",
-      "baseClasses": 4,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M05",
-      "career": "C02",
-      "name": "Ciclo de compras (Procure-to-Pay)",
-      "purpose": "Controlar la compra desde la solicitud hasta el pago, con recepción parcial, devoluciones y la cuenta puente.",
-      "question": "¿Qué recibimos, qué debemos y cuándo pagamos?",
+      "modKey": "mod-5",
+      "number": 5,
+      "name": "Estrategias Avanzadas de Precios",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 98,
-          "id": "10_Purch_11_Process_Process_ES",
-          "title": "Proceso de Compras: Visión General",
-          "category": "Compras y Aprovisionamiento"
+          "number": 1,
+          "id": "8.2_Creacion_de_Listas_de_Precios",
+          "title": "8.2 Creacion de Listas de Precios"
         },
         {
-          "number": 99,
-          "id": "10_Purch_12_Process_Items_ES",
-          "title": "Compras: Artículos y Documentos",
-          "category": "Compras y Aprovisionamiento"
+          "number": 2,
+          "id": "8.3_Actualizacion_de_Listas_de_Precios",
+          "title": "8.3 Actualizacion de Listas de Precios"
         },
         {
-          "number": 100,
-          "id": "10_Purch_13_Process_PurchaseReqQt",
-          "title": "Solicitudes de Compra y Cotizaciones",
-          "category": "Compras y Aprovisionamiento"
+          "number": 3,
+          "id": "8.4_Descuentos_por_Periodo_y_Volumen",
+          "title": "8.4 Descuentos por Periodo y Volumen"
         },
         {
-          "number": 101,
-          "id": "10_Purch_14_Process_Services",
-          "title": "Compras de Servicios",
-          "category": "Compras y Aprovisionamiento"
+          "number": 4,
+          "id": "8.5_Grupos_de_Descuento",
+          "title": "8.5 Grupos de Descuento"
         },
         {
-          "number": 102,
-          "id": "10_Purch_21_Issues_GRPO_ES",
-          "title": "Entrada de Mercancías (GRPO)",
-          "category": "Compras y Aprovisionamiento"
-        },
-        {
-          "number": 103,
-          "id": "10_Purch_22_Issues_ReturnsCM_ES",
-          "title": "Devoluciones y Notas de Crédito (Compras)",
-          "category": "Compras y Aprovisionamiento"
-        },
-        {
-          "number": 119,
-          "id": "CSL02_Procurement_Process_ES",
-          "title": "Caso Práctico: Proceso de Aprovisionamiento",
-          "category": "Casos Prácticos y Ejercicios"
-        },
-        {
-          "number": 120,
-          "id": "CSL02_Procurement_Process_Solution_ES",
-          "title": "Caso Práctico: Aprovisionamiento (Solución)",
-          "category": "Casos Prácticos y Ejercicios"
+          "number": 5,
+          "id": "8.6_Precios_Especiales_para_Socios_de_N",
+          "title": "8.6 Precios Especiales para Socios de N"
         }
-      ],
-      "requires": [
-        "M03",
-        "M02"
-      ],
-      "status": "definido",
-      "baseClasses": 8,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M06",
-      "career": "C02",
-      "name": "Costos de importación y portes (Landed Costs)",
-      "purpose": "Incorporar fletes, seguros y aranceles al costo del artículo para conocer el margen real.",
-      "question": "¿Cuánto me cuesta realmente lo que importé?",
+      "modKey": "mod-6",
+      "number": 6,
+      "name": "Gestión CRM y Servicios Post-venta",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 104,
-          "id": "10_Purch_32_LandedCost_Freight",
-          "title": "Costos de Importación: Fletes",
-          "category": "Compras y Aprovisionamiento"
+          "number": 1,
+          "id": "2.4_Gestion_de_Relaciones_con_Clientes_",
+          "title": "2.4 Gestion de Relaciones con Clientes "
         },
         {
-          "number": 105,
-          "id": "10_Purch_32_LandedCost_ManageLandedCosts",
-          "title": "Gestión de Costos de Importación (Landed Costs)",
-          "category": "Compras y Aprovisionamiento"
+          "number": 2,
+          "id": "2.5_Automatizacion_del_Proceso_de_Venta",
+          "title": "2.5 Automatizacion del Proceso de Venta"
+        },
+        {
+          "number": 3,
+          "id": "12.1_Gestion_de_Llamadas_de_Servicio",
+          "title": "12.1 Gestion de Llamadas de Servicio"
+        },
+        {
+          "number": 4,
+          "id": "7.6_Ubicaciones_de_Almacen_Numeros_de_S",
+          "title": "7.6 Ubicaciones de Almacen Numeros de S"
         }
-      ],
-      "requires": [
-        "M05"
-      ],
-      "status": "definido",
-      "baseClasses": 2,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Cómo el flete y los aranceles cambian el costo unitario y el margen"
       ]
     },
     {
       "id": "M07",
-      "career": "C03",
-      "name": "Ciclo de ventas (Order-to-Cash)",
-      "purpose": "Llevar la venta de la oferta al cobro, con automatización, devoluciones y notas de crédito.",
-      "question": "¿Qué prometimos, qué entregamos, qué facturamos y qué nos deben?",
+      "modKey": "mod-7",
+      "number": 7,
+      "name": "Contabilidad Central y NIIF",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 106,
-          "id": "10_Sales_11_Process_Overview_ES",
-          "title": "Proceso de Ventas: Visión General",
-          "category": "Ventas"
+          "number": 1,
+          "id": "13.1_Plan_de_Cuentas_Conceptos_Fundament",
+          "title": "13.1 Plan de Cuentas Conceptos Fundament"
         },
         {
-          "number": 107,
-          "id": "10_Sales_12_Process_Order2Cash_ES",
-          "title": "De Pedido a Cobro (Order to Cash)",
-          "category": "Ventas"
+          "number": 2,
+          "id": "13.3_Gestion_del_Plan_de_Cuentas",
+          "title": "13.3 Gestion del Plan de Cuentas"
         },
         {
-          "number": 110,
-          "id": "10_Sales_41_Process_Autom_ES",
-          "title": "Automatización del Proceso de Ventas",
-          "category": "Ventas"
+          "number": 3,
+          "id": "13.4_Cuentas_de_Mayor_por_Defecto_Vision",
+          "title": "13.4 Cuentas de Mayor por Defecto Vision"
         },
         {
-          "number": 111,
-          "id": "10_Sales_51_Issues_ReturnsExchange_ES",
-          "title": "Devoluciones y Cambios (Ventas)",
-          "category": "Ventas"
+          "number": 4,
+          "id": "13.5_Cuentas_de_Mayor_por_Defecto_Modo_T",
+          "title": "13.5 Cuentas de Mayor por Defecto Modo T"
         },
         {
-          "number": 112,
-          "id": "10_Sales_52_Issues_CM_ES",
-          "title": "Notas de Crédito (Ventas)",
-          "category": "Ventas"
+          "number": 5,
+          "id": "14.2_Asientos_Contables_Automaticos",
+          "title": "14.2 Asientos Contables Automaticos"
+        },
+        {
+          "number": 6,
+          "id": "15.1_Registro_de_Asientos_Contables",
+          "title": "15.1 Registro de Asientos Contables"
+        },
+        {
+          "number": 7,
+          "id": "15.2_Plantillas_de_Asientos_Recurrentes",
+          "title": "15.2 Plantillas de Asientos Recurrentes"
+        },
+        {
+          "number": 8,
+          "id": "15.4_Periodos_Contables_y_Ejercicios",
+          "title": "15.4 Periodos Contables y Ejercicios"
+        },
+        {
+          "number": 9,
+          "id": "15.5_Cierre_de_Periodo_Contable",
+          "title": "15.5 Cierre de Periodo Contable"
         }
-      ],
-      "requires": [
-        "M03",
-        "M02"
-      ],
-      "status": "definido",
-      "baseClasses": 5,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Del pedido al cobro: qué registra cada documento y cómo comprobarlo (clase piloto: src/content/lessons/m03-c01-order-to-cash.md)"
       ]
     },
     {
       "id": "M08",
-      "career": "C03",
-      "name": "Precios, descuentos y márgenes",
-      "purpose": "Definir listas de precios, descuentos y precios especiales sabiendo su efecto en el margen.",
-      "question": "¿A qué precio vendo y cuánto gano en cada venta?",
+      "modKey": "mod-8",
+      "number": 8,
+      "name": "Tesorería, Cobros y Pagos (Bancos)",
+      "clasesCount": 5,
       "manuals": [
         {
-          "number": 81,
-          "id": "10_Pricing_11_Concept_PrConcept_ES",
-          "title": "Determinación de Precios: Conceptos",
-          "category": "Determinación de Precios"
+          "number": 1,
+          "id": "16.1_Gestion_de_Pagos_Recibidos_y_Emitid",
+          "title": "16.1 Gestion de Pagos Recibidos y Emitid"
         },
         {
-          "number": 82,
-          "id": "10_Pricing_21_Pricelist_CreatePricelist_ES",
-          "title": "Creación de Listas de Precios",
-          "category": "Determinación de Precios"
+          "number": 2,
+          "id": "16.2_Asistente_de_Pagos_Payment_Wizard",
+          "title": "16.2 Asistente de Pagos Payment Wizard"
         },
         {
-          "number": 83,
-          "id": "10_Pricing_22_Pricelist_UpdatePricelist_ES",
-          "title": "Actualización de Listas de Precios",
-          "category": "Determinación de Precios"
+          "number": 3,
+          "id": "16.3_Reconciliacion_Bancaria",
+          "title": "16.3 Reconciliacion Bancaria"
         },
         {
-          "number": 84,
-          "id": "10_Pricing_31_DiscSP_PerVolDisc_ES",
-          "title": "Descuentos por Período y Volumen",
-          "category": "Determinación de Precios"
+          "number": 4,
+          "id": "15.6_Reconciliacion_Interna_de_Cuentas",
+          "title": "15.6 Reconciliacion Interna de Cuentas"
         },
         {
-          "number": 85,
-          "id": "10_Pricing_32_DiscSP_DiscGrp_ES",
-          "title": "Grupos de Descuento",
-          "category": "Determinación de Precios"
+          "number": 5,
+          "id": "17.3_Antiguedad_de_Saldos_Aging_Report",
+          "title": "17.3 Antiguedad de Saldos Aging Report"
         },
         {
-          "number": 86,
-          "id": "10_Pricing_33_DiscSP_SpPrBP_ES",
-          "title": "Precios Especiales para Socios de Negocio",
-          "category": "Determinación de Precios"
+          "number": 6,
+          "id": "17.4_Proceso_de_Reclamaciones_Dunning",
+          "title": "17.4 Proceso de Reclamaciones Dunning"
+        },
+        {
+          "number": 7,
+          "id": "fuente:banca_ec",
+          "title": "fuente:banca ec"
         }
-      ],
-      "requires": [
-        "M07"
-      ],
-      "status": "definido",
-      "baseClasses": 6,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Margen frente a markup: cómo calcularlos y compararlos"
       ]
     },
     {
       "id": "M09",
-      "career": "C08",
-      "name": "CRM y servicio postventa",
-      "purpose": "Gestionar oportunidades, tarjetas de equipo, contratos de servicio y llamadas con SLA.",
-      "question": "¿Cómo cuido al cliente antes y después de la venta?",
+      "modKey": "mod-9",
+      "number": 9,
+      "name": "Control de Activos Fijos",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 109,
-          "id": "10_Sales_31_CRM_CRM_ES",
-          "title": "Gestión de Relaciones con Clientes (CRM)",
-          "category": "Ventas"
+          "number": 1,
+          "id": "19.2_Activos_Fijos_Virtuales",
+          "title": "19.2 Activos Fijos Virtuales"
         },
         {
-          "number": 113,
-          "id": "10_Service_11_CSProcess_Process_ES",
-          "title": "Gestión de Llamadas de Servicio",
-          "category": "Gestión de Servicios"
-        }
-      ],
-      "requires": [
-        "M07"
-      ],
-      "status": "definido",
-      "baseClasses": 2,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
-    },
-    {
-      "id": "M23",
-      "career": "C08",
-      "name": "Gestión de proyectos y facturación por hitos",
-      "purpose": "Controlar etapas, presupuesto y facturación de proyectos con visión de rentabilidad.",
-      "question": "¿Está siendo rentable este proyecto hoy, no al final del mes?",
-      "manuals": [
-        {
-          "number": 96,
-          "id": "10_ProjectManage_11_ProjectManage",
-          "title": "Gestión de Proyectos",
-          "category": "Gestión de Proyectos"
+          "number": 2,
+          "id": "19.3_Activos_Fijos_Configuracion_Inicial",
+          "title": "19.3 Activos Fijos Configuracion Inicial"
         },
         {
-          "number": 97,
-          "id": "10_ProjectManage_11_ProjectManage_Billing",
-          "title": "Facturación de Proyectos",
-          "category": "Gestión de Proyectos"
+          "number": 3,
+          "id": "19.4_Activos_Fijos_Activacion_y_Datos_Ma",
+          "title": "19.4 Activos Fijos Activacion y Datos Ma"
+        },
+        {
+          "number": 4,
+          "id": "19.5_Activos_Fijos_Depreciacion_y_Ajuste",
+          "title": "19.5 Activos Fijos Depreciacion y Ajuste"
+        },
+        {
+          "number": 5,
+          "id": "19.6_Activos_Fijos_Bajas_y_Monitoreo",
+          "title": "19.6 Activos Fijos Bajas y Monitoreo"
         }
-      ],
-      "requires": [
-        "M07",
-        "M05"
-      ],
-      "status": "definido",
-      "baseClasses": 2,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M10",
-      "career": "C04",
-      "name": "Almacenes, movimientos e inventario físico",
-      "purpose": "Controlar existencias entre almacenes, traslados, consignación y conteos.",
-      "question": "¿Qué hay, dónde está y cuánto vale?",
+      "modKey": "mod-10",
+      "number": 10,
+      "name": "Planificación de Materiales (MRP)",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 60,
-          "id": "10_ItemInv_31_WM_WH_ES",
-          "title": "Gestión de Almacenes",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 1,
+          "id": "9.1_Planificacion_de_Necesidades_MRP_Pr",
+          "title": "9.1 Planificacion de Necesidades MRP Pr"
         },
         {
-          "number": 61,
-          "id": "10_ItemInv_32_WM_GM_ES",
-          "title": "Movimientos de Mercancía",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 2,
+          "id": "9.2_Pronosticos_de_Consumo_y_Demanda",
+          "title": "9.2 Pronosticos de Consumo y Demanda"
         },
         {
-          "number": 68,
-          "id": "10_Inven_13_WM_PhyInv",
-          "title": "Inventario Físico: Conteo y Ajuste",
-          "category": "Inventarios y Movimientos"
-        },
-        {
-          "number": 69,
-          "id": "10_Inven_21_PNP_PNPSales",
-          "title": "Proceso de Picking y Packing: Ventas",
-          "category": "Inventarios y Movimientos"
-        },
-        {
-          "number": 70,
-          "id": "10_Inven_22_PNP_PNPProduction",
-          "title": "Proceso de Picking y Packing: Producción",
-          "category": "Inventarios y Movimientos"
-        },
-        {
-          "number": 71,
-          "id": "10_Inven_23_PNP_PNPTTransfer",
-          "title": "Proceso de Picking y Packing: Transferencias",
-          "category": "Inventarios y Movimientos"
+          "number": 3,
+          "id": "9.3_MRP_y_Listas_de_Materiales_BOM",
+          "title": "9.3 MRP y Listas de Materiales BOM"
         }
-      ],
-      "requires": [
-        "M03",
-        "M04"
-      ],
-      "status": "definido",
-      "baseClasses": 6,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M11",
-      "career": "C04",
-      "name": "Valoración de inventario, lotes y series",
-      "purpose": "Elegir y entender el método de valoración y la trazabilidad por lote y serie.",
-      "question": "¿Cómo decide el método de costeo cuánto gano y cuánto impuesto pago?",
+      "modKey": "mod-11",
+      "number": 11,
+      "name": "Fabricación y Proyectos (BOM)",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 62,
-          "id": "10_ItemInv_41_Valuation_ValMethods_ES",
-          "title": "Métodos de Valoración de Inventario",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 1,
+          "id": "10.4_Lista_de_Materiales_BOM",
+          "title": "10.4 Lista de Materiales BOM"
         },
         {
-          "number": 63,
-          "id": "10_ItemInv_51_SNBatch_SNBatch_ES",
-          "title": "Gestión de Series y Lotes",
-          "category": "Gestión de Inventario y Artículos"
+          "number": 2,
+          "id": "10.1_Produccion_Vision_General",
+          "title": "10.1 Produccion Vision General"
         },
         {
-          "number": 67,
-          "id": "10_Item_42_SNBatch_Valuation",
-          "title": "Series y Lotes: Valoración",
-          "category": "Datos Maestros de Artículo"
+          "number": 3,
+          "id": "10.5_Proceso_Basico_de_Orden_de_Producci",
+          "title": "10.5 Proceso Basico de Orden de Producci"
+        },
+        {
+          "number": 4,
+          "id": "10.6_Subproductos_y_Costos_Adicionales",
+          "title": "10.6 Subproductos y Costos Adicionales"
+        },
+        {
+          "number": 5,
+          "id": "10.8_Contabilizacion_de_Ordenes_de_Produ",
+          "title": "10.8 Contabilizacion de Ordenes de Produ"
+        },
+        {
+          "number": 6,
+          "id": "10.9_Analisis_de_Costos_de_Produccion",
+          "title": "10.9 Analisis de Costos de Produccion"
+        },
+        {
+          "number": 7,
+          "id": "11.1_Gestion_de_Proyectos",
+          "title": "11.1 Gestion de Proyectos"
+        },
+        {
+          "number": 8,
+          "id": "11.2_Facturacion_de_Proyectos",
+          "title": "11.2 Facturacion de Proyectos"
         }
-      ],
-      "requires": [
-        "M10"
-      ],
-      "status": "definido",
-      "baseClasses": 3,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Cómo el método de valoración cambia el costo de ventas y el impuesto"
       ]
     },
     {
       "id": "M12",
-      "career": "C04",
-      "name": "Ubicaciones en almacén (Bin Locations)",
-      "purpose": "Operar bodegas grandes por pasillo, estantería y casilla.",
-      "question": "¿En qué casilla exacta está lo que el cliente necesita hoy?",
+      "modKey": "mod-12",
+      "number": 12,
+      "name": "Consultoría y Herramientas SQL",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 72,
-          "id": "10_BinLoc_11_Overview_Overview_ES",
-          "title": "Ubicaciones de Almacén: Visión General",
-          "category": "Ubicaciones en Almacén (Bin Locations)"
+          "number": 1,
+          "id": "22.1_Consultas_Personalizadas_Queries",
+          "title": "22.1 Consultas Personalizadas Queries"
         },
         {
-          "number": 73,
-          "id": "10_BinLoc_12_Setup_Setup",
-          "title": "Ubicaciones de Almacén: Configuración",
-          "category": "Ubicaciones en Almacén (Bin Locations)"
+          "number": 2,
+          "id": "23.6_Practica_de_Consultas_SQL",
+          "title": "23.6 Practica de Consultas SQL"
         },
         {
-          "number": 74,
-          "id": "10_BinLoc_13_Process_Process",
-          "title": "Ubicaciones de Almacén: Proceso Operativo",
-          "category": "Ubicaciones en Almacén (Bin Locations)"
+          "number": 3,
+          "id": "22.2_Sistema_de_Alertas_Automaticas",
+          "title": "22.2 Sistema de Alertas Automaticas"
         },
         {
-          "number": 75,
-          "id": "10_BinLoc_14_Process_Weight",
-          "title": "Ubicaciones de Almacén: Gestión por Peso",
-          "category": "Ubicaciones en Almacén (Bin Locations)"
+          "number": 4,
+          "id": "22.3_Procesos_de_Aprobacion",
+          "title": "22.3 Procesos de Aprobacion"
         },
         {
-          "number": 76,
-          "id": "10_BinLoc_15_Reporting_Reporting",
-          "title": "Ubicaciones de Almacén: Informes",
-          "category": "Ubicaciones en Almacén (Bin Locations)"
+          "number": 5,
+          "id": "22.4_Campos_Definidos_por_el_Usuario_UDF",
+          "title": "22.4 Campos Definidos por el Usuario UDF"
         },
         {
-          "number": 77,
-          "id": "10_BinLoc_16_Serial_Serial",
-          "title": "Ubicaciones de Almacén: Números de Serie",
-          "category": "Ubicaciones en Almacén (Bin Locations)"
+          "number": 6,
+          "id": "22.5_Valores_Definidos_por_el_Usuario_UD",
+          "title": "22.5 Valores Definidos por el Usuario UD"
+        },
+        {
+          "number": 7,
+          "id": "20.6_Importacion_de_Datos_desde_Excel",
+          "title": "20.6 Importacion de Datos desde Excel"
+        },
+        {
+          "number": 8,
+          "id": "20.7_Uso_del_Data_Transfer_Workbench_DTW",
+          "title": "20.7 Uso del Data Transfer Workbench DTW"
         }
-      ],
-      "requires": [
-        "M10"
-      ],
-      "status": "definido",
-      "baseClasses": 6,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M13",
-      "career": "C05",
-      "name": "Producción: recetas, recursos y órdenes",
-      "purpose": "Modelar listas de materiales y recursos y ejecutar órdenes de producción.",
-      "question": "¿Qué necesito para fabricar y cuánto me cuesta?",
+      "modKey": "mod-13",
+      "number": 13,
+      "name": "Compras Avanzadas",
+      "clasesCount": 3,
       "manuals": [
         {
-          "number": 87,
-          "id": "10_Production_11_Overview_Overview_ES",
-          "title": "Producción: Visión General",
-          "category": "Producción"
+          "number": 1,
+          "id": "3.3_Solicitudes_de_Compra_y_Cotizacione",
+          "title": "3.3 Solicitudes de Compra y Cotizacione"
         },
         {
-          "number": 88,
-          "id": "10_Production_21_Resources_Resources_ES",
-          "title": "Recursos de Producción",
-          "category": "Producción"
+          "number": 2,
+          "id": "3.4_Compras_de_Servicios",
+          "title": "3.4 Compras de Servicios"
         },
         {
-          "number": 89,
-          "id": "10_Production_22_Resources_Capacity_ES",
-          "title": "Capacidad de Recursos",
-          "category": "Producción"
-        },
-        {
-          "number": 90,
-          "id": "10_Production_31_BOM_BOM_ES",
-          "title": "Lista de Materiales (BOM)",
-          "category": "Producción"
-        },
-        {
-          "number": 91,
-          "id": "10_Production_41_Process_BasicProductionProcess_ES",
-          "title": "Proceso Básico de Orden de Producción",
-          "category": "Producción"
-        },
-        {
-          "number": 92,
-          "id": "10_Production_42_Process_ByProductsandAdditional",
-          "title": "Subproductos y Costos Adicionales",
-          "category": "Producción"
-        },
-        {
-          "number": 93,
-          "id": "10_Production_42_Process_RoutingProductionProcess_ES",
-          "title": "Rutas de Producción (Routing)",
-          "category": "Producción"
+          "number": 3,
+          "id": "3.6_Devoluciones_y_Notas_de_Credito_Com",
+          "title": "3.6 Devoluciones y Notas de Credito Com"
         }
-      ],
-      "requires": [
-        "M10"
-      ],
-      "status": "definido",
-      "baseClasses": 7,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M14",
-      "career": "C05",
-      "name": "Contabilidad y costo de producción",
-      "purpose": "Seguir el costo desde las materias primas hasta el producto terminado y sus desviaciones.",
-      "question": "¿Por qué el costo real no coincide con el estándar?",
+      "modKey": "mod-14",
+      "number": 14,
+      "name": "Unidades de Medida y Valoración de Inventario",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 94,
-          "id": "10_Production_51_Accounting_Accounting",
-          "title": "Contabilización de Órdenes de Producción",
-          "category": "Producción"
+          "number": 1,
+          "id": "4.5_Unidades_de_Medida_Gestion_por_Peso",
+          "title": "4.5 Unidades de Medida Gestion por Peso"
         },
         {
-          "number": 95,
-          "id": "10_Production_52_Accounting_Cost",
-          "title": "Análisis de Costos de Producción",
-          "category": "Producción"
+          "number": 2,
+          "id": "4.6_Unidades_de_Medida_Empaquetado",
+          "title": "4.6 Unidades de Medida Empaquetado"
+        },
+        {
+          "number": 3,
+          "id": "4.7_Metodos_de_Valoracion_de_Inventario",
+          "title": "4.7 Metodos de Valoracion de Inventario"
+        },
+        {
+          "number": 4,
+          "id": "18.3_Ajuste_de_Costos_de_Inventario",
+          "title": "18.3 Ajuste de Costos de Inventario"
         }
-      ],
-      "requires": [
-        "M13",
-        "M16"
-      ],
-      "status": "definido",
-      "baseClasses": 2,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M15",
-      "career": "C05",
-      "name": "Planificación de necesidades (MRP)",
-      "purpose": "Calcular qué comprar o fabricar, cuánto y cuándo, usando demanda y pronósticos.",
-      "question": "¿Qué debo pedir hoy para no quedarme sin stock ni sobrecomprar?",
+      "modKey": "mod-15",
+      "number": 15,
+      "name": "Operación de Almacén e Inventario Físico",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 78,
-          "id": "10_MRP_11_MRP_Process_ES",
-          "title": "Planificación de Necesidades (MRP): Proceso",
-          "category": "Planificación de Materiales (MRP)"
+          "number": 1,
+          "id": "7.3_Ubicaciones_de_Almacen_Proceso_Oper",
+          "title": "7.3 Ubicaciones de Almacen Proceso Oper"
         },
         {
-          "number": 79,
-          "id": "10_MRP_12_ConsumeForecast",
-          "title": "Pronósticos de Consumo y Demanda",
-          "category": "Planificación de Materiales (MRP)"
+          "number": 2,
+          "id": "7.4_Ubicaciones_de_Almacen_Gestion_por_",
+          "title": "7.4 Ubicaciones de Almacen Gestion por "
         },
         {
-          "number": 80,
-          "id": "10_MRP_13_MRP_BOM",
-          "title": "MRP y Listas de Materiales (BOM)",
-          "category": "Planificación de Materiales (MRP)"
+          "number": 3,
+          "id": "7.5_Ubicaciones_de_Almacen_Informes",
+          "title": "7.5 Ubicaciones de Almacen Informes"
+        },
+        {
+          "number": 4,
+          "id": "5.5_Inventario_Fisico_Conteo_y_Ajuste",
+          "title": "5.5 Inventario Fisico Conteo y Ajuste"
         }
-      ],
-      "requires": [
-        "M13",
-        "M05"
-      ],
-      "status": "definido",
-      "baseClasses": 3,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M16",
-      "career": "C06",
-      "name": "Plan de cuentas, monedas y determinación de cuentas",
-      "purpose": "Estructurar el plan de cuentas y definir a qué cuenta va cada transacción.",
-      "question": "¿Por qué este documento contabilizó en esta cuenta?",
+      "modKey": "mod-16",
+      "number": 16,
+      "name": "Picking, Packing y Despacho",
+      "clasesCount": 2,
       "manuals": [
         {
-          "number": 45,
-          "id": "10_FinSetup_11_COA_COAConcepts_ES",
-          "title": "Plan de Cuentas: Conceptos Fundamentales",
-          "category": "Configuración Financiera"
+          "number": 1,
+          "id": "6.1_Proceso_de_Picking_y_Packing_Produc",
+          "title": "6.1 Proceso de Picking y Packing Produc"
         },
         {
-          "number": 46,
-          "id": "10_FinSetup_11_Currencies_Currencies_ES",
-          "title": "Configuración de Monedas y Tipos de Cambio",
-          "category": "Configuración Financiera"
-        },
-        {
-          "number": 47,
-          "id": "10_FinSetup_12_COA_ManageCOA",
-          "title": "Gestión del Plan de Cuentas",
-          "category": "Configuración Financiera"
-        },
-        {
-          "number": 48,
-          "id": "10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES",
-          "title": "Cuentas de Mayor por Defecto: Visión General",
-          "category": "Configuración Financiera"
-        },
-        {
-          "number": 49,
-          "id": "10_FinSetup_22_DefaultGLAcc_Traditional",
-          "title": "Cuentas de Mayor por Defecto: Modo Tradicional",
-          "category": "Configuración Financiera"
-        },
-        {
-          "number": 50,
-          "id": "10_FinSetup_23_DefaultGLAcc_Advanced",
-          "title": "Cuentas de Mayor por Defecto: Modo Avanzado",
-          "category": "Configuración Financiera"
+          "number": 2,
+          "id": "6.2_Proceso_de_Picking_y_Packing_Transf",
+          "title": "6.2 Proceso de Picking y Packing Transf"
         }
-      ],
-      "requires": [
-        "M02"
-      ],
-      "status": "definido",
-      "baseClasses": 6,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M17",
-      "career": "C06",
-      "name": "Asientos, períodos y cierre contable",
-      "purpose": "Registrar asientos, plantillas y vouchers, y cerrar períodos y conciliaciones internas.",
-      "question": "¿Cómo cierro el mes con la certeza de que todo cuadra?",
+      "modKey": "mod-17",
+      "number": 17,
+      "name": "Monedas, Cierre e Informes Financieros",
+      "clasesCount": 4,
       "manuals": [
         {
-          "number": 39,
-          "id": "10_FinProcess_11_PostJE_PostJE_ES",
-          "title": "Registro de Asientos Contables",
-          "category": "Procesos Financieros"
+          "number": 1,
+          "id": "13.2_Configuracion_de_Monedas_y_Tipos_de",
+          "title": "13.2 Configuracion de Monedas y Tipos de"
         },
         {
-          "number": 40,
-          "id": "10_FinProcess_12_PostJE_template_ES",
-          "title": "Plantillas de Asientos Recurrentes",
-          "category": "Procesos Financieros"
+          "number": 2,
+          "id": "13.6_Cuentas_de_Mayor_por_Defecto_Modo_A",
+          "title": "13.6 Cuentas de Mayor por Defecto Modo A"
         },
         {
-          "number": 41,
-          "id": "10_FinProcess_13_PostJE_voucher_ES",
-          "title": "Documentos Preliminares (Vouchers)",
-          "category": "Procesos Financieros"
+          "number": 3,
+          "id": "14.1_Conceptos_Financieros_Basicos",
+          "title": "14.1 Conceptos Financieros Basicos"
         },
         {
-          "number": 42,
-          "id": "10_FinProcess_21_PostPeriods_PostPeriods_ES",
-          "title": "Periodos Contables y Ejercicios",
-          "category": "Procesos Financieros"
+          "number": 4,
+          "id": "15.3_Documentos_Preliminares_Vouchers",
+          "title": "15.3 Documentos Preliminares Vouchers"
         },
         {
-          "number": 43,
-          "id": "10_FinProcess_22_PostPeriods_PeriodClose",
-          "title": "Cierre de Periodo Contable",
-          "category": "Procesos Financieros"
+          "number": 5,
+          "id": "fuente:nomina_ec_2026",
+          "title": "fuente:nomina ec 2026"
         },
         {
-          "number": 44,
-          "id": "10_FinProcess_31_InternalRecon_InternalRecon_ES",
-          "title": "Reconciliación Interna de Cuentas",
-          "category": "Procesos Financieros"
+          "number": 6,
+          "id": "17.1_Informes_Financieros_del_Sistema",
+          "title": "17.1 Informes Financieros del Sistema"
+        },
+        {
+          "number": 7,
+          "id": "17.2_Informe_de_Flujo_de_Caja",
+          "title": "17.2 Informe de Flujo de Caja"
         }
-      ],
-      "requires": [
-        "M16"
-      ],
-      "status": "definido",
-      "baseClasses": 6,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M18",
-      "career": "C06",
-      "name": "Tesorería: cobros, pagos y conciliación bancaria",
-      "purpose": "Gestionar medios de pago, pagos masivos y conciliar contra el extracto del banco.",
-      "question": "¿Cuánta caja tengo realmente y qué falta conciliar?",
+      "modKey": "mod-18",
+      "number": 18,
+      "name": "Costos, Dimensiones y Presupuestos",
+      "clasesCount": 3,
       "manuals": [
         {
-          "number": 28,
-          "id": "10_BankProcess_11_Handling_Payments_ES",
-          "title": "Gestión de Pagos Recibidos y Emitidos",
-          "category": "Gestión Bancaria y Pagos"
+          "number": 1,
+          "id": "18.1_Contabilidad_de_Costos",
+          "title": "18.1 Contabilidad de Costos"
         },
         {
-          "number": 29,
-          "id": "10_BankProcess_12_Payments_Payment Wizard_ES",
-          "title": "Asistente de Pagos (Payment Wizard)",
-          "category": "Gestión Bancaria y Pagos"
+          "number": 2,
+          "id": "18.2_Centros_de_Costo_Multiples_Dimensio",
+          "title": "18.2 Centros de Costo Multiples Dimensio"
         },
         {
-          "number": 30,
-          "id": "10_BankProcess_21_BankReconcile_Overview_ES",
-          "title": "Reconciliación Bancaria",
-          "category": "Gestión Bancaria y Pagos"
+          "number": 3,
+          "id": "18.4_Gestion_de_Presupuestos",
+          "title": "18.4 Gestion de Presupuestos"
         }
-      ],
-      "requires": [
-        "M17"
-      ],
-      "status": "definido",
-      "baseClasses": 3,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M19",
-      "career": "C06",
-      "name": "Activos fijos",
-      "purpose": "Capitalizar, depreciar, ajustar y dar de baja activos con su impacto contable.",
-      "question": "¿Cuánto vale hoy cada activo y cuándo deja de ser útil?",
+      "modKey": "mod-19",
+      "number": 19,
+      "name": "Facturación Electrónica y Retenciones SRI 2026",
+      "clasesCount": 10,
       "manuals": [
         {
-          "number": 51,
-          "id": "10_FixedAsset_11_FixedAsset_Intro_ES",
-          "title": "Activos Fijos: Introducción",
-          "category": "Activos Fijos"
+          "number": 1,
+          "id": "fuente:sri_2026",
+          "title": "fuente:sri 2026"
         },
         {
-          "number": 52,
-          "id": "10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES",
-          "title": "Activos Fijos Virtuales",
-          "category": "Activos Fijos"
+          "number": 2,
+          "id": "3.2_Compras_Articulos_y_Documentos",
+          "title": "3.2 Compras Articulos y Documentos"
         },
         {
-          "number": 53,
-          "id": "10_FixedAsset_21_FixedAsset_InitSettings",
-          "title": "Activos Fijos: Configuración Inicial",
-          "category": "Activos Fijos"
-        },
-        {
-          "number": 54,
-          "id": "10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD",
-          "title": "Activos Fijos: Activación y Datos Maestros",
-          "category": "Activos Fijos"
-        },
-        {
-          "number": 55,
-          "id": "10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments",
-          "title": "Activos Fijos: Depreciación y Ajustes",
-          "category": "Activos Fijos"
-        },
-        {
-          "number": 56,
-          "id": "10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring",
-          "title": "Activos Fijos: Bajas y Monitoreo",
-          "category": "Activos Fijos"
+          "number": 3,
+          "id": "fuente:impuestos_avanzados_2026",
+          "title": "fuente:impuestos avanzados 2026"
         }
-      ],
-      "requires": [
-        "M16"
-      ],
-      "status": "definido",
-      "baseClasses": 6,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
       "id": "M20",
-      "career": "C07",
-      "name": "Informes financieros y de caja",
-      "purpose": "Leer balances, flujo de caja, antigüedad de saldos y cobranza, y saber comprobarlos.",
-      "question": "¿Puedo confiar en este informe?",
+      "modKey": "mod-20",
+      "number": 20,
+      "name": "Recursos, Capacidad y Rutas de Producción",
+      "clasesCount": 3,
       "manuals": [
         {
-          "number": 31,
-          "id": "10_ControlReports_11_FinReports_FinReports_ES",
-          "title": "Informes Financieros del Sistema",
-          "category": "Informes Financieros y Control"
+          "number": 1,
+          "id": "10.2_Recursos_de_Produccion",
+          "title": "10.2 Recursos de Produccion"
         },
         {
-          "number": 32,
-          "id": "10_ControlReports_21_CashReports_cashflow_ES",
-          "title": "Informe de Flujo de Caja",
-          "category": "Informes Financieros y Control"
+          "number": 2,
+          "id": "10.3_Capacidad_de_Recursos",
+          "title": "10.3 Capacidad de Recursos"
         },
         {
-          "number": 33,
-          "id": "10_ControlReports_22_CashReports_Aging_ES",
-          "title": "Antigüedad de Saldos (Aging Report)",
-          "category": "Informes Financieros y Control"
-        },
-        {
-          "number": 34,
-          "id": "10_ControlReports_23_CashReports_Dunning",
-          "title": "Proceso de Reclamaciones (Dunning)",
-          "category": "Informes Financieros y Control"
+          "number": 3,
+          "id": "10.7_Rutas_de_Produccion_Routing",
+          "title": "10.7 Rutas de Produccion Routing"
         }
-      ],
-      "requires": [
-        "M17"
-      ],
-      "status": "definido",
-      "baseClasses": 4,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Cómo verificar un informe: cuadre de auxiliares contra mayor"
       ]
     },
     {
       "id": "M21",
-      "career": "C07",
-      "name": "Costos, dimensiones y presupuestos",
-      "purpose": "Analizar costos por centro y dimensión, ajustar costos y controlar presupuestos.",
-      "question": "¿Qué áreas y productos generan o consumen margen?",
+      "modKey": "mod-21",
+      "number": 21,
+      "name": "Administración del Sistema",
+      "clasesCount": 6,
       "manuals": [
         {
-          "number": 35,
-          "id": "10_CostandBudget_11_CostAcc_CostAcc_ES",
-          "title": "Contabilidad de Costos",
-          "category": "Costos y Presupuestos"
+          "number": 1,
+          "id": "21.4_Numeracion_de_Documentos_y_Datos_Ma",
+          "title": "21.4 Numeracion de Documentos y Datos Ma"
         },
         {
-          "number": 36,
-          "id": "10_CostandBudget_12_CostAcc_MultiDimensions_ES",
-          "title": "Centros de Costo: Múltiples Dimensiones",
-          "category": "Costos y Presupuestos"
+          "number": 2,
+          "id": "21.6_Disenos_de_Impresion_Print_Layouts",
+          "title": "21.6 Disenos de Impresion Print Layouts"
         },
         {
-          "number": 37,
-          "id": "10_CostandBudget_13_CostAcc_CostAdjustment",
-          "title": "Ajuste de Costos de Inventario",
-          "category": "Costos y Presupuestos"
+          "number": 3,
+          "id": "21.7_Preferencias_de_Correo_Electronico",
+          "title": "21.7 Preferencias de Correo Electronico"
         },
         {
-          "number": 38,
-          "id": "10_CostandBudget_21_Budget_Budget",
-          "title": "Gestión de Presupuestos",
-          "category": "Costos y Presupuestos"
+          "number": 4,
+          "id": "21.5_Plantillas_de_Configuracion_de_Inte",
+          "title": "21.5 Plantillas de Configuracion de Inte"
+        },
+        {
+          "number": 5,
+          "id": "21.3_Propiedad_de_los_Datos_Data_Ownersh",
+          "title": "21.3 Propiedad de los Datos Data Ownersh"
+        },
+        {
+          "number": 6,
+          "id": "23.1_Herramientas_de_Soporte_y_Diagnosti",
+          "title": "23.1 Herramientas de Soporte y Diagnosti"
+        },
+        {
+          "number": 7,
+          "id": "21.1_Configuracion_de_Usuarios_y_Grupos",
+          "title": "21.1 Configuracion de Usuarios y Grupos"
+        },
+        {
+          "number": 8,
+          "id": "20.3_Configuraciones_Clave_del_Sistema",
+          "title": "20.3 Configuraciones Clave del Sistema"
+        },
+        {
+          "number": 9,
+          "id": "22.2_Sistema_de_Alertas_Automaticas",
+          "title": "22.2 Sistema de Alertas Automaticas"
+        },
+        {
+          "number": 10,
+          "id": "21.2_Autorizaciones_Generales_del_Sistem",
+          "title": "21.2 Autorizaciones Generales del Sistem"
         }
-      ],
-      "requires": [
-        "M20"
-      ],
-      "status": "definido",
-      "baseClasses": 4,
-      "extraClasses": 2,
-      "integratorClass": 1,
-      "extra": [
-        "Costos fijos y variables: cómo clasificarlos en cuentas y centros de costo",
-        "Punto de equilibrio y margen de contribución con datos del sistema"
       ]
     },
     {
       "id": "M22",
-      "career": "C07",
-      "name": "Consultas y analítica",
-      "purpose": "Construir consultas propias y entender la capa analítica y los indicadores.",
-      "question": "¿Cómo obtengo la respuesta que ningún informe estándar me da?",
+      "modKey": "mod-22",
+      "number": 22,
+      "name": "Extensibilidad y Analítica",
+      "clasesCount": 2,
       "manuals": [
         {
-          "number": 4,
-          "id": "10_Impl_11_CustomTools_Queries_ES",
-          "title": "Consultas Personalizadas (Queries)",
-          "category": "Implementación y Configuración"
+          "number": 1,
+          "id": "22.6_Tablas_Definidas_por_el_Usuario_UDT",
+          "title": "22.6 Tablas Definidas por el Usuario UDT"
         },
         {
-          "number": 10,
-          "id": "10_Impl_17_CustomTools_IntroAnalytics_ES",
-          "title": "Introducción a SAP Analytics",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 115,
-          "id": "CSI08_Query Practice_Solutions",
-          "title": "Práctica de Consultas SQL: Soluciones",
-          "category": "Casos Prácticos y Ejercicios"
-        },
-        {
-          "number": 116,
-          "id": "CSI08_Query_Practice",
-          "title": "Práctica de Consultas SQL",
-          "category": "Casos Prácticos y Ejercicios"
+          "number": 2,
+          "id": "22.7_Introduccion_a_SAP_Analytics",
+          "title": "22.7 Introduccion a SAP Analytics"
         }
-      ],
-      "requires": [
-        "M01"
-      ],
-      "status": "definido",
-      "baseClasses": 4,
-      "extraClasses": 1,
-      "integratorClass": 1,
-      "extra": [
-        "Indicadores gerenciales: rotación de inventario, DSO/DPO y clasificación ABC"
+      ]
+    },
+    {
+      "id": "M23",
+      "modKey": "mod-23",
+      "number": 23,
+      "name": "Implementación, Saldos Iniciales y Go-Live",
+      "clasesCount": 4,
+      "manuals": [
+        {
+          "number": 1,
+          "id": "20.1_Metodologia_de_Implementacion_SAP",
+          "title": "20.1 Metodologia de Implementacion SAP"
+        },
+        {
+          "number": 2,
+          "id": "20.2_Asistente_Express_de_Configuracion",
+          "title": "20.2 Asistente Express de Configuracion"
+        },
+        {
+          "number": 3,
+          "id": "20.4_Carga_de_Saldos_Iniciales",
+          "title": "20.4 Carga de Saldos Iniciales"
+        },
+        {
+          "number": 4,
+          "id": "20.5_Copia_Rapida_entre_Companias_Quick_",
+          "title": "20.5 Copia Rapida entre Companias Quick "
+        },
+        {
+          "number": 5,
+          "id": "20.8_Importacion_de_Documentos_con_DTW",
+          "title": "20.8 Importacion de Documentos con DTW"
+        }
       ]
     },
     {
       "id": "M24",
-      "career": "C09",
-      "name": "Metodología y arranque de implementación",
-      "purpose": "Planificar una implementación, configurar los parámetros clave y cargar saldos de apertura.",
-      "question": "¿Qué decisiones de arranque no tienen marcha atrás?",
+      "modKey": "mod-24",
+      "number": 24,
+      "name": "Proyecto Integrador",
+      "clasesCount": 3,
       "manuals": [
         {
-          "number": 11,
-          "id": "10_Impl_21_ImplTools_ImplementationMethodology_ES",
-          "title": "Metodología de Implementación SAP",
-          "category": "Implementación y Configuración"
+          "number": 1,
+          "id": "23.2_Caso_Practico_Introduccion",
+          "title": "23.2 Caso Practico Introduccion"
         },
         {
-          "number": 12,
-          "id": "10_Impl_22_ImplTools_ExpressWizard_ES",
-          "title": "Asistente Express de Configuración",
-          "category": "Implementación y Configuración"
+          "number": 2,
+          "id": "23.3_Caso_Practico_Introduccion_Solucion",
+          "title": "23.3 Caso Practico Introduccion Solucion"
         },
         {
-          "number": 13,
-          "id": "10_Impl_23_ImplTools_Key_Settings_ES",
-          "title": "Configuraciones Clave del Sistema",
-          "category": "Implementación y Configuración"
+          "number": 3,
+          "id": "23.4_Caso_Practico_Proceso_de_Aprovision",
+          "title": "23.4 Caso Practico Proceso de Aprovision"
         },
         {
-          "number": 14,
-          "id": "10_Impl_25_ImplTools_OpeningBalances",
-          "title": "Carga de Saldos Iniciales",
-          "category": "Implementación y Configuración"
+          "number": 4,
+          "id": "23.5_Caso_Practico_Aprovisionamiento_Sol",
+          "title": "23.5 Caso Practico Aprovisionamiento Sol"
         },
-        {
-          "number": 15,
-          "id": "10_Impl_26_ImplTools_QuickCopy",
-          "title": "Copia Rápida entre Compañías (Quick Copy)",
-          "category": "Implementación y Configuración"
-        }
-      ],
-      "requires": [
-        "M01"
-      ],
-      "status": "definido",
-      "baseClasses": 5,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
-    },
-    {
-      "id": "M25",
-      "career": "C09",
-      "name": "Migración de datos (DTW y Excel)",
-      "purpose": "Cargar datos maestros y documentos desde Excel sin duplicar saldos.",
-      "question": "¿Cómo migro la historia de la empresa sin corromper la contabilidad?",
-      "manuals": [
-        {
-          "number": 16,
-          "id": "10_Impl_31_ImportfromExcel",
-          "title": "Importación de Datos desde Excel",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 19,
-          "id": "10_Impl_32_Using_Data_Trans_Workbench",
-          "title": "Uso del Data Transfer Workbench (DTW)",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 20,
-          "id": "10_Impl_33_Importing_Docs_using_DTW",
-          "title": "Importación de Documentos con DTW",
-          "category": "Implementación y Configuración"
-        }
-      ],
-      "requires": [
-        "M24"
-      ],
-      "status": "definido",
-      "baseClasses": 3,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
-    },
-    {
-      "id": "M26",
-      "career": "C09",
-      "name": "Usuarios, autorizaciones y numeración",
-      "purpose": "Controlar quién ve y hace qué, y cómo se numeran documentos y maestros.",
-      "question": "¿Quién puede ver qué dato de mi empresa?",
-      "manuals": [
-        {
-          "number": 17,
-          "id": "10_Impl_31_SystemSetup_Users_Groups_ES",
-          "title": "Configuración de Usuarios y Grupos",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 18,
-          "id": "10_Impl_32_SystemSetup_GeneralAuthorizations_ES",
-          "title": "Autorizaciones Generales del Sistema",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 21,
-          "id": "10_Impl_33_SystemSetup_DataOwnership_ES",
-          "title": "Propiedad de los Datos (Data Ownership)",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 22,
-          "id": "10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES",
-          "title": "Numeración de Documentos y Datos Maestros",
-          "category": "Implementación y Configuración"
-        }
-      ],
-      "requires": [
-        "M24"
-      ],
-      "status": "definido",
-      "baseClasses": 4,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
-    },
-    {
-      "id": "M27",
-      "career": "C09",
-      "name": "Campos, valores y tablas definidos por el usuario",
-      "purpose": "Extender el sistema con campos, valores y tablas propias sin romper el soporte.",
-      "question": "¿Cómo adapto SAP a lo que mi negocio necesita registrar?",
-      "manuals": [
-        {
-          "number": 7,
-          "id": "10_Impl_14_CustomTools_UserDefinedFields_ES",
-          "title": "Campos Definidos por el Usuario (UDF)",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 8,
-          "id": "10_Impl_15_CustomTools_UserDefinedValues_ES",
-          "title": "Valores Definidos por el Usuario (UDV)",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 9,
-          "id": "10_Impl_16_CustomTools_UserDefinedTables_ES",
-          "title": "Tablas Definidas por el Usuario (UDT)",
-          "category": "Implementación y Configuración"
-        }
-      ],
-      "requires": [
-        "M26"
-      ],
-      "status": "definido",
-      "baseClasses": 3,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
-    },
-    {
-      "id": "M28",
-      "career": "C09",
-      "name": "Alertas, aprobaciones y plantillas del sistema",
-      "purpose": "Automatizar avisos y aprobaciones y personalizar impresión, correo y pantallas.",
-      "question": "¿Cómo hago que el sistema avise y controle por excepción?",
-      "manuals": [
         {
           "number": 5,
-          "id": "10_Impl_12_CustomTools_Alerts_ES",
-          "title": "Sistema de Alertas Automáticas",
-          "category": "Implementación y Configuración"
+          "id": "23.7_Practica_de_Consultas_SQL_Solucione",
+          "title": "23.7 Practica de Consultas SQL Solucione"
         },
         {
           "number": 6,
-          "id": "10_Impl_13_CustomTools_ApprovalProcesses_ES",
-          "title": "Procesos de Aprobación",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 23,
-          "id": "10_Impl_35_SystemSetup_UIConfigurationTemplates_ES",
-          "title": "Plantillas de Configuración de Interfaz (UI)",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 24,
-          "id": "10_Impl_36_SystemSetup_Print_layouts",
-          "title": "Diseños de Impresión (Print Layouts)",
-          "category": "Implementación y Configuración"
-        },
-        {
-          "number": 25,
-          "id": "10_Impl_39_SystemSetup_EmailPrefrences",
-          "title": "Preferencias de Correo Electrónico",
-          "category": "Implementación y Configuración"
+          "id": "23.6_Practica_de_Consultas_SQL",
+          "title": "23.6 Practica de Consultas SQL"
         }
-      ],
-      "requires": [
-        "M26"
-      ],
-      "status": "definido",
-      "baseClasses": 5,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
+      ]
     },
     {
-      "id": "M29",
-      "career": "C09",
-      "name": "Soporte técnico y plataforma RSP",
-      "purpose": "Diagnosticar, documentar y escalar incidentes con el modelo N1/N2/N3.",
-      "question": "¿Cuándo es un error del sistema y cuándo es un error de uso?",
+      "id": "M25",
+      "modKey": "mod-25",
+      "number": 25,
+      "name": "Nómina y Talento Humano Ecuador 2026",
+      "clasesCount": 6,
       "manuals": [
         {
-          "number": 114,
-          "id": "10_Support_11_SupportProcTool_ES",
-          "title": "Herramientas de Soporte y Diagnóstico",
-          "category": "Herramientas de Soporte"
+          "number": 1,
+          "id": "fuente:nomina_ec_2026",
+          "title": "fuente:nomina ec 2026"
+        },
+        {
+          "number": 2,
+          "id": "fuente:impuestos_avanzados_2026",
+          "title": "fuente:impuestos avanzados 2026"
         }
-      ],
-      "requires": [
-        "M24"
-      ],
-      "status": "definido",
-      "baseClasses": 1,
-      "extraClasses": 0,
-      "integratorClass": 1,
-      "extra": []
-    },
-    {
-      "id": "M30",
-      "career": "C10",
-      "name": "Facturación electrónica y retenciones SRI",
-      "purpose": "Emitir comprobantes electrónicos y aplicar retenciones en la fuente en SAP B1.",
-      "question": "¿Cómo cumplo con el SRI sin trabajo manual?",
-      "manuals": [],
-      "requires": [
-        "M07",
-        "M16"
-      ],
-      "status": "propuesto",
-      "baseClasses": 0,
-      "extraClasses": 0,
-      "integratorClass": 0,
-      "extra": []
-    },
-    {
-      "id": "M31",
-      "career": "C10",
-      "name": "ATS y formularios SRI",
-      "purpose": "Generar el ATS y cruzarlo contra los formularios 103 y 104.",
-      "question": "¿Mis declaraciones coinciden con mi contabilidad?",
-      "manuals": [],
-      "requires": [
-        "M30"
-      ],
-      "status": "propuesto",
-      "baseClasses": 0,
-      "extraClasses": 0,
-      "integratorClass": 0,
-      "extra": []
+      ]
     }
   ]
 }

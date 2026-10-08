@@ -1,0 +1,5660 @@
+[
+  {
+    "id": "mod-1",
+    "numero": 1,
+    "titulo": "Fundamentos Operativos y Navegación",
+    "totalClases": 4,
+    "totalLaminas": 48,
+    "totalPracticas": 8,
+    "practicasConectadas": 4,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod1-c1",
+        "slideIndex": 7,
+        "title": "Confirmar los datos de tu B1 Center",
+        "menuPath": "Gestión > Inicialización del sistema > Detalles de la empresa",
+        "camposCount": 5,
+        "campos": [
+          "Razón social",
+          "RUC",
+          "Dirección",
+          "Teléfono 1",
+          "Tarifa de impuesto a la renta (%)"
+        ],
+        "conectada": "{\"clave\":\"empresa\"}"
+      },
+      {
+        "claseId": "mod1-c1",
+        "slideIndex": 8,
+        "title": "Consultar artículo en stock",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Precio",
+          "Costo",
+          "Bodega",
+          "IVA"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod1-c2",
+        "slideIndex": 5,
+        "title": "Iniciar sesión en B1 Center",
+        "menuPath": "Gestión > Seleccionar empresa",
+        "camposCount": 3,
+        "campos": [
+          "Usuario",
+          "Contraseña",
+          "Empresa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod1-c2",
+        "slideIndex": 10,
+        "title": "Crear tu propio cockpit",
+        "menuPath": "Herramientas > Cockpit > Gestión de Cockpit",
+        "camposCount": 3,
+        "campos": [
+          "Nombre del cockpit",
+          "Descripción",
+          "Cockpit predeterminado"
+        ],
+        "conectada": "{\"clave\":\"cockpit\"}"
+      },
+      {
+        "claseId": "mod1-c3",
+        "slideIndex": 5,
+        "title": "Crear nuevo cliente",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Ciudad",
+          "Condición de pago",
+          "Lista de precios"
+        ],
+        "conectada": "{\"clave\":\"cliente\"}"
+      },
+      {
+        "claseId": "mod1-c3",
+        "slideIndex": 6,
+        "title": "Crear nuevo artículo",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Costo",
+          "Precio de venta",
+          "Impuesto de venta",
+          "Bodega por defecto"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod1-c4",
+        "slideIndex": 5,
+        "title": "Ajustar formatos de visualización",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales",
+        "camposCount": 4,
+        "campos": [
+          "Formato de fecha",
+          "Separador decimal",
+          "Separador de miles",
+          "Decimales en importes"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod1-c4",
+        "slideIndex": 8,
+        "title": "Buscar un cliente existente",
+        "menuPath": "Socios de negocios > Datos maestros de socios de negocios",
+        "camposCount": 3,
+        "campos": [
+          "Tipo",
+          "Nombre",
+          "Ciudad"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-2",
+    "numero": 2,
+    "titulo": "Núcleo Maestro ERP",
+    "totalClases": 4,
+    "totalLaminas": 48,
+    "totalPracticas": 17,
+    "practicasConectadas": 10,
+    "practicasFormulario": 7,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod2-c1",
+        "slideIndex": 5,
+        "title": "Crear grupo de clientes",
+        "menuPath": "Gestión > Configuración > Interlocutores comerciales > Grupos de clientes",
+        "camposCount": 3,
+        "campos": [
+          "Código de grupo",
+          "Nombre del grupo",
+          "Lista de precio predeterminada"
+        ],
+        "conectada": "{\"clave\":\"grupos\",\"tipo\":\"cliente\"}"
+      },
+      {
+        "claseId": "mod2-c1",
+        "slideIndex": 6,
+        "title": "Registrar cliente potencial",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Grupo de clientes",
+          "Ciudad",
+          "Clase"
+        ],
+        "conectada": "{\"clave\":\"cliente\"}"
+      },
+      {
+        "claseId": "mod2-c1",
+        "slideIndex": 7,
+        "title": "Convertir potencial a cliente",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Grupo de clientes",
+          "Ciudad",
+          "Clase"
+        ],
+        "conectada": "{\"clave\":\"cliente\"}"
+      },
+      {
+        "claseId": "mod2-c1",
+        "slideIndex": 8,
+        "title": "Vincular cliente y proveedor",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 4,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Cliente conectado",
+          "Clase"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod2-c2",
+        "slideIndex": 5,
+        "title": "Crear artículo maestro",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Descripción 2",
+          "Grupo de artículos",
+          "Clase de artículos",
+          "Tipo de artículo"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod2-c2",
+        "slideIndex": 6,
+        "title": "Definir categorías",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Compra",
+          "Venta",
+          "Inventario",
+          "Servicio",
+          "Fabricación"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c2",
+        "slideIndex": 7,
+        "title": "Configurar ficha de venta",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Unidad de medida",
+          "Precio de venta",
+          "Lista de precios",
+          "Impuesto de venta",
+          "Impuesto aplicado"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c2",
+        "slideIndex": 8,
+        "title": "Configurar ficha de compra",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Unidad de medida",
+          "Precio de compra",
+          "Proveedor preferente",
+          "Catálogo del fabricante",
+          "Impuesto de compra"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c2",
+        "slideIndex": 9,
+        "title": "Revisar inventario",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Almacén predeterminado",
+          "Stock inicial",
+          "Comprometido",
+          "Solicitado",
+          "Disponible"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c2",
+        "slideIndex": 10,
+        "title": "Ver grupo de artículos",
+        "menuPath": "Gestión > Definición > Inventario > Grupos de artículos",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Tipo de artículo",
+          "Unidad de medida",
+          "Método de aprovisionamiento",
+          "Almacén predeterminado"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c3",
+        "slideIndex": 5,
+        "title": "Definir unidades básicas",
+        "menuPath": "Gestión > Definición > Inventario > Unidades de medida > Unidades de medida",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Código (línea 2)",
+          "Nombre (línea 2)",
+          "Código (línea 3)",
+          "Nombre (línea 3)"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c3",
+        "slideIndex": 6,
+        "title": "Crear grupo de UM",
+        "menuPath": "Gestión > Definición > Inventario > Unidades de medida > Grupos de unidades de medida",
+        "camposCount": 6,
+        "campos": [
+          "Grupo",
+          "Descripción",
+          "Unidad base",
+          "Rollo",
+          "Bobina",
+          "Metro"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod2-c3",
+        "slideIndex": 7,
+        "title": "Asignar grupo a familia",
+        "menuPath": "Gestión > Definición > Inventario > Grupos de artículos",
+        "camposCount": 4,
+        "campos": [
+          "Grupo",
+          "Descripción",
+          "Grupo UM",
+          "UM Inventario"
+        ],
+        "conectada": "{\"clave\":\"grupos\",\"tipo\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod2-c3",
+        "slideIndex": 8,
+        "title": "Configurar artículo",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña General",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Grupo",
+          "UM Inventario",
+          "UM Compra",
+          "UM Venta"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod2-c4",
+        "slideIndex": 5,
+        "title": "Crear lista de precios",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 6,
+        "campos": [
+          "Lista de precios",
+          "Nombre",
+          "Descripción",
+          "Moneda",
+          "Fecha de inicio",
+          "Fecha de fin"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod2-c4",
+        "slideIndex": 6,
+        "title": "Asignar precio a artículo",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 5,
+        "campos": [
+          "Lista de precios",
+          "Código de artículo",
+          "Unidad de medida",
+          "Precio",
+          "Fecha de inicio"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod2-c4",
+        "slideIndex": 9,
+        "title": "Agregar descuento por cantidad",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Descuentos por período y cantidad",
+        "camposCount": 6,
+        "campos": [
+          "Lista de precios",
+          "Código de artículo",
+          "Desde cantidad",
+          "Hasta cantidad",
+          "Descuento",
+          "Fecha de inicio"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-3",
+    "numero": 3,
+    "titulo": "Aprovisionamiento y Control de Inventarios",
+    "totalClases": 5,
+    "totalLaminas": 63,
+    "totalPracticas": 16,
+    "practicasConectadas": 8,
+    "practicasFormulario": 8,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod3-c1",
+        "slideIndex": 5,
+        "title": "Crear pedido de compra",
+        "menuPath": "Compras - Proveedores > Pedido",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Artículo",
+          "Cantidad",
+          "Precio",
+          "Fecha documento",
+          "Fecha vencimiento"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      },
+      {
+        "claseId": "mod3-c1",
+        "slideIndex": 7,
+        "title": "Registrar entrada de mercancías",
+        "menuPath": "Compras - Proveedores > Entrada de mercancías de pedido",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Artículo",
+          "Cantidad",
+          "Precio",
+          "Fecha documento",
+          "Bodega"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"goods_receipt\"}"
+      },
+      {
+        "claseId": "mod3-c1",
+        "slideIndex": 8,
+        "title": "Crear factura de proveedor",
+        "menuPath": "Compras - Proveedores > Factura de proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Artículo",
+          "Cantidad",
+          "Precio",
+          "Fecha documento",
+          "Fecha vencimiento"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod3-c1",
+        "slideIndex": 10,
+        "title": "Efectuar pago al proveedor",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 5,
+        "campos": [
+          "Proveedor",
+          "Factura",
+          "Valor pagado",
+          "Banco",
+          "Fecha pago"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod3-c2",
+        "slideIndex": 5,
+        "title": "Crear almacén regional",
+        "menuPath": "Gestión > Definición > Inventario > Almacenes",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Dirección",
+          "Ciudad",
+          "Provincia",
+          "Código Postal"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c2",
+        "slideIndex": 6,
+        "title": "Activar gestión de depósito",
+        "menuPath": "Gestión > Definición > Inventario > Almacenes",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Gestión de depósito",
+          "Formato de depósito",
+          "Longitud isla",
+          "Longitud estantería"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c2",
+        "slideIndex": 7,
+        "title": "Registrar entrada de stock",
+        "menuPath": "Inventario > Operaciones de stock > Entrada de mercancías",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Descripción",
+          "Cantidad",
+          "Almacén",
+          "Depósito",
+          "Precio"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"goods_receipt\"}"
+      },
+      {
+        "claseId": "mod3-c2",
+        "slideIndex": 9,
+        "title": "Registrar salida por daño",
+        "menuPath": "Inventario > Operaciones de stock > Salida de mercancías",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Descripción",
+          "Cantidad",
+          "Almacén",
+          "Depósito",
+          "Costo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c3",
+        "slideIndex": 5,
+        "title": "Definir subnivel pasillo",
+        "menuPath": "Gestión > Definición > Inventario > Ubicaciones > Subniveles de almacén",
+        "camposCount": 4,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Longitud",
+          "Tipo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c3",
+        "slideIndex": 7,
+        "title": "Trasladar mouse a ubicación",
+        "menuPath": "Inventario > Informes de inventario > Lista de contenido de la ubicación",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Cantidad",
+          "Almacén",
+          "Ubicación origen",
+          "Ubicación destino",
+          "Fecha"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c3",
+        "slideIndex": 8,
+        "title": "Asignar mouse en pedido",
+        "menuPath": "Inventario > Ubicaciones > Gestión de códigos de subniveles de almacén",
+        "camposCount": 5,
+        "campos": [
+          "Artículo",
+          "Cantidad",
+          "Almacén",
+          "Ubicación",
+          "Disponible"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c4",
+        "slideIndex": 5,
+        "title": "Crear artículo serializado",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de inventario > Método de valoración",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Método de gestión",
+          "Método de valoración",
+          "Inventario perpetuo"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod3-c4",
+        "slideIndex": 6,
+        "title": "Asignar serie en entrada",
+        "menuPath": "Inventario > Gestión de artículos > Números de serie > Gestión de números de serie",
+        "camposCount": 6,
+        "campos": [
+          "Código artículo",
+          "Cantidad",
+          "Almacén",
+          "Número de serie",
+          "Precio",
+          "Fecha contable"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c4",
+        "slideIndex": 10,
+        "title": "Consultar historial de serie",
+        "menuPath": "Inventario > Informes de Inventario > Informe de Auditoría de Inventario de Lotes/Series",
+        "camposCount": 5,
+        "campos": [
+          "Artículo",
+          "Número de serie",
+          "Tipo de movimiento",
+          "Costo unitario",
+          "Documento"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod3-c5",
+        "slideIndex": 6,
+        "title": "Crear tipo de gasto flete",
+        "menuPath": "Administración > Configuración > Compras > Costos de Importación",
+        "camposCount": 5,
+        "campos": [
+          "Nombre",
+          "Cuenta de Gastos",
+          "Actualiza Stock",
+          "Método de Distribución",
+          "Actualiza Últ. Precio Compra"
+        ],
+        "conectada": "{\"clave\":\"importacion\"}"
+      },
+      {
+        "claseId": "mod3-c5",
+        "slideIndex": 7,
+        "title": "Crear tipo de gasto seguro",
+        "menuPath": "Administración > Configuración > Compras > Costos de Importación",
+        "camposCount": 5,
+        "campos": [
+          "Nombre",
+          "Cuenta de Gastos",
+          "Actualiza Stock",
+          "Método de Distribución",
+          "Importe Fijo"
+        ],
+        "conectada": "{\"clave\":\"importacion\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-4",
+    "numero": 4,
+    "titulo": "Gestión de Ventas y Order-to-Cash",
+    "totalClases": 4,
+    "totalLaminas": 51,
+    "totalPracticas": 15,
+    "practicasConectadas": 11,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod4-c1",
+        "slideIndex": 5,
+        "title": "Crear pedido de cliente",
+        "menuPath": "Ventas - Clientes > Pedido de cliente",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Descuento %"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"order\"}"
+      },
+      {
+        "claseId": "mod4-c1",
+        "slideIndex": 6,
+        "title": "Generar entrega desde pedido",
+        "menuPath": "Ventas - Clientes > Entrega",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Almacén",
+          "Neto"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"delivery\"}"
+      },
+      {
+        "claseId": "mod4-c1",
+        "slideIndex": 8,
+        "title": "Facturar con descuento manual",
+        "menuPath": "Ventas - Clientes > Factura de clientes",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Descuento %"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"invoice\"}"
+      },
+      {
+        "claseId": "mod4-c1",
+        "slideIndex": 10,
+        "title": "Registrar cobro con descuento",
+        "menuPath": "Gestión de bancos > Pagos recibidos",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Factura",
+          "Medio de pago",
+          "Descuento %",
+          "Importe recibido",
+          "Fecha"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod4-c2",
+        "slideIndex": 6,
+        "title": "Convertir oferta a pedido",
+        "menuPath": "Ventas - Clientes > Pedido de cliente",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Fecha documento"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      },
+      {
+        "claseId": "mod4-c2",
+        "slideIndex": 7,
+        "title": "Verificar disponibilidad",
+        "menuPath": "Ventas - Clientes > Pedido de cliente",
+        "camposCount": 5,
+        "campos": [
+          "Artículo",
+          "Almacén",
+          "En stock",
+          "Comprometido",
+          "Disponible"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod4-c2",
+        "slideIndex": 8,
+        "title": "Crear pedido con descuento",
+        "menuPath": "Ventas - Clientes > Pedido de cliente",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Descuento %"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"order\"}"
+      },
+      {
+        "claseId": "mod4-c2",
+        "slideIndex": 9,
+        "title": "Usar asistente de documentos",
+        "menuPath": "Ventas - Clientes > Asistente de creación de documentos",
+        "camposCount": 5,
+        "campos": [
+          "Documento origen",
+          "Documento destino",
+          "Oferta número",
+          "Cliente",
+          "Artículo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod4-c3",
+        "slideIndex": 5,
+        "title": "Crear pedido de cliente",
+        "menuPath": "Ventas - Clientes > Pedido de cliente",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Descuento %",
+          "Fecha documento"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"order\"}"
+      },
+      {
+        "claseId": "mod4-c3",
+        "slideIndex": 6,
+        "title": "Generar nota de entrega",
+        "menuPath": "Ventas - Clientes > Entrega",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Descuento %",
+          "Fecha documento"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"delivery\"}"
+      },
+      {
+        "claseId": "mod4-c3",
+        "slideIndex": 8,
+        "title": "Facturar la entrega",
+        "menuPath": "Ventas - Clientes > Factura de clientes",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Descuento %",
+          "Fecha documento"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"invoice\"}"
+      },
+      {
+        "claseId": "mod4-c3",
+        "slideIndex": 10,
+        "title": "Registrar cobro con descuento",
+        "menuPath": "Gestión de bancos > Pagos recibidos",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Factura",
+          "Descuento %",
+          "Valor pagado",
+          "Fecha documento",
+          "Banco"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod4-c4",
+        "slideIndex": 5,
+        "title": "Crear solicitud de devolución",
+        "menuPath": "Ventas - Clientes > Solicitud de devolución",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Motivo",
+          "Almacén"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod4-c4",
+        "slideIndex": 6,
+        "title": "Procesar devolución desde solicitud",
+        "menuPath": "Ventas - Clientes > Devolución",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Almacén"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod4-c4",
+        "slideIndex": 8,
+        "title": "Crear abono de cliente",
+        "menuPath": "Ventas - Clientes > Abono de clientes",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Factura de referencia",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"credit_note\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-5",
+    "numero": 5,
+    "titulo": "Estrategias Avanzadas de Precios",
+    "totalClases": 4,
+    "totalLaminas": 44,
+    "totalPracticas": 15,
+    "practicasConectadas": 14,
+    "practicasFormulario": 1,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod5-c1",
+        "slideIndex": 5,
+        "title": "Crear la lista Escuelas 2",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 3,
+        "campos": [
+          "Nombre de la lista",
+          "Lista base",
+          "Factor"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod5-c1",
+        "slideIndex": 6,
+        "title": "Ver precios por artículo",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 3,
+        "campos": [
+          "Artículo",
+          "Lista 1 · General",
+          "Lista 4 · Escuelas 2"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod5-c1",
+        "slideIndex": 8,
+        "title": "Actualizar la lista con el asistente",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 3,
+        "campos": [
+          "Lista a actualizar",
+          "Método",
+          "Factor"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod5-c2",
+        "slideIndex": 5,
+        "title": "Seleccionar lista de precios",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Moneda",
+          "Válida desde",
+          "Válida hasta",
+          "Activa"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod5-c2",
+        "slideIndex": 6,
+        "title": "Agregar artículo a la lista",
+        "menuPath": "Inventario > Listas de precios > Listas de precios",
+        "camposCount": 6,
+        "campos": [
+          "Código de artículo",
+          "Descripción",
+          "Precio",
+          "Lista de precios",
+          "Moneda",
+          "U. de medida"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod5-c2",
+        "slideIndex": 7,
+        "title": "Configurar descuento por período",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Descuentos por período y cantidad",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Descuento",
+          "Desde",
+          "Hasta",
+          "Automático",
+          "Precio especial"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c2",
+        "slideIndex": 8,
+        "title": "Configurar descuento por cantidad",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Descuentos por período y cantidad",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Desde",
+          "Hasta",
+          "Cantidad mínima",
+          "Descuento",
+          "Precio con descuento"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c2",
+        "slideIndex": 9,
+        "title": "Copiar descuentos a otros artículos",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Descuentos por período y cantidad",
+        "camposCount": 6,
+        "campos": [
+          "Lista de precios",
+          "Artículo origen",
+          "Filtrar por",
+          "Artículos seleccionados",
+          "Copiar descuentos por",
+          "Sobrescribir existentes"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c3",
+        "slideIndex": 5,
+        "title": "Crear grupo de descuento",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Grupos de descuento",
+        "camposCount": 5,
+        "campos": [
+          "Grupo de descuento",
+          "Descripción",
+          "Fecha de inicio",
+          "Fecha de fin",
+          "Activo"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c3",
+        "slideIndex": 6,
+        "title": "Definir descuento por grupo",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Grupos de descuento",
+        "camposCount": 6,
+        "campos": [
+          "Grupo de artículos",
+          "Descuento",
+          "Artículo ejemplo",
+          "Descripción artículo",
+          "Precio lista",
+          "Precio con descuento"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c3",
+        "slideIndex": 7,
+        "title": "Configurar descuento por cantidad",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Grupos de descuento",
+        "camposCount": 6,
+        "campos": [
+          "Grupo de artículos",
+          "Cantidad abonada",
+          "Cantidad gratuita",
+          "Máximo gratuito",
+          "Artículo",
+          "Descripción"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c3",
+        "slideIndex": 8,
+        "title": "Asignar grupo a cliente",
+        "menuPath": "Gestión > Definición > Interlocutores comerciales > Grupos de clientes / acreedores",
+        "camposCount": 6,
+        "campos": [
+          "Código de cliente",
+          "Nombre",
+          "Grupo de clientes",
+          "Grupo de descuento",
+          "Lista de precios",
+          "No aplicar grupos de descuento"
+        ],
+        "conectada": "{\"clave\":\"grupos\",\"tipo\":\"cliente\"}"
+      },
+      {
+        "claseId": "mod5-c4",
+        "slideIndex": 5,
+        "title": "Crear precio especial para cliente",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Precios especiales para interlocutores comerciales",
+        "camposCount": 6,
+        "campos": [
+          "Código de cliente",
+          "Código de artículo",
+          "Porcentaje",
+          "Fecha de inicio",
+          "Fecha de fin",
+          "Referencia a lista"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      },
+      {
+        "claseId": "mod5-c4",
+        "slideIndex": 7,
+        "title": "Aplicar ajuste masivo de descuento",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Actualización global de precios especiales",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de cambio",
+          "Porcentaje",
+          "Fecha de inicio",
+          "Fecha de fin",
+          "Segmento",
+          "Grupo"
+        ],
+        "conectada": "{\"clave\":\"descuentos\"}"
+      },
+      {
+        "claseId": "mod5-c4",
+        "slideIndex": 8,
+        "title": "Copiar precio especial a otros clientes",
+        "menuPath": "Inventario > Listas de precios > Precios especiales > Precios especiales para interlocutores comerciales",
+        "camposCount": 6,
+        "campos": [
+          "Interlocutor origen",
+          "Artículo",
+          "Porcentaje",
+          "Fecha de inicio",
+          "Fecha de fin",
+          "Regla de copia"
+        ],
+        "conectada": "{\"clave\":\"precios\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-6",
+    "numero": 6,
+    "titulo": "Gestión CRM y Servicios Post-venta",
+    "totalClases": 4,
+    "totalLaminas": 47,
+    "totalPracticas": 13,
+    "practicasConectadas": 5,
+    "practicasFormulario": 8,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod6-c1",
+        "slideIndex": 5,
+        "title": "Crear actividad de llamada",
+        "menuPath": "Interlocutores comerciales > Actividad",
+        "camposCount": 5,
+        "campos": [
+          "Tipo",
+          "Fecha",
+          "Hora",
+          "Interlocutor",
+          "Descripción"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c1",
+        "slideIndex": 6,
+        "title": "Crear oportunidad de venta",
+        "menuPath": "Interlocutores comerciales > Actividad",
+        "camposCount": 5,
+        "campos": [
+          "Nombre",
+          "Cliente",
+          "Monto estimado (USD)",
+          "Etapa",
+          "Probabilidad de cierre (%)"
+        ],
+        "conectada": "{\"clave\":\"oportunidad\"}"
+      },
+      {
+        "claseId": "mod6-c1",
+        "slideIndex": 7,
+        "title": "Generar oferta de ventas",
+        "menuPath": "Ventas - Clientes > Oferta de ventas",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio",
+          "Válida hasta"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"quotation\"}"
+      },
+      {
+        "claseId": "mod6-c1",
+        "slideIndex": 8,
+        "title": "Ejecutar campaña de correo",
+        "menuPath": "Interlocutores comerciales > Asistente de generación de campaña",
+        "camposCount": 5,
+        "campos": [
+          "Canal",
+          "Grupo objetivo",
+          "Artículo",
+          "Asunto",
+          "Plantilla"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c2",
+        "slideIndex": 5,
+        "title": "Registrar llamada de seguimiento",
+        "menuPath": "Interlocutores comerciales > Actividad",
+        "camposCount": 6,
+        "campos": [
+          "Tipo",
+          "Asunto",
+          "Fecha de inicio",
+          "Hora de inicio",
+          "Interlocutor",
+          "Usuario responsable"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c2",
+        "slideIndex": 6,
+        "title": "Registrar oportunidad tras llamada",
+        "menuPath": "Interlocutores comerciales > Actividad",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Etapa",
+          "Valor potencial",
+          "Probabilidad",
+          "Fecha estimada de cierre",
+          "Descripción"
+        ],
+        "conectada": "{\"clave\":\"oportunidad\"}"
+      },
+      {
+        "claseId": "mod6-c2",
+        "slideIndex": 7,
+        "title": "Crear oferta de servidores",
+        "menuPath": "Ventas - Clientes > Oferta de ventas",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Fecha de validez",
+          "Comentarios"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"quotation\"}"
+      },
+      {
+        "claseId": "mod6-c2",
+        "slideIndex": 9,
+        "title": "Consultar actividad en calendario",
+        "menuPath": "Interlocutores comerciales > Actividad",
+        "camposCount": 6,
+        "campos": [
+          "Vista",
+          "Fecha",
+          "Usuario",
+          "Tipo de actividad",
+          "Asunto",
+          "Hora"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c3",
+        "slideIndex": 5,
+        "title": "Crear llamada de servicio",
+        "menuPath": "Servicio > Llamada de servicio",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Asunto",
+          "Contrato de servicio",
+          "Número de serie",
+          "Responsable",
+          "Tipo de llamada"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c3",
+        "slideIndex": 6,
+        "title": "Registrar diagnóstico y costos",
+        "menuPath": "Servicio > Llamada de servicio",
+        "camposCount": 6,
+        "campos": [
+          "Historial",
+          "Diagnóstico",
+          "Horas invertidas",
+          "Costo mano de obra",
+          "Desplazamiento",
+          "Solución propuesta"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c4",
+        "slideIndex": 6,
+        "title": "Crear artículo serializado",
+        "menuPath": "Inventario > Artículos",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Gestionado por nro. de serie",
+          "Modelo de contrato",
+          "Precio de venta",
+          "Bodega predeterminada"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod6-c4",
+        "slideIndex": 12,
+        "title": "Ver contrato de servicio",
+        "menuPath": "Servicio > Contrato de servicio",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Número de serie",
+          "Fecha de inicio",
+          "Fecha de fin"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod6-c4",
+        "slideIndex": 14,
+        "title": "Abrir llamada de servicio",
+        "menuPath": "Servicio > Llamada de servicio",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Número de serie",
+          "Asunto",
+          "Fecha"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-7",
+    "numero": 7,
+    "titulo": "Contabilidad Central y NIIF",
+    "totalClases": 4,
+    "totalLaminas": 52,
+    "totalPracticas": 13,
+    "practicasConectadas": 6,
+    "practicasFormulario": 7,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod7-c1",
+        "slideIndex": 6,
+        "title": "Navegar al cajón de Pasivo",
+        "menuPath": "Finanzas > Plan de cuentas",
+        "camposCount": 3,
+        "campos": [
+          "Cajón",
+          "Nivel",
+          "Tipo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c1",
+        "slideIndex": 7,
+        "title": "Ver detalle de cuenta de banco",
+        "menuPath": "Finanzas > Detalles de cuenta de mayor",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta",
+          "Descripción",
+          "Nivel",
+          "Moneda",
+          "Activa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c1",
+        "slideIndex": 10,
+        "title": "Agregar cuenta de gastos",
+        "menuPath": "Finanzas > Plan de cuentas > Cajón 6",
+        "camposCount": 6,
+        "campos": [
+          "Cajón",
+          "Nivel",
+          "Cuenta",
+          "Descripción",
+          "Moneda",
+          "Activa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c1",
+        "slideIndex": 11,
+        "title": "Definir límites de saldo",
+        "menuPath": "Finanzas > Detalles de cuenta de mayor",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta",
+          "Fecha inicio",
+          "Fecha fin",
+          "Saldo mínimo",
+          "Saldo máximo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c2",
+        "slideIndex": 5,
+        "title": "Definir cuentas predeterminadas",
+        "menuPath": "Gestión > Configuración > Finanzas > Determinación de cuentas de mayor",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta de existencias",
+          "Cuenta de ingresos",
+          "Cuenta de costos",
+          "Cuenta de IVA débito",
+          "Cuenta de IVA crédito"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c2",
+        "slideIndex": 6,
+        "title": "Seleccionar método por defecto",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales > ficha Inventario > subficha Artículos",
+        "camposCount": 4,
+        "campos": [
+          "Fijar cuentas de mayor según",
+          "Método de valoración",
+          "Gestionar lotes",
+          "Gestionar series"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c2",
+        "slideIndex": 7,
+        "title": "Configurar grupo de artículos",
+        "menuPath": "Gestión > Configuración > Inventario > Grupos de artículos > ficha Finanzas",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Cuenta de existencias",
+          "Cuenta de ingresos",
+          "Cuenta de costos"
+        ],
+        "conectada": "{\"clave\":\"grupos\",\"tipo\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod7-c2",
+        "slideIndex": 8,
+        "title": "Asignar artículo al grupo",
+        "menuPath": "Inventario > Artículos",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Grupo de artículos",
+          "Código de barras",
+          "Impuesto de ventas"
+        ],
+        "conectada": "{\"clave\":\"grupos\",\"tipo\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod7-c3",
+        "slideIndex": 9,
+        "title": "Registrar Gasto de Oficina",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 5,
+        "campos": [
+          "Fecha Contabilización",
+          "Cuenta de Mayor/IC",
+          "Debe",
+          "Cuenta de Mayor/IC (línea 2)",
+          "Haber"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod7-c3",
+        "slideIndex": 12,
+        "title": "Anular Gasto de Oficina",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 3,
+        "campos": [
+          "Número de Asiento",
+          "Fecha Contabilización",
+          "Comentario"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod7-c4",
+        "slideIndex": 5,
+        "title": "Definir ejercicio 2026",
+        "menuPath": "Gestión > Inicialización del Sistema > Períodos Contables",
+        "camposCount": 3,
+        "campos": [
+          "Ejercicio",
+          "Fecha de inicio",
+          "Tipo de año"
+        ],
+        "conectada": "{\"clave\":\"cierre\"}"
+      },
+      {
+        "claseId": "mod7-c4",
+        "slideIndex": 6,
+        "title": "Crear mes de enero",
+        "menuPath": "Gestión > Inicialización del Sistema > Períodos Contables",
+        "camposCount": 5,
+        "campos": [
+          "Ejercicio",
+          "Período",
+          "Desde",
+          "Hasta",
+          "Descripción"
+        ],
+        "conectada": "{\"clave\":\"cierre\"}"
+      },
+      {
+        "claseId": "mod7-c4",
+        "slideIndex": 7,
+        "title": "Registrar gasto de agua",
+        "menuPath": "Gestión > Inicialización del Sistema > Períodos Contables",
+        "camposCount": 5,
+        "campos": [
+          "Fecha de contabilización",
+          "Cuenta mayor",
+          "Debe",
+          "Cuenta mayor (línea 2)",
+          "Haber"
+        ],
+        "conectada": "{\"clave\":\"cierre\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-8",
+    "numero": 8,
+    "titulo": "Tesorería, Cobros y Pagos (Bancos)",
+    "totalClases": 5,
+    "totalLaminas": 62,
+    "totalPracticas": 20,
+    "practicasConectadas": 14,
+    "practicasFormulario": 6,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod8-c1",
+        "slideIndex": 4,
+        "title": "Registrar el cobro de una factura",
+        "menuPath": "Gestión de bancos > Pagos recibidos > Pagos recibidos",
+        "camposCount": 4,
+        "campos": [
+          "Cuenta bancaria",
+          "Tipo",
+          "Documento a liquidar",
+          "Importe"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c1",
+        "slideIndex": 6,
+        "title": "Registrar cobro con tarjeta",
+        "menuPath": "Gestión de bancos > Pagos recibidos > Pagos recibidos",
+        "camposCount": 6,
+        "campos": [
+          "Código de cliente",
+          "Fecha",
+          "Número de documento",
+          "Medio de pago",
+          "Factura seleccionada",
+          "Importe a pagar"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c1",
+        "slideIndex": 8,
+        "title": "Hacer depósito de tarjetas",
+        "menuPath": "Gestión de bancos > Depósitos > Depósito",
+        "camposCount": 5,
+        "campos": [
+          "Fecha",
+          "Número de documento",
+          "Cuenta de origen",
+          "Cuenta destino",
+          "Importe"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c1",
+        "slideIndex": 10,
+        "title": "Registrar pago a proveedor",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 6,
+        "campos": [
+          "Código de proveedor",
+          "Fecha",
+          "Número de documento",
+          "Medio de pago",
+          "Factura seleccionada",
+          "Importe a pagar"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c2",
+        "slideIndex": 5,
+        "title": "Seleccionar banco propio",
+        "menuPath": "Gestión > Definición > Gestión de bancos > Bancos propios",
+        "camposCount": 3,
+        "campos": [
+          "Banco",
+          "Cuenta",
+          "Activo"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c2",
+        "slideIndex": 6,
+        "title": "Crear vía de pago transferencia",
+        "menuPath": "Gestión > Definición > Gestión de bancos > Vías de pago",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Clase",
+          "Medio de pago",
+          "Banco",
+          "Cuenta"
+        ],
+        "conectada": "{\"clave\":\"transferencia\"}"
+      },
+      {
+        "claseId": "mod8-c2",
+        "slideIndex": 7,
+        "title": "Ejecutar asistente de pagos",
+        "menuPath": "Gestión de bancos > Asistente de pagos",
+        "camposCount": 6,
+        "campos": [
+          "Nombre ejecución",
+          "Fecha",
+          "Clase",
+          "Medio de pago",
+          "Serie",
+          "Vía de pago"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod8-c2",
+        "slideIndex": 8,
+        "title": "Ver recomendaciones de pago",
+        "menuPath": "Gestión de bancos > Asistente de pagos",
+        "camposCount": 6,
+        "campos": [
+          "Interlocutor",
+          "Documento",
+          "Número",
+          "Vencimiento",
+          "Importe",
+          "Seleccionado"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod8-c2",
+        "slideIndex": 10,
+        "title": "Seleccionar opción de grabación",
+        "menuPath": "Gestión de bancos > Asistente de pagos",
+        "camposCount": 3,
+        "campos": [
+          "Opción",
+          "Reservar transacciones",
+          "Impedir compensación"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod8-c2",
+        "slideIndex": 11,
+        "title": "Generar archivo de pago para transferencia",
+        "menuPath": "Gestión de bancos > Asistente de pagos",
+        "camposCount": 5,
+        "campos": [
+          "Formato",
+          "Banco destino",
+          "Cuenta origen",
+          "Importe total",
+          "Fecha valor"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod8-c3",
+        "slideIndex": 5,
+        "title": "Ingresar datos del extracto",
+        "menuPath": "Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Reconciliación",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta Bancaria",
+          "Fecha del Extracto",
+          "Saldo Final Extracto",
+          "Referencia",
+          "Moneda"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c3",
+        "slideIndex": 6,
+        "title": "Conciliar pago registrado",
+        "menuPath": "Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Reconciliación",
+        "camposCount": 6,
+        "campos": [
+          "Número de Partida",
+          "Fecha Partida",
+          "Valor Partida",
+          "Número Extracto",
+          "Fecha Extracto",
+          "Valor Extracto"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c3",
+        "slideIndex": 8,
+        "title": "Configurar reconciliación manual",
+        "menuPath": "Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Reconciliación manual",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta Bancaria",
+          "Fecha del Extracto",
+          "Saldo Final Extracto",
+          "Referencia",
+          "Moneda"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c3",
+        "slideIndex": 9,
+        "title": "Importar extracto bancario",
+        "menuPath": "Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Tratamiento de extracto bancario",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta Bancaria",
+          "Formato Archivo",
+          "Ruta Archivo",
+          "Fecha Proceso",
+          "Moneda"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c3",
+        "slideIndex": 11,
+        "title": "Conciliar pago y factura",
+        "menuPath": "Socios de Negocios > Reconciliación Interna > Reconciliación",
+        "camposCount": 6,
+        "campos": [
+          "Socio de Negocios",
+          "Tipo de Cuenta",
+          "Partida del Haber",
+          "Valor del Haber",
+          "Partida del Debe",
+          "Valor del Debe"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c4",
+        "slideIndex": 5,
+        "title": "Generar antigüedad de clientes",
+        "menuPath": "Finanzas > Informes financieros > Contabilidad > Antigüedad > Antigüedad de créditos de clientes",
+        "camposCount": 6,
+        "campos": [
+          "Fecha de antigüedad",
+          "Rango 1 (días)",
+          "Rango 2 (días)",
+          "Rango 3 (días)",
+          "Mostrar abonos",
+          "Cliente"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod8-c4",
+        "slideIndex": 7,
+        "title": "Generar antigüedad de proveedores",
+        "menuPath": "Finanzas > Informes financieros > Contabilidad > Antigüedad > Antigüedad de deudas de proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Fecha de antigüedad",
+          "Rango 1 (días)",
+          "Rango 2 (días)",
+          "Rango 3 (días)",
+          "Mostrar anticipos",
+          "Proveedor"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod8-c4",
+        "slideIndex": 9,
+        "title": "Ejecutar asistente de reclamaciones",
+        "menuPath": "Ventas - Clientes > Asistente de reclamaciones",
+        "camposCount": 6,
+        "campos": [
+          "Fecha de corte",
+          "Condición",
+          "Considerar conectados",
+          "Generar facturas de servicio",
+          "Enviar por email",
+          "Imprimir cartas"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod8-c5",
+        "slideIndex": 5,
+        "title": "Importar extracto de abril",
+        "menuPath": "Gestión de bancos > Extractos de cuenta y reconciliaciones externas > Reconciliación",
+        "camposCount": 5,
+        "campos": [
+          "Fecha de corte",
+          "Saldo inicial",
+          "Saldo final",
+          "Seleccionar archivo",
+          "Formato"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod8-c5",
+        "slideIndex": 8,
+        "title": "Ejecutar pagos a proveedores",
+        "menuPath": "Gestión de bancos > Asistente de pagos",
+        "camposCount": 6,
+        "campos": [
+          "Nombre de ejecución",
+          "Fecha",
+          "Clase",
+          "Medio de pago",
+          "Banco",
+          "Cuenta"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-9",
+    "numero": 9,
+    "titulo": "Control de Activos Fijos",
+    "totalClases": 4,
+    "totalLaminas": 48,
+    "totalPracticas": 11,
+    "practicasConectadas": 11,
+    "practicasFormulario": 0,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod9-c1",
+        "slideIndex": 6,
+        "title": "Crear serie para activos",
+        "menuPath": "Gestión > Definición > Finanzas > Activos fijos > Series de numeración",
+        "camposCount": 4,
+        "campos": [
+          "Objecto",
+          "Serie",
+          "Longitud",
+          "Inicio"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      },
+      {
+        "claseId": "mod9-c1",
+        "slideIndex": 7,
+        "title": "Definir artículo virtual",
+        "menuPath": "Finanzas > Activos fijos > Datos maestros de activo fijo > Casilla",
+        "camposCount": 3,
+        "campos": [
+          "Artículo de activo",
+          "Artículo virtual",
+          "Serie"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      },
+      {
+        "claseId": "mod9-c1",
+        "slideIndex": 8,
+        "title": "Registrar factura de laptops",
+        "menuPath": "Compras - proveedores > Factura de proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Proveedor",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Precio"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod9-c2",
+        "slideIndex": 5,
+        "title": "Registrar factura de camión",
+        "menuPath": "Compras - Proveedores > Factura de proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Fecha contabilización",
+          "Fecha valoración activo",
+          "Código de artículo",
+          "Cantidad",
+          "Precio unitario"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod9-c2",
+        "slideIndex": 8,
+        "title": "Completar datos maestros",
+        "menuPath": "Finanzas > Activos fijos > Datos maestros de activo",
+        "camposCount": 6,
+        "campos": [
+          "Código de activo",
+          "Clase de activo",
+          "Tipo de amortización",
+          "Cuenta contable",
+          "Área de amortización",
+          "Descripción"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      },
+      {
+        "claseId": "mod9-c2",
+        "slideIndex": 9,
+        "title": "Comprar cinco teclados virtuales",
+        "menuPath": "Compras - Proveedores > Factura de proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Fecha contabilización",
+          "Fecha valoración activo",
+          "Código de artículo",
+          "Cantidad",
+          "Precio unitario"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod9-c3",
+        "slideIndex": 5,
+        "title": "Crear activo fijo camión",
+        "menuPath": "Finanzas > Activos fijos > Datos maestros de activo",
+        "camposCount": 6,
+        "campos": [
+          "Código de activo",
+          "Descripción",
+          "Clase de activo",
+          "Costo",
+          "Vida útil (meses)",
+          "Método"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      },
+      {
+        "claseId": "mod9-c3",
+        "slideIndex": 6,
+        "title": "Ejecutar amortización anual",
+        "menuPath": "Finanzas > Activos Fijos > Ejecución de Amortización",
+        "camposCount": 6,
+        "campos": [
+          "Área de amortización",
+          "Fecha",
+          "Vista previa",
+          "Ejecutar",
+          "Período",
+          "Monto amortización"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      },
+      {
+        "claseId": "mod9-c3",
+        "slideIndex": 11,
+        "title": "Ejecutar cambio de ejercicio",
+        "menuPath": "Finanzas > Activos fijos > Cambio de ejercicio",
+        "camposCount": 6,
+        "campos": [
+          "Ejercicio actual",
+          "Ejercicio nuevo",
+          "Transferir amortizaciones",
+          "Recalcular plan",
+          "Ejecutar",
+          "Fecha corte"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      },
+      {
+        "claseId": "mod9-c4",
+        "slideIndex": 5,
+        "title": "Registrar venta de activo",
+        "menuPath": "Ventas - Clientes > Factura de clientes",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio",
+          "IVA",
+          "Fecha"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"invoice\"}"
+      },
+      {
+        "claseId": "mod9-c4",
+        "slideIndex": 7,
+        "title": "Dar de baja por desecho",
+        "menuPath": "Finanzas > Activos fijos > Baja",
+        "camposCount": 6,
+        "campos": [
+          "Activo",
+          "Tipo de baja",
+          "Fecha",
+          "Motivo",
+          "Contabilización",
+          "Valor libro"
+        ],
+        "conectada": "{\"clave\":\"activos\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-10",
+    "numero": 10,
+    "titulo": "Planificación de Materiales (MRP)",
+    "totalClases": 4,
+    "totalLaminas": 49,
+    "totalPracticas": 15,
+    "practicasConectadas": 10,
+    "practicasFormulario": 5,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod10-c1",
+        "slideIndex": 5,
+        "title": "Configurar datos de planificación",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de planificación",
+        "camposCount": 5,
+        "campos": [
+          "Método de aprovisionamiento",
+          "Participa en MRP",
+          "Intervalo de pedido",
+          "Pedido múltiple",
+          "Cantidad mínima"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod10-c1",
+        "slideIndex": 6,
+        "title": "Ejecutar asistente MRP",
+        "menuPath": "Planificación de necesidades > Asistente de planificación de necesidades",
+        "camposCount": 6,
+        "campos": [
+          "Escenario",
+          "Fecha de inicio",
+          "Fecha de fin",
+          "Artículos",
+          "Nivel",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"mrp\"}"
+      },
+      {
+        "claseId": "mod10-c1",
+        "slideIndex": 7,
+        "title": "Analizar resultados MRP",
+        "menuPath": "Planificación de necesidades > Asistente de planificación de necesidades",
+        "camposCount": 5,
+        "campos": [
+          "Inventario inicial",
+          "Aprovisionamiento pendiente",
+          "Demanda prevista",
+          "Inventario final proyectado",
+          "Recomendación"
+        ],
+        "conectada": "{\"clave\":\"mrp\"}"
+      },
+      {
+        "claseId": "mod10-c1",
+        "slideIndex": 8,
+        "title": "Crear pedido de compra desde MRP",
+        "menuPath": "Planificación de necesidades > Recomendaciones de pedido",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de pedido",
+          "Artículo",
+          "Cantidad",
+          "Fecha requerida",
+          "Proveedor",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      },
+      {
+        "claseId": "mod10-c2",
+        "slideIndex": 5,
+        "title": "Crear previsión de demanda",
+        "menuPath": "Inventario > Transacciones de Inventario > Previsión",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Cantidad",
+          "Fecha inicial",
+          "Fecha final",
+          "Bodega"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod10-c2",
+        "slideIndex": 6,
+        "title": "Activar consumo de previsión",
+        "menuPath": "Administración > Configuración General > pestaña Inventario > sección Planificación",
+        "camposCount": 4,
+        "campos": [
+          "Consumo de previsión",
+          "Método",
+          "Atrás",
+          "Adelante"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod10-c2",
+        "slideIndex": 12,
+        "title": "Ejecutar MRP con previsiones",
+        "menuPath": "MRP > Asistente de Ejecución de MRP",
+        "camposCount": 5,
+        "campos": [
+          "Considerar previsiones",
+          "Considerar pedidos de venta",
+          "Considerar acuerdos marco",
+          "Fecha inicial",
+          "Fecha final"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod10-c3",
+        "slideIndex": 6,
+        "title": "Configurar planificación servidor",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de planificación",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Método de aprovisionamiento",
+          "Plazo de producción",
+          "Almacén principal",
+          "MRP activo",
+          "Plazo de compra"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod10-c3",
+        "slideIndex": 7,
+        "title": "Configurar monitor para compra",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de planificación",
+        "camposCount": 6,
+        "campos": [
+          "Artículo",
+          "Método de aprovisionamiento",
+          "Plazo de entrega",
+          "Almacén principal",
+          "MRP activo",
+          "Proveedor preferido"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod10-c3",
+        "slideIndex": 8,
+        "title": "Ejecutar cálculo MRP",
+        "menuPath": "Planificación de necesidades > Asistente MRP",
+        "camposCount": 6,
+        "campos": [
+          "Horizonte de planificación",
+          "Fecha de inicio",
+          "Incluir compras",
+          "Incluir producción",
+          "Incluir ventas",
+          "Ejecutar MRP"
+        ],
+        "conectada": "{\"clave\":\"mrp\"}"
+      },
+      {
+        "claseId": "mod10-c3",
+        "slideIndex": 12,
+        "title": "Ejecutar MRP excluyendo almacén",
+        "menuPath": "Planificación de necesidades > Asistente MRP",
+        "camposCount": 6,
+        "campos": [
+          "Almacenes a excluir",
+          "Horizonte de planificación",
+          "Fecha de inicio",
+          "Incluir compras",
+          "Incluir producción",
+          "Ejecutar MRP"
+        ],
+        "conectada": "{\"clave\":\"mrp\"}"
+      },
+      {
+        "claseId": "mod10-c4",
+        "slideIndex": 5,
+        "title": "Configurar datos de planificación",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de planificación",
+        "camposCount": 5,
+        "campos": [
+          "Método de aprovisionamiento",
+          "Participa en MRP",
+          "Intervalo de pedido",
+          "Pedido múltiple",
+          "Cantidad mínima"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod10-c4",
+        "slideIndex": 6,
+        "title": "Ejecutar el asistente MRP",
+        "menuPath": "Planificación de necesidades > Asistente de planificación de necesidades",
+        "camposCount": 5,
+        "campos": [
+          "Escenario",
+          "Fecha de inicio",
+          "Fecha de fin",
+          "Nivel",
+          "Incluir pronósticos"
+        ],
+        "conectada": "{\"clave\":\"mrp\"}"
+      },
+      {
+        "claseId": "mod10-c4",
+        "slideIndex": 7,
+        "title": "Analizar resultados de MRP",
+        "menuPath": "Planificación de necesidades > Asistente MRP",
+        "camposCount": 5,
+        "campos": [
+          "Artículo",
+          "Inventario inicial",
+          "Aprovisionamiento pendiente",
+          "Demanda total",
+          "Inventario final proyectado"
+        ],
+        "conectada": "{\"clave\":\"mrp\"}"
+      },
+      {
+        "claseId": "mod10-c4",
+        "slideIndex": 8,
+        "title": "Crear pedido de compra desde MRP",
+        "menuPath": "Planificación de necesidades > Recomendaciones de pedido",
+        "camposCount": 5,
+        "campos": [
+          "Tipo de pedido",
+          "Artículo",
+          "Cantidad",
+          "Fecha requerida",
+          "Proveedor sugerido"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-11",
+    "numero": 11,
+    "titulo": "Fabricación y Proyectos (BOM)",
+    "totalClases": 4,
+    "totalLaminas": 50,
+    "totalPracticas": 13,
+    "practicasConectadas": 9,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod11-c1",
+        "slideIndex": 5,
+        "title": "Crear lista de materiales",
+        "menuPath": "Producción > Lista de materiales",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Tipo",
+          "Nivel",
+          "Cantidad base",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"bom\"}"
+      },
+      {
+        "claseId": "mod11-c1",
+        "slideIndex": 6,
+        "title": "Agregar componente",
+        "menuPath": "Producción > Lista de materiales",
+        "camposCount": 6,
+        "campos": [
+          "Número de línea",
+          "Tipo de línea",
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"bom\"}"
+      },
+      {
+        "claseId": "mod11-c1",
+        "slideIndex": 7,
+        "title": "Agregar recurso de máquina",
+        "menuPath": "Producción > Lista de materiales",
+        "camposCount": 6,
+        "campos": [
+          "Número de línea",
+          "Tipo de línea",
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Unidad de medida"
+        ],
+        "conectada": "{\"clave\":\"bom\"}"
+      },
+      {
+        "claseId": "mod11-c1",
+        "slideIndex": 8,
+        "title": "Agregar recurso de mano de obra",
+        "menuPath": "Producción > Lista de materiales",
+        "camposCount": 6,
+        "campos": [
+          "Número de línea",
+          "Tipo de línea",
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Unidad de medida"
+        ],
+        "conectada": "{\"clave\":\"bom\"}"
+      },
+      {
+        "claseId": "mod11-c1",
+        "slideIndex": 10,
+        "title": "Generar orden de producción",
+        "menuPath": "Producción > Orden de producción",
+        "camposCount": 6,
+        "campos": [
+          "Número",
+          "Artículo",
+          "Descripción",
+          "Cantidad",
+          "Fecha de vencimiento",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod11-c1",
+        "slideIndex": 11,
+        "title": "Recibir producción terminada",
+        "menuPath": "Producción > Recibo de producción",
+        "camposCount": 6,
+        "campos": [
+          "Número",
+          "Orden de producción",
+          "Artículo",
+          "Descripción",
+          "Cantidad",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod11-c2",
+        "slideIndex": 5,
+        "title": "Crear orden de producción",
+        "menuPath": "Producción > Orden de producción",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Fecha de inicio",
+          "Fecha de vencimiento",
+          "Prioridad"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod11-c2",
+        "slideIndex": 7,
+        "title": "Trasladar componentes a planta",
+        "menuPath": "Producción > Orden de producción",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Almacén origen",
+          "Almacén destino",
+          "Fecha"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod11-c2",
+        "slideIndex": 8,
+        "title": "Informar finalización de producción",
+        "menuPath": "Producción > Orden de producción",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Fecha",
+          "Almacén",
+          "Orden de producción"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod11-c3",
+        "slideIndex": 4,
+        "title": "Emitir componentes a producción",
+        "menuPath": "Producción > Emisión para producción",
+        "camposCount": 6,
+        "campos": [
+          "Número de orden",
+          "Código de artículo",
+          "Cantidad",
+          "Código de artículo componente",
+          "Cantidad componente",
+          "Bodega origen"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod11-c3",
+        "slideIndex": 6,
+        "title": "Recibir producto terminado",
+        "menuPath": "Producción > Recibo de producción",
+        "camposCount": 6,
+        "campos": [
+          "Número de orden",
+          "Código de artículo terminado",
+          "Cantidad recibida",
+          "Costo estándar",
+          "Bodega destino",
+          "Referencia"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod11-c3",
+        "slideIndex": 11,
+        "title": "Actualizar costo estándar de artículo",
+        "menuPath": "Producción > Gestión del Costo Estándar de Producción > Actualización del Costo Estándar de Producción",
+        "camposCount": 6,
+        "campos": [
+          "Código de artículo",
+          "Costo estándar actual",
+          "Costo real del artículo",
+          "Actualizar costo estándar",
+          "Fecha de actualización",
+          "Aplicar a niveles"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod11-c4",
+        "slideIndex": 7,
+        "title": "Vincular actividad al proyecto",
+        "menuPath": "Recursos humanos > Hoja de tiempos",
+        "camposCount": 5,
+        "campos": [
+          "Asunto",
+          "Fecha de inicio",
+          "Hora de inicio",
+          "Proyecto",
+          "ID de fila de etapa"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-12",
+    "numero": 12,
+    "titulo": "Consultoría y Herramientas SQL",
+    "totalClases": 4,
+    "totalLaminas": 53,
+    "totalPracticas": 15,
+    "practicasConectadas": 3,
+    "practicasFormulario": 12,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod12-c1",
+        "slideIndex": 5,
+        "title": "Activar Información del sistema",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Tecla de acceso",
+          "Función",
+          "Ventana activa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c1",
+        "slideIndex": 6,
+        "title": "Crear consulta con el Asistente",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 5,
+        "campos": [
+          "Tabla",
+          "Campo 1",
+          "Campo 2",
+          "Encabezado 1",
+          "Encabezado 2"
+        ],
+        "conectada": "{\"clave\":\"consultas\"}"
+      },
+      {
+        "claseId": "mod12-c1",
+        "slideIndex": 7,
+        "title": "Crear consulta con el Generador",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 6,
+        "campos": [
+          "Tabla",
+          "Campo 1",
+          "Campo 2",
+          "Campo 3",
+          "Condición",
+          "Orden"
+        ],
+        "conectada": "{\"clave\":\"consultas\"}"
+      },
+      {
+        "claseId": "mod12-c1",
+        "slideIndex": 8,
+        "title": "Crear consulta con variable de fecha",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 6,
+        "campos": [
+          "Tabla",
+          "Campo 1",
+          "Campo 2",
+          "Campo 3",
+          "Variable",
+          "Valor ejemplo"
+        ],
+        "conectada": "{\"clave\":\"consultas\"}"
+      },
+      {
+        "claseId": "mod12-c2",
+        "slideIndex": 5,
+        "title": "Activar alerta de stock mínimo",
+        "menuPath": "Gestión > Gestión de alertas",
+        "camposCount": 6,
+        "campos": [
+          "Alerta",
+          "Prioridad",
+          "Destinatario",
+          "Notificación",
+          "Usuario AlertSvc",
+          "Activar"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c2",
+        "slideIndex": 11,
+        "title": "Habilitar proceso de autorización",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales > Pestaña IC",
+        "camposCount": 6,
+        "campos": [
+          "Pestaña",
+          "Casilla",
+          "Empresa",
+          "Usuario",
+          "Cambio",
+          "Reinicio"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c2",
+        "slideIndex": 12,
+        "title": "Definir modelo de compra",
+        "menuPath": "Gestión > Inicialización del sistema > Procesos de autorización > Modelos de autorización",
+        "camposCount": 6,
+        "campos": [
+          "Nombre",
+          "Documento",
+          "Condición",
+          "Nivel 1",
+          "Nivel 2",
+          "Activo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c3",
+        "slideIndex": 5,
+        "title": "Crear UDF Estado en Cliente",
+        "menuPath": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+        "camposCount": 6,
+        "campos": [
+          "Objeto",
+          "Nombre del campo",
+          "Descripción",
+          "Tipo",
+          "Estructura",
+          "Longitud"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c3",
+        "slideIndex": 6,
+        "title": "Definir valores para EstadoCliente",
+        "menuPath": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+        "camposCount": 6,
+        "campos": [
+          "Objeto",
+          "Nombre del campo",
+          "Valor válido 1",
+          "Valor válido 2",
+          "Valor válido 3",
+          "Obligatorio"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c3",
+        "slideIndex": 8,
+        "title": "Crear UDF instrucciones en pedido",
+        "menuPath": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+        "camposCount": 6,
+        "campos": [
+          "Objeto",
+          "Nombre del campo",
+          "Descripción",
+          "Tipo",
+          "Estructura",
+          "Longitud"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c3",
+        "slideIndex": 9,
+        "title": "Registrar instrucciones en pedido",
+        "menuPath": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Precio",
+          "EntregaIndicaciones"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c3",
+        "slideIndex": 12,
+        "title": "Configurar visibilidad de UDF",
+        "menuPath": "Herramientas > Herramientas de customizing > Parametrizaciones",
+        "camposCount": 5,
+        "campos": [
+          "Objeto",
+          "UDF",
+          "Visible",
+          "Activo",
+          "Categoría"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c4",
+        "slideIndex": 5,
+        "title": "Importar nuevo cliente",
+        "menuPath": "Administración > Importación/Exportación de Datos > Importación de Datos > Importar desde Excel",
+        "camposCount": 4,
+        "campos": [
+          "CardCode",
+          "CardName",
+          "Grupo",
+          "Moneda"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c4",
+        "slideIndex": 6,
+        "title": "Importar nuevo artículo",
+        "menuPath": "Administración > Importación/Exportación de Datos > Importación de Datos > Importar desde Excel",
+        "camposCount": 4,
+        "campos": [
+          "ItemCode",
+          "ItemName",
+          "Precio",
+          "Costo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod12-c4",
+        "slideIndex": 7,
+        "title": "Actualizar precio de artículo",
+        "menuPath": "Administración > Importación/Exportación de Datos > Importación de Datos > Importar desde Excel",
+        "camposCount": 4,
+        "campos": [
+          "Lista de precios",
+          "ItemCode",
+          "Precio",
+          "Moneda"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-13",
+    "numero": 13,
+    "titulo": "Compras Avanzadas",
+    "totalClases": 3,
+    "totalLaminas": 34,
+    "totalPracticas": 10,
+    "practicasConectadas": 9,
+    "practicasFormulario": 1,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod13-c1",
+        "slideIndex": 5,
+        "title": "Crear solicitud de compra",
+        "menuPath": "Compras - Proveedores > Solicitud de Compra",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Fecha requerida",
+          "Almacén",
+          "Comentario"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_request\"}"
+      },
+      {
+        "claseId": "mod13-c1",
+        "slideIndex": 6,
+        "title": "Generar múltiples cotizaciones",
+        "menuPath": "Compras - Proveedores > Asistente para Generación de Ofertas de Compra",
+        "camposCount": 6,
+        "campos": [
+          "Base de datos",
+          "Número de solicitud",
+          "Artículo",
+          "Cantidad",
+          "Proveedores a considerar",
+          "Tipo de documento destino"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod13-c1",
+        "slideIndex": 8,
+        "title": "Crear pedido de compra",
+        "menuPath": "Compras - Proveedores > Oferta de Compra",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Precio unitario",
+          "Fecha de entrega"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      },
+      {
+        "claseId": "mod13-c2",
+        "slideIndex": 4,
+        "title": "Crear pedido de servicio",
+        "menuPath": "Compras - Proveedores > Pedido de Compras",
+        "camposCount": 6,
+        "campos": [
+          "Código Proveedor",
+          "Fecha del Pedido",
+          "Tipo de Artículo",
+          "Descripción",
+          "Cuenta de Gastos",
+          "Importe"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      },
+      {
+        "claseId": "mod13-c2",
+        "slideIndex": 5,
+        "title": "Registrar factura de servicio",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Código Proveedor",
+          "Fecha Contable",
+          "Tipo de Artículo",
+          "Descripción",
+          "Cuenta de Gastos",
+          "Importe"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod13-c2",
+        "slideIndex": 8,
+        "title": "Configurar transacción recurrente",
+        "menuPath": "Gestión > Transacciones periódicas > Modelos de transacciones periódicas",
+        "camposCount": 6,
+        "campos": [
+          "Nombre de la Plantilla",
+          "Frecuencia",
+          "Fecha de Inicio",
+          "Fecha de Finalización",
+          "Tipo de Documento",
+          "Código Proveedor"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod13-c3",
+        "slideIndex": 5,
+        "title": "Crear solicitud devolución",
+        "menuPath": "Compras - Proveedores > Solicitud de Devolución de Mercancías",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Código Proveedor",
+          "Código Artículo",
+          "Cantidad",
+          "Motivo",
+          "Número RMA"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod13-c3",
+        "slideIndex": 6,
+        "title": "Crear devolución mercancía",
+        "menuPath": "Compras - Proveedores > Devolución de Mercancías",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Código Proveedor",
+          "Código Artículo",
+          "Cantidad",
+          "Costo unitario",
+          "Valor total"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod13-c3",
+        "slideIndex": 8,
+        "title": "Crear abono proveedor",
+        "menuPath": "Compras - Proveedores > Abono de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Código Proveedor",
+          "Código Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "IVA (15%)"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod13-c3",
+        "slideIndex": 10,
+        "title": "Crear abono sin cantidad",
+        "menuPath": "Compras - Proveedores > Abono de Proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Fecha",
+          "Código Proveedor",
+          "Concepto",
+          "Valor",
+          "Sin contabilización de cantidad"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-14",
+    "numero": 14,
+    "titulo": "Unidades de Medida y Valoración de Inventario",
+    "totalClases": 4,
+    "totalLaminas": 51,
+    "totalPracticas": 10,
+    "practicasConectadas": 5,
+    "practicasFormulario": 5,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod14-c1",
+        "slideIndex": 5,
+        "title": "Configurar Grupo Cable",
+        "menuPath": "Gestión > Definición > Inventario > Grupos de unidades de medida",
+        "camposCount": 6,
+        "campos": [
+          "Grupo de unidades de medida",
+          "Unidad base",
+          "Unidad alternativa",
+          "Cantidad alternativa",
+          "Cantidad base",
+          "Usar Factor de Peso"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod14-c1",
+        "slideIndex": 6,
+        "title": "Definir Peso del Artículo",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestañas Compras / Ventas / Inventario",
+        "camposCount": 3,
+        "campos": [
+          "Grupo de unidades de medida",
+          "Peso",
+          "Uso del peso"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod14-c2",
+        "slideIndex": 5,
+        "title": "Definir tipo de paquete",
+        "menuPath": "Administración > Configuración > Inventario > Tipos de Paquete",
+        "camposCount": 4,
+        "campos": [
+          "Nombre",
+          "Longitud",
+          "Ancho",
+          "Altura"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod14-c3",
+        "slideIndex": 5,
+        "title": "Crear grupo de artículos",
+        "menuPath": "Gestión > Definición > Inventario > Grupos de artículos",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Método de valoración",
+          "Gestionar por almacén",
+          "Inventario permanente"
+        ],
+        "conectada": "{\"clave\":\"grupos\",\"tipo\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod14-c3",
+        "slideIndex": 6,
+        "title": "Crear artículo con costo estándar",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de inventario",
+        "camposCount": 5,
+        "campos": [
+          "Grupo de artículos",
+          "Código",
+          "Descripción",
+          "Costo estándar",
+          "Precio de venta"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod14-c3",
+        "slideIndex": 7,
+        "title": "Actualizar costo estándar",
+        "menuPath": "Inventario > Revalorización de inventario",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Costo estándar actual",
+          "Nuevo costo estándar",
+          "Fecha de efecto",
+          "Motivo"
+        ],
+        "conectada": "{\"clave\":\"monedas\"}"
+      },
+      {
+        "claseId": "mod14-c4",
+        "slideIndex": 5,
+        "title": "Crear serie de ajuste",
+        "menuPath": "Gestión > Inicialización del sistema > Numeración de documentos > Asientos",
+        "camposCount": 5,
+        "campos": [
+          "Módulo",
+          "Serie",
+          "Nombre",
+          "Número siguiente",
+          "Solo para Ajuste de Contabilidad de Costos"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod14-c4",
+        "slideIndex": 6,
+        "title": "Definir cuenta G/L",
+        "menuPath": "Finanzas > Plan de cuentas > Detalles de cuenta",
+        "camposCount": 5,
+        "campos": [
+          "Cuenta",
+          "Nombre",
+          "Naturaleza",
+          "Solo para Ajuste de Contabilidad de Costos",
+          "Grupo de cuenta"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod14-c4",
+        "slideIndex": 7,
+        "title": "Vincular serie y cuenta",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales > Ficha Contabilidad de costes",
+        "camposCount": 5,
+        "campos": [
+          "Serie de numeración",
+          "Cuenta G/L",
+          "Centro de costo predeterminado",
+          "Activar ajuste de costos",
+          "Solo para ajuste de contabilidad de costos"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod14-c4",
+        "slideIndex": 8,
+        "title": "Generar asiento de ajuste",
+        "menuPath": "Finanzas > Asiento para ajuste de contabilidad de costes",
+        "camposCount": 5,
+        "campos": [
+          "Serie",
+          "Fecha",
+          "Centro de costo",
+          "Importe",
+          "Cuenta G/L"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-15",
+    "numero": 15,
+    "titulo": "Operación de Almacén e Inventario Físico",
+    "totalClases": 4,
+    "totalLaminas": 52,
+    "totalPracticas": 13,
+    "practicasConectadas": 4,
+    "practicasFormulario": 9,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod15-c1",
+        "slideIndex": 7,
+        "title": "Consultar inventario por ubicación",
+        "menuPath": "Inventario > Informes de inventario > Lista de contenido de la ubicación",
+        "camposCount": 5,
+        "campos": [
+          "Almacén",
+          "Artículo",
+          "Ubicación",
+          "Cantidad",
+          "Cantidad (línea 2)"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c2",
+        "slideIndex": 5,
+        "title": "Definir peso en artículo",
+        "menuPath": "Inventario > Datos maestros de artículo > Pestaña Datos de inventario > Campo Peso",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Peso",
+          "Grupo de UdM",
+          "UdM Inventario",
+          "Precio de venta"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c2",
+        "slideIndex": 6,
+        "title": "Configurar peso máximo en ubicación",
+        "menuPath": "Inventario > Ubicaciones > Datos maestros de ubicación > Campos Peso de artículo y Peso máximo",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Bodega",
+          "Peso artículo",
+          "Peso máximo",
+          "Peso disponible"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod15-c2",
+        "slideIndex": 7,
+        "title": "Activar validación de peso máximo",
+        "menuPath": "Gestión > Definición > Inventario > Almacenes > Pestaña Ubicaciones > Validación de peso máximo",
+        "camposCount": 6,
+        "campos": [
+          "Validar peso máximo",
+          "Aplicar a recepción",
+          "Aplicar a emisión",
+          "Controlar en asignación automática",
+          "Controlar en asignación manual",
+          "Unidad de peso"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c3",
+        "slideIndex": 5,
+        "title": "Ejecutar Lista de Ubicaciones",
+        "menuPath": "Inventario > Informes de inventario > Lista de ubicaciones",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Almacén",
+          "Subnivel",
+          "Atributo 1",
+          "Cantidad Máxima",
+          "Cantidad Actual"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c3",
+        "slideIndex": 7,
+        "title": "Reposicionar ubicación de picking",
+        "menuPath": "Inventario > Informes de inventario > Lista de ubicaciones",
+        "camposCount": 4,
+        "campos": [
+          "Número de artículo",
+          "Cantidad",
+          "Ubicación origen",
+          "Ubicación destino"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c3",
+        "slideIndex": 8,
+        "title": "Ver contenido de una ubicación",
+        "menuPath": "Inventario > Informes de inventario > Lista de contenido de la ubicación",
+        "camposCount": 4,
+        "campos": [
+          "Ubicación",
+          "Artículo",
+          "Cantidad",
+          "Vista"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c3",
+        "slideIndex": 9,
+        "title": "Definir ubicación predeterminada",
+        "menuPath": "Inventario > Informes de inventario > Lista de contenido de la ubicación",
+        "camposCount": 3,
+        "campos": [
+          "Artículo",
+          "Ubicación",
+          "Cantidad"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c4",
+        "slideIndex": 5,
+        "title": "Crear ciclo de inventario",
+        "menuPath": "Administración > Configuración > Inventario > Ciclos de Inventario",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Unidad básica",
+          "Frecuencia",
+          "Fecha inicio"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c4",
+        "slideIndex": 6,
+        "title": "Configurar determinación cíclica",
+        "menuPath": "Administración > Configuración > Inventario > Determinación del Recuento Cíclico",
+        "camposCount": 5,
+        "campos": [
+          "Grupo de artículos",
+          "Frecuencia",
+          "Unidad",
+          "Activo",
+          "Prioridad"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod15-c4",
+        "slideIndex": 7,
+        "title": "Definir fecha de stock",
+        "menuPath": "Administración > Inicialización del Sistema > Configuración de Documentos > Por Documento > Documento de Recuento de Inventario",
+        "camposCount": 5,
+        "campos": [
+          "Documento",
+          "Fecha de stock por",
+          "Predeterminado",
+          "Aplica a",
+          "Fecha ejemplo"
+        ],
+        "conectada": "{\"clave\":\"conteo\"}"
+      },
+      {
+        "claseId": "mod15-c4",
+        "slideIndex": 8,
+        "title": "Registrar resultado de conteo",
+        "menuPath": "Inventario > Operaciones de inventario > Recuento de inventario > Recuento de inventario",
+        "camposCount": 6,
+        "campos": [
+          "Código de artículo",
+          "Descripción",
+          "Almacén",
+          "Ubicación",
+          "Cantidad contada",
+          "Contador"
+        ],
+        "conectada": "{\"clave\":\"conteo\"}"
+      },
+      {
+        "claseId": "mod15-c4",
+        "slideIndex": 10,
+        "title": "Generar ajuste de inventario",
+        "menuPath": "Inventario > Operaciones de inventario > Recuento de inventario > Contabilización de inventario",
+        "camposCount": 5,
+        "campos": [
+          "Código de artículo",
+          "Cantidad en sistema",
+          "Cantidad contada",
+          "Diferencia",
+          "Tipo de ajuste"
+        ],
+        "conectada": "{\"clave\":\"conteo\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-16",
+    "numero": 16,
+    "titulo": "Picking, Packing y Despacho",
+    "totalClases": 2,
+    "totalLaminas": 26,
+    "totalPracticas": 6,
+    "practicasConectadas": 2,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod16-c1",
+        "slideIndex": 7,
+        "title": "Generar salida para producción",
+        "menuPath": "Inventario > Picking y embalaje > Gestor de picking y embalaje",
+        "camposCount": 6,
+        "campos": [
+          "Orden Producción",
+          "Artículo",
+          "Cantidad",
+          "Bodega",
+          "Costo unitario",
+          "Fecha"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod16-c1",
+        "slideIndex": 9,
+        "title": "Registrar entrada desde producción",
+        "menuPath": "Inventario > Picking y embalaje > Gestor de picking y embalaje",
+        "camposCount": 6,
+        "campos": [
+          "Orden Producción",
+          "Artículo",
+          "Cantidad",
+          "Bodega",
+          "Costo unitario",
+          "Fecha"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod16-c1",
+        "slideIndex": 11,
+        "title": "Filtrar por tipo de fila recurso",
+        "menuPath": "Inventario > Picking y embalaje > Gestor de picking y embalaje",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de fila",
+          "Orden Producción",
+          "Descripción",
+          "Horas",
+          "Costo hora",
+          "Secuencia"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod16-c2",
+        "slideIndex": 5,
+        "title": "Crear solicitud de traslado",
+        "menuPath": "Inventario > Operaciones de stock > Solicitud de traslado",
+        "camposCount": 5,
+        "campos": [
+          "Almacén Origen",
+          "Almacén Destino",
+          "Artículo",
+          "Cantidad",
+          "Fecha"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod16-c2",
+        "slideIndex": 7,
+        "title": "Liberar a lista de preparación",
+        "menuPath": "Inventario > Preparación y Embalaje > Gestor de Preparación",
+        "camposCount": 5,
+        "campos": [
+          "Cajón",
+          "Artículo",
+          "Cantidad",
+          "Almacén",
+          "Seleccionado"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod16-c2",
+        "slideIndex": 9,
+        "title": "Generar documento de traslado",
+        "menuPath": "Inventario > Operaciones de stock > Traslado de inventario",
+        "camposCount": 5,
+        "campos": [
+          "Almacén Origen",
+          "Almacén Destino",
+          "Artículo",
+          "Cantidad",
+          "Fecha"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-17",
+    "numero": 17,
+    "titulo": "Monedas, Cierre e Informes Financieros",
+    "totalClases": 4,
+    "totalLaminas": 52,
+    "totalPracticas": 16,
+    "practicasConectadas": 3,
+    "practicasFormulario": 13,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod17-c1",
+        "slideIndex": 4,
+        "title": "Configurar monedas local y sistema",
+        "menuPath": "Gestión > Inicialización del sistema > Configuración > Finanzas > Monedas",
+        "camposCount": 4,
+        "campos": [
+          "Moneda local",
+          "Moneda del sistema",
+          "Tipo de cambio",
+          "Fecha de tipo de cambio"
+        ],
+        "conectada": "{\"clave\":\"monedas\"}"
+      },
+      {
+        "claseId": "mod17-c1",
+        "slideIndex": 9,
+        "title": "Ejecutar diferencia de tipo de cambio",
+        "menuPath": "Finanzas > Diferencias de tipo de cambio",
+        "camposCount": 4,
+        "campos": [
+          "Valor factura (USD)",
+          "Tipo de cambio original",
+          "Tipo de cambio actual",
+          "Diferencia a revalorizar"
+        ],
+        "conectada": "{\"clave\":\"monedas\"}"
+      },
+      {
+        "claseId": "mod17-c2",
+        "slideIndex": 6,
+        "title": "Establecer prioridad de criterios",
+        "menuPath": "Gestión > Definición > Finanzas > Determinación de cuentas de mayor > Criterios de determinación - Inventario",
+        "camposCount": 5,
+        "campos": [
+          "Código de Artículo",
+          "Grupo de Artículos",
+          "País de Envío",
+          "Grupo de Interlocutor Comercial",
+          "Código de Almacén"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c2",
+        "slideIndex": 7,
+        "title": "Crear regla para impresoras en Canadá",
+        "menuPath": "Gestión > Definición > Finanzas > Determinación de cuentas de mayor > Reglas de determinación avanzada - Inventario",
+        "camposCount": 5,
+        "campos": [
+          "Tipo de Regla Avanzada",
+          "Grupo de Artículos",
+          "País de Envío",
+          "Cuenta de Ingresos",
+          "Cuenta de Inventario"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c2",
+        "slideIndex": 8,
+        "title": "Vista previa del asiento contable",
+        "menuPath": "Ventas - Clientes > Factura de clientes",
+        "camposCount": 4,
+        "campos": [
+          "Cuenta de Ingresos",
+          "Cuenta de Cliente",
+          "Cuenta de Inventario",
+          "IVA Crédito"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"invoice\"}"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 6,
+        "title": "Agregar Gasto de nómina",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 7,
+        "title": "Agregar IESS patronal",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 8,
+        "title": "Agregar Beneficios sociales",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 9,
+        "title": "Agregar Sueldos por pagar",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 10,
+        "title": "Agregar IESS por pagar",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 11,
+        "title": "Agregar Anticipos al personal",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c3",
+        "slideIndex": 12,
+        "title": "Agregar Beneficios sociales por pagar",
+        "menuPath": "Finanzas > Documentos Preliminares",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Tipo",
+          "Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c4",
+        "slideIndex": 5,
+        "title": "Generar Balance al 31/12/2026",
+        "menuPath": "Finanzas > Informes financieros > Financiero > Balance",
+        "camposCount": 4,
+        "campos": [
+          "Hasta una fecha determinada",
+          "Mostrar porcentaje relativo",
+          "Incluir cuentas de balance",
+          "Ordenar por cuenta"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c4",
+        "slideIndex": 7,
+        "title": "Generar Balance de Sumas y Saldos 2026",
+        "menuPath": "Finanzas > Informes financieros > Financiero > Balance de sumas y saldos",
+        "camposCount": 4,
+        "campos": [
+          "Del período",
+          "Al período",
+          "Incluir todas las cuentas",
+          "Mostrar datos maestros"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c4",
+        "slideIndex": 9,
+        "title": "Generar Estado de Pérdidas y Ganancias 2026",
+        "menuPath": "Finanzas > Informes financieros > Financiero > Pérdidas y ganancias",
+        "camposCount": 4,
+        "campos": [
+          "Del período",
+          "Al período",
+          "Agrupar por cajones de P y G",
+          "Mostrar detalle de cuentas"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod17-c4",
+        "slideIndex": 11,
+        "title": "Generar Estado de Flujo de Efectivo 2026",
+        "menuPath": "Finanzas > Informes financieros > Financiero > Estado de flujos de efectivo",
+        "camposCount": 4,
+        "campos": [
+          "Del período",
+          "Al período",
+          "Método directo",
+          "Incluir equivalentes de efectivo"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-18",
+    "numero": 18,
+    "titulo": "Costos, Dimensiones y Presupuestos",
+    "totalClases": 3,
+    "totalLaminas": 33,
+    "totalPracticas": 12,
+    "practicasConectadas": 8,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod18-c1",
+        "slideIndex": 5,
+        "title": "Crear centro de coste Ventas",
+        "menuPath": "Finanzas > Contabilidad de costes > Centros de coste",
+        "camposCount": 3,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Código de clasificación"
+        ],
+        "conectada": "{\"clave\":\"costos\"}"
+      },
+      {
+        "claseId": "mod18-c1",
+        "slideIndex": 6,
+        "title": "Definir reparto por área",
+        "menuPath": "Finanzas > Contabilidad de costes > Normas de reparto",
+        "camposCount": 4,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Centro de coste",
+          "Porcentaje"
+        ],
+        "conectada": "{\"clave\":\"costos\"}"
+      },
+      {
+        "claseId": "mod18-c1",
+        "slideIndex": 7,
+        "title": "Vincular cuenta 6200 a norma AREA",
+        "menuPath": "Finanzas > Plan de cuentas",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Nombre",
+          "Norma de reparto"
+        ],
+        "conectada": "{\"clave\":\"costos\"}"
+      },
+      {
+        "claseId": "mod18-c1",
+        "slideIndex": 10,
+        "title": "Generar informe de gastos",
+        "menuPath": "Finanzas > Informes financieros > Informes de contabilidad de costes",
+        "camposCount": 3,
+        "campos": [
+          "Período",
+          "Centro de coste",
+          "Tipo de reporte"
+        ],
+        "conectada": "{\"clave\":\"costos\"}"
+      },
+      {
+        "claseId": "mod18-c2",
+        "slideIndex": 5,
+        "title": "Activar dimensiones múltiples",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales > Ficha Contabilidad de costes",
+        "camposCount": 4,
+        "campos": [
+          "Módulo",
+          "Habilitar dimensiones múltiples",
+          "Número de dimensiones",
+          "Mostrar normas en"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod18-c2",
+        "slideIndex": 6,
+        "title": "Definir dos dimensiones",
+        "menuPath": "Finanzas > Contabilidad de costes > Dimensiones",
+        "camposCount": 6,
+        "campos": [
+          "Dimensión 1",
+          "Centro de costo",
+          "Descripción",
+          "Dimensión 2",
+          "Centro de costo (línea 2)",
+          "Descripción (línea 2)"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod18-c2",
+        "slideIndex": 7,
+        "title": "Vincular cuenta eléctrica",
+        "menuPath": "Finanzas > Contabilidad de costes > Dimensiones",
+        "camposCount": 6,
+        "campos": [
+          "Cuenta",
+          "Descripción",
+          "Dimensión 1",
+          "Norma 1",
+          "Dimensión 2",
+          "Norma 2"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod18-c2",
+        "slideIndex": 9,
+        "title": "Ejecutar informe por departamento",
+        "menuPath": "Finanzas > Contabilidad de costes > Informe de centro de coste",
+        "camposCount": 5,
+        "campos": [
+          "Dimensión",
+          "Periodo",
+          "Centro de costo",
+          "Gasos eléctricos",
+          "Total gastos"
+        ],
+        "conectada": "{\"clave\":\"costos\"}"
+      },
+      {
+        "claseId": "mod18-c3",
+        "slideIndex": 5,
+        "title": "Inicializar el presupuesto",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales > Ficha Presupuesto",
+        "camposCount": 4,
+        "campos": [
+          "Inicialización del Presupuesto",
+          "Al superar presupuesto",
+          "Ejercicio Fiscal",
+          "Control por"
+        ],
+        "conectada": "{\"clave\":\"presupuesto\"}"
+      },
+      {
+        "claseId": "mod18-c3",
+        "slideIndex": 6,
+        "title": "Marcar cuenta como relevante",
+        "menuPath": "Finanzas > Plan de cuentas > Detalles de cuenta",
+        "camposCount": 4,
+        "campos": [
+          "Cuenta",
+          "Nombre",
+          "Relevante para Presupuesto",
+          "Tipo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod18-c3",
+        "slideIndex": 7,
+        "title": "Definir importe presupuestado",
+        "menuPath": "Finanzas > Definición del presupuesto > Presupuesto",
+        "camposCount": 4,
+        "campos": [
+          "Escenario",
+          "Cuenta",
+          "Debe/Haber MN",
+          "Método"
+        ],
+        "conectada": "{\"clave\":\"presupuesto\"}"
+      },
+      {
+        "claseId": "mod18-c3",
+        "slideIndex": 8,
+        "title": "Ejecutar informe de presupuesto",
+        "menuPath": "Finanzas > Informes financieros > Informes de presupuesto > Informe de presupuesto",
+        "camposCount": 6,
+        "campos": [
+          "Escenario",
+          "Período",
+          "Cuenta",
+          "Presupuestado",
+          "Real",
+          "Desviación"
+        ],
+        "conectada": "{\"clave\":\"presupuesto\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-19",
+    "numero": 19,
+    "titulo": "Facturación Electrónica y Retenciones SRI 2026",
+    "totalClases": 10,
+    "totalLaminas": 116,
+    "totalPracticas": 23,
+    "practicasConectadas": 21,
+    "practicasFormulario": 2,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod19-c1",
+        "slideIndex": 5,
+        "title": "Ingresar RUC del sistema",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Proveedor",
+          "Fecha",
+          "Información Adicional",
+          "Código de Artículo",
+          "Cantidad"
+        ],
+        "conectada": "{\"clave\":\"empresa\"}"
+      },
+      {
+        "claseId": "mod19-c1",
+        "slideIndex": 7,
+        "title": "Solicitar anulación de factura",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Tipo de Documento",
+          "Numero de Documento",
+          "Fecha de Emisión",
+          "Motivo",
+          "Fecha Solicitud"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod19-c1",
+        "slideIndex": 8,
+        "title": "Ver retenciones calculadas",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Fecha",
+          "Base Imponible",
+          "IVA (15%)",
+          "Retención IVA (30%)",
+          "Retención Renta (2%)"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod19-c2",
+        "slideIndex": 5,
+        "title": "Editar proveedor V10000",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 4,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Sujeto a retención",
+          "Impuesto de retención"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod19-c2",
+        "slideIndex": 6,
+        "title": "Crear factura a Dell Ecuador",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Precio"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c2",
+        "slideIndex": 8,
+        "title": "Generar comprobante de retención",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Fecha",
+          "Proveedor",
+          "Base IVA",
+          "IVA",
+          "Retención IVA"
+        ],
+        "conectada": "{\"clave\":\"sri\"}"
+      },
+      {
+        "claseId": "mod19-c3",
+        "slideIndex": 5,
+        "title": "Marcar proveedor sujeto a retención",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Sujeto a retención",
+          "Grupo de retención IVA",
+          "Código de retención IVA"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod19-c3",
+        "slideIndex": 6,
+        "title": "Registrar factura de compra con IVA",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Fecha",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "IVA"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c3",
+        "slideIndex": 8,
+        "title": "Generar comprobante de retención",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Fecha",
+          "Tipo de documento",
+          "Base imponible",
+          "IVA",
+          "Retención IVA"
+        ],
+        "conectada": "{\"clave\":\"sri\"}"
+      },
+      {
+        "claseId": "mod19-c4",
+        "slideIndex": 6,
+        "title": "Registrar factura de proveedor",
+        "menuPath": "Compras - Proveedores > Factura de proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Proveedor",
+          "Fecha de contabilización",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c5",
+        "slideIndex": 6,
+        "title": "Configurar proveedor para retenciones",
+        "menuPath": "Interlocutores comerciales > Datos maestros interlocutor comercial",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Sujeto a retención",
+          "Impuesto de retención",
+          "Categoría fiscal"
+        ],
+        "conectada": "{\"clave\":\"proveedor\"}"
+      },
+      {
+        "claseId": "mod19-c6",
+        "slideIndex": 5,
+        "title": "Registrar nota de débito",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Serie",
+          "Número",
+          "Fecha",
+          "Proveedor",
+          "Referencia",
+          "Artículo"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c6",
+        "slideIndex": 7,
+        "title": "Emitir guía de remisión",
+        "menuPath": "Ventas - Clientes > Entrega",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Motivo",
+          "Transportista"
+        ],
+        "conectada": "{\"clave\":\"sri\"}"
+      },
+      {
+        "claseId": "mod19-c6",
+        "slideIndex": 9,
+        "title": "Procesar liquidación de compra",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Serie",
+          "Número",
+          "Fecha",
+          "Proveedor",
+          "Artículo",
+          "Cantidad"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c7",
+        "slideIndex": 5,
+        "title": "Registrar el RUC de B1 Center",
+        "menuPath": "Gestión > Inicialización del sistema > Detalles de la empresa",
+        "camposCount": 4,
+        "campos": [
+          "Nombre de la empresa",
+          "RUC (ID fiscal)",
+          "Dirección",
+          "Moneda local"
+        ],
+        "conectada": "{\"clave\":\"empresa\"}"
+      },
+      {
+        "claseId": "mod19-c7",
+        "slideIndex": 8,
+        "title": "Comprar a un RIMPE Emprendedor",
+        "menuPath": "Compras - Proveedores > Factura de proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "IVA",
+          "Fecha de emisión"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c7",
+        "slideIndex": 11,
+        "title": "Comprar a un Negocio Popular",
+        "menuPath": "Compras - Proveedores > Factura de proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Proveedor",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "IVA",
+          "Fecha de emisión"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c8",
+        "slideIndex": 6,
+        "title": "Crear el perfume con ICE",
+        "menuPath": "Inventario > Datos maestros de artículo",
+        "camposCount": 4,
+        "campos": [
+          "Descripción",
+          "Tipo",
+          "Precio lista 1",
+          "ICE"
+        ],
+        "conectada": "{\"clave\":\"articulo\"}"
+      },
+      {
+        "claseId": "mod19-c8",
+        "slideIndex": 7,
+        "title": "Registrar la factura de compra de perfumes",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 5,
+        "campos": [
+          "Proveedor",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "IVA"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod19-c8",
+        "slideIndex": 9,
+        "title": "Registrar la factura de venta de perfumes",
+        "menuPath": "Ventas - Clientes > Factura de clientes",
+        "camposCount": 5,
+        "campos": [
+          "Cliente",
+          "Artículo",
+          "Cantidad",
+          "Precio unitario",
+          "IVA"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"invoice\"}"
+      },
+      {
+        "claseId": "mod19-c9",
+        "slideIndex": 5,
+        "title": "Registrar pago al exterior",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Fecha",
+          "Valor",
+          "Concepto",
+          "ISD",
+          "Total"
+        ],
+        "conectada": "{\"clave\":\"isd\"}"
+      },
+      {
+        "claseId": "mod19-c9",
+        "slideIndex": 7,
+        "title": "Registrar pago ISD reducido",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Fecha",
+          "Valor",
+          "Concepto",
+          "ISD",
+          "Total"
+        ],
+        "conectada": "{\"clave\":\"isd\"}"
+      },
+      {
+        "claseId": "mod19-c10",
+        "slideIndex": 5,
+        "title": "Registrar pago con retenciones",
+        "menuPath": "Gestión de bancos > Pagos recibidos",
+        "camposCount": 6,
+        "campos": [
+          "Cliente",
+          "Factura Nro.",
+          "Total factura",
+          "Retención renta",
+          "Retención IVA",
+          "Total pagado"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-20",
+    "numero": 20,
+    "titulo": "Recursos, Capacidad y Rutas de Producción",
+    "totalClases": 3,
+    "totalLaminas": 32,
+    "totalPracticas": 10,
+    "practicasConectadas": 6,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod20-c1",
+        "slideIndex": 5,
+        "title": "Crear recurso de trabajo",
+        "menuPath": "Recursos > Datos maestros del recurso",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Tipo",
+          "Empleado",
+          "U. de medida",
+          "Capacidad/día"
+        ],
+        "conectada": "{\"clave\":\"recursos\",\"tipo\":\"trabajo\"}"
+      },
+      {
+        "claseId": "mod20-c1",
+        "slideIndex": 6,
+        "title": "Crear recurso de máquina",
+        "menuPath": "Recursos > Datos maestros del recurso",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Tipo",
+          "Activo fijo",
+          "U. de medida",
+          "Capacidad/día"
+        ],
+        "conectada": "{\"clave\":\"recursos\",\"tipo\":\"maquina\"}"
+      },
+      {
+        "claseId": "mod20-c1",
+        "slideIndex": 7,
+        "title": "Configurar tiempo de ejecución",
+        "menuPath": "Recursos > Datos maestros del recurso",
+        "camposCount": 4,
+        "campos": [
+          "Tiempo por unidad",
+          "Unidades por período",
+          "U. de medida",
+          "Tiempo ejecución"
+        ],
+        "conectada": "{\"clave\":\"recursos\",\"tipo\":\"maquina\"}"
+      },
+      {
+        "claseId": "mod20-c1",
+        "slideIndex": 8,
+        "title": "Agregar recurso a LdM",
+        "menuPath": "Inventario > Grupos de recurso",
+        "camposCount": 5,
+        "campos": [
+          "Artículo",
+          "Tipo de línea",
+          "Código",
+          "Cantidad",
+          "Tiempo estimado"
+        ],
+        "conectada": "{\"clave\":\"bom\"}"
+      },
+      {
+        "claseId": "mod20-c2",
+        "slideIndex": 5,
+        "title": "Definir plan semanal",
+        "menuPath": "Recursos > Fijar capacidades internas diarias",
+        "camposCount": 6,
+        "campos": [
+          "Recurso",
+          "Fecha inicio",
+          "Fecha fin",
+          "Factor 1",
+          "Factor 2",
+          "Capacidad diaria"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod20-c2",
+        "slideIndex": 6,
+        "title": "Generar capacidad trimestre",
+        "menuPath": "Recursos > Fijar capacidades internas diarias",
+        "camposCount": 6,
+        "campos": [
+          "Recurso",
+          "Fecha inicio",
+          "Fecha fin",
+          "Copiar plan semanal",
+          "Días calculados",
+          "Capacidad total"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod20-c2",
+        "slideIndex": 7,
+        "title": "Analizar capacidad disponible",
+        "menuPath": "Recursos > Capacidad de recursos",
+        "camposCount": 6,
+        "campos": [
+          "Recurso",
+          "Periodo",
+          "Vista",
+          "Capacidad interna mensual",
+          "Comprometido",
+          "Disponible"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod20-c3",
+        "slideIndex": 5,
+        "title": "Crear orden producción armario",
+        "menuPath": "Producción > Orden de producción > Menú contextual > Enviar componentes",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Bodega",
+          "Fecha inicio",
+          "Fecha vencimiento"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      },
+      {
+        "claseId": "mod20-c3",
+        "slideIndex": 6,
+        "title": "Visualizar etapas ruta",
+        "menuPath": "Producción > Orden de producción > Menú contextual > Enviar componentes",
+        "camposCount": 6,
+        "campos": [
+          "Etapa",
+          "Descripción",
+          "Componente",
+          "Recurso",
+          "Operario",
+          "Cantidad"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod20-c3",
+        "slideIndex": 8,
+        "title": "Enviar componentes etapa",
+        "menuPath": "Producción > Orden de producción > Menú contextual > Enviar componentes",
+        "camposCount": 6,
+        "campos": [
+          "Etapa de ruta",
+          "Componente",
+          "Cantidad requerida",
+          "Cantidad enviada",
+          "Bodega origen",
+          "Bodega destino"
+        ],
+        "conectada": "{\"clave\":\"produccion\"}"
+      }
+    ]
+  },
+  {
+    "id": "mod-21",
+    "numero": 21,
+    "titulo": "Administración del Sistema",
+    "totalClases": 6,
+    "totalLaminas": 69,
+    "totalPracticas": 26,
+    "practicasConectadas": 7,
+    "practicasFormulario": 19,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod21-c1",
+        "slideIndex": 5,
+        "title": "Crear serie para facturas norte",
+        "menuPath": "Gestión > Inicialización del sistema > Numeración de documento",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de documento",
+          "Número de inicio",
+          "Número final",
+          "Nombre de la serie",
+          "Grupo de serie",
+          "Próximo número"
+        ],
+        "conectada": "{\"clave\":\"series\",\"docType\":\"facturas\"}"
+      },
+      {
+        "claseId": "mod21-c1",
+        "slideIndex": 7,
+        "title": "Definir serie por defecto para Ana",
+        "menuPath": "Gestión > Inicialización del sistema > Numeración de documento",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de documento",
+          "Nombre de la serie",
+          "Grupo de serie",
+          "Fijar como por defecto",
+          "Usuario",
+          "Próximo número"
+        ],
+        "conectada": "{\"clave\":\"series\",\"docType\":\"facturas\"}"
+      },
+      {
+        "claseId": "mod21-c1",
+        "slideIndex": 8,
+        "title": "Crear serie para clientes norte",
+        "menuPath": "Gestión > Inicialización del sistema > Numeración de documento",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de documento",
+          "Número de inicio",
+          "Número final",
+          "Nombre de la serie",
+          "Grupo de serie",
+          "Próximo número"
+        ],
+        "conectada": "{\"clave\":\"series\",\"docType\":\"facturas\"}"
+      },
+      {
+        "claseId": "mod21-c1",
+        "slideIndex": 9,
+        "title": "Configurar formato CLI-1000-2026",
+        "menuPath": "Gestión > Inicialización del sistema > Numeración de documento",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de documento",
+          "Nombre de la serie",
+          "Cantidad de dígitos",
+          "Prefijo",
+          "Sufijo",
+          "Próximo número"
+        ],
+        "conectada": "{\"clave\":\"series\",\"docType\":\"facturas\"}"
+      },
+      {
+        "claseId": "mod21-c1",
+        "slideIndex": 10,
+        "title": "Autorizar a Ana para grupo 2",
+        "menuPath": "Gestión > Inicialización del sistema > Autorizaciones > Autorizaciones generales > Serie de numeración",
+        "camposCount": 6,
+        "campos": [
+          "Usuario",
+          "Módulo",
+          "Tipo de autorización",
+          "Grupo de serie",
+          "Acceso",
+          "Habilitado"
+        ],
+        "conectada": "{\"clave\":\"series\"}"
+      },
+      {
+        "claseId": "mod21-c1",
+        "slideIndex": 11,
+        "title": "Verificar serie VENTAS NORTE",
+        "menuPath": "Gestión > Utilidades > Comprobar numeración de documentos",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de documento",
+          "Incluir datos maestros",
+          "Serie",
+          "Desde número",
+          "Hasta número",
+          "Ejecutar verificación"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c2",
+        "slideIndex": 5,
+        "title": "Previsualizar formatos disponibles",
+        "menuPath": "Administración > Configuración > General > Gestor de Informes y Formatos",
+        "camposCount": 5,
+        "campos": [
+          "Número",
+          "Cliente",
+          "Fecha",
+          "Total",
+          "Formato activo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c2",
+        "slideIndex": 6,
+        "title": "Editar un formato PLD",
+        "menuPath": "Administración > Configuración > General > Gestor de Informes y Formatos",
+        "camposCount": 6,
+        "campos": [
+          "Nombre",
+          "Tipo",
+          "Logo",
+          "Dirección",
+          "Pie de página",
+          "Campo Monto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c2",
+        "slideIndex": 7,
+        "title": "Establecer formato predeterminado",
+        "menuPath": "Administración > Configuración > General > Gestor de Informes y Formatos",
+        "camposCount": 6,
+        "campos": [
+          "Formato",
+          "Alcance",
+          "Usuario",
+          "Socio comercial",
+          "Documento",
+          "Activo"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c3",
+        "slideIndex": 4,
+        "title": "Configurar método de correo",
+        "menuPath": "Administración > Inicialización del Sistema > Configuración General > Pestaña Servicios",
+        "camposCount": 6,
+        "campos": [
+          "Método de correo",
+          "Servidor SMTP",
+          "Puerto",
+          "Autenticación",
+          "Usuario",
+          "Usar TLS"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c3",
+        "slideIndex": 5,
+        "title": "Configurar preferencias de oferta",
+        "menuPath": "Administración > Inicialización del Sistema > Preferencias de Impresión > Por Documento",
+        "camposCount": 6,
+        "campos": [
+          "Tipo de documento",
+          "Exportar a PDF",
+          "Enviar por correo",
+          "Asunto",
+          "Cuerpo",
+          "Persona de contacto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c3",
+        "slideIndex": 6,
+        "title": "Enviar ofertas en lote",
+        "menuPath": "Ventas > Impresión de Documentos A/R",
+        "camposCount": 6,
+        "campos": [
+          "Documentos seleccionados",
+          "Usar Grupo de Correo",
+          "Asunto",
+          "Cuerpo",
+          "Correo electrónico",
+          "Adjunto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c3",
+        "slideIndex": 7,
+        "title": "Asignar grupo de correo",
+        "menuPath": "Interlocutores comerciales > Datos maestros de interlocutor comercial > Ficha Personas de contacto",
+        "camposCount": 6,
+        "campos": [
+          "Código de socio",
+          "Nombre",
+          "Persona de contacto",
+          "Grupo de correo",
+          "Correo electrónico",
+          "Rol en empresa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c3",
+        "slideIndex": 8,
+        "title": "Crear modelo de IU para soporte",
+        "menuPath": "Gestión > Utilidades > Modelo de configuración de la IU",
+        "camposCount": 6,
+        "campos": [
+          "Nombre del modelo",
+          "Objeto",
+          "Usuario asignado",
+          "Campo oculto",
+          "Ficha destacada",
+          "Campo U_ añadido"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c4",
+        "slideIndex": 5,
+        "title": "Activar propiedad de datos",
+        "menuPath": "Gestión > Inicialización del sistema > Parametrizaciones generales > Ficha IC",
+        "camposCount": 3,
+        "campos": [
+          "Habilitar la propiedad de los datos",
+          "Método",
+          "Permitir interlocutores sin propietario"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c4",
+        "slideIndex": 6,
+        "title": "Crear empleado contadora",
+        "menuPath": "Recursos humanos > Datos maestros de empleado",
+        "camposCount": 6,
+        "campos": [
+          "ID",
+          "Nombre",
+          "Jefe",
+          "Departamento",
+          "Sucursal",
+          "Activo"
+        ],
+        "conectada": "{\"clave\":\"empleado\"}"
+      },
+      {
+        "claseId": "mod21-c4",
+        "slideIndex": 7,
+        "title": "Asignar propietario a cliente",
+        "menuPath": "Gestión > Inicialización del sistema > Autorizaciones > Propiedad de datos > Autorizaciones de propiedad de datos",
+        "camposCount": 5,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Propietario",
+          "Ciudad",
+          "Teléfono"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c4",
+        "slideIndex": 8,
+        "title": "Configurar permisos de jefe",
+        "menuPath": "Gestión > Inicialización del sistema > Autorizaciones > Propiedad de datos > Autorizaciones de propiedad de datos",
+        "camposCount": 4,
+        "campos": [
+          "Empleado",
+          "Relación: Jefe",
+          "Relación: Departamento",
+          "Relación: Empresa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c4",
+        "slideIndex": 9,
+        "title": "Acceder a factura de cliente",
+        "menuPath": "Gestión > Inicialización del sistema > Autorizaciones > Propiedad de datos > Autorizaciones de propiedad de datos",
+        "camposCount": 5,
+        "campos": [
+          "Número",
+          "Cliente",
+          "Propietario",
+          "Fecha",
+          "Total"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"invoice\"}"
+      },
+      {
+        "claseId": "mod21-c5",
+        "slideIndex": 5,
+        "title": "Crear cuenta de usuario",
+        "menuPath": "Gestión > Definición > General > Usuarios",
+        "camposCount": 4,
+        "campos": [
+          "Usuario",
+          "Nombre",
+          "Contraseña",
+          "Nombre de empleado"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c5",
+        "slideIndex": 8,
+        "title": "Crear grupo de ventas",
+        "menuPath": "Gestión > Definición > General > Grupos de usuarios",
+        "camposCount": 5,
+        "campos": [
+          "Grupo",
+          "Tipo",
+          "Usuario",
+          "Fecha inicio",
+          "Fecha fin"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c5",
+        "slideIndex": 9,
+        "title": "Configurar política alta de claves",
+        "menuPath": "Gestión > Configuración > General > Seguridad > Gestión de claves de acceso",
+        "camposCount": 4,
+        "campos": [
+          "Longitud mínima",
+          "Caducidad (días)",
+          "Intento fallido",
+          "Bloqueo automático"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c6",
+        "slideIndex": 5,
+        "title": "Activar alerta de stock mínimo",
+        "menuPath": "Gestión > Gestión de alertas",
+        "camposCount": 6,
+        "campos": [
+          "Nombre",
+          "Prioridad",
+          "Destinatario",
+          "Método",
+          "AlertSvc",
+          "Activa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c6",
+        "slideIndex": 7,
+        "title": "Crear alerta de usuario semanal",
+        "menuPath": "Gestión > Gestión de alertas",
+        "camposCount": 6,
+        "campos": [
+          "Nombre",
+          "Tipo",
+          "Consulta",
+          "Frecuencia",
+          "Hora",
+          "Activa"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c6",
+        "slideIndex": 9,
+        "title": "Asignar autorizaciones de ventas",
+        "menuPath": "Gestión > Inicialización del sistema > Autorizaciones > Autorizaciones generales",
+        "camposCount": 6,
+        "campos": [
+          "Usuario",
+          "Ventas",
+          "Compras",
+          "Finanzas",
+          "Inventario",
+          "Reportes"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod21-c6",
+        "slideIndex": 10,
+        "title": "Copiar autorizaciones entre usuarios",
+        "menuPath": "Gestión > Inicialización del sistema > Autorizaciones > Autorizaciones generales",
+        "camposCount": 6,
+        "campos": [
+          "Usuario origen",
+          "Usuario destino",
+          "Incluir jefe",
+          "Ajustar después",
+          "Grupo por defecto",
+          "Aplicar"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-22",
+    "numero": 22,
+    "titulo": "Extensibilidad y Analítica",
+    "totalClases": 2,
+    "totalLaminas": 28,
+    "totalPracticas": 9,
+    "practicasConectadas": 5,
+    "practicasFormulario": 4,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod22-c1",
+        "slideIndex": 5,
+        "title": "Crear tabla de conductores",
+        "menuPath": "Herramientas > Herramientas de customizing > Tablas definidas por el usuario - Configuración",
+        "camposCount": 5,
+        "campos": [
+          "Nombre de la tabla",
+          "Descripción",
+          "Tipo de objeto",
+          "Código habilitado",
+          "Nombre único"
+        ],
+        "conectada": "{\"clave\":\"udo\"}"
+      },
+      {
+        "claseId": "mod22-c1",
+        "slideIndex": 6,
+        "title": "Agregar campo Nombre",
+        "menuPath": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+        "camposCount": 5,
+        "campos": [
+          "Tabla seleccionada",
+          "Nombre del campo",
+          "Tipo",
+          "Longitud",
+          "Descripción"
+        ],
+        "conectada": "{\"clave\":\"udo\"}"
+      },
+      {
+        "claseId": "mod22-c1",
+        "slideIndex": 7,
+        "title": "Ingresar conductor de entrega",
+        "menuPath": "Herramientas > Ventanas definidas por el usuario",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "U_OF_NOMBRE",
+          "U_OF_TURNO",
+          "U_OF_DISPONIBLE",
+          "U_OF_UBICACION"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"delivery\"}"
+      },
+      {
+        "claseId": "mod22-c1",
+        "slideIndex": 8,
+        "title": "Vincular UDT a campo de entrega",
+        "menuPath": "Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión",
+        "camposCount": 5,
+        "campos": [
+          "Objeto",
+          "Tipo de campo",
+          "Nombre del campo",
+          "Validación",
+          "Tabla vinculada"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"delivery\"}"
+      },
+      {
+        "claseId": "mod22-c1",
+        "slideIndex": 10,
+        "title": "Registrar UDO de vehículos",
+        "menuPath": "Herramientas > Herramientas de customizing > Asistente de registro de objetos",
+        "camposCount": 5,
+        "campos": [
+          "Nombre de la tabla",
+          "Tipo de objeto",
+          "ID del objeto",
+          "Habilitar opción de menú",
+          "Módulo del menú"
+        ],
+        "conectada": "{\"clave\":\"udo\"}"
+      },
+      {
+        "claseId": "mod22-c2",
+        "slideIndex": 6,
+        "title": "Definir medida y dimensión",
+        "menuPath": "Herramientas > Informe de Excel y análisis interactivo",
+        "camposCount": 5,
+        "campos": [
+          "Medida disponible",
+          "Dimensión disponible",
+          "Método de cálculo",
+          "Orden",
+          "Área de destino"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod22-c2",
+        "slideIndex": 7,
+        "title": "Seleccionar gráfico circular",
+        "menuPath": "Herramientas > Informe de Excel y análisis interactivo",
+        "camposCount": 5,
+        "campos": [
+          "Tipo de gráfico",
+          "Vista previa",
+          "Cliente C42000",
+          "Otros clientes",
+          "Leyenda"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod22-c2",
+        "slideIndex": 11,
+        "title": "Crear informe de ventas por región",
+        "menuPath": "Herramientas > Informe de Excel y análisis interactivo",
+        "camposCount": 5,
+        "campos": [
+          "Fuente de datos",
+          "Medida",
+          "Dimensión",
+          "Filtro",
+          "Ubicación"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod22-c2",
+        "slideIndex": 12,
+        "title": "Crear análisis de inventario cruzado",
+        "menuPath": "Herramientas > Informe de Excel y análisis interactivo",
+        "camposCount": 5,
+        "campos": [
+          "Fuente de datos",
+          "Valor",
+          "Fila",
+          "Columna",
+          "Filtro"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-23",
+    "numero": 23,
+    "titulo": "Implementación, Saldos Iniciales y Go-Live",
+    "totalClases": 4,
+    "totalLaminas": 49,
+    "totalPracticas": 11,
+    "practicasConectadas": 6,
+    "practicasFormulario": 5,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod23-c1",
+        "slideIndex": 7,
+        "title": "Ingresar saldo de apertura de cuenta",
+        "menuPath": "Administración > Inicialización del Sistema > Saldos de Apertura > Saldo de Apertura de Cuentas G/L",
+        "camposCount": 3,
+        "campos": [
+          "Cuenta",
+          "Débito",
+          "Crédito"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod23-c1",
+        "slideIndex": 9,
+        "title": "Ingresar saldo de apertura de cliente",
+        "menuPath": "Administración > Inicialización del Sistema > Saldos de Apertura > Saldo de Apertura de Socios de Negocio",
+        "camposCount": 3,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Saldo"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod23-c2",
+        "slideIndex": 4,
+        "title": "Ingresar datos empresa",
+        "menuPath": "Gestión > Seleccionar empresa > Nueva con el asistente",
+        "camposCount": 5,
+        "campos": [
+          "Nombre de la empresa",
+          "Base de datos",
+          "Localización",
+          "Idioma",
+          "Tipo de licencia"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod23-c2",
+        "slideIndex": 5,
+        "title": "Definir períodos contables",
+        "menuPath": "Gestión > Inicialización del sistema > Centro de implementación > Tareas de implementación > Configurar parametrizaciones de empresa",
+        "camposCount": 6,
+        "campos": [
+          "Ejercicio más antiguo",
+          "Último período",
+          "Intervalo de contabilización",
+          "Rango de vencimiento",
+          "Fiscal comienza en enero",
+          "Diferente al calendario"
+        ],
+        "conectada": "{\"clave\":\"cierre\"}"
+      },
+      {
+        "claseId": "mod23-c2",
+        "slideIndex": 6,
+        "title": "Crear usuario director",
+        "menuPath": "Gestión > Inicialización del sistema > Centro de implementación > Tareas de implementación > Configurar parametrizaciones de empresa",
+        "camposCount": 6,
+        "campos": [
+          "Usuario",
+          "Contraseña",
+          "Confirmar contraseña",
+          "Privilegio",
+          "Cambiar en primer ingreso",
+          "Usuario necesario para acceso"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod23-c3",
+        "slideIndex": 5,
+        "title": "Ingresar saldo de apertura de inventario",
+        "menuPath": "Inventario > Transacciones de Inventario > Saldo de Apertura del Inventario",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Descripción",
+          "Cantidad",
+          "Precio unitario",
+          "Almacén",
+          "Cuenta de compensación"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod23-c3",
+        "slideIndex": 7,
+        "title": "Ingresar saldo de apertura de caja",
+        "menuPath": "Administración > Inicialización del Sistema > Saldos de Apertura > Saldo de Apertura de Cuentas G/L",
+        "camposCount": 6,
+        "campos": [
+          "Cuenta",
+          "Débito",
+          "Haber",
+          "Fecha",
+          "Cuenta de compensación",
+          "Origen"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod23-c3",
+        "slideIndex": 9,
+        "title": "Ingresar saldo de apertura de cliente",
+        "menuPath": "Administración > Inicialización del Sistema > Saldos de Apertura > Saldo de Apertura de Socios de Negocio",
+        "camposCount": 6,
+        "campos": [
+          "Código",
+          "Nombre",
+          "Saldo apertura",
+          "Tipo",
+          "Fecha",
+          "Cuenta de compensación"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod23-c4",
+        "slideIndex": 6,
+        "title": "Configurar opciones de copia",
+        "menuPath": "Gestión > Inicialización del sistema > Centro de implementación > Tareas de implementación > Ficha Gestión de datos > Copiar datos entre empresas",
+        "camposCount": 6,
+        "campos": [
+          "Función",
+          "Método de copia",
+          "Manejo de errores",
+          "Importar cuentas",
+          "Forzar backup",
+          "Permitir usuarios activos"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod23-c4",
+        "slideIndex": 11,
+        "title": "Completar encabezado de pedido",
+        "menuPath": "Gestión > Inicialización del sistema > Centro de implementación > Tareas de implementación > Ficha Gestión de datos > Copiar datos entre empresas",
+        "camposCount": 6,
+        "campos": [
+          "DocNum",
+          "Fecha",
+          "CardCode",
+          "Series",
+          "DocTotal",
+          "NumAtCard"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod23-c4",
+        "slideIndex": 12,
+        "title": "Agregar líneas de artículo",
+        "menuPath": "Gestión > Inicialización del sistema > Centro de implementación > Tareas de implementación > Ficha Gestión de datos > Copiar datos entre empresas",
+        "camposCount": 6,
+        "campos": [
+          "ParentKey",
+          "ItemCode",
+          "Quantity",
+          "Price",
+          "DiscountPercent",
+          "TaxCode"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-24",
+    "numero": 24,
+    "titulo": "Proyecto Integrador",
+    "totalClases": 3,
+    "totalLaminas": 44,
+    "totalPracticas": 20,
+    "practicasConectadas": 6,
+    "practicasFormulario": 14,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod24-c1",
+        "slideIndex": 5,
+        "title": "Asignar plantilla de cockpit",
+        "menuPath": "Herramientas > Cockpit > Seleccionar Plantilla de Cockpit",
+        "camposCount": 4,
+        "campos": [
+          "Plantilla de Cockpit",
+          "Descripción",
+          "Usuario",
+          "Activo"
+        ],
+        "conectada": "{\"clave\":\"cockpit\"}"
+      },
+      {
+        "claseId": "mod24-c1",
+        "slideIndex": 6,
+        "title": "Agregar widget de actividades",
+        "menuPath": "Herramientas > Cockpit > Configuración de Widget de Recuento",
+        "camposCount": 5,
+        "campos": [
+          "Widget",
+          "Posición",
+          "Tipo",
+          "Acceso directo",
+          "Usuario"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c1",
+        "slideIndex": 7,
+        "title": "Buscar oferta por cliente",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 4,
+        "campos": [
+          "Término de búsqueda",
+          "Fecha",
+          "Módulo",
+          "Tipo de objeto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c2",
+        "slideIndex": 5,
+        "title": "Crear oferta de compra",
+        "menuPath": "Socios de Negocios > Datos Maestros Socio de Negocios",
+        "camposCount": 6,
+        "campos": [
+          "Código socio de negocios",
+          "Fecha",
+          "Código de artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Impuesto"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c2",
+        "slideIndex": 6,
+        "title": "Convertir oferta en pedido",
+        "menuPath": "Compras - Proveedores > Pedido",
+        "camposCount": 6,
+        "campos": [
+          "Código socio de negocios",
+          "Fecha",
+          "Código de artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Impuesto"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"purchase_order\"}"
+      },
+      {
+        "claseId": "mod24-c2",
+        "slideIndex": 7,
+        "title": "Registrar entrada de mercancías",
+        "menuPath": "Compras - Proveedores > Entrada de Mercancías por Pedido",
+        "camposCount": 6,
+        "campos": [
+          "Código socio de negocios",
+          "Fecha",
+          "Código de artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Almacén"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"goods_receipt\"}"
+      },
+      {
+        "claseId": "mod24-c2",
+        "slideIndex": 9,
+        "title": "Registrar factura de proveedor",
+        "menuPath": "Compras - Proveedores > Factura de Proveedores",
+        "camposCount": 6,
+        "campos": [
+          "Código socio de negocios",
+          "Fecha",
+          "Código de artículo",
+          "Cantidad",
+          "Precio unitario",
+          "Impuesto"
+        ],
+        "conectada": "{\"clave\":\"documento\",\"docType\":\"vendor_invoice\"}"
+      },
+      {
+        "claseId": "mod24-c2",
+        "slideIndex": 11,
+        "title": "Ejecutar pago al proveedor",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 6,
+        "campos": [
+          "Código socio de negocios",
+          "Fecha",
+          "Banco",
+          "Cuenta",
+          "Valor",
+          "Método de pago"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 5,
+        "title": "Abrir Generador de Consultas",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Menú",
+          "Submenú",
+          "Opción"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 6,
+        "title": "Agregar tabla OCRD",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Nombre tabla",
+          "Alias",
+          "Campos visibles"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 7,
+        "title": "Filtrar solo clientes",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Campo",
+          "Condición",
+          "Valor"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 8,
+        "title": "Agregar tabla OINV",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Nombre tabla",
+          "Alias",
+          "Campo clave"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 9,
+        "title": "Agregar tabla INV1",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Nombre tabla",
+          "Alias",
+          "Clave foránea"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 10,
+        "title": "Seleccionar campos del reporte",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Campo 1",
+          "Campo 2",
+          "Campo 3"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 11,
+        "title": "Filtrar facturas posteriores",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Campo",
+          "Condición",
+          "Valor"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 12,
+        "title": "Filtrar facturas abiertas",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Campo",
+          "Condición",
+          "Valor"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 14,
+        "title": "Guardar consulta en Ventas",
+        "menuPath": "Herramientas > Consultas > Generador de Consultas",
+        "camposCount": 3,
+        "campos": [
+          "Nombre consulta",
+          "Categoría",
+          "Descripción"
+        ],
+        "conectada": "{\"clave\":\"consultas\"}"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 15,
+        "title": "Vincular consulta a alarma",
+        "menuPath": "Gestión > Alarmas > Gestión de Alarmas",
+        "camposCount": 3,
+        "campos": [
+          "Nombre alarma",
+          "Consulta base",
+          "Condición"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 16,
+        "title": "Programar notificación de alarma",
+        "menuPath": "Gestión > Alarmas > Gestión de Alarmas",
+        "camposCount": 3,
+        "campos": [
+          "Periodicidad",
+          "Responsable",
+          "Canal"
+        ],
+        "conectada": "Formulario validado"
+      },
+      {
+        "claseId": "mod24-c3",
+        "slideIndex": 17,
+        "title": "Agregar widget al Cockpit",
+        "menuPath": "Herramientas > Cockpit > Configuración de Widget de Recuento",
+        "camposCount": 4,
+        "campos": [
+          "Tipo widget",
+          "Origen datos",
+          "Dimensión",
+          "Métrica"
+        ],
+        "conectada": "Formulario validado"
+      }
+    ]
+  },
+  {
+    "id": "mod-25",
+    "numero": 25,
+    "titulo": "Nómina y Talento Humano Ecuador 2026",
+    "totalClases": 6,
+    "totalLaminas": 68,
+    "totalPracticas": 13,
+    "practicasConectadas": 13,
+    "practicasFormulario": 0,
+    "certificable": true,
+    "hallazgos": [],
+    "practicas": [
+      {
+        "claseId": "mod25-c1",
+        "slideIndex": 5,
+        "title": "Crear al empleado Pedro Andrade",
+        "menuPath": "Recursos humanos > Datos maestros de empleado",
+        "camposCount": 6,
+        "campos": [
+          "Nombre",
+          "Apellido",
+          "N° de cédula",
+          "Cargo",
+          "Sueldo mensual",
+          "Fecha de ingreso"
+        ],
+        "conectada": "{\"clave\":\"empleado\"}"
+      },
+      {
+        "claseId": "mod25-c1",
+        "slideIndex": 6,
+        "title": "Ejecutar el rol de pagos de mayo de Pedro Andrade",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 5,
+        "campos": [
+          "Período",
+          "Empleado",
+          "Días trabajados",
+          "Sueldo mensual",
+          "Neto a pagar"
+        ],
+        "conectada": "{\"clave\":\"nomina\"}"
+      },
+      {
+        "claseId": "mod25-c2",
+        "slideIndex": 5,
+        "title": "Ejecutar el rol de pagos de abril de María Gómez",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 5,
+        "campos": [
+          "Período",
+          "Empleado",
+          "Días trabajados",
+          "Horas extras 50 %",
+          "Anticipo"
+        ],
+        "conectada": "{\"clave\":\"nomina\"}"
+      },
+      {
+        "claseId": "mod25-c2",
+        "slideIndex": 7,
+        "title": "Ejecutar el rol de pagos de mayo de Ana Silva",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 5,
+        "campos": [
+          "Período",
+          "Empleado",
+          "Días trabajados",
+          "Horas extras 50 %",
+          "Horas extras 100 %"
+        ],
+        "conectada": "{\"clave\":\"nomina\"}"
+      },
+      {
+        "claseId": "mod25-c3",
+        "slideIndex": 5,
+        "title": "Ejecutar rol de Carlos López mayo",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 6,
+        "campos": [
+          "Período",
+          "Empleado",
+          "Días trabajados",
+          "Horas extras 50 %",
+          "Horas extras 100 %",
+          "Anticipo"
+        ],
+        "conectada": "{\"clave\":\"nomina\"}"
+      },
+      {
+        "claseId": "mod25-c4",
+        "slideIndex": 7,
+        "title": "Depositar el capital inicial en el banco",
+        "menuPath": "Gestión de bancos > Pagos recibidos > Pagos recibidos",
+        "camposCount": 5,
+        "campos": [
+          "Banco",
+          "Tipo",
+          "Monto",
+          "Contrapartida",
+          "Fecha"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod25-c4",
+        "slideIndex": 8,
+        "title": "Pagar sueldos netos por transferencia",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 5,
+        "campos": [
+          "Banco",
+          "Monto",
+          "Contrapartida",
+          "Fecha",
+          "Referencia"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod25-c4",
+        "slideIndex": 9,
+        "title": "Pagar planilla del IESS",
+        "menuPath": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+        "camposCount": 5,
+        "campos": [
+          "Banco",
+          "Monto",
+          "Contrapartida",
+          "Fecha",
+          "Referencia"
+        ],
+        "conectada": "{\"clave\":\"bancos\"}"
+      },
+      {
+        "claseId": "mod25-c5",
+        "slideIndex": 6,
+        "title": "Ejecutar rol de Juan Pérez con comisión",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 6,
+        "campos": [
+          "Fecha de Contabilización",
+          "Fecha de Vencimiento",
+          "Empleado",
+          "Días Trabajados",
+          "Comisión",
+          "Referencia 1"
+        ],
+        "conectada": "{\"clave\":\"nomina\"}"
+      },
+      {
+        "claseId": "mod25-c5",
+        "slideIndex": 9,
+        "title": "Ejecutar rol de Ana Silva",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 6,
+        "campos": [
+          "Fecha de Contabilización",
+          "Fecha de Vencimiento",
+          "Empleado",
+          "Días Trabajados",
+          "Horas Extras 50%",
+          "Referencia 1"
+        ],
+        "conectada": "{\"clave\":\"nomina\"}"
+      },
+      {
+        "claseId": "mod25-c6",
+        "slideIndex": 7,
+        "title": "Calcular impuesto a la renta",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Cuenta",
+          "Debe",
+          "Cuenta (línea 2)",
+          "Haber",
+          "Referencia"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod25-c6",
+        "slideIndex": 9,
+        "title": "Calcular anticipo impuesto",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Cuenta",
+          "Debe",
+          "Cuenta (línea 2)",
+          "Haber",
+          "Referencia"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      },
+      {
+        "claseId": "mod25-c6",
+        "slideIndex": 11,
+        "title": "Calcular anticipo con retenciones",
+        "menuPath": "Finanzas > Asiento",
+        "camposCount": 6,
+        "campos": [
+          "Fecha",
+          "Cuenta",
+          "Debe",
+          "Cuenta (línea 2)",
+          "Haber",
+          "Referencia"
+        ],
+        "conectada": "{\"clave\":\"asiento\"}"
+      }
+    ]
+  }
+]

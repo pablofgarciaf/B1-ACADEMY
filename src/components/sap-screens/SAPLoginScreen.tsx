@@ -120,9 +120,17 @@ export default function SAPLoginScreen({
               <input id={`${id}-database`} type="text" readOnly value="SAP_DEMO_EC" className={fieldClass} />
             </div>
             <div>
-              <label htmlFor={`${id}-username`} className="mb-1 block text-[#666]">
-                Nombre de usuario <span aria-hidden="true" className="text-red-700">*</span>
-              </label>
+              <div className="flex justify-between items-center mb-1">
+                <label htmlFor={`${id}-username`} className="block text-[#666]">
+                  Nombre de usuario <span aria-hidden="true" className="text-red-700">*</span>
+                </label>
+                <div className="flex gap-1 text-[10px] text-[#666]">
+                  <button type="button" onClick={() => { setEditedUsername(`super.${userEmail}`); if (!password) setPassword('1234'); }} className="text-blue-600 hover:underline">super</button>·
+                  <button type="button" onClick={() => { setEditedUsername(`ventas.${userEmail}`); if (!password) setPassword('1234'); }} className="text-blue-600 hover:underline">ventas</button>·
+                  <button type="button" onClick={() => { setEditedUsername(`compras.${userEmail}`); if (!password) setPassword('1234'); }} className="text-blue-600 hover:underline">compras</button>·
+                  <button type="button" onClick={() => { setEditedUsername(`contabilidad.${userEmail}`); if (!password) setPassword('1234'); }} className="text-blue-600 hover:underline">contabilidad</button>
+                </div>
+              </div>
               <input
                 id={`${id}-username`} name="username" type="text" autoComplete="username"
                 required value={username} disabled={isSubmitting}

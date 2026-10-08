@@ -40,7 +40,9 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('approve'), data: z.object({ id: code, approved: z.boolean(), comment: text.min(10, 'Justifica la decisión en al menos 10 caracteres.') }) }),
   // Precios: listas por artículo, lista por cliente y descuentos por volumen.
   z.object({ action: z.literal('itemPrices'), data: z.object({ itemCode: code, price: money, price2: money, price3: money }) }),
-  z.object({ action: z.literal('customerPriceList'), data: z.object({ cardCode: code, list: z.union([z.literal(1), z.literal(2), z.literal(3)]) }) }),
+  z.object({ action: z.literal('customerPriceList'), data: z.object({ cardCode: code, list: z.number().int().min(1).max(60) }) }),
+  z.object({ action: z.literal('priceListSave'), data: z.object({ no: z.number().int().min(4).max(60).optional(), name: text.min(2), base: z.number().int().min(1).max(60), factor: z.number().min(0.01).max(100) }) }),
+  z.object({ action: z.literal('priceUpdate'), data: z.object({ list: z.number().int().min(1).max(60), method: z.enum(['factor', 'percent']), value: z.number().min(-99).max(10000) }) }),
   z.object({ action: z.literal('volumeDiscount'), data: z.object({ id: z.string().max(80).default(''), itemCode: z.string().trim().min(1).max(80), minQuantity: money.positive(), discount: money.max(100), remove: z.boolean().default(false) }) }),
   // Conteo físico de inventario con ajuste contable.
   z.object({ action: z.literal('inventoryCount'), data: z.object({ warehouseCode: code, date, blind: z.boolean(), lines: z.array(z.object({ itemCode: code, countedQuantity: money })).min(1).max(200) }) }),
@@ -50,7 +52,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   // Costos de importación prorrateados sobre una recepción de mercadería.
   z.object({ action: z.literal('landedCost'), data: z.object({ documentId: code, date, allocation: z.enum(['value', 'quantity']), paymentAccount: z.enum(['2.1.01', '1.1.01']), costs: z.array(z.object({ concept: text.min(2), amount: money.positive() })).min(1).max(10) }) }),
   // CRM: crear o actualizar una oportunidad (id vacío = nueva).
-  z.object({ action: z.literal('opportunity'), data: z.object({ id: z.string().max(80).default(''), name: text.min(3), cardCode: code, amount: money, stage: z.enum(['prospecto', 'calificado', 'propuesta', 'negociacion', 'ganada', 'perdida']), expectedClose: date, source: text, notes: text, lossReason: text.default('') }) }),
+  z.object({ action: z.literal('opportunity'), data: z.object({ id: z.string().max(80).default(''), name: text.min(3), cardCode: code, amount: money, stage: z.enum(['prospecto', 'calificado', 'propuesta', 'negociacion', 'ganada', 'perdida']), probability: z.number().min(0).max(100).optional(), expectedClose: date, source: text, notes: text, lossReason: text.default('') }) }),
   // Datos de la empresa (inicialización).
   z.object({ action: z.literal('companySettings'), data: z.object({ companyName: text.min(2), ruc: z.string().regex(/^\d{10}001$/, 'El RUC tiene 13 dígitos y termina en 001.'), incomeTaxRate: z.number().min(0).max(40), address: text.optional(), phone: z.string().max(30).optional(), regimen: z.enum(['general', 'rimpe-emprendedor', 'rimpe-popular']).optional(), warehouses: z.array(z.object({ code: code, name: text.min(2) })).min(1).max(20) }) }),
   // Servicio: contratos con SLA, llamadas de servicio y proyectos.
@@ -74,6 +76,17 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('udfSet'), data: z.object({ table: z.enum(['OCRD', 'OITM']), key: code, values: z.record(z.union([z.string().max(500), z.number().finite()])) }) }),
   // Importación masiva de datos maestros (estilo Data Transfer Workbench): todo o nada.
   z.object({ action: z.literal('importMasterData'), data: z.object({ kind: z.enum(['customer', 'vendor', 'item']), rows: z.array(z.record(z.unknown())).min(1).max(200) }) }),
+  // Configuración administrativa: series de numeración, grupos, monedas, costos, recursos, UDO, cockpit.
+  // Se usa z.array(z.unknown()) para aceptar arrays de tipos concretos sin necesidad de un índice string.
+  z.object({ action: z.literal('docSeriesSave'), data: z.object({ series: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('customerGroupSave'), data: z.object({ groups: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('itemGroupSave'), data: z.object({ groups: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('currenciesSave'), data: z.object({ monedaLocal: z.string(), monedaSistema: z.string(), monedas: z.array(z.unknown()), tasas: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('costCentersSave'), data: z.object({ centros: z.array(z.unknown()), normas: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('resourceSave'), data: z.object({ resources: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('udoSave'), data: z.object({ tables: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('cockpitSave'), data: z.object({ plantillas: z.array(z.unknown()), plantillaActiva: z.string() }) }),
+  z.object({ action: z.literal('query'), data: z.object({ title: z.string().default('Consulta'), sql: z.string() }) }),
 ]);
 export type CompanyCommand = z.infer<typeof commandSchema>;
 export type CommandData<A extends CompanyCommand['action']> = Extract<CompanyCommand, { action: A }>['data'];

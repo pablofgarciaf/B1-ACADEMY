@@ -431,8 +431,39 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const d = command.data; const item = state.items.find(i => i.itemCode === d.itemCode); if (!item) throw new Error('Artículo inexistente.');
       Object.assign(item, { price: d.price, price2: d.price2, price3: d.price3, updatedAt: now }); result = item.itemCode; break;
     }
+    case 'priceListSave': {
+      const d = command.data; const existentes = profile.priceLists ?? [];
+      const nombres = new Set([...existentes.filter(l => l.no !== d.no).map(l => l.name.toLowerCase()), ...['general', 'mayorista', 'distribuidor']]);
+      assert(!nombres.has(d.name.trim().toLowerCase()), `Ya existe una lista llamada «${d.name}».`);
+      assert(d.base <= 3 || existentes.some(l => l.no === d.base && l.no !== d.no), 'La lista base no existe.');
+      if (d.no) {
+        const l = existentes.find(x => x.no === d.no); if (!l) throw new Error('Lista inexistente.');
+        assert(d.base < d.no, 'Una lista solo puede derivarse de una lista anterior.');
+        profile.priceLists = existentes.map(x => x.no === d.no ? { ...x, name: d.name.trim(), base: d.base, factor: d.factor } : x); result = `Lista ${d.no}`;
+      } else {
+        const no = Math.max(3, ...existentes.map(l => l.no)) + 1; assert(no <= 60, 'Máximo 60 listas de precios.');
+        profile.priceLists = [...existentes, { no, name: d.name.trim(), base: d.base, factor: d.factor }]; result = `Lista ${no}`;
+      }
+      break;
+    }
+    case 'priceUpdate': {
+      // Asistente de actualización de precios: el método factor multiplica; el porcentaje suma (o resta) ese porcentaje.
+      const d = command.data; const mult = d.method === 'factor' ? d.value : 1 + d.value / 100;
+      assert(mult > 0, 'El factor debe ser mayor que cero.');
+      if (d.list <= 3) {
+        const campo = (['price', 'price', 'price2', 'price3'] as const)[d.list];
+        for (const it of state.items.filter(i => i.active)) { (it as unknown as Record<string, number>)[campo] = round(it[campo] * mult); it.updatedAt = now; }
+        result = `Lista ${d.list}: ${state.items.filter(i => i.active).length} precios actualizados`;
+      } else {
+        const l = (profile.priceLists ?? []).find(x => x.no === d.list); if (!l) throw new Error('Lista inexistente.');
+        profile.priceLists = (profile.priceLists ?? []).map(x => x.no === d.list ? { ...x, factor: Math.round(x.factor * mult * 10000) / 10000 } : x);
+        result = `Lista ${d.list}: factor ${Math.round(l.factor * mult * 10000) / 10000}`;
+      }
+      break;
+    }
     case 'customerPriceList': {
       const d = command.data; assert(state.customers.some(c => c.cardCode === d.cardCode), 'Cliente inexistente.');
+      assert(d.list <= 3 || (profile.priceLists ?? []).some(l => l.no === d.list), 'Esa lista de precios no existe.');
       profile.customerPriceLists = { ...(profile.customerPriceLists ?? {}), [d.cardCode]: d.list }; result = d.cardCode; break;
     }
     case 'volumeDiscount': {
@@ -556,7 +587,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'opportunity': {
       const d = command.data;
       const cliente = state.customers.find(c => c.cardCode === d.cardCode); if (!cliente) throw new Error('Cliente o lead inexistente.');
-      const probabilidad = { prospecto: 10, calificado: 25, propuesta: 50, negociacion: 75, ganada: 100, perdida: 0 }[d.stage];
+      const probabilidad = d.stage === 'ganada' ? 100 : d.stage === 'perdida' ? 0 : (d.probability ?? { prospecto: 10, calificado: 25, propuesta: 50, negociacion: 75 }[d.stage]);
       assert(d.stage !== 'perdida' || d.lossReason.trim().length >= 5, 'Registra el motivo de la pérdida: es la información más valiosa para mejorar.');
       const cerrada = d.stage === 'ganada' || d.stage === 'perdida';
       const existente = d.id ? state.opportunities.find(o => o.id === d.id) : undefined;
@@ -666,6 +697,16 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       break;
     }
     case 'missionComplete': { const mission = state.missions.find(m => m.id === command.data.id); if (!mission) throw new Error('Misión inexistente.'); mission.status = 'completed'; mission.updatedAt = now; result = mission.id; break; }
+    // Configuración administrativa: guardan directamente en profile sin lógica de negocio.
+    case 'docSeriesSave': { (profile as unknown as Record<string, unknown>).docSeries = command.data.series; result = 'series-guardadas'; break; }
+    case 'customerGroupSave': { (profile as unknown as Record<string, unknown>).customerGroups = command.data.groups; result = 'grupos-clientes'; break; }
+    case 'itemGroupSave': { (profile as unknown as Record<string, unknown>).itemGroups = command.data.groups; result = 'grupos-articulos'; break; }
+    case 'currenciesSave': { (profile as unknown as Record<string, unknown>).currencies = command.data; result = 'monedas-guardadas'; break; }
+    case 'costCentersSave': { (profile as unknown as Record<string, unknown>).costCenters = command.data; result = 'centros-coste'; break; }
+    case 'resourceSave': { (profile as unknown as Record<string, unknown>).resources = command.data.resources; result = 'recursos-guardados'; break; }
+    case 'udoSave': { (profile as unknown as Record<string, unknown>).udoTables = command.data.tables; result = 'udo-guardado'; break; }
+    case 'cockpitSave': { (profile as unknown as Record<string, unknown>).cockpit = command.data; result = 'cockpit-guardado'; break; }
+    case 'query': { result = 'consulta-ejecutada'; break; }
   }
   const linkedCycle = (records: (SalesDocument | PurchaseDocument)[], types: DocType[]): boolean => records.filter(d => d.docType === types[types.length - 1]).some(end => {
     let current = end;

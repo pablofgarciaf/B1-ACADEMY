@@ -634,14 +634,26 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                       <Bot className="w-3.5 h-3.5" /> Tutor IA explicando...
                     </span>
                   )}
-                  {needsGesture && (
-                    <button
-                      onClick={resumeAfterGesture}
-                      className="flex items-center gap-1 px-2 py-0.5 rounded bg-amber-500 text-slate-950 text-[10px] font-bold hover:bg-amber-400 active:scale-95"
-                    >
-                      <Volume2 className="w-3 h-3" /> Activar voz
-                    </button>
-                  )}
+                  <div className="flex items-center gap-2">
+                    {process.env.NODE_ENV !== 'production' && (
+                      <button
+                        type="button"
+                        onClick={() => handleMissionComplete()}
+                        className="px-2 py-0.5 rounded bg-blue-600/80 hover:bg-blue-500 text-white text-[10px] font-bold active:scale-95"
+                        title="Bypass de auditoría"
+                      >
+                        ⏩ Saltar práctica
+                      </button>
+                    )}
+                    {needsGesture && (
+                      <button
+                        onClick={resumeAfterGesture}
+                        className="flex items-center gap-1 px-2 py-0.5 rounded bg-amber-500 text-slate-950 text-[10px] font-bold hover:bg-amber-400 active:scale-95"
+                      >
+                        <Volume2 className="w-3 h-3" /> Activar voz
+                      </button>
+                    )}
+                  </div>
                 </div>
                 {slideScript && (
                   <div className="mb-2">
