@@ -26,16 +26,17 @@ export default function SimuladorAIAdvisor({
     {
       id: '1',
       role: 'assistant',
-      content: `¡Hola! Soy tu Asesor de IA de SAP B1. Estoy aquí para ayudarte con instrucciones paso a paso sobre cómo realizar tareas en el simulador.
+      content: `¡Hola! Soy **@Fini**, tu asistente inteligente ERP y financiero de SAP Business One.
 
 Actualmente estás en: **${currentModule} > ${currentScreen}**
 
-¿Qué necesitas hacer? Puedes preguntarme:
-- "¿Cómo crear una factura?"
-- "¿Qué pasos debo seguir para agregar un cliente?"
-- "Explícame cómo usar el módulo de inventario"
+Dime qué deseas hacer o pídeme ejecutar una acción:
+- 🛒 *"@Fini, quiero registrar una venta o cotización"*
+- 🧾 *"@Fini, cómo emito un comprobante electrónico SRI (IVA 15%)"*
+- 📦 *"@Fini, consultar disponibilidad de stock de un artículo"*
+- 📊 *"@Fini, generar asiento contable o flujo de caja"*
 
-¡Estoy listo para ayudarte! 🚀`,
+¡Dime qué necesitas y te asistiré en tiempo real! 🚀`,
       timestamp: new Date(),
     },
   ]);
@@ -110,13 +111,15 @@ Actualmente estás en: **${currentModule} > ${currentScreen}**
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-14 right-4 z-[5000] w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-400 hover:to-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all flex items-center justify-center group"
-          title="Abrir Asesor de IA"
+          className="fixed bottom-14 right-4 z-[5000] h-14 px-4 bg-gradient-to-r from-[#0055A5] via-blue-600 to-[#003366] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-blue-400/40 group cursor-pointer"
+          title="Abrir Asistente Fini AI (@Fini)"
         >
-          <MessageCircle size={24} />
-          <span className="absolute -top-12 right-0 bg-gray-800 text-white text-xs px-3 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-            Asesor IA
-          </span>
+          <div className="relative">
+            <MessageCircle size={22} className="text-blue-100" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping" />
+            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full" />
+          </div>
+          <span className="font-extrabold text-xs tracking-wide text-white">@Fini AI</span>
         </button>
       )}
 
@@ -124,21 +127,22 @@ Actualmente estás en: **${currentModule} > ${currentScreen}**
       {isOpen && (
         <div className="fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:w-96">
           {/* Header */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 flex items-center justify-between">
+          <div className="bg-gradient-to-r from-[#003366] via-[#0055A5] to-[#002244] text-white p-4 flex items-center justify-between border-b border-blue-400/30">
             <div>
-              <h3 className="font-bold flex items-center gap-2">
-                <MessageCircle size={18} />
-                Asesor de IA SAP B1
+              <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-blue-100">
+                <span className="px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-black">AI</span>
+                Asistente @Fini
               </h3>
-              <p className="text-xs text-blue-100 mt-1">
+              <p className="text-[11px] text-blue-200 mt-0.5 flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
                 {currentModule} • {currentScreen}
               </p>
             </div>
             <button
               onClick={() => setIsOpen(false)}
-              className="hover:bg-blue-700 p-2 rounded-lg transition"
+              className="hover:bg-blue-900/60 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-blue-200 hover:text-white"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           </div>
 
