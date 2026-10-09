@@ -39,7 +39,7 @@ export default function SimuladorLogin({ onLogin, isLoading = false, error }: Si
               <Sparkles className="text-white" size={24} />
             </div>
             <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 via-rose-400 to-red-500 bg-clip-text text-transparent flex items-center justify-center gap-2">
-              <span>🐦‍🔥</span> FeNi Proyect
+              <span>🐦‍🔥</span> Finix ERP
             </h1>
           </div>
           <p className="text-slate-400 text-sm">

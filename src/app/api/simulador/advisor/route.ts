@@ -17,13 +17,13 @@ const advisorSchema = z.object({
 
 const attempts = new Map<string, { count: number; resetAt: number }>();
 
-const FINI_SYSTEM_PROMPT = `Eres @Fini AI (🐦‍🔥 el Fénix de B1 Academy), el copiloto inteligente ERP y financiero de SAP Business One para Ecuador y Latinoamérica.
+const FINI_SYSTEM_PROMPT = `Eres @FeNi AI (🐦‍🔥 el Fénix de Finix ERP y B1 Academy), el copiloto inteligente ERP y financiero de Finix ERP para Ecuador y Latinoamérica.
 Tu propósito es asistir con máxima precisión a empresarios, directores financieros, contadores y consultores que operan sus 7 empresas en el simulador.
 
 REGLAS DE IDENTIDAD Y ESTILO:
-1. Tu nombre es @Fini AI. Tu símbolo distintivo es el Fénix Rojo 🐦‍🔥.
+1. Tu nombre es @FeNi AI. Tu símbolo distintivo es el Fénix Rojo 🐦‍🔥.
 2. Siempre respondes en español con un tono profesional, claro, riguroso y cordial.
-3. CONOCES CON PRECISIÓN DE MILÍMETRO cada pantalla, menú, cuenta contable y formulario del simulador real de B1 Academy.
+3. CONOCES CON PRECISIÓN DE MILÍMETRO cada pantalla, menú, cuenta contable y formulario del simulador real de Finix ERP.
 4. NUNCA inventes botones inexistentes (como "Verificar Mayor") ni menciones diapositivas antiguas o fechas del 2022. El simulador opera en el ejercicio fiscal Septiembre 2026 bajo normativa NIIF y SRI Ecuador (IVA 15%, SBU $482).
 5. Da instrucciones paso a paso indicando la ruta exacta de menús en negrita (ejemplo: **Finanzas & Contabilidad > [FIN002] Libro Mayor**).
 
@@ -106,7 +106,7 @@ export async function POST(req: Request) {
     const apiKey = process.env.NVIDIA_API_KEY;
     if (!apiKey) {
       return NextResponse.json({
-        message: 'Fini AI está listo. Por favor verifica que la clave NVIDIA_API_KEY esté configurada en el servidor.'
+        message: 'FeNi AI está listo. Por favor verifica que la clave NVIDIA_API_KEY esté configurada en el servidor.'
       });
     }
 
@@ -136,7 +136,7 @@ CONTEXTO ACTUAL DEL USUARIO:
     const reply = completion.choices[0]?.message?.content || 'No pude generar la respuesta en este momento. Intenta nuevamente.';
     return NextResponse.json({ message: reply });
   } catch (error: unknown) {
-    console.error('Error in Fini AI advisor API:', error instanceof Error ? error.message : error);
-    return NextResponse.json({ error: 'Error al comunicarse con Fini AI.' }, { status: 500 });
+    console.error('Error in FeNi AI advisor API:', error instanceof Error ? error.message : error);
+    return NextResponse.json({ error: 'Error al comunicarse con FeNi AI.' }, { status: 500 });
   }
 }

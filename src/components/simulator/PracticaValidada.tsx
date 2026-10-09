@@ -283,8 +283,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       {/* Barra de título de la aplicación */}
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2.5 py-1 select-none">
         <span className="flex items-center gap-2 font-semibold text-xs">
-          <span className="rounded-sm bg-gradient-to-b from-[#b91c1c] to-[#7f1d1d] px-1.5 py-0.5 text-[10px] font-black italic text-white shadow-sm">FeNi</span>
-          <span>FeNi Proyect 2026 — {empresa || EMPRESA_CURSO}</span>
+          <span className="rounded-sm bg-gradient-to-b from-[#b91c1c] to-[#7f1d1d] px-1.5 py-0.5 text-[10px] font-black italic text-white shadow-sm">Finix</span>
+          <span>Finix ERP 2026 — {empresa || EMPRESA_CURSO}</span>
         </span>
         <div className="flex items-center gap-1.5">
           <button

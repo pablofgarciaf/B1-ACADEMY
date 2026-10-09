@@ -4,11 +4,11 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 /**
- * Fini AI (Fénix Rojo), la mascota inteligente del ERP: se arrastra, se pega al borde más cercano y recuerda su posición.
+ * FeNi AI (Fénix Rojo), la mascota inteligente de Finix ERP: se arrastra, se pega al borde más cercano y recuerda su posición.
  */
 const TAM = 60;
 const MARGEN = 14;
-const CLAVE = 'fini_pos_v1';
+const CLAVE = 'feni_pos_v1';
 
 type Pos = { x: number; y: number };
 
@@ -55,8 +55,8 @@ export default function FiniMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
   return (
     <button
       type="button"
-      aria-label="Abrir a @Fini AI, tu asistente Fénix de SAP Business One (puedes arrastrarlo)"
-      title="Toca para consultar a @Fini AI · Arrástrame si estorbo"
+      aria-label="Abrir a @FeNi AI, tu asistente Fénix de Finix ERP (puedes arrastrarlo)"
+      title="Toca para consultar a @FeNi AI · Arrástrame si estorbo"
       onPointerDown={(e) => {
         e.currentTarget.setPointerCapture(e.pointerId);
         inicio.current = { px: e.clientX, py: e.clientY, x: pos.x, y: pos.y, movido: false };

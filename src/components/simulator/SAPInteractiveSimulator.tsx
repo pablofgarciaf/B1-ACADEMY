@@ -667,7 +667,7 @@ export default function SAPInteractiveSimulator({
       {/* Barra de Estado Superior */}
       <div className="bg-[#18222d] border-b border-gray-800 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px] shrink-0 relative z-10">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="font-bold text-amber-400">FeNi Proyect 2026 (Enterprise)</span>
+          <span className="font-bold text-amber-400">Finix ERP 2026 (Enterprise)</span>
           <span className="text-gray-500">•</span>
           <span className="text-gray-400">Sociedad: <strong className="text-gray-300">SBODEMO_ES</strong></span>
           <span className="text-gray-500">•</span>
@@ -818,7 +818,7 @@ export default function SAPInteractiveSimulator({
                 </tbody>
               </table>
               <div className="mt-4 p-2 bg-blue-50 border border-blue-200 rounded text-blue-800 text-[11px]">
-                <strong>Nota del sistema:</strong> Esta es tu bandeja de entrada de FeNi Proyect.
+                <strong>Nota del sistema:</strong> Esta es tu bandeja de entrada de Finix ERP.
                 Aquí recibirás notificaciones clave, workflows de autorización y mensajes de otros usuarios.
                 Para completar la misión actual, cierra esta ventana.
               </div>
@@ -953,7 +953,7 @@ export default function SAPInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <ShoppingCart size={13} className="text-amber-400" />
-                <span>Factura de Clientes - FeNi Proyect</span>
+                <span>Factura de Clientes - Finix ERP</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1090,7 +1090,7 @@ export default function SAPInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <FileText size={13} className="text-amber-400" />
-                <span>Registro en el Diario (Asiento Contable Manual) - FeNi Proyect</span>
+                <span>Registro en el Diario (Asiento Contable Manual) - Finix ERP</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1215,7 +1215,7 @@ export default function SAPInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <Package size={13} className="text-amber-400" />
-                <span>Datos Maestros de Artículo - FeNi Proyect</span>
+                <span>Datos Maestros de Artículo - Finix ERP</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1345,7 +1345,7 @@ export default function SAPInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <Layers size={13} className="text-amber-400" />
-                <span>Grupos de Unidades de Medida - Definición (OUGP / UGP1) - FeNi Proyect</span>
+                <span>Grupos de Unidades de Medida - Definición (OUGP / UGP1) - Finix ERP</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1495,7 +1495,7 @@ export default function SAPInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <DollarSign size={13} className="text-amber-400" />
-                <span>Pagos Recibidos (Cobros a Clientes) - FeNi Proyect</span>
+                <span>Pagos Recibidos (Cobros a Clientes) - Finix ERP</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1814,7 +1814,7 @@ export default function SAPInteractiveSimulator({
           <div className="w-full max-w-4xl mx-auto rounded border-2 border-[#1c3a63] bg-[#ece9d8] shadow-2xl overflow-hidden text-xs text-gray-900">
             <div className="bg-gradient-to-r from-[#21436e] via-[#2f5c94] to-[#21436e] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
-                <span>📦 Documentos de Compras - FeNi Proyect</span>
+                <span>📦 Documentos de Compras - Finix ERP</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>

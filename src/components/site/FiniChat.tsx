@@ -90,7 +90,7 @@ export default function FiniChat() {
         <FiniMascota onAbrir={(l) => { setLado(l); setIsOpen(true); }} />
       )}
 
-      {/* Ventana Modal de Chat @Fini AI */}
+      {/* Ventana Modal de Chat @FeNi AI */}
       {isOpen && (
         <div
           className={`fixed bottom-4 z-50 flex h-[min(600px,calc(100dvh-2rem))] w-[95vw] sm:w-[420px] flex-col overflow-hidden rounded-2xl border border-amber-500/20 bg-[#131a20] shadow-2xl backdrop-blur-xl transition-all duration-300 ${
@@ -106,9 +106,9 @@ export default function FiniChat() {
               </div>
               <div>
                 <h3 className="font-extrabold text-white flex items-center gap-1.5 text-sm tracking-wide">
-                  @Fini AI <Sparkles size={14} className="text-amber-400" />
+                  @FeNi AI <Sparkles size={14} className="text-amber-400" />
                 </h3>
-                <p className="text-[11px] text-amber-300 font-medium">Asistente Fénix ERP & Financiero SAP B1</p>
+                <p className="text-[11px] text-amber-300 font-medium">Asistente Fénix ERP & Financiero Finix</p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -135,7 +135,7 @@ export default function FiniChat() {
             {messages.length === 0 && (
               <div className="space-y-3 mb-6">
                 <div className="bg-[#19222a] p-4 rounded-2xl rounded-tl-sm border border-amber-500/10 max-w-[90%] text-gray-200 text-xs leading-relaxed">
-                  ¡Hola! Soy **@Fini AI** 🐦‍🔥, tu asistente Fénix de inteligencia ERP y contable. Conozco la arquitectura de SAP Business One y la normativa tributaria ecuatoriana (SRI 2026). ¿Qué deseas consultar o realizar hoy?
+                  ¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu asistente Fénix de inteligencia ERP y contable. Conozco la arquitectura de Finix ERP y la normativa tributaria ecuatoriana (SRI 2026). ¿Qué deseas consultar o realizar hoy?
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {SUGGESTED_QUESTIONS.map((q, i) => (
@@ -186,7 +186,7 @@ export default function FiniChat() {
                 </div>
                 <div className="bg-[#19222a] p-3 rounded-2xl rounded-tl-sm border border-white/5 text-xs text-gray-400 flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-                  @Fini AI está analizando los datos ERP...
+                  @FeNi AI está analizando los datos ERP...
                 </div>
               </div>
             )}
@@ -205,7 +205,7 @@ export default function FiniChat() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Pregunta a @Fini AI..."
+              placeholder="Pregunta a @FeNi AI..."
               className="flex-1 bg-[#19222a] text-white text-xs px-3 py-2 rounded-xl border border-white/10 focus:outline-none focus:border-amber-500 transition-colors"
             />
             <button

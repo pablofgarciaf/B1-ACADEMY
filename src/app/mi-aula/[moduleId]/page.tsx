@@ -467,14 +467,14 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             {pantallaCompleta ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
           </button>
 
-          {/* @Fini AI siempre a mano: abre el chat flotante de Fini */}
+          {/* @FeNi AI siempre a mano: abre el chat flotante de FeNi */}
           <button
             onClick={() => window.dispatchEvent(new Event('fini-abrir'))}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-red-600 via-amber-500 to-yellow-500 hover:from-red-500 hover:to-amber-400 text-white text-xs font-bold transition-all active:scale-95 shadow-md shadow-amber-900/30"
-            title="Pregúntale a @Fini AI cualquier duda de la clase"
+            title="Pregúntale a @FeNi AI cualquier duda de la clase"
           >
             <span className="text-sm">🐦‍🔥</span>
-            <span className="hidden sm:inline">Preguntar a @Fini AI</span>
+            <span className="hidden sm:inline">Preguntar a @FeNi AI</span>
           </button>
 
           {/* exam */}

@@ -27,15 +27,15 @@ export default function SimuladorAIAdvisor({
     {
       id: '1',
       role: 'assistant',
-      content: `¡Hola! Soy **@Fini AI** 🐦‍🔥, tu copiloto inteligente ERP y financiero en SAP Business One.
+      content: `¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu copiloto inteligente ERP y financiero en Finix ERP.
 
 Actualmente estás en: **${currentModule} > ${currentScreen}**
 
 ¿Qué deseas realizar o consultar en el simulador?
-- 📊 *"@Fini, ¿cómo verifico los mayores de Bancos?"*
-- 🏦 *"@Fini, ¿cómo realizo la conciliación bancaria en [BNK001]?"*
-- 🧾 *"@Fini, ¿cómo emito una factura electrónica SRI con IVA 15%?"*
-- ⚙️ *"@Fini, ¿cómo creo una lista de materiales BOM o contabilizo un asiento?"*
+- 📊 *"@FeNi, ¿cómo verifico los mayores de Bancos?"*
+- 🏦 *"@FeNi, ¿cómo realizo la conciliación bancaria en [BNK001]?"*
+- 🧾 *"@FeNi, ¿cómo emito una factura electrónica SRI con IVA 15%?"*
+- ⚙️ *"@FeNi, ¿cómo creo una lista de materiales BOM o contabilizo un asiento?"*
 
 ¡Dime qué necesitas y te guiaré con precisión exacta paso a paso! 🚀`,
       timestamp: new Date(),
@@ -120,14 +120,14 @@ Actualmente estás en: **${currentModule} > ${currentScreen}**
         <button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-14 right-4 z-[5000] h-14 px-4 bg-gradient-to-r from-[#b91c1c] via-[#0055A5] to-[#003366] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-amber-400/60 group cursor-pointer"
-          title="Abrir Copiloto @Fini AI"
+          title="Abrir Copiloto @FeNi AI"
         >
           <div className="relative flex items-center gap-1.5">
             <span className="text-lg">🐦‍🔥</span>
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping" />
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full" />
           </div>
-          <span className="font-black text-xs tracking-wide text-white">@Fini AI</span>
+          <span className="font-black text-xs tracking-wide text-white">@FeNi AI</span>
         </button>
       )}
 
@@ -139,7 +139,7 @@ Actualmente estás en: **${currentModule} > ${currentScreen}**
             <div>
               <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-amber-200">
                 <span className="text-base">🐦‍🔥</span>
-                <span>@Fini AI · Copiloto ERP</span>
+                <span>@FeNi AI · Copiloto ERP</span>
               </h3>
               <p className="text-[11px] text-blue-200 mt-0.5 flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />
