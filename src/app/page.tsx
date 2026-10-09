@@ -77,7 +77,7 @@ export default function HomePage() {
                   </strong>{' '}
                   Especialización integral en <strong>SAP Business One 10.0 Ecuador</strong>.
                   Programa oficial estructurado en <strong>14 Diplomas de Especialidad</strong>, <strong>30 Módulos de Competencia</strong> (navegación, activos fijos, Procure-to-Pay, Order-to-Cash, MRP, NIIF, retenciones SRI 2026, nómina IESS, SQL/DTW, SAP Activate y BPMN 2.0) y <strong>1 Titulación Máster Capstone</strong>.
-                  Incluye simulador de laboratorio sandbox B1 Center con PostgreSQL en Supabase, certificados con QR único y bolsa de trabajo Job-Ready.
+                  Incluye simulador de laboratorio sandbox B1 Center con base de datos corporativa en la nube, certificados con QR único y bolsa de trabajo Job-Ready.
                 </div>
               </div>
             </aside>

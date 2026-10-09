@@ -27,17 +27,15 @@ export default function SimuladorAIAdvisor({
     {
       id: '1',
       role: 'assistant',
-      content: `¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu copiloto inteligente ERP y financiero en Finix ERP.
-
-Actualmente estás en: **${currentModule} > ${currentScreen}**
+      content: `¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu copiloto inteligente para Finix ERP.
 
 ¿Qué deseas realizar o consultar en el simulador?
-- 📊 *"@FeNi, ¿cómo verifico los mayores de Bancos?"*
-- 🏦 *"@FeNi, ¿cómo realizo la conciliación bancaria en [BNK001]?"*
-- 🧾 *"@FeNi, ¿cómo emito una factura electrónica SRI con IVA 15%?"*
-- ⚙️ *"@FeNi, ¿cómo creo una lista de materiales BOM o contabilizo un asiento?"*
+- 🛒 *"¿Cómo registro un pedido de venta?"*
+- 📊 *"¿Cómo verifico los mayores de Bancos?"*
+- 🏦 *"¿Cómo realizo una conciliación bancaria?"*
+- 🧾 *"¿Cómo contabilizo un asiento de diario?"*
 
-¡Dime qué necesitas y te guiaré con precisión exacta paso a paso! 🚀`,
+Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 🚀`,
       timestamp: new Date(),
     },
   ]);

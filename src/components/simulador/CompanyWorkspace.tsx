@@ -88,7 +88,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
                 {empActual.name}
               </h2>
               <p className="text-xs text-gray-600 mt-1">
-                Giro: <strong>{empActual.category}</strong>. Esta sociedad contará con su propia base de datos independiente en Supabase, plan de cuentas NIIF Ecuador 2026, bodegas y bancos.
+                Giro: <strong>{empActual.category}</strong>. Esta sociedad contará con su propia base de datos corporativa independiente, plan de cuentas NIIF Ecuador 2026, bodegas y bancos.
               </p>
             </div>
 

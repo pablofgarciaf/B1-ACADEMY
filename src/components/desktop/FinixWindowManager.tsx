@@ -8,6 +8,8 @@ export interface Window {
   id: string;
   title: string;
   screenId: string;
+  moduleKey?: string;
+  moduleName?: string;
   x: number;
   y: number;
   width: number;

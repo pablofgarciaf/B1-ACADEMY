@@ -238,7 +238,7 @@ export default function StudentDashboardPage() {
                 </div>
                 <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Acreditación ERP:</span>
-                  <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">PostgreSQL Cloud (Supabase)</span>
+                  <span className="font-mono text-emerald-600 dark:text-emerald-400 font-bold">Cloud Enterprise Database</span>
                 </div>
               </div>
             </div>
@@ -270,7 +270,7 @@ export default function StudentDashboardPage() {
                   Programa Consultor Integral & Súper Analista SAP Business One
                 </h2>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                  Has completado las 120 clases magistrales, validado las 366 prácticas en el simulador empresarial Supabase y aprobado los 30 exámenes de competencia técnica.
+                  Has completado las 120 clases magistrales, validado las 366 prácticas en el simulador empresarial Finix ERP y aprobado los 30 exámenes de competencia técnica.
                 </p>
               </div>
 
@@ -398,7 +398,7 @@ export default function StudentDashboardPage() {
                   {MASTER_PROGRAM.title}
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                  Reúne las 30 certificaciones de competencia técnica operativa y la validación integral de la empresa de práctica en Supabase.
+                  Reúne las 30 certificaciones de competencia técnica operativa y la validación integral de la empresa de práctica en Finix ERP.
                 </p>
                 {masterCert && (
                   <p className="text-xs font-mono text-amber-600 dark:text-amber-400 font-bold pt-1">

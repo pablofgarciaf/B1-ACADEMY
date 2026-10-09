@@ -95,7 +95,7 @@ export default function CalificacionesPage() {
             Boletín Oficial de Calificaciones y Acreditaciones
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Registro inmutable de evaluaciones técnicas, prácticas en Supabase y certificados oficiales con hash de verificación.
+            Registro inmutable de evaluaciones técnicas, prácticas en el simulador empresarial y certificados oficiales con hash de verificación.
           </p>
         </div>
 

@@ -168,10 +168,16 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
     const defaultWidth = isMobile ? Math.min(window.innerWidth - 20, 800) : 900;
     const defaultHeight = isMobile ? Math.min(window.innerHeight - 150, 600) : 620;
 
+    const resolvedMod = moduleKey
+      ? modules.find(m => m.key === moduleKey)
+      : modules.find(m => m.screens.some(s => s.id === screenId));
+
     const newWindow: Window = {
       id: `win-${Date.now()}`,
       title: screenName,
       screenId,
+      moduleKey: resolvedMod?.key || moduleKey,
+      moduleName: resolvedMod?.name,
       x: isMobile ? 5 : 80 + baseOffset,
       y: isMobile ? 5 : 40 + baseOffset,
       width: defaultWidth,
@@ -254,7 +260,7 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
           </div>
           <div>
             <h1 className="text-xs font-bold leading-none">Finix ERP (Cloud 2026) — {companyTitle}</h1>
-            <p className="text-[10px] text-blue-200 mt-0.5">Empresa autorizada en Supabase · Motor contable en tiempo real</p>
+            <p className="text-[10px] text-blue-200 mt-0.5">Empresa autorizada · Motor contable en tiempo real</p>
           </div>
         </div>
 
@@ -392,7 +398,7 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center gap-1.5 text-emerald-400">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            Conectado a Supabase (PostgreSQL / Finix Cloud Engine)
+            Conectado al Servidor (Finix Cloud Engine)
           </span>
           <span className="text-gray-300">| Perfil activo: <strong>{currentRoleDef.department}</strong></span>
         </div>
@@ -455,11 +461,20 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
       )}
 
       {/* Asistente IA */}
-      <SimuladorAIAdvisor
-        currentScreen={windows[windows.length - 1]?.title || 'Dashboard'}
-        currentModule={Object.keys(catalog.modules)[0] || 'Finanzas'}
-        isOpen={true}
-      />
+      {(() => {
+        const activeWin = windows.find(w => w.focused) || windows[windows.length - 1];
+        const activeScreenTitle = activeWin ? activeWin.title : 'Dashboard';
+        const activeModuleTitle = activeWin?.moduleName 
+          || (activeWin?.moduleKey && catalog.modules[activeWin.moduleKey]?.name) 
+          || 'General';
+        return (
+          <SimuladorAIAdvisor
+            currentScreen={activeScreenTitle}
+            currentModule={activeModuleTitle}
+            isOpen={false}
+          />
+        );
+      })()}
     </div>
   );
 }
