@@ -5,15 +5,30 @@ import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine
 import { enviarAlSRI, iceDeLinea, ISD_TARIFAS, opcionRetencion, revisarIdentificacion } from './sri-catalogo';
 import { financialSummary, moveStock, resultadoEjercicio, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
+import { SUPERCÍAS_CATALOG } from './supercias-catalog';
+
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
-const accountDefinitions: [string, string, AccountingAccount['category'], boolean][] = [
+
+const baseAccountDefinitions: [string, string, AccountingAccount['category'], boolean][] = [
   ['1', 'ACTIVO', 'asset', false], ['1.1', 'Activo corriente', 'asset', false], ['1.1.01', 'Caja', 'asset', true], ['1.1.02', 'Bancos', 'asset', true], ['1.1.03', 'Cuentas por cobrar clientes', 'asset', true], ['1.1.04', 'Provisión cuentas incobrables', 'asset', true], ['1.1.05', 'Inventarios materia prima / mercaderías', 'asset', true], ['1.1.06', 'IVA en compras', 'asset', true], ['1.1.07', 'Inventarios producto terminado', 'asset', true], ['1.1.08', 'Anticipos al personal', 'asset', true], ['1.2', 'Activo no corriente', 'asset', false], ['1.2.01', 'Propiedad, planta y equipo', 'asset', true], ['1.2.02', 'Depreciación acumulada', 'asset', true],
   ['2', 'PASIVO', 'liability', false], ['2.1', 'Pasivo corriente', 'liability', false], ['2.1.01', 'Cuentas por pagar proveedores', 'liability', true], ['2.1.02', 'IVA en ventas', 'liability', true], ['2.1.03', 'Retenciones por pagar', 'liability', true], ['2.1.04', 'IESS por pagar', 'liability', true], ['2.1.05', 'Sueldos por pagar', 'liability', true], ['2.1.06', 'Mercadería recibida no facturada', 'liability', true], ['2.1.07', 'Beneficios sociales por pagar', 'liability', true], ['2.1.08', 'Otros descuentos por pagar', 'liability', true], ['2.2', 'Pasivo no corriente', 'liability', false], ['2.2.01', 'Préstamos largo plazo', 'liability', true],
   ['3', 'PATRIMONIO', 'equity', false], ['3.01', 'Capital social', 'equity', true], ['3.02', 'Resultados acumulados', 'equity', true], ['4', 'INGRESOS', 'income', false], ['4.01', 'Ventas operacionales', 'income', true], ['4.02', 'Otros ingresos', 'income', true], ['5', 'COSTOS', 'cost', false], ['5.01', 'Costo de ventas', 'cost', true], ['6', 'GASTOS', 'expense', false], ['6.01', 'Gasto de nómina', 'expense', true], ['6.02', 'IESS patronal', 'expense', true], ['6.03', 'Gastos administrativos', 'expense', true], ['6.04', 'Beneficios sociales', 'expense', true], ['6.05', 'Diferencias de inventario y costo estándar', 'expense', true],
   ['1.1.09', 'Anticipo de impuesto a la renta', 'asset', true], ['1.1.10', 'Crédito tributario: retenciones de renta recibidas', 'asset', true], ['1.1.11', 'Crédito tributario: retenciones de IVA recibidas', 'asset', true], ['1.1.12', 'ISD pagado (crédito tributario)', 'asset', true],
   ['2.1.09', 'Utilidades por pagar a trabajadores', 'liability', true], ['2.1.10', 'Impuesto a la renta por pagar', 'liability', true], ['2.1.11', 'ICE por pagar', 'liability', true],
   ['6.06', 'Participación de trabajadores en utilidades', 'expense', true], ['6.07', 'Impuesto a la renta', 'expense', true], ['6.08', 'Impuesto a la salida de divisas (ISD)', 'expense', true],
+];
+
+const superciasAccountDefinitions: [string, string, AccountingAccount['category'], boolean][] = SUPERCÍAS_CATALOG.map(a => [
+  a.code,
+  a.name,
+  a.category,
+  a.postable,
+]);
+
+const accountDefinitions: [string, string, AccountingAccount['category'], boolean][] = [
+  ...baseAccountDefinitions,
+  ...superciasAccountDefinitions,
 ];
 const assert = (condition: unknown, message: string): void => { if (!condition) throw new Error(message); };
 
@@ -24,13 +39,13 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   if (command.action === 'initialize') {
     if (state.profile) { state.profile.lastAccess = now; return { state, result: uid }; }
     state.profile = { ...meta(uid), uid, email, companyName: command.data.companyName, ruc: '1790000001001', currency: 'USD', country: 'EC', fiscalScenario: 'ecuador-2026', sbu: 482, incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Almacén principal' }, { code: 'SECUNDARIO', name: 'Almacén secundario' }], xp: 0, level: 1, xpHistory: [], completedModules: [], lastAccess: now, sequences: {}, documentCount: 0 };
-    state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02'].includes(code)) ? 'D' : 'H', active: true }));
+    state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02', '1010209', '1010313', '1020112', '1020404', '4110', '4111'].includes(code)) ? 'D' : 'H', active: true }));
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
     return { state, result: uid };
   }
   if (!state.profile) {
     state.profile = { ...meta(uid), uid, email, companyName: 'B1 Center S.A.S. (Matriz)', ruc: '1790000001001', currency: 'USD', country: 'EC', fiscalScenario: 'ecuador-2026', sbu: 482, incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Almacén principal' }, { code: 'SECUNDARIO', name: 'Almacén secundario' }], xp: 0, level: 1, xpHistory: [], completedModules: [], lastAccess: now, sequences: {}, documentCount: 0 };
-    state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02'].includes(code)) ? 'D' : 'H', active: true }));
+    state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02', '1010209', '1010313', '1020112', '1020404', '4110', '4111'].includes(code)) ? 'D' : 'H', active: true }));
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
   }
   const profile = state.profile;

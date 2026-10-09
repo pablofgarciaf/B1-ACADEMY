@@ -1,14 +1,34 @@
 'use client';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { JournalLine } from '@/lib/firestore-types';
 import { round, today, usd } from '@/lib/company-calculations';
 import { Screen, Field, Navigation, Table, SaveButton, inputClass, buttonClass, NumberInput } from './SAPControls';
+import { AccountCombobox } from './AccountCombobox';
+import { SUPERCÍAS_CATALOG } from '@/lib/supercias-catalog';
+
 const emptyLine = (): JournalLine => ({ accountCode: '', debit: 0, credit: 0, description: '', costCenter: '' });
 export default function JournalEntryForm(_props: { screenId?: string; screenName?: string }) {
   const c = useCompany(); const [index, setIndex] = useState(-1); const [date, setDate] = useState(today()); const [memo, setMemo] = useState(''); const [reference, setReference] = useState(''); const [lines, setLines] = useState<JournalLine[]>([emptyLine(), emptyLine()]);
   const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
   const entry = c.data.journalEntries[index];
+
+  const cuentasDisponibles = useMemo(() => {
+    const mapa = new Map<string, { code: string; name: string; category?: string; postable?: boolean }>();
+    for (const s of SUPERCÍAS_CATALOG) {
+      if (s.postable) {
+        mapa.set(s.code, { code: s.code, name: s.name, category: s.category, postable: true });
+      }
+    }
+    for (const a of (c.data.chartOfAccounts || [])) {
+      if (a.postable) {
+        mapa.set(a.code, { code: a.code, name: a.name, category: a.category, postable: true });
+      }
+    }
+    return Array.from(mapa.values()).sort((a, b) =>
+      a.code.localeCompare(b.code, undefined, { numeric: true })
+    );
+  }, [c.data.chartOfAccounts]);
   const reset = () => { setIndex(-1); setDate(today()); setMemo(''); setReference(''); setLines([emptyLine(), emptyLine()]); };
   const change = (i: number, patch: Partial<JournalLine>) => setLines(ls => ls.map((l, j) => i === j ? { ...l, ...patch } : l));
   return <Screen title="Asiento contable">
@@ -35,7 +55,15 @@ export default function JournalEntryForm(_props: { screenId?: string; screenName
           <Field label="Referencia"><input className={inputClass} value={reference ?? ''} onChange={e => setReference(e.target.value)} /></Field>
         </div>
         <Table headers={['Cuenta *', 'Debe', 'Haber', 'Centro costo', 'Detalle', 'Acción']} rows={lines.map((line, i) => [
-          <select key="account" aria-label={'Cuenta línea ' + (i + 1)} required className={inputClass} value={line.accountCode ?? ''} onChange={e => change(i, { accountCode: e.target.value })}><option value="">Seleccionar cuenta</option>{c.data.chartOfAccounts.filter(a => a.postable).map(a => <option key={a.id} value={a.code}>{a.code} · {a.name}</option>)}</select>,
+          <AccountCombobox
+            key="account"
+            ariaLabel={'Cuenta línea ' + (i + 1)}
+            required
+            value={line.accountCode ?? ''}
+            accounts={cuentasDisponibles}
+            disabled={c.saving || index >= 0}
+            onChange={accountCode => change(i, { accountCode })}
+          />,
           <NumberInput key="debit" ariaLabel={'Debe línea ' + (i + 1)} min={0} value={line.debit ?? 0} onChange={val => change(i, { debit: val, credit: 0 })} />,
           <NumberInput key="credit" ariaLabel={'Haber línea ' + (i + 1)} min={0} value={line.credit ?? 0} onChange={val => change(i, { credit: val, debit: 0 })} />,
           <input key="center" aria-label={'Centro costo línea ' + (i + 1)} className={inputClass} value={line.costCenter ?? ''} onChange={e => change(i, { costCenter: e.target.value })} />,
