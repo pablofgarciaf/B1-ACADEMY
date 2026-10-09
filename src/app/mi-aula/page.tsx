@@ -172,7 +172,7 @@ export default function MiAulaPage() {
             </p>
           </div>
           <Link
-            href="/mi-aula/mod-24"
+            href="/mi-aula/mod-30"
             className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-extrabold shadow-lg hover:shadow-amber-500/25 transition-all active:scale-95 shrink-0"
           >
             <PlayCircle className="w-5 h-5" aria-hidden="true" />

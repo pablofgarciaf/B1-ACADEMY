@@ -20,9 +20,9 @@
       "modules": [
         "M01",
         "M02",
-        "M03",
-        "M13",
-        "M14"
+        "M07",
+        "M08",
+        "M09"
       ]
     },
     {
@@ -31,9 +31,9 @@
       "modules": [
         "M01",
         "M02",
-        "M03",
-        "M15",
-        "M16"
+        "M07",
+        "M10",
+        "M11"
       ]
     },
     {
@@ -42,8 +42,8 @@
       "modules": [
         "M01",
         "M02",
-        "M04",
-        "M05"
+        "M12",
+        "M13"
       ]
     },
     {
@@ -52,8 +52,8 @@
       "modules": [
         "M01",
         "M02",
-        "M04",
-        "M06"
+        "M12",
+        "M14"
       ]
     },
     {
@@ -62,9 +62,9 @@
       "modules": [
         "M01",
         "M02",
-        "M07",
-        "M17",
-        "M19"
+        "M18",
+        "M20",
+        "M22"
       ]
     },
     {
@@ -72,19 +72,19 @@
       "name": "Especialista en Tesorería y Cobranzas",
       "modules": [
         "M01",
-        "M07",
-        "M08",
-        "M19"
+        "M18",
+        "M19",
+        "M22"
       ]
     },
     {
       "id": "C07",
       "name": "Analista de Costos y Presupuestos",
       "modules": [
+        "M03",
         "M09",
-        "M14",
-        "M07",
-        "M18"
+        "M18",
+        "M21"
       ]
     },
     {
@@ -92,9 +92,9 @@
       "name": "Planificador de Producción (MRP)",
       "modules": [
         "M02",
-        "M10",
-        "M11",
-        "M20"
+        "M15",
+        "M16",
+        "M17"
       ]
     },
     {
@@ -103,8 +103,8 @@
       "modules": [
         "M01",
         "M02",
-        "M09",
-        "M21"
+        "M03",
+        "M04"
       ]
     },
     {
@@ -113,8 +113,8 @@
       "modules": [
         "M01",
         "M02",
-        "M25",
-        "M30"
+        "M05",
+        "M06"
       ]
     },
     {
@@ -123,10 +123,10 @@
       "modules": [
         "M01",
         "M02",
-        "M04",
-        "M05",
-        "M06",
-        "M12"
+        "M12",
+        "M13",
+        "M14",
+        "M23"
       ]
     },
     {
@@ -134,19 +134,19 @@
       "name": "Administrador del Sistema SAP B1 (Key User)",
       "modules": [
         "M01",
-        "M21",
-        "M12",
-        "M22"
+        "M04",
+        "M23",
+        "M24"
       ]
     },
     {
       "id": "C13",
       "name": "Consultor de Implementación ERP",
       "modules": [
-        "M21",
-        "M12",
+        "M04",
         "M23",
-        "M24"
+        "M29",
+        "M30"
       ]
     },
     {
@@ -155,10 +155,10 @@
       "modules": [
         "M01",
         "M02",
+        "M25",
         "M26",
         "M27",
-        "M28",
-        "M29"
+        "M28"
       ]
     }
   ],
@@ -167,28 +167,28 @@
       "id": "M01",
       "modKey": "mod-1",
       "number": 1,
-      "name": "Fundamentos Operativos y Navegación",
+      "name": "Fundamentos Operativos, Navegación y Empresa",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "1.1_Introduccion_a_SAP_Business_One",
-          "title": "1.1 Introduccion a SAP Business One"
+          "id": "mod1-c1",
+          "title": "¿Qué es SAP Business One?"
         },
         {
           "number": 2,
-          "id": "1.2_Primeros_Pasos_en_SAP_Business_One",
-          "title": "1.2 Primeros Pasos en SAP Business One"
+          "id": "mod1-c2",
+          "title": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit"
         },
         {
           "number": 3,
-          "id": "1.3_Documentos_y_Datos_Maestros_Concept",
-          "title": "1.3 Documentos y Datos Maestros Concept"
+          "id": "mod1-c3",
+          "title": "Documentos y Datos Maestros"
         },
         {
           "number": 4,
-          "id": "20.3_Configuraciones_Clave_del_Sistema",
-          "title": "20.3 Configuraciones Clave del Sistema"
+          "id": "mod1-c4",
+          "title": "Preferencias de Usuario y Búsquedas"
         }
       ]
     },
@@ -196,43 +196,28 @@
       "id": "M02",
       "modKey": "mod-2",
       "number": 2,
-      "name": "Núcleo Maestro ERP",
+      "name": "Núcleo Maestro ERP: Socios y Artículos",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "2.3_Datos_Maestros_de_Clientes",
-          "title": "2.3 Datos Maestros de Clientes"
+          "id": "mod2-c1",
+          "title": "Socio de Negocios (OCRD)"
         },
         {
           "number": 2,
-          "id": "4.1_Datos_Maestros_de_Articulos",
-          "title": "4.1 Datos Maestros de Articulos"
+          "id": "mod2-c2",
+          "title": "Datos Maestros de Artículo (OITM)"
         },
         {
           "number": 3,
-          "id": "4.2_Grupos_de_Articulos",
-          "title": "4.2 Grupos de Articulos"
+          "id": "mod2-c3",
+          "title": "Gestión de Unidades de Medida"
         },
         {
           "number": 4,
-          "id": "4.3_Unidades_de_Medida_Vision_General",
-          "title": "4.3 Unidades de Medida Vision General"
-        },
-        {
-          "number": 5,
-          "id": "4.4_Unidades_de_Medida_Configuracion",
-          "title": "4.4 Unidades de Medida Configuracion"
-        },
-        {
-          "number": 6,
-          "id": "8.1_Determinacion_de_Precios_Conceptos",
-          "title": "8.1 Determinacion de Precios Conceptos"
-        },
-        {
-          "number": 7,
-          "id": "8.2_Creacion_de_Listas_de_Precios",
-          "title": "8.2 Creacion de Listas de Precios"
+          "id": "mod2-c4",
+          "title": "Determinación Estándar de Precios"
         }
       ]
     },
@@ -240,63 +225,28 @@
       "id": "M03",
       "modKey": "mod-3",
       "number": 3,
-      "name": "Aprovisionamiento y Control de Inventarios",
-      "clasesCount": 5,
+      "name": "Control y Gestión Administrativa de Activos Fijos",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "3.1_Proceso_de_Compras_Vision_General",
-          "title": "3.1 Proceso de Compras Vision General"
+          "id": "mod3-c1",
+          "title": "Configuración de Activos Fijos"
         },
         {
           "number": 2,
-          "id": "3.2_Compras_Articulos_y_Documentos",
-          "title": "3.2 Compras Articulos y Documentos"
+          "id": "mod3-c2",
+          "title": "Alta y Datos Maestros del Activo"
         },
         {
           "number": 3,
-          "id": "3.5_Entrada_de_Mercancias_GRPO",
-          "title": "3.5 Entrada de Mercancias GRPO"
+          "id": "mod3-c3",
+          "title": "Depreciación y Ajustes"
         },
         {
           "number": 4,
-          "id": "5.1_Gestion_de_Almacenes",
-          "title": "5.1 Gestion de Almacenes"
-        },
-        {
-          "number": 5,
-          "id": "5.2_Movimientos_de_Mercancia",
-          "title": "5.2 Movimientos de Mercancia"
-        },
-        {
-          "number": 6,
-          "id": "7.1_Ubicaciones_de_Almacen_Vision_Gener",
-          "title": "7.1 Ubicaciones de Almacen Vision Gener"
-        },
-        {
-          "number": 7,
-          "id": "7.2_Ubicaciones_de_Almacen_Configuracio",
-          "title": "7.2 Ubicaciones de Almacen Configuracio"
-        },
-        {
-          "number": 8,
-          "id": "5.3_Gestion_de_Series_y_Lotes",
-          "title": "5.3 Gestion de Series y Lotes"
-        },
-        {
-          "number": 9,
-          "id": "5.4_Series_y_Lotes_Valoracion",
-          "title": "5.4 Series y Lotes Valoracion"
-        },
-        {
-          "number": 10,
-          "id": "3.7_Costos_de_Importacion_Fletes",
-          "title": "3.7 Costos de Importacion Fletes"
-        },
-        {
-          "number": 11,
-          "id": "3.8_Gestion_de_Costos_de_Importacion_La",
-          "title": "3.8 Gestion de Costos de Importacion La"
+          "id": "mod3-c4",
+          "title": "Bajas y Monitoreo de Activos"
         }
       ]
     },
@@ -304,38 +254,38 @@
       "id": "M04",
       "modKey": "mod-4",
       "number": 4,
-      "name": "Gestión de Ventas y Order-to-Cash",
-      "clasesCount": 4,
+      "name": "Administración del Sistema, Usuarios y Seguridad",
+      "clasesCount": 6,
       "manuals": [
         {
           "number": 1,
-          "id": "2.1_Proceso_de_Ventas_Vision_General",
-          "title": "2.1 Proceso de Ventas Vision General"
+          "id": "mod4-c1",
+          "title": "Numeración de Documentos y Datos Maestros"
         },
         {
           "number": 2,
-          "id": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
-          "title": "2.2 De Pedido a Cobro Order to Cash"
+          "id": "mod4-c2",
+          "title": "Diseños de Impresión"
         },
         {
           "number": 3,
-          "id": "2.5_Automatizacion_del_Proceso_de_Venta",
-          "title": "2.5 Automatizacion del Proceso de Venta"
+          "id": "mod4-c3",
+          "title": "Correo Electrónico y Plantillas de Interfaz"
         },
         {
           "number": 4,
-          "id": "5.6_Proceso_de_Picking_y_Packing_Ventas",
-          "title": "5.6 Proceso de Picking y Packing Ventas"
+          "id": "mod4-c4",
+          "title": "Propiedad de los Datos y Soporte"
         },
         {
           "number": 5,
-          "id": "2.6_Devoluciones_y_Cambios_Ventas",
-          "title": "2.6 Devoluciones y Cambios Ventas"
+          "id": "mod4-c5",
+          "title": "Usuarios, Grupos y Configuraciones Clave"
         },
         {
           "number": 6,
-          "id": "2.7_Notas_de_Credito_Ventas",
-          "title": "2.7 Notas de Credito Ventas"
+          "id": "mod4-c6",
+          "title": "Mensajes, Alertas y Autorizaciones"
         }
       ]
     },
@@ -343,33 +293,23 @@
       "id": "M05",
       "modKey": "mod-5",
       "number": 5,
-      "name": "Estrategias Avanzadas de Precios",
-      "clasesCount": 4,
+      "name": "Estructura Organizacional y Gestión de Personal",
+      "clasesCount": 3,
       "manuals": [
         {
           "number": 1,
-          "id": "8.2_Creacion_de_Listas_de_Precios",
-          "title": "8.2 Creacion de Listas de Precios"
+          "id": "mod5-c1",
+          "title": "Ficha del Empleado, Estructura Organizacional y Costo Laboral"
         },
         {
           "number": 2,
-          "id": "8.3_Actualizacion_de_Listas_de_Precios",
-          "title": "8.3 Actualizacion de Listas de Precios"
+          "id": "mod5-c2",
+          "title": "Gestión de Contratos, Ausencias y Políticas Salariales"
         },
         {
           "number": 3,
-          "id": "8.4_Descuentos_por_Periodo_y_Volumen",
-          "title": "8.4 Descuentos por Periodo y Volumen"
-        },
-        {
-          "number": 4,
-          "id": "8.5_Grupos_de_Descuento",
-          "title": "8.5 Grupos de Descuento"
-        },
-        {
-          "number": 5,
-          "id": "8.6_Precios_Especiales_para_Socios_de_N",
-          "title": "8.6 Precios Especiales para Socios de N"
+          "id": "mod5-c3",
+          "title": "Evaluación de Desempeño, Finiquito y Salida del Personal"
         }
       ]
     },
@@ -377,28 +317,23 @@
       "id": "M06",
       "modKey": "mod-6",
       "number": 6,
-      "name": "Gestión CRM y Servicios Post-venta",
-      "clasesCount": 4,
+      "name": "Nómina, Beneficios Sociales e IESS Ecuador 2026",
+      "clasesCount": 3,
       "manuals": [
         {
           "number": 1,
-          "id": "2.4_Gestion_de_Relaciones_con_Clientes_",
-          "title": "2.4 Gestion de Relaciones con Clientes "
+          "id": "mod6-c1",
+          "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos"
         },
         {
           "number": 2,
-          "id": "2.5_Automatizacion_del_Proceso_de_Venta",
-          "title": "2.5 Automatizacion del Proceso de Venta"
+          "id": "mod6-c2",
+          "title": "Décimos, Fondos de Reserva y Provisiones de Ley"
         },
         {
           "number": 3,
-          "id": "12.1_Gestion_de_Llamadas_de_Servicio",
-          "title": "12.1 Gestion de Llamadas de Servicio"
-        },
-        {
-          "number": 4,
-          "id": "7.6_Ubicaciones_de_Almacen_Numeros_de_S",
-          "title": "7.6 Ubicaciones de Almacen Numeros de S"
+          "id": "mod6-c3",
+          "title": "Contabilidad de la Nómina y Liquidación de Aportes al IESS"
         }
       ]
     },
@@ -406,53 +341,33 @@
       "id": "M07",
       "modKey": "mod-7",
       "number": 7,
-      "name": "Contabilidad Central y NIIF",
-      "clasesCount": 4,
+      "name": "Aprovisionamiento y Control de Inventarios (Procure-to-Pay)",
+      "clasesCount": 5,
       "manuals": [
         {
           "number": 1,
-          "id": "13.1_Plan_de_Cuentas_Conceptos_Fundament",
-          "title": "13.1 Plan de Cuentas Conceptos Fundament"
+          "id": "mod7-c1",
+          "title": "Ciclo Procure-to-Pay"
         },
         {
           "number": 2,
-          "id": "13.3_Gestion_del_Plan_de_Cuentas",
-          "title": "13.3 Gestion del Plan de Cuentas"
+          "id": "mod7-c2",
+          "title": "Transacciones de Almacén"
         },
         {
           "number": 3,
-          "id": "13.4_Cuentas_de_Mayor_por_Defecto_Vision",
-          "title": "13.4 Cuentas de Mayor por Defecto Vision"
+          "id": "mod7-c3",
+          "title": "Ubicaciones (Bin Locations)"
         },
         {
           "number": 4,
-          "id": "13.5_Cuentas_de_Mayor_por_Defecto_Modo_T",
-          "title": "13.5 Cuentas de Mayor por Defecto Modo T"
+          "id": "mod7-c4",
+          "title": "Trazabilidad por Lotes y Series"
         },
         {
           "number": 5,
-          "id": "14.2_Asientos_Contables_Automaticos",
-          "title": "14.2 Asientos Contables Automaticos"
-        },
-        {
-          "number": 6,
-          "id": "15.1_Registro_de_Asientos_Contables",
-          "title": "15.1 Registro de Asientos Contables"
-        },
-        {
-          "number": 7,
-          "id": "15.2_Plantillas_de_Asientos_Recurrentes",
-          "title": "15.2 Plantillas de Asientos Recurrentes"
-        },
-        {
-          "number": 8,
-          "id": "15.4_Periodos_Contables_y_Ejercicios",
-          "title": "15.4 Periodos Contables y Ejercicios"
-        },
-        {
-          "number": 9,
-          "id": "15.5_Cierre_de_Periodo_Contable",
-          "title": "15.5 Cierre de Periodo Contable"
+          "id": "mod7-c5",
+          "title": "Costos de Importación"
         }
       ]
     },
@@ -460,43 +375,23 @@
       "id": "M08",
       "modKey": "mod-8",
       "number": 8,
-      "name": "Tesorería, Cobros y Pagos (Bancos)",
-      "clasesCount": 5,
+      "name": "Compras Avanzadas y Gestión de Proveedores",
+      "clasesCount": 3,
       "manuals": [
         {
           "number": 1,
-          "id": "16.1_Gestion_de_Pagos_Recibidos_y_Emitid",
-          "title": "16.1 Gestion de Pagos Recibidos y Emitid"
+          "id": "mod8-c1",
+          "title": "Solicitudes de Compra y Cotizaciones"
         },
         {
           "number": 2,
-          "id": "16.2_Asistente_de_Pagos_Payment_Wizard",
-          "title": "16.2 Asistente de Pagos Payment Wizard"
+          "id": "mod8-c2",
+          "title": "Compras de Servicios"
         },
         {
           "number": 3,
-          "id": "16.3_Reconciliacion_Bancaria",
-          "title": "16.3 Reconciliacion Bancaria"
-        },
-        {
-          "number": 4,
-          "id": "15.6_Reconciliacion_Interna_de_Cuentas",
-          "title": "15.6 Reconciliacion Interna de Cuentas"
-        },
-        {
-          "number": 5,
-          "id": "17.3_Antiguedad_de_Saldos_Aging_Report",
-          "title": "17.3 Antiguedad de Saldos Aging Report"
-        },
-        {
-          "number": 6,
-          "id": "17.4_Proceso_de_Reclamaciones_Dunning",
-          "title": "17.4 Proceso de Reclamaciones Dunning"
-        },
-        {
-          "number": 7,
-          "id": "fuente:banca_ec",
-          "title": "fuente:banca ec"
+          "id": "mod8-c3",
+          "title": "Devoluciones y Notas de Crédito de Proveedor"
         }
       ]
     },
@@ -504,33 +399,28 @@
       "id": "M09",
       "modKey": "mod-9",
       "number": 9,
-      "name": "Control de Activos Fijos",
+      "name": "Unidades de Medida y Valoración de Inventario",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "19.2_Activos_Fijos_Virtuales",
-          "title": "19.2 Activos Fijos Virtuales"
+          "id": "mod9-c1",
+          "title": "Unidades de Medida por Peso y Volumen"
         },
         {
           "number": 2,
-          "id": "19.3_Activos_Fijos_Configuracion_Inicial",
-          "title": "19.3 Activos Fijos Configuracion Inicial"
+          "id": "mod9-c2",
+          "title": "Unidades de Empaquetado"
         },
         {
           "number": 3,
-          "id": "19.4_Activos_Fijos_Activacion_y_Datos_Ma",
-          "title": "19.4 Activos Fijos Activacion y Datos Ma"
+          "id": "mod9-c3",
+          "title": "Métodos de Valoración de Inventario"
         },
         {
           "number": 4,
-          "id": "19.5_Activos_Fijos_Depreciacion_y_Ajuste",
-          "title": "19.5 Activos Fijos Depreciacion y Ajuste"
-        },
-        {
-          "number": 5,
-          "id": "19.6_Activos_Fijos_Bajas_y_Monitoreo",
-          "title": "19.6 Activos Fijos Bajas y Monitoreo"
+          "id": "mod9-c4",
+          "title": "Ajuste de Costos de Inventario"
         }
       ]
     },
@@ -538,23 +428,28 @@
       "id": "M10",
       "modKey": "mod-10",
       "number": 10,
-      "name": "Planificación de Materiales (MRP)",
+      "name": "Operación de Bodega e Inventario Físico",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "9.1_Planificacion_de_Necesidades_MRP_Pr",
-          "title": "9.1 Planificacion de Necesidades MRP Pr"
+          "id": "mod10-c1",
+          "title": "Operación Diaria con Ubicaciones"
         },
         {
           "number": 2,
-          "id": "9.2_Pronosticos_de_Consumo_y_Demanda",
-          "title": "9.2 Pronosticos de Consumo y Demanda"
+          "id": "mod10-c2",
+          "title": "Reglas y Gestión de Ubicaciones"
         },
         {
           "number": 3,
-          "id": "9.3_MRP_y_Listas_de_Materiales_BOM",
-          "title": "9.3 MRP y Listas de Materiales BOM"
+          "id": "mod10-c3",
+          "title": "Informes de Ubicaciones"
+        },
+        {
+          "number": 4,
+          "id": "mod10-c4",
+          "title": "Inventario Físico: Conteo y Ajuste"
         }
       ]
     },
@@ -562,48 +457,18 @@
       "id": "M11",
       "modKey": "mod-11",
       "number": 11,
-      "name": "Fabricación y Proyectos (BOM)",
-      "clasesCount": 4,
+      "name": "Picking, Packing y Despacho",
+      "clasesCount": 2,
       "manuals": [
         {
           "number": 1,
-          "id": "10.4_Lista_de_Materiales_BOM",
-          "title": "10.4 Lista de Materiales BOM"
+          "id": "mod11-c1",
+          "title": "Picking y Packing para Producción"
         },
         {
           "number": 2,
-          "id": "10.1_Produccion_Vision_General",
-          "title": "10.1 Produccion Vision General"
-        },
-        {
-          "number": 3,
-          "id": "10.5_Proceso_Basico_de_Orden_de_Producci",
-          "title": "10.5 Proceso Basico de Orden de Producci"
-        },
-        {
-          "number": 4,
-          "id": "10.6_Subproductos_y_Costos_Adicionales",
-          "title": "10.6 Subproductos y Costos Adicionales"
-        },
-        {
-          "number": 5,
-          "id": "10.8_Contabilizacion_de_Ordenes_de_Produ",
-          "title": "10.8 Contabilizacion de Ordenes de Produ"
-        },
-        {
-          "number": 6,
-          "id": "10.9_Analisis_de_Costos_de_Produccion",
-          "title": "10.9 Analisis de Costos de Produccion"
-        },
-        {
-          "number": 7,
-          "id": "11.1_Gestion_de_Proyectos",
-          "title": "11.1 Gestion de Proyectos"
-        },
-        {
-          "number": 8,
-          "id": "11.2_Facturacion_de_Proyectos",
-          "title": "11.2 Facturacion de Proyectos"
+          "id": "mod11-c2",
+          "title": "Picking y Packing para Transferencias"
         }
       ]
     },
@@ -611,48 +476,28 @@
       "id": "M12",
       "modKey": "mod-12",
       "number": 12,
-      "name": "Consultoría y Herramientas SQL",
+      "name": "Gestión de Ventas y Order-to-Cash",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "22.1_Consultas_Personalizadas_Queries",
-          "title": "22.1 Consultas Personalizadas Queries"
+          "id": "mod12-c1",
+          "title": "El Ciclo de Ventas Order-to-Cash"
         },
         {
           "number": 2,
-          "id": "23.6_Practica_de_Consultas_SQL",
-          "title": "23.6 Practica de Consultas SQL"
+          "id": "mod12-c2",
+          "title": "Ofertas y Pedidos de Cliente"
         },
         {
           "number": 3,
-          "id": "22.2_Sistema_de_Alertas_Automaticas",
-          "title": "22.2 Sistema de Alertas Automaticas"
+          "id": "mod12-c3",
+          "title": "Entregas y Facturación"
         },
         {
           "number": 4,
-          "id": "22.3_Procesos_de_Aprobacion",
-          "title": "22.3 Procesos de Aprobacion"
-        },
-        {
-          "number": 5,
-          "id": "22.4_Campos_Definidos_por_el_Usuario_UDF",
-          "title": "22.4 Campos Definidos por el Usuario UDF"
-        },
-        {
-          "number": 6,
-          "id": "22.5_Valores_Definidos_por_el_Usuario_UD",
-          "title": "22.5 Valores Definidos por el Usuario UD"
-        },
-        {
-          "number": 7,
-          "id": "20.6_Importacion_de_Datos_desde_Excel",
-          "title": "20.6 Importacion de Datos desde Excel"
-        },
-        {
-          "number": 8,
-          "id": "20.7_Uso_del_Data_Transfer_Workbench_DTW",
-          "title": "20.7 Uso del Data Transfer Workbench DTW"
+          "id": "mod12-c4",
+          "title": "Devoluciones y Notas de Crédito"
         }
       ]
     },
@@ -660,23 +505,28 @@
       "id": "M13",
       "modKey": "mod-13",
       "number": 13,
-      "name": "Compras Avanzadas",
-      "clasesCount": 3,
+      "name": "Estrategias Avanzadas de Precios y Descuentos",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "3.3_Solicitudes_de_Compra_y_Cotizacione",
-          "title": "3.3 Solicitudes de Compra y Cotizacione"
+          "id": "mod13-c1",
+          "title": "Listas de Precios y su Actualización"
         },
         {
           "number": 2,
-          "id": "3.4_Compras_de_Servicios",
-          "title": "3.4 Compras de Servicios"
+          "id": "mod13-c2",
+          "title": "Descuentos por Período y Volumen"
         },
         {
           "number": 3,
-          "id": "3.6_Devoluciones_y_Notas_de_Credito_Com",
-          "title": "3.6 Devoluciones y Notas de Credito Com"
+          "id": "mod13-c3",
+          "title": "Grupos de Descuento"
+        },
+        {
+          "number": 4,
+          "id": "mod13-c4",
+          "title": "Precios Especiales para Socios"
         }
       ]
     },
@@ -684,28 +534,28 @@
       "id": "M14",
       "modKey": "mod-14",
       "number": 14,
-      "name": "Unidades de Medida y Valoración de Inventario",
+      "name": "Gestión CRM, Oportunidades y Servicio Post-Venta",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "4.5_Unidades_de_Medida_Gestion_por_Peso",
-          "title": "4.5 Unidades de Medida Gestion por Peso"
+          "id": "mod14-c1",
+          "title": "Gestión de Relaciones con Clientes"
         },
         {
           "number": 2,
-          "id": "4.6_Unidades_de_Medida_Empaquetado",
-          "title": "4.6 Unidades de Medida Empaquetado"
+          "id": "mod14-c2",
+          "title": "Oportunidades y Actividades de Venta"
         },
         {
           "number": 3,
-          "id": "4.7_Metodos_de_Valoracion_de_Inventario",
-          "title": "4.7 Metodos de Valoracion de Inventario"
+          "id": "mod14-c3",
+          "title": "Llamadas de Servicio"
         },
         {
           "number": 4,
-          "id": "18.3_Ajuste_de_Costos_de_Inventario",
-          "title": "18.3 Ajuste de Costos de Inventario"
+          "id": "mod14-c4",
+          "title": "Tarjetas de Equipo y Garantías"
         }
       ]
     },
@@ -713,28 +563,28 @@
       "id": "M15",
       "modKey": "mod-15",
       "number": 15,
-      "name": "Operación de Almacén e Inventario Físico",
+      "name": "Planificación de Materiales (MRP)",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "7.3_Ubicaciones_de_Almacen_Proceso_Oper",
-          "title": "7.3 Ubicaciones de Almacen Proceso Oper"
+          "id": "mod15-c1",
+          "title": "Planificación de Necesidades MRP"
         },
         {
           "number": 2,
-          "id": "7.4_Ubicaciones_de_Almacen_Gestion_por_",
-          "title": "7.4 Ubicaciones de Almacen Gestion por "
+          "id": "mod15-c2",
+          "title": "Pronósticos de Demanda"
         },
         {
           "number": 3,
-          "id": "7.5_Ubicaciones_de_Almacen_Informes",
-          "title": "7.5 Ubicaciones de Almacen Informes"
+          "id": "mod15-c3",
+          "title": "MRP y Listas de Materiales"
         },
         {
           "number": 4,
-          "id": "5.5_Inventario_Fisico_Conteo_y_Ajuste",
-          "title": "5.5 Inventario Fisico Conteo y Ajuste"
+          "id": "mod15-c4",
+          "title": "Recomendaciones y Órdenes Sugeridas"
         }
       ]
     },
@@ -742,18 +592,28 @@
       "id": "M16",
       "modKey": "mod-16",
       "number": 16,
-      "name": "Picking, Packing y Despacho",
-      "clasesCount": 2,
+      "name": "Fabricación y Listas de Materiales (BOM)",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "6.1_Proceso_de_Picking_y_Packing_Produc",
-          "title": "6.1 Proceso de Picking y Packing Produc"
+          "id": "mod16-c1",
+          "title": "Listas de Materiales"
         },
         {
           "number": 2,
-          "id": "6.2_Proceso_de_Picking_y_Packing_Transf",
-          "title": "6.2 Proceso de Picking y Packing Transf"
+          "id": "mod16-c2",
+          "title": "Órdenes de Producción"
+        },
+        {
+          "number": 3,
+          "id": "mod16-c3",
+          "title": "Costos de Producción"
+        },
+        {
+          "number": 4,
+          "id": "mod16-c4",
+          "title": "Gestión y Facturación de Proyectos"
         }
       ]
     },
@@ -761,43 +621,23 @@
       "id": "M17",
       "modKey": "mod-17",
       "number": 17,
-      "name": "Monedas, Cierre e Informes Financieros",
-      "clasesCount": 4,
+      "name": "Recursos de Planta, Capacidad y Rutas de Fabricación",
+      "clasesCount": 3,
       "manuals": [
         {
           "number": 1,
-          "id": "13.2_Configuracion_de_Monedas_y_Tipos_de",
-          "title": "13.2 Configuracion de Monedas y Tipos de"
+          "id": "mod17-c1",
+          "title": "Recursos de Producción"
         },
         {
           "number": 2,
-          "id": "13.6_Cuentas_de_Mayor_por_Defecto_Modo_A",
-          "title": "13.6 Cuentas de Mayor por Defecto Modo A"
+          "id": "mod17-c2",
+          "title": "Capacidad de Recursos"
         },
         {
           "number": 3,
-          "id": "14.1_Conceptos_Financieros_Basicos",
-          "title": "14.1 Conceptos Financieros Basicos"
-        },
-        {
-          "number": 4,
-          "id": "15.3_Documentos_Preliminares_Vouchers",
-          "title": "15.3 Documentos Preliminares Vouchers"
-        },
-        {
-          "number": 5,
-          "id": "fuente:nomina_ec_2026",
-          "title": "fuente:nomina ec 2026"
-        },
-        {
-          "number": 6,
-          "id": "17.1_Informes_Financieros_del_Sistema",
-          "title": "17.1 Informes Financieros del Sistema"
-        },
-        {
-          "number": 7,
-          "id": "17.2_Informe_de_Flujo_de_Caja",
-          "title": "17.2 Informe de Flujo de Caja"
+          "id": "mod17-c3",
+          "title": "Rutas de Producción (Routing)"
         }
       ]
     },
@@ -805,23 +645,28 @@
       "id": "M18",
       "modKey": "mod-18",
       "number": 18,
-      "name": "Costos, Dimensiones y Presupuestos",
-      "clasesCount": 3,
+      "name": "Contabilidad Central y Normativa NIIF",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "18.1_Contabilidad_de_Costos",
-          "title": "18.1 Contabilidad de Costos"
+          "id": "mod18-c1",
+          "title": "Plan de Cuentas"
         },
         {
           "number": 2,
-          "id": "18.2_Centros_de_Costo_Multiples_Dimensio",
-          "title": "18.2 Centros de Costo Multiples Dimensio"
+          "id": "mod18-c2",
+          "title": "Cuentas de Mayor por Defecto"
         },
         {
           "number": 3,
-          "id": "18.4_Gestion_de_Presupuestos",
-          "title": "18.4 Gestion de Presupuestos"
+          "id": "mod18-c3",
+          "title": "Asientos Contables Manuales y Automáticos"
+        },
+        {
+          "number": 4,
+          "id": "mod18-c4",
+          "title": "Períodos Contables y Cierre"
         }
       ]
     },
@@ -829,23 +674,33 @@
       "id": "M19",
       "modKey": "mod-19",
       "number": 19,
-      "name": "Facturación Electrónica y Retenciones SRI 2026",
-      "clasesCount": 10,
+      "name": "Tesorería, Cobros, Pagos y Bancos",
+      "clasesCount": 5,
       "manuals": [
         {
           "number": 1,
-          "id": "fuente:sri_2026",
-          "title": "fuente:sri 2026"
+          "id": "mod19-c1",
+          "title": "Pagos Recibidos y Efectuados"
         },
         {
           "number": 2,
-          "id": "3.2_Compras_Articulos_y_Documentos",
-          "title": "3.2 Compras Articulos y Documentos"
+          "id": "mod19-c2",
+          "title": "Asistente de Pagos"
         },
         {
           "number": 3,
-          "id": "fuente:impuestos_avanzados_2026",
-          "title": "fuente:impuestos avanzados 2026"
+          "id": "mod19-c3",
+          "title": "Conciliación Bancaria e Interna"
+        },
+        {
+          "number": 4,
+          "id": "mod19-c4",
+          "title": "Antigüedad de Saldos y Cobranza"
+        },
+        {
+          "number": 5,
+          "id": "mod19-c5",
+          "title": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos"
         }
       ]
     },
@@ -853,23 +708,28 @@
       "id": "M20",
       "modKey": "mod-20",
       "number": 20,
-      "name": "Recursos, Capacidad y Rutas de Producción",
-      "clasesCount": 3,
+      "name": "Monedas, Cierre Contable e Informes Financieros",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "10.2_Recursos_de_Produccion",
-          "title": "10.2 Recursos de Produccion"
+          "id": "mod20-c1",
+          "title": "Monedas y Tipos de Cambio"
         },
         {
           "number": 2,
-          "id": "10.3_Capacidad_de_Recursos",
-          "title": "10.3 Capacidad de Recursos"
+          "id": "mod20-c2",
+          "title": "Determinación Avanzada de Cuentas"
         },
         {
           "number": 3,
-          "id": "10.7_Rutas_de_Produccion_Routing",
-          "title": "10.7 Rutas de Produccion Routing"
+          "id": "mod20-c3",
+          "title": "Documentos Preliminares de Asiento"
+        },
+        {
+          "number": 4,
+          "id": "mod20-c4",
+          "title": "Informes Financieros y Flujo de Caja"
         }
       ]
     },
@@ -877,58 +737,23 @@
       "id": "M21",
       "modKey": "mod-21",
       "number": 21,
-      "name": "Administración del Sistema",
-      "clasesCount": 6,
+      "name": "Contabilidad de Costos, Dimensiones y Presupuestos",
+      "clasesCount": 3,
       "manuals": [
         {
           "number": 1,
-          "id": "21.4_Numeracion_de_Documentos_y_Datos_Ma",
-          "title": "21.4 Numeracion de Documentos y Datos Ma"
+          "id": "mod21-c1",
+          "title": "Contabilidad de Costos"
         },
         {
           "number": 2,
-          "id": "21.6_Disenos_de_Impresion_Print_Layouts",
-          "title": "21.6 Disenos de Impresion Print Layouts"
+          "id": "mod21-c2",
+          "title": "Centros de Costo y Dimensiones"
         },
         {
           "number": 3,
-          "id": "21.7_Preferencias_de_Correo_Electronico",
-          "title": "21.7 Preferencias de Correo Electronico"
-        },
-        {
-          "number": 4,
-          "id": "21.5_Plantillas_de_Configuracion_de_Inte",
-          "title": "21.5 Plantillas de Configuracion de Inte"
-        },
-        {
-          "number": 5,
-          "id": "21.3_Propiedad_de_los_Datos_Data_Ownersh",
-          "title": "21.3 Propiedad de los Datos Data Ownersh"
-        },
-        {
-          "number": 6,
-          "id": "23.1_Herramientas_de_Soporte_y_Diagnosti",
-          "title": "23.1 Herramientas de Soporte y Diagnosti"
-        },
-        {
-          "number": 7,
-          "id": "21.1_Configuracion_de_Usuarios_y_Grupos",
-          "title": "21.1 Configuracion de Usuarios y Grupos"
-        },
-        {
-          "number": 8,
-          "id": "20.3_Configuraciones_Clave_del_Sistema",
-          "title": "20.3 Configuraciones Clave del Sistema"
-        },
-        {
-          "number": 9,
-          "id": "22.2_Sistema_de_Alertas_Automaticas",
-          "title": "22.2 Sistema de Alertas Automaticas"
-        },
-        {
-          "number": 10,
-          "id": "21.2_Autorizaciones_Generales_del_Sistem",
-          "title": "21.2 Autorizaciones Generales del Sistem"
+          "id": "mod21-c3",
+          "title": "Gestión de Presupuestos"
         }
       ]
     },
@@ -936,18 +761,58 @@
       "id": "M22",
       "modKey": "mod-22",
       "number": 22,
-      "name": "Extensibilidad y Analítica",
-      "clasesCount": 2,
+      "name": "Facturación Electrónica y Retenciones SRI 2026",
+      "clasesCount": 10,
       "manuals": [
         {
           "number": 1,
-          "id": "22.6_Tablas_Definidas_por_el_Usuario_UDT",
-          "title": "22.6 Tablas Definidas por el Usuario UDT"
+          "id": "mod22-c1",
+          "title": "Facturación Electrónica 2026: Transmisión y Anulación"
         },
         {
           "number": 2,
-          "id": "22.7_Introduccion_a_SAP_Analytics",
-          "title": "22.7 Introduccion a SAP Analytics"
+          "id": "mod22-c2",
+          "title": "Retención en la Fuente del Impuesto a la Renta"
+        },
+        {
+          "number": 3,
+          "id": "mod22-c3",
+          "title": "Retención del IVA y Comprobante de Retención"
+        },
+        {
+          "number": 4,
+          "id": "mod22-c4",
+          "title": "Retenciones en la Factura de Proveedores de SAP B1"
+        },
+        {
+          "number": 5,
+          "id": "mod22-c5",
+          "title": "Declaraciones Mensuales: Formularios 103, 104 y ATS"
+        },
+        {
+          "number": 6,
+          "id": "mod22-c6",
+          "title": "Nota de Débito, Guía de Remisión y Liquidación de Compra"
+        },
+        {
+          "number": 7,
+          "id": "mod22-c7",
+          "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa"
+        },
+        {
+          "number": 8,
+          "id": "mod22-c8",
+          "title": "ICE: Impuesto a los Consumos Especiales"
+        },
+        {
+          "number": 9,
+          "id": "mod22-c9",
+          "title": "ISD: Pagos al Exterior y Salida de Divisas"
+        },
+        {
+          "number": 10,
+          "id": "mod22-c10",
+          "title": "Retenciones que te Hacen tus Clientes: Crédito Tributario"
         }
       ]
     },
@@ -955,33 +820,28 @@
       "id": "M23",
       "modKey": "mod-23",
       "number": 23,
-      "name": "Implementación, Saldos Iniciales y Go-Live",
+      "name": "Consultoría de Datos, Query Manager SQL y DTW",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "20.1_Metodologia_de_Implementacion_SAP",
-          "title": "20.1 Metodologia de Implementacion SAP"
+          "id": "mod23-c1",
+          "title": "Consultas SQL con el Query Manager"
         },
         {
           "number": 2,
-          "id": "20.2_Asistente_Express_de_Configuracion",
-          "title": "20.2 Asistente Express de Configuracion"
+          "id": "mod23-c2",
+          "title": "Alertas y Procesos de Aprobación"
         },
         {
           "number": 3,
-          "id": "20.4_Carga_de_Saldos_Iniciales",
-          "title": "20.4 Carga de Saldos Iniciales"
+          "id": "mod23-c3",
+          "title": "Campos y Valores Definidos por el Usuario"
         },
         {
           "number": 4,
-          "id": "20.5_Copia_Rapida_entre_Companias_Quick_",
-          "title": "20.5 Copia Rapida entre Companias Quick "
-        },
-        {
-          "number": 5,
-          "id": "20.8_Importacion_de_Documentos_con_DTW",
-          "title": "20.8 Importacion de Documentos con DTW"
+          "id": "mod23-c4",
+          "title": "Migración de Datos con DTW"
         }
       ]
     },
@@ -989,38 +849,18 @@
       "id": "M24",
       "modKey": "mod-24",
       "number": 24,
-      "name": "Proyecto Integrador",
-      "clasesCount": 3,
+      "name": "Extensibilidad, Tablas de Usuario y Analytics",
+      "clasesCount": 2,
       "manuals": [
         {
           "number": 1,
-          "id": "23.2_Caso_Practico_Introduccion",
-          "title": "23.2 Caso Practico Introduccion"
+          "id": "mod24-c1",
+          "title": "Tablas Definidas por el Usuario"
         },
         {
           "number": 2,
-          "id": "23.3_Caso_Practico_Introduccion_Solucion",
-          "title": "23.3 Caso Practico Introduccion Solucion"
-        },
-        {
-          "number": 3,
-          "id": "23.4_Caso_Practico_Proceso_de_Aprovision",
-          "title": "23.4 Caso Practico Proceso de Aprovision"
-        },
-        {
-          "number": 4,
-          "id": "23.5_Caso_Practico_Aprovisionamiento_Sol",
-          "title": "23.5 Caso Practico Aprovisionamiento Sol"
-        },
-        {
-          "number": 5,
-          "id": "23.7_Practica_de_Consultas_SQL_Solucione",
-          "title": "23.7 Practica de Consultas SQL Solucione"
-        },
-        {
-          "number": 6,
-          "id": "23.6_Practica_de_Consultas_SQL",
-          "title": "23.6 Practica de Consultas SQL"
+          "id": "mod24-c2",
+          "title": "Introducción a SAP Analytics"
         }
       ]
     },
@@ -1028,18 +868,28 @@
       "id": "M25",
       "modKey": "mod-25",
       "number": 25,
-      "name": "Nómina y Talento Humano Ecuador 2026",
-      "clasesCount": 6,
+      "name": "Metodología de Implementación y Ciclo de Vida SAP Activate",
+      "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "fuente:nomina_ec_2026",
-          "title": "fuente:nomina ec 2026"
+          "id": "mod25-c1",
+          "title": "El Marco Metodológico: De Waterfall a SAP Activate y AIP"
         },
         {
           "number": 2,
-          "id": "fuente:impuestos_avanzados_2026",
-          "title": "fuente:impuestos avanzados 2026"
+          "id": "mod25-c2",
+          "title": "Talleres de Exploración (Explore) y Análisis Fit / Gap"
+        },
+        {
+          "number": 3,
+          "id": "mod25-c3",
+          "title": "Fase de Realización: Parametrización y Migración Golden DB"
+        },
+        {
+          "number": 4,
+          "id": "mod25-c4",
+          "title": "Estrategia de Salida en Vivo (Cutover), Go-Live e Hypercare"
         }
       ]
     },
@@ -1047,13 +897,28 @@
       "id": "M26",
       "modKey": "mod-26",
       "number": 26,
-      "name": "Metodología de Implementación y Ciclo de Vida SAP",
+      "name": "Modelado y Optimización de Procesos de Negocio (BPMN 2.0)",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "fuente:consultoria_metodologia_activate",
-          "title": "Metodología SAP Activate y Ciclo de Vida ERP"
+          "id": "mod26-c1",
+          "title": "Fundamentos de BPMN 2.0 para Consultores ERP"
+        },
+        {
+          "number": 2,
+          "id": "mod26-c2",
+          "title": "Mapeo del Estado Actual (AS-IS) y Detección de Ineficiencias"
+        },
+        {
+          "number": 3,
+          "id": "mod26-c3",
+          "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP"
+        },
+        {
+          "number": 4,
+          "id": "mod26-c4",
+          "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1"
         }
       ]
     },
@@ -1061,13 +926,28 @@
       "id": "M27",
       "modKey": "mod-27",
       "number": 27,
-      "name": "Modelado y Optimización de Procesos de Negocio (BPMN 2.0)",
+      "name": "Levantamiento de Requerimientos y Business Blueprint (BRD)",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "fuente:consultoria_bpmn_procesos",
-          "title": "Modelado de Procesos de Negocio BPMN 2.0 para SAP"
+          "id": "mod27-c1",
+          "title": "Técnicas de Elicitación de Requisitos y Entrevistas Clave"
+        },
+        {
+          "number": 2,
+          "id": "mod27-c2",
+          "title": "El Business Blueprint (BBD) y Business Requirements Document (BRD)"
+        },
+        {
+          "number": 3,
+          "id": "mod27-c3",
+          "title": "Historias de Usuario, Criterios Gherkin y Matriz RTM"
+        },
+        {
+          "number": 4,
+          "id": "mod27-c4",
+          "title": "De Requerimiento a Configuración: Campos UDF y Valores Válidos"
         }
       ]
     },
@@ -1075,13 +955,28 @@
       "id": "M28",
       "modKey": "mod-28",
       "number": 28,
-      "name": "Levantamiento de Requerimientos y Documentación de Negocio",
+      "name": "Gestión de Clientes, Pruebas UAT y Adopción del Cambio",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "fuente:consultoria_requerimientos_brd",
-          "title": "Elicitación de Requisitos, Business Blueprint y Gherkin"
+          "id": "mod28-c1",
+          "title": "Gestión de Stakeholders y Control de Cambios (Change Requests)"
+        },
+        {
+          "number": 2,
+          "id": "mod28-c2",
+          "title": "Gestión del Cambio Organizacional y Estrategia Train the Trainer"
+        },
+        {
+          "number": 3,
+          "id": "mod28-c3",
+          "title": "Estrategia y Elaboración de Guiones de Prueba UAT (Test Scripts)"
+        },
+        {
+          "number": 4,
+          "id": "mod28-c4",
+          "title": "Ejecución de Ciclo UAT, Validación Contable y Acta de Go-Live"
         }
       ]
     },
@@ -1089,37 +984,52 @@
       "id": "M29",
       "modKey": "mod-29",
       "number": 29,
-      "name": "Gestión de Clientes, Pruebas UAT y Adopción del Cambio",
+      "name": "Implementación Técnica, Saldos Iniciales y Go-Live",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
-          "id": "fuente:consultoria_clientes_uat",
-          "title": "Gestión de Stakeholders, Guiones UAT y Go-Live"
+          "id": "mod29-c1",
+          "title": "Metodología de Implementación"
+        },
+        {
+          "number": 2,
+          "id": "mod29-c2",
+          "title": "Asistente Express de Configuración"
+        },
+        {
+          "number": 3,
+          "id": "mod29-c3",
+          "title": "Carga de Saldos Iniciales"
+        },
+        {
+          "number": 4,
+          "id": "mod29-c4",
+          "title": "Copia Rápida e Importación de Documentos"
         }
       ]
     },
     {
       "id": "M30",
       "modKey": "mod-30",
-      "number": 6,
-      "name": "Nómina, Beneficios Sociales e IESS Ecuador 2026",
+      "number": 30,
+      "name": "Proyecto Integrador: Certificación Máxima de Súper Analista",
       "clasesCount": 3,
       "manuals": [
         {
           "number": 1,
           "id": "mod30-c1",
-          "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos"
+          "title": "Caso Integrador: Puesta en Marcha"
         },
         {
           "number": 2,
           "id": "mod30-c2",
-          "title": "Décimos, Fondos de Reserva y Provisiones de Ley"
+          "title": "Caso Integrador: Aprovisionamiento"
         },
         {
           "number": 3,
           "id": "mod30-c3",
-          "title": "Contabilidad de la Nómina y Liquidación de Aportes al IESS"
+          "title": "Caso Integrador: Consultas SQL"
         }
       ]
     }

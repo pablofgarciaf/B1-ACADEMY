@@ -63,96 +63,96 @@
     {
       "id": "mod3-c1",
       "number": 1,
-      "title": "Ciclo Procure-to-Pay",
+      "title": "Configuración de Activos Fijos",
       "description": "",
-      "durationMinutes": 22
+      "durationMinutes": 16
     },
     {
       "id": "mod3-c2",
       "number": 2,
-      "title": "Transacciones de Almacén",
+      "title": "Alta y Datos Maestros del Activo",
       "description": "",
-      "durationMinutes": 22
+      "durationMinutes": 19
     },
     {
       "id": "mod3-c3",
       "number": 3,
-      "title": "Ubicaciones (Bin Locations)",
+      "title": "Depreciación y Ajustes",
       "description": "",
-      "durationMinutes": 15
+      "durationMinutes": 16
     },
     {
       "id": "mod3-c4",
       "number": 4,
-      "title": "Trazabilidad por Lotes y Series",
+      "title": "Bajas y Monitoreo de Activos",
       "description": "",
-      "durationMinutes": 18
-    },
-    {
-      "id": "mod3-c5",
-      "number": 5,
-      "title": "Costos de Importación",
-      "description": "",
-      "durationMinutes": 12
+      "durationMinutes": 14
     }
   ],
   "mod-4": [
     {
       "id": "mod4-c1",
       "number": 1,
-      "title": "El Ciclo de Ventas Order-to-Cash",
+      "title": "Numeración de Documentos y Datos Maestros",
       "description": "",
-      "durationMinutes": 21
+      "durationMinutes": 31
     },
     {
       "id": "mod4-c2",
       "number": 2,
-      "title": "Ofertas y Pedidos de Cliente",
+      "title": "Diseños de Impresión",
       "description": "",
-      "durationMinutes": 20
+      "durationMinutes": 17
     },
     {
       "id": "mod4-c3",
       "number": 3,
-      "title": "Entregas y Facturación",
+      "title": "Correo Electrónico y Plantillas de Interfaz",
       "description": "",
-      "durationMinutes": 21
+      "durationMinutes": 25
     },
     {
       "id": "mod4-c4",
       "number": 4,
-      "title": "Devoluciones y Notas de Crédito",
+      "title": "Propiedad de los Datos y Soporte",
       "description": "",
-      "durationMinutes": 17
+      "durationMinutes": 25
+    },
+    {
+      "id": "mod4-c5",
+      "number": 5,
+      "title": "Usuarios, Grupos y Configuraciones Clave",
+      "description": "",
+      "durationMinutes": 16
+    },
+    {
+      "id": "mod4-c6",
+      "number": 6,
+      "title": "Mensajes, Alertas y Autorizaciones",
+      "description": "",
+      "durationMinutes": 20
     }
   ],
   "mod-5": [
     {
       "id": "mod5-c1",
       "number": 1,
-      "title": "Listas de Precios y su Actualización",
-      "description": "",
-      "durationMinutes": 16
+      "title": "Ficha del Empleado, Estructura Organizacional y Costo Laboral",
+      "description": "Alta de empleados, datos personales, organigrama y asignación de cargos.",
+      "durationMinutes": 15
     },
     {
       "id": "mod5-c2",
       "number": 2,
-      "title": "Descuentos por Período y Volumen",
-      "description": "",
-      "durationMinutes": 25
+      "title": "Gestión de Contratos, Ausencias y Políticas Salariales",
+      "description": "Contratos laborales, permisos, licencias y comisiones por ventas.",
+      "durationMinutes": 14
     },
     {
       "id": "mod5-c3",
       "number": 3,
-      "title": "Grupos de Descuento",
-      "description": "",
-      "durationMinutes": 21
-    },
-    {
-      "id": "mod5-c4",
-      "number": 4,
-      "title": "Precios Especiales para Socios",
-      "description": "",
+      "title": "Evaluación de Desempeño, Finiquito y Salida del Personal",
+      "description": "Actas de finiquito, causales de terminación y liquidación laboral.",
       "durationMinutes": 16
     }
   ],
@@ -160,529 +160,450 @@
     {
       "id": "mod6-c1",
       "number": 1,
-      "title": "Gestión de Relaciones con Clientes",
-      "description": "",
-      "durationMinutes": 20
+      "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos",
+      "description": "Cálculo de sueldo neto, horas extras al 50% y 100%, anticipos y deducciones.",
+      "durationMinutes": 14
     },
     {
       "id": "mod6-c2",
       "number": 2,
-      "title": "Oportunidades y Actividades de Venta",
-      "description": "",
-      "durationMinutes": 20
+      "title": "Décimos, Fondos de Reserva y Provisiones de Ley",
+      "description": "Cálculo y mensualización de décimo tercero, décimo cuarto y fondos de reserva.",
+      "durationMinutes": 12
     },
     {
       "id": "mod6-c3",
       "number": 3,
-      "title": "Llamadas de Servicio",
-      "description": "",
-      "durationMinutes": 12
-    },
-    {
-      "id": "mod6-c4",
-      "number": 4,
-      "title": "Tarjetas de Equipo y Garantías",
-      "description": "",
-      "durationMinutes": 19
+      "title": "Contabilidad de la Nómina y Liquidación de Aportes al IESS",
+      "description": "Asiento contable centralizado, planillas IESS y archivo bancario de acreditación.",
+      "durationMinutes": 18
     }
   ],
   "mod-7": [
     {
       "id": "mod7-c1",
       "number": 1,
-      "title": "Plan de Cuentas",
+      "title": "Ciclo Procure-to-Pay",
       "description": "",
-      "durationMinutes": 24
+      "durationMinutes": 22
     },
     {
       "id": "mod7-c2",
       "number": 2,
-      "title": "Cuentas de Mayor por Defecto",
+      "title": "Transacciones de Almacén",
       "description": "",
       "durationMinutes": 22
     },
     {
       "id": "mod7-c3",
       "number": 3,
-      "title": "Asientos Contables Manuales y Automáticos",
+      "title": "Ubicaciones (Bin Locations)",
       "description": "",
-      "durationMinutes": 16
+      "durationMinutes": 15
     },
     {
       "id": "mod7-c4",
       "number": 4,
-      "title": "Períodos Contables y Cierre",
+      "title": "Trazabilidad por Lotes y Series",
       "description": "",
-      "durationMinutes": 17
+      "durationMinutes": 18
+    },
+    {
+      "id": "mod7-c5",
+      "number": 5,
+      "title": "Costos de Importación",
+      "description": "",
+      "durationMinutes": 12
     }
   ],
   "mod-8": [
     {
       "id": "mod8-c1",
       "number": 1,
-      "title": "Pagos Recibidos y Efectuados",
-      "description": "",
-      "durationMinutes": 21
-    },
-    {
-      "id": "mod8-c2",
-      "number": 2,
-      "title": "Asistente de Pagos",
-      "description": "",
-      "durationMinutes": 30
-    },
-    {
-      "id": "mod8-c3",
-      "number": 3,
-      "title": "Conciliación Bancaria e Interna",
-      "description": "",
-      "durationMinutes": 24
-    },
-    {
-      "id": "mod8-c4",
-      "number": 4,
-      "title": "Antigüedad de Saldos y Cobranza",
-      "description": "",
-      "durationMinutes": 17
-    },
-    {
-      "id": "mod8-c5",
-      "number": 5,
-      "title": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos",
-      "description": "",
-      "durationMinutes": 12
-    }
-  ],
-  "mod-9": [
-    {
-      "id": "mod9-c1",
-      "number": 1,
-      "title": "Configuración de Activos Fijos",
-      "description": "",
-      "durationMinutes": 16
-    },
-    {
-      "id": "mod9-c2",
-      "number": 2,
-      "title": "Alta y Datos Maestros del Activo",
-      "description": "",
-      "durationMinutes": 19
-    },
-    {
-      "id": "mod9-c3",
-      "number": 3,
-      "title": "Depreciación y Ajustes",
-      "description": "",
-      "durationMinutes": 16
-    },
-    {
-      "id": "mod9-c4",
-      "number": 4,
-      "title": "Bajas y Monitoreo de Activos",
-      "description": "",
-      "durationMinutes": 14
-    }
-  ],
-  "mod-10": [
-    {
-      "id": "mod10-c1",
-      "number": 1,
-      "title": "Planificación de Necesidades MRP",
-      "description": "",
-      "durationMinutes": 20
-    },
-    {
-      "id": "mod10-c2",
-      "number": 2,
-      "title": "Pronósticos de Demanda",
-      "description": "",
-      "durationMinutes": 19
-    },
-    {
-      "id": "mod10-c3",
-      "number": 3,
-      "title": "MRP y Listas de Materiales",
-      "description": "",
-      "durationMinutes": 23
-    },
-    {
-      "id": "mod10-c4",
-      "number": 4,
-      "title": "Recomendaciones y Órdenes Sugeridas",
-      "description": "",
-      "durationMinutes": 20
-    }
-  ],
-  "mod-11": [
-    {
-      "id": "mod11-c1",
-      "number": 1,
-      "title": "Listas de Materiales",
-      "description": "",
-      "durationMinutes": 31
-    },
-    {
-      "id": "mod11-c2",
-      "number": 2,
-      "title": "Órdenes de Producción",
-      "description": "",
-      "durationMinutes": 16
-    },
-    {
-      "id": "mod11-c3",
-      "number": 3,
-      "title": "Costos de Producción",
-      "description": "",
-      "durationMinutes": 17
-    },
-    {
-      "id": "mod11-c4",
-      "number": 4,
-      "title": "Gestión y Facturación de Proyectos",
-      "description": "",
-      "durationMinutes": 10
-    }
-  ],
-  "mod-12": [
-    {
-      "id": "mod12-c1",
-      "number": 1,
-      "title": "Consultas SQL con el Query Manager",
-      "description": "",
-      "durationMinutes": 21
-    },
-    {
-      "id": "mod12-c2",
-      "number": 2,
-      "title": "Alertas y Procesos de Aprobación",
-      "description": "",
-      "durationMinutes": 19
-    },
-    {
-      "id": "mod12-c3",
-      "number": 3,
-      "title": "Campos y Valores Definidos por el Usuario",
-      "description": "",
-      "durationMinutes": 27
-    },
-    {
-      "id": "mod12-c4",
-      "number": 4,
-      "title": "Migración de Datos con DTW",
-      "description": "",
-      "durationMinutes": 16
-    }
-  ],
-  "mod-13": [
-    {
-      "id": "mod13-c1",
-      "number": 1,
       "title": "Solicitudes de Compra y Cotizaciones",
       "description": "",
       "durationMinutes": 16
     },
     {
-      "id": "mod13-c2",
+      "id": "mod8-c2",
       "number": 2,
       "title": "Compras de Servicios",
       "description": "",
       "durationMinutes": 15
     },
     {
-      "id": "mod13-c3",
+      "id": "mod8-c3",
       "number": 3,
       "title": "Devoluciones y Notas de Crédito de Proveedor",
       "description": "",
       "durationMinutes": 22
     }
   ],
-  "mod-14": [
+  "mod-9": [
     {
-      "id": "mod14-c1",
+      "id": "mod9-c1",
       "number": 1,
       "title": "Unidades de Medida por Peso y Volumen",
       "description": "",
       "durationMinutes": 14
     },
     {
-      "id": "mod14-c2",
+      "id": "mod9-c2",
       "number": 2,
       "title": "Unidades de Empaquetado",
       "description": "",
       "durationMinutes": 12
     },
     {
-      "id": "mod14-c3",
+      "id": "mod9-c3",
       "number": 3,
       "title": "Métodos de Valoración de Inventario",
       "description": "",
       "durationMinutes": 16
     },
     {
-      "id": "mod14-c4",
+      "id": "mod9-c4",
       "number": 4,
       "title": "Ajuste de Costos de Inventario",
       "description": "",
       "durationMinutes": 22
     }
   ],
-  "mod-15": [
+  "mod-10": [
     {
-      "id": "mod15-c1",
+      "id": "mod10-c1",
       "number": 1,
       "title": "Operación Diaria con Ubicaciones",
       "description": "",
       "durationMinutes": 9
     },
     {
-      "id": "mod15-c2",
+      "id": "mod10-c2",
       "number": 2,
       "title": "Reglas y Gestión de Ubicaciones",
       "description": "",
       "durationMinutes": 17
     },
     {
-      "id": "mod15-c3",
+      "id": "mod10-c3",
       "number": 3,
       "title": "Informes de Ubicaciones",
       "description": "",
       "durationMinutes": 22
     },
     {
-      "id": "mod15-c4",
+      "id": "mod10-c4",
       "number": 4,
       "title": "Inventario Físico: Conteo y Ajuste",
       "description": "",
       "durationMinutes": 25
     }
   ],
-  "mod-16": [
+  "mod-11": [
     {
-      "id": "mod16-c1",
+      "id": "mod11-c1",
       "number": 1,
       "title": "Picking y Packing para Producción",
       "description": "",
       "durationMinutes": 19
     },
     {
-      "id": "mod16-c2",
+      "id": "mod11-c2",
       "number": 2,
       "title": "Picking y Packing para Transferencias",
       "description": "",
       "durationMinutes": 16
     }
   ],
+  "mod-12": [
+    {
+      "id": "mod12-c1",
+      "number": 1,
+      "title": "El Ciclo de Ventas Order-to-Cash",
+      "description": "",
+      "durationMinutes": 21
+    },
+    {
+      "id": "mod12-c2",
+      "number": 2,
+      "title": "Ofertas y Pedidos de Cliente",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod12-c3",
+      "number": 3,
+      "title": "Entregas y Facturación",
+      "description": "",
+      "durationMinutes": 21
+    },
+    {
+      "id": "mod12-c4",
+      "number": 4,
+      "title": "Devoluciones y Notas de Crédito",
+      "description": "",
+      "durationMinutes": 17
+    }
+  ],
+  "mod-13": [
+    {
+      "id": "mod13-c1",
+      "number": 1,
+      "title": "Listas de Precios y su Actualización",
+      "description": "",
+      "durationMinutes": 16
+    },
+    {
+      "id": "mod13-c2",
+      "number": 2,
+      "title": "Descuentos por Período y Volumen",
+      "description": "",
+      "durationMinutes": 25
+    },
+    {
+      "id": "mod13-c3",
+      "number": 3,
+      "title": "Grupos de Descuento",
+      "description": "",
+      "durationMinutes": 21
+    },
+    {
+      "id": "mod13-c4",
+      "number": 4,
+      "title": "Precios Especiales para Socios",
+      "description": "",
+      "durationMinutes": 16
+    }
+  ],
+  "mod-14": [
+    {
+      "id": "mod14-c1",
+      "number": 1,
+      "title": "Gestión de Relaciones con Clientes",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod14-c2",
+      "number": 2,
+      "title": "Oportunidades y Actividades de Venta",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod14-c3",
+      "number": 3,
+      "title": "Llamadas de Servicio",
+      "description": "",
+      "durationMinutes": 12
+    },
+    {
+      "id": "mod14-c4",
+      "number": 4,
+      "title": "Tarjetas de Equipo y Garantías",
+      "description": "",
+      "durationMinutes": 19
+    }
+  ],
+  "mod-15": [
+    {
+      "id": "mod15-c1",
+      "number": 1,
+      "title": "Planificación de Necesidades MRP",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod15-c2",
+      "number": 2,
+      "title": "Pronósticos de Demanda",
+      "description": "",
+      "durationMinutes": 19
+    },
+    {
+      "id": "mod15-c3",
+      "number": 3,
+      "title": "MRP y Listas de Materiales",
+      "description": "",
+      "durationMinutes": 23
+    },
+    {
+      "id": "mod15-c4",
+      "number": 4,
+      "title": "Recomendaciones y Órdenes Sugeridas",
+      "description": "",
+      "durationMinutes": 20
+    }
+  ],
+  "mod-16": [
+    {
+      "id": "mod16-c1",
+      "number": 1,
+      "title": "Listas de Materiales",
+      "description": "",
+      "durationMinutes": 31
+    },
+    {
+      "id": "mod16-c2",
+      "number": 2,
+      "title": "Órdenes de Producción",
+      "description": "",
+      "durationMinutes": 16
+    },
+    {
+      "id": "mod16-c3",
+      "number": 3,
+      "title": "Costos de Producción",
+      "description": "",
+      "durationMinutes": 17
+    },
+    {
+      "id": "mod16-c4",
+      "number": 4,
+      "title": "Gestión y Facturación de Proyectos",
+      "description": "",
+      "durationMinutes": 10
+    }
+  ],
   "mod-17": [
     {
       "id": "mod17-c1",
-      "number": 1,
-      "title": "Monedas y Tipos de Cambio",
-      "description": "",
-      "durationMinutes": 14
-    },
-    {
-      "id": "mod17-c2",
-      "number": 2,
-      "title": "Determinación Avanzada de Cuentas",
-      "description": "",
-      "durationMinutes": 20
-    },
-    {
-      "id": "mod17-c3",
-      "number": 3,
-      "title": "Documentos Preliminares de Asiento",
-      "description": "",
-      "durationMinutes": 36
-    },
-    {
-      "id": "mod17-c4",
-      "number": 4,
-      "title": "Informes Financieros y Flujo de Caja",
-      "description": "",
-      "durationMinutes": 25
-    }
-  ],
-  "mod-18": [
-    {
-      "id": "mod18-c1",
-      "number": 1,
-      "title": "Contabilidad de Costos",
-      "description": "",
-      "durationMinutes": 20
-    },
-    {
-      "id": "mod18-c2",
-      "number": 2,
-      "title": "Centros de Costo y Dimensiones",
-      "description": "",
-      "durationMinutes": 20
-    },
-    {
-      "id": "mod18-c3",
-      "number": 3,
-      "title": "Gestión de Presupuestos",
-      "description": "",
-      "durationMinutes": 20
-    }
-  ],
-  "mod-19": [
-    {
-      "id": "mod19-c1",
-      "number": 1,
-      "title": "Facturación Electrónica 2026: Transmisión y Anulación",
-      "description": "",
-      "durationMinutes": 16
-    },
-    {
-      "id": "mod19-c2",
-      "number": 2,
-      "title": "Retención en la Fuente del Impuesto a la Renta",
-      "description": "",
-      "durationMinutes": 17
-    },
-    {
-      "id": "mod19-c3",
-      "number": 3,
-      "title": "Retención del IVA y Comprobante de Retención",
-      "description": "",
-      "durationMinutes": 17
-    },
-    {
-      "id": "mod19-c4",
-      "number": 4,
-      "title": "Retenciones en la Factura de Proveedores de SAP B1",
-      "description": "",
-      "durationMinutes": 10
-    },
-    {
-      "id": "mod19-c5",
-      "number": 5,
-      "title": "Declaraciones Mensuales: Formularios 103, 104 y ATS",
-      "description": "",
-      "durationMinutes": 13
-    },
-    {
-      "id": "mod19-c6",
-      "number": 6,
-      "title": "Nota de Débito, Guía de Remisión y Liquidación de Compra",
-      "description": "",
-      "durationMinutes": 17
-    },
-    {
-      "id": "mod19-c7",
-      "number": 7,
-      "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
-      "description": "",
-      "durationMinutes": 20
-    },
-    {
-      "id": "mod19-c8",
-      "number": 8,
-      "title": "ICE: Impuesto a los Consumos Especiales",
-      "description": "",
-      "durationMinutes": 18
-    },
-    {
-      "id": "mod19-c9",
-      "number": 9,
-      "title": "ISD: Pagos al Exterior y Salida de Divisas",
-      "description": "",
-      "durationMinutes": 14
-    },
-    {
-      "id": "mod19-c10",
-      "number": 10,
-      "title": "Retenciones que te Hacen tus Clientes: Crédito Tributario",
-      "description": "",
-      "durationMinutes": 9
-    }
-  ],
-  "mod-25": [
-    {
-      "id": "mod25-c1",
-      "number": 1,
-      "title": "Ficha del Empleado, Estructura Organizacional y Costo Laboral",
-      "description": "Alta de empleados, datos personales, organigrama y asignación de cargos.",
-      "durationMinutes": 15
-    },
-    {
-      "id": "mod25-c2",
-      "number": 2,
-      "title": "Gestión de Contratos, Ausencias y Políticas Salariales",
-      "description": "Contratos laborales, permisos, licencias y comisiones por ventas.",
-      "durationMinutes": 14
-    },
-    {
-      "id": "mod25-c3",
-      "number": 3,
-      "title": "Evaluación de Desempeño, Finiquito y Salida del Personal",
-      "description": "Actas de finiquito, causales de terminación y liquidación laboral.",
-      "durationMinutes": 16
-    }
-  ],
-  "mod-20": [
-    {
-      "id": "mod20-c1",
       "number": 1,
       "title": "Recursos de Producción",
       "description": "",
       "durationMinutes": 21
     },
     {
-      "id": "mod20-c2",
+      "id": "mod17-c2",
       "number": 2,
       "title": "Capacidad de Recursos",
       "description": "",
       "durationMinutes": 16
     },
     {
-      "id": "mod20-c3",
+      "id": "mod17-c3",
       "number": 3,
       "title": "Rutas de Producción (Routing)",
       "description": "",
       "durationMinutes": 20
     }
   ],
-  "mod-21": [
+  "mod-18": [
     {
-      "id": "mod21-c1",
+      "id": "mod18-c1",
       "number": 1,
-      "title": "Numeración de Documentos y Datos Maestros",
+      "title": "Plan de Cuentas",
       "description": "",
-      "durationMinutes": 31
+      "durationMinutes": 24
     },
     {
-      "id": "mod21-c2",
+      "id": "mod18-c2",
       "number": 2,
-      "title": "Diseños de Impresión",
+      "title": "Cuentas de Mayor por Defecto",
       "description": "",
-      "durationMinutes": 17
+      "durationMinutes": 22
     },
     {
-      "id": "mod21-c3",
+      "id": "mod18-c3",
       "number": 3,
-      "title": "Correo Electrónico y Plantillas de Interfaz",
-      "description": "",
-      "durationMinutes": 25
-    },
-    {
-      "id": "mod21-c4",
-      "number": 4,
-      "title": "Propiedad de los Datos y Soporte",
-      "description": "",
-      "durationMinutes": 25
-    },
-    {
-      "id": "mod21-c5",
-      "number": 5,
-      "title": "Usuarios, Grupos y Configuraciones Clave",
+      "title": "Asientos Contables Manuales y Automáticos",
       "description": "",
       "durationMinutes": 16
     },
     {
-      "id": "mod21-c6",
-      "number": 6,
-      "title": "Mensajes, Alertas y Autorizaciones",
+      "id": "mod18-c4",
+      "number": 4,
+      "title": "Períodos Contables y Cierre",
+      "description": "",
+      "durationMinutes": 17
+    }
+  ],
+  "mod-19": [
+    {
+      "id": "mod19-c1",
+      "number": 1,
+      "title": "Pagos Recibidos y Efectuados",
+      "description": "",
+      "durationMinutes": 21
+    },
+    {
+      "id": "mod19-c2",
+      "number": 2,
+      "title": "Asistente de Pagos",
+      "description": "",
+      "durationMinutes": 30
+    },
+    {
+      "id": "mod19-c3",
+      "number": 3,
+      "title": "Conciliación Bancaria e Interna",
+      "description": "",
+      "durationMinutes": 24
+    },
+    {
+      "id": "mod19-c4",
+      "number": 4,
+      "title": "Antigüedad de Saldos y Cobranza",
+      "description": "",
+      "durationMinutes": 17
+    },
+    {
+      "id": "mod19-c5",
+      "number": 5,
+      "title": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos",
+      "description": "",
+      "durationMinutes": 12
+    }
+  ],
+  "mod-20": [
+    {
+      "id": "mod20-c1",
+      "number": 1,
+      "title": "Monedas y Tipos de Cambio",
+      "description": "",
+      "durationMinutes": 14
+    },
+    {
+      "id": "mod20-c2",
+      "number": 2,
+      "title": "Determinación Avanzada de Cuentas",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod20-c3",
+      "number": 3,
+      "title": "Documentos Preliminares de Asiento",
+      "description": "",
+      "durationMinutes": 36
+    },
+    {
+      "id": "mod20-c4",
+      "number": 4,
+      "title": "Informes Financieros y Flujo de Caja",
+      "description": "",
+      "durationMinutes": 25
+    }
+  ],
+  "mod-21": [
+    {
+      "id": "mod21-c1",
+      "number": 1,
+      "title": "Contabilidad de Costos",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod21-c2",
+      "number": 2,
+      "title": "Centros de Costo y Dimensiones",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod21-c3",
+      "number": 3,
+      "title": "Gestión de Presupuestos",
       "description": "",
       "durationMinutes": 20
     }
@@ -691,157 +612,236 @@
     {
       "id": "mod22-c1",
       "number": 1,
-      "title": "Tablas Definidas por el Usuario",
+      "title": "Facturación Electrónica 2026: Transmisión y Anulación",
       "description": "",
-      "durationMinutes": 27
+      "durationMinutes": 16
     },
     {
       "id": "mod22-c2",
       "number": 2,
-      "title": "Introducción a SAP Analytics",
+      "title": "Retención en la Fuente del Impuesto a la Renta",
       "description": "",
-      "durationMinutes": 23
+      "durationMinutes": 17
+    },
+    {
+      "id": "mod22-c3",
+      "number": 3,
+      "title": "Retención del IVA y Comprobante de Retención",
+      "description": "",
+      "durationMinutes": 17
+    },
+    {
+      "id": "mod22-c4",
+      "number": 4,
+      "title": "Retenciones en la Factura de Proveedores de SAP B1",
+      "description": "",
+      "durationMinutes": 10
+    },
+    {
+      "id": "mod22-c5",
+      "number": 5,
+      "title": "Declaraciones Mensuales: Formularios 103, 104 y ATS",
+      "description": "",
+      "durationMinutes": 13
+    },
+    {
+      "id": "mod22-c6",
+      "number": 6,
+      "title": "Nota de Débito, Guía de Remisión y Liquidación de Compra",
+      "description": "",
+      "durationMinutes": 17
+    },
+    {
+      "id": "mod22-c7",
+      "number": 7,
+      "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
+      "description": "",
+      "durationMinutes": 20
+    },
+    {
+      "id": "mod22-c8",
+      "number": 8,
+      "title": "ICE: Impuesto a los Consumos Especiales",
+      "description": "",
+      "durationMinutes": 18
+    },
+    {
+      "id": "mod22-c9",
+      "number": 9,
+      "title": "ISD: Pagos al Exterior y Salida de Divisas",
+      "description": "",
+      "durationMinutes": 14
+    },
+    {
+      "id": "mod22-c10",
+      "number": 10,
+      "title": "Retenciones que te Hacen tus Clientes: Crédito Tributario",
+      "description": "",
+      "durationMinutes": 9
     }
   ],
   "mod-23": [
     {
       "id": "mod23-c1",
       "number": 1,
-      "title": "Metodología de Implementación",
+      "title": "Consultas SQL con el Query Manager",
       "description": "",
-      "durationMinutes": 12
+      "durationMinutes": 21
     },
     {
       "id": "mod23-c2",
       "number": 2,
-      "title": "Asistente Express de Configuración",
+      "title": "Alertas y Procesos de Aprobación",
       "description": "",
-      "durationMinutes": 18
+      "durationMinutes": 19
     },
     {
       "id": "mod23-c3",
       "number": 3,
-      "title": "Carga de Saldos Iniciales",
+      "title": "Campos y Valores Definidos por el Usuario",
       "description": "",
-      "durationMinutes": 18
+      "durationMinutes": 27
     },
     {
       "id": "mod23-c4",
       "number": 4,
-      "title": "Copia Rápida e Importación de Documentos",
+      "title": "Migración de Datos con DTW",
       "description": "",
-      "durationMinutes": 22
+      "durationMinutes": 16
     }
   ],
   "mod-24": [
     {
       "id": "mod24-c1",
       "number": 1,
-      "title": "Caso Integrador: Puesta en Marcha",
-      "description": "",
-      "durationMinutes": 17
-    },
-    {
-      "id": "mod24-c2",
-      "number": 2,
-      "title": "Caso Integrador: Aprovisionamiento",
+      "title": "Tablas Definidas por el Usuario",
       "description": "",
       "durationMinutes": 27
     },
     {
-      "id": "mod24-c3",
-      "number": 3,
-      "title": "Caso Integrador: Consultas SQL",
+      "id": "mod24-c2",
+      "number": 2,
+      "title": "Introducción a SAP Analytics",
       "description": "",
-      "durationMinutes": 57
+      "durationMinutes": 23
     }
   ],
-  "mod-26": [
+  "mod-25": [
     {
-      "id": "mod26-c1",
+      "id": "mod25-c1",
       "number": 1,
       "title": "El Marco Metodológico: De Waterfall a SAP Activate y AIP",
       "description": "",
       "durationMinutes": 8
     },
     {
-      "id": "mod26-c2",
+      "id": "mod25-c2",
       "number": 2,
       "title": "Talleres de Exploración (Explore) y Análisis Fit / Gap",
       "description": "",
       "durationMinutes": 7
     },
     {
-      "id": "mod26-c3",
+      "id": "mod25-c3",
       "number": 3,
       "title": "Fase de Realización: Parametrización y Migración Golden DB",
       "description": "",
       "durationMinutes": 7
     },
     {
-      "id": "mod26-c4",
+      "id": "mod25-c4",
       "number": 4,
       "title": "Estrategia de Salida en Vivo (Cutover), Go-Live e Hypercare",
       "description": "",
       "durationMinutes": 7
     }
   ],
-  "mod-27": [
+  "mod-26": [
     {
-      "id": "mod27-c1",
+      "id": "mod26-c1",
       "number": 1,
       "title": "Fundamentos de BPMN 2.0 para Consultores ERP",
       "description": "",
       "durationMinutes": 7
     },
     {
-      "id": "mod27-c2",
+      "id": "mod26-c2",
       "number": 2,
       "title": "Mapeo del Estado Actual (AS-IS) y Detección de Ineficiencias",
       "description": "",
       "durationMinutes": 7
     },
     {
-      "id": "mod27-c3",
+      "id": "mod26-c3",
       "number": 3,
       "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP",
       "description": "",
       "durationMinutes": 7
     },
     {
-      "id": "mod27-c4",
+      "id": "mod26-c4",
       "number": 4,
       "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1",
       "description": "",
       "durationMinutes": 6
     }
   ],
-  "mod-28": [
+  "mod-27": [
     {
-      "id": "mod28-c1",
+      "id": "mod27-c1",
       "number": 1,
       "title": "Técnicas de Elicitación de Requisitos y Entrevistas Clave",
       "description": "",
       "durationMinutes": 7
     },
     {
-      "id": "mod28-c2",
+      "id": "mod27-c2",
       "number": 2,
       "title": "El Business Blueprint (BBD) y Business Requirements Document (BRD)",
       "description": "",
       "durationMinutes": 6
     },
     {
-      "id": "mod28-c3",
+      "id": "mod27-c3",
       "number": 3,
       "title": "Historias de Usuario, Criterios Gherkin y Matriz RTM",
       "description": "",
       "durationMinutes": 6
     },
     {
-      "id": "mod28-c4",
+      "id": "mod27-c4",
       "number": 4,
       "title": "De Requerimiento a Configuración: Campos UDF y Valores Válidos",
+      "description": "",
+      "durationMinutes": 7
+    }
+  ],
+  "mod-28": [
+    {
+      "id": "mod28-c1",
+      "number": 1,
+      "title": "Gestión de Stakeholders y Control de Cambios (Change Requests)",
+      "description": "",
+      "durationMinutes": 7
+    },
+    {
+      "id": "mod28-c2",
+      "number": 2,
+      "title": "Gestión del Cambio Organizacional y Estrategia Train the Trainer",
+      "description": "",
+      "durationMinutes": 7
+    },
+    {
+      "id": "mod28-c3",
+      "number": 3,
+      "title": "Estrategia y Elaboración de Guiones de Prueba UAT (Test Scripts)",
+      "description": "",
+      "durationMinutes": 7
+    },
+    {
+      "id": "mod28-c4",
+      "number": 4,
+      "title": "Ejecución de Ciclo UAT, Validación Contable y Acta de Go-Live",
       "description": "",
       "durationMinutes": 7
     }
@@ -850,53 +850,53 @@
     {
       "id": "mod29-c1",
       "number": 1,
-      "title": "Gestión de Stakeholders y Control de Cambios (Change Requests)",
+      "title": "Metodología de Implementación",
       "description": "",
-      "durationMinutes": 7
+      "durationMinutes": 12
     },
     {
       "id": "mod29-c2",
       "number": 2,
-      "title": "Gestión del Cambio Organizacional y Estrategia Train the Trainer",
+      "title": "Asistente Express de Configuración",
       "description": "",
-      "durationMinutes": 7
+      "durationMinutes": 18
     },
     {
       "id": "mod29-c3",
       "number": 3,
-      "title": "Estrategia y Elaboración de Guiones de Prueba UAT (Test Scripts)",
+      "title": "Carga de Saldos Iniciales",
       "description": "",
-      "durationMinutes": 7
+      "durationMinutes": 18
     },
     {
       "id": "mod29-c4",
       "number": 4,
-      "title": "Ejecución de Ciclo UAT, Validación Contable y Acta de Go-Live",
+      "title": "Copia Rápida e Importación de Documentos",
       "description": "",
-      "durationMinutes": 7
+      "durationMinutes": 22
     }
   ],
   "mod-30": [
     {
       "id": "mod30-c1",
       "number": 1,
-      "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos",
-      "description": "Cálculo de sueldo neto, horas extras al 50% y 100%, anticipos y deducciones.",
-      "durationMinutes": 14
+      "title": "Caso Integrador: Puesta en Marcha",
+      "description": "",
+      "durationMinutes": 17
     },
     {
       "id": "mod30-c2",
       "number": 2,
-      "title": "Décimos, Fondos de Reserva y Provisiones de Ley",
-      "description": "Cálculo y mensualización de décimo tercero, décimo cuarto y fondos de reserva.",
-      "durationMinutes": 12
+      "title": "Caso Integrador: Aprovisionamiento",
+      "description": "",
+      "durationMinutes": 27
     },
     {
       "id": "mod30-c3",
       "number": 3,
-      "title": "Contabilidad de la Nómina y Liquidación de Aportes al IESS",
-      "description": "Asiento contable centralizado, planillas IESS y archivo bancario de acreditación.",
-      "durationMinutes": 18
+      "title": "Caso Integrador: Consultas SQL",
+      "description": "",
+      "durationMinutes": 57
     }
   ]
 }
