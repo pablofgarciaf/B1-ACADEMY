@@ -2,7 +2,7 @@
 
 ## 📌 1. Visión y Propósito del Sistema
 
-**SAP Academy (Heinsohn B1)** es una plataforma de ingeniería de aprendizaje y certificación profesional de élite en **SAP Business One 10.0 (HANA)**. Su arquitectura está diseñada para superar la pasividad de los cursos tradicionales mediante un **entorno inmersivo, práctico y guiado por Inteligencia Artificial**.
+**SAP Academy (B1 Academy B1)** es una plataforma de ingeniería de aprendizaje y certificación profesional de élite en **SAP Business One 10.0 (HANA)**. Su arquitectura está diseñada para superar la pasividad de los cursos tradicionales mediante un **entorno inmersivo, práctico y guiado por Inteligencia Artificial**.
 
 El sistema integra:
 1. **Biblioteca Universal de Manuales Oficiales** organizados en 23 categorías operativas.

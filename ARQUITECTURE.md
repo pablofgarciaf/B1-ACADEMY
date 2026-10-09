@@ -275,7 +275,7 @@ usuarios/
       ├── cedula: string
       ├── role: 'super' | 'admin' | 'docente' | 'estudiante' | 'consultor_premium' | 'regular'
       ├── status: 'active' | 'suspended'
-      ├── assignedTracks: string[] // ['sap-b1-core', 'sap-loc-ec', 'heinsohn-nomina', ...]
+      ├── assignedTracks: string[] // ['sap-b1-core', 'sap-loc-ec', 'b1-academy-nomina', ...]
       ├── createdAt: ISO string
       ├── updatedAt: ISO string
       ├── passwordChanged: boolean

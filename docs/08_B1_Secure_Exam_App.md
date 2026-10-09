@@ -2,7 +2,7 @@
 
 ## 📌 Visión General
 
-Este documento define la arquitectura técnica del ecosistema de evaluación y certificación para **SAP Academy (Heinsohn B1)**, resolviendo la necesidad de impedir el uso no autorizado de asistentes de Inteligencia Artificial (ChatGPT, Copilot, etc.) o trampas durante los exámenes oficiales.
+Este documento define la arquitectura técnica del ecosistema de evaluación y certificación para **SAP Academy (B1 Academy B1)**, resolviendo la necesidad de impedir el uso no autorizado de asistentes de Inteligencia Artificial (ChatGPT, Copilot, etc.) o trampas durante los exámenes oficiales.
 
 Se adopta un **modelo de dos niveles (Dual-Tier)**:
 1. **Nivel 1 (Web):** Entorno de entrenamiento y práctica interactiva con el **Simulador SAP B1** y el **Examen con Profesor Evaluador IA** (límite de 35 segundos por pregunta).
