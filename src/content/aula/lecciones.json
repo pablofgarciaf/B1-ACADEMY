@@ -17,7 +17,7 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "SAP Business One es un sistema de gestión empresarial diseñado para pequeñas y medianas empresas. Integra finanzas, compras, inventario, ventas y servicio en una única base de datos. Permite operar en tiempo real, eliminar duplicidad de datos y tomar decisiones basadas en información confiable. Es ideal para empresas que buscan control total y eficiencia operativa desde una sola plataforma.",
+        "script_text": "¡Bienvenido a B1 Academy y a la primera lección de este módulo! SAP Business One es un sistema de gestión empresarial diseñado para pequeñas y medianas empresas. Integra finanzas, compras, inventario, ventas y servicio en una única base de datos. Permite operar en tiempo real, eliminar duplicidad de datos y tomar decisiones basadas en información confiable. Es ideal para empresas que buscan control total y eficiencia operativa desde una sola plataforma.",
         "step_guide": null
       },
       {
@@ -178,7 +178,7 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Bienvenido al curso de Primeros Pasos en SAP Business One. Aprenderás a iniciar sesión, navegar por el sistema y personalizar tu espacio de trabajo. Esta clase es la base para usar el software con confianza en tu día a día.",
+        "script_text": "En esta lección aprenderás a iniciar sesión en SAP Business One, navegar por el sistema y personalizar tu espacio de trabajo. Esta clase es la base para usar el software con confianza en tu día a día.",
         "step_guide": null
       },
       {

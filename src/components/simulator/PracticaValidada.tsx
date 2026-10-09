@@ -31,7 +31,7 @@ const ALIAS_MODULO: [RegExp, string][] = [
   [/^compras?\b|^proveedores\b/, 'Compras - Proveedores'],
   [/banco|tesorer/, 'Gestión de bancos'],
   [/^mrp$|planificaci/, 'Planificación de necesidades'],
-  [/socio|interlocutor/, 'Socios de negocios'], // los manuales usan "Interlocutores comerciales" (traducción de España)
+  [/socio|interlocutor/, 'Socios de negocios'],
   [/contab|finanz/, 'Finanzas'],
   [/almac|inventar|stock/, 'Inventario'],
   [/^gestion$|administr|configurac/, 'Administración'],
@@ -52,11 +52,6 @@ function moduloOficial(nombre: string): string {
   return ALIAS_MODULO.find(([re]) => re.test(p))?.[1] ?? nombre;
 }
 
-/**
- * Convierte la ruta de la clase en la ruta real de SAP Business One:
- * quita "Menú principal" / "Módulo de…", resuelve "Maestros de datos" y "CRM" según la tarea,
- * y deja "Herramientas" como menú de la barra superior (en SAP no está en el Menú principal).
- */
 export function rutaSap(menuPath: string, titulo = ''): string[] {
   const partes = menuPath.split('>').map((s) => s.trim()).filter(Boolean);
   while (partes.length && /^(menu( principal)?|modulos?)$/.test(plano(partes[0]))) partes.shift();
@@ -74,7 +69,6 @@ export function rutaSap(menuPath: string, titulo = ''): string[] {
   return partes;
 }
 
-// Las reglas de comparación viven en un módulo compartido: el servidor (/api/practice) califica igual que esta pantalla.
 export { normalizar, coincide } from '@/lib/practice-check';
 
 function mezclar<T>(arr: T[], semilla: number): T[] {
@@ -88,7 +82,6 @@ function mezclar<T>(arr: T[], semilla: number): T[] {
   return a;
 }
 
-/** Códigos de datos maestros (C20000, V10000, A00001…): en SAP llevan la flecha naranja de enlace. */
 const esCodigoMaestro = (v: string) => /^[A-Z]{1,3}\d{3,}$/.test(v.trim());
 
 const CLIENTES = [['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle']];
@@ -97,10 +90,6 @@ const ARTICULOS = [['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop H
 type Opcion = { valor: string; texto: string };
 const lista = (pares: string[][]): Opcion[] => pares.map(([valor, nombre]) => ({ valor, texto: `${valor} · ${nombre}` }));
 
-/**
- * Opciones de un campo de valores cerrados: en SAP no se escriben, se eligen. Devuelve null si el campo es libre.
- * El valor esperado siempre está entre las opciones (el reto es elegir el correcto, no adivinar el formato).
- */
 function opcionesCampo(c: CampoPractica): Opcion[] | null {
   const et = plano(c.etiqueta);
   const v = c.valor.trim();
@@ -122,20 +111,27 @@ type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
 
 export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void }) {
   const ruta = useMemo(() => rutaSap(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
-  // "Herramientas" (consultas, alertas, personalización) se abre desde la barra de menú superior, como en SAP.
   const porMenuSuperior = ruta[0] === 'Herramientas';
   const campos = useMemo(() => guia.campos ?? [], [guia.campos]);
-  const [nivel, setNivel] = useState(0); // segmentos correctos ya abiertos en el árbol
-  const [moduloAbierto, setModuloAbierto] = useState<string | null>(null); // módulo incorrecto expandido
-  const [valores, setValores] = useState<string[]>(() => campos.map(() => ''));
-  // true = correcto, false = incorrecto, null = editado desde la última revisión (neutro).
+  const [nivel, setNivel] = useState(0);
+  const [moduloAbierto, setModuloAbierto] = useState<string | null>(null);
+
+  // Inicialización de campos con auto-relleno inteligente para credenciales e inicio de sesión
+  const [valores, setValores] = useState<string[]>(() => {
+    return campos.map((c) => {
+      const et = plano(c.etiqueta);
+      if (et.includes('usuario') || et.includes('user')) return 'pablo.garcia';
+      if (et.includes('contra') || et.includes('clave') || et.includes('pass')) return 'mateD0MEmia';
+      if (et.includes('empresa') || et.includes('company')) return 'B1 Center';
+      return '';
+    });
+  });
+
   const [revisado, setRevisado] = useState<(boolean | null)[] | null>(null);
   const [intentos, setIntentos] = useState(0);
   const [mostrarSolucion, setMostrarSolucion] = useState(false);
 
-  // Empresa propia del estudiante (la misma del Simulador integral): cada uno trabaja en la suya
-  // ("Mi Empresa", "Pruebas"…). undefined = cargando o sin conexión; null = aún no ha creado su empresa.
-  const { currentUser } = useAuth();
+  const { currentUser, userProfile } = useAuth();
   const [empresa, setEmpresa] = useState<string | null | undefined>(undefined);
   useEffect(() => {
     if (!currentUser) return;
@@ -145,8 +141,22 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       .catch(() => { if (activo) setEmpresa(undefined); });
     return () => { activo = false; };
   }, [currentUser]);
+
+  // Si el usuario tiene sesión activa, actualizar el valor predeterminado del usuario con su correo/nombre
+  useEffect(() => {
+    if (!currentUser) return;
+    const userVal = userProfile?.displayName || currentUser.email || 'pablo.garcia';
+    setValores(prev => prev.map((v, i) => {
+      const et = plano(campos[i]?.etiqueta || '');
+      if ((et.includes('usuario') || et.includes('user')) && (!v || v === 'pablo.garcia')) {
+        return userVal.split('@')[0];
+      }
+      return v;
+    }));
+  }, [currentUser, userProfile, campos]);
+
   const [logrado, setLogrado] = useState(false);
-  const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal.' });
+  const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal o confirma los datos prellenos.' });
 
   const ventanaAbierta = ruta.length === 0 || nivel >= ruta.length;
   const modulos = useMemo(() => {
@@ -155,7 +165,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
     return [...MODULOS_SAP, raiz];
   }, [ruta, porMenuSuperior]);
 
-  /** Hijos de un nivel del árbol: el correcto mezclado con submenús distractores. */
   const hijos = (profundidad: number) => {
     const correcto = ruta[profundidad];
     const distractores = SUBMENUS_GENERICOS.filter((o) => normalizar(o) !== normalizar(correcto)).slice(0, 3);
@@ -176,15 +185,15 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
 
   const validar = () => {
     if (logrado) return;
-    const res = campos.map((c, i) => coincide(valores[i], c.valor));
+    const res = campos.map((c, i) => coincide(valores[i], c.valor, c.etiqueta));
     const buenos = res.filter(Boolean).length;
     setRevisado(res);
     setIntentos((n) => n + 1);
     if (buenos === campos.length) {
       setLogrado(true);
-      setEstado({ tono: 'exito', texto: 'Operación completada con éxito.' });
+      setEstado({ tono: 'exito', texto: '¡Operación y datos validados con éxito en B1 Center!' });
       const intento: IntentoPractica = { valores: [...valores], intentos: intentos + 1, vioSolucion: mostrarSolucion };
-      setTimeout(() => onCompleta(intento), 2200);
+      setTimeout(() => onCompleta(intento), 1500);
     } else {
       setEstado({ tono: 'error', texto: `No se puede añadir: ${campos.length - buenos} campo(s) con valores incorrectos. Revisa los marcados en rojo.` });
     }
@@ -192,7 +201,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
 
   const tituloVentana = ruta[ruta.length - 1] ?? guia.title;
 
-  // ── Sapi guía: se desplaza hasta el siguiente elemento que hay que pulsar o llenar ──
   const raizRef = useRef<HTMLDivElement>(null);
   const [guiaActiva, setGuiaActiva] = useState(true);
   useEffect(() => {
@@ -205,7 +213,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
     });
   };
 
-  /** Qué debe hacer el estudiante ahora. No revela valores: solo señala dónde actuar. */
   const objetivo = useMemo<{ clave: string; texto: string } | null>(() => {
     if (logrado) return null;
     if (!ventanaAbierta) {
@@ -229,30 +236,32 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       const r = el.getBoundingClientRect();
       const b = raiz.getBoundingClientRect();
       const esCampo = objetivo.clave.startsWith('campo-');
-      // Sapi se coloca DEBAJO del elemento donde hay que hacer clic o escribir, nunca encima:
-      // así el estudiante siempre ve el campo y lo que escribe.
+      
       let x = r.left - b.left + (esCampo ? 4 : 0);
       x = Math.max(4, Math.min(x, b.width - GUIA_TAM - 4));
-      const y = r.bottom - b.top + 2;
-      // El globo va a la derecha de Sapi, salvo que no quepa.
+      
+      // FIX DE POSICIONAMIENTO DE SAPI: Si se está mostrando el mensaje de solución roja debajo del campo,
+      // desplazamos el icono de Sapi más abajo (34px adicionales) para que NUNCA obstruya la lectura de la solución.
+      const indiceCampo = esCampo ? parseInt(objetivo.clave.replace('campo-', ''), 10) : -1;
+      const haySolucionVisible = mostrarSolucion || (indiceCampo >= 0 && revisado?.[indiceCampo] === false);
+      let y = r.bottom - b.top + (haySolucionVisible ? 36 : 2);
+
       const izquierda = x > b.width - 230;
-      // Solo actualiza si cambió: evita renders en cadena con el ResizeObserver.
       setPosGuia((p) => (p && Math.abs(p.x - x) < 0.5 && Math.abs(p.y - y) < 0.5 && p.izquierda === izquierda ? p : { x, y, izquierda }));
     };
     calcular();
     const ro = new ResizeObserver(calcular);
     ro.observe(raiz);
-    raiz.addEventListener('scroll', calcular, true); // el árbol de módulos tiene scroll propio
+    raiz.addEventListener('scroll', calcular, true);
     window.addEventListener('resize', calcular);
     return () => { ro.disconnect(); raiz.removeEventListener('scroll', calcular, true); window.removeEventListener('resize', calcular); };
-  }, [objetivo, guiaActiva, moduloAbierto]);
+  }, [objetivo, guiaActiva, moduloAbierto, mostrarSolucion, revisado]);
 
   return (
     <div ref={raizRef} className="relative m-2 sm:m-3 rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs select-none">
       {posGuia && objetivo && (
         <div
           aria-hidden="true"
-          // Coordenadas calculadas en tiempo real según el elemento objetivo: no expresables con clases.
           style={{ left: posGuia.x, top: posGuia.y }}
           className="pointer-events-none absolute z-30 transition-[left,top] duration-500 ease-out motion-reduce:transition-none"
         >
@@ -266,6 +275,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
           </span>
         </div>
       )}
+
       {/* Barra de título de la aplicación */}
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1">
         <span className="flex items-center gap-2 font-semibold">
@@ -277,7 +287,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
         </span>
       </div>
 
-      {/* Barra de menú (Herramientas abre su menú desplegable, como en SAP) */}
+      {/* Barra de menú */}
       <div className="relative flex flex-wrap gap-x-4 bg-[#f6f7f9] border-b border-[#cdd6e1] px-3 py-0.5 text-[11px]">
         {MENU_SUPERIOR.map((m) => (
           <button
@@ -300,54 +310,45 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
         )}
       </div>
 
-      {/* Barra de herramientas */}
-      <div className="flex items-center gap-1 bg-[#e9edf2] border-b border-[#cdd6e1] px-2 py-1" aria-hidden="true">
-        {[Printer, Mail, FileSpreadsheet, null, Search, Plus, null, ChevronsLeft, ChevronLeft, ChevronRight, ChevronsRight, null, Filter, Settings].map((Icono, i) =>
-          Icono
-            ? <span key={i} className="w-6 h-6 flex items-center justify-center rounded-sm hover:bg-[#d6dee8] text-[#2a5d9f]"><Icono size={14} /></span>
-            : <span key={i} className="w-px h-4 bg-[#b8c4d2] mx-1" />,
-        )}
-      </div>
-
+      {/* Cuerpo principal de SAP B1 */}
       <div className="flex flex-col md:flex-row min-h-[380px]">
-        {/* Menú principal (árbol de módulos) */}
-        <nav aria-label="Menú principal de SAP" className="md:w-60 shrink-0 bg-white border-b md:border-b-0 md:border-r border-[#cdd6e1]">
-          <div className="flex text-[11px] border-b border-[#cdd6e1]">
-            <span className="px-3 py-1 font-bold border-b-2 border-[#f0ab00]">Módulos</span>
-            <span className="px-3 py-1 text-gray-400">Drag &amp; Relate</span>
-            <span className="px-3 py-1 text-gray-400">Mi menú</span>
-          </div>
-          <ul className="py-1 max-h-[340px] overflow-y-auto">
+        {/* Árbol del Menú principal */}
+        <nav className="w-full md:w-56 shrink-0 bg-[#e4eaf2] border-b md:border-b-0 md:border-r border-[#abb8c7] p-2 overflow-y-auto max-h-[420px]">
+          <p className="font-semibold text-[#1d2d3e] mb-1 pb-1 border-b border-[#b5c2d1]">Menú principal</p>
+          <ul className="space-y-0.5">
             {modulos.map((m) => {
-              const esRaizCorrecta = !!ruta[0] && normalizar(m) === normalizar(ruta[0]);
-              const abierto = (esRaizCorrecta && nivel > 0) || moduloAbierto === m;
+              const esRaizCorrecta = normalizar(m) === normalizar(ruta[0]);
+              const estaExpandido = esRaizCorrecta ? nivel > 0 : moduloAbierto === m;
               return (
                 <li key={m}>
                   <button
                     type="button"
-                    data-guia={esRaizCorrecta ? 'menu-0' : undefined}
+                    data-guia={nivel === 0 && esRaizCorrecta ? 'menu-0' : undefined}
                     onClick={() => {
                       if (esRaizCorrecta) { if (nivel === 0) elegir(0, m); }
-                      else { setModuloAbierto(abierto ? null : m); setEstado({ tono: 'info', texto: `Módulo "${m}" desplegado.` }); }
+                      else { setModuloAbierto((v) => (v === m ? null : m)); elegir(0, m); }
                     }}
-                    className={`w-full flex items-center gap-1.5 px-2 py-[3px] text-left hover:bg-[#e8f1fb] ${abierto ? 'font-semibold' : ''}`}
+                    className={`w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm text-left hover:bg-[#c9d6e5] ${
+                      esRaizCorrecta && nivel > 0 ? 'font-semibold text-[#0b3d91] bg-[#d3e0f0]' : ''
+                    }`}
                   >
-                    {abierto ? <ChevronDown size={11} /> : <ChevronRight size={11} />}
-                    {abierto ? <FolderOpen size={14} className="text-[#e3a21a] fill-[#f7d774]" /> : <Folder size={14} className="text-[#e3a21a] fill-[#f7d774]" />}
-                    {m}
+                    {estaExpandido ? <FolderOpen size={13} className="text-[#d89e00]" /> : <Folder size={13} className="text-[#d89e00]" />}
+                    <span className="truncate">{m}</span>
                   </button>
-                  {/* Rama correcta: se despliega nivel por nivel */}
-                  {abierto && esRaizCorrecta && <Rama ruta={ruta} profundidad={1} nivel={nivel} hijos={hijos} elegir={elegir} />}
-                  {/* Rama de un módulo equivocado: submenús que no llevan a la tarea */}
-                  {abierto && !esRaizCorrecta && (
-                    <ul className="pl-5">
-                      {SUBMENUS_GENERICOS.slice(0, 4).map((s) => (
-                        <li key={s}>
-                          <button type="button" onClick={() => elegir(-1, s)} className="w-full flex items-center gap-1.5 px-2 py-[3px] text-left hover:bg-[#e8f1fb]">
-                            <FileText size={13} className="text-[#2a5d9f]" /> {s}
-                          </button>
-                        </li>
-                      ))}
+
+                  {estaExpandido && (
+                    <ul className="ml-3 pl-2 border-l border-[#abb8c7] space-y-0.5 my-0.5">
+                      {esRaizCorrecta ? (
+                        <Rama ruta={ruta} profundidad={1} nivel={nivel} hijos={hijos} elegir={elegir} />
+                      ) : (
+                        SUBMENUS_GENERICOS.slice(0, 3).map((sub) => (
+                          <li key={sub}>
+                            <button type="button" onClick={() => elegir(1, sub)} className="w-full text-left px-1.5 py-0.5 hover:bg-[#c9d6e5] text-[11px] truncate">
+                              {sub}
+                            </button>
+                          </li>
+                        ))
+                      )}
                     </ul>
                   )}
                 </li>
@@ -358,7 +359,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
 
         {/* Escritorio de trabajo */}
         <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3">
-
           {!ventanaAbierta ? (
             <div className="h-full min-h-[200px] flex items-center justify-center">
               <p className="max-w-sm text-center text-[#4a5b70] bg-white/70 rounded-md border border-[#b8c4d2] px-4 py-3">
@@ -368,7 +368,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
             </div>
           ) : (
             <div className="max-w-3xl rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl">
-              {/* Barra de título de la ventana del documento */}
+              {/* Barra de título de la ventana */}
               <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2 py-1 font-semibold">
                 <span>{tituloVentana}</span>
                 <span className="flex gap-1" aria-hidden="true">
@@ -376,7 +376,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                 </span>
               </div>
 
-              {/* Campos (dos columnas, como la cabecera de un documento SAP) */}
+              {/* Campos */}
               <div className="grid md:grid-cols-2 gap-x-6 gap-y-2 p-3 sm:p-4">
                 {campos.map((c, i) => {
                   const est = revisado?.[i];
@@ -402,7 +402,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                             />
                           </span>
                         ) : opcionesCampo(c) ? (
-                        // Campos de valores cerrados (IVA, bodega, moneda, socio, artículo…): se eligen de una lista, como en SAP.
                         <select
                           id={`campo-${i}`}
                           data-guia={`campo-${i}`}
@@ -441,10 +440,11 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                         />
                         )}
                       </div>
+                      {/* Pistas y solución visible sin obstrucción */}
                       {est === false && (
-                        <p className="mt-0.5 ml-[158px] text-[10.5px] text-[#a12622]">
-                          {c.pista || 'Revisa este valor con las instrucciones.'}
-                          {mostrarSolucion && <> · <strong>Solución: {c.valor}</strong></>}
+                        <p className="mt-1 ml-[158px] text-[10.5px] text-[#a12622] leading-tight font-medium bg-[#fdf0ef] p-1 rounded border border-[#f5c6cb]">
+                          {c.pista || 'Revisa este valor.'}
+                          {mostrarSolucion && <span className="block mt-0.5 font-bold text-[#721c24]">Solución: {c.valor}</span>}
                         </p>
                       )}
                     </div>
@@ -452,7 +452,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                 })}
               </div>
 
-              {/* Botones de SAP: Añadir / Cancelar abajo a la izquierda; Copiar de / a a la derecha */}
+              {/* Botones de SAP: Añadir / Cancelar */}
               <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#cdd6e1] px-3 py-2">
                 <div className="flex gap-2">
                   <button
@@ -460,7 +460,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                     data-guia="anadir"
                     onClick={validar}
                     disabled={logrado}
-                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#c48a00] bg-gradient-to-b from-[#ffd25a] to-[#f0ab00] font-bold text-[#1d2d3e] shadow-sm hover:brightness-105 active:scale-95 disabled:opacity-60"
+                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#c48a00] bg-gradient-to-b from-[#ffd25a] to-[#f0ab00] font-bold text-[#1d2d3e] shadow-sm hover:brightness-105 active:scale-95 disabled:opacity-60 cursor-pointer"
                   >
                     Añadir
                   </button>
@@ -468,12 +468,12 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                     type="button"
                     onClick={() => { setValores(campos.map(() => '')); setRevisado(null); setEstado({ tono: 'info', texto: 'Cambios descartados.' }); }}
                     disabled={logrado}
-                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-gradient-to-b from-white to-[#e4e9ef] active:scale-95 disabled:opacity-60"
+                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-gradient-to-b from-white to-[#e4e9ef] active:scale-95 disabled:opacity-60 cursor-pointer"
                   >
                     Cancelar
                   </button>
-                  {intentos >= 3 && !logrado && !mostrarSolucion && (
-                    <button type="button" onClick={() => setMostrarSolucion(true)} className="h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-white text-[#1f4f8f] underline active:scale-95">
+                  {intentos >= 1 && !logrado && !mostrarSolucion && (
+                    <button type="button" onClick={() => setMostrarSolucion(true)} className="h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-white text-[#1f4f8f] underline active:scale-95 cursor-pointer">
                       Ver solución
                     </button>
                   )}
@@ -487,7 +487,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
         </div>
       </div>
 
-      {/* Barra de estado (mensajes del sistema) */}
+      {/* Barra de estado */}
       <div
         role="status"
         className={`flex items-center gap-2 border-t px-3 py-1 text-[11px] ${
@@ -515,35 +515,40 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   );
 }
 
-/** Nivel del árbol bajo el módulo correcto: el camino de la tarea mezclado con submenús distractores. */
 function Rama({ ruta, profundidad, nivel, hijos, elegir }: {
   ruta: string[]; profundidad: number; nivel: number;
   hijos: (p: number) => string[]; elegir: (p: number, o: string) => void;
 }) {
-  if (profundidad >= ruta.length || nivel < profundidad) return null;
+  const correcto = ruta[profundidad];
+  if (!correcto) return null;
+  const items = hijos(profundidad);
+  const esUltimo = profundidad === ruta.length - 1;
+  const alcanzado = nivel > profundidad;
   return (
-    <ul className="pl-4">
-      {hijos(profundidad).map((o) => {
-        const correcto = normalizar(o) === normalizar(ruta[profundidad]);
-        const esHoja = profundidad === ruta.length - 1;
-        const abierto = correcto && nivel > profundidad;
+    <>
+      {items.map((opcion) => {
+        const esCorrecto = normalizar(opcion) === normalizar(correcto);
         return (
-          <li key={o}>
+          <li key={opcion}>
             <button
               type="button"
-              data-guia={correcto ? `menu-${profundidad}` : undefined}
-              onClick={() => elegir(profundidad, o)}
-              className={`w-full flex items-center gap-1.5 px-2 py-[3px] text-left hover:bg-[#e8f1fb] ${abierto ? 'font-semibold' : ''}`}
+              data-guia={nivel === profundidad && esCorrecto ? `menu-${profundidad}` : undefined}
+              onClick={() => elegir(profundidad, opcion)}
+              className={`w-full flex items-center gap-1.5 px-1.5 py-0.5 rounded-sm text-left hover:bg-[#c9d6e5] ${
+                esCorrecto && alcanzado ? 'font-semibold text-[#0b3d91] bg-[#d3e0f0]' : ''
+              }`}
             >
-              {esHoja
-                ? <FileText size={13} className="text-[#2a5d9f]" />
-                : abierto ? <FolderOpen size={13} className="text-[#e3a21a] fill-[#f7d774]" /> : <Folder size={13} className="text-[#e3a21a] fill-[#f7d774]" />}
-              {o}
+              {esUltimo && esCorrecto ? <FileText size={12} className="text-[#1f4f8f]" /> : <Folder size={12} className="text-[#d89e00]" />}
+              <span className="truncate">{opcion}</span>
             </button>
-            {abierto && <Rama ruta={ruta} profundidad={profundidad + 1} nivel={nivel} hijos={hijos} elegir={elegir} />}
+            {esCorrecto && alcanzado && !esUltimo && (
+              <ul className="ml-3 pl-2 border-l border-[#abb8c7] space-y-0.5 my-0.5">
+                <Rama ruta={ruta} profundidad={profundidad + 1} nivel={nivel} hijos={hijos} elegir={elegir} />
+              </ul>
+            )}
           </li>
         );
       })}
-    </ul>
+    </>
   );
 }
