@@ -116,11 +116,11 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [nivel, setNivel] = useState(0);
   const [moduloAbierto, setModuloAbierto] = useState<string | null>(null);
 
-  // Inicialización de campos con auto-relleno inteligente para credenciales e inicio de sesión
+  // Inicialización de campos con auto-relleno inteligente usando el correo registrado del estudiante
   const [valores, setValores] = useState<string[]>(() => {
     return campos.map((c) => {
       const et = plano(c.etiqueta);
-      if (et.includes('usuario') || et.includes('user')) return 'pablo.garcia';
+      if (et.includes('usuario') || et.includes('user')) return 'pablofgarciaf@gmail.com';
       if (et.includes('contra') || et.includes('clave') || et.includes('pass')) return 'mateD0MEmia';
       if (et.includes('empresa') || et.includes('company')) return 'B1 Center';
       return '';
@@ -131,7 +131,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [intentos, setIntentos] = useState(0);
   const [mostrarSolucion, setMostrarSolucion] = useState(false);
 
-  const { currentUser, userProfile } = useAuth();
+  const { currentUser } = useAuth();
   const [empresa, setEmpresa] = useState<string | null | undefined>(undefined);
   useEffect(() => {
     if (!currentUser) return;
@@ -142,18 +142,18 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
     return () => { activo = false; };
   }, [currentUser]);
 
-  // Si el usuario tiene sesión activa, actualizar el valor predeterminado del usuario con su correo/nombre
+  // Si el usuario tiene sesión activa, actualizar el valor del campo Usuario con su correo real de la cuenta
   useEffect(() => {
-    if (!currentUser) return;
-    const userVal = userProfile?.displayName || currentUser.email || 'pablo.garcia';
+    if (!currentUser?.email) return;
+    const emailReal = currentUser.email;
     setValores(prev => prev.map((v, i) => {
       const et = plano(campos[i]?.etiqueta || '');
-      if ((et.includes('usuario') || et.includes('user')) && (!v || v === 'pablo.garcia')) {
-        return userVal.split('@')[0];
+      if ((et.includes('usuario') || et.includes('user')) && (!v || v === 'pablofgarciaf@gmail.com' || v === 'pablo.garcia' || v === 'manager')) {
+        return emailReal;
       }
       return v;
     }));
-  }, [currentUser, userProfile, campos]);
+  }, [currentUser, campos]);
 
   const [logrado, setLogrado] = useState(false);
   const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal o confirma los datos prellenos.' });

@@ -198,32 +198,32 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Para trabajar en SAP Business One primero inicias sesión y eliges la empresa. Cada empresa es una base de datos independiente: en este curso trabajarás siempre en tu B1 Center. Abre la ventana Seleccionar empresa desde el menú Gestión, escribe el usuario y la contraseña de práctica que indica la ficha del ejercicio y elige B1 Center para entrar.",
+        "script_text": "Para trabajar en SAP Business One primero inicias sesión y eliges la empresa. En B1 Academy, tu usuario de acceso es siempre tu correo corporativo o registrado (ej. pablofgarciaf@gmail.com) y tu contraseña es la clave de tu cuenta. Abre la ventana Seleccionar empresa desde Gestión, verifica tus datos de acceso y elige tu empresa B1 Center para entrar.",
         "step_guide": {
           "action_type": "practica",
           "title": "Iniciar sesión en B1 Center",
           "menu_path": "Gestión > Seleccionar empresa",
           "instructions": [
             "Abre Gestión › Seleccionar empresa",
-            "Escribe el usuario y la contraseña de práctica",
-            "Elige tu empresa B1 Center",
-            "Pulsa Añadir para entrar"
+            "Ingresa tu correo de usuario (ej. pablofgarciaf@gmail.com)",
+            "Ingresa la contraseña de tu cuenta",
+            "Elige tu empresa B1 Center y pulsa Añadir para entrar"
           ],
           "campos": [
             {
               "etiqueta": "Usuario",
-              "valor": "manager",
-              "pista": "Usuario de práctica del curso"
+              "valor": "pablofgarciaf@gmail.com",
+              "pista": "Tu correo registrado (ej. pablofgarciaf@gmail.com)"
             },
             {
               "etiqueta": "Contraseña",
-              "valor": "B1Admin2026",
-              "pista": "Clave de práctica del curso"
+              "valor": "mateD0MEmia",
+              "pista": "La contraseña de tu cuenta"
             },
             {
               "etiqueta": "Empresa",
               "valor": "B1 Center",
-              "pista": "Tu empresa del curso"
+              "pista": "Tu base de datos B1 Center"
             }
           ]
         }
