@@ -6,14 +6,9 @@ import { useCompany } from '@/hooks/useCompany';
 export const inputClass = 'w-full min-w-16 border border-[#999] bg-white px-2 py-1 text-[11px] text-[#222] focus:bg-[#FFFDE7] focus:outline-2 focus:outline-[#0055A5] disabled:bg-[#ECE9D8]';
 export const buttonClass = 'border border-[#999] bg-[#F5F4EE] px-3 py-1 text-[#222] hover:bg-[#FFFDE7] active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transform-none cursor-pointer';
 
-export function Screen({ title, children }: { title?: string; children: ReactNode }) { 
+export function Screen({ children }: { title?: string; children: ReactNode }) { 
   return (
     <section className="flex h-full min-h-80 flex-col overflow-auto bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
-      {title && (
-        <h2 className="bg-gradient-to-r from-[#003366] to-[#0055A5] px-3 py-2 font-bold text-white">
-          {title}
-        </h2>
-      )}
       <div className="space-y-3 p-3">{children}</div>
     </section>
   ); 
