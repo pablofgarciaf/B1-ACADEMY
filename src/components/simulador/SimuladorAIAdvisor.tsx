@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, X, MessageCircle, Loader } from 'lucide-react';
+import { empresaActiva, LISTA_SIETE_EMPRESAS } from '@/lib/firestore-company';
 
 interface Message {
   id: string;
@@ -18,7 +19,7 @@ interface SimuladorAIAdvisorProps {
 
 export default function SimuladorAIAdvisor({
   currentScreen = 'Dashboard',
-  currentModule = 'Ventas',
+  currentModule = 'Finanzas & Contabilidad',
   isOpen: initialOpen = false,
 }: SimuladorAIAdvisorProps) {
   const [isOpen, setIsOpen] = useState(initialOpen);
@@ -26,17 +27,17 @@ export default function SimuladorAIAdvisor({
     {
       id: '1',
       role: 'assistant',
-      content: `¡Hola! Soy **@Fini**, tu asistente inteligente ERP y financiero de SAP Business One.
+      content: `¡Hola! Soy **@Fini AI** 🐦‍🔥, tu copiloto inteligente ERP y financiero en SAP Business One.
 
 Actualmente estás en: **${currentModule} > ${currentScreen}**
 
-Dime qué deseas hacer o pídeme ejecutar una acción:
-- 🛒 *"@Fini, quiero registrar una venta o cotización"*
-- 🧾 *"@Fini, cómo emito un comprobante electrónico SRI (IVA 15%)"*
-- 📦 *"@Fini, consultar disponibilidad de stock de un artículo"*
-- 📊 *"@Fini, generar asiento contable o flujo de caja"*
+¿Qué deseas realizar o consultar en el simulador?
+- 📊 *"@Fini, ¿cómo verifico los mayores de Bancos?"*
+- 🏦 *"@Fini, ¿cómo realizo la conciliación bancaria en [BNK001]?"*
+- 🧾 *"@Fini, ¿cómo emito una factura electrónica SRI con IVA 15%?"*
+- ⚙️ *"@Fini, ¿cómo creo una lista de materiales BOM o contabilizo un asiento?"*
 
-¡Dime qué necesitas y te asistiré en tiempo real! 🚀`,
+¡Dime qué necesitas y te guiaré con precisión exacta paso a paso! 🚀`,
       timestamp: new Date(),
     },
   ]);
@@ -68,7 +69,10 @@ Dime qué deseas hacer o pídeme ejecutar una acción:
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const activeSlot = empresaActiva();
+      const currentCompanyDef = LISTA_SIETE_EMPRESAS.find(e => e.id === activeSlot) || LISTA_SIETE_EMPRESAS[0];
+
+      const response = await fetch('/api/simulador/advisor', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -76,6 +80,10 @@ Dime qué deseas hacer o pídeme ejecutar una acción:
             ...messages.map((m) => ({ role: m.role, content: m.content })),
             { role: 'user', content: userMessage.content },
           ],
+          currentScreen,
+          currentModule,
+          companySlot: activeSlot,
+          companyName: currentCompanyDef.name,
         }),
       });
 
@@ -111,15 +119,15 @@ Dime qué deseas hacer o pídeme ejecutar una acción:
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-14 right-4 z-[5000] h-14 px-4 bg-gradient-to-r from-[#0055A5] via-blue-600 to-[#003366] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-blue-400/40 group cursor-pointer"
-          title="Abrir Asistente Fini AI (@Fini)"
+          className="fixed bottom-14 right-4 z-[5000] h-14 px-4 bg-gradient-to-r from-[#b91c1c] via-[#0055A5] to-[#003366] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-amber-400/60 group cursor-pointer"
+          title="Abrir Copiloto @Fini AI"
         >
-          <div className="relative">
-            <MessageCircle size={22} className="text-blue-100" />
+          <div className="relative flex items-center gap-1.5">
+            <span className="text-lg">🐦‍🔥</span>
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping" />
             <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full" />
           </div>
-          <span className="font-extrabold text-xs tracking-wide text-white">@Fini AI</span>
+          <span className="font-black text-xs tracking-wide text-white">@Fini AI</span>
         </button>
       )}
 
@@ -127,11 +135,11 @@ Dime qué deseas hacer o pídeme ejecutar una acción:
       {isOpen && (
         <div className="fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:w-96">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#003366] via-[#0055A5] to-[#002244] text-white p-4 flex items-center justify-between border-b border-blue-400/30">
+          <div className="bg-gradient-to-r from-[#7f1d1d] via-[#003366] to-[#001f3f] text-white p-4 flex items-center justify-between border-b border-amber-400/30">
             <div>
-              <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-blue-100">
-                <span className="px-1.5 py-0.5 rounded bg-amber-400 text-slate-950 text-[10px] font-black">AI</span>
-                Asistente @Fini
+              <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-amber-200">
+                <span className="text-base">🐦‍🔥</span>
+                <span>@Fini AI · Copiloto ERP</span>
               </h3>
               <p className="text-[11px] text-blue-200 mt-0.5 flex items-center gap-1">
                 <span className="w-2 h-2 rounded-full bg-emerald-400" />

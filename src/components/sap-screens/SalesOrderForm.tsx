@@ -6,7 +6,7 @@ import { purchaseTypes } from '@/lib/firestore-types';
 import { documentLabels } from '@/lib/company-engine';
 import { today, totals, usd } from '@/lib/company-calculations';
 import { nombreLista, precioSugerido } from '@/lib/company-pricing';
-import { Screen, Field, Navigation, inputClass, buttonClass, SaveButton, Table } from './SAPControls';
+import { Screen, Field, Navigation, inputClass, buttonClass, SaveButton, Table, NumberInput } from './SAPControls';
 import { PartnerLookup } from './CustomerLookupModal';
 import ItemLookupModal from './ItemLookupModal';
 export interface SalesOrderFormProps { screenId?: string; screenName?: string; docType: DocType; readOnly?: boolean }
@@ -66,9 +66,9 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
       </div>
       <Table headers={['Artículo *', 'Descripción', 'Cantidad *', 'UM', 'Precio *', 'Desc. %', 'IVA %', 'Almacén *', 'Total', 'Acción']} rows={data.lines.map((line, i) => [
         <div key="code" className="flex"><input aria-label={'Artículo línea ' + (i + 1)} required className={inputClass} value={line.itemCode ?? ''} readOnly /><button type="button" aria-label={'Buscar artículo línea ' + (i + 1)} className={buttonClass} onClick={() => setItemLookup(i)}>[…]</button></div>, line.description ?? '',
-        <input key="qty" aria-label={'Cantidad línea ' + (i + 1)} type="number" min="0.000001" step="any" required className={inputClass} value={line.quantity ?? 1} onChange={e => { const quantity = Number(e.target.value); lineChange(i, { quantity, ...(line.itemCode ? { discount: sugerir(line.itemCode, quantity).discount ?? line.discount } : {}) }); }} />, line.unit ?? 'UND',
-        <input key="price" aria-label={'Precio línea ' + (i + 1)} type="number" min="0" step="0.01" required className={inputClass} value={line.price ?? 0} onChange={e => lineChange(i, { price: Number(e.target.value) })} />,
-        <input key="discount" aria-label={'Descuento línea ' + (i + 1)} type="number" min="0" max="100" className={inputClass} value={line.discount ?? 0} onChange={e => lineChange(i, { discount: Number(e.target.value) })} />,
+        <NumberInput key="qty" ariaLabel={'Cantidad línea ' + (i + 1)} min={0.000001} required value={line.quantity ?? 1} onChange={val => { lineChange(i, { quantity: val, ...(line.itemCode ? { discount: sugerir(line.itemCode, val).discount ?? line.discount } : {}) }); }} />, line.unit ?? 'UND',
+        <NumberInput key="price" ariaLabel={'Precio línea ' + (i + 1)} min={0} required value={line.price ?? 0} onChange={val => lineChange(i, { price: val })} />,
+        <NumberInput key="discount" ariaLabel={'Descuento línea ' + (i + 1)} min={0} max={100} value={line.discount ?? 0} onChange={val => lineChange(i, { discount: val })} />,
         <select key="tax" aria-label={'IVA línea ' + (i + 1)} className={inputClass} value={line.taxRate ?? 15} onChange={e => lineChange(i, { taxRate: Number(e.target.value) as 0 | 5 | 8 | 15 })}>{[15, 5, 8, 0].map(rate => <option key={rate} value={rate}>{rate}%{rate === 8 ? ' (turismo en feriados)' : rate === 5 ? ' (materiales de construcción)' : ''}</option>)}</select>,
         <select key="warehouse" aria-label={'Almacén línea ' + (i + 1)} className={inputClass} value={line.warehouseCode ?? 'PRINCIPAL'} onChange={e => lineChange(i, { warehouseCode: e.target.value })}>{c.data.profile?.warehouses.map(w => <option key={w.code} value={w.code}>{w.name}</option>)}</select>, usd(totals([line]).total),
         <button key="remove" type="button" aria-label={'Eliminar línea ' + (i + 1)} disabled={data.lines.length === 1} className={buttonClass} onClick={() => setData(d => ({ ...d, lines: d.lines.filter((_, j) => j !== i) }))}>✕</button>

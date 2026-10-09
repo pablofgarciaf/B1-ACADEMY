@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { JournalLine } from '@/lib/firestore-types';
 import { round, today, usd } from '@/lib/company-calculations';
-import { Screen, Field, Navigation, Table, SaveButton, inputClass, buttonClass } from './SAPControls';
+import { Screen, Field, Navigation, Table, SaveButton, inputClass, buttonClass, NumberInput } from './SAPControls';
 const emptyLine = (): JournalLine => ({ accountCode: '', debit: 0, credit: 0, description: '', costCenter: '' });
 export default function JournalEntryForm(_props: { screenId?: string; screenName?: string }) {
   const c = useCompany(); const [index, setIndex] = useState(-1); const [date, setDate] = useState(today()); const [memo, setMemo] = useState(''); const [reference, setReference] = useState(''); const [lines, setLines] = useState<JournalLine[]>([emptyLine(), emptyLine()]);
@@ -36,8 +36,8 @@ export default function JournalEntryForm(_props: { screenId?: string; screenName
         </div>
         <Table headers={['Cuenta *', 'Debe', 'Haber', 'Centro costo', 'Detalle', 'Acción']} rows={lines.map((line, i) => [
           <select key="account" aria-label={'Cuenta línea ' + (i + 1)} required className={inputClass} value={line.accountCode ?? ''} onChange={e => change(i, { accountCode: e.target.value })}><option value="">Seleccionar cuenta</option>{c.data.chartOfAccounts.filter(a => a.postable).map(a => <option key={a.id} value={a.code}>{a.code} · {a.name}</option>)}</select>,
-          <input key="debit" aria-label={'Debe línea ' + (i + 1)} type="number" min="0" step="0.01" className={inputClass} value={line.debit ?? 0} onChange={e => change(i, { debit: Number(e.target.value), credit: 0 })} />,
-          <input key="credit" aria-label={'Haber línea ' + (i + 1)} type="number" min="0" step="0.01" className={inputClass} value={line.credit ?? 0} onChange={e => change(i, { credit: Number(e.target.value), debit: 0 })} />,
+          <NumberInput key="debit" ariaLabel={'Debe línea ' + (i + 1)} min={0} value={line.debit ?? 0} onChange={val => change(i, { debit: val, credit: 0 })} />,
+          <NumberInput key="credit" ariaLabel={'Haber línea ' + (i + 1)} min={0} value={line.credit ?? 0} onChange={val => change(i, { credit: val, debit: 0 })} />,
           <input key="center" aria-label={'Centro costo línea ' + (i + 1)} className={inputClass} value={line.costCenter ?? ''} onChange={e => change(i, { costCenter: e.target.value })} />,
           <input key="description" aria-label={'Detalle línea ' + (i + 1)} className={inputClass} value={line.description ?? ''} onChange={e => change(i, { description: e.target.value })} />,
           <button key="remove" type="button" disabled={lines.length <= 2} className={buttonClass} onClick={() => setLines(ls => ls.filter((_, j) => i !== j))}>✕</button>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { CommandData } from '@/lib/company-commands';
 import { usd } from '@/lib/company-calculations';
-import { Screen, Field, Navigation, SaveButton, inputClass, buttonClass, Table } from './SAPControls';
+import { Screen, Field, Navigation, SaveButton, inputClass, buttonClass, Table, NumberInput } from './SAPControls';
 export default function BOMForm() {
   const c = useCompany(); const blank = (): CommandData<'bom'> => ({ parentItemCode: '', type: 'production', components: [{ itemCode: '', quantity: 1, unit: 'UND', cost: 0 }] });
   const [data, setData] = useState(blank); const [index, setIndex] = useState(-1); const reset = () => { setIndex(-1); setData(blank()); };
@@ -52,9 +52,9 @@ export default function BOMForm() {
             <option value="">Seleccionar</option>
             {items.filter(item => item.itemCode !== data.parentItemCode).map(item => <option key={item.id} value={item.itemCode}>{item.name}</option>)}
           </select>,
-          <input key="qty" aria-label={'Cantidad ' + (i + 1)} required min="0.000001" step="any" type="number" className={inputClass} value={line.quantity ?? 1} onChange={e => setData(d => ({ ...d, components: d.components.map((l, j) => j === i ? { ...l, quantity: Number(e.target.value) } : l) }))} />,
+          <NumberInput key="qty" ariaLabel={'Cantidad ' + (i + 1)} required min={0.000001} value={line.quantity ?? 1} onChange={val => setData(d => ({ ...d, components: d.components.map((l, j) => j === i ? { ...l, quantity: val } : l) }))} />,
           line.unit ?? 'UND',
-          <input key="cost" aria-label={'Costo ' + (i + 1)} min="0" step="0.01" type="number" className={inputClass} value={line.cost ?? 0} onChange={e => setData(d => ({ ...d, components: d.components.map((l, j) => j === i ? { ...l, cost: Number(e.target.value) } : l) }))} />,
+          <NumberInput key="cost" ariaLabel={'Costo ' + (i + 1)} min={0} value={line.cost ?? 0} onChange={val => setData(d => ({ ...d, components: d.components.map((l, j) => j === i ? { ...l, cost: val } : l) }))} />,
           <button key="remove" type="button" disabled={data.components.length === 1} className={buttonClass} onClick={() => setData(d => ({ ...d, components: d.components.filter((_, j) => i !== j) }))}>✕</button>
         ])} />
         <button type="button" className={buttonClass} onClick={() => setData(d => ({ ...d, components: [...d.components, { itemCode: '', quantity: 1, unit: 'UND', cost: 0 }] }))}>+ Componente</button>

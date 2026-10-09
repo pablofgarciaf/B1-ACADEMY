@@ -6,6 +6,86 @@ import { useCompany } from '@/hooks/useCompany';
 export const inputClass = 'w-full min-w-16 border border-[#999] bg-white px-2 py-1 text-[11px] text-[#222] focus:bg-[#FFFDE7] focus:outline-2 focus:outline-[#0055A5] disabled:bg-[#ECE9D8]';
 export const buttonClass = 'border border-[#999] bg-[#F5F4EE] px-3 py-1 text-[#222] hover:bg-[#FFFDE7] active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transform-none cursor-pointer';
 
+export function NumberInput({
+  value,
+  onChange,
+  className = inputClass,
+  placeholder = '0.00',
+  min,
+  max,
+  disabled,
+  required,
+  ariaLabel,
+  autoSelect = true,
+}: {
+  value: number | undefined | null;
+  onChange: (val: number) => void;
+  className?: string;
+  placeholder?: string;
+  min?: number;
+  max?: number;
+  disabled?: boolean;
+  required?: boolean;
+  ariaLabel?: string;
+  autoSelect?: boolean;
+}) {
+  const [localVal, setLocalVal] = useState<string>(() =>
+    value !== undefined && value !== null && value !== 0 ? String(value) : (value === 0 ? '0' : '')
+  );
+
+  useEffect(() => {
+    setLocalVal(prev => {
+      const currentNum = prev === '' ? 0 : Number(prev.replace(',', '.'));
+      if (value !== undefined && value !== null && value !== currentNum) {
+        return value === 0 ? '' : String(value);
+      }
+      return prev;
+    });
+  }, [value]);
+
+  return (
+    <input
+      type="text"
+      inputMode="decimal"
+      aria-label={ariaLabel}
+      disabled={disabled}
+      required={required}
+      placeholder={placeholder}
+      className={`${className} text-right [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+      value={localVal}
+      onFocus={e => {
+        if (autoSelect) e.target.select();
+      }}
+      onChange={e => {
+        const raw = e.target.value;
+        const cleaned = raw.replace(/[^0-9.,-]/g, '');
+        setLocalVal(cleaned);
+        const normalized = cleaned.replace(',', '.');
+        if (normalized === '' || normalized === '-' || isNaN(Number(normalized))) {
+          onChange(0);
+        } else {
+          let val = Number(normalized);
+          if (max !== undefined && val > max) val = max;
+          onChange(val);
+        }
+      }}
+      onBlur={() => {
+        const normalized = localVal.replace(',', '.');
+        if (normalized === '' || isNaN(Number(normalized))) {
+          setLocalVal('');
+          onChange(0);
+        } else {
+          let num = Number(normalized);
+          if (min !== undefined && num < min) num = min;
+          if (max !== undefined && num > max) num = max;
+          setLocalVal(num === 0 ? '' : String(num));
+          onChange(num);
+        }
+      }}
+    />
+  );
+}
+
 export function Screen({ children }: { title?: string; children: ReactNode }) { 
   return (
     <section className="flex h-full min-h-80 flex-col overflow-auto bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">

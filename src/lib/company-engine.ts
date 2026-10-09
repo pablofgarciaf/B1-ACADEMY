@@ -28,8 +28,12 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
     return { state, result: uid };
   }
+  if (!state.profile) {
+    state.profile = { ...meta(uid), uid, email, companyName: 'B1 Center S.A.S. (Matriz)', ruc: '1790000001001', currency: 'USD', country: 'EC', fiscalScenario: 'ecuador-2026', sbu: 482, incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Almacén principal' }, { code: 'SECUNDARIO', name: 'Almacén secundario' }], xp: 0, level: 1, xpHistory: [], completedModules: [], lastAccess: now, sequences: {}, documentCount: 0 };
+    state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02'].includes(code)) ? 'D' : 'H', active: true }));
+    state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
+  }
   const profile = state.profile;
-  if (!profile) throw new Error('Inicializa primero tu empresa.');
   const next = (prefix: string, date = now.slice(0, 10)): string => {
     const key = `${prefix}-${date.slice(0, 4)}`; const seq = (profile.sequences[key] ?? 0) + 1;
     profile.sequences[key] = seq; return `${key}-${String(seq).padStart(4, '0')}`;

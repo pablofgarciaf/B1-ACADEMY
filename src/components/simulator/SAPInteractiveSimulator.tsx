@@ -622,7 +622,7 @@ export default function SAPInteractiveSimulator({
 
   // Prácticas conectadas: si la práctica corresponde a una pantalla real del Simulador, el estudiante la hace
   // en SU empresa (Supabase), eligiendo de listas sus propios datos.
-  const conectada = stepGuide?.campos?.length ? pantallaConectada(stepGuide) : null;
+  const conectada = stepGuide ? pantallaConectada(stepGuide) : null;
   if (stepGuide && conectada) {
     return (
       <div className={`${scrollInterno ? 'h-full overflow-y-auto' : 'min-h-full'} rounded-lg`}>

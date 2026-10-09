@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { round, today, usd } from '@/lib/company-calculations';
 import type { CommandData } from '@/lib/company-commands';
-import { Screen, Table, Field, inputClass, buttonClass, Navigation, SaveButton } from './SAPControls';
+import { Screen, Table, Field, inputClass, buttonClass, Navigation, SaveButton, NumberInput } from './SAPControls';
 import BancaEnLinea from './BancaEnLinea';
 export default function BankingScreen() {
   const c = useCompany(); const blank = (): CommandData<'bank'> => ({ bankAccountId: 'BAN-1', date: today(), type: 'deposit', amount: 0, counterpartAccount: '3.01', reference: '', documentId: '' });
@@ -45,7 +45,7 @@ export default function BankingScreen() {
           <input type="date" required className={inputClass} value={data.date ?? today()} onChange={e => setData(d => ({ ...d, date: e.target.value }))} />
         </Field>
         <Field label="Importe" required>
-          <input type="number" min="0.01" step="0.01" required className={inputClass} value={data.amount ?? 0} onChange={e => setData(d => ({ ...d, amount: Number(e.target.value) }))} />
+          <NumberInput ariaLabel="Importe" required min={0.01} value={data.amount ?? 0} onChange={val => setData(d => ({ ...d, amount: val }))} />
         </Field>
         <Field label="Documento a liquidar / devolución NC">
           <select className={inputClass} value={data.documentId ?? ''} onChange={e => { const doc = invoices.find(d => d.id === e.target.value); setData(d => ({ ...d, documentId: e.target.value, amount: doc ? doc.total - doc.paidAmount : d.amount })); }}>
@@ -66,8 +66,8 @@ export default function BankingScreen() {
           const saldo = doc ? round(doc.total - doc.paidAmount) : 0;
           const reajusta = (ir: number, iva: number) => setData(d => ({ ...d, retentionIR: ir, retentionIVA: iva, amount: Math.max(0.01, round(saldo - ir - iva)) }));
           return <>
-            <Field label="Retención de renta que te hizo el cliente (USD)"><input type="number" min="0" step="0.01" className={inputClass} value={data.retentionIR ?? 0} onChange={e => reajusta(Number(e.target.value), data.retentionIVA ?? 0)} /></Field>
-            <Field label="Retención de IVA que te hizo el cliente (USD)"><input type="number" min="0" step="0.01" className={inputClass} value={data.retentionIVA ?? 0} onChange={e => reajusta(data.retentionIR ?? 0, Number(e.target.value))} /></Field>
+            <Field label="Retención de renta que te hizo el cliente (USD)"><NumberInput ariaLabel="Retención de renta" min={0} value={data.retentionIR ?? 0} onChange={val => reajusta(val, data.retentionIVA ?? 0)} /></Field>
+            <Field label="Retención de IVA que te hizo el cliente (USD)"><NumberInput ariaLabel="Retención de IVA" min={0} value={data.retentionIVA ?? 0} onChange={val => reajusta(data.retentionIR ?? 0, val)} /></Field>
             <p className="sm:col-span-3 text-[#555]">Si el cliente es agente de retención, te entrega un comprobante de retención y paga solo la diferencia. El importe se ajusta solo; las retenciones quedan como crédito tributario (cuentas 1.1.10 y 1.1.11).</p>
           </>;
         })()}
@@ -87,7 +87,7 @@ export default function BankingScreen() {
         t.date,
         t.reference || t.transactionId,
         usd(book),
-        <input key="statement" aria-label={'Importe banco ' + t.transactionId} className={inputClass} type="number" step="0.01" value={value ?? 0} disabled={c.saving} onChange={e => setStatement(s => ({ ...s, [t.id]: Number(e.target.value) }))} />,
+        <NumberInput key="statement" ariaLabel={'Importe banco ' + t.transactionId} disabled={c.saving} value={value ?? 0} onChange={val => setStatement(s => ({ ...s, [t.id]: val }))} />,
         usd(book - value),
         <button key="reconcile" className={buttonClass} disabled={c.saving || (!t.reconciled && Math.abs(book - value) > 0.001)} onClick={async () => { try { await c.save({ action: 'reconcile', data: { id: t.id, statementAmount: value, reconciled: !t.reconciled } }); } catch { /* Provider error. */ } }}>{t.reconciled ? 'Desmarcar conciliada' : 'Conciliar'}</button>
       ];
