@@ -82,9 +82,9 @@ export default function SapiChat() {
               </div>
               <div>
                 <h3 className="font-bold text-white flex items-center gap-2">
-                  SAPI <Sparkles size={16} className="text-amber-500" />
+                  @Fini AI <Sparkles size={16} className="text-amber-500" />
                 </h3>
-                <p className="text-xs text-gray-400">Tu asistente experta en SAP Business One</p>
+                <p className="text-xs text-amber-400 font-medium">Asistente Fénix ERP & Financiero SAP B1</p>
               </div>
             </div>
             <button
@@ -100,7 +100,7 @@ export default function SapiChat() {
             {messages.length === 0 && (
               <div className="space-y-3 mb-6">
                 <div className="bg-[#19222a] p-4 rounded-2xl rounded-tl-sm border border-white/5 max-w-[85%] text-gray-200">
-                  ¡Hola! Soy SAPI. Conozco los manuales de SAP Business One. ¿En qué puedo ayudarte hoy?
+                  ¡Hola! Soy **@Fini AI** 🐦‍🔥, tu asistente Fénix de inteligencia ERP y contable. Conozco los 120 manuales de SAP Business One y la normativa tributaria ecuatoriana (SRI 2026). ¿Qué deseas consultar o realizar hoy?
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {SUGGESTED_QUESTIONS.map((q, i) => (

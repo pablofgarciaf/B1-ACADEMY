@@ -56,8 +56,8 @@ export default function SapiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
   return (
     <button
       type="button"
-      aria-label="Abrir a SAPI, tu asistente de SAP Business One (puedes arrastrarlo)"
-      title="Toca para preguntar · Arrástrame si estorbo"
+      aria-label="Abrir a @Fini AI, tu asistente Fénix de SAP Business One (puedes arrastrarlo)"
+      title="Toca para consultar a @Fini AI · Arrástrame si estorbo"
       onPointerDown={(e) => {
         e.currentTarget.setPointerCapture(e.pointerId);
         inicio.current = { px: e.clientX, py: e.clientY, x: pos.x, y: pos.y, movido: false };
@@ -77,12 +77,10 @@ export default function SapiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
         inicio.current = null;
         setArrastrando(false);
         if (!i?.movido) { onAbrir(pos.x + TAM / 2 < window.innerWidth / 2 ? 'izq' : 'der'); return; }
-        // Al soltar se pega al borde lateral más cercano.
         const pegada = acotar({ x: pos.x + TAM / 2 < window.innerWidth / 2 ? MARGEN : window.innerWidth, y: pos.y });
         setPos(pegada);
         guardar(pegada);
       }}
-      // Posición dinámica (coordenadas de arrastre): no es expresable con clases de Tailwind.
       style={{ left: pos.x, top: pos.y }}
       className={`fixed z-50 touch-none select-none rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-400/60 ${
         arrastrando ? 'cursor-grabbing scale-110' : 'cursor-grab transition-[left,top] duration-300 ease-out hover:scale-105'
@@ -94,32 +92,47 @@ export default function SapiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
   );
 }
 
-/** Dibujo del robot Sapi (reutilizado por el chat y por la guía del simulador). */
+/** Dibujo de Fini (Fénix Rojo de Inteligencia ERP). */
 export function SapiCara({ tam, flotar = true }: { tam: number; flotar?: boolean }) {
-  // Cada instancia necesita su propio id de degradado (puede haber varias en la página).
-  const id = `sapi${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`; // sin ":" para que url(#id) sea válido
+  const id = `fini${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   return (
     <svg width={tam} height={tam} viewBox="0 0 64 64" className={flotar ? 'sapi-flotar' : ''} aria-hidden="true">
       <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#FFC24D" />
-          <stop offset="1" stopColor="#F59E0B" />
+        <linearGradient id={`${id}-body`} x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#EF4444" />
+          <stop offset="0.5" stopColor="#DC2626" />
+          <stop offset="1" stopColor="#991B1B" />
+        </linearGradient>
+        <linearGradient id={`${id}-wing`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#F59E0B" />
+          <stop offset="0.6" stopColor="#EF4444" />
+          <stop offset="1" stopColor="#B91C1C" />
+        </linearGradient>
+        <linearGradient id={`${id}-crest`} x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="#F59E0B" />
+          <stop offset="1" stopColor="#FDE047" />
         </linearGradient>
       </defs>
-      <ellipse cx="32" cy="60" rx="14" ry="3" fill="#000" opacity="0.18" />
-      <line x1="32" y1="8" x2="32" y2="15" stroke="#0B3D91" strokeWidth="3" strokeLinecap="round" />
-      <circle cx="32" cy="7" r="4" fill="#4C9BE8" className="sapi-antena" />
-      <rect x="9" y="14" width="46" height="40" rx="15" fill={`url(#${id})`} stroke="#B45309" strokeWidth="1.5" />
-      <rect x="15" y="22" width="34" height="20" rx="9" fill="#0B3D91" />
-      <g className="sapi-ojos">
-        <ellipse cx="25" cy="32" rx="4" ry="4.5" fill="#7DD3FC" />
-        <ellipse cx="39" cy="32" rx="4" ry="4.5" fill="#7DD3FC" />
-        <circle cx="26.2" cy="30.6" r="1.3" fill="#fff" />
-        <circle cx="40.2" cy="30.6" r="1.3" fill="#fff" />
-      </g>
-      <path d="M26 47 Q32 51 38 47" fill="none" stroke="#7C2D12" strokeWidth="2" strokeLinecap="round" />
-      <circle cx="15" cy="45" r="2.6" fill="#FB7185" opacity="0.6" />
-      <circle cx="49" cy="45" r="2.6" fill="#FB7185" opacity="0.6" />
+      {/* Sombra */}
+      <ellipse cx="32" cy="60" rx="14" ry="3" fill="#000" opacity="0.2" />
+      {/* Cresta Fénix de Fuego */}
+      <path d="M32 4 C28 10, 24 6, 26 16 C29 12, 32 14, 32 16 C32 14, 35 12, 38 16 C40 6, 36 10, 32 4 Z" fill={`url(#${id}-crest)`} />
+      {/* Cuerpo Principal Fénix */}
+      <circle cx="32" cy="34" r="20" fill={`url(#${id}-body)`} stroke="#7F1D1D" strokeWidth="1.5" />
+      {/* Alas del Fénix */}
+      <path d="M14 34 C6 24, 4 36, 12 44 C16 42, 16 38, 14 34 Z" fill={`url(#${id}-wing)`} />
+      <path d="M50 34 C58 24, 60 36, 52 44 C48 42, 48 38, 50 34 Z" fill={`url(#${id}-wing)`} />
+      {/* Pico de Oro */}
+      <polygon points="32,35 27,42 37,42" fill="#F59E0B" stroke="#B45309" strokeWidth="1" />
+      {/* Ojos Brillantes */}
+      <ellipse cx="24" cy="30" rx="3.5" ry="4" fill="#FFFFFF" />
+      <ellipse cx="40" cy="30" rx="3.5" ry="4" fill="#FFFFFF" />
+      <circle cx="24.5" cy="30" r="2" fill="#0F172A" />
+      <circle cx="40.5" cy="30" r="2" fill="#0F172A" />
+      <circle cx="25.5" cy="28.8" r="0.8" fill="#FFF" />
+      <circle cx="41.5" cy="28.8" r="0.8" fill="#FFF" />
+      {/* Pecho dorado */}
+      <path d="M26 44 C28 48, 36 48, 38 44 C36 50, 28 50, 26 44 Z" fill="#F59E0B" opacity="0.9" />
     </svg>
   );
 }
