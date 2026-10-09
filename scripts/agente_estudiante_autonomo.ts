@@ -612,7 +612,7 @@ export async function runStudentSimulatorAgent(targetEmail = 'pablofgarciaf@gmai
     `| Diploma / Especialidad | Rol Profesional | Código Oficial | Enlace Verificación |`,
     `| :--- | :--- | :--- | :--- |`,
     ...diplomasEmitidos.map(d =>
-      `| **${d.titulo}** | ${d.rol} | \`${d.codigo}\` | [/verificar/${d.codigo}](https://sap.heinsohn.com.co/verificar/${d.codigo}) |`
+      `| **${d.titulo}** | ${d.rol} | \`${d.codigo}\` | [/verificar/${d.codigo}](https://b1-academy.vercel.app/verificar/${d.codigo}) |`
     ),
     ``,
     `---`,
