@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { X, Minus, Square } from 'lucide-react';
 import SAPScreenRenderer from '@/components/sap-screens/SAPScreenRenderer';
 
-interface Window {
+export interface Window {
   id: string;
   title: string;
   screenId: string;
@@ -13,6 +13,7 @@ interface Window {
   width: number;
   height: number;
   minimized: boolean;
+  maximized?: boolean;
   zIndex: number;
   focused: boolean;
 }
@@ -40,8 +41,8 @@ export default function SAPWindowManager({
   const handleMouseDown = (e: React.MouseEvent, windowId: string) => {
     if ((e.target as HTMLElement).closest('button')) return;
 
-    const window = windows.find(w => w.id === windowId);
-    if (!window) return;
+    const win = windows.find(w => w.id === windowId);
+    if (!win || win.maximized) return;
 
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
     setDraggingWindow(windowId);
@@ -63,8 +64,8 @@ export default function SAPWindowManager({
       let newX = e.clientX - containerRect.left - dragOffset.x;
       let newY = e.clientY - containerRect.top - dragOffset.y;
 
-      newX = Math.max(0, Math.min(newX, containerRect.width - 300));
-      newY = Math.max(0, Math.min(newY, containerRect.height - 100));
+      newX = Math.max(0, Math.min(newX, containerRect.width - 200));
+      newY = Math.max(0, Math.min(newY, containerRect.height - 80));
 
       onWindowMove(draggingWindow, newX, newY);
     };
@@ -85,87 +86,100 @@ export default function SAPWindowManager({
   return (
     <div
       id="window-container"
-      className="relative w-full h-full bg-gradient-to-b from-gray-900 to-gray-800 overflow-hidden"
+      className="relative w-full h-full bg-[#334155] overflow-hidden flex flex-col"
     >
-      {/* Windows Rendering */}
-      {windows.map((window) => (
-        !window.minimized && (
-          <div
-            key={window.id}
-            className="absolute bg-white border border-gray-300 shadow-xl rounded-sm flex flex-col"
-            style={{
-              left: `${window.x}px`,
-              top: `${window.y}px`,
-              width: `${window.width}px`,
-              height: `${window.height}px`,
-              zIndex: window.focused ? 1000 + window.zIndex : window.zIndex,
-              cursor: draggingWindow === window.id ? 'grabbing' : 'auto',
-            }}
-            onMouseDown={() => onWindowFocus(window.id)}
-          >
-            {/* Drag Handle — barra de control de ventana */}
+      {/* Contenedor de Ventanas */}
+      <div className="relative flex-1 w-full h-full overflow-hidden">
+        {windows.map((win) => (
+          !win.minimized && (
             <div
-              className="flex items-center justify-between px-2 bg-[#1E2A3A] select-none cursor-grab active:cursor-grabbing shrink-0 border-b border-[#0D1B2A]"
-              style={{ height: '28px' }}
-              onMouseDown={(e) => handleMouseDown(e, window.id)}
+              key={win.id}
+              className={`absolute bg-[#f7f8fa] border border-[#7f93ab] shadow-2xl flex flex-col transition-all duration-75 ${
+                win.maximized ? 'inset-0 w-full h-full rounded-none' : 'rounded-sm'
+              }`}
+              style={{
+                left: win.maximized ? 0 : `${win.x}px`,
+                top: win.maximized ? 0 : `${win.y}px`,
+                width: win.maximized ? '100%' : `${win.width}px`,
+                height: win.maximized ? '100%' : `${win.height}px`,
+                zIndex: win.focused ? 1000 + win.zIndex : win.zIndex,
+                cursor: draggingWindow === win.id ? 'grabbing' : 'auto',
+              }}
+              onMouseDown={() => onWindowFocus(win.id)}
             >
-              <span className="text-[11px] text-blue-200 truncate font-semibold">{window.title}</span>
-              <div className="flex gap-1">
-                <button
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onClick={(e) => { e.stopPropagation(); onWindowMinimize(window.id); }}
-                  className="w-5 h-5 bg-yellow-500 hover:bg-yellow-300 rounded text-[9px] text-yellow-900 font-bold flex items-center justify-center transition-colors"
-                  title="Minimizar"
-                >
-                  _
-                </button>
-                <button
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onClick={(e) => { e.stopPropagation(); onWindowMaximize(window.id); }}
-                  className="w-5 h-5 bg-green-600 hover:bg-green-400 rounded text-[9px] text-white font-bold flex items-center justify-center transition-colors"
-                  title="Maximizar"
-                >
-                  □
-                </button>
-                <button
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onClick={(e) => { e.stopPropagation(); onWindowClose(window.id); }}
-                  className="w-5 h-5 bg-red-600 hover:bg-red-400 rounded text-[9px] text-white font-bold flex items-center justify-center transition-colors"
-                  title="Cerrar (×)"
-                >
-                  ×
-                </button>
+              {/* Barra de Título Única de la Ventana en SAP B1 */}
+              <div
+                className="flex items-center justify-between px-2.5 bg-gradient-to-b from-[#1e2a3a] to-[#0f172a] text-white select-none cursor-grab active:cursor-grabbing shrink-0 border-b border-[#0d1b2a]"
+                style={{ height: '30px' }}
+                onMouseDown={(e) => handleMouseDown(e, win.id)}
+              >
+                <span className="text-xs text-blue-100 font-bold truncate tracking-wide">
+                  {win.title}
+                </span>
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => { e.stopPropagation(); onWindowMinimize(win.id); }}
+                    className="w-5 h-5 bg-[#eab308] hover:bg-yellow-400 rounded-sm text-[10px] text-slate-950 font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                    title="Minimizar a la barra inferior"
+                  >
+                    _
+                  </button>
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => { e.stopPropagation(); onWindowMaximize(win.id); }}
+                    className="w-5 h-5 bg-[#16a34a] hover:bg-emerald-500 rounded-sm text-[10px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                    title={win.maximized ? 'Restaurar tamaño' : 'Maximizar al área disponible'}
+                  >
+                    {win.maximized ? '❐' : '□'}
+                  </button>
+                  <button
+                    type="button"
+                    onMouseDown={(e) => e.stopPropagation()}
+                    onClick={(e) => { e.stopPropagation(); onWindowClose(win.id); }}
+                    className="w-5 h-5 bg-[#dc2626] hover:bg-red-500 rounded-sm text-[11px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                    title="Cerrar ventana (×)"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+
+              {/* Contenido funcional de la ventana */}
+              <div className="flex-1 overflow-auto bg-[#ECE9D8]">
+                <SAPScreenRenderer
+                  screenId={win.screenId}
+                  screenName={win.title}
+                />
               </div>
             </div>
-
-            {/* Contenido — réplica visual de la pantalla SAP */}
-            <div className="flex-1 overflow-hidden">
-              <SAPScreenRenderer
-                screenId={window.screenId}
-                screenName={window.title}
-              />
-            </div>
-          </div>
-        )
-      ))}
-
-      {/* Taskbar */}
-      <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-r from-gray-700 to-gray-600 border-t border-gray-500 flex items-center px-2 gap-2 overflow-x-auto">
-        {windows
-          .filter(w => w.minimized)
-          .map((window) => (
-            <button
-              key={`taskbar-${window.id}`}
-              onClick={() => {
-                onWindowMinimize(window.id);
-                onWindowFocus(window.id);
-              }}
-              className="px-3 py-2 bg-gray-500 hover:bg-gray-400 text-white text-xs rounded truncate max-w-xs transition"
-            >
-              {window.title}
-            </button>
-          ))}
+          )
+        ))}
       </div>
+
+      {/* Taskbar de ventanas minimizadas */}
+      {windows.some(w => w.minimized) && (
+        <div className="h-9 bg-[#1e293b] border-t border-[#475569] flex items-center px-2 gap-2 overflow-x-auto shrink-0">
+          <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Minimizadas:</span>
+          {windows
+            .filter(w => w.minimized)
+            .map((win) => (
+              <button
+                key={`taskbar-${win.id}`}
+                onClick={() => {
+                  onWindowMinimize(win.id);
+                  onWindowFocus(win.id);
+                }}
+                className="px-3 py-1 bg-[#334155] hover:bg-[#475569] text-white text-xs font-semibold rounded border border-[#64748b] truncate max-w-xs transition-all active:scale-95 flex items-center gap-1.5"
+              >
+                <Square className="w-3 h-3 text-amber-400" />
+                {win.title}
+              </button>
+            ))}
+        </div>
+      )}
     </div>
   );
 }

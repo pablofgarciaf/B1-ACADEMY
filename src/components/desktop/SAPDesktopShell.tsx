@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useCompany } from '@/hooks/useCompany';
-import { ShieldAlert, UserCheck, Shield, ChevronDown } from 'lucide-react';
+import { ShieldAlert, Shield } from 'lucide-react';
 import SAPMenuBar from './SAPMenuBar';
 import SAPToolBar from './SAPToolBar';
 import SAPModulesTree from './SAPModulesTree';
@@ -80,6 +80,7 @@ interface Window {
   width: number;
   height: number;
   minimized: boolean;
+  maximized?: boolean;
   zIndex: number;
   focused: boolean;
 }
@@ -106,6 +107,17 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
     suggestedRole: SAPRole;
   } | null>(null);
 
+  const [systemTime, setSystemTime] = useState('');
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setSystemTime(now.toLocaleString('es-EC', { dateStyle: 'short', timeStyle: 'short' }));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
   const modules = Object.values(catalog.modules || {});
   const baseEmail = userProfile?.email || currentUser?.email || 'estudiante@sap.ec';
   const currentRoleDef = SAP_ROLES[activeRole];
@@ -129,7 +141,6 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
   };
 
   const createWindow = (screenId: string, screenName: string, moduleKey?: string) => {
-    // Verificación de autorizaciones por perfil SAP B1
     if (moduleKey && !isModuleAuthorized(moduleKey)) {
       const targetMod = catalog.modules[moduleKey];
       setUnauthorizedModal({
@@ -145,11 +156,12 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
       id: `window-${windowCount}`,
       title: screenName,
       screenId,
-      x: 50 + (windowCount % 8) * 30,
-      y: 50 + (windowCount % 8) * 30,
-      width: 820,
-      height: 560,
+      x: 30 + (windowCount % 6) * 25,
+      y: 30 + (windowCount % 6) * 25,
+      width: 860,
+      height: 580,
       minimized: false,
+      maximized: false,
       zIndex: nextZIndex,
       focused: true,
     };
@@ -175,7 +187,7 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
 
   const maximizeWindow = (id: string) => {
     setWindows(prev =>
-      prev.map(w => (w.id === id ? { ...w, width: 840, height: 580 } : w))
+      prev.map(w => (w.id === id ? { ...w, maximized: !w.maximized } : w))
     );
   };
 
@@ -209,7 +221,7 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
 
   return (
     <div className="w-full h-screen flex flex-col bg-gray-900 overflow-hidden font-[Tahoma,Arial,sans-serif]">
-      {/* Barra de Título Superior de SAP Business One con Selector de Roles */}
+      {/* Barra de Título Superior de SAP Business One */}
       <div className="bg-gradient-to-r from-[#0a246a] via-[#1e3a5f] to-[#0a246a] text-white px-3 py-1.5 flex flex-wrap items-center justify-between border-b border-[#3b5998] shadow-md text-xs">
         <div className="flex items-center gap-2">
           <span className="rounded bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-2 py-0.5 text-[11px] font-black italic tracking-wider text-white shadow">SAP</span>
@@ -257,18 +269,53 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
         {/* Árbol Lateral de Módulos SAP */}
         <SAPModulesTree modules={modules} onScreenSelect={createWindow} />
 
-        {/* Gestor de Ventanas Flotantes */}
-        <SAPWindowManager
-          windows={windows}
-          onWindowClose={closeWindow}
-          onWindowMinimize={minimizeWindow}
-          onWindowMaximize={maximizeWindow}
-          onWindowFocus={focusWindow}
-          onWindowMove={moveWindow}
-        />
+        {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
+        <div className="flex-1 min-w-0 h-full relative overflow-hidden bg-[#334155] flex flex-col">
+          <div className="flex-1 relative overflow-hidden">
+            <SAPWindowManager
+              windows={windows}
+              onWindowClose={closeWindow}
+              onWindowMinimize={minimizeWindow}
+              onWindowMaximize={maximizeWindow}
+              onWindowFocus={focusWindow}
+              onWindowMove={moveWindow}
+            />
+          </div>
+
+          {/* Dock de Ventanas Abiertas y Minimizadas en SAP B1 */}
+          {windows.length > 0 && (
+            <div className="bg-[#1e293b] border-t border-[#475569] px-2 py-1 flex items-center gap-1.5 overflow-x-auto shrink-0 z-20">
+              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider px-1">Dock SAP:</span>
+              {windows.map((win) => (
+                <button
+                  key={win.id}
+                  type="button"
+                  onClick={() => {
+                    if (win.minimized) {
+                      minimizeWindow(win.id);
+                    }
+                    focusWindow(win.id);
+                  }}
+                  className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] rounded-t transition-all border ${
+                    win.focused && !win.minimized
+                      ? 'bg-[#0055A5] text-white border-blue-400 font-semibold shadow-sm'
+                      : win.minimized
+                      ? 'bg-amber-950/80 text-amber-200 border-amber-500/50 hover:bg-amber-900/90'
+                      : 'bg-[#0f172a] text-gray-300 border-gray-700 hover:bg-[#1e293b]'
+                  }`}
+                  title={win.minimized ? 'Hacer clic para restaurar ventana minimizada' : 'Hacer clic para enfocar ventana'}
+                >
+                  <span className={`w-2 h-2 rounded-full ${win.minimized ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} />
+                  <span className="truncate max-w-[150px] font-medium">{win.title}</span>
+                  {win.minimized && <span className="text-[9px] bg-amber-800 text-amber-100 px-1 rounded font-bold">Minimizado</span>}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Barra de Estado Inferior */}
+      {/* Barra de Estado Inferior Limpia (sin isotipo) */}
       <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white text-[11px] px-3 py-1 flex items-center justify-between border-t border-gray-600">
         <div className="flex items-center gap-3">
           <span className="inline-flex items-center gap-1.5 text-emerald-400">
@@ -277,7 +324,8 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
           </span>
           <span className="text-gray-300">| Perfil activo: <strong>{currentRoleDef.department}</strong></span>
         </div>
-        <div className="text-gray-400">
+        <div className="flex items-center gap-4 text-gray-300 font-mono text-[10px]">
+          <span>{systemTime}</span>
           <span>F1 Ayuda | Shift+F2 Búsqueda | Ctrl+S Guardar</span>
         </div>
       </div>
@@ -297,7 +345,7 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
                   El usuario actual <strong>{simulatedEmail}</strong> ({currentRoleDef.label}) no tiene autorización para acceder a <strong>{unauthorizedModal.screenName}</strong> en el módulo <em>{unauthorizedModal.moduleName}</em>.
                 </p>
                 <p className="text-[#555] bg-white p-2 border border-[#d5dde8] rounded-sm">
-                  ℹ️ <strong>Concepto Clave SAP B1:</strong> Las empresas configuran perfiles para que cada empleado solo opere las áreas de su competencia (Ventas no puede registrar Asientos contables ni compras).
+                  ℹ️ <strong>Concepto Clave SAP B1:</strong> Las empresas configuran perfiles para que cada empleado solo opere las áreas de su competencia.
                 </p>
               </div>
             </div>

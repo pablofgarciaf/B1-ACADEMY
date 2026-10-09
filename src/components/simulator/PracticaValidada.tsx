@@ -131,6 +131,10 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [intentos, setIntentos] = useState(0);
   const [mostrarSolucion, setMostrarSolucion] = useState(false);
 
+  const [ventanaMaximizada, setVentanaMaximizada] = useState(false);
+  const [ventanaMinimizada, setVentanaMinimizada] = useState(false);
+  const [outerMaximizada, setOuterMaximizada] = useState(false);
+
   const { currentUser } = useAuth();
   const [empresa, setEmpresa] = useState<string | null | undefined>(undefined);
   useEffect(() => {
@@ -258,7 +262,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   }, [objetivo, guiaActiva, moduloAbierto, mostrarSolucion, revisado]);
 
   return (
-    <div ref={raizRef} className="relative m-2 sm:m-3 rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs select-none">
+    <div ref={raizRef} className={`relative rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs select-none transition-all duration-100 ${outerMaximizada ? 'fixed inset-1 z-50 m-0 rounded-none h-[calc(100vh-8px)] flex flex-col' : 'm-2 sm:m-3'}`}>
       {posGuia && objetivo && (
         <div
           aria-hidden="true"
@@ -277,14 +281,22 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       )}
 
       {/* Barra de título de la aplicación */}
-      <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1">
-        <span className="flex items-center gap-2 font-semibold">
-          <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 text-[10px] font-black italic text-white">SAP</span>
-          SAP Business One 10.0 — {empresa || EMPRESA_CURSO}
+      <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2.5 py-1 select-none">
+        <span className="flex items-center gap-2 font-semibold text-xs">
+          <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 py-0.5 text-[10px] font-black italic text-white shadow-sm">SAP</span>
+          <span>SAP Business One 10.0 — {empresa || EMPRESA_CURSO}</span>
         </span>
-        <span className="hidden sm:flex gap-1" aria-hidden="true">
-          {['▁', '▢', '✕'].map((s) => <span key={s} className="w-6 h-4 flex items-center justify-center rounded-sm border border-[#9fb1c7] bg-[#eef2f7] text-[10px]">{s}</span>)}
-        </span>
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            onClick={() => setOuterMaximizada(!outerMaximizada)}
+            className="px-2 py-0.5 rounded border border-[#9fb1c7] bg-[#eef2f7] hover:bg-white text-[10.5px] font-bold text-[#1d2d3e] transition-all active:scale-95 shadow-sm cursor-pointer flex items-center gap-1"
+            title={outerMaximizada ? 'Restaurar tamaño del simulador' : 'Maximizar simulador a pantalla completa'}
+          >
+            <span>{outerMaximizada ? 'Restaurar' : 'Maximizar simulador'}</span>
+            <span>{outerMaximizada ? '❐' : '□'}</span>
+          </button>
+        </div>
       </div>
 
       {/* Barra de menú */}
@@ -357,8 +369,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
           </ul>
         </nav>
 
-        {/* Escritorio de trabajo */}
-        <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3">
+      {/* Escritorio de trabajo */}
+        <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3 relative overflow-hidden flex flex-col min-h-[360px]">
           {!ventanaAbierta ? (
             <div className="h-full min-h-[200px] flex items-center justify-center">
               <p className="max-w-sm text-center text-[#4a5b70] bg-white/70 rounded-md border border-[#b8c4d2] px-4 py-3">
@@ -366,14 +378,55 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                 <span className="font-semibold text-[#1f4f8f]">{ruta.slice(0, Math.max(nivel, 1)).join(' › ')}{nivel < ruta.length ? ' › …' : ''}</span>
               </p>
             </div>
+          ) : ventanaMinimizada ? (
+            <div className="mt-auto bg-[#1e293b] border-2 border-[#475569] p-2.5 rounded flex items-center justify-between text-white shadow-xl">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse" />
+                <span className="font-bold text-xs">{tituloVentana} (Ventana minimizada)</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setVentanaMinimizada(false)}
+                className="px-3 py-1 bg-[#0055A5] hover:bg-[#003366] text-white font-bold rounded text-xs transition-all active:scale-95 shadow cursor-pointer flex items-center gap-1"
+              >
+                <span>Restaurar ventana</span>
+                <span>❐</span>
+              </button>
+            </div>
           ) : (
-            <div className="max-w-3xl rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl">
+            <div className={`rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl transition-all duration-100 ${ventanaMaximizada ? 'absolute inset-2 z-30 max-w-none m-0 border-2 border-[#0055A5] flex flex-col h-[calc(100%-16px)]' : 'max-w-3xl'}`}>
               {/* Barra de título de la ventana */}
-              <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2 py-1 font-semibold">
-                <span>{tituloVentana}</span>
-                <span className="flex gap-1" aria-hidden="true">
-                  {['▁', '▢', '✕'].map((s) => <span key={s} className="w-5 h-4 flex items-center justify-center rounded-sm border border-[#9fb1c7] bg-[#eef2f7] text-[9px]">{s}</span>)}
+              <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold select-none shrink-0">
+                <span className="flex items-center gap-1.5 text-xs text-[#003366] font-bold">
+                  <span className="w-2 h-2 rounded-full bg-[#0055A5]" />
+                  {tituloVentana}
                 </span>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => setVentanaMinimizada(true)}
+                    className="w-5 h-5 bg-[#eab308] hover:bg-yellow-400 rounded-sm text-[10px] text-slate-950 font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                    title="Minimizar a la barra inferior"
+                  >
+                    _
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setVentanaMaximizada(!ventanaMaximizada)}
+                    className="w-5 h-5 bg-[#16a34a] hover:bg-emerald-500 rounded-sm text-[10px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                    title={ventanaMaximizada ? 'Restaurar tamaño normal' : 'Maximizar al área disponible'}
+                  >
+                    {ventanaMaximizada ? '❐' : '□'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setVentanaMinimizada(true)}
+                    className="w-5 h-5 bg-[#dc2626] hover:bg-red-500 rounded-sm text-[11px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                    title="Cerrar ventana (×)"
+                  >
+                    ×
+                  </button>
+                </div>
               </div>
 
               {/* Campos */}
