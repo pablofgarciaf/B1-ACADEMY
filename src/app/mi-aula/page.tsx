@@ -16,12 +16,13 @@ import { useAuth } from '@/context/AuthContext';
 
 const INDUCCION = 'mod-1';
 const ICONO_BLOQUE: Record<SyllabusBlock, typeof Compass> = {
-  'Fundamentos': Compass,
-  'Logística': Package,
-  'Comercial': ShoppingCart,
-  'Finanzas': Landmark,
-  'Producción': Factory,
-  'Sistema y Consultoría': Settings2,
+  'Administración y Talento Humano': Building2,
+  'Logística y Cadena de Suministro': Package,
+  'Gestión Comercial y CRM': ShoppingCart,
+  'Producción y Planificación': Factory,
+  'Finanzas y Fiscalidad': Landmark,
+  'Tecnología y Analítica': Settings2,
+  'Consultoría y Business Analyst': Compass,
   'Proyecto Final': Flag,
 };
 
@@ -116,7 +117,8 @@ export default function MiAulaPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SPECIALTY_DIPLOMAS.map(d => {
-              const mods = d.requiredModules.map(id => getModuleById(id)).filter(Boolean) as SyllabusModule[];
+              const mods = (d.requiredModules.map(id => getModuleById(id)).filter(Boolean) as SyllabusModule[])
+                .sort((a, b) => a.number - b.number);
               return (
                 <details key={d.id} className="group rounded-2xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#131a20] shadow-sm open:shadow-lg open:border-amber-500/50 transition-all">
                   <summary className="list-none cursor-pointer p-5 flex items-start gap-3">
@@ -146,9 +148,36 @@ export default function MiAulaPage() {
               );
             })}
           </div>
-          <p className="text-xs text-slate-500 dark:text-gray-400">
-            <strong className="text-slate-700 dark:text-gray-200">{MASTER_PROGRAM.title}:</strong> {MASTER_PROGRAM.description}
-          </p>
+        </section>
+
+        {/* ⭐ CAPSTONE DE GRADO: SÚPER ANALISTA / CONSULTOR MÁSTER */}
+        <section aria-labelledby="capstone-grado" className="rounded-3xl border-2 border-amber-500/60 bg-gradient-to-br from-amber-500/10 via-white to-amber-500/5 dark:from-amber-950/20 dark:via-[#131a20] dark:to-amber-950/10 p-6 sm:p-8 shadow-2xl flex flex-col md:flex-row md:items-center gap-6 relative overflow-hidden">
+          <div className="h-16 w-16 shrink-0 rounded-2xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-500 shadow-inner">
+            <Award className="w-9 h-9" aria-hidden="true" />
+          </div>
+          <div className="flex-1 space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2.5 py-0.5 rounded-full bg-amber-500 text-slate-950 text-[10px] font-black uppercase tracking-widest">
+                Estrella de Grado · Titulación Máxima
+              </span>
+              <span className="text-xs font-bold text-amber-600 dark:text-amber-400">
+                Módulo 30 (Proyecto Integrador)
+              </span>
+            </div>
+            <h2 id="capstone-grado" className="text-xl sm:text-2xl font-extrabold font-display">
+              {MASTER_PROGRAM.title}
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
+              {MASTER_PROGRAM.description} Simulación de una empresa real desde cero: parametrización de maestros, ciclo de compras, ventas, contabilidad, nómina y facturación electrónica, culminando con la defensa ante el Auditor IA.
+            </p>
+          </div>
+          <Link
+            href="/mi-aula/mod-24"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-extrabold shadow-lg hover:shadow-amber-500/25 transition-all active:scale-95 shrink-0"
+          >
+            <PlayCircle className="w-5 h-5" aria-hidden="true" />
+            Ver Proyecto de Grado
+          </Link>
         </section>
 
         {/* 3 · CATÁLOGO DE MÓDULOS (como el Atlas de Manuales) */}

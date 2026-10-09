@@ -2,8 +2,8 @@
   "version": "1.0-oficial",
   "generado": "2026-10-07",
   "resumen": {
-    "carreras": 12,
-    "modulos": 29,
+    "carreras": 14,
+    "modulos": 30,
     "clases": 120,
     "manuales": 124
   },
@@ -16,7 +16,7 @@
   "carreras": [
     {
       "id": "C01",
-      "name": "Asistente de Compras e Inventario",
+      "name": "Asistente de Compras e Inventarios",
       "modules": [
         "M01",
         "M02",
@@ -27,7 +27,7 @@
     },
     {
       "id": "C02",
-      "name": "Jefe de Bodega",
+      "name": "Jefe de Bodega y Logística",
       "modules": [
         "M01",
         "M02",
@@ -38,7 +38,7 @@
     },
     {
       "id": "C03",
-      "name": "Ejecutivo Comercial",
+      "name": "Ejecutivo Comercial y Ventas",
       "modules": [
         "M01",
         "M02",
@@ -48,7 +48,7 @@
     },
     {
       "id": "C04",
-      "name": "Servicio Postventa",
+      "name": "Especialista en CRM y Post-Venta",
       "modules": [
         "M01",
         "M02",
@@ -69,17 +69,7 @@
     },
     {
       "id": "C06",
-      "name": "Asistente de Nómina y Talento Humano",
-      "modules": [
-        "M01",
-        "M02",
-        "M07",
-        "M25"
-      ]
-    },
-    {
-      "id": "C07",
-      "name": "Tesorería y Cobranzas",
+      "name": "Especialista en Tesorería y Cobranzas",
       "modules": [
         "M01",
         "M07",
@@ -88,18 +78,18 @@
       ]
     },
     {
-      "id": "C08",
+      "id": "C07",
       "name": "Analista de Costos y Presupuestos",
       "modules": [
-        "M07",
-        "M14",
         "M09",
+        "M14",
+        "M07",
         "M18"
       ]
     },
     {
-      "id": "C09",
-      "name": "Planificador de Producción",
+      "id": "C08",
+      "name": "Planificador de Producción (MRP)",
       "modules": [
         "M02",
         "M10",
@@ -108,18 +98,50 @@
       ]
     },
     {
-      "id": "C10",
-      "name": "Administrador SAP Business One",
+      "id": "C09",
+      "name": "Gestión Administrativa y Control de Activos Fijos",
       "modules": [
         "M01",
-        "M21",
-        "M22",
-        "M12"
+        "M02",
+        "M09",
+        "M21"
+      ]
+    },
+    {
+      "id": "C10",
+      "name": "Especialista en Talento Humano y Nómina",
+      "modules": [
+        "M01",
+        "M02",
+        "M25",
+        "M30"
       ]
     },
     {
       "id": "C11",
-      "name": "Consultor de Implementación",
+      "name": "Consultor Comercial y Preventa SAP B1",
+      "modules": [
+        "M01",
+        "M02",
+        "M04",
+        "M05",
+        "M06",
+        "M12"
+      ]
+    },
+    {
+      "id": "C12",
+      "name": "Administrador del Sistema SAP B1 (Key User)",
+      "modules": [
+        "M01",
+        "M21",
+        "M12",
+        "M22"
+      ]
+    },
+    {
+      "id": "C13",
+      "name": "Consultor de Implementación ERP",
       "modules": [
         "M21",
         "M12",
@@ -128,7 +150,7 @@
       ]
     },
     {
-      "id": "C12",
+      "id": "C14",
       "name": "Consultor Funcional y Business Analyst SAP B1",
       "modules": [
         "M01",
@@ -1074,6 +1096,30 @@
           "number": 1,
           "id": "fuente:consultoria_clientes_uat",
           "title": "Gestión de Stakeholders, Guiones UAT y Go-Live"
+        }
+      ]
+    },
+    {
+      "id": "M30",
+      "modKey": "mod-30",
+      "number": 6,
+      "name": "Nómina, Beneficios Sociales e IESS Ecuador 2026",
+      "clasesCount": 3,
+      "manuals": [
+        {
+          "number": 1,
+          "id": "mod30-c1",
+          "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos"
+        },
+        {
+          "number": 2,
+          "id": "mod30-c2",
+          "title": "Décimos, Fondos de Reserva y Provisiones de Ley"
+        },
+        {
+          "number": 3,
+          "id": "mod30-c3",
+          "title": "Contabilidad de la Nómina y Liquidación de Aportes al IESS"
         }
       ]
     }

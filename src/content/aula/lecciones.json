@@ -23352,5 +23352,451 @@
       }
     ],
     "quizQuestions": []
+  },
+  "mod30-c1": {
+    "images": [
+      "/aula/mod25-c2/Slide_001.webp",
+      "/aula/mod25-c2/Slide_002.webp",
+      "/aula/mod25-c2/Slide_003.webp",
+      "/aula/mod25-c2/Slide_004.webp",
+      "/aula/mod25-c2/Slide_005.webp",
+      "/aula/mod25-c2/Slide_006.webp",
+      "/aula/mod25-c2/Slide_007.webp",
+      "/aula/mod25-c2/Slide_008.webp",
+      "/aula/mod25-c2/Slide_009.webp",
+      "/aula/mod25-c2/Slide_010.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Clase práctica sobre el rol de pagos en Ecuador 2026: cálculo de sueldo, horas extras, décimos, fondos de reserva y su contabilización en SAP Business One mediante asientos contables. Se usa el simulador de B1 Academy con datos reales de B1 Center y los empleados E001 a E004. Se aprende haciendo: se ejecuta el rol y se genera el asiento correspondiente.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase podrás: calcular el rol de pagos de un empleado considerando sueldo, horas extras al 50 % y 100 %, anticipos, décimos tercer y cuarto sueldo, fondos de reserva y vacaciones; aplicar los aportes al IESS (personal 9,45 % y patronal 12,15 %); determinar el neto a pagar y el costo total para la empresa; y generar el asiento contable correspondiente en SAP Business One usando la ruta Finanzas > Asiento, con los importes exactos del simulador.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "El rol de pagos incluye: sueldo del período (sueldo mensual × días trabajados / 30); horas extras (valor hora = sueldo / 240, con recargo 50 % o 100 %); décimo tercer sueldo (1/12 del ingreso anual); décimo cuarto sueldo (SBU/12 = 40,17 mensual si se mensualiza); fondos de reserva (8,33 % de la remuneración sujeta a aporte, desde el segundo año); y vacaciones (provisione mensual: remuneración × 15 / 360). La remuneración sujeta a aporte incluye sueldo, horas extras, comisiones y otros ingresos gravables. Sobre ella se calcula el aporte personal al IESS (9,45 %).",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El flujo comienza con el sueldo del período, al que se suman las horas extras según su tipo. El resultado es la remuneración sujeta a aporte, sobre la cual se calcula el aporte personal al IESS (9,45 %). Luego se suman los conceptos mensualizados (décimos, fondos de reserva) para obtener el ingreso total del rol. Se restan el aporte personal y anticipos para obtener el neto a pagar. Finalmente, se calcula el aporte patronal (12,15 %) y las provisiones de beneficios sociales para el asiento contable.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Vas a ejecutar el rol de pagos de María Gómez para abril de 2026. Ingresarás el período, seleccionarás su código E002, indicarás 30 días trabajados, 10 horas extras con recargo del 50 % y un anticipo de 100,00 que ella recibió previamente. Estos datos son los del ejemplo A del contenido técnico. Al confirmar, el sistema calculará automáticamente el sueldo, horas extras, décimos, fondos de reserva, aportes IESS y generará el ingreso total y neto a pagar, listos para el asiento contable.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Ejecutar el rol de pagos de abril de María Gómez",
+          "menu_path": "Finanzas > Asiento",
+          "instructions": [
+            "Ingresar el período 2026-04",
+            "Seleccionar el empleado María Gómez (E002)",
+            "Ingresar 30 días trabajados",
+            "Ingresar 10 horas extras al 50 %",
+            "Ingresar un anticipo de 100,00"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Período",
+              "valor": "2026-04",
+              "pista": "Formato año-mes"
+            },
+            {
+              "etiqueta": "Empleado",
+              "valor": "E002",
+              "pista": "Código del empleado en la lista"
+            },
+            {
+              "etiqueta": "Días trabajados",
+              "valor": "30",
+              "pista": "Días laborados en el mes"
+            },
+            {
+              "etiqueta": "Horas extras 50 %",
+              "valor": "10",
+              "pista": "Número de horas con recargo del 50 %"
+            },
+            {
+              "etiqueta": "Anticipo",
+              "valor": "100,00",
+              "pista": "Valor entregado previamente al empleado"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Este es el asiento contable generado por el rol de pagos de María Gómez en abril de 2026. El debe registra el gasto de nómina (1.035,94), el aporte patronal al IESS (116,18) y las provisiones de beneficios sociales (159,70), que incluyen décimo tercero, décimo cuarto y vacaciones. El haber muestra el neto a pagar a María (845,57), el total IESS por pagar (206,55, suma de aporte personal y patronal), el anticipo entregado (100,00) y las provisiones de beneficios sociales por pagar (159,70). El total debe y haber es 1.311,82, cumpliendo el principio de partida doble.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Ahora ejecutarás el rol de pagos de Ana Silva para mayo de 2026. Ingresarás el período 2026-05, seleccionarás su código E004 y confirmarás 30 días trabajados. Como no tiene horas extras, dejarás esos campos en cero. Sus décimos tercer y cuarto sueldo están mensualizados, por lo que se incluyen automáticamente en el ingreso total. Como tiene menos de un año de antigüedad (ingresó 15/01/2026), no genera fondos de reserva. El sistema calculará su sueldo, décimos, aporte IESS y neto a pagar, listos para el asiento.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Ejecutar el rol de pagos de mayo de Ana Silva",
+          "menu_path": "Finanzas > Asiento",
+          "instructions": [
+            "Ingresar el período 2026-05",
+            "Seleccionar el empleado Ana Silva (E004)",
+            "Ingresar 30 días trabajados",
+            "Confirmar que no hay horas extras",
+            "Verificar que los décimos están mensualizados"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Período",
+              "valor": "2026-05",
+              "pista": "Formato año-mes"
+            },
+            {
+              "etiqueta": "Empleado",
+              "valor": "E004",
+              "pista": "Código del empleado en la lista"
+            },
+            {
+              "etiqueta": "Días trabajados",
+              "valor": "30",
+              "pista": "Días laborados en el mes"
+            },
+            {
+              "etiqueta": "Horas extras 50 %",
+              "valor": "0",
+              "pista": "No hay horas extras en este caso"
+            },
+            {
+              "etiqueta": "Horas extras 100 %",
+              "valor": "0",
+              "pista": "No hay horas extras en este caso"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Este es el asiento contable del rol de pagos de Ana Silva en mayo de 2026. El debe incluye el gasto de nómina (562,34), que incorpora su sueldo y los décimos mensualizados; el aporte patronal al IESS (58,56); y las provisiones de beneficios sociales (20,08), que corresponden solo a vacaciones, ya que sus décimos están en gasto y aún no tiene fondos de reserva. El haber muestra el neto a pagar (516,79), el IESS por pagar (104,11, suma de aporte personal y patronal), y las provisiones por pagar (20,08). El total debe y haber es 640,98, equilibrando el asiento.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 9,
+        "script_text": "En el cálculo del rol de pagos, errores frecuentes incluyen aplicar el aporte personal al IESS sobre conceptos que no forman parte de la remuneración sujeta a aporte (como décimos mensualizados), pagar fondos de reserva a empleados con menos de un año de servicio, y olvidar provisionar mensualmente las vacaciones. Las buenas prácticas consisten en aplicar el 9,45 % de IESS únicamente sobre sueldo, horas extras, comisiones y otros ingresos gravables; reservar el pago de fondos de reserva desde el segundo año de antigüedad; y provisionar vacaciones cada mes usando la fórmula remuneración × 15 / 360, asegurando un correcto ajuste contable y cumplimiento normativo.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 10,
+        "script_text": "En esta clase aprendiste a calcular el rol de pagos en Ecuador 2026 considerando sueldo, horas extras (50 % y 100 %), décimos tercer y cuarto sueldo, fondos de reserva y vacaciones. Viste cómo se aplica el aporte personal al IESS (9,45 %) sobre la remuneración sujeta a aporte y cómo se genera el ingreso total del rol. Practicaste la ejecución de roles de pago en el simulador, generando asientos contables exactos en Finanzas > Asiento. Verificaste los importes del debe y haber, incluyendo gasto de nómina, IESS patronal, beneficios sociales, sueldos por pagar y anticipos. Finalmente, identificaste errores comunes y buenas prácticas para un procesamiento nómina preciso y conforme a la normativa.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": [],
+    "classId": "mod30-c1",
+    "title": "Rol de Pagos: Sueldo, Horas Extras y Descuentos"
+  },
+  "mod30-c2": {
+    "images": [
+      "/aula/mod25-c3/Slide_001.webp",
+      "/aula/mod25-c3/Slide_002.webp",
+      "/aula/mod25-c3/Slide_003.webp",
+      "/aula/mod25-c3/Slide_004.webp",
+      "/aula/mod25-c3/Slide_005.webp",
+      "/aula/mod25-c3/Slide_006.webp",
+      "/aula/mod25-c3/Slide_007.webp",
+      "/aula/mod25-c3/Slide_008.webp",
+      "/aula/mod25-c3/Slide_009.webp",
+      "/aula/mod25-c3/Slide_010.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Clase sobre los beneficios sociales obligatorios en Ecuador 2026: décimo tercer sueldo, décimo cuarto sueldo, fondos de reserva y vacaciones. Se explica su cálculo, mensualización, acumulación y contabilización en SAP Business One mediante asientos de rol de pagos. Se usan los empleados de B1 Center y los ejemplos del simulador.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase podrás calcular el décimo tercer y cuarto sueldo, los fondos de reserva y las vacaciones según la normativa ecuatoriana 2026, distinguir entre beneficios acumulados y mensualizados, y registrar el rol de pagos en SAP Business One mediante un asiento contable correcto, usando los datos de los empleados de B1 Center.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "El décimo tercer sueldo es la doceava parte del total ganado en el año. El décimo cuarto sueldo equivale a un SBU anual (USD 482), proporcional a los días trabajados. Los fondos de reserva son el 8,33 % (1/12) de la remuneración, desde el segundo año de servicio. Ambos pueden pagarse mensualizados o acumularse y pagarse en fechas legales. En SAP se provisionan en Beneficios sociales si están acumulados.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El rol de pagos comienza con la remuneración sujeta a aporte (sueldo + extras + comisiones). Se descuenta el aporte personal al IESS y se suma lo que se paga mensualizado (décimos, reservas). El ingreso total del rol va a Gasto de nómina. La empresa provisiona los beneficios que no se pagan mensualmente. Finalmente se genera el asiento contable que refleja debe y haber iguales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "En esta práctica ejecutas el rol de pagos de Carlos López para mayo de 2026. Ingresas el período, seleccionas al empleado y confirmas 30 días trabajados. Como tiene 8 horas extras al 100 % (recargo del 100 % por sábados, domingos o feriados), ese valor se ingresa en el campo correspondiente. No tiene anticipo, por lo que ese campo queda en cero. Esta acción genera el asiento que incluye su sueldo, horas extras, décimos acumulados, fondos de reserva y vacaciones.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Ejecutar rol de Carlos López mayo",
+          "menu_path": "Finanzas > Asiento",
+          "instructions": [
+            "Ingresar el período 2026-05",
+            "Seleccionar el empleado Carlos López (E003)",
+            "Establecer 30 días trabajados",
+            "Ingresar 8 horas extras al 100 %",
+            "Verificar que no hay anticipo"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Período",
+              "valor": "2026-05",
+              "pista": "Año y mes del rol a procesar"
+            },
+            {
+              "etiqueta": "Empleado",
+              "valor": "Carlos López",
+              "pista": "Nombre completo del empleado según maestro"
+            },
+            {
+              "etiqueta": "Días trabajados",
+              "valor": "30",
+              "pista": "Días laborados en el mes de mayo"
+            },
+            {
+              "etiqueta": "Horas extras 50 %",
+              "valor": "0",
+              "pista": "Horas extras con recargo del 50 %"
+            },
+            {
+              "etiqueta": "Horas extras 100 %",
+              "valor": "8",
+              "pista": "Horas extras con recargo del 100 % (sábados, domingos, feriados)"
+            },
+            {
+              "etiqueta": "Anticipo",
+              "valor": "0.00",
+              "pista": "Anticipo dado previamente al empleado"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Este asiento representa el rol de pagos de Carlos López en mayo de 2026. El Gasto de nómina incluye su sueldo y las horas extras al 100 % (800,00). La empresa paga su parte del IESS (97,20) y provisiona los beneficios que no se pagan mensualmente: décimo tercero, décimo cuarto, fondos de reserva y vacaciones (206,84). En el haber se registra el neto a pagar (724,40), el total IESS por pagar (172,80) y las provisiones a pagar (206,84). El debe y el haber suman 1.104,04, equilibrando el asiento.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Las vacaciones son 15 días por cada año de servicio y la empresa las provisiona cada mes para no cargar el gasto de golpe cuando el trabajador las tome. La provisión mensual es la remuneración sujeta a aporte multiplicada por 15 y dividida para 360. En el caso de Carlos López, con una remuneración de 800,00, la provisión es 33,33 y se registra en Beneficios sociales, con su contrapartida en Beneficios sociales por pagar. Cuando Carlos tome sus vacaciones, no se vuelve a registrar gasto: se usa la provisión acumulada.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Los beneficios que se acumulan se provisionan cada mes y se pagan en fechas fijadas por la ley. El décimo tercer sueldo se paga hasta el 24 de diciembre. El décimo cuarto sueldo, que es un salario básico de 482, se paga hasta el 15 de marzo en la Costa y Galápagos, y hasta el 15 de agosto en la Sierra y la Amazonía. Los fondos de reserva acumulados se pagan al trabajador cuando los solicita o se depositan en el IESS. Si el trabajador pidió mensualizarlos, como Ana Silva con sus décimos, se pagan cada mes con el rol y ya no se provisionan.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 9,
+        "script_text": "Los beneficios sociales pueden ser acumulados o mensualizados. Los acumulados (como el décimo tercero de Juan Pérez o los fondos de reserva de Carlos López) se provisionan cada mes en la cuenta Beneficios sociales y se pagan en fechas legales (diciembre para el décimo tercero, marzo/agosto para el décimo cuarto, según región). Los mensualizados (como los décimos de Ana Silva o los fondos de reserva de Juan Pérez) se pagan cada mes con el rol y van directamente al Gasto de nómina, sin generar provisión. Esta distinción afecta el asiento contable del rol.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 10,
+        "script_text": "En esta clase viste cómo calcular el décimo tercer y cuarto sueldo, los fondos de reserva y las vacaciones según la normativa ecuatoriana 2026, usando los empleados de B1 Center como referencia. Aprendiste a distinguir entre beneficios acumulados y mensualizados y su impacto en el asiento contable del rol de pagos. Practicaste la ejecución de roles en SAP Business One mediante la ventana Finanzas > Asiento, generando asientos equilibrados que reflejan correctamente el Gasto de nómina, el IESS patronal y las provisiones de beneficios sociales.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": [],
+    "classId": "mod30-c2",
+    "title": "Décimos, Fondos de Reserva y Provisiones de Ley"
+  },
+  "mod30-c3": {
+    "images": [
+      "/aula/mod25-c4/Slide_001.webp",
+      "/aula/mod25-c4/Slide_002.webp",
+      "/aula/mod25-c4/Slide_003.webp",
+      "/aula/mod25-c4/Slide_004.webp",
+      "/aula/mod25-c4/Slide_005.webp",
+      "/aula/mod25-c4/Slide_006.webp",
+      "/aula/mod25-c4/Slide_007.webp",
+      "/aula/mod25-c4/Slide_008.webp",
+      "/aula/mod25-c4/Slide_009.webp",
+      "/aula/mod25-c4/Slide_010.webp",
+      "/aula/mod25-c4/Slide_011.webp"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Esta clase enseña cómo se contabiliza la nómina en SAP Business One según la normativa ecuatoriana vigente en 2026. Se parte del cálculo del rol de pagos, se generan las provisiones de beneficios sociales y se registra el asiento contable correspondiente. Se usa como caso práctico el rol de María Gómez para abril de 2026, con datos exactos del simulador. El objetivo es que el alumno comprenda el flujo desde el cálculo del neto a pagar hasta el pago efectivo en banco y la planilla del IESS.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Al finalizar esta clase, el estudiante podrá calcular el rol de pagos de un empleado considerando sueldo, horas extras, anticipos y provisiones legales; generar el asiento contable de nómina con las cuentas correctas del plan de B1 Center; y registrar los pagos posteriores de sueldos netos y planilla del IESS desde el módulo de Gestión de bancos. Todo con datos exactos del simulador y cumpliendo la normativa ecuatoriana 2026.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 3,
+        "script_text": "En Ecuador 2026, el Salario Básico Unificado es de USD 482. El aporte personal al IESS es del 9,45 % sobre la remuneración sujeta a aporte, y el patronal es del 12,15 % (11,15 % IESS + 0,5 % IECE + 0,5 % SECAP). Los décimos tercer y cuarto se pagan proporcionalmente o mensualizados. Los fondos de reserva son el 8,33 % mensual desde el segundo año. Las horas extras se pagan con recargo del 50 % (suplementarias) o 100 % (extraordinarias). El ingreso total del rol incluye lo que se paga mensualizado.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 4,
+        "script_text": "El flujo comienza con el cálculo del rol de pagos, que determina el neto a pagar y las obligaciones patronales. Luego se genera un asiento contable en Finanzas > Asiento que refleja el gasto de nómina, el aporte patronal y las provisiones. Después, se pagan los sueldos netos transferiendo fondos desde el banco a la cuenta Sueldos por pagar. Finalmente, se cancela la planilla del IESS pagando lo retenido y lo patronal. Cada paso afecta cuentas específicas del plan contable de B1 Center.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Partimos del rol de pagos de María Gómez de abril de 2026, que ya ejecutaste en la clase del rol de pagos. Su neto a pagar es 845,57. El rol generó las obligaciones que ahora debemos cancelar desde el banco: sueldos por pagar 845,57 e IESS por pagar 206,55. Si todavía no ejecutaste ese rol, hazlo primero en la clase anterior para que los saldos coincidan con los pagos que haremos a continuación.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Este asiento contable refleja el registro del rol de pagos de María Gómez para abril de 2026. El debe incluye el gasto de nómina (1.035,94), que corresponde al ingreso total del rol; el aporte patronal al IESS (116,18); y las provisiones de beneficios sociales (159,70), que comprenden décimo tercero, décimo cuarto y vacaciones. El haber muestra las obligaciones: sueldos por pagar (845,57), IESS por pagar (206,55, suma del aporte personal y patronal), anticipos al personal (100,00) y beneficios sociales por pagar (159,70). El total debe y haber es de 1.311,82, cumpliendo el principio de partida doble.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 7,
+        "script_text": "En esta práctica depositas el capital inicial en el banco. Los bancos de tu B1 Center empiezan en cero, así que antes de pagar sueldos y la planilla del IESS necesitas fondos. Elige Banco Pichincha, marca un depósito de 5000.00, usa como contrapartida Capital social y fecha 01/04/2026. Después podrás pagar sin que el sistema te diga saldo insuficiente.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Depositar el capital inicial en el banco",
+          "menu_path": "Gestión de bancos > Pagos recibidos > Pagos recibidos",
+          "instructions": [
+            "Elige Banco Pichincha",
+            "Indica que es un depósito",
+            "Escribe el monto 5000.00",
+            "Elige la contrapartida 3.01 Capital social",
+            "Confirma la fecha 01/04/2026 y guarda"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Banco",
+              "valor": "Banco Pichincha",
+              "pista": "Cuenta corriente BAN-1"
+            },
+            {
+              "etiqueta": "Tipo",
+              "valor": "Depósito",
+              "pista": "Entra dinero al banco"
+            },
+            {
+              "etiqueta": "Monto",
+              "valor": "5000.00",
+              "pista": "Capital inicial de la práctica"
+            },
+            {
+              "etiqueta": "Contrapartida",
+              "valor": "3.01 Capital social",
+              "pista": "De dónde viene el dinero"
+            },
+            {
+              "etiqueta": "Fecha",
+              "valor": "01/04/2026",
+              "pista": "Antes de pagar la nómina"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Esta práctica registra el pago de los sueldos netos a María Gómez mediante transferencia bancaria. Se usa el banco Banco Pichincha, cuenta corriente, con un monto de 845,57, que corresponde al neto a pagar del rol. La contrapartida es la cuenta Sueldos por pagar, que se cancela al efectivizarse el pago. La fecha es el 30/04/2026, último día hábil de abril. Este movimiento disminuye el pasivo por sueldos por pagar y acredita el banco, reflejando el egreso de efectivo. Es un paso esencial tras generar el asiento contable del rol.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Pagar sueldos netos por transferencia",
+          "menu_path": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+          "instructions": [
+            "Seleccionar banco Banco Pichincha",
+            "Ingresar monto 845,57",
+            "Seleccionar contrapartida Sueldos por pagar",
+            "Confirmar fecha de pago 30/04/2026",
+            "Guardar el pago"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Banco",
+              "valor": "Banco Pichincha",
+              "pista": "Seleccionar de la lista"
+            },
+            {
+              "etiqueta": "Monto",
+              "valor": "845,57",
+              "pista": "Neto a pagar del rol"
+            },
+            {
+              "etiqueta": "Contrapartida",
+              "valor": "2.1.05 Sueldos por pagar",
+              "pista": "Cuenta de pasivo a cancelar"
+            },
+            {
+              "etiqueta": "Fecha",
+              "valor": "30/04/2026",
+              "pista": "Último día hábil del mes"
+            },
+            {
+              "etiqueta": "Referencia",
+              "valor": "Nómina abr-26",
+              "pista": "Descripción opcional del pago"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 9,
+        "script_text": "Esta práctica registra el pago de la planilla del IESS correspondiente al rol de María Gómez. El monto es 206,55, resultado de sumar el aporte personal (90,37) y el aporte patronal (116,18). Se usa nuevamente el banco Banco Pichincha y la fecha 30/04/2026. La contrapartida es la cuenta IESS por pagar, que se cancela al realizar este pago. Este movimiento refleja la obligación legal de la empresa de declarar y pagar las contribuciones al IESS. Es fundamental hacerlo en tiempo para evitar recargos.",
+        "step_guide": {
+          "action_type": "practica",
+          "title": "Pagar planilla del IESS",
+          "menu_path": "Gestión de bancos > Pagos efectuados > Pagos efectuados",
+          "instructions": [
+            "Seleccionar banco Banco Pichincha",
+            "Ingresar monto 206,55",
+            "Seleccionar contrapartida IESS por pagar",
+            "Confirmar fecha de pago 30/04/2026",
+            "Guardar el pago"
+          ],
+          "campos": [
+            {
+              "etiqueta": "Banco",
+              "valor": "Banco Pichincha",
+              "pista": "Seleccionar de la lista"
+            },
+            {
+              "etiqueta": "Monto",
+              "valor": "206,55",
+              "pista": "Total IESS a pagar (personal + patronal)"
+            },
+            {
+              "etiqueta": "Contrapartida",
+              "valor": "2.1.04 IESS por pagar",
+              "pista": "Cuenta de pasivo a cancelar"
+            },
+            {
+              "etiqueta": "Fecha",
+              "valor": "30/04/2026",
+              "pista": "Misma fecha que el pago de sueldos"
+            },
+            {
+              "etiqueta": "Referencia",
+              "valor": "Planilla IESS abr-26",
+              "pista": "Descripción opcional del pago"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 10,
+        "script_text": "Un error común es considerar el anticipo como gasto de nómina, cuando en realidad es un activo que se cancela contra el sueldo. Otro es no provisionar vacaciones y beneficios sociales cada mes, lo que distorsiona los resultados. También se suele retrasar el pago de la planilla del IESS, generando multas. Las buenas prácticas incluyen acreditar el anticipo en la cuenta Anticipos al personal, provisionar mensualmente décimos, fondos de reserva y vacaciones en Beneficios sociales, y pagar la planilla del IESS junto con los sueldos netos al final del mes para mantenerse al día con las obligaciones legales.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 11,
+        "script_text": "En esta clase se aprendió a contabilizar la nómina en SAP Business One según la normativa ecuatoriana 2026. Se calculó el rol de pagos de María Gómez para abril de 2026, considerando sueldo, horas extras al 50 % y anticipo. Se generó el asiento contable con el gasto de nómina, aporte patronal y provisiones de beneficios sociales. Luego se registraron los pagos de sueldos netos y planilla del IESS desde Gestión de bancos. Todo se hizo con datos exactos del simulador, cumpliendo el IVA 15 % y las reglas de retención. El flujo completo asegura que la contabilidad refleje fielmente las obligaciones patronales y los derechos de los trabajadores.",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": [],
+    "classId": "mod30-c3",
+    "title": "Contabilidad de la Nómina y Liquidación de Aportes al IESS"
   }
 }

@@ -430,8 +430,15 @@ export default function ManualViewer({
   // ── Modo narrado: sin archivo de video, Jorge narra cada lámina con su guion (clase_sync.json) ──
   // Es lo mismo que el video (lámina fija + voz), pero sin almacenar gigas de MP4 en el hosting.
   const narrable = !videoUrl && !!syncData && syncData.length > 0;
-  const { isSpeaking, needsGesture, vozFallo, speakText, stopSpeaking, resumeAfterGesture, preload } = useAcademyVoice();
+  const { isSpeaking, needsGesture, vozFallo, speakText, stopSpeaking, resumeAfterGesture, preload, velocidad, cambiarVelocidad } = useAcademyVoice();
   const [narrando, setNarrando] = useState(false);
+
+  // Sincronizar velocidad con el reproductor de video cuando exista
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = velocidad;
+    }
+  }, [velocidad]);
 
   // La clase arranca sola 2 segundos después de abrir el manual (como un video).
   // Si el navegador bloquea el audio por no haber interacción previa, se muestra el botón "Escuchar a Jorge".
@@ -514,6 +521,17 @@ export default function ManualViewer({
               {/* Overlay Interactivo Tutor IA con Pausa Estricta */}
 
 
+              {/* Botón Flotante para Velocidad del Video */}
+              <button
+                type="button"
+                onClick={cambiarVelocidad}
+                title="Cambiar velocidad del video (1×, 1.25×, 1.5×, 1.75×)"
+                className="absolute top-3 right-36 z-20 flex items-center gap-1.5 rounded-lg bg-black/75 hover:bg-black/95 text-amber-400 px-2.5 py-1.5 text-xs font-bold backdrop-blur-md border border-white/20 shadow-xl transition-all active:scale-95 opacity-85 hover:opacity-100 group-hover:opacity-100"
+              >
+                <Timer size={13} className="text-amber-500" />
+                <span>{velocidad}×</span>
+              </button>
+
               {/* Botón Flotante para Pantalla Completa del Video */}
               <button
                 onClick={toggleFullscreen}
@@ -567,14 +585,25 @@ export default function ManualViewer({
 
               <div className="flex items-center gap-3 text-xs font-medium text-gray-400">
                 {narrable && (
-                  <button
-                    onClick={alternarNarracion}
-                    className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${narrando ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
-                      }`}
-                    title={narrando ? 'Pausar la clase' : 'Reproducir la clase narrada'}
-                  >
-                    {narrando ? <><Pause size={14} /> Pausar</> : <><PlayCircle size={14} /> {currentIdx === 0 ? 'Reproducir clase' : 'Continuar'}</>}
-                  </button>
+                  <>
+                    <button
+                      onClick={alternarNarracion}
+                      className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${narrando ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
+                        }`}
+                      title={narrando ? 'Pausar la clase' : 'Reproducir la clase narrada'}
+                    >
+                      {narrando ? <><Pause size={14} /> Pausar</> : <><PlayCircle size={14} /> {currentIdx === 0 ? 'Reproducir clase' : 'Continuar'}</>}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={cambiarVelocidad}
+                      className="flex items-center gap-1 rounded-lg bg-gray-800 hover:bg-gray-700 px-2.5 py-1.5 text-xs font-bold text-amber-400 border border-gray-700/80 transition-all active:scale-95"
+                      title="Velocidad de narración (clic para cambiar: 1×, 1.25×, 1.5×, 1.75×)"
+                    >
+                      <Timer size={13} className="text-amber-500" />
+                      <span>{velocidad}×</span>
+                    </button>
+                  </>
                 )}
                 {needsGesture && (
                   <button onClick={resumeAfterGesture} className="flex items-center gap-1 rounded-lg bg-amber-500/20 px-2 py-1 text-amber-300 active:scale-95">
