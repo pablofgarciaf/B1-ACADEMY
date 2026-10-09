@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { SapiCara } from '@/components/site/SapiMascota';
+import { FiniCara } from '@/components/site/FiniMascota';
 import {
   ArrowRight, ChevronDown, ChevronRight, ChevronsLeft, ChevronsRight, ChevronLeft, CircleAlert, CircleCheck,
   FileSpreadsheet, FileText, Filter, Folder, FolderOpen, Info, Mail, Plus, Printer, Search, Settings,
@@ -269,7 +269,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
           style={{ left: posGuia.x, top: posGuia.y }}
           className="pointer-events-none absolute z-30 transition-[left,top] duration-500 ease-out motion-reduce:transition-none"
         >
-          <SapiCara tam={GUIA_TAM} />
+          <FiniCara tam={GUIA_TAM} />
           <span
             className={`absolute top-1 whitespace-nowrap rounded-md bg-[#0B3D91] px-2 py-1 text-[11px] font-semibold text-white shadow-lg ${
               posGuia.izquierda ? 'right-full mr-1' : 'left-full ml-1'
@@ -560,7 +560,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
             aria-pressed={guiaActiva}
             className="ml-1 rounded-sm border border-[#b8c4d2] bg-white px-1.5 py-px text-[10.5px] text-[#1f4f8f] hover:bg-[#e8f1fb] active:scale-95"
           >
-            {guiaActiva ? 'Ocultar guía Sapi' : 'Mostrar guía Sapi'}
+            {guiaActiva ? 'Ocultar guía Fini' : 'Mostrar guía Fini'}
           </button>
         )}
       </div>

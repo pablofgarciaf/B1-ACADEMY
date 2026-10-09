@@ -4,12 +4,11 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 /**
- * SAPI, la mascota del asistente: se arrastra, se pega al borde más cercano y recuerda su posición.
- * En Mi Aula arranca abajo a la izquierda (sobre el temario) para no tapar el simulador ni "Añadir".
+ * Fini AI (Fénix Rojo), la mascota inteligente del ERP: se arrastra, se pega al borde más cercano y recuerda su posición.
  */
 const TAM = 60;
 const MARGEN = 14;
-const CLAVE = 'sapi_pos_v1';
+const CLAVE = 'fini_pos_v1';
 
 type Pos = { x: number; y: number };
 
@@ -27,7 +26,7 @@ function acotar(p: Pos): Pos {
   };
 }
 
-export default function SapiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der') => void }) {
+export default function FiniMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der') => void }) {
   const pathname = usePathname();
   const [pos, setPos] = useState<Pos | null>(null);
   const [arrastrando, setArrastrando] = useState(false);
@@ -48,7 +47,7 @@ export default function SapiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
     try {
       const actual = JSON.parse(localStorage.getItem(CLAVE) ?? '{}') as Record<string, Pos>;
       localStorage.setItem(CLAVE, JSON.stringify({ ...actual, [zona]: p }));
-    } catch { /* sin almacenamiento: la posición vale solo para esta visita */ }
+    } catch { /* sin almacenamiento */ }
   }, [pathname]);
 
   if (!pos) return null;
@@ -86,14 +85,17 @@ export default function SapiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
         arrastrando ? 'cursor-grabbing scale-110' : 'cursor-grab transition-[left,top] duration-300 ease-out hover:scale-105'
       }`}
     >
-      <SapiCara tam={TAM} flotar={!arrastrando} />
+      <FiniCara tam={TAM} flotar={!arrastrando} />
       <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white" aria-hidden="true" />
     </button>
   );
 }
 
+// Re-exportamos SapiMascota y FeniMascota para compatibilidad
+export { FiniMascota as SapiMascota, FiniMascota as FeniMascota };
+
 /** Dibujo de Fini (Fénix Rojo de Inteligencia ERP). */
-export function SapiCara({ tam, flotar = true }: { tam: number; flotar?: boolean }) {
+export function FiniCara({ tam, flotar = true }: { tam: number; flotar?: boolean }) {
   const id = `fini${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   return (
     <svg width={tam} height={tam} viewBox="0 0 64 64" className={flotar ? 'sapi-flotar' : ''} aria-hidden="true">
@@ -136,3 +138,6 @@ export function SapiCara({ tam, flotar = true }: { tam: number; flotar?: boolean
     </svg>
   );
 }
+
+// Re-exportamos SapiCara y FeniCara para compatibilidad
+export { FiniCara as SapiCara, FiniCara as FeniCara };

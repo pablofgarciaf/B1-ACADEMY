@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { Sparkles, Send, X, Bot, User, Trash2 } from 'lucide-react';
-import FeniMascota from './FeniMascota';
+import { Sparkles, Send, X, User, Trash2 } from 'lucide-react';
+import FiniMascota from './FiniMascota';
 
 export interface Message {
   role: 'user' | 'assistant';
@@ -16,7 +16,7 @@ const SUGGESTED_QUESTIONS = [
   '¿Cuáles son los pasos del Asistente de Pagos Masivos?',
 ];
 
-export default function FeniChat() {
+export default function FiniChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -87,7 +87,7 @@ export default function FeniChat() {
     <>
       {/* Botón flotante Fénix Rojo */}
       {!isOpen && (
-        <FeniMascota onAbrir={(l) => { setLado(l); setIsOpen(true); }} />
+        <FiniMascota onAbrir={(l) => { setLado(l); setIsOpen(true); }} />
       )}
 
       {/* Ventana Modal de Chat @Fini AI */}
@@ -222,5 +222,5 @@ export default function FeniChat() {
   );
 }
 
-// Re-exportamos SapiChat para compatibilidad con HelpWidget
-export { FeniChat as SapiChat };
+// Re-exportamos SapiChat y FeniChat para compatibilidad
+export { FiniChat as SapiChat, FiniChat as FeniChat };
