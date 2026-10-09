@@ -54,7 +54,7 @@ export default function PriceListScreen() {
     <Screen title="Listas de precios">
       <p className="border-l-4 border-[#0055A5] bg-white p-2">
         Las listas <strong>1 General</strong>, <strong>2 Mayorista</strong> y <strong>3 Distribuidor</strong> son listas base: tú escribes el precio de cada artículo. Una lista nueva puede
-        <strong> derivarse</strong> de otra con un <strong>factor</strong> (por ejemplo ×2,0): sus precios se calculan solos y cambian cuando cambia la lista base. A cada cliente se le asigna una lista y SAP propone ese precio al facturar.
+        <strong> derivarse</strong> de otra con un <strong>factor</strong> (por ejemplo ×2,0): sus precios se calculan solos y cambian cuando cambia la lista base. A cada cliente se le asigna una lista y Finix ERP propone ese precio al facturar.
       </p>
 
       <h3 className="font-bold text-[#003366]">Listas de precios</h3>

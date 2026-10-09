@@ -189,7 +189,7 @@ export default function SimuladorLogin({ onLogin, isLoading = false, error }: Si
         {/* Info footer */}
         <div className="mt-8 text-center">
           <p className="text-xs text-slate-500">
-            SAP Academy © 2026 | Plataforma de Formación Profesional
+            Finix ERP © 2026 | Cloud Enterprise Platform
           </p>
         </div>
       </div>

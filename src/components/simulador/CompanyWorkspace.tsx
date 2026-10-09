@@ -6,10 +6,10 @@ import { useAuth } from '@/context/AuthContext';
 import { sendCommand, empresaActiva, cambiarEmpresaActiva, LISTA_SIETE_EMPRESAS, type EmpresaSlot } from '@/lib/firestore-company';
 import { crearB1Center } from '@/lib/b1-center';
 import { levelNames } from '@/lib/company-defaults';
-import SAPDesktopShell from '@/components/desktop/SAPDesktopShell';
+import FinixDesktopShell from '@/components/desktop/FinixDesktopShell';
 import { Busy, buttonClass, inputClass, Screen } from '@/components/sap-screens/SAPControls';
 
-type Catalog = ComponentProps<typeof SAPDesktopShell>['catalog'];
+type Catalog = ComponentProps<typeof FinixDesktopShell>['catalog'];
 export function extendCompanyCatalog(catalog: Catalog): Catalog {
   const modules = Object.fromEntries(Object.entries(catalog.modules).map(([key, module]) => [key, { ...module, screens: module.screens.map(screen => screen.id === 'SAL006' ? { ...screen, id: 'EC-CUSTOMERS' } : screen.id === 'PUR006' ? { ...screen, id: 'EC-VENDORS' } : screen) }]));
   modules.ecuador = { key: 'ecuador', name: 'Ecuador · SRI, nómina y cuentas', icon: '🇪🇨', screens: [{ id: 'EC-SRI', name: 'Comprobantes electrónicos' }, { id: 'EC-RETENTION', name: 'Retenciones' }, { id: 'EC-TAX', name: 'Formularios 103 / 104 y ATS' }, { id: 'EC-EMPLOYEE', name: 'Ficha de empleado' }, { id: 'EC-PAYROLL', name: 'Nómina y rol de pagos' }, { id: 'EC-TAXCLOSE', name: 'Cierre tributario: utilidades, renta y anticipo' }, { id: 'EC-ISD', name: 'Pagos al exterior (ISD)' }, { id: 'EC-ACCOUNTS', name: 'Plan de cuentas Ecuador' }, { id: 'RPT-VENTAS', name: 'Reporte de ventas' }] };
@@ -150,7 +150,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
         </Screen>
       )
     ) : (
-      <div className="min-h-0 flex-1"><SAPDesktopShell catalog={extendCompanyCatalog(catalog)} /></div>
+      <div className="min-h-0 flex-1"><FinixDesktopShell catalog={extendCompanyCatalog(catalog)} /></div>
     )}
   </div></CompanyContext.Provider>;
 }

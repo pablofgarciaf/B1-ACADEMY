@@ -8,7 +8,7 @@ import { Screen, Field, Table, inputClass } from './SAPControls';
 
 /**
  * Análisis gerencial: indicadores con semáforo + interpretación guiada.
- * Objetivo pedagógico: no solo operar SAP, sino leer los números y decidir como gerente.
+ * Objetivo pedagógico: no solo operar Finix ERP, sino leer los números y decidir como gerente.
  */
 
 const COLOR: Record<Semaforo, string> = {

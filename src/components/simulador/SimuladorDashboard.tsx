@@ -61,7 +61,7 @@ export default function SimuladorDashboard({
               <Zap className="text-white" size={20} />
             </div>
             <div>
-              <h1 className="font-bold text-white">SAP Academy</h1>
+              <h1 className="font-bold text-white">Finix ERP</h1>
               <p className="text-xs text-slate-400">Simulador Virtual</p>
             </div>
           </div>
@@ -100,7 +100,7 @@ export default function SimuladorDashboard({
               <div className="relative flex items-center justify-between">
                 <div className="text-left">
                   <p className="text-xs font-semibold text-blue-100 mb-1">Simulador Interactivo</p>
-                  <h3 className="text-xl font-bold">Simulador Virtual SAP</h3>
+                  <h3 className="text-xl font-bold">Simulador Virtual Finix ERP</h3>
                 </div>
                 <div className="bg-white/20 backdrop-blur p-3 rounded-xl">
                   <Play size={28} className="text-white fill-white" />

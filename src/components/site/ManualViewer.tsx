@@ -32,7 +32,7 @@ import {
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 
 import { QuizQuestion, getQuizForManual } from '@/lib/manual-quizzes-data';
-import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
+import FinixInteractiveSimulator from '@/components/simulator/FinixInteractiveSimulator';
 import { getManualSimulatorConfig } from '@/lib/manual-simulator-registry';
 import MasterB1CheckpointOverlay from '@/components/lms/MasterB1CheckpointOverlay';
 
@@ -893,7 +893,7 @@ export default function ManualViewer({
                   </button>
                 </div>
                 <div className="flex-1 min-h-0 overflow-hidden">
-                  <SAPInteractiveSimulator
+                  <FinixInteractiveSimulator
                     manualId={manualId || ''}
                     currentStepIndex={currentIdx}
                     stepGuide={activeSyncSlide?.step_guide}
@@ -1169,7 +1169,7 @@ export default function ManualViewer({
             </button>
           </div>
           <div className="flex-1 min-h-0 bg-[#0A0A0F] border-x border-b border-gray-800 rounded-b-xl overflow-hidden shadow-2xl">
-            <SAPInteractiveSimulator
+            <FinixInteractiveSimulator
               manualId={manualId || ''}
               currentStepIndex={currentIdx}
               stepGuide={activeSyncSlide?.step_guide}

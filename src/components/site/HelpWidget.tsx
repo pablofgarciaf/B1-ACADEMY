@@ -1,6 +1,6 @@
 "use client";
 import { usePathname } from 'next/navigation';
-import FiniChat from './FiniChat';
+import FeNiChat from './FeNiChat';
 
 export default function HelpWidget() {
   const pathname = usePathname();
@@ -9,5 +9,5 @@ export default function HelpWidget() {
     return null;
   }
 
-  return <FiniChat />;
+  return <FeNiChat />;
 }

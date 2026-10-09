@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { FiniCara } from '@/components/site/FiniMascota';
+import { FeNiCara } from '@/components/site/FeNiMascota';
 import {
   ArrowRight, ChevronDown, ChevronRight, ChevronsLeft, ChevronsRight, ChevronLeft, CircleAlert, CircleCheck,
   FileSpreadsheet, FileText, Filter, Folder, FolderOpen, Info, Mail, Plus, Printer, Search, Settings,
@@ -14,7 +14,7 @@ import { EMPRESA_CURSO } from '@/lib/b1-center-datos';
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
 export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
 
-/** Menú principal de SAP Business One 10.0 (cliente de escritorio, español). */
+/** Menú principal de Finix ERP (cliente de escritorio, español). */
 const MODULOS_SAP = [
   'Administración', 'Finanzas', 'Oportunidades', 'Ventas - Clientes', 'Compras - Proveedores', 'Socios de negocios',
   'Gestión de bancos', 'Inventario', 'Recursos', 'Producción', 'Planificación de necesidades', 'Servicio',
@@ -22,10 +22,10 @@ const MODULOS_SAP = [
 ];
 const SUBMENUS_GENERICOS = ['Definiciones', 'Datos maestros', 'Informes', 'Transacciones', 'Herramientas', 'Configuración', 'Asistentes'];
 const MENU_SUPERIOR = ['Archivo', 'Edición', 'Ver', 'Datos', 'Ir a', 'Módulos', 'Herramientas', 'Ventana', 'Ayuda'];
-const CLAVE_GUIA = 'fini_guia_v1';
+const CLAVE_GUIA = 'feni_guia_v1';
 const GUIA_TAM = 34;
 
-/** Las clases a veces nombran el módulo de forma abreviada: se traduce al nombre oficial del menú de SAP. */
+/** Las clases a veces nombran el módulo de forma abreviada: se traduce al nombre oficial del menú de Finix ERP. */
 const ALIAS_MODULO: [RegExp, string][] = [
   [/^ventas?\b|^clientes\b|clientes de ventas/, 'Ventas - Clientes'],
   [/^compras?\b|^proveedores\b/, 'Compras - Proveedores'],
@@ -269,7 +269,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
           style={{ left: posGuia.x, top: posGuia.y }}
           className="pointer-events-none absolute z-30 transition-[left,top] duration-500 ease-out motion-reduce:transition-none"
         >
-          <FiniCara tam={GUIA_TAM} />
+          <FeNiCara tam={GUIA_TAM} />
           <span
             className={`absolute top-1 whitespace-nowrap rounded-md bg-[#0B3D91] px-2 py-1 text-[11px] font-semibold text-white shadow-lg ${
               posGuia.izquierda ? 'right-full mr-1' : 'left-full ml-1'
@@ -322,7 +322,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
         )}
       </div>
 
-      {/* Cuerpo principal de SAP B1 */}
+      {/* Cuerpo principal de Finix ERP */}
       <div className="flex flex-col md:flex-row min-h-[380px]">
         {/* Árbol del Menú principal */}
         <nav className="w-full md:w-56 shrink-0 bg-[#e4eaf2] border-b md:border-b-0 md:border-r border-[#abb8c7] p-2 overflow-y-auto max-h-[420px]">
@@ -505,7 +505,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                 })}
               </div>
 
-              {/* Botones de SAP: Añadir / Cancelar */}
+              {/* Botones de Finix ERP: Añadir / Cancelar */}
               <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#cdd6e1] px-3 py-2">
                 <div className="flex gap-2">
                   <button

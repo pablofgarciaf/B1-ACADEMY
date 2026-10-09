@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { Screen, Field, Table, inputClass, buttonClass } from './SAPControls';
 
-/** Tipos de documento que admiten series de numeración en SAP B1. */
+/** Tipos de documento que admiten series de numeración en Finix ERP. */
 const TIPOS_DOC = [
   { code: 'facturas',    label: 'Facturas de clientes' },
   { code: 'pedidos',     label: 'Pedidos de clientes' },

@@ -24,7 +24,7 @@ export function useCompanyController() {
     catch (e: unknown) { if (request === serial.current) setError(e instanceof Error ? e.message : 'Error al cargar.'); }
     finally { if (request === serial.current) setLoading(false); }
   }, [uid]);
-  useEffect(() => { const sequence = serial; setData(emptyCompany()); void refresh(); const changed = () => { void refresh(); }; window.addEventListener('sap-company-changed', changed); return () => { sequence.current++; window.removeEventListener('sap-company-changed', changed); }; }, [refresh]);
+  useEffect(() => { const sequence = serial; setData(emptyCompany()); void refresh(); const changed = () => { void refresh(); }; window.addEventListener('finix-company-changed', changed); window.addEventListener('sap-company-changed', changed); return () => { sequence.current++; window.removeEventListener('finix-company-changed', changed); window.removeEventListener('sap-company-changed', changed); }; }, [refresh]);
   const save = async (command: CompanyCommand): Promise<string> => {
     if (!uid) throw new Error('Sesión requerida.'); if (locked.current) throw new Error('Hay una operación en curso.');
     locked.current = true; setSaving(true); setError(''); setNotice('');

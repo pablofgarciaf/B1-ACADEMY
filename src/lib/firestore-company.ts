@@ -37,6 +37,7 @@ export function empresaActiva(): EmpresaSlot {
 }
 export function cambiarEmpresaActiva(slot: EmpresaSlot) {
   try { localStorage.setItem(CLAVE_EMPRESA, slot); } catch { /* sin almacenamiento: se usa B1 Center */ }
+  window.dispatchEvent(new Event('finix-company-changed'));
   window.dispatchEvent(new Event('sap-company-changed'));
 }
 // Fuerza la empresa del curso mientras se ejecuta Mi Aula (ver usarEmpresaCurso).
@@ -63,6 +64,7 @@ export async function sendCommand(uid: string, command: CompanyCommand, requestI
   let response: { result: string };
   try { response = await companyFetch<{ result: string }>('/api/sap/company', { method: 'POST', body }); }
   catch (error: unknown) { if (!(error instanceof TypeError)) throw error; response = await companyFetch<{ result: string }>('/api/sap/company', { method: 'POST', body }); }
+  window.dispatchEvent(new Event('finix-company-changed'));
   window.dispatchEvent(new Event('sap-company-changed'));
   return response.result;
 }

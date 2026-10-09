@@ -6,8 +6,8 @@ import type { CompanyState } from '@/lib/firestore-types';
 import SimuladorLogin from '@/components/simulador/SimuladorLogin';
 import SimuladorDashboard from '@/components/simulador/SimuladorDashboard';
 import CompanyWorkspace from '@/components/simulador/CompanyWorkspace';
-import SAPLoginScreen from '@/components/sap-screens/SAPLoginScreen';
-import { Busy, buttonClass } from '@/components/sap-screens/SAPControls';
+import FinixLoginScreen from '@/components/sap-screens/FinixLoginScreen';
+import { Busy, buttonClass } from '@/components/sap-screens/FinixControls';
 import { useAuth } from '@/context/AuthContext';
 const catalogSchema = z.object({ modules: z.record(z.object({ key: z.string(), name: z.string(), icon: z.string(), screens: z.array(z.object({ id: z.string(), name: z.string() })) })), metadata: z.object({ total_screens: z.number(), total_modules: z.number() }) });
 export default function SimuladorPage() {
@@ -37,7 +37,7 @@ export default function SimuladorPage() {
   if (loading) return <div className="p-10"><Busy /></div>;
   if (!userProfile) return <SimuladorLogin onLogin={handleLogin} isLoading={loginLoading} error={error} />;
   if (!showSimulator) return <>{companyError && <p role="alert" className="bg-amber-50 p-3 text-amber-900">{companyError}</p>}<SimuladorDashboard user={{ displayName: userProfile.displayName || 'Estudiante', email: userProfile.email, avatar: userProfile.avatar, company: company?.profile?.companyName || userProfile.company, level: company?.profile?.level || 1, xp: company?.profile?.xp || 0, totalMissions: Math.max(1, company?.missions.length || 0), completedMissions: company?.missions.filter(m => m.status === 'completed').length || 0 }} onStartSimulator={() => setShowSimulator(true)} onLogout={handleLogout} /></>;
-  if (!sapLoggedIn) return <SAPLoginScreen userEmail={userProfile.email} onLoginSuccess={() => setSapLoggedIn(true)} />;
+  if (!sapLoggedIn) return <FinixLoginScreen userEmail={userProfile.email} onLoginSuccess={() => setSapLoggedIn(true)} />;
   if (!catalog) return <div className="p-10">{error ? <><p role="alert">{error}</p><button className={buttonClass} onClick={() => setCatalogAttempt(n => n + 1)}>Reintentar</button></> : <Busy />}</div>;
   return <CompanyWorkspace key={currentUser?.uid} catalog={catalog} onExit={() => setShowSimulator(false)} />;
 }

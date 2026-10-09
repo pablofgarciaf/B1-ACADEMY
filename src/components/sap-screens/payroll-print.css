@@ -1,9 +1,9 @@
 @page { size: A4; margin: 12mm; }
 @media print {
   body * { visibility: hidden; }
-  dialog:has(.sap-payroll-slip) { position: absolute; inset: 0; margin: 0; width: 100%; max-height: none; overflow: visible; border: 0; padding: 0; }
-  .sap-payroll-slip, .sap-payroll-slip * { visibility: visible; }
-  .sap-payroll-slip { position: absolute; inset: 0; width: 100%; min-height: 0; padding: 0; font-size: 10pt; }
-  .sap-payroll-slip table { break-inside: avoid; }
+  dialog:has(.finix-payroll-slip) { position: absolute; inset: 0; margin: 0; width: 100%; max-height: none; overflow: visible; border: 0; padding: 0; }
+  .finix-payroll-slip, .finix-payroll-slip * { visibility: visible; }
+  .finix-payroll-slip { position: absolute; inset: 0; width: 100%; min-height: 0; padding: 0; font-size: 10pt; }
+  .finix-payroll-slip table { break-inside: avoid; }
   dialog::backdrop { background: white; }
 }

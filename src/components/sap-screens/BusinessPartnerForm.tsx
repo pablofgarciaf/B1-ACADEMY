@@ -45,7 +45,7 @@ export default function BusinessPartnerForm({ mode = 'customer', readOnly = fals
 
   return (
     <div className="flex flex-col h-full bg-[#ECE9D8] font-sans text-[11px] text-gray-800 select-none">
-      {/* ── Título de ventana SAP ── */}
+      {/* ── Título de ventana Finix ERP ── */}
       <div className="flex items-center justify-between bg-gradient-to-r from-[#003366] to-[#0055A5] px-2 py-0.5">
         <span className="text-white font-semibold text-[11px]">Datos Maestros de Interlocutor Comercial</span>
         <div className="flex gap-1">
@@ -55,7 +55,7 @@ export default function BusinessPartnerForm({ mode = 'customer', readOnly = fals
         </div>
       </div>
 
-      {/* ── Toolbar SAP ── */}
+      {/* ── Toolbar Finix ── */}
       <div className="flex items-center gap-1 px-1 py-0.5 bg-[#ECE9D8] border-b border-gray-400">
         {['◀', '▶', '⊕', '⊗', '💾', '🖨', '📊', '🔍'].map((icon, i) => (
           <button
@@ -122,7 +122,7 @@ export default function BusinessPartnerForm({ mode = 'customer', readOnly = fals
         {activeTab === 4 && <TabContabilizacion />}
         {activeTab >= 5 && (
           <div className="text-gray-500 text-center mt-8 text-xs">
-            Contenido de &quot;{TABS[activeTab]}&quot; disponible en SAP Business One real
+            Contenido de &quot;{TABS[activeTab]}&quot; disponible en módulo avanzado de Finix ERP
           </div>
         )}
       </div>
@@ -132,13 +132,13 @@ export default function BusinessPartnerForm({ mode = 'customer', readOnly = fals
         <span className="flex-1">
           {mode === 'customer' ? '🟢 Cliente activo' : mode === 'vendor' ? '🔵 Proveedor activo' : '🟡 Cliente potencial'}
         </span>
-        <span>SAP Business One 10.0</span>
+        <span>Finix ERP Enterprise 2026</span>
       </div>
     </div>
   );
 }
 
-// ─── Subcomponentes de UI SAP ─────────────────────────────────────────────────
+// ─── Subcomponentes de UI Finix ─────────────────────────────────────────────────
 
 function SapField({ label, value, onChange, readOnly, required, width }: {
   label: string; value: string; onChange: (v: string) => void;

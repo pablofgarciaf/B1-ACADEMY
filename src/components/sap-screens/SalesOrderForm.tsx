@@ -23,7 +23,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const sources = (purchase ? c.data.purchaseOrders : c.data.salesOrders).filter(d => d.docType === predecessor[docType]);
   const reset = () => { setData(blank()); setIndex(-1); };
   const lineChange = (i: number, changes: Partial<DocumentLine>) => setData(d => ({ ...d, lines: d.lines.map((line, j) => j === i ? { ...line, ...changes } : line) }));
-  // Ventas: precio de la lista del cliente y descuento por volumen, como los propone SAP (se pueden editar).
+  // Ventas: precio de la lista del cliente y descuento por volumen, como los propone Finix ERP (se pueden editar).
   const sugerir = (itemCode: string, quantity: number): Partial<DocumentLine> => {
     if (purchase || data.baseDocumentId) return {};
     const s = precioSugerido(c.data, data.cardCode, itemCode, quantity);

@@ -9,7 +9,7 @@ import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import type { IntentoPractica } from '@/lib/practice-check';
 import { getCompany, usarEmpresaCurso } from '@/lib/firestore-company';
 import PasoCeroEmpresa from '@/components/lms/PasoCeroEmpresa';
-import SAPInteractiveSimulator from '@/components/simulator/SAPInteractiveSimulator';
+import FinixInteractiveSimulator from '@/components/simulator/FinixInteractiveSimulator';
 import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2 } from 'lucide-react';
 
 // =============================================
@@ -679,7 +679,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
               </div>
               {/* Simulator */}
               <div className="flex-1 min-h-[320px] mt-3 px-2 sm:px-4 pb-4">
-                <SAPInteractiveSimulator
+                <FinixInteractiveSimulator
                   key={`${activeClassId}:${currentSlideIndex}:${restartKey}`}
                   manualId={activeClassId}
                   currentStepIndex={currentSlideIndex}

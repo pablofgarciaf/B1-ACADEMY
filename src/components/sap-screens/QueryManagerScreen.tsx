@@ -12,7 +12,7 @@ function aCsv(r: Resultado) {
   return [r.columnas.map(celda).join(';'), ...r.filas.map(f => r.columnas.map(c => celda(f[c])).join(';'))].join('\r\n');
 }
 
-/** Query Manager: consultas tipo SQL sobre la empresa del estudiante, con tablas SAP reales. */
+/** Query Manager: consultas tipo SQL sobre la empresa del estudiante, con tablas Finix ERP reales. */
 export default function QueryManagerScreen() {
   const c = useCompany();
   const [sql, setSql] = useState(CONSULTAS_EJEMPLO[0].sql);
@@ -44,14 +44,14 @@ export default function QueryManagerScreen() {
   const exportar = () => {
     if (!resultado) return;
     const url = URL.createObjectURL(new Blob(['﻿' + aCsv(resultado)], { type: 'text/csv;charset=utf-8' }));
-    const a = document.createElement('a'); a.href = url; a.download = 'consulta-sap.csv'; a.click(); URL.revokeObjectURL(url);
+    const a = document.createElement('a'); a.href = url; a.download = 'consulta-finix.csv'; a.click(); URL.revokeObjectURL(url);
   };
 
   return (
     <Screen title="Query Manager">
       <p className="border-l-4 border-[#0055A5] bg-white p-2">
-        En SAP Business One los gerentes no esperan un informe: <strong>le preguntan a los datos</strong>. Escribe una consulta
-        (solo <code>SELECT</code>) sobre las tablas de tu empresa. Usa los mismos nombres que SAP: <code>OCRD</code>, <code>OITM</code>, <code>OINV</code>, <code>JDT1</code>…
+        En Finix ERP los gerentes no esperan un informe: <strong>le preguntan a los datos</strong>. Escribe una consulta
+        (solo <code>SELECT</code>) sobre las tablas de tu empresa. Usa los esquemas de datos: <code>OCRD</code>, <code>OITM</code>, <code>OINV</code>, <code>JDT1</code>…
       </p>
       <div className="grid gap-3 lg:grid-cols-[1fr_260px]">
         <div className="space-y-2">

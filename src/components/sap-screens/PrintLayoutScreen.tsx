@@ -26,7 +26,7 @@ table{width:100%;border-collapse:collapse;margin-top:12px}th,td{border:1px solid
 <table class="tot"><tr><td>Subtotal 15 %</td><td class="n">${usd(base(15))}</td></tr><tr><td>Subtotal 5 %</td><td class="n">${usd(base(5))}</td></tr><tr><td>Subtotal 0 %</td><td class="n">${usd(base(0))}</td></tr>
 <tr><td>Subtotal sin impuestos</td><td class="n">${usd(d.subtotal)}</td></tr><tr><td>IVA</td><td class="n">${usd(d.tax)}</td></tr><tr><th>VALOR TOTAL</th><th class="n">${usd(d.total)}</th></tr></table>
 ${d.comments ? `<p>Información adicional: ${esc(d.comments)}</p>` : ''}
-<div class="marca">SIMULACIÓN ACADÉMICA · SAP Academy · Documento sin validez tributaria</div>
+<div class="marca">SIMULACIÓN ACADÉMICA · Finix ERP · Documento sin validez tributaria</div>
 <p class="noprint"><button onclick="window.print()">Imprimir / Guardar PDF</button></p></body></html>`;
 }
 
