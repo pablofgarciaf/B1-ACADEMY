@@ -10,7 +10,12 @@ const envelope = z.object({ requestId: z.string().uuid(), command: commandSchema
  * Empresa del estudiante según la cabecera X-Empresa: "curso" = su B1 Center (Mi Aula), "libre" = su empresa propia.
  * La clave se deriva SIEMPRE de la sesión: nadie puede apuntar a la empresa de otro.
  */
-const claveEmpresa = (request: Request, uid: string) => (request.headers.get('x-empresa') === 'libre' ? `${uid}__libre` : uid);
+const claveEmpresa = (request: Request, uid: string) => {
+  const header = request.headers.get('x-empresa') || 'curso';
+  if (header === 'curso') return uid;
+  const safe = header.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32);
+  return safe ? `${uid}__${safe}` : uid;
+};
 export async function GET(request: Request) {
   let actor;
   try { actor = await requireBearerUser(request); } catch (error: unknown) { return NextResponse.json({ error: error instanceof Error ? 'Sesión no válida.' : 'No autorizado.' }, { status: 401 }); }

@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useCompany } from '@/hooks/useCompany';
-import { ShieldAlert, Shield } from 'lucide-react';
+import { ShieldAlert, Shield, Building2 } from 'lucide-react';
+import { LISTA_SIETE_EMPRESAS, empresaActiva, cambiarEmpresaActiva } from '@/lib/firestore-company';
 import SAPMenuBar from './SAPMenuBar';
 import SAPToolBar from './SAPToolBar';
 import SAPModulesTree from './SAPModulesTree';
@@ -101,6 +102,13 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
   const [nextZIndex, setNextZIndex] = useState(1);
   const [activeRole, setActiveRole] = useState<SAPRole>('super');
   const [themeMode, setThemeMode] = useState<'sap_horizon' | 'sap_fiori_3_dark' | 'classic'>('sap_horizon');
+  const [activeSlot, setActiveSlot] = useState<string>('curso');
+  useEffect(() => {
+    setActiveSlot(empresaActiva());
+    const onSlotChange = () => setActiveSlot(empresaActiva());
+    window.addEventListener('sap-company-changed', onSlotChange);
+    return () => window.removeEventListener('sap-company-changed', onSlotChange);
+  }, []);
   const [unauthorizedModal, setUnauthorizedModal] = useState<{
     screenName: string;
     moduleKey: string;
@@ -234,8 +242,30 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
           </div>
         </div>
 
-        {/* Identidad de Usuario SAP B1 con Roles y Selector de Temas */}
+        {/* Identidad de Usuario SAP B1 con Roles, Selector de Sociedad y Selector de Temas */}
         <div className="flex items-center gap-3">
+          {/* Selector de Sociedad / Empresa entre las 7 empresas del usuario */}
+          <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
+            <Building2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
+            <span className="text-[10.5px] text-emerald-300 font-bold">Sociedad:</span>
+            <select
+              aria-label="Selector de Sociedad / Empresa SAP Business One"
+              value={activeSlot}
+              disabled={company.saving}
+              onChange={(e) => {
+                setActiveSlot(e.target.value);
+                cambiarEmpresaActiva(e.target.value);
+              }}
+              className="bg-[#0e2c7a] text-white font-semibold text-[10.5px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-emerald-400 cursor-pointer max-w-[200px] truncate"
+            >
+              {LISTA_SIETE_EMPRESAS.map(emp => (
+                <option key={emp.id} value={emp.id}>
+                  {emp.icon} {emp.shortName}
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Selector de Tema Corporativo UI5 */}
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
             <span className="text-[10.5px] text-amber-300 font-bold">Tema:</span>

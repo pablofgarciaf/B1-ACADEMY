@@ -5,15 +5,35 @@ import type { CompanyCommand, CommandData } from './company-commands';
 import type { CompanyState, SalesDocType, PurchaseDocType, CostingMethod, SRITaxDocument } from './firestore-types';
 import { trialBalance } from './company-calculations';
 
-/**
- * Cada estudiante tiene dos empresas: "curso" (su B1 Center, la de Mi Aula) y "libre" (la suya, para practicar
- * con sus propios datos en el Simulador). El servidor decide la empresa real a partir de la sesión; aquí solo
- * se indica cuál se quiere usar. Mi Aula siempre trabaja en "curso".
- */
-export type EmpresaSlot = 'curso' | 'libre';
+export interface EmpresaDefinicion {
+  id: string;
+  name: string;
+  shortName: string;
+  category: string;
+  icon: string;
+}
+
+export const LISTA_SIETE_EMPRESAS: EmpresaDefinicion[] = [
+  { id: 'curso', name: 'B1 Center S.A.S. (Matriz)', shortName: '1. B1 Center (Matriz)', category: 'Tecnología & Hardware', icon: '🏢' },
+  { id: 'empresa_2', name: 'Empresa 2 · Comercializadora Retail S.A.', shortName: '2. Comercializadora Retail', category: 'Comercio Minorista', icon: '🛒' },
+  { id: 'empresa_3', name: 'Empresa 3 · Servicios & Consultoría IT', shortName: '3. Servicios IT & Consultoría', category: 'Servicios Profesionales', icon: '💼' },
+  { id: 'empresa_4', name: 'Empresa 4 · Manufactura & Producción', shortName: '4. Manufactura & Ensamble', category: 'Industria', icon: '🏭' },
+  { id: 'empresa_5', name: 'Empresa 5 · Distribución & Logística', shortName: '5. Distribución & Logística', category: 'Transporte y Envíos', icon: '🚚' },
+  { id: 'empresa_6', name: 'Empresa 6 · Importaciones & Comex', shortName: '6. Importaciones & Comex', category: 'Comercio Exterior', icon: '🚢' },
+  { id: 'empresa_7', name: 'Empresa 7 · Inmobiliaria & Activos', shortName: '7. Inmobiliaria & Activos', category: 'Holding Patrimonial', icon: '🏛️' },
+];
+
+export type EmpresaSlot = string;
 const CLAVE_EMPRESA = 'b1_empresa_activa';
 export function empresaActiva(): EmpresaSlot {
-  try { return localStorage.getItem(CLAVE_EMPRESA) === 'libre' ? 'libre' : 'curso'; } catch { return 'curso'; }
+  try {
+    const val = localStorage.getItem(CLAVE_EMPRESA);
+    if (val && LISTA_SIETE_EMPRESAS.some(e => e.id === val)) return val;
+    if (val && /^[\w-]{1,32}$/.test(val)) return val;
+    return 'curso';
+  } catch {
+    return 'curso';
+  }
 }
 export function cambiarEmpresaActiva(slot: EmpresaSlot) {
   try { localStorage.setItem(CLAVE_EMPRESA, slot); } catch { /* sin almacenamiento: se usa B1 Center */ }

@@ -38,10 +38,10 @@ const EMPLEADOS = [
 ];
 
 /** Comandos que crean la B1 Center completa (sin el stock, que necesita los códigos de artículo generados). */
-export function comandosB1Center(): CompanyCommand[] {
+export function comandosB1Center(nombrePersonalizado = EMPRESA_CURSO): CompanyCommand[] {
   return [
-    { action: 'initialize', data: { companyName: EMPRESA_CURSO } },
-    { action: 'companySettings', data: { companyName: EMPRESA_CURSO, ruc: '1792456789001', address: 'Av. El Salvador N34-12, Quito', phone: '022345678', incomeTaxRate: 25,
+    { action: 'initialize', data: { companyName: nombrePersonalizado } },
+    { action: 'companySettings', data: { companyName: nombrePersonalizado, ruc: '1792456789001', address: 'Av. El Salvador N34-12, Quito', phone: '022345678', incomeTaxRate: 25,
       warehouses: [{ code: '01', name: 'Bodega Central Quito' }, { code: '02', name: 'Bodega Sucursal Guayaquil' }] } },
     { action: 'importMasterData', data: { kind: 'customer', rows: CLIENTES.map((c) => ({ ...socio(c), kind: 'customer' })) } },
     { action: 'importMasterData', data: { kind: 'vendor', rows: PROVEEDORES.map(socio) } },

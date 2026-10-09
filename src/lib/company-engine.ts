@@ -56,7 +56,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   const periodoAbierto = (date: string) => assert(!(profile.closedPeriods ?? []).includes(date.slice(0, 7)), `El período ${date.slice(0, 7)} está cerrado. Reábrelo en Cierres Fiscales o usa una fecha de un período abierto.`);
   const post = (date: string, memo: string, source: string, reference: string, input: JournalLine[]): string => {
     periodoAbierto(date);
-    const lines = input.map(l => ({ ...l, debit: round(l.debit), credit: round(l.credit) })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
+    const lines = input.map(l => ({ ...l, debit: round(l.debit || 0), credit: round(l.credit || 0), costCenter: l.costCenter ?? '', description: l.description ?? '' })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
     assert(lines.length >= 2 && debit > 0 && debit === credit, 'El asiento debe cuadrar al centavo y tener importe positivo.');
     for (const line of lines) { assert(state.chartOfAccounts.some(a => a.code === line.accountCode && a.active && a.postable), `Cuenta no imputable: ${line.accountCode}.`); assert(line.debit >= 0 && line.credit >= 0 && !(line.debit && line.credit), 'Una línea debe tener debe o haber, no ambos.'); }
     const id = next('AS', date);
