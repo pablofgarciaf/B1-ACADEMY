@@ -153,6 +153,8 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
       return;
     }
 
+    const isCanvasEmpty = windows.filter(w => !w.minimized).length === 0;
+
     const newWindow: Window = {
       id: `window-${windowCount}`,
       title: screenName,
@@ -162,7 +164,7 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
       width: 860,
       height: 580,
       minimized: false,
-      maximized: false,
+      maximized: isCanvasEmpty,
       zIndex: nextZIndex,
       focused: true,
     };
@@ -286,10 +288,13 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
         <SAPModulesTree modules={modules} onScreenSelect={createWindow} />
 
         {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
-        <div className="flex-1 min-w-0 h-full relative overflow-hidden bg-[#334155] flex flex-col">
+        <div className={`flex-1 min-w-0 h-full relative overflow-hidden flex flex-col transition-colors duration-200 ${
+          themeMode === 'sap_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'sap_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
+        }`}>
           <div className="flex-1 relative overflow-hidden">
             <SAPWindowManager
               windows={windows}
+              themeMode={themeMode}
               onWindowClose={closeWindow}
               onWindowMinimize={minimizeWindow}
               onWindowMaximize={maximizeWindow}

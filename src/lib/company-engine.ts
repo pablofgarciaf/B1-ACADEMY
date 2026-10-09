@@ -173,7 +173,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const d = command.data; const item = state.items.find(i => i.itemCode === d.itemCode); assert(item?.costingMethod === d.costingMethod, 'Método de costeo incompatible.'); result = next('AJ');
       const cost = move(d.itemCode, d.warehouseCode, d.qty, item?.purchasePrice ?? 0, now.slice(0, 10), result);
       const account = state.boms.some(b => b.parentItemCode === d.itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
-      if (cost) post(now.slice(0, 10), 'Ajuste de inventario', 'stock', result, d.qty > 0 ? [ledgerLine(account, cost), ledgerLine('6.05', 0, cost)] : [ledgerLine('6.05', cost), ledgerLine(account, 0, cost)]); break;
+      if (cost) post(now.slice(0, 10), 'Ajuste de inventario', 'stock', result, d.qty > 0 ? [ledgerLine(account, cost), ledgerLine('4.02', 0, cost)] : [ledgerLine('6.05', cost), ledgerLine(account, 0, cost)]); break;
     }
     case 'transfer': {
       const d = command.data; assert(d.from !== d.to, 'Selecciona almacenes diferentes.'); result = next('TR', d.date);

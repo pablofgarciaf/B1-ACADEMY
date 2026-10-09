@@ -22,26 +22,7 @@ export default function GenericSAPScreen({ screenId, screenName, icon = '🖥️
   const CompanyScreen = companyScreens[screenId];
   if (CompanyScreen) return <CompanyScreen />;
   return (
-    <div className="flex flex-col h-full bg-[#ECE9D8] font-sans text-[11px] text-gray-800 select-none">
-      {/* Título de ventana */}
-      <div className="flex items-center justify-between bg-gradient-to-r from-[#003366] to-[#0055A5] px-2 py-0.5">
-        <span className="text-white font-semibold text-[11px]">{screenName}</span>
-        <div className="flex gap-1">
-          <button className="w-4 h-4 bg-[#ECE9D8] border border-gray-600 text-[9px] flex items-center justify-center">_</button>
-          <button className="w-4 h-4 bg-[#ECE9D8] border border-gray-600 text-[9px] flex items-center justify-center">□</button>
-          <button className="w-4 h-4 bg-[#ECE9D8] border border-gray-600 text-[9px] flex items-center justify-center hover:bg-red-500 hover:text-white">✕</button>
-        </div>
-      </div>
-
-      {/* Toolbar */}
-      <div className="flex items-center gap-1 px-1 py-0.5 bg-[#ECE9D8] border-b border-gray-400">
-        {['◀', '▶', '⊕', '⊗', '💾', '🖨', '🔍'].map((icon, i) => (
-          <button key={i} className="w-6 h-5 text-[10px] border border-gray-400 bg-[#F5F4EE] hover:bg-[#DDD9C4] flex items-center justify-center">
-            {icon}
-          </button>
-        ))}
-      </div>
-
+    <div className="flex flex-col h-full bg-[#f8fafc] font-sans text-xs text-gray-800 select-none">
       {/* Contenido */}
       <div className="flex-1 flex flex-col items-center justify-center gap-4 p-6">
         <div className="text-5xl">{icon}</div>

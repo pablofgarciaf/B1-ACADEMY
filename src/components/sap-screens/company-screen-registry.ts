@@ -36,6 +36,7 @@ import PrintLayoutScreen from './PrintLayoutScreen';
 import DataTransferScreen from './DataTransferScreen';
 import { ServiceContractsScreen, ServiceCallsScreen, ProjectsScreen } from './ServiceScreens';
 import { TeamUsersScreen, DataVerificationScreen, RoutingScreen, CapacityScreen } from './AdminProductionScreens';
+import UDOScreen from './UDOScreen';
 
 export const companyScreens: Record<string, ComponentType> = {
   'EC-CUSTOMERS': CompanyPartnerForm,
@@ -44,7 +45,7 @@ export const companyScreens: Record<string, ComponentType> = {
   'EC-ACCOUNTS': ChartOfAccountsScreen, 'FIN002': FinancialStatementsScreen, 'FIN003': FinancialStatementsScreen, 'FIN004': FinancialStatementsScreen,
   'BNK001': BankingScreen, 'BNK002': BankingScreen, 'BNK003': BankingScreen,
   'RPT002': SalesReportScreen, 'RPT-VENTAS': SalesReportScreen, 'RPT004': ManagementAnalysisScreen, 'RPT005': AgingScreen, 'RPT003': PurchaseAnalysisScreen, 'QRY001': QueryManagerScreen, 'QRY002': QueryManagerScreen, 'FIN007': BudgetScreen,
-  'ADM003': ApprovalsScreen, 'ADM006': ApprovalsScreen, 'FIN008': PeriodCloseScreen, 'SAL007': PriceListScreen,
+  'ADM003': ApprovalsScreen, 'ADM004': UDOScreen, 'ADM006': ApprovalsScreen, 'FIN008': PeriodCloseScreen, 'SAL007': PriceListScreen,
   'SAL008': VolumeDiscountScreen, 'INV003': InventoryCountScreen, 'FIN006': FixedAssetsScreen,
   'PUR007': LandedCostScreen, 'CRM001': OpportunitiesScreen, 'ADM001': CompanySettingsScreen, 'UTL001': PrintLayoutScreen,
   'UTL002': DataTransferScreen, 'UTL003': DataTransferScreen, 'UTL004': DataTransferScreen,

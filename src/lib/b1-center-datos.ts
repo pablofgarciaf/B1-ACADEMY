@@ -51,6 +51,27 @@ export function comandosB1Center(): CompanyCommand[] {
       standardCost: costo, minStock: 2, maxStock: 50, reorderPoint: 5, description: name, specifications: '', active: true,
     })) } },
     ...EMPLEADOS.map((e): CompanyCommand => ({ action: 'employee', data: { ...e, contract: 'indefinite', schedule: 'full', employerRate: 12.15, personalRate: 9.45, vacationDays: 15, dependents: 0, projectedExpenses: 0, active: true } })),
+    {
+      action: 'journal',
+      data: {
+        date: '2026-09-01',
+        dueDate: '2026-09-01',
+        memo: 'Asiento de Apertura y Balance Inicial a Septiembre 2026',
+        reference: 'APER-2026',
+        lines: [
+          { accountCode: '1.1.01', description: 'Caja General - Apertura', debit: 12000, credit: 0, costCenter: '' },
+          { accountCode: '1.1.02', description: 'Bancos Locales - Apertura', debit: 65000, credit: 0, costCenter: '' },
+          { accountCode: '1.1.03', description: 'Clientes Nacionales - Cartera inicial', debit: 18000, credit: 0, costCenter: '' },
+          { accountCode: '1.1.05', description: 'Inventario de mercaderías - Inicial', debit: 35000, credit: 0, costCenter: '' },
+          { accountCode: '1.2.01', description: 'Equipos de cómputo y oficina', debit: 25000, credit: 0, costCenter: '' },
+          { accountCode: '2.1.01', description: 'Proveedores locales por pagar', debit: 0, credit: 20000, costCenter: '' },
+          { accountCode: '2.1.04', description: 'Obligaciones tributarias SRI / IESS', debit: 0, credit: 2500, costCenter: '' },
+          { accountCode: '2.1.05', description: 'Sueldos por pagar fin de mes', debit: 0, credit: 2500, costCenter: '' },
+          { accountCode: '3.01', description: 'Capital social pagado', debit: 0, credit: 100000, costCenter: '' },
+          { accountCode: '3.02', description: 'Resultados acumulados ejercicios anteriores', debit: 0, credit: 30000, costCenter: '' },
+        ],
+      },
+    },
   ];
 }
 

@@ -20,6 +20,7 @@ export interface Window {
 
 interface SAPWindowManagerProps {
   windows: Window[];
+  themeMode?: 'sap_horizon' | 'sap_fiori_3_dark' | 'classic';
   onWindowClose: (id: string) => void;
   onWindowMinimize: (id: string) => void;
   onWindowMaximize: (id: string) => void;
@@ -29,6 +30,7 @@ interface SAPWindowManagerProps {
 
 export default function SAPWindowManager({
   windows,
+  themeMode = 'sap_horizon',
   onWindowClose,
   onWindowMinimize,
   onWindowMaximize,
@@ -83,10 +85,31 @@ export default function SAPWindowManager({
     };
   }, [draggingWindow, dragOffset, onWindowMove]);
 
+  const containerBg =
+    themeMode === 'sap_horizon'
+      ? 'bg-[#e8ecf2]'
+      : themeMode === 'sap_fiori_3_dark'
+      ? 'bg-[#0c121c]'
+      : 'bg-[#334155]';
+
+  const windowHeaderBg =
+    themeMode === 'sap_horizon'
+      ? 'bg-gradient-to-r from-[#0f2744] via-[#163860] to-[#0f2744] border-b border-[#0d1f35]'
+      : themeMode === 'sap_fiori_3_dark'
+      ? 'bg-gradient-to-r from-[#17212e] to-[#0f1722] border-b border-[#243347]'
+      : 'bg-gradient-to-r from-[#003366] to-[#0055A5] border-b border-[#002244]';
+
+  const windowContentBg =
+    themeMode === 'sap_fiori_3_dark'
+      ? 'bg-[#151d28] text-slate-100'
+      : themeMode === 'sap_horizon'
+      ? 'bg-[#fafbfc] text-slate-900'
+      : 'bg-[#ECE9D8] text-slate-900';
+
   return (
     <div
       id="window-container"
-      className="relative w-full h-full bg-[#334155] overflow-hidden flex flex-col"
+      className={`relative w-full h-full ${containerBg} overflow-hidden flex flex-col transition-colors duration-200`}
     >
       {/* Contenedor de Ventanas */}
       <div className="relative flex-1 w-full h-full overflow-hidden">
@@ -94,7 +117,9 @@ export default function SAPWindowManager({
           !win.minimized && (
             <div
               key={win.id}
-              className={`absolute bg-[#f7f8fa] border border-[#7f93ab] shadow-2xl flex flex-col transition-all duration-75 ${
+              className={`absolute border shadow-2xl flex flex-col transition-all duration-75 ${
+                themeMode === 'sap_fiori_3_dark' ? 'bg-[#151d28] border-[#293b52]' : 'bg-[#f7f8fa] border-[#7f93ab]'
+              } ${
                 win.maximized ? 'inset-0 w-full h-full rounded-none' : 'rounded-sm'
               }`}
               style={{
@@ -109,7 +134,7 @@ export default function SAPWindowManager({
             >
               {/* Barra de Título Única de la Ventana en SAP B1 */}
               <div
-                className="flex items-center justify-between px-2.5 bg-gradient-to-b from-[#1e2a3a] to-[#0f172a] text-white select-none cursor-grab active:cursor-grabbing shrink-0 border-b border-[#0d1b2a]"
+                className={`flex items-center justify-between px-2.5 ${windowHeaderBg} text-white select-none cursor-grab active:cursor-grabbing shrink-0`}
                 style={{ height: '30px' }}
                 onMouseDown={(e) => handleMouseDown(e, win.id)}
               >
@@ -148,7 +173,7 @@ export default function SAPWindowManager({
               </div>
 
               {/* Contenido funcional de la ventana */}
-              <div className="flex-1 overflow-auto bg-[#ECE9D8]">
+              <div className={`flex-1 overflow-auto ${windowContentBg}`}>
                 <SAPScreenRenderer
                   screenId={win.screenId}
                   screenName={win.title}

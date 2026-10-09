@@ -42,6 +42,7 @@ const ForeignPaymentScreen = dynamic(() => import('./ForeignPaymentScreen'), { l
 const EmployeeForm = dynamic(() => import('./EmployeeForm'), { loading: cargando });
 const ATSScreen = dynamic(() => import('./ATSScreen'), { loading: cargando });
 const ChartOfAccountsScreen = dynamic(() => import('./ChartOfAccountsScreen'), { loading: cargando });
+const UDOScreen = dynamic(() => import('./UDOScreen'), { loading: cargando });
 
 interface SAPScreenRendererProps {
   screenId: string;
@@ -120,6 +121,7 @@ const SCREEN_MAP: Record<string, React.ComponentType<{ screenId: string; screenN
   // ── Administración ────────────────────────────────────────────────
   'ADM001': () => <CompanySettingsScreen />,
   'ADM002': (p) => <GenericSAPScreen {...p} icon="👤" description="Gestión de usuarios, roles, autorizaciones y licencias de acceso SAP B1" />,
+  'ADM004': () => <UDOScreen />,
 
   // ── Localización Ecuador (SRI & Nómina) ───────────────────────────
   'EC-SRI': () => <SRIElectronicScreen initialType="01" />,
