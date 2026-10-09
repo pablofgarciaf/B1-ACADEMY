@@ -22,7 +22,7 @@ const MODULOS_SAP = [
 ];
 const SUBMENUS_GENERICOS = ['Definiciones', 'Datos maestros', 'Informes', 'Transacciones', 'Herramientas', 'Configuración', 'Asistentes'];
 const MENU_SUPERIOR = ['Archivo', 'Edición', 'Ver', 'Datos', 'Ir a', 'Módulos', 'Herramientas', 'Ventana', 'Ayuda'];
-const CLAVE_GUIA = 'sapi_guia_v1';
+const CLAVE_GUIA = 'fini_guia_v1';
 const GUIA_TAM = 34;
 
 /** Las clases a veces nombran el módulo de forma abreviada: se traduce al nombre oficial del menú de SAP. */
@@ -283,8 +283,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       {/* Barra de título de la aplicación */}
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2.5 py-1 select-none">
         <span className="flex items-center gap-2 font-semibold text-xs">
-          <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 py-0.5 text-[10px] font-black italic text-white shadow-sm">SAP</span>
-          <span>SAP Business One 10.0 — {empresa || EMPRESA_CURSO}</span>
+          <span className="rounded-sm bg-gradient-to-b from-[#b91c1c] to-[#7f1d1d] px-1.5 py-0.5 text-[10px] font-black italic text-white shadow-sm">FeNi</span>
+          <span>FeNi Proyect 2026 — {empresa || EMPRESA_CURSO}</span>
         </span>
         <div className="flex items-center gap-1.5">
           <button

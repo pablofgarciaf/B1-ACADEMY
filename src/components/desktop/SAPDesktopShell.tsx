@@ -28,7 +28,7 @@ export const SAP_ROLES: Record<SAPRole, SAPRoleDefinition> = {
     label: 'Superusuario (manager)',
     prefix: 'super.',
     department: 'Dirección General / IT',
-    description: 'Acceso total y sin restricciones a todos los módulos y definiciones de SAP Business One.',
+    description: 'Acceso total y sin restricciones a todos los módulos y definiciones de FeNi Proyect.',
     allowedModuleKeys: ['*'],
   },
   ventas: {
@@ -232,24 +232,24 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
 
   return (
     <div className="w-full h-screen flex flex-col bg-gray-900 overflow-hidden font-[Tahoma,Arial,sans-serif]">
-      {/* Barra de Título Superior de SAP Business One */}
+      {/* Barra de Título Superior de FeNi Proyect */}
       <div className="bg-gradient-to-r from-[#0a246a] via-[#1e3a5f] to-[#0a246a] text-white px-3 py-1.5 flex flex-wrap items-center justify-between border-b border-[#3b5998] shadow-md text-xs">
         <div className="flex items-center gap-2">
-          <span className="rounded bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-2 py-0.5 text-[11px] font-black italic tracking-wider text-white shadow">SAP</span>
+          <span className="rounded bg-gradient-to-b from-[#b91c1c] to-[#7f1d1d] px-2 py-0.5 text-[11px] font-black italic tracking-wider text-amber-200 shadow">FeNi</span>
           <div>
-            <h1 className="text-xs font-bold leading-none">SAP Business One 10.0 (HANA) — {companyTitle}</h1>
-            <p className="text-[10px] text-blue-200 mt-0.5">Empresa autorizada en Supabase · Base de datos en tiempo real</p>
+            <h1 className="text-xs font-bold leading-none">FeNi Proyect (Cloud ERP 2026) — {companyTitle}</h1>
+            <p className="text-[10px] text-blue-200 mt-0.5">Empresa autorizada en Supabase · Motor contable en tiempo real</p>
           </div>
         </div>
 
-        {/* Identidad de Usuario SAP B1 con Roles, Selector de Sociedad y Selector de Temas */}
+        {/* Identidad de Usuario FeNi Proyect con Roles, Selector de Sociedad y Selector de Temas */}
         <div className="flex items-center gap-3">
           {/* Selector de Sociedad / Empresa entre las 7 empresas del usuario */}
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
             <Building2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
             <span className="text-[10.5px] text-emerald-300 font-bold">Sociedad:</span>
             <select
-              aria-label="Selector de Sociedad / Empresa SAP Business One"
+              aria-label="Selector de Sociedad / Empresa FeNi Proyect"
               value={activeSlot}
               disabled={company.saving}
               onChange={(e) => {
@@ -270,22 +270,22 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
             <span className="text-[10.5px] text-amber-300 font-bold">Tema:</span>
             <select
-              aria-label="Selector de Tema Corporativo SAP UI5 / Fiori"
+              aria-label="Selector de Tema Corporativo FeNi Proyect"
               value={themeMode}
               onChange={(e) => setThemeMode(e.target.value as 'sap_horizon' | 'sap_fiori_3_dark' | 'classic')}
               className="bg-[#0e2c7a] text-white font-semibold text-[10.5px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer"
             >
-              <option value="sap_horizon">✨ SAP Horizon (Claro)</option>
-              <option value="sap_fiori_3_dark">🌙 Fiori Dark (Oscuro)</option>
-              <option value="classic">💻 Classic B1 (Metálico)</option>
+              <option value="sap_horizon">✨ FeNi Horizon (Claro)</option>
+              <option value="sap_fiori_3_dark">🌙 FeNi Obsidian (Oscuro)</option>
+              <option value="classic">💻 FeNi Enterprise (Metálico)</option>
             </select>
           </div>
 
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2.5 py-1 rounded shadow-inner">
             <Shield className="w-3.5 h-3.5 text-amber-400" aria-hidden="true" />
-            <span className="text-[11px] text-blue-200">Usuario SAP:</span>
+            <span className="text-[11px] text-blue-200">Usuario FeNi:</span>
             <select
-              aria-label="Perfil de usuario SAP Business One"
+              aria-label="Perfil de usuario FeNi Proyect"
               value={activeRole}
               onChange={(e) => setActiveRole(e.target.value as SAPRole)}
               className="bg-[#0e2c7a] text-white font-semibold text-[11px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer"
@@ -386,17 +386,17 @@ export default function SAPDesktopShell({ catalog }: SAPDesktopShellProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
           <div className="w-full max-w-md bg-[#ECE9D8] border-2 border-[#0A246A] shadow-2xl rounded-sm p-4 font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
             <div className="flex items-center gap-2 bg-[#0A246A] text-white px-2 py-1 font-bold -mx-4 -mt-4 mb-3">
-              <span>SAP Business One — Mensaje del Sistema</span>
+              <span>FeNi Proyect — Mensaje del Sistema</span>
             </div>
             <div className="flex gap-3 items-start my-2">
               <ShieldAlert className="w-8 h-8 text-[#A12622] shrink-0" aria-hidden="true" />
               <div className="space-y-1.5">
-                <p className="font-bold text-[#A12622] text-xs">Autorización insuficiente (Código SAP #1320-04)</p>
+                <p className="font-bold text-[#A12622] text-xs">Autorización insuficiente (Código FeNi #1320-04)</p>
                 <p>
                   El usuario actual <strong>{simulatedEmail}</strong> ({currentRoleDef.label}) no tiene autorización para acceder a <strong>{unauthorizedModal.screenName}</strong> en el módulo <em>{unauthorizedModal.moduleName}</em>.
                 </p>
                 <p className="text-[#555] bg-white p-2 border border-[#d5dde8] rounded-sm">
-                  ℹ️ <strong>Concepto Clave SAP B1:</strong> Las empresas configuran perfiles para que cada empleado solo opere las áreas de su competencia.
+                  ℹ️ <strong>Concepto Clave FeNi Proyect:</strong> Las empresas configuran perfiles para que cada empleado solo opere las áreas de su competencia.
                 </p>
               </div>
             </div>

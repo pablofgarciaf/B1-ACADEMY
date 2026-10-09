@@ -92,8 +92,8 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
   return (
     <div className="m-2 sm:m-3 rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs">
       <div className="flex items-center gap-2 bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1 font-semibold">
-        <span className="rounded-sm bg-gradient-to-b from-[#1f6fc5] to-[#0a3d8f] px-1.5 text-[10px] font-black italic text-white">SAP</span>
-        SAP Business One 10.0 — {empresa || EMPRESA_CURSO}
+        <span className="rounded-sm bg-gradient-to-b from-[#b91c1c] to-[#7f1d1d] px-1.5 text-[10px] font-black italic text-white">FeNi</span>
+        FeNi Proyect 2026 — {empresa || EMPRESA_CURSO}
       </div>
 
       {logrado && (

@@ -134,7 +134,7 @@ export default function SAPModulesTree({ modules, onScreenSelect }: SAPModulesTr
 
       {/* Footer */}
       <div className="p-3 border-t border-gray-200 bg-gray-50 text-[10px] text-gray-500">
-        <p className="text-center">SAP Business One 10.0</p>
+        <p className="text-center font-semibold text-[#0055A5]">FeNi Proyect ERP 2026</p>
       </div>
     </div>
   );

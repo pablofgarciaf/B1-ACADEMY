@@ -34,7 +34,7 @@ export default function GenericSAPScreen({ screenId, screenName, icon = '🖥️
 
         {/* Tips de uso */}
         <div className="mt-4 w-full max-w-sm bg-[#FFFDE7] border border-yellow-300 rounded p-3">
-          <p className="text-[10px] font-bold text-yellow-800 mb-2">💡 Atajos de SAP B1:</p>
+          <p className="text-[10px] font-bold text-yellow-800 mb-2">💡 Atajos de FeNi Proyect:</p>
           <ul className="space-y-1">
             {TIPS.default.map((tip, i) => (
               <li key={i} className="text-[10px] text-yellow-700 flex gap-2">
@@ -51,7 +51,7 @@ export default function GenericSAPScreen({ screenId, screenName, icon = '🖥️
 
       {/* Status bar */}
       <div className="flex items-center px-2 py-0.5 bg-[#D4D0C8] border-t border-gray-400 text-[10px] text-gray-600">
-        <span className="flex-1">SAP Business One 10.0 — {screenId}</span>
+        <span className="flex-1">FeNi Proyect ERP 2026 — {screenId}</span>
         <span>Lista para aprendizaje</span>
       </div>
     </div>

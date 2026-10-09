@@ -38,12 +38,12 @@ export default function SimuladorLogin({ onLogin, isLoading = false, error }: Si
             <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
               <Sparkles className="text-white" size={24} />
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-400 bg-clip-text text-transparent">
-              SAP Academy
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 via-rose-400 to-red-500 bg-clip-text text-transparent flex items-center justify-center gap-2">
+              <span>🐦‍🔥</span> FeNi Proyect
             </h1>
           </div>
           <p className="text-slate-400 text-sm">
-            Simulador Virtual de SAP Business One
+            Cloud ERP 2026 · Ecuador & NIIF PYMES
           </p>
         </div>
 
