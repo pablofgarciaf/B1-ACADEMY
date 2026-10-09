@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.20",
+    "@ui5/webcomponents": "^2.27.2",
+    "@ui5/webcomponents-icons": "^2.27.2",
+    "@ui5/webcomponents-react": "^2.27.2",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "firebase": "^11.4.0",
