@@ -15,11 +15,43 @@ import {
   ChevronRight,
   TrendingUp,
   FileCheck,
-  CheckCircle
+  Building2,
+  Package,
+  ShoppingCart,
+  Factory,
+  Landmark,
+  Settings2,
+  Compass,
+  Wrench,
+  Layers
 } from 'lucide-react';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
-import { TRAINING_TRACKS } from '@/lib/courses-data';
+import { 
+  SPECIALTY_DIPLOMAS, 
+  OFFICIAL_SYLLABUS, 
+  SYLLABUS_BLOCKS, 
+  MASTER_PROGRAM, 
+  getModuleById, 
+  moduleMinutes,
+  type SyllabusBlock 
+} from '@/lib/curriculum-data';
+
+export const metadata = {
+  title: 'Escuela de Capacitación en SAP Business One Ecuador',
+  description: 'Aprende SAP Business One 10.0 con la arquitectura real de Ecuador. 14 diplomas de especialidad, 30 módulos, sandbox simulador y bolsa de trabajo.',
+};
+
+const BLOCK_ICONS: Record<SyllabusBlock, typeof Building2> = {
+  'Administración y Talento Humano': Building2,
+  'Logística y Cadena de Suministro': Package,
+  'Gestión Comercial y CRM': ShoppingCart,
+  'Producción y Planificación': Factory,
+  'Finanzas y Fiscalidad': Landmark,
+  'Tecnología y Analítica': Settings2,
+  'Consultoría y Business Analyst': Compass,
+  'Proyecto Final': Award,
+};
 
 export default function HomePage() {
   return (
@@ -41,11 +73,11 @@ export default function HomePage() {
                 <Sparkles className="w-5 h-5 text-sap-blue dark:text-sky-400 shrink-0 mt-0.5" />
                 <div>
                   <strong className="text-slate-900 dark:text-white font-semibold">
-                    Escuela especializada de capacitación tecnológica y consultoría:
+                    Escuela oficial de formación tecnológica y consultoría ERP:
                   </strong>{' '}
-                  Especialización integral en el ecosistema <strong>SAP Business One Ecuador</strong>.
-                  Formación dividida en <strong>5 grandes tracks</strong> (SAP B1 Core NIIF, Localización SRI, Nómina HCM IESS/MDT, Gestión Humana Nine-Box y Verticales de Exportación Banano/Camarón/Beas).
-                  Con simulador de prácticas sandbox, evaluaciones automatizadas, expedientes de calificaciones y acceso directo a bolsa de empleo para perfiles Job-Ready.
+                  Especialización integral en <strong>SAP Business One 10.0 Ecuador</strong>.
+                  Programa oficial estructurado en <strong>14 Diplomas de Especialidad</strong>, <strong>30 Módulos de Competencia</strong> (navegación, activos fijos, Procure-to-Pay, Order-to-Cash, MRP, NIIF, retenciones SRI 2026, nómina IESS, SQL/DTW, SAP Activate y BPMN 2.0) y <strong>1 Titulación Máster Capstone</strong>.
+                  Incluye simulador de laboratorio sandbox B1 Center con PostgreSQL en Supabase, certificados con QR único y bolsa de trabajo Job-Ready.
                 </div>
               </div>
             </aside>
@@ -63,8 +95,8 @@ export default function HomePage() {
               </h1>
 
               <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-                Aprende con la arquitectura de conocimiento real de las empresas ecuatorianas. 
-                Domina transacciones operativas, parametrización tributaria SRI, nómina laboral IESS y la gestión vertical agroexportadora.
+                Capacítate con la arquitectura de conocimiento real de las empresas en Ecuador. 
+                Obtén diplomas por especialidad funcional y domina desde la operación transaccional hasta la arquitectura de proyectos ERP.
               </p>
 
               {/* CTAs */}
@@ -73,12 +105,12 @@ export default function HomePage() {
                   href="/capacitacion"
                   className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-sap-blue to-sky-600 text-white font-bold text-sm sm:text-base shadow-xl shadow-sap-blue/25 hover:shadow-sap-blue/40 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <BookOpen className="w-5 h-5" />
-                  Explorar los 5 Tracks Formativos
+                  <Award className="w-5 h-5" />
+                  Ver los 14 Diplomas de Especialidad
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
-                  href="/dashboard"
+                  href="/mi-aula"
                   className="w-full sm:w-auto px-8 py-4 rounded-2xl border border-slate-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-slate-800 dark:text-white font-semibold text-sm sm:text-base hover:border-sap-blue/50 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
                   <GraduationCap className="w-5 h-5 text-sap-blue" />
@@ -89,96 +121,96 @@ export default function HomePage() {
               {/* Stats E-E-A-T */}
               <div className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-slate-200 dark:border-white/[0.08]">
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">5</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Grandes Tracks</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">14</p>
+                  <p className="text-xs text-slate-500 mt-1 font-medium">Diplomas de Especialidad</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-sap-blue dark:text-sky-400 font-display">32</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Submódulos Técnicos</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-sap-blue dark:text-sky-400 font-display">30</p>
+                  <p className="text-xs text-slate-500 mt-1 font-medium">Módulos Oficiales</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">259h</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Horas de Formación</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">366</p>
+                  <p className="text-xs text-slate-500 mt-1 font-medium">Prácticas en Sandbox</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">Job-Ready</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Conexión con Empresas</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">100%</p>
+                  <p className="text-xs text-slate-500 mt-1 font-medium">Grado Súper Analista</p>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECCIÓN PRINCIPAL: LOS 5 GRANDES TRACKS FORMATIVOS */}
-        <section id="tracks" className="py-20 bg-slate-100/70 dark:bg-white/[0.01] border-y border-slate-200 dark:border-white/[0.06]">
+        {/* SECCIÓN PRINCIPAL: LOS 14 DIPLOMAS DE ESPECIALIDAD */}
+        <section id="diplomas" className="py-20 bg-slate-100/70 dark:bg-white/[0.01] border-y border-slate-200 dark:border-white/[0.06]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <span className="text-xs uppercase tracking-[0.25em] text-sap-blue dark:text-sky-400 font-bold">
-                Estructura Curricular
+                Estructura Profesional
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-                Los 5 Pilares de B1 Academy Ecuador
+                14 Diplomas de Especialidad Acreditados
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-                Cada track contiene submódulos con enfoque <strong>[OP] Operativo</strong> para usuarios transaccionales y <strong>[ARQ] Arquitectura</strong> para consultores implementadores.
+                Diseñados para certificar competencias por perfil laboral real de la industria: desde Compras, Bodega y Ventas hasta Consultoría de Implementación y Business Analyst.
               </p>
             </div>
 
-            {/* Grid de los 5 tracks */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {TRAINING_TRACKS.map((track, index) => {
-                const isLarge = index === 0 || index === 1;
+            {/* Grid de los 14 diplomas */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {SPECIALTY_DIPLOMAS.map((diploma, index) => {
+                const isMaster = diploma.id === 'dip-consultor' || diploma.id === 'dip-business-analyst';
                 return (
                   <div
-                    key={track.id}
-                    className={`rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] p-7 sm:p-8 flex flex-col justify-between hover:border-sap-blue/40 hover:shadow-lg transition-all group ${
-                      index === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+                    key={diploma.id}
+                    className={`rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] p-6 sm:p-7 flex flex-col justify-between hover:border-sap-blue/40 hover:shadow-lg transition-all group ${
+                      isMaster ? 'md:col-span-2 lg:col-span-1 bg-gradient-to-b from-sap-blue/5 to-transparent border-sap-blue/30' : ''
                     }`}
                   >
-                    <div className="space-y-5">
+                    <div className="space-y-4">
                       <div className="flex justify-between items-start">
-                        <span className="text-xs font-mono font-bold px-3 py-1 rounded-lg bg-sap-blue/10 text-sap-blue">
-                          Track 0{index + 1}
+                        <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-sap-blue/10 text-sap-blue">
+                          Diploma 0{index + 1}
                         </span>
-                        <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300">
-                          {track.badge}
+                        <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300">
+                          {diploma.role}
                         </span>
                       </div>
 
                       <div>
-                        <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors font-display">
-                          {track.title}
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors font-display leading-snug">
+                          {diploma.title}
                         </h3>
-                        <p className="text-xs text-slate-500 font-medium mt-1">
-                          {track.totalDurationHours} Horas Lectivas • {track.submodulesCount} Submódulos Especializados
-                        </p>
                       </div>
 
                       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                        {track.description}
+                        {diploma.description}
                       </p>
 
-                      <div className="space-y-2 border-t border-slate-100 dark:border-white/5 pt-4">
-                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Temas Clave:</p>
+                      <div className="space-y-2 border-t border-slate-100 dark:border-white/5 pt-3">
+                        <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">Módulos Requeridos ({diploma.requiredModules.length}):</p>
                         <div className="flex flex-wrap gap-1.5">
-                          {track.submodules.slice(0, 3).map((sub, i) => (
-                            <span key={i} className="text-[11px] px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-white/5">
-                              {sub.title.split(':')[0]}
-                            </span>
-                          ))}
+                          {diploma.requiredModules.map((mId) => {
+                            const mod = getModuleById(mId);
+                            return (
+                              <span key={mId} className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5">
+                                {mId}: {mod?.badge || mod?.title.split(':')[0]}
+                              </span>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
 
-                    <div className="pt-6 mt-6 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-                      <span className="text-xs text-slate-500 italic">
-                        {track.targetAudience.split(',')[0]}
+                    <div className="pt-5 mt-5 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+                      <span className="text-xs text-slate-500 font-medium">
+                        {diploma.requiredModules.length} Certificados de Módulo
                       </span>
                       <Link
-                        href={`/capacitacion/${track.id}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-sap-blue hover:text-sky-500 transition-colors"
+                        href="/capacitacion"
+                        className="inline-flex items-center gap-1 text-xs font-bold text-sap-blue hover:text-sky-500 transition-colors"
                       >
-                        Ver Módulos <ChevronRight className="w-4 h-4" />
+                        Ver Detalle <ChevronRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
@@ -186,19 +218,31 @@ export default function HomePage() {
               })}
             </div>
 
-            <div className="text-center pt-4">
-              <Link
-                href="/capacitacion"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-sap-blue text-white text-xs font-bold shadow-md shadow-sap-blue/20 hover:bg-sky-600 transition-all active:scale-95 cursor-pointer"
-              >
-                Ver Programa Curricular Completo con los 32 Módulos
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+            {/* PROGRAMA CUMBRE MÁSTER */}
+            <div className="rounded-3xl border border-amber-500/40 bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent p-8 sm:p-10 space-y-4 text-center max-w-4xl mx-auto shadow-xl">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold">
+                <Award className="w-4 h-4" /> Titulación Máxima de la Academia
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">
+                {MASTER_PROGRAM.title}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
+                {MASTER_PROGRAM.description} Completa los 30 módulos oficiales, demuestra tus habilidades en el simulador sandbox de práctica y defiende el Proyecto Integrador ante el evaluador del sistema.
+              </p>
+              <div className="pt-2">
+                <Link
+                  href="/mi-aula"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold shadow-lg shadow-amber-500/20 transition-all active:scale-95 cursor-pointer"
+                >
+                  <GraduationCap className="w-5 h-5" />
+                  Iniciar Carrera de Súper Analista
+                </Link>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* METODOLOGÍA: APRENDER HACIENDO (ESTILO EDX / APRENDE.ORG) */}
+        {/* METODOLOGÍA: APRENDER HACIENDO */}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
@@ -206,10 +250,10 @@ export default function HomePage() {
                 Metodología Certificada
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-                Modelo de Formación Riguroso y Empleable
+                Modelo de Formación Práctico y Empleable
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-                Inspirado en los mejores modelos pedagógicos universitarios y de acreditación empresarial.
+                Formación diseñada con estándares reales de consultoría e implementación en empresas de Ecuador.
               </p>
             </div>
 
@@ -219,10 +263,10 @@ export default function HomePage() {
                   01
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Clases Guiadas & Base de Conocimiento
+                  30 MódulosGuiados con Casos Reales
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Lecciones estructuradas por expertos con acceso a la documentación técnica, guías de parametrización y casos de estudio reales.
+                  Lecciones en formato diapositivas interactivas, guías de parametrización SRI/IESS y ejercicios prácticos paso a paso.
                 </p>
               </div>
 
@@ -231,10 +275,10 @@ export default function HomePage() {
                   02
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Prácticas en Sandbox con Horas Contabilizadas
+                  Simulador Sandbox B1 Center
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Ambiente de pruebas real para ejecutar transacciones en SAP B1, parametrizar tablas SRI y procesar planillas en Nómina HCM.
+                  Ejecuta transacciones reales en el simulador: compras, ventas, facturación electrónica, asientos contables y liquidación de nómina.
                 </p>
               </div>
 
@@ -243,10 +287,10 @@ export default function HomePage() {
                   03
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Acreditación & Bolsa Job-Ready
+                  Acreditación Oficial con Código QR
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Al alcanzar ≥80% de avance, ≥80% en exámenes y ≥15h de sandbox, el sistema activa automáticamente tu postulación ante empresas contratantes.
+                  Emisión instantánea en PDF de 30 certificados de módulo, 14 diplomas de especialidad y la titulación Máster de Súper Analista.
                 </p>
               </div>
             </div>

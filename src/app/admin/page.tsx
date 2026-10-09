@@ -31,7 +31,7 @@ import {
   TrendingUp,
   LayoutDashboard
 } from 'lucide-react';
-import { TRAINING_TRACKS } from '@/lib/courses-data';
+import { SPECIALTY_DIPLOMAS } from '@/lib/curriculum-data';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
 
@@ -506,28 +506,28 @@ export default function AdminStudentsPanel() {
                 </select>
               </div>
 
-              {/* Selección de Tracks asignados */}
+              {/* Selección de Diplomas asignados */}
               <div className="space-y-2 pt-2">
                 <label className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                  Tracks de Formación Habilitados:
+                  Diplomas de Especialidad Habilitados:
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {TRAINING_TRACKS.map((track) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
+                  {SPECIALTY_DIPLOMAS.map((dip) => (
                     <label
-                      key={track.id}
-                      className={`p-3 rounded-xl border text-xs flex items-center gap-2.5 cursor-pointer transition-all ${
-                        formTracks.includes(track.id)
+                      key={dip.id}
+                      className={`p-2.5 rounded-xl border text-xs flex items-center gap-2 cursor-pointer transition-all ${
+                        formTracks.includes(dip.id)
                           ? 'border-sap-blue bg-sap-blue/5 text-sap-blue font-bold'
                           : 'border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400'
                       }`}
                     >
                       <input
                         type="checkbox"
-                        checked={formTracks.includes(track.id)}
-                        onChange={() => handleToggleTrack(track.id)}
+                        checked={formTracks.includes(dip.id)}
+                        onChange={() => handleToggleTrack(dip.id)}
                         className="rounded text-sap-blue focus:ring-0"
                       />
-                      <span className="line-clamp-1">{track.shortTitle}</span>
+                      <span className="line-clamp-1">{dip.role}</span>
                     </label>
                   ))}
                 </div>

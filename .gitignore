@@ -20,6 +20,7 @@
 *.pem
 __pycache__/
 *.py[cod]
+*.py
 *firebase-adminsdk*.json
 *service-account*.json
 serviceAccount*.json
@@ -40,21 +41,15 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-scratch/node_modules/
+# scripts and scratch automation
+scratch/
+scripts/
+exports/
+_backup_videos_descartados/
+*.log
 
 # large generated video binaries (exclude 3.6GB from git & Vercel deployment payload)
 public/Capacitacion SAP/*/clase_video.mp4
 !public/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/clase_video.mp4
 !public/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/clase_video.mp4
 !public/Capacitacion SAP/10_Overview_13_MDDoc_ES/clase_video.mp4
-
-# Temporales del generador de videos del Aula
-scratch/aula_audio_cache/
-scratch/marketing_audio_cache/
-scratch/aula_tmp/
-scratch/*.log
-# Borradores de clases de Mi Aula (generar_clases.py → publicar_clases.py publica en src/content/aula y public/aula)
-scratch/aula_es/
-_backup_videos_descartados/
-exports/
-scratch/
