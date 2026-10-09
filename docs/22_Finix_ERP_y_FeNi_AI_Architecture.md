@@ -60,3 +60,23 @@ Para garantizar estabilidad total en producción y evitar dependencias rotas en 
 - **Linter:** `npm run lint` validado sin warnings.
 - **Motor Contable:** 116 pruebas automatizadas (`motor_sri.ts`, `motor_impuestos.ts`, `motor_listas_oportunidades.ts`, `motor_banca.ts`) con 100% de éxito.
 - **Build de Producción:** `next build` genera 155 rutas estáticas y dinámicas con código de salida `0`.
+
+---
+
+## 🤖 5. Reprogramación de @FeNi AI y Purgado de Supabase en UI
+
+1. **Eliminación de Menciones de Infraestructura Externa:**
+   - A los estudiantes y operadores ERP no les interesa la capa de persistencia interna (Supabase/PostgreSQL).
+   - Se reemplazaron todas las cadenas visibles en la barra superior, barra de estado inferior, títulos de acreditación y pantallas de inicio por términos corporativos: `Motor Contable en Tiempo Real`, `Servidor Finix Cloud Engine` y `Base de Datos Corporativa Cloud`.
+
+2. **Resolución Dinámica de Módulo y Ventana Activa:**
+   - Anteriormente, el shell transmitía el módulo por defecto (`01_Finanzas`) independientemente de la ventana abierta.
+   - Ahora, cada ventana instanciada conserva su `moduleKey` y `moduleName` canónicos (`02_Ventas` -> `Ventas & Clientes`, etc.). Al enfocar cualquier ventana o abrir "Pedido de Venta", el shell inyecta dinámicamente `currentModule: "Ventas & Clientes"` y `currentScreen: "Pedido de Venta"`.
+
+3. **Catálogo de 13 Módulos Canónicos en el System Prompt:**
+   - Se inyectó la tabla completa y exacta de 13 módulos y 65 pantallas en `FINI_SYSTEM_PROMPT`.
+   - Se configuró la **regla fundamental de no anidación**: `Ventas & Clientes` es un módulo independiente del menú lateral; nunca debe ser descrito dentro de Finanzas.
+   - Rutas exactas para ventas: **Ventas & Clientes > [SAL002] Pedido de Venta** (o [SAL001] Oferta / [SAL004] Factura).
+   - Rutas exactas para bancos: **Finanzas & Contabilidad > [FIN002] Libro Mayor** (cuenta 1.1.02) y **Gestión de Bancos > [BNK001] Conciliación Bancaria**.
+   - Por defecto, el copiloto inicia minimizado como botón flotante discreto (`isOpen={false}`) para no obstruir el espacio de trabajo del estudiante.
+
