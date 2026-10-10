@@ -149,7 +149,7 @@ export function enviarAlSRI(xml: string, claves: Set<string>, hoy: string): Resp
 // ── Impuesto a la renta de personas naturales 2026 (empleados) ───────────────────
 // Tabla: Resolución NAC-DGERCGC25-00000043. Gastos personales: rebaja del 18 % sobre el menor valor entre los gastos
 // proyectados y el tope por cargas familiares (canasta básica de enero de 2026). ⚠ El mecanismo de rebaja y los topes
-// provienen de fuentes secundarias: confirmar con el contador (docs/16).
+// provienen de fuentes secundarias: confirmar con el contador.
 
 /** [desde, hasta, impuesto de la fracción básica, % sobre el excedente] */
 export const TABLA_IR_2026: readonly (readonly [number, number, number, number])[] = [
