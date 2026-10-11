@@ -61,7 +61,7 @@ export function Navbar() {
           </div>
           <div className="flex flex-col whitespace-nowrap">
             <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
-              B1 ACADEMY
+              ACADEMY
             </span>
             <span className="text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 font-semibold">
               FINIX ERP

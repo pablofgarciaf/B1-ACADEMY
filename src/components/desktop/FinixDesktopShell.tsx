@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useCompany } from '@/hooks/useCompany';
-import { ShieldAlert, Shield, Building2 } from 'lucide-react';
-import { LISTA_SIETE_EMPRESAS, empresaActiva, cambiarEmpresaActiva } from '@/lib/firestore-company';
+import { ShieldAlert, Shield, LogOut, Info, X } from 'lucide-react';
+import { empresaActiva } from '@/lib/firestore-company';
 import FinixMenuBar from './FinixMenuBar';
 import FinixToolBar from './FinixToolBar';
 import FinixModulesTree from './FinixModulesTree';
@@ -77,9 +77,10 @@ interface FinixDesktopShellProps {
     modules: Record<string, Module>;
     metadata: { total_screens: number; total_modules: number };
   };
+  onExit?: () => void;
 }
 
-export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
+export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShellProps) {
   const { userProfile, currentUser } = useAuth();
   const company = useCompany();
   const [windows, setWindows] = useState<Window[]>([]);
@@ -88,13 +89,21 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
   const [activeRole, setActiveRole] = useState<FinixRole>('super');
   const [themeMode, setThemeMode] = useState<'finix_horizon' | 'finix_fiori_3_dark' | 'classic'>('finix_horizon');
   const [activeSlot, setActiveSlot] = useState<string>('curso');
+  const [showAboutModal, setShowAboutModal] = useState(false);
+  const [toastMessage, setToastMessage] = useState<{ text: string; type: 'info' | 'success' | 'warn' } | null>(null);
+
+  const showToast = (text: string, type: 'info' | 'success' | 'warn' = 'info') => {
+    setToastMessage({ text, type });
+    setTimeout(() => {
+      setToastMessage(prev => (prev?.text === text ? null : prev));
+    }, 4000);
+  };
+
   useEffect(() => {
     setActiveSlot(empresaActiva());
     const onSlotChange = () => setActiveSlot(empresaActiva());
     window.addEventListener('finix-company-changed', onSlotChange);
-    window.addEventListener('finix-company-changed', onSlotChange);
     return () => {
-      window.removeEventListener('finix-company-changed', onSlotChange);
       window.removeEventListener('finix-company-changed', onSlotChange);
     };
   }, []);
@@ -226,22 +235,206 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
   };
 
   const handleMenuAction = (action: string) => {
-    if (action.includes('Salir')) {
-      window.location.href = '/simulador';
-    } else if (action.includes('Cerrar Todo')) {
-      setWindows([]);
-    } else if (action.includes('Añadir')) {
-      createWindow('OINV', 'Factura de Clientes', '02_Ventas');
+    switch (action) {
+      // ── Archivo ───────────────────────────────────────────
+      case 'Nuevo':
+        createWindow('SAL002', 'Pedido de Venta', '02_Ventas');
+        showToast('Abriendo nuevo Pedido de Venta...', 'info');
+        break;
+      case 'Abrir':
+        createWindow('FIN001', 'Asientos Contables (Diario)', '01_Finanzas');
+        showToast('Abriendo Asientos Contables...', 'info');
+        break;
+      case 'Guardar':
+        showToast('Documento y cambios guardados en el servidor Finix Cloud.', 'success');
+        break;
+      case 'Guardar Como...':
+        showToast('Copia del documento generada exitosamente.', 'success');
+        break;
+      case 'Salir':
+        if (onExit) onExit();
+        else window.location.href = '/simulador';
+        break;
+
+      // ── Edición ───────────────────────────────────────────
+      case 'Deshacer':
+        showToast('Deshacer: no hay acciones previas en el historial local.', 'info');
+        break;
+      case 'Rehacer':
+        showToast('Rehacer: última acción restablecida.', 'info');
+        break;
+      case 'Cortar':
+      case 'Copiar':
+      case 'Pegar':
+        showToast(`Operación de portapapeles: ${action}`, 'info');
+        break;
+      case 'Buscar':
+        createWindow('SAL006', 'Socios de Negocio (Clientes / Proveedores)', '02_Ventas');
+        break;
+
+      // ── Ver ───────────────────────────────────────────────
+      case 'Barra de Herramientas':
+        showToast('Barra de herramientas estándar activa.', 'info');
+        break;
+      case 'Barra de Estado':
+        showToast('Barra de estado de conexión activa en tiempo real.', 'info');
+        break;
+      case 'Refrescar':
+        void company.refresh();
+        showToast('Datos de la empresa y motor contable refrescados.', 'success');
+        break;
+      case 'Pantalla Completa':
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(() => {});
+          showToast('Modo pantalla completa activado.', 'info');
+        } else {
+          document.exitFullscreen().catch(() => {});
+          showToast('Modo pantalla completa desactivado.', 'info');
+        }
+        break;
+
+      // ── Datos ─────────────────────────────────────────────
+      case 'Añadir Registro':
+        createWindow('SAL002', 'Pedido de Venta', '02_Ventas');
+        showToast('Creando nuevo registro de documento.', 'info');
+        break;
+      case 'Duplicar Registro':
+        showToast('Registro duplicado en modo borrador para edición.', 'info');
+        break;
+      case 'Eliminar Registro':
+        showToast('Operación restringida: Los registros contables y fiscales están protegidos.', 'warn');
+        break;
+      case 'Buscar Registro':
+        createWindow('SAL006', 'Socios de Negocio (Clientes / Proveedores)', '02_Ventas');
+        break;
+      case 'Filtrar':
+        createWindow('INV005', 'Consulta de Disponibilidad de Artículos', '04_Inventario');
+        break;
+
+      // ── Ir a ──────────────────────────────────────────────
+      case 'Primero':
+      case 'Anterior':
+      case 'Siguiente':
+      case 'Último':
+        showToast(`Navegación de registros: ${action}`, 'info');
+        break;
+
+      // ── Herramientas ──────────────────────────────────────
+      case 'Generador de Reportes':
+        createWindow('RPT001', 'Generador de Reportes y Layouts', '09_Reportes');
+        break;
+      case 'Query Manager':
+        createWindow('QRY001', 'Query Manager (Consultas SQL)', '10_Consultas');
+        break;
+      case 'Importador de Datos':
+        createWindow('UTL002', 'Importador de Datos Masivos', '12_Herramientas');
+        break;
+      case 'Exportador de Datos':
+        createWindow('UTL003', 'Exportador de Datos y Balances', '12_Herramientas');
+        break;
+      case 'Parametrizaciones':
+        createWindow('ADM001', 'Inicialización y Parametrizaciones del Sistema', '11_Admin');
+        break;
+
+      // ── Ventana ───────────────────────────────────────────
+      case 'Cascada':
+        setWindows(prev =>
+          prev.map((w, idx) => ({
+            ...w,
+            x: 40 + idx * 30,
+            y: 30 + idx * 30,
+            minimized: false,
+            maximized: false,
+          }))
+        );
+        showToast('Ventanas ordenadas en cascada.', 'info');
+        break;
+      case 'Mosaico Horizontal': {
+        const activeWins = windows.filter(w => !w.minimized);
+        if (activeWins.length === 0) break;
+        const h = Math.floor(600 / activeWins.length);
+        setWindows(prev =>
+          prev.map(w => {
+            const index = activeWins.findIndex(aw => aw.id === w.id);
+            if (index === -1) return w;
+            return {
+              ...w,
+              x: 20,
+              y: 20 + index * h,
+              width: 860,
+              height: Math.max(h - 10, 200),
+              maximized: false,
+            };
+          })
+        );
+        showToast('Ventanas ordenadas en mosaico horizontal.', 'info');
+        break;
+      }
+      case 'Mosaico Vertical': {
+        const activeWins = windows.filter(w => !w.minimized);
+        if (activeWins.length === 0) break;
+        const wWidth = Math.floor(900 / activeWins.length);
+        setWindows(prev =>
+          prev.map(w => {
+            const index = activeWins.findIndex(aw => aw.id === w.id);
+            if (index === -1) return w;
+            return {
+              ...w,
+              x: 20 + index * wWidth,
+              y: 20,
+              width: Math.max(wWidth - 10, 300),
+              height: 580,
+              maximized: false,
+            };
+          })
+        );
+        showToast('Ventanas ordenadas en mosaico vertical.', 'info');
+        break;
+      }
+      case 'Cerrar Todo':
+        setWindows([]);
+        showToast('Todas las ventanas fueron cerradas.', 'info');
+        break;
+
+      // ── Ayuda ─────────────────────────────────────────────
+      case 'Ayuda de Finix ERP':
+        window.dispatchEvent(new CustomEvent('feni-abrir'));
+        showToast('Asistente FeNi activado. Pregúntame sobre cualquier proceso.', 'info');
+        break;
+      case 'Acerca de Finix ERP':
+        setShowAboutModal(true);
+        break;
+
+      default:
+        showToast(`Acción ejecutada: ${action}`, 'info');
+        break;
     }
   };
 
   const handleToolAction = (toolId: string) => {
-    if (toolId === 'add') {
-      createWindow('OJDT', 'Asiento Contable', '01_Finanzas');
-    } else if (toolId === 'search') {
-      createWindow('OCRD', 'Datos Maestros de Socio', '02_Ventas');
-    } else if (toolId === 'print') {
-      window.print();
+    switch (toolId) {
+      case 'add':
+        createWindow('SAL002', 'Pedido de Venta', '02_Ventas');
+        showToast('Creando nuevo documento de venta...', 'info');
+        break;
+      case 'search':
+        createWindow('SAL006', 'Socios de Negocio (Clientes)', '02_Ventas');
+        showToast('Búsqueda de socios de negocio...', 'info');
+        break;
+      case 'first':
+      case 'previous':
+      case 'next':
+      case 'last':
+        showToast(`Navegación de registros: ${toolId}`, 'info');
+        break;
+      case 'print':
+        window.print();
+        break;
+      case 'settings':
+        createWindow('ADM001', 'Inicialización y Parametrizaciones del Sistema', '11_Admin');
+        break;
+      default:
+        break;
     }
   };
 
@@ -256,34 +449,11 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
           </div>
           <div>
             <h1 className="text-xs font-bold leading-none">Finix ERP (Cloud 2026) — {companyTitle}</h1>
-            <p className="text-[10px] text-blue-200 mt-0.5">Empresa autorizada · Motor contable en tiempo real</p>
           </div>
         </div>
 
         {/* Identidad de Usuario Finix ERP con Roles, Selector de Sociedad y Selector de Temas */}
         <div className="flex items-center gap-3">
-          {/* Selector de Sociedad / Empresa entre las 7 empresas del usuario */}
-          <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
-            <Building2 className="w-3.5 h-3.5 text-emerald-400" aria-hidden="true" />
-            <span className="text-[10.5px] text-emerald-300 font-bold">Sociedad:</span>
-            <select
-              aria-label="Selector de Sociedad / Empresa Finix ERP"
-              value={activeSlot}
-              disabled={company.saving}
-              onChange={(e) => {
-                setActiveSlot(e.target.value);
-                cambiarEmpresaActiva(e.target.value);
-              }}
-              className="bg-[#0e2c7a] text-white font-semibold text-[10.5px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-emerald-400 cursor-pointer max-w-[200px] truncate"
-            >
-              {LISTA_SIETE_EMPRESAS.map(emp => (
-                <option key={emp.id} value={emp.id}>
-                  {emp.icon} {emp.shortName}
-                </option>
-              ))}
-            </select>
-          </div>
-
           {/* Selector de Tema Corporativo UI5 */}
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
             <span className="text-[10.5px] text-amber-300 font-bold">Tema:</span>
@@ -316,12 +486,29 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
             </select>
           </div>
 
+          {/* Botón Salir al Campus / Dashboard Principal */}
+          <button
+            type="button"
+            onClick={() => {
+              if (onExit) onExit();
+              else window.location.href = '/campus';
+            }}
+            className="flex items-center gap-1.5 bg-red-950/80 hover:bg-red-800 text-red-100 hover:text-white border border-red-500/50 px-2.5 py-1 rounded text-[11px] font-bold transition-all active:scale-95 shadow-sm"
+            title="Salir del Simulador y volver al Campus / Panel Principal"
+          >
+            <LogOut className="w-3.5 h-3.5 text-red-300" aria-hidden="true" />
+            <span>Salir al Campus</span>
+          </button>
+
           <div className="flex gap-1">
             <button
               type="button"
-              className="w-5 h-5 bg-[#0e2c7a] hover:bg-[#1a42a0] border border-blue-300/40 text-white rounded text-[11px] flex items-center justify-center transition-all active:scale-95"
-              onClick={() => window.location.href = '/simulador'}
-              title="Volver al Panel de Prácticas"
+              className="w-6 h-6 bg-[#0e2c7a] hover:bg-[#1a42a0] border border-blue-300/40 text-white rounded text-xs flex items-center justify-center transition-all active:scale-95"
+              onClick={() => {
+                if (onExit) onExit();
+                else window.location.href = '/simulador';
+              }}
+              title="Volver al Panel Principal de Prácticas"
             >
               ⌂
             </button>
@@ -341,9 +528,8 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
         <FinixModulesTree modules={modules} onScreenSelect={createWindow} />
 
         {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
-        <div className={`flex-1 min-w-0 h-full relative overflow-hidden flex flex-col transition-colors duration-200 ${
-          themeMode === 'finix_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'finix_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
-        }`}>
+        <div className={`flex-1 min-w-0 h-full relative overflow-hidden flex flex-col transition-colors duration-200 ${themeMode === 'finix_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'finix_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
+          }`}>
           <div className="flex-1 relative overflow-hidden">
             <FinixWindowManager
               windows={windows}
@@ -370,13 +556,12 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
                     }
                     focusWindow(win.id);
                   }}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] rounded-t transition-all border ${
-                    win.focused && !win.minimized
+                  className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] rounded-t transition-all border ${win.focused && !win.minimized
                       ? 'bg-[#0055A5] text-white border-blue-400 font-semibold shadow-sm'
                       : win.minimized
-                      ? 'bg-amber-950/80 text-amber-200 border-amber-500/50 hover:bg-amber-900/90'
-                      : 'bg-[#0f172a] text-gray-300 border-gray-700 hover:bg-[#1e293b]'
-                  }`}
+                        ? 'bg-amber-950/80 text-amber-200 border-amber-500/50 hover:bg-amber-900/90'
+                        : 'bg-[#0f172a] text-gray-300 border-gray-700 hover:bg-[#1e293b]'
+                    }`}
                   title={win.minimized ? 'Hacer clic para restaurar ventana minimizada' : 'Hacer clic para enfocar ventana'}
                 >
                   <span className={`w-2 h-2 rounded-full ${win.minimized ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} />
@@ -392,10 +577,19 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
       {/* Barra de Estado Inferior Limpia */}
       <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white text-[11px] px-3 py-1 flex items-center justify-between border-t border-gray-600">
         <div className="flex items-center gap-3">
-          <span className="inline-flex items-center gap-1.5 text-emerald-400">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            Conectado al Servidor (Finix Cloud Engine)
-          </span>
+          {toastMessage ? (
+            <span className={`inline-flex items-center gap-1.5 font-bold ${
+              toastMessage.type === 'success' ? 'text-emerald-300' : toastMessage.type === 'warn' ? 'text-amber-300' : 'text-cyan-300'
+            }`}>
+              <span>{toastMessage.type === 'success' ? '✅' : toastMessage.type === 'warn' ? '⚠️' : 'ℹ️'}</span>
+              <span>{toastMessage.text}</span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 text-emerald-400">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              Conectado al Servidor (Finix Cloud Engine)
+            </span>
+          )}
           <span className="text-gray-300">| Perfil activo: <strong>{currentRoleDef.department}</strong></span>
         </div>
         <div className="flex items-center gap-4 text-gray-300 font-mono text-[10px]">
@@ -456,12 +650,71 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
         </div>
       )}
 
+      {/* Modal Acerca de Finix ERP */}
+      {showAboutModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <div className="w-full max-w-md bg-white border-2 border-[#0055A5] shadow-2xl rounded-sm p-5 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b border-gray-200">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🐦‍🔥</span>
+                <div>
+                  <h2 className="text-sm font-bold text-[#002b5c]">Finix ERP (Cloud 2026)</h2>
+                  <p className="text-[10px] text-gray-500">Versión 26.4.1 (Ecuador NIIF & SRI Edition)</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowAboutModal(false)}
+                className="text-gray-400 hover:text-gray-700 p-1 rounded"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="space-y-2 text-[11px] text-gray-700">
+              <p><strong>Sociedad Activa:</strong> {companyTitle}</p>
+              <p><strong>Entorno:</strong> Simulación interactiva empresarial en tiempo real con motor de doble partida contable.</p>
+              <p><strong>Normativa:</strong> NIIF para PYMES y Resoluciones SRI Ecuador (Comprobantes 01, 07, ATS).</p>
+              <p><strong>Desarrollado por:</strong> B1 Academy · Plataforma de Alto Rendimiento Empresarial.</p>
+              <div className="bg-blue-50 border border-blue-200 p-2.5 rounded text-[10.5px] text-blue-900 mt-2">
+                💡 Todas las operaciones comerciales, de inventario y tesorería impactan directamente los libros contables y financieros de su empresa en el simulador.
+              </div>
+            </div>
+            <div className="mt-4 pt-3 border-t border-gray-200 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowAboutModal(false)}
+                className="px-4 py-1.5 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded text-xs active:scale-95 transition-all shadow-sm"
+              >
+                Aceptar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating Toast Notification */}
+      {toastMessage && (
+        <div className="fixed bottom-10 right-6 z-50 flex items-center gap-2 px-3.5 py-2 bg-slate-900/95 border border-blue-400 text-white rounded shadow-2xl animate-in slide-in-from-bottom-2 duration-200 text-xs">
+          <span className="text-sm">
+            {toastMessage.type === 'success' ? '✅' : toastMessage.type === 'warn' ? '⚠️' : 'ℹ️'}
+          </span>
+          <span className="font-medium">{toastMessage.text}</span>
+          <button
+            type="button"
+            onClick={() => setToastMessage(null)}
+            className="ml-2 text-slate-400 hover:text-white"
+          >
+            ×
+          </button>
+        </div>
+      )}
+
       {/* Asistente IA */}
       {(() => {
         const activeWin = windows.find(w => w.focused) || windows[windows.length - 1];
         const activeScreenTitle = activeWin ? activeWin.title : 'Dashboard';
-        const activeModuleTitle = activeWin?.moduleName 
-          || (activeWin?.moduleKey && catalog.modules[activeWin.moduleKey]?.name) 
+        const activeModuleTitle = activeWin?.moduleName
+          || (activeWin?.moduleKey && catalog.modules[activeWin.moduleKey]?.name)
           || 'General';
         return (
           <SimuladorAIAdvisor

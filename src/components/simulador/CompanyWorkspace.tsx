@@ -150,7 +150,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
         </Screen>
       )
     ) : (
-      <div className="min-h-0 flex-1"><FinixDesktopShell catalog={extendCompanyCatalog(catalog)} /></div>
+      <div className="min-h-0 flex-1"><FinixDesktopShell catalog={extendCompanyCatalog(catalog)} onExit={onExit} /></div>
     )}
   </div></CompanyContext.Provider>;
 }

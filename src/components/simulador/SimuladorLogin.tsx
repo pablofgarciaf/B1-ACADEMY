@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { LogIn, Mail, Lock, User, Sparkles, ArrowRight } from 'lucide-react';
+import { LogIn, Mail, Lock, User, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 
 interface SimuladorLoginProps {
@@ -34,12 +34,9 @@ export default function SimuladorLogin({ onLogin, isLoading = false, error }: Si
       <div className="relative z-10 w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-              <Sparkles className="text-white" size={24} />
-            </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-amber-400 via-rose-400 to-red-500 bg-clip-text text-transparent flex items-center justify-center gap-2">
-              <span>🐦‍🔥</span> Finix ERP
+          <div className="flex items-center justify-center mb-4">
+            <h1 className="text-3xl font-extrabold bg-gradient-to-r from-amber-400 via-rose-400 to-red-500 bg-clip-text text-transparent flex items-center justify-center gap-2.5">
+              <span className="text-4xl">🐦‍🔥</span> Finix ERP
             </h1>
           </div>
           <p className="text-slate-400 text-sm">
