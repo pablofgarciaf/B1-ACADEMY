@@ -38,7 +38,7 @@ export function empresaActiva(): EmpresaSlot {
 export function cambiarEmpresaActiva(slot: EmpresaSlot) {
   try { localStorage.setItem(CLAVE_EMPRESA, slot); } catch { /* sin almacenamiento: se usa B1 Center */ }
   window.dispatchEvent(new Event('finix-company-changed'));
-  window.dispatchEvent(new Event('sap-company-changed'));
+  window.dispatchEvent(new Event('finix-company-changed'));
 }
 // Fuerza la empresa del curso mientras se ejecuta Mi Aula (ver usarEmpresaCurso).
 let forzarCurso = 0;
@@ -56,16 +56,16 @@ export async function companyFetch<T>(path: string, init?: RequestInit): Promise
     return data as T;
   } catch (error: unknown) { throw error instanceof Error ? error : new Error('Error de conexión.'); }
 }
-export async function getCompany(uid: string): Promise<CompanyState> { return companyFetch<CompanyState>(`/api/sap/company?uid=${encodeURIComponent(uid)}`); }
+export async function getCompany(uid: string): Promise<CompanyState> { return companyFetch<CompanyState>(`/api/finix/company?uid=${encodeURIComponent(uid)}`); }
 export async function sendCommand(uid: string, command: CompanyCommand, requestId = crypto.randomUUID()): Promise<string> {
   if (auth.currentUser?.uid !== uid) throw new Error('No puedes modificar otra empresa.');
   // Same request ID on the single network retry; the server stores its result atomically.
   const body = JSON.stringify({ requestId, command });
   let response: { result: string };
-  try { response = await companyFetch<{ result: string }>('/api/sap/company', { method: 'POST', body }); }
-  catch (error: unknown) { if (!(error instanceof TypeError)) throw error; response = await companyFetch<{ result: string }>('/api/sap/company', { method: 'POST', body }); }
+  try { response = await companyFetch<{ result: string }>('/api/finix/company', { method: 'POST', body }); }
+  catch (error: unknown) { if (!(error instanceof TypeError)) throw error; response = await companyFetch<{ result: string }>('/api/finix/company', { method: 'POST', body }); }
   window.dispatchEvent(new Event('finix-company-changed'));
-  window.dispatchEvent(new Event('sap-company-changed'));
+  window.dispatchEvent(new Event('finix-company-changed'));
   return response.result;
 }
 export async function initializeCompany(uid: string, email: string, companyName: string): Promise<void> { if (auth.currentUser?.email !== email) throw new Error('Correo incompatible con la sesión.'); await sendCommand(uid, { action: 'initialize', data: { companyName } }); }

@@ -893,7 +893,7 @@ export const ALL_SLIDES_INDEX: AllSlidesIndex = {
     "043_Slide_20_10_Impl_16_CustomTools_UserDefinedTables_ES.webp",
     "043_Slide_21_10_Impl_16_CustomTools_UserDefinedTables_ES.webp"
   ],
-  "22.7_Introduccion_a_SAP_Analytics": [
+  "22.7_Introduccion_a_Finix_Analytics": [
     "044_Slide_01_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
     "044_Slide_02_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
     "044_Slide_03_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
@@ -940,7 +940,7 @@ export const ALL_SLIDES_INDEX: AllSlidesIndex = {
     "044_Slide_44_10_Impl_17_CustomTools_IntroAnalytics_ES.webp",
     "044_Slide_45_10_Impl_17_CustomTools_IntroAnalytics_ES.webp"
   ],
-  "20.1_Metodologia_de_Implementacion_SAP": [
+  "20.1_Metodologia_de_Implementacion_Finix": [
     "045_Slide_01_10_Impl_21_ImplTools_ImplementationMethodology_ES.webp",
     "045_Slide_02_10_Impl_21_ImplTools_ImplementationMethodology_ES.webp",
     "045_Slide_03_10_Impl_21_ImplTools_ImplementationMethodology_ES.webp",
@@ -1389,28 +1389,28 @@ export const ALL_SLIDES_INDEX: AllSlidesIndex = {
     "059_Slide_26_10_Impl_39_SystemSetup_EmailPrefrences.webp",
     "059_Slide_27_10_Impl_39_SystemSetup_EmailPrefrences.webp"
   ],
-  "1.1_Introduccion_a_SAP_Business_One": [
-    "060_Slide_01_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_02_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_03_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_04_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_05_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_06_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_07_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_08_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_09_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_10_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_11_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_12_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_13_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_14_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_15_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_16_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_17_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_18_10_Intro_11_Overview_IntroSAPB1_ES.webp",
-    "060_Slide_19_10_Intro_11_Overview_IntroSAPB1_ES.webp"
+  "1.1_Introduccion_a_Finix_ERP": [
+    "060_Slide_01_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_02_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_03_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_04_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_05_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_06_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_07_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_08_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_09_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_10_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_11_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_12_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_13_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_14_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_15_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_16_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_17_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_18_10_Intro_11_Overview_IntroFinix_ES.webp",
+    "060_Slide_19_10_Intro_11_Overview_IntroFinix_ES.webp"
   ],
-  "1.2_Primeros_Pasos_en_SAP_Business_One": [
+  "1.2_Primeros_Pasos_en_Finix_ERP": [
     "061_Slide_01_10_Intro_12_Overview_GettingStarted_ES.webp",
     "061_Slide_02_10_Intro_12_Overview_GettingStarted_ES.webp",
     "061_Slide_03_10_Intro_12_Overview_GettingStarted_ES.webp",

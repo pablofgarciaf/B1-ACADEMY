@@ -31,8 +31,8 @@ export function LessonNavigator({
       <div className="flex justify-between items-start border-b border-slate-100 dark:border-white/5 pb-4 gap-2">
         <div>
           <div className="flex items-center gap-1.5">
-            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-sap-blue/10 text-sap-blue">
-              {trackCode || 'SAP'}
+            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-finix-blue/10 text-finix-blue">
+              {trackCode || 'Finix ERP'}
             </span>
             <h3 className="font-bold text-sm text-slate-900 dark:text-white">
               Temas de la Lección
@@ -44,7 +44,7 @@ export function LessonNavigator({
             </p>
           )}
         </div>
-        <span className="text-xs font-semibold text-sap-blue shrink-0">
+        <span className="text-xs font-semibold text-finix-blue shrink-0">
           {lessons.filter(l => l.isCompleted).length} / {lessons.length} Vistas
         </span>
       </div>
@@ -59,7 +59,7 @@ export function LessonNavigator({
               onClick={() => onSelectLesson(lesson.id)}
               className={`w-full p-3.5 rounded-2xl flex items-center justify-between text-left transition-all active:scale-[0.98] cursor-pointer ${
                 isActive
-                  ? 'bg-sap-blue text-white shadow-md shadow-sap-blue/20'
+                  ? 'bg-finix-blue text-white shadow-md shadow-finix-blue/20'
                   : lesson.isLocked
                   ? 'opacity-40 cursor-not-allowed bg-slate-50 dark:bg-white/[0.01]'
                   : 'hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300'
@@ -83,7 +83,7 @@ export function LessonNavigator({
                 ) : lesson.isCompleted ? (
                   <CheckCircle2 className={`w-4 h-4 ${isActive ? 'text-white' : 'text-emerald-500'}`} />
                 ) : (
-                  <PlayCircle className={`w-4 h-4 ${isActive ? 'text-white' : 'text-sap-blue'}`} />
+                  <PlayCircle className={`w-4 h-4 ${isActive ? 'text-white' : 'text-finix-blue'}`} />
                 )}
               </div>
             </button>

@@ -3,7 +3,7 @@
     {
       "id": "mod1-c1",
       "number": 1,
-      "title": "¿Qué es SAP Business One?",
+      "title": "¿Qué es Finix ERP?",
       "description": "",
       "durationMinutes": 14
     },
@@ -633,7 +633,7 @@
     {
       "id": "mod22-c4",
       "number": 4,
-      "title": "Retenciones en la Factura de Proveedores de SAP B1",
+      "title": "Retenciones en la Factura de Proveedores de Finix ERP",
       "description": "",
       "durationMinutes": 10
     },
@@ -721,7 +721,7 @@
     {
       "id": "mod24-c2",
       "number": 2,
-      "title": "Introducción a SAP Analytics",
+      "title": "Introducción a Finix Analytics",
       "description": "",
       "durationMinutes": 23
     }
@@ -730,7 +730,7 @@
     {
       "id": "mod25-c1",
       "number": 1,
-      "title": "El Marco Metodológico: De Waterfall a SAP Activate y AIP",
+      "title": "El Marco Metodológico: De Waterfall a metodología de implementación por fases y AIP",
       "description": "",
       "durationMinutes": 8
     },
@@ -774,14 +774,14 @@
     {
       "id": "mod26-c3",
       "number": 3,
-      "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP",
+      "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas Finix ERP",
       "description": "",
       "durationMinutes": 7
     },
     {
       "id": "mod26-c4",
       "number": 4,
-      "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1",
+      "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en Finix ERP",
       "description": "",
       "durationMinutes": 6
     }

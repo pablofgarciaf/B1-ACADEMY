@@ -10,7 +10,7 @@ const newUserSchema = z.object({
   temporaryPassword: z.string().trim().min(6).max(128),
   cedula: z.string().trim().max(20).optional(),
   role: z.enum(['estudiante', 'docente', 'admin']).default('estudiante'),
-  assignedTracks: z.array(z.string().min(1).max(80)).max(20).default(['sap-b1-core']),
+  assignedTracks: z.array(z.string().min(1).max(80)).max(20).default(['finix-erp-core']),
   phone: z.string().trim().max(30).optional(),
 });
 

@@ -119,13 +119,13 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
 }
 
 // Re-exportamos para compatibilidad con código existente
-export { FeNiMascota as FiniMascota, FeNiMascota as SapiMascota, FeNiMascota as FeniMascota };
+export { FeNiMascota as FiniMascota, FeNiMascota as FeniMascota };
 
 /** Dibujo de FeNi (Fénix Rojo de Inteligencia ERP Finix). */
 export function FeNiCara({ tam, flotar = true }: { tam: number; flotar?: boolean }) {
   const id = `feni${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   return (
-    <svg width={tam} height={tam} viewBox="0 0 64 64" className={flotar ? 'sapi-flotar' : ''} aria-hidden="true">
+    <svg width={tam} height={tam} viewBox="0 0 64 64" className={flotar ? 'feni-flotar' : ''} aria-hidden="true">
       <defs>
         <linearGradient id={`${id}-body`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#EF4444" />

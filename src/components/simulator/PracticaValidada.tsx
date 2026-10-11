@@ -15,7 +15,7 @@ export interface CampoPractica { etiqueta: string; valor: string; pista?: string
 export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
 
 /** Menú principal de Finix ERP (cliente de escritorio, español). */
-const MODULOS_SAP = [
+const MODULOS_FINIX = [
   'Administración', 'Finanzas', 'Oportunidades', 'Ventas - Clientes', 'Compras - Proveedores', 'Socios de negocios',
   'Gestión de bancos', 'Inventario', 'Recursos', 'Producción', 'Planificación de necesidades', 'Servicio',
   'Recursos humanos', 'Proyectos', 'Informes',
@@ -47,12 +47,12 @@ const plano = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g
 
 function moduloOficial(nombre: string): string {
   const p = plano(nombre);
-  const oficial = MODULOS_SAP.find((m) => plano(m) === p);
+  const oficial = MODULOS_FINIX.find((m) => plano(m) === p);
   if (oficial) return oficial;
   return ALIAS_MODULO.find(([re]) => re.test(p))?.[1] ?? nombre;
 }
 
-export function rutaSap(menuPath: string, titulo = ''): string[] {
+export function rutaFinix(menuPath: string, titulo = ''): string[] {
   const partes = menuPath.split('>').map((s) => s.trim()).filter(Boolean);
   while (partes.length && /^(menu( principal)?|modulos?)$/.test(plano(partes[0]))) partes.shift();
   if (!partes.length) return partes;
@@ -110,7 +110,7 @@ function opcionesCampo(c: CampoPractica): Opcion[] | null {
 type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
 
 export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void }) {
-  const ruta = useMemo(() => rutaSap(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
+  const ruta = useMemo(() => rutaFinix(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
   const porMenuSuperior = ruta[0] === 'Herramientas';
   const campos = useMemo(() => guia.campos ?? [], [guia.campos]);
   const [nivel, setNivel] = useState(0);
@@ -165,8 +165,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const ventanaAbierta = ruta.length === 0 || nivel >= ruta.length;
   const modulos = useMemo(() => {
     const raiz = ruta[0];
-    if (!raiz || porMenuSuperior || MODULOS_SAP.some((m) => normalizar(m) === normalizar(raiz))) return MODULOS_SAP;
-    return [...MODULOS_SAP, raiz];
+    if (!raiz || porMenuSuperior || MODULOS_FINIX.some((m) => normalizar(m) === normalizar(raiz))) return MODULOS_FINIX;
+    return [...MODULOS_FINIX, raiz];
   }, [ruta, porMenuSuperior]);
 
   const hijos = (profundidad: number) => {
@@ -244,8 +244,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       let x = r.left - b.left + (esCampo ? 4 : 0);
       x = Math.max(4, Math.min(x, b.width - GUIA_TAM - 4));
       
-      // FIX DE POSICIONAMIENTO DE SAPI: Si se está mostrando el mensaje de solución roja debajo del campo,
-      // desplazamos el icono de Sapi más abajo (34px adicionales) para que NUNCA obstruya la lectura de la solución.
+      // FIX DE POSICIONAMIENTO DE FeNi: Si se está mostrando el mensaje de solución roja debajo del campo,
+      // desplazamos el icono de FeNi más abajo (34px adicionales) para que NUNCA obstruya la lectura de la solución.
       const indiceCampo = esCampo ? parseInt(objetivo.clave.replace('campo-', ''), 10) : -1;
       const haySolucionVisible = mostrarSolucion || (indiceCampo >= 0 && revisado?.[indiceCampo] === false);
       let y = r.bottom - b.top + (haySolucionVisible ? 36 : 2);

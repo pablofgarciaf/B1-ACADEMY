@@ -1,4 +1,4 @@
-// Pruebas del Query Manager (SQL sobre la empresa del estudiante con tablas SAP).
+// Pruebas del Query Manager (SQL sobre la empresa del estudiante con tablas Finix ERP).
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 require('ts-node').register({ transpileOnly: true, compilerOptions: { module: 'CommonJS', moduleResolution: 'Node' } });

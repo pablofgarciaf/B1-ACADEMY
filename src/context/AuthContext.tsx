@@ -164,7 +164,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       await setDoc(doc(db, 'usuarios', created.uid), {
         uid: created.uid, email, name: data.name.trim(), displayName: data.name.trim(), cedula,
         role: 'estudiante', status: 'active', createdAt: new Date().toISOString(), passwordChanged: false,
-        assignedTracks: ['sap-b1-core'], phone: data.phone?.trim() ?? '', simuladorLevel: 1, simuladorXP: 0, completedMissions: 0,
+        assignedTracks: ['finix-erp-core'], phone: data.phone?.trim() ?? '', simuladorLevel: 1, simuladorXP: 0, completedMissions: 0,
         // Constancia del consentimiento (LOPDP): qué versión de las políticas aceptó y cuándo.
         consentimiento: { politicas: POLITICAS_VERSION, fecha: new Date().toISOString(), medio: 'registro-web' },
       });

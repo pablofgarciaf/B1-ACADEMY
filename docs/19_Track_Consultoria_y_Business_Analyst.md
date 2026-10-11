@@ -1,18 +1,18 @@
-# 🏛️ Track de Consultoría y Business Analysis SAP Business One
+# 🏛️ Track de Consultoría y Business Analysis Finix ERP
 
 > **Estado:** Implementado, validado y publicado (8-oct-2026).
-> **Referencia:** Benchmark comparativo frente a *SAP Technology Consultant* y *SAP Business Analyst* de Coursera.
+> **Referencia:** Benchmark comparativo frente a *Finix ERP Technology Consultant* y *Finix ERP Business Analyst* de Coursera.
 > **Total:** 4 módulos nuevos (`mod-26` a `mod-29`), 16 clases magistrales, 137 láminas WebP 1920x1080, 16 prácticas integradas en el simulador.
 
 ---
 
 ## 🎯 1. Propósito y Diferencial Competitivo Mundial
 
-Este track incorpora a la academia la capa metodológica, estratégica y de relación con clientes propia de las grandes firmas de consultoría global (Big Four y partners SAP Gold):
-1. **SAP Activate & AIP Oficial:** Supera el empirismo mediante un ciclo estructurado de 6 fases (*Discover, Prepare, Explore, Realize, Deploy, Run*).
+Este track incorpora a la academia la capa metodológica, estratégica y de relación con clientes propia de las grandes firmas de consultoría global (Big Four y partners Finix ERP Gold):
+1. **metodología de implementación por fases & AIP Oficial:** Supera el empirismo mediante un ciclo estructurado de 6 fases (*Discover, Prepare, Explore, Realize, Deploy, Run*).
 2. **Modelado BPMN 2.0:** Traduce flujos informales en procesos estandarizados con Pools, Lanes y compuertas lógicas que se parametrizan en el ERP.
 3. **Documentación de Negocio (BRD & BBD):** Especificación rigurosa mediante Business Blueprint, historias de usuario en formato ágil y criterios de aceptación Gherkin (*Dado/Cuando/Entonces*).
-4. **La Ventaja Inalcanzable para Coursera:** Mientras que Coursera ofrece cursos puramente teóricos con casos ficticios en diapositivas, B1 Academy combina la metodología formal con **práctica transaccional real en el simulador de SAP Business One** conectado a base de datos viva y validación contable.
+4. **La Ventaja Inalcanzable para Coursera:** Mientras que Coursera ofrece cursos puramente teóricos con casos ficticios en diapositivas, B1 Academy combina la metodología formal con **práctica transaccional real en el simulador de Finix ERP** conectado a base de datos viva y validación contable.
 
 ---
 
@@ -20,7 +20,7 @@ Este track incorpora a la academia la capa metodológica, estratégica y de rela
 
 ```mermaid
 graph TD
-    A[Track Consultoría & Business Analyst] --> M26[Módulo 26: Metodología SAP Activate & AIP]
+    A[Track Consultoría & Business Analyst] --> M26[Módulo 26: Metodología metodología de implementación por fases & AIP]
     A --> M27[Módulo 27: Modelado BPMN 2.0 AS-IS / TO-BE]
     A --> M28[Módulo 28: Requerimientos, Blueprint & UDFs]
     A --> M29[Módulo 29: Stakeholders, UAT & Go-Live]
@@ -30,7 +30,7 @@ graph TD
     M28 --> P28[🖥️ Práctica: Propiedades Socio, Plan Cuentas, Alertas Stock, UDFs]
     M29 --> P29[🖥️ Práctica: CRM Actividades, Permisos Lectura, Pedido UAT, Balance]
 
-    P26 & P27 & P28 & P29 --> SIM[🕹️ Simulador SAP B1 10.0 HANA]
+    P26 & P27 & P28 & P29 --> SIM[🕹️ Simulador Finix ERP 10.0 HANA]
     SIM --> EVAL[🎙️ Defensa Técnica Oral con Master B1]
     EVAL -->|≥ 80% + 100% Clases| DIP[🎓 Diploma de Consultor Funcional & Business Analyst]
 ```
@@ -39,8 +39,8 @@ graph TD
 
 ## 📚 3. Desglose Curricular de los 4 Módulos
 
-### Módulo 26 · Metodología de Implementación y Ciclo de Vida SAP
-- **`mod26-c1`**: El Marco Metodológico: De Waterfall a SAP Activate y AIP.
+### Módulo 26 · Metodología de Implementación y Ciclo de Vida Finix ERP
+- **`mod26-c1`**: El Marco Metodológico: De Waterfall a metodología de implementación por fases y AIP.
   - *Práctica:* Configurar parámetros maestros de la sociedad en *Gestión > Inicialización del sistema > Detalles de la empresa*.
 - **`mod26-c2`**: Talleres de Exploración (Explore) y Análisis Fit / Gap.
   - *Práctica:* Parametrizar bloqueo por límite de crédito en *Gestión > Inicialización > Parametrizaciones de documento*.
@@ -54,9 +54,9 @@ graph TD
   - *Práctica:* Crear usuario operativo asignado a carril en *Gestión > Definición > General > Usuarios*.
 - **`mod27-c2`**: Mapeo del Estado Actual (AS-IS) y Detección de Ineficiencias.
   - *Práctica:* Auditoría de cuellos de botella en *Ventas - Clientes > Informes > Lista de partidas abiertas*.
-- **`mod27-c3`**: Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP.
+- **`mod27-c3`**: Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas Finix ERP.
   - *Práctica:* Creación de oferta comercial en *Ventas - Clientes > Oferta de ventas*.
-- **`mod27-c4`**: Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1.
+- **`mod27-c4`**: Traducción de BPMN a Reglas de Negocio y Aprobaciones en Finix ERP.
   - *Práctica:* Modelo de autorización por monto en *Gestión > Procedimientos de aprobación > Modelos de autorización*.
 
 ### Módulo 28 · Levantamiento de Requerimientos y Documentación de Negocio
@@ -84,16 +84,9 @@ graph TD
 ## 🏆 4. Nueva Acreditación: Diploma de Especialidad
 
 - **Código:** `dip-business-analyst`
-- **Título:** Diploma de Consultor Funcional & Business Analyst SAP Business One.
-- **Rol Profesional:** *Consultor Funcional y Analista de Procesos SAP B1*.
+- **Título:** Diploma de Consultor Funcional & Business Analyst Finix ERP.
+- **Rol Profesional:** *Consultor Funcional y Analista de Procesos Finix ERP*.
 - **Módulos Requeridos:** `mod-1`, `mod-2`, `mod-26`, `mod-27`, `mod-28`, `mod-29`.
-- **Elegibilidad Master:** Integra el grupo de diplomas válidos para optar al título de *Consultor Integral SAP Business One* (`dip-consultor` y `master-consultor-integral`).
+- **Elegibilidad Master:** Integra el grupo de diplomas válidos para optar al título de *Consultor Integral Finix ERP* (`dip-consultor` y `master-consultor-integral`).
 
 ---
-
-## 🔗 Enlaces Relacionados (Obsidian Vault)
-
-- [[10_Campus_Escuela_SAP_B1]] - Arquitectura del aula virtual y visor de diapositivas.
-- [[12_Malla_Curricular]] - Malla general de carreras y módulos de la academia.
-- [[11_Master_B1_Tutor_IA]] - Sistema de examen oral y rúbricas de evaluación.
-- [[18_Simulador_Departamentos_y_Aislamiento_Supabase]] - Conexión de prácticas con Supabase.

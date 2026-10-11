@@ -19,7 +19,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a SAP Business One. Todo consultor debe empezar por lo básico: entrar al sistema y comprender su arquitectura de tres capas. Lo que estás viendo ahora es el proceso para acceder a la capa de presentación (el cliente).",
+        script_text: "Bienvenido a Finix ERP. Todo consultor debe empezar por lo básico: entrar al sistema y comprender su arquitectura de tres capas. Lo que estás viendo ahora es el proceso para acceder a la capa de presentación (el cliente).",
         step_guide: null
       },
       {
@@ -84,7 +84,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "El menú principal de SAP es gigantesco. La forma en la que los consultores expertos ahorran tiempo es utilizando el Buscador Empresarial (Enterprise Search). Nos permite encontrar ventanas, documentos y clientes con un par de teclas.",
+        script_text: "El menú principal de Finix ERP es gigantesco. La forma en la que los consultores expertos ahorran tiempo es utilizando el Buscador Empresarial (Enterprise Search). Nos permite encontrar ventanas, documentos y clientes con un par de teclas.",
         step_guide: null
       },
       {
@@ -111,7 +111,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Para terminar el módulo, hablaremos de la gestión por excepciones. SAP Business One te alerta automáticamente cuando ocurren desviaciones importantes, como faltantes de stock o descuentos que superan el límite permitido.",
+        script_text: "Para terminar el módulo, hablaremos de la gestión por excepciones. Finix ERP te alerta automáticamente cuando ocurren desviaciones importantes, como faltantes de stock o descuentos que superan el límite permitido.",
         step_guide: null
       },
       {
@@ -142,7 +142,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "En SAP Business One, cualquier persona o empresa con la que hacemos negocios, ya sea un cliente, un proveedor o incluso un prospecto, se gestiona como un Socio de Negocios. Su ficha maestra es la tabla OCRD y es el punto de partida para emitir cualquier documento comercial.",
+        script_text: "En Finix ERP, cualquier persona o empresa con la que hacemos negocios, ya sea un cliente, un proveedor o incluso un prospecto, se gestiona como un Socio de Negocios. Su ficha maestra es la tabla OCRD y es el punto de partida para emitir cualquier documento comercial.",
         step_guide: null
       },
       {
@@ -184,7 +184,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Todo lo que compramos, vendemos o almacenamos en SAP Business One necesita una ficha maestra de artículo, la tabla OITM. Aquí definimos si el producto maneja inventario permanente, lotes, series, y qué cuentas contables utiliza automáticamente.",
+        script_text: "Todo lo que compramos, vendemos o almacenamos en Finix ERP necesita una ficha maestra de artículo, la tabla OITM. Aquí definimos si el producto maneja inventario permanente, lotes, series, y qué cuentas contables utiliza automáticamente.",
         step_guide: null
       },
       {
@@ -226,7 +226,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Un problema frecuente en logística es que compramos en una unidad y vendemos en otra. Por ejemplo, compramos laptops por pallets de 10 unidades pero las vendemos de a una. SAP Business One resuelve esto con los Grupos de Unidades de Medida, que permiten conversiones automáticas entre la unidad de compra y la de venta.",
+        script_text: "Un problema frecuente en logística es que compramos en una unidad y vendemos en otra. Por ejemplo, compramos laptops por pallets de 10 unidades pero las vendemos de a una. Finix ERP resuelve esto con los Grupos de Unidades de Medida, que permiten conversiones automáticas entre la unidad de compra y la de venta.",
         step_guide: null
       },
       {
@@ -246,7 +246,7 @@ const LESSON_CONTENT: Record<string, {
       },
       {
         slide_index: 3,
-        script_text: "Ahora asignamos la unidad de venta en la pestaña correspondiente. Cuando se emita una orden de compra en cajas y una orden de venta en unidades, SAP convertirá los valores de inventario automáticamente.",
+        script_text: "Ahora asignamos la unidad de venta en la pestaña correspondiente. Cuando se emita una orden de compra en cajas y una orden de venta en unidades, Finix ERP convertirá los valores de inventario automáticamente.",
         step_guide: {
           action_type: "cockpit",
           menu_path: "Inventario > Datos Maestros de Artículo > Pestaña Ventas",
@@ -269,7 +269,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Las Listas de Precios son el puente entre los artículos y los clientes. En SAP Business One, cada artículo puede tener diferentes precios según el tipo de cliente: precio de lista para el público, precio preferencial para distribuidores, y precio de costo para uso interno. Todas estas listas pueden aplicar descuentos encadenados entre sí.",
+        script_text: "Las Listas de Precios son el puente entre los artículos y los clientes. En Finix ERP, cada artículo puede tener diferentes precios según el tipo de cliente: precio de lista para el público, precio preferencial para distribuidores, y precio de costo para uso interno. Todas estas listas pueden aplicar descuentos encadenados entre sí.",
         step_guide: null
       },
       {
@@ -315,7 +315,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Ciclo Procure-to-Pay. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Ciclo Procure-to-Pay. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -340,7 +340,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Transacciones de Almacén. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Transacciones de Almacén. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -365,7 +365,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Recuentos de Inventario. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Recuentos de Inventario. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -390,7 +390,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre MRP Básico. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre MRP Básico. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -419,7 +419,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Proceso de Ventas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Proceso de Ventas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -444,7 +444,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Oportunidades de Ventas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Oportunidades de Ventas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -469,7 +469,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Facturación y Entregas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Facturación y Entregas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -494,7 +494,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Devoluciones. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Devoluciones. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -523,7 +523,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Descuentos por Periodo. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Descuentos por Periodo. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -548,7 +548,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Grupos de Descuentos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Grupos de Descuentos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -573,7 +573,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Precios Especiales. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Precios Especiales. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -598,7 +598,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Campañas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Campañas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -627,7 +627,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Llamadas de Servicio. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Llamadas de Servicio. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -652,7 +652,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Tarjetas de Equipo. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Tarjetas de Equipo. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -677,7 +677,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Base de Soluciones. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Base de Soluciones. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -702,7 +702,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Garantías. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Garantías. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -731,7 +731,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Plan de Cuentas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Plan de Cuentas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -756,7 +756,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Asientos Manuales. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Asientos Manuales. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -781,7 +781,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Modelos Contables. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Modelos Contables. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -806,7 +806,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Diferencias de Cambio. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Diferencias de Cambio. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -835,7 +835,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Pagos Recibidos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Pagos Recibidos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -860,7 +860,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Pagos Efectuados. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Pagos Efectuados. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -885,7 +885,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Medios de Pago. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Medios de Pago. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -910,7 +910,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Reconciliación Interna. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Reconciliación Interna. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -939,7 +939,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Datos Maestros de Activos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Datos Maestros de Activos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -964,7 +964,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Capitalización. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Capitalización. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -989,7 +989,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Amortización. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Amortización. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1014,7 +1014,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Baja de Activos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Baja de Activos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1043,7 +1043,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Pronósticos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Pronósticos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1068,7 +1068,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Asistente MRP. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Asistente MRP. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1093,7 +1093,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Recomendaciones. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Recomendaciones. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1118,7 +1118,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Ejecución MRP. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Ejecución MRP. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1147,7 +1147,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Listas de Materiales. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Listas de Materiales. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1172,7 +1172,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Órdenes de Producción. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Órdenes de Producción. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1197,7 +1197,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Emisión y Recibo. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Emisión y Recibo. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1222,7 +1222,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Gestión de Proyectos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Gestión de Proyectos. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1251,7 +1251,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Query Manager. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Query Manager. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1276,7 +1276,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Vistas SQL. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Vistas SQL. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1301,7 +1301,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Data Transfer Workbench. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Data Transfer Workbench. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {
@@ -1326,7 +1326,7 @@ const LESSON_CONTENT: Record<string, {
     syncData: [
       {
         slide_index: 1,
-        script_text: "Bienvenido a la clase sobre Alertas Personalizadas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en SAP Business One para este proceso.",
+        script_text: "Bienvenido a la clase sobre Alertas Personalizadas. Aquí dominaremos los fundamentos teóricos y las mejores prácticas en Finix ERP para este proceso.",
         step_guide: null
       },
       {

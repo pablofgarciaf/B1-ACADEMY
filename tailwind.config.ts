@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        sap: {
+        finix: {
           blue: "#0a6ed1",
           darkblue: "#003b75",
           navy: "#0d1b2a",

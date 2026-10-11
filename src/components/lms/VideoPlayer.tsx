@@ -14,7 +14,7 @@ interface VideoPlayerProps {
 export function VideoPlayer({ 
   title, 
   durationMin, 
-  systemType = "SAP Business One v10.0 / Nómina HCM Ecuador",
+  systemType = "Finix ERP v10.0 / Nómina HCM Ecuador",
   transactionCode = "Live Masterclass ERP",
   onComplete 
 }: VideoPlayerProps) {
@@ -30,7 +30,7 @@ export function VideoPlayer({
 
   return (
     <div className="w-full rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 bg-black aspect-video relative flex flex-col justify-between p-6 group shadow-2xl">
-      {/* Background simulado de consola SAP Business One & Nómina HCM */}
+      {/* Background simulado de consola Finix ERP & Nómina HCM */}
       <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-[#0a1428] to-slate-900 opacity-95" />
       
       {/* Overlay de interfaz ERP real */}
@@ -60,7 +60,7 @@ export function VideoPlayer({
       <div className="relative z-10 flex items-center justify-center">
         <button
           onClick={togglePlay}
-          className="w-16 h-16 rounded-full bg-sap-blue/90 hover:bg-sap-blue text-white flex items-center justify-center shadow-lg shadow-sap-blue/50 transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-sm"
+          className="w-16 h-16 rounded-full bg-finix-blue/90 hover:bg-finix-blue text-white flex items-center justify-center shadow-lg shadow-finix-blue/50 transition-all hover:scale-105 active:scale-95 cursor-pointer backdrop-blur-sm"
         >
           {isPlaying ? <Pause className="w-7 h-7" /> : <Play className="w-7 h-7 ml-1" />}
         </button>
@@ -70,7 +70,7 @@ export function VideoPlayer({
       <div className="relative z-10 space-y-2">
         {/* Barra de progreso */}
         <div className="w-full h-1.5 bg-white/20 rounded-full overflow-hidden cursor-pointer">
-          <div className={`h-full bg-sap-blue transition-all duration-300 ${isPlaying ? 'w-2/3' : 'w-1/4'}`} />
+          <div className={`h-full bg-finix-blue transition-all duration-300 ${isPlaying ? 'w-2/3' : 'w-1/4'}`} />
         </div>
 
         <div className="flex justify-between items-center text-xs text-white">

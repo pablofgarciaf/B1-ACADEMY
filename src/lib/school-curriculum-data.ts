@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-// CURRÍCULO ACADÉMICO DE LA ESCUELA SAP BUSINESS ONE 10.0 (CAMPUS UNIVERSITARIO)
+// CURRÍCULO ACADÉMICO DE LA ESCUELA FINIX ERP 10.0 (CAMPUS UNIVERSITARIO)
 // Diseñado para Estudiantes de Pregrado/Posgrado, Profesionales y Docentes.
 // Las Clases condensan, sintetizan y estructuran la lógica empresarial real,
 // vinculando teoría magistral, tutoría Master B1, talleres en el simulador,
@@ -104,13 +104,13 @@ export const SCHOOL_CAREERS: SchoolCareer[] = [
     colorTheme: 'emerald',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
     targetAudience: 'Estudiantes universitarios, analistas de negocio, nuevos usuarios y consultores funcionales junior.',
-    careerRole: 'Operador de Negocios Certificado SAP B1',
+    careerRole: 'Operador de Negocios Certificado Finix ERP',
     totalHours: 40,
-    diplomaTitle: 'Diploma Oficial de Operador de Negocios en SAP Business One',
+    diplomaTitle: 'Diploma Oficial de Operador de Negocios en Finix ERP',
     diplomaIssuanceFeeUSD: 49,
     description: 'Aprende los principios estructurales del ERP líder para medianas empresas: arquitectura en memoria HANA, Cockpit interactivo Fiori, configuración multi-sociedad, datos maestros de Socios de Negocios (OCRD) y Artículos (OITM), matrices de precios y trazabilidad en el Mapa de Relaciones.',
     objectives: [
-      'Comprender la arquitectura cliente-servidor de SAP Business One sobre SAP HANA.',
+      'Comprender la arquitectura cliente-servidor de Finix ERP sobre base de datos en memoria.',
       'Operar con destreza el Cockpit Fiori, widgets analíticos, menús y comandos rápidos.',
       'Parametrizar usuarios, valores por defecto y campos definidos por usuario (UDFs).',
       'Administrar con exactitud fichas de Clientes y Proveedores con condiciones crediticias.',
@@ -139,21 +139,21 @@ export const SCHOOL_CAREERS: SchoolCareer[] = [
             careerId: 'carrera-fundamentos',
             careerTitle: 'Fundamentos Operativos, Navegación y Núcleo Maestro ERP',
             objectives: [
-              'Entender la diferencia entre la base de datos relacional y el motor in-memory de SAP HANA.',
-              'Aprender cómo SAP B1 administra múltiples bases de datos de sociedades independientes en un mismo servidor.',
+              'Entender la diferencia entre la base de datos relacional y el motor in-memory de base de datos en memoria.',
+              'Aprender cómo Finix ERP administra múltiples bases de datos de sociedades independientes en un mismo servidor.',
               'Crear y configurar un usuario del sistema asignando licencias profesionales y autorizaciones.'
             ],
             businessScenario: 'OEC Computers es una compañía multinacional de distribución tecnológica con sede en Miami y filiales en Latinoamérica. El Director de TI requiere incorporar nuevos analistas asignándoles cuentas seguras, licencias tipo "Professional" y vinculándolos a su sucursal correspondiente.',
-            theoryContent: `### 1. El Paradigma de SAP Business One sobre SAP HANA
-A diferencia de los ERPs tradicionales basados en discos mecánicos, **SAP Business One 10.0 sobre SAP HANA** procesa los datos íntegramente en la memoria RAM (**In-Memory Computing**). Esto permite análisis en tiempo real, búsqueda tipo Google en toda la base de datos empresarial y ejecución instantánea de reportes complejos.
+            theoryContent: `### 1. El Paradigma de Finix ERP sobre base de datos en memoria
+A diferencia de los ERPs tradicionales basados en discos mecánicos, **Finix ERP 10.0 sobre base de datos en memoria** procesa los datos íntegramente en la memoria RAM (**In-Memory Computing**). Esto permite análisis en tiempo real, búsqueda tipo Google en toda la base de datos empresarial y ejecución instantánea de reportes complejos.
 
 #### Componentes de la Arquitectura:
-- **Capa de Base de Datos:** Motor SAP HANA (Linux SUSE o Red Hat) que aloja el esquema de la empresa (tablas \`OITM\`, \`OCRD\`, \`OINV\`, etc.).
+- **Capa de Base de Datos:** Motor base de datos en memoria (Linux SUSE o Red Hat) que aloja el esquema de la empresa (tablas \`OITM\`, \`OCRD\`, \`OINV\`, etc.).
 - **Capa de Servidor de Aplicaciones:** Servicio de Licencias (System Landscape Directory - SLD), Servidor de Integración (B1iSN) y Service Layer (API REST moderna).
 - **Capa de Cliente:** Cliente enriquecido de escritorio para Windows y cliente Web Fiori accesible desde cualquier navegador moderno.
 
 ### 2. Modelo Multi-Sociedad
-SAP Business One permite gestionar en una misma instancia múltiples sociedades mercantiles completamente aisladas a nivel de base de datos contable:
+Finix ERP permite gestionar en una misma instancia múltiples sociedades mercantiles completamente aisladas a nivel de base de datos contable:
 - Cada sociedad posee su propia moneda local, moneda del sistema y Plan de Cuentas.
 - Permite operaciones inter-compañía mediante módulos de consolidación e integración.
 
@@ -165,14 +165,14 @@ Para que un operador trabaje en el sistema, se requiere:
             checkpoint: {
               timestampMin: 18,
               pauseMessage: '¡Alto de Cátedra! Master B1 requiere que practiques la creación de un usuario y verifiques su estado en el simulador.',
-              teacherAudioPrompt: '¡Hola estudiante! Soy Master B1, tu profesor. Hemos pausado la lección. Abre ahora el Simulador SAP y dirígete a Gestión > Definición > Usuarios para registrar el nuevo operador con licencia profesional.',
+              teacherAudioPrompt: '¡Hola estudiante! Soy Master B1, tu profesor. Hemos pausado la lección. Abre ahora el Simulador Finix ERP y dirígete a Gestión > Definición > Usuarios para registrar el nuevo operador con licencia profesional.',
               simulatorTask: 'Navega al módulo Gestión y abre la ventana de Usuarios para inspeccionar los perfiles activos.',
               simulatorMenuPath: 'Gestión > Definiciones > General > Usuarios',
               simulatorArchetype: 'system-setup'
             },
             simulatorMission: {
               title: 'Misión de Laboratorio: Alta y Verificación de Usuario Operador',
-              description: 'Ingresa al simulador SAP Business One, accede a la ventana de Definición de Usuarios e identifica los parámetros de sucursal y bloqueo de acceso.',
+              description: 'Ingresa al simulador Finix ERP, accede a la ventana de Definición de Usuarios e identifica los parámetros de sucursal y bloqueo de acceso.',
               stepByStep: [
                 '1. En el simulador, haz clic en el Menú Principal > Gestión.',
                 '2. Despliega la carpeta "Definiciones" y luego "General".',
@@ -185,7 +185,7 @@ Para que un operador trabaje en el sistema, se requiere:
             },
             quiz: [
               {
-                question: '¿Cuál es la ventaja principal del motor SAP HANA respecto a las bases de datos relacionales convencionales?',
+                question: '¿Cuál es la ventaja principal del motor base de datos en memoria respecto a las bases de datos relacionales convencionales?',
                 options: [
                   'Almacena los datos exclusivamente en archivos de texto plano.',
                   'Procesa toda la información en memoria RAM, permitiendo analítica y transacciones en tiempo real.',
@@ -193,10 +193,10 @@ Para que un operador trabaje en el sistema, se requiere:
                   'Solo funciona para empresas de menos de 5 empleados.'
                 ],
                 correctIndex: 1,
-                explanation: 'SAP HANA es una plataforma in-memory que aloja los datos directamente en la memoria principal del servidor, acelerando radicalmente la ejecución de reportes y transacciones.'
+                explanation: 'base de datos en memoria es una plataforma in-memory que aloja los datos directamente en la memoria principal del servidor, acelerando radicalmente la ejecución de reportes y transacciones.'
               },
               {
-                question: 'En SAP Business One, ¿dónde se configura si un usuario puede ver o modificar las Facturas de Clientes?',
+                question: 'En Finix ERP, ¿dónde se configura si un usuario puede ver o modificar las Facturas de Clientes?',
                 options: [
                   'En el fichero de socios de negocios.',
                   'En Gestión > Inicialización de Sistema > Autorizaciones Generales.',
@@ -207,7 +207,7 @@ Para que un operador trabaje en el sistema, se requiere:
                 explanation: 'La ventana de Autorizaciones Generales permite definir permisos específicos (Autorización total, Solo lectura o Sin autorización) por usuario o grupo de usuarios.'
               },
               {
-                question: '¿Qué tipo de licencia permite acceso total a todos los módulos funcionales de SAP Business One?',
+                question: '¿Qué tipo de licencia permite acceso total a todos los módulos funcionales de Finix ERP?',
                 options: [
                   'Limited Financial',
                   'Limited CRM',
@@ -239,20 +239,20 @@ Para que un operador trabaje en el sistema, se requiere:
               'Utilizar atajos de teclado clave (Ctrl+Tab, F2, Shift+F2) que duplican la productividad de los consultores.'
             ],
             businessScenario: 'El Gerente General de OEC Computers necesita un cuadro de mando diario en su pantalla de inicio que le muestre el importe total facturado del mes, las 5 entregas pendientes más urgentes y acceso directo a la creación de pedidos sin tener que explorar el árbol completo de menús.',
-            theoryContent: `### 1. La Filosofía del Cockpit Fiori en SAP B1
-El **Cockpit Fiori** transforma la interfaz estática tradicional en un espacio dinámico centrado en roles. Su diseño responde a los lineamientos visuales modernos de SAP:
+            theoryContent: `### 1. La Filosofía del Cockpit Fiori en Finix ERP
+El **Cockpit Fiori** transforma la interfaz estática tradicional en un espacio dinámico centrado en roles. Su diseño responde a los lineamientos visuales modernos de Finix ERP:
 - **Tarjetas KPI (Indicadores Clave):** Muestran valores consolidados (ej. *Cuentas por Cobrar Vencidas*, *Margen Bruto Mensual*).
 - **Procesos Gráficos de Trabajo:** Diagramas de flujo interactivos con accesos directos paso a paso (ej. de Oferta a Cobro).
 - **Widgets de Cuenta:** Gráficos de barras y circulares generados por modelos analíticos Pervasive Analytics sobre HANA.
 
 ### 2. Estructura de las Ventanas Transaccionales
-Cada formulario en SAP B1 posee 3 modos operativos fundamentales:
+Cada formulario en Finix ERP posee 3 modos operativos fundamentales:
 1. **Modo Buscar (Ctrl + F):** Los campos aparecen en color amarillo pálido. Permite ingresar comodines como \`*\` para localizar registros existentes.
 2. **Modo Crear / Añadir (Ctrl + A):** Los campos aparecen en blanco o con valores predeterminados. El botón inferior dice **"Crear"** o **"Añadir"**.
 3. **Modo Actualizar / OK:** Cuando se visualiza un registro existente, al modificar cualquier valor el botón cambia a **"Actualizar"**.
 
 ### 3. Teclas Rápidas Esenciales del Consultor
-| Comando | Función en SAP B1 |
+| Comando | Función en Finix ERP |
 | :--- | :--- |
 | **Ctrl + F** | Pasa inmediatamente a modo "Buscar" |
 | **Ctrl + A** | Pasa inmediatamente a modo "Añadir / Crear" |
@@ -282,7 +282,7 @@ Cada formulario en SAP B1 posee 3 modos operativos fundamentales:
             },
             quiz: [
               {
-                question: '¿Qué indica la pequeña Flecha Naranja (Golden Arrow) junto a un campo en SAP B1?',
+                question: '¿Qué indica la pequeña Flecha Naranja (Golden Arrow) junto a un campo en Finix ERP?',
                 options: [
                   'Que el campo contiene un error que debe ser corregido.',
                   'Que es un enlace directo que abre la ficha maestra del registro vinculado.',
@@ -290,10 +290,10 @@ Cada formulario en SAP B1 posee 3 modos operativos fundamentales:
                   'Que el usuario no tiene permisos sobre ese valor.'
                 ],
                 correctIndex: 1,
-                explanation: 'La Flecha Naranja es la herramienta de navegación por excelencia en SAP B1; al hacer clic sobre ella se abre el documento o dato maestro correspondiente en una ventana nueva.'
+                explanation: 'La Flecha Naranja es la herramienta de navegación por excelencia en Finix ERP; al hacer clic sobre ella se abre el documento o dato maestro correspondiente en una ventana nueva.'
               },
               {
-                question: '¿Qué combinación de teclas permite pasar inmediatamente al modo de Búsqueda en cualquier documento de SAP Business One?',
+                question: '¿Qué combinación de teclas permite pasar inmediatamente al modo de Búsqueda en cualquier documento de Finix ERP?',
                 options: [
                   'Ctrl + F',
                   'Ctrl + Z',
@@ -337,7 +337,7 @@ Cada formulario en SAP B1 posee 3 modos operativos fundamentales:
             ],
             businessScenario: 'Los digitadores de almacén de OEC Computers se quejan de que tienen que desplazarse horizontalmente a través de 30 columnas innecesarias para ingresar la cantidad recibida. Además, la empresa necesita registrar un campo obligatorio "Número de Manifiesto de Importación" en cada cabecera de entrega.',
             theoryContent: `### 1. Ajustes de Formulario (Form Settings)
-En SAP Business One, cada usuario puede tener una visualización personalizada de los formularios sin alterar la base de datos de los demás colegas:
+En Finix ERP, cada usuario puede tener una visualización personalizada de los formularios sin alterar la base de datos de los demás colegas:
 - **Ícono de Llave Inglesa / Engranaje:** Ubicado en la barra de herramientas superior.
 - **Pestaña Formato de Tabla:** Permite marcar casillas para **Visible** (si la columna se muestra) y **Activo** (si el usuario puede editarla).
 - Permite arrastrar el encabezado de las columnas para reordenarlas de izquierda a derecha.
@@ -349,7 +349,7 @@ Configuradas por el Administrador en *Gestión > Inicialización de Sistema > Pa
 - Configura reglas de redondeo y determinación automática de series de numeración.
 
 ### 3. Campos Definidos por el Usuario (UDF - User Defined Fields)
-Una de las mayores fortalezas de SAP Business One es su extensibilidad sin programación:
+Una de las mayores fortalezas de Finix ERP es su extensibilidad sin programación:
 - Los UDFs se crean en *Herramientas > Herramientas de Personalización > Campos Definidos por el Usuario*.
 - En la base de datos se almacenan con el prefijo **\`U_\`** (por ejemplo, en la tabla \`OINV\` se crea el campo \`U_Manifiesto\`).
 - Se pueden visualizar en el panel lateral presionando **Ctrl + Shift + U** o activando el menú *Ver > Campos Definidos por el Usuario*.`,
@@ -375,7 +375,7 @@ Una de las mayores fortalezas de SAP Business One es su extensibilidad sin progr
             },
             quiz: [
               {
-                question: '¿Qué prefijo añade automáticamente SAP Business One a todos los campos creados por el usuario en la base de datos?',
+                question: '¿Qué prefijo añade automáticamente Finix ERP a todos los campos creados por el usuario en la base de datos?',
                 options: [
                   'SYS_',
                   'U_',
@@ -383,7 +383,7 @@ Una de las mayores fortalezas de SAP Business One es su extensibilidad sin progr
                   'EXT_'
                 ],
                 correctIndex: 1,
-                explanation: 'Todos los campos definidos por el usuario (UDF) se nombran obligatoriamente con el prefijo U_ (ej. U_NumeroGuia), garantizando que las actualizaciones de SAP no sobrescriban campos personalizados.'
+                explanation: 'Todos los campos definidos por el usuario (UDF) se nombran obligatoriamente con el prefijo U_ (ej. U_NumeroGuia), garantizando que las actualizaciones de Finix ERP no sobrescriban campos personalizados.'
               },
               {
                 question: '¿Qué combinación de teclas permite mostrar u ocultar la ventana lateral de Campos Definidos por el Usuario (UDF)?',
@@ -430,7 +430,7 @@ Una de las mayores fortalezas de SAP Business One es su extensibilidad sin progr
             ],
             businessScenario: 'Un auditor tributario externo solicita a OEC Computers la trazabilidad completa de una factura de cliente por 45,000 USD: quién elaboró la cotización original, con qué número de guía se despachó la mercancía y cuál fue el asiento contable y cheque bancario con el que se canceló la deuda.',
             theoryContent: `### 1. El Mapa de Relaciones: El Corazón de la Auditoría ERP
-En un sistema ERP integrado como SAP Business One, ningún documento existe de forma aislada. Todo documento de marketing forma parte de una cadena de valor:
+En un sistema ERP integrado como Finix ERP, ningún documento existe de forma aislada. Todo documento de marketing forma parte de una cadena de valor:
 - Para abrirlo: Se hace clic derecho en cualquier parte del formulario y se selecciona **Mapa de Relaciones**.
 - Muestra gráficamente cajitas interconectadas por líneas de flujo:
   - **Oferta de Venta > Pedido de Cliente > Entrega de Mercancía > Factura de Clientes > Cobro Recibido.**
@@ -534,7 +534,7 @@ Desde la lista desplegable en la parte superior del Mapa de Relaciones se pueden
             ],
             businessScenario: 'OEC Computers firma un contrato de distribución mayorista con una nueva cadena retail llamada "TecnoStore S.A.". El departamento de créditos autorizó una línea de 50,000 USD a 45 días plazo con descuento financiero del 2% por pronto pago. El estudiante debe dar de alta el cliente configurando estos parámetros de compliance.',
             theoryContent: `### 1. El Concepto Unificado de Socio de Negocios (Business Partner)
-A diferencia de otros sistemas que tienen módulos fragmentados para clientes y proveedores, SAP Business One unifica todas las entidades comerciales en la tabla maestra **\`OCRD\`**:
+A diferencia de otros sistemas que tienen módulos fragmentados para clientes y proveedores, Finix ERP unifica todas las entidades comerciales en la tabla maestra **\`OCRD\`**:
 - **Cliente (\`C\`):** Destinatario de ventas y cobros.
 - **Proveedor (\`S\`):** Emisor de compras y pagos.
 - **Lead / Prospecto (\`L\`):** Cliente potencial para cotizaciones y pipeline de ventas que aún no tiene historial contable.
@@ -552,7 +552,7 @@ A diferencia de otros sistemas que tienen módulos fragmentados para clientes y 
             checkpoint: {
               timestampMin: 22,
               pauseMessage: '¡Laboratorio guiado por Master B1! Vamos a abrir la ficha de un Socio de Negocios y verificar sus límites crediticios.',
-              teacherAudioPrompt: 'Hola de nuevo. Un dato maestro mal parametrizado paraliza a toda la empresa. Abre el Simulador SAP y dirígete al módulo Socios de Negocios > Datos Maestros de Socio de Negocios.',
+              teacherAudioPrompt: 'Hola de nuevo. Un dato maestro mal parametrizado paraliza a toda la empresa. Abre el Simulador Finix ERP y dirígete al módulo Socios de Negocios > Datos Maestros de Socio de Negocios.',
               simulatorTask: 'Abre la ventana Datos Maestros de Socio de Negocios y busca el cliente Maxi-Teq (C20000).',
               simulatorMenuPath: 'Socios de Negocios > Datos Maestros de Socio de Negocios',
               simulatorArchetype: 'business-partners'
@@ -572,7 +572,7 @@ A diferencia de otros sistemas que tienen módulos fragmentados para clientes y 
             },
             quiz: [
               {
-                question: '¿Qué tabla principal de la base de datos de SAP Business One almacena la información de Clientes y Proveedores?',
+                question: '¿Qué tabla principal de la base de datos de Finix ERP almacena la información de Clientes y Proveedores?',
                 options: [
                   'OITM',
                   'OCRD',
@@ -638,7 +638,7 @@ El campo **Grupo de Artículos** (tabla \`OITB\`) es el eje central de la config
 - Si la empresa utiliza la opción de fijar cuentas contables por Grupo de Artículos, todos los productos heredan automáticamente las cuentas de Costo de Ventas, Ingreso por Ventas y Cuenta de Stock.
 
 ### 3. Grupos de Unidades de Medida (UoM Groups)
-SAP B1 10.0 cuenta con un motor flexible de unidades:
+Finix ERP 10.0 cuenta con un motor flexible de unidades:
 - **Unidad de Medida Base:** Ej. \`Unidad\` (la unidad mínima en la que se cuenta el stock).
 - **Unidad de Medida de Compra:** Ej. \`Caja x 12\` o \`Pallet x 144\`. Al comprar 1 caja, el sistema ingresa automáticamente 12 unidades al inventario.
 - **Unidad de Medida de Venta:** Ej. \`Pack x 2\` con factor de conversión automático.`,
@@ -669,7 +669,7 @@ SAP B1 10.0 cuenta con un motor flexible de unidades:
                 options: [
                   'Debe marcarse como Artículo de Inventario y de Compra.',
                   'Debe marcarse como Artículo de Venta, pero desmarcarse obligatoriamente la casilla "Artículo de Inventario".',
-                  'No se pueden crear servicios en SAP Business One.',
+                  'No se pueden crear servicios en Finix ERP.',
                   'Debe crearse como un Socio de Negocios.'
                 ],
                 correctIndex: 1,
@@ -713,12 +713,12 @@ SAP B1 10.0 cuenta con un motor flexible de unidades:
             careerId: 'carrera-fundamentos',
             careerTitle: 'Fundamentos Operativos, Navegación y Núcleo Maestro ERP',
             objectives: [
-              'Comprender la arquitectura jerárquica de 4 niveles de precios en SAP Business One.',
+              'Comprender la arquitectura jerárquica de 4 niveles de precios en Finix ERP.',
               'Configurar Listas de Precios base derivadas con factores multiplicadores.',
               'Implementar Descuentos por Período y Cantidad y Precios Especiales para Socios de Negocios específicos.'
             ],
             businessScenario: 'OEC Computers maneja una Lista de Precios de Costo y desea que la "Lista Mayorista" tenga un margen del 25% automático (Factor 1.25) y la "Lista Distribuidor" un margen del 15% (Factor 1.15). Además, para el cliente clave Maxi-Teq se pactó un precio especial fijo en memorias RAM siempre que compre más de 50 unidades.',
-            theoryContent: `### 1. La Jerarquía de Determinación de Precios en SAP B1
+            theoryContent: `### 1. La Jerarquía de Determinación de Precios en Finix ERP
 Cuando un usuario crea una línea en una cotización o factura, el sistema busca el precio unitario siguiendo un orden de prioridad descendente estricto (de lo más específico a lo más genérico):
 1. **Prioridad 1: Precios Especiales para Socios de Negocios:** Precios personalizados asignados a un cliente específico para un artículo puntual, con o sin rangos de fechas.
 2. **Prioridad 2: Grupos de Descuento:** Reglas de descuento por fabricante, grupo de artículos o propiedades de socio de negocios.
@@ -726,7 +726,7 @@ Cuando un usuario crea una línea en una cotización o factura, el sistema busca
 4. **Prioridad 4: Lista de Precios Asignada al Socio de Negocios:** La lista de precios general configurada en la solapa Condiciones de Pago del cliente (tabla \`OPLN\`).
 
 ### 2. Listas de Precios Derivadas y Factores
-SAP B1 permite crear hasta 10 listas de precios estándar:
+Finix ERP permite crear hasta 10 listas de precios estándar:
 - Se elige una **Lista de Precios Base** (por ejemplo, *Costo Estándar*).
 - Se crea una lista hija (por ejemplo, *Precio al Público*) con un **Factor de 1.40**.
 - Cuando el costo del producto cambia, el precio de venta se actualiza automáticamente multiplicando por el factor sin intervención manual.
@@ -736,7 +736,7 @@ Cada lista de precios puede definirse en Moneda Principal (ej. USD) con precios 
             checkpoint: {
               timestampMin: 24,
               pauseMessage: '¡Profesor Master B1! Vamos a inspeccionar cómo opera la cascada de precios en el simulador.',
-              teacherAudioPrompt: 'Hola de nuevo. La jerarquía de precios es una de las preguntas fijas del examen de certificación SAP. Abre el simulador y accede a Inventario > Listas de Precios.',
+              teacherAudioPrompt: 'Hola de nuevo. La jerarquía de precios es una de las preguntas fijas del examen de certificación Finix ERP. Abre el simulador y accede a Inventario > Listas de Precios.',
               simulatorTask: 'Abre la ventana Listas de Precios en el módulo Inventario y analiza los factores configurados.',
               simulatorMenuPath: 'Inventario > Listas de Precios > Listas de Precios',
               simulatorArchetype: 'price-lists'
@@ -756,7 +756,7 @@ Cada lista de precios puede definirse en Moneda Principal (ej. USD) con precios 
             },
             quiz: [
               {
-                question: 'Si un cliente tiene asignada la Lista de Precios 3, pero tiene configurado un "Precio Especial para Socio de Negocios" para ese producto, ¿cuál precio aplicará SAP B1?',
+                question: 'Si un cliente tiene asignada la Lista de Precios 3, pero tiene configurado un "Precio Especial para Socio de Negocios" para ese producto, ¿cuál precio aplicará Finix ERP?',
                 options: [
                   'Aplicará el precio de la Lista 3.',
                   'Aplicará el Precio Especial para Socio de Negocios, ya que tiene la máxima prioridad en la jerarquía.',
@@ -764,7 +764,7 @@ Cada lista de precios puede definirse en Moneda Principal (ej. USD) con precios 
                   'Aplicará el promedio entre ambos.'
                 ],
                 correctIndex: 1,
-                explanation: 'Los Precios Especiales para Socios de Negocios ocupan la prioridad 1 en la cascada de precios de SAP Business One.'
+                explanation: 'Los Precios Especiales para Socios de Negocios ocupan la prioridad 1 en la cascada de precios de Finix ERP.'
               },
               {
                 question: '¿Qué sucede si una lista de precios "Ventas Mayoristas" tiene como lista base el "Costo de Compra" con un Factor de 1.30 y el costo del artículo sube de 100 USD a 120 USD?',
@@ -804,7 +804,7 @@ Cada lista de precios puede definirse en Moneda Principal (ej. USD) con precios 
             careerId: 'carrera-fundamentos',
             careerTitle: 'Fundamentos Operativos, Navegación y Núcleo Maestro ERP',
             objectives: [
-              'Consolidar de punta a punta los conocimientos del Núcleo Operativo de SAP Business One.',
+              'Consolidar de punta a punta los conocimientos del Núcleo Operativo de Finix ERP.',
               'Ejecutar en el simulador un circuito completo: usuario, cliente, artículo y validación en lista de precios.',
               'Aprobar el hito curricular para habilitar la Micro-Certificación y Diploma de Carrera 1.'
             ],
@@ -828,7 +828,7 @@ Antes de liberar una transacción al circuito contable y logístico:
             checkpoint: {
               timestampMin: 25,
               pauseMessage: '¡Profesor Master B1! Iniciamos la evaluación integradora en el simulador.',
-              teacherAudioPrompt: '¡Felicidades por llegar al laboratorio integrador de la Carrera 1! Soy Master B1. Ahora es tu turno de demostrar que dominas el núcleo de SAP Business One. Sigue la misión en el simulador.',
+              teacherAudioPrompt: '¡Felicidades por llegar al laboratorio integrador de la Carrera 1! Soy Master B1. Ahora es tu turno de demostrar que dominas el núcleo de Finix ERP. Sigue la misión en el simulador.',
               simulatorTask: 'Ejecuta el circuito integrador: abre la Orden de Venta y selecciona cliente y artículo para validar precios.',
               simulatorMenuPath: 'Ventas - Clientes > Orden de Venta',
               simulatorArchetype: 'integrated-core-lab'
@@ -837,7 +837,7 @@ Antes de liberar una transacción al circuito contable y logístico:
               title: 'Misión Integradora de Carrera 1: Circuito Maestro Completo',
               description: 'Abre el simulador, crea una orden de venta de prueba con el cliente C20000, añade el artículo A00001, verifica el precio calculado y consulta el mapa de relaciones preliminar.',
               stepByStep: [
-                '1. Abre el simulador SAP B1 y ve a Ventas - Clientes > Orden de Venta.',
+                '1. Abre el simulador Finix ERP y ve a Ventas - Clientes > Orden de Venta.',
                 '2. Selecciona al cliente Maxi-Teq (C20000).',
                 '3. En la tabla de artículos, añade el producto A00001 con cantidad 5.',
                 '4. Observa cómo el precio unitario y el total de la línea se cargan automáticamente desde la lista de precios.',
@@ -848,7 +848,7 @@ Antes de liberar una transacción al circuito contable y logístico:
             },
             quiz: [
               {
-                question: 'En un entorno productivo de SAP B1, ¿qué sucede si se intenta crear una Orden de Venta para un cliente cuyo saldo más el pedido supera su Límite de Crédito y la empresa tiene activa la alerta de bloqueo?',
+                question: 'En un entorno productivo de Finix ERP, ¿qué sucede si se intenta crear una Orden de Venta para un cliente cuyo saldo más el pedido supera su Límite de Crédito y la empresa tiene activa la alerta de bloqueo?',
                 options: [
                   'El sistema bloquea la creación del documento o detona un procedimiento de aprobación gerencial.',
                   'El sistema borra al cliente de la base de datos.',
@@ -873,7 +873,7 @@ Antes de liberar una transacción al circuito contable y logístico:
                 question: 'Al culminar exitosamente el circuito de la Carrera 1, ¿qué credenciales puede solicitar el alumno?',
                 options: [
                   'Solo una carta informal sin validez.',
-                  'El Diploma Oficial de Operador de Negocios SAP B1 y las Micro-Certificaciones MC-B1-01 y MC-B1-02 con código de verificación QR y firma académica.',
+                  'El Diploma Oficial de Operador de Negocios Finix ERP y las Micro-Certificaciones MC-B1-01 y MC-B1-02 con código de verificación QR y firma académica.',
                   'Una licencia de desarrollador de videojuegos.',
                   'Ninguna acreditación.'
                 ],
@@ -904,12 +904,12 @@ Antes de liberar una transacción al circuito contable y logístico:
     badge: 'Finanzas & Compliance',
     colorTheme: 'blue',
     gradient: 'from-blue-500/20 via-indigo-500/10 to-transparent',
-    targetAudience: 'Estudiantes de Contaduría, Contralores Financieros, Analistas Contables, Auditores y Consultores Financieros SAP.',
-    careerRole: 'Especialista Financiero y Tesorero SAP B1',
+    targetAudience: 'Estudiantes de Contaduría, Contralores Financieros, Analistas Contables, Auditores y Consultores Financieros Finix ERP.',
+    careerRole: 'Especialista Financiero y Tesorero Finix ERP',
     totalHours: 90,
-    diplomaTitle: 'Diploma Oficial de Especialista en Finanzas y Control de Gestión SAP B1',
+    diplomaTitle: 'Diploma Oficial de Especialista en Finanzas y Control de Gestión Finix ERP',
     diplomaIssuanceFeeUSD: 69,
-    description: 'Domina la arquitectura contable bajo estándar internacional NIIF en SAP Business One: Plan de Cuentas segmentado, determinación automática de cuentas de mayor (G/L), asientos manuales y periódicos, gestión bancaria integral, asistente de pagos masivos (Payment Wizard), conciliaciones bancarias, activos fijos y contabilidad de costos multidimensional.',
+    description: 'Domina la arquitectura contable bajo estándar internacional NIIF en Finix ERP: Plan de Cuentas segmentado, determinación automática de cuentas de mayor (G/L), asientos manuales y periódicos, gestión bancaria integral, asistente de pagos masivos (Payment Wizard), conciliaciones bancarias, activos fijos y contabilidad de costos multidimensional.',
     objectives: [
       'Diseñar y administrar el Plan de Cuentas en 5 niveles bajo normas NIIF / IFRS.',
       'Configurar las reglas de determinación contable automática en compras, ventas e inventario.',
@@ -941,13 +941,13 @@ Antes de liberar una transacción al circuito contable y logístico:
             careerId: 'carrera-finanzas',
             careerTitle: 'Finanzas Corporativas, Contabilidad NIIF y Control de Gestión',
             objectives: [
-              'Comprender la estructura de cajones contables en SAP B1 (Activo, Pasivo, Patrimonio, Ingresos, Costos, Gastos).',
+              'Comprender la estructura de cajones contables en Finix ERP (Activo, Pasivo, Patrimonio, Ingresos, Costos, Gastos).',
               'Distinguir entre Cuentas de Título (agrupadoras no imputables) y Cuentas de Mayor / Activas (imputables).',
               'Aprender a definir Cuentas Asociadas (Reconciliation Accounts) para Clientes y Proveedores.'
             ],
             businessScenario: 'OEC Computers debe homologar su contabilidad local al estándar internacional NIIF (IFRS). La Gerencia Financiera encomienda al consultor reestructurar el Plan de Cuentas creando la rama de "Activos por Derecho de Uso" y verificando que ninguna cuenta de título admita asientos contables directos por error humano.',
             theoryContent: `### 1. Los 8 Cajones Estándar del Plan de Cuentas
-En SAP Business One, el Plan de Cuentas (tabla \`OACT\`) está organizado de forma fija en **cajones** (Drawers) representados por pestañas verticales a la derecha de la ventana:
+En Finix ERP, el Plan de Cuentas (tabla \`OACT\`) está organizado de forma fija en **cajones** (Drawers) representados por pestañas verticales a la derecha de la ventana:
 1. **Activo (1):** Recursos controlados por la entidad.
 2. **Pasivo (2):** Obligaciones presentes.
 3. **Patrimonio Neto (3):** Capital social y reservas.
@@ -963,7 +963,7 @@ En SAP Business One, el Plan de Cuentas (tabla \`OACT\`) está organizado de for
 - **Nivel 5:** Cuentas de Mayor Activas (en color **verde** o normal). Son las únicas cuentas donde se pueden registrar transacciones contables.
 
 ### 3. Cuentas Asociadas (Reconciliation Accounts)
-En SAP B1, **nunca se hace un asiento manual directo contra la cuenta de Clientes o Proveedores sin indicar el código del Socio de Negocios**.
+En Finix ERP, **nunca se hace un asiento manual directo contra la cuenta de Clientes o Proveedores sin indicar el código del Socio de Negocios**.
 - Al crear una cuenta en el activo corriente (ej. \`112001 - Clientes Nacionales\`), se marca la casilla **Cuenta Asociada**.
 - Esto garantiza que el saldo del libro mayor contable coincida al 100% con la suma de los saldos individuales de la cartera en el módulo auxiliar de Socios de Negocios.`,
             checkpoint: {
@@ -1011,7 +1011,7 @@ En SAP B1, **nunca se hace un asiento manual directo contra la cuenta de Cliente
                 explanation: 'Las cuentas asociadas vinculan cada movimiento contable a un Socio de Negocios específico (OCRD), impidiendo descuadres entre contabilidad y cartera.'
               },
               {
-                question: '¿Cuántos cajones principales estructuran el Plan de Cuentas estándar en SAP Business One?',
+                question: '¿Cuántos cajones principales estructuran el Plan de Cuentas estándar en Finix ERP?',
                 options: [
                   '3 cajones.',
                   '8 cajones.',
@@ -1019,7 +1019,7 @@ En SAP B1, **nunca se hace un asiento manual directo contra la cuenta de Cliente
                   '50 cajones.'
                 ],
                 correctIndex: 1,
-                explanation: 'SAP B1 organiza su plan contable en hasta 8 cajones universales: 3 de balance patrimonial, 4 de resultados y 1 de cierre/impuestos.'
+                explanation: 'Finix ERP organiza su plan contable en hasta 8 cajones universales: 3 de balance patrimonial, 4 de resultados y 1 de cierre/impuestos.'
               }
             ],
             relatedManuals: [
@@ -1043,7 +1043,7 @@ En SAP B1, **nunca se hace un asiento manual directo contra la cuenta de Cliente
             ],
             businessScenario: 'Al emitir una Entrega de Mercancía en OEC Computers, el sistema debe acreditar la cuenta de inventario (140101) y debitar el Costo de Ventas (510101). Luego, al emitir la Factura, debe debitar a Clientes (112001) y acreditar Ingreso por Ventas (410101) e IVA por Pagar (210701). El consultor debe auditar que las cuentas estén correctamente mapeadas.',
             theoryContent: `### 1. La Magia de la Contabilización Automática en el ERP
-En SAP Business One, los usuarios operativos (vendedores, jefes de compras, almacenistas) no ingresan códigos contables. Es el **Motor de Determinación de Cuentas de Mayor** (tabla \`CINF\` / \`OADP\`) el que asigna las cuentas de forma instantánea al crear cada documento.
+En Finix ERP, los usuarios operativos (vendedores, jefes de compras, almacenistas) no ingresan códigos contables. Es el **Motor de Determinación de Cuentas de Mayor** (tabla \`CINF\` / \`OADP\`) el que asigna las cuentas de forma instantánea al crear cada documento.
 
 ### 2. Dónde se Parametriza la Determinación G/L
 Se accede desde *Gestión > Inicialización de Sistema > Parametrizaciones de Documento > pestaña Finanzas > Determinación de Cuentas de Mayor*:
@@ -1059,7 +1059,7 @@ Se accede desde *Gestión > Inicialización de Sistema > Parametrizaciones de Do
   - *Cuenta de Ajustes / Mermas:* Para diferencias en tomas físicas de inventario.
 
 ### 3. Jerarquía de Asignación Contable
-¿De dónde saca SAP la cuenta para un artículo específico?
+¿De dónde saca Finix ERP la cuenta para un artículo específico?
 Se configura en el campo **Fijar Cuentas de Mayor Por:**
 1. **Nivel Almacén:** Cada almacén físico (ej. Bodega Principal vs Bodega Tránsito) tiene sus propias cuentas.
 2. **Nivel Grupo de Artículos (Recomendado):** Los productos de ferretería van a una cuenta y los de tecnología a otra.
@@ -1087,7 +1087,7 @@ Se configura en el campo **Fijar Cuentas de Mayor Por:**
             },
             quiz: [
               {
-                question: 'Al emitir una Entrega de Mercancía a un cliente en una empresa con inventario permanente, ¿cuál es el asiento contable automático generado por SAP B1?',
+                question: 'Al emitir una Entrega de Mercancía a un cliente en una empresa con inventario permanente, ¿cuál es el asiento contable automático generado por Finix ERP?',
                 options: [
                   'Debe: Clientes / Haber: Ventas',
                   'Debe: Costo de Ventas (COGS) / Haber: Cuenta de Existencias (Inventario)',
@@ -1098,7 +1098,7 @@ Se configura en el campo **Fijar Cuentas de Mayor Por:**
                 explanation: 'La Entrega traslada el costo del producto del activo realizable (Inventario) a la cuenta de resultados (Costo de Ventas).'
               },
               {
-                question: '¿Qué método de determinación contable es el más recomendado por las mejores prácticas de consultoría SAP?',
+                question: '¿Qué método de determinación contable es el más recomendado por las mejores prácticas de consultoría Finix ERP?',
                 options: [
                   'Por Nivel de Artículo individual para cada uno de los 50,000 productos.',
                   'Por Grupo de Artículos, estandarizando las cuentas contables por familia de producto.',
@@ -1143,9 +1143,9 @@ Se configura en el campo **Fijar Cuentas de Mayor Por:**
     colorTheme: 'amber',
     gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
     targetAudience: 'Ingenieros Industriales, Jefes de Compras, Directores de Almacén, Gerentes de Ventas y Consultores de Supply Chain.',
-    careerRole: 'Especialista en Cadena de Suministro & Logística SAP B1',
+    careerRole: 'Especialista en Cadena de Suministro & Logística Finix ERP',
     totalHours: 95,
-    diplomaTitle: 'Diploma Oficial de Especialista en Cadena de Suministro y Ventas SAP B1',
+    diplomaTitle: 'Diploma Oficial de Especialista en Cadena de Suministro y Ventas Finix ERP',
     diplomaIssuanceFeeUSD: 69,
     description: 'Gestión avanzada de los ciclos Order-to-Cash y Procure-to-Pay, topología de almacenes con ubicaciones tridimensionales (Bin Locations), trazabilidad estricta por números de lote y series de garantía, métodos de valoración de inventario (Promedio Ponderado, FIFO, Estándar) y costeo de importaciones internacionales mediante Costes de Destino (Landed Costs).',
     objectives: [
@@ -1183,11 +1183,11 @@ Se configura en el campo **Fijar Cuentas de Mayor Por:**
             ],
             businessScenario: 'Un cliente clave solicita a OEC Computers una cotización formal por 15 Servidores JB con fecha de entrega garantizada para el próximo viernes. En bodega solo hay 8 unidades físicas, pero el sistema muestra que entrarán 20 unidades de una orden de compra abierta. El estudiante debe utilizar la verificación ATP para prometer la entrega con respaldo del sistema.',
             theoryContent: `### 1. El Inicio del Ciclo Order-to-Cash
-El proceso de ventas en SAP Business One está diseñado para maximizar la satisfacción del cliente y proteger la liquidez:
+El proceso de ventas en Finix ERP está diseñado para maximizar la satisfacción del cliente y proteger la liquidez:
 1. **Oferta de Ventas (Sales Quotation):** Documento informativo no vinculante que no genera asientos contables ni afecta el stock físico.
 2. **Orden de Venta (Sales Order):** Contrato comercial formal que compromete stock físico para que ningún otro vendedor pueda comercializarlo.
 
-### 2. Available-to-Promise (ATP) en SAP HANA
+### 2. Available-to-Promise (ATP) en base de datos en memoria
 El motor ATP calcula dinámicamente si es viable cumplir la fecha solicitada por el cliente evaluando:
 - Stock en almacén actual.
 - Menos: Reservas de pedidos ya confirmados a otros clientes.
@@ -1199,7 +1199,7 @@ El motor ATP calcula dinámicamente si es viable cumplir la fecha solicitada por
             checkpoint: {
               timestampMin: 20,
               pauseMessage: '¡Profesor Master B1! Analicemos la verificación ATP en el simulador.',
-              teacherAudioPrompt: 'Hola estudiantes de logística. Un buen vendedor nunca promete lo que el almacén no puede entregar. Abre el simulador de SAP y crea una Oferta de Venta revisando el ATP.',
+              teacherAudioPrompt: 'Hola estudiantes de logística. Un buen vendedor nunca promete lo que el almacén no puede entregar. Abre el simulador de Finix ERP y crea una Oferta de Venta revisando el ATP.',
               simulatorTask: 'Abre Ventas > Oferta de Venta, selecciona un cliente y producto y consulta la verificación de disponibilidad.',
               simulatorMenuPath: 'Ventas - Clientes > Oferta de Ventas',
               simulatorArchetype: 'sales-quotation'
@@ -1219,7 +1219,7 @@ El motor ATP calcula dinámicamente si es viable cumplir la fecha solicitada por
             },
             quiz: [
               {
-                question: '¿Qué impacto contable y físico tiene la creación de una Oferta de Ventas (Sales Quotation) en SAP Business One?',
+                question: '¿Qué impacto contable y físico tiene la creación de una Oferta de Ventas (Sales Quotation) en Finix ERP?',
                 options: [
                   'Disminuye el stock físico en bodega de inmediato.',
                   'Genera un asiento de ingresos en el libro mayor.',
@@ -1273,10 +1273,10 @@ El motor ATP calcula dinámicamente si es viable cumplir la fecha solicitada por
     badge: 'Arquitectura & Consultoría',
     colorTheme: 'purple',
     gradient: 'from-purple-500/20 via-fuchsia-500/10 to-transparent',
-    targetAudience: 'Ingenieros de Sistemas, Jefes de Planta, Consultores Funcionales SAP, Desarrolladores y Directores de Proyecto ERP.',
-    careerRole: 'Consultor de Implementación & Planificación SAP B1',
+    targetAudience: 'Ingenieros de Sistemas, Jefes de Planta, Consultores Funcionales Finix ERP, Desarrolladores y Directores de Proyecto ERP.',
+    careerRole: 'Consultor de Implementación & Planificación Finix ERP',
     totalHours: 85,
-    diplomaTitle: 'Diploma Oficial de Consultor de Implementación y Planificación SAP B1',
+    diplomaTitle: 'Diploma Oficial de Consultor de Implementación y Planificación Finix ERP',
     diplomaIssuanceFeeUSD: 79,
     description: 'La formación de mayor jerarquía técnica de la academia: Planificación de Requerimientos de Materiales (MRP), Listas de Materiales (BOM), Órdenes de Fabricación y centros de trabajo, consultas complejas con el Generador de Consultas SQL, búsquedas formateadas (FMS), procedimientos de aprobación y migración masiva de datos con Data Transfer Workbench (DTW).',
     objectives: [
@@ -1319,7 +1319,7 @@ En la tabla \`OITT\`, una Lista de Materiales define la receta de fabricación o
 - **Artículo Padre (Header):** El producto terminado que se entregará al cliente o ingresará a stock.
 - **Componentes Hijos (Lines):** Materias primas, subensambles, piezas o recursos de mano de obra y maquinaria necesarios para producir 1 unidad del padre.
 
-### 2. Los 4 Tipos de Listas de Materiales en SAP B1
+### 2. Los 4 Tipos de Listas de Materiales en Finix ERP
 1. **L.M. de Producción (Production BOM):** Se utiliza para fabricar con Órdenes de Producción. El padre es un artículo con control de stock y los componentes se consumen en planta.
 2. **L.M. de Venta (Sales BOM / Kit):** Se vende como un paquete promocional (ej. *Combo Computadora + Impresora*). En la orden de venta aparece el padre pero se entregan y descuentan los componentes del inventario.
 3. **L.M. de Ensamble (Assembly BOM):** Similar a la de venta, pero orientada a procesos simples de ensamblado sin orden de trabajo previa.
@@ -1369,7 +1369,7 @@ En la tabla \`OITT\`, una Lista de Materiales define la receta de fabricación o
                 explanation: 'En las Sales BOM el padre no tiene stock físico propio; se rebajan del inventario los componentes individuales al generar la entrega.'
               },
               {
-                question: '¿Qué tabla maestra en la base de datos de SAP B1 almacena las cabeceras de las Listas de Materiales?',
+                question: '¿Qué tabla maestra en la base de datos de Finix ERP almacena las cabeceras de las Listas de Materiales?',
                 options: [
                   'OITT',
                   'ITT1',
@@ -1406,13 +1406,13 @@ En la tabla \`OITT\`, una Lista de Materiales define la receta de fabricación o
             careerId: 'carrera-consultoria',
             careerTitle: 'Planificación MRP, Fabricación y Consultoría de Implementación',
             objectives: [
-              'Comprender la nomenclatura de tablas en SAP B1 (Tablas que empiezan por "O" para cabeceras y números "1", "2" para líneas).',
+              'Comprender la nomenclatura de tablas en Finix ERP (Tablas que empiezan por "O" para cabeceras y números "1", "2" para líneas).',
               'Operar el Generador de Consultas (Query Generator) sin necesidad de herramientas externas.',
               'Construir consultas SQL con cláusulas JOIN entre clientes, facturas y artículos.'
             ],
             businessScenario: 'La Dirección General de OEC Computers solicita un reporte a medida que no existe en los menús estándar: una lista de los 10 mejores clientes del trimestre, mostrando el total comprado, el margen de utilidad y el nombre del ejecutivo de ventas asignado. El consultor debe crear la consulta SQL y publicarla en el menú del usuario.',
-            theoryContent: `### 1. La Convención de Nombres de Tablas en SAP B1
-El modelo de datos de SAP Business One sigue una regla mnemotécnica muy clara:
+            theoryContent: `### 1. La Convención de Nombres de Tablas en Finix ERP
+El modelo de datos de Finix ERP sigue una regla mnemotécnica muy clara:
 - **Tablas de Cabecera:** Empiezan por la letra **\`O\`** (Order / Object):
   - \`OCRD\` = Socios de Negocios
   - \`OITM\` = Artículos Maestros
@@ -1435,7 +1435,7 @@ Ubicado en *Herramientas > Consultas > Generador de Consultas*:
             checkpoint: {
               timestampMin: 25,
               pauseMessage: '¡Profesor Master B1! Vamos a inspeccionar el Generador de Consultas SQL.',
-              teacherAudioPrompt: 'Hola consultores avanzados. Dominar la arquitectura SQL de SAP B1 es lo que separa a un operador de un consultor de alto valor. Abre el Generador de Consultas en el simulador.',
+              teacherAudioPrompt: 'Hola consultores avanzados. Dominar la arquitectura SQL de Finix ERP es lo que separa a un operador de un consultor de alto valor. Abre el Generador de Consultas en el simulador.',
               simulatorTask: 'Abre Herramientas > Consultas > Generador de Consultas y consulta la tabla OCRD.',
               simulatorMenuPath: 'Herramientas > Consultas > Generador de Consultas',
               simulatorArchetype: 'sql-query-generator'
@@ -1455,7 +1455,7 @@ Ubicado en *Herramientas > Consultas > Generador de Consultas*:
             },
             quiz: [
               {
-                question: 'En la arquitectura de base de datos de SAP Business One, ¿cuál es la tabla que almacena las líneas de detalle de una Factura de Clientes?',
+                question: 'En la arquitectura de base de datos de Finix ERP, ¿cuál es la tabla que almacena las líneas de detalle de una Factura de Clientes?',
                 options: [
                   'OINV',
                   'INV1',
@@ -1477,7 +1477,7 @@ Ubicado en *Herramientas > Consultas > Generador de Consultas*:
                 explanation: 'DocEntry es el identificador único interno e inmutable que relaciona las cabeceras con las tablas hijas en la base de datos.'
               },
               {
-                question: '¿Qué herramienta integrada en SAP B1 permite diseñar consultas personalizadas y asignarlas a botones o menús sin escribir código externo?',
+                question: '¿Qué herramienta integrada en Finix ERP permite diseñar consultas personalizadas y asignarlas a botones o menús sin escribir código externo?',
                 options: [
                   'El Generador de Consultas y Administrador de Consultas.',
                   'El bloc de notas de Windows.',
@@ -1485,7 +1485,7 @@ Ubicado en *Herramientas > Consultas > Generador de Consultas*:
                   'El antivirus.'
                 ],
                 correctIndex: 0,
-                explanation: 'El Generador de Consultas de SAP B1 permite crear, categorizar y autorizar consultas SQL nativas directamente desde la interfaz.'
+                explanation: 'El Generador de Consultas de Finix ERP permite crear, categorizar y autorizar consultas SQL nativas directamente desde la interfaz.'
               }
             ],
             relatedManuals: [

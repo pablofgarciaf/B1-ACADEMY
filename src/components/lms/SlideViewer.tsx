@@ -55,14 +55,14 @@ export const SlideViewer = ({ slides, onComplete }: SlideViewerProps) => {
         
         {/* Slide Header */}
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center space-x-2 text-sap-blue dark:text-sky-400">
+          <div className="flex items-center space-x-2 text-finix-blue dark:text-sky-400">
             <BookOpen className="w-5 h-5" />
             <span className="text-sm font-semibold tracking-wider uppercase">Diapositiva {currentIdx + 1} de {slides.length}</span>
           </div>
           
           {/* Audio Button (Placeholder for future) */}
           <button className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-200/50 hover:bg-slate-200 dark:bg-white/5 dark:hover:bg-white/10 text-slate-700 dark:text-slate-300 transition-colors text-xs font-medium group cursor-pointer active:scale-95">
-            <PlayCircle className="w-4 h-4 text-slate-500 group-hover:text-sap-blue dark:group-hover:text-sky-400" />
+            <PlayCircle className="w-4 h-4 text-slate-500 group-hover:text-finix-blue dark:group-hover:text-sky-400" />
             <span>Escuchar Lección</span>
           </button>
         </div>
@@ -114,7 +114,7 @@ export const SlideViewer = ({ slides, onComplete }: SlideViewerProps) => {
               onClick={() => setCurrentIdx(idx)}
               className={`w-2 h-2 rounded-full transition-all ${
                 idx === currentIdx 
-                  ? 'bg-sap-blue scale-125' 
+                  ? 'bg-finix-blue scale-125' 
                   : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-500'
               }`}
               aria-label={`Ir a diapositiva ${idx + 1}`}
@@ -124,7 +124,7 @@ export const SlideViewer = ({ slides, onComplete }: SlideViewerProps) => {
 
         <button
           onClick={handleNext}
-          className="flex items-center px-6 py-2.5 rounded-xl font-bold text-white bg-sap-blue hover:bg-sky-600 shadow-md shadow-sap-blue/20 disabled:opacity-50 transition-all active:scale-95"
+          className="flex items-center px-6 py-2.5 rounded-xl font-bold text-white bg-finix-blue hover:bg-sky-600 shadow-md shadow-finix-blue/20 disabled:opacity-50 transition-all active:scale-95"
         >
           {currentIdx === slides.length - 1 ? (
             'Completar Lección'

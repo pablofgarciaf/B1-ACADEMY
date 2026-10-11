@@ -23,7 +23,7 @@ Documento integral de la arquitectura del sistema: stack tecnológico, estructur
 
 ## Resumen Ejecutivo
 
-**B1 Academy** es una plataforma educativa web (SaaS) para capacitación profesional en **SAP Business One, Nómina HCM y Localización SRI Ecuador**. Combina:
+**B1 Academy** es una plataforma educativa web (SaaS) para capacitación profesional en **Finix ERP, Nómina HCM y Localización SRI Ecuador**. Combina:
 
 - **LMS (Learning Management System):** Cursos estructurados, módulos interactivos, simuladores, videos.
 - **Portal de Empleabilidad:** Bolsa de empleo, perfiles de consultores, conexión empresa-profesional.
@@ -36,7 +36,7 @@ Documento integral de la arquitectura del sistema: stack tecnológico, estructur
 - Consultores certificados (rol: `consultor_premium`)
 
 **Modo operación:**
-- Esencialmente **online**, con acceso a sandbox (entorno de pruebas SAP B1).
+- Esencialmente **online**, con acceso a sandbox (entorno de pruebas Finix ERP).
 - Autenticación por email/contraseña (Firebase Auth).
 - Roles y permisos granulares guardados en Firestore.
 
@@ -86,7 +86,7 @@ Documento integral de la arquitectura del sistema: stack tecnológico, estructur
 ## Estructura de Carpetas
 
 ```
-sap-academy/
+finix-academy/
 ├── src/
 │   ├── app/                          # Next.js App Router
 │   │   ├── page.tsx                 # Home (landing)
@@ -128,8 +128,8 @@ sap-academy/
 │   │   │   ├── VideoPlayer.tsx      # Reproductor video + metadata
 │   │   │   ├── EvaluationQuiz.tsx   # Quiz de evaluación
 │   │   │   ├── QuickCheckQuiz.tsx   # Quiz rápido
-│   │   │   ├── InteractiveSimulator.tsx # Simulador SAP B1 / Nómina
-│   │   │   ├── VisualScreenSimulator.tsx# Mockup GUI SAP
+│   │   │   ├── InteractiveSimulator.tsx # Simulador Finix ERP / Nómina
+│   │   │   ├── VisualScreenSimulator.tsx# Mockup GUI Finix ERP
 │   │   │   └── LessonNavigator.tsx  # Navegación lecciones
 │   │   │
 │   │   ├── auth/                    # Componentes de autenticación
@@ -163,11 +163,11 @@ sap-academy/
 │   ├── logo_dark.webp               # Logo B1 Academy (dark)
 │   ├── llms.txt                     # Feed para LLMs (IA search)
 │   ├── llms-full.txt                # Feed extendido para LLMs
-│   ├── Capacitacion SAP/            # PDFs + imágenes contenido
-│   ├── Capacitacion_SAP_Todos_Los_Markdowns/ # Archivos .md conocimiento
+│   ├── Capacitacion Finix/            # PDFs + imágenes contenido
+│   ├── Capacitacion_FINIX_Todos_Los_Markdowns/ # Archivos .md conocimiento
 │   ├── modulos/                     # Módulos markdown aula virtual
-│   ├── Manual_Maestro_Consolidado_SAP_Business_One_10.md
-│   ├── Planificacion Capacitacion SAP 2025.xlsx
+│   ├── Manual_Maestro_Consolidado_Finix_ERP_10.md
+│   ├── Planificacion Capacitacion Finix 2025.xlsx
 │   └── (otros assets)
 │
 ├── .claude/                         # Configuración Claude Code
@@ -275,7 +275,7 @@ usuarios/
       ├── cedula: string
       ├── role: 'super' | 'admin' | 'docente' | 'estudiante' | 'consultor_premium' | 'regular'
       ├── status: 'active' | 'suspended'
-      ├── assignedTracks: string[] // ['sap-b1-core', 'sap-loc-ec', 'b1-academy-nomina', ...]
+      ├── assignedTracks: string[] // ['finix-erp-core', 'finix-loc-ec', 'b1-academy-nomina', ...]
       ├── createdAt: ISO string
       ├── updatedAt: ISO string
       ├── passwordChanged: boolean
@@ -290,7 +290,7 @@ usuarios/
 ## Componentes Principales
 
 ### 1. **Navbar** (`src/components/site/Navbar.tsx`)
-- Logo B1 Academy + "SAP BUSINESS ONE"
+- Logo B1 Academy + "FINIX ERP"
 - Navegación: Explorar Tracks, Manuales, Mi Aula, Bolsa Empleo, Ecosistema
 - Botones: Iniciar Sesión, Ingresar a Mi Aula
 - Responsive: menú hamburguesa en mobile
@@ -321,7 +321,7 @@ usuarios/
 ### 5. **Capacitación** (`src/app/capacitacion/`)
 
 **`page.tsx` (Listado de cursos):**
-- 5 tracks principales (SAP B1, SRI, Nómina, Gestión Humana, Verticales)
+- 5 tracks principales (Finix ERP, SRI, Nómina, Gestión Humana, Verticales)
 - Tarjetas por curso: descripción, badge, instructor, botón "Ver módulos"
 - Filtros/búsqueda
 
@@ -329,7 +329,7 @@ usuarios/
 - Hero con nombre, descripción, requisitos
 - Sidebar izquierdo: lista de módulos (lecciones)
 - Área central: video + contenido markdown (MarkdownRenderer)
-- Simulador SAP B1 o Nómina HCM (si aplica)
+- Simulador Finix ERP o Nómina HCM (si aplica)
 - Evaluación (QuickCheckQuiz o EvaluationQuiz)
 - Navegación: siguiente/anterior módulo
 
@@ -422,12 +422,12 @@ export const db = getFirestore(...)
 ```typescript
 export const courses = [
   {
-    id: 'sap-b1-core',
-    code: 'SAP-B1-CORE',
-    title: 'SAP B1 Core & Finanzas NIIF',
-    shortTitle: 'SAP B1 & NIIF',
+    id: 'finix-erp-core',
+    code: 'FINIX-ERP-CORE',
+    title: 'Finix ERP Core & Finanzas NIIF',
+    shortTitle: 'Finix ERP & NIIF',
     category: 'ERP',
-    badge: 'NIIF + SAP + RFC',
+    badge: 'NIIF + Finix ERP + RFC',
     description: '...',
     instructor: 'Ing. Consultor Senior...',
     duration: '40 horas',
@@ -443,12 +443,12 @@ export const courses = [
 modules: [
   {
     id: 'mod-001',
-    title: 'Fundamentos SAP B1',
+    title: 'Fundamentos Finix ERP',
     description: '...',
     video: 'url_video',
     duration: '45 min',
     content: 'markdown_o_html',
-    simulation?: { type: 'SAP_B1', scenario: '...' },
+    simulation?: { type: 'Finix_ERP', scenario: '...' },
     quiz?: { questions: [...] }
   }
 ]
@@ -469,15 +469,15 @@ modules: [
 ### `lib/submodules-content.ts`
 **Contenido detallado por track:**
 - Tracks, submódulos, lecturas técnicas
-- Describe funcionalidad, fórmulas, flujos SAP/Nómina
+- Describe funcionalidad, fórmulas, flujos Finix ERP/Nómina
 - ~400+ líneas de especificaciones
 
 ### `lib/quizzes-data.ts`
 **Base de preguntas por track:**
 ```typescript
 export const quizzes = {
-  'SAP-B1-CORE': [...questions],
-  'SAP-LOC-EC': [...questions],
+  'FINIX-ERP-CORE': [...questions],
+  'Finix ERP-LOC-EC': [...questions],
   'HEIN-NOM-EC': [...questions],
   // ...
 }
@@ -490,7 +490,7 @@ export const quizzes = {
 - Integración con Tailwind para estilos
 
 ### `components/lms/VisualScreenSimulator.tsx`
-**Mockup visual de GUI SAP B1 / Nómina HCM:**
+**Mockup visual de GUI Finix ERP / Nómina HCM:**
 - Simula ventanas de escritorio
 - Menús, inputs, botones
 - Interactivo: click → siguiente paso
@@ -504,7 +504,7 @@ export const quizzes = {
 
 ### `types/courses.ts`
 ```typescript
-export type TrackCode = 'SAP-B1-CORE' | 'SAP-LOC-EC' | 'HEIN-NOM-EC' | 'HEIN-HCM-TALENT' | 'VERT-EXPORT-EC'
+export type TrackCode = 'FINIX-ERP-CORE' | 'Finix ERP-LOC-EC' | 'HEIN-NOM-EC' | 'HEIN-HCM-TALENT' | 'VERT-EXPORT-EC'
 export interface Course { ... }
 export interface Module { ... }
 ```
@@ -630,7 +630,7 @@ Sistema chequea:
   - ¿sandboxHoursUsed < sandboxHoursLimit?
   - ¿role es estudiante o admin?
   ↓
-SI → Abre sesión en SAP B1 remoto
+SI → Abre sesión en Finix ERP remoto
 NO → Muestra "Cuota agotada, contacta admin"
   ↓
 Cuenta horas en Firestore:
@@ -736,8 +736,8 @@ export async function POST(request: Request) {
 ```json
 {
   "event": "student.enrolled",
-  "studentEmail": "juan@sap.academy",
-  "courseId": "sap-b1-core",
+  "studentEmail": "juan@finix.academy",
+  "courseId": "finix-erp-core",
   "timestamp": "2026-09-27T10:30:00Z"
 }
 ```
@@ -804,7 +804,7 @@ service cloud.firestore {
 ```typescript
 // ProtectedEmail.tsx
 // Ofuscación de emails contra bots extractores
-// Ejemplo: admin@sapacademy.es → visual pero no indexable
+// Ejemplo: admin@finix.local → visual pero no indexable
 ```
 
 ### 4. **Secretos**

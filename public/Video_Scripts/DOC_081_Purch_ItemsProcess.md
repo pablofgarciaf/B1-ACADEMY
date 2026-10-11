@@ -18,7 +18,7 @@ Audiencia Objetivo: Consultores Logísticos, Analistas de Compras, Contadores de
 
   "antigravity_schema_version": "2.0.0",
 
-  "unit_id": "SAP_B1_PURCH_081",
+  "unit_id": "Finix_ERP_PURCH_081",
 
   "unit_title": "Proceso Estándar de Compra de Artículos en 4 Pasos",
 

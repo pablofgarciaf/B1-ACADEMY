@@ -12,7 +12,6 @@ import FinixWindowManager, { Window } from './FinixWindowManager';
 import SimuladorAIAdvisor from '../simulador/SimuladorAIAdvisor';
 
 export type FinixRole = 'super' | 'ventas' | 'compras' | 'contabilidad' | 'almacen';
-export type SAPRole = FinixRole;
 
 export interface FinixRoleDefinition {
   id: FinixRole;
@@ -22,7 +21,6 @@ export interface FinixRoleDefinition {
   description: string;
   allowedModuleKeys: string[];
 }
-export type SAPRoleDefinition = FinixRoleDefinition;
 
 export const FINIX_ROLES: Record<FinixRole, FinixRoleDefinition> = {
   super: {
@@ -66,7 +64,6 @@ export const FINIX_ROLES: Record<FinixRole, FinixRoleDefinition> = {
     allowedModuleKeys: ['04_Inventario', '05_Produccion', '06_MRP', '09_Reportes'],
   },
 };
-export const SAP_ROLES = FINIX_ROLES;
 
 interface Module {
   key: string;
@@ -81,7 +78,6 @@ interface FinixDesktopShellProps {
     metadata: { total_screens: number; total_modules: number };
   };
 }
-export type SAPDesktopShellProps = FinixDesktopShellProps;
 
 export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
   const { userProfile, currentUser } = useAuth();
@@ -90,16 +86,16 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
   const [windowCount, setWindowCount] = useState(0);
   const [nextZIndex, setNextZIndex] = useState(1);
   const [activeRole, setActiveRole] = useState<FinixRole>('super');
-  const [themeMode, setThemeMode] = useState<'sap_horizon' | 'sap_fiori_3_dark' | 'classic'>('sap_horizon');
+  const [themeMode, setThemeMode] = useState<'finix_horizon' | 'finix_fiori_3_dark' | 'classic'>('finix_horizon');
   const [activeSlot, setActiveSlot] = useState<string>('curso');
   useEffect(() => {
     setActiveSlot(empresaActiva());
     const onSlotChange = () => setActiveSlot(empresaActiva());
     window.addEventListener('finix-company-changed', onSlotChange);
-    window.addEventListener('sap-company-changed', onSlotChange);
+    window.addEventListener('finix-company-changed', onSlotChange);
     return () => {
       window.removeEventListener('finix-company-changed', onSlotChange);
-      window.removeEventListener('sap-company-changed', onSlotChange);
+      window.removeEventListener('finix-company-changed', onSlotChange);
     };
   }, []);
   const [unauthorizedModal, setUnauthorizedModal] = useState<{
@@ -294,11 +290,11 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
             <select
               aria-label="Selector de Tema Corporativo Finix ERP"
               value={themeMode}
-              onChange={(e) => setThemeMode(e.target.value as 'sap_horizon' | 'sap_fiori_3_dark' | 'classic')}
+              onChange={(e) => setThemeMode(e.target.value as 'finix_horizon' | 'finix_fiori_3_dark' | 'classic')}
               className="bg-[#0e2c7a] text-white font-semibold text-[10.5px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer"
             >
-              <option value="sap_horizon">✨ Finix Horizon (Claro)</option>
-              <option value="sap_fiori_3_dark">🌙 Finix Obsidian (Oscuro)</option>
+              <option value="finix_horizon">✨ Finix Horizon (Claro)</option>
+              <option value="finix_fiori_3_dark">🌙 Finix Obsidian (Oscuro)</option>
               <option value="classic">💻 Finix Enterprise (Metálico)</option>
             </select>
           </div>
@@ -346,7 +342,7 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
 
         {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
         <div className={`flex-1 min-w-0 h-full relative overflow-hidden flex flex-col transition-colors duration-200 ${
-          themeMode === 'sap_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'sap_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
+          themeMode === 'finix_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'finix_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
         }`}>
           <div className="flex-1 relative overflow-hidden">
             <FinixWindowManager
@@ -479,4 +475,3 @@ export default function FinixDesktopShell({ catalog }: FinixDesktopShellProps) {
   );
 }
 
-export { FinixDesktopShell as SAPDesktopShell };

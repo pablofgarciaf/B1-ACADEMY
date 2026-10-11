@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-// ÍNDICE DE SLIDES SISTEMA (SAP UI real) — AUTO-GENERADO
+// ÍNDICE DE SLIDES SISTEMA (Finix ERP UI real) — AUTO-GENERADO
 // Fuente: slide-classification.json (2026-10-03)
 // 101 manuales con slides sistema · 1362 slides totales
 // Solo incluye type='system' y type='mixed' (excluye 'cover' y 'theory')
@@ -8,7 +8,7 @@
 export type SystemSlidesIndex = Record<string, string[]>;
 
 /**
- * Mapa de manualId → array de filenames de slides con UI SAP real.
+ * Mapa de manualId → array de filenames de slides con UI Finix ERP real.
  * Usar con getSystemSlideUrls() de slide-utils.ts.
  */
 export const SYSTEM_SLIDES_INDEX: SystemSlidesIndex = {

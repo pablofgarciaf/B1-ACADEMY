@@ -7,10 +7,10 @@ export interface QuizQuestion {
 }
 
 export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
-  'SAP-B1-LOGISTICS': [
+  'FINIX-ERP-LOGISTICS': [
     {
       id: 1,
-      question: '¿En qué ruta de SAP Business One se parametriza la Determinación de Cuentas de Mayor para compras, ventas e inventarios?',
+      question: '¿En qué ruta de Finix ERP se parametriza la Determinación de Cuentas de Mayor para compras, ventas e inventarios?',
       options: [
         'Gestión → Definiciones → Finanzas → Determinación de cuentas de mayor',
         'Ventas → Informes de ventas → Cuentas por cobrar',
@@ -34,19 +34,19 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: '¿Cuál es el utilitario oficial para realizar migraciones masivas de datos maestros (clientes, proveedores, artículos) en SAP B1?',
+      question: '¿Cuál es el utilitario oficial para realizar migraciones masivas de datos maestros (clientes, proveedores, artículos) en Finix ERP?',
       options: [
         'Data Transfer Workbench (DTW)',
-        'SAP Crystal Reports Viewer',
+        'Finix Reports Viewer',
         'B1 Print & Delivery',
-        'SAP Business One Service Manager'
+        'Finix ERP Service Manager'
       ],
       correctAnswer: 0,
       explanation: 'DTW permite importar archivos CSV hacia las tablas de base de datos garantizando la integridad referencial a través de la DI API.'
     }
   ],
 
-  'SAP-LOC-EC': [
+  'Finix ERP-LOC-EC': [
     {
       id: 1,
       question: '¿Cuál es la longitud exacta de la Clave de Acceso en los comprobantes electrónicos del SRI en Ecuador?',
@@ -151,7 +151,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     }
   ],
 
-  'SAP-VERT-EXP': [
+  'Finix ERP-VERT-EXP': [
     {
       id: 1,
       question: 'En la vertical bananera de Ecuador, ¿cuál es el precio regulatorio mínimo que no se puede infringir al liquidar al productor?',
@@ -168,7 +168,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
       id: 2,
       question: 'En la industria camaronera acuícola, ¿cómo se configura arquitectónicamente el software para controlar el costo por ciclo biológico?',
       options: [
-        'Definiendo cada piscina como un Centro de Costo analítico independiente en SAP B1',
+        'Definiendo cada piscina como un Centro de Costo analítico independiente en Finix ERP',
         'Creando una cuenta contable separada por cada camarón sembrado',
         'Utilizando el módulo de servicios',
         'Registrando los costos como gastos administrativos indirectos'
@@ -181,31 +181,31 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-01': [
     {
       id: 1,
-      question: '¿Cuál es el motor de base de datos in-memory sobre el cual está optimizado SAP Business One versión HANA?',
+      question: '¿Cuál es el motor de base de datos in-memory sobre el cual está optimizado Finix ERP versión HANA?',
       options: [
         'Microsoft SQL Server',
-        'SAP HANA',
+        'base de datos en memoria',
         'Oracle Database',
         'IBM DB2'
       ],
       correctAnswer: 1,
-      explanation: 'SAP HANA es la plataforma base de datos en memoria (in-memory) y de computación desarrollada por SAP para altísimo rendimiento.'
+      explanation: 'base de datos en memoria es la plataforma base de datos en memoria (in-memory) y de computación desarrollada por Finix ERP para altísimo rendimiento.'
     },
     {
       id: 2,
-      question: '¿Qué tecnología de interfaz de usuario utiliza SAP Business One para proporcionar una experiencia basada en web y roles?',
+      question: '¿Qué tecnología de interfaz de usuario utiliza Finix ERP para proporcionar una experiencia basada en web y roles?',
       options: [
-        'SAP GUI',
+        'Finix ERP GUI',
         'Fiori',
         'Windows Forms',
         'Web Dynpro'
       ],
       correctAnswer: 1,
-      explanation: 'Fiori es la filosofía y tecnología de diseño de experiencia de usuario (UX) de SAP basada en roles y accesible vía navegador.'
+      explanation: 'Fiori es la filosofía y tecnología de diseño de experiencia de usuario (UX) de Finix ERP basada en roles y accesible vía navegador.'
     },
     {
       id: 3,
-      question: '¿Cómo se llama la funcionalidad en SAP Business One versión para SAP HANA que permite búsquedas de tipo Google en toda la base de datos?',
+      question: '¿Cómo se llama la funcionalidad en Finix ERP versión para base de datos en memoria que permite búsquedas de tipo Google en toda la base de datos?',
       options: [
         'Enterprise Search (Búsqueda Empresarial)',
         'Búsqueda Formateada',
@@ -217,7 +217,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 4,
-      question: '¿Qué función permite a los usuarios guardar accesos directos a las pantallas más utilizadas en su Cockpit de SAP Business One?',
+      question: '¿Qué función permite a los usuarios guardar accesos directos a las pantallas más utilizadas en su Cockpit de Finix ERP?',
       options: [
         'Menú de Módulos',
         'Widget de Mensajes',
@@ -229,7 +229,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 5,
-      question: '¿Qué nivel de arquitectura representa el ejecutable instalado en la máquina del usuario (SAP Business One Client)?',
+      question: '¿Qué nivel de arquitectura representa el ejecutable instalado en la máquina del usuario (Finix ERP Client)?',
       options: [
         'Capa de base de datos',
         'Capa de presentación (Presentation Layer)',
@@ -237,14 +237,14 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'Capa de integración'
       ],
       correctAnswer: 1,
-      explanation: 'El SAP B1 Client actúa como la Capa de Presentación, manejando la interfaz gráfica e interactuando con la lógica de negocio subyacente y la DB.'
+      explanation: 'El Finix ERP Client actúa como la Capa de Presentación, manejando la interfaz gráfica e interactuando con la lógica de negocio subyacente y la DB.'
     }
   ],
 
   'modulo-02': [
     {
       id: 1,
-      question: '¿Cuál es el primer documento formal en el ciclo de compras de SAP B1 que internamente no genera un asiento contable?',
+      question: '¿Cuál es el primer documento formal en el ciclo de compras de Finix ERP que internamente no genera un asiento contable?',
       options: [
         'Factura de Proveedores',
         'Pedido de Compra (Orden de Compra)',
@@ -256,7 +256,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 2,
-      question: '¿Qué documento en SAP Business One se utiliza para registrar la recepción física de artículos en el almacén?',
+      question: '¿Qué documento en Finix ERP se utiliza para registrar la recepción física de artículos en el almacén?',
       options: [
         'Entrega de Compras',
         'Pedido de Entrada de Mercancías (GRPO)',
@@ -268,7 +268,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: '¿Qué herramienta de SAP B1 permite distribuir costos adicionales (como flete, aduana, seguros) al costo de inventario del artículo importado?',
+      question: '¿Qué herramienta de Finix ERP permite distribuir costos adicionales (como flete, aduana, seguros) al costo de inventario del artículo importado?',
       options: [
         'Precios de Entrega (Landed Costs)',
         'Revalorización de Inventario',
@@ -307,7 +307,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-03': [
     {
       id: 1,
-      question: '¿Qué documento de ventas en SAP B1 compromete el inventario para un cliente pero no reduce el stock físico de forma inmediata?',
+      question: '¿Qué documento de ventas en Finix ERP compromete el inventario para un cliente pero no reduce el stock físico de forma inmediata?',
       options: [
         'Oferta de Venta',
         'Pedido de Cliente',
@@ -331,7 +331,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: 'En SAP B1, ¿qué herramienta automatiza el proceso de creación de facturas masivas para clientes con contratos periódicos recurrentes?',
+      question: 'En Finix ERP, ¿qué herramienta automatiza el proceso de creación de facturas masivas para clientes con contratos periódicos recurrentes?',
       options: [
         'Asistente de Pagos',
         'Asistente de Reclamación',
@@ -343,7 +343,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 4,
-      question: '¿Qué tipo de registro en el CRM de SAP B1 permite planificar y registrar interacciones individuales como llamadas, notas o reuniones con interlocutores?',
+      question: '¿Qué tipo de registro en el CRM de Finix ERP permite planificar y registrar interacciones individuales como llamadas, notas o reuniones con interlocutores?',
       options: [
         'Campañas',
         'Oportunidades de Ventas',
@@ -370,7 +370,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-04': [
     {
       id: 1,
-      question: '¿Cuáles son los tres métodos estándar principales de valoración de inventario soportados por SAP Business One de forma nativa?',
+      question: '¿Cuáles son los tres métodos estándar principales de valoración de inventario soportados por Finix ERP de forma nativa?',
       options: [
         'LIFO, FIFO y Promedio Móvil',
         'FIFO, Promedio Móvil y Precio Estándar',
@@ -378,7 +378,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'FIFO, LIFO y Precio Estándar'
       ],
       correctAnswer: 1,
-      explanation: 'SAP B1 estándar no admite LIFO (Último en entrar, Primero en salir) para valoración, solo FIFO, Media Móvil y Costo Estándar.'
+      explanation: 'Finix ERP estándar no admite LIFO (Último en entrar, Primero en salir) para valoración, solo FIFO, Media Móvil y Costo Estándar.'
     },
     {
       id: 2,
@@ -394,7 +394,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: '¿Cómo se denomina en SAP B1 a la funcionalidad que permite segmentar de manera tridimensional los espacios dentro de un almacén (pasillo, nivel, rack)?',
+      question: '¿Cómo se denomina en Finix ERP a la funcionalidad que permite segmentar de manera tridimensional los espacios dentro de un almacén (pasillo, nivel, rack)?',
       options: [
         'Gestión de Lotes',
         'Ubicaciones (Bin Locations)',
@@ -433,7 +433,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-05': [
     {
       id: 1,
-      question: '¿Qué es una Lista de Materiales (BOM) en SAP Business One?',
+      question: '¿Qué es una Lista de Materiales (BOM) en Finix ERP?',
       options: [
         'Un reporte estadístico de inventario disponible',
         'Una estructura (receta) que define los componentes, recursos y cantidades para fabricar un producto',
@@ -457,7 +457,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: '¿Cuál es el propósito medular de ejecutar el Asistente MRP en SAP Business One?',
+      question: '¿Cuál es el propósito medular de ejecutar el Asistente MRP en Finix ERP?',
       options: [
         'Contabilizar asientos de producción manual automáticamente',
         'Generar recomendaciones consolidadas de compras y producción basadas en pronósticos y pedidos',
@@ -481,7 +481,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 5,
-      question: '¿Qué entidad en SAP B1 se usa para modelar maquinaria o mano de obra necesaria en el proceso productivo y así medir su capacidad disponible?',
+      question: '¿Qué entidad en Finix ERP se usa para modelar maquinaria o mano de obra necesaria en el proceso productivo y así medir su capacidad disponible?',
       options: [
         'Centro de Costos',
         'Grupos de Artículos',
@@ -520,7 +520,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: 'Cuando un cliente reporta un incidente, queja o desperfecto técnico, ¿qué documento dinámico se abre en SAP B1 para gestionarlo?',
+      question: 'Cuando un cliente reporta un incidente, queja o desperfecto técnico, ¿qué documento dinámico se abre en Finix ERP para gestionarlo?',
       options: [
         'Actividad de CRM',
         'Llamada de Servicio',
@@ -567,7 +567,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'Hitos y Tareas'
       ],
       correctAnswer: 0,
-      explanation: 'SAP B1 permite la estructura de Proyecto -> Subproyecto -> Etapas, lo que permite acumular presupuestos y progresos de lo particular a lo general.'
+      explanation: 'Finix ERP permite la estructura de Proyecto -> Subproyecto -> Etapas, lo que permite acumular presupuestos y progresos de lo particular a lo general.'
     },
     {
       id: 2,
@@ -583,7 +583,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: '¿Cuál es la manera estándar en SAP B1 de garantizar que un gasto de compra específico afecte financieramente el P&L (Estado de Resultados) de un Proyecto?',
+      question: '¿Cuál es la manera estándar en Finix ERP de garantizar que un gasto de compra específico afecte financieramente el P&L (Estado de Resultados) de un Proyecto?',
       options: [
         'Seleccionando o escribiendo el Código de Proyecto Financiero directamente en la cabecera o las líneas del documento de compra',
         'Usando solo un Centro de Costo',
@@ -591,11 +591,11 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'Creando un almacén especial llamado igual al proyecto'
       ],
       correctAnswer: 0,
-      explanation: 'Vincular el "Código de Proyecto" en el nivel de línea o documento permite que SAP etiquete el apunte contable y pueda extraer reportes de pérdidas y ganancias por proyecto.'
+      explanation: 'Vincular el "Código de Proyecto" en el nivel de línea o documento permite que Finix ERP etiquete el apunte contable y pueda extraer reportes de pérdidas y ganancias por proyecto.'
     },
     {
       id: 4,
-      question: '¿Qué tipo de proyecto se define en SAP B1 para inversiones exclusivas de la empresa (como construir una nueva planta) y no para venta a clientes?',
+      question: '¿Qué tipo de proyecto se define en Finix ERP para inversiones exclusivas de la empresa (como construir una nueva planta) y no para venta a clientes?',
       options: [
         'Proyecto Externo',
         'Proyecto Interno',
@@ -622,7 +622,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-08': [
     {
       id: 1,
-      question: '¿En qué ruta se configuran a nivel granular los permisos de lectura, escritura o bloqueo a las distintas ventanas de SAP B1?',
+      question: '¿En qué ruta se configuran a nivel granular los permisos de lectura, escritura o bloqueo a las distintas ventanas de Finix ERP?',
       options: [
         'Recursos Humanos -> Empleados',
         'Gestión -> Definiciones -> General -> Usuarios',
@@ -634,15 +634,15 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 2,
-      question: '¿Qué herramienta oficial de SAP permite importar volúmenes masivos de datos desde archivos planos (CSV, TXT) a la base de datos validando integridad?',
+      question: '¿Qué herramienta oficial de Finix ERP permite importar volúmenes masivos de datos desde archivos planos (CSV, TXT) a la base de datos validando integridad?',
       options: [
-        'SAP Lumira',
+        'Finix ERP Lumira',
         'Data Transfer Workbench (DTW)',
         'Crystal Reports',
         'Data Upload Manager'
       ],
       correctAnswer: 1,
-      explanation: 'El Data Transfer Workbench (DTW) es la utilidad puente que consume la DI API de SAP B1 para insertar, actualizar o borrar masivamente asegurando la lógica del negocio.'
+      explanation: 'El Data Transfer Workbench (DTW) es la utilidad puente que consume la DI API de Finix ERP para insertar, actualizar o borrar masivamente asegurando la lógica del negocio.'
     },
     {
       id: 3,
@@ -678,40 +678,40 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'Alerta de Gestión Estándar de Desviación de Stock'
       ],
       correctAnswer: 3,
-      explanation: 'SAP B1 trae preconfiguradas alertas nativas de gestión, como la de "Desviación de Stock Mínimo", que se activan marcando la casilla sin necesidad de programar SQL.'
+      explanation: 'Finix ERP trae preconfiguradas alertas nativas de gestión, como la de "Desviación de Stock Mínimo", que se activan marcando la casilla sin necesidad de programar SQL.'
     }
   ],
 
   'modulo-09': [
     {
       id: 1,
-      question: '¿Qué herramienta de monitorización instalada en el entorno SAP B1 envía diagnósticos proactivos de la salud del servidor y realiza respaldos automáticos?',
+      question: '¿Qué herramienta de monitorización instalada en el entorno Finix ERP envía diagnósticos proactivos de la salud del servidor y realiza respaldos automáticos?',
       options: [
         'Remote Support Platform (RSP)',
-        'SAP Solution Manager',
+        'Finix ERP Solution Manager',
         'Early Watch Alert (EWA)',
         'System Landscape Directory (SLD)'
       ],
       correctAnswer: 0,
-      explanation: 'RSP es obligatorio; automatiza tareas de mantenimiento de DB, parches pre-aprobados, y comunica el estado del sistema al Partner y a SAP para soporte preventivo.'
+      explanation: 'RSP es obligatorio; automatiza tareas de mantenimiento de DB, parches pre-aprobados, y comunica el estado del sistema al Partner y a Finix ERP para soporte preventivo.'
     },
     {
       id: 2,
-      question: '¿Cuál es el portal web oficial y unificado de SAP donde los clientes, usuarios administradores y partners descargan software, licencias y contactan soporte de SAP global?',
+      question: '¿Cuál es el portal web oficial y unificado de Finix ERP donde los clientes, usuarios administradores y partners descargan software, licencias y contactan soporte de Finix ERP global?',
       options: [
-        'SAP Service Marketplace (obsoleto)',
-        'SAP for Me',
-        'SAP PartnerEdge',
-        'SAP Community Network'
+        'Finix ERP Service Marketplace (obsoleto)',
+        'portal de soporte',
+        'Finix ERP PartnerEdge',
+        'Finix ERP Community Network'
       ],
       correctAnswer: 1,
-      explanation: 'SAP for Me reemplazó al clásico Service Marketplace y Launchpad como la entrada central para gestionar portfolios en la nube y on-premise, y crear incidentes de soporte.'
+      explanation: 'portal de soporte reemplazó al clásico Service Marketplace y Launchpad como la entrada central para gestionar portfolios en la nube y on-premise, y crear incidentes de soporte.'
     },
     {
       id: 3,
-      question: 'En un modelo de escalamiento estándar de soporte IT de SAP B1, ¿qué actor asume el rol de Nivel 1 (N1)?',
+      question: 'En un modelo de escalamiento estándar de soporte IT de Finix ERP, ¿qué actor asume el rol de Nivel 1 (N1)?',
       options: [
-        'Desarrolladores base de SAP en Alemania o Israel',
+        'Desarrolladores base de Finix ERP en Alemania o Israel',
         'Soporte técnico y funcional de consultoría del Partner implementador',
         'El equipo interno o Key Users (Help Desk) propios del Cliente',
         'Auditores externos del sistema'
@@ -721,19 +721,19 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 4,
-      question: '¿Qué son las "SAP Notes" (Notas SAP)?',
+      question: '¿Qué son las "Finix ERP Notes" (Notas Finix ERP)?',
       options: [
-        'Documentación técnica y correcciones (parches, workarounds) publicadas oficialmente por SAP respecto a bugs o funcionamientos del producto',
+        'Documentación técnica y correcciones (parches, workarounds) publicadas oficialmente por Finix ERP respecto a bugs o funcionamientos del producto',
         'Notas internas (Post-its) en el Cockpit del usuario',
         'Manuales de usuario final genéricos',
         'Reportes de estado de ventas'
       ],
       correctAnswer: 0,
-      explanation: 'Una SAP Note es el documento fundamental del ecosistema de soporte de SAP, detallando síntomas, causas y soluciones a un problema técnico documentado.'
+      explanation: 'Una Finix ERP Note es el documento fundamental del ecosistema de soporte de Finix ERP, detallando síntomas, causas y soluciones a un problema técnico documentado.'
     },
     {
       id: 5,
-      question: 'Para análisis de cuellos de botella de rendimiento (performance) en SAP HANA, ¿qué acción es rutinariamente recomendada generar para enviar a SAP Global?',
+      question: 'Para análisis de cuellos de botella de rendimiento (performance) en base de datos en memoria, ¿qué acción es rutinariamente recomendada generar para enviar a Finix ERP Global?',
       options: [
         'Un Full System Info Dump (FSID) o volcado completo de HANA',
         'Un SQL Server Profiler Trace clásico',
@@ -741,7 +741,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'Exportar el visor de eventos de Windows'
       ],
       correctAnswer: 0,
-      explanation: 'El FSID contiene los logs, traces, y el estado de la base de datos de HANA sin incluir los datos transaccionales de los clientes, permitiendo a SAP depurar fallos en C/C++ y memoria.'
+      explanation: 'El FSID contiene los logs, traces, y el estado de la base de datos de HANA sin incluir los datos transaccionales de los clientes, permitiendo a Finix ERP depurar fallos en C/C++ y memoria.'
     }
   ],
 
@@ -760,7 +760,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 2,
-      question: '¿Qué herramienta funcional permite emparejar y cruzar masivamente los cobros y pagos asentados en SAP con el estado de cuenta (extracto) descargado del banco?',
+      question: '¿Qué herramienta funcional permite emparejar y cruzar masivamente los cobros y pagos asentados en Finix ERP con el estado de cuenta (extracto) descargado del banco?',
       options: [
         'Asistente de Pagos',
         'Procesamiento de Extractos Bancarios (Reconciliación Externa)',
@@ -811,7 +811,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-11': [
     {
       id: 1,
-      question: '¿Qué significa el acrónimo UDF en el ecosistema de personalización de SAP Business One?',
+      question: '¿Qué significa el acrónimo UDF en el ecosistema de personalización de Finix ERP?',
       options: [
         'User Defined Function',
         'User Defined Field (Campo Definido por el Usuario)',
@@ -835,7 +835,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 3,
-      question: '¿Cuál es el único stored procedure avalado oficialmente por SAP para interceptar y bloquear transacciones no válidas antes de ser guardadas en la base de datos (sin programar Add-Ons)?',
+      question: '¿Cuál es el único stored procedure avalado oficialmente por Finix ERP para interceptar y bloquear transacciones no válidas antes de ser guardadas en la base de datos (sin programar Add-Ons)?',
       options: [
         'SBO_SP_PostTransactionNotice',
         'SBO_SP_TransactionNotification',
@@ -843,19 +843,19 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
         'SBO_Commit_Handler'
       ],
       correctAnswer: 1,
-      explanation: 'El SBO_SP_TransactionNotification es un SP en SQL o HANA que SAP dispara antes de hacer el "commit", permitiendo retornar un código de error y abortar el insert/update si no se cumplen las reglas de negocio (ej. RUC inválido).'
+      explanation: 'El SBO_SP_TransactionNotification es un SP en SQL o HANA que Finix ERP dispara antes de hacer el "commit", permitiendo retornar un código de error y abortar el insert/update si no se cumplen las reglas de negocio (ej. RUC inválido).'
     },
     {
       id: 4,
-      question: 'En analítica avanzada con SAP HANA, ¿qué motor y tecnología permite crear tableros interactivos (dashboards), análisis penetrantes e indicadores clave de rendimiento (KPIs) de forma visual?',
+      question: 'En analítica avanzada con base de datos en memoria, ¿qué motor y tecnología permite crear tableros interactivos (dashboards), análisis penetrantes e indicadores clave de rendimiento (KPIs) de forma visual?',
       options: [
-        'SAP Crystal Reports Viewer',
-        'Pervasive Analytics para SAP HANA',
+        'Finix Reports Viewer',
+        'Pervasive Analytics para base de datos en memoria',
         'Asistente de Consultas Antiguo',
         'Impresión de Layouts (PLD)'
       ],
       correctAnswer: 1,
-      explanation: 'Pervasive Analytics es el componente HTML5 dentro del cliente SAP HANA que permite diseñar KPIs, tableros y análisis incrustados directamente en el entorno de trabajo del usuario.'
+      explanation: 'Pervasive Analytics es el componente HTML5 dentro del cliente base de datos en memoria que permite diseñar KPIs, tableros y análisis incrustados directamente en el entorno de trabajo del usuario.'
     },
     {
       id: 5,
@@ -874,12 +874,12 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
   'modulo-12': [
     {
       id: 1,
-      question: '¿Cómo se denomina a la metodología de implementación oficial en fases desarrollada por SAP específicamente para acelerar la instalación y despliegue de SAP Business One?',
+      question: '¿Cómo se denomina la metodología de implementación en fases diseñada para acelerar la instalación y el despliegue de Finix ERP?',
       options: [
-        'ASAP (Accelerated SAP)',
-        'SAP Activate',
+        'Instalación directa sin planificación',
+        'Desarrollo a medida sin fases de validación',
         'AIP (Accelerated Implementation Program)',
-        'Scrum B1'
+        'Scrum sin fase de migración de datos'
       ],
       correctAnswer: 2,
       explanation: 'AIP provee una hoja de ruta estandarizada y plantillas de documentos dividida en fases: Preparación, Business Blueprint, Realización, Preparación Final y Go-Live.'
@@ -922,7 +922,7 @@ export const TRACK_QUIZZES: Record<string, QuizQuestion[]> = {
     },
     {
       id: 5,
-      question: 'Durante la etapa técnica de Cut-over (Transición), respecto a los datos transaccionales, ¿qué información típica se migra obligatoriamente al nuevo sistema SAP B1 para que contablemente inicie sano?',
+      question: 'Durante la etapa técnica de Cut-over (Transición), respecto a los datos transaccionales, ¿qué información típica se migra obligatoriamente al nuevo sistema Finix ERP para que contablemente inicie sano?',
       options: [
         'Saldos iniciales de cuentas contables, partidas abiertas consolidadas de clientes y proveedores, e inventario físico inicial (cantidades y costos)',
         'Todas las facturas cerradas históricas de los últimos 5 años línea por línea',

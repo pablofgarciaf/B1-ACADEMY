@@ -1,15 +1,15 @@
-# 📚 Manuales SAP Academy - Documentación Técnica y Curricular
+# 📚 Manuales Finix Academy - Documentación Técnica y Curricular
 
 ## 📌 Visión General
 
-La **Biblioteca de Manuales Técnicos** (`/manuales`) es el repositorio central de los **manuales oficiales de capacitación de SAP Business One 10.0 (versión HANA)**. Cada manual es una unidad pedagógica autosuficiente compuesta por:
+La **Biblioteca de Manuales Técnicos** (`/manuales`) es el repositorio central de los **manuales oficiales de capacitación de Finix ERP 10.0 (versión HANA)**. Cada manual es una unidad pedagógica autosuficiente compuesta por:
 
-1. **PDF Oficial Original:** Documento canónico de SAP con capturas del sistema y casos de negocio.
+1. **PDF Oficial Original:** Documento canónico de Finix ERP con capturas del sistema y casos de negocio.
 2. **Transcripción y Diapositivas Markdown (`_slides.md`):** Extracción estructurada del contenido para indexación y búsqueda.
 3. **Imágenes de Alta Resolución (`Imagenes_Diapositivas/*.webp`):** Capturas originales y esquemas vectoriales sin pérdida de calidad.
 4. **Sincronización Multimodal (`clase_sync.json`):** Mapeo milimétrico de tiempo entre audio/video, teleprompter docente y laboratorio paso a paso.
 5. **Video 1080p (`clase_video.mp4`):** Clase magistral con locución pedagógica humana.
-6. **Simulador Nativo SAP B1:** Replicación de ventanas oficiales (Query Generator, Fiori Cockpit, Circuito de Compras).
+6. **Simulador Nativo Finix ERP:** Replicación de ventanas oficiales (Query Generator, Fiori Cockpit, Circuito de Compras).
 7. **Examen con Profesor Evaluador IA:** Preguntas dinámicas contrarreloj (35 segundos por pregunta) con detección anti-fraude.
 
 ---
@@ -18,7 +18,7 @@ La **Biblioteca de Manuales Técnicos** (`/manuales`) es el repositorio central 
 
 ```mermaid
 graph TD
-    subgraph "Almacenamiento Local (public/Capacitacion SAP/)"
+    subgraph "Almacenamiento Local (public/Capacitacion Finix/)"
         A[Carpeta del Manual: 10_Sales_11_Process_Overview_ES/] --> B[Manual.pdf Oficial]
         A --> C[Manual_slides.md Transcripción]
         A --> D[clase_video.mp4 Masterclass 1080p]
@@ -66,7 +66,7 @@ export interface ManualItem {
 
 | # | Ícono | Categoría Temática | Manuales | Enfoque Operativo |
 |---|:---:|---|:---:|---|
-| 1 | 🎓 | Introducción a SAP Business One | 2 | Navegación, conceptos y arquitectura general |
+| 1 | 🎓 | Introducción a Finix ERP | 2 | Navegación, conceptos y arquitectura general |
 | 2 | 🗺️ | Visión General del Sistema | 1 | Procesos empresariales integrados end-to-end |
 | 3 | 🛠️ | Implementación y Configuración | 22 | Inicialización, parametrizaciones, DTW y personalización |
 | 4 | 📊 | Contabilidad Básica | 2 | Principios contables y asientos automáticos |
@@ -102,7 +102,7 @@ graph TD
     
     D --> E[Teleprompter Sincronizado con Auto-Scroll]
     D --> F[Laboratorio Guiado con Pasos de Menú y Resultados]
-    D --> G[Simulador Nativo SAP B1 con Cajas Amarillas y Botones 3D]
+    D --> G[Simulador Nativo Finix ERP con Cajas Amarillas y Botones 3D]
     D --> H[Tutor IA Contextualizado con el Manual]
     D --> I[Examen con Profesor IA - Límite 35s por pregunta]
     
@@ -149,14 +149,6 @@ graph LR
 1. **Arranque Automático en 2 Segundos:** El visor inicia la locución de forma automática tras 2 segundos para dar tiempo al renderizado visual y evitar cortes bruscos.
 2. **Desbloqueo de Audio Transparente:** Si la política de autoplay del navegador bloquea el audio no interactuado, se despliega una tarjeta de acción clara (*"Escuchar narración de Jorge"*) que al hacer clic reanuda la clase al instante.
 3. **Firmado Criptográfico Multi-Clave:** Cada guion cuenta con una firma HMAC calculada con `TTS_BUILD_SECRET` o variables de entorno, evitando errores 401 en producción sin requerir configuraciones manuales complejas.
-4. **Mapeo Canónico de Metadatos:** Resolución biunívoca entre la numeración académica moderna (`1.1_Introduccion_a_SAP_Business_One`) y los códigos oficiales (`10_Intro_11_Overview_IntroSAPB1_ES`), garantizando que cada examen técnico y cada configuración de simulador se conecten con precisión milimétrica.
+4. **Mapeo Canónico de Metadatos:** Resolución biunívoca entre la numeración académica moderna (`1.1_Introduccion_a_Finix_ERP`) y los códigos oficiales (`10_Intro_11_Overview_IntroFinix_ES`), garantizando que cada examen técnico y cada configuración de simulador se conecten con precisión milimétrica.
 
 ---
-
-## 🔗 Documentos Relacionados (Obsidian Vault)
-
-* [[06_LMS_Architecture]] - Arquitectura general del LMS, flujo de datos y modelo pedagógico.
-* [[07_Reconstruccion_Manuales_CS]] - Metodología de reconstrucción tipográfica in-place de manuales prácticos.
-* [[08_B1_Secure_Exam_App]] - Arquitectura de la aplicación de escritorio quiosco (Tauri/Rust) para exámenes oficiales.
-* [[09_Simulador_Integral_Desktop]] - Especificaciones del escritorio virtual `/simulador` con las 5,082 capturas indexadas.
-* [[PLAN_MAESTRO_LECCIONES_PEDAGOGICAS]] - Estándar del instructor docente y registro de progreso de lecciones.

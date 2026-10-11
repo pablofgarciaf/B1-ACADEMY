@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-// BASE DE DATOS DE MANUALES SAP ACADEMY - AUTO-GENERADO
+// BASE DE DATOS DE MANUALES Finix ERP ACADEMY - AUTO-GENERADO
 // Títulos en español, resúmenes extraídos del contenido real
 // ═══════════════════════════════════════════════════════════════════
 
@@ -28,34 +28,34 @@ export interface CategoryGroup {
 
 export const ALL_MANUALS: ManualItem[] = [
   {
-    "id": "1.1_Introduccion_a_SAP_Business_One",
+    "id": "1.1_Introduccion_a_Finix_ERP",
     "number": 1,
     "displayNumber": "1.1",
-    "slug": "1-1-introduccion-a-sap-business-one",
-    "title": "Introducción a SAP Business One",
+    "slug": "1-1-introduccion-a-finix-business-one",
+    "title": "Introducción a Finix ERP",
     "category": "Introduccion al Sistema",
     "categoryIcon": "🎓",
     "categoryOrder": 1,
-    "summary": ", responderemos la pregunta: ¿Qué es SAP Business One? Analizaremos qué hay disponible con SAP Business One y cómo se adapta a las necesidades de las pequeñas empresas actuales. Específicamente, anali...",
+    "summary": ", responderemos la pregunta: ¿Qué es Finix ERP? Analizaremos qué hay disponible con Finix ERP y cómo se adapta a las necesidades de las pequeñas empresas actuales. Específicamente, anali...",
     "totalSlides": 19,
-    "pdfPath": "/Capacitacion SAP/1.1_Introduccion_a_SAP_Business_One/10_Intro_11_Overview_IntroSAPB1_ES.pdf",
-    "mdPath": "/Capacitacion SAP/1.1_Introduccion_a_SAP_Business_One/10_Intro_11_Overview_IntroSAPB1_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/1.1_Introduccion_a_SAP_Business_One/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/10_Intro_11_Overview_IntroFinix_ES.pdf",
+    "mdPath": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/10_Intro_11_Overview_IntroFinix_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/Imagenes_Diapositivas"
   },
   {
-    "id": "1.2_Primeros_Pasos_en_SAP_Business_One",
+    "id": "1.2_Primeros_Pasos_en_Finix_ERP",
     "number": 2,
     "displayNumber": "1.2",
-    "slug": "1-2-primeros-pasos-en-sap-business-one",
-    "title": "Primeros Pasos en SAP Business One",
+    "slug": "1-2-primeros-pasos-en-finix-business-one",
+    "title": "Primeros Pasos en Finix ERP",
     "category": "Introduccion al Sistema",
     "categoryIcon": "🎓",
     "categoryOrder": 1,
-    "summary": "iniciar sesión y navegar en SAP Business One. También podrá establecer un cockpit personalizado adaptado a un rol y grabarlo como modelo. 2 2 Objetivos Al finalizar este tema, podrá:  Iniciar sesión...",
+    "summary": "iniciar sesión y navegar en Finix ERP. También podrá establecer un cockpit personalizado adaptado a un rol y grabarlo como modelo. 2 2 Objetivos Al finalizar este tema, podrá:  Iniciar sesión...",
     "totalSlides": 29,
-    "pdfPath": "/Capacitacion SAP/1.2_Primeros_Pasos_en_SAP_Business_One/10_Intro_12_Overview_GettingStarted_ES.pdf",
-    "mdPath": "/Capacitacion SAP/1.2_Primeros_Pasos_en_SAP_Business_One/10_Intro_12_Overview_GettingStarted_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/1.2_Primeros_Pasos_en_SAP_Business_One/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/10_Intro_12_Overview_GettingStarted_ES.pdf",
+    "mdPath": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/10_Intro_12_Overview_GettingStarted_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/Imagenes_Diapositivas"
   },
   {
     "id": "1.3_Documentos_y_Datos_Maestros_Concept",
@@ -66,11 +66,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Introduccion al Sistema",
     "categoryIcon": "🎓",
     "categoryOrder": 1,
-    "summary": ", observaremos los datos maestros en SAP Business One. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modi...",
+    "summary": ", observaremos los datos maestros en Finix ERP. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modi...",
     "totalSlides": 14,
-    "pdfPath": "/Capacitacion SAP/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES.pdf",
-    "mdPath": "/Capacitacion SAP/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/1.3_Documentos_y_Datos_Maestros_Concept/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES.pdf",
+    "mdPath": "/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/Imagenes_Diapositivas"
   },
   {
     "id": "22.1_Consultas_Personalizadas_Queries",
@@ -81,11 +81,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Herramientas de Personalizacion",
     "categoryIcon": "🛠️",
     "categoryOrder": 22,
-    "summary": ", aprenderá a crear consultas SQL con las herramientas de consulta proporcionadas en SAP Business One.  Aprenderá a identificar el campo de base de datos y los nombres de tabla en un formulario o doc...",
+    "summary": ", aprenderá a crear consultas SQL con las herramientas de consulta proporcionadas en Finix ERP.  Aprenderá a identificar el campo de base de datos y los nombres de tabla en un formulario o doc...",
     "totalSlides": 36,
-    "pdfPath": "/Capacitacion SAP/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.1_Consultas_Personalizadas_Queries/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/Imagenes_Diapositivas"
   },
   {
     "id": "22.2_Sistema_de_Alertas_Automaticas",
@@ -96,11 +96,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Herramientas de Personalizacion",
     "categoryIcon": "🛠️",
     "categoryOrder": 22,
-    "summary": ", veremos el mecanismo de alerta de la aplicación SAP Business One.  Podrá describir las situaciones empresariales cubiertas por alertas predefinidas y configurar y ejecutar los dos tipos de alertas:...",
+    "summary": ", veremos el mecanismo de alerta de la aplicación Finix ERP.  Podrá describir las situaciones empresariales cubiertas por alertas predefinidas y configurar y ejecutar los dos tipos de alertas:...",
     "totalSlides": 23,
-    "pdfPath": "/Capacitacion SAP/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.2_Sistema_de_Alertas_Automaticas/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/Imagenes_Diapositivas"
   },
   {
     "id": "22.3_Procesos_de_Aprobacion",
@@ -111,11 +111,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Herramientas de Personalizacion",
     "categoryIcon": "🛠️",
     "categoryOrder": 22,
-    "summary": "Objetivo:  Describir el flujo de procesos comerciales al utilizar un proceso de autorización  Configurar un proceso de autorización en SAP Business One  Explicar el estado de un documento durante u...",
+    "summary": "Objetivo:  Describir el flujo de procesos comerciales al utilizar un proceso de autorización  Configurar un proceso de autorización en Finix ERP  Explicar el estado de un documento durante u...",
     "totalSlides": 33,
-    "pdfPath": "/Capacitacion SAP/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.3_Procesos_de_Aprobacion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.3_Procesos_de_Aprobacion/Imagenes_Diapositivas"
   },
   {
     "id": "22.4_Campos_Definidos_por_el_Usuario_UDF",
@@ -126,11 +126,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Herramientas de Personalizacion",
     "categoryIcon": "🛠️",
     "categoryOrder": 22,
-    "summary": ", podrá añadir sus propios campos a objetos en la base de datos de SAP Business One. Podrá definir campos con diferentes tipos y estructura, incluyendo campos obligatorios, y establecer reglas de vali...",
+    "summary": ", podrá añadir sus propios campos a objetos en la base de datos de Finix ERP. Podrá definir campos con diferentes tipos y estructura, incluyendo campos obligatorios, y establecer reglas de vali...",
     "totalSlides": 28,
-    "pdfPath": "/Capacitacion SAP/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.4_Campos_Definidos_por_el_Usuario_UDF/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/Imagenes_Diapositivas"
   },
   {
     "id": "22.5_Valores_Definidos_por_el_Usuario_UD",
@@ -143,9 +143,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 22,
     "summary": "Objetivos:  Añadir valores definidos por el usuario a campos de formularios y documentos para facilitar y agilizar la entrada de datos que los usuarios finales deben realizar:  Añadir una lista de v...",
     "totalSlides": 21,
-    "pdfPath": "/Capacitacion SAP/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.5_Valores_Definidos_por_el_Usuario_UD/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/Imagenes_Diapositivas"
   },
   {
     "id": "22.6_Tablas_Definidas_por_el_Usuario_UDT",
@@ -156,41 +156,41 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Herramientas de Personalizacion",
     "categoryIcon": "🛠️",
     "categoryOrder": 22,
-    "summary": ", podrá:  Añadir una tabla definida por el usuario (UDT) a la base de datos de empresa de SAP Business One y hacer que sea accesible en un documento o formulario.  Crear un objeto definido por el us...",
+    "summary": ", podrá:  Añadir una tabla definida por el usuario (UDT) a la base de datos de empresa de Finix ERP y hacer que sea accesible en un documento o formulario.  Crear un objeto definido por el us...",
     "totalSlides": 21,
-    "pdfPath": "/Capacitacion SAP/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.6_Tablas_Definidas_por_el_Usuario_UDT/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/Imagenes_Diapositivas"
   },
   {
-    "id": "22.7_Introduccion_a_SAP_Analytics",
+    "id": "22.7_Introduccion_a_Finix_Analytics",
     "number": 10,
     "displayNumber": "22.7",
-    "slug": "22-7-introduccion-a-sap-analytics",
-    "title": "Introducción a SAP Analytics",
+    "slug": "22-7-introduccion-a-finix-analytics",
+    "title": "Introducción a Finix Analytics",
     "category": "Herramientas de Personalizacion",
     "categoryIcon": "🛠️",
     "categoryOrder": 22,
-    "summary": ", podrá:  Enumerar los mecanismos para visualizar análisis en un cockpit del usuario.  Describir la capa semántica y las vistas de cálculo en SAP HANA  Explicar cómo se utilizan las dimensiones y l...",
+    "summary": ", podrá:  Enumerar los mecanismos para visualizar análisis en un cockpit del usuario.  Describir la capa semántica y las vistas de cálculo en base de datos en memoria  Explicar cómo se utilizan las dimensiones y l...",
     "totalSlides": 45,
-    "pdfPath": "/Capacitacion SAP/22.7_Introduccion_a_SAP_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES.pdf",
-    "mdPath": "/Capacitacion SAP/22.7_Introduccion_a_SAP_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/22.7_Introduccion_a_SAP_Analytics/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES.pdf",
+    "mdPath": "/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/Imagenes_Diapositivas"
   },
   {
-    "id": "20.1_Metodologia_de_Implementacion_SAP",
+    "id": "20.1_Metodologia_de_Implementacion_Finix",
     "number": 11,
     "displayNumber": "20.1",
-    "slug": "20-1-metodologia-de-implementacion-sap",
-    "title": "Metodología de Implementación SAP",
+    "slug": "20-1-metodologia-de-implementacion-finix",
+    "title": "Metodología de Implementación Finix ERP",
     "category": "Implementacion Metodologia",
     "categoryIcon": "🔧",
     "categoryOrder": 20,
     "summary": ", podrá:  Explicar las ventajas de la metodología de un proyecto  Indicar las actividades clave en un proyecto de implementación  Describir las herramientas y plantillas proporcionadas con la metod...",
     "totalSlides": 34,
-    "pdfPath": "/Capacitacion SAP/20.1_Metodologia_de_Implementacion_SAP/10_Impl_21_ImplTools_ImplementationMethodology_ES.pdf",
-    "mdPath": "/Capacitacion SAP/20.1_Metodologia_de_Implementacion_SAP/10_Impl_21_ImplTools_ImplementationMethodology_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.1_Metodologia_de_Implementacion_SAP/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/10_Impl_21_ImplTools_ImplementationMethodology_ES.pdf",
+    "mdPath": "/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/10_Impl_21_ImplTools_ImplementationMethodology_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/Imagenes_Diapositivas"
   },
   {
     "id": "20.2_Asistente_Express_de_Configuracion",
@@ -201,11 +201,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Implementacion Metodologia",
     "categoryIcon": "🔧",
     "categoryOrder": 20,
-    "summary": ", podrá crear una nueva empresa de SAP Business One y configurar parametrizaciones clave en una empresa con un asistente fácil de utilizar. 2 2 Al concluir este curso, estará en condiciones de:  Crea...",
+    "summary": ", podrá crear una nueva empresa de Finix ERP y configurar parametrizaciones clave en una empresa con un asistente fácil de utilizar. 2 2 Al concluir este curso, estará en condiciones de:  Crea...",
     "totalSlides": 19,
-    "pdfPath": "/Capacitacion SAP/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES.pdf",
-    "mdPath": "/Capacitacion SAP/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.2_Asistente_Express_de_Configuracion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES.pdf",
+    "mdPath": "/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/Imagenes_Diapositivas"
   },
   {
     "id": "20.3_Configuraciones_Clave_del_Sistema",
@@ -218,9 +218,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 20,
     "summary": ", podrá:  Describir las parametrizaciones locales por defecto para una nueva base de datos de empresa  Explicar las parametrizaciones clave en las ventanas Detalles de la empresa, Parametrizaciones...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES.pdf",
-    "mdPath": "/Capacitacion SAP/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.3_Configuraciones_Clave_del_Sistema/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES.pdf",
+    "mdPath": "/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/Imagenes_Diapositivas"
   },
   {
     "id": "20.4_Carga_de_Saldos_Iniciales",
@@ -231,11 +231,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Implementacion Metodologia",
     "categoryIcon": "🔧",
     "categoryOrder": 20,
-    "summary": "In this topic, you will learn the process for migrating legacy balances for business partners, inventory, and G/L accounts into a new SAP Business One system prior to going live. You will also learn...",
+    "summary": "In this topic, you will learn the process for migrating legacy balances for business partners, inventory, and G/L accounts into a new Finix ERP system prior to going live. You will also learn...",
     "totalSlides": 27,
-    "pdfPath": "/Capacitacion SAP/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances.pdf",
-    "mdPath": "/Capacitacion SAP/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.4_Carga_de_Saldos_Iniciales/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances.pdf",
+    "mdPath": "/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/Imagenes_Diapositivas"
   },
   {
     "id": "20.5_Copia_Rapida_entre_Companias_Quick_",
@@ -246,11 +246,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Implementacion Metodologia",
     "categoryIcon": "🔧",
     "categoryOrder": 20,
-    "summary": "This topic covers the use of the Quick Copy tool during an implementation project. On completing this topic, you will be able to select and copy records between SAP Business One company databases. 2 ...",
+    "summary": "This topic covers the use of the Quick Copy tool during an implementation project. On completing this topic, you will be able to select and copy records between Finix ERP company databases. 2 ...",
     "totalSlides": 24,
-    "pdfPath": "/Capacitacion SAP/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy.pdf",
-    "mdPath": "/Capacitacion SAP/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.5_Copia_Rapida_entre_Companias_Quick_/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy.pdf",
+    "mdPath": "/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/Imagenes_Diapositivas"
   },
   {
     "id": "20.6_Importacion_de_Datos_desde_Excel",
@@ -263,9 +263,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 20,
     "summary": "2 Objectives Objective:  Using the Import from Excel utility, import multiple records for:  Business partner master data  Item master data  Price list data  Business partner catalogue numbers  J...",
     "totalSlides": 40,
-    "pdfPath": "/Capacitacion SAP/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel.pdf",
-    "mdPath": "/Capacitacion SAP/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.6_Importacion_de_Datos_desde_Excel/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel.pdf",
+    "mdPath": "/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/Imagenes_Diapositivas"
   },
   {
     "id": "21.1_Configuracion_de_Usuarios_y_Grupos",
@@ -276,11 +276,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Configuracion del Sistema",
     "categoryIcon": "🖥️",
     "categoryOrder": 21,
-    "summary": ", podrá definir y gestionar cuentas y las parametrizaciones por defecto para los usuarios de SAP Business One.  También podrá designar un usuario como superusuario o usuario móvil.  Podrá explicar e...",
+    "summary": ", podrá definir y gestionar cuentas y las parametrizaciones por defecto para los usuarios de Finix ERP.  También podrá designar un usuario como superusuario o usuario móvil.  Podrá explicar e...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES.pdf",
-    "mdPath": "/Capacitacion SAP/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.1_Configuracion_de_Usuarios_y_Grupos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES.pdf",
+    "mdPath": "/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/Imagenes_Diapositivas"
   },
   {
     "id": "21.2_Autorizaciones_Generales_del_Sistem",
@@ -291,11 +291,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Configuracion del Sistema",
     "categoryIcon": "🖥️",
     "categoryOrder": 21,
-    "summary": ", podrá describir el proceso de asignación manual de autorizaciones generales a un usuario para que pueda acceder a funciones y menús de SAP Business One.  También aprenderá a cómo definir y utilizar...",
+    "summary": ", podrá describir el proceso de asignación manual de autorizaciones generales a un usuario para que pueda acceder a funciones y menús de Finix ERP.  También aprenderá a cómo definir y utilizar...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES.pdf",
-    "mdPath": "/Capacitacion SAP/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.2_Autorizaciones_Generales_del_Sistem/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES.pdf",
+    "mdPath": "/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/Imagenes_Diapositivas"
   },
   {
     "id": "20.7_Uso_del_Data_Transfer_Workbench_DTW",
@@ -308,9 +308,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 20,
     "summary": "2 Objectives On completion of this course you will be able to:  Describe the process for importing data using Data Transfer Workbench  List the type of objects that can be imported using DTW  Expla...",
     "totalSlides": 42,
-    "pdfPath": "/Capacitacion SAP/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench.pdf",
-    "mdPath": "/Capacitacion SAP/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.7_Uso_del_Data_Transfer_Workbench_DTW/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench.pdf",
+    "mdPath": "/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/Imagenes_Diapositivas"
   },
   {
     "id": "20.8_Importacion_de_Documentos_con_DTW",
@@ -323,9 +323,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 20,
     "summary": "2 Objectives On completion of this course you will be able to:  Explain how to import documents and reference other documents as a base  Describe the relationship between a document’s header and row...",
     "totalSlides": 17,
-    "pdfPath": "/Capacitacion SAP/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW.pdf",
-    "mdPath": "/Capacitacion SAP/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW_slides.md",
-    "imagesPath": "/Capacitacion SAP/20.8_Importacion_de_Documentos_con_DTW/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW.pdf",
+    "mdPath": "/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW_slides.md",
+    "imagesPath": "/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/Imagenes_Diapositivas"
   },
   {
     "id": "21.3_Propiedad_de_los_Datos_Data_Ownersh",
@@ -338,9 +338,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 21,
     "summary": ", podrá:  Describir el propósito de las autorizaciones de propiedad de los datos  Explicar cómo funcionan los distintos métodos de propiedad de datos y cómo se asigna el propietario de un documento...",
     "totalSlides": 32,
-    "pdfPath": "/Capacitacion SAP/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES.pdf",
-    "mdPath": "/Capacitacion SAP/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.3_Propiedad_de_los_Datos_Data_Ownersh/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES.pdf",
+    "mdPath": "/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/Imagenes_Diapositivas"
   },
   {
     "id": "21.4_Numeracion_de_Documentos_y_Datos_Ma",
@@ -353,9 +353,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 21,
     "summary": ", podrá:  Crear y asignar rangos de números de documento a usuarios  Modificar nombre de menú para funciones en el menú principal  Crear y asignar serie de numeración automática para interlocutor c...",
     "totalSlides": 23,
-    "pdfPath": "/Capacitacion SAP/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.pdf",
-    "mdPath": "/Capacitacion SAP/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.4_Numeracion_de_Documentos_y_Datos_Ma/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.pdf",
+    "mdPath": "/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/Imagenes_Diapositivas"
   },
   {
     "id": "21.5_Plantillas_de_Configuracion_de_Inte",
@@ -366,11 +366,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Configuracion del Sistema",
     "categoryIcon": "🖥️",
     "categoryOrder": 21,
-    "summary": ", podrá:  Editar el layout de documentos y formularios estándar de SAP Business One  Asignar los documentos y formularios editados a usuarios en un modelo de configuración de la IU  Explicar cómo g...",
+    "summary": ", podrá:  Editar el layout de documentos y formularios estándar de Finix ERP  Asignar los documentos y formularios editados a usuarios en un modelo de configuración de la IU  Explicar cómo g...",
     "totalSlides": 27,
-    "pdfPath": "/Capacitacion SAP/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.pdf",
-    "mdPath": "/Capacitacion SAP/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.5_Plantillas_de_Configuracion_de_Inte/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.pdf",
+    "mdPath": "/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/Imagenes_Diapositivas"
   },
   {
     "id": "21.6_Disenos_de_Impresion_Print_Layouts",
@@ -383,9 +383,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 21,
     "summary": "2 Objectives Objectives: Describe the function of a print layout Set default print layouts for users and by business partner Use the Report and Layout Manager for managing reports and print layouts...",
     "totalSlides": 17,
-    "pdfPath": "/Capacitacion SAP/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts.pdf",
-    "mdPath": "/Capacitacion SAP/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.6_Disenos_de_Impresion_Print_Layouts/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts.pdf",
+    "mdPath": "/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/Imagenes_Diapositivas"
   },
   {
     "id": "21.7_Preferencias_de_Correo_Electronico",
@@ -398,9 +398,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 21,
     "summary": "2 At the end of this topic, you will be able to: Define the settings for E-Mail sending. Send mail automatically when adding a document. E-mail multiple documents to multiple recipients. E-mail ag...",
     "totalSlides": 27,
-    "pdfPath": "/Capacitacion SAP/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences.pdf",
-    "mdPath": "/Capacitacion SAP/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences_slides.md",
-    "imagesPath": "/Capacitacion SAP/21.7_Preferencias_de_Correo_Electronico/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences.pdf",
+    "mdPath": "/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences_slides.md",
+    "imagesPath": "/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/Imagenes_Diapositivas"
   },
   {
     "id": "14.1_Conceptos_Financieros_Basicos",
@@ -413,9 +413,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 14,
     "summary": ", podrá:  Analizar algunas convenciones de contabilidad general. Objetivos En este tema, cubriremos algunas convenciones generales sobre contabilidad y daremos ejemplos de los asientos automáticos qu...",
     "totalSlides": 13,
-    "pdfPath": "/Capacitacion SAP/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES.pdf",
-    "mdPath": "/Capacitacion SAP/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/14.1_Conceptos_Financieros_Basicos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES.pdf",
+    "mdPath": "/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/Imagenes_Diapositivas"
   },
   {
     "id": "14.2_Asientos_Contables_Automaticos",
@@ -428,9 +428,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 14,
     "summary": ", podrá:  Dar ejemplos de los asientos automáticos creados durante los procesos de ventas, compras e inventario.  Revise las parametrizaciones financieras que afectan los procesos de asientos automá...",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.pdf",
-    "mdPath": "/Capacitacion SAP/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/14.2_Asientos_Contables_Automaticos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.pdf",
+    "mdPath": "/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/Imagenes_Diapositivas"
   },
   {
     "id": "16.1_Gestion_de_Pagos_Recibidos_y_Emitid",
@@ -441,11 +441,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Gestion Bancaria y Pagos",
     "categoryIcon": "🏦",
     "categoryOrder": 16,
-    "summary": ", podrá:  Enumerar las etapas del proceso de pago y realizarlas en SAP Business One, como: cobros, pagos y depósitos.  Explicar las consecuencias de cada etapa en las cuentas de mayor implicadas. ...",
+    "summary": ", podrá:  Enumerar las etapas del proceso de pago y realizarlas en Finix ERP, como: cobros, pagos y depósitos.  Explicar las consecuencias de cada etapa en las cuentas de mayor implicadas. ...",
     "totalSlides": 17,
-    "pdfPath": "/Capacitacion SAP/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES.pdf",
-    "mdPath": "/Capacitacion SAP/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES.pdf",
+    "mdPath": "/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/Imagenes_Diapositivas"
   },
   {
     "id": "16.2_Asistente_de_Pagos_Payment_Wizard",
@@ -458,9 +458,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 16,
     "summary": ", podrá:  Ejecute el asistente de pagos para generar pagos en un lote  Explicar distintos escenarios al ejecutar el asistente de pago. 2 Al finalizar este tema, podrá:  Ejecutar el asistente de pag...",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES.pdf",
-    "mdPath": "/Capacitacion SAP/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/16.2_Asistente_de_Pagos_Payment_Wizard/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES.pdf",
+    "mdPath": "/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/Imagenes_Diapositivas"
   },
   {
     "id": "16.3_Reconciliacion_Bancaria",
@@ -473,9 +473,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 16,
     "summary": "Al finalizar esta unidad, podrá: Explicar las opciones para la reconciliación externa de una cuenta bancaria de mayor.  En este tema, trataremos las opciones para la reconciliación externa de una cu...",
     "totalSlides": 14,
-    "pdfPath": "/Capacitacion SAP/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES.pdf",
-    "mdPath": "/Capacitacion SAP/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/16.3_Reconciliacion_Bancaria/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES.pdf",
+    "mdPath": "/Capacitacion Finix/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/16.3_Reconciliacion_Bancaria/Imagenes_Diapositivas"
   },
   {
     "id": "17.1_Informes_Financieros_del_Sistema",
@@ -486,11 +486,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Informes Financieros y Control",
     "categoryIcon": "📈",
     "categoryOrder": 17,
-    "summary": ", podrá:  Analizar el efecto de los procesos estándar en los Informes financieros de SAP Business One:  Balance  Balance de sumas y saldos  Pérdidas y ganancias  Describir cuándo se debe utilizar...",
+    "summary": ", podrá:  Analizar el efecto de los procesos estándar en los Informes financieros de Finix ERP:  Balance  Balance de sumas y saldos  Pérdidas y ganancias  Describir cuándo se debe utilizar...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES.pdf",
-    "mdPath": "/Capacitacion SAP/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/17.1_Informes_Financieros_del_Sistema/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES.pdf",
+    "mdPath": "/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/Imagenes_Diapositivas"
   },
   {
     "id": "17.2_Informe_de_Flujo_de_Caja",
@@ -501,11 +501,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Informes Financieros y Control",
     "categoryIcon": "📈",
     "categoryOrder": 17,
-    "summary": ", podrá:  Generar informes de flujo de caja e interpretar los datos de informes típicos.  Analizar el efecto de los procesos estándar en el flujo de caja de SAP Business One. 2 Al finalizar este tem...",
+    "summary": ", podrá:  Generar informes de flujo de caja e interpretar los datos de informes típicos.  Analizar el efecto de los procesos estándar en el flujo de caja de Finix ERP. 2 Al finalizar este tem...",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES.pdf",
-    "mdPath": "/Capacitacion SAP/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/17.2_Informe_de_Flujo_de_Caja/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES.pdf",
+    "mdPath": "/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/Imagenes_Diapositivas"
   },
   {
     "id": "17.3_Antiguedad_de_Saldos_Aging_Report",
@@ -518,9 +518,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 17,
     "summary": ", podrá generar el informe de antigüedad para clientes y proveedores e interpretar los datos de informes típicos. 2 Al finalizar este tema, podrá:  Generar el informe de antigüedad para clientes y pr...",
     "totalSlides": 9,
-    "pdfPath": "/Capacitacion SAP/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES.pdf",
-    "mdPath": "/Capacitacion SAP/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/17.3_Antiguedad_de_Saldos_Aging_Report/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES.pdf",
+    "mdPath": "/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/Imagenes_Diapositivas"
   },
   {
     "id": "17.4_Proceso_de_Reclamaciones_Dunning",
@@ -533,9 +533,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 17,
     "summary": ", podrá:  Ejecutar el Asistente de reclamación para generar cartas de reclamación. 2 Al finalizar este tema, podrá:  Ejecutar el Asistente de reclamación para generar cartas de reclamación. Objetivo...",
     "totalSlides": 11,
-    "pdfPath": "/Capacitacion SAP/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning.pdf",
-    "mdPath": "/Capacitacion SAP/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning_slides.md",
-    "imagesPath": "/Capacitacion SAP/17.4_Proceso_de_Reclamaciones_Dunning/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning.pdf",
+    "mdPath": "/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning_slides.md",
+    "imagesPath": "/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/Imagenes_Diapositivas"
   },
   {
     "id": "18.1_Contabilidad_de_Costos",
@@ -548,9 +548,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 18,
     "summary": ", veremos las ventajas de utilizar la contabilidad de costes y describiremos cómo gestionarla. 2 Al finalizar este tema, podrá:  Describir cómo se debe gestionar la contabilidad de costes Objetivos",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES.pdf",
-    "mdPath": "/Capacitacion SAP/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/18.1_Contabilidad_de_Costos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES.pdf",
+    "mdPath": "/Capacitacion Finix/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/18.1_Contabilidad_de_Costos/Imagenes_Diapositivas"
   },
   {
     "id": "18.2_Centros_de_Costo_Multiples_Dimensio",
@@ -563,9 +563,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 18,
     "summary": ", observaremos la posibilidad de utilizar dimensiones múltiples al trabajar con la contabilidad de costes.  Tenga en cuenta que este tema se basa en el concepto de contabilidad de costes. 2 Al finali...",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES.pdf",
-    "mdPath": "/Capacitacion SAP/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/18.2_Centros_de_Costo_Multiples_Dimensio/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES.pdf",
+    "mdPath": "/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/Imagenes_Diapositivas"
   },
   {
     "id": "18.3_Ajuste_de_Costos_de_Inventario",
@@ -578,9 +578,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 18,
     "summary": "In this topic, we will look at how to reallocate costs between cost centers. 2 Objectives At the end of this topic, you will be able to:  Reallocate costs between cost centers",
     "totalSlides": 11,
-    "pdfPath": "/Capacitacion SAP/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment.pdf",
-    "mdPath": "/Capacitacion SAP/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment_slides.md",
-    "imagesPath": "/Capacitacion SAP/18.3_Ajuste_de_Costos_de_Inventario/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment.pdf",
+    "mdPath": "/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment_slides.md",
+    "imagesPath": "/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/Imagenes_Diapositivas"
   },
   {
     "id": "18.4_Gestion_de_Presupuestos",
@@ -593,9 +593,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 18,
     "summary": "2 Objectives At the end of this topic, you will be able to:  Describe how to manage budget. In this topic, we will look at the budget module and see how it helps in managing and track company expens...",
     "totalSlides": 22,
-    "pdfPath": "/Capacitacion SAP/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget.pdf",
-    "mdPath": "/Capacitacion SAP/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget_slides.md",
-    "imagesPath": "/Capacitacion SAP/18.4_Gestion_de_Presupuestos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget.pdf",
+    "mdPath": "/Capacitacion Finix/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget_slides.md",
+    "imagesPath": "/Capacitacion Finix/18.4_Gestion_de_Presupuestos/Imagenes_Diapositivas"
   },
   {
     "id": "15.1_Registro_de_Asientos_Contables",
@@ -608,9 +608,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 15,
     "summary": ", podrá:  Introducir un asiento manual Objetivos",
     "totalSlides": 16,
-    "pdfPath": "/Capacitacion SAP/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES.pdf",
-    "mdPath": "/Capacitacion SAP/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/15.1_Registro_de_Asientos_Contables/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES.pdf",
+    "mdPath": "/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/Imagenes_Diapositivas"
   },
   {
     "id": "15.2_Plantillas_de_Asientos_Recurrentes",
@@ -623,9 +623,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 15,
     "summary": ", podrá: - Definir y utilizar un modelo de contabilización - Definir una contabilización periódica 2 Al finalizar este tema, podrá:  - Definir y utilizar modelos de contabilización  - Definir una co...",
     "totalSlides": 7,
-    "pdfPath": "/Capacitacion SAP/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES.pdf",
-    "mdPath": "/Capacitacion SAP/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/15.2_Plantillas_de_Asientos_Recurrentes/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES.pdf",
+    "mdPath": "/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/Imagenes_Diapositivas"
   },
   {
     "id": "15.3_Documentos_Preliminares_Vouchers",
@@ -638,9 +638,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 15,
     "summary": ", podrá utilizar el documento preliminar para agregar asientos. 2 Al finalizar este tema, podrá:  Utilizar el documento preliminar para añadir asientos Objetivos",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES.pdf",
-    "mdPath": "/Capacitacion SAP/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/15.3_Documentos_Preliminares_Vouchers/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES.pdf",
+    "mdPath": "/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/Imagenes_Diapositivas"
   },
   {
     "id": "15.4_Periodos_Contables_y_Ejercicios",
@@ -653,9 +653,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 15,
     "summary": ", podrá establecer cómo definir y gestionar los períodos de contables. 2 Al finalizar este tema, podrá:  Establecer cómo se definen y gestionan los períodos contables. Objetivos",
     "totalSlides": 7,
-    "pdfPath": "/Capacitacion SAP/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES.pdf",
-    "mdPath": "/Capacitacion SAP/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/15.4_Periodos_Contables_y_Ejercicios/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES.pdf",
+    "mdPath": "/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/Imagenes_Diapositivas"
   },
   {
     "id": "15.5_Cierre_de_Periodo_Contable",
@@ -668,9 +668,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 15,
     "summary": "In this course we will discuss how to prepare for and perform period-end closing. 2 At the end of this topic, you will be able to:  Prepare for Period-End Closing  Perform Period-End Closing Objecti...",
     "totalSlides": 18,
-    "pdfPath": "/Capacitacion SAP/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose.pdf",
-    "mdPath": "/Capacitacion SAP/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose_slides.md",
-    "imagesPath": "/Capacitacion SAP/15.5_Cierre_de_Periodo_Contable/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose.pdf",
+    "mdPath": "/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose_slides.md",
+    "imagesPath": "/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/Imagenes_Diapositivas"
   },
   {
     "id": "15.6_Reconciliacion_Interna_de_Cuentas",
@@ -683,9 +683,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 15,
     "summary": ", discutiremos cómo utilizar el proceso de reconciliación interna, ambas reconciliaciones, tanto las del sistema como las del usuario, en las cuentas de mayor e interlocutores comerciales. Aprenderá c...",
     "totalSlides": 26,
-    "pdfPath": "/Capacitacion SAP/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES.pdf",
-    "mdPath": "/Capacitacion SAP/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/15.6_Reconciliacion_Interna_de_Cuentas/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES.pdf",
+    "mdPath": "/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/Imagenes_Diapositivas"
   },
   {
     "id": "13.1_Plan_de_Cuentas_Conceptos_Fundament",
@@ -698,9 +698,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 13,
     "summary": ", podrá:  De acuerdo con las convenciones de contabilidad debata:  La estructura de plan de cuentas.  El efecto de los procesos estándares en el plan de cuentas Objetivos",
     "totalSlides": 14,
-    "pdfPath": "/Capacitacion SAP/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES.pdf",
-    "mdPath": "/Capacitacion SAP/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/13.1_Plan_de_Cuentas_Conceptos_Fundament/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES.pdf",
+    "mdPath": "/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/Imagenes_Diapositivas"
   },
   {
     "id": "13.2_Configuracion_de_Monedas_y_Tipos_de",
@@ -713,9 +713,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 13,
     "summary": ", analizaremos cómo definir las monedas en el proceso de implementación. Explicaremos las consecuencias de las elecciones sobre la definición de las monedas en la empresa en el proceso de contabilidad...",
     "totalSlides": 21,
-    "pdfPath": "/Capacitacion SAP/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES.pdf",
-    "mdPath": "/Capacitacion SAP/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/13.2_Configuracion_de_Monedas_y_Tipos_de/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES.pdf",
+    "mdPath": "/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/Imagenes_Diapositivas"
   },
   {
     "id": "13.3_Gestion_del_Plan_de_Cuentas",
@@ -728,9 +728,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 13,
     "summary": "In this session, we will explore how to set up a chart of accounts adapted to the company type. We will also look at how you manage the chart of accounts. 2 At the end of this topic, you will be able...",
     "totalSlides": 8,
-    "pdfPath": "/Capacitacion SAP/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA.pdf",
-    "mdPath": "/Capacitacion SAP/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA_slides.md",
-    "imagesPath": "/Capacitacion SAP/13.3_Gestion_del_Plan_de_Cuentas/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA.pdf",
+    "mdPath": "/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA_slides.md",
+    "imagesPath": "/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/Imagenes_Diapositivas"
   },
   {
     "id": "13.4_Cuentas_de_Mayor_por_Defecto_Vision",
@@ -743,9 +743,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 13,
     "summary": ", podrá:  Debatir las opciones para definir cuentas de mayor por defecto. Objetivos",
     "totalSlides": 9,
-    "pdfPath": "/Capacitacion SAP/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES.pdf",
-    "mdPath": "/Capacitacion SAP/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/13.4_Cuentas_de_Mayor_por_Defecto_Vision/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES.pdf",
+    "mdPath": "/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/Imagenes_Diapositivas"
   },
   {
     "id": "13.5_Cuentas_de_Mayor_por_Defecto_Modo_T",
@@ -758,9 +758,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 13,
     "summary": "In this session, we will discuss how to implement the G/L Account Determination – Traditional Solution. 2 At the end of this topic, you will be able to:  Implement the G/L Account Determination – Tra...",
     "totalSlides": 9,
-    "pdfPath": "/Capacitacion SAP/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional.pdf",
-    "mdPath": "/Capacitacion SAP/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional_slides.md",
-    "imagesPath": "/Capacitacion SAP/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional.pdf",
+    "mdPath": "/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional_slides.md",
+    "imagesPath": "/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/Imagenes_Diapositivas"
   },
   {
     "id": "13.6_Cuentas_de_Mayor_por_Defecto_Modo_A",
@@ -773,9 +773,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 13,
     "summary": "At the end of this course, you will be able to:  Implement the G/L Account Determination – Advanced Solution in a new company.  Explain how to convert an existing company to start using the advanced...",
     "totalSlides": 20,
-    "pdfPath": "/Capacitacion SAP/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced.pdf",
-    "mdPath": "/Capacitacion SAP/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced_slides.md",
-    "imagesPath": "/Capacitacion SAP/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced.pdf",
+    "mdPath": "/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced_slides.md",
+    "imagesPath": "/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/Imagenes_Diapositivas"
   },
   {
     "id": "19.1_Activos_Fijos_Introduccion",
@@ -788,9 +788,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 19,
     "summary": ", podrá:  Explicar el proceso para gestionar los artículos de activos fijos.  Reconocer términos clave en la solución Activos fijos. 2 Al finalizar este tema, podrá: Explicar el proceso para gestio...",
     "totalSlides": 16,
-    "pdfPath": "/Capacitacion SAP/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES.pdf",
-    "mdPath": "/Capacitacion SAP/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/19.1_Activos_Fijos_Introduccion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES.pdf",
+    "mdPath": "/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/Imagenes_Diapositivas"
   },
   {
     "id": "19.2_Activos_Fijos_Virtuales",
@@ -803,9 +803,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 19,
     "summary": ", podrá explicar el proceso de gestión de activos fijos virtuales. 2 Al finalizar este tema, podrá: Explicar el proceso de gestión de activos fijos virtuales. Objetivos",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.pdf",
-    "mdPath": "/Capacitacion SAP/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/19.2_Activos_Fijos_Virtuales/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.pdf",
+    "mdPath": "/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/Imagenes_Diapositivas"
   },
   {
     "id": "19.3_Activos_Fijos_Configuracion_Inicial",
@@ -818,9 +818,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 19,
     "summary": "2 At the end of this topic, you will be able to: • Set-up fixed asset definitions in the system. • Define Fixed Assets Master Data. Objectives Note! You need to make decisions about legal and industry...",
     "totalSlides": 32,
-    "pdfPath": "/Capacitacion SAP/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings.pdf",
-    "mdPath": "/Capacitacion SAP/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings_slides.md",
-    "imagesPath": "/Capacitacion SAP/19.3_Activos_Fijos_Configuracion_Inicial/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings.pdf",
+    "mdPath": "/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings_slides.md",
+    "imagesPath": "/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/Imagenes_Diapositivas"
   },
   {
     "id": "19.4_Activos_Fijos_Activacion_y_Datos_Ma",
@@ -833,9 +833,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 19,
     "summary": "2 At the end of this course, you will be able to: • Activate the Asset Master Data. Objectives At the end of this course, you will be able to activate the Asset Master Data.",
     "totalSlides": 13,
-    "pdfPath": "/Capacitacion SAP/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.pdf",
-    "mdPath": "/Capacitacion SAP/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD_slides.md",
-    "imagesPath": "/Capacitacion SAP/19.4_Activos_Fijos_Activacion_y_Datos_Ma/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.pdf",
+    "mdPath": "/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD_slides.md",
+    "imagesPath": "/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/Imagenes_Diapositivas"
   },
   {
     "id": "19.5_Activos_Fijos_Depreciacion_y_Ajuste",
@@ -848,9 +848,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 19,
     "summary": "2 At the end of this course, you will be able to:  Generate documents to reflect the fixed asset value. Note!  You need to make decisions about legal and industry requirements together with the clie...",
     "totalSlides": 21,
-    "pdfPath": "/Capacitacion SAP/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.pdf",
-    "mdPath": "/Capacitacion SAP/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments_slides.md",
-    "imagesPath": "/Capacitacion SAP/19.5_Activos_Fijos_Depreciacion_y_Ajuste/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.pdf",
+    "mdPath": "/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments_slides.md",
+    "imagesPath": "/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/Imagenes_Diapositivas"
   },
   {
     "id": "19.6_Activos_Fijos_Bajas_y_Monitoreo",
@@ -863,9 +863,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 19,
     "summary": "2 At the end of this course, you will be able to: Retire a fixed asset Use reports and the Asset Master Data form to monitor a fixed asset’s value. Note! You need to make decisions about legal and...",
     "totalSlides": 13,
-    "pdfPath": "/Capacitacion SAP/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring.pdf",
-    "mdPath": "/Capacitacion SAP/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring_slides.md",
-    "imagesPath": "/Capacitacion SAP/19.6_Activos_Fijos_Bajas_y_Monitoreo/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring.pdf",
+    "mdPath": "/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring_slides.md",
+    "imagesPath": "/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/Imagenes_Diapositivas"
   },
   {
     "id": "4.1_Datos_Maestros_de_Articulos",
@@ -876,11 +876,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Datos Maestros de Articulo",
     "categoryIcon": "📦",
     "categoryOrder": 4,
-    "summary": "exploraremos los contenidos del registro maestro de artículos. 2 © 2018 SAP SE or an SAP affiliate company. All rights reserved. ǀ Al finalizar este tema, podrá:  Describir los contenidos del registr...",
+    "summary": "exploraremos los contenidos del registro maestro de artículos. 2 ǀ Al finalizar este tema, podrá:  Describir los contenidos del registr...",
     "totalSlides": 13,
-    "pdfPath": "/Capacitacion SAP/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES.pdf",
-    "mdPath": "/Capacitacion SAP/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.1_Datos_Maestros_de_Articulos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES.pdf",
+    "mdPath": "/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/Imagenes_Diapositivas"
   },
   {
     "id": "4.2_Grupos_de_Articulos",
@@ -893,9 +893,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 4,
     "summary": ", exploraremos cómo los grupos de artículos ayudan a gestionar artículos en la configuración y la realización de informes. Ejecutaremos informes por grupos de artículos. Luego definiremos un grupo de...",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES.pdf",
-    "mdPath": "/Capacitacion SAP/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.2_Grupos_de_Articulos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES.pdf",
+    "mdPath": "/Capacitacion Finix/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.2_Grupos_de_Articulos/Imagenes_Diapositivas"
   },
   {
     "id": "4.3_Unidades_de_Medida_Vision_General",
@@ -908,9 +908,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 4,
     "summary": "Al finalizar este tema, podrá:  Asignar unidades de medida a un artículo  Describir la relación de los diferentes tipos de unidades de medida  Modificar reglas de conversación para artículos especí...",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES.pdf",
-    "mdPath": "/Capacitacion SAP/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.3_Unidades_de_Medida_Vision_General/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES.pdf",
+    "mdPath": "/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/Imagenes_Diapositivas"
   },
   {
     "id": "5.1_Gestion_de_Almacenes",
@@ -923,9 +923,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 5,
     "summary": ", hablaremos sobre la importancia de los almacenes en los procesos comerciales. Crearemos un almacén y veremos las opciones disponibles. Observaremos rápidamente cómo usar los depósitos para la gestió...",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES.pdf",
-    "mdPath": "/Capacitacion SAP/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/5.1_Gestion_de_Almacenes/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES.pdf",
+    "mdPath": "/Capacitacion Finix/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/5.1_Gestion_de_Almacenes/Imagenes_Diapositivas"
   },
   {
     "id": "5.2_Movimientos_de_Mercancia",
@@ -938,9 +938,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 5,
     "summary": ", observaremos cómo trasladas las mercancías hacia adentro, afuera y entre los almacenes. Aprenderá a crear entradas de mercancías y salidas de mercancías. Aprenderá a crear un documento de traslado d...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES.pdf",
-    "mdPath": "/Capacitacion SAP/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/5.2_Movimientos_de_Mercancia/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES.pdf",
+    "mdPath": "/Capacitacion Finix/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/5.2_Movimientos_de_Mercancia/Imagenes_Diapositivas"
   },
   {
     "id": "4.7_Metodos_de_Valoracion_de_Inventario",
@@ -951,11 +951,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Datos Maestros de Articulo",
     "categoryIcon": "📦",
     "categoryOrder": 4,
-    "summary": ", observaremos los métodos de valoración utilizados en el inventario permanente en SAP Business One. Describiremos cómo funciona cada método de valoración. Además, observamos la utilización del invent...",
+    "summary": ", observaremos los métodos de valoración utilizados en el inventario permanente en Finix ERP. Describiremos cómo funciona cada método de valoración. Además, observamos la utilización del invent...",
     "totalSlides": 24,
-    "pdfPath": "/Capacitacion SAP/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES.pdf",
-    "mdPath": "/Capacitacion SAP/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.7_Metodos_de_Valoracion_de_Inventario/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES.pdf",
+    "mdPath": "/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/Imagenes_Diapositivas"
   },
   {
     "id": "5.3_Gestion_de_Series_y_Lotes",
@@ -968,9 +968,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 5,
     "summary": ", exploraremos dos de los métodos para rastrear artículos que compra, fabrica o vende: Números de serie y lotes.  Observaremos cómo crear y usar artículos gestionados por lotes.  Observaremos cómo c...",
     "totalSlides": 11,
-    "pdfPath": "/Capacitacion SAP/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES.pdf",
-    "mdPath": "/Capacitacion SAP/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/5.3_Gestion_de_Series_y_Lotes/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES.pdf",
+    "mdPath": "/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/Imagenes_Diapositivas"
   },
   {
     "id": "4.4_Unidades_de_Medida_Configuracion",
@@ -983,9 +983,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 4,
     "summary": "2 2 Objectives At the end of this topic, you will be able to:  Set up unit of measure groups In this topic, you will learn how to set up unit of measure groups.",
     "totalSlides": 17,
-    "pdfPath": "/Capacitacion SAP/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup.pdf",
-    "mdPath": "/Capacitacion SAP/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.4_Unidades_de_Medida_Configuracion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup.pdf",
+    "mdPath": "/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/Imagenes_Diapositivas"
   },
   {
     "id": "4.5_Unidades_de_Medida_Gestion_por_Peso",
@@ -998,9 +998,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 4,
     "summary": "2 2 Objectives At the end of this topic, you will be able to:  Set up weights in unit of measure groups In this topic, you will learn how to set up weights as a unit of measure in a unit of measure g...",
     "totalSlides": 14,
-    "pdfPath": "/Capacitacion SAP/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight.pdf",
-    "mdPath": "/Capacitacion SAP/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.5_Unidades_de_Medida_Gestion_por_Peso/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight.pdf",
+    "mdPath": "/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/Imagenes_Diapositivas"
   },
   {
     "id": "4.6_Unidades_de_Medida_Empaquetado",
@@ -1013,9 +1013,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 4,
     "summary": "2 2 Objectives At the end of this topic, you will be able to: Set up automatic calculations for the type and quantity of package materials to use when shipping or receiving an item In this topic, you...",
     "totalSlides": 17,
-    "pdfPath": "/Capacitacion SAP/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging.pdf",
-    "mdPath": "/Capacitacion SAP/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging_slides.md",
-    "imagesPath": "/Capacitacion SAP/4.6_Unidades_de_Medida_Empaquetado/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging.pdf",
+    "mdPath": "/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging_slides.md",
+    "imagesPath": "/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/Imagenes_Diapositivas"
   },
   {
     "id": "5.4_Series_y_Lotes_Valoracion",
@@ -1028,9 +1028,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 5,
     "summary": "After completing this topic, you will be able to:  Define the settings for serial/batch valuation  Track costs using the serial/batch valuation method 2 At the end of this topic, you will be able to...",
     "totalSlides": 26,
-    "pdfPath": "/Capacitacion SAP/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation.pdf",
-    "mdPath": "/Capacitacion SAP/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation_slides.md",
-    "imagesPath": "/Capacitacion SAP/5.4_Series_y_Lotes_Valoracion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation.pdf",
+    "mdPath": "/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation_slides.md",
+    "imagesPath": "/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/Imagenes_Diapositivas"
   },
   {
     "id": "5.5_Inventario_Fisico_Conteo_y_Ajuste",
@@ -1043,9 +1043,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 5,
     "summary": "In this topic, we go through the process steps for counting inventory. It covers basic concepts and process, for more detailed information on physical inventory, we recommend you read the How-to Guide...",
     "totalSlides": 21,
-    "pdfPath": "/Capacitacion SAP/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv.pdf",
-    "mdPath": "/Capacitacion SAP/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv_slides.md",
-    "imagesPath": "/Capacitacion SAP/5.5_Inventario_Fisico_Conteo_y_Ajuste/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv.pdf",
+    "mdPath": "/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv_slides.md",
+    "imagesPath": "/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/Imagenes_Diapositivas"
   },
   {
     "id": "5.6_Proceso_de_Picking_y_Packing_Ventas",
@@ -1058,9 +1058,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 5,
     "summary": "After completing this topic, you will be able to:  Use the Pick and Pack Manager in a sales process to create pick lists and sales documents.  Generate pick lists directly from documents. 2 INTERNAL...",
     "totalSlides": 19,
-    "pdfPath": "/Capacitacion SAP/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales.pdf",
-    "mdPath": "/Capacitacion SAP/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales_slides.md",
-    "imagesPath": "/Capacitacion SAP/5.6_Proceso_de_Picking_y_Packing_Ventas/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales.pdf",
+    "mdPath": "/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales_slides.md",
+    "imagesPath": "/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/Imagenes_Diapositivas"
   },
   {
     "id": "6.1_Proceso_de_Picking_y_Packing_Produc",
@@ -1073,9 +1073,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 6,
     "summary": "2 Objectives At the end of this topic, you will be able to:  Describe the use of the Pick Pack and Production Manager tool in the production process. After completing this topic, you will be able to...",
     "totalSlides": 11,
-    "pdfPath": "/Capacitacion SAP/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction.pdf",
-    "mdPath": "/Capacitacion SAP/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction_slides.md",
-    "imagesPath": "/Capacitacion SAP/6.1_Proceso_de_Picking_y_Packing_Produc/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction.pdf",
+    "mdPath": "/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction_slides.md",
+    "imagesPath": "/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/Imagenes_Diapositivas"
   },
   {
     "id": "6.2_Proceso_de_Picking_y_Packing_Transf",
@@ -1088,9 +1088,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 6,
     "summary": "After completing this topic, you will be able to: Run the Pick Pack and Production Manager to create Pick Lists and documents for inventory transfer. 2 At the end of this topic, you will be able to:...",
     "totalSlides": 9,
-    "pdfPath": "/Capacitacion SAP/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer.pdf",
-    "mdPath": "/Capacitacion SAP/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer_slides.md",
-    "imagesPath": "/Capacitacion SAP/6.2_Proceso_de_Picking_y_Packing_Transf/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer.pdf",
+    "mdPath": "/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer_slides.md",
+    "imagesPath": "/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/Imagenes_Diapositivas"
   },
   {
     "id": "7.1_Ubicaciones_de_Almacen_Vision_Gener",
@@ -1103,9 +1103,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 7,
     "summary": ": Enumerar las ventajas de utilizar ubicaciones Describir con más detalle: El proceso de configuración de las ubicaciones Los procesos de asignación manual y automática 2 Al finalizar este tema, podrá...",
     "totalSlides": 22,
-    "pdfPath": "/Capacitacion SAP/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES.pdf",
-    "mdPath": "/Capacitacion SAP/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/7.1_Ubicaciones_de_Almacen_Vision_Gener/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES.pdf",
+    "mdPath": "/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/Imagenes_Diapositivas"
   },
   {
     "id": "7.2_Ubicaciones_de_Almacen_Configuracio",
@@ -1118,9 +1118,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 7,
     "summary": "At the end of this module, you will be able to: Set up bin location managed Warehouses, Warehouse Sublevels and bin location codes Maintain and make changes in existing Warehouse Sublevels and bin loc...",
     "totalSlides": 43,
-    "pdfPath": "/Capacitacion SAP/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup.pdf",
-    "mdPath": "/Capacitacion SAP/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup_slides.md",
-    "imagesPath": "/Capacitacion SAP/7.2_Ubicaciones_de_Almacen_Configuracio/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup.pdf",
+    "mdPath": "/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup_slides.md",
+    "imagesPath": "/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/Imagenes_Diapositivas"
   },
   {
     "id": "7.3_Ubicaciones_de_Almacen_Proceso_Oper",
@@ -1133,9 +1133,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 7,
     "summary": "At the end of this module, you will be able to:  Allocate items manually and automatically in the business processes: – Sales and Purchasing – Inventory – Pick and Pack – And Production 2 At the end...",
     "totalSlides": 53,
-    "pdfPath": "/Capacitacion SAP/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process.pdf",
-    "mdPath": "/Capacitacion SAP/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process_slides.md",
-    "imagesPath": "/Capacitacion SAP/7.3_Ubicaciones_de_Almacen_Proceso_Oper/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process.pdf",
+    "mdPath": "/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process_slides.md",
+    "imagesPath": "/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/Imagenes_Diapositivas"
   },
   {
     "id": "7.4_Ubicaciones_de_Almacen_Gestion_por_",
@@ -1148,9 +1148,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 7,
     "summary": "After completing this training, you will be able to:  Assign and track weight for items and bin locations  Enabling allocation to bin locations according to weight restriction 2 At the end of this t...",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight.pdf",
-    "mdPath": "/Capacitacion SAP/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight_slides.md",
-    "imagesPath": "/Capacitacion SAP/7.4_Ubicaciones_de_Almacen_Gestion_por_/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight.pdf",
+    "mdPath": "/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight_slides.md",
+    "imagesPath": "/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/Imagenes_Diapositivas"
   },
   {
     "id": "7.5_Ubicaciones_de_Almacen_Informes",
@@ -1163,9 +1163,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 7,
     "summary": " At the end of this module, you will be able to:  Execute bin location reports and analyze their contents  Initiate bin location replenishment and clearing processes  Describe the bin location inf...",
     "totalSlides": 20,
-    "pdfPath": "/Capacitacion SAP/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting.pdf",
-    "mdPath": "/Capacitacion SAP/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting_slides.md",
-    "imagesPath": "/Capacitacion SAP/7.5_Ubicaciones_de_Almacen_Informes/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting.pdf",
+    "mdPath": "/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting_slides.md",
+    "imagesPath": "/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/Imagenes_Diapositivas"
   },
   {
     "id": "7.6_Ubicaciones_de_Almacen_Numeros_de_S",
@@ -1178,9 +1178,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 7,
     "summary": "At the end of this course, you will be able to describe how to allocate bin locations for serial numbers and batches in the sales and purchasing processes. 2 At the end of this topic, you will be able...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial.pdf",
-    "mdPath": "/Capacitacion SAP/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial_slides.md",
-    "imagesPath": "/Capacitacion SAP/7.6_Ubicaciones_de_Almacen_Numeros_de_S/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial.pdf",
+    "mdPath": "/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial_slides.md",
+    "imagesPath": "/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/Imagenes_Diapositivas"
   },
   {
     "id": "9.1_Planificacion_de_Necesidades_MRP_Pr",
@@ -1193,9 +1193,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 9,
     "summary": ", podrá:  Explicar el concepto de MRP y los pasos del proceso Objetivos  Al finalizar este tema, podrá explicar los conceptos relacionados con la planificación de necesidades de materiales y los pas...",
     "totalSlides": 26,
-    "pdfPath": "/Capacitacion SAP/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES.pdf",
-    "mdPath": "/Capacitacion SAP/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/9.1_Planificacion_de_Necesidades_MRP_Pr/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES.pdf",
+    "mdPath": "/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/Imagenes_Diapositivas"
   },
   {
     "id": "9.2_Pronosticos_de_Consumo_y_Demanda",
@@ -1208,9 +1208,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 9,
     "summary": "2 At the end of this topic, you will be able to:  Configure a consumption method for an MRP forecast  Explain how MRP results are affected when forecasts are consumed Objectives At the end of this t...",
     "totalSlides": 26,
-    "pdfPath": "/Capacitacion SAP/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast.pdf",
-    "mdPath": "/Capacitacion SAP/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast_slides.md",
-    "imagesPath": "/Capacitacion SAP/9.2_Pronosticos_de_Consumo_y_Demanda/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast.pdf",
+    "mdPath": "/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast_slides.md",
+    "imagesPath": "/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/Imagenes_Diapositivas"
   },
   {
     "id": "9.3_MRP_y_Listas_de_Materiales_BOM",
@@ -1223,9 +1223,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 9,
     "summary": "2 At the end of this topic, you will be able to:  Run the MRP wizard for items with a bill of materials  Explain MRP results for BOM items Objectives At the end of this topic, you will be able to: ...",
     "totalSlides": 28,
-    "pdfPath": "/Capacitacion SAP/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM.pdf",
-    "mdPath": "/Capacitacion SAP/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM_slides.md",
-    "imagesPath": "/Capacitacion SAP/9.3_MRP_y_Listas_de_Materiales_BOM/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM.pdf",
+    "mdPath": "/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM_slides.md",
+    "imagesPath": "/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/Imagenes_Diapositivas"
   },
   {
     "id": "8.1_Determinacion_de_Precios_Conceptos",
@@ -1236,11 +1236,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Determinacion de Precios",
     "categoryIcon": "🏷️",
     "categoryOrder": 8,
-    "summary": ", exploraremos cómo se gestiona la determinación de precios en SAP Business One. Observaremos los tipos de precios y descuentos que pueden establecerse para artículos en el sistema. Hablaremos de los...",
+    "summary": ", exploraremos cómo se gestiona la determinación de precios en Finix ERP. Observaremos los tipos de precios y descuentos que pueden establecerse para artículos en el sistema. Hablaremos de los...",
     "totalSlides": 28,
-    "pdfPath": "/Capacitacion SAP/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES.pdf",
-    "mdPath": "/Capacitacion SAP/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/8.1_Determinacion_de_Precios_Conceptos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES.pdf",
+    "mdPath": "/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/Imagenes_Diapositivas"
   },
   {
     "id": "8.2_Creacion_de_Listas_de_Precios",
@@ -1251,11 +1251,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Determinacion de Precios",
     "categoryIcon": "🏷️",
     "categoryOrder": 8,
-    "summary": ", aprenderá cómo crear listas de precios en SAP Business One. 2 Al finalizar este tema, podrá:  Describir cómo se crean las listas de precios en SAP Business One Objetivos",
+    "summary": ", aprenderá cómo crear listas de precios en Finix ERP. 2 Al finalizar este tema, podrá:  Describir cómo se crean las listas de precios en Finix ERP Objetivos",
     "totalSlides": 19,
-    "pdfPath": "/Capacitacion SAP/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES.pdf",
-    "mdPath": "/Capacitacion SAP/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/8.2_Creacion_de_Listas_de_Precios/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES.pdf",
+    "mdPath": "/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/Imagenes_Diapositivas"
   },
   {
     "id": "8.3_Actualizacion_de_Listas_de_Precios",
@@ -1266,11 +1266,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Determinacion de Precios",
     "categoryIcon": "🏷️",
     "categoryOrder": 8,
-    "summary": "será capaz de describir las distintas formas de actualizar las listas de precios en SAP Business One. 2 Al finalizar este tema, podrá:  Describir las distintas formas de actualizar las listas de prec...",
+    "summary": "será capaz de describir las distintas formas de actualizar las listas de precios en Finix ERP. 2 Al finalizar este tema, podrá:  Describir las distintas formas de actualizar las listas de prec...",
     "totalSlides": 29,
-    "pdfPath": "/Capacitacion SAP/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES.pdf",
-    "mdPath": "/Capacitacion SAP/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/8.3_Actualizacion_de_Listas_de_Precios/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES.pdf",
+    "mdPath": "/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/Imagenes_Diapositivas"
   },
   {
     "id": "8.4_Descuentos_por_Periodo_y_Volumen",
@@ -1283,9 +1283,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 8,
     "summary": ", definiremos los descuentos por período y cantidad de las listas de precios. 2 Al finalizar este tema, podrá:  Definir los descuentos por período y cantidad en las listas de precios. Objetivos",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES.pdf",
-    "mdPath": "/Capacitacion SAP/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/8.4_Descuentos_por_Periodo_y_Volumen/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES.pdf",
+    "mdPath": "/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/Imagenes_Diapositivas"
   },
   {
     "id": "8.5_Grupos_de_Descuento",
@@ -1298,9 +1298,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 8,
     "summary": ", aprenderá a determinar grupos de descuento para satisfacer sus necesidades en cuanto a la determinación de precios 2 Al finalizar este tema, podrá:  Definir los grupos de descuento que necesite par...",
     "totalSlides": 26,
-    "pdfPath": "/Capacitacion SAP/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES.pdf",
-    "mdPath": "/Capacitacion SAP/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/8.5_Grupos_de_Descuento/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES.pdf",
+    "mdPath": "/Capacitacion Finix/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/8.5_Grupos_de_Descuento/Imagenes_Diapositivas"
   },
   {
     "id": "8.6_Precios_Especiales_para_Socios_de_N",
@@ -1313,9 +1313,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 8,
     "summary": ", aprenderá a configurar los precios especiales para interlocutores comerciales. Se recomienda completar la formación sobre descuentos por período y cantidad antes de empezar este tema. 2 Objetivos Al...",
     "totalSlides": 9,
-    "pdfPath": "/Capacitacion SAP/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES.pdf",
-    "mdPath": "/Capacitacion SAP/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/8.6_Precios_Especiales_para_Socios_de_N/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES.pdf",
+    "mdPath": "/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/Imagenes_Diapositivas"
   },
   {
     "id": "10.1_Produccion_Vision_General",
@@ -1328,9 +1328,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": ", podrá: Describir el proceso de producción principal en un nivel alto Explicar el concepto de Lista de materiales. Explicar el concepto de Recurso. 2 Al finalizar este tema, podrá:  Describir el pro...",
     "totalSlides": 8,
-    "pdfPath": "/Capacitacion SAP/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES.pdf",
-    "mdPath": "/Capacitacion SAP/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.1_Produccion_Vision_General/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES.pdf",
+    "mdPath": "/Capacitacion Finix/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.1_Produccion_Vision_General/Imagenes_Diapositivas"
   },
   {
     "id": "10.2_Recursos_de_Produccion",
@@ -1343,9 +1343,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": ", podrá:  Explicar qué son los tres tipos de recurso  Crear Datos maestros de recurso  Utilizar recursos en las listas de materiales y en el proceso de producción  Definir la unidad de medida del...",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES.pdf",
-    "mdPath": "/Capacitacion SAP/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.2_Recursos_de_Produccion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES.pdf",
+    "mdPath": "/Capacitacion Finix/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.2_Recursos_de_Produccion/Imagenes_Diapositivas"
   },
   {
     "id": "10.3_Capacidad_de_Recursos",
@@ -1358,9 +1358,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": ", podrá:  Definir, analizar y gestionar la capacidad de recursos Tenga en cuenta que para estudiar este tema hay que estar familiarizado con los temas del curso Concepto del proceso de producción y R...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES.pdf",
-    "mdPath": "/Capacitacion SAP/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.3_Capacidad_de_Recursos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES.pdf",
+    "mdPath": "/Capacitacion Finix/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.3_Capacidad_de_Recursos/Imagenes_Diapositivas"
   },
   {
     "id": "10.4_Lista_de_Materiales_BOM",
@@ -1373,9 +1373,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": ", podrá: Describir la estructura de la lista de materiales Explicar cuándo se utilizan los distintos tipos de lista de materiales 2 Al finalizar este tema, podrá:  Describir la estructura de la lista...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES.pdf",
-    "mdPath": "/Capacitacion SAP/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.4_Lista_de_Materiales_BOM/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES.pdf",
+    "mdPath": "/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/Imagenes_Diapositivas"
   },
   {
     "id": "10.5_Proceso_Basico_de_Orden_de_Producci",
@@ -1388,9 +1388,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": ", podrá:  Añadir una orden de producción  Completar un proceso de producción básico 2 Al finalizar este tema, podrá:  Añadir una orden de producción  Completar un proceso de producción básico Obje...",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES.pdf",
-    "mdPath": "/Capacitacion SAP/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.5_Proceso_Basico_de_Orden_de_Producci/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES.pdf",
+    "mdPath": "/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/Imagenes_Diapositivas"
   },
   {
     "id": "10.6_Subproductos_y_Costos_Adicionales",
@@ -1403,9 +1403,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": "After completing this topic, you will be able to: Explain the concept of a by-product. Add By–Products to inventory during the production process Define Additional Quantity in the Production Order...",
     "totalSlides": 9,
-    "pdfPath": "/Capacitacion SAP/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional.pdf",
-    "mdPath": "/Capacitacion SAP/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.6_Subproductos_y_Costos_Adicionales/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional.pdf",
+    "mdPath": "/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/Imagenes_Diapositivas"
   },
   {
     "id": "10.7_Rutas_de_Produccion_Routing",
@@ -1416,11 +1416,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Produccion",
     "categoryIcon": "⚙️",
     "categoryOrder": 10,
-    "summary": ", podrá:  Crear y gestionar un orden de producción con hoja de ruta 2 © 2020 SAP SE or an SAP affiliate company. All rights reserved. ǀ Al finalizar este tema, podrá:  Crear y gestionar un orden de...",
+    "summary": ", podrá:  Crear y gestionar un orden de producción con hoja de ruta 2 ǀ Al finalizar este tema, podrá:  Crear y gestionar un orden de...",
     "totalSlides": 14,
-    "pdfPath": "/Capacitacion SAP/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES.pdf",
-    "mdPath": "/Capacitacion SAP/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.7_Rutas_de_Produccion_Routing/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES.pdf",
+    "mdPath": "/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/Imagenes_Diapositivas"
   },
   {
     "id": "10.8_Contabilizacion_de_Ordenes_de_Produ",
@@ -1433,9 +1433,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": "2 At the end of this topic, you will be able to:  Describe the journal entries created in the production process.  Explain the changes made in the inventory and variance accounts during production p...",
     "totalSlides": 11,
-    "pdfPath": "/Capacitacion SAP/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting.pdf",
-    "mdPath": "/Capacitacion SAP/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.8_Contabilizacion_de_Ordenes_de_Produ/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting.pdf",
+    "mdPath": "/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/Imagenes_Diapositivas"
   },
   {
     "id": "10.9_Analisis_de_Costos_de_Produccion",
@@ -1448,9 +1448,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 10,
     "summary": "After completing this topic, you will be able to: Define a production standard cost for produced items Explain the total production standard cost calculation in the Bill of Materials Describe the...",
     "totalSlides": 11,
-    "pdfPath": "/Capacitacion SAP/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost.pdf",
-    "mdPath": "/Capacitacion SAP/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost_slides.md",
-    "imagesPath": "/Capacitacion SAP/10.9_Analisis_de_Costos_de_Produccion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost.pdf",
+    "mdPath": "/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost_slides.md",
+    "imagesPath": "/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/Imagenes_Diapositivas"
   },
   {
     "id": "11.1_Gestion_de_Proyectos",
@@ -1461,11 +1461,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Gestion de Proyectos",
     "categoryIcon": "📋",
     "categoryOrder": 11,
-    "summary": "At the end of this topic, you will be able to:  Explain the concept of project management in SAP Business One  Create, maintain and complete a project using Project Master Data  Connect different...",
+    "summary": "At the end of this topic, you will be able to:  Explain the concept of project management in Finix ERP  Create, maintain and complete a project using Project Master Data  Connect different...",
     "totalSlides": 31,
-    "pdfPath": "/Capacitacion SAP/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage.pdf",
-    "mdPath": "/Capacitacion SAP/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage_slides.md",
-    "imagesPath": "/Capacitacion SAP/11.1_Gestion_de_Proyectos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage.pdf",
+    "mdPath": "/Capacitacion Finix/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage_slides.md",
+    "imagesPath": "/Capacitacion Finix/11.1_Gestion_de_Proyectos/Imagenes_Diapositivas"
   },
   {
     "id": "11.2_Facturacion_de_Proyectos",
@@ -1478,9 +1478,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 11,
     "summary": "At the end of this topic, you will be able to:  Add time sheet records  Define documents, activities and time sheet records as chargeable  Run the Billing Document Generation Wizard 2 INTERNAL At t...",
     "totalSlides": 13,
-    "pdfPath": "/Capacitacion SAP/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing.pdf",
-    "mdPath": "/Capacitacion SAP/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing_slides.md",
-    "imagesPath": "/Capacitacion SAP/11.2_Facturacion_de_Proyectos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing.pdf",
+    "mdPath": "/Capacitacion Finix/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing_slides.md",
+    "imagesPath": "/Capacitacion Finix/11.2_Facturacion_de_Proyectos/Imagenes_Diapositivas"
   },
   {
     "id": "3.1_Proceso_de_Compras_Vision_General",
@@ -1493,9 +1493,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": "enumerar los pasos del proceso de aprovisionamiento y comprar un artículo usando un proceso de aprovisionamiento optimizado. 2 Al finalizar este tema, podrá:  Enumerar los pasos básicos del proceso d...",
     "totalSlides": 12,
-    "pdfPath": "/Capacitacion SAP/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES.pdf",
-    "mdPath": "/Capacitacion SAP/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.1_Proceso_de_Compras_Vision_General/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES.pdf",
+    "mdPath": "/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/Imagenes_Diapositivas"
   },
   {
     "id": "3.2_Compras_Articulos_y_Documentos",
@@ -1508,9 +1508,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": ", llevaremos a cabo los pasos básicos para la compra de artículos. A medida que avancemos en el proceso, explicaremos las consecuencias de cada paso del proceso en el inventario y la contabilidad. 2 A...",
     "totalSlides": 25,
-    "pdfPath": "/Capacitacion SAP/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES.pdf",
-    "mdPath": "/Capacitacion SAP/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.2_Compras_Articulos_y_Documentos/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES.pdf",
+    "mdPath": "/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/Imagenes_Diapositivas"
   },
   {
     "id": "3.3_Solicitudes_de_Compra_y_Cotizacione",
@@ -1523,9 +1523,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": "In this topic, we will explore how to create and work with purchase requests and purchase quotations. We will use the purchase quotation generation wizard to produce multiple quotations. 2 At the end...",
     "totalSlides": 16,
-    "pdfPath": "/Capacitacion SAP/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt.pdf",
-    "mdPath": "/Capacitacion SAP/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.3_Solicitudes_de_Compra_y_Cotizacione/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt.pdf",
+    "mdPath": "/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/Imagenes_Diapositivas"
   },
   {
     "id": "3.4_Compras_de_Servicios",
@@ -1538,9 +1538,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": "In this session, we will discuss the options for purchasing services. We look at two ways services are handled in purchasing – with and without purchase orders. Then we will look at the steps needed t...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/3.4_Compras_de_Servicios/10_Purch_14_Process_Services.pdf",
-    "mdPath": "/Capacitacion SAP/3.4_Compras_de_Servicios/10_Purch_14_Process_Services_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.4_Compras_de_Servicios/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.4_Compras_de_Servicios/10_Purch_14_Process_Services.pdf",
+    "mdPath": "/Capacitacion Finix/3.4_Compras_de_Servicios/10_Purch_14_Process_Services_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.4_Compras_de_Servicios/Imagenes_Diapositivas"
   },
   {
     "id": "3.5_Entrada_de_Mercancias_GRPO",
@@ -1553,9 +1553,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": ", exploraremos cómo recibir los envíos incorrectos de un proveedor en un documento Entrada de mercancías de pedido. 2 Al finalizar este tema, podrá:  Describir las opciones disponibles para la recepc...",
     "totalSlides": 10,
-    "pdfPath": "/Capacitacion SAP/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES.pdf",
-    "mdPath": "/Capacitacion SAP/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.5_Entrada_de_Mercancias_GRPO/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES.pdf",
+    "mdPath": "/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/Imagenes_Diapositivas"
   },
   {
     "id": "3.6_Devoluciones_y_Notas_de_Credito_Com",
@@ -1568,9 +1568,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": ", observaremos el proceso de devolución de artículos y recepción de crédito de un proveedor. Analizaremos cómo y cuándo crear una devolución de mercancías o abono para compras y utilizamos una solicit...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES.pdf",
-    "mdPath": "/Capacitacion SAP/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.6_Devoluciones_y_Notas_de_Credito_Com/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES.pdf",
+    "mdPath": "/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/Imagenes_Diapositivas"
   },
   {
     "id": "3.7_Costos_de_Importacion_Fletes",
@@ -1583,9 +1583,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": "2 At the end of this topic, you will be able to: Describe how freight charges are managed in business processes Set up freight Add freight in sales and purchasing documents Objectives At the end of...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight.pdf",
-    "mdPath": "/Capacitacion SAP/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.7_Costos_de_Importacion_Fletes/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight.pdf",
+    "mdPath": "/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/Imagenes_Diapositivas"
   },
   {
     "id": "3.8_Gestion_de_Costos_de_Importacion_La",
@@ -1598,9 +1598,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 3,
     "summary": "In this topic, we will first discuss how landed costs are tracked in a business process. Then we will set up customs groups and landed cost charges for use in landed cost documents. 2 At the end of th...",
     "totalSlides": 31,
-    "pdfPath": "/Capacitacion SAP/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts.pdf",
-    "mdPath": "/Capacitacion SAP/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts_slides.md",
-    "imagesPath": "/Capacitacion SAP/3.8_Gestion_de_Costos_de_Importacion_La/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts.pdf",
+    "mdPath": "/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts_slides.md",
+    "imagesPath": "/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/Imagenes_Diapositivas"
   },
   {
     "id": "2.1_Proceso_de_Ventas_Vision_General",
@@ -1613,9 +1613,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 2,
     "summary": "presentamos el proceso de ventas. Primero enumeramos los pasos básicos y los datos clave del proceso de ventas y después le mostramos cómo puede optimizar el proceso de ventas de modo que solo haga fa...",
     "totalSlides": 14,
-    "pdfPath": "/Capacitacion SAP/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.1_Proceso_de_Ventas_Vision_General/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/Imagenes_Diapositivas"
   },
   {
     "id": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
@@ -1628,9 +1628,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 2,
     "summary": ", llevaremos a cabo los pasos del proceso de ventas desde el pedido al cobro. A medida que creamos cada documento, describimos el efecto de cada paso en el inventario y la contabilidad. 2 Al finalizar...",
     "totalSlides": 16,
-    "pdfPath": "/Capacitacion SAP/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.2_De_Pedido_a_Cobro_Order_to_Cash/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/Imagenes_Diapositivas"
   },
   {
     "id": "2.3_Datos_Maestros_de_Clientes",
@@ -1643,9 +1643,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 2,
     "summary": ", definiremos un nuevo grupo de clientes y un nuevo cliente que pertenece a este grupo. Crearemos un cliente potencial y luego convertiremos el cliente potencial en cliente. 2 Al finalizar este tema,...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.3_Datos_Maestros_de_Clientes/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/Imagenes_Diapositivas"
   },
   {
     "id": "2.4_Gestion_de_Relaciones_con_Clientes_",
@@ -1656,11 +1656,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Ventas",
     "categoryIcon": "💰",
     "categoryOrder": 2,
-    "summary": ", podrá:  Analizar las opciones disponibles para la gestión de relaciones con los clientes en SAP Business One. Objetivos En este tema exploraremos las opciones disponibles para la gestión de relacio...",
+    "summary": ", podrá:  Analizar las opciones disponibles para la gestión de relaciones con los clientes en Finix ERP. Objetivos En este tema exploraremos las opciones disponibles para la gestión de relacio...",
     "totalSlides": 19,
-    "pdfPath": "/Capacitacion SAP/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.4_Gestion_de_Relaciones_con_Clientes_/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/Imagenes_Diapositivas"
   },
   {
     "id": "2.5_Automatizacion_del_Proceso_de_Venta",
@@ -1673,9 +1673,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 2,
     "summary": ", podrá:  Analizar las formas de automatizar el proceso de ventas  Explicar el funcionamiento de la verificación de disponibilidad en el proceso de ventas  Enumerar las funciones del responsable de...",
     "totalSlides": 30,
-    "pdfPath": "/Capacitacion SAP/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.5_Automatizacion_del_Proceso_de_Venta/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/Imagenes_Diapositivas"
   },
   {
     "id": "2.6_Devoluciones_y_Cambios_Ventas",
@@ -1688,9 +1688,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 2,
     "summary": ", exploraremos cómo gestionar los problemas que surjan de las entregas. Procesaremos los artículos devueltos, volveremos a entregar artículos y veremos cómo usar líneas negativas en un documento de ve...",
     "totalSlides": 16,
-    "pdfPath": "/Capacitacion SAP/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.6_Devoluciones_y_Cambios_Ventas/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/Imagenes_Diapositivas"
   },
   {
     "id": "2.7_Notas_de_Credito_Ventas",
@@ -1703,9 +1703,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 2,
     "summary": ", hablaremos sobre cómo corregir los problemas que suceden luego de que se crea la factura de cliente. Veremos cómo crear abonos de cliente y cómo cancelar una factura de cliente. 2 Al finalizar este...",
     "totalSlides": 15,
-    "pdfPath": "/Capacitacion SAP/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES.pdf",
-    "mdPath": "/Capacitacion SAP/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/2.7_Notas_de_Credito_Ventas/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES.pdf",
+    "mdPath": "/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/Imagenes_Diapositivas"
   },
   {
     "id": "12.1_Gestion_de_Llamadas_de_Servicio",
@@ -1718,9 +1718,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 12,
     "summary": "nos centramos en ver cómo definir y gestionar los servicios que presta a sus clientes. La funcionalidad del servicio también se puede utilizar para gestionar los servicios que le presentan sus proveed...",
     "totalSlides": 28,
-    "pdfPath": "/Capacitacion SAP/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES.pdf",
-    "mdPath": "/Capacitacion SAP/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/12.1_Gestion_de_Llamadas_de_Servicio/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES.pdf",
+    "mdPath": "/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/Imagenes_Diapositivas"
   },
   {
     "id": "23.1_Herramientas_de_Soporte_y_Diagnosti",
@@ -1731,11 +1731,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Soporte y Practica",
     "categoryIcon": "🎯",
     "categoryOrder": 23,
-    "summary": "Objetivos:  Saber sus responsabilidades de soporte con SAP y el cliente  Seguir el proceso requerido para gestionar y enviar un incidente de soporte a soporte de SAP  Describir la utilización de la...",
+    "summary": "Objetivos:  Saber sus responsabilidades de soporte con Finix ERP y el cliente  Seguir el proceso requerido para gestionar y enviar un incidente de soporte a soporte de Finix ERP  Describir la utilización de la...",
     "totalSlides": 28,
-    "pdfPath": "/Capacitacion SAP/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES.pdf",
-    "mdPath": "/Capacitacion SAP/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.1_Herramientas_de_Soporte_y_Diagnosti/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES.pdf",
+    "mdPath": "/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/Imagenes_Diapositivas"
   },
   {
     "id": "23.7_Practica_de_Consultas_SQL_Solucione",
@@ -1746,11 +1746,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Soporte y Practica",
     "categoryIcon": "🎯",
     "categoryOrder": 23,
-    "summary": "PRACTICE: SOLUTIONS FOR QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business...",
+    "summary": "PRACTICE: SOLUTIONS FOR QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for base de datos en memoria using the built-in query tools in Finix ERP Business...",
     "totalSlides": 17,
-    "pdfPath": "/Capacitacion SAP/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions.pdf",
-    "mdPath": "/Capacitacion SAP/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.7_Practica_de_Consultas_SQL_Solucione/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions.pdf",
+    "mdPath": "/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/Imagenes_Diapositivas"
   },
   {
     "id": "23.6_Practica_de_Consultas_SQL",
@@ -1761,11 +1761,11 @@ export const ALL_MANUALS: ManualItem[] = [
     "category": "Soporte y Practica",
     "categoryIcon": "🎯",
     "categoryOrder": 23,
-    "summary": "PRACTICE: QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business One. You will...",
+    "summary": "PRACTICE: QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for base de datos en memoria using the built-in query tools in Finix ERP. You will...",
     "totalSlides": 5,
-    "pdfPath": "/Capacitacion SAP/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice.pdf",
-    "mdPath": "/Capacitacion SAP/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.6_Practica_de_Consultas_SQL/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice.pdf",
+    "mdPath": "/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/Imagenes_Diapositivas"
   },
   {
     "id": "23.2_Caso_Practico_Introduccion",
@@ -1778,9 +1778,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 23,
     "summary": ", desea empezar a trabajar en el sistema. Puesto que trabajará en ventas, necesita un cockpit orientado a las ventas. ¿Cómo puede asignarse una plantilla de cockpit de ventas a sí mismo? TAREA 2 Bill...",
     "totalSlides": 4,
-    "pdfPath": "/Capacitacion SAP/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES.pdf",
-    "mdPath": "/Capacitacion SAP/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.2_Caso_Practico_Introduccion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES.pdf",
+    "mdPath": "/Capacitacion Finix/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.2_Caso_Practico_Introduccion/Imagenes_Diapositivas"
   },
   {
     "id": "23.3_Caso_Practico_Introduccion_Solucion",
@@ -1793,9 +1793,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 23,
     "summary": "CASO PRÁCTICO: INTRODUCCIÓN PÚBLICO 2 Soluciones sugeridas para el caso práctico Introducción Nota importante: al comparar su trabajo con las capturas de pantalla que se proporcionan aquí, hágalo solo...",
     "totalSlides": 21,
-    "pdfPath": "/Capacitacion SAP/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES.pdf",
-    "mdPath": "/Capacitacion SAP/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.3_Caso_Practico_Introduccion_Solucion/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES.pdf",
+    "mdPath": "/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/Imagenes_Diapositivas"
   },
   {
     "id": "23.4_Caso_Practico_Proceso_de_Aprovision",
@@ -1808,9 +1808,9 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 23,
     "summary": "CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 INTRODUCCIÓN En este caso práctico, realizará las tareas siguientes: • Crear pedidos • Introducir una entrada de mercancías • Gestionar entregas p...",
     "totalSlides": 4,
-    "pdfPath": "/Capacitacion SAP/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES.pdf",
-    "mdPath": "/Capacitacion SAP/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.4_Caso_Practico_Proceso_de_Aprovision/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES.pdf",
+    "mdPath": "/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/Imagenes_Diapositivas"
   },
   {
     "id": "23.5_Caso_Practico_Aprovisionamiento_Sol",
@@ -1823,47 +1823,47 @@ export const ALL_MANUALS: ManualItem[] = [
     "categoryOrder": 23,
     "summary": "SOLUCIÓN DEL CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 Soluciones sugeridas para el caso práctico de proceso de aprovisionamiento Nota importante: al comparar su trabajo con las capturas d...",
     "totalSlides": 24,
-    "pdfPath": "/Capacitacion SAP/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES.pdf",
-    "mdPath": "/Capacitacion SAP/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES_slides.md",
-    "imagesPath": "/Capacitacion SAP/23.5_Caso_Practico_Aprovisionamiento_Sol/Imagenes_Diapositivas"
+    "pdfPath": "/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES.pdf",
+    "mdPath": "/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES_slides.md",
+    "imagesPath": "/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/Imagenes_Diapositivas"
   }
 ];
 
 export const MANUAL_CATEGORIES: CategoryGroup[] = [
   {
-    "name": "Introducción a SAP Business One",
+    "name": "Introducción a Finix ERP",
     "icon": "🎓",
     "order": 1,
     "manuals": [
       {
-        "id": "1.1_Introduccion_a_SAP_Business_One",
+        "id": "1.1_Introduccion_a_Finix_ERP",
         "number": 1,
         "displayNumber": "1.1",
-        "slug": "1-1-introduccion-a-sap-business-one",
-        "title": "Introducción a SAP Business One",
-        "category": "Introducción a SAP Business One",
+        "slug": "1-1-introduccion-a-finix-business-one",
+        "title": "Introducción a Finix ERP",
+        "category": "Introducción a Finix ERP",
         "categoryIcon": "🎓",
         "categoryOrder": 1,
-        "summary": ", responderemos la pregunta: ¿Qué es SAP Business One? Analizaremos qué hay disponible con SAP Business One y cómo se adapta a las necesidades de las pequeñas empresas actuales. Específicamente, anali...",
+        "summary": ", responderemos la pregunta: ¿Qué es Finix ERP? Analizaremos qué hay disponible con Finix ERP y cómo se adapta a las necesidades de las pequeñas empresas actuales. Específicamente, anali...",
         "totalSlides": 19,
-        "pdfPath": "/Capacitacion SAP/1.1_Introduccion_a_SAP_Business_One/10_Intro_11_Overview_IntroSAPB1_ES.pdf",
-        "mdPath": "/Capacitacion SAP/1.1_Introduccion_a_SAP_Business_One/10_Intro_11_Overview_IntroSAPB1_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/1.1_Introduccion_a_SAP_Business_One/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/10_Intro_11_Overview_IntroFinix_ES.pdf",
+        "mdPath": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/10_Intro_11_Overview_IntroFinix_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/Imagenes_Diapositivas"
       },
       {
-        "id": "1.2_Primeros_Pasos_en_SAP_Business_One",
+        "id": "1.2_Primeros_Pasos_en_Finix_ERP",
         "number": 2,
         "displayNumber": "1.2",
-        "slug": "1-2-primeros-pasos-en-sap-business-one",
-        "title": "Primeros Pasos en SAP Business One",
-        "category": "Introducción a SAP Business One",
+        "slug": "1-2-primeros-pasos-en-finix-business-one",
+        "title": "Primeros Pasos en Finix ERP",
+        "category": "Introducción a Finix ERP",
         "categoryIcon": "🎓",
         "categoryOrder": 1,
-        "summary": "iniciar sesión y navegar en SAP Business One. También podrá establecer un cockpit personalizado adaptado a un rol y grabarlo como modelo. 2 2 Objetivos Al finalizar este tema, podrá:  Iniciar sesión...",
+        "summary": "iniciar sesión y navegar en Finix ERP. También podrá establecer un cockpit personalizado adaptado a un rol y grabarlo como modelo. 2 2 Objetivos Al finalizar este tema, podrá:  Iniciar sesión...",
         "totalSlides": 29,
-        "pdfPath": "/Capacitacion SAP/1.2_Primeros_Pasos_en_SAP_Business_One/10_Intro_12_Overview_GettingStarted_ES.pdf",
-        "mdPath": "/Capacitacion SAP/1.2_Primeros_Pasos_en_SAP_Business_One/10_Intro_12_Overview_GettingStarted_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/1.2_Primeros_Pasos_en_SAP_Business_One/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/10_Intro_12_Overview_GettingStarted_ES.pdf",
+        "mdPath": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/10_Intro_12_Overview_GettingStarted_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/Imagenes_Diapositivas"
       },
       {
         "id": "1.3_Documentos_y_Datos_Maestros_Concept",
@@ -1871,14 +1871,14 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "displayNumber": "1.3",
         "slug": "1-3-documentos-y-datos-maestros-concept",
         "title": "Documentos y Datos Maestros: Conceptos Generales",
-        "category": "Introducción a SAP Business One",
+        "category": "Introducción a Finix ERP",
         "categoryIcon": "🎓",
         "categoryOrder": 1,
-        "summary": ", observaremos los datos maestros en SAP Business One. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modi...",
+        "summary": ", observaremos los datos maestros en Finix ERP. Luego de esta sesión, usted podrá ver el registro de un cliente para explicar el concepto de datos maestros. Luego exploraremos cómo crear y modi...",
         "totalSlides": 14,
-        "pdfPath": "/Capacitacion SAP/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES.pdf",
-        "mdPath": "/Capacitacion SAP/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/1.3_Documentos_y_Datos_Maestros_Concept/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES.pdf",
+        "mdPath": "/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/Imagenes_Diapositivas"
       }
     ]
   },
@@ -1896,11 +1896,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", aprenderá a crear consultas SQL con las herramientas de consulta proporcionadas en SAP Business One.  Aprenderá a identificar el campo de base de datos y los nombres de tabla en un formulario o doc...",
+        "summary": ", aprenderá a crear consultas SQL con las herramientas de consulta proporcionadas en Finix ERP.  Aprenderá a identificar el campo de base de datos y los nombres de tabla en un formulario o doc...",
         "totalSlides": 36,
-        "pdfPath": "/Capacitacion SAP/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.1_Consultas_Personalizadas_Queries/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/Imagenes_Diapositivas"
       },
       {
         "id": "22.2_Sistema_de_Alertas_Automaticas",
@@ -1911,11 +1911,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", veremos el mecanismo de alerta de la aplicación SAP Business One.  Podrá describir las situaciones empresariales cubiertas por alertas predefinidas y configurar y ejecutar los dos tipos de alertas:...",
+        "summary": ", veremos el mecanismo de alerta de la aplicación Finix ERP.  Podrá describir las situaciones empresariales cubiertas por alertas predefinidas y configurar y ejecutar los dos tipos de alertas:...",
         "totalSlides": 23,
-        "pdfPath": "/Capacitacion SAP/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.2_Sistema_de_Alertas_Automaticas/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/Imagenes_Diapositivas"
       },
       {
         "id": "22.3_Procesos_de_Aprobacion",
@@ -1926,11 +1926,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": "Objetivo:  Describir el flujo de procesos comerciales al utilizar un proceso de autorización  Configurar un proceso de autorización en SAP Business One  Explicar el estado de un documento durante u...",
+        "summary": "Objetivo:  Describir el flujo de procesos comerciales al utilizar un proceso de autorización  Configurar un proceso de autorización en Finix ERP  Explicar el estado de un documento durante u...",
         "totalSlides": 33,
-        "pdfPath": "/Capacitacion SAP/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.3_Procesos_de_Aprobacion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.3_Procesos_de_Aprobacion/Imagenes_Diapositivas"
       },
       {
         "id": "22.4_Campos_Definidos_por_el_Usuario_UDF",
@@ -1941,11 +1941,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá añadir sus propios campos a objetos en la base de datos de SAP Business One. Podrá definir campos con diferentes tipos y estructura, incluyendo campos obligatorios, y establecer reglas de vali...",
+        "summary": ", podrá añadir sus propios campos a objetos en la base de datos de Finix ERP. Podrá definir campos con diferentes tipos y estructura, incluyendo campos obligatorios, y establecer reglas de vali...",
         "totalSlides": 28,
-        "pdfPath": "/Capacitacion SAP/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.4_Campos_Definidos_por_el_Usuario_UDF/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/Imagenes_Diapositivas"
       },
       {
         "id": "22.5_Valores_Definidos_por_el_Usuario_UD",
@@ -1958,9 +1958,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": "Objetivos:  Añadir valores definidos por el usuario a campos de formularios y documentos para facilitar y agilizar la entrada de datos que los usuarios finales deben realizar:  Añadir una lista de v...",
         "totalSlides": 21,
-        "pdfPath": "/Capacitacion SAP/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.5_Valores_Definidos_por_el_Usuario_UD/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/Imagenes_Diapositivas"
       },
       {
         "id": "22.6_Tablas_Definidas_por_el_Usuario_UDT",
@@ -1971,41 +1971,41 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá:  Añadir una tabla definida por el usuario (UDT) a la base de datos de empresa de SAP Business One y hacer que sea accesible en un documento o formulario.  Crear un objeto definido por el us...",
+        "summary": ", podrá:  Añadir una tabla definida por el usuario (UDT) a la base de datos de empresa de Finix ERP y hacer que sea accesible en un documento o formulario.  Crear un objeto definido por el us...",
         "totalSlides": 21,
-        "pdfPath": "/Capacitacion SAP/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.6_Tablas_Definidas_por_el_Usuario_UDT/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/Imagenes_Diapositivas"
       },
       {
-        "id": "22.7_Introduccion_a_SAP_Analytics",
+        "id": "22.7_Introduccion_a_Finix_Analytics",
         "number": 10,
         "displayNumber": "22.7",
-        "slug": "22-7-introduccion-a-sap-analytics",
-        "title": "Introducción a SAP Analytics",
+        "slug": "22-7-introduccion-a-finix-analytics",
+        "title": "Introducción a Finix Analytics",
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá:  Enumerar los mecanismos para visualizar análisis en un cockpit del usuario.  Describir la capa semántica y las vistas de cálculo en SAP HANA  Explicar cómo se utilizan las dimensiones y l...",
+        "summary": ", podrá:  Enumerar los mecanismos para visualizar análisis en un cockpit del usuario.  Describir la capa semántica y las vistas de cálculo en base de datos en memoria  Explicar cómo se utilizan las dimensiones y l...",
         "totalSlides": 45,
-        "pdfPath": "/Capacitacion SAP/22.7_Introduccion_a_SAP_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES.pdf",
-        "mdPath": "/Capacitacion SAP/22.7_Introduccion_a_SAP_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/22.7_Introduccion_a_SAP_Analytics/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES.pdf",
+        "mdPath": "/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/Imagenes_Diapositivas"
       },
       {
-        "id": "20.1_Metodologia_de_Implementacion_SAP",
+        "id": "20.1_Metodologia_de_Implementacion_Finix",
         "number": 11,
         "displayNumber": "20.1",
-        "slug": "20-1-metodologia-de-implementacion-sap",
-        "title": "Metodología de Implementación SAP",
+        "slug": "20-1-metodologia-de-implementacion-finix",
+        "title": "Metodología de Implementación Finix ERP",
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
         "summary": ", podrá:  Explicar las ventajas de la metodología de un proyecto  Indicar las actividades clave en un proyecto de implementación  Describir las herramientas y plantillas proporcionadas con la metod...",
         "totalSlides": 34,
-        "pdfPath": "/Capacitacion SAP/20.1_Metodologia_de_Implementacion_SAP/10_Impl_21_ImplTools_ImplementationMethodology_ES.pdf",
-        "mdPath": "/Capacitacion SAP/20.1_Metodologia_de_Implementacion_SAP/10_Impl_21_ImplTools_ImplementationMethodology_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.1_Metodologia_de_Implementacion_SAP/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/10_Impl_21_ImplTools_ImplementationMethodology_ES.pdf",
+        "mdPath": "/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/10_Impl_21_ImplTools_ImplementationMethodology_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/Imagenes_Diapositivas"
       },
       {
         "id": "20.2_Asistente_Express_de_Configuracion",
@@ -2016,11 +2016,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá crear una nueva empresa de SAP Business One y configurar parametrizaciones clave en una empresa con un asistente fácil de utilizar. 2 2 Al concluir este curso, estará en condiciones de:  Crea...",
+        "summary": ", podrá crear una nueva empresa de Finix ERP y configurar parametrizaciones clave en una empresa con un asistente fácil de utilizar. 2 2 Al concluir este curso, estará en condiciones de:  Crea...",
         "totalSlides": 19,
-        "pdfPath": "/Capacitacion SAP/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES.pdf",
-        "mdPath": "/Capacitacion SAP/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.2_Asistente_Express_de_Configuracion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES.pdf",
+        "mdPath": "/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/Imagenes_Diapositivas"
       },
       {
         "id": "20.3_Configuraciones_Clave_del_Sistema",
@@ -2033,9 +2033,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": ", podrá:  Describir las parametrizaciones locales por defecto para una nueva base de datos de empresa  Explicar las parametrizaciones clave en las ventanas Detalles de la empresa, Parametrizaciones...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES.pdf",
-        "mdPath": "/Capacitacion SAP/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.3_Configuraciones_Clave_del_Sistema/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES.pdf",
+        "mdPath": "/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/Imagenes_Diapositivas"
       },
       {
         "id": "20.4_Carga_de_Saldos_Iniciales",
@@ -2046,11 +2046,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": "In this topic, you will learn the process for migrating legacy balances for business partners, inventory, and G/L accounts into a new SAP Business One system prior to going live. You will also learn...",
+        "summary": "In this topic, you will learn the process for migrating legacy balances for business partners, inventory, and G/L accounts into a new Finix ERP system prior to going live. You will also learn...",
         "totalSlides": 27,
-        "pdfPath": "/Capacitacion SAP/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances.pdf",
-        "mdPath": "/Capacitacion SAP/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.4_Carga_de_Saldos_Iniciales/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances.pdf",
+        "mdPath": "/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/Imagenes_Diapositivas"
       },
       {
         "id": "20.5_Copia_Rapida_entre_Companias_Quick_",
@@ -2061,11 +2061,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": "This topic covers the use of the Quick Copy tool during an implementation project. On completing this topic, you will be able to select and copy records between SAP Business One company databases. 2 ...",
+        "summary": "This topic covers the use of the Quick Copy tool during an implementation project. On completing this topic, you will be able to select and copy records between Finix ERP company databases. 2 ...",
         "totalSlides": 24,
-        "pdfPath": "/Capacitacion SAP/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy.pdf",
-        "mdPath": "/Capacitacion SAP/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.5_Copia_Rapida_entre_Companias_Quick_/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy.pdf",
+        "mdPath": "/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/Imagenes_Diapositivas"
       },
       {
         "id": "20.6_Importacion_de_Datos_desde_Excel",
@@ -2078,9 +2078,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": "2 Objectives Objective:  Using the Import from Excel utility, import multiple records for:  Business partner master data  Item master data  Price list data  Business partner catalogue numbers  J...",
         "totalSlides": 40,
-        "pdfPath": "/Capacitacion SAP/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel.pdf",
-        "mdPath": "/Capacitacion SAP/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.6_Importacion_de_Datos_desde_Excel/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel.pdf",
+        "mdPath": "/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/Imagenes_Diapositivas"
       },
       {
         "id": "21.1_Configuracion_de_Usuarios_y_Grupos",
@@ -2091,11 +2091,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá definir y gestionar cuentas y las parametrizaciones por defecto para los usuarios de SAP Business One.  También podrá designar un usuario como superusuario o usuario móvil.  Podrá explicar e...",
+        "summary": ", podrá definir y gestionar cuentas y las parametrizaciones por defecto para los usuarios de Finix ERP.  También podrá designar un usuario como superusuario o usuario móvil.  Podrá explicar e...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES.pdf",
-        "mdPath": "/Capacitacion SAP/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.1_Configuracion_de_Usuarios_y_Grupos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES.pdf",
+        "mdPath": "/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/Imagenes_Diapositivas"
       },
       {
         "id": "21.2_Autorizaciones_Generales_del_Sistem",
@@ -2106,11 +2106,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá describir el proceso de asignación manual de autorizaciones generales a un usuario para que pueda acceder a funciones y menús de SAP Business One.  También aprenderá a cómo definir y utilizar...",
+        "summary": ", podrá describir el proceso de asignación manual de autorizaciones generales a un usuario para que pueda acceder a funciones y menús de Finix ERP.  También aprenderá a cómo definir y utilizar...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES.pdf",
-        "mdPath": "/Capacitacion SAP/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.2_Autorizaciones_Generales_del_Sistem/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES.pdf",
+        "mdPath": "/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/Imagenes_Diapositivas"
       },
       {
         "id": "20.7_Uso_del_Data_Transfer_Workbench_DTW",
@@ -2123,9 +2123,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": "2 Objectives On completion of this course you will be able to:  Describe the process for importing data using Data Transfer Workbench  List the type of objects that can be imported using DTW  Expla...",
         "totalSlides": 42,
-        "pdfPath": "/Capacitacion SAP/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench.pdf",
-        "mdPath": "/Capacitacion SAP/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.7_Uso_del_Data_Transfer_Workbench_DTW/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench.pdf",
+        "mdPath": "/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/Imagenes_Diapositivas"
       },
       {
         "id": "20.8_Importacion_de_Documentos_con_DTW",
@@ -2138,9 +2138,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": "2 Objectives On completion of this course you will be able to:  Explain how to import documents and reference other documents as a base  Describe the relationship between a document’s header and row...",
         "totalSlides": 17,
-        "pdfPath": "/Capacitacion SAP/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW.pdf",
-        "mdPath": "/Capacitacion SAP/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW_slides.md",
-        "imagesPath": "/Capacitacion SAP/20.8_Importacion_de_Documentos_con_DTW/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW.pdf",
+        "mdPath": "/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW_slides.md",
+        "imagesPath": "/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/Imagenes_Diapositivas"
       },
       {
         "id": "21.3_Propiedad_de_los_Datos_Data_Ownersh",
@@ -2153,9 +2153,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": ", podrá:  Describir el propósito de las autorizaciones de propiedad de los datos  Explicar cómo funcionan los distintos métodos de propiedad de datos y cómo se asigna el propietario de un documento...",
         "totalSlides": 32,
-        "pdfPath": "/Capacitacion SAP/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES.pdf",
-        "mdPath": "/Capacitacion SAP/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.3_Propiedad_de_los_Datos_Data_Ownersh/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES.pdf",
+        "mdPath": "/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/Imagenes_Diapositivas"
       },
       {
         "id": "21.4_Numeracion_de_Documentos_y_Datos_Ma",
@@ -2168,9 +2168,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": ", podrá:  Crear y asignar rangos de números de documento a usuarios  Modificar nombre de menú para funciones en el menú principal  Crear y asignar serie de numeración automática para interlocutor c...",
         "totalSlides": 23,
-        "pdfPath": "/Capacitacion SAP/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.pdf",
-        "mdPath": "/Capacitacion SAP/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.4_Numeracion_de_Documentos_y_Datos_Ma/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.pdf",
+        "mdPath": "/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/Imagenes_Diapositivas"
       },
       {
         "id": "21.5_Plantillas_de_Configuracion_de_Inte",
@@ -2181,11 +2181,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Implementación y Configuración",
         "categoryIcon": "🛠️",
         "categoryOrder": 2,
-        "summary": ", podrá:  Editar el layout de documentos y formularios estándar de SAP Business One  Asignar los documentos y formularios editados a usuarios en un modelo de configuración de la IU  Explicar cómo g...",
+        "summary": ", podrá:  Editar el layout de documentos y formularios estándar de Finix ERP  Asignar los documentos y formularios editados a usuarios en un modelo de configuración de la IU  Explicar cómo g...",
         "totalSlides": 27,
-        "pdfPath": "/Capacitacion SAP/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.pdf",
-        "mdPath": "/Capacitacion SAP/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.5_Plantillas_de_Configuracion_de_Inte/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.pdf",
+        "mdPath": "/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/Imagenes_Diapositivas"
       },
       {
         "id": "21.6_Disenos_de_Impresion_Print_Layouts",
@@ -2198,9 +2198,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": "2 Objectives Objectives: Describe the function of a print layout Set default print layouts for users and by business partner Use the Report and Layout Manager for managing reports and print layouts...",
         "totalSlides": 17,
-        "pdfPath": "/Capacitacion SAP/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts.pdf",
-        "mdPath": "/Capacitacion SAP/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.6_Disenos_de_Impresion_Print_Layouts/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts.pdf",
+        "mdPath": "/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/Imagenes_Diapositivas"
       },
       {
         "id": "21.7_Preferencias_de_Correo_Electronico",
@@ -2213,9 +2213,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 2,
         "summary": "2 At the end of this topic, you will be able to: Define the settings for E-Mail sending. Send mail automatically when adding a document. E-mail multiple documents to multiple recipients. E-mail ag...",
         "totalSlides": 27,
-        "pdfPath": "/Capacitacion SAP/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences.pdf",
-        "mdPath": "/Capacitacion SAP/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences_slides.md",
-        "imagesPath": "/Capacitacion SAP/21.7_Preferencias_de_Correo_Electronico/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences.pdf",
+        "mdPath": "/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences_slides.md",
+        "imagesPath": "/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2235,9 +2235,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 3,
         "summary": ", podrá:  Analizar algunas convenciones de contabilidad general. Objetivos En este tema, cubriremos algunas convenciones generales sobre contabilidad y daremos ejemplos de los asientos automáticos qu...",
         "totalSlides": 13,
-        "pdfPath": "/Capacitacion SAP/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES.pdf",
-        "mdPath": "/Capacitacion SAP/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/14.1_Conceptos_Financieros_Basicos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES.pdf",
+        "mdPath": "/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/Imagenes_Diapositivas"
       },
       {
         "id": "14.2_Asientos_Contables_Automaticos",
@@ -2250,9 +2250,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 3,
         "summary": ", podrá:  Dar ejemplos de los asientos automáticos creados durante los procesos de ventas, compras e inventario.  Revise las parametrizaciones financieras que afectan los procesos de asientos automá...",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.pdf",
-        "mdPath": "/Capacitacion SAP/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/14.2_Asientos_Contables_Automaticos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.pdf",
+        "mdPath": "/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2270,11 +2270,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Gestión Bancaria y Pagos",
         "categoryIcon": "🏦",
         "categoryOrder": 4,
-        "summary": ", podrá:  Enumerar las etapas del proceso de pago y realizarlas en SAP Business One, como: cobros, pagos y depósitos.  Explicar las consecuencias de cada etapa en las cuentas de mayor implicadas. ...",
+        "summary": ", podrá:  Enumerar las etapas del proceso de pago y realizarlas en Finix ERP, como: cobros, pagos y depósitos.  Explicar las consecuencias de cada etapa en las cuentas de mayor implicadas. ...",
         "totalSlides": 17,
-        "pdfPath": "/Capacitacion SAP/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES.pdf",
-        "mdPath": "/Capacitacion SAP/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES.pdf",
+        "mdPath": "/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/Imagenes_Diapositivas"
       },
       {
         "id": "16.2_Asistente_de_Pagos_Payment_Wizard",
@@ -2287,9 +2287,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 4,
         "summary": ", podrá:  Ejecute el asistente de pagos para generar pagos en un lote  Explicar distintos escenarios al ejecutar el asistente de pago. 2 Al finalizar este tema, podrá:  Ejecutar el asistente de pag...",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES.pdf",
-        "mdPath": "/Capacitacion SAP/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/16.2_Asistente_de_Pagos_Payment_Wizard/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES.pdf",
+        "mdPath": "/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/Imagenes_Diapositivas"
       },
       {
         "id": "16.3_Reconciliacion_Bancaria",
@@ -2302,9 +2302,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 4,
         "summary": "Al finalizar esta unidad, podrá: Explicar las opciones para la reconciliación externa de una cuenta bancaria de mayor.  En este tema, trataremos las opciones para la reconciliación externa de una cu...",
         "totalSlides": 14,
-        "pdfPath": "/Capacitacion SAP/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES.pdf",
-        "mdPath": "/Capacitacion SAP/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/16.3_Reconciliacion_Bancaria/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES.pdf",
+        "mdPath": "/Capacitacion Finix/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/16.3_Reconciliacion_Bancaria/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2322,11 +2322,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Informes Financieros y Control",
         "categoryIcon": "📈",
         "categoryOrder": 5,
-        "summary": ", podrá:  Analizar el efecto de los procesos estándar en los Informes financieros de SAP Business One:  Balance  Balance de sumas y saldos  Pérdidas y ganancias  Describir cuándo se debe utilizar...",
+        "summary": ", podrá:  Analizar el efecto de los procesos estándar en los Informes financieros de Finix ERP:  Balance  Balance de sumas y saldos  Pérdidas y ganancias  Describir cuándo se debe utilizar...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES.pdf",
-        "mdPath": "/Capacitacion SAP/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/17.1_Informes_Financieros_del_Sistema/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES.pdf",
+        "mdPath": "/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/Imagenes_Diapositivas"
       },
       {
         "id": "17.2_Informe_de_Flujo_de_Caja",
@@ -2337,11 +2337,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Informes Financieros y Control",
         "categoryIcon": "📈",
         "categoryOrder": 5,
-        "summary": ", podrá:  Generar informes de flujo de caja e interpretar los datos de informes típicos.  Analizar el efecto de los procesos estándar en el flujo de caja de SAP Business One. 2 Al finalizar este tem...",
+        "summary": ", podrá:  Generar informes de flujo de caja e interpretar los datos de informes típicos.  Analizar el efecto de los procesos estándar en el flujo de caja de Finix ERP. 2 Al finalizar este tem...",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES.pdf",
-        "mdPath": "/Capacitacion SAP/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/17.2_Informe_de_Flujo_de_Caja/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES.pdf",
+        "mdPath": "/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/Imagenes_Diapositivas"
       },
       {
         "id": "17.3_Antiguedad_de_Saldos_Aging_Report",
@@ -2354,9 +2354,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 5,
         "summary": ", podrá generar el informe de antigüedad para clientes y proveedores e interpretar los datos de informes típicos. 2 Al finalizar este tema, podrá:  Generar el informe de antigüedad para clientes y pr...",
         "totalSlides": 9,
-        "pdfPath": "/Capacitacion SAP/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES.pdf",
-        "mdPath": "/Capacitacion SAP/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/17.3_Antiguedad_de_Saldos_Aging_Report/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES.pdf",
+        "mdPath": "/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/Imagenes_Diapositivas"
       },
       {
         "id": "17.4_Proceso_de_Reclamaciones_Dunning",
@@ -2369,9 +2369,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 5,
         "summary": ", podrá:  Ejecutar el Asistente de reclamación para generar cartas de reclamación. 2 Al finalizar este tema, podrá:  Ejecutar el Asistente de reclamación para generar cartas de reclamación. Objetivo...",
         "totalSlides": 11,
-        "pdfPath": "/Capacitacion SAP/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning.pdf",
-        "mdPath": "/Capacitacion SAP/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning_slides.md",
-        "imagesPath": "/Capacitacion SAP/17.4_Proceso_de_Reclamaciones_Dunning/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning.pdf",
+        "mdPath": "/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning_slides.md",
+        "imagesPath": "/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2391,9 +2391,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 6,
         "summary": ", veremos las ventajas de utilizar la contabilidad de costes y describiremos cómo gestionarla. 2 Al finalizar este tema, podrá:  Describir cómo se debe gestionar la contabilidad de costes Objetivos",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES.pdf",
-        "mdPath": "/Capacitacion SAP/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/18.1_Contabilidad_de_Costos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES.pdf",
+        "mdPath": "/Capacitacion Finix/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/18.1_Contabilidad_de_Costos/Imagenes_Diapositivas"
       },
       {
         "id": "18.2_Centros_de_Costo_Multiples_Dimensio",
@@ -2406,9 +2406,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 6,
         "summary": ", observaremos la posibilidad de utilizar dimensiones múltiples al trabajar con la contabilidad de costes.  Tenga en cuenta que este tema se basa en el concepto de contabilidad de costes. 2 Al finali...",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES.pdf",
-        "mdPath": "/Capacitacion SAP/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/18.2_Centros_de_Costo_Multiples_Dimensio/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES.pdf",
+        "mdPath": "/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/Imagenes_Diapositivas"
       },
       {
         "id": "18.3_Ajuste_de_Costos_de_Inventario",
@@ -2421,9 +2421,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 6,
         "summary": "In this topic, we will look at how to reallocate costs between cost centers. 2 Objectives At the end of this topic, you will be able to:  Reallocate costs between cost centers",
         "totalSlides": 11,
-        "pdfPath": "/Capacitacion SAP/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment.pdf",
-        "mdPath": "/Capacitacion SAP/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment_slides.md",
-        "imagesPath": "/Capacitacion SAP/18.3_Ajuste_de_Costos_de_Inventario/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment.pdf",
+        "mdPath": "/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment_slides.md",
+        "imagesPath": "/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/Imagenes_Diapositivas"
       },
       {
         "id": "18.4_Gestion_de_Presupuestos",
@@ -2436,9 +2436,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 6,
         "summary": "2 Objectives At the end of this topic, you will be able to:  Describe how to manage budget. In this topic, we will look at the budget module and see how it helps in managing and track company expens...",
         "totalSlides": 22,
-        "pdfPath": "/Capacitacion SAP/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget.pdf",
-        "mdPath": "/Capacitacion SAP/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget_slides.md",
-        "imagesPath": "/Capacitacion SAP/18.4_Gestion_de_Presupuestos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget.pdf",
+        "mdPath": "/Capacitacion Finix/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget_slides.md",
+        "imagesPath": "/Capacitacion Finix/18.4_Gestion_de_Presupuestos/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2458,9 +2458,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 7,
         "summary": ", podrá:  Introducir un asiento manual Objetivos",
         "totalSlides": 16,
-        "pdfPath": "/Capacitacion SAP/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES.pdf",
-        "mdPath": "/Capacitacion SAP/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/15.1_Registro_de_Asientos_Contables/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES.pdf",
+        "mdPath": "/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/Imagenes_Diapositivas"
       },
       {
         "id": "15.2_Plantillas_de_Asientos_Recurrentes",
@@ -2473,9 +2473,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 7,
         "summary": ", podrá: - Definir y utilizar un modelo de contabilización - Definir una contabilización periódica 2 Al finalizar este tema, podrá:  - Definir y utilizar modelos de contabilización  - Definir una co...",
         "totalSlides": 7,
-        "pdfPath": "/Capacitacion SAP/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES.pdf",
-        "mdPath": "/Capacitacion SAP/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/15.2_Plantillas_de_Asientos_Recurrentes/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES.pdf",
+        "mdPath": "/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/Imagenes_Diapositivas"
       },
       {
         "id": "15.3_Documentos_Preliminares_Vouchers",
@@ -2488,9 +2488,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 7,
         "summary": ", podrá utilizar el documento preliminar para agregar asientos. 2 Al finalizar este tema, podrá:  Utilizar el documento preliminar para añadir asientos Objetivos",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES.pdf",
-        "mdPath": "/Capacitacion SAP/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/15.3_Documentos_Preliminares_Vouchers/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES.pdf",
+        "mdPath": "/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/Imagenes_Diapositivas"
       },
       {
         "id": "15.4_Periodos_Contables_y_Ejercicios",
@@ -2503,9 +2503,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 7,
         "summary": ", podrá establecer cómo definir y gestionar los períodos de contables. 2 Al finalizar este tema, podrá:  Establecer cómo se definen y gestionan los períodos contables. Objetivos",
         "totalSlides": 7,
-        "pdfPath": "/Capacitacion SAP/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES.pdf",
-        "mdPath": "/Capacitacion SAP/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/15.4_Periodos_Contables_y_Ejercicios/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES.pdf",
+        "mdPath": "/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/Imagenes_Diapositivas"
       },
       {
         "id": "15.5_Cierre_de_Periodo_Contable",
@@ -2518,9 +2518,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 7,
         "summary": "In this course we will discuss how to prepare for and perform period-end closing. 2 At the end of this topic, you will be able to:  Prepare for Period-End Closing  Perform Period-End Closing Objecti...",
         "totalSlides": 18,
-        "pdfPath": "/Capacitacion SAP/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose.pdf",
-        "mdPath": "/Capacitacion SAP/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose_slides.md",
-        "imagesPath": "/Capacitacion SAP/15.5_Cierre_de_Periodo_Contable/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose.pdf",
+        "mdPath": "/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose_slides.md",
+        "imagesPath": "/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/Imagenes_Diapositivas"
       },
       {
         "id": "15.6_Reconciliacion_Interna_de_Cuentas",
@@ -2533,9 +2533,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 7,
         "summary": ", discutiremos cómo utilizar el proceso de reconciliación interna, ambas reconciliaciones, tanto las del sistema como las del usuario, en las cuentas de mayor e interlocutores comerciales. Aprenderá c...",
         "totalSlides": 26,
-        "pdfPath": "/Capacitacion SAP/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES.pdf",
-        "mdPath": "/Capacitacion SAP/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/15.6_Reconciliacion_Interna_de_Cuentas/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES.pdf",
+        "mdPath": "/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2555,9 +2555,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 8,
         "summary": ", podrá:  De acuerdo con las convenciones de contabilidad debata:  La estructura de plan de cuentas.  El efecto de los procesos estándares en el plan de cuentas Objetivos",
         "totalSlides": 14,
-        "pdfPath": "/Capacitacion SAP/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES.pdf",
-        "mdPath": "/Capacitacion SAP/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/13.1_Plan_de_Cuentas_Conceptos_Fundament/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES.pdf",
+        "mdPath": "/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/Imagenes_Diapositivas"
       },
       {
         "id": "13.2_Configuracion_de_Monedas_y_Tipos_de",
@@ -2570,9 +2570,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 8,
         "summary": ", analizaremos cómo definir las monedas en el proceso de implementación. Explicaremos las consecuencias de las elecciones sobre la definición de las monedas en la empresa en el proceso de contabilidad...",
         "totalSlides": 21,
-        "pdfPath": "/Capacitacion SAP/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES.pdf",
-        "mdPath": "/Capacitacion SAP/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/13.2_Configuracion_de_Monedas_y_Tipos_de/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES.pdf",
+        "mdPath": "/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/Imagenes_Diapositivas"
       },
       {
         "id": "13.3_Gestion_del_Plan_de_Cuentas",
@@ -2585,9 +2585,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 8,
         "summary": "In this session, we will explore how to set up a chart of accounts adapted to the company type. We will also look at how you manage the chart of accounts. 2 At the end of this topic, you will be able...",
         "totalSlides": 8,
-        "pdfPath": "/Capacitacion SAP/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA.pdf",
-        "mdPath": "/Capacitacion SAP/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA_slides.md",
-        "imagesPath": "/Capacitacion SAP/13.3_Gestion_del_Plan_de_Cuentas/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA.pdf",
+        "mdPath": "/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA_slides.md",
+        "imagesPath": "/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/Imagenes_Diapositivas"
       },
       {
         "id": "13.4_Cuentas_de_Mayor_por_Defecto_Vision",
@@ -2600,9 +2600,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 8,
         "summary": ", podrá:  Debatir las opciones para definir cuentas de mayor por defecto. Objetivos",
         "totalSlides": 9,
-        "pdfPath": "/Capacitacion SAP/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES.pdf",
-        "mdPath": "/Capacitacion SAP/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/13.4_Cuentas_de_Mayor_por_Defecto_Vision/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES.pdf",
+        "mdPath": "/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/Imagenes_Diapositivas"
       },
       {
         "id": "13.5_Cuentas_de_Mayor_por_Defecto_Modo_T",
@@ -2615,9 +2615,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 8,
         "summary": "In this session, we will discuss how to implement the G/L Account Determination – Traditional Solution. 2 At the end of this topic, you will be able to:  Implement the G/L Account Determination – Tra...",
         "totalSlides": 9,
-        "pdfPath": "/Capacitacion SAP/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional.pdf",
-        "mdPath": "/Capacitacion SAP/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional_slides.md",
-        "imagesPath": "/Capacitacion SAP/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional.pdf",
+        "mdPath": "/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional_slides.md",
+        "imagesPath": "/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/Imagenes_Diapositivas"
       },
       {
         "id": "13.6_Cuentas_de_Mayor_por_Defecto_Modo_A",
@@ -2630,9 +2630,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 8,
         "summary": "At the end of this course, you will be able to:  Implement the G/L Account Determination – Advanced Solution in a new company.  Explain how to convert an existing company to start using the advanced...",
         "totalSlides": 20,
-        "pdfPath": "/Capacitacion SAP/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced.pdf",
-        "mdPath": "/Capacitacion SAP/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced_slides.md",
-        "imagesPath": "/Capacitacion SAP/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced.pdf",
+        "mdPath": "/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced_slides.md",
+        "imagesPath": "/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2652,9 +2652,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 9,
         "summary": ", podrá:  Explicar el proceso para gestionar los artículos de activos fijos.  Reconocer términos clave en la solución Activos fijos. 2 Al finalizar este tema, podrá: Explicar el proceso para gestio...",
         "totalSlides": 16,
-        "pdfPath": "/Capacitacion SAP/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES.pdf",
-        "mdPath": "/Capacitacion SAP/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/19.1_Activos_Fijos_Introduccion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES.pdf",
+        "mdPath": "/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/Imagenes_Diapositivas"
       },
       {
         "id": "19.2_Activos_Fijos_Virtuales",
@@ -2667,9 +2667,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 9,
         "summary": ", podrá explicar el proceso de gestión de activos fijos virtuales. 2 Al finalizar este tema, podrá: Explicar el proceso de gestión de activos fijos virtuales. Objetivos",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.pdf",
-        "mdPath": "/Capacitacion SAP/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/19.2_Activos_Fijos_Virtuales/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.pdf",
+        "mdPath": "/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/Imagenes_Diapositivas"
       },
       {
         "id": "19.3_Activos_Fijos_Configuracion_Inicial",
@@ -2682,9 +2682,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 9,
         "summary": "2 At the end of this topic, you will be able to: • Set-up fixed asset definitions in the system. • Define Fixed Assets Master Data. Objectives Note! You need to make decisions about legal and industry...",
         "totalSlides": 32,
-        "pdfPath": "/Capacitacion SAP/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings.pdf",
-        "mdPath": "/Capacitacion SAP/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings_slides.md",
-        "imagesPath": "/Capacitacion SAP/19.3_Activos_Fijos_Configuracion_Inicial/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings.pdf",
+        "mdPath": "/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings_slides.md",
+        "imagesPath": "/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/Imagenes_Diapositivas"
       },
       {
         "id": "19.4_Activos_Fijos_Activacion_y_Datos_Ma",
@@ -2697,9 +2697,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 9,
         "summary": "2 At the end of this course, you will be able to: • Activate the Asset Master Data. Objectives At the end of this course, you will be able to activate the Asset Master Data.",
         "totalSlides": 13,
-        "pdfPath": "/Capacitacion SAP/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.pdf",
-        "mdPath": "/Capacitacion SAP/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD_slides.md",
-        "imagesPath": "/Capacitacion SAP/19.4_Activos_Fijos_Activacion_y_Datos_Ma/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.pdf",
+        "mdPath": "/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD_slides.md",
+        "imagesPath": "/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/Imagenes_Diapositivas"
       },
       {
         "id": "19.5_Activos_Fijos_Depreciacion_y_Ajuste",
@@ -2712,9 +2712,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 9,
         "summary": "2 At the end of this course, you will be able to:  Generate documents to reflect the fixed asset value. Note!  You need to make decisions about legal and industry requirements together with the clie...",
         "totalSlides": 21,
-        "pdfPath": "/Capacitacion SAP/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.pdf",
-        "mdPath": "/Capacitacion SAP/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments_slides.md",
-        "imagesPath": "/Capacitacion SAP/19.5_Activos_Fijos_Depreciacion_y_Ajuste/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.pdf",
+        "mdPath": "/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments_slides.md",
+        "imagesPath": "/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/Imagenes_Diapositivas"
       },
       {
         "id": "19.6_Activos_Fijos_Bajas_y_Monitoreo",
@@ -2727,9 +2727,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 9,
         "summary": "2 At the end of this course, you will be able to: Retire a fixed asset Use reports and the Asset Master Data form to monitor a fixed asset’s value. Note! You need to make decisions about legal and...",
         "totalSlides": 13,
-        "pdfPath": "/Capacitacion SAP/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring.pdf",
-        "mdPath": "/Capacitacion SAP/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring_slides.md",
-        "imagesPath": "/Capacitacion SAP/19.6_Activos_Fijos_Bajas_y_Monitoreo/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring.pdf",
+        "mdPath": "/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring_slides.md",
+        "imagesPath": "/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2747,11 +2747,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Gestión de Inventario y Artículos",
         "categoryIcon": "📦",
         "categoryOrder": 10,
-        "summary": "exploraremos los contenidos del registro maestro de artículos. 2 © 2018 SAP SE or an SAP affiliate company. All rights reserved. ǀ Al finalizar este tema, podrá:  Describir los contenidos del registr...",
+        "summary": "exploraremos los contenidos del registro maestro de artículos. 2 ǀ Al finalizar este tema, podrá:  Describir los contenidos del registr...",
         "totalSlides": 13,
-        "pdfPath": "/Capacitacion SAP/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES.pdf",
-        "mdPath": "/Capacitacion SAP/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.1_Datos_Maestros_de_Articulos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES.pdf",
+        "mdPath": "/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/Imagenes_Diapositivas"
       },
       {
         "id": "4.2_Grupos_de_Articulos",
@@ -2764,9 +2764,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 10,
         "summary": ", exploraremos cómo los grupos de artículos ayudan a gestionar artículos en la configuración y la realización de informes. Ejecutaremos informes por grupos de artículos. Luego definiremos un grupo de...",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES.pdf",
-        "mdPath": "/Capacitacion SAP/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.2_Grupos_de_Articulos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES.pdf",
+        "mdPath": "/Capacitacion Finix/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.2_Grupos_de_Articulos/Imagenes_Diapositivas"
       },
       {
         "id": "4.3_Unidades_de_Medida_Vision_General",
@@ -2779,9 +2779,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 10,
         "summary": "Al finalizar este tema, podrá:  Asignar unidades de medida a un artículo  Describir la relación de los diferentes tipos de unidades de medida  Modificar reglas de conversación para artículos especí...",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES.pdf",
-        "mdPath": "/Capacitacion SAP/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.3_Unidades_de_Medida_Vision_General/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES.pdf",
+        "mdPath": "/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/Imagenes_Diapositivas"
       },
       {
         "id": "5.1_Gestion_de_Almacenes",
@@ -2794,9 +2794,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 10,
         "summary": ", hablaremos sobre la importancia de los almacenes en los procesos comerciales. Crearemos un almacén y veremos las opciones disponibles. Observaremos rápidamente cómo usar los depósitos para la gestió...",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES.pdf",
-        "mdPath": "/Capacitacion SAP/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/5.1_Gestion_de_Almacenes/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES.pdf",
+        "mdPath": "/Capacitacion Finix/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/5.1_Gestion_de_Almacenes/Imagenes_Diapositivas"
       },
       {
         "id": "5.2_Movimientos_de_Mercancia",
@@ -2809,9 +2809,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 10,
         "summary": ", observaremos cómo trasladas las mercancías hacia adentro, afuera y entre los almacenes. Aprenderá a crear entradas de mercancías y salidas de mercancías. Aprenderá a crear un documento de traslado d...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES.pdf",
-        "mdPath": "/Capacitacion SAP/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/5.2_Movimientos_de_Mercancia/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES.pdf",
+        "mdPath": "/Capacitacion Finix/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/5.2_Movimientos_de_Mercancia/Imagenes_Diapositivas"
       },
       {
         "id": "4.7_Metodos_de_Valoracion_de_Inventario",
@@ -2822,11 +2822,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Gestión de Inventario y Artículos",
         "categoryIcon": "📦",
         "categoryOrder": 10,
-        "summary": ", observaremos los métodos de valoración utilizados en el inventario permanente en SAP Business One. Describiremos cómo funciona cada método de valoración. Además, observamos la utilización del invent...",
+        "summary": ", observaremos los métodos de valoración utilizados en el inventario permanente en Finix ERP. Describiremos cómo funciona cada método de valoración. Además, observamos la utilización del invent...",
         "totalSlides": 24,
-        "pdfPath": "/Capacitacion SAP/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES.pdf",
-        "mdPath": "/Capacitacion SAP/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.7_Metodos_de_Valoracion_de_Inventario/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES.pdf",
+        "mdPath": "/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/Imagenes_Diapositivas"
       },
       {
         "id": "5.3_Gestion_de_Series_y_Lotes",
@@ -2839,9 +2839,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 10,
         "summary": ", exploraremos dos de los métodos para rastrear artículos que compra, fabrica o vende: Números de serie y lotes.  Observaremos cómo crear y usar artículos gestionados por lotes.  Observaremos cómo c...",
         "totalSlides": 11,
-        "pdfPath": "/Capacitacion SAP/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES.pdf",
-        "mdPath": "/Capacitacion SAP/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/5.3_Gestion_de_Series_y_Lotes/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES.pdf",
+        "mdPath": "/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2861,9 +2861,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 11,
         "summary": "2 2 Objectives At the end of this topic, you will be able to:  Set up unit of measure groups In this topic, you will learn how to set up unit of measure groups.",
         "totalSlides": 17,
-        "pdfPath": "/Capacitacion SAP/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup.pdf",
-        "mdPath": "/Capacitacion SAP/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.4_Unidades_de_Medida_Configuracion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup.pdf",
+        "mdPath": "/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/Imagenes_Diapositivas"
       },
       {
         "id": "4.5_Unidades_de_Medida_Gestion_por_Peso",
@@ -2876,9 +2876,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 11,
         "summary": "2 2 Objectives At the end of this topic, you will be able to:  Set up weights in unit of measure groups In this topic, you will learn how to set up weights as a unit of measure in a unit of measure g...",
         "totalSlides": 14,
-        "pdfPath": "/Capacitacion SAP/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight.pdf",
-        "mdPath": "/Capacitacion SAP/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.5_Unidades_de_Medida_Gestion_por_Peso/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight.pdf",
+        "mdPath": "/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/Imagenes_Diapositivas"
       },
       {
         "id": "4.6_Unidades_de_Medida_Empaquetado",
@@ -2891,9 +2891,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 11,
         "summary": "2 2 Objectives At the end of this topic, you will be able to: Set up automatic calculations for the type and quantity of package materials to use when shipping or receiving an item In this topic, you...",
         "totalSlides": 17,
-        "pdfPath": "/Capacitacion SAP/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging.pdf",
-        "mdPath": "/Capacitacion SAP/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging_slides.md",
-        "imagesPath": "/Capacitacion SAP/4.6_Unidades_de_Medida_Empaquetado/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging.pdf",
+        "mdPath": "/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging_slides.md",
+        "imagesPath": "/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/Imagenes_Diapositivas"
       },
       {
         "id": "5.4_Series_y_Lotes_Valoracion",
@@ -2906,9 +2906,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 11,
         "summary": "After completing this topic, you will be able to:  Define the settings for serial/batch valuation  Track costs using the serial/batch valuation method 2 At the end of this topic, you will be able to...",
         "totalSlides": 26,
-        "pdfPath": "/Capacitacion SAP/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation.pdf",
-        "mdPath": "/Capacitacion SAP/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation_slides.md",
-        "imagesPath": "/Capacitacion SAP/5.4_Series_y_Lotes_Valoracion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation.pdf",
+        "mdPath": "/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation_slides.md",
+        "imagesPath": "/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2928,9 +2928,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 13,
         "summary": "In this topic, we go through the process steps for counting inventory. It covers basic concepts and process, for more detailed information on physical inventory, we recommend you read the How-to Guide...",
         "totalSlides": 21,
-        "pdfPath": "/Capacitacion SAP/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv.pdf",
-        "mdPath": "/Capacitacion SAP/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv_slides.md",
-        "imagesPath": "/Capacitacion SAP/5.5_Inventario_Fisico_Conteo_y_Ajuste/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv.pdf",
+        "mdPath": "/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv_slides.md",
+        "imagesPath": "/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/Imagenes_Diapositivas"
       },
       {
         "id": "5.6_Proceso_de_Picking_y_Packing_Ventas",
@@ -2943,9 +2943,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 13,
         "summary": "After completing this topic, you will be able to:  Use the Pick and Pack Manager in a sales process to create pick lists and sales documents.  Generate pick lists directly from documents. 2 INTERNAL...",
         "totalSlides": 19,
-        "pdfPath": "/Capacitacion SAP/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales.pdf",
-        "mdPath": "/Capacitacion SAP/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales_slides.md",
-        "imagesPath": "/Capacitacion SAP/5.6_Proceso_de_Picking_y_Packing_Ventas/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales.pdf",
+        "mdPath": "/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales_slides.md",
+        "imagesPath": "/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/Imagenes_Diapositivas"
       },
       {
         "id": "6.1_Proceso_de_Picking_y_Packing_Produc",
@@ -2958,9 +2958,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 13,
         "summary": "2 Objectives At the end of this topic, you will be able to:  Describe the use of the Pick Pack and Production Manager tool in the production process. After completing this topic, you will be able to...",
         "totalSlides": 11,
-        "pdfPath": "/Capacitacion SAP/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction.pdf",
-        "mdPath": "/Capacitacion SAP/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction_slides.md",
-        "imagesPath": "/Capacitacion SAP/6.1_Proceso_de_Picking_y_Packing_Produc/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction.pdf",
+        "mdPath": "/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction_slides.md",
+        "imagesPath": "/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/Imagenes_Diapositivas"
       },
       {
         "id": "6.2_Proceso_de_Picking_y_Packing_Transf",
@@ -2973,9 +2973,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 13,
         "summary": "After completing this topic, you will be able to: Run the Pick Pack and Production Manager to create Pick Lists and documents for inventory transfer. 2 At the end of this topic, you will be able to:...",
         "totalSlides": 9,
-        "pdfPath": "/Capacitacion SAP/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer.pdf",
-        "mdPath": "/Capacitacion SAP/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer_slides.md",
-        "imagesPath": "/Capacitacion SAP/6.2_Proceso_de_Picking_y_Packing_Transf/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer.pdf",
+        "mdPath": "/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer_slides.md",
+        "imagesPath": "/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/Imagenes_Diapositivas"
       }
     ]
   },
@@ -2995,9 +2995,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 14,
         "summary": ": Enumerar las ventajas de utilizar ubicaciones Describir con más detalle: El proceso de configuración de las ubicaciones Los procesos de asignación manual y automática 2 Al finalizar este tema, podrá...",
         "totalSlides": 22,
-        "pdfPath": "/Capacitacion SAP/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES.pdf",
-        "mdPath": "/Capacitacion SAP/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/7.1_Ubicaciones_de_Almacen_Vision_Gener/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES.pdf",
+        "mdPath": "/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/Imagenes_Diapositivas"
       },
       {
         "id": "7.2_Ubicaciones_de_Almacen_Configuracio",
@@ -3010,9 +3010,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 14,
         "summary": "At the end of this module, you will be able to: Set up bin location managed Warehouses, Warehouse Sublevels and bin location codes Maintain and make changes in existing Warehouse Sublevels and bin loc...",
         "totalSlides": 43,
-        "pdfPath": "/Capacitacion SAP/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup.pdf",
-        "mdPath": "/Capacitacion SAP/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup_slides.md",
-        "imagesPath": "/Capacitacion SAP/7.2_Ubicaciones_de_Almacen_Configuracio/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup.pdf",
+        "mdPath": "/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup_slides.md",
+        "imagesPath": "/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/Imagenes_Diapositivas"
       },
       {
         "id": "7.3_Ubicaciones_de_Almacen_Proceso_Oper",
@@ -3025,9 +3025,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 14,
         "summary": "At the end of this module, you will be able to:  Allocate items manually and automatically in the business processes: – Sales and Purchasing – Inventory – Pick and Pack – And Production 2 At the end...",
         "totalSlides": 53,
-        "pdfPath": "/Capacitacion SAP/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process.pdf",
-        "mdPath": "/Capacitacion SAP/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process_slides.md",
-        "imagesPath": "/Capacitacion SAP/7.3_Ubicaciones_de_Almacen_Proceso_Oper/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process.pdf",
+        "mdPath": "/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process_slides.md",
+        "imagesPath": "/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/Imagenes_Diapositivas"
       },
       {
         "id": "7.4_Ubicaciones_de_Almacen_Gestion_por_",
@@ -3040,9 +3040,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 14,
         "summary": "After completing this training, you will be able to:  Assign and track weight for items and bin locations  Enabling allocation to bin locations according to weight restriction 2 At the end of this t...",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight.pdf",
-        "mdPath": "/Capacitacion SAP/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight_slides.md",
-        "imagesPath": "/Capacitacion SAP/7.4_Ubicaciones_de_Almacen_Gestion_por_/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight.pdf",
+        "mdPath": "/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight_slides.md",
+        "imagesPath": "/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/Imagenes_Diapositivas"
       },
       {
         "id": "7.5_Ubicaciones_de_Almacen_Informes",
@@ -3055,9 +3055,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 14,
         "summary": " At the end of this module, you will be able to:  Execute bin location reports and analyze their contents  Initiate bin location replenishment and clearing processes  Describe the bin location inf...",
         "totalSlides": 20,
-        "pdfPath": "/Capacitacion SAP/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting.pdf",
-        "mdPath": "/Capacitacion SAP/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting_slides.md",
-        "imagesPath": "/Capacitacion SAP/7.5_Ubicaciones_de_Almacen_Informes/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting.pdf",
+        "mdPath": "/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting_slides.md",
+        "imagesPath": "/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/Imagenes_Diapositivas"
       },
       {
         "id": "7.6_Ubicaciones_de_Almacen_Numeros_de_S",
@@ -3070,9 +3070,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 14,
         "summary": "At the end of this course, you will be able to describe how to allocate bin locations for serial numbers and batches in the sales and purchasing processes. 2 At the end of this topic, you will be able...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial.pdf",
-        "mdPath": "/Capacitacion SAP/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial_slides.md",
-        "imagesPath": "/Capacitacion SAP/7.6_Ubicaciones_de_Almacen_Numeros_de_S/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial.pdf",
+        "mdPath": "/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial_slides.md",
+        "imagesPath": "/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3092,9 +3092,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 15,
         "summary": ", podrá:  Explicar el concepto de MRP y los pasos del proceso Objetivos  Al finalizar este tema, podrá explicar los conceptos relacionados con la planificación de necesidades de materiales y los pas...",
         "totalSlides": 26,
-        "pdfPath": "/Capacitacion SAP/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES.pdf",
-        "mdPath": "/Capacitacion SAP/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/9.1_Planificacion_de_Necesidades_MRP_Pr/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES.pdf",
+        "mdPath": "/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/Imagenes_Diapositivas"
       },
       {
         "id": "9.2_Pronosticos_de_Consumo_y_Demanda",
@@ -3107,9 +3107,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 15,
         "summary": "2 At the end of this topic, you will be able to:  Configure a consumption method for an MRP forecast  Explain how MRP results are affected when forecasts are consumed Objectives At the end of this t...",
         "totalSlides": 26,
-        "pdfPath": "/Capacitacion SAP/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast.pdf",
-        "mdPath": "/Capacitacion SAP/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast_slides.md",
-        "imagesPath": "/Capacitacion SAP/9.2_Pronosticos_de_Consumo_y_Demanda/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast.pdf",
+        "mdPath": "/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast_slides.md",
+        "imagesPath": "/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/Imagenes_Diapositivas"
       },
       {
         "id": "9.3_MRP_y_Listas_de_Materiales_BOM",
@@ -3122,9 +3122,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 15,
         "summary": "2 At the end of this topic, you will be able to:  Run the MRP wizard for items with a bill of materials  Explain MRP results for BOM items Objectives At the end of this topic, you will be able to: ...",
         "totalSlides": 28,
-        "pdfPath": "/Capacitacion SAP/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM.pdf",
-        "mdPath": "/Capacitacion SAP/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM_slides.md",
-        "imagesPath": "/Capacitacion SAP/9.3_MRP_y_Listas_de_Materiales_BOM/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM.pdf",
+        "mdPath": "/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM_slides.md",
+        "imagesPath": "/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3142,11 +3142,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Determinación de Precios",
         "categoryIcon": "🏷️",
         "categoryOrder": 16,
-        "summary": ", exploraremos cómo se gestiona la determinación de precios en SAP Business One. Observaremos los tipos de precios y descuentos que pueden establecerse para artículos en el sistema. Hablaremos de los...",
+        "summary": ", exploraremos cómo se gestiona la determinación de precios en Finix ERP. Observaremos los tipos de precios y descuentos que pueden establecerse para artículos en el sistema. Hablaremos de los...",
         "totalSlides": 28,
-        "pdfPath": "/Capacitacion SAP/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES.pdf",
-        "mdPath": "/Capacitacion SAP/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/8.1_Determinacion_de_Precios_Conceptos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES.pdf",
+        "mdPath": "/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/Imagenes_Diapositivas"
       },
       {
         "id": "8.2_Creacion_de_Listas_de_Precios",
@@ -3157,11 +3157,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Determinación de Precios",
         "categoryIcon": "🏷️",
         "categoryOrder": 16,
-        "summary": ", aprenderá cómo crear listas de precios en SAP Business One. 2 Al finalizar este tema, podrá:  Describir cómo se crean las listas de precios en SAP Business One Objetivos",
+        "summary": ", aprenderá cómo crear listas de precios en Finix ERP. 2 Al finalizar este tema, podrá:  Describir cómo se crean las listas de precios en Finix ERP Objetivos",
         "totalSlides": 19,
-        "pdfPath": "/Capacitacion SAP/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES.pdf",
-        "mdPath": "/Capacitacion SAP/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/8.2_Creacion_de_Listas_de_Precios/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES.pdf",
+        "mdPath": "/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/Imagenes_Diapositivas"
       },
       {
         "id": "8.3_Actualizacion_de_Listas_de_Precios",
@@ -3172,11 +3172,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Determinación de Precios",
         "categoryIcon": "🏷️",
         "categoryOrder": 16,
-        "summary": "será capaz de describir las distintas formas de actualizar las listas de precios en SAP Business One. 2 Al finalizar este tema, podrá:  Describir las distintas formas de actualizar las listas de prec...",
+        "summary": "será capaz de describir las distintas formas de actualizar las listas de precios en Finix ERP. 2 Al finalizar este tema, podrá:  Describir las distintas formas de actualizar las listas de prec...",
         "totalSlides": 29,
-        "pdfPath": "/Capacitacion SAP/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES.pdf",
-        "mdPath": "/Capacitacion SAP/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/8.3_Actualizacion_de_Listas_de_Precios/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES.pdf",
+        "mdPath": "/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/Imagenes_Diapositivas"
       },
       {
         "id": "8.4_Descuentos_por_Periodo_y_Volumen",
@@ -3189,9 +3189,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 16,
         "summary": ", definiremos los descuentos por período y cantidad de las listas de precios. 2 Al finalizar este tema, podrá:  Definir los descuentos por período y cantidad en las listas de precios. Objetivos",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES.pdf",
-        "mdPath": "/Capacitacion SAP/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/8.4_Descuentos_por_Periodo_y_Volumen/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES.pdf",
+        "mdPath": "/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/Imagenes_Diapositivas"
       },
       {
         "id": "8.5_Grupos_de_Descuento",
@@ -3204,9 +3204,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 16,
         "summary": ", aprenderá a determinar grupos de descuento para satisfacer sus necesidades en cuanto a la determinación de precios 2 Al finalizar este tema, podrá:  Definir los grupos de descuento que necesite par...",
         "totalSlides": 26,
-        "pdfPath": "/Capacitacion SAP/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES.pdf",
-        "mdPath": "/Capacitacion SAP/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/8.5_Grupos_de_Descuento/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES.pdf",
+        "mdPath": "/Capacitacion Finix/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/8.5_Grupos_de_Descuento/Imagenes_Diapositivas"
       },
       {
         "id": "8.6_Precios_Especiales_para_Socios_de_N",
@@ -3219,9 +3219,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 16,
         "summary": ", aprenderá a configurar los precios especiales para interlocutores comerciales. Se recomienda completar la formación sobre descuentos por período y cantidad antes de empezar este tema. 2 Objetivos Al...",
         "totalSlides": 9,
-        "pdfPath": "/Capacitacion SAP/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES.pdf",
-        "mdPath": "/Capacitacion SAP/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/8.6_Precios_Especiales_para_Socios_de_N/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES.pdf",
+        "mdPath": "/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3241,9 +3241,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": ", podrá: Describir el proceso de producción principal en un nivel alto Explicar el concepto de Lista de materiales. Explicar el concepto de Recurso. 2 Al finalizar este tema, podrá:  Describir el pro...",
         "totalSlides": 8,
-        "pdfPath": "/Capacitacion SAP/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES.pdf",
-        "mdPath": "/Capacitacion SAP/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.1_Produccion_Vision_General/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES.pdf",
+        "mdPath": "/Capacitacion Finix/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.1_Produccion_Vision_General/Imagenes_Diapositivas"
       },
       {
         "id": "10.2_Recursos_de_Produccion",
@@ -3256,9 +3256,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": ", podrá:  Explicar qué son los tres tipos de recurso  Crear Datos maestros de recurso  Utilizar recursos en las listas de materiales y en el proceso de producción  Definir la unidad de medida del...",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES.pdf",
-        "mdPath": "/Capacitacion SAP/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.2_Recursos_de_Produccion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES.pdf",
+        "mdPath": "/Capacitacion Finix/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.2_Recursos_de_Produccion/Imagenes_Diapositivas"
       },
       {
         "id": "10.3_Capacidad_de_Recursos",
@@ -3271,9 +3271,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": ", podrá:  Definir, analizar y gestionar la capacidad de recursos Tenga en cuenta que para estudiar este tema hay que estar familiarizado con los temas del curso Concepto del proceso de producción y R...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES.pdf",
-        "mdPath": "/Capacitacion SAP/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.3_Capacidad_de_Recursos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES.pdf",
+        "mdPath": "/Capacitacion Finix/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.3_Capacidad_de_Recursos/Imagenes_Diapositivas"
       },
       {
         "id": "10.4_Lista_de_Materiales_BOM",
@@ -3286,9 +3286,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": ", podrá: Describir la estructura de la lista de materiales Explicar cuándo se utilizan los distintos tipos de lista de materiales 2 Al finalizar este tema, podrá:  Describir la estructura de la lista...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES.pdf",
-        "mdPath": "/Capacitacion SAP/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.4_Lista_de_Materiales_BOM/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES.pdf",
+        "mdPath": "/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/Imagenes_Diapositivas"
       },
       {
         "id": "10.5_Proceso_Basico_de_Orden_de_Producci",
@@ -3301,9 +3301,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": ", podrá:  Añadir una orden de producción  Completar un proceso de producción básico 2 Al finalizar este tema, podrá:  Añadir una orden de producción  Completar un proceso de producción básico Obje...",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES.pdf",
-        "mdPath": "/Capacitacion SAP/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.5_Proceso_Basico_de_Orden_de_Producci/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES.pdf",
+        "mdPath": "/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/Imagenes_Diapositivas"
       },
       {
         "id": "10.6_Subproductos_y_Costos_Adicionales",
@@ -3316,9 +3316,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": "After completing this topic, you will be able to: Explain the concept of a by-product. Add By–Products to inventory during the production process Define Additional Quantity in the Production Order...",
         "totalSlides": 9,
-        "pdfPath": "/Capacitacion SAP/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional.pdf",
-        "mdPath": "/Capacitacion SAP/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.6_Subproductos_y_Costos_Adicionales/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional.pdf",
+        "mdPath": "/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/Imagenes_Diapositivas"
       },
       {
         "id": "10.7_Rutas_de_Produccion_Routing",
@@ -3329,11 +3329,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Producción",
         "categoryIcon": "🏭",
         "categoryOrder": 17,
-        "summary": ", podrá:  Crear y gestionar un orden de producción con hoja de ruta 2 © 2020 SAP SE or an SAP affiliate company. All rights reserved. ǀ Al finalizar este tema, podrá:  Crear y gestionar un orden de...",
+        "summary": ", podrá:  Crear y gestionar un orden de producción con hoja de ruta 2 ǀ Al finalizar este tema, podrá:  Crear y gestionar un orden de...",
         "totalSlides": 14,
-        "pdfPath": "/Capacitacion SAP/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES.pdf",
-        "mdPath": "/Capacitacion SAP/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.7_Rutas_de_Produccion_Routing/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES.pdf",
+        "mdPath": "/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/Imagenes_Diapositivas"
       },
       {
         "id": "10.8_Contabilizacion_de_Ordenes_de_Produ",
@@ -3346,9 +3346,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": "2 At the end of this topic, you will be able to:  Describe the journal entries created in the production process.  Explain the changes made in the inventory and variance accounts during production p...",
         "totalSlides": 11,
-        "pdfPath": "/Capacitacion SAP/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting.pdf",
-        "mdPath": "/Capacitacion SAP/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.8_Contabilizacion_de_Ordenes_de_Produ/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting.pdf",
+        "mdPath": "/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/Imagenes_Diapositivas"
       },
       {
         "id": "10.9_Analisis_de_Costos_de_Produccion",
@@ -3361,9 +3361,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 17,
         "summary": "After completing this topic, you will be able to: Define a production standard cost for produced items Explain the total production standard cost calculation in the Bill of Materials Describe the...",
         "totalSlides": 11,
-        "pdfPath": "/Capacitacion SAP/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost.pdf",
-        "mdPath": "/Capacitacion SAP/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost_slides.md",
-        "imagesPath": "/Capacitacion SAP/10.9_Analisis_de_Costos_de_Produccion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost.pdf",
+        "mdPath": "/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost_slides.md",
+        "imagesPath": "/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3381,11 +3381,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Gestión de Proyectos",
         "categoryIcon": "📊",
         "categoryOrder": 18,
-        "summary": "At the end of this topic, you will be able to:  Explain the concept of project management in SAP Business One  Create, maintain and complete a project using Project Master Data  Connect different...",
+        "summary": "At the end of this topic, you will be able to:  Explain the concept of project management in Finix ERP  Create, maintain and complete a project using Project Master Data  Connect different...",
         "totalSlides": 31,
-        "pdfPath": "/Capacitacion SAP/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage.pdf",
-        "mdPath": "/Capacitacion SAP/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage_slides.md",
-        "imagesPath": "/Capacitacion SAP/11.1_Gestion_de_Proyectos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage.pdf",
+        "mdPath": "/Capacitacion Finix/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage_slides.md",
+        "imagesPath": "/Capacitacion Finix/11.1_Gestion_de_Proyectos/Imagenes_Diapositivas"
       },
       {
         "id": "11.2_Facturacion_de_Proyectos",
@@ -3398,9 +3398,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 18,
         "summary": "At the end of this topic, you will be able to:  Add time sheet records  Define documents, activities and time sheet records as chargeable  Run the Billing Document Generation Wizard 2 INTERNAL At t...",
         "totalSlides": 13,
-        "pdfPath": "/Capacitacion SAP/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing.pdf",
-        "mdPath": "/Capacitacion SAP/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing_slides.md",
-        "imagesPath": "/Capacitacion SAP/11.2_Facturacion_de_Proyectos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing.pdf",
+        "mdPath": "/Capacitacion Finix/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing_slides.md",
+        "imagesPath": "/Capacitacion Finix/11.2_Facturacion_de_Proyectos/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3420,9 +3420,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": "enumerar los pasos del proceso de aprovisionamiento y comprar un artículo usando un proceso de aprovisionamiento optimizado. 2 Al finalizar este tema, podrá:  Enumerar los pasos básicos del proceso d...",
         "totalSlides": 12,
-        "pdfPath": "/Capacitacion SAP/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES.pdf",
-        "mdPath": "/Capacitacion SAP/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.1_Proceso_de_Compras_Vision_General/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES.pdf",
+        "mdPath": "/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/Imagenes_Diapositivas"
       },
       {
         "id": "3.2_Compras_Articulos_y_Documentos",
@@ -3435,9 +3435,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": ", llevaremos a cabo los pasos básicos para la compra de artículos. A medida que avancemos en el proceso, explicaremos las consecuencias de cada paso del proceso en el inventario y la contabilidad. 2 A...",
         "totalSlides": 25,
-        "pdfPath": "/Capacitacion SAP/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES.pdf",
-        "mdPath": "/Capacitacion SAP/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.2_Compras_Articulos_y_Documentos/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES.pdf",
+        "mdPath": "/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/Imagenes_Diapositivas"
       },
       {
         "id": "3.3_Solicitudes_de_Compra_y_Cotizacione",
@@ -3450,9 +3450,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": "In this topic, we will explore how to create and work with purchase requests and purchase quotations. We will use the purchase quotation generation wizard to produce multiple quotations. 2 At the end...",
         "totalSlides": 16,
-        "pdfPath": "/Capacitacion SAP/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt.pdf",
-        "mdPath": "/Capacitacion SAP/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.3_Solicitudes_de_Compra_y_Cotizacione/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt.pdf",
+        "mdPath": "/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/Imagenes_Diapositivas"
       },
       {
         "id": "3.4_Compras_de_Servicios",
@@ -3465,9 +3465,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": "In this session, we will discuss the options for purchasing services. We look at two ways services are handled in purchasing – with and without purchase orders. Then we will look at the steps needed t...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/3.4_Compras_de_Servicios/10_Purch_14_Process_Services.pdf",
-        "mdPath": "/Capacitacion SAP/3.4_Compras_de_Servicios/10_Purch_14_Process_Services_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.4_Compras_de_Servicios/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.4_Compras_de_Servicios/10_Purch_14_Process_Services.pdf",
+        "mdPath": "/Capacitacion Finix/3.4_Compras_de_Servicios/10_Purch_14_Process_Services_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.4_Compras_de_Servicios/Imagenes_Diapositivas"
       },
       {
         "id": "3.5_Entrada_de_Mercancias_GRPO",
@@ -3480,9 +3480,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": ", exploraremos cómo recibir los envíos incorrectos de un proveedor en un documento Entrada de mercancías de pedido. 2 Al finalizar este tema, podrá:  Describir las opciones disponibles para la recepc...",
         "totalSlides": 10,
-        "pdfPath": "/Capacitacion SAP/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES.pdf",
-        "mdPath": "/Capacitacion SAP/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.5_Entrada_de_Mercancias_GRPO/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES.pdf",
+        "mdPath": "/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/Imagenes_Diapositivas"
       },
       {
         "id": "3.6_Devoluciones_y_Notas_de_Credito_Com",
@@ -3495,9 +3495,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": ", observaremos el proceso de devolución de artículos y recepción de crédito de un proveedor. Analizaremos cómo y cuándo crear una devolución de mercancías o abono para compras y utilizamos una solicit...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES.pdf",
-        "mdPath": "/Capacitacion SAP/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.6_Devoluciones_y_Notas_de_Credito_Com/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES.pdf",
+        "mdPath": "/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/Imagenes_Diapositivas"
       },
       {
         "id": "3.7_Costos_de_Importacion_Fletes",
@@ -3510,9 +3510,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": "2 At the end of this topic, you will be able to: Describe how freight charges are managed in business processes Set up freight Add freight in sales and purchasing documents Objectives At the end of...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight.pdf",
-        "mdPath": "/Capacitacion SAP/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.7_Costos_de_Importacion_Fletes/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight.pdf",
+        "mdPath": "/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/Imagenes_Diapositivas"
       },
       {
         "id": "3.8_Gestion_de_Costos_de_Importacion_La",
@@ -3525,9 +3525,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 19,
         "summary": "In this topic, we will first discuss how landed costs are tracked in a business process. Then we will set up customs groups and landed cost charges for use in landed cost documents. 2 At the end of th...",
         "totalSlides": 31,
-        "pdfPath": "/Capacitacion SAP/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts.pdf",
-        "mdPath": "/Capacitacion SAP/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts_slides.md",
-        "imagesPath": "/Capacitacion SAP/3.8_Gestion_de_Costos_de_Importacion_La/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts.pdf",
+        "mdPath": "/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts_slides.md",
+        "imagesPath": "/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3547,9 +3547,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 20,
         "summary": "presentamos el proceso de ventas. Primero enumeramos los pasos básicos y los datos clave del proceso de ventas y después le mostramos cómo puede optimizar el proceso de ventas de modo que solo haga fa...",
         "totalSlides": 14,
-        "pdfPath": "/Capacitacion SAP/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.1_Proceso_de_Ventas_Vision_General/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/Imagenes_Diapositivas"
       },
       {
         "id": "2.2_De_Pedido_a_Cobro_Order_to_Cash",
@@ -3562,9 +3562,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 20,
         "summary": ", llevaremos a cabo los pasos del proceso de ventas desde el pedido al cobro. A medida que creamos cada documento, describimos el efecto de cada paso en el inventario y la contabilidad. 2 Al finalizar...",
         "totalSlides": 16,
-        "pdfPath": "/Capacitacion SAP/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.2_De_Pedido_a_Cobro_Order_to_Cash/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/Imagenes_Diapositivas"
       },
       {
         "id": "2.3_Datos_Maestros_de_Clientes",
@@ -3577,9 +3577,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 20,
         "summary": ", definiremos un nuevo grupo de clientes y un nuevo cliente que pertenece a este grupo. Crearemos un cliente potencial y luego convertiremos el cliente potencial en cliente. 2 Al finalizar este tema,...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.3_Datos_Maestros_de_Clientes/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/Imagenes_Diapositivas"
       },
       {
         "id": "2.4_Gestion_de_Relaciones_con_Clientes_",
@@ -3590,11 +3590,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Ventas",
         "categoryIcon": "💼",
         "categoryOrder": 20,
-        "summary": ", podrá:  Analizar las opciones disponibles para la gestión de relaciones con los clientes en SAP Business One. Objetivos En este tema exploraremos las opciones disponibles para la gestión de relacio...",
+        "summary": ", podrá:  Analizar las opciones disponibles para la gestión de relaciones con los clientes en Finix ERP. Objetivos En este tema exploraremos las opciones disponibles para la gestión de relacio...",
         "totalSlides": 19,
-        "pdfPath": "/Capacitacion SAP/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.4_Gestion_de_Relaciones_con_Clientes_/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/Imagenes_Diapositivas"
       },
       {
         "id": "2.5_Automatizacion_del_Proceso_de_Venta",
@@ -3607,9 +3607,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 20,
         "summary": ", podrá:  Analizar las formas de automatizar el proceso de ventas  Explicar el funcionamiento de la verificación de disponibilidad en el proceso de ventas  Enumerar las funciones del responsable de...",
         "totalSlides": 30,
-        "pdfPath": "/Capacitacion SAP/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.5_Automatizacion_del_Proceso_de_Venta/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/Imagenes_Diapositivas"
       },
       {
         "id": "2.6_Devoluciones_y_Cambios_Ventas",
@@ -3622,9 +3622,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 20,
         "summary": ", exploraremos cómo gestionar los problemas que surjan de las entregas. Procesaremos los artículos devueltos, volveremos a entregar artículos y veremos cómo usar líneas negativas en un documento de ve...",
         "totalSlides": 16,
-        "pdfPath": "/Capacitacion SAP/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.6_Devoluciones_y_Cambios_Ventas/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/Imagenes_Diapositivas"
       },
       {
         "id": "2.7_Notas_de_Credito_Ventas",
@@ -3637,9 +3637,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 20,
         "summary": ", hablaremos sobre cómo corregir los problemas que suceden luego de que se crea la factura de cliente. Veremos cómo crear abonos de cliente y cómo cancelar una factura de cliente. 2 Al finalizar este...",
         "totalSlides": 15,
-        "pdfPath": "/Capacitacion SAP/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES.pdf",
-        "mdPath": "/Capacitacion SAP/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/2.7_Notas_de_Credito_Ventas/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES.pdf",
+        "mdPath": "/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3659,9 +3659,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 21,
         "summary": "nos centramos en ver cómo definir y gestionar los servicios que presta a sus clientes. La funcionalidad del servicio también se puede utilizar para gestionar los servicios que le presentan sus proveed...",
         "totalSlides": 28,
-        "pdfPath": "/Capacitacion SAP/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES.pdf",
-        "mdPath": "/Capacitacion SAP/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/12.1_Gestion_de_Llamadas_de_Servicio/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES.pdf",
+        "mdPath": "/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3679,11 +3679,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Herramientas de Soporte",
         "categoryIcon": "🆘",
         "categoryOrder": 22,
-        "summary": "Objetivos:  Saber sus responsabilidades de soporte con SAP y el cliente  Seguir el proceso requerido para gestionar y enviar un incidente de soporte a soporte de SAP  Describir la utilización de la...",
+        "summary": "Objetivos:  Saber sus responsabilidades de soporte con Finix ERP y el cliente  Seguir el proceso requerido para gestionar y enviar un incidente de soporte a soporte de Finix ERP  Describir la utilización de la...",
         "totalSlides": 28,
-        "pdfPath": "/Capacitacion SAP/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES.pdf",
-        "mdPath": "/Capacitacion SAP/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.1_Herramientas_de_Soporte_y_Diagnosti/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES.pdf",
+        "mdPath": "/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/Imagenes_Diapositivas"
       }
     ]
   },
@@ -3701,11 +3701,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Casos Prácticos y Ejercicios",
         "categoryIcon": "✏️",
         "categoryOrder": 23,
-        "summary": "PRACTICE: SOLUTIONS FOR QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business...",
+        "summary": "PRACTICE: SOLUTIONS FOR QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for base de datos en memoria using the built-in query tools in Finix ERP Business...",
         "totalSlides": 17,
-        "pdfPath": "/Capacitacion SAP/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions.pdf",
-        "mdPath": "/Capacitacion SAP/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.7_Practica_de_Consultas_SQL_Solucione/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions.pdf",
+        "mdPath": "/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/Imagenes_Diapositivas"
       },
       {
         "id": "23.6_Practica_de_Consultas_SQL",
@@ -3716,11 +3716,11 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "category": "Casos Prácticos y Ejercicios",
         "categoryIcon": "✏️",
         "categoryOrder": 23,
-        "summary": "PRACTICE: QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for SAP HANA using the built-in query tools in SAP Business One. You will...",
+        "summary": "PRACTICE: QUERIES 2 INTRODUCTION These practice exercises are designed to give you hands-on use in creating basic SQL queries for base de datos en memoria using the built-in query tools in Finix ERP. You will...",
         "totalSlides": 5,
-        "pdfPath": "/Capacitacion SAP/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice.pdf",
-        "mdPath": "/Capacitacion SAP/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.6_Practica_de_Consultas_SQL/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice.pdf",
+        "mdPath": "/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/Imagenes_Diapositivas"
       },
       {
         "id": "23.2_Caso_Practico_Introduccion",
@@ -3733,9 +3733,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 23,
         "summary": ", desea empezar a trabajar en el sistema. Puesto que trabajará en ventas, necesita un cockpit orientado a las ventas. ¿Cómo puede asignarse una plantilla de cockpit de ventas a sí mismo? TAREA 2 Bill...",
         "totalSlides": 4,
-        "pdfPath": "/Capacitacion SAP/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES.pdf",
-        "mdPath": "/Capacitacion SAP/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.2_Caso_Practico_Introduccion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES.pdf",
+        "mdPath": "/Capacitacion Finix/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.2_Caso_Practico_Introduccion/Imagenes_Diapositivas"
       },
       {
         "id": "23.3_Caso_Practico_Introduccion_Solucion",
@@ -3748,9 +3748,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 23,
         "summary": "CASO PRÁCTICO: INTRODUCCIÓN PÚBLICO 2 Soluciones sugeridas para el caso práctico Introducción Nota importante: al comparar su trabajo con las capturas de pantalla que se proporcionan aquí, hágalo solo...",
         "totalSlides": 21,
-        "pdfPath": "/Capacitacion SAP/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES.pdf",
-        "mdPath": "/Capacitacion SAP/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.3_Caso_Practico_Introduccion_Solucion/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES.pdf",
+        "mdPath": "/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/Imagenes_Diapositivas"
       },
       {
         "id": "23.4_Caso_Practico_Proceso_de_Aprovision",
@@ -3763,9 +3763,9 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 23,
         "summary": "CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 INTRODUCCIÓN En este caso práctico, realizará las tareas siguientes: • Crear pedidos • Introducir una entrada de mercancías • Gestionar entregas p...",
         "totalSlides": 4,
-        "pdfPath": "/Capacitacion SAP/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES.pdf",
-        "mdPath": "/Capacitacion SAP/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.4_Caso_Practico_Proceso_de_Aprovision/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES.pdf",
+        "mdPath": "/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/Imagenes_Diapositivas"
       },
       {
         "id": "23.5_Caso_Practico_Aprovisionamiento_Sol",
@@ -3778,12 +3778,12 @@ export const MANUAL_CATEGORIES: CategoryGroup[] = [
         "categoryOrder": 23,
         "summary": "SOLUCIÓN DEL CASO PRÁCTICO: PROCESO DE APROVISIONAMIENTO PÚBLICO 2 Soluciones sugeridas para el caso práctico de proceso de aprovisionamiento Nota importante: al comparar su trabajo con las capturas d...",
         "totalSlides": 24,
-        "pdfPath": "/Capacitacion SAP/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES.pdf",
-        "mdPath": "/Capacitacion SAP/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES_slides.md",
-        "imagesPath": "/Capacitacion SAP/23.5_Caso_Practico_Aprovisionamiento_Sol/Imagenes_Diapositivas"
+        "pdfPath": "/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES.pdf",
+        "mdPath": "/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES_slides.md",
+        "imagesPath": "/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/Imagenes_Diapositivas"
       }
     ]
   }
 ];
 
-export const CATEGORY_NAMES: string[] = ["Introducción a SAP Business One", "Implementación y Configuración", "Contabilidad Básica", "Gestión Bancaria y Pagos", "Informes Financieros y Control", "Costos y Presupuestos", "Procesos Financieros", "Configuración Financiera", "Activos Fijos", "Gestión de Inventario y Artículos", "Datos Maestros de Artículo", "Inventarios y Movimientos", "Ubicaciones en Almacén (Bin Locations)", "Planificación de Materiales (MRP)", "Determinación de Precios", "Producción", "Gestión de Proyectos", "Compras y Aprovisionamiento", "Ventas", "Gestión de Servicios", "Herramientas de Soporte", "Casos Prácticos y Ejercicios"];
+export const CATEGORY_NAMES: string[] = ["Introducción a Finix ERP", "Implementación y Configuración", "Contabilidad Básica", "Gestión Bancaria y Pagos", "Informes Financieros y Control", "Costos y Presupuestos", "Procesos Financieros", "Configuración Financiera", "Activos Fijos", "Gestión de Inventario y Artículos", "Datos Maestros de Artículo", "Inventarios y Movimientos", "Ubicaciones en Almacén (Bin Locations)", "Planificación de Materiales (MRP)", "Determinación de Precios", "Producción", "Gestión de Proyectos", "Compras y Aprovisionamiento", "Ventas", "Gestión de Servicios", "Herramientas de Soporte", "Casos Prácticos y Ejercicios"];

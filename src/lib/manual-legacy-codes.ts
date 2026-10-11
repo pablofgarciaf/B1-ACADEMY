@@ -1,14 +1,14 @@
 /**
- * Equivalencia entre el id académico de cada manual ("1.1_Introduccion_a_SAP_Business_One") y su código
- * original ("10_Intro_11_Overview_IntroSAPB1_ES"), que es la clave de MANUAL_SPECIFIC_QUIZZES y MANUAL_SIMULATOR_MAP.
+ * Equivalencia entre el id académico de cada manual ("1.1_Introduccion_a_Finix_ERP") y su código
+ * original ("10_Intro_11_Overview_IntroFinix_ES"), que es la clave de MANUAL_SPECIFIC_QUIZZES y MANUAL_SIMULATOR_MAP.
  *
  * Archivo generado a partir de manuals-120-data.ts (campo pdfPath). Existe para no importar ese archivo de 225 KB
  * en código que también usa el navegador (el simulador de Mi Aula lo cargaba en cada clase).
  * Regenerar si cambian los manuales: ver scripts/generar_codigos_manuales.mjs
  */
 export const MANUAL_LEGACY_CODES: Record<string, string> = {
-  "1.1_Introduccion_a_SAP_Business_One": "10_Intro_11_Overview_IntroSAPB1_ES",
-  "1.2_Primeros_Pasos_en_SAP_Business_One": "10_Intro_12_Overview_GettingStarted_ES",
+  "1.1_Introduccion_a_Finix_ERP": "10_Intro_11_Overview_IntroFinix_ES",
+  "1.2_Primeros_Pasos_en_Finix_ERP": "10_Intro_12_Overview_GettingStarted_ES",
   "1.3_Documentos_y_Datos_Maestros_Concept": "10_Overview_13_MDDoc_ES",
   "22.1_Consultas_Personalizadas_Queries": "10_Impl_11_CustomTools_Queries_ES",
   "22.2_Sistema_de_Alertas_Automaticas": "10_Impl_12_CustomTools_Alerts_ES",
@@ -16,8 +16,8 @@ export const MANUAL_LEGACY_CODES: Record<string, string> = {
   "22.4_Campos_Definidos_por_el_Usuario_UDF": "10_Impl_14_CustomTools_UserDefinedFields_ES",
   "22.5_Valores_Definidos_por_el_Usuario_UD": "10_Impl_15_CustomTools_UserDefinedValues_ES",
   "22.6_Tablas_Definidas_por_el_Usuario_UDT": "10_Impl_16_CustomTools_UserDefinedTables_ES",
-  "22.7_Introduccion_a_SAP_Analytics": "10_Impl_17_CustomTools_IntroAnalytics_ES",
-  "20.1_Metodologia_de_Implementacion_SAP": "10_Impl_21_ImplTools_ImplementationMethodology_ES",
+  "22.7_Introduccion_a_Finix_Analytics": "10_Impl_17_CustomTools_IntroAnalytics_ES",
+  "20.1_Metodologia_de_Implementacion_Finix": "10_Impl_21_ImplTools_ImplementationMethodology_ES",
   "20.2_Asistente_Express_de_Configuracion": "10_Impl_22_ImplTools_ExpressWizard_ES",
   "20.3_Configuraciones_Clave_del_Sistema": "10_Impl_23_ImplTools_Key_Settings_ES",
   "20.4_Carga_de_Saldos_Iniciales": "10_Impl_25_ImplTools_OpeningBalances",

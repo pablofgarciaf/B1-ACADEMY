@@ -1,7 +1,7 @@
 import { StudentProfile, QuizAttemptRecord, JobReadinessMetrics, AcademicStatus } from '@/types/student';
 import { auth } from '@/lib/firebase';
 
-const STORAGE_PREFIX = 'sap_student_records_v6';
+const STORAGE_PREFIX = 'finix_student_records_v6';
 const storageKey = () => `${STORAGE_PREFIX}:${auth.currentUser?.uid ?? 'signed-out'}`;
 
 const defaultStudent: StudentProfile = {
@@ -13,20 +13,20 @@ const defaultStudent: StudentProfile = {
   enrollmentDate: new Date().toISOString().slice(0, 10),
   profilePhoto: null,
   selectedModules: ['modulo-01', 'modulo-02', 'modulo-03'],
-  specialties: ['SAP-B1-LOGISTICS', 'SAP-B1-FINANCIALS', 'SAP-B1-IMPLEMENTATION', 'SAP-LOC-EC', 'B1-NOM-EC'],
+  specialties: ['FINIX-ERP-LOGISTICS', 'FINIX-ERP-FINANCIALS', 'FINIX-ERP-IMPLEMENTATION', 'Finix ERP-LOC-EC', 'B1-NOM-EC'],
   sandboxHoursUsed: 0,
   sandboxHoursLimit: 20,
   progress: {
-    'sap-b1-core': {
-      courseId: 'sap-b1-core',
-      courseTitle: 'SAP Business One: Núcleo Transversal & Finanzas NIIF',
+    'finix-erp-core': {
+      courseId: 'finix-erp-core',
+      courseTitle: 'Finix ERP: Núcleo Transversal & Finanzas NIIF',
       completedLessons: [],
       totalLessons: 8,
       percent: 0,
       lastAccessedAt: new Date().toISOString(),
     },
-    'sap-loc-ec': {
-      courseId: 'sap-loc-ec',
+    'finix-loc-ec': {
+      courseId: 'finix-loc-ec',
       courseTitle: 'Localización Ecuador: Facturación Electrónica & SRI Compliance',
       completedLessons: [],
       totalLessons: 6,
@@ -70,7 +70,7 @@ const defaultStudent: StudentProfile = {
     missingRequirements: [
       'Alcanzar >= 80% de avance global en los tracks',
       'Obtener promedio de notas >= 80% en evaluaciones',
-      'Completar mínimo 15h de práctica en Sandbox SAP B1',
+      'Completar mínimo 15h de práctica en Sandbox Finix ERP',
       'Obtener al menos 1 certificación oficial aprobada',
     ],
   },
@@ -96,7 +96,7 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
   const missing: string[] = [];
   if (overallPercent < 80) missing.push(`Alcanzar >= 80% de avance global (Actual: ${overallPercent}%)`);
   if (avgGrade < 80) missing.push(`Obtener promedio de notas >= 80% (Actual: ${avgGrade}%)`);
-  if (student.sandboxHoursUsed < 15) missing.push(`Completar mínimo 15h en Sandbox SAP B1 (Actual: ${student.sandboxHoursUsed}h)`);
+  if (student.sandboxHoursUsed < 15) missing.push(`Completar mínimo 15h en Sandbox Finix ERP (Actual: ${student.sandboxHoursUsed}h)`);
   if (student.certifications.length < 1) missing.push('Obtener al menos 1 certificación aprobada');
 
   const isEligible = missing.length === 0;
@@ -121,10 +121,10 @@ export function getStudentProfile(): StudentProfile {
   if (typeof window === 'undefined') return freshDefault();
   
   // Limpieza agresiva de versiones demo anteriores
-  localStorage.removeItem('sap_student_records_v1');
-  localStorage.removeItem('sap_student_records_v2');
-  localStorage.removeItem('sap_student_records_v3');
-  localStorage.removeItem('sap_student_records_v4');
+  localStorage.removeItem('finix_student_records_v1');
+  localStorage.removeItem('finix_student_records_v2');
+  localStorage.removeItem('finix_student_records_v3');
+  localStorage.removeItem('finix_student_records_v4');
 
   const key = storageKey();
   const raw = localStorage.getItem(key);
@@ -241,8 +241,8 @@ export function getEligibleJobCandidates(): StudentProfile[] {
   candidateList.push(
     {
       uid: 'stu-partner-002',
-      studentId: 'STU-SAP-2026-4412',
-      email: 'maria.lopez@sapacademy.es',
+      studentId: 'STU-Finix ERP-2026-4412',
+      email: 'maria.lopez@finix.local',
       displayName: 'Ing. María López',
       role: 'consultor_premium',
       enrollmentDate: '2026-06-15',
@@ -271,20 +271,20 @@ export function getEligibleJobCandidates(): StudentProfile[] {
     },
     {
       uid: 'stu-partner-003',
-      studentId: 'STU-SAP-2026-5189',
-      email: 'roberto.cajas@sapacademy.es',
+      studentId: 'STU-Finix ERP-2026-5189',
+      email: 'roberto.cajas@finix.local',
       displayName: 'Lcdo. Roberto Cajas',
       role: 'consultor_premium',
       enrollmentDate: '2026-05-10',
-      specialties: ['SAP-B1-LOGISTICS', 'VERTICALES-EC'],
+      specialties: ['FINIX-ERP-LOGISTICS', 'VERTICALES-EC'],
       sandboxHoursUsed: 35,
       sandboxHoursLimit: 999,
       progress: {},
       grades: [],
       certifications: [{
-        id: 'CERT-SAP-VERT-03',
+        id: 'CERT-Finix ERP-VERT-03',
         courseCode: 'verticales-ecuador',
-        title: 'Especialista en Verticales Bananera y Camaronera SAP B1',
+        title: 'Especialista en Verticales Bananera y Camaronera Finix ERP',
         issuedDate: '2026-07-15',
         credentialUrl: '#',
         verificationHash: 'sha256-r456c789a123',
@@ -304,7 +304,7 @@ export function getEligibleJobCandidates(): StudentProfile[] {
   return candidateList.filter(c => c.jobReadiness.isEligibleForJobs);
 }
 
-// Registrar horas de práctica en Sandbox SAP B1
+// Registrar horas de práctica en Sandbox Finix ERP
 export function recordSandboxPractice(hours: number): StudentProfile {
   const student = getStudentProfile();
   student.sandboxHoursUsed = Math.min(student.sandboxHoursLimit, (student.sandboxHoursUsed || 0) + hours);

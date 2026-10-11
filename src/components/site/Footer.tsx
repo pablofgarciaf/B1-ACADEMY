@@ -33,12 +33,12 @@ export function Footer() {
                   B1 ACADEMY
                 </span>
                 <span className="text-[9px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 font-semibold">
-                  SAP BUSINESS ONE
+                  FINIX ERP
                 </span>
               </div>
             </Link>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Campus virtual independiente especializado en <strong>SAP Business One 10.0 (HANA)</strong>. 
+              Campus virtual independiente especializado en <strong>Finix ERP 10.0 (HANA)</strong>. 
               Rutas formativas, evaluaciones propias, simulador transaccional integral y conexión laboral.
             </p>
           </div>
@@ -49,10 +49,10 @@ export function Footer() {
               4 Carreras de la Escuela
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-500 dark:text-slate-400">
-              <li><Link href="/mi-aula" className="hover:text-sap-blue">1. Fundamentos & Núcleo ERP</Link></li>
-              <li><Link href="/mi-aula" className="hover:text-sap-blue">2. Finanzas NIIF & Tesorería</Link></li>
-              <li><Link href="/mi-aula" className="hover:text-sap-blue">3. Logística, SCM & Ventas</Link></li>
-              <li><Link href="/mi-aula" className="hover:text-sap-blue">4. MRP, Producción & Consultoría</Link></li>
+              <li><Link href="/mi-aula" className="hover:text-finix-blue">1. Fundamentos & Núcleo ERP</Link></li>
+              <li><Link href="/mi-aula" className="hover:text-finix-blue">2. Finanzas NIIF & Tesorería</Link></li>
+              <li><Link href="/mi-aula" className="hover:text-finix-blue">3. Logística, SCM & Ventas</Link></li>
+              <li><Link href="/mi-aula" className="hover:text-finix-blue">4. MRP, Producción & Consultoría</Link></li>
             </ul>
           </div>
 
@@ -63,9 +63,9 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-500 dark:text-slate-400">
               <li><Link href="/mi-aula" className="hover:text-amber-500 font-bold text-amber-600 dark:text-amber-400">🎓 Mi Aula Virtual</Link></li>
-              <li><Link href="/simulador" className="hover:text-sap-blue">🚀 Simulador SAP B1</Link></li>
-              <li><Link href="/manuales" className="hover:text-sap-blue">📖 Manuales & Atlas Visual</Link></li>
-              <li><Link href="/bolsa-empleo" className="hover:text-sap-blue">💼 Bolsa de Empleo (Job-Ready)</Link></li>
+              <li><Link href="/simulador" className="hover:text-finix-blue">🚀 Simulador Finix ERP</Link></li>
+              <li><Link href="/manuales" className="hover:text-finix-blue">📖 Manuales & Atlas Visual</Link></li>
+              <li><Link href="/bolsa-empleo" className="hover:text-finix-blue">💼 Bolsa de Empleo (Job-Ready)</Link></li>
             </ul>
           </div>
 
@@ -77,7 +77,7 @@ export function Footer() {
             <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2.5">
               <p>Consultoría Académica y Matrículas:</p>
               <div>
-                <ProtectedEmail user="admisiones" domain="sapacademy.es" />
+                <ProtectedEmail user="admisiones" domain="finix.local" />
               </div>
               <p className="text-[11px] text-slate-500 pt-1">
                 Acreditación propia de B1 Academy • Atención digital
@@ -87,7 +87,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-100 dark:border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} B1 Academy. Formación profesional en SAP Business One.</p>
+          <p>© {new Date().getFullYear()} B1 Academy. Formación profesional en Finix ERP.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/mi-aula" className="hover:underline">Mi Aula Virtual</Link>
             <Link href="/simulador" className="hover:underline">Simulador</Link>
@@ -104,8 +104,7 @@ export function Footer() {
             <BotonConfigurarCookies className="hover:underline" />
           </nav>
           <p className="text-[11px] text-center sm:text-right max-w-xl">
-            B1 Academy es independiente y no está afiliada a SAP SE. SAP y SAP Business One son marcas registradas de SAP SE. Los certificados
-            de B1 Academy no son certificaciones oficiales de SAP.
+            Los certificados de B1 Academy acreditan competencias prácticas en Finix ERP, contabilidad y normativa ecuatoriana.
           </p>
         </div>
       </div>

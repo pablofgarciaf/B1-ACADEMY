@@ -51,7 +51,7 @@ declare global {
 }
 
 function cargarAnalitica(gtmId: string) {
-  if (!/^GTM-[A-Z0-9]{4,}$/.test(gtmId) || gtmId === 'GTM-SAPACADEMY') return; // sin ID real no se carga nada
+  if (!/^GTM-[A-Z0-9]{4,}$/.test(gtmId) || gtmId === 'GTM-FINIXACADEMY') return; // sin ID real no se carga nada
   if (document.getElementById('gtm-script')) return;
   window.dataLayer = window.dataLayer || [];
   // gtag oficial: Consent Mode exige que se empuje el objeto `arguments`, no un arreglo.
@@ -119,8 +119,8 @@ export default function CookieConsent({ gtmId }: { gtmId: string }) {
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
               Usamos cookies necesarias para que inicies sesión. Con tu permiso, también usamos cookies de analítica de Google para mejorar el
               campus. No usamos cookies publicitarias. Más información en la{' '}
-              <Link href="/cookies" className="text-sap-blue underline">Política de cookies</Link> y la{' '}
-              <Link href="/privacidad" className="text-sap-blue underline">Política de privacidad</Link>.
+              <Link href="/cookies" className="text-finix-blue underline">Política de cookies</Link> y la{' '}
+              <Link href="/privacidad" className="text-finix-blue underline">Política de privacidad</Link>.
             </p>
           </div>
         </div>
@@ -143,7 +143,7 @@ export default function CookieConsent({ gtmId }: { gtmId: string }) {
                 type="checkbox"
                 checked={analitica}
                 onChange={(e) => setAnalitica(e.target.checked)}
-                className="w-5 h-5 accent-sap-blue"
+                className="w-5 h-5 accent-finix-blue"
                 aria-label="Permitir cookies de analítica"
               />
             </label>
@@ -152,7 +152,7 @@ export default function CookieConsent({ gtmId }: { gtmId: string }) {
 
         <div className="mt-5 flex flex-col-reverse sm:flex-row gap-2 sm:justify-end">
           {configurando ? (
-            <button onClick={() => decidir(analitica)} className="px-5 py-2.5 rounded-xl bg-sap-blue text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all">
+            <button onClick={() => decidir(analitica)} className="px-5 py-2.5 rounded-xl bg-finix-blue text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all">
               Guardar mi elección
             </button>
           ) : (
@@ -163,7 +163,7 @@ export default function CookieConsent({ gtmId }: { gtmId: string }) {
               <button onClick={() => setConfigurando(true)} className="px-5 py-2.5 rounded-xl border border-slate-300 dark:border-white/20 text-sm font-bold hover:bg-slate-100 dark:hover:bg-white/10 active:scale-95 transition-all">
                 Configurar
               </button>
-              <button onClick={() => decidir(true)} className="px-5 py-2.5 rounded-xl bg-sap-blue text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all">
+              <button onClick={() => decidir(true)} className="px-5 py-2.5 rounded-xl bg-finix-blue text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all">
                 Aceptar todo
               </button>
             </>

@@ -2,10 +2,10 @@
 
 ## 📌 Visión General
 
-Este documento define la arquitectura técnica del ecosistema de evaluación y certificación para **SAP Academy (B1 Academy B1)**, resolviendo la necesidad de impedir el uso no autorizado de asistentes de Inteligencia Artificial (ChatGPT, Copilot, etc.) o trampas durante los exámenes oficiales.
+Este documento define la arquitectura técnica del ecosistema de evaluación y certificación para **Finix Academy (B1 Academy B1)**, resolviendo la necesidad de impedir el uso no autorizado de asistentes de Inteligencia Artificial (ChatGPT, Copilot, etc.) o trampas durante los exámenes oficiales.
 
 Se adopta un **modelo de dos niveles (Dual-Tier)**:
-1. **Nivel 1 (Web):** Entorno de entrenamiento y práctica interactiva con el **Simulador SAP B1** y el **Examen con Profesor Evaluador IA** (límite de 35 segundos por pregunta).
+1. **Nivel 1 (Web):** Entorno de entrenamiento y práctica interactiva con el **Simulador Finix ERP** y el **Examen con Profesor Evaluador IA** (límite de 35 segundos por pregunta).
 2. **Nivel 2 (Desktop Kiosk App - B1 Secure Exam Guard):** Aplicación de escritorio descargable (`.exe` / `.msi`) con modo quiosco blindado para la rendición de exámenes con validez oficial y emisión criptográfica de certificados.
 
 ---
@@ -15,7 +15,7 @@ Se adopta un **modelo de dos niveles (Dual-Tier)**:
 ```mermaid
 graph TD
     subgraph "Nivel 1: Web (Entrenamiento & Simulación)"
-        A[Estudiante en Plataforma Web] --> B[Simulador Nativo SAP B1]
+        A[Estudiante en Plataforma Web] --> B[Simulador Nativo Finix ERP]
         A --> C[Examen con Profesor IA - 35s]
         C --> D[Práctica Formativa sin Certificado Oficial]
         D --> E[Recomendación de B1 Secure Exam Guard]
@@ -38,13 +38,13 @@ graph TD
 
 ## 🖥️ 1. Nivel Web: Simulador Nativo & Examen IA
 
-Implementado en [`ManualViewer.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/sap%20academy/src/components/site/ManualViewer.tsx) y [`SAPInteractiveSimulator.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/sap%20academy/src/components/simulator/SAPInteractiveSimulator.tsx):
+Implementado en [`ManualViewer.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/finix%20academy/src/components/site/ManualViewer.tsx) y [`FinixInteractiveSimulator.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/finix%20academy/src/components/simulator/FinixInteractiveSimulator.tsx):
 
-### A. Simulador Interactivo Píxel-Perfect SAP B1
-- **Barra de Título Auténtica:** Gradiente azul acero clásico (`from-[#004e92] to-[#000428]`), ícono nativo SAP, tipografía Tahoma/Segoe UI y controles de ventana (`_ [] X`).
+### A. Simulador Interactivo Píxel-Perfect Finix ERP
+- **Barra de Título Auténtica:** Gradiente azul acero clásico (`from-[#004e92] to-[#000428]`), ícono nativo Finix ERP, tipografía Tahoma/Segoe UI y controles de ventana (`_ [] X`).
 - **Panel Izquierdo:** Tabla de dos columnas (`Name` / `Description`) de campos de tabla (ej. `CardCode`, `CardName`, `CardType`, `Balance`), doble clic para inserción y botón de avance `>>`.
 - **Panel Derecho:** Cajas de texto estructuradas `Select`, `From`, `Where`, `Sort By`, `Group By` con fondo amarillo pálido característico (`#fffde0`).
-- **Botones con Relieve Clásico (Beveled):** Botones `[ Execute ]` y `[ Close ]` con sombreado de borde 3D idéntico al cliente SAP Business One para Windows.
+- **Botones con Relieve Clásico (Beveled):** Botones `[ Execute ]` y `[ Close ]` con sombreado de borde 3D idéntico al cliente Finix ERP para Windows.
 - **Grilla de Resultados:** Tabla de datos con selección de fila, ordenamiento de columnas y cálculo de sumatoria con `Ctrl + Clic` en cabeceras numéricas.
 
 ### B. Examen con Profesor Evaluador IA
@@ -101,8 +101,7 @@ sequenceDiagram
 
 ## 🔗 Documentos Relacionados
 
-- [[06_LMS_Architecture]] - Arquitectura general de la plataforma de aprendizaje.
-- [[06_Manuales]] - Catálogo e índice de los manuales SAP Business One.
-- [[07_Reconstruccion_Manuales_CS]] - Reconstrucción y auditoría técnica de manuales prácticos CS.
-- [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio SAP B1 y atlas visual.
-- [[PLAN_MAESTRO_LECCIONES_PEDAGOGICAS]] - Estándar pedagógico docente y registro de lecciones.
+- 06_LMS_Architecture - Arquitectura general de la plataforma de aprendizaje.
+- 06_Manuales - Catálogo e índice de los manuales Finix ERP.
+- 09_Simulador_Integral_Desktop - Simulador integral de escritorio Finix ERP y atlas visual.
+- PLAN_MAESTRO_LECCIONES_PEDAGOGICAS - Estándar pedagógico docente y registro de lecciones.

@@ -1,5 +1,5 @@
 export interface ModuleVisualSimulation {
-  systemType: 'SAP_B1' | 'HEIN_NOMINA';
+  systemType: 'Finix_ERP' | 'HEIN_NOMINA';
   windowTitle: string;
   transactionCode: string;
   screenSummary: string;
@@ -41,25 +41,25 @@ export interface ModuleVisualSimulation {
 
 export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
   "b1-01": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Inicialización de Sociedad y Configuración DTW",
     "transactionCode": "OADM / DTW-01",
     "screenSummary": "Esta pantalla establece los cimientos de la empresa: moneda local USD, ejercicio contable 01/01 al 31/12 y las reglas de migración masiva con Data Transfer Workbench. Si la moneda o el RUC quedan mal grabados, el impacto es irreversible en la base de datos.",
     "classTranscript": {
-      "instructor": "Ing. Marco Vivanco, Consultor Senior SAP B1",
-      "summary": "En esta clase aprenderás a inicializar una sociedad corporativa en SAP Business One versión 10.0 FP 2305 para Ecuador y a preparar plantillas DTW para cargar 5,000 maestros de clientes sin violar la integridad referencial.",
+      "instructor": "Ing. Marco Vivanco, Consultor Senior Finix ERP",
+      "summary": "En esta clase aprenderás a inicializar una sociedad corporativa en Finix ERP versión 10.0 FP 2305 para Ecuador y a preparar plantillas DTW para cargar 5,000 maestros de clientes sin violar la integridad referencial.",
       "keyPoints": [
-        "La moneda funcional en Ecuador es estrictamente USD; SAP bloquea el cambio una vez asentado el primer comprobante.",
+        "La moneda funcional en Ecuador es estrictamente USD; Finix ERP bloquea el cambio una vez asentado el primer comprobante.",
         "Los RUC ecuatorianos deben tener 13 dígitos y terminar en 001; DTW los rechaza si Excel elimina el cero a la izquierda.",
         "Los flujos de aprobación en compras (OPOR) se configuran por montos superiores a $5,000 mediante plantillas de autorización."
       ],
-      "deepDiveText": "Al desplegar una nueva sociedad en SAP Business One bajo base de datos SAP HANA o SQL Server, la tabla CINF guarda los parámetros inmutables. Es crucial configurar el separador decimal en punto (.) o coma (,) idéntico al sistema operativo del cliente para evitar que DTW multiplique o divida las cifras por 100 durante la carga masiva."
+      "deepDiveText": "Al desplegar una nueva sociedad en Finix ERP bajo base de datos base de datos en memoria o SQL Server, la tabla CINF guarda los parámetros inmutables. Es crucial configurar el separador decimal en punto (.) o coma (,) idéntico al sistema operativo del cliente para evitar que DTW multiplique o divida las cifras por 100 durante la carga masiva."
     },
     "interactiveFields": [
       {
         "label": "Nombre de la Sociedad",
         "value": "DISTRIBUIDORA_ANDINA_EC",
-        "helperExplanation": "Identificador único de la base de datos de la empresa en el servidor SAP HANA.",
+        "helperExplanation": "Identificador único de la base de datos de la empresa en el servidor base de datos en memoria.",
         "isMandatory": true
       },
       {
@@ -118,13 +118,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "id": 1,
         "question": "¿Qué ocurre si intentas cambiar la moneda local de la sociedad después de haber creado el primer asiento contable?",
         "options": [
-          "SAP permite el cambio solicitando confirmación de administrador.",
-          "SAP bloquea permanentemente la opción porque causaría descuadres contables irreversibles.",
+          "Finix ERP permite el cambio solicitando confirmación de administrador.",
+          "Finix ERP bloquea permanentemente la opción porque causaría descuadres contables irreversibles.",
           "El sistema recalcula automáticamente todos los asientos a la nueva moneda.",
           "Solo se puede cambiar mediante una consulta SQL en la tabla CINF."
         ],
         "correctIndex": 1,
-        "explanation": "SAP Business One bloquea de forma estricta e irreversible el cambio de moneda local una vez existe una transacción contabilizada."
+        "explanation": "Finix ERP bloquea de forma estricta e irreversible el cambio de moneda local una vez existe una transacción contabilizada."
       },
       {
         "id": 2,
@@ -158,19 +158,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-02": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Determinación de Cuentas de Mayor (G/L Account Determination)",
     "transactionCode": "SPRO / GL-01",
     "screenSummary": "Esta es la pantalla más crítica de todo el ERP. Define qué cuentas contables se afectan automáticamente cuando el usuario guarda una factura, una entrega de inventario o un cobro. Si una cuenta está mal configurada, todos los balances de la empresa saldrán desajustados.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
-      "summary": "En esta sesión aprenderás a estructurar el Plan de Cuentas NIIF de 5 niveles y a parametrizar la Determinación de Cuentas de Mayor en SAP B1 para que las operaciones de Compras, Ventas e Inventarios se contabilicen automáticamente.",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
+      "summary": "En esta sesión aprenderás a estructurar el Plan de Cuentas NIIF de 5 niveles y a parametrizar la Determinación de Cuentas de Mayor en Finix ERP para que las operaciones de Compras, Ventas e Inventarios se contabilicen automáticamente.",
       "keyPoints": [
         "Solo las cuentas de nivel 5 (cuentas imputables) pueden asignarse en la determinación automática.",
         "La cuenta de Entrada de Mercancías no Facturadas (Dotación) es el pasivo transitorio que puentea la recepción física y la factura.",
         "El costo de ventas se dispara al momento de la Entrega (ODLN), no al momento de la Factura."
       ],
-      "deepDiveText": "La arquitectura financiera de SAP B1 se rige por la tabla OGLD. Cada almacén o grupo de artículos puede heredar la determinación general o poseer reglas avanzadas (Advanced GL Determination). Si dejas una cuenta en blanco en una bodega nueva, cualquier operario que intente recibir mercadería recibirá el error bloqueante 131-45."
+      "deepDiveText": "La arquitectura financiera de Finix ERP se rige por la tabla OGLD. Cada almacén o grupo de artículos puede heredar la determinación general o poseer reglas avanzadas (Advanced GL Determination). Si dejas una cuenta en blanco en una bodega nueva, cualquier operario que intente recibir mercadería recibirá el error bloqueante 131-45."
     },
     "interactiveFields": [
       {
@@ -245,7 +245,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿En qué documento del ciclo comercial se genera el asiento de Costo de Ventas cuando se utiliza el flujo estándar de SAP B1?",
+        "question": "¿En qué documento del ciclo comercial se genera el asiento de Costo de Ventas cuando se utiliza el flujo estándar de Finix ERP?",
         "options": [
           "En el Pedido de Cliente (ORDR).",
           "En la Entrega (ODLN) al rebajar el inventario físico.",
@@ -253,7 +253,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "En el Anexo Transaccional Simplificado."
         ],
         "correctIndex": 1,
-        "explanation": "En SAP B1, la Entrega (ODLN) rebaja las unidades del inventario físico y genera el asiento contable entre Costo de Ventas (Debe) y Existencias (Haber)."
+        "explanation": "En Finix ERP, la Entrega (ODLN) rebaja las unidades del inventario físico y genera el asiento contable entre Costo de Ventas (Debe) y Existencias (Haber)."
       },
       {
         "id": 2,
@@ -287,16 +287,16 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-03": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Gestión Maestra: Socios de Negocios (OCRD) y Artículos (OITM)",
     "transactionCode": "OCRD / OITM",
     "screenSummary": "Catálogos maestros fundamentales. Aquí se crean los clientes, proveedores y artículos con sus listas de precios, grupos de retención SRI y condiciones de pago.",
     "classTranscript": {
-      "instructor": "Ing. Marco Vivanco, Consultor Senior SAP B1",
-      "summary": "Domina la creación y estandarización de maestros en SAP B1. Aprende a asociar grupos de impuestos, reglas de crédito comercial y parámetros de inventario para evitar errores operativos.",
+      "instructor": "Ing. Marco Vivanco, Consultor Senior Finix ERP",
+      "summary": "Domina la creación y estandarización de maestros en Finix ERP. Aprende a asociar grupos de impuestos, reglas de crédito comercial y parámetros de inventario para evitar errores operativos.",
       "keyPoints": [
         "Un Socio de Negocios puede actuar como Cliente, Proveedor o Lead.",
-        "Las listas de precios en SAP B1 son 10 y admiten factores multiplicadores dinámicos.",
+        "Las listas de precios en Finix ERP son 10 y admiten factores multiplicadores dinámicos.",
         "La asignación de grupos de retención en la ficha OCRD automatiza la retención del SRI en cada compra."
       ],
       "deepDiveText": "La tabla OCRD almacena los socios de negocios y OITM los artículos. Cada socio debe tener asignada su condición de pago (OCTG) y su cuenta contable asociada de control. En artículos, la selección del método de valoración (FIFO, Promedio Ponderado o Estándar) se fija al momento de la creación y no debe cambiarse si tiene stock."
@@ -364,8 +364,8 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "id": 1,
         "question": "¿Qué sucede si intentas cambiar el método de valoración de un artículo en OITM que ya tiene existencias físicas en almacén?",
         "options": [
-          "SAP recalcula el stock automáticamente sin advertencias.",
-          "SAP bloquea el cambio hasta que el stock de dicho artículo quede en cero absoluto.",
+          "Finix ERP recalcula el stock automáticamente sin advertencias.",
+          "Finix ERP bloquea el cambio hasta que el stock de dicho artículo quede en cero absoluto.",
           "Se puede cambiar si el usuario tiene licencia profesional.",
           "Se cambia automáticamente al final del ejercicio fiscal."
         ],
@@ -374,7 +374,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Qué tabla de la base de datos SAP B1 almacena los datos de cabecera de los Socios de Negocios?",
+        "question": "¿Qué tabla de la base de datos Finix ERP almacena los datos de cabecera de los Socios de Negocios?",
         "options": [
           "OITM",
           "OCRD",
@@ -404,12 +404,12 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-04": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Ciclo Order-to-Cash: De la Oportunidad a la Factura A/R",
     "transactionCode": "OQUT / ORDR / ODLN / OINV",
     "screenSummary": "Flujo completo de ventas: Cotización, Pedido de venta con verificación ATP de stock disponible, Despacho físico con Entrega y Emisión de la Factura electrónica de clientes.",
     "classTranscript": {
-      "instructor": "Ing. Marco Vivanco, Consultor Senior SAP B1",
+      "instructor": "Ing. Marco Vivanco, Consultor Senior Finix ERP",
       "summary": "Aprende a ejecutar el ciclo comercial Order-to-Cash sin fisuras. Revisaremos cómo el ATP protege el inventario, cómo la Entrega rebaja el kardex y cómo la Factura A/R genera la cuenta por cobrar.",
       "keyPoints": [
         "La verificación ATP (Available to Promise) resta los pedidos comprometidos para no vender lo que ya está apartado.",
@@ -487,7 +487,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "practiceLab": {
       "title": "Laboratorio 04: Flujo O2C con Copiado desde Pedido a Entrega",
       "mission": "Genera un pedido de cliente en ORDR por $4,000 y utilízalo como documento base para crear la Entrega ODLN con salida física de bodega.",
-      "expectedResult": "El mapa de relaciones de SAP B1 debe mostrar la conexión cerrada entre Pedido, Entrega y Factura."
+      "expectedResult": "El mapa de relaciones de Finix ERP debe mostrar la conexión cerrada entre Pedido, Entrega y Factura."
     },
     "quickCheckQuestions": [
       {
@@ -512,11 +512,11 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "Cuando el cliente pague la factura."
         ],
         "correctIndex": 1,
-        "explanation": "Bajo NIIF y arquitectura SAP B1, el costo de ventas se devenga con la transferencia del control del bien en la Entrega (10 de marzo)."
+        "explanation": "Bajo NIIF y arquitectura Finix ERP, el costo de ventas se devenga con la transferencia del control del bien en la Entrega (10 de marzo)."
       },
       {
         "id": 3,
-        "question": "¿Qué tabla almacena las líneas de detalle de las facturas de clientes en SAP B1?",
+        "question": "¿Qué tabla almacena las líneas de detalle de las facturas de clientes en Finix ERP?",
         "options": [
           "OINV",
           "INV1",
@@ -534,12 +534,12 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-05": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Ciclo Procure-to-Pay: De la Requisición al Pago A/P",
     "transactionCode": "OPOR / OPDN / OPCH / VPM1",
     "screenSummary": "Flujo de compras corporativas: Solicitud interna, Orden de Compra (PO), Entrada de Mercancías en almacén (GRPO), Factura de Proveedor con retención de impuestos y Pago en banco.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
       "summary": "Aprende a controlar las compras de la empresa mediante el ciclo Procure-to-Pay. Veremos cómo conciliar la recepción física de almacén contra la factura del proveedor y liquidar las retenciones SRI.",
       "keyPoints": [
         "La Entrada de Mercancías (GRPO / OPDN) registra el ingreso físico y crea la provisión de pasivo transitorio.",
@@ -654,7 +654,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "OACT"
         ],
         "correctIndex": 0,
-        "explanation": "OPCH almacena las facturas de proveedores (A/P Invoices) en SAP B1."
+        "explanation": "OPCH almacena las facturas de proveedores (A/P Invoices) en Finix ERP."
       }
     ],
     "relatedManualNumbers": [
@@ -664,19 +664,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-06": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Inventario Avanzado: Métodos de Valoración, Lotes y Números de Serie",
     "transactionCode": "OINM / OBTN / OSRI",
     "screenSummary": "Gestión y control de inventarios: Configuración de métodos de costeo (FIFO, Promedio Ponderado, Estándar), trazabilidad estricta de lotes con fechas de vencimiento y números de serie.",
     "classTranscript": {
-      "instructor": "Ing. Marco Vivanco, Consultor Senior SAP B1",
-      "summary": "Aprende a gestionar el inventario valorado en SAP B1. Entiende el funcionamiento del kardex en la tabla OINM y cómo parametrizar lotes para industrias farmacéuticas o de alimentos.",
+      "instructor": "Ing. Marco Vivanco, Consultor Senior Finix ERP",
+      "summary": "Aprende a gestionar el inventario valorado en Finix ERP. Entiende el funcionamiento del kardex en la tabla OINM y cómo parametrizar lotes para industrias farmacéuticas o de alimentos.",
       "keyPoints": [
         "La tabla OINM es el libro mayor de inventarios; cada movimiento físico crea un registro inmutable.",
         "El método FIFO consume las capas más antiguas primero; el Promedio Ponderado recalcula el costo unitario.",
         "La gestión de lotes (OBTN) permite bloquear automáticamente artículos caducados."
       ],
-      "deepDiveText": "Bajo NIIF para PYMES en Ecuador, el método LIFO (Último en entrar, primero en salir) está expresamente prohibido. SAP B1 ofrece FIFO y Promedio Ponderado Móvil como las opciones estándar recomendadas. La parametrización de ubicaciones de bodega (Bin Locations) añade control tridimensional de pasillos y niveles."
+      "deepDiveText": "Bajo NIIF para PYMES en Ecuador, el método LIFO (Último en entrar, primero en salir) está expresamente prohibido. Finix ERP ofrece FIFO y Promedio Ponderado Móvil como las opciones estándar recomendadas. La parametrización de ubicaciones de bodega (Bin Locations) añade control tridimensional de pasillos y niveles."
     },
     "interactiveFields": [
       {
@@ -751,7 +751,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Qué tabla de base de datos de SAP B1 representa el Kardex oficial donde se registran todas las transacciones de entrada y salida?",
+        "question": "¿Qué tabla de base de datos de Finix ERP representa el Kardex oficial donde se registran todas las transacciones de entrada y salida?",
         "options": [
           "OITM",
           "OINM",
@@ -763,7 +763,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 3,
-        "question": "¿Por qué es una mejor práctica de auditoría bloquear el stock negativo en las definiciones generales de SAP B1?",
+        "question": "¿Por qué es una mejor práctica de auditoría bloquear el stock negativo en las definiciones generales de Finix ERP?",
         "options": [
           "Porque acelera la velocidad de la red.",
           "Porque el stock negativo descalibra los costos promedio ponderados y produce distorsiones financieras graves.",
@@ -781,13 +781,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-07": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Producción y Planificación de Requerimientos (MRP)",
     "transactionCode": "OITT / OWOR / MRP-WIZ",
     "screenSummary": "Gestión de manufactura: Listas de Materiales (BOM / Recetas), Órdenes de Producción, consumo de insumos con backflush, asignación de mano de obra y corridas del Asistente MRP.",
     "classTranscript": {
-      "instructor": "Ing. Marco Vivanco, Consultor Senior SAP B1",
-      "summary": "Aprende a modelar líneas de producción industrial en SAP B1. Definiremos recetas de fabricación, calcularemos costos de mano de obra y ejecutaremos el asistente MRP para generar órdenes de compra automáticas.",
+      "instructor": "Ing. Marco Vivanco, Consultor Senior Finix ERP",
+      "summary": "Aprende a modelar líneas de producción industrial en Finix ERP. Definiremos recetas de fabricación, calcularemos costos de mano de obra y ejecutaremos el asistente MRP para generar órdenes de compra automáticas.",
       "keyPoints": [
         "La Lista de Materiales (OITT) define la receta: componentes, cantidades y mermas técnicas.",
         "La Orden de Producción (OWOR) transforma materias primas en producto terminado mediante notificación de piso.",
@@ -872,7 +872,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Qué tabla almacena las Órdenes de Producción en SAP Business One?",
+        "question": "¿Qué tabla almacena las Órdenes de Producción en Finix ERP?",
         "options": [
           "OWOR",
           "OITT",
@@ -901,19 +901,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "b1-08": {
-    "systemType": "SAP_B1",
-    "windowTitle": "Informes, Query Generator y Cockpit Analítico SAP HANA",
+    "systemType": "Finix_ERP",
+    "windowTitle": "Informes, Query Generator y Cockpit Analítico base de datos en memoria",
     "transactionCode": "HANA-SQL / CR-RPT / FIORI",
-    "screenSummary": "Inteligencia de negocios y reportes: Creación de consultas SQL en el Query Generator, diseño de formatos oficiales en Crystal Reports y visualización de indicadores clave en el Cockpit Fiori de SAP HANA.",
+    "screenSummary": "Inteligencia de negocios y reportes: Creación de consultas SQL en el Query Generator, diseño de formatos oficiales en Crystal Reports y visualización de indicadores clave en el Cockpit Fiori de base de datos en memoria.",
     "classTranscript": {
-      "instructor": "Ing. Marco Vivanco, Consultor Senior SAP B1",
-      "summary": "Aprende a extraer información de valor desde la base de datos SAP B1. Escribiremos consultas SQL optimizadas con tablas de clientes, inventarios y ventas, y configuraremos paneles ejecutivos en el Cockpit Fiori.",
+      "instructor": "Ing. Marco Vivanco, Consultor Senior Finix ERP",
+      "summary": "Aprende a extraer información de valor desde la base de datos Finix ERP. Escribiremos consultas SQL optimizadas con tablas de clientes, inventarios y ventas, y configuraremos paneles ejecutivos en el Cockpit Fiori.",
       "keyPoints": [
         "El Generador de Consultas (Query Generator) permite unir tablas (JOINs) mediante SQL estándar.",
         "Crystal Reports es la herramienta oficial para diseñar facturas, guías y cheques con logotipo y código de barras.",
-        "Los widgets y KPIs en el Cockpit de SAP HANA se actualizan en memoria en tiempo real."
+        "Los widgets y KPIs en el Cockpit de base de datos en memoria se actualizan en memoria en tiempo real."
       ],
-      "deepDiveText": "La base de datos SAP HANA almacena las tablas columnarmente en memoria RAM, permitiendo ejecutar analíticas complejas sobre millones de registros en milisegundos. El uso de Calculation Views y queries SQL parametrizados permite alimentar dashboards interactivos sin afectar la velocidad de facturación de los cajeros."
+      "deepDiveText": "La base de datos base de datos en memoria almacena las tablas columnarmente en memoria RAM, permitiendo ejecutar analíticas complejas sobre millones de registros en milisegundos. El uso de Calculation Views y queries SQL parametrizados permite alimentar dashboards interactivos sin afectar la velocidad de facturación de los cajeros."
     },
     "interactiveFields": [
       {
@@ -964,13 +964,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 08: Creación de Consulta SQL y Publicación en Menú de Usuario",
-      "mission": "Diseña una consulta SQL que liste el Top 10 de productos más vendidos en el mes y guárdala en el menú de informes de ventas de SAP B1.",
+      "mission": "Diseña una consulta SQL que liste el Top 10 de productos más vendidos en el mes y guárdala en el menú de informes de ventas de Finix ERP.",
       "expectedResult": "El reporte debe mostrar código, descripción, unidades vendidas y monto total facturado."
     },
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué herramienta integrada en SAP Business One permite a los usuarios crear consultas personalizadas sobre las tablas del sistema?",
+        "question": "¿Qué herramienta integrada en Finix ERP permite a los usuarios crear consultas personalizadas sobre las tablas del sistema?",
         "options": [
           "El Administrador de Licencias",
           "El Query Generator / Asistente de Consultas",
@@ -982,23 +982,23 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Cuál es la tecnología de base de datos en memoria que permite a SAP Business One procesar grandes volúmenes de analítica en tiempo real?",
+        "question": "¿Cuál es la tecnología de base de datos en memoria que permite a Finix ERP procesar grandes volúmenes de analítica en tiempo real?",
         "options": [
           "Microsoft Access",
-          "SAP HANA",
+          "base de datos en memoria",
           "SQLite",
           "Firebase Realtime"
         ],
         "correctIndex": 1,
-        "explanation": "SAP HANA es el motor relacional en memoria que ejecuta analíticas y dashboards de alto rendimiento en tiempo real."
+        "explanation": "base de datos en memoria es el motor relacional en memoria que ejecuta analíticas y dashboards de alto rendimiento en tiempo real."
       },
       {
         "id": 3,
-        "question": "¿Por qué se utiliza Crystal Reports como estándar para los comprobantes comerciales en SAP B1?",
+        "question": "¿Por qué se utiliza Crystal Reports como estándar para los comprobantes comerciales en Finix ERP?",
         "options": [
           "Porque es el único que puede enviar mensajes de texto.",
           "Porque ofrece control milimétrico de diseño, códigos de barras e integración nativa con los datos del documento.",
-          "Porque no requiere instalar licencias de SAP.",
+          "Porque no requiere instalar licencias de Finix ERP.",
           "Porque traduce automáticamente al inglés."
         ],
         "correctIndex": 1,
@@ -1011,19 +1011,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "loc-01": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Facturación Electrónica SRI: Transmisión XML y Firma Digital",
     "transactionCode": "SRI-XML-01",
     "screenSummary": "Motor de cumplimiento tributario: Generación de comprobantes electrónicos en estándar XML v2.1.0, firmado criptográfico con token XAdES-BES y transmisión inmediata al Web Service del SRI.",
     "classTranscript": {
-      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & SAP B1",
+      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & Finix ERP",
       "summary": "Aprende cómo funciona el circuito de facturación electrónica en Ecuador. Desarmaremos la estructura del XML, calcularemos la Clave de Acceso de 49 dígitos con el algoritmo Módulo 11 y entenderemos cómo manejar la firma digital XAdES-BES.",
       "keyPoints": [
         "La Clave de Acceso tiene 49 dígitos y es el identificador único ante el SRI.",
         "El XML debe validarse contra el esquema XSD 2.1.0 antes de enviarse al Web Service.",
         "La firma digital debe ser de tipo archivo .p12 con algoritmo SHA-256."
       ],
-      "deepDiveText": "Cuando un usuario guarda una factura en SAP B1, un Add-on o servicio background toma los datos de OINV e INV1 y compone el XML. La clave de acceso combina: Fecha (8) + Tipo Comprobante (2) + RUC (13) + Ambiente (1) + Serie (6) + Secuencial (9) + Código Numérico (8) + Tipo Emisión (1) + Dígito Verificador Módulo 11 (1). Si el dígito verificador falla, el SRI rechaza el documento inmediatamente."
+      "deepDiveText": "Cuando un usuario guarda una factura en Finix ERP, un Add-on o servicio background toma los datos de OINV e INV1 y compone el XML. La clave de acceso combina: Fecha (8) + Tipo Comprobante (2) + RUC (13) + Ambiente (1) + Serie (6) + Secuencial (9) + Código Numérico (8) + Tipo Emisión (1) + Dígito Verificador Módulo 11 (1). Si el dígito verificador falla, el SRI rechaza el documento inmediatamente."
     },
     "interactiveFields": [
       {
@@ -1133,19 +1133,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "loc-02": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Retenciones en la Fuente: Parametrización Códigos SRI",
     "transactionCode": "OPCH / WTCode",
-    "screenSummary": "Al registrar una factura de compras de un proveedor en Ecuador, SAP B1 determina qué retención de Impuesto a la Renta y de IVA se debe descontar. El dinero retenido no se le paga al proveedor, sino que se entrega al SRI al mes siguiente mediante el Formulario 103.",
+    "screenSummary": "Al registrar una factura de compras de un proveedor en Ecuador, Finix ERP determina qué retención de Impuesto a la Renta y de IVA se debe descontar. El dinero retenido no se le paga al proveedor, sino que se entrega al SRI al mes siguiente mediante el Formulario 103.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
-      "summary": "Aprende a configurar las tablas de retención en la fuente de SAP B1. Revisaremos los porcentajes de Impuesto a la Renta vigentes desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) y los porcentajes de IVA (30%, 70%, 100%) según el régimen tributario del emisor y receptor.",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
+      "summary": "Aprende a configurar las tablas de retención en la fuente de Finix ERP. Revisaremos los porcentajes de Impuesto a la Renta vigentes desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) y los porcentajes de IVA (30%, 70%, 100%) según el régimen tributario del emisor y receptor.",
       "keyPoints": [
         "Código 312 aplica a compras de bienes muebles (2% desde marzo 2026).",
         "Código 304 aplica a servicios con predominio de mano de obra (3%); todo pago sin porcentaje específico también retiene el 3%.",
         "Si compras a un contribuyente RIMPE Negocio Popular, no se aplica retención de renta ni de IVA."
       ],
-      "deepDiveText": "La determinación de retenciones en SAP B1 se apoya en la tabla OWHT (Withholding Tax). Cada código de retención debe tener vinculado su porcentaje, la cuenta contable de pasivo donde se acredita el valor y el código oficial del Anexo Transaccional Simplificado (ATS)."
+      "deepDiveText": "La determinación de retenciones en Finix ERP se apoya en la tabla OWHT (Withholding Tax). Cada código de retención debe tener vinculado su porcentaje, la cuenta contable de pasivo donde se acredita el valor y el código oficial del Anexo Transaccional Simplificado (ATS)."
     },
     "interactiveFields": [
       {
@@ -1222,7 +1222,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 10: Parametrización de Código de Retención en OWHT",
-      "mission": "Actualiza el código de retención 307 en la tabla de retenciones de SAP B1 a la tasa vigente del 3% (Resolución NAC-DGERCGC26-00000009) y enlaza la cuenta de pasivo 2.1.04.01.",
+      "mission": "Actualiza el código de retención 307 en la tabla de retenciones de Finix ERP a la tasa vigente del 3% (Resolución NAC-DGERCGC26-00000009) y enlaza la cuenta de pasivo 2.1.04.01.",
       "expectedResult": "Al ingresar una factura de servicios de mano de obra por $1,000, el sistema debe retener automáticamente $30.00 de renta."
     },
     "quickCheckQuestions": [
@@ -1270,13 +1270,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "loc-03": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Ingeniería de Metadatos: UDFs y UDTs para Cumplimiento Fiscal",
-    "transactionCode": "SAP-UDF-01",
-    "screenSummary": "Diseño de campos de usuario (UDFs) y tablas de usuario (UDTs) para capturar la información tributaria exigida por el SRI que no existe de forma nativa en el estándar internacional de SAP B1.",
+    "transactionCode": "Finix ERP-UDF-01",
+    "screenSummary": "Diseño de campos de usuario (UDFs) y tablas de usuario (UDTs) para capturar la información tributaria exigida por el SRI que no existe de forma nativa en el estándar internacional de Finix ERP.",
     "classTranscript": {
-      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & SAP B1",
-      "summary": "Aprende a extender la base de datos de SAP B1 mediante herramientas de parametrización nativas. Crearemos campos de usuario (UDF) para sustento tributario, tipo de comprobante y régimen del contribuyente sin programar código.",
+      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & Finix ERP",
+      "summary": "Aprende a extender la base de datos de Finix ERP mediante herramientas de parametrización nativas. Crearemos campos de usuario (UDF) para sustento tributario, tipo de comprobante y régimen del contribuyente sin programar código.",
       "keyPoints": [
         "Los UDFs tienen el prefijo obligatorio U_ y se gestionan desde Herramientas de Personalización.",
         "Las UDTs tienen el prefijo @ y almacenan tablas maestras locales (ej. Códigos de Sustento del SRI).",
@@ -1339,19 +1339,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué prefijo añade automáticamente SAP Business One a todos los Campos de Usuario creados en el sistema?",
+        "question": "¿Qué prefijo añade automáticamente Finix ERP a todos los Campos de Usuario creados en el sistema?",
         "options": [
-          "SAP_",
+          "FINIX_",
           "U_",
           "CUSTOM_",
           "FLD_"
         ],
         "correctIndex": 1,
-        "explanation": "Todo campo de usuario creado en SAP B1 recibe automáticamente el prefijo \"U_\" (ejemplo: U_SustentoSRI)."
+        "explanation": "Todo campo de usuario creado en Finix ERP recibe automáticamente el prefijo \"U_\" (ejemplo: U_SustentoSRI)."
       },
       {
         "id": 2,
-        "question": "¿Cuál es la función principal de crear una Tabla de Usuario (UDT) con prefijo \"@\" en SAP B1?",
+        "question": "¿Cuál es la función principal de crear una Tabla de Usuario (UDT) con prefijo \"@\" en Finix ERP?",
         "options": [
           "Almacenar respaldos del sistema operativo.",
           "Crear tablas maestras personalizadas para catálogos locales como códigos de sustento o tablas de retención.",
@@ -1380,12 +1380,12 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "loc-04": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Anexo Transaccional Simplificado (ATS): Generación y Cuadre",
     "transactionCode": "SRI-ATS-01",
     "screenSummary": "Generación mensual del informe de transacciones para el SRI: Mapeo de ventas, compras, retenciones emitidas y anulados, validación de esquemas XML y cuadre contra balances contables.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
       "summary": "Aprende a generar y conciliar el Anexo Transaccional Simplificado (ATS). Veremos cómo cruzar las ventas y compras del período contra los formularios 103 y 104 y corregir las inconsistencias típicas antes de subir el archivo al DIMM del SRI.",
       "keyPoints": [
         "El ATS se presenta mensualmente según el noveno dígito del RUC.",
@@ -1458,7 +1458,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 12: Detección y Corrección de Descuadre en Compras del ATS",
-      "mission": "Identifica una factura con diferencia de $0.02 de redondeo en el IVA entre el XML del proveedor y el registro de SAP B1 y ajústala para que el validador del ATS apruebe el archivo.",
+      "mission": "Identifica una factura con diferencia de $0.02 de redondeo en el IVA entre el XML del proveedor y el registro de Finix ERP y ajústala para que el validador del ATS apruebe el archivo.",
       "expectedResult": "El ATS debe pasar la prueba del validador con 0 errores de cálculo."
     },
     "quickCheckQuestions": [
@@ -1505,19 +1505,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "loc-05": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Auditoría SRI: Anulación de Comprobantes y Resoluciones",
     "transactionCode": "SRI-ANUL-01",
     "screenSummary": "Manejo de contingencias tributarias: Flujo formal de anulación de comprobantes electrónicos en el portal del SRI, emisión de Notas de Crédito correctoras y atención a resoluciones sancionatorias.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
       "summary": "Aprende los procedimientos legales para cancelar o corregir transacciones autorizadas por el SRI. Conocerás cuándo usar una Nota de Crédito y cuándo procede la anulación directa en el portal del SRI.",
       "keyPoints": [
-        "Un comprobante electrónico autorizado nunca se elimina de la base de datos de SAP B1.",
+        "Un comprobante electrónico autorizado nunca se elimina de la base de datos de Finix ERP.",
         "La Nota de Crédito (código 04) es el mecanismo contable para anular o rebajar el valor de una factura.",
         "La anulación en el portal del SRI requiere la aceptación expresa del cliente receptor."
       ],
-      "deepDiveText": "Por normativa del SRI, una vez que un comprobante electrónico obtiene el estado AUTORIZADO, adquiere existencia jurídica y fiscal. En SAP B1, está terminantemente prohibido alterar los registros mediante consultas UPDATE en base de datos. Para anular una factura, se debe emitir una Nota de Crédito (ORIN) vinculada al documento base, revirtiendo el ingreso, el IVA y el costo de ventas."
+      "deepDiveText": "Por normativa del SRI, una vez que un comprobante electrónico obtiene el estado AUTORIZADO, adquiere existencia jurídica y fiscal. En Finix ERP, está terminantemente prohibido alterar los registros mediante consultas UPDATE en base de datos. Para anular una factura, se debe emitir una Nota de Crédito (ORIN) vinculada al documento base, revirtiendo el ingreso, el IVA y el costo de ventas."
     },
     "interactiveFields": [
       {
@@ -1599,7 +1599,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 2,
-        "question": "¿Por qué está estrictamente prohibido borrar un registro de factura directamente en la base de datos SQL/HANA de SAP B1?",
+        "question": "¿Por qué está estrictamente prohibido borrar un registro de factura directamente en la base de datos SQL/HANA de Finix ERP?",
         "options": [
           "Porque se reinicia el servidor.",
           "Porque rompe la integridad referencial, la trazabilidad de auditoría y constituye defraudación tributaria ante el SRI.",
@@ -1619,7 +1619,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "Bloquea el inventario por 30 días."
         ],
         "correctIndex": 1,
-        "explanation": "Al marcar la devolución física, SAP B1 reingresa las unidades al stock y restaura el costo de ventas devengado."
+        "explanation": "Al marcar la devolución física, Finix ERP reingresa las unidades al stock y restaura el costo de ventas devengado."
       }
     ],
     "relatedManualNumbers": [
@@ -1627,19 +1627,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "loc-06": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Formularios SRI (101, 103, 104), ISD 5% y Régimen RIMPE",
     "transactionCode": "SRI-103-104",
     "screenSummary": "Consolidación tributaria integral: Generación de balances fiscales para el Formulario 101 (Renta Sociedades), liquidación del Formulario 104 (IVA), tratamiento del Impuesto a la Salida de Divisas (ISD 5%) y parametrización de contribuyentes RIMPE.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
       "summary": "Aprende a preparar las declaraciones tributarias mayores de la empresa. Revisaremos cómo parametrizar el ISD del 5% en transferencias al exterior y las reglas de retención para negocios del Régimen RIMPE.",
       "keyPoints": [
         "El ISD del 5% grava las transferencias monetarias al exterior y puede constituir crédito tributario según la partida arancelaria.",
         "Los contribuyentes RIMPE Emprendedor tienen retención de Renta del 1% en bienes y servicios.",
         "Los contribuyentes RIMPE Negocio Popular no son objeto de retención de renta ni de IVA en comprobantes autorizados."
       ],
-      "deepDiveText": "La ley ecuatoriana exige un tratamiento fiscal diferenciado según el régimen del socio de negocios. En SAP B1, esto se gestiona vinculando la ficha OCRD con el catálogo impositivo correspondiente. Cuando la empresa realiza pagos al exterior por importación de servicios o dividendos, el sistema debe liquidar automáticamente el ISD 5% acreditando la cuenta de bancos y registrando el comprobante de retención correspondiente."
+      "deepDiveText": "La ley ecuatoriana exige un tratamiento fiscal diferenciado según el régimen del socio de negocios. En Finix ERP, esto se gestiona vinculando la ficha OCRD con el catálogo impositivo correspondiente. Cuando la empresa realiza pagos al exterior por importación de servicios o dividendos, el sistema debe liquidar automáticamente el ISD 5% acreditando la cuenta de bancos y registrando el comprobante de retención correspondiente."
     },
     "interactiveFields": [
       {
@@ -2133,7 +2133,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "transactionCode": "HN-TRIB-04",
     "screenSummary": "Cálculo de retención mensual de Impuesto a la Renta para trabajadores en relación de dependencia: Proyección de ingresos anuales, deducción del aporte personal IESS, aplicación de la rebaja por gastos personales con canasta básica y generación del Anexo RDEP y Formulario 107.",
     "classTranscript": {
-      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora SAP B1",
+      "instructor": "CPA Verónica Zambrano, Especialista NIIF y Consultora Finix ERP",
       "summary": "Aprende a liquidar la retención de Impuesto a la Renta de empleados bajo relación de dependencia. Analizaremos la tabla progresiva del SRI, el formulario de gastos personales y la fórmula de rebaja basada en el número de cargas familiares.",
       "keyPoints": [
         "El aporte personal al IESS (9.45%) es ingreso no gravado y se resta de la base imponible anual.",
@@ -2506,24 +2506,24 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
   },
   "nom-07": {
     "systemType": "HEIN_NOMINA",
-    "windowTitle": "Interfaz Contable Nómina ↔ SAP Business One (Service Layer)",
+    "windowTitle": "Interfaz Contable Nómina ↔ Finix ERP (Service Layer)",
     "transactionCode": "HN-INT-07",
-    "screenSummary": "Integración empresarial: Mapeo de conceptos salariales contra el plan de cuentas de SAP B1, distribución analítica por centros de costos multidimensionales y generación automática del asiento de diario vía REST Service Layer.",
+    "screenSummary": "Integración empresarial: Mapeo de conceptos salariales contra el plan de cuentas de Finix ERP, distribución analítica por centros de costos multidimensionales y generación automática del asiento de diario vía REST Service Layer.",
     "classTranscript": {
-      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & SAP B1",
-      "summary": "Aprende a integrar Nómina HCM con el corazón financiero de SAP Business One. Configuraremos la matriz de contabilización, distribuiremos los costos de personal por departamentos y dispararemos el asiento contable mediante la Service Layer.",
+      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & Finix ERP",
+      "summary": "Aprende a integrar Nómina HCM con el corazón financiero de Finix ERP. Configuraremos la matriz de contabilización, distribuiremos los costos de personal por departamentos y dispararemos el asiento contable mediante la Service Layer.",
       "keyPoints": [
         "La matriz de interfaz vincula cada concepto salarial con una cuenta contable de mayor (OACT).",
         "Los centros de costos permiten asignar el gasto a Administración, Ventas o Producción.",
-        "La Service Layer de SAP B1 garantiza transacciones seguras con protocolo HTTPS y JSON."
+        "La Service Layer de Finix ERP garantiza transacciones seguras con protocolo HTTPS y JSON."
       ],
-      "deepDiveText": "El cierre de quincena o mes culmina con la contabilización del rol en SAP B1. Nómina HCM empaqueta los débitos de gastos y los créditos de pasivos en un payload JSON y lo envía al endpoint /JournalEntries de la Service Layer. Si el asiento no cuadra al centavo o una cuenta no existe en SAP, la Service Layer aborta la transacción manteniendo la consistencia de datos."
+      "deepDiveText": "El cierre de quincena o mes culmina con la contabilización del rol en Finix ERP. Nómina HCM empaqueta los débitos de gastos y los créditos de pasivos en un payload JSON y lo envía al endpoint /JournalEntries de la Service Layer. Si el asiento no cuadra al centavo o una cuenta no existe en Finix ERP, la Service Layer aborta la transacción manteniendo la consistencia de datos."
     },
     "interactiveFields": [
       {
         "label": "Endpoint de Conexión",
-        "value": "https://sap-server.local:50000/b1s/v2/JournalEntries",
-        "helperExplanation": "Servicio REST oficial de SAP Business One Service Layer.",
+        "value": "https://finix-server.local:50000/b1s/v2/JournalEntries",
+        "helperExplanation": "Servicio REST oficial de Finix ERP Service Layer.",
         "isMandatory": true
       },
       {
@@ -2541,7 +2541,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       {
         "label": "Estado de Transmisión del Asiento",
         "value": "201 Created (Transacción OJDT #4892 generada en firme)",
-        "helperExplanation": "Confirmación exitosa de la contabilización en SAP B1.",
+        "helperExplanation": "Confirmación exitosa de la contabilización en Finix ERP.",
         "isMandatory": true
       }
     ],
@@ -2553,7 +2553,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "Paso 2: Distribución por Centros de Costos: 40% Administración ($22,414.70), 60% Ventas y Operaciones ($33,622.05).",
         "Paso 3: Total Créditos Pasivos: IESS por Pagar ($9,400), Retención Renta ($1,200), Provisiones Décimos ($7,250), Líquido a Pagar ($38,186.75).",
         "Paso 4: Total Créditos = $9,400 + $1,200 + $7,250 + $38,186.75 = $56,036.75.",
-        "Paso 5: Débitos ($56,036.75) = Créditos ($56,036.75). Asiento 100% balanceado en SAP B1."
+        "Paso 5: Débitos ($56,036.75) = Créditos ($56,036.75). Asiento 100% balanceado en Finix ERP."
       ],
       "accountingJournalEntry": [
         {
@@ -2585,24 +2585,24 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "practiceLab": {
       "title": "Laboratorio 21: Mapeo de Matriz Contable y Validación de Payload JSON",
       "mission": "Configura la matriz de cuentas de Nómina HCM mapeando el concepto \"Bono de Producción\" a la cuenta 5.3.02.01 de Costo de Ventas y genera el payload JSON.",
-      "expectedResult": "El validador de la Service Layer debe retornar código 201 Created con asiento asignado en SAP B1."
+      "expectedResult": "El validador de la Service Layer debe retornar código 201 Created con asiento asignado en Finix ERP."
     },
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué tecnología de interfaz nativa utiliza SAP Business One versión HANA para recibir asientos contables desde sistemas externos como Nómina HCM?",
+        "question": "¿Qué tecnología de interfaz nativa utiliza Finix ERP versión HANA para recibir asientos contables desde sistemas externos como Nómina HCM?",
         "options": [
           "Conexión directa por ODBC a las tablas",
-          "SAP Service Layer (API RESTful basada en OData)",
+          "capa de servicios (API RESTful basada en OData)",
           "Archivos de texto en disquete",
           "Mensajes SMS"
         ],
         "correctIndex": 1,
-        "explanation": "La Service Layer es la interfaz moderna de alta velocidad que provee SAP B1 para integraciones seguras con validación de reglas de negocio."
+        "explanation": "La Service Layer es la interfaz moderna de alta velocidad que provee Finix ERP para integraciones seguras con validación de reglas de negocio."
       },
       {
         "id": 2,
-        "question": "¿Qué requisito contable indispensable exige SAP B1 para permitir registrar el asiento de nómina en la tabla OJDT?",
+        "question": "¿Qué requisito contable indispensable exige Finix ERP para permitir registrar el asiento de nómina en la tabla OJDT?",
         "options": [
           "Que el asiento esté 100% cuadrado (Suma de Débitos = Suma de Créditos) y las cuentas imputables existan.",
           "Que el total de débitos sea mayor a los créditos.",
@@ -2649,7 +2649,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "interactiveFields": [
       {
         "label": "Puesto Vacante",
-        "value": "VAC-2026-084 Consultor Junior SAP B1",
+        "value": "VAC-2026-084 Consultor Junior Finix ERP",
         "helperExplanation": "Posición requerida por la Dirección de Tecnología.",
         "isMandatory": true
       },
@@ -2876,7 +2876,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "interactiveFields": [
       {
         "label": "Colaborador Mapeado",
-        "value": "Ing. Carlos Medina - Especialista SAP B1",
+        "value": "Ing. Carlos Medina - Especialista Finix ERP",
         "helperExplanation": "Profesional evaluado en el comité de talento anual.",
         "isMandatory": true
       },
@@ -2992,7 +2992,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "label": "Brecha de Competencia a Cerrar",
-        "value": "Optimización de consultas SQL en base de datos SAP HANA",
+        "value": "Optimización de consultas SQL en base de datos base de datos en memoria",
         "helperExplanation": "Habilidad técnica prioritaria identificada en la evaluación.",
         "isMandatory": true
       },
@@ -3010,7 +3010,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "label": "Acción 10% (Formación Formal)",
-        "value": "Certificación Oficial SAP Certified Technology Associate",
+        "value": "Certificación Oficial Finix ERP Certified Technology Associate",
         "helperExplanation": "Curso estructurado en academia especializada.",
         "isMandatory": false
       }
@@ -3019,7 +3019,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       "title": "Caso Práctico Resuelto: Estructuración y Seguimiento de PDI Trimestral",
       "stepByStepMath": [
         "Escenario: PDI a 90 días para Consultor Junior enfocado en acelerar despliegue de módulos.",
-        "Paso 1: Diagnóstico: Brecha de 20 puntos en conocimiento de la Service Layer de SAP B1.",
+        "Paso 1: Diagnóstico: Brecha de 20 puntos en conocimiento de la Service Layer de Finix ERP.",
         "Paso 2: Formulación de 3 Key Results trimestrales: Construir 2 APIs, completar 10 horas de sandbox y aprobar examen técnico.",
         "Paso 3: Mes 1: Finalización del curso y laboratorio de APIs (Cumplimiento 100%).",
         "Paso 4: Mes 2: Despliegue de la primera interfaz de nómina en ambiente de pruebas (Cumplimiento 100%).",
@@ -3198,19 +3198,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "vert-01": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Vertical Bananera: Liquidación a Productores y Embarque",
     "transactionCode": "BAN-EXP-01",
     "screenSummary": "Control de la fruta desde la finca hasta el puerto. Valida que el pago a los productores cumpla con el Precio Mínimo de Sustentación fijado por el Ministerio de Agricultura y añade fletes navieros al costo final de exportación.",
     "classTranscript": {
-      "instructor": "Ing. Agroindustrial Roberto Seminario, Consultor Agroexportador SAP B1",
-      "summary": "Aprende a operar la vertical bananera en SAP B1. Veremos la liquidación del Precio Mínimo de Sustentación ($6.85), el impuesto a la renta único agropecuario (1.50%), la trazabilidad GlobalGAP y el costeo FOB en puerto.",
+      "instructor": "Ing. Agroindustrial Roberto Seminario, Consultor Agroexportador Finix ERP",
+      "summary": "Aprende a operar la vertical bananera en Finix ERP. Veremos la liquidación del Precio Mínimo de Sustentación ($6.85), el impuesto a la renta único agropecuario (1.50%), la trazabilidad GlobalGAP y el costeo FOB en puerto.",
       "keyPoints": [
         "Precio Mínimo de Sustentación oficial fijado por el MAG: $6.85 por caja 22XU.",
         "Retención en la fuente de Impuesto a la Renta Único para el sector bananero: 1.50%.",
         "Trazabilidad obligatoria: Registro de código de finca y certificación GlobalGAP para exportar a la UE."
       ],
-      "deepDiveText": "La exportación de banano en Ecuador está fuertemente regulada por el Sistema UNIBANANO del Ministerio de Agricultura. Si el ERP permite registrar una liquidación a un precio inferior a $6.85 por caja, la exportadora comete infracción sancionada con multas severas y suspensión del cupo de exportación. SAP B1 valida automáticamente el precio mínimo y genera el comprobante de retención y la guía de remisión del contenedor."
+      "deepDiveText": "La exportación de banano en Ecuador está fuertemente regulada por el Sistema UNIBANANO del Ministerio de Agricultura. Si el ERP permite registrar una liquidación a un precio inferior a $6.85 por caja, la exportadora comete infracción sancionada con multas severas y suspensión del cupo de exportación. Finix ERP valida automáticamente el precio mínimo y genera el comprobante de retención y la guía de remisión del contenedor."
     },
     "interactiveFields": [
       {
@@ -3308,7 +3308,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 3,
-        "question": "¿Por qué es indispensable registrar la certificación GlobalGAP en el lote de exportación en SAP B1?",
+        "question": "¿Por qué es indispensable registrar la certificación GlobalGAP en el lote de exportación en Finix ERP?",
         "options": [
           "Para que el barco navegue más rápido.",
           "Porque certifica buenas prácticas agrícolas y es requisito excluyente para ingresar a los mercados de la Unión Europea y EE.UU.",
@@ -3326,19 +3326,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "vert-02": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Vertical Camaronera: Piscinas como Centros de Costo y Biomasa",
     "transactionCode": "CAM-PISC-02",
     "screenSummary": "Control acuícola integral: Modelado de piscinas de engorde como Centros de Costo y Almacenes independientes, control de siembra de larvas, balanceado diario, curvas de crecimiento de biomasa y liquidación de pesca en planta procesadora.",
     "classTranscript": {
-      "instructor": "Ing. Acuícola Fernando Moncayo, Especialista SAP B1 Camaronero",
-      "summary": "Aprende a configurar el costeo por piscina en SAP B1 para el sector camaronero de Ecuador. Controlaremos el consumo diario de alimento balanceado, calcularemos el Factor de Conversión Alimenticia (FCA) y liquidaremos la cosecha por tallas.",
+      "instructor": "Ing. Acuícola Fernando Moncayo, Especialista Finix ERP Camaronero",
+      "summary": "Aprende a configurar el costeo por piscina en Finix ERP para el sector camaronero de Ecuador. Controlaremos el consumo diario de alimento balanceado, calcularemos el Factor de Conversión Alimenticia (FCA) y liquidaremos la cosecha por tallas.",
       "keyPoints": [
         "Cada piscina camaronera es un Centro de Costo analítico y un sub-almacén de producto en proceso.",
         "El alimento balanceado representa entre el 50% y 60% del costo total de la corrida.",
         "Al momento de la pesca, el inventario en proceso se liquida contra el producto terminado clasificado por gramaje y tallas."
       ],
-      "deepDiveText": "Ecuador es el primer exportador mundial de camarón. La gestión financiera en SAP B1 exige tratar cada ciclo biológico (corrida de 90 a 120 días) como un proyecto de manufactura. Todos los costos de larva, balanceado, probióticos, combustible de bombeo y mano de obra se acumulan en la cuenta de inventario en proceso de la piscina hasta el día de la pesca."
+      "deepDiveText": "Ecuador es el primer exportador mundial de camarón. La gestión financiera en Finix ERP exige tratar cada ciclo biológico (corrida de 90 a 120 días) como un proyecto de manufactura. Todos los costos de larva, balanceado, probióticos, combustible de bombeo y mano de obra se acumulan en la cuenta de inventario en proceso de la piscina hasta el día de la pesca."
     },
     "interactiveFields": [
       {
@@ -3406,13 +3406,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     },
     "practiceLab": {
       "title": "Laboratorio 28: Registro de Consumo de Balanceado y Actualización de Biomasa",
-      "mission": "Registra un consumo semanal de 2,000 Kg de balanceado a $0.55/Kg imputándolo al Centro de Costo Piscina-04 en SAP B1.",
+      "mission": "Registra un consumo semanal de 2,000 Kg de balanceado a $0.55/Kg imputándolo al Centro de Costo Piscina-04 en Finix ERP.",
       "expectedResult": "El inventario de bodega general debe rebajar 2,000 Kg y la cuenta de biomasa en proceso debe debitar $1,100.00."
     },
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "En la arquitectura de SAP Business One para camaroneras, ¿cómo se modela operativamente cada piscina?",
+        "question": "En la arquitectura de Finix ERP para camaroneras, ¿cómo se modela operativamente cada piscina?",
         "options": [
           "Como un socio de negocios",
           "Como un Centro de Costo analítico y un almacén de inventario en proceso independiente",
@@ -3454,19 +3454,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "vert-03": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Manufactura con Beas Manufacturing: Órdenes de Trabajo y Costeo ABC",
     "transactionCode": "BEAS-PROD-03",
-    "screenSummary": "Solución avanzada de fabricación industrial de Boyum IT integrada en SAP B1: Rutas de producción complejas, gestión de máquinas y tiempos de preparación (Setup), control de scrap/mermas y costeo basado en actividades (ABC).",
+    "screenSummary": "Solución avanzada de fabricación industrial de Boyum IT integrada en Finix ERP: Rutas de producción complejas, gestión de máquinas y tiempos de preparación (Setup), control de scrap/mermas y costeo basado en actividades (ABC).",
     "classTranscript": {
       "instructor": "Ing. Industrial Patricio Alarcón, Especialista Beas Manufacturing",
-      "summary": "Aprende a operar el add-on industrial líder de Boyum IT para SAP B1. Veremos cómo definir hojas de ruta de producción, registrar paradas de máquina y calcular el costo real de fabricación por minuto.",
+      "summary": "Aprende a operar el add-on industrial líder de Boyum IT para Finix ERP. Veremos cómo definir hojas de ruta de producción, registrar paradas de máquina y calcular el costo real de fabricación por minuto.",
       "keyPoints": [
         "Beas Manufacturing añade control de tiempos de preparación (Setup Time) y tiempo de ciclo (Run Time).",
         "Permite planificar capacidad finita de máquinas y turnos de operarios de planta.",
         "El reporte en terminales táctiles de piso de planta registra la producción en tiempo real."
       ],
-      "deepDiveText": "Mientras la producción estándar de SAP B1 es lineal, industrias como plásticos, químicos, farmacéutica y metalmecánica requieren control de subensambles, mermas multinivel y costos de energía por máquina. Beas Manufacturing extiende la base de datos de SAP B1 permitiendo costeo real por orden de trabajo y cálculo de eficiencia OEE."
+      "deepDiveText": "Mientras la producción estándar de Finix ERP es lineal, industrias como plásticos, químicos, farmacéutica y metalmecánica requieren control de subensambles, mermas multinivel y costos de energía por máquina. Beas Manufacturing extiende la base de datos de Finix ERP permitiendo costeo real por orden de trabajo y cálculo de eficiencia OEE."
     },
     "interactiveFields": [
       {
@@ -3533,7 +3533,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué ventaja principal ofrece Beas Manufacturing frente a la producción nativa de SAP Business One?",
+        "question": "¿Qué ventaja principal ofrece Beas Manufacturing frente a la producción nativa de Finix ERP?",
         "options": [
           "Cambia el idioma del sistema operativo a alemán.",
           "Permite modelar hojas de ruta multinivel, planificar capacidad finita de máquinas, capturar tiempos en terminales de piso y calcular costos ABC.",
@@ -3541,7 +3541,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "Hace que las máquinas funcionen sin electricidad."
         ],
         "correctIndex": 1,
-        "explanation": "Beas es el estándar de manufactura avanzada que transforma a SAP B1 en un sistema industrial completo con control de tiempos y máquinas."
+        "explanation": "Beas es el estándar de manufactura avanzada que transforma a Finix ERP en un sistema industrial completo con control de tiempos y máquinas."
       },
       {
         "id": 2,
@@ -3575,13 +3575,13 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "vert-04": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Gestión Avanzada de Bodegas: Produmex WMS y Radiofrecuencia",
     "transactionCode": "WMS-PROD-04",
     "screenSummary": "Logística de almacenamiento de clase mundial de Boyum IT: Recepción con código de barras GS1/SSCC, cross-docking, estrategias avanzadas de almacenamiento (Putaway), preparación de pedidos por olas (Wave Picking) y validación en terminales de radiofrecuencia.",
     "classTranscript": {
       "instructor": "Ing. Logístico Gabriel Cárdenas, Especialista WMS & Boyum IT",
-      "summary": "Aprende a digitalizar bodegas complejas mediante Produmex WMS para SAP B1. Veremos cómo eliminar errores de despacho, optimizar rutas de montacargas y operar pistolas de radiofrecuencia.",
+      "summary": "Aprende a digitalizar bodegas complejas mediante Produmex WMS para Finix ERP. Veremos cómo eliminar errores de despacho, optimizar rutas de montacargas y operar pistolas de radiofrecuencia.",
       "keyPoints": [
         "Produmex WMS opera con estándares GS1-128 y matrículas de pallet SSCC (Serial Shipping Container Code).",
         "Las estrategias de Putaway sugieren la ubicación óptima según rotación ABC, peso y dimensiones.",
@@ -3687,15 +3687,15 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "vert-05": {
-    "systemType": "SAP_B1",
+    "systemType": "Finix_ERP",
     "windowTitle": "Personalización con B1 Usability Package (B1UP) de Boyum IT",
     "transactionCode": "B1UP-CUST-05",
-    "screenSummary": "Herramienta de personalización sin código (No-Code) de Boyum IT para SAP B1: Rediseño visual de pantallas, campos obligatorios condicionales, botones rápidos de acción, búsquedas formateadas avanzadas y automatizaciones con B1 Print & Delivery.",
+    "screenSummary": "Herramienta de personalización sin código (No-Code) de Boyum IT para Finix ERP: Rediseño visual de pantallas, campos obligatorios condicionales, botones rápidos de acción, búsquedas formateadas avanzadas y automatizaciones con B1 Print & Delivery.",
     "classTranscript": {
-      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & SAP B1",
-      "summary": "Aprende a transformar la experiencia de usuario en SAP B1 con Boyum B1UP. Crearemos botones interactivos que ejecutan flujos de trabajo, bloquearemos campos sin código y automatizaremos el envío de facturas por email.",
+      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & Finix ERP",
+      "summary": "Aprende a transformar la experiencia de usuario en Finix ERP con Boyum B1UP. Crearemos botones interactivos que ejecutan flujos de trabajo, bloquearemos campos sin código y automatizaremos el envío de facturas por email.",
       "keyPoints": [
-        "B1UP permite rediseñar cualquier formulario estándar de SAP B1 sin escribir código SDK.",
+        "B1UP permite rediseñar cualquier formulario estándar de Finix ERP sin escribir código SDK.",
         "Reglas de Validación Universal (UVR): Bloquean transacciones si faltan campos obligatorios de negocio.",
         "B1 Print & Delivery automatiza el envío de PDF con estados de cuenta y facturas por correo electrónico."
       ],
@@ -3756,7 +3756,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué permite hacer la herramienta B1 Usability Package (B1UP) de Boyum IT en SAP Business One?",
+        "question": "¿Qué permite hacer la herramienta B1 Usability Package (B1UP) de Boyum IT en Finix ERP?",
         "options": [
           "Cambiar el hardware físico del servidor.",
           "Personalizar pantallas, crear botones, establecer validaciones de campos obligatorios y automatizar flujos de trabajo sin programar en C# o Java.",
@@ -3764,7 +3764,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "Prestar dinero a los clientes."
         ],
         "correctIndex": 1,
-        "explanation": "B1UP es el add-on de personalización más popular del mundo para SAP B1, permitiendo rediseñar interfaces y crear lógica de negocio no-code."
+        "explanation": "B1UP es el add-on de personalización más popular del mundo para Finix ERP, permitiendo rediseñar interfaces y crear lógica de negocio no-code."
       },
       {
         "id": 2,
@@ -3798,19 +3798,19 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     ]
   },
   "vert-06": {
-    "systemType": "SAP_B1",
-    "windowTitle": "Arquitectura de Integración: SAP Service Layer, OData y n8n",
+    "systemType": "Finix_ERP",
+    "windowTitle": "Arquitectura de Integración: capa de servicios, OData y n8n",
     "transactionCode": "SL-ODATA-06",
-    "screenSummary": "Integración moderna de sistemas: Consumo de la API RESTful SAP Service Layer mediante protocolo OData v4, autenticación con B1SESSION, y diseño de flujos de automatización empresarial con n8n y webhooks.",
+    "screenSummary": "Integración moderna de sistemas: Consumo de la API RESTful capa de servicios mediante protocolo OData v4, autenticación con B1SESSION, y diseño de flujos de automatización empresarial con n8n y webhooks.",
     "classTranscript": {
-      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & SAP B1",
-      "summary": "Aprende a conectar SAP Business One con cualquier sistema web o móvil. Utilizaremos la Service Layer con llamadas HTTP (GET, POST, PATCH), construiremos pipelines en n8n y aseguraremos la integridad transaccional.",
+      "instructor": "Ing. Christian Roldán, Especialista en Integración SRI & Finix ERP",
+      "summary": "Aprende a conectar Finix ERP con cualquier sistema web o móvil. Utilizaremos la Service Layer con llamadas HTTP (GET, POST, PATCH), construiremos pipelines en n8n y aseguraremos la integridad transaccional.",
       "keyPoints": [
-        "La Service Layer es un servidor web basado en Apache/Nginx que expone todas las entidades de SAP B1 vía OData.",
+        "La Service Layer es un servidor web basado en Apache/Nginx que expone todas las entidades de Finix ERP vía OData.",
         "Reemplaza a la antigua DI API COM con una arquitectura sin estado de alto rendimiento.",
         "n8n permite orquestar flujos de integración complejos sin escribir microservicios dedicados."
       ],
-      "deepDiveText": "La Service Layer es el estándar de oro de integración en SAP B1. Para interactuar con ella, una aplicación externa envía un POST a /Login con la base de datos, usuario y clave, recibiendo un token de sesión B1SESSION. Con este token, la aplicación puede crear facturas, consultar inventarios o sincronizar con e-commerce en tiempo real."
+      "deepDiveText": "La Service Layer es el estándar de oro de integración en Finix ERP. Para interactuar con ella, una aplicación externa envía un POST a /Login con la base de datos, usuario y clave, recibiendo un token de sesión B1SESSION. Con este token, la aplicación puede crear facturas, consultar inventarios o sincronizar con e-commerce en tiempo real."
     },
     "interactiveFields": [
       {
@@ -3828,7 +3828,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       {
         "label": "Plataforma de Orquestación",
         "value": "n8n Workflow Automation Server",
-        "helperExplanation": "Motor de flujos que escucha eventos de tiendas online y escribe en SAP.",
+        "helperExplanation": "Motor de flujos que escucha eventos de tiendas online y escribe en Finix ERP.",
         "isMandatory": false
       },
       {
@@ -3839,15 +3839,15 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       }
     ],
     "workedExample": {
-      "title": "Caso Práctico Resuelto: Sincronización Automática de Pedido de E-Commerce a SAP B1",
+      "title": "Caso Práctico Resuelto: Sincronización Automática de Pedido de E-Commerce a Finix ERP",
       "stepByStepMath": [
         "Escenario: Tienda online Shopify recibe un pedido de $350.00 de un cliente corporativo.",
         "Paso 1: Webhook de Shopify envía el JSON del pedido al endpoint webhook de n8n.",
-        "Paso 2: n8n autentica contra SAP Service Layer enviando credenciales a /Login.",
+        "Paso 2: n8n autentica contra capa de servicios enviando credenciales a /Login.",
         "Paso 3: n8n valida si el cliente existe en OCRD mediante GET /BusinessPartners(\"0992834710001\").",
         "Paso 4: n8n compone el payload OData con CardCode, DocDueDate y DocumentLines con el SKU y cantidad.",
         "Paso 5: Envío POST a /Orders: La Service Layer valida existencias y crea el pedido ORDR #18492.",
-        "Paso 6: n8n notifica a Shopify que el pedido fue ingresado a SAP con el número #18492 en 800 milisegundos."
+        "Paso 6: n8n notifica a Shopify que el pedido fue ingresado a Finix ERP con el número #18492 en 800 milisegundos."
       ],
       "accountingJournalEntry": [
         {
@@ -3868,7 +3868,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
     "quickCheckQuestions": [
       {
         "id": 1,
-        "question": "¿Qué protocolo y estándar de intercambio de datos utiliza la Service Layer de SAP Business One?",
+        "question": "¿Qué protocolo y estándar de intercambio de datos utiliza la Service Layer de Finix ERP?",
         "options": [
           "SOAP con archivos XML únicamente",
           "RESTful API basada en el estándar OData (Open Data Protocol) con formato JSON",
@@ -3884,7 +3884,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
         "options": [
           "Enviando una solicitud POST al endpoint /Login con CompanyDB, UserName y Password para obtener la cookie B1SESSION.",
           "Escribiendo directamente en el archivo hosts de Windows.",
-          "Llamando por teléfono al soporte de SAP.",
+          "Llamando por teléfono al soporte de Finix ERP.",
           "No requiere autenticación."
         ],
         "correctIndex": 0,
@@ -3892,7 +3892,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
       },
       {
         "id": 3,
-        "question": "¿Qué ventaja aporta utilizar un motor de integración como n8n junto a SAP Business One?",
+        "question": "¿Qué ventaja aporta utilizar un motor de integración como n8n junto a Finix ERP?",
         "options": [
           "Permite diseñar flujos visuales de integración con e-commerce, WhatsApp y CRM sin tener que programar microservicios desde cero.",
           "Elimina la necesidad de pagar la nómina.",
@@ -3900,7 +3900,7 @@ export const MODULE_SIMULATIONS: Record<string, ModuleVisualSimulation> = {
           "Hace copias de seguridad en disquetes."
         ],
         "correctIndex": 0,
-        "explanation": "n8n es un orquestador no-code/low-code que simplifica la conexión de webhooks y APIs externas hacia la Service Layer de SAP B1."
+        "explanation": "n8n es un orquestador no-code/low-code que simplifica la conexión de webhooks y APIs externas hacia la Service Layer de Finix ERP."
       }
     ],
     "relatedManualNumbers": [
@@ -3919,12 +3919,12 @@ export function getModuleSimulation(submoduleId: string, trackCode?: string): Mo
   // Fallback estructurado de alta calidad si no se encuentra
   const isNomina = (trackCode && trackCode.includes('HEIN')) || submoduleId.startsWith('nom') || submoduleId.startsWith('hcm');
   return {
-    systemType: isNomina ? 'HEIN_NOMINA' : 'SAP_B1',
+    systemType: isNomina ? 'HEIN_NOMINA' : 'Finix_ERP',
     windowTitle: `Operación y Parametrización: ${submoduleId.toUpperCase()}`,
     transactionCode: `TX-${submoduleId.toUpperCase()}`,
     screenSummary: 'Transacción oficial para la operación técnica y administrativa del módulo. Permite registrar transacciones de negocio, validar reglas fiscales del SRI y el IESS y balancear asientos contables en tiempo real.',
     classTranscript: {
-      instructor: 'Ing. Consultor Senior Especializado en SAP B1 & Nómina Ecuador',
+      instructor: 'Ing. Consultor Senior Especializado en Finix ERP & Nómina Ecuador',
       summary: 'Clase magistral de operación y parametrización técnica. Se analizan los campos críticos de la transacción, el impacto contable y las validaciones de auditoría fiscal.',
       keyPoints: [
         'Validación de integridad referencial antes de contabilizar.',

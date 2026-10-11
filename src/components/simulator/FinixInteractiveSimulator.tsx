@@ -40,7 +40,7 @@ import { getManualSimulatorConfig, ManualSimulatorConfig } from '@/lib/manual-si
 import { BusinessPartner, Item } from '@/lib/erp/erp-models';
 import { initializeDemoCompany, getBusinessPartners, getItems, createSalesInvoice, createJournalEntry } from '@/lib/erp/erp-database-service';
 import GuidedOverlay from './GuidedOverlay';
-import FinixScreenRenderer from '@/components/sap-screens/FinixScreenRenderer';
+import FinixScreenRenderer from '@/components/finix-screens/FinixScreenRenderer';
 import PracticaValidada, { type CampoPractica } from './PracticaValidada';
 import type { IntentoPractica } from '@/lib/practice-check';
 import { pantallaConectada } from '@/lib/practica-conectada';
@@ -137,7 +137,6 @@ export interface FinixInteractiveSimulatorProps {
    */
   scrollInterno?: boolean;
 }
-export type SAPInteractiveSimulatorProps = FinixInteractiveSimulatorProps;
 
 // Datos simulados para OCRD (Socios de Negocios)
 const MOCK_OCRD = [
@@ -1997,4 +1996,3 @@ export default function FinixInteractiveSimulator({
   );
 }
 
-export { FinixInteractiveSimulator as SAPInteractiveSimulator };

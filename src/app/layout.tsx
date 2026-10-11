@@ -28,21 +28,21 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   title: {
-    default: "SAP Academy | Formación y Consultoría SAP Business One",
-    template: "%s | SAP Academy",
+    default: "Finix Academy | Formación y Consultoría Finix ERP",
+    template: "%s | Finix Academy",
   },
   description:
-    "Formación especializada y consultoría en SAP Business One para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
+    "Formación especializada y consultoría en Finix ERP para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
   keywords: [
-    "Capacitación SAP",
-    "Consultoría SAP B2B",
-    "Certificación SAP S/4HANA",
-    "Bolsa de empleo SAP",
-    "SAP FICO MM SD",
+    "Capacitación Finix ERP",
+    "Consultoría Finix ERP B2B",
+    "Certificación Finix ERP S/4HANA",
+    "Bolsa de empleo Finix ERP",
+    "Finix ERP FICO MM SD",
   ],
-  authors: [{ name: "SAP Academy Engineering Team", url: "https://b1-academy.vercel.app" }],
-  creator: "SAP Academy",
-  publisher: "SAP Academy",
+  authors: [{ name: "Finix Academy Engineering Team", url: "https://b1-academy.vercel.app" }],
+  creator: "Finix Academy",
+  publisher: "Finix Academy",
   formatDetection: {
     email: false,
     address: false,
@@ -52,11 +52,11 @@ export const metadata: Metadata = {
     canonical: "https://b1-academy.vercel.app",
   },
   openGraph: {
-    title: "SAP Academy | Formación y Consultoría SAP Business One",
+    title: "Finix Academy | Formación y Consultoría Finix ERP",
     description:
-      "Formación especializada y consultoría en SAP Business One para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
+      "Formación especializada y consultoría en Finix ERP para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
     url: "https://b1-academy.vercel.app",
-    siteName: "SAP Academy",
+    siteName: "Finix Academy",
     locale: "es_ES",
     type: "website",
     images: [
@@ -64,15 +64,15 @@ export const metadata: Metadata = {
         url: "https://b1-academy.vercel.app/b1-academy-logo.webp",
         width: 500,
         height: 500,
-        alt: "SAP Academy - Plataforma de Capacitación y Consultoría Empresarial SAP",
+        alt: "Finix Academy - Plataforma de Capacitación y Consultoría Empresarial Finix ERP",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAP Academy | Formación y Consultoría SAP Business One",
+    title: "Finix Academy | Formación y Consultoría Finix ERP",
     description:
-      "Formación especializada y consultoría en SAP Business One para profesionales y empresas.",
+      "Formación especializada y consultoría en Finix ERP para profesionales y empresas.",
     images: ["https://b1-academy.vercel.app/b1-academy-logo.webp"],
   },
   robots: {
@@ -88,34 +88,34 @@ export const metadata: Metadata = {
   },
 };
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-SAPACADEMY";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-FINIXACADEMY";
 
 // Schema.org EducationalOrganization para enriquecimiento en Google y LLMs (GEO)
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  name: "SAP Academy",
+  name: "Finix Academy",
   url: "https://b1-academy.vercel.app",
   logo: "https://b1-academy.vercel.app/logo.png",
   description:
-    "Institución especializada en capacitación operativa, consultoría empresarial y certificación avanzada en soluciones de ecosistema SAP.",
+    "Institución especializada en capacitación operativa, consultoría empresarial y certificación avanzada en soluciones de ecosistema Finix ERP.",
   sameAs: [
-    "https://www.linkedin.com/company/sap-academy-global",
-    "https://twitter.com/sapacademy",
+    "https://www.linkedin.com/company/finix-academy-global",
+    "https://twitter.com/finixacademy",
   ],
   areaServed: ["ES", "MX", "CO", "PE", "CL", "AR"],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Programas de Certificación SAP",
+    name: "Programas de Certificación Finix ERP",
     itemListElement: [
       {
         "@type": "Course",
-        name: "Programa Integral SAP S/4HANA & Consultoría Empresarial",
+        name: "Programa Integral Finix ERP S/4HANA & Consultoría Empresarial",
         description:
           "Formación intensiva de operatividad, configuración de procesos y arquitectura empresarial.",
         provider: {
           "@type": "Organization",
-          name: "SAP Academy",
+          name: "Finix Academy",
           sameAs: "https://b1-academy.vercel.app",
         },
       },

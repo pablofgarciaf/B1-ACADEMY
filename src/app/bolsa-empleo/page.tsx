@@ -12,7 +12,7 @@ import { Footer } from '@/components/site/Footer';
 const sampleJobs = [
   {
     id: 'job-01',
-    title: 'Consultor SAP FICO Senior (S/4HANA)',
+    title: 'Consultor Finix ERP FICO Senior (S/4HANA)',
     company: 'EnergyEngine S.L.',
     location: 'Madrid / Remoto',
     salary: '55k - 70k €',
@@ -22,7 +22,7 @@ const sampleJobs = [
   },
   {
     id: 'job-02',
-    title: 'Líder Funcional SAP MM & Aprovisionamiento',
+    title: 'Líder Funcional Finix ERP MM & Aprovisionamiento',
     company: 'Nexo Talento Corp',
     location: 'Barcelona / Híbrido',
     salary: '48k - 58k €',
@@ -32,12 +32,12 @@ const sampleJobs = [
   },
   {
     id: 'job-03',
-    title: 'Arquitecto de Integración SAP BTP & n8n',
+    title: 'Arquitecto de Integración Finix ERP BTP & n8n',
     company: 'Vermilion Routes Tech',
     location: '100% Remoto (España & Latam)',
     salary: '65k - 80k €',
     type: 'Remoto Global',
-    desc: 'Diseño de extensiones Clean Core, flujos automatizados con n8n y microservicios conectados a SAP S/4HANA Cloud.',
+    desc: 'Diseño de extensiones Clean Core, flujos automatizados con n8n y microservicios conectados a Finix ERP S/4HANA Cloud.',
     requiredSpecialty: 'BTP',
   },
 ];
@@ -53,7 +53,7 @@ export default function BolsaEmpleoPage() {
   const isEligible = student?.jobReadiness.isEligibleForJobs || false;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
@@ -95,11 +95,11 @@ export default function BolsaEmpleoPage() {
 
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="text-xs uppercase tracking-[0.25em] text-sap-blue font-bold">
+            <span className="text-xs uppercase tracking-[0.25em] text-finix-blue font-bold">
               Ecosistema de Contratación
             </span>
             <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display mt-2">
-              Bolsa de empleo para profesionales SAP Business One
+              Bolsa de empleo para profesionales Finix ERP
             </h1>
           </div>
 
@@ -115,11 +115,11 @@ export default function BolsaEmpleoPage() {
           {sampleJobs.map((job) => (
             <article
               key={job.id}
-              className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] flex flex-col justify-between space-y-4 shadow-sm hover:border-sap-blue/40 transition-all"
+              className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] flex flex-col justify-between space-y-4 shadow-sm hover:border-finix-blue/40 transition-all"
             >
               <div className="space-y-3">
                 <div className="flex justify-between items-start">
-                  <span className="text-xs font-bold text-sap-blue px-2.5 py-1 rounded bg-sap-blue/10">
+                  <span className="text-xs font-bold text-finix-blue px-2.5 py-1 rounded bg-finix-blue/10">
                     {job.type}
                   </span>
                   <span className="text-xs font-bold text-slate-700 dark:text-slate-300">
@@ -144,7 +144,7 @@ export default function BolsaEmpleoPage() {
                 {isEligible ? (
                   <button
                     onClick={() => setSelectedJob({ title: job.title, company: job.company })}
-                    className="w-full py-2.5 px-4 rounded-xl bg-sap-blue hover:bg-sky-600 text-white font-bold text-xs transition-all active:scale-95 cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
+                    className="w-full py-2.5 px-4 rounded-xl bg-finix-blue hover:bg-sky-600 text-white font-bold text-xs transition-all active:scale-95 cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
                   >
                     <Briefcase className="w-3.5 h-3.5" /> Postularme con Mi Certificado
                   </button>

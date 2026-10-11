@@ -63,7 +63,7 @@ export function JobApplicationModal({
         </button>
 
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-sap-blue/10 text-sap-blue flex items-center justify-center mx-auto mb-3">
+          <div className="w-12 h-12 rounded-2xl bg-finix-blue/10 text-finix-blue flex items-center justify-center mx-auto mb-3">
             <Briefcase className="w-6 h-6" />
           </div>
           <h3 id="job-application-title" className="text-xl font-bold text-slate-900 dark:text-white">
@@ -87,7 +87,7 @@ export function JobApplicationModal({
             </p>
             <button
               onClick={onClose}
-              className="mt-4 px-6 py-2.5 rounded-xl bg-sap-blue text-white text-xs font-bold hover:bg-sky-600 transition-all active:scale-95 cursor-pointer"
+              className="mt-4 px-6 py-2.5 rounded-xl bg-finix-blue text-white text-xs font-bold hover:bg-sky-600 transition-all active:scale-95 cursor-pointer"
             >
               Entendido
             </button>
@@ -105,7 +105,7 @@ export function JobApplicationModal({
             <button
               onClick={handleApply}
               disabled={loading}
-              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-sap-blue to-sky-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-finix-blue to-sky-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
             >
               {loading ? "Sincronizando con n8n..." : "Confirmar Postulación Inmediata"}
             </button>

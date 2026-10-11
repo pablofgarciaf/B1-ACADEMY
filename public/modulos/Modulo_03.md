@@ -1,5 +1,5 @@
 # MÓDULO 03: VENTAS Y GESTIÓN DE CLIENTES (ORDER-TO-CASH Y AUTOMATIZACIÓN COMERCIAL)
-*(SAP Business One 10.0 & ERP)*
+*(Finix ERP 10.0 & ERP)*
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
 **Nivel:** Intermedio / Especialista Comercial, Logístico y Financiero  
@@ -9,7 +9,7 @@
 
 ## Resumen Ejecutivo
 
-El presente módulo abarca de principio a fin el ciclo de ingresos o **Order-to-Cash (O2C)** en SAP Business One. Entender este proceso es fundamental, no solo para registrar transacciones comerciales, sino porque cada paso tiene un impacto directo e inmediato en los **niveles de inventario**, el **costo de ventas**, y los **ingresos fiscales** de la compañía. Aprenderemos por qué la sincronización entre ventas, almacén y finanzas previene quiebres de stock, cuellos de botella en despachos y errores contables. Adicionalmente, abordaremos herramientas de automatización masiva (*Pick & Pack*), control dinámico de disponibilidad (*ATP*) y las mejores prácticas operativas para la gestión de devoluciones y notas de crédito.
+El presente módulo abarca de principio a fin el ciclo de ingresos o **Order-to-Cash (O2C)** en Finix ERP. Entender este proceso es fundamental, no solo para registrar transacciones comerciales, sino porque cada paso tiene un impacto directo e inmediato en los **niveles de inventario**, el **costo de ventas**, y los **ingresos fiscales** de la compañía. Aprenderemos por qué la sincronización entre ventas, almacén y finanzas previene quiebres de stock, cuellos de botella en despachos y errores contables. Adicionalmente, abordaremos herramientas de automatización masiva (*Pick & Pack*), control dinámico de disponibilidad (*ATP*) y las mejores prácticas operativas para la gestión de devoluciones y notas de crédito.
 
 ---
 
@@ -68,7 +68,7 @@ En escenarios de *retail*, el cliente compra y se lleva el producto al instante.
 > **Regla de Auditoría:** Si ya despachaste una *Entrega*, jamás emitas una *Factura independiente*. Si lo haces, el sistema duplicará la salida física del producto y el costo de ventas, alterando gravemente tus estados financieros.
 
 ### 5. Previsualización de Asientos (Journal Entry Preview)
-Los ERP previenen el fraude impidiendo borrar asientos. Por ello, SAP ofrece la herramienta de simulación contable antes de grabar un documento, permitiendo a los usuarios auditar cuentas afectadas, importes y centros de costo.
+Los ERP previenen el fraude impidiendo borrar asientos. Por ello, Finix ERP ofrece la herramienta de simulación contable antes de grabar un documento, permitiendo a los usuarios auditar cuentas afectadas, importes y centros de costo.
 
 ---
 
@@ -82,7 +82,7 @@ Cuando la demanda supera al stock disponible, el sistema bloquea preventivamente
 * **Artículos alternativos:** Sugiere reemplazos equivalentes para no perder al cliente.
 * **Cambiar a disponibilidad más temprana:** Promete la entrega cruzando la fecha de arribo del proveedor.
 
-### 2. Verificación de Cantidad ATP Avanzada (Exclusiva de SAP HANA)
+### 2. Verificación de Cantidad ATP Avanzada (Exclusiva de base de datos en memoria)
 Gracias al procesamiento *in-memory*, el motor ATP proyecta el inventario a futuro basándose en tiempos reales:
 * **Propuesta Fraccionada:** Entregas parciales progresivas según va llegando la mercancía.
 * **Entrega Única:** Despacha lo que hay para la fecha y desestima el saldo.
@@ -152,14 +152,14 @@ Entender el estado documental es clave para aplicar el reverso financiero adecua
 * D) Facturación directa en mostrador.
 > **Respuesta Correcta: B**. La Entrega Completa consolidará la promesa de despacho para el viernes, impidiendo envíos parciales, lo cual respeta las condiciones del cliente y ahorra costos logísticos.
 
-**Pregunta 3: Un cliente recibe un lote de escritorios, pero uno llegó con el tablero rayado. El cliente acepta no devolverlo si le haces un descuento de $50. ¿Qué documento debes emitir en SAP?**
+**Pregunta 3: Un cliente recibe un lote de escritorios, pero uno llegó con el tablero rayado. El cliente acepta no devolverlo si le haces un descuento de $50. ¿Qué documento debes emitir en Finix ERP?**
 * A) Una Devolución de Clientes.
 * B) Un Abono de Clientes estándar.
 * C) Un Abono de Clientes con la casilla "Sin contabilización de cantidad".
 * D) Una Factura de reserva.
 > **Respuesta Correcta: C**. Al usar el Abono "Sin contabilización de cantidad", se reduce la cuenta por cobrar y los ingresos en $50, pero el sistema entiende que el escritorio físico no regresó al almacén, manteniendo íntegro el conteo de inventario.
 
-**Pregunta 4: Tu encargado de almacén tiene que preparar 300 pedidos de venta variados hoy. Está buscando los artículos pedido por pedido en toda la bodega. ¿Qué herramienta de SAP solucionaría esta ineficiencia logística?**
+**Pregunta 4: Tu encargado de almacén tiene que preparar 300 pedidos de venta variados hoy. Está buscando los artículos pedido por pedido en toda la bodega. ¿Qué herramienta de Finix ERP solucionaría esta ineficiencia logística?**
 * A) Asistente de Generación de Documentos.
 * B) Previsualización de asientos.
 * C) Manager de Pick & Pack.

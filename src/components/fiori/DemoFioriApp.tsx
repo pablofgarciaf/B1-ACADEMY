@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from 'react';
-import { SAPFioriShell } from './SAPFioriShell';
-import { SAPFioriTile } from './SAPFioriTile';
-import { SAPMasterDetail } from './SAPMasterDetail';
-import { SAPSearchTable } from './SAPSearchTable';
+import { FinixFioriShell } from './FinixFioriShell';
+import { FinixFioriTile } from './FinixFioriTile';
+import { FinixMasterDetail } from './FinixMasterDetail';
+import { FinixSearchTable } from './FinixSearchTable';
 import { Users, Shield, CheckSquare, Settings, Award, Link, Hash, LayoutList, FileText, Activity, PhoneCall, Database } from 'lucide-react';
 
 export const DemoFioriApp = () => {
@@ -17,8 +17,8 @@ export const DemoFioriApp = () => {
 
   if (currentView === 'masterDetail') {
     return (
-      <SAPFioriShell title="SAP Customer Checkout manager">
-        <SAPMasterDetail 
+      <FinixFioriShell title="Finix Punto de Venta manager">
+        <FinixMasterDetail 
           pageTitle="Roles"
           selectedId={selectedRole}
           onSelect={setSelectedRole}
@@ -67,15 +67,15 @@ export const DemoFioriApp = () => {
               </section>
             </div>
           </div>
-        </SAPMasterDetail>
-      </SAPFioriShell>
+        </FinixMasterDetail>
+      </FinixFioriShell>
     );
   }
 
   return (
-    <SAPFioriShell title="SAP Customer Checkout manager">
+    <FinixFioriShell title="Finix Punto de Venta manager">
       {currentView === 'searchTable' && (
-        <SAPSearchTable 
+        <FinixSearchTable 
           title="CLIENTE"
           onClose={() => setCurrentView('dashboard')}
           columns={[
@@ -97,30 +97,30 @@ export const DemoFioriApp = () => {
       )}
 
       <div className="p-8">
-        <h2 className="text-2xl text-[#32363a] font-normal mb-6">SAP Customer Checkout manager</h2>
+        <h2 className="text-2xl text-[#32363a] font-normal mb-6">Finix Punto de Venta manager</h2>
         
         <div className="flex flex-wrap gap-4 mb-12">
-          <SAPFioriTile title="Usuarios" icon={Users} onClick={() => handleTileClick('searchTable')} />
-          <SAPFioriTile title="Roles" icon={Shield} onClick={() => handleTileClick('masterDetail')} />
-          <SAPFioriTile title="Tareas" icon={CheckSquare} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Configuración" icon={Settings} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Certificados" icon={Award} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Sistemas de comunicación" icon={Link} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Acuerdos de comunicación" icon={Hash} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Números de secuencia" icon={Hash} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Consumidores de números de secuencia" icon={LayoutList} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Licencias" icon={FileText} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Configuración de datos maestros" icon={Settings} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Usuarios" icon={Users} onClick={() => handleTileClick('searchTable')} />
+          <FinixFioriTile title="Roles" icon={Shield} onClick={() => handleTileClick('masterDetail')} />
+          <FinixFioriTile title="Tareas" icon={CheckSquare} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Configuración" icon={Settings} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Certificados" icon={Award} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Sistemas de comunicación" icon={Link} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Acuerdos de comunicación" icon={Hash} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Números de secuencia" icon={Hash} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Consumidores de números de secuencia" icon={LayoutList} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Licencias" icon={FileText} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Configuración de datos maestros" icon={Settings} onClick={() => handleTileClick('dashboard')} />
         </div>
 
         <h2 className="text-2xl text-[#32363a] font-normal mb-6">Supervisión</h2>
         <div className="flex flex-wrap gap-4">
-          <SAPFioriTile title="Supervisión" icon={Activity} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Informes de supervisión" icon={FileText} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Supervisión de llamada entrante" icon={PhoneCall} onClick={() => handleTileClick('dashboard')} />
-          <SAPFioriTile title="Cola de datos maestros" icon={Database} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Supervisión" icon={Activity} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Informes de supervisión" icon={FileText} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Supervisión de llamada entrante" icon={PhoneCall} onClick={() => handleTileClick('dashboard')} />
+          <FinixFioriTile title="Cola de datos maestros" icon={Database} onClick={() => handleTileClick('dashboard')} />
         </div>
       </div>
-    </SAPFioriShell>
+    </FinixFioriShell>
   );
 };

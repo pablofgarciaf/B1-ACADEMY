@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-// CURRÍCULO OFICIAL DE LA ESCUELA SAP BUSINESS ONE (CAMPUS UNIVERSITARIO)
+// CURRÍCULO OFICIAL DE LA ESCUELA FINIX ERP (CAMPUS UNIVERSITARIO)
 // Mapeo exhaustivo de 121 Manuales, 4 Carreras, 12 Micro-Certificaciones,
 // Diplomas de Especialidad, Grado Consultor Master B1 y Acreditación Docente.
 // ═══════════════════════════════════════════════════════════════════
@@ -76,13 +76,13 @@ export const CAREER_TRACKS: CareerTrack[] = [
     colorTheme: 'emerald',
     gradient: 'from-emerald-500/20 via-teal-500/10 to-transparent',
     targetAudience: 'Estudiantes universitarios de pregrado, administradores, analistas de negocio y nuevos usuarios.',
-    careerRole: 'Operador de Negocios Certificado SAP B1',
+    careerRole: 'Operador de Negocios Certificado Finix ERP',
     totalHours: 40,
-    diplomaTitle: 'Diploma de Operador de Negocios en SAP Business One',
+    diplomaTitle: 'Diploma de Operador de Negocios en Finix ERP',
     diplomaIssuanceFeeUSD: 49,
     description: 'Domina desde cero la navegación intuitiva, parametrizaciones de usuario, datos maestros de Socios de Negocios (OCRD) y Artículos (OITM), listas de precios y trazabilidad en el Mapa de Relaciones.',
     objectives: [
-      'Navegar con fluidez en la interfaz SAP B1 10.0 y Cockpit Fiori.',
+      'Navegar con fluidez en la interfaz Finix ERP 10.0 y Cockpit Fiori.',
       'Gestionar fichas de clientes y proveedores con condiciones crediticias.',
       'Configurar catálogos de artículos con unidades de medida y listas de precios.',
       'Auditar flujos documentales completos con el Mapa de Relaciones.'
@@ -100,9 +100,9 @@ export const CAREER_TRACKS: CareerTrack[] = [
     colorTheme: 'blue',
     gradient: 'from-blue-500/20 via-indigo-500/10 to-transparent',
     targetAudience: 'Estudiantes de Contaduría, Contralores Financieros, Analistas Contables y Auditores de Gestión.',
-    careerRole: 'Especialista Financiero y Tesorero SAP B1',
+    careerRole: 'Especialista Financiero y Tesorero Finix ERP',
     totalHours: 90,
-    diplomaTitle: 'Diploma de Especialista en Finanzas y Control de Gestión SAP B1',
+    diplomaTitle: 'Diploma de Especialista en Finanzas y Control de Gestión Finix ERP',
     diplomaIssuanceFeeUSD: 69,
     description: 'Estructuración y control del Plan de Cuentas NIIF, determinación automática de cuentas de mayor, gestión bancaria y de cobros, activos fijos con depreciación automática, costos multidimensionales y cierre de período.',
     objectives: [
@@ -125,9 +125,9 @@ export const CAREER_TRACKS: CareerTrack[] = [
     colorTheme: 'amber',
     gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
     targetAudience: 'Ingenieros Industriales, Directores de Logística, Jefes de Compras, Gerentes de Ventas y Almacén.',
-    careerRole: 'Especialista en Cadena de Suministro & Logística SAP B1',
+    careerRole: 'Especialista en Cadena de Suministro & Logística Finix ERP',
     totalHours: 95,
-    diplomaTitle: 'Diploma de Especialista en Cadena de Suministro y Ventas SAP B1',
+    diplomaTitle: 'Diploma de Especialista en Cadena de Suministro y Ventas Finix ERP',
     diplomaIssuanceFeeUSD: 69,
     description: 'Gestión de punta a punta del ciclo Order-to-Cash y Procure-to-Pay, control de ubicaciones en almacén (Bin Locations), trazabilidad por lotes y series, métodos de valoración de inventario y costeo de importaciones (Landed Costs).',
     objectives: [
@@ -150,9 +150,9 @@ export const CAREER_TRACKS: CareerTrack[] = [
     colorTheme: 'purple',
     gradient: 'from-purple-500/20 via-fuchsia-500/10 to-transparent',
     targetAudience: 'Ingenieros de Sistemas, Consultores Funcionales Junior, Jefes de Planta e Implementadores ERP.',
-    careerRole: 'Consultor de Implementación & Planificación SAP B1',
+    careerRole: 'Consultor de Implementación & Planificación Finix ERP',
     totalHours: 85,
-    diplomaTitle: 'Diploma de Consultor de Implementación y Planificación SAP B1',
+    diplomaTitle: 'Diploma de Consultor de Implementación y Planificación Finix ERP',
     diplomaIssuanceFeeUSD: 79,
     description: 'Planificación de requerimientos de materiales (MRP), listas de materiales (BOM), centros de trabajo y capacidad, y suite de herramientas del consultor: consultas SQL, campos de usuario (UDF/UDT), búsquedas formateadas y migración masiva con DTW.',
     objectives: [
@@ -186,13 +186,13 @@ export const MICRO_CERTIFICATIONS: MicroCertification[] = [
     estimatedHours: 18,
     description: 'Acreditación en ergonomía del sistema, personalización del Cockpit Fiori, parametrizaciones generales de usuario y uso del mapa de relaciones.',
     competencies: [
-      'Autenticación e inicio seguro en sociedades SAP B1',
+      'Autenticación e inicio seguro en sociedades Finix ERP',
       'Creación y configuración de paneles Cockpit con widgets e indicadores KPI',
       'Navegación por menús, barra de herramientas y accesos rápidos de teclado',
       'Rastreo transaccional bidireccional mediante el Mapa de Relaciones'
     ],
     manualIds: [
-      '10_Intro_11_Overview_IntroSAPB1_ES',
+      '10_Intro_11_Overview_IntroFinix_ES',
       '10_Intro_12_Overview_GettingStarted_ES',
       '10_Overview_13_MDDoc_ES',
       'CSL01_Introduction_ES',
@@ -591,7 +591,7 @@ export const MICRO_CERTIFICATIONS: MicroCertification[] = [
 
 export const TEACHER_ACCREDITATION_INFO: TeacherAccreditationInfo = {
   specialistRequirements: 'Completar y aprobar con calificación mínima de 90% el 100% de los manuales y laboratorios en el simulador de una Carrera específica (ej. Carrera de Finanzas o Carrera de Logística). Habilita para dictar esa cátedra específica.',
-  masterTeacherRequirements: 'Completar y aprobar con calificación mínima de 90% los 121 manuales de la academia, superar los 12 desafíos prácticos en el simulador de escritorio y aprobar la Defensa Pedagógica Virtual con Master B1. Otorga la Acreditación Plena como Instructor Titular Certificado SAP Business One.',
+  masterTeacherRequirements: 'Completar y aprobar con calificación mínima de 90% los 121 manuales de la academia, superar los 12 desafíos prácticos en el simulador de escritorio y aprobar la Defensa Pedagógica Virtual con Master B1. Otorga la Acreditación Plena como Instructor Titular Certificado Finix ERP.',
   perks: [
     'Panel de Gestión de Alumnos con vista de avances y notas en tiempo real',
     'Guías pedagógicas exclusivas generadas por Master B1 con preguntas socráticas de examen',

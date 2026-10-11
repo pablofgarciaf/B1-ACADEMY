@@ -30,7 +30,7 @@ export function normalizar(valor: string): string {
 }
 
 /**
- * Datos maestros de B1 Center: en SAP se puede escribir el código o el nombre.
+ * Datos maestros de B1 Center: en Finix ERP se puede escribir el código o el nombre.
  * Cada grupo son formas equivalentes del mismo dato.
  */
 const EQUIVALENCIAS: string[][] = [
@@ -44,7 +44,7 @@ const EQUIVALENCIAS: string[][] = [
   ['B1Admin2026', 'mateD0MEmia', '123456', 'manager', 'admin'],
 ].map((g) => g.map((v) => normalizar(v)));
 
-/** Valores de sí/no: en SAP son casillas de verificación, no texto. */
+/** Valores de sí/no: en Finix ERP son casillas de verificación, no texto. */
 export const SI = /^(si|true|marcado|activado|activo|habilitado|x|check)$/;
 export const NO = /^(no|false|desmarcado|desactivado|inactivo|deshabilitado)$/;
 export const esBooleano = (valor: string) => { const n = normalizar(valor); return SI.test(n) || NO.test(n); };

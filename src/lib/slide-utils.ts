@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════
-// SLIDE UTILS — Conecta manuales SAP con slides reales
+// SLIDE UTILS — Conecta manuales Finix ERP con slides reales
 // ═══════════════════════════════════════════════════════
 
 import { ALL_MANUALS } from './manuals-120-data';
@@ -15,7 +15,7 @@ export interface RealSlide {
 }
 
 /**
- * Obtiene las URLs de slides sistema (SAP UI real) de un manual específico.
+ * Obtiene las URLs de slides sistema (Finix ERP UI real) de un manual específico.
  * @param manualId — ID del manual (ej: "CSL01_Introduction_Solution_ES")
  * @param maxSlides — máximo de slides a devolver (default: 30)
  */

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Empleo para profesionales SAP Business One | Academy',
-  description: 'Conecta tu formación práctica en SAP Business One con oportunidades laborales y procesos de selección que valoran competencias técnicas demostrables.',
+  title: 'Empleo para profesionales Finix ERP | Academy',
+  description: 'Conecta tu formación práctica en Finix ERP con oportunidades laborales y procesos de selección que valoran competencias técnicas demostrables.',
   alternates: { canonical: 'https://b1-academy.vercel.app/bolsa-empleo' },
 };
 

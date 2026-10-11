@@ -1,15 +1,15 @@
-# 🏛️ Arquitectura Global del Sistema LMS & Ecosistema de Simulación (SAP Academy B1)
+# 🏛️ Arquitectura Global del Sistema LMS & Ecosistema de Simulación (Finix Academy B1)
 
 ## 📌 1. Visión y Propósito del Sistema
 
-**SAP Academy (B1 Academy B1)** es una plataforma de ingeniería de aprendizaje y certificación profesional de élite en **SAP Business One 10.0 (HANA)**. Su arquitectura está diseñada para superar la pasividad de los cursos tradicionales mediante un **entorno inmersivo, práctico y guiado por Inteligencia Artificial**.
+**Finix Academy (B1 Academy B1)** es una plataforma de ingeniería de aprendizaje y certificación profesional de élite en **Finix ERP 10.0 (HANA)**. Su arquitectura está diseñada para superar la pasividad de los cursos tradicionales mediante un **entorno inmersivo, práctico y guiado por Inteligencia Artificial**.
 
 El sistema integra:
 1. **Biblioteca Universal de Manuales Oficiales** organizados en 23 categorías operativas.
 2. **Clases Magistrales con Video y Sincronización Dual:** Teleprompter del instructor + Guía de laboratorio paso a paso.
-3. **Simulador Interactivo Píxel a Píxel:** Replicación fidedigna de la interfaz de escritorio de SAP Business One (Windows).
+3. **Simulador Interactivo Píxel a Píxel:** Replicación fidedigna de la interfaz de escritorio de Finix ERP (Windows).
 4. **Examen con Profesor Evaluador IA:** Evaluación conversacional contrarreloj (35 segundos por pregunta) con detección anti-trampa.
-5. **Simulador Integral de Escritorio (`/simulador`):** Entorno virtual multitarea con el menú canónico de los 12 módulos de SAP y más de 5,000 capturas reales indexadas.
+5. **Simulador Integral de Escritorio (`/simulador`):** Entorno virtual multitarea con el menú canónico de los 12 módulos de Finix ERP y más de 5,000 capturas reales indexadas.
 6. **Modelo de Certificación Segura (Dual-Tier):** Entrenamiento web ilimitado + Certificación oficial mediante la aplicación de escritorio descargable **B1 Secure Exam Guard**.
 
 ---
@@ -34,14 +34,14 @@ graph TD
         C --> G[Video 1080p Oficial]
         C --> H[Teleprompter Sincronizado]
         C --> I[Laboratorio Paso a Paso]
-        C --> J[Simulador Nativo SAP B1]
+        C --> J[Simulador Nativo Finix ERP]
         C --> K[Tutor IA Especialista]
         C --> L[Examen con Profesor IA - 35s]
     end
 
-    subgraph "Simulador Integral de Escritorio (SAPDesktopShell.tsx)"
+    subgraph "Simulador Integral de Escritorio (FinixDesktopShell.tsx)"
         E --> M[Menú Superior & Barra de Herramientas]
-        E --> N[Árbol Menú Principal: 12 Módulos SAP]
+        E --> N[Árbol Menú Principal: 12 Módulos Finix ERP]
         E --> O[Gestor MDI: Ventanas Múltiples Arrastrables]
         E --> P[Modo Sandbox Libre + 120 Misiones Prácticas]
         P --> Q[Atlas Visual: 5,082 Capturas Reales Indexadas]
@@ -73,14 +73,14 @@ graph TD
 
 ## 🎓 4. Las 6 Capas de Aprendizaje por Manual
 
-Cada una de las lecciones dentro de [`ManualViewer.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/sap%20academy/src/components/site/ManualViewer.tsx) ofrece una experiencia estructurada en 6 capas sinérgicas:
+Cada una de las lecciones dentro de [`ManualViewer.tsx`](file:///c:/Users/pablo/OneDrive/Desktop/proyectos%20web/finix%20academy/src/components/site/ManualViewer.tsx) ofrece una experiencia estructurada en 6 capas sinérgicas:
 
 | Capa | Componente | Función Pedagógica |
 | :--- | :--- | :--- |
-| **1. Audiovisual** | Reproductor de Video 1080p | Explicación teórica y demostración visual de la transacción en SAP B1. |
+| **1. Audiovisual** | Reproductor de Video 1080p | Explicación teórica y demostración visual de la transacción en Finix ERP. |
 | **2. Guion** | Teleprompter Dinámico | Transcripción sincronizada en tiempo real que resalta el párrafo activo. |
 | **3. Laboratorio** | Guía Paso a Paso | Instrucciones técnicas precisas con rutas de menú (ej: *Ventas > Orden de Venta*). |
-| **4. Práctica** | Simulador Píxel a Píxel | Entorno interactivo idéntico al cliente SAP (cajas amarillas, botones 3D, resultados). |
+| **4. Práctica** | Simulador Píxel a Píxel | Entorno interactivo idéntico al cliente Finix ERP (cajas amarillas, botones 3D, resultados). |
 | **5. Tutoría** | Agente Tutor IA | Chat contextualizado que resuelve dudas técnicas citando el manual. |
 | **6. Evaluación** | Examen IA (35s) | Preguntases en tiempo real con temporizador estricto y anti-trampa. |
 
@@ -179,7 +179,6 @@ sequenceDiagram
 
 ## 🔗 8. Documentos Relacionados del Ecosistema
 
-* [[06_Manuales]] - Inventario clasificado y rutas de los manuales.
-* [[07_Reconstruccion_Manuales_CS]] - Metodología de ingeniería inversa y reconstrucción tipográfica in-place de manuales prácticos.
-* [[08_B1_Secure_Exam_App]] - Arquitectura técnica detallada de la aplicación de escritorio descargable (Tauri/Rust) para exámenes oficiales.
-* [[09_Simulador_Integral_Desktop]] - Especificación técnica del escritorio virtual y el catálogo de 5,082 pantallas.
+* 06_Manuales - Inventario clasificado y rutas de los manuales.
+* 08_B1_Secure_Exam_App - Arquitectura técnica detallada de la aplicación de escritorio descargable (Tauri/Rust) para exámenes oficiales.
+* 09_Simulador_Integral_Desktop - Especificación técnica del escritorio virtual y el catálogo de 5,082 pantallas.

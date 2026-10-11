@@ -37,7 +37,7 @@ export function costoUnitario(state: CompanyState, itemCode: string): number {
 }
 
 /**
- * Precio que SAP propondría: el de la lista asignada al cliente y el mejor descuento por volumen
+ * Precio que Finix ERP propondría: el de la lista asignada al cliente y el mejor descuento por volumen
  * aplicable a la cantidad, sin superar el descuento máximo del artículo.
  */
 export function precioSugerido(state: CompanyState, cardCode: string, itemCode: string, cantidad: number): PrecioSugerido | null {

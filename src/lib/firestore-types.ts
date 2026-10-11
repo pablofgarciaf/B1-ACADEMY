@@ -83,7 +83,7 @@ export interface CompanyProfile extends Entity { address?: string; phone?: strin
   priceLists?: { no: number; name: string; base: number; factor: number }[];
   /** Descuentos automáticos por cantidad. itemCode '*' aplica a todos los artículos. */
   volumeDiscounts?: VolumeDiscount[];
-  /** Campos definidos por el usuario (como los U_ de SAP). */
+  /** Campos definidos por el usuario (como los U_ de Finix ERP). */
   udfDefinitions?: UdfDefinition[];
 }
 export interface ApprovalRule { docType: DocType; threshold: number; active: boolean }
@@ -91,7 +91,7 @@ export interface VolumeDiscount { id: string; itemCode: string; minQuantity: num
 export interface Mission extends Entity { title: string; description: string; module: string; status: 'assigned' | 'completed'; teacherUid: string }
 /** Presupuesto anual de una cuenta de resultados (ingresos, costos o gastos), en 12 montos mensuales. */
 export interface Budget extends Entity { year: string; accountCode: string; accountName: string; months: number[] }
-/** Documento retenido hasta que alguien con criterio lo autorice (como los borradores de SAP). */
+/** Documento retenido hasta que alguien con criterio lo autorice (como los borradores de Finix ERP). */
 export interface Approval extends Entity {
   approvalNumber: string; kind: 'sales' | 'purchase'; docType: DocType; cardCode: string; cardName: string; total: number; threshold: number;
   document: { date: string; dueDate: string; cardCode: string; reference: string; comments: string; baseDocumentId: string; lines: DocumentLine[] };

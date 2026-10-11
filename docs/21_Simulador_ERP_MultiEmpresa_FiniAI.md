@@ -1,11 +1,10 @@
 # 🏢 21 · Arquitectura ERP Multi-Empresa, Copiloto Fini AI y Prácticas Reales Supabase
 
-Este documento forma parte de la red neuronal de documentación en Obsidian y detalla la modernización integral del simulador contable y operativo de **B1 Academy** para soportar operaciones reales en las **7 empresas del holding corporativo**, la conexión de prácticas desde Mi Aula directamente a **Supabase**, la eliminación del bloqueo en entradas numéricas mediante `NumberInput`, y la especialización de **@Fini AI (🐦‍🔥)**.
+Este documento forma parte de la documentación del sistema y detalla la modernización integral del simulador contable y operativo de **B1 Academy** para soportar operaciones reales en las **7 empresas del holding corporativo**, la conexión de prácticas desde Mi Aula directamente a **Supabase**, la eliminación del bloqueo en entradas numéricas mediante `NumberInput`, y la especialización de **@Fini AI (🐦‍🔥)**.
 
 Relacionado con:
-- [[09_Simulador_Integral_Desktop]]
-- [[18_Simulador_Departamentos_y_Aislamiento_Supabase]]
-- [[20_Auditoria_Agente_Estudiante_Simulador_y_Certificacion]]
+- 09_Simulador_Integral_Desktop
+- 18_Simulador_Departamentos_y_Aislamiento_Supabase
 
 ---
 
@@ -13,7 +12,7 @@ Relacionado con:
 
 ```mermaid
 graph TD
-    A[Estudiante en Mi Aula / Simulador] -->|Navega Lección| B[SAPInteractiveSimulator]
+    A[Estudiante en Mi Aula / Simulador] -->|Navega Lección| B[FinixInteractiveSimulator]
     B -->|Práctica con pantalla real| C[PracticaConectada]
     B -->|Consulta o Asistencia| D[@Fini AI 🐦‍🔥 Advisor]
     
@@ -36,7 +35,7 @@ En inputs `<input type="number" min="0.01" step="0.01" value={amount ?? 0} />`:
 2. Las flechas del navegador saltaban de `0.01` en `0.01`, impidiendo digitar valores comerciales como `$3,500.00` de forma ágil.
 
 ### Solución A+
-Se diseñó `NumberInput` en `src/components/sap-screens/SAPControls.tsx`:
+Se diseñó `NumberInput` en `src/components/finix-screens/FinixControls.tsx`:
 - Estado local desacoplado de cadena con sincronización reactiva bidireccional.
 - `onFocus` con auto-selección (`select()`): un clic resalta el número para sobrescribir en una sola pulsación.
 - Soporte para coma `,` o punto `.` decimal (adaptado a digitación ecuatoriana y latina).
@@ -62,7 +61,7 @@ Se diseñó `NumberInput` en `src/components/sap-screens/SAPControls.tsx`:
 Cada una de las 7 empresas cuenta con su propio espacio de base de datos en Supabase mediante la cabecera `X-Empresa`:
 1. **B1 Center S.A.S. (Matriz)**: Tecnología, hardware y servidores.
 2. **Comercializadora Retail S.A.**: Comercio minorista multicanal.
-3. **Servicios & Consultoría IT**: Facturación por horas y consultoría SAP.
+3. **Servicios & Consultoría IT**: Facturación por horas y consultoría Finix ERP.
 4. **Manufactura & Ensamble**: Listas de materiales (BOM) y órdenes de producción.
 5. **Distribución & Logística**: Movimientos de stock y transporte.
 6. **Importaciones & Comex**: Comercio exterior, aranceles e ISD.
@@ -72,7 +71,7 @@ Cada una de las 7 empresas cuenta con su propio espacio de base de datos en Supa
 
 ## 🎓 5. Conexión de Prácticas desde Mi Aula (`PracticaConectada`)
 
-En `SAPInteractiveSimulator.tsx`:
+En `FinixInteractiveSimulator.tsx`:
 - Se eliminó el bloqueo que exigía `stepGuide.campos.length`.
 - Toda práctica reconocida por `pantallaConectada(stepGuide)` monta `PracticaConectada`.
 - Las transacciones completadas por el estudiante en las clases (crear clientes, emitir facturas, generar órdenes de compra, pagos y asientos) se guardan directamente en su empresa en Supabase, alimentando los estados financieros en tiempo real.

@@ -59,4 +59,3 @@ export default function FinixToolBar({ onActionClick }: FinixToolBarProps) {
   );
 }
 
-export { FinixToolBar as SAPToolBar };

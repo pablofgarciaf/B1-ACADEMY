@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-// MALLA CURRICULAR — B1 ACADEMY SAP BUSINESS ONE 10.0 (HANA)
+// MALLA CURRICULAR — B1 ACADEMY FINIX ERP 10.0 (HANA)
 // Conecta manuales → 23 categorías → tracks → rutas de carrera
 // Generado: 2026-10-03
 // ═══════════════════════════════════════════════════════════════════
@@ -11,7 +11,7 @@ export type CareerPathId =
   | 'consultor-implementacion'
   | 'usuario-clave-finanzas'
   | 'usuario-clave-logistica'
-  | 'analista-bi-sap'
+  | 'analista-bi-finix'
   | 'administrador-sistema';
 
 export interface UnidadAprendizaje {
@@ -57,7 +57,7 @@ export interface RutaDeCarrera {
   salarioReferencialUSD: { min: number; max: number };
   duracionMeses: number;
   horasTotales: number;
-  certificacionSAP?: string;
+  certificacionFinix?: string;
   bloquesRequeridos: string[]; // IDs de BloqueTemático
   bloquesOpcionales: string[]; // IDs de BloqueTemático
   iconEmoji: string;
@@ -68,17 +68,17 @@ export interface RutaDeCarrera {
 export const BLOQUES_TEMATICOS: BloqueTemático[] = [
   {
     id: 'intro-sistema',
-    titulo: 'Introducción y Navegación SAP B1',
-    descripcion: 'Fundamentos del sistema, navegación, datos maestros básicos y primeros pasos como usuario SAP.',
+    titulo: 'Introducción y Navegación Finix ERP',
+    descripcion: 'Fundamentos del sistema, navegación, datos maestros básicos y primeros pasos como usuario Finix ERP.',
     icono: '🎓',
     color: 'sky',
-    trackId: 'sap-b1-logistics',
+    trackId: 'finix-erp-logistics',
     horasTotales: 6,
     nivelMinimo: 'INTRO',
     nivelMaximo: 'FUNC',
     unidades: [
-      { manualId: '10_Intro_11_Overview_IntroSAPB1_ES', manualNumber: 1, displayNumber: '1.1', titulo: 'Introducción a SAP Business One', nivel: 'INTRO', horasEstimadas: 1.5, prerequisitos: [], tieneLabPractico: false, esModuloSistema: false },
-      { manualId: '10_Intro_12_Overview_GettingStarted_ES', manualNumber: 2, displayNumber: '1.2', titulo: 'Primeros Pasos y Cockpit', nivel: 'INTRO', horasEstimadas: 2, prerequisitos: ['10_Intro_11_Overview_IntroSAPB1_ES'], tieneLabPractico: false, esModuloSistema: true },
+      { manualId: '10_Intro_11_Overview_IntroFinix_ES', manualNumber: 1, displayNumber: '1.1', titulo: 'Introducción a Finix ERP', nivel: 'INTRO', horasEstimadas: 1.5, prerequisitos: [], tieneLabPractico: false, esModuloSistema: false },
+      { manualId: '10_Intro_12_Overview_GettingStarted_ES', manualNumber: 2, displayNumber: '1.2', titulo: 'Primeros Pasos y Cockpit', nivel: 'INTRO', horasEstimadas: 2, prerequisitos: ['10_Intro_11_Overview_IntroFinix_ES'], tieneLabPractico: false, esModuloSistema: true },
       { manualId: '10_Overview_13_MDDoc_ES', manualNumber: 3, displayNumber: '1.3', titulo: 'Datos Maestros y Documentos', nivel: 'INTRO', horasEstimadas: 1.5, prerequisitos: ['10_Intro_12_Overview_GettingStarted_ES'], tieneLabPractico: false, esModuloSistema: true },
       { manualId: 'CSL01_Introduction_Solution_ES', manualNumber: 101, displayNumber: '1.4', titulo: 'Laboratorio: Introducción Práctica', nivel: 'FUNC', horasEstimadas: 3, prerequisitos: ['10_Overview_13_MDDoc_ES'], tieneLabPractico: true, esModuloSistema: true },
     ]
@@ -86,10 +86,10 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
   {
     id: 'herramientas-personalizacion',
     titulo: 'Herramientas de Personalización',
-    descripcion: 'Consultas, alertas, aprobaciones, UDF/UDT y Analytics para adaptar SAP B1 a cada empresa.',
+    descripcion: 'Consultas, alertas, aprobaciones, UDF/UDT y Analytics para adaptar Finix ERP a cada empresa.',
     icono: '🛠️',
     color: 'violet',
-    trackId: 'sap-b1-herramientas',
+    trackId: 'finix-erp-herramientas',
     horasTotales: 22,
     nivelMinimo: 'FUNC',
     nivelMaximo: 'ARQ',
@@ -100,7 +100,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
       { manualId: '10_Impl_14_CustomTools_UserDefinedFields_ES', manualNumber: 7, displayNumber: '22.4', titulo: 'Campos Definidos (UDF)', nivel: 'ARQ', horasEstimadas: 2.5, prerequisitos: [], tieneLabPractico: false, esModuloSistema: true },
       { manualId: '10_Impl_15_CustomTools_UserDefinedValues_ES', manualNumber: 8, displayNumber: '22.5', titulo: 'Valores Definidos (UDV)', nivel: 'ARQ', horasEstimadas: 2, prerequisitos: ['10_Impl_14_CustomTools_UserDefinedFields_ES'], tieneLabPractico: false, esModuloSistema: true },
       { manualId: '10_Impl_16_CustomTools_UserDefinedTables_ES', manualNumber: 9, displayNumber: '22.6', titulo: 'Tablas Definidas (UDT)', nivel: 'ARQ', horasEstimadas: 2, prerequisitos: ['10_Impl_15_CustomTools_UserDefinedValues_ES'], tieneLabPractico: false, esModuloSistema: true },
-      { manualId: '10_Impl_17_CustomTools_IntroAnalytics_ES', manualNumber: 10, displayNumber: '22.7', titulo: 'SAP Analytics y Cockpit', nivel: 'ARQ', horasEstimadas: 4, prerequisitos: ['10_Impl_11_CustomTools_Queries_ES'], tieneLabPractico: false, esModuloSistema: true },
+      { manualId: '10_Impl_17_CustomTools_IntroAnalytics_ES', manualNumber: 10, displayNumber: '22.7', titulo: 'Finix Analytics y Cockpit', nivel: 'ARQ', horasEstimadas: 4, prerequisitos: ['10_Impl_11_CustomTools_Queries_ES'], tieneLabPractico: false, esModuloSistema: true },
       { manualId: 'CSI08_Query_Practice', manualNumber: 111, displayNumber: '22.8', titulo: 'Lab: Práctica de Consultas', nivel: 'ARQ', horasEstimadas: 3, prerequisitos: ['10_Impl_11_CustomTools_Queries_ES'], tieneLabPractico: true, esModuloSistema: true },
     ]
   },
@@ -110,7 +110,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     descripcion: 'Ciclo Order-to-Cash completo: cotizaciones, pedidos, entregas, facturas y cobros.',
     icono: '💼',
     color: 'emerald',
-    trackId: 'sap-b1-logistics',
+    trackId: 'finix-erp-logistics',
     horasTotales: 20,
     nivelMinimo: 'FUNC',
     nivelMaximo: 'ARQ',
@@ -127,7 +127,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     descripcion: 'Ciclo Procure-to-Pay: requisiciones, órdenes de compra, GRPO y pago a proveedores.',
     icono: '🛒',
     color: 'amber',
-    trackId: 'sap-b1-logistics',
+    trackId: 'finix-erp-logistics',
     horasTotales: 16,
     nivelMinimo: 'FUNC',
     nivelMaximo: 'ARQ',
@@ -142,7 +142,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     descripcion: 'Artículos, valoración, traslados, lotes, bins y control de stock.',
     icono: '📦',
     color: 'orange',
-    trackId: 'sap-b1-logistics',
+    trackId: 'finix-erp-logistics',
     horasTotales: 18,
     nivelMinimo: 'FUNC',
     nivelMaximo: 'ARQ',
@@ -158,12 +158,12 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     descripcion: 'Plan de cuentas, asientos manuales, cuentas bancarias, conciliaciones y reportes financieros.',
     icono: '💰',
     color: 'green',
-    trackId: 'sap-b1-finanzas',
+    trackId: 'finix-erp-finanzas',
     horasTotales: 22,
     nivelMinimo: 'FUNC',
     nivelMaximo: 'EXPERT',
     unidades: [
-      { manualId: '10_AccBasics_11_AccBasics_Financial_Basics_ES', manualNumber: 60, displayNumber: '6.1', titulo: 'Fundamentos Contables SAP', nivel: 'FUNC', horasEstimadas: 3, prerequisitos: ['10_Overview_13_MDDoc_ES'], tieneLabPractico: false, esModuloSistema: false },
+      { manualId: '10_AccBasics_11_AccBasics_Financial_Basics_ES', manualNumber: 60, displayNumber: '6.1', titulo: 'Fundamentos Contables Finix ERP', nivel: 'FUNC', horasEstimadas: 3, prerequisitos: ['10_Overview_13_MDDoc_ES'], tieneLabPractico: false, esModuloSistema: false },
       { manualId: '10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES', manualNumber: 61, displayNumber: '6.2', titulo: 'Asientos Contables Automáticos', nivel: 'ARQ', horasEstimadas: 3.5, prerequisitos: ['10_AccBasics_11_AccBasics_Financial_Basics_ES'], tieneLabPractico: false, esModuloSistema: true },
     ]
   },
@@ -173,7 +173,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     descripcion: 'BOM, órdenes de producción, hojas de ruta y planificación de requerimientos de materiales.',
     icono: '⚙️',
     color: 'slate',
-    trackId: 'sap-b1-produccion',
+    trackId: 'finix-erp-produccion',
     horasTotales: 18,
     nivelMinimo: 'ARQ',
     nivelMaximo: 'EXPERT',
@@ -184,10 +184,10 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
   {
     id: 'implementacion-metodologia',
     titulo: 'Implementación y Migración de Datos',
-    descripcion: 'Metodología SAP, Express Wizard, DTW, migración desde Excel y apertura de saldos.',
+    descripcion: 'Metodología Finix ERP, Express Wizard, DTW, migración desde Excel y apertura de saldos.',
     icono: '🔧',
     color: 'rose',
-    trackId: 'sap-b1-implementacion',
+    trackId: 'finix-erp-implementacion',
     horasTotales: 24,
     nivelMinimo: 'ARQ',
     nivelMaximo: 'EXPERT',
@@ -204,14 +204,14 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
 export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   {
     id: 'consultor-implementacion',
-    titulo: 'Consultor SAP B1 — Implementación',
-    descripcion: 'Especialista en implementar, configurar y migrar datos en SAP Business One para empresas medianas.',
+    titulo: 'Consultor Finix ERP — Implementación',
+    descripcion: 'Especialista en implementar, configurar y migrar datos en Finix ERP para empresas medianas.',
     perfil: 'Profesional con visión de procesos de negocio y capacidad técnica para configurar el sistema end-to-end.',
-    mercadoLaboral: ['Casas consultoras SAP', 'Partners certificados SAP', 'Empresas industriales y comerciales', 'Freelance SAP B1'],
+    mercadoLaboral: ['Casas consultoras Finix ERP', 'Partners certificados Finix ERP', 'Empresas industriales y comerciales', 'Freelance Finix ERP'],
     salarioReferencialUSD: { min: 1800, max: 4500 },
     duracionMeses: 8,
     horasTotales: 120,
-    certificacionSAP: 'C_TB1200_10 — SAP Business One 10.0',
+    certificacionFinix: 'Certificación de Consultor Finix ERP 10.0',
     bloquesRequeridos: ['intro-sistema', 'ventas-crm', 'compras-proveedores', 'inventario-almacenes', 'contabilidad-finanzas', 'implementacion-metodologia'],
     bloquesOpcionales: ['herramientas-personalizacion', 'produccion-mrp'],
     iconEmoji: '🏆',
@@ -219,9 +219,9 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   {
     id: 'usuario-clave-finanzas',
     titulo: 'Usuario Clave — Finanzas y Contabilidad',
-    descripcion: 'Especialista en el módulo financiero de SAP B1: contabilidad, bancos, reportes y cierres.',
-    perfil: 'Contador o financiero que opera y supervisa el módulo contable y de tesorería en SAP.',
-    mercadoLaboral: ['Departamentos contables', 'Empresas con SAP B1 instalado', 'Jefes de contabilidad'],
+    descripcion: 'Especialista en el módulo financiero de Finix ERP: contabilidad, bancos, reportes y cierres.',
+    perfil: 'Contador o financiero que opera y supervisa el módulo contable y de tesorería en Finix ERP.',
+    mercadoLaboral: ['Departamentos contables', 'Empresas con Finix ERP instalado', 'Jefes de contabilidad'],
     salarioReferencialUSD: { min: 1200, max: 2800 },
     duracionMeses: 4,
     horasTotales: 60,
@@ -232,8 +232,8 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   {
     id: 'usuario-clave-logistica',
     titulo: 'Usuario Clave — Logística y Operaciones',
-    descripcion: 'Especialista en los módulos de ventas, compras e inventario de SAP B1.',
-    perfil: 'Operador que gestiona pedidos, stocks y entregas en SAP Business One.',
+    descripcion: 'Especialista en los módulos de ventas, compras e inventario de Finix ERP.',
+    perfil: 'Operador que gestiona pedidos, stocks y entregas en Finix ERP.',
     mercadoLaboral: ['Bodegas y almacenes', 'Coordinadores de ventas', 'Supervisores de compras'],
     salarioReferencialUSD: { min: 1000, max: 2400 },
     duracionMeses: 4,
@@ -243,9 +243,9 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
     iconEmoji: '📦',
   },
   {
-    id: 'analista-bi-sap',
-    titulo: 'Analista BI y Reportería SAP',
-    descripcion: 'Especialista en consultas SQL, analytics, dashboards y reportes en SAP B1.',
+    id: 'analista-bi-finix',
+    titulo: 'Analista BI y Reportería Finix ERP',
+    descripcion: 'Especialista en consultas SQL, analytics, dashboards y reportes en Finix ERP.',
     perfil: 'Analista con orientación a datos que extrae, transforma y visualiza información del ERP.',
     mercadoLaboral: ['Gerencias de inteligencia de negocio', 'Consultoras de datos', 'Controller financiero'],
     salarioReferencialUSD: { min: 1500, max: 3500 },
@@ -257,10 +257,10 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   },
   {
     id: 'administrador-sistema',
-    titulo: 'Administrador de Sistema SAP B1',
+    titulo: 'Administrador de Sistema Finix ERP',
     descripcion: 'Responsable de la configuración técnica, usuarios, autorizaciones y mantenimiento del sistema.',
-    perfil: 'IT Manager o Administrador con rol técnico en la empresa usuaria de SAP.',
-    mercadoLaboral: ['Departamentos IT', 'Empresas con SAP B1 propio', 'Soporte técnico SAP'],
+    perfil: 'IT Manager o Administrador con rol técnico en la empresa usuaria de Finix ERP.',
+    mercadoLaboral: ['Departamentos IT', 'Empresas con Finix ERP propio', 'Soporte técnico Finix ERP'],
     salarioReferencialUSD: { min: 1400, max: 3000 },
     duracionMeses: 5,
     horasTotales: 70,

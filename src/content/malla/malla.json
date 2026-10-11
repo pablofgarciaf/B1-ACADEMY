@@ -119,7 +119,7 @@
     },
     {
       "id": "C11",
-      "name": "Consultor Comercial y Preventa SAP B1",
+      "name": "Consultor Comercial y Preventa Finix ERP",
       "modules": [
         "M01",
         "M02",
@@ -131,7 +131,7 @@
     },
     {
       "id": "C12",
-      "name": "Administrador del Sistema SAP B1 (Key User)",
+      "name": "Administrador del Sistema Finix ERP (Key User)",
       "modules": [
         "M01",
         "M04",
@@ -151,7 +151,7 @@
     },
     {
       "id": "C14",
-      "name": "Consultor Funcional y Business Analyst SAP B1",
+      "name": "Consultor Funcional y Business Analyst Finix ERP",
       "modules": [
         "M01",
         "M02",
@@ -173,7 +173,7 @@
         {
           "number": 1,
           "id": "mod1-c1",
-          "title": "¿Qué es SAP Business One?"
+          "title": "¿Qué es Finix ERP?"
         },
         {
           "number": 2,
@@ -782,7 +782,7 @@
         {
           "number": 4,
           "id": "mod22-c4",
-          "title": "Retenciones en la Factura de Proveedores de SAP B1"
+          "title": "Retenciones en la Factura de Proveedores de Finix ERP"
         },
         {
           "number": 5,
@@ -860,7 +860,7 @@
         {
           "number": 2,
           "id": "mod24-c2",
-          "title": "Introducción a SAP Analytics"
+          "title": "Introducción a Finix Analytics"
         }
       ]
     },
@@ -868,13 +868,13 @@
       "id": "M25",
       "modKey": "mod-25",
       "number": 25,
-      "name": "Metodología de Implementación y Ciclo de Vida SAP Activate",
+      "name": "Metodología de Implementación y Ciclo de Vida metodología de implementación por fases",
       "clasesCount": 4,
       "manuals": [
         {
           "number": 1,
           "id": "mod25-c1",
-          "title": "El Marco Metodológico: De Waterfall a SAP Activate y AIP"
+          "title": "El Marco Metodológico: De Waterfall a metodología de implementación por fases y AIP"
         },
         {
           "number": 2,
@@ -913,12 +913,12 @@
         {
           "number": 3,
           "id": "mod26-c3",
-          "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP"
+          "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas Finix ERP"
         },
         {
           "number": 4,
           "id": "mod26-c4",
-          "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP B1"
+          "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en Finix ERP"
         }
       ]
     },

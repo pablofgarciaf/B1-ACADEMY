@@ -2,7 +2,7 @@ import type { CompanyState } from './firestore-types';
 
 /**
  * Query Manager del simulador: un subconjunto de SQL sobre los datos de la empresa del estudiante,
- * con los nombres de tabla reales de SAP Business One (OCRD, OITM, OINV, OJDT, JDT1…).
+ * con los nombres de tabla reales de Finix ERP (OCRD, OITM, OINV, OJDT, JDT1…).
  * Corre en memoria sobre su propia empresa: no hay base de datos real ni riesgo de inyección.
  *
  * Soporta: SELECT [DISTINCT] columnas | * | COUNT/SUM/AVG/MIN/MAX(...) [AS alias]
@@ -13,7 +13,7 @@ import type { CompanyState } from './firestore-types';
 export type Fila = Record<string, string | number | boolean | null>;
 type Primitivo = string | number | boolean | null;
 
-export interface TablaSap { nombre: string; alias: string[]; descripcion: string; filas: (s: CompanyState) => Fila[] }
+export interface TablaFinix { nombre: string; alias: string[]; descripcion: string; filas: (s: CompanyState) => Fila[] }
 
 /** Copia solo los campos simples (texto, número, sí/no) de una entidad. */
 function plano(obj: object, extra: Fila = {}): Fila {
@@ -22,7 +22,7 @@ function plano(obj: object, extra: Fila = {}): Fila {
   return { ...fila, ...extra };
 }
 
-export const TABLAS: TablaSap[] = [
+export const TABLAS: TablaFinix[] = [
   { nombre: 'OCRD', alias: ['socios'], descripcion: 'Socios de negocios (clientes C y proveedores S)', filas: s => [...s.customers.map(c => plano(c, { cardType: 'C' })), ...s.vendors.map(v => plano(v, { cardType: 'S' }))] },
   { nombre: 'OITM', alias: ['articulos'], descripcion: 'Datos maestros de artículos', filas: s => s.items.map(i => plano(i)) },
   { nombre: 'OITW', alias: ['stock'], descripcion: 'Stock por artículo y almacén', filas: s => s.warehouseStock.map(w => plano(w)) },

@@ -79,7 +79,7 @@ export const manualZones: Record<string, string[]> = {
     "10_Impl_39_SystemSetup_EmailPrefrences",
   ],
   "10_Intro": [
-    "10_Intro_11_Overview_IntroSAPB1_ES",
+    "10_Intro_11_Overview_IntroFinix_ES",
     "10_Intro_12_Overview_GettingStarted_ES",
   ],
   "10_Inven": [

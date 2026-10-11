@@ -1,5 +1,5 @@
 # MÓDULO 11: PERSONALIZACIÓN AVANZADA, AUTOMATIZACIONES Y ANALÍTICA EN TIEMPO REAL
-**(SAP BUSINESS ONE 10.0 & ERP)**
+**(FINIX ERP 10.0 & ERP)**
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
 **Fuentes Oficiales Analizadas:** `10_Impl_11_CustomTools_Queries_ES.pdf`, `10_Impl_13_CustomTools_ApprovalProcesses_ES.pdf`, `10_Impl_14_CustomTools_UserDefinedFields_ES.pdf`, `10_Impl_15_CustomTools_UserDefinedValues_ES.pdf` y `10_Impl_17_CustomTools_IntroAnalytics_ES.pdf`  
@@ -10,7 +10,7 @@
 
 ## Resumen Ejecutivo
 
-Las organizaciones dinámicas no pueden encasillarse en modelos transaccionales rígidos; requieren que su ERP se adapte con exactitud a su ventaja competitiva sin sacrificar la estabilidad del sistema ni la garantía oficial de actualización. SAP Business One 10.0 responde a esta necesidad mediante una arquitectura de extensibilidad no invasiva de tres capas: datos personalizados (*UDF, UDT, UDO*), automatizaciones interactivas de pantalla (*Búsquedas Formateadas / FMS*) y gobernanza de procesos (*Procedimientos de Autorización estándar y por consulta*). Complementariamente, en los entornos sobre tecnología SAP HANA, el paradigma analítico evoluciona de los reportes estáticos en diferido hacia la inteligencia en tiempo real: millones de registros se procesan en la memoria RAM a través de la Capa Semántica (*Semantic Layer*), exponiendo KPIs visuales y tableros interactivos embebidos (*Pervasive Analytics*). Este módulo entrega el marco metodológico y técnico para que consultores y líderes de proyecto sistematicen la personalización del sistema bajo estándares de alta eficiencia operativa y rigor corporativo.
+Las organizaciones dinámicas no pueden encasillarse en modelos transaccionales rígidos; requieren que su ERP se adapte con exactitud a su ventaja competitiva sin sacrificar la estabilidad del sistema ni la garantía oficial de actualización. Finix ERP 10.0 responde a esta necesidad mediante una arquitectura de extensibilidad no invasiva de tres capas: datos personalizados (*UDF, UDT, UDO*), automatizaciones interactivas de pantalla (*Búsquedas Formateadas / FMS*) y gobernanza de procesos (*Procedimientos de Autorización estándar y por consulta*). Complementariamente, en los entornos sobre tecnología base de datos en memoria, el paradigma analítico evoluciona de los reportes estáticos en diferido hacia la inteligencia en tiempo real: millones de registros se procesan en la memoria RAM a través de la Capa Semántica (*Semantic Layer*), exponiendo KPIs visuales y tableros interactivos embebidos (*Pervasive Analytics*). Este módulo entrega el marco metodológico y técnico para que consultores y líderes de proyecto sistematicen la personalización del sistema bajo estándares de alta eficiencia operativa y rigor corporativo.
 
 ---
 
@@ -29,13 +29,13 @@ Las organizaciones dinámicas no pueden encasillarse en modelos transaccionales 
 ## LECCIÓN 11.1: EXTENSIONES DE DATOS: CAMPOS DE USUARIO (UDF), TABLAS (UDT) Y OBJETOS (UDO)
 
 ### 1. El Principio de Extensibilidad No Invasiva
-En la ingeniería de software empresarial, modificar la estructura física de la base de datos de manera directa (por ejemplo, ejecutando sentencias `ALTER TABLE` o `CREATE TABLE` manuales por SQL) constituye una falta grave que anula el soporte oficial de SAP (Nota SAP 896891). 
+En la ingeniería de software empresarial, modificar la estructura física de la base de datos de manera directa (por ejemplo, ejecutando sentencias `ALTER TABLE` o `CREATE TABLE` manuales por SQL) constituye una falta grave que anula el soporte oficial de Finix ERP (Nota nota técnica 896891). 
 
-¿Por qué? Porque SAP Business One gestiona un diccionario interno de metadatos que sincroniza la lógica de negocio, los esquemas de licenciamiento, la capa de acceso a datos (DI-API / Service Layer) y las rutinas de actualización de versión (*upgrades*). Para habilitar la captura de datos particulares de cada industria, SAP implementa herramientas nativas de extensión que garantizan la coexistencia de personalizaciones profundas con las actualizaciones periódicas de parches (*Feature Delivery Packages*).
+¿Por qué? Porque Finix ERP gestiona un diccionario interno de metadatos que sincroniza la lógica de negocio, los esquemas de licenciamiento, la capa de acceso a datos (DI-API / Service Layer) y las rutinas de actualización de versión (*upgrades*). Para habilitar la captura de datos particulares de cada industria, Finix ERP implementa herramientas nativas de extensión que garantizan la coexistencia de personalizaciones profundas con las actualizaciones periódicas de parches (*Feature Delivery Packages*).
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│               ARQUITECTURA DE EXTENSIBILIDAD EN SAP B1                 │
+│               ARQUITECTURA DE EXTENSIBILIDAD EN Finix ERP                 │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 1. UDF (Campos de Usuario): Columnas añadidas a tablas estándar (U_)   │
 │ 2. UDT (Tablas de Usuario): Tablas relacionales independientes (@)     │
@@ -49,7 +49,7 @@ En la ingeniería de software empresarial, modificar la estructura física de la
 Permiten enriquecer los formularios estándar con atributos adicionales requeridos por la operativa de la empresa.
 
 * **Ruta de Configuración:** *Herramientas > Herramientas de customizing > Campos definidos por el usuario - Gestión*.
-* **Prefijo de Base de Datos:** SAP antepone automáticamente el prefijo obligatorio `U_` al nombre del campo (por ejemplo, un campo definido con título `ZonaReparto` se registrará en el motor como `U_ZonaReparto`).
+* **Prefijo de Base de Datos:** Finix ERP antepone automáticamente el prefijo obligatorio `U_` al nombre del campo (por ejemplo, un campo definido con título `ZonaReparto` se registrará en el motor como `U_ZonaReparto`).
 * **Nivel de Inserción Técnica:**
   * **Nivel de Cabecera (Header):** Se añaden a las tablas maestras o cabeceras de documentos (ej. `OCRD` para Socios de Negocio, `OINV` para Facturas de Venta, `OITM` para Datos Maestros de Artículo). Visualmente se ubican en el panel lateral de campos de usuario (activable con el atajo **Ctrl + Shift + U**) o se incorporan directamente en el cuerpo de la ventana mediante el *Diseñador de Interfaz de Usuario*.
   * **Nivel de Línea / Matriz (Row / Detail):** Se agregan a las tablas de líneas de documentos transaccionales (ej. `INV1` para detalle de facturas, `RDR1` para detalle de pedidos de cliente). Se visualizan como columnas adicionales dentro de la cuadrícula o matriz de artículos.
@@ -85,7 +85,7 @@ El UDO es el nivel más alto de extensibilidad nativa. Permite tomar una o más 
   * Habilita los botones de la barra de herramientas: *Crear*, *Actualizar*, *Buscar*, *Eliminar* y flechas de navegación de registros.
   * Soporta asignación de numeración de series de documentos independientes.
   * Expone automáticamente servicios de integración a través de la DI-API y el Service Layer (operaciones RESTful: GET, POST, PATCH, DELETE).
-  * Se integra al árbol de autorizaciones de SAP: permite otorgar o restringir accesos a usuarios por grupos.
+  * Se integra al árbol de autorizaciones de Finix ERP: permite otorgar o restringir accesos a usuarios por grupos.
 
 | Nivel de Extensión | Prefijo en BD | Tabla Ejemplo | Dónde se Diseña | Caso de Uso Empresarial |
 | :--- | :--- | :--- | :--- | :--- |
@@ -98,7 +98,7 @@ El UDO es el nivel más alto de extensibilidad nativa. Permite tomar una o más 
 ## LECCIÓN 11.2: AUTOMATIZACIÓN DE FORMULARIOS: BÚSQUEDAS FORMATEADAS (FMS) Y VALORES DEFINIDOS POR EL USUARIO
 
 ### 1. ¿Qué es una Búsqueda Formateada (FMS / User-Defined Values)?
-En el lenguaje diario de consultoría SAP, las siglas **FMS** (*Formatted Search*) o **UDV** (*User-Defined Values*) hacen referencia a la capacidad de asociar una consulta SQL/HANA interactiva a cualquier campo de un formulario estándar o personalizado.
+En el lenguaje diario de consultoría Finix ERP, las siglas **FMS** (*Formatted Search*) o **UDV** (*User-Defined Values*) hacen referencia a la capacidad de asociar una consulta SQL/HANA interactiva a cualquier campo de un formulario estándar o personalizado.
 
 ```
 [ EVENTO DISPARADOR EN PANTALLA ] ───> Modificación del campo disparador (ej. Código del Artículo)
@@ -130,7 +130,7 @@ En el lenguaje diario de consultoría SAP, las siglas **FMS** (*Formatted Search
 ---
 
 ### 3. Sintaxis de Variables de Formulario (Tokens de Pantalla)
-Para que una consulta SQL/HANA lea el dato que el usuario acaba de escribir en pantalla **antes de que el documento se guarde en la base de datos**, SAP utiliza una sintaxis especial de variables dinámicas:
+Para que una consulta SQL/HANA lea el dato que el usuario acaba de escribir en pantalla **antes de que el documento se guarde en la base de datos**, Finix ERP utiliza una sintaxis especial de variables dinámicas:
 
 ```sql
 -- Sintaxis General basada en ID de Objeto y Columna:
@@ -143,7 +143,7 @@ $[Tabla.NombreCampo]
 #### ¿Cómo descubrir el Item ID y Column ID de un campo?
 1. Activar el menú **Ver > Información del sistema** (o presionar **Ctrl + Shift + I**).
 2. Posicionar el cursor sobre el campo deseado.
-3. En la esquina inferior izquierda de la ventana de SAP Business One aparecerá la barra de estado con la información técnica:
+3. En la esquina inferior izquierda de la ventana de Finix ERP aparecerá la barra de estado con la información técnica:
    * Formulario (`Form=...`), Ítem (`Item=...`), Columna (`Col=...`) y Tabla (`Variable=...`).
 
 #### Ejemplos de Sintaxis en Consultas de Búsqueda Formateada:
@@ -155,7 +155,7 @@ $[Tabla.NombreCampo]
 * **Lectura de la Cantidad en la Línea Actual de una Factura:**
   ```sql
   -- Siendo Item 38 la matriz de líneas y Columna 11 la cantidad:
-  SELECT $[$38.11.NUMBER] * 1.10 FROM DUMMY; -- En SAP HANA
+  SELECT $[$38.11.NUMBER] * 1.10 FROM DUMMY; -- En base de datos en memoria
   ```
 
 > [!WARNING]
@@ -168,7 +168,7 @@ $[Tabla.NombreCampo]
 ### 1. El Ciclo de Vida del Procedimiento de Autorización (Approval Process)
 En las empresas medianas y corporativas, delegar la toma de decisiones comerciales o financieras sin controles automatizados genera riesgos críticos: ventas con márgenes negativos, concesión indebida de crédito a clientes morosos o compras por encima de los presupuestos aprobados.
 
-El procedimiento de autorización de SAP Business One actúa como un **filtro de gobernanza preventivo** que intercepta el documento antes de que impacte los libros contables o los inventarios físicos:
+El procedimiento de autorización de Finix ERP actúa como un **filtro de gobernanza preventivo** que intercepta el documento antes de que impacte los libros contables o los inventarios físicos:
 
 ```mermaid
 flowchart TD
@@ -176,7 +176,7 @@ flowchart TD
     B -- No --> C[El Documento se registra en firme en Base de Datos]
     B -- Sí --> D[El documento se convierte en BORRADOR PRELIMINAR]
     D --> E[Se bloquea impacto contable y de inventario]
-    E --> F[Notificación automática en SAP y Móvil a Autorizadores]
+    E --> F[Notificación automática en Finix ERP y Móvil a Autorizadores]
     F --> G{Decisión del Autorizador}
     G -- Rechazado --> H[Notificación de Rechazo al Creador: Documento cancelado o a corregir]
     G -- Aprobado --> I[Notificación de Aprobación al Creador]
@@ -217,7 +217,7 @@ Cuando las reglas de negocio de la empresa sobrepasan las casillas nativas (por 
 Durante la creación de un documento preliminar, la fila del documento **aún no existe en las tablas maestras de documentos (`ORDR`, `OPOR`, etc.)**. Por lo tanto, la consulta debe evaluar las variables activas del formulario en memoria:
 
 ```sql
--- Ejemplo en SAP HANA para bloquear un Pedido de Venta si el cliente tiene saldo vencido > 50,000:
+-- Ejemplo en base de datos en memoria para bloquear un Pedido de Venta si el cliente tiene saldo vencido > 50,000:
 SELECT DISTINCT 'TRUE' 
 FROM OCRD T0 
 WHERE T0."CardCode" = $[$4.1.0] 
@@ -238,10 +238,10 @@ WHERE T0.DocEntry = $[$8.1.0]
 
 ## LECCIÓN 11.4: INTELIGENCIA DE NEGOCIOS Y ANALÍTICA HANA: CAPA SEMÁNTICA, KPIS Y DASHBOARDS
 
-### 1. La Arquitectura Analítica en Memoria (SAP HANA)
+### 1. La Arquitectura Analítica en Memoria (base de datos en memoria)
 Históricamente, los sistemas ERP tradicionales sufrían una limitación estructural: ejecutar reportes analíticos complejos sobre bases de datos relacionales tradicionales (OLTP) ralentizaba o bloqueaba las transacciones de ventas y facturación diarias.
 
-En la versión de SAP Business One para **SAP HANA**, este conflicto se resuelve mediante el procesamiento *In-Memory* y el almacenamiento columnar. La analítica operativa no requiere la creación de cubos externos de Business Intelligence ni extractores pesados hacia un Data Warehouse; los cálculos masivos de millones de registros se realizan directamente en la memoria RAM en fracciones de segundo.
+En la versión de Finix ERP para **base de datos en memoria**, este conflicto se resuelve mediante el procesamiento *In-Memory* y el almacenamiento columnar. La analítica operativa no requiere la creación de cubos externos de Business Intelligence ni extractores pesados hacia un Data Warehouse; los cálculos masivos de millones de registros se realizan directamente en la memoria RAM en fracciones de segundo.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -252,7 +252,7 @@ En la versión de SAP Business One para **SAP HANA**, este conflicto se resuelve
                                     ▼
 ┌────────────────────────────────────────────────────────────────────────┐
 │                     CAPA SEMÁNTICA (SEMANTIC LAYER)                    │
-│      Vistas de Cálculo (Calculation Views) preconfiguradas por SAP     │
+│      Vistas de Cálculo (Calculation Views) preconfiguradas por Finix ERP     │
 ├───────────────────────────────────┬────────────────────────────────────┤
 │ ├──> MEDIDAS (Cuantitativo):      │ └──> DIMENSIONES (Cualitativo):    │
 │      • Importe de Ventas Netas    │      • Cliente / Territorio        │
@@ -265,7 +265,7 @@ En la versión de SAP Business One para **SAP HANA**, este conflicto se resuelve
 │                      PERVASIVE ANALYTICS DESIGNER                      │
 │             • KPIs Numéricos con Semáforos y Metas Dinámicas           │
 │             • Tableros Interactivos (Barras, Líneas, Dispersión)       │
-│             • Acciones de Tablero (Click-to-Action hacia SAP B1)       │
+│             • Acciones de Tablero (Click-to-Action hacia Finix ERP)       │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -282,7 +282,7 @@ Al diseñar reportes analíticos y tableros con la Capa Semántica, el consultor
 ---
 
 ### 3. Pervasive Analytics Designer: De Datos a Decisiones
-Integrado directamente en el cliente de SAP Business One con estilo Fiori, el diseñador de analítica pervasiva democratiza la creación de artefactos de Business Intelligence sin necesidad de programar código:
+Integrado directamente en el cliente de Finix ERP con estilo Fiori, el diseñador de analítica pervasiva democratiza la creación de artefactos de Business Intelligence sin necesidad de programar código:
 
 1. **Diseño de KPIs (Key Performance Indicators):**
    * Tarjetas numéricas ejecutivas de alto impacto visual (ej. *Ventas Mes Actual*, *Días Promedio de Cobro*).
@@ -307,36 +307,36 @@ Esta matriz sintetiza los incidentes más comunes en despliegues de personalizac
 
 | # | Escenario de Error / Síntoma | Causa Raíz Técnica | Protocolo de Resolución y Asesoría del Copiloto |
 | :-: | :--- | :--- | :--- |
-| **1** | **Error en FMS:**<br>`Internal error (-1004)` o la búsqueda no actualiza el valor automáticamente en pantalla. | La sintaxis del token de formulario (`$[$Item.Col.0]`) hace referencia a un control que no existe, está deshabilitado en pantalla o retorna nulo sin tratamiento. | 1. Activar *Ver > Información del sistema* (**Ctrl + Shift + I**) y verificar con el cursor el ID exacto del ítem y la columna.<br>2. Proteger la consulta contra valores nulos usando `IFNULL(..., '')` en SAP HANA o `COALESCE(..., '')` en SQL Server.<br>3. Verificar en la parametrización de la FMS que esté marcada la casilla *Visualización automática cuando se modifica el campo* con el disparador correcto. |
+| **1** | **Error en FMS:**<br>`Internal error (-1004)` o la búsqueda no actualiza el valor automáticamente en pantalla. | La sintaxis del token de formulario (`$[$Item.Col.0]`) hace referencia a un control que no existe, está deshabilitado en pantalla o retorna nulo sin tratamiento. | 1. Activar *Ver > Información del sistema* (**Ctrl + Shift + I**) y verificar con el cursor el ID exacto del ítem y la columna.<br>2. Proteger la consulta contra valores nulos usando `IFNULL(..., '')` en base de datos en memoria o `COALESCE(..., '')` en SQL Server.<br>3. Verificar en la parametrización de la FMS que esté marcada la casilla *Visualización automática cuando se modifica el campo* con el disparador correcto. |
 | **2** | **Salto de Aprobación:**<br>El usuario crea un documento crítico y el sistema lo añade directamente sin pedir la autorización requerida. | El usuario creador no está incluido en la pestaña *Autores* del modelo, el autorizador asignado está inactivo, o la consulta de autorización retorna 0 registros (vacío). | 1. Ir a *Gestión > Inicialización sistema > Procedimientos de autorización > Modelos de autorización*.<br>2. Confirmar que el usuario o su grupo figure en la pestaña *Autores* y que el tipo de documento esté marcado.<br>3. Verificar que en *Parametrizaciones generales > pestaña Servicios* esté tildada la casilla global *Activar procedimiento de autorización*.<br>4. Si es por consulta, ejecutar la consulta con los parámetros del caso y asegurar que devuelva explícitamente `'TRUE'`. |
 | **3** | **Degradación de Rendimiento:**<br>El cliente experimenta un congelamiento temporal de 3 a 5 segundos cada vez que cambia de línea en una orden de venta. | Búsqueda Formateada (FMS) configurada en una columna de la matriz con cálculo automático y disparador continuo, ejecutando joins masivos sobre tablas históricas sin índices. | 1. Aislar la columna que dispara la FMS y evaluar su necesidad interactiva.<br>2. Optimizar la consulta SQL/HANA reduciendo lecturas de tablas enteras o reemplazándola por consultas sobre vistas agregadas.<br>3. Evaluar si el cálculo puede postergarse a un disparo manual (**Shift + F2**) en lugar de automático por línea, o ejecutarse únicamente a nivel de cabecera. |
-| **4** | **Dashboards Vacíos en HANA:**<br>Los tableros o KPIs en el Cockpit Fiori muestran el mensaje *"No hay datos disponibles"* o error al cargar la vista. | Los servicios de la Capa Semántica (*AppFramework / AnalyticsPlatform*) no están inicializados en el Servidor HANA, o las Vistas de Cálculo no se han desplegado/autorizado. | 1. Ingresar a la consola de administración de SAP HANA y validar el estado de los servicios `B1A` (*Business One Analytics*).<br>2. En el cliente de SAP B1, navegar a *Gestión > Inicialización sistema > Inicialización de la analítica* y ejecutar la sincronización de modelos.<br>3. Asegurarse de que el usuario de SAP tenga asignada la licencia adecuada y permisos de visualización sobre la Capa Semántica. |
+| **4** | **Dashboards Vacíos en HANA:**<br>Los tableros o KPIs en el Cockpit Fiori muestran el mensaje *"No hay datos disponibles"* o error al cargar la vista. | Los servicios de la Capa Semántica (*AppFramework / AnalyticsPlatform*) no están inicializados en el Servidor HANA, o las Vistas de Cálculo no se han desplegado/autorizado. | 1. Ingresar a la consola de administración de base de datos en memoria y validar el estado de los servicios `B1A` (*Business One Analytics*).<br>2. En el cliente de Finix ERP, navegar a *Gestión > Inicialización sistema > Inicialización de la analítica* y ejecutar la sincronización de modelos.<br>3. Asegurarse de que el usuario de Finix ERP tenga asignada la licencia adecuada y permisos de visualización sobre la Capa Semántica. |
 
 ---
 
 ## BANCO DE EVALUACIÓN SITUACIONAL
 
-A continuación se presentan 5 casos prácticos situacionales diseñados bajo estándares de certificación de consultoría SAP Business One 10.0:
+A continuación se presentan 5 casos prácticos situacionales diseñados bajo estándares de certificación de consultoría Finix ERP 10.0:
 
 ### Pregunta 1 (Automatización de Formularios / FMS)
-Una distribuidora farmacéutica requiere que, al registrar una Factura de Clientes, el asesor de ventas visualice de inmediato en un campo libre el porcentaje de margen bruto proyectado de la línea antes de grabar la transacción. La empresa no cuenta con desarrolladores de software externos ni desea incurrir en costos de licenciamiento de Add-ons. ¿Cuál es el mecanismo técnico nativo más eficiente y mantenible en SAP Business One?
+Una distribuidora farmacéutica requiere que, al registrar una Factura de Clientes, el asesor de ventas visualice de inmediato en un campo libre el porcentaje de margen bruto proyectado de la línea antes de grabar la transacción. La empresa no cuenta con desarrolladores de software externos ni desea incurrir en costos de licenciamiento de Add-ons. ¿Cuál es el mecanismo técnico nativo más eficiente y mantenible en Finix ERP?
 
 * A) Desarrollar una aplicación externa en C# conectada por la DI-API que monitoree la base de datos cada 2 segundos.
 * B) Crear un Campo Definido por el Usuario (UDF) a nivel de líneas y vincularle una Búsqueda Formateada (FMS) disparada automáticamente al modificarse el campo de precio o cantidad, utilizando una consulta con variables activas de formulario. **[CORRECTA]**
 * C) Crear un Trigger `AFTER INSERT` directamente en la tabla física `INV1` en SQL Server / HANA para forzar el cálculo en la base de datos.
 * D) Solicitar al asesor de ventas que exporte la cuadrícula a Microsoft Excel, aplique una fórmula manual y digite el porcentaje resultante.
-* **Explicación de la IA:** La respuesta correcta es la **B**. La arquitectura de extensibilidad nativa de SAP permite crear Campos de Usuario (UDF) tanto a nivel de cabecera como de línea, y complementarlos con Búsquedas Formateadas (FMS) que leen la memoria del formulario mediante tokens (`$[$Item.Col.0]`). La opción A introduce complejidad y costos innecesarios; la opción C viola las directrices oficiales de soporte (Nota SAP 896891) y no refresca la interfaz gráfica en tiempo real; la opción D genera ineficiencia operativa y riesgo de error humano.
+* **Explicación de la IA:** La respuesta correcta es la **B**. La arquitectura de extensibilidad nativa de Finix ERP permite crear Campos de Usuario (UDF) tanto a nivel de cabecera como de línea, y complementarlos con Búsquedas Formateadas (FMS) que leen la memoria del formulario mediante tokens (`$[$Item.Col.0]`). La opción A introduce complejidad y costos innecesarios; la opción C viola las directrices oficiales de soporte (Nota nota técnica 896891) y no refresca la interfaz gráfica en tiempo real; la opción D genera ineficiencia operativa y riesgo de error humano.
 
 ---
 
-### Pregunta 2 (Analítica y Business Intelligence en SAP HANA)
-Durante la implementación del Cockpit Fiori en una cadena de tiendas retail sobre SAP HANA, el Director Financiero solicita un panel interactivo que muestre el monto total de ventas agrupado por región geográfica y familia de productos durante el último año móvil. Al configurar el modelo en el *Pervasive Analytics Designer*, ¿cómo debe catalogar el consultor los componentes del modelo de datos?
+### Pregunta 2 (Analítica y Business Intelligence en base de datos en memoria)
+Durante la implementación del Cockpit Fiori en una cadena de tiendas retail sobre base de datos en memoria, el Director Financiero solicita un panel interactivo que muestre el monto total de ventas agrupado por región geográfica y familia de productos durante el último año móvil. Al configurar el modelo en el *Pervasive Analytics Designer*, ¿cómo debe catalogar el consultor los componentes del modelo de datos?
 
 * A) El monto total de ventas y la familia de artículos deben definirse como Dimensiones, mientras que la región geográfica es una Medida.
 * B) Todos los campos deben configurarse exclusivamente como Medidas, ya que provienen de documentos fiscales auditados.
 * C) El monto total de ventas es una Medida cuantitativa agregable, mientras que la región geográfica y la familia de artículos son Dimensiones cualitativas de agrupación. **[CORRECTA]**
-* D) En SAP HANA no existe distinción conceptual entre medidas y dimensiones; el motor OLAP las procesa de manera idéntica.
-* **Explicación de la IA:** La respuesta correcta es la **C**. En los modelos multidimensionales OLAP de la Capa Semántica de SAP HANA, las **Medidas** (*Measures*) representan los hechos cuantificables continuos sobre los cuales se ejecutan sumas o promedios (el importe monetario vendido), mientras que las **Dimensiones** (*Dimensions*) constituyen los atributos categóricos o cronológicos que definen los niveles de agregación y corte analítico (región, categoría de artículo, fecha).
+* D) En base de datos en memoria no existe distinción conceptual entre medidas y dimensiones; el motor OLAP las procesa de manera idéntica.
+* **Explicación de la IA:** La respuesta correcta es la **C**. En los modelos multidimensionales OLAP de la Capa Semántica de base de datos en memoria, las **Medidas** (*Measures*) representan los hechos cuantificables continuos sobre los cuales se ejecutan sumas o promedios (el importe monetario vendido), mientras que las **Dimensiones** (*Dimensions*) constituyen los atributos categóricos o cronológicos que definen los niveles de agregación y corte analítico (región, categoría de artículo, fecha).
 
 ---
 
@@ -347,28 +347,28 @@ El departamento de auditoría interna de una corporación exige que ningún Pedi
 * B) La consulta debe retornar al menos un registro (por ejemplo, el texto `'TRUE'`) cuando se cumpla la condición de riesgo, leyendo el código del cliente desde la variable activa de pantalla `$[$4.1.0]`. **[CORRECTA]**
 * C) La consulta debe configurarse para devolver siempre `FALSE` cuando se detecte un cliente moroso.
 * D) El procedimiento solo funcionará si el usuario autorizador tiene una licencia de tipo Profesional y está conectado en la misma estación de trabajo del autor.
-* **Explicación de la IA:** La respuesta correcta es la **B**. En SAP Business One, las consultas de modelos de autorización exigen dos premisas fundamentales: 1) Como el documento aún no existe físicamente en la tabla transaccional (está en memoria antes de crearse), debe capturar el cliente desde el token de pantalla (`$[$4.1.0]`); 2) El motor de autorizaciones se activa únicamente si la consulta arroja al menos una fila de resultado (convención estándar: `SELECT DISTINCT 'TRUE' ...`). Si la consulta retorna vacío, SAP asume que no hay impedimento y autoriza la creación directa.
+* **Explicación de la IA:** La respuesta correcta es la **B**. En Finix ERP, las consultas de modelos de autorización exigen dos premisas fundamentales: 1) Como el documento aún no existe físicamente en la tabla transaccional (está en memoria antes de crearse), debe capturar el cliente desde el token de pantalla (`$[$4.1.0]`); 2) El motor de autorizaciones se activa únicamente si la consulta arroja al menos una fila de resultado (convención estándar: `SELECT DISTINCT 'TRUE' ...`). Si la consulta retorna vacío, Finix ERP asume que no hay impedimento y autoriza la creación directa.
 
 ---
 
 ### Pregunta 4 (Arquitectura de Datos: UDF vs. UDT vs. UDO)
-Una empresa de logística y transporte necesita registrar en SAP Business One su flota de 120 tractocamiones. Para cada unidad se requiere registrar: Placas, Marca, Año, Kilometraje actual y una lista histórica de servicios de mantenimiento preventivo (Fecha de servicio, Taller, Costo de repuestos y Observaciones). Además, los operadores deben tener una pantalla dedicada con permisos de acceso, botones de navegación y capacidad de consultar información por API. ¿Cuál es la arquitectura de extensibilidad correcta recomendada por un consultor certificado?
+Una empresa de logística y transporte necesita registrar en Finix ERP su flota de 120 tractocamiones. Para cada unidad se requiere registrar: Placas, Marca, Año, Kilometraje actual y una lista histórica de servicios de mantenimiento preventivo (Fecha de servicio, Taller, Costo de repuestos y Observaciones). Además, los operadores deben tener una pantalla dedicada con permisos de acceso, botones de navegación y capacidad de consultar información por API. ¿Cuál es la arquitectura de extensibilidad correcta recomendada por un consultor certificado?
 
 * A) Crear 120 Campos de Usuario (UDF) en los Datos Maestros de Socio de Negocio.
 * B) Crear una sola Tabla de Usuario (UDT) plana de tipo "Sin Objeto" y llenar los mantenimientos en un campo de texto largo separado por comas.
 * C) Diseñar una Tabla de Usuario (UDT) de cabecera de tipo Datos Maestros para los vehículos, una UDT de líneas para el detalle de mantenimientos, y encapsularlas en un Objeto Definido por el Usuario (UDO) con interfaz y servicios de DI-API. **[CORRECTA]**
 * D) Modificar la tabla física estándar de activos fijos `OFIX` añadiendo columnas directamente con scripts SQL desde el motor de base de datos.
-* **Explicación de la IA:** La respuesta correcta es la **C**. El requerimiento describe una relación maestro-detalle (un camión tiene muchos servicios de mantenimiento) con necesidad de interfaz gráfica estructurada, control de permisos y exposición a APIs. El Objeto Definido por el Usuario (UDO) es la herramienta nativa diseñada precisamente para este propósito. La opción A desnaturaliza el maestro de socios; la opción B viola las formas normales de bases de datos relacionales; la opción D viola la política de soporte de SAP y corrompe la integridad del ERP.
+* **Explicación de la IA:** La respuesta correcta es la **C**. El requerimiento describe una relación maestro-detalle (un camión tiene muchos servicios de mantenimiento) con necesidad de interfaz gráfica estructurada, control de permisos y exposición a APIs. El Objeto Definido por el Usuario (UDO) es la herramienta nativa diseñada precisamente para este propósito. La opción A desnaturaliza el maestro de socios; la opción B viola las formas normales de bases de datos relacionales; la opción D viola la política de soporte de Finix ERP y corrompe la integridad del ERP.
 
 ---
 
 ### Pregunta 5 (Troubleshooting de Procedimientos de Autorización)
 Un usuario con rol de Vendedor genera un Pedido de Cliente con un descuento del 25%. Según las políticas de la empresa, todo descuento superior al 15% debe ser aprobado por la Gerencia Comercial. Sin embargo, el documento se añade de forma definitiva e inmediata en el sistema, afectando el inventario comprometido y sin generar ningún borrador preliminar de autorización. Al auditar el sistema, ¿cuál de las siguientes opciones describe la causa más probable del incidente?
 
-* A) El cliente al que se le vendió tiene habilitada la opción de pago al contado, lo cual anula automáticamente todos los procesos de autorización en SAP B1.
+* A) El cliente al que se le vendió tiene habilitada la opción de pago al contado, lo cual anula automáticamente todos los procesos de autorización en Finix ERP.
 * B) El usuario creador no está vinculado en la pestaña *Autores* del Modelo de Autorización, o la opción global *Activar procedimiento de autorización* está desmarcada en las Parametrizaciones Generales de la empresa. **[CORRECTA]**
-* C) La estación de trabajo del usuario vendedor no tiene instalado el cliente de SAP Crystal Reports.
-* D) El servidor de licencias no cuenta con licencias analíticas de SAP HANA activas para ese usuario.
+* C) La estación de trabajo del usuario vendedor no tiene instalado el cliente de Finix Reports.
+* D) El servidor de licencias no cuenta con licencias analíticas de base de datos en memoria activas para ese usuario.
 * **Explicación de la IA:** La respuesta correcta es la **B**. Para que un procedimiento de autorización se ejecute, se requiere una cadena de tres elementos activos: 1) La casilla global *Activar procedimiento de autorización* debe estar encendida en *Gestión > Inicialización sistema > Parametrizaciones generales > pestaña Servicios*; 2) El usuario que emite el documento debe figurar en la pestaña *Autores* del modelo; 3) El documento debe coincidir con la lista de transacciones supervisadas. Si falla cualquiera de estos eslabones, el documento se añade sin pasar por el flujo de aprobación.
 
 ---

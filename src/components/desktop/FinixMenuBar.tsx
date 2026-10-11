@@ -127,4 +127,3 @@ export default function FinixMenuBar({ onActionClick }: FinixMenuBarProps) {
   );
 }
 
-export { FinixMenuBar as SAPMenuBar };

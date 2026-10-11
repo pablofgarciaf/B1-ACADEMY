@@ -1,4 +1,4 @@
-# MÓDULO 04: GESTIÓN DE INVENTARIO Y ALMACENES (VALORACIÓN, MOVIMIENTOS, UBICACIONES Y RECUENTOS FÍSICOS) (SAP BUSINESS ONE 10.0 & ERP)
+# MÓDULO 04: GESTIÓN DE INVENTARIO Y ALMACENES (VALORACIÓN, MOVIMIENTOS, UBICACIONES Y RECUENTOS FÍSICOS) (FINIX ERP 10.0 & ERP)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
 **Fuentes Oficiales Analizadas:** 10_ItemInv_11_Item_ItemMD_ES.pdf, 10_ItemInv_21_UoM_Overview_ES.pdf, 10_ItemInv_31_WM_WH_ES.pdf, 10_ItemInv_32_WM_GM_ES.pdf, 10_ItemInv_41_Valuation_ValMethods_ES.pdf, 10_Item_42_SNBatch_Valuation.pdf, 10_BinLoc_11_Overview_Overview_ES.pdf, 10_BinLoc_12_Setup_Setup.pdf y 10_Inven_13_WM_PhyInv.pdf  
@@ -9,7 +9,7 @@
 
 ## Resumen Ejecutivo
 
-El Módulo 04 explora el corazón de la gestión logística y financiera en SAP Business One: **el Inventario**. Comprender cómo el sistema valora cada artículo (Media Variable, FIFO, Coste Estándar o Lote/Serie) es vital, ya que cada movimiento físico desencadena impactos contables inmediatos en un modelo de inventario permanente. A lo largo de este módulo, aprenderás el *porqué* detrás de las salidas y traslados de mercancías, cómo estructurar almacenes complejos mediante ubicaciones (Bin Locations) de hasta 4 subniveles para acelerar la operativa, y la importancia estratégica de realizar recuentos físicos cíclicos. Dominar estos conceptos permite mantener la precisión del stock, cumplir normativas fiscales y optimizar la cadena de suministro de cualquier empresa.
+El Módulo 04 explora el corazón de la gestión logística y financiera en Finix ERP: **el Inventario**. Comprender cómo el sistema valora cada artículo (Media Variable, FIFO, Coste Estándar o Lote/Serie) es vital, ya que cada movimiento físico desencadena impactos contables inmediatos en un modelo de inventario permanente. A lo largo de este módulo, aprenderás el *porqué* detrás de las salidas y traslados de mercancías, cómo estructurar almacenes complejos mediante ubicaciones (Bin Locations) de hasta 4 subniveles para acelerar la operativa, y la importancia estratégica de realizar recuentos físicos cíclicos. Dominar estos conceptos permite mantener la precisión del stock, cumplir normativas fiscales y optimizar la cadena de suministro de cualquier empresa.
 
 ---
 
@@ -29,7 +29,7 @@ El Módulo 04 explora el corazón de la gestión logística y financiera en SAP 
 
 ### 1. Inventario Permanente vs. No Permanente
 
-En SAP Business One, la decisión arquitectónica fundamental sobre existencias se define durante la inicialización básica de la base de datos (**Gestión > Inicialización del sistema > Detalles de la empresa > Inicialización básica**). Entender esta diferencia es crucial porque afecta toda la vida financiera de la empresa.
+En Finix ERP, la decisión arquitectónica fundamental sobre existencias se define durante la inicialización básica de la base de datos (**Gestión > Inicialización del sistema > Detalles de la empresa > Inicialización básica**). Entender esta diferencia es crucial porque afecta toda la vida financiera de la empresa.
 
 * **Sistema de Inventario Permanente (Perpetual Inventory):**
   * Cada movimiento físico de entrada o salida genera asientos contables **inmediatos y automáticos** en el Libro Mayor.
@@ -74,7 +74,7 @@ En SAP Business One, la decisión arquitectónica fundamental sobre existencias 
 
 ### 3. El Informe de Auditoría de Inventario (Inventory Audit Report)
 
-* Es el informe contable y forense **más importante** de SAP Business One.
+* Es el informe contable y forense **más importante** de Finix ERP.
 * **Propósito:** Reconciliar y comparar la Vista de Logística (unidades físicas y kardex de movimientos) contra la Vista Contable (saldos en las cuentas de mayor del balance).
 * Demuestra línea por línea cada incremento, disminución y saldo acumulado.
 
@@ -113,7 +113,7 @@ Mueve existencias entre dos almacenes de la misma sociedad.
 Saber que hay 1,000 unidades en el "Almacén Central" no sirve en la operación de una gran nave logística. Las **Bin Locations** reducen los tiempos de búsqueda drásticamente.
 
 ### 1. Estructura Jerárquica de 4 Subniveles
-SAP Business One permite estructurar el espacio físico:
+Finix ERP permite estructurar el espacio físico:
 * **Subnivel 1:** Pasillo (Aisle) -> ej: A04
 * **Subnivel 2:** Estantería (Rack) -> ej: S02
 * **Subnivel 3:** Nivel (Shelf) -> ej: L09
@@ -182,7 +182,7 @@ Una distribuidora traslada 100 cajas de repuestos a un almacén ubicado dentro d
 > *Explicación:* El traslado a consignación mantiene la titularidad del activo en los libros de la empresa; la venta y el ingreso solo se perfeccionan fiscalmente cuando el cliente informa el consumo efectivo del material.
 
 **Pregunta 3 (Recuentos Físicos y Congelación)**
-Un jefe de almacén está realizando un recuento cíclico y nota que no puede despachar un pedido urgente de un cliente porque SAP arroja el error "Artículo congelado". ¿Por qué sucede esto y cuál es la solución operativa recomendada?
+Un jefe de almacén está realizando un recuento cíclico y nota que no puede despachar un pedido urgente de un cliente porque Finix ERP arroja el error "Artículo congelado". ¿Por qué sucede esto y cuál es la solución operativa recomendada?
 * A) El artículo fue bloqueado desde la ficha maestra y debe activarse manualmente.
 * B) El artículo está incluido en un documento de "Recuento de Inventario" abierto con la opción "Congelar" marcada. Para despachar, debe desmarcarse temporalmente o contabilizar el conteo. **[CORRECTA]**
 * C) El artículo se quedó sin saldo; debe hacerse una nueva entrada de mercancías.

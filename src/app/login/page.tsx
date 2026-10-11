@@ -196,14 +196,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           {/* Header */}
           <div className="text-center space-y-2">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-sap-blue/30 bg-sap-blue/5 text-xs font-bold text-sap-blue">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
               <ShieldCheck className="w-3.5 h-3.5" /> Portal Oficial B1 Academy Ecuador
             </div>
             <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
@@ -212,7 +212,7 @@ export default function LoginPage() {
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               {tab === "login"
                 ? "Accede a tu Aula Virtual, expediente academico o panel de administracion."
-                : "Crea tu cuenta y comienza tu formacion SAP en B1 Academy hoy mismo."}
+                : "Crea tu cuenta y comienza tu formacion Finix ERP en B1 Academy hoy mismo."}
             </p>
           </div>
 
@@ -222,7 +222,7 @@ export default function LoginPage() {
               onClick={() => switchTab("login")}
               className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 tab === "login"
-                  ? "bg-white dark:bg-sap-blue text-sap-blue dark:text-white shadow-sm"
+                  ? "bg-white dark:bg-finix-blue text-finix-blue dark:text-white shadow-sm"
                   : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
               }`}
             >
@@ -233,7 +233,7 @@ export default function LoginPage() {
               onClick={() => switchTab("register")}
               className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 tab === "register"
-                  ? "bg-white dark:bg-sap-blue text-sap-blue dark:text-white shadow-sm"
+                  ? "bg-white dark:bg-finix-blue text-finix-blue dark:text-white shadow-sm"
                   : "text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
               }`}
             >
@@ -272,7 +272,7 @@ export default function LoginPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="ejemplo@empresa.com"
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export default function LoginPage() {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Contrasena o numero de cedula"
                       required
-                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
+                      className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                     />
                     <button
                       aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
@@ -308,7 +308,7 @@ export default function LoginPage() {
                   </div>
                 </div>
 <div className="text-right">
-  <button type="button" onClick={handleForgotPassword} className="text-sap-blue hover:underline text-xs mt-1">
+  <button type="button" onClick={handleForgotPassword} className="text-finix-blue hover:underline text-xs mt-1">
     ¿Olvidaste tu contraseña?
   </button>
 </div>
@@ -327,7 +327,7 @@ export default function LoginPage() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3.5 px-4 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sap-blue/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
+                  className="w-full py-3.5 px-4 rounded-xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-finix-blue/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
                 >
                   {loading ? (
                     <span>Autenticando...</span>
@@ -345,7 +345,7 @@ export default function LoginPage() {
                   No tienes cuenta?{" "}
                   <button
                     onClick={() => switchTab("register")}
-                    className="text-sap-blue font-bold hover:underline cursor-pointer"
+                    className="text-finix-blue font-bold hover:underline cursor-pointer"
                   >
                     Registrate gratis
                   </button>
@@ -362,7 +362,7 @@ export default function LoginPage() {
                 <GraduationCap className="w-8 h-8 text-emerald-500 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Registro 100% Gratuito</p>
-                  <p className="text-[11px] text-slate-500">Accede al track SAP Business One Core sin costo con una contraseña personal segura.</p>
+                  <p className="text-[11px] text-slate-500">Accede al track Finix ERP Core sin costo con una contraseña personal segura.</p>
                 </div>
               </div>
 
@@ -393,7 +393,7 @@ export default function LoginPage() {
                       onChange={(e) => setRegName(e.target.value)}
                       placeholder="Ej: Ing. Andrea Morales"
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                     />
                   </div>
                 </div>
@@ -411,7 +411,7 @@ export default function LoginPage() {
                       onChange={(e) => setRegEmail(e.target.value)}
                       placeholder="tucorreo@empresa.com"
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                     />
                   </div>
                 </div>
@@ -433,7 +433,7 @@ export default function LoginPage() {
                       minLength={6}
                       maxLength={20}
                       required
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors font-mono"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors font-mono"
                     />
                   </div>
                 </div>
@@ -448,7 +448,7 @@ export default function LoginPage() {
                     value={regPhone}
                     onChange={(e) => setRegPhone(e.target.value)}
                     placeholder="0991234567"
-                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                   />
                 </div>
 
@@ -464,9 +464,9 @@ export default function LoginPage() {
                   />
                   <span>
                     Acepto los{" "}
-                    <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/terminos"); }} className="text-sap-blue underline">Términos y condiciones</button>{" "}
+                    <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/terminos"); }} className="text-finix-blue underline">Términos y condiciones</button>{" "}
                     y autorizo el tratamiento de mis datos personales, incluida mi cédula, según la{" "}
-                    <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/privacidad"); }} className="text-sap-blue underline">Política de privacidad</button>.
+                    <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/privacidad"); }} className="text-finix-blue underline">Política de privacidad</button>.
                   </span>
                 </label>
 
@@ -503,7 +503,7 @@ export default function LoginPage() {
                   Ya tienes cuenta?{" "}
                   <button
                     onClick={() => switchTab("login")}
-                    className="text-sap-blue font-bold hover:underline cursor-pointer"
+                    className="text-finix-blue font-bold hover:underline cursor-pointer"
                   >
                     Inicia sesion
                   </button>

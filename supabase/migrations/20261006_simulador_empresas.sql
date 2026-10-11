@@ -1,4 +1,4 @@
--- Empresa virtual de cada estudiante (simulador SAP B1) en Supabase.
+-- Empresa virtual de cada estudiante (simulador Finix ERP) en Supabase.
 -- Aplicada al proyecto b1-academy el 2026-10-06 (migraciones simulador_empresas + simulador_mision_resumen).
 -- Mismo modelo que Firestore (perfil + colecciones de entidades) para no tocar el motor del simulador.
 

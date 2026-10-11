@@ -39,7 +39,7 @@ export default function ChangePasswordPage() {
   if (authLoading || !userProfile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#080d1a]">
-        <div className="w-10 h-10 rounded-full border-2 border-sap-blue border-t-transparent animate-spin" />
+        <div className="w-10 h-10 rounded-full border-2 border-finix-blue border-t-transparent animate-spin" />
       </div>
     );
   }
@@ -82,14 +82,14 @@ export default function ChangePasswordPage() {
   const strengthColor = ['', 'bg-rose-500', 'bg-amber-400', 'bg-emerald-500'];
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center px-4 py-16">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-sap-blue/10 border border-sap-blue/20 mb-2">
-              <Lock className="w-8 h-8 text-sap-blue" />
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-finix-blue/10 border border-finix-blue/20 mb-2">
+              <Lock className="w-8 h-8 text-finix-blue" />
             </div>
             <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
               Crea tu Contrasena Personal
@@ -133,7 +133,7 @@ export default function ChangePasswordPage() {
                     placeholder="Mínimo 12 caracteres"
                     minLength={12}
                     required
-                    className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue transition-colors"
+                    className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                   />
                   <button type="button" aria-label={showNew ? 'Ocultar contraseña nueva' : 'Mostrar contraseña nueva'} onClick={() => setShowNew(!showNew)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                     {showNew ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -166,7 +166,7 @@ export default function ChangePasswordPage() {
                     onChange={(e) => setConfirmPass(e.target.value)}
                     placeholder="Repite la contrasena"
                     required
-                    className={`w-full pl-10 pr-10 py-3 rounded-xl border bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none transition-colors ${confirmPass && confirmPass !== newPass ? 'border-rose-400 focus:border-rose-400' : 'border-slate-200 dark:border-white/10 focus:border-sap-blue'}`}
+                    className={`w-full pl-10 pr-10 py-3 rounded-xl border bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none transition-colors ${confirmPass && confirmPass !== newPass ? 'border-rose-400 focus:border-rose-400' : 'border-slate-200 dark:border-white/10 focus:border-finix-blue'}`}
                   />
                   <button type="button" aria-label={showConfirm ? 'Ocultar confirmación' : 'Mostrar confirmación'} onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                     {showConfirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -180,7 +180,7 @@ export default function ChangePasswordPage() {
               <button
                 type="submit"
                 disabled={submitting || !newPass || !confirmPass}
-                className="w-full py-3.5 px-4 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sap-blue/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
+                className="w-full py-3.5 px-4 rounded-xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-finix-blue/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
               >
                 {submitting ? (
                   <span>Guardando contrasena...</span>

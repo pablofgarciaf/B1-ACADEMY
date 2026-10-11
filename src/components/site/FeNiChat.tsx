@@ -28,11 +28,11 @@ export default function FeNiChat() {
     const handleAbrir = () => setIsOpen(true);
     window.addEventListener('feni-abrir', handleAbrir);
     window.addEventListener('fini-abrir', handleAbrir);
-    window.addEventListener('sapi-abrir', handleAbrir);
+    window.addEventListener('feni-abrir', handleAbrir);
     return () => {
       window.removeEventListener('feni-abrir', handleAbrir);
       window.removeEventListener('fini-abrir', handleAbrir);
-      window.removeEventListener('sapi-abrir', handleAbrir);
+      window.removeEventListener('feni-abrir', handleAbrir);
     };
   }, []);
 
@@ -243,4 +243,4 @@ export default function FeNiChat() {
 }
 
 // Re-exportamos para compatibilidad con código existente
-export { FeNiChat as FiniChat, FeNiChat as SapiChat };
+export { FeNiChat as FiniChat };

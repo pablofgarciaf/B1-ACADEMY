@@ -7,7 +7,7 @@ import { sendCommand, empresaActiva, cambiarEmpresaActiva, LISTA_SIETE_EMPRESAS,
 import { crearB1Center } from '@/lib/b1-center';
 import { levelNames } from '@/lib/company-defaults';
 import FinixDesktopShell from '@/components/desktop/FinixDesktopShell';
-import { Busy, buttonClass, inputClass, Screen } from '@/components/sap-screens/SAPControls';
+import { Busy, buttonClass, inputClass, Screen } from '@/components/finix-screens/FinixControls';
 
 type Catalog = ComponentProps<typeof FinixDesktopShell>['catalog'];
 export function extendCompanyCatalog(catalog: Catalog): Catalog {

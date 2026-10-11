@@ -96,7 +96,7 @@
 }
 
 .prose-lms a {
-  @apply text-sap-blue hover:underline font-medium;
+  @apply text-finix-blue hover:underline font-medium;
 }
 
 .prose-lms strong {
@@ -142,7 +142,7 @@
 
 /* Code */
 .prose-lms code {
-  @apply px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 text-sm font-mono text-sap-blue dark:text-sky-300;
+  @apply px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 text-sm font-mono text-finix-blue dark:text-sky-300;
 }
 
 .prose-lms pre {
@@ -155,7 +155,7 @@
 
 /* Blockquotes */
 .prose-lms blockquote {
-  @apply border-l-4 border-sap-blue/50 pl-4 py-2 mb-4 bg-sap-blue/5 rounded-r-xl text-sm italic text-slate-700 dark:text-slate-300;
+  @apply border-l-4 border-finix-blue/50 pl-4 py-2 mb-4 bg-finix-blue/5 rounded-r-xl text-sm italic text-slate-700 dark:text-slate-300;
 }
 
 /* GitHub-style Alerts */
@@ -179,13 +179,13 @@
   @apply p-4 mb-4 rounded-xl border border-rose-200 dark:border-rose-800/50 bg-rose-50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-200 text-sm;
 }
 
-/* SAPI, la mascota del asistente: flota, parpadea y la antena brilla. */
-@keyframes sapi-flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-@keyframes sapi-parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
-@keyframes sapi-antena { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
-.sapi-flotar { animation: sapi-flotar 3.2s ease-in-out infinite; }
-.sapi-ojos { transform-origin: 32px 32px; animation: sapi-parpadeo 4.5s infinite; }
-.sapi-antena { animation: sapi-antena 2s ease-in-out infinite; }
+/* FeNi, la mascota del asistente: flota, parpadea y la antena brilla. */
+@keyframes feni-flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes feni-parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes feni-antena { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+.feni-flotar { animation: feni-flotar 3.2s ease-in-out infinite; }
+.feni-ojos { transform-origin: 32px 32px; animation: feni-parpadeo 4.5s infinite; }
+.feni-antena { animation: feni-antena 2s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
-  .sapi-flotar, .sapi-ojos, .sapi-antena { animation: none; }
+  .feni-flotar, .feni-ojos, .feni-antena { animation: none; }
 }

@@ -40,7 +40,7 @@ export function QuickCheckQuiz({ questions, submoduleCode }: QuickCheckQuizProps
     <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/5 pb-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-sap-blue dark:text-sky-400">
+          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-finix-blue dark:text-sky-400">
             <Sparkles className="w-4 h-4" /> Comprobación Inmediata de Aprendizaje
           </div>
           <h3 className="text-lg font-bold text-slate-900 dark:text-white font-display">
@@ -55,7 +55,7 @@ export function QuickCheckQuiz({ questions, submoduleCode }: QuickCheckQuizProps
           <div className="flex items-center gap-3">
             <div className="text-right">
               <span className="text-xs font-mono font-bold text-slate-700 dark:text-slate-300">
-                Puntaje: <span className="text-sap-blue dark:text-sky-400">{correctCount}</span> / {totalQuestions}
+                Puntaje: <span className="text-finix-blue dark:text-sky-400">{correctCount}</span> / {totalQuestions}
               </span>
               <div className="text-[10px] text-slate-400">
                 {correctCount === totalQuestions ? '¡Perfecto! Dominio 100%' : 'Revisa las explicaciones'}
@@ -84,7 +84,7 @@ export function QuickCheckQuiz({ questions, submoduleCode }: QuickCheckQuizProps
               className="p-5 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/60 dark:bg-white/[0.01] space-y-4"
             >
               <div className="flex items-start gap-3">
-                <span className="w-6 h-6 rounded-lg bg-sap-blue/10 text-sap-blue dark:text-sky-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 font-mono">
+                <span className="w-6 h-6 rounded-lg bg-finix-blue/10 text-finix-blue dark:text-sky-400 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 font-mono">
                   0{qIndex + 1}
                 </span>
                 <p className="text-xs sm:text-sm font-semibold text-slate-900 dark:text-white leading-snug">
@@ -99,7 +99,7 @@ export function QuickCheckQuiz({ questions, submoduleCode }: QuickCheckQuizProps
                   const isOptionCorrect = optIdx === q.correctIndex;
 
                   let buttonStyles =
-                    'border-slate-200 dark:border-white/10 bg-white dark:bg-black/20 text-slate-700 dark:text-slate-300 hover:border-sap-blue/40';
+                    'border-slate-200 dark:border-white/10 bg-white dark:bg-black/20 text-slate-700 dark:text-slate-300 hover:border-finix-blue/40';
 
                   if (isAnswered) {
                     if (isSelected && isCorrect) {

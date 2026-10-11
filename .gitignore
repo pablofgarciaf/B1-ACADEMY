@@ -49,8 +49,8 @@ _backup_videos_descartados/
 *.log
 
 # large generated video binaries (exclude 3.6GB from git & Vercel deployment payload)
-public/Capacitacion SAP/*/clase_video.mp4
-!public/Capacitacion SAP/10_Intro_11_Overview_IntroSAPB1_ES/clase_video.mp4
-!public/Capacitacion SAP/10_Intro_12_Overview_GettingStarted_ES/clase_video.mp4
-!public/Capacitacion SAP/10_Overview_13_MDDoc_ES/clase_video.mp4
-public/SAP_B1_Full_Kit_Simulador/
+public/Capacitacion Finix/*/clase_video.mp4
+!public/Capacitacion Finix/10_Intro_11_Overview_IntroFinix_ES/clase_video.mp4
+!public/Capacitacion Finix/10_Intro_12_Overview_GettingStarted_ES/clase_video.mp4
+!public/Capacitacion Finix/10_Overview_13_MDDoc_ES/clase_video.mp4
+public/Finix_ERP_Full_Kit_Simulador/

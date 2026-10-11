@@ -4,7 +4,7 @@ export interface SubmoduleGuide {
   title: string;
   trackId: string;
   functionalOverview: string;
-  sapMenuPath: string;
+  finixMenuPath: string;
   businessCaseEC: {
     companyName: string;
     scenario: string;
@@ -26,14 +26,14 @@ export interface SubmoduleGuide {
 }
 
 export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
-  // TRACK 1: SAP B1 CORE
+  // TRACK 1: Finix ERP CORE
   'b1-01': {
     submoduleId: 'b1-01',
-    code: 'DOC-SAP-001',
+    code: 'DOC-Finix ERP-001',
     title: 'Administración: Configuración Maestra y DTW',
-    trackId: 'sap-b1-core',
-    functionalOverview: 'La parametrización inicial de SAP Business One define las bases de la sociedad (moneda funcional USD, ejercicio fiscal del 1 de enero al 31 de diciembre, plan de cuentas base NIIF y flujos de aprobación por montos). El Data Transfer Workbench (DTW) es el utilitario que permite la migración masiva de maestros (OCRD, OITM) sin romper la integridad referencial.',
-    sapMenuPath: 'Gestión → Inicialización del sistema → Detalles de la sociedad / Procedimientos de aprobación',
+    trackId: 'finix-erp-core',
+    functionalOverview: 'La parametrización inicial de Finix ERP define las bases de la sociedad (moneda funcional USD, ejercicio fiscal del 1 de enero al 31 de diciembre, plan de cuentas base NIIF y flujos de aprobación por montos). El Data Transfer Workbench (DTW) es el utilitario que permite la migración masiva de maestros (OCRD, OITM) sin romper la integridad referencial.',
+    finixMenuPath: 'Gestión → Inicialización del sistema → Detalles de la sociedad / Procedimientos de aprobación',
     businessCaseEC: {
       companyName: 'B1 Center (Guayaquil, Ecuador)',
       scenario: 'Puesta en marcha de una distribuidora mayorista con 5,000 SKUs y 1,200 clientes corporativos, requiriendo aprobación de compras superiores a $5,000.',
@@ -72,7 +72,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     criticalErrorsToAvoid: [
       {
         error: 'Definir una moneda local distinta de USD o cambiarla después de iniciar transacciones',
-        consequence: 'Descuadre contable irreversible; SAP bloquea el cambio de moneda una vez existe el primer asiento.',
+        consequence: 'Descuadre contable irreversible; Finix ERP bloquea el cambio de moneda una vez existe el primer asiento.',
         solution: 'Fijar USD desde la inicialización y bloquear permisos de cambio en Definiciones Generales.',
       },
       {
@@ -86,11 +86,11 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
 
   'b1-02': {
     submoduleId: 'b1-02',
-    code: 'DOC-SAP-003',
+    code: 'DOC-Finix ERP-003',
     title: 'Finanzas NIIF y Determinación de Cuentas (G/L)',
-    trackId: 'sap-b1-core',
-    functionalOverview: 'La Determinación de Cuentas de Mayor (G/L Account Determination) es el corazón de la integración financiera en SAP B1. Define cómo las transacciones de ventas, compras e inventario generan asientos contables automáticos sin intervención manual, clasificando cuentas de inventario, costo de ventas, ingresos, pasivos tributarios y cuentas puente de nómina.',
-    sapMenuPath: 'Gestión → Definiciones → Finanzas → Determinación de cuentas de mayor',
+    trackId: 'finix-erp-core',
+    functionalOverview: 'La Determinación de Cuentas de Mayor (G/L Account Determination) es el corazón de la integración financiera en Finix ERP. Define cómo las transacciones de ventas, compras e inventario generan asientos contables automáticos sin intervención manual, clasificando cuentas de inventario, costo de ventas, ingresos, pasivos tributarios y cuentas puente de nómina.',
+    finixMenuPath: 'Gestión → Definiciones → Finanzas → Determinación de cuentas de mayor',
     businessCaseEC: {
       companyName: 'Corporación Industrial del Austro (Cuenca, Ecuador)',
       scenario: 'Implementación del plan de cuentas bajo NIIF para PYMES con asignación automática de costo de ventas por línea de artículo y cuenta transitoria de nómina.',
@@ -136,11 +136,11 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
 
   'b1-04': {
     submoduleId: 'b1-04',
-    code: 'DOC-SAP-010',
+    code: 'DOC-Finix ERP-010',
     title: 'Ciclo Order-to-Cash: De la Oportunidad a la Factura A/R',
-    trackId: 'sap-b1-core',
+    trackId: 'finix-erp-core',
     functionalOverview: 'El ciclo Order-to-Cash (O2C) modela la ruta comercial: Oportunidad de venta (pipeline) → Cotización (OQUT) → Pedido de cliente (ORDR) → Verificación de disponibilidad de inventario (ATP) → Entrega física (ODLN) → Factura electrónica A/R (OINV) → Cobro y aplicación en cartera.',
-    sapMenuPath: 'Ventas - Clientes → Oferta de venta / Pedido de cliente / Entrega / Factura de clientes',
+    finixMenuPath: 'Ventas - Clientes → Oferta de venta / Pedido de cliente / Entrega / Factura de clientes',
     businessCaseEC: {
       companyName: 'Comercializadora San Francisco (Quito, Ecuador)',
       scenario: 'Venta de 100 laptops a crédito a 30 días, con validación de inventario disponible en almacén matriz y entrega con guía de remisión.',
@@ -184,9 +184,9 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     submoduleId: 'loc-01',
     code: 'DOC-LOC-011',
     title: 'Facturación Electrónica SRI: Transmisión XML y Firma Digital',
-    trackId: 'sap-loc-ec',
+    trackId: 'finix-loc-ec',
     functionalOverview: 'La emisión de comprobantes electrónicos en Ecuador exige la generación de un archivo XML bajo el estándar XAdES-BES con firma digital (.p12), el cálculo de la Clave de Acceso de 49 dígitos (módulo 11) y la comunicación sincrónica/asincrónica con el Web Service de Recepción y Autorización del SRI.',
-    sapMenuPath: 'Ventas / Compras → Comprobantes Electrónicos SRI → Monitor de Facturación Electrónica',
+    finixMenuPath: 'Ventas / Compras → Comprobantes Electrónicos SRI → Monitor de Facturación Electrónica',
     businessCaseEC: {
       companyName: 'Farmacéutica Panamericana Cía. Ltda. (Quito, Ecuador)',
       scenario: 'Emisión de una Factura Electrónica por $10,000 + IVA 15% que debe transmitirse en tiempo real al ambiente de Producción del SRI.',
@@ -203,7 +203,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
       {
         stepNumber: 2,
         title: 'Construcción del XML y Clave de Acceso de 49 Dígitos',
-        action: 'Mapear campos del documento SAP B1 (OINV) hacia la estructura XSD oficial del SRI versión 1.1.0 / 2.1.0.',
+        action: 'Mapear campos del documento Finix ERP (OINV) hacia la estructura XSD oficial del SRI versión 1.1.0 / 2.1.0.',
         technicalDetails: 'Algoritmo Módulo 11 con ponderadores 2,3,4,5,6,7. Si el residuo es 11 el dígito es 0, si es 10 es 1.',
         validationCheck: 'Validar la longitud exacta de 49 caracteres numéricos de la clave de acceso antes del envío.',
       },
@@ -224,7 +224,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
       {
         error: 'Descuadre de centavos en la sumatoria de impuestos del XML frente al total del comprobante',
         consequence: 'Error SRI "TOTAL DEL COMPROBANTE NO COINCIDE CON LA SUMA DE LOS IMPUESTOS".',
-        solution: 'Alinear el redondeo de SAP B1 a 2 decimales exactos con la fórmula reglamentaria del SRI.',
+        solution: 'Alinear el redondeo de Finix ERP a 2 decimales exactos con la fórmula reglamentaria del SRI.',
       },
     ],
     regulatoryContextEC: 'Ficha Técnica de Comprobantes Electrónicos Offline del SRI y Ley de Comercio Electrónico, Firmas y Mensajes de Datos.',
@@ -234,9 +234,9 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     submoduleId: 'loc-02',
     code: 'DOC-LOC-008',
     title: 'Retenciones en la Fuente: Parametrización Códigos SRI',
-    trackId: 'sap-loc-ec',
+    trackId: 'finix-loc-ec',
     functionalOverview: 'En compras a proveedores, los agentes de retención en Ecuador están obligados por ley a retener un porcentaje de Impuesto a la Renta y de IVA. Desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009) los porcentajes de renta son: 312 (Transferencia de bienes muebles de naturaleza corporal: 2%), construcción (2%), 307 (Servicios con predominio de mano de obra: 3%), servicios profesionales de sociedades (5%) y 303 (Honorarios profesionales de personas naturales: 10%); todo pago sin porcentaje específico retiene el 3%. Se suman el IVA 15% y sus retenciones del 30%, 70% o 100% (10% y 20% a contribuyentes especiales).',
-    sapMenuPath: 'Gestión → Definiciones → Finanzas → Impuesto → Retención de Impuestos',
+    finixMenuPath: 'Gestión → Definiciones → Finanzas → Impuesto → Retención de Impuestos',
     businessCaseEC: {
       companyName: 'Constructora del Pacífico S.A. (Manta, Ecuador)',
       scenario: 'Pago de factura de proveedor por $5,000 en materiales (bien) y $2,000 en mano de obra técnica (servicio), aplicando retención en la fuente e IVA.',
@@ -245,7 +245,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     stepByStepSteps: [
       {
         stepNumber: 1,
-        title: 'Creación de Códigos de Retención en SAP B1',
+        title: 'Creación de Códigos de Retención en Finix ERP',
         action: 'Definir el código de impuesto, descripción oficial del SRI, porcentaje aplicable y cuenta contable de pasivo.',
         technicalDetails: 'Tabla OWHT. Asignar código oficial de formulario SRI 103 (ej. campo OficialCode = 312).',
         validationCheck: 'Verificar que el porcentaje configurado coincida exactamente con la tabla vigente del SRI.',
@@ -269,7 +269,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
       {
         error: 'Aplicar el código 312 a servicios o el 304 a bienes',
         consequence: 'Glosas y multas tributarias del SRI por retención indebida o cálculo por defecto en fiscalizaciones.',
-        solution: 'Parametrizar las retenciones por línea de factura en SAP B1 según el tipo de artículo o servicio.',
+        solution: 'Parametrizar las retenciones por línea de factura en Finix ERP según el tipo de artículo o servicio.',
       },
     ],
     regulatoryContextEC: 'Resolución SRI NAC-DGERCGC: Tablas de Retención en la Fuente del Impuesto a la Renta y Circular de Porcentajes de Retención de IVA.',
@@ -282,7 +282,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     title: 'Novedades, Asistencia y Fórmulas de Horas Extras',
     trackId: 'b1-nom-ec',
     functionalOverview: 'El motor de novedades de Nómina HCM captura incidencias del período (asistencia biométrica, faltas, permisos, préstamos) y procesa el recargo de horas suplementarias (+50% hasta las 24h00), extraordinarias (+100% en fines de semana, feriados o de 24h00 a 06h00) y recargo nocturno (+25% de 19h00 a 06h00), aplicando estrictamente la fórmula legal: Sueldo / 240.',
-    sapMenuPath: 'Nómina HCM → Novedades y Trámites → Registro Masivo de Novedades',
+    finixMenuPath: 'Nómina HCM → Novedades y Trámites → Registro Masivo de Novedades',
     businessCaseEC: {
       companyName: 'Lácteos de la Sierra C.A. (Ambato, Ecuador)',
       scenario: 'Operador de planta con sueldo básico de $720. Registra en el mes: 12 horas suplementarias (50%) y 8 horas extraordinarias en domingo (100%).',
@@ -327,7 +327,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     title: 'Seguridad Social IESS: Aportes, Fondos de Reserva y Planillas',
     trackId: 'b1-nom-ec',
     functionalOverview: 'La liquidación del aporte al Instituto Ecuatoriano de Seguridad Social (IESS) es obligatoria sobre toda remuneración ordinaria o extraordinaria. El aporte personal es del 9.45% (descontado al trabajador) y el patronal es del 11.15% + 1.00% SECAP/IECE (12.15% total a costo de la empresa). A partir del mes 13 de labores continuas se liquida el Fondo de Reserva (8.33%).',
-    sapMenuPath: 'Nómina HCM → Seguridad Social → Generación de Planilla IESS',
+    finixMenuPath: 'Nómina HCM → Seguridad Social → Generación de Planilla IESS',
     businessCaseEC: {
       companyName: 'Textiles del Norte S.A. (Otavalo, Ecuador)',
       scenario: 'Colaborador con sueldo de $1,000 + $100 comisiones. Antigüedad: 2 años. Solicitó acumular fondos de reserva en el IESS.',
@@ -366,10 +366,10 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     title: 'Analítica del Talento: Calibración y Mapeo en la Matriz Nine Box',
     trackId: 'b1-hcm-talent',
     functionalOverview: 'La Matriz Nine-Box cruza dos dimensiones independientes: Desempeño Operativo (Eje X: Bajo, Medio, Alto) y Potencial de Crecimiento (Eje Y: Bajo, Medio, Alto). Permite identificar de manera objetiva a las "Futuras Estrellas" (Star Performers en cuadrante 9), empleados de alto rendimiento clave (Workhorses en cuadrante 3) y enigmas que requieren intervención, mitigando el sesgo del Efecto Halo.',
-    sapMenuPath: 'Gestión Humana → Evaluación del Desempeño → Matriz Nine Box y Calibración',
+    finixMenuPath: 'Gestión Humana → Evaluación del Desempeño → Matriz Nine Box y Calibración',
     businessCaseEC: {
       companyName: 'Banco Pichincha Tech & Innovation Hub (Quito, Ecuador)',
-      scenario: 'Comité de calibración de 80 analistas y consultores SAP para definir quiénes pasan al Plan de Sucesión de Jefaturas.',
+      scenario: 'Comité de calibración de 80 analistas y consultores Finix ERP para definir quiénes pasan al Plan de Sucesión de Jefaturas.',
       calculationOrConfig: 'Cruce dimensional: Puntaje Desempeño = 92% (Alto). Evaluación Potencial = 88% (Alto). Ubicación: Cuadrante 9 "Talento Estrella". Plan: Asignación como mentor y postulante directo a vacante de Consultor Senior.',
     },
     stepByStepSteps: [
@@ -410,9 +410,9 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     submoduleId: 'vert-01',
     code: 'DOC-IND-016',
     title: 'Vertical Bananera: Trazabilidad de Campo a Empacadora y Exportación',
-    trackId: 'sap-vert-exp',
+    trackId: 'finix-vert-exp',
     functionalOverview: 'La vertical agroexportadora bananera en Ecuador requiere la trazabilidad integral de cada racimo cosechado, control de cuadrillas de corte y empaque, liquidación al productor respetando el Precio Mínimo de Sustentación fijado por el Ministerio de Agricultura, costeo de cajas con fletes marítimos internacionales y cumplimiento estricto de la certificación GlobalGAP.',
-    sapMenuPath: 'SAP Business One → Vertical Banano → Cosecha / Liquidación al Productor / Embarques',
+    finixMenuPath: 'Finix ERP → Vertical Banano → Cosecha / Liquidación al Productor / Embarques',
     businessCaseEC: {
       companyName: 'Exportadora Bananera del Guayas S.A. (Machala, Ecuador)',
       scenario: 'Cosecha semanal de 15,000 cajas de banano premium 22XU destinadas a la Unión Europea, con liquidación a productores independientes.',
@@ -445,7 +445,7 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
       {
         error: 'Liquidar cajas a productores por debajo del Precio Mínimo de Sustentación',
         consequence: 'Bloqueo de licencias de exportación por el Ministerio de Agricultura y multas severas.',
-        solution: 'Configurar en SAP B1 una regla de validación que impida grabar liquidaciones de compra inferiores a la tarifa legal.',
+        solution: 'Configurar en Finix ERP una regla de validación que impida grabar liquidaciones de compra inferiores a la tarifa legal.',
       },
     ],
     regulatoryContextEC: 'Ley para Estimular y Controlar la Producción y Comercialización del Banano y Normas GlobalGAP.',
@@ -455,9 +455,9 @@ export const SUBMODULE_GUIDES: Record<string, SubmoduleGuide> = {
     submoduleId: 'vert-02',
     code: 'DOC-IND-018',
     title: 'Vertical Camaronera: Piscinas como Centros de Costo y Biomasa',
-    trackId: 'sap-vert-exp',
+    trackId: 'finix-vert-exp',
     functionalOverview: 'La industria acuícola camaronera ecuatoriana estructura su costeo financiero definiendo cada piscina de engorde como un Centro de Costo analítico independiente. Se controla la siembra de larvas (millares), el factor de conversión alimenticia (FCA: kg de balanceado / kg de camarón ganado), la mortalidad biológica y el costo absorbido por libra cosechada.',
-    sapMenuPath: 'SAP Business One → Finanzas → Centros de Costo / Producción → Ciclo Biológico Piscina',
+    finixMenuPath: 'Finix ERP → Finanzas → Centros de Costo / Producción → Ciclo Biológico Piscina',
     businessCaseEC: {
       companyName: 'Acuícola Santa Priscila del Litoral (Isla Puná, Ecuador)',
       scenario: 'Ciclo biológico de 90 días en Piscina P-14 (8 hectáreas). Siembra: 800,000 larvas. Cosecha: 32,000 libras de camarón entero.',

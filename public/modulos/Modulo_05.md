@@ -1,4 +1,4 @@
-# MÓDULO 05: PLANIFICACIÓN DE NECESIDADES Y PRODUCCIÓN (MRP & LISTAS DE MATERIALES BOM) (SAP BUSINESS ONE 10.0)
+# MÓDULO 05: PLANIFICACIÓN DE NECESIDADES Y PRODUCCIÓN (MRP & LISTAS DE MATERIALES BOM) (FINIX ERP 10.0)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
 **Nivel:** Avanzado / Planificación Industrial, Manufactura y Contabilidad de Costos  
@@ -8,7 +8,7 @@
 
 ## Resumen Ejecutivo
 
-Este módulo profundiza en el núcleo industrial y de planificación de SAP Business One 10.0. A través de este entrenamiento, comprenderás no solo *cómo* estructurar listas de materiales (BOM) y ejecutar el motor de Planificación de Necesidades de Materiales (MRP), sino también el *porqué* estratégico detrás de cada proceso. Dominar estos conceptos te permitirá optimizar la cadena de suministro, garantizar un costeo exacto mediante las cuentas de Trabajo en Proceso (WIP) y asegurar que las decisiones de compra y fabricación se basen en la demanda real, evitando tanto el quiebre de stock como el sobreinventario.
+Este módulo profundiza en el núcleo industrial y de planificación de Finix ERP 10.0. A través de este entrenamiento, comprenderás no solo *cómo* estructurar listas de materiales (BOM) y ejecutar el motor de Planificación de Necesidades de Materiales (MRP), sino también el *porqué* estratégico detrás de cada proceso. Dominar estos conceptos te permitirá optimizar la cadena de suministro, garantizar un costeo exacto mediante las cuentas de Trabajo en Proceso (WIP) y asegurar que las decisiones de compra y fabricación se basen en la demanda real, evitando tanto el quiebre de stock como el sobreinventario.
 
 ---
 
@@ -28,7 +28,7 @@ Este módulo profundiza en el núcleo industrial y de planificación de SAP Busi
 
 Una Lista de Materiales (LdM o BOM, por sus siglas en inglés *Bill of Materials*) define la "receta" requerida para estructurar un producto terminado o paquete comercial. Comprender el tipo correcto de BOM es fundamental porque define el impacto contable y logístico en el sistema.
 
-### 1. Las 4 Clases de Listas de Materiales en SAP Business One
+### 1. Las 4 Clases de Listas de Materiales en Finix ERP
 
 | Tipo de BOM | ¿Requiere Orden de Producción? | ¿El Padre es Inventariable? | ¿Componentes Inventariables? | Caso de Uso Empresarial y Justificación Pedagógica |
 | :--- | :---: | :---: | :---: | :--- |
@@ -48,7 +48,7 @@ Los productos complejos rara vez se ensamblan a partir de materias primas puras.
 
 ### 3. Integración de Recursos (Mano de Obra y Maquinaria)
 
-La producción real consume tiempo y energía, no solo piezas. SAP incorpora **Recursos** para absorber estos costos indirectos y operativos:
+La producción real consume tiempo y energía, no solo piezas. Finix ERP incorpora **Recursos** para absorber estos costos indirectos y operativos:
 * **Recursos Máquina:** Costeados por hora máquina o ciclo (ej. Torno CNC).
 * **Recursos Mano de Obra:** Costeados por hora hombre.
 * **Rutas de Producción (Routing):** Permiten secuenciar la fabricación en etapas cronológicas (ej. *Fase 1: Corte -> Fase 2: Ensamble*), controlando el flujo y asignando dependencias lógicas para no iniciar el ensamble sin haber cortado el material.
@@ -93,7 +93,7 @@ La cuenta *Work In Process (WIP)* es el "puente" financiero temporal. Cuando un 
   * `DEBE:` Existencias Producto Terminado (Entra nuevo activo valorado)
   * `HABER:` Cuenta WIP (Se vacía el puente temporal)
 * **C. Cierre de Orden (Liquidación):**
-  * *Por qué es crítico:* La realidad nunca es perfecta. Si se planificó usar 10 tornillos pero se usaron 12, la cuenta WIP quedará con un saldo remanente. Al cerrar la orden, SAP lleva este remanente a cero, ajustando el costo del producto terminado (si sigue en bodega) o enviando la diferencia a una cuenta de **Desviación de Producción** en el Estado de Resultados.
+  * *Por qué es crítico:* La realidad nunca es perfecta. Si se planificó usar 10 tornillos pero se usaron 12, la cuenta WIP quedará con un saldo remanente. Al cerrar la orden, Finix ERP lleva este remanente a cero, ajustando el costo del producto terminado (si sigue en bodega) o enviando la diferencia a una cuenta de **Desviación de Producción** en el Estado de Resultados.
 
 ---
 
@@ -151,7 +151,7 @@ El MRP detecta una escasez de 15 unidades de un artículo comprado. Sin embargo,
 * *Explicación:* El MRP respeta las restricciones de los proveedores. Si el proveedor solo vende lotes de 100 (Múltiplo), el MRP recomendará escalar la solicitud para cumplir con la viabilidad comercial.
 
 **Pregunta 4 (Emisión Backflush)**
-Al intentar cambiar el método de emisión a "Backflush" para el Componente X dentro de una Orden de Producción, SAP bloquea la acción. ¿Cuál es el motivo funcional más probable?
+Al intentar cambiar el método de emisión a "Backflush" para el Componente X dentro de una Orden de Producción, Finix ERP bloquea la acción. ¿Cuál es el motivo funcional más probable?
 * A) La orden de producción ya está en estado "Liberado".
 * B) El Componente X se gestiona por Números de Serie o Lotes. **[CORRECTA]**
 * C) No hay suficiente stock en el almacén central.

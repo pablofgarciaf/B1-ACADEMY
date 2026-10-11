@@ -23,7 +23,7 @@ import { Footer } from '@/components/site/Footer';
 
 export default function SubmoduleLMSViewer({ params }: { params: Promise<{ moduloId: string, submoduleId: string }> }) {
   const resolvedParams = use(params);
-  const moduloId = resolvedParams?.moduloId || 'sap-b1-logistics';
+  const moduloId = resolvedParams?.moduloId || 'finix-erp-logistics';
   const submoduleId = resolvedParams?.submoduleId || 'b1-01';
 
   const [activeLessonId, setActiveLessonId] = useState('t0');
@@ -64,7 +64,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
   const simulation = getModuleSimulation(activeSubmodule.id, track.code);
   const relatedManuals = ALL_MANUALS.filter(m => simulation.relatedManualNumbers.includes(m.number));
 
-  // Slides reales de SAP para la "Clase Real"
+  // Slides reales de Finix ERP para la "Clase Real"
   const realSystemSlides = getSystemSlidesForManuals(simulation.relatedManualNumbers, 20);
   const hasRealSlides = realSystemSlides.length > 0;
 
@@ -74,7 +74,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
     title: activeSubmodule.title,
     trackId: track.id,
     functionalOverview: activeSubmodule.description,
-    sapMenuPath: `Módulos → ${track.shortTitle} → ${activeSubmodule.title.split(':')[0]}`,
+    finixMenuPath: `Módulos → ${track.shortTitle} → ${activeSubmodule.title.split(':')[0]}`,
     businessCaseEC: {
       companyName: 'Distribuidora & Logística Andina S.A.S. (Guayaquil, Ecuador)',
       scenario: `Operación técnica y configuración de ${activeSubmodule.title} bajo estándares corporativos y marco normativo ecuatoriano.`,
@@ -121,7 +121,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
   const isCurrentCompleted = !!completedLessons[activeLessonId];
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       {showToast && (
@@ -138,7 +138,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
         {/* BREADCRUMB & HEADER */}
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
-            <Link href={`/capacitacion/${track.id}`} className="text-sap-blue hover:text-sky-600 flex items-center gap-1 transition-colors">
+            <Link href={`/capacitacion/${track.id}`} className="text-finix-blue hover:text-sky-600 flex items-center gap-1 transition-colors">
               <ArrowLeft className="w-3.5 h-3.5" /> Volver al Track
             </Link>
             <span className="text-slate-400">/</span>
@@ -164,13 +164,13 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
 
         {/* Barra de Filtros / Pestañas Didácticas */}
         <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-slate-200 dark:border-white/10 select-none">
-            <button onClick={() => setActiveViewTab('all')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'all' ? 'bg-sap-blue text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
+            <button onClick={() => setActiveViewTab('all')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'all' ? 'bg-finix-blue text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
               <BookOpen className="w-3.5 h-3.5" /> Aula Completa (Video + Texto)
             </button>
-            <button onClick={() => setActiveViewTab('screen')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'screen' ? 'bg-gradient-to-r from-sap-blue to-sky-600 text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
+            <button onClick={() => setActiveViewTab('screen')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'screen' ? 'bg-gradient-to-r from-finix-blue to-sky-600 text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
               <Laptop className="w-3.5 h-3.5" /> Pantalla ERP
             </button>
-            <button onClick={() => setActiveViewTab('guide')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'guide' ? 'bg-sap-blue text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
+            <button onClick={() => setActiveViewTab('guide')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'guide' ? 'bg-finix-blue text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
               <FileText className="w-3.5 h-3.5" /> Guía Técnica
             </button>
             <button onClick={() => setActiveViewTab('quickcheck')} className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${activeViewTab === 'quickcheck' ? 'bg-sky-500 text-white shadow-md' : 'bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-300'}`}>
@@ -190,7 +190,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
                 <VideoPlayer
                   title={`${activeSubmodule.title}: ${currentLesson.title}`}
                   durationMin={currentLesson.durationMin}
-                  systemType={`SAP Business One v10.0 • ${track.shortTitle}`}
+                  systemType={`Finix ERP v10.0 • ${track.shortTitle}`}
                   transactionCode={simulation.transactionCode}
                   onComplete={handleLessonComplete}
                 />
@@ -198,7 +198,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
                 {/* Texto Explicativo / Transcripción de la Lección */}
                 <div className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-5 shadow-sm">
                   <div className="flex items-center gap-2 pb-3 border-b border-slate-100 dark:border-white/5">
-                    <span className="w-2.5 h-2.5 rounded-full bg-sap-blue animate-pulse" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-finix-blue animate-pulse" />
                     <h3 className="font-bold text-base text-slate-900 dark:text-white">
                       Texto y Fundamento Teórico de la Clase
                     </h3>
@@ -209,7 +209,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
                   
                   {detailedGuide.functionalOverview && (
                     <div className="pt-3 border-t border-slate-100 dark:border-white/5 space-y-2">
-                      <h4 className="text-xs font-mono font-bold text-sap-blue dark:text-sky-400 uppercase">
+                      <h4 className="text-xs font-mono font-bold text-finix-blue dark:text-sky-400 uppercase">
                         CONCEPTOS CLAVE DE LA SESIÓN
                       </h4>
                       <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -221,7 +221,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
               </div>
             )}
 
-            {/* PESTAÑA 2: PANTALLA ERP — Clase Real con slides SAP */}
+            {/* PESTAÑA 2: PANTALLA ERP — Clase Real con slides Finix ERP */}
             {activeViewTab === 'screen' && (
               hasRealSlides ? (
                 <ManualSlidesViewer

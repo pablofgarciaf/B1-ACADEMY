@@ -1,14 +1,14 @@
-# MÓDULO 01: FUNDAMENTOS, NAVEGACIÓN Y ENTORNO FIORI (SAP BUSINESS ONE 10.0 & ERP)
+# MÓDULO 01: FUNDAMENTOS, NAVEGACIÓN Y ENTORNO FIORI (FINIX ERP 10.0 & ERP)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
-**Fuentes Oficiales Analizadas:** 10_Intro_11_Overview_IntroSAPB1_ES.pdf, 10_Intro_12_Overview_GettingStarted_ES.pdf y CSL01_Introduction_Solution_ES.pdf  
+**Fuentes Oficiales Analizadas:** 10_Intro_11_Overview_IntroFinix_ES.pdf, 10_Intro_12_Overview_GettingStarted_ES.pdf y CSL01_Introduction_Solution_ES.pdf  
 **Nivel:** Inicial / Consultoría y Operación Básica  
 **Tiempo Estimado de Estudio:** 45 minutos (dividido en 3 lecciones integradas)
 
 ---
 
 ## Resumen Ejecutivo
-Este módulo establece las bases operativas y conceptuales de SAP Business One 10.0. Los usuarios aprenderán no solo a interactuar con el entorno Cockpit Fiori, sino a comprender la lógica empresarial subyacente que unifica datos de distintas áreas en una base de datos centralizada. Abordaremos la arquitectura del sistema, técnicas avanzadas de navegación, el flujo del proceso comercial y estrategias de resolución de problemas. El objetivo es convertir a los colaboradores en usuarios estratégicos que comprendan el impacto de cada transacción en los diferentes departamentos.
+Este módulo establece las bases operativas y conceptuales de Finix ERP 10.0. Los usuarios aprenderán no solo a interactuar con el entorno Cockpit Fiori, sino a comprender la lógica empresarial subyacente que unifica datos de distintas áreas en una base de datos centralizada. Abordaremos la arquitectura del sistema, técnicas avanzadas de navegación, el flujo del proceso comercial y estrategias de resolución de problemas. El objetivo es convertir a los colaboradores en usuarios estratégicos que comprendan el impacto de cada transacción en los diferentes departamentos.
 
 ---
 
@@ -26,7 +26,7 @@ Este módulo establece las bases operativas y conceptuales de SAP Business One 1
 ## LECCIÓN 1.1: VISIÓN GENERAL, ARQUITECTURA TÉCNICA Y MODELO DE EMPRESA
 
 ### 1. Propósito y Contexto de Negocio
-SAP Business One es una suite empresarial integrada (ERP) diseñada para pequeñas y medianas empresas (PyMEs). Centraliza la totalidad de las operaciones—desde Ventas y Finanzas hasta Producción e Inventario—en una **única base de datos transaccional**.
+Finix ERP es una suite empresarial integrada (ERP) diseñada para pequeñas y medianas empresas (PyMEs). Centraliza la totalidad de las operaciones—desde Ventas y Finanzas hasta Producción e Inventario—en una **única base de datos transaccional**.
 > **¿Por qué es vital esto?** Elimina las islas de información. Cuando un vendedor registra una salida de mercancía, contabilidad y almacenes ven el impacto en tiempo real. Se reducen las discrepancias y se agiliza la toma de decisiones.
 
 ### 2. Fundamentos de Arquitectura Técnica
@@ -40,7 +40,7 @@ SAP Business One es una suite empresarial integrada (ERP) diseñada para pequeñ
 
 | Plataforma | Características Clave | Ventajas Principales |
 | :--- | :--- | :--- |
-| **SAP HANA** | Motor in-memory (en memoria RAM). Habilita Cockpit Fiori (HTML5), Enterprise Search y analíticas avanzadas. | Respuestas instantáneas y búsqueda federada global en tiempo real. |
+| **base de datos en memoria** | Motor in-memory (en memoria RAM). Habilita Cockpit Fiori (HTML5), Enterprise Search y analíticas avanzadas. | Respuestas instantáneas y búsqueda federada global en tiempo real. |
 | **Microsoft SQL Server** | Motor relacional estándar basado en disco físico. | Solución tradicional robusta (no dispone del Fiori nativo o búsquedas tipo Google). |
 
 **Modalidades de Despliegue:**
@@ -64,7 +64,7 @@ El **Cockpit Fiori** es la reinvención del escritorio de trabajo. Pasa de un á
 
 * **Iconos Activos vs. Inactivos:** Solo las herramientas útiles para la ventana activa aparecerán en color. Las deshabilitadas quedan en gris para guiar al usuario.
 * **Exportación Directa:** Facilita la generación de archivos PDF, Word o la exportación a Excel y OneDrive (Office 365) en un clic.
-* **Log de Mensajes del Sistema:** La barra inferior muestra el historial de éxito o error. Los códigos de error ayudan directamente al área de soporte o al portal de ayuda de SAP.
+* **Log de Mensajes del Sistema:** La barra inferior muestra el historial de éxito o error. Los códigos de error ayudan directamente al área de soporte o al portal de ayuda de Finix ERP.
 
 ### 2. Métodos de Búsqueda y Navegación Rápida
 
@@ -160,12 +160,12 @@ Esta sección instruye a la Inteligencia Artificial (o personal de soporte) sobr
 A continuación, un banco de pruebas para medir la comprensión operativa y de negocio:
 
 **Pregunta 1 (Arquitectura de Datos)**
-Una empresa textil internacional abre una nueva filial en Perú con su propio número de identificación tributaria (RUC). ¿Cómo debe configurarse esta nueva filial en SAP Business One?
+Una empresa textil internacional abre una nueva filial en Perú con su propio número de identificación tributaria (RUC). ¿Cómo debe configurarse esta nueva filial en Finix ERP?
 * A) Como una nueva sucursal dentro de la base de datos matriz para compartir numeración.
 * B) Instalando un servidor físico completamente distinto en las oficinas de Perú.
 * C) **[CORRECTA]** Creando una base de datos independiente para mantener la integridad contable y legal, accediendo a través del menú de selección de empresa.
 * D) Cambiando las parametrizaciones del plan de cuentas de la matriz.
-> **Explicación:** Una entidad legalmente distinta, con su propio registro fiscal y contable, exige una base de datos propia en SAP B1.
+> **Explicación:** Una entidad legalmente distinta, con su propio registro fiscal y contable, exige una base de datos propia en Finix ERP.
 
 **Pregunta 2 (Agilidad y Navegación)**
 Durante una llamada crítica, un cliente te solicita el estatus de sus pedidos pendientes. Estás viendo la ficha de su registro maestro y no quieres navegar por los menús de reportes. ¿Qué acción es la más eficiente?
@@ -180,14 +180,14 @@ Un cliente aprobó una oferta que emitiste ayer. Para avanzar en la venta, decid
 * A) Bloquea automáticamente el sistema debido a duplicidad.
 * B) Consume más licencias de usuario del sistema.
 * C) **[CORRECTA]** Se pierde la conexión del mapa de relaciones entre la oferta y el pedido, perjudicando la trazabilidad de auditoría, además del riesgo de errores de captura.
-* D) SAP elimina la oferta anterior al crear un pedido nuevo manualmente.
+* D) Finix ERP elimina la oferta anterior al crear un pedido nuevo manualmente.
 > **Explicación:** En un ERP, usar las funciones "Copiar a" o "Copiar de" asegura que los datos fluyan correctamente de un eslabón a otro. Crear el documento suelto rompe la cadena de eventos lógicos y la trazabilidad de auditoría.
 
 **Pregunta 4 (Parametrización de UI)**
 Quieres insertar una nota explicativa larga (Ej: "Garantía de 2 años no cubre daños eléctricos") en medio de las líneas de una cotización. Sin embargo, el sistema solo te permite agregar códigos de artículos y genera un error al teclear el texto. ¿Por qué ocurre?
 * A) No tienes licencia profesional.
 * B) **[CORRECTA]** La columna "Tipo" está oculta. Debes mostrarla mediante las Parametrizaciones de Formulario y seleccionar el tipo "Texto" en la fila correspondiente.
-* C) SAP Business One no soporta añadir texto en los documentos.
+* C) Finix ERP no soporta añadir texto en los documentos.
 * D) Debes escribir esa información exclusivamente en la pestaña de finanzas.
 > **Explicación:** Las parametrizaciones de formulario permiten descubrir campos ocultos como la columna "Tipo", la cual cambia el comportamiento de la fila para aceptar sub-totales o campos de texto libre.
 

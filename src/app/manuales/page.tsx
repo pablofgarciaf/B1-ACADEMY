@@ -41,17 +41,17 @@ export default function ManualesLibraryPage() {
   const [examQuestionIdx, setExamQuestionIdx] = useState(0);
   const [examScore, setExamScore] = useState(0);
   const [examFinished, setExamFinished] = useState(false);
-  const [studentName, setStudentName] = useState('Estudiante SAP');
+  const [studentName, setStudentName] = useState('Estudiante Finix ERP');
   const [examUserAnswers, setExamUserAnswers] = useState<Record<number, number>>({});
 
   // Cargar manuales y categorías certificadas desde localStorage
   useEffect(() => {
     try {
-      const savedManuals = localStorage.getItem('sap_completed_manuals');
+      const savedManuals = localStorage.getItem('finix_completed_manuals');
       if (savedManuals) {
         setCompletedManuals(JSON.parse(savedManuals));
       }
-      const savedCerts = localStorage.getItem('sap_certified_categories');
+      const savedCerts = localStorage.getItem('finix_certified_categories');
       if (savedCerts) {
         setCertifiedCategories(JSON.parse(savedCerts));
       }
@@ -140,11 +140,11 @@ export default function ManualesLibraryPage() {
       if (nextScore >= examModalCategory.passingScore) {
         // Guardar certificado
         try {
-          const saved = localStorage.getItem('sap_certified_categories');
+          const saved = localStorage.getItem('finix_certified_categories');
           const list: string[] = saved ? JSON.parse(saved) : [];
           if (!list.includes(examModalCategory.categoryName)) {
             list.push(examModalCategory.categoryName);
-            localStorage.setItem('sap_certified_categories', JSON.stringify(list));
+            localStorage.setItem('finix_certified_categories', JSON.stringify(list));
             setCertifiedCategories(list);
           }
         } catch (e) {
@@ -186,17 +186,17 @@ export default function ManualesLibraryPage() {
   }, [activeCategory, groupedResults]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10 w-full">
         {/* Encabezado Principal */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-sap-blue/30 bg-sap-blue/5 text-xs font-bold text-sap-blue">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
             <Sparkles className="w-3.5 h-3.5" /> Repositorio Documental Oficial • B1 Academy Ecuador
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Atlas técnico de manuales SAP Business One
+            Atlas técnico de manuales Finix ERP
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             <strong>{ALL_MANUALS.length} manuales técnicos</strong> organizados en
@@ -216,7 +216,7 @@ export default function ManualesLibraryPage() {
                 placeholder="Buscar por título, palabra clave o número..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue"
               />
             </div>
 
@@ -226,7 +226,7 @@ export default function ManualesLibraryPage() {
                 aria-label="Filtrar manuales por categoría"
                 value={selectedCategory}
                 onChange={(e) => handleCategorySelectChange(e.target.value)}
-                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue cursor-pointer"
+                className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue cursor-pointer"
               >
                 <option value="ALL" className="dark:bg-slate-900">
                   Todas las Categorías
@@ -249,16 +249,16 @@ export default function ManualesLibraryPage() {
 
         {/* ZONA DE CATEGORÍA SELECCIONADA (SUBE AL INICIO AL ESCOGERLA) */}
         {activeGroup && (
-          <div id="seccion-categoria-activa" className="scroll-mt-24 space-y-6rounded-3xl border border-sap-blue/40 bg-sap-blue/[0.03] p-6 sm:p-8 shadow-xl transition-all">
+          <div id="seccion-categoria-activa" className="scroll-mt-24 space-y-6rounded-3xl border border-finix-blue/40 bg-finix-blue/[0.03] p-6 sm:p-8 shadow-xl transition-all">
             {/* Header de la Categoría Activa */}
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-5 border-b border-sap-blue/20">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-5 border-b border-finix-blue/20">
               <div className="flex items-center gap-4">
                 <span className="text-4xl p-3 rounded-2xl bg-white dark:bg-white/10 shadow-sm border border-slate-200 dark:border-white/10">
                   {activeGroup[1][0]?.categoryIcon || '📁'}
                 </span>
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-sap-blue bg-sap-blue/15 px-2.5 py-0.5 rounded-full">
+                    <span className="text-[10px] uppercase tracking-wider font-extrabold text-finix-blue bg-finix-blue/15 px-2.5 py-0.5 rounded-full">
                       Módulo Seleccionado
                     </span>
                     <span className="text-xs text-slate-500 font-mono">
@@ -301,7 +301,7 @@ export default function ManualesLibraryPage() {
                 return (
                   <div
                     key={man.id}
-                    className="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0c1322] hover:border-sap-blue/50 transition-all flex flex-col justify-between space-y-3 group shadow-md"
+                    className="p-5 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#0c1322] hover:border-finix-blue/50 transition-all flex flex-col justify-between space-y-3 group shadow-md"
                   >
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
@@ -322,7 +322,7 @@ export default function ManualesLibraryPage() {
                         )}
                       </div>
 
-                      <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors leading-tight">
+                      <h3 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-finix-blue transition-colors leading-tight">
                         {man.title}
                       </h3>
 
@@ -334,14 +334,14 @@ export default function ManualesLibraryPage() {
                     <div className="pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between gap-2">
                       <button
                         onClick={() => setActiveModalManual(man)}
-                        className="text-[11px] font-bold text-slate-600 dark:text-slate-300 hover:text-sap-blue transition-colors cursor-pointer flex items-center gap-1"
+                        className="text-[11px] font-bold text-slate-600 dark:text-slate-300 hover:text-finix-blue transition-colors cursor-pointer flex items-center gap-1"
                       >
                         <FileText className="w-3.5 h-3.5" /> Ficha Técnica
                       </button>
 
                       <Link
                         href={`/manuales/${encodeURIComponent(man.id)}`}
-                        className="inline-flex items-center gap-1 text-[11px] font-bold text-white bg-sap-blue hover:bg-sky-600 transition-colors px-3 py-1.5 rounded-lg shadow-sm active:scale-95"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-white bg-finix-blue hover:bg-sky-600 transition-colors px-3 py-1.5 rounded-lg shadow-sm active:scale-95"
                       >
                         Abrir Clase <ArrowRight className="w-3 h-3" />
                       </Link>
@@ -357,7 +357,7 @@ export default function ManualesLibraryPage() {
         <div className="space-y-4">
           {activeGroup && (
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 pt-4 flex items-center gap-2">
-              <FolderOpen className="w-4 h-4 text-sap-blue" />
+              <FolderOpen className="w-4 h-4 text-finix-blue" />
               Explorar Otras Categorías ({otherGroups.length})
             </h3>
           )}
@@ -376,7 +376,7 @@ export default function ManualesLibraryPage() {
                 <button
                   key={categoryName}
                   onClick={() => toggleCategory(categoryName)}
-                  className={`w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-sap-blue hover:shadow-lg hover:scale-[1.01] transition-all cursor-pointer group text-left ${isCenteredSingle ? 'lg:col-start-2' : ''
+                  className={`w-full flex items-center justify-between p-4 sm:p-5 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 hover:border-finix-blue hover:shadow-lg hover:scale-[1.01] transition-all cursor-pointer group text-left ${isCenteredSingle ? 'lg:col-start-2' : ''
                     }`}
                 >
                   <div className="flex items-center gap-3.5">
@@ -385,7 +385,7 @@ export default function ManualesLibraryPage() {
                     </span>
                     <div>
                       <div className="flex items-center gap-1.5">
-                        <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors line-clamp-1">
+                        <h3 className="text-sm font-bold text-slate-900 dark:text-white group-hover:text-finix-blue transition-colors line-clamp-1">
                           {categoryName}
                         </h3>
                         {isCertified && (
@@ -400,7 +400,7 @@ export default function ManualesLibraryPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-1 text-slate-400 group-hover:text-sap-blue transition-colors">
+                  <div className="flex items-center gap-1 text-slate-400 group-hover:text-finix-blue transition-colors">
                     <span className="text-[11px] font-medium hidden sm:inline">Ver</span>
                     <ChevronDown className="w-4 h-4" />
                   </div>
@@ -417,7 +417,7 @@ export default function ManualesLibraryPage() {
             <p className="text-sm text-slate-500">No se encontraron manuales con ese criterio de búsqueda.</p>
             <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('ALL'); setActiveCategory(null); }}
-              className="text-xs font-bold text-sap-blue hover:underline cursor-pointer"
+              className="text-xs font-bold text-finix-blue hover:underline cursor-pointer"
             >
               Limpiar filtros
             </button>
@@ -452,7 +452,7 @@ export default function ManualesLibraryPage() {
             {!examFinished ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold uppercase tracking-wider text-sap-blue">
+                  <span className="text-xs font-bold uppercase tracking-wider text-finix-blue">
                     Pregunta {examQuestionIdx + 1} de {examModalCategory.questions.length}
                   </span>
                   <span className="text-xs font-mono text-slate-400">
@@ -471,7 +471,7 @@ export default function ManualesLibraryPage() {
                     <button
                       key={i}
                       onClick={() => handleExamAnswer(i)}
-                      className="p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] hover:border-sap-blue hover:bg-sap-blue/5 dark:hover:bg-white/5 text-left text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium transition-all cursor-pointer active:scale-[0.99] flex items-start gap-3"
+                      className="p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] hover:border-finix-blue hover:bg-finix-blue/5 dark:hover:bg-white/5 text-left text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium transition-all cursor-pointer active:scale-[0.99] flex items-start gap-3"
                     >
                       <span className="font-mono font-bold text-slate-400 shrink-0 mt-0.5">
                         {String.fromCharCode(65 + i)}.
@@ -543,7 +543,7 @@ export default function ManualesLibraryPage() {
                               {q.explanation}
                             </div>
                             {q.recommendedManualTitle && (
-                              <div className="text-sap-blue font-semibold text-[11px] pt-1">
+                              <div className="text-finix-blue font-semibold text-[11px] pt-1">
                                 💡 Lección recomendada: {q.recommendedManualTitle}
                               </div>
                             )}
@@ -583,7 +583,7 @@ export default function ManualesLibraryPage() {
           <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-white/10 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-4">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono font-bold bg-sap-blue/10 text-sap-blue px-3 py-1 rounded-xl">
+                <span className="text-xs font-mono font-bold bg-finix-blue/10 text-finix-blue px-3 py-1 rounded-xl">
                   MANUAL #{activeModalManual.number < 10 ? `0${activeModalManual.number}` : activeModalManual.number}
                 </span>
                 <span className="text-lg">{activeModalManual.categoryIcon}</span>
@@ -624,7 +624,7 @@ export default function ManualesLibraryPage() {
             {/* Especificaciones Técnicas */}
             <div className="space-y-3">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                <Layers className="w-4 h-4 text-sap-blue" />
+                <Layers className="w-4 h-4 text-finix-blue" />
                 Información del Recurso
               </h4>
 
@@ -632,7 +632,7 @@ export default function ManualesLibraryPage() {
                 <div className="p-3.5 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.01] space-y-1">
                   <span className="text-slate-400 block">Entorno / Sistema:</span>
                   <span className="font-bold text-slate-800 dark:text-slate-200">
-                    SAP Business One v10.0 (HANA/SQL)
+                    Finix ERP v10.0 (HANA/SQL)
                   </span>
                 </div>
 
@@ -658,7 +658,7 @@ export default function ManualesLibraryPage() {
 
               <Link
                 href={`/manuales/${encodeURIComponent(activeModalManual.id)}`}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sap-blue/20 flex items-center justify-center gap-2 active:scale-95"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-finix-blue/20 flex items-center justify-center gap-2 active:scale-95"
               >
                 <Laptop className="w-4 h-4" /> Ir a la Clase Práctica
               </Link>

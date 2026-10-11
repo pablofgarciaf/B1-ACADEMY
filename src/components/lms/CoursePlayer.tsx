@@ -61,7 +61,7 @@ export function CoursePlayer({
       <div className="max-w-6xl w-full mx-auto px-4 py-6 flex-1 flex flex-col">
         {/* Header Info */}
         <div className="mb-6">
-          <p className="text-sm font-semibold text-sap-blue dark:text-sky-400 mb-1">{moduleTitle}</p>
+          <p className="text-sm font-semibold text-finix-blue dark:text-sky-400 mb-1">{moduleTitle}</p>
           <h1 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white">
             {currentLessonIndex + 1}. {lessonTitle}
           </h1>
@@ -73,7 +73,7 @@ export function CoursePlayer({
             onClick={() => setActiveTab('contenido')}
             className={`flex items-center px-4 py-3 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
               activeTab === 'contenido'
-                ? 'border-sap-blue text-sap-blue dark:border-sky-400 dark:text-sky-400'
+                ? 'border-finix-blue text-finix-blue dark:border-sky-400 dark:text-sky-400'
                 : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -84,7 +84,7 @@ export function CoursePlayer({
             onClick={() => setActiveTab('practica')}
             className={`flex items-center px-4 py-3 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
               activeTab === 'practica'
-                ? 'border-sap-blue text-sap-blue dark:border-sky-400 dark:text-sky-400'
+                ? 'border-finix-blue text-finix-blue dark:border-sky-400 dark:text-sky-400'
                 : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -95,7 +95,7 @@ export function CoursePlayer({
             onClick={() => setActiveTab('quiz')}
             className={`flex items-center px-4 py-3 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
               activeTab === 'quiz'
-                ? 'border-sap-blue text-sap-blue dark:border-sky-400 dark:text-sky-400'
+                ? 'border-finix-blue text-finix-blue dark:border-sky-400 dark:text-sky-400'
                 : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -106,7 +106,7 @@ export function CoursePlayer({
             onClick={() => setActiveTab('recursos')}
             className={`flex items-center px-4 py-3 border-b-2 font-medium text-sm whitespace-nowrap transition-colors ${
               activeTab === 'recursos'
-                ? 'border-sap-blue text-sap-blue dark:border-sky-400 dark:text-sky-400'
+                ? 'border-finix-blue text-finix-blue dark:border-sky-400 dark:text-sky-400'
                 : 'border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300 dark:text-slate-400 dark:hover:text-slate-200'
             }`}
           >
@@ -121,7 +121,7 @@ export function CoursePlayer({
             <div className="w-full">
               <SlideViewer 
                 slides={[
-                  { id: '1', title: 'Fundamentos de SAP B1', content: markdownContent.substring(0, 500) + '...' },
+                  { id: '1', title: 'Fundamentos de Finix ERP', content: markdownContent.substring(0, 500) + '...' },
                   { id: '2', title: 'Conceptos Avanzados', content: 'Aquí irá la continuación del contenido técnico desglosado.' }
                 ]} 
               />
@@ -149,14 +149,14 @@ export function CoursePlayer({
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4">Recursos de la lección</h3>
               <div className="flex items-start p-4 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer">
-                <FileText className="w-6 h-6 text-sap-blue dark:text-sky-400 mr-3 mt-0.5" />
+                <FileText className="w-6 h-6 text-finix-blue dark:text-sky-400 mr-3 mt-0.5" />
                 <div>
                   <h4 className="font-medium text-slate-900 dark:text-white">Manual del Estudiante</h4>
                   <p className="text-sm text-slate-500 dark:text-slate-400">PDF Document - 2.4 MB</p>
                 </div>
               </div>
               <div className="flex items-start p-4 border border-slate-200 dark:border-white/10 rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 transition-colors cursor-pointer">
-                <BookOpen className="w-6 h-6 text-sap-blue dark:text-sky-400 mr-3 mt-0.5" />
+                <BookOpen className="w-6 h-6 text-finix-blue dark:text-sky-400 mr-3 mt-0.5" />
                 <div>
                   <h4 className="font-medium text-slate-900 dark:text-white">Guía de Ejercicios Prácticos</h4>
                   <p className="text-sm text-slate-500 dark:text-slate-400">PDF Document - 1.1 MB</p>

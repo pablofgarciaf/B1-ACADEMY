@@ -9,7 +9,7 @@ import { getModuleById } from '@/lib/curriculum-data';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Verificación de Certificado SAP B1 | B1 Academy' },
+  title: { absolute: 'Verificación de Certificado Finix ERP | B1 Academy' },
   description: 'Comprueba la autenticidad de un certificado de competencia emitido por B1 Academy: titular, competencia acreditada, fecha de emisión y estado.',
   robots: { index: false, follow: false },
 };
@@ -91,7 +91,7 @@ export default async function VerificarCertificadoPage({ params }: { params: Pro
             <div className="rounded-2xl bg-slate-50 dark:bg-gray-800/40 border border-slate-200 dark:border-gray-700 p-4 text-xs text-slate-600 dark:text-gray-300 flex gap-2">
               <Award className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" aria-hidden="true" />
               <p>
-                Para obtenerlo, el titular completó todas las clases del módulo, aprobó cada práctica en el Simulador SAP B1
+                Para obtenerlo, el titular completó todas las clases del módulo, aprobó cada práctica en el Simulador Finix ERP
                 (calificada en el servidor) y superó la evaluación con Tutor IA.
               </p>
             </div>
@@ -107,8 +107,7 @@ export default async function VerificarCertificadoPage({ params }: { params: Pro
         )}
 
         <p className="text-[11px] text-slate-500 dark:text-gray-500 leading-relaxed">
-          B1 Academy es una institución de formación independiente. Sus certificados acreditan competencias prácticas
-          en SAP Business One y no constituyen una certificación oficial de SAP SE.
+          Los certificados de B1 Academy acreditan competencias prácticas en Finix ERP, contabilidad y normativa ecuatoriana.
         </p>
       </main>
       <Footer />

@@ -1,3 +1,3 @@
 'use client';
 
-export { default, FiniMascota, SapiMascota, FeniMascota, FeNiCara, FiniCara } from './FeNiMascota';
+export { default, FiniMascota, FeniMascota, FeNiCara, FiniCara } from './FeNiMascota';

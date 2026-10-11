@@ -16,7 +16,7 @@ export default function TalentoCertificadoPage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
@@ -29,7 +29,7 @@ export default function TalentoCertificadoPage() {
             Directorio de Graduados Certificados y Job-Ready
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-base">
-            Accede al perfil técnico auditado de consultores listos para incorporarse a proyectos SAP Business One y Nómina HCM en Ecuador.
+            Accede al perfil técnico auditado de consultores listos para incorporarse a proyectos Finix ERP y Nómina HCM en Ecuador.
           </p>
         </div>
 
@@ -65,10 +65,10 @@ export default function TalentoCertificadoPage() {
                   <p className="text-[10px] text-slate-500">Promedio</p>
                 </div>
                 <div>
-                  <p className="text-lg font-bold text-sap-blue font-display">
+                  <p className="text-lg font-bold text-finix-blue font-display">
                     {cand.sandboxHoursUsed}h
                   </p>
-                  <p className="text-[10px] text-slate-500">Sandbox SAP</p>
+                  <p className="text-[10px] text-slate-500">Sandbox Finix ERP</p>
                 </div>
                 <div>
                   <p className="text-lg font-bold text-amber-500 font-display">
@@ -82,8 +82,8 @@ export default function TalentoCertificadoPage() {
                 <p className="text-xs font-semibold text-slate-700 dark:text-slate-300">Especialidades Auditadas:</p>
                 <div className="flex gap-2">
                   {cand.specialties.map((s) => (
-                    <span key={s} className="text-xs font-mono px-2 py-0.5 rounded bg-sap-blue/10 text-sap-blue font-bold">
-                      SAP {s}
+                    <span key={s} className="text-xs font-mono px-2 py-0.5 rounded bg-finix-blue/10 text-finix-blue font-bold">
+                      Finix ERP {s}
                     </span>
                   ))}
                 </div>
@@ -91,7 +91,7 @@ export default function TalentoCertificadoPage() {
 
               <div className="pt-3 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
                 <span className="text-xs text-slate-500">Disponible para contratación inmediata</span>
-                <button className="px-4 py-1.5 rounded-xl bg-sap-blue text-white text-xs font-bold hover:bg-sky-600 transition-all active:scale-95 cursor-pointer">
+                <button className="px-4 py-1.5 rounded-xl bg-finix-blue text-white text-xs font-bold hover:bg-sky-600 transition-all active:scale-95 cursor-pointer">
                   Contactar Consultor
                 </button>
               </div>

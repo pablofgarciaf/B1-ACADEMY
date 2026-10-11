@@ -18,7 +18,7 @@ Audiencia Objetivo: Contadores de Cuentas por Pagar, Jefes de Finanzas, Administ
 
   "antigravity_schema_version": "2.0.0",
 
-  "unit_id": "SAP_B1_PURCH_083",
+  "unit_id": "Finix_ERP_PURCH_083",
 
   "unit_title": "Compra de Servicios y Transacciones Periódicas",
 

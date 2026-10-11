@@ -106,7 +106,7 @@ export default function StudentDashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#080d1a]">
         <div className="flex flex-col items-center gap-3 text-slate-500">
-          <div className="w-10 h-10 rounded-full border-2 border-sap-blue border-t-transparent animate-spin" />
+          <div className="w-10 h-10 rounded-full border-2 border-finix-blue border-t-transparent animate-spin" />
           <p className="text-xs font-mono">Cargando expediente académico...</p>
         </div>
       </div>
@@ -169,7 +169,7 @@ export default function StudentDashboardPage() {
         {/* HEADER BRANDING */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/10">
           <div>
-            <div className="flex items-center gap-2 text-xs font-mono text-sap-blue dark:text-sky-400 font-bold mb-1 uppercase tracking-wider">
+            <div className="flex items-center gap-2 text-xs font-mono text-finix-blue dark:text-sky-400 font-bold mb-1 uppercase tracking-wider">
               <span>B1 ACADEMY</span>
               <span>•</span>
               <span>EXPEDIENTE ACADÉMICO Y ACREDITACIONES</span>
@@ -182,7 +182,7 @@ export default function StudentDashboardPage() {
           <div className="flex items-center gap-3">
             <Link
               href="/dashboard/calificaciones"
-              className="px-4 py-2.5 rounded-xl text-xs font-bold bg-sap-blue text-white shadow-md hover:bg-sky-600 flex items-center gap-2 transition-all cursor-pointer active:scale-95"
+              className="px-4 py-2.5 rounded-xl text-xs font-bold bg-finix-blue text-white shadow-md hover:bg-sky-600 flex items-center gap-2 transition-all cursor-pointer active:scale-95"
             >
               <Award className="w-4 h-4" /> Boletín de Calificaciones
             </Link>
@@ -214,10 +214,10 @@ export default function StudentDashboardPage() {
                       width={96}
                       height={96}
                       unoptimized
-                      className="w-24 h-24 rounded-full object-cover border-4 border-sap-blue/30 shadow-md"
+                      className="w-24 h-24 rounded-full object-cover border-4 border-finix-blue/30 shadow-md"
                     />
                   ) : (
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-sap-blue via-sky-600 to-amber-500 text-white flex items-center justify-center font-bold text-2xl border-4 border-sap-blue/30 shadow-md">
+                    <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-finix-blue via-sky-600 to-amber-500 text-white flex items-center justify-center font-bold text-2xl border-4 border-finix-blue/30 shadow-md">
                       {initials}
                     </div>
                   )}
@@ -252,7 +252,7 @@ export default function StudentDashboardPage() {
 
           {/* CARD 2: HERO BANNER DE PROGRESO */}
           <div className="md:col-span-2 bg-gradient-to-br from-slate-900 via-[#0b1326] to-slate-950 text-white border border-slate-800 rounded-3xl p-6 flex flex-col justify-between shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-sap-blue/20 rounded-full blur-3xl -z-0 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-finix-blue/20 rounded-full blur-3xl -z-0 pointer-events-none" />
 
             <div className="relative z-10 space-y-4">
               <div className="flex items-center justify-between">
@@ -267,7 +267,7 @@ export default function StudentDashboardPage() {
                   GRADO CUMBRE • SÚPER ANALISTA & CONSULTOR MÁSTER
                 </span>
                 <h2 className="text-xl font-extrabold text-white leading-tight">
-                  Programa Consultor Integral & Súper Analista SAP Business One
+                  Programa Consultor Integral & Súper Analista Finix ERP
                 </h2>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
                   Has completado las 120 clases magistrales, validado las 366 prácticas en el simulador empresarial Finix ERP y aprobado los 30 exámenes de competencia técnica.
@@ -291,7 +291,7 @@ export default function StudentDashboardPage() {
               </div>
               <Link
                 href="/mi-aula"
-                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue text-white font-bold text-xs shadow-lg transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+                className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-finix-blue to-sky-600 hover:from-sky-600 hover:to-finix-blue text-white font-bold text-xs shadow-lg transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
               >
                 <span>Ir a Mi Aula Virtual</span>
                 <ArrowRight className="w-4 h-4" />
@@ -380,7 +380,7 @@ export default function StudentDashboardPage() {
             <div>
               <span className="text-xs font-mono font-bold text-amber-500 uppercase tracking-widest">TITULACIÓN MÁXIMA INSTITUCIONAL</span>
               <h2 id="grado-master-heading" className="text-2xl font-extrabold text-slate-900 dark:text-white font-display">
-                Grado de Consultor Máster & Súper Analista SAP B1
+                Grado de Consultor Máster & Súper Analista Finix ERP
               </h2>
             </div>
           </div>
@@ -440,7 +440,7 @@ export default function StudentDashboardPage() {
         {/* ── SECCIÓN 2: 14 DIPLOMAS DE ESPECIALIZACIÓN PROFESIONAL POR ROL ────── */}
         <section aria-labelledby="diplomas-heading" className="space-y-4">
           <div>
-            <span className="text-xs font-mono font-bold text-sap-blue dark:text-sky-400 uppercase tracking-widest">ESPECIALIZACIÓN PROFESIONAL (14 DIPLOMAS)</span>
+            <span className="text-xs font-mono font-bold text-finix-blue dark:text-sky-400 uppercase tracking-widest">ESPECIALIZACIÓN PROFESIONAL (14 DIPLOMAS)</span>
             <h2 id="diplomas-heading" className="text-2xl font-extrabold text-slate-900 dark:text-white font-display">
               Diplomas por Rol & Carrera Profesional
             </h2>
@@ -486,7 +486,7 @@ export default function StudentDashboardPage() {
                     <Link
                       href={`/verificar/${certCode}`}
                       target="_blank"
-                      className="text-[11px] font-bold text-sap-blue dark:text-sky-400 hover:underline flex items-center gap-1"
+                      className="text-[11px] font-bold text-finix-blue dark:text-sky-400 hover:underline flex items-center gap-1"
                     >
                       <ExternalLink className="w-3 h-3" /> Verificar
                     </Link>
@@ -538,7 +538,7 @@ export default function StudentDashboardPage() {
 
                     return (
                       <tr key={mod.id} className="hover:bg-slate-50 dark:hover:bg-white/[0.02] transition-colors">
-                        <td className="px-4 py-3.5 font-bold font-mono text-sap-blue dark:text-sky-400">
+                        <td className="px-4 py-3.5 font-bold font-mono text-finix-blue dark:text-sky-400">
                           M0{mod.number}
                         </td>
                         <td className="px-4 py-3.5">
@@ -565,7 +565,7 @@ export default function StudentDashboardPage() {
                             </Link>
                             <button
                               onClick={() => handleDownloadPdf('micro', mod.certificateTitle, certCode, 20)}
-                              className="px-3 py-1 rounded bg-sap-blue hover:bg-sky-600 text-white font-bold text-[11px] shadow transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+                              className="px-3 py-1 rounded bg-finix-blue hover:bg-sky-600 text-white font-bold text-[11px] shadow transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
                             >
                               <Download className="w-3 h-3" /> PDF
                             </button>
@@ -585,7 +585,7 @@ export default function StudentDashboardPage() {
           <div>
             <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">MALLA CURRICULAR INTEGRAL</span>
             <h2 id="malla-heading" className="text-2xl font-extrabold text-slate-900 dark:text-white font-display">
-              Los 30 Módulos de Formación en SAP Business One
+              Los 30 Módulos de Formación en Finix ERP
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Estructurados en los 8 Bloques Oficiales. Incluye Activos Fijos (Módulo 3), Nómina IESS 2026 (Módulo 6) y el Capstone (Módulo 30).
@@ -599,7 +599,7 @@ export default function StudentDashboardPage() {
 
               return (
                 <div key={blockName} className="space-y-3">
-                  <h3 className="text-sm font-extrabold uppercase font-mono tracking-wider text-sap-blue dark:text-sky-400 flex items-center gap-2 border-b border-slate-200 dark:border-white/10 pb-2">
+                  <h3 className="text-sm font-extrabold uppercase font-mono tracking-wider text-finix-blue dark:text-sky-400 flex items-center gap-2 border-b border-slate-200 dark:border-white/10 pb-2">
                     <Layers className="w-4 h-4 text-amber-500" />
                     <span>{blockName} ({modulesInBlock.length} Módulos)</span>
                   </h3>
@@ -608,7 +608,7 @@ export default function StudentDashboardPage() {
                     {modulesInBlock.map((mod) => (
                       <div
                         key={mod.id}
-                        className="p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#131a20] hover:border-sap-blue/40 transition-all flex flex-col justify-between space-y-3"
+                        className="p-4 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#131a20] hover:border-finix-blue/40 transition-all flex flex-col justify-between space-y-3"
                       >
                         <div className="space-y-1.5">
                           <div className="flex items-center justify-between">
@@ -635,7 +635,7 @@ export default function StudentDashboardPage() {
                           </span>
                           <Link
                             href={`/mi-aula/${mod.id}`}
-                            className="text-xs font-bold text-sap-blue dark:text-sky-400 hover:underline flex items-center gap-1"
+                            className="text-xs font-bold text-finix-blue dark:text-sky-400 hover:underline flex items-center gap-1"
                           >
                             Ir a Aula <ChevronRight className="w-3.5 h-3.5" />
                           </Link>

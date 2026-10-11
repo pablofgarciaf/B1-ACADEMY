@@ -354,7 +354,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
         <Lock className="w-10 h-10 text-amber-400" aria-hidden="true" />
         <h1 className="text-2xl font-bold">Primero, el Módulo 1</h1>
         <p className="max-w-md text-sm text-gray-300">
-          El Módulo 1 es tu inducción: creas tu empresa de práctica y aprendes a moverte en SAP Business One.
+          El Módulo 1 es tu inducción: creas tu empresa de práctica y aprendes a moverte en Finix ERP.
           Al completarlo se abren todos los demás módulos.
         </p>
         <div className="flex flex-wrap justify-center gap-2">

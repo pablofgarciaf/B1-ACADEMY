@@ -36,14 +36,14 @@ export interface JobReadinessMetrics {
 
 export interface StudentProfile {
   uid: string;
-  studentId: string; // STU-SAP-2026-XXXX
+  studentId: string; // STU-Finix ERP-2026-XXXX
   email: string;
   displayName: string;
   role: UserRole;
   avatarUrl?: string;
   profilePhoto?: string | null; // base64 data URL or external URL
   enrollmentDate: string;
-  specialties: ('SAP-B1-LOGISTICS' | 'SAP-B1-FINANCIALS' | 'SAP-B1-IMPLEMENTATION' | 'SAP-B1-PRODUCTION' | 'SRI-LOC-EC' | 'B1-NOM-EC' | 'B1-RRHH-EC' | 'VERTICALES-EC' | string)[];
+  specialties: ('FINIX-ERP-LOGISTICS' | 'FINIX-ERP-FINANCIALS' | 'FINIX-ERP-IMPLEMENTATION' | 'FINIX-ERP-PRODUCTION' | 'SRI-LOC-EC' | 'B1-NOM-EC' | 'B1-RRHH-EC' | 'VERTICALES-EC' | string)[];
   selectedModules?: string[]; // slugs of modules the student chose to study
   lastVisited?: {
     moduleSlug: string;

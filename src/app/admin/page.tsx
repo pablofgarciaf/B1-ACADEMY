@@ -71,7 +71,7 @@ export default function AdminStudentsPanel() {
   const [formPhone, setFormPhone] = useState('');
   const [formRole, setFormRole] = useState<'estudiante' | 'docente' | 'admin'>('estudiante');
   const [formTracks, setFormTracks] = useState<string[]>([
-    'sap-b1-core',
+    'finix-erp-core',
   ]);
 
   // Cargar estudiantes desde Firestore
@@ -93,7 +93,7 @@ export default function AdminStudentsPanel() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#080d1a]">
         <div className="flex flex-col items-center gap-4 text-slate-500">
-          <div className="w-10 h-10 rounded-full border-2 border-sap-blue border-t-transparent animate-spin" />
+          <div className="w-10 h-10 rounded-full border-2 border-finix-blue border-t-transparent animate-spin" />
           <p className="text-xs font-mono">Verificando permisos...</p>
         </div>
       </div>
@@ -162,7 +162,7 @@ export default function AdminStudentsPanel() {
   const totalSuperAdmins = students.filter(s => s.role === 'super' || s.role === 'admin').length;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
@@ -189,7 +189,7 @@ export default function AdminStudentsPanel() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowCreateModal(true)}
-              className="px-5 py-3 rounded-2xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-lg shadow-sap-blue/25 flex items-center gap-2 cursor-pointer active:scale-95"
+              className="px-5 py-3 rounded-2xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-lg shadow-finix-blue/25 flex items-center gap-2 cursor-pointer active:scale-95"
             >
               <UserPlus className="w-4 h-4" />
               <span>Registrar Nuevo Estudiante</span>
@@ -210,7 +210,7 @@ export default function AdminStudentsPanel() {
           <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-2 shadow-sm">
             <div className="flex justify-between items-center text-slate-500">
               <span className="text-xs uppercase tracking-wider font-bold">Total Usuarios</span>
-              <Users className="w-4 h-4 text-sap-blue" />
+              <Users className="w-4 h-4 text-finix-blue" />
             </div>
             <p className="text-3xl font-black text-slate-900 dark:text-white font-display">
               {students.length}
@@ -242,7 +242,7 @@ export default function AdminStudentsPanel() {
               5
             </p>
             <p className="text-[11px] text-slate-500">
-              SAP B1, SRI, Nómina, RRHH, Verticales
+              Finix ERP, SRI, Nómina, RRHH, Verticales
             </p>
           </div>
 
@@ -271,7 +271,7 @@ export default function AdminStudentsPanel() {
                 placeholder="Buscar por nombre, email o cédula..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue"
               />
             </div>
 
@@ -283,7 +283,7 @@ export default function AdminStudentsPanel() {
                   onClick={() => setRoleFilter(role)}
                   className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     roleFilter === role
-                      ? 'bg-sap-blue text-white shadow-sm'
+                      ? 'bg-finix-blue text-white shadow-sm'
                       : 'bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/10'
                   }`}
                 >
@@ -324,7 +324,7 @@ export default function AdminStudentsPanel() {
                     <tr key={stu.email} className="hover:bg-slate-50/50 dark:hover:bg-white/[0.01] transition-colors">
                       <td className="py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-9 h-9 rounded-xl bg-sap-blue/10 text-sap-blue font-bold flex items-center justify-center text-xs">
+                          <div className="w-9 h-9 rounded-xl bg-finix-blue/10 text-finix-blue font-bold flex items-center justify-center text-xs">
                             {(stu.name || stu.displayName || 'E').charAt(0)}
                           </div>
                           <div>
@@ -348,7 +348,7 @@ export default function AdminStudentsPanel() {
                             ? 'bg-amber-500/10 text-amber-500 border border-amber-500/20'
                             : stu.role === 'admin'
                             ? 'bg-purple-500/10 text-purple-500 border border-purple-500/20'
-                            : 'bg-sap-blue/10 text-sap-blue border border-sap-blue/20'
+                            : 'bg-finix-blue/10 text-finix-blue border border-finix-blue/20'
                         }`}>
                           {stu.role.toUpperCase()}
                         </span>
@@ -356,7 +356,7 @@ export default function AdminStudentsPanel() {
 
                       <td className="py-4">
                         <div className="flex flex-wrap gap-1 max-w-xs">
-                          {(stu.assignedTracks || ['sap-b1-core']).map((tId) => (
+                          {(stu.assignedTracks || ['finix-erp-core']).map((tId) => (
                             <span key={tId} className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/5 text-[10px] font-mono text-slate-600 dark:text-slate-400">
                               {tId}
                             </span>
@@ -402,7 +402,7 @@ export default function AdminStudentsPanel() {
           <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-white/10 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 space-y-6 shadow-2xl">
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-4">
               <div className="flex items-center gap-2">
-                <UserPlus className="w-5 h-5 text-sap-blue" />
+                <UserPlus className="w-5 h-5 text-finix-blue" />
                 <h3 className="font-bold text-lg text-slate-900 dark:text-white">
                   Registrar Nuevo Estudiante / Usuario
                 </h3>
@@ -442,7 +442,7 @@ export default function AdminStudentsPanel() {
                     placeholder="Ej: Ing. Andrea Morales"
                     value={formName}
                     onChange={(e) => setFormName(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue"
                   />
                 </div>
 
@@ -457,7 +457,7 @@ export default function AdminStudentsPanel() {
                     minLength={12}
                     value={formCedula}
                     onChange={(e) => setFormCedula(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue font-mono"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue font-mono"
                   />
                 </div>
               </div>
@@ -473,7 +473,7 @@ export default function AdminStudentsPanel() {
                     placeholder="estudiante@empresa.com"
                     value={formEmail}
                     onChange={(e) => setFormEmail(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue"
                   />
                 </div>
 
@@ -486,7 +486,7 @@ export default function AdminStudentsPanel() {
                     placeholder="0991234567"
                     value={formPhone}
                     onChange={(e) => setFormPhone(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue"
                   />
                 </div>
               </div>
@@ -498,7 +498,7 @@ export default function AdminStudentsPanel() {
                 <select
                   value={formRole}
                   onChange={(e: any) => setFormRole(e.target.value)}
-                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sap-blue cursor-pointer"
+                  className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue cursor-pointer"
                 >
                   <option value="estudiante" className="dark:bg-slate-900">Estudiante (Acceso a Clases y Bolsa)</option>
                   <option value="docente" className="dark:bg-slate-900">Docente / Instructor</option>
@@ -517,7 +517,7 @@ export default function AdminStudentsPanel() {
                       key={dip.id}
                       className={`p-2.5 rounded-xl border text-xs flex items-center gap-2 cursor-pointer transition-all ${
                         formTracks.includes(dip.id)
-                          ? 'border-sap-blue bg-sap-blue/5 text-sap-blue font-bold'
+                          ? 'border-finix-blue bg-finix-blue/5 text-finix-blue font-bold'
                           : 'border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-400'
                       }`}
                     >
@@ -525,7 +525,7 @@ export default function AdminStudentsPanel() {
                         type="checkbox"
                         checked={formTracks.includes(dip.id)}
                         onChange={() => handleToggleTrack(dip.id)}
-                        className="rounded text-sap-blue focus:ring-0"
+                        className="rounded text-finix-blue focus:ring-0"
                       />
                       <span className="line-clamp-1">{dip.role}</span>
                     </label>
@@ -544,7 +544,7 @@ export default function AdminStudentsPanel() {
                 <button
                   type="submit"
                   disabled={createLoading}
-                  className="px-6 py-2.5 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-sap-blue/20 cursor-pointer disabled:opacity-50"
+                  className="px-6 py-2.5 rounded-xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-md shadow-finix-blue/20 cursor-pointer disabled:opacity-50"
                 >
                   {createLoading ? 'Guardando en Firestore...' : 'Guardar y Activar Usuario'}
                 </button>

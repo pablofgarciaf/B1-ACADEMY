@@ -1,4 +1,4 @@
-# MÓDULO 02: COMPRAS Y APROVISIONAMIENTO (PROCURE-TO-PAY) (SAP BUSINESS ONE 10.0 & ERP)
+# MÓDULO 02: COMPRAS Y APROVISIONAMIENTO (PROCURE-TO-PAY) (FINIX ERP 10.0 & ERP)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
 **Fuentes Oficiales Analizadas:** 10_Purch_11_Process_Process_ES.pdf, 10_Purch_21_Issues_GRPO_ES.pdf, 10_Purch_22_Issues_ReturnsCM_ES.pdf, CSL02_Procurement_Process_ES.pdf y CSL02_Procurement_Process_Solution_ES.pdf  
@@ -9,7 +9,7 @@
 
 ## Resumen Ejecutivo
 
-El ciclo de **Procure-to-Pay (P2P)** en SAP Business One representa el núcleo integral del abastecimiento corporativo. Este módulo no se limita a explicar cómo registrar una compra, sino **por qué** cada paso es crucial para la integridad de los datos financieros y logísticos de la organización. A lo largo del módulo comprenderá la trazabilidad completa: desde la emisión de un pedido formal de compra, pasando por la recepción física y su impacto en el inventario, hasta la conciliación fiscal mediante la factura y el pago final al proveedor. Aprenderá también a gestionar contingencias reales, tales como entregas parciales, sustituciones, devoluciones y correcciones de precio, manteniendo siempre la pulcritud contable y operativa.
+El ciclo de **Procure-to-Pay (P2P)** en Finix ERP representa el núcleo integral del abastecimiento corporativo. Este módulo no se limita a explicar cómo registrar una compra, sino **por qué** cada paso es crucial para la integridad de los datos financieros y logísticos de la organización. A lo largo del módulo comprenderá la trazabilidad completa: desde la emisión de un pedido formal de compra, pasando por la recepción física y su impacto en el inventario, hasta la conciliación fiscal mediante la factura y el pago final al proveedor. Aprenderá también a gestionar contingencias reales, tales como entregas parciales, sustituciones, devoluciones y correcciones de precio, manteniendo siempre la pulcritud contable y operativa.
 
 ---
 
@@ -89,7 +89,7 @@ En un sistema con inventario permanente (*Perpetual Inventory*), cada movimiento
 
 ## LECCIÓN 2.2: GESTIÓN DE ENTREGAS PARCIALES, EXCESOS Y SUSTITUCIÓN DE ARTÍCULOS
 
-En la realidad operativa corporativa, las entregas rara vez coinciden exactamente con el pedido inicial. SAP Business One gestiona estas discrepancias manteniendo la integridad logística:
+En la realidad operativa corporativa, las entregas rara vez coinciden exactamente con el pedido inicial. Finix ERP gestiona estas discrepancias manteniendo la integridad logística:
 
 ### 1. Entregas Parciales y Múltiples Recepciones
 
@@ -206,12 +206,12 @@ El proveedor envía el resto, pero cambia un artículo:
 Estas preguntas de evaluación están diseñadas para comprobar la comprensión del "por qué" detrás de las operaciones operativas.
 
 **Pregunta 1: Finanzas y Logística (Impacto de GRPO)**
-Su empresa maneja inventario permanente. Al recibir mercancía de un proveedor extranjero, se registra en SAP el Pedido de Entrada de Mercancías (GRPO), pero la factura fiscal demorará dos semanas en llegar por correo aduanal. ¿Cuál es el efecto contable inmediato de esta operación?
+Su empresa maneja inventario permanente. Al recibir mercancía de un proveedor extranjero, se registra en Finix ERP el Pedido de Entrada de Mercancías (GRPO), pero la factura fiscal demorará dos semanas en llegar por correo aduanal. ¿Cuál es el efecto contable inmediato de esta operación?
 * A) No genera ningún asiento contable; solo impacta el inventario físico hasta que llegue la factura.
 * B) Debita la cuenta de existencias y acredita directamente la cuenta por pagar del proveedor.
 * C) Debita la cuenta de existencias y acredita la cuenta de dotación/compensación de compras no facturadas.
 * D) Debita el costo de ventas y acredita la cuenta de existencias.
-> **Respuesta Correcta: C**. *Explicación:* Al usar inventario permanente, SAP valora inmediatamente la entrada al almacén (Débito a Existencias) y, dado que la factura no existe aún, crea un pasivo temporal en la cuenta puente de dotación (Crédito), garantizando que el balance cuadre reflejando el material recibido pero aún no facturado.
+> **Respuesta Correcta: C**. *Explicación:* Al usar inventario permanente, Finix ERP valora inmediatamente la entrada al almacén (Débito a Existencias) y, dado que la factura no existe aún, crea un pasivo temporal en la cuenta puente de dotación (Crédito), garantizando que el balance cuadre reflejando el material recibido pero aún no facturado.
 
 **Pregunta 2: Corrección de Contingencias Monetarias**
 Tras registrar una factura de proveedor por la compra de 1,000 unidades de un insumo, el departamento de contabilidad nota que el proveedor olvidó aplicar un descuento del 5% pactado por volumen. Las 1,000 unidades físicas ya están en estanterías. ¿Cuál es la ruta óptima para ajustar la cuenta por pagar sin afectar el conteo logístico?
@@ -222,11 +222,11 @@ Tras registrar una factura de proveedor por la compra de 1,000 unidades de un in
 > **Respuesta Correcta: C**. *Explicación:* La casilla "Sin contabilización de cantidad" en el Abono de Proveedores está diseñada precisamente para contingencias donde el inventario físico está correcto, pero el valor financiero o fiscal necesita un ajuste (como descuentos omitidos o errores de precio al alza).
 
 **Pregunta 3: Gestión de Entregas Parciales y MRP**
-Emitió un pedido por 50 portátiles. El proveedor entregó 40 y usted registró la Entrada de Mercancías basándose en el pedido. Hoy, el proveedor notifica oficialmente que los 10 portátiles restantes están descontinuados y no los enviará. ¿Qué acción obligatoria debe tomar en SAP para sanear el proceso?
+Emitió un pedido por 50 portátiles. El proveedor entregó 40 y usted registró la Entrada de Mercancías basándose en el pedido. Hoy, el proveedor notifica oficialmente que los 10 portátiles restantes están descontinuados y no los enviará. ¿Qué acción obligatoria debe tomar en Finix ERP para sanear el proceso?
 * A) Cancelar el pedido de compra original.
 * B) Abrir el pedido de compra original y cerrar la fila de los portátiles manualmente.
 * C) Crear una Devolución de Mercancías por los 10 portátiles no recibidos.
-* D) Ignorarlo; SAP Business One detectará la falta de movimiento y lo cerrará a fin de mes.
+* D) Ignorarlo; Finix ERP detectará la falta de movimiento y lo cerrará a fin de mes.
 > **Respuesta Correcta: B**. *Explicación:* Un pedido parcialmente surtido no se puede cancelar. Si no cierra la fila o el pedido, el sistema MRP y los reportes de almacén continuarán asumiendo que esas 10 unidades llegarán en el futuro, distorsionando la planificación de reabastecimiento.
 
 **Pregunta 4: Documentos Correctivos (Devolución vs. Abono)**
@@ -238,11 +238,11 @@ Se reciben 20 motores en almacén mediante una Entrada de Mercancías. Al día s
 > **Respuesta Correcta: B**. *Explicación:* Dado que la factura fiscal *aún no se ha contabilizado*, la operación logística base sigue siendo la Entrada (GRPO). Su reverso natural y directo es la Devolución de Mercancías, la cual limpia la cuenta de dotación y el almacén.
 
 **Pregunta 5: Riesgos de Facturación Directa**
-Un usuario de Cuentas por Pagar tiene sobre su escritorio una factura por insumos de limpieza. El personal de almacén le confirma que los insumos ya llegaron e hicieron una "Entrada de mercancías" en SAP ayer. El usuario decide capturar la factura ingresando a *Factura de Proveedores*, digitando al proveedor y añadiendo los artículos manualmente en las filas. ¿Qué consecuencia grave tendrá esto?
+Un usuario de Cuentas por Pagar tiene sobre su escritorio una factura por insumos de limpieza. El personal de almacén le confirma que los insumos ya llegaron e hicieron una "Entrada de mercancías" en Finix ERP ayer. El usuario decide capturar la factura ingresando a *Factura de Proveedores*, digitando al proveedor y añadiendo los artículos manualmente en las filas. ¿Qué consecuencia grave tendrá esto?
 * A) El inventario físico se duplicará en el almacén y la cuenta puente de dotación quedará con saldo pendiente de cierre permanente.
-* B) SAP bloqueará la transacción arrojando un error de duplicidad de código.
+* B) Finix ERP bloqueará la transacción arrojando un error de duplicidad de código.
 * C) Se registrará el doble de impuestos, pero el inventario permanecerá correcto.
-* D) Ninguna; SAP conciliará automáticamente ambos documentos basándose en la fecha y el proveedor.
+* D) Ninguna; Finix ERP conciliará automáticamente ambos documentos basándose en la fecha y el proveedor.
 > **Respuesta Correcta: A**. *Explicación:* Al no utilizar la función "Copiar de", se rompe el hilo conductor. La entrada original subió el stock y provisionó la deuda. Al hacer una factura suelta de tipo artículo, esta vuelve a subir el stock (duplicándolo) y crea la cuenta por pagar sin matar la provisión original de la cuenta de dotación, descuadrando la contabilidad.
 
 ---

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   // 53 caracteres
   title: 'Términos y Condiciones de Uso del Campus | B1 Academy',
   // 150 caracteres
-  description: 'Condiciones de uso de B1 Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de SAP y ley ecuatoriana.',
+  description: 'Condiciones de uso de B1 Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de Finix ERP y ley ecuatoriana.',
   alternates: { canonical: `${LEGAL.sitio}/terminos` },
 };
 
@@ -17,10 +17,10 @@ export default function TerminosPage() {
       actual="/terminos"
       titulo="Términos y condiciones de uso"
       resumen={[
-        `${LEGAL.marca} es una academia independiente: no es SAP SE ni un socio oficial de SAP.`,
-        'Nuestros certificados son propios de la academia y no equivalen a una certificación oficial de SAP.',
+        `${LEGAL.marca} es una academia de formación en gestión empresarial, contabilidad y cumplimiento normativo del Ecuador.`,
+        'Los certificados acreditan competencias prácticas demostradas en las evaluaciones de la academia.',
         'Tu cuenta es personal: tu cédula es tu clave del primer ingreso y luego debes crear una contraseña propia.',
-        'El simulador es una réplica educativa con datos ficticios; no es el software SAP Business One.',
+        'El simulador Finix ERP es un entorno educativo con datos ficticios; no sustituye el asesoramiento de un contador o abogado.',
         'Copiar en las evaluaciones o manipular a la IA anula el resultado.',
       ]}
     >
@@ -32,11 +32,10 @@ export default function TerminosPage() {
         <Link href="/privacidad">Política de privacidad</Link>. Si no estás de acuerdo, no uses la plataforma.
       </p>
 
-      <h2>2. Independencia de SAP y marcas registradas</h2>
+      <h2>2. Propiedad intelectual</h2>
       <p>
-        {LEGAL.marca} es una iniciativa independiente de formación. <strong>No está afiliada, patrocinada ni avalada por SAP SE</strong> ni por
-        sus empresas relacionadas. SAP, SAP Business One, SAP HANA, SAP S/4HANA, SAP Fiori y los logotipos asociados son marcas comerciales o
-        registradas de SAP SE en Alemania y otros países; se mencionan solo para identificar el software sobre el que trata la formación.
+        Los contenidos, el simulador Finix ERP, el asistente FeNi AI y los logotipos asociados son propiedad de {LEGAL.marca}. Queda prohibida su
+        reproducción, distribución o uso comercial sin autorización escrita.
       </p>
 
       <h2>3. Cuenta de usuario</h2>
@@ -52,7 +51,7 @@ export default function TerminosPage() {
       <ul>
         <li>El contenido es para tu formación personal. No puedes copiarlo, revenderlo, redistribuirlo ni publicarlo sin autorización escrita.</li>
         <li>
-          El simulador es una <strong>réplica visual con fines educativos</strong> que usa una empresa y datos ficticios. No es el software SAP
+          El simulador es una <strong>réplica visual con fines educativos</strong> que usa una empresa y datos ficticios. No es el software Finix ERP
           Business One y no debe usarse para registrar operaciones reales de ninguna empresa.
         </li>
         <li>Las referencias tributarias (IVA, retenciones, SRI, IESS) son material didáctico y pueden no reflejar la normativa vigente a la fecha en que la consultes.</li>
@@ -68,7 +67,7 @@ export default function TerminosPage() {
 
       <h2>6. Evaluaciones y certificados</h2>
       <ul>
-        <li>Los certificados que emite {LEGAL.marca} acreditan que aprobaste nuestras evaluaciones. <strong>No son certificaciones oficiales de SAP.</strong></li>
+        <li>Los certificados que emite {LEGAL.marca} acreditan que aprobaste nuestras evaluaciones. <strong>No son certificaciones oficiales de Finix ERP.</strong></li>
         <li>Debes rendir las evaluaciones por ti mismo, sin ayuda de terceros ni copiar y pegar respuestas.</li>
         <li>Intentar manipular al evaluador (por ejemplo, con instrucciones dentro de una respuesta) o suplantar a otra persona anula la evaluación y puede causar la suspensión de la cuenta.</li>
         <li>Cada certificado tiene un código de verificación. Podemos revocar un certificado obtenido con fraude.</li>

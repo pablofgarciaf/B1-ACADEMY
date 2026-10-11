@@ -1,5 +1,5 @@
 /**
- * Índice maestro de los 12 módulos del Manual SAP Business One 10.0
+ * Índice maestro de los 12 módulos del Manual Finix ERP 10.0
  * Este archivo es la fuente de verdad para el LMS (/mi-aula).
  * Cada módulo mapea a un archivo Markdown en public/modulos/Modulo_XX.md
  */
@@ -31,7 +31,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     fileName: 'Modulo_01.md',
     title: 'Fundamentos, Navegación y Entorno Fiori',
     shortTitle: 'Fundamentos y Navegación',
-    description: 'Arquitectura técnica de SAP B1, modelo de empresa, plataformas de BD, Cockpit Fiori y personalización del entorno.',
+    description: 'Arquitectura técnica de Finix ERP, modelo de empresa, plataformas de BD, Cockpit Fiori y personalización del entorno.',
     durationMinutes: 45,
     lessonsCount: 3,
     lessons: [
@@ -41,7 +41,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     ],
     level: 'basico',
     icon: 'Monitor',
-    keywords: ['SAP B1', 'Fiori', 'Cockpit', 'navegación', 'arquitectura'],
+    keywords: ['Finix ERP', 'Fiori', 'Cockpit', 'navegación', 'arquitectura'],
   },
   {
     id: '02',
@@ -175,17 +175,17 @@ export const TRAINING_MODULES: TrainingModule[] = [
     fileName: 'Modulo_09.md',
     title: 'Soporte Técnico, Herramientas de Diagnóstico y Plataforma RSP',
     shortTitle: 'Soporte Técnico y RSP',
-    description: 'Remote Support Platform, herramientas de diagnóstico, SAP for Me, notas SAP y gestión de incidentes.',
+    description: 'Remote Support Platform, herramientas de diagnóstico, portal de soporte, notas Finix ERP y gestión de incidentes.',
     durationMinutes: 45,
     lessonsCount: 3,
     lessons: [
-      { id: '09-L1', title: 'Modelo de Soporte N1/N2/N3 y SAP for Me' },
+      { id: '09-L1', title: 'Modelo de Soporte N1/N2/N3 y portal de soporte' },
       { id: '09-L2', title: 'Remote Support Platform (RSP) y Herramientas de Diagnóstico' },
       { id: '09-L3', title: 'Gestión de Incidentes y Escalamiento' },
     ],
     level: 'avanzado',
     icon: 'LifeBuoy',
-    keywords: ['soporte', 'RSP', 'diagnóstico', 'incidentes', 'SAP for Me'],
+    keywords: ['soporte', 'RSP', 'diagnóstico', 'incidentes', 'portal de soporte'],
   },
   {
     id: '10',

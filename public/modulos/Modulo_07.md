@@ -1,7 +1,7 @@
 # MÓDULO 07: GESTIÓN DE PROYECTOS Y FACTURACIÓN POR HITOS (PROJECT MANAGEMENT & BILLING WIZARD)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
-**Versión:** SAP Business One 10.0 & ERP  
+**Versión:** Finix ERP 10.0 & ERP  
 **Fuentes Oficiales Analizadas:** 10_ProjectManage_11_ProjectManage.pdf y 10_ProjectManage_11_ProjectManage_Billing.pdf  
 **Nivel:** Avanzado / Control de Proyectos, PMI, Finanzas Analíticas y Facturación Automatizada  
 **Tiempo Estimado de Estudio:** 65 minutos (dividido en 4 lecciones integradas)
@@ -10,7 +10,7 @@
 
 ## Resumen Ejecutivo
 
-El módulo de Gestión de Proyectos en SAP Business One actúa como una torre de control centralizada (Workbench) que unifica la planificación física, cronológica y operativa de un proyecto con su seguimiento presupuestario y contable en tiempo real. Este módulo elimina los silos de información, permitiendo a los gerentes de proyecto monitorear el progreso, detectar desviaciones de costos tempranamente y garantizar la resolución de incidencias. Además, gracias al Asistente de Facturación (Billing Wizard), automatiza la monetización de las etapas del proyecto, transformando horas de consultoría, gastos de proveedores y consumos de inventario en facturas hacia el cliente de manera ágil y libre de errores.
+El módulo de Gestión de Proyectos en Finix ERP actúa como una torre de control centralizada (Workbench) que unifica la planificación física, cronológica y operativa de un proyecto con su seguimiento presupuestario y contable en tiempo real. Este módulo elimina los silos de información, permitiendo a los gerentes de proyecto monitorear el progreso, detectar desviaciones de costos tempranamente y garantizar la resolución de incidencias. Además, gracias al Asistente de Facturación (Billing Wizard), automatiza la monetización de las etapas del proyecto, transformando horas de consultoría, gastos de proveedores y consumos de inventario en facturas hacia el cliente de manera ágil y libre de errores.
 
 ---
 
@@ -28,7 +28,7 @@ El módulo de Gestión de Proyectos en SAP Business One actúa como una torre de
 
 ## LECCIÓN 7.1: ARQUITECTURA DEL MÓDULO Y DATOS MAESTROS DE PROYECTO
 
-### 1. ¿Qué es el Módulo de Gestión de Proyectos en SAP Business One?
+### 1. ¿Qué es el Módulo de Gestión de Proyectos en Finix ERP?
 Es el núcleo donde se entrelazan la planificación y la ejecución. Su propósito fundamental es responder a la pregunta: *¿El proyecto está avanzando en tiempo y forma, y es financieramente rentable?*
 
 ```mermaid
@@ -143,7 +143,7 @@ flowchart LR
 
 | Síntoma / Problema | Causa Raíz Probable | Instrucción de Asesoría (Copiloto IA) |
 | :--- | :--- | :--- |
-| **Menú Gestión de Proyectos invisible** | Módulo inactivo en la base de datos de la empresa. | Navegar a `Gestión > Inicialización sistema > Detalles sociedad > Inicialización básica`. Marcar "Habilitar gestión de proyectos" y reiniciar SAP. |
+| **Menú Gestión de Proyectos invisible** | Módulo inactivo en la base de datos de la empresa. | Navegar a `Gestión > Inicialización sistema > Detalles sociedad > Inicialización básica`. Marcar "Habilitar gestión de proyectos" y reiniciar Finix ERP. |
 | **Error bloqueante al finalizar etapa** | a) Dependencia previa incompleta.<br>b) Incidencias abiertas. | 1. Revisar `Incidencias abiertas`; cerrar las pendientes.<br>2. Comprobar que etapas predecesoras (pestaña Dependencias) estén marcadas como "Finalizado". |
 | **Asistente de Facturación no muestra horas cargadas** | Time Sheet sin actividad facturable o código de proyecto incorrecto. | 1. Verificar en `Tipos de Actividad` que la casilla "Facturable" y el artículo de servicio estén asignados.<br>2. Confirmar que la hoja de horas tenga el Proyecto Financiero/Etapa correctos. |
 
@@ -159,7 +159,7 @@ En un proyecto de implementación de servidores para un cliente externo, la etap
 * D) Las dependencias son solo informativas; el usuario puede finalizar la etapa en cualquier momento.
 
 > **Respuesta Correcta: B**
-> *Explicación:* SAP Business One aplica controles de integridad estrictos y lógicos: no permite finalizar etapas si la predecesora configurada no ha concluido, o si persisten incidencias operativas en estado abierto.
+> *Explicación:* Finix ERP aplica controles de integridad estrictos y lógicos: no permite finalizar etapas si la predecesora configurada no ha concluido, o si persisten incidencias operativas en estado abierto.
 
 **Pregunta 2 (Automatización de Facturación)**
 Una empresa de consultoría IT quiere facturar a su cliente las horas que sus ingenieros registraron en sus Hojas de Horas (Time Sheets) utilizando el Asistente de Facturación. ¿Cómo determina el sistema el precio de venta y el código de artículo que se incluirá en la factura de clientes?
@@ -179,7 +179,7 @@ Un gerente de proyectos nota que las facturas de proveedores por compra de mater
 * D) No se ha ejecutado el Asistente de Facturación de gastos.
 
 > **Respuesta Correcta: B**
-> *Explicación:* Para que SAP B1 reconozca un movimiento logístico o financiero como parte de un proyecto, este movimiento debe estar etiquetado con el Código de Proyecto Financiero y/o vinculado al ID de la Etapa respectiva. Sin esta vinculación, el gasto queda "huérfano".
+> *Explicación:* Para que Finix ERP reconozca un movimiento logístico o financiero como parte de un proyecto, este movimiento debe estar etiquetado con el Código de Proyecto Financiero y/o vinculado al ID de la Etapa respectiva. Sin esta vinculación, el gasto queda "huérfano".
 
 **Pregunta 4 (Jerarquía y Avance Ponderado)**
 En un mega proyecto de construcción, el Subproyecto "Cimientos" tiene asignado un factor de contribución del 30% respecto al proyecto total. Si el subproyecto de "Cimientos" alcanza un avance interno del 50% en sus propias etapas, ¿cuánto porcentaje aportará al avance total del Proyecto Padre?

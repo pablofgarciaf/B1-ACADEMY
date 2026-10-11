@@ -1,7 +1,7 @@
-# MÓDULO 08: ADMINISTRACIÓN DEL SISTEMA, MIGRACIÓN DE DATOS (DTW) Y SEGURIDAD (SAP BUSINESS ONE 10.0 & ERP)
+# MÓDULO 08: ADMINISTRACIÓN DEL SISTEMA, MIGRACIÓN DE DATOS (DTW) Y SEGURIDAD (FINIX ERP 10.0 & ERP)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
-**Versión:** SAP Business One 10.0 & ERP Cloud / On-Premise  
+**Versión:** Finix ERP 10.0 & ERP Cloud / On-Premise  
 **Fuentes Oficiales Analizadas:** `10_Impl_32_Using_Data_Trans_Workbench.pdf`, `10_Impl_33_Importing_Docs_using_DTW.pdf`, `10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.pdf` y `10_Impl_33_SystemSetup_DataOwnership_ES.pdf`  
 **Nivel:** Avanzado / Consultoría de Implementación, Arquitectura Cutover, DBA y Administración de Seguridad  
 **Tiempo Estimado de Estudio:** 75 minutos (dividido en 4 lecciones integradas)
@@ -10,10 +10,10 @@
 
 ## Resumen Ejecutivo
 
-El presente módulo establece los fundamentos técnicos y estratégicos para gobernar con éxito la puesta en marcha (*Go-Live*), el mantenimiento estructural y el blindaje de seguridad en **SAP Business One 10.0**. 
+El presente módulo establece los fundamentos técnicos y estratégicos para gobernar con éxito la puesta en marcha (*Go-Live*), el mantenimiento estructural y el blindaje de seguridad en **Finix ERP 10.0**. 
 
 A lo largo de este contenido, el consultor o administrador del sistema dominará:
-1. **La Arquitectura de Migración de Datos vía Data Transfer Workbench (DTW):** Comprender el rol de la DI-API como motor de integridad transaccional frente a la tentación de inserciones directas por base de datos, dominando la estructura de plantillas padre-hijo y la aceleración multihilo en entornos SAP HANA.
+1. **La Arquitectura de Migración de Datos vía Data Transfer Workbench (DTW):** Comprender el rol de la DI-API como motor de integridad transaccional frente a la tentación de inserciones directas por base de datos, dominando la estructura de plantillas padre-hijo y la aceleración multihilo en entornos base de datos en memoria.
 2. **La Metodología de Cutover para Documentos y Saldos Iniciales:** Aplicar estrategias quirúrgicas de corte contable para evitar la letal "doble contabilización" de existencias y costos al transferir carteras abiertas de clientes y proveedores.
 3. **El Gobierno de Series de Numeración e Indicadores de Período:** Diseñar estructuras de folios fiscales y logísticos que garanticen el no solapamiento numérico, la segmentación por sucursales y la transición transparente entre ejercicios anuales.
 4. **El Modelo de Seguridad en Tres Capas y Propiedad de Datos (*Data Ownership*):** Modelar el organigrama empresarial vinculando usuarios a empleados de Recursos Humanos, garantizando que la visibilidad comercial responda a relaciones jerárquicas estrictas sin entorpecer la colaboración corporativa.
@@ -36,43 +36,43 @@ A lo largo de este contenido, el consultor o administrador del sistema dominará
 
 ### 1. ¿Qué es Data Transfer Workbench (DTW) y por qué existe?
 
-**Data Transfer Workbench (DTW)** es la aplicación oficial cliente/servidor de SAP diseñada para realizar cargas e importaciones masivas de datos maestros y transaccionales durante la fase de puesta en marcha (*Go-Live / Cutover*) o en procesos periódicos de integración empresarial.
+**Data Transfer Workbench (DTW)** es la aplicación oficial cliente/servidor de Finix ERP diseñada para realizar cargas e importaciones masivas de datos maestros y transaccionales durante la fase de puesta en marcha (*Go-Live / Cutover*) o en procesos periódicos de integración empresarial.
 
-En proyectos de implementación de ERP, existe con frecuencia el impulso erróneo de insertar datos directamente en las tablas SQL mediante scripts (`INSERT INTO OCRD...`). SAP prohíbe tajantemente esta práctica porque corrompe la base de datos y anula la garantía de soporte técnico. DTW existe para resolver este problema actuando como una pasarela segura:
+En proyectos de implementación de ERP, existe con frecuencia el impulso erróneo de insertar datos directamente en las tablas SQL mediante scripts (`INSERT INTO OCRD...`). Finix ERP prohíbe tajantemente esta práctica porque corrompe la base de datos y anula la garantía de soporte técnico. DTW existe para resolver este problema actuando como una pasarela segura:
 
 ```mermaid
 graph TD
     A[Archivos Fuente: Excel / CSV / TXT<br/>Delimitados por tabulador o coma] --> C(Data Transfer Workbench - DTW)
     B[Bases de Datos Externas Legacy<br/>Consultas SQL vía ODBC] --> C
-    C -->|Traducción a objetos de negocio| D[SAP Business One DI-API<br/>Data Interface API]
-    D -->|Validación de lógica contable, fiscal y reglas de negocio| E[(Base de Datos SAP B1<br/>SAP HANA o MS SQL Server)]
+    C -->|Traducción a objetos de negocio| D[Finix ERP DI-API<br/>Data Interface API]
+    D -->|Validación de lógica contable, fiscal y reglas de negocio| E[(Base de Datos Finix ERP<br/>base de datos en memoria o MS SQL Server)]
 ```
 
 > [!IMPORTANT]
 > **El Porqué de la DI-API en DTW:**
-> Cuando DTW procesa un registro, no ejecuta una sentencia SQL cruda; invoca los métodos de la **DI-API** de SAP. Esto significa que:
+> Cuando DTW procesa un registro, no ejecuta una sentencia SQL cruda; invoca los métodos de la **DI-API** de Finix ERP. Esto significa que:
 > * Se ejecutan automáticamente las determinaciones de cuentas contables.
 > * Se recalculan impuestos, listas de precios y descuentos por volumen.
 > * Se validan claves foráneas (ej. que el grupo de artículos o el código fiscal realmente existan).
 > * Se preserva la integridad referencial y transaccional: si una sola línea de una factura falla, el documento completo se revierte (*Rollback*).
 
 #### Reglas de Integridad Inviolables de DTW:
-* **Prohibición Absoluta de Eliminación:** DTW permite operaciones de inserción (*Add New Data*) y actualización (*Update Existing Data*), pero **NO permite eliminar registros** de la base de datos de SAP. Los datos maestros erróneos deben inactivarse manualmente o mediante actualización de estado.
+* **Prohibición Absoluta de Eliminación:** DTW permite operaciones de inserción (*Add New Data*) y actualización (*Update Existing Data*), pero **NO permite eliminar registros** de la base de datos de Finix ERP. Los datos maestros erróneos deben inactivarse manualmente o mediante actualización de estado.
 * **Documentos Históricos Cerrados:** DTW no permite importar documentos que ya nacieron cerrados o cancelados en el sistema legado (ej. pedidos ya entregados hace dos años). Solo se migran saldos contables consolidados y transacciones que permanezcan legal u operativamente abiertas al momento del corte.
-* **Validación Idéntica al Usuario:** El sistema rechaza cualquier registro que un usuario humano no pudiera crear manualmente desde la interfaz gráfica de SAP.
+* **Validación Idéntica al Usuario:** El sistema rechaza cualquier registro que un usuario humano no pudiera crear manualmente desde la interfaz gráfica de Finix ERP.
 
 ---
 
-### 2. Estructura de las Plantillas Predefinidas de SAP
+### 2. Estructura de las Plantillas Predefinidas de Finix ERP
 
 Las plantillas oficiales de DTW se localizan en el directorio del cliente DTW:  
-`C:\Program Files\SAP\Data Transfer Workbench\Templates\`
+`C:\Program Files\Finix ERP\Data Transfer Workbench\Templates\`
 
-Están organizadas por módulos funcionales y reproducen con exactitud la nomenclatura del diccionario de datos de SAP. Cada archivo representa una tabla relacional y posee una jerarquía estricta de encabezados:
+Están organizadas por módulos funcionales y reproducen con exactitud la nomenclatura del diccionario de datos de Finix ERP. Cada archivo representa una tabla relacional y posee una jerarquía estricta de encabezados:
 
 | Fila en Archivo | Propósito Técnico | Ejemplo en Interlocutores (`OCRD`) | ¿Es Modificable? |
 | :---: | :--- | :--- | :---: |
-| **Fila 1** | **Propiedades DI-API:** Nombres de las propiedades en el modelo de objetos de programación de SAP. | `CardCode`, `CardName`, `CardType`, `GroupCode` | **NO (Estrictamente sagrada)** |
+| **Fila 1** | **Propiedades DI-API:** Nombres de las propiedades en el modelo de objetos de programación de Finix ERP. | `CardCode`, `CardName`, `CardType`, `GroupCode` | **NO (Estrictamente sagrada)** |
 | **Fila 2** | **Campos de Base de Datos:** Nombres técnicos de las columnas en la tabla SQL subyacente. | `CardCode`, `CardName`, `CardType`, `GroupCode` | **NO (Estrictamente sagrada)** |
 | **Fila 3+** | **Datos de Negocio:** Registros reales que serán importados a la base de datos. | `C10000`, `Corporación Industrial Andina S.A.`, `cCustomer`, `100` | **SÍ (Cuerpo de datos)** |
 
@@ -85,7 +85,7 @@ Están organizadas por módulos funcionales y reproducen con exactitud la nomenc
    * En `CardType`: No se escribe `C` ni `Cliente`; debe colocarse `cCustomer`. Para proveedores se usa `cSupplier`, y para prospectos comerciales `cLead`.
    * En indicadores binarios (*BoYesNoEnum*): No se usa `1/0` ni `True/False`; se escribe `tYES` o `tNO`.
    * En tipo de documento (`DocType`): Se especifica `dDocument_Items` (artículos) o `dDocument_Service` (servicios).
-2. **Columnas en Blanco e Inferencia por Defecto:** Si una columna se deja vacía en la plantilla, DTW no la rellena con nulos indiscriminados; permite que SAP aplique las parametrizaciones generales configuradas en la sociedad (por ejemplo: la condición de pago predeterminada, la lista de precios base o el grupo impositivo por defecto).
+2. **Columnas en Blanco e Inferencia por Defecto:** Si una columna se deja vacía en la plantilla, DTW no la rellena con nulos indiscriminados; permite que Finix ERP aplique las parametrizaciones generales configuradas en la sociedad (por ejemplo: la condición de pago predeterminada, la lista de precios base o el grupo impositivo por defecto).
 
 ---
 
@@ -121,20 +121,20 @@ classDiagram
 #### Reglas de Sincronización Clave en Plantillas Hijo:
 * **`ParentKey` (Columna A en archivos hijo):** Es el cordón umbilical que une al hijo con el padre. Debe contener el valor exacto del código primario (`CardCode` en interlocutores, o el número secuencial temporal en documentos).
 * **El Campo `LineNum` en Contactos (`OCPR`):**
-  * **Para insertar contactos nuevos masivamente:** La columna `LineNum` debe dejarse **completamente en blanco**. El motor de SAP asignará secuenciales correlativos internos (`0, 1, 2...`).
+  * **Para insertar contactos nuevos masivamente:** La columna `LineNum` debe dejarse **completamente en blanco**. El motor de Finix ERP asignará secuenciales correlativos internos (`0, 1, 2...`).
   * **Para actualizar un contacto preexistente:** Se debe indicar explícitamente el número de línea que ocupa en la base de datos (`0` para el primer contacto registrado, `1` para el segundo). Si se coloca `0` al intentar crear uno nuevo, DTW intentará sobreescribir el contacto existente en lugar de agregar uno adicional.
 * **Identificación de Direcciones (`CRD1`):**
   * La tabla de direcciones no se indexa por `LineNum`, sino por un identificador alfanumérico en el campo `Address` (ej. `BOGOTA_NORTE`, `PLANTA_CALI`) y su tipificación en `AdresType` (`bo_BillTo` para dirección de factura o `bo_ShipTo` para entrega física).
 
 ---
 
-### 4. Optimización de Rendimiento en SAP HANA: *Enable Faster Import*
+### 4. Optimización de Rendimiento en base de datos en memoria: *Enable Faster Import*
 
 Durante la ventana crítica del *Cutover* (generalmente entre el viernes por la noche y la madrugada del lunes previo a la apertura comercial), el tiempo disponible para migrar millones de registros es extremadamente limitado.
 
-Para mitigar este cuello de botella en infraestructuras con motor **SAP HANA**, DTW incorpora la funcionalidad **Enable Faster Import**:
+Para mitigar este cuello de botella en infraestructuras con motor **base de datos en memoria**, DTW incorpora la funcionalidad **Enable Faster Import**:
 
-| Característica | Modo Tradicional DTW | Modo Faster Import (SAP HANA) |
+| Característica | Modo Tradicional DTW | Modo Faster Import (base de datos en memoria) |
 | :--- | :--- | :--- |
 | **Motor de Ejecución** | Monohilo secuencial vía llamadas COM simples. | **Multihilo paralelo** mediante componentes COM+ dedicados. |
 | **Hilos Concurrentes** | 1 hilo de procesamiento. | **De 4 hasta 21 hilos de ejecución paralela.** |
@@ -177,33 +177,33 @@ erDiagram
 
 ---
 
-### 2. Manejo de Numeración de Documentos: ¿Folio SAP o Folio Heredado?
+### 2. Manejo de Numeración de Documentos: ¿Folio Finix ERP o Folio Heredado?
 
-Una de las decisiones arquitectónicas más importantes en la preparación del archivo de corte es qué número adoptará el documento migrado dentro de SAP:
+Una de las decisiones arquitectónicas más importantes en la preparación del archivo de corte es qué número adoptará el documento migrado dentro de Finix ERP:
 
 ```mermaid
 graph TD
-    A[Decisión de Numeración en DTW] --> B[Estrategia 1: Numeración Nativa SAP]
+    A[Decisión de Numeración en DTW] --> B[Estrategia 1: Numeración Nativa Finix ERP]
     A --> C[Estrategia 2: Conservar Folio Heredado / Legacy]
     B --> D[DocNum = Cualquier correlativo<br/>HandWritten = tNO o Vacío]
-    D --> E[SAP asigna el siguiente número de serie automática.<br/>Ideal para comenzar un nuevo consecutivo limpio.]
+    D --> E[Finix ERP asigna el siguiente número de serie automática.<br/>Ideal para comenzar un nuevo consecutivo limpio.]
     C --> F[DocNum = Número fiscal real anterior<br/>HandWritten = tYES]
     F --> G[El documento asume el número histórico exacto.<br/>Adquiere estado: Abierto - Impreso.<br/>Auditoría 100% transparente con el sistema anterior.]
 ```
 
-| Parámetro DTW | Numeración Automática SAP | Numeración Heredada del Sistema Anterior |
+| Parámetro DTW | Numeración Automática Finix ERP | Numeración Heredada del Sistema Anterior |
 | :--- | :--- | :--- |
 | **Campo `DocNum`** | Cualquier secuencial temporal para unir cabecera con líneas. | **El número exacto de la factura anterior** (ej. `804351`). |
 | **Campo `HandWritten`** | Dejar vacío o asignar `tNO`. | Asignar **`tYES`** (*Manual / Escrito a mano*). |
-| **Comportamiento en SAP** | SAP ignora el número de la plantilla y toma el correlativo activo de la serie predeterminada. | SAP graba la transacción con el número `804351` y marca el campo "Manual" como activo. |
+| **Comportamiento en Finix ERP** | Finix ERP ignora el número de la plantilla y toma el correlativo activo de la serie predeterminada. | Finix ERP graba la transacción con el número `804351` y marca el campo "Manual" como activo. |
 | **Estado Resultante** | Documento Abierto estándar. | Documento **"Abierto - Impreso"** (no se reimprime accidentalmente). |
-| **Caso de Uso Sugerido** | Nuevos pedidos que continuarán su flujo en SAP. | Facturas históricas abiertas que ya fueron emitidas físicamente al cliente. |
+| **Caso de Uso Sugerido** | Nuevos pedidos que continuarán su flujo en Finix ERP. | Facturas históricas abiertas que ya fueron emitidas físicamente al cliente. |
 
 ---
 
 ### 3. Trazabilidad entre Documentos Base y Destino (*Base Entry Linking*)
 
-Cuando una empresa inicia operaciones en SAP, frecuentemente tiene compromisos en curso que deben conservar su trazabilidad: pedidos de venta abiertos con entregas parciales ya realizadas, o pedidos de compra aprobados que están por recibirse en almacén.
+Cuando una empresa inicia operaciones en Finix ERP, frecuentemente tiene compromisos en curso que deben conservar su trazabilidad: pedidos de venta abiertos con entregas parciales ya realizadas, o pedidos de compra aprobados que están por recibirse en almacén.
 
 Para recrear en DTW el vínculo nativo del botón **"Copiar de / Copiar a"** y alimentar el **Mapa de Relaciones**, se deben configurar obligatoriamente tres columnas en la plantilla de detalle del documento de destino (`Document_Lines`):
 
@@ -222,7 +222,7 @@ graph LR
    * `13` = Factura de Clientes (*A/R Invoice*)
    * `22` = Pedido de Compras (*Purchase Order*)
    * `20` = Entrada de Mercancías de Compras (*Goods Receipt PO*)
-2. **`BaseEntry` (Entrada Base Interna):** Corresponde al valor **`DocEntry`** (la clave primaria autoincremental en la base de datos de SAP) del documento base ya cargado.  
+2. **`BaseEntry` (Entrada Base Interna):** Corresponde al valor **`DocEntry`** (la clave primaria autoincremental en la base de datos de Finix ERP) del documento base ya cargado.  
    > *Nota crítica:* No se debe colocar el número visible de folio (`DocNum`), sino la clave interna de base de datos (`DocEntry`).
 3. **`BaseLine` (Línea Base del Documento):** Especifica qué fila exacta del documento base está siendo consumida por la línea actual (iniciando formalmente en `0` para la primera línea).
 
@@ -235,12 +235,12 @@ El error financiero más grave que puede cometerse durante un *Cutover* es regis
 #### El Problema de la Doble Contabilización:
 Si un cliente debe una factura de 10 unidades del Artículo X, y la bodega ya tiene esas 10 unidades en físico:
 1. Si cargas el inventario inicial, sumas 10 unidades al activo de almacén y acreditas saldos iniciales.
-2. Si luego cargas la factura abierta del cliente utilizando la plantilla de artículos (`dDocument_Items`), el motor transaccional de SAP **descontará nuevamente 10 unidades del inventario** y generará un asiento automático de costo de ventas contra existencias, descalabrando por completo la contabilidad y dejando el almacén en cero.
+2. Si luego cargas la factura abierta del cliente utilizando la plantilla de artículos (`dDocument_Items`), el motor transaccional de Finix ERP **descontará nuevamente 10 unidades del inventario** y generará un asiento automático de costo de ventas contra existencias, descalabrando por completo la contabilidad y dejando el almacén en cero.
 
 #### La Solución Técnica Oficial:
 Dividir la carga en dos componentes independientes que se equilibran mediante una **Cuenta Transitoria de Saldos Iniciales (Cuenta Puente de Balance)**:
 
-| Flujo de Carga | Objeto SAP / DTW | Tipo de Documento | Impacto en Stock | Impacto Contable en Mayor |
+| Flujo de Carga | Objeto Finix ERP / DTW | Tipo de Documento | Impacto en Stock | Impacto Contable en Mayor |
 | :--- | :--- | :--- | :---: | :--- |
 | **1. Inventario Físico** | Entrada de Mercancías (`OIGN` / `IGN1` en Inventario) | Logístico / Físico | **Incrementa (+) Existencias** | **Débito (+):** Cuenta de Existencias de Almacén.<br/>**Crédito (-):** Cuenta Puente de Saldos Iniciales. |
 | **2. Cartera de Clientes** | Facturas de Clientes (`OINV` / `INV1` en Ventas) | **Servicio** (`DocType = dDocument_Service`) | **Neutro (0) No mueve stock** | **Débito (+):** Cuenta por Cobrar Clientes.<br/>**Crédito (-):** Cuenta Puente de Saldos Iniciales. |
@@ -272,17 +272,17 @@ graph TD
 
 ### 1. Configuración de Series de Documentos
 
-El control de folios en SAP Business One garantiza el cumplimiento fiscal, la segregación por puntos de venta y la trazabilidad de auditoría.
+El control de folios en Finix ERP garantiza el cumplimiento fiscal, la segregación por puntos de venta y la trazabilidad de auditoría.
 
 Ruta de acceso:  
 `Gestión > Inicialización sistema > Numeración de documento`
 
-* **Serie Principal (*Primary Series*):** Es la serie preconfigurada creada por SAP en toda base de datos limpia. Inicia en el número `1` y tiene un valor final infinito (`999999999`). No puede eliminarse, pero sí renombrarse o desactivarse una vez alcanzado el fin de su ciclo.
+* **Serie Principal (*Primary Series*):** Es la serie preconfigurada creada por Finix ERP en toda base de datos limpia. Inicia en el número `1` y tiene un valor final infinito (`999999999`). No puede eliminarse, pero sí renombrarse o desactivarse una vez alcanzado el fin de su ciclo.
 * **Series Múltiples:** Permiten segregar la facturación o la logística por criterios operativos:
   * **Por Sucursal Física:** Serie `FAC-SUR`, Serie `FAC-NORTE`.
   * **Por Canal Comercial:** Serie `POS-CAJA1`, Serie `ECOMMERCE`.
   * **Por Régimen Fiscal:** Serie `FACTURA-ELEC`, Serie `EXPORTACION`.
-* **Regla Estricta de No Solapamiento Numérico:** SAP exige una barrera estricta para evitar duplicidad de folios. Si se desea crear una nueva serie para un tipo de documento que ya está operando con la serie primaria, el administrador debe **cerrar el límite superior** de la serie anterior configurando el campo `Primer nº` y `Último nº`. Dos series activas dentro de un mismo período nunca pueden compartir rangos numéricos superpuestos.
+* **Regla Estricta de No Solapamiento Numérico:** Finix ERP exige una barrera estricta para evitar duplicidad de folios. Si se desea crear una nueva serie para un tipo de documento que ya está operando con la serie primaria, el administrador debe **cerrar el límite superior** de la serie anterior configurando el campo `Primer nº` y `Último nº`. Dos series activas dentro de un mismo período nunca pueden compartir rangos numéricos superpuestos.
 * **Prefijos y Sufijos:** Códigos alfanuméricos visuales (ej. prefijo `FE-`, sufijo `-2026`).  
   > *Nota arquitectónica:* El prefijo y sufijo son elementos puramente visuales e impresos. En la base de datos relacional, el campo `DocNum` almacena única y exclusivamente el valor entero correlativo (`1001`), lo que permite ordenar y filtrar numéricamente las consultas SQL sin problemas de ordenación alfanumérica.
 
@@ -290,9 +290,9 @@ Ruta de acceso:
 
 ### 2. Seguridad y Asignación de Series por Usuario
 
-Por diseño del sistema, un usuario nuevo recién creado en SAP Business One **no tiene acceso a emitir transacciones con ninguna serie de numeración**, ni siquiera con la serie principal. Si intenta crear un documento, recibirá el error: *"No tiene autorización para la serie de numeración seleccionada"*.
+Por diseño del sistema, un usuario nuevo recién creado en Finix ERP **no tiene acceso a emitir transacciones con ninguna serie de numeración**, ni siquiera con la serie principal. Si intenta crear un documento, recibirá el error: *"No tiene autorización para la serie de numeración seleccionada"*.
 
-Para delegar el acceso de forma estructurada, SAP emplea un sistema de **Grupos de Numeración**:
+Para delegar el acceso de forma estructurada, Finix ERP emplea un sistema de **Grupos de Numeración**:
 
 ```mermaid
 graph LR
@@ -314,13 +314,13 @@ graph LR
 * **Indicadores de Período (*Period Indicators*):**  
   Permiten desacoplar legalmente los ejercicios fiscales. Al enlazar una serie de numeración con un indicador de período contable (ej. `2026`), la empresa puede reiniciar su numeración en el número `1` cada 1 de enero sin colisionar con la factura número `1` del año 2025. El motor de base de datos valida la unicidad del folio evaluando la tupla `(DocNum + PeriodIndicator)`.
 * **Series de Cancelación:**  
-  Al marcar la casilla **Cancelación** en la definición de una serie, esa serie se reserva exclusivamente para los documentos de anulación reversa que SAP genera automáticamente cuando un usuario hace clic derecho y selecciona *Cancelar* sobre una factura o entrega. Esto aísla contablemente las anulaciones de la facturación comercial regular.
+  Al marcar la casilla **Cancelación** en la definición de una serie, esa serie se reserva exclusivamente para los documentos de anulación reversa que Finix ERP genera automáticamente cuando un usuario hace clic derecho y selecciona *Cancelar* sobre una factura o entrega. Esto aísla contablemente las anulaciones de la facturación comercial regular.
 
 ---
 
 ### 4. Numeración Automática de Datos Maestros
 
-Por defecto, SAP B1 permite escribir códigos alfanuméricos manuales en Clientes, Proveedores y Artículos. Sin embargo, en implementaciones corporativas maduras, la nomenclatura libre genera duplicados y desorden (`CLI-001`, `C001`, `CL0001`).
+Por defecto, Finix ERP permite escribir códigos alfanuméricos manuales en Clientes, Proveedores y Artículos. Sin embargo, en implementaciones corporativas maduras, la nomenclatura libre genera duplicados y desorden (`CLI-001`, `C001`, `CL0001`).
 
 Para establecer una numeración automática institucional:
 1. En `Numeración de documento`, se selecciona la pestaña de datos maestros correspondiente (*Interlocutores comerciales* o *Artículos*).
@@ -328,7 +328,7 @@ Para establecer una numeración automática institucional:
    * **Nombre de Serie:** `Clientes Nacionales`
    * **Prefijo:** `CLI-`
    * **Longitud fija de caracteres:** Por ejemplo, `5` dígitos.
-3. **Comportamiento Operativo:** Al crear un nuevo cliente en el sistema, SAP generará automáticamente el código formateado rellenando con ceros a la izquierda: `CLI-00001`, `CLI-00002`, `CLI-00003`, suprimiendo la digitación manual y garantizando uniformidad absoluta.
+3. **Comportamiento Operativo:** Al crear un nuevo cliente en el sistema, Finix ERP generará automáticamente el código formateado rellenando con ceros a la izquierda: `CLI-00001`, `CLI-00002`, `CLI-00003`, suprimiendo la digitación manual y garantizando uniformidad absoluta.
 
 ---
 
@@ -336,11 +336,11 @@ Para establecer una numeración automática institucional:
 
 ### 1. La Jerarquía de Seguridad en Tres Capas
 
-La seguridad de datos en SAP Business One no se limita a otorgar o denegar contraseñas; opera como un filtro concéntrico de tres capas jerárquicas:
+La seguridad de datos en Finix ERP no se limita a otorgar o denegar contraseñas; opera como un filtro concéntrico de tres capas jerárquicas:
 
 ```mermaid
 graph TD
-    A["CAPA 1: LICENCIA CONTRACTUAL SAP<br/>(Professional, Limited CRM, Logistics, Financial)<br/>Define a qué módulos tiene derecho a entrar el usuario a nivel de contrato."] 
+    A["CAPA 1: LICENCIA CONTRACTUAL Finix ERP<br/>(Professional, Limited CRM, Logistics, Financial)<br/>Define a qué módulos tiene derecho a entrar el usuario a nivel de contrato."] 
     --> B["CAPA 2: AUTORIZACIONES GENERALES<br/>(Sin autorización, Solo lectura, Autorización total)<br/>Define si el usuario puede Ver, Crear o Modificar pantallas y menús."]
     --> C["CAPA 3: PROPIEDAD DE DATOS (DATA OWNERSHIP)<br/>(Filtro a nivel de registro en base al Organigrama)<br/>Define si puede ver o editar transacciones específicas creadas por otros."]
 ```
@@ -377,11 +377,11 @@ graph TD
 
 ### 3. Matriz de Relaciones Organizacionales Basada en Empleados
 
-Para que la Propiedad de Datos opere, existe un **requisito técnico indispensable**: cada código de usuario de SAP (`OUSR`) debe estar enlazado con su respectiva ficha en el módulo de Recursos Humanos (**Datos Maestros de Empleado**, `OHEM`).
+Para que la Propiedad de Datos opere, existe un **requisito técnico indispensable**: cada código de usuario de Finix ERP (`OUSR`) debe estar enlazado con su respectiva ficha en el módulo de Recursos Humanos (**Datos Maestros de Empleado**, `OHEM`).
 
-A través del organigrama corporativo definido en Recursos Humanos (campo *Jefe directo*, *Departamento*, *Sucursal* y *Equipo*), SAP calcula las siguientes relaciones entre el usuario que intenta acceder y el propietario del documento:
+A través del organigrama corporativo definido en Recursos Humanos (campo *Jefe directo*, *Departamento*, *Sucursal* y *Equipo*), Finix ERP calcula las siguientes relaciones entre el usuario que intenta acceder y el propietario del documento:
 
-| Relación Organizacional | Definición Estructural en SAP | Caso Práctico Típico |
+| Relación Organizacional | Definición Estructural en Finix ERP | Caso Práctico Típico |
 | :--- | :--- | :--- |
 | **Compañero (*Peer*)** | El usuario y el dueño del documento tienen asignado al **mismo Jefe directo** en RH. | Dos ejecutivos de cuenta que reportan al mismo Gerente de Ventas Regional. |
 | **Jefe (*Manager*)** | El dueño del documento es el superior jerárquico directo del usuario consultante. | Un asistente administrativo consultando las órdenes de trabajo de su supervisor. |
@@ -418,7 +418,7 @@ Esta matriz contiene los incidentes más frecuentes reportados en mesas de ayuda
 
 ---
 
-### Incidente 2: Al intentar crear un documento comercial, SAP muestra *"No tiene autorización para la serie de numeración"*
+### Incidente 2: Al intentar crear un documento comercial, Finix ERP muestra *"No tiene autorización para la serie de numeración"*
 
 * **Causa Raíz:** El usuario cuenta con licencia operativa y autorización en el menú del documento, pero la serie activa está asignada a un *Grupo de Numeración* (del 1 al 10) sobre el cual el usuario tiene estatus *Sin Autorización*.
 * **Instrucción de Asesoría del Copiloto:**
@@ -444,7 +444,7 @@ Esta matriz contiene los incidentes más frecuentes reportados en mesas de ayuda
 
 * **Causa Raíz:** Se introdujo en la plantilla un valor en texto legible en lugar del valor enumerado exigido por la interfaz DI-API (por ejemplo: escribir `Cliente` en lugar de `cCustomer`, o `Y` en lugar de `tYES`).
 * **Instrucción de Asesoría del Copiloto:**
-  1. Abrir la plantilla original provista por SAP en la carpeta `Templates`.
+  1. Abrir la plantilla original provista por Finix ERP en la carpeta `Templates`.
   2. Posicionar el cursor sobre el comentario de la cabecera en la Fila 1 correspondiente al campo con fallo.
   3. Leer la lista de enumeraciones válidas soportadas por el DI-API.
   4. Reemplazar masivamente los valores en la columna de datos y reejecutar la simulación en DTW.
@@ -476,7 +476,7 @@ Durante el corte contable (*Cutover*) de una distribuidora con inventario perman
 * **D)** Importar las facturas con la plantilla de artículos (`dDocument_Items`), pero marcando el campo `HandWritten = tYES` para que el sistema asuma que son manuales y omita el control de stock.
 
 > **Explicación Pedagógica Detallada:**  
-> La opción **B** es la única respuesta arquitectónicamente correcta. Al utilizar facturas de tipo Servicio (`dDocument_Service`), SAP Business One genera el débito comercial en la cuenta del cliente (creando la cuenta por cobrar individualizada con su fecha de vencimiento y folio histórico) y acredita la cuenta puente de saldos iniciales de balance. Esta operación elude por completo el módulo de bodegas: **no descuenta inventario físico ni genera costo de ventas**, evitando la devastadora duplicación contable. La opción A destruye la pista de auditoría e infla innecesariamente los movimientos de almacén. La opción C pierde el detalle auxiliar por cliente (imposibilitando cobranzas individuales), y la opción D es una falacia técnica: el flag `HandWritten` solo controla la numeración del documento, jamás inhibe el movimiento de inventario en facturas de artículos.
+> La opción **B** es la única respuesta arquitectónicamente correcta. Al utilizar facturas de tipo Servicio (`dDocument_Service`), Finix ERP genera el débito comercial en la cuenta del cliente (creando la cuenta por cobrar individualizada con su fecha de vencimiento y folio histórico) y acredita la cuenta puente de saldos iniciales de balance. Esta operación elude por completo el módulo de bodegas: **no descuenta inventario físico ni genera costo de ventas**, evitando la devastadora duplicación contable. La opción A destruye la pista de auditoría e infla innecesariamente los movimientos de almacén. La opción C pierde el detalle auxiliar por cliente (imposibilitando cobranzas individuales), y la opción D es una falacia técnica: el flag `HandWritten` solo controla la numeración del documento, jamás inhibe el movimiento de inventario en facturas de artículos.
 
 ---
 
@@ -485,7 +485,7 @@ Una corporación comercializadora cuenta con 4 sucursales regionales. La direcci
 1. Los ejecutivos de venta solo deben ver y gestionar sus propios documentos comerciales.
 2. No deben ver bajo ninguna circunstancia las cotizaciones ni pedidos creados por otros vendedores, incluso si están en su misma sucursal.
 3. Los Gerentes Regionales deben tener supervisión y control total sobre los documentos creados por todos los ejecutivos que les reportan.
-¿Cómo debe estructurarse esta configuración en SAP Business One?
+¿Cómo debe estructurarse esta configuración en Finix ERP?
 
 * **A)** Asignar a los vendedores una licencia *Limited CRM* y a los gerentes una licencia *Professional*, ya que las licencias controlan de forma nativa la visibilidad por usuario.
 * **B)** Habilitar la Propiedad de Datos por Documento, vincular a los usuarios con sus fichas de Recursos Humanos configurando al Gerente como su *Jefe*, y en la matriz de Propiedad de Datos asignar al Gerente autorización *Total* sobre la relación "Subordinado" y a los ejecutivos autorización *Ninguno* sobre la relación "Compañero". **[CORRECTA]**
@@ -497,21 +497,21 @@ Una corporación comercializadora cuenta con 4 sucursales regionales. La direcci
 
 ---
 
-### Pregunta 3: Optimización Masiva en Entornos SAP HANA
-Durante un fin de semana de Go-Live, el equipo de migración debe cargar 450.000 registros correspondientes al catálogo maestro de artículos con sus listas de precios asociadas. En las pruebas preliminares con DTW tradicional, el proceso tardaba más de 9 horas, lo cual excede la ventana técnica acordada con el negocio. ¿Qué solución oficial proporciona SAP para reducir drásticamente este tiempo manteniendo la estabilidad del sistema?
+### Pregunta 3: Optimización Masiva en Entornos base de datos en memoria
+Durante un fin de semana de Go-Live, el equipo de migración debe cargar 450.000 registros correspondientes al catálogo maestro de artículos con sus listas de precios asociadas. En las pruebas preliminares con DTW tradicional, el proceso tardaba más de 9 horas, lo cual excede la ventana técnica acordada con el negocio. ¿Qué solución oficial proporciona Finix ERP para reducir drásticamente este tiempo manteniendo la estabilidad del sistema?
 
 * **A)** Ejecutar sentencias masivas `BULK INSERT` directamente en las tablas `OITM` e `ITM1` mediante HANA Studio, omitiendo la interfaz de DTW.
-* **B)** Iniciar sesión en DTW y habilitar la opción "Enable Faster Import", ejecutando la carga multihilo en paralelo mediante componentes COM+ dedicados en SAP HANA. **[CORRECTA]**
-* **C)** Convertir todos los archivos CSV a formato binario JSON y subirlos mediante el Service Layer de SAP HANA.
+* **B)** Iniciar sesión en DTW y habilitar la opción "Enable Faster Import", ejecutando la carga multihilo en paralelo mediante componentes COM+ dedicados en base de datos en memoria. **[CORRECTA]**
+* **C)** Convertir todos los archivos CSV a formato binario JSON y subirlos mediante el Service Layer de base de datos en memoria.
 * **D)** Abrir 15 sesiones simultáneas de la aplicación cliente DTW en la misma estación de trabajo para importar lotes fraccionados de 30.000 artículos.
 
 > **Explicación Pedagógica Detallada:**  
-> La opción **B** es la funcionalidad nativa de alto rendimiento diseñada por SAP para entornos HANA. Al marcar *Enable Faster Import*, DTW desacopla el cuello de botella monohilo y despliega entre 4 y 21 hilos de procesamiento paralelo vía COM+, permitiendo reducir el tiempo de carga en hasta un 80% bajo un marco totalmente respaldado por el soporte de SAP. La opción A constituye una violación flagrante de las políticas de soporte de SAP y corrompería las tablas de índices y cálculo de costos. La opción C no es una función estándar de DTW, y la opción D colapsaría los bloqueos transaccionales a nivel de cliente provocando bloqueos mutuos (*Deadlocks*).
+> La opción **B** es la funcionalidad nativa de alto rendimiento diseñada por Finix ERP para entornos HANA. Al marcar *Enable Faster Import*, DTW desacopla el cuello de botella monohilo y despliega entre 4 y 21 hilos de procesamiento paralelo vía COM+, permitiendo reducir el tiempo de carga en hasta un 80% bajo un marco totalmente respaldado por el soporte de Finix ERP. La opción A constituye una violación flagrante de las políticas de soporte de Finix ERP y corrompería las tablas de índices y cálculo de costos. La opción C no es una función estándar de DTW, y la opción D colapsaría los bloqueos transaccionales a nivel de cliente provocando bloqueos mutuos (*Deadlocks*).
 
 ---
 
 ### Pregunta 4: Gobierno de Folios y Cambio de Ejercicio Fiscal
-Una compañía que inició operaciones en marzo de 2025 necesita que el 1 de enero de 2026 la numeración de sus facturas de venta vuelva a comenzar desde el número `1`, cumpliendo con una disposición de la entidad tributaria local. Sin embargo, el director contable teme que al reiniciar la serie en `1`, el sistema sobreescriba o bloquee la facturación al detectar colisión con la Factura número `1` emitida en 2025. ¿Cómo resuelve SAP Business One esta exigencia sin comprometer los datos históricos?
+Una compañía que inició operaciones en marzo de 2025 necesita que el 1 de enero de 2026 la numeración de sus facturas de venta vuelva a comenzar desde el número `1`, cumpliendo con una disposición de la entidad tributaria local. Sin embargo, el director contable teme que al reiniciar la serie en `1`, el sistema sobreescriba o bloquee la facturación al detectar colisión con la Factura número `1` emitida en 2025. ¿Cómo resuelve Finix ERP esta exigencia sin comprometer los datos históricos?
 
 * **A)** Creando una nueva sociedad en blanco cada 1 de enero y migrando nuevamente los saldos de clientes.
 * **B)** Asociando las series de numeración a un nuevo "Indicador de Período" enlazado al ejercicio 2026, lo que permite reiniciar el correlativo en 1 garantizando unicidad mediante la combinación Folio + Período. **[CORRECTA]**
@@ -519,7 +519,7 @@ Una compañía que inició operaciones en marzo de 2025 necesita que el 1 de ene
 * **D)** Cancelando todas las facturas del año 2025 para liberar los correlativos en la base de datos.
 
 > **Explicación Pedagógica Detallada:**  
-> La opción **B** describe el funcionamiento estándar de los *Indicadores de Período (Period Indicators)*. En SAP Business One, las series de numeración pueden asignarse a un indicador de período contable anual específico. Al asignar la serie de 2026 a su respectivo indicador, el sistema permite que el folio inicie formalmente en `1` sin arrojar conflictos de duplicidad con el ejercicio 2025, preservando la integridad de las consultas fiscales y la trazabilidad histórica de años previos. La opción C fallará inmediatamente porque SAP valida que el número inicial no solape folios preexistentes dentro de una serie continua. Las opciones A y D son aberraciones operativas que destruyen la continuidad del negocio.
+> La opción **B** describe el funcionamiento estándar de los *Indicadores de Período (Period Indicators)*. En Finix ERP, las series de numeración pueden asignarse a un indicador de período contable anual específico. Al asignar la serie de 2026 a su respectivo indicador, el sistema permite que el folio inicie formalmente en `1` sin arrojar conflictos de duplicidad con el ejercicio 2025, preservando la integridad de las consultas fiscales y la trazabilidad histórica de años previos. La opción C fallará inmediatamente porque Finix ERP valida que el número inicial no solape folios preexistentes dentro de una serie continua. Las opciones A y D son aberraciones operativas que destruyen la continuidad del negocio.
 
 ---
 

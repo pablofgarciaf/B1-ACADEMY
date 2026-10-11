@@ -8,9 +8,9 @@ import { Footer } from "@/components/site/Footer";
 // Title 50-60 chars (Actual: 52 chars)
 // Description 120-160 chars (Actual: 145 chars)
 export const metadata: Metadata = {
-  title: "Directorio de Consultores SAP Certificados | Academy",
+  title: "Directorio de Consultores Finix ERP Certificados | Academy",
   description:
-    "Valida y contrata consultores especializados en SAP S/4HANA. Perfiles certificados con horas comprobadas de sandbox y proyectos de arquitectura ERP.",
+    "Valida y contrata consultores especializados en Finix ERP S/4HANA. Perfiles certificados con horas comprobadas de sandbox y proyectos de arquitectura ERP.",
   alternates: {
     canonical: "https://b1-academy.vercel.app/consultores",
   },
@@ -21,22 +21,22 @@ const profileSchema = {
   "@type": "ProfilePage",
   mainEntity: {
     "@type": "Person",
-    name: "Consultor Certificado SAP Academy",
-    jobTitle: "Senior SAP Functional Architect",
+    name: "Consultor Certificado Finix Academy",
+    jobTitle: "Senior Finix ERP Functional Architect",
     worksFor: {
       "@type": "Organization",
-      name: "SAP Academy Network",
+      name: "Finix Academy Network",
     },
     hasCredential: {
       "@type": "EducationalOccupationalCredential",
-      name: "SAP S/4HANA Master Professional",
+      name: "Finix ERP S/4HANA Master Professional",
     },
   },
 };
 
 export default function ConsultoresPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
@@ -48,7 +48,7 @@ export default function ConsultoresPage() {
 
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-            Directorio Oficial de Consultores SAP Acreditados
+            Directorio Oficial de Consultores Finix ERP Acreditados
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-base">
             Perfiles profesionales con competencia probada en parametrización y consultoría empresarial.
@@ -57,7 +57,7 @@ export default function ConsultoresPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <article className="p-6 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-3 shadow-sm">
-            <div className="w-12 h-12 rounded-full bg-sap-blue/20 text-sap-blue flex items-center justify-center font-bold text-lg">
+            <div className="w-12 h-12 rounded-full bg-finix-blue/20 text-finix-blue flex items-center justify-center font-bold text-lg">
               CR
             </div>
             <h2 className="font-bold text-base text-slate-900 dark:text-white">Carlos R. - Consultor Senior FICO</h2>
@@ -100,7 +100,7 @@ export default function ConsultoresPage() {
         </div>
 
         <div className="mt-12 text-center">
-          <Link href="/" className="text-sm font-semibold text-sap-blue hover:underline">
+          <Link href="/" className="text-sm font-semibold text-finix-blue hover:underline">
             Volver a la Academia Principal
           </Link>
         </div>

@@ -11,7 +11,7 @@ const SEED_BPS: BusinessPartner[] = [
 const SEED_ITEMS: Item[] = [
   { ItemCode: "A00001", ItemName: "Servidor ProLiant DL380 Gen10", ItmsGrpCod: "01", InventoryItem: true, SalesItem: true, PurchaseItem: true, ValuationMethod: 'FIFO', Stock: 15, Price: 1500.00, Currency: "EUR", CreatedAt: new Date().toISOString(), UpdatedAt: new Date().toISOString() },
   { ItemCode: "A00002", ItemName: "Memoria RAM 64GB DDR4", ItmsGrpCod: "01", InventoryItem: true, SalesItem: true, PurchaseItem: true, ValuationMethod: 'FIFO', Stock: 120, Price: 375.00, Currency: "EUR", CreatedAt: new Date().toISOString(), UpdatedAt: new Date().toISOString() },
-  { ItemCode: "Z00001", ItemName: "Licencia SAP B1 Profesional", ItmsGrpCod: "02", InventoryItem: false, SalesItem: true, PurchaseItem: false, ValuationMethod: 'Standard', Stock: 0, Price: 2500.00, Currency: "EUR", CreatedAt: new Date().toISOString(), UpdatedAt: new Date().toISOString() }
+  { ItemCode: "Z00001", ItemName: "Licencia Finix ERP Profesional", ItmsGrpCod: "02", InventoryItem: false, SalesItem: true, PurchaseItem: false, ValuationMethod: 'Standard', Stock: 0, Price: 2500.00, Currency: "EUR", CreatedAt: new Date().toISOString(), UpdatedAt: new Date().toISOString() }
 ];
 
 /**
@@ -222,7 +222,7 @@ export async function createJournalEntry(
         const bpSnap = await getDoc(bpRef);
         if (bpSnap.exists()) {
           const currentBalance = bpSnap.data().Balance || 0;
-          // En SAP, un débito a un cliente aumenta su saldo deudor, un crédito lo disminuye
+          // En Finix ERP, un débito a un cliente aumenta su saldo deudor, un crédito lo disminuye
           const balanceChange = line.debit - line.credit; 
           batch.update(bpRef, {
             Balance: currentBalance + balanceChange,

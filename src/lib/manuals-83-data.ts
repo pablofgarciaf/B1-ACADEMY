@@ -13,7 +13,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-01",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 1,
     "level": "ARQ",
     "title": "Administración: Configuración inicial de la compañía",
@@ -23,7 +23,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-02",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 2,
     "level": "ARQ",
     "title": "Administración: Usuarios, autorizaciones y licencias",
@@ -33,7 +33,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-03",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 3,
     "level": "ARQ",
     "title": "Finanzas I: Plan de Cuentas y Determinación de Contabilización (G/L)",
@@ -43,7 +43,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-04",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 4,
     "level": "OP",
     "title": "Finanzas II: Asientos de diario y plantillas recurrentes",
@@ -53,7 +53,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-05",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 5,
     "level": "OP",
     "title": "Finanzas III: Cuentas por cobrar y por pagar (Antigüedad de saldos)",
@@ -63,7 +63,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-06",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 6,
     "level": "OP",
     "title": "Finanzas IV: Activos Fijos",
@@ -73,7 +73,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-07",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 7,
     "level": "ARQ",
     "title": "Finanzas V: Presupuestos y centros de costo",
@@ -83,7 +83,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-08",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 8,
     "level": "OP",
     "title": "Banca: Pagos, cheques y conciliación bancaria",
@@ -93,7 +93,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-09",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 9,
     "level": "OP",
     "title": "Socios de Negocio: Maestro de clientes y proveedores",
@@ -103,7 +103,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-10",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 10,
     "level": "OP",
     "title": "Ventas–Clientes: Ciclo comercial completo (Oferta a Factura)",
@@ -113,7 +113,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-11",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 11,
     "level": "OP",
     "title": "Oportunidades de venta y CRM",
@@ -123,7 +123,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-12",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 12,
     "level": "OP",
     "title": "Compras–Proveedores: Ciclo de aprovisionamiento",
@@ -133,7 +133,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-13",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 13,
     "level": "OP",
     "title": "Inventario I: Maestro de artículos y listas de precios",
@@ -143,7 +143,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-14",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 14,
     "level": "OP",
     "title": "Inventario II: Almacenes, transferencias y conteo cíclico",
@@ -153,7 +153,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-15",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 15,
     "level": "ARQ",
     "title": "Inventario III: Métodos de valoración y costeo (FIFO/Promedio/Estándar)",
@@ -163,17 +163,17 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-16",
     "block": "A",
-    "blockTitle": "SAP Business One: Núcleo Transversal",
+    "blockTitle": "Finix ERP: Núcleo Transversal",
     "number": 16,
     "level": "OP",
-    "title": "Informes, Query Generator y dashboards SAP HANA",
+    "title": "Informes, Query Generator y dashboards base de datos en memoria",
     "category": "Analítica",
     "summary": "Consultas SQL directas, Crystal Reports interactivo y cuadros de mando en Cockpit."
   },
   {
     "id": "man-17",
     "block": "B",
-    "blockTitle": "SAP Business One: Producción y Planificación",
+    "blockTitle": "Finix ERP: Producción y Planificación",
     "number": 17,
     "level": "OP",
     "title": "Recursos: Maestro de mano de obra y maquinaria",
@@ -183,7 +183,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-18",
     "block": "B",
-    "blockTitle": "SAP Business One: Producción y Planificación",
+    "blockTitle": "Finix ERP: Producción y Planificación",
     "number": 18,
     "level": "OP",
     "title": "Producción I: Listas de materiales (BOM)",
@@ -193,7 +193,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-19",
     "block": "B",
-    "blockTitle": "SAP Business One: Producción y Planificación",
+    "blockTitle": "Finix ERP: Producción y Planificación",
     "number": 19,
     "level": "OP",
     "title": "Producción II: Órdenes de producción y reporte de piso",
@@ -203,7 +203,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-20",
     "block": "B",
-    "blockTitle": "SAP Business One: Producción y Planificación",
+    "blockTitle": "Finix ERP: Producción y Planificación",
     "number": 20,
     "level": "ARQ",
     "title": "MRP: Pronósticos y planificación de requerimientos",
@@ -213,7 +213,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-21",
     "block": "B",
-    "blockTitle": "SAP Business One: Producción y Planificación",
+    "blockTitle": "Finix ERP: Producción y Planificación",
     "number": 21,
     "level": "OP",
     "title": "Servicio: Contratos y llamadas de servicio",
@@ -223,7 +223,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
   {
     "id": "man-22",
     "block": "B",
-    "blockTitle": "SAP Business One: Producción y Planificación",
+    "blockTitle": "Finix ERP: Producción y Planificación",
     "number": 22,
     "level": "OP",
     "title": "Proyectos: Fases, presupuesto y documentos vinculados",
@@ -268,7 +268,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "level": "ARQ",
     "title": "Formularios SRI 103, 104 y 101: Interpretación y cruce contable",
     "category": "Tributación SRI",
-    "summary": "Conciliación entre los saldos contables de SAP B1 y los casilleros de impuestos."
+    "summary": "Conciliación entre los saldos contables de Finix ERP y los casilleros de impuestos."
   },
   {
     "id": "man-27",
@@ -408,7 +408,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "level": "ARQ",
     "title": "Ecosistema de partners tecnológicos: Boyum IT y alcance de add-ons",
     "category": "Add-ons",
-    "summary": "Matriz de compatibilidad y arquitectura de add-ons certificados para SAP B1."
+    "summary": "Matriz de compatibilidad y arquitectura de add-ons certificados para Finix ERP."
   },
   {
     "id": "man-41",
@@ -546,7 +546,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "blockTitle": "Nómina HCM: Configuración / Caja Negra",
     "number": 54,
     "level": "ARQ",
-    "title": "Asientos contables: Interfaz hacia SAP Business One",
+    "title": "Asientos contables: Interfaz hacia Finix ERP",
     "category": "Configuración HCM",
     "summary": "Plantilla de mapeo concepto → cuenta contable y transmisión automática vía Service Layer."
   },
@@ -738,7 +738,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "level": "OP",
     "title": "Flujo Order-to-Cash: Del pedido al cobro",
     "category": "Flujos End-to-End",
-    "summary": "Ruta completa comercial en SAP B1 y conciliación de cuentas por cobrar."
+    "summary": "Ruta completa comercial en Finix ERP y conciliación de cuentas por cobrar."
   },
   {
     "id": "man-74",
@@ -806,7 +806,7 @@ export const ALL_83_MANUALS: TechnicalManualItem[] = [
     "blockTitle": "Ingeniería de Parametrización Transversal",
     "number": 80,
     "level": "ARQ",
-    "title": "Diseño de centros de costo multi-sistema (SAP B1 + Nómina HCM)",
+    "title": "Diseño de centros de costo multi-sistema (Finix ERP + Nómina HCM)",
     "category": "Consultor Premium",
     "summary": "Homologación de la estructura analítica para evitar asientos con centros de costo huérfanos."
   },

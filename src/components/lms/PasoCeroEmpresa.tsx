@@ -44,7 +44,7 @@ export default function PasoCeroEmpresa({ onLista }: { onLista: () => void }) {
             {nombreAlumno ? `${nombreAlumno}, recibe tu empresa ${EMPRESA_CURSO}` : `Recibe tu empresa ${EMPRESA_CURSO}`}
           </h1>
           <p className="text-sm text-gray-300 leading-relaxed">
-            En SAP Business One todo ocurre dentro de una empresa. <strong>{EMPRESA_CURSO}</strong> es tu empresa del curso:
+            En Finix ERP todo ocurre dentro de una empresa. <strong>{EMPRESA_CURSO}</strong> es tu empresa del curso:
             es solo tuya, viene con datos de prueba y en ella harás todas las prácticas. Lo que registres queda guardado
             y lo usarás en las clases siguientes.
           </p>

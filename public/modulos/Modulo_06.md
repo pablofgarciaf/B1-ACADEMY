@@ -1,7 +1,7 @@
-# MÓDULO 06: GESTIÓN DE SERVICIO AL CLIENTE (TARJETAS DE EQUIPO, CONTRATOS SLA Y LLAMADAS DE SERVICIO) (SAP BUSINESS ONE 10.0)
+# MÓDULO 06: GESTIÓN DE SERVICIO AL CLIENTE (TARJETAS DE EQUIPO, CONTRATOS SLA Y LLAMADAS DE SERVICIO) (FINIX ERP 10.0)
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
-**Fuentes Oficiales Analizadas:** 10_Service_11_CSProcess_Process_ES.pdf (SAP Official Curriculum)  
+**Fuentes Oficiales Analizadas:** 10_Service_11_CSProcess_Process_ES.pdf (Finix ERP Official Curriculum)  
 **Nivel:** Intermedio - Avanzado / Postventa, Garantías, Mesa de Ayuda y Servicios de Campo  
 **Tiempo Estimado de Estudio:** 65 minutos (dividido en 4 lecciones integradas)
 
@@ -9,7 +9,7 @@
 
 ## Resumen Ejecutivo
 
-En la gestión empresarial moderna, la venta de un producto no representa el final de la transacción comercial, sino el punto de partida de la relación más estratégica con el cliente: el servicio postventa. El módulo de Gestión de Servicio en SAP Business One 10.0 proporciona un ecosistema cerrado, altamente integrable y auditable que articula la logística de inventario, el despacho técnico y la contabilidad financiera.
+En la gestión empresarial moderna, la venta de un producto no representa el final de la transacción comercial, sino el punto de partida de la relación más estratégica con el cliente: el servicio postventa. El módulo de Gestión de Servicio en Finix ERP 10.0 proporciona un ecosistema cerrado, altamente integrable y auditable que articula la logística de inventario, el despacho técnico y la contabilidad financiera.
 
 A través de este módulo, el consultor o usuario clave comprenderá no solo el procedimiento mecánico, sino el *porqué* estructural detrás de cada herramienta:
 * **La Tarjeta de Equipo de Cliente:** Convierte cada número de serie vendido en un expediente clínico vivo con trazabilidad de visitas, repuestos y traslados de titularidad.
@@ -53,13 +53,13 @@ graph TD
 
 > [!NOTE]
 > **El "Porqué" Arquitectónico:**  
-> ¿Por qué SAP separa los Datos Maestros de Artículo de las Tarjetas de Equipo? El Maestro de Artículos define las propiedades genéricas del ítem (modelo, grupo de artículos, lista de precios, método de valoración). En contraste, la Tarjeta de Equipo individualiza la unidad física real que opera en el mundo exterior, acumulando su propio desgaste, intervenciones y cambios de piezas a lo largo de los años.
+> ¿Por qué Finix ERP separa los Datos Maestros de Artículo de las Tarjetas de Equipo? El Maestro de Artículos define las propiedades genéricas del ítem (modelo, grupo de artículos, lista de precios, método de valoración). En contraste, la Tarjeta de Equipo individualiza la unidad física real que opera en el mundo exterior, acumulando su propio desgaste, intervenciones y cambios de piezas a lo largo de los años.
 
 ---
 
 ### 2. Creación Automática vs. Manual de Tarjetas de Equipo
 
-Para asegurar una integridad de datos sin fisuras humanas, SAP Business One permite automatizar la creación de la Tarjeta de Equipo en el momento exacto de la salida de mercancía por venta.
+Para asegurar una integridad de datos sin fisuras humanas, Finix ERP permite automatizar la creación de la Tarjeta de Equipo en el momento exacto de la salida de mercancía por venta.
 
 ```mermaid
 flowchart TD
@@ -94,7 +94,7 @@ flowchart TD
 
 > [!IMPORTANT]
 > **La Importancia de los Números de Serie Unívocos por Empresa:**  
-> Si la empresa permitiera duplicar un mismo número de serie entre diferentes artículos o almacenes, la relación biunívoca (1 a 1) entre el número de serie y la Tarjeta de Equipo colapsaría. Por ello, SAP Business One bloquea la creación automática a menos que la unicidad absoluta por empresa esté activa.
+> Si la empresa permitiera duplicar un mismo número de serie entre diferentes artículos o almacenes, la relación biunívoca (1 a 1) entre el número de serie y la Tarjeta de Equipo colapsaría. Por ello, Finix ERP bloquea la creación automática a menos que la unicidad absoluta por empresa esté activa.
 
 ---
 
@@ -169,13 +169,13 @@ El **SLA (*Service Level Agreement*)** es el motor paramétrico que permite medi
 
 > [!TIP]
 > **El "Porqué" Financiero:**  
-> Desmarcar una casilla (por ejemplo, desmarcar *Piezas*) le indica a SAP Business One que cualquier refacción que el técnico consuma durante la reparación deberá ser facturada al cliente final, impidiendo fugas de inventario y pérdidas económicas en el área de postventa.
+> Desmarcar una casilla (por ejemplo, desmarcar *Piezas*) le indica a Finix ERP que cualquier refacción que el técnico consuma durante la reparación deberá ser facturada al cliente final, impidiendo fugas de inventario y pérdidas económicas en el área de postventa.
 
 ---
 
 ## LECCIÓN 6.3: EL CICLO DE VIDA DE LA LLAMADA DE SERVICIO: COLAS, DESPACHO TÉCNICO Y RESOLUCIÓN
 
-El ciclo de atención de incidentes en SAP Business One está diseñado para garantizar trazabilidad desde el primer timbrazo telefónico hasta la firma de conformidad del cliente:
+El ciclo de atención de incidentes en Finix ERP está diseñado para garantizar trazabilidad desde el primer timbrazo telefónico hasta la firma de conformidad del cliente:
 
 ```mermaid
 flowchart TD
@@ -209,7 +209,7 @@ $$\text{Fecha Límite} = \text{Fecha/Hora Apertura} + \text{Tiempo de Resolució
 
 ### 2. Gestión por Colas de Servicio (Service Queues)
 
-En organizaciones con alto volumen de incidentes, asignar tickets técnico por técnico genera cuellos de botella y sobrecarga desbalanceada. SAP Business One resuelve esto mediante **Colas de Servicio**:
+En organizaciones con alto volumen de incidentes, asignar tickets técnico por técnico genera cuellos de botella y sobrecarga desbalanceada. Finix ERP resuelve esto mediante **Colas de Servicio**:
 
 * **¿Qué es una Cola de Servicio?:** Es un buzón compartido que agrupa a especialistas según su disciplina técnica (ejemplo: *Cola Servidores Blade*, *Cola Impresoras Industriales*, *Cola Base de Datos*).
 * **El Flujo "Pull" de Autoasignación:**
@@ -275,7 +275,7 @@ graph TD
     end
 ```
 
-1. **Gestión de Camionetas como Almacenes Móviles:** Se recomienda crear un código de almacén en SAP para cada vehículo técnico (ejemplo: *ALM-TEC01*). Los repuestos se envían mediante **Traslados de Inventario** (*Inventory Transfer*).
+1. **Gestión de Camionetas como Almacenes Móviles:** Se recomienda crear un código de almacén en Finix ERP para cada vehículo técnico (ejemplo: *ALM-TEC01*). Los repuestos se envían mediante **Traslados de Inventario** (*Inventory Transfer*).
 2. **Liquidación Fuera de Garantía:** Si la pieza o el servicio no están cubiertos, el coordinador presiona el botón **Nuevo Documento** en la pestaña de documentos relacionados y genera directamente una *Oferta de Ventas*, *Entrega* o *Factura de Clientes*.
 3. **Trazabilidad Total:** Al tildar **"Visualizar todos los documentos"**, la llamada exhibe el mapa de compras a proveedores de piezas raras, traslados internos y facturación al cliente final.
 
@@ -283,7 +283,7 @@ graph TD
 
 ### 3. Requisitos de Integridad para el Cierre Formal de la Llamada
 
-SAP Business One implementa una regla de gobernanza dura para garantizar que ningún caso se cierre sin dejar evidencia técnica:
+Finix ERP implementa una regla de gobernanza dura para garantizar que ningún caso se cierre sin dejar evidencia técnica:
 
 > [!CAUTION]
 > **Regla de Cierre Obligatoria:**  
@@ -300,7 +300,7 @@ Al grabarse el estado *Cerrado*, el ERP sella automáticamente el campo del sist
 | # | Problema Reportado | Causa Raíz Técnica | Protocolo de Resolución Guiada (Copiloto IA) |
 | :-: | :--- | :--- | :--- |
 | **1** | *"Se facturó un artículo serializado pero el sistema no generó la Tarjeta de Equipo ni el Contrato de Garantía."* | Se rompió la cadena de las 3 llaves: falta la serialización unívoca global, la casilla de creación automática está desmarcada, o el artículo carece de modelo de garantía en su maestro. | 1. Ir a `Gestión > Inicialización del sistema > Parametrizaciones generales > Inventario > Artículos` y verificar que *Números de serie unívocos por* esté en "Números de serie" y marcar *Creación automática de tarjeta de equipo*.<br/>2. Abrir el *Maestro de Artículos*, pestaña *General*, y asignar un modelo de contrato en el campo *Modelo de garantía* (tipo Número de Serie).<br/>3. Para el artículo ya facturado, crear la Tarjeta de Equipo de forma manual por única vez en `Servicio > Tarjeta de equipo`. |
-| **2** | *"El operador intenta cerrar una llamada de servicio pero el sistema arroja error en rojo y bloquea la actualización."* | El usuario intentó seleccionar el estado "Cerrado" dejando totalmente vacías las pestañas de *Solución* y *Resolución*. | 1. Explicar al usuario que SAP exige documentación técnica obligatoria antes del cierre por motivos de auditoría de calidad.<br/>2. Solicitar al operador que ingrese a la pestaña *Resolución* y redacte el trabajo efectuado, o ingrese a la pestaña *Soluciones* y vincule un artículo de la base de conocimientos.<br/>3. Presionar *Actualizar* con la documentación cargada y proceder luego al cambio de estado a *Cerrado*. |
+| **2** | *"El operador intenta cerrar una llamada de servicio pero el sistema arroja error en rojo y bloquea la actualización."* | El usuario intentó seleccionar el estado "Cerrado" dejando totalmente vacías las pestañas de *Solución* y *Resolución*. | 1. Explicar al usuario que Finix ERP exige documentación técnica obligatoria antes del cierre por motivos de auditoría de calidad.<br/>2. Solicitar al operador que ingrese a la pestaña *Resolución* y redacte el trabajo efectuado, o ingrese a la pestaña *Soluciones* y vincule un artículo de la base de conocimientos.<br/>3. Presionar *Actualizar* con la documentación cargada y proceder luego al cambio de estado a *Cerrado*. |
 | **3** | *"La llamada de servicio calcula una fecha límite de SLA incoherente (vence un sábado a medianoche)."* | El Contrato de Servicio asociado tiene mal configurada la matriz horaria en la pestaña *Cobertura* o no tiene marcada la exclusión de feriados. | 1. Abrir el Contrato de Servicio vinculado y navegar a la pestaña *Cobertura*.<br/>2. Verificar que los días de la semana y los rangos horarios coincidan con el horario laboral (ejemplo: Lunes a Viernes de 08:00 a 17:00) y que los fines de semana no estén marcados.<br/>3. Asegurarse de desmarcar *Incluir festivos* para que el sistema consulte el calendario laboral de la empresa y pause el cálculo durante días no laborables. |
 | **4** | *"La empresa requiere asignar varios técnicos y diferentes fechas de visita a una misma llamada, pero la pantalla solo permite una cita."* | La base de datos tiene activa la interfaz de visita simple predeterminada. | 1. Informar al administrador que se requiere activar la *Programación Múltiple*.<br/>2. Advertir explícitamente que la activación en `Parametrizaciones de documento > Llamada de servicio > Casilla Programación múltiple` es **irreversible**.<br/>3. Una vez activada, la pestaña *Planificación* se transformará en una grilla tabular para coordinar cuadrillas completas y múltiples fechas. |
 | **5** | *"Un técnico consumió repuestos de su camioneta para un servicio fuera de garantía, pero el stock del vehículo sigue lleno y no se facturó al cliente."* | El técnico no ejecutó la salida de inventario ni vinculó el cobro desde la ficha de documentos relacionados de la llamada. | 1. Ir a la llamada de servicio, pestaña *Gastos / Documentos Relacionados*.<br/>2. Presionar el botón *Nuevo Documento* y seleccionar *Factura de Clientes* (o *Entrega*).<br/>3. Seleccionar las piezas consumidas especificando como almacén de salida el almacén móvil del vehículo técnico (ej. *ALM-TEC01*). Esto descontará el stock del vehículo y generará la cuenta por cobrar al cliente. |
@@ -310,15 +310,15 @@ Al grabarse el estado *Cerrado*, el ERP sella automáticamente el campo del sist
 ## BANCO DE EVALUACIÓN SITUACIONAL
 
 ### Pregunta 1 (Automatización de Activos Serializados y Garantías)
-Una empresa de tecnología médica implementa SAP Business One 10.0 para comercializar equipos de rayos X. La gerencia exige que cada vez que se emita una Entrega de venta a un hospital, el sistema cree de forma automática el expediente técnico del equipo y su respectivo contrato de mantenimiento preventivo por 12 meses. ¿Qué conjunto de condiciones técnicas es estrictamente indispensable para que este automatismo opere?
+Una empresa de tecnología médica implementa Finix ERP 10.0 para comercializar equipos de rayos X. La gerencia exige que cada vez que se emita una Entrega de venta a un hospital, el sistema cree de forma automática el expediente técnico del equipo y su respectivo contrato de mantenimiento preventivo por 12 meses. ¿Qué conjunto de condiciones técnicas es estrictamente indispensable para que este automatismo opere?
 
 * A) Solo es necesario que el artículo esté marcado como "Artículo de Inventario" y "Artículo de Venta".
 * B) Activar la opción "Números de serie unívocos por empresa", marcar la casilla "Creación automática de tarjeta de equipo" en Parametrizaciones Generales, gestionar el artículo por números de serie y asignarle un modelo de garantía tipo "Número de Serie" en su maestro. **[CORRECTA]**
 * C) Crear previamente una Orden de Fabricación para el equipo y facturarlo obligatoriamente mediante una Factura de Reserva de Clientes.
-* D) El sistema SAP Business One no soporta la creación automática de expedientes técnicos; todas las tarjetas de equipo deben cargarse manualmente o por Data Transfer Workbench (DTW).
+* D) El sistema Finix ERP no soporta la creación automática de expedientes técnicos; todas las tarjetas de equipo deben cargarse manualmente o por Data Transfer Workbench (DTW).
 
 > **Respuesta Correcta: B**  
-> *Explicación Didáctica:* Para que SAP Business One dispare la creación simultánea de la Tarjeta de Equipo y el Contrato de Servicio tipo Garantía se requiere la alineación de las tres llaves: 1) Configuración global de series unívocas por empresa (evita colisiones de identificadores), 2) Casilla activa de creación automática en inventario, y 3) Configuración en el maestro del artículo (ser serializado y tener asignada la plantilla del modelo de garantía). Si cualquiera de estos tres elementos falta, el documento de venta se registra normalmente pero sin detonar los registros de postventa.
+> *Explicación Didáctica:* Para que Finix ERP dispare la creación simultánea de la Tarjeta de Equipo y el Contrato de Servicio tipo Garantía se requiere la alineación de las tres llaves: 1) Configuración global de series unívocas por empresa (evita colisiones de identificadores), 2) Casilla activa de creación automática en inventario, y 3) Configuración en el maestro del artículo (ser serializado y tener asignada la plantilla del modelo de garantía). Si cualquiera de estos tres elementos falta, el documento de venta se registra normalmente pero sin detonar los registros de postventa.
 
 ---
 
@@ -327,16 +327,16 @@ El coordinador de soporte de una empresa de maquinaria industrial intenta cerrar
 
 * A) La llamada tiene actividades agendadas en el calendario que deben ser eliminadas previamente.
 * B) El cliente tiene facturas de venta vencidas en el módulo de finanzas, lo que bloquea el cierre del ticket técnico.
-* C) SAP Business One prohíbe el cierre de una llamada si no cuenta con al menos una solución enlazada desde la Base de Conocimientos o un texto explícito registrado en la pestaña Resolución. **[CORRECTA]**
+* C) Finix ERP prohíbe el cierre de una llamada si no cuenta con al menos una solución enlazada desde la Base de Conocimientos o un texto explícito registrado en la pestaña Resolución. **[CORRECTA]**
 * D) Es obligatorio emitir una factura de clientes ligada a la llamada antes de poder cerrarla, incluso si el servicio fue gratuito.
 
 > **Respuesta Correcta: C**  
-> *Explicación Didáctica:* SAP Business One incorpora un control de calidad y gobernanza de datos estricto: un ticket cerrado sin documentación técnica destruye la utilidad de la base de conocimientos y la auditoría postventa. Para proceder al cierre, el operador debe registrar qué procedimiento solucionó la falla en la pestaña *Resolución* o vincular una solución aprobada en la pestaña *Soluciones*.
+> *Explicación Didáctica:* Finix ERP incorpora un control de calidad y gobernanza de datos estricto: un ticket cerrado sin documentación técnica destruye la utilidad de la base de conocimientos y la auditoría postventa. Para proceder al cierre, el operador debe registrar qué procedimiento solucionó la falla en la pestaña *Resolución* o vincular una solución aprobada en la pestaña *Soluciones*.
 
 ---
 
 ### Pregunta 3 (Modelado de Acuerdos SLA y Franjas Horarias)
-Un cliente con un contrato de soporte para servidores críticos tiene estipulado un SLA con un Tiempo de Resolución de **6 horas**. El cliente abre una llamada de servicio un **viernes a las 15:00 horas**. La ficha *Cobertura* del contrato establece disponibilidad de **Lunes a Viernes de 08:00 a 17:00 horas**, con la casilla "Incluir festivos" **desmarcada**. ¿Qué fecha y hora límite calculará SAP Business One en el campo "La resolución tiene que ser antes de"?
+Un cliente con un contrato de soporte para servidores críticos tiene estipulado un SLA con un Tiempo de Resolución de **6 horas**. El cliente abre una llamada de servicio un **viernes a las 15:00 horas**. La ficha *Cobertura* del contrato establece disponibilidad de **Lunes a Viernes de 08:00 a 17:00 horas**, con la casilla "Incluir festivos" **desmarcada**. ¿Qué fecha y hora límite calculará Finix ERP en el campo "La resolución tiene que ser antes de"?
 
 * A) El mismo viernes a las 21:00 horas.
 * B) El sábado a las 11:00 horas.
@@ -354,15 +354,15 @@ Una empresa de telecomunicaciones instala redes de fibra óptica. Un incidente d
 * A) Debe abrir dos llamadas de servicio idénticas duplicando el ticket del cliente para tener dos fechas distintas.
 * B) Debe activar la "Programación múltiple" en las parametrizaciones de documento de la Llamada de Servicio, advirtiendo previamente que este cambio es irreversible en la base de datos. **[CORRECTA]**
 * C) Debe crear un Contrato de Servicio tipo "Grupo de Artículos" para desbloquear múltiples técnicos.
-* D) Solo es posible gestionar visitas múltiples adquiriendo un complemento externo (Add-on), ya que SAP estándar no lo soporta.
+* D) Solo es posible gestionar visitas múltiples adquiriendo un complemento externo (Add-on), ya que Finix ERP estándar no lo soporta.
 
 > **Respuesta Correcta: B**  
-> *Explicación Didáctica:* SAP Business One ofrece nativamente la funcionalidad de *Programación Múltiple (Multiple Scheduling)* en la llamada de servicio, transformando la pestaña de planificación en una matriz completa de fechas, duraciones y técnicos. No obstante, el consultor debe advertir formalmente al cliente que una vez marcada en las parametrizaciones de documento, la activación es irreversible y no podrá regresarse a la vista simple.
+> *Explicación Didáctica:* Finix ERP ofrece nativamente la funcionalidad de *Programación Múltiple (Multiple Scheduling)* en la llamada de servicio, transformando la pestaña de planificación en una matriz completa de fechas, duraciones y técnicos. No obstante, el consultor debe advertir formalmente al cliente que una vez marcada en las parametrizaciones de documento, la activación es irreversible y no podrá regresarse a la vista simple.
 
 ---
 
 ### Pregunta 5 (Costeo de Postventa y Facturación de Excepciones)
-Durante una visita de garantía para una fotocopiadora industrial con contrato de servicio tipo "Número de Serie" activo, el técnico detecta que el rodillo principal se rompió debido a que un usuario introdujo clips metálicos (negligencia no cubierta por la garantía del fabricante). El contrato tiene cubierta la mano de obra, pero el nuevo rodillo debe ser cobrado al cliente. ¿Cuál es el procedimiento operativo estándar recomendado dentro de SAP Business One?
+Durante una visita de garantía para una fotocopiadora industrial con contrato de servicio tipo "Número de Serie" activo, el técnico detecta que el rodillo principal se rompió debido a que un usuario introdujo clips metálicos (negligencia no cubierta por la garantía del fabricante). El contrato tiene cubierta la mano de obra, pero el nuevo rodillo debe ser cobrado al cliente. ¿Cuál es el procedimiento operativo estándar recomendado dentro de Finix ERP?
 
 * A) Cancelar el contrato de servicio inmediatamente y borrar la llamada de servicio del sistema.
 * B) Entregar el repuesto gratis al cliente y registrar la pérdida como un ajuste negativo de inventario sin avisar a finanzas.

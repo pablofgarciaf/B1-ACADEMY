@@ -15,7 +15,7 @@ interface ProtectedEmailProps {
  */
 export function ProtectedEmail({
   user = "admisiones",
-  domain = "sapacademy.es",
+  domain = "finix.local",
   className = "",
 }: ProtectedEmailProps) {
   const handleClick = (e: React.MouseEvent) => {
@@ -29,10 +29,10 @@ export function ProtectedEmail({
       role="button"
       tabIndex={0}
       title="Click para enviar correo"
-      className={`inline-flex items-center cursor-pointer select-all font-medium transition-colors hover:text-sap-blue focus:outline-none focus:ring-2 focus:ring-sap-blue/50 rounded ${className}`}
+      className={`inline-flex items-center cursor-pointer select-all font-medium transition-colors hover:text-finix-blue focus:outline-none focus:ring-2 focus:ring-finix-blue/50 rounded ${className}`}
     >
       <span>{user}</span>
-      <span className="text-sap-blue dark:text-sky-400 font-bold px-0.5" aria-hidden="true">
+      <span className="text-finix-blue dark:text-sky-400 font-bold px-0.5" aria-hidden="true">
         &#64;
       </span>
       <span>{domain}</span>

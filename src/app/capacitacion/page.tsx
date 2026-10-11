@@ -46,27 +46,27 @@ export default function CapacitacionPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-sap-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
       <Navbar />
 
       <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 w-full">
         {/* Cápsula GEO para Google AI Overviews, Perplexity y ChatGPT */}
         <aside aria-label="Resumen del Ecosistema Formativo" className="p-5 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md">
           <strong className="text-slate-900 dark:text-white font-semibold">Oferta Académica B1 Academy Ecuador:</strong>{' '}
-          Formación especializada en <strong>SAP Business One 10.0</strong> dividida en <strong>14 Diplomas de Especialidad</strong> por rol corporativo y <strong>30 Módulos de Aprendizaje Continuo</strong> distribuidos en 8 Bloques Académicos:
+          Formación especializada en <strong>Finix ERP 10.0</strong> dividida en <strong>14 Diplomas de Especialidad</strong> por rol corporativo y <strong>30 Módulos de Aprendizaje Continuo</strong> distribuidos en 8 Bloques Académicos:
           Administración & RRHH, Logística & Suministros, Comercial & CRM, Producción & MRP, Finanzas & Fiscalidad SRI, Tecnología & SQL, Consultoría & Business Analyst y Titulación Máster Capstone Súper Analista.
         </aside>
 
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-sap-blue/30 bg-sap-blue/5 text-xs font-bold text-sap-blue">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
             <Sparkles className="w-3.5 h-3.5" /> 14 Diplomas de Especialidad • 30 Módulos Oficiales
           </div>
           {/* H1 Quirúrgico (45-65 chars) -> 52 caracteres */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Diplomas de Especialidad en SAP Business One Ecuador
+            Diplomas de Especialidad en Finix ERP Ecuador
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Elige la especialidad según tu perfil profesional. Cada diploma integra módulos prácticos evaluados en el simulador sandbox de SAP B1.
+            Elige la especialidad según tu perfil profesional. Cada diploma integra módulos prácticos evaluados en el simulador sandbox de Finix ERP.
           </p>
         </div>
 
@@ -79,7 +79,7 @@ export default function CapacitacionPage() {
               placeholder="Buscar por rol (ej. Compras, Ventas, Contable, Consultor)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-sap-blue transition-colors shadow-sm"
+              className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-finix-blue transition-colors shadow-sm"
             />
           </div>
         </div>
@@ -99,11 +99,11 @@ export default function CapacitacionPage() {
             {filteredDiplomas.map((diploma, idx) => (
               <div
                 key={diploma.id}
-                className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm hover:border-sap-blue/40 hover:shadow-md transition-all flex flex-col justify-between space-y-5 group"
+                className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm hover:border-finix-blue/40 hover:shadow-md transition-all flex flex-col justify-between space-y-5 group"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-md bg-sap-blue/10 text-sap-blue">
+                    <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-md bg-finix-blue/10 text-finix-blue">
                       Diploma 0{idx + 1}
                     </span>
                     <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300">
@@ -111,7 +111,7 @@ export default function CapacitacionPage() {
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors font-display">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-finix-blue transition-colors font-display">
                     {diploma.title}
                   </h3>
 
@@ -130,7 +130,7 @@ export default function CapacitacionPage() {
                           <Link
                             key={mId}
                             href={`/mi-aula/${mId}`}
-                            className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5 hover:border-sap-blue hover:text-sap-blue transition-colors"
+                            className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5 hover:border-finix-blue hover:text-finix-blue transition-colors"
                           >
                             {mId}: {mod?.badge || mod?.title.split(':')[0]}
                           </Link>
@@ -146,7 +146,7 @@ export default function CapacitacionPage() {
                   </span>
                   <Link
                     href={`/mi-aula`}
-                    className="px-4 py-2 rounded-xl bg-sap-blue hover:bg-sky-600 text-white text-xs font-bold transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
+                    className="px-4 py-2 rounded-xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
                   >
                     Cursar Diploma <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
@@ -159,7 +159,7 @@ export default function CapacitacionPage() {
         {/* SECCIÓN 2: MALLA CURRICULAR DE LOS 30 MÓDULOS */}
         <section className="pt-8 space-y-8 border-t border-slate-200 dark:border-white/10">
           <div className="text-center max-w-3xl mx-auto space-y-2">
-            <span className="text-xs uppercase tracking-[0.25em] text-sap-blue dark:text-sky-400 font-bold">
+            <span className="text-xs uppercase tracking-[0.25em] text-finix-blue dark:text-sky-400 font-bold">
               Plan de Estudios Completo
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">
@@ -176,7 +176,7 @@ export default function CapacitacionPage() {
               return (
                 <div key={blockName} className="p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-6">
                   <div className="flex items-center gap-3 border-b border-slate-100 dark:border-white/5 pb-4">
-                    <div className="p-2.5 rounded-xl bg-sap-blue/10 text-sap-blue">
+                    <div className="p-2.5 rounded-xl bg-finix-blue/10 text-finix-blue">
                       <BookOpen className="w-5 h-5" />
                     </div>
                     <div>
@@ -194,11 +194,11 @@ export default function CapacitacionPage() {
                       <Link
                         key={mod.id}
                         href={`/mi-aula/${mod.id}`}
-                        className="p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-sap-blue hover:shadow-md transition-all space-y-3 flex flex-col justify-between group cursor-pointer"
+                        className="p-4 rounded-2xl border border-slate-200 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.01] hover:border-finix-blue hover:shadow-md transition-all space-y-3 flex flex-col justify-between group cursor-pointer"
                       >
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-[10px] font-mono font-bold text-sap-blue bg-sap-blue/10 px-2 py-0.5 rounded">
+                            <span className="text-[10px] font-mono font-bold text-finix-blue bg-finix-blue/10 px-2 py-0.5 rounded">
                               Módulo {mod.number} • {mod.id}
                             </span>
                             <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-slate-200 dark:bg-white/10 text-slate-700 dark:text-slate-300">
@@ -206,7 +206,7 @@ export default function CapacitacionPage() {
                             </span>
                           </div>
 
-                          <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-sap-blue transition-colors">
+                          <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white group-hover:text-finix-blue transition-colors">
                             {mod.title}
                           </h4>
 
@@ -219,7 +219,7 @@ export default function CapacitacionPage() {
                           <span className="text-[10px] text-slate-500 italic">
                             {mod.classes.length > 0 ? `${mod.classes.length} clases` : 'Evaluación sandbox'}
                           </span>
-                          <span className="text-[10px] font-bold text-sap-blue font-mono group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
+                          <span className="text-[10px] font-bold text-finix-blue font-mono group-hover:translate-x-1 transition-transform inline-flex items-center gap-0.5">
                             Entrar al Módulo <ChevronRight className="w-3 h-3" />
                           </span>
                         </div>

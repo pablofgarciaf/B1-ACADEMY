@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
 
     // Casos de automatización
     if (event === 'COURSE_EVALUATION_PASSED') {
-      const certificateId = `CERT-SAP-${courseCode}-${Date.now()}`;
+      const certificateId = `CERT-Finix ERP-${courseCode}-${Date.now()}`;
       const verificationHash = createHmac('sha256', secret).update(`${userId}:${courseCode}:${certificateId}`).digest('hex');
 
       // Simula el retorno procesado por n8n (emisión PDF, almacenamiento en Firebase y notificación)

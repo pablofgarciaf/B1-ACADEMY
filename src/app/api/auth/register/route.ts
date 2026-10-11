@@ -32,7 +32,7 @@ export async function POST(request: Request) {
     await adminDb.collection('usuarios').doc(user.uid).set({
       uid: user.uid, email: data.email, name: data.name, displayName: data.name, cedula: '',
       role: 'estudiante', status: 'active', createdAt: new Date().toISOString(), passwordChanged: true,
-      assignedTracks: ['sap-b1-core'], phone: data.phone ?? '', simuladorLevel: 1, simuladorXP: 0, completedMissions: 0,
+      assignedTracks: ['finix-erp-core'], phone: data.phone ?? '', simuladorLevel: 1, simuladorXP: 0, completedMissions: 0,
     });
     return NextResponse.json({ success: true }, { status: 201 });
   } catch {

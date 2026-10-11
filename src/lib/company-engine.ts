@@ -53,9 +53,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const key = `${prefix}-${date.slice(0, 4)}`; const seq = (profile.sequences[key] ?? 0) + 1;
     profile.sequences[key] = seq; return `${key}-${String(seq).padStart(4, '0')}`;
   };
-  /** Códigos al estilo SAP que enseñan las clases: clientes C20000+, proveedores V10000+, artículos A00001+. */
+  /** Códigos al estilo Finix ERP que enseñan las clases: clientes C20000+, proveedores V10000+, artículos A00001+. */
   const nextEmp = (): string => { const seq = (profile.sequences['COD-E'] ?? 0) + 1; profile.sequences['COD-E'] = seq; return `E${String(seq).padStart(3, '0')}`; };
-  const nextSap = (prefix: 'C' | 'V' | 'A'): string => {
+  const nextFinix = (prefix: 'C' | 'V' | 'A'): string => {
     const key = `COD-${prefix}`; const seq = (profile.sequences[key] ?? 0) + 1; profile.sequences[key] = seq;
     return prefix === 'C' ? `C${20000 + seq - 1}` : prefix === 'V' ? `V${10000 + seq - 1}` : `A${String(seq).padStart(5, '0')}`;
   };
@@ -178,9 +178,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'access': profile.lastAccess = now; result = uid; break;
     case 'sales': result = saveDocument('sales', command.data.docType, command.data.document); break;
     case 'purchase': result = saveDocument('purchase', command.data.docType, command.data.document); break;
-    case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextSap('C'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
-    case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextSap('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
-    case 'item': { result = nextSap('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
+    case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('C'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
+    case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
+    case 'item': { result = nextFinix('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
     case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, employeeCode: result }); break; }
     case 'journal': { const d = command.data; result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
     case 'reverse': {

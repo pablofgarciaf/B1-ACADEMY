@@ -26,8 +26,8 @@ service cloud.firestore {
       }
     }
 
-    // Writes are validated and committed with Firebase Admin by /api/sap/company.
-    match /sapCompanies/{uid} {
+    // Writes are validated and committed with Firebase Admin by /api/finix/company.
+    match /finixCompanies/{uid} {
       allow read: if owns(uid) || (signedIn() && profile().role in ['teacher', 'docente']);
       allow write: if false;
       match /{document=**} {

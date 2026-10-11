@@ -8,7 +8,7 @@ import { getQuizForManual } from '@/lib/manual-quizzes-data';
 import { firmarTexto } from '@/lib/tts-firma';
 
 export async function generateStaticParams() {
-  const dir = path.join(process.cwd(), 'public', 'Capacitacion SAP');
+  const dir = path.join(process.cwd(), 'public', 'Capacitacion Finix');
   const skipDirs = ['01_Revision_BUENAS', '02_Revision_MALAS_CUARENTENA', 'para corregir', '10_Service_11_CSProcess'];
   const items = fs.readdirSync(dir)
     .filter(i => {
@@ -26,7 +26,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
   const manualData = ALL_MANUALS.find(m => m.id === manualId);
   const displayTitle = manualData?.title || manualId.replace(/_/g, ' ');
   
-  const manualDir = path.join(process.cwd(), 'public', 'Capacitacion SAP', manualId);
+  const manualDir = path.join(process.cwd(), 'public', 'Capacitacion Finix', manualId);
   
   // 1. Obtener Markdown de texto (_slides.md) (Fallback por si no hay JSON)
   let content = "No se pudo cargar el contenido de texto para este manual.";
@@ -45,12 +45,12 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
     images = fs.readdirSync(imagesDir)
       .filter(f => f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.webp'))
       .sort() // Ordenar alfabéticamente para mantener secuencia de slides
-      .map(f => `/Capacitacion SAP/${manualId}/Imagenes_Diapositivas/${f}`);
+      .map(f => `/Capacitacion Finix/${manualId}/Imagenes_Diapositivas/${f}`);
   }
 
   // 3. El estándar oficial de la academia es el Modo Interactivo Narrado:
   // láminas nítidas extraídas de los manuales oficiales + teleprompter sincronizado +
-  // voz de Jorge con arranque automático a los 2s + simulador SAP + quiz.
+  // voz de Jorge con arranque automático a los 2s + simulador Finix ERP + quiz.
   const videoUrl: string | undefined = undefined;
 
   // 4. Leer los metadatos de sincronización (JSON Teleprompter)
@@ -67,7 +67,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
   }
 
   // 5. Cargar cuestionario técnico específico para este manual
-  const quizQuestions = getQuizForManual(manualId, displayTitle, manualData?.category || 'Módulo SAP');
+  const quizQuestions = getQuizForManual(manualId, displayTitle, manualData?.category || 'Módulo Finix ERP');
 
   return (
     <div className="h-screen max-h-screen flex flex-col bg-[#0a0a0f] text-gray-200 selection:bg-amber-500/30 overflow-hidden">
@@ -77,7 +77,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
         <div>
           <h1 className="text-base sm:text-lg font-medium text-white leading-tight">{displayTitle}</h1>
           <p className="text-xs text-gray-400">
-            {manualData?.category || 'Módulo SAP'} • {videoUrl ? 'Clase Interactiva Disponible' : `${images.length} diapositivas`}
+            {manualData?.category || 'Módulo Finix ERP'} • {videoUrl ? 'Clase Interactiva Disponible' : `${images.length} diapositivas`}
           </p>
         </div>
         <Link 

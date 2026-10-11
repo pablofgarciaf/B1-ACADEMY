@@ -16,9 +16,9 @@
     },
     "legend": {
       "cover": "Portada del manual (slide 1)",
-      "theory": "Contenido conceptual: diagrama, texto, tabla sin UI SAP",
-      "system": "Pantalla real de SAP B1: formulario, menú, diálogo, transacción",
-      "mixed": "Slide con UI SAP + texto explicativo superpuesto",
+      "theory": "Contenido conceptual: diagrama, texto, tabla sin UI Finix ERP",
+      "system": "Pantalla real de Finix ERP: formulario, menú, diálogo, transacción",
+      "mixed": "Slide con UI Finix ERP + texto explicativo superpuesto",
       "unknown": "No clasificado"
     }
   },
@@ -5268,7 +5268,7 @@
         "system": 16
       }
     },
-    "22.7_Introduccion_a_SAP_Analytics": {
+    "22.7_Introduccion_a_Finix_Analytics": {
       "totalSlides": 45,
       "category": "conceptual",
       "slides": {
@@ -5549,7 +5549,7 @@
         "system": 1
       }
     },
-    "20.1_Metodologia_de_Implementacion_SAP": {
+    "20.1_Metodologia_de_Implementacion_Finix": {
       "totalSlides": 34,
       "category": "conceptual",
       "slides": {
@@ -8227,120 +8227,120 @@
         "system": 21
       }
     },
-    "1.1_Introduccion_a_SAP_Business_One": {
+    "1.1_Introduccion_a_Finix_ERP": {
       "totalSlides": 19,
       "category": "conceptual",
       "slides": {
         "slide_1": {
-          "filename": "060_Slide_01_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_01_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 1,
           "type": "cover",
           "confidence": "predicted"
         },
         "slide_2": {
-          "filename": "060_Slide_02_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_02_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 2,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_3": {
-          "filename": "060_Slide_03_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_03_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 3,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_4": {
-          "filename": "060_Slide_04_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_04_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 4,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_5": {
-          "filename": "060_Slide_05_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_05_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 5,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_6": {
-          "filename": "060_Slide_06_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_06_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 6,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_7": {
-          "filename": "060_Slide_07_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_07_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 7,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_8": {
-          "filename": "060_Slide_08_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_08_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 8,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_9": {
-          "filename": "060_Slide_09_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_09_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 9,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_10": {
-          "filename": "060_Slide_10_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_10_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 10,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_11": {
-          "filename": "060_Slide_11_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_11_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 11,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_12": {
-          "filename": "060_Slide_12_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_12_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 12,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_13": {
-          "filename": "060_Slide_13_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_13_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 13,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_14": {
-          "filename": "060_Slide_14_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_14_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 14,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_15": {
-          "filename": "060_Slide_15_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_15_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 15,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_16": {
-          "filename": "060_Slide_16_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_16_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 16,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_17": {
-          "filename": "060_Slide_17_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_17_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 17,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_18": {
-          "filename": "060_Slide_18_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_18_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 18,
           "type": "theory",
           "confidence": "predicted"
         },
         "slide_19": {
-          "filename": "060_Slide_19_10_Intro_11_Overview_IntroSAPB1_ES.webp",
+          "filename": "060_Slide_19_10_Intro_11_Overview_IntroFinix_ES.webp",
           "slideNum": 19,
           "type": "theory",
           "confidence": "predicted"
@@ -8351,7 +8351,7 @@
         "theory": 18
       }
     },
-    "1.2_Primeros_Pasos_en_SAP_Business_One": {
+    "1.2_Primeros_Pasos_en_Finix_ERP": {
       "totalSlides": 29,
       "category": "conceptual",
       "slides": {

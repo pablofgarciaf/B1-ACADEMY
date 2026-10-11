@@ -1,4 +1,4 @@
-# 🏢 Simulador SAP B1: Sistema de Departamentos, Seguridad y Aislamiento por Alumno
+# 🏢 Simulador Finix ERP: Sistema de Departamentos, Seguridad y Aislamiento por Alumno
 
 ## 📌 Estado: ✅ PRODUCCIÓN A+ (Build Exitoso - 25/25 Módulos Operativos)
 
@@ -6,9 +6,9 @@ Este documento detalla la arquitectura de seguridad departamental, el aislamient
 
 ---
 
-## 👥 1. Sistema de Usuarios por Departamento (Roles SAP B1)
+## 👥 1. Sistema de Usuarios por Departamento (Roles Finix ERP)
 
-Para que el estudiante aprenda que en una empresa real no todos los usuarios tienen acceso a todas las pantallas, se implementó el sistema de **Identidades Departamentales SAP B1**.
+Para que el estudiante aprenda que en una empresa real no todos los usuarios tienen acceso a todas las pantallas, se implementó el sistema de **Identidades Departamentales Finix ERP**.
 
 A partir de la cuenta principal del alumno (`correo@ejemplo.com`), el simulador genera y reconoce automáticamente 5 perfiles de trabajo:
 
@@ -39,13 +39,13 @@ graph TD
 
 ---
 
-## 🛑 2. Modal de Autorización Nativo SAP B1 (Error #1320-04)
+## 🛑 2. Modal de Autorización Nativo Finix ERP (Error #1320-04)
 
 Cuando un usuario de departamento intenta abrir un módulo fuera de su ámbito (por ejemplo, `ventas.alumno@gmail.com` abriendo *Finanzas* o *Gestión de Bancos*):
 
-1. **Intercepción Inmediata:** `SAPDesktopShell.tsx` valida el permiso del módulo antes de llamar a `createWindow()`.
-2. **Modal Auténtico SAP B1:** Se despliega una ventana modal con estilo gráfico exacto de SAP Business One:
-   - Encabezado: *"Error de autorización de SAP Business One"*
+1. **Intercepción Inmediata:** `FinixDesktopShell.tsx` valida el permiso del módulo antes de llamar a `createWindow()`.
+2. **Modal Auténtico Finix ERP:** Se despliega una ventana modal con estilo gráfico exacto de Finix ERP:
+   - Encabezado: *"Error de autorización de Finix ERP"*
    - Código: *"[Mensaje 1320-04] No tiene autorización para acceder a esta función."*
    - Opciones:
      - **Cambiar a Superusuario:** Permite elevar temporalmente permisos sin cerrar sesión.
@@ -64,13 +64,13 @@ sequenceDiagram
     actor Alumno as Estudiante (UID)
     participant Shell as /simulador o /mi-aula
     participant Context as CompanyContext (useCompany)
-    participant API as /api/sap/company
+    participant API as /api/finix/company
     participant DB as Supabase / Firestore
 
     Alumno->>Shell: Abre Pantalla (ej. Factura / Socio)
     Shell->>Context: Solicita datos de empresa
     Note over Context,API: Header 'X-Empresa: curso' (B1 Center) o 'X-Empresa: libre'
-    Context->>API: GET /api/sap/company (con session token)
+    Context->>API: GET /api/finix/company (con session token)
     API->>DB: Consulta partición uid + empresa
     DB-->>API: Datos aislados del alumno
     API-->>Context: Dataset B1 Center del alumno
@@ -98,19 +98,9 @@ Ambos simuladores ahora comparten el mismo catálogo de **28 pantallas reales in
 
 ---
 
-## 📊 5. Certificación de Auditoría para Astra
-
-- **Total Módulos:** 25 módulos
-- **Estado General:** 🟢 **100% OPERATIVO / LISTO** en todos los 25 módulos.
-- **Redundancias de Datos:** 0 (todas las 157 duplicaciones de `"Datos a registrar:"` eliminadas).
-- **Errores Bloqueantes:** 0
-- **Directorio de Informes:** `docs/informes_modulos/INFORME_MODULO_01.md` al `INFORME_MODULO_25.md`.
-- **Índice Central:** [[INDEX_AUDITORIA_MODULOS]]
-
 ---
 
 ## 🔗 Enlaces Relacionados
-- [[09_Simulador_Integral_Desktop]] - Arquitectura del escritorio virtual y gestor MDI.
-- [[06_LMS_Architecture]] - Arquitectura del aula virtual y reproductores interactivos.
-- [[INDEX_AUDITORIA_MODULOS]] - Índice maestro de los 25 informes de auditoría modular.
-- [[12_Malla_Curricular]] - Estructura pedagógica de los 25 módulos.
+- 09_Simulador_Integral_Desktop - Arquitectura del escritorio virtual y gestor MDI.
+- 06_LMS_Architecture - Arquitectura del aula virtual y reproductores interactivos.
+- 12_Malla_Curricular - Estructura pedagógica de los 25 módulos.

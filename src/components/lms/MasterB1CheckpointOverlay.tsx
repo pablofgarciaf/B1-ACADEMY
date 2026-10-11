@@ -43,12 +43,12 @@ export default function MasterB1CheckpointOverlay({
   // Voz oficial de la academia (Jorge), la misma de los videos de los manuales.
   const { isSpeaking, speakText, stopSpeaking } = useAcademyVoice();
 
-  const guideTitle = stepGuide?.title || simConfig?.scenarioGoal || 'Práctica interactiva en el Simulador SAP B1';
+  const guideTitle = stepGuide?.title || simConfig?.scenarioGoal || 'Práctica interactiva en el Simulador Finix ERP';
   const menuPath = stepGuide?.menu_path || simConfig?.moduleName || 'Módulo de Operación';
 
   const speakInstruction = React.useCallback(() => {
     if (!audioEnabled) return;
-    speakText(`¡Atención! Soy Master B1, tu profesor virtual. Hemos pausado la clase en la diapositiva ${slideIndex}. Para continuar, abre el simulador de SAP y realiza la siguiente actividad: ${guideTitle}. Revisa la ruta en el menú: ${menuPath}.`);
+    speakText(`¡Atención! Soy Master B1, tu profesor virtual. Hemos pausado la clase en la diapositiva ${slideIndex}. Para continuar, abre el simulador de Finix ERP y realiza la siguiente actividad: ${guideTitle}. Revisa la ruta en el menú: ${menuPath}.`);
   }, [audioEnabled, slideIndex, guideTitle, menuPath, speakText]);
 
   useEffect(() => {
@@ -121,7 +121,7 @@ export default function MasterB1CheckpointOverlay({
         <div className="mt-4 space-y-3">
           <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3.5">
             <p className="text-xs sm:text-sm text-amber-100 font-medium leading-relaxed">
-              &ldquo;¡Alto ahí! La mejor manera de dominar SAP Business One es practicando en caliente. 
+              &ldquo;¡Alto ahí! La mejor manera de dominar Finix ERP es practicando en caliente. 
               He detenido el video para que ejecutes la transacción en el simulador interactivo antes de seguir.&rdquo;
             </p>
           </div>
@@ -130,7 +130,7 @@ export default function MasterB1CheckpointOverlay({
           <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-4 space-y-2.5">
             <div className="flex items-center gap-2 text-xs font-bold text-blue-400">
               <Compass size={14} className="shrink-0" />
-              <span className="truncate">Ruta en SAP: {menuPath}</span>
+              <span className="truncate">Ruta en Finix ERP: {menuPath}</span>
             </div>
             
             <h4 className="text-sm font-semibold text-white">
@@ -166,7 +166,7 @@ export default function MasterB1CheckpointOverlay({
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white px-4 py-2.5 text-xs font-bold shadow-lg transition-all active:scale-95"
           >
             <Wrench size={14} />
-            <span>Abrir Simulador SAP</span>
+            <span>Abrir Simulador Finix ERP</span>
           </button>
 
           <button

@@ -1,15 +1,14 @@
-# 📚 PLAN MAESTRO: CLASES MAGISTRALES PEDAGÓGICAS SAP BUSINESS ONE (MANUALES)
+# 📚 PLAN MAESTRO: CLASES MAGISTRALES PEDAGÓGICAS FINIX ERP (MANUALES)
 
 > **PROPÓSITO DE ESTE DOCUMENTO:**
-> Este archivo es la **única fuente de verdad** y la **bitácora de progreso** para la transformación pedagógica de toda la academia SAP Business One.
-> Si en algún momento la sesión se interrumpe o deseas alternar entre modelos de IA (Claude, ChatGPT, Antigravity), puedes copiar este documento íntegro para continuar exactamente en el manual pendiente.
+> Este archivo es la **única fuente de verdad** y la **bitácora de progreso** para la transformación pedagógica de toda la academia Finix ERP.
 
 ---
 
 ## 🎯 1. Estándar Pedagógico No Negociable (Instrucciones para la IA)
 
 Cualquier modelo de IA que elabore las lecciones debe cumplir estas **5 Reglas de Oro**:
-1. **Rol del Instructor:** Actúas como un **Consultor Senior y Docente de Élite de SAP Business One**. Explicas la lógica operativa y empresarial detrás de cada módulo.
+1. **Rol del Instructor:** Actúas como un **Consultor Senior y Docente de Élite de Finix ERP**. Explicas la lógica operativa y empresarial detrás de cada módulo.
 2. **PROHIBIDO leer números o encabezados mecánicos:** Nunca digas *'Diapositiva 1'*, *'3 Escenario empresarial'*, *'4 Herramientas de servicio'* ni leas el índice.
 3. **PROHIBIDO leer viñetas de corrido sin puntuación:** Todo debe enseñarse mediante una narrativa fluida, con ejemplos de negocio (ej. clientes como *OEC Computers*), explicando el *por qué*, el *cómo* y su repercusión contable y operativa.
 4. **Puntuación y Prosodia Impecable:** Cada frase debe terminar con su punto (`.`) y estar estructurada con comas para que la voz neuronal realice pausas de respiración y entonación didáctica natural.
@@ -22,9 +21,9 @@ Cualquier modelo de IA que elabore las lecciones debe cumplir estas **5 Reglas d
 Si vas a procesar un manual en ChatGPT o Claude, copia y pega el siguiente prompt:
 
 ```markdown
-Eres un Consultor Senior y Docente Titular de SAP Business One.
+Eres un Consultor Senior y Docente Titular de Finix ERP.
 Vamos a crear la clase magistral para el manual: [NOMBRE_DEL_MANUAL].
-Toma como base las diapositivas y el contenido técnico en public/Capacitacion SAP/[NOMBRE_DEL_MANUAL]/.
+Toma como base las diapositivas y el contenido técnico en public/Capacitacion Finix/[NOMBRE_DEL_MANUAL]/.
 
 Requisitos para el guion (clase_sync.json):
 1. Redacta una explicación pedagógica magistral para cada diapositiva útil (sin leer títulos ni números de slide).
@@ -114,7 +113,7 @@ python scratch/pedagogical_lesson_generator.py --manual "[NOMBRE_DEL_MANUAL]"
 | 57 | `10_Impl_35_SystemSetup_UIConfigurationTemplates_ES` | 27 | [x] Completado (Clase Pedagógica)|
 | 58 | `10_Impl_36_SystemSetup_Print_layouts` | 17 | [x] Completado (Clase Pedagógica)|
 | 59 | `10_Impl_39_SystemSetup_EmailPrefrences` | 27 | [x] Completado (Clase Pedagógica)|
-| 60 | `10_Intro_11_Overview_IntroSAPB1_ES` | 19 | [x] Completado (Clase Pedagógica)|
+| 60 | `10_Intro_11_Overview_IntroFinix_ES` | 19 | [x] Completado (Clase Pedagógica)|
 | 61 | `10_Intro_12_Overview_GettingStarted_ES` | 29 | [x] Completado (Clase Pedagógica)|
 | 62 | `10_Inven_13_WM_PhyInv` | 21 | [x] Completado (Clase Pedagógica)|
 | 63 | `10_Inven_21_PNP_PNPSales` | 19 | [x] Completado (Clase Pedagógica)|
@@ -177,12 +176,3 @@ python scratch/pedagogical_lesson_generator.py --manual "[NOMBRE_DEL_MANUAL]"
 | 120 | `CSL02_Procurement_Process_Solution_ES` | 0 | ⚪ Sin diapositivas (Caso Práctico / SQL) |
 
 ---
-
-## 🔗 Enlaces Relacionados (Obsidian Vault)
-
-- [[06_LMS_Architecture]] - Arquitectura general del LMS y flujo de lecciones.
-- [[06_Manuales]] - Catálogo e índice de los manuales SAP Business One.
-- [[07_Reconstruccion_Manuales_CS]] - Reconstrucción técnica de manuales prácticos CS.
-- [[08_B1_Secure_Exam_App]] - Arquitectura de evaluación segura y aplicación de certificación.
-- [[09_Simulador_Integral_Desktop]] - Simulador integral de escritorio SAP B1 y atlas visual.
-

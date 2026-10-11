@@ -32,7 +32,7 @@ export function LessonInteractiveSection({ moduleTitle, moduleCode, isLastLesson
           onClick={() => setActiveTab('video')}
           className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 ${
             activeTab === 'video'
-              ? 'bg-white dark:bg-white/10 text-sap-blue shadow-sm'
+              ? 'bg-white dark:bg-white/10 text-finix-blue shadow-sm'
               : 'text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/5'
           }`}
         >

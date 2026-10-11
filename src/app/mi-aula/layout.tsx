@@ -7,15 +7,15 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   // 55 caracteres (Estándar 50-60)
-  title: 'Mi Aula Virtual SAP Business One | Cursos y Clases 2026',
+  title: 'Mi Aula Virtual Finix ERP | Cursos y Clases 2026',
   // 157 caracteres (Estándar 120-160)
-  description: 'Clases magistrales de SAP Business One 10.0 con Tutor IA, simulador interactivo, prácticas guiadas y diplomas propios basados en evaluación técnica.',
+  description: 'Clases magistrales de Finix ERP 10.0 con Tutor IA, simulador interactivo, prácticas guiadas y diplomas propios basados en evaluación técnica.',
   alternates: {
     canonical: 'https://b1-academy.vercel.app/mi-aula',
   },
   openGraph: {
-    title: 'Mi Aula Virtual SAP Business One | Cursos y Clases 2026',
-    description: 'Clases magistrales de SAP Business One 10.0 con Tutor IA, simulador interactivo, prácticas guiadas y diplomas propios.',
+    title: 'Mi Aula Virtual Finix ERP | Cursos y Clases 2026',
+    description: 'Clases magistrales de Finix ERP 10.0 con Tutor IA, simulador interactivo, prácticas guiadas y diplomas propios.',
     url: 'https://b1-academy.vercel.app/mi-aula',
     siteName: 'B1 Academy',
   type: 'website',

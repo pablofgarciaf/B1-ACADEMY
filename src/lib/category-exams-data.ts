@@ -9,28 +9,28 @@ export interface CategoryExam {
 }
 
 export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
-  "Introducción a SAP Business One": {
-    categoryName: "Introducción a SAP Business One",
-    badgeTitle: "Especialista en Fundamentos y Arquitectura SAP B1",
+  "Introducción a Finix ERP": {
+    categoryName: "Introducción a Finix ERP",
+    badgeTitle: "Especialista en Fundamentos y Arquitectura Finix ERP",
     description: "Evaluación rigurosa de 10 preguntas sobre arquitectura en memoria HANA, Service Layer, navegación Fiori, licenciamiento, parametrizaciones y modelo de datos relacional. Exige un 90% de aciertos para certificar.",
     passingScore: 9,
     questions: [
       {
-        q: "1. ¿Cuál es la principal diferencia entre la arquitectura de base de datos SAP HANA y Microsoft SQL Server en SAP Business One?",
+        q: "1. ¿Cuál es la principal diferencia entre la arquitectura de base de datos base de datos en memoria y Microsoft SQL Server en Finix ERP?",
         options: [
-          "SAP HANA no requiere servidor físico y funciona únicamente en navegadores móviles.",
-          "SAP HANA ejecuta el procesamiento de datos directamente en memoria RAM con estructura columnar, permitiendo ejecutar analítica transaccional en tiempo real.",
+          "base de datos en memoria no requiere servidor físico y funciona únicamente en navegadores móviles.",
+          "base de datos en memoria ejecuta el procesamiento de datos directamente en memoria RAM con estructura columnar, permitiendo ejecutar analítica transaccional en tiempo real.",
           "Microsoft SQL Server no permite crear interlocutores comerciales de tipo proveedor.",
-          "SAP HANA solo permite guardar borradores de documentos sin asientos contables."
+          "base de datos en memoria solo permite guardar borradores de documentos sin asientos contables."
         ],
         answer: 1,
-        explanation: "SAP HANA es una base de datos in-memory con compresión columnar avanzada que acelera reportes y transacciones masivas.",
-        topic: "Arquitectura In-Memory SAP HANA",
-        recommendedManualId: "10_Intro_11_Overview_IntroSAPB1_ES",
-        recommendedManualTitle: "Introducción a SAP Business One"
+        explanation: "base de datos en memoria es una base de datos in-memory con compresión columnar avanzada que acelera reportes y transacciones masivas.",
+        topic: "Arquitectura In-Memory base de datos en memoria",
+        recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
+        recommendedManualTitle: "Introducción a Finix ERP"
       },
       {
-        q: "2. En el modelo relacional de SAP Business One, ¿qué tabla almacena los datos principales de los Interlocutores Comerciales (Clientes, Proveedores y Leads)?",
+        q: "2. En el modelo relacional de Finix ERP, ¿qué tabla almacena los datos principales de los Interlocutores Comerciales (Clientes, Proveedores y Leads)?",
         options: [
           "OITM",
           "OCRD",
@@ -44,18 +44,18 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Documentos y Datos Maestros: Conceptos Generales"
       },
       {
-        q: "3. Al navegar en cualquier formulario de SAP Business One, ¿qué función cumple hacer clic en la flecha de enlace naranja situada junto a un campo?",
+        q: "3. Al navegar en cualquier formulario de Finix ERP, ¿qué función cumple hacer clic en la flecha de enlace naranja situada junto a un campo?",
         options: [
-          "Cierra inmediatamente el cliente SAP para liberar licencias.",
+          "Cierra inmediatamente el cliente Finix ERP para liberar licencias.",
           "Navega en profundidad (drill-down) abriendo directamente el registro maestro o documento origen correspondiente.",
           "Elimina el valor del campo y lo restablece a cero.",
           "Envía una alerta de aprobación al gerente financiero."
         ],
         answer: 1,
-        explanation: "La flecha naranja es la herramienta de navegación nativa de SAP B1 para acceder al dato maestro o documento relacionado en un solo clic.",
+        explanation: "La flecha naranja es la herramienta de navegación nativa de Finix ERP para acceder al dato maestro o documento relacionado en un solo clic.",
         topic: "Navegación con Flecha Naranja",
         recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-        recommendedManualTitle: "Primeros Pasos en SAP Business One"
+        recommendedManualTitle: "Primeros Pasos en Finix ERP"
       },
       {
         q: "4. ¿Qué sucede con los registros contables y el inventario cuando un usuario guarda un documento como 'Documento Preliminar' (Borrador)?",
@@ -76,14 +76,14 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         options: [
           "Abrir la consola de comandos de Windows.",
           "Activar la opción 'Información del Sistema' desde el menú Vista o mediante el atajo de teclado Ctrl + Shift + I.",
-          "Reiniciar el servidor de licencias de SAP.",
+          "Reiniciar el servidor de licencias de Finix ERP.",
           "Instalar un plug-in de navegador de terceros."
         ],
         answer: 1,
         explanation: "Vista > Información del Sistema (Ctrl+Shift+I) es la herramienta fundamental de todo consultor para identificar tablas y campos en pantalla.",
         topic: "Información del Sistema (Ctrl+Shift+I)",
         recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-        recommendedManualTitle: "Primeros Pasos en SAP Business One"
+        recommendedManualTitle: "Primeros Pasos en Finix ERP"
       },
       {
         q: "6. En un documento de marketing, ¿qué tipo de línea permite ingresar notas detalladas o instrucciones al transportista sin valor económico?",
@@ -100,7 +100,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Documentos y Datos Maestros: Conceptos Generales"
       },
       {
-        q: "7. ¿Qué componente del ecosistema SAP B1 gestiona centralizadamente los servidores, empresas registradas y el servidor de licencias?",
+        q: "7. ¿Qué componente del ecosistema Finix ERP gestiona centralizadamente los servidores, empresas registradas y el servidor de licencias?",
         options: [
           "System Landscape Directory (SLD)",
           "Windows Defender Firewall",
@@ -108,13 +108,13 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
           "Crystal Reports Viewer"
         ],
         answer: 0,
-        explanation: "El SLD centraliza la arquitectura de servidores, bases de datos y servicios del entorno SAP B1.",
+        explanation: "El SLD centraliza la arquitectura de servidores, bases de datos y servicios del entorno Finix ERP.",
         topic: "Arquitectura y Administración del SLD",
-        recommendedManualId: "10_Intro_11_Overview_IntroSAPB1_ES",
-        recommendedManualTitle: "Introducción a SAP Business One"
+        recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
+        recommendedManualTitle: "Introducción a Finix ERP"
       },
       {
-        q: "8. Cuando un cliente potencial (Lead) concreta su primera compra, ¿cuál es la mejor práctica en SAP B1?",
+        q: "8. Cuando un cliente potencial (Lead) concreta su primera compra, ¿cuál es la mejor práctica en Finix ERP?",
         options: [
           "Crear un nuevo cliente desde cero y borrar el prospecto anterior.",
           "Cambiar el CardType del registro existente de Lead a Cliente para conservar todo el historial de cotizaciones y actividades.",
@@ -139,10 +139,10 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         explanation: "Las autorizaciones de usuario y la asignación de licencias determinan exactamente qué menús y funciones están disponibles.",
         topic: "Matriz de Autorizaciones y Permisos",
         recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-        recommendedManualTitle: "Primeros Pasos en SAP Business One"
+        recommendedManualTitle: "Primeros Pasos en Finix ERP"
       },
       {
-        q: "10. ¿Cuál es el protocolo estándar de SAP B1 para garantizar trazabilidad cuando una Orden de Venta se despacha al cliente?",
+        q: "10. ¿Cuál es el protocolo estándar de Finix ERP para garantizar trazabilidad cuando una Orden de Venta se despacha al cliente?",
         options: [
           "Digitar nuevamente todos los artículos en una Entrega independiente sin enlazar.",
           "Utilizar la función 'Copiar a Entrega' desde el pedido, actualizando el estado de las líneas base y reflejándolo en el Mapa de Relaciones.",
@@ -164,7 +164,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
     passingScore: 9,
     questions: [
       {
-        q: "1. ¿Qué prefijo obligatorio asigna automáticamente SAP Business One a todas las Tablas Definidas por el Usuario (UDT) creadas en el sistema?",
+        q: "1. ¿Qué prefijo obligatorio asigna automáticamente Finix ERP a todas las Tablas Definidas por el Usuario (UDT) creadas en el sistema?",
         options: [
           "SYS_",
           "@",
@@ -172,7 +172,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
           "USER_"
         ],
         answer: 1,
-        explanation: "Todas las tablas de usuario creadas en SAP B1 inician con el prefijo @ (ejemplo: @MI_TABLA) para no colisionar con las tablas nativas O***.",
+        explanation: "Todas las tablas de usuario creadas en Finix ERP inician con el prefijo @ (ejemplo: @MI_TABLA) para no colisionar con las tablas nativas O***.",
         topic: "Tablas de Usuario (UDT) y Prefijo @",
         recommendedManualId: "10_Impl_11_CustomTools_Queries_ES",
         recommendedManualTitle: "Consultas Personalizadas (Queries)"
@@ -223,12 +223,12 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         q: "5. ¿Por qué no se debe utilizar nunca sentencias SQL INSERT o DELETE directamente sobre tablas maestras como OCRD u OITM?",
         options: [
           "Porque SQL Server borraría el archivo de log de transacciones.",
-          "Porque elude la capa de validación de negocio (DI-API/Service Layer), desbalancea las cuentas de control y anula la garantía oficial de soporte de SAP.",
+          "Porque elude la capa de validación de negocio (DI-API/Service Layer), desbalancea las cuentas de control y anula la garantía oficial de soporte de Finix ERP.",
           "Porque solo se permiten consultas en idioma inglés.",
           "Porque el monitor del usuario se bloquearía durante 24 horas."
         ],
         answer: 1,
-        explanation: "Escribir directamente en tablas de SAP B1 destruye la integridad contable y referencial del ERP, invalidando el contrato de soporte con SAP.",
+        explanation: "Escribir directamente en tablas de Finix ERP destruye la integridad contable y referencial del ERP, invalidando el contrato de soporte con Finix ERP.",
         topic: "Garantía de Soporte e Integridad de Base de Datos",
         recommendedManualId: "10_Impl_11_CustomTools_Queries_ES",
         recommendedManualTitle: "Consultas Personalizadas (Queries)"
@@ -237,12 +237,12 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         q: "6. En una búsqueda formateada con sintaxis $[$Item.Column.Number$], ¿qué representa el número de Item?",
         options: [
           "El código del artículo en inventario.",
-          "El identificador numérico interno único del control visual o campo asignado por el diseñador de ventanas de SAP B1.",
+          "El identificador numérico interno único del control visual o campo asignado por el diseñador de ventanas de Finix ERP.",
           "El número de teléfono del usuario conectado.",
           "El tipo de cambio del euro."
         ],
         answer: 1,
-        explanation: "En la arquitectura de interfaz de SAP B1, cada control visual de una ventana tiene un identificador entero llamado Item UID.",
+        explanation: "En la arquitectura de interfaz de Finix ERP, cada control visual de una ventana tiene un identificador entero llamado Item UID.",
         topic: "Sintaxis Interna de Controles en Búsquedas Formateadas",
         recommendedManualId: "10_Impl_11_CustomTools_Queries_ES",
         recommendedManualTitle: "Consultas Personalizadas (Queries)"
@@ -276,7 +276,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Consultas Personalizadas (Queries)"
       },
       {
-        q: "9. ¿Cuál es la función del archivo REFDB accesible desde las herramientas de desarrollo de SAP B1?",
+        q: "9. ¿Cuál es la función del archivo REFDB accesible desde las herramientas de desarrollo de Finix ERP?",
         options: [
           "Diccionario de datos canónico que detalla tipos de campo, longitud máxima, relaciones foráneas y restricciones.",
           "Un archivo para reproducir música durante la jornada laboral.",
@@ -290,7 +290,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Consultas Personalizadas (Queries)"
       },
       {
-        q: "10. ¿Qué herramienta estándar de SAP B1 se utiliza para importar masivamente datos maestros desde archivos de texto o Excel en una implementación inicial?",
+        q: "10. ¿Qué herramienta estándar de Finix ERP se utiliza para importar masivamente datos maestros desde archivos de texto o Excel en una implementación inicial?",
         options: [
           "Data Transfer Workbench (DTW) conectado vía DI-API.",
           "Copiar y pegar con el botón derecho en el menú inicio.",
@@ -307,7 +307,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
   },
   "Casos Prácticos y Ejercicios": {
     categoryName: "Casos Prácticos y Ejercicios",
-    badgeTitle: "Consultor Certificado en Casos Prácticos y Simulación SAP B1",
+    badgeTitle: "Consultor Certificado en Casos Prácticos y Simulación Finix ERP",
     description: "Evaluación rigurosa de 10 preguntas prácticas de consultoría que certifica la destreza en construcción de consultas SQL HANA, automatización de alertas, diseño de dashboards, personalización de cockpits y ciclo integral Procure-to-Pay.",
     passingScore: 9,
     questions: [
@@ -315,7 +315,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         q: "1. En una consulta SQL HANA sobre la tabla OCRD, ¿por qué es imperativo filtrar por CardType = 'C' para reportes de cartera?",
         options: [
           "Porque OCRD contiene clientes ('C'), proveedores ('S') y prospectos ('L'); sin el filtro, la suma de saldos distorsiona la cartera por cobrar.",
-          "Porque SAP HANA arroja un error de sintaxis si no se especifica el tipo de socio.",
+          "Porque base de datos en memoria arroja un error de sintaxis si no se especifica el tipo de socio.",
           "Porque los proveedores no tienen asignada una cuenta contable en el plan de cuentas.",
           "Porque 'C' fuerza la conversión de moneda extranjera a moneda local."
         ],
@@ -326,7 +326,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Práctica de Consultas (Query Practice)"
       },
       {
-        q: "2. Al estructurar una consulta interactiva en SAP B1, ¿qué mecanismo técnico permite solicitar una fecha al usuario en tiempo de ejecución sin alterar el código?",
+        q: "2. Al estructurar una consulta interactiva en Finix ERP, ¿qué mecanismo técnico permite solicitar una fecha al usuario en tiempo de ejecución sin alterar el código?",
         options: [
           "La variable de parámetro [%0] vinculada con un operador relacional (ej. DocDate > [%0]).",
           "Una macro de Visual Basic incrustada en el cliente.",
@@ -334,7 +334,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
           "El uso de la función SQL NOW() sin parámetros."
         ],
         answer: 0,
-        explanation: "La sintaxis [%0], [%1]... invoca el asistente de criterios de selección nativo de SAP B1.",
+        explanation: "La sintaxis [%0], [%1]... invoca el asistente de criterios de selección nativo de Finix ERP.",
         topic: "Parámetros Dinámicos en Consultas",
         recommendedManualId: "CSI08_Query_Practice",
         recommendedManualTitle: "Práctica de Consultas (Query Practice)"
@@ -348,7 +348,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
           "CardCode"
         ],
         answer: 1,
-        explanation: "DocEntry es el identificador numérico interno e inmutable utilizado por SAP B1 para todas las relaciones relacionales cabecera-detalle.",
+        explanation: "DocEntry es el identificador numérico interno e inmutable utilizado por Finix ERP para todas las relaciones relacionales cabecera-detalle.",
         topic: "Claves de Unión Multitabla",
         recommendedManualId: "CSI08_Query_Practice",
         recommendedManualTitle: "Práctica de Consultas (Query Practice)"
@@ -396,7 +396,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Caso Práctico: Introducción"
       },
       {
-        q: "7. ¿Qué función de búsqueda avanzada en SAP HANA permite localizar rápidamente un documento por cliente, fecha y texto en todos los objetos de la empresa?",
+        q: "7. ¿Qué función de búsqueda avanzada en base de datos en memoria permite localizar rápidamente un documento por cliente, fecha y texto en todos los objetos de la empresa?",
         options: [
           "Enterprise Search (Búsqueda Empresarial en Memoria).",
           "Buscar Menús en la esquina superior izquierda.",
@@ -405,7 +405,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         ],
         answer: 0,
         explanation: "Enterprise Search indexa en memoria HANA todos los datos maestros y documentos para búsquedas instantáneas tipo Google.",
-        topic: "Enterprise Search en SAP HANA",
+        topic: "Enterprise Search en base de datos en memoria",
         recommendedManualId: "CSL01_Introduction_ES",
         recommendedManualTitle: "Caso Práctico: Introducción"
       },
@@ -424,7 +424,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Caso Práctico: Proceso de Compras"
       },
       {
-        q: "9. Al recibir la Factura de Proveedores basada en una EMPC previa, ¿qué movimiento realiza el motor contable de SAP B1?",
+        q: "9. Al recibir la Factura de Proveedores basada en una EMPC previa, ¿qué movimiento realiza el motor contable de Finix ERP?",
         options: [
           "Debita la cuenta puente de compensación y acredita la cuenta por pagar real del Proveedor.",
           "Duplica el valor del inventario en el activo circulante.",
@@ -438,7 +438,7 @@ export const CATEGORY_EXAMS: Record<string, CategoryExam> = {
         recommendedManualTitle: "Caso Práctico: Proceso de Compras"
       },
       {
-        q: "10. ¿Qué herramienta gráfica de SAP B1 permite auditar en un solo diagrama el flujo completo desde la Solicitud de Pedido hasta el Pago Efectuado?",
+        q: "10. ¿Qué herramienta gráfica de Finix ERP permite auditar en un solo diagrama el flujo completo desde la Solicitud de Pedido hasta el Pago Efectuado?",
         options: [
           "El Mapa de Relaciones del documento.",
           "El Plan de Cuentas contable.",
@@ -463,15 +463,15 @@ export function getCategoryExam(categoryName: string): CategoryExam {
 
   const baseQuestions: QuizQuestion[] = [
     {
-      q: `1. En la arquitectura empresarial de SAP Business One, ¿cuál es el principio clave que rige el módulo de ${categoryName}?`,
+      q: `1. En la arquitectura empresarial de Finix ERP, ¿cuál es el principio clave que rige el módulo de ${categoryName}?`,
       options: [
         "La duplicación de documentos en carpetas físicas locales.",
         `La integración total en tiempo real con la contabilidad financiera y el inventario sin interfaces externas.`,
-        "El uso de software externo no homologado por SAP.",
+        "El uso de software externo no homologado por Finix ERP.",
         "La eliminación de controles de autorización de usuarios."
       ],
       answer: 1,
-      explanation: `Todas las operaciones de ${categoryName} en SAP B1 actualizan en tiempo real los libros mayores y la trazabilidad del sistema.`,
+      explanation: `Todas las operaciones de ${categoryName} en Finix ERP actualizan en tiempo real los libros mayores y la trazabilidad del sistema.`,
       topic: `Integración Transaccional en ${categoryName}`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
@@ -489,7 +489,7 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
-      q: `3. ¿Cómo garantiza SAP Business One la trazabilidad de cualquier transacción ejecutada dentro de ${categoryName}?`,
+      q: `3. ¿Cómo garantiza Finix ERP la trazabilidad de cualquier transacción ejecutada dentro de ${categoryName}?`,
       options: [
         "Mediante el Mapa de Relaciones visual y el Registro de Auditoría de Transacciones (Audit Log).",
         "Imprimiendo un comprobante físico que se archiva manualmente.",
@@ -502,11 +502,11 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
-      q: `4. Si una auditoría detecta discrepancias en los registros de ${categoryName}, ¿cuál es el paso de diagnóstico estándar para un consultor SAP?`,
+      q: `4. Si una auditoría detecta discrepancias en los registros de ${categoryName}, ¿cuál es el paso de diagnóstico estándar para un consultor Finix ERP?`,
       options: [
         "Modificar directamente los registros en la base de datos con un script de consola.",
         "Consultar el Log de Modificaciones para identificar qué usuario, fecha y campo exacto fue alterado.",
-        "Reinstalar el cliente de SAP Business One en todas las estaciones de trabajo.",
+        "Reinstalar el cliente de Finix ERP en todas las estaciones de trabajo.",
         "Eliminar el período contable completo."
       ],
       answer: 1,
@@ -523,12 +523,12 @@ export function getCategoryExam(categoryName: string): CategoryExam {
         "Se deben calcular manualmente en una calculadora física."
       ],
       answer: 1,
-      explanation: "El sistema de inventario permanente de SAP B1 contabiliza en tiempo real cada entrada, salida o transferencia.",
+      explanation: "El sistema de inventario permanente de Finix ERP contabiliza en tiempo real cada entrada, salida o transferencia.",
       topic: `Inventario Permanente y Costos en ${categoryName}`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
-      q: `6. Al gestionar autorizaciones en ${categoryName}, ¿qué nivel de seguridad permite asignar SAP B1 a un usuario?`,
+      q: `6. Al gestionar autorizaciones en ${categoryName}, ¿qué nivel de seguridad permite asignar Finix ERP a un usuario?`,
       options: [
         "Autorización Total, Solo Lectura o Sin Autorización, segmentable por campos sensibles y series de numeración.",
         "Solo permite bloquear el mouse de la computadora.",
@@ -541,7 +541,7 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
-      q: `7. ¿Qué reporte nativo de SAP B1 proporciona el detalle cronológico de todos los movimientos y saldos del módulo ${categoryName}?`,
+      q: `7. ¿Qué reporte nativo de Finix ERP proporciona el detalle cronológico de todos los movimientos y saldos del módulo ${categoryName}?`,
       options: [
         "El Informe de Auditoría de Stocks o Libro Mayor según la naturaleza del módulo.",
         "El historial de navegación de Google Chrome.",
@@ -584,11 +584,11 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       options: [
         "Permite calificar a la evaluación presencial técnica y semi-oral con reclutadores para la vinculación en la Bolsa de Empleo.",
         "Exonera al estudiante de trabajar en empresas reales.",
-        "Le otorga permisos de administrador absoluto en cualquier servidor de SAP del mundo.",
+        "Le otorga permisos de administrador absoluto en cualquier servidor de Finix ERP del mundo.",
         "Sustituye la necesidad de contar con licencias de software oficial."
       ],
       answer: 0,
-      explanation: "Los certificados de B1 Academy acreditan las horas de capacitación requeridas para calificar a las entrevistas técnicas con partners oficiales de SAP.",
+      explanation: "Los certificados de B1 Academy acreditan las horas de capacitación requeridas para calificar a las entrevistas técnicas con partners oficiales de Finix ERP.",
       topic: `Vinculación a la Bolsa de Empleo`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     }
@@ -597,7 +597,7 @@ export function getCategoryExam(categoryName: string): CategoryExam {
   return {
     categoryName,
     badgeTitle: `Especialista Certificado en ${categoryName}`,
-    description: `Examen riguroso de 10 preguntas sobre procesos empresariales, parametrización, asientos contables y auditoría de ${categoryName} en SAP Business One. Requiere un 90% (9/10) para aprobar.`,
+    description: `Examen riguroso de 10 preguntas sobre procesos empresariales, parametrización, asientos contables y auditoría de ${categoryName} en Finix ERP. Requiere un 90% (9/10) para aprobar.`,
     passingScore: 9,
     questions: baseQuestions
   };

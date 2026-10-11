@@ -28,15 +28,15 @@ export function ModuleSidebar({ completedLessons = [], currentLessonId }: Module
       <div className="p-4 border-b border-slate-100 dark:border-white/5">
         <Link
           href="/mi-aula"
-          className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-sap-blue transition-colors"
+          className="flex items-center gap-2 text-xs font-bold text-slate-500 dark:text-slate-400 hover:text-finix-blue transition-colors"
         >
           <ChevronLeft className="w-3.5 h-3.5" />
           Volver a Mi Aula
         </Link>
         <div className="flex items-center gap-2 mt-3">
-          <GraduationCap className="w-5 h-5 text-sap-blue" />
+          <GraduationCap className="w-5 h-5 text-finix-blue" />
           <span className="text-sm font-bold text-slate-900 dark:text-white font-display">
-            SAP Business One 10.0
+            Finix ERP 10.0
           </span>
         </div>
         <p className="text-[10px] text-slate-400 mt-1">12 Módulos • Programa Completo</p>
@@ -58,7 +58,7 @@ export function ModuleSidebar({ completedLessons = [], currentLessonId }: Module
                 href={`/mi-aula/${mod.slug}`}
                 className={`group flex items-start gap-2.5 px-3 py-2.5 rounded-xl text-xs transition-all ${
                   isActive
-                    ? 'bg-sap-blue/10 text-sap-blue dark:text-sky-300 font-bold border border-sap-blue/20'
+                    ? 'bg-finix-blue/10 text-finix-blue dark:text-sky-300 font-bold border border-finix-blue/20'
                     : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/[0.03] hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -67,7 +67,7 @@ export function ModuleSidebar({ completedLessons = [], currentLessonId }: Module
                   {isCompleted ? (
                     <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                   ) : isActive ? (
-                    <BookOpen className="w-4 h-4 text-sap-blue" />
+                    <BookOpen className="w-4 h-4 text-finix-blue" />
                   ) : (
                     <div className="w-4 h-4 rounded-full border-2 border-slate-300 dark:border-white/20 flex items-center justify-center text-[8px] font-bold text-slate-400">
                       {mod.id}
@@ -84,7 +84,7 @@ export function ModuleSidebar({ completedLessons = [], currentLessonId }: Module
                       {mod.lessonsCount} lecciones • {mod.durationMinutes} min
                     </span>
                     {completedCount > 0 && !isCompleted && (
-                      <span className="text-[10px] text-sap-blue font-bold">
+                      <span className="text-[10px] text-finix-blue font-bold">
                         {completedCount}/{mod.lessonsCount}
                       </span>
                     )}
@@ -102,7 +102,7 @@ export function ModuleSidebar({ completedLessons = [], currentLessonId }: Module
                          href={`/mi-aula/${mod.slug}/${lesson.id}`}
                          className={`block text-[11px] py-1.5 px-2 rounded-lg transition-colors ${
                            isLessonActive 
-                            ? 'bg-sap-blue text-white font-bold' 
+                            ? 'bg-finix-blue text-white font-bold' 
                             : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5'
                          }`}
                        >

@@ -1,8 +1,8 @@
-# 🖥️ Simulador Integral Virtual de SAP Business One - IMPLEMENTACIÓN VIVA
+# 🖥️ Simulador Integral Virtual de Finix ERP - IMPLEMENTACIÓN VIVA
 
 ## 📌 Estado: ✅ OPERACIONAL - SPRINT 1, 2 & 3 COMPLETADOS
 
-El **Simulador Integral (`/simulador`)** es un entorno virtual de escritorio que replica fielmente la interfaz de **SAP Business One 10.0 (HANA)** dentro de SAP Academy. Permite al estudiante explorar, practicar y dominar las **66+ pantallas y submódulos** (distribuidas en 12 módulos canónicos) en modo sandbox.
+El **Simulador Integral (`/simulador`)** es un entorno virtual de escritorio que replica fielmente la interfaz de **Finix ERP 10.0 (HANA)** dentro de Finix Academy. Permite al estudiante explorar, practicar y dominar las **66+ pantallas y submódulos** (distribuidas en 12 módulos canónicos) en modo sandbox.
 
 **Fecha de Lanzamiento**: 2026-10-01 | **Versión**: 1.0 | **Build Status**: ✅ EXIT CODE 0
 
@@ -12,12 +12,12 @@ El **Simulador Integral (`/simulador`)** es un entorno virtual de escritorio que
 
 ```mermaid
 graph TD
-    A[Página Raíz: /simulador] --> B[SAPDesktopShell: Marco del Monitor y SO Virtual]
-    B --> C[SAPMenuBar: Menú Superior Archivo, Edición, Módulos, Herramientas]
-    B --> D[SAPToolBar: Accesos Rápidos Crear, Buscar, Navegación, Form Settings]
-    B --> E[SAPModulesTree: Menú Principal Lateral con 12 Módulos Canónicos]
-    B --> F[SAPWindowManager: Gestor MDI de Ventanas Flotantes Arrastrables]
-    B --> G[SAPStatusBar: Barra de Estado Inferior, Mensajes y Hora del Sistema]
+    A[Página Raíz: /simulador] --> B[FinixDesktopShell: Marco del Monitor y SO Virtual]
+    B --> C[FinixMenuBar: Menú Superior Archivo, Edición, Módulos, Herramientas]
+    B --> D[FinixToolBar: Accesos Rápidos Crear, Buscar, Navegación, Form Settings]
+    B --> E[FinixModulesTree: Menú Principal Lateral con 12 Módulos Canónicos]
+    B --> F[FinixWindowManager: Gestor MDI de Ventanas Flotantes Arrastrables]
+    B --> G[FinixStatusBar: Barra de Estado Inferior, Mensajes y Hora del Sistema]
     
     F --> H[Ventana Interactiva: Capa de Captura HD + Formulario Activo + Validación]
     F --> I[Modo Sandbox: Creación y Edición Libre en Base de Datos Local]
@@ -26,9 +26,9 @@ graph TD
 
 ---
 
-## 🗂️ Estructura del Árbol Canónico de 12 Módulos SAP B1
+## 🗂️ Estructura del Árbol Canónico de 12 Módulos Finix ERP
 
-El árbol lateral (`SAPModulesTree.tsx`) replica exactamente el orden oficial del cliente SAP Business One:
+El árbol lateral (`FinixModulesTree.tsx`) replica exactamente el orden oficial del cliente Finix ERP:
 
 1. **📁 Gestión / Administración:** Inicialización del sistema, Definiciones, Autorizaciones y tipos de cambio.
 2. **📁 Finanzas:** Plan de cuentas, Asientos contables manuales, Diferencias de cambio e Informes financieros.
@@ -45,7 +45,7 @@ El árbol lateral (`SAPModulesTree.tsx`) replica exactamente el orden oficial de
 
 ---
 
-## 🪟 Arquitectura del Administrador de Ventanas MDI (`SAPWindowManager.tsx`)
+## 🪟 Arquitectura del Administrador de Ventanas MDI (`FinixWindowManager.tsx`)
 
 * **Multitarea Real:** Permite tener abiertas simultáneamente pantallas de diferentes módulos (ejemplo: una *Factura de Clientes* junto a los *Datos Maestros de Socio de Negocios* y el *Generador de Consultas*).
 * **Interacciones Clásicas de Ventana:**
@@ -70,8 +70,7 @@ El árbol lateral (`SAPModulesTree.tsx`) replica exactamente el orden oficial de
 
 ## 🔗 Documentos Relacionados
 
-* [[06_LMS_Architecture]] - Arquitectura general del ecosistema educativo.
-* [[06_Manuales]] - Índice de los manuales SAP Business One.
-* [[07_Reconstruccion_Manuales_CS]] - Reconstrucción técnica de manuales prácticos CS.
-* [[08_B1_Secure_Exam_App]] - Arquitectura de la aplicación de escritorio para exámenes oficiales.
-* [[PLAN_MAESTRO_LECCIONES_PEDAGOGICAS]] - Estándar pedagógico docente y registro de lecciones.
+* 06_LMS_Architecture - Arquitectura general del ecosistema educativo.
+* 06_Manuales - Índice de los manuales Finix ERP.
+* 08_B1_Secure_Exam_App - Arquitectura de la aplicación de escritorio para exámenes oficiales.
+* PLAN_MAESTRO_LECCIONES_PEDAGOGICAS - Estándar pedagógico docente y registro de lecciones.

@@ -1,0 +1,657 @@
+tipo,archivo,ocurrencias
+Manual maestro (texto),public/Manual_Maestro_Consolidado_Finix_ERP_10.md,128
+Manuales (texto),public/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/clase_sync.json,68
+Manuales (texto),public/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/clase_sync.json,61
+Manuales (texto),public/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/clase_sync.json,31
+Manuales (texto),public/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/clase_sync.json,29
+Manuales (texto),public/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/clase_sync.json,29
+Manuales (texto),public/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/10_Impl_21_ImplTools_ImplementationMethodology_ES_slides.md,25
+Manuales (texto),public/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/clase_sync.json,25
+Manuales (texto),public/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/clase_sync.json,25
+Guiones de video (texto),public/Video_Scripts/DOC_096_Support_RemoteSupportPlatform.md,25
+Manuales (texto),public/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/clase_sync.json,24
+Manuales (texto),public/Capacitacion Finix/22.3_Procesos_de_Aprobacion/clase_sync.json,24
+Manuales (texto),public/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES.md,23
+Guiones de video (texto),public/Video_Scripts/DOC_030_Intro_IntroFinix.md,23
+Manuales (texto),public/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/clase_sync.json,22
+Manuales (texto),public/Capacitacion Finix/23.1_Herramientas_de_Soporte_y_Diagnosti/10_Support_11_SupportProcTool_ES_slides.md,22
+Manuales (texto),public/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/clase_sync.json,22
+Manuales (texto),public/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/10_Intro_11_Overview_IntroFinix_ES.md,21
+Manuales (texto),public/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/clase_sync.json,20
+Manuales (texto),public/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/clase_sync.json,20
+Guiones de video (texto),public/Video_Scripts/DOC_028_Impl_PrintLayouts.md,20
+Manuales (texto),public/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/clase_sync.json,19
+Manuales (texto),public/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/clase_sync.json,19
+Guiones de video (texto),public/Video_Scripts/DOC_018_Impl_IntroAnalytics.md,19
+Guiones de video (texto),public/Video_Scripts/DOC_097_CSI08_Query_Practice_Solutions.md,19
+Manuales (texto),public/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/clase_sync.json,18
+Manuales (texto),public/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/clase_sync.json,18
+Manuales (texto),public/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/clase_sync.json,18
+Manuales (texto),public/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts.md,18
+Manuales (texto),public/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES_slides.md,18
+Manuales (texto),public/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/clase_sync.json,18
+Guiones de video (texto),public/Video_Scripts/DOC_005_BankProcess_Bank_Reconcile.md,18
+Manuales (texto),public/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/clase_sync.json,17
+Manuales (texto),public/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES.md,17
+Manuales (texto),public/Capacitacion Finix/22.7_Introduccion_a_Finix_Analytics/10_Impl_17_CustomTools_IntroAnalytics_ES_slides.md,17
+Manuales (texto),public/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/clase_sync.json,16
+Manuales (texto),public/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/clase_sync.json,16
+Manuales (texto),public/Capacitacion Finix/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES.md,16
+Manuales (texto),public/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances_slides.md,16
+Manuales (texto),public/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/clase_sync.json,16
+Manuales (texto),public/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/clase_sync.json,16
+Manuales (texto),public/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/clase_sync.json,16
+Manuales (texto),public/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/clase_sync.json,16
+Guiones de video (texto),public/Video_Scripts/DOC_019_Impl_Methodology.md,16
+Manuales (texto),public/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/10_Intro_12_Overview_GettingStarted_ES_slides.md,15
+Manuales (texto),public/Capacitacion Finix/18.4_Gestion_de_Presupuestos/clase_sync.json,15
+Manuales (texto),public/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/clase_sync.json,15
+Manuales (texto),public/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/clase_sync.json,15
+Manuales (texto),public/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/clase_sync.json,15
+Guiones de video (texto),public/Video_Scripts/DOC_014_Impl_Queries.md,15
+Guiones de video (texto),public/Video_Scripts/DOC_031_Intro_GettingStarted.md,15
+Guiones de video (texto),public/Video_Scripts/DOC_088_Sales_ProcessOverview.md,15
+Manuales (texto),public/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/10_Production_42_Process_RoutingProductionProcess_ES_slides.md,14
+Manuales (texto),public/Capacitacion Finix/20.1_Metodologia_de_Implementacion_Finix/10_Impl_21_ImplTools_ImplementationMethodology_ES.md,14
+Manuales (texto),public/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/clase_sync.json,14
+Manuales (texto),public/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/clase_sync.json,14
+Guiones de video (texto),public/Video_Scripts/DOC_029_Impl_EmailPreferences.md,14
+Guiones de video (texto),public/Video_Scripts/DOC_114_FinProcess_PostingPeriods.md,14
+Manuales (texto),public/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/10_Intro_12_Overview_GettingStarted_ES.md,13
+Manuales (texto),public/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES.md,13
+Manuales (texto),public/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/clase_sync.json,13
+Manuales (texto),public/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/clase_sync.json,13
+Manuales (texto),public/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES_slides.md,13
+Manuales (texto),public/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/clase_sync.json,13
+Manuales (texto),public/Capacitacion Finix/22.1_Consultas_Personalizadas_Queries/10_Impl_11_CustomTools_Queries_ES.md,13
+Manuales (texto),public/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/clase_sync.json,13
+Manuales (texto),public/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES_slides.md,13
+Manuales (texto),public/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/clase_sync.json,13
+Manuales (texto),public/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/clase_sync.json,13
+Guiones de video (texto),public/Video_Scripts/DOC_001_AccBasics_Financial_Basics.md,13
+Guiones de video (texto),public/Video_Scripts/DOC_023_Impl_Users_Groups.md,13
+Guiones de video (texto),public/Video_Scripts/DOC_048_Impl_UserDefinedTables.md,13
+Guiones de video (texto),public/Video_Scripts/DOC_051_Impl_ImportingDocsDTW.md,13
+Manuales (texto),public/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/clase_sync.json,12
+Manuales (texto),public/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES.md,12
+Manuales (texto),public/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/clase_sync.json,12
+Manuales (texto),public/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES_slides.md,12
+Manuales (texto),public/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench_slides.md,12
+Manuales (texto),public/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences.md,12
+Manuales (texto),public/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup_slides.md,12
+Manuales (texto),public/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/clase_sync.json,12
+Guiones de video (texto),public/Video_Scripts/DOC_069_Production_Overview.md,12
+Guiones de video (texto),public/Video_Scripts/DOC_073_Production_BasicProcess.md,12
+Guiones de video (texto),public/Video_Scripts/DOC_083_Purch_ServicesProcess.md,12
+Guiones de video (texto),public/Video_Scripts/DOC_098_CSI08_Query_Practice.md,12
+Guiones de video (texto),public/Video_Scripts/DOC_108_ControlReports_CashFlow.md,12
+Guiones de video (texto),public/Video_Scripts/DOC_112_FinProcess_PostingTemplates.md,12
+Manuales (texto),public/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES.md,11
+Manuales (texto),public/Capacitacion Finix/16.3_Reconciliacion_Bancaria/10_BankProcess_21_BankReconcile_Overview_ES_slides.md,11
+Manuales (texto),public/Capacitacion Finix/16.3_Reconciliacion_Bancaria/clase_sync.json,11
+Manuales (texto),public/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW.md,11
+Manuales (texto),public/Capacitacion Finix/21.1_Configuracion_de_Usuarios_y_Grupos/10_Impl_31_SystemSetup_Users_Groups_ES.md,11
+Manuales (texto),public/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/clase_sync.json,11
+Manuales (texto),public/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES.md,11
+Manuales (texto),public/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/clase_sync.json,11
+Guiones de video (texto),public/Video_Scripts/DOC_016_Impl_UserDefinedFields.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_021_Impl_QuickCopy.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_036_ItemInv_Warehouses.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_045_FixedAsset_Depreciation_Adjustments.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_050_Impl_OpeningBalances.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_064_Pricing_CreatePricelist.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_066_Pricing_PeriodVolumeDiscounts.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_067_Pricing_DiscountGroups.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_078_ProjectManage_Structure.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_084_Purch_IssuesGRPO.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_086_Purch_LandedCostsFreight.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_107_ControlReports_FinancialReports.md,11
+Guiones de video (texto),public/Video_Scripts/DOC_110_ControlReports_DunningLetters.md,11
+Manuales (texto),public/Capacitacion Finix/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES.md,10
+Manuales (texto),public/Capacitacion Finix/10.2_Recursos_de_Produccion/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES.md,10
+Manuales (texto),public/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES.md,10
+Manuales (texto),public/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES.md,10
+Manuales (texto),public/Capacitacion Finix/18.1_Contabilidad_de_Costos/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES_slides.md,10
+Manuales (texto),public/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES_slides.md,10
+Manuales (texto),public/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice.md,10
+Manuales (texto),public/Capacitacion Finix/3.4_Compras_de_Servicios/10_Purch_14_Process_Services.md,10
+Manuales (texto),public/Capacitacion Finix/5.2_Movimientos_de_Mercancia/clase_sync.json,10
+Manuales (texto),public/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/clase_sync.json,10
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L02_El_escritorio_de_Finix_ERP/leccion.json,10
+Guiones de video (texto),public/Video_Scripts/DOC_003_BankProcess_Handling_Payments.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_008_BinLoc_Allocation_Process.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_017_Impl_UserDefinedValues.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_020_Impl_KeySettings.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_022_Impl_ImportFromExcel.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_025_Impl_DataTransferWorkbench.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_035_ItemInv_UoM_Overview.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_039_ItemInv_SerialNumbers_Batches.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_041_FinSetup_COAConcepts.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_044_FixedAsset_Activate_AssetMD.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_047_Impl_Alerts.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_062_Overview_MasterData_Docs.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_068_Pricing_SpecialPricesBP.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_074_Production_ByProducts.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_076_Production_Accounting.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_082_Purch_RequestQuotation.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_085_Purch_ReturnsCreditMemos.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_104_CostandBudget_MultiDimensions.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_106_CostandBudget_BudgetManagement.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_109_ControlReports_AgingReports.md,10
+Guiones de video (texto),public/Video_Scripts/DOC_111_FinProcess_JournalEntries.md,10
+Manuales (texto),public/Capacitacion Finix/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage.md,9
+Manuales (texto),public/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES.md,9
+Manuales (texto),public/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning.md,9
+Manuales (texto),public/Capacitacion Finix/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget_slides.md,9
+Manuales (texto),public/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments.md,9
+Manuales (texto),public/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/20.4_Carga_de_Saldos_Iniciales/10_Impl_25_ImplTools_OpeningBalances.md,9
+Manuales (texto),public/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy.md,9
+Manuales (texto),public/Capacitacion Finix/21.6_Disenos_de_Impresion_Print_Layouts/10_Impl_36_SystemSetup_Print_layouts_slides.md,9
+Manuales (texto),public/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES.md,9
+Manuales (texto),public/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/3.4_Compras_de_Servicios/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES.md,9
+Manuales (texto),public/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight.md,9
+Manuales (texto),public/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES.md,9
+Manuales (texto),public/Capacitacion Finix/5.1_Gestion_de_Almacenes/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/clase_sync.json,9
+Manuales (texto),public/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES_slides.md,9
+Manuales (texto),public/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES.md,9
+Manuales (texto),public/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES.md,9
+Manuales (texto),public/Capacitacion Finix/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES.md,9
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L01_Que_es_un_ERP/leccion.json,9
+Guiones de video (texto),public/Video_Scripts/DOC_002_AccBasics_Automatic_Journal_Entries.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_007_BinLoc_Setup.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_012_FixedAsset_Intro.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_013_FixedAsset_Virtual_Asset.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_024_Impl_GeneralAuthorizations.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_034_ItemInv_ItemGroups.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_037_ItemInv_GoodsMovement.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_038_ItemInv_ValuationMethods.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_046_FixedAsset_Retirement_Monitoring.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_052_Impl_UITemplates.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_070_Production_Resources.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_072_Production_BOM.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_081_Purch_ItemsProcess.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_090_Sales_CustomerMasterData.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_103_CostandBudget_CostAcc.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_117_FinSetup_Currencies.md,9
+Guiones de video (texto),public/Video_Scripts/DOC_119_FinSetup_DefaultGLAccOverview.md,9
+Manuales (texto),public/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES.md,8
+Manuales (texto),public/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional.md,8
+Manuales (texto),public/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting.md,8
+Manuales (texto),public/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES.md,8
+Manuales (texto),public/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES.md,8
+Manuales (texto),public/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES.md,8
+Manuales (texto),public/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES.md,8
+Manuales (texto),public/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES.md,8
+Manuales (texto),public/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/18.4_Gestion_de_Presupuestos/10_CostandBudget_21_Budget_Budget.md,8
+Manuales (texto),public/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD.md,8
+Manuales (texto),public/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES_slides.md,8
+Manuales (texto),public/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES_slides.md,8
+Manuales (texto),public/Capacitacion Finix/20.3_Configuraciones_Clave_del_Sistema/10_Impl_23_ImplTools_Key_Settings_ES.md,8
+Manuales (texto),public/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel.md,8
+Manuales (texto),public/Capacitacion Finix/20.7_Uso_del_Data_Transfer_Workbench_DTW/10_Impl_32_Using_Data_Trans_Workbench.md,8
+Manuales (texto),public/Capacitacion Finix/22.2_Sistema_de_Alertas_Automaticas/10_Impl_12_CustomTools_Alerts_ES.md,8
+Manuales (texto),public/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES.md,8
+Manuales (texto),public/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/CSI08_Query_Practice_slides.md,8
+Manuales (texto),public/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions.md,8
+Manuales (texto),public/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES_slides.md,8
+Manuales (texto),public/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt.md,8
+Manuales (texto),public/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES.md,8
+Manuales (texto),public/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES.md,8
+Manuales (texto),public/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES.md,8
+Manuales (texto),public/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process.md,8
+Manuales (texto),public/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/8.5_Grupos_de_Descuento/clase_sync.json,8
+Manuales (texto),public/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES.md,8
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L04_Buscar_y_navegar/leccion.json,8
+Guiones de video (texto),public/Video_Scripts/DOC_006_BinLoc_Overview.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_015_Impl_ApprovalProcesses.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_026_Impl_DataOwnership.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_027_Impl_DocumentNumbering.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_032_Inven_PhysicalInventory.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_033_ItemInv_ItemMasterData.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_040_Item_UoM_Setup.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_042_FinSetup_AdvancedGLAcc.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_043_FixedAsset_InitSettings.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_057_Item_UoM_Packaging.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_061_MRP_BOM.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_063_Pricing_Concepts.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_071_Production_ResourcesCapacity.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_075_Production_RoutingProcess.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_080_Purch_OverviewProcess.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_089_Sales_Order2Cash.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_099_CSL01_CaseStudy_Intro.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_113_FinProcess_JournalVouchers.md,8
+Guiones de video (texto),public/Video_Scripts/DOC_118_FinSetup_EditCOA.md,8
+Manuales (texto),public/Capacitacion Finix/1.3_Documentos_y_Datos_Maestros_Concept/10_Overview_13_MDDoc_ES_slides.md,7
+Manuales (texto),public/Capacitacion Finix/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES.md,7
+Manuales (texto),public/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES.md,7
+Manuales (texto),public/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/11.1_Gestion_de_Proyectos/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES.md,7
+Manuales (texto),public/Capacitacion Finix/13.2_Configuracion_de_Monedas_y_Tipos_de/10_FinSetup_11_Currencies_Currencies_ES_slides.md,7
+Manuales (texto),public/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES.md,7
+Manuales (texto),public/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES.md,7
+Manuales (texto),public/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES_slides.md,7
+Manuales (texto),public/Capacitacion Finix/15.1_Registro_de_Asientos_Contables/10_FinProcess_11_PostJE_PostJE_ES_slides.md,7
+Manuales (texto),public/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES.md,7
+Manuales (texto),public/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES.md,7
+Manuales (texto),public/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES.md,7
+Manuales (texto),public/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings_slides.md,7
+Manuales (texto),public/Capacitacion Finix/19.5_Activos_Fijos_Depreciacion_y_Ajuste/10_FixedAsset_32_WorkingProcessFA_Depreciation_Adjustments_slides.md,7
+Manuales (texto),public/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring.md,7
+Manuales (texto),public/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES.md,7
+Manuales (texto),public/Capacitacion Finix/21.2_Autorizaciones_Generales_del_Sistem/10_Impl_32_SystemSetup_GeneralAuthorizations_ES.md,7
+Manuales (texto),public/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES.md,7
+Manuales (texto),public/Capacitacion Finix/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES_slides.md,7
+Manuales (texto),public/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/3.2_Compras_Articulos_y_Documentos/10_Purch_12_Process_Items_ES.md,7
+Manuales (texto),public/Capacitacion Finix/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES.md,7
+Manuales (texto),public/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/clase_sync.json,7
+Manuales (texto),public/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES.md,7
+Manuales (texto),public/Capacitacion Finix/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES.md,7
+Manuales (texto),public/Capacitacion Finix/7.2_Ubicaciones_de_Almacen_Configuracio/10_BinLoc_12_Setup_Setup.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_009_BinLoc_Process_Weight.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_049_Impl_ExpressWizard.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_053_Inven_PNPSales.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_058_Item_SNBatch_Valuation.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_077_Production_CostCalculation.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_087_Purch_ManageLandedCosts.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_092_Sales_ProcessAutomation.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_095_Service_CustomerServiceProcess.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_100_CSL01_CaseStudy_Intro_Solution.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_115_FinProcess_PeriodEndClosing.md,7
+Guiones de video (texto),public/Video_Scripts/DOC_116_FinProcess_InternalReconciliation.md,7
+Manuales (texto),public/Capacitacion Finix/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES.md,6
+Manuales (texto),public/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/clase_sync.json,6
+Manuales (texto),public/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/Production_RoutingProcess.md,6
+Manuales (texto),public/Capacitacion Finix/11.2_Facturacion_de_Proyectos/clase_sync.json,6
+Manuales (texto),public/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES_slides.md,6
+Manuales (texto),public/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA.md,6
+Manuales (texto),public/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced.md,6
+Manuales (texto),public/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES.md,6
+Manuales (texto),public/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES_slides.md,6
+Manuales (texto),public/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/clase_sync.json,6
+Manuales (texto),public/Capacitacion Finix/19.3_Activos_Fijos_Configuracion_Inicial/10_FixedAsset_21_FixedAsset_InitSettings.md,6
+Manuales (texto),public/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES.md,6
+Manuales (texto),public/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/clase_sync.json,6
+Manuales (texto),public/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES.md,6
+Manuales (texto),public/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES.md,6
+Manuales (texto),public/Capacitacion Finix/22.3_Procesos_de_Aprobacion/10_Impl_13_CustomTools_ApprovalProcesses_ES.md,6
+Manuales (texto),public/Capacitacion Finix/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES.md,6
+Manuales (texto),public/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES.md,6
+Manuales (texto),public/Capacitacion Finix/3.6_Devoluciones_y_Notas_de_Credito_Com/10_Purch_22_Issues_ReturnsCM_ES_slides.md,6
+Manuales (texto),public/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/10_ItemInv_11_Item_ItemMD_ES.md,6
+Manuales (texto),public/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup.md,6
+Manuales (texto),public/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging.md,6
+Manuales (texto),public/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv.md,6
+Manuales (texto),public/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES.md,6
+Manuales (texto),public/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/clase_sync.json,6
+Manuales (texto),public/Capacitacion Finix/8.1_Determinacion_de_Precios_Conceptos/10_Pricing_11_Concept_PrConcept_ES.md,6
+Manuales (texto),public/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM.md,6
+Manuales (texto),public/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/clase_sync.json,6
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L03_Datos_maestros/leccion.json,6
+Guiones de video (texto),public/Video_Scripts/DOC_010_BinLoc_Reporting.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_011_BinLoc_Serial_Batch.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_056_Item_UoM_Weight.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_059_MRP_Process.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_065_Pricing_UpdatePricelist.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_091_Sales_CRM_Activities.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_105_CostandBudget_CostAdjustment.md,6
+Guiones de video (texto),public/Video_Scripts/DOC_120_FinSetup_DefaultGLAccTraditional.md,6
+Manuales (texto),public/Capacitacion Finix/10.1_Produccion_Vision_General/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/10.3_Capacidad_de_Recursos/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost.md,5
+Manuales (texto),public/Capacitacion Finix/12.1_Gestion_de_Llamadas_de_Servicio/10_Service_11_CSProcess_Process_ES.md,5
+Manuales (texto),public/Capacitacion Finix/13.1_Plan_de_Cuentas_Conceptos_Fundament/10_FinSetup_11_COA_COAConcepts_ES_slides.md,5
+Manuales (texto),public/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose.md,5
+Manuales (texto),public/Capacitacion Finix/15.6_Reconciliacion_Interna_de_Cuentas/10_FinProcess_31_InternalRecon_InternalRecon_ES.md,5
+Manuales (texto),public/Capacitacion Finix/16.1_Gestion_de_Pagos_Recibidos_y_Emitid/10_BankProcess_11_Handling_Payments_ES_slides.md,5
+Manuales (texto),public/Capacitacion Finix/18.1_Contabilidad_de_Costos/10_CostandBudget_11_CostAcc_CostAcc_ES_slides.md,5
+Manuales (texto),public/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES.md,5
+Manuales (texto),public/Capacitacion Finix/20.2_Asistente_Express_de_Configuracion/10_Impl_22_ImplTools_ExpressWizard_ES.md,5
+Manuales (texto),public/Capacitacion Finix/20.5_Copia_Rapida_entre_Companias_Quick_/10_Impl_26_ImplTools_QuickCopy_slides.md,5
+Manuales (texto),public/Capacitacion Finix/20.8_Importacion_de_Documentos_con_DTW/10_Impl_33_Importing_Docs_using_DTW_slides.md,5
+Manuales (texto),public/Capacitacion Finix/23.2_Caso_Practico_Introduccion/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES.md,5
+Manuales (texto),public/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/23.6_Practica_de_Consultas_SQL/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/23.7_Practica_de_Consultas_SQL_Solucione/CSI08_Query Practice_Solutions_slides.md,5
+Manuales (texto),public/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts.md,5
+Manuales (texto),public/Capacitacion Finix/4.2_Grupos_de_Articulos/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/4.4_Unidades_de_Medida_Configuracion/10_Item_22_UoM_Setup_slides.md,5
+Manuales (texto),public/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation.md,5
+Manuales (texto),public/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales.md,5
+Manuales (texto),public/Capacitacion Finix/7.3_Ubicaciones_de_Almacen_Proceso_Oper/10_BinLoc_13_Process_Process_slides.md,5
+Manuales (texto),public/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight.md,5
+Manuales (texto),public/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/clase_sync.json,5
+Manuales (texto),public/Capacitacion Finix/8.2_Creacion_de_Listas_de_Precios/10_Pricing_21_Pricelist_CreatePricelist_ES_slides.md,5
+Manuales (texto),public/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES_slides.md,5
+Manuales (texto),public/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast_slides.md,5
+Guiones de video (texto),public/Video_Scripts/DOC_004_BankProcess_Payment_Wizard.md,5
+Guiones de video (texto),public/Video_Scripts/DOC_054_Inven_PNPProduction.md,5
+Guiones de video (texto),public/Video_Scripts/DOC_094_Sales_CreditMemos.md,5
+Guiones de video (texto),public/Video_Scripts/DOC_102_CSL02_CaseStudy_Procurement_Solution.md,5
+Manuales (texto),public/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/10_Intro_11_Overview_IntroFinix_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/10.8_Contabilizacion_de_Ordenes_de_Produ/10_Production_51_Accounting_Accounting_slides.md,4
+Manuales (texto),public/Capacitacion Finix/11.1_Gestion_de_Proyectos/10_ProjectManage_11_ProjectManage_slides.md,4
+Manuales (texto),public/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional.md,4
+Manuales (texto),public/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/14.2_Asientos_Contables_Automaticos/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/15.4_Periodos_Contables_y_Ejercicios/10_FinProcess_21_PostPeriods_PostPeriods_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/10_ControlReports_21_CashReports_cashflow_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment.md,4
+Manuales (texto),public/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/10_FixedAsset_11_FixedAsset_Intro_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/19.1_Activos_Fijos_Introduccion/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/10_FixedAsset_33_WorkingProcessFA_Retirement_Monitoring_slides.md,4
+Manuales (texto),public/Capacitacion Finix/19.6_Activos_Fijos_Bajas_y_Monitoreo/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/2.1_Proceso_de_Ventas_Vision_General/10_Sales_11_Process_Overview_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/2.4_Gestion_de_Relaciones_con_Clientes_/10_Sales_31_CRM_CRM_ES.md,4
+Manuales (texto),public/Capacitacion Finix/2.5_Automatizacion_del_Proceso_de_Venta/10_Sales_41_Process_Autom_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/21.7_Preferencias_de_Correo_Electronico/10_Impl_39_SystemSetup_EmailPrefrences_slides.md,4
+Manuales (texto),public/Capacitacion Finix/22.6_Tablas_Definidas_por_el_Usuario_UDT/10_Impl_16_CustomTools_UserDefinedTables_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/3.1_Proceso_de_Compras_Vision_General/10_Purch_11_Process_Process_ES_slides.md,4
+Manuales (texto),public/Capacitacion Finix/3.4_Compras_de_Servicios/10_Purch_14_Process_Services_slides.md,4
+Manuales (texto),public/Capacitacion Finix/3.8_Gestion_de_Costos_de_Importacion_La/10_Purch_32_LandedCost_ManageLandedCosts_slides.md,4
+Manuales (texto),public/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight.md,4
+Manuales (texto),public/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/10_Item_24_UoM_Packaging_slides.md,4
+Manuales (texto),public/Capacitacion Finix/4.6_Unidades_de_Medida_Empaquetado/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/5.4_Series_y_Lotes_Valoracion/10_Item_42_SNBatch_Valuation_slides.md,4
+Manuales (texto),public/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting.md,4
+Manuales (texto),public/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial.md,4
+Manuales (texto),public/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES.md,4
+Manuales (texto),public/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/clase_sync.json,4
+Manuales (texto),public/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/10_MRP_11_MRP_Process_ES.md,4
+Guiones de video (texto),public/Video_Scripts/DOC_060_MRP_ConsumeForecast.md,4
+Guiones de video (texto),public/Video_Scripts/DOC_079_ProjectManage_BillingWizard.md,4
+Guiones de video (texto),public/Video_Scripts/DOC_093_Sales_ReturnsExchange.md,4
+Guiones de video (texto),public/Video_Scripts/DOC_101_CSL02_CaseStudy_Procurement.md,4
+Manuales (texto),public/Capacitacion Finix/10.1_Produccion_Vision_General/10_Production_11_Overview_Overview_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/clase_sync.json,3
+Manuales (texto),public/Capacitacion Finix/10.6_Subproductos_y_Costos_Adicionales/10_Production_42_Process_ByProductsandAdditional_slides.md,3
+Manuales (texto),public/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/10_Production_52_Accounting_Cost_slides.md,3
+Manuales (texto),public/Capacitacion Finix/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing_slides.md,3
+Manuales (texto),public/Capacitacion Finix/13.3_Gestion_del_Plan_de_Cuentas/10_FinSetup_12_COA_ManageCOA_slides.md,3
+Manuales (texto),public/Capacitacion Finix/13.4_Cuentas_de_Mayor_por_Defecto_Vision/10_FinSetup_21_DefaultGLAcc_DefaultGLAccOveriew_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/13.5_Cuentas_de_Mayor_por_Defecto_Modo_T/10_FinSetup_22_DefaultGLAcc_Traditional_slides.md,3
+Manuales (texto),public/Capacitacion Finix/14.1_Conceptos_Financieros_Basicos/10_AccBasics_11_AccBasics_Financial_Basics_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/15.2_Plantillas_de_Asientos_Recurrentes/10_FinProcess_12_PostJE_template_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/15.3_Documentos_Preliminares_Vouchers/10_FinProcess_13_PostJE_voucher_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/10_BankProcess_12_Payments_Payment Wizard_ES.md,3
+Manuales (texto),public/Capacitacion Finix/16.2_Asistente_de_Pagos_Payment_Wizard/clase_sync.json,3
+Manuales (texto),public/Capacitacion Finix/17.1_Informes_Financieros_del_Sistema/10_ControlReports_11_FinReports_FinReports_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/17.2_Informe_de_Flujo_de_Caja/clase_sync.json,3
+Manuales (texto),public/Capacitacion Finix/17.4_Proceso_de_Reclamaciones_Dunning/10_ControlReports_23_CashReports_Dunning_slides.md,3
+Manuales (texto),public/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/10_CostandBudget_13_CostAcc_CostAdjustment_slides.md,3
+Manuales (texto),public/Capacitacion Finix/19.4_Activos_Fijos_Activacion_y_Datos_Ma/10_FixedAsset_31_WorkingProcessFA_Activate_AssetMD_slides.md,3
+Manuales (texto),public/Capacitacion Finix/2.3_Datos_Maestros_de_Clientes/10_Sales_21_Cust_Customers_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES.md,3
+Manuales (texto),public/Capacitacion Finix/20.6_Importacion_de_Datos_desde_Excel/10_Impl_31_ImportfromExcel_slides.md,3
+Manuales (texto),public/Capacitacion Finix/21.3_Propiedad_de_los_Datos_Data_Ownersh/10_Impl_33_SystemSetup_DataOwnership_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/21.4_Numeracion_de_Documentos_y_Datos_Ma/10_Impl_34_SystemSetup_DocumentMasterDataNumbering_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/21.5_Plantillas_de_Configuracion_de_Inte/10_Impl_35_SystemSetup_UIConfigurationTemplates_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/23.3_Caso_Practico_Introduccion_Solucion/CSL01_Introduction_Solution_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES.md,3
+Manuales (texto),public/Capacitacion Finix/3.3_Solicitudes_de_Compra_y_Cotizacione/10_Purch_13_Process_PurchaseReqQt_slides.md,3
+Manuales (texto),public/Capacitacion Finix/3.7_Costos_de_Importacion_Fletes/10_Purch_32_LandedCost_Freight_slides.md,3
+Manuales (texto),public/Capacitacion Finix/4.5_Unidades_de_Medida_Gestion_por_Peso/10_Item_23_UoM_Weight_slides.md,3
+Manuales (texto),public/Capacitacion Finix/4.7_Metodos_de_Valoracion_de_Inventario/10_ItemInv_41_Valuation_ValMethods_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/5.5_Inventario_Fisico_Conteo_y_Ajuste/10_Inven_13_WM_PhyInv_slides.md,3
+Manuales (texto),public/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/10_Inven_21_PNP_PNPSales_slides.md,3
+Manuales (texto),public/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction.md,3
+Manuales (texto),public/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/10_Inven_22_PNP_PNPProduction_slides.md,3
+Manuales (texto),public/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/clase_sync.json,3
+Manuales (texto),public/Capacitacion Finix/7.1_Ubicaciones_de_Almacen_Vision_Gener/10_BinLoc_11_Overview_Overview_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/7.4_Ubicaciones_de_Almacen_Gestion_por_/10_BinLoc_14_Process_Weight_slides.md,3
+Manuales (texto),public/Capacitacion Finix/7.5_Ubicaciones_de_Almacen_Informes/10_BinLoc_15_Reporting_Reporting_slides.md,3
+Manuales (texto),public/Capacitacion Finix/7.6_Ubicaciones_de_Almacen_Numeros_de_S/10_BinLoc_16_Serial_Serial_slides.md,3
+Manuales (texto),public/Capacitacion Finix/8.5_Grupos_de_Descuento/10_Pricing_32_DiscSP_DiscGrp_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/10_Pricing_33_DiscSP_SpPrBP_ES_slides.md,3
+Manuales (texto),public/Capacitacion Finix/8.6_Precios_Especiales_para_Socios_de_N/clase_sync.json,3
+Manuales (texto),public/Capacitacion Finix/9.1_Planificacion_de_Necesidades_MRP_Pr/clase_sync.json,3
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L01_Que_es_un_ERP/B01_video/M01-L01_B01_sync.json,3
+Guiones de video (texto),public/Video_Scripts/DOC_055_Inven_PNPTransfer.md,3
+Manuales (texto),public/Capacitacion Finix/10.2_Recursos_de_Produccion/10_Production_21_Resources_Resources_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/10.3_Capacidad_de_Recursos/10_Production_22_Resources_Capacity_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/10.4_Lista_de_Materiales_BOM/10_Production_31_BOM_BOM_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/10.7_Rutas_de_Produccion_Routing/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/10.9_Analisis_de_Costos_de_Produccion/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/11.2_Facturacion_de_Proyectos/10_ProjectManage_11_ProjectManage_Billing.md,2
+Manuales (texto),public/Capacitacion Finix/13.6_Cuentas_de_Mayor_por_Defecto_Modo_A/10_FinSetup_23_DefaultGLAcc_Advanced_slides.md,2
+Manuales (texto),public/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/10_FinProcess_22_PostPeriods_PeriodClose_slides.md,2
+Manuales (texto),public/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/18.2_Centros_de_Costo_Multiples_Dimensio/10_CostandBudget_12_CostAcc_MultiDimensions_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/18.3_Ajuste_de_Costos_de_Inventario/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/19.2_Activos_Fijos_Virtuales/10_FixedAsset_12_FixedAsset_Intro_Virtual_Asset_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/2.2_De_Pedido_a_Cobro_Order_to_Cash/10_Sales_12_Process_Order2Cash_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES.md,2
+Manuales (texto),public/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/22.4_Campos_Definidos_por_el_Usuario_UDF/10_Impl_14_CustomTools_UserDefinedFields_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/22.5_Valores_Definidos_por_el_Usuario_UD/10_Impl_15_CustomTools_UserDefinedValues_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/23.2_Caso_Practico_Introduccion/CSL01_Introduction_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES.md,2
+Manuales (texto),public/Capacitacion Finix/23.4_Caso_Practico_Proceso_de_Aprovision/CSL02_Procurement_Process_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/23.5_Caso_Practico_Aprovisionamiento_Sol/CSL02_Procurement_Process_Solution_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/3.5_Entrada_de_Mercancias_GRPO/10_Purch_21_Issues_GRPO_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/4.1_Datos_Maestros_de_Articulos/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/5.6_Proceso_de_Picking_y_Packing_Ventas/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/6.1_Proceso_de_Picking_y_Packing_Produc/clase_sync.json,2
+Manuales (texto),public/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer_slides.md,2
+Manuales (texto),public/Capacitacion Finix/8.3_Actualizacion_de_Listas_de_Precios/10_Pricing_22_Pricelist_UpdatePricelist_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/8.4_Descuentos_por_Periodo_y_Volumen/10_Pricing_31_DiscSP_PerVolDisc_ES_slides.md,2
+Manuales (texto),public/Capacitacion Finix/9.2_Pronosticos_de_Consumo_y_Demanda/10_MRP_12_ConsumeForecast.md,2
+Manuales (texto),public/Capacitacion Finix/9.3_MRP_y_Listas_de_Materiales_BOM/10_MRP_13_MRP_BOM_slides.md,2
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L01_Que_es_un_ERP/videos.json,2
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L02_El_escritorio_de_Finix_ERP/videos.json,2
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L03_Datos_maestros/B01_video/M01-L03_B01_sync.json,2
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L04_Buscar_y_navegar/videos.json,2
+Manuales (texto),public/Capacitacion Finix/10.5_Proceso_Basico_de_Orden_de_Producci/10_Production_41_Process_BasicProductionProcess_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/15.5_Cierre_de_Periodo_Contable/clase_sync.json,1
+Manuales (texto),public/Capacitacion Finix/17.3_Antiguedad_de_Saldos_Aging_Report/10_ControlReports_22_CashReports_Aging_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/2.6_Devoluciones_y_Cambios_Ventas/10_Sales_51_Issues_ReturnsExchange_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/2.7_Notas_de_Credito_Ventas/10_Sales_52_Issues_CM_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/4.2_Grupos_de_Articulos/10_ItemInv_12_Item_ItemGrp_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/4.3_Unidades_de_Medida_Vision_General/10_ItemInv_21_UoM_Overview_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/5.1_Gestion_de_Almacenes/10_ItemInv_31_WM_WH_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/5.2_Movimientos_de_Mercancia/10_ItemInv_32_WM_GM_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/10_ItemInv_51_SNBatch_SNBatch_ES_slides.md,1
+Manuales (texto),public/Capacitacion Finix/5.3_Gestion_de_Series_y_Lotes/clase_sync.json,1
+Manuales (texto),public/Capacitacion Finix/6.2_Proceso_de_Picking_y_Packing_Transf/10_Inven_23_PNP_PNPTTransfer.md,1
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L02_El_escritorio_de_Finix_ERP/B01_video/M01-L02_B01_sync.json,1
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L02_El_escritorio_de_Finix_ERP/B03_video/M01-L02_B03_sync.json,1
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L03_Datos_maestros/videos.json,1
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L04_Buscar_y_navegar/B01_video/M01-L04_B01_sync.json,1
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/M01-L04_Buscar_y_navegar/B03_video/M01-L04_B03_sync.json,1
+Clases del aula (texto),public/Aula_Finix/M01_Primer_contacto_con_Finix_ERP/modulo.json,1
+Clases del aula (texto),public/Aula_Finix/M02_Fundamentos_contables_para_operar_el/M02-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M02_Fundamentos_contables_para_operar_el/M02-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M02_Fundamentos_contables_para_operar_el/M02-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M02_Fundamentos_contables_para_operar_el/M02-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M02_Fundamentos_contables_para_operar_el/M02-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M03_Socios_de_negocios_y_articulos_los_d/M03-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M03_Socios_de_negocios_y_articulos_los_d/M03-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M03_Socios_de_negocios_y_articulos_los_d/M03-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M03_Socios_de_negocios_y_articulos_los_d/M03-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M03_Socios_de_negocios_y_articulos_los_d/M03-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M04_Unidades_de_medida_y_empaque/M04-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M04_Unidades_de_medida_y_empaque/M04-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M04_Unidades_de_medida_y_empaque/M04-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M04_Unidades_de_medida_y_empaque/M04-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M04_Unidades_de_medida_y_empaque/M04-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L08_Leccion_8/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M05_Ciclo_de_compras_ProcuretoPay/M05-L09_Leccion_9/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M06_Costos_de_importacion_y_portes_Lande/M06-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M06_Costos_de_importacion_y_portes_Lande/M06-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M06_Costos_de_importacion_y_portes_Lande/M06-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M06_Costos_de_importacion_y_portes_Lande/M06-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M07_Ciclo_de_ventas_OrdertoCash/M07-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M08_Precios_descuentos_y_margenes/M08-L08_Leccion_8/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M09_CRM_y_servicio_postventa/M09-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M09_CRM_y_servicio_postventa/M09-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M09_CRM_y_servicio_postventa/M09-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M10_Almacenes_movimientos_e_inventario_f/M10-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M11_Valoracion_de_inventario_lotes_y_ser/M11-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M11_Valoracion_de_inventario_lotes_y_ser/M11-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M11_Valoracion_de_inventario_lotes_y_ser/M11-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M11_Valoracion_de_inventario_lotes_y_ser/M11-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M11_Valoracion_de_inventario_lotes_y_ser/M11-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M12_Ubicaciones_en_almacen_Bin_Locations/M12-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M13_Produccion_recetas_recursos_y_ordene/M13-L08_Leccion_8/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M14_Contabilidad_y_costo_de_produccion/M14-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M14_Contabilidad_y_costo_de_produccion/M14-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M14_Contabilidad_y_costo_de_produccion/M14-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M15_Planificacion_de_necesidades_MRP/M15-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M15_Planificacion_de_necesidades_MRP/M15-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M15_Planificacion_de_necesidades_MRP/M15-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M15_Planificacion_de_necesidades_MRP/M15-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M16_Plan_de_cuentas_monedas_y_determinac/M16-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M17_Asientos_periodos_y_cierre_contable/M17-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M18_Tesoreria_cobros_pagos_y_conciliacio/M18-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M18_Tesoreria_cobros_pagos_y_conciliacio/M18-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M18_Tesoreria_cobros_pagos_y_conciliacio/M18-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M18_Tesoreria_cobros_pagos_y_conciliacio/M18-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M19_Activos_fijos/M19-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M20_Informes_financieros_y_de_caja/M20-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M20_Informes_financieros_y_de_caja/M20-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M20_Informes_financieros_y_de_caja/M20-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M20_Informes_financieros_y_de_caja/M20-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M20_Informes_financieros_y_de_caja/M20-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M20_Informes_financieros_y_de_caja/M20-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M21_Costos_dimensiones_y_presupuestos/M21-L07_Leccion_7/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M22_Consultas_y_analitica/M22-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M22_Consultas_y_analitica/M22-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M22_Consultas_y_analitica/M22-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M22_Consultas_y_analitica/M22-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M22_Consultas_y_analitica/M22-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M22_Consultas_y_analitica/M22-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M23_Gestion_de_proyectos_y_facturacion_p/M23-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M23_Gestion_de_proyectos_y_facturacion_p/M23-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M23_Gestion_de_proyectos_y_facturacion_p/M23-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M24_Metodologia_y_arranque_de_implementa/M24-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M24_Metodologia_y_arranque_de_implementa/M24-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M24_Metodologia_y_arranque_de_implementa/M24-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M24_Metodologia_y_arranque_de_implementa/M24-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M24_Metodologia_y_arranque_de_implementa/M24-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M24_Metodologia_y_arranque_de_implementa/M24-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M25_Migracion_de_datos_DTW_y_Excel/M25-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M25_Migracion_de_datos_DTW_y_Excel/M25-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M25_Migracion_de_datos_DTW_y_Excel/M25-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M25_Migracion_de_datos_DTW_y_Excel/M25-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M26_Usuarios_autorizaciones_y_numeracion/M26-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M26_Usuarios_autorizaciones_y_numeracion/M26-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M26_Usuarios_autorizaciones_y_numeracion/M26-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M26_Usuarios_autorizaciones_y_numeracion/M26-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M26_Usuarios_autorizaciones_y_numeracion/M26-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M27_Campos_valores_y_tablas_definidos_po/M27-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M27_Campos_valores_y_tablas_definidos_po/M27-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M27_Campos_valores_y_tablas_definidos_po/M27-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M27_Campos_valores_y_tablas_definidos_po/M27-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M28_Alertas_aprobaciones_y_plantillas_de/M28-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M28_Alertas_aprobaciones_y_plantillas_de/M28-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M28_Alertas_aprobaciones_y_plantillas_de/M28-L03_Leccion_3/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M28_Alertas_aprobaciones_y_plantillas_de/M28-L04_Leccion_4/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M28_Alertas_aprobaciones_y_plantillas_de/M28-L05_Leccion_5/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M28_Alertas_aprobaciones_y_plantillas_de/M28-L06_Leccion_6/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M29_Soporte_tecnico_y_plataforma_RSP/M29-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M29_Soporte_tecnico_y_plataforma_RSP/M29-L02_Leccion_2/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M30_Facturacion_electronica_y_retencione/M30-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/M31_ATS_y_formularios_SRI/M31-L01_Leccion_1/leccion.json,1
+Clases del aula (texto),public/Aula_Finix/_global/plantilla_diapositiva.html,1
+Clases del aula (texto),public/Aula_Finix/_reportes/reporte_GENERAL.md,1
+Clases del aula (texto),public/Aula_Finix/_reportes/reporte_M01.md,1
+Clases del aula (texto),public/Aula_Finix/_reportes/reporte_videos.md,1

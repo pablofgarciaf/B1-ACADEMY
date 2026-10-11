@@ -1,8 +1,7 @@
-# 🎓 Malla Curricular Oficial de SAP Academy (Estructura Biyectiva 1:1)
+# 🎓 Malla Curricular Oficial de Finix Academy (Estructura Biyectiva 1:1)
 
 > **Actualización:** Octubre 2026  
 > **Arquitectura:** Biyectiva 1:1 estricta — Cada Módulo $N$ posee exactamente el ID `mod-N`, clases `modN-c1..cK` y carpeta `public/aula/modN-cK`.  
-> **Documentos Relacionados:** [[20_Auditoria_Agente_Estudiante_Simulador_y_Certificacion]] · [[19_Track_Consultoria_y_Business_Analyst]] · [[06_LMS_Architecture]]
 
 ---
 
@@ -52,7 +51,7 @@ graph TD
     end
 
     subgraph Bloque7["7. Consultoría & Business Analyst"]
-        M1 --> M25["M25: SAP Activate (mod-25)"]
+        M1 --> M25["M25: metodología de implementación por fases (mod-25)"]
         M25 --> M26["M26: BPMN 2.0 (mod-26)"]
         M26 --> M27["M27: Blueprint BRD (mod-27)"]
         M27 --> M28["M28: UAT & Cambio (mod-28)"]
@@ -63,7 +62,7 @@ graph TD
         Bloque1 & Bloque2 & Bloque3 & Bloque4 & Bloque5 & Bloque6 & Bloque7 --> M30["M30: Proyecto Integrador Capstone (mod-30)"]
     end
 
-    M30 --> Master["⭐ Súper Analista & Consultor Máster SAP B1"]
+    M30 --> Master["⭐ Súper Analista & Consultor Máster Finix ERP"]
 ```
 
 ---
@@ -96,7 +95,7 @@ graph TD
 | **22** | `mod-22` | Finanzas y Fiscalidad | 10 | Facturación Electrónica y Retenciones SRI 2026 |
 | **23** | `mod-23` | Tecnología y Analítica | 4 | Consultoría de Datos, Query Manager SQL y DTW |
 | **24** | `mod-24` | Tecnología y Analítica | 2 | Extensibilidad, Tablas de Usuario y Analytics |
-| **25** | `mod-25` | Consultoría y Business Analyst | 4 | Metodología de Implementación y Ciclo de Vida SAP Activate |
+| **25** | `mod-25` | Consultoría y Business Analyst | 4 | Metodología de Implementación y Ciclo de Vida metodología de implementación por fases |
 | **26** | `mod-26` | Consultoría y Business Analyst | 4 | Modelado y Optimización de Procesos de Negocio (BPMN 2.0) |
 | **27** | `mod-27` | Consultoría y Business Analyst | 4 | Levantamiento de Requerimientos y Business Blueprint (BRD) |
 | **28** | `mod-28` | Consultoría y Business Analyst | 4 | Gestión de Clientes, Pruebas UAT y Adopción del Cambio |
@@ -119,8 +118,8 @@ Cada diploma agrupa los módulos en estricto orden correlativo ascendente:
 8. **Diploma de Analista de Costos y Presupuestos (`dip-costos`):** `mod-3`, `mod-9`, `mod-18`, `mod-21`
 9. **Diploma de Gestión Administrativa y Control de Activos Fijos (`dip-admin-activos`):** `mod-1`, `mod-2`, `mod-3`, `mod-4`
 10. **Diploma de Especialista en Talento Humano y Nómina (`dip-nomina`):** `mod-1`, `mod-2`, `mod-5`, `mod-6`
-11. **Diploma de Consultor Comercial y Preventa SAP B1 (`dip-ventas-master`):** `mod-1`, `mod-2`, `mod-12`, `mod-13`, `mod-14`, `mod-23`
-12. **Diploma de Administrador SAP Business One (`dip-admin`):** `mod-1`, `mod-4`, `mod-23`, `mod-24`
+11. **Diploma de Consultor Comercial y Preventa Finix ERP (`dip-ventas-master`):** `mod-1`, `mod-2`, `mod-12`, `mod-13`, `mod-14`, `mod-23`
+12. **Diploma de Administrador Finix ERP (`dip-admin`):** `mod-1`, `mod-4`, `mod-23`, `mod-24`
 13. **Diploma de Consultor de Implementación (`dip-consultor`):** `mod-4`, `mod-23`, `mod-29`, `mod-30` (requiere al menos 1 diploma funcional previo)
 14. **Diploma de Consultor Funcional & Business Analyst (`dip-business-analyst`):** `mod-1`, `mod-2`, `mod-25`, `mod-26`, `mod-27`, `mod-28`
 
@@ -130,4 +129,3 @@ Cada diploma agrupa los módulos en estricto orden correlativo ascendente:
 
 - **ID del Programa:** `master-consultor-integral`
 - **Requisito:** Aprobación de las 30 certificaciones de competencia técnica, validación de las 366 prácticas evaluadas en Supabase (PostgreSQL Cloud) y defensa aprobada del Proyecto Integrador Capstone.
-- **Acreditación Registrada:** Ver reporte detallado en [[20_Auditoria_Agente_Estudiante_Simulador_y_Certificacion]].

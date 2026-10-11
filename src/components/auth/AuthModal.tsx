@@ -22,14 +22,14 @@ export function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
         </button>
 
         <div className="text-center mb-6">
-          <div className="w-12 h-12 rounded-2xl bg-sap-blue/10 text-sap-blue flex items-center justify-center mx-auto mb-3">
+          <div className="w-12 h-12 rounded-2xl bg-finix-blue/10 text-finix-blue flex items-center justify-center mx-auto mb-3">
             <ShieldCheck className="w-6 h-6" />
           </div>
           <h3 id="auth-modal-title" className="text-xl font-bold text-slate-900 dark:text-white">
             {user ? "Mi Perfil de Acceso" : "Acceso a B1 Academy"}
           </h3>
           <p className="text-xs text-slate-500 mt-1">
-            {user ? "Sesión activa en el ecosistema SAP" : "Inicia sesión con tu cuenta personal"}
+            {user ? "Sesión activa en el ecosistema Finix ERP" : "Inicia sesión con tu cuenta personal"}
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
               <p><strong>Email:</strong> {user.email}</p>
               <p>
                 <strong>Rol Actual:</strong>{" "}
-                <span className={user.role === 'consultor_premium' ? 'text-amber-500 font-bold' : 'text-sap-blue font-bold'}>
+                <span className={user.role === 'consultor_premium' ? 'text-amber-500 font-bold' : 'text-finix-blue font-bold'}>
                   {user.role === 'consultor_premium' ? 'Consultor Premium' : 'Usuario Regular'}
                 </span>
               </p>
@@ -55,7 +55,7 @@ export function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
           </div>
         ) : (
           <div className="space-y-3">
-            <Link href="/login" onClick={onClose} className="flex min-h-[44px] w-full items-center justify-center rounded-xl bg-sap-blue px-4 py-3 text-sm font-bold text-white transition-all hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sap-blue active:scale-95">
+            <Link href="/login" onClick={onClose} className="flex min-h-[44px] w-full items-center justify-center rounded-xl bg-finix-blue px-4 py-3 text-sm font-bold text-white transition-all hover:bg-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-finix-blue active:scale-95">
               Iniciar sesión de forma segura
             </Link>
           </div>

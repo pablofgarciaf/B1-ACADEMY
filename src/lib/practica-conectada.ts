@@ -25,7 +25,7 @@ const REGLAS: [RegExp, PantallaConectada][] = [
   [/(^|[^a-z])isd([^a-z]|$)|salida de divisas|pago al exterior|pagos al exterior/, { clave: 'isd' }],
   [/pagos (efectuados|recibidos)|pagar (los )?sueldos|pagar (la )?planilla|pago.*proveedor|pagar.*proveedor|ejecutar pago/, { clave: 'bancos' }], // antes que "transferencia" (que es de stock)
   [/(^|[^a-z])rol(es)?([^a-z]|$)|liquidar sueldos|ejecutar nomina/, { clave: 'nomina' }],
-  [/nota de credito|abono de cliente/, { clave: 'documento', docType: 'credit_note' }], // "Abono de clientes" es el nombre de SAP en español
+  [/nota de credito|abono de cliente/, { clave: 'documento', docType: 'credit_note' }], // "Abono de clientes" es el nombre de Finix ERP en español
   [/factura de proveedor|factura de acreedor/, { clave: 'documento', docType: 'vendor_invoice' }],
   [/entrada de mercanc|recepcion de mercanc|grpo/, { clave: 'documento', docType: 'goods_receipt' }],
   [/solicitud de compra/, { clave: 'documento', docType: 'purchase_request' }],
@@ -82,7 +82,7 @@ const REGLAS: [RegExp, PantallaConectada][] = [
   [/recurso de maquina|recursos de maquina|tiempo de ejecucion|configurar.*recurso|filtrar.*fila|tipo de fila recurso/, { clave: 'recursos', tipo: 'maquina' }],
   // UDO / objetos definidos por el usuario
   [/tabla de conductores|objeto definido|udos?|campo.*conductor|conductor.*campo|agregar campo nombre|registrar.*udo|udo.*registrar/, { clave: 'udo' }],
-  // Cockpit SAP
+  // Cockpit Finix ERP
   [/cockpit|plantilla.*cockpit|asignar.*plantilla/, { clave: 'cockpit' }],
   // Configuración general del sistema
   [/informacion del sistema|activar.*informacion|configurar sistema/, { clave: 'empresa' }],

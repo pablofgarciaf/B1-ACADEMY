@@ -45,7 +45,7 @@ export function LessonSidebar({
     return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
   };
 
-  const displayName = studentName || profile?.displayName || 'Estudiante SAP';
+  const displayName = studentName || profile?.displayName || 'Estudiante Finix ERP';
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full bg-white dark:bg-[#080d1a] border-r border-slate-200 dark:border-white/10 w-72">
@@ -53,14 +53,14 @@ export function LessonSidebar({
       <div className="p-6 border-b border-slate-200 dark:border-white/10">
         <Link 
           href="/mi-aula" 
-          className="flex items-center text-sm text-slate-500 hover:text-sap-blue dark:text-slate-400 dark:hover:text-sky-400 transition-colors mb-6"
+          className="flex items-center text-sm text-slate-500 hover:text-finix-blue dark:text-slate-400 dark:hover:text-sky-400 transition-colors mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Volver a Mi Aula
         </Link>
         
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 rounded-full bg-sap-blue/10 dark:bg-sky-400/10 flex items-center justify-center text-sap-blue dark:text-sky-400 font-bold text-lg flex-shrink-0 overflow-hidden">
+          <div className="w-12 h-12 rounded-full bg-finix-blue/10 dark:bg-sky-400/10 flex items-center justify-center text-finix-blue dark:text-sky-400 font-bold text-lg flex-shrink-0 overflow-hidden">
             {studentPhoto ? (
               <Image src={studentPhoto} alt={displayName} width={48} height={48} unoptimized className="w-full h-full object-cover" />
             ) : (
@@ -69,7 +69,7 @@ export function LessonSidebar({
           </div>
           <div>
             <h3 className="font-semibold text-slate-900 dark:text-white line-clamp-1">{displayName}</h3>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-sap-blue/10 text-sap-blue dark:bg-sky-400/10 dark:text-sky-400 font-medium">
+            <span className="text-xs px-2 py-0.5 rounded-full bg-finix-blue/10 text-finix-blue dark:bg-sky-400/10 dark:text-sky-400 font-medium">
               {profile?.role === 'consultor_premium' ? 'Premium' : 'Estándar'}
             </span>
           </div>
@@ -95,7 +95,7 @@ export function LessonSidebar({
                   />
                   {/* Progress circle */}
                   <path
-                    className="text-sap-blue dark:text-sky-400 transition-all duration-1000 ease-in-out"
+                    className="text-finix-blue dark:text-sky-400 transition-all duration-1000 ease-in-out"
                     strokeDasharray={`${currentProgress}, 100`}
                     strokeWidth="3"
                     strokeLinecap="round"
@@ -105,7 +105,7 @@ export function LessonSidebar({
                   />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xs font-bold text-sap-blue dark:text-sky-400">{Math.round(currentProgress)}%</span>
+                  <span className="text-xs font-bold text-finix-blue dark:text-sky-400">{Math.round(currentProgress)}%</span>
                 </div>
               </div>
               <div className="flex-1 min-w-0">
@@ -126,7 +126,7 @@ export function LessonSidebar({
                     href={`/mi-aula/${currentModuleSlug}/${lesson.id}`}
                     className={`flex items-start p-3 rounded-lg transition-colors ${
                       isCurrent 
-                        ? 'bg-sap-blue/10 dark:bg-sky-400/10' 
+                        ? 'bg-finix-blue/10 dark:bg-sky-400/10' 
                         : 'hover:bg-slate-50 dark:hover:bg-white/5'
                     }`}
                   >
@@ -134,8 +134,8 @@ export function LessonSidebar({
                       {isCompleted ? (
                         <CheckCircle2 className="w-5 h-5 text-green-500" />
                       ) : isCurrent ? (
-                        <div className="w-5 h-5 rounded-full border-2 border-sap-blue dark:border-sky-400 flex items-center justify-center">
-                          <div className="w-2.5 h-2.5 rounded-full bg-sap-blue dark:bg-sky-400" />
+                        <div className="w-5 h-5 rounded-full border-2 border-finix-blue dark:border-sky-400 flex items-center justify-center">
+                          <div className="w-2.5 h-2.5 rounded-full bg-finix-blue dark:bg-sky-400" />
                         </div>
                       ) : (
                         <Circle className="w-5 h-5 text-slate-300 dark:text-slate-600" />
@@ -144,7 +144,7 @@ export function LessonSidebar({
                     <div className="flex-1 min-w-0">
                       <p className={`text-sm font-medium line-clamp-2 ${
                         isCurrent 
-                          ? 'text-sap-blue dark:text-sky-400' 
+                          ? 'text-finix-blue dark:text-sky-400' 
                           : 'text-slate-700 dark:text-slate-300'
                       }`}>
                         {lesson.title}
@@ -283,7 +283,7 @@ export function LessonSidebar({
     <>
       {/* Mobile toggle button */}
       <button 
-        className="lg:hidden fixed bottom-4 right-4 z-50 bg-sap-blue text-white p-3 rounded-full shadow-lg"
+        className="lg:hidden fixed bottom-4 right-4 z-50 bg-finix-blue text-white p-3 rounded-full shadow-lg"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
       >
         {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

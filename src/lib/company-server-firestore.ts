@@ -14,7 +14,7 @@ function assignRows<K extends CollectionName>(state: CompanyState, key: K, snaps
 export async function readCompanyFirestore(uid: string, tx?: Transaction): Promise<CompanyState> {
   try {
     if (!tx) return await adminDb.runTransaction(transaction => readCompanyFirestore(uid, transaction), { readOnly: true });
-    const root = adminDb.collection('sapCompanies').doc(uid);
+    const root = adminDb.collection('finixCompanies').doc(uid);
     const state = emptyCompany();
     const profileRef = root.collection('profile').doc('main');
     const profile = tx ? await tx.get(profileRef) : await profileRef.get();
@@ -27,7 +27,7 @@ export async function readCompanyFirestore(uid: string, tx?: Transaction): Promi
 export async function executeCompanyCommandFirestore(uid: string, email: string, command: CompanyCommand, requestId: string): Promise<string> {
   try {
     return await adminDb.runTransaction(async tx => {
-      const root = adminDb.collection('sapCompanies').doc(uid);
+      const root = adminDb.collection('finixCompanies').doc(uid);
       const requestRef = root.collection('requests').doc(requestId);
       const previous = await tx.get(requestRef);
       const fingerprint = createHash('sha256').update(JSON.stringify(command)).digest('hex');

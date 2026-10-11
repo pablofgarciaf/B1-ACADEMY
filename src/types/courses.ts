@@ -1,12 +1,12 @@
 export type TrackCode = 
-  | 'SAP-B1-LOGISTICS'
-  | 'SAP-B1-FINANCIALS'
-  | 'SAP-B1-IMPLEMENTATION'
-  | 'SAP-B1-PRODUCTION'
-  | 'SAP-LOC-EC' 
+  | 'FINIX-ERP-LOGISTICS'
+  | 'FINIX-ERP-FINANCIALS'
+  | 'FINIX-ERP-IMPLEMENTATION'
+  | 'FINIX-ERP-PRODUCTION'
+  | 'Finix ERP-LOC-EC' 
   | 'B1-NOM-EC' 
   | 'B1-HCM-TALENT' 
-  | 'SAP-VERT-EXP';
+  | 'Finix ERP-VERT-EXP';
 
 export type SubmoduleLevel = 'OP' | 'ARQ';
 

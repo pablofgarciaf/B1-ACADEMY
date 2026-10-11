@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
- * Voz oficial de SAP Academy (es-MX-JorgeNeural, la de los videos de los manuales).
+ * Voz oficial de Finix Academy (es-MX-JorgeNeural, la de los videos de los manuales).
  * Reemplaza a window.speechSynthesis: nunca usa la voz robótica del navegador.
  * Si el servicio de voz falla, deja el texto en pantalla y avanza según el tiempo de lectura.
  */

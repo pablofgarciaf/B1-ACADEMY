@@ -1,4 +1,4 @@
 'use client';
 
-export { default, FiniChat, SapiChat } from './FeNiChat';
+export { default, FiniChat } from './FeNiChat';
 export type { Message } from './FeNiChat';

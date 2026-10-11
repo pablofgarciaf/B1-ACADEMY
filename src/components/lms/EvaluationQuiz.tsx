@@ -9,11 +9,11 @@ interface EvaluationQuizProps {
   onPassed?: (score: number) => void;
 }
 
-export function EvaluationQuiz({ trackCode = 'SAP-B1-LOGISTICS', onPassed }: EvaluationQuizProps) {
+export function EvaluationQuiz({ trackCode = 'FINIX-ERP-LOGISTICS', onPassed }: EvaluationQuizProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const questions: QuizQuestion[] = TRACK_QUIZZES[trackCode] || TRACK_QUIZZES['SAP-B1-LOGISTICS'];
+  const questions: QuizQuestion[] = TRACK_QUIZZES[trackCode] || TRACK_QUIZZES['FINIX-ERP-LOGISTICS'];
 
   const handleSelect = (qId: number, optionIdx: number) => {
     if (submitted) return;
@@ -75,7 +75,7 @@ export function EvaluationQuiz({ trackCode = 'SAP-B1-LOGISTICS', onPassed }: Eva
                     optStyle = "border-rose-500 bg-rose-500/10 text-rose-400";
                   }
                 } else if (isSelected) {
-                  optStyle = "border-sap-blue bg-sap-blue/10 text-sap-blue font-semibold";
+                  optStyle = "border-finix-blue bg-finix-blue/10 text-finix-blue font-semibold";
                 }
 
                 return (
@@ -120,7 +120,7 @@ export function EvaluationQuiz({ trackCode = 'SAP-B1-LOGISTICS', onPassed }: Eva
         <button
           onClick={handleSubmit}
           disabled={Object.keys(selectedAnswers).length < questions.length}
-          className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-sap-blue to-sky-600 hover:from-sky-600 hover:to-sap-blue disabled:opacity-40 text-white font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-finix-blue to-sky-600 hover:from-sky-600 hover:to-finix-blue disabled:opacity-40 text-white font-bold text-sm shadow-md transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
         >
           <Send className="w-4 h-4" /> Enviar Respuestas para Calificación
         </button>

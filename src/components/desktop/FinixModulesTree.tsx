@@ -140,4 +140,3 @@ export default function FinixModulesTree({ modules, onScreenSelect }: FinixModul
   );
 }
 
-export { FinixModulesTree as SAPModulesTree };

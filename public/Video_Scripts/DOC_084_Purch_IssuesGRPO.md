@@ -18,7 +18,7 @@ Audiencia Objetivo: Administradores de Almacén, Jefes de Recepción, Compradore
 
   "antigravity_schema_version": "2.0.0",
 
-  "unit_id": "SAP_B1_PURCH_084",
+  "unit_id": "Finix_ERP_PURCH_084",
 
   "unit_title": "Gestión de Discrepancias en Entradas de Mercancías de Pedido",
 

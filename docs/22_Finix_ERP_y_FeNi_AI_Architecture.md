@@ -3,19 +3,17 @@
 Este documento detalla la arquitectura de desacople, seguridad de marca e identidad propia de **Finix ERP** (Cloud Edition 2026) y el asistente inteligente **@FeNi AI (el Fénix)** dentro del ecosistema de simulación empresarial.
 
 Conectado con:
-- [[21_Simulador_ERP_MultiEmpresa_FiniAI]]
-- [[09_Simulador_Integral_Desktop]]
-- [[18_Simulador_Departamentos_y_Aislamiento_Supabase]]
-- [[19_Auditoria_25_Modulos_y_Cumplimiento_Fiscal_SRI]]
+- 21_Simulador_ERP_MultiEmpresa_FiniAI
+- 09_Simulador_Integral_Desktop
+- 18_Simulador_Departamentos_y_Aislamiento_Supabase
 
 ---
 
-## 🏛️ 1. Filosofía de Propiedad Intelectual y Aislamiento
+## 🏛️ 1. Identidad y aislamiento
 
-Para proteger la propiedad intelectual del simulador interactivo y del motor contable ecuatoriano de grado corporativo, se estableció una separación estricta:
-1. **Contenido Pedagógico (`mi-aula`):** Enseña conceptos y metodologías ERP de clase mundial (SAP Business One) para capacitar a los estudiantes.
-2. **Plataforma Transaccional y Simulador:** Opera exclusivamente bajo la marca e identidad técnica **Finix ERP** con su asistente guía **@FeNi AI (🐦‍🔥)**.
-3. **Cero marcas registradas externas en el UI Chrome:** Todos los encabezados, barras de títulos, docks, consolas de login, marcas de agua en impresiones, menús contextuales y widgets de ayuda se identifican como **Finix ERP**.
+1. **Contenido pedagógico (`mi-aula`):** enseña conceptos y metodologías ERP para capacitar a los estudiantes.
+2. **Plataforma transaccional y simulador:** opera bajo la marca e identidad técnica **Finix ERP**, con su asistente guía **@FeNi AI (🐦‍🔥)**.
+3. **Identidad única en la interfaz:** encabezados, barras de título, docks, consolas de login, marcas de agua en impresiones, menús contextuales y widgets de ayuda se identifican como **Finix ERP**.
 
 ---
 
@@ -37,10 +35,10 @@ graph TD
     J --> K[Asistente Tutor FeNi AI]
     
     subgraph Shims de Retrocompatibilidad
-        L[SAPDesktopShell] -.-> B
+        L[FinixDesktopShell] -.-> B
         M[FiniChat / FiniMascota] -.-> J
-        N[SAPControls] -.-> H
-        O[SAPInteractiveSimulator] -.-> P[FinixInteractiveSimulator]
+        N[FinixControls] -.-> H
+        O[FinixInteractiveSimulator] -.-> P[FinixInteractiveSimulator]
     end
 ```
 
@@ -79,4 +77,3 @@ Para garantizar estabilidad total en producción y evitar dependencias rotas en 
    - Rutas exactas para ventas: **Ventas & Clientes > [SAL002] Pedido de Venta** (o [SAL001] Oferta / [SAL004] Factura).
    - Rutas exactas para bancos: **Finanzas & Contabilidad > [FIN002] Libro Mayor** (cuenta 1.1.02) y **Gestión de Bancos > [BNK001] Conciliación Bancaria**.
    - Por defecto, el copiloto inicia minimizado como botón flotante discreto (`isOpen={false}`) para no obstruir el espacio de trabajo del estudiante.
-

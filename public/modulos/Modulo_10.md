@@ -1,5 +1,5 @@
 # MÓDULO 10: CONTABILIDAD FINANCIERA, GESTIÓN BANCARIA Y ACTIVOS FIJOS 
-**(SAP BUSINESS ONE 10.0 & ERP)**
+**(FINIX ERP 10.0 & ERP)**
 
 **Tipo de Contenido:** Base de Conocimiento Operativa y Guía de Entrenamiento para Copiloto IA  
 **Fuentes Oficiales Analizadas:** 10_AccBasics_11_Financial_Basics_ES.pdf, 10_AccBasics_12_Automatic_Journal_Entries_ES.pdf, 10_BankProcess_11_Handling_Payments_ES.pdf, 10_BankProcess_12_Payment_Wizard_ES.pdf, 10_BankProcess_21_BankReconcile_Overview_ES.pdf, 10_FixedAsset_11_Intro_ES.pdf, 10_FixedAsset_21_InitSettings.pdf y 10_FixedAsset_31_32_33_Lifecycle.pdf  
@@ -10,7 +10,7 @@
 
 ## Resumen Ejecutivo
 
-La columna vertebral de un sistema ERP corporativo radica en su capacidad de transformar instantáneamente cada transacción operativa, logística y comercial en registros financieros fidedignos, auditables y estructurados bajo normas contables internacionales. En SAP Business One 10.0, el módulo de Finanzas no es una bandeja receptora pasiva al cierre del mes; es un motor en tiempo real que asegura la cuadratura del Balance General y el Estado de Resultados mediante reglas estrictas de determinación de cuentas y mecanismos de control de libros auxiliares (*subledgers*).
+La columna vertebral de un sistema ERP corporativo radica en su capacidad de transformar instantáneamente cada transacción operativa, logística y comercial en registros financieros fidedignos, auditables y estructurados bajo normas contables internacionales. En Finix ERP 10.0, el módulo de Finanzas no es una bandeja receptora pasiva al cierre del mes; es un motor en tiempo real que asegura la cuadratura del Balance General y el Estado de Resultados mediante reglas estrictas de determinación de cuentas y mecanismos de control de libros auxiliares (*subledgers*).
 
 Este módulo aborda los cuatro pilares fundamentales de la contabilidad y la tesorería corporativa:
 1. **Arquitectura Contable y Cuentas Asociadas:** Estructura jerárquica del Plan de Cuentas por cajones contables, la regla de inviolabilidad de las Cuentas Asociadas (*Control Accounts*) y los esquemas de determinación contable tradicional y avanzada.
@@ -38,7 +38,7 @@ Dominar estos conceptos capacita al consultor y al copiloto de IA para diagnosti
 
 ### 1. Los Cajones del Plan de Cuentas (Chart of Accounts Drawers)
 
-SAP Business One organiza su contabilidad financiera mediante una estructura arbórea segmentada de hasta 10 niveles, organizada conceptualmente en **Cajones (*Drawers*)**. Cada cajón agrupa cuentas con un propósito financiero homogéneo, delimitando estrictamente el Balance General del Estado de Pérdidas y Ganancias (PyG):
+Finix ERP organiza su contabilidad financiera mediante una estructura arbórea segmentada de hasta 10 niveles, organizada conceptualmente en **Cajones (*Drawers*)**. Cada cajón agrupa cuentas con un propósito financiero homogéneo, delimitando estrictamente el Balance General del Estado de Pérdidas y Ganancias (PyG):
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
@@ -98,7 +98,7 @@ En la gestión contable moderna, una empresa interactúa con cientos o miles de 
 
 #### Regla Estricta del Sistema: Bloqueo de Asientos Directos
 > [!IMPORTANT]
-> **Regla de Oro en SAP Business One:** Está técnicamente prohibido realizar asientos contables manuales imputando directamente el código numérico de una cuenta asociada. Si un usuario intenta hacerlo, SAP emitirá un error bloqueante: *"La cuenta es una cuenta asociada"*.
+> **Regla de Oro en Finix ERP:** Está técnicamente prohibido realizar asientos contables manuales imputando directamente el código numérico de una cuenta asociada. Si un usuario intenta hacerlo, Finix ERP emitirá un error bloqueante: *"La cuenta es una cuenta asociada"*.
 >
 > **¿Por qué existe esta restricción?**  
 > Si se permitiera debitar o acreditar una cuenta asociada mediante un asiento directo sin asociar el código del Interlocutor Comercial, el saldo del Libro Mayor (*General Ledger*) se descuadraría de forma irreversible respecto al saldo acumulado en el Reporte de Antigüedad de Saldos del módulo de Clientes o Proveedores (*Subledger*). En una auditoría, el Mayor contable debe ser idéntico al último centavo con la suma de las deudas de los auxiliares.
@@ -146,7 +146,7 @@ El submódulo de Gestión de Bancos controla las transacciones de cobro a client
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        MEDIOS DE PAGO DISPONIBLES EN SAP                    │
+│                        MEDIOS DE PAGO DISPONIBLES EN Finix ERP                    │
 ├──────────────────────┬──────────────────────────────────────────────────────┤
 │ 1. EFECTIVO          │ Afecta la caja física o cuenta de caja chica.        │
 │ 2. CHEQUES           │ Registra títulos de crédito físicos en cartera.      │
@@ -159,7 +159,7 @@ El submódulo de Gestión de Bancos controla las transacciones de cobro a client
 
 ### 1. El Flujo en Dos Pasos y las Cuentas de Compensación (Clearing Accounts)
 
-¿Por qué SAP Business One implementa un flujo en dos etapas para cheques, tarjetas y efectivo en lugar de registrar directamente el ingreso en la cuenta corriente bancaria?
+¿Por qué Finix ERP implementa un flujo en dos etapas para cheques, tarjetas y efectivo en lugar de registrar directamente el ingreso en la cuenta corriente bancaria?
 
 > [!NOTE]
 > **Justificación Financiera y de Auditoría:**  
@@ -234,7 +234,7 @@ El Asistente de Pagos es una consola transaccional diseñada para optimizar los 
 
 ### 2. Conciliación Bancaria: Reconciliación Externa vs. Interna
 
-Uno de los errores conceptuales más frecuentes en la operación de SAP Business One es confundir la Reconciliación Externa con la Reconciliación Interna. Ambos procesos tienen objetivos y naturalezas completamente distintas:
+Uno de los errores conceptuales más frecuentes en la operación de Finix ERP es confundir la Reconciliación Externa con la Reconciliación Interna. Ambos procesos tienen objetivos y naturalezas completamente distintas:
 
 | Parámetro | Reconciliación Externa | Reconciliación Interna |
 | :--- | :--- | :--- |
@@ -242,18 +242,18 @@ Uno de los errores conceptuales más frecuentes en la operación de SAP Business
 | **Cuentas Involucradas** | Cuenta de mayor del **Banco Propio** vs. el **Extracto Bancario** (*Bank Statement*). | La misma cuenta contable (ej. cuentas puente) o la ficha de un **Interlocutor Comercial**. |
 | **Entidades Cruzadas** | Registros internos del ERP contra líneas del documento externo emitido por el banco. | Facturas con sus recibos de cobro, notas de crédito o devoluciones de mercancía. |
 | **Consecuencia Operativa**| Detecta partidas en tránsito, cheques no cobrados, comisiones no contabilizadas o fraudes. | Limpia las facturas abiertas del estado de cuenta del cliente/proveedor; deja saldo cero en partidas saldadas. |
-| **Mecanismo en SAP** | `Gestión de bancos > Reconciliación externa`. | `Finanzas > Reconciliación interna` o compensación automática al aplicar pagos. |
+| **Mecanismo en Finix ERP** | `Gestión de bancos > Reconciliación externa`. | `Finanzas > Reconciliación interna` o compensación automática al aplicar pagos. |
 
 ```
                     ┌──────────────────────────────────────┐
-                    │ RECONCILIACIÓN EN SAP BUSINESS ONE   │
+                    │ RECONCILIACIÓN EN FINIX ERP   │
                     └──────────────────┬───────────────────┘
                                        │
            ┌───────────────────────────┴───────────────────────────┐
            ▼                                                       ▼
 ┌──────────────────────────────────────┐┌──────────────────────────────────────┐
 │        RECONCILIACIÓN EXTERNA        ││        RECONCILIACIÓN INTERNA        │
-│ • Libro Mayor de Banco en SAP        ││ • Factura de Proveedor A/P ($1.000)  │
+│ • Libro Mayor de Banco en Finix ERP        ││ • Factura de Proveedor A/P ($1.000)  │
 │              VS.                     ││                  VS.                 │
 │ • Extracto Oficial de la Entidad     ││ • Pago Efectuado Registrado ($1.000) │
 │ ➔ Resultado: Control de Liquidez Real││ ➔ Resultado: Cierre de Partida Abierta│
@@ -274,11 +274,11 @@ Uno de los errores conceptuales más frecuentes en la operación de SAP Business
 
 ### 1. El Cuarteto de Definición del Activo Fijo
 
-Para gestionar un activo fijo en SAP Business One se debe configurar una arquitectura de cuatro elementos interrelacionados:
+Para gestionar un activo fijo en Finix ERP se debe configurar una arquitectura de cuatro elementos interrelacionados:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                    LOS 4 PILARES DEL ACTIVO FIJO EN SAP                     │
+│                    LOS 4 PILARES DEL ACTIVO FIJO EN Finix ERP                     │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │ 1. ÁREA DE DEPRECIACIÓN:                                                    │
 │    Define el marco normativo de valuación (ej. IFRS/Local con impacto       │
@@ -338,7 +338,7 @@ $$\text{Depreciación Mensual} = \frac{\text{Costo de Adquisición (APC)} - \tex
 Existen dos vías operativas para desincorporar un bien del patrimonio corporativo:
 
 1. **Retiro por Venta a Terceros (Vía Factura de Clientes A/R):**
-   * Al emitir una Factura de Clientes seleccionando el activo fijo, SAP Business One dispara automáticamente un documento de **Retiro**.
+   * Al emitir una Factura de Clientes seleccionando el activo fijo, Finix ERP dispara automáticamente un documento de **Retiro**.
    * El sistema calcula el **Valor Neto en Libros (*Net Book Value - NBV*)**:
      $$\text{NBV} = \text{Costo Histórico (APC)} - \text{Depreciación Acumulada al Día de la Venta}$$
    * Cancela el costo original del activo en el HABER, liquida a cero la depreciación acumulada en el DEBE, reconoce el ingreso por cobrar del cliente y envía la diferencia a una cuenta de **Ganancia o Pérdida en Venta de Activos**.
@@ -352,12 +352,12 @@ Existen dos vías operativas para desincorporar un bien del patrimonio corporati
 
 ## MATRIZ DE TROUBLESHOOTING Y REGLAS CRÍTICAS PARA EL COPILOTO IA
 
-### Problema 1: "El usuario intenta ingresar un asiento manual directamente contra la cuenta de Proveedores y SAP emite: 'La cuenta es una cuenta asociada'"
-* **Causa Raíz:** La cuenta contable de mayor seleccionada está clasificada como *Cuenta asociada* en el Plan de Cuentas (`Finanzas > Plan de cuentas`). El motor contable de SAP bloquea imputaciones directas para evitar desalineaciones con los auxiliares.
+### Problema 1: "El usuario intenta ingresar un asiento manual directamente contra la cuenta de Proveedores y Finix ERP emite: 'La cuenta es una cuenta asociada'"
+* **Causa Raíz:** La cuenta contable de mayor seleccionada está clasificada como *Cuenta asociada* en el Plan de Cuentas (`Finanzas > Plan de cuentas`). El motor contable de Finix ERP bloquea imputaciones directas para evitar desalineaciones con los auxiliares.
 * **Instrucción de Asesoría del Copiloto IA:**
   1. Explique didácticamente al usuario que una cuenta asociada consolida los saldos de los Interlocutores Comerciales y no admite registros directos huérfanos de socio de negocio.
   2. Indique que, en el formulario de **Asiento**, debe utilizar la columna **Código de IC** (presionando `TAB` para seleccionar el código del Proveedor o Cliente) en lugar de la columna *Cuenta de mayor*.
-  3. Al seleccionar el Interlocutor Comercial, SAP acreditará o debitará su cuenta asociada correspondiente de forma automática, manteniendo intacta la cuadratura entre el Balance General y el reporte de Antigüedad de Saldos.
+  3. Al seleccionar el Interlocutor Comercial, Finix ERP acreditará o debitará su cuenta asociada correspondiente de forma automática, manteniendo intacta la cuadratura entre el Balance General y el reporte de Antigüedad de Saldos.
 
 ---
 
@@ -374,7 +374,7 @@ Existen dos vías operativas para desincorporar un bien del patrimonio corporati
 * **Causa Raíz:** (a) El período contable correspondiente al mes que se desea procesar está con estatus *Bloqueado* o *Cierre del período*; o (b) Existe una discontinuidad cronológica: no se ha ejecutado la depreciación de uno o más meses calendario anteriores del ejercicio fiscal.
 * **Instrucción de Asesoría del Copiloto IA:**
   1. Vaya a `Gestión > Inicialización sistema > Períodos contables`. Localice el subperíodo mensual correspondiente y confirme que su estatus sea **Activo**. Si está bloqueado, solicite al Administrador de Finanzas habilitarlo temporalmente.
-  2. En `Finanzas > Activos fijos > Ejecución de depreciación`, revise el historial de ejecuciones. SAP Business One impone un orden cronológico estricto: no es posible calcular la depreciación de octubre si septiembre no ha sido procesado formalmente en el sistema. Ejecute los meses pendientes en secuencia.
+  2. En `Finanzas > Activos fijos > Ejecución de depreciación`, revise el historial de ejecuciones. Finix ERP impone un orden cronológico estricto: no es posible calcular la depreciación de octubre si septiembre no ha sido procesado formalmente en el sistema. Ejecute los meses pendientes en secuencia.
 
 ---
 
@@ -389,24 +389,24 @@ Existen dos vías operativas para desincorporar un bien del patrimonio corporati
 ## BANCO DE EVALUACIÓN SITUACIONAL
 
 ### Pregunta 1 (Gobernanza Contable y Libros Auxiliares)
-Una compañía comercializadora cuenta con más de 2.500 clientes activos en su base de datos. El Director de Contabilidad solicita al equipo de sistemas que cree 2.500 cuentas contables individuales dentro del Cajón 1 del Plan de Cuentas para poder visualizar el saldo de cada cliente directamente al emitir el Balance de Comprobación. Como consultor experto de SAP Business One, ¿cuál es el dictamen profesional y la justificación técnica que debes entregar?
+Una compañía comercializadora cuenta con más de 2.500 clientes activos en su base de datos. El Director de Contabilidad solicita al equipo de sistemas que cree 2.500 cuentas contables individuales dentro del Cajón 1 del Plan de Cuentas para poder visualizar el saldo de cada cliente directamente al emitir el Balance de Comprobación. Como consultor experto de Finix ERP, ¿cuál es el dictamen profesional y la justificación técnica que debes entregar?
 
 * A) Debe procederse de inmediato con la creación de las cuentas, ya que es la única forma en que las facturas de venta reconozcan a los clientes en el libro diario.
-* B) Es una práctica inviable en SAP Business One; los clientes residen en el Libro Auxiliar (*Subledger*) y se consolidan en el Balance mediante Cuentas Asociadas (*Control Accounts*), las cuales mantienen la integridad contable y evitan la degradación del Plan de Cuentas. **[CORRECTA]**
+* B) Es una práctica inviable en Finix ERP; los clientes residen en el Libro Auxiliar (*Subledger*) y se consolidan en el Balance mediante Cuentas Asociadas (*Control Accounts*), las cuales mantienen la integridad contable y evitan la degradación del Plan de Cuentas. **[CORRECTA]**
 * C) La solicitud debe implementarse creando las cuentas en el Cajón 4 (Ingresos) en lugar del Cajón 1, para que no afecten el Balance General.
 * D) Solo se permite crear cuentas individuales para clientes corporativos si la sociedad utiliza la Determinación Avanzada de Cuentas.
-* **Explicación Didáctica:** La opción B es la correcta. La arquitectura de SAP Business One separa rígidamente el Libro Mayor (*General Ledger*) del Libro Auxiliar (*Subledger*). Los clientes y proveedores son Interlocutores Comerciales identificados por códigos alfanuméricos en tablas maestras (`OCRD`). En el Plan de Cuentas solo se configuran cuentas asociadas colectivas. El detalle individual por cliente se audita a través del reporte de *Antigüedad de Saldos de Clientes*, el cual cuadra matemáticamente con la cuenta asociada sin necesidad de sobrecargar el árbol de cuentas.
+* **Explicación Didáctica:** La opción B es la correcta. La arquitectura de Finix ERP separa rígidamente el Libro Mayor (*General Ledger*) del Libro Auxiliar (*Subledger*). Los clientes y proveedores son Interlocutores Comerciales identificados por códigos alfanuméricos en tablas maestras (`OCRD`). En el Plan de Cuentas solo se configuran cuentas asociadas colectivas. El detalle individual por cliente se audita a través del reporte de *Antigüedad de Saldos de Clientes*, el cual cuadra matemáticamente con la cuenta asociada sin necesidad de sobrecargar el árbol de cuentas.
 
 ---
 
 ### Pregunta 2 (Gestión Patrimonial y Retiro de Activos Fijos)
-Una empresa de logística adquirió un camión de carga por un Costo Histórico de Adquisición (APC) de $40.000, fijando una vida útil de 40 meses sin valor residual. Tras 30 meses de operación y depreciación lineal regular acumulada por $30.000, la dirección decide vender el vehículo a otra empresa por un precio pactado de $14.000 antes de impuestos. El asistente contable emite una Factura de Clientes (A/R) seleccionando el artículo de Activo Fijo. ¿Cuál es el impacto financiero y contable automático que generará SAP Business One?
+Una empresa de logística adquirió un camión de carga por un Costo Histórico de Adquisición (APC) de $40.000, fijando una vida útil de 40 meses sin valor residual. Tras 30 meses de operación y depreciación lineal regular acumulada por $30.000, la dirección decide vender el vehículo a otra empresa por un precio pactado de $14.000 antes de impuestos. El asistente contable emite una Factura de Clientes (A/R) seleccionando el artículo de Activo Fijo. ¿Cuál es el impacto financiero y contable automático que generará Finix ERP?
 
 * A) Registra un ingreso ordinario por ventas de $14.000 en el Cajón 4 y mantiene el camión en el activo con su depreciación acumulada hasta el cierre del año.
 * B) El sistema bloquea la factura porque las ventas de activos solo pueden efectuarse mediante un asiento de diario manual supervisado.
 * C) Calcula un Valor Neto en Libros (NBV) de $10.000, da de baja el costo histórico ($40.000), extingue la depreciación acumulada ($30.000) y reconoce una Ganancia en Venta de Activos de $4.000 en los resultados del ejercicio. **[CORRECTA]**
 * D) Envía los $14.000 íntegros a una cuenta de Desguace (*Scrapping*) en el Cajón 8 y da de baja el vehículo con pérdida neta.
-* **Explicación Didáctica:** La opción C es la correcta. Al procesar una Factura A/R vinculada a un activo fijo, SAP Business One genera automáticamente un documento de Retiro. En este cálculo:
+* **Explicación Didáctica:** La opción C es la correcta. Al procesar una Factura A/R vinculada a un activo fijo, Finix ERP genera automáticamente un documento de Retiro. En este cálculo:
   $$\text{Valor Neto en Libros (NBV)} = \text{APC ($40.000)} - \text{Depreciación Acumulada ($30.000)} = \$10.000$$
   Dado que el precio de venta pactado es de $14.000, el sistema registra:
   $$\text{Resultado en Venta de Activos} = \text{Precio de Venta ($14.000)} - \text{NBV ($10.000)} = +\$4.000\text{ (Utilidad en Venta de Activos)}$$
@@ -415,18 +415,18 @@ Una empresa de logística adquirió un camión de carga por un Costo Histórico 
 ---
 
 ### Pregunta 3 (Control de Tesorería y Cuentas de Compensación)
-El cajero de una distribuidora minorista recibe cobros diarios de clientes mediante cheques cruzados y cupones de tarjeta de crédito. El tesorero de la empresa exige que estos cobros no impacten de inmediato el saldo disponible de la cuenta de Banco Propio en el sistema contable hasta que los fondos hayan sido liquidados formalmente por la entidad financiera. ¿Qué diseño funcional de SAP Business One garantiza este requerimiento de control interno?
+El cajero de una distribuidora minorista recibe cobros diarios de clientes mediante cheques cruzados y cupones de tarjeta de crédito. El tesorero de la empresa exige que estos cobros no impacten de inmediato el saldo disponible de la cuenta de Banco Propio en el sistema contable hasta que los fondos hayan sido liquidados formalmente por la entidad financiera. ¿Qué diseño funcional de Finix ERP garantiza este requerimiento de control interno?
 
 * A) Desactivar el módulo de cobros e instruir que las facturas queden abiertas indefinidamente hasta que el extracto bancario llegue al final del mes.
 * B) Implementar el Flujo en Dos Pasos: los pagos recibidos se debitan contra Cuentas de Compensación transitorias (*Cheques en Cartera* o *Tarjetas por Cobrar*) y solo se transfieren a la cuenta de Banco Propio al registrar el documento formal de Depósito Bancario. **[CORRECTA]**
 * C) Registrar los cobros como órdenes de venta preliminares y confirmarlas únicamente cuando el dinero figure en la cuenta corriente.
 * D) Realizar los cobros exclusivamente mediante el Asistente de Pagos en modalidad de Transferencia Bancaria Directa.
-* **Explicación Didáctica:** La opción B es la correcta. El flujo en dos pasos de SAP Business One está diseñado específicamente para salvaguardar el principio de liquidez real. En el Paso 1 (Pago Recibido), se salda la cuenta por cobrar del cliente y se carga una cuenta transitoria de custodia (*Clearing Account*). En el Paso 2 (Depósito Bancario), se traslada el valor a la cuenta de Banco Propio y se descarga la cuenta transitoria, permitiendo auditar en todo momento los valores en tránsito que aún no son fondos disponibles.
+* **Explicación Didáctica:** La opción B es la correcta. El flujo en dos pasos de Finix ERP está diseñado específicamente para salvaguardar el principio de liquidez real. En el Paso 1 (Pago Recibido), se salda la cuenta por cobrar del cliente y se carga una cuenta transitoria de custodia (*Clearing Account*). En el Paso 2 (Depósito Bancario), se traslada el valor a la cuenta de Banco Propio y se descarga la cuenta transitoria, permitiendo auditar en todo momento los valores en tránsito que aún no son fondos disponibles.
 
 ---
 
 ### Pregunta 4 (Dispersión Masiva y Asistente de Pagos)
-Una corporación multinacional programa pagar los viernes más de 400 facturas a proveedores mediante transferencias electrónicas a través del Asistente de Pagos (*Payment Wizard*). Sin embargo, la gerencia de tesorería teme que si el portal bancario rechaza la transmisión de algunas transferencias por inconsistencias en los códigos de cuenta del banco, el ERP quede desfasado con pagos registrados contablemente que nunca salieron del banco. ¿Qué funcionalidad avanzada de SAP Business One resuelve esta contingencia operativa?
+Una corporación multinacional programa pagar los viernes más de 400 facturas a proveedores mediante transferencias electrónicas a través del Asistente de Pagos (*Payment Wizard*). Sin embargo, la gerencia de tesorería teme que si el portal bancario rechaza la transmisión de algunas transferencias por inconsistencias en los códigos de cuenta del banco, el ERP quede desfasado con pagos registrados contablemente que nunca salieron del banco. ¿Qué funcionalidad avanzada de Finix ERP resuelve esta contingencia operativa?
 
 * A) Marcar todas las facturas como pagadas manualmente y reconciliarlas internamente una por una.
 * B) Ejecutar el Asistente de Pagos bajo la opción de Orden de Pago (*Payment Order Run*), lo cual genera el archivo electrónico bancario para su envío sin crear asientos contables de inmediato, difiriendo la contabilización hasta la confirmación de débito del banco. **[CORRECTA]**
@@ -437,7 +437,7 @@ Una corporación multinacional programa pagar los viernes más de 400 facturas a
 ---
 
 ### Pregunta 5 (Determinación Contable Avanzada en Escenarios Complejos)
-Una compañía vende repuestos industriales. Cuando un repuesto es despachado desde el Almacén Principal de la Casa Matriz a un cliente local, la venta debe contabilizarse en la cuenta *410101 - Ventas Nacionales*. No obstante, cuando el mismo repuesto es despachado desde una Sucursal Fronteriza y el cliente pertenece al grupo *Clientes Zona Franca*, la ley exige que el ingreso se registre en la cuenta *410199 - Ventas Exentas de Régimen Especial*. Si la empresa utilizara únicamente la Determinación Tradicional de Cuentas, ¿con qué limitación se encontraría y cómo se resuelve en SAP Business One 10.0?
+Una compañía vende repuestos industriales. Cuando un repuesto es despachado desde el Almacén Principal de la Casa Matriz a un cliente local, la venta debe contabilizarse en la cuenta *410101 - Ventas Nacionales*. No obstante, cuando el mismo repuesto es despachado desde una Sucursal Fronteriza y el cliente pertenece al grupo *Clientes Zona Franca*, la ley exige que el ingreso se registre en la cuenta *410199 - Ventas Exentas de Régimen Especial*. Si la empresa utilizara únicamente la Determinación Tradicional de Cuentas, ¿con qué limitación se encontraría y cómo se resuelve en Finix ERP 10.0?
 
 * A) La Determinación Tradicional no puede evaluar simultáneamente el Almacén y el Grupo de Interlocutor Comercial; la limitación se resuelve activando la Determinación Avanzada de Cuentas de Mayor y configurando una regla matricial con ambas prioridades. **[CORRECTA]**
 * B) Debe crearse un código de artículo duplicado en el maestro para cada combinación posible de almacén y cliente.

@@ -55,21 +55,21 @@ export default function MiAulaPage() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-10">
         {/* Cápsula GEO */}
         <aside aria-label="Resumen de Mi Aula" className="sr-only">
-          Mi Aula de B1 Academy: escuela de SAP Business One 10.0 con módulos prácticos, cada uno con certificado de
+          Mi Aula de B1 Academy: escuela de Finix ERP 10.0 con módulos prácticos, cada uno con certificado de
           competencia verificable, diplomas por rol profesional, clases narradas, prácticas en simulador y evaluación final.
         </aside>
 
         {/* Encabezado */}
         <header className="space-y-2">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-            {nombre ? `Hola, ${nombre}` : 'Escuela SAP Business One'}
+            {nombre ? `Hola, ${nombre}` : 'Escuela Finix ERP'}
           </p>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight font-display">
-            Mi Aula Virtual: Escuela y Clases SAP Business One 10.0
+            Mi Aula Virtual: Escuela y Clases Finix ERP 10.0
           </h1>
           <div className="flex flex-wrap gap-2 pt-2">
             <Link href="/simulador" className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white dark:bg-[#131a20] border border-slate-200 dark:border-gray-800 text-xs font-semibold hover:border-amber-500/50 transition-all active:scale-95">
-              <Wrench className="w-4 h-4 text-blue-500" aria-hidden="true" /> Simulador SAP B1
+              <Wrench className="w-4 h-4 text-blue-500" aria-hidden="true" /> Simulador Finix ERP
             </Link>
             <Link href="/verificar" className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white dark:bg-[#131a20] border border-slate-200 dark:border-gray-800 text-xs font-semibold hover:border-amber-500/50 transition-all active:scale-95">
               <ShieldCheck className="w-4 h-4 text-emerald-500" aria-hidden="true" /> Verificar un certificado
@@ -86,7 +86,7 @@ export default function MiAulaPage() {
             <p className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Empieza aquí · Obligatorio</p>
             <h2 id="empieza" className="text-xl sm:text-2xl font-bold">Módulo 1: {induccion.title}</h2>
             <p className="text-sm text-slate-600 dark:text-gray-300">
-              Creas tu empresa de práctica y aprendes a moverte en SAP. Al completarlo se abren todos los demás módulos.
+              Creas tu empresa de práctica y aprendes a moverte en Finix ERP. Al completarlo se abren todos los demás módulos.
             </p>
             {hechasInduccion !== null && !esEquipo && (
               <div className="pt-1 max-w-sm">
@@ -247,7 +247,7 @@ export default function MiAulaPage() {
           <p className="text-slate-600 dark:text-gray-300 flex-1">
             Para certificar un módulo: completa sus clases, aprueba cada práctica en el simulador y supera la evaluación con Tutor IA.
             <span className="block text-xs text-slate-500 dark:text-gray-500 mt-1">
-              B1 Academy es una institución de formación independiente; sus certificados no constituyen una certificación oficial de SAP SE.
+              Los certificados acreditan competencias prácticas demostradas en el simulador y en la evaluación con Tutor IA.
             </span>
           </p>
         </section>

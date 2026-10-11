@@ -30,7 +30,7 @@ export function generateOfficialCampusCertificate({
   studentName,
   certificateType,
   title,
-  careerTitle = 'Escuela SAP Business One',
+  careerTitle = 'Escuela Finix ERP',
   code,
   scorePercent = 95,
   hours = 25,
@@ -65,20 +65,20 @@ export function generateOfficialCampusCertificate({
   let typeTitle = 'MICRO-CERTIFICACIÓN DE COMPETENCIA OPERATIVA';
 
   if (certificateType === 'diploma') {
-    accentColor = [14, 116, 144]; // Cyan / SAP Blue
+    accentColor = [14, 116, 144]; // Cyan / Finix ERP Blue
     typeTitle = 'DIPLOMA DE ESPECIALIZACIÓN PROFESIONAL';
     badgeLabel = 'ESPECIALISTA';
     headerLabel = 'PROGRAMA EJECUTIVO UNIVERSITARIO • B1 ACADEMY';
   } else if (certificateType === 'master') {
     accentColor = [180, 83, 9]; // Deep Gold
     primaryColor = [10, 25, 47]; // Midnight Navy
-    typeTitle = 'CERTIFICACIÓN MASTER: CONSULTOR ASOCIADO SAP BUSINESS ONE';
+    typeTitle = 'CERTIFICACIÓN MASTER: CONSULTOR ASOCIADO FINIX ERP';
     badgeLabel = 'MASTER B1';
-    headerLabel = 'GRADO DE CONSULTOR OFICIAL • RED DE TALENTO SAP';
+    headerLabel = 'GRADO DE CONSULTOR OFICIAL • RED DE TALENTO Finix ERP';
   } else if (certificateType === 'docente') {
     accentColor = [109, 40, 217]; // Royal Purple
     primaryColor = [24, 24, 27];
-    typeTitle = 'ACREDITACIÓN DOCENTE E INSTRUCTOR ACADÉMICO SAP B1';
+    typeTitle = 'ACREDITACIÓN DOCENTE E INSTRUCTOR ACADÉMICO Finix ERP';
     badgeLabel = 'INSTRUCTOR';
     headerLabel = 'PROGRAMA TRAIN-THE-TRAINER • CÁTEDRA UNIVERSITARIA';
   }
@@ -114,7 +114,7 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(100, 116, 139);
-  doc.text('CAMPUS UNIVERSITARIO Y RED DE CERTIFICACIÓN PROFESIONAL SAP BUSINESS ONE 10.0 (HANA)', 148.5, 30, { align: 'center' });
+  doc.text('CAMPUS UNIVERSITARIO Y RED DE CERTIFICACIÓN PROFESIONAL FINIX ERP 10.0 (HANA)', 148.5, 30, { align: 'center' });
 
   // Línea divisoria elegante
   doc.setDrawColor(226, 232, 240);
@@ -165,7 +165,7 @@ export function generateOfficialCampusCertificate({
   // 8. Resumen de Competencias y Validación Práctica
   let descText = `Demostró dominio en la ejecución de transacciones reales, parametrización de tablas maestras, determinación de cuentas y buenas prácticas. Calificación obtenida: ${scorePercent}% en la evaluación y el simulador.`;
   if (certificateType === 'docente') {
-    descText = `Habilitado oficialmente para la instrucción universitaria, diseño de casos pedagógicos prácticos y conducción de laboratorios con el Simulador SAP B1 10.0 en instituciones de educación superior.`;
+    descText = `Habilitado oficialmente para la instrucción universitaria, diseño de casos pedagógicos prácticos y conducción de laboratorios con el Simulador Finix ERP 10.0 en instituciones de educación superior.`;
   }
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
@@ -206,17 +206,17 @@ export function generateOfficialCampusCertificate({
   doc.text('Director Académico y de Certificaciones', 68.5, 165, { align: 'center' });
   doc.text('B1 Academy • Red Internacional ERP', 68.5, 169, { align: 'center' });
 
-  // Firma 2: Consultor Titular SAP B1 / Lead Instructor
+  // Firma 2: Consultor Titular Finix ERP / Lead Instructor
   doc.line(192, 155, 265, 155);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('Master B1 & Consejo Técnico SAP', 228.5, 161, { align: 'center' });
+  doc.text('Master B1 & Consejo Técnico Finix ERP', 228.5, 161, { align: 'center' });
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.8);
   doc.setTextColor(100, 116, 139);
   doc.text('Comité de Evaluación & Homologación', 228.5, 165, { align: 'center' });
-  doc.text('SAP Business One Specialist Network', 228.5, 169, { align: 'center' });
+  doc.text('Finix ERP Specialist Network', 228.5, 169, { align: 'center' });
 
   // 11. Cuadro de Verificación Criptográfica y QR
   doc.setDrawColor(226, 232, 240);
@@ -246,7 +246,7 @@ export function generateCategoryCertificate(data: CertificateData) {
     studentName: data.studentName,
     certificateType: 'micro',
     title: data.categoryTitle,
-    careerTitle: 'Escuela SAP Business One',
+    careerTitle: 'Escuela Finix ERP',
     code: data.verificationCode,
     scorePercent: Math.round((data.score / data.totalQuestions) * 100),
     hours: 20,

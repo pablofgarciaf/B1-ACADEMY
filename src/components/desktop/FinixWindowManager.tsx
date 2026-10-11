@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Square } from 'lucide-react';
-import FinixScreenRenderer from '@/components/sap-screens/SAPScreenRenderer';
+import FinixScreenRenderer from '@/components/finix-screens/FinixScreenRenderer';
 
 export interface Window {
   id: string;
@@ -22,7 +22,7 @@ export interface Window {
 
 interface FinixWindowManagerProps {
   windows: Window[];
-  themeMode?: 'sap_horizon' | 'sap_fiori_3_dark' | 'classic';
+  themeMode?: 'finix_horizon' | 'finix_fiori_3_dark' | 'classic';
   onWindowClose: (id: string) => void;
   onWindowMinimize: (id: string) => void;
   onWindowMaximize: (id: string) => void;
@@ -32,7 +32,7 @@ interface FinixWindowManagerProps {
 
 export default function FinixWindowManager({
   windows,
-  themeMode = 'sap_horizon',
+  themeMode = 'finix_horizon',
   onWindowClose,
   onWindowMinimize,
   onWindowMaximize,
@@ -88,23 +88,23 @@ export default function FinixWindowManager({
   }, [draggingWindow, dragOffset, onWindowMove]);
 
   const containerBg =
-    themeMode === 'sap_horizon'
+    themeMode === 'finix_horizon'
       ? 'bg-[#e8ecf2]'
-      : themeMode === 'sap_fiori_3_dark'
+      : themeMode === 'finix_fiori_3_dark'
       ? 'bg-[#0c121c]'
       : 'bg-[#334155]';
 
   const windowHeaderBg =
-    themeMode === 'sap_horizon'
+    themeMode === 'finix_horizon'
       ? 'bg-gradient-to-r from-[#0f2744] via-[#163860] to-[#0f2744] border-b border-[#0d1f35]'
-      : themeMode === 'sap_fiori_3_dark'
+      : themeMode === 'finix_fiori_3_dark'
       ? 'bg-gradient-to-r from-[#17212e] to-[#0f1722] border-b border-[#243347]'
       : 'bg-gradient-to-r from-[#003366] to-[#0055A5] border-b border-[#002244]';
 
   const windowContentBg =
-    themeMode === 'sap_fiori_3_dark'
+    themeMode === 'finix_fiori_3_dark'
       ? 'bg-[#151d28] text-slate-100'
-      : themeMode === 'sap_horizon'
+      : themeMode === 'finix_horizon'
       ? 'bg-[#fafbfc] text-slate-900'
       : 'bg-[#ECE9D8] text-slate-900';
 
@@ -120,7 +120,7 @@ export default function FinixWindowManager({
             <div
               key={win.id}
               className={`absolute border shadow-2xl flex flex-col transition-all duration-75 ${
-                themeMode === 'sap_fiori_3_dark' ? 'bg-[#151d28] border-[#293b52]' : 'bg-[#f7f8fa] border-[#7f93ab]'
+                themeMode === 'finix_fiori_3_dark' ? 'bg-[#151d28] border-[#293b52]' : 'bg-[#f7f8fa] border-[#7f93ab]'
               } ${
                 win.maximized ? 'inset-0 w-full h-full rounded-none' : 'rounded-sm'
               }`}
@@ -211,4 +211,3 @@ export default function FinixWindowManager({
   );
 }
 
-export { FinixWindowManager as SAPWindowManager };

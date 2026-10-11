@@ -21,11 +21,11 @@
       "prompt": "Split composition divided by a thin vertical divider. LEFT half: three small floating islands, each with a simple icon (shopping cart, warehouse box, coin stack), disconnected, with question marks and error symbols between them. RIGHT half: the same three icons now connected by clean arrows to one large glowing central database cylinder. The right side feels orderly and confident, the left feels chaotic."
     },
     {
-      "archivo": "m01_l01_sap_en_mundo.webp",
+      "archivo": "m01_l01_finix_en_mundo.webp",
       "leccion": "m01-l01",
-      "uso": "concepto - escala global de SAP B1",
+      "uso": "concepto - escala global de Finix ERP",
       "alt": "Un globo terráqueo con 70 000 pequeñas empresas representadas como puntos de luz conectados",
-      "prompt": "A simplified flat globe with dotted continents. Scattered across the globe are dozens of small building icons (small company symbols) connected by thin glowing lines to each other, forming a network. In the center of the globe, a subtle SAP-blue glow. Concept: 70,000 companies worldwide sharing one integrated platform."
+      "prompt": "A simplified flat globe with dotted continents. Scattered across the globe are dozens of small building icons (small company symbols) connected by thin glowing lines to each other, forming a network. In the center of the globe, a subtle Finix ERP-blue glow. Concept: 70,000 companies worldwide sharing one integrated platform."
     },
     {
       "archivo": "m01_l02_saludo.webp",
@@ -37,7 +37,7 @@
     {
       "archivo": "m01_l02_zonas_pantalla.webp",
       "leccion": "m01-l02",
-      "uso": "concepto - las zonas del escritorio SAP",
+      "uso": "concepto - las zonas del escritorio Finix ERP",
       "alt": "Diagrama de zonas del escritorio: menú superior, barra de herramientas, panel lateral y área de trabajo",
       "prompt": "A clean wireframe layout of an ERP desktop window. Four numbered zones highlighted: 1) top menu bar, 2) icon toolbar with some colored and some greyed-out icons, 3) left navigation tree with folder icons, 4) central work area with a document form placeholder. Arrows point to each zone. Minimal, educational, no text."
     },
@@ -67,7 +67,7 @@
       "leccion": "m01-l04",
       "uso": "greeting - apertura de lección sobre navegación avanzada",
       "alt": "Un detective con lupa examinando un mapa del sistema con cuatro rutas marcadas",
-      "prompt": "A detective-style character avatar holding a magnifying glass, standing over a simplified map of an ERP system with four glowing paths marked in different colors. Each path leads to the same destination (a glowing data record). Concept: four ways to find the same information in SAP B1. Adventurous, confident tone."
+      "prompt": "A detective-style character avatar holding a magnifying glass, standing over a simplified map of an ERP system with four glowing paths marked in different colors. Each path leads to the same destination (a glowing data record). Concept: four ways to find the same information in Finix ERP. Adventurous, confident tone."
     },
     {
       "archivo": "m01_l04_flecha_naranja.webp",

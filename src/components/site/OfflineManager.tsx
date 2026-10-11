@@ -12,11 +12,11 @@ export default function OfflineManager({ currentManualId }: { currentManualId: s
       if (!zone) return;
 
       const manualsInZone = manualZones[zone];
-      const cache = await caches.open(`sap-manuals-zone-${zone}`);
+      const cache = await caches.open(`finix-manuals-zone-${zone}`);
 
       // We add the URLs for the markdown files and a placeholder for images
       // In a real scenario we would fetch the list of images per manual from an API
-      const urlsToCache = manualsInZone.map(manual => `/Capacitacion_SAP_Markdowns_Limpios/${manual.replace('.pdf', '')}.md`);
+      const urlsToCache = manualsInZone.map(manual => `/Capacitacion_FINIX_Markdowns_Limpios/${manual.replace('.pdf', '')}.md`);
       
       try {
         await cache.addAll(urlsToCache);

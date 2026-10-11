@@ -49,7 +49,7 @@ export default function CookiesPage() {
       <h2>3. Cómo cambiar tu decisión</h2>
       <p>Puedes aceptar o retirar tu consentimiento para la analítica en cualquier momento:</p>
       <div className="not-prose my-4">
-        <BotonConfigurarCookies className="px-5 py-2.5 rounded-xl bg-sap-blue text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" />
+        <BotonConfigurarCookies className="px-5 py-2.5 rounded-xl bg-finix-blue text-white text-sm font-bold hover:opacity-90 active:scale-95 transition-all" />
       </div>
       <p>
         También puedes borrar o bloquear cookies desde la configuración de tu navegador; si bloqueas las necesarias, no podrás iniciar sesión.

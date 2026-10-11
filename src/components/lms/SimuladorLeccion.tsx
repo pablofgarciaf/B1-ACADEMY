@@ -119,7 +119,7 @@ export default function SimuladorLeccion({ simData, onComplete }: Props) {
             {simData.mision}
           </p>
           <p className="text-xs text-slate-500">
-            Verás capturas reales de SAP B1 con instrucciones paso a paso.
+            Verás capturas reales de Finix ERP con instrucciones paso a paso.
           </p>
           <button
             onClick={() => setPhase("sim")}

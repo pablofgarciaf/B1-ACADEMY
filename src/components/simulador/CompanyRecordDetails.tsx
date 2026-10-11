@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Table } from '@/components/sap-screens/SAPControls';
+import { Table } from '@/components/finix-screens/FinixControls';
 
 export const collectionLabels: Record<string, string> = {
   salesOrders: 'Ventas', purchaseOrders: 'Compras', customers: 'Clientes', vendors: 'Proveedores', items: 'Artículos', warehouseStock: 'Existencias', stockMovements: 'Kardex', journalEntries: 'Asientos contables', chartOfAccounts: 'Plan de cuentas', bankAccounts: 'Cuentas bancarias', bankTransactions: 'Movimientos bancarios', employees: 'Empleados', payrollRuns: 'Nóminas', sriDocuments: 'Comprobantes SRI', productionOrders: 'Producción', boms: 'Listas de materiales', missions: 'Misiones',

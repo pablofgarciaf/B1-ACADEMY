@@ -1,7 +1,7 @@
 import 'server-only';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
-/** Voz oficial de SAP Academy: la misma de los videos de los manuales (manual 1.1). */
+/** Voz oficial de Finix Academy: la misma de los videos de los manuales (manual 1.1). */
 export const ACADEMY_VOICE = 'es-MX-JorgeNeural';
 export const TTS_MAX_CHARS = 1500;
 
