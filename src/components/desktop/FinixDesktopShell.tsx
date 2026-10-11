@@ -162,16 +162,8 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
     const existingWindow = windows.find(w => w.screenId === screenId);
     if (existingWindow) {
       focusWindow(existingWindow.id);
-      if (existingWindow.minimized) {
-        minimizeWindow(existingWindow.id);
-      }
       return;
     }
-
-    const baseOffset = (windowCount % 5) * 30;
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const defaultWidth = isMobile ? Math.min(window.innerWidth - 20, 800) : 900;
-    const defaultHeight = isMobile ? Math.min(window.innerHeight - 150, 600) : 620;
 
     const resolvedMod = moduleKey
       ? modules.find(m => m.key === moduleKey)
@@ -183,12 +175,12 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
       screenId,
       moduleKey: resolvedMod?.key || moduleKey,
       moduleName: resolvedMod?.name,
-      x: isMobile ? 5 : 80 + baseOffset,
-      y: isMobile ? 5 : 40 + baseOffset,
-      width: defaultWidth,
-      height: defaultHeight,
+      x: 0,
+      y: 0,
+      width: 1000,
+      height: 700,
       minimized: false,
-      maximized: false,
+      maximized: true,
       zIndex: nextZIndex,
       focused: true,
     };
@@ -439,7 +431,7 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
   };
 
   return (
-    <div className="w-full h-screen flex flex-col bg-[#e8ecf2] font-[Tahoma,Arial,sans-serif] text-xs overflow-hidden select-none">
+    <div className="w-full h-full flex-1 flex flex-col bg-[#e8ecf2] font-[Tahoma,Arial,sans-serif] text-xs overflow-hidden select-none">
       {/* Barra de Título Superior de Finix ERP */}
       <div className="bg-gradient-to-r from-[#001833] via-[#002b5c] to-[#0055A5] text-white px-3 py-1 flex items-center justify-between border-b border-[#001833] shadow-md z-30">
         <div className="flex items-center gap-2">
@@ -530,7 +522,7 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
         {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
         <div className={`flex-1 min-w-0 h-full relative overflow-hidden flex flex-col transition-colors duration-200 ${themeMode === 'finix_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'finix_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
           }`}>
-          <div className="flex-1 relative overflow-hidden">
+          <div className="flex-1 min-h-0 relative overflow-hidden">
             <FinixWindowManager
               windows={windows}
               themeMode={themeMode}
@@ -541,36 +533,6 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
               onWindowMove={moveWindow}
             />
           </div>
-
-          {/* Dock de Ventanas Abiertas y Minimizadas en Finix ERP */}
-          {windows.length > 0 && (
-            <div className="bg-[#1e293b] border-t border-[#475569] px-2 py-1 flex items-center gap-1.5 overflow-x-auto shrink-0 z-20">
-              <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider px-1">Dock Finix:</span>
-              {windows.map((win) => (
-                <button
-                  key={win.id}
-                  type="button"
-                  onClick={() => {
-                    if (win.minimized) {
-                      minimizeWindow(win.id);
-                    }
-                    focusWindow(win.id);
-                  }}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 text-[11px] rounded-t transition-all border ${win.focused && !win.minimized
-                      ? 'bg-[#0055A5] text-white border-blue-400 font-semibold shadow-sm'
-                      : win.minimized
-                        ? 'bg-amber-950/80 text-amber-200 border-amber-500/50 hover:bg-amber-900/90'
-                        : 'bg-[#0f172a] text-gray-300 border-gray-700 hover:bg-[#1e293b]'
-                    }`}
-                  title={win.minimized ? 'Hacer clic para restaurar ventana minimizada' : 'Hacer clic para enfocar ventana'}
-                >
-                  <span className={`w-2 h-2 rounded-full ${win.minimized ? 'bg-amber-400 animate-pulse' : 'bg-emerald-400'}`} />
-                  <span className="truncate max-w-[150px] font-medium">{win.title}</span>
-                  {win.minimized && <span className="text-[9px] bg-amber-800 text-amber-100 px-1 rounded font-bold">Minimizado</span>}
-                </button>
-              ))}
-            </div>
-          )}
         </div>
       </div>
 

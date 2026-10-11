@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Square } from 'lucide-react';
+import React from 'react';
 import FinixScreenRenderer from '@/components/finix-screens/FinixScreenRenderer';
 
 export interface Window {
@@ -24,68 +23,20 @@ interface FinixWindowManagerProps {
   windows: Window[];
   themeMode?: 'finix_horizon' | 'finix_fiori_3_dark' | 'classic';
   onWindowClose: (id: string) => void;
-  onWindowMinimize: (id: string) => void;
-  onWindowMaximize: (id: string) => void;
+  onWindowMinimize?: (id: string) => void;
+  onWindowMaximize?: (id: string) => void;
   onWindowFocus: (id: string) => void;
-  onWindowMove: (id: string, x: number, y: number) => void;
+  onWindowMove?: (id: string, x: number, y: number) => void;
 }
 
 export default function FinixWindowManager({
   windows,
   themeMode = 'finix_horizon',
   onWindowClose,
-  onWindowMinimize,
-  onWindowMaximize,
   onWindowFocus,
-  onWindowMove,
 }: FinixWindowManagerProps) {
-  const [draggingWindow, setDraggingWindow] = useState<string | null>(null);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-
-  const handleMouseDown = (e: React.MouseEvent, windowId: string) => {
-    if ((e.target as HTMLElement).closest('button')) return;
-
-    const win = windows.find(w => w.id === windowId);
-    if (!win || win.maximized) return;
-
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    setDraggingWindow(windowId);
-    setDragOffset({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    });
-    onWindowFocus(windowId);
-  };
-
-  React.useEffect(() => {
-    if (!draggingWindow) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const container = document.getElementById('window-container');
-      if (!container) return;
-
-      const containerRect = container.getBoundingClientRect();
-      let newX = e.clientX - containerRect.left - dragOffset.x;
-      let newY = e.clientY - containerRect.top - dragOffset.y;
-
-      newX = Math.max(0, Math.min(newX, containerRect.width - 200));
-      newY = Math.max(0, Math.min(newY, containerRect.height - 80));
-
-      onWindowMove(draggingWindow, newX, newY);
-    };
-
-    const handleMouseUp = () => {
-      setDraggingWindow(null);
-    };
-
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [draggingWindow, dragOffset, onWindowMove]);
+  // Encontrar la ventana activa (focused), o la última abierta
+  const activeWindow = windows.find(w => w.focused) || windows[windows.length - 1];
 
   const containerBg =
     themeMode === 'finix_horizon'
@@ -108,106 +59,110 @@ export default function FinixWindowManager({
       ? 'bg-[#fafbfc] text-slate-900'
       : 'bg-[#ECE9D8] text-slate-900';
 
+  const tabsBarBg =
+    themeMode === 'finix_fiori_3_dark'
+      ? 'bg-[#111927] border-b border-[#243347]'
+      : 'bg-[#dce3ec] border-b border-[#c2cedc]';
+
   return (
     <div
       id="window-container"
-      className={`relative w-full h-full ${containerBg} overflow-hidden flex flex-col transition-colors duration-200`}
+      className={`relative w-full h-full ${containerBg} overflow-hidden flex flex-col transition-colors duration-200 select-none`}
     >
-      {/* Contenedor de Ventanas */}
-      <div className="relative flex-1 w-full h-full overflow-hidden">
-        {windows.map((win) => (
-          !win.minimized && (
-            <div
-              key={win.id}
-              className={`absolute border shadow-2xl flex flex-col transition-all duration-75 ${
-                themeMode === 'finix_fiori_3_dark' ? 'bg-[#151d28] border-[#293b52]' : 'bg-[#f7f8fa] border-[#7f93ab]'
-              } ${
-                win.maximized ? 'inset-0 w-full h-full rounded-none' : 'rounded-sm'
-              }`}
-              style={{
-                left: win.maximized ? 0 : `${win.x}px`,
-                top: win.maximized ? 0 : `${win.y}px`,
-                width: win.maximized ? '100%' : `${win.width}px`,
-                height: win.maximized ? '100%' : `${win.height}px`,
-                zIndex: win.focused ? 1000 + win.zIndex : win.zIndex,
-                cursor: draggingWindow === win.id ? 'grabbing' : 'auto',
-              }}
-              onMouseDown={() => onWindowFocus(win.id)}
-            >
-              {/* Barra de Título Única de la Ventana en Finix ERP */}
+      {/* Barra de Pestañas estilo VS Code / Navegador Cloud */}
+      {windows.length > 0 && (
+        <div className={`${tabsBarBg} flex items-center px-1 pt-1 gap-1 overflow-x-auto shrink-0 select-none`}>
+          {windows.map((win) => {
+            const isActive = activeWindow && activeWindow.id === win.id;
+            return (
               <div
-                className={`flex items-center justify-between px-2.5 ${windowHeaderBg} text-white select-none cursor-grab active:cursor-grabbing shrink-0`}
-                style={{ height: '30px' }}
-                onMouseDown={(e) => handleMouseDown(e, win.id)}
+                key={win.id}
+                onClick={() => onWindowFocus(win.id)}
+                className={`group flex items-center gap-2 px-3 py-1.5 text-xs rounded-t cursor-pointer border-t-2 transition-all ${
+                  isActive
+                    ? themeMode === 'finix_fiori_3_dark'
+                      ? 'bg-[#151d28] text-white border-blue-400 font-semibold shadow-sm'
+                      : 'bg-[#fafbfc] text-slate-900 border-[#0055A5] font-semibold shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 border-transparent hover:bg-white/40 hover:text-slate-900'
+                }`}
+                title={win.title}
               >
-                <span className="text-xs text-blue-100 font-bold truncate tracking-wide">
-                  {win.title}
-                </span>
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <button
-                    type="button"
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onClick={(e) => { e.stopPropagation(); onWindowMinimize(win.id); }}
-                    className="w-5 h-5 bg-[#eab308] hover:bg-yellow-400 rounded-sm text-[10px] text-slate-950 font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
-                    title="Minimizar a la barra inferior"
-                  >
-                    _
-                  </button>
-                  <button
-                    type="button"
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onClick={(e) => { e.stopPropagation(); onWindowMaximize(win.id); }}
-                    className="w-5 h-5 bg-[#16a34a] hover:bg-emerald-500 rounded-sm text-[10px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
-                    title={win.maximized ? 'Restaurar tamaño' : 'Maximizar al área disponible'}
-                  >
-                    {win.maximized ? '❐' : '□'}
-                  </button>
-                  <button
-                    type="button"
-                    onMouseDown={(e) => e.stopPropagation()}
-                    onClick={(e) => { e.stopPropagation(); onWindowClose(win.id); }}
-                    className="w-5 h-5 bg-[#dc2626] hover:bg-red-500 rounded-sm text-[11px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
-                    title="Cerrar ventana (×)"
-                  >
-                    ×
-                  </button>
-                </div>
+                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? 'bg-blue-500' : 'bg-slate-400'}`} />
+                <span className="truncate max-w-[160px]">{win.title}</span>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onWindowClose(win.id);
+                  }}
+                  className="w-4 h-4 rounded hover:bg-red-500/20 hover:text-red-600 dark:hover:text-red-400 flex items-center justify-center text-[11px] text-slate-400 transition"
+                  title="Cerrar pestaña (×)"
+                >
+                  ×
+                </button>
               </div>
-
-              {/* Contenido funcional de la ventana */}
-              <div className={`flex-1 overflow-auto ${windowContentBg}`}>
-                <FinixScreenRenderer
-                  screenId={win.screenId}
-                  screenName={win.title}
-                />
-              </div>
-            </div>
-          )
-        ))}
-      </div>
-
-      {/* Taskbar de ventanas minimizadas */}
-      {windows.some(w => w.minimized) && (
-        <div className="h-9 bg-[#1e293b] border-t border-[#475569] flex items-center px-2 gap-2 overflow-x-auto shrink-0">
-          <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Minimizadas:</span>
-          {windows
-            .filter(w => w.minimized)
-            .map((win) => (
-              <button
-                key={`taskbar-${win.id}`}
-                onClick={() => {
-                  onWindowMinimize(win.id);
-                  onWindowFocus(win.id);
-                }}
-                className="px-3 py-1 bg-[#334155] hover:bg-[#475569] text-white text-xs font-semibold rounded border border-[#64748b] truncate max-w-xs transition-all active:scale-95 flex items-center gap-1.5"
-              >
-                <Square className="w-3 h-3 text-amber-400" />
-                {win.title}
-              </button>
-            ))}
+            );
+          })}
         </div>
       )}
+
+      {/* Contenedor Principal: La ventana activa ocupa el 100% a tamaño completo */}
+      <div className="relative flex-1 w-full h-full min-h-0 overflow-hidden flex flex-col">
+        {activeWindow ? (
+          <div className="w-full h-full flex flex-col overflow-hidden">
+            {/* Barra de Título: SOLO botón Cerrar (x), sin minimizar ni maximizar */}
+            <div
+              className={`flex items-center justify-between px-3 ${windowHeaderBg} text-white select-none shrink-0 h-8 shadow-sm`}
+            >
+              <div className="flex items-center gap-2 truncate">
+                <span className="text-amber-400 text-xs">🐦‍🔥</span>
+                <span className="text-xs text-blue-100 font-bold truncate tracking-wide">
+                  {activeWindow.title}
+                </span>
+                {activeWindow.moduleName && (
+                  <span className="text-[10px] text-blue-300/80 font-normal">
+                    · {activeWindow.moduleName}
+                  </span>
+                )}
+              </div>
+
+              {/* Botón Único de Cierre (x) */}
+              <button
+                type="button"
+                onClick={() => onWindowClose(activeWindow.id)}
+                className="w-5 h-5 bg-[#dc2626] hover:bg-red-500 rounded-sm text-[12px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
+                title="Cerrar pestaña (×)"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Contenido Funcional de la Pantalla con Scroll Interno Completo */}
+            <div className={`flex-1 min-h-0 overflow-auto ${windowContentBg}`}>
+              <FinixScreenRenderer
+                screenId={activeWindow.screenId}
+                screenName={activeWindow.title}
+              />
+            </div>
+          </div>
+        ) : (
+          /* Estado Vacío cuando no hay ventanas abiertas */
+          <div className="flex-1 flex flex-col items-center justify-center p-6 text-center select-none text-slate-500">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/20 border border-blue-500/20 flex items-center justify-center mb-4 shadow-inner">
+              <span className="text-3xl">🐦‍🔥</span>
+            </div>
+            <h2 className="text-base font-bold text-slate-700 dark:text-slate-200 mb-1">
+              Escritorio de Finix ERP Cloud
+            </h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mb-4">
+              Selecciona una transacción o módulo en el menú lateral izquierdo para abrir su pantalla de trabajo.
+            </p>
+            <div className="text-[11px] text-slate-400 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded shadow-sm">
+              💡 Cada pantalla se abre en pestañas superiores a tamaño completo para máxima visibilidad.
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
-

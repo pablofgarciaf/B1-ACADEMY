@@ -49,7 +49,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
 
   const empActual = LISTA_SIETE_EMPRESAS.find(e => e.id === slot) || LISTA_SIETE_EMPRESAS[0];
 
-  return <CompanyContext.Provider value={c}><div className="flex min-h-dvh flex-col bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
+  return <CompanyContext.Provider value={c}><div className="flex h-screen max-h-screen overflow-hidden flex-col bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
     <div className="flex flex-wrap items-center gap-3 border-b border-[#999] bg-[#D4D0C8] p-2">
       <button className={buttonClass} disabled={c.saving} onClick={onExit}>Volver al campus</button>
       <div className="flex items-center gap-1.5 bg-[#0a246a] text-white px-2 py-0.5 rounded border border-[#001133] shadow-sm">
@@ -150,7 +150,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
         </Screen>
       )
     ) : (
-      <div className="min-h-0 flex-1"><FinixDesktopShell catalog={extendCompanyCatalog(catalog)} onExit={onExit} /></div>
+      <div className="min-h-0 flex-1 overflow-hidden flex flex-col"><FinixDesktopShell catalog={extendCompanyCatalog(catalog)} onExit={onExit} /></div>
     )}
   </div></CompanyContext.Provider>;
 }
