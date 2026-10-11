@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { LogOut, Play, Trophy, Zap, Award, Clock, Target, TrendingUp } from 'lucide-react';
+import Link from 'next/link';
+import { LogOut, Play, Trophy, Zap, Award, Clock, Target, TrendingUp, Home, ArrowLeft } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
 interface DashboardProps {
@@ -56,22 +57,42 @@ export default function SimuladorDashboard({
       {/* Header */}
       <header className="border-b border-slate-700/50 backdrop-blur-xl bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-              <Zap className="text-white" size={20} />
+          <Link href="/" className="flex items-center gap-3 group" title="Ir a la Página Principal">
+            <div className="w-10 h-10 bg-gradient-to-br from-amber-400/20 to-red-500/20 border border-amber-400/30 rounded-lg flex items-center justify-center group-hover:scale-105 transition">
+              <span className="text-xl">🐦‍🔥</span>
             </div>
             <div>
-              <h1 className="font-bold text-white">Finix ERP</h1>
+              <h1 className="font-bold text-white group-hover:text-amber-300 transition leading-tight">Finix ERP</h1>
               <p className="text-xs text-slate-400">Simulador Virtual</p>
             </div>
+          </Link>
+
+          <div className="flex items-center gap-2.5">
+            <Link
+              href="/"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-slate-200 hover:text-white bg-slate-800/80 hover:bg-slate-700/90 border border-slate-600/60 rounded-lg transition active:scale-95 shadow-sm"
+              title="Volver a la Página Principal del sitio"
+            >
+              <Home size={14} className="text-amber-400" />
+              <span>Página Principal</span>
+            </Link>
+            <Link
+              href="/campus"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-blue-200 hover:text-white bg-blue-950/70 hover:bg-blue-900 border border-blue-600/40 rounded-lg transition active:scale-95 shadow-sm"
+              title="Ir al Campus Virtual"
+            >
+              <ArrowLeft size={14} className="text-blue-300" />
+              <span>Campus</span>
+            </Link>
+            <button
+              onClick={onLogout}
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-400 hover:text-red-300 hover:bg-red-950/30 border border-slate-700/50 hover:border-red-500/30 rounded-lg transition active:scale-95"
+              title="Cerrar sesión"
+            >
+              <LogOut size={14} />
+              <span>Salir</span>
+            </button>
           </div>
-          <button
-            onClick={onLogout}
-            className="flex items-center gap-2 px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition"
-          >
-            <LogOut size={18} />
-            Salir
-          </button>
         </div>
       </header>
 

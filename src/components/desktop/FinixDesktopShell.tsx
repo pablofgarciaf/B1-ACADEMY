@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useCompany } from '@/hooks/useCompany';
 import { ShieldAlert, Shield, LogOut, Info, X } from 'lucide-react';
@@ -491,6 +492,15 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
             <LogOut className="w-3.5 h-3.5 text-red-300" aria-hidden="true" />
             <span>Salir al Campus</span>
           </button>
+
+          <Link
+            href="/"
+            className="flex items-center gap-1 bg-[#0e2c7a] hover:bg-[#1a42a0] border border-blue-300/40 text-white px-2 py-1 rounded text-[11px] font-semibold transition-all active:scale-95 shadow-sm"
+            title="Ir a la Página Principal del Sitio Web"
+          >
+            <span>🏠</span>
+            <span>Principal</span>
+          </Link>
 
           <div className="flex gap-1">
             <button

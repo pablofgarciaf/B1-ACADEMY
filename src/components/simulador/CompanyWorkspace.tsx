@@ -52,6 +52,9 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
   return <CompanyContext.Provider value={c}><div className="flex h-screen max-h-screen overflow-hidden flex-col bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
     <div className="flex flex-wrap items-center gap-3 border-b border-[#999] bg-[#D4D0C8] p-2">
       <button className={buttonClass} disabled={c.saving} onClick={onExit}>Volver al campus</button>
+      <Link href="/" className="px-2.5 py-1 text-[11px] bg-[#D4D0C8] border border-[#808080] hover:bg-white rounded transition active:scale-95 text-[#222] font-semibold">
+        🏠 Principal
+      </Link>
       <div className="flex items-center gap-1.5 bg-[#0a246a] text-white px-2 py-0.5 rounded border border-[#001133] shadow-sm">
         <span className="font-bold text-[10.5px] text-emerald-300">Sociedad ({slot}):</span>
         <select
