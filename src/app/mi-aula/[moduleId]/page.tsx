@@ -400,7 +400,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
           </button>
           <div className="min-w-0">
             <p className="text-[10px] font-bold uppercase tracking-widest text-amber-400 truncate">
-              Módulo {moduleInfo?.number}: {moduleInfo?.title}
+              {moduleInfo?.id === 'mod-ventas' ? 'Taller Comercial ERP' : `Módulo ${moduleInfo?.number}`}: {moduleInfo?.title}
             </p>
             <p className="text-xs text-gray-400 truncate">
               {lessonData?.title || 'Cargando clase...'}

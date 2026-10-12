@@ -78,33 +78,58 @@ export default function MiAulaPage() {
         </header>
 
         {/* RUTA COMERCIAL & VENTAS ERP (FAST-TRACK) */}
-        <section aria-labelledby="ruta-comercial" className="rounded-3xl border border-blue-500/40 bg-gradient-to-r from-blue-900/15 via-slate-900/30 to-amber-900/15 bg-white dark:bg-[#131a20] p-6 sm:p-8 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <section aria-labelledby="ruta-comercial" className="rounded-3xl border-2 border-blue-500/50 bg-gradient-to-r from-blue-900/20 via-slate-900/40 to-amber-900/20 bg-white dark:bg-[#131a20] p-6 sm:p-8 shadow-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="flex items-start gap-4">
-            <div className="h-14 w-14 shrink-0 rounded-2xl bg-blue-500/15 flex items-center justify-center border border-blue-500/30">
-              <Sparkles className="w-7 h-7 text-blue-500 dark:text-blue-400" aria-hidden="true" />
+            <div className="h-14 w-14 shrink-0 rounded-2xl bg-blue-500/20 flex items-center justify-center border border-blue-500/40 text-blue-500 dark:text-blue-400">
+              <Sparkles className="w-7 h-7" aria-hidden="true" />
             </div>
-            <div className="space-y-1.5 max-w-2xl">
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30">
-                  Ruta Comercial & Ventas ERP
+            <div className="space-y-2 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-500 text-white dark:text-slate-950 shadow-sm">
+                  Ruta Comercial · Acceso Directo
                 </span>
-                <span className="text-xs text-slate-500 dark:text-slate-400">· 1 clase integral de punta a punta</span>
+                <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+                  45 min de Punta a Punta · 7 Misiones Prácticas
+                </span>
               </div>
-              <h2 id="ruta-comercial" className="text-xl sm:text-2xl font-bold">
+              <h2 id="ruta-comercial" className="text-xl sm:text-2xl font-extrabold tracking-tight">
                 Taller Maestro de Operaciones y Demostración Comercial Finix ERP
               </h2>
-              <p className="text-sm text-slate-600 dark:text-gray-300">
-                Aprende a operar el flujo comercial en vivo (Socios, Cotización, Pedido, Facturación SRI con IVA 15%, Cobro y Mapa de Relaciones) y domina los argumentos de negocio, ROI y manejo de objeciones para clientes.
+              <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
+                Diseñado para personal de ventas y consultores de preventa: opera el flujo comercial completo (Socios, Cotización, Pedido, Facturación SRI IVA 15%, Cobro y Mapa de Relaciones) y aprende a comunicar con éxito los beneficios, el ROI y rebatir las 5 objeciones más comunes ante clientes.
               </p>
+              <div className="flex flex-wrap gap-2 pt-1 text-[11px] text-slate-500 dark:text-gray-400 font-medium">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
+                  ✓ Alta y calificación de clientes
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
+                  ✓ Reserva automática de stock
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
+                  ✓ Facturación electrónica SRI 2026
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
+                  ✓ Trazabilidad en Mapa de Relaciones
+                </span>
+              </div>
             </div>
           </div>
-          <Link
-            href="/mi-aula/mod-ventas"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-lg shadow-blue-600/30 transition-all active:scale-95 shrink-0"
-          >
-            <PlayCircle className="w-4 h-4" aria-hidden="true" />
-            Ingresar al Taller de Ventas
-          </Link>
+          <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
+            <Link
+              href="/mi-aula/mod-ventas"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-lg shadow-blue-600/30 transition-all active:scale-95 text-center"
+            >
+              <PlayCircle className="w-4 h-4" aria-hidden="true" />
+              Iniciar Taller de Ventas
+            </Link>
+            <Link
+              href="/mi-aula/mod-ventas/oral-exam"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-blue-500/30 hover:border-blue-500 text-slate-800 dark:text-gray-200 text-xs font-semibold transition-all active:scale-95 text-center"
+            >
+              <Award className="w-3.5 h-3.5 text-amber-500" aria-hidden="true" />
+              Evaluación & Certificado
+            </Link>
+          </div>
         </section>
 
         {/* 1 · EMPIEZA AQUÍ: Módulo 1 obligatorio */}
@@ -222,7 +247,7 @@ export default function MiAulaPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {SYLLABUS_BLOCKS.map(bloque => {
-              const mods = OFFICIAL_SYLLABUS.filter(m => m.block === bloque && m.id !== INDUCCION);
+              const mods = OFFICIAL_SYLLABUS.filter(m => m.block === bloque && m.id !== INDUCCION && m.id !== 'mod-ventas');
               if (!mods.length) return null;
               const Icono = ICONO_BLOQUE[bloque];
               return (
