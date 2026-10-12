@@ -1,93 +1,33 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { BookOpen, Calendar, ArrowRight } from "lucide-react";
-import { JsonLd } from "@/components/site/JsonLd";
-import { Navbar } from "@/components/site/Navbar";
-import { Footer } from "@/components/site/Footer";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Navbar } from '@/components/site/Navbar';
+import { Footer } from '@/components/site/Footer';
+import { articles } from './articles';
+import { publicUrl } from '@/lib/site-url';
 
-// Title 50-60 chars (Actual: 53 chars)
-// Description 120-160 chars (Actual: 146 chars)
 export const metadata: Metadata = {
-  title: "Blog Técnico y Recursos de Consultoría | Finix Academy",
-  description:
-    "Artículos especializados en parametrización Finix ERP S/4HANA, directivas de migración Brownfield, tablas maestras y scripts de automatización con n8n.",
-  alternates: {
-    canonical: "https://b1-academy.vercel.app/blog",
-  },
-};
-
-const blogSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Centro de Recursos y Blog Técnico Finix ERP",
-  description: "Artículos técnicos, guías de configuración y buenas prácticas en soluciones Finix ERP.",
-  url: "https://b1-academy.vercel.app/blog",
+  title: 'Guías de práctica contable y ERP',
+  description: 'Guías abiertas para practicar asientos contables y trazabilidad de operaciones en un simulador educativo.',
+  alternates: { canonical: publicUrl('/blog') },
 };
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a]">
       <Navbar />
-
-      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <JsonLd data={blogSchema} />
-
-        <aside aria-label="Centro de Recursos Técnicos" className="mb-8 p-4 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-          <strong>Recursos Descargables:</strong> Guías de parametrización IMG, checklists de migración S/4HANA y flujogramas de integración con n8n disponibles para alumnos de la academia.
-        </aside>
-
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-            Centro de Recursos y Artículos Técnicos en Finix ERP
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-base">
-            Investigaciones, mejores prácticas y guías paso a paso de consultoría de sistemas.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <article className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-4 shadow-sm hover:border-finix-blue/40 transition-all">
-            <div className="flex items-center gap-2 text-xs text-finix-blue font-semibold">
-              <Calendar className="w-3.5 h-3.5" /> 10 de Septiembre, 2026 • Arquitectura S/4HANA
-            </div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-              Migración Brownfield vs Greenfield: Criterios para el 2026
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Análisis profundo sobre cuándo conviene transformar el sistema existente versus iniciar una instalación limpia en la nube.
-            </p>
-            <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-              <span className="text-xs font-semibold text-finix-blue hover:underline cursor-pointer">
-                Leer artículo completo →
-              </span>
-            </div>
-          </article>
-
-          <article className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-4 shadow-sm hover:border-finix-blue/40 transition-all">
-            <div className="flex items-center gap-2 text-xs text-amber-500 font-semibold">
-              <Calendar className="w-3.5 h-3.5" /> 8 de Septiembre, 2026 • Automatización
-            </div>
-            <h2 className="text-xl font-bold text-slate-900 dark:text-white">
-              Integrando n8n con Finix ERP BTP: Webhooks y Emisión de Credenciales
-            </h2>
-            <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-              Cómo configurar flujos reactivos que automaticen la verificación de aprobados y sincronicen ofertas en tiempo real.
-            </p>
-            <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-              <span className="text-xs font-semibold text-amber-500 hover:underline cursor-pointer">
-                Leer artículo completo →
-              </span>
-            </div>
-          </article>
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link href="/" className="text-sm font-semibold text-finix-blue hover:underline">
-            Volver a la Academia Principal
-          </Link>
+      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Guías de práctica contable y ERP</h1>
+        <p className="mt-4 mb-10 max-w-3xl text-slate-600 dark:text-slate-300">Explicaciones para entender una operación, practicarla en el simulador y revisar su efecto. Los ejemplos son educativos y no sustituyen la revisión de un contador.</p>
+        <div className="grid gap-6 md:grid-cols-2">
+          {articles.map((article) => (
+            <article key={article.slug} className="p-7 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03]">
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white"><Link href={`/blog/${article.slug}`} className="hover:underline">{article.title}</Link></h2>
+              <p className="mt-3 text-slate-600 dark:text-slate-300">{article.summary}</p>
+              <Link href={`/blog/${article.slug}`} className="inline-block mt-5 font-semibold text-finix-blue hover:underline">Leer la guía →</Link>
+            </article>
+          ))}
         </div>
       </main>
-
       <Footer />
     </div>
   );

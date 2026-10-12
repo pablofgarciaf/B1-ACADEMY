@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     const parsed = envelope.safeParse(await request.json());
     if (!parsed.success) return NextResponse.json({ error: parsed.error.issues.map(issue => `${issue.path.join('.')}: ${issue.message}`).join('; ') }, { status: 400 });
     if (parsed.data.command.action === 'authorize') await new Promise<void>(resolve => setTimeout(resolve, 2000));
-    const result = await executeCompanyCommand(claveEmpresa(request, actor.uid), actor.email, parsed.data.command, parsed.data.requestId);
+    const result = await executeCompanyCommand(claveEmpresa(request, actor.uid), actor.email, parsed.data.command, parsed.data.requestId, actor.uid);
     return NextResponse.json({ result });
   } catch (error: unknown) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'No se pudo guardar.' }, { status: 400 });

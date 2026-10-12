@@ -64,26 +64,8 @@ export default function HomePage() {
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-gradient-to-tr from-finix-blue/20 via-sky-500/15 to-transparent blur-3xl -z-10 pointer-events-none" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            {/* GEO Capsule */}
-            <aside
-              aria-label="Cápsula GEO para Buscadores y Motores de IA"
-              className="p-4 sm:p-5 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 backdrop-blur-md"
-            >
-              <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-                <Sparkles className="w-5 h-5 text-finix-blue dark:text-sky-400 shrink-0 mt-0.5" />
-                <div>
-                  <strong className="text-slate-900 dark:text-white font-semibold">
-                    Escuela oficial de formación tecnológica y consultoría ERP:
-                  </strong>{' '}
-                  Especialización integral en <strong>Finix ERP 10.0 Ecuador</strong>.
-                  Programa oficial estructurado en <strong>14 Diplomas de Especialidad</strong>, <strong>30 Módulos de Competencia</strong> (navegación, activos fijos, Procure-to-Pay, Order-to-Cash, MRP, NIIF, retenciones SRI 2026, nómina IESS, SQL/DTW, metodología de implementación por fases y BPMN 2.0) y <strong>1 Titulación Máster Capstone</strong>.
-                  Incluye simulador de laboratorio sandbox B1 Center con base de datos corporativa en la nube, certificados con QR único y bolsa de trabajo Job-Ready.
-                </div>
-              </div>
-            </aside>
-
             {/* Main Header */}
-            <div className="text-center max-w-4xl mx-auto space-y-6">
+            <div className="text-center max-w-4xl mx-auto space-y-6 py-4 sm:py-8">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue dark:text-sky-300">
                 <span className="w-2 h-2 rounded-full bg-finix-blue animate-pulse" />
                 Academia Tecnológica B2B / B2C • B1 Academy Ecuador
@@ -95,8 +77,7 @@ export default function HomePage() {
               </h1>
 
               <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
-                Capacítate con la arquitectura de conocimiento real de las empresas en Ecuador. 
-                Obtén diplomas por especialidad funcional y domina desde la operación transaccional hasta la arquitectura de proyectos ERP.
+                Aprende procesos empresariales con clases guiadas y un laboratorio de práctica. Elige una ruta por función y avanza a tu ritmo.
               </p>
 
               {/* CTAs */}
@@ -106,7 +87,7 @@ export default function HomePage() {
                   className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-finix-blue to-sky-600 text-white font-bold text-sm sm:text-base shadow-xl shadow-finix-blue/25 hover:shadow-finix-blue/40 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Award className="w-5 h-5" />
-                  Ver los 14 Diplomas de Especialidad
+                  Explorar rutas de formación
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
@@ -118,7 +99,7 @@ export default function HomePage() {
                 </Link>
               </div>
 
-              {/* Stats E-E-A-T */}
+              {/* Datos del programa */}
               <div className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-slate-200 dark:border-white/[0.08]">
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
                   <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">14</p>
@@ -126,15 +107,15 @@ export default function HomePage() {
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
                   <p className="text-2xl sm:text-3xl font-extrabold text-finix-blue dark:text-sky-400 font-display">30</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Módulos Oficiales</p>
+                    <p className="text-xs text-slate-500 mt-1 font-medium">Módulos de estudio</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">366</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Prácticas en Sandbox</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">120</p>
+                  <p className="text-xs text-slate-500 mt-1 font-medium">Clases guiadas</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">100%</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Grado Súper Analista</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">8</p>
+                  <p className="text-xs text-slate-500 mt-1 font-medium">Áreas temáticas</p>
                 </div>
               </div>
             </div>
@@ -149,16 +130,16 @@ export default function HomePage() {
                 Estructura Profesional
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-                14 Diplomas de Especialidad Acreditados
+                 Encuentra una ruta para tu trabajo
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-                Diseñados para certificar competencias por perfil laboral real de la industria: desde Compras, Bodega y Ventas hasta Consultoría de Implementación y Business Analyst.
+                 Empieza por la función que necesitas practicar. El catálogo completo reúne 14 rutas de especialidad.
               </p>
             </div>
 
-            {/* Grid de los 14 diplomas */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {SPECIALTY_DIPLOMAS.map((diploma, index) => {
+             {/* Tres rutas de entrada; el catálogo completo está en capacitación. */}
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+               {SPECIALTY_DIPLOMAS.filter((diploma) => ['dip-compras', 'dip-contable', 'dip-consultor'].includes(diploma.id)).map((diploma, index) => {
                 const isMaster = diploma.id === 'dip-consultor' || diploma.id === 'dip-business-analyst';
                 return (
                   <div
@@ -170,7 +151,7 @@ export default function HomePage() {
                     <div className="space-y-4">
                       <div className="flex justify-between items-start">
                         <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-finix-blue/10 text-finix-blue">
-                          Diploma 0{index + 1}
+                           Ruta 0{index + 1}
                         </span>
                         <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300">
                           {diploma.role}
@@ -194,7 +175,7 @@ export default function HomePage() {
                             const mod = getModuleById(mId);
                             return (
                               <span key={mId} className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5">
-                                {mId}: {mod?.badge || mod?.title.split(':')[0]}
+                                 {mod?.badge || mod?.title.split(':')[0]}
                               </span>
                             );
                           })}
@@ -204,7 +185,7 @@ export default function HomePage() {
 
                     <div className="pt-5 mt-5 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
                       <span className="text-xs text-slate-500 font-medium">
-                        {diploma.requiredModules.length} Certificados de Módulo
+                        {diploma.requiredModules.length} módulos incluidos
                       </span>
                       <Link
                         href="/capacitacion"
@@ -216,18 +197,24 @@ export default function HomePage() {
                   </div>
                 );
               })}
-            </div>
+             </div>
 
-            {/* PROGRAMA CUMBRE MÁSTER */}
+             <div className="text-center">
+               <Link href="/capacitacion" className="inline-flex items-center gap-2 rounded-xl border border-finix-blue/40 px-6 py-3 text-sm font-bold text-finix-blue dark:text-sky-300 hover:bg-finix-blue/10 transition-colors">
+                 Ver las 14 rutas <ArrowRight className="h-4 w-4" />
+               </Link>
+             </div>
+
+             {/* PROGRAMA CUMBRE MÁSTER */}
             <div className="rounded-3xl border border-amber-500/40 bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent p-8 sm:p-10 space-y-4 text-center max-w-4xl mx-auto shadow-xl">
               <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-600 dark:text-amber-400 text-xs font-bold">
-                <Award className="w-4 h-4" /> Titulación Máxima de la Academia
+                 <Award className="w-4 h-4" /> Proyecto integrador de la academia
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">
                 {MASTER_PROGRAM.title}
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                {MASTER_PROGRAM.description} Completa los 30 módulos oficiales, demuestra tus habilidades en el simulador sandbox de práctica y defiende el Proyecto Integrador ante el evaluador del sistema.
+                 Reúne lo aprendido en los 30 módulos y practícalo en un escenario integrado del simulador educativo.
               </p>
               <div className="pt-2">
                 <Link
@@ -247,7 +234,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
               <span className="text-xs uppercase tracking-[0.25em] text-finix-blue dark:text-sky-400 font-bold">
-                Metodología Certificada
+                 Cómo se aprende
               </span>
               <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
                 Modelo de Formación Práctico y Empleable
@@ -263,7 +250,7 @@ export default function HomePage() {
                   01
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  30 MódulosGuiados con Casos Reales
+                   Clases guiadas por procesos
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                   Lecciones en formato diapositivas interactivas, guías de parametrización SRI/IESS y ejercicios prácticos paso a paso.
@@ -278,7 +265,7 @@ export default function HomePage() {
                   Simulador Sandbox B1 Center
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Ejecuta transacciones reales en el simulador: compras, ventas, facturación electrónica, asientos contables y liquidación de nómina.
+                   Ensaya compras, ventas, documentos, asientos y nómina con datos de laboratorio. Las operaciones no se envían al SRI ni a bancos.
                 </p>
               </div>
 
@@ -287,10 +274,10 @@ export default function HomePage() {
                   03
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                  Acreditación Oficial con Código QR
+                   Constancias verificables
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Emisión instantánea en PDF de 30 certificados de módulo, 14 diplomas de especialidad y la titulación Máster de Súper Analista.
+                   Consulta la autenticidad de una constancia emitida por la academia mediante su código de verificación.
                 </p>
               </div>
             </div>

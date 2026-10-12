@@ -26,10 +26,15 @@ const superciasAccountDefinitions: [string, string, AccountingAccount['category'
   a.postable,
 ]);
 
+const seenAccountCodes = new Set<string>();
 const accountDefinitions: [string, string, AccountingAccount['category'], boolean][] = [
   ...baseAccountDefinitions,
   ...superciasAccountDefinitions,
-];
+].filter(([c]) => {
+  if (seenAccountCodes.has(c)) return false;
+  seenAccountCodes.add(c);
+  return true;
+});
 const assert = (condition: unknown, message: string): void => { if (!condition) throw new Error(message); };
 
 /** Pure, server-authoritative reducer. Persistence commits its changes atomically. */

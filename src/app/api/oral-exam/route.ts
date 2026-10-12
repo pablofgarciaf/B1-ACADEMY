@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { adminDb } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
+import { practicasDelModulo } from '@/lib/practice-registry';
 import {
   EXAM_BANK, EXAM_DURATION_MS, EXAM_QUESTIONS_PER_ATTEMPT, MAX_ATTEMPTS_PER_DAY, MIN_ANSWER_WORDS,
   PASS_MIN_PER_QUESTION, PASS_TOTAL, POINTS_PER_QUESTION, type ExamQuestion,
@@ -56,12 +57,18 @@ export async function POST(request: Request) {
       const bank = EXAM_BANK[parsed.data.moduleId];
       if (!courseModule || !bank) return NextResponse.json({ error: 'Este módulo aún no tiene examen.' }, { status: 404 });
 
-      // Requisito: todas las clases del módulo completadas (validado en el servidor, no en el navegador).
+      // Requisito: todas las clases del módulo completadas y todas las prácticas aprobadas (validado en el servidor).
       const progress = await adminDb.collection('academic_progress').doc(`${user.uid}_${courseModule.id}`).get();
-      const completed = new Set<string>(progress.data()?.completedClasses ?? []);
+      const progressData = progress.data();
+      const completed = new Set<string>(progressData?.completedClasses ?? []);
       const pending = courseModule.classes.filter((c) => !completed.has(c.id));
       if (pending.length > 0) {
         return NextResponse.json({ error: `Te faltan ${pending.length} clase(s) por completar: ${pending.map((c) => c.title).join(', ')}.` }, { status: 403 });
+      }
+      const passedPractices = new Set<string>(progressData?.passedPractices ?? []);
+      const pendingPractices = practicasDelModulo(courseModule.id).filter((p) => !passedPractices.has(p));
+      if (pendingPractices.length > 0) {
+        return NextResponse.json({ error: `Te faltan ${pendingPractices.length} práctica(s) del simulador por aprobar en este módulo antes de iniciar el examen oral.` }, { status: 403 });
       }
 
       const previous = await sessions().where('uid', '==', user.uid).where('moduleId', '==', courseModule.id).get();

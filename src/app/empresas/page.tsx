@@ -1,80 +1,40 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Building2, Handshake, ShieldCheck, Users } from "lucide-react";
-import { JsonLd } from "@/components/site/JsonLd";
-import { Navbar } from "@/components/site/Navbar";
-import { Footer } from "@/components/site/Footer";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, Building2, BookOpen, PanelsTopLeft, ShieldCheck } from 'lucide-react';
+import { Navbar } from '@/components/site/Navbar';
+import { Footer } from '@/components/site/Footer';
 
-// Title 50-60 chars (Actual: 51 chars)
-// Description 120-160 chars (Actual: 148 chars)
 export const metadata: Metadata = {
-  title: "Red de Empresas y Partners Afiliados | Finix Academy",
-  description:
-    "Directorio de corporaciones que confían en nuestro programa formativo para capacitar a sus equipos internos e incorporar consultores Finix ERP certificados.",
-  alternates: {
-    canonical: "https://b1-academy.vercel.app/empresas",
-  },
-};
-
-const partnerSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Finix Academy Partner Network",
-  url: "https://b1-academy.vercel.app/empresas",
-  description: "Red de corporaciones validadoras y contratantes de talento certificado en Finix ERP.",
+  title: 'Formación ERP para equipos de empresas | B1 Academy',
+  description: 'Explora las rutas de B1 Academy para equipos que necesitan practicar compras, ventas, operaciones y finanzas en un simulador educativo.',
+  alternates: { canonical: '/empresas' },
 };
 
 export default function EmpresasPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] text-slate-900 dark:text-white">
       <Navbar />
-
-      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
-        <JsonLd data={partnerSchema} />
-
-        <aside aria-label="Alianzas Estratégicas" className="mb-8 p-4 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
-          <strong>Convenios B2B:</strong> Programas de capacitación in-company con bonificación y acceso prioritario a la cantera de consultores para proyectos de migración ERP.
-        </aside>
-
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white font-display">
-            Red de Empresas y Partners del Ecosistema Finix ERP
-          </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-base">
-            Colaboramos con empresas líderes en energía, retail, manufactura y servicios tecnológicos.
-          </p>
+      <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-16 sm:px-6 lg:px-8">
+        <div className="max-w-3xl space-y-5">
+          <span className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 px-3 py-1 text-xs font-bold text-finix-blue dark:text-sky-300"><Building2 className="h-4 w-4" /> Para equipos de pymes</span>
+          <h1 className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">Formación ERP para aprender procesos completos</h1>
+          <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">Las rutas de B1 Academy permiten estudiar funciones empresariales y practicar en un entorno separado de los sistemas reales. Elige las áreas relevantes para tu equipo y revisa el temario antes de comenzar.</p>
+          <Link href="/capacitacion" className="inline-flex items-center gap-2 rounded-xl bg-finix-blue px-6 py-3 text-sm font-bold text-white hover:bg-sky-600">Explorar rutas <ArrowRight className="h-4 w-4" /></Link>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-          <div className="p-8 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-3">
-            <Building2 className="w-8 h-8 text-finix-blue mx-auto" />
-            <h2 className="font-bold text-slate-900 dark:text-white">EnergyEngine S.L.</h2>
-            <p className="text-xs text-slate-500">Sector Energético e Industrial</p>
-          </div>
-          <div className="p-8 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-3">
-            <Building2 className="w-8 h-8 text-sky-400 mx-auto" />
-            <h2 className="font-bold text-slate-900 dark:text-white">Vermilion Routes</h2>
-            <p className="text-xs text-slate-500">Expediciones y Turismo de Lujo</p>
-          </div>
-          <div className="p-8 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-3">
-            <Building2 className="w-8 h-8 text-amber-500 mx-auto" />
-            <h2 className="font-bold text-slate-900 dark:text-white">Nexo Talento Corp</h2>
-            <p className="text-xs text-slate-500">Headhunting & Executive Search</p>
-          </div>
-          <div className="p-8 rounded-2xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.03] space-y-3">
-            <Building2 className="w-8 h-8 text-emerald-500 mx-auto" />
-            <h2 className="font-bold text-slate-900 dark:text-white">Modulares GM</h2>
-            <p className="text-xs text-slate-500">Arquitectura y Prefabricados</p>
-          </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link href="/" className="text-sm font-semibold text-finix-blue hover:underline">
-            Volver a la Academia Principal
-          </Link>
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {[
+            { icon: BookOpen, title: 'Aprender', text: 'Clases guiadas por función, con manuales y objetivos de cada módulo.' },
+            { icon: PanelsTopLeft, title: 'Practicar', text: 'Ejercicios de compras, ventas, producción y finanzas en un laboratorio educativo.' },
+            { icon: ShieldCheck, title: 'Comprobar', text: 'Constancias de la academia consultables mediante un código de verificación.' },
+          ].map(({ icon: Icon, title, text }) => (
+            <section key={title} className="rounded-2xl border border-slate-200 bg-white p-7 dark:border-white/10 dark:bg-white/[0.03]">
+              <Icon className="h-7 w-7 text-finix-blue" />
+              <h2 className="mt-4 text-lg font-bold">{title}</h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{text}</p>
+            </section>
+          ))}
         </div>
       </main>
-
       <Footer />
     </div>
   );

@@ -19,9 +19,14 @@ export default function PasoCeroEmpresa({ onLista }: { onLista: () => void }) {
   const crear = async () => {
     if (!currentUser) { setError('Tu sesión no está lista. Recarga la página.'); return; }
     setCreando(true); setError('');
-    try { await crearB1Center(currentUser.uid, setAvance); onLista(); }
-    catch { setError('No se pudo terminar de crear tu empresa. Revisa tu conexión y vuelve a intentarlo.'); }
-    finally { setCreando(false); }
+    try {
+      await crearB1Center(currentUser.uid, setAvance);
+      onLista();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'No se pudo terminar de crear tu empresa. Revisa tu conexión y vuelve a intentarlo.');
+    } finally {
+      setCreando(false);
+    }
   };
 
   const pasos = [

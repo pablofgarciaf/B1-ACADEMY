@@ -8,6 +8,7 @@ import { listCompaniesSupabase, addMissionSupabase } from '@/lib/company-store-s
 import { adminDb } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { today } from '@/lib/company-calculations';
+import { auditHash } from '@/lib/company-audit';
 
 export async function GET(request: Request) {
   let actor;
@@ -64,7 +65,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ result: id });
     }
     const root = adminDb.collection('finixCompanies').doc(uid); const ref = root.collection('missions').doc(requestId);
-    await adminDb.runTransaction(async tx => { const [company, existing] = await Promise.all([tx.get(root), tx.get(ref)]); if (!company.exists) throw new Error('Empresa inexistente.'); if (existing.exists) return; const now = new Date().toISOString(); tx.set(ref, { id: ref.id, title, description, module, status: 'assigned', teacherUid: actor.uid, createdBy: actor.uid, createdAt: now, updatedAt: now }); tx.update(root, { pendingAlerts: Number(company.data()?.pendingAlerts ?? 0) + 1 }); });
+    await adminDb.runTransaction(async tx => {
+      const headRef = root.collection('auditMeta').doc('head');
+      const [company, existing, head] = await Promise.all([tx.get(root), tx.get(ref), tx.get(headRef)]);
+      if (!company.exists) throw new Error('Empresa inexistente.');
+      if (existing.exists) return;
+      const now = new Date().toISOString();
+      const mission = { id: ref.id, title, description, module, status: 'assigned', teacherUid: actor.uid,
+        createdBy: actor.uid, createdAt: now, updatedAt: now };
+      const version = Number(head.data()?.version ?? 0) + 1;
+      const event = { companyId: uid, actorUid: actor.uid, actorEmail: actor.email, requestId, action: 'assignMission' as const,
+        result: requestId, occurredAt: now, changes: [{ collection: 'missions' as const, id: requestId, before: null, after: mission }],
+        previousHash: String(head.data()?.hash ?? '0'.repeat(64)) };
+      const hash = auditHash(event);
+      tx.set(ref, mission);
+      tx.update(root, { pendingAlerts: Number(company.data()?.pendingAlerts ?? 0) + 1 });
+      tx.create(root.collection('auditEvents').doc(String(version).padStart(16, '0')), { ...event, hash, version });
+      tx.set(headRef, { version, hash });
+    });
     return NextResponse.json({ result: ref.id });
   } catch (error: unknown) { return NextResponse.json({ error: error instanceof Error ? 'No se pudo asignar la misión.' : 'Error de guardado.' }, { status: 400 }); }
 }

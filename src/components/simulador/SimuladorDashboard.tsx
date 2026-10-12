@@ -48,9 +48,8 @@ export default function SimuladorDashboard({
     }
   }, [userProfile]);
 
-  const xpToNextLevel = (user.level + 1) * 1000;
   const progressPercent = (user.xp % 1000) / 10;
-  const completionPercent = (user.completedMissions / user.totalMissions) * 100;
+  const completionPercent = user.totalMissions > 0 ? (user.completedMissions / user.totalMissions) * 100 : 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
@@ -96,12 +95,12 @@ export default function SimuladorDashboard({
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-6 py-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
         {/* Welcome section */}
-        <div className="mb-12">
-          <div className="flex items-start justify-between mb-8">
+        <div className="mb-9">
+          <div className="flex items-start justify-between mb-6">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-2">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-2">
                 ¡Bienvenido, {user.displayName}! 👋
               </h2>
               <p className="text-slate-400">
@@ -112,23 +111,28 @@ export default function SimuladorDashboard({
           </div>
 
           {/* Main CTAs */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
             <button
               onClick={onStartSimulator}
-              className="group relative w-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-2xl p-6 shadow-2xl shadow-blue-600/50 transition-all overflow-hidden"
+              className="group relative w-full lg:col-span-3 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white rounded-2xl p-6 shadow-xl shadow-blue-600/25 transition-all overflow-hidden text-left"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 group-hover:translate-x-full transition-transform duration-1000" />
               <div className="relative flex items-center justify-between">
                 <div className="text-left">
-                  <p className="text-xs font-semibold text-blue-100 mb-1">Simulador Interactivo</p>
-                  <h3 className="text-xl font-bold">Simulador Virtual Finix ERP</h3>
+                  <p className="text-xs font-semibold text-blue-100 mb-1">Laboratorio de aprendizaje</p>
+                  <h3 className="text-xl font-bold">Entrar a mi empresa de práctica</h3>
+                  <p className="mt-2 max-w-md text-sm text-blue-50">Continúa con compras, ventas, contabilidad y administración en un entorno de simulación.</p>
                 </div>
                 <div className="bg-white/20 backdrop-blur p-3 rounded-xl">
                   <Play size={28} className="text-white fill-white" />
                 </div>
               </div>
             </button>
-
+            <div className="lg:col-span-2 rounded-2xl border border-sky-400/20 bg-slate-800/60 p-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-sky-300">Antes de empezar</p>
+              <h3 className="mt-2 text-lg font-bold text-white">Practica sin afectar tus empresas reales</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-300">Los documentos, movimientos bancarios y comprobantes de este espacio son ejercicios. No se envían al SRI ni a instituciones financieras.</p>
+            </div>
           </div>
         </div>
 
@@ -178,18 +182,16 @@ export default function SimuladorDashboard({
             </p>
           </div>
 
-          {/* Time */}
+          {/* Contexto de uso; no mostrar horas inventadas */}
           <div className="bg-slate-800/30 backdrop-blur border border-slate-700/50 rounded-xl p-6 hover:border-cyan-500/50 transition">
             <div className="flex items-center justify-between mb-4">
               <Clock className="text-cyan-400" size={24} />
               <span className="text-xs font-semibold text-cyan-400 bg-cyan-400/10 px-3 py-1 rounded-full">
-                Sesiones
+                Modalidad
               </span>
             </div>
-            <p className="text-3xl font-bold text-white">
-              {Math.floor(Math.random() * 50) + 10}h
-            </p>
-            <p className="text-sm text-slate-400 mt-2">Tiempo de práctica</p>
+            <p className="text-xl font-bold text-white">Práctica libre</p>
+            <p className="text-sm text-slate-400 mt-2">Retoma el ejercicio cuando quieras</p>
           </div>
         </div>
 

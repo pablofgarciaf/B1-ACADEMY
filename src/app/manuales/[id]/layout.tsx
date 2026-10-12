@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { publicUrl } from '@/lib/site-url';
 
 type ManualRouteLayoutProps = {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: ManualRouteLayoutProps): Prom
 
   return {
     alternates: {
-      canonical: `https://b1-academy.vercel.app/manuales/${encodeURIComponent(id)}`,
+      canonical: publicUrl(`/manuales/${encodeURIComponent(id)}`),
     },
   };
 }

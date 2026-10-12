@@ -3,6 +3,8 @@ import type { CompanyState } from './firestore-types';
 import type { CompanyCommand } from './company-commands';
 import { readCompanyFirestore, executeCompanyCommandFirestore } from './company-server-firestore';
 import { supabaseActivo, readCompanySupabase, executeCompanyCommandSupabase } from './company-store-supabase';
+import { readCompanyAuditFirestore, verifyCompanyAuditFirestore } from './company-server-firestore';
+import { readCompanyAuditSupabase, verifyCompanyAuditSupabase } from './company-store-supabase';
 
 /**
  * Punto único de acceso a las empresas del simulador.
@@ -18,8 +20,18 @@ export async function readCompany(uid: string, email = ''): Promise<CompanyState
   return supabaseActivo() ? readCompanySupabase(uid, email) : readCompanyFirestore(uid);
 }
 
-export async function executeCompanyCommand(uid: string, email: string, command: CompanyCommand, requestId: string): Promise<string> {
+export async function executeCompanyCommand(uid: string, email: string, command: CompanyCommand, requestId: string, actorUid = uid): Promise<string> {
   return supabaseActivo()
-    ? executeCompanyCommandSupabase(uid, email, command, requestId)
-    : executeCompanyCommandFirestore(uid, email, command, requestId);
+    ? executeCompanyCommandSupabase(uid, email, command, requestId, actorUid)
+    : executeCompanyCommandFirestore(uid, email, command, requestId, actorUid);
+}
+
+export async function readCompanyAudit(uid: string, limit = 100, before?: number) {
+  return supabaseActivo()
+    ? readCompanyAuditSupabase(uid, limit, before)
+    : readCompanyAuditFirestore(uid, limit, before);
+}
+
+export async function verifyCompanyAudit(uid: string) {
+  return supabaseActivo() ? verifyCompanyAuditSupabase(uid) : verifyCompanyAuditFirestore(uid);
 }

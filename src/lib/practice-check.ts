@@ -56,13 +56,10 @@ export function coincide(respuesta: string, esperado: string, etiqueta?: string)
   if (!r) return false;
   if (r === e) return true;
 
-  // Validación flexible de credenciales de usuario y clave
+  // Para credenciales, verificar contra la lista de equivalencias válidas del sistema
   const tag = (etiqueta || '').toLowerCase();
-  if (/usuario|user|login/.test(tag) || /^(manager|admin|pablo|user)/.test(e)) {
-    if (r.length >= 2) return true;
-  }
-  if (/contra|clave|pass/.test(tag) || /^(b1admin|manager|mated0memia|1234)/.test(e)) {
-    if (r.length >= 2) return true;
+  if (/usuario|user|login/.test(tag) || /contra|clave|pass/.test(tag)) {
+    if (EQUIVALENCIAS.some((g) => g.includes(r) && g.includes(e))) return true;
   }
 
   if (esBooleano(esperado)) return SI.test(e) ? SI.test(r) : NO.test(r) || r === '';
@@ -85,6 +82,8 @@ export interface IntentoPractica {
  * Política de aprobación para el certificado: decide si una práctica cuenta como aprobada.
  */
 export function practicaAprobada(correctos: number, total: number, intento: IntentoPractica): boolean {
-  void intento;
-  return total > 0 && correctos === total;
+  if (total <= 0 || correctos < total) return false;
+  // Si el estudiante vio la solución en este intento, debe repetirla demostrando dominio propio
+  if (intento.vioSolucion) return false;
+  return true;
 }

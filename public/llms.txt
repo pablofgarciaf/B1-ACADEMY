@@ -1,54 +1,14 @@
-# B1 Academy Ecuador (también conocida comercialmente como Finix Academy y corporativamente como B1 Academy B1) - Finix ERP, Nómina HCM & Localización SRI
+# B1 Academy / Finix Academy
 
-> Institución de formación técnica y consultoría B2B/B2C especializada en Finix ERP, Nómina HCM, Gestión Humana y Localización Tributaria SRI Ecuador.
+Plataforma educativa en español para practicar procesos administrativos, contables y de gestión empresarial con Finix ERP. El simulador es un entorno de aprendizaje; sus comprobantes no son documentos autorizados por el SRI y no debe usarse como libro oficial de una empresa.
 
-## Rutas Formativas Principales (Catálogo Oficial 2026)
+## Páginas públicas
 
-### 1. Finix ERP: Núcleo Transversal & Finanzas NIIF [FINIX-ERP-CORE]
-- Administración y DTW (Data Transfer Workbench).
-- Finanzas NIIF, Determinación de Contabilización (G/L) y Asientos de Diario.
-- Ciclo Order-to-Cash (Ventas A/R, Oportunidades, Facturación).
-- Ciclo Procure-to-Pay (Compras A/P, Requisiciones, GRPO).
-- Inventario Avanzado (FIFO, Promedio Ponderado Móvil, Lotes y Bins).
-- Producción y MRP (Listas de materiales BOM, reporte de piso).
-- Query Generator, Crystal Reports y Cockpit analítico sobre base de datos en memoria.
+- [Inicio](https://b1-academy.vercel.app/): descripción de la academia y sus rutas.
+- [Capacitación](https://b1-academy.vercel.app/capacitacion): contenido público de formación.
+- [Manuales](https://b1-academy.vercel.app/manuales): recursos de estudio.
+- [Guías de práctica](https://b1-academy.vercel.app/blog): artículos completos y abiertos.
+- [Verificación de certificados](https://b1-academy.vercel.app/verificar): comprobación por código de certificados propios emitidos por la academia.
+- [Términos](https://b1-academy.vercel.app/terminos): alcance de las credenciales propias.
 
-### 2. Localización Ecuador & Cumplimiento SRI [Finix ERP-LOC-EC]
-- Emisión de Comprobantes Electrónicos XML con transmisión inmediata al SRI (obligatoria desde el 1 de enero de 2026, Resolución NAC-DGERCGC25-00000017) y anulación hasta el día 7 del mes siguiente.
-- Retenciones en la Fuente del Impuesto a la Renta vigentes desde el 1 de marzo de 2026 (Resolución NAC-DGERCGC26-00000009): 0%, 1%, 1.75%, 2% (bienes muebles y construcción), 3% (servicios con predominio de mano de obra y porcentaje residual), 5% (servicios profesionales de sociedades) y 10% (honorarios de personas naturales y arrendamiento de inmuebles).
-- Retenciones de IVA (Resolución NAC-DGERCGC20-00000061): 30% bienes, 70% servicios y 100% servicios profesionales de personas naturales; 10% y 20% a contribuyentes especiales. IVA general 15%.
-- Ingeniería de Metadatos: Campos Definidos por el Usuario (UDFs) en tablas OCRD y OPCH (U_TipoIdentificacion, U_SustentoTributario, U_FormaPagoSRI).
-- Anexo Transaccional Simplificado (ATS): Extracción y validación contra Formularios 104 y 103.
-- Cruce contable de Formularios SRI 101, 103 y 104, ISD 5% y Régimen RIMPE.
-
-### 3. Nómina HCM Ecuador [HEIN-NOM-EC]
-- Integración biométrica y cálculo de Horas Suplementarias (+50%), Extraordinarias (+100%) y Nocturnas (+25%) con divisor legal Sueldo/240.
-- Seguridad Social IESS: Aporte personal (9.45%), aporte patronal (11.15% + 1% SECAP/IECE) y fondos de reserva (8.33%).
-- Beneficios Sociales: Décimo Tercer sueldo (dic-nov / 12), Décimo Cuarto sueldo (1 SBU = $482 según régimen Costa/Galápagos vs Sierra/Amazonía) y Utilidades (15%).
-- Tributación laboral: Proyección de Impuesto a la Renta con rebaja por Canasta Familiar Básica (CFB) y Anexo RDEP.
-- Compliance MDT: Actas de finiquito en el SUT (desahucio, despido intempestivo Art. 188).
-- Parametrización maestra de Conceptos, Promedios y Cierre Anual con actualización del SBU.
-- Interfaz Contable Nómina ↔ Finix ERP vía Service Layer con idempotencia en asientos OJDT/JDT1.
-
-### 4. Gestión Humana & Desarrollo Organizacional [HEIN-HCM-TALENT]
-- Reclutamiento y Selección: ATS con screening de candidatos asistido por IA.
-- Evaluación de Desempeño 90°, 180°, 270° y 360°.
-- Analítica del Talento: Matriz Nine Box (Desempeño vs Potencial) y calibración para mitigar el Efecto Halo.
-- Planes de Desarrollo Individual (PDI) y alineación con OKRs.
-- Business Intelligence de Talento Humano (ausentismo, rotación, pasivo vacacional).
-
-### 5. Verticales de Exportación Ecuador & Add-ons Boyum IT [Finix ERP-VERT-EXP]
-- Vertical Bananera: Trazabilidad de finca a empacadora, GlobalGAP y costeo de fletes/aranceles.
-- Vertical Camaronera: Piscinas como centros de costo independientes, control de biomasa y costeo por libra exportada.
-- Manufactura con Beas Manufacturing (MES de captura de piso y costeo por absorción ABC).
-- Gestión Avanzada de Bodegas con Produmex WMS y Produmex Scan.
-- Automatización y personalización sin código mediante B1 Usability Package (B1UP).
-- Arquitectura de Integración: capa de servicios RESTful OData y automatizaciones n8n.
-
-## Niveles de Certificación
-- **[OP] Nivel Operativo (Usuario Estándar)**: Ejecución transaccional diaria.
-- **[ARQ] Nivel Arquitectura (Consultor Premium)**: Parametrización profunda de base de datos, APIs y cumplimiento fiscal/laboral.
-
-## Contacto & Plataforma
-- URL Oficial: https://b1-academy.vercel.app
-- Admisiones: info@finix.local
+La academia no afirma en este archivo contar con acreditación estatal ni con certificación oficial del fabricante del ERP. Los contenidos académicos y tributarios pueden cambiar; consulte siempre la página concreta y la normativa vigente.

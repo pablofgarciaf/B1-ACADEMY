@@ -42,7 +42,8 @@ export default function CapacitacionPage() {
       dip.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       dip.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
       dip.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesSearch;
+    const matchesBlock = selectedBlock === 'ALL' || dip.requiredModules.some(mId => getModuleById(mId)?.block === selectedBlock);
+    return matchesSearch && matchesBlock;
   });
 
   return (
@@ -50,31 +51,26 @@ export default function CapacitacionPage() {
       <Navbar />
 
       <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 w-full">
-        {/* Cápsula GEO para Google AI Overviews, Perplexity y ChatGPT */}
-        <aside aria-label="Resumen del Ecosistema Formativo" className="p-5 rounded-2xl border border-sky-500/30 bg-sky-50/70 dark:bg-sky-950/20 text-xs sm:text-sm text-slate-700 dark:text-slate-300 backdrop-blur-md">
-          <strong className="text-slate-900 dark:text-white font-semibold">Oferta Académica B1 Academy Ecuador:</strong>{' '}
-          Formación especializada en <strong>Finix ERP 10.0</strong> dividida en <strong>14 Diplomas de Especialidad</strong> por rol corporativo y <strong>30 Módulos de Aprendizaje Continuo</strong> distribuidos en 8 Bloques Académicos:
-          Administración & RRHH, Logística & Suministros, Comercial & CRM, Producción & MRP, Finanzas & Fiscalidad SRI, Tecnología & SQL, Consultoría & Business Analyst y Titulación Máster Capstone Súper Analista.
-        </aside>
-
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
-            <Sparkles className="w-3.5 h-3.5" /> 14 Diplomas de Especialidad • 30 Módulos Oficiales
+            <Sparkles className="w-3.5 h-3.5" /> 14 rutas de especialidad • 30 módulos
           </div>
           {/* H1 Quirúrgico (45-65 chars) -> 52 caracteres */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
             Diplomas de Especialidad en Finix ERP Ecuador
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
-            Elige la especialidad según tu perfil profesional. Cada diploma integra módulos prácticos evaluados en el simulador sandbox de Finix ERP.
+            Encuentra una ruta por función, revisa sus módulos y decide dónde empezar. Los ejercicios se realizan en un laboratorio educativo.
           </p>
         </div>
 
         {/* Buscador de Especialidades */}
         <div className="max-w-xl mx-auto">
+          <label htmlFor="buscar-ruta" className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">¿Qué quieres aprender?</label>
           <div className="relative">
             <Search className="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
+              id="buscar-ruta"
               type="text"
               placeholder="Buscar por rol (ej. Compras, Ventas, Contable, Consultor)..."
               value={searchQuery}
@@ -84,14 +80,23 @@ export default function CapacitacionPage() {
           </div>
         </div>
 
+        <div className="flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filtrar rutas por área">
+          {['ALL', ...SYLLABUS_BLOCKS].map(block => (
+            <button key={block} type="button" onClick={() => setSelectedBlock(block)} aria-pressed={selectedBlock === block}
+              className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${selectedBlock === block ? 'border-finix-blue bg-finix-blue text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-finix-blue dark:border-white/15 dark:bg-white/5 dark:text-slate-200'}`}>
+              {block === 'ALL' ? 'Todas las áreas' : block}
+            </button>
+          ))}
+        </div>
+
         {/* SECCIÓN 1: DIPLOMAS DE ESPECIALIDAD */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white font-display">
-              Catálogo de 14 Diplomas de Especialidad
+              Rutas de especialidad
             </h2>
             <span className="text-xs text-slate-500 font-semibold">
-              {filteredDiplomas.length} Diplomas Disponibles
+              {filteredDiplomas.length} rutas encontradas
             </span>
           </div>
 
@@ -104,7 +109,7 @@ export default function CapacitacionPage() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-md bg-finix-blue/10 text-finix-blue">
-                      Diploma 0{idx + 1}
+                      Ruta 0{idx + 1}
                     </span>
                     <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300">
                       {diploma.role}
@@ -132,7 +137,7 @@ export default function CapacitacionPage() {
                             href={`/mi-aula/${mId}`}
                             className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/5 hover:border-finix-blue hover:text-finix-blue transition-colors"
                           >
-                            {mId}: {mod?.badge || mod?.title.split(':')[0]}
+                            {mod?.badge || mod?.title.split(':')[0]}
                           </Link>
                         );
                       })}
@@ -142,18 +147,19 @@ export default function CapacitacionPage() {
 
                 <div className="pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
                   <span className="text-xs text-slate-500 font-medium">
-                    {diploma.requiredModules.length} Evaluaciones Practicas
+                    {diploma.requiredModules.length} módulos de estudio
                   </span>
                   <Link
                     href={`/mi-aula`}
                     className="px-4 py-2 rounded-xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all active:scale-95 flex items-center gap-1 cursor-pointer"
                   >
-                    Cursar Diploma <ArrowRight className="w-3.5 h-3.5" />
+                    Explorar aula <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </div>
             ))}
           </div>
+          {filteredDiplomas.length === 0 && <p role="status" className="rounded-2xl border border-slate-200 p-8 text-center text-sm text-slate-600 dark:border-white/10 dark:text-slate-300">No encontramos una ruta con esos filtros. Prueba otra palabra o elige todas las áreas.</p>}
         </div>
 
         {/* SECCIÓN 2: MALLA CURRICULAR DE LOS 30 MÓDULOS */}

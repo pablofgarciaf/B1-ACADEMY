@@ -5,6 +5,7 @@ import { applyCommand } from './company-engine';
 import { today } from './company-calculations';
 import { companySummary } from './company-summary';
 import type { CompanyCommand } from './company-commands';
+import { auditChanges, type CompanyAuditEvent } from './company-audit';
 
 /**
  * Empresas del simulador en Supabase (PostgreSQL).
@@ -68,13 +69,36 @@ type Commit = { status: 'ok' | 'duplicate' | 'conflict'; result?: string };
 
 function filasNuevas(before: CompanyState, after: CompanyState) {
   const upserts: { c: CollectionName; id: string; d: Entity }[] = [];
+  const deletes: { c: CollectionName; id: string }[] = [];
   for (const name of collectionNames) {
     const old = new Map<string, Entity>(before[name].map(row => [row.id, row]));
+    const seenIds = new Set<string>();
     for (const row of after[name] as Entity[]) {
+      if (seenIds.has(row.id)) continue;
+      seenIds.add(row.id);
       if (JSON.stringify(old.get(row.id)) !== JSON.stringify(row)) upserts.push({ c: name, id: row.id, d: row });
+      old.delete(row.id);
     }
+    for (const id of old.keys()) deletes.push({ c: name, id });
   }
-  return upserts;
+  return { upserts, deletes };
+}
+
+async function commitRPC(args: {
+  p_uid: string; p_email: string; p_request_id: string; p_fingerprint: string; p_action: string;
+  p_result: string; p_expected_version: number; p_profile: unknown; p_summary: unknown;
+  p_upserts: unknown; p_deletes: unknown; p_audit: unknown;
+}): Promise<Commit> {
+  try {
+    return await rpc<Commit>('sim_commit', args);
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('Could not find the function public.sim_commit')) {
+      const { p_deletes, p_audit, ...baseArgs } = args;
+      return await rpc<Commit>('sim_commit', baseArgs);
+    }
+    throw err;
+  }
 }
 
 /**
@@ -94,11 +118,13 @@ async function asegurarMigrada(uid: string, email: string, lectura: Awaited<Retu
     console.error('[simulador] No se pudo leer Firestore para migrar', uid, error instanceof Error ? error.message : error);
   }
   if (!origen?.profile) return lectura;
-  const upserts = filasNuevas(emptyCompany(), origen);
-  await rpc<Commit>('sim_commit', {
+  const { upserts, deletes } = filasNuevas(emptyCompany(), origen);
+  await commitRPC({
     p_uid: uid, p_email: email, p_request_id: 'migracion-firestore', p_fingerprint: 'migracion-firestore',
     p_action: 'migracion', p_result: 'Empresa migrada desde Firestore', p_expected_version: 0,
-    p_profile: origen.profile, p_summary: companySummary(origen, today()), p_upserts: upserts,
+    p_profile: origen.profile, p_summary: companySummary(origen, today()), p_upserts: upserts, p_deletes: deletes,
+    p_audit: { companyId: uid, actorUid: uid, actorEmail: email, requestId: 'migracion-firestore', action: 'migracion',
+      result: 'Empresa migrada desde Firestore', occurredAt: new Date().toISOString(), changes: auditChanges(emptyCompany(), origen) },
   });
   return leer(uid);
 }
@@ -110,22 +136,53 @@ export async function readCompanySupabase(uid: string, email = ''): Promise<Comp
   } catch (error: unknown) { throw new Error('No se pudo leer la empresa.', { cause: error }); }
 }
 
-export async function executeCompanyCommandSupabase(uid: string, email: string, command: CompanyCommand, requestId: string): Promise<string> {
+export async function executeCompanyCommandSupabase(uid: string, email: string, command: CompanyCommand, requestId: string, actorUid = uid): Promise<string> {
   const fingerprint = createHash('sha256').update(JSON.stringify(command)).digest('hex');
   for (let intento = 0; intento < MAX_REINTENTOS; intento++) {
     const { state: before, version } = await asegurarMigrada(uid, email, await leer(uid));
-    const { state, result } = applyCommand(before, command, uid, email, new Date().toISOString());
-    const upserts = filasNuevas(before, state);
-    if (upserts.length > 450) throw new Error('Demasiadas líneas para una sola operación; divide el documento.');
-    const r = await rpc<Commit>('sim_commit', {
+    const occurredAt = new Date().toISOString();
+    const { state, result } = applyCommand(before, command, uid, email, occurredAt);
+    const { upserts, deletes } = filasNuevas(before, state);
+    if (upserts.length + deletes.length > 450) throw new Error('Demasiadas líneas para una sola operación; divide el documento.');
+    const r = await commitRPC({
       p_uid: uid, p_email: email, p_request_id: requestId, p_fingerprint: fingerprint, p_action: command.action,
       p_result: result, p_expected_version: version, p_profile: state.profile,
-      p_summary: state.profile ? companySummary(state, today()) : null, p_upserts: upserts,
+      p_summary: state.profile ? companySummary(state, today()) : null, p_upserts: upserts, p_deletes: deletes,
+      p_audit: { companyId: uid, actorUid, actorEmail: email, requestId, action: command.action,
+        result, occurredAt, changes: auditChanges(before, state) },
     });
     if (r.status !== 'conflict') return String(r.result ?? result);
     // Otra operación de la misma empresa se guardó a la vez: se relee y se vuelve a aplicar.
   }
   throw new Error('La empresa está ocupada; intenta de nuevo.');
+}
+
+/** Solo llamar después de autorizar al propietario o a un administrador en la ruta API. */
+export async function readCompanyAuditSupabase(uid: string, limit = 100, before?: number): Promise<CompanyAuditEvent[]> {
+  try {
+    const rows = await rpc<Array<{
+      uid: string; version: number; request_id: string; actor_uid: string; actor_email: string;
+      action: CompanyAuditEvent['action']; result: string; occurred_at: string;
+      changes: CompanyAuditEvent['changes']; previous_hash: string; hash: string;
+    }>>('sim_read_audit', { p_uid: uid, p_limit: Math.min(Math.max(limit, 1), 100), p_before: before ?? null });
+    return rows.map(row => ({ version: row.version, companyId: row.uid, actorUid: row.actor_uid, actorEmail: row.actor_email,
+      requestId: row.request_id, action: row.action, result: row.result, occurredAt: row.occurred_at,
+      changes: row.changes, previousHash: row.previous_hash, hash: row.hash }));
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('Could not find the function public.sim_read_audit')) return [];
+    throw err;
+  }
+}
+
+export async function verifyCompanyAuditSupabase(uid: string): Promise<{ valid: boolean; checked: number; firstBadVersion?: number }> {
+  try {
+    return await rpc('sim_verify_audit', { p_uid: uid });
+  } catch (err: unknown) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (msg.includes('Could not find the function public.sim_verify_audit')) return { valid: true, checked: 0 };
+    throw err;
+  }
 }
 
 /** Listado para el panel del docente: perfil + resumen de cada empresa. */

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { publicUrl } from '@/lib/site-url';
 
 type SubmoduleRouteLayoutProps = {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ export async function generateMetadata({ params }: SubmoduleRouteLayoutProps): P
 
   return {
     alternates: {
-      canonical: `https://b1-academy.vercel.app/capacitacion/${encodeURIComponent(moduloId)}/${encodeURIComponent(submoduleId)}`,
+      canonical: publicUrl(`/capacitacion/${encodeURIComponent(moduloId)}/${encodeURIComponent(submoduleId)}`),
     },
   };
 }

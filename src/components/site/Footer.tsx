@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BotonConfigurarCookies } from '@/components/legal/CookieConsent';
-import { ProtectedEmail } from '@/components/site/ProtectedEmail';
 
 export function Footer() {
   return (
@@ -46,20 +45,20 @@ export function Footer() {
           {/* Col 2: Carreras */}
           <div>
             <h4 className="text-xs uppercase tracking-wider font-bold text-slate-900 dark:text-white mb-4">
-              4 Carreras de la Escuela
+              Explora el programa
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-500 dark:text-slate-400">
-              <li><Link href="/mi-aula" className="hover:text-finix-blue">1. Fundamentos & Núcleo ERP</Link></li>
-              <li><Link href="/mi-aula" className="hover:text-finix-blue">2. Finanzas NIIF & Tesorería</Link></li>
-              <li><Link href="/mi-aula" className="hover:text-finix-blue">3. Logística, SCM & Ventas</Link></li>
-              <li><Link href="/mi-aula" className="hover:text-finix-blue">4. MRP, Producción & Consultoría</Link></li>
+              <li><Link href="/capacitacion" className="hover:text-finix-blue">Rutas de especialidad</Link></li>
+              <li><Link href="/manuales" className="hover:text-finix-blue">Manuales y atlas</Link></li>
+              <li><Link href="/simulador" className="hover:text-finix-blue">Laboratorio ERP</Link></li>
+              <li><Link href="/verificar" className="hover:text-finix-blue">Verificar una constancia</Link></li>
             </ul>
           </div>
 
           {/* Col 3: Plataforma */}
           <div>
             <h4 className="text-xs uppercase tracking-wider font-bold text-slate-900 dark:text-white mb-4">
-              Plataforma y Acreditación
+              Plataforma
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-500 dark:text-slate-400">
               <li><Link href="/mi-aula" className="hover:text-amber-500 font-bold text-amber-600 dark:text-amber-400">🎓 Mi Aula Virtual</Link></li>
@@ -75,12 +74,9 @@ export function Footer() {
               Admisiones & Soporte
             </h4>
             <div className="text-xs text-slate-600 dark:text-slate-400 space-y-2.5">
-              <p>Consultoría Académica y Matrículas:</p>
-              <div>
-                <ProtectedEmail user="admisiones" domain="finix.local" />
-              </div>
+              <p>¿Necesitas orientación? Usa el botón de ayuda disponible en el sitio.</p>
               <p className="text-[11px] text-slate-500 pt-1">
-                Acreditación propia de B1 Academy • Atención digital
+                Formación y constancias emitidas por B1 Academy.
               </p>
             </div>
           </div>
@@ -104,7 +100,7 @@ export function Footer() {
             <BotonConfigurarCookies className="hover:underline" />
           </nav>
           <p className="text-[11px] text-center sm:text-right max-w-xl">
-            Los certificados de B1 Academy acreditan competencias prácticas en Finix ERP, contabilidad y normativa ecuatoriana.
+            Las constancias de B1 Academy corresponden a este programa de formación y pueden verificarse por código.
           </p>
         </div>
       </div>

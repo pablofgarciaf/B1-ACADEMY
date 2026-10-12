@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { z } from 'zod';
+import { getSessionState, requireBearerUser } from '@/lib/server-auth';
 
 export const runtime = 'nodejs';
 
@@ -117,15 +118,25 @@ El sistema gestiona 7 sociedades con contabilidad y bases de datos independiente
 
 export async function POST(req: Request) {
   try {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
+    let uid: string;
+    if (req.headers.get('authorization')?.startsWith('Bearer ')) {
+      try { uid = (await requireBearerUser(req)).uid; }
+      catch { return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 }); }
+    } else {
+      const session = await getSessionState();
+      if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
+      if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 });
+      uid = session.user.uid;
+    }
+
     const now = Date.now();
-    const limit = attempts.get(ip);
+    const limit = attempts.get(uid);
     if (limit && limit.resetAt > now && limit.count >= 20) {
       return NextResponse.json({ error: 'Demasiadas solicitudes. Espera un momento.' }, { status: 429 });
     }
-    attempts.set(ip, limit && limit.resetAt > now ? { ...limit, count: limit.count + 1 } : { count: 1, resetAt: now + 15 * 60_000 });
+    attempts.set(uid, limit && limit.resetAt > now ? { ...limit, count: limit.count + 1 } : { count: 1, resetAt: now + 15 * 60_000 });
 
-    const body = await req.json();
+    const body = await req.json().catch(() => null);
     const parsed = advisorSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });

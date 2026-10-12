@@ -31,7 +31,8 @@ service cloud.firestore {
       allow read: if owns(uid) || (signedIn() && profile().role in ['teacher', 'docente']);
       allow write: if false;
       match /{document=**} {
-        allow read: if owns(uid) || (signedIn() && profile().role in ['teacher', 'docente']);
+        // Los datos detallados, incluida la auditoría, se consultan mediante la API con permisos de servidor.
+        allow read: if owns(uid);
         allow write: if false;
       }
     }

@@ -1,30 +1,19 @@
 import { NextResponse } from 'next/server';
-import { adminAuth, adminDb } from '@/lib/firebase-admin';
+import { adminDb } from '@/lib/firebase-admin';
+import { getSessionState, requireBearerUser } from '@/lib/server-auth';
 
 export async function GET(request: Request) {
   try {
-    const authHeader = request.headers.get('authorization') || '';
-    let uid = '';
-
-    if (authHeader.startsWith('Bearer ')) {
-      const token = authHeader.substring(7);
-      try {
-        const decoded = await adminAuth.verifyIdToken(token);
-        uid = decoded.uid;
-      } catch {
-        // token no válido
-      }
-    }
-
-    // Si viene uid por query param (para respaldo de sesión)
-    const { searchParams } = new URL(request.url);
-    const paramUid = searchParams.get('uid');
-    if (!uid && paramUid) {
-      uid = paramUid;
-    }
-
-    if (!uid) {
-      return NextResponse.json({ error: 'No autorizado' }, { status: 401 });
+    // Nunca aceptar un uid del cliente: la identidad proviene exclusivamente de la sesión verificada.
+    let uid: string;
+    if (request.headers.get('authorization')?.startsWith('Bearer ')) {
+      try { uid = (await requireBearerUser(request)).uid; }
+      catch { return NextResponse.json({ error: 'No autorizado.' }, { status: 401 }); }
+    } else {
+      const session = await getSessionState();
+      if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
+      if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
+      uid = session.user.uid;
     }
 
     // 1. Obtener todos los certificados emitidos (micro, diplomas y master)
@@ -71,11 +60,10 @@ export async function GET(request: Request) {
     });
 
     return NextResponse.json({
-      uid,
       certificates,
       progress,
       evaluations,
-    });
+    }, { headers: { 'Cache-Control': 'private, no-store' } });
   } catch (err) {
     console.error('Error en /api/certificates/my-certificates:', err);
     return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });

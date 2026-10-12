@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { publicUrl } from '@/lib/site-url';
 import { redirect } from 'next/navigation';
 import { ShieldCheck } from 'lucide-react';
 import { Navbar } from '@/components/site/Navbar';
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   // absolute: evita que la plantilla del layout agregue "| Finix Academy" y pase de 60 caracteres (51).
   title: { absolute: 'Verificar Certificado Finix ERP | B1 Academy' },
   description: 'Ingresa el código de un certificado de B1 Academy para comprobar al instante su autenticidad, titular, competencia acreditada y fecha de emisión.',
-  alternates: { canonical: 'https://b1-academy.vercel.app/verificar' },
+  alternates: { canonical: publicUrl('/verificar') },
 };
 
 export default async function VerificarPage({ searchParams }: { searchParams: Promise<{ codigo?: string }> }) {

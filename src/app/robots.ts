@@ -1,32 +1,15 @@
 import { MetadataRoute } from 'next';
+import { publicUrl } from '@/lib/site-url';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://b1-academy.vercel.app';
-
   return {
     rules: [
       {
-        userAgent: [
-          'Googlebot',
-          'Bingbot',
-          'Applebot',
-          'GPTBot',
-          'ChatGPT-User',
-          'ClaudeBot',
-          'anthropic-ai',
-          'PerplexityBot',
-          'Google-Extended',
-          'OAI-SearchBot',
-          'CCBot',
-        ],
+        userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/', '/dashboard/', '/mi-aula/', '/simulador/', '/change-password/', '/privado/', '/evaluaciones/respuestas/'],
-      },
-      {
-        userAgent: ['HTTrack', 'Wget', 'Scrapy', 'MegaIndex', 'AhrefsBot', 'SemrushBot'],
-        disallow: '/',
+        disallow: ['/admin/', '/api/', '/dashboard/', '/mi-aula/', '/simulador/', '/change-password/', '/login', '/evaluaciones/respuestas/'],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: publicUrl('/sitemap.xml'),
   };
 }

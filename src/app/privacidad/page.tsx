@@ -17,7 +17,7 @@ export default function PrivacidadPage() {
       actual="/privacidad"
       titulo="Política de privacidad y protección de datos personales"
       resumen={[
-        'Usamos tus datos solo para darte acceso al campus, medir tu avance y emitir tus certificados.',
+        'Usamos tus datos para darte acceso al campus, medir tu avance, emitir certificados y atender consultas de verificación. El contacto comercial es opcional.',
         'Tu cédula se usa para identificarte y como clave de tu primer ingreso; luego creas tu contraseña personal.',
         'No vendemos tus datos. Los proveedores tecnológicos que usamos están detallados abajo.',
         'Tu examen lo califica una IA, pero siempre puedes pedir que una persona revise el resultado.',
@@ -45,6 +45,7 @@ export default function PrivacidadPage() {
           <tr><td>Actividad académica</td><td>Clases completadas, progreso, puntajes, prácticas del simulador, respuestas y notas de evaluaciones, certificados emitidos</td><td>Tu uso del campus</td></tr>
           <tr><td>Conversaciones con el tutor IA</td><td>Preguntas y respuestas en el chat de ayuda y en las evaluaciones</td><td>Tu uso del campus</td></tr>
           <tr><td>Datos técnicos</td><td>Cookies de sesión y preferencias; si lo aceptas, datos de navegación analítica (páginas visitadas, dispositivo, ubicación aproximada)</td><td>Tu navegador (ver <Link href="/cookies">Política de cookies</Link>)</td></tr>
+          <tr><td>Consulta de certificados</td><td>Nombre, correo o teléfono de contacto, código consultado, resultado y un identificador técnico de conexión seudonimizado</td><td>Tú y la solicitud de verificación</td></tr>
         </tbody>
       </table>
       <p>
@@ -60,11 +61,13 @@ export default function PrivacidadPage() {
           <tr><td>Darte acceso a clases, manuales, simulador y tutor IA; registrar tu progreso</td><td>Ejecución de la relación educativa</td></tr>
           <tr><td>Evaluar tus conocimientos y emitir certificados verificables</td><td>Ejecución de la relación educativa</td></tr>
           <tr><td>Seguridad de la plataforma y prevención de fraude en evaluaciones</td><td>Interés legítimo</td></tr>
+          <tr><td>Verificar un certificado y limitar consultas abusivas</td><td>Tu consentimiento específico al solicitar la consulta</td></tr>
+          <tr><td>Contactarte para ofrecer servicios de B1 Academy</td><td>Solo tu consentimiento comercial opcional, separado de la verificación</td></tr>
           <tr><td>Analítica de uso para mejorar el campus</td><td>Tu consentimiento (cookies analíticas), que puedes retirar en cualquier momento</td></tr>
           <tr><td>Cumplir obligaciones legales y tributarias, si contratas servicios pagados</td><td>Obligación legal</td></tr>
         </tbody>
       </table>
-      <p>No usamos tus datos para publicidad de terceros ni los vendemos.</p>
+      <p>No vendemos tus datos ni los usamos para publicidad de terceros. El contacto comercial de B1 Academy tras verificar un certificado es opcional y requiere una aceptación separada.</p>
 
       <h2>4. Evaluaciones calificadas con inteligencia artificial</h2>
       <p>
@@ -100,6 +103,7 @@ export default function PrivacidadPage() {
         <li>Respuestas de evaluaciones: hasta 2 años, para atender revisiones e impugnaciones.</li>
         <li>Datos tributarios de servicios pagados: el plazo que exija la normativa tributaria.</li>
         <li>Datos analíticos: según la configuración de la herramienta, máximo 14 meses.</li>
+        <li>Consultas de certificados y datos de contacto aportados: durante el tiempo necesario para verificar el certificado, prevenir abusos y atender solicitudes relacionadas. Puedes pedir la eliminación mediante nuestro correo de privacidad.</li>
       </ul>
       <p>Si pides eliminar tu cuenta, borramos o anonimizamos tus datos salvo los que la ley nos obligue a conservar.</p>
 

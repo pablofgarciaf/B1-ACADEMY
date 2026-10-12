@@ -81,7 +81,7 @@ export default function StudentDashboardPage() {
     if (!userProfile?.uid) return;
 
     setLoadingCerts(true);
-    fetch(`/api/certificates/my-certificates?uid=${userProfile.uid}`)
+    fetch('/api/certificates/my-certificates', { cache: 'no-store' })
       .then(res => res.json())
       .then(data => {
         if (data.certificates) {

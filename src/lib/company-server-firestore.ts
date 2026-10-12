@@ -6,6 +6,7 @@ import { applyCommand } from './company-engine';
 import { today } from './company-calculations';
 import { companySummary } from './company-summary';
 import type { CompanyCommand } from './company-commands';
+import { auditChanges, auditHash, type CompanyAuditEvent } from './company-audit';
 import type { Transaction, QuerySnapshot } from 'firebase-admin/firestore';
 
 function assignRows<K extends CollectionName>(state: CompanyState, key: K, snapshot: QuerySnapshot): void {
@@ -24,25 +25,39 @@ export async function readCompanyFirestore(uid: string, tx?: Transaction): Promi
     return state;
   } catch (error: unknown) { throw new Error('No se pudo leer la empresa.', { cause: error }); }
 }
-export async function executeCompanyCommandFirestore(uid: string, email: string, command: CompanyCommand, requestId: string): Promise<string> {
+export async function executeCompanyCommandFirestore(uid: string, email: string, command: CompanyCommand, requestId: string, actorUid = uid): Promise<string> {
   try {
     return await adminDb.runTransaction(async tx => {
       const root = adminDb.collection('finixCompanies').doc(uid);
       const requestRef = root.collection('requests').doc(requestId);
+      const auditHeadRef = root.collection('auditMeta').doc('head');
       const previous = await tx.get(requestRef);
       const fingerprint = createHash('sha256').update(JSON.stringify(command)).digest('hex');
       if (previous.exists) {
         if (previous.data()?.fingerprint !== fingerprint) throw new Error('La solicitud ya fue usada para otra operación.');
         return String(previous.data()?.result ?? '');
       }
+      const auditHead = await tx.get(auditHeadRef);
       const before = await readCompanyFirestore(uid, tx);
-      const { state, result } = applyCommand(before, command, uid, email, new Date().toISOString());
+      const occurredAt = new Date().toISOString();
+      const { state, result } = applyCommand(before, command, uid, email, occurredAt);
+      const nextVersion = Number(auditHead.data()?.version ?? 0) + 1;
+      const eventWithoutHash = { companyId: uid, actorUid, actorEmail: email,
+        requestId, action: command.action, result, occurredAt, changes: auditChanges(before, state),
+        previousHash: String(auditHead.data()?.hash ?? '0'.repeat(64)) };
+      const auditEvent: CompanyAuditEvent = { ...eventWithoutHash, hash: auditHash(eventWithoutHash) };
+      if (Buffer.byteLength(JSON.stringify(auditEvent), 'utf8') > 850_000) {
+        throw new Error('La operación genera demasiada evidencia para Firestore; divide la carga en lotes más pequeños.');
+      }
       let writes = 0;
       for (const name of collectionNames) {
         const old = new Map<string, Entity>(before[name].map(row => [row.id, row]));
         for (const row of state[name]) if (JSON.stringify(old.get(row.id)) !== JSON.stringify(row)) {
           tx.set(root.collection(name).doc(row.id), row); writes++;
+          old.delete(row.id);
         }
+        for (const row of state[name]) old.delete(row.id);
+        for (const id of old.keys()) { tx.delete(root.collection(name).doc(id)); writes++; }
       }
       if (writes > 450) throw new Error('Demasiadas líneas para una sola operación; divide el documento.');
       if (state.profile) {
@@ -51,7 +66,40 @@ export async function executeCompanyCommandFirestore(uid: string, email: string,
         tx.set(root, { ...state.profile, ...companySummary(state, activityDate) });
       }
       tx.set(requestRef, { result, action: command.action, fingerprint, createdAt: new Date().toISOString() });
+      tx.create(root.collection('auditEvents').doc(String(nextVersion).padStart(16, '0')), { ...auditEvent, version: nextVersion });
+      tx.set(auditHeadRef, { version: nextVersion, hash: auditEvent.hash });
       return result;
     });
   } catch (error: unknown) { if (error instanceof Error) throw error; throw new Error('No se pudo guardar la operación.'); }
+}
+
+/** El servidor debe comprobar acceso antes de llamar a esta función. */
+export async function readCompanyAuditFirestore(uid: string, limit = 100, before?: number): Promise<CompanyAuditEvent[]> {
+  let query = adminDb.collection('finixCompanies').doc(uid).collection('auditEvents')
+    .orderBy('version', 'desc').limit(Math.min(Math.max(limit, 1), 100));
+  if (before !== undefined) query = query.where('version', '<', before);
+  const snapshot = await query.get();
+  return snapshot.docs.map(doc => doc.data() as CompanyAuditEvent);
+}
+
+export async function verifyCompanyAuditFirestore(uid: string): Promise<{ valid: boolean; checked: number; firstBadVersion?: number; incomplete?: boolean }> {
+  const events = await adminDb.collection('finixCompanies').doc(uid).collection('auditEvents')
+    .orderBy('version', 'asc').limit(5001).get();
+  if (events.size > 5000) return { valid: false, checked: 5000, incomplete: true };
+  let previousHash = '0'.repeat(64);
+  let previousVersion: number | undefined;
+  let checked = 0;
+  for (const snapshot of events.docs) {
+    const event = snapshot.data() as CompanyAuditEvent;
+    const { hash, version, ...payload } = event;
+    if (event.previousHash !== previousHash ||
+        (previousVersion !== undefined && version !== previousVersion + 1) ||
+        auditHash(payload) !== hash) {
+      return { valid: false, checked, firstBadVersion: version };
+    }
+    previousHash = hash;
+    previousVersion = version;
+    checked++;
+  }
+  return { valid: true, checked };
 }

@@ -5,9 +5,17 @@ import path from 'path';
 import { ALL_MANUALS } from '@/lib/manuals-120-data';
 import { z } from 'zod';
 
-const chatSchema = z.object({
-  messages: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().trim().min(1).max(4000) })).min(1).max(20),
-});
+import { getSessionState, requireBearerUser } from '@/lib/server-auth';
+
+const chatSchema = z.union([
+  z.object({
+    messages: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().trim().min(1).max(4000) })).min(1).max(25),
+  }),
+  z.object({
+    message: z.string().trim().min(1).max(4000),
+    history: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().trim().max(4000) })).optional(),
+  }),
+]);
 const attempts = new Map<string, { count: number; resetAt: number }>();
 
 function getRelevantContext(query: string) {
@@ -48,22 +56,41 @@ function getRelevantContext(query: string) {
 
 export async function POST(req: Request) {
   try {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-    const now = Date.now();
-    const limit = attempts.get(ip);
-    if (limit && limit.resetAt > now && limit.count >= 10) {
-      return NextResponse.json({ error: 'Demasiadas solicitudes.' }, { status: 429 });
+    let uid: string;
+    if (req.headers.get('authorization')?.startsWith('Bearer ')) {
+      try { uid = (await requireBearerUser(req)).uid; }
+      catch { return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 }); }
+    } else {
+      const session = await getSessionState();
+      if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
+      if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 });
+      uid = session.user.uid;
     }
-    attempts.set(ip, limit && limit.resetAt > now ? { ...limit, count: limit.count + 1 } : { count: 1, resetAt: now + 15 * 60_000 });
-    const parsed = chatSchema.safeParse(await req.json());
+
+    const now = Date.now();
+    const limit = attempts.get(uid);
+    if (limit && limit.resetAt > now && limit.count >= 20) {
+      return NextResponse.json({ error: 'Demasiadas solicitudes. Espera un momento.' }, { status: 429 });
+    }
+    attempts.set(uid, limit && limit.resetAt > now ? { ...limit, count: limit.count + 1 } : { count: 1, resetAt: now + 15 * 60_000 });
+
+    const parsed = chatSchema.safeParse(await req.json().catch(() => null));
     if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
     if (!process.env.NVIDIA_API_KEY) return NextResponse.json({ error: 'Asistente no configurado.' }, { status: 503 });
+
+    let messages: Array<{ role: 'user' | 'assistant'; content: string }>;
+    if ('messages' in parsed.data) {
+      messages = parsed.data.messages;
+    } else {
+      const hist = parsed.data.history || [];
+      messages = [...hist, { role: 'user', content: parsed.data.message }];
+    }
+
     const openai = new OpenAI({
       apiKey: process.env.NVIDIA_API_KEY,
       baseURL: 'https://integrate.api.nvidia.com/v1',
     });
 
-    const { messages } = parsed.data;
     const latestUserMessage = messages[messages.length - 1]?.content || "";
 
     const { catalog, contextStr } = getRelevantContext(latestUserMessage);
@@ -103,7 +130,8 @@ ${contextStr}`;
       max_tokens: 1024,
     });
 
-    return NextResponse.json({ message: completion.choices[0].message.content });
+    const reply = completion.choices[0]?.message?.content || '';
+    return NextResponse.json({ message: reply, reply });
   } catch (error: any) {
     console.error("Error in chat API:", error);
     return NextResponse.json({ error: "Error interno del servidor" }, { status: 500 });

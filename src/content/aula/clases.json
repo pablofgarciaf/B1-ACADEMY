@@ -4,28 +4,28 @@
       "id": "mod1-c1",
       "number": 1,
       "title": "¿Qué es Finix ERP?",
-      "description": "",
+      "description": "Conoce los conceptos fundamentales y la arquitectura integrada de Finix ERP para empresas.",
       "durationMinutes": 14
     },
     {
       "id": "mod1-c2",
       "number": 2,
       "title": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit",
-      "description": "",
+      "description": "En esta lección aprenderás a iniciar sesión en Finix ERP, navegar por el sistema y personalizar tu espacio de trabajo.",
       "durationMinutes": 12
     },
     {
       "id": "mod1-c3",
       "number": 3,
       "title": "Documentos y Datos Maestros",
-      "description": "",
+      "description": "En esta clase aprenderás qué son los datos maestros y cómo se usan para crear documentos como pedidos y facturas en Finix ERP.",
       "durationMinutes": 14
     },
     {
       "id": "mod1-c4",
       "number": 4,
       "title": "Preferencias de Usuario y Búsquedas",
-      "description": "",
+      "description": "Esta clase enseña a personalizar el entorno de trabajo en Finix ERP mediante el cockpit y las búsquedas inteligentes.",
       "durationMinutes": 12
     }
   ],
@@ -34,28 +34,28 @@
       "id": "mod2-c1",
       "number": 1,
       "title": "Socio de Negocios (OCRD)",
-      "description": "",
+      "description": "Aprenda a crear y gestionar socios de negocios en Finix ERP: clientes, proveedores y grupos.",
       "durationMinutes": 19
     },
     {
       "id": "mod2-c2",
       "number": 2,
       "title": "Datos Maestros de Artículo (OITM)",
-      "description": "",
+      "description": "Esta clase enseña cómo crear y gestionar los datos maestros de artículo en Finix ERP, núcleo del ERP que sustenta compras, ventas e inventario.",
       "durationMinutes": 32
     },
     {
       "id": "mod2-c3",
       "number": 3,
       "title": "Gestión de Unidades de Medida",
-      "description": "",
+      "description": "Esta clase enseña a configurar y usar unidades de medida en Finix ERP para gestionar distintas presentaciones de un mismo artículo.",
       "durationMinutes": 22
     },
     {
       "id": "mod2-c4",
       "number": 4,
       "title": "Determinación Estándar de Precios",
-      "description": "",
+      "description": "Aprenda cómo Finix ERP determina automáticamente el precio de venta usando listas de precios, descuentos por período y cantidad, grupos de descuento, precios especiales y acuerdos ",
       "durationMinutes": 18
     }
   ],
@@ -64,28 +64,28 @@
       "id": "mod3-c1",
       "number": 1,
       "title": "Configuración de Activos Fijos",
-      "description": "",
+      "description": "Clase sobre la configuración inicial y el uso de activos fijos virtuales en Finix ERP.",
       "durationMinutes": 16
     },
     {
       "id": "mod3-c2",
       "number": 2,
       "title": "Alta y Datos Maestros del Activo",
-      "description": "",
+      "description": "Esta clase enseña cómo activar y configurar los datos maestros de activos fijos en Finix ERP, desde la factura de compra hasta la generación automática del documento de capitalizac",
       "durationMinutes": 19
     },
     {
       "id": "mod3-c3",
       "number": 3,
       "title": "Depreciación y Ajustes",
-      "description": "",
+      "description": "Clase de Finix ERP sobre depreciación y ajustes de activos fijos.",
       "durationMinutes": 16
     },
     {
       "id": "mod3-c4",
       "number": 4,
       "title": "Bajas y Monitoreo de Activos",
-      "description": "",
+      "description": "Clase práctica sobre cómo dar de baja activos fijos en Finix ERP mediante Factura A/R o documento de Baja, y supervisar su valor usando informes y datos maestros.",
       "durationMinutes": 14
     }
   ],
@@ -94,42 +94,42 @@
       "id": "mod4-c1",
       "number": 1,
       "title": "Numeración de Documentos y Datos Maestros",
-      "description": "",
+      "description": "Esta clase enseña cómo configurar series de numeración personalizadas para documentos y datos maestros en Finix ERP.",
       "durationMinutes": 31
     },
     {
       "id": "mod4-c2",
       "number": 2,
       "title": "Diseños de Impresión",
-      "description": "",
+      "description": "En esta clase aprenderás qué son los formatos de impresión en Finix ERP, para qué sirven y cómo configurarlos.",
       "durationMinutes": 17
     },
     {
       "id": "mod4-c3",
       "number": 3,
       "title": "Correo Electrónico y Plantillas de Interfaz",
-      "description": "",
+      "description": "Esta clase enseña a configurar el envío automático de correos desde Finix ERP usando SBO Mailer o Outlook, aplicar plantillas de texto y gestionar envíos masivos de documentos como",
       "durationMinutes": 25
     },
     {
       "id": "mod4-c4",
       "number": 4,
       "title": "Propiedad de los Datos y Soporte",
-      "description": "",
+      "description": "En esta clase aprenderá cómo proteger el acceso a documentos y datos maestros mediante la propiedad de datos en Finix ERP.",
       "durationMinutes": 25
     },
     {
       "id": "mod4-c5",
       "number": 5,
       "title": "Usuarios, Grupos y Configuraciones Clave",
-      "description": "",
+      "description": "Esta clase enseña a crear y gestionar cuentas de usuario, asignar licencias, organizar usuarios en grupos y aplicar políticas de seguridad en Finix ERP.",
       "durationMinutes": 16
     },
     {
       "id": "mod4-c6",
       "number": 6,
       "title": "Mensajes, Alertas y Autorizaciones",
-      "description": "",
+      "description": "Clase sobre alertas automáticas y autorizaciones generales en Finix ERP.",
       "durationMinutes": 20
     }
   ],
@@ -184,35 +184,35 @@
       "id": "mod7-c1",
       "number": 1,
       "title": "Ciclo Procure-to-Pay",
-      "description": "",
+      "description": "Esta clase enseña el ciclo completo de compras en Finix ERP: desde el pedido de compra hasta el pago al proveedor.",
       "durationMinutes": 22
     },
     {
       "id": "mod7-c2",
       "number": 2,
       "title": "Transacciones de Almacén",
-      "description": "",
+      "description": "En esta clase aprenderás a crear almacenes, configurar depósitos y registrar movimientos de inventario como entradas, salidas y traslados.",
       "durationMinutes": 22
     },
     {
       "id": "mod7-c3",
       "number": 3,
       "title": "Ubicaciones (Bin Locations)",
-      "description": "",
+      "description": "Esta clase enseña a configurar y usar ubicaciones (bin locations) en Finix ERP para organizar el almacén, mejorar el picking y controlar el inventario en tiempo real.",
       "durationMinutes": 15
     },
     {
       "id": "mod7-c4",
       "number": 4,
       "title": "Trazabilidad por Lotes y Series",
-      "description": "",
+      "description": "Aprenda a rastrear artículos individuales y grupos de productos mediante números de serie y lotes en Finix ERP.",
       "durationMinutes": 18
     },
     {
       "id": "mod7-c5",
       "number": 5,
       "title": "Costos de Importación",
-      "description": "",
+      "description": "Esta clase enseña cómo registrar gastos de envío y seguros en documentos de compras y ventas, distribuirlos por fila o cabecera, y contabilizarlos correctamente en inventario y gas",
       "durationMinutes": 12
     }
   ],
@@ -221,21 +221,21 @@
       "id": "mod8-c1",
       "number": 1,
       "title": "Solicitudes de Compra y Cotizaciones",
-      "description": "",
+      "description": "Clase sobre solicitudes de compra y cotizaciones en Finix ERP.",
       "durationMinutes": 16
     },
     {
       "id": "mod8-c2",
       "number": 2,
       "title": "Compras de Servicios",
-      "description": "",
+      "description": "Clase sobre la gestión de compras de servicios en Finix ERP.",
       "durationMinutes": 15
     },
     {
       "id": "mod8-c3",
       "number": 3,
       "title": "Devoluciones y Notas de Crédito de Proveedor",
-      "description": "",
+      "description": "Esta clase enseña cómo gestionar devoluciones de mercancías y notas de crédito de proveedor en Finix ERP.",
       "durationMinutes": 22
     }
   ],
@@ -244,28 +244,28 @@
       "id": "mod9-c1",
       "number": 1,
       "title": "Unidades de Medida por Peso y Volumen",
-      "description": "",
+      "description": "Aprende a configurar unidades de medida basadas en peso en Finix ERP para gestionar artículos cuyo inventario se controla en una unidad (como metros) pero se compra o vende por pes",
       "durationMinutes": 14
     },
     {
       "id": "mod9-c2",
       "number": 2,
       "title": "Unidades de Empaquetado",
-      "description": "",
+      "description": "Esta clase enseña a configurar unidades de empaquetado en Finix ERP para automatizar cálculos de embalaje en ventas y compras.",
       "durationMinutes": 12
     },
     {
       "id": "mod9-c3",
       "number": 3,
       "title": "Métodos de Valoración de Inventario",
-      "description": "",
+      "description": "Esta clase enseña los tres métodos de valoración de inventario en Finix ERP: promedio variable, FIFO y coste estándar.",
       "durationMinutes": 16
     },
     {
       "id": "mod9-c4",
       "number": 4,
       "title": "Ajuste de Costos de Inventario",
-      "description": "",
+      "description": "Esta clase enseña cómo reasignar gastos entre centros de costos en Finix ERP para reflejar el consumo real de recursos.",
       "durationMinutes": 22
     }
   ],
@@ -274,28 +274,28 @@
       "id": "mod10-c1",
       "number": 1,
       "title": "Operación Diaria con Ubicaciones",
-      "description": "",
+      "description": "Clase práctica sobre cómo asignar ubicaciones de almacén manual y automáticamente en Finix ERP.",
       "durationMinutes": 9
     },
     {
       "id": "mod10-c2",
       "number": 2,
       "title": "Reglas y Gestión de Ubicaciones",
-      "description": "",
+      "description": "Clase sobre la configuración y uso de ubicaciones de almacén con restricción de peso en Finix ERP.",
       "durationMinutes": 17
     },
     {
       "id": "mod10-c3",
       "number": 3,
       "title": "Informes de Ubicaciones",
-      "description": "",
+      "description": "Esta clase enseña a usar los informes de ubicaciones de almacén en Finix ERP para monitorear stock por zona, atributo y nivel.",
       "durationMinutes": 22
     },
     {
       "id": "mod10-c4",
       "number": 4,
       "title": "Inventario Físico: Conteo y Ajuste",
-      "description": "",
+      "description": "Esta clase enseña cómo realizar el inventario físico en Finix ERP: desde la configuración de ciclos hasta el registro de resultados y el ajuste de diferencias.",
       "durationMinutes": 25
     }
   ],
@@ -304,14 +304,14 @@
       "id": "mod11-c1",
       "number": 1,
       "title": "Picking y Packing para Producción",
-      "description": "",
+      "description": "Clase sobre el uso del Gestor de Preparación, Embalaje y Producción en Finix ERP para gestionar componentes en producción, registrar consumo de materiales y dar de alta productos t",
       "durationMinutes": 19
     },
     {
       "id": "mod11-c2",
       "number": 2,
       "title": "Picking y Packing para Transferencias",
-      "description": "",
+      "description": "Clase práctica sobre cómo usar el Gestor de Preparación, Embalaje y Producción en Finix ERP para gestionar transferencias de inventario entre almacenes.",
       "durationMinutes": 16
     }
   ],
@@ -320,28 +320,28 @@
       "id": "mod12-c1",
       "number": 1,
       "title": "El Ciclo de Ventas Order-to-Cash",
-      "description": "",
+      "description": "El ciclo Order-to-Cash en Finix ERP integra pedido, entrega, factura y cobro para gestionar ventas de forma ágil.",
       "durationMinutes": 21
     },
     {
       "id": "mod12-c2",
       "number": 2,
       "title": "Ofertas y Pedidos de Cliente",
-      "description": "",
+      "description": "Clase práctica sobre cómo crear ofertas y pedidos de cliente en Finix ERP, iniciando el ciclo Order to Cash.",
       "durationMinutes": 20
     },
     {
       "id": "mod12-c3",
       "number": 3,
       "title": "Entregas y Facturación",
-      "description": "",
+      "description": "Clase práctica sobre el proceso de entregas y facturación en Finix ERP.",
       "durationMinutes": 21
     },
     {
       "id": "mod12-c4",
       "number": 4,
       "title": "Devoluciones y Notas de Crédito",
-      "description": "",
+      "description": "Clase práctica sobre la gestión de devoluciones de ventas y notas de crédito en Finix ERP.",
       "durationMinutes": 17
     }
   ],
@@ -350,28 +350,28 @@
       "id": "mod13-c1",
       "number": 1,
       "title": "Listas de Precios y su Actualización",
-      "description": "",
+      "description": "Esta clase enseña a crear y actualizar listas de precios en Finix ERP.",
       "durationMinutes": 16
     },
     {
       "id": "mod13-c2",
       "number": 2,
       "title": "Descuentos por Período y Volumen",
-      "description": "",
+      "description": "Aprenda a configurar descuentos por período y volumen en Finix ERP para aplicar promociones estacionales y por cantidad.",
       "durationMinutes": 25
     },
     {
       "id": "mod13-c3",
       "number": 3,
       "title": "Grupos de Descuento",
-      "description": "",
+      "description": "Aprenda a crear y aplicar grupos de descuento en Finix ERP para diseñar promociones comerciales flexibles según clientes, artículos o fabricantes.",
       "durationMinutes": 21
     },
     {
       "id": "mod13-c4",
       "number": 4,
       "title": "Precios Especiales para Socios",
-      "description": "",
+      "description": "Clase sobre configuración de precios especiales para clientes específicos en Finix ERP.",
       "durationMinutes": 16
     }
   ],
@@ -380,28 +380,28 @@
       "id": "mod14-c1",
       "number": 1,
       "title": "Gestión de Relaciones con Clientes",
-      "description": "",
+      "description": "En esta clase aprenderá a utilizar las herramientas de CRM de Finix ERP para gestionar actividades, oportunidades, ofertas y campañas.",
       "durationMinutes": 20
     },
     {
       "id": "mod14-c2",
       "number": 2,
       "title": "Oportunidades y Actividades de Venta",
-      "description": "",
+      "description": "Clase enfocada en el uso de actividades, oportunidades y ofertas de venta dentro del módulo CRM de Finix ERP.",
       "durationMinutes": 20
     },
     {
       "id": "mod14-c3",
       "number": 3,
       "title": "Llamadas de Servicio",
-      "description": "",
+      "description": "Clase práctica sobre el proceso completo de llamadas de servicio en Finix ERP.",
       "durationMinutes": 12
     },
     {
       "id": "mod14-c4",
       "number": 4,
       "title": "Tarjetas de Equipo y Garantías",
-      "description": "",
+      "description": "Clase de la escuela Finix Academy Ecuador sobre tarjetas de equipo y garantías en Finix ERP.",
       "durationMinutes": 19
     }
   ],
@@ -410,28 +410,28 @@
       "id": "mod15-c1",
       "number": 1,
       "title": "Planificación de Necesidades MRP",
-      "description": "",
+      "description": "Clase introductoria al módulo de Planificación de Necesidades de Materiales (MRP) en Finix ERP.",
       "durationMinutes": 20
     },
     {
       "id": "mod15-c2",
       "number": 2,
       "title": "Pronósticos de Demanda",
-      "description": "",
+      "description": "En esta clase aprenderás cómo Finix ERP gestiona las previsiones de demanda y su consumo por pedidos reales para evitar sobreplanificación en MRP.",
       "durationMinutes": 19
     },
     {
       "id": "mod15-c3",
       "number": 3,
       "title": "MRP y Listas de Materiales",
-      "description": "",
+      "description": "En esta clase aprenderás a usar el MRP de Finix ERP para planificar materiales basándote en Listas de Materiales.",
       "durationMinutes": 23
     },
     {
       "id": "mod15-c4",
       "number": 4,
       "title": "Recomendaciones y Órdenes Sugeridas",
-      "description": "",
+      "description": "En esta clase aprenderás cómo el MRP de Finix ERP genera recomendaciones de compra, producción o traslado para equilibrar demanda y stock.",
       "durationMinutes": 20
     }
   ],
@@ -440,28 +440,28 @@
       "id": "mod16-c1",
       "number": 1,
       "title": "Listas de Materiales",
-      "description": "",
+      "description": "La lista de materiales (BOM) es un dato maestro que registra los artículos y recursos necesarios para fabricar un producto terminado.",
       "durationMinutes": 31
     },
     {
       "id": "mod16-c2",
       "number": 2,
       "title": "Órdenes de Producción",
-      "description": "",
+      "description": "Esta clase enseña a crear y gestionar órdenes de producción en Finix ERP, desde su creación hasta el recibo del producto terminado, integrando listas de materiales, liberación, tra",
       "durationMinutes": 16
     },
     {
       "id": "mod16-c3",
       "number": 3,
       "title": "Costos de Producción",
-      "description": "",
+      "description": "En esta clase aprenderás cómo Finix ERP registra contablemente cada etapa del proceso productivo: desde el consumo de componentes hasta la recepción del producto terminado.",
       "durationMinutes": 17
     },
     {
       "id": "mod16-c4",
       "number": 4,
       "title": "Gestión y Facturación de Proyectos",
-      "description": "",
+      "description": "Clase práctica sobre cómo gestionar proyectos en Finix ERP, desde la creación de datos maestros hasta la facturación vinculada.",
       "durationMinutes": 10
     }
   ],
@@ -470,21 +470,21 @@
       "id": "mod17-c1",
       "number": 1,
       "title": "Recursos de Producción",
-      "description": "",
+      "description": "En esta clase aprenderás a crear y utilizar recursos de producción en Finix ERP.",
       "durationMinutes": 21
     },
     {
       "id": "mod17-c2",
       "number": 2,
       "title": "Capacidad de Recursos",
-      "description": "",
+      "description": "En esta clase aprenderás a gestionar la capacidad de recursos en Finix ERP para evitar cuellos de botella y optimizar la planificación de producción.",
       "durationMinutes": 16
     },
     {
       "id": "mod17-c3",
       "number": 3,
       "title": "Rutas de Producción (Routing)",
-      "description": "",
+      "description": "Esta clase enseña cómo crear y gestionar una orden de producción con hoja de ruta en Finix ERP.",
       "durationMinutes": 20
     }
   ],
@@ -493,28 +493,28 @@
       "id": "mod18-c1",
       "number": 1,
       "title": "Plan de Cuentas",
-      "description": "",
+      "description": "El plan de cuentas es el índice de todas las cuentas de mayor que utiliza una empresa para registrar sus transacciones contables.",
       "durationMinutes": 24
     },
     {
       "id": "mod18-c2",
       "number": 2,
       "title": "Cuentas de Mayor por Defecto",
-      "description": "",
+      "description": "Clase sobre la configuración de cuentas de mayor por defecto en Finix ERP.",
       "durationMinutes": 22
     },
     {
       "id": "mod18-c3",
       "number": 3,
       "title": "Asientos Contables Manuales y Automáticos",
-      "description": "",
+      "description": "Hoy vamos a sumergirnos en el fascinante mundo de los asientos contables, tanto los que el sistema genera automáticamente como aquellos que registramos de forma manual.",
       "durationMinutes": 16
     },
     {
       "id": "mod18-c4",
       "number": 4,
       "title": "Períodos Contables y Cierre",
-      "description": "",
+      "description": "Esta clase enseña cómo definir, gestionar y cerrar períodos contables en Finix ERP.",
       "durationMinutes": 17
     }
   ],
@@ -523,35 +523,35 @@
       "id": "mod19-c1",
       "number": 1,
       "title": "Pagos Recibidos y Efectuados",
-      "description": "",
+      "description": "Clase práctica de Finix ERP para registrar cobros y pagos, integrando operaciones bancarias y contales.",
       "durationMinutes": 21
     },
     {
       "id": "mod19-c2",
       "number": 2,
       "title": "Asistente de Pagos",
-      "description": "",
+      "description": "Clase del módulo Tesorería, Cobros y Pagos.",
       "durationMinutes": 30
     },
     {
       "id": "mod19-c3",
       "number": 3,
       "title": "Conciliación Bancaria e Interna",
-      "description": "",
+      "description": "Aprenderás a conciliar movimientos bancarios y cuentas contables en Finix ERP.",
       "durationMinutes": 24
     },
     {
       "id": "mod19-c4",
       "number": 4,
       "title": "Antigüedad de Saldos y Cobranza",
-      "description": "",
+      "description": "Esta clase enseña a generar e interpretar los informes de antigüedad de saldos y a ejecutar el asistente de reclamaciones en Finix ERP.",
       "durationMinutes": 17
     },
     {
       "id": "mod19-c5",
       "number": 5,
       "title": "Banca en Línea en Ecuador: Extracto, Conciliación y Archivo de Pagos",
-      "description": "",
+      "description": "Clase práctica sobre conciliación bancaria y pagos en Finix ERP para empresas ecuatorianas.",
       "durationMinutes": 12
     }
   ],
@@ -560,28 +560,28 @@
       "id": "mod20-c1",
       "number": 1,
       "title": "Monedas y Tipos de Cambio",
-      "description": "",
+      "description": "En esta clase aprenderá a configurar y gestionar monedas en Finix ERP para operaciones internacionales.",
       "durationMinutes": 14
     },
     {
       "id": "mod20-c2",
       "number": 2,
       "title": "Determinación Avanzada de Cuentas",
-      "description": "",
+      "description": "Clase sobre Determinación Avanzada de Cuentas G/L en Finix ERP.",
       "durationMinutes": 20
     },
     {
       "id": "mod20-c3",
       "number": 3,
       "title": "Documentos Preliminares de Asiento",
-      "description": "",
+      "description": "En esta clase aprenderá a usar el documento preliminar en Finix ERP para crear asientos contables en borrador, revisarlos y contabilizarlos posteriormente.",
       "durationMinutes": 36
     },
     {
       "id": "mod20-c4",
       "number": 4,
       "title": "Informes Financieros y Flujo de Caja",
-      "description": "",
+      "description": "Esta clase enseña a generar e interpretar los informes financieros clave en Finix ERP: balance, balance de sumas y saldos, cuenta de pérdidas y ganancias y estado de flujo de efect",
       "durationMinutes": 25
     }
   ],
@@ -590,21 +590,21 @@
       "id": "mod21-c1",
       "number": 1,
       "title": "Contabilidad de Costos",
-      "description": "",
+      "description": "Esta clase enseña a usar la contabilidad de costos en Finix ERP para analizar la rentabilidad por departamento mediante centros de coste y normas de reparto.",
       "durationMinutes": 20
     },
     {
       "id": "mod21-c2",
       "number": 2,
       "title": "Centros de Costo y Dimensiones",
-      "description": "",
+      "description": "En esta clase aprenderá a utilizar las dimensiones múltiples en Finix ERP para analizar costos e ingresos desde distintas perspectivas, como departamento y línea de negocio, sin du",
       "durationMinutes": 20
     },
     {
       "id": "mod21-c3",
       "number": 3,
       "title": "Gestión de Presupuestos",
-      "description": "",
+      "description": "Aprende a planificar, controlar y monitorear los gastos de tu empresa usando el módulo de presupuesto en Finix ERP.",
       "durationMinutes": 20
     }
   ],
@@ -613,70 +613,70 @@
       "id": "mod22-c1",
       "number": 1,
       "title": "Facturación Electrónica 2026: Transmisión y Anulación",
-      "description": "",
+      "description": "Clase sobre facturación electrónica en Ecuador según normativa SRI vigente desde enero de 2026.",
       "durationMinutes": 16
     },
     {
       "id": "mod22-c2",
       "number": 2,
       "title": "Retención en la Fuente del Impuesto a la Renta",
-      "description": "",
+      "description": "Clase sobre retención en la fuente del Impuesto a la Renta vigente desde marzo de 2026 en Ecuador.",
       "durationMinutes": 17
     },
     {
       "id": "mod22-c3",
       "number": 3,
       "title": "Retención del IVA y Comprobante de Retención",
-      "description": "",
+      "description": "Clase sobre retención del IVA en compras y emisión del comprobante de retención en Finix ERP, conforme a la normativa SRI 2026.",
       "durationMinutes": 17
     },
     {
       "id": "mod22-c4",
       "number": 4,
       "title": "Retenciones en la Factura de Proveedores de Finix ERP",
-      "description": "",
+      "description": "Esta clase enseña cómo registrar una factura de proveedor en Finix ERP con retenciones en la fuente del Impuesto a la Renta y del IVA, conforme a la normativa ecuatoriana vigente d",
       "durationMinutes": 10
     },
     {
       "id": "mod22-c5",
       "number": 5,
       "title": "Declaraciones Mensuales: Formularios 103, 104 y ATS",
-      "description": "",
+      "description": "Clase sobre las declaraciones mensuales obligatorias en Ecuador: Formulario 103 (retenciones en la fuente), Formulario 104 (IVA) y Anexo Transaccional Simplificado (ATS).",
       "durationMinutes": 13
     },
     {
       "id": "mod22-c6",
       "number": 6,
       "title": "Nota de Débito, Guía de Remisión y Liquidación de Compra",
-      "description": "",
+      "description": "Clase sobre nota de débito, guía de remisión y liquidación de compra en Finix ERP bajo normativa SRI 2026.",
       "durationMinutes": 17
     },
     {
       "id": "mod22-c7",
       "number": 7,
       "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
-      "description": "",
+      "description": "Esta clase aborda los pilares de la facturación electrónica en Ecuador para 2026: el uso del RUC propio, la firma electrónica individual por empresa y las obligaciones del Régimen ",
       "durationMinutes": 20
     },
     {
       "id": "mod22-c8",
       "number": 8,
       "title": "ICE: Impuesto a los Consumos Especiales",
-      "description": "",
+      "description": "En esta clase aprendes el Impuesto a los Consumos Especiales, conocido como ICE.",
       "durationMinutes": 18
     },
     {
       "id": "mod22-c9",
       "number": 9,
       "title": "ISD: Pagos al Exterior y Salida de Divisas",
-      "description": "",
+      "description": "Clase sobre el Impuesto a la Salida de Divisas (ISD) vigente en Ecuador 2026.",
       "durationMinutes": 14
     },
     {
       "id": "mod22-c10",
       "number": 10,
       "title": "Retenciones que te Hacen tus Clientes: Crédito Tributario",
-      "description": "",
+      "description": "En esta clase aprenderás cómo registrar las retenciones de renta e IVA que tus clientes te hacen al pagarte una factura.",
       "durationMinutes": 9
     }
   ],
@@ -685,28 +685,28 @@
       "id": "mod23-c1",
       "number": 1,
       "title": "Consultas SQL con el Query Manager",
-      "description": "",
+      "description": "En esta clase aprenderá a crear y ejecutar consultas SQL personalizadas usando las herramientas nativas de Finix ERP: el Generador y el Asistente de consultas.",
       "durationMinutes": 21
     },
     {
       "id": "mod23-c2",
       "number": 2,
       "title": "Alertas y Procesos de Aprobación",
-      "description": "",
+      "description": "Clase práctica sobre alertas automáticas y procesos de aprobación en Finix ERP.",
       "durationMinutes": 19
     },
     {
       "id": "mod23-c3",
       "number": 3,
       "title": "Campos y Valores Definidos por el Usuario",
-      "description": "",
+      "description": "Aprende a crear y usar campos definidos por el usuario en Finix ERP para adaptar el sistema a las necesidades de tu empresa sin modificar el código base.",
       "durationMinutes": 27
     },
     {
       "id": "mod23-c4",
       "number": 4,
       "title": "Migración de Datos con DTW",
-      "description": "",
+      "description": "Aprende a migrar datos desde Excel a Finix ERP usando la utilidad Importar desde Excel.",
       "durationMinutes": 16
     }
   ],
@@ -715,14 +715,14 @@
       "id": "mod24-c1",
       "number": 1,
       "title": "Tablas Definidas por el Usuario",
-      "description": "",
+      "description": "Aprenda a crear y usar tablas definidas por el usuario en Finix ERP para adaptar el sistema a procesos específicos de su empresa.",
       "durationMinutes": 27
     },
     {
       "id": "mod24-c2",
       "number": 2,
       "title": "Introducción a Finix Analytics",
-      "description": "",
+      "description": "En esta clase conocerás las herramientas analíticas de Finix ERP: capas semánticas, vistas de cálculo, dimensiones y medidas.",
       "durationMinutes": 23
     }
   ],
@@ -731,28 +731,28 @@
       "id": "mod25-c1",
       "number": 1,
       "title": "El Marco Metodológico: De Waterfall a metodología de implementación por fases y AIP",
-      "description": "",
+      "description": "Hoy aprenderás cómo la consultoría moderna superó los viejos modelos en cascada para adoptar metodología de implementación por fases y AIP en el mercado empresarial.",
       "durationMinutes": 8
     },
     {
       "id": "mod25-c2",
       "number": 2,
       "title": "Talleres de Exploración (Explore) y Análisis Fit / Gap",
-      "description": "",
+      "description": "La fase de exploración es el corazón de la consultoría funcional en Finix ERP.",
       "durationMinutes": 7
     },
     {
       "id": "mod25-c3",
       "number": 3,
       "title": "Fase de Realización: Parametrización y Migración Golden DB",
-      "description": "",
+      "description": "En la fase de Realización el diseño conceptual del Blueprint se convierte en una solución viva y funcional.",
       "durationMinutes": 7
     },
     {
       "id": "mod25-c4",
       "number": 4,
       "title": "Estrategia de Salida en Vivo (Cutover), Go-Live e Hypercare",
-      "description": "",
+      "description": "El momento culminante de todo proyecto ERP es la salida en vivo.",
       "durationMinutes": 7
     }
   ],
@@ -761,28 +761,28 @@
       "id": "mod26-c1",
       "number": 1,
       "title": "Fundamentos de BPMN 2.0 para Consultores ERP",
-      "description": "",
+      "description": "Como consultor funcional en Finix ERP, tu labor principal es traducir realidades operativas complejas en flujos visuales comprensibles y libres de ambigüedad.",
       "durationMinutes": 7
     },
     {
       "id": "mod26-c2",
       "number": 2,
       "title": "Mapeo del Estado Actual (AS-IS) y Detección de Ineficiencias",
-      "description": "",
+      "description": "Antes de proponer mejoras o configurar software, el consultor debe comprender con exactitud la realidad operativa del cliente.",
       "durationMinutes": 7
     },
     {
       "id": "mod26-c3",
       "number": 3,
       "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas Finix ERP",
-      "description": "",
+      "description": "Diseñar el estado futuro TO-BE es la oportunidad de transformar la empresa cliente.",
       "durationMinutes": 7
     },
     {
       "id": "mod26-c4",
       "number": 4,
       "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en Finix ERP",
-      "description": "",
+      "description": "En esta clase aprenderás a traducir las compuertas de decisión de tus diagramas BPMN en procedimientos de aprobación reales dentro de Finix ERP.",
       "durationMinutes": 6
     }
   ],
@@ -791,28 +791,28 @@
       "id": "mod27-c1",
       "number": 1,
       "title": "Técnicas de Elicitación de Requisitos y Entrevistas Clave",
-      "description": "",
+      "description": "El éxito de una implementación no depende de lo que el cliente dice que quiere, sino de lo que realmente necesita para operar y crecer.",
       "durationMinutes": 7
     },
     {
       "id": "mod27-c2",
       "number": 2,
       "title": "El Business Blueprint (BBD) y Business Requirements Document (BRD)",
-      "description": "",
+      "description": "El Business Blueprint es el documento más importante de una implementación Finix ERP.",
       "durationMinutes": 6
     },
     {
       "id": "mod27-c3",
       "number": 3,
       "title": "Historias de Usuario, Criterios Gherkin y Matriz RTM",
-      "description": "",
+      "description": "En la gestión moderna de proyectos ERP, los requerimientos se gestionan con agilidad y precisión matemática.",
       "durationMinutes": 6
     },
     {
       "id": "mod27-c4",
       "number": 4,
       "title": "De Requerimiento a Configuración: Campos UDF y Valores Válidos",
-      "description": "",
+      "description": "Cuando un requerimiento de negocio supera los campos estándar del ERP, el consultor utiliza los Campos Definidos por el Usuario (UDF).",
       "durationMinutes": 7
     }
   ],
@@ -821,28 +821,28 @@
       "id": "mod28-c1",
       "number": 1,
       "title": "Gestión de Stakeholders y Control de Cambios (Change Requests)",
-      "description": "",
+      "description": "Los proyectos de software no fracasan por la base de datos; fracasan cuando no se gestionan las expectativas humanas y el alcance se desborda sin control.",
       "durationMinutes": 7
     },
     {
       "id": "mod28-c2",
       "number": 2,
       "title": "Gestión del Cambio Organizacional y Estrategia Train the Trainer",
-      "description": "",
+      "description": "Implementar un ERP cambia la rutina diaria de cientos de personas, lo que genera miedo y resistencia natural.",
       "durationMinutes": 7
     },
     {
       "id": "mod28-c3",
       "number": 3,
       "title": "Estrategia y Elaboración de Guiones de Prueba UAT (Test Scripts)",
-      "description": "",
+      "description": "Las Pruebas de Aceptación de Usuario (UAT) son el examen final del sistema antes de autorizar el arranque.",
       "durationMinutes": 7
     },
     {
       "id": "mod28-c4",
       "number": 4,
       "title": "Ejecución de Ciclo UAT, Validación Contable y Acta de Go-Live",
-      "description": "",
+      "description": "Has llegado a la clase cumbre de tu formación como Consultor y Business Analyst en Finix ERP.",
       "durationMinutes": 7
     }
   ],
@@ -851,28 +851,28 @@
       "id": "mod29-c1",
       "number": 1,
       "title": "Metodología de Implementación",
-      "description": "",
+      "description": "Clase sobre la metodología AIP de Finix ERP para implementar Finix ERP en pequeñas empresas.",
       "durationMinutes": 12
     },
     {
       "id": "mod29-c2",
       "number": 2,
       "title": "Asistente Express de Configuración",
-      "description": "",
+      "description": "El Asistente Express de Configuración de Finix ERP guía la creación y parametrización inicial de una empresa de forma estructurada.",
       "durationMinutes": 18
     },
     {
       "id": "mod29-c3",
       "number": 3,
       "title": "Carga de Saldos Iniciales",
-      "description": "",
+      "description": "Esta clase enseña cómo cargar los saldos de apertura en Finix ERP para una nueva implementación.",
       "durationMinutes": 18
     },
     {
       "id": "mod29-c4",
       "number": 4,
       "title": "Copia Rápida e Importación de Documentos",
-      "description": "",
+      "description": "Esta clase enseña dos herramientas clave para proyectos de implementación de Finix ERP: Quick Copy para transferir datos entre compañías y DTW para importar documentos estructurado",
       "durationMinutes": 22
     }
   ],
@@ -881,21 +881,21 @@
       "id": "mod30-c1",
       "number": 1,
       "title": "Caso Integrador: Puesta en Marcha",
-      "description": "",
+      "description": "0 para base de datos en memoria.",
       "durationMinutes": 17
     },
     {
       "id": "mod30-c2",
       "number": 2,
       "title": "Caso Integrador: Aprovisionamiento",
-      "description": "",
+      "description": "Clase práctica sobre el ciclo completo de aprovisionamiento en Finix ERP: desde la oferta de compra hasta el pago al proveedor.",
       "durationMinutes": 27
     },
     {
       "id": "mod30-c3",
       "number": 3,
       "title": "Caso Integrador: Consultas SQL",
-      "description": "",
+      "description": "Clase práctica sobre el uso avanzado de consultas SQL en Finix ERP mediante el Generador de Consultas.",
       "durationMinutes": 57
     }
   ]
