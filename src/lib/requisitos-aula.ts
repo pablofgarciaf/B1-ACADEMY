@@ -2,20 +2,30 @@ import 'server-only';
 import { adminDb } from '@/lib/firebase-admin';
 import { getModuleById } from '@/lib/curriculum-data';
 import { buildStudentDocId } from '@/lib/student-doc';
+import { hasInitializedCompany } from '@/lib/company-server';
 
 /** Módulo de inducción: obligatorio antes de cualquier otro módulo de Mi Aula. */
 export const MODULO_INDUCCION = 'mod-1';
 const ROLES_SIN_REQUISITO = new Set(['super', 'admin', 'docente']);
 
-/** ¿El estudiante ya completó todas las clases del Módulo 1? (docentes y administradores no lo necesitan) */
+/**
+ * ¿El estudiante ya completó todas las clases del Módulo 1 y tiene su empresa B1 Center creada?
+ * REGLA ESTRICTA: Sin empresa B1 Center creada en el Paso 0, NUNCA se aprueba la inducción
+ * ni se permite el acceso a módulos subsiguientes.
+ */
 export async function moduloInduccionCompleto(
   uid: string,
   role?: string,
   studentName?: string,
   email?: string
 ): Promise<boolean> {
-  // Durante la auditoria tecnica, permitir acceso libre a todos los modulos
-  if (process.env.NODE_ENV === 'development' || (role && ROLES_SIN_REQUISITO.has(role))) return true;
+  // Requisito indispensable para todos: la empresa B1 Center debe existir
+  const empresaExiste = await hasInitializedCompany(uid);
+  if (!empresaExiste) return false;
+
+  // Docentes y administradores con empresa creada no requieren cursar las clases previas
+  if (role && ROLES_SIN_REQUISITO.has(role)) return true;
+
   const clases = getModuleById(MODULO_INDUCCION)?.classes ?? [];
   if (!clases.length) return true;
 

@@ -10,7 +10,7 @@ import type { IntentoPractica } from '@/lib/practice-check';
 import { getCompany, usarEmpresaCurso } from '@/lib/firestore-company';
 import PasoCeroEmpresa from '@/components/lms/PasoCeroEmpresa';
 import FinixInteractiveSimulator from '@/components/simulator/FinixInteractiveSimulator';
-import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2 } from 'lucide-react';
+import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2, Building2 } from 'lucide-react';
 
 // =============================================
 // Types
@@ -66,8 +66,8 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     }
   }, [moduleClasses, activeClassId]);
 
-  // Paso 0: la clase no arranca (ni la narración) hasta que el estudiante tenga su empresa de práctica.
-  // Si la consulta falla por red, no se bloquea la clase.
+  // Paso 0: la clase no arranca (ni la narración) hasta que el estudiante tenga su empresa de práctica B1 Center.
+  // Regla Zero Trust: falla cerrado ante error o falta de empresa.
   const [empresaEstado, setEmpresaEstado] = useState<'cargando' | 'falta' | 'ok'>('cargando');
   // En Mi Aula todo ocurre en la B1 Center del estudiante, aunque en el Simulador tenga elegida su empresa libre.
   useEffect(() => usarEmpresaCurso(), []);
@@ -75,8 +75,16 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     if (!currentUser) return;
     let activo = true;
     getCompany(currentUser.uid)
-      .then(s => { if (activo) setEmpresaEstado(s.profile ? 'ok' : 'falta'); })
-      .catch(() => { if (activo) setEmpresaEstado('ok'); });
+      .then(s => {
+        if (!activo) return;
+        const exists = Boolean(s?.profile && s.profile.companyName);
+        setEmpresaEstado(exists ? 'ok' : 'falta');
+      })
+      .catch(() => {
+        if (!activo) return;
+        // FAIL CLOSED: Si falla la red o hay error, la empresa NO se asume creada.
+        setEmpresaEstado('falta');
+      });
     return () => { activo = false; };
   }, [currentUser]);
 
@@ -91,8 +99,12 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     currentUser.getIdToken()
       .then(token => fetch('/api/progress?moduleId=mod-1', { headers: { Authorization: `Bearer ${token}` } }))
       .then(r => (r.ok ? r.json() : { completedClasses: [] }))
-      .then((d: { completedClasses?: string[] }) => { if (activo) setInduccionLista((d.completedClasses ?? []).length >= totalMod1); })
-      .catch(() => { if (activo) setInduccionLista(true); }); // sin red no se bloquea: el servidor decide
+      .then((d: { completedClasses?: string[] }) => {
+        if (activo) setInduccionLista((d.completedClasses ?? []).length >= totalMod1);
+      })
+      .catch(() => {
+        if (activo) setInduccionLista(false); // FAIL CLOSED!
+      });
     return () => { activo = false; };
   }, [currentUser, moduleId, userProfile?.role]);
 
@@ -347,6 +359,27 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     );
   }
 
+  // Si la sesión o el estado de la empresa aún están cargando, mostrar estado de carga seguro (Zero Trust: Fail-Closed)
+  if (!currentUser || empresaEstado === 'cargando' || (induccionLista === null && moduleId !== 'mod-1')) {
+    return (
+      <div className="min-h-dvh flex flex-col items-center justify-center gap-4 bg-[#070b14] text-white p-6 text-center">
+        <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 animate-spin">
+          <Building2 className="w-6 h-6" />
+        </div>
+        <h2 className="text-xl font-bold">Conectando con tu entorno Finix ERP...</h2>
+        <p className="text-sm text-gray-400 max-w-sm">
+          Verificando tu empresa de práctica B1 Center y requisitos académicos de acceso.
+        </p>
+      </div>
+    );
+  }
+
+  // Paso 0: sin empresa de práctica todavía → bienvenida y creación obligatoria de B1 Center.
+  // Nadie puede acceder a ninguna clase (Módulo 1, Módulo 2 o Ventas) sin su empresa creada.
+  if (empresaEstado === 'falta') {
+    return <PasoCeroEmpresa onLista={() => setEmpresaEstado('ok')} />;
+  }
+
   // Módulo bloqueado hasta completar el Módulo 1 (inducción).
   if (induccionLista === false) {
     return (
@@ -363,11 +396,6 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
         </div>
       </div>
     );
-  }
-
-  // Paso 0: sin empresa de práctica todavía → bienvenida y creación de la empresa antes de la clase.
-  if (empresaEstado === 'falta') {
-    return <PasoCeroEmpresa onLista={() => setEmpresaEstado('ok')} />;
   }
 
   // =============================================

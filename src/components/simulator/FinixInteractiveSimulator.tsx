@@ -76,10 +76,13 @@ const FINIX_SEARCH_INDEX: { name: string; path: string }[] = [
 
 type PracticeScreen = { mode: string; screenId?: string };
 
+const VALID_MODES = ['login', 'sales', 'procurement', 'item_master', 'uom_setup', 'inventory_move', 'bin_locations', 'journal_entry', 'banking', 'production', 'mrp', 'pricing', 'cockpit', 'query'];
+
 /** Orden importa: los temas específicos van antes que los generales (p. ej. "unidad" antes que "artículo"). */
 const PRACTICE_RULES: { test: RegExp; screen: PracticeScreen }[] = [
   { test: /inicio de sesi|acceso al sistema|login/i, screen: { mode: 'login' } },
   { test: /parametriz|perfil|preferencia|cockpit|widget|alerta|mensaje|buz[oó]n|b[uú]squeda|lupa/i, screen: { mode: 'cockpit' } },
+  { test: /mapa.*relaci|relaci[oó]n|trazab/i, screen: { mode: 'screen', screenId: 'SAL009' } },
   { test: /listas? de materiales|\bbom\b/i, screen: { mode: 'screen', screenId: 'MFG001' } },
   { test: /orden(es)? de (producci|fabricaci)|emisi[oó]n y recibo|fabricaci/i, screen: { mode: 'screen', screenId: 'MFG003' } },
   { test: /\bmrp\b|pron[oó]stico|recomendaci/i, screen: { mode: 'screen', screenId: 'MRP001' } },
@@ -95,15 +98,22 @@ const PRACTICE_RULES: { test: RegExp; screen: PracticeScreen }[] = [
   { test: /compra|procure|proveedor|mercanc/i, screen: { mode: 'procurement' } },
   { test: /garant|equipo|soluciones|servicio/i, screen: { mode: 'screen', screenId: 'SRV002' } },
   { test: /proyecto/i, screen: { mode: 'screen', screenId: 'SRV003' } },
+  { test: /oferta|cotiz/i, screen: { mode: 'screen', screenId: 'SAL001' } },
+  { test: /pedido.*(cliente|venta)/i, screen: { mode: 'screen', screenId: 'SAL002' } },
+  { test: /factura.*(cliente|deudor|electr[oó]nica|sri)/i, screen: { mode: 'screen', screenId: 'SAL004' } },
   { test: /factura|venta|entrega|oferta|devoluc|oportunidad|order-to-cash/i, screen: { mode: 'sales' } },
   { test: /recuento/i, screen: { mode: 'screen', screenId: 'INV003' } },
   { test: /almac[eé]n|inventario|stock|transacci/i, screen: { mode: 'screen', screenId: 'INV002' } },
   { test: /activo|amortiz|capitaliz/i, screen: { mode: 'screen', screenId: 'FIX001' } },
 ];
 
-function inferPracticeScreen(guide?: { title?: string; menu_path?: string; action_type?: string } | null): PracticeScreen | null {
+function inferPracticeScreen(guide?: { title?: string; menu_path?: string; action_type?: string; screenId?: string } | null): PracticeScreen | null {
   if (!guide) return null;
-  if (guide.action_type && guide.action_type !== 'cockpit') return null; // ya viene explícita
+  if (guide.screenId) return { mode: 'screen', screenId: guide.screenId };
+  // Si no es un modo explícito reservado (o es cockpit/practica), inferir por reglas
+  if (guide.action_type && !['cockpit', 'practica', 'screen'].includes(guide.action_type)) {
+    if (VALID_MODES.includes(guide.action_type)) return { mode: guide.action_type };
+  }
   // Primero el título (es lo específico de la práctica); la ruta de menú arrastra nombres de grupo
   // como "Post-venta" o "(BOM)" que confundirían la deducción, por eso solo se usa como respaldo.
   for (const source of [guide.title ?? '', guide.menu_path ?? '']) {
@@ -117,6 +127,7 @@ interface StepGuide {
   title: string;
   menu_path?: string;
   action_type?: string;
+  screenId?: string;
   instructions: string[];
   expected_output?: string;
   /** Campos y valores exactos que la práctica evalúa (prácticas de Mi Aula). */
@@ -228,16 +239,16 @@ export default function FinixInteractiveSimulator({
     return getManualSimulatorConfig(manualId);
   }, [manualId]);
 
-  const validModes = ['login', 'sales', 'procurement', 'item_master', 'uom_setup', 'inventory_move', 'bin_locations', 'journal_entry', 'banking', 'production', 'mrp', 'pricing', 'cockpit', 'query'];
-
-  // Pantalla de la práctica. Casi todas las clases llegan con action_type genérico 'cockpit':
-  // en ese caso se deduce la pantalla real a partir del título y la ruta de menú de la práctica.
+  // Pantalla de la práctica. Casi todas las clases llegan con action_type genérico 'cockpit' o 'practica':
+  // en ese caso se deduce la pantalla real a partir de screenId, título y la ruta de menú de la práctica.
   const inferred = useMemo(() => inferPracticeScreen(stepGuide), [stepGuide]);
-  const explicitMode = stepGuide?.action_type && stepGuide.action_type !== 'cockpit' && validModes.includes(stepGuide.action_type)
-    ? stepGuide.action_type : null;
+  const explicitMode = stepGuide?.screenId
+    ? 'screen'
+    : (stepGuide?.action_type && !['cockpit', 'practica'].includes(stepGuide.action_type) && VALID_MODES.includes(stepGuide.action_type)
+        ? stepGuide.action_type : null);
   const simMode: string = explicitMode
     ?? inferred?.mode
-    ?? (simConfig.archetype && validModes.includes(simConfig.archetype) ? simConfig.archetype : 'cockpit');
+    ?? (simConfig.archetype && VALID_MODES.includes(simConfig.archetype) ? simConfig.archetype : 'cockpit');
 
   // Estados de persistencia en Firebase / LocalStorage
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -891,10 +902,10 @@ export default function FinixInteractiveSimulator({
         {/* ════════════════════════════════════════════════════════════════
             PANTALLA RÉPLICA FINIX ERP: prácticas sin arquetipo propio (socios, precios, producción, MRP…)
         ════════════════════════════════════════════════════════════════ */}
-        {simMode === 'screen' && inferred?.screenId && (
+        {simMode === 'screen' && (stepGuide?.screenId || inferred?.screenId) && (
           <div className="flex-1 flex flex-col min-h-[420px] border border-[#2b3a4a] rounded-lg overflow-hidden">
             <div className="flex-1 min-h-0 overflow-auto bg-[#ECE9D8]">
-              <FinixScreenRenderer screenId={inferred.screenId} screenName={stepGuide?.title ?? simConfig.title} />
+              <FinixScreenRenderer screenId={stepGuide?.screenId || inferred?.screenId || 'SAL001'} screenName={stepGuide?.title ?? simConfig.title} />
             </div>
             <div className="shrink-0 flex items-center justify-between gap-3 px-3 py-2 bg-[#16222f] border-t border-[#2b3a4a]">
               <p className="text-[11px] text-gray-300">Sigue las instrucciones de arriba en esta pantalla y confirma cuando termines.</p>

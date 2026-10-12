@@ -20,6 +20,16 @@ export async function readCompany(uid: string, email = ''): Promise<CompanyState
   return supabaseActivo() ? readCompanySupabase(uid, email) : readCompanyFirestore(uid);
 }
 
+/** Verifica de forma irrefutable si el usuario ya inicializó su empresa de prueba B1 Center */
+export async function hasInitializedCompany(uid: string): Promise<boolean> {
+  try {
+    const company = await readCompany(uid);
+    return Boolean(company?.profile && company.profile.companyName);
+  } catch {
+    return false;
+  }
+}
+
 export async function executeCompanyCommand(uid: string, email: string, command: CompanyCommand, requestId: string, actorUid = uid): Promise<string> {
   return supabaseActivo()
     ? executeCompanyCommandSupabase(uid, email, command, requestId, actorUid)

@@ -13,6 +13,7 @@ import {
   type SyllabusBlock, type SyllabusModule,
 } from '@/lib/curriculum-data';
 import { useAuth } from '@/context/AuthContext';
+import { getCompany } from '@/lib/firestore-company';
 
 const INDUCCION = 'mod-1';
 const ICONO_BLOQUE: Record<SyllabusBlock, typeof Compass> = {
@@ -30,8 +31,11 @@ export default function MiAulaPage() {
   const { userProfile, currentUser } = useAuth();
   const induccion = getModuleById(INDUCCION)!;
 
-  // Progreso del Módulo 1: hasta completarlo, los demás módulos quedan con candado.
+  // Progreso del Módulo 1 y verificación de empresa B1 Center:
+  // Sin empresa B1 Center creada en el Paso 0, NUNCA se desbloquean los demás módulos.
   const [hechasInduccion, setHechasInduccion] = useState<number | null>(null);
+  const [tieneEmpresa, setTieneEmpresa] = useState<boolean | null>(null);
+
   useEffect(() => {
     if (!currentUser) return;
     let activo = true;
@@ -40,12 +44,18 @@ export default function MiAulaPage() {
       .then(r => (r.ok ? r.json() : { completedClasses: [] }))
       .then((d: { completedClasses?: string[] }) => { if (activo) setHechasInduccion((d.completedClasses ?? []).length); })
       .catch(() => { if (activo) setHechasInduccion(0); });
+
+    getCompany(currentUser.uid)
+      .then(s => { if (activo) setTieneEmpresa(Boolean(s?.profile && s.profile.companyName)); })
+      .catch(() => { if (activo) setTieneEmpresa(false); });
+
     return () => { activo = false; };
   }, [currentUser]);
 
   const esEquipo = ['super', 'admin', 'docente'].includes(userProfile?.role ?? '');
   const totalInduccion = induccion.classes.length;
-  const induccionCompleta = esEquipo || (hechasInduccion ?? 0) >= totalInduccion;
+  // Regla Zero Trust: Inducción exige que la empresa B1 Center exista Y que se hayan completado las clases
+  const induccionCompleta = Boolean(tieneEmpresa) && (esEquipo || (hechasInduccion ?? 0) >= totalInduccion);
   const nombre = (userProfile?.displayName || userProfile?.name || '').split(' ')[0];
 
   return (
@@ -160,7 +170,7 @@ export default function MiAulaPage() {
             className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold shadow-md transition-all active:scale-95 shrink-0"
           >
             <PlayCircle className="w-4 h-4" aria-hidden="true" />
-            {induccionCompleta ? 'Repasar' : (hechasInduccion ?? 0) > 0 ? 'Continuar' : 'Comenzar'}
+            {induccionCompleta ? 'Repasar' : tieneEmpresa === false ? 'Crear Empresa (Paso 0)' : (hechasInduccion ?? 0) > 0 ? 'Continuar' : 'Comenzar'}
           </Link>
         </section>
 
@@ -189,14 +199,23 @@ export default function MiAulaPage() {
                   </summary>
                   <div className="px-5 pb-5">
                     <ul className="space-y-1">
-                      {mods.map(m => (
-                        <li key={m.id}>
-                          <Link href={`/mi-aula/${m.id}`} className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-gray-800/50 text-xs hover:text-amber-600 dark:hover:text-amber-400">
-                            <span className="truncate">Módulo {m.number}: {m.title}</span>
-                            {m.id !== INDUCCION && !induccionCompleta && <Lock className="w-3 h-3 shrink-0 text-slate-400" aria-label="Bloqueado" />}
-                          </Link>
-                        </li>
-                      ))}
+                      {mods.map(m => {
+                        const bloqueado = m.id !== INDUCCION && !induccionCompleta;
+                        return (
+                          <li key={m.id}>
+                            {!bloqueado ? (
+                              <Link href={`/mi-aula/${m.id}`} className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-gray-800/50 text-xs hover:text-amber-600 dark:hover:text-amber-400">
+                                <span className="truncate">Módulo {m.number}: {m.title}</span>
+                              </Link>
+                            ) : (
+                              <div className="flex items-center justify-between gap-2 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-gray-800/50 text-xs opacity-60 cursor-not-allowed text-slate-500">
+                                <span className="truncate">Módulo {m.number}: {m.title}</span>
+                                <Lock className="w-3 h-3 shrink-0 text-slate-400" aria-label="Bloqueado" />
+                              </div>
+                            )}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </details>
@@ -226,13 +245,22 @@ export default function MiAulaPage() {
               {MASTER_PROGRAM.description} Simulación de una empresa real desde cero: parametrización de maestros, ciclo de compras, ventas, contabilidad, nómina y facturación electrónica, culminando con la defensa ante el Auditor IA.
             </p>
           </div>
-          <Link
-            href="/mi-aula/mod-30"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-extrabold shadow-lg hover:shadow-amber-500/25 transition-all active:scale-95 shrink-0"
-          >
-            <PlayCircle className="w-5 h-5" aria-hidden="true" />
-            Ver Proyecto de Grado
-          </Link>
+          {induccionCompleta ? (
+            <Link
+              href="/mi-aula/mod-30"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-extrabold shadow-lg hover:shadow-amber-500/25 transition-all active:scale-95 shrink-0"
+            >
+              <PlayCircle className="w-5 h-5" aria-hidden="true" />
+              Ver Proyecto de Grado
+            </Link>
+          ) : (
+            <div
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-slate-200 dark:bg-gray-800 text-slate-500 dark:text-gray-400 text-sm font-bold opacity-60 cursor-not-allowed shrink-0"
+            >
+              <Lock className="w-4 h-4" aria-hidden="true" />
+              Bloqueado (Completa Inducción)
+            </div>
+          )}
         </section>
 
         {/* 3 · CATÁLOGO DE MÓDULOS (como el Atlas de Manuales) */}

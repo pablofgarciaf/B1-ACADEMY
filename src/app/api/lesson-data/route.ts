@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import { requireBearerUser } from '@/lib/server-auth';
 import { MODULO_INDUCCION, moduloInduccionCompleto } from '@/lib/requisitos-aula';
+import { hasInitializedCompany } from '@/lib/company-server';
 import LECCIONES_AULA from '@/content/aula/lecciones.json';
 
 // =============================================================
@@ -1374,7 +1375,16 @@ export async function GET(req: Request) {
       return NextResponse.json({ error: `Clase ${classId} no encontrada` }, { status: 404 });
     }
 
-    // El Módulo 1 (inducción) es requisito de todos los demás: se exige también aquí, no solo en la interfaz.
+    // Paso 0 infranqueable: nadie puede acceder a ninguna clase si no ha inicializado su empresa B1 Center
+    const tieneEmpresa = await hasInitializedCompany(actor.uid);
+    if (!tieneEmpresa) {
+      return NextResponse.json(
+        { error: 'Debes crear tu empresa de práctica B1 Center en el Paso 0 antes de iniciar la clase.' },
+        { status: 403 }
+      );
+    }
+
+    // El Módulo 1 (inducción) es requisito de todos los demás (a excepción de la ruta comercial rápida tras crear la empresa)
     if (foundModule.id !== MODULO_INDUCCION && foundModule.id !== 'mod-ventas' && !(await moduloInduccionCompleto(actor.uid, actor.profile.role, actor.profile.displayName || actor.profile.name, actor.email))) {
       return NextResponse.json({ error: 'Completa primero el Módulo 1 para acceder a este módulo.' }, { status: 403 });
     }

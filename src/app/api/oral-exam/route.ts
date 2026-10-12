@@ -6,6 +6,8 @@ import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
 import { practicasDelModulo } from '@/lib/practice-registry';
 import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
+import { hasInitializedCompany } from '@/lib/company-server';
+import { moduloInduccionCompleto, MODULO_INDUCCION } from '@/lib/requisitos-aula';
 import {
   EXAM_BANK, EXAM_DURATION_MS, EXAM_QUESTIONS_PER_ATTEMPT, MAX_ATTEMPTS_PER_DAY, MIN_ANSWER_WORDS,
   PASS_MIN_PER_QUESTION, PASS_TOTAL, POINTS_PER_QUESTION, type ExamQuestion,
@@ -59,6 +61,17 @@ export async function POST(request: Request) {
       const courseModule = getModuleById(parsed.data.moduleId);
       const bank = EXAM_BANK[parsed.data.moduleId];
       if (!courseModule || !bank) return NextResponse.json({ error: 'Este módulo aún no tiene examen.' }, { status: 404 });
+
+      // Requisito indispensable: la empresa B1 Center debe estar inicializada
+      const tieneEmpresa = await hasInitializedCompany(user.uid);
+      if (!tieneEmpresa) {
+        return NextResponse.json({ error: 'Debes crear tu empresa de práctica B1 Center en el Paso 0 antes de rendir el examen.' }, { status: 403 });
+      }
+
+      // Requisito: el módulo 1 (inducción) es obligatorio para todos los demás módulos
+      if (courseModule.id !== MODULO_INDUCCION && courseModule.id !== 'mod-ventas' && !(await moduloInduccionCompleto(user.uid, user.profile.role, studentName, user.email))) {
+        return NextResponse.json({ error: 'Completa primero el Módulo 1 (inducción) para acceder al examen de este módulo.' }, { status: 403 });
+      }
 
       // Requisito: todas las clases del módulo completadas y todas las prácticas aprobadas (validado en el servidor).
       const progressDocId = buildStudentDocId(courseModule.id, studentName, user.email);

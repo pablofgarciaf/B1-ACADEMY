@@ -23350,18 +23350,18 @@
     "number": 1,
     "totalSlides": 12,
     "images": [
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg",
-      "/images/pilot_slide_1.jpg"
+      "/aula/mod-ventas-c1/Slide_001.webp",
+      "/aula/mod-ventas-c1/Slide_002.webp",
+      "/aula/mod-ventas-c1/Slide_003.webp",
+      "/aula/mod-ventas-c1/Slide_004.webp",
+      "/aula/mod-ventas-c1/Slide_005.webp",
+      "/aula/mod-ventas-c1/Slide_006.webp",
+      "/aula/mod-ventas-c1/Slide_007.webp",
+      "/aula/mod-ventas-c1/Slide_008.webp",
+      "/aula/mod-ventas-c1/Slide_009.webp",
+      "/aula/mod-ventas-c1/Slide_010.webp",
+      "/aula/mod-ventas-c1/Slide_011.webp",
+      "/aula/mod-ventas-c1/Slide_012.webp"
     ],
     "syncData": [
       {
@@ -23394,7 +23394,8 @@
               "valor": "10000",
               "pista": "Límite en USD (10000)"
             }
-          ]
+          ],
+          "screenId": "SAL006"
         }
       },
       {
@@ -23421,7 +23422,8 @@
               "valor": "01",
               "pista": "Bodega Central Quito"
             }
-          ]
+          ],
+          "screenId": "INV001"
         }
       },
       {
@@ -23454,7 +23456,8 @@
               "valor": "5",
               "pista": "Cantidad cotizada"
             }
-          ]
+          ],
+          "screenId": "SAL001"
         }
       },
       {
@@ -23482,7 +23485,8 @@
               "valor": "Abierto",
               "pista": "Estado tras confirmar el pedido"
             }
-          ]
+          ],
+          "screenId": "SAL002"
         }
       },
       {
@@ -23510,7 +23514,8 @@
               "valor": "15%",
               "pista": "Tarifa de IVA SRI Ecuador 2026"
             }
-          ]
+          ],
+          "screenId": "SAL004"
         }
       },
       {
@@ -23538,7 +23543,8 @@
               "valor": "Completa",
               "pista": "Nivel de cobertura documental"
             }
-          ]
+          ],
+          "screenId": "SAL009"
         }
       },
       {
@@ -23566,7 +23572,8 @@
               "valor": "Transferencia Bancaria",
               "pista": "Medio de pago utilizado"
             }
-          ]
+          ],
+          "screenId": "BNK001"
         }
       },
       {

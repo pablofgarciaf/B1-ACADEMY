@@ -5,7 +5,7 @@ import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
 import { coincide, practicaAprobada } from '@/lib/practice-check';
 import { camposEsperados, clavePractica } from '@/lib/practice-registry';
-import { readCompany } from '@/lib/company-server';
+import { readCompany, hasInitializedCompany } from '@/lib/company-server';
 import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
 
 /**
@@ -46,6 +46,11 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
   const { moduleId, classId, slideIndex, valores, intentos, vioSolucion, conectada = false } = parsed.data;
+
+  // Paso 0: nadie puede registrar prácticas sin su empresa B1 Center inicializada
+  if (!(await hasInitializedCompany(uid))) {
+    return NextResponse.json({ error: 'Debes crear tu empresa B1 Center en el Paso 0 antes de registrar prácticas.' }, { status: 403 });
+  }
 
   if (!getModuleById(moduleId)?.classes.some((c) => c.id === classId)) {
     return NextResponse.json({ error: 'Clase inválida.' }, { status: 400 });

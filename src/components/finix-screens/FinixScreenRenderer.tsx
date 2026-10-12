@@ -43,6 +43,7 @@ const EmployeeForm = dynamic(() => import('./EmployeeForm'), { loading: cargando
 const ATSScreen = dynamic(() => import('./ATSScreen'), { loading: cargando });
 const ChartOfAccountsScreen = dynamic(() => import('./ChartOfAccountsScreen'), { loading: cargando });
 const UDOScreen = dynamic(() => import('./UDOScreen'), { loading: cargando });
+const SalesRelationshipMapScreen = dynamic(() => import('./SalesRelationshipMapScreen'), { loading: cargando });
 
 export interface FinixScreenRendererProps {
   screenId: string;
@@ -60,6 +61,8 @@ const SCREEN_MAP: Record<string, React.ComponentType<{ screenId: string; screenN
   'SAL006': () => <CompanyPartnerForm vendor={false} />,
   'SAL007': () => <PriceListScreen />,
   'SAL008': () => <VolumeDiscountScreen />,
+  'SAL009': () => <SalesRelationshipMapScreen />,
+  'SAL-MAP': () => <SalesRelationshipMapScreen />,
 
   // ── Compras (Procure-to-Pay) ───────────────────────────────────────
   'PUR001': (p) => <SalesOrderForm {...p} docType="purchase_request" />,
