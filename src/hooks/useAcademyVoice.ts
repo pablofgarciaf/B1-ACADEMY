@@ -5,6 +5,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 /**
  * Voz oficial de Finix Academy (es-MX-JorgeNeural, la de los videos de los manuales).
  * Reemplaza a window.speechSynthesis: nunca usa la voz robótica del navegador.
+ * Soporta control de reproducción estilo reproductor de video: Pausa, Reanudar, Velocidad, Mute y Posición.
  * Si el servicio de voz falla, deja el texto en pantalla y avanza según el tiempo de lectura.
  */
 
@@ -52,25 +53,39 @@ function aplicarVelocidad(audio: HTMLAudioElement, velocidad: number) {
 
 export function useAcademyVoice() {
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [needsGesture, setNeedsGesture] = useState(false);
   /** true si el servicio de voz no respondió (red, 401, 503) en la última narración. */
   const [vozFallo, setVozFallo] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timerRemainingRef = useRef<number>(0);
+  const timerStartedAtRef = useRef<number>(0);
   const tokenRef = useRef(0);
   const pendingEndRef = useRef<(() => void) | undefined>(undefined);
   const mutedRef = useRef(false);
   const [velocidad, setVelocidad] = useState(1);
   const velocidadRef = useRef(1);
-  useEffect(() => { const v = velocidadGuardada(); velocidadRef.current = v; setVelocidad(v); }, []);
+
+  useEffect(() => {
+    const v = velocidadGuardada();
+    velocidadRef.current = v;
+    setVelocidad(v);
+  }, []);
 
   const clearPlayback = useCallback(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = null;
+    timerRemainingRef.current = 0;
     if (audioRef.current) {
       audioRef.current.onended = null;
       audioRef.current.onerror = null;
+      audioRef.current.ontimeupdate = null;
+      audioRef.current.onloadedmetadata = null;
       audioRef.current.pause();
     }
   }, []);
@@ -80,8 +95,58 @@ export function useAcademyVoice() {
     clearPlayback();
     pendingEndRef.current = undefined;
     setIsSpeaking(false);
+    setIsPaused(false);
     setNeedsGesture(false);
+    setCurrentTime(0);
+    setDuration(0);
   }, [clearPlayback]);
+
+  const pause = useCallback(() => {
+    const audio = audioRef.current;
+    if (audio && !audio.paused) {
+      audio.pause();
+    }
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+      const elapsed = Date.now() - timerStartedAtRef.current;
+      timerRemainingRef.current = Math.max(0, timerRemainingRef.current - elapsed);
+    }
+    setIsPaused(true);
+  }, []);
+
+  const resume = useCallback(() => {
+    const audio = audioRef.current;
+    const token = tokenRef.current;
+    const end = pendingEndRef.current;
+    if (audio && audio.paused) {
+      audio.play().catch(() => {
+        if (token === tokenRef.current && end) end();
+      });
+    }
+    if (timerRemainingRef.current > 0 && end) {
+      timerStartedAtRef.current = Date.now();
+      timerRef.current = setTimeout(end, timerRemainingRef.current);
+    }
+    setIsPaused(false);
+  }, []);
+
+  const togglePause = useCallback(() => {
+    if (isPaused) {
+      resume();
+    } else {
+      pause();
+    }
+  }, [isPaused, pause, resume]);
+
+  const seek = useCallback((timeInSeconds: number) => {
+    const audio = audioRef.current;
+    if (audio && Number.isFinite(timeInSeconds)) {
+      const valid = Math.max(0, Math.min(timeInSeconds, audio.duration || timeInSeconds));
+      audio.currentTime = valid;
+      setCurrentTime(valid);
+    }
+  }, []);
 
   const speakText = useCallback((text: string, onEnd?: () => void, firma?: string) => {
     tokenRef.current += 1;
@@ -89,18 +154,29 @@ export function useAcademyVoice() {
     clearPlayback();
     setNeedsGesture(false);
     setVozFallo(false);
+    setIsPaused(false);
+    setCurrentTime(0);
+    setDuration(0);
+
     let finished = false;
     const finish = () => {
       if (token !== tokenRef.current || finished) return;
       finished = true;
       clearPlayback();
       setIsSpeaking(false);
+      setIsPaused(false);
       pendingEndRef.current = undefined;
       onEnd?.();
     };
-    if (!text.trim()) { finish(); return; }
+
+    if (!text.trim()) {
+      finish();
+      return;
+    }
+
     setIsSpeaking(true);
     pendingEndRef.current = finish;
+
     fetchAudioUrl(text, firma)
       .then((url) => {
         if (token !== tokenRef.current) return;
@@ -108,9 +184,26 @@ export function useAcademyVoice() {
         audioRef.current = audio;
         audio.muted = mutedRef.current;
         audio.src = url;
-        aplicarVelocidad(audio, velocidadRef.current); // tras src: cambiar la fuente puede reiniciar la velocidad
+        aplicarVelocidad(audio, velocidadRef.current);
+
+        audio.onloadedmetadata = () => {
+          if (token !== tokenRef.current) return;
+          if (audio.duration && !Number.isNaN(audio.duration)) {
+            setDuration(audio.duration);
+          }
+        };
+
+        audio.ontimeupdate = () => {
+          if (token !== tokenRef.current) return;
+          setCurrentTime(audio.currentTime);
+          if (audio.duration && !Number.isNaN(audio.duration)) {
+            setDuration(audio.duration);
+          }
+        };
+
         audio.onended = finish;
         audio.onerror = finish;
+
         return audio.play().catch((error: unknown) => {
           if (token !== tokenRef.current) return;
           // El navegador bloquea el audio hasta que el usuario interactúe con la página.
@@ -125,8 +218,12 @@ export function useAcademyVoice() {
       .catch(() => {
         if (token !== tokenRef.current) return;
         setIsSpeaking(false);
-        setVozFallo(true); // quien use el hook puede detenerse en lugar de avanzar en silencio
-        timerRef.current = setTimeout(finish, readingTimeMs(text, velocidadRef.current));
+        setVozFallo(true);
+        const ms = readingTimeMs(text, velocidadRef.current);
+        timerRemainingRef.current = ms;
+        timerStartedAtRef.current = Date.now();
+        setDuration(ms / 1000);
+        timerRef.current = setTimeout(finish, ms);
       });
   }, [clearPlayback]);
 
@@ -138,6 +235,7 @@ export function useAcademyVoice() {
     if (!audio || !end) return;
     setNeedsGesture(false);
     setIsSpeaking(true);
+    setIsPaused(false);
     audio.play().catch(() => { if (token === tokenRef.current) end(); });
   }, []);
 
@@ -150,7 +248,6 @@ export function useAcademyVoice() {
     const next = !mutedRef.current;
     mutedRef.current = next;
     setIsMuted(next);
-    // Muting changes volume, not lesson progress. Also applies to audio still loading.
     if (audioRef.current) audioRef.current.muted = next;
   }, []);
 
@@ -166,5 +263,24 @@ export function useAcademyVoice() {
 
   useEffect(() => () => { tokenRef.current += 1; clearPlayback(); }, [clearPlayback]);
 
-  return { isSpeaking, isMuted, needsGesture, vozFallo, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload, velocidad, cambiarVelocidad };
+  return {
+    isSpeaking,
+    isPaused,
+    isMuted,
+    needsGesture,
+    vozFallo,
+    currentTime,
+    duration,
+    speakText,
+    stopSpeaking,
+    pause,
+    resume,
+    togglePause,
+    seek,
+    toggleMute,
+    resumeAfterGesture,
+    preload,
+    velocidad,
+    cambiarVelocidad
+  };
 }

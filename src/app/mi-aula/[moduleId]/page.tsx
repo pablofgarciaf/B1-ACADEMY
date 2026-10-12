@@ -10,7 +10,7 @@ import type { IntentoPractica } from '@/lib/practice-check';
 import { getCompany, usarEmpresaCurso } from '@/lib/firestore-company';
 import PasoCeroEmpresa from '@/components/lms/PasoCeroEmpresa';
 import FinixInteractiveSimulator from '@/components/simulator/FinixInteractiveSimulator';
-import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, RotateCcw, Maximize2, Minimize2, Building2 } from 'lucide-react';
+import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, ChevronLeft, RotateCcw, Maximize2, Minimize2, Building2, Play, Pause } from 'lucide-react';
 
 // =============================================
 // Types
@@ -145,8 +145,79 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // Narración larga en el panel de instrucciones: recortada a 2 líneas por defecto
   const [narracionAbierta, setNarracionAbierta] = useState(false);
 
-  // Speech
-  const { isSpeaking, isMuted, needsGesture, speakText, stopSpeaking, toggleMute, resumeAfterGesture, preload, velocidad, cambiarVelocidad } = useAcademyVoice();
+  // Speech & Video Player State
+  const {
+    isSpeaking,
+    isPaused,
+    isMuted,
+    needsGesture,
+    currentTime,
+    duration,
+    speakText,
+    stopSpeaking,
+    pause,
+    resume,
+    togglePause,
+    seek,
+    toggleMute,
+    resumeAfterGesture,
+    preload,
+    velocidad,
+    cambiarVelocidad
+  } = useAcademyVoice();
+
+  // Controles de navegación estilo reproductor de video
+  const irAlaminAnterior = useCallback(() => {
+    if (currentSlideIndex > 0) {
+      stopSpeaking();
+      setCurrentSlideIndex(i => i - 1);
+      setPhase('narrating');
+    }
+  }, [currentSlideIndex, stopSpeaking]);
+
+  const irAlaminSiguiente = useCallback(() => {
+    if (lessonData && currentSlideIndex < lessonData.totalSlides - 1) {
+      stopSpeaking();
+      setCurrentSlideIndex(i => i + 1);
+      setPhase('narrating');
+    }
+  }, [lessonData, currentSlideIndex, stopSpeaking]);
+
+  const retroceder10s = useCallback(() => {
+    seek(Math.max(0, currentTime - 10));
+  }, [seek, currentTime]);
+
+  const avanzar10s = useCallback(() => {
+    seek(Math.min(duration || Infinity, currentTime + 10));
+  }, [seek, currentTime, duration]);
+
+  const formatTime = (secs: number) => {
+    const s = Math.floor(secs || 0);
+    const m = Math.floor(s / 60);
+    const rem = s % 60;
+    return `${m}:${rem.toString().padStart(2, '0')}`;
+  };
+
+  // Atajos de teclado multimedia: Espacio (Pausar/Reanudar), Flechas (Avanzar/Retroceder), M (Silenciar)
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
+      if (e.key === ' ' || e.code === 'Space') {
+        e.preventDefault();
+        togglePause();
+      } else if (e.key === 'ArrowRight') {
+        if (e.shiftKey) irAlaminSiguiente();
+        else avanzar10s();
+      } else if (e.key === 'ArrowLeft') {
+        if (e.shiftKey) irAlaminAnterior();
+        else retroceder10s();
+      } else if (e.key === 'm' || e.key === 'M') {
+        toggleMute();
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [togglePause, irAlaminSiguiente, irAlaminAnterior, avanzar10s, retroceder10s, toggleMute]);
 
   // =============================================
   // Load lesson data when class changes
@@ -291,9 +362,9 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     if (!window.matchMedia('(min-width: 1024px)').matches) setSidebarOpen(false);
   }, [activeClassId, stopSpeaking]);
 
-  // Every pending advance belongs to this lesson/slide and is cancelled on navigation.
+  // Every pending advance belongs to this lesson/slide and is cancelled on navigation or when paused.
   useEffect(() => {
-    if (phase !== 'mission_done' || !lessonData || lessonData.classId !== activeClassId || isLoadingLesson || !currentUser || !moduleInfo) return;
+    if (phase !== 'mission_done' || isPaused || !lessonData || lessonData.classId !== activeClassId || isLoadingLesson || !currentUser || !moduleInfo) return;
     let cancelled = false;
     const controller = new AbortController();
     let nextTimer: ReturnType<typeof setTimeout> | undefined;
@@ -329,7 +400,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       clearTimeout(timer);
       clearTimeout(nextTimer);
     };
-  }, [phase, lessonData, activeClassId, isLoadingLesson, currentUser, moduleInfo, currentSlideIndex, moduleClasses, handleSelectClass, retrySave]);
+  }, [phase, isPaused, lessonData, activeClassId, isLoadingLesson, currentUser, moduleInfo, currentSlideIndex, moduleClasses, handleSelectClass, retrySave]);
 
   const handleRestart = useCallback(() => {
     stopSpeaking();
@@ -461,6 +532,21 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             title="Reiniciar clase"
           >
             <RotateCcw className="w-4 h-4" />
+          </button>
+
+          {/* Pausar / Reanudar lección */}
+          <button
+            onClick={togglePause}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all active:scale-95 ${
+              isPaused
+                ? 'bg-amber-500 text-slate-950 hover:bg-amber-400 shadow-md shadow-amber-500/30'
+                : 'text-gray-300 bg-gray-800/80 hover:text-white hover:bg-gray-700'
+            }`}
+            title={isPaused ? 'Reanudar lección (Espacio)' : 'Pausar lección (Espacio)'}
+            aria-label={isPaused ? 'Reanudar lección' : 'Pausar lección'}
+          >
+            {isPaused ? <Play className="w-3.5 h-3.5 fill-current" /> : <Pause className="w-3.5 h-3.5 fill-current" />}
+            <span className="hidden sm:inline">{isPaused ? 'Reanudar' : 'Pausar'}</span>
           </button>
 
           {/* Mute */}
@@ -663,6 +749,15 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                     </span>
                   )}
                   <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={togglePause}
+                      className="flex items-center gap-1 px-2 py-0.5 rounded bg-white/10 hover:bg-white/20 text-white text-[10px] font-bold active:scale-95 transition-all"
+                      title={isPaused ? 'Reanudar explicación (Espacio)' : 'Pausar explicación (Espacio)'}
+                    >
+                      {isPaused ? <Play className="w-3 h-3 fill-white" /> : <Pause className="w-3 h-3 fill-white" />}
+                      <span>{isPaused ? 'Reanudar' : 'Pausar'}</span>
+                    </button>
                     {process.env.NODE_ENV !== 'production' && (
                       <button
                         type="button"
@@ -721,8 +816,14 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
           ) : (
             /* ── NARRATION PHASE ── */
             <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
-              {/* Slide image */}
-              <div className="relative flex-1 min-h-[180px] bg-[#0a0a10]">
+              {/* Contenedor interactivo de video simulado con hover controls y estado de pausa */}
+              <div
+                className="group relative flex-1 min-h-[220px] bg-[#05070d] flex items-center justify-center overflow-hidden select-none cursor-pointer"
+                onClick={(e) => {
+                  if ((e.target as HTMLElement).closest('.video-controls-bar')) return;
+                  togglePause();
+                }}
+              >
                 {activeSlideImage ? (
                   <Image
                     src={activeSlideImage}
@@ -730,30 +831,182 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                     width={1920}
                     height={1080}
                     unoptimized
-                    className="absolute inset-0 w-full h-full object-contain"
+                    className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                     priority={currentSlideIndex === 0}
                   />
                 ) : (
-                  <div className="w-full h-48 flex items-center justify-center bg-gradient-to-br from-[#0e1620] to-[#131a28]">
+                  <div className="w-full h-56 flex items-center justify-center bg-gradient-to-br from-[#0e1620] to-[#131a28]">
                     <div className="text-center">
                       <BookOpen className="w-10 h-10 text-amber-500/60 mx-auto mb-2" />
                       <p className="text-sm text-gray-500">{lessonData?.title}</p>
                     </div>
                   </div>
                 )}
+
                 {/* Aviso: la narración que sigue lleva a una práctica en el simulador */}
                 {hasSimulatorStep && currentStepGuide && (
-                  <div className="absolute top-3 left-3 max-w-[70%] px-3 py-2 rounded-lg bg-blue-950/85 border border-blue-500/40 text-blue-100 text-xs font-semibold flex items-center gap-2">
+                  <div className="absolute top-3 left-3 z-10 max-w-[70%] px-3 py-1.5 rounded-lg bg-blue-950/90 border border-blue-500/40 text-blue-100 text-xs font-semibold flex items-center gap-2 shadow-lg backdrop-blur-sm">
                     <ShieldCheck className="w-4 h-4 text-blue-300 shrink-0" />
                     <span className="truncate">Próxima práctica: {currentStepGuide.title}</span>
                   </div>
                 )}
-                {/* Slide counter */}
-                {lessonData && (
-                  <div className="absolute bottom-2 right-3 px-2 py-0.5 rounded-md bg-black/70 text-white text-[10px] font-mono">
-                    {currentSlideIndex + 1}/{lessonData.totalSlides}
+
+                {/* Overlay central cuando la lección está pausada */}
+                {isPaused && (
+                  <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-950/60 backdrop-blur-[2px] transition-all animate-in fade-in duration-200">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        resume();
+                      }}
+                      className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 flex items-center justify-center shadow-2xl shadow-amber-500/40 hover:scale-110 active:scale-95 transition-all mb-3"
+                      title="Reanudar lección"
+                      aria-label="Reanudar lección"
+                    >
+                      <Play className="w-7 h-7 fill-slate-950 ml-1" />
+                    </button>
+                    <p className="text-white text-sm font-bold tracking-wide">Lección en Pausa</p>
+                    <p className="text-xs text-amber-300/80 font-mono mt-1">Haz clic o presiona [Espacio] para reanudar</p>
                   </div>
                 )}
+
+                {/* Barra de control flotante tipo reproductor de video (visible en hover o persistente si está en pausa) */}
+                <div
+                  className={`video-controls-bar absolute bottom-0 inset-x-0 z-30 transition-all duration-300 bg-gradient-to-t from-slate-950/95 via-slate-950/80 to-transparent pt-8 pb-3 px-3 sm:px-4 cursor-default ${
+                    isPaused ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0'
+                  }`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Línea de tiempo interactiva (Scrubber) */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <input
+                      type="range"
+                      min={0}
+                      max={duration || 100}
+                      step={0.2}
+                      value={currentTime}
+                      onChange={(e) => seek(Number(e.target.value))}
+                      className="w-full h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:h-2 transition-all"
+                      title="Línea de tiempo de la narración"
+                      aria-label="Progreso del audio de la lección"
+                    />
+                  </div>
+
+                  {/* Fila de controles multimedia */}
+                  <div className="flex items-center justify-between gap-2 flex-wrap text-white">
+                    {/* Controles de reproducción principales */}
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      {/* Play / Pausa */}
+                      <button
+                        onClick={togglePause}
+                        className="p-1.5 sm:p-2 rounded-lg bg-amber-500 text-slate-950 hover:bg-amber-400 active:scale-95 transition-all shadow-md shadow-amber-500/20"
+                        title={isPaused ? 'Reanudar lección [Espacio]' : 'Pausar lección [Espacio]'}
+                        aria-label={isPaused ? 'Reanudar' : 'Pausar'}
+                      >
+                        {isPaused ? <Play className="w-4 h-4 fill-current ml-0.5" /> : <Pause className="w-4 h-4 fill-current" />}
+                      </button>
+
+                      {/* Retroceder 10s */}
+                      <button
+                        onClick={retroceder10s}
+                        className="px-2 py-1 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-mono font-bold active:scale-95 transition-all border border-gray-700"
+                        title="Retroceder 10s [←]"
+                        aria-label="Retroceder 10 segundos"
+                      >
+                        -10s
+                      </button>
+
+                      {/* Avanzar 10s */}
+                      <button
+                        onClick={avanzar10s}
+                        className="px-2 py-1 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-mono font-bold active:scale-95 transition-all border border-gray-700"
+                        title="Avanzar 10s [→]"
+                        aria-label="Avanzar 10 segundos"
+                      >
+                        +10s
+                      </button>
+
+                      {/* Lámina anterior */}
+                      <button
+                        onClick={irAlaminAnterior}
+                        disabled={currentSlideIndex === 0}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 disabled:opacity-30 disabled:cursor-not-allowed active:scale-95 transition-all border border-gray-700"
+                        title="Lámina anterior [Shift + ←]"
+                        aria-label="Lámina anterior"
+                      >
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+
+                      {/* Lámina siguiente */}
+                      <button
+                        onClick={irAlaminSiguiente}
+                        disabled={!lessonData || currentSlideIndex >= lessonData.totalSlides - 1}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 disabled:opacity-30 disabled:cursor-not-allowed active:scale-95 transition-all border border-gray-700"
+                        title="Lámina siguiente [Shift + →]"
+                        aria-label="Lámina siguiente"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+
+                      {/* Tiempo transcurrido / Duración */}
+                      <div className="text-[11px] font-mono text-gray-300 ml-1">
+                        <span>{formatTime(currentTime)}</span>
+                        <span className="text-gray-500"> / </span>
+                        <span>{formatTime(duration)}</span>
+                      </div>
+                    </div>
+
+                    {/* Información y ajustes rápidos */}
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      {/* Badge de voz oficial */}
+                      <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-300 font-mono">
+                        <span className={`w-1.5 h-1.5 rounded-full ${isSpeaking && !isPaused ? 'bg-amber-400 animate-pulse' : 'bg-gray-500'}`} />
+                        Voz Jorge Neural
+                      </div>
+
+                      {/* Contador de láminas */}
+                      {lessonData && (
+                        <span className="hidden sm:inline-flex px-2 py-1 rounded-lg bg-gray-800/80 border border-gray-700 text-gray-300 text-[11px] font-mono">
+                          Lámina {currentSlideIndex + 1}/{lessonData.totalSlides}
+                        </span>
+                      )}
+
+                      {/* Selector de velocidad */}
+                      <button
+                        onClick={cambiarVelocidad}
+                        className={`px-2 py-1 rounded-lg text-xs font-bold font-mono active:scale-95 transition-all border ${
+                          velocidad > 1
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 hover:bg-amber-500/30'
+                            : 'bg-gray-800/80 text-gray-300 border-gray-700 hover:bg-gray-700'
+                        }`}
+                        title="Velocidad de reproducción"
+                        aria-label={`Velocidad actual: ${velocidad}x`}
+                      >
+                        {velocidad}x
+                      </button>
+
+                      {/* Silenciar / Activar audio */}
+                      <button
+                        onClick={toggleMute}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 active:scale-95 transition-all border border-gray-700"
+                        title={isMuted ? 'Activar audio [M]' : 'Silenciar audio [M]'}
+                        aria-label={isMuted ? 'Activar audio' : 'Silenciar'}
+                      >
+                        {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4" />}
+                      </button>
+
+                      {/* Pantalla completa */}
+                      <button
+                        onClick={alternarPantallaCompleta}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 active:scale-95 transition-all border border-gray-700"
+                        title={pantallaCompleta ? 'Salir de pantalla completa' : 'Pantalla completa'}
+                        aria-label="Alternar pantalla completa"
+                      >
+                        {pantallaCompleta ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Narration text */}
