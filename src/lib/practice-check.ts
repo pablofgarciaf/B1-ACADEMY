@@ -36,12 +36,20 @@ export function normalizar(valor: string): string {
 const EQUIVALENCIAS: string[][] = [
   ['01', 'Bodega Central Quito', 'Bodega Central', 'Almacén Central'], ['02', 'Bodega Sucursal Guayaquil', 'Bodega Guayaquil'],
   ['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle'],
+  ['C20005', 'Corporación Andina Comercial S.A.', 'Corporación Andina', 'Andina Comercial'],
   ['V10000', 'Dell Ecuador'], ['V10001', 'HP Importaciones'], ['V10002', 'Lenovo Andina'], ['V10003', 'Acer Distributors'],
   ['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],
   ['A00004', 'Teclado Inalámbrico Logitech'], ['A00005', 'Mouse Óptico Dell'], ['A00006', 'Servidor HP ProLiant DL380'],
   ['A00007', 'Disco Duro SSD 1TB Samsung'], ['A00008', 'Memoria RAM 16GB DDR4'],
   ['manager', 'admin', 'pablo.garcia', 'pablofgarciaf@gmail.com', 'pablo'],
   ['B1Admin2026', 'mateD0MEmia', '123456', 'manager', 'admin'],
+  ['Banco Pichincha', 'Pichincha', 'BAN-1'],
+  ['Oferta de Venta', 'Cotización', 'Oferta de ventas', 'Cotización comercial', 'COT'],
+  ['Pedido de Cliente', 'Pedido de venta', 'Pedido en firme', 'Orden de venta', 'PV'],
+  ['Factura de Clientes', 'Factura de deudores', 'Factura de venta', 'Factura electrónica', 'FAC'],
+  ['Pago Recibido', 'Cobro', 'Cobranza', 'Pago de cliente'],
+  ['Transferencia Bancaria', 'Transferencia', 'Depósito bancario'],
+  ['Mapa de Relaciones', 'Mapa de relación', 'Árbol de relaciones', 'Relationship map'],
 ].map((g) => g.map((v) => normalizar(v)));
 
 /** Valores de sí/no: en Finix ERP son casillas de verificación, no texto. */
