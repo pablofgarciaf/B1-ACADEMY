@@ -27,7 +27,10 @@ import {
   AlertTriangle,
   ShieldCheck,
   Pause,
-  Volume2
+  Play,
+  Volume2,
+  VolumeX,
+  Minimize2
 } from 'lucide-react';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 
@@ -430,8 +433,68 @@ export default function ManualViewer({
   // ── Modo narrado: sin archivo de video, Jorge narra cada lámina con su guion (clase_sync.json) ──
   // Es lo mismo que el video (lámina fija + voz), pero sin almacenar gigas de MP4 en el hosting.
   const narrable = !videoUrl && !!syncData && syncData.length > 0;
-  const { isSpeaking, needsGesture, vozFallo, speakText, stopSpeaking, resumeAfterGesture, preload, velocidad, cambiarVelocidad } = useAcademyVoice();
+  const {
+    isSpeaking,
+    isPaused,
+    isMuted,
+    needsGesture,
+    vozFallo,
+    currentTime,
+    duration,
+    speakText,
+    stopSpeaking,
+    pause,
+    resume,
+    togglePause,
+    seek,
+    toggleMute,
+    resumeAfterGesture,
+    preload,
+    velocidad,
+    cambiarVelocidad
+  } = useAcademyVoice();
   const [narrando, setNarrando] = useState(false);
+
+  const togglePlayPause = useCallback(() => {
+    if (!narrando) {
+      setNarrando(true);
+    } else {
+      togglePause();
+    }
+  }, [narrando, togglePause]);
+
+  const retroceder10s = useCallback(() => {
+    seek(Math.max(0, currentTime - 10));
+  }, [seek, currentTime]);
+
+  const avanzar10s = useCallback(() => {
+    seek(Math.min(duration || Infinity, currentTime + 10));
+  }, [seek, currentTime, duration]);
+
+  const formatTime = (secs: number) => {
+    const s = Math.floor(secs || 0);
+    const m = Math.floor(s / 60);
+    const rem = s % 60;
+    return `${m}:${rem.toString().padStart(2, '0')}`;
+  };
+
+  const slideContainerRef = useRef<HTMLDivElement>(null);
+  const [isSlideFullscreen, setIsSlideFullscreen] = useState(false);
+  useEffect(() => {
+    const sync = () => setIsSlideFullscreen(Boolean(document.fullscreenElement));
+    document.addEventListener('fullscreenchange', sync);
+    return () => document.removeEventListener('fullscreenchange', sync);
+  }, []);
+
+  const toggleSlideFullscreen = useCallback(() => {
+    const el = slideContainerRef.current;
+    if (!el) return;
+    if (document.fullscreenElement) {
+      void document.exitFullscreen?.().catch(() => {});
+    } else {
+      void el.requestFullscreen?.().catch(() => {});
+    }
+  }, []);
 
   // Sincronizar velocidad con el reproductor de video cuando exista
   useEffect(() => {
@@ -477,19 +540,28 @@ export default function ManualViewer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [narrable, narrando, currentIdx]);
 
-  const alternarNarracion = () => {
-    if (narrando) { stopSpeaking(); setNarrando(false); }
-    else setNarrando(true);
-  };
+  const alternarNarracion = togglePlayPause;
 
+  // Atajos de teclado multimedia para el visor de diapositivas tipo video
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
+      if (e.key === ' ' || e.code === 'Space') {
+        e.preventDefault();
+        togglePlayPause();
+      } else if (e.key === 'ArrowRight') {
+        if (e.shiftKey) nextSlide();
+        else avanzar10s();
+      } else if (e.key === 'ArrowLeft') {
+        if (e.shiftKey) prevSlide();
+        else retroceder10s();
+      } else if (e.key === 'm' || e.key === 'M') {
+        toggleMute();
+      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
+  }, [togglePlayPause, nextSlide, prevSlide, avanzar10s, retroceder10s, toggleMute]);
 
   const slideTexts = useMemo(() => {
     if (!content) return [];
@@ -543,29 +615,196 @@ export default function ManualViewer({
               </button>
             </div>
           ) : (
-            <div className="relative flex flex-1 min-h-0 items-center justify-center bg-[#050508] p-4 lg:p-6 overflow-hidden">
+            <div
+              ref={slideContainerRef}
+              className="group relative flex flex-1 min-h-0 items-center justify-center bg-[#050508] p-2 sm:p-4 lg:p-6 overflow-hidden select-none cursor-pointer"
+              onClick={(e) => {
+                if ((e.target as HTMLElement).closest('.video-controls-bar')) return;
+                togglePlayPause();
+              }}
+            >
               {images.length > 0 ? (
                 /* eslint-disable-next-line @next/next/no-img-element */
                 <img
                   src={images[currentIdx]}
                   alt={`Diapositiva ${currentIdx + 1}`}
-                  className="max-h-full max-w-full rounded-lg object-contain shadow-xl"
+                  className="max-h-full max-w-full rounded-lg object-contain shadow-xl pointer-events-none"
                 />
               ) : (
                 <div className="text-gray-500">No hay imágenes disponibles para este manual</div>
               )}
 
+              {/* Overlay central cuando la lección está pausada */}
+              {isPaused && (
+                <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-950/60 backdrop-blur-[2px] transition-all animate-in fade-in duration-200">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      resume();
+                    }}
+                    className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 flex items-center justify-center shadow-2xl shadow-amber-500/40 hover:scale-110 active:scale-95 transition-all mb-3"
+                    title="Reanudar lección"
+                    aria-label="Reanudar lección"
+                  >
+                    <Play className="w-7 h-7 fill-slate-950 ml-1" />
+                  </button>
+                  <p className="text-white text-sm font-bold tracking-wide">Lección en Pausa</p>
+                  <p className="text-xs text-amber-300/80 font-mono mt-1">Haz clic o presiona [Espacio] para reanudar</p>
+                </div>
+              )}
+
               {/* Botón superpuesto si el navegador bloqueó el autoplay de audio */}
-              {needsGesture && (
+              {needsGesture && !isPaused && (
                 <div className="absolute inset-0 bg-black/60 backdrop-blur-sm flex flex-col items-center justify-center z-20 p-4 text-center">
                   <button
-                    onClick={resumeAfterGesture}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      resumeAfterGesture();
+                    }}
                     className="flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm shadow-2xl transition-all active:scale-95 animate-pulse"
                   >
                     <Volume2 size={20} />
                     <span>Escuchar narración de Jorge</span>
                   </button>
                   <p className="mt-2 text-xs text-amber-200/90 font-medium">Haz clic para activar el audio de la clase</p>
+                </div>
+              )}
+
+              {/* Barra de control flotante tipo reproductor de video (visible en hover o persistente si está en pausa) */}
+              {narrable && (
+                <div
+                  className={`video-controls-bar absolute bottom-0 inset-x-0 z-30 transition-all duration-300 bg-gradient-to-t from-slate-950/95 via-slate-950/80 to-transparent pt-8 pb-3 px-3 sm:px-4 cursor-default ${
+                    isPaused ? 'opacity-100 translate-y-0' : 'opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0'
+                  }`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Línea de tiempo interactiva (Scrubber) */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <input
+                      type="range"
+                      min={0}
+                      max={duration || 100}
+                      step={0.2}
+                      value={currentTime}
+                      onChange={(e) => seek(Number(e.target.value))}
+                      className="w-full h-1.5 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-amber-500 hover:h-2 transition-all"
+                      title="Línea de tiempo de la narración"
+                      aria-label="Progreso del audio de la lección"
+                    />
+                  </div>
+
+                  {/* Fila de controles multimedia */}
+                  <div className="flex items-center justify-between gap-2 flex-wrap text-white">
+                    {/* Controles de reproducción principales */}
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      {/* Play / Pausa */}
+                      <button
+                        onClick={togglePlayPause}
+                        className="p-1.5 sm:p-2 rounded-lg bg-amber-500 text-slate-950 hover:bg-amber-400 active:scale-95 transition-all shadow-md shadow-amber-500/20"
+                        title={isPaused || !narrando ? 'Reanudar lección [Espacio]' : 'Pausar lección [Espacio]'}
+                        aria-label={isPaused || !narrando ? 'Reanudar' : 'Pausar'}
+                      >
+                        {isPaused || !narrando ? <Play className="w-4 h-4 fill-current ml-0.5" /> : <Pause className="w-4 h-4 fill-current" />}
+                      </button>
+
+                      {/* Retroceder 10s */}
+                      <button
+                        onClick={retroceder10s}
+                        className="px-2 py-1 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-mono font-bold active:scale-95 transition-all border border-gray-700"
+                        title="Retroceder 10s [←]"
+                        aria-label="Retroceder 10 segundos"
+                      >
+                        -10s
+                      </button>
+
+                      {/* Avanzar 10s */}
+                      <button
+                        onClick={avanzar10s}
+                        className="px-2 py-1 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs font-mono font-bold active:scale-95 transition-all border border-gray-700"
+                        title="Avanzar 10s [→]"
+                        aria-label="Avanzar 10 segundos"
+                      >
+                        +10s
+                      </button>
+
+                      {/* Lámina anterior */}
+                      <button
+                        onClick={() => { stopSpeaking(); prevSlide(); }}
+                        disabled={currentIdx === 0}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 disabled:opacity-30 disabled:cursor-not-allowed active:scale-95 transition-all border border-gray-700"
+                        title="Lámina anterior [Shift + ←]"
+                        aria-label="Lámina anterior"
+                      >
+                        <ChevronLeft size={16} />
+                      </button>
+
+                      {/* Lámina siguiente */}
+                      <button
+                        onClick={() => { stopSpeaking(); nextSlide(); }}
+                        disabled={currentIdx === images.length - 1}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 disabled:opacity-30 disabled:cursor-not-allowed active:scale-95 transition-all border border-gray-700"
+                        title="Lámina siguiente [Shift + →]"
+                        aria-label="Lámina siguiente"
+                      >
+                        <ChevronRight size={16} />
+                      </button>
+
+                      {/* Tiempo transcurrido / Duración */}
+                      <div className="text-[11px] font-mono text-gray-300 ml-1">
+                        <span>{formatTime(currentTime)}</span>
+                        <span className="text-gray-500"> / </span>
+                        <span>{formatTime(duration)}</span>
+                      </div>
+                    </div>
+
+                    {/* Información y ajustes rápidos */}
+                    <div className="flex items-center gap-1.5 sm:gap-2">
+                      {/* Badge de voz oficial */}
+                      <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-300 font-mono">
+                        <span className={`w-1.5 h-1.5 rounded-full ${isSpeaking && !isPaused ? 'bg-amber-400 animate-pulse' : 'bg-gray-500'}`} />
+                        Voz Jorge Neural
+                      </div>
+
+                      {/* Contador de láminas */}
+                      <span className="hidden sm:inline-flex px-2 py-1 rounded-lg bg-gray-800/80 border border-gray-700 text-gray-300 text-[11px] font-mono">
+                        Lámina {currentIdx + 1}/{images.length}
+                      </span>
+
+                      {/* Selector de velocidad */}
+                      <button
+                        onClick={cambiarVelocidad}
+                        className={`px-2 py-1 rounded-lg text-xs font-bold font-mono active:scale-95 transition-all border ${
+                          velocidad > 1
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 hover:bg-amber-500/30'
+                            : 'bg-gray-800/80 text-gray-300 border-gray-700 hover:bg-gray-700'
+                        }`}
+                        title="Velocidad de reproducción"
+                        aria-label={`Velocidad actual: ${velocidad}x`}
+                      >
+                        {velocidad}x
+                      </button>
+
+                      {/* Silenciar / Activar audio */}
+                      <button
+                        onClick={toggleMute}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 active:scale-95 transition-all border border-gray-700"
+                        title={isMuted ? 'Activar audio [M]' : 'Silenciar audio [M]'}
+                        aria-label={isMuted ? 'Activar audio' : 'Silenciar'}
+                      >
+                        {isMuted ? <VolumeX className="w-4 h-4 text-red-400" /> : <Volume2 className="w-4 h-4" />}
+                      </button>
+
+                      {/* Pantalla completa */}
+                      <button
+                        onClick={toggleSlideFullscreen}
+                        className="p-1.5 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-200 active:scale-95 transition-all border border-gray-700"
+                        title={isSlideFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
+                        aria-label="Alternar pantalla completa"
+                      >
+                        {isSlideFullscreen ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+                      </button>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -587,12 +826,13 @@ export default function ManualViewer({
                 {narrable && (
                   <>
                     <button
-                      onClick={alternarNarracion}
-                      className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${narrando ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
-                        }`}
-                      title={narrando ? 'Pausar la clase' : 'Reproducir la clase narrada'}
+                      onClick={togglePlayPause}
+                      className={`flex items-center gap-1.5 rounded-lg px-4 py-1.5 text-xs font-bold transition-all active:scale-95 ${
+                        narrando && !isPaused ? 'bg-gray-700 text-white hover:bg-gray-600' : 'bg-amber-500 text-slate-950 hover:bg-amber-400'
+                      }`}
+                      title={narrando && !isPaused ? 'Pausar la clase [Espacio]' : 'Reproducir la clase narrada [Espacio]'}
                     >
-                      {narrando ? <><Pause size={14} /> Pausar</> : <><PlayCircle size={14} /> {currentIdx === 0 ? 'Reproducir clase' : 'Continuar'}</>}
+                      {narrando && !isPaused ? <><Pause size={14} /> Pausar</> : <><PlayCircle size={14} /> {currentIdx === 0 ? 'Reproducir clase' : 'Continuar'}</>}
                     </button>
                     <button
                       type="button"
@@ -610,7 +850,8 @@ export default function ManualViewer({
                     <Volume2 size={13} /> Activar voz
                   </button>
                 )}
-                {isSpeaking && <span className="hidden sm:inline text-amber-400 animate-pulse">Narrando…</span>}
+                {isSpeaking && !isPaused && <span className="hidden sm:inline text-amber-400 animate-pulse">Narrando…</span>}
+                {isPaused && <span className="hidden sm:inline text-amber-300 font-mono text-[11px]">En pausa</span>}
                 <span><span className="text-white font-bold">{currentIdx + 1}</span> / {images.length}</span>
               </div>
 

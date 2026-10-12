@@ -1,13 +1,13 @@
-# 🎥 Reproductor de Video Simulado para Láminas Narradas en Mi Aula
+# 🎥 Reproductor de Video Simulado para Láminas Narradas en Mi Aula y Manuales
 
 Documento de arquitectura sincronizado con la bóveda de Obsidian: `[[docs/25_Reproductor_Video_Simulado_MiAula]]`.
-Vinculado a: `[[06_LMS_Architecture]]`, `[[23_Track_Comercial_y_Ventas_ERP]]`, `[[24_PasoCero_Empresa_B1Center_ZeroTrust]]`.
+Vinculado a: `[[06_LMS_Architecture]]`, `[[06_Manuales]]`, `[[23_Track_Comercial_y_Ventas_ERP]]`, `[[24_PasoCero_Empresa_B1Center_ZeroTrust]]`.
 
 ---
 
 ## 🎯 1. Propósito y Experiencia de Usuario
 
-Las clases magistrales en **Finix Academy** proyectan láminas de alta resolución narradas mediante la voz oficial **Jorge Neural (es-MX)** de Edge TTS. Para que el estudiante experimente la sensación de un **reproductor de video profesional de streaming**, se implementó un sistema interactivo tipo video player con:
+Tanto en **Mi Aula** (`src/app/mi-aula/[moduleId]/page.tsx`) como en la biblioteca de **Manuales** (`src/components/site/ManualViewer.tsx`), las diapositivas oficiales de Finix Academy son proyectadas con narración sincronizada de **Jorge Neural (es-MX)** de Edge TTS. Para que el estudiante experimente la sensación de un **reproductor de video profesional de streaming**, se implementó el sistema unificado de simulación de video player con:
 
 1. **Barra de Controles Flotante con Hover:**
    - La barra inferior se oculta automáticamente y reaparece suavemente al pasar el puntero sobre la lámina.
