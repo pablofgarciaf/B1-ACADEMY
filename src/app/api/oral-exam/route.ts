@@ -5,6 +5,7 @@ import { adminDb } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
 import { practicasDelModulo } from '@/lib/practice-registry';
+import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
 import {
   EXAM_BANK, EXAM_DURATION_MS, EXAM_QUESTIONS_PER_ATTEMPT, MAX_ATTEMPTS_PER_DAY, MIN_ANSWER_WORDS,
   PASS_MIN_PER_QUESTION, PASS_TOTAL, POINTS_PER_QUESTION, type ExamQuestion,
@@ -52,20 +53,36 @@ export async function POST(request: Request) {
   if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
 
   try {
+    const studentName = getStudentDisplayName(user.profile, user.email);
+
     if (parsed.data.action === 'start') {
       const courseModule = getModuleById(parsed.data.moduleId);
       const bank = EXAM_BANK[parsed.data.moduleId];
       if (!courseModule || !bank) return NextResponse.json({ error: 'Este módulo aún no tiene examen.' }, { status: 404 });
 
       // Requisito: todas las clases del módulo completadas y todas las prácticas aprobadas (validado en el servidor).
-      const progress = await adminDb.collection('academic_progress').doc(`${user.uid}_${courseModule.id}`).get();
-      const progressData = progress.data();
-      const completed = new Set<string>(progressData?.completedClasses ?? []);
+      const progressDocId = buildStudentDocId(courseModule.id, studentName, user.email);
+      const [newProgSnap, legacyProgSnap] = await Promise.all([
+        adminDb.collection('academic_progress').doc(progressDocId).get(),
+        adminDb.collection('academic_progress').doc(`${user.uid}_${courseModule.id}`).get(),
+      ]);
+
+      const newProgData = newProgSnap.exists ? newProgSnap.data() : undefined;
+      const legacyProgData = legacyProgSnap.exists ? legacyProgSnap.data() : undefined;
+
+      const completed = new Set<string>([
+        ...(newProgData?.completedClasses ?? []),
+        ...(legacyProgData?.completedClasses ?? []),
+      ]);
       const pending = courseModule.classes.filter((c) => !completed.has(c.id));
       if (pending.length > 0) {
         return NextResponse.json({ error: `Te faltan ${pending.length} clase(s) por completar: ${pending.map((c) => c.title).join(', ')}.` }, { status: 403 });
       }
-      const passedPractices = new Set<string>(progressData?.passedPractices ?? []);
+
+      const passedPractices = new Set<string>([
+        ...(newProgData?.passedPractices ?? []),
+        ...(legacyProgData?.passedPractices ?? []),
+      ]);
       const pendingPractices = practicasDelModulo(courseModule.id).filter((p) => !passedPractices.has(p));
       if (pendingPractices.length > 0) {
         return NextResponse.json({ error: `Te faltan ${pendingPractices.length} práctica(s) del simulador por aprobar en este módulo antes de iniciar el examen oral.` }, { status: 403 });
@@ -124,9 +141,21 @@ export async function POST(request: Request) {
     const passed = total >= PASS_TOTAL && weakest >= PASS_MIN_PER_QUESTION;
     session.status = passed ? 'passed' : 'failed';
     await ref.update({ answers: session.answers, results: session.results, status: session.status, total });
-    await adminDb.collection('evaluations').doc(parsed.data.examId).set({
-      uid: user.uid, moduleId: session.moduleId, score: total, weakestQuestion: weakest, passed, completedAt: new Date().toISOString(),
-    });
+
+    // Guardado unificado y clasificado en 'evaluations' con ID legible `${modulo}_${nombre_estudiante}`
+    const evalDocId = buildStudentDocId(session.moduleId, studentName, user.email);
+    await adminDb.collection('evaluations').doc(evalDocId).set({
+      uid: user.uid,
+      studentName,
+      studentEmail: user.email,
+      moduleId: session.moduleId,
+      score: total,
+      weakestQuestion: weakest,
+      passed,
+      completedAt: new Date().toISOString(),
+      examId: parsed.data.examId,
+    }, { merge: true });
+
     return NextResponse.json({
       result, finished: true, passed, total, weakest,
       summary: session.results.map((r, i) => ({ question: bank[session.questionOrder[i]].question, score: r.score, missing: r.missing })),

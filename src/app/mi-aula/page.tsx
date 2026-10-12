@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   GraduationCap, Award, ArrowRight, ChevronDown, Lock, CheckCircle2, Compass, Package, ShoppingCart,
-  Landmark, Factory, Settings2, Flag, PlayCircle, Building2, ShieldCheck, Wrench,
+  Landmark, Factory, Settings2, Flag, PlayCircle, Building2, ShieldCheck, Wrench, Sparkles,
 } from 'lucide-react';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
@@ -76,6 +76,36 @@ export default function MiAulaPage() {
             </Link>
           </div>
         </header>
+
+        {/* RUTA COMERCIAL & VENTAS ERP (FAST-TRACK) */}
+        <section aria-labelledby="ruta-comercial" className="rounded-3xl border border-blue-500/40 bg-gradient-to-r from-blue-900/15 via-slate-900/30 to-amber-900/15 bg-white dark:bg-[#131a20] p-6 sm:p-8 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="h-14 w-14 shrink-0 rounded-2xl bg-blue-500/15 flex items-center justify-center border border-blue-500/30">
+              <Sparkles className="w-7 h-7 text-blue-500 dark:text-blue-400" aria-hidden="true" />
+            </div>
+            <div className="space-y-1.5 max-w-2xl">
+              <div className="flex items-center gap-2">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30">
+                  Ruta Comercial & Ventas ERP
+                </span>
+                <span className="text-xs text-slate-500 dark:text-slate-400">· 1 clase integral de punta a punta</span>
+              </div>
+              <h2 id="ruta-comercial" className="text-xl sm:text-2xl font-bold">
+                Taller Maestro de Operaciones y Demostración Comercial Finix ERP
+              </h2>
+              <p className="text-sm text-slate-600 dark:text-gray-300">
+                Aprende a operar el flujo comercial en vivo (Socios, Cotización, Pedido, Facturación SRI con IVA 15%, Cobro y Mapa de Relaciones) y domina los argumentos de negocio, ROI y manejo de objeciones para clientes.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/mi-aula/mod-ventas"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-lg shadow-blue-600/30 transition-all active:scale-95 shrink-0"
+          >
+            <PlayCircle className="w-4 h-4" aria-hidden="true" />
+            Ingresar al Taller de Ventas
+          </Link>
+        </section>
 
         {/* 1 · EMPIEZA AQUÍ: Módulo 1 obligatorio */}
         <section aria-labelledby="empieza" className="rounded-3xl border border-amber-500/40 bg-white dark:bg-[#131a20] p-6 sm:p-8 shadow-xl flex flex-col md:flex-row md:items-center gap-6">

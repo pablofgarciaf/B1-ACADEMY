@@ -23342,5 +23342,201 @@
     ],
     "quizQuestions": [],
     "classId": "mod30-c3"
+  },
+  "mod-ventas-c1": {
+    "classId": "mod-ventas-c1",
+    "title": "Taller Integral de Operaciones Comerciales, Beneficios ERP y Cierre de Demostración",
+    "category": "Ventas & Valor ERP",
+    "number": 1,
+    "totalSlides": 10,
+    "images": [
+      "/images/pilot_slide_1.jpg"
+    ],
+    "syncData": [
+      {
+        "slide_index": 1,
+        "script_text": "Bienvenido al Taller Maestro de Operaciones y Ventas Finix ERP. Este módulo está diseñado para que desarrolles habilidades comerciales de alto nivel demostrando el valor real del sistema en vivo. Como consultor comercial o ejecutivo de ventas, tu misión no es listar funciones técnicas, sino demostrar cómo Finix ERP resuelve los tres dolores críticos de toda empresa: el desorden descontrolado en hojas de cálculo, las fugas silenciosas de dinero en bodega y la falta de información confiable en tiempo real. En esta clase única de punta a punta, ejecutaremos el ciclo comercial completo directamente en tu empresa B1 Center.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 2,
+        "script_text": "Misión 1: Alta y Calificación del Cliente Corporativo. En Excel o en sistemas desarticulados, los vendedores registran ventas a clientes con facturas vencidas o sin límite de crédito. En Finix ERP, los Socios de Negocios integran datos fiscales, límite de crédito automático, lista de precios preferencial y condiciones de pago. Vamos a crear el cliente corporativo C20001 asignándole un límite de diez mil dólares. Beneficio para el cliente: Cero ventas a clientes morosos y protección automática del flujo de caja.",
+        "step_guide": {
+          "action_type": "partner_create",
+          "menu_path": "Ventas > Socios de Negocios",
+          "title": "Creación de Cliente Corporativo",
+          "instructions": [
+            "Ingresa a Socios de Negocios en el menú de Ventas.",
+            "Crea el cliente con código C20001 y Razón Social corporativa.",
+            "Establece el límite de crédito en 10000 y lista de precios mayorista."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Código Socio",
+              "valor": "C20001"
+            },
+            {
+              "etiqueta": "Límite de Crédito",
+              "valor": "10000"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 3,
+        "script_text": "Misión 2: Consulta de Inventario y Control de Precios sin Merma de Margen. Uno de los mayores problemas que vive el Gerente de Ventas es la llamada telefónica constante a bodega para preguntar: ¿hay stock disponible? Con Finix ERP, el ejecutivo comercial consulta existencias multialmacén en tiempo real, verifica el stock comprometido por otros pedidos y consulta el precio base sin riesgo de vender por debajo del costo. Beneficio para el cliente: Respuestas instantáneas a prospectos y protección inquebrantable del margen comercial.",
+        "step_guide": {
+          "action_type": "item_query",
+          "menu_path": "Inventario > Datos Maestros de Artículo",
+          "title": "Consulta de Stock y Precios",
+          "instructions": [
+            "Abre el catálogo de artículos de tu empresa de práctica.",
+            "Verifica el stock disponible y comprometido del artículo A00001 en el almacén principal.",
+            "Revisa la lista de precios asignada y el margen mínimo establecido."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Artículo Consultado",
+              "valor": "A00001"
+            },
+            {
+              "etiqueta": "Almacén Principal",
+              "valor": "01"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 4,
+        "script_text": "Misión 3: Emisión Formal de Oferta de Venta (Cotización). La velocidad de respuesta es el factor número uno de conversión comercial. En Finix ERP, emitir una cotización toma menos de sesenta segundos: el sistema jala los datos del socio, aplica la lista de precios acordada y calcula el subtotal e impuestos automáticamente. Beneficio para el cliente: Presentación profesional inmediata, validez de la oferta controlada y trazabilidad desde el primer contacto.",
+        "step_guide": {
+          "action_type": "quotation_create",
+          "menu_path": "Ventas > Oferta de Venta",
+          "title": "Emisión de Oferta de Venta",
+          "instructions": [
+            "Selecciona el socio C20001 en la Oferta de Venta.",
+            "Agrega 5 unidades del artículo A00001 con su precio de lista.",
+            "Registra la fecha de validez y guarda la cotización."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Cliente",
+              "valor": "C20001"
+            },
+            {
+              "etiqueta": "Cantidad",
+              "valor": "5"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 5,
+        "script_text": "Misión 4: Cierre Comercial y Pedido de Venta en Firme. Cuando el cliente acepta la cotización, en otros sistemas el vendedor vuelve a escribir todo en otra pantalla o en un correo. En Finix ERP usamos Copiar a Pedido de Venta. Con un solo clic, la oferta se convierte en Pedido en Firme, reservando automáticamente el inventario en bodega para que ningún otro vendedor lo comprometa. Beneficio para el cliente: Cero duplicidad de digitación y garantía de despacho sin sobreventa.",
+        "step_guide": {
+          "action_type": "order_create",
+          "menu_path": "Ventas > Pedido de Venta",
+          "title": "Confirmación de Pedido de Venta",
+          "instructions": [
+            "Copia la oferta anterior a Pedido de Venta.",
+            "Verifica que el stock quede en estado Comprometido.",
+            "Confirma y guarda el pedido en firme."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Origen Documental",
+              "valor": "Oferta de Venta"
+            },
+            {
+              "etiqueta": "Estado Pedido",
+              "valor": "Abierto"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 6,
+        "script_text": "Misión 5: Despacho Logístico y Facturación Electrónica con IVA 15% SRI 2026. Es hora de facturar y despachar. Finix ERP permite generar la Entrega y la Factura de Deudores con un solo clic. El sistema descarga automáticamente las existencias de la bodega, calcula el IVA 15% vigente y genera la cuenta por cobrar en el libro mayor sin intervención manual de contabilidad. Beneficio para el cliente: Cumplimiento tributario en tiempo real, reducción drástica de tiempos de despacho y contabilidad al centavo.",
+        "step_guide": {
+          "action_type": "invoice_create",
+          "menu_path": "Ventas > Factura de Deudores",
+          "title": "Facturación Electrónica e IVA 15%",
+          "instructions": [
+            "Copia el Pedido a Factura de Clientes.",
+            "Verifica el cálculo del IVA 15% y el total de la cuenta por cobrar.",
+            "Genera la factura y comprueba la descarga de bodega."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Tipo Documento",
+              "valor": "Factura de Clientes"
+            },
+            {
+              "etiqueta": "Tasa Impuesto",
+              "valor": "15%"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 7,
+        "script_text": "Misión 6: El As Bajo la Manga del Vendedor ERP: El Mapa de Relaciones. Durante una demostración comercial a gerentes generales y dueños de negocio, la función que más vende es el Mapa de Relaciones. Abre la factura, haz clic derecho y selecciona Mapa de Relaciones. El cliente verá de forma visual el árbol completo: Cotización a Pedido, Entrega, Factura y Asiento Contable. Beneficio para el cliente: Auditoría total con un clic. Se acabaron los correos perdidos y las discusiones sobre quién autorizó qué.",
+        "step_guide": {
+          "action_type": "relationship_map",
+          "menu_path": "Factura > Clic Derecho > Mapa de Relaciones",
+          "title": "Visualización de Trazabilidad Integral",
+          "instructions": [
+            "Desde la factura generada, abre el Mapa de Relaciones.",
+            "Observa la cadena documental completa y los enlaces contables.",
+            "Comprueba el estado cerrado o abierto de cada eslabón."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Herramienta",
+              "valor": "Mapa de Relaciones"
+            },
+            {
+              "etiqueta": "Trazabilidad",
+              "valor": "Completa"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 8,
+        "script_text": "Misión 7: Cobranza y Cierre Financiero. Una venta no termina cuando se entrega el producto, sino cuando se cobra. En Finix ERP, el módulo de Gestión de Bancos permite registrar el Pago Recibido en efectivo, transferencia o cheque, cruzándolo directamente con la factura. Al guardar el cobro, el saldo del cliente se actualiza de inmediato y el dinero ingresa al flujo de caja. Beneficio para el cliente: Reducción del ciclo de cobro, control de cobradores y conciliación bancaria limpia.",
+        "step_guide": {
+          "action_type": "incoming_payment",
+          "menu_path": "Gestión de Bancos > Pagos Recibidos",
+          "title": "Registro de Cobro y Cierre de Saldo",
+          "instructions": [
+            "Abre Pagos Recibidos para el cliente C20001.",
+            "Selecciona la factura pendiente de cobro.",
+            "Registra el medio de pago con transferencia bancaria y guarda."
+          ],
+          "campos": [
+            {
+              "etiqueta": "Operación",
+              "valor": "Pago Recibido"
+            },
+            {
+              "etiqueta": "Medio de Cobro",
+              "valor": "Transferencia Bancaria"
+            }
+          ]
+        }
+      },
+      {
+        "slide_index": 9,
+        "script_text": "Cómo Rebatir las 5 Objeciones Típicas de Clientes en Ventas ERP. Primera, Es muy caro: Demuestra que no es un gasto sino una inversión con retorno de inversión menor a ocho meses por erradicación de mermas y errores contables. Segunda, Mi equipo no se adaptará: La interfaz es modular y amigable; cada rol solo ve lo que necesita para su trabajo. Tercera, Ya usamos Excel: Explica que Excel no tiene pistas de auditoría inmutables ni sincronización en vivo. Cuarta, Tarda mucho en implementarse: Gracias a la arquitectura preconfigurada de B1 Center la empresa arranca en semanas. Quinta, Ya tenemos software contable: El software contable solo registra el pasado; Finix ERP controla la operación en vivo antes de que ocurra el error.",
+        "step_guide": null
+      },
+      {
+        "slide_index": 10,
+        "script_text": "¡Felicitaciones! Has completado el Taller Maestro de Operaciones y Ventas ERP. Ahora dominas el flujo comercial de punta a punta en la empresa de simulación y posees los argumentos de valor que convencen a gerentes y directores. Para certificar tu dominio, presenta la evaluación oral donde defenderás un caso real de venta y rebatirás las objeciones de un prospecto exigente. ¡Mucho éxito en tus cierres comerciales!",
+        "step_guide": null
+      }
+    ],
+    "quizQuestions": []
   }
 }

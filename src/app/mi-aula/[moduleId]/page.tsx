@@ -84,7 +84,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   const [induccionLista, setInduccionLista] = useState<boolean | null>(null);
   useEffect(() => {
     if (!currentUser || !moduleId) return;
-    const sinRequisito = moduleId === 'mod-1' || ['super', 'admin', 'docente'].includes(userProfile?.role ?? '');
+    const sinRequisito = moduleId === 'mod-1' || moduleId === 'mod-ventas' || ['super', 'admin', 'docente'].includes(userProfile?.role ?? '');
     if (sinRequisito) { setInduccionLista(true); return; }
     const totalMod1 = OFFICIAL_SYLLABUS.find(m => m.id === 'mod-1')?.classes.length ?? 0;
     let activo = true;

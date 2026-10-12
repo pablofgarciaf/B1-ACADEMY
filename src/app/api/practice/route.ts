@@ -6,6 +6,7 @@ import { getModuleById } from '@/lib/curriculum-data';
 import { coincide, practicaAprobada } from '@/lib/practice-check';
 import { camposEsperados, clavePractica } from '@/lib/practice-registry';
 import { readCompany } from '@/lib/company-server';
+import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
 
 /**
  * Califica en el servidor una práctica del simulador de Mi Aula.
@@ -35,12 +36,13 @@ async function registroReciente(uid: string): Promise<boolean> {
 }
 
 export async function POST(request: Request) {
-  let uid: string;
+  let user;
   try {
-    uid = (await requireBearerUser(request)).uid;
+    user = await requireBearerUser(request);
   } catch {
     return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
   }
+  const uid = user.uid;
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
   const { moduleId, classId, slideIndex, valores, intentos, vioSolucion, conectada = false } = parsed.data;
@@ -66,19 +68,45 @@ export async function POST(request: Request) {
   const aprobada = practicaAprobada(correctos, total, { valores, intentos, vioSolucion, conectada });
 
   try {
+    const studentName = getStudentDisplayName(user.profile, user.email);
+    const progressDocId = buildStudentDocId(moduleId, studentName, user.email);
+
     // Registro de cada práctica completada (aprobada o no): qué escribió el estudiante y cuándo.
     // Una ficha por práctica, que se actualiza en cada intento: queda guardado aunque cambie de dispositivo.
     await adminDb.collection('practice_records').doc(`${uid}_${classId}_${slideIndex}`).set({
       uid, moduleId, classId, slideIndex,
+      studentName,
+      studentEmail: user.email,
       campos: conectada
         ? valores.map((v) => ({ etiqueta: 'registro en la empresa', valor: v }))
         : campos.map((c, i) => ({ etiqueta: c.etiqueta, valor: valores[i] ?? '' })),
       correctos, total, aprobada, intentos, vioSolucion, conectada,
       updatedAt: new Date().toISOString(),
     }, { merge: true });
+
     if (aprobada) {
-      await adminDb.collection('academic_progress').doc(`${uid}_${moduleId}`).set({
+      const docRef = adminDb.collection('academic_progress').doc(progressDocId);
+      const currentDoc = await docRef.get();
+      if (!currentDoc.exists) {
+        const legacyDoc = await adminDb.collection('academic_progress').doc(`${uid}_${moduleId}`).get();
+        if (legacyDoc.exists) {
+          const legacyData = legacyDoc.data();
+          await docRef.set({
+            uid,
+            studentName,
+            studentEmail: user.email,
+            moduleId,
+            completedClasses: legacyData?.completedClasses ?? [],
+            passedPractices: legacyData?.passedPractices ?? [],
+            updatedAt: new Date().toISOString(),
+          }, { merge: true });
+        }
+      }
+
+      await docRef.set({
         uid,
+        studentName,
+        studentEmail: user.email,
         moduleId,
         passedPractices: fieldValue().arrayUnion(clavePractica(classId, slideIndex)),
         updatedAt: new Date().toISOString(),

@@ -99,6 +99,10 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
     title: 'Gestión CRM, Oportunidades y Servicio Post-Venta',
     description: 'Pipeline comercial, oportunidades de venta, llamadas de servicio, tarjetas de equipo y gestión de garantías.',
     certificateTitle: 'Certificado en CRM y Servicio Postventa', classes: [] },
+  { id: 'mod-ventas', number: 14.5, block: 'Gestión Comercial y CRM', badge: 'Ventas & Valor ERP',
+    title: 'Taller Maestro de Operaciones y Demostración Comercial Finix ERP',
+    description: 'Módulo intensivo para ejecutivos comerciales y consultores de preventa: operación práctica en B1 Center, flujo comercial completo (Socios, Cotización, Pedido, Entrega, Factura IVA 15%, Cobranza y Mapa de Relaciones) y argumentación de beneficios ROI para clientes.',
+    certificateTitle: 'Certificado en Demostración Comercial y Operaciones Finix ERP', classes: [] },
   { id: 'mod-15', number: 15, block: 'Producción y Planificación', badge: 'MRP',
     title: 'Planificación de Materiales (MRP)',
     description: 'Previsión de demanda, pronósticos de venta, asistente MRP y generación automatizada de órdenes de compra y producción.',
@@ -259,3 +263,5 @@ export function getClassById(moduleId: string, classId: string): SyllabusClass |
 export function moduleMinutes(mod: SyllabusModule): number {
   return mod.classes.reduce((acc, c) => acc + c.durationMinutes, 0);
 }
+
+export const MODULO_VENTAS = 'mod-ventas';

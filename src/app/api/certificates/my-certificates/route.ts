@@ -7,7 +7,10 @@ export async function GET(request: Request) {
     // Nunca aceptar un uid del cliente: la identidad proviene exclusivamente de la sesión verificada.
     let uid: string;
     if (request.headers.get('authorization')?.startsWith('Bearer ')) {
-      try { uid = (await requireBearerUser(request)).uid; }
+      try {
+        const user = await requireBearerUser(request);
+        uid = user.uid;
+      }
       catch { return NextResponse.json({ error: 'No autorizado.' }, { status: 401 }); }
     } else {
       const session = await getSessionState();
@@ -24,7 +27,7 @@ export async function GET(request: Request) {
 
     const certificates = certsSnap.docs.map(doc => doc.data());
 
-    // 2. Obtener progreso académico por módulo
+    // 2. Obtener progreso académico por módulo (combina sin pérdida la nomenclatura nueva y legada)
     const progressSnap = await adminDb
       .collection('academic_progress')
       .where('uid', '==', uid)
@@ -34,14 +37,17 @@ export async function GET(request: Request) {
     progressSnap.docs.forEach(doc => {
       const data = doc.data();
       if (data.moduleId) {
+        const existing = progress[data.moduleId] || { completedClasses: [], passedPractices: [] };
+        const mergedClasses = Array.from(new Set([...existing.completedClasses, ...(data.completedClasses || [])]));
+        const mergedPractices = Array.from(new Set([...existing.passedPractices, ...(data.passedPractices || [])]));
         progress[data.moduleId] = {
-          completedClasses: data.completedClasses || [],
-          passedPractices: data.passedPractices || [],
+          completedClasses: mergedClasses,
+          passedPractices: mergedPractices,
         };
       }
     });
 
-    // 3. Obtener evaluaciones de exámenes orales
+    // 3. Obtener evaluaciones de exámenes orales (prioriza aprobadas y puntajes superiores)
     const evalSnap = await adminDb
       .collection('evaluations')
       .where('uid', '==', uid)
@@ -51,11 +57,18 @@ export async function GET(request: Request) {
     evalSnap.docs.forEach(doc => {
       const data = doc.data();
       if (data.moduleId) {
-        evaluations[data.moduleId] = {
-          score: data.score || 0,
-          passed: !!data.passed,
-          completedAt: data.completedAt || '',
-        };
+        const existing = evaluations[data.moduleId];
+        const currentPassed = !!data.passed;
+        const currentScore = data.score || 0;
+        const currentCompletedAt = data.completedAt || '';
+
+        if (!existing || (!existing.passed && currentPassed) || (existing.passed === currentPassed && currentScore > existing.score)) {
+          evaluations[data.moduleId] = {
+            score: currentScore,
+            passed: currentPassed,
+            completedAt: currentCompletedAt || existing?.completedAt || '',
+          };
+        }
       }
     });
 

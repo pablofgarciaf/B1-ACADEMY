@@ -898,5 +898,14 @@
       "description": "Clase práctica sobre el uso avanzado de consultas SQL en Finix ERP mediante el Generador de Consultas.",
       "durationMinutes": 57
     }
+  ],
+  "mod-ventas": [
+    {
+      "id": "mod-ventas-c1",
+      "number": 1,
+      "title": "Taller Integral de Operaciones Comerciales, Beneficios de Negocio y Cierre de Demostración ERP",
+      "description": "Clase maestra de punta a punta: cómo operar el flujo comercial completo (Socios, Cotización, Pedido, Facturación SRI 2026, Cobranza y Mapa de Relaciones) y comunicar con éxito las ventajas competitivas a directores y gerentes.",
+      "durationMinutes": 45
+    }
   ]
 }

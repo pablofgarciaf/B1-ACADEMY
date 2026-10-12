@@ -1375,7 +1375,7 @@ export async function GET(req: Request) {
     }
 
     // El Módulo 1 (inducción) es requisito de todos los demás: se exige también aquí, no solo en la interfaz.
-    if (foundModule.id !== MODULO_INDUCCION && !(await moduloInduccionCompleto(actor.uid, actor.profile.role))) {
+    if (foundModule.id !== MODULO_INDUCCION && foundModule.id !== 'mod-ventas' && !(await moduloInduccionCompleto(actor.uid, actor.profile.role, actor.profile.displayName || actor.profile.name, actor.email))) {
       return NextResponse.json({ error: 'Completa primero el Módulo 1 para acceder a este módulo.' }, { status: 403 });
     }
 
