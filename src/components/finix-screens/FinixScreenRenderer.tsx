@@ -44,6 +44,8 @@ const ATSScreen = dynamic(() => import('./ATSScreen'), { loading: cargando });
 const ChartOfAccountsScreen = dynamic(() => import('./ChartOfAccountsScreen'), { loading: cargando });
 const UDOScreen = dynamic(() => import('./UDOScreen'), { loading: cargando });
 const SalesRelationshipMapScreen = dynamic(() => import('./SalesRelationshipMapScreen'), { loading: cargando });
+const ApprovalsScreen = dynamic(() => import('./ApprovalsScreen'), { loading: cargando });
+const AgingScreen = dynamic(() => import('./AgingScreen'), { loading: cargando });
 
 export interface FinixScreenRendererProps {
   screenId: string;
@@ -123,8 +125,11 @@ const SCREEN_MAP: Record<string, React.ComponentType<{ screenId: string; screenN
 
   // ── Administración ────────────────────────────────────────────────
   'ADM001': () => <CompanySettingsScreen />,
-  'ADM002': (p) => <GenericFinixScreen {...p} icon="👤" description="Gestión de usuarios, roles, autorizaciones y licencias de acceso Finix ERP" />,
+  'ADM002': () => <ApprovalsScreen />,
+  'ADM-APROB': () => <ApprovalsScreen />,
   'ADM004': () => <UDOScreen />,
+  'RPT-AGING': () => <AgingScreen />,
+  'FIN-AGING': () => <AgingScreen />,
 
   // ── Localización Ecuador (SRI & Nómina) ───────────────────────────
   'EC-SRI': () => <SRIElectronicScreen initialType="01" />,

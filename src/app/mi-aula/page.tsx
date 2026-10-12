@@ -99,27 +99,27 @@ export default function MiAulaPage() {
                   Ruta Comercial · Acceso Directo
                 </span>
                 <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
-                  45 min de Punta a Punta · 7 Misiones Prácticas
+                  4 Clases Magistrales · 2.5 Horas · 20 Misiones Corporativas
                 </span>
               </div>
               <h2 id="ruta-comercial" className="text-xl sm:text-2xl font-extrabold tracking-tight">
                 Taller Maestro de Operaciones y Demostración Comercial Finix ERP
               </h2>
               <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-                Diseñado para personal de ventas y consultores de preventa: opera el flujo comercial completo (Socios, Cotización, Pedido, Facturación SRI IVA 15%, Cobro y Mapa de Relaciones) y aprende a comunicar con éxito los beneficios, el ROI y rebatir las 5 objeciones más comunes ante clientes.
+                Programa ejecutivo de 4 clases magistrales para consultores comerciales y ejecutivos de preventa: Prospección y riesgo crediticio, Ingeniería de oferta y ATP multialmacén, Ciclo Order-to-Cash y facturación SRI 2026, y Cobranzas con demostración ejecutiva C-Level.
               </p>
               <div className="flex flex-wrap gap-2 pt-1 text-[11px] text-slate-500 dark:text-gray-400 font-medium">
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
-                  ✓ Alta y calificación de clientes
+                  ✓ Clase 1: Prospección & Riesgo Crediticio
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
-                  ✓ Reserva automática de stock
+                  ✓ Clase 2: Ofertas ATP & Margen Mínimo
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
-                  ✓ Facturación electrónica SRI 2026
+                  ✓ Clase 3: Order-to-Cash, SRI 2026 & Mapa
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
-                  ✓ Trazabilidad en Mapa de Relaciones
+                  ✓ Clase 4: Cobranza & Demostración C-Level
                 </span>
               </div>
             </div>
@@ -130,11 +130,18 @@ export default function MiAulaPage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-lg shadow-blue-600/30 transition-all active:scale-95 text-center"
             >
               <PlayCircle className="w-4 h-4" aria-hidden="true" />
-              Iniciar Taller de Ventas
+              Iniciar 4 Clases de Ventas
+            </Link>
+            <Link
+              href="/presentacion-comercial"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-blue-500/40 hover:border-blue-500 text-slate-800 dark:text-gray-200 text-xs font-semibold transition-all active:scale-95 text-center"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-blue-500" aria-hidden="true" />
+              Presentación para Clientes (Pitch Deck)
             </Link>
             <Link
               href="/mi-aula/mod-ventas/oral-exam"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-blue-500/30 hover:border-blue-500 text-slate-800 dark:text-gray-200 text-xs font-semibold transition-all active:scale-95 text-center"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-white dark:bg-gray-800 border border-slate-200 dark:border-gray-700 hover:border-amber-500 text-slate-800 dark:text-gray-200 text-xs font-semibold transition-all active:scale-95 text-center"
             >
               <Award className="w-3.5 h-3.5 text-amber-500" aria-hidden="true" />
               Evaluación & Certificado

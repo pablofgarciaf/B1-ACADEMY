@@ -903,9 +903,30 @@
     {
       "id": "mod-ventas-c1",
       "number": 1,
-      "title": "Taller Integral de Operaciones Comerciales, Beneficios de Negocio y Cierre de Demostración ERP",
-      "description": "Clase maestra de punta a punta: cómo operar el flujo comercial completo (Socios, Cotización, Pedido, Facturación SRI 2026, Cobranza y Mapa de Relaciones) y comunicar con éxito las ventajas competitivas a directores y gerentes.",
-      "durationMinutes": 45
+      "title": "Prospección B2B, Onboarding Fiscal y Gestión de Riesgo Crediticio",
+      "description": "Aprende a calificar clientes corporativos, validar identificaciones fiscales RUC SRI, asignar listas de precios mayoristas, configurar límites de crédito y demostrar el bloqueo automático por morosidad con flujos de aprobación gerencial.",
+      "durationMinutes": 35
+    },
+    {
+      "id": "mod-ventas-c2",
+      "number": 2,
+      "title": "Ingeniería de la Oferta: Cotizaciones Complejas, ATP Multialmacén y Blindaje de Márgenes",
+      "description": "Domina la consulta de inventario Disponible para Promesa (ATP) entre bodegas, control de precios por volumen, cotizaciones multi-línea y la protección del margen bruto de la empresa ante descuentos excesivos.",
+      "durationMinutes": 35
+    },
+    {
+      "id": "mod-ventas-c3",
+      "number": 3,
+      "title": "Ejecución Order-to-Cash, Facturación Electrónica SRI 2026 y Trazabilidad en Mapa de Relaciones",
+      "description": "Opera el ciclo de cierre: pedido en firme con reserva de stock, despacho con kardex en tiempo real, factura de deudores con IVA 15% SRI 2026, retenciones y la auditoría directiva en el Mapa de Relaciones ante gerentes.",
+      "durationMinutes": 40
+    },
+    {
+      "id": "mod-ventas-c4",
+      "number": 4,
+      "title": "Cobranzas, Conciliación Bancaria, Taller Anti-Objeciones y Demostración C-Level de 15 Minutos",
+      "description": "Gestión de tesorería, cobros y liberación de cupo de crédito, análisis de antigüedad de cartera (DSO), refutación práctica de las 5 objeciones más duras de clientes y el guion probado para cerrar ventas ante CEO y CFO.",
+      "durationMinutes": 40
     }
   ]
 }
