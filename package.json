@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "npm run lint && tsc --noEmit --pretty false && npm run test:unit",
+    "test": "npm run lint && next typegen && tsc --noEmit --pretty false && npm run test:unit",
     "test:motor": "npm run test:unit",
     "test:unit": "node --test tests/*.test.cjs",
     "check:release": "node tests/check-release.cjs"

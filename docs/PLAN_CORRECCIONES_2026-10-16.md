@@ -98,3 +98,5 @@ Vercel tiene sesión válida de otra cuenta sin acceso al equipo sinerg-ia2. Se 
 - Biblioteca: selector corregido para usar las mismas 23 categorías del catálogo; eliminada la copia divergente. Las autoevaluaciones locales se distinguen del expediente registrado y ya no prometen certificación oficial, horas ni entrevistas. Se corrigieron afirmaciones absolutas del repaso transversal; el análisis pedagógico completo sigue pendiente.
 
 - Comprobación visual de una clase real: las capturas y el guion heredados describen otro ERP. Se añadió aviso visible en cada manual para no atribuir esas funciones al simulador Finix; se enlaza al aula para prácticas evaluadas. Sustituir y revisar ese material sigue siendo trabajo académico pendiente, sin reemplazos automáticos de marca que falseen el contenido.
+
+- Publicación y mantenibilidad: la presentación comercial tiene URL canónica propia; el sitemap excluye la página de consultores marcada noindex. npm test regenera tipos de rutas con next typegen antes de TypeScript para evitar inconsistencias entre los artefactos locales de desarrollo y producción.
