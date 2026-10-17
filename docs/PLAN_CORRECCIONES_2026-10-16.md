@@ -8,7 +8,7 @@ Las correcciones de código de A01–A27 están implementadas o tienen una alter
 
 ## Resultado local
 
-- npm test: lint, tipos y 57 pruebas funcionales aprobadas, sin pruebas omitidas. Incluye servicios simulados; no sustituye Firebase/Supabase reales.
+- npm test: lint, tipos y 59 pruebas funcionales aprobadas, sin pruebas omitidas. Incluye servicios simulados; no sustituye Firebase/Supabase reales.
 - npm run build: última compilación de producción aprobada con salida 0; 166 páginas generadas. Política de micrófono del examen confirmada en el manifiesto compilado.
 - git diff --check: aprobado.
 - npm run check:release: bloqueo esperado por siete datos/configuraciones ausentes: dominio, nombre legal, RUC, dirección, ciudad, correo de privacidad y GTM. No se inventaron valores.
@@ -44,7 +44,7 @@ Las correcciones de código de A01–A27 están implementadas o tienen una alter
 | A23 | Intentos y reservas de pregunta transaccionales; concurrencia/versión de pregunta; hash de rúbrica evita reanudar un temario distinto. | Prueba de inicio y respuesta concurrente aprobada. |
 | A24 | Webhook firmado registra recepción pendiente, deduplica y responde completed:false. | Regresión aprobada; no se implementa una emisión automática inexistente. |
 | A25 | Sitemap desde catálogo; dominio central; llms dinámicos; marca/cifras públicas corregidas. | Dominio definitivo, rastreo e indexación pendientes. |
-| A26 | Suite funcional bajo tests/ incluida en npm test; sin depender de scripts ignorados. | 57/57 aprobadas. |
+| A26 | Suite funcional bajo tests/ incluida en npm test; sin depender de scripts ignorados. | 59/59 aprobadas. |
 | A27 | Credenciales de laboratorio explícitamente sintéticas. | No son cuentas reales ni credenciales compartidas de producción. |
 
 ## Correcciones adicionales descubiertas al integrar
@@ -100,3 +100,5 @@ Vercel tiene sesión válida de otra cuenta sin acceso al equipo sinerg-ia2. Se 
 - Comprobación visual de una clase real: las capturas y el guion heredados describen otro ERP. Se añadió aviso visible en cada manual para no atribuir esas funciones al simulador Finix; se enlaza al aula para prácticas evaluadas. Sustituir y revisar ese material sigue siendo trabajo académico pendiente, sin reemplazos automáticos de marca que falseen el contenido.
 
 - Publicación y mantenibilidad: la presentación comercial tiene URL canónica propia; el sitemap excluye la página de consultores marcada noindex. npm test regenera tipos de rutas con next typegen antes de TypeScript para evitar inconsistencias entre los artefactos locales de desarrollo y producción.
+
+- Audio real: se detectó ausencia de firmas en los manuales públicos del alojamiento. La firma usa primero la clave dedicada o de constancias; si faltan ambas, deriva una clave de propósito exclusivo con HKDF de la credencial ya existente del servidor, sin exponerla. Se corrigió el reintento del visor tras un fallo y se añadió aviso visible; errores de decodificación ya no completan láminas. Regresiones de firma estable, rechazo de texto ajeno y audio inválido añadidas.

@@ -125,7 +125,7 @@ export function useAcademyVoice() {
     const end = pendingEndRef.current;
     if (audio && audio.paused) {
       audio.play().catch(() => {
-        if (token === tokenRef.current && end) end();
+        if (token === tokenRef.current) { stopSpeaking(); setVozFallo(true); }
       });
     }
     if (timerRemainingRef.current > 0 && end) {
@@ -133,7 +133,7 @@ export function useAcademyVoice() {
       timerRef.current = setTimeout(end, timerRemainingRef.current);
     }
     setIsPaused(false);
-  }, []);
+  }, [stopSpeaking]);
 
   const togglePause = useCallback(() => {
     if (isPaused) {
@@ -209,7 +209,15 @@ export function useAcademyVoice() {
         };
 
         audio.onended = finish;
-        audio.onerror = finish;
+        const failPlayback = () => {
+          if (token !== tokenRef.current) return;
+          clearPlayback();
+          pendingEndRef.current = undefined;
+          setIsSpeaking(false);
+          setIsPaused(false);
+          setVozFallo(true);
+        };
+        audio.onerror = failPlayback;
 
         if (pausedRef.current) return;
         return audio.play().catch((error: unknown) => {
@@ -220,7 +228,7 @@ export function useAcademyVoice() {
             setNeedsGesture(true);
             return;
           }
-          finish();
+          failPlayback();
         });
       })
       .catch(() => {
@@ -245,8 +253,8 @@ export function useAcademyVoice() {
     setNeedsGesture(false);
     setIsSpeaking(true);
     setIsPaused(false);
-    audio.play().catch(() => { if (token === tokenRef.current) end(); });
-  }, []);
+    audio.play().catch(() => { if (token === tokenRef.current) { stopSpeaking(); setVozFallo(true); } });
+  }, [stopSpeaking]);
 
   /** Descarga por adelantado la narración siguiente para que no haya silencios entre láminas. */
   const preload = useCallback((text: string, firma?: string) => {

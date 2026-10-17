@@ -152,10 +152,11 @@ export function Navbar() {
           ) : (
             <Link
               href="/login"
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-white bg-finix-blue hover:bg-sky-600 shadow-md shadow-finix-blue/20 transition-all active:scale-95 cursor-pointer"
+              aria-label="Iniciar Sesión"
+              className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 px-3 sm:px-4 py-2 rounded-xl text-xs font-bold text-white bg-finix-blue hover:bg-sky-600 shadow-md shadow-finix-blue/20 transition-all active:scale-95 cursor-pointer"
             >
               <LogIn className="w-3.5 h-3.5" />
-              <span>Iniciar Sesión</span>
+              <span className="hidden whitespace-nowrap sm:inline">Iniciar Sesión</span>
             </Link>
           )}
 

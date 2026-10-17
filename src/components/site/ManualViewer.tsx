@@ -513,8 +513,8 @@ export default function ManualViewer({
 
   // Si la voz no responde, la clase se detiene en la lámina actual: nunca avanza en silencio.
   useEffect(() => {
-    if (vozFallo && narrando) { stopSpeaking(); setNarrando(false); }
-  }, [vozFallo, narrando, stopSpeaking]);
+    if (vozFallo) { stopSpeaking(); setNarrando(false); }
+  }, [vozFallo, stopSpeaking]);
 
   useEffect(() => {
     if (!narrable || !narrando) return;
@@ -573,6 +573,7 @@ export default function ManualViewer({
 
   return (
     <div className="flex h-full w-full flex-col gap-2 overflow-hidden">
+      {vozFallo && <p role="alert" className="shrink-0 rounded-xl border border-amber-500/40 bg-amber-500/10 p-3 text-sm text-amber-200">No pudimos reproducir la narración. La clase se detuvo en esta lámina; puedes leer el texto y volver a pulsar Reproducir para intentarlo de nuevo.</p>}
       <div className="flex flex-1 min-h-0 w-full flex-col lg:flex-row gap-3 sm:gap-4 overflow-hidden">
         {/* Zona principal de la Presentación o Video */}
         <div className="flex flex-1 min-h-0 h-full flex-col overflow-hidden rounded-2xl border border-gray-800 bg-[#0A0A0F] shadow-2xl lg:w-2/3">

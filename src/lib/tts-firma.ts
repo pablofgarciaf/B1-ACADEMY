@@ -1,5 +1,5 @@
 import 'server-only';
-import { createHmac, timingSafeEqual } from 'crypto';
+import { createHmac, hkdfSync, timingSafeEqual } from 'crypto';
 
 /**
  * Firma de textos narrables sin sesión (manuales públicos).
@@ -8,8 +8,13 @@ import { createHmac, timingSafeEqual } from 'crypto';
  */
 /** Claves posibles, en orden de preferencia. */
 function secretos(): string[] {
-  return [process.env.TTS_SIGNING_SECRET, process.env.CERTIFICATE_SIGNING_SECRET]
+  const explicit = [process.env.TTS_SIGNING_SECRET, process.env.CERTIFICATE_SIGNING_SECRET]
     .filter((s): s is string => !!s);
+  if (explicit.length) return explicit;
+  // Clave con propósito separado y estable entre compilación y servidor.
+  // Compatibilidad con el alojamiento existente; no se transmite la credencial.
+  const adminKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, '\n').trim();
+  return adminKey ? [Buffer.from(hkdfSync('sha256', adminKey, 'finix-academy', 'public-narration-signing/v1', 32)).toString('hex')] : [];
 }
 
 function normalizar(texto: string) {
