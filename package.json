@@ -17,7 +17,6 @@
     "check:release": "node tests/check-release.cjs"
   },
   "dependencies": {
-    "@tailwindcss/typography": "^0.5.20",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "firebase": "^11.4.0",
@@ -25,8 +24,8 @@
     "jsbarcode": "^3.12.3",
     "jspdf": "^4.2.1",
     "lucide-react": "^0.475.0",
-    "msedge-tts": "^2.0.9",
-    "next": "^15.2.0",
+    "msedge-tts": "^2.1.0",
+    "next": "^15.5.28",
     "next-themes": "^0.4.4",
     "openai": "^7.23.0",
     "react": "^19.0.0",
@@ -46,10 +45,17 @@
     "@types/react-dom": "^19.0.4",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.21.0",
-    "eslint-config-next": "^15.2.0",
-    "postcss": "^8.5.3",
+    "eslint-config-next": "^15.5.28",
+    "postcss": "^8.5.23",
     "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@tailwindcss/typography": "^0.5.20"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "^1.13.6",
+    "postcss": "$postcss",
+    "postcss-selector-parser": "^7.1.6",
+    "uuid": "^11.1.1"
   }
 }
