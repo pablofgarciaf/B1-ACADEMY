@@ -6,7 +6,7 @@ import {OFFICIAL_SYLLABUS} from '@/lib/curriculum-data';
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '', '/manuales', '/capacitacion', '/blog', '/verificar',
-    '/privacidad', '/terminos', '/cookies', '/empresas', '/talento', '/consultores', '/presentacion-comercial',
+    '/privacidad', '/terminos', '/cookies', '/empresas', '/talento', '/presentacion-comercial',
     '/blog/partida-doble-en-el-simulador',
     '/blog/trazabilidad-de-operaciones-erp',
   ];
