@@ -5,9 +5,9 @@ import { dato, LEGAL } from '@/lib/legal-config';
 
 export const metadata: Metadata = {
   // 53 caracteres
-  title: 'Términos y Condiciones de Uso del Campus | B1 Academy',
+  title: 'Términos y Condiciones de Uso del Campus | Finix Academy',
   // 150 caracteres
-  description: 'Condiciones de uso de B1 Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de Finix ERP y ley ecuatoriana.',
+  description: 'Condiciones de uso de Finix Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de Finix ERP y ley ecuatoriana.',
   alternates: { canonical: `${LEGAL.sitio}/terminos` },
 };
 

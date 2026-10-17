@@ -94,7 +94,7 @@ $$;
 -- La firma antigua se retira para impedir cambios sin evidencia.
 drop function if exists public.sim_commit(text, text, text, text, text, text, bigint, jsonb, jsonb, jsonb);
 revoke execute on function public.sim_commit(text, text, text, text, text, text, bigint, jsonb, jsonb, jsonb, jsonb, jsonb) from public, anon, authenticated;
-grant execute on function public.sim_commit(text, text, text, text, text, text, bigint, jsonb, jsonb, jsonb, jsonb) to service_role;
+grant execute on function public.sim_commit(text, text, text, text, text, text, bigint, jsonb, jsonb, jsonb, jsonb, jsonb) to service_role;
 
 create or replace function public.sim_read_audit(p_uid text, p_limit integer default 100, p_before bigint default null)
 returns setof public.sim_audit_events language sql stable security invoker set search_path = '' as $$
@@ -113,8 +113,14 @@ declare
   v_expected text;
   v_count integer := 0;
   v_version bigint;
+  v_company_version bigint;
 begin
+  select version into v_company_version from public.sim_companies where uid = p_uid;
+  if not found then return jsonb_build_object('valid', true, 'checked', 0); end if;
   for v_row in select * from public.sim_audit_events where uid = p_uid order by version loop
+    if v_version is null and v_row.version <> 1 then
+      return jsonb_build_object('valid', false, 'checked', 0, 'incomplete', true);
+    end if;
     if v_row.previous_hash <> v_prev or (v_version is not null and v_row.version <> v_version + 1) then
       return jsonb_build_object('valid', false, 'checked', v_count, 'firstBadVersion', v_row.version);
     end if;
@@ -132,6 +138,9 @@ begin
     v_version := v_row.version;
     v_count := v_count + 1;
   end loop;
+  if v_count = 0 or v_version <> v_company_version then
+    return jsonb_build_object('valid', false, 'checked', v_count, 'incomplete', true);
+  end if;
   return jsonb_build_object('valid', true, 'checked', v_count);
 end;
 $$;

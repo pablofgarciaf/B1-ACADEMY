@@ -23345,7 +23345,7 @@
   },
   "mod-ventas-c1": {
     "classId": "mod-ventas-c1",
-    "title": "Prospección B2B, Onboarding Fiscal y Gestión de Riesgo Crediticio",
+    "title": "Clientes, precios y análisis de crédito",
     "category": "Ventas & Valor ERP",
     "number": 1,
     "totalSlides": 12,
@@ -23366,29 +23366,22 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Bienvenido a la primera clase magistral del Taller Maestro de Operaciones y Demostración Comercial Finix ERP. Como consultor comercial y ejecutivo de preventa, debes comprender una verdad fundamental: el mayor riesgo de una empresa no es no vender, sino venderle a clientes insolventes que terminan quebrando el flujo de caja. En las empresas sin ERP, los vendedores operan a ciegas en hojas de cálculo, otorgando créditos informales y registrando datos fiscales con errores que derivan en multas tributarias. Tu rol en esta clase es dominar el alta corporativa de socios de negocios, la validación estricta de identificaciones fiscales, la fijación de límites de crédito infranqueables y la demostración en vivo de cómo el sistema bloquea ventas morosas.",
+        "script_text": "En esta clase practicarás el alta de un cliente, su lista de precios y el análisis de crédito. Trabajamos con datos sintéticos en una empresa de laboratorio. El límite de crédito orienta una política de riesgo: no garantiza el cobro ni sustituye el análisis financiero o la segregación de funciones de una empresa real.",
         "step_guide": null
       },
       {
         "slide_index": 2,
-        "script_text": "Misión 1: Alta y Onboarding del Cliente Corporativo en Socios de Negocios. En Finix ERP, los datos maestros de Socios de Negocios son el cimiento de toda relación comercial. Aquí se centraliza la información legal, dirección fiscal, contactos y clasificación tributaria. En esta práctica ingresamos al formulario de Socios de Negocios para dar de alta al cliente corporativo C20005, Corporación Andina S.A., con RUC ecuatoriano 1790011003001. Beneficio de negocio para el cliente: Cero duplicidad de registros, homologación fiscal inmediata y base de datos comercial única para toda la compañía.",
+        "script_text": "Misión 1. Crea el cliente Corporación Andina S.A. con identificación de laboratorio 1790099001001, plazo de pago de 30 días y límite de crédito de 10000 dólares. El sistema asigna el código automáticamente: anótalo y busca al cliente por su nombre en las siguientes prácticas. No uses datos personales ni interpretes este ejercicio como una consulta al SRI.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Socios de negocios > Datos maestros de socio de negocios",
           "title": "Alta de Cliente Corporativo en Socios de Negocios",
           "instructions": [
-            "Accede a Socios de negocios > Datos maestros de socio de negocios.",
-            "Crea el nuevo cliente corporativo con código C20005.",
-            "Ingresa el nombre fiscal: Corporación Andina S.A.",
-            "Registra la identificación fiscal RUC: 1790011003001.",
-            "Guarda el socio de negocios y verifica su activación inmediata en el sistema."
+            "Crea Corporación Andina S.A. con identificación sintética 1790099001001.",
+            "Configura límite de crédito 10000 y plazo de pago 30 días.",
+            "Guarda y anota el código asignado automáticamente. No se consulta ni valida el RUC en el SRI."
           ],
           "campos": [
-            {
-              "etiqueta": "Código Socio",
-              "valor": "C20005",
-              "pista": "Código único de cliente corporativo"
-            },
             {
               "etiqueta": "Nombre Fiscal",
               "valor": "Corporación Andina S.A.",
@@ -23396,8 +23389,8 @@
             },
             {
               "etiqueta": "RUC / ID Fiscal",
-              "valor": "1790011003001",
-              "pista": "RUC de 13 dígitos para validación SRI"
+              "valor": "1790099001001",
+              "pista": "Identificación sintética de laboratorio, sin validación fiscal externa"
             }
           ],
           "screenId": "SAL006"
@@ -23405,27 +23398,21 @@
       },
       {
         "slide_index": 3,
-        "script_text": "Misión 2: Asignación de Lista de Precios Mayorista y Condiciones de Pago. Un error catastrófico en ventas es cotizar a precios desactualizados o permitir que el vendedor pacte plazos de pago a discreción. En Finix ERP, cada socio de negocios tiene predeterminada su lista de precios oficial y su condición de crédito contractual. En esta práctica vinculamos al cliente C20005 con la Lista 2 (Precios Mayoristas) y fijamos la condición de crédito a 30 Días Fecha Factura. Beneficio de negocio: Los vendedores nunca cotizan por debajo del precio autorizado y se estandarizan las políticas comerciales de la gerencia general.",
+        "script_text": "Misión 2. Asigna la lista de precios número 2 al cliente que acabas de crear. La condición de 30 días se estableció en su alta; esta pantalla asigna la lista, no modifica el plazo. Comprueba que seleccionas a Corporación Andina S.A. y guarda la asignación.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Socios de negocios > Condiciones de pago",
           "title": "Asignación de Lista de Precios y Plazo de Crédito",
           "instructions": [
-            "En la ficha del cliente C20005, dirígete a la pestaña Condiciones de Pago.",
-            "Selecciona la condición de pago: Crédito 30 Días.",
-            "Asigna la lista de precios por defecto: Lista Mayorista (Lista 2).",
-            "Actualiza la ficha para que todos los futuros documentos adopten esta parametrización."
+            "Selecciona Corporación Andina S.A. por su nombre.",
+            "Asigna la lista de precios 2 (Mayorista) y guarda.",
+            "El plazo de 30 días se configuró en el alta; aquí no se modifica."
           ],
           "campos": [
             {
-              "etiqueta": "Condición de Pago",
-              "valor": "30 Días",
-              "pista": "Plazo contractual de crédito"
-            },
-            {
-              "etiqueta": "Lista de Precios",
-              "valor": "Mayorista",
-              "pista": "Lista de precios asignada al cliente"
+              "etiqueta": "Lista",
+              "valor": "2",
+              "pista": "Mayorista"
             }
           ],
           "screenId": "SAL006"
@@ -23433,27 +23420,20 @@
       },
       {
         "slide_index": 4,
-        "script_text": "Misión 3: Blindaje de Cartera: Configuración de Límite de Crédito Infranqueable. ¿Cuánto dinero está dispuesta a arriesgar la empresa con un cliente antes de exigir el cobro? En Finix ERP, el Límite de Crédito es una barrera matemática que suma el saldo en cuentas por cobrar más las órdenes de venta abiertas. En esta práctica establecemos un límite de crédito de diez mil dólares para Corporación Andina S.A. Beneficio comercial para el cliente: Se erradica el riesgo de sobreexposición crediticia; la empresa vende con respaldo financiero garantizado y evita sorpresas de impago.",
+        "script_text": "Misión 3. Consulta el código, el límite de crédito y el saldo actual del cliente. Registra los valores que muestra tu empresa, porque pueden cambiar al emitir facturas o cobrar. El crédito disponible debe analizarse junto con los documentos pendientes y la política aprobada por la empresa.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Socios de negocios > Condiciones de pago > Límite de crédito",
-          "title": "Fijación de Límite de Crédito Corporativo",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Consulta del límite y saldo",
           "instructions": [
-            "En la pestaña Condiciones de pago, ubica el campo Límite de Crédito.",
-            "Ingresa el valor de 10000 USD como tope máximo permitido.",
-            "Activa la verificación estricta de límite en pedidos y entregas.",
-            "Guarda las modificaciones en el sistema."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Límite de Crédito",
-              "valor": "10000",
-              "pista": "Monto máximo en USD autorizado"
-            },
-            {
-              "etiqueta": "Bloqueo Excedente",
-              "valor": "Activo",
-              "pista": "Restricción automática del ERP"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL006"
@@ -23461,32 +23441,25 @@
       },
       {
         "slide_index": 5,
-        "script_text": "La Anatomía del Descontrol Financiero en Empresas Tradicionales. Cuando una empresa gestiona sus ventas en hojas de cálculo, el vendedor solo busca comisionar, sin importar si el cliente debe tres facturas de meses anteriores. Esto genera cartera vencida incobrable, descalce de liquidez y pérdida de patrimonio. En cambio, Finix ERP actúa como un oficial de crédito digital las 24 horas del día. En las siguientes láminas demostraremos en vivo qué ocurre cuando se intenta vulnerar esta regla.",
+        "script_text": "Un saldo pendiente no es lo mismo que una factura vencida. Para evaluar riesgo necesitas fecha de vencimiento, historial de cobros, garantías y exposición total. El ERP organiza información; la decisión y sus controles deben quedar documentados por las personas autorizadas.",
         "step_guide": null
       },
       {
         "slide_index": 6,
-        "script_text": "Misión 4: Simulación de Intento de Venta Bloqueada por Exceso de Crédito. Para impresionar a un Director Financiero en una demostración, debes mostrarle cómo el sistema lo protege cuando las cosas salen mal. En esta práctica simulamos la creación de una orden por quince mil dólares para un cliente cuyo límite es diez mil. Observa cómo Finix ERP emite de inmediato una alerta de bloqueo de crédito y detiene la transacción en seco. Beneficio comercial: Ningún vendedor puede saltarse las políticas de crédito de la compañía.",
+        "script_text": "Misión 4. Analiza una venta hipotética de 15000 dólares contra el límite y el saldo actuales. Calcula el exceso como el máximo entre cero y 15000 más saldo menos límite. Este ejercicio comprueba tu análisis numérico; no registra una venta ni demuestra un bloqueo de autorización.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Ventas > Oferta de venta > Validación de crédito",
-          "title": "Verificación de Bloqueo Automático por Límite de Crédito",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Análisis de exceso de crédito hipotético",
           "instructions": [
-            "Accede a Ventas > Oferta de venta o Pedido de cliente.",
-            "Selecciona al socio C20005 e intenta ingresar una orden de 15000 USD.",
-            "Observa el mensaje del sistema: Límite de crédito excedido por 5000 USD.",
-            "Valida que el sistema requiera autorización gerencial para continuar."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Monto Intento",
-              "valor": "15000",
-              "pista": "Valor que sobrepasa el límite"
-            },
-            {
-              "etiqueta": "Estado Sistema",
-              "valor": "Bloqueado por Límite",
-              "pista": "Alerta preventiva del ERP"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL001"
@@ -23494,27 +23467,20 @@
       },
       {
         "slide_index": 7,
-        "script_text": "Misión 5: Procedimiento de Autorización Gerencial en Tiempo Real. En el mundo real, los negocios requieren flexibilidad controlada. Si el Director Comercial o el Gerente General deciden aprobar la venta como excepción estratégica, Finix ERP activa un Procedimiento de Autorización digital. La orden queda en estado Pendiente y se dispara una alerta al buzón del gerente para su visto bueno con firma inmutable. En esta práctica revisamos la pantalla de Aprobaciones para comprobar cómo se audita cada excepción.",
+        "script_text": "Misión 5. Consulta cuántas solicitudes de aprobación existen en la empresa. Distingue analizar una excepción de aprobarla formalmente: una consulta académica no concede permisos gerenciales. Antes de una implantación real se debe verificar quién puede solicitar, autorizar y ejecutar cada operación.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Gestión > Procedimiento de autorización > Informe de estado de autorización",
-          "title": "Gestión de Excepción de Crédito y Flujo de Aprobación",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Consulta de aprobaciones y responsabilidades",
           "instructions": [
-            "Ingresa a Aprobaciones o Autorizaciones en el simulador.",
-            "Ubica la solicitud de aprobación por límite de crédito excedido.",
-            "Verifica los detalles: cliente, monto excedido y usuario solicitante.",
-            "Aprueba la excepción con justificación ejecutiva y valida la liberación controlada."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Flujo",
-              "valor": "Procedimiento de Aprobación",
-              "pista": "Módulo de control de excepciones"
-            },
-            {
-              "etiqueta": "Decisión",
-              "valor": "Aprobado con Justificación",
-              "pista": "Visto bueno del directivo"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "ADM002"
@@ -23522,27 +23488,27 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Auditoría y Pista de Registro Inmutable. Cada acción en Finix ERP queda grabada con fecha, hora exacta, usuario responsable y dirección IP. Cuando le demuestras esto a un auditor o a un socio de la empresa, disipas cualquier temor a fraudes o complicidades internas. El sistema garantiza que las políticas corporativas se cumplan sin excepciones ocultas.",
+        "script_text": "La trazabilidad registra la operación y su responsable. La cadena de hashes permite detectar alteraciones cuando se verifica contra una referencia confiable; no convierte la base de datos en un registro imposible de modificar. La seguridad requiere además permisos, copias de respaldo y pruebas de restauración.",
         "step_guide": null
       },
       {
         "slide_index": 9,
-        "script_text": "El Argumentario Comercial para el Director Financiero (CFO). Cuando hables con el responsable financiero de una empresa prospecto, utiliza este argumento clave: Licenciado, con Finix ERP su departamento de crédito no necesita perseguir a los vendedores. El sistema vigila el límite de crédito en el centavo exacto. Si un cliente está moroso o supera su cupo, nadie puede facturarle sin su autorización explícita desde su computadora o celular.",
+        "script_text": "Al presentar crédito a un responsable financiero, muestra el saldo y el límite reales, identifica documentos pendientes y explica los controles comprobados. Evita afirmar que ningún usuario puede eludir una política sin haber probado los permisos y todos los recorridos de operación.",
         "step_guide": null
       },
       {
         "slide_index": 10,
-        "script_text": "La Regla de Oro del Vendedor Consultivo: Calificar antes de Cotizar. Los vendedores de bajo rendimiento cotizan a todo el mundo sin saber si el cliente califica. El consultor comercial de alto nivel utiliza Finix ERP para segmentar a los clientes en categorías A, B y C. Los clientes A reciben mejores precios y plazos; los clientes C operan con pago anticipado. El ERP convierte la política de riesgo en una ventaja competitiva.",
+        "script_text": "Calificar antes de cotizar significa revisar las condiciones del cliente y documentar la propuesta. Una segmentación A, B o C requiere criterios definidos por la empresa. No supongas que el sistema reclasifica clientes automáticamente si no has configurado y probado esa función.",
         "step_guide": null
       },
       {
         "slide_index": 11,
-        "script_text": "Matriz de Riesgo y Evaluación Crediticia B2B. Configura listas de precios dinámicas vinculadas a la solvencia. Si un cliente mejora su comportamiento de pago y reduce sus días de mora, el sistema puede proponer una reclasificación automática. Esta inteligencia financiera es lo que diferencia a Finix ERP de cualquier software contable básico.",
+        "script_text": "Para proponer una matriz de riesgo, separa los datos observados de las reglas de decisión. La mora, el historial y las garantías pueden alimentar una evaluación; los umbrales y las excepciones deben quedar aprobados y revisarse periódicamente.",
         "step_guide": null
       },
       {
         "slide_index": 12,
-        "script_text": "Síntesis de la Clase 1 y Preparación para la Ingeniería de la Oferta. ¡Excelente trabajo! Has dominado el cimiento de la venta B2B: datos maestros limpios, límites de crédito inquebrantables y flujos de aprobación gerenciales. En la Clase 2 entraremos de lleno a la Ingeniería de la Oferta: consulta de inventario multialmacén en tiempo real, Disponible para Promesa (ATP) y protección del margen de utilidad ante descuentos agresivos.",
+        "script_text": "Has practicado datos maestros, asignación de precios y lectura de exposición crediticia. Comprueba los resultados en tu empresa antes de avanzar. En la siguiente clase estudiarás inventario, margen y una oferta con varias líneas.",
         "step_guide": null
       }
     ],
@@ -23550,7 +23516,7 @@
   },
   "mod-ventas-c2": {
     "classId": "mod-ventas-c2",
-    "title": "Ingeniería de la Oferta: Cotizaciones Complejas, ATP Multialmacén y Blindaje de Márgenes",
+    "title": "Inventario, margen y cotización comercial",
     "category": "Ventas & Valor ERP",
     "number": 2,
     "totalSlides": 13,
@@ -23572,37 +23538,25 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Bienvenido a la Clase Magistral número dos: Ingeniería de la Oferta, ATP Multialmacén y Blindaje de Márgenes. En el entorno comercial moderno, el cliente exige respuestas inmediatas: quiere saber precio final, disponibilidad de entrega y condiciones especiales en el acto. Si tu equipo de ventas tarda 24 horas en consultar a bodega si hay stock, el prospecto ya le compró a la competencia. En esta clase aprenderás a consultar inventarios multibodega en tiempo real, calcular el Disponible para Promesa (ATP) y estructurar cotizaciones comerciales que protejan rigurosamente el margen de ganancia de la empresa.",
+        "script_text": "Una oferta debe relacionar necesidad, disponibilidad, precio, costo y condiciones comerciales. En esta clase consultarás datos de artículos, calcularás margen y crearás una cotización con dos líneas. Los resultados del laboratorio no garantizan disponibilidad física ni rentabilidad en una empresa real.",
         "step_guide": null
       },
       {
         "slide_index": 2,
-        "script_text": "Misión 1: Consulta de Inventario Disponible para Promesa (ATP) Multialmacén. En Finix ERP, el inventario no es un número plano. Se descompone en tres variables críticas: En Stock (físico en bodega), Comprometido (ya reservado por otros pedidos confirmados) y Solicitado (órdenes de compra en tránsito). En esta práctica ingresamos al maestro de artículos para consultar el ítem A00001 en la Bodega Central Quito 01 y en la Bodega Sucursal Guayaquil 02. Beneficio comercial: El vendedor nunca promete mercancía que ya le pertenece a otro cliente.",
+        "script_text": "Misión 1. Consulta el artículo A00001 y cuenta sus registros de stock por almacén. Un registro de stock no implica que haya unidades disponibles. Para comprometer una fecha de entrega, distingue existencias físicas, cantidades comprometidas y entradas previstas; las entradas futuras no son mercancía disponible hoy.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Inventario > Datos maestros de artículo > Pestaña Datos de inventario",
-          "title": "Consulta de Inventario Multibodega y Stock ATP",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Consulta de registros de stock",
           "instructions": [
-            "Abre el catálogo de artículos en Inventario > Datos maestros de artículo.",
-            "Busca el artículo A00001 (Laptop Corporativa).",
-            "En la pestaña Datos de inventario, revisa el Stock Físico, Comprometido y Disponible en Bodega 01 y 02.",
-            "Calcula el Disponible para Promesa: En Stock menos Comprometido más Solicitado."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Artículo",
-              "valor": "A00001",
-              "pista": "Código del artículo consultado"
-            },
-            {
-              "etiqueta": "Bodega Principal",
-              "valor": "01",
-              "pista": "Bodega Central de distribución"
-            },
-            {
-              "etiqueta": "Cálculo ATP",
-              "valor": "Disponible = Stock - Comprometido",
-              "pista": "Fórmula de disponibilidad de entrega"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "INV001"
@@ -23610,32 +23564,20 @@
       },
       {
         "slide_index": 3,
-        "script_text": "Misión 2: Análisis de Costo Promedio Ponderado vs Precio de Venta. Antes de cotizar un producto, el ejecutivo comercial debe conocer el costo real de reposición. Si cotizas sin ver el costo, corres el riesgo de vender con pérdida. En Finix ERP, el sistema calcula de forma continua el Costo Promedio Ponderado bajo normativa contable. En esta práctica verificamos que el artículo A00001 tiene un costo de 650 USD y un precio mayorista de 850 USD, garantizando un margen bruto del 23.5%. Beneficio de negocio: Cada cotización defiende la rentabilidad de los accionistas.",
+        "script_text": "Misión 2. Lee el precio mayorista y el costo de compra de referencia actuales del artículo. Calcula el margen sobre venta como precio menos costo, dividido por precio, multiplicado por cien. No confundas ese costo de referencia con el costo contable ponderado de cada movimiento.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Inventario > Datos maestros de artículo > Precios y Costos",
-          "title": "Verificación de Costo y Margen Bruto Comercial",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Precio, costo de referencia y margen",
           "instructions": [
-            "Revisa el campo Costo del Artículo en la ficha de A00001.",
-            "Comprueba el precio de venta en la Lista Mayorista (850 USD).",
-            "Calcula el margen bruto: (Precio - Costo) / Precio.",
-            "Verifica que el margen supere el umbral mínimo corporativo."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Costo Reposición",
-              "valor": "650.00",
-              "pista": "Costo unitario en USD"
-            },
-            {
-              "etiqueta": "Precio Mayorista",
-              "valor": "850.00",
-              "pista": "Precio base de venta"
-            },
-            {
-              "etiqueta": "Margen Bruto",
-              "valor": "Rentable",
-              "pista": "Margen comercial protegido"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "INV001"
@@ -23643,14 +23585,14 @@
       },
       {
         "slide_index": 4,
-        "script_text": "Misión 3: Creación de Oferta de Venta Multi-Línea Profesional. Una cotización profesional no se hace en un correo informal ni en un archivo de Excel editable. Se genera en Finix ERP como Oferta de Venta con validez temporal, condiciones comerciales fijas y desglose detallado. En esta práctica creamos una oferta formal para Corporación Andina S.A. agregando 5 unidades del artículo A00001 y 2 unidades del artículo A00002. Beneficio comercial: Cotizaciones impecables en PDF con un clic, con fecha de vigencia y trazabilidad centralizada.",
+        "script_text": "Misión 3. Crea una oferta para Corporación Andina S.A. con cinco unidades de A00001 y dos de A00002. Selecciona el cliente por su nombre y revisa precios, almacén, fechas e impuestos del escenario. Guarda la cotización: esta operación todavía no constituye una factura ni un cobro.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Ventas > Oferta de venta",
           "title": "Emisión de Oferta de Venta Multi-Línea",
           "instructions": [
             "Accede a Ventas > Oferta de venta.",
-            "Selecciona al cliente C20005.",
+            "Selecciona al cliente Corporación Andina S.A. (código asignado en tu empresa).",
             "Línea 1: Ingresa artículo A00001 con cantidad 5 a precio mayorista.",
             "Línea 2: Ingresa artículo A00002 con cantidad 2.",
             "Establece una validez de oferta de 15 días y crea el documento en el sistema."
@@ -23682,16 +23624,15 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Misión 4: Aplicación de Descuentos Escalonados por Volumen. En ventas B2B, los clientes compran volumen a cambio de mejores condiciones. Pero si el vendedor improvisa los descuentos, la empresa pierde dinero. En Finix ERP, las políticas de Descuento por Período y Cantidad se configuran por adelantado. En esta práctica aplicamos un descuento comercial estructurado del 5% por compra de volumen en la oferta. Beneficio comercial: Negociaciones ágiles y competitivas respaldadas por reglas del sistema.",
+        "script_text": "Misión 4. Configura una regla de descuento por volumen para A00001: mínimo cinco unidades y descuento de cinco por ciento. Guardar la regla no cambia retroactivamente la cotización anterior. Revisa su aplicación en documentos posteriores y calcula el efecto sobre el margen.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Ventas > Descuentos especiales y volumen",
           "title": "Aplicación de Descuento por Volumen Controlado",
           "instructions": [
-            "En la línea de la cotización, ubica la columna % Descuento.",
-            "Aplica el descuento por volumen del 5% autorizado para más de 5 unidades.",
-            "Observa cómo el sistema recalcula el precio neto y el subtotal automáticamente.",
-            "Verifica que el nuevo margen siga siendo positivo para la empresa."
+            "Configura una regla de volumen para A00001.",
+            "Usa mínimo 5 unidades y descuento 5%.",
+            "Guarda la regla; no cambia documentos anteriores."
           ],
           "campos": [
             {
@@ -23710,27 +23651,20 @@
       },
       {
         "slide_index": 6,
-        "script_text": "Misión 5: Alerta de Margen Crítico y Bloqueo de Descuentos Excesivos. Esta es una de las demostraciones más impactantes ante Gerentes Generales y Directores Comerciales. ¿Qué pasa si un vendedor desesperado por cerrar otorga un descuento del 35%, vendiendo por debajo del costo? En Finix ERP, el sistema monitorea el Margen Bruto Mínimo. En esta práctica simulamos un descuento excesivo y demostramos cómo el sistema emite una Alerta de Margen Crítico y bloquea el documento hasta que Gerencia lo autorice. Beneficio de negocio: Cero ventas a pérdida por errores humanos.",
+        "script_text": "Misión 5. En un caso numérico independiente, un precio de 850 con descuento del treinta por ciento resulta en 595. Con costo de 650, el margen sobre venta es aproximadamente menos 9,24 por ciento. Esta consulta valida el cálculo; no crea ni prueba una autorización gerencial.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Ventas > Oferta de venta > Control de margen",
-          "title": "Simulación de Bloqueo por Margen Mínimo Insuficiente",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Cálculo de margen con descuento",
           "instructions": [
-            "Intenta ingresar un descuento del 30% en el artículo A00001.",
-            "Observa la alerta del sistema: Margen bruto inferior al límite permitido del 20%.",
-            "Comprueba que el documento no pueda crearse directamente sin flujo de autorización.",
-            "Ajusta el descuento al rango permitido para liberar la oferta."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Descuento Riesgoso",
-              "valor": "30%",
-              "pista": "Intento de rebaja no autorizada"
-            },
-            {
-              "etiqueta": "Alerta ERP",
-              "valor": "Margen Crítico < 20%",
-              "pista": "Protección automática de rentabilidad"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL001"
@@ -23738,37 +23672,37 @@
       },
       {
         "slide_index": 7,
-        "script_text": "El Secreto Técnico del ATP (Available to Promise). Expliquémoslo con claridad: una empresa tiene 100 laptops en bodega física, pero tiene pedidos confirmados pendientes de entrega por 80 unidades. El stock real disponible para vender es únicamente 20. Si un vendedor vende 30 porque solo miró el stock físico, cometerá un incumplimiento grave. Finix ERP calcula en tiempo real la disponibilidad neta y protege la reputación de la empresa.",
+        "script_text": "Disponibilidad inmediata y disponible para promesa no son intercambiables. Con cien unidades físicas y ochenta comprometidas quedan veinte sin compromiso. Una compra pendiente solo podrá apoyar una promesa futura después de revisar fecha, proveedor y riesgo de recepción.",
         "step_guide": null
       },
       {
         "slide_index": 8,
-        "script_text": "Integración Comercial y Logística: El Puente entre Ventas y Bodega. En las empresas sin ERP, ventas y bodega viven en guerra constante: ventas culpa a bodega de no entregar a tiempo, y bodega culpa a ventas de prometer lo imposible. Con Finix ERP, ambos departamentos miran la misma pantalla en tiempo real. Cuando ventas cotiza, ve la fecha proyectada de reposición; cuando bodega recibe pedidos, ya vienen con número de reserva.",
+        "script_text": "La coordinación entre ventas y bodega exige documentos relacionados y responsables claros. Comprueba qué cantidades se reservaron y cuáles se entregaron. Un registro correcto en pantalla debe contrastarse con conteos físicos y evidencias de despacho.",
         "step_guide": null
       },
       {
         "slide_index": 9,
-        "script_text": "Cómo Presentar Cotizaciones Ejecutivas en Menos de 60 Segundos. Durante tu reunión con el cliente, enséñale la velocidad de respuesta. Mientras él te explica sus necesidades, ve cargando los artículos en la Oferta de Venta. Con un solo clic, genera la vista de impresión en formato corporativo con el logotipo de la empresa, términos comerciales y código de barras. La rapidez comercial transmite solvencia y profesionalismo.",
+        "script_text": "Antes de enviar una oferta, revisa destinatario, líneas, precios, impuestos, vigencia y condiciones. Usa la vista de impresión disponible y verifica su contenido. No prometas un tiempo fijo de elaboración o un formato automático que no hayas demostrado.",
         "step_guide": null
       },
       {
         "slide_index": 10,
-        "script_text": "Los 3 Errores Letales que Destruyen el Margen en Ventas Tradicionales. Error número uno: Cotizar con listas de precios del año pasado. Error número dos: Prometer fletes o servicios adicionales sin cargarlos al costo de la orden. Error número tres: No estipular fecha de vencimiento en las cotizaciones, quedando expuesto a fluctuaciones cambiarias o incrementos de proveedores. Finix ERP resuelve estos tres dolores de forma automatizada.",
+        "script_text": "Los precios desactualizados, costos omitidos y fechas ambiguas pueden erosionar el margen. Revisa estos puntos con una lista de control. El sistema facilita cálculos, pero la calidad de los datos y la revisión comercial siguen siendo necesarias.",
         "step_guide": null
       },
       {
         "slide_index": 11,
-        "script_text": "Técnicas de Cross-Selling y Up-Selling con Datos del ERP. En la pantalla de cotización, Finix ERP permite consultar los artículos complementarios y el historial de compras del cliente. Si el cliente lleva 5 laptops, el sistema le sugiere al vendedor ofrecer las mochilas, licencias de software y pólizas de soporte preventivo. Así es como un consultor comercial duplica el ticket promedio de cada oportunidad.",
+        "script_text": "La venta complementaria comienza por entender la necesidad del cliente. Puedes usar el historial y el catálogo para proponer artículos relacionados. No anuncies recomendaciones automáticas ni un incremento garantizado de ventas sin evidencia de esas funciones y resultados.",
         "step_guide": null
       },
       {
         "slide_index": 12,
-        "script_text": "El Argumentario para el Gerente de Operaciones y Logística. Cuando te reúnas con el Jefe de Operaciones, dile esto: Con Finix ERP, sus operarios de bodega jamás recibirán pedidos sorpresivos. En cuanto ventas crea un pedido, el sistema genera la orden de preparación de inventario de forma secuencial y planificada, reduciendo los tiempos de despacho a la mitad.",
+        "script_text": "Para operaciones, una buena demostración explica el vínculo entre pedido, preparación y entrega. Muestra los documentos y sus cantidades sin atribuir al sistema reducciones de tiempo no medidas. Define después cómo evaluar el resultado de un piloto.",
         "step_guide": null
       },
       {
         "slide_index": 13,
-        "script_text": "Síntesis de la Clase 2 y Paso al Ciclo Order-to-Cash. ¡Extraordinario avance! Has dominado la ingeniería de la oferta: análisis ATP multibodega, cotizaciones multi-línea, descuentos controlados y protección de margen bruto. En la Clase 3 daremos el paso definitivo: convertir la cotización en pedido firme, realizar el despacho logístico, emitir la factura electrónica con IVA 15% SRI Ecuador 2026 y deslumbrar a los directivos con el Mapa de Relaciones.",
+        "script_text": "Has consultado inventario y margen, creado una cotización y configurado un descuento. La siguiente clase enlaza oferta, pedido, entrega y factura de prueba. La facturación del laboratorio no equivale a un comprobante autorizado por el SRI.",
         "step_guide": null
       }
     ],
@@ -23776,7 +23710,7 @@
   },
   "mod-ventas-c3": {
     "classId": "mod-ventas-c3",
-    "title": "Ejecución Order-to-Cash, Facturación Electrónica SRI 2026 y Trazabilidad en Mapa de Relaciones",
+    "title": "Pedido, entrega, factura de prueba y trazabilidad",
     "category": "Ventas & Valor ERP",
     "number": 3,
     "totalSlides": 13,
@@ -23798,12 +23732,12 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Bienvenido a la Clase Magistral número tres: Ejecución Order-to-Cash, Facturación Electrónica SRI 2026 y Trazabilidad en Mapa de Relaciones. El ciclo Order-to-Cash es la arteria vital por donde fluye el dinero de una empresa. Comienza cuando el cliente dice sí a la cotización y culmina cuando el producto se entrega, se factura bajo estricto cumplimiento tributario y se contabiliza de forma automática. En esta clase ejecutarás el cierre de la venta: crearás el pedido con reserva de stock, realizarás el despacho con afectación de kardex, emitirás la factura electrónica SRI 2026 con IVA 15% y retenciones, y abrirás la herramienta estrella de auditoría ejecutiva: el Mapa de Relaciones.",
+        "script_text": "El ciclo de venta enlaza oferta, pedido, entrega, factura y cobro. Ejecutarás los documentos de prueba conservando sus referencias de origen. Los impuestos de este laboratorio son parámetros educativos: la emisión electrónica real requiere validación normativa, firma y autorización externas.",
         "step_guide": null
       },
       {
         "slide_index": 2,
-        "script_text": "Misión 1: Conversión de Oferta a Pedido de Cliente en Firme con Reserva de Stock. En Finix ERP, los documentos nunca se reescriben desde cero. Usamos la función inteligente Copiar a para arrastrar todos los datos de la Oferta aprobada hacia el Pedido de Cliente. En el instante exacto en que se guarda el Pedido de Cliente, el sistema descuenta automáticamente la cantidad del stock Disponible y la traslada a Comprometido. En esta práctica convertimos la oferta del cliente C20005 en pedido en firme. Beneficio comercial: Se acaba la sobreventa; el inventario queda apartado exclusivamente para este cliente.",
+        "script_text": "Misión 1. Crea un pedido copiando la oferta del cliente Corporación Andina S.A. Comprueba cinco unidades de A00001 y dos de A00002 y conserva la referencia al documento base. Revisa el efecto sobre el compromiso de inventario; un pedido no debe interpretarse como una salida física.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Ventas > Pedido de cliente > Copiar de Oferta",
@@ -23836,12 +23770,12 @@
       },
       {
         "slide_index": 3,
-        "script_text": "El Impacto en Kardex del Pedido vs la Entrega. Es fundamental entender la diferencia: el Pedido de Cliente es un compromiso comercial que reserva stock, pero aún no descarga físicamente la bodega ni genera asiento contable. La Entrega o Despacho Logístico es el documento que formaliza la salida física del almacén, descarga las unidades del kardex y registra el Asiento de Costo de Ventas (Gasto de costo de ventas contra Inventario de mercancías). Esta sincronización contable-logística en tiempo real es una maravilla de la ingeniería de software.",
+        "script_text": "Pedido y entrega tienen efectos diferentes. El pedido representa un compromiso comercial; la entrega documenta la salida de existencias. Revisa los movimientos y el asiento generado para comprobar las cuentas y el costo aplicados, sin asumir que el registro sustituye una evidencia física.",
         "step_guide": null
       },
       {
         "slide_index": 4,
-        "script_text": "Misión 2: Despacho Logístico (Entrega de Mercancía) y Descarga de Inventario. Cuando bodega prepara el pedido y el transportista carga el camión, se emite el documento de Entrega. En esta práctica generamos la Entrega a partir del Pedido de Cliente. Al registrarla, observa cómo el stock físico disminuye en 5 unidades en la Bodega Central y el sistema genera automáticamente el asiento contable de salida de inventario al costo ponderado de 650 USD por unidad. Beneficio de negocio: El inventario del sistema siempre coincide con el inventario físico en bodega; cero descuadres en auditorías.",
+        "script_text": "Misión 2. Genera la entrega desde el pedido anterior. Conserva las dos líneas y verifica el almacén y las cantidades. Después de guardar, consulta el movimiento de stock y el asiento asociado: deben reflejar la salida una sola vez.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Ventas > Entrega > Copiar de Pedido",
@@ -23874,32 +23808,21 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Misión 3: Emisión de Factura de Deudores con IVA 15% SRI Ecuador 2026. Llegamos al documento fiscal definitivo. La Factura de Deudores genera la cuenta por cobrar y el pasivo tributario de IVA. En Ecuador, la normativa vigente 2026 establece la tarifa general del 15% de IVA. En esta práctica copiamos la Entrega a Factura de Deudores, validamos el cálculo de la base imponible y el IVA al 15%, y generamos el documento con clave de acceso de 49 dígitos lista para transmisión electrónica al SRI. Beneficio comercial: Cumplimiento tributario riguroso sin necesidad de recapturar datos ni usar programas externos.",
+        "script_text": "Misión 3. Crea la factura de prueba a partir de la entrega. Revisa base imponible, tarifa configurada, impuesto y total, además del saldo por cobrar. El documento del simulador no es una factura electrónica autorizada ni demuestra conexión con el SRI.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Ventas > Factura de deudores > Copiar de Entrega",
-          "title": "Emisión de Factura Electrónica SRI IVA 15% 2026",
+          "title": "Factura de prueba desde la entrega",
           "instructions": [
-            "Desde la Entrega, pulsa Copiar a > Factura de deudores.",
-            "Revisa el desglose tributario: Subtotal base imponible e IVA 15% SRI Ecuador.",
-            "Verifica la condición de pago a crédito 30 días para cuentas por cobrar.",
-            "Crea la Factura de deudores y valida la generación de la clave electrónica de 49 dígitos."
+            "Crea la factura copiando la entrega anterior del cliente Corporación Andina S.A.",
+            "Conserva 5 unidades de A00001 y 2 de A00002.",
+            "Revisa base, tarifa configurada, total y saldo por cobrar. No es un comprobante autorizado por SRI."
           ],
           "campos": [
             {
-              "etiqueta": "Tipo Documento",
-              "valor": "Factura de Deudores",
-              "pista": "Comprobante fiscal definitivo"
-            },
-            {
-              "etiqueta": "Tarifa IVA SRI",
-              "valor": "15%",
-              "pista": "Tarifa oficial Ecuador 2026"
-            },
-            {
-              "etiqueta": "Condición Fiscal",
-              "valor": "Crédito 30 Días",
-              "pista": "Cuenta por cobrar generada"
+              "etiqueta": "Documento",
+              "valor": "Factura de prueba",
+              "pista": "Copiar de la entrega anterior"
             }
           ],
           "screenId": "SAL004"
@@ -23907,32 +23830,20 @@
       },
       {
         "slide_index": 6,
-        "script_text": "Misión 4: Gestión de Retenciones en la Fuente de Renta e IVA. En el ámbito corporativo B2B, los clientes calificados como Agentes de Retención o Contribuyentes Especiales retienen un porcentaje de la factura. Por ejemplo: 2% en retención de Impuesto a la Renta en bienes (código 312) y 30% del IVA causado. En Finix ERP, estas retenciones se concilian directamente contra la factura, generando el crédito tributario correspondiente en la contabilidad. En esta práctica revisamos la pestaña de Impuestos y Retenciones para registrar el comprobante de retención del cliente.",
+        "script_text": "Misión 4. Consulta las facturas del cliente y distingue la factura de un comprobante de retención. Las retenciones dependen de sujetos, régimen, concepto y fecha de la operación. Este ejercicio es una consulta; no registra una retención ni fija porcentajes o códigos fiscales universales.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Finanzas > Retenciones recibidas > Vinculación de factura",
-          "title": "Registro de Retenciones en la Fuente SRI (Renta e IVA)",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Facturas y criterios de retención",
           "instructions": [
-            "En la Factura emitida, accede al módulo de Retenciones Recibidas.",
-            "Registra la retención de Renta del 2% sobre la base imponible.",
-            "Registra la retención de IVA del 30% sobre el valor del IVA.",
-            "Verifica cómo el saldo neto pendiente de cobro de la factura se ajusta de forma transparente."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Retención Renta",
-              "valor": "2% (Código 312)",
-              "pista": "Retención de Impuesto a la Renta en bienes"
-            },
-            {
-              "etiqueta": "Retención IVA",
-              "valor": "30% IVA",
-              "pista": "Retención de IVA entre contribuyentes"
-            },
-            {
-              "etiqueta": "Saldo a Cobrar",
-              "valor": "Neto Conciliado",
-              "pista": "Valor real que el cliente pagará en bancos"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL004"
@@ -23940,33 +23851,20 @@
       },
       {
         "slide_index": 7,
-        "script_text": "Misión 5: El As de la Venta ERP: Demostración en Vivo del Mapa de Relaciones. Durante una reunión con el Directorio de la empresa, este es el momento en que se gana la venta. Abre la factura recién creada, haz clic derecho y selecciona Mapa de Relaciones. En pantalla se despliega un árbol gráfico interactivo en tiempo real que conecta la Oferta de Venta original, el Pedido de Cliente, la Entrega de bodega, la Factura electrónica y su asiento contable. En esta práctica abrimos el Mapa de Relaciones para explorar la trazabilidad total del flujo Order-to-Cash. Beneficio comercial: Control directivo absoluto en un solo pantallazo, transparencia total y fin a los archivos perdidos.",
+        "script_text": "Misión 5. Identifica la última factura del cliente y su documento base. Usa esas referencias para reconstruir la cadena desde la oferta. Comprobar este vínculo es una evidencia puntual de trazabilidad; no equivale a certificar todos los documentos o controles del sistema.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Ventas > Factura de deudores > Clic derecho > Mapa de relaciones",
-          "title": "Demostración Ejecutiva de Trazabilidad con el Mapa de Relaciones",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Referencia de factura y documento base",
           "instructions": [
-            "Abre la Factura de deudores en pantalla.",
-            "Haz clic derecho en cualquier área libre y selecciona Mapa de Relaciones.",
-            "Observa la cadena documental completa y los enlaces contables en tiempo real.",
-            "Haz doble clic en el nodo del Pedido para abrir el documento original.",
-            "Utiliza este argumento visual como demostración cumbre de control directivo ante el cliente."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Herramienta Directiva",
-              "valor": "Mapa de Relaciones",
-              "pista": "Vista gráfica interactiva de auditoría"
-            },
-            {
-              "etiqueta": "Trazabilidad",
-              "valor": "Completa 100%",
-              "pista": "Cadena documental vinculada"
-            },
-            {
-              "etiqueta": "Auditoría en 1 Clic",
-              "valor": "Activa",
-              "pista": "Drill-down a cualquier documento"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL009"
@@ -23974,32 +23872,32 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Auditoría Profunda: Drill-Down desde el Mapa de Relaciones al Asiento Contable. Muestra al Director Financiero cómo al hacer doble clic en el nodo de la Factura dentro del mapa, se abre el Asiento Contable automático: Débito a Cuentas por Cobrar Clientes, Crédito a Ingresos por Ventas y Crédito a IVA por Pagar. Sin intermediación humana, sin demoras y cuadrado al centavo. Esta es la diferencia entre un software contable tradicional y un ERP de clase mundial.",
+        "script_text": "El asiento de una factura permite revisar cuentas por cobrar, ingresos e impuestos del escenario. La salida de inventario puede contabilizarse en la entrega. Reconcilia ambos documentos para evitar duplicar el costo al facturar una entrega ya registrada.",
         "step_guide": null
       },
       {
         "slide_index": 9,
-        "script_text": "Cumplimiento Tributario SRI 2026: RIDE y XML con Validez Legal. Cada comprobante electrónico emitido por Finix ERP genera su archivo XML firmado digitalmente y su representación impresa RIDE con código QR y número de autorización. Enséñale al cliente que su empresa estará blindada contra sanciones del SRI, con conciliación automática de anexos transaccionales (ATS) y libros contables oficiales.",
+        "script_text": "Un documento de prueba, un XML generado y una autorización fiscal son estados distintos. Para operar realmente se necesitan ambiente autorizado, firma válida, respuesta del servicio fiscal y manejo de rechazos. Este curso no declara que el simulador tenga autorización de producción.",
         "step_guide": null
       },
       {
         "slide_index": 10,
-        "script_text": "El Impacto Contable Automatizado: Cero Digitación Manual en Contabilidad. En las empresas desintegradas, el departamento contable pasa el día digitando facturas que ya digitó el vendedor, cometiendo errores tipográficos y perdiendo tiempo valioso. Con Finix ERP, el vendedor opera la transacción comercial y la contabilidad se genera sola como subproducto natural de la operación.",
+        "script_text": "La integración contable reduce recapturas cuando los documentos están correctamente relacionados. Sigue siendo necesario revisar impuestos, fechas, cuentas, duplicados y auxiliares. Compara el saldo del cliente con sus documentos y con el mayor contable.",
         "step_guide": null
       },
       {
         "slide_index": 11,
-        "script_text": "Cómo Responder al CFO: ¿Dónde puedo auditar este despacho en el sistema? Cuando el Director Financiero te pregunte sobre control interno, no te limites a decirle que el sistema es seguro; llévalo al Mapa de Relaciones. Muéstrale el número de guía de remisión, la hora en que el bodeguero dio la salida y el usuario que autorizó la factura. En 15 segundos disiparás cualquier inquietud sobre la integridad de sus operaciones.",
+        "script_text": "Para demostrar una operación, comienza por el identificador del documento y sigue sus referencias. Revisa la fecha, el responsable y los cambios registrados que realmente estén disponibles. No atribuyas una dirección IP, firma o aprobación si la evidencia no la contiene.",
         "step_guide": null
       },
       {
         "slide_index": 12,
-        "script_text": "El Factor Velocidad: Reducción del Ciclo de Facturación de 3 Días a 30 Segundos. Cuantifica este beneficio ante el cliente: Si la empresa tarda tres días en facturar desde que entrega un producto, está financiando gratis al cliente durante ese tiempo. Con Finix ERP, la factura se emite al instante de la entrega, acelerando la fecha de vencimiento y anticipando la cobranza tres días completos en cada ciclo de venta.",
+        "script_text": "Mide el tiempo de tu propio recorrido si deseas evaluar eficiencia. Una reducción de tres días a treinta segundos es solo un supuesto hasta contar con una medición comparable. La rapidez al facturar tampoco garantiza que el cliente pague antes.",
         "step_guide": null
       },
       {
         "slide_index": 13,
-        "script_text": "Síntesis de la Clase 3 y Transición a la Cobranza y Cierre en la Clase 4. ¡Impresionante trabajo! Has completado la ejecución operativa del ciclo Order-to-Cash: desde la cotización hasta el pedido en firme, el despacho logístico con afectación de kardex, la factura con IVA 15% SRI y el Mapa de Relaciones. En la Clase 4 completaremos el ciclo con la cobranza bancaria, la liberación de crédito y el taller práctico para rebatir objeciones y cerrar ventas ante CEOs y CFOs.",
+        "script_text": "Has enlazado pedido, entrega y factura, y comprobado referencias y efectos. La siguiente clase registra el cobro y revisa el saldo pendiente. Conserva los identificadores: serán necesarios para seleccionar la factura correcta.",
         "step_guide": null
       }
     ],
@@ -24007,7 +23905,7 @@
   },
   "mod-ventas-c4": {
     "classId": "mod-ventas-c4",
-    "title": "Cobranzas, Conciliación Bancaria, Taller Anti-Objeciones y Demostración C-Level de 15 Minutos",
+    "title": "Cobro, saldo y demostración consultiva",
     "category": "Ventas & Valor ERP",
     "number": 4,
     "totalSlides": 12,
@@ -24028,18 +23926,18 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Bienvenido a la cuarta y última clase magistral: Cobranzas, Conciliación Bancaria, Taller Anti-Objeciones y Demostración C-Level de 15 Minutos. En el mundo de los negocios existe una máxima sagrada: una venta no concluye cuando se entrega la mercancía, sino cuando el dinero ingresa efectivamente a la cuenta bancaria de la empresa. En esta clase cerraremos el ciclo Order-to-Cash con el registro de pagos recibidos en bancos y la liberación automática del crédito del cliente. Además, realizarás un taller interactivo para rebatir las 5 objeciones más comunes y aprenderás el guion cronometrado para cerrar ventas de alto valor ante directores y gerentes generales.",
+        "script_text": "El ciclo comercial termina cuando se registra y concilia el cobro correspondiente. En esta clase registrarás un pago, consultarás el saldo y evaluarás argumentos comerciales con supuestos explícitos. Registrar una transferencia en el laboratorio no comprueba que un banco real la haya ejecutado.",
         "step_guide": null
       },
       {
         "slide_index": 2,
-        "script_text": "Misión 1: Cobranza de Cartera y Registro de Pago Recibido en Bancos. En Finix ERP, la gestión de cobranzas se realiza en Gestión de Bancos mediante Pagos Recibidos. El usuario busca al cliente C20005, el sistema lista sus facturas pendientes con sus días de vencimiento y saldo pendiente, selecciona la factura a cobrar y registra el medio de pago, por ejemplo transferencia a la cuenta de Banco Pichincha. En esta práctica registramos el cobro total de la factura emitida. Beneficio comercial: Reducción drástica del plazo medio de cobro, conciliación bancaria limpia y flujo de caja blindado.",
+        "script_text": "Misión 1. Selecciona la factura pendiente de Corporación Andina S.A. y registra su cobro total en bancos. Verifica importe, cuenta, fecha y documento aplicado. Después de guardar, comprueba que la factura quede cerrada y el saldo del cliente sea cero para este recorrido.",
         "step_guide": {
           "action_type": "practica",
           "menu_path": "Gestión de bancos > Pagos recibidos",
           "title": "Cobranza de Cartera y Registro de Pago Recibido",
           "instructions": [
-            "Abre Gestión de bancos > Pagos recibidos para el cliente corporativo C20005.",
+            "Abre Gestión de bancos > Pagos recibidos para el cliente corporativo Corporación Andina S.A. (código asignado en tu empresa).",
             "Selecciona la factura pendiente de cobro generada en la clase anterior.",
             "Registra el medio de pago con transferencia bancaria a Banco Pichincha.",
             "Guarda el pago recibido y valida que la deuda del cliente quede saldada.",
@@ -24072,32 +23970,20 @@
       },
       {
         "slide_index": 3,
-        "script_text": "Misión 2: Verificación de la Liberación Inmediata de la Línea de Crédito. Observa la sinergia del ERP: en el mismo instante en que Tesorería guarda el Pago Recibido, la deuda del cliente disminuye y su Límite de Crédito disponible se restaura al 100%. El departamento de ventas no tiene que esperar a que contabilidad le envíe un correo confirmando el cobro; el vendedor ve en su pantalla que el cliente ya tiene cupo libre para volver a comprar. En esta práctica revisamos la ficha de C20005 para confirmar su crédito restablecido. Beneficio de negocio: Cero fricción entre cobranzas y ventas, y reactivación inmediata del ciclo de recompra.",
+        "script_text": "Misión 2. Consulta nuevamente el código, el límite de crédito y el saldo del cliente. El cobro reduce su deuda; el límite configurado permanece igual. Para una nueva venta también deben considerarse compromisos y políticas de riesgo, además del saldo contable.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Socios de negocios > Datos maestros de socio de negocios > Saldo de cuenta",
-          "title": "Comprobación de Liberación de Cupo de Crédito en Tiempo Real",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Verificación del saldo después del cobro",
           "instructions": [
-            "Abre la ficha del socio de negocios C20005.",
-            "Observa el campo Saldo de Cuenta: se redujo en el valor cobrado.",
-            "Revisa el Crédito Disponible: recuperó la totalidad del cupo asignado.",
-            "Valida que el cliente esté listo para recibir una nueva orden de venta sin bloqueos."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Socio de Negocios",
-              "valor": "C20005",
-              "pista": "Corporación Andina S.A."
-            },
-            {
-              "etiqueta": "Saldo Actual",
-              "valor": "0.00",
-              "pista": "Sin deuda vencida"
-            },
-            {
-              "etiqueta": "Crédito Disponible",
-              "valor": "10000.00",
-              "pista": "Límite de crédito restablecido"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL006"
@@ -24105,32 +23991,20 @@
       },
       {
         "slide_index": 4,
-        "script_text": "Misión 3: Consulta del Informe de Antigüedad de Saldos y Cálculo de DSO. Para impresionar a un Gerente de Finanzas o Tesorero, debes dominar el informe de Antigüedad de Saldos (Aging Report). Este informe clasifica la cartera de clientes por tramos: corriente, 30 a 60 días, 60 a 90 días y más de 90 días, calculando los Días de Venta Pendientes de Cobro (DSO). En esta práctica ejecutamos el reporte de Antigüedad de Saldos en el simulador. Beneficio comercial: La gerencia tiene visibilidad instantánea de a quién cobrarle primero para maximizar el flujo de caja semanal.",
+        "script_text": "Misión 3. Consulta el saldo pendiente y el número de facturas del cliente. Este ejercicio no calcula DSO ni clasifica una cartera completa por antigüedad. Un análisis de vencimiento requiere fechas y saldos por documento; el DSO requiere además ventas y un período de medición definido.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Finanzas > Informes financieros > Antigüedad de saldos de clientes",
-          "title": "Análisis de Antigüedad de Cartera y Recuperación de Cobranza",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Consulta de cartera del cliente",
           "instructions": [
-            "Accede a Informes financieros > Antigüedad de saldos.",
-            "Ejecuta el reporte con corte a la fecha actual.",
-            "Identifica los clientes con facturas en tramo vencido.",
-            "Analiza el monto total adeudado y los indicadores de rotación de cartera (DSO)."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Reporte",
-              "valor": "Antigüedad de Saldos",
-              "pista": "Informe ejecutivo de cuentas por cobrar"
-            },
-            {
-              "etiqueta": "Segmentación",
-              "valor": "Por Tramos de Vencimiento",
-              "pista": "Corriente / 30 / 60 / 90+ días"
-            },
-            {
-              "etiqueta": "Objetivo DSO",
-              "valor": "Reducción de Días de Cobro",
-              "pista": "Optimización del capital de trabajo"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL006"
@@ -24138,32 +24012,25 @@
       },
       {
         "slide_index": 5,
-        "script_text": "El Flujo de Caja en Tiempo Real: El Dashboard que Todo CFO Exige. En las empresas desorganizadas, saber cuánto dinero habrá en el banco la próxima semana requiere horas de trabajo manual en Excel reuniendo datos de cobros y pagos. Con Finix ERP, el informe de Flujo de Caja proyecta los ingresos por facturas emitidas y los egresos por facturas de proveedores automáticamente. Si le muestras esto a un Director Financiero, la decisión de contratar Finix ERP se vuelve obvia.",
+        "script_text": "Una proyección de caja depende de fechas y probabilidades de cobro y pago. El saldo bancario registrado no equivale a efectivo conciliado. Compara movimientos contra un extracto de prueba y separa datos registrados, estimaciones y compromisos.",
         "step_guide": null
       },
       {
         "slide_index": 6,
-        "script_text": "Misión 4: Taller Práctico Anti-Objeciones I: Es muy caro y Ya usamos hojas de cálculo. Primera objeción: Es muy caro. Respuesta consultiva: Ingeniero, caro es perder 25 mil dólares al año por mermas en bodega y facturas que se quedan sin cobrar porque se traspapelaron. Finix ERP se paga solo en menos de seis meses con el ahorro operativo. Segunda objeción: Con Excel nos arreglamos. Respuesta consultiva: Don Carlos, Excel es una hoja de cálculo maravillosa para hacer cálculos personales, pero no tiene pistas de auditoría inmutables, no bloquea ventas a morosos y no factura con el SRI en tiempo real. En esta práctica exploramos los argumentos en el simulador.",
+        "script_text": "Misión 4. Evalúa un caso hipotético con inversión de 12000 dólares y ahorro neto mensual constante de 1000 dólares. La recuperación simple es inversión dividida por ahorro: doce meses. No es una garantía ni un cálculo de valor actual; debes justificar costos, ahorros, riesgos y plazo del caso real.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Herramientas > Consultas y Auditoría",
-          "title": "Demostración de Control vs Falacias de Hojas de Cálculo",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Recuperación simple con supuestos explícitos",
           "instructions": [
-            "En el simulador, accede a los registros de auditoría y control de crédito.",
-            "Muestra cómo el ERP impide la edición manual de transacciones ya cerradas.",
-            "Compara este control institucional con la vulnerabilidad de un archivo de Excel editable.",
-            "Utiliza este contraste como argumento de blindaje patrimonial para el dueño de la empresa."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Objeción 1",
-              "valor": "Es muy caro -> Retorno ROI en 6 meses",
-              "pista": "Justificación financiera"
-            },
-            {
-              "etiqueta": "Objeción 2",
-              "valor": "Excel basta -> Falta de auditoría y riesgo fiscal",
-              "pista": "Contraste de seguridad"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL008"
@@ -24171,27 +24038,20 @@
       },
       {
         "slide_index": 7,
-        "script_text": "Misión 5: Taller Práctico Anti-Objeciones II: Mi personal no se adaptará y Se tarda meses en implementar. Tercera objeción: Mi gente es mayor y le tiene miedo a la tecnología. Respuesta consultiva: En Finix ERP cada usuario tiene un Cockpit personalizado con solo tres botones: lo que debe hacer en su jornada. Si saben usar WhatsApp y un navegador web, aprenden a usar Finix ERP en dos horas. Cuarta objeción: La implementación es un dolor de cabeza y dura un año. Respuesta consultiva: Con la metodología B1 Center y plantillas de industria listas, salimos en producción en cuatro semanas con cero traumatismos operativos.",
+        "script_text": "Misión 5. Responde dos preguntas de alcance: el plazo de implantación requiere diagnóstico y una interfaz sencilla no elimina la formación. Datos, migración, permisos, integraciones y pruebas determinan el plan. Evita prometer cuatro semanas o dos horas de aprendizaje sin evaluar al equipo y el proyecto.",
         "step_guide": {
           "action_type": "practica",
-          "menu_path": "Inicio > Cockpit interactivo y Búsquedas rápidas",
-          "title": "Demostración de Usabilidad Amigable y Cockpit Simplificado",
+          "menu_path": "Laboratorio > Consulta académica",
+          "title": "Diagnóstico y formación para implantar",
           "instructions": [
-            "Abre el Cockpit principal de Finix ERP.",
-            "Muestra la barra de búsqueda inteligente estilo Google para encontrar clientes o transacciones.",
-            "Destaca los accesos directos por rol de trabajo y la navegación intuitiva.",
-            "Demuestra cómo un operario nuevo puede facturar en su primer día de trabajo."
+            "Lee los datos y el caso que presenta la consulta de tu empresa.",
+            "Responde los campos con los valores observados; esta misión no registra operaciones."
           ],
           "campos": [
             {
-              "etiqueta": "Objeción 3",
-              "valor": "No se adaptarán -> Cockpit ultra intuitivo",
-              "pista": "Facilidad de uso"
-            },
-            {
-              "etiqueta": "Objeción 4",
-              "valor": "Tarda mucho -> Salida en 4 semanas B1 Center",
-              "pista": "Metodología ágil"
+              "etiqueta": "Consulta académica",
+              "valor": "Datos actuales de la empresa",
+              "pista": "Responde los campos que muestra la consulta."
             }
           ],
           "screenId": "SAL009"
@@ -24199,27 +24059,27 @@
       },
       {
         "slide_index": 8,
-        "script_text": "El Guion Maestro de la Demostración Comercial de 15 Minutos ante C-Level. Para cerrar contratos de software empresarial debes ser implacablemente estructurado. Sigue este guion de 4 bloques cronometrados: Minutos 1 a 3: Diagnóstico del dolor. Haz preguntas abiertas: ¿Cuánto tiempo tardan sus gerentes en saber el inventario real o la utilidad del mes?. Minutos 4 a 8: El flujo en vivo. Cotiza, reserva stock y factura en vivo en menos de 4 minutos. Minutos 9 a 12: El efecto WOW. Abre el Mapa de Relaciones interactivo y los tableros del Cockpit. Minutos 13 a 15: Cierre con propuesta de inversión y fecha fija de inicio.",
+        "script_text": "Organiza una demostración breve en cuatro bloques: necesidad, flujo de documentos, comprobación de resultados y próximos pasos. Ensaya con datos sintéticos y explica qué está funcionando y qué requiere configuración. El tiempo del ensayo es una meta de presentación, no una garantía de operación.",
         "step_guide": null
       },
       {
         "slide_index": 9,
-        "script_text": "Psicología del Cierre Consultivo: Las 3 Preguntas de Oro. Nunca preguntes: ¿Le gustó el sistema?. Esa pregunta invita a respuestas tibias. Formula estas tres preguntas de cierre: Primera: Don Carlos, ¿este flujo resuelve el problema de inventario y facturación que hoy tiene su empresa?. Segunda: Si implementamos esto el próximo mes, ¿cuánto dinero y dolores de cabeza le ahorraría a su gerencia?. Tercera: ¿Quiénes más de su equipo deberían estar en la reunión de arranque la próxima semana?.",
+        "script_text": "El cierre consultivo verifica comprensión y acuerdo sobre el problema. Pregunta qué proceso necesita mejorar el equipo, qué evidencia espera y quién debe participar en el diagnóstico. No presiones a contratar ni afirmes ahorros que el cliente no ha validado.",
         "step_guide": null
       },
       {
         "slide_index": 10,
-        "script_text": "Calculadora de Retorno de Inversión (ROI) para Presentaciones Comerciales. Prepara siempre números concretos: Si la empresa factura 200 mil dólares al mes y reduce sus mermas de inventario en un 2%, ahorra 4,000 dólares mensuales. Si reduce el tiempo de facturación y cobranza en un 30%, libera 15,000 dólares de capital de trabajo. Finix ERP no es un gasto operativo; es la inversión más rentable que una empresa en crecimiento puede realizar.",
+        "script_text": "El retorno de inversión necesita un período y beneficios netos. En el caso de 12000 de inversión y 1000 de ahorro mensual, doce meses acumulan 12000 de ahorro; el retorno neto simple de ese período sería cero antes de otros efectos. Reducir días de cobro puede liberar capital de trabajo, pero no debe sumarse automáticamente como ingreso recurrente.",
         "step_guide": null
       },
       {
         "slide_index": 11,
-        "script_text": "El Acuerdo de Alcance y Kick-off del Proyecto. Al finalizar la demostración, no dejes la reunión en el aire con un te llamo la próxima semana. Tu objetivo como profesional de ventas es firmar el Acuerdo de Alcance o agendar la sesión técnica de parametrización de su empresa de práctica. Utiliza la presentación comercial oficial de Finix Academy para dejar una huella imborrable en el comité de compras.",
+        "script_text": "El acuerdo de alcance debe identificar procesos, entregables, responsables, exclusiones y criterios de aceptación. Usa la presentación educativa como apoyo y registra las configuraciones pendientes. Nunca cargues datos reales de clientes en una demostración sin autorización y controles adecuados.",
         "step_guide": null
       },
       {
         "slide_index": 12,
-        "script_text": "Síntesis Ejecutiva, Evaluación Oral y Certificación Oficial Comercial. ¡Felicitaciones! Has completado el Programa Maestro de 4 Clases de Operaciones y Demostración Comercial Finix ERP. Has recorrido con éxito la calificación de clientes y riesgo de crédito, la ingeniería de oferta y ATP multialmacén, el ciclo Order-to-Cash con facturación SRI 2026, la cobranza bancaria y el taller de objeciones. Ahora estás preparado para liderar demostraciones de alto impacto y cerrar negocios corporativos. Pulsa en Evaluación Oral para rendir tu examen final con el Tutor IA y obtener tu Certificado Oficial de Competencia. ¡Mucho éxito en tus negociaciones!",
+        "script_text": "Has completado el recorrido comercial de laboratorio. La constancia de Finix Academy requiere prácticas verificadas y evaluación aprobada; no es un título oficial ni acreditación de un fabricante. Revisa los resultados pendientes antes de solicitar la evaluación oral. La preparación para un puesto real requiere también práctica supervisada y evaluación del contexto empresarial.",
         "step_guide": null
       }
     ],

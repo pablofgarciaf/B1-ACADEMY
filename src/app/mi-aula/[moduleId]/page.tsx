@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import AcademicSlide from '@/components/simulator/AcademicSlide';
 import { useAuth } from '@/context/AuthContext';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
@@ -77,7 +78,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     getCompany(currentUser.uid)
       .then(s => {
         if (!activo) return;
-        const exists = Boolean(s?.profile && s.profile.companyName);
+        const exists = s?.profile?.trainingSetupVersion===1;
         setEmpresaEstado(exists ? 'ok' : 'falta');
       })
       .catch(() => {
@@ -151,6 +152,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     isPaused,
     isMuted,
     needsGesture,
+    vozFallo,
     currentTime,
     duration,
     speakText,
@@ -266,7 +268,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     [lessonData, activeClassId, isLoadingLesson, currentSlideIndex]
   );
 
-  const currentStepGuide = currentSync?.step_guide || null;
+  const currentStepGuide = useMemo(()=>currentSync?.step_guide ? {...currentSync.step_guide,missionId:`${activeClassId}#${currentSlideIndex+1}`} : null,[currentSync,activeClassId,currentSlideIndex]);
   const slideScript = currentSync?.script_text || '';
   // Si una narración no tiene lámina propia, se mantiene la última imagen de la clase en vez de un hueco vacío.
   const lessonImages = lessonData?.images ?? [];
@@ -325,10 +327,10 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       }))
       .then(r => r.ok ? r.json() : Promise.reject(new Error('practice-save')))
       .then((res: { aprobada: boolean }) => {
-        if (res.aprobada) setPassedPractices(prev => (prev.includes(clave) ? prev : [...prev, clave]));
+        if (res.aprobada) {setPassedPractices(prev => (prev.includes(clave) ? prev : [...prev, clave]));setPhase('mission_done');}else setRestartKey(k=>k+1);
         setPracticeNotice(res.aprobada ? null : 'Práctica completada, pero no cumple los requisitos del certificado. Repítela para que se registre.');
       })
-      .catch(() => setPracticeNotice('No se pudo registrar la práctica para tu certificado. Repítela cuando tengas conexión.'));
+      .catch(() => {setPracticeNotice('No pudimos validar la práctica. Revisa la misión y vuelve a intentarlo.');setRestartKey(k=>k+1);});
   }, [stopSpeaking, currentUser, moduleInfo, activeClassId, currentSlideIndex]);
 
   // =============================================
@@ -658,6 +660,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   Prácticas aprobadas: {requiredPractices.filter(p => passedPractices.includes(p)).length} de {requiredPractices.length}
                 </p>
               )}
+              {vozFallo && <p role="status" className="mt-1 text-xs text-amber-300">La voz no está disponible. Puedes leer el texto y controlar el avance.</p>}
               {practiceNotice && <p className="mt-1 text-[10px] text-amber-300" role="status">{practiceNotice}</p>}
               <Link
                 href={`/mi-aula/${moduleId}/oral-exam`}
@@ -824,7 +827,9 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   togglePause();
                 }}
               >
-                {activeSlideImage ? (
+                {activeClassId.startsWith('mod-ventas') ? (
+                  <AcademicSlide script={slideScript} title={currentStepGuide?.title || lessonData?.title || 'Operaciones comerciales'} index={currentSlideIndex + 1} />
+                ) : activeSlideImage ? (
                   <Image
                     src={activeSlideImage}
                     alt={`Diapositiva ${currentSlideIndex + 1}`}

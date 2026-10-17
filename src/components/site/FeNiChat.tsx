@@ -3,6 +3,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { Sparkles, Send, X, User, Trash2 } from 'lucide-react';
 import FeNiMascota from './FeNiMascota';
+import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
+import { publicHelpReply } from '@/lib/public-help';
 
 export interface Message {
   role: 'user' | 'assistant';
@@ -17,6 +20,8 @@ const SUGGESTED_QUESTIONS = [
 ];
 
 export default function FeNiChat() {
+  const { currentUser, userProfile } = useAuth();
+  const privateTutorReady = Boolean(currentUser && userProfile?.passwordSecurityVersion === 2 && userProfile.passwordChanged !== false);
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -28,11 +33,9 @@ export default function FeNiChat() {
     const handleAbrir = () => setIsOpen(true);
     window.addEventListener('feni-abrir', handleAbrir);
     window.addEventListener('fini-abrir', handleAbrir);
-    window.addEventListener('feni-abrir', handleAbrir);
     return () => {
       window.removeEventListener('feni-abrir', handleAbrir);
       window.removeEventListener('fini-abrir', handleAbrir);
-      window.removeEventListener('feni-abrir', handleAbrir);
     };
   }, []);
 
@@ -53,15 +56,19 @@ export default function FeNiChat() {
     const userMessage: Message = { role: 'user', content: input.trim() };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    if (!privateTutorReady || !currentUser) {
+      setMessages(prev => [...prev, { role: 'assistant', content: publicHelpReply(userMessage.content) }]);
+      return;
+    }
     setIsLoading(true);
 
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${await currentUser.getIdToken()}` },
         body: JSON.stringify({
           message: userMessage.content,
-          history: messages,
+          history: messages.slice(-20),
         }),
       });
 
@@ -151,7 +158,7 @@ export default function FeNiChat() {
                   ¡Hola! Soy FeNi AI
                 </h4>
                 <p className="text-xs text-gray-400 mb-4 max-w-[280px] mx-auto">
-                  El Fénix inteligente de Finix ERP. Puedo resolver tus dudas sobre contabilidad NIIF, módulos de compras, ventas e impuestos SRI en Ecuador.
+                  {privateTutorReady ? 'Consulta tus dudas sobre las prácticas del ERP. Revisa siempre el material del programa.' : 'Te ayudo a encontrar cursos y formación para empresas. El tutor de prácticas está disponible al iniciar sesión.'}
                 </p>
                 <div className="space-y-1.5 text-left">
                   <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider px-1">
@@ -215,6 +222,7 @@ export default function FeNiChat() {
             <div ref={messagesEndRef} />
           </div>
 
+          <nav aria-label="Admisiones" className="flex gap-4 px-4 py-2 text-xs text-sky-300"><Link href="/login" className="underline">Crear cuenta</Link><Link href="/empresas#solicitud" className="underline">Formación para empresas</Link></nav>
           {/* Input Form */}
           <form
             onSubmit={handleSubmit}
@@ -222,6 +230,8 @@ export default function FeNiChat() {
           >
             <input
               type="text"
+              aria-label="Tu consulta"
+              maxLength={4000}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Pregúntale a FeNi AI sobre Finix ERP..."
@@ -230,6 +240,7 @@ export default function FeNiChat() {
             />
             <button
               type="submit"
+              aria-label="Enviar consulta"
               disabled={!input.trim() || isLoading}
               className="bg-amber-500 hover:bg-amber-400 disabled:opacity-40 disabled:hover:bg-amber-500 text-black font-bold p-2 rounded-xl transition-all shadow-md active:scale-95 shrink-0 flex items-center justify-center"
             >

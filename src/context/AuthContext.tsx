@@ -1,17 +1,18 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
-import { auth, db } from '@/lib/firebase';
+import { auth } from '@/lib/firebase';
 import { FirebaseError } from 'firebase/app';
-import { createUserWithEmailAndPassword, onIdTokenChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updatePassword as fbUpdatePassword, updateProfile, type User as FirebaseUser } from 'firebase/auth';
-import { doc, setDoc, updateDoc } from 'firebase/firestore';
+import { onIdTokenChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, type User as FirebaseUser } from 'firebase/auth';
+
 import { POLITICAS_VERSION } from '@/lib/legal-config';
 
 export interface UserProfile {
   uid: string; email: string; name: string; displayName: string; cedula: string;
   role: 'super' | 'admin' | 'docente' | 'estudiante' | 'consultor_premium' | 'regular';
   status: 'active' | 'suspended'; createdAt: string; updatedAt?: string;
-  assignedTracks?: string[]; passwordChanged?: boolean; sandboxHoursUsed?: number;
+  assignedTeacherUids?: string[]; assignedTracks?: string[]; passwordChanged?: boolean; passwordSecurityVersion?: number; sandboxHoursUsed?: number;
+  temporaryPasswordExpiresAt?: string;
   sandboxHoursLimit?: number; phone?: string; bio?: string; simuladorLevel?: number;
   simuladorXP?: number; completedMissions?: number; avatar?: string; company?: string;
   moduleProgress?: Record<string, { completed: number; total: number; progress: number }>;
@@ -28,7 +29,7 @@ interface AuthContextType {
   logout: () => Promise<void>;
   changePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
   resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
-  register: (data: { name: string; email: string; cedula: string; phone?: string }) => Promise<{ success: boolean; error?: string }>;
+  register: (data: { name: string; email: string; password: string; cedula?: string; phone?: string }) => Promise<{ success: boolean; error?: string }>;
   createStudent: (data: CreateStudentInput) => Promise<{ success: boolean; error?: string }>;
   getAllStudents: () => Promise<UserProfile[]>;
 }
@@ -56,10 +57,10 @@ async function establishServerSession(user: FirebaseUser, forceRefresh = false):
 function getLoginErrorMessage(error: unknown) {
   if (error instanceof FirebaseError) {
     if (['auth/invalid-credential', 'auth/wrong-password', 'auth/user-not-found', 'auth/invalid-login-credentials'].includes(error.code)) {
-      return 'Firebase rechazó ese correo o contraseña. Revisa que la cuenta exista en este proyecto y que el password sea el recién creado.';
+      return 'El correo o la contraseña no son válidos. Revisa los datos o restablece tu contraseña.';
     }
     if (error.code === 'auth/too-many-requests') return 'Firebase bloqueó temporalmente los intentos. Espera unos minutos o restablece la contraseña.';
-    if (error.code === 'auth/invalid-api-key') return 'La API key pública de Firebase no corresponde al proyecto.';
+    if (error.code === 'auth/invalid-api-key') return 'El acceso no está disponible temporalmente. Intenta más tarde.';
   }
   if (error instanceof Error && error.message) return error.message;
   return 'No fue posible iniciar sesión.';
@@ -107,7 +108,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const profile = await establishServerSession(credential.user, true);
       if (profile.status !== 'active') throw new Error('Inactive');
       setCurrentUser(credential.user); setUserProfile(profile);
-      return { success: true, role: profile.role, passwordChanged: profile.passwordChanged ?? true };
+      return { success: true, role: profile.role, passwordChanged: profile.passwordChanged !== false && profile.passwordSecurityVersion===2 };
     } catch (error) {
       if (process.env.NODE_ENV === 'development') console.error('Login error:', error);
       await signOut(auth).catch(() => undefined);
@@ -135,10 +136,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const changePassword = async (newPassword: string) => {
     if (!currentUser || newPassword.length < 12) return { success: false, error: 'La nueva contraseña debe tener al menos 12 caracteres.' };
     try {
-      await fbUpdatePassword(currentUser, newPassword);
-      await updateDoc(doc(db, 'usuarios', currentUser.uid), { passwordChanged: true });
-      setUserProfile((previous) => previous ? { ...previous, passwordChanged: true } : previous);
-      await establishServerSession(currentUser);
+      const response=await authenticatedFetch('/api/auth/password',{method:'POST',body:JSON.stringify({password:newPassword})});
+      if(!response.ok) return {success:false,error:(await response.json()).error||'No pudimos cambiar la contraseña.'};
+      await signInWithEmailAndPassword(auth,currentUser.email!,newPassword);
+      setUserProfile(await establishServerSession(auth.currentUser!,true));
       return { success: true };
     } catch { return { success: false, error: 'No fue posible cambiar la contraseña. Vuelve a iniciar sesión.' }; }
   };
@@ -148,45 +149,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { success: true };
   };
 
-  /**
-   * Registro público desde el navegador (no depende de Firebase Admin en el servidor).
-   * La cédula es la clave del primer ingreso; passwordChanged=false obliga a crear la clave personal.
-   */
-  const register = async (data: { name: string; email: string; cedula: string; phone?: string }) => {
-    registeringRef.current = true;
-    let created: FirebaseUser | null = null;
+  /** Public accounts use an independently chosen password, never an identity document. */
+  const register = async (data: {name:string;email:string;password:string;cedula?:string;phone?:string}) => {
     try {
-      const email = data.email.trim().toLowerCase();
-      const cedula = data.cedula.trim();
-      const credential = await createUserWithEmailAndPassword(auth, email, cedula);
-      created = credential.user;
-      await updateProfile(created, { displayName: data.name.trim() }).catch(() => undefined);
-      await setDoc(doc(db, 'usuarios', created.uid), {
-        uid: created.uid, email, name: data.name.trim(), displayName: data.name.trim(), cedula,
-        role: 'estudiante', status: 'active', createdAt: new Date().toISOString(), passwordChanged: false,
-        assignedTracks: ['finix-erp-core'], phone: data.phone?.trim() ?? '', simuladorLevel: 1, simuladorXP: 0, completedMissions: 0,
-        // Constancia del consentimiento (LOPDP): qué versión de las políticas aceptó y cuándo.
-        consentimiento: { politicas: POLITICAS_VERSION, fecha: new Date().toISOString(), medio: 'registro-web' },
-      });
-      await signOut(auth);
-      return { success: true };
-    } catch (error) {
-      // Si la cuenta se creó pero el perfil no, se elimina para que el estudiante pueda reintentar.
-      if (created) await created.delete().catch(() => undefined);
-      const code = error instanceof FirebaseError ? error.code : '';
-      const mensajes: Record<string, string> = {
-        'auth/email-already-in-use': 'Ese correo ya tiene cuenta. Inicia sesión con tu cédula (primer ingreso) o con tu contraseña.',
-        'auth/invalid-email': 'El correo no es válido.',
-        'auth/weak-password': 'La cédula o pasaporte debe tener al menos 6 caracteres.',
-        'auth/network-request-failed': 'Sin conexión. Revisa tu internet e intenta de nuevo.',
-        'auth/operation-not-allowed': 'El registro con correo no está habilitado en Firebase.',
-        'permission-denied': 'No se pudo guardar tu perfil. Contacta al administrador.',
-      };
-      if (process.env.NODE_ENV === 'development') console.error('Registro:', error);
-      return { success: false, error: mensajes[code] ?? `No fue posible crear la cuenta${code ? ` (${code})` : ''}.` };
-    } finally {
-      registeringRef.current = false;
-    }
+      const response=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...data,privacyAccepted:true,policyVersion:POLITICAS_VERSION})});
+      const body=await response.json();
+      return response.ok ? {success:true} : {success:false,error:body.error||'No se pudo crear la cuenta.'};
+    }catch{return {success:false,error:'No hay conexión. Vuelve a intentarlo.'};}
   };
 
   const getAllStudents = async () => {

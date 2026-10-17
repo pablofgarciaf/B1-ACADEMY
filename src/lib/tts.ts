@@ -1,9 +1,10 @@
 import 'server-only';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
+import { narrationChunks } from './narration-chunks';
 
 /** Voz oficial de Finix Academy: la misma de los videos de los manuales (manual 1.1). */
 export const ACADEMY_VOICE = 'es-MX-JorgeNeural';
-export const TTS_MAX_CHARS = 1500;
+export const TTS_MAX_CHARS = 12000;
 
 const CACHE_LIMIT = 400;
 const cache = new Map<string, Buffer>();
@@ -45,7 +46,9 @@ export async function synthesize(text: string): Promise<Buffer> {
     let lastError: unknown;
     for (let attempt = 1; attempt <= 3; attempt++) {
       try {
-        const audio = await generate(key);
+        const parts: Buffer[] = [];
+        for (const chunk of narrationChunks(key)) parts.push(await generate(chunk));
+        const audio = Buffer.concat(parts);
         remember(key, audio);
         return audio;
       } catch (error) {

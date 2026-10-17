@@ -46,7 +46,7 @@ export default function MiAulaPage() {
       .catch(() => { if (activo) setHechasInduccion(0); });
 
     getCompany(currentUser.uid)
-      .then(s => { if (activo) setTieneEmpresa(Boolean(s?.profile && s.profile.companyName)); })
+      .then(s => { if (activo) setTieneEmpresa(s?.profile?.trainingSetupVersion===1); })
       .catch(() => { if (activo) setTieneEmpresa(false); });
 
     return () => { activo = false; };
@@ -65,7 +65,7 @@ export default function MiAulaPage() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-10">
         {/* Cápsula GEO */}
         <aside aria-label="Resumen de Mi Aula" className="sr-only">
-          Mi Aula de B1 Academy: escuela de Finix ERP 10.0 con módulos prácticos, cada uno con certificado de
+          Mi Aula de Finix Academy: escuela de Finix ERP 10.0 con módulos prácticos, cada uno con certificado de
           competencia verificable, diplomas por rol profesional, clases narradas, prácticas en simulador y evaluación final.
         </aside>
 
@@ -106,7 +106,7 @@ export default function MiAulaPage() {
                 Taller Maestro de Operaciones y Demostración Comercial Finix ERP
               </h2>
               <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-                Programa ejecutivo de 4 clases magistrales para consultores comerciales y ejecutivos de preventa: Prospección y riesgo crediticio, Ingeniería de oferta y ATP multialmacén, Ciclo Order-to-Cash y facturación SRI 2026, y Cobranzas con demostración ejecutiva C-Level.
+                Cuatro clases de laboratorio: clientes y crédito, inventario y margen, documentos de venta de prueba, cobro y demostración consultiva.
               </p>
               <div className="flex flex-wrap gap-2 pt-1 text-[11px] text-slate-500 dark:text-gray-400 font-medium">
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
@@ -116,7 +116,7 @@ export default function MiAulaPage() {
                   ✓ Clase 2: Ofertas ATP & Margen Mínimo
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
-                  ✓ Clase 3: Order-to-Cash, SRI 2026 & Mapa
+                  ✓ Clase 3: Documentos de prueba y trazabilidad
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-gray-800/60 border border-slate-200 dark:border-gray-700/50">
                   ✓ Clase 4: Cobranza & Demostración C-Level

@@ -82,7 +82,7 @@ export default function ExamPage({ params }: { params: Promise<{ moduleId: strin
     stopDictation(); stopSpeaking();
     setBusy(true); setError(null);
     try {
-      const data = await call({ action: 'answer', examId, answer }) as { result: QuestionResult; finished: boolean; next?: QuestionState } & Partial<FinalState>;
+      const data = await call({ action: 'answer', examId, questionNumber:current?.questionNumber, answer }) as { result: QuestionResult; finished: boolean; next?: QuestionState } & Partial<FinalState>;
       setLastResult(data.result);
       if (data.finished) {
         const result: FinalState = { passed: !!data.passed, total: data.total ?? 0, weakest: data.weakest ?? 0, summary: data.summary ?? [] };

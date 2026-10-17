@@ -12,7 +12,7 @@ import { getCompany } from '@/lib/firestore-company';
 import { EMPRESA_CURSO } from '@/lib/b1-center-datos';
 
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
-export interface GuiaPractica { title: string; menu_path?: string; instructions?: string[]; campos?: CampoPractica[] }
+export interface GuiaPractica { title: string; menu_path?: string; missionId?: string; instructions?: string[]; campos?: CampoPractica[] }
 
 /** Menú principal de Finix ERP (cliente de escritorio, español). */
 const MODULOS_FINIX = [
@@ -120,8 +120,8 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [valores, setValores] = useState<string[]>(() => {
     return campos.map((c) => {
       const et = plano(c.etiqueta);
-      if (et.includes('usuario') || et.includes('user')) return 'pablofgarciaf@gmail.com';
-      if (et.includes('contra') || et.includes('clave') || et.includes('pass')) return 'mateD0MEmia';
+      if (et.includes('usuario') || et.includes('user')) return 'alumno@ejemplo.test';
+      if (et.includes('contra') || et.includes('clave') || et.includes('pass')) return 'ClaveSoloDePractica2026!';
       if (et.includes('empresa') || et.includes('company')) return 'B1 Center';
       return '';
     });
@@ -152,7 +152,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
     const emailReal = currentUser.email;
     setValores(prev => prev.map((v, i) => {
       const et = plano(campos[i]?.etiqueta || '');
-      if ((et.includes('usuario') || et.includes('user')) && (!v || v === 'pablofgarciaf@gmail.com' || v === 'pablo.garcia' || v === 'manager')) {
+      if ((et.includes('usuario') || et.includes('user')) && (!v || v === 'alumno@ejemplo.test' || v === 'pablo.garcia' || v === 'manager')) {
         return emailReal;
       }
       return v;

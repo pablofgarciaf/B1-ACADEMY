@@ -1,11 +1,4 @@
-/**
- * Utilidad unificada para la nomenclatura y formato de documentos en Firestore
- * según el estándar del proyecto: `${modulo}_${nombre_estudiante}`.
- * 
- * Permite evitar tablas infinitas de identificadores crudos (hashes) y asegura
- * que tanto `academic_progress` como `evaluations` tengan documentos limpios,
- * legibles y ordenados por módulo y estudiante.
- */
+/** Stable UID keys for new academic records. Name-based IDs are read only for verified legacy ownership. */
 
 export function sanitizeForDocId(text: string): string {
   if (!text) return 'estudiante';
@@ -23,10 +16,10 @@ export function sanitizeForDocId(text: string): string {
  * con la estructura: `${modulo}_${nombre_estudiante}`.
  * 
  * Ejemplos:
- * - `buildStudentDocId('mod-1', 'Pablo García', 'pablo@ejemplo.com')` -> `'mod-1_pablo_garcia'`
- * - `buildStudentDocId('mod-ventas', '', 'carlos@empresa.com')` -> `'mod-ventas_carlos'`
+ * - `legacyStudentDocId('mod-1', 'Nombre de prueba', 'student@example.test')` -> `'mod-1_pablo_garcia'`
+ * - `legacyStudentDocId('mod-ventas', '', 'student@example.test')` -> `'mod-ventas_carlos'`
  */
-export function buildStudentDocId(moduleId: string, studentName?: string, email?: string): string {
+export function legacyStudentDocId(moduleId: string, studentName?: string, email?: string): string {
   const safeModule = (moduleId || 'modulo').trim().toLowerCase().replace(/[^a-z0-9_-]+/g, '_');
   const rawName = (studentName || '').trim() || (email ? email.split('@')[0] : 'estudiante');
   const safeStudent = sanitizeForDocId(rawName);
@@ -41,4 +34,13 @@ export function getStudentDisplayName(profile?: { displayName?: string; name?: s
   if (name) return name;
   if (email) return email.split('@')[0];
   return 'Estudiante';
+}
+
+/** Identidad estable: los nombres nunca son claves de autorización. */
+export function buildStudentDocId(moduleId: string, uid: string): string {
+  if (!uid || uid.includes('/') || !moduleId || moduleId.includes('/')) throw new Error('Identidad académica inválida.');
+  return uid + '_' + moduleId;
+}
+export function ownedAcademicData(data: Record<string, any> | undefined, uid: string, moduleId: string) {
+  return data?.uid === uid && data?.moduleId === moduleId ? data : undefined;
 }

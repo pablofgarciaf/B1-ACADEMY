@@ -5,6 +5,7 @@ const omitBase = { id: true, createdAt: true, updatedAt: true, createdBy: true }
 const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con formato AAAA-MM.');
 const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
+  z.object({action:z.literal('initializeTraining'),data:z.object({companyName:text.min(2).optional()})}),
   z.object({ action: z.literal('access'), data: z.object({}) }),
   z.object({ action: z.literal('profitShare'), data: z.object({ year: z.number().int().min(2020).max(2100), date, profit: money.optional() }) }),
   z.object({ action: z.literal('incomeTaxClose'), data: z.object({ year: z.number().int().min(2020).max(2100), date }) }),

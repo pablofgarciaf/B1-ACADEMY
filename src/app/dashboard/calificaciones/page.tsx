@@ -17,6 +17,8 @@ interface CertRecord {
   status: 'valid' | 'revoked';
   title?: string;
   holderName?: string;
+  scorePercent?: number;
+  estimatedHours?: number;
 }
 
 export default function CalificacionesPage() {
@@ -43,24 +45,28 @@ export default function CalificacionesPage() {
       });
   }, [userProfile]);
 
-  const displayName = userProfile?.name || userProfile?.displayName || 'Pablo García';
-  const studentId = userProfile?.cedula || userProfile?.uid || '1721790721';
+  const displayName = userProfile?.name || userProfile?.displayName || 'Estudiante';
+  const studentId = userProfile?.cedula || userProfile?.uid || 'Pendiente';
 
   const handleDownloadPdf = (
     certType: 'micro' | 'diploma' | 'master',
     title: string,
     code: string,
-    hours = 25
+    _hours?: number
   ) => {
     try {
+      const certificate = certificates.find(c => c.code === code && c.status === 'valid');
+      if (!certificate) throw new Error('No hay una constancia vigente para descargar.');
       generateOfficialCampusCertificate({
-        studentName: displayName,
+        studentName: certificate.holderName || displayName,
         certificateType: certType,
-        title,
+        title: certificate.title || title,
         code,
-        scorePercent: 100,
-        hours,
-        instructorName: 'Master B1 & Comité Evaluador B1 Academy'
+        verified: true,
+        scorePercent: certificate.scorePercent,
+        hours: certificate.estimatedHours,
+        dateStr: new Date(certificate.issuedAt).toLocaleDateString('es-EC'),
+        instructorName: 'Finix Academy'
       });
     } catch (err) {
       console.error('Error al generar PDF:', err);
@@ -69,7 +75,7 @@ export default function CalificacionesPage() {
   };
 
   const certsByModule = new Map<string, CertRecord>();
-  certificates.forEach(c => certsByModule.set(c.moduleId, c));
+  certificates.filter(c => c.status === 'valid').forEach(c => certsByModule.set(c.moduleId, c));
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
@@ -95,7 +101,7 @@ export default function CalificacionesPage() {
             Boletín Oficial de Calificaciones y Acreditaciones
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Registro inmutable de evaluaciones técnicas, prácticas en el simulador empresarial y certificados oficiales con hash de verificación.
+            Historial registrado de evaluaciones técnicas, prácticas en el simulador empresarial y constancias de Finix Academy con hash de verificación.
           </p>
         </div>
 

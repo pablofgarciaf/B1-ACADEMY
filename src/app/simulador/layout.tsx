@@ -10,5 +10,6 @@ export default async function SimulatorLayout({ children }: { children: React.Re
   const sesion = await getSessionState();
   if (sesion.estado === 'sin-sesion') redirect('/login?next=/simulador');
   if (sesion.estado === 'no-disponible') return <SesionNoDisponible destino="/simulador" />;
+  if(sesion.estado==='ok' && (sesion.user.profile.passwordChanged===false || sesion.user.profile.passwordSecurityVersion!==2)) redirect('/change-password');
   return children;
 }

@@ -3,7 +3,9 @@
  * (clientes, artículos, pedidos, asientos…), el estudiante trabaja en SU empresa (Supabase) con esa pantalla,
  * eligiendo de listas sus propios datos, en lugar del formulario genérico que solo comparaba texto.
  */
+import { SALES_MISSIONS } from './sales-learning';
 export type PantallaConectada =
+  | { clave: 'consultaAcademica' }
   | { clave: 'cliente' } | { clave: 'proveedor' } | { clave: 'articulo' }
   | { clave: 'documento'; docType: 'quotation' | 'order' | 'delivery' | 'invoice' | 'credit_note' | 'purchase_request' | 'purchase_order' | 'goods_receipt' | 'vendor_invoice' }
   | { clave: 'asiento' } | { clave: 'activos' } | { clave: 'bom' } | { clave: 'produccion' } | { clave: 'transferencia' }
@@ -90,8 +92,9 @@ const REGLAS: [RegExp, PantallaConectada][] = [
   [/saldo.*apertura|apertura.*saldo|saldos iniciales/, { clave: 'asiento' }],
 ];
 
-export function pantallaConectada(guia?: { title?: string; menu_path?: string } | null): PantallaConectada | null {
+export function pantallaConectada(guia?: { title?: string; menu_path?: string; missionId?: string } | null): PantallaConectada | null {
   if (!guia) return null;
+  if (guia.missionId && SALES_MISSIONS[guia.missionId]) return SALES_MISSIONS[guia.missionId].pantalla;
   // Buscar, consultar o asistentes/fichas de configuración guiada no guardan un registro de motor directo: esas prácticas siguen con la ficha del ejercicio en PracticaValidada.
   // Ver, solicitar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.
   if (/buscar|consultar|identificar|verificar|revisar|visualizar|solicitar|anular|anulacion|asistente de pagos|payment wizard|generador de consultas|agregar tabla|filtrar|seleccionar campos|vincular consulta|programar notificacion|configurar ficha|datos de planificacion|definir peso|grupo cable|definir categorias|activar informacion|widget de actividades|agregar widget|configuracion de widget|prevision|alerta de stock|proceso de autorizacion|visibilidad de udf|importar desde excel|importar nuevo/.test(plano(guia.title ?? '')) || /^ver\b/.test(plano(guia.title ?? '').trim())) return null;

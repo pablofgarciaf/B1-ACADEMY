@@ -37,7 +37,7 @@ import { Footer } from '@/components/site/Footer';
 
 export default function AdminStudentsPanel() {
   const router = useRouter();
-  const { userProfile, loading: authLoading, logout, createStudent, getAllStudents } = useAuth();
+  const { currentUser, userProfile, loading: authLoading, logout, createStudent, getAllStudents } = useAuth();
 
   // ── ROUTE GUARD ──────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -118,7 +118,7 @@ export default function AdminStudentsPanel() {
       name: formName,
       email: formEmail,
       temporaryPassword: formCedula,
-      cedula: formCedula,
+
       phone: formPhone,
       role: formRole,
       assignedTracks: formTracks,
@@ -293,6 +293,7 @@ export default function AdminStudentsPanel() {
             </div>
           </div>
 
+          <Link href="/admin/solicitudes" className="inline-block text-sky-500 underline">Ver solicitudes de empresas</Link>
           {/* Tabla de Estudiantes */}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
@@ -301,7 +302,7 @@ export default function AdminStudentsPanel() {
                   <th className="pb-3 font-semibold">Estudiante / Cédula</th>
                   <th className="pb-3 font-semibold">Correo Electrónico</th>
                   <th className="pb-3 font-semibold">Rol</th>
-                  <th className="pb-3 font-semibold">Tracks Asignados</th>
+                  <th className="pb-3 font-semibold">Tracks y docente</th>
                   <th className="pb-3 font-semibold">Contraseña</th>
                   <th className="pb-3 font-semibold">Estado</th>
                 </tr>
@@ -361,6 +362,7 @@ export default function AdminStudentsPanel() {
                               {tId}
                             </span>
                           ))}
+                        <label className="mt-2 block">Docente <select aria-label={'Docente de '+stu.name} className="rounded border bg-slate-100 p-1 text-slate-900" value={stu.assignedTeacherUids?.[0]||''} onChange={async e=>{try{if(!currentUser)return;const r=await fetch('/api/admin/users',{method:'PATCH',headers:{'Content-Type':'application/json',Authorization:'Bearer '+await currentUser.getIdToken()},body:JSON.stringify({uid:stu.uid,assignedTeacherUids:e.target.value?[e.target.value]:[]})});if(!r.ok)throw Error('No se pudo asignar docente.');await loadStudents();}catch{setCreateError('No se pudo guardar la asignación del docente.');}}}><option value="">Sin docente</option>{students.filter(t=>t.role==='docente'&&t.status==='active').map(t=><option key={t.uid} value={t.uid}>{t.name||t.email}</option>)}</select></label>
                         </div>
                       </td>
 

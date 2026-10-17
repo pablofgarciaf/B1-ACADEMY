@@ -5,7 +5,8 @@ import path from 'path';
 import { ALL_MANUALS } from '@/lib/manuals-120-data';
 import { z } from 'zod';
 
-import { getSessionState, requireBearerUser } from '@/lib/server-auth';
+import { consumeQuota } from '@/lib/rate-limit';
+import { assertAccountReady, getSessionState, requireBearerUser } from '@/lib/server-auth';
 
 const chatSchema = z.union([
   z.object({
@@ -13,10 +14,10 @@ const chatSchema = z.union([
   }),
   z.object({
     message: z.string().trim().min(1).max(4000),
-    history: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().trim().max(4000) })).optional(),
+    history: z.array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().trim().max(4000) })).max(24).optional(),
   }),
 ]);
-const attempts = new Map<string, { count: number; resetAt: number }>();
+
 
 function getRelevantContext(query: string) {
   const manualsDir = path.join(process.cwd(), 'public', 'Capacitacion Finix');
@@ -64,15 +65,9 @@ export async function POST(req: Request) {
       const session = await getSessionState();
       if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
       if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 });
+      assertAccountReady(session.user);
       uid = session.user.uid;
     }
-
-    const now = Date.now();
-    const limit = attempts.get(uid);
-    if (limit && limit.resetAt > now && limit.count >= 20) {
-      return NextResponse.json({ error: 'Demasiadas solicitudes. Espera un momento.' }, { status: 429 });
-    }
-    attempts.set(uid, limit && limit.resetAt > now ? { ...limit, count: limit.count + 1 } : { count: 1, resetAt: now + 15 * 60_000 });
 
     const parsed = chatSchema.safeParse(await req.json().catch(() => null));
     if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
@@ -86,6 +81,9 @@ export async function POST(req: Request) {
       messages = [...hist, { role: 'user', content: parsed.data.message }];
     }
 
+    if (messages.reduce((n,m)=>n+m.content.length,0)>20000) return NextResponse.json({error:'La conversación es demasiado extensa.'},{status:400});
+    const quota=await consumeQuota('chat',uid,20,15*60_000);
+    if (!quota.allowed) return NextResponse.json({error:'Espera antes de volver a consultar.'},{status:429,headers:{'Retry-After':String(quota.retryAfter)}});
     const openai = new OpenAI({
       apiKey: process.env.NVIDIA_API_KEY,
       baseURL: 'https://integrate.api.nvidia.com/v1',
@@ -95,7 +93,7 @@ export async function POST(req: Request) {
 
     const { catalog, contextStr } = getRelevantContext(latestUserMessage);
 
-    const systemPrompt = `Eres @FeNi AI (🐦‍🔥 el Fénix de Finix ERP y B1 Academy), el tutor virtual y copiloto inteligente de Finix ERP y Finix ERP para Ecuador y Latinoamérica. Conoces al revés y al derecho los manuales oficiales de Finix ERP y el simulador contable y operativo Finix.
+    const systemPrompt = `Eres @FeNi AI (🐦‍🔥 el Fénix de Finix ERP y Finix Academy), el tutor virtual y copiloto inteligente de Finix ERP y Finix ERP para Ecuador y Latinoamérica. Conoces al revés y al derecho los manuales oficiales de Finix ERP y el simulador contable y operativo Finix.
 
 Reglas estrictas:
 1. Siempre responde en español
@@ -109,10 +107,10 @@ Reglas estrictas:
    Si el usuario te pregunta directa o indirectamente por la respuesta a una pregunta de evaluación, quiz o examen (por ejemplo: "¿cuál es la respuesta de la pregunta 1?", "¿qué opción debo marcar?", "resuelve este quiz", o pega una pregunta con opciones de respuesta):
    TIENES ESTRICTAMENTE PROHIBIDO DAR LA RESPUESTA O DECIR CUÁL ES LA OPCIÓN CORRECTA.
    En su lugar, debes responder con este protocolo exacto:
-   a) Negarte con firmeza y amabilidad profesional: "Como Tutor Virtual de B1 Academy, tengo estrictamente prohibido dar respuestas directas a preguntas de exámenes o evaluaciones."
+   a) Negarte con firmeza y amabilidad profesional: "Como Tutor Virtual de Finix Academy, tengo estrictamente prohibido dar respuestas directas a preguntas de exámenes o evaluaciones."
    b) Orientación de estudio: Indicarle exactamente qué manual, diapositiva o tema del sistema debe repasar en el Teleprompter para deducir la respuesta por su propia cuenta.
-   c) Advertencia de expediente: Notificarle que el intento de solicitar respuestas a la IA ha sido registrado en su expediente académico.
-   d) Recordatorio de Bolsa de Empleo: Recordarle textualmente que para acceder a las ofertas de la Bolsa de Empleo con empresas partners de Finix ERP, es REQUISITO OBLIGATORIO aprobar una evaluación presencial semi-oral en vivo frente a un reclutador técnico experto, por lo que memorizar o intentar trampear las respuestas en la plataforma no le servirá al momento de defender sus conocimientos en la entrevista real.
+   c) Advertencia de expediente: Recomendar estudiar la materia sin afirmar que se registró una incidencia ni que hubo una sanción.
+   d) Recomendar practicar las operaciones y revisar los requisitos publicados. No inventar ofertas, colaboraciones, sanciones ni entrevistas obligatorias.
 
 CATÁLOGO DE MANUALES:
 ${catalog}

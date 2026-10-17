@@ -19,7 +19,7 @@ import {
   User,
 } from "lucide-react";
 
-import { validarCedula } from "@/lib/cedula";
+import { trackConversion } from "@/lib/conversions";
 
 type Tab = "login" | "register";
 
@@ -67,7 +67,7 @@ export default function LoginPage() {
         } catch { /* se informa abajo */ }
       }
       if (cancelado) return;
-      if (valida) router.replace(userProfile.passwordChanged === false ? "/change-password" : siguiente);
+      if (valida) router.replace((userProfile.passwordChanged === false || userProfile.passwordSecurityVersion !== 2) ? "/change-password" : siguiente);
       else setAvisoSesion("No pudimos abrir tu sesión en el servidor. Espera unos segundos y vuelve a ingresar con tu correo y clave.");
     })();
     return () => { cancelado = true; };
@@ -86,7 +86,7 @@ export default function LoginPage() {
   // Register state
   const [regName, setRegName] = useState("");
   const [regEmail, setRegEmail] = useState("");
-  const [regCedula, setRegCedula] = useState("");
+  const [regPassword, setRegPassword] = useState("");
   const [regPhone, setRegPhone] = useState("");
   const [regConsent, setRegConsent] = useState(false);
   const [politica, setPolitica] = useState<string | null>(null);
@@ -135,35 +135,31 @@ export default function LoginPage() {
     e.preventDefault();
     setRegError("");
     setRegSuccess("");
-    if (!regName || !regEmail || !regCedula) {
-      setRegError("Nombre, correo y cédula son obligatorios.");
+    if (!regName || !regEmail || !regPassword) {
+      setRegError("Nombre, correo y contraseña son obligatorios.");
       return;
     }
     if (!regConsent) {
       setRegError("Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.");
       return;
     }
-    const errorCedula = validarCedula(regCedula);
-    if (errorCedula) {
-      setRegError(errorCedula);
-      return;
-    }
+    if(regPassword.length<12){setRegError('Usa al menos 12 caracteres en tu contraseña.');return;}
     setRegLoading(true);
-    const res = await register({ name: regName, email: regEmail, cedula: regCedula, phone: regPhone });
+    const res = await register({ name: regName, email: regEmail, password: regPassword, phone: regPhone });
     if (!res.success) {
       setRegLoading(false);
       setRegError(res.error || "Error al registrar. Intenta de nuevo.");
       return;
     }
-    // Primer ingreso automático con la cédula; el login lleva a crear la clave personal.
-    setRegSuccess("¡Cuenta creada! Ahora crea tu contraseña personal...");
-    const ingreso = await login(regEmail, regCedula);
+    trackConversion('sign_up',crypto.randomUUID(),{method:'email'});
+    setRegSuccess("¡Cuenta creada! Abriendo tu aula...");
+    const ingreso = await login(regEmail, regPassword);
     setRegLoading(false);
     if (ingreso.success) {
       setTimeout(() => router.push(ingreso.passwordChanged === false ? "/change-password" : "/dashboard"), 700);
       return;
     }
-    setRegSuccess("Cuenta creada. Inicia sesión con tu correo y tu cédula para crear tu contraseña personal.");
+    setRegSuccess("Cuenta creada. Inicia sesión con tu correo y contraseña.");
     setTab("login");
     setEmail(regEmail);
   };
@@ -204,7 +200,7 @@ export default function LoginPage() {
           {/* Header */}
           <div className="text-center space-y-2">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
-              <ShieldCheck className="w-3.5 h-3.5" /> Portal Oficial B1 Academy Ecuador
+              <ShieldCheck className="w-3.5 h-3.5" /> Portal Oficial Finix Academy Ecuador
             </div>
             <h1 className="text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
               {tab === "login" ? "Iniciar Sesion" : "Registro Gratuito"}
@@ -212,7 +208,7 @@ export default function LoginPage() {
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               {tab === "login"
                 ? "Accede a tu Aula Virtual, expediente academico o panel de administracion."
-                : "Crea tu cuenta y comienza tu formacion Finix ERP en B1 Academy hoy mismo."}
+                : "Crea tu cuenta y comienza tu formacion Finix ERP en Finix Academy hoy mismo."}
             </p>
           </div>
 
@@ -283,7 +279,7 @@ export default function LoginPage() {
                       Contrasena / Cedula
                     </label>
                     <span className="text-[11px] text-slate-400">
-                      (Primer acceso: tu numero de cedula)
+                      (Tu contraseña personal)
                     </span>
                   </div>
                   <div className="relative">
@@ -293,7 +289,7 @@ export default function LoginPage() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Contrasena o numero de cedula"
+                      placeholder="Tu contraseña"
                       required
                       className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                     />
@@ -417,20 +413,20 @@ export default function LoginPage() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <label htmlFor="register-cedula" className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Cédula o pasaporte * <span className="font-normal text-slate-400">(será tu clave del primer ingreso)</span>
+                  <label htmlFor="register-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
+                    Contraseña personal * <span className="font-normal text-slate-400">(mínimo 12 caracteres)</span>
                   </label>
                   <div className="relative">
                     <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                     <input
-                      id="register-cedula"
-                      type="text"
+                      id="register-password"
+                      type="password"
                       inputMode="text"
-                      autoComplete="off"
-                      value={regCedula}
-                      onChange={(e) => setRegCedula(e.target.value.replace(/\s/g, ''))}
-                      placeholder="Ej: 1712345678"
-                      minLength={6}
+                      autoComplete="new-password"
+                      value={regPassword}
+                      onChange={(e) => setRegPassword(e.target.value)}
+                      placeholder="Crea una contraseña de 12 caracteres o más"
+                      minLength={12}
                       maxLength={20}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors font-mono"
@@ -465,7 +461,7 @@ export default function LoginPage() {
                   <span>
                     Acepto los{" "}
                     <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/terminos"); }} className="text-finix-blue underline">Términos y condiciones</button>{" "}
-                    y autorizo el tratamiento de mis datos personales, incluida mi cédula, según la{" "}
+                    y autorizo el tratamiento de mis datos personales, necesarios para mi cuenta, según la{" "}
                     <button type="button" onClick={(e) => { e.preventDefault(); setPolitica("/privacidad"); }} className="text-finix-blue underline">Política de privacidad</button>.
                   </span>
                 </label>

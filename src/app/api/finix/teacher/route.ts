@@ -8,6 +8,7 @@ import { listCompaniesSupabase, addMissionSupabase } from '@/lib/company-store-s
 import { adminDb } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { today } from '@/lib/company-calculations';
+import { canTeachCompany } from '@/lib/company-access';
 import { auditHash } from '@/lib/company-audit';
 
 export async function GET(request: Request) {
@@ -18,10 +19,12 @@ export async function GET(request: Request) {
     const params = new URL(request.url).searchParams;
     const cursor = params.get('cursor'); const moduleFilter = params.get('module') ?? '';
     // Empresas desde el almacén activo (Supabase o Firestore); los usuarios siguen en Firestore.
-    const companies = almacenSimulador() === 'supabase'
+    const companyRows = almacenSimulador() === 'supabase'
       ? await listCompaniesSupabase()
       : (await adminDb.collection('finixCompanies').get()).docs.map(doc => ({ uid: doc.id, raw: doc.data() as Record<string, unknown> }));
-    const users = await adminDb.collection('usuarios').select('uid', 'email', 'displayName', 'name', 'status', 'role').get();
+    const users = await adminDb.collection('usuarios').where('assignedTeacherUids','array-contains',actor.uid).select('uid','email','displayName','name','status','role').get();
+    const allowed=new Set(users.docs.filter(u=>u.data().status==='active').map(u=>u.id));
+    const companies=companyRows.filter(c=>allowed.has(c.uid)&&!c.uid.includes('__'));
     const day = today();
     const all = await Promise.all(companies.map(async doc => {
       const profile = doc.raw as unknown as CompanyProfile;
@@ -59,6 +62,7 @@ export async function POST(request: Request) {
     if (!['teacher', 'docente'].includes(actor.profile.role)) return NextResponse.json({ error: 'Acceso exclusivo de docentes.' }, { status: 403 });
     const parsed = missionSchema.safeParse(await request.json()); if (!parsed.success) return NextResponse.json({ error: 'Completa la misión.' }, { status: 400 });
     const { uid, title, description, module, requestId } = parsed.data;
+    if (!await canTeachCompany(actor,uid)) return NextResponse.json({error:'Alumno no asignado.'},{status:403});
     if (almacenSimulador() === 'supabase') {
       const now = new Date().toISOString();
       const id = await addMissionSupabase(uid, { id: requestId, title, description, module, status: 'assigned', teacherUid: actor.uid, createdBy: actor.uid, createdAt: now, updatedAt: now });

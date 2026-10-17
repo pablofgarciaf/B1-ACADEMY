@@ -55,3 +55,6 @@ public/Capacitacion Finix/*/clase_video.mp4
 !public/Capacitacion Finix/10_Overview_13_MDDoc_ES/clase_video.mp4
 public/Finix_ERP_Full_Kit_Simulador/
 public/SAP_B1_Full_Kit_Simulador/
+
+# Private deployment state and rollback snapshots
+/.deploy/

@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { z } from 'zod';
-import { getSessionState, requireBearerUser } from '@/lib/server-auth';
+import { consumeQuota } from '@/lib/rate-limit';
+import { assertAccountReady, getSessionState, requireBearerUser } from '@/lib/server-auth';
 
 export const runtime = 'nodejs';
 
@@ -10,13 +11,13 @@ const advisorSchema = z.object({
     role: z.enum(['user', 'assistant']),
     content: z.string().trim().min(1).max(4000)
   })).min(1).max(25),
-  currentScreen: z.string().optional().default('Dashboard'),
-  currentModule: z.string().optional().default('General'),
-  companySlot: z.string().optional().default('curso'),
-  companyName: z.string().optional().default('B1 Center S.A.S.'),
+  currentScreen: z.string().max(200).optional().default('Dashboard'),
+  currentModule: z.string().max(200).optional().default('General'),
+  companySlot: z.string().max(200).optional().default('curso'),
+  companyName: z.string().max(200).optional().default('B1 Center S.A.S.'),
 });
 
-const attempts = new Map<string, { count: number; resetAt: number }>();
+
 
 const FINI_SYSTEM_PROMPT = `Eres @FeNi AI (🐦‍🔥 el Fénix de Finix ERP), el copiloto inteligente ERP y financiero de Finix ERP para Ecuador y Latinoamérica.
 Tu propósito es asistir con máxima precisión a empresarios, directores financieros, contadores y consultores que operan sus 7 empresas en el simulador.
@@ -126,15 +127,9 @@ export async function POST(req: Request) {
       const session = await getSessionState();
       if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
       if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 });
+      assertAccountReady(session.user);
       uid = session.user.uid;
     }
-
-    const now = Date.now();
-    const limit = attempts.get(uid);
-    if (limit && limit.resetAt > now && limit.count >= 20) {
-      return NextResponse.json({ error: 'Demasiadas solicitudes. Espera un momento.' }, { status: 429 });
-    }
-    attempts.set(uid, limit && limit.resetAt > now ? { ...limit, count: limit.count + 1 } : { count: 1, resetAt: now + 15 * 60_000 });
 
     const body = await req.json().catch(() => null);
     const parsed = advisorSchema.safeParse(body);
@@ -144,6 +139,9 @@ export async function POST(req: Request) {
 
     const { messages, currentScreen, currentModule, companySlot, companyName } = parsed.data;
 
+    if (messages.reduce((n,m)=>n+m.content.length,0)>20000) return NextResponse.json({error:'La conversación es demasiado extensa.'},{status:400});
+    const quota=await consumeQuota('advisor',uid,20,15*60_000);
+    if (!quota.allowed) return NextResponse.json({error:'Espera antes de volver a consultar.'},{status:429,headers:{'Retry-After':String(quota.retryAfter)}});
     const apiKey = process.env.NVIDIA_API_KEY;
     if (!apiKey) {
       return NextResponse.json({

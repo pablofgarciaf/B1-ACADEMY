@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -27,6 +27,8 @@ import Image from 'next/image';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [ecosistemaOpen,setEcosistemaOpen]=useState(false);
+  const ecosystemButton=useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const { userProfile, logout } = useAuth();
 
@@ -56,8 +58,8 @@ export function Navbar() {
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-3.5 group">
           <div className="w-11 h-11 relative group-hover:scale-105 transition-transform flex-shrink-0">
-            <Image src="/b1-academy-logo.webp" alt="B1 Academy Logo" width={44} height={44} className="object-contain dark:hidden" priority />
-            <Image src="/b1-academy-logo-dark.webp" alt="B1 Academy Logo" width={44} height={44} className="object-contain hidden dark:block" priority />
+            <Image src="/b1-academy-logo.webp" alt="Finix Academy Logo" width={44} height={44} className="object-contain dark:hidden" priority />
+            <Image src="/b1-academy-logo-dark.webp" alt="Finix Academy Logo" width={44} height={44} className="object-contain hidden dark:block" priority />
           </div>
           <div className="flex flex-col whitespace-nowrap">
             <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
@@ -70,7 +72,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+        <nav className="hidden xl:flex items-center gap-4 text-sm font-medium text-slate-600 dark:text-slate-300">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
             const Icon = link.icon;
@@ -90,13 +92,13 @@ export function Navbar() {
           })}
 
           {/* Ecosistema Dropdown */}
-          <div className="relative group">
-            <button aria-haspopup="menu" className="flex min-h-[44px] items-center gap-1.5 rounded-lg transition-colors hover:text-finix-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-finix-blue dark:hover:text-sky-300">
+          <div className="relative group" onMouseEnter={()=>setEcosistemaOpen(true)} onMouseLeave={e=>{if(!e.currentTarget.contains(document.activeElement))setEcosistemaOpen(false);}} onBlur={e=>{if(!e.currentTarget.contains(e.relatedTarget))setEcosistemaOpen(false);}} onKeyDown={e=>{if(e.key==='Escape'){setEcosistemaOpen(false);ecosystemButton.current?.focus();}}}>
+            <button ref={ecosystemButton} aria-expanded={ecosistemaOpen} aria-controls="ecosistema-links" onClick={()=>setEcosistemaOpen(v=>!v)} className="flex min-h-[44px] items-center gap-1.5 rounded-lg transition-colors hover:text-finix-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-finix-blue dark:hover:text-sky-300">
               <Sparkles className="w-4 h-4 opacity-75" />
               <span>Ecosistema</span>
               <ChevronDown className="w-3 h-3 opacity-70 group-hover:rotate-180 transition-transform" />
             </button>
-            <div className="absolute top-full right-0 mt-4 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform origin-top-right" role="menu">
+            <div id="ecosistema-links" className={"absolute top-full right-0 mt-2 w-48 transition-all duration-200 transform origin-top-right "+(ecosistemaOpen?"opacity-100 visible":"opacity-0 invisible")}>
               <div className="py-2 bg-white dark:bg-[#0b1320] rounded-xl shadow-xl border border-slate-100 dark:border-white/10 overflow-hidden relative before:absolute before:-top-4 before:left-0 before:w-full before:h-4">
                 {ecosistemaLinks.map((link) => {
                   const Icon = link.icon;
@@ -160,8 +162,9 @@ export function Navbar() {
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
-            aria-label="Abrir menú"
+            className="xl:hidden p-2 rounded-xl border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5"
+            aria-label={mobileMenuOpen?"Cerrar menú":"Abrir menú"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -170,7 +173,7 @@ export function Navbar() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#080d1a]/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-3 h-[calc(100vh-5rem)] overflow-y-auto">
+        <div className="xl:hidden border-b border-slate-200 dark:border-white/10 bg-white/95 dark:bg-[#080d1a]/95 backdrop-blur-xl px-4 pt-2 pb-6 space-y-3 h-[calc(100vh-5rem)] overflow-y-auto">
           {navLinks.map((link) => {
             const Icon = link.icon;
             return (

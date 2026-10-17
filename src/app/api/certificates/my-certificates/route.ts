@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
-import { getSessionState, requireBearerUser } from '@/lib/server-auth';
+import { getSessionState, requireBearerUser, assertAccountReady } from '@/lib/server-auth';
 
 export async function GET(request: Request) {
   try {
@@ -16,6 +16,7 @@ export async function GET(request: Request) {
       const session = await getSessionState();
       if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
       if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
+      try { assertAccountReady(session.user); } catch { return NextResponse.json({ error: 'Crea tu contraseña personal antes de continuar.' }, { status: 401 }); }
       uid = session.user.uid;
     }
 
@@ -39,13 +40,20 @@ export async function GET(request: Request) {
       if (data.moduleId) {
         const existing = progress[data.moduleId] || { completedClasses: [], passedPractices: [] };
         const mergedClasses = Array.from(new Set([...existing.completedClasses, ...(data.completedClasses || [])]));
-        const mergedPractices = Array.from(new Set([...existing.passedPractices, ...(data.passedPractices || [])]));
         progress[data.moduleId] = {
           completedClasses: mergedClasses,
-          passedPractices: mergedPractices,
+          passedPractices: existing.passedPractices,
         };
       }
     });
+
+    const practiceSnap = await adminDb.collection('practice_records').where('uid','==',uid).get();
+    for (const doc of practiceSnap.docs) {
+      const data=doc.data();
+      if (!data.moduleId || !data.aprobada || data.validationVersion!==2) continue;
+      const record=progress[data.moduleId] ||= {completedClasses:[],passedPractices:[]};
+      if (!record.passedPractices.includes(data.practiceKey)) record.passedPractices.push(data.practiceKey);
+    }
 
     // 3. Obtener evaluaciones de exámenes orales (prioriza aprobadas y puntajes superiores)
     const evalSnap = await adminDb
@@ -58,7 +66,7 @@ export async function GET(request: Request) {
       const data = doc.data();
       if (data.moduleId) {
         const existing = evaluations[data.moduleId];
-        const currentPassed = !!data.passed;
+        const currentPassed = !!data.passed && data.validationVersion===2;
         const currentScore = data.score || 0;
         const currentCompletedAt = data.completedAt || '';
 

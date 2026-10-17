@@ -11,8 +11,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "test": "npm run lint && tsc --noEmit --pretty false",
-    "test:motor": "npx --yes tsx scripts/pruebas/motor_sri.ts && npx --yes tsx scripts/pruebas/motor_impuestos.ts && npx --yes tsx scripts/pruebas/motor_listas_oportunidades.ts && npx --yes tsx scripts/pruebas/motor_banca.ts"
+    "test": "npm run lint && tsc --noEmit --pretty false && npm run test:unit",
+    "test:motor": "npm run test:unit",
+    "test:unit": "node --test tests/*.test.cjs",
+    "check:release": "node tests/check-release.cjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.20",

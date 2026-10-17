@@ -33,6 +33,7 @@ function guardarDecision(analitica: boolean) {
   const d: Decision = { v: POLITICAS_VERSION, analitica, fecha: new Date().toISOString() };
   const seguro = window.location.protocol === 'https:' ? '; Secure' : '';
   document.cookie = `${COOKIE}=${encodeURIComponent(JSON.stringify(d))}; Max-Age=${60 * 60 * 24 * 365}; Path=/; SameSite=Lax${seguro}`;
+  window.dispatchEvent(new Event('finix:consent'));
 }
 
 function borrarCookiesAnalitica() {
@@ -115,7 +116,7 @@ export default function CookieConsent({ gtmId }: { gtmId: string }) {
         <div className="flex items-start gap-3">
           <Cookie className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" aria-hidden="true" />
           <div className="min-w-0">
-            <h2 id="cookies-titulo" className="text-base font-bold">Tu privacidad en B1 Academy</h2>
+            <h2 id="cookies-titulo" className="text-base font-bold">Tu privacidad en Finix Academy</h2>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
               Usamos cookies necesarias para que inicies sesión. Con tu permiso, también usamos cookies de analítica de Google para mejorar el
               campus. No usamos cookies publicitarias. Más información en la{' '}

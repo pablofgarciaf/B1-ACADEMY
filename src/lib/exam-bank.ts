@@ -56,7 +56,7 @@ export const EXAM_BANK: Record<string, ExamQuestion[]> = {
   ],
   'mod-6': [
     { question: 'Explica los componentes legales y porcentajes del aporte al IESS en el rol de pagos de Ecuador vigente en 2026.', rubric: ['aporte personal del trabajador: 9.45% descontado del salario bruto', 'aporte patronal de la empresa: 11.15% asumido por el empleador', 'fondos de reserva: 8.33% aplicable a partir del segundo año de labores'] },
-    { question: 'Describe el tratamiento y cálculo de la Decimotercera y Decimocuarta remuneración bajo la legislación laboral ecuatoriana.', rubric: ['decimotercero: doceava parte de todo lo ganado en el año calendario laboral', 'decimocuarto: un salario básico unificado (SBU 2026: $460 USD) prorrateado', 'opción del colaborador de mensualizar o acumular en las fechas legales'] },
+    { question: 'Describe el tratamiento y cálculo de la Decimotercera y Decimocuarta remuneración bajo la legislación laboral ecuatoriana.', rubric: ['decimotercero: doceava parte de todo lo ganado en el año calendario laboral', 'decimocuarto: el salario básico unificado aplicable al período, prorrateado según tiempo trabajado', 'opción del colaborador de mensualizar o acumular en las fechas legales'] },
     { question: '¿Cómo se liquidan las Horas Suplementarias (50%) y Horas Extraordinarias (100%) en el rol de pagos mensual?', rubric: ['suplementarias (recargo 50%): días ordinarios hasta las 24h00', 'extraordinarias (recargo 100%): fines de semana, feriados o entre 24h00 y 06h00', 'fórmula basada en el valor de la hora ordinaria (sueldo dividido para 240 horas)'] },
     { question: 'Detalla el asiento contable de devengo de nómina mensual en Finix ERP indicando las cuentas deudoras y acreedoras.', rubric: ['débito a cuentas de gasto: sueldos, horas extras, beneficios sociales y aporte patronal', 'crédito a pasivos: sueldos por pagar, IESS por pagar y retenciones judiciales/fiscales', 'cuadre perfecto de la provisión contable de la nómina'] },
     { question: '¿Qué archivo o estructura debe generarse en el módulo de nómina para el pago masivo en bancos y la planilla de aportes al IESS?', rubric: ['archivo plano bancario para acreditación de haberes en cuentas de empleados', 'archivo para carga de planilla de aportes en el portal del IESS', 'comprobante de retención de impuesto a la renta en relación de dependencia (Formulario 107)'] },
@@ -230,11 +230,53 @@ export const EXAM_BANK: Record<string, ExamQuestion[]> = {
     { question: '¿Cómo evalúa la gerencia y el auditor que una implementación de Finix ERP fue exitosa y generó retorno de inversión?', rubric: ['reducción de tiempos de ciclo operativo y eliminación de retrabajos en hojas de cálculo', 'disponibilidad de información financiera confiable en tiempo real', 'trazabilidad total de operaciones y cumplimiento fiscal sin contingencias'] },
   ],
   'mod-ventas': [
-    { question: 'Durante una reunión con el Director General de una empresa que maneja sus operaciones en Excel, ¿cómo demuestras y defiendes las ventajas críticas de migrar a Finix ERP?', rubric: ['explicación del desorden, vulnerabilidad y falta de auditoría en Excel vs base de datos transaccional integrada', 'reducción de fugas de dinero por cobros tardíos o compras no autorizadas', 'toma de decisiones en tiempo real con indicadores confiables'] },
-    { question: 'Explica cómo utilizar el Mapa de Relaciones como herramienta principal de cierre durante una demostración comercial a ejecutivos.', rubric: ['árbol visual completo de trazabilidad desde la cotización hasta el cobro y asiento contable', 'auditoría inmediata en un solo clic ante cualquier reclamo de clientes o directores', 'demostración de orden corporativo y transparencia total'] },
-    { question: 'Un prospecto afirma: "El ERP es demasiado costoso y complejo para nosotros". ¿Cómo respondes y demuestras el Retorno de Inversión (ROI)?', rubric: ['diferenciación entre gasto e inversión productiva', 'demostración de ROI por eliminación de mermas, robos hormiga y multas fiscales SRI', 'interfaz modular intuitiva con despliegue ágil en B1 Center'] },
-    { question: '¿Cómo demuestras en vivo el ciclo Order-to-Cash (Cotización -> Pedido -> Entrega -> Factura IVA 15% -> Cobro) para generar confianza inmediata en el prospecto?', rubric: ['velocidad de emisión con lista de precios y límite de crédito automático', 'conversión en un solo clic mediante Copiar A sin duplicar digitación', 'actualización simultánea de inventario, contabilidad y cuenta por cobrar con IVA 15%'] },
-    { question: '¿Por qué un software contable tradicional no sustituye a Finix ERP y cómo se lo explicas a un cliente que solo quiere comprar contabilidad?', rubric: ['el software contable registra hechos históricos cuando el error ya ocurrió', 'Finix ERP controla y valida la operación en tiempo real en bodega, ventas y compras', 'evita la doble digitación y sincroniza toda la empresa en una sola verdad'] },
-    { question: 'Describe cómo el control de límites de crédito, listas de precios y stock comprometido previene fraudes internos y sobreventa en el área comercial.', rubric: ['bloqueo automático si el cliente excede su límite de crédito o tiene morosidad', 'las listas de precios y condiciones de pago evitan descuentos arbitrarios del vendedor', 'el stock comprometido reserva automáticamente unidades en bodega para garantizar entregas y erradicar sobreventa'] },
-  ],
+  {
+    "question": "¿Qué datos y condiciones verificaste al crear el cliente de laboratorio y asignar su lista de precios?",
+    "rubric": [
+      "identificación sintética, nombre y código asignado por el sistema",
+      "límite de 10000 y plazo de 30 días configurados en el alta",
+      "lista 2 asignada al cliente y revisión de los valores guardados"
+    ]
+  },
+  {
+    "question": "Con límite 10000, saldo pendiente 2000 y una venta hipotética de 15000, calcula el exceso y explica qué no demuestra esta consulta.",
+    "rubric": [
+      "exposición hipotética de 17000 y exceso de 7000",
+      "la consulta no registra ni aprueba una operación",
+      "los permisos y la decisión autorizada requieren comprobación independiente"
+    ]
+  },
+  {
+    "question": "Un artículo cuesta 650 y su precio de 850 recibe descuento del 30%. Calcula el precio neto y el margen sobre venta.",
+    "rubric": [
+      "precio neto 595",
+      "margen igual a (595 menos 650) dividido por 595 por 100, aproximadamente menos 9.24%",
+      "distingue margen sobre venta de recargo sobre costo y reconoce venta bajo costo"
+    ]
+  },
+  {
+    "question": "Explica el recorrido oferta, pedido, entrega, factura de prueba y cobro, y cómo compruebas su trazabilidad.",
+    "rubric": [
+      "conserva referencias al documento base en los documentos relacionados",
+      "distingue compromiso del pedido, salida de la entrega, saldo de factura y aplicación del cobro",
+      "comprueba movimientos y asientos sin confundir la factura educativa con autorización SRI"
+    ]
+  },
+  {
+    "question": "Con inversión inicial de 12000 y ahorro neto constante de 1000 al mes, calcula la recuperación simple y explica sus límites.",
+    "rubric": [
+      "recuperación simple de doce meses mediante 12000 dividido por 1000",
+      "el ahorro es un supuesto que debe justificarse y no una garantía",
+      "el cálculo no considera descuento temporal ni sustituye un análisis completo de riesgos y costos"
+    ]
+  },
+  {
+    "question": "¿Qué puedes afirmar sobre integridad de auditoría y plazo de implantación después de este laboratorio?",
+    "rubric": [
+      "los hashes ayudan a detectar alteraciones con una referencia confiable, sin garantizar inmutabilidad absoluta",
+      "permisos, respaldos y restauración requieren verificación",
+      "el calendario requiere diagnóstico de procesos, datos, integraciones y formación; no hay plazo universal garantizado"
+    ]
+  }
+],
 };

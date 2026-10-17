@@ -3,122 +3,62 @@ import { z } from 'zod';
 import { adminDb, fieldValue } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
-import { coincide, practicaAprobada } from '@/lib/practice-check';
-import { camposEsperados, clavePractica } from '@/lib/practice-registry';
-import { readCompany, hasInitializedCompany } from '@/lib/company-server';
+import { coincide } from '@/lib/practice-check';
+import { camposEsperados, clavePractica, guiaPublicada } from '@/lib/practice-registry';
+import { readCompany, readCompanyAudit, hasInitializedCompany } from '@/lib/company-server';
 import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
+import { pantallaConectada } from '@/lib/practica-conectada';
+import { camposConsulta, obtenerMision,salesWriteMatches } from '@/lib/sales-learning';
+import { operationFor, validPracticeEvent } from '@/lib/practice-contract';
 
-/**
- * Califica en el servidor una práctica del simulador de Mi Aula.
- * El navegador envía lo que escribió el estudiante; aquí se compara contra la clase publicada,
- * así el certificado solo cuenta prácticas realmente resueltas.
- */
-const schema = z.object({
-  moduleId: z.string().min(1).max(80),
-  classId: z.string().min(1).max(120),
-  slideIndex: z.number().int().min(1).max(200),
-  valores: z.array(z.string().max(200)).min(1).max(12),
-  intentos: z.number().int().min(1).max(500),
-  vioSolucion: z.boolean(),
-  conectada: z.boolean().optional(),
-});
-
-/** ¿La empresa del estudiante tiene algún registro creado o modificado por él en los últimos 20 minutos? */
-async function registroReciente(uid: string): Promise<boolean> {
-  const empresa = await readCompany(uid);
-  const desde = Date.now() - 20 * 60 * 1000;
-  return Object.values(empresa).some((valor) =>
-    Array.isArray(valor) && valor.some((r) => {
-      const e = r as { createdBy?: string; updatedAt?: string; createdAt?: string };
-      return e.createdBy === uid && Date.parse(e.updatedAt ?? e.createdAt ?? '') >= desde;
-    }),
-  );
-}
-
-export async function POST(request: Request) {
-  let user;
-  try {
-    user = await requireBearerUser(request);
-  } catch {
-    return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
-  }
-  const uid = user.uid;
-  const parsed = schema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
-  const { moduleId, classId, slideIndex, valores, intentos, vioSolucion, conectada = false } = parsed.data;
-
-  // Paso 0: nadie puede registrar prácticas sin su empresa B1 Center inicializada
-  if (!(await hasInitializedCompany(uid))) {
-    return NextResponse.json({ error: 'Debes crear tu empresa B1 Center en el Paso 0 antes de registrar prácticas.' }, { status: 403 });
-  }
-
-  if (!getModuleById(moduleId)?.classes.some((c) => c.id === classId)) {
-    return NextResponse.json({ error: 'Clase inválida.' }, { status: 400 });
-  }
-  const campos = camposEsperados(classId, slideIndex);
-  if (!campos || (!conectada && campos.length !== valores.length)) {
-    return NextResponse.json({ error: 'Práctica inválida.' }, { status: 400 });
-  }
-
-  let correctos: number;
-  let total = campos.length;
-  if (conectada) {
-    // Práctica en la empresa del estudiante: no se cree al navegador; se verifica en Supabase que haya
-    // un registro guardado por él en los últimos 20 minutos.
-    total = 1;
-    correctos = (await registroReciente(uid)) ? 1 : 0;
-  } else {
-    correctos = campos.filter((c, i) => coincide(valores[i], c.valor)).length;
-  }
-  const aprobada = practicaAprobada(correctos, total, { valores, intentos, vioSolucion, conectada });
-
-  try {
-    const studentName = getStudentDisplayName(user.profile, user.email);
-    const progressDocId = buildStudentDocId(moduleId, studentName, user.email);
-
-    // Registro de cada práctica completada (aprobada o no): qué escribió el estudiante y cuándo.
-    // Una ficha por práctica, que se actualiza en cada intento: queda guardado aunque cambie de dispositivo.
-    await adminDb.collection('practice_records').doc(`${uid}_${classId}_${slideIndex}`).set({
-      uid, moduleId, classId, slideIndex,
-      studentName,
-      studentEmail: user.email,
-      campos: conectada
-        ? valores.map((v) => ({ etiqueta: 'registro en la empresa', valor: v }))
-        : campos.map((c, i) => ({ etiqueta: c.etiqueta, valor: valores[i] ?? '' })),
-      correctos, total, aprobada, intentos, vioSolucion, conectada,
-      updatedAt: new Date().toISOString(),
-    }, { merge: true });
-
-    if (aprobada) {
-      const docRef = adminDb.collection('academic_progress').doc(progressDocId);
-      const currentDoc = await docRef.get();
-      if (!currentDoc.exists) {
-        const legacyDoc = await adminDb.collection('academic_progress').doc(`${uid}_${moduleId}`).get();
-        if (legacyDoc.exists) {
-          const legacyData = legacyDoc.data();
-          await docRef.set({
-            uid,
-            studentName,
-            studentEmail: user.email,
-            moduleId,
-            completedClasses: legacyData?.completedClasses ?? [],
-            passedPractices: legacyData?.passedPractices ?? [],
-            updatedAt: new Date().toISOString(),
-          }, { merge: true });
-        }
-      }
-
-      await docRef.set({
-        uid,
-        studentName,
-        studentEmail: user.email,
-        moduleId,
-        passedPractices: fieldValue().arrayUnion(clavePractica(classId, slideIndex)),
-        updatedAt: new Date().toISOString(),
-      }, { merge: true });
+const schema=z.object({moduleId:z.string().max(80),classId:z.string().max(120),slideIndex:z.number().int().min(1).max(200),
+  valores:z.array(z.string().max(500)).min(1).max(12),intentos:z.number().int().min(1).max(500),vioSolucion:z.boolean(),
+  evidence:z.object({requestId:z.string().uuid(),action:z.string().max(80),result:z.string().max(200)}).optional()});
+export async function POST(request:Request){
+  let user;try{user=await requireBearerUser(request);}catch{return NextResponse.json({error:'Inicia sesión.'},{status:401});}
+  const parsed=schema.safeParse(await request.json().catch(()=>null));
+  if(!parsed.success)return NextResponse.json({error:'Práctica inválida.'},{status:400});
+  const d=parsed.data,uid=user.uid,key=clavePractica(d.classId,d.slideIndex);
+  if(!getModuleById(d.moduleId)?.classes.some(c=>c.id===d.classId))return NextResponse.json({error:'Clase inválida.'},{status:400});
+  try{
+    if(!await hasInitializedCompany(uid))return NextResponse.json({error:'Completa la preparación de tu empresa.'},{status:403});
+    const guide=guiaPublicada(d.classId,d.slideIndex),screen=pantallaConectada(guide);
+    let fields=camposEsperados(d.classId,d.slideIndex);
+    if(!fields)return NextResponse.json({error:'Esta lámina no tiene práctica evaluada.'},{status:400});
+    const mission=obtenerMision(d.classId,d.slideIndex);
+    let valid=false,total=fields.length,correct=0;
+    if(screen?.clave==='consultaAcademica'){
+      fields=camposConsulta(await readCompany(uid),key);
+      if(!fields)return NextResponse.json({error:'Faltan documentos de las misiones anteriores para realizar esta consulta.'},{status:409});
+      total=fields.length;
     }
-  } catch {
-    return NextResponse.json({ error: 'No se pudo guardar la práctica.' }, { status: 503 });
-  }
-  return NextResponse.json({ aprobada, correctos, total });
+    const connected=Boolean(screen && screen.clave!=='consultaAcademica');
+    if(connected){
+      total=1;
+      if(d.evidence){
+        const event=(await readCompanyAudit(uid,100)).find(e=>e.requestId===d.evidence!.requestId);
+        const actions=mission?.expectedAction?[mission.expectedAction]:operationFor(screen!);
+        valid=validPracticeEvent(event,uid,d.evidence.requestId,d.evidence.result,actions,mission?.expectedDocType??(screen?.clave==='documento'?screen.docType:undefined));
+        if(valid&&mission&&event)valid=salesWriteMatches(await readCompany(uid),event,key);
+      }
+      correct=valid?1:0;
+    }else{
+      correct=fields.length===d.valores.length?fields.filter((f,i)=>coincide(d.valores[i],f.valor,f.etiqueta)).length:0;
+      valid=correct===fields.length;
+    }
+    const approved=valid&&!d.vioSolucion;
+    await adminDb.runTransaction(async tx=>{
+      const claim=d.evidence?adminDb.collection('practice_evidence_claims').doc(`${uid}_${d.evidence.requestId}`):null;
+      const previous=claim?await tx.get(claim):null;
+      if(approved&&previous?.exists&&previous.data()?.practiceKey!==key)throw new Error('EVIDENCE_ALREADY_USED');
+      tx.set(adminDb.collection('practice_records').doc(`${uid}_${d.classId}_${d.slideIndex}`),{uid,moduleId:d.moduleId,classId:d.classId,slideIndex:d.slideIndex,practiceKey:key,studentName:getStudentDisplayName(user.profile,user.email),
+        valores:d.valores,correctos:correct,total,aprobada:approved,validationVersion:2,conectada:connected,vioSolucion:d.vioSolucion,intentos:d.intentos,
+        evidenceRequestId:d.evidence?.requestId??'',updatedAt:new Date().toISOString()});
+      if(approved){
+        if(claim&&!previous?.exists)tx.create(claim,{uid,practiceKey:key});
+        tx.set(adminDb.collection('academic_progress').doc(buildStudentDocId(d.moduleId,uid)),{uid,moduleId:d.moduleId,passedPractices:fieldValue().arrayUnion(key),updatedAt:new Date().toISOString()},{merge:true});
+      }
+    });
+    return NextResponse.json({aprobada:approved,correctos:correct,total});
+  }catch(error){return NextResponse.json({error:error instanceof Error&&error.message==='EVIDENCE_ALREADY_USED'?'Esa operación ya se utilizó para otra práctica.':'No pudimos validar la práctica. Revisa la misión y vuelve a intentarlo.'},{status:409});}
 }

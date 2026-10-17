@@ -101,7 +101,7 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
     certificateTitle: 'Certificado en CRM y Servicio Postventa', classes: [] },
   { id: 'mod-ventas', number: 14.5, block: 'Gestión Comercial y CRM', badge: 'Ventas & Valor ERP',
     title: 'Taller Maestro de Operaciones y Demostración Comercial Finix ERP',
-    description: 'Programa ejecutivo de 4 clases magistrales para consultores comerciales y preventa B2B: Prospección y riesgo crediticio, Ingeniería de oferta y ATP multialmacén, Ciclo Order-to-Cash y facturación SRI 2026, y Cobranzas con demostración ejecutiva C-Level.',
+    description: 'Cuatro clases prácticas de clientes y crédito, inventario y margen, documentos de venta de prueba, cobro y demostración consultiva. Entorno educativo con datos sintéticos y sin autorización fiscal de producción.',
     certificateTitle: 'Certificado en Demostración Comercial y Operaciones Finix ERP', classes: [] },
   { id: 'mod-15', number: 15, block: 'Producción y Planificación', badge: 'MRP',
     title: 'Planificación de Materiales (MRP)',

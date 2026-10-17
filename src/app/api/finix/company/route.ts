@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { requireBearerUser } from '@/lib/server-auth';
 import { readCompany, executeCompanyCommand } from '@/lib/company-server';
 import { commandSchema } from '@/lib/company-commands';
+import { canTeachCompany } from '@/lib/company-access';
 
 export const runtime = 'nodejs';
 const envelope = z.object({ requestId: z.string().uuid(), command: commandSchema });
@@ -21,7 +22,7 @@ export async function GET(request: Request) {
   try { actor = await requireBearerUser(request); } catch (error: unknown) { return NextResponse.json({ error: error instanceof Error ? 'Sesión no válida.' : 'No autorizado.' }, { status: 401 }); }
   try {
     const pedido = new URL(request.url).searchParams.get('uid') || actor.uid;
-    if (pedido !== actor.uid && !['teacher', 'docente'].includes(actor.profile.role)) return NextResponse.json({ error: 'Acceso denegado.' }, { status: 403 });
+    if (pedido !== actor.uid && !await canTeachCompany(actor,pedido)) return NextResponse.json({ error: 'Acceso denegado.' }, { status: 403 });
     const uid = pedido === actor.uid ? claveEmpresa(request, actor.uid) : pedido;
     if (!/^[\w-]{1,128}$/.test(uid)) return NextResponse.json({ error: 'Identificador inválido.' }, { status: 400 });
     // El correo solo se pasa cuando el estudiante lee su propia empresa (necesario para migrarla).
@@ -37,6 +38,7 @@ export async function POST(request: Request) {
   try {
     const parsed = envelope.safeParse(await request.json());
     if (!parsed.success) return NextResponse.json({ error: parsed.error.issues.map(issue => `${issue.path.join('.')}: ${issue.message}`).join('; ') }, { status: 400 });
+    if(parsed.data.command.action==='initializeTraining' && (request.headers.get('x-empresa')||'curso')!=='curso') return NextResponse.json({error:'La preparación académica solo se realiza en la empresa del curso.'},{status:403});
     if (parsed.data.command.action === 'authorize') await new Promise<void>(resolve => setTimeout(resolve, 2000));
     const result = await executeCompanyCommand(claveEmpresa(request, actor.uid), actor.email, parsed.data.command, parsed.data.requestId, actor.uid);
     return NextResponse.json({ result });

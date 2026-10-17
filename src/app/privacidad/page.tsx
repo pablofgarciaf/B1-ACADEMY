@@ -5,9 +5,9 @@ import { dato, LEGAL } from '@/lib/legal-config';
 
 export const metadata: Metadata = {
   // 54 caracteres
-  title: 'Política de Privacidad y Datos Personales | B1 Academy',
+  title: 'Política de Privacidad y Datos Personales | Finix Academy',
   // 152 caracteres
-  description: 'Cómo B1 Academy trata tus datos personales conforme a la LOPDP de Ecuador: finalidades, cédula, IA, transferencias, plazos y cómo ejercer tus derechos.',
+  description: 'Cómo Finix Academy trata tus datos personales conforme a la LOPDP de Ecuador: finalidades, cédula, IA, transferencias, plazos y cómo ejercer tus derechos.',
   alternates: { canonical: `${LEGAL.sitio}/privacidad` },
 };
 
@@ -18,7 +18,7 @@ export default function PrivacidadPage() {
       titulo="Política de privacidad y protección de datos personales"
       resumen={[
         'Usamos tus datos para darte acceso al campus, medir tu avance, emitir certificados y atender consultas de verificación. El contacto comercial es opcional.',
-        'Tu cédula se usa para identificarte y como clave de tu primer ingreso; luego creas tu contraseña personal.',
+        'Creas tu contraseña personal al registrarte; nunca se utiliza tu documento de identidad como contraseña.',
         'No vendemos tus datos. Los proveedores tecnológicos que usamos están detallados abajo.',
         'Tu examen lo califica una IA, pero siempre puedes pedir que una persona revise el resultado.',
         'Puedes acceder, corregir, eliminar o llevarte tus datos escribiéndonos.',
@@ -45,6 +45,7 @@ export default function PrivacidadPage() {
           <tr><td>Actividad académica</td><td>Clases completadas, progreso, puntajes, prácticas del simulador, respuestas y notas de evaluaciones, certificados emitidos</td><td>Tu uso del campus</td></tr>
           <tr><td>Conversaciones con el tutor IA</td><td>Preguntas y respuestas en el chat de ayuda y en las evaluaciones</td><td>Tu uso del campus</td></tr>
           <tr><td>Datos técnicos</td><td>Cookies de sesión y preferencias; si lo aceptas, datos de navegación analítica (páginas visitadas, dispositivo, ubicación aproximada)</td><td>Tu navegador (ver <Link href="/cookies">Política de cookies</Link>)</td></tr>
+          <tr><td>Solicitud empresarial</td><td>Nombre, empresa, medio de contacto, tamaño del equipo y necesidad de formación; consentimiento comercial opcional</td><td>Tu formulario de solicitud</td></tr>
           <tr><td>Consulta de certificados</td><td>Nombre, correo o teléfono de contacto, código consultado, resultado y un identificador técnico de conexión seudonimizado</td><td>Tú y la solicitud de verificación</td></tr>
         </tbody>
       </table>
@@ -57,17 +58,17 @@ export default function PrivacidadPage() {
       <table>
         <thead><tr><th>Finalidad</th><th>Base legal (LOPDP)</th></tr></thead>
         <tbody>
-          <tr><td>Crear y administrar tu cuenta; identificarte con tu cédula en el primer ingreso</td><td>Ejecución de la relación educativa que solicitas y tu consentimiento</td></tr>
+          <tr><td>Crear y administrar tu cuenta; atender solicitudes de capacitación empresarial</td><td>Ejecución de la relación educativa que solicitas y tu consentimiento</td></tr>
           <tr><td>Darte acceso a clases, manuales, simulador y tutor IA; registrar tu progreso</td><td>Ejecución de la relación educativa</td></tr>
           <tr><td>Evaluar tus conocimientos y emitir certificados verificables</td><td>Ejecución de la relación educativa</td></tr>
           <tr><td>Seguridad de la plataforma y prevención de fraude en evaluaciones</td><td>Interés legítimo</td></tr>
           <tr><td>Verificar un certificado y limitar consultas abusivas</td><td>Tu consentimiento específico al solicitar la consulta</td></tr>
-          <tr><td>Contactarte para ofrecer servicios de B1 Academy</td><td>Solo tu consentimiento comercial opcional, separado de la verificación</td></tr>
+          <tr><td>Contactarte para ofrecer servicios de Finix Academy</td><td>Solo tu consentimiento comercial opcional, separado de la verificación</td></tr>
           <tr><td>Analítica de uso para mejorar el campus</td><td>Tu consentimiento (cookies analíticas), que puedes retirar en cualquier momento</td></tr>
           <tr><td>Cumplir obligaciones legales y tributarias, si contratas servicios pagados</td><td>Obligación legal</td></tr>
         </tbody>
       </table>
-      <p>No vendemos tus datos ni los usamos para publicidad de terceros. El contacto comercial de B1 Academy tras verificar un certificado es opcional y requiere una aceptación separada.</p>
+      <p>No vendemos tus datos ni los usamos para publicidad de terceros. El contacto comercial de Finix Academy tras verificar un certificado es opcional y requiere una aceptación separada.</p>
 
       <h2>4. Evaluaciones calificadas con inteligencia artificial</h2>
       <p>

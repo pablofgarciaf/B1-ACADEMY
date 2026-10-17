@@ -1,9 +1,10 @@
+import { readAcademicProgress } from '@/lib/academic-progress';
 import { createHmac } from 'crypto';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { adminDb } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
-import { getModuleById } from '@/lib/curriculum-data';
+import { getModuleById, moduleMinutes } from '@/lib/curriculum-data';
 import { practicasDelModulo } from '@/lib/practice-registry';
 import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
 
@@ -22,36 +23,29 @@ export async function POST(request: Request) {
     if (!courseModule.classes.length) return NextResponse.json({ error: 'Este módulo aún no está disponible.' }, { status: 403 });
 
     const studentName = getStudentDisplayName(user.profile, user.email);
-    const studentDocId = buildStudentDocId(courseModule.id, studentName, user.email);
+    const studentDocId = buildStudentDocId(courseModule.id, user.uid);
 
-    // 1. Obtener progreso con combinación retrocompatible
-    const [progressSnap, legacyProgressSnap] = await Promise.all([
-      adminDb.collection('academic_progress').doc(studentDocId).get(),
-      adminDb.collection('academic_progress').doc(`${user.uid}_${courseModule.id}`).get(),
-    ]);
-
-    const progData = progressSnap.exists ? progressSnap.data() : undefined;
-    const legacyProgData = legacyProgressSnap.exists ? legacyProgressSnap.data() : undefined;
-
-    const completed = new Set<string>([
-      ...(progData?.completedClasses ?? []),
-      ...(legacyProgData?.completedClasses ?? []),
-    ]);
+    const progress=await readAcademicProgress(user.uid,courseModule.id,studentName,user.email);
+    const completed=new Set(progress.completedClasses);
 
     // 2. Obtener evaluación aprobada (por doc legible o por query uid + moduleId)
     let evalPassed = false;
+    let score: number | undefined;
     const evalSnap = await adminDb.collection('evaluations').doc(studentDocId).get();
-    if (evalSnap.exists && evalSnap.data()?.passed) {
+    if (evalSnap.exists && evalSnap.data()?.uid === user.uid && evalSnap.data()?.moduleId === courseModule.id && evalSnap.data()?.passed && evalSnap.data()?.validationVersion===2) {
       evalPassed = true;
+      score = Number(evalSnap.data()?.score);
     } else {
       const evalQuery = await adminDb
         .collection('evaluations')
         .where('uid', '==', user.uid)
         .where('moduleId', '==', courseModule.id)
         .where('passed', '==', true)
+        .where('validationVersion', '==', 2)
         .limit(1)
         .get();
-      if (!evalQuery.empty) evalPassed = true;
+      const validEvaluation = evalQuery.docs.find(d=>d.data().validationVersion===2);
+      if (validEvaluation) { evalPassed = true; score = Number(validEvaluation.data().score); }
     }
 
     if (!courseModule.classes.every((item) => completed.has(item.id)) || !evalPassed) {
@@ -59,10 +53,7 @@ export async function POST(request: Request) {
     }
 
     // Además de las clases y la evaluación, cada práctica del simulador debe estar aprobada (calificada en /api/practice).
-    const passed = new Set<string>([
-      ...(progData?.passedPractices ?? []),
-      ...(legacyProgData?.passedPractices ?? []),
-    ]);
+    const passed = new Set<string>(progress.passedPractices);
     const pendientes = practicasDelModulo(courseModule.id).filter((clave) => !passed.has(clave));
     if (pendientes.length) {
       return NextResponse.json({ error: `Te faltan ${pendientes.length} práctica(s) del simulador por aprobar en este módulo.` }, { status: 403 });
@@ -82,6 +73,9 @@ export async function POST(request: Request) {
       moduleId: courseModule.id,
       issuedAt,
       status: 'valid',
+      validationVersion:2,
+      ...(Number.isFinite(score) ? {scorePercent: score} : {}),
+      estimatedHours: Math.round(moduleMinutes(courseModule) / 60 * 100) / 100,
       title: courseModule.certificateTitle,
       holderName,
     });

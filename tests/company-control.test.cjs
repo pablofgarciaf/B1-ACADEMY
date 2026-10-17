@@ -177,9 +177,9 @@ test('segregación de funciones y verificación de integridad', () => {
   s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.proveedor, [s.line(10, 10)]) });
   s.run('sales', { docType: 'invoice', document: s.doc(s.cliente, [s.line(2, 20)]) });
   assert.ok(verificarIntegridad(s.state).every(v => v.ok), 'una empresa operada solo con documentos cuadra en todo');
-  s.run('fixedAsset', { name: 'Equipo', category: 'Otros', acquisitionDate: '2026-10-04', cost: 500, residualValue: 0, usefulLifeMonths: 12, paymentAccount: '2.1.01' });
+  assert.throws(()=>s.run('fixedAsset', { name: 'Equipo', category: 'Otros', acquisitionDate: '2026-10-04', cost: 500, residualValue: 0, usefulLifeMonths: 12, paymentAccount: '2.1.01' }),/factura y proveedor/);
   const prov = verificarIntegridad(s.state).find(v => v.nombre.startsWith('Proveedores'));
-  assert.equal(prov.ok, false); assert.equal(prov.diferencia, -500, 'la deuda del activo sin proveedor se detecta');
+  assert.equal(prov.ok, true); assert.equal(prov.diferencia, 0, 'se impide generar deuda sin auxiliar');
 });
 
 test('activo fijo: compra y depreciación mensual en línea recta, sin pasarse del valor depreciable', () => {

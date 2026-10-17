@@ -12,7 +12,9 @@ export function resultadoEjercicio(state: CompanyState, year: number): number {
   for (const e of state.journalEntries.filter(x => x.date.startsWith(`${year}-`))) for (const l of e.lines) {
     const c = categoria.get(l.accountCode);
     if (c === 'income') r += l.credit - l.debit;
-    else if ((c === 'cost' || c === 'expense') && l.accountCode !== '6.06' && l.accountCode !== '6.07') r -= l.debit - l.credit;
+    // Compatibilidad: las versiones anteriores registraban depreciación en 6.06.
+    // Se interpreta por su origen sin alterar los asientos históricos ni sus cierres.
+    else if ((c === 'cost' || c === 'expense') && (l.accountCode !== '6.06' || e.source === 'depreciation') && l.accountCode !== '6.07') r -= l.debit - l.credit;
   }
   return round(r);
 }

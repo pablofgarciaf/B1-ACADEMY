@@ -4,86 +4,34 @@ import { adminDb, fieldValue } from '@/lib/firebase-admin';
 import { requireBearerUser } from '@/lib/server-auth';
 import { getModuleById } from '@/lib/curriculum-data';
 import { practicasDelModulo } from '@/lib/practice-registry';
-import { buildStudentDocId } from '@/lib/student-doc';
-
+import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
+import { readAcademicProgress } from '@/lib/academic-progress';
+import { hasInitializedCompany } from '@/lib/company-server';
+import { moduloInduccionCompleto, MODULO_INDUCCION } from '@/lib/requisitos-aula';
 const schema = z.object({ moduleId: z.string().min(1).max(80), classId: z.string().min(1).max(120) });
-
 export async function GET(request: Request) {
   try {
     const user = await requireBearerUser(request);
     const moduleId = new URL(request.url).searchParams.get('moduleId') ?? '';
     if (!getModuleById(moduleId)) return NextResponse.json({ error: 'Módulo inválido.' }, { status: 400 });
-
-    const studentName = user.profile.displayName || user.profile.name || user.email;
-    const docId = buildStudentDocId(moduleId, studentName, user.email);
-
-    const [newDocSnap, legacyDocSnap] = await Promise.all([
-      adminDb.collection('academic_progress').doc(docId).get(),
-      adminDb.collection('academic_progress').doc(`${user.uid}_${moduleId}`).get(),
-    ]);
-
-    const newData = newDocSnap.exists ? newDocSnap.data() : undefined;
-    const legacyData = legacyDocSnap.exists ? legacyDocSnap.data() : undefined;
-
-    // Combinación retrocompatible para asegurar que ningún progreso previo se pierda
-    const completedClasses = Array.from(new Set([
-      ...(legacyData?.completedClasses ?? []),
-      ...(newData?.completedClasses ?? []),
-    ]));
-    const passedPractices = Array.from(new Set([
-      ...(legacyData?.passedPractices ?? []),
-      ...(newData?.passedPractices ?? []),
-    ]));
-
-    return NextResponse.json({
-      completedClasses,
-      passedPractices,
-      requiredPractices: practicasDelModulo(moduleId),
-    });
-  } catch { return NextResponse.json({ error: 'No autorizado.' }, { status: 401 }); }
+    return NextResponse.json({ ...await readAcademicProgress(user.uid, moduleId, getStudentDisplayName(user.profile,user.email), user.email), requiredPractices: practicasDelModulo(moduleId) }, { headers: { 'Cache-Control':'no-store' } });
+  } catch { return NextResponse.json({ error:'No autorizado.' },{status:401}); }
 }
-
 export async function POST(request: Request) {
   try {
     const user = await requireBearerUser(request);
     const parsed = schema.safeParse(await request.json());
-    if (!parsed.success) return NextResponse.json({ error: 'Solicitud inválida.' }, { status: 400 });
-    const courseModule = getModuleById(parsed.data.moduleId);
-    if (!courseModule?.classes.some((item) => item.id === parsed.data.classId)) {
-      return NextResponse.json({ error: 'Clase inválida.' }, { status: 400 });
-    }
-
-    const studentName = user.profile.displayName || user.profile.name || user.email;
-    const docId = buildStudentDocId(parsed.data.moduleId, studentName, user.email);
-    const docRef = adminDb.collection('academic_progress').doc(docId);
-
-    // Si el documento nuevo aún no existe, migrar progreso previo para mantener coherencia
-    const currentDoc = await docRef.get();
-    if (!currentDoc.exists) {
-      const legacyDoc = await adminDb.collection('academic_progress').doc(`${user.uid}_${parsed.data.moduleId}`).get();
-      if (legacyDoc.exists) {
-        const legacyData = legacyDoc.data();
-        await docRef.set({
-          uid: user.uid,
-          studentName,
-          studentEmail: user.email,
-          moduleId: parsed.data.moduleId,
-          completedClasses: legacyData?.completedClasses ?? [],
-          passedPractices: legacyData?.passedPractices ?? [],
-          updatedAt: new Date().toISOString(),
-        }, { merge: true });
-      }
-    }
-
-    await docRef.set({
-      uid: user.uid,
-      studentName,
-      studentEmail: user.email,
-      moduleId: parsed.data.moduleId,
-      completedClasses: fieldValue().arrayUnion(parsed.data.classId),
-      updatedAt: new Date().toISOString(),
-    }, { merge: true });
-
-    return NextResponse.json({ success: true });
-  } catch { return NextResponse.json({ error: 'No autorizado.' }, { status: 401 }); }
+    if (!parsed.success) return NextResponse.json({error:'Solicitud inválida.'},{status:400});
+    const {moduleId,classId}=parsed.data;
+    const mod=getModuleById(moduleId);
+    if (!mod?.classes.some(c=>c.id===classId)) return NextResponse.json({error:'Clase inválida.'},{status:400});
+    if (!await hasInitializedCompany(user.uid)) return NextResponse.json({error:'Completa la preparación de tu empresa.'},{status:403});
+    const name=getStudentDisplayName(user.profile,user.email);
+    if (moduleId!==MODULO_INDUCCION && moduleId!=='mod-ventas' && !await moduloInduccionCompleto(user.uid,user.profile.role,name,user.email)) return NextResponse.json({error:'Completa primero la inducción.'},{status:403});
+    const progress=await readAcademicProgress(user.uid,moduleId,name,user.email);
+    const required=practicasDelModulo(moduleId).filter(p=>p.startsWith(classId+'#'));
+    if (!required.length || required.some(p=>!progress.passedPractices.includes(p))) return NextResponse.json({error:'Completa las prácticas evaluadas de esta clase antes de finalizarla.'},{status:403});
+    await adminDb.collection('academic_progress').doc(buildStudentDocId(moduleId,user.uid)).set({uid:user.uid,moduleId,studentName:name,studentEmail:user.email,completedClasses:fieldValue().arrayUnion(classId),updatedAt:new Date().toISOString()},{merge:true});
+    return NextResponse.json({success:true});
+  } catch { return NextResponse.json({error:'No se pudo registrar el progreso.'},{status:400}); }
 }

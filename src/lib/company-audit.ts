@@ -41,5 +41,21 @@ export function auditChanges(before: CompanyState, after: CompanyState): AuditCh
 }
 
 export function auditHash(event: Omit<CompanyAuditEvent, 'hash'>): string {
-  return createHash('sha256').update(JSON.stringify(event)).digest('hex');
+  // Firestore maps can return their keys in a different order after persistence.
+  const canonical = (value: unknown): unknown => value instanceof Date ? value.toISOString() : Array.isArray(value) ? value.map(canonical)
+    : value !== null && typeof value === 'object' ? Object.fromEntries(Object.entries(value).sort(([a],[b])=>a<b?-1:a>b?1:0).map(([key,item])=>[key,canonical(item)])) : value;
+  return createHash('sha256').update(JSON.stringify(canonical(event))).digest('hex');
+}
+
+export function verifyAuditChain(events: CompanyAuditEvent[], head: {version:number;hash:string}|null, companyExists: boolean) {
+  if (!events.length) return {valid:!companyExists&&!head,checked:0,...(companyExists||head?{incomplete:true}:{})};
+  if (!head || events[0].version!==1) return {valid:false,checked:0,incomplete:true};
+  let previousHash='0'.repeat(64),version=0;
+  for (const event of events) {
+    const {hash,version:current,...payload}=event;
+    if (current!==version+1 || event.previousHash!==previousHash || auditHash(payload)!==hash) return {valid:false,checked:version,firstBadVersion:current};
+    previousHash=hash;version=current;
+  }
+  if (head.version!==version || head.hash!==previousHash) return {valid:false,checked:version,incomplete:true};
+  return {valid:true,checked:version};
 }

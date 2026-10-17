@@ -6,7 +6,7 @@ import { applyCommand } from './company-engine';
 import { today } from './company-calculations';
 import { companySummary } from './company-summary';
 import type { CompanyCommand } from './company-commands';
-import { auditChanges, auditHash, type CompanyAuditEvent } from './company-audit';
+import { auditChanges, auditHash, verifyAuditChain, type CompanyAuditEvent } from './company-audit';
 import type { Transaction, QuerySnapshot } from 'firebase-admin/firestore';
 
 function assignRows<K extends CollectionName>(state: CompanyState, key: K, snapshot: QuerySnapshot): void {
@@ -83,23 +83,11 @@ export async function readCompanyAuditFirestore(uid: string, limit = 100, before
 }
 
 export async function verifyCompanyAuditFirestore(uid: string): Promise<{ valid: boolean; checked: number; firstBadVersion?: number; incomplete?: boolean }> {
-  const events = await adminDb.collection('finixCompanies').doc(uid).collection('auditEvents')
-    .orderBy('version', 'asc').limit(5001).get();
-  if (events.size > 5000) return { valid: false, checked: 5000, incomplete: true };
-  let previousHash = '0'.repeat(64);
-  let previousVersion: number | undefined;
-  let checked = 0;
-  for (const snapshot of events.docs) {
-    const event = snapshot.data() as CompanyAuditEvent;
-    const { hash, version, ...payload } = event;
-    if (event.previousHash !== previousHash ||
-        (previousVersion !== undefined && version !== previousVersion + 1) ||
-        auditHash(payload) !== hash) {
-      return { valid: false, checked, firstBadVersion: version };
-    }
-    previousHash = hash;
-    previousVersion = version;
-    checked++;
-  }
-  return { valid: true, checked };
+  return adminDb.runTransaction(async tx => {
+    const root=adminDb.collection('finixCompanies').doc(uid);
+    const [company,head,events]=await Promise.all([tx.get(root),tx.get(root.collection('auditMeta').doc('head')),tx.get(root.collection('auditEvents').orderBy('version','asc').limit(5001))]);
+    if(events.size>5000)return {valid:false,checked:5000,incomplete:true};
+    const data=head.data();
+    return verifyAuditChain(events.docs.map(d=>d.data() as CompanyAuditEvent),head.exists?{version:Number(data?.version),hash:String(data?.hash)}:null,company.exists);
+  }, {readOnly:true});
 }

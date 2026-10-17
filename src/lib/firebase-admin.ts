@@ -11,7 +11,7 @@ import type { Firestore } from 'firebase-admin/firestore';
  * fallaban en Vercel (versión de Node, credencial mal formada, dependencia ausente), TODA ruta
  * que importara server-auth respondía 500 antes de ejecutar una sola línea propia.
  * Ahora el paquete se carga al primer uso, dentro de los try/catch de cada llamada:
- * si falla, la sesión cae al respaldo REST de server-auth y el error queda registrado.
+ * si falla, la sesión muestra indisponibilidad; no se rebaja la verificación de revocación.
  */
 
 type EstadoAdmin = { app: App; auth: Auth; db: Firestore } | { error: Error };

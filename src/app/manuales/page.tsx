@@ -193,14 +193,14 @@ export default function ManualesLibraryPage() {
         {/* Encabezado Principal */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
-            <Sparkles className="w-3.5 h-3.5" /> Repositorio Documental Oficial • B1 Academy Ecuador
+            <Sparkles className="w-3.5 h-3.5" /> Repositorio Documental Oficial • Finix Academy Ecuador
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
             Atlas técnico de manuales Finix ERP
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             <strong>{ALL_MANUALS.length} manuales técnicos</strong> organizados en
-            <strong> {MANUAL_CATEGORIES.length} módulos temáticos</strong>. Completa las clases prácticas y aprueba el examen final para obtener tu <strong>certificado propio de B1 Academy</strong>.
+            <strong> {MANUAL_CATEGORIES.length} módulos temáticos</strong>. Completa las clases prácticas y aprueba el examen final para obtener tu <strong>certificado propio de Finix Academy</strong>.
           </p>
         </div>
 
@@ -501,7 +501,7 @@ export default function ManualesLibraryPage() {
                 {examScore >= examModalCategory.passingScore ? (
                   <div className="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-4 text-left">
                     <div className="flex items-center gap-2 text-amber-500 font-bold text-xs uppercase tracking-wider">
-                      <Award className="w-4 h-4" /> Personaliza tu Certificado Oficial
+                      <Award className="w-4 h-4" /> Personaliza tu Constancia de autoevaluación
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
@@ -519,7 +519,7 @@ export default function ManualesLibraryPage() {
                       onClick={handleDownloadPDF}
                       className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-extrabold text-sm shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                     >
-                      <Download className="w-4 h-4" /> Descargar Certificado Oficial en PDF
+                      <Download className="w-4 h-4" /> Descargar Constancia de autoevaluación en PDF
                     </button>
                   </div>
                 ) : (

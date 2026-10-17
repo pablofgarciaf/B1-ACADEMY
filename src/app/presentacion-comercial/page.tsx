@@ -23,145 +23,274 @@ interface SlideData {
 
 const SLIDES: SlideData[] = [
   {
-    number: 1,
-    tag: 'Presentación Oficial B2B',
-    title: 'Finix ERP 10.0: Gestión Integral para Empresas de Alto Rendimiento',
-    subtitle: 'Control Operativo Total, Cumplimiento Fiscal SRI 2026 y Rentabilidad en Tiempo Real.',
-    bullets: [
-      { title: 'Una Sola Verdad Corporativa', desc: 'Ventas, Compras, Bodega, Finanzas y Nómina sincronizados al segundo sin hojas de cálculo dispersas.' },
-      { title: 'Decisiones con Datos Vivos', desc: 'Dashboards directivos e indicadores clave de rentabilidad para la toma ágil de decisiones.' },
-      { title: 'Metodología B1 Center', desc: 'Puesta en marcha garantizada en 4 semanas con plantillas de industria listas.' }
+    "number": 1,
+    "tag": "Formación para empresas",
+    "title": "Aprender procesos con una empresa de laboratorio",
+    "subtitle": "Capacitación práctica para conectar operación, documentos y resultados.",
+    "bullets": [
+      {
+        "title": "Objetivos por equipo",
+        "desc": "Definimos los procesos y conocimientos que necesita desarrollar cada grupo."
+      },
+      {
+        "title": "Práctica guiada",
+        "desc": "Los estudiantes trabajan con datos sintéticos en un entorno educativo."
+      },
+      {
+        "title": "Diagnóstico previo",
+        "desc": "El alcance y el calendario se acuerdan después de evaluar las necesidades."
+      }
     ],
-    highlight: { label: 'Impacto Comprobado', value: '4 Semanas', detail: 'Tiempo promedio de implementación con B1 Center' },
-    speakerNotes: 'Apertura: Saluda cordialmente al Director General y Director Financiero. Agradece su tiempo y aclara el objetivo: "Hoy no venimos a mostrarles pantallas técnicas aburridas, sino a demostrar cómo Finix ERP elimina el desorden operativo y protege el dinero de su empresa".',
-    iconName: 'Building2'
+    "highlight": {
+      "label": "Enfoque",
+      "value": "Aprender haciendo",
+      "detail": "El simulador es un recurso de formación, sujeto a configuración y validación."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "Building2"
   },
   {
-    number: 2,
-    tag: 'Diagnóstico Operativo',
-    title: 'El Costo Oculto del Descontrol: Por Qué Fallan las Hojas de Cálculo',
-    subtitle: 'Las empresas medianas pierden entre el 8% y el 15% de su margen neto anual en fugas no detectadas.',
-    bullets: [
-      { title: 'Caos de Inventario y Mermas', desc: 'Ventas promete stock que ya se vendió; bodega tiene productos vencidos o perdidos sin responsable visible.' },
-      { title: 'Ventas a Clientes Insolventes', desc: 'Vendedores que comisionan sin control mientras la cartera vencida se acumula en facturas incobrables.' },
-      { title: 'Riesgo Tributario y Multas SRI', desc: 'Cálculos manuales de retenciones, errores de IVA y facturación desfasada que provocan glosas fiscales.' }
+    "number": 2,
+    "tag": "Diagnóstico",
+    "title": "Identificar el proceso que necesita mejorar",
+    "subtitle": "Empezamos por observar el trabajo y acordar cómo medirlo.",
+    "bullets": [
+      {
+        "title": "Datos de partida",
+        "desc": "Revisar calidad de maestros, documentos y responsables."
+      },
+      {
+        "title": "Riesgos observables",
+        "desc": "Identificar duplicados, faltantes y diferencias entre registros."
+      },
+      {
+        "title": "Criterios de aceptación",
+        "desc": "Definir resultados que puedan comprobarse al terminar la formación."
+      }
     ],
-    highlight: { label: 'Fuga Estimada', value: '-12% Margen', detail: 'Pérdida operativa en empresas sin ERP integrado' },
-    speakerNotes: 'Conexión con el dolor: Pregunta al CEO: "¿Don Carlos, alguna vez un cliente le ha cancelado un pedido porque bodega dijo que había stock y en realidad no había?". Deja que responda y asiente: "Ese dolor le cuesta miles de dólares al año a su compañía".',
-    iconName: 'ShieldAlert'
+    "highlight": {
+      "label": "Primer paso",
+      "value": "Diagnóstico",
+      "detail": "No se prometen porcentajes de ahorro sin medición."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "ShieldAlert"
   },
   {
-    number: 3,
-    tag: 'Arquitectura de Solución',
-    title: 'La Propuesta de Valor: Cero Doble Digitación y Datos en Tiempo Real',
-    subtitle: 'El ERP conecta todas las áreas en una sola base de datos transaccional e inmutable.',
-    bullets: [
-      { title: 'Del Lead a la Contabilidad', desc: 'Lo que el asesor cotiza, bodega lo despacha y contabilidad lo registra sin recapturar un solo dato.' },
-      { title: 'Pistas de Auditoría Inmutables', desc: 'Cada transacción registra usuario, fecha, hora exacta y monto con certificación antifraude.' },
-      { title: 'Acceso en la Nube y Móvil', desc: 'Consulte estados de cuenta, autorice descuentos y supervise la operación desde cualquier dispositivo.' }
+    "number": 3,
+    "tag": "Entorno educativo",
+    "title": "Documentos relacionados y evidencia de práctica",
+    "subtitle": "Cada ejercicio debe demostrar una operación o una consulta concreta.",
+    "bullets": [
+      {
+        "title": "Operaciones",
+        "desc": "Las prácticas de escritura se verifican contra una operación registrada del alumno."
+      },
+      {
+        "title": "Consultas",
+        "desc": "Los ejercicios de lectura usan datos y cálculos explícitos del escenario."
+      },
+      {
+        "title": "Trazabilidad",
+        "desc": "La verificación de integridad necesita permisos, referencias confiables y respaldos."
+      }
     ],
-    highlight: { label: 'Eficiencia Operativa', value: '0 Errores', detail: 'Erradicación total de la recaptura manual de datos' },
-    speakerNotes: 'Demostración de valor: "A diferencia de tener un software contable aislado y diez archivos de Excel en ventas, Finix ERP crea una autopista digital donde cada departamento alimenta al siguiente de forma automática".',
-    iconName: 'Sparkles'
+    "highlight": {
+      "label": "Evidencia",
+      "value": "Verificable",
+      "detail": "Una consulta no sustituye una autorización empresarial."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "Sparkles"
   },
   {
-    number: 4,
-    tag: 'Flujo Central de Negocio',
-    title: 'Ciclo Order-to-Cash Automatizado: De la Oferta al Banco en Minutos',
-    subtitle: 'Un proceso secuencial, controlado y auditado de principio a fin.',
-    bullets: [
-      { title: '1. Cotización Multi-Línea Ágil', desc: 'Precios mayoristas automáticos y validación de margen en 60 segundos con PDF corporativo.' },
-      { title: '2. Pedido con Reserva de Stock', desc: 'El inventario pasa a comprometido al instante para blindar la promesa de entrega al cliente.' },
-      { title: '3. Despacho y Facturación SRI', desc: 'Descarga automática de kardex al costo ponderado y factura electrónica con IVA 15% 2026.' }
+    "number": 4,
+    "tag": "Recorrido comercial",
+    "title": "De la oferta al cobro de prueba",
+    "subtitle": "Una secuencia para comprender efectos y documentos base.",
+    "bullets": [
+      {
+        "title": "Oferta y pedido",
+        "desc": "Revisar cliente, artículos, precios y cantidades."
+      },
+      {
+        "title": "Entrega y factura",
+        "desc": "Comprobar stock, asientos y cuenta por cobrar del escenario."
+      },
+      {
+        "title": "Cobro",
+        "desc": "Aplicar el pago a la factura correcta y revisar el saldo."
+      }
     ],
-    highlight: { label: 'Tiempo de Ciclo', value: '90% Menos', detail: 'Reducción del tiempo de emisión desde cotización a factura' },
-    speakerNotes: 'Paso a la acción: "Este flujo lo veremos en vivo en el simulador en unos minutos. Noten cómo el inventario y la contabilidad se actualizan en el mismo segundo en que el camión sale de la bodega".',
-    iconName: 'TrendingUp'
+    "highlight": {
+      "label": "Flujo",
+      "value": "5 etapas",
+      "detail": "Oferta → pedido → entrega → factura → cobro."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "TrendingUp"
   },
   {
-    number: 5,
-    tag: 'Control Financiero',
-    title: 'Blindaje de Liquidez: Control de Crédito y Protección de Margen',
-    subtitle: 'Reglas matemáticas estrictas que defienden el capital de trabajo de los accionistas.',
-    bullets: [
-      { title: 'Límites de Crédito Inquebrantables', desc: 'El sistema bloquea automáticamente ventas a clientes morosos o que superen su cupo autorizado.' },
-      { title: 'Alerta de Margen Bruto Crítico', desc: 'Ningún vendedor puede otorgar descuentos que vulneren el piso mínimo de rentabilidad corporativa.' },
-      { title: 'Flujo de Aprobaciones Digitales', desc: 'Las excepciones estratégicas son autorizadas por el Gerente General desde su teléfono con un clic.' }
+    "number": 5,
+    "tag": "Control financiero",
+    "title": "Comprender crédito, margen y saldo",
+    "subtitle": "Los cálculos respaldan el análisis; no eliminan el riesgo comercial.",
+    "bullets": [
+      {
+        "title": "Crédito",
+        "desc": "Distinguir límite, saldo, compromisos y decisiones autorizadas."
+      },
+      {
+        "title": "Margen",
+        "desc": "Calcular margen sobre venta con costos y descuentos identificados."
+      },
+      {
+        "title": "Revisión",
+        "desc": "Contrastar documentos, auxiliares y mayor antes de concluir."
+      }
     ],
-    highlight: { label: 'Protección de Caja', value: '100% Blindado', detail: 'Cero ventas a morosos sin autorización previa de la gerencia' },
-    speakerNotes: 'Dirígete al CFO: "Licenciado, con Finix ERP usted duerme tranquilo. Si un cliente debe facturas vencidas, el vendedor no puede facturarle ni un solo centavo sin que usted lo autorice formalmente en el sistema".',
-    iconName: 'ShieldAlert'
+    "highlight": {
+      "label": "Objetivo",
+      "value": "Comprensión",
+      "detail": "La formación no garantiza cobros o rentabilidad."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "ShieldAlert"
   },
   {
-    number: 6,
-    tag: 'Cumplimiento Fiscal SRI 2026',
-    title: 'Facturación Electrónica y Retenciones SRI Ecuador 2026 Nativas',
-    subtitle: 'Actualizado a la normativa tributaria vigente: IVA 15%, retenciones y generación de RIDE.',
-    bullets: [
-      { title: 'Tarifa General IVA 15%', desc: 'Cálculo automático de bases imponibles y desglose de tarifas diferenciadas según la ley tributaria 2026.' },
-      { title: 'Retenciones en la Fuente Automáticas', desc: 'Gestión transparente de retenciones de Renta (2%) e IVA (30%) conciliadas contra la factura emitida.' },
-      { title: 'Emisión de RIDE y XML Legal', desc: 'Comprobantes autorizados con clave de acceso de 49 dígitos, QR y envío automático por correo al cliente.' }
+    "number": 6,
+    "tag": "Alcance fiscal",
+    "title": "Separar simulación y operación fiscal real",
+    "subtitle": "Los comprobantes del laboratorio no son documentos autorizados por el SRI.",
+    "bullets": [
+      {
+        "title": "Parámetros de prueba",
+        "desc": "Revisar base imponible, tarifa configurada y total del caso."
+      },
+      {
+        "title": "Contexto de operación",
+        "desc": "La aplicación real depende del régimen, sujetos, concepto y fecha."
+      },
+      {
+        "title": "Activación posterior",
+        "desc": "Firma, autorización, rechazos y normativa requieren validación específica."
+      }
     ],
-    highlight: { label: 'Fiscalidad SRI', value: '100% Nativo', detail: 'Sin software intermedio ni recapturas para el Anexo Transaccional ATS' },
-    speakerNotes: 'Argumento tributario: "Olvídese de parches o integradores externos que cobran por cada XML. Finix ERP emite la factura electrónica SRI, calcula las retenciones y prepara el anexo transaccional de forma nativa e ilimitada".',
-    iconName: 'FileText'
+    "highlight": {
+      "label": "Estado",
+      "value": "Simulación",
+      "detail": "No se presenta una integración fiscal de producción como activa."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "FileText"
   },
   {
-    number: 7,
-    tag: 'Herramienta Estrella',
-    title: 'La Joya de la Corona: El Mapa de Relaciones Interactivo',
-    subtitle: 'Auditoría directiva en vivo: toda la historia de una operación en un solo pantallazo.',
-    bullets: [
-      { title: 'Trazabilidad Visual Completa', desc: 'Conecta en un árbol gráfico la cotización, pedido, entrega, factura, retención, cobro y asiento contable.' },
-      { title: 'Auditoría en Un Clic (Drill-Down)', desc: 'Haga doble clic en cualquier nodo para abrir el documento original y verificar quién lo emitió y cuándo.' },
-      { title: 'Fin a las Disputas Internas', desc: 'Ante cualquier duda del cliente o reclamo de auditoría, la respuesta está visible en menos de 10 segundos.' }
+    "number": 7,
+    "tag": "Trazabilidad",
+    "title": "Reconstruir una operación con referencias",
+    "subtitle": "Seguir los documentos y comprobar sus efectos.",
+    "bullets": [
+      {
+        "title": "Documento base",
+        "desc": "Identificar el origen del pedido, entrega y factura."
+      },
+      {
+        "title": "Cambios registrados",
+        "desc": "Revisar responsable, fecha y cambios disponibles."
+      },
+      {
+        "title": "Reconciliación",
+        "desc": "Comparar cantidades, importes, saldos y asientos relacionados."
+      }
     ],
-    highlight: { label: 'Tiempo de Auditoría', value: '10 Segundos', detail: 'Para reconstruir el historial completo de cualquier transacción' },
-    speakerNotes: 'El momento WOW: Abre los brazos con seguridad: "Esta pantalla que están viendo es lo que convence a 9 de cada 10 directores. Imaginen poder responder a un auditor o a un socio en diez segundos con la cadena documental completa en pantalla".',
-    iconName: 'Sparkles'
+    "highlight": {
+      "label": "Método",
+      "value": "Comprobar",
+      "detail": "La trazabilidad se verifica con evidencia, sin promesas de inmutabilidad absoluta."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "Sparkles"
   },
   {
-    number: 8,
-    tag: 'Retorno de Inversión',
-    title: 'Justificación Financiera: El ERP que se Paga Solo en Menos de 6 Meses',
-    subtitle: 'El análisis de costo-beneficio para una empresa que factura $100,000 a $300,000 mensuales.',
-    bullets: [
-      { title: 'Ahorro por Mermas y Errores', desc: 'Reducción del 2% en pérdidas de inventario = $2,000 a $4,000 USD mensuales recuperados.' },
-      { title: 'Aceleración de Cobranza (DSO)', desc: 'Facturación inmediata el mismo día de entrega = Reducción de 12 días en el ciclo de caja.' },
-      { title: 'Horas Hombre Administrativas', desc: 'Eliminación de 40 horas al mes por digitación manual y cuadres contables de fin de mes.' }
+    "number": 8,
+    "tag": "Caso numérico",
+    "title": "Calcular una recuperación simple",
+    "subtitle": "Ejemplo hipotético para aprender a justificar una propuesta.",
+    "bullets": [
+      {
+        "title": "Inversión supuesta",
+        "desc": "12000 dólares de inversión inicial."
+      },
+      {
+        "title": "Ahorro supuesto",
+        "desc": "1000 dólares netos al mes, constantes y verificables en el caso."
+      },
+      {
+        "title": "Cálculo",
+        "desc": "12000 dividido para 1000: doce meses de recuperación simple."
+      }
     ],
-    highlight: { label: 'Retorno Estimado', value: '< 6 Meses', detail: 'Período de amortización integral de la inversión con B1 Center' },
-    speakerNotes: 'Cierre financiero: "Don Carlos, la pregunta no es si Finix ERP cuesta dinero. La realidad es que hoy su empresa ya está pagando el equivalente a dos ERPs en mermas, cobros atrasados y horas extras de digitación. Es hora de convertir esa pérdida en utilidad".',
-    iconName: 'TrendingUp'
+    "highlight": {
+      "label": "Ejemplo",
+      "value": "12 meses",
+      "detail": "No es una previsión comercial ni una garantía de resultados."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "TrendingUp"
   },
   {
-    number: 9,
-    tag: 'Guía de Respuestas',
-    title: 'Arsenal Anti-Objeciones: Respuestas Concretas a Dudas Comunes',
-    subtitle: 'Cómo responder con solvencia a las 5 preguntas que todo comité de compras formula.',
-    bullets: [
-      { title: '1. "Es muy costoso"', desc: 'Caro es perder clientes por despachos fallidos. Finix ERP genera retorno medible desde el primer mes.' },
-      { title: '2. "El personal se resistirá"', desc: 'Cockpit ultra simplificado: cada empleado ve únicamente los tres botones necesarios para su jornada.' },
-      { title: '3. "Tardará meses en funcionar"', desc: 'Nuestra metodología B1 Center utiliza empresas semilla preconfiguradas para salir en 4 semanas.' },
-      { title: '4. "Ya tenemos software contable"', desc: 'La contabilidad registra el pasado cuando el error ya costó dinero; Finix ERP controla la operación en vivo.' }
+    "number": 9,
+    "tag": "Adopción",
+    "title": "Formación y alcance acordes al equipo",
+    "subtitle": "El calendario depende de procesos, datos y experiencia de los participantes.",
+    "bullets": [
+      {
+        "title": "Necesidades",
+        "desc": "Identificar tareas, conocimientos previos y responsables."
+      },
+      {
+        "title": "Práctica y evaluación",
+        "desc": "Completar ejercicios y evaluar resultados antes de emitir una constancia."
+      },
+      {
+        "title": "Seguimiento",
+        "desc": "Revisar errores y reforzar habilidades con evidencia."
+      }
     ],
-    highlight: { label: 'Tasa de Adopción', value: '98%', detail: 'De usuarios operativos adaptados en las dos primeras semanas' },
-    speakerNotes: 'Uso interno del vendedor: Este slide te da el respaldo total ante las dudas del cliente. Si dicen que ya tienen software contable, recuérdales que el software contable no controla la bodega ni frena las ventas a morosos en el mostrador.',
-    iconName: 'MessageSquare'
+    "highlight": {
+      "label": "Constancia",
+      "value": "Finix Academy",
+      "detail": "No constituye título oficial ni acreditación de un fabricante."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "MessageSquare"
   },
   {
-    number: 10,
-    tag: 'Llamada a la Acción',
-    title: 'El Próximo Paso: Taller de Diagnóstico y Empresa de Práctica',
-    subtitle: 'Comprobemos el valor de Finix ERP con los datos y procesos reales de su compañía.',
-    bullets: [
-      { title: '1. Sesión de Alcance Sin Costo', desc: 'Revisamos sus procesos clave de ventas, bodega y facturación con sus responsables de área.' },
-      { title: '2. Configuración en B1 Center', desc: 'Cargamos sus familias de artículos, listas de precios y clientes en una empresa de prueba dedicada.' },
-      { title: '3. Demostración Personalizada', desc: 'Presentamos a su directorio la operación exacta de su negocio corriendo en Finix ERP 10.0.' }
+    "number": 10,
+    "tag": "Siguiente paso",
+    "title": "Solicitar formación para tu empresa",
+    "subtitle": "Comparte el objetivo del equipo para preparar una propuesta de capacitación.",
+    "bullets": [
+      {
+        "title": "Necesidad",
+        "desc": "Describe procesos y resultados de aprendizaje esperados."
+      },
+      {
+        "title": "Equipo",
+        "desc": "Indica número de participantes y conocimientos previos."
+      },
+      {
+        "title": "Contacto",
+        "desc": "La solicitud queda registrada para revisión en el panel administrativo."
+      }
     ],
-    highlight: { label: 'Siguiente Hito', value: 'Agenda Hoy', detail: 'Definamos la fecha para el Taller de Diagnóstico Operativo' },
-    speakerNotes: 'Cierre consultivo: "Don Carlos, Licenciado, el siguiente paso no es firmar un contrato a ciegas. Les propongo agendar un Taller de Diagnóstico de 45 minutos esta semana para cargar su catálogo en su empresa de práctica B1 Center y que vean su propia operación funcionando. ¿Les parece mejor el martes o el jueves por la mañana?".',
-    iconName: 'Check'
+    "highlight": {
+      "label": "Solicitud",
+      "value": "Formación empresarial",
+      "detail": "Completa el formulario en la sección Empresas."
+    },
+    "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
+    "iconName": "Check"
   }
 ];
 
@@ -206,8 +335,8 @@ export default function PresentacionComercialPage() {
 
       {/* Cápsula GEO */}
       <aside aria-label="Resumen de Presentación Comercial" className="sr-only">
-        Presentación comercial oficial de Finix ERP 10.0: dossier ejecutivo de ventas para directores y gerentes generales.
-        Cubre dolores empresariales, flujo Order-to-Cash, cumplimiento tributario SRI 2026 con IVA 15%, Mapa de Relaciones y retorno de inversión en 4 semanas.
+        Presentación de la formación empresarial de Finix Academy.
+        Recorrido educativo de documentos, análisis de crédito y margen, trazabilidad y recuperación simple con supuestos explícitos.
       </aside>
 
       <main className="flex-1 flex flex-col max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 justify-between">
@@ -215,7 +344,7 @@ export default function PresentacionComercialPage() {
         <header className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
           <div className="flex items-center gap-3">
             <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-blue-600 text-white shadow-md shadow-blue-500/20">
-              Pitch Deck Oficial
+              Formación empresarial
             </span>
             <span className="text-xs text-slate-400 font-medium">
               Diapositiva {slide.number} de {SLIDES.length}

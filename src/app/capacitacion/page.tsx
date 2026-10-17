@@ -53,7 +53,7 @@ export default function CapacitacionPage() {
       <main className="flex-1 py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 w-full">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
-            <Sparkles className="w-3.5 h-3.5" /> 14 rutas de especialidad • 30 módulos
+            <Sparkles className="w-3.5 h-3.5" /> {SPECIALTY_DIPLOMAS.length} rutas de especialidad • {OFFICIAL_SYLLABUS.length} módulos
           </div>
           {/* H1 Quirúrgico (45-65 chars) -> 52 caracteres */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
@@ -169,7 +169,7 @@ export default function CapacitacionPage() {
               Plan de Estudios Completo
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">
-              Malla Curricular de 30 Módulos Continuos (1 a 30)
+              Malla curricular de {OFFICIAL_SYLLABUS.length} módulos
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               Estructurados en 8 bloques pedagógicos desde fundamentos operativos hasta la defensa del Proyecto Integrador.

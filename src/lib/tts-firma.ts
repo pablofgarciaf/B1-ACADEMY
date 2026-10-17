@@ -6,9 +6,9 @@ import { createHmac, timingSafeEqual } from 'crypto';
  * El servidor firma los guiones que el propio sitio publica; /api/tts solo acepta, sin sesión,
  * textos con firma válida. Así la voz no puede usarse como proxy abierto para cualquier texto.
  */
-/** Claves posibles, en orden de preferencia (TTS_BUILD_SECRET lo genera next.config.mjs en cada build). */
+/** Claves posibles, en orden de preferencia. */
 function secretos(): string[] {
-  return [process.env.TTS_SIGNING_SECRET, process.env.CERTIFICATE_SIGNING_SECRET, process.env.TTS_BUILD_SECRET]
+  return [process.env.TTS_SIGNING_SECRET, process.env.CERTIFICATE_SIGNING_SECRET]
     .filter((s): s is string => !!s);
 }
 
@@ -30,6 +30,6 @@ export function firmarTexto(texto: string): string | undefined {
  * /api/tts valida en ejecución; si alguien añade una variable en Vercel sin recompilar, la voz no se cae.
  */
 export function firmaValida(texto: string, firma: string | undefined): boolean {
-  if (!firma || firma.length !== 32) return false;
+  if (!firma || !/^[a-f0-9]{32}$/.test(firma)) return false;
   return secretos().some((s) => timingSafeEqual(Buffer.from(hmac(s, texto)), Buffer.from(firma)));
 }

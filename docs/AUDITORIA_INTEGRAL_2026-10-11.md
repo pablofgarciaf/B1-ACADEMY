@@ -1,3 +1,5 @@
+> Antecedente histórico: el estado actual está en [PLAN_CORRECCIONES_2026-10-16.md](PLAN_CORRECCIONES_2026-10-16.md). Los hallazgos y resultados siguientes describen el código de la fecha de esta auditoría, antes de las correcciones.
+
 # Auditoría integral inicial — SAP Academy / Finix ERP
 
 **Fecha:** 11 de octubre de 2026  

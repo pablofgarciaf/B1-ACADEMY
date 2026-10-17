@@ -10,6 +10,9 @@ import type { IntentoPractica } from '@/lib/practice-check';
 import type { PantallaConectada } from '@/lib/practica-conectada';
 import type { GuiaPractica } from './PracticaValidada';
 import { EMPRESA_CURSO } from '@/lib/b1-center-datos';
+import PracticeQuery from './PracticeQuery';
+import { SALES_MISSIONS } from '@/lib/sales-learning';
+import { operationFor } from '@/lib/practice-contract';
 
 // Pantallas reales del Simulador integral (cargadas solo cuando la práctica las necesita).
 const cargando = () => <p className="p-4 text-[#4a5b70]">Abriendo la ventana…</p>;
@@ -48,7 +51,7 @@ const P = {
   cockpit: dynamic(() => import('@/components/finix-screens/CockpitScreen'), { loading: cargando }),
 };
 
-function Pantalla({ p }: { p: PantallaConectada }) {
+function Pantalla({ p }: { p: Exclude<PantallaConectada,{clave:'consultaAcademica'}> }) {
   switch (p.clave) {
     case 'cliente':   return <P.socio />;
     case 'proveedor': return <P.socio vendor />;
@@ -79,14 +82,22 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
   const valor = useMemo(() => ({
     ...c,
     save: async (command: CompanyCommand) => {
-      const resultado = await c.save(command);
-      if (command.action !== 'access' && !logrado) {
+      if(guia.missionId==='mod-ventas-c1#2'&&command.action==='customer'){
+        const d=command.data;
+        if(d.name!=='Corporación Andina S.A.'||d.ruc!=='1790099001001'||d.creditLimit!==10000||d.paymentTermsDays!==30)throw new Error('Usa los datos de la misión: Corporación Andina S.A., RUC de práctica 1790099001001, límite 10000 y plazo 30 días.');
+      }
+      const requestId=crypto.randomUUID();
+      const resultado = await c.save(command,requestId);
+      const mission=guia.missionId?SALES_MISSIONS[guia.missionId]:undefined;
+      const expected=mission?.expectedAction?[mission.expectedAction]:operationFor(pantalla);
+      const docMatches=!mission?.expectedDocType || (command.action==='sales' && command.data.docType===mission.expectedDocType);
+      if (expected.includes(command.action) && docMatches && !logrado) {
         setLogrado(resultado);
-        setTimeout(() => onCompleta({ valores: [`${command.action}:${resultado}`], intentos: 1, vioSolucion: false, conectada: true }), 2200);
+        onCompleta({ valores: [`${command.action}:${resultado}`], evidence:{requestId,action:command.action,result:resultado}, intentos: 1, vioSolucion: false, conectada: true });
       }
       return resultado;
     },
-  }), [c, logrado, onCompleta]);
+  }), [c, logrado, onCompleta,guia.missionId,pantalla]);
 
   const empresa = c.data.profile?.companyName;
   return (
@@ -105,7 +116,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
 
       <CompanyContext.Provider value={valor}>
         <div className="mx-3 mb-3 rounded-sm border border-[#7f93ab] bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222] min-h-[320px]">
-          <Pantalla p={pantalla} />
+          {pantalla.clave==='consultaAcademica'?<PracticeQuery missionId={guia.missionId||''} onCompleta={onCompleta}/>:<Pantalla p={pantalla} />}
         </div>
       </CompanyContext.Provider>
     </div>

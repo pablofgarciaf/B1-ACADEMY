@@ -68,6 +68,7 @@ export function useAcademyVoice() {
   const tokenRef = useRef(0);
   const pendingEndRef = useRef<(() => void) | undefined>(undefined);
   const mutedRef = useRef(false);
+  const pausedRef = useRef(false);
   const [velocidad, setVelocidad] = useState(1);
   const velocidadRef = useRef(1);
 
@@ -96,12 +97,14 @@ export function useAcademyVoice() {
     pendingEndRef.current = undefined;
     setIsSpeaking(false);
     setIsPaused(false);
+    pausedRef.current = false;
     setNeedsGesture(false);
     setCurrentTime(0);
     setDuration(0);
   }, [clearPlayback]);
 
   const pause = useCallback(() => {
+    pausedRef.current = true;
     const audio = audioRef.current;
     if (audio && !audio.paused) {
       audio.pause();
@@ -116,6 +119,7 @@ export function useAcademyVoice() {
   }, []);
 
   const resume = useCallback(() => {
+    pausedRef.current = false;
     const audio = audioRef.current;
     const token = tokenRef.current;
     const end = pendingEndRef.current;
@@ -157,6 +161,9 @@ export function useAcademyVoice() {
     setIsPaused(false);
     setCurrentTime(0);
     setDuration(0);
+    pausedRef.current = false;
+    // A failed new narration must never resume audio from the previous slide.
+    audioRef.current = null;
 
     let finished = false;
     const finish = () => {
@@ -204,6 +211,7 @@ export function useAcademyVoice() {
         audio.onended = finish;
         audio.onerror = finish;
 
+        if (pausedRef.current) return;
         return audio.play().catch((error: unknown) => {
           if (token !== tokenRef.current) return;
           // El navegador bloquea el audio hasta que el usuario interactúe con la página.
@@ -223,12 +231,13 @@ export function useAcademyVoice() {
         timerRemainingRef.current = ms;
         timerStartedAtRef.current = Date.now();
         setDuration(ms / 1000);
-        timerRef.current = setTimeout(finish, ms);
+        if (!pausedRef.current) timerRef.current = setTimeout(finish, ms);
       });
   }, [clearPlayback]);
 
   /** Reanuda tras el bloqueo de autoplay (se llama desde un clic del usuario). */
   const resumeAfterGesture = useCallback(() => {
+    pausedRef.current = false;
     const audio = audioRef.current;
     const token = tokenRef.current;
     const end = pendingEndRef.current;

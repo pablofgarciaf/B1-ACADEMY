@@ -39,7 +39,7 @@ import {
 
 export const metadata = {
   title: 'Escuela de Capacitación en Finix ERP Ecuador',
-  description: 'Aprende Finix ERP 10.0 con la arquitectura real de Ecuador. 14 diplomas de especialidad, 30 módulos, sandbox simulador y bolsa de trabajo.',
+  description: 'Aprende procesos empresariales con clases guiadas, manuales y un simulador educativo. Rutas de formación individual y capacitación para equipos en Ecuador.',
 };
 
 const BLOCK_ICONS: Record<SyllabusBlock, typeof Building2> = {
@@ -68,7 +68,7 @@ export default function HomePage() {
             <div className="text-center max-w-4xl mx-auto space-y-6 py-4 sm:py-8">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue dark:text-sky-300">
                 <span className="w-2 h-2 rounded-full bg-finix-blue animate-pulse" />
-                Academia Tecnológica B2B / B2C • B1 Academy Ecuador
+                Academia Tecnológica B2B / B2C • Finix Academy Ecuador
               </div>
 
               {/* H1 Exacto (45-65 chars) -> 53 caracteres */}
@@ -102,19 +102,19 @@ export default function HomePage() {
               {/* Datos del programa */}
               <div className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-slate-200 dark:border-white/[0.08]">
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">14</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">{SPECIALTY_DIPLOMAS.length}</p>
                   <p className="text-xs text-slate-500 mt-1 font-medium">Diplomas de Especialidad</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-finix-blue dark:text-sky-400 font-display">30</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-finix-blue dark:text-sky-400 font-display">{OFFICIAL_SYLLABUS.length}</p>
                     <p className="text-xs text-slate-500 mt-1 font-medium">Módulos de estudio</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">120</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">{OFFICIAL_SYLLABUS.reduce((total, module) => total + module.classes.length, 0)}</p>
                   <p className="text-xs text-slate-500 mt-1 font-medium">Clases guiadas</p>
                 </div>
                 <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">8</p>
+                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">{new Set(OFFICIAL_SYLLABUS.map(module => module.block)).size}</p>
                   <p className="text-xs text-slate-500 mt-1 font-medium">Áreas temáticas</p>
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function HomePage() {
                 {MASTER_PROGRAM.title}
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed">
-                 Reúne lo aprendido en los 30 módulos y practícalo en un escenario integrado del simulador educativo.
+                 Reúne lo aprendido en los módulos del itinerario y practícalo en un escenario integrado del simulador educativo.
               </p>
               <div className="pt-2">
                 <Link

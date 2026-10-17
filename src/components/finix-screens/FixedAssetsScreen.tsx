@@ -14,7 +14,6 @@ const CATEGORIAS = [
 ];
 const PAGO = [
   { code: '2.2.01', label: 'Préstamo a largo plazo' },
-  { code: '2.1.01', label: 'A crédito (cuentas por pagar)' },
   { code: '1.1.01', label: 'De contado (caja)' },
 ] as const;
 

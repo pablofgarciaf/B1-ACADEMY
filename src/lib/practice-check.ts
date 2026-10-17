@@ -41,8 +41,8 @@ const EQUIVALENCIAS: string[][] = [
   ['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],
   ['A00004', 'Teclado Inalámbrico Logitech'], ['A00005', 'Mouse Óptico Dell'], ['A00006', 'Servidor HP ProLiant DL380'],
   ['A00007', 'Disco Duro SSD 1TB Samsung'], ['A00008', 'Memoria RAM 16GB DDR4'],
-  ['manager', 'admin', 'pablo.garcia', 'pablofgarciaf@gmail.com', 'pablo'],
-  ['B1Admin2026', 'mateD0MEmia', '123456', 'manager', 'admin'],
+  ['manager', 'admin', 'pablo.garcia', 'alumno@ejemplo.test', 'pablo'],
+  ['B1Admin2026', 'ClaveSoloDePractica2026!', '123456', 'manager', 'admin'],
   ['Banco Pichincha', 'Pichincha', 'BAN-1'],
   ['Oferta de Venta', 'Cotización', 'Oferta de ventas', 'Cotización comercial', 'COT'],
   ['Pedido de Cliente', 'Pedido de venta', 'Pedido en firme', 'Orden de venta', 'PV'],
@@ -76,6 +76,7 @@ export function coincide(respuesta: string, esperado: string, etiqueta?: string)
 
 /** Lo que el navegador informa al terminar una práctica. */
 export interface IntentoPractica {
+  evidence?: { action: string; result: string; requestId: string };
   /** Valores escritos por el estudiante, en el mismo orden que los campos de la práctica. */
   valores: string[];
   /** Cuántas veces pulsó "Añadir" antes de lograrlo (1 = a la primera). */

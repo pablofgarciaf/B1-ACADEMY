@@ -6,6 +6,7 @@ import { AuthProvider } from "@/context/AuthContext";
 import HelpWidget from "@/components/site/HelpWidget";
 import "./globals.css";
 import { SITE_URL, publicUrl } from "@/lib/site-url";
+import CampaignAttribution from '@/components/site/CampaignAttribution';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     "Simulador contable educativo Ecuador",
     "Cursos de gestión empresarial Ecuador",
   ],
-  authors: [{ name: "B1 Academy" }],
+  authors: [{ name: "Finix Academy" }],
   creator: "Finix Academy",
   publisher: "Finix Academy",
   formatDetection: {
@@ -86,12 +87,12 @@ export const metadata: Metadata = {
   },
 };
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-FINIXACADEMY";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
 
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  name: "B1 Academy",
+  name: "Finix Academy",
   url: publicUrl(),
   logo: publicUrl('/b1-academy-logo.webp'),
   description:
@@ -117,6 +118,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <AuthProvider>
             {children}
+            <CampaignAttribution />
             <HelpWidget />
           </AuthProvider>
           {/* LOPDP: Google Tag Manager solo se carga tras el consentimiento de analítica (antes se cargaba siempre). */}

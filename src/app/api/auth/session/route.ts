@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       path: '/',
-      maxAge: SESSION_MAX_AGE_MS / 1000,
+      maxAge: sessionCookie.startsWith('idtoken:') ? 3600 : SESSION_MAX_AGE_MS / 1000,
     });
     return response;
   } catch (error) {

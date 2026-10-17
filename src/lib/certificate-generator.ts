@@ -1,4 +1,5 @@
 import { jsPDF } from 'jspdf';
+import { publicUrl } from './site-url';
 
 export interface CertificateData {
   studentName: string;
@@ -15,6 +16,7 @@ export interface OfficialCampusCertificateData {
   title: string;
   careerTitle?: string;
   code?: string;
+  verified?: boolean;
   scorePercent?: number;
   hours?: number;
   competencies?: string[];
@@ -32,11 +34,12 @@ export function generateOfficialCampusCertificate({
   title,
   careerTitle = 'Escuela Finix ERP',
   code,
-  scorePercent = 95,
-  hours = 25,
+  verified = false,
+  scorePercent,
+  hours,
   competencies = [],
   dateStr = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }),
-  instructorName = 'Master B1 & Comité Evaluador'
+  instructorName = 'Finix Academy'
 }: OfficialCampusCertificateData) {
   // Documento A4 horizontal (297 x 210 mm)
   const doc = new jsPDF({
@@ -45,13 +48,8 @@ export function generateOfficialCampusCertificate({
     format: 'a4'
   });
 
-  const certCode = code || `B1-${certificateType.toUpperCase().slice(0, 3)}-${Math.random().toString(36).substring(2, 8).toUpperCase()}-${new Date().getFullYear()}`;
-  const verificationHash = Array.from(certCode)
-    .map(c => c.charCodeAt(0).toString(16))
-    .join('')
-    .padEnd(32, '0')
-    .slice(0, 24)
-    .toUpperCase();
+  const certCode = verified && code ? code : 'AUTOEVALUACION-SIN-REGISTRO';
+  if (verified && !code) throw new Error('Falta el código emitido por el servidor.');
 
   // 1. Fondo elegante marfil / crema
   doc.setFillColor(252, 252, 250);
@@ -60,28 +58,29 @@ export function generateOfficialCampusCertificate({
   // 2. Colores según el tipo de certificado
   let primaryColor: [number, number, number] = [15, 23, 42]; // Slate 900
   let accentColor: [number, number, number] = [217, 119, 6]; // Amber Gold
-  let headerLabel = 'ACREDITACIÓN TÉCNICA OFICIAL • B1 ACADEMY';
-  let badgeLabel = 'APROBADO';
-  let typeTitle = 'MICRO-CERTIFICACIÓN DE COMPETENCIA OPERATIVA';
+  let headerLabel = 'CONSTANCIA DE FORMACIÓN • FINIX ACADEMY';
+  let badgeLabel = verified ? 'REGISTRO' : 'PRÁCTICA';
+  let typeTitle = 'CONSTANCIA DE FORMACIÓN';
 
   if (certificateType === 'diploma') {
     accentColor = [14, 116, 144]; // Cyan / Finix ERP Blue
-    typeTitle = 'DIPLOMA DE ESPECIALIZACIÓN PROFESIONAL';
+    typeTitle = 'CONSTANCIA DE ESPECIALIDAD';
     badgeLabel = 'ESPECIALISTA';
-    headerLabel = 'PROGRAMA EJECUTIVO UNIVERSITARIO • B1 ACADEMY';
+    headerLabel = 'FORMACIÓN CONTINUA • FINIX ACADEMY';
   } else if (certificateType === 'master') {
     accentColor = [180, 83, 9]; // Deep Gold
     primaryColor = [10, 25, 47]; // Midnight Navy
-    typeTitle = 'CERTIFICACIÓN MASTER: CONSULTOR ASOCIADO FINIX ERP';
-    badgeLabel = 'MASTER B1';
-    headerLabel = 'GRADO DE CONSULTOR OFICIAL • RED DE TALENTO Finix ERP';
+    typeTitle = 'CONSTANCIA DE ITINERARIO INTEGRAL';
+    badgeLabel = 'INTEGRAL';
+    headerLabel = 'ITINERARIO INTEGRAL • FINIX ACADEMY';
   } else if (certificateType === 'docente') {
     accentColor = [109, 40, 217]; // Royal Purple
     primaryColor = [24, 24, 27];
-    typeTitle = 'ACREDITACIÓN DOCENTE E INSTRUCTOR ACADÉMICO Finix ERP';
+    typeTitle = 'CONSTANCIA DE FORMACIÓN DOCENTE';
     badgeLabel = 'INSTRUCTOR';
-    headerLabel = 'PROGRAMA TRAIN-THE-TRAINER • CÁTEDRA UNIVERSITARIA';
+    headerLabel = 'FORMACIÓN DE INSTRUCTORES • FINIX ACADEMY';
   }
+  if (!verified) { headerLabel = 'RESULTADO DE AUTOEVALUACIÓN • FINIX ACADEMY'; typeTitle = 'AUTOEVALUACIÓN DE CONOCIMIENTOS'; badgeLabel = 'PRÁCTICA'; }
 
   // 3. Bordes decorativos dobles
   // Borde exterior
@@ -114,7 +113,7 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(100, 116, 139);
-  doc.text('CAMPUS UNIVERSITARIO Y RED DE CERTIFICACIÓN PROFESIONAL FINIX ERP 10.0 (HANA)', 148.5, 30, { align: 'center' });
+  doc.text('FORMACIÓN CONTINUA INDEPENDIENTE • NO ES TÍTULO OFICIAL NI ACREDITACIÓN DE FABRICANTE', 148.5, 30, { align: 'center' });
 
   // Línea divisoria elegante
   doc.setDrawColor(226, 232, 240);
@@ -130,12 +129,13 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'italic');
   doc.setFontSize(10.5);
   doc.setTextColor(100, 116, 139);
-  doc.text('El Consejo Académico y la Dirección de Consultoría acreditan solemnemente que:', 148.5, 54, { align: 'center' });
+  doc.text('Finix Academy deja constancia de la formación de:', 148.5, 54, { align: 'center' });
 
   // 6. Nombre del Estudiante / Docente
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(26);
   doc.setTextColor(14, 116, 144); // Cyan / Blue Accent
+  doc.setFontSize(Math.min(26, 26 * 220 / Math.max(220, doc.getTextWidth(studentName.toUpperCase()))));
   doc.text(studentName.toUpperCase(), 148.5, 68, { align: 'center' });
 
   // Línea decorativa bajo el nombre
@@ -150,23 +150,23 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(11);
   doc.setTextColor(51, 65, 85);
-  doc.text('Ha cursado, practicado en el simulador de transacciones y aprobado el rigor técnico de:', 148.5, 81, { align: 'center' });
+  doc.text('Itinerario formativo:', 148.5, 81, { align: 'center' });
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(16);
   doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
-  doc.text(`"${title.toUpperCase()}"`, 148.5, 91, { align: 'center' });
+  doc.setFontSize(13);
+  doc.text(title.toUpperCase(), 148.5, 88, { align: 'center', maxWidth: 230 });
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
   doc.setTextColor(100, 116, 139);
-  doc.text(`Itinerario Curricular: ${careerTitle} • Carga Horaria Acreditada: ${hours} Horas Académicas`, 148.5, 97, { align: 'center' });
+  doc.text(`Itinerario: ${careerTitle}${Number.isFinite(hours) ? ` • Duración estimada: ${hours} horas` : ''}`, 148.5, 97, { align: 'center' });
 
   // 8. Resumen de Competencias y Validación Práctica
-  let descText = `Demostró dominio en la ejecución de transacciones reales, parametrización de tablas maestras, determinación de cuentas y buenas prácticas. Calificación obtenida: ${scorePercent}% en la evaluación y el simulador.`;
-  if (certificateType === 'docente') {
-    descText = `Habilitado oficialmente para la instrucción universitaria, diseño de casos pedagógicos prácticos y conducción de laboratorios con el Simulador Finix ERP 10.0 en instituciones de educación superior.`;
-  }
+  const descText = verified
+    ? `Constancia registrada por la academia. ${Number.isFinite(scorePercent) ? `Calificación de evaluación: ${scorePercent}%. ` : ''}La validez y el titular deben comprobarse en la consulta del código.`
+    : 'Resultado de autoevaluación realizado en el navegador. No acredita prácticas verificadas, evaluación supervisada ni una constancia registrada por la academia.';
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
   doc.setTextColor(71, 85, 105);
@@ -189,7 +189,7 @@ export function generateOfficialCampusCertificate({
   doc.setFontSize(9.5);
   doc.text(badgeLabel, sealX, sealY + 1.5, { align: 'center' });
   doc.setFontSize(6.5);
-  doc.text('OFICIAL B1', sealX, sealY + 5.5, { align: 'center' });
+  doc.text('FINIX', sealX, sealY + 5.5, { align: 'center' });
 
   // 10. Firmas de Responsabilidad Legal y Académica
   // Firma 1: Director Académico
@@ -199,24 +199,24 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('Ing. Pablo García', 68.5, 161, { align: 'center' });
+  doc.text('Finix Academy', 68.5, 161, { align: 'center' });
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.8);
   doc.setTextColor(100, 116, 139);
-  doc.text('Director Académico y de Certificaciones', 68.5, 165, { align: 'center' });
-  doc.text('B1 Academy • Red Internacional ERP', 68.5, 169, { align: 'center' });
+  doc.text('Emisión electrónica', 68.5, 165, { align: 'center' });
+  doc.text('Formación continua', 68.5, 169, { align: 'center' });
 
   // Firma 2: Consultor Titular Finix ERP / Lead Instructor
   doc.line(192, 155, 265, 155);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('Master B1 & Consejo Técnico Finix ERP', 228.5, 161, { align: 'center' });
+  doc.text('Registro de la academia', 228.5, 161, { align: 'center' });
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.8);
   doc.setTextColor(100, 116, 139);
-  doc.text('Comité de Evaluación & Homologación', 228.5, 165, { align: 'center' });
-  doc.text('Finix ERP Specialist Network', 228.5, 169, { align: 'center' });
+  doc.text('Verificación mediante código', 228.5, 165, { align: 'center' });
+  doc.text('No requiere firma manuscrita', 228.5, 169, { align: 'center' });
 
   // 11. Cuadro de Verificación Criptográfica y QR
   doc.setDrawColor(226, 232, 240);
@@ -226,16 +226,16 @@ export function generateOfficialCampusCertificate({
   doc.setFont('courier', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(15, 23, 42);
-  doc.text(`CÓDIGO DE VERIFICACIÓN OFICIAL: ${certCode}`, 148.5, 183.5, { align: 'center' });
+  doc.text(`REFERENCIA: ${certCode}`, 148.5, 183.5, { align: 'center' });
 
   doc.setFont('courier', 'normal');
   doc.setFontSize(7);
   doc.setTextColor(100, 116, 139);
-  doc.text(`HASH SHA-256: [${verificationHash}] • Fecha de Emisión: ${dateStr}`, 148.5, 188, { align: 'center' });
-  doc.text(`Verificable públicamente en https://b1academy.org/verificar/${certCode}`, 148.5, 191.5, { align: 'center' });
+  doc.text(`Fecha de emisión: ${dateStr}`, 148.5, 188, { align: 'center' });
+  doc.text(verified ? `Consulta: ${publicUrl('/verificar/'+encodeURIComponent(certCode))}` : 'Autoevaluación sin código público de verificación', 148.5, 191.5, { align: 'center' });
 
   // Descarga del PDF
-  const safeFilename = `Certificado_Oficial_B1_${certCode}.pdf`;
+  const safeFilename = `Constancia_Finix_${certCode}.pdf`;
   doc.save(safeFilename);
   return certCode;
 }
@@ -249,7 +249,7 @@ export function generateCategoryCertificate(data: CertificateData) {
     careerTitle: 'Escuela Finix ERP',
     code: data.verificationCode,
     scorePercent: Math.round((data.score / data.totalQuestions) * 100),
-    hours: 20,
+    verified: false,
     dateStr: data.dateStr
   });
 }

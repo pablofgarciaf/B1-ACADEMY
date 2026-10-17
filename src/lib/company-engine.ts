@@ -1,3 +1,4 @@
+import { prepareTraining } from './training-scenario';
 import { buildSRIXml } from './sri-xml';
 import { commandSchema, type CompanyCommand, type CommandData } from './company-commands';
 import { mensajeValidacion } from './zod-es';
@@ -16,7 +17,7 @@ const baseAccountDefinitions: [string, string, AccountingAccount['category'], bo
   ['3', 'PATRIMONIO', 'equity', false], ['3.01', 'Capital social', 'equity', true], ['3.02', 'Resultados acumulados', 'equity', true], ['4', 'INGRESOS', 'income', false], ['4.01', 'Ventas operacionales', 'income', true], ['4.02', 'Otros ingresos', 'income', true], ['5', 'COSTOS', 'cost', false], ['5.01', 'Costo de ventas', 'cost', true], ['6', 'GASTOS', 'expense', false], ['6.01', 'Gasto de nómina', 'expense', true], ['6.02', 'IESS patronal', 'expense', true], ['6.03', 'Gastos administrativos', 'expense', true], ['6.04', 'Beneficios sociales', 'expense', true], ['6.05', 'Diferencias de inventario y costo estándar', 'expense', true],
   ['1.1.09', 'Anticipo de impuesto a la renta', 'asset', true], ['1.1.10', 'Crédito tributario: retenciones de renta recibidas', 'asset', true], ['1.1.11', 'Crédito tributario: retenciones de IVA recibidas', 'asset', true], ['1.1.12', 'ISD pagado (crédito tributario)', 'asset', true],
   ['2.1.09', 'Utilidades por pagar a trabajadores', 'liability', true], ['2.1.10', 'Impuesto a la renta por pagar', 'liability', true], ['2.1.11', 'ICE por pagar', 'liability', true],
-  ['6.06', 'Participación de trabajadores en utilidades', 'expense', true], ['6.07', 'Impuesto a la renta', 'expense', true], ['6.08', 'Impuesto a la salida de divisas (ISD)', 'expense', true],
+  ['6.06', 'Participación de trabajadores en utilidades', 'expense', true], ['6.07', 'Impuesto a la renta', 'expense', true], ['6.08', 'Impuesto a la salida de divisas (ISD)', 'expense', true], ['6.09', 'Depreciación de activos fijos', 'expense', true],
 ];
 
 const superciasAccountDefinitions: [string, string, AccountingAccount['category'], boolean][] = SUPERCÍAS_CATALOG.map(a => [
@@ -39,6 +40,7 @@ const assert = (condition: unknown, message: string): void => { if (!condition) 
 
 /** Pure, server-authoritative reducer. Persistence commits its changes atomically. */
 export function applyCommand(original: CompanyState, command: CompanyCommand, uid: string, email: string, now: string): { state: CompanyState; result: string } {
+  if(command.action==='initializeTraining')return prepareTraining(original,command.data.companyName,uid,email,now,applyCommand);
   const state = structuredClone(original);
   const meta = (id: string): Entity => ({ id, createdAt: now, updatedAt: now, createdBy: uid });
   if (command.action === 'initialize') {
@@ -408,6 +410,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'closePeriod': {
       const d = command.data; const cerrados = new Set(profile.closedPeriods ?? []);
+      assert(d.closed || !state.journalEntries.some(e => e.source === 'closing' && e.reference === d.period.slice(0, 4)), 'No se puede reabrir un mes de un ejercicio con cierre anual. Se requiere una reversión formal del cierre anual.');
       if (d.closed) cerrados.add(d.period); else cerrados.delete(d.period);
       profile.closedPeriods = [...cerrados].sort(); result = d.period;
       if (d.closed) award('period-close', 150, d.period, 'Primer cierre de período');
@@ -531,6 +534,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'fixedAsset': {
       const d = command.data; assert(d.residualValue < d.cost, 'El valor residual debe ser menor al costo.');
+      assert(d.paymentAccount !== '2.1.01', 'El alta directa no admite cuentas por pagar sin factura y proveedor. Usa caja o financiación a largo plazo.');
       result = next('AF', d.acquisitionDate);
       const journalEntryId = post(d.acquisitionDate, `Compra de activo fijo: ${d.name}`, 'asset', result, [ledgerLine('1.2.01', d.cost), ledgerLine(d.paymentAccount, 0, d.cost)]);
       state.fixedAssets.push({ ...meta(result), assetCode: result, name: d.name, category: d.category, acquisitionDate: d.acquisitionDate, cost: d.cost, residualValue: d.residualValue, usefulLifeMonths: d.usefulLifeMonths, accumulatedDepreciation: 0, depreciatedPeriods: [], status: 'active', journalEntryId });
@@ -539,7 +543,6 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'depreciate': {
       const { period } = command.data;
-      if (!state.chartOfAccounts.some(a => a.code === '6.06')) state.chartOfAccounts.push({ ...meta('6.06'), code: '6.06', name: 'Depreciación de activos fijos', category: 'expense', postable: true, parentCode: '6', nature: 'D', active: true });
       let total = 0;
       for (const a of state.fixedAssets) {
         if (a.status !== 'active' || a.acquisitionDate.slice(0, 7) > period || a.depreciatedPeriods.includes(period)) continue;
@@ -553,7 +556,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       assert(total > 0, 'No hay activos pendientes de depreciar en ese período.');
       const [y, m] = period.split('-').map(Number);
       const finDeMes = new Date(Date.UTC(y, m, 0)).toISOString().slice(0, 10);
-      result = post(finDeMes, `Depreciación ${period}`, 'depreciation', period, [ledgerLine('6.06', total), ledgerLine('1.2.02', 0, total)]);
+      result = post(finDeMes, `Depreciación ${period}`, 'depreciation', period, [ledgerLine('6.09', total), ledgerLine('1.2.02', 0, total)]);
       award('depreciation', 150, period, 'Primera depreciación');
       break;
     }
@@ -731,6 +734,71 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'udoSave': { (profile as unknown as Record<string, unknown>).udoTables = command.data.tables; result = 'udo-guardado'; break; }
     case 'cockpitSave': { (profile as unknown as Record<string, unknown>).cockpit = command.data; result = 'cockpit-guardado'; break; }
     case 'query': { result = 'consulta-ejecutada'; break; }
+    case 'binLocation': {
+      const d=command.data;assert(profile.warehouses.some(w=>w.code===d.warehouseCode),'Bodega inexistente.');
+      assert(!state.binLocations.some(b=>b.warehouseCode===d.warehouseCode&&b.binCode===d.binCode),'La ubicación ya existe en esa bodega.');
+      result=next('BIN');state.binLocations.push({...meta(result),...d,contents:[]});break;
+    }
+    case 'binMove': {
+      const d=command.data;assert(d.fromBin!==d.toBin,'Selecciona ubicaciones distintas.');
+      assert(state.items.some(i=>i.itemCode===d.itemCode),'Artículo inexistente.');
+      const from=d.fromBin?state.binLocations.find(b=>b.warehouseCode===d.warehouseCode&&b.binCode===d.fromBin):null;
+      const to=d.toBin?state.binLocations.find(b=>b.warehouseCode===d.warehouseCode&&b.binCode===d.toBin):null;
+      assert(!d.fromBin||from,'Ubicación de origen inexistente.');assert(!d.toBin||to,'Ubicación de destino inexistente.');
+      const allocated=state.binLocations.filter(b=>b.warehouseCode===d.warehouseCode).reduce((sum,b)=>sum+(b.contents.find(c=>c.itemCode===d.itemCode)?.quantity??0),0);
+      const physical=state.warehouseStock.find(s=>s.warehouseCode===d.warehouseCode&&s.itemCode===d.itemCode)?.quantity??0;
+      const available=from?.contents.find(c=>c.itemCode===d.itemCode)?.quantity??(physical-allocated);
+      assert(available>=d.quantity,'La ubicación no dispone de esa cantidad.');
+      if(to)assert(to.contents.reduce((n,c)=>n+c.quantity,0)+d.quantity<=to.maxQuantity,'Se supera la capacidad de la ubicación.');
+      if(from){const line=from.contents.find(c=>c.itemCode===d.itemCode)!;line.quantity=quantityRound(line.quantity-d.quantity);from.updatedAt=now;}
+      if(to){let line=to.contents.find(c=>c.itemCode===d.itemCode);if(!line){line={itemCode:d.itemCode,quantity:0};to.contents.push(line);}line.quantity=quantityRound(line.quantity+d.quantity);to.updatedAt=now;}
+      result=next('BINMOV');break;
+    }
+    case 'lotRegister': {
+      const d=command.data,doc=state.purchaseOrders.find(x=>x.id===d.documentId);
+      assert(doc&&['goods_receipt','vendor_invoice'].includes(doc.docType),'Selecciona un documento que haya recibido mercancía.');
+      if(!doc)break;
+      const received=state.stockMovements.filter(m=>m.reference===doc.id&&m.itemCode===d.itemCode&&m.quantity>0);
+      const quantity=received.reduce((n,m)=>n+m.quantity,0),warehouse=received[0]?.warehouseCode;
+      assert(quantity>0&&warehouse,'El documento no recibió ese artículo.');
+      assert(new Set(received.map(m=>m.warehouseCode)).size===1,'Registra lotes con una recepción separada por bodega.');
+      const used=state.lots.filter(l=>l.receiptDocumentId===doc.id&&l.itemCode===d.itemCode).reduce((n,l)=>n+l.receivedQuantity,0);
+      assert(quantityRound(used+d.lots.reduce((n,l)=>n+l.quantity,0))<=quantity,'La asignación supera la recepción.');
+      const numbers=new Set<string>();
+      for(const l of d.lots){assert(!numbers.has(l.lotNumber)&&!state.lots.some(x=>x.itemCode===d.itemCode&&x.lotNumber===l.lotNumber),'Lote o serie repetido.');numbers.add(l.lotNumber);assert(d.kind!=='serie'||l.quantity===1,'Cada serie representa una unidad.');
+        result=next('LOT');state.lots.push({...meta(result),itemCode:d.itemCode,warehouseCode:warehouse!,lotNumber:l.lotNumber,kind:d.kind,receivedQuantity:l.quantity,quantity:l.quantity,expiryDate:l.expiryDate,receiptDocumentId:doc.id,receiptDocumentNumber:doc.docNumber,vendorName:doc.cardName,issues:[]});}
+      break;
+    }
+    case 'lotIssue': {
+      const d=command.data,doc=state.salesOrders.find(x=>x.id===d.documentId);
+      assert(doc&&['delivery','invoice'].includes(doc.docType),'Selecciona un documento de salida.');if(!doc)break;
+      const outgoing=state.stockMovements.filter(m=>m.reference===doc.id&&m.itemCode===d.itemCode&&m.quantity<0).reduce((n,m)=>n-m.quantity,0);
+      const allocated=state.lots.filter(l=>l.itemCode===d.itemCode).flatMap(l=>l.issues).filter(i=>i.documentId===doc.id).reduce((n,i)=>n+i.quantity,0);
+      assert(outgoing>0&&quantityRound(allocated+d.allocations.reduce((n,l)=>n+l.quantity,0))<=outgoing,'La asignación supera la salida del documento.');
+      const seen=new Set<string>();for(const l of d.allocations){assert(!seen.has(l.lotNumber),'Lote repetido.');seen.add(l.lotNumber);const lot=state.lots.find(x=>x.itemCode===d.itemCode&&x.lotNumber===l.lotNumber);assert(lot&&lot.quantity>=l.quantity,'Lote inexistente o sin cantidad suficiente.');if(!lot)break;
+        assert(!lot.expiryDate||lot.expiryDate>=doc.date,'El lote está vencido.');assert(lot.kind!=='serie'||l.quantity===1,'Cada serie se entrega como una unidad.');assert(doc.lines.some(line=>line.itemCode===d.itemCode&&line.warehouseCode===lot.warehouseCode),'La bodega del lote no corresponde a la salida.');
+        const outgoingWarehouse=state.stockMovements.filter(m=>m.reference===doc.id&&m.itemCode===d.itemCode&&m.warehouseCode===lot.warehouseCode&&m.quantity<0).reduce((n,m)=>n-m.quantity,0);
+        const usedWarehouse=state.lots.filter(x=>x.itemCode===d.itemCode&&x.warehouseCode===lot.warehouseCode).flatMap(x=>x.issues).filter(i=>i.documentId===doc.id).reduce((n,i)=>n+i.quantity,0);
+        assert(quantityRound(usedWarehouse+l.quantity)<=outgoingWarehouse,'La asignación supera la salida de esa bodega.');
+        lot.quantity=quantityRound(lot.quantity-l.quantity);lot.issues.push({documentId:doc.id,documentNumber:doc.docNumber,cardName:doc.cardName,date:doc.date,quantity:l.quantity});lot.updatedAt=now;result=lot.id;}
+      break;
+    }
+    case 'udfDefine': {
+      const d=command.data,definitions=profile.udfDefinitions??=[];
+      const current=definitions.findIndex(f=>f.table===d.table&&f.field===d.field);
+      if(d.remove){assert(!state.udfValues.some(v=>v.table===d.table&&Object.hasOwn(v.values,d.field)),'El campo tiene valores y no se puede retirar.');if(current>=0)definitions.splice(current,1);}
+      else{assert(d.type!=='lista'||d.options.length>0,'La lista necesita opciones.');const value={table:d.table,field:d.field,label:d.label,type:d.type,options:d.options};if(current>=0){assert(!state.udfValues.some(v=>v.table===d.table&&Object.hasOwn(v.values,d.field)),'No se puede redefinir un campo con datos.');definitions[current]=value;}else definitions.push(value);}
+      result=d.field;break;
+    }
+    case 'udfSet': {
+      const d=command.data,exists=d.table==='OITM'?state.items.some(i=>i.itemCode===d.key):[...state.customers,...state.vendors].some(c=>c.cardCode===d.key);assert(exists,'Registro inexistente.');assert(Object.keys(d.values).length>0,'Indica al menos un valor.');
+      for(const [key,value] of Object.entries(d.values)){const def=profile.udfDefinitions?.find(f=>f.table===d.table&&f.field===key);assert(def,'Campo no definido.');if(!def)break;assert(def.type==='numero'?typeof value==='number':typeof value==='string','Tipo de valor incompatible.');assert(def.type!=='lista'||def.options.includes(String(value)),'Valor fuera de la lista.');}
+      const existing=state.udfValues.find(v=>v.table===d.table&&v.key===d.key);result=existing?.id??next('UDF');if(existing){existing.values={...existing.values,...d.values};existing.updatedAt=now;}else state.udfValues.push({...meta(result),...d});break;
+    }
+    default: {
+      const unsupported: never = command;
+      throw new Error(`Operación no implementada: ${String(unsupported)}.`);
+    }
   }
   const linkedCycle = (records: (SalesDocument | PurchaseDocument)[], types: DocType[]): boolean => records.filter(d => d.docType === types[types.length - 1]).some(end => {
     let current = end;

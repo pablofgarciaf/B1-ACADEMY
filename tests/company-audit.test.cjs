@@ -3,7 +3,20 @@ const assert = require('node:assert/strict');
 require('ts-node').register({ transpileOnly: true, compilerOptions: { module: 'CommonJS', moduleResolution: 'Node' } });
 const { emptyCompany } = require('../src/lib/firestore-types.ts');
 const { applyCommand } = require('../src/lib/company-engine.ts');
-const { auditChanges, auditHash } = require('../src/lib/company-audit.ts');
+const { auditChanges, auditHash, verifyAuditChain } = require('../src/lib/company-audit.ts');
+
+test('la verificación detecta truncado, ausencia y alteración aunque las claves cambien de orden',()=>{
+  const payload={companyId:'u1',actorUid:'u1',actorEmail:'student@example.test',requestId:'test',action:'initialize',result:'u1',occurredAt:'2026-10-16T12:00:00.000Z',changes:[{collection:'profile',id:'main',before:null,after:{name:'Prueba',amount:1}}],previousHash:'0'.repeat(64)};
+  const event={...payload,hash:auditHash(payload),version:1};
+  const reordered=Object.fromEntries(Object.entries(payload).reverse());reordered.changes=[{after:{amount:1,name:'Prueba'},before:null,id:'main',collection:'profile'}];
+  assert.equal(auditHash(reordered),event.hash);
+  const head={version:1,hash:event.hash};assert.equal(verifyAuditChain([{...reordered,hash:event.hash,version:1}],head,true).valid,true);
+  assert.equal(verifyAuditChain([],head,true).valid,false);
+  assert.equal(verifyAuditChain([event],{version:2,hash:'deleted-tail'},true).valid,false);
+  assert.equal(verifyAuditChain([event],null,true).valid,false);
+  assert.equal(verifyAuditChain([{...event,result:'altered'}],head,true).valid,false);
+  assert.equal(verifyAuditChain([{...event,version:5}],{version:5,hash:event.hash},true).valid,false);
+});
 
 test('la evidencia registra creación, reversión, reapertura y conciliación con antes/después', () => {
   let state = emptyCompany();

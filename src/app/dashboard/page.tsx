@@ -49,6 +49,8 @@ interface CertRecord {
   status: 'valid' | 'revoked';
   title?: string;
   holderName?: string;
+  scorePercent?: number;
+  estimatedHours?: number;
 }
 
 export default function StudentDashboardPage() {
@@ -113,9 +115,9 @@ export default function StudentDashboardPage() {
     );
   }
 
-  const displayName = userProfile.name || userProfile.displayName || 'Pablo García';
+  const displayName = userProfile.name || userProfile.displayName || 'Estudiante';
   const email = userProfile.email || 'pablofgarciaf@gmail.com';
-  const studentId = userProfile.cedula || userProfile.uid || '1721790721';
+  const studentId = userProfile.cedula || userProfile.uid || 'Pendiente';
   const initials = displayName
     .split(' ')
     .map(n => n[0])
@@ -125,11 +127,11 @@ export default function StudentDashboardPage() {
 
   // Mapear Certificados Emitidos por moduleId
   const certsByModule = new Map<string, CertRecord>();
-  certificates.forEach(c => certsByModule.set(c.moduleId, c));
+  certificates.filter(c => c.status === 'valid').forEach(c => certsByModule.set(c.moduleId, c));
 
   // Certificados de Módulos (mod-1 a mod-30)
   const approvedModules = OFFICIAL_SYLLABUS.filter(m => certsByModule.has(m.id));
-  const completionPercent = Math.min(100, Math.round((approvedModules.length / 30) * 100));
+  const completionPercent = Math.min(100, Math.round((approvedModules.length / OFFICIAL_SYLLABUS.length) * 100));
 
   // Certificados de Diplomas (dip-...)
   const earnedDiplomas = SPECIALTY_DIPLOMAS.filter(d => certsByModule.has(d.id));
@@ -142,17 +144,21 @@ export default function StudentDashboardPage() {
     certType: 'micro' | 'diploma' | 'master',
     title: string,
     code: string,
-    hours = 25
+    _hours?: number
   ) => {
     try {
+      const certificate = certificates.find(c => c.code === code && c.status === 'valid');
+      if (!certificate) throw new Error('No hay una constancia vigente para descargar.');
       generateOfficialCampusCertificate({
-        studentName: displayName,
+        studentName: certificate.holderName || displayName,
         certificateType: certType,
-        title,
+        title: certificate.title || title,
         code,
-        scorePercent: 100,
-        hours,
-        instructorName: 'Master B1 & Comité Evaluador B1 Academy'
+        verified: true,
+        scorePercent: certificate.scorePercent,
+        hours: certificate.estimatedHours,
+        dateStr: new Date(certificate.issuedAt).toLocaleDateString('es-EC'),
+        instructorName: 'Finix Academy'
       });
     } catch (err) {
       console.error('Error al generar PDF:', err);
@@ -170,7 +176,7 @@ export default function StudentDashboardPage() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/10">
           <div>
             <div className="flex items-center gap-2 text-xs font-mono text-finix-blue dark:text-sky-400 font-bold mb-1 uppercase tracking-wider">
-              <span>B1 ACADEMY</span>
+              <span>FINIX ACADEMY</span>
               <span>•</span>
               <span>EXPEDIENTE ACADÉMICO Y ACREDITACIONES</span>
             </div>
@@ -259,7 +265,7 @@ export default function StudentDashboardPage() {
                 <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5">
                   <Award className="w-3.5 h-3.5 text-emerald-400" /> ACREDITACIÓN TOTAL CULMINADA
                 </span>
-                <span className="text-xs font-mono text-amber-400 font-bold">30 / 30 MÓDULOS APROBADOS</span>
+                <span className="text-xs font-mono text-amber-400 font-bold">{approvedModules.length} / {OFFICIAL_SYLLABUS.length} MÓDULOS APROBADOS</span>
               </div>
 
               <div>
@@ -270,7 +276,7 @@ export default function StudentDashboardPage() {
                   Programa Consultor Integral & Súper Analista Finix ERP
                 </h2>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-                  Has completado las 120 clases magistrales, validado las 366 prácticas en el simulador empresarial Finix ERP y aprobado los 30 exámenes de competencia técnica.
+                  Has obtenido las constancias que exige este itinerario. Consulta sus códigos para comprobar titular, programa y vigencia.
                 </p>
               </div>
 
@@ -514,7 +520,7 @@ export default function StudentDashboardPage() {
               </h2>
             </div>
             <span className="text-xs font-mono font-bold text-emerald-500 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-              30 / 30 Certificados Emitidos
+              {approvedModules.length} / {OFFICIAL_SYLLABUS.length} constancias emitidas
             </span>
           </div>
 

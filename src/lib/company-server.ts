@@ -24,7 +24,7 @@ export async function readCompany(uid: string, email = ''): Promise<CompanyState
 export async function hasInitializedCompany(uid: string): Promise<boolean> {
   try {
     const company = await readCompany(uid);
-    return Boolean(company?.profile && company.profile.companyName);
+    return company?.profile?.trainingSetupVersion === 1;
   } catch {
     return false;
   }

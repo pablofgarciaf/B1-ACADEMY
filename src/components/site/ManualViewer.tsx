@@ -331,7 +331,7 @@ export default function ManualViewer({
       role: 'ia',
       text: isPractical
         ? "¡Hola! Soy tu tutor de Laboratorio Práctico de Finix ERP. Tengo cargadas las especificaciones de este caso de estudio y del simulador interactivo. ¿En qué paso o validación técnica necesitas apoyo?"
-        : "¡Hola! Soy tu tutor virtual de B1 Academy. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
+        : "¡Hola! Soy tu tutor virtual de Finix Academy. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
     }
   ]);
 
@@ -365,7 +365,7 @@ export default function ManualViewer({
           ...prev,
           {
             role: 'ia',
-            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de B1 Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners de Finix ERP, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
+            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de Finix Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners de Finix ERP, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
           }
         ]);
       }, 500);
@@ -1161,7 +1161,7 @@ export default function ManualViewer({
                     </h3>
 
                     <p className="text-xs text-gray-300 max-w-[280px] leading-relaxed mb-4">
-                      El Profesor de B1 Academy te evaluará sobre los conceptos y procesos técnicos de este manual.
+                      El Profesor de Finix Academy te evaluará sobre los conceptos y procesos técnicos de este manual.
                     </p>
 
                     {/* Reglas Estrictas del Examen */}
@@ -1202,7 +1202,7 @@ export default function ManualViewer({
                           <CheckCircle2 size={13} /> ¡Examen Aprobado con Excelencia!
                         </span>
 
-                        {/* Tarjeta de la App Descargable para Certificado Oficial */}
+                        {/* Tarjeta de la App Descargable para Constancia de autoevaluación */}
                         <div className="p-3.5 rounded-xl bg-gradient-to-b from-[#16222f] to-[#101720] border border-blue-500/30 text-left space-y-2">
                           <div className="flex items-center gap-2 text-xs font-bold text-blue-400">
                             <ShieldCheck size={16} className="text-blue-400 shrink-0" />
@@ -1211,7 +1211,7 @@ export default function ManualViewer({
                           <p className="text-[11px] text-gray-300 leading-relaxed">
                             Has superado el simulacro web. Para que tu certificado cuente con <strong>código QR criptográfico y verificación oficial</strong>, rinde la prueba definitiva en nuestra aplicación de escritorio protegida (sin navegadores ni extensiones).
                           </p>
-                          <div className="text-emerald-400 font-bold text-center mt-4">✓ Certificado Oficial Habilitado</div>
+                          <div className="text-emerald-400 font-bold text-center mt-4">✓ Constancia de autoevaluación Habilitado</div>
                         </div>
                       </div>
                     ) : (

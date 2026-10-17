@@ -223,8 +223,8 @@ export function recordExamResult(courseIdOrCode: string, quizId: string, courseT
       courseCode: courseIdOrCode,
       title: certTitle,
       issuedDate: new Date().toISOString().split('T')[0],
-      credentialUrl: `https://b1-academy.vercel.app/certificados/CERT-${courseIdOrCode.toUpperCase()}-2026`,
-      verificationHash: `sha256-${Math.random().toString(36).substring(2, 12)}`,
+      credentialUrl: '',
+      verificationHash: '',
     });
   }
 
@@ -233,76 +233,7 @@ export function recordExamResult(courseIdOrCode: string, quizId: string, courseT
 }
 
 // Candidatos elegibles verificados para la bolsa de empleo corporativa
-export function getEligibleJobCandidates(): StudentProfile[] {
-  const student = getStudentProfile();
-  const candidateList = [student];
-
-  // Candidatos de muestra certificados en B1 Academy Ecuador
-  candidateList.push(
-    {
-      uid: 'stu-partner-002',
-      studentId: 'STU-Finix ERP-2026-4412',
-      email: 'maria.lopez@finix.local',
-      displayName: 'Ing. María López',
-      role: 'consultor_premium',
-      enrollmentDate: '2026-06-15',
-      specialties: ['B1-NOM-EC', 'SRI-LOC-EC'],
-      sandboxHoursUsed: 42,
-      sandboxHoursLimit: 999,
-      progress: {},
-      grades: [],
-      certifications: [{
-        id: 'CERT-B1-NOM-02',
-        courseCode: 'b1-nomina',
-        title: 'Consultora Senior en Nómina HCM e IESS Ecuador',
-        issuedDate: '2026-08-20',
-        credentialUrl: '#',
-        verificationHash: 'sha256-m987b654c321',
-      }],
-      jobReadiness: {
-        status: 'job_ready',
-        overallProgressPercent: 95,
-        averageGrade: 94,
-        sandboxHoursVerified: 42,
-        certificationsCount: 2,
-        isEligibleForJobs: true,
-        missingRequirements: [],
-      },
-    },
-    {
-      uid: 'stu-partner-003',
-      studentId: 'STU-Finix ERP-2026-5189',
-      email: 'roberto.cajas@finix.local',
-      displayName: 'Lcdo. Roberto Cajas',
-      role: 'consultor_premium',
-      enrollmentDate: '2026-05-10',
-      specialties: ['FINIX-ERP-LOGISTICS', 'VERTICALES-EC'],
-      sandboxHoursUsed: 35,
-      sandboxHoursLimit: 999,
-      progress: {},
-      grades: [],
-      certifications: [{
-        id: 'CERT-Finix ERP-VERT-03',
-        courseCode: 'verticales-ecuador',
-        title: 'Especialista en Verticales Bananera y Camaronera Finix ERP',
-        issuedDate: '2026-07-15',
-        credentialUrl: '#',
-        verificationHash: 'sha256-r456c789a123',
-      }],
-      jobReadiness: {
-        status: 'job_ready',
-        overallProgressPercent: 91,
-        averageGrade: 92,
-        sandboxHoursVerified: 35,
-        certificationsCount: 1,
-        isEligibleForJobs: true,
-        missingRequirements: [],
-      },
-    }
-  );
-
-  return candidateList.filter(c => c.jobReadiness.isEligibleForJobs);
-}
+export function getEligibleJobCandidates(): StudentProfile[] { return []; }
 
 // Registrar horas de práctica en Sandbox Finix ERP
 export function recordSandboxPractice(hours: number): StudentProfile {

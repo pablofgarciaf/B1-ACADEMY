@@ -25,10 +25,10 @@ export function useCompanyController() {
     finally { if (request === serial.current) setLoading(false); }
   }, [uid]);
   useEffect(() => { const sequence = serial; setData(emptyCompany()); void refresh(); const changed = () => { void refresh(); }; window.addEventListener('finix-company-changed', changed); window.addEventListener('finix-company-changed', changed); return () => { sequence.current++; window.removeEventListener('finix-company-changed', changed); window.removeEventListener('finix-company-changed', changed); }; }, [refresh]);
-  const save = async (command: CompanyCommand): Promise<string> => {
+  const save = async (command: CompanyCommand, requestId?: string): Promise<string> => {
     if (!uid) throw new Error('Sesión requerida.'); if (locked.current) throw new Error('Hay una operación en curso.');
     locked.current = true; setSaving(true); setError(''); setNotice('');
-    try { const result = await sendCommand(uid, command); setNotice(`Operación guardada: ${result}`); await refresh(); return result; }
+    try { const result = await sendCommand(uid, command, requestId); setNotice(`Operación guardada: ${result}`); await refresh(); return result; }
     catch (e: unknown) { setError(e instanceof Error ? e.message : 'Error al guardar.'); throw e; }
     finally { locked.current = false; setSaving(false); }
   };

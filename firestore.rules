@@ -7,32 +7,29 @@ service cloud.firestore {
       return get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data;
     }
     function admin() { return signedIn() && profile().role in ['super', 'admin']; }
+    function ready() { return signedIn() && profile().status == 'active' && profile().passwordSecurityVersion == 2 && profile().passwordChanged != false; }
 
     match /usuarios/{uid} {
       allow read: if owns(uid) || admin();
-      allow create: if owns(uid)
-        && request.resource.data.uid == request.auth.uid
-        && request.resource.data.role == 'estudiante'
-        && request.resource.data.status == 'active';
+      allow create: if false; // Alta y consentimiento validados por el servidor.
       allow update: if admin() || (owns(uid)
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-          'passwordChanged', 'simuladorXP', 'simuladorLevel', 'completedMissions',
-          'moduleProgress', 'sandboxHoursUsed', 'avatar', 'bio', 'company', 'updatedAt'
+          'avatar', 'bio', 'company', 'updatedAt'
         ]));
       allow delete: if admin();
 
       match /sociedades/{sociedadId}/{document=**} {
-        allow read, write: if owns(uid);
+        allow read, write: if owns(uid) && ready();
       }
     }
 
     // Writes are validated and committed with Firebase Admin by /api/finix/company.
     match /finixCompanies/{uid} {
-      allow read: if owns(uid) || (signedIn() && profile().role in ['teacher', 'docente']);
+      allow read: if owns(uid) && ready(); // Acceso docente únicamente por la API con asignación explícita.
       allow write: if false;
       match /{document=**} {
         // Los datos detallados, incluida la auditoría, se consultan mediante la API con permisos de servidor.
-        allow read: if owns(uid);
+        allow read: if owns(uid) && ready();
         allow write: if false;
       }
     }
@@ -41,9 +38,9 @@ service cloud.firestore {
       allow read: if signedIn() && (resource.data.uid == request.auth.uid || admin());
       allow write: if false; // Solo Firebase Admin desde el servidor.
     }
-    match /job_listings/{jobId} { allow read: if true; allow write: if admin(); }
+    match /job_listings/{jobId} { allow read: if resource.data.status == 'published' || admin(); allow write: if admin(); }
     match /job_applications/{applicationId} {
-      allow create: if signedIn() && request.resource.data.applicantId == request.auth.uid;
+      allow create: if false; // La API comprueba vacante y elegibilidad.
       allow read: if signedIn() && (resource.data.applicantId == request.auth.uid || admin());
       allow update, delete: if admin();
     }

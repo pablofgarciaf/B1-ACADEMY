@@ -9,13 +9,14 @@ import { Footer } from '@/components/site/Footer';
 
 export default function ChangePasswordPage() {
   const router = useRouter();
-  const { userProfile, loading: authLoading, changePassword } = useAuth();
+  const { currentUser, userProfile, loading: authLoading, changePassword, resetPassword } = useAuth();
 
   const [newPass, setNewPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
   const [showNew, setShowNew] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [recoveryNotice,setRecoveryNotice]=useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
 
@@ -26,7 +27,7 @@ export default function ChangePasswordPage() {
         router.replace('/login');
         return;
       }
-      if (userProfile.passwordChanged === true) {
+      if (userProfile.passwordChanged === true && userProfile.passwordSecurityVersion===2) {
         if (userProfile.role === 'super' || userProfile.role === 'admin') {
           router.replace('/admin');
         } else {
@@ -118,7 +119,8 @@ export default function ChangePasswordPage() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            {userProfile.passwordSecurityVersion!==2&&<div className="space-y-3 rounded-xl border border-sky-500/30 p-4 text-sm"><p>Si tu cuenta usaba una contraseña inicial antigua, restablécela por correo para confirmar que te pertenece.</p><button type="button" className="text-sky-500 underline" onClick={async()=>{if(currentUser?.email){await resetPassword(currentUser.email);setRecoveryNotice('Revisa tu correo, sigue el enlace de restablecimiento y vuelve a iniciar sesión.');}}}>Enviar enlace de restablecimiento</button>{recoveryNotice&&<p role="status">{recoveryNotice}</p>}</div>}
+          <form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-1.5">
                 <label htmlFor="new-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                   Nueva Contrasena

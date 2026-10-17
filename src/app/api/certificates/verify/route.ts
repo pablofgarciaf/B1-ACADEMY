@@ -1,3 +1,4 @@
+import {legalConfigured, POLITICAS_VERSION} from '@/lib/legal-config';
 import { createHmac } from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -9,7 +10,7 @@ const schema = z.object({
   code: z.string().trim().toUpperCase().regex(/^B1-[A-Z0-9-]{4,60}$/),
   requesterName: z.string().trim().min(2).max(100),
   requesterEmail: z.union([z.literal(''), z.string().trim().email().max(254)]).transform(value => value.toLowerCase()),
-  requesterPhone: z.union([z.literal(''), z.string().trim().regex(/^\+?[0-9 ()-]{7,24}$/)]),
+  requesterPhone: z.union([z.literal(''), z.string().trim().regex(/^\+?[0-9 ()-]{7,24}$/)]).refine(v => !v || (v.replace(/\D/g,'').length>=7 && v.replace(/\D/g,'').length<=15), 'Revisa el teléfono.'),
   privacyAccepted: z.literal(true),
   marketingAccepted: z.boolean(),
 }).refine(value => !!(value.requesterEmail || value.requesterPhone), { message: 'Indica un correo o teléfono.' });
@@ -22,6 +23,7 @@ function privateKey(value: string, secret: string) {
 }
 
 export async function POST(request: Request) {
+  if(process.env.NODE_ENV==='production'&&!legalConfigured)return NextResponse.json({error:'La verificación estará disponible pronto.'},{status:503});
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Completa el código, nombre, un medio de contacto y el aviso de privacidad.' }, { status: 400, headers: responseHeaders });
 
@@ -56,7 +58,7 @@ export async function POST(request: Request) {
       transaction.create(inquiry, {
         requesterName, requesterEmail: requesterEmail || null, requesterPhone: requesterPhone || null,
         code, queriedAt: new Date(),
-        privacyNoticeVersion: '2026-10-11', privacyAccepted: true,
+        privacyNoticeVersion: POLITICAS_VERSION, privacyAccepted: true,
         marketingAccepted,
         result: certSnap.exists ? (certSnap.data()?.status === 'valid' ? 'valid' : 'revoked') : 'not_found',
         ipHash, expiresAt: new Date(Date.now() + 30 * DAY_MS),

@@ -6,9 +6,9 @@ import { LEGAL } from '@/lib/legal-config';
 
 export const metadata: Metadata = {
   // 53 caracteres
-  title: 'Política de Cookies y Consentimiento Web | B1 Academy',
+  title: 'Política de Cookies y Consentimiento Web | Finix Academy',
   // 141 caracteres
-  description: 'Qué cookies usa B1 Academy, para qué sirven, cuánto duran y cómo aceptar, rechazar o cambiar tu consentimiento de analítica en cualquier momento.',
+  description: 'Qué cookies usa Finix Academy, para qué sirven, cuánto duran y cómo aceptar, rechazar o cambiar tu consentimiento de analítica en cualquier momento.',
   alternates: { canonical: `${LEGAL.sitio}/cookies` },
 };
 

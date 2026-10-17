@@ -94,8 +94,7 @@ async function commitRPC(args: {
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     if (msg.includes('Could not find the function public.sim_commit')) {
-      const { p_deletes, p_audit, ...baseArgs } = args;
-      return await rpc<Commit>('sim_commit', baseArgs);
+      throw new Error('El almacén del simulador requiere la migración de auditoría. No se guardó la operación.', { cause: err });
     }
     throw err;
   }
@@ -170,7 +169,7 @@ export async function readCompanyAuditSupabase(uid: string, limit = 100, before?
       changes: row.changes, previousHash: row.previous_hash, hash: row.hash }));
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    if (msg.includes('Could not find the function public.sim_read_audit')) return [];
+    if (msg.includes('Could not find the function public.sim_read_audit')) throw new Error('La auditoría no está disponible: falta su migración.', { cause: err });
     throw err;
   }
 }
@@ -180,7 +179,7 @@ export async function verifyCompanyAuditSupabase(uid: string): Promise<{ valid: 
     return await rpc('sim_verify_audit', { p_uid: uid });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
-    if (msg.includes('Could not find the function public.sim_verify_audit')) return { valid: true, checked: 0 };
+    if (msg.includes('Could not find the function public.sim_verify_audit')) throw new Error('No se puede verificar la integridad: falta la migración de auditoría.', { cause: err });
     throw err;
   }
 }
