@@ -1,6 +1,6 @@
 # Finix Academy — estado de correcciones y activación
 
-Actualizado: 17 de octubre de 2026. Correcciones principales publicadas en main, commit 397c095; esta actualización incluye los ajustes finales de interfaz. Sitio público: https://b1-academy.vercel.app/. Pablo autorizó corregir y publicar; dominio y datos legales se entregarán después. No se enviaron campañas. Se preservó archive-F1sh0o/.
+Actualizado: 17 de octubre de 2026. Aplicación corregida y verificada en producción, commit c83ea34; este documento incorpora el cierre de la comprobación. Sitio público: https://b1-academy.vercel.app/. Pablo autorizó corregir y publicar; dominio y datos legales se entregarán después. No se enviaron campañas. Se preservó archive-F1sh0o/.
 
 ## Dictamen actual
 
@@ -38,7 +38,7 @@ Las correcciones de código de A01–A27 están implementadas o tienen una alter
 | A17 | Implementados ubicaciones, movimientos, lotes, series y campos de usuario. | Pruebas de capacidad, tipos, recepción/salida, límites y duplicados aprobadas. |
 | A18 | Se rechaza comprar activo contra proveedor sin factura/auxiliar; retirada esa opción del formulario. | Alternativa segura probada. Compra a crédito integrada no se presenta como disponible. |
 | A19 | Pausa se respeta aunque termine una descarga; cambio de lámina cancela reproducción anterior. | Hook real con descarga/fallo controlados aprobado. |
-| A20 | Voz fragmentada, contrato ampliado y aviso de error visible; pruebas usan script_text real. | Todos los textos publicados recorren fragmentación; proveedor real pendiente. |
+| A20 | Voz fragmentada, contrato ampliado y aviso de error visible; pruebas usan script_text real. | Todos los textos publicados recorren fragmentación; proveedor real comprobado con un guion público. |
 | A21 | Caso de recuperación calculable con inversión y ahorro supuestos; revisados guiones, rúbricas y presentación comercial. | No se prometen ahorros, plazos ni inmutabilidad absolutos. |
 | A22 | Cuotas compartidas en Firestore y límites de historial/texto; secret de voz solo servidor. | Prueba concurrente aprobada; activar TTL. |
 | A23 | Intentos y reservas de pregunta transaccionales; concurrencia/versión de pregunta; hash de rúbrica evita reanudar un temario distinto. | Prueba de inicio y respuesta concurrente aprobada. |
@@ -105,6 +105,10 @@ Vercel tiene sesión válida de otra cuenta sin acceso al equipo sinerg-ia2. Se 
 
 ## Dependencias y voz: validación final del 17-oct
 
-La firma pública quedó publicada, pero la prueba real de voz descubrió además un rechazo 403 del proveedor con msedge-tts 2.0.9. Se actualizó a 2.1.0 y la síntesis local real volvió a producir MP3 (17.424 bytes para una frase de ensayo). La prueba pública se repetirá tras el despliegue de esta actualización; no se da por resuelta por una prueba local.
+La firma pública quedó publicada, pero la prueba real de voz descubrió además un rechazo 403 del proveedor con msedge-tts 2.0.9. Se actualizó a 2.1.0 y la síntesis local real volvió a producir MP3 (17.424 bytes para una frase de ensayo). La prueba pública posterior al despliegue aprobó: HTTP 200, audio/mpeg y 139.824 bytes. El reproductor mostró duración real de 23,304 segundos, estado Pausar y ningún aviso de error.
 
 Se actualizaron dependencias compatibles, incluido Next.js 15.5.28. Se fijaron versiones corregidas de gRPC, PostCSS, selector-parser y UUID mediante overrides; typography se clasifica como herramienta de compilación. npm audit --omit=dev: cero avisos conocidos. El análisis completo mantiene siete avisos altos de herramientas (braces y sus consumidores Tailwind, micromatch, fast-glob, chokidar y ESLint), por una recursión sin parche upstream; no se identificó un flujo de patrones de visitantes hacia esas herramientas. Se conserva como deuda de compilación; no se declara cero vulnerabilidades globales ni se fuerza una migración mayor de diseño. Fuente del aviso: https://github.com/advisories/GHSA-vfj7-8cjw-p6xm .
+
+## Cierre de publicación verificado
+
+Ambas integraciones Vercel completaron c83ea34 correctamente. El piloto de dos identidades se repitió tras actualizar dependencias: diez comprobaciones aprobadas, incluida la limpieza de todas sus identidades y datos de ensayo. Portada final comprobada visualmente y guardada como evidencia local; vista estrecha sin desbordamiento y reproducción real de narración comprobada. Reglas Firestore y migración Supabase siguen publicadas. Los bloqueos pendientes enumerados en este documento siguen vigentes; no se activaron campañas ni la captación sin datos legales.
