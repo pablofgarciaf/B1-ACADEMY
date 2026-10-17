@@ -13,8 +13,8 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3.5 group">
               <div className="w-10 h-10 relative group-hover:scale-105 transition-transform flex-shrink-0">
                 <Image
-                  src="/finix-mark.svg"
-                  alt=""
+                  src="/b1-academy-logo.webp"
+                  alt="B1"
                   width={40}
                   height={40}
                   className="object-contain"
@@ -22,10 +22,10 @@ export function Footer() {
               </div>
               <div className="flex flex-col whitespace-nowrap">
                 <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
-                  FINIX ACADEMY
+                  ACADEMY
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 font-semibold">
-                  FINIX ERP
+                <span className="text-[9px] tracking-wide text-slate-500 dark:text-slate-400 font-semibold">
+                  Escuela de capacitación
                 </span>
               </div>
             </Link>

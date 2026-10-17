@@ -58,3 +58,8 @@ public/SAP_B1_Full_Kit_Simulador/
 
 # Private deployment state and rollback snapshots
 /.deploy/
+
+# Audit reports are kept out of the repository at the owner's request.
+/docs/AUDITORIA*.md
+/docs/PLAN_AUDITORIA*.md
+/docs/PLAN_CORRECCIONES*.md
