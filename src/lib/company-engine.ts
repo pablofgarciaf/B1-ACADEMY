@@ -65,6 +65,8 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
   }
   const profile = state.profile;
+  const subsidiaryAccount = (code: string) => ['1.1.03', '1.1.04', '1.1.05', '1.1.07', '1.2.01', '1.2.02', '2.1.01', '1010205', '1010206', '1010209', '10103', '10201', '20103'].some(prefix => code.startsWith(prefix));
+  const bankLedgerAccount = (code: string) => code === '1.1.02' || ['1010103','1010104','1010105','1010106'].includes(code) || state.bankAccounts.some(b => b.ledgerAccount === code);
   const next = (prefix: string, date = now.slice(0, 10)): string => {
     const key = `${prefix}-${date.slice(0, 4)}`; const seq = (profile.sequences[key] ?? 0) + 1;
     profile.sequences[key] = seq; return `${key}-${String(seq).padStart(4, '0')}`;
@@ -200,7 +202,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
     case 'item': { result = nextFinix('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
     case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, employeeCode: result }); break; }
-    case 'journal': { const d = command.data; if(privateCompany) assert(!d.lines.some(l=>l.accountCode==='1.1.02'||state.bankAccounts.some(b=>b.ledgerAccount===l.accountCode)),'Registra bancos mediante cobros y pagos para mantener el saldo auxiliar.'); result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
+    case 'journal': { const d = command.data; if(privateCompany) { assert(!d.lines.some(l=>bankLedgerAccount(l.accountCode)),'Registra bancos mediante cobros y pagos para mantener el saldo auxiliar.'); assert(!d.lines.some(l=>subsidiaryAccount(l.accountCode)),'Registra clientes, proveedores, inventarios y activos mediante sus documentos y operaciones para conservar el auxiliar; no mediante un asiento manual.'); } result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
     case 'reverse': {
       const entry = state.journalEntries.find(e => e.id === command.data.entryId); assert(entry && !entry.reversedBy && !entry.reversalOf && entry.source === 'manual', 'Solo se revierte un asiento manual original sin reversión previa.');
       if (!entry) break; result = post(command.data.date, `Reversión ${entry.entryNumber}`, 'reversal', entry.id, entry.lines.map(l => ({ ...l, debit: l.credit, credit: l.debit })));
@@ -243,7 +245,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         const partner = (deposit || invoice.docType === 'credit_note' ? state.customers : state.vendors).find(p => p.cardCode === invoice.cardCode); if (partner) { partner.balance = round(partner.balance + (invoice.docType === 'credit_note' ? settle : -settle)); partner.updatedAt = now; }
       }
       assert(counterpart !== bank.ledgerAccount, 'Selecciona una contrapartida distinta de bancos.');
-      if(privateCompany&&!d.documentId) assert(!['1.1.03','2.1.01','1.1.02'].includes(counterpart)&&!state.bankAccounts.some(b=>b.ledgerAccount===counterpart),'Usa un documento para clientes/proveedores y una operación vinculada para bancos.');
+      if(privateCompany&&!d.documentId) assert(!subsidiaryAccount(counterpart)&&!bankLedgerAccount(counterpart),'Usa un documento u operación vinculada para clientes, proveedores, inventarios, activos y bancos; conserva su auxiliar.');
       assert(deposit || bank.balance >= d.amount, 'Saldo bancario insuficiente.'); result = next('BAN', d.date);
       const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine('1.1.10', retIR), ledgerLine('1.1.11', retIVA), ledgerLine(counterpart, 0, settle)] : [ledgerLine(counterpart, d.amount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
       bank.balance = round(bank.balance + (deposit ? d.amount : -d.amount)); bank.updatedAt = now;
@@ -434,7 +436,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'closePeriod': {
       const d = command.data; const cerrados = new Set(profile.closedPeriods ?? []);
-      assert(d.closed || !state.journalEntries.some(e => e.source === 'closing' && e.reference === d.period.slice(0, 4)), 'No se puede reabrir un mes de un ejercicio con cierre anual. Se requiere una reversión formal del cierre anual.');
+      assert(d.closed || (!(profile.closedFiscalYears ?? []).includes(d.period.slice(0, 4)) && !state.journalEntries.some(e => e.source === 'closing' && e.reference === d.period.slice(0, 4))), 'No se puede reabrir un mes de un ejercicio con cierre anual. Se requiere una reversión formal del cierre anual.');
       if (d.closed) cerrados.add(d.period); else cerrados.delete(d.period);
       profile.closedPeriods = [...cerrados].sort(); result = d.period;
       if (d.closed) award('period-close', 150, d.period, 'Primer cierre de período');
@@ -442,7 +444,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'closeYear': {
       const { year } = command.data;
-      assert(!state.journalEntries.some(e => e.source === 'closing' && e.reference === year), `El ejercicio ${year} ya fue cerrado.`);
+      assert(!(profile.closedFiscalYears ?? []).includes(year) && !state.journalEntries.some(e => e.source === 'closing' && e.reference === year), `El ejercicio ${year} ya fue cerrado.`);
       // Asiento de cierre: se saldan ingresos, costos y gastos del año contra Resultados acumulados (3.02).
       const netos = new Map<string, number>();
       for (const e of state.journalEntries) if (e.date.startsWith(year)) for (const l of e.lines) {
@@ -458,6 +460,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       profile.closedPeriods = cerradosAntes.filter(p => p !== `${year}-12`);
       result = lineas.length ? post(`${year}-12-31`, `Cierre del ejercicio ${year}`, 'closing', year, lineas) : year;
       profile.closedPeriods = [...new Set([...(profile.closedPeriods ?? []), ...Array.from({ length: 12 }, (_, i) => `${year}-${String(i + 1).padStart(2, '0')}`)])].sort();
+      profile.closedFiscalYears = [...new Set([...(profile.closedFiscalYears ?? []), year])].sort();
       award('year-close', 500, year, 'Cierre del ejercicio fiscal');
       break;
     }

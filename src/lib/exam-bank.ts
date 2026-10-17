@@ -175,9 +175,9 @@ export const EXAM_BANK: Record<string, ExamQuestion[]> = {
   ],
   'mod-23': [
     { question: '¿Qué es el gestor de consultas (Query Manager) y qué precauciones de seguridad tomarías al dar acceso?', rubric: ['crea y guarda consultas SQL sobre las tablas', 'consultas de solo lectura y autorizaciones por usuario', 'riesgo de exponer datos sensibles'] },
-    { question: 'Escribe en palabras (o SQL) una consulta para listar facturas de clientes abiertas con su saldo. ¿Qué tablas usarías?', rubric: ['tabla de facturas OINV (y líneas INV1 si aplica)', 'filtro de documentos abiertos (DocStatus = O)', 'saldo = total - pagado'] },
+    { question: 'Escribe en palabras o SQL cómo listar facturas abiertas en el Query Manager del laboratorio. ¿Por qué el total no demuestra su saldo pendiente?', rubric: ['consulta de una tabla OINV con docNumber, cardCode y total', "filtro status = 'open'; fechas literales ISO, sin parámetros [%0]", 'total es importe original; contrastar cobros asociados para conocer saldo, sin confundir facturación y efectivo'] },
     { question: '¿Para qué sirve Data Transfer Workbench y qué pasos sigues para migrar maestros de clientes?', rubric: ['herramienta de importación masiva', 'plantillas con estructura de tablas', 'simulación/prueba y luego importación con revisión de errores'] },
-    { question: '¿Cómo crearías una alerta personalizada basada en una consulta? Da un ejemplo de negocio.', rubric: ['consulta guardada como base', 'gestión de alertas con frecuencia y destinatarios', 'ejemplo concreto (stock bajo, facturas vencidas)'] },
+    { question: 'Diseña una revisión de riesgo de crédito con consultas del laboratorio y explica qué falta para automatizar una alerta.', rubric: ['revisar balance y creditLimit en OCRD, compararlos manualmente o en exportación autorizada', 'definir responsable, frecuencia y criterio de revisión; guardar consulta no activa sondeo ni correo', 'automatización requiere integración implementada y probada, permisos, entrega y manejo de fallos'] },
     { question: 'Un cliente pide un campo que Finix ERP no trae. ¿Qué opciones tienes antes de programar?', rubric: ['campos definidos por el usuario (UDF)', 'valores definidos por el usuario / búsquedas formateadas', 'evitar desarrollos cuando la configuración basta'] },
   ],
   'mod-24': [

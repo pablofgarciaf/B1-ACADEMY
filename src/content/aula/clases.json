@@ -685,7 +685,7 @@
       "id": "mod23-c1",
       "number": 1,
       "title": "Consultas SQL con el Query Manager",
-      "description": "En esta clase aprenderá a crear y ejecutar consultas SQL personalizadas usando las herramientas nativas de Finix ERP: el Generador y el Asistente de consultas.",
+      "description": "Crea consultas SELECT sobre las columnas reales del laboratorio, aplica filtros y fechas, guarda SQL en el navegador y contrasta los resultados.",
       "durationMinutes": 21
     },
     {
@@ -881,7 +881,7 @@
       "id": "mod30-c1",
       "number": 1,
       "title": "Caso Integrador: Puesta en Marcha",
-      "description": "0 para base de datos en memoria.",
+      "description": "Integra configuración, datos maestros y controles de puesta en marcha en la empresa educativa.",
       "durationMinutes": 17
     },
     {
@@ -895,7 +895,7 @@
       "id": "mod30-c3",
       "number": 3,
       "title": "Caso Integrador: Consultas SQL",
-      "description": "Clase práctica sobre el uso avanzado de consultas SQL en Finix ERP mediante el Generador de Consultas.",
+      "description": "Analiza clientes y facturas con consultas reproducibles, valida resultados y diferencia reportes, saldos y propuestas de automatización.",
       "durationMinutes": 57
     }
   ],

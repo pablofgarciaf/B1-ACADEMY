@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
-import { financialSummary, today, trialBalance, usd } from '@/lib/company-calculations';
+import { balanceGroups, financialSummary, periodResults, today, trialBalance, usd } from '@/lib/company-calculations';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 
 const cleanZero = (val: number): number => (Math.abs(val) < 0.005 ? 0 : val);
@@ -15,19 +15,10 @@ export default function FinancialStatementsScreen() {
 
   const rows = trialBalance(c.data.chartOfAccounts, c.data.journalEntries, from, to);
   const balance = financialSummary(rows, c.data.profile?.incomeTaxRate);
-  const period = financialSummary(
-    rows.map(r => ({ ...r, closing: r.debit - r.credit })),
-    c.data.profile?.incomeTaxRate
-  );
-
-  const operatingRevenue = cleanZero(
-    -rows.filter(r => r.accountCode === '4.01').reduce((sum, r) => sum + r.debit - r.credit, 0)
-  );
-  const otherRevenue = cleanZero(
-    -rows.filter(r => r.accountCode === '4.02').reduce((sum, r) => sum + r.debit - r.credit, 0)
-  );
-  const group = (prefix: string) =>
-    cleanZero(rows.filter(r => r.accountCode.startsWith(prefix)).reduce((s, r) => s + r.closing, 0));
+  const period = periodResults(c.data.chartOfAccounts, c.data.journalEntries, from, to, c.data.profile?.incomeTaxRate);
+  const groups = balanceGroups(rows);
+  const operatingRevenue = period.operatingRevenue;
+  const otherRevenue = period.otherRevenue;
 
   const grossProfit = cleanZero(operatingRevenue - period.cost);
   const operatingProfit = cleanZero(grossProfit - period.expenses);
@@ -67,11 +58,11 @@ export default function FinancialStatementsScreen() {
             <Table
               headers={['Estructura de Balance General (NIIF)', 'Valor USD']}
               rows={[
-                ['1.1 Activo Corriente (Caja, Bancos, Clientes, Inventarios)', formatMoney(group('1.1.'))],
-                ['1.2 Activo No Corriente (Propiedad, Planta y Equipos)', formatMoney(group('1.2.'))],
+                ['Activo Corriente (Caja, Bancos, Clientes, Inventarios)', formatMoney(groups.currentAssets)],
+                ['Activo No Corriente (Propiedad, Planta y Equipos)', formatMoney(groups.nonCurrentAssets)],
                 ['TOTAL ACTIVO', formatMoney(balance.assets)],
-                ['2.1 Pasivo Corriente (Proveedores, IESS, Retenciones SRI)', formatMoney(-group('2.1.'))],
-                ['2.2 Pasivo No Corriente (Préstamos a largo plazo)', formatMoney(-group('2.2.'))],
+                ['Pasivo Corriente (Proveedores, IESS, Retenciones SRI)', formatMoney(groups.currentLiabilities)],
+                ['Pasivo No Corriente (Préstamos a largo plazo)', formatMoney(groups.nonCurrentLiabilities)],
                 ['TOTAL PASIVO', formatMoney(balance.liabilities)],
                 ['3.0 Patrimonio Neto (Capital Social y Reservas)', formatMoney(balance.equity)],
                 ['Resultados del Ejercicio (Ganancia / Pérdida)', formatMoney(balance.profit)],

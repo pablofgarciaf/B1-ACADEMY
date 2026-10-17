@@ -9,7 +9,7 @@ export const usd = (value: number): string => new Intl.NumberFormat('es-EC', { s
 export function resultadoEjercicio(state: CompanyState, year: number): number {
   const categoria = new Map(state.chartOfAccounts.map(a => [a.code, a.category]));
   let r = 0;
-  for (const e of state.journalEntries.filter(x => x.date.startsWith(`${year}-`))) for (const l of e.lines) {
+  for (const e of state.journalEntries.filter(x => x.date.startsWith(`${year}-`) && x.source !== 'closing')) for (const l of e.lines) {
     const c = categoria.get(l.accountCode);
     if (c === 'income') r += l.credit - l.debit;
     // Compatibilidad: las versiones anteriores registraban depreciación en 6.06.
@@ -40,6 +40,18 @@ export function financialSummary(rows: TrialBalanceRow[], incomeTaxRate = 25) {
   const revenue = -sum('income'); const cost = sum('cost'); const expenses = sum('expense');
   const profit = round(revenue - cost - expenses); const tax = round(Math.max(0, profit) * incomeTaxRate / 100);
   return { assets, liabilities, equity, revenue, cost, expenses, grossProfit: round(revenue - cost), profit, tax, net: round(profit - tax), difference: round(assets - liabilities - equity - profit) };
+}
+/** Balance groups accept both the compact operational accounts and the global Ecuador catalogue. */
+export function balanceGroups(rows: TrialBalanceRow[]) {
+  const sum = (...prefixes: string[]) => round(rows.filter(r => prefixes.some(p => r.accountCode.startsWith(p))).reduce((n, r) => n + r.closing, 0));
+  return { currentAssets: sum('1.1.', '101'), nonCurrentAssets: sum('1.2.', '102'), inventory: sum('1.1.05', '1.1.07', '10103'), receivables: sum('1.1.03', '1.1.04', '1010205', '1010206', '1010209'), cash: sum('1.1.01', '1.1.02', '10101'), currentLiabilities: -sum('2.1.', '201'), nonCurrentLiabilities: -sum('2.2.', '202'), payables: -sum('2.1.01', '20103') };
+}
+/** Closing entries transfer profit to equity; they must never erase historical trading performance. */
+export function periodResults(accounts: AccountingAccount[], entries: JournalEntry[], from: string, to: string, incomeTaxRate = 25) {
+  const rows = trialBalance(accounts, entries.filter(e => e.source !== 'closing'), from, to).map(r => ({ ...r, closing: round(r.debit - r.credit) }));
+  const summary = financialSummary(rows, incomeTaxRate);
+  const otherRevenue = round(-rows.filter(r => r.category === 'income' && (r.accountCode.startsWith('4.02') || r.accountCode.startsWith('43'))).reduce((n, r) => n + r.closing, 0));
+  return { ...summary, operatingRevenue: round(summary.revenue - otherRevenue), otherRevenue };
 }
 export function moveStock(stock: WarehouseStock, qty: number, unitCost: number, method: CostingMethod, date: string): { stock: WarehouseStock; cost: number } {
   if (!Number.isFinite(qty) || qty === 0 || !Number.isFinite(unitCost) || unitCost < 0) throw new Error('Movimiento inválido.');

@@ -207,32 +207,32 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Para acceder utiliza el correo y la contraseña de tu propia cuenta de Academy. Nunca escribas una contraseña real en los campos didácticos ni la compartas con un tutor. La ventana Seleccionar empresa de este ejercicio representa la elección de B1 Center dentro del laboratorio; no reemplaza el inicio de sesión de la plataforma. Revisa los valores de demostración de la ficha y confirma la empresa del curso.",
+        "script_text": "Para entrar en Academy utiliza el acceso de la plataforma con tu propia cuenta. En esta ficha didáctica usa únicamente las credenciales ficticias alumno@ejemplo.test y ClaveSoloDePractica2026!. No son credenciales válidas de ninguna cuenta. Nunca escribas una contraseña real en campos de prácticas. La ventana Seleccionar empresa representa la elección de B1 Center dentro del laboratorio y no reemplaza el inicio de sesión de la plataforma.",
         "step_guide": {
           "action_type": "practica",
           "title": "Iniciar sesión en B1 Center",
           "menu_path": "Gestión > Seleccionar empresa",
           "instructions": [
             "Abre Gestión › Seleccionar empresa",
-            "Ingresa tu correo de usuario (ej. pablofgarciaf@gmail.com)",
-            "Ingresa la contraseña de tu cuenta",
-            "Elige tu empresa B1 Center y pulsa Añadir para entrar"
+            "Escribe alumno@ejemplo.test como usuario ficticio de la práctica",
+            "Escribe ClaveSoloDePractica2026! como contraseña exclusivamente ficticia",
+            "Elige B1 Center y pulsa Añadir para completar la ficha; no se inicia una sesión real"
           ],
           "campos": [
             {
               "etiqueta": "Usuario",
-              "valor": "pablofgarciaf@gmail.com",
-              "pista": "Tu correo registrado (ej. pablofgarciaf@gmail.com)"
+              "valor": "alumno@ejemplo.test",
+              "pista": "Credencial ficticia del ejercicio, no tu correo real"
             },
             {
               "etiqueta": "Contraseña",
-              "valor": "mateD0MEmia",
-              "pista": "La contraseña de tu cuenta"
+              "valor": "ClaveSoloDePractica2026!",
+              "pista": "Clave ficticia publicada para este ejercicio; nunca uses una contraseña real"
             },
             {
               "etiqueta": "Empresa",
               "valor": "B1 Center",
-              "pista": "Tu base de datos B1 Center"
+              "pista": "Empresa del laboratorio de formación"
             }
           ]
         },
@@ -18778,210 +18778,184 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "En esta clase aprenderá a crear y ejecutar consultas SQL personalizadas usando las herramientas nativas de Finix ERP: el Generador y el Asistente de consultas. Verá cómo extraer datos útiles para reportes, validaciones y toma de decisiones, sin modificar tablas estándar. El enfoque es práctico: cada teoría va seguida de una ejercicio en el simulador. Al final, podrá construir consultas reutilizables que le ahorren tiempo y mejoren su análisis de datos empresariales.",
-        "step_guide": null
+        "script_text": "En esta clase crearás consultas SELECT sobre la empresa del laboratorio. Usarás Query Manager, sus tablas disponibles y sus columnas reales. Diferenciarás la herramienta que funciona hoy de asistentes visuales y automatizaciones que requieren desarrollo adicional. Practicarás primero en tu empresa educativa y comprobarás los resultados antes de interpretarlos.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar esta clase, podrá: crear consultas SQL usando el Generador y el Asistente de consultas; identificar correctamente los nombres de tablas y campos mediante la Información del sistema; aplicar filtros con WHERE, ordenar con ORDER BY y agrupar con GROUP BY; guardar consultas para reutilizarlas; y generar reportes ad hoc que apoyen la toma de decisiones basada en datos reales de Finix ERP.",
-        "step_guide": null
+        "script_text": "Al finalizar podrás identificar tablas y columnas, escribir SELECT con filtros y orden, guardar una consulta en este navegador y exportar sus resultados a CSV. También podrás explicar por qué una consulta no contabiliza operaciones, qué información puede revelar y por qué no debes presentar una ficha didáctica como prueba de un envío o un proceso automático.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 3,
-        "script_text": "El Query Manager en Finix ERP incluye dos herramientas: el Generador de consultas y el Asistente de consultas. Ambas permiten crear consultas SQL para extraer, analizar y utilizar datos del sistema sin modificar tablas estándar. Son ideales para reportes ad hoc, validaciones, alertas y paneles KPI. No se usan para reportes de impresión complejos, donde se prefiere Crystal Reports. El enfoque es práctico y seguro para usuarios de todos los niveles.",
-        "step_guide": null
+        "script_text": "Query Manager ejecuta un subconjunto de SQL en memoria sobre los registros de la empresa activa. OCRD corresponde a socios de negocio, ORDR a pedidos y OINV a facturas. El panel Tablas muestra las columnas presentes en esos registros; los nombres de tabla no garantizan que las columnas coincidan con las de otro ERP. No hay asistente visual de uniones ni acceso directo a una base SQL externa.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,
-        "script_text": "El flujo básico de una consulta SQL en Finix ERP es: primero selecciona la tabla de origen, luego elige los campos que deseas mostrar, opcionalmente aplica filtros con WHERE, ordena con ORDER BY o agrupa con GROUP BY, ejecuta la consulta para ver los resultados y, si es útil, guárdala para reutilizarla. Este ciclo se repite cada vez que necesita información específica del sistema.",
-        "step_guide": null
+        "script_text": "El flujo de trabajo es seleccionar una tabla del panel, revisar sus columnas, escribir SELECT, añadir WHERE si hace falta y pulsar Ejecutar. Puedes ordenar con ORDER BY o resumir con GROUP BY y SUM. Examina el resultado y contrástalo con los documentos de origen. El motor permite consultas de solo lectura sobre una tabla cada vez; no admite JOIN ni escrituras SQL.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 5,
-        "script_text": "Para escribir consultas SQL precisas, debe conocer los nombres exactos de tablas y campos en la base de datos. La Información del sistema, activada con Ctrl+Shift+I desde el menú Vista o cualquier ventana, muestra estos detalles en la barra de estado al pasar el cursor sobre un campo. Por ejemplo, sobre el campo 'Nombre' en la ficha de socio de negocio, verá OCRD.CardName. Este paso es esencial para evitar errores en sus consultas.",
+        "script_text": "Para conocer los nombres técnicos abre Query Manager en el simulador y despliega OCRD en el panel Tablas. En clientes encontrarás cardCode y name; en documentos, docNumber, date, total y status. Las columnas se muestran cuando hay registros. Ctrl+Shift+I no es un inspector de campos de este sistema y puede abrir las herramientas del navegador: no lo uses como paso de la práctica.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Activar Información del sistema",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar columnas disponibles",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Ir al menú Herramientas",
-            "Seleccionar Consultas",
-            "Hacer clic en Generador de Consultas",
-            "Presionar Ctrl + Shift + I",
-            "Observar la barra de estado al pasar el cursor sobre un campo"
+            "Abre Query Manager en el simulador y despliega OCRD",
+            "Revisa sus columnas y completa esta ficha de identificación; no es un inspector de campos"
           ],
           "campos": [
             {
-              "etiqueta": "Tecla de acceso",
-              "valor": "Ctrl+Shift+I",
-              "pista": "Combina tres teclas"
+              "etiqueta": "Panel",
+              "valor": "Tablas",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Función",
-              "valor": "Mostrar nombres técnicos",
-              "pista": "Qué hace la función"
+              "etiqueta": "Tabla",
+              "valor": "OCRD",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Ventana activa",
-              "valor": "Generador de Consultas",
-              "pista": "Nombre de la ventana abierta"
+              "etiqueta": "Nombre cliente",
+              "valor": "name",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 6,
-        "script_text": "El Asistente de consultas le guía paso a paso para crear una consulta sin escribir SQL. Primero selecciona la tabla (por ejemplo, OCRD para socios de negocio), luego los campos que necesita (como CardCode y CardName), y finalmente asigna encabezados amigables. Al hacer clic en Finalizar, el sistema genera la consulta SQL y muestra los resultados en vista previa. Es ideal si tiene poca experiencia con SQL, ya que evita errores de sintaxis y le permite enfocarse en qué datos necesita.",
+        "script_text": "Para listar clientes escribe SELECT cardCode, name FROM OCRD WHERE cardType = 'C'. Las columnas son cardCode y name, no CardName. Ejecuta la consulta en Query Manager y compara dos filas con Socios de negocios. La ficha de esta lámina comprueba la identificación de la consulta; completarla no crea clientes ni demuestra por sí sola que hayas ejecutado SQL.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Crear consulta con el Asistente",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar consulta de clientes",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Hacer clic en el icono del Asistente de consultas",
-            "Seleccionar la tabla OCRD (socios de negocio)",
-            "Elegir los campos CardCode y CardName",
-            "Asignar encabezados amigables: 'Código Cliente' y 'Nombre Cliente'",
-            "Hacer clic en Finalizar para ver la vista previa"
+            "Ejecuta SELECT cardCode, name FROM OCRD WHERE cardType = 'C' en Query Manager",
+            "Compara con dos socios y completa la ficha de conceptos"
           ],
           "campos": [
             {
               "etiqueta": "Tabla",
               "valor": "OCRD",
-              "pista": "Tabla principal de socios de negocio"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 1",
-              "valor": "CardCode",
-              "pista": "Código único del socio"
+              "etiqueta": "Código cliente",
+              "valor": "cardCode",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 2",
-              "valor": "CardName",
-              "pista": "Nombre o razón social"
+              "etiqueta": "Nombre cliente",
+              "valor": "name",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Encabezado 1",
-              "valor": "Código Cliente",
-              "pista": "Cómo se verá en el reporte"
-            },
-            {
-              "etiqueta": "Encabezado 2",
-              "valor": "Nombre Cliente",
-              "pista": "Etiqueta amigable para el usuario"
+              "etiqueta": "Filtro",
+              "valor": "cardType = 'C'",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 7,
-        "script_text": "El Generador de consultas permite crear SQL en una sola pantalla, ideal si tiene conocimientos básicos. Selecciona la tabla (por ejemplo, ORDR para pedidos de cliente) y los campos (DocNum, CardCode, DocTotal), y la consulta se muestra al instante en el panel derecho. Puede agregar filtros como WHERE DocStatus = 'O' para pedidos abiertos y ordenar con ORDER BY DocDate. Al hacer clic en Ejecutar, ve los resultados en vista previa. Es más rápido que el asistente porque no requiere pasos secuenciales.",
+        "script_text": "Para ver pedidos abiertos escribe SELECT docNumber, cardCode, total FROM ORDR WHERE status = 'open' ORDER BY date. status usa valores del simulador como open y closed, no DocStatus igual O. Revisa un pedido y compara su número, cliente y total con el resultado. Una tabla sin pedidos puede devolver cero filas sin que la sintaxis sea incorrecta.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Crear consulta con el Generador",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar consulta de pedidos",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Seleccionar la tabla ORDR (pedidos de cliente)",
-            "Hacer doble clic en los campos DocNum, CardCode y DocTotal",
-            "Agregar condición: WHERE DocStatus = 'O'",
-            "Agregar orden: ORDER BY DocDate",
-            "Hacer clic en Ejecutar y observar resultados"
+            "Ejecuta SELECT docNumber, cardCode, total FROM ORDR WHERE status = 'open' ORDER BY date",
+            "Contrasta con un pedido abierto; completa esta ficha de identificación"
           ],
           "campos": [
             {
               "etiqueta": "Tabla",
               "valor": "ORDR",
-              "pista": "Cabecera de pedidos de cliente"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 1",
-              "valor": "DocNum",
-              "pista": "Número de documento"
+              "etiqueta": "Número",
+              "valor": "docNumber",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 2",
-              "valor": "CardCode",
-              "pista": "Código del cliente"
+              "etiqueta": "Total",
+              "valor": "total",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 3",
-              "valor": "DocTotal",
-              "pista": "Total del pedido"
-            },
-            {
-              "etiqueta": "Condición",
-              "valor": "DocStatus = 'O'",
-              "pista": "Pedidos abiertos o pendientes"
+              "etiqueta": "Filtro",
+              "valor": "status = 'open'",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
               "etiqueta": "Orden",
-              "valor": "DocDate",
-              "pista": "Fecha de contabilización"
+              "valor": "date",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 8,
-        "script_text": "Las variables en la cláusula WHERE permiten crear consultas flexibles donde el usuario ingresa valores al ejecutarla. Se definen como [%0], [%1], etc. Por ejemplo, DocDate > [%0] filtra pedidos cuya fecha sea posterior a una fecha que usted proporciona al correr la consulta. Al ejecutar, Finix ERP solicita el valor de [%0]; si ingresa 01/04/2026, solo se mostrarán pedidos posteriores a esa fecha. Esto es útil para reportes dinámicos, como ventas desde una fecha específica definida en tiempo de ejecución.",
+        "script_text": "Para filtrar por fecha escribe SELECT docNumber, cardCode, total FROM ORDR WHERE date > '2026-04-01' ORDER BY date. Las fechas se escriben entre comillas en formato año-mes-día. El analizador actual no admite parámetros [%0]: para otro período cambia el literal y vuelve a ejecutar. Confirma si necesitas mayor que o mayor o igual para incluir la fecha inicial.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Crear consulta con variable de fecha",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar filtro de fecha",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Seleccionar la tabla ORDR",
-            "Elegir campos DocNum, CardCode y DocTotal",
-            "Agregar condición: DocDate > [%0]",
-            "Establecer variable [%0] como fecha de inicio",
-            "Ejecutar e ingresar 01/04/2026 cuando se solicite"
+            "Ejecuta la consulta de pedidos con la fecha literal ISO",
+            "Cambia el corte y observa qué filas cambian; completa la ficha"
           ],
           "campos": [
             {
-              "etiqueta": "Tabla",
-              "valor": "ORDR",
-              "pista": "Pedidos de cliente"
+              "etiqueta": "Columna",
+              "valor": "date",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 1",
-              "valor": "DocNum",
-              "pista": "Número de pedido"
+              "etiqueta": "Condición",
+              "valor": "date > '2026-04-01'",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 2",
-              "valor": "CardCode",
-              "pista": "Código del cliente"
-            },
-            {
-              "etiqueta": "Campo 3",
-              "valor": "DocTotal",
-              "pista": "Total del pedido"
-            },
-            {
-              "etiqueta": "Variable",
-              "valor": "[%0]",
-              "pista": "Primer parámetro de entrada"
-            },
-            {
-              "etiqueta": "Valor ejemplo",
-              "valor": "01/04/2026",
-              "pista": "Fecha DD/MM/AAAA"
+              "etiqueta": "¿Admite [%0]?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 9,
-        "script_text": "Aunque las consultas no generan asientos contables, guardarlas crea un activo reutilizable: una plantilla de reporte que puede ejecutarse periódicamente con diferentes parámetros. Por ejemplo, guardar la consulta de pedidos abiertos con variable [%0] le permite actualizar su seguimiento de cartera cada semana simplemente cambiando la fecha de inicio. Esto ahorra tiempo y garantiza consistencia en el análisis de datos operativos.",
-        "step_guide": null
+        "script_text": "Guardar consulta solicita un nombre y conserva el texto en Mis consultas de este navegador. No crea categorías departamentales compartidas ni programa ejecuciones. No dependas únicamente del navegador: conserva el SQL y su propósito en un repositorio documental autorizado de la empresa. Exportar CSV descarga el resultado actual, por lo que debes proteger el archivo si contiene datos privados.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 10,
-        "script_text": "Los errores más comunes al crear consultas incluyen no usar la Información del sistema (lo que lleva a usar nombres de campos incorrectos), usar SELECT * (que consume recursos innecesarios), no probar en vista previa antes de guardar y olvidar guardar consultas útiles. Las buenas prácticas son: siempre verificar los nombres técnicos de tablas y campos con Ctrl+Shift+I, seleccionar solo los campos necesarios, probar siempre en vista previa y guardar las consultas que planea reutilizar como plantillas para futuros análisis.",
-        "step_guide": null
+        "script_text": "Errores frecuentes son copiar campos de otro ERP, usar parámetros no admitidos, confundir pedido con factura y sumar documentos cancelados o notas de crédito como ventas. Prueba con pocos registros conocidos, revisa los filtros y el nivel de detalle antes de sumar. No interpretes una suma de facturas como efectivo cobrado ni como utilidad contable.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 11,
-        "script_text": "En esta clase aprendió a crear consultas SQL personalizadas usando el Generador y el Asistente de consultas de Finix ERP. Vio cómo identificar nombres exactos de tablas y campos con la Información del sistema (Ctrl+Shift+I), aplicar filtros con WHERE, usar variables como [%0] para reportes dinámicos, ordenar con ORDER BY y guardar consultas para reutilizarlas. Estas habilidades le permiten extraer datos útiles para reportes, validaciones y toma de decisiones, sin depender de reportes predefinidos ni modificar el sistema estándar.",
-        "step_guide": null
+        "script_text": "Has trabajado con tablas y columnas reales, filtros, orden y fechas literales. Como cierre ejecuta una consulta de clientes y otra de pedidos, contrástalas con documentos y guarda una copia del SQL. La ficha comprueba conceptos; la evaluación debe explicar los resultados y sus límites. Consulta datos privados únicamente en la empresa a la que tienes acceso autorizado.",
+        "step_guide": null,
+        "presentation": "text"
       }
     ],
     "quizQuestions": [],
@@ -22940,415 +22914,412 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Clase práctica sobre el uso avanzado de consultas SQL en Finix ERP mediante el Generador de Consultas. Aprenderás a crear, ejecutar y gestionar consultas técnicas y analíticas, integrarlas con alarmas y widgets, y aplicarlas en escenarios reales de ventas, crédito y reporting. Enfocado en consultores y usuarios clave que requieren precisión y autonomía en el manejo de datos.",
-        "step_guide": null
+        "script_text": "En esta clase construirás un análisis verificable con Query Manager sobre la empresa del laboratorio. Usarás consultas de una tabla, filtros de fechas y agregaciones; contrastarás resultados con documentos y exportarás CSV cuando necesites relacionar conjuntos. Distinguirás las capacidades actuales de las integraciones de alarmas, correo y cuadros de mando que no están conectadas a estas consultas.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar esta clase podrás: utilizar el Generador de Consultas para construir sentencias SQL complejas con joins automáticos; aplicar filtros precisos como CardType = 'C' para clientes; usar parámetros dinámicos [%0] para fechas interactivas; validar resultados con técnicas de orden y suma en grilla; guardar consultas en categorías organizadas; vincular consultas a alarmas de riesgo de crédito; y anclar widgets analíticos en el Cockpit Fiori para monitoreo en tiempo real.",
-        "step_guide": null
+        "script_text": "Al finalizar podrás reconocer columnas reales, separar clientes de proveedores, filtrar facturas abiertas y sumar bases facturadas por cliente. También podrás explicar cómo relacionar exportaciones con claves verificadas, conservar SQL reproducible y diseñar una alerta como especificación. No se ofrece JOIN automático ni parametrización con [%0] en este motor.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 3,
-        "script_text": "El Generador de Consultas es una herramienta nativa de Finix ERP que permite diseñar, probar y optimizar sentencias SQL en una interfaz visual. Desde allí se cargan tablas directamente de la base base de datos en memoria, se seleccionan columnas con doble clic y se visualiza la estructura relacional en tiempo real. Es ideal para consultores que requieren control total sobre sus consultas, evitando errores como productos cartesianos gracias al INNER JOIN automático cuando se detectan claves foráneas como DocEntry entre OINV e INV1.",
-        "step_guide": null
+        "script_text": "Query Manager opera sobre la empresa activa y permite SELECT de una tabla por consulta. OCRD contiene socios y OINV contiene facturas; INV1 contiene líneas de documentos de venta de varios tipos. El panel Tablas muestra columnas de los registros presentes. Antes de calcular identifica el tipo documental y evita sumar líneas de pedidos junto con las facturas.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,
-        "script_text": "El flujo comienza en el Generador de Consultas, donde se arman las tablas y se definen columnas y filtros. Luego se prueba la consulta para validar resultados en la grilla. Se aplican mejoras de productividad como ordenar con doble clic o sumar con Control + clic. Finalmente, se guarda la consulta en una categoría departamental (por ejemplo, Ventas) y se puede vincular a alarmas o widgets para uso operativo continuo, asegurando gobernanza y reutilización.",
-        "step_guide": null
+        "script_text": "El recorrido consiste en definir una pregunta de negocio, inspeccionar una tabla, escribir la consulta, ejecutar y comprobar documentos de origen. Después puedes guardar el SQL localmente o exportar CSV. Para relacionar nombres de clientes con facturas ejecuta dos consultas y cruza los archivos por cardCode en una herramienta autorizada; comprueba claves únicas y totales antes y después.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 5,
-        "script_text": "Accederás al Generador de Consultas desde el menú principal para comenzar a construir tu consulta SQL. Esta es la estación de trabajo donde seleccionarás tablas, definirás campos y aplicarás condiciones como el filtro por tipo de socio comercial. Aquí comienza el proceso de creación de una consulta técnica que podrá ser reutilizada, guardada por categoría y vinculada a funcionalidades avanzadas como alarmas o widgets analíticos.",
+        "script_text": "Abre Query Manager desde el menú Consultas del simulador. Revisa el área de SQL, el botón Ejecutar y el panel Tablas. La ficha del aula verifica que identifiques estos elementos; la comprobación práctica consiste en ejecutar SELECT cardCode, name FROM OCRD y comparar el resultado con la lista de socios de tu empresa educativa.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Abrir Generador de Consultas",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar herramienta de análisis",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en el menú Herramientas",
-            "Selecciona Consultas",
-            "Haz clic en Generador de Consultas"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Menú",
-              "valor": "Herramientas",
-              "pista": "Primer nivel del menú principal"
+              "etiqueta": "Herramienta",
+              "valor": "Query Manager",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Submenú",
-              "valor": "Consultas",
-              "pista": "Opción bajo Herramientas"
-            },
-            {
-              "etiqueta": "Opción",
-              "valor": "Generador de Consultas",
-              "pista": "Última opción del submenú"
+              "etiqueta": "Panel",
+              "valor": "Tablas",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 6,
-        "script_text": "En el Generador de Consultas, agregarás la tabla OCRD, que almacena la maestría de socios comerciales: clientes, proveedores y prospectos. Esta tabla contiene campos esenciales como CardCode, CardName, Balance y CreditLine. Al cargarla, podrás filtrar por CardType para aislar solo los clientes (CardType = 'C'), lo que garantiza que tus reportes de cartera no incluyan proveedores ni distorsionen el análisis de cuentas por cobrar.",
+        "script_text": "Inspecciona OCRD en el panel Tablas. Para clientes utiliza cardCode, name y balance. No escribas CardName ni CreditLine: en este simulador los nombres disponibles son name y creditLimit. Si no ves columnas todavía, crea un cliente en la empresa de prácticas y vuelve a abrir la tabla.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Agregar tabla OCRD",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar maestro de socios",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en 'Agregar tabla'",
-            "Busca y selecciona OCRD",
-            "Confirma la inclusión"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Nombre tabla",
+              "etiqueta": "Tabla",
               "valor": "OCRD",
-              "pista": "Tabla de socios comerciales"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Alias",
-              "valor": "OCRD",
-              "pista": "Se asigna automáticamente"
+              "etiqueta": "Código",
+              "valor": "cardCode",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campos visibles",
-              "valor": "CardCode, CardName, Balance",
-              "pista": "Selecciona al menos estos tres"
+              "etiqueta": "Nombre",
+              "valor": "name",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
+            },
+            {
+              "etiqueta": "Saldo",
+              "valor": "balance",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 7,
-        "script_text": "Aplicarás la cláusula WHERE con la condición CardType = 'C' para asegurar que la consulta devuelva únicamente clientes (deudores comerciales). Este filtro es crítico porque la tabla OCRD incluye también proveedores y prospectos. Al omitirlo, el reporte mezclaría cuentas por cobrar y por pagar, distorsionando el análisis de liquidez. El valor 'C' debe ir en mayúscula y entre comillas simples, ya que es un campo alfanumérico.",
+        "script_text": "Para limitar el conjunto a clientes utiliza SELECT cardCode, name, balance FROM OCRD WHERE cardType = 'C'. La columna cardType separa clientes C de proveedores S. Comprueba que ningún proveedor entre al resultado. El filtro de tipo de socio no filtra por fecha ni determina si un cliente tiene facturas pendientes.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Filtrar solo clientes",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar filtro de clientes",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en el campo CardType",
-            "Selecciona la condición 'igual a'",
-            "Ingresa el valor 'C' en mayúscula"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Campo",
-              "valor": "CardType",
-              "pista": "Define el tipo de socio comercial"
-            },
-            {
-              "etiqueta": "Condición",
-              "valor": "igual a",
-              "pista": "Operador de comparación"
+              "etiqueta": "Columna",
+              "valor": "cardType",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
               "etiqueta": "Valor",
               "valor": "C",
-              "pista": "Letra mayúscula para clientes"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 8,
-        "script_text": "Agregarás la tabla OINV, que almacena la cabecera de las facturas de clientes: datos como cliente (CardCode), fecha de contabilización (DocDate), total del documento (DocTotal) y estado (DocStatus). Esta tabla se vincula con INV1 mediante la clave foránea DocEntry. Al incluirla en el Generador, podrás consultar información resumida de cada factura, esencial para reportes de ventas y cartera.",
+        "script_text": "Consulta facturas mediante SELECT id, docNumber, cardCode, date, total, status FROM OINV. Aquí id identifica la factura y cardCode su cliente. Para añadir el nombre del socio exporta OCRD por separado y relaciona ambos archivos por cardCode. No hay incorporación visual de tablas ni JOIN automático en el motor actual.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Agregar tabla OINV",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar cabecera de factura",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en 'Agregar tabla'",
-            "Selecciona OINV de la lista",
-            "Confirma su inclusión"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Nombre tabla",
+              "etiqueta": "Tabla",
               "valor": "OINV",
-              "pista": "Cabecera de facturas de clientes"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Alias",
-              "valor": "OINV",
-              "pista": "Se mantiene por defecto"
+              "etiqueta": "Identificador",
+              "valor": "id",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo clave",
-              "valor": "DocEntry",
-              "pista": "Une con las líneas de factura"
+              "etiqueta": "Cliente",
+              "valor": "cardCode",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 9,
-        "script_text": "Agregarás la tabla INV1, que contiene las líneas de las facturas: cada artículo con su código, descripción, cantidad, precio unitario y descuentos. Esta tabla se relaciona con OINV mediante la clave foránea DocEntry, lo que permite consultar documentos completos (cabecera y detalle) sin duplicidades. Al incluir ambas tablas, el Generador detecta automáticamente la relación y crea un INNER JOIN, evitando errores como el producto cartesiano.",
+        "script_text": "INV1 muestra líneas de distintos documentos comerciales e incluye docNumber, docType, itemCode, quantity y lineTotal. Usa SELECT docNumber, itemCode, quantity, lineTotal FROM INV1 WHERE docType = 'invoice'. No supongas que todo INV1 son facturas. Esta tabla no expone DocEntry como vínculo de cabecera; identifica el documento con las columnas disponibles y comprueba su unicidad.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Agregar tabla INV1",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar líneas facturadas",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en 'Agregar tabla'",
-            "Busca y selecciona INV1",
-            "Verifica que se relacione con OINV"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Nombre tabla",
+              "etiqueta": "Tabla",
               "valor": "INV1",
-              "pista": "Detalle de facturas de clientes"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Alias",
-              "valor": "INV1",
-              "pista": "Se asigna automáticamente"
+              "etiqueta": "Filtro",
+              "valor": "docType = 'invoice'",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Clave foránea",
-              "valor": "DocEntry",
-              "pista": "Une con la cabecera OINV"
+              "etiqueta": "Importe línea",
+              "valor": "lineTotal",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 10,
-        "script_text": "Seleccionarás los campos más relevantes para tu reporte: CardName (nombre del cliente), DocTotal (monto total de la factura) y DocDate (fecha de contabilización). Estos campos provienen de OCRD y OINV respectivamente. Al elegir CardName en lugar de CardCode, mejora la legibilidad del informe. DocTotal permite analizar ventas, y DocDate es esencial para filtrar por periodos o detectar facturas vencidas.",
+        "script_text": "Para un resumen por cliente ejecuta SELECT cardCode, SUM(subtotal) AS base_facturada FROM OINV GROUP BY cardCode ORDER BY base_facturada DESC. El subtotal excluye IVA y no equivale a utilidad ni a cobro. Contrasta las facturas del cliente con el resultado y explica cómo tratarías devoluciones y notas de crédito antes de llamarlo venta neta.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Seleccionar campos del reporte",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar resumen por cliente",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz doble clic en CardName de OCRD",
-            "Haz doble clic en DocTotal de OINV",
-            "Haz doble clic en DocDate de OINV"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Campo 1",
-              "valor": "CardName",
-              "pista": "Nombre del cliente"
+              "etiqueta": "Agrupación",
+              "valor": "cardCode",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 2",
-              "valor": "DocTotal",
-              "pista": "Total de la factura"
+              "etiqueta": "Agregación",
+              "valor": "SUM(subtotal)",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Campo 3",
-              "valor": "DocDate",
-              "pista": "Fecha de emisión"
+              "etiqueta": "¿Es utilidad?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 11,
-        "script_text": "Agregarás una condición WHERE para filtrar facturas posteriores a una fecha determinada usando un parámetro dinámico: DocDate > [%0]. Este símbolo le indica a Finix ERP que solicite el valor en tiempo de ejecución, convirtiendo la consulta en una herramienta reutilizable. Al reconocer que DocDate es una fecha, el sistema habilita automáticamente un calendario interactivo, permitiendo que cualquier usuario seleccione la fecha sin conocer SQL.",
+        "script_text": "El filtro de período usa un literal ISO entre comillas: SELECT docNumber, date, total FROM OINV WHERE date > '2026-04-01'. Cambia el literal para otro período. [%0] no se admite. Si necesitas incluir la fecha de inicio usa >=; comprueba también que el período seleccionado coincide con la pregunta de negocio.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Filtrar facturas posteriores",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar fecha literal",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en el campo DocDate",
-            "Selecciona 'mayor que'",
-            "Ingresa el parámetro [%0]"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Campo",
-              "valor": "DocDate",
-              "pista": "Fecha de la factura"
+              "etiqueta": "Columna",
+              "valor": "date",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Condición",
-              "valor": "mayor que",
-              "pista": "Para fechas futuras"
+              "etiqueta": "Corte",
+              "valor": "'2026-04-01'",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Valor",
-              "valor": "[%0]",
-              "pista": "Parámetro de entrada"
+              "etiqueta": "¿Admite [%0]?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 12,
-        "script_text": "Agregarás una segunda condición: DocStatus = 'O' para filtrar solo facturas con saldo pendiente (abiertas). El estado 'O' significa 'Open' y excluye facturas pagadas o canceladas. Esta condición, combinada con el filtro de fecha, permite identificar cartera vencida o facturas abiertas en un periodo específico, esencial para gestión de cobranza y análisis de riesgo crediticio.",
+        "script_text": "Para facturas abiertas usa SELECT docNumber, cardCode, total FROM OINV WHERE status = 'open'. total es el importe original de la factura y no demuestra el saldo pendiente después de abonos. Contrasta cobros asociados y la cuenta por cobrar antes de informar deuda vencida. No uses DocStatus igual O: no es la columna del simulador.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Filtrar facturas abiertas",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar facturas abiertas",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en el campo DocStatus",
-            "Selecciona 'igual a'",
-            "Ingresa el valor 'O' en mayúscula"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Campo",
-              "valor": "DocStatus",
-              "pista": "Estado del documento"
-            },
-            {
-              "etiqueta": "Condición",
-              "valor": "igual a",
-              "pista": "Operador de igualdad"
+              "etiqueta": "Columna",
+              "valor": "status",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
               "etiqueta": "Valor",
-              "valor": "O",
-              "pista": "Letra mayúscula para abierto"
+              "valor": "open",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
+            },
+            {
+              "etiqueta": "¿Total es saldo pendiente?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 13,
-        "script_text": "Al ejecutar la consulta, llegarás a la grilla de resultados donde aplicarás dos técnicas de productividad: hacer doble clic en un encabezado para ordenar los datos en memoria (sin cargar el servidor), y mantener presionada la tecla Control mientras haces clic en el encabezado de 'DocTotal' para que Finix ERP calcule automáticamente la sumatoria en el pie de página. Estos trucos permiten validar totales y explorar datos rápidamente, sin exportar a Excel.",
-        "step_guide": null
+        "script_text": "Ordena expresamente en SQL con ORDER BY date o ORDER BY total DESC y vuelve a ejecutar. Puedes exportar el resultado a CSV para análisis adicional autorizado. No se promete ordenar por doble clic en cabeceras ni arrastrar columnas. Guarda la consulta, sus filtros y el momento del corte para que otra persona pueda reproducir la lectura.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 14,
-        "script_text": "Guardarás la consulta en la categoría 'Ventas' usando la opción 'Tratar Categorías' para evitar el desorden de guardar en carpetas genéricas. Al asignarla a una categoría departamental, aseguras que el equipo de finanzas y ventas tenga un espacio centralizado para sus reportes operativos. Esto mejora la búsqueda, evita versiones duplicadas y facilita el mantenimiento a largo plazo, fortaleciendo la gobernanza de datos en la organización.",
+        "script_text": "Guardar consulta solicita un nombre y la incluye en Mis consultas, almacenadas en este navegador. Usa un nombre claro como Facturas abiertas por fecha. No existe categoría Ventas compartida en este flujo. Conserva el SQL y su finalidad fuera del almacenamiento del navegador cuando lo necesite el equipo; no compartas archivos con datos de alumnos o de otra empresa.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Guardar consulta en Ventas",
-          "menu_path": "Herramientas > Consultas > Generador de Consultas",
+          "title": "Revisar consulta guardada",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en Guardar consulta",
-            "Selecciona la categoría Ventas",
-            "Confirma el nombre y ubicación"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Nombre consulta",
-              "valor": "Facturas Abiertas por Fecha",
-              "pista": "Descriptivo y estandarizado"
+              "etiqueta": "Nombre",
+              "valor": "Facturas abiertas por fecha",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Categoría",
-              "valor": "Ventas",
-              "pista": "Área funcional"
+              "etiqueta": "Almacenamiento",
+              "valor": "Este navegador",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Descripción",
-              "valor": "Facturas O > [%0]",
-              "pista": "Resumen del filtro"
+              "etiqueta": "¿Crea categoría compartida?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 15,
-        "script_text": "Vincularás tu consulta a una alarma de riesgo en el módulo de Gestión de Alarmas. Esta alarma usará un motor de sondeo programado para evaluar periódicamente si el saldo de un cliente (Balance en OCRD) supera su límite de crédito (CreditLine). Cuando se cumple la condición, se dispara una notificación automática al jefe de crédito y cobranzas, permitiendo acciones proactivas como bloquear nuevas ventas o iniciar seguimiento, sin esperar a que ocurra una transacción.",
+        "script_text": "Una alerta de crédito puede especificarse como saldo del cliente mayor que su límite, pero esta consulta no está vinculada a un motor automático de alarmas. Revisa balance y creditLimit en OCRD y compara ambos valores de forma controlada. El analizador no compara dos columnas en WHERE: exporta los resultados y calcula la diferencia en una hoja autorizada, o revisa la ficha del cliente.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Vincular consulta a alarma",
-          "menu_path": "Gestión > Alarmas > Gestión de Alarmas",
+          "title": "Revisar diseño de control de crédito",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Haz clic en Nueva alarma",
-            "Selecciona tu consulta guardada",
-            "Define la condición de disparo"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Nombre alarma",
-              "valor": "Límite de crédito superado",
-              "pista": "Descriptivo del riesgo"
+              "etiqueta": "Saldo",
+              "valor": "balance",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Consulta base",
-              "valor": "Facturas Abiertas por Fecha",
-              "pista": "Ya creada y guardada"
+              "etiqueta": "Límite",
+              "valor": "creditLimit",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Condición",
-              "valor": "Balance > CreditLine",
-              "pista": "Dispara cuando se debe más del límite"
+              "etiqueta": "¿Alarma automática activada?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 16,
-        "script_text": "Configurarás la periodicidad y los canales de notificación de la alarma: por ejemplo, cada dos horas o al inicio de la jornada. Seleccionarás al jefe de crédito y cobranzas como responsable y activarás dos canales: mensaje interno en Finix ERP y correo electrónico automático. Esto asegura que los responsables reciban alertas oportunas y puedan actuar de forma preventiva, sin necesidad de intervención constante, mejorando la eficiencia en la gestión de riesgo crediticio.",
+        "script_text": "Define responsable, frecuencia y canal como parte de un procedimiento de revisión manual. Por ejemplo, revisar a diario y registrar la decisión del jefe de crédito. Esto es un diseño operativo, no una programación activada por la ficha. Para automatizarlo se necesita una integración implementada, permisos, prueba de entrega y manejo de fallos; no presupongas que se envían correos.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Programar notificación de alarma",
-          "menu_path": "Gestión > Alarmas > Gestión de Alarmas",
+          "title": "Revisar procedimiento de revisión",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Selecciona la alarma creada",
-            "Define periodicidad: cada 2 horas",
-            "Asigna responsable y activa correo"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Periodicidad",
-              "valor": "Cada 2 horas",
-              "pista": "Frecuencia de evaluación"
+              "etiqueta": "Frecuencia propuesta",
+              "valor": "Diaria",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
               "etiqueta": "Responsable",
               "valor": "Jefe de Crédito",
-              "pista": "Usuario a notificar"
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Canal",
-              "valor": "Correo electrónico",
-              "pista": "Notificación externa"
+              "etiqueta": "¿Se envía correo automático?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 17,
-        "script_text": "Anclarás el resultado de tu consulta analítica como un widget en el Cockpit estilo Fiori del Director Comercial. Por ejemplo, un gráfico de barras que muestre las ventas acumuladas por representante comercial, usando SUM(DocTotal) OVER (PARTITION BY SlpName ORDER BY DocDate). Este widget se actualiza en tiempo real, proporcionando insights accionables directamente en el entorno de trabajo diario, sin necesidad de solicitar reportes manuales, cumpliendo el objetivo de una inteligencia empresarial oportuna y relevante.",
+        "script_text": "Para presentar el análisis usa el CSV comprobado en una herramienta de gráficos autorizada, identificando el período y las métricas. Los widgets del cockpit disponibles no implican que acepten SQL arbitrario ni que una ficha conecte una consulta. Explica la diferencia entre un gráfico manual del corte y un indicador que se actualiza automáticamente.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Agregar widget al Cockpit",
-          "menu_path": "Herramientas > Cockpit > Configuración de Widget de Recuento",
+          "title": "Revisar presentación del análisis",
+          "menu_path": "Herramientas > Consultas > Query Manager",
           "instructions": [
-            "Accede a la configuración de widgets",
-            "Selecciona tipo: gráfico de barras",
-            "Vincula consulta de ventas por vendedor"
+            "Realiza el análisis descrito en Query Manager sobre tu empresa de prácticas",
+            "Contrasta el resultado y completa la ficha de conceptos; esta ficha no crea documentos ni activa automatizaciones"
           ],
           "campos": [
             {
-              "etiqueta": "Tipo widget",
-              "valor": "Gráfico de barras",
-              "pista": "Visualización comparativa"
+              "etiqueta": "Archivo",
+              "valor": "CSV",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Origen datos",
-              "valor": "Consulta de ventas",
-              "pista": "Ya creada y probada"
+              "etiqueta": "¿Conecta SQL a un widget?",
+              "valor": "No",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             },
             {
-              "etiqueta": "Dimensión",
-              "valor": "SlpName",
-              "pista": "Nombre del vendedor"
-            },
-            {
-              "etiqueta": "Métrica",
-              "valor": "SUM(DocTotal)",
-              "pista": "Total facturado"
+              "etiqueta": "Validación",
+              "valor": "Contrastar documentos",
+              "pista": "Usa la columna o capacidad real descrita en la lámina"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 18,
-        "script_text": "Las buenas prácticas incluyen: usar parámetros dinámicos [%0] para fechas, guardar consultas en categorías departamentalas (como Ventas), aplicar filtros precisos como CardType = 'C', y vincular consultas críticas a alarmas de riesgo para monitoreo proactivo. Los errores comunes son: usar fechas fijas que hacen obsoletas las consultas, guardar en 'Mis Consultas' causando duplicidad, omitir el filtro de tipo de socio (mezclando clientes y proveedores), y no validar resultados con técnicas de grilla (orden, suma), lo que lleva a decisiones basadas en datos incorrectos o incompletos.",
-        "step_guide": null
+        "script_text": "Buenas prácticas son minimizar datos personales, usar columnas existentes, distinguir factura de cobro y validar agregaciones contra documentos. Usa fechas ISO, consulta una tabla por vez y documenta las transformaciones realizadas fuera del simulador. Para datos privados, controla también quién puede abrir los CSV, las copias del SQL y el equipo donde se guardan.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 19,
-        "script_text": "Has aprendido a usar el Generador de Consultas para crear sentencias SQL poderosas con joins automáticos, filtrar precisamente por tipo de socio y estado, y parametrizar fechas con [%0] para reutilización. Has aplicado técnicas de productividad en grilla (orden, suma), guardado consultas en categorías organizadas, vinculado consultas a alarmas de riesgo de crédito para notificaciones proactivas, y anclado widgets analíticos en el Cockpit Fiori para visión en tiempo real. Estas habilidades te convierten en un usuario autónomo capaz de transformar datos en decisiones estratégicas.",
-        "step_guide": null
+        "script_text": "Como entrega ejecuta una consulta de clientes y una de facturas, filtra el período, calcula una base facturada por cliente y contrasta documentos. Explica qué datos faltan para convertir ese resumen en deuda pendiente o rentabilidad. Describe una alerta como propuesta y marca expresamente que no queda automatizada ni enviada por completar la ficha del aula.",
+        "step_guide": null,
+        "presentation": "text"
       }
     ],
     "quizQuestions": [],

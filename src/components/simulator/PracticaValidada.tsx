@@ -116,7 +116,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [nivel, setNivel] = useState(0);
   const [moduloAbierto, setModuloAbierto] = useState<string | null>(null);
 
-  // Inicialización de campos con auto-relleno inteligente usando el correo registrado del estudiante
+  // Las fichas usan credenciales ficticias; nunca solicitar ni copiar las de la cuenta real.
   const [valores, setValores] = useState<string[]>(() => {
     return campos.map((c) => {
       const et = plano(c.etiqueta);
@@ -145,19 +145,6 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       .catch(() => { if (activo) setEmpresa(undefined); });
     return () => { activo = false; };
   }, [currentUser]);
-
-  // Si el usuario tiene sesión activa, actualizar el valor del campo Usuario con su correo real de la cuenta
-  useEffect(() => {
-    if (!currentUser?.email) return;
-    const emailReal = currentUser.email;
-    setValores(prev => prev.map((v, i) => {
-      const et = plano(campos[i]?.etiqueta || '');
-      if ((et.includes('usuario') || et.includes('user')) && (!v || v === 'alumno@ejemplo.test' || v === 'pablo.garcia' || v === 'manager')) {
-        return emailReal;
-      }
-      return v;
-    }));
-  }, [currentUser, campos]);
 
   const [logrado, setLogrado] = useState(false);
   const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal o confirma los datos prellenos.' });

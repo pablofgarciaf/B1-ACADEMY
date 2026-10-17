@@ -7,6 +7,7 @@
 /** Normaliza para comparar: sin tildes, mayúsculas, espacios, símbolos de moneda; números y fechas por su valor. */
 export function normalizar(valor: string): string {
   let v = valor.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const original = v;
   v = v.replace(/\b(usd|us\$)\b/g, '').replace(/[$\s]/g, '');
   const fecha = v.match(/^(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{2,4})$/);
   if (fecha) return `${Number(fecha[1])}/${Number(fecha[2])}/${fecha[3].length === 2 ? `20${fecha[3]}` : fecha[3]}`;
@@ -26,7 +27,9 @@ export function normalizar(valor: string): string {
     }
     if (!Number.isNaN(n)) return String(Math.round(n * 100) / 100);
   }
-  return v.replace(/[.,;:'"()_-]/g, '');
+  // Una moneda o un separador pueden ser la respuesta completa de la ficha.
+  // No convertir USD, "." o "," en vacío: impediría aprobar incluso la solución publicada.
+  return v.replace(/[.,;:'"()_-]/g, '') || original;
 }
 
 /**

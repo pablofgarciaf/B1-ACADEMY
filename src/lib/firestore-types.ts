@@ -38,7 +38,7 @@ export type JournalEntry = z.infer<typeof journalSchema>;
 export interface AccountingAccount extends Entity { code: string; name: string; parentCode: string; category: 'asset' | 'liability' | 'equity' | 'income' | 'cost' | 'expense'; nature: 'D' | 'H'; postable: boolean; active: boolean }
 export interface TrialBalanceRow { accountCode: string; name: string; category: AccountingAccount['category']; nature: 'D' | 'H'; opening: number; debit: number; credit: number; closing: number }
 export interface BankAccount extends Entity { name: string; bankName: string; accountNumber: string; currency: 'USD'; ledgerAccount: string; openingBalance: number; balance: number; active: boolean }
-export const bankSchema = base.extend({ transactionId: code, bankAccountId: code, date, type: z.enum(['deposit', 'payment']), amount: money.positive(), counterpartAccount: code, reference: text, documentId: z.string(), reconciled: z.boolean(), statementAmount: z.number().finite().nullable(), journalEntryId: z.string() });
+export const bankSchema = base.extend({ transactionId: code, bankAccountId: code, date, type: z.enum(['deposit', 'payment']), amount: money.positive(), retentionIR: money.optional(), retentionIVA: money.optional(), counterpartAccount: code, reference: text, documentId: z.string(), reconciled: z.boolean(), statementAmount: z.number().finite().nullable(), journalEntryId: z.string() });
 export type BankTransaction = z.infer<typeof bankSchema>;
 export const employeeSchema = base.extend({ employeeCode: code, firstName: text.min(1), lastName: text.min(1), identification: z.string().regex(/^\d{10}$/), position: text, department: text, hireDate: date, contract: z.enum(['indefinite', 'fixed', 'fees']), schedule: z.enum(['full', 'partial']), baseSalary: money.positive(), employerRate: money.max(100), personalRate: money.max(100), thirteenthMonthly: z.boolean(), fourteenthMonthly: z.boolean(), reserveMonthly: z.boolean(), vacationDays: money, dependents: z.number().int().min(0).max(10).default(0), projectedExpenses: money.default(0), active: z.boolean() });
 export type PayrollEmployee = z.infer<typeof employeeSchema>;
@@ -75,6 +75,8 @@ export interface XPEvent { key: string; label: string; points: number; date: str
 export interface CompanyProfile extends Entity { usage?: 'training' | 'private'; trainingSetupVersion?: number; address?: string; phone?: string; regimen?: 'general' | 'rimpe-emprendedor' | 'rimpe-popular'; uid: string; email: string; companyName: string; ruc: string; currency: 'USD'; country: 'EC'; fiscalScenario: 'training-2024' | 'ecuador-2026'; sbu: number; incomeTaxRate: number; warehouses: { code: string; name: string }[]; xp: number; level: number; xpHistory: XPEvent[]; completedModules: string[]; lastAccess: string; sequences: Record<string, number>; documentCount: number;
   /** Períodos contables cerrados (AAAA-MM): no admiten asientos. */
   closedPeriods?: string[];
+  /** Annual lock, also for years with no profit-and-loss entry to post. */
+  closedFiscalYears?: string[];
   /** Reglas de autorización: documentos de ese tipo sobre el monto requieren aprobación. */
   approvalRules?: ApprovalRule[];
   /** Lista de precios asignada a cada cliente (1 general, 2 mayorista, 3 distribuidor). */

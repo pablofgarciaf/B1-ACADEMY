@@ -8,6 +8,79 @@ const { EXAM_BANK, EXAM_QUESTIONS_PER_ATTEMPT } = require('../src/lib/exam-bank.
 const { practicasDelModulo, camposEsperados } = require('../src/lib/practice-registry.ts');
 const lessons = require('../src/content/aula/lecciones.json');
 
+test('todas las respuestas publicadas se pueden aprobar, incluidas monedas y separadores', () => {
+  const { coincide } = require('../src/lib/practice-check.ts');
+  let fields = 0;
+  for (const [classId, lesson] of Object.entries(lessons)) {
+    for (const slide of lesson.syncData) {
+      for (const field of slide.step_guide?.campos ?? []) {
+        assert.equal(coincide(field.valor, field.valor, field.etiqueta), true,
+          `Respuesta correcta rechazada en ${classId}#${slide.slide_index}: ${field.etiqueta}`);
+        fields++;
+      }
+    }
+  }
+  assert.ok(fields > 1000);
+  assert.equal(coincide('.', ','), false, 'Los dos separadores deben seguir siendo distintos');
+  assert.equal(coincide('EUR', 'USD'), false, 'Las monedas deben seguir siendo distintas');
+  assert.equal(coincide('', 'USD'), false, 'El vacío no es una moneda');
+});
+
+test('la ficha de acceso usa solo credenciales ficticias y no pide claves de cuentas reales', () => {
+  const slide = lessons['mod1-c2'].syncData[4];
+  assert.equal(slide.presentation, 'text');
+  assert.equal(slide.step_guide.campos[0].valor, 'alumno@ejemplo.test');
+  assert.equal(slide.step_guide.campos[1].valor, 'ClaveSoloDePractica2026!');
+  assert.doesNotMatch(slide.step_guide.instructions.join(' '), /contraseña de tu cuenta|tu correo de usuario/);
+  assert.match(slide.script_text, /Nunca escribas una contraseña real/);
+});
+
+test('cada práctica conectada tiene una operación verificable y las fichas SQL declaran su alcance', () => {
+  const { pantallaConectada } = require('../src/lib/practica-conectada.ts');
+  const { operationFor } = require('../src/lib/practice-contract.ts');
+  for (const [classId, lesson] of Object.entries(lessons)) {
+    for (const slide of lesson.syncData) {
+      const screen = pantallaConectada({ ...slide.step_guide, missionId: `${classId}#${slide.slide_index}` });
+      if (screen && screen.clave !== 'consultaAcademica') {
+        assert.ok(operationFor(screen).length, `${classId}#${slide.slide_index}: pantalla sin operación verificable`);
+      }
+    }
+  }
+  for (const id of ['mod23-c1', 'mod30-c3']) {
+    for (const slide of lessons[id].syncData) {
+      assert.equal(slide.presentation, 'text');
+      if (slide.step_guide) assert.equal(pantallaConectada(slide.step_guide), null, `${id}#${slide.slide_index}: una ficha conceptual no debe exigir escritura contable`);
+    }
+  }
+});
+
+test('las consultas enseñadas funcionan con las columnas y los estados reales del laboratorio', () => {
+  const { ejecutarConsulta } = require('../src/lib/query-engine.ts');
+  const { emptyCompany } = require('../src/lib/firestore-types.ts');
+  const company = emptyCompany();
+  company.customers = [{ cardCode: 'C1', name: 'Cliente ficticio', balance: 80, creditLimit: 100 }];
+  company.vendors = [{ cardCode: 'V1', name: 'Proveedor ficticio', balance: 0 }];
+  company.salesOrders = [
+    { id: 'i1', docNumber: 'F001', docType: 'invoice', date: '2026-04-02', cardCode: 'C1', total: 115, subtotal: 100, status: 'open', lines: [{itemCode: 'A1', quantity: 1, price: 100, discount: 0}] },
+    { id: 'i2', docNumber: 'F002', docType: 'invoice', date: '2026-03-30', cardCode: 'C1', total: 57.5, subtotal: 50, status: 'closed', lines: [] },
+    { id: 'o1', docNumber: 'P001', docType: 'order', date: '2026-04-03', cardCode: 'C1', total: 230, subtotal: 200, status: 'open', lines: [{itemCode: 'A1', quantity: 2, price: 100, discount: 0}] },
+  ];
+  const cases = [
+    ["SELECT cardCode, name FROM OCRD WHERE cardType = 'C'", [{cardCode: 'C1', name: 'Cliente ficticio'}]],
+    ["SELECT docNumber, cardCode, total FROM ORDR WHERE status = 'open' ORDER BY date", [{docNumber: 'P001', cardCode: 'C1', total: 230}]],
+    ["SELECT docNumber, cardCode, total FROM ORDR WHERE date > '2026-04-01' ORDER BY date", [{docNumber: 'P001', cardCode: 'C1', total: 230}]],
+    ["SELECT docNumber, itemCode, quantity, lineTotal FROM INV1 WHERE docType = 'invoice'", [{docNumber: 'F001', itemCode: 'A1', quantity: 1, lineTotal: 100}]],
+    ['SELECT cardCode, SUM(subtotal) AS base_facturada FROM OINV GROUP BY cardCode ORDER BY base_facturada DESC', [{cardCode: 'C1', base_facturada: 150}]],
+    ["SELECT docNumber, date, total FROM OINV WHERE date > '2026-04-01'", [{docNumber: 'F001', date: '2026-04-02', total: 115}]],
+    ["SELECT docNumber, cardCode, total FROM OINV WHERE status = 'open'", [{docNumber: 'F001', cardCode: 'C1', total: 115}]],
+  ];
+  const published = ['mod23-c1', 'mod30-c3'].flatMap(id => lessons[id].syncData.map(s => s.script_text)).join(' ');
+  for (const [sql, expected] of cases) {
+    assert.ok(published.includes(sql), `Consulta no coincide con el guion: ${sql}`);
+    assert.deepEqual(ejecutarConsulta(company, sql).filas, expected, sql);
+  }
+});
+
 test('la navegación incluye cada módulo publicado y todos los requisitos de diploma existen', () => {
   const modules = new Set(OFFICIAL_SYLLABUS.map(courseModule => courseModule.id));
   assert.equal(modules.size, OFFICIAL_SYLLABUS.length, 'Módulos duplicados');

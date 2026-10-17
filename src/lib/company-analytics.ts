@@ -1,5 +1,5 @@
-import type { CompanyState, JournalLine, TrialBalanceRow } from './firestore-types';
-import { financialSummary, round, trialBalance, usd } from './company-calculations';
+import type { CompanyState, JournalLine } from './firestore-types';
+import { balanceGroups, financialSummary, periodResults, round, trialBalance, usd } from './company-calculations';
 
 /** Porcentaje con coma decimal (formato Ecuador) para los textos de lectura. */
 const pctTxt = (n: number) => n.toLocaleString('es-EC', { maximumFractionDigits: 1 });
@@ -61,8 +61,6 @@ function semaforo(valor: number | null, u: Umbral): Semaforo {
 }
 
 const div = (a: number, b: number): number | null => (b === 0 ? null : a / b);
-const saldo = (rows: TrialBalanceRow[], prefijo: string) => round(rows.filter(r => r.accountCode.startsWith(prefijo)).reduce((s, r) => s + r.closing, 0));
-const movimiento = (rows: TrialBalanceRow[], prefijo: string) => round(rows.filter(r => r.accountCode.startsWith(prefijo)).reduce((s, r) => s + r.debit - r.credit, 0));
 
 function diasEntre(desde: string, hasta: string) {
   const ms = new Date(`${hasta}T00:00:00`).getTime() - new Date(`${desde}T00:00:00`).getTime();
@@ -75,23 +73,25 @@ export function analisisGerencial(state: CompanyState, desde: string, hasta: str
   const dias = diasEntre(desde, hasta);
 
   // Estado de resultados del período (movimientos) y balance a la fecha de corte (saldos).
-  const ventas = -movimiento(rows, '4.01');
-  const otrosIngresos = -movimiento(rows, '4.02');
-  const costoVentas = movimiento(rows, '5.');
-  const gastos = movimiento(rows, '6.');
+  const results = periodResults(state.chartOfAccounts, state.journalEntries, desde, hasta, state.profile?.incomeTaxRate);
+  const ventas = results.operatingRevenue;
+  const otrosIngresos = results.otherRevenue;
+  const costoVentas = results.cost;
+  const gastos = results.expenses;
   const utilidadBruta = round(ventas - costoVentas);
   const utilidadOperacional = round(utilidadBruta - gastos);
   const antesImpuestos = round(utilidadOperacional + otrosIngresos);
   const impuesto = round(Math.max(0, antesImpuestos) * (state.profile?.incomeTaxRate ?? 25) / 100);
   const utilidadNeta = round(antesImpuestos - impuesto);
 
-  const activoCorriente = saldo(rows, '1.1.');
-  const inventario = round(saldo(rows, '1.1.05') + saldo(rows, '1.1.07'));
-  const cuentasPorCobrar = round(saldo(rows, '1.1.03') + saldo(rows, '1.1.04'));
-  const efectivo = round(saldo(rows, '1.1.01') + saldo(rows, '1.1.02'));
+  const groups = balanceGroups(rows);
+  const activoCorriente = groups.currentAssets;
+  const inventario = groups.inventory;
+  const cuentasPorCobrar = groups.receivables;
+  const efectivo = groups.cash;
   const activoTotal = balance.assets;
-  const pasivoCorriente = -saldo(rows, '2.1.');
-  const cuentasPorPagar = -saldo(rows, '2.1.01');
+  const pasivoCorriente = groups.currentLiabilities;
+  const cuentasPorPagar = groups.payables;
   const pasivoTotal = balance.liabilities;
   const patrimonio = round(balance.equity + balance.profit);
 
@@ -213,9 +213,12 @@ export function antiguedadSaldos(state: CompanyState, corte: string, tipo: 'cobr
   const notas = tipo === 'cobrar' ? state.salesOrders.filter(d => d.docType === 'credit_note') : [];
   const porSocio = new Map<string, FilaAntiguedad>();
   for (const d of docs) {
-    if (d.date > corte || d.status !== 'open') continue;
+    if (d.date > corte) continue;
     const acreditado = notas.filter(n => n.baseDocumentId === d.id && n.date <= corte).reduce((s, n) => s + n.total, 0);
-    const pendiente = round(d.total - d.paidAmount - acreditado);
+    // Current paidAmount/status are not a historical snapshot. Undo settlements
+    // after the cut-off, including withholding certificates received with a collection.
+    const pagosPosteriores = state.bankTransactions.filter(t => t.documentId === d.id && t.date > corte).reduce((s, t) => s + t.amount + (t.retentionIR ?? 0) + (t.retentionIVA ?? 0), 0);
+    const pendiente = round(d.total - d.paidAmount + pagosPosteriores - acreditado);
     if (pendiente <= 0.009) continue;
     const t = d.dueDate >= corte ? 0 : tramo(diasEntre(d.dueDate, corte) - 1);
     const fila = porSocio.get(d.cardCode) ?? { cardCode: d.cardCode, nombre: d.cardName, tramos: [0, 0, 0, 0, 0], total: 0 };
@@ -248,17 +251,17 @@ export function antiguedadSaldos(state: CompanyState, corte: string, tipo: 'cobr
 export type Actividad = 'Operación' | 'Inversión' | 'Financiamiento';
 export interface FlujoCaja { desde: string; hasta: string; saldoInicial: number; entradas: number; salidas: number; saldoFinal: number; categorias: { categoria: string; actividad: Actividad; monto: number }[]; porActividad: Record<Actividad, number>; lectura: string[]; preguntas: string[] }
 
-const esCaja = (cuenta: string) => cuenta === '1.1.01' || cuenta === '1.1.02' || cuenta.startsWith('1.1.02.');
+const esCaja = (cuenta: string) => cuenta === '1.1.01' || cuenta === '1.1.02' || cuenta.startsWith('1.1.02.') || cuenta.startsWith('10101');
 
 function clasificar(contrapartida: string): { categoria: string; actividad: Actividad } {
-  if (contrapartida === '1.1.03') return { categoria: 'Cobros a clientes', actividad: 'Operación' };
-  if (contrapartida === '2.1.01' || contrapartida === '2.1.06') return { categoria: 'Pagos a proveedores', actividad: 'Operación' };
+  if (contrapartida === '1.1.03' || contrapartida.startsWith('1010205') || contrapartida.startsWith('1010206')) return { categoria: 'Cobros a clientes', actividad: 'Operación' };
+  if (contrapartida === '2.1.01' || contrapartida === '2.1.06' || contrapartida.startsWith('20103')) return { categoria: 'Pagos a proveedores', actividad: 'Operación' };
   if (['2.1.04', '2.1.05', '2.1.07', '2.1.08', '1.1.08', '6.01', '6.02', '6.04'].includes(contrapartida)) return { categoria: 'Nómina y beneficios', actividad: 'Operación' };
   if (['2.1.02', '2.1.03', '1.1.06'].includes(contrapartida)) return { categoria: 'Impuestos (IVA y retenciones)', actividad: 'Operación' };
-  if (contrapartida.startsWith('1.2.')) return { categoria: 'Compra/venta de activos fijos', actividad: 'Inversión' };
-  if (contrapartida.startsWith('2.2.')) return { categoria: 'Préstamos', actividad: 'Financiamiento' };
-  if (contrapartida.startsWith('3.')) return { categoria: 'Aportes y retiros de socios', actividad: 'Financiamiento' };
-  if (contrapartida.startsWith('4.')) return { categoria: 'Ventas de contado', actividad: 'Operación' };
+  if (contrapartida.startsWith('1.2.') || contrapartida.startsWith('10201')) return { categoria: 'Compra/venta de activos fijos', actividad: 'Inversión' };
+  if (contrapartida.startsWith('2.2.') || contrapartida.startsWith('20104') || contrapartida.startsWith('20202')) return { categoria: 'Préstamos', actividad: 'Financiamiento' };
+  if (contrapartida.startsWith('3')) return { categoria: 'Aportes y retiros de socios', actividad: 'Financiamiento' };
+  if (contrapartida.startsWith('4')) return { categoria: 'Ventas de contado', actividad: 'Operación' };
   return { categoria: 'Otros gastos e ingresos operativos', actividad: 'Operación' };
 }
 
@@ -359,7 +362,7 @@ export function presupuestoVsReal(state: CompanyState, year: string, hastaMes: n
     const tipo = categoria.get(b.accountCode) as FilaPresupuesto['tipo'];
     const realMeses = Array.from({ length: 12 }, () => 0);
     for (const e of state.journalEntries) {
-      if (!e.date.startsWith(year)) continue;
+      if (!e.date.startsWith(year) || e.source === 'closing') continue;
       const mes = Number(e.date.slice(5, 7)) - 1;
       for (const l of e.lines) if (l.accountCode === b.accountCode) realMeses[mes] += tipo === 'income' ? l.credit - l.debit : l.debit - l.credit;
     }
