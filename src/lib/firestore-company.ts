@@ -22,6 +22,7 @@ export const LISTA_SIETE_EMPRESAS: EmpresaDefinicion[] = [
   { id: 'empresa_6', name: 'Empresa 6 · Importaciones & Comex', shortName: '6. Importaciones & Comex', category: 'Comercio Exterior', icon: '🚢' },
   { id: 'empresa_7', name: 'Empresa 7 · Inmobiliaria & Activos', shortName: '7. Inmobiliaria & Activos', category: 'Holding Patrimonial', icon: '🏛️' },
 ];
+export const EMPRESA_PRIVADA: EmpresaDefinicion = {id:'privado',name:'Empresa privada',shortName:'Empresa privada · acceso restringido',category:'Contabilidad privada',icon:'🔒'};
 
 export type EmpresaSlot = string;
 const CLAVE_EMPRESA = 'b1_empresa_activa';
@@ -38,7 +39,6 @@ export function empresaActiva(): EmpresaSlot {
 export function cambiarEmpresaActiva(slot: EmpresaSlot) {
   try { localStorage.setItem(CLAVE_EMPRESA, slot); } catch { /* sin almacenamiento: se usa B1 Center */ }
   window.dispatchEvent(new Event('finix-company-changed'));
-  window.dispatchEvent(new Event('finix-company-changed'));
 }
 // Fuerza la empresa del curso mientras se ejecuta Mi Aula (ver usarEmpresaCurso).
 let forzarCurso = 0;
@@ -48,9 +48,10 @@ const slotActual = (): EmpresaSlot => (forzarCurso > 0 ? 'curso' : empresaActiva
 export async function companyFetch<T>(path: string, init?: RequestInit): Promise<T> {
   try {
     const user = auth.currentUser;
+    const selectedSlot = slotActual();
     if (!user) throw new Error('Inicia sesión en la academia.');
     const token = await user.getIdToken();
-    const response = await fetch(path, { ...init, cache: 'no-store', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, 'X-Empresa': slotActual(), ...init?.headers } });
+    const response = await fetch(path, { ...init, cache: 'no-store', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}`, 'X-Empresa': selectedSlot, ...init?.headers } });
     const data: unknown = await response.json();
     if (!response.ok) throw new Error(typeof data === 'object' && data && 'error' in data ? String(data.error) : 'Operación fallida.');
     return data as T;
@@ -61,10 +62,10 @@ export async function sendCommand(uid: string, command: CompanyCommand, requestI
   if (auth.currentUser?.uid !== uid) throw new Error('No puedes modificar otra empresa.');
   // Same request ID on the single network retry; the server stores its result atomically.
   const body = JSON.stringify({ requestId, command });
+  const headers = { 'X-Empresa': slotActual() };
   let response: { result: string };
-  try { response = await companyFetch<{ result: string }>('/api/finix/company', { method: 'POST', body }); }
-  catch (error: unknown) { if (!(error instanceof TypeError)) throw error; response = await companyFetch<{ result: string }>('/api/finix/company', { method: 'POST', body }); }
-  window.dispatchEvent(new Event('finix-company-changed'));
+  try { response = await companyFetch<{ result: string }>('/api/finix/company', { method: 'POST', body, headers }); }
+  catch (error: unknown) { if (!(error instanceof TypeError)) throw error; response = await companyFetch<{ result: string }>('/api/finix/company', { method: 'POST', body, headers }); }
   window.dispatchEvent(new Event('finix-company-changed'));
   return response.result;
 }

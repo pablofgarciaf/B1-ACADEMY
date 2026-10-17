@@ -248,7 +248,7 @@ export function antiguedadSaldos(state: CompanyState, corte: string, tipo: 'cobr
 export type Actividad = 'Operación' | 'Inversión' | 'Financiamiento';
 export interface FlujoCaja { desde: string; hasta: string; saldoInicial: number; entradas: number; salidas: number; saldoFinal: number; categorias: { categoria: string; actividad: Actividad; monto: number }[]; porActividad: Record<Actividad, number>; lectura: string[]; preguntas: string[] }
 
-const esCaja = (cuenta: string) => cuenta === '1.1.01' || cuenta === '1.1.02';
+const esCaja = (cuenta: string) => cuenta === '1.1.01' || cuenta === '1.1.02' || cuenta.startsWith('1.1.02.');
 
 function clasificar(contrapartida: string): { categoria: string; actividad: Actividad } {
   if (contrapartida === '1.1.03') return { categoria: 'Cobros a clientes', actividad: 'Operación' };

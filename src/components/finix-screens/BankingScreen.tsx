@@ -6,13 +6,14 @@ import type { CommandData } from '@/lib/company-commands';
 import { Screen, Table, Field, inputClass, buttonClass, Navigation, SaveButton, NumberInput } from './FinixControls';
 import BancaEnLinea from './BancaEnLinea';
 export default function BankingScreen() {
-  const c = useCompany(); const blank = (): CommandData<'bank'> => ({ bankAccountId: 'BAN-1', date: today(), type: 'deposit', amount: 0, counterpartAccount: '3.01', reference: '', documentId: '' });
+  const c = useCompany(); const blank = (): CommandData<'bank'> => ({ bankAccountId: c.data.bankAccounts[0]?.id ?? '', date: today(), type: 'deposit', amount: 0, counterpartAccount: '3.01', reference: '', documentId: '' });
   const [data, setData] = useState(blank); const [index, setIndex] = useState(-1); const [bank, setBank] = useState(''); const [statement, setStatement] = useState<Record<string, number>>({});
   const rows = c.data.bankTransactions.filter(t => !bank || t.bankAccountId === bank); const reset = () => { setData(blank()); setIndex(-1); };
   const invoices = [...c.data.salesOrders, ...c.data.purchaseOrders].filter(d => (data.type === 'deposit' ? d.docType === 'invoice' : ['vendor_invoice', 'debit_note', 'credit_note'].includes(d.docType)) && d.status === 'open');
   const sign = (type: string, value: number) => type === 'deposit' ? value : -value;
   return <Screen title="Bancos · Cobros, pagos y conciliación">
-    <Table headers={['Cuenta ficticia', 'Banco', 'Número', 'Saldo']} rows={c.data.bankAccounts.map(a => [a.name, a.bankName, a.accountNumber, usd(a.balance)])} />
+    {!c.data.bankAccounts.length && <p>Registra las cuentas del propietario en Administración → Inicialización antes de operar bancos.</p>}
+    <Table headers={[c.data.profile?.usage==='private'?'Cuenta privada':'Cuenta ficticia', 'Banco', 'Número', 'Saldo']} rows={c.data.bankAccounts.map(a => [a.name, a.bankName, a.accountNumber, usd(a.balance)])} />
     <Navigation count={rows.length} index={index} onNew={reset} onSelect={i => {
       setIndex(i);
       const r = rows[i];
@@ -93,6 +94,6 @@ export default function BankingScreen() {
       ];
     })} />
     <p>Diferencia total libro / banco: {usd(rows.reduce((s, t) => s + sign(t.type, t.amount) - (statement[t.id] ?? t.statementAmount ?? 0), 0))}</p>
-    <BancaEnLinea />
+    {c.data.profile?.usage!=='private' && <BancaEnLinea />}
   </Screen>;
 }

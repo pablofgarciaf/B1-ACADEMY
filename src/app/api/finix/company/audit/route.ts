@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { requireBearerUser } from '@/lib/server-auth';
 import { readCompanyAudit, verifyCompanyAudit } from '@/lib/company-server';
+import { companyScope } from '@/lib/company-scope';
 
 export const runtime = 'nodejs';
 
@@ -11,8 +12,9 @@ export async function GET(request: Request) {
   catch { return NextResponse.json({ error: 'Sesión no válida.' }, { status: 401 }); }
   const url = new URL(request.url);
   const slot = request.headers.get('x-empresa') || 'curso';
-  const safe = slot.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32);
-  const companyId = slot === 'curso' || !safe ? actor.uid : `${actor.uid}__${safe}`;
+  let companyId: string;
+  try { companyId = companyScope(actor.uid,slot,actor.profile.privateAccountingEnabled === true); }
+  catch (error) { return NextResponse.json({error:error instanceof Error ? error.message : 'Empresa inválida.'},{status:403}); }
   const limit = Number(url.searchParams.get('limit') || '50');
   const beforeRaw = url.searchParams.get('before');
   const before = beforeRaw ? Number(beforeRaw) : undefined;

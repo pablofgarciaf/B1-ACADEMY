@@ -138,6 +138,9 @@ export async function POST(req: Request) {
     }
 
     const { messages, currentScreen, currentModule, companySlot, companyName } = parsed.data;
+    if (companySlot === 'privado' || req.headers.get('x-empresa') === 'privado') {
+      return NextResponse.json({error:'El asistente externo está desactivado en la empresa privada. No envíes información contable confidencial.'},{status:403});
+    }
 
     if (messages.reduce((n,m)=>n+m.content.length,0)>20000) return NextResponse.json({error:'La conversación es demasiado extensa.'},{status:400});
     const quota=await consumeQuota('advisor',uid,20,15*60_000);

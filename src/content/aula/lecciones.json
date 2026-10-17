@@ -22,8 +22,9 @@
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar esta clase podrás explicar qué es Finix ERP y para qué sirve en una empresa real. Identificarás sus módulos centrales y cómo se integran para optimizar operaciones. Comprenderás las ventajas de trabajar con un sistema unificado en tiempo real. Además, conocerás los dos modelos de despliegue disponibles: On-Premise y Cloud, y sus implicaciones estratégicas.",
-        "step_guide": null
+        "script_text": "Al finalizar esta clase podrás explicar para qué sirve un ERP, identificar sus áreas funcionales y distinguir datos maestros de operaciones. Reconocerás la empresa de práctica y explicarás cómo una venta, una entrega y un cobro afectan registros distintos. También compararás el alojamiento local y el servicio en la nube como alternativas de arquitectura; esta plataforma de aprendizaje se utiliza desde el navegador.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 3,
@@ -32,8 +33,9 @@
       },
       {
         "slide_index": 4,
-        "script_text": "En un escenario real, cuando un cliente pide un equipo personalizado, Finix ERP verifica automáticamente la disponibilidad en bodega. Si faltan componentes, dispara el MRP para planificar compras y genera órdenes a proveedores. Al recibir los materiales y ensamblar el producto, registra números de serie, crea la tarjeta de garantía y activa el módulo de servicio para gestionar incidencias postventa. Todo ocurre de forma secuencial y automática dentro del mismo sistema, sin intervención manual.",
-        "step_guide": null
+        "script_text": "En un caso de fabricación bajo pedido, ventas consulta existencias antes de comprometer una entrega. Si faltan materiales, el responsable revisa la planificación y autoriza las compras o la producción necesarias. Después registra la recepción, el consumo, la fabricación y el despacho. Cada paso requiere datos y controles; disponer de módulos integrados no significa que todo se ejecute sin intervención humana. En las prácticas comprueba siempre qué documento acabas de crear y qué efecto produjo.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 5,
@@ -42,8 +44,9 @@
       },
       {
         "slide_index": 6,
-        "script_text": "En Finix ERP cada empresa vive en su propia base de datos. Al iniciar sesión eliges con cuál trabajar desde Gestión, Seleccionar empresa. En este curso trabajarás siempre en tu empresa de práctica, la que creaste en el Paso cero: todo lo que registres en las prácticas quedará guardado en ella y podrás usarlo en las clases siguientes.",
-        "step_guide": null
+        "script_text": "Una empresa o sociedad delimita los registros sobre los que puedes trabajar. En esta plataforma la sesión identifica al usuario y el servidor comprueba qué empresa puede consultar o modificar. La separación se realiza mediante identificadores y permisos; no debes asumir que cada empresa tiene una base de datos física independiente. En el curso utilizarás tu empresa de práctica creada en el Paso cero y revisarás la empresa activa antes de registrar operaciones.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 7,
@@ -138,23 +141,27 @@
       },
       {
         "slide_index": 9,
-        "script_text": "Finix ERP ofrece dos modelos de despliegue: On-Premise y Cloud. En el modelo On-Premise, el software se instala en servidores internos con licencia perpetua, lo que implica alto costo inicial pero control total sobre los datos y la infraestructura. En el modelo Cloud, se accede mediante suscripción mensual, reduciendo la inversión inicial y delegando el mantenimiento a Finix ERP. El Cloud ofrece mayor escalabilidad y actualizaciones automáticas, ideal para empresas en crecimiento que buscan agilidad y menor carga operativa interna.",
-        "step_guide": null
+        "script_text": "Un ERP puede alojarse en infraestructura administrada por la empresa o prestarse como servicio en la nube. La elección depende de disponibilidad, costos, soporte, seguridad y recuperación. No existe una licencia o precio universal para estas alternativas: se revisan en el contrato de cada producto. Academy ofrece este laboratorio a través del navegador; esta clase no promete una instalación local ni una licencia perpetua del simulador.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 10,
-        "script_text": "Cuando se registra un pago de cliente en efectivo, Finix ERP genera automáticamente un asiento contable de partida doble. En este ejemplo, al recibir 500.00 USD de un cliente, se aumenta la cuenta de Caja (activo) en el debe y se disminuye Cuentas por Cobrar (activo) en el haber. Este asiento se crea en tiempo real, sin necesidad de procesos de conciliación posteriores. Esto garantiza que los estados financieros siempre reflejen con precisión la situación económica real de la empresa, mejorando la confiabilidad para toma de decisiones.",
-        "step_guide": null
+        "script_text": "Si un cliente paga una factura pendiente por 500 dólares en efectivo, el registro contable normalmente debita Caja y acredita la cuenta por cobrar del cliente por el importe aplicado. Antes de guardar, comprueba el documento, el cliente, la fecha y el saldo pendiente. Después revisa el asiento y el nuevo saldo. La generación automática del asiento no reemplaza el arqueo de caja, la conciliación, la revisión documental ni otros controles contables.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 11,
-        "script_text": "Las empresas que implementan Finix ERP experimentan mejoras medibles en su desempeño operativo. Se observa una reducción del 40 % en errores operativos gracias a la eliminación de datos duplicados y procesos manuales. El cierre contable se acelera un 60 % debido a la actualización automática de asientos. Además, el 95 % de la información está disponible en tiempo real, lo que permite a gerentes acceder a datos confiables al instante y tomar decisiones ágiles basadas en la situación actual del negocio, no en reportes desactualizados.",
-        "step_guide": null
+        "script_text": "Para evaluar los beneficios de un ERP se compara una situación inicial con resultados posteriores: errores documentales, tiempo de cierre, diferencias de inventario y antigüedad de cartera. Define cómo medir cada indicador y conserva la evidencia del caso. Un software por sí solo no garantiza porcentajes de mejora. La calidad de los datos, la capacitación, los controles y la forma de trabajo influyen en los resultados.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 12,
-        "script_text": "Finix ERP es un ERP diseñado para pequeñas y medianas empresas que integra finanzas, compras, inventario, ventas y servicio en una única base de datos. Permite operar en tiempo real, eliminar duplicidad y mejorar la toma de decisiones. Ofrece dos modelos de despliegue: On-Premise para control total y Cloud para agilidad y menor costo inicial. Su uso genera beneficios medibles como reducción de errores, cierre más rápido y visibilidad total. Es la solución ideal para empresas que buscan eficiencia, escalabilidad y rentabilidad sostenible desde una plataforma unificada.",
-        "step_guide": null
+        "script_text": "Un ERP integra datos y procesos de varias áreas. Para trabajar correctamente debes identificar tu empresa, revisar datos maestros, registrar operaciones autorizadas y comprobar sus efectos en inventario, cartera y contabilidad. El laboratorio permite practicar estos conceptos con datos de ejemplo. La decisión de usarlo con contabilidad empresarial real exige comprobar antes los controles, respaldos, resultados y requisitos de la empresa.",
+        "step_guide": null,
+        "presentation": "text"
       }
     ],
     "quizQuestions": [],
@@ -188,17 +195,19 @@
       },
       {
         "slide_index": 3,
-        "script_text": "En Finix ERP hay dos tipos principales: superusuarios, con acceso ilimitado a todas las funciones, y usuarios finales, cuyo acceso está restringido por licencia y autorizaciones. Esto mejora la seguridad y muestra solo lo relevante para su rol.",
-        "step_guide": null
+        "script_text": "El acceso depende del rol y de las autorizaciones del usuario. Un estudiante trabaja con sus propios registros; un docente accede a los alumnos que tiene asignados y un administrador gestiona funciones autorizadas de la plataforma. No compartas la cuenta ni supongas que ver un botón te concede acceso: el servidor debe validar cada operación.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,
-        "script_text": "Al iniciar sesión, debes ingresar tu usuario y contraseña, luego seleccionar la compañía en la que trabajarás. El sistema muestra tu nombre y la empresa elegida en la parte superior central. Cada empresa tiene su propia base de datos.",
-        "step_guide": null
+        "script_text": "Primero inicia sesión con tu cuenta de Academy. Después comprueba la empresa de práctica seleccionada y el usuario activo antes de registrar operaciones. La autenticación de la cuenta y la selección de empresa son controles diferentes. Elegir una sociedad no debe permitir consultar ni modificar los datos de otro usuario.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 5,
-        "script_text": "Para trabajar en Finix ERP primero inicias sesión y eliges la empresa. En B1 Academy, tu usuario de acceso es siempre tu correo corporativo o registrado (ej. pablofgarciaf@gmail.com) y tu contraseña es la clave de tu cuenta. Abre la ventana Seleccionar empresa desde Gestión, verifica tus datos de acceso y elige tu empresa B1 Center para entrar.",
+        "script_text": "Para acceder utiliza el correo y la contraseña de tu propia cuenta de Academy. Nunca escribas una contraseña real en los campos didácticos ni la compartas con un tutor. La ventana Seleccionar empresa de este ejercicio representa la elección de B1 Center dentro del laboratorio; no reemplaza el inicio de sesión de la plataforma. Revisa los valores de demostración de la ficha y confirma la empresa del curso.",
         "step_guide": {
           "action_type": "practica",
           "title": "Iniciar sesión en B1 Center",
@@ -226,7 +235,8 @@
               "pista": "Tu base de datos B1 Center"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 6,
@@ -488,8 +498,9 @@
       },
       {
         "slide_index": 3,
-        "script_text": "Finix ERP distingue superusuarios con acceso total y usuarios finales con menú restringido por rol. El cockpit puede ser estilo Fiori (HTML5, solo en HANA) o clásico (disponible en todas las plataformas). Ambos permiten personalización mediante widgets, pero solo administradores pueden cambiar el tipo a nivel de empresa.",
-        "step_guide": null
+        "script_text": "El menú y las funciones disponibles dependen de las autorizaciones. El cockpit es el tablero del laboratorio y puede mostrar accesos y resúmenes adecuados al trabajo. Esta aplicación se utiliza en un navegador; no necesitas instalar HANA ni SQL Server para realizar las clases. Los cambios de permisos deben validarse en el servidor, además de reflejarse en la interfaz.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,
@@ -1649,7 +1660,7 @@
           ],
           "campos": [
             {
-              "etiqueta": "Objecto",
+              "etiqueta": "Objeto",
               "valor": "Activo Fijo",
               "pista": "Seleccionar el tipo de objeto en la lista"
             },
@@ -17056,37 +17067,41 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Clase sobre facturación electrónica en Ecuador según normativa SRI vigente desde enero de 2026. Se aprende a transmitir comprobantes de forma inmediata, anular dentro del plazo legal y aplicar retenciones en la fuente e IVA. Incluye práctica en Finix ERP con integración a solución externa certificada. Empresa ficticia: B1 Center.",
-        "step_guide": null
+        "script_text": "Esta clase estudia el flujo de facturación electrónica de Ecuador y practica sus controles con datos de laboratorio. La emisión de una factura contable, la transmisión, la autorización del XML y la entrega de su representación son pasos distintos. Este ejercicio no transmite comprobantes al SRI ni acredita una integración certificada.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar, podrás transmitir facturas electrónicas al SRI en el momento de la emisión, solicitar anulación dentro del plazo de siete días, aplicar correctamente retenciones en la fuente e IVA según el tipo de proveedor, y validar que el RUC del proveedor del sistema aparezca en la información adicional. Todo usando Finix ERP y su integración con solución de facturación electrónica.",
-        "step_guide": null
+        "script_text": "Al terminar podrás diferenciar una factura de prueba de un comprobante autorizado, revisar los datos de un emisor y de su proveedor de facturación, y calcular los importes del ejemplo. También distinguirás la corrección contable de una operación de la anulación tributaria de un comprobante. Antes de aplicar reglas a una empresa real consulta la ficha técnica y las resoluciones vigentes.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 3,
-        "script_text": "Desde el 1 de enero de 2026, la transmisión de comprobantes electrónicos al SRI es inmediata: el documento se envía al momento de emitirlo, sin plazo de gracia. La fecha de emisión debe coincidir con la real de la operación. El documento con validez tributaria es el XML autorizado; el RIDE es solo una representación impresa para el cliente. Ya no se requiere autorización previa: el SRI habilita automáticamente a los contribuyentes obligados.",
-        "step_guide": null
+        "script_text": "El boletín oficial NAC-COM-25-072 del SRI sitúa la transmisión inmediata de comprobantes electrónicos a partir del 1 de enero de 2026. La autorización tributaria debe comprobarse en la respuesta del SRI. Un PDF, una vista previa o una factura guardada por el laboratorio no prueban esa autorización. No confundas un número interno de documento con el identificador tributario del comprobante.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,
-        "script_text": "El proceso comienza al emitir el comprobante en Finix ERP o mediante la solución integrada. Inmediatamente se transmite al SRI para su autorización. Una vez aprobado el XML, se genera el RIDE para entregar al cliente. Este flujo garantiza cumplimiento con la normativa de transmisión inmediata vigente desde enero de 2026.",
-        "step_guide": null
+        "script_text": "Para una operación real se prepara el comprobante conforme a la ficha técnica, se firma electrónicamente y se comprueban las respuestas de recepción y autorización. El registro contable del sistema debe relacionarse con esos resultados. En esta práctica solo registras datos de prueba: conserva la separación entre el estado contable y el estado tributario y no marques como autorizado un documento por haberlo guardado.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 5,
-        "script_text": "Registras una factura de proveedor por dos laptops Dell Latitude 3420. Como exige la Resolución NAC-DGERCGC26-00000027, incluyes en Información Adicional el RUC del proveedor del sistema de facturación electrónica (1792456789001, correspondiente a B1 Center). Esto debe hacerse dentro de los 60 días hábiles desde julio 2026. La fecha es real y el IVA se aplica al 15%.",
+        "script_text": "Registra una factura de prueba del proveedor V10000 por dos laptops A00001, con fecha del caso 05/04/2026. El número 1792456789001 es un dato ficticio del laboratorio. La resolución NAC-DGERCGC26-00000027 trata la identificación del proveedor externo de facturación, que es distinto del emisor o usuario del sistema. No atribuyas ese RUC a un proveedor real ni apliques retroactivamente una obligación posterior a la fecha del ejemplo.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Ingresar RUC del sistema",
+          "title": "Registrar datos de una factura de prueba",
           "menu_path": "Compras - Proveedores > Factura de Proveedores",
           "instructions": [
-            "Seleccionar proveedor V10000 (Dell Ecuador)",
-            "Ingresar fecha 05/04/2026",
-            "En Información Adicional, escribir RUC del proveedor del sistema: 1792456789001",
-            "Seleccionar artículo A00001, cantidad 2",
-            "Verificar que el total incluya IVA 15%"
+            "Selecciona el proveedor V10000 del laboratorio",
+            "Usa la fecha del caso 05/04/2026",
+            "Registra 1792456789001 solo como referencia ficticia del ejercicio",
+            "Selecciona el artículo A00001 y cantidad 2",
+            "Comprueba los importes con el IVA del 15 % supuesto en el caso"
           ],
           "campos": [
             {
@@ -17097,12 +17112,12 @@
             {
               "etiqueta": "Fecha",
               "valor": "05/04/2026",
-              "pista": "Fecha real de operación"
+              "pista": "Fecha del caso educativo"
             },
             {
               "etiqueta": "Información Adicional",
               "valor": "1792456789001",
-              "pista": "RUC de B1 Center como usuario del sistema"
+              "pista": "Referencia ficticia del laboratorio; no identifica un proveedor real de facturación"
             },
             {
               "etiqueta": "Código de Artículo",
@@ -17115,7 +17130,8 @@
               "pista": "Dos unidades"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 6,
@@ -17124,17 +17140,17 @@
       },
       {
         "slide_index": 7,
-        "script_text": "Solicitas anular la factura F00123 por error en cantidad. Según la normativa, puedes hacerlo hasta el día 7 del mes siguiente (07/05/2026). La solicitud se envía al SRI y el proveedor tiene cinco días hábiles para aceptar. Si no responde, la solicitud pierde efecto y la factura sigue vigente. La fecha de solicitud debe ser real y justificada.",
+        "script_text": "Analiza un error en la factura de compra F00123 del caso. El proveedor es quien emitió su comprobante tributario: el comprador debe coordinar con él la corrección y registrar el ajuste que corresponda. No puede anularlo como si fuera su emisor. La ficha de esta práctica documenta el motivo y las fechas; no envía una solicitud al SRI. Revisa por separado las reglas y plazos aplicables al tipo de comprobante.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Solicitar anulación de factura",
+          "title": "Solicitar corrección documental al proveedor",
           "menu_path": "Compras - Proveedores > Factura de Proveedores",
           "instructions": [
-            "Desde la factura F00123, iniciar solicitud de anulación",
-            "Seleccionar motivo: Error en cantidad",
-            "Confirmar fecha de solicitud: 10/04/2026",
-            "Verificar que esté dentro del plazo (hasta 07/05/2026)",
-            "Enviar solicitud al SRI"
+            "Identifica la factura de compra F00123 del laboratorio",
+            "Registra el motivo Error en cantidad",
+            "Usa la fecha del caso 10/04/2026",
+            "Coordina la corrección con el emisor del comprobante",
+            "Guarda el ejercicio sin presentar ni enviar una solicitud al SRI"
           ],
           "campos": [
             {
@@ -17160,14 +17176,15 @@
             {
               "etiqueta": "Fecha Solicitud",
               "valor": "10/04/2026",
-              "pista": "Antes del 07/05/2026"
+              "pista": "Fecha de la solicitud didáctica al proveedor"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 8,
-        "script_text": "Registras una factura por una laptop HP ProBook 440 a HP Importaciones (proveedor no especial). El sistema calcula automáticamente: base 890, IVA 133.50 (15%), retención IVA 40.05 (30% del IVA) y retención renta 17.80 (2% de la base). Esto cumple con la normativa para transferencia de bienes muebles a proveedores no especiales. El total a pagar es 890 + 133.50 - 40.05 - 17.80 = 965.65.",
+        "script_text": "Para este ejercicio se suponen una base de 890 dólares, IVA del 15 %, retención del 30 % del IVA y retención de renta del 2 % de la base. Así, el IVA es 133,50, la retención de IVA 40,05, la de renta 17,80 y el neto 965,65. Son supuestos del caso: la tarifa y la obligación de retener en una operación real dependen de los sujetos, el concepto, la fecha y la norma aplicable. No apliques esas tasas a todos los proveedores.",
         "step_guide": {
           "action_type": "practica",
           "title": "Ver retenciones calculadas",
@@ -17211,21 +17228,34 @@
               "pista": "2% sobre base imponible"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 9,
-        "script_text": "Los errores más frecuentes incluyen usar fechas falsas, omitir el RUC del proveedor del sistema en la información adicional, solicitar anulación fuera de plazo, no actualizar los códigos de retención tras cambios SRI y aplicar mal la base de cálculo de la retención del IVA. Las buenas prácticas son: usar fecha real, cumplir con la resolución de julio 2026, gestionar anulaciones a tiempo, revisar mensualmente las resoluciones y recordar que la retención del IVA se aplica sobre el valor del IVA, no sobre la base.",
-        "step_guide": null
+        "script_text": "Antes de registrar un documento real, comprueba su emisor, su validez, la fecha, el concepto y los impuestos aplicables. Distingue los identificadores del comprador, del vendedor y del proveedor del sistema de facturación. Revisa la norma para la fecha de la operación. En el laboratorio conserva datos ficticios y evita declarar como autorizados comprobantes que solo se han registrado contablemente.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 10,
-        "script_text": "Viste que desde enero 2026 la transmisión al SRI es inmediata, sin plazos. La anulación solo es posible hasta el día 7 del mes siguiente. Las retenciones en la fuente e IVA se calculan automáticamente según el tipo de proveedor y deben actualizarse con cada resolución SRI. El RUC del proveedor del sistema debe aparecer en la información adicional de los comprobantes. Todo se hace en Finix ERP con integración a solución certificada. Empresa ficticia: B1 Center.",
-        "step_guide": null
+        "script_text": "Has distinguido registro contable, transmisión y autorización tributaria y revisado un cálculo de impuestos con supuestos explícitos. El comprobante del ejercicio continúa siendo de laboratorio. Para operaciones reales consulta las fuentes oficiales, configura el emisor y sus credenciales en el entorno adecuado y comprueba las respuestas y evidencias de autorización antes de entregar un comprobante al cliente.",
+        "step_guide": null,
+        "presentation": "text"
       }
     ],
     "quizQuestions": [],
-    "classId": "mod22-c1"
+    "classId": "mod22-c1",
+    "references": [
+      {
+        "title": "SRI: facturación electrónica y normativa aplicable",
+        "url": "https://www.sri.gob.ec/facturacion-electronica"
+      },
+      {
+        "title": "SRI: registro de proveedores de facturación electrónica",
+        "url": "https://www.sri.gob.ec/detalle-noticias?idnoticia=1318&marquesina=1"
+      }
+    ]
   },
   "mod22-c2": {
     "images": [
@@ -19985,232 +20015,212 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "En esta clase conocerás las herramientas analíticas de Finix ERP: capas semánticas, vistas de cálculo, dimensiones y medidas. Aprenderás a crear paneles detallados, KPI y paneles avanzados, y a usar el Informe de Excel y el Análisis interactivo. Todo con enfoque práctico para transformar datos en decisiones.",
-        "step_guide": null
+        "script_text": "En esta clase aprenderás a convertir registros de la empresa en indicadores comprobables. Usarás los conceptos de medida, dimensión, filtro y período. Relacionarás el análisis de ventas, inventario y consultas de solo lectura con los documentos de origen. El laboratorio ofrece esas consultas y reportes; no presupone un portal SAML, un complemento de Excel ni una plataforma HANA.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar, podrás enumerar los mecanismos para visualizar análisis en el cockpit, describir la capa semántica y las vistas de cálculo en base de datos en memoria, explicar el uso de dimensiones y medidas, y crear un panel detallado con acciones. Estos objetivos sentarán las bases para el uso avanzado de Analytics en escenarios reales.",
-        "step_guide": null
+        "script_text": "Al finalizar podrás definir un indicador, identificar sus datos de origen y explicar qué incluye. Distinguirás una consulta de facturas de un informe de ventas netas y compararás un corte de inventario con un movimiento histórico. También justificarás el gráfico elegido y revisarás permisos antes de compartir resultados.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 3,
-        "script_text": "La capa semántica en base de datos en memoria integra datos de múltiples tablas para modelar escenarios como finanzas, logística, ventas y compras. Aísla al usuario de la complejidad técnica. Las vistas de cálculo extraen y estructuran datos sin almacenarlos, compuestas por dimensiones (descriptivas) y medidas (numéricas). Las métricas clave se entregan en tiempo real mediante los mecanismos analíticos.",
-        "step_guide": null
+        "script_text": "Una medida es un valor numérico que se puede resumir, como un subtotal o una cantidad. Una dimensión clasifica ese valor: cliente, artículo, almacén o período. El significado depende del documento de origen. El total de una factura incluye impuestos; su subtotal no. No combines ambas medidas como si fueran iguales.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,
-        "script_text": "Crear un panel detallado sigue un flujo estructurado: primero se selecciona la fuente de datos (vista de cálculo o consulta), luego se definen las medidas (valores numéricos) y dimensiones (ejes de análisis), se elige el tipo de gráfico adecuado, se añaden acciones desde el menú contextual y finalmente se guarda y publica en el cockpit o panel avanzado para su uso.",
-        "step_guide": null
+        "script_text": "Empieza por una pregunta de negocio. Define el período y la población de documentos, selecciona los campos, calcula el indicador y comprueba una muestra contra sus registros. Finalmente elige una representación y documenta sus límites. Un gráfico correcto exige datos correctos antes que colores o efectos.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 5,
-        "script_text": "Para comenzar a crear un panel, debes seleccionar una fuente de datos que alimentará tu visualización. En este caso, usamos la vista de cálculo V_Oportunidades_Cliente, que modela oportunidades por cliente. Al seleccionarla, ves su descripción, tipo y estado. Este paso es esencial porque define qué información estará disponible para medir y dimensionar en tu panel.",
-        "step_guide": null
+        "script_text": "El gestor de consultas del laboratorio trabaja con una representación de los datos de tu empresa y admite un subconjunto de SELECT. OINV representa facturas de venta, ORIN notas de crédito, OITM artículos y OITW existencias por artículo y almacén. Estos nombres no prueban que exista una base HANA ni una vista de cálculo externa. Consulta el catálogo de campos disponible antes de escribir la consulta.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 6,
-        "script_text": "En esta etapa defines qué mostrará tu panel: las medidas son los valores numéricos a analizar (como el total de oportunidades) y las dimensiones permiten segmentar esos datos (por cliente, producto, etc.). Arrastras los campos desde la lista disponible al área de destino, eliges el método de cálculo (Suma, Media, Original) y el orden. Aquí usamos 'Total' como medida y 'Código de cliente' como dimensión, con suma y orden descendente.",
+        "script_text": "En la ficha identifica subtotal como medida, cardCode como dimensión de cliente y SUM como agregación. ORDER BY con DESC ordena de mayor a menor. La consulta de ejemplo resume facturas; todavía no descuenta notas de crédito. Si no hay facturas en tu empresa, un resultado vacío no implica que el sistema esté fallando.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Definir medida y dimensión",
-          "menu_path": "Herramientas > Informe de Excel y análisis interactivo",
+          "title": "Identificar medida, dimensión y agregación",
+          "menu_path": "Análisis didáctico > Medidas, filtros y evidencia",
           "instructions": [
-            "Arrastrar 'Total' al área de medidas",
-            "Seleccionar método de cálculo: Suma",
-            "Arrastrar 'Código de cliente' al área de dimensiones",
-            "Establecer orden descendente",
-            "Ver vista previa del gráfico circular"
+            "Lee la consulta de facturas del ejemplo",
+            "Identifica la medida numérica y el campo de agrupación",
+            "Registra la función y el orden sin confundir facturación con venta neta"
           ],
           "campos": [
             {
-              "etiqueta": "Medida disponible",
-              "valor": "Total",
-              "pista": "Valor numérico a analizar"
+              "etiqueta": "Medida",
+              "valor": "subtotal",
+              "pista": "Base facturada sin IVA"
             },
             {
-              "etiqueta": "Dimensión disponible",
-              "valor": "Código de cliente",
-              "pista": "Eje descriptivo para agrupar"
+              "etiqueta": "Dimensión",
+              "valor": "cardCode",
+              "pista": "Identificador del cliente"
             },
             {
-              "etiqueta": "Método de cálculo",
-              "valor": "Suma",
-              "pista": "Cómo se agrupan los valores"
+              "etiqueta": "Agregación",
+              "valor": "SUM",
+              "pista": "Suma de la medida"
             },
             {
               "etiqueta": "Orden",
-              "valor": "Descendente",
-              "pista": "De mayor a menor valor"
-            },
-            {
-              "etiqueta": "Área de destino",
-              "valor": "Listo para arrastrar",
-              "pista": "Zona donde se colocan los campos"
+              "valor": "DESC",
+              "pista": "De mayor a menor"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 7,
-        "script_text": "Una vez definidas las medidas y dimensiones, eliges el tipo de gráfico que mejor represente tus datos. En este caso, seleccionamos un gráfico circular, ideal para mostrar proporciones o participaciones, como el porcentaje de ventas potencial por segmento de cliente. El gráfico muestra al cliente C42000 con un valor de 45.050,00 USD, y al pasar el mouse sobre cada sección se ven el código y el valor asociado.",
+        "script_text": "Un gráfico de barras permite comparar importes entre clientes o períodos. Un circular sirve para participaciones de un total no negativo con pocas categorías. Si existen devoluciones, valores negativos o muchas categorías, evita el circular y conserva una tabla con las cifras. La ficha comprueba la elección, no crea un diseñador de gráficos que el laboratorio no ofrece.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Seleccionar gráfico circular",
-          "menu_path": "Herramientas > Informe de Excel y análisis interactivo",
+          "title": "Identificar el gráfico apropiado",
+          "menu_path": "Análisis didáctico > Medidas, filtros y evidencia",
           "instructions": [
-            "Ir a la ficha 'Parametrizaciones básicas'",
-            "Abrir la lista desplegable de tipos de gráfico",
-            "Seleccionar 'Gráfico circular'",
-            "Observar la vista previa en tiempo real",
-            "Confirmar la selección"
+            "Compara importes por cliente, incluyendo posibles devoluciones",
+            "Selecciona barras para admitir comparaciones y valores negativos",
+            "Mantén una tabla con importes comprobables"
           ],
           "campos": [
             {
               "etiqueta": "Tipo de gráfico",
-              "valor": "Circular",
-              "pista": "Ideal para mostrar participaciones"
+              "valor": "Barras",
+              "pista": "Comparar valores entre clientes"
             },
             {
-              "etiqueta": "Vista previa",
-              "valor": "Muestra % por cliente",
-              "pista": "Representación visual actual"
+              "etiqueta": "Permite valores negativos",
+              "valor": "Sí",
+              "pista": "Necesario cuando hay devoluciones"
             },
             {
-              "etiqueta": "Cliente C42000",
-              "valor": "45.050,00 USD",
-              "pista": "Valor destacado en el gráfico"
-            },
-            {
-              "etiqueta": "Otros clientes",
-              "valor": "Distribuidos en secciones",
-              "pista": "Participación relativa"
-            },
-            {
-              "etiqueta": "Leyenda",
-              "valor": "Código y valor",
-              "pista": "Información al pasar el mouse"
+              "etiqueta": "Detalle de respaldo",
+              "valor": "Tabla",
+              "pista": "Debe conservarse para comprobar los importes"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 8,
-        "script_text": "Los paneles detallados permiten agregar acciones desde el menú contextual para mejorar la eficiencia operativa. Al hacer clic derecho sobre una sección del panel, se abre un menú con opciones predefinidas: abrir el documento de venta relacionado, el maestro del cliente o navegar directamente a un panel avanzado como el 'Cliente 360'. Estas acciones reducen pasos de navegación y centralizan el acceso a información clave en tiempo real.",
-        "step_guide": null
+        "script_text": "Antes de tomar una decisión, revisa los documentos incluidos y sus importes. Un total por cliente puede deberse a una factura extraordinaria o a un error. Abre el registro de origen desde la pantalla disponible y confirma sus datos; no supongas que todo gráfico tiene navegación contextual o permite abrir documentos con clic derecho.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 9,
-        "script_text": "Tras diseñar el panel, debes guardarlo y publicarlo para que esté disponible en el cockpit del usuario o en un panel avanzado. Aquí asignas un nombre, categoría (como Ventas), y especifican qué usuarios o roles podrán acceder. Una vez publicado, el panel se actualiza automáticamente y permite un monitoreo visual y dinámico de indicadores clave, como el total de oportunidades por cliente.",
-        "step_guide": null
+        "script_text": "En Análisis de ventas aplica el rango de fechas y, cuando corresponda, el tipo de documento y el cliente. El reporte calcula ventas netas sin IVA a partir de facturas menos notas de crédito. Cotizaciones, pedidos y entregas no deben sumarse como ingresos adicionales. Conserva esos criterios al explicar el resultado.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 10,
-        "script_text": "Los KPI permiten evaluar visualmente el estado del negocio mediante métricas clave. En este ejemplo, el KPI muestra los activos totales con un valor de 1.250.000,00 USD frente a una meta de 1.200.000,00 USD, lo que resulta en un estado verde (cumplido). La tendencia es positiva (flecha arriba verde) y el periodo analizado es Q1 2026. Estos widgets se visualizan en el cockpit o paneles avanzados para acceso rápido a indicadores críticos.",
-        "step_guide": null
+        "script_text": "Un KPI necesita definición, unidad, período y referencia. Por ejemplo, comparar un saldo de cartera al cierre con una meta de recuperación requiere fechas coherentes y documentos conciliados. Un color verde no certifica exactitud contable. Si falta información, presenta esa limitación junto al indicador.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 11,
-        "script_text": "El complemento Informe de Excel permite crear informes intuitivos desde Finix ERP. En este ejemplo, seleccionamos la vista V_Ventas_por_Region, arrastramos la medida 'Ingresos totales' y la dimensión 'Producto' al área de filas, y aplicamos un filtro para el Año 2026. Esto genera un informe dinámico que se puede guardar en una categoría de análisis y reutilizar desde Herramientas > Informe de Excel, ideal para usuarios familiarizados con Excel.",
+        "script_text": "La consulta SELECT cardCode, SUM(subtotal) AS base_facturada FROM OINV GROUP BY cardCode ORDER BY base_facturada DESC resume la base facturada por cliente. No incluye notas de crédito y no constituye por sí sola la venta neta contable. Usa el reporte de ventas para contrastar devoluciones y conserva separados subtotal, impuesto y total.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Crear informe de ventas por región",
-          "menu_path": "Herramientas > Informe de Excel y análisis interactivo",
+          "title": "Interpretar la consulta de facturas por cliente",
+          "menu_path": "Análisis didáctico > Medidas, filtros y evidencia",
           "instructions": [
-            "Ir a Herramientas > Informe de Excel y análisis interactivo",
-            "Seleccionar pestaña Informe de Excel",
-            "Elegir fuente: V_Ventas_por_Region",
-            "Arrastrar 'Ingresos totales' como medida",
-            "Arrastrar 'Producto' como dimensión en filas",
-            "Establecer filtro: Año 2026"
+            "Lee o ejecuta la consulta SELECT del guion en el gestor",
+            "Identifica tabla, medida y agrupación",
+            "Indica si incluye notas de crédito antes de llamarla venta neta"
           ],
           "campos": [
             {
-              "etiqueta": "Fuente de datos",
-              "valor": "V_Ventas_por_Region",
-              "pista": "Vista semántica seleccionada"
+              "etiqueta": "Tabla",
+              "valor": "OINV",
+              "pista": "Facturas de venta"
             },
             {
               "etiqueta": "Medida",
-              "valor": "Ingresos totales",
-              "pista": "Valor numérico a analizar"
+              "valor": "subtotal",
+              "pista": "Base antes de IVA"
             },
             {
-              "etiqueta": "Dimensión",
-              "valor": "Producto",
-              "pista": "Campo para segmentar"
+              "etiqueta": "Agrupación",
+              "valor": "cardCode",
+              "pista": "Código del cliente"
             },
             {
-              "etiqueta": "Filtro",
-              "valor": "Año 2026",
-              "pista": "Condición de tiempo"
-            },
-            {
-              "etiqueta": "Ubicación",
-              "valor": "Filas",
-              "pista": "Dónde se coloca la dimensión"
+              "etiqueta": "Incluye notas de crédito",
+              "valor": "No",
+              "pista": "Se encuentran en ORIN"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 12,
-        "script_text": "En la pestaña Análisis interactivo, creamos un análisis ad hoc usando la vista V_Inventario_Actual. Arrastra 'Cantidad en stock' a Valor, 'Almacén' a Etiqueta de fila y 'Categoría' a Etiqueta de columna para cruzar datos. Luego aplicamos un filtro para ver solo Q2 2026. Todo se hace con herramientas estándar de tablas dinámicas de Excel, permitiendo análisis rápido y flexible sin salir del entorno de Finix ERP.",
+        "script_text": "La consulta SELECT warehouseCode, SUM(quantity) AS unidades FROM OITW GROUP BY warehouseCode muestra unidades actuales por almacén. No reconstruye automáticamente el stock de un trimestre pasado ni separa categorías que no hayas relacionado. No sumes unidades de distinta naturaleza para concluir el valor monetario del inventario.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Crear análisis de inventario cruzado",
-          "menu_path": "Herramientas > Informe de Excel y análisis interactivo",
+          "title": "Interpretar el stock actual por almacén",
+          "menu_path": "Análisis didáctico > Medidas, filtros y evidencia",
           "instructions": [
-            "Seleccionar pestaña Análisis interactivo",
-            "Elegir fuente: V_Inventario_Actual",
-            "Arrastrar 'Cantidad en stock' a Valor",
-            "Arrastrar 'Almacén' a Etiqueta de fila",
-            "Arrastrar 'Categoría' a Etiqueta de columna",
-            "Establecer filtro: Q2 2026"
+            "Lee o ejecuta la consulta de OITW del guion",
+            "Identifica medida y agrupación",
+            "Distingue existencias actuales de un informe histórico o de valoración monetaria"
           ],
           "campos": [
             {
-              "etiqueta": "Fuente de datos",
-              "valor": "V_Inventario_Actual",
-              "pista": "Vista semántica de stock"
+              "etiqueta": "Tabla",
+              "valor": "OITW",
+              "pista": "Existencias por artículo y almacén"
             },
             {
-              "etiqueta": "Valor",
-              "valor": "Cantidad en stock",
-              "pista": "Medida a resumir"
+              "etiqueta": "Medida",
+              "valor": "quantity",
+              "pista": "Cantidad actual"
             },
             {
-              "etiqueta": "Fila",
-              "valor": "Almacén",
-              "pista": "Agrupación vertical"
+              "etiqueta": "Agrupación",
+              "valor": "warehouseCode",
+              "pista": "Código del almacén"
             },
             {
-              "etiqueta": "Columna",
-              "valor": "Categoría",
-              "pista": "Agrupación horizontal"
-            },
-            {
-              "etiqueta": "Filtro",
-              "valor": "Q2 2026",
-              "pista": "Periodo de análisis"
+              "etiqueta": "Es valoración monetaria",
+              "valor": "No",
+              "pista": "Las unidades no son un valor en dólares"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 13,
-        "script_text": "El portal analítico permite acceder a informes de Finix ERP desde cualquier navegador web moderno. El usuario ingresa la URL del portal, se autentica mediante SAML usando sus credenciales de Finix ERP y ve solo los informes autorizados. Desde allí puede ejecutar informes de Crystal o Excel, exportarlos a Excel, PDF o HTML, marcarlos como favoritos, programar su ejecución automática, distribuirlos por correo electrónico, descargar resultados o revisar el historial. Es ideal para usuarios en movimiento sin acceso al cliente Finix ERP o Excel.",
-        "step_guide": null
+        "script_text": "Los informes de esta plataforma se consultan con la sesión de Academy y las autorizaciones correspondientes. No hay que introducir credenciales de otra aplicación ni asumir inicio de sesión SAML. Comparte únicamente resultados permitidos y verifica si contienen información personal, comercial o financiera de terceros.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 14,
-        "script_text": "Para crear paneles o KPI se requiere autorización para tres elementos: la herramienta diseñador de análisis detallado, la capa semántica o su vista, y la consulta base del panel o KPI. Los usuarios finales necesitan autorización para ver el contenido. Estas autorizaciones se gestionan en Gestión > Inicialización del sistema > Autorizaciones > Autorizaciones generales, dentro del área temática de Analytics. Al hacer clic en 'Fijar autorización', defines quién puede acceder al informe, qué tipo es, qué usuarios o roles tienen permiso y el nivel de acceso (Ejecutar y ver).",
-        "step_guide": null
+        "script_text": "Una consulta de solo lectura evita modificar registros, pero puede exponer datos sensibles. Autoriza su acceso según el rol y el propósito. Antes de enviar un reporte revisa su empresa, período, filtros, destinatarios y campos; poder ver un registro no equivale a tener permiso para difundirlo.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 15,
-        "script_text": "Has aprendido que la capa semántica en base de datos en memoria modela datos empresariales mediante vistas de cálculo con dimensiones (descriptivas) y medidas (numéricas). Estas alimentan mecanismos como paneles detallados, KPI, paneles avanzados, Informe de Excel y Análisis interactivo. Los paneles permiten acciones contextuales para mejorar la eficiencia. Los KPI visualizan metas con colores y tendencias. El portal analítico brinda acceso web seguro. Todo requiere autorizaciones adecuadas. Ahora puedes transformar datos operativos en información para decisiones.",
-        "step_guide": null
+        "script_text": "Has definido medidas y dimensiones, aplicado filtros y distinguido facturación de ventas netas y stock actual de historia de inventario. Puedes explicar qué muestran las consultas del laboratorio y qué no muestran. Para usar el análisis en una empresa real, contrasta documentos y contabilidad, conserva los criterios y comprueba la integridad de los datos.",
+        "step_guide": null,
+        "presentation": "text"
       }
     ],
     "quizQuestions": [],
@@ -22446,8 +22456,9 @@
       },
       {
         "slide_index": 3,
-        "script_text": "El Cockpit de Ventas estilo Fiori en Finix ERP sobre HANA brinda una interfaz moderna y visual para el jefe de ventas. A diferencia de las pantallas transaccionales tradicionales, procesa métricas en memoria RAM en tiempo real, mostrando indicadores clave como ventas del mes, cumplimiento de metas, cartera vencida y tendencias sin afectar el rendimiento del servidor. Los gráficos interactivos y los datos actualizados al instante apoyan la toma de decisiones gerenciales ágiles y basadas en información actual.",
-        "step_guide": null
+        "script_text": "El cockpit de ventas reúne accesos y resúmenes para revisar la operación comercial. Antes de presentar un indicador, comprueba su fuente, el período, los filtros y los documentos que incluye. Un tablero no demuestra por sí mismo que la información sea completa o esté conciliada. En este laboratorio revisa los registros guardados y explica cómo sustentarías una decisión con ellos; no supongas que esta aplicación utiliza HANA ni que una pantalla ofrece rendimiento ilimitado.",
+        "step_guide": null,
+        "presentation": "text"
       },
       {
         "slide_index": 4,

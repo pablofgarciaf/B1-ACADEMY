@@ -99,6 +99,20 @@ test('conteo físico: ajusta stock y contabiliza la merma contra 6.05', () => {
   assert.ok(cuadra(s.state));
 });
 
+test('conteo físico con compensación neta cero contabiliza el traslado entre cuentas de existencias',()=>{
+ const s=empresa();
+ const finished=s.run('item',{...s.state.items[0],name:'Terminado de prueba'});
+ s.run('bom',{parentItemCode:finished,type:'production',components:[{itemCode:s.art,quantity:1,unit:'UND',cost:10}]});
+ s.run('stock',{itemCode:s.art,warehouseCode:'PRINCIPAL',qty:10,costingMethod:s.state.items[0].costingMethod});
+ s.run('stock',{itemCode:finished,warehouseCode:'PRINCIPAL',qty:10,costingMethod:s.state.items[0].costingMethod});
+ const before=s.state.journalEntries.length;
+ s.run('inventoryCount',{warehouseCode:'PRINCIPAL',date:'2026-10-05',blind:true,lines:[{itemCode:s.art,countedQuantity:9},{itemCode:finished,countedQuantity:11}]});
+ assert.equal(s.state.inventoryCounts.at(-1).totalDifferenceValue,0);
+ assert.equal(s.state.journalEntries.length,before+1);
+ const entry=s.state.journalEntries.at(-1);assert.ok(entry.lines.some(l=>l.accountCode==='1.1.05'&&l.credit>0));assert.ok(entry.lines.some(l=>l.accountCode==='1.1.07'&&l.debit>0));
+ assert.ok(cuadra(s.state));
+});
+
 test('costos de importación: lo que sigue en bodega sube el costo; lo vendido va al costo de ventas', () => {
   const s = empresa();
   const fp = s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.proveedor, [s.line(10, 10)]) }); // 10 u × $10

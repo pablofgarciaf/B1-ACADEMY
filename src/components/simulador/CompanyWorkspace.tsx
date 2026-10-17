@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type ComponentProps } from 'react';
 import Link from 'next/link';
 import { CompanyContext, useCompanyController } from '@/hooks/useCompany';
 import { useAuth } from '@/context/AuthContext';
-import { sendCommand, empresaActiva, cambiarEmpresaActiva, LISTA_SIETE_EMPRESAS, type EmpresaSlot } from '@/lib/firestore-company';
+import { sendCommand, empresaActiva, cambiarEmpresaActiva, LISTA_SIETE_EMPRESAS, EMPRESA_PRIVADA, type EmpresaSlot } from '@/lib/firestore-company';
 import { crearB1Center } from '@/lib/b1-center';
 import { levelNames } from '@/lib/company-defaults';
 import FinixDesktopShell from '@/components/desktop/FinixDesktopShell';
@@ -22,17 +22,19 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
   const [slot, setSlot] = useState<EmpresaSlot>('curso');
   const [companyName, setCompanyName] = useState('B1 Center S.A.S. (Matriz)');
   const [showMissions, setShowMissions] = useState(false);
+  const companies = userProfile?.privateAccountingEnabled ? [...LISTA_SIETE_EMPRESAS, EMPRESA_PRIVADA] : LISTA_SIETE_EMPRESAS;
+  const isPrivate = slot === 'privado';
 
   useEffect(() => {
     const act = empresaActiva();
     setSlot(act);
-    const def = LISTA_SIETE_EMPRESAS.find(e => e.id === act);
+    const def = act === 'privado' ? EMPRESA_PRIVADA : LISTA_SIETE_EMPRESAS.find(e => e.id === act);
     if (def) setCompanyName(def.name);
   }, []);
 
   const elegir = (s: EmpresaSlot) => {
     setSlot(s);
-    const def = LISTA_SIETE_EMPRESAS.find(e => e.id === s);
+    const def = companies.find(e => e.id === s);
     if (def) setCompanyName(def.name);
     cambiarEmpresaActiva(s);
   };
@@ -44,10 +46,10 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
   useEffect(() => {
     if (!uid || visited.current === uid) return;
     visited.current = uid;
-    void sendCommand(uid, { action: 'access', data: {} }).then(refresh).catch(() => { visited.current = ''; });
-  }, [uid, refresh]);
+    if (currentUser) void sendCommand(currentUser.uid, { action: 'access', data: {} }).then(refresh).catch(() => { visited.current = ''; });
+  }, [uid, refresh, currentUser]);
 
-  const empActual = LISTA_SIETE_EMPRESAS.find(e => e.id === slot) || LISTA_SIETE_EMPRESAS[0];
+  const empActual = slot === 'privado' ? EMPRESA_PRIVADA : LISTA_SIETE_EMPRESAS.find(e => e.id === slot) || LISTA_SIETE_EMPRESAS[0];
 
   return <CompanyContext.Provider value={c}><div className="flex h-screen max-h-screen overflow-hidden flex-col bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
     <div className="flex flex-wrap items-center gap-3 border-b border-[#999] bg-[#D4D0C8] p-2">
@@ -63,23 +65,23 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
           onChange={e => elegir(e.target.value)}
           className="bg-[#0e2c7a] text-white font-semibold text-[11px] rounded border border-blue-300/40 px-2 py-0.5 outline-none cursor-pointer"
         >
-          {LISTA_SIETE_EMPRESAS.map(emp => (
+          {companies.map(emp => (
             <option key={emp.id} value={emp.id}>
               {emp.icon} {emp.shortName}
             </option>
           ))}
         </select>
       </div>
-      <strong>{c.data.profile?.companyName ?? `${empActual.name} (Por inicializar)`}</strong>
-      {c.data.profile && <span>{c.data.profile.xp} XP · Nivel {c.data.profile.level} · {levelNames[c.data.profile.level - 1]}</span>}
+      <strong>{c.loading ? 'Cargando empresa…' : c.data.profile?.companyName ?? `${empActual.name} (Por inicializar)`}</strong>
+      {!isPrivate && c.data.profile && <span>{c.data.profile.xp} XP · Nivel {c.data.profile.level} · {levelNames[c.data.profile.level - 1]}</span>}
       {userProfile && ['teacher', 'docente'].includes(userProfile.role) && <Link href="/simulador/admin" className={buttonClass}>Panel docente</Link>}
-      <button className={buttonClass} onClick={() => setShowMissions(v => !v)}>Misiones y XP</button>
+      {!isPrivate && <button className={buttonClass} onClick={() => setShowMissions(v => !v)}>Misiones y XP</button>}
       {(c.loading || c.saving) && <Busy />}
     </div>
     {c.error && <div role="alert" className="border border-red-400 bg-red-50 p-3 text-red-900">{c.error}<button className={buttonClass + ' ml-2'} onClick={() => { void c.refresh(); }}>Reintentar carga</button></div>}
     {c.notice && <p role="status" className="border border-green-500 bg-green-50 p-2 text-green-900">{c.notice}</p>}
-    {showMissions && <div className="max-h-60 overflow-auto border border-[#999] bg-white p-3"><h2 className="font-bold">Misiones asignadas</h2>{!c.data.missions.length && <p>No tienes misiones asignadas.</p>}{c.data.missions.map(m => <div className="border-b p-2" key={m.id}><strong>{m.title}</strong><p>{m.description}</p><button disabled={c.saving || m.status === 'completed'} className={buttonClass} onClick={async () => { try { await c.save({ action: 'missionComplete', data: { id: m.id } }); } catch { /* Provider error. */ } }}>{m.status === 'completed' ? 'Completada' : 'Marcar entregada'}</button></div>)}<h2 className="mt-3 font-bold">Historial de XP verificado por operaciones</h2>{c.data.profile?.xpHistory.map(e => <p key={e.key}>{e.label}: +{e.points} XP</p>)}</div>}
-    {!c.data.profile ? (
+    {showMissions && !isPrivate && <div className="max-h-60 overflow-auto border border-[#999] bg-white p-3"><h2 className="font-bold">Misiones asignadas</h2>{!c.data.missions.length && <p>No tienes misiones asignadas.</p>}{c.data.missions.map(m => <div className="border-b p-2" key={m.id}><strong>{m.title}</strong><p>{m.description}</p><button disabled={c.saving || m.status === 'completed'} className={buttonClass} onClick={async () => { try { await c.save({ action: 'missionComplete', data: { id: m.id } }); } catch { /* Provider error. */ } }}>{m.status === 'completed' ? 'Completada' : 'Marcar entregada'}</button></div>)}<h2 className="mt-3 font-bold">Historial de XP verificado por operaciones</h2>{c.data.profile?.xpHistory.map(e => <p key={e.key}>{e.label}: +{e.points} XP</p>)}</div>}
+    {c.loading ? <div className="p-10"><Busy /></div> : !c.data.profile ? (
       c.loading ? (
         <div className="p-10"><Busy /></div>
       ) : (
@@ -91,7 +93,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
                 {empActual.name}
               </h2>
               <p className="text-xs text-gray-600 mt-1">
-                Giro: <strong>{empActual.category}</strong>. Esta sociedad contará con su propia base de datos corporativa independiente, plan de cuentas NIIF Ecuador 2026, bodegas y bancos.
+                {isPrivate ? 'Espacio separado de las prácticas, sin clientes, saldos ni cuentas bancarias de ejemplo. Solo el propietario habilitado puede acceder.' : <>Giro: <strong>{empActual.category}</strong>. Empresa de práctica con plan de cuentas, bodegas y bancos de ejemplo.</>}
               </p>
             </div>
 
@@ -108,7 +110,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
               </label>
 
               <div className="pt-2 flex flex-wrap gap-3">
-                <button
+                {!isPrivate && <button
                   type="button"
                   className={`${buttonClass} bg-gradient-to-b from-[#ffd25a] to-[#f0ab00] font-bold text-[#1d2d3e] px-4 py-2 rounded shadow`}
                   disabled={Boolean(creandoB1) || c.saving || !currentUser}
@@ -125,7 +127,7 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
                   }}
                 >
                   {creandoB1 || 'Cargar con Datos Modelo y Apertura 2026'}
-                </button>
+                </button>}
 
                 <button
                   type="button"
@@ -142,11 +144,11 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
                     }
                   }}
                 >
-                  {c.saving ? <Busy /> : 'Inicializar Vacía (Contabilidad Limpia en Vivo)'}
+                  {c.saving ? <Busy /> : isPrivate ? 'Preparar empresa privada vacía' : 'Inicializar empresa de práctica vacía'}
                 </button>
               </div>
               <p className="text-[10px] text-gray-500">
-                * Ambas opciones configuran el Plan de Cuentas NIIF Ecuador 2026, IVA al 15%, 4 cuentas bancarias locales, retenciones SRI y bodegas.
+                {isPrivate ? 'Sin RUC ni autorización SRI. Configura los datos y saldos aportados por el propietario antes de operar. La revisión contable profesional sigue siendo necesaria.' : 'Las empresas de práctica incluyen datos bancarios simulados y configuración tributaria de formación.'}
               </p>
             </div>
           </div>

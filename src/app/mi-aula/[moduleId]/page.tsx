@@ -27,6 +27,7 @@ interface SyncSlide {
   slide_index: number;
   script_text: string;
   step_guide: StepGuide | null;
+  presentation?: 'text';
 }
 
 interface LessonData {
@@ -38,6 +39,7 @@ interface LessonData {
   images: string[];
   syncData: SyncSlide[];
   quizQuestions: any[];
+  references?: { title: string; url: string }[];
 }
 
 // =============================================
@@ -794,6 +796,16 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                     )}
                   </div>
                 )}
+                {!!lessonData?.references?.length && (
+                  <details className="mb-2 text-xs text-blue-100">
+                    <summary className="cursor-pointer">Fuentes de la clase</summary>
+                    <ul className="mt-1 space-y-1">
+                      {lessonData.references.map(reference => (
+                        <li key={reference.url}><a href={reference.url} target="_blank" rel="noopener noreferrer" className="underline">{reference.title}</a></li>
+                      ))}
+                    </ul>
+                  </details>
+                )}
                 <ol className="space-y-1">
                   {currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map((inst, i) => (
                     <li key={i} className="text-xs text-blue-100 flex gap-2">
@@ -827,8 +839,8 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   togglePause();
                 }}
               >
-                {activeClassId.startsWith('mod-ventas') ? (
-                  <AcademicSlide script={slideScript} title={currentStepGuide?.title || lessonData?.title || 'Operaciones comerciales'} index={currentSlideIndex + 1} />
+                {activeClassId.startsWith('mod-ventas') || currentSync?.presentation === 'text' ? (
+                  <AcademicSlide script={slideScript} title={currentStepGuide?.title || lessonData?.title || 'Formación empresarial'} index={currentSlideIndex + 1} />
                 ) : activeSlideImage ? (
                   <Image
                     src={activeSlideImage}

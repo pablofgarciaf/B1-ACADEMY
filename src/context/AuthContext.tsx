@@ -13,6 +13,8 @@ export interface UserProfile {
   status: 'active' | 'suspended'; createdAt: string; updatedAt?: string;
   assignedTeacherUids?: string[]; assignedTracks?: string[]; passwordChanged?: boolean; passwordSecurityVersion?: number; sandboxHoursUsed?: number;
   temporaryPasswordExpiresAt?: string;
+  /** Server-managed permission; never accepted from a signup form. */
+  privateAccountingEnabled?: boolean;
   sandboxHoursLimit?: number; phone?: string; bio?: string; simuladorLevel?: number;
   simuladorXP?: number; completedMissions?: number; avatar?: string; company?: string;
   moduleProgress?: Record<string, { completed: number; total: number; progress: number }>;

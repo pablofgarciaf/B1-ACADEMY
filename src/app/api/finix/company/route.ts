@@ -4,6 +4,7 @@ import { requireBearerUser } from '@/lib/server-auth';
 import { readCompany, executeCompanyCommand } from '@/lib/company-server';
 import { commandSchema } from '@/lib/company-commands';
 import { canTeachCompany } from '@/lib/company-access';
+import { companyScope } from '@/lib/company-scope';
 
 export const runtime = 'nodejs';
 const envelope = z.object({ requestId: z.string().uuid(), command: commandSchema });
@@ -11,19 +12,17 @@ const envelope = z.object({ requestId: z.string().uuid(), command: commandSchema
  * Empresa del estudiante según la cabecera X-Empresa: "curso" = su B1 Center (Mi Aula), "libre" = su empresa propia.
  * La clave se deriva SIEMPRE de la sesión: nadie puede apuntar a la empresa de otro.
  */
-const claveEmpresa = (request: Request, uid: string) => {
-  const header = request.headers.get('x-empresa') || 'curso';
-  if (header === 'curso') return uid;
-  const safe = header.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 32);
-  return safe ? `${uid}__${safe}` : uid;
-};
+const claveEmpresa = (request: Request, actor: Awaited<ReturnType<typeof requireBearerUser>>) =>
+  companyScope(actor.uid, request.headers.get('x-empresa') || 'curso', actor.profile.privateAccountingEnabled === true);
 export async function GET(request: Request) {
   let actor;
   try { actor = await requireBearerUser(request); } catch (error: unknown) { return NextResponse.json({ error: error instanceof Error ? 'Sesión no válida.' : 'No autorizado.' }, { status: 401 }); }
   try {
     const pedido = new URL(request.url).searchParams.get('uid') || actor.uid;
     if (pedido !== actor.uid && !await canTeachCompany(actor,pedido)) return NextResponse.json({ error: 'Acceso denegado.' }, { status: 403 });
-    const uid = pedido === actor.uid ? claveEmpresa(request, actor.uid) : pedido;
+    let uid: string;
+    try { uid = pedido === actor.uid ? claveEmpresa(request, actor) : pedido; }
+    catch (error) { return NextResponse.json({error: error instanceof Error ? error.message : 'Empresa inválida.'},{status:403}); }
     if (!/^[\w-]{1,128}$/.test(uid)) return NextResponse.json({ error: 'Identificador inválido.' }, { status: 400 });
     // El correo solo se pasa cuando el estudiante lee su propia empresa (necesario para migrarla).
     return NextResponse.json(await readCompany(uid, pedido === actor.uid ? actor.email : ''), { headers: { 'Cache-Control': 'no-store' } });
@@ -40,7 +39,10 @@ export async function POST(request: Request) {
     if (!parsed.success) return NextResponse.json({ error: parsed.error.issues.map(issue => `${issue.path.join('.')}: ${issue.message}`).join('; ') }, { status: 400 });
     if(parsed.data.command.action==='initializeTraining' && (request.headers.get('x-empresa')||'curso')!=='curso') return NextResponse.json({error:'La preparación académica solo se realiza en la empresa del curso.'},{status:403});
     if (parsed.data.command.action === 'authorize') await new Promise<void>(resolve => setTimeout(resolve, 2000));
-    const result = await executeCompanyCommand(claveEmpresa(request, actor.uid), actor.email, parsed.data.command, parsed.data.requestId, actor.uid);
+    let companyId: string;
+    try { companyId = claveEmpresa(request, actor); }
+    catch (error) { return NextResponse.json({error: error instanceof Error ? error.message : 'Empresa inválida.'},{status:403}); }
+    const result = await executeCompanyCommand(companyId, actor.email, parsed.data.command, parsed.data.requestId, actor.uid);
     return NextResponse.json({ result });
   } catch (error: unknown) {
     return NextResponse.json({ error: error instanceof Error ? error.message : 'No se pudo guardar.' }, { status: 400 });

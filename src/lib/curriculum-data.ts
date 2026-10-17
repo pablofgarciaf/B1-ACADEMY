@@ -144,9 +144,9 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
     description: 'Campos y tablas de usuario (UDF/UDO), lógica de objetos personalizados, dashboards interactivos y Finix Analytics.',
     certificateTitle: 'Certificado en Tablas de Usuario y Finix Analytics', classes: [] },
   { id: 'mod-25', number: 25, block: 'Consultoría y Business Analyst', badge: 'Activate',
-    title: 'Metodología de Implementación y Ciclo de Vida metodología de implementación por fases',
+    title: 'Metodología de Implementación y Ciclo de Vida del ERP',
     description: 'Fases Discover, Prepare, Explore, Realize, Deploy y Run, gobernanza de proyectos, análisis Fit/Gap y Golden DB.',
-    certificateTitle: 'Certificado en Metodología de Implementación metodología de implementación por fases', classes: [] },
+    certificateTitle: 'Certificado en Metodología de Implementación de ERP', classes: [] },
   { id: 'mod-26', number: 26, block: 'Consultoría y Business Analyst', badge: 'BPMN 2.0',
     title: 'Modelado y Optimización de Procesos de Negocio (BPMN 2.0)',
     description: 'Notación BPMN 2.0 para ERP, diagnóstico AS-IS, diseño TO-BE con mejores prácticas Finix ERP y traducción a modelos de autorización.',
@@ -166,7 +166,7 @@ export const OFFICIAL_SYLLABUS: SyllabusModule[] = [
   { id: 'mod-30', number: 30, block: 'Proyecto Final', badge: 'Capstone Máster',
     title: 'Proyecto Integrador: Certificación Máxima de Súper Analista',
     description: 'Simulación integral de puesta en marcha de una empresa completa en Finix ERP: maestros, aprovisionamiento, ventas, nómina, finanzas y defensa ante Auditor IA.',
-    certificateTitle: 'Diploma de Grado: Súper Analista & Consultor Máster Finix ERP', classes: [] },
+    certificateTitle: 'Diploma de Formación en Análisis y Consultoría ERP', classes: [] },
 ];
 
 export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
@@ -226,7 +226,7 @@ export const SPECIALTY_DIPLOMAS: SpecialtyDiploma[] = [
   { id: 'dip-business-analyst', role: 'Consultor Funcional y Business Analyst Finix ERP',
     title: 'Diploma de Consultor Funcional & Business Analyst Finix ERP',
     requiredModules: ['mod-1', 'mod-2', 'mod-25', 'mod-26', 'mod-27', 'mod-28'],
-    description: 'Transformación digital: metodología metodología de implementación por fases, modelado BPMN 2.0 (AS-IS/TO-BE), Business Blueprint y pruebas UAT.' },
+    description: 'Transformación digital: implementación por fases, modelado BPMN 2.0 (AS-IS/TO-BE), Business Blueprint y pruebas UAT.' },
 ];
 
 /** Programa cumbre: certificaciones funcionales + Proyecto Integrador. */
@@ -244,6 +244,7 @@ export const SYLLABUS_BLOCKS: SyllabusBlock[] = [
   'Finanzas y Fiscalidad',
   'Tecnología y Analítica',
   'Consultoría y Business Analyst',
+  'Proyecto Final',
 ];
 
 for (const mod of OFFICIAL_SYLLABUS) {

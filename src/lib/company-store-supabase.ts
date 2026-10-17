@@ -194,7 +194,7 @@ export async function listCompaniesSupabase(): Promise<{ uid: string; raw: Recor
   if (!response.ok) throw new Error(`Supabase ${response.status}`);
   const filas = (await response.json()) as { uid: string; profile: Record<string, unknown>; summary: Record<string, unknown> }[];
   // El docente ve la B1 Center de cada estudiante; la empresa libre ("<uid>__libre") es personal y no se lista.
-  return filas.filter(f => !f.uid.endsWith('__libre')).map(f => ({ uid: f.uid, raw: { ...f.profile, ...f.summary } }));
+  return filas.filter(f => !f.uid.includes('__') && f.profile.usage !== 'private').map(f => ({ uid: f.uid, raw: { ...f.profile, ...f.summary } }));
 }
 
 export async function addMissionSupabase(uid: string, mission: Record<string, unknown> & { id: string }): Promise<string> {

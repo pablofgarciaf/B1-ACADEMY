@@ -24,7 +24,7 @@ export async function GET(request: Request) {
       : (await adminDb.collection('finixCompanies').get()).docs.map(doc => ({ uid: doc.id, raw: doc.data() as Record<string, unknown> }));
     const users = await adminDb.collection('usuarios').where('assignedTeacherUids','array-contains',actor.uid).select('uid','email','displayName','name','status','role').get();
     const allowed=new Set(users.docs.filter(u=>u.data().status==='active').map(u=>u.id));
-    const companies=companyRows.filter(c=>allowed.has(c.uid)&&!c.uid.includes('__'));
+    const companies=companyRows.filter(c=>allowed.has(c.uid)&&!c.uid.includes('__')&&c.raw.usage!=='private');
     const day = today();
     const all = await Promise.all(companies.map(async doc => {
       const profile = doc.raw as unknown as CompanyProfile;

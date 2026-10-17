@@ -7,6 +7,7 @@ import { enviarAlSRI, iceDeLinea, ISD_TARIFAS, opcionRetencion, revisarIdentific
 import { financialSummary, moveStock, resultadoEjercicio, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
 import { SUPERCÍAS_CATALOG } from './supercias-catalog';
+import { isPrivateCompany } from './company-scope';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
@@ -40,6 +41,12 @@ const assert = (condition: unknown, message: string): void => { if (!condition) 
 
 /** Pure, server-authoritative reducer. Persistence commits its changes atomically. */
 export function applyCommand(original: CompanyState, command: CompanyCommand, uid: string, email: string, now: string): { state: CompanyState; result: string } {
+  const privateCompany = isPrivateCompany(uid) || original.profile?.usage === 'private';
+  if (privateCompany) {
+    assert(command.action !== 'initializeTraining', 'La empresa privada no admite datos de práctica.');
+    assert(!['sri','authorize','missionComplete'].includes(command.action), 'Esta operación académica o autorización SRI simulada no está disponible en la empresa privada.');
+    assert(original.profile || command.action === 'initialize', 'Inicializa la empresa privada antes de registrar operaciones.');
+  }
   if(command.action==='initializeTraining')return prepareTraining(original,command.data.companyName,uid,email,now,applyCommand);
   const state = structuredClone(original);
   const meta = (id: string): Entity => ({ id, createdAt: now, updatedAt: now, createdBy: uid });
@@ -48,6 +55,8 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     state.profile = { ...meta(uid), uid, email, companyName: command.data.companyName, ruc: '1790000001001', currency: 'USD', country: 'EC', fiscalScenario: 'ecuador-2026', sbu: 482, incomeTaxRate: 25, warehouses: [{ code: 'PRINCIPAL', name: 'Almacén principal' }, { code: 'SECUNDARIO', name: 'Almacén secundario' }], xp: 0, level: 1, xpHistory: [], completedModules: [], lastAccess: now, sequences: {}, documentCount: 0 };
     state.chartOfAccounts = accountDefinitions.map(([code, name, category, postable]) => ({ ...meta(code), code, name, category, postable, parentCode: code.includes('.') ? code.slice(0, code.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(category) && !['1.1.04', '1.2.02', '1010209', '1010313', '1020112', '1020404', '4110', '4111'].includes(code)) ? 'D' : 'H', active: true }));
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
+    state.profile.usage = privateCompany ? 'private' : 'training';
+    if (privateCompany) { state.profile.ruc = ''; state.bankAccounts = []; }
     return { state, result: uid };
   }
   if (!state.profile) {
@@ -75,6 +84,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   /** Resultado del ejercicio antes de participación de trabajadores e impuesto a la renta (ingresos − costos − gastos). */
   const resultadoAntesDeImpuestos = (year: number): number => resultadoEjercicio(state, year);
   const award = (key: string, points: number, reference: string, label = key): void => {
+    if (privateCompany) return;
     if (!profile.xpHistory.some(e => e.key === key)) { profile.xpHistory.push({ key, label, points, reference, date: now }); profile.xp += points; }
   };
   const ledgerLine = (accountCode: string, debit = 0, credit = 0): JournalLine => ({ accountCode, debit: round(debit), credit: round(credit), description: '', costCenter: '' });
@@ -100,6 +110,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   };
   const move = (itemCode: string, warehouseCode: string, qty: number, cost: number, date: string, reference: string): number => {
     periodoAbierto(date);
+    if (privateCompany) assert(!state.stockMovements.some(m=>m.itemCode===itemCode&&m.warehouseCode===warehouseCode&&m.date>date),'No registres inventario antes de movimientos ya valorados. Revisa la fecha y el orden de carga.');
     const item = state.items.find(i => i.itemCode === itemCode); if (!item) throw new Error('Artículo inexistente.');
     const row = stock(itemCode, warehouseCode);
     const changed = moveStock(row, qty, item.costingMethod === 'standard' ? item.standardCost : cost, item.costingMethod, date);
@@ -189,7 +200,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
     case 'item': { result = nextFinix('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
     case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, employeeCode: result }); break; }
-    case 'journal': { const d = command.data; result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
+    case 'journal': { const d = command.data; if(privateCompany) assert(!d.lines.some(l=>l.accountCode==='1.1.02'||state.bankAccounts.some(b=>b.ledgerAccount===l.accountCode)),'Registra bancos mediante cobros y pagos para mantener el saldo auxiliar.'); result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
     case 'reverse': {
       const entry = state.journalEntries.find(e => e.id === command.data.entryId); assert(entry && !entry.reversedBy && !entry.reversalOf && entry.source === 'manual', 'Solo se revierte un asiento manual original sin reversión previa.');
       if (!entry) break; result = post(command.data.date, `Reversión ${entry.entryNumber}`, 'reversal', entry.id, entry.lines.map(l => ({ ...l, debit: l.credit, credit: l.debit })));
@@ -220,21 +231,34 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'bank': {
       const d = command.data; const bank = state.bankAccounts.find(b => b.id === d.bankAccountId && b.active); if (!bank) throw new Error('Cuenta bancaria inexistente.');
+      if(privateCompany) assert(!state.bankTransactions.some(t=>t.bankAccountId===bank.id&&t.date>d.date),'No registres movimientos bancarios anteriores al historial existente.');
       const deposit = d.type === 'deposit'; const records = [...state.salesOrders, ...state.purchaseOrders]; const invoice = records.find(doc => doc.id === d.documentId);
       let counterpart = d.counterpartAccount;
       const retIR = d.retentionIR ?? 0; const retIVA = d.retentionIVA ?? 0; const settle = round(d.amount + retIR + retIVA);
       assert(!(retIR || retIVA) || (deposit && d.documentId), 'Las retenciones recibidas se registran al cobrar una factura de venta.');
       if (d.documentId) {
         assert(invoice && (deposit ? invoice.docType === 'invoice' : ['vendor_invoice', 'debit_note', 'credit_note'].includes(invoice.docType)), 'Selecciona una factura o nota de débito compatible.');
-        if (!invoice) break; assert(invoice.status === 'open' && round(invoice.paidAmount + settle) <= invoice.total, 'Pago excedido o factura cerrada.');
+        if (!invoice) break; assert(d.date>=invoice.date,'El pago no puede preceder al documento.'); assert(invoice.status === 'open' && round(invoice.paidAmount + settle) <= invoice.total, 'Pago excedido o factura cerrada.');
         counterpart = deposit || invoice.docType === 'credit_note' ? '1.1.03' : '2.1.01'; invoice.paidAmount = round(invoice.paidAmount + settle); invoice.status = invoice.paidAmount === invoice.total ? 'closed' : 'open'; invoice.updatedAt = now;
         const partner = (deposit || invoice.docType === 'credit_note' ? state.customers : state.vendors).find(p => p.cardCode === invoice.cardCode); if (partner) { partner.balance = round(partner.balance + (invoice.docType === 'credit_note' ? settle : -settle)); partner.updatedAt = now; }
       }
       assert(counterpart !== bank.ledgerAccount, 'Selecciona una contrapartida distinta de bancos.');
+      if(privateCompany&&!d.documentId) assert(!['1.1.03','2.1.01','1.1.02'].includes(counterpart)&&!state.bankAccounts.some(b=>b.ledgerAccount===counterpart),'Usa un documento para clientes/proveedores y una operación vinculada para bancos.');
       assert(deposit || bank.balance >= d.amount, 'Saldo bancario insuficiente.'); result = next('BAN', d.date);
       const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine('1.1.10', retIR), ledgerLine('1.1.11', retIVA), ledgerLine(counterpart, 0, settle)] : [ledgerLine(counterpart, d.amount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
       bank.balance = round(bank.balance + (deposit ? d.amount : -d.amount)); bank.updatedAt = now;
       state.bankTransactions.push({ ...meta(result), ...d, counterpartAccount: counterpart, transactionId: result, reconciled: false, statementAmount: null, journalEntryId }); break;
+    }
+    case 'bankAccount': {
+      assert(privateCompany, 'La configuración de cuentas propias corresponde a la empresa privada.');
+      const d=command.data;
+      assert(!state.bankAccounts.some(b=>b.bankName.toLowerCase()===d.bankName.toLowerCase()&&b.accountNumber===d.accountNumber),'Cuenta bancaria ya registrada.');
+      result=next('CTA');
+      let suffix=1;while(state.chartOfAccounts.some(a=>a.code===`1.1.02.${String(suffix).padStart(3,'0')}`))suffix++;
+      const ledgerAccount=`1.1.02.${String(suffix).padStart(3,'0')}`;
+      state.chartOfAccounts.push({...meta(ledgerAccount),code:ledgerAccount,name:d.name,parentCode:'1.1.02',category:'asset',nature:'D',postable:true,active:true});
+      state.bankAccounts.push({...meta(result),...d,currency:'USD',ledgerAccount,openingBalance:0,balance:0,active:true});
+      break;
     }
     case 'reconcile': {
       const d = command.data; const row = state.bankTransactions.find(t => t.id === d.id); if (!row) throw new Error('Movimiento inexistente.');
@@ -527,7 +551,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const asiento: JournalLine[] = [];
       porCuenta.forEach((v, cuenta) => asiento.push(v > 0 ? ledgerLine(cuenta, v) : ledgerLine(cuenta, 0, -v)));
       if (total > 0) asiento.push(ledgerLine('6.05', 0, total)); else if (total < 0) asiento.push(ledgerLine('6.05', -total));
-      const journalEntryId = asiento.some(l => l.debit || l.credit) && total !== 0 ? post(d.date, 'Ajuste por conteo físico', 'count', result, asiento) : '';
+      const journalEntryId = asiento.some(l => l.debit || l.credit) ? post(d.date, 'Ajuste por conteo físico', 'count', result, asiento) : '';
       state.inventoryCounts.push({ ...meta(result), countNumber: result, date: d.date, warehouseCode: d.warehouseCode, blind: d.blind, lines, totalDifferenceValue: total, journalEntryId });
       award('inventory-count', 200, result, 'Primer conteo físico');
       break;
@@ -640,7 +664,8 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       }
       // Un RUC con estructura imposible (provincia, tercer dígito, cédula base) se rechaza al guardar; el dígito
       // verificador de una sociedad solo advierte porque el SRI ha emitido RUC que no cumplen el módulo 11.
-      const rucRevisado = revisarIdentificacion(d.ruc); assert(!rucRevisado.error, rucRevisado.error ?? '');
+      assert(d.ruc || privateCompany, 'El RUC es obligatorio para la empresa académica.');
+      if (d.ruc) { const rucRevisado = revisarIdentificacion(d.ruc); assert(!rucRevisado.error, rucRevisado.error ?? ''); }
       Object.assign(profile, { address: d.address ?? profile.address ?? '', phone: d.phone ?? profile.phone ?? '', regimen: d.regimen ?? profile.regimen ?? 'general', companyName: d.companyName, ruc: d.ruc, incomeTaxRate: d.incomeTaxRate, warehouses: d.warehouses });
       result = uid; break;
     }

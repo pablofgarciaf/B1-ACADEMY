@@ -683,6 +683,7 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
 
       {/* Asistente IA */}
       {(() => {
+        if (activeSlot === 'privado' || company.data.profile?.usage === 'private') return null;
         const activeWin = windows.find(w => w.focused) || windows[windows.length - 1];
         const activeScreenTitle = activeWin ? activeWin.title : 'Dashboard';
         const activeModuleTitle = activeWin?.moduleName

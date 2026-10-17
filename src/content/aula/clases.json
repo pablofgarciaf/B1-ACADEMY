@@ -55,7 +55,7 @@
       "id": "mod2-c4",
       "number": 4,
       "title": "Determinación Estándar de Precios",
-      "description": "Aprenda cómo Finix ERP determina automáticamente el precio de venta usando listas de precios, descuentos por período y cantidad, grupos de descuento, precios especiales y acuerdos ",
+      "description": "Configura listas de precios, descuentos por cantidad y precios especiales; comprueba cómo se propone el precio en un documento comercial.",
       "durationMinutes": 18
     }
   ],
@@ -71,7 +71,7 @@
       "id": "mod3-c2",
       "number": 2,
       "title": "Alta y Datos Maestros del Activo",
-      "description": "Esta clase enseña cómo activar y configurar los datos maestros de activos fijos en Finix ERP, desde la factura de compra hasta la generación automática del documento de capitalizac",
+      "description": "Registra los datos maestros de un activo fijo y relaciona su adquisición, costo inicial y capitalización en el caso de práctica.",
       "durationMinutes": 19
     },
     {
@@ -108,7 +108,7 @@
       "id": "mod4-c3",
       "number": 3,
       "title": "Correo Electrónico y Plantillas de Interfaz",
-      "description": "Esta clase enseña a configurar el envío automático de correos desde Finix ERP usando SBO Mailer o Outlook, aplicar plantillas de texto y gestionar envíos masivos de documentos como",
+      "description": "Estudia métodos de envío de documentos, plantillas y controles de correo; distingue la configuración didáctica de una conexión real con un proveedor de correo.",
       "durationMinutes": 25
     },
     {
@@ -212,7 +212,7 @@
       "id": "mod7-c5",
       "number": 5,
       "title": "Costos de Importación",
-      "description": "Esta clase enseña cómo registrar gastos de envío y seguros en documentos de compras y ventas, distribuirlos por fila o cabecera, y contabilizarlos correctamente en inventario y gas",
+      "description": "Registra fletes, seguros y otros costos de importación; explica su distribución y su efecto en el costo de inventario.",
       "durationMinutes": 12
     }
   ],
@@ -244,7 +244,7 @@
       "id": "mod9-c1",
       "number": 1,
       "title": "Unidades de Medida por Peso y Volumen",
-      "description": "Aprende a configurar unidades de medida basadas en peso en Finix ERP para gestionar artículos cuyo inventario se controla en una unidad (como metros) pero se compra o vende por pes",
+      "description": "Configura unidades de medida por peso y volumen y comprueba los factores de conversión usados en compras, ventas e inventario.",
       "durationMinutes": 14
     },
     {
@@ -304,7 +304,7 @@
       "id": "mod11-c1",
       "number": 1,
       "title": "Picking y Packing para Producción",
-      "description": "Clase sobre el uso del Gestor de Preparación, Embalaje y Producción en Finix ERP para gestionar componentes en producción, registrar consumo de materiales y dar de alta productos t",
+      "description": "Revisa la preparación de componentes, su consumo y la recepción del producto terminado dentro de un flujo de producción.",
       "durationMinutes": 19
     },
     {
@@ -447,7 +447,7 @@
       "id": "mod16-c2",
       "number": 2,
       "title": "Órdenes de Producción",
-      "description": "Esta clase enseña a crear y gestionar órdenes de producción en Finix ERP, desde su creación hasta el recibo del producto terminado, integrando listas de materiales, liberación, tra",
+      "description": "Crea y gestiona órdenes de producción: lista de materiales, liberación, consumo de componentes y recepción del producto terminado.",
       "durationMinutes": 16
     },
     {
@@ -581,7 +581,7 @@
       "id": "mod20-c4",
       "number": 4,
       "title": "Informes Financieros y Flujo de Caja",
-      "description": "Esta clase enseña a generar e interpretar los informes financieros clave en Finix ERP: balance, balance de sumas y saldos, cuenta de pérdidas y ganancias y estado de flujo de efect",
+      "description": "Genera e interpreta el balance general, el balance de sumas y saldos, el estado de resultados y el flujo de efectivo del caso educativo.",
       "durationMinutes": 25
     }
   ],
@@ -597,7 +597,7 @@
       "id": "mod21-c2",
       "number": 2,
       "title": "Centros de Costo y Dimensiones",
-      "description": "En esta clase aprenderá a utilizar las dimensiones múltiples en Finix ERP para analizar costos e ingresos desde distintas perspectivas, como departamento y línea de negocio, sin du",
+      "description": "Analiza costos e ingresos por dimensiones, departamentos y líneas de negocio sin duplicar las cuentas contables.",
       "durationMinutes": 20
     },
     {
@@ -634,7 +634,7 @@
       "id": "mod22-c4",
       "number": 4,
       "title": "Retenciones en la Factura de Proveedores de Finix ERP",
-      "description": "Esta clase enseña cómo registrar una factura de proveedor en Finix ERP con retenciones en la fuente del Impuesto a la Renta y del IVA, conforme a la normativa ecuatoriana vigente d",
+      "description": "Practica el registro de facturas de proveedores y el cálculo de retenciones de renta e IVA con los supuestos tributarios del ejercicio.",
       "durationMinutes": 10
     },
     {
@@ -655,7 +655,7 @@
       "id": "mod22-c7",
       "number": 7,
       "title": "RUC, Firma Electrónica y RIMPE: Obligaciones por Empresa",
-      "description": "Esta clase aborda los pilares de la facturación electrónica en Ecuador para 2026: el uso del RUC propio, la firma electrónica individual por empresa y las obligaciones del Régimen ",
+      "description": "Distingue el RUC, la firma electrónica por empresa y las obligaciones según el régimen del contribuyente; verifica la normativa antes de aplicarla a operaciones reales.",
       "durationMinutes": 20
     },
     {
@@ -722,7 +722,7 @@
       "id": "mod24-c2",
       "number": 2,
       "title": "Introducción a Finix Analytics",
-      "description": "En esta clase conocerás las herramientas analíticas de Finix ERP: capas semánticas, vistas de cálculo, dimensiones y medidas.",
+      "description": "Define indicadores, medidas, dimensiones y filtros; interpreta consultas de facturas y stock y contrasta sus límites con los reportes del laboratorio.",
       "durationMinutes": 23
     }
   ],
@@ -730,7 +730,7 @@
     {
       "id": "mod25-c1",
       "number": 1,
-      "title": "El Marco Metodológico: De Waterfall a metodología de implementación por fases y AIP",
+      "title": "Implementación de ERP: enfoques por fases, iterativos y AIP",
       "description": "Hoy aprenderás cómo la consultoría moderna superó los viejos modelos en cascada para adoptar metodología de implementación por fases y AIP en el mercado empresarial.",
       "durationMinutes": 8
     },
@@ -872,7 +872,7 @@
       "id": "mod29-c4",
       "number": 4,
       "title": "Copia Rápida e Importación de Documentos",
-      "description": "Esta clase enseña dos herramientas clave para proyectos de implementación de Finix ERP: Quick Copy para transferir datos entre compañías y DTW para importar documentos estructurado",
+      "description": "Estudia la copia de configuraciones entre empresas y la importación estructurada de documentos, con validación previa y revisión de errores.",
       "durationMinutes": 22
     }
   ],
