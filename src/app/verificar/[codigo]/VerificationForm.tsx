@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, ShieldX } from 'lucide-react';
+import { publicIntakeAvailable } from '@/lib/legal-config';
 
 interface CertificateResult {
   code: string;
@@ -43,6 +44,11 @@ export function VerificationForm({ code }: { code: string }) {
       setBusy(false);
     }
   }
+
+  if (!publicIntakeAvailable) return <section role="status" className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-gray-800 dark:bg-[#131a20] sm:p-8">
+    <h2 className="text-xl font-bold">Verificación disponible próximamente</h2>
+    <p className="mt-3 text-slate-600 dark:text-gray-300">Conserva el código de tu constancia y vuelve a consultar cuando se habilite el servicio. Por ahora no solicitamos tus datos de contacto.</p>
+  </section>;
 
   return (
     <div className="space-y-6">

@@ -1,19 +1,19 @@
 # Finix Academy — estado de correcciones y activación
 
-Actualizado: 16 de octubre de 2026. Base de código: HEAD 89b079f más cambios locales de esta intervención. Pablo autorizó corregir; dominio y datos legales se entregarán después. No se desplegó ni se enviaron campañas. Se preservó archive-F1sh0o/.
+Actualizado: 17 de octubre de 2026. Correcciones principales publicadas en main, commit 397c095; esta actualización incluye los ajustes finales de interfaz. Sitio público: https://b1-academy.vercel.app/. Pablo autorizó corregir y publicar; dominio y datos legales se entregarán después. No se enviaron campañas. Se preservó archive-F1sh0o/.
 
 ## Dictamen actual
 
-Las correcciones de código de A01–A27 están implementadas o tienen una alternativa explícita que elimina la promesa incorrecta. A08 sigue pendiente de datos del responsable. Esto NO certifica 10/10 ni autoriza una campaña: falta activar y comprobar la infraestructura real, el recorrido autenticado y la experiencia visual. El simulador conserva alcance educativo; no se certifica como libro contable oficial ni integración fiscal de producción.
+Las correcciones de código de A01–A27 están implementadas o tienen una alternativa explícita que elimina la promesa incorrecta. A08 sigue pendiente de datos del responsable. Esto NO certifica 10/10 ni habilita todavía una campaña: la infraestructura de reglas y auditoría ya se publicó y el piloto autenticado acotado aprobó. Faltan datos legales, dominio, medición real, administración de TTL y piloto académico completo. El simulador conserva alcance educativo; no se certifica como libro contable oficial ni integración fiscal de producción.
 
 ## Resultado local
 
-- npm test: lint, tipos y 55 pruebas funcionales aprobadas, sin pruebas omitidas. Incluye servicios simulados; no sustituye Firebase/Supabase reales.
+- npm test: lint, tipos y 57 pruebas funcionales aprobadas, sin pruebas omitidas. Incluye servicios simulados; no sustituye Firebase/Supabase reales.
 - npm run build: última compilación de producción aprobada con salida 0; 166 páginas generadas. Política de micrófono del examen confirmada en el manifiesto compilado.
 - git diff --check: aprobado.
 - npm run check:release: bloqueo esperado por siete datos/configuraciones ausentes: dominio, nombre legal, RUC, dirección, ciudad, correo de privacidad y GTM. No se inventaron valores.
-- Revisión visual actual: intento de navegador local rechazado por el control de permisos. No se eludió el rechazo. Móvil, escritorio, teclado y métricas de campo quedan pendientes.
-- PostgreSQL local: no hay psql; Docker instalado sin motor disponible. La migración SQL se corrigió por revisión de código, sin ejecutarla en una base real.
+- Revisión visual: portada y Empresas públicas comprobadas en navegador con tamaños solicitados 390/768/1280. El navegador aplica escala de Windows; el ancho CSS observado fue mayor que el solicitado. Sin desbordamiento horizontal ni imágenes rotas en las vistas comprobadas; menú móvil funciona. No se sustituye una evaluación completa con lector de pantalla ni métricas de campo.
+- Supabase real: migración probada primero en transacción revertida y después publicada. Permisos, escritura idempotente, misiones, eliminación, cadena y detección de alteración/truncado aprobaron. RPC de verificación publicado responde correctamente.
 
 ## Corrección por hallazgo
 
@@ -22,14 +22,14 @@ Las correcciones de código de A01–A27 están implementadas o tienen una alter
 | A01 | Expediente nuevo por UID y módulo; lectura legada solo si coincide propietario. | Prueba de homónimos y rechazo de registro ajeno. |
 | A02 | Práctica de escritura exige operación reciente, actor, empresa, tipo documental y evidencia sin reutilización. Consulta usa datos del servidor. | Pruebas de API con almacén simulado. |
 | A03 | Progreso requiere empresa preparada y todas las prácticas exigidas; emisión exige evaluación y prácticas v2. | Revisión de rutas; falta piloto autenticado real. |
-| A04 | Docente solo accede a alumnos asignados; excluye empresas personales. Administrador gestiona asignaciones. | Matriz de permisos local aprobada; desplegar reglas. |
-| A05 | Registro con contraseña personal; claves temporales independientes y caducidad; cuenta antigua exige recuperación de correo después del corte de seguridad. | Pruebas de política aprobadas; configurar AUTH_POLICY_EPOCH y comprobar correo real. |
+| A04 | Docente solo accede a alumnos asignados; excluye empresas personales. Administrador gestiona asignaciones. | Matriz local aprobada y reglas publicadas; piloto docente completo pendiente. |
+| A05 | Registro con contraseña personal; claves temporales independientes y caducidad; cuenta antigua exige recuperación de correo después del corte de seguridad. | Pruebas de política aprobadas; corte fijo incluido; AUTH_POLICY_EPOCH es opcional. Comprobar correo real. |
 | A06 | Formulario empresarial, persistencia idempotente y panel /admin/solicitudes con seguimiento. | Concurrencia/reintento/conflicto probados; falta recepción por responsable en producción. |
 | A07 | Ayuda de admisiones funciona sin sesión ni proveedor de IA; tutor privado requiere cuenta habilitada. | Respuestas públicas verificadas localmente; navegador pendiente. |
 | A08 | Responsable legal parametrizado; captación se cierra en producción si faltan datos. | Pendiente de Pablo, según instrucción de completar después. |
 | A09 | Depreciación en cuenta de gasto; cálculo reconoce registros históricos sin reescribirlos. | Resultado y cierre probados. |
-| A10 | Se retiró la escritura alternativa sin auditoría; ausencia de migración impide guardar. | Revisión de contrato; falta integración Supabase real. |
-| A11 | Firma de permisos SQL corregida y retirada función antigua sin evidencia. | Falta aplicar/probar migración en ensayo. |
+| A10 | Se retiró la escritura alternativa sin auditoría; ausencia de migración impide guardar. | Integración Supabase real publicada y piloto de integridad aprobado. |
+| A11 | Firma de permisos SQL corregida y retirada función antigua sin evidencia. | Migración probada en transacción revertida, publicada y RPC comprobado. |
 | A12 | Cierre anual impide reabrir un mes del ejercicio cerrado. | Regresión aprobada. |
 | A13 | Veinte misiones comerciales con contrato explícito. Escrituras verifican el caso concreto; lecturas se identifican como consultas y no como operaciones ejecutadas. | Contratos/acciones/API probados; falta piloto completo en aula. |
 | A14 | sign_up y generate_lead solo tras resultado confirmado, con consentimiento, deduplicación y atribución acotada sin identidad en eventos. | Regresión de privacidad aprobada; falta GTM/GA4 real. |
@@ -44,7 +44,7 @@ Las correcciones de código de A01–A27 están implementadas o tienen una alter
 | A23 | Intentos y reservas de pregunta transaccionales; concurrencia/versión de pregunta; hash de rúbrica evita reanudar un temario distinto. | Prueba de inicio y respuesta concurrente aprobada. |
 | A24 | Webhook firmado registra recepción pendiente, deduplica y responde completed:false. | Regresión aprobada; no se implementa una emisión automática inexistente. |
 | A25 | Sitemap desde catálogo; dominio central; llms dinámicos; marca/cifras públicas corregidas. | Dominio definitivo, rastreo e indexación pendientes. |
-| A26 | Suite funcional bajo tests/ incluida en npm test; sin depender de scripts ignorados. | 55/55 aprobadas. |
+| A26 | Suite funcional bajo tests/ incluida en npm test; sin depender de scripts ignorados. | 57/57 aprobadas. |
 | A27 | Credenciales de laboratorio explícitamente sintéticas. | No son cuentas reales ni credenciales compartidas de producción. |
 
 ## Correcciones adicionales descubiertas al integrar
@@ -68,7 +68,7 @@ Las correcciones de código de A01–A27 están implementadas o tienen una alter
 
 ## Reanudación
 
-Leer este documento y CONFIGURACION_PUBLICACION.md; comprobar git status y HEAD. El código no se subió ni desplegó. No repetir pruebas sin cambios relacionados. No divulgar .env ni datos reales. No marcar producción aprobada por una compilación local. El próximo paso depende de configuración y validación del entorno final, no de prometer una calificación.
+Leer este documento y CONFIGURACION_PUBLICACION.md; comprobar git status y HEAD. El código principal se subió y desplegó; verificar el último estado de main y Vercel antes de reanudar. No repetir pruebas sin cambios relacionados. No divulgar .env ni datos reales. No marcar producción aprobada por una compilación local. El próximo paso depende de configuración y validación del entorno final, no de prometer una calificación.
 
 ## Referencias técnicas consultadas
 
@@ -79,6 +79,22 @@ Leer este documento y CONFIGURACION_PUBLICACION.md; comprobar git status y HEAD.
 
 Pablo autorizó actualizar y publicar el 16-oct. Reglas Firestore publicadas con respaldo previo; las anteriores estaban vencidas desde el 12-oct y bloqueaban el acceso del navegador. Consultas reales de prácticas y evaluaciones comprobadas con identificador inexistente, sin extraer expedientes: ambas funcionan. Gestión de índices/TTL devuelve PERMISSION_DENIED a la credencial disponible y las sesiones abiertas de consola no tienen acceso; no se ampliaron permisos. Las consultas actuales funcionan con los índices existentes.
 
-La migración Supabase fue probada en la base del simulador dentro de BEGIN/ROLLBACK: permisos de service_role/anon, escritura, idempotencia, misión, eliminación y detección de alteración y truncado aprobaron. No quedaron registros de ensayo. Hay respaldo de las funciones anteriores en la carpeta local ignorada de despliegue. Aplicación definitiva coordinada con el despliegue web.
+La migración Supabase fue probada en la base del simulador dentro de BEGIN/ROLLBACK: permisos de service_role/anon, escritura, idempotencia, misión, eliminación y detección de alteración y truncado aprobaron. No quedaron registros de ensayo. Hay respaldo de las funciones anteriores en la carpeta local ignorada de despliegue. Aplicación definitiva completada tras la publicación web; RPC verificado con respuesta 200.
 
 Vercel tiene sesión válida de otra cuenta sin acceso al equipo sinerg-ia2. Se utiliza la integración GitHub que ya publica main en b1-academy; no se crea otro sitio ni se sustituye el dominio pendiente. La configuración legal y GTM sigue deliberadamente pendiente.
+
+## Verificación real y ajustes finales del 17-oct
+
+- Ambas integraciones Vercel del repositorio confirmaron despliegue correcto de 397c095. La portada pública refleja 31 módulos y 124 clases.
+- Piloto de producción con dos identidades sintéticas: inicialización y persistencia completas, aislamiento recíproco (403), rechazo de práctica sin evidencia, rechazo de progreso sin requisitos, integridad con una operación, expediente limitado a la sesión y rechazo anónimo. Diez comprobaciones, incluida la limpieza, aprobaron. Las dos identidades y sus empresas/expedientes de ensayo se eliminaron; no se modificaron empresas reales.
+- En el editor SQL se detectó que el reemplazo parcial conservaba una prueba sintética previa; se eliminó únicamente esa empresa de ensayo y se comprobó ausencia. Para futuros pegados se debe vaciar todo el modelo del editor antes de insertar SQL.
+- Correcciones visibles adicionales: títulos sin marca duplicada, registro y captación muestran disponibilidad antes de pedir datos, acceso al simulador sin falso registro ni recuperación decorativa, marca Finix en cabecera/pie/metadatos con símbolo vectorial propio.
+- Se conserva el cierre de captación pública mientras faltan los datos legales que Pablo entregará después. Los usuarios existentes pueden iniciar sesión. La API también conserva su control; ocultar el formulario no es la protección de seguridad.
+- Sigue pendiente: autorización de gestión de índices/TTL, datos legales, dominio y medición de conversiones. Consultas de prácticas y evaluaciones funcionaron con índices existentes. No se ha certificado toda la malla ni uso contable oficial; no se invirtió en anuncios.
+
+- Integridad de recursos: 120 manuales con PDF, Markdown y carpeta de imágenes existentes. Se reconstruyó el índice de la API desde 2.271 imágenes reales, retirando 2.217 referencias a nombres inexistentes; diez capturas de la guía inicial también corregidas. Nueva prueba versionada protege existencia, duplicados y orden.
+- Las páginas de manuales solo aceptan IDs del catálogo y devuelven 404 para recursos desconocidos; títulos individuales reflejan cada manual.
+
+- Biblioteca: selector corregido para usar las mismas 23 categorías del catálogo; eliminada la copia divergente. Las autoevaluaciones locales se distinguen del expediente registrado y ya no prometen certificación oficial, horas ni entrevistas. Se corrigieron afirmaciones absolutas del repaso transversal; el análisis pedagógico completo sigue pendiente.
+
+- Comprobación visual de una clase real: las capturas y el guion heredados describen otro ERP. Se añadió aviso visible en cada manual para no atribuir esas funciones al simulador Finix; se enlaza al aula para prácticas evaluadas. Sustituir y revisar ese material sigue siendo trabajo académico pendiente, sin reemplazos automáticos de marca que falseen el contenido.

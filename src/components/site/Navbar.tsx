@@ -56,14 +56,13 @@ export function Navbar() {
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-[#080d1a]/85 border-b border-slate-200 dark:border-white/[0.08] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3.5 group">
+        <Link href="/" className="flex items-center gap-2 sm:gap-3.5 group">
           <div className="w-11 h-11 relative group-hover:scale-105 transition-transform flex-shrink-0">
-            <Image src="/b1-academy-logo.webp" alt="Finix Academy Logo" width={44} height={44} className="object-contain dark:hidden" priority />
-            <Image src="/b1-academy-logo-dark.webp" alt="Finix Academy Logo" width={44} height={44} className="object-contain hidden dark:block" priority />
+            <Image src="/finix-mark.svg" alt="" width={44} height={44} className="object-contain" priority />
           </div>
           <div className="flex flex-col whitespace-nowrap">
-            <span className="text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
-              ACADEMY
+            <span className="text-base sm:text-xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 via-[#0a6ed1] to-sky-600 dark:from-white dark:via-sky-200 dark:to-[#0a6ed1] bg-clip-text text-transparent font-display">
+              FINIX ACADEMY
             </span>
             <span className="text-[10px] uppercase tracking-[0.25em] text-slate-500 dark:text-slate-400 font-semibold">
               FINIX ERP
@@ -123,7 +122,7 @@ export function Navbar() {
         </nav>
 
         {/* Actions, Auth & Theme Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <ThemeToggle />
 
           {userProfile ? (

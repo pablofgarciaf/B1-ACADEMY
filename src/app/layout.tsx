@@ -23,9 +23,9 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   icons: {
-    icon: '/icon.png',
-    shortcut: '/icon.png',
-    apple: '/icon.png',
+    icon: '/finix-mark.png',
+    shortcut: '/finix-mark.png',
+    apple: '/finix-mark.png',
   },
   title: {
     default: "Finix Academy | Formación y Consultoría Finix ERP",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: publicUrl('/b1-academy-logo.webp'),
+        url: publicUrl('/finix-mark.png'),
         width: 500,
         height: 500,
         alt: "Finix Academy - Plataforma de Capacitación y Consultoría Empresarial Finix ERP",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     title: "Finix Academy | Formación y Consultoría Finix ERP",
     description:
       "Formación especializada y consultoría en Finix ERP para profesionales y empresas.",
-    images: [publicUrl('/b1-academy-logo.webp')],
+    images: [publicUrl('/finix-mark.png')],
   },
   robots: {
     index: true,
@@ -94,7 +94,7 @@ const organizationSchema = {
   "@type": "EducationalOrganization",
   name: "Finix Academy",
   url: publicUrl(),
-  logo: publicUrl('/b1-academy-logo.webp'),
+  logo: publicUrl('/finix-mark.png'),
   description:
     "Plataforma educativa en español con cursos y prácticas de gestión empresarial y uso del simulador Finix ERP.",
   areaServed: "EC",

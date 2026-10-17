@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import ManualViewer, { type SyncData } from '@/components/site/ManualViewer';
 import OfflineManager from '@/components/site/OfflineManager';
 import { ALL_MANUALS } from '@/lib/manuals-120-data';
@@ -8,23 +9,18 @@ import { getQuizForManual } from '@/lib/manual-quizzes-data';
 import { firmarTexto } from '@/lib/tts-firma';
 
 export async function generateStaticParams() {
-  const dir = path.join(process.cwd(), 'public', 'Capacitacion Finix');
-  const skipDirs = ['01_Revision_BUENAS', '02_Revision_MALAS_CUARENTENA', 'para corregir', '10_Service_11_CSProcess'];
-  const items = fs.readdirSync(dir)
-    .filter(i => {
-      if (skipDirs.includes(i)) return false;
-      return fs.statSync(path.join(dir, i)).isDirectory();
-    });
-  return items.map(id => ({ id }));
+  return ALL_MANUALS.map(({ id }) => ({ id }));
 }
 
 export default async function ManualPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
-  const manualId = decodeURIComponent(resolvedParams.id);
+  const manualId = resolvedParams.id;
   
   // Buscar datos del manual en la base de datos
   const manualData = ALL_MANUALS.find(m => m.id === manualId);
-  const displayTitle = manualData?.title || manualId.replace(/_/g, ' ');
+  // Solo el catálogo del servidor puede elegir una carpeta; nunca un segmento arbitrario de URL.
+  if (!manualData) notFound();
+  const displayTitle = manualData.title;
   
   const manualDir = path.join(process.cwd(), 'public', 'Capacitacion Finix', manualId);
   
@@ -87,6 +83,10 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
           ← Volver a Biblioteca
         </Link>
       </header>
+
+      <aside className="shrink-0 border-b border-amber-400/20 bg-amber-400/10 px-4 py-2 text-xs leading-relaxed text-amber-100">
+        <strong>Material de referencia heredado.</strong> Las capturas y los guiones pueden describir funciones de otro ERP; no acreditan capacidades del simulador Finix ni integración fiscal real. Para las prácticas evaluadas, usa <Link href="/mi-aula" className="font-semibold underline">Mi Aula</Link>.
+      </aside>
 
       <main className="flex-1 min-h-0 overflow-hidden p-2.5 sm:p-4 max-w-[1700px] w-full mx-auto">
         <ManualViewer 

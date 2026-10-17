@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 import { trackConversion } from "@/lib/conversions";
+import { publicIntakeAvailable } from "@/lib/legal-config";
 
 type Tab = "login" | "register";
 
@@ -351,7 +352,14 @@ export default function LoginPage() {
           )}
 
           {/* REGISTER FORM */}
-          {tab === "register" && (
+          {tab === "register" && !publicIntakeAvailable && (
+            <section role="status" className="rounded-3xl border border-slate-200 bg-white p-8 text-slate-700 shadow-xl dark:border-white/10 dark:bg-white/[0.02] dark:text-slate-300">
+              <h2 className="text-xl font-bold">Inscripciones disponibles próximamente</h2>
+              <p className="mt-3">Estamos preparando la apertura de inscripciones. Puedes explorar el catálogo sin dejar tus datos. Si ya tienes una cuenta, inicia sesión para continuar.</p>
+              <button onClick={() => switchTab("login")} className="mt-5 min-h-12 rounded-xl bg-finix-blue px-5 py-3 font-bold text-white">Iniciar sesión</button>
+            </section>
+          )}
+          {tab === "register" && publicIntakeAvailable && (
             <div className="p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-xl space-y-6">
               {/* Free badge */}
               <div className="flex items-center gap-3 p-4 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">

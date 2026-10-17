@@ -13,18 +13,11 @@ export function Footer() {
             <Link href="/" className="flex items-center gap-3.5 group">
               <div className="w-10 h-10 relative group-hover:scale-105 transition-transform flex-shrink-0">
                 <Image
-                  src="/b1-academy-logo.webp"
-                  alt="Finix Academy Logo"
+                  src="/finix-mark.svg"
+                  alt=""
                   width={40}
                   height={40}
-                  className="object-contain dark:hidden"
-                />
-                <Image
-                  src="/b1-academy-logo-dark.webp"
-                  alt="Finix Academy Logo"
-                  width={40}
-                  height={40}
-                  className="object-contain hidden dark:block"
+                  className="object-contain"
                 />
               </div>
               <div className="flex flex-col whitespace-nowrap">

@@ -167,7 +167,7 @@ export default function ManualesLibraryPage() {
   const handleDownloadPDF = () => {
     if (!examModalCategory) return;
     generateCategoryCertificate({
-      studentName: studentName.trim() || 'Estudiante Oficial',
+      studentName: studentName.trim() || 'Estudiante',
       categoryTitle: examModalCategory.categoryName,
       score: examScore,
       totalQuestions: examModalCategory.questions.length
@@ -193,14 +193,14 @@ export default function ManualesLibraryPage() {
         {/* Encabezado Principal */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
-            <Sparkles className="w-3.5 h-3.5" /> Repositorio Documental Oficial • Finix Academy Ecuador
+            <Sparkles className="w-3.5 h-3.5" /> Biblioteca de aprendizaje • Finix Academy Ecuador
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
             Atlas técnico de manuales Finix ERP
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             <strong>{ALL_MANUALS.length} manuales técnicos</strong> organizados en
-            <strong> {MANUAL_CATEGORIES.length} módulos temáticos</strong>. Completa las clases prácticas y aprueba el examen final para obtener tu <strong>certificado propio de Finix Academy</strong>.
+            <strong> {MANUAL_CATEGORIES.length} módulos temáticos</strong>. Consulta los materiales y usa las autoevaluaciones de repaso. Las evaluaciones y constancias registradas se gestionan desde <Link href="/mi-aula" className="text-finix-blue underline">Mi Aula</Link>.
           </p>
         </div>
 
@@ -249,7 +249,7 @@ export default function ManualesLibraryPage() {
 
         {/* ZONA DE CATEGORÍA SELECCIONADA (SUBE AL INICIO AL ESCOGERLA) */}
         {activeGroup && (
-          <div id="seccion-categoria-activa" className="scroll-mt-24 space-y-6rounded-3xl border border-finix-blue/40 bg-finix-blue/[0.03] p-6 sm:p-8 shadow-xl transition-all">
+          <div id="seccion-categoria-activa" className="scroll-mt-24 space-y-6 rounded-3xl border border-finix-blue/40 bg-finix-blue/[0.03] p-6 sm:p-8 shadow-xl transition-all">
             {/* Header de la Categoría Activa */}
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 pb-5 border-b border-finix-blue/20">
               <div className="flex items-center gap-4">
@@ -266,7 +266,7 @@ export default function ManualesLibraryPage() {
                     </span>
                     {certifiedCategories.includes(activeGroup[0]) && (
                       <span className="text-xs font-bold text-amber-500 bg-amber-500/10 border border-amber-500/30 px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                        <Award className="w-3.5 h-3.5" /> Módulo Certificado
+                        <Award className="w-3.5 h-3.5" /> Autoevaluación completada
                       </span>
                     )}
                   </div>
@@ -282,7 +282,7 @@ export default function ManualesLibraryPage() {
                   onClick={() => handleStartCategoryExam(activeGroup[0])}
                   className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-xs font-bold text-white shadow-md shadow-amber-500/20 transition-all flex items-center gap-1.5 cursor-pointer active:scale-95"
                 >
-                  <GraduationCap className="w-4 h-4" /> Examen de Certificación del Módulo
+                  <GraduationCap className="w-4 h-4" /> Autoevaluación de repaso
                 </button>
 
                 <button
@@ -389,7 +389,7 @@ export default function ManualesLibraryPage() {
                           {categoryName}
                         </h3>
                         {isCertified && (
-                          <span title="Módulo Certificado" className="text-amber-500 shrink-0">
+                          <span title="Autoevaluación completada" className="text-amber-500 shrink-0">
                             🏆
                           </span>
                         )}
@@ -428,12 +428,12 @@ export default function ManualesLibraryPage() {
       {/* MODAL DEL EXAMEN DE CERTIFICACIÓN DE LA CATEGORÍA */}
       {examModalCategory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md">
-          <div className="bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-white/10 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl animate-fadeIn">
+          <div role="dialog" aria-modal="true" aria-label="Autoevaluación de repaso" className="max-h-[90dvh] overflow-y-auto bg-white dark:bg-[#0f172a] border border-slate-200 dark:border-white/10 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 shadow-2xl animate-fadeIn">
             {/* Header del Examen */}
             <div className="flex items-center justify-between border-b border-slate-100 dark:border-white/5 pb-4">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-bold uppercase tracking-wider bg-amber-500/15 text-amber-500 border border-amber-500/30 px-3 py-1 rounded-xl flex items-center gap-1.5">
-                  <GraduationCap className="w-4 h-4" /> Certificación Oficial
+                  <GraduationCap className="w-4 h-4" /> Autoevaluación local
                 </span>
                 <span className="text-xs font-mono text-slate-400">
                   {examModalCategory.categoryName}
@@ -441,14 +441,14 @@ export default function ManualesLibraryPage() {
               </div>
 
               <button
-                onClick={() => setExamModalCategory(null)}
+                aria-label="Cerrar autoevaluación" onClick={() => setExamModalCategory(null)}
                 className="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* Pantalla del Examen o Pantalla de Resultados y Certificado */}
+            <p className="text-sm text-slate-600 dark:text-slate-300">Esta autoevaluación se guarda solo en este navegador. No actualiza tu expediente ni emite una constancia registrada.</p>
             {!examFinished ? (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
@@ -490,7 +490,7 @@ export default function ManualesLibraryPage() {
                 <div>
                   <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
                     {examScore >= examModalCategory.passingScore
-                      ? '¡Felicitaciones! Has Aprobado la Certificación'
+                      ? 'Has superado la autoevaluación'
                       : 'No alcanzaste el puntaje mínimo requerido'}
                   </h2>
                   <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -526,7 +526,7 @@ export default function ManualesLibraryPage() {
                   <div className="space-y-4 text-left">
                     <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-3 max-h-64 overflow-y-auto custom-scrollbar">
                       <div className="flex items-center gap-2 text-amber-500 font-bold text-xs uppercase tracking-wider">
-                        <Sparkles className="w-4 h-4" /> Diagnóstico del Tutor IA: Módulos a Reforzar
+                        <Sparkles className="w-4 h-4" /> Conceptos para repasar
                       </div>
                       <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                         Para alcanzar el <strong>90% de aprobación técnica</strong>, te recomendamos repasar los siguientes conceptos específicos en los manuales de esta categoría:

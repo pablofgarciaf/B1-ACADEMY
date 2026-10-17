@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { trackConversion } from '@/lib/conversions';
+import { publicIntakeAvailable } from '@/lib/legal-config';
 
 export function BusinessLeadForm() {
   const requestId = useRef('');
@@ -29,6 +30,11 @@ export function BusinessLeadForm() {
     finally { setBusy(false); }
   }
   const input = 'mt-2 w-full rounded-xl border border-slate-300 bg-white p-3 text-slate-900 dark:border-white/20 dark:bg-slate-900 dark:text-white';
+  if (!publicIntakeAvailable) return <section id="solicitud" className="mt-16 scroll-mt-24 rounded-3xl border border-sky-500/30 bg-white p-6 dark:bg-white/[0.03] sm:p-10">
+    <h2 className="text-2xl font-bold">Formación para tu equipo</h2>
+    <p role="status" className="mt-3 text-slate-600 dark:text-slate-300">La recepción de solicitudes estará disponible próximamente. Mientras tanto, puedes revisar las rutas y los contenidos sin dejar tus datos.</p>
+    <Link href="/capacitacion" className="mt-5 inline-flex min-h-12 items-center rounded-xl bg-finix-blue px-6 py-3 font-bold text-white">Explorar rutas de formación</Link>
+  </section>;
   return <section id="solicitud" className="mt-16 scroll-mt-24 rounded-3xl border border-sky-500/30 bg-white p-6 shadow-sm dark:bg-white/[0.03] sm:p-10">
     <h2 className="text-2xl font-bold">Solicita formación para tu equipo</h2>
     <p className="mt-3 text-slate-600 dark:text-slate-300">Cuéntanos qué procesos necesitas mejorar. Revisaremos tu solicitud para definir una propuesta de capacitación. Enviarla no tiene costo ni implica contratar.</p>

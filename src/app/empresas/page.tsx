@@ -6,7 +6,7 @@ import { Footer } from '@/components/site/Footer';
 import { BusinessLeadForm } from '@/components/site/BusinessLeadForm';
 
 export const metadata: Metadata = {
-  title: 'Formación ERP para equipos de empresas | Finix Academy',
+  title: 'Formación ERP para equipos de empresas',
   description: 'Explora las rutas de Finix Academy para equipos que necesitan practicar compras, ventas, operaciones y finanzas en un simulador educativo.',
   alternates: { canonical: '/empresas' },
 };

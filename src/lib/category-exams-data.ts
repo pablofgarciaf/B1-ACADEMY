@@ -466,12 +466,12 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       q: `1. En la arquitectura empresarial de Finix ERP, ¿cuál es el principio clave que rige el módulo de ${categoryName}?`,
       options: [
         "La duplicación de documentos en carpetas físicas locales.",
-        `La integración total en tiempo real con la contabilidad financiera y el inventario sin interfaces externas.`,
+        `Relacionar las operaciones, la contabilidad y el inventario cuando el proceso y la configuración lo requieran.`,
         "El uso de software externo no homologado por Finix ERP.",
         "La eliminación de controles de autorización de usuarios."
       ],
       answer: 1,
-      explanation: `Todas las operaciones de ${categoryName} en Finix ERP actualizan en tiempo real los libros mayores y la trazabilidad del sistema.`,
+      explanation: `Una consulta o un borrador no equivale a contabilizar. En ${categoryName} debes comprobar qué operación afecta saldos, existencias y documentos relacionados.`,
       topic: `Integración Transaccional en ${categoryName}`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
@@ -489,15 +489,15 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
-      q: `3. ¿Cómo garantiza Finix ERP la trazabilidad de cualquier transacción ejecutada dentro de ${categoryName}?`,
+      q: `3. ¿Qué evidencia conviene revisar para seguir una operación de ${categoryName}?`,
       options: [
-        "Mediante el Mapa de Relaciones visual y el Registro de Auditoría de Transacciones (Audit Log).",
+        "Los documentos vinculados y el registro de auditoría, comprobando su integridad y alcance.",
         "Imprimiendo un comprobante físico que se archiva manualmente.",
         "Ocultando las transacciones anteriores para no saturar la pantalla.",
         "Enviando un correo electrónico al fabricante del servidor."
       ],
       answer: 0,
-      explanation: "El Mapa de Relaciones permite al consultor auditar el ciclo de vida completo de un documento desde su cotización inicial hasta el pago.",
+      explanation: "Contrasta documentos de origen y destino, usuario, fecha y cambios registrados. Una cadena válida no sustituye una referencia externa confiable ni prueba que un administrador no pueda modificar la infraestructura.",
       topic: `Mapa de Relaciones en ${categoryName}`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
@@ -510,7 +510,7 @@ export function getCategoryExam(categoryName: string): CategoryExam {
         "Eliminar el período contable completo."
       ],
       answer: 1,
-      explanation: "Herramientas > Log de Modificaciones muestra el historial completo de cambios campo por campo con usuario y timestamp.",
+      explanation: "Revisa la auditoría disponible y contrasta el usuario, la fecha y los datos anteriores y posteriores. No modifiques directamente la base para ocultar una discrepancia.",
       topic: `Auditoría y Log de Modificaciones`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
@@ -523,20 +523,20 @@ export function getCategoryExam(categoryName: string): CategoryExam {
         "Se deben calcular manualmente en una calculadora física."
       ],
       answer: 1,
-      explanation: "El sistema de inventario permanente de Finix ERP contabiliza en tiempo real cada entrada, salida o transferencia.",
+      explanation: "Comprueba el tipo de movimiento, su costo y las cuentas afectadas. Una transferencia interna entre almacenes no implica necesariamente un asiento ni un gasto.",
       topic: `Inventario Permanente y Costos en ${categoryName}`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
       q: `6. Al gestionar autorizaciones en ${categoryName}, ¿qué nivel de seguridad permite asignar Finix ERP a un usuario?`,
       options: [
-        "Autorización Total, Solo Lectura o Sin Autorización, segmentable por campos sensibles y series de numeración.",
+        "Permisos de consulta y operación según el rol, el recurso y los controles efectivamente disponibles.",
         "Solo permite bloquear el mouse de la computadora.",
         "No existen autorizaciones, todos los empleados son administradores.",
         "Solo permite restringir el acceso los días domingos."
       ],
       answer: 0,
-      explanation: "La matriz de autorizaciones granula el acceso por ventana, acción (crear, modificar, ver) y series de numeración.",
+      explanation: "Los permisos deben comprobarse en el servidor sobre cada recurso. Mostrar u ocultar un botón no autoriza una operación.",
       topic: `Seguridad y Perfiles de Autorización`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
@@ -550,7 +550,7 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       ],
       answer: 0,
       explanation: "Los informes de auditoría reconstruyen con precisión matemática la evolución de saldos y transacciones.",
-      topic: `Informes Oficiales de Auditoría`,
+      topic: `Informes y revisión de saldos`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
@@ -580,24 +580,24 @@ export function getCategoryExam(categoryName: string): CategoryExam {
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     },
     {
-      q: `10. ¿Qué beneficio aporta la aprobación de la certificación en ${categoryName} (con más del 90%) en el expediente profesional de B1 Academy?`,
+      q: `10. ¿Qué acredita completar esta autoevaluación de repaso sobre ${categoryName}?`,
       options: [
-        "Permite calificar a la evaluación presencial técnica y semi-oral con reclutadores para la vinculación en la Bolsa de Empleo.",
+        "Un resultado local de repaso; una constancia registrada requiere los requisitos y la evaluación del aula.",
         "Exonera al estudiante de trabajar en empresas reales.",
         "Le otorga permisos de administrador absoluto en cualquier servidor de Finix ERP del mundo.",
         "Sustituye la necesidad de contar con licencias de software oficial."
       ],
       answer: 0,
-      explanation: "Los certificados de B1 Academy acreditan las horas de capacitación requeridas para calificar a las entrevistas técnicas con partners oficiales de Finix ERP.",
-      topic: `Vinculación a la Bolsa de Empleo`,
+      explanation: "La autoevaluación no crea un expediente verificado, acredita horas oficiales ni garantiza entrevistas o empleo.",
+      topic: `Alcance de la autoevaluación`,
       recommendedManualTitle: `Manuales del módulo ${categoryName}`
     }
   ];
 
   return {
     categoryName,
-    badgeTitle: `Especialista Certificado en ${categoryName}`,
-    description: `Examen riguroso de 10 preguntas sobre procesos empresariales, parametrización, asientos contables y auditoría de ${categoryName} en Finix ERP. Requiere un 90% (9/10) para aprobar.`,
+    badgeTitle: `Repaso de controles empresariales`,
+    description: `Autoevaluación transversal de controles y procesos. No es una evaluación exhaustiva de ${categoryName} ni una certificación registrada. Umbral de repaso: 9/10.`,
     passingScore: 9,
     questions: baseQuestions
   };

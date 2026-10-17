@@ -20,6 +20,9 @@ export const LEGAL = {
 
 export const legalConfigured = Boolean(LEGAL.razonSocial && /^\d{13}$/.test(LEGAL.ruc) && LEGAL.direccion && LEGAL.ciudad && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(LEGAL.correoPrivacidad));
 
+/** La interfaz y las API deben ofrecer la misma disponibilidad de captación. */
+export const publicIntakeAvailable = process.env.NODE_ENV !== 'production' || legalConfigured;
+
 /** Versión de las políticas que el usuario acepta; si cambia, se vuelve a pedir el consentimiento. */
 export const POLITICAS_VERSION = `${LEGAL.version}-2026-10`;
 

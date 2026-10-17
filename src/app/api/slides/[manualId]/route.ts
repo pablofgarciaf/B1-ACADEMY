@@ -23,7 +23,7 @@ export async function GET(
   }
 
   const slides = filenames.map((filename, idx) => {
-    const match = filename.match(/_Slide_(\d+)_/i);
+    const match = filename.match(/(?:^|_)Slide_(\d+)(?:_|\.|$)/i);
     const slideNum = match ? parseInt(match[1]) : idx + 1;
     return {
       id: `${manual.id}_${slideNum}`,

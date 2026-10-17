@@ -5,7 +5,7 @@ import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
 
 export const metadata: Metadata = {
-  title: 'Verificación de constancias y consultores | Finix Academy',
+  title: 'Verificación de constancias y consultores',
   description: 'Consulta la autenticidad de una constancia de Finix Academy por su código y conoce cómo se evaluarán las competencias de cada perfil.',
   alternates: { canonical: '/consultores' },
   robots: { index: false, follow: true },

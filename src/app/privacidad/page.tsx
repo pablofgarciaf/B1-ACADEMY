@@ -5,7 +5,7 @@ import { dato, LEGAL } from '@/lib/legal-config';
 
 export const metadata: Metadata = {
   // 54 caracteres
-  title: 'Política de Privacidad y Datos Personales | Finix Academy',
+  title: 'Política de Privacidad y Datos Personales',
   // 152 caracteres
   description: 'Cómo Finix Academy trata tus datos personales conforme a la LOPDP de Ecuador: finalidades, cédula, IA, transferencias, plazos y cómo ejercer tus derechos.',
   alternates: { canonical: `${LEGAL.sitio}/privacidad` },
