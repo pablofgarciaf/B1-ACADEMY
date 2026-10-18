@@ -19,7 +19,7 @@ const defaultStudent: StudentProfile = {
   progress: {
     'finix-erp-core': {
       courseId: 'finix-erp-core',
-      courseTitle: 'Finix ERP: Núcleo Transversal & Finanzas NIIF',
+      courseTitle: 'SAP Business One: Núcleo Transversal & Finanzas NIIF',
       completedLessons: [],
       totalLessons: 8,
       percent: 0,
@@ -70,7 +70,7 @@ const defaultStudent: StudentProfile = {
     missingRequirements: [
       'Alcanzar >= 80% de avance global en los tracks',
       'Obtener promedio de notas >= 80% en evaluaciones',
-      'Completar mínimo 15h de práctica en Sandbox Finix ERP',
+      'Completar mínimo 15h de práctica en Sandbox SAP Business One',
       'Obtener al menos 1 certificación oficial aprobada',
     ],
   },
@@ -96,7 +96,7 @@ export function recalculateReadiness(student: StudentProfile): JobReadinessMetri
   const missing: string[] = [];
   if (overallPercent < 80) missing.push(`Alcanzar >= 80% de avance global (Actual: ${overallPercent}%)`);
   if (avgGrade < 80) missing.push(`Obtener promedio de notas >= 80% (Actual: ${avgGrade}%)`);
-  if (student.sandboxHoursUsed < 15) missing.push(`Completar mínimo 15h en Sandbox Finix ERP (Actual: ${student.sandboxHoursUsed}h)`);
+  if (student.sandboxHoursUsed < 15) missing.push(`Completar mínimo 15h en Sandbox SAP Business One (Actual: ${student.sandboxHoursUsed}h)`);
   if (student.certifications.length < 1) missing.push('Obtener al menos 1 certificación aprobada');
 
   const isEligible = missing.length === 0;
@@ -235,7 +235,7 @@ export function recordExamResult(courseIdOrCode: string, quizId: string, courseT
 // Candidatos elegibles verificados para la bolsa de empleo corporativa
 export function getEligibleJobCandidates(): StudentProfile[] { return []; }
 
-// Registrar horas de práctica en Sandbox Finix ERP
+// Registrar horas de práctica en Sandbox SAP Business One
 export function recordSandboxPractice(hours: number): StudentProfile {
   const student = getStudentProfile();
   student.sandboxHoursUsed = Math.min(student.sandboxHoursLimit, (student.sandboxHoursUsed || 0) + hours);
