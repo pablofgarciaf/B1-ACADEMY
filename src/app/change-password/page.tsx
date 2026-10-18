@@ -1,4 +1,6 @@
 "use client";
+import { requiresPasswordChange } from '@/lib/account-access-policy';
+
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -35,7 +37,7 @@ export default function ChangePasswordPage() {
         router.replace('/login');
         return;
       }
-      if (userProfile.passwordChanged === true && userProfile.passwordSecurityVersion===2) {
+      if (!requiresPasswordChange(userProfile)) {
         if (userProfile.role === 'super' || userProfile.role === 'admin') {
           router.replace('/admin');
         } else {

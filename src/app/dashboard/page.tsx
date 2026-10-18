@@ -1,4 +1,6 @@
 "use client";
+import { requiresPasswordChange } from '@/lib/account-access-policy';
+
 
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
@@ -71,7 +73,7 @@ export default function StudentDashboardPage() {
         router.replace('/login');
         return;
       }
-      if (userProfile.passwordChanged === false) {
+      if (requiresPasswordChange(userProfile)) {
         router.replace('/change-password');
         return;
       }
@@ -104,7 +106,7 @@ export default function StudentDashboardPage() {
       });
   }, [userProfile]);
 
-  if (authLoading || !userProfile || userProfile.passwordChanged === false) {
+  if (authLoading || !userProfile || requiresPasswordChange(userProfile)) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-[#080d1a]">
         <div className="flex flex-col items-center gap-3 text-slate-500">

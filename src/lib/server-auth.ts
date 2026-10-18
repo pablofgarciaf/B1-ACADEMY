@@ -1,3 +1,4 @@
+import { requiresPasswordChange } from '@/lib/account-access-policy';
 import 'server-only';
 
 import { cookies } from 'next/headers';
@@ -123,7 +124,7 @@ export async function requireBearerUser(request: Request): Promise<Authenticated
 }
 
 export function assertAccountReady(user: AuthenticatedUser) {
-  if (user.profile.passwordChanged === false || user.profile.passwordSecurityVersion !== 2) throw new AuthRejectedError('Debes crear tu contraseña personal antes de continuar.');
+  if (requiresPasswordChange(user.profile)) throw new AuthRejectedError('Debes crear tu contraseña personal antes de continuar.');
 }
 
 export function isAdmin(profile: UserProfile) {

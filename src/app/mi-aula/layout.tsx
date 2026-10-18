@@ -1,3 +1,4 @@
+import { requiresPasswordChange } from '@/lib/account-access-policy';
 import type { Metadata } from 'next';
 import {publicUrl} from '@/lib/site-url';
 import { redirect } from 'next/navigation';
@@ -34,6 +35,6 @@ export default async function MiAulaLayout({
   const sesion = await getSessionState();
   if (sesion.estado === 'sin-sesion') redirect('/login?next=/mi-aula');
   if (sesion.estado === 'no-disponible') return <SesionNoDisponible destino="/mi-aula" />;
-  if(sesion.estado==='ok' && (sesion.user.profile.passwordChanged===false || sesion.user.profile.passwordSecurityVersion!==2)) redirect('/change-password');
+  if(sesion.estado==='ok' && (requiresPasswordChange(sesion.user.profile))) redirect('/change-password');
   return <>{children}</>;
 }

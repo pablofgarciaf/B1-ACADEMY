@@ -1,3 +1,4 @@
+import { requiresPasswordChange } from '@/lib/account-access-policy';
 import 'server-only';
 import { adminDb, fieldValue } from './firebase-admin';
 import { PASSWORD_POLICY_EPOCH } from './password-policy';
@@ -9,7 +10,7 @@ export function passwordWasRecovered(account: { passwordUpdatedAt?: number; crea
   return Number.isFinite(changed)&&Number.isFinite(created)&&created>0&&changed>created+1000&&changed>=PASSWORD_POLICY_EPOCH&&changed<=now+60000;
 }
 export async function passwordAccess(user:AuthenticatedUser,idToken:string) {
-  if(user.profile.passwordSecurityVersion===2&&user.profile.passwordChanged===true)return {ready:true,recoveryRequired:false};
+  if(!requiresPasswordChange(user.profile))return {ready:true,recoveryRequired:false};
   const key=process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
   if(!key)throw new Error('No se pudo verificar la recuperación. Intenta nuevamente.');
   const response=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${encodeURIComponent(key)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({idToken}),signal:AbortSignal.timeout(10000),cache:'no-store'});
@@ -23,6 +24,6 @@ export async function passwordAccess(user:AuthenticatedUser,idToken:string) {
     Object.assign(user.profile,changes);return {ready:true,recoveryRequired:false};
   }
   const validInvitation=Date.parse(user.profile.temporaryPasswordExpiresAt||'')>Date.now();
-  return {ready:false,recoveryRequired:user.profile.passwordSecurityVersion!==2&&!validInvitation};
+  return {ready:false,recoveryRequired:!validInvitation};
 }
 

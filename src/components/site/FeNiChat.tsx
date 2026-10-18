@@ -1,4 +1,6 @@
 'use client';
+import { requiresPasswordChange } from '@/lib/account-access-policy';
+
 
 import { useState, useRef, useEffect } from 'react';
 import { Sparkles, Send, X, User, Trash2 } from 'lucide-react';
@@ -21,7 +23,7 @@ const SUGGESTED_QUESTIONS = [
 
 export default function FeNiChat() {
   const { currentUser, userProfile } = useAuth();
-  const privateTutorReady = Boolean(currentUser && userProfile?.passwordSecurityVersion === 2 && userProfile.passwordChanged !== false);
+  const privateTutorReady = Boolean(currentUser && userProfile && !requiresPasswordChange(userProfile));
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');

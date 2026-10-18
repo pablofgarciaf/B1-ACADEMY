@@ -1,4 +1,6 @@
 "use client";
+import { requiresPasswordChange } from '@/lib/account-access-policy';
+
 
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { auth } from '@/lib/firebase';
@@ -110,7 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const profile = await establishServerSession(credential.user, true);
       if (profile.status !== 'active') throw new Error('Inactive');
       setCurrentUser(credential.user); setUserProfile(profile);
-      return { success: true, role: profile.role, passwordChanged: profile.passwordChanged !== false && profile.passwordSecurityVersion===2 };
+      return { success: true, role: profile.role, passwordChanged: !requiresPasswordChange(profile) };
     } catch (error) {
       if (process.env.NODE_ENV === 'development') console.error('Login error:', error);
       await signOut(auth).catch(() => undefined);

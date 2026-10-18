@@ -1,4 +1,6 @@
 "use client";
+import { requiresPasswordChange } from '@/lib/account-access-policy';
+
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -68,7 +70,7 @@ export default function LoginPage() {
         } catch { /* se informa abajo */ }
       }
       if (cancelado) return;
-      if (valida) router.replace((userProfile.passwordChanged === false || userProfile.passwordSecurityVersion !== 2) ? "/change-password" : siguiente);
+      if (valida) router.replace((requiresPasswordChange(userProfile)) ? "/change-password" : siguiente);
       else setAvisoSesion("No pudimos abrir tu sesión en el servidor. Espera unos segundos y vuelve a ingresar con tu correo y clave.");
     })();
     return () => { cancelado = true; };

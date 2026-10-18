@@ -100,7 +100,7 @@ test('empresa privada habilitada deriva propietario del token e impide sembrar d
 });
 test('perfil bloqueado y contraseña antigua se rechazan antes de leer empresas',async()=>{
  db.rows.get('usuarios/alice').status='blocked';assert.equal((await company.GET(request('/api',undefined,'alice'))).status,401);
- db.rows.get('usuarios/bob').passwordSecurityVersion=1;assert.equal((await company.GET(request('/api',undefined,'bob'))).status,401);assert.deepEqual(companyReads,[]);
+ db.rows.get('usuarios/bob').passwordChanged=false;db.rows.get('usuarios/bob').temporaryPasswordExpiresAt=new Date(Date.now()+3600000).toISOString();assert.equal((await company.GET(request('/api',undefined,'bob'))).status,401);assert.deepEqual(companyReads,[]);
 });
 test('sesión real exige token válido y entrega cookie segura HttpOnly limitada a cinco días',async()=>{
  process.env.NODE_ENV='production';

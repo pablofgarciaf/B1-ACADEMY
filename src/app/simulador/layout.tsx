@@ -1,3 +1,4 @@
+import { requiresPasswordChange } from '@/lib/account-access-policy';
 import { redirect } from 'next/navigation';
 import { getSessionState } from '@/lib/server-auth';
 import SesionNoDisponible from '@/components/site/SesionNoDisponible';
@@ -10,6 +11,6 @@ export default async function SimulatorLayout({ children }: { children: React.Re
   const sesion = await getSessionState();
   if (sesion.estado === 'sin-sesion') redirect('/login?next=/simulador');
   if (sesion.estado === 'no-disponible') return <SesionNoDisponible destino="/simulador" />;
-  if(sesion.estado==='ok' && (sesion.user.profile.passwordChanged===false || sesion.user.profile.passwordSecurityVersion!==2)) redirect('/change-password');
+  if(sesion.estado==='ok' && (requiresPasswordChange(sesion.user.profile))) redirect('/change-password');
   return children;
 }
