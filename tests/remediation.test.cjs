@@ -41,6 +41,15 @@ test('la inicialización académica es atómica, completa e idempotente',()=>{
   const before=JSON.stringify(c.data);c.run('initializeTraining',{});assert.equal(JSON.stringify(c.data),before);
   assert.ok(camposConsulta(c.data,'mod-ventas-c2#2'));
 });
+test('cuenta con empresa previa sin trainingSetupVersion se reconoce como inicializada sin error',()=>{
+  const c=company();
+  c.run('initializeTraining',{});
+  assert.equal(c.data.profile.trainingSetupVersion,1);
+  delete c.data.profile.trainingSetupVersion;
+  assert.equal(c.data.profile.trainingSetupVersion, undefined);
+  assert.doesNotThrow(() => c.run('initializeTraining', {}));
+  assert.equal(c.data.profile.trainingSetupVersion, 1);
+});
 test('depreciación reduce resultado y no permite deuda huérfana ni reapertura incompatible',()=>{
   const c=company();c.run('initialize',{companyName:'Pruebas'});
   c.run('journal',{date:'2026-10-16',dueDate:'2026-10-16',memo:'Ingreso',reference:'I',lines:[{accountCode:'1.1.01',debit:1000,credit:0,description:'',costCenter:''},{accountCode:'4.01',debit:0,credit:1000,description:'',costCenter:''}]});

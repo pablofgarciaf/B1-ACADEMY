@@ -24,7 +24,10 @@ export async function readCompany(uid: string, email = ''): Promise<CompanyState
 export async function hasInitializedCompany(uid: string): Promise<boolean> {
   try {
     const company = await readCompany(uid);
-    return company?.profile?.trainingSetupVersion === 1;
+    return Boolean(
+      company?.profile?.trainingSetupVersion === 1 ||
+      (company?.profile?.companyName && (company?.customers?.length > 0 || company?.items?.length > 0))
+    );
   } catch {
     return false;
   }

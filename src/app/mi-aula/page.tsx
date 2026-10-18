@@ -46,7 +46,7 @@ export default function MiAulaPage() {
       .catch(() => { if (activo) setHechasInduccion(0); });
 
     getCompany(currentUser.uid)
-      .then(s => { if (activo) setTieneEmpresa(s?.profile?.trainingSetupVersion===1); })
+      .then(s => { if (activo) setTieneEmpresa(Boolean(s?.profile?.trainingSetupVersion===1 || (s?.profile?.companyName && (s?.customers?.length || s?.items?.length)))); })
       .catch(() => { if (activo) setTieneEmpresa(false); });
 
     return () => { activo = false; };

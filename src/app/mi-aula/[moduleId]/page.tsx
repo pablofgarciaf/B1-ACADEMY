@@ -80,7 +80,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     getCompany(currentUser.uid)
       .then(s => {
         if (!activo) return;
-        const exists = s?.profile?.trainingSetupVersion===1;
+        const exists = Boolean(s?.profile?.trainingSetupVersion===1 || (s?.profile?.companyName && (s?.customers?.length || s?.items?.length)));
         setEmpresaEstado(exists ? 'ok' : 'falta');
       })
       .catch(() => {
