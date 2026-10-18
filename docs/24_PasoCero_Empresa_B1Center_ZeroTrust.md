@@ -61,3 +61,11 @@ graph TD
    - 12 artículos con precio de lista, costo y márgenes calculados.
    - 2 bodegas con existencias físicas iniciales.
 4. Al pulsar **"Crear mi B1 Center y empezar"**, el sistema genera los registros con partida doble en lote y desbloquea el aula de forma inmediata sin recargar.
+
+---
+
+## 🔄 5. Compatibilidad Regresiva e Idempotencia (Resolución 2026-10-18)
+
+- **Cuentas Históricas Reconocidas:** Si un usuario ya posee una empresa inicializada (con `companyName` y registros maestros de clientes/artículos) generada antes de la existencia de `trainingSetupVersion: 1`, el sistema (tanto cliente como servidor en `hasInitializedCompany`) la reconoce como válida sin obligarlo a repetir el Paso 0.
+- **Siembra Tolerante y Desduplicada:** La función `prepareTraining` en `src/lib/training-scenario.ts` valida `importMasterData` filtrando registros que ya existan en la base de datos (por RUC, cédula o nombre), previniendo errores de colisión por duplicidad (`Fila 1: Identificación ya registrada`) y garantizando idempotencia estricta.
+
