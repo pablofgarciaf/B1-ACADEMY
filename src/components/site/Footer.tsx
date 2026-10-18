@@ -30,7 +30,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Campus virtual independiente especializado en <strong>procesos empresariales con Finix ERP</strong>.
+              Campus virtual independiente especializado en <strong>procesos empresariales con SAP Business One</strong>.
               Rutas formativas, evaluaciones propias, simulador educativo y oportunidades laborales cuando existan vacantes publicadas.
             </p>
           </div>
@@ -55,7 +55,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 text-xs text-slate-500 dark:text-slate-400">
               <li><Link href="/mi-aula" className="hover:text-amber-500 font-bold text-amber-600 dark:text-amber-400">🎓 Mi Aula Virtual</Link></li>
-              <li><Link href="/simulador" className="hover:text-finix-blue">🚀 Simulador Finix ERP</Link></li>
+              <li><Link href="/simulador" className="hover:text-finix-blue">🚀 Simulador SAP Business One</Link></li>
               <li><Link href="/manuales" className="hover:text-finix-blue">📖 Manuales & Atlas Visual</Link></li>
               <li><Link href="/bolsa-empleo" className="hover:text-finix-blue">💼 Bolsa de Empleo (Job-Ready)</Link></li>
             </ul>
@@ -77,7 +77,7 @@ export function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-100 dark:border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Finix Academy. Formación profesional en Finix ERP.</p>
+          <p>© {new Date().getFullYear()} Finix Academy. Formación profesional en SAP Business One.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/mi-aula" className="hover:underline">Mi Aula Virtual</Link>
             <Link href="/simulador" className="hover:underline">Simulador</Link>

@@ -213,7 +213,7 @@ export default function LoginPage() {
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
               {tab === "login"
                 ? "Accede a tu Aula Virtual, expediente academico o panel de administracion."
-                : "Crea tu cuenta y comienza tu formacion Finix ERP en Finix Academy hoy mismo."}
+                : "Crea tu cuenta y comienza tu formación en SAP Business One en Finix Academy hoy mismo."}
             </p>
           </div>
 
@@ -363,7 +363,7 @@ export default function LoginPage() {
                 <GraduationCap className="w-8 h-8 text-emerald-500 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400">Registro 100% Gratuito</p>
-                  <p className="text-[11px] text-slate-500">Accede al track Finix ERP Core sin costo con una contraseña personal segura.</p>
+                  <p className="text-[11px] text-slate-500">Accede al track SAP Business One Core sin costo con una contraseña personal segura.</p>
                 </div>
               </div>
 

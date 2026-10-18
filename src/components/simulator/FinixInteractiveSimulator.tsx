@@ -678,7 +678,7 @@ export default function FinixInteractiveSimulator({
       {/* Barra de Estado Superior */}
       <div className="bg-[#18222d] border-b border-gray-800 px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 text-[11px] shrink-0 relative z-10">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="font-bold text-amber-400">Finix ERP 2026 (Enterprise)</span>
+          <span className="font-bold text-amber-400">SAP Business One v10.0 (HANA)</span>
           <span className="text-gray-500">•</span>
           <span className="text-gray-400">Sociedad: <strong className="text-gray-300">SBODEMO_ES</strong></span>
           <span className="text-gray-500">•</span>
@@ -823,13 +823,13 @@ export default function FinixInteractiveSimulator({
                   </tr>
                   <tr className="border-b border-gray-200 hover:bg-[#fffde0] cursor-pointer bg-gray-50">
                     <td className="p-1.5 border-x border-[#7f9db9] font-bold text-[#316ac5]">Desviación de presupuesto en proyecto Beta</td>
-                    <td className="p-1.5 border-x border-[#7f9db9]">Alertas Finix</td>
+                    <td className="p-1.5 border-x border-[#7f9db9]">Alertas SAP B1</td>
                     <td className="p-1.5 border-x border-[#7f9db9] text-gray-500">Ayer 16:45 PM</td>
                   </tr>
                 </tbody>
               </table>
               <div className="mt-4 p-2 bg-blue-50 border border-blue-200 rounded text-blue-800 text-[11px]">
-                <strong>Nota del sistema:</strong> Esta es tu bandeja de entrada de Finix ERP.
+                <strong>Nota del sistema:</strong> Esta es tu bandeja de entrada de SAP Business One.
                 Aquí recibirás notificaciones clave, workflows de autorización y mensajes de otros usuarios.
                 Para completar la misión actual, cierra esta ventana.
               </div>
@@ -861,7 +861,7 @@ export default function FinixInteractiveSimulator({
           <div className="absolute inset-0 bg-[#e4e8ef] flex items-center justify-center">
             <div className="w-[450px] bg-white border border-[#b0b8c4] rounded-lg shadow-2xl overflow-hidden flex flex-col text-gray-800">
               <div className="bg-gradient-to-r from-[#21436e] via-[#2f5c94] to-[#21436e] p-4 flex items-center justify-center">
-                <div className="text-white font-bold text-2xl tracking-wider">FINIX <span className="font-light">ERP Cloud</span></div>
+                <div className="text-white font-bold text-2xl tracking-wider">SAP <span className="font-light">Business One</span></div>
               </div>
               <div className="p-8 pb-12 flex flex-col gap-4">
                 <div>
@@ -875,7 +875,7 @@ export default function FinixInteractiveSimulator({
                 <div>
                   <label className="block text-xs font-bold text-gray-600 mb-1">Sociedad</label>
                   <div className="w-full border border-gray-300 bg-gray-50 rounded px-3 py-1.5 text-sm font-semibold flex items-center justify-between">
-                    <span>FINIX_DEMO_EC</span>
+                    <span>SBODEMO_EC</span>
                     <button className="text-gray-400 hover:text-blue-500 text-xs">Cambiar</button>
                   </div>
                 </div>
@@ -964,7 +964,7 @@ export default function FinixInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <ShoppingCart size={13} className="text-amber-400" />
-                <span>Factura de Clientes - Finix ERP</span>
+                <span>Factura de Clientes - SAP Business One</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1101,7 +1101,7 @@ export default function FinixInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <FileText size={13} className="text-amber-400" />
-                <span>Registro en el Diario (Asiento Contable Manual) - Finix ERP</span>
+                <span>Registro en el Diario (Asiento Contable Manual) - SAP Business One</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1226,7 +1226,7 @@ export default function FinixInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <Package size={13} className="text-amber-400" />
-                <span>Datos Maestros de Artículo - Finix ERP</span>
+                <span>Datos Maestros de Artículo - SAP Business One</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1356,7 +1356,7 @@ export default function FinixInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <Layers size={13} className="text-amber-400" />
-                <span>Grupos de Unidades de Medida - Definición (OUGP / UGP1) - Finix ERP</span>
+                <span>Grupos de Unidades de Medida - Definición (OUGP / UGP1) - SAP Business One</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1474,7 +1474,7 @@ export default function FinixInteractiveSimulator({
               <div className="bg-[#eff6ff] border border-[#bfdbfe] rounded p-2 text-[11px] text-[#1e40af] flex items-start gap-2">
                 <span className="font-bold text-sm">💡</span>
                 <div>
-                  <span className="font-bold">Regla de Consultoría Finix ERP:</span> Al registrar este grupo, el stock de artículos vinculados se valorizará en metros. Si compras 5 Rollos, Finix ERP ingresará automáticamente 500 metros en la bodega sin descuadres.
+                  <span className="font-bold">Regla de Consultoría SAP Business One:</span> Al registrar este grupo, el stock de artículos vinculados se valorizará en metros. Si compras 5 Rollos, SAP Business One ingresará automáticamente 500 metros en la bodega sin descuadres.
                 </div>
               </div>
 
@@ -1490,7 +1490,7 @@ export default function FinixInteractiveSimulator({
                         : 'bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border border-[#555555]'
                       }`}
                   >
-                    {uomGroupSaved ? '✓ Grupo Guardado en Finix ERP' : 'Actualizar y Guardar Grupo'}
+                    {uomGroupSaved ? '✓ Grupo Guardado en SAP Business One' : 'Actualizar y Guardar Grupo'}
                   </button>
                 </div>
               </div>
@@ -1506,7 +1506,7 @@ export default function FinixInteractiveSimulator({
             <div className="bg-gradient-to-r from-[#004e92] via-[#003366] to-[#000428] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
                 <DollarSign size={13} className="text-amber-400" />
-                <span>Pagos Recibidos (Cobros a Clientes) - Finix ERP</span>
+                <span>Pagos Recibidos (Cobros a Clientes) - SAP Business One</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1825,7 +1825,7 @@ export default function FinixInteractiveSimulator({
           <div className="w-full max-w-4xl mx-auto rounded border-2 border-[#1c3a63] bg-[#ece9d8] shadow-2xl overflow-hidden text-xs text-gray-900">
             <div className="bg-gradient-to-r from-[#21436e] via-[#2f5c94] to-[#21436e] text-white px-3 py-1 flex items-center justify-between select-none">
               <div className="flex items-center gap-1.5 font-bold text-xs">
-                <span>📦 Documentos de Compras - Finix ERP</span>
+                <span>📦 Documentos de Compras - SAP Business One</span>
               </div>
               <div className="flex items-center gap-1 text-[11px]">
                 <button className="w-4 h-4 rounded bg-[#37669d] text-white font-bold">_</button>
@@ -1973,7 +1973,7 @@ export default function FinixInteractiveSimulator({
 
               {procurementStage === 'map' && (
                 <div className="bg-white border border-[#7f9db9] p-3 rounded space-y-3">
-                  <div className="text-xs font-bold text-[#1c3a63]">Mapa de Relaciones de Documentos (Auditoría Finix ERP)</div>
+                  <div className="text-xs font-bold text-[#1c3a63]">Mapa de Relaciones de Documentos (Auditoría SAP Business One)</div>
                   <div className="flex items-center justify-center gap-2 py-3">
                     <div className="border border-[#7f9db9] bg-[#f8fafc] p-2 rounded text-center w-36 shadow-sm">
                       <div className="text-[10px] text-gray-500 uppercase">Pedido</div>

@@ -201,7 +201,7 @@ export default function ManualViewer({
     }
     return [
       {
-        q: "¿Cuál es el propósito principal de Finix ERP?",
+        q: "¿Cuál es el propósito principal de SAP Business One?",
         options: [
           "Diseño gráfico y edición multimedia",
           "Integrar todos los procesos empresariales en una sola plataforma unificada",
@@ -209,7 +209,7 @@ export default function ManualViewer({
           "Solo llevar la contabilidad básica"
         ],
         answer: 1,
-        explanation: "Finix ERP es un ERP integral que unifica finanzas, compras, ventas, inventario y producción."
+        explanation: "SAP Business One es un ERP integral que unifica finanzas, compras, ventas, inventario y producción."
       }
     ];
   }, [externalQuestions, manualId]);
@@ -330,8 +330,8 @@ export default function ManualViewer({
     {
       role: 'ia',
       text: isPractical
-        ? "¡Hola! Soy tu tutor de Laboratorio Práctico de Finix ERP. Tengo cargadas las especificaciones de este caso de estudio y del simulador interactivo. ¿En qué paso o validación técnica necesitas apoyo?"
-        : "¡Hola! Soy tu tutor virtual de Finix Academy. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
+        ? "¡Hola! Soy tu tutor de Laboratorio Práctico de SAP Business One. Tengo cargadas las especificaciones de este caso de estudio y del simulador interactivo. ¿En qué paso o validación técnica necesitas apoyo?"
+        : "¡Hola! Soy tu tutor virtual de Finix Academy para SAP Business One. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
     }
   ]);
 
@@ -365,7 +365,7 @@ export default function ManualViewer({
           ...prev,
           {
             role: 'ia',
-            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de Finix Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners de Finix ERP, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
+            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de Finix Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners del ecosistema SAP Business One, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
           }
         ]);
       }, 500);
@@ -374,7 +374,7 @@ export default function ManualViewer({
 
     // Inyectar contexto del paso actual si existe
     const stepContext = activeSyncSlide?.step_guide
-      ? `[Contexto Técnico de la Tarea: "${activeSyncSlide.step_guide.title}" | Ruta Finix ERP: "${activeSyncSlide.step_guide.menu_path || 'General'}" | Instrucciones: ${activeSyncSlide.step_guide.instructions?.join(' ')} | Resultado: ${activeSyncSlide.step_guide.expected_output || 'N/A'}]`
+      ? `[Contexto Técnico de la Tarea: "${activeSyncSlide.step_guide.title}" | Ruta SAP Business One: "${activeSyncSlide.step_guide.menu_path || 'General'}" | Instrucciones: ${activeSyncSlide.step_guide.instructions?.join(' ')} | Resultado: ${activeSyncSlide.step_guide.expected_output || 'N/A'}]`
       : "";
 
     setIsAiLoading(true);
@@ -404,12 +404,12 @@ export default function ManualViewer({
 
     // Fallback inteligente enriquecido con el caso práctico activo
     setTimeout(() => {
-      let aiResponse = "Excelente análisis. En Finix ERP, todos los procesos se comunican de forma nativa a través de la capa de objetos de negocio para garantizar trazabilidad. ¡Sigue explorando el simulador y las diapositivas para dominar los detalles!";
+      let aiResponse = "Excelente análisis. En SAP Business One, todos los procesos se comunican de forma nativa a través de la capa de objetos de negocio para garantizar trazabilidad. ¡Sigue explorando el simulador y las diapositivas para dominar los detalles!";
 
       if (activeSyncSlide?.step_guide && (lower.includes("pista") || lower.includes("ayuda") || lower.includes("cómo") || lower.includes("paso"))) {
-        aiResponse = `💡 **Pista Pedagógica para ${activeSyncSlide.step_guide.title}:**\n\n1. **Ubicación en Finix ERP:** Navega a \`${activeSyncSlide.step_guide.menu_path || 'Menú Principal'}\`.\n2. **Procedimiento Clave:** ${activeSyncSlide.step_guide.instructions?.join(' ')}\n3. **Resultado Esperado:** ${activeSyncSlide.step_guide.expected_output || 'Verifica que la grilla o documento refleje los datos requeridos.'}\n\nPuedes probarlo directamente en el **Simulador Interactivo** a la izquierda.`;
+        aiResponse = `💡 **Pista Pedagógica para ${activeSyncSlide.step_guide.title}:**\n\n1. **Ubicación en SAP Business One:** Navega a \`${activeSyncSlide.step_guide.menu_path || 'Menú Principal'}\`.\n2. **Procedimiento Clave:** ${activeSyncSlide.step_guide.instructions?.join(' ')}\n3. **Resultado Esperado:** ${activeSyncSlide.step_guide.expected_output || 'Verifica que la grilla o documento refleje los datos requeridos.'}\n\nPuedes probarlo directamente en el **Simulador Interactivo** a la izquierda.`;
       } else if (lower.includes("socio") || lower.includes("cliente") || lower.includes("proveedor") || lower.includes("ocrd")) {
-        aiResponse = "Los Interlocutores Comerciales en Finix ERP se almacenan en la tabla OCRD. Se dividen en Clientes ('C'), Proveedores ('S') y Leads ('L'). En el simulador, filtrar por `CardType = 'C'` es esencial para separar clientes de proveedores.";
+        aiResponse = "Los Interlocutores Comerciales en SAP Business One se almacenan en la tabla OCRD. Se dividen en Clientes ('C'), Proveedores ('S') y Leads ('L'). En el simulador, filtrar por `CardType = 'C'` es esencial para separar clientes de proveedores.";
       } else if (lower.includes("hana") || lower.includes("sql") || lower.includes("consulta")) {
         aiResponse = "En las consultas SQL de base de datos en memoria, proyecta solo los campos estrictamente necesarios en el SELECT para optimizar la memoria columnar. Para filtros dinámicos con selector de calendario, utiliza la sintaxis `[%0]`.";
       } else if (lower.includes("compras") || lower.includes("pedido") || lower.includes("entrada") || lower.includes("factura") || lower.includes("aprovisionamiento")) {
@@ -1011,7 +1011,7 @@ export default function ManualViewer({
                         <Lightbulb size={10} /> Pista del paso
                       </button>
                       <button
-                        onClick={() => handleSendMessage(`¿En qué menú o ruta exacta encuentro esta ventana en Finix ERP?`)}
+                        onClick={() => handleSendMessage(`¿En qué menú o ruta exacta encuentro esta ventana en SAP Business One?`)}
                         className="text-[10px] bg-blue-500/20 hover:bg-blue-500/30 text-blue-200 border border-blue-500/30 rounded px-2 py-0.5 transition-colors flex items-center gap-1"
                       >
                         <Compass size={10} /> Ruta en el menú
@@ -1042,7 +1042,7 @@ export default function ManualViewer({
                     value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                    placeholder="Pregunta algo sobre Finix ERP..."
+                    placeholder="Pregunta algo sobre SAP Business One..."
                     className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-xs sm:text-sm text-white focus:border-amber-500 focus:outline-none"
                   />
                   <button
@@ -1060,13 +1060,13 @@ export default function ManualViewer({
                 <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-slate-400">Preguntas Frecuentes</h3>
                 <div className="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
                   <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5">
-                    <p className="font-semibold text-white text-xs sm:text-sm">¿Cómo ingreso al simulador real de Finix ERP?</p>
+                    <p className="font-semibold text-white text-xs sm:text-sm">¿Cómo ingreso al simulador de SAP Business One?</p>
                     <p className="mt-1 text-xs text-gray-400 leading-relaxed">
                       Puedes acceder directamente en la pestaña <strong>Simulador</strong> en este panel, y pulsar <strong>Expandir</strong> si deseas trabajar a pantalla completa.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5">
-                    <p className="font-semibold text-white text-xs sm:text-sm">¿Qué versión de Finix ERP se usa aquí?</p>
+                    <p className="font-semibold text-white text-xs sm:text-sm">¿Qué versión de SAP Business One se usa aquí?</p>
                     <p className="mt-1 text-xs text-gray-400 leading-relaxed">Usamos la versión 10.0 (HANA/SQL), estándar del mercado.</p>
                   </div>
                 </div>
@@ -1087,7 +1087,7 @@ export default function ManualViewer({
                 <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5 space-y-1.5">
                   <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider">🎯 Objetivo de Aprendizaje</h4>
                   <p className="text-xs text-gray-300 leading-relaxed">
-                    {simConfig.scenarioGoal || 'Comprender los principios de parametrización, estructura documental e impacto en libro mayor de este proceso de negocio en Finix ERP 10.0.'}
+                    {simConfig.scenarioGoal || 'Comprender los principios de parametrización, estructura documental e impacto en libro mayor de este proceso de negocio en SAP Business One 10.0.'}
                   </p>
                 </div>
 
@@ -1310,7 +1310,7 @@ export default function ManualViewer({
                     <div className="bg-[#16202b] border border-gray-700/80 rounded-xl p-3 mb-3 text-left">
                       <div className="flex items-center gap-1.5 text-[11px] font-bold text-amber-400 mb-1">
                         <Bot size={13} />
-                        <span>Profesor Evaluador Finix ERP:</span>
+                        <span>Profesor Evaluador SAP Business One:</span>
                       </div>
                       <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed">
                         &ldquo;{quizQuestions[currentQuestion].q}&rdquo;
@@ -1394,7 +1394,7 @@ export default function ManualViewer({
           <div className="flex items-center justify-between bg-[#19222a] border border-gray-800 rounded-t-xl px-4 py-2.5 shadow">
             <div className="flex items-center gap-2">
               <span className="text-xs font-bold text-amber-400 flex items-center gap-1.5">
-                <Sparkles size={14} /> Entorno Oficial de Caso Práctico Finix ERP
+                <Sparkles size={14} /> Entorno Oficial de Caso Práctico SAP Business One
               </span>
               {activeSyncSlide?.step_guide?.title && (
                 <span className="text-xs text-gray-300 font-medium hidden md:inline truncate max-w-xl">

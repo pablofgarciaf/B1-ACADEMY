@@ -68,8 +68,8 @@ export interface RutaDeCarrera {
 export const BLOQUES_TEMATICOS: BloqueTemático[] = [
   {
     id: 'intro-sistema',
-    titulo: 'Introducción y Navegación Finix ERP',
-    descripcion: 'Fundamentos del sistema, navegación, datos maestros básicos y primeros pasos como usuario Finix ERP.',
+    titulo: 'Introducción y Navegación SAP Business One',
+    descripcion: 'Fundamentos del sistema, navegación, datos maestros básicos y primeros pasos como usuario SAP Business One.',
     icono: '🎓',
     color: 'sky',
     trackId: 'finix-erp-logistics',
@@ -77,7 +77,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     nivelMinimo: 'INTRO',
     nivelMaximo: 'FUNC',
     unidades: [
-      { manualId: '10_Intro_11_Overview_IntroFinix_ES', manualNumber: 1, displayNumber: '1.1', titulo: 'Introducción a Finix ERP', nivel: 'INTRO', horasEstimadas: 1.5, prerequisitos: [], tieneLabPractico: false, esModuloSistema: false },
+      { manualId: '10_Intro_11_Overview_IntroFinix_ES', manualNumber: 1, displayNumber: '1.1', titulo: 'Introducción a SAP Business One', nivel: 'INTRO', horasEstimadas: 1.5, prerequisitos: [], tieneLabPractico: false, esModuloSistema: false },
       { manualId: '10_Intro_12_Overview_GettingStarted_ES', manualNumber: 2, displayNumber: '1.2', titulo: 'Primeros Pasos y Cockpit', nivel: 'INTRO', horasEstimadas: 2, prerequisitos: ['10_Intro_11_Overview_IntroFinix_ES'], tieneLabPractico: false, esModuloSistema: true },
       { manualId: '10_Overview_13_MDDoc_ES', manualNumber: 3, displayNumber: '1.3', titulo: 'Datos Maestros y Documentos', nivel: 'INTRO', horasEstimadas: 1.5, prerequisitos: ['10_Intro_12_Overview_GettingStarted_ES'], tieneLabPractico: false, esModuloSistema: true },
       { manualId: 'CSL01_Introduction_Solution_ES', manualNumber: 101, displayNumber: '1.4', titulo: 'Laboratorio: Introducción Práctica', nivel: 'FUNC', horasEstimadas: 3, prerequisitos: ['10_Overview_13_MDDoc_ES'], tieneLabPractico: true, esModuloSistema: true },
@@ -86,7 +86,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
   {
     id: 'herramientas-personalizacion',
     titulo: 'Herramientas de Personalización',
-    descripcion: 'Consultas, alertas, aprobaciones, UDF/UDT y Analytics para adaptar Finix ERP a cada empresa.',
+    descripcion: 'Consultas, alertas, aprobaciones, UDF/UDT y Analytics para adaptar SAP Business One a cada empresa.',
     icono: '🛠️',
     color: 'violet',
     trackId: 'finix-erp-herramientas',
@@ -163,7 +163,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
     nivelMinimo: 'FUNC',
     nivelMaximo: 'EXPERT',
     unidades: [
-      { manualId: '10_AccBasics_11_AccBasics_Financial_Basics_ES', manualNumber: 60, displayNumber: '6.1', titulo: 'Fundamentos Contables Finix ERP', nivel: 'FUNC', horasEstimadas: 3, prerequisitos: ['10_Overview_13_MDDoc_ES'], tieneLabPractico: false, esModuloSistema: false },
+      { manualId: '10_AccBasics_11_AccBasics_Financial_Basics_ES', manualNumber: 60, displayNumber: '6.1', titulo: 'Fundamentos Contables SAP Business One', nivel: 'FUNC', horasEstimadas: 3, prerequisitos: ['10_Overview_13_MDDoc_ES'], tieneLabPractico: false, esModuloSistema: false },
       { manualId: '10_AccBasics_12_AccBasics_Automatic_Journal_Entries_ES', manualNumber: 61, displayNumber: '6.2', titulo: 'Asientos Contables Automáticos', nivel: 'ARQ', horasEstimadas: 3.5, prerequisitos: ['10_AccBasics_11_AccBasics_Financial_Basics_ES'], tieneLabPractico: false, esModuloSistema: true },
     ]
   },
@@ -184,7 +184,7 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
   {
     id: 'implementacion-metodologia',
     titulo: 'Implementación y Migración de Datos',
-    descripcion: 'Metodología Finix ERP, Express Wizard, DTW, migración desde Excel y apertura de saldos.',
+    descripcion: 'Metodología SAP Business One, Express Wizard, DTW, migración desde Excel y apertura de saldos.',
     icono: '🔧',
     color: 'rose',
     trackId: 'finix-erp-implementacion',
@@ -204,14 +204,14 @@ export const BLOQUES_TEMATICOS: BloqueTemático[] = [
 export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   {
     id: 'consultor-implementacion',
-    titulo: 'Consultor Finix ERP — Implementación',
-    descripcion: 'Especialista en implementar, configurar y migrar datos en Finix ERP para empresas medianas.',
+    titulo: 'Consultor SAP Business One — Implementación',
+    descripcion: 'Especialista en implementar, configurar y migrar datos en SAP Business One para empresas medianas.',
     perfil: 'Profesional con visión de procesos de negocio y capacidad técnica para configurar el sistema end-to-end.',
-    mercadoLaboral: ['Casas consultoras Finix ERP', 'Partners certificados Finix ERP', 'Empresas industriales y comerciales', 'Freelance Finix ERP'],
+    mercadoLaboral: ['Casas consultoras SAP Business One', 'Partners certificados SAP Business One', 'Empresas industriales y comerciales', 'Freelance SAP Business One'],
     salarioReferencialUSD: { min: 1800, max: 4500 },
     duracionMeses: 8,
     horasTotales: 120,
-    certificacionFinix: 'Certificación de Consultor Finix ERP 10.0',
+    certificacionFinix: 'Certificación de Consultor SAP Business One 10.0',
     bloquesRequeridos: ['intro-sistema', 'ventas-crm', 'compras-proveedores', 'inventario-almacenes', 'contabilidad-finanzas', 'implementacion-metodologia'],
     bloquesOpcionales: ['herramientas-personalizacion', 'produccion-mrp'],
     iconEmoji: '🏆',
@@ -219,9 +219,9 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   {
     id: 'usuario-clave-finanzas',
     titulo: 'Usuario Clave — Finanzas y Contabilidad',
-    descripcion: 'Especialista en el módulo financiero de Finix ERP: contabilidad, bancos, reportes y cierres.',
-    perfil: 'Contador o financiero que opera y supervisa el módulo contable y de tesorería en Finix ERP.',
-    mercadoLaboral: ['Departamentos contables', 'Empresas con Finix ERP instalado', 'Jefes de contabilidad'],
+    descripcion: 'Especialista en el módulo financiero de SAP Business One: contabilidad, bancos, reportes y cierres.',
+    perfil: 'Contador o financiero que opera y supervisa el módulo contable y de tesorería en SAP Business One.',
+    mercadoLaboral: ['Departamentos contables', 'Empresas con SAP Business One instalado', 'Jefes de contabilidad'],
     salarioReferencialUSD: { min: 1200, max: 2800 },
     duracionMeses: 4,
     horasTotales: 60,
@@ -232,8 +232,8 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   {
     id: 'usuario-clave-logistica',
     titulo: 'Usuario Clave — Logística y Operaciones',
-    descripcion: 'Especialista en los módulos de ventas, compras e inventario de Finix ERP.',
-    perfil: 'Operador que gestiona pedidos, stocks y entregas en Finix ERP.',
+    descripcion: 'Especialista en los módulos de ventas, compras e inventario de SAP Business One.',
+    perfil: 'Operador que gestiona pedidos, stocks y entregas en SAP Business One.',
     mercadoLaboral: ['Bodegas y almacenes', 'Coordinadores de ventas', 'Supervisores de compras'],
     salarioReferencialUSD: { min: 1000, max: 2400 },
     duracionMeses: 4,
@@ -244,8 +244,8 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   },
   {
     id: 'analista-bi-finix',
-    titulo: 'Analista BI y Reportería Finix ERP',
-    descripcion: 'Especialista en consultas SQL, analytics, dashboards y reportes en Finix ERP.',
+    titulo: 'Analista BI y Reportería SAP Business One',
+    descripcion: 'Especialista en consultas SQL, analytics, dashboards y reportes en SAP Business One.',
     perfil: 'Analista con orientación a datos que extrae, transforma y visualiza información del ERP.',
     mercadoLaboral: ['Gerencias de inteligencia de negocio', 'Consultoras de datos', 'Controller financiero'],
     salarioReferencialUSD: { min: 1500, max: 3500 },
@@ -257,10 +257,10 @@ export const RUTAS_DE_CARRERA: RutaDeCarrera[] = [
   },
   {
     id: 'administrador-sistema',
-    titulo: 'Administrador de Sistema Finix ERP',
+    titulo: 'Administrador de Sistema SAP Business One',
     descripcion: 'Responsable de la configuración técnica, usuarios, autorizaciones y mantenimiento del sistema.',
-    perfil: 'IT Manager o Administrador con rol técnico en la empresa usuaria de Finix ERP.',
-    mercadoLaboral: ['Departamentos IT', 'Empresas con Finix ERP propio', 'Soporte técnico Finix ERP'],
+    perfil: 'IT Manager o Administrador con rol técnico en la empresa usuaria de SAP Business One.',
+    mercadoLaboral: ['Departamentos IT', 'Empresas con SAP Business One propio', 'Soporte técnico SAP Business One'],
     salarioReferencialUSD: { min: 1400, max: 3000 },
     duracionMeses: 5,
     horasTotales: 70,

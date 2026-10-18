@@ -275,7 +275,7 @@ export default function StudentDashboardPage() {
                   GRADO CUMBRE • SÚPER ANALISTA & CONSULTOR MÁSTER
                 </span>
                 <h2 className="text-xl font-extrabold text-white leading-tight">
-                  Programa Consultor Integral & Súper Analista Finix ERP
+                  Programa Consultor Integral & Súper Analista SAP Business One
                 </h2>
                 <p className="text-xs text-slate-300 mt-2 leading-relaxed">
                   Has obtenido las constancias que exige este itinerario. Consulta sus códigos para comprobar titular, programa y vigencia.
@@ -388,7 +388,7 @@ export default function StudentDashboardPage() {
             <div>
               <span className="text-xs font-mono font-bold text-amber-500 uppercase tracking-widest">TITULACIÓN MÁXIMA INSTITUCIONAL</span>
               <h2 id="grado-master-heading" className="text-2xl font-extrabold text-slate-900 dark:text-white font-display">
-                Grado de Consultor Máster & Súper Analista Finix ERP
+                Grado de Consultor Máster & Súper Analista SAP Business One
               </h2>
             </div>
           </div>
@@ -406,7 +406,7 @@ export default function StudentDashboardPage() {
                   {MASTER_PROGRAM.title}
                 </h3>
                 <p className="text-xs text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                  Reúne las 30 certificaciones de competencia técnica operativa y la validación integral de la empresa de práctica en Finix ERP.
+                  Reúne las 30 certificaciones de competencia técnica operativa y la validación integral de la empresa de práctica en SAP Business One.
                 </p>
                 {masterCert && (
                   <p className="text-xs font-mono text-amber-600 dark:text-amber-400 font-bold pt-1">
@@ -593,7 +593,7 @@ export default function StudentDashboardPage() {
           <div>
             <span className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest">MALLA CURRICULAR INTEGRAL</span>
             <h2 id="malla-heading" className="text-2xl font-extrabold text-slate-900 dark:text-white font-display">
-              Los 30 Módulos de Formación en Finix ERP
+              Los 30 Módulos de Formación en SAP Business One
             </h2>
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Estructurados en los 8 Bloques Oficiales. Incluye Activos Fijos (Módulo 3), Nómina IESS 2026 (Módulo 6) y el Capstone (Módulo 30).

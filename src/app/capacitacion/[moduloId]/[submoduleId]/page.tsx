@@ -190,7 +190,7 @@ export default function SubmoduleLMSViewer({ params }: { params: Promise<{ modul
                 <VideoPlayer
                   title={`${activeSubmodule.title}: ${currentLesson.title}`}
                   durationMin={currentLesson.durationMin}
-                  systemType={`Finix ERP v10.0 • ${track.shortTitle}`}
+                  systemType={`SAP Business One v10.0 • ${track.shortTitle}`}
                   transactionCode={simulation.transactionCode}
                   onComplete={handleLessonComplete}
                 />

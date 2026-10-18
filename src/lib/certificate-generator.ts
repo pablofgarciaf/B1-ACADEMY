@@ -32,7 +32,7 @@ export function generateOfficialCampusCertificate({
   studentName,
   certificateType,
   title,
-  careerTitle = 'Escuela Finix ERP',
+  careerTitle = 'Escuela SAP Business One',
   code,
   verified = false,
   scorePercent,
@@ -206,7 +206,7 @@ export function generateOfficialCampusCertificate({
   doc.text('Emisión electrónica', 68.5, 165, { align: 'center' });
   doc.text('Formación continua', 68.5, 169, { align: 'center' });
 
-  // Firma 2: Consultor Titular Finix ERP / Lead Instructor
+  // Firma 2: Consultor Titular SAP Business One / Lead Instructor
   doc.line(192, 155, 265, 155);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
@@ -246,7 +246,7 @@ export function generateCategoryCertificate(data: CertificateData) {
     studentName: data.studentName,
     certificateType: 'micro',
     title: data.categoryTitle,
-    careerTitle: 'Escuela Finix ERP',
+    careerTitle: 'Escuela SAP Business One',
     code: data.verificationCode,
     scorePercent: Math.round((data.score / data.totalQuestions) * 100),
     verified: false,

@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════
-// REGISTRO DE ARQUETIPOS DE SIMULADOR PARA LOS MANUALES Finix ERP
+// REGISTRO DE ARQUETIPOS DE SIMULADOR PARA LOS MANUALES SAP Business One
 // Clasificación exacta: Teóricos (sin formulario) vs Prácticos (9 arquetipos)
 // ═══════════════════════════════════════════════════════════════════
 
@@ -37,14 +37,14 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
   "10_Intro_11_Overview_IntroFinix_ES": {
     requiresSimulator: false,
     archetype: "none",
-    title: "Introducción a Finix ERP",
-    moduleName: "Introducción a Finix ERP",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a Finix ERP. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
+    title: "Introducción a SAP Business One",
+    moduleName: "Introducción a SAP Business One",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a SAP Business One. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Intro_12_Overview_GettingStarted_ES": {
     requiresSimulator: true,
     archetype: "cockpit",
-    title: "Parametrizaciones Generales & Cockpit - Primeros Pasos en Finix ERP",
+    title: "Parametrizaciones Generales & Cockpit - Primeros Pasos en SAP Business One",
     moduleName: "Gestión > Inicialización del Sistema",
     defaultTable: "OADM - Administración",
     scenarioGoal: "Configurar la plantilla de rol de usuario, almacén por defecto y activación de widgets Fiori.",
@@ -53,8 +53,8 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
     requiresSimulator: false,
     archetype: "none",
     title: "Documentos y Datos Maestros: Conceptos Generales",
-    moduleName: "Introducción a Finix ERP",
-    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a Finix ERP. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
+    moduleName: "Introducción a SAP Business One",
+    theoreticalSummary: "Este manual aborda la arquitectura conceptual, normativas y modelos de negocio de Introducción a SAP Business One. No requiere captura de datos transaccionales. Enfócate en el video explicativo y el Examen con el Profesor IA.",
   },
   "10_Impl_11_CustomTools_Queries_ES": {
     requiresSimulator: true,
@@ -107,18 +107,18 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
   "10_Impl_17_CustomTools_IntroAnalytics_ES": {
     requiresSimulator: true,
     archetype: "cockpit",
-    title: "Parametrizaciones de Sistema - Introducción a Finix Analytics",
+    title: "Parametrizaciones de Sistema - Introducción a SAP Analytics",
     moduleName: "Implementación y Configuración",
     defaultTable: "Parametrizaciones de Formulario",
-    scenarioGoal: "Comprobar parámetros y opciones operativas para Introducción a Finix Analytics.",
+    scenarioGoal: "Comprobar parámetros y opciones operativas para Introducción a SAP Analytics.",
   },
   "10_Impl_21_ImplTools_ImplementationMethodology_ES": {
     requiresSimulator: true,
     archetype: "cockpit",
-    title: "Parametrizaciones de Sistema - Metodología de Implementación Finix ERP",
+    title: "Parametrizaciones de Sistema - Metodología de Implementación SAP Business One",
     moduleName: "Implementación y Configuración",
     defaultTable: "Parametrizaciones de Formulario",
-    scenarioGoal: "Comprobar parámetros y opciones operativas para Metodología de Implementación Finix ERP.",
+    scenarioGoal: "Comprobar parámetros y opciones operativas para Metodología de Implementación SAP Business One.",
   },
   "10_Impl_22_ImplTools_ExpressWizard_ES": {
     requiresSimulator: true,

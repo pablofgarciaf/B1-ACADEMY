@@ -236,7 +236,7 @@ export default function FeNiChat() {
               maxLength={4000}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Pregúntale a FeNi AI sobre Finix ERP..."
+              placeholder="Pregúntale a FeNi AI sobre SAP Business One..."
               disabled={isLoading}
               className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/50 transition-all disabled:opacity-50"
             />

@@ -57,7 +57,7 @@ export default function CapacitacionPage() {
           </div>
           {/* H1 Quirúrgico (45-65 chars) -> 52 caracteres */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Diplomas de Especialidad en Finix ERP Ecuador
+            Diplomas de Especialidad en SAP Business One | Finix Academy
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             Encuentra una ruta por función, revisa sus módulos y decide dónde empezar. Los ejercicios se realizan en un laboratorio educativo.

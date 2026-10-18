@@ -1,5 +1,5 @@
 /**
- * Índice maestro de los 12 módulos del Manual Finix ERP 10.0
+ * Índice maestro de los 12 módulos del Manual SAP Business One 10.0
  * Este archivo es la fuente de verdad para el LMS (/mi-aula).
  * Cada módulo mapea a un archivo Markdown en public/modulos/Modulo_XX.md
  */
@@ -31,7 +31,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     fileName: 'Modulo_01.md',
     title: 'Fundamentos, Navegación y Entorno Fiori',
     shortTitle: 'Fundamentos y Navegación',
-    description: 'Arquitectura técnica de Finix ERP, modelo de empresa, plataformas de BD, Cockpit Fiori y personalización del entorno.',
+    description: 'Arquitectura técnica de SAP Business One, modelo de empresa, plataformas de BD, Cockpit Fiori y personalización del entorno.',
     durationMinutes: 45,
     lessonsCount: 3,
     lessons: [
@@ -41,7 +41,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     ],
     level: 'basico',
     icon: 'Monitor',
-    keywords: ['Finix ERP', 'Fiori', 'Cockpit', 'navegación', 'arquitectura'],
+    keywords: ['SAP Business One', 'Fiori', 'Cockpit', 'navegación', 'arquitectura'],
   },
   {
     id: '02',
@@ -175,7 +175,7 @@ export const TRAINING_MODULES: TrainingModule[] = [
     fileName: 'Modulo_09.md',
     title: 'Soporte Técnico, Herramientas de Diagnóstico y Plataforma RSP',
     shortTitle: 'Soporte Técnico y RSP',
-    description: 'Remote Support Platform, herramientas de diagnóstico, portal de soporte, notas Finix ERP y gestión de incidentes.',
+    description: 'Remote Support Platform, herramientas de diagnóstico, portal de soporte, notas SAP Business One y gestión de incidentes.',
     durationMinutes: 45,
     lessonsCount: 3,
     lessons: [

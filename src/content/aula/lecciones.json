@@ -3705,7 +3705,7 @@
             {
               "etiqueta": "Método",
               "valor": "Interno",
-              "pista": "Tipo de notificación dentro de Finix ERP"
+              "pista": "Tipo de notificación dentro de SAP Business One"
             },
             {
               "etiqueta": "AlertSvc",
@@ -15010,12 +15010,12 @@
             {
               "etiqueta": "Fecha Partida",
               "valor": "10/04/2026",
-              "pista": "Fecha en que se registró el pago en Finix ERP"
+              "pista": "Fecha en que se registró el pago en SAP Business One"
             },
             {
               "etiqueta": "Valor Partida",
               "valor": "500.00",
-              "pista": "Importe del pago registrado en Finix ERP"
+              "pista": "Importe del pago registrado en SAP Business One"
             },
             {
               "etiqueta": "Número Extracto",

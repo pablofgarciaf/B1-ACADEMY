@@ -38,7 +38,7 @@ import {
 } from '@/lib/curriculum-data';
 
 export const metadata = {
-  title: 'Escuela de Capacitación en Finix ERP Ecuador',
+  title: 'Capacitación Práctica en SAP Business One | Finix Academy',
   description: 'Aprende procesos empresariales con clases guiadas, manuales y un simulador educativo. Rutas de formación individual y capacitación para equipos en Ecuador.',
 };
 
@@ -73,7 +73,7 @@ export default function HomePage() {
 
               {/* H1 Exacto (45-65 chars) -> 53 caracteres */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
-                Escuela de Capacitación en Finix ERP Ecuador
+                Capacitación Práctica en SAP Business One
               </h1>
 
               <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">

@@ -41,7 +41,7 @@ export default function ManualesLibraryPage() {
   const [examQuestionIdx, setExamQuestionIdx] = useState(0);
   const [examScore, setExamScore] = useState(0);
   const [examFinished, setExamFinished] = useState(false);
-  const [studentName, setStudentName] = useState('Estudiante Finix ERP');
+  const [studentName, setStudentName] = useState('Estudiante SAP Business One');
   const [examUserAnswers, setExamUserAnswers] = useState<Record<number, number>>({});
 
   // Cargar manuales y categorías certificadas desde localStorage
@@ -196,7 +196,7 @@ export default function ManualesLibraryPage() {
             <Sparkles className="w-3.5 h-3.5" /> Biblioteca de aprendizaje • Finix Academy Ecuador
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-            Atlas técnico de manuales Finix ERP
+            Atlas técnico de manuales SAP Business One
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
             <strong>{ALL_MANUALS.length} manuales técnicos</strong> organizados en
@@ -632,7 +632,7 @@ export default function ManualesLibraryPage() {
                 <div className="p-3.5 rounded-2xl border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.01] space-y-1">
                   <span className="text-slate-400 block">Entorno / Sistema:</span>
                   <span className="font-bold text-slate-800 dark:text-slate-200">
-                    Finix ERP v10.0 (HANA/SQL)
+                    SAP Business One v10.0 (HANA/SQL)
                   </span>
                 </div>
 

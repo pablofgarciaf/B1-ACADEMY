@@ -46,7 +46,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
 
   // 3. El estándar oficial de la academia es el Modo Interactivo Narrado:
   // láminas nítidas extraídas de los manuales oficiales + teleprompter sincronizado +
-  // voz de Jorge con arranque automático a los 2s + simulador Finix ERP + quiz.
+  // voz de Jorge con arranque automático a los 2s + simulador SAP Business One + quiz.
   const videoUrl: string | undefined = undefined;
 
   // 4. Leer los metadatos de sincronización (JSON Teleprompter)
@@ -63,7 +63,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
   }
 
   // 5. Cargar cuestionario técnico específico para este manual
-  const quizQuestions = getQuizForManual(manualId, displayTitle, manualData?.category || 'Módulo Finix ERP');
+  const quizQuestions = getQuizForManual(manualId, displayTitle, manualData?.category || 'Módulo SAP Business One');
 
   return (
     <div className="h-screen max-h-screen flex flex-col bg-[#0a0a0f] text-gray-200 selection:bg-amber-500/30 overflow-hidden">
@@ -73,7 +73,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
         <div>
           <h1 className="text-base sm:text-lg font-medium text-white leading-tight">{displayTitle}</h1>
           <p className="text-xs text-gray-400">
-            {manualData?.category || 'Módulo Finix ERP'} • {videoUrl ? 'Clase Interactiva Disponible' : `${images.length} diapositivas`}
+            {manualData?.category || 'Módulo SAP Business One'} • {videoUrl ? 'Clase Interactiva Disponible' : `${images.length} diapositivas`}
           </p>
         </div>
         <Link 
@@ -84,8 +84,8 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
         </Link>
       </header>
 
-      <aside className="shrink-0 border-b border-amber-400/20 bg-amber-400/10 px-4 py-2 text-xs leading-relaxed text-amber-100">
-        <strong>Material de referencia heredado.</strong> Las capturas y los guiones pueden describir funciones de otro ERP; no acreditan capacidades del simulador Finix ni integración fiscal real. Para las prácticas evaluadas, usa <Link href="/mi-aula" className="font-semibold underline">Mi Aula</Link>.
+      <aside className="shrink-0 border-b border-sky-500/20 bg-sky-500/10 px-4 py-2 text-xs leading-relaxed text-sky-200">
+        <strong>Material de estudio técnico.</strong> Documentación y manuales oficiales de procesos para SAP Business One. Para realizar tus prácticas evaluadas del curso, ingresa a <Link href="/mi-aula" className="font-semibold underline">Mi Aula</Link>.
       </aside>
 
       <main className="flex-1 min-h-0 overflow-hidden p-2.5 sm:p-4 max-w-[1700px] w-full mx-auto">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   // 53 caracteres
   title: 'Términos y Condiciones de Uso del Campus',
   // 150 caracteres
-  description: 'Condiciones de uso de Finix Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de Finix ERP y ley ecuatoriana.',
+  description: 'Condiciones de uso de Finix Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de SAP Business One y ley ecuatoriana.',
   alternates: { canonical: `${LEGAL.sitio}/terminos` },
 };
 
@@ -24,7 +24,7 @@ export default async function TerminosPage() {
         `${LEGAL.marca} es una academia de formación en gestión empresarial, contabilidad y cumplimiento normativo del Ecuador.`,
         'Los certificados acreditan competencias prácticas demostradas en las evaluaciones de la academia.',
         'Tu cuenta es personal: tu cédula es tu clave del primer ingreso y luego debes crear una contraseña propia.',
-        'El simulador Finix ERP es un entorno educativo con datos ficticios; no sustituye el asesoramiento de un contador o abogado.',
+        'El simulador de SAP Business One es un entorno educativo con datos ficticios; no sustituye el asesoramiento de un contador o abogado.',
         'Copiar en las evaluaciones o manipular a la IA anula el resultado.',
       ]}
     >
@@ -38,7 +38,7 @@ export default async function TerminosPage() {
 
       <h2>2. Propiedad intelectual</h2>
       <p>
-        Los contenidos, el simulador Finix ERP, el asistente FeNi AI y los logotipos asociados son propiedad de {LEGAL.marca}. Queda prohibida su
+        Los contenidos, el simulador educativo de procesos, el asistente FeNi AI y los logotipos asociados son propiedad de {LEGAL.marca}. Queda prohibida su
         reproducción, distribución o uso comercial sin autorización escrita.
       </p>
 
@@ -55,8 +55,7 @@ export default async function TerminosPage() {
       <ul>
         <li>El contenido es para tu formación personal. No puedes copiarlo, revenderlo, redistribuirlo ni publicarlo sin autorización escrita.</li>
         <li>
-          El simulador es una <strong>réplica visual con fines educativos</strong> que usa una empresa y datos ficticios. No es el software Finix ERP
-          Business One y no debe usarse para registrar operaciones reales de ninguna empresa.
+          El simulador es una <strong>réplica visual con fines educativos</strong> que usa una empresa y datos ficticios. No es el software oficial de SAP SE y no debe usarse para registrar operaciones reales de ninguna empresa.
         </li>
         <li>Las referencias tributarias (IVA, retenciones, SRI, IESS) son material didáctico y pueden no reflejar la normativa vigente a la fecha en que la consultes.</li>
         <li>Está prohibido intentar vulnerar la seguridad, extraer contenido de forma automatizada o sobrecargar la plataforma.</li>

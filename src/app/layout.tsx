@@ -28,14 +28,15 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   title: {
-    default: "Finix Academy | Formación y Consultoría Finix ERP",
+    default: "Finix Academy | Capacitación Práctica en SAP Business One",
     template: "%s | Finix Academy",
   },
   description:
-    "Formación especializada y consultoría en Finix ERP para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
+    "Formación especializada y capacitación práctica en SAP Business One para empresas y profesionales, con simulador interactivo, evaluación y certificación en español.",
   keywords: [
-    "Capacitación Finix ERP",
-    "Consultoría Finix ERP B2B",
+    "Capacitación SAP Business One",
+    "Consultoría SAP Business One B2B",
+    "Simulador SAP Business One",
     "Simulador contable educativo Ecuador",
     "Cursos de gestión empresarial Ecuador",
   ],
@@ -51,9 +52,9 @@ export const metadata: Metadata = {
     canonical: publicUrl(),
   },
   openGraph: {
-    title: "Finix Academy | Formación y Consultoría Finix ERP",
+    title: "Finix Academy | Capacitación Práctica en SAP Business One",
     description:
-      "Formación especializada y consultoría en Finix ERP para empresas y profesionales, con prácticas, evaluación y oportunidades laborales en español.",
+      "Formación especializada y capacitación práctica en SAP Business One para empresas y profesionales, con simulador interactivo, evaluación y certificación en español.",
     url: publicUrl(),
     siteName: "Finix Academy",
     locale: "es_ES",
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finix Academy | Formación y Consultoría Finix ERP",
+    title: "Finix Academy | Capacitación Práctica en SAP Business One",
     description:
       "Formación especializada y consultoría en Finix ERP para profesionales y empresas.",
     images: [publicUrl('/icon.png')],
@@ -96,7 +97,7 @@ const organizationSchema = {
   url: publicUrl(),
   logo: publicUrl('/icon.png'),
   description:
-    "Plataforma educativa en español con cursos y prácticas de gestión empresarial y uso del simulador Finix ERP.",
+    "Plataforma educativa en español con cursos y prácticas de gestión empresarial y uso del simulador de procesos SAP Business One.",
   areaServed: "EC",
   inLanguage: "es",
 };

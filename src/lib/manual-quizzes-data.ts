@@ -13,7 +13,7 @@ export interface QuizQuestion {
 export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
   "10_Intro_11_Overview_IntroFinix_ES": [
     {
-      q: "¿Cuál es la principal ventaja arquitectónica de Finix ERP sobre una base de datos base de datos en memoria frente a Microsoft SQL Server?",
+      q: "¿Cuál es la principal ventaja arquitectónica de SAP Business One sobre una base de datos base de datos en memoria frente a Microsoft SQL Server?",
       options: [
         "Permite instalarse en sistemas operativos móviles Android de forma nativa.",
         "Procesamiento columnar en memoria RAM que habilita analítica transaccional y dashboards en tiempo real sin congelar la operación.",
@@ -24,10 +24,10 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       explanation: "base de datos en memoria procesa los datos en memoria con compresión columnar, unificando OLTP (transacciones) y OLAP (analítica) en un solo motor de altísima velocidad.",
       topic: "Arquitectura en Memoria base de datos en memoria",
       recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
-      recommendedManualTitle: "Introducción a Finix ERP"
+      recommendedManualTitle: "Introducción a SAP Business One"
     },
     {
-      q: "En el ecosistema de integración de Finix ERP, ¿cuál es el rol fundamental de la capa Service Layer (OData)?",
+      q: "En el ecosistema de integración de SAP Business One, ¿cuál es el rol fundamental de la capa Service Layer (OData)?",
       options: [
         "Reemplazar el sistema operativo del servidor de aplicaciones.",
         "Exponer una API RESTful de alta concurrencia diseñada especialmente para el Cliente Web y consumo de servicios móviles e IoT.",
@@ -35,13 +35,13 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Solo permitir conexiones ODBC antiguas de lectura para Excel."
       ],
       answer: 1,
-      explanation: "Service Layer es la API RESTful de última generación para Finix ERP sobre HANA/SQL, permitiendo integraciones HTTP sin depender de librerías COM Windows pesadas.",
+      explanation: "Service Layer es la API RESTful de última generación para SAP Business One sobre HANA/SQL, permitiendo integraciones HTTP sin depender de librerías COM Windows pesadas.",
       topic: "Integración con Service Layer",
       recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
-      recommendedManualTitle: "Introducción a Finix ERP"
+      recommendedManualTitle: "Introducción a SAP Business One"
     },
     {
-      q: "¿Cómo gestiona Finix ERP las transacciones internacionales en empresas que operan con múltiples monedas?",
+      q: "¿Cómo gestiona SAP Business One las transacciones internacionales en empresas que operan con múltiples monedas?",
       options: [
         "Obliga a crear una base de datos independiente por cada tipo de divisa extranjera.",
         "Permite configurar Moneda Local, Moneda del Sistema y Monedas de Socios de Negocios, registrando la tasa de cambio y calculando diferencias de conversión automáticamente.",
@@ -49,13 +49,13 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "No permite transacciones multimoneda sin un add-on de terceros."
       ],
       answer: 1,
-      explanation: "El motor financiero de Finix ERP es nativamente multimoneda, registrando cada transacción tanto en moneda del documento como en moneda local y del sistema.",
+      explanation: "El motor financiero de SAP Business One es nativamente multimoneda, registrando cada transacción tanto en moneda del documento como en moneda local y del sistema.",
       topic: "Gestión Multimoneda",
       recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
-      recommendedManualTitle: "Introducción a Finix ERP"
+      recommendedManualTitle: "Introducción a SAP Business One"
     },
     {
-      q: "¿Cuál es la función del System Landscape Directory (SLD) en una arquitectura multi-empresa de Finix ERP?",
+      q: "¿Cuál es la función del System Landscape Directory (SLD) en una arquitectura multi-empresa de SAP Business One?",
       options: [
         "Servir como antivirus centralizado de las terminales de usuario.",
         "Centralizar la administración de servidores, bases de datos de empresas, licencias y servicios de integración.",
@@ -66,10 +66,10 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       explanation: "El SLD es el centro de control técnico que gestiona la topología de servidores, registros de empresas y el servidor de licencias.",
       topic: "Administración del SLD",
       recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
-      recommendedManualTitle: "Introducción a Finix ERP"
+      recommendedManualTitle: "Introducción a SAP Business One"
     },
     {
-      q: "¿Qué modelo de despliegue permite a las organizaciones operar Finix ERP en modalidad SaaS (Software as a Service) a través de un navegador web?",
+      q: "¿Qué modelo de despliegue permite a las organizaciones operar SAP Business One en modalidad SaaS (Software as a Service) a través de un navegador web?",
       options: [
         "Instalación cliente-servidor tradicional sobre Windows 98.",
         "Cloud Control Center (CCC) con Web Client ejecutado sobre Linux/Windows con Service Layer.",
@@ -80,12 +80,12 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       explanation: "El Cloud Control Center permite a los partners gestionar tenants multi-cliente en la nube con acceso nativo vía Web Client.",
       topic: "Despliegue Cloud y Web Client",
       recommendedManualId: "10_Intro_11_Overview_IntroFinix_ES",
-      recommendedManualTitle: "Introducción a Finix ERP"
+      recommendedManualTitle: "Introducción a SAP Business One"
     }
   ],
   "10_Intro_12_Overview_GettingStarted_ES": [
     {
-      q: "¿Qué componente de la interfaz moderna de Finix ERP permite a un usuario anclar indicadores KPI, widgets interactivos y Workbench de procesos por rol?",
+      q: "¿Qué componente de la interfaz moderna de SAP Business One permite a un usuario anclar indicadores KPI, widgets interactivos y Workbench de procesos por rol?",
       options: [
         "El Administrador de Tareas de Windows.",
         "El Cockpit estilo Fiori personalizado.",
@@ -93,10 +93,10 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "El Diseñador de Formatos de Impresión PLD."
       ],
       answer: 1,
-      explanation: "El Cockpit Fiori de Finix ERP organiza el espacio de trabajo con widgets analíticos, accesos directos por rol y flujos visuales interactivos de procesos.",
+      explanation: "El Cockpit Fiori de SAP Business One organiza el espacio de trabajo con widgets analíticos, accesos directos por rol y flujos visuales interactivos de procesos.",
       topic: "Personalización del Cockpit Fiori",
       recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-      recommendedManualTitle: "Primeros Pasos en Finix ERP"
+      recommendedManualTitle: "Primeros Pasos en SAP Business One"
     },
     {
       q: "¿Cuál es el atajo de teclado estándar para activar la 'Información del Sistema' y revelar el nombre técnico de las tablas y campos en la barra de estado inferior?",
@@ -110,7 +110,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       explanation: "Ctrl + Shift + I activa la Información del Sistema, mostrando de forma indispensable para consultores la tabla de base de datos y el campo al pasar el cursor.",
       topic: "Información del Sistema y Auditoría",
       recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-      recommendedManualTitle: "Primeros Pasos en Finix ERP"
+      recommendedManualTitle: "Primeros Pasos en SAP Business One"
     },
     {
       q: "Si un usuario recién creado inicia sesión pero no puede visualizar el módulo de Ventas ni Compras en el menú principal, ¿cuál es la causa técnica?",
@@ -121,13 +121,13 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "La empresa no ha emitido su primera factura del mes."
       ],
       answer: 1,
-      explanation: "La visibilidad de módulos en Finix ERP está estrictamente regida por la asignación de Licencias Nominales y la matriz de Autorizaciones por usuario o grupo.",
+      explanation: "La visibilidad de módulos en SAP Business One está estrictamente regida por la asignación de Licencias Nominales y la matriz de Autorizaciones por usuario o grupo.",
       topic: "Licenciamiento y Autorizaciones",
       recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-      recommendedManualTitle: "Primeros Pasos en Finix ERP"
+      recommendedManualTitle: "Primeros Pasos en SAP Business One"
     },
     {
-      q: "¿Cuál es la utilidad de la función 'Parametrizaciones de Formulario' (icono de engranaje) en cualquier ventana de documento de Finix ERP?",
+      q: "¿Cuál es la utilidad de la función 'Parametrizaciones de Formulario' (icono de engranaje) en cualquier ventana de documento de SAP Business One?",
       options: [
         "Formatear el disco duro de la computadora cliente.",
         "Ocultar, mostrar, bloquear o reorganizar columnas y campos visibles en la pantalla para agilizar la digitación del usuario.",
@@ -138,7 +138,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       explanation: "Las Parametrizaciones de Formulario permiten adaptar la vista de cualquier tabla (filas de artículos, totales) según las necesidades de cada usuario o rol.",
       topic: "Parametrizaciones de Formulario",
       recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-      recommendedManualTitle: "Primeros Pasos en Finix ERP"
+      recommendedManualTitle: "Primeros Pasos en SAP Business One"
     },
     {
       q: "Al trabajar en modo 'Buscar' (indicado por el botón Buscar en amarillo), ¿qué carácter comodín se utiliza para filtrar registros cuyo nombre comience con una letra determinada?",
@@ -149,15 +149,15 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Numeral (#)"
       ],
       answer: 1,
-      explanation: "El asterisco (*) actúa como comodín en las búsquedas de Finix ERP para representar cualquier secuencia de caracteres.",
-      topic: "Búsquedas y Filtros en Finix ERP",
+      explanation: "El asterisco (*) actúa como comodín en las búsquedas de SAP Business One para representar cualquier secuencia de caracteres.",
+      topic: "Búsquedas y Filtros en SAP Business One",
       recommendedManualId: "10_Intro_12_Overview_GettingStarted_ES",
-      recommendedManualTitle: "Primeros Pasos en Finix ERP"
+      recommendedManualTitle: "Primeros Pasos en SAP Business One"
     }
   ],
   "10_Overview_13_MDDoc_ES": [
     {
-      q: "En el modelo de datos de Finix ERP, ¿cuál es la tabla maestra que almacena los registros de cabecera de Clientes y Proveedores (Interlocutores Comerciales)?",
+      q: "En el modelo de datos de SAP Business One, ¿cuál es la tabla maestra que almacena los registros de cabecera de Clientes y Proveedores (Interlocutores Comerciales)?",
       options: [
         "OITM",
         "OCRD",
@@ -179,7 +179,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Línea de tipo A (Alternativo)"
       ],
       answer: 1,
-      explanation: "La línea tipo T abre el editor de texto libre de Finix ERP, permitiendo insertar cláusulas o instrucciones que se imprimen en el documento sin valor monetario.",
+      explanation: "La línea tipo T abre el editor de texto libre de SAP Business One, permitiendo insertar cláusulas o instrucciones que se imprimen en el documento sin valor monetario.",
       topic: "Tipos de Línea en Documentos de Marketing",
       recommendedManualId: "10_Overview_13_MDDoc_ES",
       recommendedManualTitle: "Documentos y Datos Maestros: Conceptos Generales"
@@ -229,7 +229,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
   ],
   "10_Impl_11_CustomTools_Queries_ES": [
     {
-      q: "En la base de datos de Finix ERP, ¿qué par de tablas corresponde respectivamente a la cabecera y las líneas de una Orden de Venta (Pedido de Cliente)?",
+      q: "En la base de datos de SAP Business One, ¿qué par de tablas corresponde respectivamente a la cabecera y las líneas de una Orden de Venta (Pedido de Cliente)?",
       options: [
         "OITM y ITM1",
         "ORDR y RDR1",
@@ -243,21 +243,21 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       recommendedManualTitle: "Consultas Personalizadas (Queries)"
     },
     {
-      q: "¿Por qué Finix ERP prohíbe terminantemente ejecutar consultas SQL de modificación directa (INSERT, UPDATE, DELETE) en tablas estándar de producción?",
+      q: "¿Por qué SAP Business One prohíbe terminantemente ejecutar consultas SQL de modificación directa (INSERT, UPDATE, DELETE) en tablas estándar de producción?",
       options: [
         "Porque SQL Server no admite transacciones concurrentes.",
-        "Porque elude la capa de lógica empresarial (DI-API/Service Layer), corrompe la integridad referencial contable y anula de inmediato la garantía y soporte oficial de Finix ERP.",
+        "Porque elude la capa de lógica empresarial (DI-API/Service Layer), corrompe la integridad referencial contable y anula de inmediato la garantía y soporte oficial de SAP Business One.",
         "Porque los nombres de las tablas son de solo 4 caracteres.",
         "Porque reinicia el servidor de licencias cada vez que se ejecuta un UPDATE."
       ],
       answer: 1,
-      explanation: "Toda modificación en Finix ERP debe pasar por los objetos de negocio para garantizar asientos contables balanceados, costos y trazabilidad.",
-      topic: "Integridad y Garantía de Soporte Finix ERP",
+      explanation: "Toda modificación en SAP Business One debe pasar por los objetos de negocio para garantizar asientos contables balanceados, costos y trazabilidad.",
+      topic: "Integridad y Garantía de Soporte SAP Business One",
       recommendedManualId: "10_Impl_11_CustomTools_Queries_ES",
       recommendedManualTitle: "Consultas Personalizadas (Queries)"
     },
     {
-      q: "Al programar una Búsqueda Formateada (Valor Definido por el Usuario - UDV) que debe capturar el valor de un campo en pantalla antes de guardarlo en base de datos, ¿qué sintaxis nativa de Finix ERP se debe utilizar?",
+      q: "Al programar una Búsqueda Formateada (Valor Definido por el Usuario - UDV) que debe capturar el valor de un campo en pantalla antes de guardarlo en base de datos, ¿qué sintaxis nativa de SAP Business One se debe utilizar?",
       options: [
         "SELECT * FROM CURRENT_SCREEN",
         "$[$Item.Column.Number$]",
@@ -265,7 +265,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "@@PREVIOUS_RECORD"
       ],
       answer: 1,
-      explanation: "La sintaxis $[$Item.Column.Number$] es la variable interna de Finix ERP para leer valores dinámicos del buffer de memoria de la ventana activa.",
+      explanation: "La sintaxis $[$Item.Column.Number$] es la variable interna de SAP Business One para leer valores dinámicos del buffer de memoria de la ventana activa.",
       topic: "Sintaxis de Búsquedas Formateadas",
       recommendedManualId: "10_Impl_11_CustomTools_Queries_ES",
       recommendedManualTitle: "Consultas Personalizadas (Queries)"
@@ -274,18 +274,18 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       q: "¿Cuál es la función del archivo REFDB accesible desde el SDK o Workbench de Transferencia de Datos (DTW)?",
       options: [
         "Restaurar copias de seguridad corruptas.",
-        "Servir como diccionario de datos oficial que detalla tipos de campo, longitud máxima, claves foráneas y tablas de referencia de Finix ERP.",
+        "Servir como diccionario de datos oficial que detalla tipos de campo, longitud máxima, claves foráneas y tablas de referencia de SAP Business One.",
         "Calcular la declaración de impuestos del mes.",
         "Gestionar las contraseñas de los usuarios de Windows."
       ],
       answer: 1,
-      explanation: "REFDB es la referencia canónica de tablas y campos para desarrolladores y consultores de integración en Finix ERP.",
+      explanation: "REFDB es la referencia canónica de tablas y campos para desarrolladores y consultores de integración en SAP Business One.",
       topic: "Diccionario de Datos REFDB",
       recommendedManualId: "10_Impl_11_CustomTools_Queries_ES",
       recommendedManualTitle: "Consultas Personalizadas (Queries)"
     },
     {
-      q: "En el Generador de Consultas de Finix ERP, ¿qué cláusula SQL se genera automáticamente cuando el usuario vincula el campo CardCode de la tabla OCRD con el campo CardCode de la tabla ORDR?",
+      q: "En el Generador de Consultas de SAP Business One, ¿qué cláusula SQL se genera automáticamente cuando el usuario vincula el campo CardCode de la tabla OCRD con el campo CardCode de la tabla ORDR?",
       options: [
         "GROUP BY ORDR.CardCode",
         "INNER JOIN ORDR ON OCRD.CardCode = ORDR.CardCode (Cláusula WHERE de enlace relacional)",
@@ -317,13 +317,13 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
     {
       q: "En la Tarea 2, ¿qué función cumple la sintaxis DocDate > [%0] al estructurar la consulta sobre la tabla de facturas OINV?",
       options: [
-        "Convierte la consulta en dinámica, haciendo que Finix ERP abra automáticamente un selector de calendario para que el usuario ingrese la fecha en tiempo de ejecución.",
+        "Convierte la consulta en dinámica, haciendo que SAP Business One abra automáticamente un selector de calendario para que el usuario ingrese la fecha en tiempo de ejecución.",
         "Filtra de manera fija las facturas que tengan más de noventa días de vencidas.",
         "Obliga al servidor a indexar el campo de fecha en el disco duro del cliente.",
         "Elimina las facturas cuya fecha de contabilización sea posterior al cierre del ejercicio contable."
       ],
       answer: 0,
-      explanation: "La sintaxis [%0] en Finix ERP representa un parámetro dinámico de usuario. Al asociarlo al campo DocDate, el sistema despliega el calendario nativo para filtrar sin editar el código SQL.",
+      explanation: "La sintaxis [%0] en SAP Business One representa un parámetro dinámico de usuario. Al asociarlo al campo DocDate, el sistema despliega el calendario nativo para filtrar sin editar el código SQL.",
       topic: "Parámetros Dinámicos ([%0])",
       recommendedManualId: "CSI08_Query_Practice",
       recommendedManualTitle: "Práctica de Consultas (Query Practice)"
@@ -337,13 +337,13 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "SlpCode"
       ],
       answer: 1,
-      explanation: "DocEntry es el identificador único interno e inmutable de los documentos en Finix ERP que vincula unívocamente la tabla de cabecera (OINV) con la de detalle (INV1).",
+      explanation: "DocEntry es el identificador único interno e inmutable de los documentos en SAP Business One que vincula unívocamente la tabla de cabecera (OINV) con la de detalle (INV1).",
       topic: "Relaciones Multitabla (INNER JOIN)",
       recommendedManualId: "CSI08_Query_Practice",
       recommendedManualTitle: "Práctica de Consultas (Query Practice)"
     },
     {
-      q: "Durante la visualización de resultados en la grilla de Finix ERP, ¿qué atajo permite calcular la sumatoria total de una columna numérica sin modificar la consulta SQL?",
+      q: "Durante la visualización de resultados en la grilla de SAP Business One, ¿qué atajo permite calcular la sumatoria total de una columna numérica sin modificar la consulta SQL?",
       options: [
         "Alt + Shift + Clic derecho",
         "Mantener presionada la tecla Ctrl y hacer clic en el encabezado de la columna deseada",
@@ -351,8 +351,8 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Presionar F5 para forzar la actualización del total"
       ],
       answer: 1,
-      explanation: "Presionar Ctrl + Clic sobre el encabezado de cualquier columna numérica en la grilla de resultados de Finix ERP genera inmediatamente el total acumulado en el pie de página.",
-      topic: "Ajuste Fino de Grilla en Finix ERP",
+      explanation: "Presionar Ctrl + Clic sobre el encabezado de cualquier columna numérica en la grilla de resultados de SAP Business One genera inmediatamente el total acumulado en el pie de página.",
+      topic: "Ajuste Fino de Grilla en SAP Business One",
       recommendedManualId: "CSI08_Query_Practice",
       recommendedManualTitle: "Práctica de Consultas (Query Practice)"
     },
@@ -392,7 +392,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Error de violación de clave primaria inmutable.",
         "Error de expresión no agregada: la columna debe figurar en la cláusula GROUP BY o utilizarse en una función de agregación.",
         "Error de sintaxis Fiori: la fecha debe convertirse a texto plano.",
-        "Ninguno, Finix ERP agrupa automáticamente por todas las columnas."
+        "Ninguno, SAP Business One agrupa automáticamente por todas las columnas."
       ],
       answer: 1,
       explanation: "En el estándar SQL y HANA, cualquier campo proyectado en el SELECT que no esté envuelto en una función de agregación (SUM, COUNT, MAX) debe estar listado en el GROUP BY.",
@@ -401,7 +401,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       recommendedManualTitle: "Práctica de Consultas: Soluciones"
     },
     {
-      q: "¿Por qué en Finix ERP se recomienda clasificar las consultas en categorías dentro del Administrador de Consultas?",
+      q: "¿Por qué en SAP Business One se recomienda clasificar las consultas en categorías dentro del Administrador de Consultas?",
       options: [
         "Porque el sistema no permite guardar más de tres consultas en una sola categoría.",
         "Porque las categorías permiten aplicar autorizaciones de usuario granulares, protegiendo reportes financieros confidenciales.",
@@ -409,7 +409,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Porque es la única forma de que aparezcan en los menús de compras."
       ],
       answer: 1,
-      explanation: "El Administrador de Consultas se enlaza al árbol de autorizaciones de Finix ERP, permitiendo restringir o conceder acceso por categoría de consulta a usuarios o grupos.",
+      explanation: "El Administrador de Consultas se enlaza al árbol de autorizaciones de SAP Business One, permitiendo restringir o conceder acceso por categoría de consulta a usuarios o grupos.",
       topic: "Seguridad y Autorizaciones de Consultas",
       recommendedManualId: "CSI08_Query Practice_Solutions",
       recommendedManualTitle: "Práctica de Consultas: Soluciones"
@@ -429,7 +429,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       recommendedManualTitle: "Práctica de Consultas: Soluciones"
     },
     {
-      q: "Si un reporte generado con el Generador de Consultas requiere ejecutarse de forma recurrente sin modificar código, ¿qué técnica implementa Finix ERP?",
+      q: "Si un reporte generado con el Generador de Consultas requiere ejecutarse de forma recurrente sin modificar código, ¿qué técnica implementa SAP Business One?",
       options: [
         "Generador de consultas con parámetros dinámicos [%0], [%1] que solicitan las variables de usuario al ejecutar.",
         "Reescribir el query en cada inicio de sesión.",
@@ -445,12 +445,12 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
   ],
   "CSL01_Introduction_ES": [
     {
-      q: "En el Caso Práctico 1, ¿cuál es el procedimiento estándar para asignar una plantilla de Cockpit de Ventas a un usuario específico en Finix ERP?",
+      q: "En el Caso Práctico 1, ¿cuál es el procedimiento estándar para asignar una plantilla de Cockpit de Ventas a un usuario específico en SAP Business One?",
       options: [
         "Editar el registro de Windows en la máquina cliente.",
         "Navegar a Gestión -> Definición -> General -> Plantillas de Cockpit y asignar la plantilla al usuario o departamento correspondiente.",
         "Modificar directamente el archivo de configuración XML en el servidor.",
-        "Desinstalar e instalar de nuevo el cliente Finix ERP."
+        "Desinstalar e instalar de nuevo el cliente SAP Business One."
       ],
       answer: 1,
       explanation: "Las plantillas de Cockpit se gestionan y asignan centralizadamente desde Gestión -> Definición -> General -> Plantillas de Cockpit.",
@@ -459,7 +459,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       recommendedManualTitle: "Caso Práctico: Introducción"
     },
     {
-      q: "¿Cuál es el propósito primordial de la interfaz Fiori Cockpit en Finix ERP?",
+      q: "¿Cuál es el propósito primordial de la interfaz Fiori Cockpit en SAP Business One?",
       options: [
         "Reemplazar la base de datos relacional por archivos de texto.",
         "Proporcionar un entorno de trabajo visual con widgets de KPIs, accesos directos y analítica en tiempo real orientado al rol del usuario.",
@@ -473,7 +473,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       recommendedManualTitle: "Caso Práctico: Introducción"
     },
     {
-      q: "Al configurar las Parametrizaciones de Usuario en Finix ERP, ¿qué beneficio operativo aporta definir valores por defecto (Default Values)?",
+      q: "Al configurar las Parametrizaciones de Usuario en SAP Business One, ¿qué beneficio operativo aporta definir valores por defecto (Default Values)?",
       options: [
         "Desactiva las alertas automáticas del sistema.",
         "Automatiza la asignación de almacén, serie de numeración y condiciones de pago al crear documentos, reduciendo tiempos y errores.",
@@ -496,7 +496,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       ],
       answer: 1,
       explanation: "La flecha de enlace naranja es el mecanismo nativo de navegación en profundidad (drill-down) que conecta cualquier vista con su origen.",
-      topic: "Navegación Drill-down en Finix ERP",
+      topic: "Navegación Drill-down en SAP Business One",
       recommendedManualId: "CSL01_Introduction_ES",
       recommendedManualTitle: "Caso Práctico: Introducción"
     },
@@ -506,7 +506,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Presionar Ctrl + Alt + Supr.",
         "Hacer clic en el icono '+' o 'Galería de Widgets' y arrastrar el widget deseado al lienzo del Cockpit.",
         "Reiniciar el servicio de SQL Server.",
-        "Enviar un correo al soporte técnico de Finix ERP internacional."
+        "Enviar un correo al soporte técnico de SAP Business One internacional."
       ],
       answer: 1,
       explanation: "La galería de widgets permite a los usuarios con permisos explorar, activar y ubicar dashboards y accesos directos en su área de trabajo.",
@@ -522,7 +522,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Verificando que al reiniciar la sesión del usuario se desplieguen los widgets y el menú configurados según la plantilla asignada.",
         "Ejecutando un script de comprobación en la consola de comandos de Windows.",
         "Revisando que el fondo de pantalla de Windows haya cambiado a color azul.",
-        "Comprobando que no se pueda acceder al menú de ayuda de Finix ERP."
+        "Comprobando que no se pueda acceder al menú de ayuda de SAP Business One."
       ],
       answer: 0,
       explanation: "La activación del cockpit asignado se valida al ingresar con el usuario y constatar los widgets de KPIs y accesos directos configurados para su perfil.",
@@ -533,9 +533,9 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
     {
       q: "Si tras asignar un Cockpit de Ventas un widget analítico reporta 'No hay datos disponibles', ¿cuál es el diagnóstico técnico adecuado según la solución?",
       options: [
-        "El servidor Finix ERP está dañado irreversiblemente.",
+        "El servidor SAP Business One está dañado irreversiblemente.",
         "No existen transacciones en el sistema que cumplan los filtros del widget o el usuario carece de autorizaciones sobre el grupo de datos analizado.",
-        "El monitor de la computadora no es compatible con Finix ERP.",
+        "El monitor de la computadora no es compatible con SAP Business One.",
         "El cockpit solo funciona los fines de semana."
       ],
       answer: 1,
@@ -553,7 +553,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Para generar una copia en formato PDF en el servidor."
       ],
       answer: 0,
-      explanation: "Las plantillas en Finix ERP deben publicarse para que queden habilitadas formalmente para los usuarios y perfiles asignados.",
+      explanation: "Las plantillas en SAP Business One deben publicarse para que queden habilitadas formalmente para los usuarios y perfiles asignados.",
       topic: "Publicación de Plantillas Corporativas",
       recommendedManualId: "CSL01_Introduction_Solution_ES",
       recommendedManualTitle: "Caso Práctico: Introducción (Solución)"
@@ -589,7 +589,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
   ],
   "CSL02_Procurement_Process_ES": [
     {
-      q: "En el ciclo de aprovisionamiento de Finix ERP (Caso Práctico 2), ¿qué documento inicia el compromiso formal de compra con el proveedor?",
+      q: "En el ciclo de aprovisionamiento de SAP Business One (Caso Práctico 2), ¿qué documento inicia el compromiso formal de compra con el proveedor?",
       options: [
         "La Factura de Clientes.",
         "El Pedido de Compras (Purchase Order / OPOR).",
@@ -639,7 +639,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Obliga a crear una factura por el total de 5 unidades."
       ],
       answer: 1,
-      explanation: "Finix ERP gestiona entregas parciales de forma automática: la línea del Pedido queda abierta por el saldo no entregado.",
+      explanation: "SAP Business One gestiona entregas parciales de forma automática: la línea del Pedido queda abierta por el saldo no entregado.",
       topic: "Gestión de Entregas Parciales",
       recommendedManualId: "CSL02_Procurement_Process_ES",
       recommendedManualTitle: "Caso Práctico: Proceso de Aprovisionamiento"
@@ -675,7 +675,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       recommendedManualTitle: "Caso Práctico: Aprovisionamiento (Solución)"
     },
     {
-      q: "Si el precio unitario en la Factura de Proveedores difiere del precio registrado en la Entrada de Mercancías, ¿cómo maneja Finix ERP la diferencia?",
+      q: "Si el precio unitario en la Factura de Proveedores difiere del precio registrado en la Entrada de Mercancías, ¿cómo maneja SAP Business One la diferencia?",
       options: [
         "Rechaza el documento y apaga el sistema.",
         "Contabiliza la diferencia en la cuenta de 'Desviación de Precio / Variación de Costos' o ajusta el costo del stock según el método de valoración.",
@@ -683,7 +683,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Modifica retroactivamente el Pedido original sin dejar rastro de auditoría."
       ],
       answer: 1,
-      explanation: "Finix ERP calcula las variaciones de precio y las aplica a cuentas de desviación de compras o al costo de inventario respetando el método de valoración (FIFO, Promedio Ponderado, Estándar).",
+      explanation: "SAP Business One calcula las variaciones de precio y las aplica a cuentas de desviación de compras o al costo de inventario respetando el método de valoración (FIFO, Promedio Ponderado, Estándar).",
       topic: "Desviaciones de Precio en Compras",
       recommendedManualId: "CSL02_Procurement_Process_Solution_ES",
       recommendedManualTitle: "Caso Práctico: Aprovisionamiento (Solución)"
@@ -693,12 +693,12 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
       options: [
         "Porque para mantener la integridad contable y fiscal, primero debe abonarse o anularse la Factura de Proveedores mediante una Nota de Crédito.",
         "Porque las entradas de mercancías nunca pueden modificarse bajo ninguna circunstancia.",
-        "Porque el usuario no tiene instalada la versión en inglés de Finix ERP.",
+        "Porque el usuario no tiene instalada la versión en inglés de SAP Business One.",
         "Porque el proveedor debe autorizarlo mediante una carta notariada."
       ],
       answer: 0,
       explanation: "La cadena de documentos bloquea la cancelación en reversa mientras existan documentos subsecuentes activos; se debe cancelar primero la factura.",
-      topic: "Reglas de Bloqueo Documental en Finix ERP",
+      topic: "Reglas de Bloqueo Documental en SAP Business One",
       recommendedManualId: "CSL02_Procurement_Process_Solution_ES",
       recommendedManualTitle: "Caso Práctico: Aprovisionamiento (Solución)"
     },
@@ -725,7 +725,7 @@ export const MANUAL_SPECIFIC_QUIZZES: Record<string, QuizQuestion[]> = {
         "Borrador en Proceso."
       ],
       answer: 1,
-      explanation: "Al completarse la recepción y facturación de la totalidad de las cantidades ordenadas, Finix ERP actualiza el estado del Pedido a 'Cerrado'.",
+      explanation: "Al completarse la recepción y facturación de la totalidad de las cantidades ordenadas, SAP Business One actualiza el estado del Pedido a 'Cerrado'.",
       topic: "Cierre del Ciclo de Compras",
       recommendedManualId: "CSL02_Procurement_Process_Solution_ES",
       recommendedManualTitle: "Caso Práctico: Aprovisionamiento (Solución)"
@@ -747,7 +747,7 @@ export function getQuizForManual(manualId: string, manualTitle: string, manualCa
 
   return [
     {
-      q: `En la arquitectura empresarial de Finix ERP para "${manualTitle}", ¿cuál es el objetivo crítico que cumple este proceso en la operación?`,
+      q: `En la arquitectura empresarial de SAP Business One para "${manualTitle}", ¿cuál es el objetivo crítico que cumple este proceso en la operación?`,
       options: [
         "Almacenar registros temporales que se depuran automáticamente al final de cada turno.",
         `Garantizar la consistencia transaccional y la trazabilidad integral dentro del módulo de ${manualCategory}.`,
@@ -755,13 +755,13 @@ export function getQuizForManual(manualId: string, manualTitle: string, manualCa
         "Evitar que los usuarios utilicen la barra de herramientas del sistema."
       ],
       answer: 1,
-      explanation: `El proceso de ${manualTitle} asegura que las operaciones queden registradas con validaciones de integridad en la base de datos de Finix ERP.`,
+      explanation: `El proceso de ${manualTitle} asegura que las operaciones queden registradas con validaciones de integridad en la base de datos de SAP Business One.`,
       topic: `Fundamentos de ${manualTitle}`,
       recommendedManualId: manualId,
       recommendedManualTitle: manualTitle
     },
     {
-      q: `Al configurar los parámetros correspondientes a "${manualTitle}", ¿qué control técnico ejerce Finix ERP para proteger los datos?`,
+      q: `Al configurar los parámetros correspondientes a "${manualTitle}", ¿qué control técnico ejerce SAP Business One para proteger los datos?`,
       options: [
         "Desconecta a todos los usuarios del sistema mientras se realiza la configuración.",
         "Aplica validaciones de integridad referencial y permisos de usuario basados en el perfil de autorizaciones.",
@@ -769,21 +769,21 @@ export function getQuizForManual(manualId: string, manualTitle: string, manualCa
         "Convierte la base de datos a formato de solo lectura de forma irrevocable."
       ],
       answer: 1,
-      explanation: "Finix ERP protege cada configuración mediante matrices de roles, autorizaciones de usuario y candados de integridad referencial.",
+      explanation: "SAP Business One protege cada configuración mediante matrices de roles, autorizaciones de usuario y candados de integridad referencial.",
       topic: `Seguridad y Permisos en ${manualTitle}`,
       recommendedManualId: manualId,
       recommendedManualTitle: manualTitle
     },
     {
-      q: `Si durante la ejecución de las tareas descritas en "${manualTitle}" ocurre una inconsistencia en los valores, ¿cuál es la mejor práctica recomendada por Finix ERP?`,
+      q: `Si durante la ejecución de las tareas descritas en "${manualTitle}" ocurre una inconsistencia en los valores, ¿cuál es la mejor práctica recomendada por SAP Business One?`,
       options: [
         "Modificar las tablas directamente mediante un script de base de datos no auditado.",
         "Revisar el mapa de relaciones del documento, el registro de auditoría de stocks o el log de modificaciones del sistema.",
         "Eliminar la base de datos de la empresa y volverla a crear desde cero.",
-        "Ignorar el mensaje y forzar el cierre del cliente Finix ERP con el Administrador de Tareas."
+        "Ignorar el mensaje y forzar el cierre del cliente SAP Business One con el Administrador de Tareas."
       ],
       answer: 1,
-      explanation: "El Mapa de Relaciones y el Log de Modificaciones de Finix ERP son las herramientas estándar para rastrear el origen de cualquier discrepancia.",
+      explanation: "El Mapa de Relaciones y el Log de Modificaciones de SAP Business One son las herramientas estándar para rastrear el origen de cualquier discrepancia.",
       topic: `Auditoría y Trazabilidad en ${manualTitle}`,
       recommendedManualId: manualId,
       recommendedManualTitle: manualTitle
@@ -797,7 +797,7 @@ export function getQuizForManual(manualId: string, manualTitle: string, manualCa
         "Obliga a recalcular manualmente el balance general en Excel."
       ],
       answer: 1,
-      explanation: "En Finix ERP la contabilidad está 100% enlazada a las transacciones de negocio, asegurando estados financieros en línea.",
+      explanation: "En SAP Business One la contabilidad está 100% enlazada a las transacciones de negocio, asegurando estados financieros en línea.",
       topic: `Impacto Financiero de ${manualTitle}`,
       recommendedManualId: manualId,
       recommendedManualTitle: manualTitle
@@ -811,7 +811,7 @@ export function getQuizForManual(manualId: string, manualTitle: string, manualCa
         "La memoria verbal de los operadores de turno."
       ],
       answer: 1,
-      explanation: "Los reportes nativos y el log de transacciones de Finix ERP poseen valor legal y de auditoría inmutable bajo normas internacionales.",
+      explanation: "Los reportes nativos y el log de transacciones de SAP Business One poseen valor legal y de auditoría inmutable bajo normas internacionales.",
       topic: `Reportes y Auditoría en ${manualTitle}`,
       recommendedManualId: manualId,
       recommendedManualTitle: manualTitle
