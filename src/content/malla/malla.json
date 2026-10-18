@@ -119,7 +119,7 @@
     },
     {
       "id": "C11",
-      "name": "Consultor Comercial y Preventa Finix ERP",
+      "name": "Consultor Comercial y Preventa SAP Business One",
       "modules": [
         "M01",
         "M02",
@@ -131,7 +131,7 @@
     },
     {
       "id": "C12",
-      "name": "Administrador del Sistema Finix ERP (Key User)",
+      "name": "Administrador del Sistema SAP Business One (Key User)",
       "modules": [
         "M01",
         "M04",
@@ -151,7 +151,7 @@
     },
     {
       "id": "C14",
-      "name": "Consultor Funcional y Business Analyst Finix ERP",
+      "name": "Consultor Funcional y Business Analyst SAP Business One",
       "modules": [
         "M01",
         "M02",
@@ -782,7 +782,7 @@
         {
           "number": 4,
           "id": "mod22-c4",
-          "title": "Retenciones en la Factura de Proveedores de Finix ERP"
+          "title": "Retenciones en la Factura de Proveedores de SAP Business One"
         },
         {
           "number": 5,
@@ -860,7 +860,7 @@
         {
           "number": 2,
           "id": "mod24-c2",
-          "title": "Introducción a Finix Analytics"
+          "title": "Introducción a SAP Analytics"
         }
       ]
     },
@@ -913,12 +913,12 @@
         {
           "number": 3,
           "id": "mod26-c3",
-          "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas Finix ERP"
+          "title": "Diseño del Estado Futuro (TO-BE) alineado a Mejores Prácticas SAP Business One"
         },
         {
           "number": 4,
           "id": "mod26-c4",
-          "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en Finix ERP"
+          "title": "Traducción de BPMN a Reglas de Negocio y Aprobaciones en SAP Business One"
         }
       ]
     },

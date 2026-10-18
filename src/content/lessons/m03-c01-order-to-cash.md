@@ -4,7 +4,7 @@ status: borrador-piloto
 module: ventas-order-to-cash
 moduleNumber: 3            # provisional: se reasigna al reordenar los manuales
 order: 1
-title: "Del pedido al cobro: qué registra Finix ERP en cada paso y cómo comprobarlo"
+title: "Del pedido al cobro: qué registra SAP Business One en cada paso y cómo comprobarlo"
 level: intermedio
 durationMinutes: 40
 sourceManuals:
@@ -27,7 +27,7 @@ reportsUsed:
   - Informe de partidas abiertas
 ---
 
-# Del pedido al cobro: qué registra Finix ERP en cada paso y cómo comprobarlo
+# Del pedido al cobro: qué registra SAP Business One en cada paso y cómo comprobarlo
 
 > **Respuesta directa.** El ciclo Order-to-Cash es una cadena de cinco documentos: Oferta, Pedido, Entrega, Factura y Cobro. Cada uno registra un hecho distinto de la venta y solo los tres últimos mueven contabilidad. El Pedido reserva stock. La Entrega reconoce el **costo de ventas**. La Factura reconoce el **ingreso, el IVA y la cuenta por cobrar**. El Cobro mueve el dinero al banco. Si entiendes qué dato aporta cada paso, puedes detectar en un informe cuándo algo no cuadra.
 
@@ -141,7 +141,7 @@ Supón costos fijos del mes (arriendo, sueldos administrativos) de **$5.000**. E
 - PE = 5.000 / 250 = **20 laptops**, o **$18.000** en ventas.
 - Si vendes 28 laptops, tu **margen de seguridad** es (28 − 20) / 28 = **28,6 %**.
 
-**Por qué esto depende de lo que capturas.** Si las próximas compras llegan a $700 y el método es FIFO, el costo de salida de las capas nuevas sube, el margen de contribución baja a $200 y el punto de equilibrio sube a **25 laptops**. El informe sale correcto, pero solo si los costos fijos y variables están bien separados en las cuentas y centros de costo. Finix ERP no trae un informe de punto de equilibrio listo: se arma con datos que tú aportas.
+**Por qué esto depende de lo que capturas.** Si las próximas compras llegan a $700 y el método es FIFO, el costo de salida de las capas nuevas sube, el margen de contribución baja a $200 y el punto de equilibrio sube a **25 laptops**. El informe sale correcto, pero solo si los costos fijos y variables están bien separados en las cuentas y centros de costo. SAP Business One no trae un informe de punto de equilibrio listo: se arma con datos que tú aportas.
 
 ## 8. Errores típicos y su huella en los informes
 
@@ -207,6 +207,6 @@ a) Devolución de clientes · b) Entrega negativa · c) **Abono de clientes con 
 
 - Fuente de los flujos y asientos: Manual Maestro, módulo 03 (lecciones 3.1 a 3.4) y manuales `10_Sales_11`, `10_Sales_12`.
 - Fuente de valoración: Manual Maestro, módulo 04, lección 4.1.
-- **Verificar en el cliente Finix ERP:** rutas exactas de los informes de la sección 6.
+- **Verificar en el cliente SAP Business One:** rutas exactas de los informes de la sección 6.
 - **Verificar:** tarifa de IVA vigente (15 % usada como ejemplo) y nombres de las cuentas del plan NIIF de la empresa del alumno.
 - **Pendiente de integración:** esta clase no está conectada a `/api/lesson-data` ni a `OFFICIAL_SYLLABUS`; es un archivo independiente para validar el formato.

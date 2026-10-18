@@ -1,13 +1,13 @@
 {
   "id": "sim-m01-l02",
-  "titulo": "El escritorio de Finix ERP: tu sala de control",
+  "titulo": "El escritorio de SAP Business One: tu sala de control",
   "mision": "Navega por el escritorio: identifica cada zona y abre el módulo de Socios de Negocios.",
   "duracion_estimada_min": 5,
   "pasos": [
     {
       "id": 1,
       "screenshot": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/Imagenes_Diapositivas/Slide_001.webp",
-      "instruccion": "Esta es la pantalla de inicio de Finix ERP. Observa la pantalla. Cuando estés listo, haz clic en el botón SIGUIENTE para continuar.",
+      "instruccion": "Esta es la pantalla de inicio de SAP Business One. Observa la pantalla. Cuando estés listo, haz clic en el botón SIGUIENTE para continuar.",
       "tipo": "observar",
       "hotspot": null,
       "accion": "next"
@@ -15,7 +15,7 @@
     {
       "id": 2,
       "screenshot": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/Imagenes_Diapositivas/Slide_002.webp",
-      "instruccion": "Finix ERP integra todos los módulos de la empresa. En esta pantalla puedes ver el menú principal con todos los módulos disponibles. Haz clic en el botón SIGUIENTE.",
+      "instruccion": "SAP Business One integra todos los módulos de la empresa. En esta pantalla puedes ver el menú principal con todos los módulos disponibles. Haz clic en el botón SIGUIENTE.",
       "tipo": "observar",
       "hotspot": null,
       "accion": "next"
@@ -31,7 +31,7 @@
     {
       "id": 4,
       "screenshot": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/Imagenes_Diapositivas/Slide_004.webp",
-      "instruccion": "El mundo digital exige información en tiempo real. Finix ERP fue diseñado para esto. Haz clic en SIGUIENTE para ver qué módulos incluye.",
+      "instruccion": "El mundo digital exige información en tiempo real. SAP Business One fue diseñado para esto. Haz clic en SIGUIENTE para ver qué módulos incluye.",
       "tipo": "observar",
       "hotspot": null,
       "accion": "next"
@@ -39,7 +39,7 @@
     {
       "id": 5,
       "screenshot": "/Capacitacion Finix/1.1_Introduccion_a_Finix_ERP/Imagenes_Diapositivas/Slide_005.webp",
-      "instruccion": "Finix ERP cubre: Finanzas, Compras, Ventas, Inventario, Producción y Servicio. Todo desde una sola interfaz. Más de 70.000 empresas en el mundo lo usan. Haz clic en SIGUIENTE.",
+      "instruccion": "SAP Business One cubre: Finanzas, Compras, Ventas, Inventario, Producción y Servicio. Todo desde una sola interfaz. Más de 70.000 empresas en el mundo lo usan. Haz clic en SIGUIENTE.",
       "tipo": "observar",
       "hotspot": null,
       "accion": "next"
@@ -47,7 +47,7 @@
     {
       "id": 6,
       "screenshot": "/Capacitacion Finix/1.2_Primeros_Pasos_en_Finix_ERP/Imagenes_Diapositivas/Slide_001.webp",
-      "instruccion": "Ahora vamos a los Primeros Pasos. Esta es la pantalla de inicio de sesión de Finix ERP. Para entrar necesitas: Servidor, Empresa, Usuario y Contraseña. Haz clic en SIGUIENTE.",
+      "instruccion": "Ahora vamos a los Primeros Pasos. Esta es la pantalla de inicio de sesión de SAP Business One. Para entrar necesitas: Servidor, Empresa, Usuario y Contraseña. Haz clic en SIGUIENTE.",
       "tipo": "observar",
       "hotspot": null,
       "accion": "next"
@@ -92,8 +92,8 @@
       "correcta": 1
     },
     {
-      "pregunta": "¿Dónde debes ir primero cuando Finix ERP no hace lo que esperabas?",
-      "opciones": ["Llamar al administrador", "Reiniciar el sistema", "Revisar el Log de Mensajes en la barra inferior", "Cerrar y volver a abrir Finix ERP"],
+      "pregunta": "¿Dónde debes ir primero cuando SAP Business One no hace lo que esperabas?",
+      "opciones": ["Llamar al administrador", "Reiniciar el sistema", "Revisar el Log de Mensajes en la barra inferior", "Cerrar y volver a abrir SAP Business One"],
       "correcta": 2
     }
   ],
