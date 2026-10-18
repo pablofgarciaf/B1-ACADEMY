@@ -185,7 +185,7 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "En esta lección aprenderás a iniciar sesión en Finix ERP, navegar por el sistema y personalizar tu espacio de trabajo. Esta clase es la base para usar el software con confianza en tu día a día.",
+        "script_text": "En esta lección aprenderás a iniciar sesión en SAP Business One, navegar por el sistema y personalizar tu espacio de trabajo. Esta clase es la base para usar el software con confianza en tu día a día.",
         "step_guide": null
       },
       {
@@ -318,12 +318,12 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "En esta clase aprenderás qué son los datos maestros y cómo se usan para crear documentos como pedidos y facturas en Finix ERP. Verás su importancia para trabajar con precisión y eficiencia en B1 Center.",
+        "script_text": "En esta clase aprenderás qué son los datos maestros y cómo se usan para crear documentos como pedidos y facturas en SAP Business One. Verás su importancia para trabajar con precisión y eficiencia en B1 Center.",
         "step_guide": null
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar esta clase podrás explicar qué son los datos maestros, crear y modificar documentos en Finix ERP, y usar las listas de selección para cargar información de forma rápida y precisa.",
+        "script_text": "Al finalizar esta clase podrás explicar qué son los datos maestros, crear y modificar documentos en SAP Business One, y usar las listas de selección para cargar información de forma rápida y precisa.",
         "step_guide": null
       },
       {
@@ -429,12 +429,12 @@
       },
       {
         "slide_index": 9,
-        "script_text": "Al agregar un documento de compras o ventas en Finix ERP, tiene tres opciones para finalizar la acción. 'Añadir y nuevo' guarda el documento y abre una ventana vacía para crear otro inmediatamente. 'Añadir y visualizar' lo guarda y lo muestra en pantalla para revisión. 'Añadir y cerrar' lo guarda y cierra la ventana, y esta elección se recuerda automáticamente la próxima vez que abra ese tipo de documento. Estas opciones le permiten adaptar su flujo de trabajo según necesite crear múltiples documentos, verificar uno solo o completar una tarea y pasar a otra.",
+        "script_text": "Al agregar un documento de compras o ventas en SAP Business One, tiene tres opciones para finalizar la acción. 'Añadir y nuevo' guarda el documento y abre una ventana vacía para crear otro inmediatamente. 'Añadir y visualizar' lo guarda y lo muestra en pantalla para revisión. 'Añadir y cerrar' lo guarda y cierra la ventana, y esta elección se recuerda automáticamente la próxima vez que abra ese tipo de documento. Estas opciones le permiten adaptar su flujo de trabajo según necesite crear múltiples documentos, verificar uno solo o completar una tarea y pasar a otra.",
         "step_guide": null
       },
       {
         "slide_index": 10,
-        "script_text": "El esquema de relaciones en Finix ERP le permite visualizar cómo están conectados los documentos comerciales, como una oferta de ventas que originó un pedido, luego una entrega y finalmente un cobro. Al hacer clic derecho en un documento y seleccionar 'Mapa de relaciones', ve un diagrama donde el punto de ingreso tiene fondo amarillo. Puede hacer doble clic en cualquier icono para abrir el documento asociado y ver sus detalles, como direcciones, condiciones de pago o artículos. Además, puede cambiar la vista para mostrar contabilizaciones o artículos de las filas, facilitando el trazado de operaciones completas desde la origen hasta el cierre.",
+        "script_text": "El esquema de relaciones en SAP Business One le permite visualizar cómo están conectados los documentos comerciales, como una oferta de ventas que originó un pedido, luego una entrega y finalmente un cobro. Al hacer clic derecho en un documento y seleccionar 'Mapa de relaciones', ve un diagrama donde el punto de ingreso tiene fondo amarillo. Puede hacer doble clic en cualquier icono para abrir el documento asociado y ver sus detalles, como direcciones, condiciones de pago o artículos. Además, puede cambiar la vista para mostrar contabilizaciones o artículos de las filas, facilitando el trazado de operaciones completas desde la origen hasta el cierre.",
         "step_guide": null
       },
       {
@@ -444,12 +444,12 @@
       },
       {
         "slide_index": 12,
-        "script_text": "Arrastrar y vincular es una herramienta en Finix ERP que permite crear consultas ad hoc de forma rápida e intuitiva. Al arrastrar el campo Número de artículo desde un registro maestro, como el de la almohadilla de ratón M00001, hacia la entrada Ofertas en el árbol, el sistema muestra automáticamente todas las ofertas relacionadas con ese artículo. Si la lista es extensa, puedes aplicar filtros para mostrar solo los resultados que te interesan, como ofertas de un determinado cliente o periodo. Además, puedes limitar el acceso a esta función por usuario mediante la transacción de autorizaciones generales en el menú de Gestión, asegurando que solo el personal autorizado genere estos informes. Esta funcionalidad mejora la productividad al evitar búsquedas manuales y garantiza que trabajes con datos actualizados y consistentes directamente desde los maestros de artículos.",
+        "script_text": "Arrastrar y vincular es una herramienta en SAP Business One que permite crear consultas ad hoc de forma rápida e intuitiva. Al arrastrar el campo Número de artículo desde un registro maestro, como el de la almohadilla de ratón M00001, hacia la entrada Ofertas en el árbol, el sistema muestra automáticamente todas las ofertas relacionadas con ese artículo. Si la lista es extensa, puedes aplicar filtros para mostrar solo los resultados que te interesan, como ofertas de un determinado cliente o periodo. Además, puedes limitar el acceso a esta función por usuario mediante la transacción de autorizaciones generales en el menú de Gestión, asegurando que solo el personal autorizado genere estos informes. Esta funcionalidad mejora la productividad al evitar búsquedas manuales y garantiza que trabajes con datos actualizados y consistentes directamente desde los maestros de artículos.",
         "step_guide": null
       },
       {
         "slide_index": 13,
-        "script_text": "Los datos maestros son la base para crear documentos como pedidos y facturas en Finix ERP. Su reutilización aumenta la productividad, asegura la consistencia y reduce errores. Los documentos de marketing comparten una estructura común y pueden guardarse como preliminares. Funciones como la lista de selección, el mapa de relaciones y arrastrar y vincular mejoran la trazabilidad y la toma de decisiones basada en datos actualizados.",
+        "script_text": "Los datos maestros son la base para crear documentos como pedidos y facturas en SAP Business One. Su reutilización aumenta la productividad, asegura la consistencia y reduce errores. Los documentos de marketing comparten una estructura común y pueden guardarse como preliminares. Funciones como la lista de selección, el mapa de relaciones y arrastrar y vincular mejoran la trazabilidad y la toma de decisiones basada en datos actualizados.",
         "step_guide": null
       }
     ],
@@ -473,12 +473,12 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "Esta clase enseña a personalizar el entorno de trabajo en Finix ERP mediante el cockpit y las búsquedas inteligentes. Aprenderá a adaptar la interfaz a su rol, guardar configuraciones y usar herramientas que optimizan la navegación y el acceso rápido a transacciones frecuentes. Todo con práctica guiada en simulador.",
+        "script_text": "Esta clase enseña a personalizar el entorno de trabajo en SAP Business One mediante el cockpit y las búsquedas inteligentes. Aprenderá a adaptar la interfaz a su rol, guardar configuraciones y usar herramientas que optimizan la navegación y el acceso rápido a transacciones frecuentes. Todo con práctica guiada en simulador.",
         "step_guide": null
       },
       {
         "slide_index": 2,
-        "script_text": "Al finalizar, podrá iniciar sesión con su usuario, navegar entre módulos usando menú o buscador, personalizar su cockpit con widgets útiles, guardar esa configuración como modelo reutilizable y aplicarla para mejorar su eficiencia diaria en Finix ERP.",
+        "script_text": "Al finalizar, podrá iniciar sesión con su usuario, navegar entre módulos usando menú o buscador, personalizar su cockpit con widgets útiles, guardar esa configuración como modelo reutilizable y aplicarla para mejorar su eficiencia diaria en SAP Business One.",
         "step_guide": null
       },
       {
@@ -494,7 +494,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "En esta práctica configuras cómo muestra Finix ERP las fechas y los importes. En Ecuador se escribe primero el día, y los importes en dólares llevan dos decimales. Abre Parametrizaciones generales desde el menú Gestión, ve a la pestaña Visualización y registra los formatos de la ficha del ejercicio. Una configuración correcta evita errores al leer documentos y reportes.",
+        "script_text": "En esta práctica configuras cómo muestra SAP Business One las fechas y los importes. En Ecuador se escribe primero el día, y los importes en dólares llevan dos decimales. Abre Parametrizaciones generales desde el menú Gestión, ve a la pestaña Visualización y registra los formatos de la ficha del ejercicio. Una configuración correcta evita errores al leer documentos y reportes.",
         "step_guide": {
           "action_type": "practica",
           "title": "Ajustar formatos de visualización",
@@ -541,7 +541,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Buscar registros es una de las tareas más frecuentes en Finix ERP. En la ventana de datos maestros de socios de negocios cambias al modo Buscar, escribes el criterio y el sistema abre la ficha del cliente. Tu B1 Center ya trae clientes de prueba: localiza a Maxi-Teq, de Quito, con los datos de la ficha del ejercicio antes de venderle.",
+        "script_text": "Buscar registros es una de las tareas más frecuentes en SAP Business One. En la ventana de datos maestros de socios de negocios cambias al modo Buscar, escribes el criterio y el sistema abre la ficha del cliente. Tu B1 Center ya trae clientes de prueba: localiza a Maxi-Teq, de Quito, con los datos de la ficha del ejercicio antes de venderle.",
         "step_guide": {
           "action_type": "practica",
           "title": "Buscar un cliente existente",
@@ -583,7 +583,7 @@
       },
       {
         "slide_index": 11,
-        "script_text": "Aprender a personalizar el cockpit y usar el buscador mejora significativamente la experiencia en Finix ERP. Puede guardar su configuración como modelo para compartirla con su equipo, usar widgets como Workbench y Funciones comunes para acceder rápido a transacciones, y mantener el historial de su actividad. Todo esto optimiza su trabajo diario y lo prepara para asumir nuevas responsabilidades con mayor eficacia.",
+        "script_text": "Aprender a personalizar el cockpit y usar el buscador mejora significativamente la experiencia en SAP Business One. Puede guardar su configuración como modelo para compartirla con su equipo, usar widgets como Workbench y Funciones comunes para acceder rápido a transacciones, y mantener el historial de su actividad. Todo esto optimiza su trabajo diario y lo prepara para asumir nuevas responsabilidades con mayor eficacia.",
         "step_guide": null
       }
     ],

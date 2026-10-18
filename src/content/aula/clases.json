@@ -11,21 +11,21 @@
       "id": "mod1-c2",
       "number": 2,
       "title": "Primeros Pasos: Inicio de Sesión, Escritorio y Cockpit",
-      "description": "En esta lección aprenderás a iniciar sesión en Finix ERP, navegar por el sistema y personalizar tu espacio de trabajo.",
+      "description": "En esta lección aprenderás a iniciar sesión en SAP Business One, navegar por el sistema y personalizar tu espacio de trabajo.",
       "durationMinutes": 12
     },
     {
       "id": "mod1-c3",
       "number": 3,
       "title": "Documentos y Datos Maestros",
-      "description": "En esta clase aprenderás qué son los datos maestros y cómo se usan para crear documentos como pedidos y facturas en Finix ERP.",
+      "description": "En esta clase aprenderás qué son los datos maestros y cómo se usan para crear documentos como pedidos y facturas en SAP Business One.",
       "durationMinutes": 14
     },
     {
       "id": "mod1-c4",
       "number": 4,
       "title": "Preferencias de Usuario y Búsquedas",
-      "description": "Esta clase enseña a personalizar el entorno de trabajo en Finix ERP mediante el cockpit y las búsquedas inteligentes.",
+      "description": "Esta clase enseña a personalizar el entorno de trabajo en SAP Business One mediante el cockpit y las búsquedas inteligentes.",
       "durationMinutes": 12
     }
   ],
