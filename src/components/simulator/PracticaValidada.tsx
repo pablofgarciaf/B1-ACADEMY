@@ -142,6 +142,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [moduloAbierto, setModuloAbierto] = useState<string | null>(null);
   const ventanaRef = useRef<HTMLDivElement>(null);
   const [menuMovilColapsado, setMenuMovilColapsado] = useState(false);
+  const [guiaExpandida, setGuiaExpandida] = useState(true);
 
   // En consultas los datos ya vienen precargados desde la BD de B1 Center (OITM, OCRD, etc.)
   const [valores, setValores] = useState<string[]>(() => {
@@ -482,53 +483,128 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
             </div>
           ) : (
             <div ref={ventanaRef} className={`rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl transition-all duration-100 ${ventanaMaximizada ? 'absolute inset-2 z-30 max-w-none m-0 border-2 border-[#0055A5] flex flex-col h-[calc(100%-16px)]' : 'max-w-3xl'}`}>
-              {/* Banner pedagógico explicativo: El Por Qué y Para Qué */}
-              <div className="mx-3 sm:mx-4 mt-3 p-2.5 rounded border border-[#b8c9dc] bg-[#eaf1f8] text-[11px] text-[#1e3a5f] leading-snug">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="font-bold flex items-center gap-1.5 text-[#003366]">
-                    <span>{esConsulta ? '🔍' : '📝'}</span>
-                    <span>{esConsulta ? 'Consulta de Ficha Maestra en SAP Business One' : 'Registro de Datos en SAP Business One'}</span>
-                  </span>
-                  {esConsulta ? (
-                    <span className="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded shadow-xs">
-                      ✓ Datos de B1 Center precargados
+              {/* Recuadro Pedagógico A+ con Instrucciones Claras y Valores Requeridos */}
+              <div className="mx-3 sm:mx-4 mt-3 rounded-md border border-[#9fb8d4] bg-gradient-to-b from-[#eaf2fa] to-[#deebf7] p-2.5 sm:p-3 text-[11px] text-[#133251] shadow-xs">
+                {/* Cabecera del Panel */}
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#bcd0e5]">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="w-5 h-5 rounded-md bg-[#0055A5] text-white flex items-center justify-center text-xs font-bold shrink-0 shadow-xs">
+                      {esConsulta ? '🔍' : '🎯'}
                     </span>
-                  ) : (
+                    <div className="min-w-0">
+                      <h4 className="font-extrabold text-[#003366] text-xs leading-none truncate">
+                        {guia.title}
+                      </h4>
+                      <span className="text-[10px] text-[#3e5f82] font-medium">
+                        {esConsulta
+                          ? 'Modo Consulta / Auditoría · Ficha con datos precargados de B1 Center'
+                          : 'Modo Registro / Transacción · Caso de negocio'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0">
+                    {!esConsulta && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setValores(campos.map(c => c.valor));
+                          setRevisado(null);
+                          setEstado({ tono: 'info', texto: 'Valores cargados con éxito. Pulsa Añadir para registrar.' });
+                        }}
+                        className="text-[10.5px] bg-[#0055A5] hover:bg-[#003e7a] text-white font-bold px-2.5 py-1 rounded transition-all active:scale-95 shadow-xs flex items-center gap-1 cursor-pointer"
+                        title="Autocompletar todos los campos con los valores del caso"
+                      >
+                        <span>🪄</span>
+                        <span>Autocompletar</span>
+                      </button>
+                    )}
                     <button
                       type="button"
-                      onClick={() => {
-                        setValores(campos.map(c => c.valor));
-                        setRevisado(null);
-                        setEstado({ tono: 'info', texto: 'Datos de prueba cargados automáticamente.' });
-                      }}
-                      className="text-[10px] bg-[#0055A5] hover:bg-[#003366] text-white font-bold px-2 py-0.5 rounded transition-all active:scale-95 shadow-sm flex items-center gap-1"
+                      onClick={() => setGuiaExpandida(!guiaExpandida)}
+                      className="text-[10px] bg-white hover:bg-slate-50 border border-[#a2bad4] text-[#1b3d63] font-semibold px-2 py-1 rounded transition-all active:scale-95 cursor-pointer flex items-center gap-1 shadow-2xs"
+                      title={guiaExpandida ? 'Minimizar detalles de la guía' : 'Ver todos los pasos y datos'}
                     >
-                      <span>🪄</span> Autocompletar
+                      <span>{guiaExpandida ? '▲ Plegar' : '▼ Ver guía'}</span>
                     </button>
-                  )}
+                  </div>
                 </div>
-                <p className="text-[#33557a] text-[10.5px] mb-1.5">
-                  {esConsulta
-                    ? 'En SAP Business One, al consultar un artículo (OITM) o socio existente, la ficha se abre con sus datos ya registrados. Observa cómo se relacionan el precio de venta ($850.00) con el costo de adquisición ($650.00) para calcular tu margen, y la bodega asignada.'
-                    : 'Usa los siguientes valores requeridos por la práctica para registrar la transacción:'
-                  }
-                </p>
-                <div className="flex flex-wrap gap-1.5 text-[10px]">
-                  {campos.map((c, i) => (
-                    <span key={i} className="px-1.5 py-0.5 rounded bg-white/90 border border-[#c5d5e6] text-gray-800 shadow-xs">
-                      <strong className="text-[#0055A5]">{c.etiqueta}:</strong> {c.valor}
-                    </span>
-                  ))}
-                </div>
-                {margenInfo && (
-                  <div className="mt-2 p-1.5 rounded bg-amber-50/95 border border-amber-200/90 text-amber-950 text-[10.5px] leading-snug flex items-center gap-1.5">
-                    <span className="text-sm">💰</span>
-                    <span>
-                      <strong>Lógica de Margen Comercial:</strong> Costo base: <strong>${margenInfo.costo}</strong> + Ganancia empresa: <strong>+${margenInfo.margen}</strong> ({margenInfo.porcentaje}%) ➔ Precio final de venta: <strong>${margenInfo.precio}</strong>.
-                    </span>
+
+                {/* Contenido Desplegable de la Guía */}
+                {guiaExpandida && (
+                  <div className="pt-2 space-y-2.5">
+                    {/* 1. Instrucciones Paso a Paso */}
+                    {guia.instructions && guia.instructions.length > 0 && (
+                      <div>
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="text-[10px] font-extrabold text-[#003366] uppercase tracking-wider flex items-center gap-1">
+                            <span>📋</span>
+                            <span>Pasos a seguir en esta práctica:</span>
+                          </span>
+                        </div>
+                        <ol className="grid sm:grid-cols-2 gap-x-3 gap-y-1.5 bg-white/75 p-2 rounded border border-[#c4d6ea]">
+                          {guia.instructions.map((ins, idx) => (
+                            <li key={idx} className="flex items-start gap-1.5 text-[11px] text-[#1c3654] leading-tight">
+                              <span className="shrink-0 w-4 h-4 rounded-full bg-[#0055A5] text-white text-[9.5px] font-bold flex items-center justify-center mt-0.5 shadow-2xs">
+                                {idx + 1}
+                              </span>
+                              <span className="font-medium">{ins}</span>
+                            </li>
+                          ))}
+                        </ol>
+                      </div>
+                    )}
+
+                    {/* 2. Ficha de Valores Requeridos */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[10px] font-extrabold text-[#003366] uppercase tracking-wider flex items-center gap-1">
+                          <span>🏷️</span>
+                          <span>Datos requeridos para el ejercicio:</span>
+                        </span>
+                        <span className="text-[9.5px] text-[#4a6b8e]">
+                          {esConsulta ? '✓ Verifica que coincidan en pantalla' : '💡 Tip: al elegir Código, la descripción se asocia sola'}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5">
+                        {campos.map((c, i) => (
+                          <div key={i} className="px-2 py-1 rounded bg-white border border-[#b8cce2] shadow-2xs flex flex-col justify-between">
+                            <div className="flex items-baseline justify-between gap-1">
+                              <span className="text-[9.5px] font-bold text-[#004b91] uppercase tracking-wide truncate">
+                                {c.etiqueta}
+                              </span>
+                              <span className="text-[11px] font-bold text-gray-900 font-mono select-all truncate">
+                                {c.valor}
+                              </span>
+                            </div>
+                            {c.pista && (
+                              <span className="text-[9px] text-[#55708e] leading-tight mt-0.5 italic truncate" title={c.pista}>
+                                {c.pista}
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* 3. Lógica Comercial y Margen (si aplica precio y costo) */}
+                    {margenInfo && (
+                      <div className="p-2 rounded bg-amber-50/95 border border-amber-300/80 text-amber-950 text-[11px] leading-snug flex items-center gap-2 shadow-2xs">
+                        <span className="text-base shrink-0">💰</span>
+                        <div>
+                          <span className="font-bold text-amber-900 block text-[10px] uppercase tracking-wider">
+                            Lógica de Negocio y Margen Comercial:
+                          </span>
+                          <span>
+                            Costo de adquisición: <strong>${margenInfo.costo}</strong> + Ganancia de tu empresa: <strong>+${margenInfo.margen}</strong> ({margenInfo.porcentaje}%) ➔ Precio final de venta: <strong>${margenInfo.precio}</strong>.
+                          </span>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
+              
               {/* Barra de título de la ventana */}
               <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold select-none shrink-0">
                 <span className="flex items-center gap-1.5 text-xs text-[#003366] font-bold">

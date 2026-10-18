@@ -41,7 +41,7 @@ const EQUIVALENCIAS: string[][] = [
   ['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle'],
   ['C20005', 'Corporación Andina Comercial S.A.', 'Corporación Andina', 'Andina Comercial'],
   ['V10000', 'Dell Ecuador'], ['V10001', 'HP Importaciones'], ['V10002', 'Lenovo Andina'], ['V10003', 'Acer Distributors'],
-  ['A00001', 'Laptop Dell Latitude 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],
+  ['A00001', 'Laptop Dell Latitude 3420', 'Laptop Dell Latitud 3420', 'Dell Latitude 3420', 'Dell Latitud 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],
   ['A00004', 'Teclado Inalámbrico Logitech'], ['A00005', 'Mouse Óptico Dell'], ['A00006', 'Servidor HP ProLiant DL380'],
   ['A00007', 'Disco Duro SSD 1TB Samsung'], ['A00008', 'Memoria RAM 16GB DDR4'],
   ['manager', 'admin', 'pablo.garcia', 'alumno@ejemplo.test', 'pablo'],
@@ -59,6 +59,26 @@ const EQUIVALENCIAS: string[][] = [
 export const SI = /^(si|true|marcado|activado|activo|habilitado|x|check)$/;
 export const NO = /^(no|false|desmarcado|desactivado|inactivo|deshabilitado)$/;
 export const esBooleano = (valor: string) => { const n = normalizar(valor); return SI.test(n) || NO.test(n); };
+
+function distanciaLevenshtein(a: string, b: string): number {
+  if (a === b) return 0;
+  if (!a.length) return b.length;
+  if (!b.length) return a.length;
+  const d: number[][] = [];
+  for (let i = 0; i <= a.length; i++) d[i] = [i];
+  for (let j = 0; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i][j] = Math.min(
+        d[i - 1][j] + 1,
+        d[i][j - 1] + 1,
+        d[i - 1][j - 1] + cost
+      );
+    }
+  }
+  return d[a.length][b.length];
+}
 
 /** ¿La respuesta del estudiante coincide con la esperada? (formatos, código o nombre, sí/no, credenciales flexibles) */
 export function coincide(respuesta: string, esperado: string, etiqueta?: string): boolean {
