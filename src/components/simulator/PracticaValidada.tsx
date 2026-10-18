@@ -107,6 +107,17 @@ function opcionesCampo(c: CampoPractica): Opcion[] | null {
   return ops.some((o) => coincide(o.valor, v) || coincide(o.texto, v)) ? ops : [...ops, { valor: v, texto: v }];
 }
 
+function obtenerDescripcionDeCodigo(codigo: string): string | null {
+  const c = codigo.trim().toUpperCase();
+  const art = ARTICULOS.find(([k]) => k.toUpperCase() === c);
+  if (art) return art[1];
+  const cli = CLIENTES.find(([k]) => k.toUpperCase() === c);
+  if (cli) return cli[1];
+  const prov = PROVEEDORES.find(([k]) => k.toUpperCase() === c);
+  if (prov) return prov[1];
+  return null;
+}
+
 type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
 
 function esModoConsulta(guia: GuiaPractica) {
@@ -164,6 +175,47 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   }, [currentUser]);
 
   const [logrado, setLogrado] = useState(false);
+
+  // Lógica ERP: cálculo de margen comercial en tiempo real para transparentar números al alumno
+  const margenInfo = useMemo(() => {
+    const cp = campos.find((c) => /precio|venta/i.test(plano(c.etiqueta)));
+    const cc = campos.find((c) => /costo|compra/i.test(plano(c.etiqueta)));
+    if (!cp || !cc) return null;
+    const p = parseFloat(cp.valor.replace(/[^0-9.]/g, ''));
+    const co = parseFloat(cc.valor.replace(/[^0-9.]/g, ''));
+    if (!isNaN(p) && !isNaN(co) && p > co) {
+      const margen = (p - co).toFixed(2);
+      const porcentaje = ((p - co) / co * 100).toFixed(1);
+      return { costo: co.toFixed(2), precio: p.toFixed(2), margen, porcentaje };
+    }
+    return null;
+  }, [campos]);
+
+  // Actualización con auto-lookup: al seleccionar o cambiar un Código, autocompleta la Descripción/Nombre
+  const actualizarValor = (indice: number, nuevoValor: string) => {
+    const v = [...valores];
+    v[indice] = nuevoValor;
+
+    const etActual = plano(campos[indice]?.etiqueta || '');
+    if (etActual.includes('codigo') || etActual.includes('articulo') || etActual.includes('socio') || etActual.includes('item')) {
+      const idxDesc = campos.findIndex((cp, k) => k !== indice && /descrip|nombre|razon/i.test(plano(cp.etiqueta)));
+      if (idxDesc >= 0) {
+        if (campos[indice] && nuevoValor.trim().toUpperCase() === campos[indice].valor.trim().toUpperCase()) {
+          v[idxDesc] = campos[idxDesc].valor;
+        } else {
+          const desc = obtenerDescripcionDeCodigo(nuevoValor);
+          if (desc) v[idxDesc] = desc;
+        }
+      }
+    }
+
+    setValores(v);
+    if (revisado) {
+      const r = [...revisado];
+      r[indice] = null;
+      setRevisado(r);
+    }
+  };
   const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal o confirma los datos prellenos.' });
 
   const ventanaAbierta = ruta.length === 0 || nivel >= ruta.length;
@@ -468,6 +520,14 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                     </span>
                   ))}
                 </div>
+                {margenInfo && (
+                  <div className="mt-2 p-1.5 rounded bg-amber-50/95 border border-amber-200/90 text-amber-950 text-[10.5px] leading-snug flex items-center gap-1.5">
+                    <span className="text-sm">💰</span>
+                    <span>
+                      <strong>Lógica de Margen Comercial:</strong> Costo base: <strong>${margenInfo.costo}</strong> + Ganancia empresa: <strong>+${margenInfo.margen}</strong> ({margenInfo.porcentaje}%) ➔ Precio final de venta: <strong>${margenInfo.precio}</strong>.
+                    </span>
+                  </div>
+                )}
               </div>
               {/* Barra de título de la ventana */}
               <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold select-none shrink-0">
@@ -521,10 +581,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                               type="checkbox"
                               checked={SI.test(normalizar(valores[i]))}
                               disabled={logrado}
-                              onChange={(e) => {
-                                const v = [...valores]; v[i] = e.target.checked ? 'Sí' : 'No'; setValores(v);
-                                if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
-                              }}
+                              onChange={(e) => actualizarValor(i, e.target.checked ? 'Sí' : 'No')}
                               className={`w-4 h-4 accent-[#f0ab00] ${est === false ? 'outline outline-2 outline-[#c9302c]' : ''}`}
                             />
                           </span>
@@ -534,10 +591,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                           data-guia={`campo-${i}`}
                           value={valores[i]}
                           disabled={logrado}
-                          onChange={(e) => {
-                            const v = [...valores]; v[i] = e.target.value; setValores(v);
-                            if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
-                          }}
+                          onChange={(e) => actualizarValor(i, e.target.value)}
                           className={`h-6 w-full px-1 bg-white border rounded-[2px] focus:outline-none ${
                             est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'
                               : est === false ? 'border-[#c9302c] bg-[#fdf0ef]'
@@ -555,10 +609,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                           placeholder={c.valor}
                           disabled={logrado}
                           autoComplete="off"
-                          onChange={(e) => {
-                            const v = [...valores]; v[i] = e.target.value; setValores(v);
-                            if (revisado) { const r = [...revisado]; r[i] = null; setRevisado(r); }
-                          }}
+                          onChange={(e) => actualizarValor(i, e.target.value)}
                           onKeyDown={(e) => { if (e.key === 'Enter') validar(); }}
                           className={`h-6 w-full px-1.5 bg-white border rounded-[2px] focus:outline-none select-text ${
                             est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'

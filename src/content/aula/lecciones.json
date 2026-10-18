@@ -93,17 +93,17 @@
       },
       {
         "slide_index": 8,
-        "script_text": "En esta práctica abrimos la ficha maestra del artículo A00001, la Laptop Dell Latitude, que ya existe en tu empresa B1 Center. Fíjate cómo SAP Business One organiza los datos: el precio de venta es 850 dólares y el costo de compra es 650 dólares. Esta diferencia de 200 dólares representa el margen comercial de tu empresa. La bodega predeterminada es la 01 de Quito y el IVA es del 15 por ciento. Al consultar este maestro entiendes que las cotizaciones y facturas no se llenan a mano: el ERP toma estos datos maestros automáticamente para evitar errores humanos. Revisa la información cargada en pantalla y pulsa Confirmar consulta para avanzar.",
+        "script_text": "En esta práctica abrimos la ficha maestra del artículo A00001, la Laptop Dell Latitude, que ya existe en tu empresa B1 Center. Fíjate cómo funciona SAP Business One: al seleccionar el código del artículo, el sistema autocompleta la descripción sin que tengas que volver a escribirla. Observa los números clave del negocio: el costo de compra es 650 dólares y el precio de venta es 850 dólares; esa diferencia de 200 dólares es el margen comercial que gana tu empresa. La bodega asignada es la 01 de Quito y el IVA es del 15 por ciento. Revisa los datos cargados y pulsa Confirmar consulta para avanzar.",
         "step_guide": {
           "action_type": "practica",
           "title": "Consultar artículo en stock",
           "menu_path": "Inventario > Datos maestros de artículo",
           "instructions": [
-            "Acceda al módulo Inventario",
-            "Seleccione Datos maestros de artículo",
-            "Ingrese el código A00001",
-            "Verifique la descripción y precio",
-            "Confirme bodega y tasa de IVA"
+            "Acceda al módulo Inventario > Datos maestros de artículo",
+            "Seleccione el código A00001 (la descripción se asocia automáticamente)",
+            "Verifique la lógica de margen: Costo $650 + Ganancia $200 = Venta $850",
+            "Confirme bodega 01 Quito y tasa de IVA 15%",
+            "Haga clic en Confirmar consulta (OK) para avanzar"
           ],
           "campos": [
             {
