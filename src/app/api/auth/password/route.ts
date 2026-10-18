@@ -3,7 +3,16 @@ import { z } from 'zod';
 import { adminAuth, adminDb, fieldValue } from '@/lib/firebase-admin';
 import { authenticateIdToken } from '@/lib/server-auth';
 import { consumeQuota } from '@/lib/rate-limit';
-import {mayReplacePassword} from '@/lib/password-policy';
+import { passwordAccess } from '@/lib/password-recovery-server';
+
+export async function GET(request:Request) {
+  try {
+    const token=request.headers.get('authorization')?.replace(/^Bearer /,'');
+    if(!token)return NextResponse.json({error:'Inicia sesión nuevamente.'},{status:401});
+    const user=await authenticateIdToken(token);
+    return NextResponse.json(await passwordAccess(user,token),{headers:{'Cache-Control':'no-store'}});
+  }catch{return NextResponse.json({error:'No pudimos comprobar tu acceso. Vuelve a intentarlo.'},{status:503});}
+}
 
 export async function POST(request: Request) {
   try {
@@ -11,11 +20,11 @@ export async function POST(request: Request) {
     if (!token) return NextResponse.json({ error: 'Inicia sesión nuevamente.' }, { status: 401 });
     const user = await authenticateIdToken(token);
     const decoded=await adminAuth.verifyIdToken(token,true);
-    if(Date.now()/1000-Number(decoded.auth_time||0)>300)return NextResponse.json({error:'Inicia sesión de nuevo antes de cambiar tu contraseña.'},{status:401});
-    const account=await adminAuth.getUser(user.uid);
-    if(!mayReplacePassword(user.profile,account.tokensValidAfterTime))return NextResponse.json({error:'Por seguridad, restablece primero tu contraseña con el enlace enviado a tu correo y vuelve a iniciar sesión.'},{status:403});
-    const parsed = z.object({ password: z.string().min(12).max(128) }).safeParse(await request.json());
-    if (!parsed.success || parsed.data.password === user.profile.cedula) return NextResponse.json({ error: 'Usa una contraseña personal de al menos 12 caracteres.' }, { status: 400 });
+    if(Date.now()/1000-Number(decoded.auth_time||0)>300)return NextResponse.json({error:'Tu sesión para cambiar la contraseña caducó. Inicia sesión otra vez.',code:'REAUTH_REQUIRED'},{status:401});
+    const access=await passwordAccess(user,token);
+    if(access.recoveryRequired)return NextResponse.json({error:'Esta cuenta requiere recuperar la contraseña por correo. Usa Enviar enlace; después podrás entrar directamente.',code:'RECOVERY_REQUIRED'},{status:403});
+    const parsed = z.object({ password: z.string().min(8).max(128) }).safeParse(await request.json());
+    if (!parsed.success || parsed.data.password === user.profile.cedula) return NextResponse.json({ error: 'Usa una contraseña personal de al menos 8 caracteres, distinta de tu cédula.' }, { status: 400 });
     const quota = await consumeQuota('password-change', user.uid, 5, 3600_000);
     if (!quota.allowed) return NextResponse.json({ error: 'Espera antes de intentarlo nuevamente.' }, { status: 429 });
     await adminAuth.updateUser(user.uid, { password: parsed.data.password });

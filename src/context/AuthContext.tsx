@@ -136,18 +136,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   const changePassword = async (newPassword: string) => {
-    if (!currentUser || newPassword.length < 12) return { success: false, error: 'La nueva contraseña debe tener al menos 12 caracteres.' };
+    if (!currentUser || newPassword.length < 8) return { success: false, error: 'La nueva contraseña debe tener al menos 8 caracteres.' };
+    registeringRef.current=true;
     try {
       const response=await authenticatedFetch('/api/auth/password',{method:'POST',body:JSON.stringify({password:newPassword})});
       if(!response.ok) return {success:false,error:(await response.json()).error||'No pudimos cambiar la contraseña.'};
-      await signInWithEmailAndPassword(auth,currentUser.email!,newPassword);
-      setUserProfile(await establishServerSession(auth.currentUser!,true));
+      const credential=await signInWithEmailAndPassword(auth,currentUser.email!,newPassword);
+      setCurrentUser(credential.user);
+      setUserProfile(await establishServerSession(credential.user,true));
       return { success: true };
-    } catch { return { success: false, error: 'No fue posible cambiar la contraseña. Vuelve a iniciar sesión.' }; }
+    } catch { return { success: false, error: 'No se pudo completar el acceso. Vuelve a iniciar sesión con tu nueva contraseña.' }; }
+    finally {registeringRef.current=false;}
   };
 
   const resetPassword = async (email: string) => {
-    try { await sendPasswordResetEmail(auth, email.trim().toLowerCase()); } catch { /* Respuesta uniforme: evita enumerar cuentas. */ }
+    try { await sendPasswordResetEmail(auth, email.trim().toLowerCase()); } catch(error) {
+      if(!(error instanceof FirebaseError&&error.code==='auth/user-not-found'))return {success:false,error:error instanceof FirebaseError&&error.code==='auth/too-many-requests'?'Espera unos minutos antes de solicitar otro enlace.':'No se pudo enviar el enlace. Revisa tu conexión e intenta de nuevo.'};
+    }
     return { success: true };
   };
 

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import { passwordAccess } from '@/lib/password-recovery-server';
 import {
   AuthRejectedError,
   authenticateIdToken,
@@ -26,6 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Token requerido.' }, { status: 400 });
     }
     const user = await authenticateIdToken(idToken);
+    if(user.profile.passwordSecurityVersion!==2||user.profile.passwordChanged===false)await passwordAccess(user,idToken);
     const sessionCookie = await createSessionValue(idToken);
     const response = NextResponse.json({ profile: user.profile });
     response.cookies.set(SESSION_COOKIE, sessionCookie, {

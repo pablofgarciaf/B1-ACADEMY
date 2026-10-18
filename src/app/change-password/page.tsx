@@ -9,7 +9,9 @@ import { Footer } from '@/components/site/Footer';
 
 export default function ChangePasswordPage() {
   const router = useRouter();
-  const { currentUser, userProfile, loading: authLoading, changePassword, resetPassword } = useAuth();
+  const { currentUser, userProfile, loading: authLoading, changePassword, resetPassword, logout } = useAuth();
+  const [access,setAccess]=useState<'checking'|'recovery'|'change'|'error'>('checking');
+  const [sending,setSending]=useState(false);
 
   const [newPass, setNewPass] = useState('');
   const [confirmPass, setConfirmPass] = useState('');
@@ -19,6 +21,12 @@ export default function ChangePasswordPage() {
   const [recoveryNotice,setRecoveryNotice]=useState('');
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
+  useEffect(()=>{
+    if(!currentUser)return;
+    let active=true;
+    void (async()=>{try{const token=await currentUser.getIdToken();const response=await fetch('/api/auth/password',{headers:{Authorization:`Bearer ${token}`},cache:'no-store'});const result=await response.json();if(!response.ok)throw Error(result.error||'No se pudo comprobar el acceso.');if(active){if(result.ready)window.location.assign('/dashboard');else setAccess(result.recoveryRequired?'recovery':'change');}}catch(error){if(active){setAccess('error');setErrorMsg(error instanceof Error?error.message:'No se pudo comprobar el acceso.');}}})();
+    return ()=>{active=false;};
+  },[currentUser]);
 
   // Si no hay sesion -> /login. Si ya cambio clave -> destino correcto.
   useEffect(() => {
@@ -50,8 +58,8 @@ export default function ChangePasswordPage() {
     setErrorMsg('');
     setSuccessMsg('');
 
-    if (newPass.length < 12) {
-      setErrorMsg('La contraseña debe tener mínimo 12 caracteres.');
+    if (newPass.length < 8) {
+      setErrorMsg('La contraseña debe tener mínimo 8 caracteres.');
       return;
     }
     if (newPass !== confirmPass) {
@@ -78,7 +86,7 @@ export default function ChangePasswordPage() {
     }, 1200);
   };
 
-  const strength = newPass.length === 0 ? 0 : newPass.length < 10 ? 1 : newPass.length < 14 ? 2 : 3;
+  const strength = newPass.length === 0 ? 0 : newPass.length < 8 ? 1 : newPass.length < 14 ? 2 : 3;
   const strengthLabel = ['', 'Muy corta', 'Aceptable', 'Segura'];
   const strengthColor = ['', 'bg-rose-500', 'bg-amber-400', 'bg-emerald-500'];
 
@@ -93,14 +101,14 @@ export default function ChangePasswordPage() {
               <Lock className="w-8 h-8 text-finix-blue" />
             </div>
             <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-              Crea tu Contrasena Personal
+              {access==='recovery'?'Recupera el acceso a tu cuenta':'Crea tu contraseña personal'}
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xs mx-auto">
-              Hola, <strong className="text-slate-700 dark:text-slate-300">{userProfile.name}</strong>. Por seguridad, debes crear una contrasena propia antes de acceder a tu aula virtual.
+              Hola, <strong className="text-slate-700 dark:text-slate-300">{userProfile.name}</strong>. {access==='recovery'?'Confirma tu cuenta con el enlace enviado a tu correo. Al volver a entrar se reconocerá tu nueva contraseña.':'Usa al menos 8 caracteres. No exigimos mayúsculas ni símbolos.'}
             </p>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-[11px] font-bold">
               <ShieldCheck className="w-3.5 h-3.5" />
-              Cambio obligatorio primer acceso
+              {access==='recovery'?'Recuperación por correo':'Contraseña personal'}
             </div>
           </div>
 
@@ -119,8 +127,10 @@ export default function ChangePasswordPage() {
               </div>
             )}
 
-            {userProfile.passwordSecurityVersion!==2&&<div className="space-y-3 rounded-xl border border-sky-500/30 p-4 text-sm"><p>Si tu cuenta usaba una contraseña inicial antigua, restablécela por correo para confirmar que te pertenece.</p><button type="button" className="text-sky-500 underline" onClick={async()=>{if(currentUser?.email){await resetPassword(currentUser.email);setRecoveryNotice('Revisa tu correo, sigue el enlace de restablecimiento y vuelve a iniciar sesión.');}}}>Enviar enlace de restablecimiento</button>{recoveryNotice&&<p role="status">{recoveryNotice}</p>}</div>}
-          <form onSubmit={handleSubmit} className="space-y-5">
+            {access==='checking'&&<p role="status">Comprobando tu cuenta…</p>}
+            {access==='error'&&<button type="button" className="text-sky-500 underline" onClick={()=>window.location.reload()}>Volver a comprobar</button>}
+            {access==='recovery'&&<div className="space-y-3 rounded-xl border border-sky-500/30 p-4 text-sm"><p>La contraseña inicial antigua debe reemplazarse desde el enlace de recuperación. No necesitas intentar guardarla en esta pantalla.</p><button type="button" disabled={sending} className="text-sky-500 underline disabled:opacity-50" onClick={async()=>{if(currentUser?.email){setSending(true);const result=await resetPassword(currentUser.email);setSending(false);setRecoveryNotice(result.success?'Revisa tu correo y la carpeta de spam. Sigue el enlace y luego vuelve a iniciar sesión.':result.error||'No se pudo enviar el enlace. Intenta de nuevo.');}}}>{sending?'Enviando…':'Enviar enlace de restablecimiento'}</button>{recoveryNotice&&<p role="status">{recoveryNotice}</p>}</div>}
+          {access==='change'&&<form onSubmit={handleSubmit} className="space-y-5">
               <div className="space-y-1.5">
                 <label htmlFor="new-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
                   Nueva Contrasena
@@ -132,8 +142,8 @@ export default function ChangePasswordPage() {
                     type={showNew ? 'text' : 'password'}
                     value={newPass}
                     onChange={(e) => setNewPass(e.target.value)}
-                    placeholder="Mínimo 12 caracteres"
-                    minLength={12}
+                    placeholder="Mínimo 8 caracteres"
+                    minLength={8}
                     required
                     className="w-full pl-10 pr-10 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors"
                   />
@@ -193,10 +203,10 @@ export default function ChangePasswordPage() {
                   </>
                 )}
               </button>
-            </form>
+            </form>}
 
             <p className="text-center text-[11px] text-slate-400">
-              Tu cedula ya no funcionara como contrasena despues de este paso.
+              <button type="button" className="text-sky-500 underline" onClick={async()=>{await logout();router.replace('/login');}}>Volver a iniciar sesión</button>
             </p>
           </div>
         </div>

@@ -144,7 +144,7 @@ export default function LoginPage() {
       setRegError("Debes aceptar los Términos y la Política de privacidad para crear tu cuenta.");
       return;
     }
-    if(regPassword.length<12){setRegError('Usa al menos 12 caracteres en tu contraseña.');return;}
+    if(regPassword.length<8){setRegError('Usa al menos 8 caracteres en tu contraseña.');return;}
     setRegLoading(true);
     const res = await register({ name: regName, email: regEmail, password: regPassword, phone: regPhone });
     if (!res.success) {
@@ -422,7 +422,7 @@ export default function LoginPage() {
 
                 <div className="space-y-1.5">
                   <label htmlFor="register-password" className="text-xs font-bold text-slate-700 dark:text-slate-300">
-                    Contraseña personal * <span className="font-normal text-slate-400">(mínimo 12 caracteres)</span>
+                    Contraseña personal * <span className="font-normal text-slate-400">(mínimo 8 caracteres)</span>
                   </label>
                   <div className="relative">
                     <KeyRound className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -433,8 +433,8 @@ export default function LoginPage() {
                       autoComplete="new-password"
                       value={regPassword}
                       onChange={(e) => setRegPassword(e.target.value)}
-                      placeholder="Crea una contraseña de 12 caracteres o más"
-                      minLength={12}
+                      placeholder="Crea una contraseña de 8 caracteres o más"
+                      minLength={8}
                       maxLength={20}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors font-mono"

@@ -9,7 +9,7 @@ import { legalConfigured, POLITICAS_VERSION } from '@/lib/legal-config';
 const schema = z.object({
   name: z.string().trim().min(2).max(100),
   email: z.string().trim().toLowerCase().email().max(254),
-  password: z.string().min(12).max(128),
+  password: z.string().min(8).max(128),
   phone: z.string().trim().max(30).optional(),
   privacyAccepted: z.literal(true),
   policyVersion: z.literal(POLITICAS_VERSION),
@@ -18,7 +18,7 @@ const schema = z.object({
 export async function POST(request: Request) {
   if (process.env.NODE_ENV === 'production' && !legalConfigured) return NextResponse.json({error:'El registro estará disponible pronto.'},{status:503});
   const parsed = schema.safeParse(await request.json().catch(() => null));
-  if (!parsed.success) return NextResponse.json({ error: 'Revisa los datos y usa una contraseña de 12 caracteres.' }, { status: 400 });
+  if (!parsed.success) return NextResponse.json({ error: 'Revisa los datos y usa una contraseña de 8 caracteres.' }, { status: 400 });
   try {
     const quota=await consumeQuota('registration',clientAddress(request),5,3600_000);
     if (!quota.allowed) return NextResponse.json({error:'Demasiados intentos. Intenta más tarde.'},{status:429});

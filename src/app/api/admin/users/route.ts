@@ -7,7 +7,7 @@ const newUserSchema = z.object({
   name: z.string().trim().min(2).max(100),
   email: z.string().trim().toLowerCase().email().max(254),
   // Clave temporal independiente de la identificación, con caducidad y cambio obligatorio.
-  temporaryPassword: z.string().min(12).max(128),
+  temporaryPassword: z.string().min(8).max(128),
   cedula: z.string().trim().max(20).optional(),
   role: z.enum(['estudiante', 'docente', 'admin']).default('estudiante'),
   assignedTracks: z.array(z.string().min(1).max(80)).max(20).default(['finix-erp-core']),

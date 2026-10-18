@@ -53,8 +53,8 @@ test('inscripción configurada crea perfil de alumno sin aceptar privilegios del
  assert.equal(response.status,201);const row=db.rows.get('usuarios/new-user');
  assert.equal(row.role,'estudiante');assert.equal(row.passwordSecurityVersion,2);assert.equal(row.passwordChanged,true);assert.equal(row.privateAccountingEnabled,undefined);assert.equal(row.password,undefined);assert.equal(row.consentimiento.politicas,'test-policy');
 });
-test('inscripción exige aceptación, versión vigente y contraseña personal larga',async()=>{
- for(const delta of [{privacyAccepted:false},{policyVersion:'obsolete'},{password:'12345678'},{email:'bad'}])assert.equal((await register.POST(request('/api',{...enrollment,...delta}))).status,400);
+test('inscripción exige aceptación, versión vigente y contraseña personal con mínimo de ocho caracteres',async()=>{
+ for(const delta of [{privacyAccepted:false},{policyVersion:'obsolete'},{password:'1234567'},{email:'bad'}])assert.equal((await register.POST(request('/api',{...enrollment,...delta}))).status,400);
  assert.equal(created.length,0);
 });
 test('si falla el perfil se revierte solo el usuario recién creado y no se anuncia éxito',async()=>{

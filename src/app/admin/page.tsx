@@ -455,8 +455,8 @@ export default function AdminStudentsPanel() {
                   <input
                     type="password"
                     required
-                    placeholder="Mínimo 12 caracteres"
-                    minLength={12}
+                    placeholder="Mínimo 8 caracteres"
+                    minLength={8}
                     value={formCedula}
                     onChange={(e) => setFormCedula(e.target.value)}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue font-mono"
