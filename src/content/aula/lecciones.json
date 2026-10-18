@@ -93,7 +93,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "En esta práctica, consultará los datos maestros de un artículo utilizando el código A00001. Verificará su descripción, precio de venta, costo, bodega predeterminada y tasa de IVA aplicable. Esto es fundamental para asegurar que la información del producto esté correcta antes de usarla en transacciones de ventas o compras. Tener datos maestros precisos evita errores en cotizaciones, facturas y valoración de inventario, garantizando confiabilidad en los reportes operativos y financieros.",
+        "script_text": "En esta práctica abrimos la ficha maestra del artículo A00001, la Laptop Dell Latitude, que ya existe en tu empresa B1 Center. Fíjate cómo SAP Business One organiza los datos: el precio de venta es 850 dólares y el costo de compra es 650 dólares. Esta diferencia de 200 dólares representa el margen comercial de tu empresa. La bodega predeterminada es la 01 de Quito y el IVA es del 15 por ciento. Al consultar este maestro entiendes que las cotizaciones y facturas no se llenan a mano: el ERP toma estos datos maestros automáticamente para evitar errores humanos. Revisa la información cargada en pantalla y pulsa Confirmar consulta para avanzar.",
         "step_guide": {
           "action_type": "practica",
           "title": "Consultar artículo en stock",

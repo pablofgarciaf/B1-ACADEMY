@@ -12,7 +12,7 @@ import { getCompany } from '@/lib/firestore-company';
 import { EMPRESA_CURSO } from '@/lib/b1-center-datos';
 
 export interface CampoPractica { etiqueta: string; valor: string; pista?: string }
-export interface GuiaPractica { title: string; menu_path?: string; missionId?: string; instructions?: string[]; campos?: CampoPractica[] }
+export interface GuiaPractica { title: string; menu_path?: string; missionId?: string; instructions?: string[]; campos?: CampoPractica[]; action_type?: string; }
 
 /** Menú principal de Finix ERP (cliente de escritorio, español). */
 const MODULOS_FINIX = [
@@ -109,16 +109,33 @@ function opcionesCampo(c: CampoPractica): Opcion[] | null {
 
 type Estado = { tono: 'info' | 'error' | 'exito'; texto: string };
 
+function esModoConsulta(guia: GuiaPractica) {
+  const titulo = plano(guia.title || '');
+  if (/^(crear|registrar|ingresar|agregar|alta|emitir|procesar|convertir|importar|editar|actualizar|definir|asignar|ajustar)\b/.test(titulo)) {
+    return false;
+  }
+  if (/^(consultar|verificar|revisar|confirmar|comprobar|conocer|inspeccionar|ver)\b/.test(titulo) ||
+      /consulta|detalle|vista|informe/i.test(titulo) ||
+      guia.action_type === 'consulta') {
+    return true;
+  }
+  return false;
+}
+
 export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void }) {
   const ruta = useMemo(() => rutaFinix(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
   const porMenuSuperior = ruta[0] === 'Herramientas';
   const campos = useMemo(() => guia.campos ?? [], [guia.campos]);
+  const esConsulta = useMemo(() => esModoConsulta(guia), [guia]);
   const [nivel, setNivel] = useState(0);
   const [moduloAbierto, setModuloAbierto] = useState<string | null>(null);
+  const ventanaRef = useRef<HTMLDivElement>(null);
+  const [menuMovilColapsado, setMenuMovilColapsado] = useState(false);
 
-  // Las fichas usan credenciales ficticias; nunca solicitar ni copiar las de la cuenta real.
+  // En consultas los datos ya vienen precargados desde la BD de B1 Center (OITM, OCRD, etc.)
   const [valores, setValores] = useState<string[]>(() => {
     return campos.map((c) => {
+      if (esConsulta) return c.valor;
       const et = plano(c.etiqueta);
       if (et.includes('usuario') || et.includes('user')) return 'alumno@ejemplo.test';
       if (et.includes('contra') || et.includes('clave') || et.includes('pass')) return 'ClaveSoloDePractica2026!';
@@ -150,6 +167,17 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [estado, setEstado] = useState<Estado>({ tono: 'info', texto: 'Listo. Abre la ventana desde el Menú principal o confirma los datos prellenos.' });
 
   const ventanaAbierta = ruta.length === 0 || nivel >= ruta.length;
+
+  // Auto-scroll suave hacia la ventana al abrirse en móvil/escritorio
+  useEffect(() => {
+    if (ventanaAbierta && ventanaRef.current) {
+      setMenuMovilColapsado(true);
+      const timer = setTimeout(() => {
+        ventanaRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [ventanaAbierta]);
   const modulos = useMemo(() => {
     const raiz = ruta[0];
     if (!raiz || porMenuSuperior || MODULOS_FINIX.some((m) => normalizar(m) === normalizar(raiz))) return MODULOS_FINIX;
@@ -210,12 +238,17 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       const op = ruta[nivel];
       return { clave: `menu-${nivel}`, texto: nivel === 0 && porMenuSuperior ? `Abre el menú "${op}"` : `Haz clic en "${op}"` };
     }
+    if (esConsulta) {
+      const mal = revisado ? revisado.findIndex((r) => r === false) : -1;
+      if (mal >= 0) return { clave: `campo-${mal}`, texto: `Verifica "${campos[mal].etiqueta}"` };
+      return { clave: 'anadir', texto: 'Verifica los datos y pulsa Confirmar consulta' };
+    }
     const mal = revisado ? revisado.findIndex((r) => r === false) : -1;
     if (mal >= 0) return { clave: `campo-${mal}`, texto: `Corrige "${campos[mal].etiqueta}"` };
     const vacio = campos.findIndex((c, i) => !esBooleano(c.valor) && !valores[i].trim());
     if (vacio >= 0) return { clave: `campo-${vacio}`, texto: `Llena "${campos[vacio].etiqueta}"` };
     return { clave: 'anadir', texto: '¡Todo listo! Pulsa Añadir' };
-  }, [logrado, ventanaAbierta, ruta, nivel, porMenuSuperior, revisado, campos, valores]);
+  }, [logrado, ventanaAbierta, ruta, nivel, porMenuSuperior, revisado, esConsulta, campos, valores]);
 
   const [posGuia, setPosGuia] = useState<{ x: number; y: number; izquierda: boolean } | null>(null);
   useLayoutEffect(() => {
@@ -312,7 +345,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
       {/* Cuerpo principal de Finix ERP */}
       <div className="flex flex-col md:flex-row min-h-[380px]">
         {/* Árbol del Menú principal */}
-        <nav className="w-full md:w-56 shrink-0 bg-[#e4eaf2] border-b md:border-b-0 md:border-r border-[#abb8c7] p-2 overflow-y-auto max-h-[420px]">
+        <nav className={`w-full md:w-56 shrink-0 bg-[#e4eaf2] border-b md:border-b-0 md:border-r border-[#abb8c7] p-2 overflow-y-auto max-h-[420px] ${menuMovilColapsado && ventanaAbierta ? 'hidden md:block' : 'block'}`}>
           <p className="font-semibold text-[#1d2d3e] mb-1 pb-1 border-b border-[#b5c2d1]">Menú principal</p>
           <ul className="space-y-0.5">
             {modulos.map((m) => {
@@ -357,7 +390,22 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
         </nav>
 
       {/* Escritorio de trabajo */}
-        <div className="flex-1 bg-[#d5dce5] p-3 sm:p-5 space-y-3 relative overflow-hidden flex flex-col min-h-[360px]">
+        <div className="flex-1 bg-[#d5dce5] p-2 sm:p-4 space-y-3 relative overflow-hidden flex flex-col min-h-[360px]">
+          {ventanaAbierta && (
+            <div className="md:hidden flex items-center justify-between bg-[#dfe7f1] px-2.5 py-1.5 rounded border border-[#abb8c7] text-[11px] mb-2">
+              <span className="font-bold text-[#003366] flex items-center gap-1.5 truncate">
+                <span className="w-2 h-2 rounded-full bg-[#0055A5]" />
+                {tituloVentana}
+              </span>
+              <button
+                type="button"
+                onClick={() => setMenuMovilColapsado(!menuMovilColapsado)}
+                className="px-2 py-0.5 rounded bg-white border border-[#9fb1c7] text-[10px] font-bold text-[#1d2d3e] shadow-xs active:scale-95 cursor-pointer"
+              >
+                {menuMovilColapsado ? '📁 Ver menú' : '📄 Ver ventana'}
+              </button>
+            </div>
+          )}
           {!ventanaAbierta ? (
             <div className="h-full min-h-[200px] flex items-center justify-center">
               <p className="max-w-sm text-center text-[#4a5b70] bg-white/70 rounded-md border border-[#b8c4d2] px-4 py-3">
@@ -381,7 +429,46 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
               </button>
             </div>
           ) : (
-            <div className={`rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl transition-all duration-100 ${ventanaMaximizada ? 'absolute inset-2 z-30 max-w-none m-0 border-2 border-[#0055A5] flex flex-col h-[calc(100%-16px)]' : 'max-w-3xl'}`}>
+            <div ref={ventanaRef} className={`rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl transition-all duration-100 ${ventanaMaximizada ? 'absolute inset-2 z-30 max-w-none m-0 border-2 border-[#0055A5] flex flex-col h-[calc(100%-16px)]' : 'max-w-3xl'}`}>
+              {/* Banner pedagógico explicativo: El Por Qué y Para Qué */}
+              <div className="mx-3 sm:mx-4 mt-3 p-2.5 rounded border border-[#b8c9dc] bg-[#eaf1f8] text-[11px] text-[#1e3a5f] leading-snug">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="font-bold flex items-center gap-1.5 text-[#003366]">
+                    <span>{esConsulta ? '🔍' : '📝'}</span>
+                    <span>{esConsulta ? 'Consulta de Ficha Maestra en SAP Business One' : 'Registro de Datos en SAP Business One'}</span>
+                  </span>
+                  {esConsulta ? (
+                    <span className="text-[10px] bg-emerald-600 text-white font-bold px-2 py-0.5 rounded shadow-xs">
+                      ✓ Datos de B1 Center precargados
+                    </span>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setValores(campos.map(c => c.valor));
+                        setRevisado(null);
+                        setEstado({ tono: 'info', texto: 'Datos de prueba cargados automáticamente.' });
+                      }}
+                      className="text-[10px] bg-[#0055A5] hover:bg-[#003366] text-white font-bold px-2 py-0.5 rounded transition-all active:scale-95 shadow-sm flex items-center gap-1"
+                    >
+                      <span>🪄</span> Autocompletar
+                    </button>
+                  )}
+                </div>
+                <p className="text-[#33557a] text-[10.5px] mb-1.5">
+                  {esConsulta
+                    ? 'En SAP Business One, al consultar un artículo (OITM) o socio existente, la ficha se abre con sus datos ya registrados. Observa cómo se relacionan el precio de venta ($850.00) con el costo de adquisición ($650.00) para calcular tu margen, y la bodega asignada.'
+                    : 'Usa los siguientes valores requeridos por la práctica para registrar la transacción:'
+                  }
+                </p>
+                <div className="flex flex-wrap gap-1.5 text-[10px]">
+                  {campos.map((c, i) => (
+                    <span key={i} className="px-1.5 py-0.5 rounded bg-white/90 border border-[#c5d5e6] text-gray-800 shadow-xs">
+                      <strong className="text-[#0055A5]">{c.etiqueta}:</strong> {c.valor}
+                    </span>
+                  ))}
+                </div>
+              </div>
               {/* Barra de título de la ventana */}
               <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold select-none shrink-0">
                 <span className="flex items-center gap-1.5 text-xs text-[#003366] font-bold">
@@ -465,6 +552,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                           id={`campo-${i}`}
                           data-guia={`campo-${i}`}
                           value={valores[i]}
+                          placeholder={c.valor}
                           disabled={logrado}
                           autoComplete="off"
                           onChange={(e) => {
@@ -500,10 +588,26 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
                     data-guia="anadir"
                     onClick={validar}
                     disabled={logrado}
-                    className="min-w-[80px] h-6 px-3 rounded-[3px] border border-[#c48a00] bg-gradient-to-b from-[#ffd25a] to-[#f0ab00] font-bold text-[#1d2d3e] shadow-sm hover:brightness-105 active:scale-95 disabled:opacity-60 cursor-pointer"
+                    className="min-w-[120px] h-7 px-3.5 rounded-[3px] border border-[#c48a00] bg-gradient-to-b from-[#ffd25a] to-[#f0ab00] font-bold text-[#1d2d3e] shadow-sm hover:brightness-105 active:scale-95 disabled:opacity-60 cursor-pointer flex items-center justify-center gap-1.5"
                   >
-                    Añadir
+                    <span>✓</span>
+                    <span>{esConsulta ? 'Confirmar consulta (OK)' : 'Añadir al sistema'}</span>
                   </button>
+                  {!esConsulta && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setValores(campos.map(c => c.valor));
+                        setRevisado(null);
+                        setEstado({ tono: 'info', texto: 'Datos cargados automáticamente. Pulsa Añadir para registrar.' });
+                      }}
+                      className="h-7 px-2.5 rounded-[3px] border border-blue-400 bg-blue-50 text-blue-800 text-[11px] font-semibold hover:bg-blue-100 active:scale-95 cursor-pointer flex items-center gap-1"
+                      title="Cargar datos de prueba del ejercicio"
+                    >
+                      <span>🪄</span>
+                      <span className="hidden xs:inline">Autocompletar</span>
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={() => { setValores(campos.map(() => '')); setRevisado(null); setEstado({ tono: 'info', texto: 'Cambios descartados.' }); }}
