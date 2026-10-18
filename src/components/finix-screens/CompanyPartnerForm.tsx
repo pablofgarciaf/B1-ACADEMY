@@ -1,13 +1,34 @@
 'use client';
+import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { CommandData } from '@/lib/company-commands';
-import { MasterForm, type FieldDefinition } from './FinixControls';
+import { MasterForm, Field, inputClass, buttonClass, type FieldDefinition } from './FinixControls';
 
 export default function CompanyPartnerForm({ vendor = false }: { vendor?: boolean }) {
   const c = useCompany();
-  const initial: CommandData<'customer'> & { rimpe: 'ninguno' | 'emprendedor' | 'popular' } = { rimpe: 'ninguno', name: 'NovaTech', ruc: '1792456789001', email: 'contacto@novatech.ec', phone: '022345678', address: 'Av. Solano y 10 de Agosto', city: 'Cuenca', contactName: 'Ing. Carlos Pérez', currency: 'USD', paymentTermsDays: 30, creditLimit: 5000, active: true, group: 'Nacional', notes: '', kind: 'customer' };
+  const privateCompany = c.data.profile?.usage === 'private';
+  const [customerCode, setCustomerCode] = useState('');
+  const [vendorCode, setVendorCode] = useState('');
+  const initial: CommandData<'customer'> & { rimpe: 'ninguno' | 'emprendedor' | 'popular'; cardCode: string } = { cardCode: '', rimpe: 'ninguno', name: privateCompany ? '' : 'NovaTech', ruc: privateCompany ? '' : '1792456789001', email: privateCompany ? '' : 'contacto@novatech.ec', phone: privateCompany ? '' : '022345678', address: privateCompany ? '' : 'Av. Solano y 10 de Agosto', city: privateCompany ? '' : 'Cuenca', contactName: privateCompany ? '' : 'Ing. Carlos Pérez', currency: 'USD', paymentTermsDays: 30, creditLimit: privateCompany ? 0 : 5000, active: true, group: 'Nacional', notes: '', kind: 'customer' };
   const fields: FieldDefinition<typeof initial>[] = [
-    { key: 'name', label: 'Razón social', required: true }, { key: 'ruc', label: 'RUC / Cédula ficticia', required: false }, { key: 'kind', label: 'Tipo', kind: 'select', options: [{ value: 'customer', label: 'Cliente' }, { value: 'lead', label: 'Lead' }] }, { key: 'email', label: 'Correo', kind: 'email' }, { key: 'phone', label: 'Teléfono' }, { key: 'contactName', label: 'Contacto' }, { key: 'address', label: 'Dirección' }, { key: 'city', label: 'Ciudad' }, { key: 'paymentTermsDays', label: 'Plazo de pago (días)', kind: 'number' }, { key: 'creditLimit', label: 'Límite crédito USD', kind: 'number' }, { key: 'group', label: 'Grupo' }, { key: 'rimpe', label: 'Régimen del proveedor', kind: 'select', options: [{ value: 'ninguno', label: 'Régimen general' }, { value: 'emprendedor', label: 'RIMPE Emprendedor (retención de renta 1 %)' }, { value: 'popular', label: 'RIMPE Negocio Popular (nota de venta, sin IVA ni retención)' }] }, { key: 'active', label: 'Activo', kind: 'checkbox' }, { key: 'notes', label: 'Observaciones', kind: 'textarea' },
+    { key: 'name', label: 'Razón social', required: true }, { key: 'ruc', label: privateCompany ? 'RUC / Cédula' : 'RUC / Cédula ficticia', required: true }, { key: 'kind', label: 'Tipo', kind: 'select', options: [{ value: 'customer', label: 'Cliente' }, { value: 'lead', label: 'Lead' }] }, { key: 'email', label: 'Correo', kind: 'email' }, { key: 'phone', label: 'Teléfono' }, { key: 'contactName', label: 'Contacto' }, { key: 'address', label: 'Dirección' }, { key: 'city', label: 'Ciudad' }, { key: 'paymentTermsDays', label: 'Plazo de pago (días)', kind: 'number' }, { key: 'creditLimit', label: 'Límite crédito USD', kind: 'number' }, { key: 'group', label: 'Grupo' }, { key: 'rimpe', label: 'Régimen del proveedor', kind: 'select', options: [{ value: 'ninguno', label: 'Régimen general' }, { value: 'emprendedor', label: 'RIMPE Emprendedor (retención de renta 1 %)' }, { value: 'popular', label: 'RIMPE Negocio Popular (nota de venta, sin IVA ni retención)' }] }, { key: 'active', label: 'Activo', kind: 'checkbox' }, { key: 'notes', label: 'Observaciones', kind: 'textarea' },
   ];
-  return <MasterForm title={vendor ? 'Proveedores · Empresa Ecuador' : 'Clientes y leads · Empresa Ecuador'} initial={initial} fields={fields.filter(f => vendor ? f.key !== 'kind' : f.key !== 'rimpe')} records={vendor ? c.data.vendors.map(v => ({ ...v, kind: 'customer' as const })) : c.data.customers.map(v => ({ ...v, rimpe: 'ninguno' as const }))} onSave={data => vendor ? c.save({ action: 'vendor', data }) : c.save({ action: 'customer', data })} />;
+  return <>
+    <MasterForm title={vendor ? 'Proveedores · Empresa Ecuador' : 'Clientes y leads · Empresa Ecuador'} initial={initial} fields={fields.filter(f => vendor ? f.key !== 'kind' : f.key !== 'rimpe')} records={vendor ? c.data.vendors.map(v => ({ ...v, kind: 'customer' as const })) : c.data.customers.map(v => ({ ...v, rimpe: 'ninguno' as const }))} onSave={data => {
+      if (!data.cardCode) return vendor ? c.save({ action: 'vendor', data }) : c.save({ action: 'customer', data });
+      const { name, ruc, email, phone, address, city, contactName, paymentTermsDays, creditLimit, active, group, notes } = data;
+      return c.save({ action: 'partnerUpdate', data: { partnerType: vendor ? 'vendor' : 'customer', cardCode: data.cardCode,
+        changes: { name, ruc, email, phone, address, city, contactName, paymentTermsDays, creditLimit, active, group, notes,
+          ...(vendor ? { rimpe: data.rimpe } : { kind: data.kind }) } } });
+    }} />
+    <form className="space-y-2 border border-[#999] bg-white p-3" onSubmit={async e => { e.preventDefault(); try { await c.save({ action: 'partnerLink', data: { customerCode, vendorCode } }); } catch { /* error visible en el proveedor */ } }}>
+      <h3 className="font-bold">Vincular fichas de cliente y proveedor</h3>
+      <p>Úsalo cuando una misma empresa compra y vende contigo. Ambas fichas deben tener la misma identificación; sus saldos se mantienen separados.</p>
+      <div className="grid gap-2 sm:grid-cols-2">
+        <Field label="Cliente"><select required className={inputClass} value={customerCode} onChange={e => { setCustomerCode(e.target.value); setVendorCode(''); }}><option value="">Selecciona un cliente</option>{c.data.customers.filter(p => p.active).map(p => <option key={p.id} value={p.cardCode}>{p.cardCode} · {p.name}</option>)}</select></Field>
+        <Field label="Proveedor con la misma identificación"><select required className={inputClass} value={vendorCode} onChange={e => setVendorCode(e.target.value)}><option value="">Selecciona un proveedor</option>{c.data.vendors.filter(p => p.active && p.ruc === c.data.customers.find(customer => customer.cardCode === customerCode)?.ruc).map(p => <option key={p.id} value={p.cardCode}>{p.cardCode} · {p.name}</option>)}</select></Field>
+      </div>
+      <button className={buttonClass} disabled={c.saving || !customerCode || !vendorCode}>Guardar vínculo</button>
+    </form>
+  </>;
 }

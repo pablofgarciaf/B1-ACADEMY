@@ -260,35 +260,30 @@
       },
       {
         "slide_index": 10,
-        "script_text": "Ahora creas tu propio cockpit, el tablero que verás cada vez que entres a Finix ERP. En la ventana Gestión de Cockpit le das un nombre, una descripción y lo marcas como predeterminado. Después podrás agregarle widgets, como el de funciones comunes o el de procesos de venta, arrastrándolos desde la galería. Abre la ventana desde el menú Herramientas y registra los datos de la ficha del ejercicio.",
+        "script_text": "Crea una plantilla de cockpit llamada Mi Cockpit Ventas. En la pantalla Cockpit pulsa Nueva plantilla, escribe su nombre y créala. Selecciónala y usa Asignar y guardar para dejarla activa. Los widgets se añaden con los controles de la pantalla. Este ejercicio comprueba el nombre y la plantilla activa guardada en tu empresa.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear tu propio cockpit",
           "menu_path": "Herramientas > Cockpit > Gestión de Cockpit",
           "instructions": [
-            "Abre Herramientas › Cockpit › Gestión de Cockpit",
-            "Escribe el nombre y la descripción de tu cockpit",
-            "Marca la casilla para que sea tu cockpit predeterminado",
-            "Pulsa Añadir"
+            "Pulsa Nueva plantilla en la pantalla Cockpit.",
+            "Escribe Mi Cockpit Ventas y crea la plantilla.",
+            "Selecciona esa plantilla y pulsa Asignar y guardar."
           ],
           "campos": [
             {
               "etiqueta": "Nombre del cockpit",
               "valor": "Mi Cockpit Ventas",
-              "pista": "El nombre con el que lo verás en tu escritorio"
-            },
-            {
-              "etiqueta": "Descripción",
-              "valor": "Cockpit del área de ventas",
-              "pista": "Para qué lo usarás"
+              "pista": "Nombre de la plantilla que debes crear"
             },
             {
               "etiqueta": "Cockpit predeterminado",
               "valor": "Sí",
-              "pista": "Se abrirá al iniciar sesión"
+              "pista": "La plantilla debe quedar activa tras guardar"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 11,
@@ -343,94 +338,84 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Vas a crear un nuevo cliente en Finix ERP para practicar el ingreso de datos maestros. Este registro será la base para generar documentos de venta como cotizaciones y facturas. Ingresarás los datos básicos: código, nombre, ciudad, condición de pago y lista de precios.",
+        "script_text": "Crea el cliente ficticio NovaTech con el RUC de práctica 1792456789001, ciudad Cuenca y plazo de pago de treinta días. El sistema asigna automáticamente su código: no escribas un número fijo. La lista de precios se configura después en Listas de precios, no en esta ficha.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear nuevo cliente",
           "menu_path": "Interlocutores comerciales > Datos maestros interlocutor comercial",
           "instructions": [
-            "Haz clic en el botón 'Agregar'",
-            "Ingresa el código C20005 y nombre 'NovaTech'",
-            "Selecciona la ciudad Cuenca",
-            "Define la condición de pago en 30 días",
-            "Asigna la Lista de precios 1"
+            "Abre un registro nuevo de cliente.",
+            "Escribe NovaTech y el RUC ficticio 1792456789001.",
+            "Selecciona Cuenca y plazo de pago de 30 días.",
+            "Guarda y anota el código que el sistema asigna."
           ],
           "campos": [
             {
-              "etiqueta": "Código",
-              "valor": "C20005",
-              "pista": "Identificador único del cliente"
-            },
-            {
               "etiqueta": "Nombre",
               "valor": "NovaTech",
-              "pista": "Nombre completo del cliente"
+              "pista": "Razón social del cliente ficticio"
+            },
+            {
+              "etiqueta": "RUC",
+              "valor": "1792456789001",
+              "pista": "Identificación exclusivamente de práctica"
             },
             {
               "etiqueta": "Ciudad",
               "valor": "Cuenca",
-              "pista": "Ubicación del cliente"
+              "pista": "Ciudad del cliente"
             },
             {
               "etiqueta": "Condición de pago",
               "valor": "30 días",
-              "pista": "Plazo para pagar la factura"
-            },
-            {
-              "etiqueta": "Lista de precios",
-              "valor": "Lista 1",
-              "pista": "Precios aplicables al cliente"
+              "pista": "Plazo para el vencimiento de sus documentos"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 6,
-        "script_text": "Vas a crear un nuevo artículo en el módulo de inventario para entender cómo se registran los datos maestros de productos. Este artículo será usado posteriormente en documentos de compra y venta. Definirás su código, descripción, costo, precio de venta, impuesto y bodega de almacenamiento predeterminada.",
+        "script_text": "Crea el artículo Teclado Inalámbrico Genérico con precio de compra de veinte dólares y precio de lista uno de treinta y cinco dólares. Usa tipo Inventariado y costeo promedio ponderado. El código se genera automáticamente. El IVA y el almacén se eligen en cada documento de compra o venta; esta ficha no tiene casillas de impuesto o bodega por defecto.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear nuevo artículo",
           "menu_path": "Inventario > Datos maestros de artículo",
           "instructions": [
-            "Haz clic en el botón 'Agregar'",
-            "Ingresa el código A00013 y nombre 'Teclado Inalámbrico Genérico'",
-            "Establece el costo en 20.00 y precio en 35.00",
-            "Selecciona IVA 15% como impuesto",
-            "Asigna la bodega 01 como predeterminada"
+            "Abre un artículo nuevo y escribe Teclado Inalámbrico Genérico.",
+            "Selecciona tipo Inventariado.",
+            "En Compras indica precio de compra 20.00; en Ventas indica precio de lista 1 de 35.00.",
+            "En Inventario selecciona Promedio y guarda el artículo."
           ],
           "campos": [
             {
-              "etiqueta": "Código",
-              "valor": "A00013",
-              "pista": "Identificador único del artículo"
-            },
-            {
               "etiqueta": "Descripción",
               "valor": "Teclado Inalámbrico Genérico",
-              "pista": "Nombre detallado del producto"
+              "pista": "Nombre del producto"
             },
             {
               "etiqueta": "Costo",
               "valor": "20.00",
-              "pista": "Valor de adquisición del artículo"
+              "pista": "Precio de compra"
             },
             {
               "etiqueta": "Precio de venta",
               "valor": "35.00",
-              "pista": "Precio al que se vende al cliente"
+              "pista": "Precio de lista 1"
             },
             {
-              "etiqueta": "Impuesto de venta",
-              "valor": "IVA 15%",
-              "pista": "Tasa de IVA aplicable en ventas"
+              "etiqueta": "Tipo de artículo",
+              "valor": "Material",
+              "pista": "Tipo Inventariado en la pantalla"
             },
             {
-              "etiqueta": "Bodega por defecto",
-              "valor": "01",
-              "pista": "Bodega donde se almacena el artículo"
+              "etiqueta": "Método de valoración",
+              "valor": "Promedio ponderado",
+              "pista": "Selecciona Promedio"
             }
           ]
-        }
+        },
+        "presentation": "text"
       },
       {
         "slide_index": 7,

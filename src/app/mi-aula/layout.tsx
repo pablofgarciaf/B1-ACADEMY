@@ -35,6 +35,6 @@ export default async function MiAulaLayout({
   const sesion = await getSessionState();
   if (sesion.estado === 'sin-sesion') redirect('/login?next=/mi-aula');
   if (sesion.estado === 'no-disponible') return <SesionNoDisponible destino="/mi-aula" />;
-  if(sesion.estado==='ok' && (requiresPasswordChange(sesion.user.profile))) redirect('/change-password');
+  if (sesion.estado === 'ok' && requiresPasswordChange(sesion.user.profile)) redirect('/change-password');
   return <>{children}</>;
 }

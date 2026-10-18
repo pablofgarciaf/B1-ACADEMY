@@ -1,10 +1,14 @@
 import { z } from 'zod';
 import { code, date, text, money, lineSchema, salesTypes, purchaseTypes, customerSchema, vendorSchema, itemSchema, employeeSchema, journalLineSchema, sriInputSchema, bomInputSchema, payrollInputLine, costMethods } from './firestore-types';
+import { openingBalancesSchema } from './opening-balances-schema';
+import { partnerCommands } from './partner-commands';
 
 const omitBase = { id: true, createdAt: true, updatedAt: true, createdBy: true } as const;
 const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con formato AAAA-MM.');
 const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
+  ...partnerCommands,
+  z.object({ action:z.literal('openingBalances'), data:openingBalancesSchema }),
   z.object({action:z.literal('initializeTraining'),data:z.object({companyName:text.min(2).optional()})}),
   z.object({ action: z.literal('access'), data: z.object({}) }),
   z.object({ action: z.literal('profitShare'), data: z.object({ year: z.number().int().min(2020).max(2100), date, profit: money.optional() }) }),
@@ -14,8 +18,8 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('initialize'), data: z.object({ companyName: text.min(2) }) }),
   z.object({ action: z.literal('sales'), data: z.object({ docType: z.enum(salesTypes), document: documentInput }) }),
   z.object({ action: z.literal('purchase'), data: z.object({ docType: z.enum(purchaseTypes), document: documentInput }) }),
-  z.object({ action: z.literal('customer'), data: customerSchema.omit({ ...omitBase, cardCode: true, balance: true }) }),
-  z.object({ action: z.literal('vendor'), data: vendorSchema.omit({ ...omitBase, cardCode: true, balance: true }) }),
+  z.object({ action: z.literal('customer'), data: customerSchema.omit({ ...omitBase, cardCode: true, balance: true, linkedVendorCode:true }) }),
+  z.object({ action: z.literal('vendor'), data: vendorSchema.omit({ ...omitBase, cardCode: true, balance: true, linkedCustomerCode:true }) }),
   z.object({ action: z.literal('item'), data: itemSchema.omit({ ...omitBase, itemCode: true }).refine(v => v.maxStock >= v.minStock, 'Máximo menor al mínimo.') }),
   z.object({ action: z.literal('employee'), data: employeeSchema.omit({ ...omitBase, employeeCode: true }) }),
   z.object({ action: z.literal('journal'), data: z.object({ date, dueDate: date, memo: text.min(1), reference: text, lines: z.array(journalLineSchema).min(2).max(100) }) }),

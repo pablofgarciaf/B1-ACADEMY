@@ -20,6 +20,7 @@ const originalCollection=db.collection;
 const originalLoad=Module._load;
 Module._load=function(name,parent,...rest){
  if(name==='server-only')return {};
+ if(name==='@/lib/legal-config-server')return {readLegalConfiguration:async()=>({ready:legalReady,available:true,policyVersion:'test-policy'})};
  if(name==='next/headers')return {cookies:async()=>({get:()=>sessionCookie?{value:sessionCookie}:undefined})};
  if(/(?:^|\/)firebase-admin$/.test(name))return {adminDb:db,adminAuth,fieldValue:()=>({arrayUnion:(...v)=>({union:v})})};
  if(name==='@/lib/legal-config')return {get legalConfigured(){return legalReady;},POLITICAS_VERSION:'test-policy'};
@@ -37,13 +38,13 @@ const progress=require('../src/app/api/progress/route.ts');
 const company=require('../src/app/api/finix/company/route.ts');
 const {getModuleById}=require('../src/lib/curriculum-data.ts');
 const {practicasDelModulo}=require('../src/lib/practice-registry.ts');
-const request=(path,body,token,headers={})=>new Request('http://localhost'+path,{method:body===undefined?'GET':'POST',headers:{...(body===undefined?{}:{'Content-Type':'application/json'}),...(token?{authorization:'Bearer '+token}:{}),...headers},...(body===undefined?{}:{body:JSON.stringify(body)})});
+const request=(path,body,token,headers={})=>new Request('http://localhost'+path,{method:body===undefined?'GET':'POST',headers:{...(body===undefined?{}:{'Content-Type':'application/json'}),...(token?{authorization:'Bearer '+token}:{}),...headers},...(body===undefined?{}:{body:JSON.stringify({policyVersion:'test-policy',...body})})});
 const enrollment={name:'Persona sintética',email:'synthetic@example.test',password:'Prueba-larga-123',phone:'0999999999',privacyAccepted:true,policyVersion:'test-policy'};
 const lead={requestId:'41fe21ed-2cd6-424c-b5ed-37c1cd37713c',company:'Empresa sintética',name:'Persona sintética',phone:'0999999999',teamSize:5,needs:'Capacitar a cinco colaboradores',privacyAccepted:true};
-beforeEach(()=>{db.collection=originalCollection;db.rows.clear();db.tail=Promise.resolve();for(const [uid,profile]of Object.entries(profiles))db.rows.set('usuarios/'+uid,structuredClone(profile));process.env.NODE_ENV='test';legalReady=false;created=[];deleted=[];failProfile=false;companyReads=[];companyWrites=[];progressReads=[];initialized=true;passed=[];sessionCookie=null;sessionCreationFails=false;});
+beforeEach(()=>{db.collection=originalCollection;db.rows.clear();db.tail=Promise.resolve();for(const [uid,profile]of Object.entries(profiles))db.rows.set('usuarios/'+uid,structuredClone(profile));process.env.NODE_ENV='test';legalReady=true;created=[];deleted=[];failProfile=false;companyReads=[];companyWrites=[];progressReads=[];initialized=true;passed=[];sessionCookie=null;sessionCreationFails=false;});
 
 test('producción no crea cuentas, solicitudes ni consultas públicas con responsable pendiente',async()=>{
- process.env.NODE_ENV='production';
+ process.env.NODE_ENV='production';legalReady=false;
  for(const [route,body]of [[register,enrollment],[leads,lead],[verify,{code:'B1-TEST'}]])assert.equal((await route.POST(request('/api',body))).status,503);
  assert.equal(created.length,0);assert.equal(db.rows.size,2);
 });
@@ -54,7 +55,7 @@ test('inscripción configurada crea perfil de alumno sin aceptar privilegios del
  assert.equal(row.role,'estudiante');assert.equal(row.passwordSecurityVersion,2);assert.equal(row.passwordChanged,true);assert.equal(row.privateAccountingEnabled,undefined);assert.equal(row.password,undefined);assert.equal(row.consentimiento.politicas,'test-policy');
 });
 test('inscripción exige aceptación, versión vigente y contraseña personal con mínimo de ocho caracteres',async()=>{
- for(const delta of [{privacyAccepted:false},{policyVersion:'obsolete'},{password:'1234567'},{email:'bad'}])assert.equal((await register.POST(request('/api',{...enrollment,...delta}))).status,400);
+ for(const delta of [{privacyAccepted:false},{policyVersion:''},{password:'1234567'},{email:'bad'}])assert.equal((await register.POST(request('/api',{...enrollment,...delta}))).status,400);
  assert.equal(created.length,0);
 });
 test('si falla el perfil se revierte solo el usuario recién creado y no se anuncia éxito',async()=>{

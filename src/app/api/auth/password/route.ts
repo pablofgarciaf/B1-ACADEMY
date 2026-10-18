@@ -21,8 +21,6 @@ export async function POST(request: Request) {
     const user = await authenticateIdToken(token);
     const decoded=await adminAuth.verifyIdToken(token,true);
     if(Date.now()/1000-Number(decoded.auth_time||0)>300)return NextResponse.json({error:'Tu sesión para cambiar la contraseña caducó. Inicia sesión otra vez.',code:'REAUTH_REQUIRED'},{status:401});
-    const access=await passwordAccess(user,token);
-    if(access.recoveryRequired)return NextResponse.json({error:'Esta cuenta requiere recuperar la contraseña por correo. Usa Enviar enlace; después podrás entrar directamente.',code:'RECOVERY_REQUIRED'},{status:403});
     const parsed = z.object({ password: z.string().min(8).max(128) }).safeParse(await request.json());
     if (!parsed.success || parsed.data.password === user.profile.cedula) return NextResponse.json({ error: 'Usa una contraseña personal de al menos 8 caracteres, distinta de tu cédula.' }, { status: 400 });
     const quota = await consumeQuota('password-change', user.uid, 5, 3600_000);

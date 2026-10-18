@@ -50,7 +50,7 @@ export async function GET(request: Request) {
     const practiceSnap = await adminDb.collection('practice_records').where('uid','==',uid).get();
     for (const doc of practiceSnap.docs) {
       const data=doc.data();
-      if (!data.moduleId || !data.aprobada || data.validationVersion!==2) continue;
+      if (!data.moduleId || !data.aprobada || !(data.validationVersion>=requiredPracticeValidationVersion(String(data.practiceKey)))) continue;
       const record=progress[data.moduleId] ||= {completedClasses:[],passedPractices:[]};
       if (!record.passedPractices.includes(data.practiceKey)) record.passedPractices.push(data.practiceKey);
     }
@@ -90,3 +90,4 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: 'Error del servidor' }, { status: 500 });
   }
 }
+import { requiredPracticeValidationVersion } from '@/lib/strict-practice-keys';

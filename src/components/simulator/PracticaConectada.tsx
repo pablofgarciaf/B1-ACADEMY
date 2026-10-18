@@ -110,7 +110,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
       {logrado && (
         <div className="mx-3 mt-2 rounded-sm bg-emerald-50 border border-emerald-400 p-2 text-emerald-800 font-bold flex items-center gap-1.5">
           <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
-          ¡Guardado en tu empresa! ({logrado}) Continuamos con la clase…
+          Operación guardada ({logrado}). Comprobando los datos de la práctica…
         </div>
       )}
 

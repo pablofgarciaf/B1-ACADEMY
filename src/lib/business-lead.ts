@@ -9,6 +9,7 @@ export const businessLeadSchema = z.object({
   teamSize: z.coerce.number().int().min(1).max(10000),
   needs: z.string().trim().min(10).max(2000),
   privacyAccepted: z.literal(true),
+  policyVersion: z.string().min(1).max(100),
   marketingConsent: z.boolean().default(false),
   website: z.string().max(0).optional(),
 }).refine(d => Boolean(d.email || d.phone), { message: 'Indica correo o teléfono.', path: ['email'] });

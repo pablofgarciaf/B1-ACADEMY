@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { trackConversion } from '@/lib/conversions';
-import { publicIntakeAvailable } from '@/lib/legal-config';
+import { useLegalConfiguration } from '@/lib/use-legal-configuration';
 
 export function BusinessLeadForm() {
+  const { publicIntakeAvailable, policyVersion } = useLegalConfiguration();
   const requestId = useRef('');
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState('');
@@ -19,7 +20,7 @@ export function BusinessLeadForm() {
     try {
       const response = await fetch('/api/business-leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
         requestId: requestId.current, company: form.get('company'), name: form.get('name'), email: form.get('email'), phone: form.get('phone'),
-        teamSize: form.get('teamSize'), needs: form.get('needs'), privacyAccepted: form.has('privacyAccepted'), marketingConsent: form.has('marketingConsent'), website: form.get('website'),
+        teamSize: form.get('teamSize'), needs: form.get('needs'), privacyAccepted: form.has('privacyAccepted'), policyVersion, marketingConsent: form.has('marketingConsent'), website: form.get('website'),
       }) });
       const data = await response.json();
       if (response.status===409) requestId.current='';
@@ -38,7 +39,7 @@ export function BusinessLeadForm() {
   return <section id="solicitud" className="mt-16 scroll-mt-24 rounded-3xl border border-sky-500/30 bg-white p-6 shadow-sm dark:bg-white/[0.03] sm:p-10">
     <h2 className="text-2xl font-bold">Solicita formación para tu equipo</h2>
     <p className="mt-3 text-slate-600 dark:text-slate-300">Cuéntanos qué procesos necesitas mejorar. Revisaremos tu solicitud para definir una propuesta de capacitación. Enviarla no tiene costo ni implica contratar.</p>
-    {result ? <div role="status" className="mt-6 rounded-xl border border-emerald-500/30 p-5"><h3 className="font-bold">Solicitud recibida</h3><p className="mt-2">Guardamos tu solicitud para revisión. Conserva esta referencia: <span className="font-mono">{result}</span>.</p><Link href="/capacitacion" className="mt-4 inline-block text-sky-500 underline">Explorar rutas mientras tanto</Link></div> : <form onSubmit={submit} className="mt-7 space-y-5">
+    {result ? <div role="status" className="mt-6 rounded-xl border border-emerald-500/30 p-5"><h3 className="font-bold">Solicitud recibida</h3><p className="mt-2">Guardamos tu solicitud para revisión. Conserva esta referencia: <span className="font-mono">{result}</span>.</p><Link href="/capacitacion" className="mt-4 inline-block text-sky-500 underline">Explorar rutas mientras tanto</Link></div> : <form key={policyVersion} onSubmit={submit} className="mt-7 space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="font-medium">Empresa<input name="company" required minLength={2} maxLength={120} autoComplete="organization" className={input} /></label>
         <label className="font-medium">Tu nombre<input name="name" required minLength={2} maxLength={100} autoComplete="name" className={input} /></label>

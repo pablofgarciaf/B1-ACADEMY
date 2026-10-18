@@ -9,8 +9,8 @@ const PAGINAS = [
   { href: '/cookies', label: 'Política de cookies' },
 ];
 
-export function LegalPage({ titulo, resumen, actual, children }: {
-  titulo: string; resumen: string[]; actual: string; children: React.ReactNode;
+export function LegalPage({ titulo, resumen, actual, children, policyVersion }: {
+  titulo: string; resumen: string[]; actual: string; children: React.ReactNode; policyVersion?: string;
 }) {
   return (
     <>
@@ -20,7 +20,7 @@ export function LegalPage({ titulo, resumen, actual, children }: {
           <p className="text-xs font-bold uppercase tracking-widest text-finix-blue">Información legal · {LEGAL.marca}</p>
           <h1 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">{titulo}</h1>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-            Versión {LEGAL.version} · Vigente desde el {LEGAL.vigenciaDesde} · Ley Orgánica de Protección de Datos Personales (Ecuador)
+            Versión {policyVersion || LEGAL.version} · Vigente desde el {LEGAL.vigenciaDesde} · Ley Orgánica de Protección de Datos Personales (Ecuador)
           </p>
 
           <aside aria-label="Resumen" className="mt-8 rounded-2xl border border-finix-blue/20 bg-white dark:bg-white/5 p-5 sm:p-6">

@@ -65,6 +65,11 @@ test('plataforma publicada: sesión, aislamiento, persistencia, auditoría y bar
     expectStatus(await command(a, 'initializeTraining', {}, 'privado'), 403, 'Siembra académica en privada denegada');
     expectStatus(await request(`/api/finix/company?uid=${a.uid}__privado`, b), 403, 'Privada ajena denegada');
     expectStatus(await request('/api/finix/company', b, undefined, 'privado'), 403, 'Permiso del otro propietario no se hereda');
+    const openingRequest=randomUUID();
+    const opening={version:1,reference:'QA-OPENING',date:'2022-12-31',accountFamily:'global',balances:[{accountCode:'1010101',debit:500,credit:0},{accountCode:'30101',debit:0,credit:500}],receivables:[],payables:[],inventory:[],banks:[],assets:[]};
+    expectStatus(await command(a,'openingBalances',opening,'privado',openingRequest),200,'Apertura privada atómica persistida');
+    expectStatus(await command(a,'openingBalances',opening,'privado',openingRequest),200,'Reintento de apertura no duplica saldo');
+    expectStatus(await command(a,'openingBalances',opening,'privado'),400,'Segunda apertura distinta rechazada');
     const sameRequest = randomUUID();
     const journal = { date: '2023-01-01', dueDate: '2023-01-01', memo: 'Apertura ficticia', reference: 'QA',
       lines: [{ accountCode: '1.1.01', debit: 100, credit: 0, description: '', costCenter: '' },
@@ -72,12 +77,23 @@ test('plataforma publicada: sesión, aislamiento, persistencia, auditoría y bar
     expectStatus(await command(a, 'journal', journal, 'privado', sameRequest), 200, 'Asiento privado persistido');
     expectStatus(await command(a, 'journal', journal, 'privado', sameRequest), 200, 'Reintento idempotente');
     const reread = await request('/api/finix/company', a, undefined, 'privado');
-    assert.equal(reread.data.journalEntries.length, 1, 'Sin asientos duplicados');
+    assert.equal(reread.data.journalEntries.length, 2, 'Apertura y asiento sin duplicados');
+    assert.equal(reread.data.profile.openingBalances.reference,'QA-OPENING');
     const audit = await request('/api/finix/company/audit?verify=1', a, undefined, 'privado');
     expectStatus(audit, 200, 'Verificación de trazabilidad real'); assert.equal(audit.data.valid, true); assert.ok(audit.data.checked >= 2);
     const practice = await request('/api/practice', a, { moduleId: 'mod-ventas', classId: 'mod-ventas-c1', slideIndex: 2,
       valores: ['respuesta inventada'], intentos: 1, vioSolucion: false, conectada: true });
     expectStatus(practice, 200, 'Práctica falsa evaluada'); assert.equal(practice.data.aprobada, false);
+    const customerRequest=randomUUID();
+    const customer=await command(a,'customer',{name:'NovaTech',ruc:'1792456789001',email:'',phone:'',address:'',city:'Quito',contactName:'',currency:'USD',paymentTermsDays:30,creditLimit:1000,active:true,group:'Nacional',notes:'',kind:'customer'},'curso',customerRequest);
+    expectStatus(customer,200,'Ficha de práctica persistida');
+    const grade=(requestId,action,result)=>request('/api/practice',a,{moduleId:'mod-1',classId:'mod1-c3',slideIndex:5,valores:['evidencia'],intentos:1,vioSolucion:false,evidence:{requestId,action,result}});
+    const wrongGrade=await grade(customerRequest,'customer',customer.data.result);expectStatus(wrongGrade,200,'Validación específica disponible');assert.equal(wrongGrade.data.aprobada,false,'Ciudad incorrecta no aprueba');
+    const correctionRequest=randomUUID();const corrected=await command(a,'partnerUpdate',{partnerType:'customer',cardCode:customer.data.result,changes:{city:'Cuenca'}},'curso',correctionRequest);
+    expectStatus(corrected,200,'Corrección de ficha sin duplicar');
+    const correctGrade=await grade(correctionRequest,'partnerUpdate',corrected.data.result);expectStatus(correctGrade,200,'Evidencia corregida evaluada');assert.equal(correctGrade.data.aprobada,true);
+    const protectedConfig=await request('/api/admin/legal',a);expectStatus(protectedConfig,403,'Alumno no administra identidad pública');
+    const publicConfig=await request('/api/public/legal');expectStatus(publicConfig,200,'Configuración pública disponible');assert.equal(publicConfig.data.updatedBy,undefined);
     expectStatus(await request('/api/progress', a, { moduleId: 'mod-ventas', classId: 'mod-ventas-c1' }), 403, 'Clase sin prácticas no se completa');
     expectStatus(await request('/api/oral-exam', a, { action: 'start', moduleId: 'mod-ventas' }), 403, 'Examen sin requisitos denegado');
     expectStatus(await request('/api/lesson-data?classId=mod1-c1', a), 200, 'Primera clase disponible tras preparar empresa');

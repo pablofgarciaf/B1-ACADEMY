@@ -11,6 +11,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const sesion = await getSessionState();
   if (sesion.estado === 'sin-sesion') redirect('/login?next=/dashboard');
   if (sesion.estado === 'no-disponible') return <SesionNoDisponible destino="/dashboard" />;
-  if(sesion.estado==='ok' && (requiresPasswordChange(sesion.user.profile))) redirect('/change-password');
+  if (sesion.estado === 'ok' && requiresPasswordChange(sesion.user.profile)) redirect('/change-password');
   return children;
 }

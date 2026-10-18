@@ -1,4 +1,4 @@
-import {legalConfigured, POLITICAS_VERSION} from '@/lib/legal-config';
+import { readLegalConfiguration } from '@/lib/legal-config-server';
 import { createHmac } from 'node:crypto';
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
@@ -12,6 +12,7 @@ const schema = z.object({
   requesterEmail: z.union([z.literal(''), z.string().trim().email().max(254)]).transform(value => value.toLowerCase()),
   requesterPhone: z.union([z.literal(''), z.string().trim().regex(/^\+?[0-9 ()-]{7,24}$/)]).refine(v => !v || (v.replace(/\D/g,'').length>=7 && v.replace(/\D/g,'').length<=15), 'Revisa el teléfono.'),
   privacyAccepted: z.literal(true),
+  policyVersion: z.string().min(1).max(100),
   marketingAccepted: z.boolean(),
 }).refine(value => !!(value.requesterEmail || value.requesterPhone), { message: 'Indica un correo o teléfono.' });
 
@@ -23,10 +24,12 @@ function privateKey(value: string, secret: string) {
 }
 
 export async function POST(request: Request) {
-  if(process.env.NODE_ENV==='production'&&!legalConfigured)return NextResponse.json({error:'La verificación estará disponible pronto.'},{status:503});
+  const config = await readLegalConfiguration();
+  if(!config.available || !config.ready)return NextResponse.json({error:'La verificación estará disponible pronto.'},{status:503});
   const parsed = schema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Completa el código, nombre, un medio de contacto y el aviso de privacidad.' }, { status: 400, headers: responseHeaders });
 
+  if (parsed.data.policyVersion !== config.policyVersion) return NextResponse.json({error:'El aviso de privacidad cambió. Actualiza la página y vuelve a aceptarlo.'},{status:409,headers:responseHeaders});
   const secret = process.env.CERTIFICATE_SIGNING_SECRET;
   if (!secret) return NextResponse.json({ error: 'La verificación no está disponible temporalmente.' }, { status: 503, headers: responseHeaders });
 
@@ -58,7 +61,7 @@ export async function POST(request: Request) {
       transaction.create(inquiry, {
         requesterName, requesterEmail: requesterEmail || null, requesterPhone: requesterPhone || null,
         code, queriedAt: new Date(),
-        privacyNoticeVersion: POLITICAS_VERSION, privacyAccepted: true,
+        privacyNoticeVersion: config.policyVersion, privacyAccepted: true,
         marketingAccepted,
         result: certSnap.exists ? (certSnap.data()?.status === 'valid' ? 'valid' : 'revoked') : 'not_found',
         ipHash, expiresAt: new Date(Date.now() + 30 * DAY_MS),

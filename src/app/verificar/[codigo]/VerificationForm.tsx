@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, ShieldX } from 'lucide-react';
-import { publicIntakeAvailable } from '@/lib/legal-config';
+import { useLegalConfiguration } from '@/lib/use-legal-configuration';
 
 interface CertificateResult {
   code: string;
@@ -14,6 +14,7 @@ interface CertificateResult {
 }
 
 export function VerificationForm({ code }: { code: string }) {
+  const { publicIntakeAvailable, policyVersion } = useLegalConfiguration();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -22,6 +23,8 @@ export function VerificationForm({ code }: { code: string }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState<CertificateResult | null | undefined>(undefined);
+
+  useEffect(()=>{setPrivacyAccepted(false);setMarketingAccepted(false);setResult(undefined);},[policyVersion]);
 
   async function verify(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -33,7 +36,7 @@ export function VerificationForm({ code }: { code: string }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         cache: 'no-store',
-        body: JSON.stringify({ code, requesterName: name, requesterEmail: email, requesterPhone: phone, privacyAccepted, marketingAccepted }),
+        body: JSON.stringify({ code, requesterName: name, requesterEmail: email, requesterPhone: phone, privacyAccepted, marketingAccepted, policyVersion }),
       });
       const data = await response.json();
       if (!response.ok) throw new Error(data.error || 'No se pudo verificar el certificado.');

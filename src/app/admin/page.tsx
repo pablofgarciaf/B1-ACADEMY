@@ -294,6 +294,7 @@ export default function AdminStudentsPanel() {
           </div>
 
           <Link href="/admin/solicitudes" className="inline-block text-sky-500 underline">Ver solicitudes de empresas</Link>
+          <Link href="/admin/configuracion" className="ml-5 inline-block text-sky-500 underline">Configurar inscripciones y datos públicos</Link>
           {/* Tabla de Estudiantes */}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">

@@ -16,15 +16,15 @@ export const costMethods = ['average', 'fifo', 'standard'] as const;
 export type CostingMethod = typeof costMethods[number];
 export const lineSchema = z.object({ itemCode: code, description: text.min(1), quantity: money.positive(), unit: text.min(1), price: money, discount: money.max(100), taxRate: z.union([z.literal(0), z.literal(5), z.literal(8), z.literal(15)]), warehouseCode: code, ice: money.optional() });
 export type DocumentLine = z.infer<typeof lineSchema>;
-const documentSchema = base.extend({ docNumber: code, date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).min(1).max(80), subtotal: money, ice: money.optional(), tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
-export const salesSchema = documentSchema.extend({ docType: z.enum(salesTypes) });
-export const purchaseSchema = documentSchema.extend({ docType: z.enum(purchaseTypes) });
+const documentSchema = base.extend({ openingBalance: z.boolean().optional(), docNumber: code, date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).max(80), subtotal: money, ice: money.optional(), tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
+export const salesSchema = documentSchema.extend({ docType: z.enum(salesTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
+export const purchaseSchema = documentSchema.extend({ docType: z.enum(purchaseTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
 export type SalesDocument = z.infer<typeof salesSchema>;
 export type PurchaseDocument = z.infer<typeof purchaseSchema>;
 export type DocumentInput = Pick<SalesDocument, 'date' | 'dueDate' | 'cardCode' | 'reference' | 'comments' | 'baseDocumentId' | 'lines'>;
 const partnerSchema = base.extend({ cardCode: code, name: text.min(2), ruc: z.string().regex(/^\d{10}(\d{3})?$/), email: z.union([z.string().email(), z.literal('')]), phone: text, address: text, city: text, contactName: text, currency: z.literal('USD'), paymentTermsDays: money.int().max(365), creditLimit: money, balance: z.number().finite(), active: z.boolean(), group: text, notes: text });
-export const customerSchema = partnerSchema.extend({ kind: z.enum(['customer', 'lead']) });
-export const vendorSchema = partnerSchema.extend({ rimpe: z.enum(['ninguno', 'emprendedor', 'popular']).default('ninguno') });
+export const customerSchema = partnerSchema.extend({ kind: z.enum(['customer', 'lead']), linkedVendorCode: code.optional() });
+export const vendorSchema = partnerSchema.extend({ rimpe: z.enum(['ninguno', 'emprendedor', 'popular']).default('ninguno'), linkedCustomerCode: code.optional() });
 export type Customer = z.infer<typeof customerSchema>;
 export type Vendor = z.infer<typeof vendorSchema>;
 export const itemSchema = base.extend({ ice: z.enum(['none', 'perfumes', 'videojuegos', 'cigarrillos']).default('none'), itemCode: code, name: text.min(2), type: z.enum(['inventory', 'service', 'labor']), group: text, purchaseUnit: text.min(1), salesUnit: text.min(1), price: money, price2: money, price3: money, maxDiscount: money.max(100), purchasePrice: money, preferredVendor: z.string().max(80), weight: money, length: money, width: money, height: money, costingMethod: z.enum(costMethods), standardCost: money, minStock: money, maxStock: money, reorderPoint: money, description: text, specifications: text, active: z.boolean() });
@@ -77,6 +77,9 @@ export interface CompanyProfile extends Entity { usage?: 'training' | 'private';
   closedPeriods?: string[];
   /** Annual lock, also for years with no profit-and-loss entry to post. */
   closedFiscalYears?: string[];
+  /** Atomic opening import; keeps operational documents aligned with the selected control accounts. */
+  openingBalances?: { reference:string; date:string; journalEntryId:string; importedAt:string; accountFamily:'compact'|'global' };
+  controlAccounts?: Record<string,string>;
   /** Reglas de autorización: documentos de ese tipo sobre el monto requieren aprobación. */
   approvalRules?: ApprovalRule[];
   /** Lista de precios asignada a cada cliente (1 general, 2 mayorista, 3 distribuidor). */

@@ -7,7 +7,6 @@ import { auth } from '@/lib/firebase';
 import { FirebaseError } from 'firebase/app';
 import { onIdTokenChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, type User as FirebaseUser } from 'firebase/auth';
 
-import { POLITICAS_VERSION } from '@/lib/legal-config';
 
 export interface UserProfile {
   uid: string; email: string; name: string; displayName: string; cedula: string;
@@ -33,7 +32,7 @@ interface AuthContextType {
   logout: () => Promise<void>;
   changePassword: (newPassword: string) => Promise<{ success: boolean; error?: string }>;
   resetPassword: (email: string) => Promise<{ success: boolean; error?: string }>;
-  register: (data: { name: string; email: string; password: string; cedula?: string; phone?: string }) => Promise<{ success: boolean; error?: string }>;
+  register: (data: { name: string; email: string; password: string; cedula?: string; phone?: string; policyVersion?: string }) => Promise<{ success: boolean; error?: string }>;
   createStudent: (data: CreateStudentInput) => Promise<{ success: boolean; error?: string }>;
   getAllStudents: () => Promise<UserProfile[]>;
 }
@@ -159,9 +158,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   /** Public accounts use an independently chosen password, never an identity document. */
-  const register = async (data: {name:string;email:string;password:string;cedula?:string;phone?:string}) => {
+  const register = async (data: {name:string;email:string;password:string;cedula?:string;phone?:string;policyVersion?:string}) => {
     try {
-      const response=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...data,privacyAccepted:true,policyVersion:POLITICAS_VERSION})});
+      const response=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...data,privacyAccepted:true,policyVersion:data.policyVersion || '2.0-2026-10'})});
       const body=await response.json();
       return response.ok ? {success:true} : {success:false,error:body.error||'No se pudo crear la cuenta.'};
     }catch{return {success:false,error:'No hay conexión. Vuelve a intentarlo.'};}

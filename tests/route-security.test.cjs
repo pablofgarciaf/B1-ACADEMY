@@ -5,6 +5,7 @@ let facts={profile:{trainingSetupVersion:1},customers:[{id:'C20005',cardCode:'C2
 const load=Module._load;
 Module._load=function(name,parent,...args){
  if(name==='server-only')return {};
+ if(name==='@/lib/legal-config-server')return {readLegalConfiguration:async()=>({ready:true,available:true,policyVersion:'test-policy'})};
  if(/(?:^|\/)firebase-admin$/.test(name))return {adminDb:db,fieldValue:()=>({arrayUnion:(...v)=>({union:v}),delete:()=>({delete:true})})};
  if(name==='@/lib/server-auth')return {requireBearerUser:async()=>actor};
  if(name==='@/lib/company-server')return {hasInitializedCompany:async()=>true,readCompany:async()=>facts,readCompanyAudit:async()=>events};
@@ -22,7 +23,7 @@ const webhook=require('../src/app/api/webhooks/n8n/route.ts');
 const {canTeachCompany}=require('../src/lib/company-access.ts');
 const {getModuleById}=require('../src/lib/curriculum-data.ts');const {practicasDelModulo}=require('../src/lib/practice-registry.ts');
 const progress={completedClasses:getModuleById('mod-ventas').classes.map(c=>c.id),passedPractices:practicasDelModulo('mod-ventas')};
-const post=(body)=>new Request('http://localhost/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+const post=(body)=>new Request('http://localhost/api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({policyVersion:'test-policy',...body})});
 test('quota compartida limita solicitudes concurrentes, independientemente de la instancia',async()=>{
  const outcomes=await Promise.all(Array.from({length:12},()=>consumeQuota('test','same-user',3,60000,1000)));
  assert.equal(outcomes.filter(x=>x.allowed).length,3);
@@ -60,7 +61,7 @@ test('solicitudes empresariales concurrentes persisten una sola vez y detectan c
  assert.deepEqual(responses.map(r=>r.status).sort(),[200,201]);
  const row=db.rows.get('business_leads/'+body.requestId);assert.equal(row.status,'new');assert.equal(row.marketingConsent,false);assert.ok(row.privacyAcceptedAt);
  assert.equal((await leads.POST(post({...body,needs:'Cambiar el alcance del curso'}))).status,409);
- assert.equal((await leads.POST(new Request('http://localhost/api',{method:'POST',headers:{origin:'https://otro.example','Content-Type':'application/json'},body:JSON.stringify(body)}))).status,403);
+ assert.equal((await leads.POST(new Request('http://localhost/api',{method:'POST',headers:{origin:'https://otro.example','Content-Type':'application/json'},body:JSON.stringify({policyVersion:'test-policy',...body})}))).status,403);
 });
 
 test('docentes solo consultan alumnos activos asignados y nunca su empresa personal',async()=>{

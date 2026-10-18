@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Cookie, ShieldCheck } from 'lucide-react';
-import { POLITICAS_VERSION } from '@/lib/legal-config';
+import { useLegalConfiguration } from '@/lib/use-legal-configuration';
 
 /**
  * Consentimiento de cookies conforme a la LOPDP (Ecuador):
@@ -18,19 +18,19 @@ const EVENTO_ABRIR = 'b1:configurar-cookies';
 
 interface Decision { v: string; analitica: boolean; fecha: string }
 
-function leerDecision(): Decision | null {
+function leerDecision(policyVersion: string): Decision | null {
   const fila = document.cookie.split('; ').find((c) => c.startsWith(`${COOKIE}=`));
   if (!fila) return null;
   try {
     const d = JSON.parse(decodeURIComponent(fila.slice(COOKIE.length + 1))) as Decision;
-    return d.v === POLITICAS_VERSION ? d : null; // políticas nuevas → se vuelve a preguntar
+    return d.v === policyVersion ? d : null; // políticas nuevas → se vuelve a preguntar
   } catch {
     return null;
   }
 }
 
-function guardarDecision(analitica: boolean) {
-  const d: Decision = { v: POLITICAS_VERSION, analitica, fecha: new Date().toISOString() };
+function guardarDecision(analitica: boolean, policyVersion: string) {
+  const d: Decision = { v: policyVersion, analitica, fecha: new Date().toISOString() };
   const seguro = window.location.protocol === 'https:' ? '; Secure' : '';
   document.cookie = `${COOKIE}=${encodeURIComponent(JSON.stringify(d))}; Max-Age=${60 * 60 * 24 * 365}; Path=/; SameSite=Lax${seguro}`;
   window.dispatchEvent(new Event('finix:consent'));
@@ -70,40 +70,47 @@ function cargarAnalitica(gtmId: string) {
 }
 
 export default function CookieConsent({ gtmId }: { gtmId: string }) {
+  const { policyVersion, available, ready } = useLegalConfiguration();
   const [visible, setVisible] = useState(false);
   const [configurando, setConfigurando] = useState(false);
   const [analitica, setAnalitica] = useState(false);
 
   useEffect(() => {
-    const d = leerDecision();
+    document.documentElement.dataset.legalPolicyVersion = available ? policyVersion : 'unavailable';
+    if (!available) {
+      if(document.getElementById('gtm-script')) { borrarCookiesAnalitica(); window.location.reload(); }
+      return;
+    }
+    const d = leerDecision(policyVersion);
+    if((!d?.analitica || !ready) && document.getElementById('gtm-script')) { borrarCookiesAnalitica(); window.location.reload(); return; }
     if (!d) setVisible(true);
     else {
       setAnalitica(d.analitica);
-      if (d.analitica) cargarAnalitica(gtmId);
+      if (d.analitica && ready) cargarAnalitica(gtmId);
     }
     const abrir = () => {
-      setAnalitica(leerDecision()?.analitica ?? false);
+      setAnalitica(leerDecision(policyVersion)?.analitica ?? false);
       setConfigurando(true);
       setVisible(true);
     };
     window.addEventListener(EVENTO_ABRIR, abrir);
     return () => window.removeEventListener(EVENTO_ABRIR, abrir);
-  }, [gtmId]);
+  }, [gtmId, policyVersion, available, ready]);
 
   const decidir = useCallback((acepta: boolean) => {
-    const antes = leerDecision()?.analitica ?? false;
-    guardarDecision(acepta);
+    const antes = leerDecision(policyVersion)?.analitica ?? false;
+    guardarDecision(acepta, policyVersion);
     setVisible(false);
     setConfigurando(false);
-    if (acepta) cargarAnalitica(gtmId);
+    if (acepta && ready) cargarAnalitica(gtmId);
     else if (antes) {
       // Retiro del consentimiento: se borran las cookies y se recarga para descargar el script de analítica.
       borrarCookiesAnalitica();
       window.location.reload();
     }
-  }, [gtmId]);
+  }, [gtmId, policyVersion, ready]);
 
-  if (!visible) return null;
+  if (!visible || !available) return null;
 
   return (
     <div
@@ -116,7 +123,7 @@ export default function CookieConsent({ gtmId }: { gtmId: string }) {
         <div className="flex items-start gap-3">
           <Cookie className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" aria-hidden="true" />
           <div className="min-w-0">
-            <h2 id="cookies-titulo" className="text-base font-bold">Tu privacidad en Finix Academy</h2>
+            <h2 id="cookies-titulo" className="text-base font-bold">Tu privacidad en B1 Academy</h2>
             <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
               Usamos cookies necesarias para que inicies sesión. Con tu permiso, también usamos cookies de analítica de Google para mejorar el
               campus. No usamos cookies publicitarias. Más información en la{' '}

@@ -3,10 +3,11 @@ import { createHash } from 'crypto';
 import { adminDb } from '@/lib/firebase-admin';
 import { businessLeadSchema } from '@/lib/business-lead';
 import { clientAddress, consumeQuota } from '@/lib/rate-limit';
-import { legalConfigured, POLITICAS_VERSION } from '@/lib/legal-config';
+import { readLegalConfiguration } from '@/lib/legal-config-server';
 
 export async function POST(request: Request) {
-  if (process.env.NODE_ENV === 'production' && !legalConfigured) {
+  const config = await readLegalConfiguration();
+  if (!config.available || !config.ready) {
     return NextResponse.json({ error: 'Las solicitudes están temporalmente cerradas. Intenta más tarde.' }, { status: 503 });
   }
   const origin = request.headers.get('origin');
@@ -14,6 +15,7 @@ export async function POST(request: Request) {
   if (Number(request.headers.get('content-length')) > 12000) return NextResponse.json({ error: 'Solicitud demasiado extensa.' }, { status: 413 });
   const parsed = businessLeadSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({ error: 'Revisa los campos y proporciona un correo o teléfono.' }, { status: 400 });
+  if (parsed.data.policyVersion !== config.policyVersion) return NextResponse.json({error:'El aviso de privacidad cambió. Actualiza la página y vuelve a aceptarlo.'},{status:409});
   try {
     const data = parsed.data;
     const contact = createHash('sha256').update(data.email || data.phone || '').digest('hex');
@@ -34,7 +36,7 @@ export async function POST(request: Request) {
         if (previous.data()?.payloadHash !== payloadHash) throw new Error('ID_CONFLICT');
         return false;
       }
-      tx.create(ref, { ...fields, contactHash: contact, payloadHash, privacyVersion: POLITICAS_VERSION, privacyAcceptedAt: new Date().toISOString(),
+      tx.create(ref, { ...fields, contactHash: contact, payloadHash, privacyVersion: config.policyVersion, privacyAcceptedAt: new Date().toISOString(),
         createdAt: new Date().toISOString(), status: 'new', deliveryStatus: 'pending_review' });
       return true;
     });

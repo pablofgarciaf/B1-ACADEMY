@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { REGIMENES, REGIMEN_ETIQUETAS } from '@/lib/sri-catalogo';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
+import OpeningBalancesPanel from './OpeningBalancesPanel';
 
 /** Inicialización / datos de la empresa (ADM001): razón social, RUC, impuesto a la renta y almacenes. */
 export default function CompanySettingsScreen() {
@@ -40,7 +41,7 @@ export default function CompanySettingsScreen() {
       </form>
       {privateCompany && <form className="mt-5 space-y-3 border-t border-[#999] pt-4" onSubmit={async e=>{e.preventDefault();try{await c.save({action:'bankAccount',data:bank});setBank({name:'',bankName:'',accountNumber:''});}catch{/* Error visible en el espacio de trabajo. */}}}>
         <h3 className="font-bold">Cuentas bancarias propias</h3>
-        <p>Registra únicamente cuentas aportadas por el propietario. Se crean sin saldo; registra la apertura con su contrapartida en Bancos.</p>
+        <p>Registra únicamente cuentas aportadas por el propietario. Se crean sin saldo; incorpora el saldo histórico con la importación de apertura.</p>
         <div className="grid gap-2 sm:grid-cols-3">
           <Field label="Nombre de la cuenta" required><input required minLength={2} className={inputClass} value={bank.name} onChange={e=>setBank(v=>({...v,name:e.target.value}))}/></Field>
           <Field label="Banco" required><input required minLength={2} className={inputClass} value={bank.bankName} onChange={e=>setBank(v=>({...v,bankName:e.target.value}))}/></Field>
@@ -49,6 +50,7 @@ export default function CompanySettingsScreen() {
         <button type="submit" disabled={c.saving} className={buttonClass}>Registrar cuenta bancaria sin saldo</button>
         <Table headers={['Cuenta','Banco','Número','Cuenta contable']} rows={c.data.bankAccounts.map(a=>[a.name,a.bankName,a.accountNumber,a.ledgerAccount])}/>
       </form>}
+      {privateCompany && <OpeningBalancesPanel />}
     </Screen>
   );
 }

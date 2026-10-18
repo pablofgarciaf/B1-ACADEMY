@@ -1,3 +1,5 @@
+import { readLegalConfiguration } from '@/lib/legal-config-server';
+export const dynamic = 'force-dynamic';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CorreoLegal, LegalPage } from '@/components/legal/LegalPage';
@@ -11,9 +13,11 @@ export const metadata: Metadata = {
   alternates: { canonical: `${LEGAL.sitio}/privacidad` },
 };
 
-export default function PrivacidadPage() {
+export default async function PrivacidadPage() {
+  const { legal: LEGAL, policyVersion } = await readLegalConfiguration();
   return (
     <LegalPage
+      policyVersion={policyVersion}
       actual="/privacidad"
       titulo="Política de privacidad y protección de datos personales"
       resumen={[

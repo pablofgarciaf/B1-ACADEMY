@@ -4,7 +4,8 @@ export function analyticsAllowed(cookie: string): boolean {
   try {
     const row = cookie.split(';').map(s => s.trim()).find(s => s.startsWith('b1_consent='));
     const choice = row ? JSON.parse(decodeURIComponent(row.slice('b1_consent='.length))) : null;
-    return choice?.v === POLITICAS_VERSION && choice.analitica === true;
+    const expected = typeof document !== 'undefined' ? document.documentElement?.dataset.legalPolicyVersion || POLITICAS_VERSION : POLITICAS_VERSION;
+    return choice?.v === expected && choice.analitica === true;
   } catch { return false; }
 }
 

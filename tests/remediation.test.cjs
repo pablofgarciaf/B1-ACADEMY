@@ -75,10 +75,11 @@ test('texto largo publicado se conserva en fragmentos admitidos por voz',()=>{
   for(const lesson of Object.values(lessonData))for(const slide of lesson.syncData){const text=[slide.script_text||'',...(slide.step_guide?.instructions||[])].join(' ');const parts=narrationChunks(text);assert.ok(parts.every(s=>s.length<=1500));assert.equal(parts.join(' '),text.trim().replace(/\s+/g,' '));}
 });
 test('solicitud empresarial exige contacto y consentimiento sin imponer marketing',()=>{
-  const input={requestId:'acb361b9-9a2b-49f7-854a-a4e0fe278a0e',company:'Ejemplo',name:'Nombre de prueba',phone:'0999999999',teamSize:5,needs:'Aprender procesos de compras',privacyAccepted:true};
+  const input={requestId:'acb361b9-9a2b-49f7-854a-a4e0fe278a0e',company:'Ejemplo',name:'Nombre de prueba',phone:'0999999999',teamSize:5,needs:'Aprender procesos de compras',privacyAccepted:true,policyVersion:'test-policy'};
   assert.equal(businessLeadSchema.safeParse(input).success,true);
   assert.equal(businessLeadSchema.safeParse({...input,phone:''}).success,false);
   assert.equal(businessLeadSchema.safeParse({...input,privacyAccepted:false}).success,false);
+  assert.equal(businessLeadSchema.safeParse({...input,policyVersion:''}).success,false);
   assert.equal(businessLeadSchema.parse(input).marketingConsent,false);
 });
 test('orientación pública siempre ofrece un recorrido utilizable sin proveedor IA',()=>{

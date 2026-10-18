@@ -7,14 +7,14 @@ import type { AuthenticatedUser } from './server-auth';
 /** Password-change time, unlike token revocation time, proves a credential was replaced. */
 export function passwordWasRecovered(account: { passwordUpdatedAt?: number; createdAt?: string }, now=Date.now()) {
   const changed=Number(account.passwordUpdatedAt),created=Number(account.createdAt);
-  return Number.isFinite(changed)&&Number.isFinite(created)&&created>0&&changed>created+1000&&changed>=PASSWORD_POLICY_EPOCH&&changed<=now+60000;
+  return Number.isFinite(changed)&&Number.isFinite(created)&&created>0&&changed>created+1000&&changed<=now+60000;
 }
 export async function passwordAccess(user:AuthenticatedUser,idToken:string) {
   if(!requiresPasswordChange(user.profile))return {ready:true,recoveryRequired:false};
   const key=process.env.NEXT_PUBLIC_FIREBASE_API_KEY;
-  if(!key)throw new Error('No se pudo verificar la recuperación. Intenta nuevamente.');
+  if(!key)return {ready:false,recoveryRequired:false};
   const response=await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${encodeURIComponent(key)}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({idToken}),signal:AbortSignal.timeout(10000),cache:'no-store'});
-  if(!response.ok)throw new Error('No se pudo verificar la recuperación. Vuelve a iniciar sesión.');
+  if(!response.ok)return {ready:false,recoveryRequired:false};
   const body=await response.json();
   const account=body.users?.find((row:{localId?:string})=>row.localId===user.uid);
   if(!account)throw new Error('La cuenta no pudo verificarse.');

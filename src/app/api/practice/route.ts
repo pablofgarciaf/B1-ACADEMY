@@ -10,6 +10,8 @@ import { buildStudentDocId, getStudentDisplayName } from '@/lib/student-doc';
 import { pantallaConectada } from '@/lib/practica-conectada';
 import { camposConsulta, obtenerMision,salesWriteMatches } from '@/lib/sales-learning';
 import { operationFor, validPracticeEvent } from '@/lib/practice-contract';
+import { missionOutcomeMatches, outcomeContractFor } from '@/lib/practice-outcome-contract';
+import { requiredPracticeValidationVersion } from '@/lib/strict-practice-keys';
 
 const schema=z.object({moduleId:z.string().max(80),classId:z.string().max(120),slideIndex:z.number().int().min(1).max(200),
   valores:z.array(z.string().max(500)).min(1).max(12),intentos:z.number().int().min(1).max(500),vioSolucion:z.boolean(),
@@ -33,6 +35,8 @@ export async function POST(request:Request){
       total=fields.length;
     }
     const connected=Boolean(screen && screen.clave!=='consultaAcademica');
+    const outcome=outcomeContractFor(key);
+    if(connected&&requiredPracticeValidationVersion(key)===3&&(!outcome||outcome.pending.length))return NextResponse.json({error:'Esta práctica necesita una corrección de contenido antes de poder evaluarse. No es un error tuyo. Comunica al docente el código '+key+'.',code:'PRACTICE_CONTENT_PENDING'},{status:409});
     if(connected){
       total=1;
       if(d.evidence){
@@ -40,6 +44,7 @@ export async function POST(request:Request){
         const actions=mission?.expectedAction?[mission.expectedAction]:operationFor(screen!);
         valid=validPracticeEvent(event,uid,d.evidence.requestId,d.evidence.result,actions,mission?.expectedDocType??(screen?.clave==='documento'?screen.docType:undefined));
         if(valid&&mission&&event)valid=salesWriteMatches(await readCompany(uid),event,key);
+        if(valid&&requiredPracticeValidationVersion(key)===3&&event)valid=missionOutcomeMatches(await readCompany(uid),event,key);
       }
       correct=valid?1:0;
     }else{
@@ -52,7 +57,7 @@ export async function POST(request:Request){
       const previous=claim?await tx.get(claim):null;
       if(approved&&previous?.exists&&previous.data()?.practiceKey!==key)throw new Error('EVIDENCE_ALREADY_USED');
       tx.set(adminDb.collection('practice_records').doc(`${uid}_${d.classId}_${d.slideIndex}`),{uid,moduleId:d.moduleId,classId:d.classId,slideIndex:d.slideIndex,practiceKey:key,studentName:getStudentDisplayName(user.profile,user.email),
-        valores:d.valores,correctos:correct,total,aprobada:approved,validationVersion:2,conectada:connected,vioSolucion:d.vioSolucion,intentos:d.intentos,
+        valores:d.valores,correctos:correct,total,aprobada:approved,validationVersion:requiredPracticeValidationVersion(key),conectada:connected,vioSolucion:d.vioSolucion,intentos:d.intentos,
         evidenceRequestId:d.evidence?.requestId??'',updatedAt:new Date().toISOString()});
       if(approved){
         if(claim&&!previous?.exists)tx.create(claim,{uid,practiceKey:key});

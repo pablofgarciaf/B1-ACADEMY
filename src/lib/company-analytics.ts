@@ -308,7 +308,7 @@ export interface CompraArticulo { itemCode: string; descripcion: string; cantida
 export interface AnalisisCompras { total: number; proveedores: CompraProveedor[]; articulos: CompraArticulo[]; pedidosAbiertos: number; recibidoSinFactura: number; lectura: string[]; preguntas: string[] }
 
 export function analisisCompras(state: CompanyState, desde: string, hasta: string): AnalisisCompras {
-  const facturas = state.purchaseOrders.filter(d => (d.docType === 'vendor_invoice' || d.docType === 'debit_note') && d.date >= desde && d.date <= hasta);
+  const facturas = state.purchaseOrders.filter(d => !d.openingBalance && (d.docType === 'vendor_invoice' || d.docType === 'debit_note') && d.date >= desde && d.date <= hasta);
   const total = round(facturas.reduce((s, d) => s + d.subtotal, 0));
   const porProveedor = new Map<string, CompraProveedor>();
   const porArticulo = new Map<string, { itemCode: string; descripcion: string; cantidad: number; monto: number; precios: number[] }>();
@@ -418,7 +418,7 @@ export function conflictosSoD(permisos: Record<string, 'total' | 'consulta' | 'n
 export interface Verificacion { nombre: string; auxiliar: number; mayor: number; diferencia: number; ok: boolean; explicacion: string }
 export function verificarIntegridad(state: CompanyState): Verificacion[] {
   const rows = trialBalance(state.chartOfAccounts, state.journalEntries, '0000-00-00', '9999-12-31');
-  const s = (prefijo: string) => round(rows.filter(r => r.accountCode.startsWith(prefijo)).reduce((t, r) => t + r.closing, 0));
+  const s = (prefijo: string) => { const mapped=state.profile?.controlAccounts?.[prefijo]; return round(rows.filter(r => r.accountCode.startsWith(prefijo) || mapped !== undefined && r.accountCode === mapped || prefijo === '1.1.02' && (['1010103','1010104','1010105','1010106'].includes(r.accountCode) || state.bankAccounts.some(b=>b.ledgerAccount === r.accountCode))).reduce((t, r) => t + r.closing, 0)); };
   const fila = (nombre: string, auxiliar: number, mayor: number, explicacion: string): Verificacion => {
     const diferencia = round(auxiliar - mayor); return { nombre, auxiliar: round(auxiliar), mayor: round(mayor), diferencia, ok: Math.abs(diferencia) < 0.01, explicacion };
   };

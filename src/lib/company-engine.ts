@@ -8,6 +8,8 @@ import { financialSummary, moveStock, resultadoEjercicio, mrp, payrollLine, quan
 
 import { SUPERCÍAS_CATALOG } from './supercias-catalog';
 import { isPrivateCompany } from './company-scope';
+import { prepareOpeningBalances } from './opening-balances';
+import { applyPartnerCommand } from './partner-commands';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
@@ -47,6 +49,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     assert(!['sri','authorize','missionComplete'].includes(command.action), 'Esta operación académica o autorización SRI simulada no está disponible en la empresa privada.');
     assert(original.profile || command.action === 'initialize', 'Inicializa la empresa privada antes de registrar operaciones.');
   }
+  if(command.action==='openingBalances')return prepareOpeningBalances(original,command.data,uid,now);
   if(command.action==='initializeTraining')return prepareTraining(original,command.data.companyName,uid,email,now,applyCommand);
   const state = structuredClone(original);
   const meta = (id: string): Entity => ({ id, createdAt: now, updatedAt: now, createdBy: uid });
@@ -65,6 +68,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
   }
   const profile = state.profile;
+  if(command.action==='partnerUpdate'||command.action==='partnerLink')return{state,result:applyPartnerCommand(state,command,now)};
   const subsidiaryAccount = (code: string) => ['1.1.03', '1.1.04', '1.1.05', '1.1.07', '1.2.01', '1.2.02', '2.1.01', '1010205', '1010206', '1010209', '10103', '10201', '20103'].some(prefix => code.startsWith(prefix));
   const bankLedgerAccount = (code: string) => code === '1.1.02' || ['1010103','1010104','1010105','1010106'].includes(code) || state.bankAccounts.some(b => b.ledgerAccount === code);
   const next = (prefix: string, date = now.slice(0, 10)): string => {
@@ -82,7 +86,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     if (!state.chartOfAccounts.some(a => a.code === codigo)) state.chartOfAccounts.push({ ...meta(codigo), code: codigo, name: nombre, category: categoria, postable: imputable, parentCode: codigo.includes('.') ? codigo.slice(0, codigo.lastIndexOf('.')) : '', nature: (['asset', 'cost', 'expense'].includes(categoria) && !['1.1.04', '1.2.02'].includes(codigo)) ? 'D' : 'H', active: true });
   }
   /** Saldo (debe − haber) de una cuenta hasta una fecha. */
-  const saldoDeudor = (cuenta: string, hasta: string): number => round(state.journalEntries.filter(e => e.date <= hasta).flatMap(e => e.lines).filter(l => l.accountCode === cuenta).reduce((s, l) => s + l.debit - l.credit, 0));
+  const saldoDeudor = (cuenta: string, hasta: string): number => round(state.journalEntries.filter(e => e.date <= hasta).flatMap(e => e.lines).filter(l => l.accountCode === (profile.controlAccounts?.[cuenta] ?? cuenta)).reduce((s, l) => s + l.debit - l.credit, 0));
   /** Resultado del ejercicio antes de participación de trabajadores e impuesto a la renta (ingresos − costos − gastos). */
   const resultadoAntesDeImpuestos = (year: number): number => resultadoEjercicio(state, year);
   const award = (key: string, points: number, reference: string, label = key): void => {
@@ -91,10 +95,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   };
   const ledgerLine = (accountCode: string, debit = 0, credit = 0): JournalLine => ({ accountCode, debit: round(debit), credit: round(credit), description: '', costCenter: '' });
   /** Un período cerrado no admite asientos ni movimientos: lo controla el motor, no la pantalla. */
-  const periodoAbierto = (date: string) => assert(!(profile.closedPeriods ?? []).includes(date.slice(0, 7)), `El período ${date.slice(0, 7)} está cerrado. Reábrelo en Cierres Fiscales o usa una fecha de un período abierto.`);
+  const periodoAbierto = (date: string) => { assert(!profile.openingBalances || date > profile.openingBalances.date, 'La operación debe ser posterior al corte de apertura.'); assert(!(profile.closedPeriods ?? []).includes(date.slice(0, 7)), `El período ${date.slice(0, 7)} está cerrado. Reábrelo en Cierres Fiscales o usa una fecha de un período abierto.`); };
   const post = (date: string, memo: string, source: string, reference: string, input: JournalLine[]): string => {
     periodoAbierto(date);
-    const lines = input.map(l => ({ ...l, debit: round(l.debit || 0), credit: round(l.credit || 0), costCenter: l.costCenter ?? '', description: l.description ?? '' })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
+    const lines = input.map(l => ({ ...l, accountCode:profile.controlAccounts?.[l.accountCode] ?? l.accountCode, debit: round(l.debit || 0), credit: round(l.credit || 0), costCenter: l.costCenter ?? '', description: l.description ?? '' })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
     assert(lines.length >= 2 && debit > 0 && debit === credit, 'El asiento debe cuadrar al centavo y tener importe positivo.');
     for (const line of lines) { assert(state.chartOfAccounts.some(a => a.code === line.accountCode && a.active && a.postable), `Cuenta no imputable: ${line.accountCode}.`); assert(line.debit >= 0 && line.credit >= 0 && !(line.debit && line.credit), 'Una línea debe tener debe o haber, no ambos.'); }
     const id = next('AS', date);
@@ -132,6 +136,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     if (sales && 'kind' in partner && partner.kind === 'lead' && docType !== 'quotation') throw new Error('Un lead solo puede recibir cotizaciones.');
     const records = sales ? state.salesOrders : state.purchaseOrders;
     const base = records.find(d => d.id === data.baseDocumentId);
+    assert(!base?.openingBalance, 'El documento de apertura solo conserva el saldo pendiente, no las líneas históricas. Registra sus cobros o pagos; no lo copies como documento nuevo.');
     const predecessor: Partial<Record<DocType, DocType>> = { order: 'quotation', delivery: 'order', invoice: 'delivery', credit_note: 'invoice', purchase_order: 'purchase_request', goods_receipt: 'purchase_order', vendor_invoice: 'goods_receipt', debit_note: 'vendor_invoice' };
     if (data.baseDocumentId) {
       assert(base && base.docType === predecessor[docType] && base.cardCode === partner.cardCode, 'Documento base incompatible.');
