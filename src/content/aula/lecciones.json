@@ -17,7 +17,7 @@
     "syncData": [
       {
         "slide_index": 1,
-        "script_text": "¡Bienvenido a B1 Academy y a la primera lección de este módulo! Finix ERP es un sistema de gestión empresarial diseñado para pequeñas y medianas empresas. Integra finanzas, compras, inventario, ventas y servicio en una única base de datos. Permite operar en tiempo real, eliminar duplicidad de datos y tomar decisiones basadas en información confiable. Es ideal para empresas que buscan control total y eficiencia operativa desde una sola plataforma.",
+        "script_text": "¡Bienvenido a B1 Academy y a la primera lección de este módulo! SAP Business One es el sistema de planificación de recursos empresariales, o ERP, líder a nivel global para pequeñas y medianas empresas. Integra finanzas, compras, inventario, ventas y servicio en una única base de datos centralizada. Permite operar en tiempo real, eliminar la duplicidad de registros y tomar decisiones estratégicas basadas en información confiable y consistente.",
         "step_guide": null
       },
       {
@@ -28,7 +28,7 @@
       },
       {
         "slide_index": 3,
-        "script_text": "Finix ERP es un ERP (Enterprise Resource Planning) diseñado específicamente para pequeñas y medianas empresas. Su valor principal radica en integrar todas las áreas clave del negocio — finanzas, compras, almacenes, ventas y servicio — en una única base de datos. Esto elimina la necesidad de sistemas aislados y evita la duplicidad de registros. Toda la organización opera con la misma información actualizada en tiempo real, lo que mejora la coordinación y reduce errores operativos.",
+        "script_text": "Un ERP, o sistema de planificación de recursos empresariales, es una solución diseñada para integrar todas las áreas operativas de una empresa: finanzas, compras, inventarios, ventas y servicio al cliente. En arquitecturas empresariales como SAP Business One, toda la información se centraliza en una sola base de datos en tiempo real. Esto elimina los sistemas aislados, erradica la duplicidad de datos y asegura que cada departamento trabaje con cifras exactas y actualizadas al instante.",
         "step_guide": null
       },
       {
@@ -39,12 +39,12 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Antes de Finix ERP, las empresas enfrentaban información dispersa en hojas de cálculo, lo que generaba retrasos en la cadena de suministro y errores en el control de inventario. Después de implementar Finix ERP, todos los datos se integran en una sola base de datos actualizada en tiempo real. Esto permite que ventas, compras y almacenes trabajen sincronizados, reduciendo fricción administrativa y mejorando la capacidad de respuesta ante cambios del mercado.",
+        "script_text": "Antes de implementar un sistema como SAP Business One, las empresas suelen operar con información dispersa en múltiples hojas de cálculo, lo que genera retrasos entre compras y ventas e inventarios desactualizados. Al adoptar el estándar ERP con SAP B1, toda la organización se sincroniza en una sola base de datos en tiempo real, automatizando los procesos entre áreas y brindando visibilidad total para una gestión ágil y sin fricción.",
         "step_guide": null
       },
       {
         "slide_index": 6,
-        "script_text": "Una empresa o sociedad delimita los registros sobre los que puedes trabajar. En esta plataforma la sesión identifica al usuario y el servidor comprueba qué empresa puede consultar o modificar. La separación se realiza mediante identificadores y permisos; no debes asumir que cada empresa tiene una base de datos física independiente. En el curso utilizarás tu empresa de práctica creada en el Paso cero y revisarás la empresa activa antes de registrar operaciones.",
+        "script_text": "En SAP Business One, cada empresa o sociedad delimita el entorno de datos sobre el que puedes operar. En esta academia, tu sesión conecta de manera segura con tu propia empresa de práctica, B1 Center. Toda la configuración de clientes, artículos, inventarios y contabilidad reside en una base de datos integrada, permitiéndote practicar de forma realista y con total aislamiento antes de registrar transacciones en entornos productivos.",
         "step_guide": null,
         "presentation": "text"
       },
@@ -159,7 +159,7 @@
       },
       {
         "slide_index": 12,
-        "script_text": "Un ERP integra datos y procesos de varias áreas. Para trabajar correctamente debes identificar tu empresa, revisar datos maestros, registrar operaciones autorizadas y comprobar sus efectos en inventario, cartera y contabilidad. El laboratorio permite practicar estos conceptos con datos de ejemplo. La decisión de usarlo con contabilidad empresarial real exige comprobar antes los controles, respaldos, resultados y requisitos de la empresa.",
+        "script_text": "En resumen, un ERP como SAP Business One conecta todos los pilares del negocio en tiempo real. A lo largo de esta formación aprenderás a operar con datos maestros, gestionar transacciones comerciales y analizar el impacto contable en tu empresa de práctica B1 Center. Con este dominio operativo tendrás el control total para optimizar la toma de decisiones en cualquier organización.",
         "step_guide": null,
         "presentation": "text"
       }

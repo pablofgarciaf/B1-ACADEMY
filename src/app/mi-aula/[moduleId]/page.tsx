@@ -127,6 +127,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   const [passedPractices, setPassedPractices] = useState<string[]>([]);
   const [requiredPractices, setRequiredPractices] = useState<string[]>([]);
   const [practiceNotice, setPracticeNotice] = useState<string | null>(null);
+  const [mostrarSubtitulos, setMostrarSubtitulos] = useState(false);
 
   // Sidebar
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -574,6 +575,20 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             {velocidad}×
           </button>
 
+          {/* Subtítulos [CC] */}
+          <button
+            onClick={() => setMostrarSubtitulos(!mostrarSubtitulos)}
+            className={`min-w-[36px] px-2 py-1.5 rounded-lg text-xs font-bold font-mono transition-all active:scale-95 border ${
+              mostrarSubtitulos
+                ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 hover:bg-amber-500/30'
+                : 'bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700 hover:text-white'
+            }`}
+            title={mostrarSubtitulos ? 'Ocultar subtítulos [CC]' : 'Mostrar subtítulos [CC]'}
+            aria-label={mostrarSubtitulos ? 'Ocultar subtítulos' : 'Mostrar subtítulos'}
+          >
+            CC
+          </button>
+
           {/* Pantalla completa (también se sale con Esc) */}
           <button
             onClick={alternarPantallaCompleta}
@@ -975,6 +990,16 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
 
                     {/* Información y ajustes rápidos */}
                     <div className="flex items-center gap-1.5 sm:gap-2">
+                      {needsGesture && (
+                        <button
+                          onClick={resumeAfterGesture}
+                          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-500 text-slate-950 text-xs font-bold hover:bg-amber-400 active:scale-95 transition-all shadow-sm animate-pulse"
+                          title="Haz clic para activar el audio en el navegador"
+                        >
+                          <Volume2 className="w-3.5 h-3.5" /> Activar voz
+                        </button>
+                      )}
+
                       {/* Badge de voz oficial */}
                       <div className="hidden md:flex items-center gap-1.5 px-2 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-[10px] text-amber-300 font-mono">
                         <span className={`w-1.5 h-1.5 rounded-full ${isSpeaking && !isPaused ? 'bg-amber-400 animate-pulse' : 'bg-gray-500'}`} />
@@ -1002,6 +1027,20 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                         {velocidad}x
                       </button>
 
+                      {/* Subtítulos [CC] */}
+                      <button
+                        onClick={() => setMostrarSubtitulos(!mostrarSubtitulos)}
+                        className={`px-2 py-1 rounded-lg text-xs font-bold font-mono active:scale-95 transition-all border ${
+                          mostrarSubtitulos
+                            ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 hover:bg-amber-500/30'
+                            : 'bg-gray-800/80 text-gray-400 border-gray-700 hover:bg-gray-700 hover:text-white'
+                        }`}
+                        title={mostrarSubtitulos ? 'Ocultar subtítulos [CC]' : 'Mostrar subtítulos [CC]'}
+                        aria-label={mostrarSubtitulos ? 'Ocultar subtítulos' : 'Mostrar subtítulos'}
+                      >
+                        CC
+                      </button>
+
                       {/* Silenciar / Activar audio */}
                       <button
                         onClick={toggleMute}
@@ -1026,25 +1065,34 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 </div>
               </div>
 
-              {/* Narration text */}
-              {slideScript && (
+              {/* Narration text / Subtítulos [CC] */}
+              {slideScript && mostrarSubtitulos && (
                 <div className="shrink-0 max-h-[35dvh] overflow-y-auto p-4 border-t border-gray-800 bg-[#0e1620]">
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold ${isSpeaking
-                      ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30 animate-pulse'
-                      : 'bg-gray-800 text-gray-400'
-                      }`}>
-                      <Bot className="w-3.5 h-3.5" />
-                      {isSpeaking ? 'Tutor IA explicando...' : 'Tutor IA'}
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <div className="flex items-center gap-2">
+                      <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold ${isSpeaking
+                        ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30 animate-pulse'
+                        : 'bg-gray-800 text-gray-400'
+                        }`}>
+                        <Bot className="w-3.5 h-3.5" />
+                        {isSpeaking ? 'Tutor IA explicando...' : 'Tutor IA'}
+                      </div>
+                      {needsGesture && (
+                        <button
+                          onClick={resumeAfterGesture}
+                          className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500 text-slate-950 text-xs font-bold hover:bg-amber-400 active:scale-95 transition-all"
+                        >
+                          <Volume2 className="w-3.5 h-3.5" /> Activar la voz del tutor
+                        </button>
+                      )}
                     </div>
-                    {needsGesture && (
-                      <button
-                        onClick={resumeAfterGesture}
-                        className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-amber-500 text-slate-950 text-xs font-bold hover:bg-amber-400 active:scale-95 transition-all"
-                      >
-                        <Volume2 className="w-3.5 h-3.5" /> Activar la voz del tutor
-                      </button>
-                    )}
+                    <button
+                      onClick={() => setMostrarSubtitulos(false)}
+                      className="text-xs text-gray-400 hover:text-gray-200 px-2 py-0.5 rounded hover:bg-gray-800 active:scale-95 transition-all"
+                      title="Ocultar subtítulos [CC]"
+                    >
+                      ✕ Ocultar
+                    </button>
                   </div>
                   <p className="text-sm text-gray-200 leading-relaxed font-medium">
                     {slideScript}

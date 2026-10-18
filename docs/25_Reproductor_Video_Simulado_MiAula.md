@@ -1,7 +1,7 @@
 # 🎥 Reproductor de Video Simulado para Láminas Narradas en Mi Aula y Manuales
 
 Documento de arquitectura sincronizado con la bóveda de Obsidian: `[[docs/25_Reproductor_Video_Simulado_MiAula]]`.
-Vinculado a: `[[06_LMS_Architecture]]`, `[[06_Manuales]]`, `[[23_Track_Comercial_y_Ventas_ERP]]`, `[[24_PasoCero_Empresa_B1Center_ZeroTrust]]`.
+Vinculado a: `[[06_LMS_Architecture]]`, `[[06_Manuales]]`, `[[23_Track_Comercial_y_Ventas_ERP]]`, `[[24_PasoCero_Empresa_B1Center_ZeroTrust]]`, `[[26_Alineacion_SAP_B1_Subtitulos_CC]]`.
 
 ---
 
