@@ -171,7 +171,8 @@ export default function LoginPage() {
 
     const handleForgotPassword = async () => {
     if (!email) {
-      setForgotError('Por favor ingresa tu correo.');
+      setForgotError('Por favor ingresa tu correo en el campo superior primero.');
+      document.getElementById('login-email')?.focus();
       return;
     }
     setForgotError('');
@@ -380,6 +381,13 @@ export default function LoginPage() {
                 </div>
               )}
 
+              {!publicIntakeAvailable && (
+                <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs flex items-center gap-2.5">
+                  <AlertCircle className="w-4 h-4 shrink-0" />
+                  <span>Las inscripciones públicas están temporalmente en pausa por actualización administrativa.</span>
+                </div>
+              )}
+
               <form onSubmit={handleRegister} className="space-y-4">
                 <div className="space-y-1.5">
                   <label htmlFor="register-name" className="text-xs font-bold text-slate-700 dark:text-slate-300">
@@ -432,7 +440,7 @@ export default function LoginPage() {
                       onChange={(e) => setRegPassword(e.target.value)}
                       placeholder="Crea una contraseña de 8 caracteres o más"
                       minLength={8}
-                      maxLength={20}
+                      maxLength={128}
                       required
                       className="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-finix-blue transition-colors font-mono"
                     />
@@ -485,7 +493,7 @@ export default function LoginPage() {
 
                 <button
                   type="submit"
-                  disabled={regLoading || !regConsent}
+                  disabled={regLoading || !regConsent || !publicIntakeAvailable}
                   className="w-full py-3.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold transition-all shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
                 >
                   {regLoading ? (
