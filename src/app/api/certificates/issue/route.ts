@@ -65,7 +65,7 @@ export async function POST(request: Request) {
 
     // Nombre del certificado y del titular congelados al emitir: la página pública /verificar/<código> solo lee este documento.
     const holderName = (user.profile.displayName || user.profile.name || '').trim().slice(0, 120);
-    await adminDb.collection('certificates').doc(code).set({
+    const certificate = {
       code,
       uid: user.uid,
       studentName,
@@ -78,9 +78,27 @@ export async function POST(request: Request) {
       estimatedHours: Math.round(moduleMinutes(courseModule) / 60 * 100) / 100,
       title: courseModule.certificateTitle,
       holderName,
+    };
+    // Repeated requests return the same module registration.
+    const previous = await adminDb.collection('certificates').where('uid','==',user.uid).where('moduleId','==',courseModule.id).where('validationVersion','==',2).limit(1).get();
+    if(previous.docs.length) {
+      const existing=previous.docs[0].data();
+      if(existing.status!=='valid')return NextResponse.json({error:'Esta constancia requiere revisión de la academia.'},{status:409});
+      return NextResponse.json({code:existing.code});
+    }
+    const registration=adminDb.collection('certificate_issuance').doc(studentDocId);
+    const issuedCode=await adminDb.runTransaction(async tx=>{
+      const registered=await tx.get(registration);
+      if(registered.exists){
+        const existing=await tx.get(adminDb.collection('certificates').doc(registered.data()!.code));
+        if(!existing.exists||existing.data()?.status!=='valid')throw new Error('Constancia no disponible.');
+        return registered.data()!.code as string;
+      }
+      tx.set(adminDb.collection('certificates').doc(code),certificate);
+      tx.set(registration,{uid:user.uid,moduleId:courseModule.id,code});
+      return code;
     });
-
-    return NextResponse.json({ code });
+    return NextResponse.json({ code:issuedCode });
   } catch {
     return NextResponse.json({ error: 'No autorizado.' }, { status: 401 });
   }

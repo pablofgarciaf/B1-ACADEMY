@@ -20,13 +20,12 @@ import {
   FolderOpen,
   Award,
   GraduationCap,
-  Download
 } from 'lucide-react';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
 import { ALL_MANUALS, MANUAL_CATEGORIES, ManualItem } from '@/lib/manuals-120-data';
 import { getCategoryExam, CategoryExam } from '@/lib/category-exams-data';
-import { generateCategoryCertificate } from '@/lib/certificate-generator';
+
 
 export default function ManualesLibraryPage() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,7 +40,7 @@ export default function ManualesLibraryPage() {
   const [examQuestionIdx, setExamQuestionIdx] = useState(0);
   const [examScore, setExamScore] = useState(0);
   const [examFinished, setExamFinished] = useState(false);
-  const [studentName, setStudentName] = useState('Estudiante SAP Business One');
+
   const [examUserAnswers, setExamUserAnswers] = useState<Record<number, number>>({});
 
   // Cargar manuales y categorías certificadas desde localStorage
@@ -164,15 +163,6 @@ export default function ManualesLibraryPage() {
     }
   };
 
-  const handleDownloadPDF = () => {
-    if (!examModalCategory) return;
-    generateCategoryCertificate({
-      studentName: studentName.trim() || 'Estudiante',
-      categoryTitle: examModalCategory.categoryName,
-      score: examScore,
-      totalQuestions: examModalCategory.questions.length
-    });
-  };
 
   // Obtener grupo activo y grupos secundarios
   const activeGroup = useMemo(() => {
@@ -499,28 +489,10 @@ export default function ManualesLibraryPage() {
                 </div>
 
                 {examScore >= examModalCategory.passingScore ? (
-                  <div className="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/30 space-y-4 text-left">
-                    <div className="flex items-center gap-2 text-amber-500 font-bold text-xs uppercase tracking-wider">
-                      <Award className="w-4 h-4" /> Personaliza tu Constancia de autoevaluación
-                    </div>
-                    <div>
-                      <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                        Nombre completo para la emisión:
-                      </label>
-                      <input
-                        type="text"
-                        value={studentName}
-                        onChange={(e) => setStudentName(e.target.value)}
-                        placeholder="Ej: Nombre Apellido"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-white/10 bg-white dark:bg-slate-900 text-sm font-bold text-slate-900 dark:text-white focus:outline-none focus:border-amber-500"
-                      />
-                    </div>
-                    <button
-                      onClick={handleDownloadPDF}
-                      className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-extrabold text-sm shadow-lg shadow-amber-500/25 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-                    >
-                      <Download className="w-4 h-4" /> Descargar Constancia de autoevaluación en PDF
-                    </button>
+                  <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 space-y-4 text-left">
+                    <h3 className="font-bold text-emerald-500">Repaso completado</h3>
+                    <p className="text-sm text-slate-600 dark:text-slate-300">Este resultado te ayuda a estudiar. Obtén una constancia por módulo al completar sus clases, prácticas y evaluación en Mi Aula.</p>
+                    <Link href="/mi-aula" className="block rounded-xl bg-finix-blue p-3 text-center font-bold text-white">Continuar mi formación por módulos</Link>
                   </div>
                 ) : (
                   <div className="space-y-4 text-left">

@@ -35,8 +35,9 @@ import {
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 
 import { QuizQuestion, getQuizForManual } from '@/lib/manual-quizzes-data';
-import FinixInteractiveSimulator from '@/components/simulator/FinixInteractiveSimulator';
-import { getManualSimulatorConfig } from '@/lib/manual-simulator-registry';
+import ManualLearningBridge from '@/components/lms/ManualLearningBridge';
+import { manualLearningPath } from '@/lib/manual-learning-path';
+
 import MasterB1CheckpointOverlay from '@/components/lms/MasterB1CheckpointOverlay';
 
 export interface StepGuide {
@@ -114,7 +115,8 @@ export default function ManualViewer({
 
   // Estado de Aprobado (guardado en localStorage)
   const [isApproved, setIsApproved] = useState(false);
-  const simConfig = useMemo(() => getManualSimulatorConfig(manualId || ''), [manualId]);
+  const learning = useMemo(() => manualLearningPath(manualId || ''), [manualId]);
+  const simConfig = { requiresSimulator:true, title:'Prácticas y módulos relacionados', scenarioGoal:learning.manual?.title };
 
   useEffect(() => {
     if (manualId) {
@@ -181,7 +183,7 @@ export default function ManualViewer({
     }
   }, [activeSyncSlide, activeTab]);
 
-  // Estado para el Examen con Profesor IA
+  // Estado para el Autoevaluación de repaso
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizScore, setQuizScore] = useState<number>(0);
@@ -365,7 +367,7 @@ export default function ManualViewer({
           ...prev,
           {
             role: 'ia',
-            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de Finix Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este intento de solicitud de respuestas ha sido registrado en tu expediente de estudiante.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners del ecosistema SAP Business One, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
+            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de Finix Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este repaso no registra una sanción en tu expediente.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners del ecosistema SAP Business One, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
           }
         ]);
       }, 500);
@@ -407,7 +409,7 @@ export default function ManualViewer({
       let aiResponse = "Excelente análisis. En SAP Business One, todos los procesos se comunican de forma nativa a través de la capa de objetos de negocio para garantizar trazabilidad. ¡Sigue explorando el simulador y las diapositivas para dominar los detalles!";
 
       if (activeSyncSlide?.step_guide && (lower.includes("pista") || lower.includes("ayuda") || lower.includes("cómo") || lower.includes("paso"))) {
-        aiResponse = `💡 **Pista Pedagógica para ${activeSyncSlide.step_guide.title}:**\n\n1. **Ubicación en SAP Business One:** Navega a \`${activeSyncSlide.step_guide.menu_path || 'Menú Principal'}\`.\n2. **Procedimiento Clave:** ${activeSyncSlide.step_guide.instructions?.join(' ')}\n3. **Resultado Esperado:** ${activeSyncSlide.step_guide.expected_output || 'Verifica que la grilla o documento refleje los datos requeridos.'}\n\nPuedes probarlo directamente en el **Simulador Interactivo** a la izquierda.`;
+        aiResponse = `💡 **Pista Pedagógica para ${activeSyncSlide.step_guide.title}:**\n\n1. **Ubicación en SAP Business One:** Navega a \`${activeSyncSlide.step_guide.menu_path || 'Menú Principal'}\`.\n2. **Procedimiento Clave:** ${activeSyncSlide.step_guide.instructions?.join(' ')}\n3. **Resultado Esperado:** ${activeSyncSlide.step_guide.expected_output || 'Verifica que la grilla o documento refleje los datos requeridos.'}\n\nAbre **Práctica guiada** para elegir una clase relacionada en Mi Aula.`;
       } else if (lower.includes("socio") || lower.includes("cliente") || lower.includes("proveedor") || lower.includes("ocrd")) {
         aiResponse = "Los Interlocutores Comerciales en SAP Business One se almacenan en la tabla OCRD. Se dividen en Clientes ('C'), Proveedores ('S') y Leads ('L'). En el simulador, filtrar por `CardType = 'C'` es esencial para separar clientes de proveedores.";
       } else if (lower.includes("hana") || lower.includes("sql") || lower.includes("consulta")) {
@@ -523,17 +525,11 @@ export default function ManualViewer({
     if (siguiente?.script_text) preload(siguiente.script_text, siguiente.firma);
     if (!guion?.script_text) { setNarrando(false); return; }
     speakText(guion.script_text, () => {
-      // Práctica del simulador en esta lámina: se pausa la clase y se abre la práctica.
-      if (guion.step_guide && !completedCheckpoints.includes(guion.slide_index)) {
-        setCompletedCheckpoints(prev => [...prev, guion.slide_index]);
-        setNarrando(false);
-        setActiveTab('simulador');
-        return;
-      }
+      // Reference narration stays continuous; evaluated practice is opened deliberately in Mi Aula.
       if (currentIdx < images.length - 1) setCurrentIdx(prev => prev + 1);
       else {
         setNarrando(false);
-        setActiveTab(simConfig && syncData?.some(s => s.step_guide) ? 'simulador' : 'quiz');
+        setActiveTab('simulador');
       }
     }, guion.firma);
     return () => stopSpeaking();
@@ -585,7 +581,7 @@ export default function ManualViewer({
                 src={videoUrl}
                 controls
                 onTimeUpdate={handleTimeUpdate}
-                onEnded={() => { if (simConfig && syncData && syncData.some(s => s.step_guide)) { setActiveTab('simulador'); setIsSimulatorModalOpen(true); } else { setActiveTab('quiz'); } }}
+                onEnded={() => setActiveTab('simulador')}
                 onDoubleClick={toggleFullscreen}
                 className="h-full w-full object-contain"
                 poster={images[0]}
@@ -897,7 +893,7 @@ export default function ManualViewer({
                   className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'simulador' ? 'bg-blue-500/20 text-blue-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
                 >
                   <Wrench size={14} />
-                  <span>{simConfig.requiresSimulator ? 'Simulador' : 'Teoría'}</span>
+                  <span>Práctica guiada</span>
                   {!simConfig.requiresSimulator && (
                     <span className="text-[9px] bg-blue-500/20 text-blue-300 px-1 py-0.2 rounded font-mono font-bold">Concepto</span>
                   )}
@@ -906,7 +902,7 @@ export default function ManualViewer({
                 onClick={() => setActiveTab('quiz')}
                 className={`flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors ${activeTab === 'quiz' ? 'bg-emerald-500/20 text-emerald-400' : 'text-gray-400 hover:bg-gray-800/50 hover:text-gray-300'}`}
               >
-                <GraduationCap size={14} /> <span>Examen IA</span>
+                <GraduationCap size={14} /> <span>Repaso</span>
               </button>
               <button
                 onClick={() => setActiveTab('docente')}
@@ -1062,7 +1058,7 @@ export default function ManualViewer({
                   <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5">
                     <p className="font-semibold text-white text-xs sm:text-sm">¿Cómo ingreso al simulador de SAP Business One?</p>
                     <p className="mt-1 text-xs text-gray-400 leading-relaxed">
-                      Puedes acceder directamente en la pestaña <strong>Simulador</strong> en este panel, y pulsar <strong>Expandir</strong> si deseas trabajar a pantalla completa.
+                      Abre <strong>Práctica guiada</strong> y elige una clase relacionada para practicar con instrucciones y comprobación del resultado.
                     </p>
                   </div>
                   <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5">
@@ -1094,25 +1090,25 @@ export default function ManualViewer({
                 <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5 space-y-1.5">
                   <h4 className="text-xs font-bold text-blue-400 uppercase tracking-wider">❓ Preguntas Socráticas para el Aula</h4>
                   <ul className="text-xs text-gray-300 space-y-1 list-disc pl-4">
-                    <li>¿Qué tabla del sistema registra la cabecera de esta operación ({simConfig.defaultTable?.split(' ')[0] || 'OJDT'}) y qué campo la vincula con las líneas?</li>
-                    <li>¿Qué impacto contable o logístico ocurre si el usuario cancela o devuelve este documento?</li>
-                    <li>¿Bajo qué condiciones tributarias o de control interno se requiere un procedimiento de aprobación aquí?</li>
+                    <li>¿Qué objetivo tiene el proceso descrito y qué datos necesita?</li>
+                    <li>¿Qué resultado demuestra que el proceso se realizó correctamente?</li>
+                    <li>¿Qué controles y permisos corresponden a este proceso?</li>
                   </ul>
                 </div>
 
                 <div className="rounded-xl border border-gray-800 bg-[#1a232b] p-3.5 space-y-1.5">
                   <h4 className="text-xs font-bold text-rose-400 uppercase tracking-wider">⚠️ Errores Frecuentes de Alumnos</h4>
                   <ul className="text-xs text-gray-300 space-y-1 list-disc pl-4">
-                    <li>Omitir la selección del Socio de Negocios obligatorio (campo amarillo claro).</li>
-                    <li>Confundir fecha de contabilización con fecha de vencimiento fiscal.</li>
-                    <li>Intentar modificar un documento cerrado sin generar previamente una nota de ajuste.</li>
+                    <li>Realizar una operación distinta del objetivo de la misión.</li>
+                    <li>No comprobar el resultado después de guardar.</li>
+                    <li>Dar por terminada la práctica sin revisar la evidencia requerida.</li>
                   </ul>
                 </div>
 
                 <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-3.5 space-y-1.5">
                   <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider">✅ Rúbrica Práctica en el Simulador</h4>
                   <p className="text-xs text-gray-300 leading-relaxed">
-                    Exigir al alumno que abra el formulario en la pestaña <strong>Simulador</strong>, complete los campos mandatorios y verifique el asiento contable resultante.
+                    Selecciona una clase relacionada en <strong>Práctica guiada</strong>. Evalúa el objetivo de esa misión con sus datos y su resultado esperado; no todos los temas generan un asiento contable.
                   </p>
                 </div>
               </div>
@@ -1135,11 +1131,7 @@ export default function ManualViewer({
                   </button>
                 </div>
                 <div className="flex-1 min-h-0 overflow-hidden">
-                  <FinixInteractiveSimulator
-                    manualId={manualId || ''}
-                    currentStepIndex={currentIdx}
-                    stepGuide={activeSyncSlide?.step_guide}
-                  />
+                  <ManualLearningBridge manualId={manualId || ''} />
                 </div>
               </div>
             )}
@@ -1154,7 +1146,7 @@ export default function ManualViewer({
                     </div>
 
                     <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-amber-500/15 text-amber-300 border border-amber-500/30 mb-2">
-                      <Sparkles size={11} /> Examen con Profesor IA
+                      <Sparkles size={11} /> Autoevaluación de repaso
                     </div>
 
                     <h3 className="text-sm font-bold text-white mb-2">
@@ -1207,12 +1199,12 @@ export default function ManualViewer({
                         <div className="p-3.5 rounded-xl bg-gradient-to-b from-[#16222f] to-[#101720] border border-blue-500/30 text-left space-y-2">
                           <div className="flex items-center gap-2 text-xs font-bold text-blue-400">
                             <ShieldCheck size={16} className="text-blue-400 shrink-0" />
-                            <span>Certificación Oficial en App Descargable</span>
+                            <span>Certificación por módulo en Mi Aula</span>
                           </div>
                           <p className="text-[11px] text-gray-300 leading-relaxed">
-                            Has superado el simulacro web. Para que tu certificado cuente con <strong>código QR criptográfico y verificación oficial</strong>, rinde la prueba definitiva en nuestra aplicación de escritorio protegida (sin navegadores ni extensiones).
+                            Has completado el repaso de este manual. Para obtener la constancia del módulo, completa sus clases, prácticas y evaluación en <Link href="/mi-aula" className="text-sky-300 underline">Mi Aula</Link>.
                           </p>
-                          <div className="text-emerald-400 font-bold text-center mt-4">✓ Constancia de autoevaluación Habilitado</div>
+                          <div className="text-emerald-400 font-bold text-center mt-4">Repaso completado · no emite certificado</div>
                         </div>
                       </div>
                     ) : (
@@ -1223,7 +1215,7 @@ export default function ManualViewer({
 
                         <div className="p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-left space-y-2 w-full max-h-44 overflow-y-auto custom-scrollbar">
                           <div className="flex items-center gap-1.5 text-[11px] font-bold text-amber-400 uppercase tracking-wider">
-                            <Sparkles className="w-3.5 h-3.5" /> Diagnóstico del Profesor IA para Reforzar
+                            <Sparkles className="w-3.5 h-3.5" /> Conceptos para reforzar
                           </div>
                           <p className="text-[11px] text-gray-300">
                             Repasa estos conceptos clave antes de volver a presentarte:
@@ -1407,15 +1399,11 @@ export default function ManualViewer({
               className="flex items-center gap-1.5 text-xs font-bold text-gray-300 hover:text-white bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg border border-gray-700 transition-all active:scale-95"
             >
               <X size={14} />
-              <span>Cerrar Simulador Completo</span>
+              <span>Volver al manual</span>
             </button>
           </div>
           <div className="flex-1 min-h-0 bg-[#0A0A0F] border-x border-b border-gray-800 rounded-b-xl overflow-hidden shadow-2xl">
-            <FinixInteractiveSimulator
-              manualId={manualId || ''}
-              currentStepIndex={currentIdx}
-              stepGuide={activeSyncSlide?.step_guide}
-            />
+            <ManualLearningBridge manualId={manualId || ''} />
           </div>
         </div>
       )}

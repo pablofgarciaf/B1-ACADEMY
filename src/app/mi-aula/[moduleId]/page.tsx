@@ -65,7 +65,8 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   const [activeClassId, setActiveClassId] = useState<string>('');
   useEffect(() => {
     if (moduleClasses.length > 0 && !activeClassId) {
-      setActiveClassId(moduleClasses[0].id);
+      const requested = new URLSearchParams(window.location.search).get('clase');
+      setActiveClassId(moduleClasses.find(c=>c.id===requested)?.id ?? moduleClasses[0].id);
     }
   }, [moduleClasses, activeClassId]);
 

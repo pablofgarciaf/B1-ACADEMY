@@ -102,3 +102,5 @@ test('webhook firmado persiste una vez y no afirma haber emitido documentos',asy
  assert.equal(db.rows.get('automation_events/'+row.id).status,'pending_review');
  const rejected=await webhook.POST(new Request('http://localhost/api',{method:'POST',body,headers:{'x-webhook-signature':'a'.repeat(64)}}));assert.equal(rejected.status,401);
 });
+
+test('emisión concurrente genera una sola constancia por módulo y conserva una revocación',async()=>{db.rows.clear();process.env.CERTIFICATE_SIGNING_SECRET='test-only-secret-not-for-deployment';db.rows.set('evaluations/u1_mod-ventas',{uid:'u1',moduleId:'mod-ventas',passed:true,score:87,validationVersion:2});const responses=await Promise.all(Array.from({length:4},()=>issuance.POST(post({moduleId:'mod-ventas'}))));for(const r of responses)assert.equal(r.status,200);const codes=await Promise.all(responses.map(r=>r.json().then(x=>x.code)));assert.equal(new Set(codes).size,1);assert.equal([...db.rows.keys()].filter(k=>k.startsWith('certificates/')).length,1);db.rows.get('certificates/'+codes[0]).status='revoked';assert.equal((await issuance.POST(post({moduleId:'mod-ventas'}))).status,409);});
