@@ -113,7 +113,7 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
       className="fixed z-40 touch-none select-none rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 active:scale-95"
       style={{ left: `${pos.x}px`, top: `${pos.y}px`, width: `${TAM}px`, height: `${TAM}px` }}
     >
-      <FeNiCara tam={TAM} flotar={!arrastrando} />
+      <FeNiCara tam={TAM} flotar={!arrastrando} aleteando={arrastrando} />
     </button>
   );
 }
@@ -122,7 +122,7 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
 export { FeNiMascota as FiniMascota, FeNiMascota as FeniMascota };
 
 /** Dibujo de FeNi (Fénix Rojo de Inteligencia ERP Finix). */
-export function FeNiCara({ tam, flotar = true }: { tam: number; flotar?: boolean }) {
+export function FeNiCara({ tam, flotar = true, aleteando = false }: { tam: number; flotar?: boolean; aleteando?: boolean }) {
   const id = `feni${useId().replace(/[^a-zA-Z0-9_-]/g, '')}`;
   return (
     <svg width={tam} height={tam} viewBox="0 0 64 64" className={flotar ? 'feni-flotar' : ''} aria-hidden="true">
@@ -158,21 +158,31 @@ export function FeNiCara({ tam, flotar = true }: { tam: number; flotar?: boolean
       {/* Cuerpo esférico del Fénix */}
       <circle cx="32" cy="34" r="23" fill={`url(#${id}-body)`} filter={`url(#${id}-glow)`} />
 
-      {/* Alas laterales de fuego */}
-      <path d="M 11 34 C 7 30, 4 38, 8 45 C 11 40, 12 36, 11 34 Z" fill={`url(#${id}-wing)`} />
-      <path d="M 53 34 C 57 30, 60 38, 56 45 C 53 40, 52 36, 53 34 Z" fill={`url(#${id}-wing)`} />
+      {/* Alas laterales de fuego con animación de vuelo o reposo */}
+      <path
+        d="M 11 34 C 7 30, 4 38, 8 45 C 11 40, 12 36, 11 34 Z"
+        fill={`url(#${id}-wing)`}
+        className={aleteando ? 'feni-ala-izq-vuelo' : 'feni-ala-izq-respiro'}
+      />
+      <path
+        d="M 53 34 C 57 30, 60 38, 56 45 C 53 40, 52 36, 53 34 Z"
+        fill={`url(#${id}-wing)`}
+        className={aleteando ? 'feni-ala-der-vuelo' : 'feni-ala-der-respiro'}
+      />
 
       {/* Pecho dorado resplandeciente */}
       <ellipse cx="32" cy="39" rx="13" ry="14" fill="#F59E0B" opacity="0.9" />
       <ellipse cx="32" cy="39" rx="9" ry="10" fill="#FDE047" opacity="0.85" />
 
-      {/* Ojos grandes expresivos de Fénix */}
-      <ellipse cx="24" cy="29" rx="5" ry="6.5" fill="#FFFFFF" />
-      <ellipse cx="40" cy="29" rx="5" ry="6.5" fill="#FFFFFF" />
-      <circle cx="25" cy="29" r="3.2" fill="#1C1917" />
-      <circle cx="39" cy="29" r="3.2" fill="#1C1917" />
-      <circle cx="23.5" cy="27" r="1.3" fill="#FFFFFF" />
-      <circle cx="37.5" cy="27" r="1.3" fill="#FFFFFF" />
+      {/* Ojos grandes expresivos de Fénix con parpadeo periódico natural */}
+      <g className="feni-ojos">
+        <ellipse cx="24" cy="29" rx="5" ry="6.5" fill="#FFFFFF" />
+        <ellipse cx="40" cy="29" rx="5" ry="6.5" fill="#FFFFFF" />
+        <circle cx="25" cy="29" r="3.2" fill="#1C1917" />
+        <circle cx="39" cy="29" r="3.2" fill="#1C1917" />
+        <circle cx="23.5" cy="27" r="1.3" fill="#FFFFFF" />
+        <circle cx="37.5" cy="27" r="1.3" fill="#FFFFFF" />
+      </g>
 
       {/* Pico de ave dorado / naranja */}
       <polygon points="32,32 29,37 35,37" fill="#F97316" />

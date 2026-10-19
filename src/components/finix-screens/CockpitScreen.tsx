@@ -18,6 +18,28 @@ const WIDGETS_DISPONIBLES = [
   { tipo: 'ultimas_facturas','titulo': 'Últimas facturas emitidas' },
 ];
 
+const PLANTILLAS_SAP_PREDETERMINADAS: PlantillaCockpit[] = [
+  {
+    id: 'fiori_ventas',
+    nombre: 'Cockpit Fiori — Ventas y Finanzas',
+    widgets: [
+      { id: 'wgt-kpi1', tipo: 'kpis', titulo: 'KPIs gerenciales', visible: true },
+      { id: 'wgt-vnt1', tipo: 'ventas_mes', titulo: 'Ventas del mes', visible: true },
+      { id: 'wgt-cbr1', tipo: 'cobros_vencer', titulo: 'Cobros por vencer', visible: true },
+      { id: 'wgt-stk1', tipo: 'stock_critico', titulo: 'Artículos con stock crítico', visible: true },
+    ],
+  },
+  {
+    id: 'logistica_almacen',
+    nombre: 'Cockpit Operativo — Logística y Almacén',
+    widgets: [
+      { id: 'wgt-stk2', tipo: 'stock_critico', titulo: 'Artículos con stock crítico', visible: true },
+      { id: 'wgt-act1', tipo: 'actividades', titulo: 'Actividades y tareas pendientes', visible: true },
+      { id: 'wgt-pag1', tipo: 'pagos_vencer', titulo: 'Pagos por vencer', visible: true },
+    ],
+  },
+];
+
 function uid() { return 'wgt-' + Math.random().toString(36).slice(2, 7); }
 
 export default function CockpitScreen() {
@@ -25,20 +47,22 @@ export default function CockpitScreen() {
   const p = c.data.profile;
   const data = (p as unknown as Record<string, unknown>)?.cockpit as { plantillas: PlantillaCockpit[]; plantillaActiva: string } | undefined;
 
-  const [plantillas, setPlantillas] = useState<PlantillaCockpit[]>([]);
-  const [activa, setActiva] = useState<string>('');
-  const [plantillaSel, setPlantillaSel] = useState<PlantillaCockpit | null>(null);
+  const [plantillas, setPlantillas] = useState<PlantillaCockpit[]>(PLANTILLAS_SAP_PREDETERMINADAS);
+  const [activa, setActiva] = useState<string>('fiori_ventas');
+  const [plantillaSel, setPlantillaSel] = useState<PlantillaCockpit | null>(PLANTILLAS_SAP_PREDETERMINADAS[0]);
   const [nuevaPlantilla, setNuevaPlantilla] = useState({ nombre: '' });
   const [modoNueva, setModoNueva] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    setPlantillas(data?.plantillas ?? []);
-    setActiva(data?.plantillaActiva ?? '');
-    if (data?.plantillas?.length) {
-      const pl = data.plantillas.find(p => p.id === data.plantillaActiva) ?? data.plantillas[0];
-      setPlantillaSel(pl ? { ...pl, widgets: [...pl.widgets] } : null);
-    }
+    const cargadas = (data?.plantillas && data.plantillas.length > 0)
+      ? data.plantillas
+      : PLANTILLAS_SAP_PREDETERMINADAS;
+    const act = data?.plantillaActiva || cargadas[0]?.id || 'fiori_ventas';
+    setPlantillas(cargadas);
+    setActiva(act);
+    const pl = cargadas.find(item => item.id === act) ?? cargadas[0];
+    setPlantillaSel(pl ? { ...pl, widgets: [...pl.widgets] } : null);
   }, [data]);
 
   const guardar = async (pls: PlantillaCockpit[], act: string) => {
@@ -88,9 +112,12 @@ export default function CockpitScreen() {
   return (
     <Screen title="Cockpit — Plantillas y widgets">
       <div className="space-y-3">
-        <div className="rounded border border-[#9fb1c7] bg-white p-3 text-sm text-[#003366]">
-          <strong>Personaliza tu espacio de trabajo</strong>
-          <p className="mt-1">1. Crea una plantilla. 2. Elige los widgets. 3. Asígnala y guarda para dejarla como predeterminada.</p>
+        <div className="rounded border border-[#9fb1c7] bg-white p-3 text-xs sm:text-sm text-[#003366] shadow-2xs">
+          <strong className="block text-sm text-[#003366] font-bold">Cockpit Fiori — Centro de Control Personalizado</strong>
+          <p className="mt-1 text-gray-700 leading-relaxed">
+            Centraliza tus indicadores clave (KPIs), ventas, cobranzas y alertas de stock en tiempo real.
+            Selecciona una plantilla predeterminada o crea una nueva, ajusta los widgets activos y pulsa <strong>Asignar plantilla y guardar</strong>.
+          </p>
         </div>
         {error && <p role="alert" className="rounded border border-red-300 bg-red-50 p-2 text-sm text-red-800">{error}</p>}
         {/* Selector de plantillas */}

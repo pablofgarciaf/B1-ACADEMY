@@ -179,13 +179,23 @@
   @apply p-4 mb-4 rounded-xl border border-rose-200 dark:border-rose-800/50 bg-rose-50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-200 text-sm;
 }
 
-/* FeNi, la mascota del asistente: flota, parpadea y la antena brilla. */
+/* FeNi, la mascota del asistente: flota, parpadea y aletea sus alas de fuego */
 @keyframes feni-flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-@keyframes feni-parpadeo { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes feni-parpadeo { 0%, 88%, 100% { transform: scaleY(1); } 92%, 96% { transform: scaleY(0.08); } 94% { transform: scaleY(1); } }
 @keyframes feni-antena { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes feni-ala-izq-vuelo { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-30deg); } }
+@keyframes feni-ala-der-vuelo { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(30deg); } }
+@keyframes feni-ala-izq-respiro { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
+@keyframes feni-ala-der-respiro { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
+
 .feni-flotar { animation: feni-flotar 3.2s ease-in-out infinite; }
-.feni-ojos { transform-origin: 32px 32px; animation: feni-parpadeo 4.5s infinite; }
+.feni-ojos { transform-origin: 32px 29px; animation: feni-parpadeo 4.8s infinite ease-in-out; }
 .feni-antena { animation: feni-antena 2s ease-in-out infinite; }
+.feni-ala-izq-vuelo { transform-origin: 14px 34px; animation: feni-ala-izq-vuelo 0.16s infinite ease-in-out; }
+.feni-ala-der-vuelo { transform-origin: 50px 34px; animation: feni-ala-der-vuelo 0.16s infinite ease-in-out; }
+.feni-ala-izq-respiro { transform-origin: 14px 34px; animation: feni-ala-izq-respiro 3.2s infinite ease-in-out; }
+.feni-ala-der-respiro { transform-origin: 50px 34px; animation: feni-ala-der-respiro 3.2s infinite ease-in-out; }
+
 @media (prefers-reduced-motion: reduce) {
-  .feni-flotar, .feni-ojos, .feni-antena { animation: none; }
+  .feni-flotar, .feni-ojos, .feni-antena, .feni-ala-izq-vuelo, .feni-ala-der-vuelo, .feni-ala-izq-respiro, .feni-ala-der-respiro { animation: none; }
 }

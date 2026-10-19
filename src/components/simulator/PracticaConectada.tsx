@@ -102,13 +102,83 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
   const empresa = c.data.profile?.companyName;
   return (
     <div className="m-2 sm:m-3 rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs">
-      <div className="flex items-center gap-2 bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2 py-1 font-semibold">
-        <span className="rounded-sm bg-gradient-to-b from-[#b91c1c] to-[#7f1d1d] px-1.5 text-[10px] font-black italic text-white">Finix</span>
-        Finix ERP 2026 — {empresa || EMPRESA_CURSO}
+      <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold">
+        <div className="flex items-center gap-2">
+          <span className="rounded-sm bg-[#003366] px-1.5 text-[10px] font-black text-white">SAP B1</span>
+          <span>SAP Business One v10.0 — {empresa || EMPRESA_CURSO}</span>
+        </div>
+        <span className="text-[10px] text-gray-600 hidden sm:inline">Modo Laboratorio Transaccional</span>
+      </div>
+
+      {/* Panel Pedagógico: Misión, Ruta SAP y Datos requeridos */}
+      <div className="mx-2 sm:mx-3 mt-2 rounded border border-[#b8cce2] bg-gradient-to-b from-[#f0f6fc] to-[#e4eef9] p-3 text-[#1c3654] space-y-2">
+        <div className="flex flex-wrap items-center justify-between gap-1 border-b border-[#c8d9eb] pb-1.5">
+          <div className="flex items-center gap-1.5">
+            <span className="text-sm">🎯</span>
+            <span className="font-bold text-xs text-[#003366]">{guia.title || 'Misión Práctica en SAP Business One'}</span>
+          </div>
+          {guia.menu_path && (
+            <span className="text-[10.5px] font-medium text-[#4a6b8e] bg-white/80 px-2 py-0.5 rounded border border-[#c4d6ea]">
+              Ruta: <strong>{guia.menu_path}</strong>
+            </span>
+          )}
+        </div>
+
+        {/* Pasos a seguir */}
+        {guia.instructions && guia.instructions.length > 0 && (
+          <div className="space-y-1">
+            <span className="text-[10px] font-extrabold text-[#003366] uppercase tracking-wider block">
+              📋 Pasos para completar esta misión:
+            </span>
+            <ol className="grid sm:grid-cols-2 gap-x-3 gap-y-1 bg-white/80 p-2 rounded border border-[#c4d6ea]">
+              {guia.instructions.map((ins, idx) => (
+                <li key={idx} className="flex items-start gap-1.5 text-[11px] text-[#1c3654] leading-tight">
+                  <span className="shrink-0 w-4 h-4 rounded-full bg-[#0055A5] text-white text-[9.5px] font-bold flex items-center justify-center mt-0.5 shadow-2xs">
+                    {idx + 1}
+                  </span>
+                  <span>{ins}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        {/* Ficha de datos requeridos si existen campos */}
+        {guia.campos && guia.campos.length > 0 && (
+          <div>
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[10px] font-extrabold text-[#003366] uppercase tracking-wider">
+                🏷️ Datos clave del ejercicio:
+              </span>
+              <span className="text-[9.5px] text-[#4a6b8e]">
+                💡 Tip: ingresa los valores tal como se indican
+              </span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1.5">
+              {guia.campos.map((c, i) => (
+                <div key={i} className="px-2 py-1 rounded bg-white border border-[#b8cce2] shadow-2xs flex flex-col justify-between">
+                  <div className="flex items-baseline justify-between gap-1">
+                    <span className="text-[9.5px] font-bold text-[#004b91] uppercase tracking-wide truncate">
+                      {c.etiqueta}
+                    </span>
+                    <span className="text-[11px] font-bold text-gray-900 font-mono select-all truncate">
+                      {c.valor}
+                    </span>
+                  </div>
+                  {c.pista && (
+                    <span className="text-[9px] text-[#55708e] leading-tight mt-0.5 italic truncate" title={c.pista}>
+                      {c.pista}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {logrado && (
-        <div className="mx-3 mt-2 rounded-sm bg-emerald-50 border border-emerald-400 p-2 text-emerald-800 font-bold flex items-center gap-1.5">
+        <div className="mx-2 sm:mx-3 mt-2 rounded-sm bg-emerald-50 border border-emerald-400 p-2 text-emerald-800 font-bold flex items-center gap-1.5">
           <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
           Operación guardada ({logrado}). Comprobando los datos de la práctica…
         </div>

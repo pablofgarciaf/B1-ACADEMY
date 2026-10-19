@@ -1,6 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
+import { executionTime } from '@/lib/practice-config-outcomes';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 
 interface Recurso {
@@ -12,6 +13,7 @@ interface Recurso {
   factorEficiencia: number;   // 0-100 %
   tiempoSetup: number;        // minutos
   activo: boolean;
+  empleado?: string; activoFijo?: string; unidad?: string; tiempoPorUnidad?: string; unidadesPorPeriodo?: number; tiempoEjecucion?: string;
 }
 
 const CAPACIDAD_DEFECTO = 8;
@@ -31,13 +33,14 @@ export default function RecursosProduccionScreen({ tipo: tipoProp }: { tipo?: 't
   const vacio = (): Recurso => ({
     codigo: uid(), nombre: '', tipo: tipoFiltro,
     capacidadDiaria: CAPACIDAD_DEFECTO, costoPorHora: 0,
-    factorEficiencia: 100, tiempoSetup: 0, activo: true,
+    factorEficiencia: 100, tiempoSetup: 0, activo: true, unidad: 'Horas', tiempoPorUnidad: '00:00:00', unidadesPorPeriodo: 1,
   });
 
   const guardar = async () => {
     if (!editando?.nombre) return;
+    const tiempoEjecucion = executionTime(editando.tiempoPorUnidad ?? '00:00:00', editando.unidadesPorPeriodo ?? 1);
     const sin = guardados.filter(r => r.codigo !== editando.codigo);
-    await c.save({ action: 'resourceSave', data: { resources: [...sin, editando] } });
+    await c.save({ action: 'resourceSave', data: { resources: [...sin, { ...editando, tiempoEjecucion }] } });
     setEditando(null);
   };
 
@@ -89,6 +92,11 @@ export default function RecursosProduccionScreen({ tipo: tipoProp }: { tipo?: 't
             <div className="grid sm:grid-cols-2 gap-2">
               <Field label="Código"><input className={inputClass} value={editando.codigo} onChange={e => setEditando(v => v ? { ...v, codigo: e.target.value.toUpperCase() } : v)} /></Field>
               <Field label="Nombre" required><input required className={inputClass} value={editando.nombre} onChange={e => setEditando(v => v ? { ...v, nombre: e.target.value } : v)} /></Field>
+              {editando.tipo === 'trabajo' ? <Field label="Empleado"><select className={inputClass} value={editando.empleado ?? ''} onChange={e => setEditando(v => v ? {...v, empleado:e.target.value} : v)}><option value="">Sin vincular</option>{c.data.employees.map(e => <option key={e.id} value={e.employeeCode}>{e.employeeCode} — {e.firstName} {e.lastName}</option>)}</select></Field> : <Field label="Activo fijo"><select className={inputClass} value={editando.activoFijo ?? ''} onChange={e => setEditando(v => v ? {...v, activoFijo:e.target.value} : v)}><option value="">Sin vincular</option>{c.data.fixedAssets.map(a => <option key={a.id} value={a.assetCode}>{a.assetCode} — {a.name}</option>)}</select></Field>}
+              <Field label="Unidad de medida"><select className={inputClass} value={editando.unidad ?? 'Horas'} onChange={e => setEditando(v => v ? {...v,unidad:e.target.value}:v)}><option>Horas</option><option>Minutos</option><option>Ciclos</option></select></Field>
+              <Field label="Tiempo por unidad"><input type="time" step={1} className={inputClass} value={editando.tiempoPorUnidad ?? '00:00:00'} onChange={e => setEditando(v => v ? {...v,tiempoPorUnidad:e.target.value.length===5 ? e.target.value+':00' : e.target.value}:v)} /></Field>
+              <Field label="Unidades por período"><input type="number" min={1} className={inputClass} value={editando.unidadesPorPeriodo ?? 1} onChange={e => setEditando(v => v ? {...v,unidadesPorPeriodo:Number(e.target.value)}:v)} /></Field>
+              <Field label="Tiempo de ejecución"><output>{executionTime(editando.tiempoPorUnidad ?? '00:00:00', editando.unidadesPorPeriodo ?? 1)}</output></Field>
               <Field label="Capacidad diaria (horas)">
                 <input type="number" min={0.5} max={24} step={0.5} className={inputClass} value={editando.capacidadDiaria} onChange={e => setEditando(v => v ? { ...v, capacidadDiaria: Number(e.target.value) } : v)} />
               </Field>

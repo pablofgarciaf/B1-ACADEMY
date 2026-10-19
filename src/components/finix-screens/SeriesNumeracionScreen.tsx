@@ -5,6 +5,7 @@ import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 
 /** Tipos de documento que admiten series de numeración en Finix ERP. */
 const TIPOS_DOC = [
+  { code: 'clientes', label: 'Datos maestros de clientes' },
   { code: 'facturas',    label: 'Facturas de clientes' },
   { code: 'pedidos',     label: 'Pedidos de clientes' },
   { code: 'entregas',    label: 'Entregas' },
@@ -19,6 +20,7 @@ const TIPOS_DOC = [
 ];
 
 interface Serie {
+  sufijo?: string; digitos?: number; usuario?: string;
   id: string;
   docType: string;
   nombre: string;
@@ -48,7 +50,7 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
   useEffect(() => {
     setSeries(seriesGuardadas.filter(s => s.docType === tipoSel));
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tipoSel, seriesGuardadas.length]);
+  }, [tipoSel, p]);
 
   const empty = (): Serie => ({
     id: uid(), docType: tipoSel, nombre: '', prefijo: '',
@@ -59,7 +61,7 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
     if (!editando) return;
     // Merge editando en la lista completa (otras series de otros tipos + las actuales)
     const todasMenos = seriesGuardadas.filter(s => s.id !== editando.id);
-    const nuevaLista = [...todasMenos, editando];
+    const nuevaLista = [...todasMenos.map(s => editando.porDefecto && s.docType === editando.docType && (s.usuario ?? '') === (editando.usuario ?? '') ? {...s, porDefecto:false} : s), editando];
     try {
       await c.save({ action: 'docSeriesSave', data: { series: nuevaLista } });
       setEditando(null);
@@ -121,8 +123,12 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
               <Field label="Prefijo (opcional)">
                 <input maxLength={10} className={inputClass} value={editando.prefijo} onChange={e => setEditando(v => v ? { ...v, prefijo: e.target.value.toUpperCase() } : v)} />
               </Field>
+              <Field label="Sufijo"><input maxLength={20} className={inputClass} value={editando.sufijo ?? ''} onChange={e => setEditando(v => v ? {...v,sufijo:e.target.value}:v)} /></Field>
+              <Field label="Cantidad de dígitos"><input type="number" min={1} max={12} className={inputClass} value={editando.digitos ?? 1} onChange={e => setEditando(v => v ? {...v,digitos:Number(e.target.value)}:v)} /></Field>
+              <Field label="Usuario (predeterminado)"><select className={inputClass} value={editando.usuario ?? ''} onChange={e => setEditando(v => v ? {...v,usuario:e.target.value}:v)}><option value="">Todos los usuarios</option>{c.data.employees.map(e => <option key={e.id} value={e.employeeCode}>{e.employeeCode} — {e.firstName} {e.lastName}</option>)}</select></Field>
+              <Field label="Vista previa"><output>{editando.prefijo}{String(editando.actual).padStart(editando.digitos ?? 1, '0')}{editando.sufijo}</output></Field>
               <Field label="Número inicial">
-                <input type="number" min={1} className={inputClass} value={editando.inicio} onChange={e => setEditando(v => v ? { ...v, inicio: Number(e.target.value) } : v)} />
+                <input type="number" min={1} className={inputClass} value={editando.inicio} onChange={e => setEditando(v => v ? { ...v, inicio: Number(e.target.value), actual: nueva ? Number(e.target.value) : v.actual } : v)} />
               </Field>
               <Field label="Número final">
                 <input type="number" min={1} className={inputClass} value={editando.fin} onChange={e => setEditando(v => v ? { ...v, fin: Number(e.target.value) } : v)} />
