@@ -367,7 +367,7 @@ export default function ManualViewer({
           ...prev,
           {
             role: 'ia',
-            text: `⚠️ **AVISO DE INTEGRIDAD ACADÉMICA Y CONTROL DE EVALUACIÓN**\n\nComo Tutor Virtual Oficial de Finix Academy, **tengo estrictamente prohibido dar respuestas directas a preguntas de evaluación, quizzes o exámenes de certificación**.\n\n📌 **Orientación de Estudio:** Para responder esta interrogante, por favor repasa con atención el Teleprompter y las diapositivas explicativas de este manual.\n\n🚨 **Registro Académico:** Este repaso no registra una sanción en tu expediente.\n\n💼 **Recordatorio de Bolsa de Empleo:** Recuerda que para ingresar a las vacantes de nuestra Bolsa de Empleo con empresas partners del ecosistema SAP Business One, **deberás aprobar obligatoriamente una evaluación técnica presencial y semi-oral en vivo con nuestros reclutadores**, donde deberás defender tus conocimientos frente al sistema real. Intentar memorizar o trampear respuestas en la plataforma no te servirá en la entrevista presencial.`
+            text: `Puedo ayudarte a comprender el tema y razonar la respuesta. Revisa las diapositivas y explícame qué parte te cuesta; repasaremos el procedimiento sin resolver la evaluación por ti.`
           }
         ]);
       }, 500);

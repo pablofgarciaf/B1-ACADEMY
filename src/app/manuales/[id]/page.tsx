@@ -85,7 +85,7 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
       </header>
 
       <aside className="shrink-0 border-b border-sky-500/20 bg-sky-500/10 px-4 py-2 text-xs leading-relaxed text-sky-200">
-        <strong>Material de estudio técnico.</strong> Documentación y manuales oficiales de procesos para SAP Business One. Para realizar tus prácticas evaluadas del curso, ingresa a <Link href="/mi-aula" className="font-semibold underline">Mi Aula</Link>.
+        <strong>Material de estudio técnico.</strong> Material de referencia sobre procesos de SAP Business One. Para realizar tus prácticas evaluadas del curso, ingresa a <Link href="/mi-aula" className="font-semibold underline">Mi Aula</Link>.
       </aside>
 
       <main className="flex-1 min-h-0 overflow-hidden p-2.5 sm:p-4 max-w-[1700px] w-full mx-auto">
