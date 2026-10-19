@@ -30,6 +30,7 @@ export default function CockpitScreen() {
   const [plantillaSel, setPlantillaSel] = useState<PlantillaCockpit | null>(null);
   const [nuevaPlantilla, setNuevaPlantilla] = useState({ nombre: '' });
   const [modoNueva, setModoNueva] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     setPlantillas(data?.plantillas ?? []);
@@ -41,14 +42,22 @@ export default function CockpitScreen() {
   }, [data]);
 
   const guardar = async (pls: PlantillaCockpit[], act: string) => {
-    await c.save({ action: 'cockpitSave', data: { plantillas: pls, plantillaActiva: act } });
+    setError(null);
+    try {
+      await c.save({ action: 'cockpitSave', data: { plantillas: pls, plantillaActiva: act } });
+      return true;
+    } catch (error) {
+      setError(error instanceof Error ? error.message : 'No se pudo guardar la plantilla. Intenta nuevamente.');
+      return false;
+    }
   };
 
   const crearPlantilla = async () => {
-    if (!nuevaPlantilla.nombre) return;
-    const pl: PlantillaCockpit = { id: uid(), nombre: nuevaPlantilla.nombre, widgets: [] };
+    if (!nuevaPlantilla.nombre.trim() || c.saving) return;
+    if (plantillas.some(p => p.nombre.trim().toLocaleLowerCase() === nuevaPlantilla.nombre.trim().toLocaleLowerCase())) { setError('Ya existe una plantilla con ese nombre. Selecciónala para editarla.'); return; }
+    const pl: PlantillaCockpit = { id: uid(), nombre: nuevaPlantilla.nombre.trim(), widgets: [] };
     const pls = [...plantillas, pl];
-    await guardar(pls, activa || pl.id);
+    if (!await guardar(pls, activa)) return;
     setPlantillas(pls);
     setPlantillaSel(pl);
     setModoNueva(false);
@@ -71,7 +80,7 @@ export default function CockpitScreen() {
   const asignarYGuardar = async () => {
     if (!plantillaSel) return;
     const pls = plantillas.map(p => p.id === plantillaSel.id ? plantillaSel : p);
-    await guardar(pls, plantillaSel.id);
+    if (!await guardar(pls, plantillaSel.id)) return;
     setActiva(plantillaSel.id);
     setPlantillas(pls);
   };
@@ -79,6 +88,11 @@ export default function CockpitScreen() {
   return (
     <Screen title="Cockpit — Plantillas y widgets">
       <div className="space-y-3">
+        <div className="rounded border border-[#9fb1c7] bg-white p-3 text-sm text-[#003366]">
+          <strong>Personaliza tu espacio de trabajo</strong>
+          <p className="mt-1">1. Crea una plantilla. 2. Elige los widgets. 3. Asígnala y guarda para dejarla como predeterminada.</p>
+        </div>
+        {error && <p role="alert" className="rounded border border-red-300 bg-red-50 p-2 text-sm text-red-800">{error}</p>}
         {/* Selector de plantillas */}
         <div className="flex flex-wrap gap-2 items-center">
           <span className="text-sm font-semibold text-[#003366]">Plantillas:</span>
@@ -99,7 +113,7 @@ export default function CockpitScreen() {
                 value={nuevaPlantilla.nombre} onChange={e => setNuevaPlantilla({ nombre: e.target.value })} placeholder="Mi plantilla" />
             </Field>
             <div className="pb-0.5 flex gap-1">
-              <button type="button" onClick={crearPlantilla} disabled={!nuevaPlantilla.nombre} className={`${buttonClass} font-bold`}>Crear</button>
+              <button type="button" onClick={crearPlantilla} disabled={!nuevaPlantilla.nombre.trim() || c.saving} className={`${buttonClass} font-bold`}>Crear</button>
               <button type="button" onClick={() => setModoNueva(false)} className={buttonClass}>✕</button>
             </div>
           </div>
@@ -133,12 +147,12 @@ export default function CockpitScreen() {
 
             {plantillaSel.widgets.length > 0 && (
               <div className="mt-2 border border-[#cdd6e1] rounded-sm bg-white p-2">
-                <p className="text-xs font-semibold text-[#003366] mb-1">Vista previa del cockpit:</p>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-1">
+                <p className="text-xs font-semibold text-[#003366] mb-1">Vista previa de la distribución:</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                   {plantillaSel.widgets.map(w => (
                     <div key={w.id} className="border border-[#cdd6e1] rounded-sm p-2 bg-[#f4f6f9] text-center">
                       <p className="text-xs font-semibold text-[#003366]">{w.titulo}</p>
-                      <p className="text-[10px] text-gray-400 mt-1">[Datos en tiempo real]</p>
+                      <p className="text-[10px] text-gray-400 mt-1">Widget seleccionado; esta vista muestra su ubicación.</p>
                     </div>
                   ))}
                 </div>

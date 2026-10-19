@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import AcademicSlide from '@/components/simulator/AcademicSlide';
@@ -123,7 +123,11 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
 
   // Class flow
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [phase, setPhase] = useState<'narrating' | 'simulator' | 'mission_done'>('narrating');
+  const [phase, setPhase] = useState<'narrating' | 'simulator' | 'validating' | 'mission_done'>('narrating');
+  const [practiceAttempt,setPracticeAttempt]=useState(0);
+  const practiceContext=useRef('');
+  practiceContext.current = currentUser?.uid+':'+moduleId+':'+activeClassId+':'+currentSlideIndex+':'+restartKey;
+  useEffect(()=>setPracticeAttempt(0),[activeClassId,currentSlideIndex]);
   const [completedClasses, setCompletedClasses] = useState<Record<string, boolean>>({});
   const [passedPractices, setPassedPractices] = useState<string[]>([]);
   const [requiredPractices, setRequiredPractices] = useState<string[]>([]);
@@ -306,36 +310,40 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   // SIMULATOR ENTRY → read instructions
   // =============================================
   useEffect(() => {
-    if (phase === 'simulator' && currentStepGuide) {
+    if (phase === 'simulator' && currentStepGuide && practiceAttempt===0) {
       // Explicación de la lámina + instrucciones, narradas mientras el estudiante ya ve el simulador.
       const instText = currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map(i => i.replace(/\.$/, '')).join('. ');
       speakText(`${slideScript} ${instText}.`.trim());
       return stopSpeaking;
     }
-  }, [phase, currentStepGuide, slideScript, speakText, stopSpeaking]);
+  }, [phase, currentStepGuide, slideScript, speakText, stopSpeaking, practiceAttempt]);
 
   // =============================================
   // Mission complete callback from simulator
   // =============================================
-  const handleMissionComplete = useCallback((intento?: IntentoPractica) => {
+  const handleMissionComplete = useCallback(async (intento?: IntentoPractica) => {
     stopSpeaking();
-    setPhase('mission_done');
-    if (!intento || !currentUser || !moduleInfo) return;
-    // La práctica se califica en el servidor: solo así cuenta para el certificado del módulo.
-    const clave = `${activeClassId}#${currentSlideIndex + 1}`;
-    void currentUser.getIdToken()
-      .then(token => fetch('/api/practice', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ moduleId: moduleInfo.id, classId: activeClassId, slideIndex: currentSlideIndex + 1, ...intento }),
-      }))
-      .then(r => r.ok ? r.json() : Promise.reject(new Error('practice-save')))
-      .then((res: { aprobada: boolean }) => {
-        if (res.aprobada) {setPassedPractices(prev => (prev.includes(clave) ? prev : [...prev, clave]));setPhase('mission_done');}else setRestartKey(k=>k+1);
-        setPracticeNotice(res.aprobada ? null : 'Práctica completada, pero no cumple los requisitos del certificado. Repítela para que se registre.');
-      })
-      .catch(() => {setPracticeNotice('No pudimos validar la práctica. Revisa la misión y vuelve a intentarlo.');setRestartKey(k=>k+1);});
-  }, [stopSpeaking, currentUser, moduleInfo, activeClassId, currentSlideIndex]);
+    const clave = activeClassId+'#'+(currentSlideIndex+1);
+    const context=practiceContext.current;
+    const retry=(message:string)=>{if(practiceContext.current!==context)return;setPracticeNotice(message);setPracticeAttempt(n=>n+1);setPhase('simulator');};
+    if(!intento){
+      if(requiredPractices.includes(clave))retry('La actividad no entregó un resultado verificable. Revisa la instrucción o consulta al docente con el código '+clave+'.');
+      else setPhase('mission_done');
+      return;
+    }
+    if(!currentUser||!moduleInfo){retry('Inicia sesión para guardar la práctica.');return;}
+    setPhase('validating');setPracticeNotice(null);
+    try {
+      const token=await currentUser.getIdToken();
+      const response=await fetch('/api/practice',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+token},body:JSON.stringify({moduleId:moduleInfo.id,classId:activeClassId,slideIndex:currentSlideIndex+1,...intento})});
+      const result=await response.json();
+      if(practiceContext.current!==context)return;
+      if(!response.ok)throw new Error(result.error||'No pudimos comprobar el resultado. Intenta nuevamente.');
+      if(result.aprobada!==true){retry('El resultado todavía no coincide con la misión. Corrige los datos y vuelve a guardar; tu operación anterior sigue registrada.');return;}
+      setPassedPractices(previous=>previous.includes(clave)?previous:[...previous,clave]);
+      setPhase('mission_done');
+    }catch(error){retry(error instanceof Error?error.message:'No pudimos comprobar el resultado. Intenta nuevamente.');}
+  }, [stopSpeaking,currentUser,moduleInfo,activeClassId,currentSlideIndex,requiredPractices]);
 
   // =============================================
   // Progress & lessons
@@ -743,6 +751,8 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                 <p className="text-sm text-gray-400">Cargando clase...</p>
               </div>
             </div>
+          ) : phase === 'validating' ? (
+            <div role="status" aria-live="polite" className="m-auto p-8 text-center text-sky-200">Comprobando el resultado guardado de tu práctica…</div>
           ) : phase === 'mission_done' && currentSlideIndex >= (lessonData?.totalSlides ?? 1) - 1 ? (
             /* ── COMPLETED ── */
             <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
@@ -834,7 +844,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
               {/* Simulator */}
               <div className="flex-1 min-h-[320px] mt-3 px-2 sm:px-4 pb-4">
                 <FinixInteractiveSimulator
-                  key={`${activeClassId}:${currentSlideIndex}:${restartKey}`}
+                  key={`${activeClassId}:${currentSlideIndex}:${restartKey}:${practiceAttempt}`}
                   manualId={activeClassId}
                   currentStepIndex={currentSlideIndex}
                   stepGuide={currentStepGuide}
