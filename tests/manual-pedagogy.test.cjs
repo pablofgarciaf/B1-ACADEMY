@@ -10,8 +10,8 @@ test('los 120 manuales tienen un caso propio, explicación y selección explíci
  assert.deepEqual(getQuizForManual('no-existe','',''),[]);
 });
 test('elegir la alternativa más larga no permite aprobar el conjunto de casos',()=>{
- const rows=Object.values(MANUAL_CASES);for(const count of [s=>s.length,s=>s.split(/\s+/).length]){
- const expected=rows.reduce((sum,r)=>{const lengths=r[1].map(count),max=Math.max(...lengths);return sum+(lengths[0]===max?1/lengths.filter(n=>n===max).length:0);},0)/rows.length;
+ const rows=Object.values(MANUAL_CASES);for(const count of [s=>s.length,s=>s.split(/\s+/).length])for(const extreme of [Math.max,Math.min]){
+ const expected=rows.reduce((sum,r)=>{const lengths=r[1].map(count),max=extreme(...lengths);return sum+(lengths[0]===max?1/lengths.filter(n=>n===max).length:0);},0)/rows.length;
  assert.ok(expected<0.45,'Acierto por longitud: '+expected);
  }
 });
