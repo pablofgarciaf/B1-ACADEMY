@@ -68,6 +68,14 @@ function contract(key: string): PracticeOutcomeContract {
     let path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
     if(screen.clave==='bancos'&&field.etiqueta==='Número de documento'){path='transactionId';generated=true;}
     if(screen.clave==='bom'&&['Código','Descripción','Almacén'].includes(field.etiqueta)&&/agregar (componente|recurso)/i.test(guide?.title??'')) path=`components.${field.etiqueta==='Código'?'itemCode':field.etiqueta==='Descripción'?'description':'warehouseCode'}`;
+    // Los documentos conservan la serie elegida, el origen y el tipo que los generó.
+    if(screen.clave==='documento') {
+      if(field.etiqueta==='Serie') path='series';
+      if(field.etiqueta==='Factura de referencia') path='baseDocumentId';
+      if(field.etiqueta==='Código' && /crear factura a dell/i.test(guide?.title??'')) path='cardCode';
+      if(field.etiqueta==='Tipo de pedido' && /mrp/i.test(guide?.title??'')) path='docType';
+      if(field.etiqueta==='Proveedor sugerido' && /mrp/i.test(guide?.title??'')) path='cardCode';
+    }
     if(screen.clave==='produccion'&&field.etiqueta==='Número') { path=/recibir/i.test(guide?.title??'')?'receiptNumber':'orderNumber'; generated=true; }
     if(screen.clave==='produccion'&&field.etiqueta==='Orden de producción') { path='orderNumber'; generated=true; }
     if(screen.clave==='precios'&&(guide?.campos??[]).some(field=>field.etiqueta==='Código de artículo')) {
@@ -108,8 +116,9 @@ function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyStat
     else if(requirement.path.endsWith('itemCode'))expected=state.items.find(row=>normalizar(row.name)===normalizar(expected))?.itemCode??expected;
     else if(requirement.path.endsWith('employeeCode'))expected=state.employees.find(row=>normalizar(`${row.firstName} ${row.lastName}`)===normalizar(expected))?.employeeCode??expected;
   }
+  if(requirement.path==='baseDocumentId') expected=[...state.salesOrders,...state.purchaseOrders].find(document=>document.docNumber===expected)?.id??expected;
   if(requirement.path==='counterpartAccount') expected=expected.match(/^([\d.]+)/)?.[1]??expected;
-  if(requirement.path==='docType'){const labels:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes'};actual=labels[String(actual)]??actual;}
+  if(requirement.path==='docType'){const labels:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',purchase_order:'Pedido de compra'};actual=labels[String(actual)]??actual;}
   if(['list','referenceList'].includes(requirement.path)){const number=String(expected).match(/(\d+)$/)?.[1];if(number)expected=String(Number(number));}
   if(requirement.path==='paymentTermsDays')expected=expected.replace(/\s*d[ií]as?$/i,'');
   return actual!==undefined && normalizar(comparable(actual))===normalizar(comparable(expected));

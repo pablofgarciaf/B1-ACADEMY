@@ -17,6 +17,33 @@ test('práctica exige datos reales de factura y rechaza otra cantidad aunque la 
 test('artículo, cantidad y precio deben coincidir en la misma línea',()=>{
  const c=fixture(),data=purchase(2);data.document.lines.push({...data.document.lines[0],itemCode:'A00002',quantity:3});const event=c.run('purchase',data);assert.equal(missionOutcomeMatches(c.state,event,'mod3-c1#8'),false);
 });
+
+test('documentos guardan la serie aplicada, la referencia base y el tipo generado por MRP',()=>{
+ const c=fixture();
+ c.run('docSeriesSave',{series:[
+  {id:'fac',docType:'facturas',nombre:'FAC2026',prefijo:'FAC-2026-',inicio:32,fin:99,actual:32,digitos:4,porDefecto:true,bloqueada:false,grupo:1},
+  {id:'nd',docType:'nc_prov',nombre:'ND',prefijo:'ND-',inicio:1,fin:99,actual:1,digitos:5,porDefecto:true,bloqueada:false,grupo:1}
+ ]});
+ const invoice=c.run('sales',{docType:'invoice',document:{date:'2026-04-01',dueDate:'2026-04-01',cardCode:'C20001',reference:'',comments:'',baseDocumentId:'',series:'FAC2026',lines:[{itemCode:'A00009',description:'Impresora Multifunción Epson',quantity:1,unit:'UND',price:220,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ assert.equal(c.state.salesOrders.at(-1).docNumber,'FAC-2026-0032');
+ const credit=c.run('sales',{docType:'credit_note',document:{date:'2026-04-02',dueDate:'2026-04-02',cardCode:'C20001',reference:'',comments:'',baseDocumentId:invoice.result,series:'',lines:[{itemCode:'A00009',description:'Impresora Multifunción Epson',quantity:1,unit:'UND',price:220,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ assert.equal(missionOutcomeMatches(c.state,credit,'mod12-c4#8'),true);
+ const debit=c.run('purchase',{docType:'debit_note',document:{date:'2026-06-15',dueDate:'2026-06-15',cardCode:'V10000',reference:'Factura 00150',comments:'',baseDocumentId:'',series:'ND',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity:1,unit:'UND',price:850,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ assert.equal(c.state.purchaseOrders.at(-1).series,'ND');
+ assert.equal(c.state.purchaseOrders.at(-1).docNumber,'ND-00001');
+ assert.equal(missionOutcomeMatches(c.state,debit,'mod22-c6#5'),true);
+ const mrp=c.run('purchase',{docType:'purchase_order',document:{date:'2026-07-01',dueDate:'2026-08-15',cardCode:'V10000',reference:'Recomendación MRP',comments:'',baseDocumentId:'',series:'',lines:[{itemCode:'A00007',description:'Disco Duro SSD 1TB Samsung',quantity:100,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ assert.equal(missionOutcomeMatches(c.state,mrp,'mod15-c1#8'),true);
+});
+
+test('precio explícito por artículo queda guardado dentro de la lista y habilita la práctica',()=>{
+ const c=fixture();
+ const list=c.run('priceListSave',{code:'LPRECIO01',name:'Lista Estándar Clientes',description:'Precios estándar para clientes regulares',base:1,factor:1,currency:'USD',validFrom:'2026-01-01',validTo:'2026-12-31',active:true});
+ assert.equal(missionOutcomeMatches(c.state,list,'mod2-c4#5'),true);
+ const entry=c.run('priceListItem',{list:4,itemCode:'A00001',price:850,unit:'Unidad',validFrom:'2026-01-01',validTo:'2026-12-31',active:true,remove:false});
+ assert.equal(c.state.profile.priceLists[0].items[0].price,850);
+ assert.equal(missionOutcomeMatches(c.state,entry,'mod2-c4#6'),true);
+});
 test('convertir potencial exige transición real, no basta crear un cliente con el texto esperado',()=>{
  const c=fixture();const lead={name:'Maxi-Teq',ruc:'1799999999001',email:'',phone:'',address:'',city:'Quito',contactName:'',currency:'USD',paymentTermsDays:30,creditLimit:1000,active:true,group:'EDU',notes:'',kind:'lead'};
  const created=c.run('customer',lead);const converted=c.run('partnerUpdate',{partnerType:'customer',cardCode:created.result,changes:{kind:'customer'}});assert.equal(missionOutcomeMatches(c.state,converted,'mod2-c1#7'),true);
