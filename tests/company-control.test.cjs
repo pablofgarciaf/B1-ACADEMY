@@ -97,6 +97,14 @@ test('precios: las vigencias y el rango de cantidad condicionan el descuento apl
   assert.equal(precioSugerido(s.state, s.cliente, s.art, 5, '2026-06-15').precio, 18);
 });
 
+test('precios: un precio especial vigente del cliente prevalece sobre el descuento por volumen', () => {
+  const s = empresa();
+  s.run('volumeDiscount', { itemCode: s.art, list: 1, minQuantity: 2, maxQuantity: null, discount: 5, validFrom: '2026-01-01', validTo: '2026-12-31', active: true });
+  s.run('specialPrice', { cardCode: s.cliente, itemCode: s.art, discount: 12, validFrom: '2026-06-01', validTo: '2026-06-30', referenceList: 1, active: true });
+  assert.equal(precioSugerido(s.state, s.cliente, s.art, 5, '2026-06-15').descuento, 12);
+  assert.equal(precioSugerido(s.state, s.cliente, s.art, 5, '2026-07-01').descuento, 5);
+});
+
 test('conteo físico: ajusta stock y contabiliza la merma contra 6.05', () => {
   const s = empresa();
   s.run('purchase', { docType: 'vendor_invoice', document: s.doc(s.proveedor, [s.line(10, 10)]) }); // 10 u a $10

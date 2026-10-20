@@ -44,17 +44,18 @@ export function precioSugerido(state: CompanyState, cardCode: string, itemCode: 
   const item = state.items.find(i => i.itemCode === itemCode);
   if (!item) return null;
   const lista = state.profile?.customerPriceLists?.[cardCode] ?? 1;
-  const porLista = precioDeLista(state, item, lista);
+  const special = (state.profile?.specialPrices ?? []).find(v => v.cardCode === cardCode && v.itemCode === itemCode && v.active && fecha >= v.validFrom && fecha <= v.validTo);
+  const porLista = precioDeLista(state, item, special?.referenceList ?? lista);
   const precio = porLista > 0 ? porLista : item.price;
   const reglas = (state.profile?.volumeDiscounts ?? [])
     .filter(v => (v.itemCode === itemCode || v.itemCode === '*') && (v.list ?? 1) === lista && v.active !== false && cantidad >= v.minQuantity && (v.maxQuantity === null || v.maxQuantity === undefined || cantidad <= v.maxQuantity) && fecha >= (v.validFrom ?? '2020-01-01') && fecha <= (v.validTo ?? '2099-12-31'))
     .sort((a, b) => b.discount - a.discount);
-  const descuento = Math.min(reglas[0]?.discount ?? 0, item.maxDiscount);
+  const descuento = Math.min(special?.discount ?? reglas[0]?.discount ?? 0, item.maxDiscount);
   const precioNeto = round(precio * (1 - descuento / 100));
   const costo = costoUnitario(state, itemCode);
   return {
     lista, nombreLista: nombreLista(state, lista), precio, descuento,
-    reglaDescuento: reglas[0] ? `Desde ${reglas[0].minQuantity} unidades: ${reglas[0].discount} %` : '',
+    reglaDescuento: special ? `Precio especial del cliente: ${special.discount} %` : reglas[0] ? `Desde ${reglas[0].minQuantity} unidades: ${reglas[0].discount} %` : '',
     precioNeto, costo, margenPct: precioNeto > 0 ? round(((precioNeto - costo) / precioNeto) * 100) : null, topeDescuento: item.maxDiscount,
   };
 }

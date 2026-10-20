@@ -88,11 +88,14 @@ export interface CompanyProfile extends Entity { usage?: 'training' | 'private';
   priceLists?: { no: number; code: string; name: string; description: string; base: number; factor: number; currency: 'USD'; validFrom: string; validTo: string; active: boolean }[];
   /** Descuentos automáticos por cantidad. itemCode '*' aplica a todos los artículos. */
   volumeDiscounts?: VolumeDiscount[];
+  /** Precio especial por cliente y artículo, con vigencia. Tiene prioridad sobre su lista general. */
+  specialPrices?: SpecialPrice[];
   /** Campos definidos por el usuario (como los U_ de Finix ERP). */
   udfDefinitions?: UdfDefinition[];
 }
 export interface ApprovalRule { docType: DocType; threshold: number; active: boolean }
 export interface VolumeDiscount { id: string; itemCode: string; list: number; minQuantity: number; maxQuantity: number | null; discount: number; validFrom: string; validTo: string; active: boolean }
+export interface SpecialPrice { id: string; cardCode: string; itemCode: string; discount: number; validFrom: string; validTo: string; referenceList: number; active: boolean }
 export interface Mission extends Entity { title: string; description: string; module: string; status: 'assigned' | 'completed'; teacherUid: string }
 /** Presupuesto anual de una cuenta de resultados (ingresos, costos o gastos), en 12 montos mensuales. */
 export interface Budget extends Entity { year: string; accountCode: string; accountName: string; months: number[] }

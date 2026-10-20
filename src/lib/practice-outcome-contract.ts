@@ -31,7 +31,7 @@ const maps: Record<string, Map<string, string>> = {
   grupos: entries({'Código de grupo':'codigo','Código':'codigo','Grupo':'codigo','Nombre del grupo':'nombre','Nombre':'nombre','Descripción':'descripcion'}),
   series: entries({'Tipo de documento':'docType','Cantidad de dígitos':'digitos','Sufijo':'sufijo','Usuario':'usuario','Número de inicio':'inicio','Número final':'fin','Nombre de la serie':'nombre','Grupo de serie':'grupo','Próximo número':'actual','Fijar como por defecto':'porDefecto','Prefijo':'prefijo'}),
   monedas: entries({'Moneda local':'monedaLocal','Moneda del sistema':'monedaSistema','Tipo de cambio':'tasa','Fecha de tipo de cambio':'fecha'}),
-  precios: entries({'Lista de precios':'code','Nombre de la lista':'name','Nombre':'name','Descripción':'description','Moneda':'currency','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Lista base':'base','Factor':'factor','Activa':'active'}),
+  precios: entries({'Lista de precios':'code','Nombre de la lista':'name','Nombre':'name','Descripción':'description','Moneda':'currency','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Lista base':'base','Factor':'factor','Activa':'active','Código de cliente':'cardCode','Interlocutor origen':'cardCode','Código de artículo':'itemCode','Artículo':'itemCode','Porcentaje':'discount','Descuento':'discount','Referencia a lista':'referenceList'}),
   descuentos: entries({'Lista de precios':'list','Código de artículo':'itemCode','Artículo':'itemCode','Desde cantidad':'minQuantity','Cantidad mínima':'minQuantity','Hasta cantidad':'maxQuantity','Descuento':'discount','Descuento %':'discount','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Activo':'active'}),
   bancos: entries({'Fecha':'date','Fecha pago':'date','Fecha documento':'date','Monto':'amount','Valor pagado':'amount','Importe recibido':'amount','Importe':'amount','Importe a pagar':'amount','Total pagado':'amount','Valor':'amount','Contrapartida':'counterpartAccount','Referencia':'reference','Retención renta':'retentionIR','Retención IVA':'retentionIVA','Tipo':'type'}),
   isd: entries({'Fecha':'date','Valor':'figures.amount','ISD':'figures.isd','Total':'figures.total'}),
@@ -52,7 +52,7 @@ function contract(key: string): PracticeOutcomeContract {
   if(screen.clave==='series') result.rows='docSeries';
   if(screen.clave==='monedas') { result.rows='currencies.tasas'; const target=guide?.campos?.find(f=>f.etiqueta==='Moneda del sistema'); if(target)result.requirements.push({label:'Moneda de la tasa',expected:target.valor,path:'moneda'}); }
   if(screen.clave==='cockpit') result.rows='cockpit.plantillas';
-  if(screen.clave==='precios') result.rows='priceLists';
+  if(screen.clave==='precios') result.rows=(guide?.campos??[]).some(f=>['Código de cliente','Interlocutor origen'].includes(f.etiqueta)) ? 'specialPrices' : 'priceLists';
   if(screen.clave==='descuentos') result.rows='volumeDiscounts';
   for(const field of guide?.campos??[]) {
     const generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
@@ -84,7 +84,7 @@ function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyStat
     else if(requirement.path.endsWith('employeeCode'))expected=state.employees.find(row=>normalizar(`${row.firstName} ${row.lastName}`)===normalizar(expected))?.employeeCode??expected;
   }
   if(requirement.path==='docType'){const labels:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes'};actual=labels[String(actual)]??actual;}
-  if(requirement.path==='list'){const number=String(expected).match(/(\d+)$/)?.[1];if(number)expected=String(Number(number));}
+  if(['list','referenceList'].includes(requirement.path)){const number=String(expected).match(/(\d+)$/)?.[1];if(number)expected=String(Number(number));}
   if(requirement.path==='paymentTermsDays')expected=expected.replace(/\s*d[ií]as?$/i,'');
   return actual!==undefined && normalizar(comparable(actual))===normalizar(comparable(expected));
 }

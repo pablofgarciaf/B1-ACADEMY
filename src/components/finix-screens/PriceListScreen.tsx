@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { round, usd } from '@/lib/company-calculations';
-import { costoUnitario, listasDePrecios, precioDeLista } from '@/lib/company-pricing';
+import { costoUnitario, listasDePrecios, nombreLista, precioDeLista } from '@/lib/company-pricing';
 import type { Item } from '@/lib/firestore-types';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 import { ParaPensar } from './AnalysisBlocks';
@@ -46,6 +46,7 @@ export default function PriceListScreen() {
   const vacia = { code: '', name: '', description: '', base: 1, factor: 1, currency: 'USD' as const, validFrom: '2026-01-01', validTo: '2099-12-31', active: true };
   const [nueva, setNueva] = useState<{ no?: number } & typeof vacia>(vacia);
   const [asistente, setAsistente] = useState<{ list: number; method: 'factor' | 'percent'; value: number }>({ list: 1, method: 'factor', value: 1 });
+  const [especial, setEspecial] = useState({ cardCode: '', itemCode: '', discount: 0, validFrom: '2026-01-01', validTo: '2099-12-31', referenceList: 1, active: true });
   const accion = async (command: Parameters<typeof c.save>[0]) => { try { await c.save(command); return true; } catch { return false; } };
   const mult = asistente.method === 'factor' ? asistente.value : 1 + asistente.value / 100;
   const listaAsist = listas.find(l => l.no === asistente.list);
@@ -108,6 +109,20 @@ export default function PriceListScreen() {
           {listas.map(l => <option key={l.no} value={l.no}>{l.no} · {l.name}</option>)}
         </select>,
       ])} />
+      <section className="mt-4 space-y-2 border border-[#999] bg-white p-2">
+        <h3 className="font-bold text-[#003366]">Precio especial por cliente</h3>
+        <p className="text-[#555]">El descuento especial tiene prioridad sobre la lista asignada mientras esté vigente. Se aplica al cotizar y facturar.</p>
+        <form className="grid gap-2 sm:grid-cols-3" onSubmit={async e => { e.preventDefault(); if (await accion({ action: 'specialPrice', data: { id: '', ...especial, remove: false } })) setEspecial(v => ({ ...v, cardCode: '', itemCode: '', discount: 0 })); }}>
+          <Field label="Cliente" required><select required className={inputClass} value={especial.cardCode} onChange={e => setEspecial(v => ({ ...v, cardCode: e.target.value }))}><option value="">Selecciona…</option>{c.data.customers.map(x => <option key={x.id} value={x.cardCode}>{x.cardCode} · {x.name}</option>)}</select></Field>
+          <Field label="Artículo" required><select required className={inputClass} value={especial.itemCode} onChange={e => setEspecial(v => ({ ...v, itemCode: e.target.value }))}><option value="">Selecciona…</option>{articulos.map(x => <option key={x.id} value={x.itemCode}>{x.itemCode} · {x.name}</option>)}</select></Field>
+          <Field label="Descuento %"><input type="number" min={0} max={100} step="0.01" className={inputClass} value={especial.discount} onChange={e => setEspecial(v => ({ ...v, discount: Number(e.target.value) }))} /></Field>
+          <Field label="Lista de referencia"><select className={inputClass} value={especial.referenceList} onChange={e => setEspecial(v => ({ ...v, referenceList: Number(e.target.value) }))}>{listas.filter(x => x.active).map(x => <option key={x.no} value={x.no}>{x.code} · {x.name}</option>)}</select></Field>
+          <Field label="Válida desde"><input type="date" className={inputClass} value={especial.validFrom} onChange={e => setEspecial(v => ({ ...v, validFrom: e.target.value }))} /></Field>
+          <Field label="Válida hasta"><input type="date" className={inputClass} value={especial.validTo} onChange={e => setEspecial(v => ({ ...v, validTo: e.target.value }))} /></Field>
+          <button type="submit" className={buttonClass} disabled={c.saving}>Guardar precio especial</button>
+        </form>
+        <Table headers={['Cliente', 'Artículo', 'Lista', 'Descuento', 'Vigencia']} rows={(c.data.profile?.specialPrices ?? []).filter(x => x.active).map(x => [x.cardCode, x.itemCode, nombreLista(c.data, x.referenceList), `${x.discount} %`, `${x.validFrom} a ${x.validTo}`])} />
+      </section>
       <ParaPensar clave={`b1_listas_${c.data.profile?.uid ?? 'anon'}`} preguntas={[
         '¿Qué condiciones debería cumplir un cliente para merecer la lista Mayorista: volumen, puntualidad de pago, ambas?',
         'Si el costo de un artículo sube 8 %, ¿qué lista ajustarías primero y cómo se lo comunicarías al cliente?',

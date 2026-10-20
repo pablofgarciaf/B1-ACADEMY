@@ -538,6 +538,19 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       }
       profile.volumeDiscounts = lista; break;
     }
+    case 'specialPrice': {
+      const d = command.data; let lista = profile.specialPrices ?? [];
+      if (d.remove) { lista = lista.filter(v => v.id !== d.id); result = d.id; }
+      else {
+        const item = state.items.find(i => i.itemCode === d.itemCode); if (!item) throw new Error('Artículo inexistente.');
+        assert(state.customers.some(c => c.cardCode === d.cardCode), 'Cliente inexistente.');
+        assert(d.discount <= item.maxDiscount, `El descuento supera el máximo permitido (${item.maxDiscount} %).`);
+        assert(d.referenceList <= 3 || (profile.priceLists ?? []).some(l => l.no === d.referenceList && l.active), 'La lista de referencia no existe o está inactiva.');
+        result = d.id || next('PE');
+        lista = [...lista.filter(v => v.id !== result), { id: result, cardCode: d.cardCode, itemCode: d.itemCode, discount: d.discount, validFrom: d.validFrom, validTo: d.validTo, referenceList: d.referenceList, active: d.active }];
+      }
+      profile.specialPrices = lista; break;
+    }
     case 'inventoryCount': {
       const d = command.data; assert(profile.warehouses.some(w => w.code === d.warehouseCode), 'Almacén inexistente.');
       assert(new Set(d.lines.map(l => l.itemCode)).size === d.lines.length, 'Artículo repetido en el conteo.');
