@@ -13,11 +13,14 @@ export default function InventoryCountScreen() {
   const [fecha, setFecha] = useState(today());
   const [ciego, setCiego] = useState(true);
   const [contado, setContado] = useState<Record<string, string>>({});
+  const [ubicacion, setUbicacion] = useState<Record<string, string>>({});
+  const [contador, setContador] = useState<Record<string, string>>({});
+  const [ajustes, setAjustes] = useState(() => c.data.profile?.inventorySettings ?? []);
   const filas = useMemo(() => c.data.items.filter(i => i.active && i.type === 'inventory').map(i => {
     const s = c.data.warehouseStock.find(w => w.itemCode === i.itemCode && w.warehouseCode === almacen);
     return { itemCode: i.itemCode, nombre: i.name, sistema: s?.quantity ?? 0, costo: s?.averageCost || i.purchasePrice };
   }), [c.data, almacen]);
-  const lineas = filas.filter(f => contado[f.itemCode] !== undefined && contado[f.itemCode] !== '').map(f => ({ itemCode: f.itemCode, countedQuantity: Number(contado[f.itemCode]) }));
+  const lineas = filas.filter(f => contado[f.itemCode] !== undefined && contado[f.itemCode] !== '').map(f => ({ itemCode: f.itemCode, countedQuantity: Number(contado[f.itemCode]), location: ubicacion[f.itemCode] ?? '', counter: contador[f.itemCode] ?? '' }));
 
   const registrar = async () => {
     if (!window.confirm(`Se ajustará el stock de ${lineas.length} artículo(s) y se registrará el asiento de diferencias. ¿Continuar?`)) return;
@@ -40,12 +43,15 @@ export default function InventoryCountScreen() {
         <Field label="Fecha del conteo"><input type="date" className={inputClass} value={fecha} onChange={e => setFecha(e.target.value)} /></Field>
         <label className="flex items-center gap-2"><input type="checkbox" checked={ciego} onChange={e => setCiego(e.target.checked)} /> Conteo ciego (ocultar cantidad del sistema)</label>
       </div>
-      <Table headers={['Artículo', ...(ciego ? [] : ['En sistema']), 'Contado', ...(ciego ? [] : ['Diferencia'])]} rows={filas.map(f => {
+      <details className="rounded border border-[#9fb1c7] bg-[#f7f8fa] p-2"><summary className="cursor-pointer font-bold text-[#003366]">Configuración de fecha de stock</summary><div className="mt-2 grid gap-2 sm:grid-cols-5"><Field label="Documento"><input className={inputClass} value={ajustes[0]?.document ?? 'Recuento de Inventario'} onChange={e=>setAjustes([{document:e.target.value,stockDateBy:ajustes[0]?.stockDateBy??'creation',default:ajustes[0]?.default??true,appliesTo:ajustes[0]?.appliesTo??'Todos los usuarios',exampleDate:ajustes[0]?.exampleDate??fecha}])}/></Field><Field label="Fecha de stock por"><select className={inputClass} value={ajustes[0]?.stockDateBy ?? 'creation'} onChange={e=>setAjustes([{document:ajustes[0]?.document??'Recuento de Inventario',stockDateBy:e.target.value as 'creation'|'posting',default:ajustes[0]?.default??true,appliesTo:ajustes[0]?.appliesTo??'Todos los usuarios',exampleDate:ajustes[0]?.exampleDate??fecha}])}><option value="creation">Creación</option><option value="posting">Contabilización</option></select></Field><Field label="Fecha ejemplo"><input type="date" className={inputClass} value={ajustes[0]?.exampleDate ?? fecha} onChange={e=>setAjustes([{document:ajustes[0]?.document??'Recuento de Inventario',stockDateBy:ajustes[0]?.stockDateBy??'creation',default:ajustes[0]?.default??true,appliesTo:ajustes[0]?.appliesTo??'Todos los usuarios',exampleDate:e.target.value}])}/></Field><Field label="Aplica a"><input className={inputClass} value={ajustes[0]?.appliesTo ?? 'Todos los usuarios'} onChange={e=>setAjustes([{document:ajustes[0]?.document??'Recuento de Inventario',stockDateBy:ajustes[0]?.stockDateBy??'creation',default:ajustes[0]?.default??true,appliesTo:e.target.value,exampleDate:ajustes[0]?.exampleDate??fecha}])}/></Field><label className="flex items-center gap-2 pt-6"><input type="checkbox" checked={ajustes[0]?.default ?? true} onChange={e=>setAjustes([{document:ajustes[0]?.document??'Recuento de Inventario',stockDateBy:ajustes[0]?.stockDateBy??'creation',default:e.target.checked,appliesTo:ajustes[0]?.appliesTo??'Todos los usuarios',exampleDate:ajustes[0]?.exampleDate??fecha}])}/> Predeterminado</label></div><button type="button" className={`${buttonClass} mt-2`} disabled={c.saving||!ajustes.length} onClick={()=>c.save({action:'inventorySettingsSave',data:{settings:ajustes}})}>Guardar configuración</button></details>
+      <Table headers={['Artículo', ...(ciego ? [] : ['En sistema']), 'Ubicación', 'Contador', 'Contado', ...(ciego ? [] : ['Diferencia'])]} rows={filas.map(f => {
         const v = contado[f.itemCode];
         const dif = v !== undefined && v !== '' ? round(Number(v) - f.sistema) : null;
         return [
           `${f.itemCode} · ${f.nombre}`,
           ...(ciego ? [] : [f.sistema]),
+          <input key="u" aria-label={`Ubicación ${f.nombre}`} className={inputClass} value={ubicacion[f.itemCode] ?? ''} onChange={e=>setUbicacion(x=>({...x,[f.itemCode]:e.target.value}))} placeholder="A1-01" />,
+          <input key="r" aria-label={`Contador ${f.nombre}`} className={inputClass} value={contador[f.itemCode] ?? ''} onChange={e=>setContador(x=>({...x,[f.itemCode]:e.target.value}))} placeholder="Responsable" />,
           <input key="c" aria-label={`Cantidad contada ${f.nombre}`} type="number" min={0} step="any" className={inputClass} value={v ?? ''} onChange={e => setContado(x => ({ ...x, [f.itemCode]: e.target.value }))} />,
           ...(ciego ? [] : [dif === null ? '—' : <strong key="d" className={dif < 0 ? 'text-[#c62828]' : dif > 0 ? 'text-[#b26a00]' : 'text-[#2e7d32]'}>{dif > 0 ? '+' : ''}{dif}</strong>]),
         ];
@@ -55,7 +61,7 @@ export default function InventoryCountScreen() {
       {ultimo && (
         <section className="space-y-1 border border-[#999] bg-white p-2">
           <h3 className="font-bold text-[#003366]">Resultado del último conteo · {ultimo.countNumber} ({ultimo.date})</h3>
-          <Table headers={['Artículo', 'Sistema', 'Contado', 'Diferencia', 'Valor']} rows={ultimo.lines.map(l => [l.itemName, l.systemQuantity, l.countedQuantity, l.difference, usd(l.value)])} />
+          <Table headers={['Artículo', 'Ubicación', 'Contador', 'Sistema', 'Contado', 'Ajuste', 'Diferencia', 'Valor']} rows={ultimo.lines.map(l => [l.itemName, l.location || '—', l.counter || '—', l.systemQuantity, l.countedQuantity, l.adjustmentType === 'entry' ? 'Entrada' : l.adjustmentType === 'exit' ? 'Salida' : 'Sin ajuste', l.difference, usd(l.value)])} />
           <p><strong>Diferencia neta valorizada:</strong> {usd(ultimo.totalDifferenceValue)} · <strong>Merma:</strong> {mermaPct.toLocaleString('es-EC', { maximumFractionDigits: 2 })} % del valor contado en sistema.</p>
           {mermaPct > 2 && <p className="text-[#c62828]">Una merma sobre el 2 % es alta: revisa controles de bodega, despachos sin documento o errores de registro.</p>}
         </section>

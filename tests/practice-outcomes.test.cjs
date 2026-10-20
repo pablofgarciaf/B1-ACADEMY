@@ -105,6 +105,15 @@ test('activos: el método, la cuenta y el área quedan en el activo y en su asie
  assert.equal(c.state.journalEntries.at(-1).lines.some(line=>line.accountCode==='110500'&&line.debit===6000),true);
 });
 
+test('costos: centros, reparto y vínculo contable se persisten en la misma configuración',()=>{
+ const c=fixture();
+ const event=c.run('costCentersSave',{centros:[{codigo:'VENTAS',nombre:'Ventas',clasificacion:'DEPT',tipo:'Ventas',cuentas:[]}],normas:[{codigo:'AREA',nombre:'Área',centros:[{codigo:'VENTAS',porcentaje:100}]}],config:{cuentas:[{cuenta:'6200',nombre:'Gastos de electricidad',norma:'AREA'}]}});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod21-c1#5'),true);
+ assert.equal(missionOutcomeMatches(c.state,event,'mod21-c1#7'),true);
+ // La práctica de reparto pide 40 %, por lo que una configuración de 100 % no puede aprobarla.
+ assert.equal(missionOutcomeMatches(c.state,event,'mod21-c1#6'),false);
+});
+
 test('bancos: el movimiento conserva la cuenta bancaria y la contrapartida contabilizada',()=>{
  const c=fixture();
  const event=c.run('bank',{bankAccountId:'BAN-1',date:'2026-04-01',type:'deposit',amount:5000,counterpartAccount:'3.01',reference:'Capital inicial',documentId:''});
@@ -159,6 +168,29 @@ test('producción: la BOM guarda líneas de artículo y recurso; emitir y recibi
  assert.equal(issue.changes.some(change=>change.collection==='productionOrders'),true);
 });
 
+test('recursos y etapas de ruta conservan la configuración y el envío verificable',()=>{
+ const c=fixture();
+ const recursos=c.run('resourceSave',{resources:[
+  {codigo:'TRAB001',nombre:'Operario CNC',tipo:'trabajo',empleado:'E003',unidad:'Horas',capacidadDiaria:8,activo:true,tiempoPorUnidad:'00:15:00',unidadesPorPeriodo:1,tiempoEjecucion:'00:15:00'},
+  {codigo:'MAQ001',nombre:'Torno CNC Principal',tipo:'maquina',activoFijo:'AF001',unidad:'Horas',capacidadDiaria:8,activo:true,tiempoPorUnidad:'00:15:00',unidadesPorPeriodo:1,tiempoEjecucion:'00:15:00'}
+ ]});
+ assert.equal(missionOutcomeMatches(c.state,recursos,'mod17-c1#5'),true);
+ assert.equal(missionOutcomeMatches(c.state,recursos,'mod17-c1#6'),true);
+ assert.equal(missionOutcomeMatches(c.state,recursos,'mod17-c1#7'),true);
+ const pintura=c.state.items.find(item=>item.name==='Pintura blanca').itemCode;
+ const bom=c.run('bom',{parentItemCode:'A00001',type:'production',level:1,baseQuantity:1,warehouseCode:'01',components:[
+  {lineType:'item',itemCode:pintura,quantity:2,unit:'UND',cost:12,warehouseCode:'01'},
+  {lineType:'resource',itemCode:'TRAB001',quantity:2,unit:'Horas',cost:15}
+ ]});
+ assert.equal(c.state.boms[0].components[1].estimatedTime,'00:30:00');
+ assert.equal(missionOutcomeMatches(c.state,bom,'mod17-c1#8'),true);
+ const order=c.run('production',{bomCode:bom.result,quantity:1,warehouseCode:'01',date:'2026-06-01',dueDate:'2026-06-05',priority:1});
+ c.run('productionStatus',{id:order.result,status:'released'});
+ const stage=c.run('productionStageIssue',{id:order.result,stage:3,componentCode:pintura,quantity:2,fromWarehouseCode:'01',toWarehouseCode:'01',date:'2026-06-02'});
+ assert.equal(c.state.productionOrders.at(-1).stageIssues[0].stage,3);
+ assert.equal(missionOutcomeMatches(c.state,stage,'mod17-c3#8'),true);
+});
+
 test('traslado a planta conserva origen, destino y descripción en el kardex',()=>{
  const c=fixture();
  c.run('companySettings',{companyName:'B1 Center',ruc:'1792456789001',incomeTaxRate:25,address:'',phone:'',warehouses:[{code:'01',name:'Bodega Central Quito'},{code:'02',name:'Bodega Sucursal Guayaquil'},{code:'99',name:'Planta de producción'}]});
@@ -166,4 +198,18 @@ test('traslado a planta conserva origen, destino y descripción en el kardex',()
  assert.equal(missionOutcomeMatches(c.state,event,'mod16-c2#7'),true);
  const moves=c.state.stockMovements.filter(move=>move.reference===event.result);
  assert.equal(moves.every(move=>move.fromWarehouseCode==='01'&&move.toWarehouseCode==='99'),true);
+});
+
+test('conteo conserva política, responsable, ubicación y tipo de ajuste verificables',()=>{
+ const c=fixture();
+ const settings=c.run('inventorySettingsSave',{settings:[{document:'Recuento de Inventario',stockDateBy:'creation',default:true,appliesTo:'Todos los usuarios',exampleDate:'2026-09-07'}]});
+ assert.equal(missionOutcomeMatches(c.state,settings,'mod10-c4#7'),true);
+ c.run('stock',{itemCode:'A00003',warehouseCode:'01',qty:120,costingMethod:'average'});
+ const up=c.run('inventoryCount',{warehouseCode:'01',date:'2026-09-08',blind:false,lines:[{itemCode:'A00003',countedQuantity:151,location:'A1-01',counter:'Lee'}]});
+ assert.equal(missionOutcomeMatches(c.state,up,'mod10-c4#8'),false);
+ assert.equal(missionOutcomeMatches(c.state,up,'mod10-c4#10'),true);
+ const c2=fixture(); c2.run('stock',{itemCode:'A00003',warehouseCode:'01',qty:55,costingMethod:'average'});
+ const count=c2.run('inventoryCount',{warehouseCode:'01',date:'2026-09-08',blind:true,lines:[{itemCode:'A00003',countedQuantity:75,location:'A1-01',counter:'Lee'}]});
+ assert.equal(missionOutcomeMatches(c2.state,count,'mod10-c4#8'),true);
+ assert.equal(c2.state.inventoryCounts.at(-1).lines[0].adjustmentType,'none');
 });

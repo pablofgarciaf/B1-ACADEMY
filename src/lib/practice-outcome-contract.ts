@@ -25,8 +25,9 @@ const maps: Record<string, Map<string, string>> = {
   activos: entries({'Descripción':'name','Costo':'cost','Vida útil (meses)':'usefulLifeMonths','Clase de activo':'category','Fecha':'acquisitionDate','Tipo de amortización':'depreciationMethod','Método':'depreciationMethod','Cuenta contable':'accountCode','Área de amortización':'depreciationArea'}),
   oportunidad: entries({'Nombre':'name','Cliente':'cardCode','Monto estimado (USD)':'amount','Valor potencial':'amount','Etapa':'stage','Probabilidad':'probability','Probabilidad de cierre (%)':'probability','Fecha estimada de cierre':'expectedClose','Descripción':'notes'}),
   bom: entries({'Artículo':'parentItemCode','Código':'parentItemCode','Descripción':'description','Tipo':'type','Nivel':'level','Cantidad base':'baseQuantity','Almacén':'warehouseCode','Número de línea':'components.lineNumber','Tipo de línea':'components.lineType','Cantidad':'components.quantity','Unidad de medida':'components.unit'}),
+  recursos: entries({'Código':'codigo','Nombre':'nombre','Tipo':'tipo','Empleado':'empleado','Activo fijo':'activoFijo','U. de medida':'unidad','Capacidad/día':'capacidadDiaria','Tiempo por unidad':'tiempoPorUnidad','Unidades por período':'unidadesPorPeriodo','Tiempo ejecución':'tiempoEjecucion'}),
   produccion: entries({'Número':'receiptNumber','Orden Producción':'orderNumber','Artículo':'parentItemCode','Código':'parentItemCode','Descripción':'description','Prioridad':'priority','Cantidad':'quantity','Bodega':'warehouseCode','Almacén':'warehouseCode','Fecha':'date','Fecha de inicio':'date','Fecha inicio':'date','Fecha de vencimiento':'dueDate','Fecha vencimiento':'dueDate','Costo unitario':'unitCost'}),
-  conteo: entries({'Fecha ejemplo':'date','Fecha':'date','Código de artículo':'lines.itemCode','Cantidad contada':'lines.countedQuantity','Cantidad en sistema':'lines.systemQuantity','Diferencia':'lines.difference','Almacén':'warehouseCode'}),
+  conteo: entries({'Fecha ejemplo':'exampleDate','Fecha':'date','Código de artículo':'lines.itemCode','Descripción':'lines.itemName','Cantidad contada':'lines.countedQuantity','Cantidad en sistema':'lines.systemQuantity','Diferencia':'lines.difference','Tipo de ajuste':'lines.adjustmentType','Ubicación':'lines.location','Contador':'lines.counter','Almacén':'warehouseCode','Documento':'document','Fecha de stock por':'stockDateBy','Predeterminado':'default','Aplica a':'appliesTo'}),
   presupuesto: entries({'Ejercicio Fiscal':'year','Cuenta':'accountCode','Escenario':'scenario'}),
   grupos: entries({'Código de grupo':'codigo','Código':'codigo','Grupo':'codigo','Nombre del grupo':'nombre','Nombre':'nombre','Descripción':'descripcion','Lista de precio predeterminada':'defaultPriceList','Grupo UM':'uomGroup','UM Inventario':'inventoryUnit'}),
   series: entries({'Tipo de documento':'docType','Cantidad de dígitos':'digitos','Sufijo':'sufijo','Usuario':'usuario','Número de inicio':'inicio','Número final':'fin','Nombre de la serie':'nombre','Grupo de serie':'grupo','Próximo número':'actual','Fijar como por defecto':'porDefecto','Prefijo':'prefijo'}),
@@ -53,30 +54,35 @@ function contract(key: string): PracticeOutcomeContract {
   let screen = pantallaConectada({...guide,missionId:key});
   if(/traslad/i.test(guide?.title??'')) screen={clave:'transferencia'};
   const bankWorkflow = screen?.clave==='bancos' && /extracto|concili|asistente de pagos|via de pago|banco propio/i.test(plain(`${guide?.title??''} ${guide?.menu_path??''}`));
-  const collection = bankWorkflow ? 'bankWorkflows' : screen?.clave==='documento' ? (['purchase_request','purchase_order','goods_receipt','vendor_invoice'].includes(screen.docType)?'purchaseOrders':'salesOrders') : screen?.clave==='mrp' && (guide?.campos??[]).some(field=>['Tipo de pedido','Proveedor'].includes(field.etiqueta)) ? 'purchaseOrders' : screen ? sources[screen.clave] : undefined;
+  const inventorySettings = screen?.clave==='conteo' && /definir fecha de stock/i.test(guide?.title??'');
+  const collection = inventorySettings ? 'profile' : bankWorkflow ? 'bankWorkflows' : screen?.clave==='documento' ? (['purchase_request','purchase_order','goods_receipt','vendor_invoice'].includes(screen.docType)?'purchaseOrders':'salesOrders') : screen?.clave==='mrp' && (guide?.campos??[]).some(field=>['Tipo de pedido','Proveedor'].includes(field.etiqueta)) ? 'purchaseOrders' : screen ? sources[screen.clave] : undefined;
   const result: PracticeOutcomeContract = {key,collection:collection??'profile',requirements:[],pending:[]};
   if(!screen || !collection) { result.pending.push('Pantalla sin contrato de resultados.'); return result; }
   if(screen.clave==='grupos') result.rows=screen.tipo==='cliente'?'customerGroups':'itemGroups';
   if(screen.clave==='series') result.rows='docSeries';
   if(screen.clave==='monedas') { result.rows='currencies.tasas'; const target=guide?.campos?.find(f=>f.etiqueta==='Moneda del sistema'); if(target)result.requirements.push({label:'Moneda de la tasa',expected:target.valor,path:'moneda'}); }
   if(screen.clave==='cockpit') result.rows='cockpit.plantillas';
+  if(screen.clave==='recursos') result.rows='resources';
   if(screen.clave==='udo') result.rows='udoTables';
+  if(inventorySettings) result.rows='inventorySettings';
   if(screen.clave==='precios') result.rows=(guide?.campos??[]).some(f=>['Código de cliente','Interlocutor origen'].includes(f.etiqueta)) ? 'specialPrices' : 'priceLists';
   if(screen.clave==='descuentos') result.rows='volumeDiscounts';
   if(screen.clave==='costos') {
     const title=plain(guide?.title ?? '');
     if(/crear centro/.test(title)) result.rows='costCenters.centros';
     else if(/reparto por/.test(title)) result.rows='costCenters.normas';
-    else if(/vincular cuenta|cuenta el[eé]ctrica/.test(title)) result.rows='costCenters.cuentas';
-    else if(/informe/.test(title)) result.rows='costCenters.informes';
-    else if(/dimensiones m[uú]ltiples|definir dos dimensiones/.test(title)) result.rows='costCenters.dimensiones';
-    else if(/inicializar el presupuesto/.test(title)) result.rows='costCenters.controlPresupuesto';
+    else if(/vincular cuenta|cuenta el[eé]ctrica/.test(title)) result.rows='costCenters.config.cuentas';
+    else if(/activar dimensiones m[uú]ltiples/.test(title)) result.rows='costCenters.config.settings';
+    else if(/definir dos dimensiones/.test(title)) result.rows='costCenters.config.dimensiones';
+    else if(/inicializar el presupuesto/.test(title)) result.rows='costCenters.config.controlPresupuesto';
   }
   for(const field of guide?.campos??[]) {
     let generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
     let path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
     if(screen.clave==='bancos'&&field.etiqueta==='Número de documento'){path='transactionId';generated=true;}
     if(screen.clave==='bom'&&['Código','Descripción','Almacén'].includes(field.etiqueta)&&/agregar (componente|recurso)/i.test(guide?.title??'')) path=`components.${field.etiqueta==='Código'?'itemCode':field.etiqueta==='Descripción'?'description':'warehouseCode'}`;
+    if(screen.clave==='bom'&&field.etiqueta==='Tiempo estimado') path='components.estimatedTime';
+    if(screen.clave==='produccion'&&/enviar componentes etapa/i.test(guide?.title??'')){ const staged:Record<string,string>={'Etapa de ruta':'stageIssues.stage','Componente':'stageIssues.componentCode','Cantidad requerida':'components.quantity','Cantidad enviada':'stageIssues.quantity','Bodega origen':'stageIssues.fromWarehouseCode','Bodega destino':'stageIssues.toWarehouseCode'}; path=staged[field.etiqueta]??path; }
     // Los documentos conservan la serie elegida, el origen y el tipo que los generó.
     if(screen.clave==='documento') {
       if(field.etiqueta==='Serie') path='series';
@@ -134,16 +140,16 @@ function comparable(value:unknown): string {
   if(typeof value==='boolean')return value?'Sí':'No';
   const text=String(value??'').trim();
   if(/^\d{4}-\d{2}-\d{2}$/.test(text)){const [year,month,day]=text.split('-');return `${day}/${month}/${year}`;}
-  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago',production:'Producción',item:'Artículo',resource:'Recurso',purchase_request:'Solicitud de compra',purchase_order:'Pedido de compra'};
+  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago',production:'Producción',item:'Artículo',resource:'Recurso',purchase_request:'Solicitud de compra',purchase_order:'Pedido de compra',creation:'Creación',posting:'Contabilización',entry:'Entrada',exit:'Salida',none:'Sin ajuste'};
   return aliases[text]??text;
 }
 function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyState):boolean {
   if(requirement.generated)return typeof actual==='string'&&/^[\w.-]+$/.test(actual);
   let expected=requirement.expected;
-  if(['cardCode','itemCode','employeeCode','ownerCode','parentItemCode','warehouseCode','preferredVendor'].includes(requirement.path.split('.').at(-1)!)){
+  if(['cardCode','itemCode','employeeCode','ownerCode','parentItemCode','warehouseCode','preferredVendor','componentCode'].includes(requirement.path.split('.').at(-1)!)){
     const code=expected.match(/^([A-Z]{1,5}\d{2,})(?:\s|$)/)?.[1];
     if(code)expected=code;
-    else if(requirement.path.endsWith('itemCode'))expected=state.items.find(row=>normalizar(row.name)===normalizar(expected))?.itemCode??expected;
+    else if(requirement.path.endsWith('itemCode')||requirement.path.endsWith('componentCode'))expected=state.items.find(row=>normalizar(row.name)===normalizar(expected))?.itemCode??expected;
     else if(requirement.path.endsWith('employeeCode'))expected=state.employees.find(row=>normalizar(`${row.firstName} ${row.lastName}`)===normalizar(expected))?.employeeCode??expected;
   }
   if(requirement.path==='baseDocumentId') expected=[...state.salesOrders,...state.purchaseOrders].find(document=>document.docNumber===expected)?.id??expected;

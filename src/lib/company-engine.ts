@@ -424,13 +424,13 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       d.components.forEach(c => assert(c.itemCode !== d.parentItemCode && (c.lineType === 'resource' ? resources.some(resource => resource.codigo === c.itemCode && resource.activo !== false) : state.items.some(i => i.itemCode === c.itemCode && i.type === 'inventory')), 'Componente o recurso inválido.'));
       const reaches = (item: string, target: string, seen: Set<string>): boolean => item === target || (!seen.has(item) && state.boms.filter(b => b.parentItemCode === item).some(b => b.components.filter(c => c.lineType === 'item').some(c => reaches(c.itemCode, target, new Set(seen).add(item)))));
       assert(!d.components.filter(c => c.lineType === 'item').some(c => reaches(c.itemCode, d.parentItemCode, new Set())), 'BOM circular.');
-      const components = d.components.map((component, index) => ({ ...component, lineNumber: component.lineNumber ?? index + 1, description: component.description ?? (component.lineType === 'resource' ? resources.find(resource => resource.codigo === component.itemCode)?.nombre ?? component.itemCode : state.items.find(item => item.itemCode === component.itemCode)?.name ?? component.itemCode), warehouseCode: component.warehouseCode ?? d.warehouseCode ?? profile.warehouses[0]?.code }));
+      const components = d.components.map((component, index) => { const resource = resources.find(resource => resource.codigo === component.itemCode) as {nombre?:string;tiempoEjecucion?:string;tiempoPorUnidad?:string;unidadesPorPeriodo?:number}|undefined; const unitTime = resource?.tiempoEjecucion ?? resource?.tiempoPorUnidad; const estimatedTime = !unitTime ? undefined : (() => { const parts=unitTime.split(':').map(Number); const seconds=((parts[0]||0)*3600+(parts[1]||0)*60+(parts[2]||0))*component.quantity; const hours=Math.floor(seconds/3600); const minutes=Math.floor(seconds%3600/60); const rest=Math.round(seconds%60); return `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(rest).padStart(2,'0')}`; })(); return { ...component, lineNumber: component.lineNumber ?? index + 1, description: component.description ?? (component.lineType === 'resource' ? resource?.nombre ?? component.itemCode : state.items.find(item => item.itemCode === component.itemCode)?.name ?? component.itemCode), warehouseCode: component.warehouseCode ?? d.warehouseCode ?? profile.warehouses[0]?.code, estimatedTime: component.estimatedTime ?? (component.lineType === 'resource' ? estimatedTime : undefined) }; });
       result = next('BOM'); state.boms.push({ ...meta(result), ...d, description: d.description ?? parent.name, warehouseCode: d.warehouseCode ?? profile.warehouses[0]?.code, components, bomCode: result, totalCost: round(components.reduce((s, c) => s + c.quantity * c.cost, 0)) }); break;
     }
     case 'production': {
       const d = command.data; const bom = state.boms.find(b => b.bomCode === d.bomCode && b.type === 'production'); if (!bom) throw new Error('BOM de producción inexistente.'); assert(d.dueDate >= d.date, 'Vencimiento inválido.'); stock(bom.parentItemCode, d.warehouseCode);
       const parent = state.items.find(item => item.itemCode === bom.parentItemCode); if (!parent) throw new Error('Artículo padre inexistente.');
-      result = next('OP', d.date); state.productionOrders.push({ ...meta(result), ...d, orderNumber: result, parentItemCode: bom.parentItemCode, description: parent.name, components: bom.components, status: 'planned', issuedQuantity: 0, receivedQuantity: 0, unitCost: 0, issueJournalEntryId: '', receiptJournalEntryId: '', journalEntryId: '', actualCost: 0 }); break;
+      result = next('OP', d.date); state.productionOrders.push({ ...meta(result), ...d, orderNumber: result, parentItemCode: bom.parentItemCode, description: parent.name, components: bom.components, stageIssues: [], status: 'planned', issuedQuantity: 0, receivedQuantity: 0, unitCost: 0, issueJournalEntryId: '', receiptJournalEntryId: '', journalEntryId: '', actualCost: 0 }); break;
     }
     case 'productionStatus': {
       const d = command.data; const order = state.productionOrders.find(o => o.id === d.id); if (!order) throw new Error('Orden inexistente.');
@@ -471,6 +471,19 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       else state.budgets.push({ ...meta(result), year: d.year, accountCode: d.accountCode, accountName: account.name, months: d.months });
       award('budget', 50, result, 'Primer presupuesto');
       break;
+    }
+    case 'productionStageIssue': {
+      const d = command.data; const order = state.productionOrders.find(o => o.id === d.id); if (!order) throw new Error('Orden inexistente.');
+      assert(['released','in_progress'].includes(order.status), 'Libera la orden antes de enviar componentes a una etapa.');
+      assert(profile.warehouses.some(w => w.code === d.fromWarehouseCode) && profile.warehouses.some(w => w.code === d.toWarehouseCode), 'Almacén inexistente.');
+      const component = order.components.find(c => c.lineType === 'item' && c.itemCode === d.componentCode); if (!component) throw new Error('El componente no pertenece a la orden.');
+      const previouslySent = (order.stageIssues ?? []).filter(issue => issue.componentCode === d.componentCode).reduce((sum, issue) => sum + issue.quantity, 0);
+      assert(d.quantity + previouslySent <= quantityRound(component.quantity * order.quantity), 'La cantidad enviada supera lo requerido por la orden.');
+      const row = stock(d.componentCode, d.fromWarehouseCode); assert(row.reserved >= d.quantity, 'El componente debe estar reservado antes de enviarlo.');
+      // La etapa representa una reserva trazable dentro de la misma orden. La emisión contable se realiza una sola vez al confirmar la salida completa.
+      const stageId = `${order.id}-ET${d.stage}-${(order.stageIssues ?? []).length + 1}`;
+      order.stageIssues = [...(order.stageIssues ?? []), { id: stageId, stage: d.stage, componentCode: d.componentCode, quantity: d.quantity, fromWarehouseCode: d.fromWarehouseCode, toWarehouseCode: d.toWarehouseCode, date: d.date }];
+      order.updatedAt = now; result = stageId; break;
     }
     case 'closePeriod': {
       const d = command.data; const cerrados = new Set(profile.closedPeriods ?? []);
@@ -607,7 +620,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
           const cuenta = state.boms.some(b => b.parentItemCode === l.itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
           porCuenta.set(cuenta, round((porCuenta.get(cuenta) ?? 0) + valor));
         }
-        lines.push({ itemCode: l.itemCode, itemName: item.name, systemQuantity: sistema, countedQuantity: l.countedQuantity, difference: diferencia, unitCost: diferencia ? round(Math.abs(valor / diferencia)) : row.averageCost, value: valor });
+        lines.push({ itemCode: l.itemCode, itemName: item.name, location: l.location, counter: l.counter, systemQuantity: sistema, countedQuantity: l.countedQuantity, difference: diferencia, adjustmentType: diferencia > 0 ? 'entry' : diferencia < 0 ? 'exit' : 'none', unitCost: diferencia ? round(Math.abs(valor / diferencia)) : row.averageCost, value: valor });
       }
       const total = round([...porCuenta.values()].reduce((s, v) => s + v, 0));
       const asiento: JournalLine[] = [];
@@ -816,8 +829,18 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'docSeriesSave': { (profile as unknown as Record<string, unknown>).docSeries = command.data.series; result = 'series-guardadas'; break; }
     case 'customerGroupSave': { (profile as unknown as Record<string, unknown>).customerGroups = command.data.groups; result = 'grupos-clientes'; break; }
     case 'itemGroupSave': { (profile as unknown as Record<string, unknown>).itemGroups = command.data.groups; result = 'grupos-articulos'; break; }
+    case 'inventorySettingsSave': { profile.inventorySettings = command.data.settings; result = 'configuracion-conteo-guardada'; break; }
     case 'currenciesSave': { (profile as unknown as Record<string, unknown>).currencies = command.data; result = 'monedas-guardadas'; break; }
-    case 'costCentersSave': { (profile as unknown as Record<string, unknown>).costCenters = command.data; result = 'centros-coste'; break; }
+    case 'costCentersSave': {
+      const d = command.data;
+      const centros = d.centros as { codigo?: string; nombre?: string; clasificacion?: string }[];
+      const normas = d.normas as { codigo?: string; nombre?: string; centros?: { codigo?: string; porcentaje?: number }[] }[];
+      assert(centros.every(c => c.codigo && c.nombre), 'Cada centro requiere código y nombre.');
+      assert(new Set(centros.map(c => c.codigo)).size === centros.length, 'No se permiten códigos de centro repetidos.');
+      assert(normas.every(n => n.codigo && n.nombre && (n.centros ?? []).every(c => centros.some(x => x.codigo === c.codigo))), 'Cada norma debe referirse a centros existentes.');
+      assert(normas.every(n => Math.abs((n.centros ?? []).reduce((sum, c) => sum + Number(c.porcentaje ?? 0), 0) - 100) < 0.01), 'Las normas de reparto deben sumar 100 %.');
+      (profile as unknown as Record<string, unknown>).costCenters = d; result = 'centros-coste'; break;
+    }
     case 'resourceSave': { (profile as unknown as Record<string, unknown>).resources = command.data.resources; result = 'recursos-guardados'; break; }
     case 'udoSave': { (profile as unknown as Record<string, unknown>).udoTables = command.data.tables; result = 'udo-guardado'; break; }
     case 'cockpitSave': { (profile as unknown as Record<string, unknown>).cockpit = command.data; result = 'cockpit-guardado'; break; }

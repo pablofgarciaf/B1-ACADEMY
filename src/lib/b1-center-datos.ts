@@ -23,6 +23,7 @@ const ARTICULOS: [string, number, number][] = [
   ['Teclado Inalámbrico Logitech', 25, 45], ['Mouse Óptico Dell', 10, 20], ['Servidor HP ProLiant DL380', 2500, 3200],
   ['Disco Duro SSD 1TB Samsung', 80, 130], ['Memoria RAM 16GB DDR4', 45, 75], ['Impresora Multifunción Epson', 150, 220],
   ['Switch Cisco 24 Puertos', 300, 450], ['Cable de Red Cat6 100m', 30, 55], ['UPS APC 1500VA', 180, 260],
+  ['Pintura blanca', 12, 20],
 ];
 
 const socio = (s: { name: string; city: string; ruc: string }) => ({

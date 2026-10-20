@@ -37,6 +37,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('production'), data: z.object({ bomCode: code, quantity: money.positive(), warehouseCode: code, date, dueDate: date, priority: z.number().int().min(1).max(5).default(1) }) }),
   z.object({ action: z.literal('productionStatus'), data: z.object({ id: code, status: z.enum(['released', 'in_progress', 'closed']) }) }),
   z.object({ action: z.literal('productionIssue'), data: z.object({ id: code, date }) }),
+  z.object({ action: z.literal('productionStageIssue'), data: z.object({ id: code, stage: z.number().int().positive(), componentCode: code, quantity: money.positive(), fromWarehouseCode: code, toWarehouseCode: code, date }) }),
   z.object({ action: z.literal('productionReceipt'), data: z.object({ id: code, date, quantity: money.positive().optional() }) }),
   z.object({ action: z.literal('mrp'), data: z.object({ vendorCode: code, date }) }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
@@ -56,7 +57,8 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('volumeDiscount'), data: z.object({ id: z.string().max(80).default(''), itemCode: z.string().trim().min(1).max(80), list: z.number().int().min(1).max(60).default(1), minQuantity: money.positive(), maxQuantity: money.positive().nullable().default(null), discount: money.max(100), validFrom: date.default('2026-01-01'), validTo: date.default('2099-12-31'), active: z.boolean().default(true), kind: z.enum(['period','quantity']).default('quantity'), automatic: z.boolean().default(true), fixedPrice: money.nullable().default(null), remove: z.boolean().default(false) }).refine(d=>d.maxQuantity===null||d.maxQuantity>=d.minQuantity,'El máximo debe ser igual o mayor que el mínimo.').refine(d=>d.validTo>=d.validFrom,'La vigencia final no puede ser anterior a la inicial.') }),
   z.object({ action: z.literal('specialPrice'), data: z.object({ id: z.string().max(80).default(''), cardCode: code, itemCode: code, discount: money.max(100), validFrom: date.default('2026-01-01'), validTo: date.default('2099-12-31'), referenceList: z.number().int().min(1).max(60).default(1), active: z.boolean().default(true), remove: z.boolean().default(false) }).refine(d=>d.validTo>=d.validFrom,'La vigencia final no puede ser anterior a la inicial.') }),
   // Conteo físico de inventario con ajuste contable.
-  z.object({ action: z.literal('inventoryCount'), data: z.object({ warehouseCode: code, date, blind: z.boolean(), lines: z.array(z.object({ itemCode: code, countedQuantity: money })).min(1).max(200) }) }),
+  z.object({ action: z.literal('inventoryCount'), data: z.object({ warehouseCode: code, date, blind: z.boolean(), lines: z.array(z.object({ itemCode: code, countedQuantity: money, location: text.default(''), counter: text.default('') })).min(1).max(200) }) }),
+  z.object({ action: z.literal('inventorySettingsSave'), data: z.object({ settings: z.array(z.object({ document: text.min(2), stockDateBy: z.enum(['creation','posting']), default: z.boolean(), appliesTo: text.min(2), exampleDate: date })).min(1).max(20) }) }),
   // Activos fijos y depreciación mensual en línea recta.
   z.object({ action: z.literal('fixedAsset'), data: z.object({ name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']), depreciationMethod: z.literal('Lineal').default('Lineal'), accountCode: code.default('110500'), depreciationArea: text.min(2).default('PCGA') }) }),
   z.object({ action: z.literal('depreciate'), data: z.object({ period }) }),
@@ -93,7 +95,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('customerGroupSave'), data: z.object({ groups: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('itemGroupSave'), data: z.object({ groups: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('currenciesSave'), data: z.object({ monedaLocal: z.string(), monedaSistema: z.string(), monedas: z.array(z.unknown()), tasas: z.array(z.unknown()) }) }),
-  z.object({ action: z.literal('costCentersSave'), data: z.object({ centros: z.array(z.unknown()), normas: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('costCentersSave'), data: z.object({ centros: z.array(z.unknown()), normas: z.array(z.unknown()), config: z.record(z.unknown()).default({}) }) }),
   z.object({ action: z.literal('resourceSave'), data: z.object({ resources: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('udoSave'), data: z.object({ tables: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('cockpitSave'), data: z.object({ plantillas: z.array(z.unknown()), plantillaActiva: z.string() }) }),

@@ -78,12 +78,15 @@ export const sriDetailsSchema = z.object({
 });
 export const sriInputSchema = z.object({ docType: z.enum(sriTypes), date, partnerCode: code, sourceDocumentId: z.string(), series: z.string().regex(/^\d{3}-\d{3}$/), retentionLines: z.array(retentionLineSchema).max(30), ats: atsSchema, details: sriDetailsSchema.default({}) });
 export interface SRITaxDocument extends Entity, z.infer<typeof sriInputSchema> { claveAcceso: string; number: string; environment: '1'; emissionType: '1'; status: 'PENDIENTE' | 'AUTORIZADO' | 'DEVUELTA' | 'NO AUTORIZADO'; authorizedAt: string; xml: string; totalRetention: number; simulated: true; sriMessages?: { identificador: string; mensaje: string; tipo: 'ERROR' | 'ADVERTENCIA' | 'INFORMATIVO' }[]; journalEntryId?: string }
-export const bomComponentSchema = z.object({ lineNumber: z.number().int().positive().optional(), lineType: z.enum(['item', 'resource']).default('item'), itemCode: code, description: text.min(1).optional(), quantity: money.positive(), unit: text.min(1), cost: money, warehouseCode: code.optional() });
+export const bomComponentSchema = z.object({ lineNumber: z.number().int().positive().optional(), lineType: z.enum(['item', 'resource']).default('item'), itemCode: code, description: text.min(1).optional(), quantity: money.positive(), unit: text.min(1), cost: money, warehouseCode: code.optional(), estimatedTime: text.optional() });
 export const bomInputSchema = z.object({ parentItemCode: code, description: text.min(1).optional(), type: z.enum(['production', 'template', 'sales']), level: z.number().int().positive().default(1), baseQuantity: money.positive().default(1), warehouseCode: code.optional(), components: z.array(bomComponentSchema).min(1).max(60) });
 export interface BillOfMaterials extends Entity, z.infer<typeof bomInputSchema> { bomCode: string; totalCost: number }
-export interface ProductionOrder extends Entity { orderNumber: string; receiptNumber?: string; date: string; dueDate: string; parentItemCode: string; description: string; priority: number; quantity: number; warehouseCode: string; bomCode: string; components: BillOfMaterials['components']; status: 'planned' | 'released' | 'in_progress' | 'closed'; issuedQuantity: number; receivedQuantity: number; unitCost: number; issueJournalEntryId: string; receiptJournalEntryId: string; journalEntryId: string; actualCost: number }
+export interface ProductionStageIssue { id: string; stage: number; componentCode: string; quantity: number; fromWarehouseCode: string; toWarehouseCode: string; date: string }
+export interface ProductionOrder extends Entity { orderNumber: string; receiptNumber?: string; date: string; dueDate: string; parentItemCode: string; description: string; priority: number; quantity: number; warehouseCode: string; bomCode: string; components: BillOfMaterials['components']; stageIssues: ProductionStageIssue[]; status: 'planned' | 'released' | 'in_progress' | 'closed'; issuedQuantity: number; receivedQuantity: number; unitCost: number; issueJournalEntryId: string; receiptJournalEntryId: string; journalEntryId: string; actualCost: number }
 export interface XPEvent { key: string; label: string; points: number; date: string; reference: string }
 export interface CompanyProfile extends Entity { usage?: 'training' | 'private'; trainingSetupVersion?: number; address?: string; phone?: string; regimen?: 'general' | 'rimpe-emprendedor' | 'rimpe-popular'; uid: string; email: string; companyName: string; ruc: string; currency: 'USD'; country: 'EC'; fiscalScenario: 'training-2024' | 'ecuador-2026'; sbu: number; incomeTaxRate: number; warehouses: { code: string; name: string }[]; xp: number; level: number; xpHistory: XPEvent[]; completedModules: string[]; lastAccess: string; sequences: Record<string, number>; documentCount: number;
+  /** Regla guardada para asignar fecha de stock a recuentos físicos. */
+  inventorySettings?: { document: string; stockDateBy: 'creation' | 'posting'; default: boolean; appliesTo: string; exampleDate: string }[];
   /** Períodos contables cerrados (AAAA-MM): no admiten asientos. */
   closedPeriods?: string[];
   /** Annual lock, also for years with no profit-and-loss entry to post. */
@@ -118,7 +121,8 @@ export interface Approval extends Entity {
   document: { date: string; dueDate: string; cardCode: string; reference: string; comments: string; baseDocumentId: string; lines: DocumentLine[] };
   status: 'pending' | 'approved' | 'rejected'; decisionComment: string; decidedAt: string; resultDocumentId: string;
 }
-export interface InventoryCountLine { itemCode: string; itemName: string; systemQuantity: number; countedQuantity: number; difference: number; unitCost: number; value: number }
+/** Línea trazable de un recuento: ubicación física y responsable del conteo. */
+export interface InventoryCountLine { itemCode: string; itemName: string; location: string; counter: string; systemQuantity: number; countedQuantity: number; difference: number; adjustmentType: 'entry' | 'exit' | 'none'; unitCost: number; value: number }
 export interface InventoryCount extends Entity { countNumber: string; date: string; warehouseCode: string; blind: boolean; lines: InventoryCountLine[]; totalDifferenceValue: number; journalEntryId: string }
 /** Costos de importación (flete, seguro, arancel, FODINFA, ISD…) prorrateados sobre una recepción. */
 export interface LandedCost extends Entity {
