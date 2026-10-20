@@ -42,7 +42,7 @@ export function comandosB1Center(nombrePersonalizado = EMPRESA_CURSO): CompanyCo
   return [
     { action: 'initialize', data: { companyName: nombrePersonalizado } },
     { action: 'companySettings', data: { companyName: nombrePersonalizado, ruc: '1792456789001', address: 'Av. El Salvador N34-12, Quito', phone: '022345678', incomeTaxRate: 25,
-      warehouses: [{ code: '01', name: 'Bodega Central Quito' }, { code: '02', name: 'Bodega Sucursal Guayaquil' }] } },
+      warehouses: [{ code: '01', name: 'Bodega Central Quito' }, { code: '02', name: 'Bodega Sucursal Guayaquil' }, { code: '99', name: 'Planta de producción' }] } },
     { action: 'importMasterData', data: { kind: 'customer', rows: CLIENTES.map((c) => ({ ...socio(c), kind: 'customer' })) } },
     { action: 'importMasterData', data: { kind: 'vendor', rows: PROVEEDORES.map(socio) } },
     { action: 'importMasterData', data: { kind: 'item', rows: ARTICULOS.map(([name, costo, precio]) => ({

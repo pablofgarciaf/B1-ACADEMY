@@ -19,6 +19,7 @@ export function applyPartnerCommand(state: CompanyState, command: PartnerCommand
     const customer = state.customers.find(p => p.cardCode === command.data.customerCode);
     const vendor = state.vendors.find(p => p.cardCode === command.data.vendorCode);
     if (!customer || !vendor || !customer.active || !vendor.active) throw new Error('Selecciona un cliente y un proveedor activos de esta empresa.');
+    if (state.profile?.usage !== 'training' && customer.ruc !== vendor.ruc) throw new Error('Cliente y proveedor deben tener la misma identificación para vincularse.');
     if ((customer.linkedVendorCode && customer.linkedVendorCode !== vendor.cardCode) || (vendor.linkedCustomerCode && vendor.linkedCustomerCode !== customer.cardCode)) throw new Error('La ficha ya está vinculada a otro socio.');
     customer.linkedVendorCode = vendor.cardCode; vendor.linkedCustomerCode = customer.cardCode;
     customer.updatedAt = now; vendor.updatedAt = now;

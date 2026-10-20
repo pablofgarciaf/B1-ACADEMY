@@ -24,8 +24,8 @@ const maps: Record<string, Map<string, string>> = {
   nomina: entries({'Período':'period','Empleado':'lines.employeeCode','Días trabajados':'lines.days','Sueldo mensual':'lines.salary','Neto a pagar':'lines.net','Horas extras 50 %':'lines.extra50','Horas extras 100 %':'lines.extra100','Anticipo':'lines.advances'}),
   activos: entries({'Descripción':'name','Costo':'cost','Vida útil (meses)':'usefulLifeMonths','Clase de activo':'category','Fecha':'acquisitionDate','Tipo de amortización':'depreciationMethod','Método':'depreciationMethod','Cuenta contable':'accountCode','Área de amortización':'depreciationArea'}),
   oportunidad: entries({'Nombre':'name','Cliente':'cardCode','Monto estimado (USD)':'amount','Valor potencial':'amount','Etapa':'stage','Probabilidad':'probability','Probabilidad de cierre (%)':'probability','Fecha estimada de cierre':'expectedClose','Descripción':'notes'}),
-  bom: entries({'Artículo':'parentItemCode','Tipo':'type','Cantidad':'components.quantity','Unidad de medida':'components.unit'}),
-  produccion: entries({'Artículo':'parentItemCode','Código':'parentItemCode','Descripción':'description','Prioridad':'priority','Cantidad':'quantity','Bodega':'warehouseCode','Almacén':'warehouseCode','Fecha':'date','Fecha de inicio':'date','Fecha inicio':'date','Fecha de vencimiento':'dueDate','Fecha vencimiento':'dueDate'}),
+  bom: entries({'Artículo':'parentItemCode','Código':'parentItemCode','Descripción':'description','Tipo':'type','Nivel':'level','Cantidad base':'baseQuantity','Almacén':'warehouseCode','Número de línea':'components.lineNumber','Tipo de línea':'components.lineType','Cantidad':'components.quantity','Unidad de medida':'components.unit'}),
+  produccion: entries({'Número':'receiptNumber','Orden Producción':'orderNumber','Artículo':'parentItemCode','Código':'parentItemCode','Descripción':'description','Prioridad':'priority','Cantidad':'quantity','Bodega':'warehouseCode','Almacén':'warehouseCode','Fecha':'date','Fecha de inicio':'date','Fecha inicio':'date','Fecha de vencimiento':'dueDate','Fecha vencimiento':'dueDate','Costo unitario':'unitCost'}),
   conteo: entries({'Fecha ejemplo':'date','Fecha':'date','Código de artículo':'lines.itemCode','Cantidad contada':'lines.countedQuantity','Cantidad en sistema':'lines.systemQuantity','Diferencia':'lines.difference','Almacén':'warehouseCode'}),
   presupuesto: entries({'Ejercicio Fiscal':'year','Cuenta':'accountCode','Escenario':'scenario'}),
   grupos: entries({'Código de grupo':'codigo','Código':'codigo','Grupo':'codigo','Nombre del grupo':'nombre','Nombre':'nombre','Descripción':'descripcion','Lista de precio predeterminada':'defaultPriceList','Grupo UM':'uomGroup','UM Inventario':'inventoryUnit'}),
@@ -34,6 +34,7 @@ const maps: Record<string, Map<string, string>> = {
   precios: entries({'Lista de precios':'code','Nombre de la lista':'name','Nombre':'name','Descripción':'description','Moneda':'currency','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Lista base':'base','Factor':'factor','Activa':'active','Código de cliente':'cardCode','Interlocutor origen':'cardCode','Código de artículo':'itemCode','Artículo':'itemCode','Porcentaje':'discount','Descuento':'discount','Referencia a lista':'referenceList'}),
   descuentos: entries({'Lista de precios':'list','Código de artículo':'itemCode','Artículo':'itemCode','Desde cantidad':'minQuantity','Cantidad mínima':'minQuantity','Hasta cantidad':'maxQuantity','Descuento':'discount','Descuento %':'discount','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Activo':'active'}),
   bancos: entries({'Banco':'bankName','Fecha':'date','Fecha pago':'date','Fecha documento':'date','Monto':'amount','Valor pagado':'amount','Importe recibido':'amount','Importe':'amount','Importe a pagar':'amount','Total pagado':'amount','Valor':'amount','Contrapartida':'counterpartAccount','Referencia':'reference','Retención renta':'retentionIR','Retención IVA':'retentionIVA','Tipo':'type'}),
+  transferencia: entries({'Código':'itemCode','Descripción':'description','Cantidad':'quantity','Almacén origen':'fromWarehouseCode','Almacén destino':'toWarehouseCode','Fecha':'date'}),
   isd: entries({'Fecha':'date','Valor':'figures.amount','ISD':'figures.isd','Total':'figures.total'}),
 };
 const sources: Partial<Record<PantallaConectada['clave'], CollectionName | 'profile'>> = {
@@ -44,7 +45,8 @@ function contract(key: string): PracticeOutcomeContract {
   const [classId, index] = key.split('#');
   const lesson = (LECCIONES as Record<string,{syncData: {slide_index:number;step_guide?:{campos?:{etiqueta:string;valor:string}[];title?:string;menu_path?:string}|null}[]}>)[classId];
   const guide = lesson?.syncData.find(slide => slide.slide_index === Number(index))?.step_guide;
-  const screen = pantallaConectada({...guide,missionId:key});
+  let screen = pantallaConectada({...guide,missionId:key});
+  if(/traslad/i.test(guide?.title??'')) screen={clave:'transferencia'};
   const collection = screen?.clave==='documento' ? (['purchase_request','purchase_order','goods_receipt','vendor_invoice'].includes(screen.docType)?'purchaseOrders':'salesOrders') : screen ? sources[screen.clave] : undefined;
   const result: PracticeOutcomeContract = {key,collection:collection??'profile',requirements:[],pending:[]};
   if(!screen || !collection) { result.pending.push('Pantalla sin contrato de resultados.'); return result; }
@@ -56,8 +58,11 @@ function contract(key: string): PracticeOutcomeContract {
   if(screen.clave==='precios') result.rows=(guide?.campos??[]).some(f=>['Código de cliente','Interlocutor origen'].includes(f.etiqueta)) ? 'specialPrices' : 'priceLists';
   if(screen.clave==='descuentos') result.rows='volumeDiscounts';
   for(const field of guide?.campos??[]) {
-    const generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
+    let generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
     let path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
+    if(screen.clave==='bom'&&['Código','Descripción','Almacén'].includes(field.etiqueta)&&/agregar (componente|recurso)/i.test(guide?.title??'')) path=`components.${field.etiqueta==='Código'?'itemCode':field.etiqueta==='Descripción'?'description':'warehouseCode'}`;
+    if(screen.clave==='produccion'&&field.etiqueta==='Número') { path=/recibir/i.test(guide?.title??'')?'receiptNumber':'orderNumber'; generated=true; }
+    if(screen.clave==='produccion'&&field.etiqueta==='Orden de producción') { path='orderNumber'; generated=true; }
     if(screen.clave==='udo') {
       const addingField=/agregar campo/i.test(guide?.title??'');
       const enteringRecord=/ingresar conductor/i.test(guide?.title??'');
@@ -68,6 +73,8 @@ function contract(key: string): PracticeOutcomeContract {
     if(!path) result.pending.push(`${field.etiqueta}: falta resultado equivalente verificable.`);
     else result.requirements.push({label:field.etiqueta,expected:field.valor,path,generated});
   }
+  if(screen.clave==='produccion'&&/recibir|finalizaci[oó]n/i.test(guide?.title??'')) result.requirements.push({label:'Recibo registrado',expected:'closed',path:'status'});
+  if(screen.clave==='produccion'&&/salida para producci[oó]n/i.test(guide?.title??'')) result.requirements.push({label:'Componentes emitidos',expected:'1',path:'issuedQuantity'});
   if(!result.requirements.length) result.pending.push('La misión no define resultados comprobables.');
   return result;
 }
@@ -79,7 +86,7 @@ function comparable(value:unknown): string {
   if(typeof value==='boolean')return value?'Sí':'No';
   const text=String(value??'').trim();
   if(/^\d{4}-\d{2}-\d{2}$/.test(text)){const [year,month,day]=text.split('-');return `${day}/${month}/${year}`;}
-  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago'};
+  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago',production:'Producción',item:'Artículo',resource:'Recurso'};
   return aliases[text]??text;
 }
 function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyState):boolean {

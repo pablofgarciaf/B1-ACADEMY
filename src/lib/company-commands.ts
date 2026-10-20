@@ -35,6 +35,8 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('bom'), data: bomInputSchema }),
   z.object({ action: z.literal('production'), data: z.object({ bomCode: code, quantity: money.positive(), warehouseCode: code, date, dueDate: date, priority: z.number().int().min(1).max(5).default(1) }) }),
   z.object({ action: z.literal('productionStatus'), data: z.object({ id: code, status: z.enum(['released', 'in_progress', 'closed']) }) }),
+  z.object({ action: z.literal('productionIssue'), data: z.object({ id: code, date }) }),
+  z.object({ action: z.literal('productionReceipt'), data: z.object({ id: code, date, quantity: money.positive().optional() }) }),
   z.object({ action: z.literal('mrp'), data: z.object({ vendorCode: code, date }) }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
   z.object({ action: z.literal('budget'), data: z.object({ year: z.string().regex(/^20\d{2}$/), accountCode: code, months: z.array(money).length(12) }) }),

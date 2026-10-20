@@ -108,3 +108,35 @@ test('UDO: tabla, campo y objeto maestro se guardan como configuración estructu
  const objeto=c.run('udoSave',{tables:[conductores,vehiculos]});
  assert.equal(missionOutcomeMatches(c.state,objeto,'mod24-c1#10'),true);
 });
+
+test('producción: la BOM guarda líneas de artículo y recurso; emitir y recibir dejan trazabilidad separada',()=>{
+ const c=fixture();
+ c.run('resourceSave',{resources:[{codigo:'R001',nombre:'Torno para grabado',tipo:'maquina',capacidadDiaria:8,costoPorHora:20,factorEficiencia:100,tiempoSetup:0,activo:true,unidad:'ciclos'},{codigo:'R002',nombre:'Operario de máquina',tipo:'trabajo',capacidadDiaria:8,costoPorHora:15,factorEficiencia:100,tiempoSetup:0,activo:true,unidad:'hora'}]});
+ const bom=c.run('bom',{parentItemCode:'A00001',type:'production',level:1,baseQuantity:1,warehouseCode:'01',components:[{lineNumber:1,lineType:'item',itemCode:'A00007',description:'Disco Duro SSD 1TB Samsung',quantity:1,unit:'UND',cost:80,warehouseCode:'01'},{lineNumber:2,lineType:'resource',itemCode:'R001',description:'Torno para grabado',quantity:2,unit:'ciclos',cost:20},{lineNumber:3,lineType:'resource',itemCode:'R002',description:'Operario de máquina',quantity:1,unit:'hora',cost:15}]});
+ assert.equal(missionOutcomeMatches(c.state,bom,'mod16-c1#5'),true);
+ assert.equal(missionOutcomeMatches(c.state,bom,'mod16-c1#6'),true);
+ assert.equal(missionOutcomeMatches(c.state,bom,'mod16-c1#7'),true);
+ assert.equal(missionOutcomeMatches(c.state,bom,'mod16-c1#8'),true);
+ const order=c.run('production',{bomCode:bom.result,quantity:5,warehouseCode:'01',date:'2026-09-01',dueDate:'2026-09-30',priority:1});
+ assert.equal(missionOutcomeMatches(c.state,order,'mod16-c1#10'),true);
+ c.run('productionStatus',{id:order.result,status:'released'});
+ const issue=c.run('productionIssue',{id:order.result,date:'2026-09-06'});
+ assert.equal(c.state.productionOrders[0].issuedQuantity,5);
+ assert.ok(c.state.productionOrders[0].issueJournalEntryId);
+ const receipt=c.run('productionReceipt',{id:order.result,date:'2026-09-30'});
+ assert.equal(c.state.productionOrders[0].status,'closed');
+ assert.equal(c.state.productionOrders[0].receivedQuantity,5);
+ assert.ok(c.state.productionOrders[0].receiptNumber);
+ assert.ok(c.state.productionOrders[0].receiptJournalEntryId);
+ assert.equal(missionOutcomeMatches(c.state,receipt,'mod16-c1#11'),true);
+ assert.equal(issue.changes.some(change=>change.collection==='productionOrders'),true);
+});
+
+test('traslado a planta conserva origen, destino y descripción en el kardex',()=>{
+ const c=fixture();
+ c.run('companySettings',{companyName:'B1 Center',ruc:'1792456789001',incomeTaxRate:25,address:'',phone:'',warehouses:[{code:'01',name:'Bodega Central Quito'},{code:'02',name:'Bodega Sucursal Guayaquil'},{code:'99',name:'Planta de producción'}]});
+ const event=c.run('transfer',{from:'01',to:'99',date:'2026-05-02',lines:[{itemCode:'A00004',quantity:10}]});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod16-c2#7'),true);
+ const moves=c.state.stockMovements.filter(move=>move.reference===event.result);
+ assert.equal(moves.every(move=>move.fromWarehouseCode==='01'&&move.toWarehouseCode==='99'),true);
+});
