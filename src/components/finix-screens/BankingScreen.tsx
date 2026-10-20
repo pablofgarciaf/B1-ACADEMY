@@ -6,7 +6,7 @@ import type { CommandData } from '@/lib/company-commands';
 import { Screen, Table, Field, inputClass, buttonClass, Navigation, SaveButton, NumberInput } from './FinixControls';
 import BancaEnLinea from './BancaEnLinea';
 export default function BankingScreen() {
-  const c = useCompany(); const blank = (): CommandData<'bank'> => ({ bankAccountId: c.data.bankAccounts[0]?.id ?? '', date: today(), type: 'deposit', amount: 0, counterpartAccount: '3.01', reference: '', documentId: '' });
+  const c = useCompany(); const blank = (): CommandData<'bank'> => ({ bankAccountId: c.data.bankAccounts[0]?.id ?? '', date: today(), type: 'deposit', amount: 0, paymentMethod: 'transfer', counterpartAccount: '3.01', reference: '', documentId: '' });
   const [data, setData] = useState(blank); const [index, setIndex] = useState(-1); const [bank, setBank] = useState(''); const [statement, setStatement] = useState<Record<string, number>>({});
   const rows = c.data.bankTransactions.filter(t => !bank || t.bankAccountId === bank); const reset = () => { setData(blank()); setIndex(-1); };
   const invoices = [...c.data.salesOrders, ...c.data.purchaseOrders].filter(d => (data.type === 'deposit' ? d.docType === 'invoice' : ['vendor_invoice', 'debit_note', 'credit_note'].includes(d.docType)) && d.status === 'open');
@@ -23,6 +23,7 @@ export default function BankingScreen() {
           date: r.date ?? today(),
           type: (r.type as 'deposit' | 'payment') ?? 'deposit',
           amount: r.amount ?? 0,
+          paymentMethod: r.paymentMethod ?? 'transfer',
           counterpartAccount: r.counterpartAccount ?? '3.01',
           reference: r.reference ?? '',
           documentId: r.documentId ?? ''
@@ -42,6 +43,7 @@ export default function BankingScreen() {
             <option value="payment">Pago</option>
           </select>
         </Field>
+        <Field label="Medio de pago"><select className={inputClass} value={data.paymentMethod} onChange={e=>setData(d=>({...d,paymentMethod:e.target.value as 'transfer'|'card'|'cash'|'check'}))}><option value="transfer">Transferencia</option><option value="card">Tarjeta de crédito</option><option value="cash">Efectivo</option><option value="check">Cheque</option></select></Field>
         <Field label="Fecha" required>
           <input type="date" required className={inputClass} value={data.date ?? today()} onChange={e => setData(d => ({ ...d, date: e.target.value }))} />
         </Field>
@@ -67,6 +69,7 @@ export default function BankingScreen() {
           const saldo = doc ? round(doc.total - doc.paidAmount) : 0;
           const reajusta = (ir: number, iva: number) => setData(d => ({ ...d, retentionIR: ir, retentionIVA: iva, amount: Math.max(0.01, round(saldo - ir - iva)) }));
           return <>
+            <Field label="Descuento %"><NumberInput ariaLabel="Descuento" min={0} max={100} value={data.discountPercent ?? 0} onChange={val => setData(d => ({...d,discountPercent:val,amount:Math.max(0.01,round(saldo - (saldo*val/100) - (d.retentionIR??0) - (d.retentionIVA??0)))}))} /></Field>
             <Field label="Retención de renta que te hizo el cliente (USD)"><NumberInput ariaLabel="Retención de renta" min={0} value={data.retentionIR ?? 0} onChange={val => reajusta(val, data.retentionIVA ?? 0)} /></Field>
             <Field label="Retención de IVA que te hizo el cliente (USD)"><NumberInput ariaLabel="Retención de IVA" min={0} value={data.retentionIVA ?? 0} onChange={val => reajusta(data.retentionIR ?? 0, val)} /></Field>
             <p className="sm:col-span-3 text-[#555]">Si el cliente es agente de retención, te entrega un comprobante de retención y paga solo la diferencia. El importe se ajusta solo; las retenciones quedan como crédito tributario (cuentas 1.1.10 y 1.1.11).</p>

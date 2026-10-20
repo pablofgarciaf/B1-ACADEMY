@@ -243,20 +243,20 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       if(privateCompany) assert(!state.bankTransactions.some(t=>t.bankAccountId===bank.id&&t.date>d.date),'No registres movimientos bancarios anteriores al historial existente.');
       const deposit = d.type === 'deposit'; const records = [...state.salesOrders, ...state.purchaseOrders]; const invoice = records.find(doc => doc.id === d.documentId);
       let counterpart = d.counterpartAccount;
-      const retIR = d.retentionIR ?? 0; const retIVA = d.retentionIVA ?? 0; const settle = round(d.amount + retIR + retIVA);
+      const retIR = d.retentionIR ?? 0; const retIVA = d.retentionIVA ?? 0; let discountAmount = 0; let documentTotal = 0; const settleBase = round(d.amount + retIR + retIVA);
       assert(!(retIR || retIVA) || (deposit && d.documentId), 'Las retenciones recibidas se registran al cobrar una factura de venta.');
       if (d.documentId) {
         assert(invoice && (deposit ? invoice.docType === 'invoice' : ['vendor_invoice', 'debit_note', 'credit_note'].includes(invoice.docType)), 'Selecciona una factura o nota de débito compatible.');
-        if (!invoice) break; assert(d.date>=invoice.date,'El pago no puede preceder al documento.'); assert(invoice.status === 'open' && round(invoice.paidAmount + settle) <= invoice.total, 'Pago excedido o factura cerrada.');
+        if (!invoice) break; documentTotal = invoice.total; discountAmount = round(invoice.total * (d.discountPercent ?? 0) / 100); const settle = round(settleBase + discountAmount); assert(d.date>=invoice.date,'El pago no puede preceder al documento.'); assert(invoice.status === 'open' && round(invoice.paidAmount + settle) <= invoice.total, 'Pago excedido o factura cerrada.');
         counterpart = deposit || invoice.docType === 'credit_note' ? '1.1.03' : '2.1.01'; invoice.paidAmount = round(invoice.paidAmount + settle); invoice.status = invoice.paidAmount === invoice.total ? 'closed' : 'open'; invoice.updatedAt = now;
         const partner = (deposit || invoice.docType === 'credit_note' ? state.customers : state.vendors).find(p => p.cardCode === invoice.cardCode); if (partner) { partner.balance = round(partner.balance + (invoice.docType === 'credit_note' ? settle : -settle)); partner.updatedAt = now; }
       }
       assert(counterpart !== bank.ledgerAccount, 'Selecciona una contrapartida distinta de bancos.');
       if(privateCompany&&!d.documentId) assert(!subsidiaryAccount(counterpart)&&!bankLedgerAccount(counterpart),'Usa un documento u operación vinculada para clientes, proveedores, inventarios, activos y bancos; conserva su auxiliar.');
       assert(deposit || bank.balance >= d.amount, 'Saldo bancario insuficiente.'); result = next('BAN', d.date);
-      const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine('1.1.10', retIR), ledgerLine('1.1.11', retIVA), ledgerLine(counterpart, 0, settle)] : [ledgerLine(counterpart, d.amount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
+      const settle = round(settleBase + discountAmount); const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine('1.1.10', retIR), ledgerLine('1.1.11', retIVA), ledgerLine('6.03', discountAmount), ledgerLine(counterpart, 0, settle)] : [ledgerLine(counterpart, settle), ledgerLine('4.02', 0, discountAmount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
       bank.balance = round(bank.balance + (deposit ? d.amount : -d.amount)); bank.updatedAt = now;
-      state.bankTransactions.push({ ...meta(result), ...d, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, counterpartAccount: counterpart, transactionId: result, reconciled: false, statementAmount: null, journalEntryId }); break;
+      state.bankTransactions.push({ ...meta(result), ...d, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, partnerCode: invoice?.cardCode ?? '', documentNumber: invoice?.docNumber ?? '', documentTotal, discountAmount, counterpartAccount: counterpart, transactionId: result, reconciled: false, statementAmount: null, journalEntryId }); break;
     }
     case 'bankAccount': {
       assert(privateCompany, 'La configuración de cuentas propias corresponde a la empresa privada.');
@@ -348,7 +348,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const journalEntryId = post(d.date, `Pago al exterior: ${d.concept}`, 'bank', result, [ledgerLine(principal, d.amount), ledgerLine(d.imputacion === 'credito' ? '1.1.12' : '6.08', isd), ledgerLine(bank.ledgerAccount, 0, round(d.amount + isd))]);
       if (proveedor) { proveedor.balance = round(proveedor.balance - d.amount); proveedor.updatedAt = now; }
       bank.balance = round(bank.balance - d.amount - isd); bank.updatedAt = now;
-      state.bankTransactions.push({ ...meta(result), transactionId: result, bankAccountId: bank.id, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, date: d.date, type: 'payment', amount: round(d.amount + isd), counterpartAccount: principal, reference: d.reference || d.concept, documentId: '', reconciled: false, statementAmount: null, journalEntryId });
+      state.bankTransactions.push({ ...meta(result), transactionId: result, bankAccountId: bank.id, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, date: d.date, type: 'payment', amount: round(d.amount + isd), paymentMethod:'transfer', partnerCode:d.vendorCode, documentNumber:'', counterpartAccount: principal, reference: d.reference || d.concept, documentId: '', reconciled: false, statementAmount: null, journalEntryId });
       state.taxRuns.push({ ...meta(`${result}-ISD`), runId: `${result}-ISD`, kind: 'isd', year: Number(d.date.slice(0, 4)), date: d.date, title: `ISD · ${d.concept}`, journalEntryId, figures: { pago: d.amount, tarifa: tarifa.rate, isd, total: round(d.amount + isd) },
         lines: [{ label: 'Pago al exterior', value: d.amount.toFixed(2), note: d.concept }, { label: `ISD ${tarifa.rate} %`, value: isd.toFixed(2), note: d.imputacion === 'credito' ? 'crédito tributario (1.1.12)' : 'gasto (6.08)' }, { label: 'Total que sale del banco', value: round(d.amount + isd).toFixed(2), note: '' }] });
       break;

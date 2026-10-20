@@ -26,7 +26,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('reverse'), data: z.object({ entryId: code, date }) }),
   z.object({ action: z.literal('stock'), data: z.object({ itemCode: code, warehouseCode: code, qty: z.number().finite().refine(v => v !== 0), costingMethod: z.enum(costMethods) }) }),
   z.object({ action: z.literal('transfer'), data: z.object({ from: code, to: code, date, lines: z.array(z.object({ itemCode: code, quantity: money.positive() })).min(1).max(60) }) }),
-  z.object({ action: z.literal('bank'), data: z.object({ bankAccountId: code, date, type: z.enum(['deposit', 'payment']), amount: money.positive(), counterpartAccount: code, reference: text, documentId: z.string().max(80), retentionIR: money.optional(), retentionIVA: money.optional() }) }),
+  z.object({ action: z.literal('bank'), data: z.object({ bankAccountId: code, date, type: z.enum(['deposit', 'payment']), amount: money.positive(), counterpartAccount: code, reference: text, documentId: z.string().max(80), retentionIR: money.optional(), retentionIVA: money.optional(), discountPercent: money.min(0).max(100).optional(), paymentMethod: z.enum(['transfer','card','cash','check']).default('transfer') }) }),
   z.object({action:z.literal('bankAccount'),data:z.object({name:text.min(2),bankName:text.min(2),accountNumber:z.string().trim().min(4).max(34).regex(/^[a-zA-Z0-9-]+$/,'Número de cuenta inválido.')})}),
   z.object({ action: z.literal('reconcile'), data: z.object({ id: code, statementAmount: z.number().finite(), reconciled: z.boolean() }) }),
   z.object({ action: z.literal('payroll'), data: z.object({ period: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/), date, sbu: money.positive(), lines: z.array(payrollInputLine).min(1).max(80) }) }),
