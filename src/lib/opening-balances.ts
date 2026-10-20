@@ -50,7 +50,7 @@ export function prepareOpeningBalances(original: CompanyState, input: OpeningBal
     const partner = (sales ? state.customers : state.vendors).find(p => p.cardCode === row.cardCode && p.active);
     check(partner && (!sales || !('kind' in partner) || partner.kind === 'customer'), `Socio activo inexistente: ${row.cardCode}. Regístralo antes de importar.`);
     const id = `${journalId}-${sales ? 'C' : 'P'}-${index + 1}`;
-    const common = { ...meta(id), openingBalance: true, docNumber: row.documentNumber, date: row.date, dueDate: row.dueDate, cardCode: row.cardCode, cardName: partner!.name, currency: 'USD' as const, reference: data.reference, comments: 'Saldo pendiente al corte de apertura. No reconstruye líneas ni impuestos del documento histórico.', baseDocumentId: '', status: 'open' as const, lines: [], subtotal: row.amount, tax: 0, total: row.amount, paidAmount: 0, journalEntryId: journalId };
+    const common = { ...meta(id), openingBalance: true, docNumber: row.documentNumber, ownerCode: '', date: row.date, dueDate: row.dueDate, cardCode: row.cardCode, cardName: partner!.name, currency: 'USD' as const, reference: data.reference, comments: 'Saldo pendiente al corte de apertura. No reconstruye líneas ni impuestos del documento histórico.', baseDocumentId: '', status: 'open' as const, lines: [], subtotal: row.amount, tax: 0, total: row.amount, paidAmount: 0, journalEntryId: journalId };
     if (sales) state.salesOrders.push({ ...common, docType: 'invoice' } as SalesDocument);
     else state.purchaseOrders.push({ ...common, docType: 'vendor_invoice' } as PurchaseDocument);
     partner!.balance = round(partner!.balance + row.amount); partner!.updatedAt = now;

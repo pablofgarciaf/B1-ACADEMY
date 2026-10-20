@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { code, customerSchema, vendorSchema, type CompanyState } from './firestore-types';
 
 const editable = customerSchema.pick({ name: true, ruc: true, email: true, phone: true, address: true,
-  city: true, contactName: true, paymentTermsDays: true, creditLimit: true, active: true, group: true, notes: true }).partial()
+  city: true, contactName: true, paymentTermsDays: true, creditLimit: true, active: true, group: true, notes: true, ownerCode: true }).partial()
   .extend({ kind: z.enum(['customer', 'lead']).optional(), rimpe: vendorSchema.shape.rimpe.optional(),
     subjectToWithholding: vendorSchema.shape.subjectToWithholding.optional(), withholdingTax: vendorSchema.shape.withholdingTax.optional(),
     vatWithholdingGroup: vendorSchema.shape.vatWithholdingGroup.optional(), vatWithholdingCode: vendorSchema.shape.vatWithholdingCode.optional(),
@@ -37,6 +37,7 @@ export function applyPartnerCommand(state: CompanyState, command: PartnerCommand
   }
   if (changes.active === false && partner.balance !== 0) throw new Error('El socio tiene saldo pendiente; liquídalo antes de desactivarlo.');
   if (changes.kind === 'lead' && documents.length) throw new Error('Un cliente con documentos no puede volver a ser lead.');
+  if (partnerType === 'customer' && changes.ownerCode && !state.employees.some(employee => employee.employeeCode === changes.ownerCode && employee.active)) throw new Error('El propietario debe ser un empleado activo de esta empresa.');
   Object.assign(partner, changes, { updatedAt: now });
   return partner.id;
 }

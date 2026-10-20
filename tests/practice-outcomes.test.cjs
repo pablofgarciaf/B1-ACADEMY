@@ -84,3 +84,14 @@ test('bancos: el movimiento conserva la cuenta bancaria y la contrapartida conta
  assert.equal(missionOutcomeMatches(c.state,event,'mod6-c3#7'),true);
  assert.equal(c.state.bankTransactions.at(-1).bankName,'Banco Pichincha');
 });
+
+test('propiedad de datos: jefe, sucursal y propietario se validan y pasan al documento de venta',()=>{
+ const c=fixture();
+ const empleado=c.run('employee',{firstName:'María',lastName:'Gómez',identification:'1799998888',position:'Contadora',department:'Contabilidad',supervisorCode:'E001',branchCode:'01',hireDate:'2026-01-01',contract:'indefinite',schedule:'full',baseSalary:900,employerRate:12.15,personalRate:9.45,thirteenthMonthly:false,fourteenthMonthly:false,reserveMonthly:true,vacationDays:15,dependents:0,projectedExpenses:0,active:true});
+ assert.equal(missionOutcomeMatches(c.state,empleado,'mod4-c4#6'),true);
+ const propietario=c.run('partnerUpdate',{partnerType:'customer',cardCode:'C20000',changes:{ownerCode:'E002'}});
+ assert.ok(propietario.changes.some(change=>change.collection==='customers'));
+ const factura=c.run('sales',{docType:'invoice',document:{date:'2026-06-15',dueDate:'2026-06-15',cardCode:'C20000',reference:'',comments:'',baseDocumentId:'',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity:1,unit:'UND',price:1000,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ assert.equal(missionOutcomeMatches(c.state,factura,'mod4-c4#9'),true);
+ assert.equal(c.state.salesOrders.at(-1).ownerCode,'E002');
+});

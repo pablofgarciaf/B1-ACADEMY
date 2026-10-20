@@ -2,7 +2,7 @@ import { prepareTraining } from './training-scenario';
 import { buildSRIXml } from './sri-xml';
 import { commandSchema, type CompanyCommand, type CommandData } from './company-commands';
 import { mensajeValidacion } from './zod-es';
-import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine, LandedCost } from './firestore-types';
+import type { CompanyState, Entity, AccountingAccount, JournalLine, DocumentLine, SalesDocument, PurchaseDocument, DocType, WarehouseStock, SRITaxDocument, InventoryCountLine, LandedCost, Customer } from './firestore-types';
 import { enviarAlSRI, iceDeLinea, ISD_TARIFAS, opcionRetencion, revisarIdentificacion } from './sri-catalogo';
 import { financialSummary, moveStock, resultadoEjercicio, mrp, payrollLine, quantityRound, round, sriAccessKey, totals, trialBalance } from './company-calculations';
 
@@ -189,7 +189,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     if (lines.length) journalEntryId = post(data.date, documentLabels[docType], kind, id, lines);
     const creditApplied = docType === 'credit_note' && base ? round(amounts.total - base.paidAmount) : 0;
-    const common = { ...meta(id), ...data, ...amounts, docNumber: id, cardName: partner.name, currency: 'USD' as const, status: (docType === 'credit_note' && creditApplied === amounts.total ? 'closed' : 'open') as 'open' | 'closed', paidAmount: creditApplied, journalEntryId };
+    const common = { ...meta(id), ...data, ...amounts, docNumber: id, ownerCode: sales ? (partner as Customer).ownerCode ?? '' : '', cardName: partner.name, currency: 'USD' as const, status: (docType === 'credit_note' && creditApplied === amounts.total ? 'closed' : 'open') as 'open' | 'closed', paidAmount: creditApplied, journalEntryId };
     if (sales) state.salesOrders.push({ ...common, docType: docType as SalesDocument['docType'] });
     else state.purchaseOrders.push({ ...common, docType: docType as PurchaseDocument['docType'] });
     if (base && docType !== 'debit_note') { base.status = 'closed'; base.updatedAt = now; }
@@ -203,10 +203,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'access': profile.lastAccess = now; result = uid; break;
     case 'sales': result = saveDocument('sales', command.data.docType, command.data.document); break;
     case 'purchase': result = saveDocument('purchase', command.data.docType, command.data.document); break;
-    case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('C'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
+    case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); if(command.data.ownerCode) assert(state.employees.some(employee => employee.employeeCode === command.data.ownerCode && employee.active), 'El propietario debe ser un empleado activo de esta empresa.'); result = nextFinix('C'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
     case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
     case 'item': { result = nextFinix('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
-    case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, employeeCode: result }); break; }
+    case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); if(command.data.supervisorCode) assert(state.employees.some(employee => employee.employeeCode === command.data.supervisorCode && employee.active), 'El jefe debe ser un empleado activo de esta empresa.'); assert(profile.warehouses.some(warehouse => warehouse.code === command.data.branchCode), 'Sucursal inexistente.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, fullName: `${command.data.firstName} ${command.data.lastName}`.trim(), employeeCode: result }); break; }
     case 'journal': { const d = command.data; if(privateCompany) { assert(!d.lines.some(l=>bankLedgerAccount(l.accountCode)),'Registra bancos mediante cobros y pagos para mantener el saldo auxiliar.'); assert(!d.lines.some(l=>subsidiaryAccount(l.accountCode)),'Registra clientes, proveedores, inventarios y activos mediante sus documentos y operaciones para conservar el auxiliar; no mediante un asiento manual.'); } result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
     case 'reverse': {
       const entry = state.journalEntries.find(e => e.id === command.data.entryId); assert(entry && !entry.reversedBy && !entry.reversalOf && entry.source === 'manual', 'Solo se revierte un asiento manual original sin reversión previa.');
