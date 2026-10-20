@@ -4,15 +4,16 @@ import { useCompany } from '@/hooks/useCompany';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 
 interface UDOField { nombre: string; tipo: 'Alfanumérico' | 'Número' | 'Fecha' | 'Lista' | 'Sí/No'; longitud: number; descripcion: string }
-interface UDOTable { codigo: string; nombre: string; descripcion: string; objectType: 'Ningún objeto' | 'Datos maestros'; codeEnabled: boolean; uniqueName: boolean; objectId: string; menuEnabled: boolean; menuModule: string; campos: UDOField[]; registros: Record<string, string>[] }
-type NuevaTabla = Omit<UDOTable, 'campos' | 'registros'>;
+interface UDOLink { objeto: string; tipo: string; nombre: string; validacion: string; tabla: string }
+interface UDOTable { codigo: string; nombre: string; descripcion: string; objectType: 'Ningún objeto' | 'Datos maestros'; codeEnabled: boolean; uniqueName: boolean; objectId: string; menuEnabled: boolean; menuModule: string; campos: UDOField[]; registros: Record<string, string>[]; links: UDOLink[] }
+type NuevaTabla = Omit<UDOTable, 'campos' | 'registros' | 'links'>;
 
 const TIPOS_CAMPO = ['Alfanumérico', 'Número', 'Fecha', 'Lista', 'Sí/No'] as const;
 
 export default function UDOScreen() {
   const c = useCompany();
   const p = c.data.profile;
-  const guardados: UDOTable[] = ((p as unknown as Record<string, unknown>)?.udoTables as UDOTable[]) ?? [];
+  const guardados = ((((p as unknown as Record<string, unknown>)?.udoTables as UDOTable[]) ?? []).map(t => ({ ...t, descripcion: t.descripcion ?? '', objectType: t.objectType ?? 'Ningún objeto', codeEnabled: t.codeEnabled ?? true, uniqueName: t.uniqueName ?? true, objectId: t.objectId ?? '', menuEnabled: t.menuEnabled ?? false, menuModule: t.menuModule ?? 'Ventas', links: t.links ?? [], campos: (t.campos ?? []).map(field => ({ ...field, tipo: String(field.tipo) === 'Texto' ? 'Alfanumérico' : field.tipo, longitud: field.longitud ?? 50 })) })));
 
   const [tablas, setTablas] = useState<UDOTable[]>([]);
   const [seleccionada, setSeleccionada] = useState<UDOTable | null>(null);
@@ -20,6 +21,7 @@ export default function UDOScreen() {
   const [nuevaTabla, setNuevaTabla] = useState<NuevaTabla>({ codigo: '', nombre: '', descripcion: '', objectType: 'Ningún objeto', codeEnabled: true, uniqueName: true, objectId: '', menuEnabled: false, menuModule: 'Ventas' });
   const [modoNuevaTabla, setModoNuevaTabla] = useState(false);
   const [nuevoReg, setNuevoReg] = useState<Record<string, string>>({});
+  const [nuevoVinculo, setNuevoVinculo] = useState<UDOLink>({ objeto: 'Entrega', tipo: 'Alfanumérico', nombre: '', validacion: 'Fijar tabla vinculada', tabla: '' });
 
   useEffect(() => { setTablas(guardados); }, [guardados.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -30,7 +32,7 @@ export default function UDOScreen() {
 
   const crearTabla = async () => {
     if (!nuevaTabla.codigo || !nuevaTabla.nombre) return;
-    const t: UDOTable = { ...nuevaTabla, codigo: nuevaTabla.codigo.toUpperCase(), campos: [], registros: [] };
+    const t: UDOTable = { ...nuevaTabla, codigo: nuevaTabla.codigo.toUpperCase(), campos: [], registros: [], links: [] };
     const ts = [...tablas, t];
     await guardarTablas(ts);
     setSeleccionada(t);
@@ -54,6 +56,14 @@ export default function UDOScreen() {
     await guardarTablas(ts);
     setSeleccionada(t => t ? { ...t, registros } : t);
     setNuevoReg({});
+  };
+  const agregarVinculo = async () => {
+    if (!seleccionada || !nuevoVinculo.nombre || !nuevoVinculo.tabla) return;
+    const links = [...seleccionada.links, nuevoVinculo];
+    const ts = tablas.map(t => t.codigo === seleccionada.codigo ? { ...t, links } : t);
+    await guardarTablas(ts);
+    setSeleccionada(t => t ? { ...t, links } : t);
+    setNuevoVinculo({ objeto: 'Entrega', tipo: 'Alfanumérico', nombre: '', validacion: 'Fijar tabla vinculada', tabla: '' });
   };
 
   return (
@@ -133,6 +143,17 @@ export default function UDOScreen() {
                 </div>
               </div>
             )}
+            <div>
+              <p className="text-xs font-semibold text-gray-600 mb-1">CAMPOS VINCULADOS A DOCUMENTOS</p>
+              <Table headers={['Objeto', 'Campo', 'Tipo', 'Validación', 'Tabla']} rows={seleccionada.links.map(link => [link.objeto, link.nombre, link.tipo, link.validacion, link.tabla])} />
+              <div className="flex flex-wrap gap-2 items-end mt-2">
+                <Field label="Objeto"><select className={inputClass} value={nuevoVinculo.objeto} onChange={e => setNuevoVinculo(v => ({...v, objeto:e.target.value}))}><option>Entrega</option></select></Field>
+                <Field label="Tipo de campo"><select className={inputClass} value={nuevoVinculo.tipo} onChange={e => setNuevoVinculo(v => ({...v, tipo:e.target.value}))}><option>Alfanumérico</option></select></Field>
+                <Field label="Nombre del campo"><input className={inputClass} value={nuevoVinculo.nombre} onChange={e => setNuevoVinculo(v => ({...v, nombre:e.target.value}))} placeholder="U_OF_CONDUCTOR" /></Field>
+                <Field label="Tabla vinculada"><select className={inputClass} value={nuevoVinculo.tabla} onChange={e => setNuevoVinculo(v => ({...v, tabla:e.target.value}))}><option value="">Selecciona tabla</option>{tablas.map(t => <option key={t.codigo} value={t.codigo}>{t.codigo}</option>)}</select></Field>
+                <div className="pb-0.5"><button type="button" onClick={agregarVinculo} disabled={!nuevoVinculo.nombre || !nuevoVinculo.tabla} className={buttonClass}>+ Vincular campo</button></div>
+              </div>
+            </div>
           </div>
         )}
       </div>

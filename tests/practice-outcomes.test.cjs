@@ -98,11 +98,13 @@ test('propiedad de datos: jefe, sucursal y propietario se validan y pasan al doc
 
 test('UDO: tabla, campo y objeto maestro se guardan como configuración estructurada',()=>{
  const c=fixture();
- const conductores={codigo:'@OF_CONDUCTORES',nombre:'Conductores',descripcion:'Conductores de entrega',objectType:'Ningún objeto',codeEnabled:true,uniqueName:true,objectId:'',menuEnabled:false,menuModule:'Ventas',campos:[{nombre:'U_OF_NOMBRE',tipo:'Alfanumérico',longitud:50,descripcion:'Nombre completo del conductor'}],registros:[]};
+ const conductores={codigo:'@OF_CONDUCTORES',nombre:'Conductores',descripcion:'Conductores de entrega',objectType:'Ningún objeto',codeEnabled:true,uniqueName:true,objectId:'',menuEnabled:false,menuModule:'Ventas',campos:[{nombre:'U_OF_NOMBRE',tipo:'Alfanumérico',longitud:50,descripcion:'Nombre completo del conductor'}],registros:[{'Código':'C001','Nombre':'María López','U_OF_NOMBRE':'María López','U_OF_TURNO':'Noche','U_OF_DISPONIBLE':'Sí','U_OF_UBICACION':'Quito'}],links:[{objeto:'Entrega',tipo:'Alfanumérico',nombre:'U_OF_CONDUCTOR',validacion:'Fijar tabla vinculada',tabla:'@OF_CONDUCTORES'}]};
  const tabla=c.run('udoSave',{tables:[conductores]});
  assert.equal(missionOutcomeMatches(c.state,tabla,'mod24-c1#5'),true);
  assert.equal(missionOutcomeMatches(c.state,tabla,'mod24-c1#6'),true);
- const vehiculos={codigo:'@OF_VEHICULOS',nombre:'Vehículos',descripcion:'',objectType:'Datos maestros',codeEnabled:true,uniqueName:true,objectId:'OFVEH',menuEnabled:true,menuModule:'Ventas',campos:[],registros:[]};
+ assert.equal(missionOutcomeMatches(c.state,tabla,'mod24-c1#7'),true);
+ assert.equal(missionOutcomeMatches(c.state,tabla,'mod24-c1#8'),true);
+ const vehiculos={codigo:'@OF_VEHICULOS',nombre:'Vehículos',descripcion:'',objectType:'Datos maestros',codeEnabled:true,uniqueName:true,objectId:'OFVEH',menuEnabled:true,menuModule:'Ventas',campos:[],registros:[],links:[]};
  const objeto=c.run('udoSave',{tables:[conductores,vehiculos]});
  assert.equal(missionOutcomeMatches(c.state,objeto,'mod24-c1#10'),true);
 });

@@ -21,6 +21,7 @@ const plano = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g
 /** Reglas en orden: la primera que coincide con el título y la ruta de la práctica decide la pantalla. */
 const REGLAS: [RegExp, PantallaConectada][] = [
   // SRI y notas de crédito primero: sus títulos mencionan "factura de proveedor/cliente" y se los comería otra regla.
+  [/conductor|udt|tabla vinculada/, { clave: 'udo' }],
   [/ruc del sistema|ingresar (el )?ruc/, { clave: 'empresa' }],
   [/comprobante de retencion|emitir (la )?retencion|generar (el )?comprobante|retencion electronica|comprobante electronico|guia de remision|autorizar.*sri|\bsri\b/, { clave: 'sri' }],
   [/utilidades de los trabajadores|participacion de (los )?trabajadores|impuesto a la renta (del ejercicio|anual|de la empresa)|cierre tributario|anticipo (de|del) impuesto/, { clave: 'cierreTributario' }],

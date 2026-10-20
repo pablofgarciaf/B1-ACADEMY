@@ -60,7 +60,9 @@ function contract(key: string): PracticeOutcomeContract {
     let path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
     if(screen.clave==='udo') {
       const addingField=/agregar campo/i.test(guide?.title??'');
-      const custom:Record<string,string>=addingField?{'Tabla seleccionada':'codigo','Nombre del campo':'campos.nombre','Tipo':'campos.tipo','Longitud':'campos.longitud','Descripción':'campos.descripcion'}:{'Nombre de la tabla':'codigo','Descripción':'descripcion','Tipo de objeto':'objectType','Código habilitado':'codeEnabled','Nombre único':'uniqueName','ID del objeto':'objectId','Habilitar opción de menú':'menuEnabled','Módulo del menú':'menuModule'};
+      const enteringRecord=/ingresar conductor/i.test(guide?.title??'');
+      const linking=/vincular udt/i.test(guide?.title??'');
+      const custom:Record<string,string>=addingField?{'Tabla seleccionada':'codigo','Nombre del campo':'campos.nombre','Tipo':'campos.tipo','Longitud':'campos.longitud','Descripción':'campos.descripcion'}:enteringRecord?{'Código':'registros.Código','Nombre':'registros.Nombre','U_OF_NOMBRE':'registros.U_OF_NOMBRE','U_OF_TURNO':'registros.U_OF_TURNO','U_OF_DISPONIBLE':'registros.U_OF_DISPONIBLE','U_OF_UBICACION':'registros.U_OF_UBICACION'}:linking?{'Objeto':'links.objeto','Tipo de campo':'links.tipo','Nombre del campo':'links.nombre','Validación':'links.validacion','Tabla vinculada':'links.tabla'}:{'Nombre de la tabla':'codigo','Descripción':'descripcion','Tipo de objeto':'objectType','Código habilitado':'codeEnabled','Nombre único':'uniqueName','ID del objeto':'objectId','Habilitar opción de menú':'menuEnabled','Módulo del menú':'menuModule'};
       path=custom[field.etiqueta];
     }
     if(!path) result.pending.push(`${field.etiqueta}: falta resultado equivalente verificable.`);
