@@ -3,7 +3,7 @@
     "slide_index": 1,
     "image_file": "Slide_001.webp",
     "script_text": "Bienvenido al tema sobre los abonos de clientes en SAP Business One Versión 10.0. Aquí aprenderás cómo corregir problemas posteriores a la facturación mediante el uso de abonos de clientes, también conocidos como notas de crédito. Este proceso es esencial para mantener la precisión contable y la satisfacción del cliente cuando se presentan errores en precios o se requieren devoluciones de mercancía. Veremos cómo crear y aplicar estos documentos correctamente en el sistema.",
-    "start_time": 0.0,
+    "start_time": 0,
     "end_time": 30.62
   },
   {
@@ -30,7 +30,7 @@
   {
     "slide_index": 5,
     "image_file": "Slide_005.webp",
-    "script_text": "En nuestro ejemplo, el cliente devuelve una cámara facturada a 100 cuyo costo era de 50. El abono de clientes anula tanto la factura como la entrega asociada. Contablemente, esto se refleja aumentando el debe en la cuenta del cliente (para reducir su saldo) y teniendo el haber en ingresos por ventas. Simultáneamente, se aumenta el debe en gastos y se disminuye el haber en existencias, reflejando el retorno del artículo al inventario y el ajuste del costo de ventas. Este asiento asegura que tanto los libros contables como el stock queden equilibrados tras la devolución.",
+    "script_text": "En el ejemplo, el cliente devuelve una cámara facturada por 100 cuyo costo fue 50, sin impuestos para simplificar. La nota de crédito debita la cuenta de ingresos o devoluciones sobre ventas por 100 y acredita la cuenta por cobrar al cliente por 100. Si también retorna físicamente el artículo con contabilización de cantidad, debita inventario por 50 y acredita costo de ventas por 50. El inventario aumenta en una cámara, valorada en 50. Los documentos conservan sus referencias para la trazabilidad.",
     "start_time": 126.38,
     "end_time": 164.04
   },
@@ -65,7 +65,7 @@
   {
     "slide_index": 10,
     "image_file": "Slide_010.webp",
-    "script_text": "Cuando un cliente devuelve artículos que no están vinculados a una factura específica, se puede registrar un abono sin referencia a un documento anterior en SAP Business One. Si los artículos pertenecen al inventario, el sistema aumenta tanto la cantidad en stock como su valor contable. En este caso, se acredita al cliente por 100 y se debita la cuenta de ingresos por el mismo monto, revirtiendo la venta. Simultáneamente, se incrementa el stock en 50 unidades (valorado en 50) y se reduce la cuenta de gastos por ese valor, reflejando el regreso del inventario al almacén. Este tipo de abono es útil cuando la devolución no está asociada a una factura original, como en casos de garantía o buen servicio postventa.",
+    "script_text": "Una nota de crédito sin documento base puede registrar una devolución cuando se cumplen las condiciones de la operación y configuración. En este ejemplo simplificado sin impuestos, una cámara vendida por 100 retorna al inventario con costo 50. Se debitan ingresos o devoluciones sobre ventas por 100 y se acredita la cuenta del cliente por 100; además, se debita inventario por 50 y se acredita costo de ventas por 50. La cantidad aumenta en una cámara, no en cincuenta unidades. La valoración aplicable debe revisarse según el método de inventario.",
     "start_time": 327.05,
     "end_time": 373.54
   },

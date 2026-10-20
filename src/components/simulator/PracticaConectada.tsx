@@ -77,6 +77,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
 }) {
   const c = useCompanyController();
   const [logrado, setLogrado] = useState<string | null>(null);
+  const [pendingEvidence,setPendingEvidence]=useState<IntentoPractica | null>(null);
 
   // Mismo contexto que usa el Simulador, con el guardado interceptado para saber cuándo se cumplió la misión.
   const valor = useMemo(() => ({
@@ -92,12 +93,11 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
       const expected=mission?.expectedAction?[mission.expectedAction]:operationFor(pantalla);
       const docMatches=!mission?.expectedDocType || (command.action==='sales' && command.data.docType===mission.expectedDocType);
       if (expected.includes(command.action) && docMatches && !logrado) {
-        setLogrado(resultado);
-        onCompleta({ valores: [`${command.action}:${resultado}`], evidence:{requestId,action:command.action,result:resultado}, intentos: 1, vioSolucion: false, conectada: true });
+        setPendingEvidence({ valores: [`${command.action}:${resultado}`], evidence:{requestId,action:command.action,result:resultado}, intentos: 1, vioSolucion: false, conectada: true });
       }
       return resultado;
     },
-  }), [c, logrado, onCompleta,guia.missionId,pantalla]);
+  }), [c, logrado,guia.missionId,pantalla]);
 
   const empresa = c.data.profile?.companyName;
   return (
@@ -105,7 +105,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold">
         <div className="flex items-center gap-2">
           <span className="rounded-sm bg-[#003366] px-1.5 text-[10px] font-black text-white">SAP B1</span>
-          <span>SAP Business One v10.0 — {empresa || EMPRESA_CURSO}</span>
+          <span>Laboratorio de práctica equivalente — {empresa || EMPRESA_CURSO}</span>
         </div>
         <span className="text-[10px] text-gray-600 hidden sm:inline">Modo Laboratorio Transaccional</span>
       </div>
@@ -177,6 +177,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
         )}
       </div>
 
+      {pendingEvidence && !logrado && <div className="mx-3 mt-2 rounded border border-sky-400 bg-sky-50 p-3"><p>La operación está guardada en tu empresa educativa. Termina los pasos de la misión antes de comprobarla.</p><button type="button" disabled={c.saving} className="mt-2 rounded bg-sky-800 px-3 py-2 font-bold text-white disabled:opacity-50" onClick={()=>{setLogrado(pendingEvidence.evidence?.result??'registrada');onCompleta(pendingEvidence);}}>Comprobar práctica</button></div>}
       {logrado && (
         <div className="mx-2 sm:mx-3 mt-2 rounded-sm bg-emerald-50 border border-emerald-400 p-2 text-emerald-800 font-bold flex items-center gap-1.5">
           <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />

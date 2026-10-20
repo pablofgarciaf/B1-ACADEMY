@@ -34,7 +34,7 @@ export function useCompanyController() {
   };
   return { data, loading, saving, error, notice, refresh, save };
 }
-export type CompanyContextValue = ReturnType<typeof useCompanyController>;
+export type CompanyContextValue = ReturnType<typeof useCompanyController> & { ephemeral?: boolean };
 export const CompanyContext = createContext<CompanyContextValue | null>(null);
 export function useCompany() { const value = useContext(CompanyContext); if (!value) throw new Error('Falta CompanyProvider.'); return value; }
 export function useCompanyProfile() { const c = useCompany(); return { profile: c.data.profile, loading: c.loading, init: (companyName: string) => c.save({ action: 'initialize', data: { companyName } }) }; }

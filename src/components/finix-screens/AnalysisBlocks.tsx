@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { CompanyContext } from '@/hooks/useCompany';
 import { Field, inputClass } from './FinixControls';
 
 /** Lectura automática de un informe: frases que enseñan a interpretar los números. */
@@ -14,9 +15,10 @@ export function Lectura({ titulo = 'Lectura del informe', frases }: { titulo?: s
 
 /** Preguntas de criterio + espacio para la respuesta del estudiante (se guarda en su navegador). */
 export function ParaPensar({ preguntas, clave }: { preguntas: string[]; clave: string }) {
+  const ephemeral=useContext(CompanyContext)?.ephemeral;
   const [texto, setTexto] = useState('');
-  useEffect(() => { try { setTexto(localStorage.getItem(clave) ?? ''); } catch { setTexto(''); } }, [clave]);
-  const guardar = (v: string) => { setTexto(v); try { localStorage.setItem(clave, v); } catch { /* sin almacenamiento */ } };
+  useEffect(() => { if(ephemeral)return; try { setTexto(localStorage.getItem(clave) ?? ''); } catch { setTexto(''); } }, [clave,ephemeral]);
+  const guardar = (v: string) => { setTexto(v); try { if(!ephemeral)localStorage.setItem(clave, v); } catch { /* sin almacenamiento */ } };
   return (
     <section className="space-y-2 border border-[#999] bg-white p-2">
       <h3 className="font-bold text-[#003366]">🤔 Para pensar como gerente</h3>
@@ -24,7 +26,7 @@ export function ParaPensar({ preguntas, clave }: { preguntas: string[]; clave: s
       <Field label="Tu respuesta">
         <textarea className={`${inputClass} min-h-24`} value={texto} onChange={e => guardar(e.target.value)} placeholder="Escribe tu análisis y la decisión que tomarías…" />
       </Field>
-      <p className="text-[#555]">Se guarda en este navegador para tu evaluación y la conversación con tu docente.</p>
+      <p className="text-[#555]">{ephemeral ? 'Respuesta temporal; se descarta al salir.' : 'Se guarda en este navegador para conversar con tu docente.'}</p>
     </section>
   );
 }

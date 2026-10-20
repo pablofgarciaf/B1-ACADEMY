@@ -34,3 +34,14 @@ test('inducción usa campos presentes en las pantallas y comprueba plantilla act
  const customer=c.run('customer',{name:'NovaTech',ruc:'1792456789001',email:'',phone:'',address:'',city:'Cuenca',contactName:'',currency:'USD',paymentTermsDays:30,creditLimit:1000,active:true,group:'Nacional',notes:'',kind:'customer'});assert.equal(missionOutcomeMatches(c.state,customer,'mod1-c3#5'),true);
  const item=c.run('item',{name:'Teclado Inalámbrico Genérico',type:'inventory',group:'General',purchaseUnit:'UND',salesUnit:'UND',price:35,price2:30,price3:25,maxDiscount:0,purchasePrice:20,preferredVendor:'',weight:0,length:0,width:0,height:0,costingMethod:'average',standardCost:20,minStock:0,maxStock:1000,reorderPoint:0,description:'',specifications:'',active:true});assert.equal(missionOutcomeMatches(c.state,item,'mod1-c3#6'),true);
 });
+
+test('la tasa pertenece a la moneda y fecha de la misión, no a cualquier divisa',()=>{
+ for(const [moneda,fecha,expected] of [['EUR','2026-07-01',true],['COP','2026-07-01',false],['EUR','2026-07-02',false]]){
+ const c=fixture(),event=c.run('currenciesSave',{monedaLocal:'USD',monedaSistema:'EUR',monedas:[],tasas:[{moneda,fecha,tasa:0.92}]});assert.equal(missionOutcomeMatches(c.state,event,'mod20-c1#4'),expected);
+ }
+});
+test('la serie exige su rango completo en la misma fila',()=>{
+ for(const [fin,expected] of [[5999,true],[6999,false]]){
+ const c=fixture(),event=c.run('docSeriesSave',{series:[{docType:'facturas',inicio:5000,fin,nombre:'VENTAS NORTE',grupo:2,actual:5000}]});assert.equal(missionOutcomeMatches(c.state,event,'mod4-c1#5'),expected);
+ }
+});

@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Award, CheckCircle, AlertCircle, RotateCcw, Send } from 'lucide-react';
-import { TRACK_QUIZZES, QuizQuestion } from '@/lib/quizzes-data';
+import { prepareTrackQuiz, QuizQuestion } from '@/lib/quizzes-data';
 
 interface EvaluationQuizProps {
   trackCode?: string;
@@ -13,7 +13,9 @@ export function EvaluationQuiz({ trackCode = 'FINIX-ERP-LOGISTICS', onPassed }: 
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({});
   const [submitted, setSubmitted] = useState(false);
 
-  const questions: QuizQuestion[] = TRACK_QUIZZES[trackCode] || TRACK_QUIZZES['FINIX-ERP-LOGISTICS'];
+  const [questions,setQuestions] = useState<QuizQuestion[]>([]);
+
+  useEffect(()=>{setQuestions(prepareTrackQuiz(trackCode));setSelectedAnswers({});setSubmitted(false);},[trackCode]);
 
   const handleSelect = (qId: number, optionIdx: number) => {
     if (submitted) return;
@@ -25,7 +27,7 @@ export function EvaluationQuiz({ trackCode = 'FINIX-ERP-LOGISTICS', onPassed }: 
     questions.forEach(q => {
       if (selectedAnswers[q.id] === q.correctAnswer) correct++;
     });
-    return Math.round((correct / questions.length) * 100);
+    return questions.length ? Math.round((correct / questions.length) * 100) : 0;
   };
 
   const handleSubmit = () => {
@@ -37,6 +39,7 @@ export function EvaluationQuiz({ trackCode = 'FINIX-ERP-LOGISTICS', onPassed }: 
   };
 
   const handleReset = () => {
+    setQuestions(prepareTrackQuiz(trackCode));
     setSelectedAnswers({});
     setSubmitted(false);
   };
@@ -49,9 +52,9 @@ export function EvaluationQuiz({ trackCode = 'FINIX-ERP-LOGISTICS', onPassed }: 
       <div className="flex justify-between items-center border-b border-slate-100 dark:border-white/5 pb-4">
         <div>
           <h3 className="font-bold text-lg text-slate-900 dark:text-white">
-            Examen Oficial de Certificación: {trackCode}
+            Repaso aplicado: {trackCode}
           </h3>
-          <p className="text-xs text-slate-500">Mínimo para aprobar: 70% • Calificación registrada en tu expediente académico</p>
+          <p className="text-xs text-slate-500">Referencia de repaso: 70 %. La constancia requiere completar las prácticas y la evaluación de Mi Aula.</p>
         </div>
         <Award className="w-6 h-6 text-amber-400" />
       </div>

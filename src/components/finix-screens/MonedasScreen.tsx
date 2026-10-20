@@ -62,7 +62,7 @@ export default function MonedasScreen() {
             </select>
           </Field>
         </div>
-        <p className="text-xs text-gray-500 -mt-1">En Ecuador la moneda local y del sistema son ambas USD. Si opera con otras monedas, active las divisas en la tabla inferior.</p>
+        <p className="text-xs text-gray-500 -mt-1">En esta empresa la moneda local es USD. La moneda del sistema puede ser distinta; activa las divisas y registra la tasa con su fecha.</p>
 
         {/* Tabla de monedas disponibles */}
         <h3 className="font-bold text-[#003366]">Divisas activas</h3>

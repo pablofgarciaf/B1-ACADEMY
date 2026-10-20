@@ -29,7 +29,8 @@ const maps: Record<string, Map<string, string>> = {
   conteo: entries({'Fecha ejemplo':'date','Fecha':'date','Código de artículo':'lines.itemCode','Cantidad contada':'lines.countedQuantity','Cantidad en sistema':'lines.systemQuantity','Diferencia':'lines.difference','Almacén':'warehouseCode'}),
   presupuesto: entries({'Ejercicio Fiscal':'year','Cuenta':'accountCode','Escenario':'scenario'}),
   grupos: entries({'Código de grupo':'codigo','Código':'codigo','Grupo':'codigo','Nombre del grupo':'nombre','Nombre':'nombre','Descripción':'descripcion'}),
-  series: entries({'Número de inicio':'inicio','Número final':'fin','Nombre de la serie':'nombre','Grupo de serie':'grupo','Próximo número':'actual','Fijar como por defecto':'porDefecto','Prefijo':'prefijo'}),
+  series: entries({'Tipo de documento':'docType','Cantidad de dígitos':'digitos','Sufijo':'sufijo','Usuario':'usuario','Número de inicio':'inicio','Número final':'fin','Nombre de la serie':'nombre','Grupo de serie':'grupo','Próximo número':'actual','Fijar como por defecto':'porDefecto','Prefijo':'prefijo'}),
+  monedas: entries({'Moneda local':'monedaLocal','Moneda del sistema':'monedaSistema','Tipo de cambio':'tasa','Fecha de tipo de cambio':'fecha'}),
   bancos: entries({'Fecha':'date','Fecha pago':'date','Fecha documento':'date','Monto':'amount','Valor pagado':'amount','Importe recibido':'amount','Importe':'amount','Importe a pagar':'amount','Total pagado':'amount','Valor':'amount','Contrapartida':'counterpartAccount','Referencia':'reference','Retención renta':'retentionIR','Retención IVA':'retentionIVA','Tipo':'type'}),
   isd: entries({'Fecha':'date','Valor':'figures.amount','ISD':'figures.isd','Total':'figures.total'}),
 };
@@ -47,6 +48,7 @@ function contract(key: string): PracticeOutcomeContract {
   if(!screen || !collection) { result.pending.push('Pantalla sin contrato de resultados.'); return result; }
   if(screen.clave==='grupos') result.rows=screen.tipo==='cliente'?'customerGroups':'itemGroups';
   if(screen.clave==='series') result.rows='docSeries';
+  if(screen.clave==='monedas') { result.rows='currencies.tasas'; const target=guide?.campos?.find(f=>f.etiqueta==='Moneda del sistema'); if(target)result.requirements.push({label:'Moneda de la tasa',expected:target.valor,path:'moneda'}); }
   if(screen.clave==='cockpit') result.rows='cockpit.plantillas';
   for(const field of guide?.campos??[]) {
     const generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
@@ -65,7 +67,7 @@ function comparable(value:unknown): string {
   if(typeof value==='boolean')return value?'Sí':'No';
   const text=String(value??'').trim();
   if(/^\d{4}-\d{2}-\d{2}$/.test(text)){const [year,month,day]=text.split('-');return `${day}/${month}/${year}`;}
-  const aliases:Record<string,string>={inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %'};
+  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %'};
   return aliases[text]??text;
 }
 function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyState):boolean {
@@ -77,6 +79,7 @@ function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyStat
     else if(requirement.path.endsWith('itemCode'))expected=state.items.find(row=>normalizar(row.name)===normalizar(expected))?.itemCode??expected;
     else if(requirement.path.endsWith('employeeCode'))expected=state.employees.find(row=>normalizar(`${row.firstName} ${row.lastName}`)===normalizar(expected))?.employeeCode??expected;
   }
+  if(requirement.path==='docType'){const labels:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes'};actual=labels[String(actual)]??actual;}
   if(requirement.path==='paymentTermsDays')expected=expected.replace(/\s*d[ií]as?$/i,'');
   return actual!==undefined && normalizar(comparable(actual))===normalizar(comparable(expected));
 }
@@ -97,7 +100,7 @@ export function missionOutcomeMatches(state:CompanyState,event:CompanyAuditEvent
     if(!rule.rows)return rowMatches(change.after,rule.requirements,state)&&rowMatches(current,rule.requirements,state);
     const after=get(change.after,rule.rows),present=get(current,rule.rows),before=get(change.before,rule.rows);
     if(!Array.isArray(after)||!Array.isArray(present))return false;
-    const decorate=(profile:unknown,row:RecordValue)=>rule.rows==='cockpit.plantillas'?{...row,predeterminado:row.id===get(profile,'cockpit.plantillaActiva')}:row;
+    const decorate=(profile:unknown,row:RecordValue)=>rule.rows==='cockpit.plantillas'?{...row,predeterminado:row.id===get(profile,'cockpit.plantillaActiva')}:rule.rows==='currencies.tasas'?{...row,monedaLocal:get(profile,'currencies.monedaLocal'),monedaSistema:get(profile,'currencies.monedaSistema')}:row;
     return after.some(row=>rowMatches(decorate(change.after,row),rule.requirements,state)&&present.some(item=>JSON.stringify(item)===JSON.stringify(row)&&rowMatches(decorate(current,item),rule.requirements,state))&&(!Array.isArray(before)||!before.some(item=>JSON.stringify(decorate(change.before,item))===JSON.stringify(decorate(change.after,row)))));
   });
 }

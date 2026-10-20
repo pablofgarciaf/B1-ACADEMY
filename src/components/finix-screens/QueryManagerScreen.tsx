@@ -13,14 +13,14 @@ function aCsv(r: Resultado) {
 }
 
 /** Query Manager: consultas tipo SQL sobre la empresa del estudiante, con tablas Finix ERP reales. */
-export default function QueryManagerScreen() {
+export default function QueryManagerScreen({persistQueries=true}:{persistQueries?:boolean}) {
   const c = useCompany();
   const [sql, setSql] = useState(CONSULTAS_EJEMPLO[0].sql);
   const [resultado, setResultado] = useState<Resultado | null>(null);
   const [error, setError] = useState('');
   const [tablaAbierta, setTablaAbierta] = useState('OINV');
   const [guardadas, setGuardadas] = useState<Guardada[]>([]);
-  useEffect(() => { try { setGuardadas(JSON.parse(localStorage.getItem(CLAVE_GUARDADAS) ?? '[]') as Guardada[]); } catch { setGuardadas([]); } }, []);
+  useEffect(() => { if(!persistQueries)return; try { setGuardadas(JSON.parse(localStorage.getItem(CLAVE_GUARDADAS) ?? '[]') as Guardada[]); } catch { setGuardadas([]); } }, [persistQueries]);
 
   // Columnas reales de cada tabla, tomadas de los datos de la empresa.
   const columnas = useMemo(() => Object.fromEntries(TABLAS.map(t => [t.nombre, [...new Set(t.filas(c.data).flatMap(f => Object.keys(f)))]])), [c.data]);
@@ -38,7 +38,7 @@ export default function QueryManagerScreen() {
     const titulo = window.prompt('Nombre de la consulta:')?.trim() || 'Consulta guardada';
     const nuevas = [...guardadas.filter(g => g.titulo !== titulo), { titulo, sql }];
     setGuardadas(nuevas);
-    try { localStorage.setItem(CLAVE_GUARDADAS, JSON.stringify(nuevas)); } catch { /* sin almacenamiento */ }
+    try { if(persistQueries)localStorage.setItem(CLAVE_GUARDADAS, JSON.stringify(nuevas)); } catch { /* sin almacenamiento */ }
     try { await c.save({ action: 'query', data: { title: titulo, sql } }); } catch { /* error silencioso en save */ }
   };
   const exportar = () => {
