@@ -3,7 +3,7 @@ import { round } from './company-calculations';
 
 export const NOMBRES_LISTA: Record<1 | 2 | 3, string> = { 1: 'General', 2: 'Mayorista', 3: 'Distribuidor' };
 
-export interface ListaPrecios { no: number; code: string; name: string; description: string; base: number; factor: number; currency: 'USD'; validFrom: string; validTo: string; active: boolean; derivada: boolean }
+export interface ListaPrecios { no: number; code: string; name: string; description: string; base: number; factor: number; currency: 'USD'; validFrom: string; validTo: string; active: boolean; derivada: boolean; items?: { itemCode:string; description:string; price:number; unit:string; validFrom:string; validTo:string; active:boolean }[] }
 
 /** Las tres listas base (precios por artículo) más las derivadas de otra lista con un factor. */
 export function listasDePrecios(state: CompanyState): ListaPrecios[] {
@@ -14,12 +14,14 @@ export function listasDePrecios(state: CompanyState): ListaPrecios[] {
 export const nombreLista = (state: CompanyState, no: number): string => listasDePrecios(state).find(l => l.no === no)?.name ?? NOMBRES_LISTA[1];
 
 /** Precio de un artículo en una lista: el propio de las listas 1 a 3, o el de la lista base por el factor. */
-export function precioDeLista(state: CompanyState, item: { price: number; price2: number; price3: number }, no: number, profundidad = 0): number {
+export function precioDeLista(state: CompanyState, item: { itemCode?: string; price: number; price2: number; price3: number }, no: number, profundidad = 0): number {
   if (no === 2) return item.price2;
   if (no === 3) return item.price3;
   if (no === 1) return item.price;
   const lista = state.profile?.priceLists?.find(l => l.no === no);
   if (!lista || profundidad > 10) return item.price;
+  const priceItem = lista.items?.find(entry => entry.itemCode === item.itemCode && entry.active);
+  if (priceItem) return priceItem.price;
   return round(precioDeLista(state, item, lista.base, profundidad + 1) * lista.factor);
 }
 

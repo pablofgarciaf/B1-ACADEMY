@@ -14,7 +14,7 @@ const emptyLine = (): DocumentLine => ({ itemCode: '', description: '', quantity
 export default function SalesOrderForm(props: SalesOrderFormProps) { return <DocumentForm key={props.docType} {...props} />; }
 function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const c = useCompany(); const purchase = (purchaseTypes as readonly string[]).includes(docType);
-  const blank = (): DocumentInput => ({ date: today(), dueDate: today(), cardCode: '', reference: '', comments: '', baseDocumentId: '', lines: [emptyLine()] });
+  const blank = (): DocumentInput => ({ date: today(), dueDate: today(), cardCode: '', reference: '', comments: '', baseDocumentId: '', series: '', lines: [emptyLine()] });
   const [data, setData] = useState<DocumentInput>(blank); const [index, setIndex] = useState(-1); const [partnerLookup, setPartnerLookup] = useState(false); const [itemLookup, setItemLookup] = useState<number | null>(null);
   const docs = (purchase ? c.data.purchaseOrders : c.data.salesOrders).filter(d => d.docType === docType);
   const partners = purchase ? c.data.vendors : c.data.customers; const partner = partners.find(p => p.cardCode === data.cardCode);
@@ -41,7 +41,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
           cardCode: doc.cardCode ?? '',
           reference: doc.reference ?? '',
           comments: doc.comments ?? '',
-          baseDocumentId: doc.baseDocumentId ?? '',
+          baseDocumentId: doc.baseDocumentId ?? '', series: doc.series ?? '',
           lines: (doc.lines ?? []).map(l => ({
             itemCode: l.itemCode ?? '',
             description: l.description ?? '',
@@ -62,6 +62,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
         <Field label="Fecha" required><input required type="date" className={inputClass} value={data.date ?? today()} onChange={e => setData(d => ({ ...d, date: e.target.value }))} /></Field>
         <Field label="Vencimiento" required><input required type="date" className={inputClass} min={data.date || today()} value={data.dueDate ?? today()} onChange={e => setData(d => ({ ...d, dueDate: e.target.value }))} /></Field>
         <Field label="Referencia"><input className={inputClass} value={data.reference ?? ''} onChange={e => setData(d => ({ ...d, reference: e.target.value }))} /></Field>
+        {(() => { const profile = c.data.profile as unknown as { docSeries?: { docType:string; nombre:string; prefijo:string; bloqueada?:boolean }[] } | null; const seriesType: Record<DocType,string> = { quotation:'facturas', order:'pedidos', delivery:'entregas', invoice:'facturas', credit_note:'nc_cliente', purchase_request:'compras', purchase_order:'compras', goods_receipt:'grpo', vendor_invoice:'factprov', debit_note:'nc_prov' }; const available=(profile?.docSeries??[]).filter(s=>s.docType===seriesType[docType]&&!s.bloqueada); return available.length ? <Field label="Serie"><select className={inputClass} value={data.series ?? ''} onChange={e=>setData(d=>({...d,series:e.target.value}))}><option value="">Predeterminada</option>{available.map(s=><option key={s.nombre} value={s.nombre}>{s.nombre}{s.prefijo?` (${s.prefijo})`:''}</option>)}</select></Field> : null; })()}
         {predecessor[docType] && <Field label="Copiar de documento base"><select className={inputClass} value={data.baseDocumentId ?? ''} onChange={e => { const source = sources.find(s => s.id === e.target.value); if (source) setData(d => ({ ...d, cardCode: source.cardCode, baseDocumentId: source.id, lines: source.lines.map(l => ({ ...l })) })); else setData(d => ({ ...d, baseDocumentId: '' })); }}><option value="">Sin documento base</option>{sources.map(s => <option key={s.id} value={s.id}>{s.docNumber} · {s.cardName}</option>)}</select></Field>}
       </div>
       <Table headers={['Artículo *', 'Descripción', 'Cantidad *', 'UM', 'Precio *', 'Desc. %', 'IVA %', 'Almacén *', 'Total', 'Acción']} rows={data.lines.map((line, i) => [

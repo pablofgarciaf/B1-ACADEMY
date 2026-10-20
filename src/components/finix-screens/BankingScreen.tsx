@@ -7,7 +7,9 @@ import { Screen, Table, Field, inputClass, buttonClass, Navigation, SaveButton, 
 import BancaEnLinea from './BancaEnLinea';
 export default function BankingScreen() {
   const c = useCompany(); const blank = (): CommandData<'bank'> => ({ bankAccountId: c.data.bankAccounts[0]?.id ?? '', date: today(), type: 'deposit', amount: 0, paymentMethod: 'transfer', counterpartAccount: '3.01', reference: '', documentId: '' });
+  const blankWorkflow = (): CommandData<'bankWorkflow'> => ({workflowType:'statement',bankName:'Banco Pichincha',accountName:'Cta Corriente 210001',active:true,date:today(),reference:'',currency:'USD',openingBalance:0,closingBalance:0,amount:0,paymentMethod:'Transferencia',executionName:'',paymentClass:'Pago',documentNumber:'',partnerCode:'',accountType:'Proveedor',sourceAccount:'',destinationAccount:'',fileFormat:'CSV separado por coma',fileName:'',valueDate:today(),journalNumber:'',journalDate:today(),statementNumber:'',statementDate:today(),selected:false,reserveTransactions:false,preventReconciliation:false,routeCode:'',routeName:'',series:''});
   const [data, setData] = useState(blank); const [index, setIndex] = useState(-1); const [bank, setBank] = useState(''); const [statement, setStatement] = useState<Record<string, number>>({});
+  const [workflow,setWorkflow]=useState(blankWorkflow);
   const rows = c.data.bankTransactions.filter(t => !bank || t.bankAccountId === bank); const reset = () => { setData(blank()); setIndex(-1); };
   const invoices = [...c.data.salesOrders, ...c.data.purchaseOrders].filter(d => (data.type === 'deposit' ? d.docType === 'invoice' : ['vendor_invoice', 'debit_note', 'credit_note'].includes(d.docType)) && d.status === 'open');
   const sign = (type: string, value: number) => type === 'deposit' ? value : -value;
@@ -97,6 +99,18 @@ export default function BankingScreen() {
       ];
     })} />
     <p>Diferencia total libro / banco: {usd(rows.reduce((s, t) => s + sign(t.type, t.amount) - (statement[t.id] ?? t.statementAmount ?? 0), 0))}</p>
+    <details className="mt-5 border border-[#999] bg-white p-3">
+      <summary className="cursor-pointer font-semibold">Procesos bancarios: extracto, conciliación y lotes</summary>
+      <p className="mt-2 text-[#555]">Guarda el extracto, la conciliación o la ejecución de pagos como evidencia del proceso. No altera saldos: los cobros y pagos se registran arriba.</p>
+      <form className="mt-3 grid gap-2 sm:grid-cols-3" onSubmit={async e=>{e.preventDefault(); await c.save({action:'bankWorkflow',data:workflow});setWorkflow(blankWorkflow());}}>
+        <Field label="Proceso"><select className={inputClass} value={workflow.workflowType} onChange={e=>setWorkflow(w=>({...w,workflowType:e.target.value as CommandData<'bankWorkflow'>['workflowType']}))}><option value="statement">Extracto bancario</option><option value="reconciliation">Conciliación</option><option value="payment_run">Lote de pagos</option><option value="payment_method">Vía de pago</option><option value="card_deposit">Depósito de tarjetas</option></select></Field>
+        {([['Banco','bankName'],['Cuenta','accountName'],['Referencia','reference'],['N.º documento','documentNumber'],['Socio','partnerCode'],['N.º extracto','statementNumber'],['N.º partida','journalNumber'],['Nombre ejecución','executionName'],['Formato','fileFormat'],['Archivo','fileName'],['Vía de pago','routeCode'],['Serie','series']] as const).map(([label,key])=><Field key={key} label={label}><input className={inputClass} value={workflow[key]} onChange={e=>setWorkflow(w=>({...w,[key]:e.target.value}))}/></Field>)}
+        {([['Fecha','date'],['Fecha extracto','statementDate'],['Fecha partida','journalDate'],['Fecha valor','valueDate']] as const).map(([label,key])=><Field key={key} label={label}><input type="date" className={inputClass} value={workflow[key]} onChange={e=>setWorkflow(w=>({...w,[key]:e.target.value}))}/></Field>)}
+        {([['Saldo inicial','openingBalance'],['Saldo final','closingBalance'],['Importe','amount']] as const).map(([label,key])=><Field key={key} label={label}><NumberInput ariaLabel={label} value={workflow[key]} onChange={v=>setWorkflow(w=>({...w,[key]:v}))}/></Field>)}
+        <Field label="Moneda"><input className={inputClass} value={workflow.currency} onChange={e=>setWorkflow(w=>({...w,currency:e.target.value}))}/></Field>
+        <SaveButton />
+      </form>
+    </details>
     {c.data.profile?.usage!=='private' && <BancaEnLinea />}
   </Screen>;
 }

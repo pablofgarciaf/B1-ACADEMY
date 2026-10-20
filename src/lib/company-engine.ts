@@ -153,7 +153,20 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       state.approvals.push({ ...meta(approvalId), approvalNumber: approvalId, kind, docType, cardCode: partner.cardCode, cardName: partner.name, total: preTotal, threshold: regla.threshold, document: structuredClone(data), status: 'pending', decisionComment: '', decidedAt: '', resultDocumentId: '' });
       return approvalId;
     }
-    const id = next(prefixes[docType], data.date); const amounts = totals(data.lines); assert(amounts.total > 0, 'El total debe ser positivo.');
+    /** La serie es una configuración real: al guardar consume el consecutivo permitido. */
+    const seriesType: Partial<Record<DocType,string>> = { quotation:'facturas', order:'pedidos', delivery:'entregas', invoice:'facturas', credit_note:'nc_cliente', purchase_request:'compras', purchase_order:'compras', goods_receipt:'grpo', vendor_invoice:'factprov', debit_note:'nc_prov' };
+    type StoredSeries = { docType:string; nombre:string; prefijo?:string; sufijo?:string; digitos?:number; inicio:number; fin:number; actual:number; porDefecto?:boolean; bloqueada?:boolean };
+    const configured = ((profile as unknown as { docSeries?: StoredSeries[] }).docSeries ?? []).filter(s=>s.docType===seriesType[docType]);
+    const selectedSeries = data.series ? configured.find(s=>s.nombre===data.series) : configured.find(s=>s.porDefecto);
+    if (data.series) assert(selectedSeries, 'La serie seleccionada no está configurada para este documento.');
+    if (selectedSeries) {
+      assert(!selectedSeries.bloqueada, 'La serie seleccionada está bloqueada.');
+      assert(selectedSeries.actual >= selectedSeries.inicio && selectedSeries.actual <= selectedSeries.fin, 'La serie no tiene números disponibles.');
+    }
+    const id = selectedSeries ? `${selectedSeries.prefijo ?? ''}${String(selectedSeries.actual).padStart(selectedSeries.digitos ?? 1, '0')}${selectedSeries.sufijo ?? ''}` : next(prefixes[docType], data.date);
+    if (selectedSeries) selectedSeries.actual += 1;
+    assert(!records.some(doc=>doc.id===id), 'El número de documento ya existe en esta serie.');
+    const amounts = totals(data.lines); assert(amounts.total > 0, 'El total debe ser positivo.');
     let journalEntryId = ''; let inventoryCost = 0;
     const inventoryAccount = (itemCode: string) => state.boms.some(b => b.parentItemCode === itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
     const inventoryByAccount = new Map<string, number>();
@@ -189,7 +202,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     if (lines.length) journalEntryId = post(data.date, documentLabels[docType], kind, id, lines);
     const creditApplied = docType === 'credit_note' && base ? round(amounts.total - base.paidAmount) : 0;
-    const common = { ...meta(id), ...data, ...amounts, docNumber: id, ownerCode: sales ? (partner as Customer).ownerCode ?? '' : '', cardName: partner.name, currency: 'USD' as const, status: (docType === 'credit_note' && creditApplied === amounts.total ? 'closed' : 'open') as 'open' | 'closed', paidAmount: creditApplied, journalEntryId };
+    const common = { ...meta(id), ...data, ...amounts, docNumber: id, series: selectedSeries?.nombre ?? '', ownerCode: sales ? (partner as Customer).ownerCode ?? '' : '', cardName: partner.name, currency: 'USD' as const, status: (docType === 'credit_note' && creditApplied === amounts.total ? 'closed' : 'open') as 'open' | 'closed', paidAmount: creditApplied, journalEntryId };
     if (sales) state.salesOrders.push({ ...common, docType: docType as SalesDocument['docType'] });
     else state.purchaseOrders.push({ ...common, docType: docType as PurchaseDocument['docType'] });
     if (base && docType !== 'debit_note') { base.status = 'closed'; base.updatedAt = now; }
@@ -272,6 +285,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'reconcile': {
       const d = command.data; const row = state.bankTransactions.find(t => t.id === d.id); if (!row) throw new Error('Movimiento inexistente.');
       assert(!d.reconciled || round(d.statementAmount) === round(row.amount * (row.type === 'deposit' ? 1 : -1)), 'Los importes no coinciden.'); Object.assign(row, d, { updatedAt: now }); result = row.id; break;
+    }
+    case 'bankWorkflow': {
+      const d=command.data; result=next('BWF',d.date);
+      state.bankWorkflows.push({...meta(result),...d}); break;
     }
     case 'payroll': {
       const d = command.data; assert(d.date.startsWith(d.period), 'Fecha fuera del período.');
@@ -516,9 +533,16 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         profile.priceLists = existentes.map(x => x.no === d.no ? { ...x, code: d.code?.trim() || x.code || `LP${String(d.no).padStart(4,'0')}`, name: d.name.trim(), description: d.description, base: d.base, factor: d.factor, currency: d.currency, validFrom: d.validFrom, validTo: d.validTo, active: d.active } : x); result = `Lista ${d.no}`;
       } else {
         const no = Math.max(3, ...existentes.map(l => l.no)) + 1; assert(no <= 60, 'Máximo 60 listas de precios.');
-        profile.priceLists = [...existentes, { no, code: d.code?.trim() || `LP${String(no).padStart(4,'0')}`, name: d.name.trim(), description: d.description, base: d.base, factor: d.factor, currency: d.currency, validFrom: d.validFrom, validTo: d.validTo, active: d.active }]; result = `Lista ${no}`;
+        profile.priceLists = [...existentes, { no, code: d.code?.trim() || `LP${String(no).padStart(4,'0')}`, name: d.name.trim(), description: d.description, base: d.base, factor: d.factor, currency: d.currency, validFrom: d.validFrom, validTo: d.validTo, active: d.active, items: [] }]; result = `Lista ${no}`;
       }
       break;
+    }
+    case 'priceListItem': {
+      const d = command.data; const item = state.items.find(row => row.itemCode === d.itemCode); if (!item) throw new Error('Artículo inexistente.');
+      const lists = profile.priceLists ?? []; const list = lists.find(row => row.no === d.list && row.active); if (!list) throw new Error('La lista de precios no existe o está inactiva.');
+      const current = list.items ?? [];
+      list.items = d.remove ? current.filter(row => row.itemCode !== d.itemCode) : [...current.filter(row => row.itemCode !== d.itemCode), { itemCode:d.itemCode, description:item.name, price:d.price, unit:d.unit, validFrom:d.validFrom, validTo:d.validTo, active:d.active }];
+      profile.priceLists = [...lists]; result = `${list.code} · ${item.itemCode}`; break;
     }
     case 'priceUpdate': {
       // Asistente de actualización de precios: el método factor multiplica; el porcentaje suma (o resta) ese porcentaje.
@@ -549,7 +573,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         assert(d.discount <= maximo, `El descuento supera el máximo permitido (${maximo} %).`);
         result = d.id || next('DV');
         assert(d.list <= 3 || (profile.priceLists ?? []).some(l => l.no === d.list && l.active), 'La lista de precios no existe o está inactiva.');
-        lista = [...lista.filter(v => v.id !== result), { id: result, itemCode: d.itemCode, list: d.list, minQuantity: d.minQuantity, maxQuantity: d.maxQuantity, discount: d.discount, validFrom: d.validFrom, validTo: d.validTo, active: d.active }];
+        lista = [...lista.filter(v => v.id !== result), { id: result, itemCode: d.itemCode, list: d.list, minQuantity: d.minQuantity, maxQuantity: d.maxQuantity, discount: d.discount, validFrom: d.validFrom, validTo: d.validTo, active: d.active, kind: d.kind, automatic: d.automatic, fixedPrice: d.fixedPrice }];
       }
       profile.volumeDiscounts = lista; break;
     }

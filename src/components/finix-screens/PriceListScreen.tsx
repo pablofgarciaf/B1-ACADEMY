@@ -47,6 +47,7 @@ export default function PriceListScreen() {
   const [nueva, setNueva] = useState<{ no?: number } & typeof vacia>(vacia);
   const [asistente, setAsistente] = useState<{ list: number; method: 'factor' | 'percent'; value: number }>({ list: 1, method: 'factor', value: 1 });
   const [especial, setEspecial] = useState({ cardCode: '', itemCode: '', discount: 0, validFrom: '2026-01-01', validTo: '2099-12-31', referenceList: 1, active: true });
+  const [precioLista, setPrecioLista] = useState({ list: 0, itemCode: '', price: 0, unit: 'UND', validFrom: '2026-01-01', validTo: '2099-12-31', active: true });
   const accion = async (command: Parameters<typeof c.save>[0]) => { try { await c.save(command); return true; } catch { return false; } };
   const mult = asistente.method === 'factor' ? asistente.value : 1 + asistente.value / 100;
   const listaAsist = listas.find(l => l.no === asistente.list);
@@ -100,6 +101,21 @@ export default function PriceListScreen() {
           </tbody>
         </table>
       </div>
+
+      <section className="mt-3 space-y-2 border border-[#999] bg-white p-2">
+        <h3 className="font-bold text-[#003366]">Precio explícito en una lista derivada</h3>
+        <p className="text-[#555]">Úsalo cuando un artículo debe tener un precio propio dentro de una lista; ese valor se guarda y tiene prioridad sobre el factor de la lista.</p>
+        <form className="grid gap-2 sm:grid-cols-3" onSubmit={async event => { event.preventDefault(); if (await accion({ action: 'priceListItem', data: { ...precioLista, remove:false } })) setPrecioLista(v => ({ ...v, itemCode: '', price: 0 })); }}>
+          <Field label="Lista de precios" required><select required className={inputClass} value={precioLista.list} onChange={e => setPrecioLista(v => ({ ...v, list: Number(e.target.value) }))}><option value={0}>Selecciona…</option>{listas.filter(l => l.derivada && l.active).map(l => <option key={l.no} value={l.no}>{l.code} · {l.name}</option>)}</select></Field>
+          <Field label="Artículo" required><select required className={inputClass} value={precioLista.itemCode} onChange={e => { const item = articulos.find(x => x.itemCode === e.target.value); setPrecioLista(v => ({ ...v, itemCode:e.target.value, unit:item?.salesUnit ?? v.unit, price:item ? precioDeLista(c.data,item, v.list || 1) : v.price })); }}><option value="">Selecciona…</option>{articulos.map(item => <option key={item.id} value={item.itemCode}>{item.itemCode} · {item.name}</option>)}</select></Field>
+          <Field label="Precio"><input required type="number" min="0" step="0.01" className={inputClass} value={precioLista.price} onChange={e => setPrecioLista(v => ({ ...v, price:Number(e.target.value) }))} /></Field>
+          <Field label="Unidad de medida"><input required className={inputClass} value={precioLista.unit} onChange={e => setPrecioLista(v => ({ ...v, unit:e.target.value }))} /></Field>
+          <Field label="Válida desde"><input required type="date" className={inputClass} value={precioLista.validFrom} onChange={e => setPrecioLista(v => ({ ...v, validFrom:e.target.value }))} /></Field>
+          <Field label="Válida hasta"><input required type="date" className={inputClass} value={precioLista.validTo} onChange={e => setPrecioLista(v => ({ ...v, validTo:e.target.value }))} /></Field>
+          <button type="submit" className={buttonClass} disabled={c.saving || !precioLista.list}>Guardar precio</button>
+        </form>
+        <Table headers={['Lista', 'Artículo', 'Precio', 'UM', 'Vigencia']} rows={listas.flatMap(list => (list.items ?? []).map(entry => [list.code, `${entry.itemCode} · ${entry.description}`, usd(entry.price), entry.unit, `${entry.validFrom} a ${entry.validTo}`]))} />
+      </section>
 
       <h3 className="font-bold text-[#003366]">Lista asignada a cada cliente</h3>
       <Table headers={['Cliente', 'Lista de precios']} rows={c.data.customers.map(cl => [

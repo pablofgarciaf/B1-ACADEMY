@@ -13,11 +13,11 @@ export default function VolumeDiscountScreen() {
   const reglas = c.data.profile?.volumeDiscounts ?? [];
   const listas = listasDePrecios(c.data).filter(l => l.active);
   const nombre = (code: string) => (code === '*' ? 'Todos los artículos' : c.data.items.find(i => i.itemCode === code)?.name ?? code);
-  const [nueva, setNueva] = useState({ itemCode: '*', list: 1, minQuantity: 10, maxQuantity: null as number | null, discount: 5, validFrom: '2026-01-01', validTo: '2099-12-31', active: true });
+  const [nueva, setNueva] = useState({ itemCode: '*', list: 1, minQuantity: 10, maxQuantity: null as number | null, discount: 5, validFrom: '2026-01-01', validTo: '2099-12-31', active: true, kind:'quantity' as const, automatic:true, fixedPrice:null as number|null });
   const [sim, setSim] = useState({ cardCode: '', itemCode: '', cantidad: 1 });
   const r = useMemo(() => (sim.itemCode ? precioSugerido(c.data, sim.cardCode, sim.itemCode, sim.cantidad) : null), [c.data, sim]);
   const guardar = async () => { try { await c.save({ action: 'volumeDiscount', data: { id: '', ...nueva, remove: false } }); } catch { /* error visible */ } };
-  const quitar = async (id: string, itemCode: string) => { try { await c.save({ action: 'volumeDiscount', data: { id, itemCode, list: 1, minQuantity: 1, maxQuantity: null, discount: 0, validFrom: '2026-01-01', validTo: '2099-12-31', active: false, remove: true } }); } catch { /* error visible */ } };
+  const quitar = async (id: string, itemCode: string) => { try { await c.save({ action: 'volumeDiscount', data: { id, itemCode, list: 1, minQuantity: 1, maxQuantity: null, discount: 0, validFrom: '2026-01-01', validTo: '2099-12-31', active: false, kind:'quantity', automatic:true, fixedPrice:null, remove: true } }); } catch { /* error visible */ } };
 
   return (
     <Screen title="Descuentos por volumen">

@@ -16,12 +16,12 @@ export const costMethods = ['average', 'fifo', 'standard'] as const;
 export type CostingMethod = typeof costMethods[number];
 export const lineSchema = z.object({ itemCode: code, description: text.min(1), quantity: money.positive(), unit: text.min(1), price: money, discount: money.max(100), taxRate: z.union([z.literal(0), z.literal(5), z.literal(8), z.literal(15)]), warehouseCode: code, ice: money.optional() });
 export type DocumentLine = z.infer<typeof lineSchema>;
-const documentSchema = base.extend({ openingBalance: z.boolean().optional(), docNumber: code, ownerCode: z.union([code, z.literal('')]).default(''), date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).max(80), subtotal: money, ice: money.optional(), tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
+const documentSchema = base.extend({ openingBalance: z.boolean().optional(), docNumber: code, /** Serie configurada usada para numerar este documento. */ series: text.default(''), ownerCode: z.union([code, z.literal('')]).default(''), date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).max(80), subtotal: money, ice: money.optional(), tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
 export const salesSchema = documentSchema.extend({ docType: z.enum(salesTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
 export const purchaseSchema = documentSchema.extend({ docType: z.enum(purchaseTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
 export type SalesDocument = z.infer<typeof salesSchema>;
 export type PurchaseDocument = z.infer<typeof purchaseSchema>;
-export type DocumentInput = Pick<SalesDocument, 'date' | 'dueDate' | 'cardCode' | 'reference' | 'comments' | 'baseDocumentId' | 'lines'>;
+export type DocumentInput = Pick<SalesDocument, 'date' | 'dueDate' | 'cardCode' | 'reference' | 'comments' | 'baseDocumentId' | 'series' | 'lines'>;
 const partnerSchema = base.extend({ cardCode: code, name: text.min(2), ruc: z.string().regex(/^\d{10}(\d{3})?$/), email: z.union([z.string().email(), z.literal('')]), phone: text, address: text, city: text, contactName: text, currency: z.literal('USD'), paymentTermsDays: money.int().max(365), creditLimit: money, balance: z.number().finite(), active: z.boolean(), group: text, notes: text });
 export const customerSchema = partnerSchema.extend({ kind: z.enum(['customer', 'lead']), linkedVendorCode: code.optional(), ownerCode: z.union([code, z.literal('')]).default('') });
 export const vendorSchema = partnerSchema.extend({
@@ -95,8 +95,9 @@ export interface CompanyProfile extends Entity { usage?: 'training' | 'private';
   approvalRules?: ApprovalRule[];
   /** Lista de precios asignada a cada cliente (1 general, 2 mayorista, 3 distribuidor). */
   customerPriceLists?: Record<string, number>;
-  /** Listas de precios derivadas de otra con un factor (las listas 1, 2 y 3 son las base y siempre existen). */
-  priceLists?: { no: number; code: string; name: string; description: string; base: number; factor: number; currency: 'USD'; validFrom: string; validTo: string; active: boolean }[];
+  /** Listas de precios derivadas de otra con un factor (las listas 1 a 3 son las base y siempre existen).
+   * `items` conserva excepciones explícitas por lista, tal como se haría al añadir un artículo a una lista en B1. */
+  priceLists?: { no: number; code: string; name: string; description: string; base: number; factor: number; currency: 'USD'; validFrom: string; validTo: string; active: boolean; items?: PriceListItem[] }[];
   /** Descuentos automáticos por cantidad. itemCode '*' aplica a todos los artículos. */
   volumeDiscounts?: VolumeDiscount[];
   /** Precio especial por cliente y artículo, con vigencia. Tiene prioridad sobre su lista general. */
@@ -105,7 +106,8 @@ export interface CompanyProfile extends Entity { usage?: 'training' | 'private';
   udfDefinitions?: UdfDefinition[];
 }
 export interface ApprovalRule { docType: DocType; threshold: number; active: boolean }
-export interface VolumeDiscount { id: string; itemCode: string; list: number; minQuantity: number; maxQuantity: number | null; discount: number; validFrom: string; validTo: string; active: boolean }
+export interface PriceListItem { itemCode: string; description: string; price: number; unit: string; validFrom: string; validTo: string; active: boolean }
+export interface VolumeDiscount { id: string; itemCode: string; list: number; minQuantity: number; maxQuantity: number | null; discount: number; validFrom: string; validTo: string; active: boolean; kind?: 'period' | 'quantity'; automatic?: boolean; fixedPrice?: number | null }
 export interface SpecialPrice { id: string; cardCode: string; itemCode: string; discount: number; validFrom: string; validTo: string; referenceList: number; active: boolean }
 export interface Mission extends Entity { title: string; description: string; module: string; status: 'assigned' | 'completed'; teacherUid: string }
 /** Presupuesto anual de una cuenta de resultados (ingresos, costos o gastos), en 12 montos mensuales. */
@@ -167,8 +169,17 @@ export interface FixedAsset extends Entity {
   depreciationMethod: 'Lineal'; accountCode: string; depreciationArea: string;
   accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated'; journalEntryId: string;
 }
-export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset; landedCosts: LandedCost; opportunities: Opportunity; serviceContracts: ServiceContract; serviceCalls: ServiceCall; projects: Project; teamUsers: TeamUser; routings: Routing; binLocations: BinLocation; lots: Lot; udfValues: UdfValues; taxRuns: TaxRun }
+/** Registro persistente de un proceso bancario: extracto, conciliación, vía o lote de pagos. */
+export interface BankWorkflow extends Entity {
+  workflowType: 'statement' | 'reconciliation' | 'payment_run' | 'payment_method' | 'card_deposit';
+  bankName: string; accountName: string; active: boolean; date: string; reference: string; currency: string;
+  openingBalance: number; closingBalance: number; amount: number; paymentMethod: string; executionName: string; paymentClass: string;
+  documentNumber: string; partnerCode: string; accountType: string; sourceAccount: string; destinationAccount: string;
+  fileFormat: string; fileName: string; valueDate: string; journalNumber: string; journalDate: string; statementNumber: string; statementDate: string;
+  selected: boolean; reserveTransactions: boolean; preventReconciliation: boolean; routeCode: string; routeName: string; series: string;
+}
+export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; bankWorkflows: BankWorkflow; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset; landedCosts: LandedCost; opportunities: Opportunity; serviceContracts: ServiceContract; serviceCalls: ServiceCall; projects: Project; teamUsers: TeamUser; routings: Routing; binLocations: BinLocation; lots: Lot; udfValues: UdfValues; taxRuns: TaxRun }
 export type CollectionName = keyof CompanyCollections;
-export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets', 'landedCosts', 'opportunities', 'serviceContracts', 'serviceCalls', 'projects', 'teamUsers', 'routings', 'binLocations', 'lots', 'udfValues', 'taxRuns'];
+export const collectionNames: CollectionName[] = ['salesOrders', 'purchaseOrders', 'customers', 'vendors', 'items', 'warehouseStock', 'stockMovements', 'journalEntries', 'chartOfAccounts', 'bankAccounts', 'bankTransactions', 'bankWorkflows', 'employees', 'payrollRuns', 'sriDocuments', 'productionOrders', 'boms', 'missions', 'budgets', 'approvals', 'inventoryCounts', 'fixedAssets', 'landedCosts', 'opportunities', 'serviceContracts', 'serviceCalls', 'projects', 'teamUsers', 'routings', 'binLocations', 'lots', 'udfValues', 'taxRuns'];
 export type CompanyState = { profile: CompanyProfile | null } & { [K in CollectionName]: CompanyCollections[K][] };
-export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [], landedCosts: [], opportunities: [], serviceContracts: [], serviceCalls: [], projects: [], teamUsers: [], routings: [], binLocations: [], lots: [], udfValues: [], taxRuns: [] });
+export const emptyCompany = (): CompanyState => ({ profile: null, salesOrders: [], purchaseOrders: [], customers: [], vendors: [], items: [], warehouseStock: [], stockMovements: [], journalEntries: [], chartOfAccounts: [], bankAccounts: [], bankTransactions: [], bankWorkflows: [], employees: [], payrollRuns: [], sriDocuments: [], productionOrders: [], boms: [], missions: [], budgets: [], approvals: [], inventoryCounts: [], fixedAssets: [], landedCosts: [], opportunities: [], serviceContracts: [], serviceCalls: [], projects: [], teamUsers: [], routings: [], binLocations: [], lots: [], udfValues: [], taxRuns: [] });
