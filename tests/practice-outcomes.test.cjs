@@ -77,3 +77,10 @@ test('activos: el método, la cuenta y el área quedan en el activo y en su asie
  assert.equal(missionOutcomeMatches(c.state,event,'mod3-c2#8'),true);
  assert.equal(c.state.journalEntries.at(-1).lines.some(line=>line.accountCode==='110500'&&line.debit===6000),true);
 });
+
+test('bancos: el movimiento conserva la cuenta bancaria y la contrapartida contabilizada',()=>{
+ const c=fixture();
+ const event=c.run('bank',{bankAccountId:'BAN-1',date:'2026-04-01',type:'deposit',amount:5000,counterpartAccount:'3.01',reference:'Capital inicial',documentId:''});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod6-c3#7'),true);
+ assert.equal(c.state.bankTransactions.at(-1).bankName,'Banco Pichincha');
+});

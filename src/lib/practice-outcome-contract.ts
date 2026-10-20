@@ -33,7 +33,7 @@ const maps: Record<string, Map<string, string>> = {
   monedas: entries({'Moneda local':'monedaLocal','Moneda del sistema':'monedaSistema','Tipo de cambio':'tasa','Fecha de tipo de cambio':'fecha'}),
   precios: entries({'Lista de precios':'code','Nombre de la lista':'name','Nombre':'name','Descripción':'description','Moneda':'currency','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Lista base':'base','Factor':'factor','Activa':'active','Código de cliente':'cardCode','Interlocutor origen':'cardCode','Código de artículo':'itemCode','Artículo':'itemCode','Porcentaje':'discount','Descuento':'discount','Referencia a lista':'referenceList'}),
   descuentos: entries({'Lista de precios':'list','Código de artículo':'itemCode','Artículo':'itemCode','Desde cantidad':'minQuantity','Cantidad mínima':'minQuantity','Hasta cantidad':'maxQuantity','Descuento':'discount','Descuento %':'discount','Fecha de inicio':'validFrom','Fecha de fin':'validTo','Válida desde':'validFrom','Válida hasta':'validTo','Activo':'active'}),
-  bancos: entries({'Fecha':'date','Fecha pago':'date','Fecha documento':'date','Monto':'amount','Valor pagado':'amount','Importe recibido':'amount','Importe':'amount','Importe a pagar':'amount','Total pagado':'amount','Valor':'amount','Contrapartida':'counterpartAccount','Referencia':'reference','Retención renta':'retentionIR','Retención IVA':'retentionIVA','Tipo':'type'}),
+  bancos: entries({'Banco':'bankName','Fecha':'date','Fecha pago':'date','Fecha documento':'date','Monto':'amount','Valor pagado':'amount','Importe recibido':'amount','Importe':'amount','Importe a pagar':'amount','Total pagado':'amount','Valor':'amount','Contrapartida':'counterpartAccount','Referencia':'reference','Retención renta':'retentionIR','Retención IVA':'retentionIVA','Tipo':'type'}),
   isd: entries({'Fecha':'date','Valor':'figures.amount','ISD':'figures.isd','Total':'figures.total'}),
 };
 const sources: Partial<Record<PantallaConectada['clave'], CollectionName | 'profile'>> = {
@@ -71,7 +71,7 @@ function comparable(value:unknown): string {
   if(typeof value==='boolean')return value?'Sí':'No';
   const text=String(value??'').trim();
   if(/^\d{4}-\d{2}-\d{2}$/.test(text)){const [year,month,day]=text.split('-');return `${day}/${month}/${year}`;}
-  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %'};
+  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago'};
   return aliases[text]??text;
 }
 function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyState):boolean {
@@ -83,6 +83,7 @@ function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyStat
     else if(requirement.path.endsWith('itemCode'))expected=state.items.find(row=>normalizar(row.name)===normalizar(expected))?.itemCode??expected;
     else if(requirement.path.endsWith('employeeCode'))expected=state.employees.find(row=>normalizar(`${row.firstName} ${row.lastName}`)===normalizar(expected))?.employeeCode??expected;
   }
+  if(requirement.path==='counterpartAccount') expected=expected.match(/^([\d.]+)/)?.[1]??expected;
   if(requirement.path==='docType'){const labels:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes'};actual=labels[String(actual)]??actual;}
   if(['list','referenceList'].includes(requirement.path)){const number=String(expected).match(/(\d+)$/)?.[1];if(number)expected=String(Number(number));}
   if(requirement.path==='paymentTermsDays')expected=expected.replace(/\s*d[ií]as?$/i,'');

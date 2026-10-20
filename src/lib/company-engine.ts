@@ -254,7 +254,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       assert(deposit || bank.balance >= d.amount, 'Saldo bancario insuficiente.'); result = next('BAN', d.date);
       const journalEntryId = post(d.date, deposit ? 'Cobro / depósito' : 'Pago bancario', 'bank', result, deposit ? [ledgerLine(bank.ledgerAccount, d.amount), ledgerLine('1.1.10', retIR), ledgerLine('1.1.11', retIVA), ledgerLine(counterpart, 0, settle)] : [ledgerLine(counterpart, d.amount), ledgerLine(bank.ledgerAccount, 0, d.amount)]);
       bank.balance = round(bank.balance + (deposit ? d.amount : -d.amount)); bank.updatedAt = now;
-      state.bankTransactions.push({ ...meta(result), ...d, counterpartAccount: counterpart, transactionId: result, reconciled: false, statementAmount: null, journalEntryId }); break;
+      state.bankTransactions.push({ ...meta(result), ...d, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, counterpartAccount: counterpart, transactionId: result, reconciled: false, statementAmount: null, journalEntryId }); break;
     }
     case 'bankAccount': {
       assert(privateCompany, 'La configuración de cuentas propias corresponde a la empresa privada.');
@@ -346,7 +346,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const journalEntryId = post(d.date, `Pago al exterior: ${d.concept}`, 'bank', result, [ledgerLine(principal, d.amount), ledgerLine(d.imputacion === 'credito' ? '1.1.12' : '6.08', isd), ledgerLine(bank.ledgerAccount, 0, round(d.amount + isd))]);
       if (proveedor) { proveedor.balance = round(proveedor.balance - d.amount); proveedor.updatedAt = now; }
       bank.balance = round(bank.balance - d.amount - isd); bank.updatedAt = now;
-      state.bankTransactions.push({ ...meta(result), transactionId: result, bankAccountId: bank.id, date: d.date, type: 'payment', amount: round(d.amount + isd), counterpartAccount: principal, reference: d.reference || d.concept, documentId: '', reconciled: false, statementAmount: null, journalEntryId });
+      state.bankTransactions.push({ ...meta(result), transactionId: result, bankAccountId: bank.id, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, date: d.date, type: 'payment', amount: round(d.amount + isd), counterpartAccount: principal, reference: d.reference || d.concept, documentId: '', reconciled: false, statementAmount: null, journalEntryId });
       state.taxRuns.push({ ...meta(`${result}-ISD`), runId: `${result}-ISD`, kind: 'isd', year: Number(d.date.slice(0, 4)), date: d.date, title: `ISD · ${d.concept}`, journalEntryId, figures: { pago: d.amount, tarifa: tarifa.rate, isd, total: round(d.amount + isd) },
         lines: [{ label: 'Pago al exterior', value: d.amount.toFixed(2), note: d.concept }, { label: `ISD ${tarifa.rate} %`, value: isd.toFixed(2), note: d.imputacion === 'credito' ? 'crédito tributario (1.1.12)' : 'gasto (6.08)' }, { label: 'Total que sale del banco', value: round(d.amount + isd).toFixed(2), note: '' }] });
       break;
