@@ -29,7 +29,7 @@
   },
   {
     "slide_index": 5,
-    "image_file": "Slide_005.webp",
+    "image_file": "Slide_005.svg",
     "script_text": "En el ejemplo, el cliente devuelve una cámara facturada por 100 cuyo costo fue 50, sin impuestos para simplificar. La nota de crédito debita la cuenta de ingresos o devoluciones sobre ventas por 100 y acredita la cuenta por cobrar al cliente por 100. Si también retorna físicamente el artículo con contabilización de cantidad, debita inventario por 50 y acredita costo de ventas por 50. El inventario aumenta en una cámara, valorada en 50. Los documentos conservan sus referencias para la trazabilidad.",
     "start_time": 126.38,
     "end_time": 164.04

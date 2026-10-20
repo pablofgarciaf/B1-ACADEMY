@@ -34,7 +34,7 @@ import {
 } from 'lucide-react';
 import { useAcademyVoice } from '@/hooks/useAcademyVoice';
 
-import { QuizQuestion, getQuizForManual } from '@/lib/manual-quizzes-data';
+import { QuizQuestion, getQuizForManual, shuffleQuizOptions } from '@/lib/manual-quizzes-data';
 import ManualLearningBridge from '@/components/lms/ManualLearningBridge';
 import { manualLearningPath } from '@/lib/manual-learning-path';
 
@@ -184,37 +184,21 @@ export default function ManualViewer({
   }, [activeSyncSlide, activeTab]);
 
   // Estado para el Autoevaluación de repaso
+  const [quizAttempt, setQuizAttempt] = useState(0);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizScore, setQuizScore] = useState<number>(0);
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [timeLeft, setTimeLeft] = useState<number>(35);
+  const [timeLeft, setTimeLeft] = useState<number>(90);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [professorFeedback, setProfessorFeedback] = useState<{ status: 'correct' | 'incorrect' | 'timeout' | null, message: string }>({ status: null, message: '' });
   const [cheatAlert, setCheatAlert] = useState<string | null>(null);
   const [writtenAnswer, setWrittenAnswer] = useState<string>('');
 
   const quizQuestions = useMemo(() => {
-    if (externalQuestions && externalQuestions.length > 0) {
-      return externalQuestions;
-    }
-    if (manualId) {
-      return getQuizForManual(manualId, '', '');
-    }
-    return [
-      {
-        q: "¿Cuál es el propósito principal de SAP Business One?",
-        options: [
-          "Diseño gráfico y edición multimedia",
-          "Integrar todos los procesos empresariales en una sola plataforma unificada",
-          "Crear páginas web estáticas",
-          "Solo llevar la contabilidad básica"
-        ],
-        answer: 1,
-        explanation: "SAP Business One es un ERP integral que unifica finanzas, compras, ventas, inventario y producción."
-      }
-    ];
-  }, [externalQuestions, manualId]);
+    const questions = externalQuestions?.length ? externalQuestions : manualId ? getQuizForManual(manualId, '', '') : [];
+    return quizAttempt > 0 ? questions.map(q => shuffleQuizOptions(q)) : questions;
+  }, [externalQuestions, manualId, quizAttempt]);
 
   const [userAnswers, setUserAnswers] = useState<Record<number, number>>({});
 
@@ -225,7 +209,7 @@ export default function ManualViewer({
 
     if (currentQuestion < quizQuestions.length - 1) {
       setCurrentQuestion(prev => prev + 1);
-      setTimeLeft(35);
+      setTimeLeft(90);
     } else {
       setQuizCompleted(true);
       const passingMin = Math.ceil(quizQuestions.length * 0.90);
@@ -249,7 +233,7 @@ export default function ManualViewer({
     setIsEvaluating(true);
     setProfessorFeedback({
       status: 'timeout',
-      message: '⏰ ¡Tiempo agotado! No respondiste en los 35 segundos asignados. La calificación para esta pregunta es 0/100. Pasemos a la siguiente pregunta.'
+      message: '⏰ ¡Tiempo agotado! No respondiste en los 90 segundos asignados. La calificación para esta pregunta es 0/100. Pasemos a la siguiente pregunta.'
     });
 
     setTimeout(() => {
@@ -257,7 +241,7 @@ export default function ManualViewer({
     }, 2500);
   }, [moveToNextQuestion, quizScore]);
 
-  // Temporizador regresivo estricto de 35 segundos para el Examen
+  // Temporizador regresivo estricto de 90 segundos para el Examen
   useEffect(() => {
     if (!quizStarted || quizCompleted || isEvaluating) return;
 
@@ -281,7 +265,7 @@ export default function ManualViewer({
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        setCheatAlert("⚠️ Alerta de Seguridad: Se detectó cambio de pestaña o ventana durante el examen.");
+        setCheatAlert("El tiempo del repaso sigue corriendo al cambiar de ventana.");
         setTimeout(() => setCheatAlert(null), 5000);
       }
     };
@@ -314,11 +298,12 @@ export default function ManualViewer({
   };
 
   const restartQuiz = () => {
+    setQuizAttempt(n => n + 1);
     setQuizStarted(true);
     setQuizCompleted(false);
     setQuizScore(0);
     setCurrentQuestion(0);
-    setTimeLeft(35);
+    setTimeLeft(90);
     setIsEvaluating(false);
     setProfessorFeedback({ status: null, message: '' });
     setWrittenAnswer('');
@@ -1150,18 +1135,18 @@ export default function ManualViewer({
                     </div>
 
                     <h3 className="text-sm font-bold text-white mb-2">
-                      Evaluación en Vivo (Simulacro)
+                      Comprueba lo aprendido
                     </h3>
 
                     <p className="text-xs text-gray-300 max-w-[280px] leading-relaxed mb-4">
-                      El Profesor de Finix Academy te evaluará sobre los conceptos y procesos técnicos de este manual.
+                      Resuelve el caso de este manual y revisa la explicación. Este repaso no guarda calificaciones ni acredita el módulo.
                     </p>
 
                     {/* Reglas Estrictas del Examen */}
                     <div className="bg-[#111822] border border-gray-800 rounded-xl p-3 text-left w-full max-w-[310px] mb-4 space-y-2 text-[11px]">
                       <div className="flex items-start gap-2 text-gray-300">
                         <Timer size={14} className="text-amber-400 shrink-0 mt-0.5" />
-                        <span><strong>Límite Estricto:</strong> Tienes <strong>35 segundos</strong> por pregunta. Si el tiempo expira, la pregunta se califica con 0 y se cambia automáticamente.</span>
+                        <span><strong>Tiempo por caso:</strong> Tienes <strong>90 segundos</strong> por pregunta. Si el tiempo expira, la pregunta se califica con 0 y se cambia automáticamente.</span>
                       </div>
                       <div className="flex items-start gap-2 text-gray-300">
                         <ShieldAlert size={14} className="text-blue-400 shrink-0 mt-0.5" />
@@ -1169,7 +1154,7 @@ export default function ManualViewer({
                       </div>
                       <div className="flex items-start gap-2 text-gray-300">
                         <Award size={14} className="text-emerald-400 shrink-0 mt-0.5" />
-                        <span><strong>Aprobación:</strong> Requiere <strong>90% de aciertos</strong> para aprobar la materia.</span>
+                        <span><strong>Objetivo:</strong> Alcanza <strong>90% de aciertos</strong> en este repaso. La evaluación del módulo se realiza en Mi Aula.</span>
                       </div>
                     </div>
 
@@ -1178,7 +1163,7 @@ export default function ManualViewer({
                       className="rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 px-6 py-2.5 text-xs font-bold text-black transition-all active:scale-95 shadow-lg shadow-amber-600/30 flex items-center gap-2"
                     >
                       <Timer size={14} />
-                      <span>Comenzar Examen ({quizQuestions.length} Preguntas)</span>
+                      <span>Comenzar repaso ({quizQuestions.length} {quizQuestions.length === 1 ? 'pregunta' : 'preguntas'})</span>
                     </button>
                   </div>
                 ) : quizCompleted ? (
@@ -1192,7 +1177,7 @@ export default function ManualViewer({
                     {quizScore >= Math.ceil(quizQuestions.length * 0.90) ? (
                       <div className="space-y-3 mb-4 w-full max-w-[320px]">
                         <span className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
-                          <CheckCircle2 size={13} /> ¡Examen Aprobado con Excelencia!
+                          <CheckCircle2 size={13} /> Repaso completado
                         </span>
 
                         {/* Tarjeta de la App Descargable para Constancia de autoevaluación */}
@@ -1238,7 +1223,7 @@ export default function ManualViewer({
                         onClick={restartQuiz}
                         className="rounded-xl bg-gray-800 hover:bg-gray-700 px-4 py-2 text-xs font-semibold text-white transition-all active:scale-95"
                       >
-                        Reintentar Examen
+                        Repetir repaso
                       </button>
                       <Link
                         href="/manuales"
@@ -1287,7 +1272,7 @@ export default function ManualViewer({
                     <div className="w-full mb-3">
                       <progress
                         value={timeLeft}
-                        max={35}
+                        max={90}
                         aria-label="Tiempo restante para responder"
                         className={`w-full h-1.5 rounded-full overflow-hidden transition-all duration-1000 block bg-gray-800 [&::-webkit-progress-bar]:bg-gray-800 ${timeLeft <= 8
                           ? 'accent-rose-500 [&::-webkit-progress-value]:bg-rose-500 [&::-moz-progress-bar]:bg-rose-500'

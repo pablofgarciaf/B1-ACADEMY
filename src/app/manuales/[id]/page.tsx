@@ -41,7 +41,10 @@ export default async function ManualPage({ params }: { params: Promise<{ id: str
     images = fs.readdirSync(imagesDir)
       .filter(f => f.endsWith('.jpg') || f.endsWith('.png') || f.endsWith('.webp'))
       .sort() // Ordenar alfabéticamente para mantener secuencia de slides
-      .map(f => `/Capacitacion Finix/${manualId}/Imagenes_Diapositivas/${f}`);
+      .map(f => {
+        const corrected = f.replace(/\.(jpg|png|webp)$/, '.svg');
+        return `/Capacitacion Finix/${manualId}/Imagenes_Diapositivas/${fs.existsSync(path.join(imagesDir, corrected)) ? corrected : f}`;
+      });
   }
 
   // 3. El estándar oficial de la academia es el Modo Interactivo Narrado:
