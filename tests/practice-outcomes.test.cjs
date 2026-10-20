@@ -45,3 +45,28 @@ test('la serie exige su rango completo en la misma fila',()=>{
  const c=fixture(),event=c.run('docSeriesSave',{series:[{docType:'facturas',inicio:5000,fin,nombre:'VENTAS NORTE',grupo:2,actual:5000}]});assert.equal(missionOutcomeMatches(c.state,event,'mod4-c1#5'),expected);
  }
 });
+
+test('grupos: la configuración adicional se conserva en la misma fila que el grupo',()=>{
+ const clientes=fixture();
+ const grupoCliente=clientes.run('customerGroupSave',{groups:[{codigo:'EDU',nombre:'Escuelas',descripcion:'',defaultPriceList:'Lista Especial EDU'}]});
+ assert.equal(missionOutcomeMatches(clientes.state,grupoCliente,'mod2-c1#5'),true);
+ const articulos=fixture();
+ const grupoArticulo=articulos.run('itemGroupSave',{groups:[{codigo:'CABLES-FAM',nombre:'Cables',descripcion:'Familia de cables',uomGroup:'CABLES',inventoryUnit:'Metro'}]});
+ assert.equal(missionOutcomeMatches(articulos.state,grupoArticulo,'mod2-c3#7'),true);
+ const separado=fixture();
+ const incompleto=separado.run('itemGroupSave',{groups:[{codigo:'CABLES-FAM',nombre:'Cables',descripcion:'Familia de cables'},{codigo:'OTRO',nombre:'Otro',descripcion:'',uomGroup:'CABLES',inventoryUnit:'Metro'}]});
+ assert.equal(missionOutcomeMatches(separado.state,incompleto,'mod2-c3#7'),false);
+});
+
+test('proveedores: vínculo y retención se guardan en la ficha del proveedor',()=>{
+ const c=fixture();
+ const proveedor=c.state.vendors.find(v=>v.cardCode==='V10000');
+ const cliente=c.state.customers.find(v=>v.cardCode==='C20000');
+ assert.ok(proveedor);
+ assert.ok(cliente);
+ const enlace=c.run('partnerLink',{customerCode:cliente.cardCode,vendorCode:proveedor.cardCode});
+ assert.equal(missionOutcomeMatches(c.state,enlace,'mod2-c1#8'),true);
+ const edit=c.run('partnerUpdate',{partnerType:'vendor',cardCode:proveedor.cardCode,changes:{subjectToWithholding:true,withholdingTax:'RET IVA 30%',vatWithholdingGroup:'NO ESP',vatWithholdingCode:'30%',fiscalCategory:'No especial'}});
+ assert.equal(missionOutcomeMatches(c.state,edit,'mod22-c2#5'),true);
+ assert.equal(missionOutcomeMatches(c.state,edit,'mod22-c3#5'),true);
+});

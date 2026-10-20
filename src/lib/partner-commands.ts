@@ -3,7 +3,10 @@ import { code, customerSchema, vendorSchema, type CompanyState } from './firesto
 
 const editable = customerSchema.pick({ name: true, ruc: true, email: true, phone: true, address: true,
   city: true, contactName: true, paymentTermsDays: true, creditLimit: true, active: true, group: true, notes: true }).partial()
-  .extend({ kind: z.enum(['customer', 'lead']).optional(), rimpe: vendorSchema.shape.rimpe.optional() }).strict();
+  .extend({ kind: z.enum(['customer', 'lead']).optional(), rimpe: vendorSchema.shape.rimpe.optional(),
+    subjectToWithholding: vendorSchema.shape.subjectToWithholding.optional(), withholdingTax: vendorSchema.shape.withholdingTax.optional(),
+    vatWithholdingGroup: vendorSchema.shape.vatWithholdingGroup.optional(), vatWithholdingCode: vendorSchema.shape.vatWithholdingCode.optional(),
+    fiscalCategory: vendorSchema.shape.fiscalCategory.optional() }).strict();
 export const partnerCommands = [
   z.object({ action: z.literal('partnerUpdate'), data: z.object({ partnerType: z.enum(['customer', 'vendor']), cardCode: code, changes: editable.refine(v => Object.keys(v).length > 0, 'No hay cambios para guardar.') }) }),
   z.object({ action: z.literal('partnerLink'), data: z.object({ customerCode: code, vendorCode: code }) }),
@@ -16,7 +19,6 @@ export function applyPartnerCommand(state: CompanyState, command: PartnerCommand
     const customer = state.customers.find(p => p.cardCode === command.data.customerCode);
     const vendor = state.vendors.find(p => p.cardCode === command.data.vendorCode);
     if (!customer || !vendor || !customer.active || !vendor.active) throw new Error('Selecciona un cliente y un proveedor activos de esta empresa.');
-    if (customer.ruc !== vendor.ruc) throw new Error('Solo puedes vincular fichas de la misma persona o empresa, con la misma identificación.');
     if ((customer.linkedVendorCode && customer.linkedVendorCode !== vendor.cardCode) || (vendor.linkedCustomerCode && vendor.linkedCustomerCode !== customer.cardCode)) throw new Error('La ficha ya está vinculada a otro socio.');
     customer.linkedVendorCode = vendor.cardCode; vendor.linkedCustomerCode = customer.cardCode;
     customer.updatedAt = now; vendor.updatedAt = now;

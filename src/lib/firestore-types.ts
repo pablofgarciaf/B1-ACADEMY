@@ -24,7 +24,17 @@ export type PurchaseDocument = z.infer<typeof purchaseSchema>;
 export type DocumentInput = Pick<SalesDocument, 'date' | 'dueDate' | 'cardCode' | 'reference' | 'comments' | 'baseDocumentId' | 'lines'>;
 const partnerSchema = base.extend({ cardCode: code, name: text.min(2), ruc: z.string().regex(/^\d{10}(\d{3})?$/), email: z.union([z.string().email(), z.literal('')]), phone: text, address: text, city: text, contactName: text, currency: z.literal('USD'), paymentTermsDays: money.int().max(365), creditLimit: money, balance: z.number().finite(), active: z.boolean(), group: text, notes: text });
 export const customerSchema = partnerSchema.extend({ kind: z.enum(['customer', 'lead']), linkedVendorCode: code.optional() });
-export const vendorSchema = partnerSchema.extend({ rimpe: z.enum(['ninguno', 'emprendedor', 'popular']).default('ninguno'), linkedCustomerCode: code.optional() });
+export const vendorSchema = partnerSchema.extend({
+  rimpe: z.enum(['ninguno', 'emprendedor', 'popular']).default('ninguno'),
+  linkedCustomerCode: code.optional(),
+  /** Datos fiscales que determinan la retención simulada del proveedor. */
+  subjectToWithholding: z.boolean().default(false),
+  withholdingTax: text.default(''),
+  vatWithholdingGroup: text.default(''),
+  vatWithholdingCode: text.default(''),
+  fiscalCategory: text.default(''),
+  partnerClass: z.literal('Proveedor').default('Proveedor'),
+});
 export type Customer = z.infer<typeof customerSchema>;
 export type Vendor = z.infer<typeof vendorSchema>;
 export const itemSchema = base.extend({ ice: z.enum(['none', 'perfumes', 'videojuegos', 'cigarrillos']).default('none'), itemCode: code, name: text.min(2), type: z.enum(['inventory', 'service', 'labor']), group: text, itemClass: text.default('100'), uomGroup: text.default(''), inventoryUnit: text.default('UND'), manageMethod: z.enum(['none','lot','serial']).default('none'), perpetualInventory: z.boolean().default(true), purchaseUnit: text.min(1), salesUnit: text.min(1), price: money, price2: money, price3: money, maxDiscount: money.max(100), purchasePrice: money, preferredVendor: z.string().max(80), weight: money, length: money, width: money, height: money, costingMethod: z.enum(costMethods), standardCost: money, minStock: money, maxStock: money, reorderPoint: money, description: text, specifications: text, active: z.boolean() });

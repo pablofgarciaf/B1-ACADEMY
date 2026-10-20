@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 
-interface Grupo { codigo: string; nombre: string; descripcion: string }
+interface Grupo { codigo: string; nombre: string; descripcion: string; defaultPriceList?: string; uomGroup?: string; inventoryUnit?: string }
 
 export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' }) {
   const c = useCompany();
@@ -17,7 +17,7 @@ export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' })
 
   useEffect(() => { setGrupos(guardados); }, [guardados.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const vacio = (): Grupo => ({ codigo: '', nombre: '', descripcion: '' });
+  const vacio = (): Grupo => ({ codigo: '', nombre: '', descripcion: '', defaultPriceList: '', uomGroup: '', inventoryUnit: 'UND' });
 
   const guardar = async () => {
     if (!editando || !editando.codigo || !editando.nombre) return;
@@ -40,11 +40,12 @@ export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' })
         </div>
 
         <Table
-          headers={['Código', 'Nombre', 'Descripción', '']}
+          headers={['Código', 'Nombre', 'Descripción', tipo === 'cliente' ? 'Lista predeterminada' : 'Unidades', '']}
           rows={grupos.map(g => [
             <span key="c" className="font-mono font-bold">{g.codigo}</span>,
             <span key="n">{g.nombre}</span>,
             <span key="d" className="text-gray-500">{g.descripcion}</span>,
+            <span key="x" className="text-gray-500">{tipo === 'cliente' ? g.defaultPriceList || '—' : `${g.uomGroup || '—'} · ${g.inventoryUnit || '—'}`}</span>,
             <div key="a" className="flex gap-1">
               <button type="button" className={buttonClass} onClick={() => setEditando({ ...g })}>Editar</button>
               <button type="button" className={`${buttonClass} text-red-700`} onClick={() => eliminar(g.codigo)}>✕</button>
@@ -67,6 +68,7 @@ export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' })
             <Field label="Descripción">
               <input className={inputClass} value={editando.descripcion} onChange={e => setEditando(v => v ? { ...v, descripcion: e.target.value } : v)} />
             </Field>
+            {tipo === 'cliente' ? <Field label="Lista de precio predeterminada"><input className={inputClass} value={editando.defaultPriceList ?? ''} onChange={e => setEditando(v => v ? { ...v, defaultPriceList: e.target.value } : v)} placeholder="Lista Especial EDU" /></Field> : <><Field label="Grupo UM"><input className={inputClass} value={editando.uomGroup ?? ''} onChange={e => setEditando(v => v ? { ...v, uomGroup: e.target.value } : v)} placeholder="CABLES" /></Field><Field label="UM inventario"><input className={inputClass} value={editando.inventoryUnit ?? ''} onChange={e => setEditando(v => v ? { ...v, inventoryUnit: e.target.value } : v)} placeholder="Metro" /></Field></>}
             <div className="flex gap-2 pt-1">
               <button type="button" onClick={guardar} disabled={c.saving || !editando.codigo || !editando.nombre} className={`${buttonClass} font-bold`}>Añadir</button>
               <button type="button" onClick={() => setEditando(null)} className={buttonClass}>Cancelar</button>
