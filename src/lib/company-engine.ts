@@ -157,8 +157,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const seriesType: Partial<Record<DocType,string>> = { quotation:'facturas', order:'pedidos', delivery:'entregas', invoice:'facturas', credit_note:'nc_cliente', purchase_request:'compras', purchase_order:'compras', goods_receipt:'grpo', vendor_invoice:'factprov', debit_note:'nc_prov' };
     type StoredSeries = { docType:string; nombre:string; prefijo?:string; sufijo?:string; digitos?:number; inicio:number; fin:number; actual:number; porDefecto?:boolean; bloqueada?:boolean };
     const configured = ((profile as unknown as { docSeries?: StoredSeries[] }).docSeries ?? []).filter(s=>s.docType===seriesType[docType]);
-    const selectedSeries = data.series ? configured.find(s=>s.nombre===data.series) : configured.find(s=>s.porDefecto);
-    if (data.series) assert(selectedSeries, 'La serie seleccionada no está configurada para este documento.');
+    const requestedSeries = data.series ?? '';
+    const selectedSeries = requestedSeries ? configured.find(s=>s.nombre===requestedSeries) : configured.find(s=>s.porDefecto);
+    if (requestedSeries) assert(selectedSeries, 'La serie seleccionada no está configurada para este documento.');
     if (selectedSeries) {
       assert(!selectedSeries.bloqueada, 'La serie seleccionada está bloqueada.');
       assert(selectedSeries.actual >= selectedSeries.inicio && selectedSeries.actual <= selectedSeries.fin, 'La serie no tiene números disponibles.');

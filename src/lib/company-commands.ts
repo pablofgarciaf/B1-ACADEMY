@@ -5,7 +5,7 @@ import { partnerCommands } from './partner-commands';
 
 const omitBase = { id: true, createdAt: true, updatedAt: true, createdBy: true } as const;
 const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con formato AAAA-MM.');
-const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
+const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), series: text.optional(), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
   ...partnerCommands,
   z.object({ action:z.literal('openingBalances'), data:openingBalancesSchema }),
