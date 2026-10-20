@@ -408,7 +408,8 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'production': {
       const d = command.data; const bom = state.boms.find(b => b.bomCode === d.bomCode && b.type === 'production'); if (!bom) throw new Error('BOM de producción inexistente.'); assert(d.dueDate >= d.date, 'Vencimiento inválido.'); stock(bom.parentItemCode, d.warehouseCode);
-      result = next('OP', d.date); state.productionOrders.push({ ...meta(result), ...d, orderNumber: result, parentItemCode: bom.parentItemCode, components: bom.components, status: 'planned', journalEntryId: '', actualCost: 0 }); break;
+      const parent = state.items.find(item => item.itemCode === bom.parentItemCode); if (!parent) throw new Error('Artículo padre inexistente.');
+      result = next('OP', d.date); state.productionOrders.push({ ...meta(result), ...d, orderNumber: result, parentItemCode: bom.parentItemCode, description: parent.name, components: bom.components, status: 'planned', journalEntryId: '', actualCost: 0 }); break;
     }
     case 'productionStatus': {
       const d = command.data; const order = state.productionOrders.find(o => o.id === d.id); if (!order) throw new Error('Orden inexistente.');

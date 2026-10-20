@@ -33,7 +33,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('sri'), data: sriInputSchema }),
   z.object({ action: z.literal('authorize'), data: z.object({ id: code }) }),
   z.object({ action: z.literal('bom'), data: bomInputSchema }),
-  z.object({ action: z.literal('production'), data: z.object({ bomCode: code, quantity: money.positive(), warehouseCode: code, date, dueDate: date }) }),
+  z.object({ action: z.literal('production'), data: z.object({ bomCode: code, quantity: money.positive(), warehouseCode: code, date, dueDate: date, priority: z.number().int().min(1).max(5).default(1) }) }),
   z.object({ action: z.literal('productionStatus'), data: z.object({ id: code, status: z.enum(['released', 'in_progress', 'closed']) }) }),
   z.object({ action: z.literal('mrp'), data: z.object({ vendorCode: code, date }) }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
