@@ -3,12 +3,12 @@ import { round } from './company-calculations';
 
 export const NOMBRES_LISTA: Record<1 | 2 | 3, string> = { 1: 'General', 2: 'Mayorista', 3: 'Distribuidor' };
 
-export interface ListaPrecios { no: number; name: string; base: number; factor: number; derivada: boolean }
+export interface ListaPrecios { no: number; code: string; name: string; description: string; base: number; factor: number; currency: 'USD'; validFrom: string; validTo: string; active: boolean; derivada: boolean }
 
 /** Las tres listas base (precios por artículo) más las derivadas de otra lista con un factor. */
 export function listasDePrecios(state: CompanyState): ListaPrecios[] {
-  const base: ListaPrecios[] = ([1, 2, 3] as const).map(no => ({ no, name: NOMBRES_LISTA[no], base: 0, factor: 1, derivada: false }));
-  return [...base, ...(state.profile?.priceLists ?? []).map(l => ({ ...l, derivada: true }))];
+  const base: ListaPrecios[] = ([1, 2, 3] as const).map(no => ({ no, code: `LP${String(no).padStart(4,'0')}`, name: NOMBRES_LISTA[no], description: '', base: 0, factor: 1, currency: 'USD', validFrom: '2020-01-01', validTo: '2099-12-31', active: true, derivada: false }));
+  return [...base, ...(state.profile?.priceLists ?? []).map(l => ({ ...l, code: l.code ?? `LP${String(l.no).padStart(4,'0')}`, description: l.description ?? '', currency: l.currency ?? 'USD' as const, validFrom: l.validFrom ?? '2020-01-01', validTo: l.validTo ?? '2099-12-31', active: l.active ?? true, derivada: true }))];
 }
 
 export const nombreLista = (state: CompanyState, no: number): string => listasDePrecios(state).find(l => l.no === no)?.name ?? NOMBRES_LISTA[1];
@@ -40,14 +40,14 @@ export function costoUnitario(state: CompanyState, itemCode: string): number {
  * Precio que Finix ERP propondría: el de la lista asignada al cliente y el mejor descuento por volumen
  * aplicable a la cantidad, sin superar el descuento máximo del artículo.
  */
-export function precioSugerido(state: CompanyState, cardCode: string, itemCode: string, cantidad: number): PrecioSugerido | null {
+export function precioSugerido(state: CompanyState, cardCode: string, itemCode: string, cantidad: number, fecha = new Date().toISOString().slice(0,10)): PrecioSugerido | null {
   const item = state.items.find(i => i.itemCode === itemCode);
   if (!item) return null;
   const lista = state.profile?.customerPriceLists?.[cardCode] ?? 1;
   const porLista = precioDeLista(state, item, lista);
   const precio = porLista > 0 ? porLista : item.price;
   const reglas = (state.profile?.volumeDiscounts ?? [])
-    .filter(v => (v.itemCode === itemCode || v.itemCode === '*') && cantidad >= v.minQuantity)
+    .filter(v => (v.itemCode === itemCode || v.itemCode === '*') && (v.list ?? 1) === lista && v.active !== false && cantidad >= v.minQuantity && (v.maxQuantity === null || v.maxQuantity === undefined || cantidad <= v.maxQuantity) && fecha >= (v.validFrom ?? '2020-01-01') && fecha <= (v.validTo ?? '2099-12-31'))
     .sort((a, b) => b.discount - a.discount);
   const descuento = Math.min(reglas[0]?.discount ?? 0, item.maxDiscount);
   const precioNeto = round(precio * (1 - descuento / 100));

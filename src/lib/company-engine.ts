@@ -498,10 +498,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       if (d.no) {
         const l = existentes.find(x => x.no === d.no); if (!l) throw new Error('Lista inexistente.');
         assert(d.base < d.no, 'Una lista solo puede derivarse de una lista anterior.');
-        profile.priceLists = existentes.map(x => x.no === d.no ? { ...x, name: d.name.trim(), base: d.base, factor: d.factor } : x); result = `Lista ${d.no}`;
+        profile.priceLists = existentes.map(x => x.no === d.no ? { ...x, code: d.code?.trim() || x.code || `LP${String(d.no).padStart(4,'0')}`, name: d.name.trim(), description: d.description, base: d.base, factor: d.factor, currency: d.currency, validFrom: d.validFrom, validTo: d.validTo, active: d.active } : x); result = `Lista ${d.no}`;
       } else {
         const no = Math.max(3, ...existentes.map(l => l.no)) + 1; assert(no <= 60, 'Máximo 60 listas de precios.');
-        profile.priceLists = [...existentes, { no, name: d.name.trim(), base: d.base, factor: d.factor }]; result = `Lista ${no}`;
+        profile.priceLists = [...existentes, { no, code: d.code?.trim() || `LP${String(no).padStart(4,'0')}`, name: d.name.trim(), description: d.description, base: d.base, factor: d.factor, currency: d.currency, validFrom: d.validFrom, validTo: d.validTo, active: d.active }]; result = `Lista ${no}`;
       }
       break;
     }
@@ -533,7 +533,8 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         const maximo = d.itemCode === '*' ? Math.min(...state.items.map(i => i.maxDiscount), 100) : state.items.find(i => i.itemCode === d.itemCode)?.maxDiscount ?? 0;
         assert(d.discount <= maximo, `El descuento supera el máximo permitido (${maximo} %).`);
         result = d.id || next('DV');
-        lista = [...lista.filter(v => v.id !== result), { id: result, itemCode: d.itemCode, minQuantity: d.minQuantity, discount: d.discount }];
+        assert(d.list <= 3 || (profile.priceLists ?? []).some(l => l.no === d.list && l.active), 'La lista de precios no existe o está inactiva.');
+        lista = [...lista.filter(v => v.id !== result), { id: result, itemCode: d.itemCode, list: d.list, minQuantity: d.minQuantity, maxQuantity: d.maxQuantity, discount: d.discount, validFrom: d.validFrom, validTo: d.validTo, active: d.active }];
       }
       profile.volumeDiscounts = lista; break;
     }

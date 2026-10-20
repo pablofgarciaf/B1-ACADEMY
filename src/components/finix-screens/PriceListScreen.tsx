@@ -43,7 +43,8 @@ export default function PriceListScreen() {
   const asignadas = c.data.profile?.customerPriceLists ?? {};
   const articulos = c.data.items.filter(i => i.active);
   const listas = listasDePrecios(c.data);
-  const [nueva, setNueva] = useState<{ no?: number; name: string; base: number; factor: number }>({ name: '', base: 1, factor: 1 });
+  const vacia = { code: '', name: '', description: '', base: 1, factor: 1, currency: 'USD' as const, validFrom: '2026-01-01', validTo: '2099-12-31', active: true };
+  const [nueva, setNueva] = useState<{ no?: number } & typeof vacia>(vacia);
   const [asistente, setAsistente] = useState<{ list: number; method: 'factor' | 'percent'; value: number }>({ list: 1, method: 'factor', value: 1 });
   const accion = async (command: Parameters<typeof c.save>[0]) => { try { await c.save(command); return true; } catch { return false; } };
   const mult = asistente.method === 'factor' ? asistente.value : 1 + asistente.value / 100;
@@ -58,17 +59,22 @@ export default function PriceListScreen() {
       </p>
 
       <h3 className="font-bold text-[#003366]">Listas de precios</h3>
-      <Table headers={['N.º', 'Nombre', 'Tipo', 'Lista base', 'Factor', '']} rows={listas.map(l => [l.no, l.name, l.derivada ? 'Derivada' : 'Base', l.derivada ? `${l.base} · ${listas.find(x => x.no === l.base)?.name ?? ''}` : '—', l.derivada ? `×${l.factor}` : '—',
-        l.derivada ? <button key={l.no} type="button" className={buttonClass} onClick={() => setNueva({ no: l.no, name: l.name, base: l.base, factor: l.factor })}>Editar</button> : ''])} />
-      <form className="space-y-2 border border-[#999] bg-white p-2" onSubmit={async e => { e.preventDefault(); if (await accion({ action: 'priceListSave', data: nueva })) setNueva({ name: '', base: 1, factor: 1 }); }}>
+      <Table headers={['N.º', 'Código', 'Nombre', 'Vigencia', 'Tipo', 'Factor', '']} rows={listas.map(l => [l.no, l.code, l.name, `${l.validFrom} a ${l.validTo}`, l.derivada ? 'Derivada' : 'Base', l.derivada ? `×${l.factor}` : '—',
+        l.derivada ? <button key={l.no} type="button" className={buttonClass} onClick={() => setNueva({ no: l.no, code: l.code, name: l.name, description: l.description, base: l.base, factor: l.factor, currency: l.currency, validFrom: l.validFrom, validTo: l.validTo, active: l.active })}>Editar</button> : ''])} />
+      <form className="space-y-2 border border-[#999] bg-white p-2" onSubmit={async e => { e.preventDefault(); if (await accion({ action: 'priceListSave', data: nueva })) setNueva(vacia); }}>
         <h4 className="font-bold text-[#003366]">{nueva.no ? `Editar lista ${nueva.no}` : 'Nueva lista de precios'}</h4>
         <div className="grid gap-2 sm:grid-cols-3">
+          <Field label="Código de la lista"><input className={inputClass} value={nueva.code} onChange={e => setNueva(v => ({ ...v, code: e.target.value }))} placeholder="LPRECIO01" /></Field>
           <Field label="Nombre de la lista" required><input required minLength={2} className={inputClass} value={nueva.name} onChange={e => setNueva(v => ({ ...v, name: e.target.value }))} placeholder="Ej.: Escuelas 2" /></Field>
+          <Field label="Descripción"><input className={inputClass} value={nueva.description} onChange={e => setNueva(v => ({ ...v, description: e.target.value }))} /></Field>
           <Field label="Lista base" required><select className={inputClass} value={nueva.base} onChange={e => setNueva(v => ({ ...v, base: Number(e.target.value) }))}>{listas.filter(l => !nueva.no || l.no < nueva.no).map(l => <option key={l.no} value={l.no}>{l.no} · {l.name}</option>)}</select></Field>
           <Field label="Factor" required><input required type="number" min="0.01" max="100" step="0.01" className={inputClass} value={nueva.factor} onChange={e => setNueva(v => ({ ...v, factor: Number(e.target.value) }))} /></Field>
+          <Field label="Válida desde"><input type="date" className={inputClass} value={nueva.validFrom} onChange={e => setNueva(v => ({ ...v, validFrom: e.target.value }))} /></Field>
+          <Field label="Válida hasta"><input type="date" className={inputClass} value={nueva.validTo} onChange={e => setNueva(v => ({ ...v, validTo: e.target.value }))} /></Field>
+          <Field label="Activa"><input type="checkbox" checked={nueva.active} onChange={e => setNueva(v => ({ ...v, active: e.target.checked }))} /></Field>
         </div>
         <button type="submit" className={`${buttonClass} font-bold`} disabled={c.saving}>{nueva.no ? 'Actualizar lista' : 'Añadir lista'}</button>
-        {nueva.no && <button type="button" className={`${buttonClass} ml-2`} onClick={() => setNueva({ name: '', base: 1, factor: 1 })}>Cancelar</button>}
+        {nueva.no && <button type="button" className={`${buttonClass} ml-2`} onClick={() => setNueva(vacia)}>Cancelar</button>}
       </form>
 
       <h3 className="font-bold text-[#003366]">Asistente de actualización de precios</h3>

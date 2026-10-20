@@ -6,6 +6,7 @@ const { applyCommand } = require('../src/lib/company-engine.ts');
 const { emptyCompany } = require('../src/lib/firestore-types.ts');
 const { commandSchema } = require('../src/lib/company-commands.ts');
 const { trialBalance, financialSummary } = require('../src/lib/company-calculations.ts');
+const { precioSugerido } = require('../src/lib/company-pricing.ts');
 
 const now = '2026-10-04T12:00:00.000Z';
 const socio = { ruc: '1790000000001', email: '', phone: '', address: '', city: 'Quito', contactName: '', currency: 'USD', paymentTermsDays: 30, creditLimit: 100000, active: true, group: 'General', notes: '' };
@@ -84,6 +85,16 @@ test('precios: listas por artículo, lista por cliente y descuentos por volumen 
   assert.throws(() => s.run('volumeDiscount', { itemCode: s.art, minQuantity: 50, discount: 30 }), /máximo permitido/);
   s.run('volumeDiscount', { id: dv, itemCode: s.art, minQuantity: 10, discount: 0, remove: true });
   assert.equal(s.state.profile.volumeDiscounts.length, 0);
+});
+
+test('precios: las vigencias y el rango de cantidad condicionan el descuento aplicado', () => {
+  const s = empresa();
+  s.run('customerPriceList', { cardCode: s.cliente, list: 2 });
+  s.run('volumeDiscount', { itemCode: s.art, list: 2, minQuantity: 2, maxQuantity: 10, discount: 10, validFrom: '2026-06-01', validTo: '2026-06-30', active: true });
+  assert.equal(precioSugerido(s.state, s.cliente, s.art, 5, '2026-06-15').descuento, 10);
+  assert.equal(precioSugerido(s.state, s.cliente, s.art, 11, '2026-06-15').descuento, 0);
+  assert.equal(precioSugerido(s.state, s.cliente, s.art, 5, '2026-07-01').descuento, 0);
+  assert.equal(precioSugerido(s.state, s.cliente, s.art, 5, '2026-06-15').precio, 18);
 });
 
 test('conteo físico: ajusta stock y contabiliza la merma contra 6.05', () => {
