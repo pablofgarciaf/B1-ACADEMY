@@ -10,6 +10,8 @@ const CATEGORIAS = [
   { nombre: 'Inmuebles (excepto terrenos)', meses: 240, tasa: '5 %' },
   { nombre: 'Instalaciones, maquinaria, equipos y muebles', meses: 120, tasa: '10 %' },
   { nombre: 'Vehículos y equipo de transporte', meses: 60, tasa: '20 %' },
+  { nombre: 'Equipos de cómputo', meses: 36, tasa: '33 %' },
+  { nombre: 'Camiones de Reparto', meses: 36, tasa: '33 %' },
   { nombre: 'Equipos de cómputo y software', meses: 36, tasa: '33 %' },
 ];
 const PAGO = [
@@ -20,7 +22,7 @@ const PAGO = [
 /** Activos fijos (FIN006): alta, depreciación mensual en línea recta y valor en libros. */
 export default function FixedAssetsScreen() {
   const c = useCompany();
-  const [f, setF] = useState({ name: '', category: CATEGORIAS[3].nombre, acquisitionDate: today(), cost: 1000, residualValue: 0, usefulLifeMonths: 36, paymentAccount: '2.2.01' as (typeof PAGO)[number]['code'] });
+  const [f, setF] = useState({ name: '', category: CATEGORIAS[3].nombre, acquisitionDate: today(), cost: 1000, residualValue: 0, usefulLifeMonths: 36, paymentAccount: '2.2.01' as (typeof PAGO)[number]['code'], depreciationMethod: 'Lineal' as const, accountCode: '110500', depreciationArea: 'PCGA' });
   const [periodo, setPeriodo] = useState(today().slice(0, 7));
   const activos = c.data.fixedAssets;
   const totalCosto = round(activos.reduce((s, a) => s + a.cost, 0));
@@ -45,6 +47,9 @@ export default function FixedAssetsScreen() {
           <Field label="Costo (USD)" required><input type="number" min={0.01} step="0.01" required className={inputClass} value={f.cost} onChange={e => setF(v => ({ ...v, cost: Number(e.target.value) }))} /></Field>
           <Field label="Valor residual (USD)"><input type="number" min={0} step="0.01" className={inputClass} value={f.residualValue} onChange={e => setF(v => ({ ...v, residualValue: Number(e.target.value) }))} /></Field>
           <Field label="Vida útil (meses)"><input type="number" min={1} max={600} className={inputClass} value={f.usefulLifeMonths} onChange={e => setF(v => ({ ...v, usefulLifeMonths: Number(e.target.value) }))} /></Field>
+          <Field label="Método de amortización"><input readOnly className={`${inputClass} bg-gray-100`} value={f.depreciationMethod} /></Field>
+          <Field label="Cuenta contable"><input className={inputClass} value={f.accountCode} onChange={e => setF(v => ({ ...v, accountCode: e.target.value }))} /></Field>
+          <Field label="Área de amortización"><input className={inputClass} value={f.depreciationArea} onChange={e => setF(v => ({ ...v, depreciationArea: e.target.value }))} /></Field>
           <Field label="Forma de pago"><select className={inputClass} value={f.paymentAccount} onChange={e => setF(v => ({ ...v, paymentAccount: e.target.value as typeof f.paymentAccount }))}>{PAGO.map(p => <option key={p.code} value={p.code}>{p.label}</option>)}</select></Field>
         </div>
         <p className="text-[#555]">Depreciación mensual estimada: <strong>{usd(Math.max(0, (f.cost - f.residualValue) / Math.max(1, f.usefulLifeMonths)))}</strong></p>

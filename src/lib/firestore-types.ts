@@ -163,6 +163,7 @@ export interface UdfValues extends Entity { table: 'OCRD' | 'OITM'; key: string;
 export interface UdfDefinition { table: 'OCRD' | 'OITM'; field: string; label: string; type: 'texto' | 'numero' | 'lista'; options: string[] }
 export interface FixedAsset extends Entity {
   assetCode: string; name: string; category: string; acquisitionDate: string; cost: number; residualValue: number; usefulLifeMonths: number;
+  depreciationMethod: 'Lineal'; accountCode: string; depreciationArea: string;
   accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated'; journalEntryId: string;
 }
 export interface CompanyCollections { salesOrders: SalesDocument; purchaseOrders: PurchaseDocument; customers: Customer; vendors: Vendor; items: Item; warehouseStock: WarehouseStock; stockMovements: StockMovement; journalEntries: JournalEntry; chartOfAccounts: AccountingAccount; bankAccounts: BankAccount; bankTransactions: BankTransaction; employees: PayrollEmployee; payrollRuns: PayrollRun; sriDocuments: SRITaxDocument; productionOrders: ProductionOrder; boms: BillOfMaterials; missions: Mission; budgets: Budget; approvals: Approval; inventoryCounts: InventoryCount; fixedAssets: FixedAsset; landedCosts: LandedCost; opportunities: Opportunity; serviceContracts: ServiceContract; serviceCalls: ServiceCall; projects: Project; teamUsers: TeamUser; routings: Routing; binLocations: BinLocation; lots: Lot; udfValues: UdfValues; taxRuns: TaxRun }

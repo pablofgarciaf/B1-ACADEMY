@@ -54,7 +54,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   // Conteo físico de inventario con ajuste contable.
   z.object({ action: z.literal('inventoryCount'), data: z.object({ warehouseCode: code, date, blind: z.boolean(), lines: z.array(z.object({ itemCode: code, countedQuantity: money })).min(1).max(200) }) }),
   // Activos fijos y depreciación mensual en línea recta.
-  z.object({ action: z.literal('fixedAsset'), data: z.object({ name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']) }) }),
+  z.object({ action: z.literal('fixedAsset'), data: z.object({ name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']), depreciationMethod: z.literal('Lineal').default('Lineal'), accountCode: code.default('110500'), depreciationArea: text.min(2).default('PCGA') }) }),
   z.object({ action: z.literal('depreciate'), data: z.object({ period }) }),
   // Costos de importación prorrateados sobre una recepción de mercadería.
   z.object({ action: z.literal('landedCost'), data: z.object({ documentId: code, date, allocation: z.enum(['value', 'quantity']), paymentAccount: z.enum(['2.1.01', '1.1.01']), costs: z.array(z.object({ concept: text.min(2), amount: money.positive() })).min(1).max(10) }) }),

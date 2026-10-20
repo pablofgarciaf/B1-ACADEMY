@@ -70,3 +70,10 @@ test('proveedores: vínculo y retención se guardan en la ficha del proveedor',(
  assert.equal(missionOutcomeMatches(c.state,edit,'mod22-c2#5'),true);
  assert.equal(missionOutcomeMatches(c.state,edit,'mod22-c3#5'),true);
 });
+
+test('activos: el método, la cuenta y el área quedan en el activo y en su asiento',()=>{
+ const c=fixture();
+ const event=c.run('fixedAsset',{name:'Servidor HP ProLiant DL380',category:'Equipos de cómputo',acquisitionDate:'2026-01-01',cost:6000,residualValue:0,usefulLifeMonths:36,paymentAccount:'2.2.01',depreciationMethod:'Lineal',accountCode:'110500',depreciationArea:'PCGA'});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod3-c2#8'),true);
+ assert.equal(c.state.journalEntries.at(-1).lines.some(line=>line.accountCode==='110500'&&line.debit===6000),true);
+});
