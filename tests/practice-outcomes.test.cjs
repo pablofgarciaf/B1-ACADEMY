@@ -95,3 +95,14 @@ test('propiedad de datos: jefe, sucursal y propietario se validan y pasan al doc
  assert.equal(missionOutcomeMatches(c.state,factura,'mod4-c4#9'),true);
  assert.equal(c.state.salesOrders.at(-1).ownerCode,'E002');
 });
+
+test('UDO: tabla, campo y objeto maestro se guardan como configuración estructurada',()=>{
+ const c=fixture();
+ const conductores={codigo:'@OF_CONDUCTORES',nombre:'Conductores',descripcion:'Conductores de entrega',objectType:'Ningún objeto',codeEnabled:true,uniqueName:true,objectId:'',menuEnabled:false,menuModule:'Ventas',campos:[{nombre:'U_OF_NOMBRE',tipo:'Alfanumérico',longitud:50,descripcion:'Nombre completo del conductor'}],registros:[]};
+ const tabla=c.run('udoSave',{tables:[conductores]});
+ assert.equal(missionOutcomeMatches(c.state,tabla,'mod24-c1#5'),true);
+ assert.equal(missionOutcomeMatches(c.state,tabla,'mod24-c1#6'),true);
+ const vehiculos={codigo:'@OF_VEHICULOS',nombre:'Vehículos',descripcion:'',objectType:'Datos maestros',codeEnabled:true,uniqueName:true,objectId:'OFVEH',menuEnabled:true,menuModule:'Ventas',campos:[],registros:[]};
+ const objeto=c.run('udoSave',{tables:[conductores,vehiculos]});
+ assert.equal(missionOutcomeMatches(c.state,objeto,'mod24-c1#10'),true);
+});

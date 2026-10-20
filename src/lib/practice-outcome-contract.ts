@@ -52,11 +52,17 @@ function contract(key: string): PracticeOutcomeContract {
   if(screen.clave==='series') result.rows='docSeries';
   if(screen.clave==='monedas') { result.rows='currencies.tasas'; const target=guide?.campos?.find(f=>f.etiqueta==='Moneda del sistema'); if(target)result.requirements.push({label:'Moneda de la tasa',expected:target.valor,path:'moneda'}); }
   if(screen.clave==='cockpit') result.rows='cockpit.plantillas';
+  if(screen.clave==='udo') result.rows='udoTables';
   if(screen.clave==='precios') result.rows=(guide?.campos??[]).some(f=>['Código de cliente','Interlocutor origen'].includes(f.etiqueta)) ? 'specialPrices' : 'priceLists';
   if(screen.clave==='descuentos') result.rows='volumeDiscounts';
   for(const field of guide?.campos??[]) {
     const generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
-    const path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
+    let path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
+    if(screen.clave==='udo') {
+      const addingField=/agregar campo/i.test(guide?.title??'');
+      const custom:Record<string,string>=addingField?{'Tabla seleccionada':'codigo','Nombre del campo':'campos.nombre','Tipo':'campos.tipo','Longitud':'campos.longitud','Descripción':'campos.descripcion'}:{'Nombre de la tabla':'codigo','Descripción':'descripcion','Tipo de objeto':'objectType','Código habilitado':'codeEnabled','Nombre único':'uniqueName','ID del objeto':'objectId','Habilitar opción de menú':'menuEnabled','Módulo del menú':'menuModule'};
+      path=custom[field.etiqueta];
+    }
     if(!path) result.pending.push(`${field.etiqueta}: falta resultado equivalente verificable.`);
     else result.requirements.push({label:field.etiqueta,expected:field.valor,path,generated});
   }
