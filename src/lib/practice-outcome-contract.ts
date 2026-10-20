@@ -63,6 +63,15 @@ function contract(key: string): PracticeOutcomeContract {
   if(screen.clave==='udo') result.rows='udoTables';
   if(screen.clave==='precios') result.rows=(guide?.campos??[]).some(f=>['Código de cliente','Interlocutor origen'].includes(f.etiqueta)) ? 'specialPrices' : 'priceLists';
   if(screen.clave==='descuentos') result.rows='volumeDiscounts';
+  if(screen.clave==='costos') {
+    const title=plain(guide?.title ?? '');
+    if(/crear centro/.test(title)) result.rows='costCenters.centros';
+    else if(/reparto por/.test(title)) result.rows='costCenters.normas';
+    else if(/vincular cuenta|cuenta el[eé]ctrica/.test(title)) result.rows='costCenters.cuentas';
+    else if(/informe/.test(title)) result.rows='costCenters.informes';
+    else if(/dimensiones m[uú]ltiples|definir dos dimensiones/.test(title)) result.rows='costCenters.dimensiones';
+    else if(/inicializar el presupuesto/.test(title)) result.rows='costCenters.controlPresupuesto';
+  }
   for(const field of guide?.campos??[]) {
     let generated=GENERATED.has(`${screen.clave}:${field.etiqueta}`);
     let path=screen.clave==='documento'&&field.etiqueta==='IVA'&&field.valor.includes('%')?'lines.taxRate':generated ? (screen.clave==='cliente'||screen.clave==='proveedor'?'cardCode':screen.clave==='articulo'?'itemCode':screen.clave==='empleado'?'employeeCode':screen.clave==='documento'?'docNumber':'assetCode') : maps[screen.clave]?.get(plain(field.etiqueta));
@@ -73,6 +82,8 @@ function contract(key: string): PracticeOutcomeContract {
       if(field.etiqueta==='Serie') path='series';
       if(field.etiqueta==='Factura de referencia') path='baseDocumentId';
       if(field.etiqueta==='Código' && /crear factura a dell/i.test(guide?.title??'')) path='cardCode';
+      if(field.etiqueta==='Código' && /(solicitud|pedido de compra)/i.test(guide?.title??'')) path='lines.itemCode';
+      if(field.etiqueta==='Descripción' && /(solicitud|pedido de compra)/i.test(guide?.title??'')) path='lines.description';
       if(field.etiqueta==='Tipo de pedido' && /mrp/i.test(guide?.title??'')) path='docType';
       if(field.etiqueta==='Proveedor sugerido' && /mrp/i.test(guide?.title??'')) path='cardCode';
     }
@@ -86,6 +97,25 @@ function contract(key: string): PracticeOutcomeContract {
       const enteringRecord=/ingresar conductor/i.test(guide?.title??'');
       const linking=/vincular udt/i.test(guide?.title??'');
       const custom:Record<string,string>=addingField?{'Tabla seleccionada':'codigo','Nombre del campo':'campos.nombre','Tipo':'campos.tipo','Longitud':'campos.longitud','Descripción':'campos.descripcion'}:enteringRecord?{'Código':'registros.Código','Nombre':'registros.Nombre','U_OF_NOMBRE':'registros.U_OF_NOMBRE','U_OF_TURNO':'registros.U_OF_TURNO','U_OF_DISPONIBLE':'registros.U_OF_DISPONIBLE','U_OF_UBICACION':'registros.U_OF_UBICACION'}:linking?{'Objeto':'links.objeto','Tipo de campo':'links.tipo','Nombre del campo':'links.nombre','Validación':'links.validacion','Tabla vinculada':'links.tabla'}:{'Nombre de la tabla':'codigo','Descripción':'descripcion','Tipo de objeto':'objectType','Código habilitado':'codeEnabled','Nombre único':'uniqueName','ID del objeto':'objectId','Habilitar opción de menú':'menuEnabled','Módulo del menú':'menuModule'};
+      path=custom[field.etiqueta];
+    }
+    if(screen.clave==='costos') {
+      const title=plain(guide?.title ?? '');
+      const custom:Record<string,string>=/crear centro/.test(title)
+        ? {'Código':'codigo','Nombre':'nombre','Código de clasificación':'clasificacion'}
+        : /reparto por/.test(title)
+          ? {'Código':'codigo','Nombre':'nombre','Centro de coste':'centros.codigo','Porcentaje':'centros.porcentaje'}
+          : /vincular cuenta|cuenta el[eé]ctrica/.test(title)
+            ? {'Cuenta':'cuenta','Nombre':'nombre','Norma de reparto':'norma','Descripción':'descripcion','Dimensión 1':'dimension1','Norma 1':'norma1','Dimensión 2':'dimension2','Norma 2':'norma2'}
+            : /informe/.test(title)
+              ? {'Período':'periodo','Periodo':'periodo','Centro de coste':'centro','Centro de costo':'centro','Tipo de reporte':'tipo','Dimensión':'dimension','Gasos eléctricos':'gastosElectricos','Total gastos':'totalGastos','Escenario':'escenario','Cuenta':'cuenta','Presupuestado':'presupuestado','Real':'real','Desviación':'desviacion'}
+              : /definir dos dimensiones/.test(title)
+                ? {'Dimensión 1':'nombre','Centro de costo':'centros.codigo','Descripción':'centros.descripcion','Dimensión 2':'nombre2','Centro de costo (línea 2)':'centros2.codigo','Descripción (línea 2)':'centros2.descripcion'}
+                : /dimensiones m[uú]ltiples/.test(title)
+                  ? {'Módulo':'modulo','Habilitar dimensiones múltiples':'multipleDimensions','Número de dimensiones':'dimensionCount','Mostrar normas en':'display'}
+                  : /inicializar el presupuesto/.test(title)
+                    ? {'Inicialización del Presupuesto':'inicializado','Al superar presupuesto':'alSuperar','Ejercicio Fiscal':'ejercicio','Control por':'controlPor'}
+                    : {};
       path=custom[field.etiqueta];
     }
     if(!path) result.pending.push(`${field.etiqueta}: falta resultado equivalente verificable.`);
