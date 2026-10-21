@@ -40,6 +40,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('productionStageIssue'), data: z.object({ id: code, stage: z.number().int().positive(), componentCode: code, quantity: money.positive(), fromWarehouseCode: code, toWarehouseCode: code, date }) }),
   z.object({ action: z.literal('productionReceipt'), data: z.object({ id: code, date, quantity: money.positive().optional() }) }),
   z.object({ action: z.literal('mrp'), data: z.object({ vendorCode: code, date }) }),
+  z.object({ action: z.literal('mrpRun'), data: z.object({ scenario:text.min(2), startDate:date, endDate:date, level:text.min(2), warehouseCode:code.optional(), horizon:z.number().int().min(1).max(3650).default(30), includePurchases:z.boolean().default(true), includeProduction:z.boolean().default(true), includeSales:z.boolean().default(true), includeForecasts:z.boolean().default(false), excludeWarehouses:z.array(code).max(20).default([]) }).refine(d=>d.endDate>=d.startDate,'El fin no puede ser anterior al inicio.') }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
   z.object({ action: z.literal('budget'), data: z.object({ year: z.string().regex(/^20\d{2}$/), accountCode: code, months: z.array(money).length(12) }) }),
   // Cierre contable: un período cerrado no admite asientos; el cierre anual traslada el resultado.
@@ -95,6 +96,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('customerGroupSave'), data: z.object({ groups: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('itemGroupSave'), data: z.object({ groups: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('currenciesSave'), data: z.object({ monedaLocal: z.string(), monedaSistema: z.string(), monedas: z.array(z.unknown()), tasas: z.array(z.unknown()) }) }),
+  z.object({ action: z.literal('currencyRevalue'), data: z.object({ date, invoiceValue: money.positive(), originalRate: money.positive(), currentRate: money.positive() }) }),
   z.object({ action: z.literal('costCentersSave'), data: z.object({ centros: z.array(z.unknown()), normas: z.array(z.unknown()), config: z.record(z.unknown()).default({}) }) }),
   z.object({ action: z.literal('resourceSave'), data: z.object({ resources: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('udoSave'), data: z.object({ tables: z.array(z.unknown()) }) }),

@@ -40,7 +40,7 @@ const maps: Record<string, Map<string, string>> = {
   isd: entries({'Fecha':'date','Valor':'figures.amount','ISD':'figures.isd','Total':'figures.total'}),
 };
 const sources: Partial<Record<PantallaConectada['clave'], CollectionName | 'profile'>> = {
-  empresa:'profile',cliente:'customers',proveedor:'vendors',articulo:'items',empleado:'employees',nomina:'payrollRuns',activos:'fixedAssets',oportunidad:'opportunities',bom:'boms',produccion:'productionOrders',conteo:'inventoryCounts',presupuesto:'budgets',grupos:'profile',series:'profile',bancos:'bankTransactions',isd:'taxRuns',asiento:'journalEntries',mrp:'missions',importacion:'landedCosts',monedas:'profile',costos:'profile',recursos:'profile',udo:'profile',cockpit:'profile',precios:'profile',descuentos:'profile',cierre:'profile',transferencia:'stockMovements',sri:'sriDocuments',consultas:'profile',
+  empresa:'profile',cliente:'customers',proveedor:'vendors',articulo:'items',empleado:'employees',nomina:'payrollRuns',activos:'fixedAssets',oportunidad:'opportunities',bom:'boms',produccion:'productionOrders',conteo:'inventoryCounts',presupuesto:'budgets',grupos:'profile',series:'profile',bancos:'bankTransactions',isd:'taxRuns',asiento:'journalEntries',mrp:'profile',importacion:'landedCosts',monedas:'profile',costos:'profile',recursos:'profile',udo:'profile',cockpit:'profile',precios:'profile',descuentos:'profile',cierre:'profile',transferencia:'stockMovements',sri:'sriDocuments',consultas:'profile',
 };
 // Un depósito entre cuentas requiere un circuito de compensación separado; permanece pendiente hasta implementarlo.
 maps.bancos.set(plain('Fecha de corte'), 'date');
@@ -61,7 +61,9 @@ function contract(key: string): PracticeOutcomeContract {
   if(screen.clave==='grupos') result.rows=screen.tipo==='cliente'?'customerGroups':'itemGroups';
   if(screen.clave==='series') result.rows='docSeries';
   if(screen.clave==='monedas') { result.rows='currencies.tasas'; const target=guide?.campos?.find(f=>f.etiqueta==='Moneda del sistema'); if(target)result.requirements.push({label:'Moneda de la tasa',expected:target.valor,path:'moneda'}); }
+  if(screen.clave==='monedas'&&/diferencia de tipo de cambio/i.test(guide?.title??'')) result.rows='currencies.revaluations';
   if(screen.clave==='cockpit') result.rows='cockpit.plantillas';
+  if(screen.clave==='mrp'&&collection==='profile') result.rows='mrpRuns';
   if(screen.clave==='recursos') result.rows='resources';
   if(screen.clave==='udo') result.rows='udoTables';
   if(inventorySettings) result.rows='inventorySettings';
@@ -83,6 +85,7 @@ function contract(key: string): PracticeOutcomeContract {
     if(screen.clave==='bom'&&['Código','Descripción','Almacén'].includes(field.etiqueta)&&/agregar (componente|recurso)/i.test(guide?.title??'')) path=`components.${field.etiqueta==='Código'?'itemCode':field.etiqueta==='Descripción'?'description':'warehouseCode'}`;
     if(screen.clave==='bom'&&field.etiqueta==='Tiempo estimado') path='components.estimatedTime';
     if(screen.clave==='produccion'&&/enviar componentes etapa/i.test(guide?.title??'')){ const staged:Record<string,string>={'Etapa de ruta':'stageIssues.stage','Componente':'stageIssues.componentCode','Cantidad requerida':'components.quantity','Cantidad enviada':'stageIssues.quantity','Bodega origen':'stageIssues.fromWarehouseCode','Bodega destino':'stageIssues.toWarehouseCode'}; path=staged[field.etiqueta]??path; }
+    if(screen.clave==='mrp'&&collection==='profile'){ const mrpFields:Record<string,string>={'Escenario':'scenario','Fecha de inicio':'startDate','Fecha de fin':'endDate','Nivel':'level','Almacén':'warehouseCode','Horizonte de planificación':'horizon','Incluir compras':'includePurchases','Incluir producción':'includeProduction','Incluir ventas':'includeSales','Incluir pronósticos':'includeForecasts','Almacenes a excluir':'excludeWarehouses'}; path=mrpFields[field.etiqueta]??path; }
     // Los documentos conservan la serie elegida, el origen y el tipo que los generó.
     if(screen.clave==='documento') {
       if(field.etiqueta==='Serie') path='series';
@@ -103,6 +106,10 @@ function contract(key: string): PracticeOutcomeContract {
       const enteringRecord=/ingresar conductor/i.test(guide?.title??'');
       const linking=/vincular udt/i.test(guide?.title??'');
       const custom:Record<string,string>=addingField?{'Tabla seleccionada':'codigo','Nombre del campo':'campos.nombre','Tipo':'campos.tipo','Longitud':'campos.longitud','Descripción':'campos.descripcion'}:enteringRecord?{'Código':'registros.Código','Nombre':'registros.Nombre','U_OF_NOMBRE':'registros.U_OF_NOMBRE','U_OF_TURNO':'registros.U_OF_TURNO','U_OF_DISPONIBLE':'registros.U_OF_DISPONIBLE','U_OF_UBICACION':'registros.U_OF_UBICACION'}:linking?{'Objeto':'links.objeto','Tipo de campo':'links.tipo','Nombre del campo':'links.nombre','Validación':'links.validacion','Tabla vinculada':'links.tabla'}:{'Nombre de la tabla':'codigo','Descripción':'descripcion','Tipo de objeto':'objectType','Código habilitado':'codeEnabled','Nombre único':'uniqueName','ID del objeto':'objectId','Habilitar opción de menú':'menuEnabled','Módulo del menú':'menuModule'};
+      path=custom[field.etiqueta];
+    }
+    if(screen.clave==='monedas'&&/diferencia de tipo de cambio/i.test(guide?.title??'')) {
+      const custom:Record<string,string>={'Valor factura (USD)':'invoiceValue','Tipo de cambio original':'originalRate','Tipo de cambio actual':'currentRate','Diferencia a revalorizar':'difference'};
       path=custom[field.etiqueta];
     }
     if(screen.clave==='costos') {

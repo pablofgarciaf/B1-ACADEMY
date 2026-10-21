@@ -22,6 +22,7 @@ export default function MonedasScreen() {
   const [monedaSistema, setMonedaSistema] = useState('USD');
   const [monedas, setMonedas] = useState<Moneda[]>(MONEDAS_BASE);
   const [nuevaTasa, setNuevaTasa] = useState({ fecha: new Date().toISOString().slice(0, 10), moneda: 'EUR', tasa: 0.92 });
+  const [reval, setReval] = useState({ date: new Date().toISOString().slice(0,10), invoiceValue: 1150, originalRate: 0.92, currentRate: 0.88 });
 
   useEffect(() => {
     if (config) {
@@ -96,6 +97,13 @@ export default function MonedasScreen() {
             </div>
           </div>
         )}
+
+        <section className="border-t pt-3 space-y-2">
+          <h3 className="font-bold text-[#003366]">Revalorización por diferencia de cambio</h3>
+          <p className="text-sm text-[#555]">Registra la diferencia y su asiento contable en la empresa educativa.</p>
+          <div className="grid gap-2 sm:grid-cols-5"><Field label="Fecha"><input type="date" className={inputClass} value={reval.date} onChange={e=>setReval(v=>({...v,date:e.target.value}))}/></Field><Field label="Valor factura USD"><input type="number" min="0.01" step="0.01" className={inputClass} value={reval.invoiceValue} onChange={e=>setReval(v=>({...v,invoiceValue:Number(e.target.value)}))}/></Field><Field label="Tasa original"><input type="number" min="0.0001" step="0.0001" className={inputClass} value={reval.originalRate} onChange={e=>setReval(v=>({...v,originalRate:Number(e.target.value)}))}/></Field><Field label="Tasa actual"><input type="number" min="0.0001" step="0.0001" className={inputClass} value={reval.currentRate} onChange={e=>setReval(v=>({...v,currentRate:Number(e.target.value)}))}/></Field><div className="self-end"><button type="button" className={buttonClass} disabled={c.saving || reval.originalRate===reval.currentRate} onClick={()=>c.save({action:'currencyRevalue',data:reval})}>Revalorizar</button></div></div>
+          <p>Diferencia: <strong>{(reval.invoiceValue*Math.abs(reval.originalRate-reval.currentRate)).toFixed(2)} EUR</strong></p>
+        </section>
 
         <div className="pt-1">
           <button type="button" onClick={guardar} disabled={c.saving} className={`${buttonClass} font-bold`}>Guardar configuración de monedas</button>

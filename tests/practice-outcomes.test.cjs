@@ -67,6 +67,11 @@ test('la tasa pertenece a la moneda y fecha de la misión, no a cualquier divisa
  const c=fixture(),event=c.run('currenciesSave',{monedaLocal:'USD',monedaSistema:'EUR',monedas:[],tasas:[{moneda,fecha,tasa:0.92}]});assert.equal(missionOutcomeMatches(c.state,event,'mod20-c1#4'),expected);
  }
 });
+test('revalorización conserva tasas, diferencia y asiento contable',()=>{
+ const c=fixture(); const event=c.run('currencyRevalue',{date:'2026-07-31',invoiceValue:1150,originalRate:.92,currentRate:.88});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod20-c1#9'),true);
+ assert.equal(c.state.journalEntries.at(-1).source,'currency_revaluation');
+});
 test('la serie exige su rango completo en la misma fila',()=>{
  for(const [fin,expected] of [[5999,true],[6999,false]]){
  const c=fixture(),event=c.run('docSeriesSave',{series:[{docType:'facturas',inicio:5000,fin,nombre:'VENTAS NORTE',grupo:2,actual:5000}]});assert.equal(missionOutcomeMatches(c.state,event,'mod4-c1#5'),expected);

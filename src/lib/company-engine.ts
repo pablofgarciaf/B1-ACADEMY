@@ -461,6 +461,11 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const lines: DocumentLine[] = requirements.map(r => { const item = state.items.find(i => i.itemCode === r.itemCode); if (!item) throw new Error('Artículo no encontrado.'); return { itemCode: item.itemCode, description: item.name, quantity: r.shortage, unit: item.purchaseUnit, price: item.purchasePrice, discount: 0, taxRate: 15, warehouseCode: profile.warehouses[0].code }; });
       result = saveDocument('purchase', 'purchase_request', { date: command.data.date, dueDate: command.data.date, cardCode: command.data.vendorCode, reference: 'MRP', comments: 'Necesidades netas de pedidos abiertos', baseDocumentId: '', lines }); break;
     }
+    case 'mrpRun': {
+      const d=command.data; assert(d.endDate>=d.startDate,'Rango de planificación inválido.'); if(d.warehouseCode)assert(profile.warehouses.some(w=>w.code===d.warehouseCode),'Almacén inexistente.');
+      const rows=mrp(state).map(row=>({ ...row, projectedEnding: quantityRound(row.available+row.onOrder-row.required), recommendation:row.shortage>0?`Orden de compra ${row.shortage}`:'Cubierto' }));
+      const runs=((profile as unknown as Record<string,unknown>).mrpRuns as unknown[]|undefined)??[]; result=next('MRP',d.startDate); (profile as unknown as Record<string,unknown>).mrpRuns=[...runs,{id:result,...d,rows,executedAt:now}]; break;
+    }
     case 'budget': {
       const d = command.data;
       const account = state.chartOfAccounts.find(a => a.code === d.accountCode);
@@ -831,6 +836,15 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'itemGroupSave': { (profile as unknown as Record<string, unknown>).itemGroups = command.data.groups; result = 'grupos-articulos'; break; }
     case 'inventorySettingsSave': { profile.inventorySettings = command.data.settings; result = 'configuracion-conteo-guardada'; break; }
     case 'currenciesSave': { (profile as unknown as Record<string, unknown>).currencies = command.data; result = 'monedas-guardadas'; break; }
+    case 'currencyRevalue': {
+      const d=command.data; const difference=round(d.invoiceValue * Math.abs(d.originalRate-d.currentRate));
+      assert(difference>0,'Los tipos de cambio deben ser distintos para revalorizar.');
+      const loss=d.currentRate<d.originalRate;
+      const journalEntryId=post(d.date,`Revalorización por tipo de cambio ${d.originalRate} → ${d.currentRate}`,'currency_revaluation',`REV-${d.date}`,[loss?ledgerLine('6.03',difference):ledgerLine('4.02',0,difference),loss?ledgerLine('1.1.03',0,difference):ledgerLine('1.1.03',difference)]);
+      const currencies=((profile as unknown as Record<string,unknown>).currencies as Record<string,unknown>|undefined)??{};
+      const prior=(currencies.revaluations as unknown[]|undefined)??[];
+      (profile as unknown as Record<string,unknown>).currencies={...currencies,revaluations:[...prior,{invoiceValue:d.invoiceValue,originalRate:d.originalRate,currentRate:d.currentRate,difference,date:d.date,journalEntryId,kind:loss?'loss':'gain'}]}; result=journalEntryId; break;
+    }
     case 'costCentersSave': {
       const d = command.data;
       const centros = d.centros as { codigo?: string; nombre?: string; clasificacion?: string }[];

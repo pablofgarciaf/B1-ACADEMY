@@ -7,6 +7,7 @@ import { Field, inputClass, SaveButton, Screen, Table } from './FinixControls';
 export default function MRPScreen() {
   const c = useCompany();
   const [vendorCode, setVendor] = useState('');
+  const [run, setRun] = useState({scenario:'MRP_2026',startDate:today(),endDate:today(),level:'Almacén',warehouseCode:'01',horizon:30,includePurchases:true,includeProduction:true,includeSales:true,includeForecasts:false,excludeWarehouses:''});
   const [statusMsg, setStatusMsg] = useState<{ tipo: 'ok' | 'err'; texto: string } | null>(null);
   const rows = mrp(c.data);
   const pedidosAbiertos = c.data.salesOrders.filter(d => d.docType === 'order' && d.status === 'open');
@@ -33,6 +34,14 @@ export default function MRPScreen() {
   return (
     <Screen title="Asistente de Planificación MRP · Necesidades y Órdenes Netas">
       <div className="space-y-3">
+        <form className="rounded border border-gray-300 bg-white p-3 space-y-2" onSubmit={async event=>{event.preventDefault();try{await c.save({action:'mrpRun',data:{...run,excludeWarehouses:run.excludeWarehouses.split(',').map(value=>value.trim()).filter(Boolean)}});setStatusMsg({tipo:'ok',texto:'✓ Escenario MRP guardado con sus parámetros y resultados.'});}catch(error){setStatusMsg({tipo:'err',texto:error instanceof Error?error.message:'No se pudo ejecutar MRP'});}}}>
+          <h3 className="font-bold text-[#003366]">Ejecutar escenario MRP</h3><div className="grid gap-2 sm:grid-cols-3">
+            <Field label="Escenario"><input required className={inputClass} value={run.scenario} onChange={e=>setRun(v=>({...v,scenario:e.target.value}))}/></Field><Field label="Fecha de inicio"><input required type="date" className={inputClass} value={run.startDate} onChange={e=>setRun(v=>({...v,startDate:e.target.value}))}/></Field><Field label="Fecha de fin"><input required type="date" className={inputClass} value={run.endDate} onChange={e=>setRun(v=>({...v,endDate:e.target.value}))}/></Field>
+            <Field label="Nivel"><select className={inputClass} value={run.level} onChange={e=>setRun(v=>({...v,level:e.target.value}))}><option>Almacén</option><option>Empresa</option></select></Field><Field label="Almacén"><select className={inputClass} value={run.warehouseCode} onChange={e=>setRun(v=>({...v,warehouseCode:e.target.value}))}>{(c.data.profile?.warehouses??[]).map(w=><option key={w.code} value={w.code}>{w.code} · {w.name}</option>)}</select></Field><Field label="Horizonte (días)"><input type="number" min={1} className={inputClass} value={run.horizon} onChange={e=>setRun(v=>({...v,horizon:Number(e.target.value)}))}/></Field>
+            <Field label="Excluir almacenes"><input className={inputClass} value={run.excludeWarehouses} placeholder="02, 03" onChange={e=>setRun(v=>({...v,excludeWarehouses:e.target.value}))}/></Field>
+            {[['includePurchases','Incluir compras'],['includeProduction','Incluir producción'],['includeSales','Incluir ventas'],['includeForecasts','Incluir pronósticos']].map(([key,label])=><label key={key} className="flex items-center gap-2 text-sm"><input type="checkbox" checked={run[key as keyof typeof run] as boolean} onChange={e=>setRun(v=>({...v,[key]:e.target.checked}))}/>{label}</label>)}
+          </div><SaveButton label="Ejecutar MRP" disabled={c.saving}/>
+        </form>
         <p className="text-xs text-gray-600 leading-relaxed">
           Explosión de BOM de producción (Listas de Materiales) y demanda de pedidos de clientes abiertos. 
           Descuenta automáticamente el stock disponible en almacén y solicitudes/pedidos de compra abiertos para evitar compras duplicadas.
