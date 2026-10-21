@@ -5478,7 +5478,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Configure un artículo para ser gestionado por número de serie y valorado por ese mismo método. En la maestría de artículos, defina el código A00001 para la laptop Dell Latitude 3420, seleccione 'Serie' como método de gestión y 'Por número de serie' como método de valoración. Esta configuración es esencial para que SAP Business One asigne un costo específico a cada unidad y permita su trazabilidad individual desde la compra hasta la venta, cumpliendo con el requisito de inventario perpetuo.",
+        "script_text": "En SAP Business One, la valoración por número de serie permite asignar un costo específico a cada unidad. En esta práctica equivalente del simulador configuramos A00001, Laptop Dell Latitude 3420, con gestión por número de serie e inventario perpetuo, y usamos FIFO como método de valoración disponible. FIFO consume los costos más antiguos y no representa el costo específico de la serie seleccionada. Las series se asignan a las recepciones y salidas desde el control de lotes y series para conservar la trazabilidad individual.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear artículo serializado",
@@ -5487,7 +5487,7 @@
             "Ingrese el código A00001",
             "Describa el artículo como Laptop Dell Latitude 3420",
             "Seleccione Serie en Método de gestión",
-            "Elija Por número de serie en Método de valoración",
+            "Elija FIFO en Método de valoración del simulador; en SAP, compare esta opción con la valoración por número de serie",
             "Confirme que Inventario perpetuo esté activado"
           ],
           "campos": [
@@ -5508,8 +5508,8 @@
             },
             {
               "etiqueta": "Método de valoración",
-              "valor": "Por número de serie",
-              "pista": "Para costo específico por unidad"
+              "valor": "FIFO",
+              "pista": "El simulador consume costos antiguos; SAP permite adicionalmente costo específico por serie"
             },
             {
               "etiqueta": "Inventario perpetuo",

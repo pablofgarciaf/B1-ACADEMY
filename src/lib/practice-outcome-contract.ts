@@ -6,6 +6,9 @@ import { normalizar } from './practice-check';
 import { STRICT_PRACTICE_KEYS } from './strict-practice-keys';
 import { accountingPracticeContract, decorateAccountingOutcome } from './accounting-practice-outcomes';
 import { financePracticeContract, decorateFinanceOutcome } from './finance-practice-outcomes';
+import {finalPracticeContract} from './final-practice-outcomes';
+import { assetsPracticeContract, decorateAssetOutcome } from './assets-practice-outcomes';
+import { discountPracticeContract, decorateDiscountOutcome } from './discount-practice-outcomes';
 
 type RecordValue = Record<string, unknown>;
 export interface OutcomeRequirement { label: string; expected: string; path: string; generated?: boolean }
@@ -56,6 +59,9 @@ maps.bancos.delete(plain('Cuenta de origen'));
 maps.bancos.delete(plain('Cuenta destino'));
 const GENERATED = new Set(['cliente:Código','proveedor:Código','articulo:Código','empleado:ID','activos:Código de activo','documento:Número']);
 function contract(key: string): PracticeOutcomeContract {
+  const finalRule=finalPracticeContract(key);if(finalRule)return finalRule;
+  const assets=assetsPracticeContract(key);if(assets)return assets;
+  const discount=discountPracticeContract(key); if(discount)return discount;
   const finance=financePracticeContract(key); if(finance)return finance;
   const accounting=accountingPracticeContract(key); if(accounting)return accounting;
   const [classId, index] = key.split('#');
@@ -217,10 +223,10 @@ export function missionOutcomeMatches(state:CompanyState,event:CompanyAuditEvent
   return changes.some(change=>{
     const current=rule.collection==='profile'?state.profile:state[rule.collection].find(row=>row.id===change.id);
     if(!current)return false;
-    if(!rule.rows)return rowMatches(decorateFinanceOutcome(decorateAccountingOutcome(change.after,rule.collection,state),state),rule.requirements,state)&&rowMatches(decorateFinanceOutcome(decorateAccountingOutcome(current,rule.collection,state),state),rule.requirements,state);
+    if(!rule.rows)return rowMatches(decorateAssetOutcome(decorateFinanceOutcome(decorateAccountingOutcome(change.after,rule.collection,state),state),state),rule.requirements,state)&&rowMatches(decorateAssetOutcome(decorateFinanceOutcome(decorateAccountingOutcome(current,rule.collection,state),state),state),rule.requirements,state);
     const after=get(change.after,rule.rows),present=get(current,rule.rows),before=get(change.before,rule.rows);
     if(!Array.isArray(after)||!Array.isArray(present))return false;
-    const decorate=(profile:unknown,row:RecordValue)=>rule.rows==='cockpit.plantillas'?{...row,predeterminado:row.id===get(profile,'cockpit.plantillaActiva'),usuario:get(profile,'cockpit.usuario')}:rule.rows==='currencies.tasas'?{...row,monedaLocal:get(profile,'currencies.monedaLocal'),monedaSistema:get(profile,'currencies.monedaSistema')}:decorateFinanceOutcome(row,state,rule.rows);
-    return after.some(row=>rowMatches(decorate(change.after,row),rule.requirements,state)&&present.some(item=>JSON.stringify(item)===JSON.stringify(row)&&rowMatches(decorate(current,item),rule.requirements,state))&&(!Array.isArray(before)||!before.some(item=>JSON.stringify(decorate(change.before,item))===JSON.stringify(decorate(change.after,row)))));
+    const decorate=(profile:unknown,row:RecordValue)=>rule.rows==='cockpit.plantillas'?{...row,predeterminado:row.id===get(profile,'cockpit.plantillaActiva'),usuario:get(profile,'cockpit.usuario')}:rule.rows==='currencies.tasas'?{...row,monedaLocal:get(profile,'currencies.monedaLocal'),monedaSistema:get(profile,'currencies.monedaSistema')}:decorateDiscountOutcome(decorateFinanceOutcome(row,state,rule.rows),state,rule.rows);
+    return after.some(row=>rowMatches(decorateAssetOutcome(decorate(change.after,row),state),rule.requirements,state)&&present.some(item=>JSON.stringify(item)===JSON.stringify(row)&&rowMatches(decorateAssetOutcome(decorate(current,item),state),rule.requirements,state))&&(!Array.isArray(before)||!before.some(item=>JSON.stringify(decorate(change.before,item))===JSON.stringify(decorate(change.after,row)))));
   });
 }

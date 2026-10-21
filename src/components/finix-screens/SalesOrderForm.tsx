@@ -26,7 +26,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   // Ventas: precio de la lista del cliente y descuento por volumen, como los propone Finix ERP (se pueden editar).
   const sugerir = (itemCode: string, quantity: number): Partial<DocumentLine> => {
     if (purchase || data.baseDocumentId) return {};
-    const s = precioSugerido(c.data, data.cardCode, itemCode, quantity);
+    const s = precioSugerido(c.data, data.cardCode, itemCode, quantity, data.date);
     return s ? { price: s.precio, discount: s.descuento,taxRate:c.data.items.find(item=>item.itemCode===itemCode)?.salesTaxRate??15 } : {};
   };
   const listaCliente = !purchase && partner ? nombreLista(c.data, c.data.profile?.customerPriceLists?.[partner.cardCode] ?? 1) : '';
@@ -41,7 +41,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
           cardCode: doc.cardCode ?? '',
           reference: doc.reference ?? '',
           comments: doc.comments ?? '',
-          baseDocumentId: doc.baseDocumentId ?? '', series: doc.series ?? '',
+          baseDocumentId: doc.baseDocumentId ?? '', series: doc.series ?? '', assetValuationDate:'assetValuationDate' in doc?doc.assetValuationDate:undefined,
           lines: (doc.lines ?? []).map(l => ({
             itemType:l.itemType,expenseAccount:l.expenseAccount,binCode:l.binCode,
             itemCode: l.itemCode ?? '',
@@ -62,6 +62,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
         <Field label={purchase ? 'Proveedor' : 'Cliente'} required><div className="flex gap-1"><input className={inputClass} required readOnly value={partner ? partner.cardCode + ' · ' + partner.name : ''} /><button type="button" aria-label="Buscar socio" onClick={() => setPartnerLookup(true)} className={buttonClass}>[…]</button></div></Field>
         <Field label="Fecha" required><input required type="date" className={inputClass} value={data.date ?? today()} onChange={e => setData(d => ({ ...d, date: e.target.value }))} /></Field>
         <Field label="Vencimiento" required><input required type="date" className={inputClass} min={data.date || today()} value={data.dueDate ?? today()} onChange={e => setData(d => ({ ...d, dueDate: e.target.value }))} /></Field>
+        {docType==='vendor_invoice'&&<Field label="Fecha valoración activo (solo capitalización)"><input type="date" className={inputClass} value={data.assetValuationDate??''} onChange={e=>setData(d=>({...d,assetValuationDate:e.target.value||undefined}))}/><small>Con fecha, cada unidad se registra como activo fijo y no ingresa a existencias. Déjala vacía para mercadería.</small></Field>}
         <Field label="Referencia"><input className={inputClass} value={data.reference ?? ''} onChange={e => setData(d => ({ ...d, reference: e.target.value }))} /></Field>
         {(() => { const profile = c.data.profile as unknown as { docSeries?: { docType:string; nombre:string; prefijo:string; bloqueada?:boolean }[] } | null; const seriesType: Record<DocType,string> = { quotation:'facturas', order:'pedidos', delivery:'entregas', invoice:'facturas', credit_note:'nc_cliente', purchase_request:'compras', purchase_order:'compras', goods_receipt:'grpo', vendor_invoice:'factprov', debit_note:'nc_prov' }; const available=(profile?.docSeries??[]).filter(s=>s.docType===seriesType[docType]&&!s.bloqueada); return available.length ? <Field label="Serie"><select className={inputClass} value={data.series ?? ''} onChange={e=>setData(d=>({...d,series:e.target.value}))}><option value="">Predeterminada</option>{available.map(s=><option key={s.nombre} value={s.nombre}>{s.nombre}{s.prefijo?` (${s.prefijo})`:''}</option>)}</select></Field> : null; })()}
         {predecessor[docType] && <Field label="Copiar de documento base"><select className={inputClass} value={data.baseDocumentId ?? ''} onChange={e => { const source = sources.find(s => s.id === e.target.value); if (source) setData(d => ({ ...d, cardCode: source.cardCode, baseDocumentId: source.id, lines: source.lines.map(l => ({ ...l })) })); else setData(d => ({ ...d, baseDocumentId: '' })); }}><option value="">Sin documento base</option>{sources.map(s => <option key={s.id} value={s.id}>{s.docNumber} · {s.cardName}</option>)}</select></Field>}

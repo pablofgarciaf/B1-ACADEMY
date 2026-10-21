@@ -1,6 +1,7 @@
 import { comandosB1Center, comandoStock } from './b1-center-datos';
 import type { CompanyCommand } from './company-commands';
 import type { CompanyState } from './firestore-types';
+import {ensureTrainingFinanceCatalog} from './training-finance-catalog';
 
 type Reducer=(state:CompanyState,command:CompanyCommand,uid:string,email:string,now:string)=>{state:CompanyState;result:string};
 /** Build the complete academic scenario before the persistence transaction commits. */
@@ -8,6 +9,7 @@ export function prepareTraining(original:CompanyState,name:string|undefined,uid:
   if(original.profile?.trainingSetupVersion===1 || (original.profile?.companyName && (original.customers.length > 0 || original.items.length > 0))){
     const state = structuredClone(original);
     if (state.profile) state.profile.trainingSetupVersion = 1;
+    ensureTrainingFinanceCatalog(state,now,uid);
     return {state,result:uid};
   }
   let state=structuredClone(original);

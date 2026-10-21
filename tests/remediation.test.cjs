@@ -37,7 +37,8 @@ test('las veinte misiones comerciales tienen contrato explícito de operación o
 test('la inicialización académica es atómica, completa e idempotente',()=>{
   const c=company();c.run('initializeTraining',{});
   assert.equal(c.data.profile.trainingSetupVersion,1);assert.ok(c.data.items.length>=10);assert.equal(c.data.customers.length,5);
-  assert.ok(c.data.items.every(i=>c.data.warehouseStock.some(s=>s.itemCode===i.itemCode)));
+  assert.ok(c.data.items.filter(i=>i.type==='inventory').every(i=>c.data.warehouseStock.some(s=>s.itemCode===i.itemCode)));
+  assert.ok(c.data.items.filter(i=>i.type==='service').every(i=>!c.data.warehouseStock.some(s=>s.itemCode===i.itemCode)));
   const before=JSON.stringify(c.data);c.run('initializeTraining',{});assert.equal(JSON.stringify(c.data),before);
   assert.ok(camposConsulta(c.data,'mod-ventas-c2#2'));
 });
@@ -61,7 +62,7 @@ test('depreciación reduce resultado y no permite deuda huérfana ni reapertura 
 test('ubicaciones y UDF ejecutan efectos y rechazan exceso/tipos inválidos',()=>{
   const c=company();c.run('initializeTraining',{});
   c.run('binLocation',{warehouseCode:'01',binCode:'E1',description:'Estante',maxQuantity:10});
-  c.run('binMove',{warehouseCode:'01',itemCode:'A00001',fromBin:'',toBin:'E1',quantity:5});assert.equal(c.data.binLocations[0].contents[0].quantity,5);
+  c.run('binMove',{warehouseCode:'01',itemCode:'A00001',fromBin:'',toBin:'E1',quantity:5});assert.equal(c.data.binLocations.find(b=>b.binCode==='E1').contents[0].quantity,5);
   assert.throws(()=>c.run('binMove',{warehouseCode:'01',itemCode:'A00001',fromBin:'',toBin:'E1',quantity:10}),/capacidad/);
   c.run('udfDefine',{table:'OITM',field:'U_Color',label:'Color',type:'lista',options:['Azul'],remove:false});
   c.run('udfSet',{table:'OITM',key:'A00001',values:{U_Color:'Azul'}});assert.equal(c.data.udfValues[0].values.U_Color,'Azul');

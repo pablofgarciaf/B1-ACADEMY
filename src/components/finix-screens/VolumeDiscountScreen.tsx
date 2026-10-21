@@ -6,6 +6,7 @@ import { precioSugerido } from '@/lib/company-pricing';
 import { listasDePrecios } from '@/lib/company-pricing';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 import { ParaPensar } from './AnalysisBlocks';
+import DiscountOperationsPanel from './DiscountOperationsPanel';
 
 /** Descuentos por volumen (SAL008) + simulador de precio y margen. */
 export default function VolumeDiscountScreen() {
@@ -63,6 +64,7 @@ export default function VolumeDiscountScreen() {
           ]} />
         )}
       </section>
+      <DiscountOperationsPanel />
       <ParaPensar clave={`b1_descuentos_${c.data.profile?.uid ?? 'anon'}`} preguntas={[
         'Si das 10 % de descuento con un margen de 25 %, ¿cuánto más debes vender para ganar lo mismo que antes?',
         '¿Conviene un descuento por volumen o un descuento por pronto pago? ¿Qué problema resuelve cada uno?',

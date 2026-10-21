@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import type { TrainingOpeningRecord, AccountingPeriodRecord } from './training-accounting';
+import type { AssetModel, AssetLifecycleRecord } from './asset-lifecycle';
 
 export const money = z.number().finite().min(0).max(1e10);
 export const code = z.string().trim().min(1).max(80).regex(/^[\w.-]+$/);
@@ -19,10 +20,10 @@ export const lineSchema = z.object({ itemCode: code, description: text.min(1), q
 export type DocumentLine = z.infer<typeof lineSchema>;
 const documentSchema = base.extend({ openingBalance: z.boolean().optional(), docNumber: code, /** Serie configurada usada para numerar este documento. */ series: text.default(''), ownerCode: z.union([code, z.literal('')]).default(''), date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).max(80), subtotal: money, ice: money.optional(), tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
 export const salesSchema = documentSchema.extend({ docType: z.enum(salesTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
-export const purchaseSchema = documentSchema.extend({ docType: z.enum(purchaseTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
+export const purchaseSchema = documentSchema.extend({ docType: z.enum(purchaseTypes), assetValuationDate:date.optional() }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
 export type SalesDocument = z.infer<typeof salesSchema>;
 export type PurchaseDocument = z.infer<typeof purchaseSchema>;
-export type DocumentInput = Pick<SalesDocument, 'date' | 'dueDate' | 'cardCode' | 'reference' | 'comments' | 'baseDocumentId' | 'series' | 'lines'>;
+export type DocumentInput = Pick<SalesDocument, 'date' | 'dueDate' | 'cardCode' | 'reference' | 'comments' | 'baseDocumentId' | 'series' | 'lines'> & {assetValuationDate?:string};
 const partnerSchema = base.extend({ cardCode: code, name: text.min(2), ruc: z.string().regex(/^\d{10}(\d{3})?$/), email: z.union([z.string().email(), z.literal('')]), phone: text, address: text, city: text, contactName: text, currency: z.literal('USD'), paymentTermsDays: money.int().max(365), creditLimit: money, balance: z.number().finite(), active: z.boolean(), group: text, notes: text });
 export const customerSchema = partnerSchema.extend({ kind: z.enum(['customer', 'lead']), linkedVendorCode: code.optional(), ownerCode: z.union([code, z.literal('')]).default('') });
 export const vendorSchema = partnerSchema.extend({
@@ -86,16 +87,23 @@ export interface ProductionStageIssue { id: string; stage: number; componentCode
 export interface ProductionOrder extends Entity { orderNumber: string; receiptNumber?: string; date: string; dueDate: string; parentItemCode: string; description: string; priority: number; quantity: number; warehouseCode: string; bomCode: string; components: BillOfMaterials['components']; stageIssues: ProductionStageIssue[]; status: 'planned' | 'released' | 'in_progress' | 'closed'; issuedQuantity: number; receivedQuantity: number; unitCost: number; issueJournalEntryId: string; receiptJournalEntryId: string; journalEntryId: string; actualCost: number }
 export interface XPEvent { key: string; label: string; points: number; date: string; reference: string }
 export interface CompanyProfile extends Entity { usage?: 'training' | 'private'; trainingSetupVersion?: number; address?: string; phone?: string; regimen?: 'general' | 'rimpe-emprendedor' | 'rimpe-popular'; uid: string; email: string; companyName: string; ruc: string; currency: 'USD'; country: 'EC'; fiscalScenario: 'training-2024' | 'ecuador-2026'; sbu: number; incomeTaxRate: number; warehouses: { code: string; name: string }[]; xp: number; level: number; xpHistory: XPEvent[]; completedModules: string[]; lastAccess: string; sequences: Record<string, number>; documentCount: number;
+  finalOperations?: import('./final-operations').FinalOperationRecord[];
+  accountDeterminationRules?: import('./final-operations').AccountDeterminationRule[];
   /** Regla guardada para asignar fecha de stock a recuentos físicos. */
   seriesPermissions?: {userCode:string;group:number;access:'Total'|'Consulta'|'Ninguno';enabled:boolean;module:'Serie de numeración';permissionType:'Serie: Número de grupo'}[];
   stockRevaluations?: {id:string;itemCode:string;date:string;oldCost:number;newCost:number;reason:string;valueChange:number;journalEntryId:string}[];
   landedCostTypes?: {name:string;expenseAccount:string;updatesStock:boolean;allocation:'weight'|'value'|'quantity'|'none';updatesLastPurchase:boolean;fixedAmount:number}[];
   purchaseReturns?: {id:string;kind:'request'|'goods_return'|'credit_note'|'value_credit';date:string;vendorCode:string;baseDocumentId:string;itemCode:string;quantity:number;price:number;warehouseCode:string;reason:string;rma:string;withoutQuantity:boolean;subtotal:number;tax:number;total:number;journalEntryId:string}[];
+  assetModels?:AssetModel[];
+  assetLifecycle?:AssetLifecycleRecord[];
   inventorySettings?: { document: string; stockDateBy: 'creation' | 'posting'; default: boolean; appliesTo: string; exampleDate: string }[];
   trainingOpenings?: TrainingOpeningRecord[];
   accountingPeriods?: AccountingPeriodRecord[];
   budgetReports?: {id:string;scenario:string;period:string;accountCode:string;budget:number;actual:number;variance:number}[];
   priceUpdates?: {id:string;list:number;method:string;value:number}[];
+  discountGroups?: {code:string;description:string;validFrom:string;validTo:string;active:boolean;rules:{groupCode:string;itemGroup:string;itemCode:string;discount:number;paidQuantity:number;freeQuantity:number;maxFree:number;kind:'percent'|'free';description:string}[]}[];
+  customerDiscountGroups?: Record<string,{groupCode:string;excluded:boolean}>;
+  discountOperations?: ({id:string;kind:string;count:number}&Record<string,unknown>)[];
   accountingPeriodSetup?: {startDate:string;endDate:string;dueThrough:string;interval:'Mensual';extendedDue:boolean;januaryStart:boolean;differentCalendar:boolean};
   /** Períodos contables cerrados (AAAA-MM): no admiten asientos. */
   closedPeriods?: string[];
@@ -181,7 +189,8 @@ export interface UdfDefinition { table: 'OCRD' | 'OITM'; field: string; label: s
 export interface FixedAsset extends Entity {
   assetCode: string; name: string; category: string; acquisitionDate: string; cost: number; residualValue: number; usefulLifeMonths: number;
   depreciationMethod: 'Lineal'; accountCode: string; depreciationArea: string;
-  accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated'; journalEntryId: string;
+  accumulatedDepreciation: number; depreciatedPeriods: string[]; status: 'active' | 'fully_depreciated' | 'disposed'; journalEntryId: string;
+  sourceDocumentId?:string; sourceItemCode?:string; fiscalYear?:number; disposalDate?:string; disposalJournalEntryId?:string;
 }
 /** Registro persistente de un proceso bancario: extracto, conciliación, vía o lote de pagos. */
 export interface BankWorkflow extends Entity {

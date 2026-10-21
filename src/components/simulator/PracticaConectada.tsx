@@ -18,6 +18,7 @@ import { operationFor } from '@/lib/practice-contract';
 // Pantallas reales del Simulador integral (cargadas solo cuando la práctica las necesita).
 const cargando = () => <p className="p-4 text-[#4a5b70]">Abriendo la ventana…</p>;
 const P = {
+  operaciones:dynamic(()=>import('@/components/finix-screens/FinalOperationsScreen'),{loading:cargando}),
   revalorizacionStock: dynamic(() => import('@/components/finix-screens/StockRevaluationScreen'), { loading: cargando }),
   devolucionCompra: dynamic(() => import('@/components/finix-screens/PurchaseReturnScreen'), { loading: cargando }),
   ubicacion: dynamic(() => import('@/components/finix-screens/BinWeightScreen'), { loading: cargando }),
@@ -58,6 +59,7 @@ const P = {
 
 function Pantalla({ p }: { p: Exclude<PantallaConectada,{clave:'consultaAcademica'}> }) {
   switch (p.clave) {
+    case 'operaciones':return <P.operaciones initialMode={p.mode}/>;
     case 'cliente':   return <P.socio />;
     case 'proveedor': return <P.socio vendor />;
     case 'articulo':  return <P.articulo />;

@@ -27,7 +27,7 @@ export function precioDeLista(state: CompanyState, item: { itemCode?: string; pr
 
 export interface PrecioSugerido {
   lista: number; nombreLista: string; precio: number; descuento: number; reglaDescuento: string;
-  precioNeto: number; costo: number; margenPct: number | null; topeDescuento: number;
+  precioNeto: number; costo: number; margenPct: number | null; topeDescuento: number; unidadesGratuitas: number;
 }
 
 /** Costo unitario actual del artículo (promedio ponderado de sus almacenes o, si no hay stock, el precio de compra). */
@@ -56,12 +56,18 @@ export function precioSugerido(state: CompanyState, cardCode: string, itemCode: 
   const quantity=reglas.find(v=>v.kind!=='period');
   const periodNet=period?.automatic===false&&period.fixedPrice!==null&&period.fixedPrice!==undefined?period.fixedPrice:round(precio*(1-(period?.discount??0)/100));
   const combinedNet=round(periodNet*(1-(quantity?.discount??0)/100));
-  const descuento = Math.min(special?.discount ?? (precio>0?Math.round(1000000*(1-combinedNet/precio))/10000:0), item.maxDiscount);
+  const assignment=state.profile?.customerDiscountGroups?.[cardCode];
+  const group=assignment&&!assignment.excluded?state.profile?.discountGroups?.find(g=>g.code===assignment.groupCode&&g.active&&fecha>=g.validFrom&&fecha<=g.validTo):undefined;
+  const groupRule=group?.rules.find(r=>r.itemGroup===item.group);
+  const free=groupRule?.kind==='free'?Math.min(Math.floor(cantidad/(groupRule.paidQuantity+groupRule.freeQuantity))*groupRule.freeQuantity,groupRule.maxFree):0;
+  const groupDiscount=groupRule?.kind==='percent'?groupRule.discount:cantidad>0?100*free/cantidad:0;
+  const normalDiscount=precio>0?Math.round(1000000*(1-combinedNet/precio))/10000:0;
+  const descuento = special?Math.min(special.discount,item.maxDiscount):groupRule?groupDiscount:Math.min(normalDiscount,item.maxDiscount);
   const precioNeto = round(precio * (1 - descuento / 100));
   const costo = costoUnitario(state, itemCode);
   return {
     lista, nombreLista: nombreLista(state, lista), precio, descuento,
-    reglaDescuento: special ? `Precio especial del cliente: ${special.discount} %` : reglas[0] ? `Desde ${reglas[0].minQuantity} unidades: ${reglas[0].discount} %` : '',
-    precioNeto, costo, margenPct: precioNeto > 0 ? round(((precioNeto - costo) / precioNeto) * 100) : null, topeDescuento: item.maxDiscount,
+    reglaDescuento: special ? `Precio especial del cliente: ${special.discount} %` : groupRule?`${group?.code}: ${free?`${free} unidades gratuitas incluidas en la cantidad`:`${groupDiscount} %`}`:reglas[0] ? `Desde ${reglas[0].minQuantity} unidades: ${reglas[0].discount} %` : '',
+    precioNeto, costo, margenPct: precioNeto > 0 ? round(((precioNeto - costo) / precioNeto) * 100) : null, topeDescuento: Math.max(item.maxDiscount,groupDiscount), unidadesGratuitas:special?0:free,
   };
 }

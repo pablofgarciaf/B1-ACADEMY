@@ -1,14 +1,20 @@
 import { z } from 'zod';
+import {finalOperationCommands} from './final-operation-commands';
 import { code, date, text, money, lineSchema, salesTypes, purchaseTypes, customerSchema, vendorSchema, itemSchema, employeeSchema, journalLineSchema, sriInputSchema, bomInputSchema, payrollInputLine, costMethods } from './firestore-types';
 import { openingBalancesSchema } from './opening-balances-schema';
 import { partnerCommands } from './partner-commands';
+import { discountCommands } from './discount-commands';
 import { trainingOpeningSchema, accountingPeriodsSchema } from './training-accounting';
+import { assetLifecycleSchema } from './asset-lifecycle';
 
 const omitBase = { id: true, createdAt: true, updatedAt: true, createdBy: true } as const;
 const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con formato AAAA-MM.');
-const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), series: text.optional(), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
+const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), series: text.optional(), assetValuationDate:date.optional(), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
+  z.object({action:z.literal('assetLifecycle'),data:assetLifecycleSchema}),
+  ...finalOperationCommands,
   ...partnerCommands,
+  ...discountCommands,
   z.object({action:z.literal('seriesPermission'),data:z.object({userCode:code,group:z.number().int().min(1).max(10),access:z.enum(['Total','Consulta','Ninguno']),enabled:z.boolean()})}),
   z.object({action:z.literal('stockRevalue'),data:z.object({itemCode:code,date,newCost:money.positive(),reason:text.min(3)})}),
   z.object({action:z.literal('landedCostType'),data:z.object({name:text.min(2),expenseAccount:code,updatesStock:z.boolean(),allocation:z.enum(['weight','value','quantity','none']),updatesLastPurchase:z.boolean(),fixedAmount:money.default(0)})}),
@@ -70,7 +76,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('inventoryCount'), data: z.object({ warehouseCode: code, date, blind: z.boolean(), lines: z.array(z.object({ itemCode: code, countedQuantity: money, location: text.default(''), counter: text.default('') })).min(1).max(200) }) }),
   z.object({ action: z.literal('inventorySettingsSave'), data: z.object({ settings: z.array(z.object({ document: text.min(2), stockDateBy: z.enum(['creation','posting']), default: z.boolean(), appliesTo: text.min(2), exampleDate: date })).min(1).max(20) }) }),
   // Activos fijos y depreciación mensual en línea recta.
-  z.object({ action: z.literal('fixedAsset'), data: z.object({ name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']), depreciationMethod: z.literal('Lineal').default('Lineal'), accountCode: code.default('110500'), depreciationArea: text.min(2).default('PCGA') }) }),
+  z.object({ action: z.literal('fixedAsset'), data: z.object({ assetCode:code.optional(), name: text.min(2), category: text.min(2), acquisitionDate: date, cost: money.positive(), residualValue: money, usefulLifeMonths: z.number().int().min(1).max(600), paymentAccount: z.enum(['1.1.01', '2.1.01', '2.2.01']), depreciationMethod: z.literal('Lineal').default('Lineal'), accountCode: code.default('110500'), depreciationArea: text.min(2).default('PCGA') }) }),
   z.object({ action: z.literal('depreciate'), data: z.object({ period }) }),
   // Costos de importación prorrateados sobre una recepción de mercadería.
   z.object({ action: z.literal('landedCost'), data: z.object({ documentId: code, date, allocation: z.enum(['value', 'quantity']), paymentAccount: z.enum(['2.1.01', '1.1.01']), costs: z.array(z.object({ concept: text.min(2), amount: money.positive() })).min(1).max(10) }) }),

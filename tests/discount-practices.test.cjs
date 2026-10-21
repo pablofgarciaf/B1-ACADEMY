@@ -1,0 +1,65 @@
+const {test}=require('node:test');
+const assert=require('node:assert/strict');
+require('./register.cjs');
+const {applyCommand}=require('../src/lib/company-engine.ts');
+const {commandSchema}=require('../src/lib/company-commands.ts');
+const {emptyCompany}=require('../src/lib/firestore-types.ts');
+const {auditChanges}=require('../src/lib/company-audit.ts');
+const {missionOutcomeMatches}=require('../src/lib/practice-outcome-contract.ts');
+const {precioSugerido}=require('../src/lib/company-pricing.ts');
+function fixture(){let s=emptyCompany();const run=(action,data)=>{const before=s,out=applyCommand(s,commandSchema.parse({action,data}),'synthetic-student','synthetic@example.test','2026-10-21T12:00:00Z');s=out.state;return {action,result:out.result,changes:auditChanges(before,s)};};run('initializeTraining',{});return {run,get state(){return s;}};}
+const group={code:'DESC-MINORISTA',description:'Descuentos para clientes minoristas',validFrom:'2026-01-01',validTo:'2026-12-31',active:true};
+const special=(cardCode,itemCode,discount=5)=>({id:'',cardCode,itemCode,discount,validFrom:'2026-09-01',validTo:'2026-11-30',referenceList:1,active:true,remove:false});
+test('copiar período/cantidad conserva porcentajes y recalcula el importe para el artículo destino',()=>{
+ const c=fixture();c.run('priceListSave',{code:'LPVENTAS',name:'Lista de precios de venta',base:1,factor:1});
+ const d={id:'',list:4,itemCode:'A00004',discount:5,minQuantity:1,maxQuantity:null,validFrom:'2026-09-01',validTo:'2026-09-30',active:true,kind:'period',automatic:false,fixedPrice:42.75,remove:false};
+ c.run('volumeDiscount',d);c.run('volumeDiscount',{...d,kind:'quantity',discount:3,minQuantity:4,automatic:true,fixedPrice:null});
+ const event=c.run('copyVolumeDiscounts',{list:4,sourceItemCode:'A00004',targetItemCodes:['A00005'],filter:'Grupo de unidades de medida',overwrite:false});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod13-c2#9'),true);
+ assert.equal(c.state.profile.volumeDiscounts.find(r=>r.itemCode==='A00005'&&r.kind==='period').fixedPrice,19);
+ c.run('customerPriceList',{cardCode:'C20000',list:4});
+ assert.equal(precioSugerido(c.state,'C20000','A00005',4,'2026-09-15').precioNeto,18.43);
+ assert.throws(()=>c.run('copyVolumeDiscounts',{list:4,sourceItemCode:'A00004',targetItemCodes:['A00005'],filter:'Grupo de unidades de medida',overwrite:false}),/existen ya/);
+ const tampered=structuredClone(c.state);tampered.profile.volumeDiscounts.find(r=>r.itemCode==='A00005').discount=1;
+ assert.equal(missionOutcomeMatches(tampered,event,'mod13-c2#9'),false);
+});
+test('grupo porcentual, gratuidad y asignación de cliente afectan la propuesta y la factura real',()=>{
+ const c=fixture(),g=c.run('discountGroup',group);assert.equal(missionOutcomeMatches(c.state,g,'mod13-c3#5'),true);
+ const r=c.run('discountGroupRule',{groupCode:group.code,itemGroup:'IMPRESORAS',itemCode:'A00009',discount:10,kind:'percent',description:'Impresora Multifunción Epson'});assert.equal(missionOutcomeMatches(c.state,r,'mod13-c3#6'),true);
+ const promo=c.run('discountGroupRule',{groupCode:group.code,itemGroup:'MEMORIAS',itemCode:'A00008',discount:0,kind:'free',paidQuantity:2,freeQuantity:1,maxFree:4,description:'Memoria RAM 16GB DDR4'});assert.equal(missionOutcomeMatches(c.state,promo,'mod13-c3#7'),true);
+ c.run('priceListSave',{code:'MINORISTA',name:'Precio Minorista',base:1,factor:1});
+ const a=c.run('customerDiscountGroup',{cardCode:'C20000',customerGroup:'CLIENTES-MINORISTAS',groupCode:group.code,list:4,excluded:false});assert.equal(missionOutcomeMatches(c.state,a,'mod13-c3#8'),true);
+ assert.equal(precioSugerido(c.state,'C20000','A00009',1,'2026-09-01').precioNeto,198);
+ const price=precioSugerido(c.state,'C20000','A00008',3,'2026-09-01');assert.equal(price.precioNeto,50);assert.equal(price.unidadesGratuitas,1);
+ assert.equal(precioSugerido(c.state,'C20000','A00008',30,'2026-09-01').unidadesGratuitas,4);
+ const before=c.state.warehouseStock.find(s=>s.itemCode==='A00008'&&s.warehouseCode==='01').quantity;
+ const invoice=c.run('sales',{docType:'invoice',document:{date:'2026-09-01',dueDate:'2026-09-01',cardCode:'C20000',reference:'Promoción',comments:'Incluye 1 gratis',baseDocumentId:'',lines:[{itemCode:'A00008',description:'Memoria RAM 16GB DDR4',quantity:3,unit:'UND',price:price.precio,discount:price.descuento,taxRate:15,warehouseCode:'01'}]}});
+ assert.equal(c.state.salesOrders.find(d=>d.id===invoice.result).subtotal,150);
+ assert.equal(c.state.warehouseStock.find(s=>s.itemCode==='A00008'&&s.warehouseCode==='01').quantity,before-3);
+ c.run('customerDiscountGroup',{cardCode:'C20000',customerGroup:'CLIENTES-MINORISTAS',groupCode:group.code,list:4,excluded:true});
+ assert.equal(precioSugerido(c.state,'C20000','A00008',3,'2026-09-01').precioNeto,75);
+ assert.equal(missionOutcomeMatches(c.state,a,'mod13-c3#8'),false);
+ assert.throws(()=>c.run('sales',{docType:'invoice',document:{date:'2026-09-02',dueDate:'2026-09-02',cardCode:'C20000',reference:'Sin autorización',comments:'',baseDocumentId:'',lines:[{itemCode:'A00008',description:'Memoria',quantity:3,unit:'UND',price:75,discount:price.descuento,taxRate:15,warehouseCode:'01'}]}}),/Descuento excedido/);
+ assert.equal(precioSugerido(c.state,'C20001','A00008',3,'2026-09-01').precioNeto,75);
+});
+test('actualización masiva modifica solo los precios del segmento y conserva los resultados comprobables',()=>{
+ const c=fixture();c.run('specialPrice',special('C20000','A00001',5));c.run('specialPrice',special('C20001','A00001',5));
+ c.run('partnerUpdate',{partnerType:'customer',cardCode:'C20000',changes:{group:'Distribuidores'}});
+ const e=c.run('specialPriceBatch',{group:'Distribuidores',percent:-5,validFrom:'2026-08-01',validTo:'2026-08-31'});
+ assert.equal(missionOutcomeMatches(c.state,e,'mod13-c4#7'),true);
+ assert.equal(c.state.profile.specialPrices.find(r=>r.cardCode==='C20000').discount,9.75);
+ assert.equal(c.state.profile.specialPrices.find(r=>r.cardCode==='C20001').discount,5);
+ assert.equal(precioSugerido(c.state,'C20000','A00001',1,'2026-08-01').precioNeto,767.13);
+ assert.throws(()=>c.run('specialPriceBatch',{group:'Distribuidores',percent:-50,validFrom:'2026-08-01',validTo:'2026-08-31'}),/descuento máximo/);
+ assert.throws(()=>c.run('specialPriceBatch',{group:'Grupo inexistente',percent:-5,validFrom:'2026-08-01',validTo:'2026-08-31'}),/no tiene/);
+});
+test('sustituir precio especial exige origen real y solo reemplaza destinos existentes',()=>{
+ const c=fixture(),item=c.state.items.find(i=>i.itemCode==='A00002');c.run('itemUpdate',{...item,maxDiscount:20});
+ c.run('specialPrice',special('C20000','A00002',15));c.run('specialPrice',special('C20001','A00002',5));c.run('specialPrice',special('C20002','A00002',5));
+ const e=c.run('copySpecialPrices',{sourceCardCode:'C20000',itemCode:'A00002',targetCardCodes:['C20001','C20002'],replaceExisting:true});
+ assert.equal(missionOutcomeMatches(c.state,e,'mod13-c4#8'),true);
+ assert.equal(precioSugerido(c.state,'C20001','A00002',1,'2026-10-01').precioNeto,756.5);
+ assert.equal(c.state.profile.specialPrices.filter(r=>r.cardCode!=='C20000').every(r=>r.discount===15),true);
+ assert.throws(()=>c.run('copySpecialPrices',{sourceCardCode:'C20000',itemCode:'A00002',targetCardCodes:['C20003'],replaceExisting:true}),/no encuentra/);
+ const changed=structuredClone(c.state);changed.profile.specialPrices.find(r=>r.cardCode==='C20002').discount=1;assert.equal(missionOutcomeMatches(changed,e,'mod13-c4#8'),false);
+});

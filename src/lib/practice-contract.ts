@@ -2,6 +2,9 @@ import type { PantallaConectada } from './practica-conectada';
 import type { CompanyAuditEvent } from './company-audit';
 
 export function operationFor(p: PantallaConectada): string[] {
+  if(p.clave==='operaciones')return p.mode?[p.mode]:['procurementQuotes','costAdjustment','cardSettlement','vendorReconciliation','vendorAging','accountDetermination','accountingPreview'];
+  if(p.clave==='activos')return ['fixedAsset','depreciate','assetLifecycle'];
+  if(p.clave==='descuentos')return ['volumeDiscount','discountGroup','discountGroupRule','customerDiscountGroup','copyVolumeDiscounts','specialPriceBatch','copySpecialPrices'];
   if(p.clave==='series')return ['docSeriesSave','seriesPermission'];
   if(p.clave==='revalorizacionStock')return ['stockRevalue'];
   if(p.clave==='importacion')return ['landedCost','landedCostType'];

@@ -10,7 +10,13 @@ import { SUPERCÍAS_CATALOG } from './supercias-catalog';
 import { isPrivateCompany } from './company-scope';
 import { prepareOpeningBalances } from './opening-balances';
 import { applyPartnerCommand } from './partner-commands';
+import {lineSchema} from './firestore-types';
 import { applyTrainingOpening } from './training-accounting';
+import { ensureTrainingFinanceCatalog } from './training-finance-catalog';
+import { applyAssetLifecycle, capitalAssetCode } from './asset-lifecycle';
+import {applyFinalOperation,documentAccountRule} from './final-operations';
+import { applyDiscountCommand } from './discount-engine';
+import { precioSugerido } from './company-pricing';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
@@ -73,6 +79,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     state.bankAccounts = ['Banco Pichincha', 'Banco del Pacífico', 'Banco Guayaquil', 'Produbanco'].map((bankName, i) => ({ ...meta(`BAN-${i + 1}`), name: `${bankName} · Cta. corriente`, bankName, accountNumber: `2100${String(i + 1).padStart(6, '0')}`, currency: 'USD', ledgerAccount: '1.1.02', openingBalance: 0, balance: 0, active: true }));
   }
   const profile = state.profile;
+  ensureTrainingFinanceCatalog(state,now,uid);
   if(command.action==='partnerUpdate'||command.action==='partnerLink')return{state,result:applyPartnerCommand(state,command,now)};
   const subsidiaryAccount = (code: string) => ['1.1.03', '1.1.04', '1.1.05', '1.1.07', '1.2.01', '1.2.02', '2.1.01', '1010205', '1010206', '1010209', '10103', '10201', '20103'].some(prefix => code.startsWith(prefix));
   const bankLedgerAccount = (code: string) => code === '1.1.02' || ['1010103','1010104','1010105','1010106'].includes(code) || state.bankAccounts.some(b => b.ledgerAccount === code);
@@ -107,12 +114,12 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     assert(lines.length >= 2 && debit > 0 && debit === credit, 'El asiento debe cuadrar al centavo y tener importe positivo.');
     for (const line of lines) { assert(state.chartOfAccounts.some(a => a.code === line.accountCode && a.active && a.postable), `Cuenta no imputable: ${line.accountCode}.`); assert(line.debit >= 0 && line.credit >= 0 && !(line.debit && line.credit), 'Una línea debe tener debe o haber, no ambos.'); }
     const control=((profile as unknown as {costCenters?:{config?:{controlPresupuesto?:{inicializado:boolean;alSuperar:string;ejercicio:string;controlPor:string}[]}}}).costCenters?.config?.controlPresupuesto??[]).find(c=>c.inicializado&&c.ejercicio===date.slice(0,4));
-    if(control?.alSuperar==='Bloquear'&&source==='manual')for(const accountCode of new Set(lines.map(l=>l.accountCode))){
+    if(control?.alSuperar==='Bloquear'&&!['closing','reversal'].includes(source))for(const accountCode of new Set(lines.map(l=>l.accountCode))){
       const budget=state.budgets.find(b=>b.year===date.slice(0,4)&&b.accountCode===accountCode);if(!budget)continue;
       const month=Number(date.slice(5,7))-1;const yearly=control.controlPor==='Anual';
       const allowed=yearly?budget.months.reduce((s,n)=>s+n,0):budget.months[month];
       const existing=state.journalEntries.filter(j=>j.date.startsWith(yearly?date.slice(0,4):date.slice(0,7))).flatMap(j=>j.lines).filter(l=>l.accountCode===accountCode).reduce((s,l)=>s+l.debit-l.credit,0);
-      const change=lines.filter(l=>l.accountCode===accountCode).reduce((s,l)=>s+l.debit-l.credit,0);assert(round(existing+change)<=allowed,'La operación supera el presupuesto configurado.');
+      const change=lines.filter(l=>l.accountCode===accountCode).reduce((s,l)=>s+l.debit-l.credit,0);if(change>0)assert(round(existing+change)<=allowed,'La operación supera el presupuesto configurado.');
     }
     const id = next('AS', date);
     state.journalEntries.push({ ...meta(id), entryNumber: id, date, dueDate: date, period: date.slice(0, 7), memo, reference, source, lines, totalDebit: debit, totalCredit: credit, reversalOf: '', reversedBy: '' });
@@ -155,10 +162,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     if (data.baseDocumentId) {
       assert(base && base.docType === predecessor[docType] && base.cardCode === partner.cardCode, 'Documento base incompatible.');
       assert(!records.some(d => d.baseDocumentId === data.baseDocumentId && d.docType === docType), 'El documento base ya fue copiado a este tipo.');
-      if (base && docType !== 'debit_note') assert(JSON.stringify(base.lines) === JSON.stringify(data.lines), 'La copia debe mantener las líneas completas del documento base.');
+      if (base && docType !== 'debit_note') assert(JSON.stringify(base.lines.map(l=>lineSchema.parse(l))) === JSON.stringify(data.lines.map(l=>lineSchema.parse(l))), 'La copia debe mantener las líneas completas del documento base.');
     }
     if (docType === 'credit_note') assert(base, 'La nota de crédito requiere una factura base.');
-    for (const line of data.lines) { const item = state.items.find(i => i.itemCode === line.itemCode && i.active); assert(item, 'Artículo inexistente o inactivo.'); if (sales && item) assert(line.discount <= item.maxDiscount, `Descuento excedido: ${line.itemCode}.`); }
+    for (const line of data.lines) { const item = state.items.find(i => i.itemCode === line.itemCode && i.active); assert(item, 'Artículo inexistente o inactivo.'); if (sales && item) assert(line.discount <= Math.max(item.maxDiscount,precioSugerido(state,data.cardCode,line.itemCode,line.quantity,data.date)?.topeDescuento??0), `Descuento excedido: ${line.itemCode}.`); }
     // Autorización: sobre el monto de la regla, el documento queda retenido como borrador pendiente.
     const regla = (state.profile?.approvalRules ?? []).find(r => r.active && r.docType === docType);
     const preTotal = totals(data.lines).total;
@@ -183,12 +190,17 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     assert(!records.some(doc=>doc.id===id), 'El número de documento ya existe en esta serie.');
     const amounts = totals(data.lines); assert(amounts.total > 0, 'El total debe ser positivo.');
     let journalEntryId = ''; let inventoryCost = 0;
-    const groupAccounts=(itemCode:string)=>{const item=state.items.find(i=>i.itemCode===itemCode);return ((profile as unknown as {itemGroups?:{codigo:string;inventoryAccount?:string;incomeAccount?:string;costAccount?:string}[]}).itemGroups??[]).find(g=>g.codigo===item?.group);};
+    const groupAccounts=(itemCode:string)=>{const item=state.items.find(i=>i.itemCode===itemCode);return (sales?documentAccountRule(state,data.cardCode,itemCode):undefined)??((profile as unknown as {itemGroups?:{codigo:string;inventoryAccount?:string;incomeAccount?:string;costAccount?:string}[]}).itemGroups??[]).find(g=>g.codigo===item?.group);};
+    const documentRules=sales?data.lines.map(l=>documentAccountRule(state,data.cardCode,l.itemCode)).filter(r=>r!==undefined):[];
+    const receivableAccount=documentRules[0]?.receivableAccount??'1.1.03',taxAccount=documentRules[0]?.taxAccount??'2.1.02';
+    assert(documentRules.every(r=>r.receivableAccount===receivableAccount&&r.taxAccount===taxAccount),'Divide la factura: las líneas requieren cuentas de cliente o IVA distintas.');
     const inventoryAccount = (itemCode: string) => groupAccounts(itemCode)?.inventoryAccount|| (state.boms.some(b => b.parentItemCode === itemCode && b.type === 'production') ? '1.1.07' : '1.1.05');
     const inventoryByAccount = new Map<string, number>();
     const costByAccount=new Map<string,number>();
     const affectsOut = docType === 'delivery' || (docType === 'invoice' && !base);
-    const affectsIn = docType === 'goods_receipt' || (docType === 'vendor_invoice' && !base);
+    const capitalizing=!!data.assetValuationDate;
+    if(capitalizing){assert(docType==='vendor_invoice'&&!base,'La capitalización requiere una factura directa de proveedor.');assert(data.assetValuationDate!<=data.date,'La valoración del activo no puede ser posterior a la factura.');assert(data.lines.every(l=>Number.isInteger(l.quantity)&&l.quantity<=200&&state.items.some(i=>i.itemCode===l.itemCode&&i.type==='inventory')),'La capitalización requiere unidades enteras de artículos (máximo 200 por línea).');}
+    const affectsIn = !capitalizing&&(docType === 'goods_receipt' || (docType === 'vendor_invoice' && !base));
     if (affectsOut || affectsIn) for (const line of data.lines) {
       if (state.items.find(i => i.itemCode === line.itemCode)?.type !== 'inventory') continue;
       const cost = move(line.itemCode, line.warehouseCode, line.quantity * (affectsOut ? -1 : 1), line.price * (1 - line.discount / 100) + (affectsIn ? (line.ice ?? 0) / line.quantity : 0), data.date, id);
@@ -200,11 +212,11 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     inventoryCost = round(inventoryCost);
     const lines: JournalLine[] = [];
     if (affectsOut && inventoryCost) { costByAccount.forEach((cost,account)=>lines.push(ledgerLine(account,cost))); inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, 0, cost))); }
-    if (docType === 'invoice') { partner.balance = round(partner.balance + amounts.total);const revenue=new Map<string,number>();for(const line of data.lines){const account=groupAccounts(line.itemCode)?.incomeAccount||'4.01';revenue.set(account,round((revenue.get(account)??0)+totals([line]).subtotal));}revenue.forEach((amount,account)=>lines.push(ledgerLine(account,0,amount))); lines.push(ledgerLine('1.1.03', amounts.total), ledgerLine('2.1.02', 0, amounts.tax), ledgerLine('2.1.11', 0, amounts.ice)); }
+    if (docType === 'invoice') { partner.balance = round(partner.balance + amounts.total);const revenue=new Map<string,number>();for(const line of data.lines){const account=groupAccounts(line.itemCode)?.incomeAccount||'4.01';revenue.set(account,round((revenue.get(account)??0)+totals([line]).subtotal));}revenue.forEach((amount,account)=>lines.push(ledgerLine(account,0,amount))); lines.push(ledgerLine(receivableAccount, amounts.total), ledgerLine(taxAccount, 0, amounts.tax), ledgerLine('2.1.11', 0, amounts.ice)); }
     if (docType === 'credit_note' && base) {
       partner.balance = round(partner.balance - amounts.total);
       const revenue=new Map<string,number>();for(const line of data.lines){const account=groupAccounts(line.itemCode)?.incomeAccount||'4.01';revenue.set(account,round((revenue.get(account)??0)+totals([line]).subtotal));}revenue.forEach((amount,account)=>lines.push(ledgerLine(account,amount)));
-      lines.push(ledgerLine('2.1.02', amounts.tax), ledgerLine('2.1.11', amounts.ice), ledgerLine('1.1.03', 0, amounts.total));
+      lines.push(ledgerLine(taxAccount, amounts.tax), ledgerLine('2.1.11', amounts.ice), ledgerLine(receivableAccount, 0, amounts.total));
       const delivery = state.salesOrders.find(d => d.id === base.baseDocumentId);
       const source = delivery?.id ?? base.id;
       let returned = 0;
@@ -215,7 +227,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       partner.balance = round(partner.balance + amounts.total);
       const received = base?.docType === 'goods_receipt' ? round(state.stockMovements.filter(m => m.reference === base.id).reduce((s, m) => s + m.value, 0)) : inventoryCost;
       if (received) { if (base?.docType === 'goods_receipt') lines.push(ledgerLine('2.1.06', received)); else inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, cost))); }
-      const other = round(amounts.subtotal + amounts.ice - received);
+      const capitalCost=capitalizing?round(amounts.subtotal+amounts.ice):0;
+      if(capitalCost)lines.push(ledgerLine('110500',capitalCost));
+      const other = round(amounts.subtotal + amounts.ice - received-capitalCost);
       const services = data.lines.filter(line=>line.itemType==='service'||line.itemType==='labor');
       let serviceExpense=0;
       for(const line of services){const amount=totals([line]).subtotal;const account=line.expenseAccount??'6.03';assert(state.chartOfAccounts.some(a=>a.code===account&&a.active&&a.postable&&['cost','expense'].includes(a.category)),'Selecciona una cuenta de gasto imputable para el servicio.');lines.push(ledgerLine(account,amount));serviceExpense=round(serviceExpense+amount);}
@@ -224,6 +238,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       lines.push(ledgerLine('1.1.06', amounts.tax), ledgerLine('2.1.01', 0, amounts.total));
     }
     if (lines.length) journalEntryId = post(data.date, documentLabels[docType], kind, id, lines);
+    if(capitalizing)for(const line of data.lines){const item=state.items.find(i=>i.itemCode===line.itemCode)!;const unitCost=round((totals([line]).subtotal+(line.ice??0))/line.quantity);let assigned=0;for(let unit=0;unit<line.quantity;unit++){const assetCode=capitalAssetCode(state,item.itemCode,()=>next('AF',data.assetValuationDate));const cost=unit===line.quantity-1?round(totals([line]).subtotal+(line.ice??0)-assigned):unitCost;assigned=round(assigned+cost);state.fixedAssets.push({...meta(assetCode),assetCode,name:line.description,category:'Equipos de cómputo',acquisitionDate:data.assetValuationDate!,cost,residualValue:0,usefulLifeMonths:36,depreciationMethod:'Lineal',accountCode:'110500',depreciationArea:'PCGA',accumulatedDepreciation:0,depreciatedPeriods:[],status:'active',journalEntryId,sourceDocumentId:id,sourceItemCode:item.itemCode});}}
     const creditApplied = docType === 'credit_note' && base ? round(amounts.total - base.paidAmount) : 0;
     const common = { ...meta(id), ...data, ...amounts, docNumber: id, series: selectedSeries?.nombre ?? '', ownerCode: sales ? (partner as Customer).ownerCode ?? '' : '', cardName: partner.name, currency: 'USD' as const, status: (docType === 'credit_note' && creditApplied === amounts.total ? 'closed' : 'open') as 'open' | 'closed', paidAmount: creditApplied, journalEntryId };
     if (sales) state.salesOrders.push({ ...common, docType: docType as SalesDocument['docType'] });
@@ -236,6 +251,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   }
   let result = '';
   switch (command.action) {
+    case 'assetLifecycle': result=applyAssetLifecycle(state,command.data,now,next,post);break;
+    case 'vendorAdvance': case 'cardReceipt': case 'procurementQuotes': case 'costAdjustment': case 'cardSettlement': case 'vendorReconciliation': case 'vendorAging': case 'accountDetermination': case 'accountingPreview': result=applyFinalOperation(state,command,{next,post,meta});break;
+    case 'discountGroup': case 'discountGroupRule': case 'customerDiscountGroup': case 'copyVolumeDiscounts': case 'specialPriceBatch': case 'copySpecialPrices': {result=applyDiscountCommand(state,command,next('DTO'));break;}
     case 'seriesPermission':{const d=command.data;assert(state.employees.some(e=>e.employeeCode===d.userCode&&e.active),'Selecciona un empleado activo de la empresa educativa.');profile.seriesPermissions=[...(profile.seriesPermissions??[]).filter(p=>p.userCode!==d.userCode||p.group!==d.group),{...d,module:'Serie de numeración',permissionType:'Serie: Número de grupo'}];result=`${d.userCode}-${d.group}`;break;}
     case 'stockRevalue':{
       const d=command.data,item=state.items.find(i=>i.itemCode===d.itemCode&&i.active&&i.type==='inventory');assert(item,'Selecciona un artículo inventariable activo.');periodoAbierto(d.date);
@@ -714,7 +732,8 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const d = command.data; assert(d.residualValue < d.cost, 'El valor residual debe ser menor al costo.');
       assert(d.paymentAccount !== '2.1.01', 'El alta directa no admite cuentas por pagar sin factura y proveedor. Usa caja o financiación a largo plazo.');
       assert(state.chartOfAccounts.some(account => account.code === d.accountCode && account.category === 'asset' && account.postable && account.active), 'Selecciona una cuenta de activo fija e imputable.');
-      result = next('AF', d.acquisitionDate);
+      result = d.assetCode||next('AF', d.acquisitionDate);
+      assert(!state.fixedAssets.some(a=>a.assetCode===result),'El código de activo ya existe.');
       const journalEntryId = post(d.acquisitionDate, `Compra de activo fijo: ${d.name}`, 'asset', result, [ledgerLine(d.accountCode, d.cost), ledgerLine(d.paymentAccount, 0, d.cost)]);
       state.fixedAssets.push({ ...meta(result), assetCode: result, name: d.name, category: d.category, acquisitionDate: d.acquisitionDate, cost: d.cost, residualValue: d.residualValue, usefulLifeMonths: d.usefulLifeMonths, depreciationMethod: d.depreciationMethod, accountCode: d.accountCode, depreciationArea: d.depreciationArea, accumulatedDepreciation: 0, depreciatedPeriods: [], status: 'active', journalEntryId });
       award('fixed-asset', 150, result, 'Primer activo fijo');

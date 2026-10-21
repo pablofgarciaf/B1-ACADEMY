@@ -4,6 +4,7 @@ import { useCompany } from '@/hooks/useCompany';
 import { round, today, usd } from '@/lib/company-calculations';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 import { ParaPensar } from './AnalysisBlocks';
+import AssetLifecyclePanel from './AssetLifecyclePanel';
 
 /** Vidas útiles máximas para depreciación deducible (Reglamento LRTI Ecuador, art. 28). */
 const CATEGORIAS = [
@@ -24,6 +25,7 @@ export default function FixedAssetsScreen() {
   const c = useCompany();
   const [f, setF] = useState({ name: '', category: CATEGORIAS[3].nombre, acquisitionDate: today(), cost: 1000, residualValue: 0, usefulLifeMonths: 36, paymentAccount: '2.2.01' as (typeof PAGO)[number]['code'], depreciationMethod: 'Lineal' as const, accountCode: '110500', depreciationArea: 'PCGA' });
   const [periodo, setPeriodo] = useState(today().slice(0, 7));
+  const [assetCode,setAssetCode]=useState('');
   const activos = c.data.fixedAssets;
   const totalCosto = round(activos.reduce((s, a) => s + a.cost, 0));
   const totalDep = round(activos.reduce((s, a) => s + a.accumulatedDepreciation, 0));
@@ -34,9 +36,11 @@ export default function FixedAssetsScreen() {
         Un activo fijo no es un gasto del día: su costo se reparte en su vida útil mediante la <strong>depreciación</strong>. En Ecuador el reglamento
         tributario fija vidas útiles máximas; usarlas bien afecta la utilidad y el impuesto a la renta.
       </p>
-      <form className="space-y-2 border border-[#999] bg-white p-2" onSubmit={async e => { e.preventDefault(); try { await c.save({ action: 'fixedAsset', data: f }); setF(v => ({ ...v, name: '' })); } catch { /* error visible */ } }}>
+      <AssetLifecyclePanel />
+      <form className="space-y-2 border border-[#999] bg-white p-2" onSubmit={async e => { e.preventDefault(); try { await c.save({ action: 'fixedAsset', data: {...f,assetCode:assetCode.trim()||undefined} }); setF(v => ({ ...v, name: '' }));setAssetCode(''); } catch { /* error visible */ } }}>
         <h3 className="font-bold text-[#003366]">Registrar activo</h3>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          <Field label="Código de activo (vacío: automático)"><input className={inputClass} value={assetCode} onChange={e=>setAssetCode(e.target.value)}/></Field>
           <Field label="Descripción" required><input required minLength={2} className={inputClass} value={f.name} onChange={e => setF(v => ({ ...v, name: e.target.value }))} placeholder="Ej.: Laptop para contabilidad" /></Field>
           <Field label="Categoría (vida útil SRI)">
             <select className={inputClass} value={f.category} onChange={e => { const cat = CATEGORIAS.find(x => x.nombre === e.target.value); setF(v => ({ ...v, category: e.target.value, usefulLifeMonths: cat?.meses ?? v.usefulLifeMonths })); }}>
@@ -64,7 +68,7 @@ export default function FixedAssetsScreen() {
       <Table headers={['Código', 'Activo', 'Categoría', 'Adquisición', 'Costo', 'Dep. acumulada', 'Valor en libros', 'Avance', 'Estado']} rows={activos.map(a => {
         const depreciable = a.cost - a.residualValue;
         return [a.assetCode, a.name, a.category, a.acquisitionDate, usd(a.cost), usd(a.accumulatedDepreciation), usd(a.cost - a.accumulatedDepreciation),
-          `${depreciable > 0 ? Math.round((a.accumulatedDepreciation / depreciable) * 100) : 100} %`, a.status === 'active' ? 'En uso' : 'Totalmente depreciado'];
+          `${depreciable > 0 ? Math.round((a.accumulatedDepreciation / depreciable) * 100) : 100} %`, a.status === 'disposed'?'Baja':a.status === 'active' ? 'En uso' : 'Totalmente depreciado'];
       })} />
       {activos.length > 0 && <p><strong>Total:</strong> costo {usd(totalCosto)} · depreciación acumulada {usd(totalDep)} · valor en libros {usd(totalCosto - totalDep)}</p>}
       <ParaPensar clave={`b1_activos_${c.data.profile?.uid ?? 'anon'}`} preguntas={[

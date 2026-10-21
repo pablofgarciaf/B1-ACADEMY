@@ -5,6 +5,7 @@
  */
 import { SALES_MISSIONS } from './sales-learning';
 export type PantallaConectada =
+  | {clave:'operaciones';mode?:import('@/components/finix-screens/FinalOperationsScreen').FinalOperationMode}
   | {clave:'revalorizacionStock'}
   | { clave:'devolucionCompra' }
   | { clave: 'ubicacion' }
@@ -99,6 +100,11 @@ const REGLAS: [RegExp, PantallaConectada][] = [
 
 export function pantallaConectada(guia?: { title?: string; menu_path?: string; missionId?: string } | null): PantallaConectada | null {
   if (!guia) return null;
+  const finalModes:Record<string,import('@/components/finix-screens/FinalOperationsScreen').FinalOperationMode>={'mod8-c1#6':'procurementQuotes','mod9-c4#8':'costAdjustment','mod19-c1#8':'cardSettlement','mod19-c3#11':'vendorReconciliation','mod19-c4#7':'vendorAging','mod20-c2#8':'accountingPreview'};
+  if(guia.missionId&&finalModes[guia.missionId])return {clave:'operaciones',mode:finalModes[guia.missionId]};
+  if(guia.missionId==='mod3-c1#7'||guia.missionId==='mod3-c3#6'||guia.missionId==='mod3-c3#11'||guia.missionId==='mod3-c4#7')return {clave:'activos'};
+  if(guia.missionId==='mod7-c4#5')return {clave:'articulo'};
+  if(guia.missionId?.startsWith('mod13-c3')||guia.missionId==='mod13-c2#9'||guia.missionId==='mod13-c4#7'||guia.missionId==='mod13-c4#8')return {clave:'descuentos'};
   if(guia.missionId==='mod21-c3#5')return {clave:'costos'};
   if(guia.missionId==='mod18-c4#7')return {clave:'asiento'};
   if(guia.missionId==='mod18-c4#5'||guia.missionId==='mod18-c4#6')return {clave:'cierre'};

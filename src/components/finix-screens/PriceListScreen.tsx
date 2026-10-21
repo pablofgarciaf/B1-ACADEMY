@@ -6,6 +6,7 @@ import { costoUnitario, listasDePrecios, nombreLista, precioDeLista } from '@/li
 import type { Item } from '@/lib/firestore-types';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 import { ParaPensar } from './AnalysisBlocks';
+import DiscountOperationsPanel from './DiscountOperationsPanel';
 
 function margen(precio: number, costo: number) {
   if (precio <= 0) return <span className="text-[#555]">—</span>;
@@ -139,6 +140,7 @@ export default function PriceListScreen() {
         </form>
         <Table headers={['Cliente', 'Artículo', 'Lista', 'Descuento', 'Vigencia']} rows={(c.data.profile?.specialPrices ?? []).filter(x => x.active).map(x => [x.cardCode, x.itemCode, nombreLista(c.data, x.referenceList), `${x.discount} %`, `${x.validFrom} a ${x.validTo}`])} />
       </section>
+      <DiscountOperationsPanel />
       <ParaPensar clave={`b1_listas_${c.data.profile?.uid ?? 'anon'}`} preguntas={[
         '¿Qué condiciones debería cumplir un cliente para merecer la lista Mayorista: volumen, puntualidad de pago, ambas?',
         'Si el costo de un artículo sube 8 %, ¿qué lista ajustarías primero y cómo se lo comunicarías al cliente?',
