@@ -52,7 +52,11 @@ export function precioSugerido(state: CompanyState, cardCode: string, itemCode: 
   const reglas = (state.profile?.volumeDiscounts ?? [])
     .filter(v => (v.itemCode === itemCode || v.itemCode === '*') && (v.list ?? 1) === lista && v.active !== false && cantidad >= v.minQuantity && (v.maxQuantity === null || v.maxQuantity === undefined || cantidad <= v.maxQuantity) && fecha >= (v.validFrom ?? '2020-01-01') && fecha <= (v.validTo ?? '2099-12-31'))
     .sort((a, b) => b.discount - a.discount);
-  const descuento = Math.min(special?.discount ?? reglas[0]?.discount ?? 0, item.maxDiscount);
+  const period=reglas.find(v=>v.kind==='period');
+  const quantity=reglas.find(v=>v.kind!=='period');
+  const periodNet=period?.automatic===false&&period.fixedPrice!==null&&period.fixedPrice!==undefined?period.fixedPrice:round(precio*(1-(period?.discount??0)/100));
+  const combinedNet=round(periodNet*(1-(quantity?.discount??0)/100));
+  const descuento = Math.min(special?.discount ?? (precio>0?Math.round(1000000*(1-combinedNet/precio))/10000:0), item.maxDiscount);
   const precioNeto = round(precio * (1 - descuento / 100));
   const costo = costoUnitario(state, itemCode);
   return {

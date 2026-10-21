@@ -27,7 +27,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const sugerir = (itemCode: string, quantity: number): Partial<DocumentLine> => {
     if (purchase || data.baseDocumentId) return {};
     const s = precioSugerido(c.data, data.cardCode, itemCode, quantity);
-    return s ? { price: s.precio, discount: s.descuento } : {};
+    return s ? { price: s.precio, discount: s.descuento,taxRate:c.data.items.find(item=>item.itemCode===itemCode)?.salesTaxRate??15 } : {};
   };
   const listaCliente = !purchase && partner ? nombreLista(c.data, c.data.profile?.customerPriceLists?.[partner.cardCode] ?? 1) : '';
   return <Screen title={documentLabels[docType]}>

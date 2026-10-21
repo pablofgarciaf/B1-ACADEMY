@@ -9,6 +9,8 @@ export function operationFor(p: PantallaConectada): string[] {
   if(p.clave==='apertura')return ['trainingOpening'];
   if(p.clave==='cierre')return ['closePeriod','closeYear','accountingPeriods'];
   if(p.clave==='ubicacion')return ['binLocation','binMove'];
+  if(p.clave==='presupuesto')return ['budget','budgetReport'];
+  if(p.clave==='articulo')return ['item','itemUpdate'];
   if(p.clave==='cliente')return ['customer','partnerUpdate','partnerLink'];
   if(p.clave==='proveedor')return ['vendor','partnerUpdate','partnerLink'];
   if(p.clave==='documento') return [['purchase_request','purchase_order','goods_receipt','vendor_invoice'].includes(p.docType)?'purchase':'sales'];

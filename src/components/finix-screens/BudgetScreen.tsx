@@ -64,6 +64,8 @@ export default function BudgetScreen() {
       </form>
 
       <h3 className="font-bold text-[#003366]">Presupuesto vs. real · enero a {MESES[hastaMes - 1]} {year}</h3>
+      <button type="button" className={buttonClass} disabled={c.saving||!cuenta} onClick={()=>c.save({action:'budgetReport',data:{year,month:hastaMes,accountCode:cuenta}})}>Generar y guardar informe mensual de la cuenta</button>
+      {(c.data.profile?.budgetReports??[]).filter(r=>r.accountCode===cuenta).slice(-1).map(report=><p key={report.id}>Informe mensual {report.period}: presupuesto {usd(report.budget)}, real {usd(report.actual)}, desviación {usd(report.variance)}.</p>)}
       <Table headers={['Cuenta', 'Tipo', 'Presupuesto', 'Real', 'Desviación', 'Cumplimiento']}
         rows={r.filas.map(f => [
           `${f.accountCode} · ${f.nombre}`, TIPO[f.tipo], usd(f.presupuestoAcum), usd(f.realAcum),

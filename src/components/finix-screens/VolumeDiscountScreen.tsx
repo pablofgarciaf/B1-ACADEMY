@@ -13,7 +13,7 @@ export default function VolumeDiscountScreen() {
   const reglas = c.data.profile?.volumeDiscounts ?? [];
   const listas = listasDePrecios(c.data).filter(l => l.active);
   const nombre = (code: string) => (code === '*' ? 'Todos los artículos' : c.data.items.find(i => i.itemCode === code)?.name ?? code);
-  const [nueva, setNueva] = useState({ itemCode: '*', list: 1, minQuantity: 10, maxQuantity: null as number | null, discount: 5, validFrom: '2026-01-01', validTo: '2099-12-31', active: true, kind:'quantity' as const, automatic:true, fixedPrice:null as number|null });
+  const [nueva, setNueva] = useState({ itemCode: '*', list: 1, minQuantity: 10, maxQuantity: null as number | null, discount: 5, validFrom: '2026-01-01', validTo: '2099-12-31', active: true, kind:'quantity' as 'quantity'|'period', automatic:true, fixedPrice:null as number|null });
   const [sim, setSim] = useState({ cardCode: '', itemCode: '', cantidad: 1 });
   const r = useMemo(() => (sim.itemCode ? precioSugerido(c.data, sim.cardCode, sim.itemCode, sim.cantidad) : null), [c.data, sim]);
   const guardar = async () => { try { await c.save({ action: 'volumeDiscount', data: { id: '', ...nueva, remove: false } }); } catch { /* error visible */ } };
@@ -28,6 +28,9 @@ export default function VolumeDiscountScreen() {
       <section className="space-y-2 border border-[#999] bg-white p-2">
         <h3 className="font-bold text-[#003366]">Nueva regla</h3>
         <div className="grid gap-2 sm:grid-cols-3 sm:items-end">
+          <Field label="Tipo de descuento"><select className={inputClass} value={nueva.kind} onChange={e=>setNueva(v=>({...v,kind:e.target.value as 'quantity'|'period',minQuantity:e.target.value==='period'?1:v.minQuantity}))}><option value="period">Por período</option><option value="quantity">Por cantidad adicional al período</option></select></Field>
+          <label><input type="checkbox" checked={nueva.automatic} onChange={e=>setNueva(v=>({...v,automatic:e.target.checked,fixedPrice:e.target.checked?null:v.fixedPrice}))}/> Automático</label>
+          {!nueva.automatic&&<Field label="Precio especial fijo (opcional)"><input type="number" min={0} step="0.01" className={inputClass} value={nueva.fixedPrice??''} onChange={e=>setNueva(v=>({...v,fixedPrice:e.target.value===''?null:Number(e.target.value)}))}/></Field>}
           <Field label="Lista de precios"><select className={inputClass} value={nueva.list} onChange={e => setNueva(v => ({ ...v, list: Number(e.target.value) }))}>{listas.map(l => <option key={l.no} value={l.no}>{l.code} · {l.name}</option>)}</select></Field>
           <Field label="Artículo"><select className={inputClass} value={nueva.itemCode} onChange={e => setNueva(v => ({ ...v, itemCode: e.target.value }))}><option value="*">Todos los artículos</option>{c.data.items.map(i => <option key={i.id} value={i.itemCode}>{i.itemCode} · {i.name} (máx. {i.maxDiscount} %)</option>)}</select></Field>
           <Field label="Desde cantidad"><input type="number" min={1} step="any" className={inputClass} value={nueva.minQuantity} onChange={e => setNueva(v => ({ ...v, minQuantity: Number(e.target.value) }))} /></Field>

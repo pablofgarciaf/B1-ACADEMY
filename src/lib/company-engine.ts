@@ -16,6 +16,8 @@ export const documentLabels: Record<DocType, string> = { quotation: 'Cotización
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
 
 const baseAccountDefinitions: [string, string, AccountingAccount['category'], boolean][] = [
+  ['9000','Existencias grupo Impresoras','asset',true],['9001','Ingresos grupo Impresoras','income',true],['9002','Costo de ventas grupo Impresoras','cost',true],
+  ['51020100','Gastos de Oficina','expense',true],['11010200','Caja General','asset',true],['601000','Gastos de servicios básicos','expense',true],['101005','Banco Pichincha Cta Corriente','asset',true],['510000','Gastos de Viajes','expense',true],
   ['605000','Gastos de Envío','expense',true],['606000','Seguro de Carga','expense',true],
   ['6200', 'Servicios Profesionales', 'expense', true],
   ['1', 'ACTIVO', 'asset', false], ['1.1', 'Activo corriente', 'asset', false], ['1.1.01', 'Caja', 'asset', true], ['1.1.02', 'Bancos', 'asset', true], ['1.1.03', 'Cuentas por cobrar clientes', 'asset', true], ['1.1.04', 'Provisión cuentas incobrables', 'asset', true], ['1.1.05', 'Inventarios materia prima / mercaderías', 'asset', true], ['1.1.06', 'IVA en compras', 'asset', true], ['1.1.07', 'Inventarios producto terminado', 'asset', true], ['1.1.08', 'Anticipos al personal', 'asset', true], ['1.2', 'Activo no corriente', 'asset', false], ['1.2.01', 'Propiedad, planta y equipo', 'asset', true], ['1.2.02', 'Depreciación acumulada', 'asset', true], ['110500', 'Activos fijos', 'asset', true],
@@ -104,6 +106,14 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     const lines = input.map(l => ({ ...l, accountCode:profile.controlAccounts?.[l.accountCode] ?? l.accountCode, debit: round(l.debit || 0), credit: round(l.credit || 0), costCenter: l.costCenter ?? '', description: l.description ?? '' })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
     assert(lines.length >= 2 && debit > 0 && debit === credit, 'El asiento debe cuadrar al centavo y tener importe positivo.');
     for (const line of lines) { assert(state.chartOfAccounts.some(a => a.code === line.accountCode && a.active && a.postable), `Cuenta no imputable: ${line.accountCode}.`); assert(line.debit >= 0 && line.credit >= 0 && !(line.debit && line.credit), 'Una línea debe tener debe o haber, no ambos.'); }
+    const control=((profile as unknown as {costCenters?:{config?:{controlPresupuesto?:{inicializado:boolean;alSuperar:string;ejercicio:string;controlPor:string}[]}}}).costCenters?.config?.controlPresupuesto??[]).find(c=>c.inicializado&&c.ejercicio===date.slice(0,4));
+    if(control?.alSuperar==='Bloquear'&&source==='manual')for(const accountCode of new Set(lines.map(l=>l.accountCode))){
+      const budget=state.budgets.find(b=>b.year===date.slice(0,4)&&b.accountCode===accountCode);if(!budget)continue;
+      const month=Number(date.slice(5,7))-1;const yearly=control.controlPor==='Anual';
+      const allowed=yearly?budget.months.reduce((s,n)=>s+n,0):budget.months[month];
+      const existing=state.journalEntries.filter(j=>j.date.startsWith(yearly?date.slice(0,4):date.slice(0,7))).flatMap(j=>j.lines).filter(l=>l.accountCode===accountCode).reduce((s,l)=>s+l.debit-l.credit,0);
+      const change=lines.filter(l=>l.accountCode===accountCode).reduce((s,l)=>s+l.debit-l.credit,0);assert(round(existing+change)<=allowed,'La operación supera el presupuesto configurado.');
+    }
     const id = next('AS', date);
     state.journalEntries.push({ ...meta(id), entryNumber: id, date, dueDate: date, period: date.slice(0, 7), memo, reference, source, lines, totalDebit: debit, totalCredit: credit, reversalOf: '', reversedBy: '' });
     if (source === 'manual') award('journal', 200, id, 'Primer asiento cuadrado');
@@ -173,8 +183,10 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     assert(!records.some(doc=>doc.id===id), 'El número de documento ya existe en esta serie.');
     const amounts = totals(data.lines); assert(amounts.total > 0, 'El total debe ser positivo.');
     let journalEntryId = ''; let inventoryCost = 0;
-    const inventoryAccount = (itemCode: string) => state.boms.some(b => b.parentItemCode === itemCode && b.type === 'production') ? '1.1.07' : '1.1.05';
+    const groupAccounts=(itemCode:string)=>{const item=state.items.find(i=>i.itemCode===itemCode);return ((profile as unknown as {itemGroups?:{codigo:string;inventoryAccount?:string;incomeAccount?:string;costAccount?:string}[]}).itemGroups??[]).find(g=>g.codigo===item?.group);};
+    const inventoryAccount = (itemCode: string) => groupAccounts(itemCode)?.inventoryAccount|| (state.boms.some(b => b.parentItemCode === itemCode && b.type === 'production') ? '1.1.07' : '1.1.05');
     const inventoryByAccount = new Map<string, number>();
+    const costByAccount=new Map<string,number>();
     const affectsOut = docType === 'delivery' || (docType === 'invoice' && !base);
     const affectsIn = docType === 'goods_receipt' || (docType === 'vendor_invoice' && !base);
     if (affectsOut || affectsIn) for (const line of data.lines) {
@@ -183,19 +195,20 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       inventoryCost += cost;
       if(affectsIn&&line.binCode){const bin=state.binLocations.find(b=>b.warehouseCode===line.warehouseCode&&b.binCode===line.binCode);assert(bin,'El depósito no pertenece al almacén.');if(bin){assert(bin.contents.reduce((sum,l)=>sum+l.quantity,0)+line.quantity<=bin.maxQuantity,'Se supera la capacidad del depósito.');const weight=quantityRound(bin.contents.reduce((sum,l)=>sum+l.quantity*(state.items.find(i=>i.itemCode===l.itemCode)?.weight??0),0)+line.quantity*(state.items.find(i=>i.itemCode===line.itemCode)?.weight??0));assert(bin.maxWeight===undefined||weight<=bin.maxWeight,'Se supera el peso máximo del depósito.');const current=bin.contents.find(l=>l.itemCode===line.itemCode);if(current)current.quantity=quantityRound(current.quantity+line.quantity);else bin.contents.push({itemCode:line.itemCode,quantity:line.quantity});bin.currentWeight=weight;bin.availableWeight=bin.maxWeight===undefined?undefined:quantityRound(bin.maxWeight-weight);bin.updatedAt=now;}}
       const account = inventoryAccount(line.itemCode); inventoryByAccount.set(account, round((inventoryByAccount.get(account) ?? 0) + cost));
+      const costAccount=groupAccounts(line.itemCode)?.costAccount||'5.01';costByAccount.set(costAccount,round((costByAccount.get(costAccount)??0)+cost));
     }
     inventoryCost = round(inventoryCost);
     const lines: JournalLine[] = [];
-    if (affectsOut && inventoryCost) { lines.push(ledgerLine('5.01', inventoryCost)); inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, 0, cost))); }
-    if (docType === 'invoice') { partner.balance = round(partner.balance + amounts.total); lines.push(ledgerLine('1.1.03', amounts.total), ledgerLine('4.01', 0, amounts.subtotal), ledgerLine('2.1.02', 0, amounts.tax), ledgerLine('2.1.11', 0, amounts.ice)); }
+    if (affectsOut && inventoryCost) { costByAccount.forEach((cost,account)=>lines.push(ledgerLine(account,cost))); inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, 0, cost))); }
+    if (docType === 'invoice') { partner.balance = round(partner.balance + amounts.total);const revenue=new Map<string,number>();for(const line of data.lines){const account=groupAccounts(line.itemCode)?.incomeAccount||'4.01';revenue.set(account,round((revenue.get(account)??0)+totals([line]).subtotal));}revenue.forEach((amount,account)=>lines.push(ledgerLine(account,0,amount))); lines.push(ledgerLine('1.1.03', amounts.total), ledgerLine('2.1.02', 0, amounts.tax), ledgerLine('2.1.11', 0, amounts.ice)); }
     if (docType === 'credit_note' && base) {
       partner.balance = round(partner.balance - amounts.total);
-      lines.push(ledgerLine('4.01', amounts.subtotal), ledgerLine('2.1.02', amounts.tax), ledgerLine('2.1.11', amounts.ice), ledgerLine('1.1.03', 0, amounts.total));
+      const revenue=new Map<string,number>();for(const line of data.lines){const account=groupAccounts(line.itemCode)?.incomeAccount||'4.01';revenue.set(account,round((revenue.get(account)??0)+totals([line]).subtotal));}revenue.forEach((amount,account)=>lines.push(ledgerLine(account,amount)));
+      lines.push(ledgerLine('2.1.02', amounts.tax), ledgerLine('2.1.11', amounts.ice), ledgerLine('1.1.03', 0, amounts.total));
       const delivery = state.salesOrders.find(d => d.id === base.baseDocumentId);
       const source = delivery?.id ?? base.id;
       let returned = 0;
-      state.stockMovements.filter(m => m.reference === source && m.quantity < 0).forEach(m => { const value = move(m.itemCode, m.warehouseCode, -m.quantity, m.unitCost, data.date, id); returned += value; lines.push(ledgerLine(inventoryAccount(m.itemCode), value)); });
-      if (returned) lines.push(ledgerLine('5.01', 0, returned));
+      state.stockMovements.filter(m => m.reference === source && m.quantity < 0).forEach(m => { const value = move(m.itemCode, m.warehouseCode, -m.quantity, m.unitCost, data.date, id); returned += value; lines.push(ledgerLine(inventoryAccount(m.itemCode), value),ledgerLine(groupAccounts(m.itemCode)?.costAccount||'5.01',0,value)); });
     }
     if (docType === 'goods_receipt' && inventoryCost) { inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, cost))); lines.push(ledgerLine('2.1.06', 0, inventoryCost)); }
     if (docType === 'vendor_invoice' || docType === 'debit_note') {
@@ -530,6 +543,11 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       award('budget', 50, result, 'Primer presupuesto');
       break;
     }
+    case 'budgetReport': {
+      const d=command.data;const budget=state.budgets.find(b=>b.year===d.year&&b.accountCode===d.accountCode);assert(budget,'Define el presupuesto antes de generar el informe.');
+      const period=`${d.year}-${String(d.month).padStart(2,'0')}`;const actual=round(state.journalEntries.filter(j=>j.period===period).flatMap(j=>j.lines).filter(l=>l.accountCode===d.accountCode).reduce((s,l)=>s+l.debit-l.credit,0));
+      result=next('IPR');const amount=budget!.months[d.month-1];profile.budgetReports=[...(profile.budgetReports??[]),{id:result,scenario:'Principal',period:`${String(d.month).padStart(2,'0')}/${d.year}`,accountCode:d.accountCode,budget:amount,actual,variance:round(amount-actual)}];break;
+    }
     case 'productionStageIssue': {
       const d = command.data; const order = state.productionOrders.find(o => o.id === d.id); if (!order) throw new Error('Orden inexistente.');
       assert(['released','in_progress'].includes(order.status), 'Libera la orden antes de enviar componentes a una etapa.');
@@ -632,7 +650,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         profile.priceLists = (profile.priceLists ?? []).map(x => x.no === d.list ? { ...x, factor: Math.round(x.factor * mult * 10000) / 10000 } : x);
         result = `Lista ${d.list}: factor ${Math.round(l.factor * mult * 10000) / 10000}`;
       }
-      break;
+      profile.priceUpdates=[...(profile.priceUpdates??[]),{id:next('APL'),list:d.list,method:d.method,value:d.value}];break;
     }
     case 'customerPriceList': {
       const d = command.data; assert(state.customers.some(c => c.cardCode === d.cardCode), 'Cliente inexistente.');
@@ -897,7 +915,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     // Configuración administrativa: guardan directamente en profile sin lógica de negocio.
     case 'docSeriesSave': { (profile as unknown as Record<string, unknown>).docSeries = command.data.series; result = 'series-guardadas'; break; }
     case 'customerGroupSave': { (profile as unknown as Record<string, unknown>).customerGroups = command.data.groups; result = 'grupos-clientes'; break; }
-    case 'itemGroupSave': { (profile as unknown as Record<string, unknown>).itemGroups = command.data.groups; result = 'grupos-articulos'; break; }
+    case 'itemGroupSave': {for(const group of command.data.groups as {inventoryAccount?:string;incomeAccount?:string;costAccount?:string}[])for(const [key,category]of [['inventoryAccount','asset'],['incomeAccount','income'],['costAccount','cost']]as const)if(group[key])assert(state.chartOfAccounts.some(a=>a.code===group[key]&&a.active&&a.postable&&a.category===category),'La cuenta del grupo debe ser imputable y corresponder a su naturaleza.'); (profile as unknown as Record<string, unknown>).itemGroups = command.data.groups; result = 'grupos-articulos'; break; }
     case 'inventorySettingsSave': { profile.inventorySettings = command.data.settings; result = 'configuracion-conteo-guardada'; break; }
     case 'currenciesSave': { (profile as unknown as Record<string, unknown>).currencies = command.data; result = 'monedas-guardadas'; break; }
     case 'currencyRevalue': {

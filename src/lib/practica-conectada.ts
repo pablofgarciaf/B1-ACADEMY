@@ -99,6 +99,9 @@ const REGLAS: [RegExp, PantallaConectada][] = [
 
 export function pantallaConectada(guia?: { title?: string; menu_path?: string; missionId?: string } | null): PantallaConectada | null {
   if (!guia) return null;
+  if(guia.missionId==='mod21-c3#5')return {clave:'costos'};
+  if(guia.missionId==='mod18-c4#7')return {clave:'asiento'};
+  if(guia.missionId==='mod18-c4#5'||guia.missionId==='mod18-c4#6')return {clave:'cierre'};
   if (guia.missionId && SALES_MISSIONS[guia.missionId]) return SALES_MISSIONS[guia.missionId].pantalla;
   const preliminar=plano(`${guia.title ?? ''} ${guia.menu_path ?? ''}`);
   if(/actualizar costo estandar/.test(preliminar))return {clave:'revalorizacionStock'};

@@ -9703,7 +9703,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "En esta práctica configurará un descuento adicional del 3% por cantidad para el mismo artículo, aplicable cuando se compren 4 o más unidades durante septiembre de 2026. Este descuento se acumula al 5% por período, resultando en un precio final de 41.48 USD por unidad. El sistema aplicará ambos descuentos cuando se cumplan ambas condiciones: fecha dentro del período y cantidad de 4 o más unidades.",
+        "script_text": "En esta práctica configurará un descuento adicional del 3% por cantidad para el mismo artículo, aplicable cuando se compren 4 o más unidades durante septiembre de 2026. Este descuento se acumula al 5% por período: 45.00 por 0.95 por 0.97 da 41.4675, que se redondea a 41.47 USD por unidad. El sistema aplicará ambos descuentos cuando se cumplan ambas condiciones: fecha dentro del período y cantidad de 4 o más unidades.",
         "step_guide": {
           "action_type": "practica",
           "title": "Configurar descuento por cantidad",
@@ -9713,7 +9713,7 @@
             "Confirme el período del 01/09/2026 al 30/09/2026",
             "Establezca 4 como cantidad mínima",
             "Ingrese 3% como descuento adicional",
-            "Verifique que el precio final sea 41.48"
+            "Verifique que el precio final sea 41.47"
           ],
           "campos": [
             {
@@ -9743,7 +9743,7 @@
             },
             {
               "etiqueta": "Precio con descuento",
-              "valor": "41.48",
+              "valor": "41.47",
               "pista": "Precio unitario con ambos descuentos (45.00 - 5% - 3%)"
             }
           ]

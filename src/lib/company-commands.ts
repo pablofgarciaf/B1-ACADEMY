@@ -51,6 +51,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('mrpRun'), data: z.object({ scenario:text.min(2), startDate:date, endDate:date, level:text.min(2), warehouseCode:code.optional(), itemCodes:z.array(code).max(200).default([]), horizon:z.number().int().min(1).max(3650).default(30), includePurchases:z.boolean().default(true), includeProduction:z.boolean().default(true), includeSales:z.boolean().default(true), includeForecasts:z.boolean().default(false), excludeWarehouses:z.array(code).max(20).default([]) }).refine(d=>d.endDate>=d.startDate,'El fin no puede ser anterior al inicio.') }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
   z.object({ action: z.literal('budget'), data: z.object({ year: z.string().regex(/^20\d{2}$/), accountCode: code, months: z.array(money).length(12) }) }),
+  z.object({ action: z.literal('budgetReport'), data: z.object({ year:z.string().regex(/^20\d{2}$/), month:z.number().int().min(1).max(12), accountCode:code }) }),
   // Cierre contable: un período cerrado no admite asientos; el cierre anual traslada el resultado.
   z.object({ action: z.literal('closePeriod'), data: z.object({ period: period, closed: z.boolean(), dueThrough:date.optional() }) }),
   z.object({ action: z.literal('closeYear'), data: z.object({ year: z.string().regex(/^20\d{2}$/) }) }),
