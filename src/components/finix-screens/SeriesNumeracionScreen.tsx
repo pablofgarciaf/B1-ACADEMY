@@ -20,6 +20,7 @@ const TIPOS_DOC = [
 ];
 
 interface Serie {
+  description?: string; costAdjustmentOnly?: boolean;
   sufijo?: string; digitos?: number; usuario?: string;
   id: string;
   docType: string;
@@ -46,6 +47,7 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
   const [series, setSeries] = useState<Serie[]>([]);
   const [editando, setEditando] = useState<Serie | null>(null);
   const [nueva, setNueva] = useState(false);
+  const [permission,setPermission]=useState({userCode:'',group:2,access:'Total' as 'Total'|'Consulta'|'Ninguno',enabled:true});
 
   useEffect(() => {
     setSeries(seriesGuardadas.filter(s => s.docType === tipoSel));
@@ -78,6 +80,7 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
 
   return (
     <Screen title="Series de numeración de documentos">
+      <details className="border p-2"><summary className="font-bold cursor-pointer">Autorizaciones de usuarios de la empresa educativa</summary><form className="grid gap-2 sm:grid-cols-3 mt-2" onSubmit={async e=>{e.preventDefault();await c.save({action:'seriesPermission',data:permission});}}><Field label="Usuario"><select required className={inputClass} value={permission.userCode} onChange={e=>setPermission(p=>({...p,userCode:e.target.value}))}><option value="">Seleccionar</option>{c.data.employees.filter(e=>e.active).map(e=><option key={e.id} value={e.employeeCode}>{e.employeeCode} — {e.fullName}</option>)}</select></Field><Field label="Grupo de serie"><input type="number" min={1} max={10} className={inputClass} value={permission.group} onChange={e=>setPermission(p=>({...p,group:Number(e.target.value)}))}/></Field><Field label="Acceso"><select className={inputClass} value={permission.access} onChange={e=>setPermission(p=>({...p,access:e.target.value as typeof permission.access}))}>{['Total','Consulta','Ninguno'].map(a=><option key={a}>{a}</option>)}</select></Field><label><input type="checkbox" checked={permission.enabled} onChange={e=>setPermission(p=>({...p,enabled:e.target.checked}))}/> Habilitado</label><button className={buttonClass} disabled={c.saving}>Guardar autorización</button></form><Table headers={['Usuario','Módulo','Tipo','Grupo','Acceso','Habilitado']} rows={(c.data.profile?.seriesPermissions??[]).map(p=>[p.userCode,p.module,p.permissionType,p.group,p.access,p.enabled?'Sí':'No'])}/></details>
       <div className="space-y-3">
         {/* Selector de tipo de documento */}
         <div className="flex flex-wrap items-center gap-2">
@@ -123,6 +126,7 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
               <Field label="Prefijo (opcional)">
                 <input maxLength={10} className={inputClass} value={editando.prefijo} onChange={e => setEditando(v => v ? { ...v, prefijo: e.target.value.toUpperCase() } : v)} />
               </Field>
+              <Field label="Nombre descriptivo"><input className={inputClass} value={editando.description ?? ''} onChange={e=>setEditando(v=>v?{...v,description:e.target.value}:v)} /></Field>
               <Field label="Sufijo"><input maxLength={20} className={inputClass} value={editando.sufijo ?? ''} onChange={e => setEditando(v => v ? {...v,sufijo:e.target.value}:v)} /></Field>
               <Field label="Cantidad de dígitos"><input type="number" min={1} max={12} className={inputClass} value={editando.digitos ?? 1} onChange={e => setEditando(v => v ? {...v,digitos:Number(e.target.value)}:v)} /></Field>
               <Field label="Usuario (predeterminado)"><select className={inputClass} value={editando.usuario ?? ''} onChange={e => setEditando(v => v ? {...v,usuario:e.target.value}:v)}><option value="">Todos los usuarios</option>{c.data.employees.map(e => <option key={e.id} value={e.employeeCode}>{e.employeeCode} — {e.firstName} {e.lastName}</option>)}</select></Field>
@@ -141,6 +145,7 @@ export default function SeriesNumeracionScreen({ docType: docTypeProp }: { docTy
               </Field>
             </div>
             <div className="flex items-center gap-4">
+              {tipoSel==='asientos' && <label><input type="checkbox" checked={editando.costAdjustmentOnly ?? false} onChange={e=>setEditando(v=>v?{...v,costAdjustmentOnly:e.target.checked}:v)} /> Solo para ajuste de contabilidad de costos</label>}
               <label className="flex items-center gap-1.5 text-sm cursor-pointer">
                 <input type="checkbox" className="accent-[#f0ab00]" checked={editando.porDefecto} onChange={e => setEditando(v => v ? { ...v, porDefecto: e.target.checked } : v)} />
                 Serie por defecto para este tipo

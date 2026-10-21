@@ -49,8 +49,8 @@ test('convertir potencial exige transición real, no basta crear un cliente con 
  const created=c.run('customer',lead);const converted=c.run('partnerUpdate',{partnerType:'customer',cardCode:created.result,changes:{kind:'customer'}});assert.equal(missionOutcomeMatches(c.state,converted,'mod2-c1#7'),true);
  const d=fixture(),direct=d.run('customer',{...lead,kind:'customer'});assert.equal(missionOutcomeMatches(d.state,direct,'mod2-c1#7'),false);
 });
-test('consigna sin correspondencia no aprueba; prácticas comerciales anteriores conservan su versión',()=>{
- assert.ok(outcomeContractFor('mod8-c3#5').pending.length>0);
+test('una factura no acredita una devolución; prácticas comerciales anteriores conservan su versión',()=>{
+ assert.ok(outcomeContractFor('mod8-c3#5').requirements.length>0);
  const c=fixture(),event=c.run('purchase',purchase(3));assert.equal(missionOutcomeMatches(c.state,event,'mod8-c3#5'),false);
  assert.equal(requiredPracticeValidationVersion('mod8-c3#5'),3);assert.equal(requiredPracticeValidationVersion('mod-ventas-c1#2'),2);
 });
@@ -217,4 +217,39 @@ test('conteo conserva política, responsable, ubicación y tipo de ajuste verifi
  const count=c2.run('inventoryCount',{warehouseCode:'01',date:'2026-09-08',blind:true,lines:[{itemCode:'A00003',countedQuantity:75,location:'A1-01',counter:'Lee'}]});
  assert.equal(missionOutcomeMatches(c2.state,count,'mod10-c4#8'),true);
  assert.equal(c2.state.inventoryCounts.at(-1).lines[0].adjustmentType,'none');
+});
+
+test('MRP persiste parámetros, filtros y una fotografía coherente de necesidades netas',()=>{
+ const c=fixture(),item=c.state.items.find(row=>row.itemCode==='A00007');
+ c.run('itemUpdate',{...item,itemCode:'A00007',mrpActive:true,planningMethod:'buy',planningWarehouse:'01',purchaseLeadDays:5,productionLeadDays:0,forecastQuantity:0,orderMultiple:50,planningMinimum:0});
+ c.run('sales',{docType:'order',document:{date:'2026-07-01',dueDate:'2026-07-20',cardCode:'C20000',reference:'Demanda de planificación',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:120,unit:'UND',price:130,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ c.run('purchase',{docType:'purchase_order',document:{date:'2026-07-01',dueDate:'2026-07-15',cardCode:'V10000',reference:'Aprovisionamiento abierto',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:30,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ const event=c.run('mrpRun',{scenario:'MRP_Quito_2026',startDate:'2026-07-01',endDate:'2026-07-31',level:'Almacén',warehouseCode:'01',itemCodes:['A00007'],horizon:30,includePurchases:true,includeProduction:true,includeSales:true,includeForecasts:false,excludeWarehouses:[]});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod15-c1#6'),true);
+ assert.equal(missionOutcomeMatches(c.state,event,'mod15-c1#7'),true);
+ const run=c.state.profile.mrpRuns.at(-1),result=run.rows[0];
+ assert.deepEqual([result.available,result.onOrder,result.required,result.projectedEnding,result.recommendation],[20,30,120,-70,'Orden de compra 100']);
+ assert.deepEqual(run.itemCodes,['A00007']);
+});
+
+test('parámetros de artículos existentes se editan de forma persistente y entran al MRP por almacén',()=>{
+ const c=fixture();
+ const servidor=c.state.items.find(item=>item.itemCode==='A00006');
+ const actualizado=c.run('itemUpdate',{...servidor,itemCode:'A00006',planningMethod:'production',productionLeadDays:2,planningWarehouse:'01',mrpActive:true,purchaseLeadDays:0});
+ assert.equal(missionOutcomeMatches(c.state,actualizado,'mod15-c3#6'),true);
+ const monitor=c.state.items.find(item=>item.itemCode==='A00003');
+ const compra=c.run('itemUpdate',{...monitor,itemCode:'A00003',planningMethod:'buy',purchaseLeadDays:5,planningWarehouse:'01',mrpActive:true,preferredVendor:'V10002'});
+ assert.equal(missionOutcomeMatches(c.state,compra,'mod15-c3#7'),true);
+ const event=c.run('mrpRun',{scenario:'MRP_2026',startDate:'2026-06-01',endDate:'2026-07-01',level:'Almacén',warehouseCode:'01',itemCodes:[],horizon:30,includePurchases:true,includeProduction:true,includeSales:false,includeForecasts:false,excludeWarehouses:[]});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod15-c3#8'),true);
+});
+
+test('MRP calcula filtros de almacén y proyección con la demanda del horizonte',()=>{
+ const c=fixture(),item=c.state.items.find(row=>row.itemCode==='A00007');
+ c.run('sales',{docType:'order',document:{date:'2026-06-01',dueDate:'2026-06-15',cardCode:'C20000',reference:'Demanda de horizonte',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:120,unit:'UND',price:130,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ c.run('purchase',{docType:'purchase_order',document:{date:'2026-06-01',dueDate:'2026-06-20',cardCode:'V10000',reference:'Recepción futura',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:30,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ const event=c.run('mrpRun',{scenario:'MRP_2026',startDate:'2026-06-01',endDate:'2026-06-30',level:'Almacén',warehouseCode:'01',itemCodes:['A00007'],horizon:30,includePurchases:true,includeProduction:true,includeSales:true,includeForecasts:false,excludeWarehouses:['02']});
+ assert.equal(missionOutcomeMatches(c.state,event,'mod15-c3#12'),true);
+ assert.equal(missionOutcomeMatches(c.state,event,'mod15-c4#7'),true);
+ assert.equal(c.state.profile.mrpRuns.at(-1).rows[0].projectedEnding,-70);
 });

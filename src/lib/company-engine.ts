@@ -10,11 +10,14 @@ import { SUPERCÍAS_CATALOG } from './supercias-catalog';
 import { isPrivateCompany } from './company-scope';
 import { prepareOpeningBalances } from './opening-balances';
 import { applyPartnerCommand } from './partner-commands';
+import { applyTrainingOpening } from './training-accounting';
 
 export const documentLabels: Record<DocType, string> = { quotation: 'Cotización', order: 'Pedido de venta', delivery: 'Entrega', invoice: 'Factura de venta', credit_note: 'Nota de crédito', purchase_request: 'Solicitud de compra', purchase_order: 'Pedido de compra', goods_receipt: 'Entrada de mercancías', vendor_invoice: 'Factura de proveedor', debit_note: 'Nota de débito' };
 const prefixes: Record<DocType, string> = { quotation: 'COT', order: 'PV', delivery: 'ENT', invoice: 'FAC', credit_note: 'NC', purchase_request: 'SC', purchase_order: 'PC', goods_receipt: 'EM', vendor_invoice: 'FP', debit_note: 'ND' };
 
 const baseAccountDefinitions: [string, string, AccountingAccount['category'], boolean][] = [
+  ['605000','Gastos de Envío','expense',true],['606000','Seguro de Carga','expense',true],
+  ['6200', 'Servicios Profesionales', 'expense', true],
   ['1', 'ACTIVO', 'asset', false], ['1.1', 'Activo corriente', 'asset', false], ['1.1.01', 'Caja', 'asset', true], ['1.1.02', 'Bancos', 'asset', true], ['1.1.03', 'Cuentas por cobrar clientes', 'asset', true], ['1.1.04', 'Provisión cuentas incobrables', 'asset', true], ['1.1.05', 'Inventarios materia prima / mercaderías', 'asset', true], ['1.1.06', 'IVA en compras', 'asset', true], ['1.1.07', 'Inventarios producto terminado', 'asset', true], ['1.1.08', 'Anticipos al personal', 'asset', true], ['1.2', 'Activo no corriente', 'asset', false], ['1.2.01', 'Propiedad, planta y equipo', 'asset', true], ['1.2.02', 'Depreciación acumulada', 'asset', true], ['110500', 'Activos fijos', 'asset', true],
   ['2', 'PASIVO', 'liability', false], ['2.1', 'Pasivo corriente', 'liability', false], ['2.1.01', 'Cuentas por pagar proveedores', 'liability', true], ['2.1.02', 'IVA en ventas', 'liability', true], ['2.1.03', 'Retenciones por pagar', 'liability', true], ['2.1.04', 'IESS por pagar', 'liability', true], ['2.1.05', 'Sueldos por pagar', 'liability', true], ['2.1.06', 'Mercadería recibida no facturada', 'liability', true], ['2.1.07', 'Beneficios sociales por pagar', 'liability', true], ['2.1.08', 'Otros descuentos por pagar', 'liability', true], ['2.2', 'Pasivo no corriente', 'liability', false], ['2.2.01', 'Préstamos largo plazo', 'liability', true],
   ['3', 'PATRIMONIO', 'equity', false], ['3.01', 'Capital social', 'equity', true], ['3.02', 'Resultados acumulados', 'equity', true], ['4', 'INGRESOS', 'income', false], ['4.01', 'Ventas operacionales', 'income', true], ['4.02', 'Otros ingresos', 'income', true], ['5', 'COSTOS', 'cost', false], ['5.01', 'Costo de ventas', 'cost', true], ['6', 'GASTOS', 'expense', false], ['6.01', 'Gasto de nómina', 'expense', true], ['6.02', 'IESS patronal', 'expense', true], ['6.03', 'Gastos administrativos', 'expense', true], ['6.04', 'Beneficios sociales', 'expense', true], ['6.05', 'Diferencias de inventario y costo estándar', 'expense', true],
@@ -95,7 +98,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   };
   const ledgerLine = (accountCode: string, debit = 0, credit = 0): JournalLine => ({ accountCode, debit: round(debit), credit: round(credit), description: '', costCenter: '' });
   /** Un período cerrado no admite asientos ni movimientos: lo controla el motor, no la pantalla. */
-  const periodoAbierto = (date: string) => { assert(!profile.openingBalances || date > profile.openingBalances.date, 'La operación debe ser posterior al corte de apertura.'); assert(!(profile.closedPeriods ?? []).includes(date.slice(0, 7)), `El período ${date.slice(0, 7)} está cerrado. Reábrelo en Cierres Fiscales o usa una fecha de un período abierto.`); };
+  const periodoAbierto = (date: string) => { assert(!profile.openingBalances || date > profile.openingBalances.date, 'La operación debe ser posterior al corte de apertura.'); assert(!(profile.closedPeriods ?? []).includes(date.slice(0, 7)), `El período ${date.slice(0, 7)} está cerrado. Reábrelo en Cierres Fiscales o usa una fecha de un período abierto.`);if(profile.accountingPeriodSetup)assert(profile.accountingPeriods?.some(p=>date>=p.startDate&&date<=p.endDate),'Configura un período contable que incluya la fecha de la operación.'); };
   const post = (date: string, memo: string, source: string, reference: string, input: JournalLine[]): string => {
     periodoAbierto(date);
     const lines = input.map(l => ({ ...l, accountCode:profile.controlAccounts?.[l.accountCode] ?? l.accountCode, debit: round(l.debit || 0), credit: round(l.credit || 0), costCenter: l.costCenter ?? '', description: l.description ?? '' })).filter(l => l.debit || l.credit); const debit = round(lines.reduce((s, l) => s + l.debit, 0)); const credit = round(lines.reduce((s, l) => s + l.credit, 0));
@@ -125,11 +128,12 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     return changed.cost;
   };
   function saveDocument(kind: 'sales' | 'purchase', docType: DocType, data: CommandData<'sales'>['document'], aprobado = false): string {
+    if(profile.accountingPeriodSetup){const period=profile.accountingPeriods?.find(p=>data.date>=p.startDate&&data.date<=p.endDate);assert(period&&data.dueDate<=period.dueThrough,'Fecha de contabilización o vencimiento fuera del período configurado.');}
     const sales = kind === 'sales'; const partners = sales ? state.customers : state.vendors;
     const partner = partners.find(p => p.cardCode === data.cardCode && p.active);
     if (!partner) throw new Error('Selecciona un socio activo.');
     // ICE: lo fija el artículo (catálogo del SRI), nunca el navegador.
-    data = { ...data, lines: data.lines.map(l => { const it = state.items.find(i => i.itemCode === l.itemCode); return { ...l, ice: iceDeLinea(it?.ice, l.quantity, round(l.quantity * l.price * (1 - l.discount / 100))) }; }) };
+    data = { ...data, lines: data.lines.map(l => { const it = state.items.find(i => i.itemCode === l.itemCode); return { ...l, itemType:it?.type, ice: iceDeLinea(it?.ice, l.quantity, round(l.quantity * l.price * (1 - l.discount / 100))) }; }) };
     // RIMPE: un Negocio Popular no cobra IVA (ni como emisor ni como proveedor).
     if (sales) assert(state.profile?.regimen !== 'rimpe-popular' || data.lines.every(l => l.taxRate === 0), 'Tu empresa es RIMPE Negocio Popular: emite notas de venta sin IVA (tarifa 0 %).');
     else assert(!('rimpe' in partner) || partner.rimpe !== 'popular' || data.lines.every(l => l.taxRate === 0), `${partner.name} es RIMPE Negocio Popular: entrega nota de venta y no cobra IVA; usa tarifa 0 %. Si necesitas el crédito del IVA, emite una liquidación de compra.`);
@@ -177,6 +181,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       if (state.items.find(i => i.itemCode === line.itemCode)?.type !== 'inventory') continue;
       const cost = move(line.itemCode, line.warehouseCode, line.quantity * (affectsOut ? -1 : 1), line.price * (1 - line.discount / 100) + (affectsIn ? (line.ice ?? 0) / line.quantity : 0), data.date, id);
       inventoryCost += cost;
+      if(affectsIn&&line.binCode){const bin=state.binLocations.find(b=>b.warehouseCode===line.warehouseCode&&b.binCode===line.binCode);assert(bin,'El depósito no pertenece al almacén.');if(bin){assert(bin.contents.reduce((sum,l)=>sum+l.quantity,0)+line.quantity<=bin.maxQuantity,'Se supera la capacidad del depósito.');const weight=quantityRound(bin.contents.reduce((sum,l)=>sum+l.quantity*(state.items.find(i=>i.itemCode===l.itemCode)?.weight??0),0)+line.quantity*(state.items.find(i=>i.itemCode===line.itemCode)?.weight??0));assert(bin.maxWeight===undefined||weight<=bin.maxWeight,'Se supera el peso máximo del depósito.');const current=bin.contents.find(l=>l.itemCode===line.itemCode);if(current)current.quantity=quantityRound(current.quantity+line.quantity);else bin.contents.push({itemCode:line.itemCode,quantity:line.quantity});bin.currentWeight=weight;bin.availableWeight=bin.maxWeight===undefined?undefined:quantityRound(bin.maxWeight-weight);bin.updatedAt=now;}}
       const account = inventoryAccount(line.itemCode); inventoryByAccount.set(account, round((inventoryByAccount.get(account) ?? 0) + cost));
     }
     inventoryCost = round(inventoryCost);
@@ -198,7 +203,11 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const received = base?.docType === 'goods_receipt' ? round(state.stockMovements.filter(m => m.reference === base.id).reduce((s, m) => s + m.value, 0)) : inventoryCost;
       if (received) { if (base?.docType === 'goods_receipt') lines.push(ledgerLine('2.1.06', received)); else inventoryByAccount.forEach((cost, account) => lines.push(ledgerLine(account, cost))); }
       const other = round(amounts.subtotal + amounts.ice - received);
-      if (other >= 0) lines.push(ledgerLine('6.03', other)); else lines.push(ledgerLine('6.05', 0, -other));
+      const services = data.lines.filter(line=>line.itemType==='service'||line.itemType==='labor');
+      let serviceExpense=0;
+      for(const line of services){const amount=totals([line]).subtotal;const account=line.expenseAccount??'6.03';assert(state.chartOfAccounts.some(a=>a.code===account&&a.active&&a.postable&&['cost','expense'].includes(a.category)),'Selecciona una cuenta de gasto imputable para el servicio.');lines.push(ledgerLine(account,amount));serviceExpense=round(serviceExpense+amount);}
+      const otherExpense=round(other-serviceExpense);
+      if (otherExpense >= 0) lines.push(ledgerLine('6.03', otherExpense)); else lines.push(ledgerLine('6.05', 0, -otherExpense));
       lines.push(ledgerLine('1.1.06', amounts.tax), ledgerLine('2.1.01', 0, amounts.total));
     }
     if (lines.length) journalEntryId = post(data.date, documentLabels[docType], kind, id, lines);
@@ -214,12 +223,47 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
   }
   let result = '';
   switch (command.action) {
+    case 'seriesPermission':{const d=command.data;assert(state.employees.some(e=>e.employeeCode===d.userCode&&e.active),'Selecciona un empleado activo de la empresa educativa.');profile.seriesPermissions=[...(profile.seriesPermissions??[]).filter(p=>p.userCode!==d.userCode||p.group!==d.group),{...d,module:'Serie de numeración',permissionType:'Serie: Número de grupo'}];result=`${d.userCode}-${d.group}`;break;}
+    case 'stockRevalue':{
+      const d=command.data,item=state.items.find(i=>i.itemCode===d.itemCode&&i.active&&i.type==='inventory');assert(item,'Selecciona un artículo inventariable activo.');periodoAbierto(d.date);
+      const rows=state.warehouseStock.filter(s=>s.itemCode===d.itemCode),oldCost=item!.standardCost;assert(rows.some(r=>r.quantity>0),'El artículo no tiene existencias para revalorizar.');
+      if(privateCompany)assert(!state.stockMovements.some(m=>m.itemCode===d.itemCode&&m.date>d.date),'La fecha debe ser posterior a los movimientos valorados.');
+      let valueChange=0;for(const row of rows){const value=round(row.quantity*d.newCost);valueChange=round(valueChange+value-row.value);row.value=value;row.averageCost=d.newCost;row.layers=row.layers.map(l=>({...l,cost:d.newCost}));row.updatedAt=now;}assert(valueChange!==0,'La revalorización no produce diferencia.');
+      item!.standardCost=d.newCost;item!.updatedAt=now;result=next('RVI',d.date);const journalEntryId=post(d.date,d.reason,'stock_revaluation',result,valueChange>0?[ledgerLine('1.1.05',valueChange),ledgerLine('6.05',0,valueChange)]:[ledgerLine('6.05',-valueChange),ledgerLine('1.1.05',0,-valueChange)]);
+      profile.stockRevaluations=[...(profile.stockRevaluations??[]),{id:result,...d,oldCost,newCost:d.newCost,valueChange,journalEntryId}];break;
+    }
+    case 'landedCostType':{const d=command.data;assert(state.chartOfAccounts.some(a=>a.code===d.expenseAccount&&a.active&&a.postable&&['cost','expense'].includes(a.category)),'Cuenta de gastos no imputable.');assert(!d.updatesStock||d.allocation!=='none','Un gasto capitalizable requiere un método de distribución.');profile.landedCostTypes=[...(profile.landedCostTypes??[]).filter(t=>t.name!==d.name),d];result=d.name;break;}
+    case 'purchaseReturn': {
+      const d=command.data,vendor=state.vendors.find(v=>v.cardCode===d.vendorCode&&v.active),item=state.items.find(i=>i.itemCode===d.itemCode&&i.active);
+      assert(vendor&&item,'Selecciona proveedor y artículo activos.');assert(profile.warehouses.some(w=>w.code===d.warehouseCode),'Almacén inexistente.');
+      const source=state.purchaseOrders.find(doc=>doc.id===d.baseDocumentId&&doc.cardCode===d.vendorCode);
+      const records=profile.purchaseReturns??[];
+      if(d.kind!=='request'){
+        assert(source&&['goods_receipt','vendor_invoice'].includes(source.docType),'Selecciona una recepción o factura del mismo proveedor como sustento.');
+        assert(source?.docType===(d.kind==='goods_return'?'goods_receipt':'vendor_invoice'),'El tipo de devolución no corresponde al documento de sustento.');
+        const sourceQuantity=source!.lines.filter(l=>l.itemCode===d.itemCode).reduce((sum,l)=>sum+l.quantity,0);
+        const returned=records.filter(r=>r.baseDocumentId===d.baseDocumentId&&r.itemCode===d.itemCode&&r.kind!=='request'&&!r.withoutQuantity).reduce((sum,r)=>sum+r.quantity,0);
+        if(!d.withoutQuantity)assert(d.quantity+returned<=sourceQuantity,'La devolución supera la cantidad del sustento.');
+      }
+      assert(d.withoutQuantity===(d.kind==='value_credit'),'Solo el abono de valor usa la opción sin cantidad.');
+      if(d.kind==='request')assert(Boolean(d.rma),'Registra la autorización RMA del proveedor.');
+      const subtotal=round(d.quantity*d.price),tax=d.kind==='credit_note'?round(subtotal*0.15):0,total=round(subtotal+tax);assert(total>0,'El importe debe ser positivo.');
+      if(d.kind!=='request')assert(subtotal+records.filter(r=>r.baseDocumentId===d.baseDocumentId&&r.kind===d.kind).reduce((sum,r)=>sum+r.subtotal,0)<=source!.subtotal,'Los abonos superan el valor del documento de sustento.');
+      result=next(d.kind==='request'?'RMA':d.kind==='goods_return'?'DVC':'ACP',d.date);let journalEntryId='';
+      if(d.kind!=='request'){
+        const cost=d.withoutQuantity?0:move(d.itemCode,d.warehouseCode,-d.quantity,d.price,d.date,result);
+        if(d.kind==='goods_return')journalEntryId=post(d.date,'Devolución de mercancía a proveedor','purchase_return',result,[ledgerLine('2.1.06',cost),ledgerLine('1.1.05',0,cost)]);
+        else{const creditLines=[ledgerLine('2.1.01',total),ledgerLine(d.withoutQuantity?'6.03':'1.1.05',0,d.withoutQuantity?subtotal:cost),ledgerLine('1.1.06',0,tax)];const difference=round(subtotal-cost);if(!d.withoutQuantity&&difference)creditLines.push(difference>0?ledgerLine('6.05',0,difference):ledgerLine('6.05',-difference));journalEntryId=post(d.date,'Abono de proveedor','purchase_return',result,creditLines);vendor!.balance=round(vendor!.balance-total);vendor!.updatedAt=now;}
+      }
+      profile.purchaseReturns=[...records,{id:result,...d,subtotal,tax,total,journalEntryId}];break;
+    }
     case 'access': profile.lastAccess = now; result = uid; break;
     case 'sales': result = saveDocument('sales', command.data.docType, command.data.document); break;
     case 'purchase': result = saveDocument('purchase', command.data.docType, command.data.document); break;
     case 'customer': { assert(!state.customers.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); if(command.data.ownerCode) assert(state.employees.some(employee => employee.employeeCode === command.data.ownerCode && employee.active), 'El propietario debe ser un empleado activo de esta empresa.'); result = nextFinix('C'); state.customers.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); award('customer', 50, result, 'Primer cliente'); break; }
     case 'vendor': { assert(!state.vendors.some(p => p.ruc === command.data.ruc), 'Identificación ya registrada.'); result = nextFinix('V'); state.vendors.push({ ...meta(result), ...command.data, cardCode: result, balance: 0 }); break; }
     case 'item': { result = nextFinix('A'); state.items.push({ ...meta(result), ...command.data, itemCode: result }); award('item', 50, result, 'Primer artículo'); break; }
+    case 'itemUpdate': { const row=state.items.find(item=>item.itemCode===command.data.itemCode); assert(row,'Artículo inexistente.'); if(row){ Object.assign(row,command.data,{updatedAt:now}); result=row.itemCode; } break; }
     case 'employee': { assert(!state.employees.some(e => e.identification === command.data.identification), 'Cédula ya registrada.'); if(command.data.supervisorCode) assert(state.employees.some(employee => employee.employeeCode === command.data.supervisorCode && employee.active), 'El jefe debe ser un empleado activo de esta empresa.'); assert(profile.warehouses.some(warehouse => warehouse.code === command.data.branchCode), 'Sucursal inexistente.'); result = nextEmp(); state.employees.push({ ...meta(result), ...command.data, fullName: `${command.data.firstName} ${command.data.lastName}`.trim(), employeeCode: result }); break; }
     case 'journal': { const d = command.data; if(privateCompany) { assert(!d.lines.some(l=>bankLedgerAccount(l.accountCode)),'Registra bancos mediante cobros y pagos para mantener el saldo auxiliar.'); assert(!d.lines.some(l=>subsidiaryAccount(l.accountCode)),'Registra clientes, proveedores, inventarios y activos mediante sus documentos y operaciones para conservar el auxiliar; no mediante un asiento manual.'); } result = post(d.date, d.memo, 'manual', d.reference, d.lines); const entry = state.journalEntries.find(e => e.id === result); if (entry) entry.dueDate = d.dueDate; break; }
     case 'reverse': {
@@ -286,6 +330,13 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     case 'reconcile': {
       const d = command.data; const row = state.bankTransactions.find(t => t.id === d.id); if (!row) throw new Error('Movimiento inexistente.');
       assert(!d.reconciled || round(d.statementAmount) === round(row.amount * (row.type === 'deposit' ? 1 : -1)), 'Los importes no coinciden.'); Object.assign(row, d, { updatedAt: now }); result = row.id; break;
+    }
+    case 'trainingOpening': { assert(!privateCompany,'Usa la importación validada de saldos en la empresa privada.');result=applyTrainingOpening(state,command.data,now,uid,next,post,move);break; }
+    case 'accountingPeriods': {
+      const d=command.data;const year=d.startDate.slice(0,4);
+      const months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+      const periods=months.map((name,index)=>{const code=`${year}-${String(index+1).padStart(2,'0')}`;return {code,name:`${name} ${year}`,startDate:`${code}-01`,endDate:new Date(Date.UTC(Number(year),index+1,0)).toISOString().slice(0,10),dueThrough:d.dueThrough,closed:(profile.closedPeriods??[]).includes(code)};});
+      profile.accountingPeriods=[...(profile.accountingPeriods??[]).filter(p=>!p.code.startsWith(year+'-')),...periods];profile.accountingPeriodSetup={...d,interval:'Mensual',extendedDue:d.dueThrough>d.endDate,januaryStart:d.startDate.endsWith('-01-01'),differentCalendar:false};result=`periodos-${year}`;break;
     }
     case 'bankWorkflow': {
       const d=command.data; result=next('BWF',d.date);
@@ -367,7 +418,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       if (proveedor) { proveedor.balance = round(proveedor.balance - d.amount); proveedor.updatedAt = now; }
       bank.balance = round(bank.balance - d.amount - isd); bank.updatedAt = now;
       state.bankTransactions.push({ ...meta(result), transactionId: result, bankAccountId: bank.id, bankName: bank.bankName, accountName: bank.name, accountNumber: bank.accountNumber, date: d.date, type: 'payment', amount: round(d.amount + isd), paymentMethod:'transfer', partnerCode:d.vendorCode, documentNumber:'', counterpartAccount: principal, reference: d.reference || d.concept, documentId: '', reconciled: false, statementAmount: null, journalEntryId });
-      state.taxRuns.push({ ...meta(`${result}-ISD`), runId: `${result}-ISD`, kind: 'isd', year: Number(d.date.slice(0, 4)), date: d.date, title: `ISD · ${d.concept}`, journalEntryId, figures: { pago: d.amount, tarifa: tarifa.rate, isd, total: round(d.amount + isd) },
+      state.taxRuns.push({ ...meta(`${result}-ISD`), runId: `${result}-ISD`, kind: 'isd', year: Number(d.date.slice(0, 4)), date: d.date, title: `ISD · ${d.concept}`, partnerCode:d.vendorCode, concept:d.concept, journalEntryId, figures: { pago: d.amount, tarifa: tarifa.rate, isd, total: round(d.amount + isd) },
         lines: [{ label: 'Pago al exterior', value: d.amount.toFixed(2), note: d.concept }, { label: `ISD ${tarifa.rate} %`, value: isd.toFixed(2), note: d.imputacion === 'credito' ? 'crédito tributario (1.1.12)' : 'gasto (6.08)' }, { label: 'Total que sale del banco', value: round(d.amount + isd).toFixed(2), note: '' }] });
       break;
     }
@@ -463,7 +514,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'mrpRun': {
       const d=command.data; assert(d.endDate>=d.startDate,'Rango de planificación inválido.'); if(d.warehouseCode)assert(profile.warehouses.some(w=>w.code===d.warehouseCode),'Almacén inexistente.');
-      const rows=mrp(state).map(row=>({ ...row, projectedEnding: quantityRound(row.available+row.onOrder-row.required), recommendation:row.shortage>0?`Orden de compra ${row.shortage}`:'Cubierto' }));
+      const rows=mrp(state,{includeSales:d.includeSales,includePurchases:d.includePurchases,includeProduction:d.includeProduction,includeForecasts:d.includeForecasts,warehouseCode:d.level==='Almacén'?d.warehouseCode:undefined,excludeWarehouses:d.excludeWarehouses,startDate:d.startDate,endDate:d.endDate})
+        .filter(row=>!d.itemCodes.length||d.itemCodes.includes(row.itemCode))
+        .map(row=>{const item=state.items.find(candidate=>candidate.itemCode===row.itemCode);const net=Math.max(0,row.required-row.available-row.onOrder);const minimum=item?.planningMinimum??0;const multiple=item?.orderMultiple??0;const base=Math.max(net,minimum);const quantity=multiple>0?Math.ceil(base/multiple)*multiple:base;return {...row,projectedEnding:quantityRound(row.available+row.onOrder-row.required),recommendation:quantity>0?`${item?.planningMethod==='production'?'Orden de producción':'Orden de compra'} ${quantityRound(quantity)}`:'Cubierto'};});
       const runs=((profile as unknown as Record<string,unknown>).mrpRuns as unknown[]|undefined)??[]; result=next('MRP',d.startDate); (profile as unknown as Record<string,unknown>).mrpRuns=[...runs,{id:result,...d,rows,executedAt:now}]; break;
     }
     case 'budget': {
@@ -495,6 +548,9 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       assert(d.closed || (!(profile.closedFiscalYears ?? []).includes(d.period.slice(0, 4)) && !state.journalEntries.some(e => e.source === 'closing' && e.reference === d.period.slice(0, 4))), 'No se puede reabrir un mes de un ejercicio con cierre anual. Se requiere una reversión formal del cierre anual.');
       if (d.closed) cerrados.add(d.period); else cerrados.delete(d.period);
       profile.closedPeriods = [...cerrados].sort(); result = d.period;
+      const oldPeriod=profile.accountingPeriods?.find(p=>p.code===d.period);
+      if(oldPeriod){oldPeriod.closed=d.closed;if(d.dueThrough){assert(d.dueThrough>=oldPeriod.endDate,'El vencimiento debe alcanzar el fin del período.');oldPeriod.dueThrough=d.dueThrough;}}
+      else{const year=Number(d.period.slice(0,4)),month=Number(d.period.slice(5));const endDate=new Date(Date.UTC(year,month,0)).toISOString().slice(0,10);assert(!d.dueThrough||d.dueThrough>=endDate,'El vencimiento debe alcanzar el fin del período.');const name=new Intl.DateTimeFormat('es',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(`${d.period}-01T00:00:00Z`)).replace(' de ',' ');profile.accountingPeriods=[...(profile.accountingPeriods??[]),{code:d.period,name:name[0].toUpperCase()+name.slice(1),startDate:`${d.period}-01`,endDate,dueThrough:d.dueThrough??endDate,closed:d.closed}];}
       if (d.closed) award('period-close', 150, d.period, 'Primer cierre de período');
       break;
     }
@@ -673,15 +729,22 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const recibidos = state.stockMovements.filter(m => m.reference === doc.id && m.quantity > 0);
       assert(recibidos.length > 0, 'Ese documento no ingresó mercadería al inventario.');
       const total = round(d.costs.reduce((s, c) => s + c.amount, 0));
-      const base = recibidos.map(m => (d.allocation === 'value' ? m.value : m.quantity));
-      const baseTotal = base.reduce((s, v) => s + v, 0);
-      assert(baseTotal > 0, 'No hay base para prorratear.');
+      const shares=recibidos.map(()=>0),lastPriceShares=recibidos.map(()=>0),directExpenses=new Map<string,number>();
+      for(const cost of d.costs){
+        const config=(profile.landedCostTypes??[]).find(type=>type.name===cost.concept);
+        if(config?.fixedAmount)assert(cost.amount===config.fixedAmount,'El gasto debe coincidir con el importe fijo configurado.');
+        if(config&&!config.updatesStock){directExpenses.set(config.expenseAccount,round((directExpenses.get(config.expenseAccount)??0)+cost.amount));continue;}
+        const method=config?.allocation??d.allocation;
+        const basis=recibidos.map(m=>method==='weight'?m.quantity*(state.items.find(item=>item.itemCode===m.itemCode)?.weight??0):method==='quantity'?m.quantity:m.value),denominator=basis.reduce((sum,value)=>sum+value,0);
+        assert(denominator>0,'No hay base para prorratear; revisa el peso de los artículos.');let allocated=0;
+        recibidos.forEach((_,i)=>{const share=i===recibidos.length-1?round(cost.amount-allocated):round(cost.amount*basis[i]/denominator);allocated=round(allocated+share);shares[i]=round(shares[i]+share);if(config?.updatesLastPurchase)lastPriceShares[i]=round(lastPriceShares[i]+share);});
+      }
       result = next('CI', d.date);
-      let asignado = 0; const porCuenta = new Map<string, number>(); let aCosto = 0; let aVariacion = 0;
+      const porCuenta = new Map<string, number>(); let aCosto = 0; let aVariacion = 0;
       const lineas: LandedCost['lines'] = recibidos.map((m, i) => {
         // La última línea absorbe el redondeo para que el prorrateo sume exacto.
-        const share = i === recibidos.length - 1 ? round(total - asignado) : round((total * base[i]) / baseTotal);
-        asignado = round(asignado + share);
+        const share=shares[i];
+        if(lastPriceShares[i]){const item=state.items.find(item=>item.itemCode===m.itemCode)!;item.purchasePrice=round(item.purchasePrice+lastPriceShares[i]/m.quantity);item.updatedAt=now;}
         const row = stock(m.itemCode, m.warehouseCode);
         const enBodega = Math.min(m.quantity, row.quantity);
         const toInventory = round((share * enBodega) / m.quantity);
@@ -708,6 +771,7 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
         return { itemCode: m.itemCode, warehouseCode: m.warehouseCode, quantity: m.quantity, baseValue: m.value, share, toInventory, toCostOfSales };
       });
       const asiento: JournalLine[] = [...Array.from(porCuenta, ([cuenta, v]) => ledgerLine(cuenta, v))];
+      directExpenses.forEach((amount,account)=>asiento.push(ledgerLine(account,amount)));
       if (aCosto) asiento.push(ledgerLine('5.01', aCosto));
       if (aVariacion) asiento.push(ledgerLine('6.05', aVariacion));
       asiento.push(ledgerLine(d.paymentAccount, 0, total));
@@ -857,12 +921,15 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
     }
     case 'resourceSave': { (profile as unknown as Record<string, unknown>).resources = command.data.resources; result = 'recursos-guardados'; break; }
     case 'udoSave': { (profile as unknown as Record<string, unknown>).udoTables = command.data.tables; result = 'udo-guardado'; break; }
-    case 'cockpitSave': { (profile as unknown as Record<string, unknown>).cockpit = command.data; result = 'cockpit-guardado'; break; }
+    case 'cockpitSave': {
+      const d=command.data;assert(new Set(d.plantillas.map(p=>p.id)).size===d.plantillas.length,'Plantilla duplicada.');assert(!d.plantillaActiva||d.plantillas.some(p=>p.id===d.plantillaActiva),'Selecciona una plantilla existente.');
+      (profile as unknown as Record<string, unknown>).cockpit = {...d,actorUid:uid}; result = 'cockpit-guardado'; break;
+    }
     case 'query': { result = 'consulta-ejecutada'; break; }
     case 'binLocation': {
       const d=command.data;assert(profile.warehouses.some(w=>w.code===d.warehouseCode),'Bodega inexistente.');
       assert(!state.binLocations.some(b=>b.warehouseCode===d.warehouseCode&&b.binCode===d.binCode),'La ubicación ya existe en esa bodega.');
-      result=next('BIN');state.binLocations.push({...meta(result),...d,contents:[]});break;
+      result=next('BIN');state.binLocations.push({...meta(result),...d,currentWeight:0,availableWeight:d.maxWeight,contents:[]});break;
     }
     case 'binMove': {
       const d=command.data;assert(d.fromBin!==d.toBin,'Selecciona ubicaciones distintas.');
@@ -875,8 +942,12 @@ export function applyCommand(original: CompanyState, command: CompanyCommand, ui
       const available=from?.contents.find(c=>c.itemCode===d.itemCode)?.quantity??(physical-allocated);
       assert(available>=d.quantity,'La ubicación no dispone de esa cantidad.');
       if(to)assert(to.contents.reduce((n,c)=>n+c.quantity,0)+d.quantity<=to.maxQuantity,'Se supera la capacidad de la ubicación.');
+      const weight=(bin:typeof to)=>quantityRound(bin?.contents.reduce((sum,line)=>sum+line.quantity*(state.items.find(item=>item.itemCode===line.itemCode)?.weight??0),0)??0);
+      const incomingWeight=d.quantity*(state.items.find(item=>item.itemCode===d.itemCode)?.weight??0);
+      if(to?.maxWeight!==undefined)assert(weight(to)+incomingWeight<=to.maxWeight,'Se supera el peso máximo de la ubicación.');
       if(from){const line=from.contents.find(c=>c.itemCode===d.itemCode)!;line.quantity=quantityRound(line.quantity-d.quantity);from.updatedAt=now;}
       if(to){let line=to.contents.find(c=>c.itemCode===d.itemCode);if(!line){line={itemCode:d.itemCode,quantity:0};to.contents.push(line);}line.quantity=quantityRound(line.quantity+d.quantity);to.updatedAt=now;}
+      for(const bin of [from,to])if(bin){bin.currentWeight=weight(bin);bin.availableWeight=bin.maxWeight===undefined?undefined:quantityRound(bin.maxWeight-bin.currentWeight);}
       result=next('BINMOV');break;
     }
     case 'lotRegister': {

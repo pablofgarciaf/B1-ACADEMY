@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { TrainingOpeningRecord, AccountingPeriodRecord } from './training-accounting';
 
 export const money = z.number().finite().min(0).max(1e10);
 export const code = z.string().trim().min(1).max(80).regex(/^[\w.-]+$/);
@@ -14,7 +15,7 @@ export type PurchaseDocType = typeof purchaseTypes[number];
 export type DocType = SalesDocType | PurchaseDocType;
 export const costMethods = ['average', 'fifo', 'standard'] as const;
 export type CostingMethod = typeof costMethods[number];
-export const lineSchema = z.object({ itemCode: code, description: text.min(1), quantity: money.positive(), unit: text.min(1), price: money, discount: money.max(100), taxRate: z.union([z.literal(0), z.literal(5), z.literal(8), z.literal(15)]), warehouseCode: code, ice: money.optional() });
+export const lineSchema = z.object({ itemCode: code, description: text.min(1), quantity: money.positive(), unit: text.min(1), price: money, discount: money.max(100), taxRate: z.union([z.literal(0), z.literal(5), z.literal(8), z.literal(15)]), warehouseCode: code, ice: money.optional(), itemType:z.enum(['inventory','service','labor']).optional(), expenseAccount:code.optional(), binCode:code.optional() });
 export type DocumentLine = z.infer<typeof lineSchema>;
 const documentSchema = base.extend({ openingBalance: z.boolean().optional(), docNumber: code, /** Serie configurada usada para numerar este documento. */ series: text.default(''), ownerCode: z.union([code, z.literal('')]).default(''), date, dueDate: date, cardCode: code, cardName: text.min(1), currency: z.literal('USD'), reference: text, comments: text, baseDocumentId: z.string().max(80), status: z.enum(['open', 'closed']), lines: z.array(lineSchema).max(80), subtotal: money, ice: money.optional(), tax: money, total: money, paidAmount: money, journalEntryId: z.string() });
 export const salesSchema = documentSchema.extend({ docType: z.enum(salesTypes) }).refine(d=>d.openingBalance === true ? d.lines.length === 0 : d.lines.length > 0, 'Un documento normal requiere líneas; un saldo de apertura no reconstruye líneas históricas.');
@@ -37,7 +38,7 @@ export const vendorSchema = partnerSchema.extend({
 });
 export type Customer = z.infer<typeof customerSchema>;
 export type Vendor = z.infer<typeof vendorSchema>;
-export const itemSchema = base.extend({ ice: z.enum(['none', 'perfumes', 'videojuegos', 'cigarrillos']).default('none'), itemCode: code, name: text.min(2), type: z.enum(['inventory', 'service', 'labor']), group: text, itemClass: text.default('100'), uomGroup: text.default(''), inventoryUnit: text.default('UND'), manageMethod: z.enum(['none','lot','serial']).default('none'), perpetualInventory: z.boolean().default(true), purchaseUnit: text.min(1), salesUnit: text.min(1), price: money, price2: money, price3: money, maxDiscount: money.max(100), purchasePrice: money, preferredVendor: z.string().max(80), weight: money, length: money, width: money, height: money, costingMethod: z.enum(costMethods), standardCost: money, minStock: money, maxStock: money, reorderPoint: money, planningMethod: z.enum(['buy','production']).default('buy'), mrpActive: z.boolean().default(false), planningWarehouse: code.default('01'), purchaseLeadDays: z.number().int().min(0).max(3650).default(0), productionLeadDays: z.number().int().min(0).max(3650).default(0), orderInterval: text.default(''), orderMultiple: money.default(0), planningMinimum: money.default(0), description: text, specifications: text, active: z.boolean() });
+export const itemSchema = base.extend({ ice: z.enum(['none', 'perfumes', 'videojuegos', 'cigarrillos']).default('none'), itemCode: code, name: text.min(2), type: z.enum(['inventory', 'service', 'labor']), group: text, itemClass: text.default('100'), uomGroup: text.default(''), inventoryUnit: text.default('UND'), manageMethod: z.enum(['none','lot','serial']).default('none'), perpetualInventory: z.boolean().default(true), contractModel: text.default(''), defaultWarehouse: code.default('01'), purchaseUnit: text.min(1), salesUnit: text.min(1), price: money, price2: money, price3: money, maxDiscount: money.max(100), purchasePrice: money, preferredVendor: z.string().max(80), weight: money, length: money, width: money, height: money, costingMethod: z.enum(costMethods), standardCost: money, minStock: money, maxStock: money, reorderPoint: money, planningMethod: z.enum(['buy','production']).default('buy'), mrpActive: z.boolean().default(false), planningWarehouse: code.default('01'), purchaseLeadDays: z.number().int().min(0).max(3650).default(0), productionLeadDays: z.number().int().min(0).max(3650).default(0), orderInterval: text.default(''), orderMultiple: money.default(0), planningMinimum: money.default(0), forecastQuantity: money.default(0), description: text, specifications: text, active: z.boolean() });
 export type Item = z.infer<typeof itemSchema>;
 export interface WarehouseStock extends Entity { itemCode: string; warehouseCode: string; quantity: number; reserved: number; averageCost: number; value: number; costingMethod: CostingMethod; layers: { quantity: number; cost: number; date: string }[] }
 export interface StockMovement extends Entity { itemCode: string; description?: string; warehouseCode: string; fromWarehouseCode?: string; toWarehouseCode?: string; date: string; quantity: number; unitCost: number; value: number; balance: number; reference: string }
@@ -57,7 +58,7 @@ export type PayrollInputLine = z.infer<typeof payrollInputLine>;
 export interface PayrollLine extends PayrollInputLine { employeeName: string; salary: number; overtime50: number; overtime100: number; contributory: number; thirteenth: number; fourteenth: number; reserves: number; thirteenthProvision: number; fourteenthProvision: number; reserveProvision: number; vacationProvision: number; personalIESS: number; incomeTax: number; employerIESS: number; income: number; deductions: number; net: number }
 export interface PayrollRun extends Entity { payrollId: string; period: string; date: string; sbu: number; lines: PayrollLine[]; totalIncome: number; totalDeductions: number; totalNet: number; employerIESS: number; journalEntryId: string; status: 'posted' }
 /** Cierres tributarios del ejercicio: utilidades de los trabajadores, impuesto a la renta, anticipo y pagos con ISD. */
-export interface TaxRun extends Entity { runId: string; kind: 'utilidades' | 'renta' | 'anticipo' | 'isd'; year: number; date: string; title: string; figures: Record<string, number>; lines: { label: string; value: string; note: string }[]; journalEntryId: string }
+export interface TaxRun extends Entity { runId: string; kind: 'utilidades' | 'renta' | 'anticipo' | 'isd'; year: number; date: string; title: string; partnerCode?: string; concept?: string; figures: Record<string, number>; lines: { label: string; value: string; note: string }[]; journalEntryId: string }
 export const sriTypes = ['01', '03', '04', '05', '06', '07'] as const;
 export const retentionLineSchema = z.object({ code: code, tax: z.enum(['IR', 'IVA']), base: money, rate: money.max(100) });
 export const atsSchema = z.object({ sustentoTributario: text, tpIdProv: text, idProv: text, tipoComprobante: text, parteRel: z.boolean(), fechaRegistro: date, establecimiento: z.string().regex(/^\d{3}$/), puntoEmision: z.string().regex(/^\d{3}$/), secuencial: text, autorizacion: text, fechaEmision: date, baseNoGraIva: money, baseImponible: money, baseImpGrav: money, baseImpExe: money, montoIce: money, montoIva: money, valRetBien10: money, valRetServ20: money, valorRetBienes: money, valRetServ50: money, valorRetServicios: money, valRetServ100: money, totbasesImpReemb: money, pagoLocExt: text, paisEfecPago: text, aplicConvDobTrib: z.boolean(), pagExtSujRetNorLeg: z.boolean(), formasDePago: z.array(text), tipoEmision: text, compensaciones: z.array(z.object({ codigo: text, valor: money })), retencionesRecibidas: money,
@@ -86,7 +87,14 @@ export interface ProductionOrder extends Entity { orderNumber: string; receiptNu
 export interface XPEvent { key: string; label: string; points: number; date: string; reference: string }
 export interface CompanyProfile extends Entity { usage?: 'training' | 'private'; trainingSetupVersion?: number; address?: string; phone?: string; regimen?: 'general' | 'rimpe-emprendedor' | 'rimpe-popular'; uid: string; email: string; companyName: string; ruc: string; currency: 'USD'; country: 'EC'; fiscalScenario: 'training-2024' | 'ecuador-2026'; sbu: number; incomeTaxRate: number; warehouses: { code: string; name: string }[]; xp: number; level: number; xpHistory: XPEvent[]; completedModules: string[]; lastAccess: string; sequences: Record<string, number>; documentCount: number;
   /** Regla guardada para asignar fecha de stock a recuentos físicos. */
+  seriesPermissions?: {userCode:string;group:number;access:'Total'|'Consulta'|'Ninguno';enabled:boolean;module:'Serie de numeración';permissionType:'Serie: Número de grupo'}[];
+  stockRevaluations?: {id:string;itemCode:string;date:string;oldCost:number;newCost:number;reason:string;valueChange:number;journalEntryId:string}[];
+  landedCostTypes?: {name:string;expenseAccount:string;updatesStock:boolean;allocation:'weight'|'value'|'quantity'|'none';updatesLastPurchase:boolean;fixedAmount:number}[];
+  purchaseReturns?: {id:string;kind:'request'|'goods_return'|'credit_note'|'value_credit';date:string;vendorCode:string;baseDocumentId:string;itemCode:string;quantity:number;price:number;warehouseCode:string;reason:string;rma:string;withoutQuantity:boolean;subtotal:number;tax:number;total:number;journalEntryId:string}[];
   inventorySettings?: { document: string; stockDateBy: 'creation' | 'posting'; default: boolean; appliesTo: string; exampleDate: string }[];
+  trainingOpenings?: TrainingOpeningRecord[];
+  accountingPeriods?: AccountingPeriodRecord[];
+  accountingPeriodSetup?: {startDate:string;endDate:string;dueThrough:string;interval:'Mensual';extendedDue:boolean;januaryStart:boolean;differentCalendar:boolean};
   /** Períodos contables cerrados (AAAA-MM): no admiten asientos. */
   closedPeriods?: string[];
   /** Annual lock, also for years with no profit-and-loss entry to post. */
@@ -159,7 +167,7 @@ export interface TeamUser extends Entity { userCode: string; name: string; role:
 /** Ruta de fabricación: operaciones por centro de trabajo con tiempos estándar. */
 export interface Routing extends Entity { itemCode: string; operations: { seq: number; name: string; workCenter: string; setupMinutes: number; runMinutesPerUnit: number }[] }
 /** Ubicación (bin) dentro de un almacén con su contenido. */
-export interface BinLocation extends Entity { warehouseCode: string; binCode: string; description: string; maxQuantity: number; contents: { itemCode: string; quantity: number }[] }
+export interface BinLocation extends Entity { warehouseCode: string; binCode: string; description: string; maxQuantity: number; maxWeight?: number; currentWeight?: number; availableWeight?: number; contents: { itemCode: string; quantity: number }[] }
 /** Lote o número de serie, con vencimiento y trazabilidad de entradas y salidas. */
 export interface Lot extends Entity {
   itemCode: string; warehouseCode: string; lotNumber: string; kind: 'lote' | 'serie'; receivedQuantity: number; quantity: number; expiryDate: string;

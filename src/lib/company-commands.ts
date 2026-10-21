@@ -2,12 +2,19 @@ import { z } from 'zod';
 import { code, date, text, money, lineSchema, salesTypes, purchaseTypes, customerSchema, vendorSchema, itemSchema, employeeSchema, journalLineSchema, sriInputSchema, bomInputSchema, payrollInputLine, costMethods } from './firestore-types';
 import { openingBalancesSchema } from './opening-balances-schema';
 import { partnerCommands } from './partner-commands';
+import { trainingOpeningSchema, accountingPeriodsSchema } from './training-accounting';
 
 const omitBase = { id: true, createdAt: true, updatedAt: true, createdBy: true } as const;
 const period = z.string().regex(/^20\d{2}-(0[1-9]|1[0-2])$/, 'Período con formato AAAA-MM.');
 const documentInput = z.object({ date, dueDate: date, cardCode: code, reference: text, comments: text, baseDocumentId: z.string().max(80), series: text.optional(), lines: z.array(lineSchema).min(1).max(80) }).refine(d => d.dueDate >= d.date, 'El vencimiento precede a la fecha.');
 export const commandSchema = z.discriminatedUnion('action', [
   ...partnerCommands,
+  z.object({action:z.literal('seriesPermission'),data:z.object({userCode:code,group:z.number().int().min(1).max(10),access:z.enum(['Total','Consulta','Ninguno']),enabled:z.boolean()})}),
+  z.object({action:z.literal('stockRevalue'),data:z.object({itemCode:code,date,newCost:money.positive(),reason:text.min(3)})}),
+  z.object({action:z.literal('landedCostType'),data:z.object({name:text.min(2),expenseAccount:code,updatesStock:z.boolean(),allocation:z.enum(['weight','value','quantity','none']),updatesLastPurchase:z.boolean(),fixedAmount:money.default(0)})}),
+  z.object({action:z.literal('purchaseReturn'),data:z.object({kind:z.enum(['request','goods_return','credit_note','value_credit']),date,vendorCode:code,baseDocumentId:z.string().max(80),itemCode:code,quantity:money.positive(),price:money,warehouseCode:code,reason:text.min(2),rma:text.default(''),withoutQuantity:z.boolean().default(false)})}),
+  z.object({action:z.literal('trainingOpening'),data:trainingOpeningSchema}),
+  z.object({action:z.literal('accountingPeriods'),data:accountingPeriodsSchema}),
   z.object({ action:z.literal('openingBalances'), data:openingBalancesSchema }),
   z.object({action:z.literal('initializeTraining'),data:z.object({companyName:text.min(2).optional()})}),
   z.object({ action: z.literal('access'), data: z.object({}) }),
@@ -21,6 +28,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('customer'), data: customerSchema.omit({ ...omitBase, cardCode: true, balance: true, linkedVendorCode:true }) }),
   z.object({ action: z.literal('vendor'), data: vendorSchema.omit({ ...omitBase, cardCode: true, balance: true, linkedCustomerCode:true }) }),
   z.object({ action: z.literal('item'), data: itemSchema.omit({ ...omitBase, itemCode: true }).refine(v => v.maxStock >= v.minStock, 'Máximo menor al mínimo.') }),
+  z.object({ action: z.literal('itemUpdate'), data: itemSchema.omit(omitBase).refine(v => v.maxStock >= v.minStock, 'Máximo menor al mínimo.') }),
   z.object({ action: z.literal('employee'), data: employeeSchema.omit({ ...omitBase, employeeCode: true }) }),
   z.object({ action: z.literal('journal'), data: z.object({ date, dueDate: date, memo: text.min(1), reference: text, lines: z.array(journalLineSchema).min(2).max(100) }) }),
   z.object({ action: z.literal('reverse'), data: z.object({ entryId: code, date }) }),
@@ -40,11 +48,11 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('productionStageIssue'), data: z.object({ id: code, stage: z.number().int().positive(), componentCode: code, quantity: money.positive(), fromWarehouseCode: code, toWarehouseCode: code, date }) }),
   z.object({ action: z.literal('productionReceipt'), data: z.object({ id: code, date, quantity: money.positive().optional() }) }),
   z.object({ action: z.literal('mrp'), data: z.object({ vendorCode: code, date }) }),
-  z.object({ action: z.literal('mrpRun'), data: z.object({ scenario:text.min(2), startDate:date, endDate:date, level:text.min(2), warehouseCode:code.optional(), horizon:z.number().int().min(1).max(3650).default(30), includePurchases:z.boolean().default(true), includeProduction:z.boolean().default(true), includeSales:z.boolean().default(true), includeForecasts:z.boolean().default(false), excludeWarehouses:z.array(code).max(20).default([]) }).refine(d=>d.endDate>=d.startDate,'El fin no puede ser anterior al inicio.') }),
+  z.object({ action: z.literal('mrpRun'), data: z.object({ scenario:text.min(2), startDate:date, endDate:date, level:text.min(2), warehouseCode:code.optional(), itemCodes:z.array(code).max(200).default([]), horizon:z.number().int().min(1).max(3650).default(30), includePurchases:z.boolean().default(true), includeProduction:z.boolean().default(true), includeSales:z.boolean().default(true), includeForecasts:z.boolean().default(false), excludeWarehouses:z.array(code).max(20).default([]) }).refine(d=>d.endDate>=d.startDate,'El fin no puede ser anterior al inicio.') }),
   z.object({ action: z.literal('missionComplete'), data: z.object({ id: code }) }),
   z.object({ action: z.literal('budget'), data: z.object({ year: z.string().regex(/^20\d{2}$/), accountCode: code, months: z.array(money).length(12) }) }),
   // Cierre contable: un período cerrado no admite asientos; el cierre anual traslada el resultado.
-  z.object({ action: z.literal('closePeriod'), data: z.object({ period: period, closed: z.boolean() }) }),
+  z.object({ action: z.literal('closePeriod'), data: z.object({ period: period, closed: z.boolean(), dueThrough:date.optional() }) }),
   z.object({ action: z.literal('closeYear'), data: z.object({ year: z.string().regex(/^20\d{2}$/) }) }),
   // Autorizaciones (borradores retenidos hasta aprobación).
   z.object({ action: z.literal('approvalRule'), data: z.object({ docType: z.enum([...salesTypes, ...purchaseTypes]), threshold: money, active: z.boolean() }) }),
@@ -80,7 +88,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   // Rutas de fabricación.
   z.object({ action: z.literal('routing'), data: z.object({ itemCode: code, operations: z.array(z.object({ seq: z.number().int().min(1), name: text.min(2), workCenter: text.min(2), setupMinutes: money, runMinutesPerUnit: money })).min(1).max(30) }) }),
   // Ubicaciones de bodega (bins).
-  z.object({ action: z.literal('binLocation'), data: z.object({ warehouseCode: code, binCode: code, description: text, maxQuantity: money.positive() }) }),
+  z.object({ action: z.literal('binLocation'), data: z.object({ warehouseCode: code, binCode: code, description: text, maxQuantity: money.positive(), maxWeight:money.positive().optional() }) }),
   z.object({ action: z.literal('binMove'), data: z.object({ warehouseCode: code, itemCode: code, fromBin: z.string().max(80), toBin: z.string().max(80), quantity: money.positive() }) }),
   // Lotes y series: registro en la recepción y salida asignada a un documento de venta.
   z.object({ action: z.literal('lotRegister'), data: z.object({ documentId: code, itemCode: code, kind: z.enum(['lote', 'serie']), lots: z.array(z.object({ lotNumber: code, quantity: money.positive(), expiryDate: z.union([date, z.literal('')]) })).min(1).max(100) }) }),
@@ -100,7 +108,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('costCentersSave'), data: z.object({ centros: z.array(z.unknown()), normas: z.array(z.unknown()), config: z.record(z.unknown()).default({}) }) }),
   z.object({ action: z.literal('resourceSave'), data: z.object({ resources: z.array(z.unknown()) }) }),
   z.object({ action: z.literal('udoSave'), data: z.object({ tables: z.array(z.unknown()) }) }),
-  z.object({ action: z.literal('cockpitSave'), data: z.object({ plantillas: z.array(z.unknown()), plantillaActiva: z.string() }) }),
+  z.object({ action: z.literal('cockpitSave'), data: z.object({ plantillas: z.array(z.object({id:code,nombre:text.min(1),descripcion:text.default(''),widgets:z.array(z.object({id:code,tipo:text.min(1),titulo:text.min(1),visible:z.boolean()})).max(30)})).max(40), plantillaActiva: z.string().max(80), usuario:text.default('Usuario actual') }) }),
   z.object({ action: z.literal('query'), data: z.object({ title: z.string().default('Consulta'), sql: z.string() }) }),
 ]);
 export type CompanyCommand = z.infer<typeof commandSchema>;

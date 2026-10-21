@@ -18,12 +18,13 @@ const PROVEEDORES = [
   { name: 'Lenovo Andina', city: 'Quito', ruc: '1790088006001' },
   { name: 'Acer Distributors', city: 'Cuenca', ruc: '0190099008001' },
 ];
-const ARTICULOS: [string, number, number][] = [
+const ARTICULOS: [string, number, number, ('inventory'|'service')?][] = [
   ['Laptop Dell Latitude 3420', 650, 850], ['Laptop HP ProBook 440', 680, 890], ['Monitor Lenovo ThinkVision 24"', 120, 180],
   ['Teclado Inalámbrico Logitech', 25, 45], ['Mouse Óptico Dell', 10, 20], ['Servidor HP ProLiant DL380', 2500, 3200],
   ['Disco Duro SSD 1TB Samsung', 80, 130], ['Memoria RAM 16GB DDR4', 45, 75], ['Impresora Multifunción Epson', 150, 220],
   ['Switch Cisco 24 Puertos', 300, 450], ['Cable de Red Cat6 100m', 30, 55], ['UPS APC 1500VA', 180, 260],
   ['Pintura blanca', 12, 20],
+  ['Servicios Profesionales', 0, 0, 'service'],
 ];
 
 const socio = (s: { name: string; city: string; ruc: string }) => ({
@@ -36,6 +37,7 @@ const EMPLEADOS = [
   { firstName: 'María', lastName: 'Gómez', identification: '1709876542', position: 'Contadora General', department: 'Contabilidad', hireDate: '2024-03-01', baseSalary: 900, thirteenthMonthly: false, fourteenthMonthly: false, reserveMonthly: true },
   { firstName: 'Carlos', lastName: 'López', identification: '1711111110', position: 'Jefe de Bodega', department: 'Bodega', hireDate: '2023-06-10', baseSalary: 750, thirteenthMonthly: false, fourteenthMonthly: false, reserveMonthly: false },
   { firstName: 'Ana', lastName: 'Silva', identification: '1722222229', position: 'Asistente de Ventas', department: 'Ventas', hireDate: '2026-01-15', baseSalary: 482, thirteenthMonthly: true, fourteenthMonthly: true, reserveMonthly: true },
+  { firstName: 'Pedro', lastName: 'Andrade', identification: '1711111128', position: 'Auxiliar', department: 'Administración', hireDate: '2026-01-01', baseSalary: 600, thirteenthMonthly: false, fourteenthMonthly: false, reserveMonthly: false },
 ];
 
 /** Comandos que crean la B1 Center completa (sin el stock, que necesita los códigos de artículo generados). */
@@ -43,11 +45,11 @@ export function comandosB1Center(nombrePersonalizado = EMPRESA_CURSO): CompanyCo
   return [
     { action: 'initialize', data: { companyName: nombrePersonalizado } },
     { action: 'companySettings', data: { companyName: nombrePersonalizado, ruc: '1792456789001', address: 'Av. El Salvador N34-12, Quito', phone: '022345678', incomeTaxRate: 25,
-      warehouses: [{ code: '01', name: 'Bodega Central Quito' }, { code: '02', name: 'Bodega Sucursal Guayaquil' }, { code: '99', name: 'Planta de producción' }] } },
+      warehouses: [{ code: '01', name: 'Bodega Central Quito' }, { code: '02', name: 'Bodega Sucursal Guayaquil' }, {code:'03',name:'Almacén Regional Cuenca'}, { code: '99', name: 'Planta de producción' }] } },
     { action: 'importMasterData', data: { kind: 'customer', rows: CLIENTES.map((c) => ({ ...socio(c), kind: 'customer' })) } },
     { action: 'importMasterData', data: { kind: 'vendor', rows: PROVEEDORES.map(socio) } },
-    { action: 'importMasterData', data: { kind: 'item', rows: ARTICULOS.map(([name, costo, precio]) => ({
-      name, type: 'inventory', group: 'Equipos', purchaseUnit: 'UND', salesUnit: 'UND', price: precio, price2: precio, price3: precio,
+    { action: 'importMasterData', data: { kind: 'item', rows: ARTICULOS.map(([name, costo, precio, type='inventory']) => ({
+      name, type, group: type==='service'?'Servicios':'Equipos', purchaseUnit: 'UND', salesUnit: 'UND', price: precio, price2: precio, price3: precio,
       maxDiscount: 10, purchasePrice: costo, preferredVendor: '', weight: 0, length: 0, width: 0, height: 0, costingMethod: 'average',
       standardCost: costo, minStock: 2, maxStock: 50, reorderPoint: 5, description: name, specifications: '', active: true,
     })) } },

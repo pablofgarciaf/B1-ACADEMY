@@ -104,15 +104,17 @@ export function sriAccessKey(date: string, type: string, ruc: string, series: st
   return base + (check === 11 ? 0 : check === 10 ? 1 : check);
 }
 export const xmlEscape = (value: string): string => value.replace(/[<>&"']/g, char => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', '"': '&quot;', "'": '&apos;' })[char] ?? char);
-export function mrp(state: CompanyState) {
+export function mrp(state: CompanyState, options: { includeSales?: boolean; includePurchases?: boolean; includeProduction?: boolean; includeForecasts?: boolean; warehouseCode?: string; excludeWarehouses?: string[]; startDate?: string; endDate?: string } = {}) {
   const needs = new Map<string, number>();
   const allocated = new Map<string, number>();
+  const excluded = new Set(options.excludeWarehouses ?? []);
+  const inScope = (warehouseCode: string) => (!options.warehouseCode || warehouseCode === options.warehouseCode) && !excluded.has(warehouseCode);
   function expand(itemCode: string, quantity: number, visited: Set<string>) {
     if (visited.has(itemCode)) throw new Error('BOM circular.');
     const bom = state.boms.find(b => b.parentItemCode === itemCode && b.type === 'production');
     if (!bom) { needs.set(itemCode, (needs.get(itemCode) ?? 0) + quantity); return; }
-    const available = state.warehouseStock.filter(s => s.itemCode === itemCode).reduce((sum, row) => sum + row.quantity - row.reserved, 0);
-    const incoming = state.productionOrders.filter(o => o.parentItemCode === itemCode && o.status !== 'closed').reduce((sum, row) => sum + row.quantity, 0);
+      const available = state.warehouseStock.filter(s => s.itemCode === itemCode && inScope(s.warehouseCode)).reduce((sum, row) => sum + row.quantity - row.reserved, 0);
+      const incoming = options.includeProduction === false ? 0 : state.productionOrders.filter(o => o.parentItemCode === itemCode && o.status !== 'closed' && inScope(o.warehouseCode)).reduce((sum, row) => sum + row.quantity, 0);
     const coverage = Math.max(0, available + incoming - (allocated.get(itemCode) ?? 0));
     const used = Math.min(quantity, coverage); allocated.set(itemCode, (allocated.get(itemCode) ?? 0) + used);
     const net = quantityRound(quantity - used);
@@ -120,10 +122,11 @@ export function mrp(state: CompanyState) {
     const next = new Set(visited).add(itemCode);
     bom.components.forEach(c => expand(c.itemCode, c.quantity * net, next));
   }
-  state.salesOrders.filter(d => d.docType === 'order' && d.status === 'open').forEach(d => d.lines.forEach(l => expand(l.itemCode, l.quantity, new Set())));
+  if(options.includeSales !== false) state.salesOrders.filter(d => d.docType === 'order' && d.status === 'open' && (!options.startDate || d.dueDate >= options.startDate) && (!options.endDate || d.dueDate <= options.endDate)).forEach(d => d.lines.forEach(l => expand(l.itemCode, l.quantity, new Set())));
+  if(options.includeForecasts) state.items.filter(item=>item.active&&item.mrpActive&&item.forecastQuantity>0).forEach(item=>needs.set(item.itemCode,(needs.get(item.itemCode)??0)+item.forecastQuantity));
   return [...needs].map(([itemCode, required]) => {
-    const available = state.warehouseStock.filter(s => s.itemCode === itemCode).reduce((s, row) => s + row.quantity - row.reserved, 0);
-    const onOrder = state.purchaseOrders.filter(d => d.status === 'open' && ['purchase_request', 'purchase_order'].includes(d.docType)).flatMap(d => d.lines).filter(l => l.itemCode === itemCode).reduce((sum, l) => sum + l.quantity, 0);
+    const available = state.warehouseStock.filter(s => s.itemCode === itemCode && inScope(s.warehouseCode)).reduce((s, row) => s + row.quantity - row.reserved, 0);
+    const onOrder = options.includePurchases === false ? 0 : state.purchaseOrders.filter(d => d.status === 'open' && ['purchase_request', 'purchase_order'].includes(d.docType) && (!options.startDate || d.dueDate >= options.startDate) && (!options.endDate || d.dueDate <= options.endDate)).flatMap(d => d.lines).filter(l => l.itemCode === itemCode && inScope(l.warehouseCode)).reduce((sum, l) => sum + l.quantity, 0);
     return { itemCode, required: quantityRound(required), available: quantityRound(available), onOrder: quantityRound(onOrder), shortage: quantityRound(Math.max(0, required - available - onOrder)) };
   });
 }

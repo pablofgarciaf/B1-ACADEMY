@@ -5,7 +5,11 @@
  */
 import { SALES_MISSIONS } from './sales-learning';
 export type PantallaConectada =
+  | {clave:'revalorizacionStock'}
+  | { clave:'devolucionCompra' }
+  | { clave: 'ubicacion' }
   | { clave: 'consultaAcademica' }
+  | { clave: 'apertura' }
   | { clave: 'cliente' } | { clave: 'proveedor' } | { clave: 'articulo' }
   | { clave: 'documento'; docType: 'quotation' | 'order' | 'delivery' | 'invoice' | 'credit_note' | 'purchase_request' | 'purchase_order' | 'goods_receipt' | 'vendor_invoice' }
   | { clave: 'asiento' } | { clave: 'activos' } | { clave: 'bom' } | { clave: 'produccion' } | { clave: 'transferencia' }
@@ -97,6 +101,15 @@ export function pantallaConectada(guia?: { title?: string; menu_path?: string; m
   if (!guia) return null;
   if (guia.missionId && SALES_MISSIONS[guia.missionId]) return SALES_MISSIONS[guia.missionId].pantalla;
   const preliminar=plano(`${guia.title ?? ''} ${guia.menu_path ?? ''}`);
+  if(/actualizar costo estandar/.test(preliminar))return {clave:'revalorizacionStock'};
+  if(/^crear (solicitud devolucion|devolucion mercancia|abono proveedor|abono sin cantidad)/.test(plano(guia.title??'')))return {clave:'devolucionCompra'};
+  if(/saldo.*apertura|apertura.*saldo|saldos iniciales/.test(preliminar))return {clave:'apertura'};
+  if(guia.missionId==='mod29-c2#5'||guia.missionId==='mod25-c4#5')return {clave:'cierre'};
+  if(/configurar peso maximo en ubicacion/.test(preliminar)) return { clave: 'ubicacion' };
+  if(/\bisd\b|pago al exterior|pagos al exterior|salida de divisas/.test(preliminar))return {clave:'isd'};
+  if(/ejecutar el rol de pagos/.test(preliminar)) return { clave: 'nomina' };
+  if(/crear serie para activos/.test(preliminar)) return { clave: 'series', docType:'activos' };
+  if(/crear serie de ajuste/.test(preliminar)) return { clave: 'series', docType:'asientos' };
   if(/banco|cobro|pago|extracto|concili/.test(preliminar)) return { clave: 'bancos' };
   // Buscar, consultar o asistentes/fichas de configuración guiada no guardan un registro de motor directo: esas prácticas siguen con la ficha del ejercicio en PracticaValidada.
   // Ver, solicitar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.

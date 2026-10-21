@@ -40,11 +40,12 @@ export function prepareTraining(original:CompanyState,name:string|undefined,uid:
     }
     run(command);
   }
-  for(const item of state.items){if(!state.warehouseStock.some(s=>s.itemCode===item.itemCode && s.warehouseCode==='01')){
+  for(const item of state.items.filter(item=>item.type==='inventory')){if(!state.warehouseStock.some(s=>s.itemCode===item.itemCode && s.warehouseCode==='01')){
     const before=state.journalEntries.length;run(comandoStock(item.itemCode));
     for(const entry of state.journalEntries.slice(before)){entry.memo='Aporte inicial de existencias de laboratorio';for(const line of entry.lines)if(line.accountCode==='4.02')line.accountCode='3.01';}
   }}
   if(!state.profile || !state.items.length || !state.customers.length || !state.vendors.length)throw new Error('No se pudo completar la preparación académica.');
+  if(!state.binLocations.some(bin=>bin.warehouseCode==='03'&&bin.binCode==='A1-S1-L1'))run({action:'binLocation',data:{warehouseCode:'03',binCode:'A1-S1-L1',description:'Isla A1, estantería S1, nivel L1',maxQuantity:1000}});
   state.profile.trainingSetupVersion=1;
   return {state,result:uid};
 }

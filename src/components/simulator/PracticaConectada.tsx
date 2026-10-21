@@ -1,4 +1,5 @@
 'use client';
+import { accountingPracticeGuidance } from '@/lib/accounting-practice-guidance';
 
 import React from 'react';
 import dynamic from 'next/dynamic';
@@ -17,6 +18,9 @@ import { operationFor } from '@/lib/practice-contract';
 // Pantallas reales del Simulador integral (cargadas solo cuando la práctica las necesita).
 const cargando = () => <p className="p-4 text-[#4a5b70]">Abriendo la ventana…</p>;
 const P = {
+  revalorizacionStock: dynamic(() => import('@/components/finix-screens/StockRevaluationScreen'), { loading: cargando }),
+  devolucionCompra: dynamic(() => import('@/components/finix-screens/PurchaseReturnScreen'), { loading: cargando }),
+  ubicacion: dynamic(() => import('@/components/finix-screens/BinWeightScreen'), { loading: cargando }),
   socio: dynamic(() => import('@/components/finix-screens/CompanyPartnerForm'), { loading: cargando }),
   articulo: dynamic(() => import('@/components/finix-screens/ItemMasterForm'), { loading: cargando }),
   documento: dynamic(() => import('@/components/finix-screens/SalesOrderForm'), { loading: cargando }),
@@ -34,6 +38,7 @@ const P = {
   empresa: dynamic(() => import('@/components/finix-screens/CompanySettingsScreen'), { loading: cargando }),
   presupuesto: dynamic(() => import('@/components/finix-screens/BudgetScreen'), { loading: cargando }),
   cierre: dynamic(() => import('@/components/finix-screens/PeriodCloseScreen'), { loading: cargando }),
+  apertura: dynamic(() => import('@/components/finix-screens/TrainingOpeningScreen'), { loading: cargando }),
   importacion: dynamic(() => import('@/components/finix-screens/LandedCostScreen'), { loading: cargando }),
   mrp: dynamic(() => import('@/components/finix-screens/MRPScreen'), { loading: cargando }),
   consultas: dynamic(() => import('@/components/finix-screens/QueryManagerScreen'), { loading: cargando }),
@@ -125,6 +130,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
         </div>
 
         {/* Pasos a seguir */}
+        {accountingPracticeGuidance(guia.missionId)&&<p className="rounded border border-blue-200 bg-white p-2 text-xs"><strong>En este laboratorio: </strong>{accountingPracticeGuidance(guia.missionId)}</p>}
         {guia.instructions && guia.instructions.length > 0 && (
           <div className="space-y-1">
             <span className="text-[10px] font-extrabold text-[#003366] uppercase tracking-wider block">

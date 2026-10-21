@@ -4,6 +4,7 @@ import type { CompanyAuditEvent } from './company-audit';
 import { pantallaConectada, type PantallaConectada } from './practica-conectada';
 import { normalizar } from './practice-check';
 import { STRICT_PRACTICE_KEYS } from './strict-practice-keys';
+import { accountingPracticeContract, decorateAccountingOutcome } from './accounting-practice-outcomes';
 
 type RecordValue = Record<string, unknown>;
 export interface OutcomeRequirement { label: string; expected: string; path: string; generated?: boolean }
@@ -14,11 +15,14 @@ export interface PracticeOutcomeContract {
 const plain = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const entries = (pairs: Record<string, string>) => new Map(Object.entries(pairs).map(([label, path]) => [plain(label), path]));
 const maps: Record<string, Map<string, string>> = {
+  revalorizacionStock:entries({'Código':'itemCode','Costo estándar actual':'oldCost','Nuevo costo estándar':'newCost','Fecha de efecto':'date','Motivo':'reason'}),
+  devolucionCompra:entries({'Fecha':'date','Código Proveedor':'vendorCode','Código Artículo':'itemCode','Cantidad':'quantity','Motivo':'reason','Número RMA':'rma','Costo unitario':'price','Valor total':'subtotal','Precio unitario':'price','IVA (15%)':'tax','Concepto':'reason','Valor':'subtotal','Sin contabilización de cantidad':'withoutQuantity'}),
+  ubicacion: entries({'Código':'binCode','Nombre':'description','Bodega':'warehouseCode','Peso artículo':'currentWeight','Peso máximo':'maxWeight','Peso disponible':'availableWeight'}),
   empresa: entries({'Razón social':'companyName','Nombre de la empresa':'companyName','RUC':'ruc','RUC (ID fiscal)':'ruc','Dirección':'address','Teléfono 1':'phone','Tarifa de impuesto a la renta (%)':'incomeTaxRate','Moneda local':'currency'}),
   cliente: entries({'Código':'cardCode','Nombre':'name','RUC':'ruc','Ciudad':'city','Teléfono':'phone','Condición de pago':'paymentTermsDays','Grupo de clientes':'group','Clase':'kind','Propietario':'ownerCode'}),
   cockpit: entries({'Nombre del cockpit':'nombre','Cockpit predeterminado':'predeterminado'}),
   proveedor: entries({'Código':'cardCode','Nombre':'name','Ciudad':'city','Proveedor':'cardCode','Código Proveedor':'cardCode','Cliente conectado':'linkedCustomerCode','Clase':'partnerClass','Sujeto a retención':'subjectToWithholding','Impuesto de retención':'withholdingTax','Grupo de retención IVA':'vatWithholdingGroup','Código de retención IVA':'vatWithholdingCode','Categoría fiscal':'fiscalCategory'}),
-  articulo: entries({'Descripción':'name','Nombre':'name','Descripción 2':'description','Costo':'purchasePrice','Precio de venta':'price','Precio lista 1':'price','Grupo de artículos':'group','Grupo':'group','Clase de artículos':'itemClass','Tipo de artículo':'type','Tipo':'type','Grupo UM':'uomGroup','UM Inventario':'inventoryUnit','UM Compra':'purchaseUnit','UM Venta':'salesUnit','Costo estándar':'standardCost','Método de valoración':'costingMethod','Método de gestión':'manageMethod','Inventario perpetuo':'perpetualInventory','Proveedor preferido':'preferredVendor','Peso artículo':'weight','ICE':'ice'}),
+  articulo: entries({'Descripción':'name','Nombre':'name','Descripción 2':'description','Costo':'purchasePrice','Precio de venta':'price','Precio lista 1':'price','Grupo de artículos':'group','Grupo':'group','Clase de artículos':'itemClass','Tipo de artículo':'type','Tipo':'type','Grupo UM':'uomGroup','UM Inventario':'inventoryUnit','UM Compra':'purchaseUnit','UM Venta':'salesUnit','Costo estándar':'standardCost','Método de valoración':'costingMethod','Método de gestión':'manageMethod','Gestionado por nro. de serie':'manageMethod','Modelo de contrato':'contractModel','Bodega predeterminada':'defaultWarehouse','Proveedor preferido':'preferredVendor','Peso artículo':'weight','ICE':'ice','Método de aprovisionamiento':'planningMethod','Plazo de producción':'productionLeadDays','Plazo de entrega':'purchaseLeadDays','Almacén principal':'planningWarehouse','MRP activo':'mrpActive','Plazo de compra':'purchaseLeadDays'}),
   documento: entries({'Número':'docNumber','Tipo de pedido':'docType','Proveedor sugerido':'cardCode','Proveedor':'cardCode','Cliente':'cardCode','Código Proveedor':'cardCode','Código socio de negocios':'cardCode','Fecha':'date','Fecha contabilización':'date','Fecha documento':'date','Fecha Contable':'date','Fecha del Pedido':'date','Fecha de contabilización':'date','Fecha de emisión':'date','Fecha vencimiento':'dueDate','Fecha de vencimiento':'dueDate','Fecha requerida':'dueDate','Fecha de entrega':'dueDate','Fecha de validez':'dueDate','Válida hasta':'dueDate','Comentario':'comments','Comentarios':'comments','Referencia':'reference','Propietario':'ownerCode','Total':'total','Neto':'subtotal','IVA Crédito':'tax','Información Adicional':'comments','Artículo':'lines.itemCode','Código de artículo':'lines.itemCode','Cantidad':'lines.quantity','Precio':'lines.price','Precio unitario':'lines.price','Descuento %':'lines.discount','Bodega':'lines.warehouseCode','Almacén':'lines.warehouseCode','Depósito':'lines.warehouseCode','Impuesto':'lines.taxRate','IVA':'tax'}),
   empleado: entries({'Nombre':'fullName','Apellido':'lastName','N° de cédula':'identification','Cargo':'position','Departamento':'department','Jefe':'supervisorCode','Sucursal':'branchCode','Sueldo mensual':'baseSalary','Fecha de ingreso':'hireDate','Activo':'active'}),
   nomina: entries({'Período':'period','Empleado':'lines.employeeCode','Días trabajados':'lines.days','Sueldo mensual':'lines.salary','Neto a pagar':'lines.net','Horas extras 50 %':'lines.extra50','Horas extras 100 %':'lines.extra100','Anticipo':'lines.advances'}),
@@ -40,6 +44,9 @@ const maps: Record<string, Map<string, string>> = {
   isd: entries({'Fecha':'date','Valor':'figures.amount','ISD':'figures.isd','Total':'figures.total'}),
 };
 const sources: Partial<Record<PantallaConectada['clave'], CollectionName | 'profile'>> = {
+  revalorizacionStock:'profile',
+  devolucionCompra:'profile',
+  ubicacion:'binLocations',
   empresa:'profile',cliente:'customers',proveedor:'vendors',articulo:'items',empleado:'employees',nomina:'payrollRuns',activos:'fixedAssets',oportunidad:'opportunities',bom:'boms',produccion:'productionOrders',conteo:'inventoryCounts',presupuesto:'budgets',grupos:'profile',series:'profile',bancos:'bankTransactions',isd:'taxRuns',asiento:'journalEntries',mrp:'profile',importacion:'landedCosts',monedas:'profile',costos:'profile',recursos:'profile',udo:'profile',cockpit:'profile',precios:'profile',descuentos:'profile',cierre:'profile',transferencia:'stockMovements',sri:'sriDocuments',consultas:'profile',
 };
 // Un depósito entre cuentas requiere un circuito de compensación separado; permanece pendiente hasta implementarlo.
@@ -48,6 +55,7 @@ maps.bancos.delete(plain('Cuenta de origen'));
 maps.bancos.delete(plain('Cuenta destino'));
 const GENERATED = new Set(['cliente:Código','proveedor:Código','articulo:Código','empleado:ID','activos:Código de activo','documento:Número']);
 function contract(key: string): PracticeOutcomeContract {
+  const accounting=accountingPracticeContract(key); if(accounting)return accounting;
   const [classId, index] = key.split('#');
   const lesson = (LECCIONES as Record<string,{syncData: {slide_index:number;step_guide?:{campos?:{etiqueta:string;valor:string}[];title?:string;menu_path?:string}|null}[]}>)[classId];
   const guide = lesson?.syncData.find(slide => slide.slide_index === Number(index))?.step_guide;
@@ -55,11 +63,16 @@ function contract(key: string): PracticeOutcomeContract {
   if(/traslad/i.test(guide?.title??'')) screen={clave:'transferencia'};
   const bankWorkflow = screen?.clave==='bancos' && /extracto|concili|asistente de pagos|via de pago|banco propio/i.test(plain(`${guide?.title??''} ${guide?.menu_path??''}`));
   const inventorySettings = screen?.clave==='conteo' && /definir fecha de stock/i.test(guide?.title??'');
+  const landedConfig=screen?.clave==='importacion'&&/crear tipo de gasto/i.test(guide?.title??'');
   const collection = inventorySettings ? 'profile' : bankWorkflow ? 'bankWorkflows' : screen?.clave==='documento' ? (['purchase_request','purchase_order','goods_receipt','vendor_invoice'].includes(screen.docType)?'purchaseOrders':'salesOrders') : screen?.clave==='mrp' && (guide?.campos??[]).some(field=>['Tipo de pedido','Proveedor'].includes(field.etiqueta)) ? 'purchaseOrders' : screen ? sources[screen.clave] : undefined;
   const result: PracticeOutcomeContract = {key,collection:collection??'profile',requirements:[],pending:[]};
+  if(landedConfig){result.collection='profile';result.rows='landedCostTypes';}
   if(!screen || !collection) { result.pending.push('Pantalla sin contrato de resultados.'); return result; }
   if(screen.clave==='grupos') result.rows=screen.tipo==='cliente'?'customerGroups':'itemGroups';
+  if(screen.clave==='revalorizacionStock')result.rows='stockRevaluations';
+  if(screen.clave==='devolucionCompra')result.rows='purchaseReturns';
   if(screen.clave==='series') result.rows='docSeries';
+  if(key==='mod4-c1#10')result.rows='seriesPermissions';
   if(screen.clave==='monedas') { result.rows='currencies.tasas'; const target=guide?.campos?.find(f=>f.etiqueta==='Moneda del sistema'); if(target)result.requirements.push({label:'Moneda de la tasa',expected:target.valor,path:'moneda'}); }
   if(screen.clave==='monedas'&&/diferencia de tipo de cambio/i.test(guide?.title??'')) result.rows='currencies.revaluations';
   if(screen.clave==='cockpit') result.rows='cockpit.plantillas';
@@ -85,7 +98,11 @@ function contract(key: string): PracticeOutcomeContract {
     if(screen.clave==='bom'&&['Código','Descripción','Almacén'].includes(field.etiqueta)&&/agregar (componente|recurso)/i.test(guide?.title??'')) path=`components.${field.etiqueta==='Código'?'itemCode':field.etiqueta==='Descripción'?'description':'warehouseCode'}`;
     if(screen.clave==='bom'&&field.etiqueta==='Tiempo estimado') path='components.estimatedTime';
     if(screen.clave==='produccion'&&/enviar componentes etapa/i.test(guide?.title??'')){ const staged:Record<string,string>={'Etapa de ruta':'stageIssues.stage','Componente':'stageIssues.componentCode','Cantidad requerida':'components.quantity','Cantidad enviada':'stageIssues.quantity','Bodega origen':'stageIssues.fromWarehouseCode','Bodega destino':'stageIssues.toWarehouseCode'}; path=staged[field.etiqueta]??path; }
-    if(screen.clave==='mrp'&&collection==='profile'){ const mrpFields:Record<string,string>={'Escenario':'scenario','Fecha de inicio':'startDate','Fecha de fin':'endDate','Nivel':'level','Almacén':'warehouseCode','Horizonte de planificación':'horizon','Incluir compras':'includePurchases','Incluir producción':'includeProduction','Incluir ventas':'includeSales','Incluir pronósticos':'includeForecasts','Almacenes a excluir':'excludeWarehouses'}; path=mrpFields[field.etiqueta]??path; }
+    let expected=field.valor;
+    if(screen.clave==='articulo' && key.startsWith('mod15-c3#') && field.etiqueta==='Artículo') path='itemCode';
+    if(screen.clave==='mrp'&&collection==='profile'){ const mrpFields:Record<string,string>={'Escenario':'scenario','Fecha de inicio':'startDate','Fecha de fin':'endDate','Nivel':'level','Almacén':'warehouseCode','Artículos':'itemCodes','Horizonte de planificación':'horizon','Incluir compras':'includePurchases','Incluir producción':'includeProduction','Incluir ventas':'includeSales','Incluir pronósticos':'includeForecasts','Almacenes a excluir':'excludeWarehouses','Inventario inicial':'rows.available','Aprovisionamiento pendiente':'rows.onOrder','Demanda prevista':'rows.required','Demanda total':'rows.required','Inventario final proyectado':'rows.projectedEnding','Recomendación':'rows.recommendation'}; path=mrpFields[field.etiqueta]??path; if(field.etiqueta==='Ejecutar MRP'){path='id';generated=true;} }
+    if(screen.clave==='mrp'&&collection==='profile'&&field.etiqueta==='Artículo') path='rows.itemCode';
+    if(screen.clave==='articulo'&&field.etiqueta==='Gestionado por nro. de serie'&&plain(field.valor)==='si') expected='serial';
     // Los documentos conservan la serie elegida, el origen y el tipo que los generó.
     if(screen.clave==='documento') {
       if(field.etiqueta==='Serie') path='series';
@@ -95,7 +112,16 @@ function contract(key: string): PracticeOutcomeContract {
       if(field.etiqueta==='Descripción' && /(solicitud|pedido de compra)/i.test(guide?.title??'')) path='lines.description';
       if(field.etiqueta==='Tipo de pedido' && /mrp/i.test(guide?.title??'')) path='docType';
       if(field.etiqueta==='Proveedor sugerido' && /mrp/i.test(guide?.title??'')) path='cardCode';
+      if(field.etiqueta==='Descripción') path='lines.description';
+      if(field.etiqueta==='Tipo de Artículo')path='lines.itemType';
+      if(field.etiqueta==='Cuenta de Gastos')path='lines.expenseAccount';
+      if(field.etiqueta==='Importe')path='subtotal';
+      if(field.etiqueta==='Depósito'&&key==='mod7-c2#7')path='lines.binCode';
     }
+    if(screen.clave==='series') { const labels:Record<string,string>={'Objeto':'docType','Serie':'nombre','Longitud':'digitos','Inicio':'inicio','Módulo':'docType','Nombre':'description','Número siguiente':'actual','Solo para Ajuste de Contabilidad de Costos':'costAdjustmentOnly'}; path=labels[field.etiqueta]??path; }
+    if(key==='mod4-c1#10'){const labels:Record<string,string>={'Usuario':'userCode','Módulo':'module','Tipo de autorización':'permissionType','Grupo de serie':'group','Acceso':'access','Habilitado':'enabled'};path=labels[field.etiqueta];}
+    if(screen.clave==='grupos'){const labels:Record<string,string>={'Método de valoración':'costingMethod','Gestionar por almacén':'perWarehouse','Inventario permanente':'perpetualInventory'};path=labels[field.etiqueta]??path;}
+    if(landedConfig){const labels:Record<string,string>={'Nombre':'name','Cuenta de Gastos':'expenseAccount','Actualiza Stock':'updatesStock','Método de Distribución':'allocation','Actualiza Últ. Precio Compra':'updatesLastPurchase','Importe Fijo':'fixedAmount'};path=labels[field.etiqueta];}
     if(screen.clave==='produccion'&&field.etiqueta==='Número') { path=/recibir/i.test(guide?.title??'')?'receiptNumber':'orderNumber'; generated=true; }
     if(screen.clave==='produccion'&&field.etiqueta==='Orden de producción') { path='orderNumber'; generated=true; }
     if(screen.clave==='precios'&&(guide?.campos??[]).some(field=>field.etiqueta==='Código de artículo')) {
@@ -132,7 +158,7 @@ function contract(key: string): PracticeOutcomeContract {
       path=custom[field.etiqueta];
     }
     if(!path) result.pending.push(`${field.etiqueta}: falta resultado equivalente verificable.`);
-    else result.requirements.push({label:field.etiqueta,expected:field.valor,path,generated});
+    else result.requirements.push({label:field.etiqueta,expected,path,generated});
   }
   if(screen.clave==='produccion'&&/recibir|finalizaci[oó]n/i.test(guide?.title??'')) result.requirements.push({label:'Recibo registrado',expected:'closed',path:'status'});
   if(screen.clave==='produccion'&&/salida para producci[oó]n/i.test(guide?.title??'')) result.requirements.push({label:'Componentes emitidos',expected:'1',path:'issuedQuantity'});
@@ -147,12 +173,21 @@ function comparable(value:unknown): string {
   if(typeof value==='boolean')return value?'Sí':'No';
   const text=String(value??'').trim();
   if(/^\d{4}-\d{2}-\d{2}$/.test(text)){const [year,month,day]=text.split('-');return `${day}/${month}/${year}`;}
-  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago',production:'Producción',item:'Artículo',resource:'Recurso',purchase_request:'Solicitud de compra',purchase_order:'Pedido de compra',creation:'Creación',posting:'Contabilización',entry:'Entrada',exit:'Salida',none:'Sin ajuste'};
+  const aliases:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',inventory:'Material',service:'Servicio',customer:'Cliente',lead:'Cliente potencial',average:'Promedio ponderado',standard:'Estándar',fifo:'FIFO',perfumes:'Perfumes 20 %',deposit:'Depósito',payment:'Pago',production:'Producción',buy:'Compra',item:'Artículo',resource:'Recurso',purchase_request:'Solicitud de compra',purchase_order:'Pedido de compra',creation:'Creación',posting:'Contabilización',entry:'Entrada',exit:'Salida',none:'Sin ajuste'};
   return aliases[text]??text;
 }
 function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyState):boolean {
   if(requirement.generated)return typeof actual==='string'&&/^[\w.-]+$/.test(actual);
+  if(Array.isArray(actual)) return actual.some(value=>normalizar(comparable(value))===normalizar(comparable(requirement.expected)));
   let expected=requirement.expected;
+  if(requirement.path==='warehouseCode')expected=expected.split(' - ')[0];
+  if(requirement.path.endsWith('expenseAccount'))expected=expected.match(/^[\d.]+/)?.[0]??expected;
+  if(requirement.path==='allocation'){const methods:Record<string,string>={weight:'Peso',none:'Ninguno',value:'Valor',quantity:'Cantidad'};actual=methods[String(actual)]??actual;}
+  if(['currentWeight','maxWeight','availableWeight'].includes(requirement.path)&&typeof actual==='number'&&/^\d+\.\d{3}$/.test(expected))return Math.abs(actual-Number(expected))<0.0005;
+  if(requirement.path==='docType'&&actual==='activos'&&expected==='Activo Fijo')actual='Activo Fijo';
+  if(requirement.path==='docType'&&actual==='asientos'&&expected==='Asientos Contables')actual='Asientos Contables';
+  if(typeof actual==='boolean'&&expected==='Marcado')expected='Sí';
+  if(requirement.path==='costingMethod'&&expected==='Promedio variable')expected='Promedio ponderado';
   if(['cardCode','itemCode','employeeCode','ownerCode','parentItemCode','warehouseCode','preferredVendor','componentCode'].includes(requirement.path.split('.').at(-1)!)){
     const code=expected.match(/^([A-Z]{1,5}\d{2,})(?:\s|$)/)?.[1];
     if(code)expected=code;
@@ -168,7 +203,7 @@ function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyStat
 }
 function rowMatches(row:unknown,requirements:OutcomeRequirement[],state:CompanyState):boolean {
   const grouped=new Map<string,OutcomeRequirement[]>();
-  for(const requirement of requirements){const [root]=requirement.path.split('.');if(Array.isArray(get(row,root))){const group=grouped.get(root)??[];group.push({...requirement,path:requirement.path.slice(root.length+1)});grouped.set(root,group);}else if(!matches(get(row,requirement.path),requirement,state))return false;}
+  for(const requirement of requirements){const [root]=requirement.path.split('.');if(requirement.path.includes('.')&&Array.isArray(get(row,root))){const group=grouped.get(root)??[];group.push({...requirement,path:requirement.path.slice(root.length+1)});grouped.set(root,group);}else if(!matches(get(row,requirement.path),requirement,state))return false;}
   for(const [root,fields]of grouped)if(!(get(row,root) as unknown[]).some(candidate=>rowMatches(candidate,fields,state)))return false;
   return true;
 }
@@ -180,10 +215,10 @@ export function missionOutcomeMatches(state:CompanyState,event:CompanyAuditEvent
   return changes.some(change=>{
     const current=rule.collection==='profile'?state.profile:state[rule.collection].find(row=>row.id===change.id);
     if(!current)return false;
-    if(!rule.rows)return rowMatches(change.after,rule.requirements,state)&&rowMatches(current,rule.requirements,state);
+    if(!rule.rows)return rowMatches(decorateAccountingOutcome(change.after,rule.collection,state),rule.requirements,state)&&rowMatches(decorateAccountingOutcome(current,rule.collection,state),rule.requirements,state);
     const after=get(change.after,rule.rows),present=get(current,rule.rows),before=get(change.before,rule.rows);
     if(!Array.isArray(after)||!Array.isArray(present))return false;
-    const decorate=(profile:unknown,row:RecordValue)=>rule.rows==='cockpit.plantillas'?{...row,predeterminado:row.id===get(profile,'cockpit.plantillaActiva')}:rule.rows==='currencies.tasas'?{...row,monedaLocal:get(profile,'currencies.monedaLocal'),monedaSistema:get(profile,'currencies.monedaSistema')}:row;
+    const decorate=(profile:unknown,row:RecordValue)=>rule.rows==='cockpit.plantillas'?{...row,predeterminado:row.id===get(profile,'cockpit.plantillaActiva'),usuario:get(profile,'cockpit.usuario')}:rule.rows==='currencies.tasas'?{...row,monedaLocal:get(profile,'currencies.monedaLocal'),monedaSistema:get(profile,'currencies.monedaSistema')}:row;
     return after.some(row=>rowMatches(decorate(change.after,row),rule.requirements,state)&&present.some(item=>JSON.stringify(item)===JSON.stringify(row)&&rowMatches(decorate(current,item),rule.requirements,state))&&(!Array.isArray(before)||!before.some(item=>JSON.stringify(decorate(change.before,item))===JSON.stringify(decorate(change.after,row)))));
   });
 }

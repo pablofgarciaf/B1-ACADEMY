@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 
-interface Grupo { codigo: string; nombre: string; descripcion: string; defaultPriceList?: string; uomGroup?: string; inventoryUnit?: string }
+interface Grupo { codigo: string; nombre: string; descripcion: string; defaultPriceList?: string; uomGroup?: string; inventoryUnit?: string; costingMethod?: string; perWarehouse?: boolean; perpetualInventory?: boolean }
 
 export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' }) {
   const c = useCompany();
@@ -17,7 +17,7 @@ export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' })
 
   useEffect(() => { setGrupos(guardados); }, [guardados.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const vacio = (): Grupo => ({ codigo: '', nombre: '', descripcion: '', defaultPriceList: '', uomGroup: '', inventoryUnit: 'UND' });
+  const vacio = (): Grupo => ({ codigo: '', nombre: '', descripcion: '', defaultPriceList: '', uomGroup: '', inventoryUnit: 'UND', costingMethod:'average', perWarehouse:false, perpetualInventory:true });
 
   const guardar = async () => {
     if (!editando || !editando.codigo || !editando.nombre) return;
@@ -70,6 +70,7 @@ export default function GruposScreen({ tipo }: { tipo: 'cliente' | 'articulo' })
             </Field>
             {tipo === 'cliente' ? <Field label="Lista de precio predeterminada"><input className={inputClass} value={editando.defaultPriceList ?? ''} onChange={e => setEditando(v => v ? { ...v, defaultPriceList: e.target.value } : v)} placeholder="Lista Especial EDU" /></Field> : <><Field label="Grupo UM"><input className={inputClass} value={editando.uomGroup ?? ''} onChange={e => setEditando(v => v ? { ...v, uomGroup: e.target.value } : v)} placeholder="CABLES" /></Field><Field label="UM inventario"><input className={inputClass} value={editando.inventoryUnit ?? ''} onChange={e => setEditando(v => v ? { ...v, inventoryUnit: e.target.value } : v)} placeholder="Metro" /></Field></>}
             <div className="flex gap-2 pt-1">
+              {tipo==='articulo'&&<div className="space-y-2"><Field label="Método de valoración"><select className={inputClass} value={editando.costingMethod??'average'} onChange={e=>setEditando(v=>v?{...v,costingMethod:e.target.value}:v)}><option value="average">Promedio variable</option><option value="standard">Estándar</option><option value="fifo">FIFO</option></select></Field><label><input type="checkbox" checked={editando.perWarehouse??false} onChange={e=>setEditando(v=>v?{...v,perWarehouse:e.target.checked}:v)}/> Gestionar por almacén</label><label><input type="checkbox" checked={editando.perpetualInventory??true} onChange={e=>setEditando(v=>v?{...v,perpetualInventory:e.target.checked}:v)}/> Inventario permanente</label></div>}
               <button type="button" onClick={guardar} disabled={c.saving || !editando.codigo || !editando.nombre} className={`${buttonClass} font-bold`}>Añadir</button>
               <button type="button" onClick={() => setEditando(null)} className={buttonClass}>Cancelar</button>
             </div>
