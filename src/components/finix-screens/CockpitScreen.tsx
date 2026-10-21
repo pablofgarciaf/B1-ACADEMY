@@ -4,7 +4,7 @@ import { useCompany } from '@/hooks/useCompany';
 import { Screen, Field, buttonClass } from './FinixControls';
 
 interface Widget { id: string; tipo: string; titulo: string; visible: boolean }
-interface PlantillaCockpit { id: string; nombre: string; widgets: Widget[] }
+interface PlantillaCockpit { id: string; nombre: string; descripcion?:string; widgets: Widget[] }
 
 const WIDGETS_DISPONIBLES = [
   { tipo: 'actividades',    titulo: 'Actividades y tareas pendientes' },
@@ -21,7 +21,8 @@ const WIDGETS_DISPONIBLES = [
 const PLANTILLAS_SAP_PREDETERMINADAS: PlantillaCockpit[] = [
   {
     id: 'fiori_ventas',
-    nombre: 'Cockpit Fiori — Ventas y Finanzas',
+    nombre: 'Ventas',
+    descripcion:'Cockpit de Ventas estilo Fiori',
     widgets: [
       { id: 'wgt-kpi1', tipo: 'kpis', titulo: 'KPIs gerenciales', visible: true },
       { id: 'wgt-vnt1', tipo: 'ventas_mes', titulo: 'Ventas del mes', visible: true },
@@ -45,7 +46,8 @@ function uid() { return 'wgt-' + Math.random().toString(36).slice(2, 7); }
 export default function CockpitScreen() {
   const c = useCompany();
   const p = c.data.profile;
-  const data = (p as unknown as Record<string, unknown>)?.cockpit as { plantillas: PlantillaCockpit[]; plantillaActiva: string } | undefined;
+  const data = (p as unknown as Record<string, unknown>)?.cockpit as { plantillas: PlantillaCockpit[]; plantillaActiva: string; usuario?:string } | undefined;
+  const [usuario,setUsuario]=useState(data?.usuario??'Usuario actual');
 
   const [plantillas, setPlantillas] = useState<PlantillaCockpit[]>(PLANTILLAS_SAP_PREDETERMINADAS);
   const [activa, setActiva] = useState<string>('fiori_ventas');
@@ -68,7 +70,7 @@ export default function CockpitScreen() {
   const guardar = async (pls: PlantillaCockpit[], act: string) => {
     setError(null);
     try {
-      await c.save({ action: 'cockpitSave', data: { plantillas: pls, plantillaActiva: act } });
+      await c.save({ action: 'cockpitSave', data: { plantillas: pls.map(pl=>({...pl,descripcion:pl.descripcion??''})), plantillaActiva: act,usuario } });
       return true;
     } catch (error) {
       setError(error instanceof Error ? error.message : 'No se pudo guardar la plantilla. Intenta nuevamente.');
@@ -149,6 +151,8 @@ export default function CockpitScreen() {
         {plantillaSel && (
           <div className="space-y-2">
             <h3 className="font-bold text-[#003366]">Plantilla: {plantillaSel.nombre}</h3>
+            <div className="grid gap-2 sm:grid-cols-2"><Field label="Descripción"><input className="w-full border p-1" value={plantillaSel.descripcion??''} onChange={e=>setPlantillaSel(pl=>pl?{...pl,descripcion:e.target.value}:pl)}/></Field><Field label="Usuario del caso práctico"><select className="w-full border p-1" value={usuario} onChange={e=>setUsuario(e.target.value)}><option>Usuario actual</option><option>director</option></select></Field></div>
+            <p>La asignación queda en tu empresa de aprendizaje. El usuario «director» representa el rol del caso; el registro conserva tu identidad de estudiante.</p>
             <p className="text-xs text-gray-500">Selecciona los widgets que aparecerán en el cockpit de esta plantilla:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
               {WIDGETS_DISPONIBLES.map(w => {

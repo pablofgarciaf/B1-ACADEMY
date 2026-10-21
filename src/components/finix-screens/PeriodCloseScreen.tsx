@@ -32,10 +32,12 @@ export default function PeriodCloseScreen() {
   const c = useCompany();
   const [year, setYear] = useState(today().slice(0, 4));
   const [mes, setMes] = useState(today().slice(0, 7));
+  const [dueThrough,setDueThrough]=useState(`${Number(today().slice(0,4))+1}-12-31`);
+  const [closingDue,setClosingDue]=useState('');
   const cerrados = new Set(c.data.profile?.closedPeriods ?? []);
   const checks = useMemo(() => verificacion(c.data, mes), [c.data, mes]);
   const anioCerrado = c.data.journalEntries.some(e => e.source === 'closing' && e.reference === year);
-  const accion = async (period: string, closed: boolean) => { try { await c.save({ action: 'closePeriod', data: { period, closed } }); } catch { /* error visible */ } };
+  const accion = async (period: string, closed: boolean) => { try { await c.save({ action: 'closePeriod', data: { period, closed,...(closingDue&&period===mes?{dueThrough:closingDue}:{}) } }); } catch { /* error visible */ } };
   const cerrarAnio = async () => {
     if (!window.confirm(`Se registrará el asiento de cierre del ejercicio ${year} y se cerrarán los 12 meses. ¿Continuar?`)) return;
     try { await c.save({ action: 'closeYear', data: { year } }); } catch { /* error visible */ }
@@ -50,6 +52,7 @@ export default function PeriodCloseScreen() {
       <section className="space-y-2 border border-[#999] bg-white p-2">
         <h3 className="font-bold text-[#003366]">Lista de verificación previa al cierre</h3>
         <div className="max-w-xs"><Field label="Mes a revisar"><input type="month" className={inputClass} value={mes} onChange={e => setMes(e.target.value)} /></Field></div>
+        <div className="max-w-xs"><Field label="Fecha de vencimiento hasta (opcional)"><input type="date" className={inputClass} value={closingDue} onChange={e=>setClosingDue(e.target.value)}/></Field></div>
         <ul className="space-y-1">
           {checks.map(k => <li key={k.texto}><span aria-hidden="true">{k.ok ? '✅' : '⚠️'}</span> <strong>{k.texto}:</strong> {k.detalle}</li>)}
         </ul>
@@ -59,6 +62,7 @@ export default function PeriodCloseScreen() {
       </section>
 
       <div className="max-w-xs"><Field label="Ejercicio"><input type="number" min={2020} max={2099} className={inputClass} value={year} onChange={e => setYear(e.target.value)} /></Field></div>
+      <form className="grid gap-2 sm:grid-cols-3" onSubmit={async e=>{e.preventDefault();try{await c.save({action:'accountingPeriods',data:{startDate:`${year}-01-01`,endDate:`${year}-12-31`,dueThrough}});}catch{/* visible provider error */}}}><p>Ejercicio: 01/01/{year} a 31/12/{year}. Se generan doce períodos mensuales consecutivos.</p><Field label="Vencimientos permitidos hasta"><input required type="date" className={inputClass} value={dueThrough} onChange={e=>setDueThrough(e.target.value)}/></Field><button className={buttonClass} disabled={c.saving}>Configurar períodos</button></form>
       <Table headers={['Período', 'Estado', 'Acción']} rows={MESES.map((m, i) => {
         const p = `${year}-${String(i + 1).padStart(2, '0')}`;
         const cerrado = cerrados.has(p);
