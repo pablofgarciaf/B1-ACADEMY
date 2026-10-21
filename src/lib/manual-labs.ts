@@ -1,3 +1,5 @@
+import { MANUAL_LEGACY_CODES } from './manual-legacy-codes';
+
 /** Selección por tema del manual. Nunca se deduce una pantalla de palabras sueltas. */
 export const MANUAL_LABS: Record<string,string | null> = {
  '1.1':null,'1.2':'cockpit','1.3':'customer',
@@ -21,3 +23,10 @@ export const MANUAL_LABS: Record<string,string | null> = {
  '22.1':'query','22.2':null,'22.3':'approvals','22.4':'udo','22.5':null,'22.6':'udo','22.7':null,
  '23.1':'verification','23.2':'cockpit','23.3':'cockpit','23.4':'purchase_order','23.5':'goods_receipt','23.6':'query','23.7':'query',
 };
+
+const legacyToAcademic = new Map(Object.entries(MANUAL_LEGACY_CODES).map(([academic, legacy]) => [legacy, academic]));
+/** Resuelve tanto IDs académicos (19.3_...) como claves legacy (10_FixedAsset_...). */
+export function manualLabKey(manualId: string): string {
+  const academic = legacyToAcademic.get(manualId)?.split('_')[0];
+  return academic || manualId.split('_')[0];
+}

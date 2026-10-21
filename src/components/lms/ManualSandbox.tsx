@@ -3,7 +3,7 @@ import { useMemo, useRef, useState, type ComponentType } from 'react';
 import dynamic from 'next/dynamic';
 import { CompanyContext, type CompanyContextValue } from '@/hooks/useCompany';
 import { createManualSandbox, runManualCommand } from '@/lib/manual-sandbox';
-import { MANUAL_LABS } from '@/lib/manual-labs';
+import { MANUAL_LABS, manualLabKey } from '@/lib/manual-labs';
 import type { CompanyCommand } from '@/lib/company-commands';
 const loading=()=> <p className="p-4">Preparando el laboratorio…</p>;
 const screens:Record<string,ComponentType>={
@@ -55,7 +55,7 @@ export default function ManualSandbox({manualId}:{manualId:string}){
  const state=useRef(data);
  const [generation,setGeneration]=useState(0);
  const [error,setError]=useState('');const [notice,setNotice]=useState('');
- const screen=MANUAL_LABS[manualId.split('_')[0]];
+ const screen=MANUAL_LABS[manualLabKey(manualId)];
  const context=useMemo<CompanyContextValue>(()=>({data,ephemeral:true,loading:false,saving:false,error,notice,refresh:async()=>{},save:async(command:CompanyCommand)=>{
    try{const result=runManualCommand(state.current,command);state.current=result.state;setData(result.state);setError('');setNotice('Resultado aplicado únicamente a esta demostración: '+result.result);return result.result;}
    catch(e){const message=e instanceof Error?e.message:'No se pudo ejecutar el ejercicio.';setError(message);throw e;}

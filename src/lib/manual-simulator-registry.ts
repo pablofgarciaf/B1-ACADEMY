@@ -979,6 +979,28 @@ export const MANUAL_SIMULATOR_MAP: Record<string, ManualSimulatorConfig> = {
   },
 };
 
+// Los manuales que no enseñan realmente Cockpit no deben abrir el laboratorio genérico.
+// Se mantienen como conceptuales hasta que exista una práctica específica para su operación.
+const COCKPIT_CONCEPTUAL_PREFIXES = [
+  "10_Impl_",
+  "10_CostandBudget_",
+  "10_FinProcess_",
+  "10_FinSetup_",
+  "10_FixedAsset_",
+  "10_ProjectManage_",
+];
+for (const [manualId, config] of Object.entries(MANUAL_SIMULATOR_MAP)) {
+  const preserveCockpit = manualId === "10_Intro_12_Overview_GettingStarted_ES"
+    || manualId === "CSL01_Introduction_ES"
+    || manualId === "CSL01_Introduction_Solution_ES";
+  if (!preserveCockpit && config.archetype === "cockpit" && COCKPIT_CONCEPTUAL_PREFIXES.some((prefix) => manualId.startsWith(prefix))) {
+    config.requiresSimulator = false;
+    config.archetype = "none";
+    config.defaultTable = undefined;
+    config.scenarioGoal = undefined;
+    config.theoreticalSummary = "Este manual explica una función de configuración de SAP Business One. Se presenta como contenido conceptual hasta disponer de un laboratorio específico para esa operación; no se debe practicar en el Cockpit genérico.";
+  }
+}
 export function getManualSimulatorConfig(manualId: string): ManualSimulatorConfig {
   if (MANUAL_SIMULATOR_MAP[manualId]) {
     return MANUAL_SIMULATOR_MAP[manualId];

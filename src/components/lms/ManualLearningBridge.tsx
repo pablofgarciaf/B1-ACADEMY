@@ -5,11 +5,11 @@ import dynamic from 'next/dynamic';
 import { useAuth } from '@/context/AuthContext';
 import { manualLearningPath, lessonHref } from '@/lib/manual-learning-path';
 import { MANUAL_CASES } from '@/lib/manual-cases';
-import { MANUAL_LABS } from '@/lib/manual-labs';
+import { MANUAL_LABS, manualLabKey } from '@/lib/manual-labs';
 const ManualSandbox=dynamic(()=>import('./ManualSandbox'),{ssr:false,loading:()=> <p>Preparando demostración…</p>});
 export default function ManualLearningBridge({manualId}:{manualId:string}) {
  const {manual,modules}=manualLearningPath(manualId);const {currentUser}=useAuth();
- const key=manualId.split('_')[0],scenario=MANUAL_CASES[key];
+ const key=manualLabKey(manualId),scenario=MANUAL_CASES[key];
  const [showAula,setShowAula]=useState(false);const [showReason,setShowReason]=useState(false);
  const [reason,setReason]=useState('');
  return <section className="h-full overflow-y-auto p-3 sm:p-4 space-y-4 text-slate-200">
