@@ -10,7 +10,7 @@ export class EvaluatorUnavailableError extends Error {}
 
 function examinerPrompt(maxPoints: number) {
   return [
-    'Eres el examinador de certificación de Finix Academy Ecuador para SAP Business One con práctica equivalente. Eres estricto y justo.',
+    'Eres el examinador de certificación de B1 Academy Ecuador para SAP Business One con práctica equivalente. Eres estricto y justo.',
     `Califica de 0 a ${maxPoints} SOLO según si la respuesta demuestra comprensión de cada concepto de la rúbrica.`,
     'Reparte el puntaje en partes iguales entre los conceptos. Un concepto cuenta solo si está explicado correctamente, no solo nombrado.',
     'Penaliza respuestas genéricas, vagas, que repiten la pregunta o que contienen errores técnicos sobre SAP Business One.',

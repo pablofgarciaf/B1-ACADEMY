@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   // 54 caracteres
   title: 'Política de Privacidad y Datos Personales',
   // 152 caracteres
-  description: 'Cómo Finix Academy trata tus datos personales conforme a la LOPDP de Ecuador: finalidades, cédula, IA, transferencias, plazos y cómo ejercer tus derechos.',
+  description: 'Cómo B1 Academy trata tus datos personales conforme a la LOPDP de Ecuador: finalidades, cédula, IA, transferencias, plazos y cómo ejercer tus derechos.',
   alternates: { canonical: `${LEGAL.sitio}/privacidad` },
 };
 
@@ -67,12 +67,12 @@ export default async function PrivacidadPage() {
           <tr><td>Evaluar tus conocimientos y emitir certificados verificables</td><td>Ejecución de la relación educativa</td></tr>
           <tr><td>Seguridad de la plataforma y prevención de fraude en evaluaciones</td><td>Interés legítimo</td></tr>
           <tr><td>Verificar un certificado y limitar consultas abusivas</td><td>Tu consentimiento específico al solicitar la consulta</td></tr>
-          <tr><td>Contactarte para ofrecer servicios de Finix Academy</td><td>Solo tu consentimiento comercial opcional, separado de la verificación</td></tr>
+          <tr><td>Contactarte para ofrecer servicios de B1 Academy</td><td>Solo tu consentimiento comercial opcional, separado de la verificación</td></tr>
           <tr><td>Analítica de uso para mejorar el campus</td><td>Tu consentimiento (cookies analíticas), que puedes retirar en cualquier momento</td></tr>
           <tr><td>Cumplir obligaciones legales y tributarias, si contratas servicios pagados</td><td>Obligación legal</td></tr>
         </tbody>
       </table>
-      <p>No vendemos tus datos ni los usamos para publicidad de terceros. El contacto comercial de Finix Academy tras verificar un certificado es opcional y requiere una aceptación separada.</p>
+      <p>No vendemos tus datos ni los usamos para publicidad de terceros. El contacto comercial de B1 Academy tras verificar un certificado es opcional y requiere una aceptación separada.</p>
 
       <h2>4. Evaluaciones calificadas con inteligencia artificial</h2>
       <p>

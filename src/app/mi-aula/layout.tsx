@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     title: 'Mi Aula Virtual Finix ERP | Cursos y Clases 2026',
     description: 'Clases magistrales de Finix ERP 10.0 con Tutor IA, simulador interactivo, prácticas guiadas y diplomas propios.',
     url: publicUrl('/mi-aula'),
-    siteName: 'Finix Academy',
+    siteName: 'B1 Academy',
   type: 'website',
   },
   robots: { index: false, follow: false },

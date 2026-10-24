@@ -183,7 +183,7 @@ export default function ManualesLibraryPage() {
         {/* Encabezado Principal */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue">
-            <Sparkles className="w-3.5 h-3.5" /> Biblioteca de aprendizaje • Finix Academy Ecuador
+            <Sparkles className="w-3.5 h-3.5" /> Biblioteca de aprendizaje • B1 Academy Ecuador
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
             Atlas técnico de manuales SAP Business One

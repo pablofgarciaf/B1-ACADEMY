@@ -70,14 +70,14 @@ export function Footer() {
               <p>¿Necesitas orientación? Explora las rutas o consulta la ayuda del sitio.</p>
               <p><Link href="/empresas#solicitud" className="text-finix-blue underline">Solicitar formación para empresas</Link></p>
               <p className="text-[11px] text-slate-500 pt-1">
-                Formación y constancias emitidas por Finix Academy.
+                Formación y constancias emitidas por B1 Academy.
               </p>
             </div>
           </div>
         </div>
 
         <div className="pt-8 border-t border-slate-100 dark:border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Finix Academy. Formación profesional en SAP Business One.</p>
+          <p>© {new Date().getFullYear()} B1 Academy. Formación profesional en SAP Business One.</p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             <Link href="/mi-aula" className="hover:underline">Mi Aula Virtual</Link>
             <Link href="/simulador" className="hover:underline">Simulador</Link>
@@ -94,7 +94,7 @@ export function Footer() {
             <BotonConfigurarCookies className="hover:underline" />
           </nav>
           <p className="text-[11px] text-center sm:text-right max-w-xl">
-            Las constancias de Finix Academy corresponden a este programa de formación y pueden verificarse por código.
+            Las constancias de B1 Academy corresponden a este programa de formación y pueden verificarse por código.
           </p>
         </div>
       </div>

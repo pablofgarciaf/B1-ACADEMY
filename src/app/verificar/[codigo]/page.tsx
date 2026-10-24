@@ -7,8 +7,8 @@ import { VerificationForm } from './VerificationForm';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Verificación de Certificado | Finix Academy' },
-  description: 'Consulta la autenticidad de un certificado de Finix Academy mediante su código.',
+  title: { absolute: 'Verificación de Certificado | B1 Academy' },
+  description: 'Consulta la autenticidad de un certificado de B1 Academy mediante su código.',
   robots: { index: false, follow: false },
 };
 

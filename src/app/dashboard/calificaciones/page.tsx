@@ -66,7 +66,7 @@ export default function CalificacionesPage() {
         scorePercent: certificate.scorePercent,
         hours: certificate.estimatedHours,
         dateStr: new Date(certificate.issuedAt).toLocaleDateString('es-EC'),
-        instructorName: 'Finix Academy'
+        instructorName: 'B1 Academy'
       });
     } catch (err) {
       console.error('Error al generar PDF:', err);
@@ -101,7 +101,7 @@ export default function CalificacionesPage() {
             Boletín Oficial de Calificaciones y Acreditaciones
           </h1>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
-            Historial registrado de evaluaciones técnicas, prácticas en el simulador empresarial y constancias de Finix Academy con hash de verificación.
+            Historial registrado de evaluaciones técnicas, prácticas en el simulador empresarial y constancias de B1 Academy con hash de verificación.
           </p>
         </div>
 

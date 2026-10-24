@@ -21,7 +21,7 @@ export default function SimuladorLogin({ onLogin, isLoading = false, error }: Si
   return <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-950 via-slate-950 to-black p-4 text-white">
     <div className="w-full max-w-md space-y-7">
       <header className="text-center">
-        <Link href="/" className="text-sm font-semibold text-sky-300 hover:underline">Finix Academy</Link>
+        <Link href="/" className="text-sm font-semibold text-sky-300 hover:underline">B1 Academy</Link>
         <h1 className="mt-4 text-3xl font-extrabold">Laboratorio Finix ERP</h1>
         <p className="mt-3 text-sm leading-relaxed text-slate-300">Practica procesos empresariales en un entorno educativo con tu cuenta personal.</p>
       </header>

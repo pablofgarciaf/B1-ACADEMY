@@ -160,7 +160,7 @@ export default function StudentDashboardPage() {
         scorePercent: certificate.scorePercent,
         hours: certificate.estimatedHours,
         dateStr: new Date(certificate.issuedAt).toLocaleDateString('es-EC'),
-        instructorName: 'Finix Academy'
+        instructorName: 'B1 Academy'
       });
     } catch (err) {
       console.error('Error al generar PDF:', err);

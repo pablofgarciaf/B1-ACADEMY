@@ -65,7 +65,7 @@ export default function MiAulaPage() {
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-10">
         {/* Cápsula GEO */}
         <aside aria-label="Resumen de Mi Aula" className="sr-only">
-          Mi Aula de Finix Academy: escuela de Finix ERP 10.0 con módulos prácticos, cada uno con certificado de
+          Mi Aula de B1 Academy: escuela de Finix ERP 10.0 con módulos prácticos, cada uno con certificado de
           competencia verificable, diplomas por rol profesional, clases narradas, prácticas en simulador y evaluación final.
         </aside>
 

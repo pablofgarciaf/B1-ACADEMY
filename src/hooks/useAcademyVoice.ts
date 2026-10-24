@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
- * Voz oficial de Finix Academy (es-MX-JorgeNeural, la de los videos de los manuales).
+ * Voz oficial de B1 Academy (es-MX-JorgeNeural, la de los videos de los manuales).
  * Reemplaza a window.speechSynthesis: nunca usa la voz robótica del navegador.
  * Soporta control de reproducción estilo reproductor de video: Pausa, Reanudar, Velocidad, Mute y Posición.
  * Si el servicio de voz falla, deja el texto en pantalla y avanza según el tiempo de lectura.

@@ -1,5 +1,5 @@
 import {publicUrl} from '@/lib/site-url';
-export function GET(){return new Response(`# Finix Academy
+export function GET(){return new Response(`# B1 Academy
 
 Formación en español para practicar procesos administrativos y contables con Finix ERP. Es un laboratorio educativo; sus comprobantes no se envían al SRI ni a bancos. Las constancias son propias de la academia.
 

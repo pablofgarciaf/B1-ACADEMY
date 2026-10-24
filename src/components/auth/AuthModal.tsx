@@ -26,7 +26,7 @@ export function AuthModal({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
             <ShieldCheck className="w-6 h-6" />
           </div>
           <h3 id="auth-modal-title" className="text-xl font-bold text-slate-900 dark:text-white">
-            {user ? "Mi Perfil de Acceso" : "Acceso a Finix Academy"}
+            {user ? "Mi Perfil de Acceso" : "Acceso a B1 Academy"}
           </h3>
           <p className="text-xs text-slate-500 mt-1">
             {user ? "Sesión activa en el ecosistema Finix ERP" : "Inicia sesión con tu cuenta personal"}

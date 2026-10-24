@@ -51,7 +51,7 @@ export function BusinessLeadForm() {
       <label className="block font-medium">¿Qué necesita aprender tu equipo?<textarea name="needs" required minLength={10} maxLength={2000} rows={4} className={input} /></label>
       <div className="hidden" aria-hidden="true"><label>Sitio web<input name="website" tabIndex={-1} autoComplete="off" /></label></div>
       <label className="flex items-start gap-3 text-sm"><input name="privacyAccepted" type="checkbox" required className="mt-1 h-5 w-5" /><span>He leído la <Link href="/privacidad" className="text-sky-500 underline">política de privacidad</Link> y acepto el tratamiento para atender esta solicitud.</span></label>
-      <label className="flex items-start gap-3 text-sm"><input name="marketingConsent" type="checkbox" className="mt-1 h-5 w-5" /><span>También quiero recibir otras propuestas y novedades de Finix Academy (opcional).</span></label>
+      <label className="flex items-start gap-3 text-sm"><input name="marketingConsent" type="checkbox" className="mt-1 h-5 w-5" /><span>También quiero recibir otras propuestas y novedades de B1 Academy (opcional).</span></label>
       {error && <p role="alert" className="rounded-xl border border-red-500/40 p-3 text-red-600 dark:text-red-300">{error}</p>}
       <button type="submit" disabled={busy} className="min-h-12 rounded-xl bg-finix-blue px-6 py-3 font-bold text-white disabled:opacity-60">{busy ? 'Guardando solicitud…' : 'Enviar solicitud'}</button>
     </form>}

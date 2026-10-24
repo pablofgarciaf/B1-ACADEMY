@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   // 53 caracteres
   title: 'Términos y Condiciones de Uso del Campus',
   // 150 caracteres
-  description: 'Condiciones de uso de Finix Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de SAP Business One y ley ecuatoriana.',
+  description: 'Condiciones de uso de B1 Academy: cuenta y cédula, simulador, tutor IA, evaluaciones, certificados propios no oficiales de SAP Business One y ley ecuatoriana.',
   alternates: { canonical: `${LEGAL.sitio}/terminos` },
 };
 

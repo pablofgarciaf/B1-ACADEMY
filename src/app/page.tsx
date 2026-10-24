@@ -38,7 +38,7 @@ import {
 } from '@/lib/curriculum-data';
 
 export const metadata = {
-  title: 'Capacitación Práctica en SAP Business One | Finix Academy',
+  title: 'Capacitación Práctica en SAP Business One | B1 Academy',
   description: 'Aprende procesos empresariales con clases guiadas, manuales y un simulador educativo. Rutas de formación individual y capacitación para equipos en Ecuador.',
 };
 
@@ -68,7 +68,7 @@ export default function HomePage() {
             <div className="text-center max-w-4xl mx-auto space-y-6 py-4 sm:py-8">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue dark:text-sky-300">
                 <span className="w-2 h-2 rounded-full bg-finix-blue animate-pulse" />
-                Academia Tecnológica B2B / B2C • Finix Academy Ecuador
+                Academia Tecnológica B2B / B2C • B1 Academy Ecuador
               </div>
 
               {/* H1 Exacto (45-65 chars) -> 53 caracteres */}

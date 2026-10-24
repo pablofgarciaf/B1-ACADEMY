@@ -29,7 +29,7 @@ export function legalMissing(details: LegalDetails): string[] {
 
 export const LEGAL = {
   marca: 'B1 Academy',
-  razonSocial: process.env.NEXT_PUBLIC_LEGAL_NAME?.trim() || 'Finix Academy Ecuador',
+  razonSocial: process.env.NEXT_PUBLIC_LEGAL_NAME?.trim() || 'B1 Academy Ecuador',
   ruc: process.env.NEXT_PUBLIC_LEGAL_RUC?.trim() || '',
   direccion: process.env.NEXT_PUBLIC_LEGAL_ADDRESS?.trim() || 'Av. Amazonas y República',
   ciudad: process.env.NEXT_PUBLIC_LEGAL_CITY?.trim() || 'Quito',

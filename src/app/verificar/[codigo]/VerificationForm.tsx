@@ -76,7 +76,7 @@ export function VerificationForm({ code }: { code: string }) {
         </label>
         <label className="flex items-start gap-3 text-sm">
           <input type="checkbox" checked={marketingAccepted} onChange={event => setMarketingAccepted(event.target.checked)} className="mt-1" />
-          <span>Opcional: autorizo a Finix Academy a contactarme por el medio indicado para ofrecerme sus servicios. Puedo verificar el certificado sin aceptar esta opción.</span>
+          <span>Opcional: autorizo a B1 Academy a contactarme por el medio indicado para ofrecerme sus servicios. Puedo verificar el certificado sin aceptar esta opción.</span>
         </label>
         <button type="submit" disabled={busy} className="rounded-xl bg-amber-600 hover:bg-amber-500 disabled:opacity-60 px-5 py-3 text-white text-sm font-bold">{busy ? 'Verificando…' : 'Verificar certificado'}</button>
         {error && <p role="alert" className="text-sm text-red-700 dark:text-red-400">{error}</p>}

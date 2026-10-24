@@ -1,8 +1,8 @@
 import {publicUrl} from '@/lib/site-url';
 import {OFFICIAL_SYLLABUS} from '@/lib/curriculum-data';
-export function GET(){return new Response(`# Finix Academy — programa de formación
+export function GET(){return new Response(`# B1 Academy — programa de formación
 
-Objetivo: practicar compras, ventas, inventario, producción y finanzas en un laboratorio educativo. El progreso exige prácticas verificadas y evaluación del programa. Las constancias de Finix Academy se consultan por código; no equivalen a títulos o acreditación externa.
+Objetivo: practicar compras, ventas, inventario, producción y finanzas en un laboratorio educativo. El progreso exige prácticas verificadas y evaluación del programa. Las constancias de B1 Academy se consultan por código; no equivalen a títulos o acreditación externa.
 
 ## Módulos
 ${OFFICIAL_SYLLABUS.map(m=>`- ${m.title}: ${m.description} (${publicUrl('/capacitacion/'+encodeURIComponent(m.id))})`).join('\n')}

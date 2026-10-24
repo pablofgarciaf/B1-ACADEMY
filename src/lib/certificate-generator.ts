@@ -39,7 +39,7 @@ export function generateOfficialCampusCertificate({
   hours,
   competencies = [],
   dateStr = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }),
-  instructorName = 'Finix Academy'
+  instructorName = 'B1 Academy'
 }: OfficialCampusCertificateData) {
   // Documento A4 horizontal (297 x 210 mm)
   const doc = new jsPDF({
@@ -129,7 +129,7 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'italic');
   doc.setFontSize(10.5);
   doc.setTextColor(100, 116, 139);
-  doc.text('Finix Academy deja constancia de la formación de:', 148.5, 54, { align: 'center' });
+  doc.text('B1 Academy deja constancia de la formación de:', 148.5, 54, { align: 'center' });
 
   // 6. Nombre del Estudiante / Docente
   doc.setFont('helvetica', 'bold');
@@ -199,7 +199,7 @@ export function generateOfficialCampusCertificate({
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('Finix Academy', 68.5, 161, { align: 'center' });
+  doc.text('B1 Academy', 68.5, 161, { align: 'center' });
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7.8);
   doc.setTextColor(100, 116, 139);

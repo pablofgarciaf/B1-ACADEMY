@@ -259,7 +259,7 @@ const SLIDES: SlideData[] = [
     ],
     "highlight": {
       "label": "Constancia",
-      "value": "Finix Academy",
+      "value": "B1 Academy",
       "detail": "No constituye título oficial ni acreditación de un fabricante."
     },
     "speakerNotes": "Demuestra únicamente lo que esté disponible y verificado en el entorno de prueba. Explica los límites y los datos pendientes.",
@@ -335,7 +335,7 @@ export default function PresentacionComercialPage() {
 
       {/* Cápsula GEO */}
       <aside aria-label="Resumen de Presentación Comercial" className="sr-only">
-        Presentación de la formación empresarial de Finix Academy.
+        Presentación de la formación empresarial de B1 Academy.
         Recorrido educativo de documentos, análisis de crédito y margen, trazabilidad y recuperación simple con supuestos explícitos.
       </aside>
 

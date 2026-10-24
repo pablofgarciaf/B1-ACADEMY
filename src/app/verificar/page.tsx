@@ -6,9 +6,9 @@ import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
 
 export const metadata: Metadata = {
-  // absolute: evita que la plantilla del layout agregue "| Finix Academy" y pase de 60 caracteres (51).
-  title: { absolute: 'Verificar Certificado SAP Business One | Finix Academy' },
-  description: 'Ingresa el código de un certificado de Finix Academy para comprobar al instante su autenticidad, titular, competencia acreditada y fecha de emisión.',
+  // absolute: evita que la plantilla del layout agregue "| B1 Academy" y pase de 60 caracteres (51).
+  title: { absolute: 'Verificar Certificado SAP Business One | B1 Academy' },
+  description: 'Ingresa el código de un certificado de B1 Academy para comprobar al instante su autenticidad, titular, competencia acreditada y fecha de emisión.',
   alternates: { canonical: publicUrl('/verificar') },
 };
 
@@ -21,10 +21,10 @@ export default async function VerificarPage({ searchParams }: { searchParams: Pr
       <Navbar />
       <main className="flex-1 w-full max-w-2xl mx-auto px-4 sm:px-6 py-10 space-y-6">
         <aside aria-label="Resumen" className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/5 text-sm text-slate-700 dark:text-slate-300">
-          Cada certificado de Finix Academy tiene un código único y firmado. Ingrésalo aquí para confirmar quién lo obtuvo,
+          Cada certificado de B1 Academy tiene un código único y firmado. Ingrésalo aquí para confirmar quién lo obtuvo,
           qué competencia acredita y cuándo se emitió.
         </aside>
-        <h1 className="text-3xl font-extrabold tracking-tight">Verificar un certificado de SAP Business One de Finix Academy</h1>
+        <h1 className="text-3xl font-extrabold tracking-tight">Verificar un certificado de SAP Business One de B1 Academy</h1>
         <form action="/verificar" method="get" className="rounded-3xl border border-slate-200 dark:border-gray-800 bg-white dark:bg-[#131a20] p-6 shadow-xl space-y-4">
           <label htmlFor="codigo" className="block text-sm font-semibold">Código de verificación</label>
           <input

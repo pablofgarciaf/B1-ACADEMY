@@ -2,7 +2,7 @@ import 'server-only';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 import { narrationChunks } from './narration-chunks';
 
-/** Voz oficial de Finix Academy: la misma de los videos de los manuales (manual 1.1). */
+/** Voz oficial de B1 Academy: la misma de los videos de los manuales (manual 1.1). */
 export const ACADEMY_VOICE = 'es-MX-JorgeNeural';
 export const TTS_MAX_CHARS = 12000;
 

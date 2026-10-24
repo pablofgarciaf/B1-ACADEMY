@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     apple: '/icon.png',
   },
   title: {
-    default: "Finix Academy | Capacitación Práctica en SAP Business One",
-    template: "%s | Finix Academy",
+    default: "B1 Academy | Capacitación Práctica en SAP Business One",
+    template: "%s | B1 Academy",
   },
   description:
     "Formación especializada y capacitación práctica en SAP Business One para empresas y profesionales, con simulador interactivo, evaluación y certificación en español.",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     "Simulador contable educativo Ecuador",
     "Cursos de gestión empresarial Ecuador",
   ],
-  authors: [{ name: "Finix Academy" }],
-  creator: "Finix Academy",
-  publisher: "Finix Academy",
+  authors: [{ name: "B1 Academy" }],
+  creator: "B1 Academy",
+  publisher: "B1 Academy",
   formatDetection: {
     email: false,
     address: false,
@@ -52,11 +52,11 @@ export const metadata: Metadata = {
     canonical: publicUrl(),
   },
   openGraph: {
-    title: "Finix Academy | Capacitación Práctica en SAP Business One",
+    title: "B1 Academy | Capacitación Práctica en SAP Business One",
     description:
       "Formación especializada y capacitación práctica en SAP Business One para empresas y profesionales, con simulador interactivo, evaluación y certificación en español.",
     url: publicUrl(),
-    siteName: "Finix Academy",
+    siteName: "B1 Academy",
     locale: "es_ES",
     type: "website",
     images: [
@@ -64,13 +64,13 @@ export const metadata: Metadata = {
         url: publicUrl('/icon.png'),
         width: 500,
         height: 500,
-        alt: "Finix Academy - Plataforma de Capacitación y Consultoría Empresarial Finix ERP",
+        alt: "B1 Academy - Plataforma de Capacitación y Consultoría Empresarial Finix ERP",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Finix Academy | Capacitación Práctica en SAP Business One",
+    title: "B1 Academy | Capacitación Práctica en SAP Business One",
     description:
       "Formación especializada y consultoría en Finix ERP para profesionales y empresas.",
     images: [publicUrl('/icon.png')],
@@ -93,7 +93,7 @@ const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  name: "Finix Academy",
+  name: "B1 Academy",
   url: publicUrl(),
   logo: publicUrl('/icon.png'),
   description:

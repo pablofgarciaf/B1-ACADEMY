@@ -318,7 +318,7 @@ export default function ManualViewer({
       role: 'ia',
       text: isPractical
         ? "¡Hola! Soy tu tutor de Laboratorio Práctico de SAP Business One. Tengo cargadas las especificaciones de este caso de estudio y del simulador interactivo. ¿En qué paso o validación técnica necesitas apoyo?"
-        : "¡Hola! Soy tu tutor virtual de Finix Academy para SAP Business One. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
+        : "¡Hola! Soy tu tutor virtual de B1 Academy para SAP Business One. He analizado la documentación técnica de este manual. ¿Qué concepto o flujo operativo deseas comprender a fondo?"
     }
   ]);
 
