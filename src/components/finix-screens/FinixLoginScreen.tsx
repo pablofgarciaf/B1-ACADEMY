@@ -65,25 +65,25 @@ export default function FinixLoginScreen({ userEmail = 'estudiante@finix.ec', de
             <span>🐦‍🔥</span>
           </div>
           <div>
-            <h1 id={`${id}-title`} className="text-[16px] font-bold leading-6 text-[#002244]">SAP Business One</h1>
-            <p className="text-[#666]">Version 10.0 (HANA) · Ecuador SRI & NIIF PYMES</p>
+            <h1 id={`${id}-title`} className="text-[16px] font-bold leading-6 text-[#002244]">Simulador Finix ERP</h1>
+            <p className="text-[#666]">Entorno de práctica · Ecuador · NIIF para PYMES</p>
           </div>
         </header>
 
         {checkingSession ? (
           <p role="status" className="flex min-h-[300px] items-center justify-center gap-2 text-[#666]">
             <span aria-hidden="true" className="h-4 w-4 animate-spin rounded-full border-2 border-[#D4D0C8] border-t-[#1E3A5F] motion-reduce:animate-none" />
-            Comprobando sesión SAP Business One…
+            Preparando el simulador Finix ERP…
           </p>
         ) : (
           <form onSubmit={handleSubmit} aria-busy={isSubmitting} aria-describedby={error ? `${id}-error` : undefined} className="space-y-4">
             <div>
-              <label htmlFor={`${id}-server`} className="mb-1 block text-[#666]">Servidor Cloud</label>
-              <input id={`${id}-server`} type="text" readOnly value="SAP-HANA-EC01" className={fieldClass} />
+              <label htmlFor={`${id}-server`} className="mb-1 block text-[#666]">Entorno de práctica</label>
+              <input id={`${id}-server`} type="text" readOnly value="FINIX-DEMO-EC" className={fieldClass} />
             </div>
             <div>
               <label htmlFor={`${id}-database`} className="mb-1 block text-[#666]">Base de datos empresa</label>
-              <input id={`${id}-database`} type="text" readOnly value="SBODEMO_EC" className={fieldClass} />
+              <input id={`${id}-database`} type="text" readOnly value="EMPRESA-DEMO-EC" className={fieldClass} />
             </div>
             <div>
               <div className="flex justify-between items-center mb-1">
@@ -136,7 +136,7 @@ export default function FinixLoginScreen({ userEmail = 'estudiante@finix.ec', de
           </form>
         )}
         <footer className="mt-6 text-center text-[10px] text-[#999]">
-          Finix ERP 2026 | Cloud Edition | Facturación SRI & SuperCías Ecuador
+          Simulador Finix ERP | Datos de práctica | Ecuador
         </footer>
       </div>
     </section>

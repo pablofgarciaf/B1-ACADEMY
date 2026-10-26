@@ -111,7 +111,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
     <div className="m-2 sm:m-3 rounded-md border border-[#8a9bb0] bg-[#eef1f5] shadow-2xl overflow-hidden text-[#1d2d3e] text-xs">
       <div className="flex items-center justify-between bg-gradient-to-b from-[#dfe7f1] to-[#c7d4e4] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold">
         <div className="flex items-center gap-2">
-          <span className="rounded-sm bg-[#003366] px-1.5 text-[10px] font-black text-white">SAP B1</span>
+          <span className="rounded-sm bg-[#003366] px-1.5 text-[10px] font-black text-white">Finix ERP</span>
           <span>Laboratorio de práctica equivalente — {empresa || EMPRESA_CURSO}</span>
         </div>
         <span className="text-[10px] text-gray-600 hidden sm:inline">Modo Laboratorio Transaccional</span>
@@ -122,7 +122,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
         <div className="flex flex-wrap items-center justify-between gap-1 border-b border-[#c8d9eb] pb-1.5">
           <div className="flex items-center gap-1.5">
             <span className="text-sm">🎯</span>
-            <span className="font-bold text-xs text-[#003366]">{guia.title || 'Misión Práctica en SAP Business One'}</span>
+            <span className="font-bold text-xs text-[#003366]">{guia.title || 'Misión práctica en Finix ERP'}</span>
           </div>
           {guia.menu_path && (
             <span className="text-[10.5px] font-medium text-[#4a6b8e] bg-white/80 px-2 py-0.5 rounded border border-[#c4d6ea]">
