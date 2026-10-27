@@ -285,6 +285,7 @@ export default function FinixInteractiveSimulator({
   const [saveLoading, setSaveLoading] = useState(false);
   const [stepSuccessMsg, setStepSuccessMsg] = useState<string | null>(null);
   const [validationMessage, setValidationMessage] = useState<string | null>(null);
+  const [simSearchMode, setSimSearchMode] = useState<boolean>(false);
   const [showAlertsModal, setShowAlertsModal] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -661,6 +662,111 @@ export default function FinixInteractiveSimulator({
     completeMission(1800);
   };
 
+  // Atajos de teclado oficiales de SAP Business One en el Simulador Interactivo
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // 1. Ctrl+F / Cmd+F -> Modo Buscar SAP B1 (Evita el diálogo de búsqueda nativo del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'f' || e.key === 'F')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-search-mode', { detail: { timestamp: Date.now() } }));
+        setSimSearchMode(true);
+        if (simMode === 'cockpit') {
+          setShowSearch(true);
+          setSearchQuery('');
+        }
+        setStepSuccessMsg('Modo Buscar (Ctrl+F) activado: Campos en amarillo para criterios de búsqueda.');
+        return;
+      }
+
+      // 2. Ctrl+A / Cmd+A -> Modo Crear / Añadir SAP B1 (Evita seleccionar todo el texto de la página)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-add-mode', { detail: { timestamp: Date.now() } }));
+        setSimSearchMode(false);
+        setSalesCreated(false);
+        setJeCreated(false);
+        setGrpoCreated(false);
+        setInvoiceCreated(false);
+        setItemSaved(false);
+        setUomGroupSaved(false);
+        setPayDone(false);
+        setStepSuccessMsg('Modo Crear / Añadir (Ctrl+A): Formulario en modo Añadir con campos editables.');
+        return;
+      }
+
+      // 3. Ctrl+S / Cmd+S -> Guardar / Contabilizar documento activo (Evita guardar página HTML)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-save-document', { detail: { timestamp: Date.now() } }));
+        if (simMode === 'sales') {
+          handleCreateSalesInvoice();
+        } else if (simMode === 'journal_entry') {
+          handleCreateJE();
+        } else if (simMode === 'procurement') {
+          if (procurementStage === 'po') handleCreatePO();
+          else if (procurementStage === 'grpo') handleCreateGRPO();
+          else if (procurementStage === 'invoice') handleCreateInvoice();
+        } else if (simMode === 'item_master') {
+          handleUpdateItem();
+        } else if (simMode === 'uom_setup') {
+          handleSaveUomGroup();
+        } else if (simMode === 'query') {
+          handleExecuteQuery();
+        } else if (simMode === 'banking') {
+          handleCreatePayment();
+        }
+        return;
+      }
+
+      // 4. Ctrl+D / Cmd+D -> Borrar fila o documento (Evita marcadores del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'd' || e.key === 'D')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-delete-row', { detail: { timestamp: Date.now() } }));
+        if (simMode === 'sales' && salesQty2 > 0) {
+          setSalesQty2(0);
+          setStepSuccessMsg('Fila 2 eliminada del documento (Ctrl+D).');
+        } else {
+          setStepSuccessMsg('Borrar fila o documento (Ctrl+D) ejecutado.');
+        }
+        return;
+      }
+
+      // 5. Ctrl+N / Cmd+N -> Nueva ventana / nuevo documento (Evita abrir ventana del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 'N')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-new-document', { detail: { timestamp: Date.now() } }));
+        setSimSearchMode(false);
+        setSalesCreated(false);
+        setJeCreated(false);
+        setStepSuccessMsg('Nuevo documento / Nuevo registro iniciado (Ctrl+N).');
+        return;
+      }
+
+      // 6. Escape -> Cerrar ventana activa o cancelar
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowAlertsModal(false);
+        setShowSearch(false);
+        setShowParamModal(false);
+        setSimSearchMode(false);
+        window.dispatchEvent(new CustomEvent('sap-escape', { detail: { timestamp: Date.now() } }));
+        setStepSuccessMsg('Operación cancelada (Escape).');
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, [simMode, procurementStage, salesQty2]);
+
   // Prácticas conectadas: si la práctica corresponde a una pantalla real del Simulador, el estudiante la hace
   // en SU empresa (Supabase), eligiendo de listas sus propios datos.
   const conectada = stepGuide ? pantallaConectada(stepGuide) : null;
@@ -1022,20 +1128,39 @@ export default function FinixInteractiveSimulator({
               <div className="bg-white border border-[#7f9db9] p-2.5 rounded grid grid-cols-2 sm:grid-cols-4 gap-2 text-[11px]">
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Cliente:</label>
-                  <input type="text" readOnly value="C20000" className="w-full bg-[#fffde0] border border-[#7f9db9] px-1.5 py-0.5 font-mono font-bold" />
+                  <input
+                    type="text"
+                    readOnly
+                    value="C20000"
+                    className={`w-full ${simSearchMode ? 'bg-[#fffde7] border-[#d49b00] ring-1 ring-amber-400' : 'bg-[#fffde0] border-[#7f9db9]'} border px-1.5 py-0.5 font-mono font-bold`}
+                  />
                 </div>
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Nombre de Cliente:</label>
-                  <input type="text" readOnly value="Maxi-Teq Corporation" className="w-full bg-gray-100 border border-[#7f9db9] px-1.5 py-0.5 truncate" />
+                  <input
+                    type="text"
+                    readOnly
+                    value="Maxi-Teq Corporation"
+                    className={`w-full ${simSearchMode ? 'bg-[#fffde7] border-[#d49b00]' : 'bg-gray-100 border-[#7f9db9]'} border px-1.5 py-0.5 truncate`}
+                  />
                 </div>
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Fecha Contabilización:</label>
-                  <input type="text" readOnly value="15.03.2026" className="w-full bg-gray-100 border border-[#7f9db9] px-1.5 py-0.5" />
+                  <input
+                    type="text"
+                    readOnly
+                    value="15.03.2026"
+                    className={`w-full ${simSearchMode ? 'bg-[#fffde7] border-[#d49b00]' : 'bg-gray-100 border-[#7f9db9]'} border px-1.5 py-0.5`}
+                  />
                 </div>
                 <div>
                   <label className="font-bold text-[#1c3a63] block">Estado:</label>
-                  <span className={`inline-block px-2 py-0.5 rounded font-bold ${salesCreated ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
-                    {salesCreated ? 'Cerrado' : 'Abierto'}
+                  <span className={`inline-block px-2 py-0.5 rounded font-bold ${
+                    simSearchMode
+                      ? 'bg-amber-200 text-amber-900 border border-amber-400'
+                      : salesCreated ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                  }`}>
+                    {simSearchMode ? '🔍 Modo Buscar (Ctrl+F)' : salesCreated ? 'Cerrado' : 'Abierto'}
                   </span>
                 </div>
               </div>
@@ -1120,17 +1245,28 @@ export default function FinixInteractiveSimulator({
                 </div>
               </div>
 
-              {/* Botón de Creación */}
+              {/* Botón de Creación / Búsqueda */}
               <div className="flex justify-end gap-2 pt-2 border-t border-gray-300">
                 <button
-                  disabled={salesCreated}
-                  onClick={handleCreateSalesInvoice}
-                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${salesCreated
+                  disabled={salesCreated && !simSearchMode}
+                  onClick={() => {
+                    if (simSearchMode) {
+                      setSimSearchMode(false);
+                      markStepDone(1);
+                      setStepSuccessMsg('¡Documento encontrado en Modo Buscar! Cambiando a Modo Visualizar.');
+                    } else {
+                      handleCreateSalesInvoice();
+                    }
+                  }}
+                  className={`font-bold text-xs px-5 py-1 rounded-[3px] border shadow transition-all ${
+                    simSearchMode
+                      ? 'bg-[#ffe885] hover:bg-[#ffd54f] text-[#7a5200] border-[#d49b00] active:scale-95'
+                      : salesCreated
                       ? 'bg-emerald-600 text-white border-emerald-800 opacity-80 cursor-default'
                       : 'bg-[#dfdfdf] hover:bg-[#d0d0d0] text-gray-900 border-[#555555] active:scale-95'
                     }`}
                 >
-                  {salesCreated ? '✓ Factura Contabilizada' : 'Crear / Añadir'}
+                  {simSearchMode ? '🔍 Buscar Documento (Ctrl+F)' : salesCreated ? '✓ Factura Contabilizada' : 'Crear / Añadir (Ctrl+A)'}
                 </button>
               </div>
             </div>

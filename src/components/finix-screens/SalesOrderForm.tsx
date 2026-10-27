@@ -76,6 +76,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
 
   const [data, setData] = useState<DocumentInput>(blank);
   const [index, setIndex] = useState(-1);
+  const [formMode, setFormMode] = useState<'create' | 'edit' | 'search'>('create');
   const [activeTab, setActiveTab] = useState<'contenido' | 'logistica' | 'finanzas' | 'anexos'>('contenido');
   const [partnerLookup, setPartnerLookup] = useState(false);
   const [itemLookup, setItemLookup] = useState<number | null>(null);
@@ -146,7 +147,27 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const reset = () => {
     setData(blank());
     setIndex(-1);
+    setFormMode('create');
     setActiveTab('contenido');
+  };
+
+  const handleSearchExecute = () => {
+    const qCode = data.cardCode.trim().toLowerCase();
+    const qRef = (data.reference || '').trim().toLowerCase();
+    const matchedIdx = docs.findIndex(d =>
+      (qCode && (d.cardCode?.toLowerCase().includes(qCode) || d.cardName?.toLowerCase().includes(qCode))) ||
+      (qRef && d.reference?.toLowerCase().includes(qRef)) ||
+      (qCode && String(d.docNumber).includes(qCode))
+    );
+    if (matchedIdx >= 0) {
+      setIndex(matchedIdx);
+      loadDocIntoForm(docs[matchedIdx]);
+    } else if (docs.length > 0) {
+      setIndex(0);
+      loadDocIntoForm(docs[0]);
+    } else {
+      alert('No se encontraron documentos comerciales con ese criterio de búsqueda.');
+    }
   };
 
   useEffect(() => {
@@ -154,16 +175,51 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
       reset();
     };
     const handleSearchMode = () => {
+      setFormMode('search');
       const partnerInput = document.querySelector('input[placeholder*="Código"]') as HTMLInputElement | null;
-      if (partnerInput) partnerInput.focus();
+      if (partnerInput) {
+        partnerInput.focus();
+        partnerInput.select();
+      }
     };
+    const handleSaveDoc = () => {
+      if (formMode === 'search') {
+        handleSearchExecute();
+      } else if (!locked) {
+        const formEl = document.getElementById('sales-order-form') as HTMLFormElement | null;
+        if (formEl) formEl.requestSubmit();
+      }
+    };
+    const handleDeleteRow = () => {
+      if (data.lines.length > 1) {
+        if (window.confirm('¿Desea borrar la fila seleccionada del documento?')) {
+          setData(d => ({ ...d, lines: d.lines.slice(0, -1) }));
+        }
+      } else {
+        alert('El documento comercial debe contener al menos una partida.');
+      }
+    };
+    const handleEscape = () => {
+      if (partnerLookup) { setPartnerLookup(false); return; }
+      if (itemLookup !== null) { setItemLookup(null); return; }
+      if (formMode === 'search') {
+        reset();
+      }
+    };
+
     window.addEventListener('sap-add-mode', handleAddMode);
     window.addEventListener('sap-search-mode', handleSearchMode);
+    window.addEventListener('sap-save-document', handleSaveDoc);
+    window.addEventListener('sap-delete-row', handleDeleteRow);
+    window.addEventListener('sap-escape', handleEscape);
     return () => {
       window.removeEventListener('sap-add-mode', handleAddMode);
       window.removeEventListener('sap-search-mode', handleSearchMode);
+      window.removeEventListener('sap-save-document', handleSaveDoc);
+      window.removeEventListener('sap-delete-row', handleDeleteRow);
+      window.removeEventListener('sap-escape', handleEscape);
     };
-  }, []);
+  }, [formMode, locked, partnerLookup, itemLookup, docs, data.cardCode, data.reference, data.lines.length]);
 
   const lineChange = (i: number, changes: Partial<DocumentLine>) => {
     setData(d => ({
@@ -316,7 +372,11 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
 
         <div className="flex items-center gap-2 text-[10.5px]">
           <span className="font-semibold text-[#324b67]">
-            {index < 0 ? (
+            {formMode === 'search' ? (
+              <span className="text-[#b45309] bg-[#fef3c7] px-2 py-0.5 rounded border border-[#f59e0b] font-bold flex items-center gap-1">
+                <span>🔍</span> Modo Buscar (Ctrl+F) — Campos en amarillo
+              </span>
+            ) : index < 0 ? (
               <span className="text-[#0055a5] font-bold">✨ Modo Creación (Añadir)</span>
             ) : (
               <span>Documento #{docs[index]?.docNumber || index + 1} de {docs.length}</span>
@@ -329,8 +389,13 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
 
       {/* ── FORMULARIO PRINCIPAL SAP BUSINESS ONE ── */}
       <form
+        id="sales-order-form"
         onSubmit={async e => {
           e.preventDefault();
+          if (formMode === 'search') {
+            handleSearchExecute();
+            return;
+          }
           try {
             if (purchase) {
               await c.save({ action: 'purchase', data: { docType: docType as PurchaseDocType, document: data } });
@@ -377,11 +442,11 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
                 <div className="relative w-36 shrink-0">
                   <input
                     list="partner-codes-list"
-                    className="w-full border border-[#9fb4c7] bg-white px-2 py-1 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner"
+                    className={`w-full border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7] ring-1 ring-[#f59e0b]/50' : 'border-[#9fb4c7] bg-white'} px-2 py-1 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner`}
                     placeholder="Código..."
                     value={data.cardCode}
                     disabled={locked}
-                    required
+                    required={formMode !== 'search'}
                     onChange={e => selectPartnerByCodeOrName(e.target.value)}
                   />
                   <datalist id="partner-codes-list">
@@ -396,7 +461,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
                 {/* Nombre de Socio: Selección directa mediante Select desplegable o Input rápido */}
                 <select
                   aria-label={purchase ? 'Seleccionar Proveedor' : 'Seleccionar Cliente'}
-                  className="flex-1 min-w-0 border border-[#9fb4c7] bg-white px-2 py-1 text-[11px] text-[#1e293b] font-medium rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner cursor-pointer"
+                  className={`flex-1 min-w-0 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-1 text-[11px] text-[#1e293b] font-medium rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner cursor-pointer`}
                   value={partner ? partner.cardCode : ''}
                   disabled={locked}
                   onChange={e => {
@@ -440,7 +505,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
               <label className="text-[10.5px] text-[#475569] font-medium">Nº Ref. del Socio</label>
               <input
                 type="text"
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner"
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner`}
                 placeholder="OC-CLI-2026-99"
                 value={data.reference ?? ''}
                 disabled={locked}
@@ -503,8 +568,8 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
               </label>
               <input
                 type="date"
-                required
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner"
+                required={formMode !== 'search'}
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner`}
                 value={data.date ?? today()}
                 disabled={locked}
                 onChange={e => setData(d => ({ ...d, date: e.target.value }))}
@@ -518,9 +583,9 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
               </label>
               <input
                 type="date"
-                required
+                required={formMode !== 'search'}
                 min={data.date || today()}
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner"
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner`}
                 value={data.dueDate ?? today()}
                 disabled={locked}
                 onChange={e => setData(d => ({ ...d, dueDate: e.target.value }))}
@@ -532,7 +597,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
               <label className="text-[10.5px] text-[#475569] font-medium">Fecha de documento</label>
               <input
                 type="date"
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner"
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-1 focus:outline-[#0055a5] shadow-inner`}
                 value={data.date ?? today()}
                 disabled={locked}
                 onChange={e => setData(d => ({ ...d, date: e.target.value }))}
@@ -1077,10 +1142,14 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
           <div className="flex items-center gap-2">
             <button
               type="submit"
-              disabled={locked || !partner}
-              className="px-5 py-1.5 bg-[#0070d2] hover:bg-[#005bb5] border border-[#004b96] text-white font-bold text-xs rounded-xs shadow-sm hover:shadow active:scale-95 disabled:opacity-50 cursor-pointer transition-all flex items-center gap-1.5"
+              disabled={locked || (formMode !== 'search' && !partner)}
+              className={`px-5 py-1.5 ${
+                formMode === 'search'
+                  ? 'bg-[#ffe885] hover:bg-[#ffd54f] text-[#7a5200] border border-[#d49b00]'
+                  : 'bg-[#0070d2] hover:bg-[#005bb5] border border-[#004b96] text-white'
+              } font-bold text-xs rounded-xs shadow-sm hover:shadow active:scale-95 disabled:opacity-50 cursor-pointer transition-all flex items-center gap-1.5`}
             >
-              <span>{c.saving ? 'Procesando…' : index < 0 ? 'Crear' : 'Actualizar'}</span>
+              <span>{c.saving ? 'Procesando…' : formMode === 'search' ? 'Buscar (Ctrl+F)' : index < 0 ? 'Crear (Ctrl+A)' : 'Actualizar'}</span>
             </button>
 
             <button
@@ -1184,6 +1253,7 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   );
 
   function loadDocIntoForm(doc: any) {
+    setFormMode('edit');
     setData({
       date: doc.date ?? today(),
       dueDate: doc.dueDate ?? today(),

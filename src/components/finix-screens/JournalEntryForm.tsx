@@ -34,9 +34,30 @@ export default function JournalEntryForm(_props: { screenId?: string; screenName
 
   useEffect(() => {
     const onSapAdd = () => reset();
+    const onSapSave = () => {
+      const formEl = document.getElementById('journal-entry-form') as HTMLFormElement | null;
+      if (formEl) formEl.requestSubmit();
+    };
+    const onSapDelete = () => {
+      if (lines.length > 2) {
+        if (window.confirm('¿Desea borrar la última línea del asiento?')) {
+          setLines(ls => ls.slice(0, -1));
+        }
+      }
+    };
+    const onSapEscape = () => reset();
+
     window.addEventListener('sap-add-mode', onSapAdd);
-    return () => window.removeEventListener('sap-add-mode', onSapAdd);
-  }, []);
+    window.addEventListener('sap-save-document', onSapSave);
+    window.addEventListener('sap-delete-row', onSapDelete);
+    window.addEventListener('sap-escape', onSapEscape);
+    return () => {
+      window.removeEventListener('sap-add-mode', onSapAdd);
+      window.removeEventListener('sap-save-document', onSapSave);
+      window.removeEventListener('sap-delete-row', onSapDelete);
+      window.removeEventListener('sap-escape', onSapEscape);
+    };
+  }, [lines.length]);
   return <Screen title="Asiento contable">
     <Navigation count={c.data.journalEntries.length} index={index} onNew={reset} onSelect={i => {
       const e = c.data.journalEntries[i];
@@ -53,7 +74,7 @@ export default function JournalEntryForm(_props: { screenId?: string; screenName
       })));
     }} />
     <p>{entry?.entryNumber ?? 'Numeración AS automática'} · Período {(date || today()).slice(0, 7)}</p>
-    <form className="space-y-3" onSubmit={async e => { e.preventDefault(); try { await c.save({ action: 'journal', data: { date, dueDate: date, memo, reference, lines } }); reset(); } catch { /* Provider error. */ } }}>
+    <form id="journal-entry-form" className="space-y-3" onSubmit={async e => { e.preventDefault(); try { await c.save({ action: 'journal', data: { date, dueDate: date, memo, reference, lines } }); reset(); } catch { /* Provider error. */ } }}>
       <fieldset disabled={c.saving || index >= 0} className="space-y-3">
         <div className="grid gap-2 sm:grid-cols-3">
           <Field label="Fecha" required><input required type="date" className={inputClass} value={date ?? ''} onChange={e => setDate(e.target.value)} /></Field>

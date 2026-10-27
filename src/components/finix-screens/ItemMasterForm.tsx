@@ -168,17 +168,58 @@ export default function ItemMasterForm() {
   // Atajos de teclado oficiales de SAP B1
   useEffect(() => {
     const onSapAdd = () => resetFormToCreate();
-    const onSapSearch = () => setFormMode('search');
+    const onSapSearch = () => {
+      setFormMode('search');
+      const itemCodeInput = document.querySelector('input[placeholder*="Auto (A00001)"]') as HTMLInputElement | null;
+      if (itemCodeInput) {
+        itemCodeInput.focus();
+        itemCodeInput.select();
+      }
+    };
+    const onSapSave = () => {
+      const formEl = document.getElementById('item-master-form') as HTMLFormElement | null;
+      if (formEl) formEl.requestSubmit();
+    };
+    const onSapEscape = () => {
+      if (formMode === 'search') {
+        resetFormToCreate();
+      }
+    };
+
     window.addEventListener('sap-add-mode', onSapAdd);
     window.addEventListener('sap-search-mode', onSapSearch);
+    window.addEventListener('sap-save-document', onSapSave);
+    window.addEventListener('sap-escape', onSapEscape);
     return () => {
       window.removeEventListener('sap-add-mode', onSapAdd);
       window.removeEventListener('sap-search-mode', onSapSearch);
+      window.removeEventListener('sap-save-document', onSapSave);
+      window.removeEventListener('sap-escape', onSapEscape);
     };
-  }, [items.length]);
+  }, [items, formMode]);
 
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formMode === 'search') {
+      const qCode = itemCode.trim().toLowerCase();
+      const qName = name.trim().toLowerCase();
+      const qBarcode = barcode.trim();
+      const matched = items.find(it =>
+        (qCode && it.itemCode.toLowerCase().includes(qCode)) ||
+        (qName && it.name.toLowerCase().includes(qName)) ||
+        (qBarcode && it.barcode && it.barcode.includes(qBarcode))
+      );
+      if (matched) {
+        const idx = items.findIndex(it => it.itemCode === matched.itemCode);
+        loadItem(idx);
+      } else if (items.length > 0) {
+        loadItem(0);
+      } else {
+        alert('No se encontraron artículos con ese criterio de búsqueda.');
+      }
+      return;
+    }
+
     if (!name.trim()) {
       alert('Introduce la descripción del artículo.');
       return;
@@ -313,7 +354,7 @@ export default function ItemMasterForm() {
       </div>
 
       {/* ── CUERPO PRINCIPAL DEL FORMULARIO OITM ── */}
-      <form onSubmit={handleSave} className="border border-[#a6b8cc] border-t-0 bg-white p-3 rounded-b-xs space-y-3 shadow-xs">
+      <form id="item-master-form" onSubmit={handleSave} className="border border-[#a6b8cc] border-t-0 bg-white p-3 rounded-b-xs space-y-3 shadow-xs">
         {/* Cabecera Canónica OITM (2 Columnas + 3 Checkboxes SAP B1) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-3 border-b border-[#cbd8e5] text-[11px]">
           {/* Columna Izquierda: Número de artículo, Descripción, Clase, Grupo */}
@@ -326,7 +367,7 @@ export default function ItemMasterForm() {
                   value={itemCode}
                   onChange={(e) => setItemCode(e.target.value)}
                   disabled={formMode === 'edit'}
-                  className="w-full border border-[#9fb4c7] bg-[#fffde7] px-2 py-0.5 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:outline-none focus:ring-1 focus:ring-[#0070d2]"
+                  className={`w-full border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7] ring-1 ring-[#f59e0b]/50' : 'border-[#9fb4c7] bg-[#fffde7]'} px-2 py-0.5 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
                   placeholder="Auto (A00001)"
                 />
                 <button
@@ -344,10 +385,10 @@ export default function ItemMasterForm() {
               <label className="text-[10.5px] font-bold text-[#003366]">Descripción <span className="text-red-500">*</span></label>
               <input
                 type="text"
-                required
+                required={formMode !== 'search'}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]"
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
                 placeholder="Descripción del ítem / producto"
               />
             </div>

@@ -221,7 +221,45 @@ export default function FioriDesktopShell({
         return;
       }
 
-      // 4. F5 -> Actualizar datos
+      // 4. Ctrl+D / Cmd+D -> Borrar fila seleccionada (evita marcador del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'd' || e.key === 'D')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-delete-row'));
+        return;
+      }
+
+      // 5. Ctrl+N / Cmd+N -> Nuevo documento / Nueva transacción (evita ventana nueva del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 'N')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-new-document'));
+        if (!activeScreen) {
+          setActiveScreen({ id: 'SAL002', name: 'Pedido de Venta', module: '02_Ventas' });
+        }
+        return;
+      }
+
+      // 6. Escape -> Cerrar modal/pantalla activa o salir de modo búsqueda
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        if (showAdvisor) {
+          setShowAdvisor(false);
+          return;
+        }
+        if (showMissionsModal) {
+          setShowMissionsModal(false);
+          return;
+        }
+        window.dispatchEvent(new CustomEvent('sap-escape'));
+        if (activeScreen) {
+          setActiveScreen(null);
+        }
+        return;
+      }
+
+      // 7. F5 -> Actualizar datos
       if (e.key === 'F5') {
         e.preventDefault();
         e.stopPropagation();
@@ -229,7 +267,7 @@ export default function FioriDesktopShell({
         return;
       }
 
-      // 5. F1 -> FeNi AI
+      // 8. F1 -> FeNi AI
       if (e.key === 'F1') {
         e.preventDefault();
         e.stopPropagation();
@@ -240,7 +278,7 @@ export default function FioriDesktopShell({
 
     window.addEventListener('keydown', handleKeyDown, true);
     return () => window.removeEventListener('keydown', handleKeyDown, true);
-  }, [activeScreen, company]);
+  }, [activeScreen, company, showAdvisor, showMissionsModal]);
 
   const companies = userProfile?.privateAccountingEnabled ? [...LISTA_SIETE_EMPRESAS, EMPRESA_PRIVADA] : LISTA_SIETE_EMPRESAS;
   const isPrivate = activeSlot === 'privado';

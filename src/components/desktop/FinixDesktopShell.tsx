@@ -696,12 +696,23 @@ export default function FinixDesktopShell({
   // Atajos de teclado oficiales de SAP Business One a nivel global
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // 1. Ctrl+F / Cmd+F -> Modo Buscar SAP B1 (Evita el buscador del navegador)
+      // 1. Ctrl+F / Cmd+F -> Modo Buscar SAP B1 (Evita el diálogo de búsqueda nativo del navegador)
       if ((e.ctrlKey || e.metaKey) && (e.key === 'f' || e.key === 'F')) {
         e.preventDefault();
         e.stopPropagation();
-        window.dispatchEvent(new CustomEvent('sap-search-mode'));
-        handleToolAction('search');
+        window.dispatchEvent(new CustomEvent('sap-search-mode', { detail: { timestamp: Date.now() } }));
+        if (windows.length === 0) {
+          const quickSearch = (document.getElementById('sap-quick-search-input') || document.querySelector('input[placeholder*="Buscar datos"]')) as HTMLInputElement | null;
+          if (quickSearch) {
+            quickSearch.focus();
+            quickSearch.select();
+            showToast('Buscador de transacciones enfocado (Ctrl+F)', 'info');
+          } else {
+            handleToolAction('search');
+          }
+        } else {
+          showToast('Modo Buscar (Ctrl+F) activado: Campos en amarillo para criterios de búsqueda.', 'info');
+        }
         return;
       }
 
@@ -709,21 +720,67 @@ export default function FinixDesktopShell({
       if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
         e.preventDefault();
         e.stopPropagation();
-        window.dispatchEvent(new CustomEvent('sap-add-mode'));
-        handleToolAction('add');
+        window.dispatchEvent(new CustomEvent('sap-add-mode', { detail: { timestamp: Date.now() } }));
+        if (windows.length === 0) {
+          handleToolAction('add');
+        } else {
+          showToast('Modo Crear / Añadir (Ctrl+A): Formulario en modo Añadir con campos editables.', 'info');
+        }
         return;
       }
 
-      // 3. Ctrl+S / Cmd+S -> Guardar / Contabilizar documento activo
+      // 3. Ctrl+S / Cmd+S -> Guardar / Contabilizar documento activo (Evita guardar página HTML)
       if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
         e.preventDefault();
         e.stopPropagation();
-        window.dispatchEvent(new CustomEvent('sap-save-document'));
-        showToast('Guardando documento activo (Ctrl+S)...', 'info');
+        window.dispatchEvent(new CustomEvent('sap-save-document', { detail: { timestamp: Date.now() } }));
+        showToast('Guardando/Añadiendo documento activo (Ctrl+S)...', 'info');
         return;
       }
 
-      // 4. F5 -> Actualizar datos sin recargar la página del navegador
+      // 4. Ctrl+D / Cmd+D -> Borrar fila o documento con confirmación (Evita marcadores del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'd' || e.key === 'D')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-delete-row', { detail: { timestamp: Date.now() } }));
+        showToast('Borrar fila o documento (Ctrl+D) solicitado.', 'warn');
+        return;
+      }
+
+      // 5. Ctrl+N / Cmd+N -> Nueva ventana / nuevo documento (Evita abrir ventana del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'n' || e.key === 'N')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-new-document', { detail: { timestamp: Date.now() } }));
+        handleMenuAction('Nuevo');
+        showToast('Nuevo documento / Nueva ventana abierta (Ctrl+N).', 'info');
+        return;
+      }
+
+      // 6. Escape -> Cerrar ventana activa o cancelar modal
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        // Primero cerrar modales si existen
+        if (showAboutModal) { setShowAboutModal(false); return; }
+        if (showEmailModal) { setShowEmailModal(false); return; }
+        if (showPrintPreviewModal) { setShowPrintPreviewModal(false); return; }
+        if (showFilterModal) { setShowFilterModal(false); return; }
+        if (showSortModal) { setShowSortModal(false); return; }
+        if (showLayoutModal) { setShowLayoutModal(false); return; }
+        if (showSettingsModal) { setShowSettingsModal(false); return; }
+        if (unauthorizedModal) { setUnauthorizedModal(null); return; }
+
+        window.dispatchEvent(new CustomEvent('sap-escape', { detail: { timestamp: Date.now() } }));
+        const activeWin = windows.find(w => w.focused) || windows[windows.length - 1];
+        if (activeWin) {
+          closeWindow(activeWin.id);
+          showToast(`Ventana "${activeWin.title}" cerrada (Escape).`, 'info');
+        }
+        return;
+      }
+
+      // 7. F5 -> Actualizar datos sin recargar la página del navegador
       if (e.key === 'F5') {
         e.preventDefault();
         e.stopPropagation();
@@ -731,7 +788,7 @@ export default function FinixDesktopShell({
         return;
       }
 
-      // 5. F1 -> Ayuda de SAP B1 / Asistente FeNi
+      // 8. F1 -> Ayuda de SAP B1 / Asistente FeNi
       if (e.key === 'F1') {
         e.preventDefault();
         e.stopPropagation();
@@ -745,7 +802,7 @@ export default function FinixDesktopShell({
     return () => {
       window.removeEventListener('keydown', handleKeyDown, true);
     };
-  }, [windows, nextZIndex]);
+  }, [windows, nextZIndex, showAboutModal, showEmailModal, showPrintPreviewModal, showFilterModal, showSortModal, showLayoutModal, showSettingsModal, unauthorizedModal]);
 
   return (
     <div className="w-full h-full flex-1 flex flex-col bg-[#e8ecf2] font-[Tahoma,Arial,sans-serif] text-xs overflow-hidden select-none">

@@ -318,6 +318,7 @@ export default function FinixToolBar({ onActionClick, onSearch, onSearchByModel 
         <div className="relative flex items-center">
           <span className="absolute left-1.5 text-gray-400 text-[10px]">🔎</span>
           <input
+            id="sap-quick-search-input"
             type="text"
             placeholder="Buscar datos maestros y documentos..."
             value={searchQuery}

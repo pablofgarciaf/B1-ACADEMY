@@ -148,25 +148,64 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
     }
   }, [vendor]);
 
-  // Atajos de teclado SAP B1 (Ctrl+A -> Modo Crear, Ctrl+F -> Modo Buscar)
+  // Atajos de teclado SAP B1 (Ctrl+A -> Modo Crear, Ctrl+F -> Modo Buscar, Ctrl+S -> Guardar, Escape -> Cancelar)
   useEffect(() => {
     const onSapAdd = () => {
       resetFormToCreate();
     };
     const onSapSearch = () => {
       setFormMode('search');
+      const codeInput = document.querySelector('input[placeholder*="Auto"]') as HTMLInputElement | null;
+      if (codeInput) {
+        codeInput.focus();
+        codeInput.select();
+      }
     };
+    const onSapSave = () => {
+      const formEl = document.getElementById('company-partner-form') as HTMLFormElement | null;
+      if (formEl) formEl.requestSubmit();
+    };
+    const onSapEscape = () => {
+      if (formMode === 'search') {
+        resetFormToCreate();
+      }
+    };
+
     window.addEventListener('sap-add-mode', onSapAdd);
     window.addEventListener('sap-search-mode', onSapSearch);
+    window.addEventListener('sap-save-document', onSapSave);
+    window.addEventListener('sap-escape', onSapEscape);
     return () => {
       window.removeEventListener('sap-add-mode', onSapAdd);
       window.removeEventListener('sap-search-mode', onSapSearch);
+      window.removeEventListener('sap-save-document', onSapSave);
+      window.removeEventListener('sap-escape', onSapEscape);
     };
-  }, [list.length, vendor]);
+  }, [list, formMode, vendor]);
 
-  // Guardar o actualizar registro
+  // Guardar o actualizar registro (o ejecutar búsqueda en modo Buscar)
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (formMode === 'search') {
+      const qCode = cardCode.trim().toLowerCase();
+      const qName = name.trim().toLowerCase();
+      const qRuc = ruc.trim();
+      const matched = list.find(p =>
+        (qCode && p.cardCode.toLowerCase().includes(qCode)) ||
+        (qName && p.name.toLowerCase().includes(qName)) ||
+        (qRuc && p.ruc && p.ruc.includes(qRuc))
+      );
+      if (matched) {
+        const idx = list.findIndex(p => p.cardCode === matched.cardCode);
+        loadPartner(idx);
+      } else if (list.length > 0) {
+        loadPartner(0);
+      } else {
+        alert('No se encontraron interlocutores con ese criterio de búsqueda.');
+      }
+      return;
+    }
+
     if (!name.trim()) {
       alert('Introduce el nombre o razón social del interlocutor.');
       return;
@@ -323,7 +362,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
       </div>
 
       {/* ── CUERPO PRINCIPAL DEL FORMULARIO OCRD ── */}
-      <form onSubmit={handleSave} className="border border-[#a6b8cc] border-t-0 bg-white p-3 rounded-b-xs space-y-3 shadow-xs">
+      <form id="company-partner-form" onSubmit={handleSave} className="border border-[#a6b8cc] border-t-0 bg-white p-3 rounded-b-xs space-y-3 shadow-xs">
         {/* Cabecera Canónica OCRD (2 Columnas con Etiquetas y Cuadros Oficiales SAP B1) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-3 border-b border-[#cbd8e5] text-[11px]">
           {/* Columna Izquierda: Código, Nombre, Moneda, RUC */}
@@ -336,7 +375,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
                   value={cardCode}
                   onChange={(e) => setCardCode(e.target.value)}
                   disabled={formMode === 'edit'}
-                  className="w-full border border-[#9fb4c7] bg-[#fffde7] px-2 py-0.5 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:outline-none focus:ring-1 focus:ring-[#0070d2]"
+                  className={`w-full border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7] ring-1 ring-[#f59e0b]/50' : 'border-[#9fb4c7] bg-[#fffde7]'} px-2 py-0.5 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
                   placeholder="Auto (C00001 / P00001)"
                 />
                 <button
@@ -354,10 +393,10 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
               <label className="text-[10.5px] font-bold text-[#003366]">Nombre / Razón Social <span className="text-red-500">*</span></label>
               <input
                 type="text"
-                required
+                required={formMode !== 'search'}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]"
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
                 placeholder="Razón Social Oficial"
               />
             </div>
