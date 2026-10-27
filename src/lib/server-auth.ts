@@ -49,7 +49,7 @@ export async function authenticateIdToken(idToken: string): Promise<Authenticate
     throw error;
   }
 
-  if (!profile || profile.status !== 'active') throw new AuthRejectedError('Perfil inexistente o inactivo.');
+  if (!profile || profile.status === 'suspended') throw new AuthRejectedError('Perfil inexistente o suspendido.');
   return { uid, email, profile };
 }
 
@@ -83,11 +83,11 @@ export async function getSessionState(): Promise<SessionState> {
   if (!session) return { estado: 'sin-sesion' };
   try {
     if (session.startsWith('idtoken:')) return { estado: 'ok', user: await authenticateIdToken(session.slice('idtoken:'.length)) };
-    const decoded = await adminAuth.verifySessionCookie(session, true);
+    const decoded = await adminAuth.verifySessionCookie(session, false);
     const email = decoded.email?.toLowerCase();
     if (!email) return { estado: 'sin-sesion' };
     const profile = await readProfile(decoded.uid, email);
-    if (!profile || profile.status !== 'active') return { estado: 'sin-sesion' };
+    if (!profile || profile.status === 'suspended') return { estado: 'sin-sesion' };
     return { estado: 'ok', user: { uid: decoded.uid, email, profile } };
   } catch (error) {
     if (esRechazoAuth(error)) return { estado: 'sin-sesion' };
@@ -104,11 +104,11 @@ export async function getSessionUser(): Promise<AuthenticatedUser | null> {
     // `await` obligatorio: sin él, un token vencido escapa del try/catch y la página responde 500 en vez de ir al login.
     if (session.startsWith('idtoken:')) return await authenticateIdToken(session.slice('idtoken:'.length));
 
-    const decoded = await adminAuth.verifySessionCookie(session, true);
+    const decoded = await adminAuth.verifySessionCookie(session, false);
     const email = decoded.email?.toLowerCase();
     if (!email) return null;
     const profile = await readProfile(decoded.uid, email);
-    if (!profile || profile.status !== 'active') return null;
+    if (!profile || profile.status === 'suspended') return null;
     return { uid: decoded.uid, email, profile };
   } catch {
     return null;

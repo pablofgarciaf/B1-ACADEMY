@@ -79,9 +79,10 @@ interface FinixDesktopShellProps {
     metadata: { total_screens: number; total_modules: number };
   };
   onExit?: () => void;
+  onSwitchToFiori?: () => void;
 }
 
-export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShellProps) {
+export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: FinixDesktopShellProps) {
   const { userProfile, currentUser } = useAuth();
   const company = useCompany();
   const [windows, setWindows] = useState<Window[]>([]);
@@ -461,6 +462,18 @@ export default function FinixDesktopShell({ catalog, onExit }: FinixDesktopShell
               <option value="classic">💻 Finix Enterprise (Metálico)</option>
             </select>
           </div>
+
+          {onSwitchToFiori && (
+            <button
+              type="button"
+              onClick={onSwitchToFiori}
+              className="flex items-center gap-1.5 bg-[#0055A5] hover:bg-[#0070D2] text-white border border-blue-300/50 px-2.5 py-1 rounded text-[11px] font-bold transition-all active:scale-95 shadow-sm"
+              title="Cambiar a la vista moderna de SAP Fiori Launchpad"
+            >
+              <span>✨</span>
+              <span>Modo SAP Fiori</span>
+            </button>
+          )}
 
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2.5 py-1 rounded shadow-inner">
             <Shield className="w-3.5 h-3.5 text-amber-400" aria-hidden="true" />

@@ -7,6 +7,7 @@ import { sendCommand, empresaActiva, cambiarEmpresaActiva, LISTA_SIETE_EMPRESAS,
 import { crearB1Center } from '@/lib/b1-center';
 import { levelNames } from '@/lib/company-defaults';
 import FinixDesktopShell from '@/components/desktop/FinixDesktopShell';
+import FioriDesktopShell from '@/components/desktop/FioriDesktopShell';
 import { Busy, buttonClass, inputClass, Screen } from '@/components/finix-screens/FinixControls';
 
 type Catalog = ComponentProps<typeof FinixDesktopShell>['catalog'];
@@ -22,6 +23,29 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
   const [slot, setSlot] = useState<EmpresaSlot>('curso');
   const [companyName, setCompanyName] = useState('B1 Center S.A.S. (Matriz)');
   const [showMissions, setShowMissions] = useState(false);
+  const [viewMode, setViewMode] = useState<'fiori' | 'classic'>('fiori');
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('finix_view_mode') || localStorage.getItem('b1_view_mode');
+      if (saved === 'classic' || saved === 'fiori') {
+        setViewMode(saved);
+      }
+    } catch {
+      /* ignore */
+    }
+  }, []);
+
+  const handleSwitchView = (mode: 'fiori' | 'classic') => {
+    setViewMode(mode);
+    try {
+      localStorage.setItem('finix_view_mode', mode);
+      localStorage.setItem('b1_view_mode', mode);
+    } catch {
+      /* ignore */
+    }
+  };
+
   const companies = userProfile?.privateAccountingEnabled ? [...LISTA_SIETE_EMPRESAS, EMPRESA_PRIVADA] : LISTA_SIETE_EMPRESAS;
   const isPrivate = slot === 'privado';
 
@@ -51,6 +75,20 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
 
   const empActual = slot === 'privado' ? EMPRESA_PRIVADA : LISTA_SIETE_EMPRESAS.find(e => e.id === slot) || LISTA_SIETE_EMPRESAS[0];
 
+  if (viewMode === 'fiori' && c.data.profile) {
+    return (
+      <CompanyContext.Provider value={c}>
+        <div className="h-screen w-screen overflow-hidden flex flex-col">
+          <FioriDesktopShell
+            catalog={extendCompanyCatalog(catalog)}
+            onExit={onExit}
+            onSwitchToClassic={() => handleSwitchView('classic')}
+          />
+        </div>
+      </CompanyContext.Provider>
+    );
+  }
+
   return <CompanyContext.Provider value={c}><div className="flex h-screen max-h-screen overflow-hidden flex-col bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
     <div className="flex flex-wrap items-center gap-3 border-b border-[#999] bg-[#D4D0C8] p-2">
       <button className={buttonClass} disabled={c.saving} onClick={onExit}>Volver al campus</button>
@@ -76,6 +114,17 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
       {!isPrivate && c.data.profile && <span>{c.data.profile.xp} XP · Nivel {c.data.profile.level} · {levelNames[c.data.profile.level - 1]}</span>}
       {userProfile && ['teacher', 'docente'].includes(userProfile.role) && <Link href="/simulador/admin" className={buttonClass}>Panel docente</Link>}
       {!isPrivate && <button className={buttonClass} onClick={() => setShowMissions(v => !v)}>Misiones y XP</button>}
+      {c.data.profile && (
+        <button
+          type="button"
+          onClick={() => handleSwitchView('fiori')}
+          className="ml-auto px-3 py-1 bg-gradient-to-r from-[#0055A5] to-[#0070D2] text-white font-bold rounded border border-blue-400 hover:from-[#004080] hover:to-[#005bb5] transition active:scale-95 shadow flex items-center gap-1.5 text-[11px]"
+          title="Cambiar a la experiencia moderna de SAP Fiori Horizon"
+        >
+          <span>✨</span>
+          <span>Modo SAP Fiori</span>
+        </button>
+      )}
       {(c.loading || c.saving) && <Busy />}
     </div>
     {c.error && <div role="alert" className="border border-red-400 bg-red-50 p-3 text-red-900">{c.error}<button className={buttonClass + ' ml-2'} onClick={() => { void c.refresh(); }}>Reintentar carga</button></div>}
@@ -155,7 +204,13 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
         </Screen>
       )
     ) : (
-      <div className="min-h-0 flex-1 overflow-hidden flex flex-col"><FinixDesktopShell catalog={extendCompanyCatalog(catalog)} onExit={onExit} /></div>
+      <div className="min-h-0 flex-1 overflow-hidden flex flex-col">
+        <FinixDesktopShell
+          catalog={extendCompanyCatalog(catalog)}
+          onExit={onExit}
+          onSwitchToFiori={() => handleSwitchView('fiori')}
+        />
+      </div>
     )}
   </div></CompanyContext.Provider>;
 }

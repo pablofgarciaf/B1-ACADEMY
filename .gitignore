@@ -64,3 +64,5 @@ public/SAP_B1_Full_Kit_Simulador/
 /docs/PLAN_AUDITORIA*.md
 /docs/PLAN_CORRECCIONES*.md
 archive-*/
+tmp/
+output/

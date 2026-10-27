@@ -71,11 +71,14 @@ export default function LoginPage() {
         } catch { /* se informa abajo */ }
       }
       if (cancelado) return;
-      if (valida) router.replace(requiresPasswordChange(userProfile) ? "/change-password" : siguiente);
-      else setAvisoSesion("No pudimos abrir tu sesión en el servidor. Espera unos segundos y vuelve a ingresar con tu correo y clave.");
+      if (valida) {
+        window.location.replace(requiresPasswordChange(userProfile) ? "/change-password" : siguiente);
+        return;
+      }
+      setAvisoSesion("No pudimos abrir tu sesión en el servidor. Espera unos segundos y vuelve a ingresar con tu correo y clave.");
     })();
     return () => { cancelado = true; };
-  }, [authLoading, userProfile, currentUser, siguiente, router]);
+  }, [authLoading, userProfile, currentUser, siguiente]);
 
   // Login state
   const [email, setEmail] = useState("");
@@ -123,11 +126,11 @@ export default function LoginPage() {
       setSuccessMsg("Bienvenido! Redirigiendo...");
       setTimeout(() => {
         if (siguiente) {
-          router.push(siguiente);
+          window.location.href = siguiente;
         } else if (res.role === "super" || res.role === "admin") {
-          router.push("/admin");
+          window.location.href = "/admin";
         } else {
-          router.push("/dashboard");
+          window.location.href = "/dashboard";
         }
       }, 700);
     } catch (err: any) {

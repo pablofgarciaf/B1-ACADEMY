@@ -17,6 +17,9 @@
     "check:release": "node tests/check-release.cjs"
   },
   "dependencies": {
+    "@ui5/webcomponents": "^2.28.1",
+    "@ui5/webcomponents-icons": "^2.28.1",
+    "@ui5/webcomponents-react": "^2.28.1",
     "canvas-confetti": "^1.9.4",
     "clsx": "^2.1.1",
     "firebase": "^11.4.0",
@@ -39,6 +42,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^22.20.2",
     "@types/react": "^19.0.10",
@@ -49,8 +53,7 @@
     "postcss": "^8.5.23",
     "tailwindcss": "^3.4.17",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3",
-    "@tailwindcss/typography": "^0.5.20"
+    "typescript": "^5.9.3"
   },
   "overrides": {
     "@grpc/grpc-js": "^1.13.6",
