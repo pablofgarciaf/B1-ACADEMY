@@ -58,15 +58,31 @@ function getRelevantContext(query: string) {
 export async function POST(req: Request) {
   try {
     let uid: string;
+    let isGuest = false;
+
     if (req.headers.get('authorization')?.startsWith('Bearer ')) {
-      try { uid = (await requireBearerUser(req)).uid; }
-      catch { return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 }); }
+      try {
+        uid = (await requireBearerUser(req)).uid;
+      } catch {
+        isGuest = true;
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || req.headers.get('x-real-ip') || 'guest';
+        uid = `anon_${ip}`;
+      }
     } else {
       const session = await getSessionState();
-      if (session.estado === 'no-disponible') return NextResponse.json({ error: 'Servicio de autenticación no disponible.' }, { status: 503 });
-      if (session.estado !== 'ok') return NextResponse.json({ error: 'No autorizado. Inicia sesión para interactuar con FeNi AI.' }, { status: 401 });
-      assertAccountReady(session.user);
-      uid = session.user.uid;
+      if (session.estado === 'ok') {
+        try {
+          assertAccountReady(session.user);
+          uid = session.user.uid;
+        } catch {
+          isGuest = true;
+          uid = `guest_${session.user.uid}`;
+        }
+      } else {
+        isGuest = true;
+        const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || req.headers.get('x-real-ip') || 'guest';
+        uid = `anon_${ip}`;
+      }
     }
 
     const parsed = chatSchema.safeParse(await req.json().catch(() => null));
@@ -82,8 +98,14 @@ export async function POST(req: Request) {
     }
 
     if (messages.reduce((n,m)=>n+m.content.length,0)>20000) return NextResponse.json({error:'La conversación es demasiado extensa.'},{status:400});
-    const quota=await consumeQuota('chat',uid,20,15*60_000);
-    if (!quota.allowed) return NextResponse.json({error:'Espera antes de volver a consultar.'},{status:429,headers:{'Retry-After':String(quota.retryAfter)}});
+    const limit = isGuest ? 12 : 25;
+    const quota = await consumeQuota('chat', uid, limit, 15 * 60_000);
+    if (!quota.allowed) {
+      return NextResponse.json(
+        { error: 'Límite de consultas alcanzado para esta sesión. Espera unos minutos antes de volver a consultar a FeNi AI.' },
+        { status: 429, headers: { 'Retry-After': String(quota.retryAfter) } }
+      );
+    }
     const openai = new OpenAI({
       apiKey: process.env.NVIDIA_API_KEY,
       baseURL: 'https://integrate.api.nvidia.com/v1',

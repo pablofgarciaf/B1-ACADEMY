@@ -80,8 +80,8 @@ function Pantalla({ p }: { p: Exclude<PantallaConectada,{clave:'consultaAcademic
  * Práctica en la empresa del estudiante: la pantalla real del Simulador guarda en Supabase.
  * La práctica se cumple cuando el motor confirma que la operación quedó registrada.
  */
-export default function PracticaConectada({ guia, pantalla, onCompleta }: {
-  guia: GuiaPractica; pantalla: PantallaConectada; onCompleta: (intento: IntentoPractica) => void;
+export default function PracticaConectada({ guia, pantalla, onCompleta, hideHeaderGuide = false }: {
+  guia: GuiaPractica; pantalla: PantallaConectada; onCompleta: (intento: IntentoPractica) => void; hideHeaderGuide?: boolean;
 }) {
   const c = useCompanyController();
   const [logrado, setLogrado] = useState<string | null>(null);
@@ -146,6 +146,7 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
       </div>
 
       {/* Panel Pedagógico: Misión, Ruta SAP y Datos requeridos */}
+      {!hideHeaderGuide && (
       <div className="mx-2 sm:mx-3 mt-2 rounded border border-[#b8cce2] bg-gradient-to-b from-[#f0f6fc] to-[#e4eef9] p-3 text-[#1c3654] space-y-2">
         <div className="flex flex-wrap items-center justify-between gap-1 border-b border-[#c8d9eb] pb-1.5">
           <div className="flex items-center gap-1.5">
@@ -212,6 +213,8 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
           </div>
         )}
       </div>
+
+      )}
 
       {pendingEvidence && !logrado && <div className="mx-3 mt-2 rounded border border-sky-400 bg-sky-50 p-3"><p>La operación está guardada en tu empresa educativa. Termina los pasos de la misión antes de comprobarla.</p><button type="button" disabled={c.saving} className="mt-2 rounded bg-sky-800 px-3 py-2 font-bold text-white disabled:opacity-50" onClick={()=>{setLogrado(pendingEvidence.evidence?.result??'registrada');onCompleta(pendingEvidence);}}>Comprobar práctica</button></div>}
       {logrado && (

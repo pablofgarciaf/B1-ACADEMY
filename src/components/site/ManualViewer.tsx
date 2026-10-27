@@ -384,6 +384,16 @@ export default function ManualViewer({
           setIsAiLoading(false);
           return;
         }
+      } else {
+        const errData = await res.json().catch(() => null);
+        if (errData?.error) {
+          setChatMessages(prev => [
+            ...prev,
+            { role: 'ia', text: `ℹ️ ${errData.error}\n\n*Consejo pedagógico*: Explora la diapositiva actual o utiliza la pestaña **Simulador** para poner en práctica este concepto.` }
+          ]);
+          setIsAiLoading(false);
+          return;
+        }
       }
     } catch (e) {
       console.warn("Fallback local de IA:", e);
@@ -1010,25 +1020,41 @@ export default function ManualViewer({
                 <div className="flex-1 min-h-0 space-y-3 overflow-y-auto mb-3 pr-1 custom-scrollbar">
                   {chatMessages.map((msg, i) => (
                     <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-xs sm:text-sm ${msg.role === 'user' ? 'bg-amber-600 text-white rounded-br-none' : 'bg-gray-800 text-gray-200 rounded-bl-none'
+                      <div className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-xs sm:text-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-amber-600 text-white rounded-br-none' : 'bg-gray-800 text-gray-200 rounded-bl-none'
                         }`}>
                         {msg.text}
                       </div>
                     </div>
                   ))}
+                  {isAiLoading && (
+                    <div className="flex justify-start animate-fadeIn">
+                      <div className="max-w-[85%] rounded-2xl px-3.5 py-2 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-bl-none flex items-center gap-2 border border-gray-700/60 shadow-sm">
+                        <Bot size={14} className="text-amber-400 animate-spin" />
+                        <span>FeNi AI está formulando respuesta...</span>
+                        <span className="inline-flex gap-1 ml-1 items-center">
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:150ms]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:300ms]" />
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="flex shrink-0 items-center gap-2 border-t border-gray-800 pt-3">
                   <input
                     type="text"
+                    disabled={isAiLoading}
                     value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
-                    onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-                    placeholder="Pregunta algo sobre SAP Business One..."
-                    className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-xs sm:text-sm text-white focus:border-amber-500 focus:outline-none"
+                    onKeyDown={(e) => e.key === 'Enter' && !isAiLoading && handleSendMessage()}
+                    placeholder={isAiLoading ? "FeNi AI está respondiendo..." : "Pregunta algo sobre SAP Business One..."}
+                    className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-xs sm:text-sm text-white focus:border-amber-500 focus:outline-none disabled:opacity-50"
                   />
                   <button
+                    disabled={isAiLoading || !chatInput.trim()}
                     onClick={() => handleSendMessage()}
-                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-600 text-white transition-colors hover:bg-amber-500 active:scale-95"
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-amber-600 text-white transition-colors hover:bg-amber-500 active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
+                    title={isAiLoading ? "Esperando respuesta..." : "Enviar pregunta"}
                   >
                     <Send size={15} />
                   </button>

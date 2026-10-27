@@ -10,18 +10,12 @@ import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
 import type { IntentoPractica } from '@/lib/practice-check';
 import { getCompany, usarEmpresaCurso } from '@/lib/firestore-company';
 import PasoCeroEmpresa from '@/components/lms/PasoCeroEmpresa';
-import FinixInteractiveSimulator from '@/components/simulator/FinixInteractiveSimulator';
+import FinixInteractiveSimulator, { type StepGuide, type CampoPractica } from '@/components/simulator/FinixInteractiveSimulator';
 import { GraduationCap, BookOpen, CheckCircle2, Award, Bot, Volume2, VolumeX, ArrowRight, ShieldCheck, Check, Lock, PanelLeftClose, PanelLeftOpen, ChevronRight, ChevronLeft, RotateCcw, Maximize2, Minimize2, Building2, Play, Pause } from 'lucide-react';
 
 // =============================================
 // Types
 // =============================================
-interface StepGuide {
-  action_type: string;
-  menu_path?: string;
-  title: string;
-  instructions: string[];
-}
 
 interface SyncSlide {
   slide_index: number;
@@ -770,10 +764,20 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
             <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
               {/* Glowing instructions bar */}
               <div className="shrink-0 max-h-[30dvh] overflow-y-auto mx-2 sm:mx-4 mt-3 p-3 rounded-xl bg-gradient-to-r from-blue-900/60 to-blue-800/40 border border-blue-500/40 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
-                <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400">
-                    📋 {currentStepGuide.title}
-                  </p>
+                <div className="flex items-center justify-between gap-2 mb-1.5 flex-wrap">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="w-5 h-5 rounded-md bg-blue-500/20 text-blue-300 flex items-center justify-center text-xs font-bold shrink-0">
+                      🎯
+                    </span>
+                    <p className="text-xs font-bold uppercase tracking-wide text-white truncate">
+                      {currentStepGuide.title}
+                    </p>
+                    {currentStepGuide.menu_path && (
+                      <span className="hidden sm:inline-flex text-[10.5px] font-mono font-medium text-blue-200 bg-blue-950/80 border border-blue-400/40 px-2 py-0.5 rounded shadow-2xs">
+                        Ruta: <strong>{currentStepGuide.menu_path}</strong>
+                      </span>
+                    )}
+                  </div>
                   {isSpeaking && (
                     <span className="flex items-center gap-1 text-[10px] font-bold text-amber-300 animate-pulse">
                       <Bot className="w-3.5 h-3.5" /> Tutor IA explicando...
@@ -832,14 +836,39 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                     </ul>
                   </details>
                 )}
-                <ol className="space-y-1">
+                <ol className="grid sm:grid-cols-2 gap-x-3 gap-y-1 my-1.5 bg-blue-950/40 p-2 rounded-lg border border-blue-500/20">
                   {currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map((inst, i) => (
-                    <li key={i} className="text-xs text-blue-100 flex gap-2">
-                      <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/30 text-blue-300 flex items-center justify-center text-[9px] font-bold">{i + 1}</span>
-                      {inst}
+                    <li key={i} className="text-xs text-blue-100 flex items-start gap-2">
+                      <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/40 text-blue-200 flex items-center justify-center text-[9px] font-bold mt-0.5">{i + 1}</span>
+                      <span>{inst}</span>
                     </li>
                   ))}
                 </ol>
+
+                {/* Ficha unificada de datos requeridos */}
+                {currentStepGuide.campos && currentStepGuide.campos.length > 0 && (
+                  <div className="mt-2 pt-2 border-t border-blue-500/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-[10px] font-extrabold text-blue-300 uppercase tracking-wider flex items-center gap-1">
+                        🏷️ Datos clave para ingresar en el simulador:
+                      </span>
+                      <span className="text-[9.5px] text-blue-200/70 hidden sm:inline">
+                        💡 Ingresa estos valores en el formulario
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-1.5">
+                      {currentStepGuide.campos.map((c, i) => (
+                        <div key={i} className="px-2.5 py-1.5 rounded-lg bg-blue-950/70 border border-blue-500/30 flex flex-col justify-between shadow-2xs">
+                          <div className="flex items-baseline justify-between gap-1">
+                            <span className="text-[9.5px] font-bold text-blue-300 uppercase tracking-wide truncate">{c.etiqueta}</span>
+                            <span className="text-xs font-mono font-bold text-white select-all">{c.valor}</span>
+                          </div>
+                          {c.pista && <span className="text-[9px] text-blue-200/60 italic truncate mt-0.5" title={c.pista}>{c.pista}</span>}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
               {/* Simulator */}
               <div className="flex-1 min-h-[320px] mt-3 px-2 sm:px-4 pb-4">
@@ -850,6 +879,7 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
                   stepGuide={currentStepGuide}
                   onMissionComplete={handleMissionComplete}
                   scrollInterno={false}
+                  hideHeaderGuide={true}
                 />
               </div>
             </div>

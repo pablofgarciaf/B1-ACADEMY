@@ -59,7 +59,43 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
     <p className="font-bold">{index >= 0 ? docs[index]?.docNumber : 'Numeración automática'} · USD</p>
     <form className="space-y-3" onSubmit={async event => { event.preventDefault(); try { if (purchase) await c.save({ action: 'purchase', data: { docType: docType as PurchaseDocType, document: data } }); else await c.save({ action: 'sales', data: { docType: docType as SalesDocType, document: data } }); reset(); } catch { /* Provider displays the error. */ } }}>
       <fieldset disabled={locked} className="space-y-3"><div className="grid gap-3 sm:grid-cols-3">
-        <Field label={purchase ? 'Proveedor' : 'Cliente'} required><div className="flex gap-1"><input className={inputClass} required readOnly value={partner ? partner.cardCode + ' · ' + partner.name : ''} /><button type="button" aria-label="Buscar socio" onClick={() => setPartnerLookup(true)} className={buttonClass}>[…]</button></div></Field>
+        <Field label={purchase ? 'Proveedor' : 'Cliente'} required>
+          <div className="flex gap-1.5 items-center">
+            <input 
+              list="partners-datalist"
+              className={inputClass + ' w-28 sm:w-32 font-mono font-bold'} 
+              required 
+              placeholder="Código..."
+              value={data.cardCode} 
+              onChange={e => {
+                const val = e.target.value.trim();
+                const found = partners.find(p => p.cardCode.toLowerCase() === val.toLowerCase() || p.name.toLowerCase() === val.toLowerCase());
+                if (found) {
+                  setData(d => ({ ...d, cardCode: found.cardCode }));
+                } else {
+                  setData(d => ({ ...d, cardCode: e.target.value }));
+                }
+              }} 
+            />
+            <input
+              type="text"
+              readOnly
+              className={inputClass + ' flex-1 bg-slate-50 text-slate-800 font-medium cursor-pointer hover:bg-slate-100 transition-colors'}
+              placeholder={purchase ? "Seleccionar proveedor..." : "Seleccionar cliente..."}
+              value={partner ? partner.name : ''}
+              onClick={() => setPartnerLookup(true)}
+              title="Haz clic para seleccionar o buscar socio de negocios"
+            />
+            <datalist id="partners-datalist">
+              {partners.map(p => (
+                <option key={p.cardCode} value={p.cardCode}>{p.name}</option>
+              ))}
+            </datalist>
+            <button type="button" aria-label="Buscar socio" onClick={() => setPartnerLookup(true)} className={buttonClass} title="Abrir catálogo completo">
+              […]
+            </button>
+          </div>
+        </Field>
         <Field label="Fecha" required><input required type="date" className={inputClass} value={data.date ?? today()} onChange={e => setData(d => ({ ...d, date: e.target.value }))} /></Field>
         <Field label="Vencimiento" required><input required type="date" className={inputClass} min={data.date || today()} value={data.dueDate ?? today()} onChange={e => setData(d => ({ ...d, dueDate: e.target.value }))} /></Field>
         {docType==='vendor_invoice'&&<Field label="Fecha valoración activo (solo capitalización)"><input type="date" className={inputClass} value={data.assetValuationDate??''} onChange={e=>setData(d=>({...d,assetValuationDate:e.target.value||undefined}))}/><small>Con fecha, cada unidad se registra como activo fijo y no ingresa a existencias. Déjala vacía para mercadería.</small></Field>}
@@ -68,7 +104,38 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
         {predecessor[docType] && <Field label="Copiar de documento base"><select className={inputClass} value={data.baseDocumentId ?? ''} onChange={e => { const source = sources.find(s => s.id === e.target.value); if (source) setData(d => ({ ...d, cardCode: source.cardCode, baseDocumentId: source.id, lines: source.lines.map(l => ({ ...l })) })); else setData(d => ({ ...d, baseDocumentId: '' })); }}><option value="">Sin documento base</option>{sources.map(s => <option key={s.id} value={s.id}>{s.docNumber} · {s.cardName}</option>)}</select></Field>}
       </div>
       <Table headers={['Artículo *', 'Descripción', 'Cantidad *', 'UM', 'Precio *', 'Desc. %', 'IVA %', 'Almacén *', 'Total', 'Acción']} rows={data.lines.map((line, i) => [
-        <div key="code" className="flex"><input aria-label={'Artículo línea ' + (i + 1)} required className={inputClass} value={line.itemCode ?? ''} readOnly /><button type="button" aria-label={'Buscar artículo línea ' + (i + 1)} className={buttonClass} onClick={() => setItemLookup(i)}>[…]</button></div>, <div key="description"><input aria-label={'Descripción línea '+(i+1)} required className={inputClass} value={line.description??''} onChange={e=>lineChange(i,{description:e.target.value})}/>{purchase&&line.itemType==='service'&&<select aria-label={'Cuenta de gastos línea '+(i+1)} required className={inputClass} value={line.expenseAccount??'6.03'} onChange={e=>lineChange(i,{expenseAccount:e.target.value})}>{c.data.chartOfAccounts.filter(a=>a.active&&a.postable&&['cost','expense'].includes(a.category)).map(a=><option key={a.id} value={a.code}>{a.code} — {a.name}</option>)}</select>}</div>,
+        <div key="code" className="flex gap-1 items-center">
+          <input 
+            aria-label={'Artículo línea ' + (i + 1)} 
+            required 
+            className={inputClass + ' w-28 font-mono'} 
+            list={`item-list-${i}`}
+            value={line.itemCode ?? ''} 
+            placeholder="Código..."
+            onChange={e => {
+              const codeVal = e.target.value.trim();
+              const matched = c.data.items.find(it => it.itemCode.toLowerCase() === codeVal.toLowerCase() || it.name.toLowerCase() === codeVal.toLowerCase());
+              if (matched) {
+                lineChange(i, { 
+                  itemCode: matched.itemCode, 
+                  itemType: matched.type, 
+                  description: matched.name, 
+                  price: purchase ? matched.purchasePrice : matched.price, 
+                  unit: purchase ? matched.purchaseUnit : matched.salesUnit, 
+                  ...sugerir(matched.itemCode, line.quantity ?? 1) 
+                });
+              } else {
+                lineChange(i, { itemCode: e.target.value });
+              }
+            }}
+          />
+          <datalist id={`item-list-${i}`}>
+            {c.data.items.filter(it => it.active).map(it => (
+              <option key={it.itemCode} value={it.itemCode}>{it.name} (${it.price})</option>
+            ))}
+          </datalist>
+          <button type="button" aria-label={'Buscar artículo línea ' + (i + 1)} className={buttonClass} onClick={() => setItemLookup(i)} title="Abrir catálogo completo">[…]</button>
+        </div>, <div key="description"><input aria-label={'Descripción línea '+(i+1)} required className={inputClass} value={line.description??''} onChange={e=>lineChange(i,{description:e.target.value})}/>{purchase&&line.itemType==='service'&&<select aria-label={'Cuenta de gastos línea '+(i+1)} required className={inputClass} value={line.expenseAccount??'6.03'} onChange={e=>lineChange(i,{expenseAccount:e.target.value})}>{c.data.chartOfAccounts.filter(a=>a.active&&a.postable&&['cost','expense'].includes(a.category)).map(a=><option key={a.id} value={a.code}>{a.code} — {a.name}</option>)}</select>}</div>,
         <NumberInput key="qty" ariaLabel={'Cantidad línea ' + (i + 1)} min={0.000001} required value={line.quantity ?? 1} onChange={val => { lineChange(i, { quantity: val, ...(line.itemCode ? { discount: sugerir(line.itemCode, val).discount ?? line.discount } : {}) }); }} />, line.unit ?? 'UND',
         <NumberInput key="price" ariaLabel={'Precio línea ' + (i + 1)} min={0} required value={line.price ?? 0} onChange={val => lineChange(i, { price: val })} />,
         <NumberInput key="discount" ariaLabel={'Descuento línea ' + (i + 1)} min={0} max={100} value={line.discount ?? 0} onChange={val => lineChange(i, { discount: val })} />,

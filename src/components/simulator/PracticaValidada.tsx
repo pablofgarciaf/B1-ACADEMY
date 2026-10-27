@@ -133,7 +133,7 @@ function esModoConsulta(guia: GuiaPractica) {
   return false;
 }
 
-export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void }) {
+export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = false }: { guia: GuiaPractica; onCompleta: (intento: IntentoPractica) => void; hideHeaderGuide?: boolean }) {
   const ruta = useMemo(() => rutaFinix(guia.menu_path ?? '', guia.title), [guia.menu_path, guia.title]);
   const porMenuSuperior = ruta[0] === 'Herramientas';
   const campos = useMemo(() => guia.campos ?? [], [guia.campos]);
@@ -142,7 +142,7 @@ export default function PracticaValidada({ guia, onCompleta }: { guia: GuiaPract
   const [moduloAbierto, setModuloAbierto] = useState<string | null>(null);
   const ventanaRef = useRef<HTMLDivElement>(null);
   const [menuMovilColapsado, setMenuMovilColapsado] = useState(false);
-  const [guiaExpandida, setGuiaExpandida] = useState(true);
+  const [guiaExpandida, setGuiaExpandida] = useState(!hideHeaderGuide);
 
   // En consultas los datos ya vienen precargados desde la BD de B1 Center (OITM, OCRD, etc.)
   const [valores, setValores] = useState<string[]>(() => {

@@ -124,7 +124,9 @@ function inferPracticeScreen(guide?: { title?: string; menu_path?: string; actio
   return null;
 }
 
-interface StepGuide {
+export type { CampoPractica };
+
+export interface StepGuide {
   title: string;
   menu_path?: string;
   action_type?: string;
@@ -148,6 +150,8 @@ export interface FinixInteractiveSimulatorProps {
    * (Mi Aula). Evita que el botón final quede oculto dentro de un contenedor de altura fija.
    */
   scrollInterno?: boolean;
+  /** true = oculta la caja pedagógica duplicada porque ya se muestra en el encabezado superior */
+  hideHeaderGuide?: boolean;
 }
 
 // Datos simulados para OCRD (Socios de Negocios)
@@ -210,7 +214,8 @@ export default function FinixInteractiveSimulator({
   guidedMode = false,
   onStepComplete,
   onMissionComplete,
-  scrollInterno = true
+  scrollInterno = true,
+  hideHeaderGuide = false
 }: FinixInteractiveSimulatorProps) {
   const { userProfile } = useAuth();
   const [viewMode, setViewMode] = useState<FinixUITheme>('fiori');
@@ -665,6 +670,7 @@ export default function FinixInteractiveSimulator({
         <PracticaConectada
           guia={stepGuide}
           pantalla={conectada}
+          hideHeaderGuide={hideHeaderGuide}
           onCompleta={(intento) => {
             (stepGuide.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
             completeMission(200, intento);
@@ -682,6 +688,7 @@ export default function FinixInteractiveSimulator({
         <div>
           <PracticaValidada
             guia={stepGuide}
+            hideHeaderGuide={hideHeaderGuide}
             onCompleta={(intento) => {
               (stepGuide.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
               completeMission(200, intento);
