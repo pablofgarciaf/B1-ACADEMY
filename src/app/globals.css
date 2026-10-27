@@ -199,3 +199,89 @@
 @media (prefers-reduced-motion: reduce) {
   .feni-flotar, .feni-ojos, .feni-antena, .feni-ala-izq-vuelo, .feni-ala-der-vuelo, .feni-ala-izq-respiro, .feni-ala-der-respiro { animation: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SAP Fiori Horizon Controls Scope (.finix-fiori-mode)
+   Transforms classic form controls into modern SAP Fiori Horizon UI
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.finix-fiori-mode {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+.finix-fiori-mode input:not([type="checkbox"]):not([type="radio"]),
+.finix-fiori-mode select,
+.finix-fiori-mode textarea {
+  border-radius: 0.625rem !important;
+  border-color: #cbd5e1 !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  padding: 0.4rem 0.75rem !important;
+  font-size: 0.75rem !important;
+  line-height: 1.25rem !important;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 0.15s ease-in-out;
+}
+
+.dark .finix-fiori-mode input:not([type="checkbox"]):not([type="radio"]),
+.dark .finix-fiori-mode select,
+.dark .finix-fiori-mode textarea {
+  border-color: #334155 !important;
+  background-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+.finix-fiori-mode input:focus,
+.finix-fiori-mode select:focus,
+.finix-fiori-mode textarea:focus {
+  outline: none !important;
+  border-color: #0055A5 !important;
+  box-shadow: 0 0 0 3px rgba(0, 85, 165, 0.15) !important;
+  background-color: #ffffff !important;
+}
+
+.dark .finix-fiori-mode input:focus,
+.dark .finix-fiori-mode select:focus,
+.dark .finix-fiori-mode textarea:focus {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
+  background-color: #1e293b !important;
+}
+
+.finix-fiori-mode .border-\[\#999\],
+.finix-fiori-mode .border-\[\#808080\],
+.finix-fiori-mode .border-\[\#7f9db9\],
+.finix-fiori-mode .border-\[\#7f93ab\] {
+  border-color: #e2e8f0 !important;
+  border-radius: 0.75rem;
+}
+
+.dark .finix-fiori-mode .border-\[\#999\],
+.dark .finix-fiori-mode .border-\[\#808080\],
+.dark .finix-fiori-mode .border-\[\#7f9db9\],
+.dark .finix-fiori-mode .border-\[\#7f93ab\] {
+  border-color: #334155 !important;
+}
+
+.finix-fiori-mode .bg-\[\#D4D0C8\],
+.finix-fiori-mode .bg-\[\#F5F4EE\] {
+  background-color: #f8fafc !important;
+}
+
+.dark .finix-fiori-mode .bg-\[\#D4D0C8\],
+.dark .finix-fiori-mode .bg-\[\#F5F4EE\] {
+  background-color: #1e293b !important;
+}
+
+.finix-fiori-mode .bg-\[\#ECE9D8\] {
+  background-color: #f8fafc !important;
+}
+
+.dark .finix-fiori-mode .bg-\[\#ECE9D8\] {
+  background-color: #0f172a !important;
+}
+
+.finix-fiori-mode button {
+  border-radius: 0.625rem;
+  transition: all 0.15s ease-in-out;
+}

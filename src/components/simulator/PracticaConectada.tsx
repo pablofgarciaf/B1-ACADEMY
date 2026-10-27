@@ -3,7 +3,8 @@ import { accountingPracticeGuidance } from '@/lib/accounting-practice-guidance';
 
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
+import { FinixUIThemeContext, type FinixUITheme } from '@/components/finix-screens/FinixControls';
 import { CheckCircle2, Building2, Info } from 'lucide-react';
 import { CompanyContext, useCompanyController } from '@/hooks/useCompany';
 import type { CompanyCommand } from '@/lib/company-commands';
@@ -85,6 +86,19 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
   const c = useCompanyController();
   const [logrado, setLogrado] = useState<string | null>(null);
   const [pendingEvidence,setPendingEvidence]=useState<IntentoPractica | null>(null);
+  const [viewMode, setViewMode] = useState<FinixUITheme>('fiori');
+
+  useEffect(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('finix_view_mode') : null;
+    if (saved === 'classic' || saved === 'fiori') setViewMode(saved);
+    const handler = (e: StorageEvent) => {
+      if (e.key === 'finix_view_mode' && (e.newValue === 'classic' || e.newValue === 'fiori')) {
+        setViewMode(e.newValue);
+      }
+    };
+    window.addEventListener('storage', handler);
+    return () => window.removeEventListener('storage', handler);
+  }, []);
 
   // Mismo contexto que usa el Simulador, con el guardado interceptado para saber cuándo se cumplió la misión.
   const valor = useMemo(() => ({
@@ -114,7 +128,21 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
           <span className="rounded-sm bg-[#003366] px-1.5 text-[10px] font-black text-white">Finix ERP</span>
           <span>Laboratorio de práctica equivalente — {empresa || EMPRESA_CURSO}</span>
         </div>
-        <span className="text-[10px] text-gray-600 hidden sm:inline">Modo Laboratorio Transaccional</span>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={() => {
+              const next = viewMode === 'fiori' ? 'classic' : 'fiori';
+              setViewMode(next);
+              if (typeof window !== 'undefined') localStorage.setItem('finix_view_mode', next);
+            }}
+            className="text-[10.5px] font-bold px-2.5 py-0.5 rounded-full border border-blue-400/40 bg-white text-[#0055A5] hover:bg-blue-50 transition active:scale-95 shadow-2xs cursor-pointer"
+            title={viewMode === 'fiori' ? 'Cambiar a visualización clásica SAP B1 GUI' : 'Cambiar a visualización moderna SAP Fiori Horizon'}
+          >
+            {viewMode === 'fiori' ? '✨ Modo Fiori' : '💻 Modo Clásico'}
+          </button>
+          <span className="text-[10px] text-gray-600 hidden sm:inline">Modo Laboratorio Transaccional</span>
+        </div>
       </div>
 
       {/* Panel Pedagógico: Misión, Ruta SAP y Datos requeridos */}
@@ -194,9 +222,11 @@ export default function PracticaConectada({ guia, pantalla, onCompleta }: {
       )}
 
       <CompanyContext.Provider value={valor}>
-        <div className="mx-3 mb-3 rounded-sm border border-[#7f93ab] bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222] min-h-[320px]">
+        <FinixUIThemeContext.Provider value={viewMode}>
+          <div className={`mx-3 mb-3 rounded-sm ${viewMode === 'fiori' ? 'finix-fiori-mode bg-transparent border-0' : 'border border-[#7f93ab] bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]'} min-h-[320px]`}>
           {pantalla.clave==='consultaAcademica'?<PracticeQuery missionId={guia.missionId||''} onCompleta={onCompleta}/>:<Pantalla p={pantalla} />}
-        </div>
+          </div>
+        </FinixUIThemeContext.Provider>
       </CompanyContext.Provider>
     </div>
   );

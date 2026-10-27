@@ -30,6 +30,7 @@ import {
   ExternalLink,
 } from 'lucide-react';
 import FinixScreenRenderer from '@/components/finix-screens/FinixScreenRenderer';
+import { FinixUIThemeContext } from '@/components/finix-screens/FinixControls';
 import SimuladorAIAdvisor from '../simulador/SimuladorAIAdvisor';
 import { FINIX_ROLES, type FinixRole, type FinixRoleDefinition } from './FinixDesktopShell';
 import {
@@ -78,6 +79,89 @@ const MODULE_ICONS: Record<string, React.ComponentType<{ className?: string }>> 
   'ecuador': Building2,
   'default': Layers,
 };
+
+const FREQUENT_APPS = [
+  {
+    id: 'SAL002',
+    name: 'Pedido de Venta',
+    module: '02_Ventas',
+    category: 'Ventas',
+    badgeColor: 'border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/60 text-[#0055A5] dark:text-[#38bdf8]',
+    iconBg: 'bg-blue-500/10 dark:bg-blue-500/20 text-[#0070d2] dark:text-[#38bdf8]',
+    icon: ShoppingCart,
+    description: 'Gestión de cotizaciones y emisión de pedidos comerciales',
+  },
+  {
+    id: 'SAL004',
+    name: 'Factura de Clientes & SRI',
+    module: '02_Ventas',
+    category: 'SRI Ecuador',
+    badgeColor: 'border-emerald-200 dark:border-emerald-900 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300',
+    iconBg: 'bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400',
+    icon: FileText,
+    description: 'Facturación electrónica autorizada y cuentas por cobrar',
+  },
+  {
+    id: 'PUR002',
+    name: 'Pedido de Compra',
+    module: '03_Compras',
+    category: 'Compras',
+    badgeColor: 'border-amber-200 dark:border-amber-900 bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300',
+    iconBg: 'bg-amber-500/10 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400',
+    icon: Package,
+    description: 'Aprovisionamiento de mercaderías y órdenes a proveedores',
+  },
+  {
+    id: 'EC-CUSTOMERS',
+    name: 'Interlocutores Comerciales',
+    module: '02_Ventas',
+    category: 'Socios (BP)',
+    badgeColor: 'border-purple-200 dark:border-purple-900 bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300',
+    iconBg: 'bg-purple-500/10 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400',
+    icon: Users,
+    description: 'Directorio de clientes, proveedores y condiciones de crédito',
+  },
+  {
+    id: 'INV001',
+    name: 'Maestro de Artículos',
+    module: '04_Inventario',
+    category: 'Inventario',
+    badgeColor: 'border-teal-200 dark:border-teal-900 bg-teal-50 dark:bg-teal-950/60 text-teal-700 dark:text-teal-300',
+    iconBg: 'bg-teal-500/10 dark:bg-teal-500/20 text-teal-600 dark:text-teal-400',
+    icon: Factory,
+    description: 'Catálogo de ítems, listas de precios y niveles de stock',
+  },
+  {
+    id: 'PUR003',
+    name: 'Entrada de Mercancías (GRPO)',
+    module: '03_Compras',
+    category: 'Bodega',
+    badgeColor: 'border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300',
+    iconBg: 'bg-rose-500/10 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400',
+    icon: CheckCircle2,
+    description: 'Recepción en almacén e incremento de inventario físico',
+  },
+  {
+    id: 'FIN001',
+    name: 'Libro Diario & Asientos',
+    module: '01_Finanzas',
+    category: 'Finanzas',
+    badgeColor: 'border-indigo-200 dark:border-indigo-900 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300',
+    iconBg: 'bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400',
+    icon: DollarSign,
+    description: 'Contabilización manual y cuadre estricto de partida doble',
+  },
+  {
+    id: 'EC-RETENTION',
+    name: 'Retenciones SRI & ATS',
+    module: 'ecuador',
+    category: 'Tributación',
+    badgeColor: 'border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200',
+    iconBg: 'bg-slate-500/10 dark:bg-slate-500/20 text-slate-700 dark:text-slate-300',
+    icon: Building2,
+    description: 'Retenciones de IVA y Renta con liquidación SRI',
+  },
+];
 
 export default function FioriDesktopShell({
   catalog,
@@ -451,47 +535,53 @@ export default function FioriDesktopShell({
               <div className={`max-w-7xl mx-auto rounded-2xl border shadow-lg overflow-hidden ${
                 isDark ? 'bg-[#131d2e] border-slate-800' : 'bg-white border-slate-200'
               }`}>
-                <FinixScreenRenderer screenId={activeScreen.id} screenName={activeScreen.name} />
+                <FinixUIThemeContext.Provider value="fiori">
+                  <div className="finix-fiori-mode">
+                    <FinixScreenRenderer screenId={activeScreen.id} screenName={activeScreen.name} />
+                  </div>
+                </FinixUIThemeContext.Provider>
               </div>
             </div>
           </div>
         ) : (
           /* ── 3.B LAUNCHPAD TILES & KPIS (Home de SAP Fiori) ─────────────────── */
           <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
-            {/* Banner de Bienvenida y Sociedad */}
-            <div className={`p-6 rounded-3xl border shadow-sm relative overflow-hidden ${
+            {/* Banner de Bienvenida y Sociedad Horizon */}
+            <div className={`p-6 sm:p-8 rounded-3xl border shadow-sm relative overflow-hidden ${
               isDark
                 ? 'bg-gradient-to-r from-[#17253d] via-[#131e33] to-[#17253d] border-slate-800 text-white'
-                : 'bg-gradient-to-r from-blue-50/80 via-white to-sky-50/80 border-blue-100 text-slate-900'
+                : 'bg-gradient-to-r from-blue-50/90 via-sky-50/50 to-indigo-50/80 border-blue-100 text-slate-900'
             }`}>
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#0854a0]/10 border border-[#0854a0]/20 text-[11px] font-bold text-[#0854a0] dark:text-[#38bdf8]">
-                    <span>✨ Sistema Fiori 2026</span>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div className="space-y-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0055A5]/10 border border-[#0055A5]/20 text-xs font-bold text-[#0055A5] dark:text-[#38bdf8]">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>SAP Fiori Horizon 2026</span>
                     <span>·</span>
                     <span>Sociedad Activa</span>
                   </div>
-                  <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+                  <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
                     {companyName}
                   </h2>
-                  <p className="text-xs text-slate-500 dark:text-slate-400">
-                    Navegación basada en roles, mosaicos interactivos y transacciones empresariales en tiempo real.
+                  <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                    Acceso empresarial unificado: transacciones en tiempo real, catálogo de aplicaciones por rol y copiloto inteligente Joule integrado.
                   </p>
                 </div>
 
-                <div className="flex flex-wrap items-center gap-2">
+                <div className="flex flex-wrap items-center gap-3">
                   {onSwitchToClassic && (
                     <button
                       onClick={onSwitchToClassic}
-                      className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-white hover:border-[#0854a0] transition-all active:scale-95 shadow-sm"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs font-bold text-slate-800 dark:text-white hover:border-[#0055A5] transition-all active:scale-95 shadow-xs"
+                      title="Cambiar a la visualización clásica de ventanas SAP B1"
                     >
-                      <Monitor className="w-4 h-4 text-[#0854a0]" />
+                      <Monitor className="w-4 h-4 text-[#0055A5]" />
                       <span>Cambiar a SAP Clásico</span>
                     </button>
                   )}
                   <Link
                     href="/"
-                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-800/60 text-xs font-semibold hover:bg-white dark:hover:bg-slate-800 transition"
                   >
                     <span>🏠 Salir al Campus</span>
                   </Link>
@@ -499,194 +589,378 @@ export default function FioriDesktopShell({
               </div>
             </div>
 
-            {/* SECCIÓN 1: MOSAICOS KPI (KPI Tiles en tiempo real) */}
-            {activeSpace === 'home' && !searchQuery && (
-              <section aria-labelledby="kpis-title" className="space-y-3">
-                <h3 id="kpis-title" className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
-                  Métricas Operativas Fiori (Tiempo Real)
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {/* KPI 1: Facturas Abiertas */}
-                  <div
-                    onClick={() => openApp({ id: 'SAL004', name: 'Factura de Clientes' })}
-                    className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0854a0] group ${
-                      isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                      <span className="font-semibold">Facturas Abiertas</span>
-                      <DollarSign className="w-4 h-4 text-amber-500" />
-                    </div>
-                    <div className="mt-2 flex items-baseline gap-2">
-                      <span className="text-2xl font-black text-slate-900 dark:text-white">
-                        {kpis.facturasAbiertasCount}
-                      </span>
-                      <span className="text-xs font-medium text-amber-600 dark:text-amber-400">
-                        ${kpis.facturasAbiertasTotal.toLocaleString('es-EC', { minimumFractionDigits: 2 })}
-                      </span>
-                    </div>
-                    <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0854a0] transition">
-                      <span>Ver documentos</span>
-                      <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </div>
+            {/* VISTA 1: BÚSQUEDA ACTIVA */}
+            {searchQuery.trim() ? (
+              <section className="space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+                  <div>
+                    <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white">
+                      Resultados de búsqueda: &quot;{searchQuery}&quot;
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Mostrando aplicaciones coincidentes en todos los módulos
+                    </p>
                   </div>
-
-                  {/* KPI 2: Pedidos de Venta */}
-                  <div
-                    onClick={() => openApp({ id: 'SAL002', name: 'Pedido de Venta' })}
-                    className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0854a0] group ${
-                      isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
-                    }`}
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    className="text-xs font-bold text-[#0055A5] dark:text-[#38bdf8] hover:underline"
                   >
-                    <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                      <span className="font-semibold">Pedidos de Venta</span>
-                      <ShoppingCart className="w-4 h-4 text-blue-500" />
-                    </div>
-                    <div className="mt-2 flex items-baseline gap-2">
-                      <span className="text-2xl font-black text-slate-900 dark:text-white">
-                        {kpis.pedidosVentaCount}
-                      </span>
-                      <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-0.5">
-                        <TrendingUp className="w-3 h-3" /> En curso
-                      </span>
-                    </div>
-                    <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0854a0] transition">
-                      <span>Gestionar pedidos</span>
-                      <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </div>
-                  </div>
-
-                  {/* KPI 3: Clientes Registrados */}
-                  <div
-                    onClick={() => openApp({ id: 'EC-CUSTOMERS', name: 'Ficha de Cliente (BP)' })}
-                    className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0854a0] group ${
-                      isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                      <span className="font-semibold">Interlocutores (Clientes)</span>
-                      <Users className="w-4 h-4 text-emerald-500" />
-                    </div>
-                    <div className="mt-2 flex items-baseline gap-2">
-                      <span className="text-2xl font-black text-slate-900 dark:text-white">
-                        {kpis.clientesCount}
-                      </span>
-                      <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
-                        {kpis.articulosCount} artículos
-                      </span>
-                    </div>
-                    <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0854a0] transition">
-                      <span>Directorio comercial</span>
-                      <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </div>
-                  </div>
-
-                  {/* KPI 4: Asientos de Diario */}
-                  <div
-                    onClick={() => openApp({ id: 'FIN001', name: 'Asientos Contables' })}
-                    className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0854a0] group ${
-                      isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                      <span className="font-semibold">Libro Diario Contable</span>
-                      <FileText className="w-4 h-4 text-indigo-500" />
-                    </div>
-                    <div className="mt-2 flex items-baseline gap-2">
-                      <span className="text-2xl font-black text-slate-900 dark:text-white">
-                        {kpis.asientosCount}
-                      </span>
-                      <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">
-                        Asientos cuadrados
-                      </span>
-                    </div>
-                    <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0854a0] transition">
-                      <span>Nuevo comprobante</span>
-                      <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
-                    </div>
-                  </div>
+                    Limpiar búsqueda
+                  </button>
                 </div>
-              </section>
-            )}
 
-            {/* SECCIÓN 2: MOSAICOS ESTÁNDAR POR MÓDULOS (Fiori Tiles) */}
-            <div className="space-y-8">
-              {filteredModules.map((module) => {
-                const Icon = MODULE_ICONS[module.key] || MODULE_ICONS.default;
-                return (
-                  <section key={module.key} className="space-y-3">
-                    <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2">
-                      <Icon className="w-4 h-4 text-[#0854a0] dark:text-[#38bdf8]" />
-                      <h3 className="text-sm font-bold tracking-tight">
-                        {module.name}
-                      </h3>
-                      <span className="text-[11px] text-slate-600 dark:text-slate-300">
-                        ({module.screens.length} aplicaciones)
-                      </span>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                      {module.screens.map((screen) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {filteredModules.flatMap((m) =>
+                    m.screens.map((screen) => {
+                      const Icon = MODULE_ICONS[m.key] || MODULE_ICONS.default;
+                      return (
                         <div
                           key={screen.id}
                           onClick={() => openApp(screen)}
-                          className={`p-4 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0854a0] hover:-translate-y-0.5 active:scale-95 group flex flex-col justify-between min-h-[120px] ${
+                          className={`p-4 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] hover:-translate-y-0.5 active:scale-95 group flex flex-col justify-between min-h-[130px] ${
+                            isDark ? 'bg-[#152033] border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
+                          }`}
+                        >
+                          <div>
+                            <div className="flex items-start justify-between gap-2">
+                              <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#0055A5] dark:text-[#38bdf8]">
+                                {screen.id}
+                              </span>
+                              <span className="text-[10px] font-semibold text-slate-400">{m.name.split('·')[0].trim()}</span>
+                            </div>
+                            <h4 className="text-sm font-bold mt-2 leading-snug line-clamp-2">
+                              {screen.name}
+                            </h4>
+                          </div>
+
+                          <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                            <span>{screen.type || 'Transacción'}</span>
+                            <span className="text-[#0055A5] dark:text-[#38bdf8] font-bold flex items-center gap-0.5">
+                              Abrir <ChevronRight className="w-3 h-3" />
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+              </section>
+            ) : activeSpace !== 'home' ? (
+              /* VISTA 2: ESPACIO ESPECÍFICO SELECCIONADO (Ventas, Compras, etc.) */
+              <section className="space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setActiveSpace('home')}
+                      className="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 hover:border-[#0055A5] transition flex items-center gap-1"
+                    >
+                      <ArrowLeft className="w-3.5 h-3.5 text-[#0055A5]" />
+                      <span>Volver a Mi Inicio</span>
+                    </button>
+                    <div>
+                      <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">
+                        {modules.find((m) => m.key === activeSpace)?.name}
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        Catálogo de aplicaciones operativas y de control
+                      </p>
+                    </div>
+                  </div>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    {filteredModules.find((m) => m.key === activeSpace)?.screens.length || 0} aplicaciones
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                  {(filteredModules.find((m) => m.key === activeSpace)?.screens || []).map((screen) => {
+                    const modKey = activeSpace;
+                    const Icon = MODULE_ICONS[modKey] || MODULE_ICONS.default;
+                    return (
+                      <div
+                        key={screen.id}
+                        onClick={() => openApp(screen)}
+                        className={`p-4 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] hover:-translate-y-0.5 active:scale-95 group flex flex-col justify-between min-h-[130px] ${
+                          isDark ? 'bg-[#152033] border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-start justify-between gap-2">
+                            <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-[#0055A5] dark:text-[#38bdf8]">
+                              {screen.id}
+                            </span>
+                            <Icon className="w-4 h-4 text-slate-400 group-hover:text-[#0055A5] transition" />
+                          </div>
+                          <h4 className="text-sm font-bold mt-2 leading-snug line-clamp-2">
+                            {screen.name}
+                          </h4>
+                        </div>
+
+                        <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                          <span>{screen.type || 'Transacción'}</span>
+                          <span className="text-[#0055A5] dark:text-[#38bdf8] font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5">
+                            Abrir <ChevronRight className="w-3 h-3" />
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            ) : (
+              /* VISTA 3: MI INICIO OFICIAL FIORI HORIZON (KPIS + FAVORITOS + ESPACIOS) */
+              <>
+                {/* 1. SECCIÓN: MOSAICOS ANALÍTICOS KPI */}
+                <section aria-labelledby="kpis-title" className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <h3 id="kpis-title" className="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                      Métricas Operativas en Tiempo Real
+                    </h3>
+                    <span className="text-[11px] text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> Sincronizado
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {/* KPI 1: Facturas Abiertas */}
+                    <div
+                      onClick={() => openApp({ id: 'SAL004', name: 'Factura de Clientes' })}
+                      className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] group ${
+                        isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                        <span className="font-semibold">Facturas Abiertas</span>
+                        <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-500 flex items-center justify-center">
+                          <DollarSign className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <div className="mt-2 flex items-baseline gap-2">
+                        <span className="text-2xl font-black text-slate-900 dark:text-white">
+                          {kpis.facturasAbiertasCount}
+                        </span>
+                        <span className="text-xs font-medium text-amber-600 dark:text-amber-400 font-mono">
+                          ${kpis.facturasAbiertasTotal.toLocaleString('es-EC', { minimumFractionDigits: 2 })}
+                        </span>
+                      </div>
+                      <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0055A5] transition">
+                        <span>Ver documentos por cobrar</span>
+                        <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+
+                    {/* KPI 2: Pedidos de Venta */}
+                    <div
+                      onClick={() => openApp({ id: 'SAL002', name: 'Pedido de Venta' })}
+                      className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] group ${
+                        isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                        <span className="font-semibold">Pedidos de Venta</span>
+                        <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-[#0070d2] flex items-center justify-center">
+                          <ShoppingCart className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <div className="mt-2 flex items-baseline gap-2">
+                        <span className="text-2xl font-black text-slate-900 dark:text-white">
+                          {kpis.pedidosVentaCount}
+                        </span>
+                        <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 flex items-center gap-0.5">
+                          <TrendingUp className="w-3 h-3" /> En gestión activa
+                        </span>
+                      </div>
+                      <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0055A5] transition">
+                        <span>Gestionar pedidos</span>
+                        <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+
+                    {/* KPI 3: Clientes Registrados */}
+                    <div
+                      onClick={() => openApp({ id: 'EC-CUSTOMERS', name: 'Ficha de Cliente (BP)' })}
+                      className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] group ${
+                        isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                        <span className="font-semibold">Interlocutores (Clientes)</span>
+                        <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center">
+                          <Users className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <div className="mt-2 flex items-baseline gap-2">
+                        <span className="text-2xl font-black text-slate-900 dark:text-white">
+                          {kpis.clientesCount}
+                        </span>
+                        <span className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                          {kpis.articulosCount} artículos en stock
+                        </span>
+                      </div>
+                      <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0055A5] transition">
+                        <span>Directorio comercial</span>
+                        <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+
+                    {/* KPI 4: Asientos de Diario */}
+                    <div
+                      onClick={() => openApp({ id: 'FIN001', name: 'Asientos Contables' })}
+                      className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] group ${
+                        isDark ? 'bg-[#152033] border-slate-800' : 'bg-white border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                        <span className="font-semibold">Libro Diario Contable</span>
+                        <div className="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-600 flex items-center justify-center">
+                          <FileText className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <div className="mt-2 flex items-baseline gap-2">
+                        <span className="text-2xl font-black text-slate-900 dark:text-white">
+                          {kpis.asientosCount}
+                        </span>
+                        <span className="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                          Asientos cuadrados
+                        </span>
+                      </div>
+                      <div className="mt-3 flex items-center gap-1 text-[11px] text-slate-500 dark:text-slate-400 group-hover:text-[#0055A5] transition">
+                        <span>Nuevo comprobante</span>
+                        <ChevronRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                {/* 2. SECCIÓN: MIS APLICACIONES FRECUENTES (VIBRANT HORIZON TILES) */}
+                <section aria-labelledby="frequent-title" className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 id="frequent-title" className="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                        Mis Aplicaciones Frecuentes
+                      </h3>
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
+                        Transacciones clave para la operación diaria de la empresa
+                      </p>
+                    </div>
+                    <span className="text-[11px] font-semibold text-[#0055A5] dark:text-[#38bdf8]">
+                      8 aplicaciones fijadas
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {FREQUENT_APPS.map((app) => {
+                      const Icon = app.icon;
+                      return (
+                        <div
+                          key={app.id}
+                          onClick={() => openApp({ id: app.id, name: app.name, module: app.module })}
+                          className={`p-5 rounded-2xl border transition-all cursor-pointer hover:shadow-lg hover:border-[#0055A5] hover:-translate-y-1 active:scale-95 group flex flex-col justify-between min-h-[160px] ${
                             isDark
                               ? 'bg-[#152033] border-slate-800 text-white'
                               : 'bg-white border-slate-200 text-slate-900'
                           }`}
                         >
                           <div>
-                            <div className="flex items-start justify-between gap-2">
-                              <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[#0854a0] dark:text-[#38bdf8]">
-                                {screen.id}
+                            <div className="flex items-center justify-between gap-2">
+                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border ${app.badgeColor}`}>
+                                {app.category}
                               </span>
-                              <Icon className="w-4 h-4 text-slate-400 group-hover:text-[#0854a0] transition" />
+                              <span className="text-[11px] font-mono font-bold text-slate-400 group-hover:text-[#0055A5] transition">
+                                {app.id}
+                              </span>
                             </div>
-                            <h4 className="text-sm font-bold mt-2.5 leading-snug line-clamp-2">
-                              {screen.name}
-                            </h4>
+
+                            <div className="mt-3 flex items-start gap-3">
+                              <div className={`w-11 h-11 rounded-xl flex items-center justify-center shrink-0 shadow-xs ${app.iconBg}`}>
+                                <Icon className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <h4 className="text-sm font-bold leading-tight group-hover:text-[#0055A5] dark:group-hover:text-[#38bdf8] transition">
+                                  {app.name}
+                                </h4>
+                                <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug line-clamp-2">
+                                  {app.description}
+                                </p>
+                              </div>
+                            </div>
                           </div>
 
-                          <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                            <span>{screen.type || 'Transacción'}</span>
-                            <span className="text-[#0854a0] dark:text-[#38bdf8] font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-0.5">
-                              Abrir <ChevronRight className="w-3 h-3" />
+                          <div className="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-500">
+                            <span className="font-medium">SAP Horizon</span>
+                            <span className="text-[#0055A5] dark:text-[#38bdf8] font-bold flex items-center gap-0.5 group-hover:translate-x-1 transition-transform">
+                              Abrir <ChevronRight className="w-3.5 h-3.5" />
                             </span>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                  </section>
-                );
-              })}
-            </div>
+                      );
+                    })}
+                  </div>
+                </section>
+
+                {/* 3. SECCIÓN: EXPLORAR POR ESPACIOS DE TRABAJO */}
+                <section aria-labelledby="spaces-title" className="space-y-4">
+                  <div>
+                    <h3 id="spaces-title" className="text-xs font-extrabold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                      Explorar por Espacios de Trabajo
+                    </h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Selecciona un departamento para ver su catálogo completo de aplicaciones
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {modules
+                      .filter((m) => {
+                        if (activeRole === 'super') return true;
+                        return currentRoleDef.allowedModuleKeys.includes('*') || currentRoleDef.allowedModuleKeys.includes(m.key);
+                      })
+                      .map((mod) => {
+                        const Icon = MODULE_ICONS[mod.key] || MODULE_ICONS.default;
+                        return (
+                          <div
+                            key={mod.key}
+                            onClick={() => setActiveSpace(mod.key)}
+                            className={`p-4 rounded-2xl border transition-all cursor-pointer hover:shadow-md hover:border-[#0055A5] active:scale-95 group flex items-center justify-between gap-4 ${
+                              isDark ? 'bg-[#152033] border-slate-800 text-white' : 'bg-white border-slate-200 text-slate-900'
+                            }`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-[#0055A5] dark:text-[#38bdf8] flex items-center justify-center shrink-0">
+                                <Icon className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <h4 className="text-xs sm:text-sm font-bold leading-tight group-hover:text-[#0055A5] dark:group-hover:text-[#38bdf8] transition">
+                                  {mod.name.split('·')[0].split('&')[0].trim()}
+                                </h4>
+                                <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                                  {mod.screens.length} aplicaciones disponibles
+                                </span>
+                              </div>
+                            </div>
+                            <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-[#0055A5] group-hover:translate-x-1 transition-all" />
+                          </div>
+                        );
+                      })}
+                  </div>
+                </section>
+              </>
+            )}
           </div>
         )}
       </main>
 
-      {/* ── 4. ASISTENTE JOULE / ADVISOR LATERAL (Modal / Drawer) ─────────────── */}
+      {/* ── 4. ASISTENTE JOULE / COPILOTO INTELIGENTE FIORI ─────────────────────── */}
       {showAdvisor && (
-        <div className="fixed inset-y-0 right-0 w-full sm:w-96 z-50 shadow-2xl animate-in slide-in-from-right duration-200 bg-white dark:bg-[#111927] border-l border-slate-200 dark:border-slate-800 flex flex-col">
-          <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between bg-blue-600 text-white">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4" />
-              <span className="font-bold text-sm">SAP Joule · Asistente IA</span>
-            </div>
-            <button
-              onClick={() => setShowAdvisor(false)}
-              className="p-1 rounded hover:bg-white/20 transition"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-          <div className="flex-1 overflow-auto p-4">
-            <SimuladorAIAdvisor
-              currentScreen={activeScreen?.name || 'Fiori Launchpad'}
-              currentModule={activeScreen?.module || 'SAP Fiori Launchpad'}
-              isOpen={true}
-            />
-          </div>
+        <div className="fixed inset-y-0 right-0 w-full sm:w-[420px] z-50 shadow-2xl animate-in slide-in-from-right duration-200 bg-white dark:bg-[#111927] border-l border-slate-200 dark:border-slate-800 flex flex-col">
+          <SimuladorAIAdvisor
+            currentScreen={activeScreen?.name || 'Fiori Launchpad'}
+            currentModule={activeScreen?.module || 'SAP Fiori Launchpad'}
+            isOpen={true}
+            embedded={true}
+            theme="fiori"
+            hideFloatingButton={true}
+            onClose={() => setShowAdvisor(false)}
+          />
         </div>
       )}
 

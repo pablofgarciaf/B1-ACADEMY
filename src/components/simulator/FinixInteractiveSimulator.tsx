@@ -41,6 +41,7 @@ import { BusinessPartner, Item } from '@/lib/erp/erp-models';
 import { initializeDemoCompany, getBusinessPartners, getItems, createSalesInvoice, createJournalEntry } from '@/lib/erp/erp-database-service';
 import GuidedOverlay from './GuidedOverlay';
 import FinixScreenRenderer from '@/components/finix-screens/FinixScreenRenderer';
+import { FinixUIThemeContext, type FinixUITheme } from '@/components/finix-screens/FinixControls';
 import PracticaValidada, { type CampoPractica } from './PracticaValidada';
 import type { IntentoPractica } from '@/lib/practice-check';
 import { pantallaConectada } from '@/lib/practica-conectada';
@@ -212,6 +213,30 @@ export default function FinixInteractiveSimulator({
   scrollInterno = true
 }: FinixInteractiveSimulatorProps) {
   const { userProfile } = useAuth();
+  const [viewMode, setViewMode] = useState<FinixUITheme>('fiori');
+
+  useEffect(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('finix_view_mode') : null;
+    if (saved === 'classic' || saved === 'fiori') {
+      setViewMode(saved);
+    }
+    const handler = (e: StorageEvent) => {
+      if (e.key === 'finix_view_mode' && (e.newValue === 'classic' || e.newValue === 'fiori')) {
+        setViewMode(e.newValue);
+      }
+    };
+    window.addEventListener('storage', handler);
+    return () => window.removeEventListener('storage', handler);
+  }, []);
+
+  const toggleViewMode = () => {
+    const next = viewMode === 'fiori' ? 'classic' : 'fiori';
+    setViewMode(next);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('finix_view_mode', next);
+    }
+  };
+
   const missionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const missionFinished = useRef(false);
   useEffect(() => {
@@ -686,6 +711,16 @@ export default function FinixInteractiveSimulator({
         </div>
 
         <div className="flex items-center gap-2">
+          {/* Switcher Modo Fiori / Modo Clásico */}
+          <button
+            type="button"
+            onClick={toggleViewMode}
+            className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full border border-blue-400/40 bg-blue-950/60 hover:bg-blue-900 text-[10.5px] font-bold text-blue-200 transition active:scale-95 shadow-2xs cursor-pointer"
+            title={viewMode === 'fiori' ? 'Cambiar a visualización clásica SAP B1 GUI' : 'Cambiar a visualización moderna SAP Fiori Horizon'}
+          >
+            <span>{viewMode === 'fiori' ? '✨ Modo Fiori' : '💻 Modo Clásico'}</span>
+          </button>
+
           {validationMessage ? (
             <span role="alert" className="text-amber-200 bg-amber-950/60 border border-amber-500/40 px-2 py-0.5 rounded text-[10px]">
               {validationMessage}
@@ -903,19 +938,21 @@ export default function FinixInteractiveSimulator({
             PANTALLA RÉPLICA FINIX ERP: prácticas sin arquetipo propio (socios, precios, producción, MRP…)
         ════════════════════════════════════════════════════════════════ */}
         {simMode === 'screen' && (stepGuide?.screenId || inferred?.screenId) && (
-          <div className="flex-1 flex flex-col min-h-[420px] border border-[#2b3a4a] rounded-lg overflow-hidden">
-            <div className="flex-1 min-h-0 overflow-auto bg-[#ECE9D8]">
-              <FinixScreenRenderer screenId={stepGuide?.screenId || inferred?.screenId || 'SAL001'} screenName={stepGuide?.title ?? simConfig.title} />
-            </div>
-            <div className="shrink-0 flex items-center justify-between gap-3 px-3 py-2 bg-[#16222f] border-t border-[#2b3a4a]">
-              <p className="text-[11px] text-gray-300">Sigue las instrucciones de arriba en esta pantalla y confirma cuando termines.</p>
+          <div className={`flex-1 flex flex-col min-h-[420px] border ${viewMode === 'fiori' ? 'border-slate-700/60' : 'border-[#2b3a4a]'} rounded-xl overflow-hidden shadow-lg`}>
+            <FinixUIThemeContext.Provider value={viewMode}>
+              <div className={`flex-1 min-h-0 overflow-auto ${viewMode === 'fiori' ? 'finix-fiori-mode bg-slate-50 dark:bg-[#111927]' : 'bg-[#ECE9D8]'}`}>
+                <FinixScreenRenderer screenId={stepGuide?.screenId || inferred?.screenId || 'SAL001'} screenName={stepGuide?.title ?? simConfig.title} />
+              </div>
+            </FinixUIThemeContext.Provider>
+            <div className={`shrink-0 flex items-center justify-between gap-3 px-4 py-2.5 ${viewMode === 'fiori' ? 'bg-[#0f1724] border-t border-slate-800' : 'bg-[#16222f] border-t border-[#2b3a4a]'}`}>
+              <p className="text-xs text-slate-300">Sigue las instrucciones de arriba en esta pantalla y confirma cuando termines.</p>
               <button
                 onClick={() => {
                   (stepGuide?.instructions ?? []).forEach((_, i) => markStepDone(i + 1));
                   setStepSuccessMsg('¡Práctica completada!');
                   completeMission(800);
                 }}
-                className="px-4 py-1.5 rounded bg-[#ffb700] hover:bg-[#ffaa00] text-[#1c3a63] text-xs font-bold shadow active:scale-95 transition-all"
+                className={viewMode === 'fiori' ? "px-4 py-1.5 rounded-xl bg-[#0055A5] hover:bg-[#004080] text-white text-xs font-bold shadow-md active:scale-95 transition-all" : "px-4 py-1.5 rounded bg-[#ffb700] hover:bg-[#ffaa00] text-[#1c3a63] text-xs font-bold shadow active:scale-95 transition-all"}
               >
                 Terminé la práctica
               </button>

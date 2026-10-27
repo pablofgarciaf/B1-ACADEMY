@@ -15,19 +15,39 @@ interface SimuladorAIAdvisorProps {
   currentScreen?: string;
   currentModule?: string;
   isOpen?: boolean;
+  hideFloatingButton?: boolean;
+  theme?: 'classic' | 'fiori';
+  onClose?: () => void;
+  embedded?: boolean;
 }
 
 export default function SimuladorAIAdvisor({
   currentScreen = 'Dashboard',
   currentModule = 'Finanzas & Contabilidad',
   isOpen: initialOpen = false,
+  hideFloatingButton = false,
+  theme = 'classic',
+  onClose,
+  embedded = false,
 }: SimuladorAIAdvisorProps) {
   const [isOpen, setIsOpen] = useState(initialOpen);
+  const isFiori = theme === 'fiori';
+
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
       role: 'assistant',
-      content: `¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu copiloto inteligente para Finix ERP.
+      content: isFiori
+        ? `¡Hola! Soy **Joule** ✨, tu copiloto inteligente para SAP Fiori y Finix ERP.
+
+¿En qué puedo asistirte hoy en el sistema?
+- 🛒 *"¿Cómo creo un pedido de venta (SAL002)?"*
+- 🧾 *"¿Cuáles son los pasos para emitir una Factura Electrónica SRI?"*
+- 📦 *"¿Cómo recibir mercancías de una orden de compra (GRPO)?"*
+- 📊 *"¿Cómo verificar el balance o registrar un asiento contable?"*
+
+Pregúntame cualquier transacción, código de pantalla o concepto contable. 🚀`
+        : `¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu copiloto inteligente para Finix ERP.
 
 ¿Qué deseas realizar o consultar en el simulador?
 - 🛒 *"¿Cómo registro un pedido de venta?"*
@@ -111,10 +131,15 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    if (onClose) onClose();
+  };
+
   return (
     <>
-      {/* Floating Button */}
-      {!isOpen && (
+      {/* Floating Button (solo en modo clásico y cuando no esté oculto) */}
+      {!hideFloatingButton && !isOpen && (
         <button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-14 right-4 z-[5000] h-14 px-4 bg-gradient-to-r from-[#b91c1c] via-[#0055A5] to-[#003366] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-amber-400/60 group cursor-pointer"
@@ -131,29 +156,40 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:w-96">
+        <div className={
+          embedded
+            ? "w-full h-full flex flex-col overflow-hidden bg-white dark:bg-[#111927]"
+            : "fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:w-96"
+        }>
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#7f1d1d] via-[#003366] to-[#001f3f] text-white p-4 flex items-center justify-between border-b border-amber-400/30">
+          <div className={
+            isFiori
+              ? "bg-gradient-to-r from-[#0055A5] via-[#0854a0] to-[#0a6ed1] text-white p-3.5 flex items-center justify-between border-b border-blue-400/20 shadow-xs"
+              : "bg-gradient-to-r from-[#7f1d1d] via-[#003366] to-[#001f3f] text-white p-4 flex items-center justify-between border-b border-amber-400/30"
+          }>
             <div>
-              <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-amber-200">
-                <span className="text-base">🐦‍🔥</span>
-                <span>@FeNi AI · Copiloto ERP</span>
+              <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-white">
+                <span>{isFiori ? '✨' : '🐦‍🔥'}</span>
+                <span>{isFiori ? 'SAP Joule · Copiloto Fiori' : '@FeNi AI · Copiloto ERP'}</span>
               </h3>
-              <p className="text-[11px] text-blue-200 mt-0.5 flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <p className="text-[11px] text-blue-100 mt-0.5 flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 {currentModule} • {currentScreen}
               </p>
             </div>
             <button
-              onClick={() => setIsOpen(false)}
-              className="hover:bg-blue-900/60 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-blue-200 hover:text-white"
+              onClick={handleClose}
+              className="hover:bg-white/20 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-white"
+              title="Cerrar asistente"
             >
               <X size={18} />
             </button>
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950">
+          <div className={`flex-1 overflow-y-auto p-4 space-y-3.5 ${
+            isFiori ? 'bg-slate-50 dark:bg-[#0b121e]' : 'bg-slate-950'
+          }`}>
             {messages.map((message) => (
               <div
                 key={message.id}
@@ -162,34 +198,38 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
                 }`}
               >
                 <div
-                  className={`max-w-xs rounded-lg px-4 py-2 text-sm ${
+                  className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-xs ${
                     message.role === 'user'
-                      ? 'bg-blue-600 text-white rounded-br-none'
-                      : 'bg-slate-800 text-slate-200 rounded-bl-none border border-slate-700'
+                      ? 'bg-[#0055A5] text-white rounded-br-xs shadow-xs'
+                      : isFiori
+                        ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-bl-xs border border-slate-200 dark:border-slate-700 shadow-xs'
+                        : 'bg-slate-800 text-slate-200 rounded-bl-xs border border-slate-700'
                   }`}
                 >
                   <p className="leading-relaxed whitespace-pre-wrap">
                     {message.content}
                   </p>
                   <p
-                    className={`text-xs mt-1 ${
+                    className={`text-[10px] mt-1 text-right ${
                       message.role === 'user'
                         ? 'text-blue-100'
-                        : 'text-slate-500'
+                        : 'text-slate-400'
                     }`}
                   >
-                    {message.timestamp.toLocaleTimeString()}
+                    {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                   </p>
                 </div>
               </div>
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-slate-800 text-slate-200 rounded-lg px-4 py-2 rounded-bl-none border border-slate-700">
-                  <div className="flex items-center gap-2">
-                    <Loader size={16} className="animate-spin" />
-                    <span className="text-sm">IA está pensando...</span>
-                  </div>
+                <div className={`rounded-2xl px-3.5 py-2 rounded-bl-xs border text-xs flex items-center gap-2 ${
+                  isFiori
+                    ? 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700'
+                    : 'bg-slate-800 text-slate-200 border-slate-700'
+                }`}>
+                  <Loader size={14} className="animate-spin text-[#0055A5]" />
+                  <span>Joule está analizando tu consulta...</span>
                 </div>
               </div>
             )}
@@ -199,25 +239,33 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
           {/* Input Form */}
           <form
             onSubmit={handleSendMessage}
-            className="border-t border-slate-700/50 bg-slate-900 p-4 flex gap-2"
+            className={`border-t p-3 flex gap-2 ${
+              isFiori
+                ? 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900'
+                : 'border-slate-700/50 bg-slate-900'
+            }`}
           >
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Pregunta algo... ¿Cómo creo una factura?"
-              className="flex-1 bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder={isFiori ? "Pregunta a Joule... ¿Cómo registro una factura SRI?" : "Pregunta algo... ¿Cómo creo una factura?"}
+              className={`flex-1 rounded-xl px-3 py-2 text-xs outline-none transition ${
+                isFiori
+                  ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:bg-white focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]'
+                  : 'bg-slate-800 border border-slate-700 text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500'
+              }`}
               disabled={isLoading}
             />
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 text-white p-2 rounded-lg transition flex items-center justify-center"
+              className="bg-[#0055A5] hover:bg-[#004080] disabled:opacity-40 text-white px-3 py-2 rounded-xl transition flex items-center justify-center cursor-pointer shadow-xs active:scale-95"
             >
               {isLoading ? (
-                <Loader size={18} className="animate-spin" />
+                <Loader size={16} className="animate-spin" />
               ) : (
-                <Send size={18} />
+                <Send size={16} />
               )}
             </button>
           </form>
