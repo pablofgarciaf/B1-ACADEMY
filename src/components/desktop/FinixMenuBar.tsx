@@ -86,10 +86,10 @@ export default function FinixMenuBar({ onActionClick, onOpenModulesTree }: Finix
       { label: 'Cerrar todas las ventanas' },
     ],
     ayuda: [
-      { label: 'Ayuda de Finix ERP (Tutor FeNi)', shortcut: 'F1' },
+      { label: 'Ayuda de SAP Business One (Tutor IA)', shortcut: 'F1' },
       { label: 'Manuales oficiales de SAP B1' },
       { label: '-' },
-      { label: 'Acerca de Finix ERP Cloud' },
+      { label: 'Acerca de SAP Business One Cloud' },
     ],
   };
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useId, useState, useRef } from 'react';
+import { Bot } from 'lucide-react';
 
 export interface FinixLoginScreenProps {
   userEmail?: string;
@@ -62,7 +63,7 @@ export default function FinixLoginScreen({ userEmail = 'estudiante@finix.ec', de
       <div className="w-full max-w-[400px] border border-[#D4D0C8] bg-white p-6 shadow-xl sm:p-8">
         <header className="mb-7 flex items-center gap-3">
           <div aria-hidden="true" className="relative flex h-[50px] w-[50px] shrink-0 items-center justify-center bg-gradient-to-br from-[#001833] to-[#0055A5] text-[20px] font-bold text-white rounded">
-            <span>🐦‍🔥</span>
+            <Bot className="w-7 h-7 text-amber-400" />
           </div>
           <div>
             <h1 id={`${id}-title`} className="text-[16px] font-bold leading-6 text-[#002244]">Simulador Finix ERP</h1>

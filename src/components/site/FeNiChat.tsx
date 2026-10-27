@@ -3,7 +3,7 @@ import { requiresPasswordChange } from '@/lib/account-access-policy';
 
 
 import { useState, useRef, useEffect } from 'react';
-import { Sparkles, Send, X, User, Trash2 } from 'lucide-react';
+import { Sparkles, Send, X, User, Trash2, Bot } from 'lucide-react';
 import FeNiMascota from './FeNiMascota';
 import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
@@ -118,15 +118,15 @@ export default function FeNiChat() {
           {/* Header */}
           <div className="bg-gradient-to-r from-[#002244] via-[#003366] to-[#0055A5] p-4 flex items-center justify-between border-b border-amber-500/20">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full bg-red-950 border border-amber-400 flex items-center justify-center shadow-inner">
-                <span className="text-xl">🐦‍🔥</span>
+              <div className="relative w-10 h-10 rounded-full bg-blue-950 border border-amber-400 flex items-center justify-center shadow-inner">
+                <Bot className="w-5 h-5 text-amber-400" />
                 <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-[#131a20]"></div>
               </div>
               <div>
                 <h3 className="font-extrabold text-white flex items-center gap-1.5 text-sm tracking-wide">
-                  @FeNi AI <Sparkles size={14} className="text-amber-400" />
+                  Tutor IA <Sparkles size={14} className="text-amber-400" />
                 </h3>
-                <p className="text-[11px] text-amber-300 font-medium">Asistente Fénix ERP & Financiero Finix</p>
+                <p className="text-[11px] text-amber-300 font-medium">Asistente SAP Business One & ERP Finix</p>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -153,11 +153,11 @@ export default function FeNiChat() {
           <div className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar">
             {messages.length === 0 ? (
               <div className="text-center py-6">
-                <div className="w-14 h-14 rounded-full bg-red-950/60 border border-amber-400/40 flex items-center justify-center mx-auto mb-3">
-                  <span className="text-2xl">🐦‍🔥</span>
+                <div className="w-14 h-14 rounded-full bg-blue-950/60 border border-amber-400/40 flex items-center justify-center mx-auto mb-3">
+                  <Bot className="w-7 h-7 text-amber-400" />
                 </div>
                 <h4 className="text-sm font-semibold text-white mb-1">
-                  ¡Hola! Soy FeNi AI
+                  ¡Hola! Soy tu Tutor IA
                 </h4>
                 <p className="text-xs text-gray-400 mb-4 max-w-[280px] mx-auto">
                   {privateTutorReady ? 'Consulta tus dudas sobre las prácticas del ERP. Revisa siempre el material del programa.' : 'Te ayudo a encontrar cursos y formación para empresas. El tutor de prácticas está disponible al iniciar sesión.'}
@@ -188,8 +188,8 @@ export default function FeNiChat() {
                   }`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className="w-7 h-7 rounded-full bg-red-950 border border-amber-400/50 flex items-center justify-center shrink-0 mt-0.5">
-                      <span className="text-xs">🐦‍🔥</span>
+                    <div className="w-7 h-7 rounded-full bg-blue-950 border border-amber-400/50 flex items-center justify-center shrink-0 mt-0.5">
+                      <Bot className="w-4 h-4 text-amber-400" />
                     </div>
                   )}
                   <div
@@ -211,8 +211,8 @@ export default function FeNiChat() {
             )}
             {isLoading && (
               <div className="flex gap-2.5 items-center text-gray-400 text-xs py-2">
-                <div className="w-7 h-7 rounded-full bg-red-950 border border-amber-400/50 flex items-center justify-center shrink-0">
-                  <span className="text-xs">🐦‍🔥</span>
+                <div className="w-7 h-7 rounded-full bg-blue-950 border border-amber-400/50 flex items-center justify-center shrink-0">
+                  <Bot className="w-4 h-4 text-amber-400" />
                 </div>
                 <div className="flex gap-1 items-center bg-white/5 border border-white/10 px-3 py-2 rounded-xl">
                   <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" />
@@ -236,7 +236,7 @@ export default function FeNiChat() {
               maxLength={4000}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Pregúntale a FeNi AI sobre SAP Business One..."
+              placeholder="Pregúntale al Tutor IA sobre SAP Business One..."
               disabled={isLoading}
               className="flex-1 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/50 transition-all disabled:opacity-50"
             />

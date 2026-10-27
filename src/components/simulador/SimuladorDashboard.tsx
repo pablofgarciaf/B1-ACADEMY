@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { LogOut, Play, Trophy, Zap, Award, Clock, Target, TrendingUp, Home, ArrowLeft } from 'lucide-react';
+import { LogOut, Play, Trophy, Zap, Award, Clock, Target, TrendingUp, Home, ArrowLeft, Bot } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 
 interface DashboardProps {
@@ -57,8 +57,8 @@ export default function SimuladorDashboard({
       <header className="border-b border-slate-700/50 backdrop-blur-xl bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3 group" title="Ir a la Página Principal">
-            <div className="w-10 h-10 bg-gradient-to-br from-amber-400/20 to-red-500/20 border border-amber-400/30 rounded-lg flex items-center justify-center group-hover:scale-105 transition">
-              <span className="text-xl">🐦‍🔥</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-900 to-indigo-950 border border-blue-400/40 rounded-lg flex items-center justify-center group-hover:scale-105 transition shadow-inner">
+              <Bot className="w-5 h-5 text-amber-400" />
             </div>
             <div>
               <h1 className="font-bold text-white group-hover:text-amber-300 transition leading-tight">Finix ERP</h1>

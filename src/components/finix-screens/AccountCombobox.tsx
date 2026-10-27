@@ -279,7 +279,7 @@ export function AccountCombobox({
 
           <div className="bg-[#ECE9D8] px-2 py-1 text-[9.5px] text-gray-600 border-t border-gray-300 flex justify-between items-center">
             <span>Usa <strong>↑ ↓</strong> para navegar, <strong>Enter</strong> o <strong>Tab</strong> para elegir</span>
-            <span className="font-mono">FeNi ERP</span>
+            <span className="font-mono font-bold text-[#0055A5]">SAP B1</span>
           </div>
         </div>
       )}

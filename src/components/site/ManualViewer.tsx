@@ -1030,7 +1030,7 @@ export default function ManualViewer({
                     <div className="flex justify-start animate-fadeIn">
                       <div className="max-w-[85%] rounded-2xl px-3.5 py-2 text-xs sm:text-sm bg-gray-800 text-gray-300 rounded-bl-none flex items-center gap-2 border border-gray-700/60 shadow-sm">
                         <Bot size={14} className="text-amber-400 animate-spin" />
-                        <span>FeNi AI está formulando respuesta...</span>
+                        <span>Tutor IA está formulando respuesta...</span>
                         <span className="inline-flex gap-1 ml-1 items-center">
                           <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce" />
                           <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-bounce [animation-delay:150ms]" />
@@ -1047,7 +1047,7 @@ export default function ManualViewer({
                     value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && !isAiLoading && handleSendMessage()}
-                    placeholder={isAiLoading ? "FeNi AI está respondiendo..." : "Pregunta algo sobre SAP Business One..."}
+                    placeholder={isAiLoading ? "Tutor IA está respondiendo..." : "Pregunta algo sobre SAP Business One..."}
                     className="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-3 py-2 text-xs sm:text-sm text-white focus:border-amber-500 focus:outline-none disabled:opacity-50"
                   />
                   <button

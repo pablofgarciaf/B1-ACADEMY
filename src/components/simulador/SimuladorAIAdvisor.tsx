@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, MessageCircle, Loader } from 'lucide-react';
+import { Send, X, MessageCircle, Loader, Bot, Sparkles } from 'lucide-react';
 import { empresaActiva, LISTA_SIETE_EMPRESAS } from '@/lib/firestore-company';
 
 interface Message {
@@ -47,13 +47,13 @@ export default function SimuladorAIAdvisor({
 - 📊 *"¿Cómo verificar el balance o registrar un asiento contable?"*
 
 Pregúntame cualquier transacción, código de pantalla o concepto contable. 🚀`
-        : `¡Hola! Soy **@FeNi AI** 🐦‍🔥, tu copiloto inteligente para Finix ERP.
+        : `¡Hola! Soy tu **Tutor IA** 🤖 para SAP Business One.
 
 ¿Qué deseas realizar o consultar en el simulador?
-- 🛒 *"¿Cómo registro un pedido de venta?"*
-- 📊 *"¿Cómo verifico los mayores de Bancos?"*
-- 🏦 *"¿Cómo realizo una conciliación bancaria?"*
-- 🧾 *"¿Cómo contabilizo un asiento de diario?"*
+- 🛒 *"¿Cómo registro un pedido de venta (SAL002)?"*
+- 📊 *"¿Cómo verifico los mayores de Bancos (FIN002)?"*
+- 🏦 *"¿Cómo realizo una conciliación bancaria (BAN003)?"*
+- 🧾 *"¿Cómo contabilizo un asiento de diario (FIN001)?"*
 
 Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 🚀`,
       timestamp: new Date(),
@@ -138,19 +138,24 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
 
   return (
     <>
-      {/* Floating Button (solo en modo clásico y cuando no esté oculto) */}
+      {/* Floating Button (solo en modo clásico y cuando no esté oculto) - POSICIONADO A LA IZQUIERDA */}
       {!hideFloatingButton && !isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-14 right-4 z-[5000] h-14 px-4 bg-gradient-to-r from-[#b91c1c] via-[#0055A5] to-[#003366] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-amber-400/60 group cursor-pointer"
-          title="Abrir Copiloto @FeNi AI"
+          className="fixed bottom-14 left-4 z-[5000] h-12 px-3.5 bg-gradient-to-r from-[#002b5c] via-[#0055A5] to-[#0854a0] hover:brightness-110 text-white rounded-full shadow-2xl transition-all flex items-center gap-2.5 active:scale-95 border-2 border-amber-400/80 group cursor-pointer"
+          title="Abrir Tutor IA de SAP Business One"
         >
-          <div className="relative flex items-center gap-1.5">
-            <span className="text-lg">🐦‍🔥</span>
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping" />
-            <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-emerald-400 rounded-full" />
+          <div className="relative flex items-center justify-center w-7 h-7 rounded-full bg-slate-900/60 border border-amber-400/50 shadow-inner">
+            <Bot className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+            <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-emerald-400 rounded-full border border-slate-900" />
           </div>
-          <span className="font-black text-xs tracking-wide text-white">@FeNi AI</span>
+          <div className="flex flex-col text-left">
+            <span className="font-extrabold text-xs tracking-wide text-white leading-tight flex items-center gap-1">
+              Tutor IA
+            </span>
+            <span className="text-[9.5px] text-blue-200 font-medium leading-none">SAP Business One</span>
+          </div>
         </button>
       )}
 
@@ -159,23 +164,27 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
         <div className={
           embedded
             ? "w-full h-full flex flex-col overflow-hidden bg-white dark:bg-[#111927]"
-            : "fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:w-96"
+            : "fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:left-4 sm:right-auto sm:w-96"
         }>
           {/* Header */}
           <div className={
             isFiori
               ? "bg-gradient-to-r from-[#0055A5] via-[#0854a0] to-[#0a6ed1] text-white p-3.5 flex items-center justify-between border-b border-blue-400/20 shadow-xs"
-              : "bg-gradient-to-r from-[#7f1d1d] via-[#003366] to-[#001f3f] text-white p-4 flex items-center justify-between border-b border-amber-400/30"
+              : "bg-gradient-to-r from-[#001833] via-[#002b5c] to-[#0055A5] text-white p-3.5 flex items-center justify-between border-b border-amber-400/30"
           }>
-            <div>
-              <h3 className="font-extrabold text-sm flex items-center gap-2 tracking-wide text-white">
-                <span>{isFiori ? '✨' : '🐦‍🔥'}</span>
-                <span>{isFiori ? 'SAP Joule · Copiloto Fiori' : '@FeNi AI · Copiloto ERP'}</span>
-              </h3>
-              <p className="text-[11px] text-blue-100 mt-0.5 flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                {currentModule} • {currentScreen}
-              </p>
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-lg bg-blue-950 border border-blue-400/40 flex items-center justify-center text-amber-400">
+                {isFiori ? <Sparkles className="w-4 h-4 text-amber-300" /> : <Bot className="w-5 h-5 text-amber-400" />}
+              </div>
+              <div>
+                <h3 className="font-extrabold text-xs flex items-center gap-1.5 tracking-wide text-white">
+                  <span>{isFiori ? 'SAP Joule · Copiloto Fiori' : 'Tutor IA · SAP Business One'}</span>
+                </h3>
+                <p className="text-[10.5px] text-blue-100 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  {currentModule} • {currentScreen}
+                </p>
+              </div>
             </div>
             <button
               onClick={handleClose}
@@ -229,7 +238,7 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
                     : 'bg-slate-800 text-slate-200 border-slate-700'
                 }`}>
                   <Loader size={14} className="animate-spin text-[#0055A5]" />
-                  <span>Joule está analizando tu consulta...</span>
+                  <span>{isFiori ? 'Joule está analizando tu consulta...' : 'El Tutor IA está analizando tu consulta...'}</span>
                 </div>
               </div>
             )}
@@ -249,7 +258,7 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={isFiori ? "Pregunta a Joule... ¿Cómo registro una factura SRI?" : "Pregunta algo... ¿Cómo creo una factura?"}
+              placeholder={isFiori ? "Pregunta a Joule... ¿Cómo registro una factura SRI?" : "Pregunta al Tutor IA... ¿Cómo creo un pedido de venta?"}
               className={`flex-1 rounded-xl px-3 py-2 text-xs outline-none transition ${
                 isFiori
                   ? 'bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:bg-white focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]'
