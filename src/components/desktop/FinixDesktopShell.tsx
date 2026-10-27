@@ -127,7 +127,32 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
     return () => clearInterval(interval);
   }, []);
 
-  const modules = Object.values(catalog.modules || {});
+  // Orden canónico de módulos según SAP Business One oficial (GenPyme):
+  // 1. Gestión, 2. Finanzas, 3. CRM, 4. Oportunidades, 5. Ventas, 6. Compras, 7. Socios, 8. Bancos, 9. Inventario, 10. Producción, 11. MRP, 12. Servicio, 13. RRHH / Ecuador, 14. Informes, 15. Consultas
+  const SAP_ORDER_KEYS = [
+    '11_Admin',
+    '01_Finanzas',
+    '13_CRM',
+    '12_Oportunidades',
+    '02_Ventas',
+    '03_Compras',
+    '07_Socios',
+    '07_Bancos',
+    '04_Inventario',
+    '05_Produccion',
+    '06_MRP',
+    '08_Servicios',
+    'ecuador',
+    '09_Reportes',
+    '10_Consultas',
+  ];
+
+  const rawModules = Object.values(catalog.modules || {});
+  const modules = [...rawModules].sort((a, b) => {
+    const idxA = SAP_ORDER_KEYS.indexOf(a.key);
+    const idxB = SAP_ORDER_KEYS.indexOf(b.key);
+    return (idxA >= 0 ? idxA : 99) - (idxB >= 0 ? idxB : 99);
+  });
   const baseEmail = userProfile?.email || currentUser?.email || 'estudiante@finix.ec';
   const currentRoleDef = FINIX_ROLES[activeRole];
   const simulatedEmail = `${currentRoleDef.prefix}${baseEmail}`;
@@ -409,11 +434,38 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
     switch (toolId) {
       case 'add':
         createWindow('SAL002', 'Pedido de Venta', '02_Ventas');
-        showToast('Creando nuevo documento de venta...', 'info');
+        showToast('Modo Crear (Ctrl+A): Abriendo nuevo documento de venta...', 'info');
         break;
       case 'search':
         createWindow('SAL006', 'Socios de Negocio (Clientes)', '02_Ventas');
-        showToast('Búsqueda de socios de negocio...', 'info');
+        showToast('Modo Buscar (Ctrl+F): Búsqueda de socios de negocio...', 'info');
+        break;
+      case 'preview':
+        showToast('Vista preliminar del documento generada', 'info');
+        break;
+      case 'print':
+        window.print();
+        break;
+      case 'email':
+        showToast('Preparando envío por correo electrónico...', 'info');
+        break;
+      case 'sms':
+        showToast('Servicio de mensajería SMS SAP B1 preparado', 'info');
+        break;
+      case 'fax':
+        showToast('Cola de transmisión por fax configurada', 'info');
+        break;
+      case 'excel':
+        showToast('Exportando matriz de datos a MS Excel (.xlsx)...', 'success');
+        break;
+      case 'word':
+        showToast('Exportando documento a MS Word (.docx)...', 'success');
+        break;
+      case 'pdf':
+        showToast('Generando comprobante fiscal en PDF...', 'info');
+        break;
+      case 'lock':
+        showToast('Pantalla bloqueada por seguridad. Haz clic para reactivar', 'warn');
         break;
       case 'first':
       case 'previous':
@@ -421,13 +473,47 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
       case 'last':
         showToast(`Navegación de registros: ${toolId}`, 'info');
         break;
-      case 'print':
-        window.print();
+      case 'refresh':
+        void company.refresh();
+        showToast('Datos maestros y documentos actualizados (F5)', 'success');
+        break;
+      case 'filter':
+        showToast('Filtro de matriz activado', 'info');
+        break;
+      case 'sort':
+        showToast('Ordenación de columnas A-Z aplicada', 'info');
+        break;
+      case 'base_document':
+        showToast('Buscando documento base del flujo comercial...', 'info');
+        break;
+      case 'target_document':
+        showToast('Buscando documento de destino generado...', 'info');
+        break;
+      case 'relationship_map':
+        createWindow('SAL-MAP', 'Mapa de Relaciones', '02_Ventas');
+        showToast('Abriendo Mapa de Relaciones SAP B1...', 'info');
+        break;
+      case 'journal_preview':
+        createWindow('FIN001', 'Libro Diario & Asientos', '01_Finanzas');
+        showToast('Previsualización del Asiento Contable Preliminar', 'info');
+        break;
+      case 'layout_designer':
+        showToast('Diseñador de Layouts (Crystal Reports / Print Layout) abierto', 'info');
         break;
       case 'settings':
         createWindow('ADM001', 'Inicialización y Parametrizaciones del Sistema', '11_Admin');
         break;
+      case 'help':
+        showToast('Ayuda oficial de SAP Business One: Consulta los manuales interactivos en /manuales', 'info');
+        break;
+      case 'search_by_model':
+        showToast('Búsqueda por modelo activada en la base de datos empresarial', 'info');
+        break;
       default:
+        if (toolId.startsWith('search_query:')) {
+          const q = toolId.replace('search_query:', '').trim();
+          showToast(`Buscando en SAP B1: "${q}"...`, 'info');
+        }
         break;
     }
   };
@@ -448,32 +534,28 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
 
         {/* Identidad de Usuario Finix ERP con Roles, Selector de Sociedad y Selector de Temas */}
         <div className="flex items-center gap-3">
-          {/* Selector de Tema Corporativo UI5 */}
-          <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2 py-1 rounded shadow-inner">
-            <span className="text-[10.5px] text-amber-300 font-bold">Tema:</span>
-            <select
-              aria-label="Selector de Tema Corporativo Finix ERP"
-              value={themeMode}
-              onChange={(e) => setThemeMode(e.target.value as 'finix_horizon' | 'finix_fiori_3_dark' | 'classic')}
-              className="bg-[#0e2c7a] text-white font-semibold text-[10.5px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer"
-            >
-              <option value="finix_horizon">✨ Finix Horizon (Claro)</option>
-              <option value="finix_fiori_3_dark">🌙 Finix Obsidian (Oscuro)</option>
-              <option value="classic">💻 Finix Enterprise (Metálico)</option>
-            </select>
-          </div>
-
-          {onSwitchToFiori && (
+          {/* Selector de Modo: Clásico vs Fiori */}
+          <div className="flex items-center bg-[#081a4d] border border-blue-400/40 rounded p-0.5 shadow-inner">
             <button
               type="button"
-              onClick={onSwitchToFiori}
-              className="flex items-center gap-1.5 bg-[#0055A5] hover:bg-[#0070D2] text-white border border-blue-300/50 px-2.5 py-1 rounded text-[11px] font-bold transition-all active:scale-95 shadow-sm"
-              title="Cambiar a la vista moderna de SAP Fiori Launchpad"
+              className="flex items-center gap-1 bg-[#0055A5] text-white px-2.5 py-0.5 rounded text-[11px] font-bold shadow-sm"
+              title="Modo Clásico (Escritorio SAP Business One MDI activo)"
             >
-              <span>✨</span>
-              <span>Modo SAP Fiori</span>
+              <span>💻</span>
+              <span>Modo Clásico</span>
             </button>
-          )}
+            {onSwitchToFiori && (
+              <button
+                type="button"
+                onClick={onSwitchToFiori}
+                className="flex items-center gap-1 text-blue-200 hover:text-white hover:bg-blue-900/50 px-2.5 py-0.5 rounded text-[11px] font-semibold transition active:scale-95 cursor-pointer"
+                title="Cambiar a la vista moderna de SAP Fiori Launchpad"
+              >
+                <span>✨</span>
+                <span>Modo Fiori</span>
+              </button>
+            )}
+          </div>
 
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2.5 py-1 rounded shadow-inner">
             <Shield className="w-3.5 h-3.5 text-amber-400" aria-hidden="true" />

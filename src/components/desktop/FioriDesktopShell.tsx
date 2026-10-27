@@ -284,16 +284,27 @@ export default function FioriDesktopShell({
           </button>
 
           {/* Selector de modo Clásico / Fiori */}
-          {onSwitchToClassic && (
+          <div className="flex items-center bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-0.5 shadow-inner">
+            {onSwitchToClassic && (
+              <button
+                type="button"
+                onClick={onSwitchToClassic}
+                className="flex items-center gap-1 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-2.5 py-0.5 rounded text-[11px] font-semibold transition active:scale-95 cursor-pointer"
+                title="Cambiar a la visualización de escritorio clásico de Business One"
+              >
+                <span>💻</span>
+                <span>Modo Clásico</span>
+              </button>
+            )}
             <button
-              onClick={onSwitchToClassic}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800/80 text-[11px] font-semibold text-slate-700 dark:text-slate-300 hover:border-[#0854a0] transition active:scale-95 shadow-sm"
-              title="Cambiar a la visualización de escritorio clásico de Business One"
+              type="button"
+              className="flex items-center gap-1 bg-[#0854a0] text-white px-2.5 py-0.5 rounded text-[11px] font-bold shadow-sm"
+              title="Modo Fiori Launchpad activo"
             >
-              <Monitor className="w-3.5 h-3.5 text-[#0854a0]" />
-              <span className="hidden sm:inline">Modo Clásico</span>
+              <span>✨</span>
+              <span>Modo Fiori</span>
             </button>
-          )}
+          </div>
 
           {/* Selector de Sociedad Activa */}
           <div className="hidden sm:flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 px-2 py-0.5 rounded-lg text-xs">

@@ -14,19 +14,26 @@ import {
   ChevronsRight,
   RefreshCw,
   Filter,
+  ArrowUpDown,
+  ArrowUpRight,
+  ArrowDownRight,
+  Network,
   Scale,
+  LayoutTemplate,
   Settings,
   Mail,
   Eye,
-  SlidersHorizontal,
+  MessageSquare,
+  HelpCircle,
 } from 'lucide-react';
 
 interface FinixToolBarProps {
   onActionClick?: (action: string) => void;
   onSearch?: (query: string) => void;
+  onSearchByModel?: () => void;
 }
 
-export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarProps) {
+export default function FinixToolBar({ onActionClick, onSearch, onSearchByModel }: FinixToolBarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -37,9 +44,9 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
 
   return (
     <div className="bg-[#f0f0f0] border-b border-[#c8c8c8] flex items-center justify-between h-[30px] px-1.5 select-none text-[11px] font-[Tahoma,Arial,sans-serif]">
-      {/* Grupo Izquierdo de Iconos SAP B1 */}
+      {/* Grupo Izquierdo de Iconos SAP B1 (Idéntico a Captura Oficial GenPyme Imagen 4) */}
       <div className="flex items-center gap-0.5 overflow-x-auto">
-        {/* Documentos & Impresión */}
+        {/* 1. Vista preliminar */}
         <button
           type="button"
           onClick={() => onActionClick?.('preview')}
@@ -48,6 +55,8 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <Eye size={15} className="text-[#2b579a]" />
         </button>
+
+        {/* 2. Imprimir */}
         <button
           type="button"
           onClick={() => onActionClick?.('print')}
@@ -56,6 +65,8 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <Printer size={15} className="text-[#333]" />
         </button>
+
+        {/* 3. Correo electrónico */}
         <button
           type="button"
           onClick={() => onActionClick?.('email')}
@@ -64,6 +75,28 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <Mail size={15} className="text-[#555]" />
         </button>
+
+        {/* 4. SMS */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('sms')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Enviar SMS"
+        >
+          <MessageSquare size={15} className="text-[#0284c7]" />
+        </button>
+
+        {/* 5. Fax */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('fax')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Enviar por Fax"
+        >
+          <Printer size={15} className="text-[#64748b]" />
+        </button>
+
+        {/* 6. MS Excel */}
         <button
           type="button"
           onClick={() => onActionClick?.('excel')}
@@ -72,6 +105,18 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <FileSpreadsheet size={15} className="text-[#107c41]" />
         </button>
+
+        {/* 7. MS Word */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('word')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Exportar a MS Word"
+        >
+          <FileText size={15} className="text-[#185abd]" />
+        </button>
+
+        {/* 8. PDF */}
         <button
           type="button"
           onClick={() => onActionClick?.('pdf')}
@@ -80,6 +125,8 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <FileText size={15} className="text-[#d9381e]" />
         </button>
+
+        {/* 9. Bloquear pantalla */}
         <button
           type="button"
           onClick={() => onActionClick?.('lock')}
@@ -92,7 +139,7 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         {/* Separador */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
-        {/* Modos Buscar y Crear (Prismáticos y Hoja con asterisco) */}
+        {/* 10. Modo Buscar (Prismáticos amarillos) */}
         <button
           type="button"
           onClick={() => onActionClick?.('search')}
@@ -103,6 +150,8 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
             <Search size={11} className="text-[#7a5200] stroke-[2.5]" />
           </div>
         </button>
+
+        {/* 11. Modo Crear / Añadir (Hoja con asterisco azul) */}
         <button
           type="button"
           onClick={() => onActionClick?.('add')}
@@ -117,12 +166,12 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         {/* Separador */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
-        {/* Navegación de registros */}
+        {/* 12-15. Navegación de registros */}
         <button
           type="button"
           onClick={() => onActionClick?.('first')}
           className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Primer registro de datos"
+          title="Primer registro de datos (|◀)"
         >
           <ChevronsLeft size={15} className="text-[#444]" />
         </button>
@@ -130,7 +179,7 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
           type="button"
           onClick={() => onActionClick?.('previous')}
           className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Registro anterior"
+          title="Registro anterior (◀)"
         >
           <ChevronLeft size={15} className="text-[#444]" />
         </button>
@@ -138,7 +187,7 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
           type="button"
           onClick={() => onActionClick?.('next')}
           className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Registro siguiente"
+          title="Registro siguiente (▶)"
         >
           <ChevronRight size={15} className="text-[#444]" />
         </button>
@@ -146,7 +195,7 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
           type="button"
           onClick={() => onActionClick?.('last')}
           className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Último registro de datos"
+          title="Último registro de datos (▶|)"
         >
           <ChevronsRight size={15} className="text-[#444]" />
         </button>
@@ -154,7 +203,7 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         {/* Separador */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
-        {/* Actualizar, Filtrar y Asiento Contable Preliminar */}
+        {/* 16. Actualizar / Refrescar */}
         <button
           type="button"
           onClick={() => onActionClick?.('refresh')}
@@ -163,6 +212,8 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <RefreshCw size={14} className="text-[#0284c7]" />
         </button>
+
+        {/* 17. Filtrar tabla */}
         <button
           type="button"
           onClick={() => onActionClick?.('filter')}
@@ -171,6 +222,51 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <Filter size={14} className="text-[#555]" />
         </button>
+
+        {/* 18. Clasificar tabla (Ordenar A-Z) */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('sort')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Clasificar tabla / Ordenar"
+        >
+          <ArrowUpDown size={14} className="text-[#475569]" />
+        </button>
+
+        {/* Separador */}
+        <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
+
+        {/* 19. Documento base (Flecha naranja arriba) */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('base_document')}
+          className="p-1 hover:bg-[#fff7ed] hover:border-[#f97316] border border-transparent rounded-xs transition text-[#333]"
+          title="Documento base"
+        >
+          <ArrowUpRight size={15} className="text-[#ea580c] stroke-[2.5]" />
+        </button>
+
+        {/* 20. Documento de destino (Flecha naranja abajo) */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('target_document')}
+          className="p-1 hover:bg-[#fff7ed] hover:border-[#f97316] border border-transparent rounded-xs transition text-[#333]"
+          title="Documento de destino"
+        >
+          <ArrowDownRight size={15} className="text-[#ea580c] stroke-[2.5]" />
+        </button>
+
+        {/* 21. Mapa de relaciones */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('relationship_map')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Mapa de relaciones del documento"
+        >
+          <Network size={14} className="text-[#0284c7]" />
+        </button>
+
+        {/* 22. Asiento contable preliminar */}
         <button
           type="button"
           onClick={() => onActionClick?.('journal_preview')}
@@ -183,7 +279,17 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         {/* Separador */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
-        {/* Parametrizaciones de Formulario */}
+        {/* 23. Diseñador de layout */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('layout_designer')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Diseñador de Layout / Plantillas de impresión"
+        >
+          <LayoutTemplate size={14} className="text-[#0284c7]" />
+        </button>
+
+        {/* 24. Parametrizaciones de Formulario */}
         <button
           type="button"
           onClick={() => onActionClick?.('settings')}
@@ -192,9 +298,22 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
         >
           <Settings size={14} className="text-[#d97706]" />
         </button>
+
+        {/* Separador */}
+        <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
+
+        {/* 25. Ayuda contextual */}
+        <button
+          type="button"
+          onClick={() => onActionClick?.('help')}
+          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+          title="Ayuda de SAP Business One (F1)"
+        >
+          <HelpCircle size={14} className="text-[#0284c7]" />
+        </button>
       </div>
 
-      {/* Cuadro de Búsqueda Rápida de Documentos (Estilo SAP B1 Web Client) */}
+      {/* Cuadro de Búsqueda Rápida de Documentos (Idéntico a Imagen 4) */}
       <form onSubmit={handleSearchSubmit} className="flex items-center gap-1">
         <div className="relative flex items-center">
           <span className="absolute left-1.5 text-gray-400 text-[10px]">🔎</span>
@@ -203,14 +322,24 @@ export default function FinixToolBar({ onActionClick, onSearch }: FinixToolBarPr
             placeholder="Buscar datos maestros y documentos..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-[20px] w-48 sm:w-64 pl-5 pr-1.5 text-[11px] bg-white border border-[#999] rounded-xs text-[#222] placeholder:text-gray-400 focus:outline-none focus:border-[#0055a5] focus:bg-[#fffde7]"
+            className="h-[21px] w-44 sm:w-56 pl-5 pr-1.5 text-[11px] bg-white border border-[#999] rounded-xs text-[#222] placeholder:text-gray-400 focus:outline-none focus:border-[#0055a5] focus:bg-[#fffde7]"
           />
         </div>
         <button
           type="submit"
-          className="h-[20px] px-2 bg-[#d4d0c8] hover:bg-[#e8e4dc] border border-[#808080] text-[#222] font-semibold text-[10.5px] rounded-xs transition active:scale-95 cursor-pointer"
+          className="h-[21px] px-2 bg-[#d4d0c8] hover:bg-[#e8e4dc] border border-[#808080] text-[#222] font-semibold text-[10.5px] rounded-xs transition active:scale-95 cursor-pointer whitespace-nowrap"
         >
           Buscar
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            if (onSearchByModel) onSearchByModel();
+            else if (onActionClick) onActionClick('search_by_model');
+          }}
+          className="h-[21px] px-2 bg-[#d4d0c8] hover:bg-[#e8e4dc] border border-[#808080] text-[#222] font-semibold text-[10.5px] rounded-xs transition active:scale-95 cursor-pointer whitespace-nowrap"
+        >
+          Búsqueda por modelo
         </button>
       </form>
     </div>

@@ -81,6 +81,19 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const [itemLookup, setItemLookup] = useState<number | null>(null);
   const [showCopyFromMenu, setShowCopyFromMenu] = useState(false);
   const [showCopyToMenu, setShowCopyToMenu] = useState(false);
+  const [itemServiceClass, setItemServiceClass] = useState<'item' | 'service'>('item');
+  const [summaryClass, setSummaryClass] = useState<string>('none');
+  const [roundingChecked, setRoundingChecked] = useState<boolean>(false);
+  const [attachments, setAttachments] = useState<Array<{ id: string; targetPath: string; fileName: string; date: string; freeText: string }>>([
+    {
+      id: 'att-1',
+      targetPath: 'C:\\SAP_B1\\Attachments\\',
+      fileName: 'Orden_Compra_Cliente_Firmada.pdf',
+      date: today(),
+      freeText: 'Aprobación del cliente por correo',
+    },
+  ]);
+  const [selectedAttachmentIndex, setSelectedAttachmentIndex] = useState<number | null>(null);
 
   // Available docs in memory/store
   const docs = (purchase ? c.data.purchaseOrders : c.data.salesOrders).filter(d => d.docType === docType);
@@ -565,6 +578,33 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
           {/* PESTAÑA 1: CONTENIDO (MATRIZ OFICIAL DE ARTÍCULOS) */}
           {activeTab === 'contenido' && (
             <div className="space-y-2">
+              {/* Controles de Cabecera de Matriz Oficial SAP B1 (Captura GenPyme Imagen 4) */}
+              <div className="flex flex-wrap items-center gap-4 pb-1.5 border-b border-slate-200 text-xs">
+                <div className="flex items-center gap-1.5">
+                  <label className="text-slate-600 font-semibold text-[11px]">Clase de artículo/servicio:</label>
+                  <select
+                    value={itemServiceClass}
+                    onChange={(e) => setItemServiceClass(e.target.value as 'item' | 'service')}
+                    className="border border-slate-300 rounded px-2 py-0.5 bg-white font-semibold text-slate-800 text-[11px] focus:outline-none focus:ring-1 focus:ring-[#0070d2] cursor-pointer"
+                  >
+                    <option value="item">Artículo</option>
+                    <option value="service">Servicio</option>
+                  </select>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <label className="text-slate-600 font-semibold text-[11px]">Clase de resumen:</label>
+                  <select
+                    value={summaryClass}
+                    onChange={(e) => setSummaryClass(e.target.value)}
+                    className="border border-slate-300 rounded px-2 py-0.5 bg-white text-slate-800 text-[11px] focus:outline-none focus:ring-1 focus:ring-[#0070d2] cursor-pointer"
+                  >
+                    <option value="none">Sin resumen</option>
+                    <option value="item">Por artículo</option>
+                    <option value="warehouse">Por almacén</option>
+                  </select>
+                </div>
+              </div>
+
               <div className="overflow-x-auto border border-[#b4c4d4] rounded-xs shadow-inner">
                 <table className="w-full border-collapse text-left text-[11px]">
                   <thead className="bg-[#e4ebf3] font-bold text-[#1e293b] border-b border-[#a8bccf]">
@@ -824,12 +864,128 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
             </div>
           )}
 
-          {/* PESTAÑA 4: ANEXOS */}
+          {/* PESTAÑA 4: ANEXOS (Matriz Oficial SAP B1 e Imagen 5) */}
           {activeTab === 'anexos' && (
-            <div className="p-4 text-center border-2 border-dashed border-[#b8c9d9] rounded-xs bg-[#f8fafc] text-gray-500">
-              <span className="text-2xl block mb-1">📎</span>
-              <p className="font-semibold text-xs text-[#003366]">Archivos adjuntos del documento</p>
-              <p className="text-[10.5px]">Arrastra órdenes de compra del cliente, correos o especificaciones en PDF.</p>
+            <div className="space-y-3">
+              <div className="flex flex-col md:flex-row gap-3">
+                {/* Tabla de Anexos */}
+                <div className="flex-1 overflow-x-auto border border-[#b4c4d4] rounded-xs shadow-inner bg-white">
+                  <table className="w-full border-collapse text-left text-[11px]">
+                    <thead className="bg-[#e4ebf3] font-bold text-[#1e293b] border-b border-[#a8bccf]">
+                      <tr>
+                        <th className="p-1.5 border-r border-[#c2d3e3] w-8 text-center">#</th>
+                        <th className="p-1.5 border-r border-[#c2d3e3] w-48">Vía de acceso destino</th>
+                        <th className="p-1.5 border-r border-[#c2d3e3] min-w-44">Nombre de archivo</th>
+                        <th className="p-1.5 border-r border-[#c2d3e3] w-28">Fecha del anexo</th>
+                        <th className="p-1.5">Texto libre</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-[#d4e1ed]">
+                      {attachments.length === 0 ? (
+                        <tr>
+                          <td colSpan={5} className="p-4 text-center text-gray-400 italic">
+                            No hay archivos anexados a este documento. Haz clic en &quot;Explorar...&quot; para adjuntar.
+                          </td>
+                        </tr>
+                      ) : (
+                        attachments.map((att, idx) => (
+                          <tr
+                            key={att.id}
+                            onClick={() => setSelectedAttachmentIndex(idx)}
+                            className={`cursor-pointer transition-colors ${
+                              selectedAttachmentIndex === idx ? 'bg-[#fffde7] font-semibold text-[#003366]' : 'hover:bg-slate-50'
+                            }`}
+                          >
+                            <td className="p-1.5 text-center font-mono font-bold text-gray-500 bg-[#f7fafc] border-r border-[#d4e1ed]">
+                              {idx + 1}
+                            </td>
+                            <td className="p-1.5 font-mono text-[10.5px] text-gray-600 border-r border-[#d4e1ed] truncate max-w-[160px]">
+                              {att.targetPath}
+                            </td>
+                            <td className="p-1.5 font-medium border-r border-[#d4e1ed] text-[#003366]">
+                              <span className="mr-1">📄</span>
+                              <span>{att.fileName}</span>
+                            </td>
+                            <td className="p-1.5 text-gray-700 border-r border-[#d4e1ed] whitespace-nowrap">
+                              {att.date}
+                            </td>
+                            <td className="p-1">
+                              <input
+                                type="text"
+                                value={att.freeText}
+                                disabled={locked}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+                                  setAttachments((prev) => prev.map((a, j) => (j === idx ? { ...a, freeText: val } : a)));
+                                }}
+                                className="w-full bg-transparent border-b border-transparent hover:border-[#9fb4c7] focus:border-[#0055a5] px-1 py-0.5 text-[11px] outline-none"
+                              />
+                            </td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Botones Laterales de Anexos (Explorar, Visualizar, Borrar) */}
+                <div className="w-full md:w-32 flex md:flex-col gap-2 shrink-0">
+                  <label className="w-full">
+                    <input
+                      type="file"
+                      disabled={locked}
+                      className="hidden"
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
+                        if (file) {
+                          setAttachments((prev) => [
+                            ...prev,
+                            {
+                              id: `att-${Date.now()}`,
+                              targetPath: 'C:\\SAP_B1\\Attachments\\',
+                              fileName: file.name,
+                              date: today(),
+                              freeText: 'Anexo adjuntado por usuario',
+                            },
+                          ]);
+                        }
+                      }}
+                    />
+                    <span className="block w-full text-center px-3 py-1.5 bg-[#f0f4f8] hover:bg-white border border-[#9fb4c7] rounded-xs text-[11px] font-bold text-[#003366] cursor-pointer shadow-2xs active:scale-95 transition">
+                      Explorar...
+                    </span>
+                  </label>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (selectedAttachmentIndex !== null && attachments[selectedAttachmentIndex]) {
+                        alert(`Visualizando anexo SAP B1: ${attachments[selectedAttachmentIndex].fileName}`);
+                      } else {
+                        alert('Selecciona una fila de anexo para visualizar');
+                      }
+                    }}
+                    disabled={selectedAttachmentIndex === null}
+                    className="w-full px-3 py-1.5 bg-[#f0f4f8] hover:bg-white disabled:opacity-40 border border-[#9fb4c7] rounded-xs text-[11px] font-bold text-[#003366] shadow-2xs active:scale-95 transition cursor-pointer"
+                  >
+                    Visualizar
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (selectedAttachmentIndex !== null) {
+                        setAttachments((prev) => prev.filter((_, i) => i !== selectedAttachmentIndex));
+                        setSelectedAttachmentIndex(null);
+                      }
+                    }}
+                    disabled={locked || selectedAttachmentIndex === null}
+                    className="w-full px-3 py-1.5 bg-[#fdf2f2] hover:bg-red-500 hover:text-white disabled:opacity-40 border border-red-300 rounded-xs text-[11px] font-bold text-red-700 shadow-2xs active:scale-95 transition cursor-pointer"
+                  >
+                    Borrar
+                  </button>
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -872,6 +1028,19 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
             </div>
             <div className="flex justify-between items-center text-[11px] text-gray-700">
               <span>Gastos adicionales / Flete:</span>
+              <span className="font-mono font-medium">$ 0.00</span>
+            </div>
+            <div className="flex justify-between items-center text-[11px] text-gray-700">
+              <label className="flex items-center gap-1.5 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={roundingChecked}
+                  disabled={locked}
+                  onChange={(e) => setRoundingChecked(e.target.checked)}
+                  className="rounded text-[#0070d2] focus:ring-0 cursor-pointer"
+                />
+                <span>Redondeo</span>
+              </label>
               <span className="font-mono font-medium">$ 0.00</span>
             </div>
             <div className="flex justify-between items-center text-[11px] text-gray-700 pb-1 border-b border-[#cbd8e5]">
