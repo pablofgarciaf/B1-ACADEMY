@@ -543,8 +543,7 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
         <FinixModulesTree modules={modules} onScreenSelect={createWindow} />
 
         {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
-        <div className={`flex-1 min-w-0 h-full relative overflow-hidden flex flex-col transition-colors duration-200 ${themeMode === 'finix_horizon' ? 'bg-[#e8ecf2]' : themeMode === 'finix_fiori_3_dark' ? 'bg-[#0c121c]' : 'bg-[#334155]'
-          }`}>
+        <div className="flex-1 min-w-0 h-full relative overflow-hidden flex flex-col bg-gradient-to-br from-[#cde7f0] via-[#e2f2f7] to-[#d4ebf3]">
           <div className="flex-1 min-h-0 relative overflow-hidden">
             <FinixWindowManager
               windows={windows}
@@ -559,27 +558,38 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
         </div>
       </div>
 
-      {/* Barra de Estado Inferior Limpia */}
-      <div className="bg-gradient-to-r from-gray-800 to-gray-700 text-white text-[11px] px-3 py-1 flex items-center justify-between border-t border-gray-600">
-        <div className="flex items-center gap-3">
+      {/* Barra de Estado Inferior Auténtica de SAP Business One (3 Paneles Encastrados) */}
+      <div className="bg-[#e0e8f0] text-[#1e293b] text-[11px] px-2 py-0.5 flex items-center justify-between border-t border-[#9aaec0] shadow-[inset_0_1px_2px_rgba(0,0,0,0.06)] font-[Tahoma,Arial,sans-serif] shrink-0 select-none">
+        {/* Panel 1: Mensajes del Sistema y Alertas (Encastrado) */}
+        <div className="flex-1 min-w-0 mr-1 bg-[#f4f7fa] border border-[#a4b8cc] px-2 py-0.5 rounded-xs flex items-center gap-2 overflow-hidden shadow-[inset_1px_1px_1px_rgba(0,0,0,0.1)]">
           {toastMessage ? (
-            <span className={`inline-flex items-center gap-1.5 font-bold ${
-              toastMessage.type === 'success' ? 'text-emerald-300' : toastMessage.type === 'warn' ? 'text-amber-300' : 'text-cyan-300'
+            <span className={`inline-flex items-center gap-1.5 font-bold truncate ${
+              toastMessage.type === 'success' ? 'text-emerald-700' : toastMessage.type === 'warn' ? 'text-amber-800' : 'text-blue-800'
             }`}>
-              <span>{toastMessage.type === 'success' ? '✅' : toastMessage.type === 'warn' ? '⚠️' : 'ℹ️'}</span>
-              <span>{toastMessage.text}</span>
+              <span>{toastMessage.type === 'success' ? '🟩' : toastMessage.type === 'warn' ? '🟧' : 'ℹ️'}</span>
+              <span className="truncate">{toastMessage.text}</span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1.5 text-emerald-400">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              Conectado al Servidor (Finix Cloud Engine)
+            <span className="inline-flex items-center gap-1.5 text-emerald-800 text-[10.5px] truncate">
+              <span className="w-2 h-2 bg-emerald-600 rounded-2xs inline-block shadow-xs shrink-0" />
+              <span className="truncate font-medium">Operación finalizada con éxito · Para ayuda, pulse F1</span>
             </span>
           )}
-          <span className="text-gray-300">| Perfil activo: <strong>{currentRoleDef.department}</strong></span>
         </div>
-        <div className="flex items-center gap-4 text-gray-300 font-mono text-[10px]">
-          <span>{systemTime}</span>
-          <span>F1 Ayuda | Shift+F2 Búsqueda | Ctrl+S Guardar</span>
+
+        {/* Panel 2: Sociedad y Usuario Activo (Encastrado) */}
+        <div className="w-64 shrink-0 mr-1 bg-[#f4f7fa] border border-[#a4b8cc] px-2 py-0.5 rounded-xs flex items-center justify-between text-[10.5px] text-[#334455] shadow-[inset_1px_1px_1px_rgba(0,0,0,0.1)] truncate">
+          <span className="font-bold truncate text-[#003366]">{companyTitle}</span>
+          <span className="text-gray-500 font-mono text-[9.5px]">manager</span>
+        </div>
+
+        {/* Panel 3: Fecha, Hora e Identificador Oficial SAP B1 (Encastrado) */}
+        <div className="w-60 shrink-0 bg-[#f4f7fa] border border-[#a4b8cc] px-2 py-0.5 rounded-xs flex items-center justify-between text-[10.5px] text-[#334455] shadow-[inset_1px_1px_1px_rgba(0,0,0,0.1)]">
+          <span className="font-mono text-[10px] text-gray-700">{systemTime}</span>
+          <span className="inline-flex items-center gap-1 font-bold text-[10px] text-[#004080] tracking-tight">
+            <span className="px-1 py-0.2 bg-[#0055a5] text-white rounded-xs text-[8.5px] font-black">SAP</span>
+            <span>Business One</span>
+          </span>
         </div>
       </div>
 

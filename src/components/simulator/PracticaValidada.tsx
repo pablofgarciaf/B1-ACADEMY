@@ -483,8 +483,9 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
             </div>
           ) : (
             <div ref={ventanaRef} className={`rounded-sm border border-[#7f93ab] bg-[#f7f8fa] shadow-xl transition-all duration-100 ${ventanaMaximizada ? 'absolute inset-2 z-30 max-w-none m-0 border-2 border-[#0055A5] flex flex-col h-[calc(100%-16px)]' : 'max-w-3xl'}`}>
-              {/* Recuadro Pedagógico A+ con Instrucciones Claras y Valores Requeridos */}
-              <div className="mx-3 sm:mx-4 mt-3 rounded-md border border-[#9fb8d4] bg-gradient-to-b from-[#eaf2fa] to-[#deebf7] p-2.5 sm:p-3 text-[11px] text-[#133251] shadow-xs">
+              {/* Recuadro Pedagógico A+ con Instrucciones Claras y Valores Requeridos (oculto si ya está arriba) */}
+              {!hideHeaderGuide && (
+                <div className="mx-3 sm:mx-4 mt-3 rounded-md border border-[#9fb8d4] bg-gradient-to-b from-[#eaf2fa] to-[#deebf7] p-2.5 sm:p-3 text-[11px] text-[#133251] shadow-xs">
                 {/* Cabecera del Panel */}
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-[#bcd0e5]">
                   <div className="flex items-center gap-2 min-w-0">
@@ -604,6 +605,7 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
                   </div>
                 )}
               </div>
+            )}
               
               {/* Barra de título de la ventana */}
               <div className="flex items-center justify-between bg-gradient-to-b from-[#e3eaf3] to-[#cfdbe9] border-b border-[#9fb1c7] px-2.5 py-1 font-semibold select-none shrink-0">
@@ -612,6 +614,21 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
                   {tituloVentana}
                 </span>
                 <div className="flex items-center gap-1.5">
+                  {!esConsulta && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setValores(campos.map(c => c.valor));
+                        setRevisado(null);
+                        setEstado({ tono: 'info', texto: 'Valores cargados con éxito. Pulsa Añadir para registrar.' });
+                      }}
+                      className="text-[10px] bg-[#0055A5] hover:bg-[#003e7a] text-white font-bold px-2 py-0.5 rounded transition-all active:scale-95 shadow-xs flex items-center gap-1 cursor-pointer"
+                      title="Autocompletar todos los campos con los valores del caso"
+                    >
+                      <span>🪄</span>
+                      <span>Autocompletar</span>
+                    </button>
+                  )}
                   <button
                     type="button"
                     onClick={() => setVentanaMinimizada(true)}
@@ -661,38 +678,48 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
                               className={`w-4 h-4 accent-[#f0ab00] ${est === false ? 'outline outline-2 outline-[#c9302c]' : ''}`}
                             />
                           </span>
-                        ) : opcionesCampo(c) ? (
-                        <select
-                          id={`campo-${i}`}
-                          data-guia={`campo-${i}`}
-                          value={valores[i]}
-                          disabled={logrado}
-                          onChange={(e) => actualizarValor(i, e.target.value)}
-                          className={`h-6 w-full px-1 bg-white border rounded-[2px] focus:outline-none ${
-                            est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'
-                              : est === false ? 'border-[#c9302c] bg-[#fdf0ef]'
-                                : 'border-[#a9b7c8] focus:border-[#f0ab00] focus:ring-1 focus:ring-[#f0ab00]'
-                          }`}
-                        >
-                          <option value="">Selecciona…</option>
-                          {opcionesCampo(c)!.map((o) => <option key={o.valor} value={o.valor}>{o.texto}</option>)}
-                        </select>
                         ) : (
-                        <input
-                          id={`campo-${i}`}
-                          data-guia={`campo-${i}`}
-                          value={valores[i]}
-                          placeholder={c.valor}
-                          disabled={logrado}
-                          autoComplete="off"
-                          onChange={(e) => actualizarValor(i, e.target.value)}
-                          onKeyDown={(e) => { if (e.key === 'Enter') validar(); }}
-                          className={`h-6 w-full px-1.5 bg-white border rounded-[2px] focus:outline-none select-text ${
-                            est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'
-                              : est === false ? 'border-[#c9302c] bg-[#fdf0ef]'
-                                : 'border-[#a9b7c8] focus:border-[#f0ab00] focus:ring-1 focus:ring-[#f0ab00]'
-                          }`}
-                        />
+                          <div className="flex gap-1 items-center w-full">
+                            <input
+                              id={`campo-${i}`}
+                              data-guia={`campo-${i}`}
+                              value={valores[i]}
+                              placeholder={c.valor}
+                              list={opcionesCampo(c) ? `datalist-campo-${i}` : undefined}
+                              disabled={logrado}
+                              autoComplete="off"
+                              onChange={(e) => actualizarValor(i, e.target.value)}
+                              onKeyDown={(e) => { if (e.key === 'Enter') validar(); }}
+                              className={`h-6 flex-1 min-w-0 px-1.5 bg-white border rounded-[2px] focus:outline-none select-text ${
+                                est === true ? 'border-[#3a8f3a] bg-[#f0f9ee]'
+                                  : est === false ? 'border-[#c9302c] bg-[#fdf0ef]'
+                                    : 'border-[#a9b7c8] focus:border-[#f0ab00] focus:ring-1 focus:ring-[#f0ab00]'
+                              }`}
+                            />
+                            {opcionesCampo(c) && (
+                              <>
+                                <datalist id={`datalist-campo-${i}`}>
+                                  {opcionesCampo(c)!.map((o) => (
+                                    <option key={o.valor} value={o.valor}>{o.texto}</option>
+                                  ))}
+                                </datalist>
+                                <select
+                                  aria-label={`Seleccionar opción para ${c.etiqueta}`}
+                                  disabled={logrado}
+                                  value=""
+                                  onChange={(e) => {
+                                    if (e.target.value) actualizarValor(i, e.target.value);
+                                  }}
+                                  className="h-6 w-24 shrink-0 bg-[#f4f7fa] border border-[#a9b7c8] text-[10px] text-gray-700 rounded-[2px] cursor-pointer"
+                                >
+                                  <option value="">Elegir ▾</option>
+                                  {opcionesCampo(c)!.map((o) => (
+                                    <option key={o.valor} value={o.valor}>{o.texto}</option>
+                                  ))}
+                                </select>
+                              </>
+                            )}
+                          </div>
                         )}
                       </div>
                       {/* Pistas y solución visible sin obstrucción */}

@@ -38,7 +38,7 @@ export function normalizar(valor: string): string {
  */
 const EQUIVALENCIAS: string[][] = [
   ['01', 'Bodega Central Quito', 'Bodega Central', 'Almacén Central'], ['02', 'Bodega Sucursal Guayaquil', 'Bodega Guayaquil'],
-  ['C20000', 'Maxi-Teq'], ['C20001', 'TechSolutions'], ['C20002', 'CompuMundo'], ['C20003', 'ElectroHogar'], ['C20004', 'Sistemas del Valle'],
+  ['C20000', 'Maxi-Teq', 'Maxi-Teq S.A.'], ['C20001', 'TechSolutions', 'TechSolutions Cía. Ltda.'], ['C20002', 'CompuMundo', 'CompuMundo Ecuador'], ['C20003', 'ElectroHogar', 'Corporación Andina', 'Corporación Andina S.A.', 'C20005', 'Andina Comercial'], ['C20004', 'Sistemas del Valle'],
   ['C20005', 'Corporación Andina Comercial S.A.', 'Corporación Andina', 'Andina Comercial'],
   ['V10000', 'Dell Ecuador'], ['V10001', 'HP Importaciones'], ['V10002', 'Lenovo Andina'], ['V10003', 'Acer Distributors'],
   ['A00001', 'Laptop Dell Latitude 3420', 'Laptop Dell Latitud 3420', 'Dell Latitude 3420', 'Dell Latitud 3420'], ['A00002', 'Laptop HP ProBook 440'], ['A00003', 'Monitor Lenovo ThinkVision 24"'],

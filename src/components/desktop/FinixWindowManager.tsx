@@ -31,72 +31,46 @@ interface FinixWindowManagerProps {
 
 export default function FinixWindowManager({
   windows,
-  themeMode = 'finix_horizon',
+  themeMode = 'classic',
   onWindowClose,
   onWindowFocus,
 }: FinixWindowManagerProps) {
-  // Encontrar la ventana activa (focused), o la última abierta
   const activeWindow = windows.find(w => w.focused) || windows[windows.length - 1];
 
-  const containerBg =
-    themeMode === 'finix_horizon'
-      ? 'bg-[#e8ecf2]'
-      : themeMode === 'finix_fiori_3_dark'
-      ? 'bg-[#0c121c]'
-      : 'bg-[#334155]';
-
-  const windowHeaderBg =
-    themeMode === 'finix_horizon'
-      ? 'bg-gradient-to-r from-[#0f2744] via-[#163860] to-[#0f2744] border-b border-[#0d1f35]'
-      : themeMode === 'finix_fiori_3_dark'
-      ? 'bg-gradient-to-r from-[#17212e] to-[#0f1722] border-b border-[#243347]'
-      : 'bg-gradient-to-r from-[#003366] to-[#0055A5] border-b border-[#002244]';
-
-  const windowContentBg =
-    themeMode === 'finix_fiori_3_dark'
-      ? 'bg-[#151d28] text-slate-100'
-      : themeMode === 'finix_horizon'
-      ? 'bg-[#fafbfc] text-slate-900'
-      : 'bg-[#ECE9D8] text-slate-900';
-
-  const tabsBarBg =
-    themeMode === 'finix_fiori_3_dark'
-      ? 'bg-[#111927] border-b border-[#243347]'
-      : 'bg-[#dce3ec] border-b border-[#c2cedc]';
+  // Lienzo oficial de escritorio SAP Business One (Gradiente Cyan-Teal idéntico a GenPyme)
+  const sapDesktopBg = 'bg-gradient-to-br from-[#cde7f0] via-[#e2f2f7] to-[#d4ebf3]';
 
   return (
     <div
       id="window-container"
-      className={`relative w-full h-full ${containerBg} overflow-hidden flex flex-col transition-colors duration-200 select-none`}
+      className={`relative w-full h-full ${sapDesktopBg} overflow-hidden flex flex-col select-none`}
     >
-      {/* Barra de Pestañas estilo VS Code / Navegador Cloud */}
+      {/* Barra de Pestañas de Ventanas Abiertas */}
       {windows.length > 0 && (
-        <div className={`${tabsBarBg} flex items-center px-1 pt-1 gap-1 overflow-x-auto shrink-0 select-none`}>
+        <div className="bg-[#d2e2ec] border-b border-[#b0c4de] flex items-center px-2 pt-1 gap-1 overflow-x-auto shrink-0 font-[Tahoma,Arial,sans-serif]">
           {windows.map((win) => {
             const isActive = activeWindow && activeWindow.id === win.id;
             return (
               <div
                 key={win.id}
                 onClick={() => onWindowFocus(win.id)}
-                className={`group flex items-center gap-2 px-3 py-1.5 text-xs rounded-t cursor-pointer border-t-2 transition-all ${
+                className={`flex items-center gap-1.5 px-3 py-1 text-[11px] rounded-t-xs cursor-pointer border-t border-x transition-all ${
                   isActive
-                    ? themeMode === 'finix_fiori_3_dark'
-                      ? 'bg-[#151d28] text-white border-blue-400 font-semibold shadow-sm'
-                      : 'bg-[#fafbfc] text-slate-900 border-[#0055A5] font-semibold shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 border-transparent hover:bg-white/40 hover:text-slate-900'
+                    ? 'bg-white text-[#003366] font-bold border-[#b0c4de] shadow-xs'
+                    : 'bg-[#e2edf4] text-[#445566] border-transparent hover:bg-white/60'
                 }`}
                 title={win.title}
               >
-                <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? 'bg-blue-500' : 'bg-slate-400'}`} />
-                <span className="truncate max-w-[160px]">{win.title}</span>
+                <span className={`w-2 h-2 rounded-full ${isActive ? 'bg-[#0070d2]' : 'bg-slate-400'}`} />
+                <span className="truncate max-w-[170px]">{win.title}</span>
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     onWindowClose(win.id);
                   }}
-                  className="w-4 h-4 rounded hover:bg-red-500/20 hover:text-red-600 dark:hover:text-red-400 flex items-center justify-center text-[11px] text-slate-400 transition"
-                  title="Cerrar pestaña (×)"
+                  className="w-3.5 h-3.5 rounded hover:bg-red-500 hover:text-white flex items-center justify-center text-[10px] text-slate-500 transition cursor-pointer"
+                  title="Cerrar ventana (×)"
                 >
                   ×
                 </button>
@@ -106,39 +80,53 @@ export default function FinixWindowManager({
         </div>
       )}
 
-      {/* Contenedor Principal: La ventana activa ocupa el 100% a tamaño completo */}
-      <div className="relative flex-1 w-full h-full min-h-0 overflow-hidden flex flex-col">
+      {/* Contenedor Principal: La ventana MDI activa enmarcada y centrada */}
+      <div className="flex-1 w-full h-full min-h-0 overflow-hidden flex flex-col p-2 sm:p-3">
         {activeWindow ? (
-          <div className="w-full h-full flex flex-col overflow-hidden">
-            {/* Barra de Título: SOLO botón Cerrar (x), sin minimizar ni maximizar */}
-            <div
-              className={`flex items-center justify-between px-3 ${windowHeaderBg} text-white select-none shrink-0 h-8 shadow-sm`}
-            >
+          <div className="w-full h-full max-w-6xl mx-auto flex flex-col overflow-hidden bg-white border border-[#9aaab7] rounded-sm shadow-xl animate-in fade-in duration-150">
+            {/* Barra de Título Oficial de Ventana SAP B1 */}
+            <div className="bg-[#e8ecf0] border-b border-[#c2ceda] text-[#1e293b] flex items-center justify-between px-3 py-1 select-none shrink-0 h-7 font-[Tahoma,Arial,sans-serif]">
               <div className="flex items-center gap-2 truncate">
-                <span className="text-amber-400 text-xs">🐦‍🔥</span>
-                <span className="text-xs text-blue-100 font-bold truncate tracking-wide">
+                <span className="text-[#0055a5] text-xs font-bold">📄</span>
+                <span className="text-xs text-[#0a246a] font-bold truncate">
                   {activeWindow.title}
                 </span>
                 {activeWindow.moduleName && (
-                  <span className="text-[10px] text-blue-300/80 font-normal">
-                    · {activeWindow.moduleName}
+                  <span className="text-[10px] text-gray-500 font-normal">
+                    ({activeWindow.moduleName})
                   </span>
                 )}
               </div>
 
-              {/* Botón Único de Cierre (x) */}
-              <button
-                type="button"
-                onClick={() => onWindowClose(activeWindow.id)}
-                className="w-5 h-5 bg-[#dc2626] hover:bg-red-500 rounded-sm text-[12px] text-white font-extrabold flex items-center justify-center transition-all active:scale-95 shadow-sm"
-                title="Cerrar pestaña (×)"
-              >
-                ×
-              </button>
+              {/* Botones de Control de Ventana SAP B1: Minimizar, Maximizar, Cerrar */}
+              <div className="flex items-center gap-1">
+                <button
+                  type="button"
+                  className="w-4 h-4 bg-[#e0e8f0] hover:bg-[#c8d8e8] border border-[#a8b8c8] text-[#333] text-[9px] font-bold flex items-center justify-center rounded-xs transition active:scale-95 cursor-pointer"
+                  title="Minimizar ventana"
+                >
+                  _
+                </button>
+                <button
+                  type="button"
+                  className="w-4 h-4 bg-[#e0e8f0] hover:bg-[#c8d8e8] border border-[#a8b8c8] text-[#333] text-[9px] font-bold flex items-center justify-center rounded-xs transition active:scale-95 cursor-pointer"
+                  title="Maximizar ventana"
+                >
+                  □
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onWindowClose(activeWindow.id)}
+                  className="w-4 h-4 bg-[#dc2626] hover:bg-red-600 border border-red-800 text-white text-[11px] font-black flex items-center justify-center rounded-xs transition active:scale-95 cursor-pointer shadow-xs ml-1"
+                  title="Cerrar ventana (×)"
+                >
+                  ×
+                </button>
+              </div>
             </div>
 
-            {/* Contenido Funcional de la Pantalla con Scroll Interno Completo */}
-            <div className={`flex-1 min-h-0 overflow-auto ${windowContentBg}`}>
+            {/* Contenido Funcional con Scroll Interno Limpio */}
+            <div className="flex-1 min-h-0 overflow-y-auto bg-white p-2.5 sm:p-4">
               <FinixScreenRenderer
                 screenId={activeWindow.screenId}
                 screenName={activeWindow.title}
@@ -146,19 +134,26 @@ export default function FinixWindowManager({
             </div>
           </div>
         ) : (
-          /* Estado Vacío cuando no hay ventanas abiertas */
-          <div className="flex-1 flex flex-col items-center justify-center p-6 text-center select-none text-slate-500">
-            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/10 to-indigo-500/20 border border-blue-500/20 flex items-center justify-center mb-4 shadow-inner">
-              <span className="text-3xl">🐦‍🔥</span>
-            </div>
-            <h2 className="text-base font-bold text-slate-700 dark:text-slate-200 mb-1">
-              Escritorio de Finix ERP Cloud
-            </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mb-4">
-              Selecciona una transacción o módulo en el menú lateral izquierdo para abrir su pantalla de trabajo.
-            </p>
-            <div className="text-[11px] text-slate-400 bg-white/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 px-3 py-1.5 rounded shadow-sm">
-              💡 Cada pantalla se abre en pestañas superiores a tamaño completo para máxima visibilidad.
+          /* Estado Vacío: Lienzo Oficial de SAP Business One */
+          <div className="flex-1 flex flex-col items-center justify-center p-6 text-center select-none">
+            <div className="bg-white/70 backdrop-blur-xs border border-[#b8c9d4] rounded-sm p-6 shadow-md max-w-md text-left">
+              <div className="flex items-center justify-between border-b border-[#cbd5e1] pb-2 mb-3">
+                <span className="text-xs font-bold text-[#0a246a] tracking-wide">
+                  Información de conexión
+                </span>
+                <span className="text-[10px] font-bold px-2 py-0.5 bg-[#0055a5] text-white rounded">
+                  SAP Business One
+                </span>
+              </div>
+              <p className="text-[11px] text-gray-700 leading-relaxed mb-2">
+                Conectada aplicación para <strong>B1 Center S.A.S.</strong> (Matriz).
+              </p>
+              <p className="text-[10.5px] text-gray-500 mb-4">
+                Selecciona una transacción en el menú <strong>Módulos</strong> (a la izquierda) para abrir la ventana de trabajo correspondiente: Oferta de ventas, Orden de venta, Factura de deudores, etc.
+              </p>
+              <div className="bg-[#f0f7fa] border border-[#bae6fd] p-2 text-[10px] text-[#0369a1] rounded">
+                💡 <strong>Consejo SAP B1:</strong> Puedes usar <code>Ctrl+F</code> para buscar registros o <code>Ctrl+A</code> para crear un documento nuevo en cualquier momento.
+              </div>
             </div>
           </div>
         )}
