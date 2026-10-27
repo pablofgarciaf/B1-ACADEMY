@@ -3,6 +3,7 @@
 import React from 'react';
 import FinixScreenRenderer from '@/components/finix-screens/FinixScreenRenderer';
 import { FinixUIThemeContext } from '@/components/finix-screens/FinixControls';
+import ErrorBoundary from '@/components/common/ErrorBoundary';
 
 export interface Window {
   id: string;
@@ -130,14 +131,16 @@ export default function FinixWindowManager({
 
             {/* Contenido Funcional con Tema Fiori Moderno y Scroll Fluido */}
             <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50/40 p-2 sm:p-4">
-              <FinixUIThemeContext.Provider value="fiori">
-                <div className="finix-fiori-mode">
-                  <FinixScreenRenderer
-                    screenId={activeWindow.screenId}
-                    screenName={activeWindow.title}
-                  />
-                </div>
-              </FinixUIThemeContext.Provider>
+              <ErrorBoundary fallbackTitle={`Error al renderizar ${activeWindow.title} (${activeWindow.screenId})`}>
+                <FinixUIThemeContext.Provider value="fiori">
+                  <div className="finix-fiori-mode">
+                    <FinixScreenRenderer
+                      screenId={activeWindow.screenId}
+                      screenName={activeWindow.title}
+                    />
+                  </div>
+                </FinixUIThemeContext.Provider>
+              </ErrorBoundary>
             </div>
           </div>
         ) : (

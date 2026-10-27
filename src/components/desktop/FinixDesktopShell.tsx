@@ -142,6 +142,7 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
     '05_Produccion',
     '06_MRP',
     '08_Servicios',
+    '12_Herramientas',
     'ecuador',
     '09_Reportes',
     '10_Consultas',
@@ -517,6 +518,60 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
         break;
     }
   };
+
+  // Atajos de teclado oficiales de SAP Business One a nivel global
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // 1. Ctrl+F / Cmd+F -> Modo Buscar SAP B1 (Evita el buscador del navegador)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'f' || e.key === 'F')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-search-mode'));
+        handleToolAction('search');
+        return;
+      }
+
+      // 2. Ctrl+A / Cmd+A -> Modo Crear / Añadir SAP B1 (Evita seleccionar todo el texto en la página)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-add-mode'));
+        handleToolAction('add');
+        return;
+      }
+
+      // 3. Ctrl+S / Cmd+S -> Guardar / Contabilizar documento activo
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-save-document'));
+        showToast('Guardando documento activo (Ctrl+S)...', 'info');
+        return;
+      }
+
+      // 4. F5 -> Actualizar datos sin recargar la página del navegador
+      if (e.key === 'F5') {
+        e.preventDefault();
+        e.stopPropagation();
+        handleToolAction('refresh');
+        return;
+      }
+
+      // 5. F1 -> Ayuda de SAP B1 / Asistente FeNi
+      if (e.key === 'F1') {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('feni-abrir'));
+        showToast('Asistente FeNi activado (F1).', 'info');
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown, true);
+    };
+  }, [windows, nextZIndex]);
 
   return (
     <div className="w-full h-full flex-1 flex flex-col bg-[#e8ecf2] font-[Tahoma,Arial,sans-serif] text-xs overflow-hidden select-none">

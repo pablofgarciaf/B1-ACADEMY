@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useId } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { DocType, DocumentLine, PurchaseDocType, SalesDocType, DocumentInput } from '@/lib/firestore-types';
 import { purchaseTypes } from '@/lib/firestore-types';
@@ -148,6 +148,22 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
     setIndex(-1);
     setActiveTab('contenido');
   };
+
+  useEffect(() => {
+    const handleAddMode = () => {
+      reset();
+    };
+    const handleSearchMode = () => {
+      const partnerInput = document.querySelector('input[placeholder*="Código"]') as HTMLInputElement | null;
+      if (partnerInput) partnerInput.focus();
+    };
+    window.addEventListener('sap-add-mode', handleAddMode);
+    window.addEventListener('sap-search-mode', handleSearchMode);
+    return () => {
+      window.removeEventListener('sap-add-mode', handleAddMode);
+      window.removeEventListener('sap-search-mode', handleSearchMode);
+    };
+  }, []);
 
   const lineChange = (i: number, changes: Partial<DocumentLine>) => {
     setData(d => ({

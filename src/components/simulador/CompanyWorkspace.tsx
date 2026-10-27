@@ -10,11 +10,54 @@ import FinixDesktopShell from '@/components/desktop/FinixDesktopShell';
 import FioriDesktopShell from '@/components/desktop/FioriDesktopShell';
 import { Busy, buttonClass, inputClass, Screen } from '@/components/finix-screens/FinixControls';
 
+import ErrorBoundary from '@/components/common/ErrorBoundary';
+
 type Catalog = ComponentProps<typeof FinixDesktopShell>['catalog'];
 export function extendCompanyCatalog(catalog: Catalog): Catalog {
-  const modules = Object.fromEntries(Object.entries(catalog.modules).map(([key, module]) => [key, { ...module, screens: module.screens.map(screen => screen.id === 'SAL006' ? { ...screen, id: 'EC-CUSTOMERS' } : screen.id === 'PUR006' ? { ...screen, id: 'EC-VENDORS' } : screen) }]));
-  modules.ecuador = { key: 'ecuador', name: 'Ecuador · SRI, nómina y cuentas', icon: '🇪🇨', screens: [{ id: 'EC-SRI', name: 'Comprobantes electrónicos' }, { id: 'EC-RETENTION', name: 'Retenciones' }, { id: 'EC-TAX', name: 'Formularios 103 / 104 y ATS' }, { id: 'EC-EMPLOYEE', name: 'Ficha de empleado' }, { id: 'EC-PAYROLL', name: 'Nómina y rol de pagos' }, { id: 'EC-TAXCLOSE', name: 'Cierre tributario: utilidades, renta y anticipo' }, { id: 'EC-ISD', name: 'Pagos al exterior (ISD)' }, { id: 'EC-ACCOUNTS', name: 'Plan de cuentas Ecuador' }, { id: 'RPT-VENTAS', name: 'Reporte de ventas' }] };
-  return { modules, metadata: { total_modules: Object.keys(modules).length, total_screens: Object.values(modules).reduce((s, m) => s + m.screens.length, 0) } };
+  if (!catalog || !catalog.modules) {
+    return {
+      modules: {},
+      metadata: { total_modules: 0, total_screens: 0 },
+    };
+  }
+  const modules = Object.fromEntries(
+    Object.entries(catalog.modules).map(([key, module]) => [
+      key,
+      {
+        ...module,
+        screens: (module?.screens || []).map(screen =>
+          screen.id === 'SAL006'
+            ? { ...screen, id: 'EC-CUSTOMERS' }
+            : screen.id === 'PUR006'
+            ? { ...screen, id: 'EC-VENDORS' }
+            : screen
+        ),
+      },
+    ])
+  );
+  modules.ecuador = {
+    key: 'ecuador',
+    name: 'Ecuador · SRI, nómina y cuentas',
+    icon: '🇪🇨',
+    screens: [
+      { id: 'EC-SRI', name: 'Comprobantes electrónicos' },
+      { id: 'EC-RETENTION', name: 'Retenciones' },
+      { id: 'EC-TAX', name: 'Formularios 103 / 104 y ATS' },
+      { id: 'EC-EMPLOYEE', name: 'Ficha de empleado' },
+      { id: 'EC-PAYROLL', name: 'Nómina y rol de pagos' },
+      { id: 'EC-TAXCLOSE', name: 'Cierre tributario: utilidades, renta y anticipo' },
+      { id: 'EC-ISD', name: 'Pagos al exterior (ISD)' },
+      { id: 'EC-ACCOUNTS', name: 'Plan de cuentas Ecuador' },
+      { id: 'RPT-VENTAS', name: 'Reporte de ventas' },
+    ],
+  };
+  return {
+    modules,
+    metadata: {
+      total_modules: Object.keys(modules).length,
+      total_screens: Object.values(modules).reduce((s, m) => s + (m?.screens?.length || 0), 0),
+    },
+  };
 }
 export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog; onExit: () => void }) {
   const c = useCompanyController();
@@ -75,16 +118,35 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
 
   const empActual = slot === 'privado' ? EMPRESA_PRIVADA : LISTA_SIETE_EMPRESAS.find(e => e.id === slot) || LISTA_SIETE_EMPRESAS[0];
 
+  // Si la sociedad ya está inicializada, renderizar a pantalla completa limpia (sin doble cabecera)
   if (viewMode === 'fiori' && c.data.profile) {
     return (
       <CompanyContext.Provider value={c}>
-        <div className="h-screen w-screen overflow-hidden flex flex-col">
-          <FioriDesktopShell
-            catalog={extendCompanyCatalog(catalog)}
-            onExit={onExit}
-            onSwitchToClassic={() => handleSwitchView('classic')}
-          />
-        </div>
+        <ErrorBoundary fallbackTitle="Error al renderizar SAP Fiori Launchpad">
+          <div className="h-screen w-screen overflow-hidden flex flex-col">
+            <FioriDesktopShell
+              catalog={extendCompanyCatalog(catalog)}
+              onExit={onExit}
+              onSwitchToClassic={() => handleSwitchView('classic')}
+            />
+          </div>
+        </ErrorBoundary>
+      </CompanyContext.Provider>
+    );
+  }
+
+  if (viewMode === 'classic' && c.data.profile) {
+    return (
+      <CompanyContext.Provider value={c}>
+        <ErrorBoundary fallbackTitle="Error al renderizar Finix Desktop Shell (SAP B1)">
+          <div className="h-screen w-screen overflow-hidden flex flex-col">
+            <FinixDesktopShell
+              catalog={extendCompanyCatalog(catalog)}
+              onExit={onExit}
+              onSwitchToFiori={() => handleSwitchView('fiori')}
+            />
+          </div>
+        </ErrorBoundary>
       </CompanyContext.Provider>
     );
   }

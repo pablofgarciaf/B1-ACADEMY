@@ -32,6 +32,8 @@ const SAP_MODULE_ICONS: Record<string, string> = {
   '09_Reportes': '📊',
   '10_Consultas': '🗄️',
   '11_Admin': '📁',
+  '12_Herramientas': '🛠️',
+  '12_Oportunidades': '🎯',
   '13_CRM': '👥',
   'ecuador': '🇪🇨',
   'default': '📁',

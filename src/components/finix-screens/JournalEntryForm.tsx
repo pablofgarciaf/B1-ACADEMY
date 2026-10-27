@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { JournalLine } from '@/lib/firestore-types';
 import { round, today, usd } from '@/lib/company-calculations';
@@ -31,6 +31,12 @@ export default function JournalEntryForm(_props: { screenId?: string; screenName
   }, [c.data.chartOfAccounts]);
   const reset = () => { setIndex(-1); setDate(today()); setMemo(''); setReference(''); setLines([emptyLine(), emptyLine()]); };
   const change = (i: number, patch: Partial<JournalLine>) => setLines(ls => ls.map((l, j) => i === j ? { ...l, ...patch } : l));
+
+  useEffect(() => {
+    const onSapAdd = () => reset();
+    window.addEventListener('sap-add-mode', onSapAdd);
+    return () => window.removeEventListener('sap-add-mode', onSapAdd);
+  }, []);
   return <Screen title="Asiento contable">
     <Navigation count={c.data.journalEntries.length} index={index} onNew={reset} onSelect={i => {
       const e = c.data.journalEntries[i];

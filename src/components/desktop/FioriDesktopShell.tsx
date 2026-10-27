@@ -188,6 +188,60 @@ export default function FioriDesktopShell({
     return () => window.removeEventListener('finix-company-changed', onSlotChange);
   }, []);
 
+  // Atajos globales oficiales SAP B1 en Fiori
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // 1. Ctrl+F / Cmd+F -> Modo Buscar SAP B1
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'f' || e.key === 'F')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-search-mode'));
+        const searchInput = document.querySelector('input[placeholder*="Buscar"]') as HTMLInputElement | null;
+        if (searchInput) searchInput.focus();
+        return;
+      }
+
+      // 2. Ctrl+A / Cmd+A -> Modo Crear / Añadir SAP B1
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-add-mode'));
+        // Si no hay pantalla activa, abrir Pedido de Venta
+        if (!activeScreen) {
+          setActiveScreen({ id: 'SAL002', name: 'Pedido de Venta', module: '02_Ventas' });
+        }
+        return;
+      }
+
+      // 3. Ctrl+S / Cmd+S -> Guardar / Contabilizar documento
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.dispatchEvent(new CustomEvent('sap-save-document'));
+        return;
+      }
+
+      // 4. F5 -> Actualizar datos
+      if (e.key === 'F5') {
+        e.preventDefault();
+        e.stopPropagation();
+        void company.refresh();
+        return;
+      }
+
+      // 5. F1 -> FeNi AI
+      if (e.key === 'F1') {
+        e.preventDefault();
+        e.stopPropagation();
+        setShowAdvisor(true);
+        return;
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [activeScreen, company]);
+
   const companies = userProfile?.privateAccountingEnabled ? [...LISTA_SIETE_EMPRESAS, EMPRESA_PRIVADA] : LISTA_SIETE_EMPRESAS;
   const isPrivate = activeSlot === 'privado';
 
