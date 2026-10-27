@@ -7,9 +7,14 @@ import { Screen, Field, Table, inputClass, buttonClass } from './FinixControls';
 const cleanZero = (val: number): number => (Math.abs(val) < 0.005 ? 0 : val);
 const formatMoney = (val: number): string => usd(cleanZero(val));
 
-export default function FinancialStatementsScreen() {
+export interface FinancialStatementsProps {
+  initialTab?: number;
+}
+
+export default function FinancialStatementsScreen(props: FinancialStatementsProps) {
+  const { initialTab = 0 } = props || {};
   const c = useCompany();
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(initialTab);
   const [from, setFrom] = useState(today().slice(0, 4) + '-01-01');
   const [to, setTo] = useState(today());
 
