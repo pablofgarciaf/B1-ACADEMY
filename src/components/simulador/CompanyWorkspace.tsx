@@ -144,6 +144,9 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
               catalog={extendCompanyCatalog(catalog)}
               onExit={onExit}
               onSwitchToFiori={() => handleSwitchView('fiori')}
+              activeSlot={slot}
+              onSelectSlot={elegir}
+              availableSlots={companies}
             />
           </div>
         </ErrorBoundary>
@@ -271,6 +274,9 @@ export default function CompanyWorkspace({ catalog, onExit }: { catalog: Catalog
           catalog={extendCompanyCatalog(catalog)}
           onExit={onExit}
           onSwitchToFiori={() => handleSwitchView('fiori')}
+          activeSlot={slot}
+          onSelectSlot={elegir}
+          availableSlots={companies}
         />
       </div>
     )}

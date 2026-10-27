@@ -73,16 +73,26 @@ interface Module {
   screens: Array<{ id: string; name: string }>;
 }
 
-interface FinixDesktopShellProps {
+export interface FinixDesktopShellProps {
   catalog: {
     modules: Record<string, Module>;
     metadata: { total_screens: number; total_modules: number };
   };
   onExit?: () => void;
   onSwitchToFiori?: () => void;
+  activeSlot?: string;
+  onSelectSlot?: (slot: any) => void;
+  availableSlots?: Array<{ id: string; name: string; shortName: string; icon: string }>;
 }
 
-export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: FinixDesktopShellProps) {
+export default function FinixDesktopShell({
+  catalog,
+  onExit,
+  onSwitchToFiori,
+  activeSlot: slotProp,
+  onSelectSlot,
+  availableSlots,
+}: FinixDesktopShellProps) {
   const { userProfile, currentUser } = useAuth();
   const company = useCompany();
   const [windows, setWindows] = useState<Window[]>([]);
@@ -611,6 +621,25 @@ export default function FinixDesktopShell({ catalog, onExit, onSwitchToFiori }: 
               </button>
             )}
           </div>
+
+          {/* Selector de Sociedad NATIVO (1 a 7) */}
+          {availableSlots && availableSlots.length > 0 && onSelectSlot && (
+            <div className="flex items-center gap-1.5 bg-[#081a4d]/90 border border-emerald-400/40 px-2.5 py-1 rounded shadow-inner">
+              <span className="text-emerald-400 font-bold text-[11px]">🏢 Sociedad:</span>
+              <select
+                aria-label="Seleccionar sociedad de práctica"
+                value={slotProp ?? activeSlot}
+                onChange={(e) => onSelectSlot(e.target.value)}
+                className="bg-[#0e2c7a] text-white font-bold text-[11px] rounded border border-emerald-400/40 px-2 py-0.5 outline-none cursor-pointer focus:ring-1 focus:ring-emerald-400 max-w-[180px] sm:max-w-[220px]"
+              >
+                {availableSlots.map((emp) => (
+                  <option key={emp.id} value={emp.id}>
+                    {emp.icon} {emp.shortName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           <div className="flex items-center gap-1.5 bg-[#081a4d]/80 border border-blue-400/30 px-2.5 py-1 rounded shadow-inner">
             <Shield className="w-3.5 h-3.5 text-amber-400" aria-hidden="true" />
