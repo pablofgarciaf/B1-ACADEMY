@@ -533,10 +533,29 @@ export default function ManualViewer({
 
   const alternarNarracion = togglePlayPause;
 
-  // Atajos de teclado multimedia para el visor de diapositivas tipo video
+  // Atajos de teclado multimedia para el visor de diapositivas y entorno del simulador
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
+      if (e.key === 'Escape') {
+        if (isSimulatorModalOpen) {
+          e.preventDefault();
+          setIsSimulatorModalOpen(false);
+          return;
+        }
+      }
+      if (e.ctrlKey || e.metaKey) {
+        const k = e.key.toLowerCase();
+        if (['f', 'a', 's', 'd', 'n'].includes(k) && (activeTab === 'simulador' || isSimulatorModalOpen)) {
+          e.preventDefault();
+          if (k === 'f') window.dispatchEvent(new CustomEvent('sap-search-mode', { detail: { timestamp: Date.now() } }));
+          if (k === 'a') window.dispatchEvent(new CustomEvent('sap-add-mode', { detail: { timestamp: Date.now() } }));
+          if (k === 's') window.dispatchEvent(new CustomEvent('sap-save-document', { detail: { timestamp: Date.now() } }));
+          if (k === 'd') window.dispatchEvent(new CustomEvent('sap-delete-row', { detail: { timestamp: Date.now() } }));
+          if (k === 'n') window.dispatchEvent(new CustomEvent('sap-new-document', { detail: { timestamp: Date.now() } }));
+          return;
+        }
+      }
       if (e.key === ' ' || e.code === 'Space') {
         e.preventDefault();
         togglePlayPause();
@@ -552,7 +571,7 @@ export default function ManualViewer({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [togglePlayPause, nextSlide, prevSlide, avanzar10s, retroceder10s, toggleMute]);
+  }, [togglePlayPause, nextSlide, prevSlide, avanzar10s, retroceder10s, toggleMute, isSimulatorModalOpen, activeTab]);
 
   const slideTexts = useMemo(() => {
     if (!content) return [];
