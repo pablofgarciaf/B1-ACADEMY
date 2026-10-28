@@ -46,6 +46,8 @@ const screens:Record<string,ComponentType>={
  print:dynamic(()=>import('@/components/finix-screens/PrintLayoutScreen'),{loading}),
  approvals:dynamic(()=>import('@/components/finix-screens/ApprovalsScreen'),{loading}),
  udo:dynamic(()=>import('@/components/finix-screens/UDOScreen'),{loading}),
+ revaluation:dynamic(()=>import('@/components/finix-screens/StockRevaluationScreen'),{loading}),
+ returns:dynamic(()=>import('@/components/finix-screens/PurchaseReturnScreen'),{loading}),
 };
 const Document=dynamic(()=>import('@/components/finix-screens/SalesOrderForm'),{loading});
 const Groups=dynamic(()=>import('@/components/finix-screens/GruposScreen'),{loading});
