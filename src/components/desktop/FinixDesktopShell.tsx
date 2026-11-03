@@ -922,12 +922,16 @@ export default function FinixDesktopShell({
       <FinixMenuBar onActionClick={handleMenuAction} />
 
       {/* Barra de Herramientas */}
-      <FinixToolBar onActionClick={handleToolAction} />
+      <FinixToolBar onActionClick={handleToolAction} activeRole={activeRole} />
 
       {/* Área Central: Menú de Módulos (Árbol) y Escritorio de Ventanas */}
       <div className="flex-1 flex overflow-hidden">
         {/* Árbol Lateral de Módulos Finix */}
-        <FinixModulesTree modules={modules} onScreenSelect={createWindow} />
+        <FinixModulesTree
+          modules={modules}
+          onScreenSelect={createWindow}
+          allowedModuleKeys={currentRoleDef.allowedModuleKeys}
+        />
 
         {/* Gestor de Ventanas Flotantes ocupando la sección derecha */}
         <div className="flex-1 min-w-0 h-full relative overflow-hidden flex flex-col bg-gradient-to-br from-[#cde7f0] via-[#e2f2f7] to-[#d4ebf3]">

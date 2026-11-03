@@ -27,14 +27,64 @@ import {
   HelpCircle,
 } from 'lucide-react';
 
+import type { FinixRole } from './FinixDesktopShell';
+
 interface FinixToolBarProps {
   onActionClick?: (action: string) => void;
   onSearch?: (query: string) => void;
   onSearchByModel?: () => void;
+  /** Rol activo para filtrar los botones visibles */
+  activeRole?: FinixRole;
 }
 
-export default function FinixToolBar({ onActionClick, onSearch, onSearchByModel }: FinixToolBarProps) {
+/**
+ * Botones visibles por rol. 'super' o ausencia = todos.
+ * Los botones no listados se ocultan completamente.
+ */
+const ROLE_BUTTONS: Record<string, string[]> = {
+  ventas: [
+    'preview', 'print', 'email', 'sms', 'fax', 'excel', 'word', 'pdf', 'lock',
+    'search', 'add',
+    'first', 'previous', 'next', 'last',
+    'refresh', 'filter', 'sort',
+    'base_document', 'target_document', 'relationship_map',
+    'help',
+  ],
+  compras: [
+    'print', 'email', 'excel', 'pdf', 'lock',
+    'search', 'add',
+    'first', 'previous', 'next', 'last',
+    'refresh', 'filter', 'sort',
+    'base_document', 'target_document', 'relationship_map',
+    'help',
+  ],
+  contabilidad: [
+    'preview', 'print', 'email', 'excel', 'word', 'pdf', 'lock',
+    'search', 'add',
+    'first', 'previous', 'next', 'last',
+    'refresh', 'filter', 'sort',
+    'base_document', 'target_document', 'relationship_map',
+    'journal_preview', 'layout_designer', 'settings',
+    'help',
+  ],
+  almacen: [
+    'print', 'excel', 'pdf',
+    'search', 'add',
+    'first', 'previous', 'next', 'last',
+    'refresh', 'filter', 'sort',
+    'help',
+  ],
+};
+
+export default function FinixToolBar({ onActionClick, onSearch, onSearchByModel, activeRole = 'super' }: FinixToolBarProps) {
   const [searchQuery, setSearchQuery] = useState('');
+
+  /** Devuelve true si el botón debe mostrarse para el rol activo */
+  const show = (action: string): boolean => {
+    if (activeRole === 'super') return true;
+    const allowed = ROLE_BUTTONS[activeRole];
+    return allowed ? allowed.includes(action) : true;
+  };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,270 +97,249 @@ export default function FinixToolBar({ onActionClick, onSearch, onSearchByModel 
       {/* Grupo Izquierdo de Iconos SAP B1 (Idéntico a Captura Oficial GenPyme Imagen 4) */}
       <div className="flex items-center gap-0.5 overflow-x-auto">
         {/* 1. Vista preliminar */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('preview')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Vista preliminar del documento"
-        >
-          <Eye size={15} className="text-[#2b579a]" />
-        </button>
+        {show('preview') && (
+          <button type="button" onClick={() => onActionClick?.('preview')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Vista preliminar del documento">
+            <Eye size={15} className="text-[#2b579a]" />
+          </button>
+        )}
 
         {/* 2. Imprimir */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('print')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Imprimir documento (Ctrl+P)"
-        >
-          <Printer size={15} className="text-[#333]" />
-        </button>
+        {show('print') && (
+          <button type="button" onClick={() => onActionClick?.('print')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Imprimir documento (Ctrl+P)">
+            <Printer size={15} className="text-[#333]" />
+          </button>
+        )}
 
         {/* 3. Correo electrónico */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('email')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Enviar por correo electrónico"
-        >
-          <Mail size={15} className="text-[#555]" />
-        </button>
+        {show('email') && (
+          <button type="button" onClick={() => onActionClick?.('email')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Enviar por correo electrónico">
+            <Mail size={15} className="text-[#555]" />
+          </button>
+        )}
 
         {/* 4. SMS */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('sms')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Enviar SMS"
-        >
-          <MessageSquare size={15} className="text-[#0284c7]" />
-        </button>
+        {show('sms') && (
+          <button type="button" onClick={() => onActionClick?.('sms')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Enviar SMS">
+            <MessageSquare size={15} className="text-[#0284c7]" />
+          </button>
+        )}
 
         {/* 5. Fax */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('fax')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Enviar por Fax"
-        >
-          <Printer size={15} className="text-[#64748b]" />
-        </button>
+        {show('fax') && (
+          <button type="button" onClick={() => onActionClick?.('fax')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Enviar por Fax">
+            <Printer size={15} className="text-[#64748b]" />
+          </button>
+        )}
 
         {/* 6. MS Excel */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('excel')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Exportar a MS Excel"
-        >
-          <FileSpreadsheet size={15} className="text-[#107c41]" />
-        </button>
+        {show('excel') && (
+          <button type="button" onClick={() => onActionClick?.('excel')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Exportar a MS Excel">
+            <FileSpreadsheet size={15} className="text-[#107c41]" />
+          </button>
+        )}
 
         {/* 7. MS Word */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('word')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Exportar a MS Word"
-        >
-          <FileText size={15} className="text-[#185abd]" />
-        </button>
+        {show('word') && (
+          <button type="button" onClick={() => onActionClick?.('word')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Exportar a MS Word">
+            <FileText size={15} className="text-[#185abd]" />
+          </button>
+        )}
 
         {/* 8. PDF */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('pdf')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Exportar a PDF"
-        >
-          <FileText size={15} className="text-[#d9381e]" />
-        </button>
+        {show('pdf') && (
+          <button type="button" onClick={() => onActionClick?.('pdf')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Exportar a PDF">
+            <FileText size={15} className="text-[#d9381e]" />
+          </button>
+        )}
 
         {/* 9. Bloquear pantalla */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('lock')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Bloquear pantalla"
-        >
-          <Lock size={15} className="text-[#777]" />
-        </button>
+        {show('lock') && (
+          <button type="button" onClick={() => onActionClick?.('lock')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Bloquear pantalla">
+            <Lock size={15} className="text-[#777]" />
+          </button>
+        )}
 
-        {/* Separador */}
+        {/* Separador grupo exportación */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
-        {/* 10. Modo Buscar (Prismáticos amarillos) */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('search')}
-          className="p-1 hover:bg-[#fff9d9] hover:border-[#d49b00] border border-transparent rounded-xs transition flex items-center gap-0.5 text-[#333]"
-          title="Modo Buscar (Ctrl+F) — Buscar documentos o socios de negocio"
-        >
-          <div className="w-4 h-4 rounded-xs bg-[#ffe885] border border-[#d49b00] flex items-center justify-center">
-            <Search size={11} className="text-[#7a5200] stroke-[2.5]" />
-          </div>
-        </button>
+        {/* 10. Modo Buscar */}
+        {show('search') && (
+          <button type="button" onClick={() => onActionClick?.('search')}
+            className="p-1 hover:bg-[#fff9d9] hover:border-[#d49b00] border border-transparent rounded-xs transition flex items-center gap-0.5 text-[#333]"
+            title="Modo Buscar (Ctrl+F) — Buscar documentos o socios de negocio">
+            <div className="w-4 h-4 rounded-xs bg-[#ffe885] border border-[#d49b00] flex items-center justify-center">
+              <Search size={11} className="text-[#7a5200] stroke-[2.5]" />
+            </div>
+          </button>
+        )}
 
-        {/* 11. Modo Crear / Añadir (Hoja con asterisco azul) */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('add')}
-          className="p-1 hover:bg-[#e6f4ea] hover:border-[#34a853] border border-transparent rounded-xs transition flex items-center gap-0.5 text-[#333]"
-          title="Modo Crear (Ctrl+A) — Añadir nuevo documento"
-        >
-          <div className="w-4 h-4 rounded-xs bg-white border border-[#4285f4] flex items-center justify-center">
-            <Plus size={12} className="text-[#1a73e8] stroke-[3]" />
-          </div>
-        </button>
+        {/* 11. Modo Crear */}
+        {show('add') && (
+          <button type="button" onClick={() => onActionClick?.('add')}
+            className="p-1 hover:bg-[#e6f4ea] hover:border-[#34a853] border border-transparent rounded-xs transition flex items-center gap-0.5 text-[#333]"
+            title="Modo Crear (Ctrl+A) — Añadir nuevo documento">
+            <div className="w-4 h-4 rounded-xs bg-white border border-[#4285f4] flex items-center justify-center">
+              <Plus size={12} className="text-[#1a73e8] stroke-[3]" />
+            </div>
+          </button>
+        )}
 
-        {/* Separador */}
+        {/* Separador grupo acciones */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
         {/* 12-15. Navegación de registros */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('first')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Primer registro de datos (|◀)"
-        >
-          <ChevronsLeft size={15} className="text-[#444]" />
-        </button>
-        <button
-          type="button"
-          onClick={() => onActionClick?.('previous')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Registro anterior (◀)"
-        >
-          <ChevronLeft size={15} className="text-[#444]" />
-        </button>
-        <button
-          type="button"
-          onClick={() => onActionClick?.('next')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Registro siguiente (▶)"
-        >
-          <ChevronRight size={15} className="text-[#444]" />
-        </button>
-        <button
-          type="button"
-          onClick={() => onActionClick?.('last')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Último registro de datos (▶|)"
-        >
-          <ChevronsRight size={15} className="text-[#444]" />
-        </button>
+        {show('first') && (
+          <button type="button" onClick={() => onActionClick?.('first')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Primer registro de datos (|◀)">
+            <ChevronsLeft size={15} className="text-[#444]" />
+          </button>
+        )}
+        {show('previous') && (
+          <button type="button" onClick={() => onActionClick?.('previous')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Registro anterior (◀)">
+            <ChevronLeft size={15} className="text-[#444]" />
+          </button>
+        )}
+        {show('next') && (
+          <button type="button" onClick={() => onActionClick?.('next')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Registro siguiente (▶)">
+            <ChevronRight size={15} className="text-[#444]" />
+          </button>
+        )}
+        {show('last') && (
+          <button type="button" onClick={() => onActionClick?.('last')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Último registro de datos (▶|)">
+            <ChevronsRight size={15} className="text-[#444]" />
+          </button>
+        )}
 
-        {/* Separador */}
+        {/* Separador navegación */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
-        {/* 16. Actualizar / Refrescar */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('refresh')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Actualizar / Refrescar datos (F5)"
-        >
-          <RefreshCw size={14} className="text-[#0284c7]" />
-        </button>
+        {/* 16. Refrescar */}
+        {show('refresh') && (
+          <button type="button" onClick={() => onActionClick?.('refresh')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Actualizar / Refrescar datos (F5)">
+            <RefreshCw size={14} className="text-[#0284c7]" />
+          </button>
+        )}
 
-        {/* 17. Filtrar tabla */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('filter')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Filtrar tabla"
-        >
-          <Filter size={14} className="text-[#555]" />
-        </button>
+        {/* 17. Filtrar */}
+        {show('filter') && (
+          <button type="button" onClick={() => onActionClick?.('filter')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Filtrar tabla">
+            <Filter size={14} className="text-[#555]" />
+          </button>
+        )}
 
-        {/* 18. Clasificar tabla (Ordenar A-Z) */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('sort')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Clasificar tabla / Ordenar"
-        >
-          <ArrowUpDown size={14} className="text-[#475569]" />
-        </button>
+        {/* 18. Ordenar */}
+        {show('sort') && (
+          <button type="button" onClick={() => onActionClick?.('sort')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Clasificar tabla / Ordenar">
+            <ArrowUpDown size={14} className="text-[#475569]" />
+          </button>
+        )}
 
-        {/* Separador */}
-        <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
+        {/* Separador docs relacionados */}
+        {(show('base_document') || show('target_document') || show('relationship_map') || show('journal_preview')) && (
+          <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
+        )}
 
-        {/* 19. Documento base (Flecha naranja arriba) */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('base_document')}
-          className="p-1 hover:bg-[#fff7ed] hover:border-[#f97316] border border-transparent rounded-xs transition text-[#333]"
-          title="Documento base"
-        >
-          <ArrowUpRight size={15} className="text-[#ea580c] stroke-[2.5]" />
-        </button>
+        {/* 19. Documento base */}
+        {show('base_document') && (
+          <button type="button" onClick={() => onActionClick?.('base_document')}
+            className="p-1 hover:bg-[#fff7ed] hover:border-[#f97316] border border-transparent rounded-xs transition text-[#333]"
+            title="Documento base">
+            <ArrowUpRight size={15} className="text-[#ea580c] stroke-[2.5]" />
+          </button>
+        )}
 
-        {/* 20. Documento de destino (Flecha naranja abajo) */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('target_document')}
-          className="p-1 hover:bg-[#fff7ed] hover:border-[#f97316] border border-transparent rounded-xs transition text-[#333]"
-          title="Documento de destino"
-        >
-          <ArrowDownRight size={15} className="text-[#ea580c] stroke-[2.5]" />
-        </button>
+        {/* 20. Documento destino */}
+        {show('target_document') && (
+          <button type="button" onClick={() => onActionClick?.('target_document')}
+            className="p-1 hover:bg-[#fff7ed] hover:border-[#f97316] border border-transparent rounded-xs transition text-[#333]"
+            title="Documento de destino">
+            <ArrowDownRight size={15} className="text-[#ea580c] stroke-[2.5]" />
+          </button>
+        )}
 
         {/* 21. Mapa de relaciones */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('relationship_map')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Mapa de relaciones del documento"
-        >
-          <Network size={14} className="text-[#0284c7]" />
-        </button>
+        {show('relationship_map') && (
+          <button type="button" onClick={() => onActionClick?.('relationship_map')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Mapa de relaciones del documento">
+            <Network size={14} className="text-[#0284c7]" />
+          </button>
+        )}
 
-        {/* 22. Asiento contable preliminar */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('journal_preview')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Previsualizar asiento contable preliminar"
-        >
-          <Scale size={14} className="text-[#7c3aed]" />
-        </button>
+        {/* 22. Asiento contable (solo contabilidad/super) */}
+        {show('journal_preview') && (
+          <button type="button" onClick={() => onActionClick?.('journal_preview')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Previsualizar asiento contable preliminar">
+            <Scale size={14} className="text-[#7c3aed]" />
+          </button>
+        )}
 
-        {/* Separador */}
-        <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
+        {/* Separador configuración */}
+        {(show('layout_designer') || show('settings')) && (
+          <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
+        )}
 
         {/* 23. Diseñador de layout */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('layout_designer')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Diseñador de Layout / Plantillas de impresión"
-        >
-          <LayoutTemplate size={14} className="text-[#0284c7]" />
-        </button>
+        {show('layout_designer') && (
+          <button type="button" onClick={() => onActionClick?.('layout_designer')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Diseñador de Layout / Plantillas de impresión">
+            <LayoutTemplate size={14} className="text-[#0284c7]" />
+          </button>
+        )}
 
-        {/* 24. Parametrizaciones de Formulario */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('settings')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition flex items-center gap-1 text-[#333]"
-          title="Parametrizaciones de formulario (activar/ocultar columnas)"
-        >
-          <Settings size={14} className="text-[#d97706]" />
-        </button>
+        {/* 24. Parametrizaciones */}
+        {show('settings') && (
+          <button type="button" onClick={() => onActionClick?.('settings')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition flex items-center gap-1 text-[#333]"
+            title="Parametrizaciones de formulario (activar/ocultar columnas)">
+            <Settings size={14} className="text-[#d97706]" />
+          </button>
+        )}
 
-        {/* Separador */}
+        {/* Separador ayuda */}
         <div className="w-[1px] h-4 bg-[#b8b8b8] mx-1" />
 
         {/* 25. Ayuda contextual */}
-        <button
-          type="button"
-          onClick={() => onActionClick?.('help')}
-          className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
-          title="Ayuda de SAP Business One (F1)"
-        >
-          <HelpCircle size={14} className="text-[#0284c7]" />
-        </button>
+        {show('help') && (
+          <button type="button" onClick={() => onActionClick?.('help')}
+            className="p-1 hover:bg-[#e0e8f0] hover:border-[#70a0d0] border border-transparent rounded-xs transition text-[#333]"
+            title="Ayuda de SAP Business One (F1)">
+            <HelpCircle size={14} className="text-[#0284c7]" />
+          </button>
+        )}
       </div>
 
       {/* Cuadro de Búsqueda Rápida de Documentos (Idéntico a Imagen 4) */}
