@@ -45,9 +45,8 @@ export default function FinixModulesTree({ modules, onScreenSelect, allowedModul
   const isAllAccess = allowedModuleKeys.includes('*');
   const isModuleAllowed = (key: string) => isAllAccess || allowedModuleKeys.includes(key);
   // Por defecto, abrimos Ventas, Compras y Bancos
-  const [expandedModules, setExpandedModules] = useState<Set<string>>(
-    new Set(['02_Ventas', '03_Compras', '07_Bancos'])
-  );
+  // Sin módulos expandidos por defecto — el usuario elige qué abrir
+  const [expandedModules, setExpandedModules] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'modulos' | 'arrastrar'>('modulos');
   const [searchTerm, setSearchTerm] = useState('');
 
