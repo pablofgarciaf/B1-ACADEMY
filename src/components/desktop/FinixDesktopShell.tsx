@@ -1082,8 +1082,8 @@ export default function FinixDesktopShell({
       {/* Modal 1: Bloqueo de Aplicación SAP Business One */}
       {isLocked && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 backdrop-blur-md p-4 animate-in fade-in duration-200 select-none">
-          <div className="w-full max-w-sm bg-[#ECE9D8] border-2 border-[#0055A5] shadow-2xl rounded-xs p-5 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
-            <div className="flex items-center gap-3 pb-3 mb-3 border-b border-[#808080]">
+          <div className="w-full max-w-sm bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-5 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center gap-3 pb-3 mb-3 border-b-2 border-[#0055A5]">
               <div className="w-10 h-10 rounded-full bg-[#0055A5] flex items-center justify-center text-white shadow">
                 <Lock className="w-5 h-5 text-amber-300" />
               </div>
@@ -1095,7 +1095,7 @@ export default function FinixDesktopShell({
             <p className="text-[11px] text-gray-700 mb-3 leading-relaxed">
               La sesión de trabajo ha sido bloqueada. Ingrese su clave de usuario para continuar en <strong>{companyTitle}</strong>.
             </p>
-            <div className="space-y-2 mb-4 bg-white p-3 border border-[#808080] rounded-xs">
+            <div className="space-y-2 mb-4 bg-[#f4f8ff] p-3 border border-[#dde6f0] rounded-sm">
               <div>
                 <span className="text-[10px] text-gray-500 font-semibold block mb-0.5">Usuario:</span>
                 <span className="font-bold text-[#0055A5] text-xs">manager (Superusuario)</span>
@@ -1115,7 +1115,7 @@ export default function FinixDesktopShell({
                     }
                   }}
                   placeholder="Ingrese cualquier clave o pulse Enter..."
-                  className="w-full px-2 py-1 text-xs border border-[#808080] rounded-xs bg-[#fffde7] focus:outline-none focus:border-[#0055A5]"
+                  className="w-full px-2 py-1 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:border-[#0055A5]"
                 />
               </div>
             </div>
@@ -1139,22 +1139,22 @@ export default function FinixDesktopShell({
       {/* Modal 2: Enviar por Correo Electrónico */}
       {showEmailModal && (
         <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-lg bg-[#ECE9D8] border border-[#0055A5] shadow-2xl rounded-xs p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
-            <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#a0a0a0]">
+          <div className="w-full max-w-lg bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-[#0055A5]">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#0055A5]" />
                 <h2 className="text-xs font-bold text-[#002b5c]">Enviar Mensaje / Correo Electrónico — SAP Business One</h2>
               </div>
               <button type="button" onClick={() => setShowEmailModal(false)} className="hover:bg-red-500 hover:text-white px-1.5 py-0.5 rounded-xs">✕</button>
             </div>
-            <div className="space-y-2.5 bg-white p-3 border border-[#808080] rounded-xs mb-3">
+            <div className="space-y-2.5 bg-[#f4f8ff] p-3 border border-[#dde6f0] rounded-sm mb-3">
               <div className="grid grid-cols-4 items-center gap-2">
                 <label className="text-[11px] font-semibold text-gray-700">Para:</label>
                 <input
                   type="email"
                   value={emailForm.to}
                   onChange={(e) => setEmailForm(prev => ({ ...prev, to: e.target.value }))}
-                  className="col-span-3 px-2 py-0.5 text-xs border border-[#808080] rounded-xs bg-[#fffde7] focus:outline-none"
+                  className="col-span-3 px-2 py-0.5 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5]"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-2">
@@ -1163,7 +1163,7 @@ export default function FinixDesktopShell({
                   type="text"
                   value={emailForm.subject}
                   onChange={(e) => setEmailForm(prev => ({ ...prev, subject: e.target.value }))}
-                  className="col-span-3 px-2 py-0.5 text-xs border border-[#808080] rounded-xs bg-white focus:outline-none"
+                  className="col-span-3 px-2 py-0.5 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]/20"
                 />
               </div>
               <div className="grid grid-cols-4 items-center gap-2">
@@ -1171,7 +1171,7 @@ export default function FinixDesktopShell({
                 <select
                   value={emailForm.format}
                   onChange={(e) => setEmailForm(prev => ({ ...prev, format: e.target.value }))}
-                  className="col-span-3 px-2 py-0.5 text-xs border border-[#808080] rounded-xs bg-white focus:outline-none"
+                  className="col-span-3 px-2 py-0.5 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]/20"
                 >
                   <option value="PDF">Documento Oficial en PDF (Crystal Reports Layout)</option>
                   <option value="XML">Factura Electrónica XML (Comprobante SRI Ecuador)</option>
@@ -1184,7 +1184,7 @@ export default function FinixDesktopShell({
                   rows={4}
                   value={emailForm.body}
                   onChange={(e) => setEmailForm(prev => ({ ...prev, body: e.target.value }))}
-                  className="w-full px-2 py-1 text-xs border border-[#808080] rounded-xs bg-white focus:outline-none font-sans"
+                  className="w-full px-2 py-1 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]/20 font-sans"
                 />
               </div>
             </div>
@@ -1195,14 +1195,14 @@ export default function FinixDesktopShell({
                   setShowEmailModal(false);
                   showToast(`Correo enviado a ${emailForm.to} con anexo ${emailForm.format}.`, 'success');
                 }}
-                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-xs text-xs active:scale-95 transition-all shadow cursor-pointer"
+                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-sm text-xs active:scale-95 transition-all shadow cursor-pointer"
               >
                 Enviar Mensaje
               </button>
               <button
                 type="button"
                 onClick={() => setShowEmailModal(false)}
-                className="px-3 py-1 bg-[#d4d0c8] border border-[#808080] hover:bg-white rounded-xs text-xs active:scale-95 transition-all cursor-pointer"
+                className="px-3 py-1 bg-white border border-[#b8cce0] text-[#1a3d5c] hover:bg-[#f0f4f8] rounded-sm text-xs active:scale-95 transition-all cursor-pointer"
               >
                 Cancelar
               </button>
@@ -1214,7 +1214,7 @@ export default function FinixDesktopShell({
       {/* Modal 3: Vista Preliminar de Impresión Crystal Reports */}
       {showPrintPreviewModal && (
         <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/60 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-2xl bg-[#ECE9D8] border border-[#0055A5] shadow-2xl rounded-xs p-3 font-[Tahoma,Arial,sans-serif] text-xs text-[#222] flex flex-col max-h-[85vh]">
+          <div className="w-full max-w-2xl bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-3 font-[Tahoma,Arial,sans-serif] text-xs text-[#222] flex flex-col max-h-[85vh]">
             <div className="flex items-center justify-between pb-2 mb-2 border-b border-[#a0a0a0]">
               <div className="flex items-center gap-2">
                 <Printer className="w-4 h-4 text-[#0055A5]" />
@@ -1222,7 +1222,7 @@ export default function FinixDesktopShell({
               </div>
               <button type="button" onClick={() => setShowPrintPreviewModal(false)} className="hover:bg-red-500 hover:text-white px-1.5 py-0.5 rounded-xs">✕</button>
             </div>
-            <div className="flex-1 overflow-y-auto bg-white p-6 border border-[#808080] rounded-xs shadow-inner text-[#111] space-y-4">
+            <div className="flex-1 overflow-y-auto bg-white p-6 border border-[#dde6f0] rounded-sm shadow-inner text-[#111] space-y-4">
               <div className="flex justify-between border-b pb-3">
                 <div>
                   <h1 className="text-base font-extrabold text-[#002b5c]">{companyTitle}</h1>
@@ -1311,7 +1311,7 @@ export default function FinixDesktopShell({
                 <button
                   type="button"
                   onClick={() => setShowPrintPreviewModal(false)}
-                  className="px-3 py-1 bg-[#d4d0c8] border border-[#808080] hover:bg-white rounded-xs text-xs active:scale-95 transition-all cursor-pointer"
+                  className="px-3 py-1 bg-white border border-[#b8cce0] text-[#1a3d5c] hover:bg-[#f0f4f8] rounded-sm text-xs active:scale-95 transition-all cursor-pointer"
                 >
                   Cerrar
                 </button>
@@ -1324,21 +1324,21 @@ export default function FinixDesktopShell({
       {/* Modal 4: Filtrar Tabla */}
       {showFilterModal && (
         <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-md bg-[#ECE9D8] border border-[#0055A5] shadow-2xl rounded-xs p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
-            <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#a0a0a0]">
+          <div className="w-full max-w-md bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-[#0055A5]">
               <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4 text-[#0055A5]" />
                 <h2 className="text-xs font-bold text-[#002b5c]">Filtrar Matriz de Datos — SAP Business One</h2>
               </div>
               <button type="button" onClick={() => setShowFilterModal(false)} className="hover:bg-red-500 hover:text-white px-1.5 py-0.5 rounded-xs">✕</button>
             </div>
-            <div className="space-y-3 bg-white p-3 border border-[#808080] rounded-xs mb-3">
+            <div className="space-y-3 bg-[#f4f8ff] p-3 border border-[#dde6f0] rounded-sm mb-3">
               <div>
                 <label className="text-[11px] font-semibold text-gray-700 block mb-1">Columna a filtrar:</label>
                 <select
                   value={filterForm.column}
                   onChange={(e) => setFilterForm(prev => ({ ...prev, column: e.target.value }))}
-                  className="w-full px-2 py-1 text-xs border border-[#808080] rounded-xs bg-white focus:outline-none"
+                  className="w-full px-2 py-1 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]/20"
                 >
                   <option value="ItemCode">Código de Artículo / Cuenta</option>
                   <option value="Description">Descripción del Artículo / Servicio</option>
@@ -1352,7 +1352,7 @@ export default function FinixDesktopShell({
                 <select
                   value={filterForm.condition}
                   onChange={(e) => setFilterForm(prev => ({ ...prev, condition: e.target.value }))}
-                  className="w-full px-2 py-1 text-xs border border-[#808080] rounded-xs bg-white focus:outline-none"
+                  className="w-full px-2 py-1 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]/20"
                 >
                   <option value="contains">Contiene el texto</option>
                   <option value="equals">Es exactamente igual a</option>
@@ -1367,7 +1367,7 @@ export default function FinixDesktopShell({
                   value={filterForm.value}
                   onChange={(e) => setFilterForm(prev => ({ ...prev, value: e.target.value }))}
                   placeholder="Escriba valor a filtrar..."
-                  className="w-full px-2 py-1 text-xs border border-[#808080] rounded-xs bg-[#fffde7] focus:outline-none"
+                  className="w-full px-2 py-1 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5]"
                 />
               </div>
             </div>
@@ -1378,7 +1378,7 @@ export default function FinixDesktopShell({
                   setShowFilterModal(false);
                   showToast(`Filtro aplicado por "${filterForm.column}": ${filterForm.value || 'Todos'}`, 'info');
                 }}
-                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-xs text-xs active:scale-95 transition-all shadow cursor-pointer"
+                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-sm text-xs active:scale-95 transition-all shadow cursor-pointer"
               >
                 Aplicar Filtro
               </button>
@@ -1389,7 +1389,7 @@ export default function FinixDesktopShell({
                   setShowFilterModal(false);
                   showToast('Filtro restablecido. Mostrando todas las líneas.', 'info');
                 }}
-                className="px-3 py-1 bg-[#d4d0c8] border border-[#808080] hover:bg-white rounded-xs text-xs active:scale-95 transition-all cursor-pointer"
+                className="px-3 py-1 bg-white border border-[#b8cce0] text-[#1a3d5c] hover:bg-[#f0f4f8] rounded-sm text-xs active:scale-95 transition-all cursor-pointer"
               >
                 Restablecer
               </button>
@@ -1401,21 +1401,21 @@ export default function FinixDesktopShell({
       {/* Modal 5: Clasificar Tabla (Ordenar) */}
       {showSortModal && (
         <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-sm bg-[#ECE9D8] border border-[#0055A5] shadow-2xl rounded-xs p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
-            <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#a0a0a0]">
+          <div className="w-full max-w-sm bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-[#0055A5]">
               <div className="flex items-center gap-2">
                 <ArrowUpDown className="w-4 h-4 text-[#0055A5]" />
                 <h2 className="text-xs font-bold text-[#002b5c]">Clasificar Tabla — SAP Business One</h2>
               </div>
               <button type="button" onClick={() => setShowSortModal(false)} className="hover:bg-red-500 hover:text-white px-1.5 py-0.5 rounded-xs">✕</button>
             </div>
-            <div className="space-y-3 bg-white p-3 border border-[#808080] rounded-xs mb-3">
+            <div className="space-y-3 bg-[#f4f8ff] p-3 border border-[#dde6f0] rounded-sm mb-3">
               <div>
                 <label className="text-[11px] font-semibold text-gray-700 block mb-1">Clasificar por columna:</label>
                 <select
                   value={sortForm.column}
                   onChange={(e) => setSortForm(prev => ({ ...prev, column: e.target.value }))}
-                  className="w-full px-2 py-1 text-xs border border-[#808080] rounded-xs bg-white focus:outline-none"
+                  className="w-full px-2 py-1 text-xs border border-[#b8cce0] rounded-sm bg-white focus:outline-none focus:border-[#0055A5] focus:ring-1 focus:ring-[#0055A5]/20"
                 >
                   <option value="DocNum">Número de Documento</option>
                   <option value="ItemCode">Código de Artículo</option>
@@ -1457,14 +1457,14 @@ export default function FinixDesktopShell({
                   setShowSortModal(false);
                   showToast(`Tabla ordenada por ${sortForm.column} (${sortForm.order === 'asc' ? 'Ascendente' : 'Descendente'})`, 'success');
                 }}
-                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-xs text-xs active:scale-95 transition-all shadow cursor-pointer"
+                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-sm text-xs active:scale-95 transition-all shadow cursor-pointer"
               >
                 Clasificar
               </button>
               <button
                 type="button"
                 onClick={() => setShowSortModal(false)}
-                className="px-3 py-1 bg-[#d4d0c8] border border-[#808080] hover:bg-white rounded-xs text-xs active:scale-95 transition-all cursor-pointer"
+                className="px-3 py-1 bg-white border border-[#b8cce0] text-[#1a3d5c] hover:bg-[#f0f4f8] rounded-sm text-xs active:scale-95 transition-all cursor-pointer"
               >
                 Cancelar
               </button>
@@ -1476,15 +1476,15 @@ export default function FinixDesktopShell({
       {/* Modal 6: Diseñador de Layouts de Impresión */}
       {showLayoutModal && (
         <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-lg bg-[#ECE9D8] border border-[#0055A5] shadow-2xl rounded-xs p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
-            <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#a0a0a0]">
+          <div className="w-full max-w-lg bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-[#0055A5]">
               <div className="flex items-center gap-2">
                 <FileText className="w-4 h-4 text-[#0055A5]" />
                 <h2 className="text-xs font-bold text-[#002b5c]">Diseñador de Layouts de Impresión (Crystal Reports / PLD)</h2>
               </div>
               <button type="button" onClick={() => setShowLayoutModal(false)} className="hover:bg-red-500 hover:text-white px-1.5 py-0.5 rounded-xs">✕</button>
             </div>
-            <div className="bg-white p-3 border border-[#808080] rounded-xs mb-3 space-y-2">
+            <div className="bg-[#f4f8ff] p-3 border border-[#dde6f0] rounded-sm mb-3 space-y-2">
               <p className="text-[11px] text-gray-600 mb-2">Plantillas de impresión asociadas al documento comercial activo:</p>
               <div className="space-y-1.5">
                 {[
@@ -1510,14 +1510,14 @@ export default function FinixDesktopShell({
                   setShowLayoutModal(false);
                   showToast('Plantilla Crystal Reports seleccionada como estándar para impresión.', 'success');
                 }}
-                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-xs text-xs active:scale-95 transition-all shadow cursor-pointer"
+                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-sm text-xs active:scale-95 transition-all shadow cursor-pointer"
               >
                 Fijar Estándar
               </button>
               <button
                 type="button"
                 onClick={() => setShowLayoutModal(false)}
-                className="px-3 py-1 bg-[#d4d0c8] border border-[#808080] hover:bg-white rounded-xs text-xs active:scale-95 transition-all cursor-pointer"
+                className="px-3 py-1 bg-white border border-[#b8cce0] text-[#1a3d5c] hover:bg-[#f0f4f8] rounded-sm text-xs active:scale-95 transition-all cursor-pointer"
               >
                 Cerrar
               </button>
@@ -1529,15 +1529,15 @@ export default function FinixDesktopShell({
       {/* Modal 7: Parametrizaciones de Formulario */}
       {showSettingsModal && (
         <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-150">
-          <div className="w-full max-w-md bg-[#ECE9D8] border border-[#0055A5] shadow-2xl rounded-xs p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
-            <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#a0a0a0]">
+          <div className="w-full max-w-md bg-white border border-[#c8d6e8] shadow-2xl rounded-sm p-4 font-[Tahoma,Arial,sans-serif] text-xs text-[#222]">
+            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-[#0055A5]">
               <div className="flex items-center gap-2">
                 <Settings className="w-4 h-4 text-[#d97706]" />
                 <h2 className="text-xs font-bold text-[#002b5c]">Parametrizaciones de Formulario — Formato de Tabla</h2>
               </div>
               <button type="button" onClick={() => setShowSettingsModal(false)} className="hover:bg-red-500 hover:text-white px-1.5 py-0.5 rounded-xs">✕</button>
             </div>
-            <div className="bg-white p-3 border border-[#808080] rounded-xs mb-3 space-y-2">
+            <div className="bg-[#f4f8ff] p-3 border border-[#dde6f0] rounded-sm mb-3 space-y-2">
               <p className="text-[11px] text-gray-600 mb-2">Seleccione las columnas visibles en las matrices de documentos:</p>
               <div className="space-y-1.5 max-h-56 overflow-y-auto pr-1">
                 {[
@@ -1570,14 +1570,14 @@ export default function FinixDesktopShell({
                   setShowSettingsModal(false);
                   showToast('Parametrizaciones de formulario guardadas para el usuario.', 'success');
                 }}
-                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-xs text-xs active:scale-95 transition-all shadow cursor-pointer"
+                className="px-4 py-1 bg-[#0055A5] text-white font-bold hover:bg-[#003d75] rounded-sm text-xs active:scale-95 transition-all shadow cursor-pointer"
               >
                 Actualizar
               </button>
               <button
                 type="button"
                 onClick={() => setShowSettingsModal(false)}
-                className="px-3 py-1 bg-[#d4d0c8] border border-[#808080] hover:bg-white rounded-xs text-xs active:scale-95 transition-all cursor-pointer"
+                className="px-3 py-1 bg-white border border-[#b8cce0] text-[#1a3d5c] hover:bg-[#f0f4f8] rounded-sm text-xs active:scale-95 transition-all cursor-pointer"
               >
                 Cancelar
               </button>
