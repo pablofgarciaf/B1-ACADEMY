@@ -31,6 +31,8 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
   const [pos, setPos] = useState<Pos | null>(null);
   const [arrastrando, setArrastrando] = useState(false);
   const inicio = useRef<{ px: number; py: number; x: number; y: number; movido: boolean } | null>(null);
+  // Ref para disparar onAbrir FUERA del updater de setPos (evita "setState during render")
+  const pendingClickRef = useRef<'izq' | 'der' | null>(null);
 
   useEffect(() => {
     let guardada: Record<string, Pos> = {};
@@ -77,10 +79,23 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
         y: actual.y,
       };
       guardar(pegado);
-      if (fueClick) onAbrir(pegado.x < window.innerWidth / 2 ? 'izq' : 'der');
+      // FIX: No llamamos onAbrir aquí (dentro del updater) porque provoca
+      // "Cannot update a component while rendering a different component".
+      // En su lugar, dejamos una bandera en pendingClickRef para que
+      // el useEffect siguiente (que corre DESPUÉS del commit) llame onAbrir.
+      if (fueClick) pendingClickRef.current = pegado.x < window.innerWidth / 2 ? 'izq' : 'der';
       return pegado;
     });
-  }, [guardar, onAbrir]);
+  }, [guardar]);
+
+  // Llama onAbrir después de que setPos se haya aplicado (fase de commit, no de render)
+  useEffect(() => {
+    if (pendingClickRef.current) {
+      const lado = pendingClickRef.current;
+      pendingClickRef.current = null;
+      onAbrir(lado);
+    }
+  }, [pos, onAbrir]);
 
   useEffect(() => {
     if (!arrastrando) return;

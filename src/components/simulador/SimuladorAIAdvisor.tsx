@@ -71,6 +71,13 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
     scrollToBottom();
   }, [messages]);
 
+  // Escucha el evento global disparado por FeNiMascota o tecla F1
+  useEffect(() => {
+    const abrirDesdeEvento = () => setIsOpen(true);
+    window.addEventListener('feni-abrir', abrirDesdeEvento);
+    return () => window.removeEventListener('feni-abrir', abrirDesdeEvento);
+  }, []);
+
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
