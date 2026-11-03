@@ -11,6 +11,7 @@ import FinixToolBar from './FinixToolBar';
 import FinixModulesTree from './FinixModulesTree';
 import FinixWindowManager, { Window } from './FinixWindowManager';
 import SimuladorAIAdvisor from '../simulador/SimuladorAIAdvisor';
+import FeNiMascota from '../site/FeNiMascota';
 
 export type FinixRole = 'super' | 'ventas' | 'compras' | 'contabilidad' | 'almacen';
 
@@ -869,11 +870,11 @@ export default function FinixDesktopShell({
               aria-label="Perfil de usuario Finix ERP"
               value={activeRole}
               onChange={(e) => setActiveRole(e.target.value as FinixRole)}
-              className="bg-[#0e2c7a] text-white font-semibold text-[11px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer"
+              className="bg-[#0e2c7a] text-white font-semibold text-[11px] rounded border border-blue-300/40 px-2 py-0.5 outline-none focus:ring-1 focus:ring-amber-400 cursor-pointer max-w-[160px]"
             >
               {Object.values(FINIX_ROLES).map(r => (
                 <option key={r.id} value={r.id}>
-                  {r.prefix}{baseEmail} ({r.label})
+                  {r.label}
                 </option>
               ))}
             </select>
@@ -1610,12 +1611,19 @@ export default function FinixDesktopShell({
         const activeModuleTitle = activeWin?.moduleName
           || (activeWin?.moduleKey && catalog.modules[activeWin.moduleKey]?.name)
           || 'General';
+        const handleFeniAbrir = () => {
+          window.dispatchEvent(new CustomEvent('feni-abrir'));
+        };
         return (
-          <SimuladorAIAdvisor
-            currentScreen={activeScreenTitle}
-            currentModule={activeModuleTitle}
-            isOpen={false}
-          />
+          <>
+            <FeNiMascota onAbrir={handleFeniAbrir} />
+            <SimuladorAIAdvisor
+              currentScreen={activeScreenTitle}
+              currentModule={activeModuleTitle}
+              isOpen={false}
+              hideFloatingButton
+            />
+          </>
         );
       })()}
     </div>

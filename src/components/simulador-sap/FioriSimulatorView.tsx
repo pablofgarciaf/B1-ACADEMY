@@ -129,7 +129,7 @@ function LaunchpadView({ onEnter, procesoNombre }: { onEnter: () => void; proces
     <div className="flex-1 overflow-auto bg-[#f2f4f7] p-6">
       {/* Group header */}
       <div className="mb-3">
-        <span className="text-xs font-semibold uppercase tracking-widest text-[#6A6D70]">
+        <span className="text-xs font-semibold uppercase tracking-widest text-[#404448]">
           My Home
         </span>
       </div>
@@ -203,7 +203,7 @@ function Stepper({
       {indices.map((idx, pos) => {
         if (idx < 0)
           return (
-            <span key={`e${pos}`} className="text-[#6A6D70] text-sm px-1">
+            <span key={`e${pos}`} className="text-[#404448] text-sm px-1">
               …
             </span>
           );
@@ -222,9 +222,9 @@ function Stepper({
               title={`Paso ${idx + 1}`}
               className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all border"
               style={{
-                background: active ? "#0070F2" : done ? "#6A6D70" : "#fff",
-                color: active || done ? "#fff" : "#6A6D70",
-                borderColor: active ? "#0070F2" : done ? "#6A6D70" : "#D1D4D7",
+                background: active ? "#0070F2" : done ? "#404448" : "#fff",
+                color: active || done ? "#fff" : "#32363A",
+                borderColor: active ? "#0070F2" : done ? "#404448" : "#6A6D70",
               }}
             >
               {done ? <Check size={12} /> : idx + 1}
@@ -266,9 +266,9 @@ function ObjectPage({
       {/* Breadcrumb bar */}
       <div className="bg-white border-b border-[#E5E5E5] px-4 py-2 flex items-center gap-1 text-xs" style={{ color: "#354A5E" }}>
         <Home size={12} />
-        <ChevronRight size={12} className="text-[#6A6D70]" />
+        <ChevronRight size={12} className="text-[#404448]" />
         <span>{appName}</span>
-        <ChevronRight size={12} className="text-[#6A6D70]" />
+        <ChevronRight size={12} className="text-[#404448]" />
         <span className="font-semibold truncate max-w-xs">{card.titulo || "Pantalla"}</span>
       </div>
 
@@ -276,7 +276,7 @@ function ObjectPage({
       <div className="bg-white border-b border-[#E5E5E5] px-4 py-3 flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-3 min-w-0">
           <Stepper total={total} current={stepIdx} onStep={onStepClick} />
-          <span className="text-xs text-[#6A6D70] shrink-0">
+          <span className="text-xs text-[#404448] shrink-0">
             Paso {stepIdx + 1} de {total} · <span style={{ color: "#0070F2" }}>{procesoNombre}</span>
           </span>
         </div>
@@ -316,7 +316,7 @@ function ObjectPage({
             <h1 className="text-xl font-semibold" style={{ color: "#32363A" }}>
               {card.titulo || `Pantalla ${stepIdx + 1}`}
             </h1>
-            <p className="text-sm mt-0.5" style={{ color: "#6A6D70" }}>
+            <p className="text-sm mt-0.5" style={{ color: "#404448" }}>
               {procesoNombre} · {card.modulo}
             </p>
           </div>
@@ -342,13 +342,13 @@ function ObjectPage({
         {/* Screenshot section */}
         <div className="flex-1 bg-white rounded border border-[#E5E5E5] overflow-hidden shadow-sm">
           <div className="px-4 py-2 border-b border-[#E5E5E5]">
-            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#6A6D70" }}>
+            <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#404448" }}>
               Pantalla SAP
             </span>
           </div>
           <div className="p-3 flex items-center justify-center bg-[#F7F7F7] min-h-64">
             {imgError ? (
-              <div className="flex flex-col items-center gap-2 py-8 text-[#6A6D70]">
+              <div className="flex flex-col items-center gap-2 py-8 text-[#404448]">
                 <AlertCircle size={32} />
                 <span className="text-sm">Imagen no disponible</span>
               </div>
@@ -381,7 +381,7 @@ function ObjectPage({
           {/* OCR text */}
           {card.texto.length > 0 && (
             <div className="bg-white rounded border border-[#E5E5E5] p-4 shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#6A6D70" }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "#404448" }}>
                 Texto detectado (OCR)
               </p>
               <ul className="space-y-1">
@@ -420,7 +420,7 @@ function ObjectPage({
           {/* Step info */}
           <div
             className="p-3 rounded text-xs"
-            style={{ background: "#F0F4F8", color: "#6A6D70", border: "1px solid #E5E5E5" }}
+            style={{ background: "#F0F4F8", color: "#404448", border: "1px solid #D0D3D6" }}
           >
             <span className="font-semibold" style={{ color: "#32363A" }}>
               Origen:
@@ -458,7 +458,7 @@ function EmptyState({ procesoNombre }: { procesoNombre: string }) {
         <p className="font-semibold text-lg" style={{ color: "#32363A" }}>
           No hay pantallas disponibles
         </p>
-        <p className="text-sm" style={{ color: "#6A6D70" }}>
+        <p className="text-sm" style={{ color: "#404448" }}>
           No se encontraron capturas para el proceso{" "}
           <strong>{procesoNombre}</strong> en el sistema Fiori.
         </p>

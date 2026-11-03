@@ -89,30 +89,50 @@ export default function SapGuiSimulatorView({
       className="min-h-screen flex flex-col"
       style={{ background: '#ECE9D8', fontFamily: 'Tahoma, Arial, sans-serif', fontSize: '12px' }}
     >
-      {/* ── Title Bar ─────────────────────────────────────────────────────── */}
+      {/* ── Title Bar — auténtico SAP GUI 7.x Windows-chrome ─────────────── */}
       <div
-        className="flex items-center justify-between px-2 py-1 select-none shrink-0"
-        style={{ background: 'linear-gradient(180deg,#003A8C 0%,#003370 100%)', height: '26px' }}
+        className="flex items-center justify-between px-1 select-none shrink-0"
+        style={{
+          background: 'linear-gradient(180deg,#4A90D9 0%,#2E6DBD 40%,#1A5AAF 100%)',
+          height: '22px',
+          borderBottom: '1px solid #1246A0',
+        }}
       >
-        {/* Left: SAP icon + title */}
-        <div className="flex items-center gap-2">
+        {/* Left: 16×16 SAP logo + app title */}
+        <div className="flex items-center gap-1.5 min-w-0">
+          {/* SAP diamond icon (genuine 16-pixel badge) */}
+          <svg width="16" height="16" viewBox="0 0 16 16" className="shrink-0">
+            <rect width="16" height="16" rx="2" fill="#0070D2" />
+            <text x="8" y="12" textAnchor="middle" fontFamily="Arial" fontWeight="900" fontSize="8" fill="#fff" letterSpacing="0">SAP</text>
+          </svg>
           <span
-            className="font-black text-white px-1.5 py-0.5 mr-1 text-xs tracking-wider border border-white/50"
-            style={{ background: '#0050A0', letterSpacing: '0.1em' }}
+            className="text-white text-[11px] font-normal truncate"
+            style={{ fontFamily: 'Tahoma, Arial, sans-serif', textShadow: '0 1px 1px rgba(0,0,0,0.4)', maxWidth: '400px' }}
           >
-            SAP
-          </span>
-          <span className="text-white text-xs font-normal truncate max-w-xs">
-            {card.titulo || procesoNombre} - SAP
+            {card.titulo || procesoNombre} — SAP GUI 7.60
           </span>
         </div>
-        {/* Right: Windows-style chrome buttons */}
-        <div className="flex items-center gap-0.5">
-          {['─', '□', '✕'].map(sym => (
+        {/* Right: authentic Windows-style title-bar buttons */}
+        <div className="flex items-center shrink-0 ml-1">
+          {[
+            { sym: '─', label: 'Minimizar', w: 22 },
+            { sym: '□', label: 'Restaurar', w: 22 },
+            { sym: '✕', label: 'Cerrar',    w: 24 },
+          ].map(({ sym, label, w }) => (
             <div
-              key={sym}
-              className="w-16px h-14px flex items-center justify-center text-white text-[10px] border border-white/30 hover:bg-white/20 cursor-pointer px-1.5"
-              style={{ width: 18, height: 16 }}
+              key={label}
+              title={label}
+              className="flex items-center justify-center text-white text-[11px] font-bold cursor-pointer hover:brightness-125"
+              style={{
+                width: w,
+                height: 22,
+                background: sym === '✕'
+                  ? 'linear-gradient(180deg,#D94040 0%,#B52020 100%)'
+                  : 'linear-gradient(180deg,#5C9CE0 0%,#3A7EC8 100%)',
+                borderLeft: '1px solid rgba(255,255,255,0.18)',
+                fontFamily: 'Tahoma, Arial, sans-serif',
+                fontSize: sym === '✕' ? '12px' : '11px',
+              }}
             >
               {sym}
             </div>
