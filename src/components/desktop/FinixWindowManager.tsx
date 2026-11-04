@@ -106,28 +106,12 @@ export default function FinixWindowManager({
                 )}
               </div>
 
-              {/* Botones de Control de Ventana */}
+              {/* Botón de Control de Ventana — solo cerrar */}
               <div className="flex items-center gap-1.5">
                 <button
                   type="button"
-                  onClick={() => onWindowMinimize?.(activeWindow.id)}
-                  className="w-5 h-5 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-[10px] font-bold flex items-center justify-center rounded transition active:scale-95 cursor-pointer"
-                  title={activeWindow.minimized ? 'Restaurar ventana' : 'Minimizar ventana'}
-                >
-                  {activeWindow.minimized ? '▲' : '_'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onWindowMaximize?.(activeWindow.id)}
-                  className="w-5 h-5 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-[10px] font-bold flex items-center justify-center rounded transition active:scale-95 cursor-pointer"
-                  title="Maximizar ventana"
-                >
-                  □
-                </button>
-                <button
-                  type="button"
                   onClick={() => onWindowClose(activeWindow.id)}
-                  className="w-5 h-5 bg-red-600/90 hover:bg-red-600 border border-red-400 text-white text-[12px] font-black flex items-center justify-center rounded transition active:scale-95 cursor-pointer shadow-xs ml-1"
+                  className="w-5 h-5 bg-red-600/90 hover:bg-red-600 border border-red-400 text-white text-[12px] font-black flex items-center justify-center rounded transition active:scale-95 cursor-pointer shadow-xs"
                   title="Cerrar ventana (×)"
                 >
                   ×
