@@ -95,7 +95,7 @@ export default function MiAulaPage() {
             </div>
             <div className="space-y-2 max-w-3xl">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-500 text-white dark:text-slate-950 shadow-sm">
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-blue-500 text-white shadow-sm">
                   Ruta Comercial · Acceso Directo
                 </span>
                 <span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
