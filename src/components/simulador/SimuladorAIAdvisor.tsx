@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, X, MessageCircle, Loader, Bot, Sparkles } from 'lucide-react';
+import { Send, X, Loader, Bot, Sparkles, Minus, Maximize2, Minimize2 } from 'lucide-react';
 import { empresaActiva, LISTA_SIETE_EMPRESAS } from '@/lib/firestore-company';
 
 interface Message {
@@ -31,6 +31,8 @@ export default function SimuladorAIAdvisor({
   embedded = false,
 }: SimuladorAIAdvisorProps) {
   const [isOpen, setIsOpen] = useState(initialOpen);
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isMaximized, setIsMaximized] = useState(false);
   const isFiori = theme === 'fiori';
 
   const [messages, setMessages] = useState<Message[]>([
@@ -38,24 +40,8 @@ export default function SimuladorAIAdvisor({
       id: '1',
       role: 'assistant',
       content: isFiori
-        ? `¡Hola! Soy **Joule** ✨, tu copiloto inteligente para SAP Fiori y Finix ERP.
-
-¿En qué puedo asistirte hoy en el sistema?
-- 🛒 *"¿Cómo creo un pedido de venta (SAL002)?"*
-- 🧾 *"¿Cuáles son los pasos para emitir una Factura Electrónica SRI?"*
-- 📦 *"¿Cómo recibir mercancías de una orden de compra (GRPO)?"*
-- 📊 *"¿Cómo verificar el balance o registrar un asiento contable?"*
-
-Pregúntame cualquier transacción, código de pantalla o concepto contable. 🚀`
-        : `¡Hola! Soy tu **Tutor IA** 🤖 para SAP Business One.
-
-¿Qué deseas realizar o consultar en el simulador?
-- 🛒 *"¿Cómo registro un pedido de venta (SAL002)?"*
-- 📊 *"¿Cómo verifico los mayores de Bancos (FIN002)?"*
-- 🏦 *"¿Cómo realizo una conciliación bancaria (BAN003)?"*
-- 🧾 *"¿Cómo contabilizo un asiento de diario (FIN001)?"*
-
-Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 🚀`,
+        ? `¡Hola! Soy **Joule** ✨, tu copiloto IA. ¿En qué te asisto?`
+        : `¡Hola! Soy **FeNi** 🐦, tu asistente de IA. ¿En qué te ayudo?`,
       timestamp: new Date(),
     },
   ]);
@@ -171,7 +157,13 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
         <div className={
           embedded
             ? "w-full h-full flex flex-col overflow-hidden bg-white dark:bg-[#111927]"
-            : "fixed inset-x-3 bottom-14 z-[5000] flex h-[min(600px,calc(100dvh-5rem))] flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:left-4 sm:right-auto sm:w-96"
+            : `fixed inset-x-3 bottom-14 z-[5000] flex flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:left-auto transition-all duration-200 ${
+                isMaximized
+                  ? 'sm:w-[520px] h-[min(80vh,720px)]'
+                  : isMinimized
+                    ? 'sm:w-96 h-auto'
+                    : 'sm:w-96 h-[min(600px,calc(100dvh-5rem))]'
+              }`
         }>
           {/* Header */}
           <div className={
@@ -193,17 +185,33 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
                 </p>
               </div>
             </div>
-            <button
-              onClick={handleClose}
-              className="hover:bg-white/20 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-white"
-              title="Cerrar asistente"
-            >
-              <X size={18} />
-            </button>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => { setIsMinimized((v) => !v); setIsMaximized(false); }}
+                className="hover:bg-white/20 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-white"
+                title={isMinimized ? 'Restaurar' : 'Minimizar'}
+              >
+                <Minus size={15} />
+              </button>
+              <button
+                onClick={() => { setIsMaximized((v) => !v); setIsMinimized(false); }}
+                className="hover:bg-white/20 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-white"
+                title={isMaximized ? 'Restaurar' : 'Maximizar'}
+              >
+                {isMaximized ? <Minimize2 size={15} /> : <Maximize2 size={15} />}
+              </button>
+              <button
+                onClick={handleClose}
+                className="hover:bg-white/20 p-1.5 rounded-lg transition-all active:scale-95 cursor-pointer text-white"
+                title="Cerrar asistente"
+              >
+                <X size={15} />
+              </button>
+            </div>
           </div>
 
           {/* Messages Container */}
-          <div className={`flex-1 overflow-y-auto p-4 space-y-3.5 ${
+          {!isMinimized && <div className={`flex-1 overflow-y-auto p-4 space-y-3.5 ${
             isFiori ? 'bg-slate-50 dark:bg-[#0b121e]' : 'bg-slate-950'
           }`}>
             {messages.map((message) => (
@@ -250,10 +258,10 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
               </div>
             )}
             <div ref={messagesEndRef} />
-          </div>
+          </div>}
 
           {/* Input Form */}
-          <form
+          {!isMinimized && <form
             onSubmit={handleSendMessage}
             className={`border-t p-3 flex gap-2 ${
               isFiori
@@ -284,7 +292,7 @@ Pregúntame y te indicaré la ruta exacta del menú y los pasos del formulario. 
                 <Send size={16} />
               )}
             </button>
-          </form>
+          </form>}
         </div>
       )}
     </>
