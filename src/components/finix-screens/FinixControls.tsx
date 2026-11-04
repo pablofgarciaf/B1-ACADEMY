@@ -8,7 +8,7 @@ export const FinixUIThemeContext = createContext<FinixUITheme>('classic');
 export const useFinixUITheme = () => useContext(FinixUIThemeContext);
 
 export const inputClass = 'w-full min-w-16 border border-[#999] bg-white px-2 py-1 text-[11px] text-[#222] focus:bg-[#FFFDE7] focus:outline-2 focus:outline-[#0055A5] disabled:bg-[#ECE9D8]';
-export const buttonClass = 'border border-[#999] bg-[#F5F4EE] px-3 py-1 text-[#222] hover:bg-[#FFFDE7] active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transform-none cursor-pointer';
+export const buttonClass = 'border border-[#aaa] bg-white px-3 py-1 text-[#1a2b3c] hover:bg-[#EEF4FF] hover:border-[#0055A5]/60 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transform-none cursor-pointer';
 
 export function NumberInput({
   value,
@@ -94,12 +94,12 @@ export function Screen({ title, children }: { title?: string; children: ReactNod
   const theme = useFinixUITheme();
   if (theme === 'fiori') {
     return (
-      <section className="finix-fiori-mode flex h-full min-h-80 flex-col overflow-auto bg-slate-50/70 dark:bg-[#111927] font-sans text-xs text-slate-800 dark:text-slate-100 p-4 sm:p-6 transition-colors">
+      <section className="finix-fiori-mode flex h-full min-h-80 flex-col overflow-auto bg-white font-sans text-xs text-slate-800 p-4 sm:p-6">
         <div className="space-y-4 max-w-6xl mx-auto w-full">
           {title && (
-            <div className="border-b border-slate-200 dark:border-slate-800 pb-3 flex items-center justify-between">
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white tracking-tight">{title}</h2>
-              <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/60 text-[#0055A5] dark:text-[#38bdf8] border border-blue-200/60 dark:border-blue-900/60">
+            <div className="border-b border-slate-200 pb-3 flex items-center justify-between">
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 tracking-tight">{title}</h2>
+              <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-[#0055A5] border border-blue-200/60">
                 SAP Fiori Horizon
               </span>
             </div>
@@ -110,10 +110,10 @@ export function Screen({ title, children }: { title?: string; children: ReactNod
     );
   }
   return (
-    <section className="flex h-full min-h-80 flex-col overflow-auto bg-[#ECE9D8] font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
+    <section className="flex h-full min-h-80 flex-col overflow-auto bg-white font-[Tahoma,Arial,sans-serif] text-[11px] text-[#222]">
       <div className="space-y-3 p-3">{children}</div>
     </section>
-  ); 
+  );
 }
 
 export function Field({ label, required, children }: { label: string; required?: boolean; children: ReactNode }) { 
@@ -121,7 +121,7 @@ export function Field({ label, required, children }: { label: string; required?:
   if (theme === 'fiori') {
     return (
       <label className="block space-y-1.5">
-        <span className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+        <span className="text-xs font-semibold text-slate-700">
           {label} {required && <span className="text-rose-600 font-bold">*</span>}
         </span>
         {children}
@@ -175,43 +175,43 @@ export function Navigation({ count, index, onSelect, onNew }: { count: number; i
   const theme = useFinixUITheme();
   if (theme === 'fiori') {
     return (
-      <div className="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-800/90 p-3 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-xs">
+      <div className="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-slate-200 shadow-xs">
         <div className="flex items-center gap-1.5">
-          <button 
-            type="button" 
-            aria-label="Documento anterior" 
-            disabled={c.saving || !count || index === 0} 
-            onClick={() => onSelect(index < 0 ? count - 1 : index - 1)} 
-            className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 font-semibold text-xs text-slate-700 dark:text-slate-200 disabled:opacity-40 transition active:scale-95"
+          <button
+            type="button"
+            aria-label="Documento anterior"
+            disabled={c.saving || !count || index === 0}
+            onClick={() => onSelect(index < 0 ? count - 1 : index - 1)}
+            className="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 font-semibold text-xs text-slate-700 disabled:opacity-40 transition active:scale-95"
           >
             ◀ Ant
           </button>
-          <button 
-            type="button" 
-            aria-label="Documento siguiente" 
-            disabled={c.saving || !count || index >= count - 1} 
-            onClick={() => onSelect(index + 1)} 
-            className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 font-semibold text-xs text-slate-700 dark:text-slate-200 disabled:opacity-40 transition active:scale-95"
+          <button
+            type="button"
+            aria-label="Documento siguiente"
+            disabled={c.saving || !count || index >= count - 1}
+            onClick={() => onSelect(index + 1)}
+            className="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 font-semibold text-xs text-slate-700 disabled:opacity-40 transition active:scale-95"
           >
             Sig ▶
           </button>
-          <button 
-            type="button" 
-            disabled={c.saving} 
-            onClick={onNew} 
-            className="ml-1 px-3 py-1.5 rounded-lg border border-[#0055A5]/40 bg-blue-50 dark:bg-blue-950/50 hover:bg-blue-100 text-[#0055A5] dark:text-[#38bdf8] font-bold text-xs transition active:scale-95"
+          <button
+            type="button"
+            disabled={c.saving}
+            onClick={onNew}
+            className="ml-1 px-3 py-1.5 rounded-lg border border-[#0055A5]/40 bg-blue-50 hover:bg-blue-100 text-[#0055A5] font-bold text-xs transition active:scale-95"
           >
             ⊕ Nuevo Registro
           </button>
         </div>
-        <span className="font-semibold text-xs text-slate-600 dark:text-slate-300">
+        <span className="font-semibold text-xs text-slate-600">
           {index < 0 ? '✨ Creación de nuevo registro' : `📄 ${index + 1} de ${count} · Registro activo`}
         </span>
-        <button 
-          type="button" 
-          disabled={c.loading || c.saving} 
-          onClick={() => { void c.refresh(); }} 
-          className="px-2.5 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 font-medium text-xs text-slate-600 dark:text-slate-300 transition active:scale-95"
+        <button
+          type="button"
+          disabled={c.loading || c.saving}
+          onClick={() => { void c.refresh(); }}
+          className="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 font-medium text-xs text-slate-600 transition active:scale-95"
         >
           Actualizar
         </button>
@@ -233,22 +233,22 @@ export function Table({ headers, rows }: { headers: string[]; rows: ReactNode[][
   const theme = useFinixUITheme();
   if (theme === 'fiori') {
     return (
-      <div className="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xs">
+      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-xs">
         <table className="w-full border-collapse text-left text-xs">
-          <thead className="bg-slate-50 dark:bg-slate-800/80 font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider text-[11px] border-b border-slate-200 dark:border-slate-800">
+          <thead className="bg-slate-50 font-bold text-slate-700 uppercase tracking-wider text-[11px] border-b border-slate-200">
             <tr>
               {headers.map(h => (
-                <th key={h} scope="col" className="p-3 text-slate-700 dark:text-slate-200">
+                <th key={h} scope="col" className="p-3 text-slate-700">
                   {h}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+          <tbody className="divide-y divide-slate-100">
             {rows.map((row, i) => (
-              <tr key={i} className="hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-colors">
+              <tr key={i} className="hover:bg-blue-50/40 transition-colors">
                 {row.map((cell, j) => (
-                  <td key={j} className="p-3 text-slate-800 dark:text-slate-200">
+                  <td key={j} className="p-3 text-slate-800">
                     {cell}
                   </td>
                 ))}
@@ -298,10 +298,10 @@ export function Modal({ title, onClose, children }: { title: string; onClose: ()
   useEffect(() => { const dialog = ref.current; dialog?.showModal(); return () => dialog?.close(); }, []);
   if (theme === 'fiori') {
     return (
-      <dialog ref={ref} onCancel={event => { event.preventDefault(); onClose(); }} aria-labelledby={id} className="finix-fiori-mode max-h-[85dvh] w-[min(95vw,850px)] overflow-auto border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 rounded-2xl font-sans text-xs text-slate-800 dark:text-slate-100 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs">
-        <div className="mb-4 flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
-          <h2 id={id} className="font-bold text-base text-slate-900 dark:text-white tracking-tight">{title}</h2>
-          <button type="button" onClick={onClose} className="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 font-medium text-xs text-slate-600 dark:text-slate-300 transition">
+      <dialog ref={ref} onCancel={event => { event.preventDefault(); onClose(); }} aria-labelledby={id} className="finix-fiori-mode max-h-[85dvh] w-[min(95vw,850px)] overflow-auto border border-slate-200 bg-white p-6 rounded-2xl font-sans text-xs text-slate-800 shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-xs">
+        <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
+          <h2 id={id} className="font-bold text-base text-slate-900 tracking-tight">{title}</h2>
+          <button type="button" onClick={onClose} className="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 hover:bg-slate-100 font-medium text-xs text-slate-600 transition">
             Cerrar
           </button>
         </div>
@@ -347,14 +347,14 @@ export function MasterForm<T extends object>({ title, initial, records, fields, 
       <Navigation count={records.length} index={index} onNew={reset} onSelect={i => { setIndex(i); setValue(records[i]); }} />
       <div className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold ${
         theme === 'fiori'
-          ? 'bg-slate-100/70 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200'
+          ? 'bg-slate-100/70 border-slate-200 text-slate-700'
           : 'bg-slate-100 border-[#999]'
       }`}>
         <span>Estado: {index >= 0 ? `Registro existente ID #${records[index]?.id}` : 'Código automático al guardar'}</span>
         {index >= 0 && <span className="text-emerald-700 dark:text-emerald-400 font-bold">Modo edición habilitado</span>}
       </div>
 
-      <div className={`flex flex-wrap gap-1.5 pb-2 ${theme === 'fiori' ? 'border-b border-slate-200 dark:border-slate-800' : 'border-b border-[#999]'}`}>
+      <div className={`flex flex-wrap gap-1.5 pb-2 ${theme === 'fiori' ? 'border-b border-slate-200' : 'border-b border-[#999]'}`}>
         {tabs.map(t => (
           <button 
             type="button" 
@@ -366,7 +366,7 @@ export function MasterForm<T extends object>({ title, initial, records, fields, 
                 ? `px-4 py-2 rounded-xl text-xs font-bold transition active:scale-95 ${
                     tab === t
                       ? 'bg-[#0055A5] text-white shadow-sm'
-                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`
                 : `${buttonClass} ${tab === t ? 'bg-[#003366] text-white font-bold border-[#002244]' : ''}`
             }
@@ -390,7 +390,7 @@ export function MasterForm<T extends object>({ title, initial, records, fields, 
       >
         <fieldset disabled={c.saving} className={`grid gap-4 sm:grid-cols-2 rounded-2xl border ${
           theme === 'fiori'
-            ? 'bg-white dark:bg-slate-900 p-6 border-slate-200 dark:border-slate-800 shadow-xs'
+            ? 'bg-white p-6 border-slate-200 shadow-xs'
             : 'bg-white p-4 border-[#999] shadow-inner'
         }`}>
           {fields.map(f => (
@@ -436,15 +436,15 @@ export function MasterForm<T extends object>({ title, initial, records, fields, 
           ))}
         </fieldset>
 
-        <div className={`flex items-center gap-3 pt-3 border-t ${theme === 'fiori' ? 'border-slate-200 dark:border-slate-800' : 'border-[#999]'}`}>
+        <div className={`flex items-center gap-3 pt-3 border-t ${theme === 'fiori' ? 'border-slate-200' : 'border-[#999]'}`}>
           <SaveButton label={index >= 0 ? 'Actualizar registro' : 'Añadir'} />
-          <button 
-            type="button" 
-            disabled={c.saving} 
-            onClick={reset} 
+          <button
+            type="button"
+            disabled={c.saving}
+            onClick={reset}
             className={
               theme === 'fiori'
-                ? 'px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 font-semibold text-xs text-slate-700 dark:text-slate-200 transition active:scale-95 disabled:opacity-50'
+                ? 'px-4 py-2 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 font-semibold text-xs text-slate-700 transition active:scale-95 disabled:opacity-50'
                 : buttonClass
             }
           >

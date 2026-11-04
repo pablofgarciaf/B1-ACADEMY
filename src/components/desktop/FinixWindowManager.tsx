@@ -88,7 +88,7 @@ export default function FinixWindowManager({
       {/* Contenedor Principal: La ventana MDI activa con acabado profesional Fiori / Horizon */}
       <div className="flex-1 w-full h-full min-h-0 overflow-hidden flex flex-col p-2 sm:p-4">
         {activeWindow ? (
-          <div className="w-full h-full max-w-6xl mx-auto flex flex-col overflow-hidden bg-white border border-slate-300 rounded-xl shadow-2xl animate-in fade-in duration-150">
+          <div className={`w-full max-w-6xl mx-auto flex flex-col overflow-hidden bg-white border border-slate-300 rounded-xl shadow-2xl animate-in fade-in duration-150 ${activeWindow.minimized ? 'h-auto' : 'h-full'}`}>
             {/* Barra de Título Fiori / SAP B1 con Estilo Horizon */}
             <div className="bg-gradient-to-r from-[#002b5c] via-[#004b96] to-[#0055A5] text-white flex items-center justify-between px-3.5 py-2 select-none shrink-0 shadow-xs">
               <div className="flex items-center gap-2 truncate">
@@ -137,7 +137,7 @@ export default function FinixWindowManager({
 
             {/* Contenido Funcional — se colapsa cuando la ventana está minimizada */}
             {!activeWindow.minimized && (
-              <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50/40 p-2 sm:p-4">
+              <div className="flex-1 min-h-0 overflow-y-auto bg-white p-2 sm:p-4">
                 <ErrorBoundary fallbackTitle={`Error al renderizar ${activeWindow.title} (${activeWindow.screenId})`}>
                   <FinixUIThemeContext.Provider value={resolvedTheme}>
                     <div className={resolvedTheme === 'fiori' ? 'finix-fiori-mode' : ''}>
