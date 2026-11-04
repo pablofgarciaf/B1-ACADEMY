@@ -3,7 +3,10 @@ import { useEffect, useState } from 'react';
 import { POLITICAS_VERSION } from './legal-config';
 type PublicConfig = { ready:boolean; available:boolean; policyVersion:string };
 export function useLegalConfiguration() {
-  const [config,setConfig] = useState<PublicConfig>({ready:true,available:true,policyVersion:POLITICAS_VERSION});
+  // Inicio en false/'' para que CookieConsent NO evalúe la cookie hasta que el servidor
+  // confirme la policyVersion real (que incluye un hash de Firestore). Si se inicializa con
+  // POLITICAS_VERSION y el servidor agrega ".{hash}", la cookie no coincide → banner eterno.
+  const [config,setConfig] = useState<PublicConfig>({ready:false,available:false,policyVersion:''});
   useEffect(()=>{
     let active=true;
     const refresh=async()=>{

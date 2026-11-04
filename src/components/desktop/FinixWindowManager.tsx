@@ -112,9 +112,9 @@ export default function FinixWindowManager({
                   type="button"
                   onClick={() => onWindowMinimize?.(activeWindow.id)}
                   className="w-5 h-5 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-[10px] font-bold flex items-center justify-center rounded transition active:scale-95 cursor-pointer"
-                  title="Minimizar ventana"
+                  title={activeWindow.minimized ? 'Restaurar ventana' : 'Minimizar ventana'}
                 >
-                  _
+                  {activeWindow.minimized ? '▲' : '_'}
                 </button>
                 <button
                   type="button"
@@ -135,19 +135,21 @@ export default function FinixWindowManager({
               </div>
             </div>
 
-            {/* Contenido Funcional con Tema Fiori Moderno y Scroll Fluido */}
-            <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50/40 p-2 sm:p-4">
-              <ErrorBoundary fallbackTitle={`Error al renderizar ${activeWindow.title} (${activeWindow.screenId})`}>
-                <FinixUIThemeContext.Provider value={resolvedTheme}>
-                  <div className={resolvedTheme === 'fiori' ? 'finix-fiori-mode' : ''}>
-                    <FinixScreenRenderer
-                      screenId={activeWindow.screenId}
-                      screenName={activeWindow.title}
-                    />
-                  </div>
-                </FinixUIThemeContext.Provider>
-              </ErrorBoundary>
-            </div>
+            {/* Contenido Funcional — se colapsa cuando la ventana está minimizada */}
+            {!activeWindow.minimized && (
+              <div className="flex-1 min-h-0 overflow-y-auto bg-slate-50/40 p-2 sm:p-4">
+                <ErrorBoundary fallbackTitle={`Error al renderizar ${activeWindow.title} (${activeWindow.screenId})`}>
+                  <FinixUIThemeContext.Provider value={resolvedTheme}>
+                    <div className={resolvedTheme === 'fiori' ? 'finix-fiori-mode' : ''}>
+                      <FinixScreenRenderer
+                        screenId={activeWindow.screenId}
+                        screenName={activeWindow.title}
+                      />
+                    </div>
+                  </FinixUIThemeContext.Provider>
+                </ErrorBoundary>
+              </div>
+            )}
           </div>
         ) : (
           /* Estado Vacío: Lienzo Oficial de SAP Business One */
