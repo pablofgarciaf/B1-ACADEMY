@@ -33,6 +33,39 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
   const inicio = useRef<{ px: number; py: number; x: number; y: number; movido: boolean } | null>(null);
   // Ref para disparar onAbrir FUERA del updater de setPos (evita "setState during render")
   const pendingClickRef = useRef<'izq' | 'der' | null>(null);
+  // Posición de reposo (antes de acercarse al chat) y estado de animación
+  const restPosRef = useRef<Pos | null>(null);
+  const posRef = useRef<Pos | null>(null);
+  const [animando, setAnimando] = useState(false);
+
+  // Mantiene posRef sincronizado para acceso sin re-registrar listeners
+  useEffect(() => { posRef.current = pos; }, [pos]);
+
+  // Acercar FeNi al chat cuando se abre; volver a su posición de reposo al cerrarse
+  useEffect(() => {
+    const acercar = (e: Event) => {
+      const { lado, y } = (e as CustomEvent<{ lado: 'izq' | 'der'; y: number }>).detail;
+      if (posRef.current) restPosRef.current = { ...posRef.current };
+      setAnimando(true);
+      const pegadoX = lado === 'izq' ? MARGEN : window.innerWidth - TAM - MARGEN;
+      const targetY = Math.min(Math.max(MARGEN + 60, y), window.innerHeight - TAM - MARGEN);
+      setPos({ x: pegadoX, y: targetY });
+    };
+    const volver = () => {
+      if (restPosRef.current) {
+        setPos(restPosRef.current);
+        restPosRef.current = null;
+      }
+      // Quitamos la transición después de que termine la animación de vuelta
+      setTimeout(() => setAnimando(false), 350);
+    };
+    window.addEventListener('feni-acercar', acercar);
+    window.addEventListener('feni-volver', volver);
+    return () => {
+      window.removeEventListener('feni-acercar', acercar);
+      window.removeEventListener('feni-volver', volver);
+    };
+  }, []);
 
   useEffect(() => {
     let guardada: Record<string, Pos> = {};
@@ -126,7 +159,13 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
       onMouseDown={(e) => { e.preventDefault(); iniciar(e.clientX, e.clientY); }}
       onTouchStart={(e) => { const t = e.touches[0]; if (t) iniciar(t.clientX, t.clientY); }}
       className="fixed z-40 touch-none select-none rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 active:scale-95"
-      style={{ left: `${pos.x}px`, top: `${pos.y}px`, width: `${TAM}px`, height: `${TAM}px` }}
+      style={{
+        left: `${pos.x}px`,
+        top: `${pos.y}px`,
+        width: `${TAM}px`,
+        height: `${TAM}px`,
+        transition: (animando && !arrastrando) ? 'left 0.32s cubic-bezier(0.34,1.56,0.64,1), top 0.32s cubic-bezier(0.34,1.56,0.64,1)' : 'none',
+      }}
     >
       <FeNiCara tam={TAM} flotar={!arrastrando} aleteando={arrastrando} />
     </button>

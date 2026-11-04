@@ -33,6 +33,7 @@ export default function SimuladorAIAdvisor({
   const [isOpen, setIsOpen] = useState(initialOpen);
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
+  const [lado, setLado] = useState<'izq' | 'der'>('der');
   const isFiori = theme === 'fiori';
 
   const [messages, setMessages] = useState<Message[]>([
@@ -59,10 +60,27 @@ export default function SimuladorAIAdvisor({
 
   // Escucha el evento global disparado por FeNiMascota o tecla F1
   useEffect(() => {
-    const abrirDesdeEvento = () => setIsOpen(true);
+    const abrirDesdeEvento = (e: Event) => {
+      const detail = (e as CustomEvent<{ lado?: 'izq' | 'der' }>).detail;
+      if (detail?.lado) setLado(detail.lado);
+      setIsOpen(true);
+    };
     window.addEventListener('feni-abrir', abrirDesdeEvento);
     return () => window.removeEventListener('feni-abrir', abrirDesdeEvento);
   }, []);
+
+  // Cuando abre: mueve a FeNi junto al chat. Cuando cierra: lo regresa.
+  useEffect(() => {
+    if (isOpen) {
+      const chatHeight = isMinimized ? 60 : (isMaximized
+        ? Math.min(720, window.innerHeight * 0.8)
+        : Math.min(600, window.innerHeight - 80));
+      // y = justo encima del panel de chat (bottom-14 = 56px)
+      const chatTopY = window.innerHeight - 56 - chatHeight - 68; // 68 = TAM(60) + 8px margen
+      window.dispatchEvent(new CustomEvent('feni-acercar', { detail: { lado, y: chatTopY } }));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,6 +144,7 @@ export default function SimuladorAIAdvisor({
 
   const handleClose = () => {
     setIsOpen(false);
+    window.dispatchEvent(new CustomEvent('feni-volver'));
     if (onClose) onClose();
   };
 
@@ -157,7 +176,9 @@ export default function SimuladorAIAdvisor({
         <div className={
           embedded
             ? "w-full h-full flex flex-col overflow-hidden bg-white dark:bg-[#111927]"
-            : `fixed inset-x-3 bottom-14 z-[5000] flex flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto sm:right-4 sm:left-auto transition-all duration-200 ${
+            : `fixed inset-x-3 bottom-14 z-[5000] flex flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-slate-900 shadow-2xl backdrop-blur-xl sm:inset-x-auto transition-all duration-200 ${
+                lado === 'izq' ? 'sm:left-4 sm:right-auto' : 'sm:right-4 sm:left-auto'
+              } ${
                 isMaximized
                   ? 'sm:w-[520px] h-[min(80vh,720px)]'
                   : isMinimized

@@ -1611,8 +1611,8 @@ export default function FinixDesktopShell({
         const activeModuleTitle = activeWin?.moduleName
           || (activeWin?.moduleKey && catalog.modules[activeWin.moduleKey]?.name)
           || 'General';
-        const handleFeniAbrir = () => {
-          window.dispatchEvent(new CustomEvent('feni-abrir'));
+        const handleFeniAbrir = (lado: 'izq' | 'der') => {
+          window.dispatchEvent(new CustomEvent('feni-abrir', { detail: { lado } }));
         };
         return (
           <>
