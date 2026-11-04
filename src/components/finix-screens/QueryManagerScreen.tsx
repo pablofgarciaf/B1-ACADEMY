@@ -145,7 +145,7 @@ export default function QueryManagerScreen({ persistQueries = true }: { persistQ
       q += `\nLIMIT ${limitVal}`;
     }
     setSql(q);
-    setActiveTab('editor');
+    // No saltar al editor SQL — mantener el tab visual activo y mostrar resultados abajo
     intentarEjecutar(q);
   };
 
