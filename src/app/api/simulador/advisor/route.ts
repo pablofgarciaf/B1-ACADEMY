@@ -179,7 +179,7 @@ INSTRUCCIONES CLAVE DE RESPUESTA:
 - Sé conciso, profesional y responde siempre con los nombres y códigos de pantalla exactos del catálogo.`;
 
     const completion = await openai.chat.completions.create({
-      model: 'meta/llama-3.2-11b-vision-instruct',
+      model: 'meta/llama-3.2-90b-vision-instruct',
       messages: [
         { role: 'system', content: contextualPrompt },
         ...messages

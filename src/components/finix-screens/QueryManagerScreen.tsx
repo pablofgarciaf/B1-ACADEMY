@@ -103,7 +103,9 @@ export default function QueryManagerScreen({ persistQueries = true }: { persistQ
       const res = ejecutarConsulta(c.data, sqlLimpio);
       setResultado(res);
       setError('');
-      void c.save({ action: 'query', data: { title: 'Consulta ejecutada', sql: sqlAprobado } });
+      // Telemetría: registrar la consulta ejecutada. Capturar error silenciosamente
+      // para evitar el overlay de Next.js cuando hay una operación en curso.
+      c.save({ action: 'query', data: { title: 'Consulta ejecutada', sql: sqlAprobado } }).catch(() => {/* lock en curso — ignorar */});
     } catch (e) {
       setResultado(null);
       setError(e instanceof Error ? e.message : 'Error en la ejecución de la consulta');
