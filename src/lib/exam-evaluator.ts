@@ -36,8 +36,9 @@ function parseEvaluation(raw: string, maxPoints: number, evaluator: string): Que
 }
 
 async function evaluateWithNvidia(apiKey: string, system: string, user: string, maxPoints: number): Promise<QuestionResult> {
-  // Llama 3.x 70B fue retirado por NVIDIA (ago-2026). Nemotron 3 Super: rápido y estricto en la prueba de rigor.
-  const model = process.env.NVIDIA_EXAM_MODEL || 'nvidia/nemotron-3-super-120b-a12b';
+  // Nemotron 3 Super (120B) no está disponible en esta cuenta (HTTP 404).
+  // Fallback: llama-3.2-90b-vision-instruct — el único modelo funcional en la clave nvapi actual.
+  const model = process.env.NVIDIA_EXAM_MODEL || 'meta/llama-3.2-90b-vision-instruct';
   const response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },

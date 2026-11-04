@@ -7,6 +7,7 @@ import { z } from 'zod';
 
 import { consumeQuota } from '@/lib/rate-limit';
 import { assertAccountReady, getSessionState, requireBearerUser } from '@/lib/server-auth';
+import { aiCache, buildCacheKey } from '@/lib/ai-cache';
 
 const chatSchema = z.union([
   z.object({
@@ -140,10 +141,18 @@ ${catalog}
 CONTEXTO RELEVANTE:
 ${contextStr}`;
 
+    // ── Caché: respuesta ya conocida → 0 ms, sin consumir cuota de NVIDIA ──
+    const lastMsg = messages[messages.length - 1]?.content ?? '';
+    const cacheKey = buildCacheKey('chat', lastMsg);
+    const cached = aiCache.get(cacheKey);
+    if (cached) {
+      return NextResponse.json({ message: cached, reply: cached, cached: true });
+    }
+
     const completion = await openai.chat.completions.create({
-      model: "meta/llama-3.2-11b-vision-instruct",
+      model: 'meta/llama-3.2-90b-vision-instruct',
       messages: [
-        { role: "system", content: systemPrompt },
+        { role: 'system', content: systemPrompt },
         ...messages
       ],
       temperature: 0.2,
@@ -151,6 +160,8 @@ ${contextStr}`;
     });
 
     const reply = completion.choices[0]?.message?.content || '';
+    // Guardar en caché solo respuestas reales del modelo
+    if (reply) aiCache.set(cacheKey, reply);
     return NextResponse.json({ message: reply, reply });
   } catch (error: any) {
     console.error("Error in chat API:", error);

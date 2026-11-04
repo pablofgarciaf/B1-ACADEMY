@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 import { z } from 'zod';
 import { consumeQuota } from '@/lib/rate-limit';
 import { assertAccountReady, getSessionState, requireBearerUser } from '@/lib/server-auth';
+import { aiCache, buildCacheKey } from '@/lib/ai-cache';
 
 export const runtime = 'nodejs';
 
@@ -178,6 +179,14 @@ INSTRUCCIONES CLAVE DE RESPUESTA:
   Indica que debe ir a **Finanzas & Contabilidad > [FIN002] Libro Mayor** y consultar la cuenta **1.1.02 · Bancos**. Y para conciliación bancaria con extractos, a **Gestión de Bancos > [BNK001] Conciliación Bancaria**.
 - Sé conciso, profesional y responde siempre con los nombres y códigos de pantalla exactos del catálogo.`;
 
+    // ── Caché: incluir pantalla/módulo en la clave para evitar respuestas fuera de contexto ──
+    const lastMsg = messages[messages.length - 1]?.content ?? '';
+    const cacheKey = buildCacheKey('advisor', currentScreen, currentModule, lastMsg);
+    const cached = aiCache.get(cacheKey);
+    if (cached) {
+      return NextResponse.json({ message: cached, cached: true });
+    }
+
     const completion = await openai.chat.completions.create({
       model: 'meta/llama-3.2-90b-vision-instruct',
       messages: [
@@ -189,6 +198,7 @@ INSTRUCCIONES CLAVE DE RESPUESTA:
     });
 
     const reply = completion.choices[0]?.message?.content || 'No pude generar la respuesta en este momento. Intenta nuevamente.';
+    if (reply && reply.length > 30) aiCache.set(cacheKey, reply);
     return NextResponse.json({ message: reply });
   } catch (error: unknown) {
     console.error('Error in FeNi AI advisor API:', error instanceof Error ? error.message : error);
