@@ -10,8 +10,8 @@ export function useLegalConfiguration() {
       try {const response=await fetch('/api/public/legal',{cache:'no-store'});const body=await response.json();if(active) setConfig({ready:response.ok&&body.ready===true,available:response.ok,policyVersion:typeof body.policyVersion==='string'?body.policyVersion:POLITICAS_VERSION});}
       catch {if(active)setConfig(c=>({...c,ready:false,available:false}));}
     };
-    void refresh();window.addEventListener('focus',refresh);window.addEventListener('academy:legal-updated',refresh);
-    return ()=>{active=false;window.removeEventListener('focus',refresh);window.removeEventListener('academy:legal-updated',refresh);};
+    void refresh();window.addEventListener('academy:legal-updated',refresh);
+    return ()=>{active=false;window.removeEventListener('academy:legal-updated',refresh);};
   },[]);
   return {...config,publicIntakeAvailable:config.available&&config.ready};
 }

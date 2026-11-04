@@ -117,12 +117,12 @@ export default function SimuladorAIAdvisor({
       });
 
       const data = await response.json();
+      // La API siempre retorna `message` (amigable). Solo usamos `error` como último recurso.
+      const responseContent = data.message || data.error || 'FeNi no está disponible en este momento. Para ayuda inmediata escríbenos por WhatsApp. 📱';
       const aiMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content:
-          data.message ||
-          'Lo siento, hubo un error. Por favor, intenta nuevamente.',
+        content: responseContent,
         timestamp: new Date(),
       };
 
@@ -133,7 +133,7 @@ export default function SimuladorAIAdvisor({
         id: (Date.now() + 1).toString(),
         role: 'assistant',
         content:
-          'Lo siento, no pude conectarme. Verifica tu conexión e intenta nuevamente.',
+          'FeNi no pudo conectarse en este momento. Verifica tu conexión a internet e intenta nuevamente. Para asistencia inmediata escríbenos por WhatsApp. 📱',
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, errorMessage]);
