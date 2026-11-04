@@ -100,7 +100,8 @@ export default function FinixDesktopShell({
   const [windowCount, setWindowCount] = useState(0);
   const [nextZIndex, setNextZIndex] = useState(1);
   const [activeRole, setActiveRole] = useState<FinixRole>('super');
-  const [themeMode, setThemeMode] = useState<'finix_horizon' | 'finix_fiori_3_dark' | 'classic'>('finix_horizon');
+  // Default: Fiori (Horizon 3) — estilo moderno SAP. 'finix_horizon' = Classic MDI clásico crema.
+  const [themeMode, setThemeMode] = useState<'finix_horizon' | 'finix_fiori_3_dark' | 'classic'>('finix_fiori_3_dark');
   const [activeSlot, setActiveSlot] = useState<string>('curso');
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'info' | 'success' | 'warn' } | null>(null);
