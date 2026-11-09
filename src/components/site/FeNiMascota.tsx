@@ -12,17 +12,23 @@ const CLAVE = 'feni_pos_v1';
 
 type Pos = { x: number; y: number };
 
+/** Alto de la barra inferior móvil cuando está visible (0 en escritorio o en rutas sin barra). */
+function reservaInferior(): number {
+  const barra = document.querySelector('[data-mobile-bottom-nav]');
+  return barra ? barra.getBoundingClientRect().height : 0;
+}
+
 function posInicial(pathname: string): Pos {
   const w = window.innerWidth;
   const h = window.innerHeight;
   const enAula = pathname.startsWith('/mi-aula/');
-  return { x: enAula ? MARGEN : w - TAM - MARGEN, y: h - TAM - MARGEN - (enAula ? 8 : 0) };
+  return { x: enAula ? MARGEN : w - TAM - MARGEN, y: h - TAM - MARGEN - reservaInferior() - (enAula ? 8 : 0) };
 }
 
 function acotar(p: Pos): Pos {
   return {
     x: Math.min(Math.max(MARGEN, p.x), window.innerWidth - TAM - MARGEN),
-    y: Math.min(Math.max(MARGEN + 60, p.y), window.innerHeight - TAM - MARGEN),
+    y: Math.min(Math.max(MARGEN + 60, p.y), window.innerHeight - TAM - MARGEN - reservaInferior()),
   };
 }
 
@@ -48,7 +54,7 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
       if (posRef.current) restPosRef.current = { ...posRef.current };
       setAnimando(true);
       const pegadoX = lado === 'izq' ? MARGEN : window.innerWidth - TAM - MARGEN;
-      const targetY = Math.min(Math.max(MARGEN + 60, y), window.innerHeight - TAM - MARGEN);
+      const targetY = Math.min(Math.max(MARGEN + 60, y), window.innerHeight - TAM - MARGEN - reservaInferior());
       setPos({ x: pegadoX, y: targetY });
     };
     const volver = () => {

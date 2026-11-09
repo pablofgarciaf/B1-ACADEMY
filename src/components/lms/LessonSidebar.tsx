@@ -283,7 +283,7 @@ export function LessonSidebar({
     <>
       {/* Mobile toggle button */}
       <button 
-        className="lg:hidden fixed bottom-4 right-4 z-50 bg-finix-blue text-white p-3 rounded-full shadow-lg"
+        className="lg:hidden fixed bottom-20 right-4 z-50 bg-finix-blue text-white p-3 rounded-full shadow-lg"
         onClick={() => setIsMobileOpen(!isMobileOpen)}
       >
         {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

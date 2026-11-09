@@ -4,6 +4,7 @@ import CookieConsent from "@/components/legal/CookieConsent";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 import { AuthProvider } from "@/context/AuthContext";
 import HelpWidget from "@/components/site/HelpWidget";
+import { MobileBottomNav } from "@/components/site/MobileBottomNav";
 import "./globals.css";
 import { SITE_URL, publicUrl } from "@/lib/site-url";
 import CampaignAttribution from '@/components/site/CampaignAttribution';
@@ -121,6 +122,7 @@ export default function RootLayout({
             {children}
             <CampaignAttribution />
             <HelpWidget />
+            <MobileBottomNav />
           </AuthProvider>
           {/* LOPDP: Google Tag Manager solo se carga tras el consentimiento de analítica (antes se cargaba siempre). */}
           <CookieConsent gtmId={GTM_ID} />
