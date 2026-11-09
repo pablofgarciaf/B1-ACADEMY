@@ -8,14 +8,17 @@ import { usePathname } from 'next/navigation';
  */
 const TAM = 60;
 const MARGEN = 14;
-const CLAVE = 'feni_pos_v1';
+// v2: la posición guardada en v1 podía quedar arriba y fuera de lugar; empezamos de cero.
+const CLAVE = 'feni_pos_v2';
 
 type Pos = { x: number; y: number };
 
-/** Alto de la barra inferior móvil cuando está visible (0 en escritorio o en rutas sin barra). */
+/**
+ * Espacio reservado abajo para la barra móvil (h-16 + margen de seguridad).
+ * Constante por ancho de pantalla: no medimos el DOM, porque al montar la barra aún no existe.
+ */
 function reservaInferior(): number {
-  const barra = document.querySelector('[data-mobile-bottom-nav]');
-  return barra ? barra.getBoundingClientRect().height : 0;
+  return window.innerWidth < 768 ? 72 : 0;
 }
 
 function posInicial(pathname: string): Pos {

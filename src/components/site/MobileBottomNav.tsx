@@ -48,12 +48,9 @@ function BotonWhatsApp({ url }: { url: string }) {
 
 /**
  * Primera columna: iniciar sesión si no hay usuario, cerrar sesión si lo hay.
- * Mientras AuthContext carga, deja un hueco vacío para no mostrar el botón equivocado.
+ * No esperamos a AuthContext: si la carga se atasca, el botón de login debe seguir visible.
  */
-function BotonSesion({ pathname, sesionActiva, cargando, onCerrar }: { pathname: string; sesionActiva: boolean; cargando: boolean; onCerrar: () => void }) {
-  if (cargando) {
-    return <div aria-hidden="true" className={CLASE_ENLACE} />;
-  }
+function BotonSesion({ pathname, sesionActiva, onCerrar }: { pathname: string; sesionActiva: boolean; onCerrar: () => void }) {
   if (sesionActiva) {
     return (
       <button
@@ -85,7 +82,7 @@ function BotonSesion({ pathname, sesionActiva, cargando, onCerrar }: { pathname:
  */
 export function MobileBottomNav() {
   const pathname = usePathname();
-  const { userProfile, loading, logout } = useAuth();
+  const { userProfile, logout } = useAuth();
   if (ocultaMobileNav(pathname)) return null;
 
   const wa = whatsappUrl();
@@ -105,7 +102,6 @@ export function MobileBottomNav() {
           <BotonSesion
             pathname={pathname}
             sesionActiva={!!userProfile}
-            cargando={loading}
             onCerrar={() => void logout()}
           />
           {MOBILE_NAV_IZQUIERDA.map((link) => (
