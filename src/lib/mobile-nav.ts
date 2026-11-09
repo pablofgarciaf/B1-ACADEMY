@@ -22,13 +22,15 @@ export const MOBILE_NAV_DERECHA: MobileNavLink[] = [
 
 const MENSAJE_WHATSAPP = 'Hola, quiero información sobre B1 Academy.';
 
+/** Número público de la academia (Ecuador, +593). NEXT_PUBLIC_CONTACT_PHONE, si existe, lo reemplaza. */
+const NUMERO_POR_DEFECTO = '593983992549';
+
 /**
- * URL de WhatsApp con el número público configurado en NEXT_PUBLIC_CONTACT_PHONE.
- * Devuelve null si no hay un número válido: no mostramos un botón que lleve a un número falso.
+ * URL de WhatsApp. Siempre devuelve un enlace: con número lleva al chat;
+ * sin número abre WhatsApp sin destinatario para no dejar el botón muerto.
  */
-export function whatsappUrl(): string | null {
-  const numero = (process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '').replace(/\D/g, '');
-  if (numero.length < 7) return null;
+export function whatsappUrl(): string {
+  const numero = (process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '').replace(/\D/g, '') || NUMERO_POR_DEFECTO;
   return `https://wa.me/${numero}?text=${encodeURIComponent(MENSAJE_WHATSAPP)}`;
 }
 

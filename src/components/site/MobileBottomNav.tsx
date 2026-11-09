@@ -86,7 +86,7 @@ export function MobileBottomNav() {
   if (ocultaMobileNav(pathname)) return null;
 
   const wa = whatsappUrl();
-  const totalColumnas = 1 + MOBILE_NAV_IZQUIERDA.length + MOBILE_NAV_DERECHA.length + (wa ? 1 : 0);
+  const totalColumnas = 1 + MOBILE_NAV_IZQUIERDA.length + MOBILE_NAV_DERECHA.length + 1;
 
   return (
     <>
@@ -107,7 +107,7 @@ export function MobileBottomNav() {
           {MOBILE_NAV_IZQUIERDA.map((link) => (
             <EnlaceInterno key={link.href} link={link} activo={esRutaActiva(pathname, link.href)} />
           ))}
-          {wa && <BotonWhatsApp url={wa} />}
+          <BotonWhatsApp url={wa} />
           {MOBILE_NAV_DERECHA.map((link) => (
             <EnlaceInterno key={link.href} link={link} activo={esRutaActiva(pathname, link.href)} />
           ))}
