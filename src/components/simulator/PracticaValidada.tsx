@@ -260,14 +260,24 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
     const res = campos.map((c, i) => coincide(valores[i], c.valor, c.etiqueta));
     const buenos = res.filter(Boolean).length;
     setRevisado(res);
-    setIntentos((n) => n + 1);
+    const nuevoIntento = intentos + 1;
+    setIntentos(nuevoIntento);
     if (buenos === campos.length) {
       setLogrado(true);
       setEstado({ tono: 'exito', texto: '¡Operación y datos validados con éxito en B1 Center!' });
-      const intento: IntentoPractica = { valores: [...valores], intentos: intentos + 1, vioSolucion: mostrarSolucion };
+      const intento: IntentoPractica = { valores: [...valores], intentos: nuevoIntento, vioSolucion: mostrarSolucion };
       setTimeout(() => onCompleta(intento), 1500);
     } else {
-      setEstado({ tono: 'error', texto: `No se puede añadir: ${campos.length - buenos} campo(s) con valores incorrectos. Revisa los marcados en rojo.` });
+      const errados = campos.filter((_, i) => !res[i]).map(c => c.etiqueta).join(', ');
+      if (nuevoIntento >= 2) {
+        setMostrarSolucion(true);
+      }
+      setEstado({
+        tono: 'error',
+        texto: nuevoIntento >= 2
+          ? `No coincide: revisa ${errados}. Se activó la solución en rojo bajo cada campo para que puedas completarlo sin trabarte.`
+          : `No se puede validar: ${campos.length - buenos} campo(s) incorrecto(s) (${errados}). Revisa los campos marcados en rojo.`
+      });
     }
   };
 
@@ -662,10 +672,10 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
                   const est = revisado?.[i];
                   return (
                     <div key={`${i}-${c.etiqueta}`}>
-                      <div className="grid grid-cols-[150px_1fr] items-center gap-2">
-                        <label htmlFor={`campo-${i}`} className="flex items-center gap-1 text-[#32465c] leading-tight" title={c.etiqueta}>
+                      <div className="grid grid-cols-[minmax(120px,140px)_1fr] items-center gap-2">
+                        <label htmlFor={`campo-${i}`} className="flex items-center gap-1 text-[#32465c] text-[11px] font-semibold leading-tight truncate shrink-0" title={c.etiqueta}>
                           {esCodigoMaestro(c.valor) && <ArrowRight size={11} className="shrink-0 text-[#f0ab00]" aria-label="Enlace a datos maestros" />}
-                          {c.etiqueta}
+                          <span className="truncate">{c.etiqueta}</span>
                         </label>
                         {esBooleano(c.valor) ? (
                           <span data-guia={`campo-${i}`} className="flex items-center h-6">

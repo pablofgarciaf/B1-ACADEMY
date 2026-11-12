@@ -46,6 +46,18 @@ export async function POST(request:Request){
         if(valid&&mission&&event)valid=salesWriteMatches(await readCompany(uid),event,key);
         if(valid&&requiredPracticeValidationVersion(key)===3&&event)valid=missionOutcomeMatches(await readCompany(uid),event,key);
       }
+      // Si la evidencia de evento falló o el estudiante pulsó verificar sobre un registro ya guardado en su empresa:
+      if(!valid && requiredPracticeValidationVersion(key)===3){
+        const companyState = await readCompany(uid);
+        const auditEvents = await readCompanyAudit(uid, 50);
+        // Buscar el último evento que coincida con la misión
+        for(const ev of auditEvents){
+          if(missionOutcomeMatches(companyState, ev, key)){
+            valid = true;
+            break;
+          }
+        }
+      }
       correct=valid?1:0;
     }else{
       correct=fields.length===d.valores.length?fields.filter((f,i)=>coincide(d.valores[i],f.valor,f.etiqueta)).length:0;

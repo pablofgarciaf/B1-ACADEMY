@@ -601,7 +601,7 @@ export default function StudentDashboardPage() {
           </div>
 
           <div className="space-y-6">
-            {SYLLABUS_BLOCKS.concat(['Proyecto Final']).map((blockName) => {
+            {SYLLABUS_BLOCKS.map((blockName) => {
               const modulesInBlock = OFFICIAL_SYLLABUS.filter(m => m.block === blockName);
               if (!modulesInBlock.length) return null;
 

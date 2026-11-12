@@ -100,6 +100,7 @@ const REGLAS: [RegExp, PantallaConectada][] = [
 
 export function pantallaConectada(guia?: { title?: string; menu_path?: string; missionId?: string } | null): PantallaConectada | null {
   if (!guia) return null;
+  if (guia.missionId === 'mod1-c1#7') return null;
   const finalModes:Record<string,import('@/components/finix-screens/FinalOperationsScreen').FinalOperationMode>={'mod8-c1#6':'procurementQuotes','mod9-c4#8':'costAdjustment','mod19-c1#8':'cardSettlement','mod19-c3#11':'vendorReconciliation','mod19-c4#7':'vendorAging','mod20-c2#8':'accountingPreview'};
   if(guia.missionId&&finalModes[guia.missionId])return {clave:'operaciones',mode:finalModes[guia.missionId]};
   if(guia.missionId==='mod3-c1#7'||guia.missionId==='mod3-c3#6'||guia.missionId==='mod3-c3#11'||guia.missionId==='mod3-c4#7')return {clave:'activos'};
@@ -121,8 +122,8 @@ export function pantallaConectada(guia?: { title?: string; menu_path?: string; m
   if(/crear serie de ajuste/.test(preliminar)) return { clave: 'series', docType:'asientos' };
   if(/banco|cobro|pago|extracto|concili/.test(preliminar)) return { clave: 'bancos' };
   // Buscar, consultar o asistentes/fichas de configuración guiada no guardan un registro de motor directo: esas prácticas siguen con la ficha del ejercicio en PracticaValidada.
-  // Ver, solicitar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.
-  if (/buscar|consultar|identificar|verificar|revisar|visualizar|solicitar|anular|anulacion|asistente de pagos|payment wizard|generador de consultas|agregar tabla|filtrar|seleccionar campos|vincular consulta|programar notificacion|configurar ficha|datos de planificacion|definir peso|grupo cable|definir categorias|activar informacion|widget de actividades|agregar widget|configuracion de widget|prevision|alerta de stock|proceso de autorizacion|visibilidad de udf|importar desde excel|importar nuevo/.test(plano(guia.title ?? '')) || /^ver\b/.test(plano(guia.title ?? '').trim())) return null;
+  // Ver, solicitar, confirmar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.
+  if (/buscar|consultar|identificar|verificar|revisar|visualizar|confirmar|solicitar|anular|anulacion|asistente de pagos|payment wizard|generador de consultas|agregar tabla|filtrar|seleccionar campos|vincular consulta|programar notificacion|configurar ficha|datos de planificacion|definir peso|grupo cable|definir categorias|activar informacion|widget de actividades|agregar widget|configuracion de widget|prevision|alerta de stock|proceso de autorizacion|visibilidad de udf|importar desde excel|importar nuevo/.test(plano(guia.title ?? '')) || /^ver\b/.test(plano(guia.title ?? '').trim())) return null;
   const texto = plano(`${guia.title ?? ''} ${guia.menu_path ?? ''}`);
   // Asistente de pagos: ejecutarlo registra pagos reales (pantalla de Bancos); ver recomendaciones, elegir opciones
   // o generar el archivo no guardan nada en la empresa y siguen como ficha.

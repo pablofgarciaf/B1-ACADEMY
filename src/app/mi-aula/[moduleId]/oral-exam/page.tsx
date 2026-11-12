@@ -224,8 +224,6 @@ export default function ExamPage({ params }: { params: Promise<{ moduleId: strin
             <textarea
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
-              onPaste={(e) => { e.preventDefault(); setError('Pegar texto no está permitido en la evaluación. Responde con tus palabras.'); }}
-              onDrop={(e) => e.preventDefault()}
               rows={8}
               placeholder="Explica con tus palabras: qué es, para qué sirve en la empresa y cómo se hace en Finix ERP..."
               className="w-full rounded-xl bg-[#070b14] border border-gray-700 focus:border-blue-500 focus:outline-none p-3 text-sm text-gray-100 leading-relaxed"

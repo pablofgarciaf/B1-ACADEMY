@@ -34,6 +34,7 @@ import {
 import { SPECIALTY_DIPLOMAS } from '@/lib/curriculum-data';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
+import AdminProgressPanel from '@/components/admin/AdminProgressPanel';
 
 export default function AdminStudentsPanel() {
   const router = useRouter();
@@ -53,9 +54,12 @@ export default function AdminStudentsPanel() {
   }, [authLoading, userProfile, router]);
   // ─────────────────────────────────────────────────────────────────────────────
 
-  const [activeTab, setActiveTab] = useState<'estudiantes' | 'metricas' | 'certificados'>('estudiantes');
+  const [activeTab, setActiveTab] = useState<'estudiantes' | 'avances'>('estudiantes');
   const [students, setStudents] = useState<UserProfile[]>([]);
+  const [progressStudents, setProgressStudents] = useState<any[]>([]);
+  const [loadingProgress, setLoadingProgress] = useState(false);
   const [loadingList, setLoadingList] = useState(true);
+  const [userToken, setUserToken] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [roleFilter, setRoleFilter] = useState<string>('ALL');
 
@@ -82,11 +86,30 @@ export default function AdminStudentsPanel() {
     setLoadingList(false);
   }, [getAllStudents]);
 
+  const loadProgress = useCallback(async () => {
+    if (!currentUser) return;
+    setLoadingProgress(true);
+    try {
+      const token = await currentUser.getIdToken();
+      setUserToken(token);
+      const res = await fetch('/api/admin/progress', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const data = await res.json();
+      if (data.students) setProgressStudents(data.students);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setLoadingProgress(false);
+    }
+  }, [currentUser]);
+
   useEffect(() => {
     if (!authLoading && userProfile && (userProfile.role === 'super' || userProfile.role === 'admin')) {
       loadStudents();
+      loadProgress();
     }
-  }, [authLoading, userProfile, loadStudents]);
+  }, [authLoading, userProfile, loadStudents, loadProgress]);
 
   // Mostrar pantalla de carga mientras resuelve auth o redirect
   if (authLoading || !userProfile || (userProfile.role !== 'super' && userProfile.role !== 'admin')) {
@@ -260,8 +283,43 @@ export default function AdminStudentsPanel() {
           </div>
         </div>
 
-        {/* Buscador & Filtros de la Tabla */}
-        <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-4">
+        {/* Pestañas de Navegación Principal */}
+        <div className="flex items-center gap-2 border-b border-slate-200 dark:border-white/10 pb-3">
+          <button
+            onClick={() => setActiveTab('estudiantes')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+              activeTab === 'estudiantes'
+                ? 'bg-finix-blue text-white shadow-md shadow-finix-blue/20'
+                : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+            }`}
+          >
+            <Users className="w-4 h-4" />
+            <span>Usuarios & Matrículas ({students.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('avances')}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+              activeTab === 'avances'
+                ? 'bg-finix-blue text-white shadow-md shadow-finix-blue/20'
+                : 'text-slate-500 hover:text-slate-800 dark:hover:text-white'
+            }`}
+          >
+            <Award className="w-4 h-4" />
+            <span>Avance de Clases, Prácticas y Desbloqueo de Exámenes</span>
+          </button>
+        </div>
+
+        {activeTab === 'avances' ? (
+          <AdminProgressPanel
+            students={progressStudents}
+            loading={loadingProgress}
+            onRefresh={loadProgress}
+            currentUserToken={userToken}
+          />
+        ) : (
+          /* Buscador & Filtros de la Tabla */
+          <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm space-y-4">
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
             {/* Input Buscador */}
             <div className="relative w-full sm:w-80">
@@ -397,6 +455,7 @@ export default function AdminStudentsPanel() {
             </table>
           </div>
         </div>
+        )}
       </main>
 
       {/* MODAL PARA REGISTRAR NUEVO ESTUDIANTE */}
