@@ -100,7 +100,16 @@ export async function POST(request: Request) {
         if(current?.uid===user.uid&&current.status==='in_progress'&&current.expiresAt>now&&current.bankHash===session.bankHash)return {id:active!.id,session:current,resumed:true};
         const attempts=(data?.attempts??[]).filter((n:number)=>n>now-86400_000);
         if(attempts.length>=MAX_ATTEMPTS_PER_DAY)throw new Error('EXAM_QUOTA');
-        tx.create(sessions().doc(examId),session);tx.set(quotaRef,{uid:user.uid,attempts:[...attempts,now],activeId:examId});
+        tx.create(sessions().doc(examId),session);
+        tx.set(quotaRef,{
+          uid:user.uid,
+          studentEmail:user.email,
+          studentName:getStudentDisplayName(user.profile,user.email),
+          moduleId:courseModule.id,
+          attempts:[...attempts,now],
+          activeId:examId,
+          updatedAt:new Date().toISOString()
+        });
         return {id:examId,session,resumed:false};
       });
       return NextResponse.json({examId:opened.id,...questionPayload(bank,opened.session),resumed:opened.resumed});
