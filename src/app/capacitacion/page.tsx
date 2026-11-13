@@ -19,7 +19,11 @@ import {
   Settings2,
   Compass,
   Search,
-  Check
+  Check,
+  Calculator,
+  Cpu,
+  Briefcase,
+  Users
 } from 'lucide-react';
 import { Navbar } from '@/components/site/Navbar';
 import { Footer } from '@/components/site/Footer';
@@ -32,6 +36,30 @@ import {
   type SpecialtyDiploma,
   type SyllabusBlock
 } from '@/lib/curriculum-data';
+
+
+interface FilterAreaItem {
+  key: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+// Fila 1: Los 5 filtros con menos caracteres (Todas las áreas y los 4 más cortos)
+const FILTER_ROW_1: FilterAreaItem[] = [
+  { key: 'ALL', label: 'Todas las áreas', icon: Sparkles },
+  { key: 'Proyecto Final', label: 'Proyecto Final', icon: Award },
+  { key: 'Finanzas y Fiscalidad', label: 'Finanzas y Fiscalidad', icon: Calculator },
+  { key: 'Tecnología y Analítica', label: 'Tecnología y Analítica', icon: Cpu },
+  { key: 'Gestión Comercial y CRM', label: 'Gestión Comercial y CRM', icon: ShoppingCart },
+];
+
+// Fila 2: Los 4 filtros con más caracteres restantes
+const FILTER_ROW_2: FilterAreaItem[] = [
+  { key: 'Producción y Planificación', label: 'Producción y Planificación', icon: Factory },
+  { key: 'Consultoría y Business Analyst', label: 'Consultoría y Business Analyst', icon: Briefcase },
+  { key: 'Administración y Talento Humano', label: 'Administración y Talento Humano', icon: Users },
+  { key: 'Logística y Cadena de Suministro', label: 'Logística y Cadena de Suministro', icon: Package },
+];
 
 export default function CapacitacionPage() {
   const [selectedBlock, setSelectedBlock] = useState<string>('ALL');
@@ -80,13 +108,53 @@ export default function CapacitacionPage() {
           </div>
         </div>
 
-        <div className="flex gap-2 overflow-x-auto pb-2" role="group" aria-label="Filtrar rutas por área">
-          {['ALL', ...SYLLABUS_BLOCKS].map(block => (
-            <button key={block} type="button" onClick={() => setSelectedBlock(block)} aria-pressed={selectedBlock === block}
-              className={`shrink-0 rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${selectedBlock === block ? 'border-finix-blue bg-finix-blue text-white' : 'border-slate-200 bg-white text-slate-700 hover:border-finix-blue dark:border-white/15 dark:bg-white/5 dark:text-slate-200'}`}>
-              {block === 'ALL' ? 'Todas las áreas' : block}
-            </button>
-          ))}
+        {/* Filtros organizados en DOS (2) filas limpias y visibles sin barra de scroll */}
+        <div className="space-y-2.5 max-w-5xl mx-auto w-full" role="group" aria-label="Filtrar rutas por área">
+          {/* Fila 1: 5 filtros con menos caracteres */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+            {FILTER_ROW_1.map(({ key, label, icon: Icon }) => {
+              const isSelected = selectedBlock === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setSelectedBlock(key)}
+                  aria-pressed={isSelected}
+                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-full border px-3.5 sm:px-4 py-2 text-xs font-semibold transition-all duration-200 active:scale-95 cursor-pointer shadow-sm ${
+                    isSelected
+                      ? 'border-finix-blue bg-finix-blue text-white shadow-finix-blue/25'
+                      : 'border-slate-200 bg-white text-slate-700 hover:border-finix-blue/60 hover:text-finix-blue hover:bg-slate-50 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-sky-300 dark:hover:bg-white/[0.08]'
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isSelected ? 'text-white' : 'text-finix-blue dark:text-sky-400'}`} />
+                  <span>{label}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Fila 2: 4 filtros con más caracteres */}
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5">
+            {FILTER_ROW_2.map(({ key, label, icon: Icon }) => {
+              const isSelected = selectedBlock === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setSelectedBlock(key)}
+                  aria-pressed={isSelected}
+                  className={`inline-flex items-center gap-1.5 sm:gap-2 rounded-xl sm:rounded-full border px-3.5 sm:px-4 py-2 text-xs font-semibold transition-all duration-200 active:scale-95 cursor-pointer shadow-sm ${
+                    isSelected
+                      ? 'border-finix-blue bg-finix-blue text-white shadow-finix-blue/25'
+                      : 'border-slate-200 bg-white text-slate-700 hover:border-finix-blue/60 hover:text-finix-blue hover:bg-slate-50 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-sky-300 dark:hover:bg-white/[0.08]'
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isSelected ? 'text-white' : 'text-finix-blue dark:text-sky-400'}`} />
+                  <span>{label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* SECCIÓN 1: DIPLOMAS DE ESPECIALIDAD */}

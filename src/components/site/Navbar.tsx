@@ -48,9 +48,7 @@ export function Navbar() {
     { name: 'Talento', href: '/talento', icon: Award },
   ];
 
-  if (isSuperOrAdmin) {
-    navLinks.push({ name: 'Panel Admin', href: '/admin', icon: ShieldCheck });
-  }
+  // Panel admin en badge
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 dark:bg-[#080d1a]/85 border-b border-slate-200 dark:border-white/[0.08] transition-colors">

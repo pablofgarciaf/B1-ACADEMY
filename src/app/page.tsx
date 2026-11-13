@@ -60,62 +60,62 @@ export default function HomePage() {
 
       <main className="flex-1">
         {/* HERO SECTION DE LA ESCUELA */}
-        <section className="relative pt-12 pb-20 lg:pt-20 lg:pb-28 overflow-hidden">
+        <section className="relative pt-6 pb-8 sm:pt-8 sm:pb-10 lg:pt-8 lg:pb-10 overflow-hidden">
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[380px] bg-gradient-to-tr from-finix-blue/20 via-sky-500/15 to-transparent blur-3xl -z-10 pointer-events-none" />
 
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Main Header */}
-            <div className="text-center max-w-4xl mx-auto space-y-6 py-4 sm:py-8">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue dark:text-sky-300">
+            <div className="text-center max-w-4xl mx-auto space-y-4 sm:space-y-5 py-1 sm:py-2">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-finix-blue/30 bg-finix-blue/5 text-xs font-bold text-finix-blue dark:text-sky-300">
                 <span className="w-2 h-2 rounded-full bg-finix-blue animate-pulse" />
                 Academia Tecnológica B2B / B2C • B1 Academy Ecuador
               </div>
 
               {/* H1 Exacto (45-65 chars) -> 53 caracteres */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white font-display">
                 Capacitación Práctica en SAP Business One
               </h1>
 
-              <p className="text-base sm:text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
                 Aprende procesos empresariales con clases guiadas y un laboratorio de práctica. Elige una ruta por función y avanza a tu ritmo.
               </p>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-1">
                 <Link
                   href="/capacitacion"
-                  className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-finix-blue to-sky-600 text-white font-bold text-sm sm:text-base shadow-xl shadow-finix-blue/25 hover:shadow-finix-blue/40 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-finix-blue to-sky-600 text-white font-bold text-xs sm:text-sm shadow-lg shadow-finix-blue/25 hover:shadow-finix-blue/40 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Award className="w-5 h-5" />
+                  <Award className="w-4 h-4" />
                   Explorar rutas de formación
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/mi-aula"
-                  className="w-full sm:w-auto px-8 py-4 rounded-2xl border border-slate-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-slate-800 dark:text-white font-semibold text-sm sm:text-base hover:border-finix-blue/50 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
+                  className="w-full sm:w-auto px-6 py-3 rounded-xl border border-slate-300 dark:border-white/15 bg-white dark:bg-white/[0.04] text-slate-800 dark:text-white font-semibold text-xs sm:text-sm hover:border-finix-blue/50 transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer shadow-sm"
                 >
-                  <GraduationCap className="w-5 h-5 text-finix-blue" />
+                  <GraduationCap className="w-4 h-4 text-finix-blue" />
                   Ingresar a Mi Aula Virtual
                 </Link>
               </div>
 
               {/* Datos del programa */}
-              <div className="pt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-slate-200 dark:border-white/[0.08]">
-                <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display">{SPECIALTY_DIPLOMAS.length}</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Diplomas de Especialidad</p>
+              <div className="pt-5 sm:pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center border-t border-slate-200 dark:border-white/[0.08]">
+                <div className="p-3 sm:p-3.5 rounded-xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-slate-900 dark:text-white font-display">{SPECIALTY_DIPLOMAS.length}</p>
+                  <p className="text-xs text-slate-500 mt-0.5 font-medium">Diplomas de Especialidad</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-finix-blue dark:text-sky-400 font-display">{OFFICIAL_SYLLABUS.length}</p>
-                    <p className="text-xs text-slate-500 mt-1 font-medium">Módulos de estudio</p>
+                <div className="p-3 sm:p-3.5 rounded-xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-finix-blue dark:text-sky-400 font-display">{OFFICIAL_SYLLABUS.length}</p>
+                  <p className="text-xs text-slate-500 mt-0.5 font-medium">Módulos de estudio</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-emerald-500 font-display">{OFFICIAL_SYLLABUS.reduce((total, module) => total + module.classes.length, 0)}</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Clases guiadas</p>
+                <div className="p-3 sm:p-3.5 rounded-xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-emerald-500 font-display">{OFFICIAL_SYLLABUS.reduce((total, module) => total + module.classes.length, 0)}</p>
+                  <p className="text-xs text-slate-500 mt-0.5 font-medium">Clases guiadas</p>
                 </div>
-                <div className="p-4 rounded-2xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-amber-500 font-display">{new Set(OFFICIAL_SYLLABUS.map(module => module.block)).size}</p>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">Áreas temáticas</p>
+                <div className="p-3 sm:p-3.5 rounded-xl bg-white dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 shadow-sm">
+                  <p className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-amber-500 font-display">{new Set(OFFICIAL_SYLLABUS.map(module => module.block)).size}</p>
+                  <p className="text-xs text-slate-500 mt-0.5 font-medium">Áreas temáticas</p>
                 </div>
               </div>
             </div>

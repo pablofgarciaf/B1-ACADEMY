@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useCallback } from 'react';
 import { 
   Users, 
   Award, 
@@ -18,6 +18,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import Link from 'next/link';
+import { useAdminLayout } from '@/components/admin/AdminLayoutContext';
 
 interface ProgresoItem {
   id: string;
@@ -63,7 +64,7 @@ export default function AdminLuxuryProgressPage() {
   const [desbloqueando, setDesbloqueando] = useState<string | null>(null);
   const [mensaje, setMensaje] = useState<string | null>(null);
 
-  const cargar = async () => {
+  const cargar = useCallback(async () => {
     setLoading(true);
     setMensaje(null);
     try {
@@ -78,11 +79,11 @@ export default function AdminLuxuryProgressPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [selectedStudentUid]);
 
   useEffect(() => {
     cargar();
-  }, []);
+  }, [cargar]);
 
   const desbloquear = async (uid: string, modulo: string) => {
     setDesbloqueando(uid + modulo);
@@ -135,54 +136,47 @@ export default function AdminLuxuryProgressPage() {
     return data.todosLosIntentosDeExamen.filter(i => i.uid === selectedStudentUid);
   }, [data, selectedStudentUid]);
 
-  return (
-    <div className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col font-sans">
-      {/* Top Navbar */}
-      <header className="h-16 border-b border-white/10 bg-[#0a101d] px-6 flex items-center justify-between shrink-0">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold">
-            <GraduationCap className="w-5 h-5" />
-          </div>
-          <div>
-            <h1 className="text-sm font-extrabold text-white flex items-center gap-2">
-              Consola Master de Alumnos & Progreso
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                PRODUCCIÓN
-              </span>
-            </h1>
-            <p className="text-[11px] text-slate-400">Seguimiento individual por estudiante, clases y desbloqueo de exámenes</p>
-          </div>
-        </div>
+  const { setHeader } = useAdminLayout();
 
-        <div className="flex items-center gap-3">
+  useEffect(() => {
+    setHeader({
+      title: 'Consola Master de Alumnos & Progreso',
+      description: 'Seguimiento individualizado por estudiante, módulos completados y desbloqueo de exámenes en 1 clic.',
+      actions: (
+        <div className="flex items-center gap-2.5 flex-wrap">
           <button
             onClick={cargar}
             disabled={loading}
-            className="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-bold text-slate-200 flex items-center gap-2 active:scale-95 transition cursor-pointer"
+            className="px-4 py-2.5 rounded-xl border border-white/10 hover:bg-white/5 text-slate-200 text-xs font-bold transition flex items-center gap-2 cursor-pointer active:scale-95"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin text-amber-400' : ''}`} />
             <span>Refrescar</span>
           </button>
           <Link
-            href="/admin"
-            className="px-4 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition active:scale-95"
+            href="/admin/usuarios"
+            className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
           >
-            Matrículas & Usuarios
+            <Users className="w-4 h-4" />
+            <span>Directorio de Usuarios</span>
           </Link>
         </div>
-      </header>
+      ),
+    });
+  }, [setHeader, data?.usuariosRegistrados?.length, loading, cargar]);
 
+  return (
+    <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6">
       {mensaje && (
-        <div className="bg-emerald-500/10 border-b border-emerald-500/20 px-6 py-2.5 text-xs text-emerald-400 flex items-center gap-2">
+        <div className="bg-emerald-500/10 border border-emerald-500/20 p-4 rounded-2xl text-xs text-emerald-400 flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4 shrink-0" />
           <span>{mensaje}</span>
         </div>
       )}
 
       {/* Main Container con Sidebar Estilo EnergyEngine */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex flex-col md:flex-row gap-6 min-h-[600px] border border-white/10 rounded-3xl bg-[#0c1322] overflow-hidden">
         {/* SIDEBAR DE ESTUDIANTES */}
-        <aside className="w-80 shrink-0 border-r border-white/10 bg-[#090e1a] flex flex-col">
+        <aside className="w-full md:w-80 shrink-0 border-b md:border-b-0 md:border-r border-white/10 bg-[#090e1a] flex flex-col">
           {/* Buscador */}
           <div className="p-4 border-b border-white/10">
             <div className="relative">

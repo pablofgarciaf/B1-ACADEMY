@@ -32,9 +32,8 @@ import {
   LayoutDashboard
 } from 'lucide-react';
 import { SPECIALTY_DIPLOMAS } from '@/lib/curriculum-data';
-import { Navbar } from '@/components/site/Navbar';
-import { Footer } from '@/components/site/Footer';
 import AdminProgressPanel from '@/components/admin/AdminProgressPanel';
+import { useAdminLayout } from '@/components/admin/AdminLayoutContext';
 
 export default function AdminStudentsPanel() {
   const router = useRouter();
@@ -111,6 +110,46 @@ export default function AdminStudentsPanel() {
     }
   }, [authLoading, userProfile, loadStudents, loadProgress]);
 
+  const { setHeader } = useAdminLayout();
+
+  useEffect(() => {
+    setHeader({
+      title: 'Consola Master de Alumnos & Progreso',
+      description: 'Administra matrículas, credenciales con cédula, seguimiento de avances y habilitación laboral.',
+      actions: (
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            onClick={() => {
+              setFormRole('estudiante');
+              setShowCreateModal(true);
+            }}
+            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
+          >
+            <GraduationCap className="w-4 h-4" />
+            <span>+ Crear Estudiante</span>
+          </button>
+          <button
+            onClick={() => {
+              setFormRole('docente');
+              setShowCreateModal(true);
+            }}
+            className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+          >
+            <UserPlus className="w-4 h-4 text-amber-400" />
+            <span>+ Crear Usuario / Docente</span>
+          </button>
+          <button
+            onClick={loadStudents}
+            className="p-2 rounded-xl border border-white/10 hover:bg-white/5 text-slate-300 transition-all cursor-pointer"
+            title="Refrescar datos desde Firestore"
+          >
+            <TrendingUp className="w-4 h-4" />
+          </button>
+        </div>
+      ),
+    });
+  }, [setHeader, userProfile, students.length, loadStudents]);
+
   // Mostrar pantalla de carga mientras resuelve auth o redirect
   if (authLoading || !userProfile || (userProfile.role !== 'super' && userProfile.role !== 'admin')) {
     return (
@@ -185,51 +224,9 @@ export default function AdminStudentsPanel() {
   const totalSuperAdmins = students.filter(s => s.role === 'super' || s.role === 'admin').length;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#080d1a] selection:bg-finix-blue selection:text-white">
-      <Navbar />
-
-      <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
-        {/* Banner Superior & Bienvenida */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] shadow-sm">
-          <div className="space-y-1.5">
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-500 border border-amber-500/20 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" /> 
-                {userProfile?.role === 'super' ? 'Consola Superadmin' : 'Panel de Administración'}
-              </span>
-              <span className="text-xs font-mono text-slate-400">
-                • Firestore Colección: <strong className="text-slate-600 dark:text-slate-300">usuarios</strong>
-              </span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-              Gestión de Estudiantes & Usuarios
-            </h1>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Administra matrículas, credenciales con cédula, seguimiento de avances y habilitación laboral.
-            </p>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setShowCreateModal(true)}
-              className="px-5 py-3 rounded-2xl bg-finix-blue hover:bg-sky-600 text-white text-xs font-bold transition-all shadow-lg shadow-finix-blue/25 flex items-center gap-2 cursor-pointer active:scale-95"
-            >
-              <UserPlus className="w-4 h-4" />
-              <span>Registrar Nuevo Estudiante</span>
-            </button>
-
-            <button
-              onClick={loadStudents}
-              className="p-3 rounded-2xl border border-slate-200 dark:border-white/10 hover:bg-slate-100 dark:hover:bg-white/5 text-slate-700 dark:text-slate-300 transition-all cursor-pointer"
-              title="Refrescar datos desde Firestore"
-            >
-              <TrendingUp className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Tarjetas de Métricas Ejecutivas (KPIs) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6">
+      {/* Tarjetas de Métricas Ejecutivas (KPIs) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-2 shadow-sm">
             <div className="flex justify-between items-center text-slate-500">
               <span className="text-xs uppercase tracking-wider font-bold">Total Usuarios</span>
@@ -456,7 +453,6 @@ export default function AdminStudentsPanel() {
           </div>
         </div>
         )}
-      </main>
 
       {/* MODAL PARA REGISTRAR NUEVO ESTUDIANTE */}
       {showCreateModal && (
@@ -616,7 +612,6 @@ export default function AdminStudentsPanel() {
         </div>
       )}
 
-      <Footer />
     </div>
   );
 }
