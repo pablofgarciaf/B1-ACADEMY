@@ -50,8 +50,8 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
 
       {/* 2. Contenedor Derecho: Header Fijo Completo + Main con scroll independiente */}
       <div className="flex-1 flex flex-col h-screen max-h-screen min-w-0 overflow-hidden">
-        {/* HEADER 100% FIJO ARRIBA CON TÍTULO, DESCRIPCIÓN, BADGES Y BOTONES */}
-        <header className="shrink-0 border-b border-slate-200/80 dark:border-blue-500/20 bg-white/95 dark:bg-[#090d1a]/95 backdrop-blur-md px-6 py-4 z-30 sticky top-0 shadow-sm dark:shadow-lg dark:shadow-blue-950/20 transition-colors">
+        {/* HEADER 100% FIJO ARRIBA (h-20: 80px exactos al milímetro igual al sidebar) */}
+        <header className="h-20 shrink-0 border-b border-slate-200/80 dark:border-blue-500/20 bg-white/95 dark:bg-[#090d1a]/95 backdrop-blur-md px-6 z-30 sticky top-0 shadow-sm dark:shadow-lg dark:shadow-blue-950/20 transition-colors flex items-center">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 max-w-7xl mx-auto w-full">
             {/* Izquierda: Título Principal + Descripción */}
             <div className="space-y-1 min-w-0">

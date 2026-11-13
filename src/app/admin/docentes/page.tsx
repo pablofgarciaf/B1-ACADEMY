@@ -124,7 +124,7 @@ export default function AdminDocentesPage() {
             setSuccessMsg('');
             setShowModal(true);
           }}
-          className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold transition-all shadow-md shadow-emerald-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
+          className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
         >
           <UserPlus className="w-4 h-4" />
           <span>+ Crear Profesor / Docente</span>
@@ -137,60 +137,60 @@ export default function AdminDocentesPage() {
     <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6">
 
       {/* Buscador */}
-      <div className="bg-[#0c1322] p-4 rounded-2xl border border-white/10 flex items-center gap-3">
-        <Search className="w-4 h-4 text-slate-500 shrink-0" />
+      <div className="bg-white dark:bg-[#0c1322] p-4 rounded-2xl border border-slate-200/90 dark:border-blue-500/20 shadow-sm flex items-center gap-3">
+        <Search className="w-4 h-4 text-slate-400 dark:text-sky-400 shrink-0" />
         <input
           type="text"
           placeholder="Buscar profesor por nombre, correo o cédula..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full text-xs bg-transparent text-white placeholder-slate-500 focus:outline-none"
+          className="w-full text-xs bg-transparent text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
         />
       </div>
 
       {/* Grid de Profesores */}
       {loading ? (
         <div className="p-12 text-center text-slate-400 flex flex-col items-center gap-3">
-          <div className="w-8 h-8 rounded-full border-2 border-emerald-500 border-t-transparent animate-spin" />
+          <div className="w-8 h-8 rounded-full border-2 border-blue-600 border-t-transparent animate-spin" />
           <p className="text-xs">Cargando docentes...</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="p-12 text-center border border-white/10 rounded-2xl bg-[#0c1322] text-slate-500 text-xs">
+        <div className="p-12 text-center border border-slate-200/90 dark:border-white/10 rounded-2xl bg-white dark:bg-[#0c1322] text-slate-500 text-xs shadow-sm">
           No hay docentes registrados aún. Puedes crear uno con el botón superior.
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((d) => (
-            <div key={d.uid} className="p-5 rounded-2xl border border-white/10 bg-[#0c1322] hover:border-emerald-500/30 transition-all space-y-4">
+            <div key={d.uid} className="p-5 rounded-2xl border border-slate-200/90 dark:border-white/10 bg-white dark:bg-[#0c1322] hover:border-blue-500/40 transition-all space-y-4 shadow-sm">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold text-sm">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-sky-300 border border-blue-200 dark:border-blue-500/30 flex items-center justify-center font-bold text-sm">
                     {(d.name || d.email).charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm">{d.name || 'Sin Nombre'}</h4>
-                    <p className="text-[11px] text-slate-400">{d.email}</p>
+                    <h4 className="font-bold text-slate-900 dark:text-white text-sm">{d.name || 'Sin Nombre'}</h4>
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">{d.email}</p>
                   </div>
                 </div>
-                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-sky-300 border border-blue-200 dark:border-blue-500/20">
                   DOCENTE
                 </span>
               </div>
 
-              <div className="pt-3 border-t border-white/5 space-y-1.5 text-[11px] text-slate-400">
+              <div className="pt-3 border-t border-slate-100 dark:border-white/5 space-y-1.5 text-[11px] text-slate-500 dark:text-slate-400">
                 <div className="flex items-center justify-between">
                   <span>Cédula:</span>
-                  <span className="font-mono text-slate-300">{d.cedula || '—'}</span>
+                  <span className="font-mono text-slate-700 dark:text-slate-300 font-semibold">{d.cedula || '—'}</span>
                 </div>
                 {d.phone && (
                   <div className="flex items-center justify-between">
                     <span>Teléfono:</span>
-                    <span className="text-slate-300">{d.phone}</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">{d.phone}</span>
                   </div>
                 )}
                 <div className="flex items-center justify-between">
                   <span>Estado:</span>
-                  <span className={d.passwordChanged ? 'text-emerald-400 font-bold' : 'text-amber-400 font-bold'}>
+                  <span className={d.passwordChanged ? 'text-emerald-600 dark:text-emerald-400 font-bold' : 'text-amber-600 dark:text-amber-400 font-bold'}>
                     {d.passwordChanged ? 'Activo' : 'Clave pendiente'}
                   </span>
                 </div>

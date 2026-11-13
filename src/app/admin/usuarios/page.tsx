@@ -175,58 +175,58 @@ export default function AdminUsuariosPage() {
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6">
-      {/* Tarjetas Métricas */}
+      {/* Tarjetas Métricas con Soporte Dual Claro (Blanco/Glass) y Oscuro (Azul petróleo/Negro) */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="p-5 rounded-2xl border border-amber-500/30 bg-amber-500/10">
+        <div className="p-5 rounded-3xl border border-amber-500/30 bg-amber-50/80 dark:bg-amber-500/10 backdrop-blur-md shadow-sm">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">Superadministradores</span>
-            <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Superadministradores</span>
+            <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
               <ShieldCheck className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-black text-white mt-2 font-display">{countSuper}</p>
-          <p className="text-[11px] text-slate-400 mt-0.5">Control total del ecosistema</p>
+          <p className="text-2xl font-black text-slate-900 dark:text-white mt-2 font-display">{countSuper}</p>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">Control total del ecosistema</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-white/10 bg-[#0c1322]">
+        <div className="p-5 rounded-3xl border border-slate-200/90 dark:border-blue-500/20 bg-white/80 dark:bg-[#0c1322] backdrop-blur-md shadow-sm transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Administradores de Gestión</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-sky-400 flex items-center justify-center">
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Administradores de Gestión</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-sky-300 flex items-center justify-center">
               <Shield className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-black text-white mt-2 font-display">{countAdmin}</p>
+          <p className="text-2xl font-black text-slate-900 dark:text-white mt-2 font-display">{countAdmin}</p>
           <p className="text-[11px] text-slate-500 mt-0.5">Gestión de alumnos y matrículas</p>
         </div>
 
-        <div className="p-5 rounded-2xl border border-white/10 bg-[#0c1322]">
+        <div className="p-5 rounded-3xl border border-slate-200/90 dark:border-blue-500/20 bg-white/80 dark:bg-[#0c1322] backdrop-blur-md shadow-sm transition-colors">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Usuarios del Sistema</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Total Usuarios del Sistema</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-500/20 text-blue-600 dark:text-sky-400 flex items-center justify-center">
               <Users className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-black text-white mt-2 font-display">{countTotal}</p>
+          <p className="text-2xl font-black text-slate-900 dark:text-white mt-2 font-display">{countTotal}</p>
           <p className="text-[11px] text-slate-500 mt-0.5">Operadores con acceso a consola</p>
         </div>
       </div>
 
       {/* Buscador de Administradores */}
-      <div className="flex flex-col sm:flex-row gap-3 items-center justify-between bg-[#0c1322] p-4 rounded-2xl border border-white/10">
+      <div className="flex flex-col sm:flex-row gap-3 items-center justify-between bg-white dark:bg-[#0c1322] p-4 rounded-2xl border border-slate-200/90 dark:border-blue-500/20 shadow-sm transition-colors">
         <div className="relative flex-1 w-full">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-sky-400" />
           <input
             type="text"
             placeholder="Buscar administrador por nombre, correo electrónico o cédula..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+            className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-blue-600 dark:focus:border-sky-400"
           />
         </div>
       </div>
 
       {/* Tabla de Usuarios */}
-      <div className="rounded-2xl border border-white/10 bg-[#0c1322] overflow-hidden shadow-xl">
+      <div className="rounded-2xl border border-slate-200/90 dark:border-blue-500/20 bg-white dark:bg-[#0c1322] overflow-hidden shadow-sm transition-colors">
         {loadingList ? (
           <div className="p-12 text-center text-slate-400 flex flex-col items-center gap-3">
             <div className="w-8 h-8 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />

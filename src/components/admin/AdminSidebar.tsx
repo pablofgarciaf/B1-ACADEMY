@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   LayoutDashboard, 
@@ -53,14 +54,14 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         transition-all duration-300 ease-out md:static md:translate-x-0
         ${isOpen ? 'translate-x-0 w-72' : '-translate-x-full md:w-64'}
       `}>
-        {/* 1. TÍTULO / LOGO FIJO ARRIBA (shrink-0: no se mueve) */}
-        <div className="h-16 shrink-0 flex items-center justify-between px-5 border-b border-slate-200/80 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02]">
-          <Link href="/admin" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-black text-sm shadow-lg shadow-blue-500/30 border border-blue-400/40">
-              B1
+        {/* 1. TÍTULO / LOGO FIJO ARRIBA (h-20 shrink-0: exactamente misma altura de 80px que el header derecho) */}
+        <div className="h-20 shrink-0 flex items-center justify-between px-5 border-b border-slate-200/80 dark:border-blue-500/20 bg-slate-50/50 dark:bg-white/[0.02]">
+          <Link href="/admin" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 relative flex-shrink-0 group-hover:scale-105 transition-transform">
+              <Image src="/b1-academy-logo.webp" alt="B1" width={40} height={40} className="object-contain" priority />
             </div>
             <div>
-              <p className="text-xs font-black tracking-wider text-slate-900 dark:text-white uppercase font-display">B1 ACADEMY</p>
+              <p className="text-sm font-black tracking-wider text-slate-900 dark:text-white uppercase font-display">B1</p>
               <p className="text-[9px] font-mono tracking-widest text-blue-600 dark:text-sky-400 uppercase font-bold">Panel Central</p>
             </div>
           </Link>
