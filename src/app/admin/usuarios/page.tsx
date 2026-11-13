@@ -131,48 +131,35 @@ export default function AdminUsuariosPage() {
     }, 1500);
   };
 
-  const filtered = users.filter(u => {
+  const filteredUsers = users.filter(u => {
+    // Solo usuarios del sistema (super y admin), NUNCA estudiantes
+    if (u.role !== 'super' && u.role !== 'admin') return false;
     const term = searchTerm.toLowerCase();
     const matchesSearch = 
       (u.name || '').toLowerCase().includes(term) ||
       (u.email || '').toLowerCase().includes(term) ||
       (u.cedula || '').includes(term);
-    const matchesRole = roleFilter === 'ALL' || u.role === roleFilter;
-    return matchesSearch && matchesRole;
+    return matchesSearch;
   });
 
-  const countAdmins = users.filter(u => u.role === 'super' || u.role === 'admin').length;
-  const countDocentes = users.filter(u => u.role === 'docente').length;
-  const countEstudiantes = users.filter(u => u.role === 'estudiante').length;
+  const countSuper = users.filter(u => u.role === 'super').length;
+  const countAdmin = users.filter(u => u.role === 'admin').length;
+  const countTotal = countSuper + countAdmin;
 
   const { setHeader } = useAdminLayout();
 
   useEffect(() => {
     setHeader({
-      title: 'Gestión de Usuarios, Docentes y Estudiantes',
-      description: 'Control de cuentas, perfiles de acceso administrativo, docentes de soporte y alumnos de la academia.',
+      title: 'Usuarios del Sistema & Permisos',
+      description: 'Control de cuentas y perfiles de acceso administrativo a la consola de gestión.',
       actions: (
         <div className="flex items-center gap-2 flex-wrap">
           <button
-            onClick={() => handleOpenModal('estudiante')}
-            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
-          >
-            <GraduationCap className="w-4 h-4" />
-            <span>+ Crear Estudiante</span>
-          </button>
-          <button
-            onClick={() => handleOpenModal('docente')}
-            className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
-          >
-            <UserCheck className="w-4 h-4 text-emerald-400" />
-            <span>+ Crear Docente</span>
-          </button>
-          <button
             onClick={() => handleOpenModal('admin')}
-            className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md shadow-amber-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
           >
-            <Shield className="w-4 h-4 text-amber-400" />
-            <span>+ Crear Admin</span>
+            <Shield className="w-4 h-4" />
+            <span>+ Crear Administrador</span>
           </button>
           <button
             onClick={loadData}
@@ -184,87 +171,57 @@ export default function AdminUsuariosPage() {
         </div>
       ),
     });
-  }, [setHeader, users.length, loadData]);
+  }, [setHeader, loadData]);
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6">
       {/* Tarjetas Métricas */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div 
-          onClick={() => setRoleFilter('estudiante')}
-          className={`p-5 rounded-2xl border transition-all cursor-pointer ${
-            roleFilter === 'estudiante' ? 'border-blue-500 bg-blue-500/10' : 'border-white/10 bg-[#0c1322] hover:border-white/20'
-          }`}
-        >
+        <div className="p-5 rounded-2xl border border-amber-500/30 bg-amber-500/10">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Estudiantes</span>
-            <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-sky-400 flex items-center justify-center">
-              <GraduationCap className="w-4 h-4" />
-            </div>
-          </div>
-          <p className="text-2xl font-black text-white mt-2 font-display">{countEstudiantes}</p>
-          <p className="text-[11px] text-slate-500 mt-0.5">Alumnos con matrícula activa</p>
-        </div>
-
-        <div 
-          onClick={() => setRoleFilter('docente')}
-          className={`p-5 rounded-2xl border transition-all cursor-pointer ${
-            roleFilter === 'docente' ? 'border-emerald-500 bg-emerald-500/10' : 'border-white/10 bg-[#0c1322] hover:border-white/20'
-          }`}
-        >
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Docentes / Profesores</span>
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-              <UserCheck className="w-4 h-4" />
-            </div>
-          </div>
-          <p className="text-2xl font-black text-white mt-2 font-display">{countDocentes}</p>
-          <p className="text-[11px] text-slate-500 mt-0.5">Instructores de la academia</p>
-        </div>
-
-        <div 
-          onClick={() => setRoleFilter('super')}
-          className={`p-5 rounded-2xl border transition-all cursor-pointer ${
-            roleFilter === 'super' || roleFilter === 'admin' ? 'border-amber-500 bg-amber-500/10' : 'border-white/10 bg-[#0c1322] hover:border-white/20'
-          }`}
-        >
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Administradores</span>
+            <span className="text-xs font-bold text-amber-400 uppercase tracking-wider">Superadministradores</span>
             <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
               <ShieldCheck className="w-4 h-4" />
             </div>
           </div>
-          <p className="text-2xl font-black text-white mt-2 font-display">{countAdmins}</p>
-          <p className="text-[11px] text-slate-500 mt-0.5">Acceso a consola y configuraciones</p>
+          <p className="text-2xl font-black text-white mt-2 font-display">{countSuper}</p>
+          <p className="text-[11px] text-slate-400 mt-0.5">Control total del ecosistema</p>
+        </div>
+
+        <div className="p-5 rounded-2xl border border-white/10 bg-[#0c1322]">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Administradores de Gestión</span>
+            <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-sky-400 flex items-center justify-center">
+              <Shield className="w-4 h-4" />
+            </div>
+          </div>
+          <p className="text-2xl font-black text-white mt-2 font-display">{countAdmin}</p>
+          <p className="text-[11px] text-slate-500 mt-0.5">Gestión de alumnos y matrículas</p>
+        </div>
+
+        <div className="p-5 rounded-2xl border border-white/10 bg-[#0c1322]">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Usuarios del Sistema</span>
+            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+              <Users className="w-4 h-4" />
+            </div>
+          </div>
+          <p className="text-2xl font-black text-white mt-2 font-display">{countTotal}</p>
+          <p className="text-[11px] text-slate-500 mt-0.5">Operadores con acceso a consola</p>
         </div>
       </div>
 
-      {/* Buscador & Filtros */}
+      {/* Buscador de Administradores */}
       <div className="flex flex-col sm:flex-row gap-3 items-center justify-between bg-[#0c1322] p-4 rounded-2xl border border-white/10">
         <div className="relative flex-1 w-full">
           <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="text"
-            placeholder="Buscar por nombre, correo electrónico o cédula..."
+            placeholder="Buscar administrador por nombre, correo electrónico o cédula..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-sky-500"
+            className="w-full pl-10 pr-4 py-2 text-xs rounded-xl bg-white/5 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
           />
-        </div>
-
-        <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="w-4 h-4 text-slate-500 shrink-0" />
-          <select
-            value={roleFilter}
-            onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-3 py-2 text-xs rounded-xl bg-[#070b14] border border-white/10 text-slate-300 focus:outline-none focus:border-sky-500 w-full sm:w-auto"
-          >
-            <option value="ALL">Todos los roles</option>
-            <option value="estudiante">Solo Estudiantes</option>
-            <option value="docente">Solo Docentes</option>
-            <option value="admin">Solo Administradores</option>
-            <option value="super">Solo Superadmins</option>
-          </select>
         </div>
       </div>
 
@@ -272,12 +229,12 @@ export default function AdminUsuariosPage() {
       <div className="rounded-2xl border border-white/10 bg-[#0c1322] overflow-hidden shadow-xl">
         {loadingList ? (
           <div className="p-12 text-center text-slate-400 flex flex-col items-center gap-3">
-            <div className="w-8 h-8 rounded-full border-2 border-sky-500 border-t-transparent animate-spin" />
-            <p className="text-xs">Cargando directorio de usuarios...</p>
+            <div className="w-8 h-8 rounded-full border-2 border-amber-500 border-t-transparent animate-spin" />
+            <p className="text-xs">Cargando administradores del sistema...</p>
           </div>
-        ) : filtered.length === 0 ? (
+        ) : filteredUsers.length === 0 ? (
           <div className="p-12 text-center text-slate-500 text-xs">
-            No se encontraron usuarios con los filtros aplicados.
+            No se encontraron administradores con los términos de búsqueda.
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -293,7 +250,7 @@ export default function AdminUsuariosPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-xs text-slate-300">
-                {filtered.map((u) => {
+                {filteredUsers.map((u) => {
                   const isSuper = u.role === 'super';
                   const isAdmin = u.role === 'admin';
                   const isDocente = u.role === 'docente';

@@ -63,13 +63,13 @@ export default function AdminCrmPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
-  // Métricas de Clics y Canales (WhatsApp, TikTok, Directo)
+  // Métricas de Clics y Canales (WhatsApp, TikTok, Directo) - Reales
   const [metrics, setMetrics] = useState({
-    whatsappClicksTotal: 142,
-    whatsappClicksToday: 18,
-    tiktokVisitorsTotal: 860,
-    tiktokLeads: 24,
-    directVisitors: 412,
+    whatsappClicksTotal: 0,
+    whatsappClicksToday: 0,
+    tiktokVisitorsTotal: 0,
+    tiktokLeads: 0,
+    directVisitors: 0,
   });
 
   const loadLeads = useCallback(async () => {

@@ -15,6 +15,7 @@ import {
   FileCheck
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import { ThemeToggle } from '@/components/site/ThemeToggle';
 
 interface AdminSidebarProps {
   isOpen: boolean;
@@ -111,13 +112,16 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
               </div>
             </div>
 
-            <button 
-              onClick={logout}
-              title="Cerrar sesión"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition shrink-0 cursor-pointer"
-            >
-              <LogOut className="w-4 h-4" />
-            </button>
+            <div className="flex items-center gap-1.5 shrink-0">
+              <ThemeToggle />
+              <button 
+                onClick={logout}
+                title="Cerrar sesión"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-500/10 transition shrink-0 cursor-pointer"
+              >
+                <LogOut className="w-4 h-4" />
+              </button>
+            </div>
           </div>
         </div>
       </aside>

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { Menu } from 'lucide-react';
 import { useAdminLayout } from '@/components/admin/AdminLayoutContext';
+import { ThemeToggle } from '@/components/site/ThemeToggle';
 
 const DEFAULT_TITLES: Record<string, { title: string; description: string }> = {
   '/admin': {
@@ -75,9 +76,10 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
               )}
             </div>
 
-            {/* Derecha: Botones de Acción (Pasados desde cada vista) */}
+            {/* Derecha: Botones de Acción + Toggle de Tema Claro/Oscuro */}
             <div className="flex items-center gap-2.5 flex-wrap shrink-0">
               {header.actions}
+              <ThemeToggle />
             </div>
           </div>
         </header>

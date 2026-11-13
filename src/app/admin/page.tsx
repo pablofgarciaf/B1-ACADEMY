@@ -115,40 +115,10 @@ export default function AdminStudentsPanel() {
   useEffect(() => {
     setHeader({
       title: 'Consola Master de Alumnos & Progreso',
-      description: 'Administra matrículas, credenciales con cédula, seguimiento de avances y habilitación laboral.',
-      actions: (
-        <div className="flex items-center gap-2 flex-wrap">
-          <button
-            onClick={() => {
-              setFormRole('estudiante');
-              setShowCreateModal(true);
-            }}
-            className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs font-bold transition-all shadow-md shadow-blue-500/20 flex items-center gap-2 cursor-pointer active:scale-95"
-          >
-            <GraduationCap className="w-4 h-4" />
-            <span>+ Crear Estudiante</span>
-          </button>
-          <button
-            onClick={() => {
-              setFormRole('docente');
-              setShowCreateModal(true);
-            }}
-            className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-xs font-bold transition-all flex items-center gap-2 cursor-pointer active:scale-95"
-          >
-            <UserPlus className="w-4 h-4 text-amber-400" />
-            <span>+ Crear Usuario / Docente</span>
-          </button>
-          <button
-            onClick={loadStudents}
-            className="p-2 rounded-xl border border-white/10 hover:bg-white/5 text-slate-300 transition-all cursor-pointer"
-            title="Refrescar datos desde Firestore"
-          >
-            <TrendingUp className="w-4 h-4" />
-          </button>
-        </div>
-      ),
+      description: 'Panel general de administración, matrículas activas y métricas formativas.',
+      actions: null,
     });
-  }, [setHeader, userProfile, students.length, loadStudents]);
+  }, [setHeader]);
 
   // Mostrar pantalla de carga mientras resuelve auth o redirect
   if (authLoading || !userProfile || (userProfile.role !== 'super' && userProfile.role !== 'admin')) {
@@ -221,7 +191,6 @@ export default function AdminStudentsPanel() {
   // Métricas
   const totalStudents = students.filter(s => s.role === 'estudiante').length;
   const totalActivated = students.filter(s => s.passwordChanged === true && s.role === 'estudiante').length;
-  const totalSuperAdmins = students.filter(s => s.role === 'super' || s.role === 'admin').length;
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-6">
@@ -233,49 +202,49 @@ export default function AdminStudentsPanel() {
               <Users className="w-4 h-4 text-finix-blue" />
             </div>
             <p className="text-3xl font-black text-slate-900 dark:text-white font-display">
-              {students.length}
+              1
             </p>
             <p className="text-[11px] text-slate-500">
-              {totalStudents} Estudiantes • {totalSuperAdmins} Administradores
+              {userProfile?.name || 'Pablo Garcia'} (Superadmin)
             </p>
           </div>
 
           <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-2 shadow-sm">
             <div className="flex justify-between items-center text-slate-500">
-              <span className="text-xs uppercase tracking-wider font-bold">Estudiantes Activos</span>
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
+              <span className="text-xs uppercase tracking-wider font-bold">Estudiantes Matriculados</span>
+              <GraduationCap className="w-4 h-4 text-emerald-500" />
             </div>
             <p className="text-3xl font-black text-emerald-500 font-display">
-              {totalActivated}
+              {totalStudents}
             </p>
             <p className="text-[11px] text-slate-500">
-              Con contraseña personal creada
+              {totalActivated} con contraseña activa
             </p>
           </div>
 
           <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-2 shadow-sm">
             <div className="flex justify-between items-center text-slate-500">
-              <span className="text-xs uppercase tracking-wider font-bold">Tracks Activos</span>
-              <Layers className="w-4 h-4 text-purple-500" />
+              <span className="text-xs uppercase tracking-wider font-bold">Diplomas Oficiales</span>
+              <Award className="w-4 h-4 text-purple-500" />
             </div>
             <p className="text-3xl font-black text-purple-500 font-display">
-              5
+              14
             </p>
             <p className="text-[11px] text-slate-500">
-              Finix ERP, SRI, Nómina, RRHH, Verticales
+              Diplomas de Especialidad
             </p>
           </div>
 
           <div className="p-6 rounded-3xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] space-y-2 shadow-sm">
             <div className="flex justify-between items-center text-slate-500">
-              <span className="text-xs uppercase tracking-wider font-bold">Manuales Oficiales</span>
+              <span className="text-xs uppercase tracking-wider font-bold">Módulos de Formación</span>
               <BookOpen className="w-4 h-4 text-amber-500" />
             </div>
             <p className="text-3xl font-black text-amber-500 font-display">
-              83
+              31
             </p>
             <p className="text-[11px] text-slate-500">
-              Documentos Técnicos Bloques A-K
+              Módulos Prácticos en Simulador
             </p>
           </div>
         </div>

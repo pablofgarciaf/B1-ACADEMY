@@ -36,21 +36,44 @@ export async function GET() {
       };
     });
 
-    // 3. Exámenes e Intentos (para ver quién está bloqueado)
+    // 3. Evaluaciones oficiales completadas
+    const evaluationsSnap = await adminDb.collection('evaluations').get();
+    const evalMap: Record<string, { score: number; passed: boolean; completedAt: string }> = {};
+    evaluationsSnap.docs.forEach(doc => {
+      const d = doc.data();
+      const key = `${d.uid}_${d.moduleId}`;
+      evalMap[key] = {
+        score: d.score || 0,
+        passed: d.passed === true,
+        completedAt: d.completedAt || '',
+      };
+    });
+
+    // 4. Exámenes e Intentos (con nota real y estado de aprobación)
     const attemptsSnap = await adminDb.collection('exam_attempts').get();
     const intentosExamen = attemptsSnap.docs.map(doc => {
       const d = doc.data();
       const u = userMap[d.uid] || { name: 'Desconocido', email: 'Desconocido', role: '' };
       const arr = Array.isArray(d.attempts) ? d.attempts : [];
+      const modulo = d.moduleId || doc.id.split('_')[1] || 'mod-1';
+      const evalData = evalMap[`${d.uid}_${modulo}`] || evalMap[`${d.uid}_${doc.id}`];
+
+      const passed = evalData ? evalData.passed : false;
+      const score = evalData ? evalData.score : null;
+
       return {
         id: doc.id,
         uid: d.uid,
         estudiante: u.name,
         correo: u.email,
-        modulo: d.moduleId || doc.id.split('_')[1] || 'mod-1',
+        modulo,
         intentosConsumidos: arr.length,
-        bloqueado: arr.length >= 3,
-        ultimoIntento: arr.length > 0 ? new Date(Math.max(...arr)).toLocaleString('es-EC') : 'Sin intentos',
+        bloqueado: !passed && arr.length >= 3,
+        aprobado: passed,
+        calificacion: score,
+        ultimoIntento: evalData?.completedAt 
+          ? new Date(evalData.completedAt).toLocaleString('es-EC') 
+          : (arr.length > 0 ? new Date(Math.max(...arr)).toLocaleString('es-EC') : 'Sin intentos'),
       };
     });
 
