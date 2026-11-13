@@ -2,6 +2,11 @@ import { NextResponse } from 'next/server';
 import { adminDb } from '@/lib/firebase-admin';
 import { getSessionUser, isAdmin, requireBearerUser } from '@/lib/server-auth';
 
+// Caché en memoria para evitar sobrefacturación en Firestore (TTL: 60s)
+let cachedProgressData: any = null;
+let lastProgressCacheTime = 0;
+const PROGRESS_CACHE_TTL_MS = 60 * 1000;
+
 export async function GET(request: Request) {
   try {
     let actor = await getSessionUser();
@@ -10,6 +15,11 @@ export async function GET(request: Request) {
     }
     if (!actor || !isAdmin(actor.profile)) {
       return NextResponse.json({ error: 'Prohibido. Requiere privilegios de administrador.' }, { status: 403 });
+    }
+
+    const now = Date.now();
+    if (cachedProgressData && (now - lastProgressCacheTime < PROGRESS_CACHE_TTL_MS)) {
+      return NextResponse.json(cachedProgressData);
     }
 
     // 1. Obtener todos los usuarios registrados
@@ -91,10 +101,14 @@ export async function GET(request: Request) {
       };
     });
 
-    return NextResponse.json({
+    const resultPayload = {
       totalUsers: users.length,
       students: studentsWithProgress,
-    });
+    };
+    cachedProgressData = resultPayload;
+    lastProgressCacheTime = Date.now();
+
+    return NextResponse.json(resultPayload);
   } catch (error) {
     console.error('Error en /api/admin/progress:', error);
     return NextResponse.json({ error: 'Error al consultar avances académicos.' }, { status: 500 });

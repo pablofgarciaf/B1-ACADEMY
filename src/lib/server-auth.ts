@@ -16,18 +16,40 @@ export interface AuthenticatedUser {
 
 export class AuthRejectedError extends Error {}
 
-async function readProfile(uid: string, email?: string): Promise<UserProfile | null> {
-  const current = await adminDb.collection('usuarios').doc(uid).get();
-  if (current.exists) return current.data() as UserProfile;
+// Caché en memoria para perfiles de usuario (TTL: 2 minutos)
+const profileCache = new Map<string, { profile: UserProfile; timestamp: number }>();
+const PROFILE_TTL = 2 * 60 * 1000;
 
-  // Migración transparente desde el esquema histórico usuarios/{email}.
-  if (email) {
-    const legacy = await adminDb.collection('usuarios').doc(email.toLowerCase()).get();
-    if (legacy.exists) {
-      const profile = { ...(legacy.data() as UserProfile), uid, email: email.toLowerCase() };
-      await adminDb.collection('usuarios').doc(uid).set(profile, { merge: true });
-      return profile;
+async function readProfile(uid: string, email?: string): Promise<UserProfile | null> {
+  const cached = profileCache.get(uid);
+  if (cached && Date.now() - cached.timestamp < PROFILE_TTL) {
+    return cached.profile;
+  }
+
+  try {
+    const current = await adminDb.collection('usuarios').doc(uid).get();
+    if (current.exists) {
+      const prof = current.data() as UserProfile;
+      profileCache.set(uid, { profile: prof, timestamp: Date.now() });
+      return prof;
     }
+
+    // Migración transparente desde el esquema histórico usuarios/{email}.
+    if (email) {
+      const legacy = await adminDb.collection('usuarios').doc(email.toLowerCase()).get();
+      if (legacy.exists) {
+        const profile = { ...(legacy.data() as UserProfile), uid, email: email.toLowerCase() };
+        await adminDb.collection('usuarios').doc(uid).set(profile, { merge: true });
+        profileCache.set(uid, { profile, timestamp: Date.now() });
+        return profile;
+      }
+    }
+  } catch (err: any) {
+    // Si la lectura falló por cuota excedida (code 8) y ya teníamos caché (incluso expirado), salvaguardar la sesión
+    if (cached) {
+      return cached.profile;
+    }
+    throw err;
   }
   return null;
 }
