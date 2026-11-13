@@ -156,11 +156,25 @@ export default function AdminLuxuryProgressPage() {
     });
   }, [setHeader, loading]);
 
-  // Lista ordenada alfabéticamente de estudiantes
+  // Lista ordenada alfabéticamente de estudiantes (incluye super y admin si tienen avance o módulos cursados)
   const sortedStudents = useMemo(() => {
     if (!data?.usuariosRegistrados) return [];
+
+    const uidsWithProgressOrAttempts = new Set<string>();
+    (data.progresoDetallado || []).forEach(p => {
+      if (p.totalClases > 0 || p.totalPracticas > 0) uidsWithProgressOrAttempts.add(p.uid);
+    });
+    (data.todosLosIntentosDeExamen || []).forEach(i => {
+      if (i.aprobado || i.calificacion !== null || i.intentosConsumidos > 0) uidsWithProgressOrAttempts.add(i.uid);
+    });
+
     return [...data.usuariosRegistrados]
-      .filter(u => u.role === 'estudiante' || u.role === 'student')
+      .filter(u => 
+        u.role === 'estudiante' || 
+        u.role === 'student' || 
+        uidsWithProgressOrAttempts.has(u.uid) ||
+        u.role === 'super' // Super siempre visible para auditoría y pruebas
+      )
       .sort((a, b) => a.name.localeCompare(b.name, 'es', { sensitivity: 'base' }));
   }, [data]);
 
@@ -268,18 +282,18 @@ export default function AdminLuxuryProgressPage() {
         </div>
       )}
 
-      {/* 1. SECCIÓN FIJA SUPERIOR: FILTRO ESBELTO ESTILO ENERGYENGINE */}
-      <div className="shrink-0 bg-white dark:bg-[#131a20] p-4 sm:p-5 rounded-2xl border border-slate-300/80 dark:border-slate-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] space-y-3">
+      {/* 1. SECCIÓN FIJA SUPERIOR: FILTRO ESBELTO ESTILO FINIX ACADEMY (Azul eléctrico / Blanco en Claro - Negro / Azul en Oscuro) */}
+      <div className="shrink-0 bg-white dark:bg-[#0c1322] p-4 sm:p-5 rounded-2xl border border-slate-200/90 dark:border-blue-500/20 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] space-y-3 transition-colors">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
           {/* Campo de Búsqueda */}
           <div className="relative flex-1 w-full">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={15} />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 dark:text-sky-400" size={15} />
             <input
               type="text"
               placeholder="Buscar por Nombre, Correo o Cédula..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 h-10 rounded-xl border border-slate-300/80 dark:border-slate-700/70 bg-slate-50/80 dark:bg-[#19222a] focus:bg-white dark:focus:bg-[#202b35] text-slate-900 dark:text-white text-xs font-medium transition-all w-full shadow-inner focus:outline-none focus:border-emerald-500"
+              className="pl-10 pr-4 h-10 rounded-xl border border-slate-300 dark:border-blue-500/30 bg-slate-50 dark:bg-[#070b14] focus:bg-white dark:focus:bg-[#090e1c] text-slate-900 dark:text-white text-xs font-medium transition-all w-full shadow-inner focus:outline-none focus:border-blue-600 dark:focus:border-sky-400"
             />
           </div>
 
@@ -288,7 +302,7 @@ export default function AdminLuxuryProgressPage() {
             <select
               value={statusFilter}
               onChange={(e: any) => setStatusFilter(e.target.value)}
-              className="h-10 px-3.5 rounded-xl border border-slate-300/80 dark:border-slate-700/70 bg-slate-50/80 dark:bg-[#19222a] text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-emerald-500 shadow-inner"
+              className="h-10 px-3.5 rounded-xl border border-slate-300 dark:border-blue-500/30 bg-slate-50 dark:bg-[#070b14] text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-blue-600 dark:focus:border-sky-400 shadow-inner"
             >
               <option value="all">TODOS LOS ESTADOS</option>
               <option value="active">EN FORMACIÓN / ACTIVOS</option>
@@ -296,19 +310,19 @@ export default function AdminLuxuryProgressPage() {
               <option value="blocked">BLOQUEADOS (INTENTOS AGOTADOS)</option>
             </select>
 
-            <div className="px-3.5 h-10 rounded-xl bg-slate-100 dark:bg-[#19222a] border border-slate-200 dark:border-slate-700/70 flex items-center justify-center text-xs font-mono text-slate-600 dark:text-slate-300">
-              Total: <strong className="ml-1.5 text-slate-900 dark:text-emerald-400 font-bold">{filteredStudents.length} / {totalStudents}</strong>
+            <div className="px-3.5 h-10 rounded-xl bg-blue-50 dark:bg-[#070b14] border border-blue-200/80 dark:border-blue-500/30 flex items-center justify-center text-xs font-mono text-slate-700 dark:text-slate-300">
+              Total: <strong className="ml-1.5 text-blue-600 dark:text-sky-400 font-bold">{filteredStudents.length} / {totalStudents}</strong>
             </div>
           </div>
         </div>
       </div>
 
       {/* 2. TABLA CON ENCABEZADOS FIJOS (STICKY) Y DESPLAZAMIENTO VERTICAL */}
-      <div className="flex-1 min-h-0 bg-white dark:bg-[#131a20] rounded-2xl border border-slate-300/80 dark:border-slate-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.03)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)] flex flex-col overflow-hidden">
+      <div className="flex-1 min-h-0 bg-white dark:bg-[#0c1322] rounded-2xl border border-slate-200/90 dark:border-blue-500/20 shadow-sm dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden transition-colors">
         {loading ? (
           <div className="flex-1 flex flex-col items-center justify-center p-12 text-slate-400 gap-3">
-            <div className="w-8 h-8 rounded-full border-2 border-emerald-500 border-t-transparent animate-spin" />
-            <p className="text-xs font-semibold uppercase tracking-wider">Cargando directorio de estudiantes...</p>
+            <div className="w-8 h-8 rounded-full border-2 border-blue-600 dark:border-sky-400 border-t-transparent animate-spin" />
+            <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Cargando directorio de estudiantes...</p>
           </div>
         ) : filteredStudents.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center p-12 text-slate-400 text-xs font-semibold uppercase">
@@ -317,101 +331,107 @@ export default function AdminLuxuryProgressPage() {
         ) : (
           <div className="flex-1 overflow-y-auto">
             <table className="w-full text-left border-collapse">
-              {/* ENCABEZADOS DE TABLA FIJOS ARRIBA */}
+              {/* ENCABEZADOS DE TABLA FIJOS ARRIBA: AZUL ELÉCTRICO CON BLANCO EN CLARO - NEGRO CON AZUL Y CIAN EN OSCURO */}
               <thead className="sticky top-0 z-20 shadow-sm">
-                <tr className="text-[11px] font-black uppercase tracking-wider bg-[#0b2f19] text-emerald-100 dark:bg-[#1c2732] dark:text-emerald-300 border-b border-emerald-500/30">
-                  <th className="px-5 py-3.5 text-left">Nombre y Correo</th>
-                  <th className="px-4 py-3.5 text-left">Cédula / Identificación</th>
-                  <th className="px-4 py-3.5 text-center">Progreso Módulos</th>
-                  <th className="px-4 py-3.5 text-center">Laboratorios Prácticos</th>
-                  <th className="px-4 py-3.5 text-center">Certificación Oral</th>
+                <tr className="text-[11px] font-black uppercase tracking-wider bg-blue-600 text-white dark:bg-[#081026] dark:text-sky-300 border-b border-blue-700 dark:border-blue-500/30 transition-colors">
+                  <th className="px-5 py-3.5 text-left">Nombre</th>
+                  <th className="px-4 py-3.5 text-left">Cédula</th>
+                  <th className="px-4 py-3.5 text-left">Correo</th>
+                  <th className="px-4 py-3.5 text-center">Aprobados</th>
+                  <th className="px-4 py-3.5 text-center">En Proceso</th>
                   <th className="px-5 py-3.5 text-right">Acciones</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200/60 dark:divide-slate-800/60">
+              <tbody className="divide-y divide-slate-100 dark:divide-white/5 font-mono text-xs">
                 {filteredStudents.map((student) => {
                   const studentProgress = (data?.progresoDetallado || []).filter(p => p.uid === student.uid);
                   const studentAttempts = (data?.todosLosIntentosDeExamen || []).filter(i => i.uid === student.uid);
-                  
-                  const certAttempt = studentAttempts.find(i => i.modulo === 'mod-1');
-                  const isPassed = certAttempt?.aprobado === true || (certAttempt?.calificacion && certAttempt.calificacion >= 70);
-                  const isBlocked = certAttempt?.bloqueado === true;
 
-                  const totalPracticas = studentProgress.reduce((sum, p) => sum + p.totalPracticas, 0);
-                  const totalClases = studentProgress.reduce((sum, p) => sum + p.totalClases, 0);
+                  // Módulos Aprobados (evaluación aprobada o calificación >= 70)
+                  const aprobadosCount = studentAttempts.filter(
+                    att => att.aprobado === true || (att.calificacion !== null && att.calificacion !== undefined && att.calificacion >= 70)
+                  ).length;
+
+                  // Módulos en Proceso (progreso con lecciones/prácticas o intentos sin aprobar)
+                  const modulosConAvance = new Set(studentProgress.map(p => p.modulo));
+                  studentAttempts.forEach(att => {
+                    const esAprobado = att.aprobado === true || (att.calificacion !== null && att.calificacion !== undefined && att.calificacion >= 70);
+                    if (!esAprobado) modulosConAvance.add(att.modulo);
+                  });
+                  // Descontar los ya aprobados
+                  const enProcesoCount = Math.max(0, modulosConAvance.size - aprobadosCount);
+
+                  const isBlocked = studentAttempts.some(i => i.bloqueado);
+                  const isSuper = student.role === 'super';
 
                   return (
                     <tr 
                       key={student.uid} 
-                      className="hover:bg-slate-100/70 dark:hover:bg-[#1a232b] transition-colors group cursor-pointer"
+                      className="hover:bg-blue-50/60 dark:hover:bg-[#10182b] transition-colors group cursor-pointer"
                       onClick={() => setSelectedStudent(student)}
                     >
-                      {/* Nombre y Correo */}
-                      <td className="px-5 py-3.5">
+                      {/* Nombre */}
+                      <td className="px-5 py-3.5 font-sans">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-slate-950 font-black text-xs flex items-center justify-center shadow-md">
+                          <div className={`w-8 h-8 rounded-xl font-black text-xs flex items-center justify-center shadow-md shrink-0 ${
+                            isSuper 
+                              ? 'bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 font-bold' 
+                              : 'bg-gradient-to-br from-blue-600 to-indigo-600 text-white'
+                          }`}>
                             {student.name.charAt(0).toUpperCase()}
                           </div>
-                          <div>
-                            <div className="font-bold text-slate-900 dark:text-white text-xs group-hover:text-emerald-400 transition-colors">
-                              {student.name}
-                            </div>
-                            <div className="text-[11px] font-medium text-slate-400 dark:text-slate-400">
-                              {student.email}
-                            </div>
+                          <div className="font-bold text-slate-900 dark:text-white text-xs group-hover:text-blue-600 dark:group-hover:text-sky-300 transition-colors flex items-center gap-1.5 truncate">
+                            <span>{student.name}</span>
+                            {isSuper && (
+                              <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-amber-500/20 text-amber-600 dark:text-amber-400 border border-amber-500/30 uppercase">
+                                SUPER
+                              </span>
+                            )}
                           </div>
                         </div>
                       </td>
 
-                      {/* Identificación / Cédula */}
-                      <td className="px-4 py-3.5 text-xs font-semibold text-slate-600 dark:text-slate-300 font-mono">
+                      {/* Cédula */}
+                      <td className="px-4 py-3.5 font-semibold text-slate-700 dark:text-slate-300">
                         {student.cedula || '—'}
                       </td>
 
-                      {/* Progreso Módulos */}
+                      {/* Correo */}
+                      <td className="px-4 py-3.5 text-slate-500 dark:text-slate-400 text-[11px] truncate max-w-[200px]">
+                        {student.email}
+                      </td>
+
+                      {/* Aprobados (número limpio) */}
                       <td className="px-4 py-3.5 text-center">
-                        <span className="px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg bg-blue-50 dark:bg-blue-950/40 text-blue-700 dark:text-sky-300 border border-blue-200 dark:border-blue-800">
-                          {studentProgress.length} mod ({totalClases} lecciones)
+                        <span className={`px-2.5 py-1 rounded-lg text-xs font-black ${
+                          aprobadosCount > 0 
+                            ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30' 
+                            : 'text-slate-400'
+                        }`}>
+                          {aprobadosCount}
                         </span>
                       </td>
 
-                      {/* Prácticas Aprobadas */}
+                      {/* En Proceso (número limpio) */}
                       <td className="px-4 py-3.5 text-center">
-                        <span className="px-2.5 py-1 text-[11px] font-mono font-bold rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
-                          {totalPracticas} prácticas
+                        <span className={`px-2.5 py-1 rounded-lg text-xs font-black ${
+                          enProcesoCount > 0 
+                            ? 'bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-sky-300 border border-blue-200 dark:border-blue-500/30' 
+                            : 'text-slate-400'
+                        }`}>
+                          {enProcesoCount}
                         </span>
-                      </td>
-
-                      {/* Estado de Certificación Oral */}
-                      <td className="px-4 py-3.5 text-center">
-                        {isPassed ? (
-                          <span className="px-2.5 py-1 text-[10px] font-black rounded-full uppercase bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30">
-                            ✓ {certAttempt?.calificacion ?? 86}/100
-                          </span>
-                        ) : isBlocked ? (
-                          <span className="px-2.5 py-1 text-[10px] font-black rounded-full uppercase bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/30">
-                            BLOQUEADO (3/3)
-                          </span>
-                        ) : certAttempt ? (
-                          <span className="px-2.5 py-1 text-[10px] font-black rounded-full uppercase bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/30">
-                            EN CURSO ({certAttempt.intentosConsumidos}/3)
-                          </span>
-                        ) : (
-                          <span className="px-2.5 py-1 text-[10px] font-medium rounded-full uppercase bg-slate-100 dark:bg-white/5 text-slate-400">
-                            SIN EVALUAR
-                          </span>
-                        )}
                       </td>
 
                       {/* Acciones */}
-                      <td className="px-5 py-3.5 text-right" onClick={(e) => e.stopPropagation()}>
+                      <td className="px-5 py-3.5 text-right font-sans" onClick={(e) => e.stopPropagation()}>
                         <div className="flex items-center justify-end gap-1.5">
                           <button
                             onClick={() => setSelectedStudent(student)}
-                            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+                            className="p-1.5 rounded-lg text-slate-400 hover:text-blue-600 dark:hover:text-white hover:bg-blue-50 dark:hover:bg-white/10 transition-colors"
                             title="Ver Ficha y Evaluaciones"
                           >
-                            <Eye className="w-4 h-4 text-emerald-400" />
+                            <Eye className="w-4 h-4 text-blue-600 dark:text-sky-400" />
                           </button>
 
                           {isBlocked && (
