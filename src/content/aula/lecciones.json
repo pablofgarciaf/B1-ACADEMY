@@ -1124,8 +1124,22 @@
       },
       {
         "slide_index": 12,
-        "script_text": "Tras algunas transacciones, el estado de inventario del artículo A0013 muestra lo siguiente: en el almacén 01 (Bodega Central Quito) hay 10 unidades en stock, 3 comprometidas por pedidos de clientes y ninguna solicitada, dejando 7 disponibles para venta. En el almacén 02 (Bodega Sucursal Guayaquil) hay 5 unidades en stock, ninguna comprometida y 2 solicitadas en órdenes de compra pendientes, resultando en 3 disponibles. El disponible se calcula como stock más solicitado menos comprometido. Esta tabla permite a gerentes y operadores tomar decisiones de reposición o venta con información actualizada y confiable.",
-        "step_guide": null
+        "script_text": "En el almacén 01 hay 10 unidades en stock, 3 comprometidas y ninguna solicitada: quedan 7 disponibles. En el almacén 02 hay 5 en stock, ninguna comprometida y 2 solicitadas: la disponibilidad proyectada es 7. Las 2 solicitadas todavía no están físicamente en el almacén. Calcula cada resultado como stock más solicitado menos comprometido.",
+        "presentation": "text",
+        "step_guide": {
+          "title": "Calcular disponibilidad proyectada",
+          "menu_path": "Herramientas > Ejercicio de disponibilidad",
+          "instructions": [
+            "Calcula 10 unidades en stock más 0 solicitadas menos 3 comprometidas para el almacén 01.",
+            "Calcula 5 unidades en stock más 2 solicitadas menos 0 comprometidas para el almacén 02.",
+            "Distingue lo solicitado de la existencia física; este ejercicio no modifica inventario."
+          ],
+          "campos": [
+            { "etiqueta": "Disponibilidad almacén 01", "valor": "7", "pista": "10 + 0 - 3" },
+            { "etiqueta": "Disponibilidad proyectada almacén 02", "valor": "7", "pista": "5 + 2 - 0" },
+            { "etiqueta": "Existencia física almacén 02", "valor": "5", "pista": "La compra pendiente todavía no ha ingresado." }
+          ]
+        }
       },
       {
         "slide_index": 13,
@@ -1362,8 +1376,22 @@
       },
       {
         "slide_index": 10,
-        "script_text": "Esta tabla muestra las relaciones de conversión dentro del grupo 'CABLES', donde el Metro es la unidad de medida base. Un Rollo equivale a 100 Metros (factor 100) y una Bobina a 50 Metros (factor 50). Estas reglas permiten que SAP Business One convierta automáticamente entre unidades: al comprar 2 Rollos, el sistema calcula 200 Metros en inventario; al vender 3 Bobinas, deduce 150 Metros del stock. La consistencia de estas conversiones es esencial para evitar errores en el control de stock y los reportes, especialmente cuando se manejan múltiples presentaciones del mismo artículo.",
-        "step_guide": null
+        "script_text": "En el grupo CABLES, un rollo equivale a 100 metros y una bobina a 50 metros. Si partes de cero, compras dos rollos y después vendes tres bobinas, entran 200 metros, salen 150 y quedan 50 metros. Resuelve la conversión en la ficha; el cálculo no registra movimientos en la empresa.",
+        "presentation": "text",
+        "step_guide": {
+          "title": "Calcular conversiones de unidades",
+          "menu_path": "Herramientas > Ejercicio de conversión",
+          "instructions": [
+            "Multiplica dos rollos por 100 metros.",
+            "Multiplica tres bobinas por 50 metros.",
+            "Resta la salida de la entrada para obtener el saldo en metros; no se registran movimientos."
+          ],
+          "campos": [
+            { "etiqueta": "Entrada en metros", "valor": "200", "pista": "2 × 100" },
+            { "etiqueta": "Salida en metros", "valor": "150", "pista": "3 × 50" },
+            { "etiqueta": "Saldo en metros", "valor": "50", "pista": "200 - 150" }
+          ]
+        }
       },
       {
         "slide_index": 11,

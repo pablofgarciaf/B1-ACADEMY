@@ -67,8 +67,11 @@ export async function POST(request:Request){
     await adminDb.runTransaction(async tx=>{
       const claim=d.evidence?adminDb.collection('practice_evidence_claims').doc(`${uid}_${d.evidence.requestId}`):null;
       const previous=claim?await tx.get(claim):null;
+      const record=adminDb.collection('practice_records').doc(`${uid}_${d.classId}_${d.slideIndex}`);
+      const previousRecord=(await tx.get(record)).data();
       if(approved&&previous?.exists&&previous.data()?.practiceKey!==key)throw new Error('EVIDENCE_ALREADY_USED');
-      tx.set(adminDb.collection('practice_records').doc(`${uid}_${d.classId}_${d.slideIndex}`),{uid,moduleId:d.moduleId,classId:d.classId,slideIndex:d.slideIndex,practiceKey:key,studentName:getStudentDisplayName(user.profile,user.email),
+      const keepPassed=!approved&&previousRecord?.aprobada===true&&previousRecord.validationVersion>=requiredPracticeValidationVersion(key);
+      if(!keepPassed)tx.set(record,{uid,moduleId:d.moduleId,classId:d.classId,slideIndex:d.slideIndex,practiceKey:key,studentName:getStudentDisplayName(user.profile,user.email),
         valores:d.valores,correctos:correct,total,aprobada:approved,validationVersion:requiredPracticeValidationVersion(key),conectada:connected,vioSolucion:d.vioSolucion,intentos:d.intentos,
         evidenceRequestId:d.evidence?.requestId??'',updatedAt:new Date().toISOString()});
       if(approved){

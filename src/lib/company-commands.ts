@@ -31,7 +31,7 @@ export const commandSchema = z.discriminatedUnion('action', [
   z.object({ action: z.literal('initialize'), data: z.object({ companyName: text.min(2) }) }),
   z.object({ action: z.literal('sales'), data: z.object({ docType: z.enum(salesTypes), document: documentInput }) }),
   z.object({ action: z.literal('purchase'), data: z.object({ docType: z.enum(purchaseTypes), document: documentInput }) }),
-  z.object({ action: z.literal('customer'), data: customerSchema.omit({ ...omitBase, cardCode: true, balance: true, linkedVendorCode:true }) }),
+  z.object({ action: z.literal('customer'), data: customerSchema.omit({ ...omitBase, balance: true, linkedVendorCode:true }).extend({ cardCode: code.optional() }) }),
   z.object({ action: z.literal('vendor'), data: vendorSchema.omit({ ...omitBase, cardCode: true, balance: true, linkedCustomerCode:true }) }),
   z.object({ action: z.literal('item'), data: itemSchema.omit({ ...omitBase, itemCode: true }).refine(v => v.maxStock >= v.minStock, 'Máximo menor al mínimo.') }),
   z.object({ action: z.literal('itemUpdate'), data: itemSchema.omit(omitBase).refine(v => v.maxStock >= v.minStock, 'Máximo menor al mínimo.') }),

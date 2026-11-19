@@ -1,9 +1,9 @@
-import LECCIONES_AULA from '@/content/aula/lecciones.json';
+import LECCIONES_AULA from '@/lib/aula/published-lessons';
 import { getModuleById } from '@/lib/curriculum-data';
 
 /** Solo para el servidor: las prácticas evaluadas de cada clase publicada, con sus valores esperados. */
 interface CampoEsperado { etiqueta: string; valor: string }
-interface SyncPublicado { slide_index: number; step_guide: { title?:string;menu_path?:string;campos?: CampoEsperado[] } | null }
+interface SyncPublicado { slide_index: number; step_guide: { title?:string;menu_path?:string;action_type?:string;campos?: CampoEsperado[] } | null }
 
 const LECCIONES = LECCIONES_AULA as unknown as Record<string, { syncData: SyncPublicado[] }>;
 export function guiaPublicada(classId:string,slideIndex:number) { const guia=LECCIONES[classId]?.syncData.find(s=>s.slide_index===slideIndex)?.step_guide; return guia ? {...guia,missionId:clavePractica(classId,slideIndex)} : null; }

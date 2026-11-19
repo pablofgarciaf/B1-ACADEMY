@@ -98,8 +98,9 @@ const REGLAS: [RegExp, PantallaConectada][] = [
   [/saldo.*apertura|apertura.*saldo|saldos iniciales/, { clave: 'asiento' }],
 ];
 
-export function pantallaConectada(guia?: { title?: string; menu_path?: string; missionId?: string } | null): PantallaConectada | null {
+export function pantallaConectada(guia?: { title?: string; menu_path?: string; missionId?: string; action_type?: string } | null): PantallaConectada | null {
   if (!guia) return null;
+  if (guia.action_type === 'caso') return null;
   if (guia.missionId === 'mod1-c1#7') return null;
   const finalModes:Record<string,import('@/components/finix-screens/FinalOperationsScreen').FinalOperationMode>={'mod8-c1#6':'procurementQuotes','mod9-c4#8':'costAdjustment','mod19-c1#8':'cardSettlement','mod19-c3#11':'vendorReconciliation','mod19-c4#7':'vendorAging','mod20-c2#8':'accountingPreview'};
   if(guia.missionId&&finalModes[guia.missionId])return {clave:'operaciones',mode:finalModes[guia.missionId]};

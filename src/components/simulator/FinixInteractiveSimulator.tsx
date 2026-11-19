@@ -152,6 +152,7 @@ export interface FinixInteractiveSimulatorProps {
   scrollInterno?: boolean;
   /** true = oculta la caja pedagógica duplicada porque ya se muestra en el encabezado superior */
   hideHeaderGuide?: boolean;
+  persistLegacyProgress?: boolean;
 }
 
 // Datos simulados para OCRD (Socios de Negocios)
@@ -215,7 +216,8 @@ export default function FinixInteractiveSimulator({
   onStepComplete,
   onMissionComplete,
   scrollInterno = true,
-  hideHeaderGuide = false
+  hideHeaderGuide = false,
+  persistLegacyProgress = true
 }: FinixInteractiveSimulatorProps) {
   const { userProfile } = useAuth();
   const [viewMode, setViewMode] = useState<FinixUITheme>('fiori');
@@ -299,7 +301,7 @@ export default function FinixInteractiveSimulator({
   // Cargar datos maestros de la empresa desde Firebase
   useEffect(() => {
     async function loadCompanyData() {
-      if (userProfile?.uid) {
+      if (persistLegacyProgress && userProfile?.uid) {
         const isInit = await initializeDemoCompany(userProfile.uid);
         if (isInit) {
           const bps = await getBusinessPartners(userProfile.uid);
@@ -343,7 +345,7 @@ export default function FinixInteractiveSimulator({
       setCompletedSteps(localSaved);
     }
     loadStudentProgress();
-  }, [manualId, userProfile]);
+  }, [manualId, userProfile, persistLegacyProgress]);
 
   // Resetear completedSteps cuando cambia la clase o el slide
   useEffect(() => {
@@ -361,7 +363,7 @@ export default function FinixInteractiveSimulator({
 
     localStorage.setItem(`sim_progress_${manualId}`, JSON.stringify(updated));
 
-    if (userProfile?.uid) {
+    if (persistLegacyProgress && userProfile?.uid) {
       setSaveLoading(true);
       try {
         const simRef = doc(db, 'usuarios', userProfile.uid, 'simulaciones', manualId);

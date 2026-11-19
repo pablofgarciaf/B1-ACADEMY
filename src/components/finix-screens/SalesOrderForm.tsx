@@ -255,6 +255,8 @@ function DocumentForm({ docType, readOnly = false }: SalesOrderFormProps) {
   const copyFromSourceDoc = (sourceId: string) => {
     const source = sources.find(s => s.id === sourceId);
     if (source) {
+      setIndex(-1);
+      setFormMode('create');
       setData(d => ({
         ...d,
         cardCode: source.cardCode,

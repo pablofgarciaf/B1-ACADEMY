@@ -35,8 +35,21 @@ test('la API de práctica ignora conectada del cliente y exige evidencia especí
  const requestId='7167b25d-6d64-44fe-a1ed-b5ba136717aa';
  events=[{companyId:'u1',actorUid:'u1',requestId,result:'C20005',action:'customer',occurredAt:new Date().toISOString(),changes:[{collection:'customers',after:{id:'C20005',name:'Corporación Andina S.A.'}}]}];
  response=await practice.POST(post({...bad,evidence:{requestId,action:'customer',result:'C20005'}}));assert.equal((await response.json()).aprobada,true);
+ response=await practice.POST(post(bad));assert.equal((await response.json()).aprobada,false);
+ assert.equal(db.rows.get('practice_records/u1_mod-ventas-c1_2').aprobada,true,'un intento fallido no debe borrar una aprobación vigente');
  response=await practice.POST(post({...bad,classId:'mod-ventas-c2',slideIndex:4,evidence:{requestId,action:'customer',result:'C20005'}}));assert.equal((await response.json()).aprobada,false);
  assert.equal(db.rows.get('practice_records/u1_mod-ventas-c1_2').validationVersion,2);
+});
+test('un examen fallido posterior conserva la evaluación aprobada vigente',async()=>{
+ const id='9f386db5-1111-4111-8111-cf65b33290f7';
+ const bank=require('../src/lib/exam-bank.ts').EXAM_BANK['mod-ventas'];
+ const hash=require('node:crypto').createHash('sha256').update(JSON.stringify(bank)).digest('hex');
+ db.rows.set('evaluations/u1_mod-ventas',{uid:'u1',moduleId:'mod-ventas',passed:true,score:87,validationVersion:2});
+ db.rows.set('exam_sessions/'+id,{uid:'u1',moduleId:'mod-ventas',questionOrder:[0],answers:[],results:[],status:'in_progress',createdAt:Date.now(),expiresAt:Date.now()+60000,bankHash:hash});
+ const response=await exams.POST(post({action:'answer',examId:id,questionNumber:1,answer:Array(120).fill('explicación').join(' ')}));
+ assert.equal(response.status,200);assert.equal((await response.json()).passed,false);
+ assert.equal(db.rows.get('evaluations/u1_mod-ventas').score,87);
+ assert.equal(db.rows.get('exam_sessions/'+id).status,'failed');
 });
 test('inicio concurrente de examen reserva un solo intento y rechaza duplicado de pregunta',async()=>{
  const starts=await Promise.all(Array.from({length:5},()=>exams.POST(post({action:'start',moduleId:'mod-ventas'})).then(r=>r.json())));

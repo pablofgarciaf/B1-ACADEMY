@@ -6,7 +6,26 @@ require('./register.cjs');
 const { OFFICIAL_SYLLABUS, SYLLABUS_BLOCKS, SPECIALTY_DIPLOMAS } = require('../src/lib/curriculum-data.ts');
 const { EXAM_BANK, EXAM_QUESTIONS_PER_ATTEMPT } = require('../src/lib/exam-bank.ts');
 const { practicasDelModulo, camposEsperados } = require('../src/lib/practice-registry.ts');
-const lessons = require('../src/content/aula/lecciones.json');
+const lessons = require('../src/lib/aula/published-lessons.ts').default;
+
+test('Datos Maestros cubre las cuatro clases y practica disponibilidad y conversión sin registrar movimientos', () => {
+  const { getModuleById } = require('../src/lib/curriculum-data.ts');
+  const { guiaPublicada } = require('../src/lib/practice-registry.ts');
+  const { pantallaConectada } = require('../src/lib/practica-conectada.ts');
+  const modulo = getModuleById('mod-2');
+  assert.deepEqual(modulo.classes.map(c => c.id), ['mod2-c1', 'mod2-c2', 'mod2-c3', 'mod2-c4']);
+  for (const clase of modulo.classes) {
+    assert.ok(lessons[clase.id].syncData.filter(s => s.step_guide).length >= 3, clase.id);
+  }
+  for (const [classId, index, expected] of [
+    ['mod2-c2', 12, ['7', '7', '5']],
+    ['mod2-c3', 10, ['200', '150', '50']],
+  ]) {
+    const guide = guiaPublicada(classId, index);
+    assert.equal(pantallaConectada(guide), null);
+    assert.deepEqual(guide.campos.map(field => field.valor), expected);
+  }
+});
 
 test('todas las respuestas publicadas se pueden aprobar, incluidas monedas y separadores', () => {
   const { coincide } = require('../src/lib/practice-check.ts');

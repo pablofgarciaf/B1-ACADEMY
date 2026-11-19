@@ -4,7 +4,7 @@ El código admite el dominio y datos de responsable mediante variables de entorn
 
 ## Variables públicas
 
-Completar las variables `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_LEGAL_NAME`, `NEXT_PUBLIC_LEGAL_RUC`, `NEXT_PUBLIC_LEGAL_ADDRESS`, `NEXT_PUBLIC_LEGAL_CITY`, `NEXT_PUBLIC_PRIVACY_EMAIL`, `NEXT_PUBLIC_CONTACT_PHONE` y `NEXT_PUBLIC_GTM_ID` del archivo `.env.example`. Son datos públicos del sitio; no poner contraseñas ni claves privadas en ellas. Reconstruir la aplicación tras cambiarlas, porque Next.js incorpora variables públicas durante el build.
+Completar las variables `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_LEGAL_NAME`, `NEXT_PUBLIC_LEGAL_RUC`, `NEXT_PUBLIC_LEGAL_ADDRESS`, `NEXT_PUBLIC_LEGAL_CITY`, `NEXT_PUBLIC_PRIVACY_EMAIL`, `NEXT_PUBLIC_CONTACT_PHONE` y `NEXT_PUBLIC_GTM_ID` en el `.env` local, que no se publica ni se incluye en Git. Son datos públicos del sitio; no poner contraseñas ni claves privadas en ellas. Reconstruir la aplicación tras cambiarlas, porque Next.js incorpora variables públicas durante el build.
 
 En producción, registro público, verificación con captación y solicitudes empresariales quedan cerrados mientras los datos legales no estén completos. En desarrollo se pueden probar los recorridos con servicios simulados o cuentas de ensayo. Las páginas y el catálogo siguen consultables.
 

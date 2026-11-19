@@ -4,6 +4,8 @@ import FinixInteractiveSimulator, { type StepGuide } from '@/components/simulato
 import type { IntentoPractica } from '@/lib/practice-check';
 import type { LessonData } from './types';
 import { Bot, Play, Pause, Volume2 } from 'lucide-react';
+import { pantallaConectada } from '@/lib/practica-conectada';
+import CaseWorkshop from './CaseWorkshop';
 
 interface AulaSimulatorViewProps {
   currentStepGuide: StepGuide;
@@ -40,6 +42,10 @@ export default function AulaSimulatorView({
   resumeAfterGesture,
   handleMissionComplete
 }: AulaSimulatorViewProps) {
+  const conectada = pantallaConectada({
+    ...currentStepGuide,
+    missionId: `${activeClassId}#${currentSlideIndex + 1}`,
+  });
   return (
     <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
       {/* Glowing instructions bar */}
@@ -94,6 +100,14 @@ export default function AulaSimulatorView({
           </div>
         </div>
 
+        <p className="mb-2 text-xs text-blue-100">
+          {conectada?.clave === 'consultaAcademica'
+            ? 'Consulta conectada: la práctica comprueba respuestas a partir de los datos de tu empresa.'
+            : conectada
+            ? 'Laboratorio conectado: la práctica comprueba una operación guardada en tu empresa.'
+            : 'Ficha guiada: se comprueban tus respuestas; esta actividad no modifica tu empresa.'}
+        </p>
+
         {slideScript && (
           <div className="mb-2">
             <p className={`text-xs text-blue-100/80 leading-relaxed ${narracionAbierta ? '' : 'line-clamp-2'}`}>{slideScript}</p>
@@ -128,12 +142,16 @@ export default function AulaSimulatorView({
           ))}
           <li className="text-xs text-amber-300 font-semibold flex items-start gap-2 bg-amber-500/10 p-1 rounded border border-amber-500/20 sm:col-span-2">
             <span className="shrink-0 w-4 h-4 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-[9px] font-extrabold mt-0.5">✓</span>
-            <span>Paso final: Una vez guardados o registrados los datos, pulsa el botón &quot;Verificar y Validar Práctica&quot; (o &quot;Añadir al sistema&quot;) para registrar tu aprobación.</span>
+            <span>{conectada?.clave === 'consultaAcademica'
+              ? 'Paso final: realiza la consulta y confirma tus respuestas.'
+              : conectada
+              ? 'Paso final: guarda la operación y pulsa «Verificar y Validar Práctica».'
+              : 'Paso final: completa la ficha y confirma tus respuestas para registrar tu aprobación.'}</span>
           </li>
         </ol>
 
         {/* Ficha unificada de datos requeridos */}
-        {currentStepGuide.campos && currentStepGuide.campos.length > 0 && (
+        {currentStepGuide.action_type !== 'caso' && currentStepGuide.campos && currentStepGuide.campos.length > 0 && (
           <div className="mt-2 pt-2 border-t border-blue-500/30">
             <div className="flex items-center justify-between mb-1">
               <span className="text-[10px] font-extrabold text-blue-300 uppercase tracking-wider flex items-center gap-1">
@@ -160,7 +178,9 @@ export default function AulaSimulatorView({
 
       {/* Simulator */}
       <div className="flex-1 min-h-[320px] mt-3 px-2 sm:px-4 pb-4">
-        <FinixInteractiveSimulator
+        {currentStepGuide.action_type === 'caso' ? (
+          <CaseWorkshop key={`${activeClassId}:${currentSlideIndex}:${restartKey}`} guide={currentStepGuide} onComplete={handleMissionComplete} />
+        ) : <FinixInteractiveSimulator
           key={`${activeClassId}:${currentSlideIndex}:${restartKey}`}
           manualId={activeClassId}
           currentStepIndex={currentSlideIndex}
@@ -168,7 +188,8 @@ export default function AulaSimulatorView({
           onMissionComplete={handleMissionComplete}
           scrollInterno={false}
           hideHeaderGuide={true}
-        />
+          persistLegacyProgress={false}
+        />}
       </div>
     </div>
   );

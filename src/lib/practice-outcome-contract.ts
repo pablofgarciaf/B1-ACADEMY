@@ -1,4 +1,4 @@
-import LECCIONES from '@/content/aula/lecciones.json';
+import LECCIONES from '@/lib/aula/published-lessons';
 import type { CompanyState, CollectionName } from './firestore-types';
 import type { CompanyAuditEvent } from './company-audit';
 import { pantallaConectada, type PantallaConectada } from './practica-conectada';

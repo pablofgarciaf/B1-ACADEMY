@@ -138,8 +138,10 @@ export async function POST(request: Request) {
     await adminDb.runTransaction(async tx=>{
       const snap=await tx.get(ref),current=snap.data();
       if(current?.processing!==reservation || current.answers.length!==answerRequest.questionNumber-1)throw new Error('EXAM_STALE');
+      const evaluationRef=adminDb.collection('evaluations').doc(buildStudentDocId(session.moduleId,user.uid));
+      const previousEvaluation=finished?(await tx.get(evaluationRef)).data():undefined;
       tx.update(ref,{answers:session.answers,results:session.results,status:finished?(passed?'passed':'failed'):'in_progress',total,processing:'',processingUntil:0});
-      if(finished)tx.set(adminDb.collection('evaluations').doc(buildStudentDocId(session.moduleId,user.uid)),{uid:user.uid,moduleId:session.moduleId,studentName,studentEmail:user.email,score:total,weakestQuestion:weakest,passed,validationVersion:2,completedAt:new Date().toISOString(),examId:answerRequest.examId},{merge:true});
+      if(finished&&(passed||previousEvaluation?.passed!==true||!(previousEvaluation.validationVersion>=2)))tx.set(evaluationRef,{uid:user.uid,moduleId:session.moduleId,studentName,studentEmail:user.email,score:total,weakestQuestion:weakest,passed,validationVersion:2,completedAt:new Date().toISOString(),examId:answerRequest.examId},{merge:true});
     });
     return NextResponse.json(finished?{result,finished:true,passed,total,weakest,summary:session.results.map((r,i)=>({question:bank[session.questionOrder[i]].question,score:r.score,missing:r.missing}))}:{result,finished:false,next:questionPayload(bank,session)});
   } catch (error) {

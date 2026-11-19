@@ -1,31 +1,23 @@
 import { NextResponse } from 'next/server';
-import { OFFICIAL_SYLLABUS } from '@/lib/curriculum-data';
+import { getModuleById } from '@/lib/curriculum-data';
 import { requireBearerUser } from '@/lib/server-auth';
 import { MODULO_INDUCCION, moduloInduccionCompleto } from '@/lib/requisitos-aula';
 import { hasInitializedCompany } from '@/lib/company-server';
-import LECCIONES_AULA from '@/content/aula/lecciones.json';
+import LECCIONES_AULA from '@/lib/aula/published-lessons';
 
 export async function GET(req: Request) {
   try {
     const actor = await requireBearerUser(req);
     const { searchParams } = new URL(req.url);
     const classId = searchParams.get('classId');
+    const moduleId = searchParams.get('moduleId');
 
-    if (!classId) {
-      return NextResponse.json({ error: 'Parámetro classId requerido' }, { status: 400 });
+    if (!classId || !moduleId) {
+      return NextResponse.json({ error: 'Parámetros moduleId y classId requeridos' }, { status: 400 });
     }
 
-    // Buscar la clase en el curriculum oficial
-    let foundClass = null;
-    let foundModule = null;
-    for (const mod of OFFICIAL_SYLLABUS) {
-      const cls = mod.classes.find(c => c.id === classId);
-      if (cls) {
-        foundClass = cls;
-        foundModule = mod;
-        break;
-      }
-    }
+    const foundModule = getModuleById(moduleId);
+    const foundClass = foundModule?.classes.find(c => c.id === classId);
 
     if (!foundClass || !foundModule) {
       return NextResponse.json({ error: `Clase ${classId} no encontrada` }, { status: 404 });

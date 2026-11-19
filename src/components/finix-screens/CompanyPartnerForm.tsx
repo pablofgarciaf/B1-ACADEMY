@@ -37,6 +37,8 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
   // Colección de interlocutores según tipo
   const rawList = vendor ? c.data.vendors : c.data.customers;
   const list = rawList || [];
+  const configuredGroups = ((c.data.profile as unknown as Record<string, unknown>)?.customerGroups as Array<{ codigo?: string }> | undefined) ?? [];
+  const customerGroupOptions = Array.from(new Set(['Nacional', 'Extranjero / Exterior', 'Corporativo / Grupo', 'Gobierno / Público', ...configuredGroups.map(g => g.codigo || '').filter(Boolean)]));
 
   // Modo: 'create' (Ctrl+A), 'edit' (cuando se selecciona un registro), o 'search' (Ctrl+F)
   const [formMode, setFormMode] = useState<'create' | 'edit' | 'search'>('create');
@@ -244,6 +246,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
           await c.save({
             action: 'customer',
             data: {
+              cardCode: cardCode.trim(),
               name,
               ruc,
               email,
@@ -424,6 +427,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
                 <option value="Extranjero / Exterior">Extranjero / Exterior</option>
                 <option value="Corporativo / Grupo">Corporativo / Grupo</option>
                 <option value="Gobierno / Público">Gobierno / Público</option>
+                {customerGroupOptions.slice(4).map(option => <option key={option} value={option}>{option}</option>)}
               </select>
             </div>
 

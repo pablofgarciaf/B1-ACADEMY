@@ -16,21 +16,11 @@ export interface AuthenticatedUser {
 
 export class AuthRejectedError extends Error {}
 
-// Caché en memoria para perfiles de usuario (TTL: 2 minutos)
-const profileCache = new Map<string, { profile: UserProfile; timestamp: number }>();
-const PROFILE_TTL = 2 * 60 * 1000;
-
 async function readProfile(uid: string, email?: string): Promise<UserProfile | null> {
-  const cached = profileCache.get(uid);
-  if (cached && Date.now() - cached.timestamp < PROFILE_TTL) {
-    return cached.profile;
-  }
-
   try {
     const current = await adminDb.collection('usuarios').doc(uid).get();
     if (current.exists) {
       const prof = current.data() as UserProfile;
-      profileCache.set(uid, { profile: prof, timestamp: Date.now() });
       return prof;
     }
 
@@ -40,15 +30,10 @@ async function readProfile(uid: string, email?: string): Promise<UserProfile | n
       if (legacy.exists) {
         const profile = { ...(legacy.data() as UserProfile), uid, email: email.toLowerCase() };
         await adminDb.collection('usuarios').doc(uid).set(profile, { merge: true });
-        profileCache.set(uid, { profile, timestamp: Date.now() });
         return profile;
       }
     }
   } catch (err: any) {
-    // Si la lectura falló por cuota excedida (code 8) y ya teníamos caché (incluso expirado), salvaguardar la sesión
-    if (cached) {
-      return cached.profile;
-    }
     throw err;
   }
   return null;
@@ -71,7 +56,7 @@ export async function authenticateIdToken(idToken: string): Promise<Authenticate
     throw error;
   }
 
-  if (!profile || profile.status === 'suspended') throw new AuthRejectedError('Perfil inexistente o suspendido.');
+  if (!profile || profile.status !== 'active') throw new AuthRejectedError('Perfil inexistente o inactivo.');
   return { uid, email, profile };
 }
 
@@ -105,11 +90,11 @@ export async function getSessionState(): Promise<SessionState> {
   if (!session) return { estado: 'sin-sesion' };
   try {
     if (session.startsWith('idtoken:')) return { estado: 'ok', user: await authenticateIdToken(session.slice('idtoken:'.length)) };
-    const decoded = await adminAuth.verifySessionCookie(session, false);
+    const decoded = await adminAuth.verifySessionCookie(session, true);
     const email = decoded.email?.toLowerCase();
     if (!email) return { estado: 'sin-sesion' };
     const profile = await readProfile(decoded.uid, email);
-    if (!profile || profile.status === 'suspended') return { estado: 'sin-sesion' };
+    if (!profile || profile.status !== 'active') return { estado: 'sin-sesion' };
     return { estado: 'ok', user: { uid: decoded.uid, email, profile } };
   } catch (error) {
     if (esRechazoAuth(error)) return { estado: 'sin-sesion' };
@@ -126,11 +111,11 @@ export async function getSessionUser(): Promise<AuthenticatedUser | null> {
     // `await` obligatorio: sin él, un token vencido escapa del try/catch y la página responde 500 en vez de ir al login.
     if (session.startsWith('idtoken:')) return await authenticateIdToken(session.slice('idtoken:'.length));
 
-    const decoded = await adminAuth.verifySessionCookie(session, false);
+    const decoded = await adminAuth.verifySessionCookie(session, true);
     const email = decoded.email?.toLowerCase();
     if (!email) return null;
     const profile = await readProfile(decoded.uid, email);
-    if (!profile || profile.status === 'suspended') return null;
+    if (!profile || profile.status !== 'active') return null;
     return { uid: decoded.uid, email, profile };
   } catch {
     return null;
