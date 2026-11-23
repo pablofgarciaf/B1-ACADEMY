@@ -108,7 +108,8 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
       setRimpe(v.rimpe || 'ninguno');
       setSubjectToWithholding(Boolean(v.subjectToWithholding));
     } else {
-      setPartnerType('customer');
+      const cust = p as typeof c.data.customers[number];
+      setPartnerType(cust.kind === 'lead' ? 'lead' : 'customer');
     }
   };
 
@@ -516,7 +517,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
                 value={ruc}
                 onChange={(e) => setRuc(e.target.value)}
                 className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] font-mono rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]"
-                placeholder="1792456789001"
+                placeholder="1799999999001"
               />
             </div>
 

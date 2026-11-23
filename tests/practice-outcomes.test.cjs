@@ -45,7 +45,7 @@ test('precio explícito por artículo queda guardado dentro de la lista y habili
  assert.equal(missionOutcomeMatches(c.state,entry,'mod2-c4#6'),true);
 });
 test('convertir potencial exige transición real, no basta crear un cliente con el texto esperado',()=>{
- const c=fixture();const lead={name:'Maxi-Teq',ruc:'1799999999001',email:'',phone:'',address:'',city:'Quito',contactName:'',currency:'USD',paymentTermsDays:30,creditLimit:1000,active:true,group:'EDU',notes:'',kind:'lead'};
+ const c=fixture();const lead={name:'Colegios del Norte',ruc:'1799999999001',email:'',phone:'',address:'',city:'Quito',contactName:'',currency:'USD',paymentTermsDays:30,creditLimit:1000,active:true,group:'EDU',notes:'',kind:'lead'};
  const created=c.run('customer',lead);const converted=c.run('partnerUpdate',{partnerType:'customer',cardCode:created.result,changes:{kind:'customer'}});assert.equal(missionOutcomeMatches(c.state,converted,'mod2-c1#7'),true);
  const d=fixture(),direct=d.run('customer',{...lead,kind:'customer'});assert.equal(missionOutcomeMatches(d.state,direct,'mod2-c1#7'),false);
 });

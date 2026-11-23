@@ -780,6 +780,22 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
                   >
                     Cancelar
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (confirm('¿Deseas saltar esta práctica y continuar a la siguiente lámina (modo pruebas)?')) {
+                        setLogrado(true);
+                        setEstado({ tono: 'exito', texto: 'Práctica omitida (modo pruebas). Volviendo a la clase…' });
+                        setTimeout(() => onCompleta({ valores: campos.map(c => c.valor), intentos: 1, vioSolucion: true }), 500);
+                      }
+                    }}
+                    disabled={logrado}
+                    className="h-6 px-2.5 rounded-[3px] border border-amber-300 bg-amber-50 text-amber-900 text-[11px] font-semibold hover:bg-amber-100 active:scale-95 disabled:opacity-60 cursor-pointer flex items-center gap-1"
+                    title="Avanzar temporalmente a la siguiente lámina durante la etapa de pruebas"
+                  >
+                    <span>⏭️</span>
+                    <span>Saltar práctica</span>
+                  </button>
                   {intentos >= 1 && !logrado && !mostrarSolucion && (
                     <button type="button" onClick={() => setMostrarSolucion(true)} className="h-6 px-3 rounded-[3px] border border-[#8a9bb0] bg-white text-[#1f4f8f] underline active:scale-95 cursor-pointer">
                       Ver solución

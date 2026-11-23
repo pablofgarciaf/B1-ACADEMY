@@ -658,14 +658,15 @@
       },
       {
         "slide_index": 6,
-        "script_text": "Registre a Maxi-Teq como cliente potencial con código C30000, asignándolo al grupo EDU. Esta clasificación le permite aplicar automáticamente las condiciones del grupo y preparar la entidad para futuras ventas. La práctica muestra cómo ingresar los datos maestros esenciales.",
+        "script_text": "Registre a Colegios del Norte como cliente potencial con código C30000, RUC 1799999999001, asignándolo al grupo EDU. Esta clasificación le permite aplicar automáticamente las condiciones del grupo y preparar la entidad para futuras ventas. La práctica muestra cómo ingresar los datos maestros esenciales.",
         "step_guide": {
           "action_type": "practica",
           "title": "Registrar cliente potencial",
           "menu_path": "Interlocutores comerciales > Datos maestros interlocutor comercial",
           "instructions": [
             "Ingrese el código C30000",
-            "Complete el nombre Maxi-Teq",
+            "Complete el nombre Colegios del Norte",
+            "Ingrese el RUC 1799999999001",
             "Seleccione el grupo EDU",
             "Confirme la clase como potencial",
             "Guarde el registro"
@@ -678,8 +679,13 @@
             },
             {
               "etiqueta": "Nombre",
-              "valor": "Maxi-Teq",
-              "pista": "Nombre razon social o comercial"
+              "valor": "Colegios del Norte",
+              "pista": "Nombre razón social del nuevo prospecto"
+            },
+            {
+              "etiqueta": "RUC",
+              "valor": "1799999999001",
+              "pista": "Identificación tributaria única para el nuevo lead"
             },
             {
               "etiqueta": "Grupo de clientes",
@@ -707,7 +713,7 @@
           "title": "Convertir potencial a cliente",
           "menu_path": "Interlocutores comerciales > Datos maestros interlocutor comercial",
           "instructions": [
-            "Abra el registro C30000",
+            "Abra el registro C30000 de Colegios del Norte",
             "Cambie la clase a Cliente",
             "Verifique que los datos se conserven",
             "Confirme la actualización"
@@ -720,8 +726,13 @@
             },
             {
               "etiqueta": "Nombre",
-              "valor": "Maxi-Teq",
+              "valor": "Colegios del Norte",
               "pista": "Nombre sin cambios"
+            },
+            {
+              "etiqueta": "RUC",
+              "valor": "1799999999001",
+              "pista": "Identificación tributaria registrada"
             },
             {
               "etiqueta": "Grupo de clientes",
@@ -1135,9 +1146,21 @@
             "Distingue lo solicitado de la existencia física; este ejercicio no modifica inventario."
           ],
           "campos": [
-            { "etiqueta": "Disponibilidad almacén 01", "valor": "7", "pista": "10 + 0 - 3" },
-            { "etiqueta": "Disponibilidad proyectada almacén 02", "valor": "7", "pista": "5 + 2 - 0" },
-            { "etiqueta": "Existencia física almacén 02", "valor": "5", "pista": "La compra pendiente todavía no ha ingresado." }
+            {
+              "etiqueta": "Disponibilidad almacén 01",
+              "valor": "7",
+              "pista": "10 + 0 - 3"
+            },
+            {
+              "etiqueta": "Disponibilidad proyectada almacén 02",
+              "valor": "7",
+              "pista": "5 + 2 - 0"
+            },
+            {
+              "etiqueta": "Existencia física almacén 02",
+              "valor": "5",
+              "pista": "La compra pendiente todavía no ha ingresado."
+            }
           ]
         }
       },
@@ -1387,9 +1410,21 @@
             "Resta la salida de la entrada para obtener el saldo en metros; no se registran movimientos."
           ],
           "campos": [
-            { "etiqueta": "Entrada en metros", "valor": "200", "pista": "2 × 100" },
-            { "etiqueta": "Salida en metros", "valor": "150", "pista": "3 × 50" },
-            { "etiqueta": "Saldo en metros", "valor": "50", "pista": "200 - 150" }
+            {
+              "etiqueta": "Entrada en metros",
+              "valor": "200",
+              "pista": "2 × 100"
+            },
+            {
+              "etiqueta": "Salida en metros",
+              "valor": "150",
+              "pista": "3 × 50"
+            },
+            {
+              "etiqueta": "Saldo en metros",
+              "valor": "50",
+              "pista": "200 - 150"
+            }
           ]
         }
       },
@@ -3302,8 +3337,9 @@
           "instructions": [
             "Ingrese al menú Recursos humanos",
             "Seleccione Datos maestros de empleado",
-            "Haga clic en 'Nuevo'",
+            "Haga clic en «Nuevo»",
             "Ingrese el ID E002 y nombre María Gómez",
+            "Ingrese la cédula ficticia 1799998888",
             "Asigne como jefe a E001 (Juan Pérez)",
             "Defina departamento como Contabilidad",
             "Establezca sucursal 01 y marque como activo"
@@ -3318,6 +3354,11 @@
               "etiqueta": "Nombre",
               "valor": "María Gómez",
               "pista": "Nombre completo del empleado"
+            },
+            {
+              "etiqueta": "N° de cédula",
+              "valor": "1799998888",
+              "pista": "Cédula ficticia de 10 dígitos para el registro"
             },
             {
               "etiqueta": "Jefe",
@@ -6861,13 +6902,14 @@
         "script_text": "En el maestro de artículo se define si el artículo usa el costo heredado del grupo o un costo estándar manual. Este último solo tiene efecto si el método de valoración del grupo es 'coste estándar'. Aquí vemos un artículo con costo estándar definido, listo para ser usado en transacciones.",
         "step_guide": {
           "action_type": "practica",
-          "title": "Crear artículo con costo estándar",
+          "title": "Configurar costo estándar del artículo A00001",
           "menu_path": "Inventario > Datos maestros de artículo > Pestaña Datos de inventario",
           "instructions": [
-            "Seleccionar grupo de artículos",
-            "Ingresar código y descripción",
-            "Definir costo estándar",
-            "Guardar artículo"
+            "Abre el maestro de artículos (Ctrl+F) y selecciona A00001 (Laptop Dell Latitude 3420)",
+            "Asigna el grupo de artículos GEN-001",
+            "En la pestaña Datos de inventario, define el costo estándar en 650.00",
+            "Verifica el precio de venta en 850.00",
+            "Guarda la actualización del artículo"
           ],
           "campos": [
             {
@@ -19555,31 +19597,31 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Vas a importar un nuevo cliente desde un archivo Excel previamente preparado. Seleccionarás el tipo de datos 'Interlocutores Comerciales', cargarás el archivo clientes.txt y asignarás las columnas a los campos CardCode, CardName, Grupo y Moneda. Usarás el método 'Agregar nuevos sin actualizar existentes' para evitar duplicados. Esta práctica te enseña a cargar datos maestros de clientes de forma segura y eficiente.",
+        "script_text": "Vas a importar un nuevo cliente desde un archivo Excel previamente preparado. Seleccionarás el tipo de datos Interlocutores Comerciales, cargarás el archivo clientes.txt y asignarás las columnas a los campos CardCode (C25000), CardName (Distribuidora del Pacífico), Grupo y Moneda. Usarás el método Agregar nuevos sin actualizar existentes para evitar duplicados. Esta práctica te enseña a cargar datos maestros de clientes de forma segura y eficiente.",
         "step_guide": {
           "action_type": "practica",
           "title": "Importar nuevo cliente",
           "menu_path": "Administración > Importación/Exportación de Datos > Importación de Datos > Importar desde Excel",
           "instructions": [
-            "Selecciona 'Interlocutores Comerciales' como tipo de datos",
+            "Selecciona Interlocutores Comerciales como tipo de datos",
             "Busca y selecciona el archivo clientes.txt",
-            "Asigna la columna A al campo CardCode",
-            "Asigna la columna B al campo CardName",
-            "Asigna la columna C al campo Grupo",
-            "Asigna la columna D al campo Moneda",
-            "Selecciona el método 'Agregar nuevos sin actualizar existentes'",
-            "Haz clic en 'Ejecutar' para iniciar la importación"
+            "Asigna la columna A al campo CardCode (C25000)",
+            "Asigna la columna B al campo CardName (Distribuidora del Pacífico)",
+            "Asigna la columna C al campo Grupo (Clientes)",
+            "Asigna la columna D al campo Moneda (USD)",
+            "Selecciona el método Agregar nuevos sin actualizar existentes",
+            "Haz clic en Ejecutar para iniciar la importación"
           ],
           "campos": [
             {
               "etiqueta": "CardCode",
-              "valor": "C20000",
-              "pista": "Código único del cliente"
+              "valor": "C25000",
+              "pista": "Código único del nuevo cliente a importar"
             },
             {
               "etiqueta": "CardName",
-              "valor": "Maxi-Teq",
-              "pista": "Nombre completo del cliente"
+              "valor": "Distribuidora del Pacífico",
+              "pista": "Nombre completo del nuevo cliente"
             },
             {
               "etiqueta": "Grupo",

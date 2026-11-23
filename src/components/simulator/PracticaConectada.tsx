@@ -227,31 +227,57 @@ export default function PracticaConectada({ guia, pantalla, onCompleta, hideHead
                 {pendingEvidence ? 'Comprueba el cumplimiento de la misión para certificar la práctica.' : 'Una vez que guardes el registro o esté en pantalla, pulsa el botón para validar.'}
               </p>
             </div>
-            <button
-              type="button"
-              disabled={c.saving}
-              className="flex items-center justify-center gap-1.5 rounded-lg bg-[#0055A5] hover:bg-[#004080] active:scale-95 px-5 py-2 font-bold text-white disabled:opacity-50 text-xs shadow-md cursor-pointer transition shrink-0"
-              onClick={() => {
-                if (pendingEvidence) {
-                  setLogrado(pendingEvidence.evidence?.result ?? 'registrada');
-                  onCompleta(pendingEvidence);
-                } else {
-                  const fakeReqId = crypto.randomUUID();
-                  const intento = {
-                    valores: [`validar:${guia.missionId || 'mision'}`],
-                    evidence: { requestId: fakeReqId, action: 'customer', result: 'verificacion-manual' },
-                    intentos: 1,
-                    vioSolucion: false,
-                    conectada: true
-                  };
-                  setLogrado('verificando');
-                  onCompleta(intento);
-                }
-              }}
-            >
-              <span>🔍</span>
-              <span>Verificar y Validar Práctica</span>
-            </button>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                type="button"
+                disabled={c.saving}
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-[#0055A5] hover:bg-[#004080] active:scale-95 px-5 py-2 font-bold text-white disabled:opacity-50 text-xs shadow-md cursor-pointer transition shrink-0"
+                onClick={() => {
+                  if (pendingEvidence) {
+                    setLogrado(pendingEvidence.evidence?.result ?? 'registrada');
+                    onCompleta(pendingEvidence);
+                  } else {
+                    const fakeReqId = crypto.randomUUID();
+                    const intento = {
+                      valores: [`validar:${guia.missionId || 'mision'}`],
+                      evidence: { requestId: fakeReqId, action: 'customer', result: 'verificacion-manual' },
+                      intentos: 1,
+                      vioSolucion: false,
+                      conectada: true
+                    };
+                    setLogrado('verificando');
+                    onCompleta(intento);
+                  }
+                }}
+              >
+                <span>🔍</span>
+                <span>Verificar y Validar Práctica</span>
+              </button>
+
+              <button
+                type="button"
+                disabled={c.saving}
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 active:scale-95 px-3 py-2 font-semibold text-xs shadow-xs cursor-pointer transition shrink-0"
+                title="Avanzar temporalmente a la siguiente lámina durante la etapa de pruebas"
+                onClick={() => {
+                  if (confirm('¿Deseas saltar esta práctica y continuar a la siguiente lámina (modo pruebas)?')) {
+                    const fakeReqId = crypto.randomUUID();
+                    const intento = {
+                      valores: [`saltar:${guia.missionId || 'mision'}`],
+                      evidence: { requestId: fakeReqId, action: 'bypass', result: 'salto-prueba' },
+                      intentos: 1,
+                      vioSolucion: true,
+                      conectada: true
+                    };
+                    setLogrado('completada-modo-pruebas');
+                    onCompleta(intento);
+                  }
+                }}
+              >
+                <span>⏭️</span>
+                <span>Saltar práctica</span>
+              </button>
+            </div>
           </div>
         </div>
       )}
