@@ -13,6 +13,7 @@ const CLIENTES = [
   { name: 'Sistemas del Valle', city: 'Quito', ruc: '1790055000001' },
 ];
 const PROVEEDORES = [
+  { name: 'Maxi-Teq', city: 'Quito', ruc: '1790011003001' },
   { name: 'Dell Ecuador', city: 'Quito', ruc: '1790066002001' },
   { name: 'HP Importaciones', city: 'Guayaquil', ruc: '0990077002001' },
   { name: 'Lenovo Andina', city: 'Quito', ruc: '1790088006001' },

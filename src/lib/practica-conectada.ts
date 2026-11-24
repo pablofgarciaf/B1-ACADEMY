@@ -121,10 +121,11 @@ export function pantallaConectada(guia?: { title?: string; menu_path?: string; m
   if(/ejecutar el rol de pagos/.test(preliminar)) return { clave: 'nomina' };
   if(/crear serie para activos/.test(preliminar)) return { clave: 'series', docType:'activos' };
   if(/crear serie de ajuste/.test(preliminar)) return { clave: 'series', docType:'asientos' };
+  if (/^ver\b/.test(plano(guia.title ?? '').trim())) return null;
   if(/banco|cobro|pago|extracto|concili/.test(preliminar)) return { clave: 'bancos' };
   // Buscar, consultar o asistentes/fichas de configuración guiada no guardan un registro de motor directo: esas prácticas siguen con la ficha del ejercicio en PracticaValidada.
   // Ver, solicitar, confirmar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.
-  if (/buscar|consultar|identificar|verificar|revisar|visualizar|confirmar|solicitar|anular|anulacion|asistente de pagos|payment wizard|generador de consultas|agregar tabla|filtrar|seleccionar campos|vincular consulta|programar notificacion|configurar ficha|datos de planificacion|definir peso|grupo cable|definir categorias|activar informacion|widget de actividades|agregar widget|configuracion de widget|prevision|alerta de stock|proceso de autorizacion|visibilidad de udf|importar desde excel|importar nuevo/.test(plano(guia.title ?? '')) || /^ver\b/.test(plano(guia.title ?? '').trim())) return null;
+  if (/buscar|consultar|identificar|verificar|revisar|visualizar|confirmar|solicitar|anular|anulacion|asistente de pagos|payment wizard|generador de consultas|agregar tabla|filtrar|seleccionar campos|vincular consulta|programar notificacion|configurar ficha|datos de planificacion|definir peso|grupo cable|definir categorias|activar informacion|widget de actividades|agregar widget|configuracion de widget|prevision|alerta de stock|proceso de autorizacion|visibilidad de udf|importar desde excel|importar nuevo/.test(plano(guia.title ?? ''))) return null;
   const texto = plano(`${guia.title ?? ''} ${guia.menu_path ?? ''}`);
   // Asistente de pagos: ejecutarlo registra pagos reales (pantalla de Bancos); ver recomendaciones, elegir opciones
   // o generar el archivo no guardan nada en la empresa y siguen como ficha.

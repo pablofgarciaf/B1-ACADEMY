@@ -263,6 +263,16 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
         }
         resetFormToCreate();
       } else {
+        // Si se configuró o cambió el socio conectado en la cabecera, se ejecuta partnerLink
+        if (linkedPartnerCode) {
+          const cust = vendor ? linkedPartnerCode : cardCode;
+          const vend = vendor ? cardCode : linkedPartnerCode;
+          await c.save({
+            action: 'partnerLink',
+            data: { customerCode: cust, vendorCode: vend },
+          });
+        }
+
         // Actualización estándar del socio
         await c.save({
           action: 'partnerUpdate',
@@ -288,19 +298,10 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
             },
           },
         });
-
-        // Si se configuró o cambió el socio conectado en la cabecera, se asegura el vínculo
-        if (linkedPartnerCode) {
-          const cust = vendor ? linkedPartnerCode : cardCode;
-          const vend = vendor ? cardCode : linkedPartnerCode;
-          await c.save({
-            action: 'partnerLink',
-            data: { customerCode: cust, vendorCode: vend },
-          });
-        }
       }
-    } catch {
-      /* error gestionado por c.save */
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Error al guardar la operación.';
+      alert(msg);
     } finally {
       setPartnerSaving(false);
     }

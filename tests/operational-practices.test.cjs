@@ -33,7 +33,7 @@ test('ubicación calcula el peso real y rechaza asignaciones sobre el máximo',(
  assert.throws(()=>c.run('binMove',{warehouseCode:'01',itemCode:item.result,fromBin:'',toBin:'UBIC01',quantity:6}),/peso máximo/);
 });
 test('pedido y factura de servicio conservan gasto imputable sin crear existencias',()=>{
- for(const [key,type,vendor,date,description,price]of[['mod8-c2#4','purchase_order','V10000','2026-04-05','Diseño web institucional',1200],['mod8-c2#5','vendor_invoice','V10001','2026-04-10','Mantenimiento mensual equipos',350]]){
+ for(const [key,type,vendor,date,description,price]of[['mod8-c2#4','purchase_order','V10001','2026-04-05','Diseño web institucional',1200],['mod8-c2#5','vendor_invoice','V10001','2026-04-10','Mantenimiento mensual equipos',350]]){
   const c=fixture(),service=c.state.items.find(i=>i.type==='service'),event=c.run('purchase',{docType:type,document:{date,dueDate:date,cardCode:vendor,reference:'',comments:'',baseDocumentId:'',lines:[{itemCode:service.itemCode,description,quantity:1,price,unit:'UND',discount:0,taxRate:15,warehouseCode:'01',expenseAccount:'6200'}]}});
   assert.equal(missionOutcomeMatches(c.state,event,key),true,key);
   assert.equal(c.state.stockMovements.some(m=>m.itemCode===service.itemCode),false);
@@ -42,8 +42,8 @@ test('pedido y factura de servicio conservan gasto imputable sin crear existenci
 });
 test('las cuatro devoluciones verifican sustento, RMA, stock y asiento sin duplicar cantidades',()=>{
  for(const[key,kind,vendor,item,quantity,price,date,reason,rma,withoutQuantity]of[
-  ['mod8-c3#5','request','V10000','A00001',2,650,'2026-04-15','Daño transporte','RMA20260415',false],
-  ['mod8-c3#6','goods_return','V10000','A00001',2,650,'2026-04-16','Daño transporte','',false],
+  ['mod8-c3#5','request','V10001','A00001',2,650,'2026-04-15','Daño transporte','RMA20260415',false],
+  ['mod8-c3#6','goods_return','V10001','A00001',2,650,'2026-04-16','Daño transporte','',false],
   ['mod8-c3#8','credit_note','V10001','A00003',5,180,'2026-04-20','Defecto','',false],
   ['mod8-c3#10','value_credit','V10002','A00001',1,100,'2026-04-25','Falta 10% descuento','',true]]){
   const c=fixture();let baseDocumentId='';
@@ -56,7 +56,7 @@ test('las cuatro devoluciones verifican sustento, RMA, stock y asiento sin dupli
  }
 });
 test('recepción Cuenca guarda el depósito y asigna sus existencias',()=>{
- const c=fixture(),event=c.run('purchase',{docType:'goods_receipt',document:{date:'2026-04-01',dueDate:'2026-04-01',cardCode:'V10000',reference:'',comments:'',baseDocumentId:'',lines:[{itemCode:'A00003',description:'Monitor Lenovo ThinkVision 24"',quantity:30,price:120,unit:'UND',discount:0,taxRate:15,warehouseCode:'03',binCode:'A1-S1-L1'}]}});
+ const c=fixture(),event=c.run('purchase',{docType:'goods_receipt',document:{date:'2026-04-01',dueDate:'2026-04-01',cardCode:'V10001',reference:'',comments:'',baseDocumentId:'',lines:[{itemCode:'A00003',description:'Monitor Lenovo ThinkVision 24"',quantity:30,price:120,unit:'UND',discount:0,taxRate:15,warehouseCode:'03',binCode:'A1-S1-L1'}]}});
  assert.equal(missionOutcomeMatches(c.state,event,'mod7-c2#7'),true);
  assert.equal(c.state.binLocations.find(b=>b.binCode==='A1-S1-L1').contents[0].quantity,30);
 });
@@ -64,7 +64,7 @@ test('tipos de importación se aplican: flete a inventario y seguro fijo a gasto
  const c=fixture();let event=c.run('landedCostType',{name:'Flete Internacional',expenseAccount:'605000',updatesStock:true,allocation:'weight',updatesLastPurchase:true,fixedAmount:0});assert.equal(missionOutcomeMatches(c.state,event,'mod7-c5#6'),true);
  event=c.run('landedCostType',{name:'Seguro de Carga',expenseAccount:'606000',updatesStock:false,allocation:'none',updatesLastPurchase:false,fixedAmount:25});assert.equal(missionOutcomeMatches(c.state,event,'mod7-c5#7'),true);
  const item=c.run('item',{...c.state.items[0],name:'Mercadería pesada',weight:4}).result;
- const receipt=c.run('purchase',{docType:'goods_receipt',document:{date:'2026-04-01',dueDate:'2026-04-01',cardCode:'V10000',reference:'',comments:'',baseDocumentId:'',lines:[{itemCode:item,description:'Mercadería pesada',quantity:10,price:100,unit:'UND',discount:0,taxRate:15,warehouseCode:'01'}]}});
+ const receipt=c.run('purchase',{docType:'goods_receipt',document:{date:'2026-04-01',dueDate:'2026-04-01',cardCode:'V10001',reference:'',comments:'',baseDocumentId:'',lines:[{itemCode:item,description:'Mercadería pesada',quantity:10,price:100,unit:'UND',discount:0,taxRate:15,warehouseCode:'01'}]}});
  c.run('landedCost',{documentId:receipt.result,date:'2026-04-02',allocation:'value',paymentAccount:'1.1.01',costs:[{concept:'Flete Internacional',amount:100},{concept:'Seguro de Carga',amount:25}]});
  assert.equal(c.state.warehouseStock.find(s=>s.itemCode===item).value,1100);assert.equal(c.state.journalEntries.at(-1).lines.find(l=>l.accountCode==='606000').debit,25);
 });

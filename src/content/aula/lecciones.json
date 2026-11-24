@@ -754,32 +754,33 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Vincule el proveedor Dell Ecuador (V10000) con el cliente Maxi-Teq (C20000) cuando una misma entidad actúa como ambos. Al ingresar el código en 'Cliente conectado', SAP Business One completa automáticamente el campo inverso. Esta vinculación permite ver operaciones abiertas en informes de antigüedad y reconciliar transacciones, mejorando la gestión financiera.",
+        "script_text": "En SAP Business One, una misma empresa puede actuar a la vez como tu cliente y como tu proveedor. Por ejemplo, Maxi-Teq te compra tecnología (es tu cliente C20000) pero también te vende servicios de soporte (es tu proveedor V10000). Esta práctica enseña a vincular esas dos fichas para que el sistema las reconozca como la misma entidad: podrás ver todas sus operaciones juntas en informes de antigüedad y compensar saldos entre compras y ventas automáticamente.",
         "step_guide": {
           "action_type": "practica",
           "title": "Vincular cliente y proveedor",
           "menu_path": "Interlocutores comerciales > Datos maestros interlocutor comercial",
           "instructions": [
-            "Abra el proveedor V10000",
-            "Ingrese C20000 en Cliente conectado",
-            "Confirme que se auto-completa Proveedor conectado",
-            "Guarde la vinculación"
+            "Abra la ficha del proveedor V10000 (Maxi-Teq)",
+            "Localice el campo 'Cliente conectado' en la pestaña General",
+            "Ingrese C20000 (Maxi-Teq) en 'Cliente conectado'",
+            "Confirme que el campo inverso 'Proveedor conectado' en C20000 se autorrellena",
+            "Guarde el registro del proveedor"
           ],
           "campos": [
             {
               "etiqueta": "Código",
               "valor": "V10000",
-              "pista": "Código del proveedor"
+              "pista": "Código del proveedor Maxi-Teq"
             },
             {
               "etiqueta": "Nombre",
-              "valor": "Dell Ecuador",
-              "pista": "Nombre del socio"
+              "valor": "Maxi-Teq",
+              "pista": "Misma empresa que el cliente C20000"
             },
             {
               "etiqueta": "Cliente conectado",
               "valor": "C20000",
-              "pista": "Código del cliente relacionado"
+              "pista": "Código del cliente de la misma empresa"
             },
             {
               "etiqueta": "Clase",
@@ -986,7 +987,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "En la ficha de compra, definirás el precio que pagas por el artículo y los datos que agilizan las órdenes a proveedores. El precio de compra es 900.00 USD por unidad, y la unidad de medida permanece 'Unidad'. Asignarás como proveedor preferente a Dell Ecuador (V10000), de modo que al crear una orden de compra, este proveedor se sugiera automáticamente. También ingresarás el catálogo del fabricante 'Dell-GamerX' para referencia interna. El impuesto de compra se establece como IVA 15%, que será acreditado como crédito tributario al recibir la factura del proveedor.",
+        "script_text": "En la ficha de compra, definirás el precio que pagas por el artículo y los datos que agilizan las órdenes a proveedores. El precio de compra es 900.00 USD por unidad, y la unidad de medida permanece 'Unidad'. Asignarás como proveedor preferente a Dell Ecuador (V10001), de modo que al crear una orden de compra, este proveedor se sugiera automáticamente. También ingresarás el catálogo del fabricante 'Dell-GamerX' para referencia interna. El impuesto de compra se establece como IVA 15%, que será acreditado como crédito tributario al recibir la factura del proveedor.",
         "step_guide": {
           "action_type": "practica",
           "title": "Configurar ficha de compra",
@@ -1016,7 +1017,7 @@
             },
             {
               "etiqueta": "Proveedor preferente",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador, código V10000"
             },
             {
@@ -1780,7 +1781,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Seleccionar Dell Ecuador de la lista"
             },
             {
@@ -1863,7 +1864,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "En esta práctica, registra una factura de compra por un servidor HP valorado en 6.000 USD, que actuará como activo fijo. Debe seleccionar el proveedor Dell Ecuador (V10000), establecer tanto la fecha de contabilización como la de valoración del activo en 01/01/2026, y ingresar el artículo A00006 con cantidad 1 y precio unitario 6000.00. La fecha de valoración determina cuándo entra en operación el activo y afecta el cálculo de la depreciación. Al guardar, el sistema prepara la generación automática del documento de capitalización.",
+        "script_text": "En esta práctica, registra una factura de compra por un servidor HP valorado en 6.000 USD, que actuará como activo fijo. Debe seleccionar el proveedor Dell Ecuador (V10001), establecer tanto la fecha de contabilización como la de valoración del activo en 01/01/2026, y ingresar el artículo A00006 con cantidad 1 y precio unitario 6000.00. La fecha de valoración determina cuándo entra en operación el activo y afecta el cálculo de la depreciación. Al guardar, el sistema prepara la generación automática del documento de capitalización.",
         "step_guide": {
           "action_type": "practica",
           "title": "Registrar factura de camión",
@@ -1878,7 +1879,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Seleccione Dell Ecuador de la lista"
             },
             {
@@ -2924,7 +2925,7 @@
             },
             {
               "etiqueta": "Socio comercial",
-              "valor": "-",
+              "valor": "No aplica",
               "pista": "No se aplica en este caso"
             },
             {
@@ -4852,7 +4853,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Vas a crear un pedido de compra para adquirir 5 laptops Dell Latitude 3420 al proveedor Dell Ecuador (V10000) a 850.00 cada una. Este documento autoriza la compra pero aún no genera movimiento de inventario ni contabilidad. Las cantidades solicitadas aparecerán como stock comprometido en los reportes. Al guardar el pedido, el sistema lo vinculará automáticamente a la futura entrada de mercancías y factura.",
+        "script_text": "Vas a crear un pedido de compra para adquirir 5 laptops Dell Latitude 3420 al proveedor Dell Ecuador (V10001) a 850.00 cada una. Este documento autoriza la compra pero aún no genera movimiento de inventario ni contabilidad. Las cantidades solicitadas aparecerán como stock comprometido en los reportes. Al guardar el pedido, el sistema lo vinculará automáticamente a la futura entrada de mercancías y factura.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear pedido de compra",
@@ -4867,7 +4868,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Ingrese el código del proveedor Dell Ecuador"
             },
             {
@@ -4920,7 +4921,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor Dell Ecuador"
             },
             {
@@ -4968,7 +4969,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor Dell Ecuador"
             },
             {
@@ -5021,7 +5022,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor Dell Ecuador"
             },
             {
@@ -6126,7 +6127,7 @@
           "campos": [
             {
               "etiqueta": "Código Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador"
             },
             {
@@ -6318,7 +6319,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "En esta práctica crea una solicitud de devolución de mercancías para 2 laptops Dell Latitude 3420 dañadas durante el transporte. Selecciona al proveedor V10000 (Dell Ecuador), ingresa el artículo A00001, cantidad 2, motivo 'Daño transporte' y el número RMA proporcionado. Esta solicitud reserva el stock y documenta la devolución sin afectar contabilidad aún. Es el primer paso para gestionar una devolución antes de facturar.",
+        "script_text": "En esta práctica crea una solicitud de devolución de mercancías para 2 laptops Dell Latitude 3420 dañadas durante el transporte. Selecciona al proveedor V10001 (Dell Ecuador), ingresa el artículo A00001, cantidad 2, motivo 'Daño transporte' y el número RMA proporcionado. Esta solicitud reserva el stock y documenta la devolución sin afectar contabilidad aún. Es el primer paso para gestionar una devolución antes de facturar.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear solicitud devolución",
@@ -6338,7 +6339,7 @@
             },
             {
               "etiqueta": "Código Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código de Dell Ecuador"
             },
             {
@@ -6366,7 +6367,7 @@
       },
       {
         "slide_index": 6,
-        "script_text": "Esta práctica registra la devolución física de 2 laptops dañadas al proveedor. Selecciona V10000, artículo A00001, cantidad 2 y confirma el costo unitario de 650.00 USD. Al guardar, SAP Business One saca las unidades del inventario (bodega 01 por defecto) y genera un asiento contable: acredita Inventario por 1300.00 y debita Asignación de Costes por el mismo valor, reflejando el ajuste de valor real. No hay IVA porque no hay factura de por medio.",
+        "script_text": "Esta práctica registra la devolución física de 2 laptops dañadas al proveedor. Selecciona V10001, artículo A00001, cantidad 2 y confirma el costo unitario de 650.00 USD. Al guardar, SAP Business One saca las unidades del inventario (bodega 01 por defecto) y genera un asiento contable: acredita Inventario por 1300.00 y debita Asignación de Costes por el mismo valor, reflejando el ajuste de valor real. No hay IVA porque no hay factura de por medio.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear devolución mercancía",
@@ -6386,7 +6387,7 @@
             },
             {
               "etiqueta": "Código Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código de Dell Ecuador"
             },
             {
@@ -11352,7 +11353,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Desde la ventana Recomendaciones de pedido se convierten las sugerencias del MRP en documentos reales. Seleccionamos 'Pedido de compra' como tipo, confirmamos el artículo A00007, cantidad 100, fecha requerida y proveedor sugerido (Dell Ecuador, V10000). Al marcar 'Crear', el sistema genera el pedido de compra que podrá ser revisado, modificado y enviado al proveedor para asegurar el abastecimiento oportuno.",
+        "script_text": "Desde la ventana Recomendaciones de pedido se convierten las sugerencias del MRP en documentos reales. Seleccionamos 'Pedido de compra' como tipo, confirmamos el artículo A00007, cantidad 100, fecha requerida y proveedor sugerido (Dell Ecuador, V10001). Al marcar 'Crear', el sistema genera el pedido de compra que podrá ser revisado, modificado y enviado al proveedor para asegurar el abastecimiento oportuno.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear pedido de compra desde MRP",
@@ -11388,7 +11389,7 @@
             },
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Codigo del proveedor sugerido (Dell Ecuador)"
             },
             {
@@ -12050,7 +12051,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Desde la ventana Recomendaciones de pedido conviertes las sugerencias del MRP en documentos reales. Seleccionas el tipo de documento (pedido de compra, orden de producción, etc.), verificas artículo, cantidad y fecha, y luego creas el documento. Aquí se genera un pedido de compra de 100 unidades del artículo A00007 al proveedor V10000 para el almacén 01.",
+        "script_text": "Desde la ventana Recomendaciones de pedido conviertes las sugerencias del MRP en documentos reales. Seleccionas el tipo de documento (pedido de compra, orden de producción, etc.), verificas artículo, cantidad y fecha, y luego creas el documento. Aquí se genera un pedido de compra de 100 unidades del artículo A00007 al proveedor V10001 para el almacén 01.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear pedido de compra desde MRP",
@@ -12085,7 +12086,7 @@
             },
             {
               "etiqueta": "Proveedor sugerido",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor recomendado por el sistema según configuración"
             }
           ]
@@ -14597,7 +14598,7 @@
       },
       {
         "slide_index": 10,
-        "script_text": "Registras un pago de 650 USD por transferencia bancaria al proveedor Dell Ecuador (V10000) contra factura de compra FC-P-2026-050 por una laptop Dell Latitude 3420. Como es transferencia, el banco disminuye directamente y la cuenta de proveedor se cancela. No se usa cuenta de compensación en pagos, salvo configuración especial.",
+        "script_text": "Registras un pago de 650 USD por transferencia bancaria al proveedor Dell Ecuador (V10001) contra factura de compra FC-P-2026-050 por una laptop Dell Latitude 3420. Como es transferencia, el banco disminuye directamente y la cuenta de proveedor se cancela. No se usa cuenta de compensación en pagos, salvo configuración especial.",
         "step_guide": {
           "action_type": "practica",
           "title": "Registrar pago a proveedor",
@@ -14612,7 +14613,7 @@
           "campos": [
             {
               "etiqueta": "Código de proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor Dell Ecuador de Quito"
             },
             {
@@ -14835,7 +14836,7 @@
       },
       {
         "slide_index": 8,
-        "script_text": "Tras definir los criterios, el Asistente genera un informe de recomendaciones. Aquí ve que se sugiere pagar la factura FC001 del proveedor V10000 (Dell Ecuador) por 850.00, vencida el 01/04/2026. El importe neto es 850.00 y el IVA (15 %) se calculará al generar el pago. Esta lista muestra solo transacciones abiertas, no pagadas ni reconciliadas. Puede aceptar, rechazar o añadir filas manualmente. Aceptar reserva estas transacciones exclusivamente para esta ejecución.",
+        "script_text": "Tras definir los criterios, el Asistente genera un informe de recomendaciones. Aquí ve que se sugiere pagar la factura FC001 del proveedor V10001 (Dell Ecuador) por 850.00, vencida el 01/04/2026. El importe neto es 850.00 y el IVA (15 %) se calculará al generar el pago. Esta lista muestra solo transacciones abiertas, no pagadas ni reconciliadas. Puede aceptar, rechazar o añadir filas manualmente. Aceptar reserva estas transacciones exclusivamente para esta ejecución.",
         "step_guide": {
           "action_type": "practica",
           "title": "Ver recomendaciones de pago",
@@ -14850,7 +14851,7 @@
           "campos": [
             {
               "etiqueta": "Interlocutor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código del proveedor a pagar"
             },
             {
@@ -15218,7 +15219,7 @@
           "campos": [
             {
               "etiqueta": "Socio de Negocios",
-              "valor": "V10000 Dell Ecuador",
+              "valor": "V10001 Dell Ecuador",
               "pista": "Selecciona el proveedor"
             },
             {
@@ -15358,7 +15359,7 @@
       },
       {
         "slide_index": 7,
-        "script_text": "Ahora generarás el informe de antigüedad de deudas de proveedores para Dell Ecuador (V10000) con fecha de antigüedad 30/06/2026 y rangos de 30, 45 y 60 días. Al mostrar los anticipos, podrás ver los pagos realizados antes de la recepción de la factura. Este informe te ayuda a supervisar qué pagos a proveedores están vencidos y planificar salidas de efectivo.",
+        "script_text": "Ahora generarás el informe de antigüedad de deudas de proveedores para Dell Ecuador (V10001) con fecha de antigüedad 30/06/2026 y rangos de 30, 45 y 60 días. Al mostrar los anticipos, podrás ver los pagos realizados antes de la recepción de la factura. Este informe te ayuda a supervisar qué pagos a proveedores están vencidos y planificar salidas de efectivo.",
         "step_guide": {
           "action_type": "practica",
           "title": "Generar antigüedad de proveedores",
@@ -15398,7 +15399,7 @@
             },
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código del proveedor Dell Ecuador"
             }
           ]
@@ -17146,7 +17147,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Registra una factura de prueba del proveedor V10000 por dos laptops A00001, con fecha del caso 05/04/2026. El número 1792456789001 es un dato ficticio del laboratorio. La resolución NAC-DGERCGC26-00000027 trata la identificación del proveedor externo de facturación, que es distinto del emisor o usuario del sistema. No atribuyas ese RUC a un proveedor real ni apliques retroactivamente una obligación posterior a la fecha del ejemplo.",
+        "script_text": "Registra una factura de prueba del proveedor V10001 por dos laptops A00001, con fecha del caso 05/04/2026. El número 1792456789001 es un dato ficticio del laboratorio. La resolución NAC-DGERCGC26-00000027 trata la identificación del proveedor externo de facturación, que es distinto del emisor o usuario del sistema. No atribuyas ese RUC a un proveedor real ni apliques retroactivamente una obligación posterior a la fecha del ejemplo.",
         "step_guide": {
           "action_type": "practica",
           "title": "Registrar datos de una factura de prueba",
@@ -17161,7 +17162,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código de Dell Ecuador"
             },
             {
@@ -17349,7 +17350,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Antes de generar una factura que genere retenciones, el proveedor debe estar marcado como sujeto a retención en su ficha de socio de negocios. Aquí editamos a Dell Ecuador (V10000), marcamos la casilla correspondiente y asignamos el código de retención del IVA al 30 %, aplicable a transferencia de bienes muebles a proveedores no especiales. Este paso es esencial para que SAP Business One calcule correctamente la retención al facturar.",
+        "script_text": "Antes de generar una factura que genere retenciones, el proveedor debe estar marcado como sujeto a retención en su ficha de socio de negocios. Aquí editamos a Dell Ecuador (V10001), marcamos la casilla correspondiente y asignamos el código de retención del IVA al 30 %, aplicable a transferencia de bienes muebles a proveedores no especiales. Este paso es esencial para que SAP Business One calcule correctamente la retención al facturar.",
         "step_guide": {
           "action_type": "practica",
           "title": "Editar proveedor V10000",
@@ -17364,7 +17365,7 @@
           "campos": [
             {
               "etiqueta": "Código",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código único del proveedor"
             },
             {
@@ -17402,7 +17403,7 @@
           "campos": [
             {
               "etiqueta": "Código",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Seleccionar de la lista"
             },
             {
@@ -17455,7 +17456,7 @@
             },
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador"
             },
             {
@@ -17547,7 +17548,7 @@
           "campos": [
             {
               "etiqueta": "Código",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código del proveedor Dell Ecuador"
             },
             {
@@ -17590,7 +17591,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador"
             },
             {
@@ -17643,7 +17644,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador"
             },
             {
@@ -17749,7 +17750,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador, proveedor de B1 Center"
             },
             {
@@ -17843,7 +17844,7 @@
       },
       {
         "slide_index": 6,
-        "script_text": "Para que SAP Business One calcule automáticamente las retenciones en la fuente al registrar una Factura de Proveedores, es necesario marcar al proveedor como sujeto a retención en su ficha de socio de negocios y asignarle el código de impuesto de retención correspondiente según lo que vende (bienes, servicios, honorarios, etc.). En este caso, configuramos a Dell Ecuador (V10000) como sujeto a retención con código 312, que aplica para transferencia de bienes muebles. Esta configuración permite que el sistema determine el porcentaje correcto (2 % desde marzo de 2026) y registre el importe retenido como pasivo fiscal al guardar la factura.",
+        "script_text": "Para que SAP Business One calcule automáticamente las retenciones en la fuente al registrar una Factura de Proveedores, es necesario marcar al proveedor como sujeto a retención en su ficha de socio de negocios y asignarle el código de impuesto de retención correspondiente según lo que vende (bienes, servicios, honorarios, etc.). En este caso, configuramos a Dell Ecuador (V10001) como sujeto a retención con código 312, que aplica para transferencia de bienes muebles. Esta configuración permite que el sistema determine el porcentaje correcto (2 % desde marzo de 2026) y registre el importe retenido como pasivo fiscal al guardar la factura.",
         "step_guide": {
           "action_type": "practica",
           "title": "Configurar proveedor para retenciones",
@@ -17858,7 +17859,7 @@
           "campos": [
             {
               "etiqueta": "Código",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código único del proveedor en el sistema"
             },
             {
@@ -17886,7 +17887,7 @@
       },
       {
         "slide_index": 7,
-        "script_text": "Al registrar una Factura de Proveedores para Dell Ecuador (V10000) con 2 laptops a 850.00 cada una, la base imponible es 1700.00. El sistema calcula automáticamente el IVA al 15 %: 255.00. Como el proveedor está marcado como sujeto a retención con código 312 (Bienes) y no es contribuyente especial, aplica la retención en la fuente del 2 % (34.00) y la retención del IVA al 30 % (76.50). Estos importes se registran como pasivos fiscales: la retención en la fuente va a cuenta de Impuesto a la Renta por pagar y la retención del IVA a cuenta de IVA retenido por pagar. El total a pagar al proveedor es 1700.00 + 255.00 - 34.00 - 76.50 = 1844.50, aunque en la factura aparece el total bruto de 1955.00 y los descuentos por retenciones se manejan en el pago.",
+        "script_text": "Al registrar una Factura de Proveedores para Dell Ecuador (V10001) con 2 laptops a 850.00 cada una, la base imponible es 1700.00. El sistema calcula automáticamente el IVA al 15 %: 255.00. Como el proveedor está marcado como sujeto a retención con código 312 (Bienes) y no es contribuyente especial, aplica la retención en la fuente del 2 % (34.00) y la retención del IVA al 30 % (76.50). Estos importes se registran como pasivos fiscales: la retención en la fuente va a cuenta de Impuesto a la Renta por pagar y la retención del IVA a cuenta de IVA retenido por pagar. El total a pagar al proveedor es 1700.00 + 255.00 - 34.00 - 76.50 = 1844.50, aunque en la factura aparece el total bruto de 1955.00 y los descuentos por retenciones se manejan en el pago.",
         "step_guide": null
       },
       {
@@ -17992,7 +17993,7 @@
             },
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador"
             },
             {
@@ -18420,7 +18421,7 @@
       },
       {
         "slide_index": 7,
-        "script_text": "En esta práctica compras 5 perfumes a 50,00 al proveedor V10000. La base es 250,00. El ICE del 20 por ciento es 50,00. El IVA del 15 por ciento se calcula sobre 300,00, la base más el ICE, y da 45,00. El total de la factura es 345,00. Fíjate que el sistema calcula el ICE solo, porque viene del artículo.",
+        "script_text": "En esta práctica compras 5 perfumes a 50,00 al proveedor V10001. La base es 250,00. El ICE del 20 por ciento es 50,00. El IVA del 15 por ciento se calcula sobre 300,00, la base más el ICE, y da 45,00. El total de la factura es 345,00. Fíjate que el sistema calcula el ICE solo, porque viene del artículo.",
         "step_guide": {
           "action_type": "practica",
           "title": "Registrar la factura de compra de perfumes",
@@ -18434,7 +18435,7 @@
           "campos": [
             {
               "etiqueta": "Proveedor",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Dell Ecuador"
             },
             {
@@ -18578,7 +18579,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "En esta práctica registrarás un pago al exterior por una licencia de software por USD 1.000,00 con tarifa ISD del 5 %. Ingresarás el código del proveedor V10000, la fecha 15/06/2026, el valor de 1.000,00 y el concepto 'Licencia de software'. El sistema calculará automáticamente el ISD en 50,00 (5 % de 1.000,00) y el total en 1.050,00. Al confirmar, el banco se reducirá en 1.050,00 y se generará el asiento contable correspondiente.",
+        "script_text": "En esta práctica registrarás un pago al exterior por una licencia de software por USD 1.000,00 con tarifa ISD del 5 %. Ingresarás el código del proveedor V10001, la fecha 15/06/2026, el valor de 1.000,00 y el concepto 'Licencia de software'. El sistema calculará automáticamente el ISD en 50,00 (5 % de 1.000,00) y el total en 1.050,00. Al confirmar, el banco se reducirá en 1.050,00 y se generará el asiento contable correspondiente.",
         "step_guide": {
           "action_type": "practica",
           "title": "Registrar pago al exterior",
@@ -22677,7 +22678,7 @@
       },
       {
         "slide_index": 5,
-        "script_text": "Vas a crear una oferta de compra para comparar proveedores antes de decidir. Seleccionarás al proveedor V10000 (Dell Ecuador), ingresarás la fecha de hoy y agregarás el artículo A00001 (Laptop Dell Latitude 3420) con cantidad 10 y precio unitario 850.00 USD. El sistema aplicará automáticamente el IVA del 15 %. Esta oferta no genera asientos contables, pero es el primer paso formal para evaluar opciones de compra sin comprometer fondos.",
+        "script_text": "Vas a crear una oferta de compra para comparar proveedores antes de decidir. Seleccionarás al proveedor V10001 (Dell Ecuador), ingresarás la fecha de hoy y agregarás el artículo A00001 (Laptop Dell Latitude 3420) con cantidad 10 y precio unitario 850.00 USD. El sistema aplicará automáticamente el IVA del 15 %. Esta oferta no genera asientos contables, pero es el primer paso formal para evaluar opciones de compra sin comprometer fondos.",
         "step_guide": {
           "action_type": "practica",
           "title": "Crear oferta de compra",
@@ -22692,7 +22693,7 @@
           "campos": [
             {
               "etiqueta": "Código socio de negocios",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Código del proveedor Dell Ecuador"
             },
             {
@@ -22740,7 +22741,7 @@
           "campos": [
             {
               "etiqueta": "Código socio de negocios",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Mismo proveedor que en la oferta"
             },
             {
@@ -22788,7 +22789,7 @@
           "campos": [
             {
               "etiqueta": "Código socio de negocios",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor del pedido original"
             },
             {
@@ -22841,7 +22842,7 @@
           "campos": [
             {
               "etiqueta": "Código socio de negocios",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Mismo proveedor que en la entrada"
             },
             {
@@ -22894,7 +22895,7 @@
           "campos": [
             {
               "etiqueta": "Código socio de negocios",
-              "valor": "V10000",
+              "valor": "V10001",
               "pista": "Proveedor acreedor"
             },
             {
