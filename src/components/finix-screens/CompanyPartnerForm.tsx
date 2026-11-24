@@ -35,6 +35,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
   const [formMode, setFormMode] = useState<'create' | 'edit' | 'search'>('create');
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [activeTab, setActiveTab] = useState<'general' | 'contactos' | 'direcciones' | 'condiciones' | 'finanzas' | 'anexos'>('general');
+  const [partnerSaving, setPartnerSaving] = useState(false);
 
   // Estado del formulario
   const [cardCode, setCardCode] = useState('');
@@ -230,6 +231,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
       return;
     }
 
+    setPartnerSaving(true);
     try {
       if (formMode === 'create' || !cardCode) {
         if (vendor) {
@@ -321,6 +323,8 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
       }
     } catch {
       /* error gestionado por c.save */
+    } finally {
+      setPartnerSaving(false);
     }
   };
 
@@ -436,15 +440,15 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
           <div className="flex items-center gap-2">
             <button
               type="submit"
-              disabled={c.saving}
+              disabled={partnerSaving}
               className="px-5 py-1.5 bg-[#0070d2] hover:bg-[#005bb5] text-white font-bold text-xs rounded-xs shadow-sm active:scale-95 transition cursor-pointer"
             >
-              {c.saving ? 'Guardando…' : formMode === 'create' ? 'Crear (Ctrl+A)' : formMode === 'search' ? 'Buscar (Ctrl+F)' : 'Actualizar'}
+              {partnerSaving ? 'Guardando…' : formMode === 'create' ? 'Crear (Ctrl+A)' : formMode === 'search' ? 'Buscar (Ctrl+F)' : 'Actualizar'}
             </button>
             <button
               type="button"
               onClick={resetFormToCreate}
-              disabled={c.saving}
+              disabled={partnerSaving}
               className="px-4 py-1.5 bg-[#f0f2f5] hover:bg-white border border-[#9fb4c7] text-[#1d2d3e] font-semibold text-xs rounded-xs shadow-2xs active:scale-95 transition cursor-pointer"
             >
               Cancelar

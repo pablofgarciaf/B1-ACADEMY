@@ -79,16 +79,14 @@ export default function AulaSimulatorView({
               {isPaused ? <Play className="w-3 h-3 fill-white" /> : <Pause className="w-3 h-3 fill-white" />}
               <span>{isPaused ? 'Reanudar' : 'Pausar'}</span>
             </button>
-            {process.env.NODE_ENV !== 'production' && (
-              <button
-                type="button"
-                onClick={() => handleMissionComplete()}
-                className="px-2 py-0.5 rounded bg-blue-600/80 hover:bg-blue-500 text-white text-[10px] font-bold active:scale-95"
-                title="Bypass de auditoría"
-              >
-                ⏩ Saltar práctica
-              </button>
-            )}
+            <button
+              type="button"
+              onClick={() => handleMissionComplete()}
+              className="px-2 py-0.5 rounded bg-amber-500/90 hover:bg-amber-400 text-slate-950 text-[10px] font-extrabold active:scale-95 transition shadow-xs cursor-pointer"
+              title="Avanzar de lámina si una práctica presenta dificultades técnicas"
+            >
+              ⏩ Saltar práctica
+            </button>
             {needsGesture && (
               <button
                 onClick={resumeAfterGesture}
