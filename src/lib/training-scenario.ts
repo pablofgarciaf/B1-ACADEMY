@@ -7,9 +7,27 @@ type Reducer=(state:CompanyState,command:CompanyCommand,uid:string,email:string,
 /** Build the complete academic scenario before the persistence transaction commits. */
 export function prepareTraining(original:CompanyState,name:string|undefined,uid:string,email:string,now:string,apply:Reducer){
   if(original.profile?.trainingSetupVersion===1 || (original.profile?.companyName && (original.customers.length > 0 || original.items.length > 0))){
-    const state = structuredClone(original);
+    let state = structuredClone(original);
     if (state.profile) state.profile.trainingSetupVersion = 1;
     ensureTrainingFinanceCatalog(state,now,uid);
+    if (!state.vendors.some(v => v.ruc === '1790011003001')) {
+      const c20000 = state.customers.find(c => c.cardCode === 'C20000');
+      const v10000 = state.vendors.find(v => v.cardCode === 'V10000');
+      if (c20000?.linkedVendorCode === 'V10000') delete c20000.linkedVendorCode;
+      if (v10000?.linkedCustomerCode === 'C20000') delete v10000.linkedCustomerCode;
+      state = apply(state, {
+        action: 'importMasterData',
+        data: {
+          kind: 'vendor',
+          rows: [{
+            name: 'Maxi-Teq', ruc: '1790011003001', email: '', phone: '',
+            address: 'Quito', city: 'Quito', contactName: '', currency: 'USD',
+            paymentTermsDays: 30, creditLimit: 10000, active: true,
+            group: 'Nacional', notes: 'Dato de prueba de B1 Center',
+          }],
+        },
+      }, uid, email, now).state;
+    }
     return {state,result:uid};
   }
   let state=structuredClone(original);

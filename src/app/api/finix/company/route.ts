@@ -25,7 +25,12 @@ export async function GET(request: Request) {
     catch (error) { return NextResponse.json({error: error instanceof Error ? error.message : 'Empresa inválida.'},{status:403}); }
     if (!/^[\w-]{1,128}$/.test(uid)) return NextResponse.json({ error: 'Identificador inválido.' }, { status: 400 });
     // El correo solo se pasa cuando el estudiante lee su propia empresa (necesario para migrarla).
-    return NextResponse.json(await readCompany(uid, pedido === actor.uid ? actor.email : ''), { headers: { 'Cache-Control': 'no-store' } });
+    const company = await readCompany(uid, pedido === actor.uid ? actor.email : '');
+    if (pedido === actor.uid && (request.headers.get('x-empresa') || 'curso') === 'curso' && company.profile?.companyName && !company.vendors.some(v => v.ruc === '1790011003001')) {
+      await executeCompanyCommand(uid, actor.email, { action: 'initializeTraining', data: { companyName: company.profile.companyName } }, crypto.randomUUID(), actor.uid);
+      return NextResponse.json(await readCompany(uid, actor.email), { headers: { 'Cache-Control': 'no-store' } });
+    }
+    return NextResponse.json(company, { headers: { 'Cache-Control': 'no-store' } });
   } catch (error: unknown) {
     console.error('Finix ERP company read failed', error instanceof Error ? error.message : 'Unknown');
     return NextResponse.json({ error: 'No se pudo cargar la empresa. Comprueba tu sesión y la configuración de Firebase Admin.' }, { status: 503 });

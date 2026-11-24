@@ -5,7 +5,7 @@ export function assetsPracticeContract(key:string):PracticeOutcomeContract|undef
  if(key==='mod3-c1#7')return rule(key,'profile',{Artículo:['itemCode','A00001'],Activo:['isAsset','Sí'],Virtual:['virtual','Sí'],Serie:['series','AF001']},'assetModels');
  if(key==='mod3-c2#5'||key==='mod3-c2#9'){
   const multiple=key==='mod3-c2#9';
-  return rule(key,'purchaseOrders',{Proveedor:['cardCode',multiple?'V10002':'V10001'],Fecha:['date',multiple?'02/01/2026':'01/01/2026'],Valoración:['assetValuationDate',multiple?'02/01/2026':'01/01/2026'],Artículo:['lines.itemCode',multiple?'A00004':'A00006'],Cantidad:['lines.quantity',multiple?'5':'1'],Precio:['lines.price',multiple?'45':'6000'],Activos:['capitalizedQuantity',multiple?'5':'1']});
+  return rule(key,'purchaseOrders',{Proveedor:['cardCode',multiple?'V10002':'V10000'],Fecha:['date',multiple?'02/01/2026':'01/01/2026'],Valoración:['assetValuationDate',multiple?'02/01/2026':'01/01/2026'],Artículo:['lines.itemCode',multiple?'A00004':'A00006'],Cantidad:['lines.quantity',multiple?'5':'1'],Precio:['lines.price',multiple?'45':'6000'],Activos:['capitalizedQuantity',multiple?'5':'1']});
  }
  if(key==='mod3-c3#6')return rule(key,'profile',{Proceso:['mode','annual'],Área:['area','PCGA'],Fecha:['date','31/12/2026'],Importe:['amount','2000'],Contabilizado:['posted','Sí']},'assetLifecycle');
  if(key==='mod3-c3#11')return rule(key,'profile',{Proceso:['mode','rollover'],Actual:['year','2026'],Nuevo:['newYear','2027'],Transferir:['transfer','Sí'],Recalcular:['recalculate','Sí'],Corte:['date','31/12/2026'],Activos:['carriedCountPositive','Sí']},'assetLifecycle');

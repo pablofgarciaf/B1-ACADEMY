@@ -13,11 +13,11 @@ const CLIENTES = [
   { name: 'Sistemas del Valle', city: 'Quito', ruc: '1790055000001' },
 ];
 const PROVEEDORES = [
-  { name: 'Maxi-Teq', city: 'Quito', ruc: '1790011003001' },
   { name: 'Dell Ecuador', city: 'Quito', ruc: '1790066002001' },
   { name: 'HP Importaciones', city: 'Guayaquil', ruc: '0990077002001' },
   { name: 'Lenovo Andina', city: 'Quito', ruc: '1790088006001' },
   { name: 'Acer Distributors', city: 'Cuenca', ruc: '0190099008001' },
+  { name: 'Maxi-Teq', city: 'Quito', ruc: '1790011003001' },
 ];
 const ARTICULOS: [string, number, number, ('inventory'|'service')?][] = [
   ['Laptop Dell Latitude 3420', 650, 850], ['Laptop HP ProBook 440', 680, 890], ['Monitor Lenovo ThinkVision 24"', 120, 180],

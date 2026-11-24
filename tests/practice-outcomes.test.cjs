@@ -8,7 +8,7 @@ const {auditChanges}=require('../src/lib/company-audit.ts');
 const {missionOutcomeMatches,outcomeContractFor}=require('../src/lib/practice-outcome-contract.ts');
 const {requiredPracticeValidationVersion}=require('../src/lib/strict-practice-keys.ts');
 function fixture(){let state=emptyCompany();const uid='synthetic-student',now='2026-10-17T12:00:00Z';const run=(action,data)=>{const before=state;const out=applyCommand(before,commandSchema.parse({action,data}),uid,'synthetic@example.test',now);state=out.state;return {companyId:uid,actorUid:uid,action,result:out.result,changes:auditChanges(before,state),occurredAt:now};};run('initializeTraining',{});return {run,get state(){return state;}};}
-const purchase=quantity=>({docType:'vendor_invoice',document:{date:'2026-03-15',dueDate:'2026-04-15',cardCode:'V10001',reference:'Ensayo sintético',comments:'',baseDocumentId:'',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity,unit:'UND',price:850,discount:0,taxRate:15,warehouseCode:'01'}]}});
+const purchase=quantity=>({docType:'vendor_invoice',document:{date:'2026-03-15',dueDate:'2026-04-15',cardCode:'V10000',reference:'Ensayo sintético',comments:'',baseDocumentId:'',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity,unit:'UND',price:850,discount:0,taxRate:15,warehouseCode:'01'}]}});
 test('práctica exige datos reales de factura y rechaza otra cantidad aunque la operación sea correcta',()=>{
  const right=fixture(),event=right.run('purchase',purchase(3));assert.equal(missionOutcomeMatches(right.state,event,'mod3-c1#8'),true);
  const wrong=fixture(),other=wrong.run('purchase',purchase(2));assert.equal(missionOutcomeMatches(wrong.state,other,'mod3-c1#8'),false);
@@ -28,11 +28,11 @@ test('documentos guardan la serie aplicada, la referencia base y el tipo generad
  assert.equal(c.state.salesOrders.at(-1).docNumber,'FAC-2026-0032');
  const credit=c.run('sales',{docType:'credit_note',document:{date:'2026-04-02',dueDate:'2026-04-02',cardCode:'C20001',reference:'',comments:'',baseDocumentId:invoice.result,series:'',lines:[{itemCode:'A00009',description:'Impresora Multifunción Epson',quantity:1,unit:'UND',price:220,discount:0,taxRate:15,warehouseCode:'01'}]}});
  assert.equal(missionOutcomeMatches(c.state,credit,'mod12-c4#8'),true);
- const debit=c.run('purchase',{docType:'debit_note',document:{date:'2026-06-15',dueDate:'2026-06-15',cardCode:'V10001',reference:'Factura 00150',comments:'',baseDocumentId:'',series:'ND',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity:1,unit:'UND',price:850,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ const debit=c.run('purchase',{docType:'debit_note',document:{date:'2026-06-15',dueDate:'2026-06-15',cardCode:'V10000',reference:'Factura 00150',comments:'',baseDocumentId:'',series:'ND',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity:1,unit:'UND',price:850,discount:0,taxRate:15,warehouseCode:'01'}]}});
  assert.equal(c.state.purchaseOrders.at(-1).series,'ND');
  assert.equal(c.state.purchaseOrders.at(-1).docNumber,'ND-00001');
  assert.equal(missionOutcomeMatches(c.state,debit,'mod22-c6#5'),true);
- const mrp=c.run('purchase',{docType:'purchase_order',document:{date:'2026-07-01',dueDate:'2026-08-15',cardCode:'V10001',reference:'Recomendación MRP',comments:'',baseDocumentId:'',series:'',lines:[{itemCode:'A00007',description:'Disco Duro SSD 1TB Samsung',quantity:100,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ const mrp=c.run('purchase',{docType:'purchase_order',document:{date:'2026-07-01',dueDate:'2026-08-15',cardCode:'V10000',reference:'Recomendación MRP',comments:'',baseDocumentId:'',series:'',lines:[{itemCode:'A00007',description:'Disco Duro SSD 1TB Samsung',quantity:100,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
  assert.equal(missionOutcomeMatches(c.state,mrp,'mod15-c1#8'),true);
 });
 
@@ -92,17 +92,15 @@ test('grupos: la configuración adicional se conserva en la misma fila que el gr
 
 test('proveedores: vínculo y retención se guardan en la ficha del proveedor',()=>{
  const c=fixture();
- // mod2-c1#8: vincular Maxi-Teq proveedor (V10000) con Maxi-Teq cliente (C20000)
- const proveedorMaxi=c.state.vendors.find(v=>v.cardCode==='V10000');
- const clienteMaxi=c.state.customers.find(v=>v.cardCode==='C20000');
- assert.ok(proveedorMaxi,'V10000 Maxi-Teq proveedor no encontrado');
- assert.ok(clienteMaxi,'C20000 Maxi-Teq cliente no encontrado');
- const enlace=c.run('partnerLink',{customerCode:clienteMaxi.cardCode,vendorCode:proveedorMaxi.cardCode});
+ const proveedor=c.state.vendors.find(v=>v.cardCode==='V10000');
+ const maxiProveedor=c.state.vendors.find(v=>v.cardCode==='V10004');
+ const cliente=c.state.customers.find(v=>v.cardCode==='C20000');
+ assert.ok(proveedor);
+ assert.ok(maxiProveedor);
+ assert.ok(cliente);
+ const enlace=c.run('partnerLink',{customerCode:cliente.cardCode,vendorCode:maxiProveedor.cardCode});
  assert.equal(missionOutcomeMatches(c.state,enlace,'mod2-c1#8'),true);
- // mod22: configurar retención en Dell Ecuador (V10001)
- const dellEcuador=c.state.vendors.find(v=>v.cardCode==='V10001');
- assert.ok(dellEcuador,'V10001 Dell Ecuador no encontrado');
- const edit=c.run('partnerUpdate',{partnerType:'vendor',cardCode:dellEcuador.cardCode,changes:{subjectToWithholding:true,withholdingTax:'RET IVA 30%',vatWithholdingGroup:'NO ESP',vatWithholdingCode:'30%',fiscalCategory:'No especial'}});
+ const edit=c.run('partnerUpdate',{partnerType:'vendor',cardCode:proveedor.cardCode,changes:{subjectToWithholding:true,withholdingTax:'RET IVA 30%',vatWithholdingGroup:'NO ESP',vatWithholdingCode:'30%',fiscalCategory:'No especial'}});
  assert.equal(missionOutcomeMatches(c.state,edit,'mod22-c2#5'),true);
  assert.equal(missionOutcomeMatches(c.state,edit,'mod22-c3#5'),true);
 });
@@ -227,7 +225,7 @@ test('MRP persiste parámetros, filtros y una fotografía coherente de necesidad
  const c=fixture(),item=c.state.items.find(row=>row.itemCode==='A00007');
  c.run('itemUpdate',{...item,itemCode:'A00007',mrpActive:true,planningMethod:'buy',planningWarehouse:'01',purchaseLeadDays:5,productionLeadDays:0,forecastQuantity:0,orderMultiple:50,planningMinimum:0});
  c.run('sales',{docType:'order',document:{date:'2026-07-01',dueDate:'2026-07-20',cardCode:'C20000',reference:'Demanda de planificación',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:120,unit:'UND',price:130,discount:0,taxRate:15,warehouseCode:'01'}]}});
- c.run('purchase',{docType:'purchase_order',document:{date:'2026-07-01',dueDate:'2026-07-15',cardCode:'V10001',reference:'Aprovisionamiento abierto',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:30,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ c.run('purchase',{docType:'purchase_order',document:{date:'2026-07-01',dueDate:'2026-07-15',cardCode:'V10000',reference:'Aprovisionamiento abierto',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:30,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
  const event=c.run('mrpRun',{scenario:'MRP_Quito_2026',startDate:'2026-07-01',endDate:'2026-07-31',level:'Almacén',warehouseCode:'01',itemCodes:['A00007'],horizon:30,includePurchases:true,includeProduction:true,includeSales:true,includeForecasts:false,excludeWarehouses:[]});
  assert.equal(missionOutcomeMatches(c.state,event,'mod15-c1#6'),true);
  assert.equal(missionOutcomeMatches(c.state,event,'mod15-c1#7'),true);
@@ -251,7 +249,7 @@ test('parámetros de artículos existentes se editan de forma persistente y entr
 test('MRP calcula filtros de almacén y proyección con la demanda del horizonte',()=>{
  const c=fixture(),item=c.state.items.find(row=>row.itemCode==='A00007');
  c.run('sales',{docType:'order',document:{date:'2026-06-01',dueDate:'2026-06-15',cardCode:'C20000',reference:'Demanda de horizonte',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:120,unit:'UND',price:130,discount:0,taxRate:15,warehouseCode:'01'}]}});
- c.run('purchase',{docType:'purchase_order',document:{date:'2026-06-01',dueDate:'2026-06-20',cardCode:'V10001',reference:'Recepción futura',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:30,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
+ c.run('purchase',{docType:'purchase_order',document:{date:'2026-06-01',dueDate:'2026-06-20',cardCode:'V10000',reference:'Recepción futura',comments:'',baseDocumentId:'',lines:[{itemCode:'A00007',description:item.name,quantity:30,unit:'UND',price:80,discount:0,taxRate:15,warehouseCode:'01'}]}});
  const event=c.run('mrpRun',{scenario:'MRP_2026',startDate:'2026-06-01',endDate:'2026-06-30',level:'Almacén',warehouseCode:'01',itemCodes:['A00007'],horizon:30,includePurchases:true,includeProduction:true,includeSales:true,includeForecasts:false,excludeWarehouses:['02']});
  assert.equal(missionOutcomeMatches(c.state,event,'mod15-c3#12'),true);
  assert.equal(missionOutcomeMatches(c.state,event,'mod15-c4#7'),true);

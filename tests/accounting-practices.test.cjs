@@ -4,8 +4,8 @@ function fixture(){let state=emptyCompany();const run=(action,data)=>{const befo
 const doc=(date,partner,quantity,price)=>({date,dueDate:date,cardCode:partner,reference:'Sintético',comments:'',baseDocumentId:'',lines:[{itemCode:'A00001',description:'Laptop Dell Latitude 3420',quantity,unit:'UND',price,discount:0,taxRate:15,warehouseCode:'01'}]});
 test('retenciones usan base y líneas de factura persistida; ATS inventado no aprueba',()=>{
  for(const [date,key]of [['2026-04-05','mod22-c2#8'],['2026-06-15','mod22-c3#8']]){
- const c=fixture(),invoice=c.run('purchase',{docType:'vendor_invoice',document:doc(date,'V10001',2,850)});
- const event=c.run('sri',{docType:'07',date,partnerCode:'V10001',sourceDocumentId:invoice.result,series:'001-001',retentionLines:[{code:'IVA-30',tax:'IVA',base:255,rate:30}],ats:defaultATS(),details:sriDetailsSchema.parse({supportNumber:'001-001-000000001'})});
+ const c=fixture(),invoice=c.run('purchase',{docType:'vendor_invoice',document:doc(date,'V10000',2,850)});
+ const event=c.run('sri',{docType:'07',date,partnerCode:'V10000',sourceDocumentId:invoice.result,series:'001-001',retentionLines:[{code:'IVA-30',tax:'IVA',base:255,rate:30}],ats:defaultATS(),details:sriDetailsSchema.parse({supportNumber:'001-001-000000001'})});
  assert.equal(missionOutcomeMatches(c.state,event,key),true);assert.equal(c.state.sriDocuments.at(-1).totalRetention,76.5);
  const tampered=structuredClone(c.state);tampered.purchaseOrders.at(-1).subtotal=170;assert.equal(missionOutcomeMatches(tampered,event,key),false);
  }
