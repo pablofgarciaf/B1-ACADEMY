@@ -32,6 +32,7 @@ interface PartnerMainFieldsProps {
   linkedPartnerCode: string;
   setLinkedPartnerCode: (v: string) => void;
   counterparts: Array<{ cardCode: string; name: string }>;
+  onExecuteSearch?: () => void;
 }
 
 export default function PartnerMainFields({
@@ -62,6 +63,7 @@ export default function PartnerMainFields({
   linkedPartnerCode,
   setLinkedPartnerCode,
   counterparts,
+  onExecuteSearch,
 }: PartnerMainFieldsProps) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-3 border-b border-[#cbd8e5] text-[11px]">
@@ -74,7 +76,12 @@ export default function PartnerMainFields({
               type="text"
               value={cardCode}
               onChange={(e) => setCardCode(e.target.value)}
-              disabled={formMode === 'edit'}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  if (onExecuteSearch) onExecuteSearch();
+                }
+              }}
               className={`w-full border ${
                 formMode === 'search'
                   ? 'border-[#d49b00] bg-[#fffde7] ring-1 ring-[#f59e0b]/50'
@@ -84,9 +91,12 @@ export default function PartnerMainFields({
             />
             <button
               type="button"
-              onClick={() => setFormMode('search')}
+              onClick={() => {
+                if (onExecuteSearch) onExecuteSearch();
+                else setFormMode('search');
+              }}
               className="p-1 bg-slate-100 hover:bg-slate-200 border border-[#9fb4c7] rounded-xs text-gray-600 cursor-pointer"
-              title="Buscar código existente (Ctrl+F)"
+              title="Buscar código existente (Ctrl+F o Enter)"
             >
               <Search size={12} />
             </button>
@@ -102,6 +112,12 @@ export default function PartnerMainFields({
             required={formMode !== 'search'}
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && (formMode === 'search' || !name.trim())) {
+                e.preventDefault();
+                if (onExecuteSearch) onExecuteSearch();
+              }
+            }}
             className={`col-span-2 border ${
               formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'
             } px-2 py-0.5 text-[11px] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}

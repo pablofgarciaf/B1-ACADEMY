@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Plus, Users } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Plus, Search, Users } from 'lucide-react';
 
 interface PartnerHeaderNavProps {
   vendor: boolean;
@@ -15,6 +15,7 @@ interface PartnerHeaderNavProps {
   onLast: () => void;
   onSelectIndex: (index: number) => void;
   onNew: () => void;
+  onToggleSearch?: () => void;
 }
 
 export default function PartnerHeaderNav({
@@ -29,6 +30,7 @@ export default function PartnerHeaderNav({
   onLast,
   onSelectIndex,
   onNew,
+  onToggleSearch,
 }: PartnerHeaderNavProps) {
   return (
     <div className="bg-[#e4ebf3] border border-[#a6b8cc] rounded-t-xs px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
@@ -112,6 +114,22 @@ export default function PartnerHeaderNav({
             <ChevronsRight size={13} />
           </button>
         </div>
+
+        {onToggleSearch && (
+          <button
+            type="button"
+            onClick={onToggleSearch}
+            className={`px-2 py-0.5 ${
+              formMode === 'search'
+                ? 'bg-[#d49b00] text-white hover:bg-[#b88600]'
+                : 'bg-white hover:bg-slate-100 text-[#003366] border border-[#b8c9d4]'
+            } rounded-xs font-bold text-[10.5px] flex items-center gap-1 shadow-2xs cursor-pointer active:scale-95 transition`}
+            title="Cambiar a Modo Buscar (Ctrl+F)"
+          >
+            <Search size={11} />
+            <span>Buscar</span>
+          </button>
+        )}
 
         <button
           type="button"

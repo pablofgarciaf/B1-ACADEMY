@@ -19,19 +19,9 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
   const rawList = vendor ? c.data.vendors : c.data.customers;
   const list = rawList || [];
   const counterparts = vendor ? c.data.customers : c.data.vendors;
-  const configuredGroups =
-    ((c.data.profile as unknown as Record<string, unknown>)?.customerGroups as Array<{ codigo?: string }> | undefined) ?? [];
-  const customerGroupOptions = Array.from(
-    new Set([
-      'Nacional',
-      'Extranjero / Exterior',
-      'Corporativo / Grupo',
-      'Gobierno / Público',
-      ...configuredGroups.map((g) => g.codigo || '').filter(Boolean),
-    ])
-  );
+  const configuredGroups = ((c.data.profile as unknown as Record<string, unknown>)?.customerGroups as Array<{ codigo?: string }> | undefined) ?? [];
+  const customerGroupOptions = Array.from(new Set(['Nacional', 'Extranjero / Exterior', 'Corporativo / Grupo', 'Gobierno / Público', ...configuredGroups.map((g) => g.codigo || '').filter(Boolean)]));
 
-  // Modo: 'create' (Ctrl+A), 'edit' (cuando se selecciona un registro), o 'search' (Ctrl+F)
   const [formMode, setFormMode] = useState<'create' | 'edit' | 'search'>('create');
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
   const [activeTab, setActiveTab] = useState<'general' | 'contactos' | 'direcciones' | 'condiciones' | 'finanzas' | 'anexos'>('general');
@@ -64,11 +54,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
   const [rimpe, setRimpe] = useState<'ninguno' | 'emprendedor' | 'popular'>('ninguno');
   const [subjectToWithholding, setSubjectToWithholding] = useState(false);
   const [notes, setNotes] = useState('');
-
-  // Contraparte conectada (Cliente conectado en Proveedor / Proveedor conectado en Cliente)
   const [linkedPartnerCode, setLinkedPartnerCode] = useState('');
-
-  // Anexos
   const [attachments, setAttachments] = useState<PartnerAttachment[]>([]);
   const [selectedAttachmentIndex, setSelectedAttachmentIndex] = useState<number | null>(null);
 
@@ -158,14 +144,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
   // Atajos de teclado SAP B1 (Ctrl+A, Ctrl+F, Ctrl+S, Escape)
   useEffect(() => {
     const onSapAdd = () => resetFormToCreate();
-    const onSapSearch = () => {
-      setFormMode('search');
-      const codeInput = document.querySelector('input[placeholder*="Auto"]') as HTMLInputElement | null;
-      if (codeInput) {
-        codeInput.focus();
-        codeInput.select();
-      }
-    };
+    const onSapSearch = () => enterSearchMode();
     const onSapSave = () => {
       const formEl = document.getElementById('company-partner-form') as HTMLFormElement | null;
       if (formEl) formEl.requestSubmit();
@@ -202,27 +181,49 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
     }
   };
 
+  // Cambiar a modo Buscar (Ctrl+F) limpiando campos para buscar
+  const enterSearchMode = () => {
+    setFormMode('search');
+    setSelectedIndex(-1);
+    setCardCode('');
+    setName('');
+    setRuc('');
+    setTimeout(() => {
+      const codeInput = document.querySelector('input[placeholder*="Auto"]') as HTMLInputElement | null;
+      if (codeInput) {
+        codeInput.focus();
+        codeInput.select();
+      }
+    }, 50);
+  };
+
+  // Ejecutar búsqueda por código, nombre o RUC
+  const doSearch = (queryOverride?: string) => {
+    const rawQ = queryOverride !== undefined ? queryOverride : (cardCode || name || ruc);
+    const q = rawQ.trim().toLowerCase();
+    if (!q) {
+      if (list.length > 0) loadPartner(0);
+      return;
+    }
+    const matched = list.find(
+      (p) =>
+        (p.cardCode && p.cardCode.toLowerCase().includes(q)) ||
+        (p.name && p.name.toLowerCase().includes(q)) ||
+        (p.ruc && p.ruc.includes(q))
+    );
+    if (matched) {
+      const idx = list.findIndex((p) => p.cardCode === matched.cardCode);
+      loadPartner(idx);
+    } else {
+      alert(`No se encontró ningún interlocutor que coincida con "${rawQ.trim()}".`);
+    }
+  };
+
   // Guardar o actualizar registro (o ejecutar búsqueda en modo Buscar)
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formMode === 'search') {
-      const qCode = cardCode.trim().toLowerCase();
-      const qName = name.trim().toLowerCase();
-      const qRuc = ruc.trim();
-      const matched = list.find(
-        (p) =>
-          (qCode && p.cardCode.toLowerCase().includes(qCode)) ||
-          (qName && p.name.toLowerCase().includes(qName)) ||
-          (qRuc && p.ruc && p.ruc.includes(qRuc))
-      );
-      if (matched) {
-        const idx = list.findIndex((p) => p.cardCode === matched.cardCode);
-        loadPartner(idx);
-      } else if (list.length > 0) {
-        loadPartner(0);
-      } else {
-        alert('No se encontraron interlocutores con ese criterio de búsqueda.');
-      }
+      doSearch();
       return;
     }
 
@@ -343,6 +344,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
         onLast={() => loadPartner(list.length - 1)}
         onSelectIndex={(idx) => loadPartner(idx)}
         onNew={resetFormToCreate}
+        onToggleSearch={enterSearchMode}
       />
 
       {/* ── CUERPO PRINCIPAL DEL FORMULARIO OCRD ── */}
@@ -388,6 +390,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
             }
           }}
           counterparts={counterparts}
+          onExecuteSearch={doSearch}
         />
 
         <PartnerTabsDetail
@@ -445,6 +448,17 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
             >
               {partnerSaving ? 'Guardando…' : formMode === 'create' ? 'Crear (Ctrl+A)' : formMode === 'search' ? 'Buscar (Ctrl+F)' : 'Actualizar'}
             </button>
+            {formMode !== 'search' && (
+              <button
+                type="button"
+                onClick={enterSearchMode}
+                disabled={partnerSaving}
+                className="px-3.5 py-1.5 bg-[#fff8e1] hover:bg-[#ffecb3] border border-[#d49b00] text-[#784d00] font-bold text-xs rounded-xs shadow-2xs active:scale-95 transition cursor-pointer flex items-center gap-1"
+                title="Pasar a Modo Buscar (Ctrl+F)"
+              >
+                <span>🔍 Buscar</span>
+              </button>
+            )}
             <button
               type="button"
               onClick={resetFormToCreate}
