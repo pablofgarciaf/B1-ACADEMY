@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import PartnerHeaderNav from './partner/PartnerHeaderNav';
 import PartnerMainFields from './partner/PartnerMainFields';
-import PartnerLinkBox from './partner/PartnerLinkBox';
 import PartnerTabsDetail, { type PartnerAttachment } from './PartnerTabsDetail';
 
 interface CompanyPartnerFormProps {
@@ -58,10 +57,6 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
   const [attachments, setAttachments] = useState<PartnerAttachment[]>([]);
   const [selectedAttachmentIndex, setSelectedAttachmentIndex] = useState<number | null>(null);
 
-  // Vincular clientes y proveedores (cajas sincronizadas)
-  const [linkCustomerCode, setLinkCustomerCode] = useState('');
-  const [linkVendorCode, setLinkVendorCode] = useState('');
-
   // Cargar registro seleccionado
   const loadPartner = (index: number) => {
     if (index < 0 || index >= list.length) return;
@@ -88,17 +83,11 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
       const v = p as typeof c.data.vendors[number];
       setRimpe(v.rimpe || 'ninguno');
       setSubjectToWithholding(Boolean(v.subjectToWithholding));
-      const conn = v.linkedCustomerCode || '';
-      setLinkedPartnerCode(conn);
-      setLinkVendorCode(v.cardCode || '');
-      setLinkCustomerCode(conn);
+      setLinkedPartnerCode(v.linkedCustomerCode || '');
     } else {
       const cust = p as typeof c.data.customers[number];
       setPartnerType(cust.kind === 'lead' ? 'lead' : 'customer');
-      const conn = cust.linkedVendorCode || '';
-      setLinkedPartnerCode(conn);
-      setLinkCustomerCode(cust.cardCode || '');
-      setLinkVendorCode(conn);
+      setLinkedPartnerCode(cust.linkedVendorCode || '');
     }
   };
 
@@ -134,12 +123,16 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
     setAttachments([]);
   };
 
-  // Inicializar en modo crear
+  // Inicializar cargando el primer registro si existe, o en modo crear
   useEffect(() => {
     if (selectedIndex === -1) {
-      resetFormToCreate();
+      if (list.length > 0) {
+        loadPartner(0);
+      } else {
+        resetFormToCreate();
+      }
     }
-  }, [vendor]);
+  }, [vendor, list.length]);
 
   // Atajos de teclado SAP B1 (Ctrl+A, Ctrl+F, Ctrl+S, Escape)
   useEffect(() => {
@@ -164,22 +157,6 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
       window.removeEventListener('sap-escape', onSapEscape);
     };
   }, [list, formMode, vendor]);
-
-  // Guardar vínculo entre Cliente y Proveedor
-  const handleSaveLink = async (custCode: string, vendCode: string): Promise<boolean> => {
-    try {
-      await c.save({
-        action: 'partnerLink',
-        data: { customerCode: custCode, vendorCode: vendCode },
-      });
-      if (vendor && cardCode === vendCode) setLinkedPartnerCode(custCode);
-      if (!vendor && cardCode === custCode) setLinkedPartnerCode(vendCode);
-      return true;
-    } catch (err) {
-      alert(err instanceof Error ? err.message : 'Error al vincular socios.');
-      return false;
-    }
-  };
 
   // Cambiar a modo Buscar (Ctrl+F) limpiando campos para buscar
   const enterSearchMode = () => {
@@ -379,16 +356,7 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
           active={active}
           setActive={setActive}
           linkedPartnerCode={linkedPartnerCode}
-          setLinkedPartnerCode={(code) => {
-            setLinkedPartnerCode(code);
-            if (vendor) {
-              setLinkVendorCode(cardCode);
-              setLinkCustomerCode(code);
-            } else {
-              setLinkCustomerCode(cardCode);
-              setLinkVendorCode(code);
-            }
-          }}
+          setLinkedPartnerCode={setLinkedPartnerCode}
           counterparts={counterparts}
           onExecuteSearch={doSearch}
         />
@@ -473,18 +441,6 @@ export default function CompanyPartnerForm({ vendor = false }: CompanyPartnerFor
           </span>
         </div>
       </form>
-
-      {/* ── SECCIÓN INFERIOR: VINCULAR CLIENTE Y PROVEEDOR ── */}
-      <PartnerLinkBox
-        customers={c.data.customers}
-        vendors={c.data.vendors}
-        linkCustomerCode={linkCustomerCode}
-        setLinkCustomerCode={setLinkCustomerCode}
-        linkVendorCode={linkVendorCode}
-        setLinkVendorCode={setLinkVendorCode}
-        onSaveLink={handleSaveLink}
-        saving={c.saving}
-      />
     </div>
   );
 }
