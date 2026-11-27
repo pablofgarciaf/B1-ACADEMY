@@ -285,3 +285,66 @@
   border-radius: 0.625rem;
   transition: all 0.15s ease-in-out;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SAP B1 Classic Controls Scope (Blindaje Total contra Modo Oscuro)
+   Garantiza que en Modo Clásico todos los inputs, selects y textareas
+   tengan fondo blanco y texto oscuro nítido (#1e293b), evitando
+   barras negras con letras negras.
+   ═══════════════════════════════════════════════════════════════════════ */
+.sap-b1-form,
+.bg-\[\#ECE9D8\],
+#item-master-form {
+  color-scheme: light !important;
+}
+
+.sap-b1-form input:not([type="checkbox"]):not([type="radio"]),
+.sap-b1-form select,
+.sap-b1-form textarea,
+.bg-\[\#ECE9D8\] input:not([type="checkbox"]):not([type="radio"]),
+.bg-\[\#ECE9D8\] select,
+.bg-\[\#ECE9D8\] textarea,
+#item-master-form input:not([type="checkbox"]):not([type="radio"]),
+#item-master-form select,
+#item-master-form textarea {
+  color: #1e293b !important;
+  color-scheme: light !important;
+}
+
+.sap-b1-form input:not([type="checkbox"]):not([type="radio"]):not(.bg-\[\#fffde7\]),
+.sap-b1-form select,
+.sap-b1-form textarea,
+.bg-\[\#ECE9D8\] input:not([type="checkbox"]):not([type="radio"]):not(.bg-\[\#fffde7\]),
+.bg-\[\#ECE9D8\] select,
+.bg-\[\#ECE9D8\] textarea,
+#item-master-form input:not([type="checkbox"]):not([type="radio"]):not(.bg-\[\#fffde7\]),
+#item-master-form select,
+#item-master-form textarea {
+  background-color: #ffffff !important;
+}
+
+.dark .sap-b1-form input:not([type="checkbox"]):not([type="radio"]),
+.dark .sap-b1-form select,
+.dark .sap-b1-form textarea,
+.dark .bg-\[\#ECE9D8\] input:not([type="checkbox"]):not([type="radio"]),
+.dark .bg-\[\#ECE9D8\] select,
+.dark .bg-\[\#ECE9D8\] textarea,
+.dark #item-master-form input:not([type="checkbox"]):not([type="radio"]),
+.dark #item-master-form select,
+.dark #item-master-form textarea {
+  color: #1e293b !important;
+  color-scheme: light !important;
+}
+
+.dark .sap-b1-form input:not([type="checkbox"]):not([type="radio"]):not(.bg-\[\#fffde7\]),
+.dark .sap-b1-form select,
+.dark .sap-b1-form textarea,
+.dark .bg-\[\#ECE9D8\] input:not([type="checkbox"]):not([type="radio"]):not(.bg-\[\#fffde7\]),
+.dark .bg-\[\#ECE9D8\] select,
+.dark .bg-\[\#ECE9D8\] textarea,
+.dark #item-master-form input:not([type="checkbox"]):not([type="radio"]):not(.bg-\[\#fffde7\]),
+.dark #item-master-form select,
+.dark #item-master-form textarea {
+  background-color: #ffffff !important;
+}
+

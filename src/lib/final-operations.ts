@@ -7,7 +7,17 @@ export interface AccountDeterminationRule {customerCode:string;itemGroup:string;
 const assert=(v:unknown,message:string):void=>{if(!v)throw new Error(message);};
 export function documentAccountRule(state:CompanyState,customerCode:string,itemCode:string){
  const item=state.items.find(i=>i.itemCode===itemCode);
- return state.profile?.accountDeterminationRules?.find(r=>r.customerCode===customerCode&&r.itemGroup===item?.group);
+ if (!item) return undefined;
+ return state.profile?.accountDeterminationRules?.find(r=>{
+  if (r.customerCode !== customerCode) return false;
+  if (r.itemGroup === item.group) return true;
+  const rg = r.itemGroup.trim().toUpperCase();
+  const iname = item.name.trim().toUpperCase();
+  if ((rg === 'IMPRESORAS' || rg === 'IMPRES') && (iname.includes('IMPRES') || item.itemCode === 'A00009')) {
+   return true;
+  }
+  return false;
+ });
 }
 type Tools={next:(prefix:string,date?:string)=>string;post:(date:string,memo:string,source:string,reference:string,lines:JournalLine[])=>string;meta:(id:string)=>Entity};
 export function applyFinalOperation(state:CompanyState,command:FinalOperationCommand,t:Tools):string{

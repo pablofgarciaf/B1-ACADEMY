@@ -22,6 +22,7 @@ import {
   FileText
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/site/ThemeToggle';
+import { GlobalVoiceMuteToggle } from '@/components/site/GlobalVoiceMuteToggle';
 import { useAuth } from '@/context/AuthContext';
 import Image from 'next/image';
 
@@ -121,6 +122,7 @@ export function Navbar() {
 
         {/* Actions, Auth & Theme Toggle */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <GlobalVoiceMuteToggle />
           <ThemeToggle />
 
           {userProfile ? (

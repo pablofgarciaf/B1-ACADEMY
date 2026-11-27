@@ -1,28 +1,26 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useCompany } from '@/hooks/useCompany';
 import type { CommandData } from '@/lib/company-commands';
-import { usd } from '@/lib/company-calculations';
 import {
   Package,
   Search,
   Plus,
   Save,
   Trash2,
-  Factory,
-  Layers,
-  FileSpreadsheet,
   ChevronsLeft,
   ChevronLeft,
   ChevronRight,
   ChevronsRight,
-  ShoppingCart,
-  Boxes,
-  Calendar,
 } from 'lucide-react';
+import ItemTabsDetail, { type ItemAttachment } from './ItemTabsDetail';
 
-export default function ItemMasterForm() {
+export interface ItemMasterFormProps {
+  initialItemCode?: string;
+}
+
+export default function ItemMasterForm({ initialItemCode }: ItemMasterFormProps) {
   const c = useCompany();
   const items = c.data.items || [];
 
@@ -47,6 +45,8 @@ export default function ItemMasterForm() {
   const [active, setActive] = useState(true);
   const [barcode, setBarcode] = useState('');
   const [inventoryUnit, setInventoryUnit] = useState('UND');
+  const [manageMethod, setManageMethod] = useState<'none' | 'lot' | 'serial'>('none');
+  const [contractModel, setContractModel] = useState('');
 
   // Pestaña Compras
   const [preferredVendor, setPreferredVendor] = useState('');
@@ -80,8 +80,60 @@ export default function ItemMasterForm() {
   const [forecastQuantity, setForecastQuantity] = useState<number>(0);
 
   // Anexos
-  const [attachments, setAttachments] = useState<Array<{ id: string; targetPath: string; fileName: string; date: string; freeText: string }>>([]);
+  const [attachments, setAttachments] = useState<ItemAttachment[]>([]);
   const [selectedAttachmentIndex, setSelectedAttachmentIndex] = useState<number | null>(null);
+
+  // Grupos de artículos disponibles: se recuperan los grupos guardados en la empresa (Supabase),
+  // los grupos requeridos en las prácticas de certificación (IMPRES, etc.) y los canónicos.
+  const savedItemGroups = useMemo(() => {
+    const raw = (c.data.profile as unknown as Record<string, unknown>)?.itemGroups;
+    if (Array.isArray(raw)) {
+      return raw as Array<{ codigo?: string; code?: string; nombre?: string; name?: string; descripcion?: string }>;
+    }
+    return [];
+  }, [c.data.profile]);
+
+  const availableGroups = useMemo(() => {
+    const list: Array<{ code: string; label: string }> = [];
+    const seen = new Set<string>();
+
+    const add = (code?: string, label?: string) => {
+      if (!code) return;
+      const trimmed = code.trim();
+      const norm = trimmed.toUpperCase();
+      if (!trimmed || seen.has(norm)) return;
+      seen.add(norm);
+      list.push({
+        code: trimmed,
+        label: label && label.trim().toUpperCase() !== norm ? `${trimmed} · ${label.trim()}` : trimmed,
+      });
+    };
+
+    // 1. Grupos guardados en la empresa del alumno (persistidos en Supabase)
+    savedItemGroups.forEach((g) => {
+      const cod = g.codigo || g.code;
+      const nom = g.nombre || g.name || g.descripcion;
+      add(cod, nom);
+    });
+
+    // 2. Grupos de artículos oficiales de laboratorio y certificación
+    add('IMPRES', 'Impresoras');
+    add('HARDWARE', 'Equipos y componentes');
+    add('IMPRESORAS', 'Impresoras y multifuncionales');
+    add('MEMORIAS', 'Memorias RAM y almacenamiento');
+    add('SUMINISTROS', 'Suministros y consumibles');
+
+    // 3. Grupos estándar clásicos de Finix / SAP B1
+    add('General', 'General');
+    add('Laptops', 'Laptops & Computadores');
+    add('Perifericos', 'Periféricos & Accesorios');
+    add('Servidores', 'Servidores & Redes');
+    add('Suministros', 'Suministros & Repuestos');
+
+    if (group) add(group);
+
+    return list;
+  }, [savedItemGroups, group]);
 
   // Cargar registro seleccionado
   const loadItem = (index: number) => {
@@ -110,11 +162,13 @@ export default function ItemMasterForm() {
     setMinStock(it.minStock || 0);
     setMaxStock(it.maxStock || 1000);
     setReorderPoint(it.reorderPoint || 0);
-    setCurrentStock((it as any).stock ?? 50);
+    setCurrentStock((it as unknown as { stock?: number }).stock ?? 50);
     setActive(it.active ?? true);
     setPlanningMethod(it.planningMethod || 'buy');
     setMrpActive(Boolean(it.mrpActive));
     setPurchaseLeadDays(it.purchaseLeadDays || 0);
+    setManageMethod(it.manageMethod || 'none');
+    setContractModel(it.contractModel || '');
   };
 
   const resetFormToCreate = () => {
@@ -133,6 +187,8 @@ export default function ItemMasterForm() {
     setActive(true);
     setBarcode('');
     setInventoryUnit('UND');
+    setManageMethod('none');
+    setContractModel('');
     setPreferredVendor('');
     setPurchaseUnit('UND');
     setPurchasePrice(20);
@@ -159,11 +215,30 @@ export default function ItemMasterForm() {
     setAttachments([]);
   };
 
+  // Carga inicial o precarga por código de artículo
   useEffect(() => {
+    if (initialItemCode) {
+      const idx = items.findIndex((it) => it.itemCode?.toUpperCase() === initialItemCode.toUpperCase());
+      if (idx >= 0) {
+        loadItem(idx);
+        return;
+      }
+      // Si el artículo solicitado aún no existe en el catálogo inicial (ej. A00002)
+      setSelectedIndex(-1);
+      setFormMode('edit');
+      setItemCode(initialItemCode);
+      if (initialItemCode === 'A00002') {
+        setName('Laptop HP ProBook 440');
+        setGroup('IMPRES');
+        setBarcode('HP440001');
+        setSalesTaxRate(15);
+      }
+      return;
+    }
     if (selectedIndex === -1) {
       resetFormToCreate();
     }
-  }, []);
+  }, [initialItemCode, items.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Atajos de teclado oficiales de SAP B1
   useEffect(() => {
@@ -198,19 +273,29 @@ export default function ItemMasterForm() {
     };
   }, [items, formMode]);
 
+  const handleCodeBlur = () => {
+    const trimmed = itemCode.trim().toUpperCase();
+    if (!trimmed) return;
+    const matchIdx = items.findIndex((it) => it.itemCode?.toUpperCase() === trimmed);
+    if (matchIdx >= 0 && matchIdx !== selectedIndex) {
+      loadItem(matchIdx);
+    }
+  };
+
   const handleSave = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formMode === 'search') {
       const qCode = itemCode.trim().toLowerCase();
       const qName = name.trim().toLowerCase();
       const qBarcode = barcode.trim();
-      const matched = items.find(it =>
-        (qCode && it.itemCode.toLowerCase().includes(qCode)) ||
-        (qName && it.name.toLowerCase().includes(qName)) ||
-        (qBarcode && it.barcode && it.barcode.includes(qBarcode))
+      const matched = items.find(
+        (it) =>
+          (qCode && it.itemCode.toLowerCase().includes(qCode)) ||
+          (qName && it.name.toLowerCase().includes(qName)) ||
+          (qBarcode && it.barcode && it.barcode.includes(qBarcode))
       );
       if (matched) {
-        const idx = items.findIndex(it => it.itemCode === matched.itemCode);
+        const idx = items.findIndex((it) => it.itemCode === matched.itemCode);
         loadItem(idx);
       } else if (items.length > 0) {
         loadItem(0);
@@ -260,9 +345,9 @@ export default function ItemMasterForm() {
       description: name,
       specifications: '',
       active,
-      manageMethod: 'none',
+      manageMethod,
       perpetualInventory: true,
-      contractModel: '',
+      contractModel,
       ice: 'none',
       weight: 0.5,
       length: 10,
@@ -271,14 +356,24 @@ export default function ItemMasterForm() {
     };
 
     try {
-      if (formMode === 'create' || selectedIndex < 0) {
+      const targetCode = itemCode.trim().toUpperCase();
+      const existingIdx = items.findIndex((it) => it.itemCode?.toUpperCase() === targetCode);
+
+      if (existingIdx >= 0) {
+        const existing = items[existingIdx];
+        await c.save({
+          action: 'itemUpdate',
+          data: { ...payload, itemCode: existing.itemCode || targetCode },
+        });
+        loadItem(existingIdx);
+      } else if (formMode === 'create' || selectedIndex < 0) {
         await c.save({ action: 'item', data: payload });
         resetFormToCreate();
       } else {
         const existing = items[selectedIndex];
         await c.save({
           action: 'itemUpdate',
-          data: { ...payload, itemCode: existing.itemCode || itemCode },
+          data: { ...payload, itemCode: existing.itemCode || targetCode },
         });
       }
     } catch {
@@ -287,20 +382,20 @@ export default function ItemMasterForm() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col bg-[#f0f4f8] text-[#1e293b] font-[Tahoma,Arial,sans-serif] text-[11px] select-none p-2 sm:p-3 overflow-y-auto">
+    <div className="w-full h-full flex flex-col bg-[#f0f4f8] text-[#1e293b] font-[Tahoma,Arial,sans-serif] text-[11px] select-none p-2 sm:p-3 overflow-y-auto sap-b1-form">
       {/* ── BARRA DE TÍTULO Y NAVEGADOR ESTILO SAP B1 ── */}
       <div className="bg-[#e4ebf3] border border-[#a6b8cc] rounded-t-xs px-3 py-1.5 flex flex-wrap items-center justify-between gap-2 shadow-2xs">
         <div className="flex items-center gap-2">
           <span className="text-[#0055a5] text-sm font-bold">📦</span>
-          <span className="font-bold text-xs text-[#0a246a]">
+          <span className="font-bold text-[#003366] text-xs">
             Datos Maestros de Artículos (OITM)
           </span>
-          <span className="ml-2 px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-[#fffde7] text-[#8a5d00] border border-[#e0c46c]">
-            {formMode === 'create' ? 'Modo Crear' : formMode === 'search' ? 'Modo Buscar' : 'Modo Visualizar / Actualizar'}
+          <span className="px-1.5 py-0.2 bg-[#fffde7] border border-[#d49b00] text-[#7a5900] text-[10px] font-bold rounded-xs">
+            {formMode === 'create' ? 'Modo Crear' : formMode === 'search' ? 'Modo Buscar' : 'Modo Modificar'}
           </span>
         </div>
 
-        {/* Controles de Navegación SAP B1 [|◀] [◀] (X de Y) [▶] [▶|] */}
+        {/* Botones de navegación de registros */}
         <div className="flex items-center gap-1">
           <button
             type="button"
@@ -366,14 +461,20 @@ export default function ItemMasterForm() {
                   type="text"
                   value={itemCode}
                   onChange={(e) => setItemCode(e.target.value)}
-                  disabled={formMode === 'edit'}
+                  onBlur={handleCodeBlur}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      handleCodeBlur();
+                    }
+                  }}
                   className={`w-full border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7] ring-1 ring-[#f59e0b]/50' : 'border-[#9fb4c7] bg-[#fffde7]'} px-2 py-0.5 text-[11px] font-mono font-bold text-[#003366] rounded-xs focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
                   placeholder="Auto (A00001)"
                 />
                 <button
                   type="button"
                   onClick={() => setFormMode('search')}
-                  className="p-1 bg-slate-100 hover:bg-slate-200 border border-[#9fb4c7] rounded-xs text-gray-600"
+                  className="p-1 bg-slate-100 hover:bg-slate-200 border border-[#9fb4c7] rounded-xs text-gray-600 cursor-pointer"
                   title="Buscar artículo existente (Ctrl+F)"
                 >
                   <Search size={12} />
@@ -388,7 +489,7 @@ export default function ItemMasterForm() {
                 required={formMode !== 'search'}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
+                className={`col-span-2 border ${formMode === 'search' ? 'border-[#d49b00] bg-[#fffde7]' : 'border-[#9fb4c7] bg-white'} px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs focus:bg-[#fffde7] focus:outline-none focus:ring-1 focus:ring-[#0070d2]`}
                 placeholder="Descripción del ítem / producto"
               />
             </div>
@@ -399,23 +500,23 @@ export default function ItemMasterForm() {
                 type="text"
                 value={foreignName}
                 onChange={(e) => setForeignName(e.target.value)}
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] rounded-xs"
+                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs"
                 placeholder="Nombre comercial alternativo"
               />
             </div>
 
             <div className="grid grid-cols-3 gap-2 items-center">
-              <label className="text-[10.5px] text-[#475569]">Grupo de artículos</label>
+              <label className="text-[10.5px] font-bold text-[#003366]">Grupo de artículos</label>
               <select
                 value={group}
                 onChange={(e) => setGroup(e.target.value)}
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] rounded-xs"
+                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs font-medium"
               >
-                <option value="General">General</option>
-                <option value="Laptops">Laptops & Computadores</option>
-                <option value="Perifericos">Periféricos & Accesorios</option>
-                <option value="Servidores">Servidores & Redes</option>
-                <option value="Suministros">Suministros & Repuestos</option>
+                {availableGroups.map((g) => (
+                  <option key={g.code} value={g.code}>
+                    {g.label}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
@@ -427,7 +528,7 @@ export default function ItemMasterForm() {
               <select
                 value={priceList}
                 onChange={(e) => setPriceList(e.target.value)}
-                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] rounded-xs"
+                className="col-span-2 border border-[#9fb4c7] bg-white px-2 py-0.5 text-[11px] text-[#1e293b] rounded-xs"
               >
                 <option value="Lista 1 — PVP Base">Lista 1 — PVP Base</option>
                 <option value="Lista 2 — Mayorista">Lista 2 — Mayorista</option>
@@ -473,392 +574,55 @@ export default function ItemMasterForm() {
           </div>
         </div>
 
-        {/* ── PESTAÑAS CANÓNICAS DE SAP BUSINESS ONE OITM ── */}
-        <div className="border-b border-[#a6b8cc] flex items-center gap-1 select-none pt-1">
-          {[
-            { id: 'general', label: 'General' },
-            { id: 'compras', label: 'Datos de compras' },
-            { id: 'ventas', label: 'Datos de ventas' },
-            { id: 'inventario', label: 'Datos de inventario' },
-            { id: 'planificacion', label: 'Planificación' },
-            { id: 'anexos', label: 'Anexos' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              onClick={() => setActiveTab(tab.id as typeof activeTab)}
-              className={`px-3 py-1 text-xs font-bold rounded-t-xs border-t-2 border-x transition-all cursor-pointer ${
-                activeTab === tab.id
-                  ? 'bg-white text-[#003366] border-t-[#0055a5] border-x-[#a6b8cc] border-b-white -mb-px shadow-xs'
-                  : 'bg-[#e2eaf2] text-[#475569] border-transparent hover:bg-white/70'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* ── CUERPO DE PESTAÑAS ── */}
-        <div className="bg-white border border-[#a6b8cc] border-t-0 p-3 rounded-b-xs shadow-xs min-h-[220px]">
-          {/* PESTAÑA: GENERAL */}
-          {activeTab === 'general' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Código de barras</label>
-                  <input
-                    type="text"
-                    value={barcode}
-                    onChange={(e) => setBarcode(e.target.value)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono"
-                    placeholder="7861000123456"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Unidad de medida base</label>
-                  <input
-                    type="text"
-                    value={inventoryUnit}
-                    onChange={(e) => setInventoryUnit(e.target.value)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="flex items-center gap-2 cursor-pointer pt-1">
-                  <input
-                    type="checkbox"
-                    checked={active}
-                    onChange={(e) => setActive(e.target.checked)}
-                    className="rounded text-[#0070d2]"
-                  />
-                  <span className={active ? 'text-emerald-700 font-bold' : 'text-gray-400'}>
-                    {active ? 'Artículo Activo en el Catálogo' : 'Artículo Inactivo'}
-                  </span>
-                </label>
-              </div>
-            </div>
-          )}
-
-          {/* PESTAÑA: DATOS DE COMPRAS */}
-          {activeTab === 'compras' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Proveedor preferido</label>
-                  <select
-                    value={preferredVendor}
-                    onChange={(e) => setPreferredVendor(e.target.value)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs"
-                  >
-                    <option value="">Sin preferencia...</option>
-                    {c.data.vendors.map((v) => (
-                      <option key={v.id} value={v.cardCode}>
-                        {v.cardCode} · {v.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Unidad de compra</label>
-                  <input
-                    type="text"
-                    value={purchaseUnit}
-                    onChange={(e) => setPurchaseUnit(e.target.value)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] font-bold text-[#003366]">Precio de compra USD</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min={0}
-                    value={purchasePrice}
-                    onChange={(e) => setPurchasePrice(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono font-bold text-[#0055a5]"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* PESTAÑA: DATOS DE VENTAS */}
-          {activeTab === 'ventas' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Unidad de venta</label>
-                  <input
-                    type="text"
-                    value={salesUnit}
-                    onChange={(e) => setSalesUnit(e.target.value)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] font-bold text-[#003366]">Precio Lista 1 (Base)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min={0}
-                    value={price}
-                    onChange={(e) => setPrice(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono font-bold text-[#0055a5]"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Precio Lista 2 (Mayorista)</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min={0}
-                    value={price2}
-                    onChange={(e) => setPrice2(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Descuento máx %</label>
-                  <input
-                    type="number"
-                    min={0}
-                    max={100}
-                    value={maxDiscount}
-                    onChange={(e) => setMaxDiscount(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono"
-                  />
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">IVA Ventas %</label>
-                  <input
-                    type="number"
-                    min={0}
-                    max={100}
-                    value={salesTaxRate}
-                    onChange={(e) => setSalesTaxRate(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* PESTAÑA: DATOS DE INVENTARIO */}
-          {activeTab === 'inventario' && (
-            <div className="space-y-3">
-              {/* Tabla Canónica de Almacenes SAP B1 */}
-              <div className="border border-[#b4c4d4] rounded-xs overflow-hidden">
-                <table className="w-full text-left border-collapse text-[11px]">
-                  <thead className="bg-[#e4ebf3] font-bold text-[#003366] border-b border-[#a8bccf]">
-                    <tr>
-                      <th className="p-1.5 border-r border-[#c2d3e3]">Cód. Almacén</th>
-                      <th className="p-1.5 border-r border-[#c2d3e3]">Nombre de Almacén</th>
-                      <th className="p-1.5 border-r border-[#c2d3e3] text-right">En stock</th>
-                      <th className="p-1.5 border-r border-[#c2d3e3] text-right">Comprometido</th>
-                      <th className="p-1.5 border-r border-[#c2d3e3] text-right">Solicitado</th>
-                      <th className="p-1.5 text-right font-black text-[#0055a5]">Disponible</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="bg-white">
-                      <td className="p-1.5 font-mono font-bold text-gray-700 border-r border-[#d4e1ed]">01</td>
-                      <td className="p-1.5 font-medium border-r border-[#d4e1ed]">Bodega Central Matriz</td>
-                      <td className="p-1.5 text-right font-mono font-bold text-emerald-700 border-r border-[#d4e1ed]">{currentStock}</td>
-                      <td className="p-1.5 text-right font-mono text-gray-600 border-r border-[#d4e1ed]">{committedStock}</td>
-                      <td className="p-1.5 text-right font-mono text-blue-600 border-r border-[#d4e1ed]">{orderedStock}</td>
-                      <td className="p-1.5 text-right font-mono font-extrabold text-[#0055a5]">{currentStock - committedStock + orderedStock}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] font-bold text-[#003366]">Método de valoración</label>
-                  <select
-                    value={costingMethod}
-                    onChange={(e) => setCostingMethod(e.target.value as typeof costingMethod)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs"
-                  >
-                    <option value="average">Promedio ponderado</option>
-                    <option value="fifo">FIFO (Primeras entradas, primeras salidas)</option>
-                    <option value="standard">Precio estándar</option>
-                  </select>
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Stock mínimo</label>
-                  <input
-                    type="number"
-                    value={minStock}
-                    onChange={(e) => setMinStock(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* PESTAÑA: PLANIFICACIÓN */}
-          {activeTab === 'planificacion' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] font-bold text-[#003366]">Método aprovisionamiento</label>
-                  <select
-                    value={planningMethod}
-                    onChange={(e) => setPlanningMethod(e.target.value as typeof planningMethod)}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs"
-                  >
-                    <option value="buy">Comprar</option>
-                    <option value="production">Fabricar / Producir</option>
-                  </select>
-                </div>
-                <div className="grid grid-cols-3 gap-2 items-center">
-                  <label className="text-[10.5px] text-[#475569]">Plazo de entrega (días)</label>
-                  <input
-                    type="number"
-                    min={0}
-                    value={purchaseLeadDays}
-                    onChange={(e) => setPurchaseLeadDays(Number(e.target.value))}
-                    className="col-span-2 border border-[#9fb4c7] px-2 py-0.5 rounded-xs font-mono"
-                  />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <label className="flex items-center gap-1.5 cursor-pointer pt-2">
-                  <input
-                    type="checkbox"
-                    checked={mrpActive}
-                    onChange={(e) => setMrpActive(e.target.checked)}
-                    className="rounded text-[#0070d2]"
-                  />
-                  <span className="font-semibold text-[#003366]">Participa en planificación MRP</span>
-                </label>
-              </div>
-            </div>
-          )}
-
-          {/* PESTAÑA: ANEXOS */}
-          {activeTab === 'anexos' && (
-            <div className="space-y-3">
-              <div className="flex flex-col md:flex-row gap-3">
-                <div className="flex-1 overflow-x-auto border border-[#b4c4d4] rounded-xs shadow-inner bg-white">
-                  <table className="w-full border-collapse text-left text-[11px]">
-                    <thead className="bg-[#e4ebf3] font-bold text-[#1e293b] border-b border-[#a8bccf]">
-                      <tr>
-                        <th className="p-1.5 border-r border-[#c2d3e3] w-8 text-center">#</th>
-                        <th className="p-1.5 border-r border-[#c2d3e3] w-48">Vía de acceso destino</th>
-                        <th className="p-1.5 border-r border-[#c2d3e3] min-w-44">Nombre de archivo</th>
-                        <th className="p-1.5 border-r border-[#c2d3e3] w-28">Fecha del anexo</th>
-                        <th className="p-1.5">Texto libre</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-[#d4e1ed]">
-                      {attachments.length === 0 ? (
-                        <tr>
-                          <td colSpan={5} className="p-4 text-center text-gray-400 italic">
-                            No hay fichas técnicas ni manuales anexados a este artículo. Haz clic en &quot;Explorar...&quot; para adjuntar.
-                          </td>
-                        </tr>
-                      ) : (
-                        attachments.map((att, idx) => (
-                          <tr
-                            key={att.id}
-                            onClick={() => setSelectedAttachmentIndex(idx)}
-                            className={`cursor-pointer transition-colors ${
-                              selectedAttachmentIndex === idx ? 'bg-[#fffde7] font-semibold text-[#003366]' : 'hover:bg-slate-50'
-                            }`}
-                          >
-                            <td className="p-1.5 text-center font-mono font-bold text-gray-500 bg-[#f7fafc] border-r border-[#d4e1ed]">
-                              {idx + 1}
-                            </td>
-                            <td className="p-1.5 font-mono text-[10.5px] text-gray-600 border-r border-[#d4e1ed] truncate max-w-[160px]">
-                              {att.targetPath}
-                            </td>
-                            <td className="p-1.5 font-medium border-r border-[#d4e1ed] text-[#003366]">
-                              📄 {att.fileName}
-                            </td>
-                            <td className="p-1.5 text-gray-700 border-r border-[#d4e1ed] whitespace-nowrap">
-                              {att.date}
-                            </td>
-                            <td className="p-1">
-                              <input
-                                type="text"
-                                value={att.freeText}
-                                onChange={(e) => {
-                                  const val = e.target.value;
-                                  setAttachments((prev) => prev.map((a, j) => (j === idx ? { ...a, freeText: val } : a)));
-                                }}
-                                className="w-full bg-transparent border-b border-transparent hover:border-[#9fb4c7] px-1 py-0.5 text-[11px] outline-none"
-                              />
-                            </td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-
-                <div className="w-full md:w-32 flex md:flex-col gap-2 shrink-0">
-                  <label className="w-full">
-                    <input
-                      type="file"
-                      className="hidden"
-                      onChange={(e) => {
-                        const file = e.target.files?.[0];
-                        if (file) {
-                          setAttachments((prev) => [
-                            ...prev,
-                            {
-                              id: `att-${Date.now()}`,
-                              targetPath: 'C:\\SAP_B1\\Item_Attachments\\',
-                              fileName: file.name,
-                              date: new Date().toISOString().slice(0, 10),
-                              freeText: 'Ficha técnica de artículo',
-                            },
-                          ]);
-                        }
-                      }}
-                    />
-                    <span className="block w-full text-center px-3 py-1.5 bg-[#f0f4f8] hover:bg-white border border-[#9fb4c7] rounded-xs text-[11px] font-bold text-[#003366] cursor-pointer shadow-2xs active:scale-95 transition">
-                      Explorar...
-                    </span>
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (selectedAttachmentIndex !== null && attachments[selectedAttachmentIndex]) {
-                        alert(`Visualizando: ${attachments[selectedAttachmentIndex].fileName}`);
-                      }
-                    }}
-                    disabled={selectedAttachmentIndex === null}
-                    className="w-full px-3 py-1.5 bg-[#f0f4f8] hover:bg-white disabled:opacity-40 border border-[#9fb4c7] rounded-xs text-[11px] font-bold text-[#003366] cursor-pointer shadow-2xs"
-                  >
-                    Visualizar
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      if (selectedAttachmentIndex !== null) {
-                        setAttachments((prev) => prev.filter((_, i) => i !== selectedAttachmentIndex));
-                        setSelectedAttachmentIndex(null);
-                      }
-                    }}
-                    disabled={selectedAttachmentIndex === null}
-                    className="w-full px-3 py-1.5 bg-[#fdf2f2] hover:bg-red-500 hover:text-white disabled:opacity-40 border border-red-300 rounded-xs text-[11px] font-bold text-red-700 cursor-pointer shadow-2xs"
-                  >
-                    Borrar
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
+        {/* ── PESTAÑAS DETALLE DE OITM MODULARIZADAS ── */}
+        <ItemTabsDetail
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          barcode={barcode}
+          setBarcode={setBarcode}
+          inventoryUnit={inventoryUnit}
+          setInventoryUnit={setInventoryUnit}
+          manageMethod={manageMethod}
+          setManageMethod={setManageMethod}
+          contractModel={contractModel}
+          setContractModel={setContractModel}
+          active={active}
+          setActive={setActive}
+          vendors={c.data.vendors}
+          preferredVendor={preferredVendor}
+          setPreferredVendor={setPreferredVendor}
+          purchaseUnit={purchaseUnit}
+          setPurchaseUnit={setPurchaseUnit}
+          purchasePrice={purchasePrice}
+          setPurchasePrice={setPurchasePrice}
+          salesUnit={salesUnit}
+          setSalesUnit={setSalesUnit}
+          price={price}
+          setPrice={setPrice}
+          price2={price2}
+          setPrice2={setPrice2}
+          maxDiscount={maxDiscount}
+          setMaxDiscount={setMaxDiscount}
+          salesTaxRate={salesTaxRate}
+          setSalesTaxRate={setSalesTaxRate}
+          currentStock={currentStock}
+          committedStock={committedStock}
+          orderedStock={orderedStock}
+          costingMethod={costingMethod}
+          setCostingMethod={setCostingMethod}
+          minStock={minStock}
+          setMinStock={setMinStock}
+          planningMethod={planningMethod}
+          setPlanningMethod={setPlanningMethod}
+          purchaseLeadDays={purchaseLeadDays}
+          setPurchaseLeadDays={setPurchaseLeadDays}
+          mrpActive={mrpActive}
+          setMrpActive={setMrpActive}
+          attachments={attachments}
+          setAttachments={setAttachments}
+          selectedAttachmentIndex={selectedAttachmentIndex}
+          setSelectedAttachmentIndex={setSelectedAttachmentIndex}
+        />
 
         {/* ── BOTONES OFICIALES DE ACCIÓN: [Crear / Actualizar] [Cancelar] ── */}
         <div className="flex items-center justify-between pt-2 border-t border-[#c1d1e0]">

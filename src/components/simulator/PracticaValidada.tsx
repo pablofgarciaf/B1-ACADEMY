@@ -284,10 +284,27 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
   const tituloVentana = ruta[ruta.length - 1] ?? guia.title;
 
   const raizRef = useRef<HTMLDivElement>(null);
-  const [guiaActiva, setGuiaActiva] = useState(true);
+  const [guiaActiva, setGuiaActiva] = useState(false);
+  const [ofrecerAyuda, setOfrecerAyuda] = useState(false);
+
   useEffect(() => {
-    try { if (localStorage.getItem(CLAVE_GUIA) === 'off') setGuiaActiva(false); } catch { /* sin almacenamiento */ }
+    try { if (localStorage.getItem(CLAVE_GUIA) === 'on') setGuiaActiva(true); } catch { /* sin almacenamiento */ }
   }, []);
+
+  useEffect(() => {
+    if (logrado || guiaActiva) return;
+    const timer = setTimeout(() => {
+      setOfrecerAyuda(true);
+    }, 60000);
+    return () => clearTimeout(timer);
+  }, [logrado, guiaActiva, nivel]);
+
+  useEffect(() => {
+    if (intentos >= 1 && !guiaActiva) {
+      setOfrecerAyuda(true);
+    }
+  }, [intentos, guiaActiva]);
+
   const alternarGuia = () => {
     setGuiaActiva((v) => {
       try { localStorage.setItem(CLAVE_GUIA, v ? 'off' : 'on'); } catch { /* sin almacenamiento */ }
@@ -372,6 +389,19 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
         <div className="flex items-center gap-1.5">
           <button
             type="button"
+            onClick={alternarGuia}
+            className={`px-2 py-0.5 rounded border text-[10.5px] font-bold transition-all active:scale-95 shadow-xs cursor-pointer flex items-center gap-1 ${
+              guiaActiva
+                ? 'border-amber-400 bg-amber-50 text-amber-800'
+                : 'border-[#9fb1c7] bg-[#eef2f7] hover:bg-white text-[#1d2d3e]'
+            }`}
+            title={guiaActiva ? 'Ocultar guía flotante de FeNi' : 'Activar guía flotante de FeNi'}
+          >
+            <span>🐾</span>
+            <span>{guiaActiva ? 'Guía activa (Plegar)' : 'Tutor FeNi'}</span>
+          </button>
+          <button
+            type="button"
             onClick={() => setOuterMaximizada(!outerMaximizada)}
             className="px-2 py-0.5 rounded border border-[#9fb1c7] bg-[#eef2f7] hover:bg-white text-[10.5px] font-bold text-[#1d2d3e] transition-all active:scale-95 shadow-sm cursor-pointer flex items-center gap-1"
             title={outerMaximizada ? 'Restaurar tamaño del simulador' : 'Maximizar simulador a pantalla completa'}
@@ -381,6 +411,36 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
           </button>
         </div>
       </div>
+
+      {/* Banner de Ayuda Progresiva de FeNi (tras 60s o fallo) */}
+      {ofrecerAyuda && !guiaActiva && !logrado && (
+        <div className="flex items-center justify-between gap-2 px-3 py-1.5 bg-gradient-to-r from-amber-50 to-amber-100 border-b border-amber-300 text-amber-900 text-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-base">🐾</span>
+            <span><strong>FeNi Tutor:</strong> ¿Tienes problemas con esta práctica? Puedo guiarte paso a paso.</span>
+          </div>
+          <div className="flex items-center gap-1.5 shrink-0">
+            <button
+              type="button"
+              onClick={() => {
+                setGuiaActiva(true);
+                setOfrecerAyuda(false);
+              }}
+              className="px-2.5 py-1 bg-[#0055A5] text-white font-bold rounded text-[10.5px] hover:bg-[#003e7a] transition-all active:scale-95 shadow-xs cursor-pointer flex items-center gap-1"
+            >
+              <span>💡 Activar guía del paso</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setOfrecerAyuda(false)}
+              className="text-amber-700 hover:text-amber-900 text-xs px-1 cursor-pointer"
+              title="Cerrar sugerencia"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Barra de menú */}
       <div className="relative flex flex-wrap gap-x-4 bg-[#f6f7f9] border-b border-[#cdd6e1] px-3 py-0.5 text-[11px]">
@@ -515,21 +575,6 @@ export default function PracticaValidada({ guia, onCompleta, hideHeaderGuide = f
                   </div>
 
                   <div className="flex items-center gap-1.5 shrink-0">
-                    {!esConsulta && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setValores(campos.map(c => c.valor));
-                          setRevisado(null);
-                          setEstado({ tono: 'info', texto: 'Valores cargados con éxito. Pulsa Añadir para registrar.' });
-                        }}
-                        className="text-[10.5px] bg-[#0055A5] hover:bg-[#003e7a] text-white font-bold px-2.5 py-1 rounded transition-all active:scale-95 shadow-xs flex items-center gap-1 cursor-pointer"
-                        title="Autocompletar todos los campos con los valores del caso"
-                      >
-                        <span>🪄</span>
-                        <span>Autocompletar</span>
-                      </button>
-                    )}
                     <button
                       type="button"
                       onClick={() => setGuiaExpandida(!guiaExpandida)}

@@ -6,11 +6,11 @@ const rules = (key:string, collection:PracticeOutcomeContract['collection'], fie
 export function accountingPracticeContract(key:string):PracticeOutcomeContract|undefined {
   const openings:Record<string,Record<string,[string,string]>>={
    'mod25-c3#5':{Tipo:['kind','inventory'],Artículo:['itemCode','A00001'],Almacén:['warehouseCode','01'],Cantidad:['quantity','50'],Costo:['unitCost','650']},
-   'mod29-c1#7':{Tipo:['kind','cash'],Cuenta:['accountCode','1.1.01'],Débito:['amount','15000'],Crédito:['credit','0']},
+   'mod29-c1#7':{Tipo:['kind','cash'],Cuenta:['accountCode','101000'],Débito:['amount','15000'],Crédito:['credit','0']},
    'mod29-c1#9':{Tipo:['kind','customer'],Código:['cardCode','C20000'],Nombre:['description','Maxi-Teq'],Saldo:['amount','5000']},
    'mod29-c3#5':{Tipo:['kind','inventory'],Código:['itemCode','A00001'],Descripción:['description','Laptop Dell Latitude 3420'],Cantidad:['quantity','10'],Costo:['unitCost','650'],Almacén:['warehouseCode','01'],Contrapartida:['compensationAccount','Patrimonio - Saldos de apertura']},
-   'mod29-c3#7':{Tipo:['kind','cash'],Cuenta:['accountCode','1.1.01'],Debe:['amount','1500'],Haber:['credit','0'],Fecha:['date','01/01/2026'],Contrapartida:['compensationAccount','Patrimonio - Saldos de apertura'],Origen:['origin','OB']},
-   'mod29-c3#9':{Tipo:['kind','customer'],Código:['cardCode','C20000'],Nombre:['description','Maxi-Teq'],Saldo:['amount','2000'],Fecha:['date','01/01/2026'],Contrapartida:['compensationAccount','Patrimonio - Saldos de apertura']},
+   'mod29-c3#7':{Tipo:['kind','cash'],Cuenta:['accountCode','Caja'],Debe:['amount','1500'],Haber:['credit','0'],Fecha:['date','01/01/2026'],Contrapartida:['compensationAccount','Patrimonio - Saldos de apertura'],Origen:['origin','OB']},
+   'mod29-c3#9':{Tipo:['kind','Cliente'],Código:['cardCode','C20000'],Nombre:['description','Maxi-Teq'],Saldo:['amount','2000'],Fecha:['date','01/01/2026'],Contrapartida:['compensationAccount','Patrimonio - Saldos de apertura']},
   };
   if(openings[key])return rules(key,'profile',openings[key],'trainingOpenings');
   if(key==='mod25-c4#5')return rules(key,'profile',{Código:['code','2026-01'],Nombre:['name','Enero 2026'],Bloqueado:['closed','Sí'],Vencimiento:['dueThrough','31/01/2026']},'accountingPeriods');

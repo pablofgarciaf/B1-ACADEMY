@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import FinixInteractiveSimulator, { type StepGuide } from '@/components/simulator/FinixInteractiveSimulator';
 import type { IntentoPractica } from '@/lib/practice-check';
 import type { LessonData } from './types';
@@ -46,6 +47,7 @@ export default function AulaSimulatorView({
     ...currentStepGuide,
     missionId: `${activeClassId}#${currentSlideIndex + 1}`,
   });
+  const [instruccionesAbiertas, setInstruccionesAbiertas] = useState(false);
   return (
     <div className="flex-1 min-h-0 flex flex-col overflow-y-auto">
       {/* Glowing instructions bar */}
@@ -131,22 +133,39 @@ export default function AulaSimulatorView({
           </details>
         )}
 
-        <ol className="grid sm:grid-cols-2 gap-x-3 gap-y-1 my-1.5 bg-blue-950/40 p-2 rounded-lg border border-blue-500/20">
-          {currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map((inst, i) => (
-            <li key={i} className="text-xs text-blue-100 flex items-start gap-2">
-              <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/40 text-blue-200 flex items-center justify-center text-[9px] font-bold mt-0.5">{i + 1}</span>
-              <span>{inst}</span>
+        <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-blue-500/20">
+          <span className="text-[10.5px] text-blue-200">
+            {instruccionesAbiertas
+              ? 'Pasos detallados de la práctica:'
+              : 'Navega por el menú de Finix ERP y registra los datos requeridos:'}
+          </span>
+          <button
+            type="button"
+            onClick={() => setInstruccionesAbiertas(v => !v)}
+            className="text-[10px] font-bold text-amber-300 hover:text-amber-200 flex items-center gap-1 active:scale-95 px-2 py-0.5 rounded bg-blue-950/60 border border-blue-400/30 shrink-0 cursor-pointer shadow-2xs"
+          >
+            <span>{instruccionesAbiertas ? '▲ Plegar pasos' : '▼ Ver pasos detallados'}</span>
+          </button>
+        </div>
+
+        {instruccionesAbiertas && (
+          <ol className="grid sm:grid-cols-2 gap-x-3 gap-y-1 my-1.5 bg-blue-950/40 p-2 rounded-lg border border-blue-500/20">
+            {currentStepGuide.instructions.filter(i => !/^Datos a registrar/i.test(i)).map((inst, i) => (
+              <li key={i} className="text-xs text-blue-100 flex items-start gap-2">
+                <span className="shrink-0 w-4 h-4 rounded-full bg-blue-500/40 text-blue-200 flex items-center justify-center text-[9px] font-bold mt-0.5">{i + 1}</span>
+                <span>{inst}</span>
+              </li>
+            ))}
+            <li className="text-xs text-amber-300 font-semibold flex items-start gap-2 bg-amber-500/10 p-1 rounded border border-amber-500/20 sm:col-span-2">
+              <span className="shrink-0 w-4 h-4 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-[9px] font-extrabold mt-0.5">✓</span>
+              <span>{conectada?.clave === 'consultaAcademica'
+                ? 'Paso final: realiza la consulta y confirma tus respuestas.'
+                : conectada
+                ? 'Paso final: guarda la operación y pulsa «Verificar y Validar Práctica».'
+                : 'Paso final: completa la ficha y confirma tus respuestas para registrar tu aprobación.'}</span>
             </li>
-          ))}
-          <li className="text-xs text-amber-300 font-semibold flex items-start gap-2 bg-amber-500/10 p-1 rounded border border-amber-500/20 sm:col-span-2">
-            <span className="shrink-0 w-4 h-4 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-[9px] font-extrabold mt-0.5">✓</span>
-            <span>{conectada?.clave === 'consultaAcademica'
-              ? 'Paso final: realiza la consulta y confirma tus respuestas.'
-              : conectada
-              ? 'Paso final: guarda la operación y pulsa «Verificar y Validar Práctica».'
-              : 'Paso final: completa la ficha y confirma tus respuestas para registrar tu aprobación.'}</span>
-          </li>
-        </ol>
+          </ol>
+        )}
 
         {/* Ficha unificada de datos requeridos */}
         {currentStepGuide.action_type !== 'caso' && currentStepGuide.campos && currentStepGuide.campos.length > 0 && (

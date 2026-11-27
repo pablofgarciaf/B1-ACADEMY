@@ -1083,7 +1083,7 @@
       },
       {
         "slide_index": 10,
-        "script_text": "Este grupo de artículos llamado HARDWARE establece valores predeterminados que se aplican al crear nuevos artículos como el A0013. Su código es HARDWARE y describe equipos y componentes de tecnología. Al asignar este grupo, SAP Business One propone automáticamente que el artículo sea de tipo Material, con unidad de medida Unidad, método de aprovisionamiento Comprar y almacén predeterminado 01 (Bodega Central Quito). Esto asegura consistencia y reduce errores al crear múltiples artículos similares. Puedes modificar estos valores en el artículo individual si es necesario, pero el grupo brinda una base estandarizada.",
+        "script_text": "En esta práctica revisas el grupo de artículos HARDWARE para ver los valores predeterminados que heredarán sus artículos: clase Material, unidad Unidad, método Comprar y almacén 01. Los valores se configuran a nivel de grupo para que nuevos artículos los tomen automáticamente sin tener que ingresarlos cada vez.",
         "step_guide": {
           "action_type": "practica",
           "title": "Ver grupo de artículos",
@@ -10309,6 +10309,11 @@
               "etiqueta": "Regla de copia",
               "valor": "Sustituir existentes",
               "pista": "No crea nuevos, solo actualiza"
+            },
+            {
+              "etiqueta": "Clientes destino",
+              "valor": "C20001, C20002",
+              "pista": "Códigos de los clientes destino para copiar el precio"
             }
           ]
         }
@@ -11231,6 +11236,11 @@
           ],
           "campos": [
             {
+              "etiqueta": "Artículo",
+              "valor": "A00007",
+              "pista": "Código del artículo en el maestro de artículos"
+            },
+            {
               "etiqueta": "Método de aprovisionamiento",
               "valor": "Comprar",
               "pista": "Seleccione entre Comprar o Fabricar"
@@ -11934,6 +11944,11 @@
             "Ingresar Pedido múltiple: 50 y Cantidad mínima: 100"
           ],
           "campos": [
+            {
+              "etiqueta": "Artículo",
+              "valor": "A00007",
+              "pista": "Código del artículo en el maestro de artículos"
+            },
             {
               "etiqueta": "Método de aprovisionamiento",
               "valor": "Comprar",
@@ -13966,7 +13981,7 @@
       },
       {
         "slide_index": 7,
-        "script_text": "En la ficha Finanzas del maestro de grupo de artículos se definen las cuentas que usarán los artículos pertenecientes a ese grupo. Aquí configuramos el grupo 'Impresoras' con cuenta de ingresos 9001 y costo 9002. Como el método predeterminado es 'Grupo de Artículos', cualquier artículo como A00002 o A00003 asignado a este grupo tomará automáticamente estas cuentas. Esto permite que el informe de pérdidas y ganancias muestre ingresos y costos por grupo sin intervención manual.",
+        "script_text": "En la ficha Finanzas del maestro de grupo de artículos defines las cuentas contables que usarán los artículos del grupo. Aquí configuras el grupo IMPRES con cuenta de existencias 9000, ingresos 9001 y costos 9002. Una vez guardado el grupo, en el siguiente paso podrás asignar artículos a este grupo para que hereden automáticamente su determinación de cuentas.",
         "step_guide": {
           "action_type": "practica",
           "title": "Configurar grupo de artículos",

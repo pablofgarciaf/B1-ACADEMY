@@ -110,7 +110,7 @@ function contract(key: string): PracticeOutcomeContract {
     if(screen.clave==='articulo' && key.startsWith('mod15-c3#') && field.etiqueta==='Artículo') path='itemCode';
     if(screen.clave==='mrp'&&collection==='profile'){ const mrpFields:Record<string,string>={'Escenario':'scenario','Fecha de inicio':'startDate','Fecha de fin':'endDate','Nivel':'level','Almacén':'warehouseCode','Artículos':'itemCodes','Horizonte de planificación':'horizon','Incluir compras':'includePurchases','Incluir producción':'includeProduction','Incluir ventas':'includeSales','Incluir pronósticos':'includeForecasts','Almacenes a excluir':'excludeWarehouses','Inventario inicial':'rows.available','Aprovisionamiento pendiente':'rows.onOrder','Demanda prevista':'rows.required','Demanda total':'rows.required','Inventario final proyectado':'rows.projectedEnding','Recomendación':'rows.recommendation'}; path=mrpFields[field.etiqueta]??path; if(field.etiqueta==='Ejecutar MRP'){path='id';generated=true;} }
     if(screen.clave==='mrp'&&collection==='profile'&&field.etiqueta==='Artículo') path='rows.itemCode';
-    if(screen.clave==='articulo'&&field.etiqueta==='Gestionado por nro. de serie'&&plain(field.valor)==='si') expected='serial';
+    if(screen.clave==='articulo'&&field.etiqueta==='Gestionado por nro. de serie') { path='manageMethod'; expected='Sí'; }
     // Los documentos conservan la serie elegida, el origen y el tipo que los generó.
     if(screen.clave==='documento') {
       if(field.etiqueta==='Serie') path='series';
@@ -207,6 +207,11 @@ function matches(actual:unknown,requirement:OutcomeRequirement,state:CompanyStat
   if(requirement.path==='docType'){const labels:Record<string,string>={facturas:'Facturas de clientes',clientes:'Datos maestros de clientes',purchase_order:'Pedido de compra'};actual=labels[String(actual)]??actual;}
   if(['list','referenceList'].includes(requirement.path)){const number=String(expected).match(/(\d+)$/)?.[1];if(number)expected=String(Number(number));}
   if(requirement.path==='paymentTermsDays')expected=expected.replace(/\s*d[ií]as?$/i,'');
+  if(requirement.path==='accountCode'&&(expected==='101000'||expected==='Caja'||expected==='1.1.01')){if(actual==='1.1.01'||actual==='101000'||actual==='Caja')return true;}
+  if(requirement.path==='kind'&&(expected==='Cliente'||expected==='customer')){if(actual==='customer'||actual==='Cliente')return true;}
+  if(requirement.path==='kind'&&(expected==='Caja'||expected==='cash')){if(actual==='cash'||actual==='Caja')return true;}
+  if(requirement.path==='manageMethod'&&(expected==='Sí'||expected==='serial'||expected==='Números de serie')){if(actual==='serial'||actual==='Sí'||actual==='Números de serie')return true;}
+  if((requirement.path==='isAsset'||requirement.path==='virtual')&&(expected==='Marcado'||expected==='Sí')){if(actual==='Sí'||actual==='Marcado'||actual===true)return true;}
   return actual!==undefined && normalizar(comparable(actual))===normalizar(comparable(expected));
 }
 function rowMatches(row:unknown,requirements:OutcomeRequirement[],state:CompanyState):boolean {

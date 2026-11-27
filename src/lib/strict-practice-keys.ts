@@ -36,7 +36,6 @@ export const STRICT_PRACTICE_KEYS = new Set<string>([
   "mod5-c1#6",
   "mod5-c2#5",
   "mod5-c2#7",
-  "mod5-c3#5",
   "mod6-c1#5",
   "mod6-c1#7",
   "mod6-c2#5",

@@ -62,7 +62,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
             </div>
             <div>
               <p className="text-sm font-black tracking-wider text-slate-900 dark:text-white uppercase font-display">B1</p>
-              <p className="text-[9px] font-mono tracking-widest text-blue-600 dark:text-sky-400 uppercase font-bold">Panel Central</p>
+              <p className="text-[9px] font-mono tracking-widest text-blue-600 dark:text-blue-400 uppercase font-bold">Panel Central</p>
             </div>
           </Link>
 
@@ -85,15 +85,15 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                 className={`
                   flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all
                   ${isActive 
-                    ? 'bg-blue-50 dark:bg-gradient-to-r dark:from-blue-600/30 dark:to-indigo-600/20 text-blue-600 dark:text-sky-300 border border-blue-200 dark:border-blue-500/40 shadow-sm shadow-blue-500/10 dark:shadow-blue-500/20' 
+                    ? 'bg-blue-50 text-blue-700 border border-blue-200 dark:bg-[#0c1e38] dark:border-blue-600/60 dark:text-white shadow-sm dark:shadow-[0_0_12px_rgba(37,99,235,0.25)]' 
                     : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.04]'
                   }
                 `}
               >
-                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-blue-600 dark:text-sky-400' : 'text-slate-400 dark:text-slate-500'}`} />
+                <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400 dark:text-slate-500'}`} />
                 <span className="truncate">{link.label}</span>
                 {isActive && (
-                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-sky-400 shadow-[0_0_8px_rgba(37,99,235,0.8)] dark:shadow-[0_0_8px_rgba(56,189,248,0.8)] shrink-0" />
+                  <span className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-600 dark:bg-blue-500 shadow-[0_0_8px_rgba(37,99,235,0.8)] shrink-0" />
                 )}
               </Link>
             );

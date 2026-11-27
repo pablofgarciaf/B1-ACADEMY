@@ -63,7 +63,7 @@ function Pantalla({ p }: { p: Exclude<PantallaConectada,{clave:'consultaAcademic
     case 'operaciones':return <P.operaciones initialMode={p.mode}/>;
     case 'cliente':   return <P.socio />;
     case 'proveedor': return <P.socio vendor />;
-    case 'articulo':  return <P.articulo />;
+    case 'articulo':  return <P.articulo initialItemCode={(p as { clave: 'articulo'; initialItemCode?: string }).initialItemCode} />;
     case 'documento': return <P.documento docType={p.docType} />;
     case 'series':    return <P.series docType={(p as { clave: 'series'; docType?: string }).docType} />;
     case 'grupos':    return <P.grupos tipo={(p as { clave: 'grupos'; tipo: 'cliente' | 'articulo' }).tipo} />;

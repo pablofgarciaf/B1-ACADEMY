@@ -11,7 +11,7 @@ export type PantallaConectada =
   | { clave: 'ubicacion' }
   | { clave: 'consultaAcademica' }
   | { clave: 'apertura' }
-  | { clave: 'cliente' } | { clave: 'proveedor' } | { clave: 'articulo' }
+  | { clave: 'cliente' } | { clave: 'proveedor' } | { clave: 'articulo'; initialItemCode?: string }
   | { clave: 'documento'; docType: 'quotation' | 'order' | 'delivery' | 'invoice' | 'credit_note' | 'purchase_request' | 'purchase_order' | 'goods_receipt' | 'vendor_invoice' }
   | { clave: 'asiento' } | { clave: 'activos' } | { clave: 'bom' } | { clave: 'produccion' } | { clave: 'transferencia' }
   | { clave: 'conteo' } | { clave: 'precios' } | { clave: 'descuentos' } | { clave: 'bancos' } | { clave: 'empleado' }
@@ -37,11 +37,11 @@ const REGLAS: [RegExp, PantallaConectada][] = [
   [/factura de proveedor|factura de acreedor/, { clave: 'documento', docType: 'vendor_invoice' }],
   [/entrada de mercanc|recepcion de mercanc|grpo/, { clave: 'documento', docType: 'goods_receipt' }],
   [/solicitud de compra/, { clave: 'documento', docType: 'purchase_request' }],
-  [/convertir.*pedido|pedido de compra|orden de compra|compras.*pedido/, { clave: 'documento', docType: 'purchase_order' }],
+  [/pedido de cliente|orden de venta|pedido de venta/, { clave: 'documento', docType: 'order' }],
+  [/convertir.*pedido de compra|pedido de compra|orden de compra|compras.*pedido/, { clave: 'documento', docType: 'purchase_order' }],
   [/nota de credito de cliente|nota de credito de venta|nota de credito de deudor/, { clave: 'documento', docType: 'credit_note' }],
   [/factura de (cliente|deudor|venta)/, { clave: 'documento', docType: 'invoice' }],
   [/entrega/, { clave: 'documento', docType: 'delivery' }],
-  [/pedido de cliente|orden de venta|pedido de venta/, { clave: 'documento', docType: 'order' }],
   [/oferta de venta|cotizacion de venta|cotizacion a cliente/, { clave: 'documento', docType: 'quotation' }],
   [/proveedor/, { clave: 'proveedor' }],
   [/(socio|interlocutor)[^>]*(datos maestros|maestro)|crear (nuevo )?cliente|nuevo cliente/, { clave: 'cliente' }],
@@ -105,9 +105,10 @@ export function pantallaConectada(guia?: { title?: string; menu_path?: string; m
   const finalModes:Record<string,import('@/components/finix-screens/FinalOperationsScreen').FinalOperationMode>={'mod8-c1#6':'procurementQuotes','mod9-c4#8':'costAdjustment','mod19-c1#8':'cardSettlement','mod19-c3#11':'vendorReconciliation','mod19-c4#7':'vendorAging','mod20-c2#8':'accountingPreview'};
   if(guia.missionId&&finalModes[guia.missionId])return {clave:'operaciones',mode:finalModes[guia.missionId]};
   if(guia.missionId==='mod3-c1#7'||guia.missionId==='mod3-c3#6'||guia.missionId==='mod3-c3#11'||guia.missionId==='mod3-c4#7')return {clave:'activos'};
-  if(guia.missionId==='mod7-c4#5'||guia.missionId==='mod18-c2#8')return {clave:'articulo'};
-  if(guia.missionId?.startsWith('mod13-c3')||guia.missionId==='mod13-c2#9'||guia.missionId==='mod13-c4#7'||guia.missionId==='mod13-c4#8')return {clave:'descuentos'};
-  if(guia.missionId==='mod21-c3#5')return {clave:'costos'};
+  if(guia.missionId==='mod18-c2#8')return {clave:'articulo',initialItemCode:'A00002'};
+  if(guia.missionId==='mod7-c4#5')return {clave:'articulo',initialItemCode:'A00001'};
+  if(guia.missionId==='mod13-c3#8')return null;
+  if(guia.missionId==='mod21-c3#5')return null;
   if(guia.missionId==='mod18-c4#7')return {clave:'asiento'};
   if(guia.missionId==='mod18-c4#5'||guia.missionId==='mod18-c4#6')return {clave:'cierre'};
   if (guia.missionId && SALES_MISSIONS[guia.missionId]) return SALES_MISSIONS[guia.missionId].pantalla;
@@ -122,13 +123,15 @@ export function pantallaConectada(guia?: { title?: string; menu_path?: string; m
   if(/crear serie para activos/.test(preliminar)) return { clave: 'series', docType:'activos' };
   if(/crear serie de ajuste/.test(preliminar)) return { clave: 'series', docType:'asientos' };
   if (/^ver\b/.test(plano(guia.title ?? '').trim())) return null;
+  // Configuraciones bancarias, asistentes y extractos que se resuelven como ficha interactiva validada
+  if (guia.missionId === 'mod19-c2#5' || /bancos? propios?|v[ií]as? de pago|extracto|reconcilia|asistente de pagos|payment wizard/i.test(preliminar)) {
+    return null;
+  }
   if(/banco|cobro|pago|extracto|concili/.test(preliminar)) return { clave: 'bancos' };
   // Buscar, consultar o asistentes/fichas de configuración guiada no guardan un registro de motor directo: esas prácticas siguen con la ficha del ejercicio en PracticaValidada.
   // Ver, solicitar, confirmar o anular tampoco guardan un registro nuevo; el asistente de pagos solo genera un archivo.
   if (/buscar|consultar|identificar|verificar|revisar|visualizar|confirmar|solicitar|anular|anulacion|asistente de pagos|payment wizard|generador de consultas|agregar tabla|filtrar|seleccionar campos|vincular consulta|programar notificacion|configurar ficha|datos de planificacion|definir peso|grupo cable|definir categorias|activar informacion|widget de actividades|agregar widget|configuracion de widget|prevision|alerta de stock|proceso de autorizacion|visibilidad de udf|importar desde excel|importar nuevo/.test(plano(guia.title ?? ''))) return null;
   const texto = plano(`${guia.title ?? ''} ${guia.menu_path ?? ''}`);
-  // Asistente de pagos: ejecutarlo registra pagos reales (pantalla de Bancos); ver recomendaciones, elegir opciones
-  // o generar el archivo no guardan nada en la empresa y siguen como ficha.
-  if (/asistente de pagos|payment wizard/.test(texto)) return /ejecutar/.test(plano(guia.title ?? '')) ? { clave: 'bancos' } : null;
+  if (/asistente de pagos|payment wizard/.test(texto)) return null;
   return REGLAS.find(([re]) => re.test(texto))?.[1] ?? null;
 }

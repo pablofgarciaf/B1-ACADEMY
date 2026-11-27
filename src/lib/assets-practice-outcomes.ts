@@ -2,7 +2,7 @@ import type {PracticeOutcomeContract} from './practice-outcome-contract';
 import type {CompanyState} from './firestore-types';
 const rule=(key:string,collection:PracticeOutcomeContract['collection'],fields:Record<string,[string,string]>,rows?:string):PracticeOutcomeContract=>({key,collection,rows,pending:[],requirements:Object.entries(fields).map(([label,[path,expected]])=>({label,path,expected}))});
 export function assetsPracticeContract(key:string):PracticeOutcomeContract|undefined{
- if(key==='mod3-c1#7')return rule(key,'profile',{Artículo:['itemCode','A00001'],Activo:['isAsset','Sí'],Virtual:['virtual','Sí'],Serie:['series','AF001']},'assetModels');
+ if(key==='mod3-c1#7')return rule(key,'profile',{'Artículo de activo':['isAsset','Marcado'],'Artículo virtual':['virtual','Marcado'],Serie:['series','AF001']},'assetModels');
  if(key==='mod3-c2#5'||key==='mod3-c2#9'){
   const multiple=key==='mod3-c2#9';
   return rule(key,'purchaseOrders',{Proveedor:['cardCode',multiple?'V10002':'V10000'],Fecha:['date',multiple?'02/01/2026':'01/01/2026'],Valoración:['assetValuationDate',multiple?'02/01/2026':'01/01/2026'],Artículo:['lines.itemCode',multiple?'A00004':'A00006'],Cantidad:['lines.quantity',multiple?'5':'1'],Precio:['lines.price',multiple?'45':'6000'],Activos:['capitalizedQuantity',multiple?'5':'1']});

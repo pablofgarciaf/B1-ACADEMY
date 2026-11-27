@@ -37,6 +37,15 @@ function readingTimeMs(text: string, velocidad = 1) {
 /** Velocidades de narración disponibles (el botón las recorre en orden). */
 export const VELOCIDADES_VOZ = [1, 1.25, 1.5, 1.75] as const;
 const CLAVE_VELOCIDAD = 'b1_voz_velocidad';
+const CLAVE_GLOBAL_MUTE = 'finix_global_mute';
+
+function muteGuardado(): boolean {
+  try {
+    return localStorage.getItem(CLAVE_GLOBAL_MUTE) === 'true';
+  } catch {
+    return false;
+  }
+}
 
 function velocidadGuardada(): number {
   try {
@@ -76,6 +85,28 @@ export function useAcademyVoice() {
     const v = velocidadGuardada();
     velocidadRef.current = v;
     setVelocidad(v);
+
+    const m = muteGuardado();
+    mutedRef.current = m;
+    setIsMuted(m);
+    if (audioRef.current) audioRef.current.muted = m;
+
+    const handleMuteEvent = (e: Event) => {
+      try {
+        const customVal = (e as CustomEvent).detail?.isMuted;
+        const currentMute = typeof customVal === 'boolean' ? customVal : muteGuardado();
+        mutedRef.current = currentMute;
+        setIsMuted(currentMute);
+        if (audioRef.current) audioRef.current.muted = currentMute;
+      } catch {}
+    };
+
+    window.addEventListener('finix-mute-changed', handleMuteEvent);
+    window.addEventListener('storage', handleMuteEvent);
+    return () => {
+      window.removeEventListener('finix-mute-changed', handleMuteEvent);
+      window.removeEventListener('storage', handleMuteEvent);
+    };
   }, []);
 
   const clearPlayback = useCallback(() => {
@@ -261,11 +292,17 @@ export function useAcademyVoice() {
     if (text.trim()) fetchAudioUrl(text, firma).catch(() => undefined);
   }, []);
 
-  const toggleMute = useCallback(() => {
-    const next = !mutedRef.current;
+  const toggleMute = useCallback((forced?: boolean | React.MouseEvent | unknown) => {
+    const next = typeof forced === 'boolean' ? forced : !mutedRef.current;
     mutedRef.current = next;
     setIsMuted(next);
     if (audioRef.current) audioRef.current.muted = next;
+    try {
+      localStorage.setItem(CLAVE_GLOBAL_MUTE, String(next));
+      window.dispatchEvent(new CustomEvent('finix-mute-changed', { detail: { isMuted: next } }));
+    } catch {
+      // Storage ignorado
+    }
   }, []);
 
   /** Pasa a la siguiente velocidad (1× → 1.25× → 1.5× → 1.75× → 1×); se aplica al instante y se recuerda. */

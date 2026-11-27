@@ -97,6 +97,16 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
   const practiceContext = useRef('');
   practiceContext.current = currentUser?.uid + ':' + moduleId + ':' + activeClassId + ':' + currentSlideIndex + ':' + restartKey;
   useEffect(() => setPracticeAttempt(0), [activeClassId, currentSlideIndex]);
+
+  // Persistir la lámina activa por clase para que el alumno no pierda su avance
+  useEffect(() => {
+    if (!activeClassId) return;
+    try {
+      if (currentSlideIndex > 0) {
+        localStorage.setItem(`finix_slide_${activeClassId}`, String(currentSlideIndex));
+      }
+    } catch {}
+  }, [activeClassId, currentSlideIndex]);
   const [completedClasses, setCompletedClasses] = useState<Record<string, boolean>>({});
   const [passedPractices, setPassedPractices] = useState<string[]>([]);
   const [requiredPractices, setRequiredPractices] = useState<string[]>([]);
@@ -219,7 +229,17 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
       .then(r => { if (!r.ok) throw new Error('lesson-load'); return r.json(); })
       .then(data => {
         if (data?.classId !== activeClassId || !data.syncData?.length) throw new Error('lesson-data');
-        if (isMounted) setLessonData(data);
+        if (isMounted) {
+          setLessonData(data);
+          try {
+            const savedSlide = Number(localStorage.getItem(`finix_slide_${activeClassId}`));
+            if (!Number.isNaN(savedSlide) && savedSlide > 0 && savedSlide < data.syncData.length) {
+              setCurrentSlideIndex(savedSlide);
+            }
+          } catch {
+            // Storage ignorado
+          }
+        }
       })
       .catch(() => { if (isMounted) setLessonError('No se pudo cargar esta clase. Vuelve a intentarlo.'); })
       .finally(() => { if (isMounted) setIsLoadingLesson(false); });
@@ -377,9 +397,14 @@ export default function AulaModuloPage({ params }: { params: Promise<{ moduleId:
     setLessonData(null);
     setIsLoadingLesson(true);
     setCurrentSlideIndex(0);
+    try {
+      localStorage.removeItem(`finix_slide_${activeClassId}`);
+    } catch {
+      // Storage ignorado
+    }
     setPhase('narrating');
     setRestartKey(key => key + 1);
-  }, [stopSpeaking]);
+  }, [stopSpeaking, activeClassId]);
 
   const totalLessons = moduleClasses.length;
   const completedCount = Object.keys(completedClasses).filter(id => completedClasses[id]).length;
