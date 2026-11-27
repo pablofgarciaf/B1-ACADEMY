@@ -5,7 +5,7 @@ import { BotonConfigurarCookies } from '@/components/legal/CookieConsent';
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.08] bg-[#050811] text-slate-300 py-14">
+    <footer id="site-footer" className="border-t border-white/[0.08] bg-[#050811] text-slate-300 py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Col 1: Brand & Logo */}

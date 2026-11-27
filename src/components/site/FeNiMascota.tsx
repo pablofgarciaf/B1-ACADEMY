@@ -46,6 +46,19 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
   const restPosRef = useRef<Pos | null>(null);
   const posRef = useRef<Pos | null>(null);
   const [animando, setAnimando] = useState(false);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const footer = document.getElementById('site-footer');
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsFooterVisible(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   // Mantiene posRef sincronizado para acceso sin re-registrar listeners
   useEffect(() => { posRef.current = pos; }, [pos]);
@@ -167,13 +180,15 @@ export default function FeNiMascota({ onAbrir }: { onAbrir: (lado: 'izq' | 'der'
       aria-label="Abrir asistente inteligente FeNi AI"
       onMouseDown={(e) => { e.preventDefault(); iniciar(e.clientX, e.clientY); }}
       onTouchStart={(e) => { const t = e.touches[0]; if (t) iniciar(t.clientX, t.clientY); }}
-      className="fixed z-40 touch-none select-none rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 active:scale-95"
+      className={`fixed z-40 hidden md:block touch-none select-none rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 active:scale-95 transition-opacity duration-300 ${
+        isFooterVisible ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+      }`}
       style={{
         left: `${pos.x}px`,
         top: `${pos.y}px`,
         width: `${TAM}px`,
         height: `${TAM}px`,
-        transition: (animando && !arrastrando) ? 'left 0.32s cubic-bezier(0.34,1.56,0.64,1), top 0.32s cubic-bezier(0.34,1.56,0.64,1)' : 'none',
+        transition: (animando && !arrastrando) ? 'left 0.32s cubic-bezier(0.34,1.56,0.64,1), top 0.32s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s ease' : 'opacity 0.3s ease',
       }}
     >
       <FeNiCara tam={TAM} flotar={!arrastrando} aleteando={arrastrando} />
