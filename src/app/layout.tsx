@@ -62,9 +62,11 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: publicUrl('/icon.png'),
-        width: 500,
-        height: 500,
+        url: publicUrl('/og-image.jpg'),
+        secureUrl: publicUrl('/og-image.jpg'),
+        width: 1200,
+        height: 630,
+        type: 'image/jpeg',
         alt: "B1 Academy - Plataforma de Capacitación y Consultoría Empresarial Finix ERP",
       },
     ],
@@ -74,7 +76,7 @@ export const metadata: Metadata = {
     title: "B1 Academy | Capacitación Práctica en SAP Business One",
     description:
       "Formación especializada y consultoría en Finix ERP para profesionales y empresas.",
-    images: [publicUrl('/icon.png')],
+    images: [publicUrl('/og-image.jpg')],
   },
   robots: {
     index: true,
@@ -110,6 +112,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning className={`${inter.variable} ${jakarta.variable}`}>
+      <head>
+        <meta property="og:image" content={publicUrl('/og-image.jpg')} />
+        <meta property="og:image:secure_url" content={publicUrl('/og-image.jpg')} />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:image" content={publicUrl('/og-image.jpg')} />
+      </head>
       <body className="min-h-screen bg-slate-50 dark:bg-[#080d1a] text-slate-900 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
 
         <script
